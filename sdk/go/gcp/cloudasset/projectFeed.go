@@ -334,7 +334,7 @@ type ProjectFeedArrayInput interface {
 type ProjectFeedArray []ProjectFeedInput
 
 func (ProjectFeedArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ProjectFeed)(nil))
+	return reflect.TypeOf((*[]*ProjectFeed)(nil)).Elem()
 }
 
 func (i ProjectFeedArray) ToProjectFeedArrayOutput() ProjectFeedArrayOutput {
@@ -359,7 +359,7 @@ type ProjectFeedMapInput interface {
 type ProjectFeedMap map[string]ProjectFeedInput
 
 func (ProjectFeedMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ProjectFeed)(nil))
+	return reflect.TypeOf((*map[string]*ProjectFeed)(nil)).Elem()
 }
 
 func (i ProjectFeedMap) ToProjectFeedMapOutput() ProjectFeedMapOutput {
@@ -370,9 +370,7 @@ func (i ProjectFeedMap) ToProjectFeedMapOutputWithContext(ctx context.Context) P
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectFeedMapOutput)
 }
 
-type ProjectFeedOutput struct {
-	*pulumi.OutputState
-}
+type ProjectFeedOutput struct{ *pulumi.OutputState }
 
 func (ProjectFeedOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ProjectFeed)(nil))
@@ -391,14 +389,12 @@ func (o ProjectFeedOutput) ToProjectFeedPtrOutput() ProjectFeedPtrOutput {
 }
 
 func (o ProjectFeedOutput) ToProjectFeedPtrOutputWithContext(ctx context.Context) ProjectFeedPtrOutput {
-	return o.ApplyT(func(v ProjectFeed) *ProjectFeed {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectFeed) *ProjectFeed {
 		return &v
 	}).(ProjectFeedPtrOutput)
 }
 
-type ProjectFeedPtrOutput struct {
-	*pulumi.OutputState
-}
+type ProjectFeedPtrOutput struct{ *pulumi.OutputState }
 
 func (ProjectFeedPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ProjectFeed)(nil))
@@ -410,6 +406,16 @@ func (o ProjectFeedPtrOutput) ToProjectFeedPtrOutput() ProjectFeedPtrOutput {
 
 func (o ProjectFeedPtrOutput) ToProjectFeedPtrOutputWithContext(ctx context.Context) ProjectFeedPtrOutput {
 	return o
+}
+
+func (o ProjectFeedPtrOutput) Elem() ProjectFeedOutput {
+	return o.ApplyT(func(v *ProjectFeed) ProjectFeed {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectFeed
+		return ret
+	}).(ProjectFeedOutput)
 }
 
 type ProjectFeedArrayOutput struct{ *pulumi.OutputState }

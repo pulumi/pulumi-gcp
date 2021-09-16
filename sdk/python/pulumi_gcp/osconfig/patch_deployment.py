@@ -517,9 +517,9 @@ class PatchDeployment(pulumi.CustomResource):
                 ),
             ),
             recurring_schedule=gcp.osconfig.PatchDeploymentRecurringScheduleArgs(
-                time_zone={
-                    "id": "America/New_York",
-                },
+                time_zone=gcp.osconfig.PatchDeploymentRecurringScheduleTimeZoneArgs(
+                    id="America/New_York",
+                ),
                 time_of_day=gcp.osconfig.PatchDeploymentRecurringScheduleTimeOfDayArgs(
                     hours=0,
                     minutes=30,
@@ -625,9 +625,9 @@ class PatchDeployment(pulumi.CustomResource):
                     nanos=20,
                     seconds=30,
                 ),
-                time_zone={
-                    "id": "America/New_York",
-                },
+                time_zone=gcp.osconfig.PatchDeploymentRecurringScheduleTimeZoneArgs(
+                    id="America/New_York",
+                ),
             ),
             rollout=gcp.osconfig.PatchDeploymentRolloutArgs(
                 disruption_budget=gcp.osconfig.PatchDeploymentRolloutDisruptionBudgetArgs(
@@ -749,9 +749,9 @@ class PatchDeployment(pulumi.CustomResource):
                 ),
             ),
             recurring_schedule=gcp.osconfig.PatchDeploymentRecurringScheduleArgs(
-                time_zone={
-                    "id": "America/New_York",
-                },
+                time_zone=gcp.osconfig.PatchDeploymentRecurringScheduleTimeZoneArgs(
+                    id="America/New_York",
+                ),
                 time_of_day=gcp.osconfig.PatchDeploymentRecurringScheduleTimeOfDayArgs(
                     hours=0,
                     minutes=30,
@@ -857,9 +857,9 @@ class PatchDeployment(pulumi.CustomResource):
                     nanos=20,
                     seconds=30,
                 ),
-                time_zone={
-                    "id": "America/New_York",
-                },
+                time_zone=gcp.osconfig.PatchDeploymentRecurringScheduleTimeZoneArgs(
+                    id="America/New_York",
+                ),
             ),
             rollout=gcp.osconfig.PatchDeploymentRolloutArgs(
                 disruption_budget=gcp.osconfig.PatchDeploymentRolloutDisruptionBudgetArgs(

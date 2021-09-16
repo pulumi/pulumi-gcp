@@ -452,7 +452,7 @@ type PreventionInspectTemplateArrayInput interface {
 type PreventionInspectTemplateArray []PreventionInspectTemplateInput
 
 func (PreventionInspectTemplateArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*PreventionInspectTemplate)(nil))
+	return reflect.TypeOf((*[]*PreventionInspectTemplate)(nil)).Elem()
 }
 
 func (i PreventionInspectTemplateArray) ToPreventionInspectTemplateArrayOutput() PreventionInspectTemplateArrayOutput {
@@ -477,7 +477,7 @@ type PreventionInspectTemplateMapInput interface {
 type PreventionInspectTemplateMap map[string]PreventionInspectTemplateInput
 
 func (PreventionInspectTemplateMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*PreventionInspectTemplate)(nil))
+	return reflect.TypeOf((*map[string]*PreventionInspectTemplate)(nil)).Elem()
 }
 
 func (i PreventionInspectTemplateMap) ToPreventionInspectTemplateMapOutput() PreventionInspectTemplateMapOutput {
@@ -488,9 +488,7 @@ func (i PreventionInspectTemplateMap) ToPreventionInspectTemplateMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(PreventionInspectTemplateMapOutput)
 }
 
-type PreventionInspectTemplateOutput struct {
-	*pulumi.OutputState
-}
+type PreventionInspectTemplateOutput struct{ *pulumi.OutputState }
 
 func (PreventionInspectTemplateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*PreventionInspectTemplate)(nil))
@@ -509,14 +507,12 @@ func (o PreventionInspectTemplateOutput) ToPreventionInspectTemplatePtrOutput() 
 }
 
 func (o PreventionInspectTemplateOutput) ToPreventionInspectTemplatePtrOutputWithContext(ctx context.Context) PreventionInspectTemplatePtrOutput {
-	return o.ApplyT(func(v PreventionInspectTemplate) *PreventionInspectTemplate {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionInspectTemplate) *PreventionInspectTemplate {
 		return &v
 	}).(PreventionInspectTemplatePtrOutput)
 }
 
-type PreventionInspectTemplatePtrOutput struct {
-	*pulumi.OutputState
-}
+type PreventionInspectTemplatePtrOutput struct{ *pulumi.OutputState }
 
 func (PreventionInspectTemplatePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**PreventionInspectTemplate)(nil))
@@ -528,6 +524,16 @@ func (o PreventionInspectTemplatePtrOutput) ToPreventionInspectTemplatePtrOutput
 
 func (o PreventionInspectTemplatePtrOutput) ToPreventionInspectTemplatePtrOutputWithContext(ctx context.Context) PreventionInspectTemplatePtrOutput {
 	return o
+}
+
+func (o PreventionInspectTemplatePtrOutput) Elem() PreventionInspectTemplateOutput {
+	return o.ApplyT(func(v *PreventionInspectTemplate) PreventionInspectTemplate {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionInspectTemplate
+		return ret
+	}).(PreventionInspectTemplateOutput)
 }
 
 type PreventionInspectTemplateArrayOutput struct{ *pulumi.OutputState }

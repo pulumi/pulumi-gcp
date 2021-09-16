@@ -304,7 +304,7 @@ type WorkflowArrayInput interface {
 type WorkflowArray []WorkflowInput
 
 func (WorkflowArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Workflow)(nil))
+	return reflect.TypeOf((*[]*Workflow)(nil)).Elem()
 }
 
 func (i WorkflowArray) ToWorkflowArrayOutput() WorkflowArrayOutput {
@@ -329,7 +329,7 @@ type WorkflowMapInput interface {
 type WorkflowMap map[string]WorkflowInput
 
 func (WorkflowMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Workflow)(nil))
+	return reflect.TypeOf((*map[string]*Workflow)(nil)).Elem()
 }
 
 func (i WorkflowMap) ToWorkflowMapOutput() WorkflowMapOutput {
@@ -340,9 +340,7 @@ func (i WorkflowMap) ToWorkflowMapOutputWithContext(ctx context.Context) Workflo
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowMapOutput)
 }
 
-type WorkflowOutput struct {
-	*pulumi.OutputState
-}
+type WorkflowOutput struct{ *pulumi.OutputState }
 
 func (WorkflowOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Workflow)(nil))
@@ -361,14 +359,12 @@ func (o WorkflowOutput) ToWorkflowPtrOutput() WorkflowPtrOutput {
 }
 
 func (o WorkflowOutput) ToWorkflowPtrOutputWithContext(ctx context.Context) WorkflowPtrOutput {
-	return o.ApplyT(func(v Workflow) *Workflow {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Workflow) *Workflow {
 		return &v
 	}).(WorkflowPtrOutput)
 }
 
-type WorkflowPtrOutput struct {
-	*pulumi.OutputState
-}
+type WorkflowPtrOutput struct{ *pulumi.OutputState }
 
 func (WorkflowPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Workflow)(nil))
@@ -380,6 +376,16 @@ func (o WorkflowPtrOutput) ToWorkflowPtrOutput() WorkflowPtrOutput {
 
 func (o WorkflowPtrOutput) ToWorkflowPtrOutputWithContext(ctx context.Context) WorkflowPtrOutput {
 	return o
+}
+
+func (o WorkflowPtrOutput) Elem() WorkflowOutput {
+	return o.ApplyT(func(v *Workflow) Workflow {
+		if v != nil {
+			return *v
+		}
+		var ret Workflow
+		return ret
+	}).(WorkflowOutput)
 }
 
 type WorkflowArrayOutput struct{ *pulumi.OutputState }

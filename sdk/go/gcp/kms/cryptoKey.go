@@ -367,7 +367,7 @@ type CryptoKeyArrayInput interface {
 type CryptoKeyArray []CryptoKeyInput
 
 func (CryptoKeyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*CryptoKey)(nil))
+	return reflect.TypeOf((*[]*CryptoKey)(nil)).Elem()
 }
 
 func (i CryptoKeyArray) ToCryptoKeyArrayOutput() CryptoKeyArrayOutput {
@@ -392,7 +392,7 @@ type CryptoKeyMapInput interface {
 type CryptoKeyMap map[string]CryptoKeyInput
 
 func (CryptoKeyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*CryptoKey)(nil))
+	return reflect.TypeOf((*map[string]*CryptoKey)(nil)).Elem()
 }
 
 func (i CryptoKeyMap) ToCryptoKeyMapOutput() CryptoKeyMapOutput {
@@ -403,9 +403,7 @@ func (i CryptoKeyMap) ToCryptoKeyMapOutputWithContext(ctx context.Context) Crypt
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyMapOutput)
 }
 
-type CryptoKeyOutput struct {
-	*pulumi.OutputState
-}
+type CryptoKeyOutput struct{ *pulumi.OutputState }
 
 func (CryptoKeyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CryptoKey)(nil))
@@ -424,14 +422,12 @@ func (o CryptoKeyOutput) ToCryptoKeyPtrOutput() CryptoKeyPtrOutput {
 }
 
 func (o CryptoKeyOutput) ToCryptoKeyPtrOutputWithContext(ctx context.Context) CryptoKeyPtrOutput {
-	return o.ApplyT(func(v CryptoKey) *CryptoKey {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CryptoKey) *CryptoKey {
 		return &v
 	}).(CryptoKeyPtrOutput)
 }
 
-type CryptoKeyPtrOutput struct {
-	*pulumi.OutputState
-}
+type CryptoKeyPtrOutput struct{ *pulumi.OutputState }
 
 func (CryptoKeyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**CryptoKey)(nil))
@@ -443,6 +439,16 @@ func (o CryptoKeyPtrOutput) ToCryptoKeyPtrOutput() CryptoKeyPtrOutput {
 
 func (o CryptoKeyPtrOutput) ToCryptoKeyPtrOutputWithContext(ctx context.Context) CryptoKeyPtrOutput {
 	return o
+}
+
+func (o CryptoKeyPtrOutput) Elem() CryptoKeyOutput {
+	return o.ApplyT(func(v *CryptoKey) CryptoKey {
+		if v != nil {
+			return *v
+		}
+		var ret CryptoKey
+		return ret
+	}).(CryptoKeyOutput)
 }
 
 type CryptoKeyArrayOutput struct{ *pulumi.OutputState }

@@ -322,7 +322,7 @@ type Hl7StoreIamMemberArrayInput interface {
 type Hl7StoreIamMemberArray []Hl7StoreIamMemberInput
 
 func (Hl7StoreIamMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Hl7StoreIamMember)(nil))
+	return reflect.TypeOf((*[]*Hl7StoreIamMember)(nil)).Elem()
 }
 
 func (i Hl7StoreIamMemberArray) ToHl7StoreIamMemberArrayOutput() Hl7StoreIamMemberArrayOutput {
@@ -347,7 +347,7 @@ type Hl7StoreIamMemberMapInput interface {
 type Hl7StoreIamMemberMap map[string]Hl7StoreIamMemberInput
 
 func (Hl7StoreIamMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Hl7StoreIamMember)(nil))
+	return reflect.TypeOf((*map[string]*Hl7StoreIamMember)(nil)).Elem()
 }
 
 func (i Hl7StoreIamMemberMap) ToHl7StoreIamMemberMapOutput() Hl7StoreIamMemberMapOutput {
@@ -358,9 +358,7 @@ func (i Hl7StoreIamMemberMap) ToHl7StoreIamMemberMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreIamMemberMapOutput)
 }
 
-type Hl7StoreIamMemberOutput struct {
-	*pulumi.OutputState
-}
+type Hl7StoreIamMemberOutput struct{ *pulumi.OutputState }
 
 func (Hl7StoreIamMemberOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Hl7StoreIamMember)(nil))
@@ -379,14 +377,12 @@ func (o Hl7StoreIamMemberOutput) ToHl7StoreIamMemberPtrOutput() Hl7StoreIamMembe
 }
 
 func (o Hl7StoreIamMemberOutput) ToHl7StoreIamMemberPtrOutputWithContext(ctx context.Context) Hl7StoreIamMemberPtrOutput {
-	return o.ApplyT(func(v Hl7StoreIamMember) *Hl7StoreIamMember {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Hl7StoreIamMember) *Hl7StoreIamMember {
 		return &v
 	}).(Hl7StoreIamMemberPtrOutput)
 }
 
-type Hl7StoreIamMemberPtrOutput struct {
-	*pulumi.OutputState
-}
+type Hl7StoreIamMemberPtrOutput struct{ *pulumi.OutputState }
 
 func (Hl7StoreIamMemberPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Hl7StoreIamMember)(nil))
@@ -398,6 +394,16 @@ func (o Hl7StoreIamMemberPtrOutput) ToHl7StoreIamMemberPtrOutput() Hl7StoreIamMe
 
 func (o Hl7StoreIamMemberPtrOutput) ToHl7StoreIamMemberPtrOutputWithContext(ctx context.Context) Hl7StoreIamMemberPtrOutput {
 	return o
+}
+
+func (o Hl7StoreIamMemberPtrOutput) Elem() Hl7StoreIamMemberOutput {
+	return o.ApplyT(func(v *Hl7StoreIamMember) Hl7StoreIamMember {
+		if v != nil {
+			return *v
+		}
+		var ret Hl7StoreIamMember
+		return ret
+	}).(Hl7StoreIamMemberOutput)
 }
 
 type Hl7StoreIamMemberArrayOutput struct{ *pulumi.OutputState }

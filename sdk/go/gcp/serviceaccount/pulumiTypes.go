@@ -111,7 +111,7 @@ func (o IAMBindingConditionOutput) ToIAMBindingConditionPtrOutput() IAMBindingCo
 }
 
 func (o IAMBindingConditionOutput) ToIAMBindingConditionPtrOutputWithContext(ctx context.Context) IAMBindingConditionPtrOutput {
-	return o.ApplyT(func(v IAMBindingCondition) *IAMBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IAMBindingCondition) *IAMBindingCondition {
 		return &v
 	}).(IAMBindingConditionPtrOutput)
 }
@@ -146,7 +146,13 @@ func (o IAMBindingConditionPtrOutput) ToIAMBindingConditionPtrOutputWithContext(
 }
 
 func (o IAMBindingConditionPtrOutput) Elem() IAMBindingConditionOutput {
-	return o.ApplyT(func(v *IAMBindingCondition) IAMBindingCondition { return *v }).(IAMBindingConditionOutput)
+	return o.ApplyT(func(v *IAMBindingCondition) IAMBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret IAMBindingCondition
+		return ret
+	}).(IAMBindingConditionOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -280,7 +286,7 @@ func (o IAMMemberConditionOutput) ToIAMMemberConditionPtrOutput() IAMMemberCondi
 }
 
 func (o IAMMemberConditionOutput) ToIAMMemberConditionPtrOutputWithContext(ctx context.Context) IAMMemberConditionPtrOutput {
-	return o.ApplyT(func(v IAMMemberCondition) *IAMMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IAMMemberCondition) *IAMMemberCondition {
 		return &v
 	}).(IAMMemberConditionPtrOutput)
 }
@@ -315,7 +321,13 @@ func (o IAMMemberConditionPtrOutput) ToIAMMemberConditionPtrOutputWithContext(ct
 }
 
 func (o IAMMemberConditionPtrOutput) Elem() IAMMemberConditionOutput {
-	return o.ApplyT(func(v *IAMMemberCondition) IAMMemberCondition { return *v }).(IAMMemberConditionOutput)
+	return o.ApplyT(func(v *IAMMemberCondition) IAMMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret IAMMemberCondition
+		return ret
+	}).(IAMMemberConditionOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.

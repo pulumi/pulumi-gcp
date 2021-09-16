@@ -405,20 +405,20 @@ class WorkflowTemplate(pulumi.CustomResource):
                             machine_type="n1-standard-1",
                             num_instances=1,
                         ),
-                        secondary_worker_config={
-                            "numInstances": 2,
-                        },
+                        secondary_worker_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs(
+                            num_instances=2,
+                        ),
                         software_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs(
                             image_version="1.3.7-deb9",
                         ),
-                        worker_config={
-                            "diskConfig": {
-                                "boot_disk_size_gb": 10,
-                                "numLocalSsds": 2,
-                            },
-                            "machine_type": "n1-standard-2",
-                            "numInstances": 3,
-                        },
+                        worker_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs(
+                            disk_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs(
+                                boot_disk_size_gb=10,
+                                num_local_ssds=2,
+                            ),
+                            machine_type="n1-standard-2",
+                            num_instances=3,
+                        ),
                     ),
                 ),
             ))
@@ -503,20 +503,20 @@ class WorkflowTemplate(pulumi.CustomResource):
                             machine_type="n1-standard-1",
                             num_instances=1,
                         ),
-                        secondary_worker_config={
-                            "numInstances": 2,
-                        },
+                        secondary_worker_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs(
+                            num_instances=2,
+                        ),
                         software_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs(
                             image_version="1.3.7-deb9",
                         ),
-                        worker_config={
-                            "diskConfig": {
-                                "boot_disk_size_gb": 10,
-                                "numLocalSsds": 2,
-                            },
-                            "machine_type": "n1-standard-2",
-                            "numInstances": 3,
-                        },
+                        worker_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs(
+                            disk_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs(
+                                boot_disk_size_gb=10,
+                                num_local_ssds=2,
+                            ),
+                            machine_type="n1-standard-2",
+                            num_instances=3,
+                        ),
                     ),
                 ),
             ))

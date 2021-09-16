@@ -307,7 +307,7 @@ type TaxonomyIamPolicyArrayInput interface {
 type TaxonomyIamPolicyArray []TaxonomyIamPolicyInput
 
 func (TaxonomyIamPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TaxonomyIamPolicy)(nil))
+	return reflect.TypeOf((*[]*TaxonomyIamPolicy)(nil)).Elem()
 }
 
 func (i TaxonomyIamPolicyArray) ToTaxonomyIamPolicyArrayOutput() TaxonomyIamPolicyArrayOutput {
@@ -332,7 +332,7 @@ type TaxonomyIamPolicyMapInput interface {
 type TaxonomyIamPolicyMap map[string]TaxonomyIamPolicyInput
 
 func (TaxonomyIamPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TaxonomyIamPolicy)(nil))
+	return reflect.TypeOf((*map[string]*TaxonomyIamPolicy)(nil)).Elem()
 }
 
 func (i TaxonomyIamPolicyMap) ToTaxonomyIamPolicyMapOutput() TaxonomyIamPolicyMapOutput {
@@ -343,9 +343,7 @@ func (i TaxonomyIamPolicyMap) ToTaxonomyIamPolicyMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyIamPolicyMapOutput)
 }
 
-type TaxonomyIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type TaxonomyIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (TaxonomyIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TaxonomyIamPolicy)(nil))
@@ -364,14 +362,12 @@ func (o TaxonomyIamPolicyOutput) ToTaxonomyIamPolicyPtrOutput() TaxonomyIamPolic
 }
 
 func (o TaxonomyIamPolicyOutput) ToTaxonomyIamPolicyPtrOutputWithContext(ctx context.Context) TaxonomyIamPolicyPtrOutput {
-	return o.ApplyT(func(v TaxonomyIamPolicy) *TaxonomyIamPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TaxonomyIamPolicy) *TaxonomyIamPolicy {
 		return &v
 	}).(TaxonomyIamPolicyPtrOutput)
 }
 
-type TaxonomyIamPolicyPtrOutput struct {
-	*pulumi.OutputState
-}
+type TaxonomyIamPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (TaxonomyIamPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TaxonomyIamPolicy)(nil))
@@ -383,6 +379,16 @@ func (o TaxonomyIamPolicyPtrOutput) ToTaxonomyIamPolicyPtrOutput() TaxonomyIamPo
 
 func (o TaxonomyIamPolicyPtrOutput) ToTaxonomyIamPolicyPtrOutputWithContext(ctx context.Context) TaxonomyIamPolicyPtrOutput {
 	return o
+}
+
+func (o TaxonomyIamPolicyPtrOutput) Elem() TaxonomyIamPolicyOutput {
+	return o.ApplyT(func(v *TaxonomyIamPolicy) TaxonomyIamPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret TaxonomyIamPolicy
+		return ret
+	}).(TaxonomyIamPolicyOutput)
 }
 
 type TaxonomyIamPolicyArrayOutput struct{ *pulumi.OutputState }

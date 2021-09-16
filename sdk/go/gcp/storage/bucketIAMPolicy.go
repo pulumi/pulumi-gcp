@@ -390,7 +390,7 @@ type BucketIAMPolicyArrayInput interface {
 type BucketIAMPolicyArray []BucketIAMPolicyInput
 
 func (BucketIAMPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*BucketIAMPolicy)(nil))
+	return reflect.TypeOf((*[]*BucketIAMPolicy)(nil)).Elem()
 }
 
 func (i BucketIAMPolicyArray) ToBucketIAMPolicyArrayOutput() BucketIAMPolicyArrayOutput {
@@ -415,7 +415,7 @@ type BucketIAMPolicyMapInput interface {
 type BucketIAMPolicyMap map[string]BucketIAMPolicyInput
 
 func (BucketIAMPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*BucketIAMPolicy)(nil))
+	return reflect.TypeOf((*map[string]*BucketIAMPolicy)(nil)).Elem()
 }
 
 func (i BucketIAMPolicyMap) ToBucketIAMPolicyMapOutput() BucketIAMPolicyMapOutput {
@@ -426,9 +426,7 @@ func (i BucketIAMPolicyMap) ToBucketIAMPolicyMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(BucketIAMPolicyMapOutput)
 }
 
-type BucketIAMPolicyOutput struct {
-	*pulumi.OutputState
-}
+type BucketIAMPolicyOutput struct{ *pulumi.OutputState }
 
 func (BucketIAMPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BucketIAMPolicy)(nil))
@@ -447,14 +445,12 @@ func (o BucketIAMPolicyOutput) ToBucketIAMPolicyPtrOutput() BucketIAMPolicyPtrOu
 }
 
 func (o BucketIAMPolicyOutput) ToBucketIAMPolicyPtrOutputWithContext(ctx context.Context) BucketIAMPolicyPtrOutput {
-	return o.ApplyT(func(v BucketIAMPolicy) *BucketIAMPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketIAMPolicy) *BucketIAMPolicy {
 		return &v
 	}).(BucketIAMPolicyPtrOutput)
 }
 
-type BucketIAMPolicyPtrOutput struct {
-	*pulumi.OutputState
-}
+type BucketIAMPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (BucketIAMPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**BucketIAMPolicy)(nil))
@@ -466,6 +462,16 @@ func (o BucketIAMPolicyPtrOutput) ToBucketIAMPolicyPtrOutput() BucketIAMPolicyPt
 
 func (o BucketIAMPolicyPtrOutput) ToBucketIAMPolicyPtrOutputWithContext(ctx context.Context) BucketIAMPolicyPtrOutput {
 	return o
+}
+
+func (o BucketIAMPolicyPtrOutput) Elem() BucketIAMPolicyOutput {
+	return o.ApplyT(func(v *BucketIAMPolicy) BucketIAMPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret BucketIAMPolicy
+		return ret
+	}).(BucketIAMPolicyOutput)
 }
 
 type BucketIAMPolicyArrayOutput struct{ *pulumi.OutputState }

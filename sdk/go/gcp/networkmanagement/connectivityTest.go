@@ -564,7 +564,7 @@ type ConnectivityTestArrayInput interface {
 type ConnectivityTestArray []ConnectivityTestInput
 
 func (ConnectivityTestArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ConnectivityTest)(nil))
+	return reflect.TypeOf((*[]*ConnectivityTest)(nil)).Elem()
 }
 
 func (i ConnectivityTestArray) ToConnectivityTestArrayOutput() ConnectivityTestArrayOutput {
@@ -589,7 +589,7 @@ type ConnectivityTestMapInput interface {
 type ConnectivityTestMap map[string]ConnectivityTestInput
 
 func (ConnectivityTestMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ConnectivityTest)(nil))
+	return reflect.TypeOf((*map[string]*ConnectivityTest)(nil)).Elem()
 }
 
 func (i ConnectivityTestMap) ToConnectivityTestMapOutput() ConnectivityTestMapOutput {
@@ -600,9 +600,7 @@ func (i ConnectivityTestMap) ToConnectivityTestMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectivityTestMapOutput)
 }
 
-type ConnectivityTestOutput struct {
-	*pulumi.OutputState
-}
+type ConnectivityTestOutput struct{ *pulumi.OutputState }
 
 func (ConnectivityTestOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ConnectivityTest)(nil))
@@ -621,14 +619,12 @@ func (o ConnectivityTestOutput) ToConnectivityTestPtrOutput() ConnectivityTestPt
 }
 
 func (o ConnectivityTestOutput) ToConnectivityTestPtrOutputWithContext(ctx context.Context) ConnectivityTestPtrOutput {
-	return o.ApplyT(func(v ConnectivityTest) *ConnectivityTest {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectivityTest) *ConnectivityTest {
 		return &v
 	}).(ConnectivityTestPtrOutput)
 }
 
-type ConnectivityTestPtrOutput struct {
-	*pulumi.OutputState
-}
+type ConnectivityTestPtrOutput struct{ *pulumi.OutputState }
 
 func (ConnectivityTestPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ConnectivityTest)(nil))
@@ -640,6 +636,16 @@ func (o ConnectivityTestPtrOutput) ToConnectivityTestPtrOutput() ConnectivityTes
 
 func (o ConnectivityTestPtrOutput) ToConnectivityTestPtrOutputWithContext(ctx context.Context) ConnectivityTestPtrOutput {
 	return o
+}
+
+func (o ConnectivityTestPtrOutput) Elem() ConnectivityTestOutput {
+	return o.ApplyT(func(v *ConnectivityTest) ConnectivityTest {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectivityTest
+		return ret
+	}).(ConnectivityTestOutput)
 }
 
 type ConnectivityTestArrayOutput struct{ *pulumi.OutputState }

@@ -192,7 +192,7 @@ type SharedVPCHostProjectArrayInput interface {
 type SharedVPCHostProjectArray []SharedVPCHostProjectInput
 
 func (SharedVPCHostProjectArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*SharedVPCHostProject)(nil))
+	return reflect.TypeOf((*[]*SharedVPCHostProject)(nil)).Elem()
 }
 
 func (i SharedVPCHostProjectArray) ToSharedVPCHostProjectArrayOutput() SharedVPCHostProjectArrayOutput {
@@ -217,7 +217,7 @@ type SharedVPCHostProjectMapInput interface {
 type SharedVPCHostProjectMap map[string]SharedVPCHostProjectInput
 
 func (SharedVPCHostProjectMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*SharedVPCHostProject)(nil))
+	return reflect.TypeOf((*map[string]*SharedVPCHostProject)(nil)).Elem()
 }
 
 func (i SharedVPCHostProjectMap) ToSharedVPCHostProjectMapOutput() SharedVPCHostProjectMapOutput {
@@ -228,9 +228,7 @@ func (i SharedVPCHostProjectMap) ToSharedVPCHostProjectMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(SharedVPCHostProjectMapOutput)
 }
 
-type SharedVPCHostProjectOutput struct {
-	*pulumi.OutputState
-}
+type SharedVPCHostProjectOutput struct{ *pulumi.OutputState }
 
 func (SharedVPCHostProjectOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SharedVPCHostProject)(nil))
@@ -249,14 +247,12 @@ func (o SharedVPCHostProjectOutput) ToSharedVPCHostProjectPtrOutput() SharedVPCH
 }
 
 func (o SharedVPCHostProjectOutput) ToSharedVPCHostProjectPtrOutputWithContext(ctx context.Context) SharedVPCHostProjectPtrOutput {
-	return o.ApplyT(func(v SharedVPCHostProject) *SharedVPCHostProject {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SharedVPCHostProject) *SharedVPCHostProject {
 		return &v
 	}).(SharedVPCHostProjectPtrOutput)
 }
 
-type SharedVPCHostProjectPtrOutput struct {
-	*pulumi.OutputState
-}
+type SharedVPCHostProjectPtrOutput struct{ *pulumi.OutputState }
 
 func (SharedVPCHostProjectPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SharedVPCHostProject)(nil))
@@ -268,6 +264,16 @@ func (o SharedVPCHostProjectPtrOutput) ToSharedVPCHostProjectPtrOutput() SharedV
 
 func (o SharedVPCHostProjectPtrOutput) ToSharedVPCHostProjectPtrOutputWithContext(ctx context.Context) SharedVPCHostProjectPtrOutput {
 	return o
+}
+
+func (o SharedVPCHostProjectPtrOutput) Elem() SharedVPCHostProjectOutput {
+	return o.ApplyT(func(v *SharedVPCHostProject) SharedVPCHostProject {
+		if v != nil {
+			return *v
+		}
+		var ret SharedVPCHostProject
+		return ret
+	}).(SharedVPCHostProjectOutput)
 }
 
 type SharedVPCHostProjectArrayOutput struct{ *pulumi.OutputState }

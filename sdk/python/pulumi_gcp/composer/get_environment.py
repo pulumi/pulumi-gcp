@@ -13,6 +13,7 @@ __all__ = [
     'GetEnvironmentResult',
     'AwaitableGetEnvironmentResult',
     'get_environment',
+    'get_environment_output',
 ]
 
 @pulumi.output_type
@@ -121,3 +122,20 @@ def get_environment(name: Optional[str] = None,
         name=__ret__.name,
         project=__ret__.project,
         region=__ret__.region)
+
+
+@_utilities.lift_output_func(get_environment)
+def get_environment_output(name: Optional[pulumi.Input[str]] = None,
+                           project: Optional[pulumi.Input[Optional[str]]] = None,
+                           region: Optional[pulumi.Input[Optional[str]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEnvironmentResult]:
+    """
+    Provides access to Cloud Composer environment configuration in a region for a given project.
+
+
+    :param str name: Name of the environment.
+    :param str project: The ID of the project in which the resource belongs.
+           If it is not provided, the provider project is used.
+    :param str region: The location or Compute Engine region of the environment.
+    """
+    ...

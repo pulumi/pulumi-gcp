@@ -247,10 +247,11 @@ func (o IAMBindingConditionOutput) ToIAMBindingConditionPtrOutput() IAMBindingCo
 }
 
 func (o IAMBindingConditionOutput) ToIAMBindingConditionPtrOutputWithContext(ctx context.Context) IAMBindingConditionPtrOutput {
-	return o.ApplyT(func(v IAMBindingCondition) *IAMBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IAMBindingCondition) *IAMBindingCondition {
 		return &v
 	}).(IAMBindingConditionPtrOutput)
 }
+
 func (o IAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -278,7 +279,13 @@ func (o IAMBindingConditionPtrOutput) ToIAMBindingConditionPtrOutputWithContext(
 }
 
 func (o IAMBindingConditionPtrOutput) Elem() IAMBindingConditionOutput {
-	return o.ApplyT(func(v *IAMBindingCondition) IAMBindingCondition { return *v }).(IAMBindingConditionOutput)
+	return o.ApplyT(func(v *IAMBindingCondition) IAMBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret IAMBindingCondition
+		return ret
+	}).(IAMBindingConditionOutput)
 }
 
 func (o IAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -403,10 +410,11 @@ func (o IAMMemberConditionOutput) ToIAMMemberConditionPtrOutput() IAMMemberCondi
 }
 
 func (o IAMMemberConditionOutput) ToIAMMemberConditionPtrOutputWithContext(ctx context.Context) IAMMemberConditionPtrOutput {
-	return o.ApplyT(func(v IAMMemberCondition) *IAMMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IAMMemberCondition) *IAMMemberCondition {
 		return &v
 	}).(IAMMemberConditionPtrOutput)
 }
+
 func (o IAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -434,7 +442,13 @@ func (o IAMMemberConditionPtrOutput) ToIAMMemberConditionPtrOutputWithContext(ct
 }
 
 func (o IAMMemberConditionPtrOutput) Elem() IAMMemberConditionOutput {
-	return o.ApplyT(func(v *IAMMemberCondition) IAMMemberCondition { return *v }).(IAMMemberConditionOutput)
+	return o.ApplyT(func(v *IAMMemberCondition) IAMMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret IAMMemberCondition
+		return ret
+	}).(IAMMemberConditionOutput)
 }
 
 func (o IAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -678,7 +692,7 @@ func (o PolicyBooleanPolicyOutput) ToPolicyBooleanPolicyPtrOutput() PolicyBoolea
 }
 
 func (o PolicyBooleanPolicyOutput) ToPolicyBooleanPolicyPtrOutputWithContext(ctx context.Context) PolicyBooleanPolicyPtrOutput {
-	return o.ApplyT(func(v PolicyBooleanPolicy) *PolicyBooleanPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyBooleanPolicy) *PolicyBooleanPolicy {
 		return &v
 	}).(PolicyBooleanPolicyPtrOutput)
 }
@@ -703,7 +717,13 @@ func (o PolicyBooleanPolicyPtrOutput) ToPolicyBooleanPolicyPtrOutputWithContext(
 }
 
 func (o PolicyBooleanPolicyPtrOutput) Elem() PolicyBooleanPolicyOutput {
-	return o.ApplyT(func(v *PolicyBooleanPolicy) PolicyBooleanPolicy { return *v }).(PolicyBooleanPolicyOutput)
+	return o.ApplyT(func(v *PolicyBooleanPolicy) PolicyBooleanPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret PolicyBooleanPolicy
+		return ret
+	}).(PolicyBooleanPolicyOutput)
 }
 
 // If true, then the Policy is enforced. If false, then any configuration is acceptable.
@@ -821,7 +841,7 @@ func (o PolicyListPolicyOutput) ToPolicyListPolicyPtrOutput() PolicyListPolicyPt
 }
 
 func (o PolicyListPolicyOutput) ToPolicyListPolicyPtrOutputWithContext(ctx context.Context) PolicyListPolicyPtrOutput {
-	return o.ApplyT(func(v PolicyListPolicy) *PolicyListPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyListPolicy) *PolicyListPolicy {
 		return &v
 	}).(PolicyListPolicyPtrOutput)
 }
@@ -861,7 +881,13 @@ func (o PolicyListPolicyPtrOutput) ToPolicyListPolicyPtrOutputWithContext(ctx co
 }
 
 func (o PolicyListPolicyPtrOutput) Elem() PolicyListPolicyOutput {
-	return o.ApplyT(func(v *PolicyListPolicy) PolicyListPolicy { return *v }).(PolicyListPolicyOutput)
+	return o.ApplyT(func(v *PolicyListPolicy) PolicyListPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret PolicyListPolicy
+		return ret
+	}).(PolicyListPolicyOutput)
 }
 
 // or `deny` - (Optional) One or the other must be set.
@@ -1001,7 +1027,7 @@ func (o PolicyListPolicyAllowOutput) ToPolicyListPolicyAllowPtrOutput() PolicyLi
 }
 
 func (o PolicyListPolicyAllowOutput) ToPolicyListPolicyAllowPtrOutputWithContext(ctx context.Context) PolicyListPolicyAllowPtrOutput {
-	return o.ApplyT(func(v PolicyListPolicyAllow) *PolicyListPolicyAllow {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyListPolicyAllow) *PolicyListPolicyAllow {
 		return &v
 	}).(PolicyListPolicyAllowPtrOutput)
 }
@@ -1031,7 +1057,13 @@ func (o PolicyListPolicyAllowPtrOutput) ToPolicyListPolicyAllowPtrOutputWithCont
 }
 
 func (o PolicyListPolicyAllowPtrOutput) Elem() PolicyListPolicyAllowOutput {
-	return o.ApplyT(func(v *PolicyListPolicyAllow) PolicyListPolicyAllow { return *v }).(PolicyListPolicyAllowOutput)
+	return o.ApplyT(func(v *PolicyListPolicyAllow) PolicyListPolicyAllow {
+		if v != nil {
+			return *v
+		}
+		var ret PolicyListPolicyAllow
+		return ret
+	}).(PolicyListPolicyAllowOutput)
 }
 
 // The policy allows or denies all values.
@@ -1151,7 +1183,7 @@ func (o PolicyListPolicyDenyOutput) ToPolicyListPolicyDenyPtrOutput() PolicyList
 }
 
 func (o PolicyListPolicyDenyOutput) ToPolicyListPolicyDenyPtrOutputWithContext(ctx context.Context) PolicyListPolicyDenyPtrOutput {
-	return o.ApplyT(func(v PolicyListPolicyDeny) *PolicyListPolicyDeny {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyListPolicyDeny) *PolicyListPolicyDeny {
 		return &v
 	}).(PolicyListPolicyDenyPtrOutput)
 }
@@ -1181,7 +1213,13 @@ func (o PolicyListPolicyDenyPtrOutput) ToPolicyListPolicyDenyPtrOutputWithContex
 }
 
 func (o PolicyListPolicyDenyPtrOutput) Elem() PolicyListPolicyDenyOutput {
-	return o.ApplyT(func(v *PolicyListPolicyDeny) PolicyListPolicyDeny { return *v }).(PolicyListPolicyDenyOutput)
+	return o.ApplyT(func(v *PolicyListPolicyDeny) PolicyListPolicyDeny {
+		if v != nil {
+			return *v
+		}
+		var ret PolicyListPolicyDeny
+		return ret
+	}).(PolicyListPolicyDenyOutput)
 }
 
 // The policy allows or denies all values.
@@ -1297,7 +1335,7 @@ func (o PolicyRestorePolicyOutput) ToPolicyRestorePolicyPtrOutput() PolicyRestor
 }
 
 func (o PolicyRestorePolicyOutput) ToPolicyRestorePolicyPtrOutputWithContext(ctx context.Context) PolicyRestorePolicyPtrOutput {
-	return o.ApplyT(func(v PolicyRestorePolicy) *PolicyRestorePolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyRestorePolicy) *PolicyRestorePolicy {
 		return &v
 	}).(PolicyRestorePolicyPtrOutput)
 }
@@ -1322,7 +1360,13 @@ func (o PolicyRestorePolicyPtrOutput) ToPolicyRestorePolicyPtrOutputWithContext(
 }
 
 func (o PolicyRestorePolicyPtrOutput) Elem() PolicyRestorePolicyOutput {
-	return o.ApplyT(func(v *PolicyRestorePolicy) PolicyRestorePolicy { return *v }).(PolicyRestorePolicyOutput)
+	return o.ApplyT(func(v *PolicyRestorePolicy) PolicyRestorePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret PolicyRestorePolicy
+		return ret
+	}).(PolicyRestorePolicyOutput)
 }
 
 // May only be set to true. If set, then the default Policy is restored.
@@ -1790,7 +1834,7 @@ func (o GetIAMPolicyBindingConditionOutput) ToGetIAMPolicyBindingConditionPtrOut
 }
 
 func (o GetIAMPolicyBindingConditionOutput) ToGetIAMPolicyBindingConditionPtrOutputWithContext(ctx context.Context) GetIAMPolicyBindingConditionPtrOutput {
-	return o.ApplyT(func(v GetIAMPolicyBindingCondition) *GetIAMPolicyBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetIAMPolicyBindingCondition) *GetIAMPolicyBindingCondition {
 		return &v
 	}).(GetIAMPolicyBindingConditionPtrOutput)
 }
@@ -1825,7 +1869,13 @@ func (o GetIAMPolicyBindingConditionPtrOutput) ToGetIAMPolicyBindingConditionPtr
 }
 
 func (o GetIAMPolicyBindingConditionPtrOutput) Elem() GetIAMPolicyBindingConditionOutput {
-	return o.ApplyT(func(v *GetIAMPolicyBindingCondition) GetIAMPolicyBindingCondition { return *v }).(GetIAMPolicyBindingConditionOutput)
+	return o.ApplyT(func(v *GetIAMPolicyBindingCondition) GetIAMPolicyBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret GetIAMPolicyBindingCondition
+		return ret
+	}).(GetIAMPolicyBindingConditionOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.

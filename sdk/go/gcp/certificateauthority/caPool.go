@@ -397,7 +397,7 @@ type CaPoolArrayInput interface {
 type CaPoolArray []CaPoolInput
 
 func (CaPoolArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*CaPool)(nil))
+	return reflect.TypeOf((*[]*CaPool)(nil)).Elem()
 }
 
 func (i CaPoolArray) ToCaPoolArrayOutput() CaPoolArrayOutput {
@@ -422,7 +422,7 @@ type CaPoolMapInput interface {
 type CaPoolMap map[string]CaPoolInput
 
 func (CaPoolMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*CaPool)(nil))
+	return reflect.TypeOf((*map[string]*CaPool)(nil)).Elem()
 }
 
 func (i CaPoolMap) ToCaPoolMapOutput() CaPoolMapOutput {
@@ -433,9 +433,7 @@ func (i CaPoolMap) ToCaPoolMapOutputWithContext(ctx context.Context) CaPoolMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(CaPoolMapOutput)
 }
 
-type CaPoolOutput struct {
-	*pulumi.OutputState
-}
+type CaPoolOutput struct{ *pulumi.OutputState }
 
 func (CaPoolOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CaPool)(nil))
@@ -454,14 +452,12 @@ func (o CaPoolOutput) ToCaPoolPtrOutput() CaPoolPtrOutput {
 }
 
 func (o CaPoolOutput) ToCaPoolPtrOutputWithContext(ctx context.Context) CaPoolPtrOutput {
-	return o.ApplyT(func(v CaPool) *CaPool {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CaPool) *CaPool {
 		return &v
 	}).(CaPoolPtrOutput)
 }
 
-type CaPoolPtrOutput struct {
-	*pulumi.OutputState
-}
+type CaPoolPtrOutput struct{ *pulumi.OutputState }
 
 func (CaPoolPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**CaPool)(nil))
@@ -473,6 +469,16 @@ func (o CaPoolPtrOutput) ToCaPoolPtrOutput() CaPoolPtrOutput {
 
 func (o CaPoolPtrOutput) ToCaPoolPtrOutputWithContext(ctx context.Context) CaPoolPtrOutput {
 	return o
+}
+
+func (o CaPoolPtrOutput) Elem() CaPoolOutput {
+	return o.ApplyT(func(v *CaPool) CaPool {
+		if v != nil {
+			return *v
+		}
+		var ret CaPool
+		return ret
+	}).(CaPoolOutput)
 }
 
 type CaPoolArrayOutput struct{ *pulumi.OutputState }

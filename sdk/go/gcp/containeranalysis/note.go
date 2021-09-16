@@ -374,7 +374,7 @@ type NoteArrayInput interface {
 type NoteArray []NoteInput
 
 func (NoteArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Note)(nil))
+	return reflect.TypeOf((*[]*Note)(nil)).Elem()
 }
 
 func (i NoteArray) ToNoteArrayOutput() NoteArrayOutput {
@@ -399,7 +399,7 @@ type NoteMapInput interface {
 type NoteMap map[string]NoteInput
 
 func (NoteMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Note)(nil))
+	return reflect.TypeOf((*map[string]*Note)(nil)).Elem()
 }
 
 func (i NoteMap) ToNoteMapOutput() NoteMapOutput {
@@ -410,9 +410,7 @@ func (i NoteMap) ToNoteMapOutputWithContext(ctx context.Context) NoteMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NoteMapOutput)
 }
 
-type NoteOutput struct {
-	*pulumi.OutputState
-}
+type NoteOutput struct{ *pulumi.OutputState }
 
 func (NoteOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Note)(nil))
@@ -431,14 +429,12 @@ func (o NoteOutput) ToNotePtrOutput() NotePtrOutput {
 }
 
 func (o NoteOutput) ToNotePtrOutputWithContext(ctx context.Context) NotePtrOutput {
-	return o.ApplyT(func(v Note) *Note {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Note) *Note {
 		return &v
 	}).(NotePtrOutput)
 }
 
-type NotePtrOutput struct {
-	*pulumi.OutputState
-}
+type NotePtrOutput struct{ *pulumi.OutputState }
 
 func (NotePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Note)(nil))
@@ -450,6 +446,16 @@ func (o NotePtrOutput) ToNotePtrOutput() NotePtrOutput {
 
 func (o NotePtrOutput) ToNotePtrOutputWithContext(ctx context.Context) NotePtrOutput {
 	return o
+}
+
+func (o NotePtrOutput) Elem() NoteOutput {
+	return o.ApplyT(func(v *Note) Note {
+		if v != nil {
+			return *v
+		}
+		var ret Note
+		return ret
+	}).(NoteOutput)
 }
 
 type NoteArrayOutput struct{ *pulumi.OutputState }

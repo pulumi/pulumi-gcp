@@ -219,7 +219,7 @@ type ServiceIdentityArrayInput interface {
 type ServiceIdentityArray []ServiceIdentityInput
 
 func (ServiceIdentityArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ServiceIdentity)(nil))
+	return reflect.TypeOf((*[]*ServiceIdentity)(nil)).Elem()
 }
 
 func (i ServiceIdentityArray) ToServiceIdentityArrayOutput() ServiceIdentityArrayOutput {
@@ -244,7 +244,7 @@ type ServiceIdentityMapInput interface {
 type ServiceIdentityMap map[string]ServiceIdentityInput
 
 func (ServiceIdentityMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ServiceIdentity)(nil))
+	return reflect.TypeOf((*map[string]*ServiceIdentity)(nil)).Elem()
 }
 
 func (i ServiceIdentityMap) ToServiceIdentityMapOutput() ServiceIdentityMapOutput {
@@ -255,9 +255,7 @@ func (i ServiceIdentityMap) ToServiceIdentityMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIdentityMapOutput)
 }
 
-type ServiceIdentityOutput struct {
-	*pulumi.OutputState
-}
+type ServiceIdentityOutput struct{ *pulumi.OutputState }
 
 func (ServiceIdentityOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServiceIdentity)(nil))
@@ -276,14 +274,12 @@ func (o ServiceIdentityOutput) ToServiceIdentityPtrOutput() ServiceIdentityPtrOu
 }
 
 func (o ServiceIdentityOutput) ToServiceIdentityPtrOutputWithContext(ctx context.Context) ServiceIdentityPtrOutput {
-	return o.ApplyT(func(v ServiceIdentity) *ServiceIdentity {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceIdentity) *ServiceIdentity {
 		return &v
 	}).(ServiceIdentityPtrOutput)
 }
 
-type ServiceIdentityPtrOutput struct {
-	*pulumi.OutputState
-}
+type ServiceIdentityPtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceIdentityPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ServiceIdentity)(nil))
@@ -295,6 +291,16 @@ func (o ServiceIdentityPtrOutput) ToServiceIdentityPtrOutput() ServiceIdentityPt
 
 func (o ServiceIdentityPtrOutput) ToServiceIdentityPtrOutputWithContext(ctx context.Context) ServiceIdentityPtrOutput {
 	return o
+}
+
+func (o ServiceIdentityPtrOutput) Elem() ServiceIdentityOutput {
+	return o.ApplyT(func(v *ServiceIdentity) ServiceIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceIdentity
+		return ret
+	}).(ServiceIdentityOutput)
 }
 
 type ServiceIdentityArrayOutput struct{ *pulumi.OutputState }

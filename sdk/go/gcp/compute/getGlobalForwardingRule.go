@@ -4,6 +4,9 @@
 package compute
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,4 +70,108 @@ type LookupGlobalForwardingRuleResult struct {
 	Project             *string                                 `pulumi:"project"`
 	SelfLink            string                                  `pulumi:"selfLink"`
 	Target              string                                  `pulumi:"target"`
+}
+
+func LookupGlobalForwardingRuleOutput(ctx *pulumi.Context, args LookupGlobalForwardingRuleOutputArgs, opts ...pulumi.InvokeOption) LookupGlobalForwardingRuleResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupGlobalForwardingRuleResult, error) {
+			args := v.(LookupGlobalForwardingRuleArgs)
+			r, err := LookupGlobalForwardingRule(ctx, &args, opts...)
+			return *r, err
+		}).(LookupGlobalForwardingRuleResultOutput)
+}
+
+// A collection of arguments for invoking getGlobalForwardingRule.
+type LookupGlobalForwardingRuleOutputArgs struct {
+	// The name of the global forwarding rule.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The project in which the resource belongs. If it
+	// is not provided, the provider project is used.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupGlobalForwardingRuleOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupGlobalForwardingRuleArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getGlobalForwardingRule.
+type LookupGlobalForwardingRuleResultOutput struct{ *pulumi.OutputState }
+
+func (LookupGlobalForwardingRuleResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupGlobalForwardingRuleResult)(nil)).Elem()
+}
+
+func (o LookupGlobalForwardingRuleResultOutput) ToLookupGlobalForwardingRuleResultOutput() LookupGlobalForwardingRuleResultOutput {
+	return o
+}
+
+func (o LookupGlobalForwardingRuleResultOutput) ToLookupGlobalForwardingRuleResultOutputWithContext(ctx context.Context) LookupGlobalForwardingRuleResultOutput {
+	return o
+}
+
+func (o LookupGlobalForwardingRuleResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGlobalForwardingRuleResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupGlobalForwardingRuleResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGlobalForwardingRuleResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupGlobalForwardingRuleResultOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGlobalForwardingRuleResult) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+func (o LookupGlobalForwardingRuleResultOutput) IpProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGlobalForwardingRuleResult) string { return v.IpProtocol }).(pulumi.StringOutput)
+}
+
+func (o LookupGlobalForwardingRuleResultOutput) IpVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGlobalForwardingRuleResult) string { return v.IpVersion }).(pulumi.StringOutput)
+}
+
+func (o LookupGlobalForwardingRuleResultOutput) LabelFingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGlobalForwardingRuleResult) string { return v.LabelFingerprint }).(pulumi.StringOutput)
+}
+
+func (o LookupGlobalForwardingRuleResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupGlobalForwardingRuleResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupGlobalForwardingRuleResultOutput) LoadBalancingScheme() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGlobalForwardingRuleResult) string { return v.LoadBalancingScheme }).(pulumi.StringOutput)
+}
+
+func (o LookupGlobalForwardingRuleResultOutput) MetadataFilters() GetGlobalForwardingRuleMetadataFilterArrayOutput {
+	return o.ApplyT(func(v LookupGlobalForwardingRuleResult) []GetGlobalForwardingRuleMetadataFilter {
+		return v.MetadataFilters
+	}).(GetGlobalForwardingRuleMetadataFilterArrayOutput)
+}
+
+func (o LookupGlobalForwardingRuleResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGlobalForwardingRuleResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupGlobalForwardingRuleResultOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGlobalForwardingRuleResult) string { return v.Network }).(pulumi.StringOutput)
+}
+
+func (o LookupGlobalForwardingRuleResultOutput) PortRange() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGlobalForwardingRuleResult) string { return v.PortRange }).(pulumi.StringOutput)
+}
+
+func (o LookupGlobalForwardingRuleResultOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupGlobalForwardingRuleResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupGlobalForwardingRuleResultOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGlobalForwardingRuleResult) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+func (o LookupGlobalForwardingRuleResultOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGlobalForwardingRuleResult) string { return v.Target }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupGlobalForwardingRuleResultOutput{})
 }

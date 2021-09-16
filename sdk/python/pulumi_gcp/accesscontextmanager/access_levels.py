@@ -133,12 +133,12 @@ class AccessLevels(pulumi.CustomResource):
                 gcp.accesscontextmanager.AccessLevelsAccessLevelArgs(
                     basic=gcp.accesscontextmanager.AccessLevelsAccessLevelBasicArgs(
                         conditions=[gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionArgs(
-                            device_policy={
-                                "osConstraints": [{
-                                    "osType": "DESKTOP_CHROME_OS",
-                                }],
-                                "requireScreenLock": True,
-                            },
+                            device_policy=gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyArgs(
+                                os_constraints=[gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs(
+                                    os_type="DESKTOP_CHROME_OS",
+                                )],
+                                require_screen_lock=True,
+                            ),
                             regions=[
                                 "CH",
                                 "IT",
@@ -152,12 +152,12 @@ class AccessLevels(pulumi.CustomResource):
                 gcp.accesscontextmanager.AccessLevelsAccessLevelArgs(
                     basic=gcp.accesscontextmanager.AccessLevelsAccessLevelBasicArgs(
                         conditions=[gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionArgs(
-                            device_policy={
-                                "osConstraints": [{
-                                    "osType": "DESKTOP_MAC",
-                                }],
-                                "requireScreenLock": True,
-                            },
+                            device_policy=gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyArgs(
+                                os_constraints=[gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs(
+                                    os_type="DESKTOP_MAC",
+                                )],
+                                require_screen_lock=True,
+                            ),
                             regions=[
                                 "CH",
                                 "IT",
@@ -223,12 +223,12 @@ class AccessLevels(pulumi.CustomResource):
                 gcp.accesscontextmanager.AccessLevelsAccessLevelArgs(
                     basic=gcp.accesscontextmanager.AccessLevelsAccessLevelBasicArgs(
                         conditions=[gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionArgs(
-                            device_policy={
-                                "osConstraints": [{
-                                    "osType": "DESKTOP_CHROME_OS",
-                                }],
-                                "requireScreenLock": True,
-                            },
+                            device_policy=gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyArgs(
+                                os_constraints=[gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs(
+                                    os_type="DESKTOP_CHROME_OS",
+                                )],
+                                require_screen_lock=True,
+                            ),
                             regions=[
                                 "CH",
                                 "IT",
@@ -242,12 +242,12 @@ class AccessLevels(pulumi.CustomResource):
                 gcp.accesscontextmanager.AccessLevelsAccessLevelArgs(
                     basic=gcp.accesscontextmanager.AccessLevelsAccessLevelBasicArgs(
                         conditions=[gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionArgs(
-                            device_policy={
-                                "osConstraints": [{
-                                    "osType": "DESKTOP_MAC",
-                                }],
-                                "requireScreenLock": True,
-                            },
+                            device_policy=gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyArgs(
+                                os_constraints=[gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs(
+                                    os_type="DESKTOP_MAC",
+                                )],
+                                require_screen_lock=True,
+                            ),
                             regions=[
                                 "CH",
                                 "IT",

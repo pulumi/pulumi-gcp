@@ -13,6 +13,7 @@ __all__ = [
     'GetHcVpnGatewayResult',
     'AwaitableGetHcVpnGatewayResult',
     'get_hc_vpn_gateway',
+    'get_hc_vpn_gateway_output',
 ]
 
 @pulumi.output_type
@@ -148,3 +149,30 @@ def get_hc_vpn_gateway(name: Optional[str] = None,
         region=__ret__.region,
         self_link=__ret__.self_link,
         vpn_interfaces=__ret__.vpn_interfaces)
+
+
+@_utilities.lift_output_func(get_hc_vpn_gateway)
+def get_hc_vpn_gateway_output(name: Optional[pulumi.Input[str]] = None,
+                              project: Optional[pulumi.Input[Optional[str]]] = None,
+                              region: Optional[pulumi.Input[Optional[str]]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHcVpnGatewayResult]:
+    """
+    Get a HA VPN Gateway within GCE from its name.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    gateway = gcp.compute.get_hc_vpn_gateway(name="foobar")
+    ```
+
+
+    :param str name: The name of the forwarding rule.
+    :param str project: The project in which the resource belongs. If it
+           is not provided, the provider project is used.
+    :param str region: The region in which the resource belongs. If it
+           is not provided, the project region is used.
+    """
+    ...

@@ -206,7 +206,7 @@ type EngineSplitTrafficArrayInput interface {
 type EngineSplitTrafficArray []EngineSplitTrafficInput
 
 func (EngineSplitTrafficArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*EngineSplitTraffic)(nil))
+	return reflect.TypeOf((*[]*EngineSplitTraffic)(nil)).Elem()
 }
 
 func (i EngineSplitTrafficArray) ToEngineSplitTrafficArrayOutput() EngineSplitTrafficArrayOutput {
@@ -231,7 +231,7 @@ type EngineSplitTrafficMapInput interface {
 type EngineSplitTrafficMap map[string]EngineSplitTrafficInput
 
 func (EngineSplitTrafficMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*EngineSplitTraffic)(nil))
+	return reflect.TypeOf((*map[string]*EngineSplitTraffic)(nil)).Elem()
 }
 
 func (i EngineSplitTrafficMap) ToEngineSplitTrafficMapOutput() EngineSplitTrafficMapOutput {
@@ -242,9 +242,7 @@ func (i EngineSplitTrafficMap) ToEngineSplitTrafficMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(EngineSplitTrafficMapOutput)
 }
 
-type EngineSplitTrafficOutput struct {
-	*pulumi.OutputState
-}
+type EngineSplitTrafficOutput struct{ *pulumi.OutputState }
 
 func (EngineSplitTrafficOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EngineSplitTraffic)(nil))
@@ -263,14 +261,12 @@ func (o EngineSplitTrafficOutput) ToEngineSplitTrafficPtrOutput() EngineSplitTra
 }
 
 func (o EngineSplitTrafficOutput) ToEngineSplitTrafficPtrOutputWithContext(ctx context.Context) EngineSplitTrafficPtrOutput {
-	return o.ApplyT(func(v EngineSplitTraffic) *EngineSplitTraffic {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EngineSplitTraffic) *EngineSplitTraffic {
 		return &v
 	}).(EngineSplitTrafficPtrOutput)
 }
 
-type EngineSplitTrafficPtrOutput struct {
-	*pulumi.OutputState
-}
+type EngineSplitTrafficPtrOutput struct{ *pulumi.OutputState }
 
 func (EngineSplitTrafficPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**EngineSplitTraffic)(nil))
@@ -282,6 +278,16 @@ func (o EngineSplitTrafficPtrOutput) ToEngineSplitTrafficPtrOutput() EngineSplit
 
 func (o EngineSplitTrafficPtrOutput) ToEngineSplitTrafficPtrOutputWithContext(ctx context.Context) EngineSplitTrafficPtrOutput {
 	return o
+}
+
+func (o EngineSplitTrafficPtrOutput) Elem() EngineSplitTrafficOutput {
+	return o.ApplyT(func(v *EngineSplitTraffic) EngineSplitTraffic {
+		if v != nil {
+			return *v
+		}
+		var ret EngineSplitTraffic
+		return ret
+	}).(EngineSplitTrafficOutput)
 }
 
 type EngineSplitTrafficArrayOutput struct{ *pulumi.OutputState }

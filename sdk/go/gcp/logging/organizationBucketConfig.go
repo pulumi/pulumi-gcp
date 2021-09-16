@@ -245,7 +245,7 @@ type OrganizationBucketConfigArrayInput interface {
 type OrganizationBucketConfigArray []OrganizationBucketConfigInput
 
 func (OrganizationBucketConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*OrganizationBucketConfig)(nil))
+	return reflect.TypeOf((*[]*OrganizationBucketConfig)(nil)).Elem()
 }
 
 func (i OrganizationBucketConfigArray) ToOrganizationBucketConfigArrayOutput() OrganizationBucketConfigArrayOutput {
@@ -270,7 +270,7 @@ type OrganizationBucketConfigMapInput interface {
 type OrganizationBucketConfigMap map[string]OrganizationBucketConfigInput
 
 func (OrganizationBucketConfigMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*OrganizationBucketConfig)(nil))
+	return reflect.TypeOf((*map[string]*OrganizationBucketConfig)(nil)).Elem()
 }
 
 func (i OrganizationBucketConfigMap) ToOrganizationBucketConfigMapOutput() OrganizationBucketConfigMapOutput {
@@ -281,9 +281,7 @@ func (i OrganizationBucketConfigMap) ToOrganizationBucketConfigMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationBucketConfigMapOutput)
 }
 
-type OrganizationBucketConfigOutput struct {
-	*pulumi.OutputState
-}
+type OrganizationBucketConfigOutput struct{ *pulumi.OutputState }
 
 func (OrganizationBucketConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OrganizationBucketConfig)(nil))
@@ -302,14 +300,12 @@ func (o OrganizationBucketConfigOutput) ToOrganizationBucketConfigPtrOutput() Or
 }
 
 func (o OrganizationBucketConfigOutput) ToOrganizationBucketConfigPtrOutputWithContext(ctx context.Context) OrganizationBucketConfigPtrOutput {
-	return o.ApplyT(func(v OrganizationBucketConfig) *OrganizationBucketConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationBucketConfig) *OrganizationBucketConfig {
 		return &v
 	}).(OrganizationBucketConfigPtrOutput)
 }
 
-type OrganizationBucketConfigPtrOutput struct {
-	*pulumi.OutputState
-}
+type OrganizationBucketConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (OrganizationBucketConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**OrganizationBucketConfig)(nil))
@@ -321,6 +317,16 @@ func (o OrganizationBucketConfigPtrOutput) ToOrganizationBucketConfigPtrOutput()
 
 func (o OrganizationBucketConfigPtrOutput) ToOrganizationBucketConfigPtrOutputWithContext(ctx context.Context) OrganizationBucketConfigPtrOutput {
 	return o
+}
+
+func (o OrganizationBucketConfigPtrOutput) Elem() OrganizationBucketConfigOutput {
+	return o.ApplyT(func(v *OrganizationBucketConfig) OrganizationBucketConfig {
+		if v != nil {
+			return *v
+		}
+		var ret OrganizationBucketConfig
+		return ret
+	}).(OrganizationBucketConfigOutput)
 }
 
 type OrganizationBucketConfigArrayOutput struct{ *pulumi.OutputState }

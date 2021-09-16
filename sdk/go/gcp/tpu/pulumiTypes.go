@@ -203,7 +203,7 @@ func (o NodeSchedulingConfigOutput) ToNodeSchedulingConfigPtrOutput() NodeSchedu
 }
 
 func (o NodeSchedulingConfigOutput) ToNodeSchedulingConfigPtrOutputWithContext(ctx context.Context) NodeSchedulingConfigPtrOutput {
-	return o.ApplyT(func(v NodeSchedulingConfig) *NodeSchedulingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeSchedulingConfig) *NodeSchedulingConfig {
 		return &v
 	}).(NodeSchedulingConfigPtrOutput)
 }
@@ -228,7 +228,13 @@ func (o NodeSchedulingConfigPtrOutput) ToNodeSchedulingConfigPtrOutputWithContex
 }
 
 func (o NodeSchedulingConfigPtrOutput) Elem() NodeSchedulingConfigOutput {
-	return o.ApplyT(func(v *NodeSchedulingConfig) NodeSchedulingConfig { return *v }).(NodeSchedulingConfigOutput)
+	return o.ApplyT(func(v *NodeSchedulingConfig) NodeSchedulingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NodeSchedulingConfig
+		return ret
+	}).(NodeSchedulingConfigOutput)
 }
 
 // Defines whether the TPU instance is preemptible.

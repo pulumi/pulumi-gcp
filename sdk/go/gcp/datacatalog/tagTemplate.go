@@ -291,7 +291,7 @@ type TagTemplateArrayInput interface {
 type TagTemplateArray []TagTemplateInput
 
 func (TagTemplateArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TagTemplate)(nil))
+	return reflect.TypeOf((*[]*TagTemplate)(nil)).Elem()
 }
 
 func (i TagTemplateArray) ToTagTemplateArrayOutput() TagTemplateArrayOutput {
@@ -316,7 +316,7 @@ type TagTemplateMapInput interface {
 type TagTemplateMap map[string]TagTemplateInput
 
 func (TagTemplateMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TagTemplate)(nil))
+	return reflect.TypeOf((*map[string]*TagTemplate)(nil)).Elem()
 }
 
 func (i TagTemplateMap) ToTagTemplateMapOutput() TagTemplateMapOutput {
@@ -327,9 +327,7 @@ func (i TagTemplateMap) ToTagTemplateMapOutputWithContext(ctx context.Context) T
 	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateMapOutput)
 }
 
-type TagTemplateOutput struct {
-	*pulumi.OutputState
-}
+type TagTemplateOutput struct{ *pulumi.OutputState }
 
 func (TagTemplateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TagTemplate)(nil))
@@ -348,14 +346,12 @@ func (o TagTemplateOutput) ToTagTemplatePtrOutput() TagTemplatePtrOutput {
 }
 
 func (o TagTemplateOutput) ToTagTemplatePtrOutputWithContext(ctx context.Context) TagTemplatePtrOutput {
-	return o.ApplyT(func(v TagTemplate) *TagTemplate {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TagTemplate) *TagTemplate {
 		return &v
 	}).(TagTemplatePtrOutput)
 }
 
-type TagTemplatePtrOutput struct {
-	*pulumi.OutputState
-}
+type TagTemplatePtrOutput struct{ *pulumi.OutputState }
 
 func (TagTemplatePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TagTemplate)(nil))
@@ -367,6 +363,16 @@ func (o TagTemplatePtrOutput) ToTagTemplatePtrOutput() TagTemplatePtrOutput {
 
 func (o TagTemplatePtrOutput) ToTagTemplatePtrOutputWithContext(ctx context.Context) TagTemplatePtrOutput {
 	return o
+}
+
+func (o TagTemplatePtrOutput) Elem() TagTemplateOutput {
+	return o.ApplyT(func(v *TagTemplate) TagTemplate {
+		if v != nil {
+			return *v
+		}
+		var ret TagTemplate
+		return ret
+	}).(TagTemplateOutput)
 }
 
 type TagTemplateArrayOutput struct{ *pulumi.OutputState }

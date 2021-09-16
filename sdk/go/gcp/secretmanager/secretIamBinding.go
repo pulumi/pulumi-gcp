@@ -318,7 +318,7 @@ type SecretIamBindingArrayInput interface {
 type SecretIamBindingArray []SecretIamBindingInput
 
 func (SecretIamBindingArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*SecretIamBinding)(nil))
+	return reflect.TypeOf((*[]*SecretIamBinding)(nil)).Elem()
 }
 
 func (i SecretIamBindingArray) ToSecretIamBindingArrayOutput() SecretIamBindingArrayOutput {
@@ -343,7 +343,7 @@ type SecretIamBindingMapInput interface {
 type SecretIamBindingMap map[string]SecretIamBindingInput
 
 func (SecretIamBindingMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*SecretIamBinding)(nil))
+	return reflect.TypeOf((*map[string]*SecretIamBinding)(nil)).Elem()
 }
 
 func (i SecretIamBindingMap) ToSecretIamBindingMapOutput() SecretIamBindingMapOutput {
@@ -354,9 +354,7 @@ func (i SecretIamBindingMap) ToSecretIamBindingMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(SecretIamBindingMapOutput)
 }
 
-type SecretIamBindingOutput struct {
-	*pulumi.OutputState
-}
+type SecretIamBindingOutput struct{ *pulumi.OutputState }
 
 func (SecretIamBindingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SecretIamBinding)(nil))
@@ -375,14 +373,12 @@ func (o SecretIamBindingOutput) ToSecretIamBindingPtrOutput() SecretIamBindingPt
 }
 
 func (o SecretIamBindingOutput) ToSecretIamBindingPtrOutputWithContext(ctx context.Context) SecretIamBindingPtrOutput {
-	return o.ApplyT(func(v SecretIamBinding) *SecretIamBinding {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretIamBinding) *SecretIamBinding {
 		return &v
 	}).(SecretIamBindingPtrOutput)
 }
 
-type SecretIamBindingPtrOutput struct {
-	*pulumi.OutputState
-}
+type SecretIamBindingPtrOutput struct{ *pulumi.OutputState }
 
 func (SecretIamBindingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SecretIamBinding)(nil))
@@ -394,6 +390,16 @@ func (o SecretIamBindingPtrOutput) ToSecretIamBindingPtrOutput() SecretIamBindin
 
 func (o SecretIamBindingPtrOutput) ToSecretIamBindingPtrOutputWithContext(ctx context.Context) SecretIamBindingPtrOutput {
 	return o
+}
+
+func (o SecretIamBindingPtrOutput) Elem() SecretIamBindingOutput {
+	return o.ApplyT(func(v *SecretIamBinding) SecretIamBinding {
+		if v != nil {
+			return *v
+		}
+		var ret SecretIamBinding
+		return ret
+	}).(SecretIamBindingOutput)
 }
 
 type SecretIamBindingArrayOutput struct{ *pulumi.OutputState }

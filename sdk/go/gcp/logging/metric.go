@@ -445,7 +445,7 @@ type MetricArrayInput interface {
 type MetricArray []MetricInput
 
 func (MetricArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Metric)(nil))
+	return reflect.TypeOf((*[]*Metric)(nil)).Elem()
 }
 
 func (i MetricArray) ToMetricArrayOutput() MetricArrayOutput {
@@ -470,7 +470,7 @@ type MetricMapInput interface {
 type MetricMap map[string]MetricInput
 
 func (MetricMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Metric)(nil))
+	return reflect.TypeOf((*map[string]*Metric)(nil)).Elem()
 }
 
 func (i MetricMap) ToMetricMapOutput() MetricMapOutput {
@@ -481,9 +481,7 @@ func (i MetricMap) ToMetricMapOutputWithContext(ctx context.Context) MetricMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(MetricMapOutput)
 }
 
-type MetricOutput struct {
-	*pulumi.OutputState
-}
+type MetricOutput struct{ *pulumi.OutputState }
 
 func (MetricOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Metric)(nil))
@@ -502,14 +500,12 @@ func (o MetricOutput) ToMetricPtrOutput() MetricPtrOutput {
 }
 
 func (o MetricOutput) ToMetricPtrOutputWithContext(ctx context.Context) MetricPtrOutput {
-	return o.ApplyT(func(v Metric) *Metric {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Metric) *Metric {
 		return &v
 	}).(MetricPtrOutput)
 }
 
-type MetricPtrOutput struct {
-	*pulumi.OutputState
-}
+type MetricPtrOutput struct{ *pulumi.OutputState }
 
 func (MetricPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Metric)(nil))
@@ -521,6 +517,16 @@ func (o MetricPtrOutput) ToMetricPtrOutput() MetricPtrOutput {
 
 func (o MetricPtrOutput) ToMetricPtrOutputWithContext(ctx context.Context) MetricPtrOutput {
 	return o
+}
+
+func (o MetricPtrOutput) Elem() MetricOutput {
+	return o.ApplyT(func(v *Metric) Metric {
+		if v != nil {
+			return *v
+		}
+		var ret Metric
+		return ret
+	}).(MetricOutput)
 }
 
 type MetricArrayOutput struct{ *pulumi.OutputState }

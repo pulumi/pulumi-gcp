@@ -279,7 +279,7 @@ type CxEnvironmentArrayInput interface {
 type CxEnvironmentArray []CxEnvironmentInput
 
 func (CxEnvironmentArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*CxEnvironment)(nil))
+	return reflect.TypeOf((*[]*CxEnvironment)(nil)).Elem()
 }
 
 func (i CxEnvironmentArray) ToCxEnvironmentArrayOutput() CxEnvironmentArrayOutput {
@@ -304,7 +304,7 @@ type CxEnvironmentMapInput interface {
 type CxEnvironmentMap map[string]CxEnvironmentInput
 
 func (CxEnvironmentMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*CxEnvironment)(nil))
+	return reflect.TypeOf((*map[string]*CxEnvironment)(nil)).Elem()
 }
 
 func (i CxEnvironmentMap) ToCxEnvironmentMapOutput() CxEnvironmentMapOutput {
@@ -315,9 +315,7 @@ func (i CxEnvironmentMap) ToCxEnvironmentMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(CxEnvironmentMapOutput)
 }
 
-type CxEnvironmentOutput struct {
-	*pulumi.OutputState
-}
+type CxEnvironmentOutput struct{ *pulumi.OutputState }
 
 func (CxEnvironmentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CxEnvironment)(nil))
@@ -336,14 +334,12 @@ func (o CxEnvironmentOutput) ToCxEnvironmentPtrOutput() CxEnvironmentPtrOutput {
 }
 
 func (o CxEnvironmentOutput) ToCxEnvironmentPtrOutputWithContext(ctx context.Context) CxEnvironmentPtrOutput {
-	return o.ApplyT(func(v CxEnvironment) *CxEnvironment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxEnvironment) *CxEnvironment {
 		return &v
 	}).(CxEnvironmentPtrOutput)
 }
 
-type CxEnvironmentPtrOutput struct {
-	*pulumi.OutputState
-}
+type CxEnvironmentPtrOutput struct{ *pulumi.OutputState }
 
 func (CxEnvironmentPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**CxEnvironment)(nil))
@@ -355,6 +351,16 @@ func (o CxEnvironmentPtrOutput) ToCxEnvironmentPtrOutput() CxEnvironmentPtrOutpu
 
 func (o CxEnvironmentPtrOutput) ToCxEnvironmentPtrOutputWithContext(ctx context.Context) CxEnvironmentPtrOutput {
 	return o
+}
+
+func (o CxEnvironmentPtrOutput) Elem() CxEnvironmentOutput {
+	return o.ApplyT(func(v *CxEnvironment) CxEnvironment {
+		if v != nil {
+			return *v
+		}
+		var ret CxEnvironment
+		return ret
+	}).(CxEnvironmentOutput)
 }
 
 type CxEnvironmentArrayOutput struct{ *pulumi.OutputState }

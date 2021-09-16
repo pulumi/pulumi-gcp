@@ -340,7 +340,7 @@ type CaPoolIamBindingArrayInput interface {
 type CaPoolIamBindingArray []CaPoolIamBindingInput
 
 func (CaPoolIamBindingArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*CaPoolIamBinding)(nil))
+	return reflect.TypeOf((*[]*CaPoolIamBinding)(nil)).Elem()
 }
 
 func (i CaPoolIamBindingArray) ToCaPoolIamBindingArrayOutput() CaPoolIamBindingArrayOutput {
@@ -365,7 +365,7 @@ type CaPoolIamBindingMapInput interface {
 type CaPoolIamBindingMap map[string]CaPoolIamBindingInput
 
 func (CaPoolIamBindingMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*CaPoolIamBinding)(nil))
+	return reflect.TypeOf((*map[string]*CaPoolIamBinding)(nil)).Elem()
 }
 
 func (i CaPoolIamBindingMap) ToCaPoolIamBindingMapOutput() CaPoolIamBindingMapOutput {
@@ -376,9 +376,7 @@ func (i CaPoolIamBindingMap) ToCaPoolIamBindingMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(CaPoolIamBindingMapOutput)
 }
 
-type CaPoolIamBindingOutput struct {
-	*pulumi.OutputState
-}
+type CaPoolIamBindingOutput struct{ *pulumi.OutputState }
 
 func (CaPoolIamBindingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CaPoolIamBinding)(nil))
@@ -397,14 +395,12 @@ func (o CaPoolIamBindingOutput) ToCaPoolIamBindingPtrOutput() CaPoolIamBindingPt
 }
 
 func (o CaPoolIamBindingOutput) ToCaPoolIamBindingPtrOutputWithContext(ctx context.Context) CaPoolIamBindingPtrOutput {
-	return o.ApplyT(func(v CaPoolIamBinding) *CaPoolIamBinding {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CaPoolIamBinding) *CaPoolIamBinding {
 		return &v
 	}).(CaPoolIamBindingPtrOutput)
 }
 
-type CaPoolIamBindingPtrOutput struct {
-	*pulumi.OutputState
-}
+type CaPoolIamBindingPtrOutput struct{ *pulumi.OutputState }
 
 func (CaPoolIamBindingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**CaPoolIamBinding)(nil))
@@ -416,6 +412,16 @@ func (o CaPoolIamBindingPtrOutput) ToCaPoolIamBindingPtrOutput() CaPoolIamBindin
 
 func (o CaPoolIamBindingPtrOutput) ToCaPoolIamBindingPtrOutputWithContext(ctx context.Context) CaPoolIamBindingPtrOutput {
 	return o
+}
+
+func (o CaPoolIamBindingPtrOutput) Elem() CaPoolIamBindingOutput {
+	return o.ApplyT(func(v *CaPoolIamBinding) CaPoolIamBinding {
+		if v != nil {
+			return *v
+		}
+		var ret CaPoolIamBinding
+		return ret
+	}).(CaPoolIamBindingOutput)
 }
 
 type CaPoolIamBindingArrayOutput struct{ *pulumi.OutputState }

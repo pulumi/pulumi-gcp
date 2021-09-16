@@ -362,7 +362,7 @@ type BillingAccountSinkArrayInput interface {
 type BillingAccountSinkArray []BillingAccountSinkInput
 
 func (BillingAccountSinkArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*BillingAccountSink)(nil))
+	return reflect.TypeOf((*[]*BillingAccountSink)(nil)).Elem()
 }
 
 func (i BillingAccountSinkArray) ToBillingAccountSinkArrayOutput() BillingAccountSinkArrayOutput {
@@ -387,7 +387,7 @@ type BillingAccountSinkMapInput interface {
 type BillingAccountSinkMap map[string]BillingAccountSinkInput
 
 func (BillingAccountSinkMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*BillingAccountSink)(nil))
+	return reflect.TypeOf((*map[string]*BillingAccountSink)(nil)).Elem()
 }
 
 func (i BillingAccountSinkMap) ToBillingAccountSinkMapOutput() BillingAccountSinkMapOutput {
@@ -398,9 +398,7 @@ func (i BillingAccountSinkMap) ToBillingAccountSinkMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountSinkMapOutput)
 }
 
-type BillingAccountSinkOutput struct {
-	*pulumi.OutputState
-}
+type BillingAccountSinkOutput struct{ *pulumi.OutputState }
 
 func (BillingAccountSinkOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BillingAccountSink)(nil))
@@ -419,14 +417,12 @@ func (o BillingAccountSinkOutput) ToBillingAccountSinkPtrOutput() BillingAccount
 }
 
 func (o BillingAccountSinkOutput) ToBillingAccountSinkPtrOutputWithContext(ctx context.Context) BillingAccountSinkPtrOutput {
-	return o.ApplyT(func(v BillingAccountSink) *BillingAccountSink {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BillingAccountSink) *BillingAccountSink {
 		return &v
 	}).(BillingAccountSinkPtrOutput)
 }
 
-type BillingAccountSinkPtrOutput struct {
-	*pulumi.OutputState
-}
+type BillingAccountSinkPtrOutput struct{ *pulumi.OutputState }
 
 func (BillingAccountSinkPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**BillingAccountSink)(nil))
@@ -438,6 +434,16 @@ func (o BillingAccountSinkPtrOutput) ToBillingAccountSinkPtrOutput() BillingAcco
 
 func (o BillingAccountSinkPtrOutput) ToBillingAccountSinkPtrOutputWithContext(ctx context.Context) BillingAccountSinkPtrOutput {
 	return o
+}
+
+func (o BillingAccountSinkPtrOutput) Elem() BillingAccountSinkOutput {
+	return o.ApplyT(func(v *BillingAccountSink) BillingAccountSink {
+		if v != nil {
+			return *v
+		}
+		var ret BillingAccountSink
+		return ret
+	}).(BillingAccountSinkOutput)
 }
 
 type BillingAccountSinkArrayOutput struct{ *pulumi.OutputState }

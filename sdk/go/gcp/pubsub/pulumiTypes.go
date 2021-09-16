@@ -105,7 +105,7 @@ func (o LiteSubscriptionDeliveryConfigOutput) ToLiteSubscriptionDeliveryConfigPt
 }
 
 func (o LiteSubscriptionDeliveryConfigOutput) ToLiteSubscriptionDeliveryConfigPtrOutputWithContext(ctx context.Context) LiteSubscriptionDeliveryConfigPtrOutput {
-	return o.ApplyT(func(v LiteSubscriptionDeliveryConfig) *LiteSubscriptionDeliveryConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LiteSubscriptionDeliveryConfig) *LiteSubscriptionDeliveryConfig {
 		return &v
 	}).(LiteSubscriptionDeliveryConfigPtrOutput)
 }
@@ -131,7 +131,13 @@ func (o LiteSubscriptionDeliveryConfigPtrOutput) ToLiteSubscriptionDeliveryConfi
 }
 
 func (o LiteSubscriptionDeliveryConfigPtrOutput) Elem() LiteSubscriptionDeliveryConfigOutput {
-	return o.ApplyT(func(v *LiteSubscriptionDeliveryConfig) LiteSubscriptionDeliveryConfig { return *v }).(LiteSubscriptionDeliveryConfigOutput)
+	return o.ApplyT(func(v *LiteSubscriptionDeliveryConfig) LiteSubscriptionDeliveryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret LiteSubscriptionDeliveryConfig
+		return ret
+	}).(LiteSubscriptionDeliveryConfigOutput)
 }
 
 // When this subscription should send messages to subscribers relative to messages persistence in storage.
@@ -244,7 +250,7 @@ func (o LiteTopicPartitionConfigOutput) ToLiteTopicPartitionConfigPtrOutput() Li
 }
 
 func (o LiteTopicPartitionConfigOutput) ToLiteTopicPartitionConfigPtrOutputWithContext(ctx context.Context) LiteTopicPartitionConfigPtrOutput {
-	return o.ApplyT(func(v LiteTopicPartitionConfig) *LiteTopicPartitionConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LiteTopicPartitionConfig) *LiteTopicPartitionConfig {
 		return &v
 	}).(LiteTopicPartitionConfigPtrOutput)
 }
@@ -275,7 +281,13 @@ func (o LiteTopicPartitionConfigPtrOutput) ToLiteTopicPartitionConfigPtrOutputWi
 }
 
 func (o LiteTopicPartitionConfigPtrOutput) Elem() LiteTopicPartitionConfigOutput {
-	return o.ApplyT(func(v *LiteTopicPartitionConfig) LiteTopicPartitionConfig { return *v }).(LiteTopicPartitionConfigOutput)
+	return o.ApplyT(func(v *LiteTopicPartitionConfig) LiteTopicPartitionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret LiteTopicPartitionConfig
+		return ret
+	}).(LiteTopicPartitionConfigOutput)
 }
 
 // The capacity configuration.
@@ -396,7 +408,7 @@ func (o LiteTopicPartitionConfigCapacityOutput) ToLiteTopicPartitionConfigCapaci
 }
 
 func (o LiteTopicPartitionConfigCapacityOutput) ToLiteTopicPartitionConfigCapacityPtrOutputWithContext(ctx context.Context) LiteTopicPartitionConfigCapacityPtrOutput {
-	return o.ApplyT(func(v LiteTopicPartitionConfigCapacity) *LiteTopicPartitionConfigCapacity {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LiteTopicPartitionConfigCapacity) *LiteTopicPartitionConfigCapacity {
 		return &v
 	}).(LiteTopicPartitionConfigCapacityPtrOutput)
 }
@@ -426,7 +438,13 @@ func (o LiteTopicPartitionConfigCapacityPtrOutput) ToLiteTopicPartitionConfigCap
 }
 
 func (o LiteTopicPartitionConfigCapacityPtrOutput) Elem() LiteTopicPartitionConfigCapacityOutput {
-	return o.ApplyT(func(v *LiteTopicPartitionConfigCapacity) LiteTopicPartitionConfigCapacity { return *v }).(LiteTopicPartitionConfigCapacityOutput)
+	return o.ApplyT(func(v *LiteTopicPartitionConfigCapacity) LiteTopicPartitionConfigCapacity {
+		if v != nil {
+			return *v
+		}
+		var ret LiteTopicPartitionConfigCapacity
+		return ret
+	}).(LiteTopicPartitionConfigCapacityOutput)
 }
 
 // Subscribe throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
@@ -552,7 +570,7 @@ func (o LiteTopicRetentionConfigOutput) ToLiteTopicRetentionConfigPtrOutput() Li
 }
 
 func (o LiteTopicRetentionConfigOutput) ToLiteTopicRetentionConfigPtrOutputWithContext(ctx context.Context) LiteTopicRetentionConfigPtrOutput {
-	return o.ApplyT(func(v LiteTopicRetentionConfig) *LiteTopicRetentionConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LiteTopicRetentionConfig) *LiteTopicRetentionConfig {
 		return &v
 	}).(LiteTopicRetentionConfigPtrOutput)
 }
@@ -585,7 +603,13 @@ func (o LiteTopicRetentionConfigPtrOutput) ToLiteTopicRetentionConfigPtrOutputWi
 }
 
 func (o LiteTopicRetentionConfigPtrOutput) Elem() LiteTopicRetentionConfigOutput {
-	return o.ApplyT(func(v *LiteTopicRetentionConfig) LiteTopicRetentionConfig { return *v }).(LiteTopicRetentionConfigOutput)
+	return o.ApplyT(func(v *LiteTopicRetentionConfig) LiteTopicRetentionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret LiteTopicRetentionConfig
+		return ret
+	}).(LiteTopicRetentionConfigOutput)
 }
 
 // The provisioned storage, in bytes, per partition. If the number of bytes stored
@@ -738,7 +762,7 @@ func (o SubscriptionDeadLetterPolicyOutput) ToSubscriptionDeadLetterPolicyPtrOut
 }
 
 func (o SubscriptionDeadLetterPolicyOutput) ToSubscriptionDeadLetterPolicyPtrOutputWithContext(ctx context.Context) SubscriptionDeadLetterPolicyPtrOutput {
-	return o.ApplyT(func(v SubscriptionDeadLetterPolicy) *SubscriptionDeadLetterPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubscriptionDeadLetterPolicy) *SubscriptionDeadLetterPolicy {
 		return &v
 	}).(SubscriptionDeadLetterPolicyPtrOutput)
 }
@@ -783,7 +807,13 @@ func (o SubscriptionDeadLetterPolicyPtrOutput) ToSubscriptionDeadLetterPolicyPtr
 }
 
 func (o SubscriptionDeadLetterPolicyPtrOutput) Elem() SubscriptionDeadLetterPolicyOutput {
-	return o.ApplyT(func(v *SubscriptionDeadLetterPolicy) SubscriptionDeadLetterPolicy { return *v }).(SubscriptionDeadLetterPolicyOutput)
+	return o.ApplyT(func(v *SubscriptionDeadLetterPolicy) SubscriptionDeadLetterPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret SubscriptionDeadLetterPolicy
+		return ret
+	}).(SubscriptionDeadLetterPolicyOutput)
 }
 
 // The name of the topic to which dead letter messages should be published.
@@ -922,7 +952,7 @@ func (o SubscriptionExpirationPolicyOutput) ToSubscriptionExpirationPolicyPtrOut
 }
 
 func (o SubscriptionExpirationPolicyOutput) ToSubscriptionExpirationPolicyPtrOutputWithContext(ctx context.Context) SubscriptionExpirationPolicyPtrOutput {
-	return o.ApplyT(func(v SubscriptionExpirationPolicy) *SubscriptionExpirationPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubscriptionExpirationPolicy) *SubscriptionExpirationPolicy {
 		return &v
 	}).(SubscriptionExpirationPolicyPtrOutput)
 }
@@ -951,7 +981,13 @@ func (o SubscriptionExpirationPolicyPtrOutput) ToSubscriptionExpirationPolicyPtr
 }
 
 func (o SubscriptionExpirationPolicyPtrOutput) Elem() SubscriptionExpirationPolicyOutput {
-	return o.ApplyT(func(v *SubscriptionExpirationPolicy) SubscriptionExpirationPolicy { return *v }).(SubscriptionExpirationPolicyOutput)
+	return o.ApplyT(func(v *SubscriptionExpirationPolicy) SubscriptionExpirationPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret SubscriptionExpirationPolicy
+		return ret
+	}).(SubscriptionExpirationPolicyOutput)
 }
 
 // Specifies the "time-to-live" duration for an associated resource. The
@@ -1063,10 +1099,11 @@ func (o SubscriptionIAMBindingConditionOutput) ToSubscriptionIAMBindingCondition
 }
 
 func (o SubscriptionIAMBindingConditionOutput) ToSubscriptionIAMBindingConditionPtrOutputWithContext(ctx context.Context) SubscriptionIAMBindingConditionPtrOutput {
-	return o.ApplyT(func(v SubscriptionIAMBindingCondition) *SubscriptionIAMBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubscriptionIAMBindingCondition) *SubscriptionIAMBindingCondition {
 		return &v
 	}).(SubscriptionIAMBindingConditionPtrOutput)
 }
+
 func (o SubscriptionIAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubscriptionIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -1094,7 +1131,13 @@ func (o SubscriptionIAMBindingConditionPtrOutput) ToSubscriptionIAMBindingCondit
 }
 
 func (o SubscriptionIAMBindingConditionPtrOutput) Elem() SubscriptionIAMBindingConditionOutput {
-	return o.ApplyT(func(v *SubscriptionIAMBindingCondition) SubscriptionIAMBindingCondition { return *v }).(SubscriptionIAMBindingConditionOutput)
+	return o.ApplyT(func(v *SubscriptionIAMBindingCondition) SubscriptionIAMBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret SubscriptionIAMBindingCondition
+		return ret
+	}).(SubscriptionIAMBindingConditionOutput)
 }
 
 func (o SubscriptionIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -1219,10 +1262,11 @@ func (o SubscriptionIAMMemberConditionOutput) ToSubscriptionIAMMemberConditionPt
 }
 
 func (o SubscriptionIAMMemberConditionOutput) ToSubscriptionIAMMemberConditionPtrOutputWithContext(ctx context.Context) SubscriptionIAMMemberConditionPtrOutput {
-	return o.ApplyT(func(v SubscriptionIAMMemberCondition) *SubscriptionIAMMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubscriptionIAMMemberCondition) *SubscriptionIAMMemberCondition {
 		return &v
 	}).(SubscriptionIAMMemberConditionPtrOutput)
 }
+
 func (o SubscriptionIAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubscriptionIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -1250,7 +1294,13 @@ func (o SubscriptionIAMMemberConditionPtrOutput) ToSubscriptionIAMMemberConditio
 }
 
 func (o SubscriptionIAMMemberConditionPtrOutput) Elem() SubscriptionIAMMemberConditionOutput {
-	return o.ApplyT(func(v *SubscriptionIAMMemberCondition) SubscriptionIAMMemberCondition { return *v }).(SubscriptionIAMMemberConditionOutput)
+	return o.ApplyT(func(v *SubscriptionIAMMemberCondition) SubscriptionIAMMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret SubscriptionIAMMemberCondition
+		return ret
+	}).(SubscriptionIAMMemberConditionOutput)
 }
 
 func (o SubscriptionIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -1423,7 +1473,7 @@ func (o SubscriptionPushConfigOutput) ToSubscriptionPushConfigPtrOutput() Subscr
 }
 
 func (o SubscriptionPushConfigOutput) ToSubscriptionPushConfigPtrOutputWithContext(ctx context.Context) SubscriptionPushConfigPtrOutput {
-	return o.ApplyT(func(v SubscriptionPushConfig) *SubscriptionPushConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubscriptionPushConfig) *SubscriptionPushConfig {
 		return &v
 	}).(SubscriptionPushConfigPtrOutput)
 }
@@ -1479,7 +1529,13 @@ func (o SubscriptionPushConfigPtrOutput) ToSubscriptionPushConfigPtrOutputWithCo
 }
 
 func (o SubscriptionPushConfigPtrOutput) Elem() SubscriptionPushConfigOutput {
-	return o.ApplyT(func(v *SubscriptionPushConfig) SubscriptionPushConfig { return *v }).(SubscriptionPushConfigOutput)
+	return o.ApplyT(func(v *SubscriptionPushConfig) SubscriptionPushConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SubscriptionPushConfig
+		return ret
+	}).(SubscriptionPushConfigOutput)
 }
 
 // Endpoint configuration attributes.
@@ -1646,7 +1702,7 @@ func (o SubscriptionPushConfigOidcTokenOutput) ToSubscriptionPushConfigOidcToken
 }
 
 func (o SubscriptionPushConfigOidcTokenOutput) ToSubscriptionPushConfigOidcTokenPtrOutputWithContext(ctx context.Context) SubscriptionPushConfigOidcTokenPtrOutput {
-	return o.ApplyT(func(v SubscriptionPushConfigOidcToken) *SubscriptionPushConfigOidcToken {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubscriptionPushConfigOidcToken) *SubscriptionPushConfigOidcToken {
 		return &v
 	}).(SubscriptionPushConfigOidcTokenPtrOutput)
 }
@@ -1684,7 +1740,13 @@ func (o SubscriptionPushConfigOidcTokenPtrOutput) ToSubscriptionPushConfigOidcTo
 }
 
 func (o SubscriptionPushConfigOidcTokenPtrOutput) Elem() SubscriptionPushConfigOidcTokenOutput {
-	return o.ApplyT(func(v *SubscriptionPushConfigOidcToken) SubscriptionPushConfigOidcToken { return *v }).(SubscriptionPushConfigOidcTokenOutput)
+	return o.ApplyT(func(v *SubscriptionPushConfigOidcToken) SubscriptionPushConfigOidcToken {
+		if v != nil {
+			return *v
+		}
+		var ret SubscriptionPushConfigOidcToken
+		return ret
+	}).(SubscriptionPushConfigOidcTokenOutput)
 }
 
 // Audience to be used when generating OIDC token. The audience claim
@@ -1816,7 +1878,7 @@ func (o SubscriptionRetryPolicyOutput) ToSubscriptionRetryPolicyPtrOutput() Subs
 }
 
 func (o SubscriptionRetryPolicyOutput) ToSubscriptionRetryPolicyPtrOutputWithContext(ctx context.Context) SubscriptionRetryPolicyPtrOutput {
-	return o.ApplyT(func(v SubscriptionRetryPolicy) *SubscriptionRetryPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubscriptionRetryPolicy) *SubscriptionRetryPolicy {
 		return &v
 	}).(SubscriptionRetryPolicyPtrOutput)
 }
@@ -1848,7 +1910,13 @@ func (o SubscriptionRetryPolicyPtrOutput) ToSubscriptionRetryPolicyPtrOutputWith
 }
 
 func (o SubscriptionRetryPolicyPtrOutput) Elem() SubscriptionRetryPolicyOutput {
-	return o.ApplyT(func(v *SubscriptionRetryPolicy) SubscriptionRetryPolicy { return *v }).(SubscriptionRetryPolicyOutput)
+	return o.ApplyT(func(v *SubscriptionRetryPolicy) SubscriptionRetryPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret SubscriptionRetryPolicy
+		return ret
+	}).(SubscriptionRetryPolicyOutput)
 }
 
 // The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds.
@@ -1968,10 +2036,11 @@ func (o TopicIAMBindingConditionOutput) ToTopicIAMBindingConditionPtrOutput() To
 }
 
 func (o TopicIAMBindingConditionOutput) ToTopicIAMBindingConditionPtrOutputWithContext(ctx context.Context) TopicIAMBindingConditionPtrOutput {
-	return o.ApplyT(func(v TopicIAMBindingCondition) *TopicIAMBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TopicIAMBindingCondition) *TopicIAMBindingCondition {
 		return &v
 	}).(TopicIAMBindingConditionPtrOutput)
 }
+
 func (o TopicIAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TopicIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -1999,7 +2068,13 @@ func (o TopicIAMBindingConditionPtrOutput) ToTopicIAMBindingConditionPtrOutputWi
 }
 
 func (o TopicIAMBindingConditionPtrOutput) Elem() TopicIAMBindingConditionOutput {
-	return o.ApplyT(func(v *TopicIAMBindingCondition) TopicIAMBindingCondition { return *v }).(TopicIAMBindingConditionOutput)
+	return o.ApplyT(func(v *TopicIAMBindingCondition) TopicIAMBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret TopicIAMBindingCondition
+		return ret
+	}).(TopicIAMBindingConditionOutput)
 }
 
 func (o TopicIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -2124,10 +2199,11 @@ func (o TopicIAMMemberConditionOutput) ToTopicIAMMemberConditionPtrOutput() Topi
 }
 
 func (o TopicIAMMemberConditionOutput) ToTopicIAMMemberConditionPtrOutputWithContext(ctx context.Context) TopicIAMMemberConditionPtrOutput {
-	return o.ApplyT(func(v TopicIAMMemberCondition) *TopicIAMMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TopicIAMMemberCondition) *TopicIAMMemberCondition {
 		return &v
 	}).(TopicIAMMemberConditionPtrOutput)
 }
+
 func (o TopicIAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TopicIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -2155,7 +2231,13 @@ func (o TopicIAMMemberConditionPtrOutput) ToTopicIAMMemberConditionPtrOutputWith
 }
 
 func (o TopicIAMMemberConditionPtrOutput) Elem() TopicIAMMemberConditionOutput {
-	return o.ApplyT(func(v *TopicIAMMemberCondition) TopicIAMMemberCondition { return *v }).(TopicIAMMemberConditionOutput)
+	return o.ApplyT(func(v *TopicIAMMemberCondition) TopicIAMMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret TopicIAMMemberCondition
+		return ret
+	}).(TopicIAMMemberConditionOutput)
 }
 
 func (o TopicIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -2288,7 +2370,7 @@ func (o TopicMessageStoragePolicyOutput) ToTopicMessageStoragePolicyPtrOutput() 
 }
 
 func (o TopicMessageStoragePolicyOutput) ToTopicMessageStoragePolicyPtrOutputWithContext(ctx context.Context) TopicMessageStoragePolicyPtrOutput {
-	return o.ApplyT(func(v TopicMessageStoragePolicy) *TopicMessageStoragePolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TopicMessageStoragePolicy) *TopicMessageStoragePolicy {
 		return &v
 	}).(TopicMessageStoragePolicyPtrOutput)
 }
@@ -2318,7 +2400,13 @@ func (o TopicMessageStoragePolicyPtrOutput) ToTopicMessageStoragePolicyPtrOutput
 }
 
 func (o TopicMessageStoragePolicyPtrOutput) Elem() TopicMessageStoragePolicyOutput {
-	return o.ApplyT(func(v *TopicMessageStoragePolicy) TopicMessageStoragePolicy { return *v }).(TopicMessageStoragePolicyOutput)
+	return o.ApplyT(func(v *TopicMessageStoragePolicy) TopicMessageStoragePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret TopicMessageStoragePolicy
+		return ret
+	}).(TopicMessageStoragePolicyOutput)
 }
 
 // A list of IDs of GCP regions where messages that are published to
@@ -2443,7 +2531,7 @@ func (o TopicSchemaSettingsOutput) ToTopicSchemaSettingsPtrOutput() TopicSchemaS
 }
 
 func (o TopicSchemaSettingsOutput) ToTopicSchemaSettingsPtrOutputWithContext(ctx context.Context) TopicSchemaSettingsPtrOutput {
-	return o.ApplyT(func(v TopicSchemaSettings) *TopicSchemaSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TopicSchemaSettings) *TopicSchemaSettings {
 		return &v
 	}).(TopicSchemaSettingsPtrOutput)
 }
@@ -2478,7 +2566,13 @@ func (o TopicSchemaSettingsPtrOutput) ToTopicSchemaSettingsPtrOutputWithContext(
 }
 
 func (o TopicSchemaSettingsPtrOutput) Elem() TopicSchemaSettingsOutput {
-	return o.ApplyT(func(v *TopicSchemaSettings) TopicSchemaSettings { return *v }).(TopicSchemaSettingsOutput)
+	return o.ApplyT(func(v *TopicSchemaSettings) TopicSchemaSettings {
+		if v != nil {
+			return *v
+		}
+		var ret TopicSchemaSettings
+		return ret
+	}).(TopicSchemaSettingsOutput)
 }
 
 // The encoding of messages validated against schema.

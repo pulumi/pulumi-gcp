@@ -12,6 +12,7 @@ __all__ = [
     'GetRegionSslCertificateResult',
     'AwaitableGetRegionSslCertificateResult',
     'get_region_ssl_certificate',
+    'get_region_ssl_certificate_output',
 ]
 
 @pulumi.output_type
@@ -180,3 +181,33 @@ def get_region_ssl_certificate(name: Optional[str] = None,
         project=__ret__.project,
         region=__ret__.region,
         self_link=__ret__.self_link)
+
+
+@_utilities.lift_output_func(get_region_ssl_certificate)
+def get_region_ssl_certificate_output(name: Optional[pulumi.Input[str]] = None,
+                                      project: Optional[pulumi.Input[Optional[str]]] = None,
+                                      region: Optional[pulumi.Input[Optional[str]]] = None,
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionSslCertificateResult]:
+    """
+    Get info about a Region Google Compute SSL Certificate from its name.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_cert = gcp.compute.get_region_ssl_certificate(name="my-cert")
+    pulumi.export("certificate", my_cert.certificate)
+    pulumi.export("certificateId", my_cert.certificate_id)
+    pulumi.export("selfLink", my_cert.self_link)
+    ```
+
+
+    :param str name: The name of the certificate.
+    :param str project: The project in which the resource belongs. If it
+           is not provided, the provider project is used.
+    :param str region: The region in which the resource belongs. If it
+           is not provided, the provider region is used.
+    """
+    ...

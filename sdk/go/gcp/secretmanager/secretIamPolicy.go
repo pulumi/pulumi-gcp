@@ -300,7 +300,7 @@ type SecretIamPolicyArrayInput interface {
 type SecretIamPolicyArray []SecretIamPolicyInput
 
 func (SecretIamPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*SecretIamPolicy)(nil))
+	return reflect.TypeOf((*[]*SecretIamPolicy)(nil)).Elem()
 }
 
 func (i SecretIamPolicyArray) ToSecretIamPolicyArrayOutput() SecretIamPolicyArrayOutput {
@@ -325,7 +325,7 @@ type SecretIamPolicyMapInput interface {
 type SecretIamPolicyMap map[string]SecretIamPolicyInput
 
 func (SecretIamPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*SecretIamPolicy)(nil))
+	return reflect.TypeOf((*map[string]*SecretIamPolicy)(nil)).Elem()
 }
 
 func (i SecretIamPolicyMap) ToSecretIamPolicyMapOutput() SecretIamPolicyMapOutput {
@@ -336,9 +336,7 @@ func (i SecretIamPolicyMap) ToSecretIamPolicyMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(SecretIamPolicyMapOutput)
 }
 
-type SecretIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type SecretIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (SecretIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SecretIamPolicy)(nil))
@@ -357,14 +355,12 @@ func (o SecretIamPolicyOutput) ToSecretIamPolicyPtrOutput() SecretIamPolicyPtrOu
 }
 
 func (o SecretIamPolicyOutput) ToSecretIamPolicyPtrOutputWithContext(ctx context.Context) SecretIamPolicyPtrOutput {
-	return o.ApplyT(func(v SecretIamPolicy) *SecretIamPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretIamPolicy) *SecretIamPolicy {
 		return &v
 	}).(SecretIamPolicyPtrOutput)
 }
 
-type SecretIamPolicyPtrOutput struct {
-	*pulumi.OutputState
-}
+type SecretIamPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (SecretIamPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SecretIamPolicy)(nil))
@@ -376,6 +372,16 @@ func (o SecretIamPolicyPtrOutput) ToSecretIamPolicyPtrOutput() SecretIamPolicyPt
 
 func (o SecretIamPolicyPtrOutput) ToSecretIamPolicyPtrOutputWithContext(ctx context.Context) SecretIamPolicyPtrOutput {
 	return o
+}
+
+func (o SecretIamPolicyPtrOutput) Elem() SecretIamPolicyOutput {
+	return o.ApplyT(func(v *SecretIamPolicy) SecretIamPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret SecretIamPolicy
+		return ret
+	}).(SecretIamPolicyOutput)
 }
 
 type SecretIamPolicyArrayOutput struct{ *pulumi.OutputState }

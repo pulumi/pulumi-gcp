@@ -305,15 +305,15 @@ class Cluster(pulumi.CustomResource):
                         boot_disk_size_gb=30,
                     ),
                 ),
-                worker_config={
-                    "numInstances": 2,
-                    "machine_type": "e2-medium",
-                    "min_cpu_platform": "Intel Skylake",
-                    "diskConfig": {
-                        "boot_disk_size_gb": 30,
-                        "numLocalSsds": 1,
-                    },
-                },
+                worker_config=gcp.dataproc.ClusterClusterConfigWorkerConfigArgs(
+                    num_instances=2,
+                    machine_type="e2-medium",
+                    min_cpu_platform="Intel Skylake",
+                    disk_config=gcp.dataproc.ClusterClusterConfigWorkerConfigDiskConfigArgs(
+                        boot_disk_size_gb=30,
+                        num_local_ssds=1,
+                    ),
+                ),
                 preemptible_worker_config=gcp.dataproc.ClusterClusterConfigPreemptibleWorkerConfigArgs(
                     num_instances=0,
                 ),
@@ -429,15 +429,15 @@ class Cluster(pulumi.CustomResource):
                         boot_disk_size_gb=30,
                     ),
                 ),
-                worker_config={
-                    "numInstances": 2,
-                    "machine_type": "e2-medium",
-                    "min_cpu_platform": "Intel Skylake",
-                    "diskConfig": {
-                        "boot_disk_size_gb": 30,
-                        "numLocalSsds": 1,
-                    },
-                },
+                worker_config=gcp.dataproc.ClusterClusterConfigWorkerConfigArgs(
+                    num_instances=2,
+                    machine_type="e2-medium",
+                    min_cpu_platform="Intel Skylake",
+                    disk_config=gcp.dataproc.ClusterClusterConfigWorkerConfigDiskConfigArgs(
+                        boot_disk_size_gb=30,
+                        num_local_ssds=1,
+                    ),
+                ),
                 preemptible_worker_config=gcp.dataproc.ClusterClusterConfigPreemptibleWorkerConfigArgs(
                     num_instances=0,
                 ),

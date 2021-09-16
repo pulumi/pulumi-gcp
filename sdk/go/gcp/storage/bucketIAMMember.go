@@ -418,7 +418,7 @@ type BucketIAMMemberArrayInput interface {
 type BucketIAMMemberArray []BucketIAMMemberInput
 
 func (BucketIAMMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*BucketIAMMember)(nil))
+	return reflect.TypeOf((*[]*BucketIAMMember)(nil)).Elem()
 }
 
 func (i BucketIAMMemberArray) ToBucketIAMMemberArrayOutput() BucketIAMMemberArrayOutput {
@@ -443,7 +443,7 @@ type BucketIAMMemberMapInput interface {
 type BucketIAMMemberMap map[string]BucketIAMMemberInput
 
 func (BucketIAMMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*BucketIAMMember)(nil))
+	return reflect.TypeOf((*map[string]*BucketIAMMember)(nil)).Elem()
 }
 
 func (i BucketIAMMemberMap) ToBucketIAMMemberMapOutput() BucketIAMMemberMapOutput {
@@ -454,9 +454,7 @@ func (i BucketIAMMemberMap) ToBucketIAMMemberMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(BucketIAMMemberMapOutput)
 }
 
-type BucketIAMMemberOutput struct {
-	*pulumi.OutputState
-}
+type BucketIAMMemberOutput struct{ *pulumi.OutputState }
 
 func (BucketIAMMemberOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BucketIAMMember)(nil))
@@ -475,14 +473,12 @@ func (o BucketIAMMemberOutput) ToBucketIAMMemberPtrOutput() BucketIAMMemberPtrOu
 }
 
 func (o BucketIAMMemberOutput) ToBucketIAMMemberPtrOutputWithContext(ctx context.Context) BucketIAMMemberPtrOutput {
-	return o.ApplyT(func(v BucketIAMMember) *BucketIAMMember {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketIAMMember) *BucketIAMMember {
 		return &v
 	}).(BucketIAMMemberPtrOutput)
 }
 
-type BucketIAMMemberPtrOutput struct {
-	*pulumi.OutputState
-}
+type BucketIAMMemberPtrOutput struct{ *pulumi.OutputState }
 
 func (BucketIAMMemberPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**BucketIAMMember)(nil))
@@ -494,6 +490,16 @@ func (o BucketIAMMemberPtrOutput) ToBucketIAMMemberPtrOutput() BucketIAMMemberPt
 
 func (o BucketIAMMemberPtrOutput) ToBucketIAMMemberPtrOutputWithContext(ctx context.Context) BucketIAMMemberPtrOutput {
 	return o
+}
+
+func (o BucketIAMMemberPtrOutput) Elem() BucketIAMMemberOutput {
+	return o.ApplyT(func(v *BucketIAMMember) BucketIAMMember {
+		if v != nil {
+			return *v
+		}
+		var ret BucketIAMMember
+		return ret
+	}).(BucketIAMMemberOutput)
 }
 
 type BucketIAMMemberArrayOutput struct{ *pulumi.OutputState }

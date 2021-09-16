@@ -13,6 +13,7 @@ __all__ = [
     'GetBucketObjectResult',
     'AwaitableGetBucketObjectResult',
     'get_bucket_object',
+    'get_bucket_object_output',
 ]
 
 @pulumi.output_type
@@ -322,3 +323,32 @@ def get_bucket_object(bucket: Optional[str] = None,
         source=__ret__.source,
         storage_class=__ret__.storage_class,
         temporary_hold=__ret__.temporary_hold)
+
+
+@_utilities.lift_output_func(get_bucket_object)
+def get_bucket_object_output(bucket: Optional[pulumi.Input[Optional[str]]] = None,
+                             name: Optional[pulumi.Input[Optional[str]]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBucketObjectResult]:
+    """
+    Gets an existing object inside an existing bucket in Google Cloud Storage service (GCS).
+    See [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
+    and
+    [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
+
+    ## Example Usage
+
+    Example picture stored within a folder.
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    picture = gcp.storage.get_bucket_object(bucket="image-store",
+        name="folder/butterfly01.jpg")
+    ```
+
+
+    :param str bucket: The name of the containing bucket.
+    :param str name: The name of the object.
+    """
+    ...

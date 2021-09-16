@@ -318,7 +318,7 @@ type TargetSSLProxyArrayInput interface {
 type TargetSSLProxyArray []TargetSSLProxyInput
 
 func (TargetSSLProxyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TargetSSLProxy)(nil))
+	return reflect.TypeOf((*[]*TargetSSLProxy)(nil)).Elem()
 }
 
 func (i TargetSSLProxyArray) ToTargetSSLProxyArrayOutput() TargetSSLProxyArrayOutput {
@@ -343,7 +343,7 @@ type TargetSSLProxyMapInput interface {
 type TargetSSLProxyMap map[string]TargetSSLProxyInput
 
 func (TargetSSLProxyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TargetSSLProxy)(nil))
+	return reflect.TypeOf((*map[string]*TargetSSLProxy)(nil)).Elem()
 }
 
 func (i TargetSSLProxyMap) ToTargetSSLProxyMapOutput() TargetSSLProxyMapOutput {
@@ -354,9 +354,7 @@ func (i TargetSSLProxyMap) ToTargetSSLProxyMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(TargetSSLProxyMapOutput)
 }
 
-type TargetSSLProxyOutput struct {
-	*pulumi.OutputState
-}
+type TargetSSLProxyOutput struct{ *pulumi.OutputState }
 
 func (TargetSSLProxyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TargetSSLProxy)(nil))
@@ -375,14 +373,12 @@ func (o TargetSSLProxyOutput) ToTargetSSLProxyPtrOutput() TargetSSLProxyPtrOutpu
 }
 
 func (o TargetSSLProxyOutput) ToTargetSSLProxyPtrOutputWithContext(ctx context.Context) TargetSSLProxyPtrOutput {
-	return o.ApplyT(func(v TargetSSLProxy) *TargetSSLProxy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TargetSSLProxy) *TargetSSLProxy {
 		return &v
 	}).(TargetSSLProxyPtrOutput)
 }
 
-type TargetSSLProxyPtrOutput struct {
-	*pulumi.OutputState
-}
+type TargetSSLProxyPtrOutput struct{ *pulumi.OutputState }
 
 func (TargetSSLProxyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TargetSSLProxy)(nil))
@@ -394,6 +390,16 @@ func (o TargetSSLProxyPtrOutput) ToTargetSSLProxyPtrOutput() TargetSSLProxyPtrOu
 
 func (o TargetSSLProxyPtrOutput) ToTargetSSLProxyPtrOutputWithContext(ctx context.Context) TargetSSLProxyPtrOutput {
 	return o
+}
+
+func (o TargetSSLProxyPtrOutput) Elem() TargetSSLProxyOutput {
+	return o.ApplyT(func(v *TargetSSLProxy) TargetSSLProxy {
+		if v != nil {
+			return *v
+		}
+		var ret TargetSSLProxy
+		return ret
+	}).(TargetSSLProxyOutput)
 }
 
 type TargetSSLProxyArrayOutput struct{ *pulumi.OutputState }

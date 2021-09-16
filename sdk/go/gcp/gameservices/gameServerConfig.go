@@ -374,7 +374,7 @@ type GameServerConfigArrayInput interface {
 type GameServerConfigArray []GameServerConfigInput
 
 func (GameServerConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*GameServerConfig)(nil))
+	return reflect.TypeOf((*[]*GameServerConfig)(nil)).Elem()
 }
 
 func (i GameServerConfigArray) ToGameServerConfigArrayOutput() GameServerConfigArrayOutput {
@@ -399,7 +399,7 @@ type GameServerConfigMapInput interface {
 type GameServerConfigMap map[string]GameServerConfigInput
 
 func (GameServerConfigMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*GameServerConfig)(nil))
+	return reflect.TypeOf((*map[string]*GameServerConfig)(nil)).Elem()
 }
 
 func (i GameServerConfigMap) ToGameServerConfigMapOutput() GameServerConfigMapOutput {
@@ -410,9 +410,7 @@ func (i GameServerConfigMap) ToGameServerConfigMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerConfigMapOutput)
 }
 
-type GameServerConfigOutput struct {
-	*pulumi.OutputState
-}
+type GameServerConfigOutput struct{ *pulumi.OutputState }
 
 func (GameServerConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GameServerConfig)(nil))
@@ -431,14 +429,12 @@ func (o GameServerConfigOutput) ToGameServerConfigPtrOutput() GameServerConfigPt
 }
 
 func (o GameServerConfigOutput) ToGameServerConfigPtrOutputWithContext(ctx context.Context) GameServerConfigPtrOutput {
-	return o.ApplyT(func(v GameServerConfig) *GameServerConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GameServerConfig) *GameServerConfig {
 		return &v
 	}).(GameServerConfigPtrOutput)
 }
 
-type GameServerConfigPtrOutput struct {
-	*pulumi.OutputState
-}
+type GameServerConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (GameServerConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**GameServerConfig)(nil))
@@ -450,6 +446,16 @@ func (o GameServerConfigPtrOutput) ToGameServerConfigPtrOutput() GameServerConfi
 
 func (o GameServerConfigPtrOutput) ToGameServerConfigPtrOutputWithContext(ctx context.Context) GameServerConfigPtrOutput {
 	return o
+}
+
+func (o GameServerConfigPtrOutput) Elem() GameServerConfigOutput {
+	return o.ApplyT(func(v *GameServerConfig) GameServerConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GameServerConfig
+		return ret
+	}).(GameServerConfigOutput)
 }
 
 type GameServerConfigArrayOutput struct{ *pulumi.OutputState }

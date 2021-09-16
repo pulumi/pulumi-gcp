@@ -307,7 +307,7 @@ type DomainTrustArrayInput interface {
 type DomainTrustArray []DomainTrustInput
 
 func (DomainTrustArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*DomainTrust)(nil))
+	return reflect.TypeOf((*[]*DomainTrust)(nil)).Elem()
 }
 
 func (i DomainTrustArray) ToDomainTrustArrayOutput() DomainTrustArrayOutput {
@@ -332,7 +332,7 @@ type DomainTrustMapInput interface {
 type DomainTrustMap map[string]DomainTrustInput
 
 func (DomainTrustMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*DomainTrust)(nil))
+	return reflect.TypeOf((*map[string]*DomainTrust)(nil)).Elem()
 }
 
 func (i DomainTrustMap) ToDomainTrustMapOutput() DomainTrustMapOutput {
@@ -343,9 +343,7 @@ func (i DomainTrustMap) ToDomainTrustMapOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, i).(DomainTrustMapOutput)
 }
 
-type DomainTrustOutput struct {
-	*pulumi.OutputState
-}
+type DomainTrustOutput struct{ *pulumi.OutputState }
 
 func (DomainTrustOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DomainTrust)(nil))
@@ -364,14 +362,12 @@ func (o DomainTrustOutput) ToDomainTrustPtrOutput() DomainTrustPtrOutput {
 }
 
 func (o DomainTrustOutput) ToDomainTrustPtrOutputWithContext(ctx context.Context) DomainTrustPtrOutput {
-	return o.ApplyT(func(v DomainTrust) *DomainTrust {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainTrust) *DomainTrust {
 		return &v
 	}).(DomainTrustPtrOutput)
 }
 
-type DomainTrustPtrOutput struct {
-	*pulumi.OutputState
-}
+type DomainTrustPtrOutput struct{ *pulumi.OutputState }
 
 func (DomainTrustPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DomainTrust)(nil))
@@ -383,6 +379,16 @@ func (o DomainTrustPtrOutput) ToDomainTrustPtrOutput() DomainTrustPtrOutput {
 
 func (o DomainTrustPtrOutput) ToDomainTrustPtrOutputWithContext(ctx context.Context) DomainTrustPtrOutput {
 	return o
+}
+
+func (o DomainTrustPtrOutput) Elem() DomainTrustOutput {
+	return o.ApplyT(func(v *DomainTrust) DomainTrust {
+		if v != nil {
+			return *v
+		}
+		var ret DomainTrust
+		return ret
+	}).(DomainTrustOutput)
 }
 
 type DomainTrustArrayOutput struct{ *pulumi.OutputState }

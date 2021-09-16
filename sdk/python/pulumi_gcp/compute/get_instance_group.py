@@ -13,6 +13,7 @@ __all__ = [
     'GetInstanceGroupResult',
     'AwaitableGetInstanceGroupResult',
     'get_instance_group',
+    'get_instance_group_output',
 ]
 
 @pulumi.output_type
@@ -190,3 +191,33 @@ def get_instance_group(name: Optional[str] = None,
         self_link=__ret__.self_link,
         size=__ret__.size,
         zone=__ret__.zone)
+
+
+@_utilities.lift_output_func(get_instance_group)
+def get_instance_group_output(name: Optional[pulumi.Input[Optional[str]]] = None,
+                              project: Optional[pulumi.Input[Optional[str]]] = None,
+                              self_link: Optional[pulumi.Input[Optional[str]]] = None,
+                              zone: Optional[pulumi.Input[Optional[str]]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceGroupResult]:
+    """
+    Get a Compute Instance Group within GCE.
+    For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
+    and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    all = gcp.compute.get_instance_group(name="instance-group-name",
+        zone="us-central1-a")
+    ```
+
+
+    :param str name: The name of the instance group. Either `name` or `self_link` must be provided.
+    :param str project: The ID of the project in which the resource belongs. If it
+           is not provided, the provider project is used.
+    :param str self_link: The self link of the instance group. Either `name` or `self_link` must be provided.
+    :param str zone: The zone of the instance group. If referencing the instance group by name
+           and `zone` is not provided, the provider zone is used.
+    """
+    ...

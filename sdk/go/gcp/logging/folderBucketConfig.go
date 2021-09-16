@@ -245,7 +245,7 @@ type FolderBucketConfigArrayInput interface {
 type FolderBucketConfigArray []FolderBucketConfigInput
 
 func (FolderBucketConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*FolderBucketConfig)(nil))
+	return reflect.TypeOf((*[]*FolderBucketConfig)(nil)).Elem()
 }
 
 func (i FolderBucketConfigArray) ToFolderBucketConfigArrayOutput() FolderBucketConfigArrayOutput {
@@ -270,7 +270,7 @@ type FolderBucketConfigMapInput interface {
 type FolderBucketConfigMap map[string]FolderBucketConfigInput
 
 func (FolderBucketConfigMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*FolderBucketConfig)(nil))
+	return reflect.TypeOf((*map[string]*FolderBucketConfig)(nil)).Elem()
 }
 
 func (i FolderBucketConfigMap) ToFolderBucketConfigMapOutput() FolderBucketConfigMapOutput {
@@ -281,9 +281,7 @@ func (i FolderBucketConfigMap) ToFolderBucketConfigMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(FolderBucketConfigMapOutput)
 }
 
-type FolderBucketConfigOutput struct {
-	*pulumi.OutputState
-}
+type FolderBucketConfigOutput struct{ *pulumi.OutputState }
 
 func (FolderBucketConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*FolderBucketConfig)(nil))
@@ -302,14 +300,12 @@ func (o FolderBucketConfigOutput) ToFolderBucketConfigPtrOutput() FolderBucketCo
 }
 
 func (o FolderBucketConfigOutput) ToFolderBucketConfigPtrOutputWithContext(ctx context.Context) FolderBucketConfigPtrOutput {
-	return o.ApplyT(func(v FolderBucketConfig) *FolderBucketConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FolderBucketConfig) *FolderBucketConfig {
 		return &v
 	}).(FolderBucketConfigPtrOutput)
 }
 
-type FolderBucketConfigPtrOutput struct {
-	*pulumi.OutputState
-}
+type FolderBucketConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (FolderBucketConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**FolderBucketConfig)(nil))
@@ -321,6 +317,16 @@ func (o FolderBucketConfigPtrOutput) ToFolderBucketConfigPtrOutput() FolderBucke
 
 func (o FolderBucketConfigPtrOutput) ToFolderBucketConfigPtrOutputWithContext(ctx context.Context) FolderBucketConfigPtrOutput {
 	return o
+}
+
+func (o FolderBucketConfigPtrOutput) Elem() FolderBucketConfigOutput {
+	return o.ApplyT(func(v *FolderBucketConfig) FolderBucketConfig {
+		if v != nil {
+			return *v
+		}
+		var ret FolderBucketConfig
+		return ret
+	}).(FolderBucketConfigOutput)
 }
 
 type FolderBucketConfigArrayOutput struct{ *pulumi.OutputState }

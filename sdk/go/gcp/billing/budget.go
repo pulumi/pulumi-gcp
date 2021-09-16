@@ -508,7 +508,7 @@ type BudgetArrayInput interface {
 type BudgetArray []BudgetInput
 
 func (BudgetArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Budget)(nil))
+	return reflect.TypeOf((*[]*Budget)(nil)).Elem()
 }
 
 func (i BudgetArray) ToBudgetArrayOutput() BudgetArrayOutput {
@@ -533,7 +533,7 @@ type BudgetMapInput interface {
 type BudgetMap map[string]BudgetInput
 
 func (BudgetMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Budget)(nil))
+	return reflect.TypeOf((*map[string]*Budget)(nil)).Elem()
 }
 
 func (i BudgetMap) ToBudgetMapOutput() BudgetMapOutput {
@@ -544,9 +544,7 @@ func (i BudgetMap) ToBudgetMapOutputWithContext(ctx context.Context) BudgetMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetMapOutput)
 }
 
-type BudgetOutput struct {
-	*pulumi.OutputState
-}
+type BudgetOutput struct{ *pulumi.OutputState }
 
 func (BudgetOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Budget)(nil))
@@ -565,14 +563,12 @@ func (o BudgetOutput) ToBudgetPtrOutput() BudgetPtrOutput {
 }
 
 func (o BudgetOutput) ToBudgetPtrOutputWithContext(ctx context.Context) BudgetPtrOutput {
-	return o.ApplyT(func(v Budget) *Budget {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Budget) *Budget {
 		return &v
 	}).(BudgetPtrOutput)
 }
 
-type BudgetPtrOutput struct {
-	*pulumi.OutputState
-}
+type BudgetPtrOutput struct{ *pulumi.OutputState }
 
 func (BudgetPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Budget)(nil))
@@ -584,6 +580,16 @@ func (o BudgetPtrOutput) ToBudgetPtrOutput() BudgetPtrOutput {
 
 func (o BudgetPtrOutput) ToBudgetPtrOutputWithContext(ctx context.Context) BudgetPtrOutput {
 	return o
+}
+
+func (o BudgetPtrOutput) Elem() BudgetOutput {
+	return o.ApplyT(func(v *Budget) Budget {
+		if v != nil {
+			return *v
+		}
+		var ret Budget
+		return ret
+	}).(BudgetOutput)
 }
 
 type BudgetArrayOutput struct{ *pulumi.OutputState }

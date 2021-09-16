@@ -321,7 +321,7 @@ type DeviceArrayInput interface {
 type DeviceArray []DeviceInput
 
 func (DeviceArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Device)(nil))
+	return reflect.TypeOf((*[]*Device)(nil)).Elem()
 }
 
 func (i DeviceArray) ToDeviceArrayOutput() DeviceArrayOutput {
@@ -346,7 +346,7 @@ type DeviceMapInput interface {
 type DeviceMap map[string]DeviceInput
 
 func (DeviceMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Device)(nil))
+	return reflect.TypeOf((*map[string]*Device)(nil)).Elem()
 }
 
 func (i DeviceMap) ToDeviceMapOutput() DeviceMapOutput {
@@ -357,9 +357,7 @@ func (i DeviceMap) ToDeviceMapOutputWithContext(ctx context.Context) DeviceMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceMapOutput)
 }
 
-type DeviceOutput struct {
-	*pulumi.OutputState
-}
+type DeviceOutput struct{ *pulumi.OutputState }
 
 func (DeviceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Device)(nil))
@@ -378,14 +376,12 @@ func (o DeviceOutput) ToDevicePtrOutput() DevicePtrOutput {
 }
 
 func (o DeviceOutput) ToDevicePtrOutputWithContext(ctx context.Context) DevicePtrOutput {
-	return o.ApplyT(func(v Device) *Device {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Device) *Device {
 		return &v
 	}).(DevicePtrOutput)
 }
 
-type DevicePtrOutput struct {
-	*pulumi.OutputState
-}
+type DevicePtrOutput struct{ *pulumi.OutputState }
 
 func (DevicePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Device)(nil))
@@ -397,6 +393,16 @@ func (o DevicePtrOutput) ToDevicePtrOutput() DevicePtrOutput {
 
 func (o DevicePtrOutput) ToDevicePtrOutputWithContext(ctx context.Context) DevicePtrOutput {
 	return o
+}
+
+func (o DevicePtrOutput) Elem() DeviceOutput {
+	return o.ApplyT(func(v *Device) Device {
+		if v != nil {
+			return *v
+		}
+		var ret Device
+		return ret
+	}).(DeviceOutput)
 }
 
 type DeviceArrayOutput struct{ *pulumi.OutputState }

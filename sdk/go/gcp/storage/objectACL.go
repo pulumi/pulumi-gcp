@@ -236,7 +236,7 @@ type ObjectACLArrayInput interface {
 type ObjectACLArray []ObjectACLInput
 
 func (ObjectACLArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ObjectACL)(nil))
+	return reflect.TypeOf((*[]*ObjectACL)(nil)).Elem()
 }
 
 func (i ObjectACLArray) ToObjectACLArrayOutput() ObjectACLArrayOutput {
@@ -261,7 +261,7 @@ type ObjectACLMapInput interface {
 type ObjectACLMap map[string]ObjectACLInput
 
 func (ObjectACLMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ObjectACL)(nil))
+	return reflect.TypeOf((*map[string]*ObjectACL)(nil)).Elem()
 }
 
 func (i ObjectACLMap) ToObjectACLMapOutput() ObjectACLMapOutput {
@@ -272,9 +272,7 @@ func (i ObjectACLMap) ToObjectACLMapOutputWithContext(ctx context.Context) Objec
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectACLMapOutput)
 }
 
-type ObjectACLOutput struct {
-	*pulumi.OutputState
-}
+type ObjectACLOutput struct{ *pulumi.OutputState }
 
 func (ObjectACLOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ObjectACL)(nil))
@@ -293,14 +291,12 @@ func (o ObjectACLOutput) ToObjectACLPtrOutput() ObjectACLPtrOutput {
 }
 
 func (o ObjectACLOutput) ToObjectACLPtrOutputWithContext(ctx context.Context) ObjectACLPtrOutput {
-	return o.ApplyT(func(v ObjectACL) *ObjectACL {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ObjectACL) *ObjectACL {
 		return &v
 	}).(ObjectACLPtrOutput)
 }
 
-type ObjectACLPtrOutput struct {
-	*pulumi.OutputState
-}
+type ObjectACLPtrOutput struct{ *pulumi.OutputState }
 
 func (ObjectACLPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ObjectACL)(nil))
@@ -312,6 +308,16 @@ func (o ObjectACLPtrOutput) ToObjectACLPtrOutput() ObjectACLPtrOutput {
 
 func (o ObjectACLPtrOutput) ToObjectACLPtrOutputWithContext(ctx context.Context) ObjectACLPtrOutput {
 	return o
+}
+
+func (o ObjectACLPtrOutput) Elem() ObjectACLOutput {
+	return o.ApplyT(func(v *ObjectACL) ObjectACL {
+		if v != nil {
+			return *v
+		}
+		var ret ObjectACL
+		return ret
+	}).(ObjectACLOutput)
 }
 
 type ObjectACLArrayOutput struct{ *pulumi.OutputState }

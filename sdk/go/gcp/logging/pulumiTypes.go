@@ -109,7 +109,7 @@ func (o BillingAccountSinkBigqueryOptionsOutput) ToBillingAccountSinkBigqueryOpt
 }
 
 func (o BillingAccountSinkBigqueryOptionsOutput) ToBillingAccountSinkBigqueryOptionsPtrOutputWithContext(ctx context.Context) BillingAccountSinkBigqueryOptionsPtrOutput {
-	return o.ApplyT(func(v BillingAccountSinkBigqueryOptions) *BillingAccountSinkBigqueryOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BillingAccountSinkBigqueryOptions) *BillingAccountSinkBigqueryOptions {
 		return &v
 	}).(BillingAccountSinkBigqueryOptionsPtrOutput)
 }
@@ -137,7 +137,13 @@ func (o BillingAccountSinkBigqueryOptionsPtrOutput) ToBillingAccountSinkBigquery
 }
 
 func (o BillingAccountSinkBigqueryOptionsPtrOutput) Elem() BillingAccountSinkBigqueryOptionsOutput {
-	return o.ApplyT(func(v *BillingAccountSinkBigqueryOptions) BillingAccountSinkBigqueryOptions { return *v }).(BillingAccountSinkBigqueryOptionsOutput)
+	return o.ApplyT(func(v *BillingAccountSinkBigqueryOptions) BillingAccountSinkBigqueryOptions {
+		if v != nil {
+			return *v
+		}
+		var ret BillingAccountSinkBigqueryOptions
+		return ret
+	}).(BillingAccountSinkBigqueryOptionsOutput)
 }
 
 // Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
@@ -379,7 +385,7 @@ func (o FolderSinkBigqueryOptionsOutput) ToFolderSinkBigqueryOptionsPtrOutput() 
 }
 
 func (o FolderSinkBigqueryOptionsOutput) ToFolderSinkBigqueryOptionsPtrOutputWithContext(ctx context.Context) FolderSinkBigqueryOptionsPtrOutput {
-	return o.ApplyT(func(v FolderSinkBigqueryOptions) *FolderSinkBigqueryOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FolderSinkBigqueryOptions) *FolderSinkBigqueryOptions {
 		return &v
 	}).(FolderSinkBigqueryOptionsPtrOutput)
 }
@@ -407,7 +413,13 @@ func (o FolderSinkBigqueryOptionsPtrOutput) ToFolderSinkBigqueryOptionsPtrOutput
 }
 
 func (o FolderSinkBigqueryOptionsPtrOutput) Elem() FolderSinkBigqueryOptionsOutput {
-	return o.ApplyT(func(v *FolderSinkBigqueryOptions) FolderSinkBigqueryOptions { return *v }).(FolderSinkBigqueryOptionsOutput)
+	return o.ApplyT(func(v *FolderSinkBigqueryOptions) FolderSinkBigqueryOptions {
+		if v != nil {
+			return *v
+		}
+		var ret FolderSinkBigqueryOptions
+		return ret
+	}).(FolderSinkBigqueryOptionsOutput)
 }
 
 // Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
@@ -661,7 +673,7 @@ func (o MetricBucketOptionsOutput) ToMetricBucketOptionsPtrOutput() MetricBucket
 }
 
 func (o MetricBucketOptionsOutput) ToMetricBucketOptionsPtrOutputWithContext(ctx context.Context) MetricBucketOptionsPtrOutput {
-	return o.ApplyT(func(v MetricBucketOptions) *MetricBucketOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricBucketOptions) *MetricBucketOptions {
 		return &v
 	}).(MetricBucketOptionsPtrOutput)
 }
@@ -701,7 +713,13 @@ func (o MetricBucketOptionsPtrOutput) ToMetricBucketOptionsPtrOutputWithContext(
 }
 
 func (o MetricBucketOptionsPtrOutput) Elem() MetricBucketOptionsOutput {
-	return o.ApplyT(func(v *MetricBucketOptions) MetricBucketOptions { return *v }).(MetricBucketOptionsOutput)
+	return o.ApplyT(func(v *MetricBucketOptions) MetricBucketOptions {
+		if v != nil {
+			return *v
+		}
+		var ret MetricBucketOptions
+		return ret
+	}).(MetricBucketOptionsOutput)
 }
 
 // Specifies a set of buckets with arbitrary widths.
@@ -832,7 +850,7 @@ func (o MetricBucketOptionsExplicitBucketsOutput) ToMetricBucketOptionsExplicitB
 }
 
 func (o MetricBucketOptionsExplicitBucketsOutput) ToMetricBucketOptionsExplicitBucketsPtrOutputWithContext(ctx context.Context) MetricBucketOptionsExplicitBucketsPtrOutput {
-	return o.ApplyT(func(v MetricBucketOptionsExplicitBuckets) *MetricBucketOptionsExplicitBuckets {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricBucketOptionsExplicitBuckets) *MetricBucketOptionsExplicitBuckets {
 		return &v
 	}).(MetricBucketOptionsExplicitBucketsPtrOutput)
 }
@@ -857,7 +875,13 @@ func (o MetricBucketOptionsExplicitBucketsPtrOutput) ToMetricBucketOptionsExplic
 }
 
 func (o MetricBucketOptionsExplicitBucketsPtrOutput) Elem() MetricBucketOptionsExplicitBucketsOutput {
-	return o.ApplyT(func(v *MetricBucketOptionsExplicitBuckets) MetricBucketOptionsExplicitBuckets { return *v }).(MetricBucketOptionsExplicitBucketsOutput)
+	return o.ApplyT(func(v *MetricBucketOptionsExplicitBuckets) MetricBucketOptionsExplicitBuckets {
+		if v != nil {
+			return *v
+		}
+		var ret MetricBucketOptionsExplicitBuckets
+		return ret
+	}).(MetricBucketOptionsExplicitBucketsOutput)
 }
 
 // The values must be monotonically increasing.
@@ -971,7 +995,7 @@ func (o MetricBucketOptionsExponentialBucketsOutput) ToMetricBucketOptionsExpone
 }
 
 func (o MetricBucketOptionsExponentialBucketsOutput) ToMetricBucketOptionsExponentialBucketsPtrOutputWithContext(ctx context.Context) MetricBucketOptionsExponentialBucketsPtrOutput {
-	return o.ApplyT(func(v MetricBucketOptionsExponentialBuckets) *MetricBucketOptionsExponentialBuckets {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricBucketOptionsExponentialBuckets) *MetricBucketOptionsExponentialBuckets {
 		return &v
 	}).(MetricBucketOptionsExponentialBucketsPtrOutput)
 }
@@ -1006,7 +1030,13 @@ func (o MetricBucketOptionsExponentialBucketsPtrOutput) ToMetricBucketOptionsExp
 }
 
 func (o MetricBucketOptionsExponentialBucketsPtrOutput) Elem() MetricBucketOptionsExponentialBucketsOutput {
-	return o.ApplyT(func(v *MetricBucketOptionsExponentialBuckets) MetricBucketOptionsExponentialBuckets { return *v }).(MetricBucketOptionsExponentialBucketsOutput)
+	return o.ApplyT(func(v *MetricBucketOptionsExponentialBuckets) MetricBucketOptionsExponentialBuckets {
+		if v != nil {
+			return *v
+		}
+		var ret MetricBucketOptionsExponentialBuckets
+		return ret
+	}).(MetricBucketOptionsExponentialBucketsOutput)
 }
 
 // Must be greater than 1.
@@ -1140,7 +1170,7 @@ func (o MetricBucketOptionsLinearBucketsOutput) ToMetricBucketOptionsLinearBucke
 }
 
 func (o MetricBucketOptionsLinearBucketsOutput) ToMetricBucketOptionsLinearBucketsPtrOutputWithContext(ctx context.Context) MetricBucketOptionsLinearBucketsPtrOutput {
-	return o.ApplyT(func(v MetricBucketOptionsLinearBuckets) *MetricBucketOptionsLinearBuckets {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricBucketOptionsLinearBuckets) *MetricBucketOptionsLinearBuckets {
 		return &v
 	}).(MetricBucketOptionsLinearBucketsPtrOutput)
 }
@@ -1175,7 +1205,13 @@ func (o MetricBucketOptionsLinearBucketsPtrOutput) ToMetricBucketOptionsLinearBu
 }
 
 func (o MetricBucketOptionsLinearBucketsPtrOutput) Elem() MetricBucketOptionsLinearBucketsOutput {
-	return o.ApplyT(func(v *MetricBucketOptionsLinearBuckets) MetricBucketOptionsLinearBuckets { return *v }).(MetricBucketOptionsLinearBucketsOutput)
+	return o.ApplyT(func(v *MetricBucketOptionsLinearBuckets) MetricBucketOptionsLinearBuckets {
+		if v != nil {
+			return *v
+		}
+		var ret MetricBucketOptionsLinearBuckets
+		return ret
+	}).(MetricBucketOptionsLinearBucketsOutput)
 }
 
 // Must be greater than 0.
@@ -1343,7 +1379,7 @@ func (o MetricMetricDescriptorOutput) ToMetricMetricDescriptorPtrOutput() Metric
 }
 
 func (o MetricMetricDescriptorOutput) ToMetricMetricDescriptorPtrOutputWithContext(ctx context.Context) MetricMetricDescriptorPtrOutput {
-	return o.ApplyT(func(v MetricMetricDescriptor) *MetricMetricDescriptor {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricMetricDescriptor) *MetricMetricDescriptor {
 		return &v
 	}).(MetricMetricDescriptorPtrOutput)
 }
@@ -1401,7 +1437,13 @@ func (o MetricMetricDescriptorPtrOutput) ToMetricMetricDescriptorPtrOutputWithCo
 }
 
 func (o MetricMetricDescriptorPtrOutput) Elem() MetricMetricDescriptorOutput {
-	return o.ApplyT(func(v *MetricMetricDescriptor) MetricMetricDescriptor { return *v }).(MetricMetricDescriptorOutput)
+	return o.ApplyT(func(v *MetricMetricDescriptor) MetricMetricDescriptor {
+		if v != nil {
+			return *v
+		}
+		var ret MetricMetricDescriptor
+		return ret
+	}).(MetricMetricDescriptorOutput)
 }
 
 // A concise name for the metric, which can be displayed in user interfaces. Use sentence case
@@ -1690,7 +1732,7 @@ func (o OrganizationSinkBigqueryOptionsOutput) ToOrganizationSinkBigqueryOptions
 }
 
 func (o OrganizationSinkBigqueryOptionsOutput) ToOrganizationSinkBigqueryOptionsPtrOutputWithContext(ctx context.Context) OrganizationSinkBigqueryOptionsPtrOutput {
-	return o.ApplyT(func(v OrganizationSinkBigqueryOptions) *OrganizationSinkBigqueryOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationSinkBigqueryOptions) *OrganizationSinkBigqueryOptions {
 		return &v
 	}).(OrganizationSinkBigqueryOptionsPtrOutput)
 }
@@ -1718,7 +1760,13 @@ func (o OrganizationSinkBigqueryOptionsPtrOutput) ToOrganizationSinkBigqueryOpti
 }
 
 func (o OrganizationSinkBigqueryOptionsPtrOutput) Elem() OrganizationSinkBigqueryOptionsOutput {
-	return o.ApplyT(func(v *OrganizationSinkBigqueryOptions) OrganizationSinkBigqueryOptions { return *v }).(OrganizationSinkBigqueryOptionsOutput)
+	return o.ApplyT(func(v *OrganizationSinkBigqueryOptions) OrganizationSinkBigqueryOptions {
+		if v != nil {
+			return *v
+		}
+		var ret OrganizationSinkBigqueryOptions
+		return ret
+	}).(OrganizationSinkBigqueryOptionsOutput)
 }
 
 // Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
@@ -1960,7 +2008,7 @@ func (o ProjectSinkBigqueryOptionsOutput) ToProjectSinkBigqueryOptionsPtrOutput(
 }
 
 func (o ProjectSinkBigqueryOptionsOutput) ToProjectSinkBigqueryOptionsPtrOutputWithContext(ctx context.Context) ProjectSinkBigqueryOptionsPtrOutput {
-	return o.ApplyT(func(v ProjectSinkBigqueryOptions) *ProjectSinkBigqueryOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectSinkBigqueryOptions) *ProjectSinkBigqueryOptions {
 		return &v
 	}).(ProjectSinkBigqueryOptionsPtrOutput)
 }
@@ -1988,7 +2036,13 @@ func (o ProjectSinkBigqueryOptionsPtrOutput) ToProjectSinkBigqueryOptionsPtrOutp
 }
 
 func (o ProjectSinkBigqueryOptionsPtrOutput) Elem() ProjectSinkBigqueryOptionsOutput {
-	return o.ApplyT(func(v *ProjectSinkBigqueryOptions) ProjectSinkBigqueryOptions { return *v }).(ProjectSinkBigqueryOptionsOutput)
+	return o.ApplyT(func(v *ProjectSinkBigqueryOptions) ProjectSinkBigqueryOptions {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectSinkBigqueryOptions
+		return ret
+	}).(ProjectSinkBigqueryOptionsOutput)
 }
 
 // Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).

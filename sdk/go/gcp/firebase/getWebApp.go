@@ -4,6 +4,9 @@
 package firebase
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,4 +34,63 @@ type LookupWebAppResult struct {
 	Id      string `pulumi:"id"`
 	Name    string `pulumi:"name"`
 	Project string `pulumi:"project"`
+}
+
+func LookupWebAppOutput(ctx *pulumi.Context, args LookupWebAppOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupWebAppResult, error) {
+			args := v.(LookupWebAppArgs)
+			r, err := LookupWebApp(ctx, &args, opts...)
+			return *r, err
+		}).(LookupWebAppResultOutput)
+}
+
+// A collection of arguments for invoking getWebApp.
+type LookupWebAppOutputArgs struct {
+	// The appIp of name of the Firebase webApp.
+	AppId pulumi.StringInput `pulumi:"appId"`
+}
+
+func (LookupWebAppOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupWebAppArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getWebApp.
+type LookupWebAppResultOutput struct{ *pulumi.OutputState }
+
+func (LookupWebAppResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupWebAppResult)(nil)).Elem()
+}
+
+func (o LookupWebAppResultOutput) ToLookupWebAppResultOutput() LookupWebAppResultOutput {
+	return o
+}
+
+func (o LookupWebAppResultOutput) ToLookupWebAppResultOutputWithContext(ctx context.Context) LookupWebAppResultOutput {
+	return o
+}
+
+func (o LookupWebAppResultOutput) AppId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAppResult) string { return v.AppId }).(pulumi.StringOutput)
+}
+
+func (o LookupWebAppResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAppResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupWebAppResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAppResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupWebAppResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAppResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupWebAppResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAppResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupWebAppResultOutput{})
 }

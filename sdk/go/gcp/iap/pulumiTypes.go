@@ -111,7 +111,7 @@ func (o AppEngineServiceIamBindingConditionOutput) ToAppEngineServiceIamBindingC
 }
 
 func (o AppEngineServiceIamBindingConditionOutput) ToAppEngineServiceIamBindingConditionPtrOutputWithContext(ctx context.Context) AppEngineServiceIamBindingConditionPtrOutput {
-	return o.ApplyT(func(v AppEngineServiceIamBindingCondition) *AppEngineServiceIamBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEngineServiceIamBindingCondition) *AppEngineServiceIamBindingCondition {
 		return &v
 	}).(AppEngineServiceIamBindingConditionPtrOutput)
 }
@@ -146,7 +146,13 @@ func (o AppEngineServiceIamBindingConditionPtrOutput) ToAppEngineServiceIamBindi
 }
 
 func (o AppEngineServiceIamBindingConditionPtrOutput) Elem() AppEngineServiceIamBindingConditionOutput {
-	return o.ApplyT(func(v *AppEngineServiceIamBindingCondition) AppEngineServiceIamBindingCondition { return *v }).(AppEngineServiceIamBindingConditionOutput)
+	return o.ApplyT(func(v *AppEngineServiceIamBindingCondition) AppEngineServiceIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret AppEngineServiceIamBindingCondition
+		return ret
+	}).(AppEngineServiceIamBindingConditionOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -280,7 +286,7 @@ func (o AppEngineServiceIamMemberConditionOutput) ToAppEngineServiceIamMemberCon
 }
 
 func (o AppEngineServiceIamMemberConditionOutput) ToAppEngineServiceIamMemberConditionPtrOutputWithContext(ctx context.Context) AppEngineServiceIamMemberConditionPtrOutput {
-	return o.ApplyT(func(v AppEngineServiceIamMemberCondition) *AppEngineServiceIamMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEngineServiceIamMemberCondition) *AppEngineServiceIamMemberCondition {
 		return &v
 	}).(AppEngineServiceIamMemberConditionPtrOutput)
 }
@@ -315,7 +321,13 @@ func (o AppEngineServiceIamMemberConditionPtrOutput) ToAppEngineServiceIamMember
 }
 
 func (o AppEngineServiceIamMemberConditionPtrOutput) Elem() AppEngineServiceIamMemberConditionOutput {
-	return o.ApplyT(func(v *AppEngineServiceIamMemberCondition) AppEngineServiceIamMemberCondition { return *v }).(AppEngineServiceIamMemberConditionOutput)
+	return o.ApplyT(func(v *AppEngineServiceIamMemberCondition) AppEngineServiceIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret AppEngineServiceIamMemberCondition
+		return ret
+	}).(AppEngineServiceIamMemberConditionOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -449,7 +461,7 @@ func (o AppEngineVersionIamBindingConditionOutput) ToAppEngineVersionIamBindingC
 }
 
 func (o AppEngineVersionIamBindingConditionOutput) ToAppEngineVersionIamBindingConditionPtrOutputWithContext(ctx context.Context) AppEngineVersionIamBindingConditionPtrOutput {
-	return o.ApplyT(func(v AppEngineVersionIamBindingCondition) *AppEngineVersionIamBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEngineVersionIamBindingCondition) *AppEngineVersionIamBindingCondition {
 		return &v
 	}).(AppEngineVersionIamBindingConditionPtrOutput)
 }
@@ -484,7 +496,13 @@ func (o AppEngineVersionIamBindingConditionPtrOutput) ToAppEngineVersionIamBindi
 }
 
 func (o AppEngineVersionIamBindingConditionPtrOutput) Elem() AppEngineVersionIamBindingConditionOutput {
-	return o.ApplyT(func(v *AppEngineVersionIamBindingCondition) AppEngineVersionIamBindingCondition { return *v }).(AppEngineVersionIamBindingConditionOutput)
+	return o.ApplyT(func(v *AppEngineVersionIamBindingCondition) AppEngineVersionIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret AppEngineVersionIamBindingCondition
+		return ret
+	}).(AppEngineVersionIamBindingConditionOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -618,7 +636,7 @@ func (o AppEngineVersionIamMemberConditionOutput) ToAppEngineVersionIamMemberCon
 }
 
 func (o AppEngineVersionIamMemberConditionOutput) ToAppEngineVersionIamMemberConditionPtrOutputWithContext(ctx context.Context) AppEngineVersionIamMemberConditionPtrOutput {
-	return o.ApplyT(func(v AppEngineVersionIamMemberCondition) *AppEngineVersionIamMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEngineVersionIamMemberCondition) *AppEngineVersionIamMemberCondition {
 		return &v
 	}).(AppEngineVersionIamMemberConditionPtrOutput)
 }
@@ -653,7 +671,13 @@ func (o AppEngineVersionIamMemberConditionPtrOutput) ToAppEngineVersionIamMember
 }
 
 func (o AppEngineVersionIamMemberConditionPtrOutput) Elem() AppEngineVersionIamMemberConditionOutput {
-	return o.ApplyT(func(v *AppEngineVersionIamMemberCondition) AppEngineVersionIamMemberCondition { return *v }).(AppEngineVersionIamMemberConditionOutput)
+	return o.ApplyT(func(v *AppEngineVersionIamMemberCondition) AppEngineVersionIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret AppEngineVersionIamMemberCondition
+		return ret
+	}).(AppEngineVersionIamMemberConditionOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -787,7 +811,7 @@ func (o TunnelIamBindingConditionOutput) ToTunnelIamBindingConditionPtrOutput() 
 }
 
 func (o TunnelIamBindingConditionOutput) ToTunnelIamBindingConditionPtrOutputWithContext(ctx context.Context) TunnelIamBindingConditionPtrOutput {
-	return o.ApplyT(func(v TunnelIamBindingCondition) *TunnelIamBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TunnelIamBindingCondition) *TunnelIamBindingCondition {
 		return &v
 	}).(TunnelIamBindingConditionPtrOutput)
 }
@@ -822,7 +846,13 @@ func (o TunnelIamBindingConditionPtrOutput) ToTunnelIamBindingConditionPtrOutput
 }
 
 func (o TunnelIamBindingConditionPtrOutput) Elem() TunnelIamBindingConditionOutput {
-	return o.ApplyT(func(v *TunnelIamBindingCondition) TunnelIamBindingCondition { return *v }).(TunnelIamBindingConditionOutput)
+	return o.ApplyT(func(v *TunnelIamBindingCondition) TunnelIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret TunnelIamBindingCondition
+		return ret
+	}).(TunnelIamBindingConditionOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -956,7 +986,7 @@ func (o TunnelIamMemberConditionOutput) ToTunnelIamMemberConditionPtrOutput() Tu
 }
 
 func (o TunnelIamMemberConditionOutput) ToTunnelIamMemberConditionPtrOutputWithContext(ctx context.Context) TunnelIamMemberConditionPtrOutput {
-	return o.ApplyT(func(v TunnelIamMemberCondition) *TunnelIamMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TunnelIamMemberCondition) *TunnelIamMemberCondition {
 		return &v
 	}).(TunnelIamMemberConditionPtrOutput)
 }
@@ -991,7 +1021,13 @@ func (o TunnelIamMemberConditionPtrOutput) ToTunnelIamMemberConditionPtrOutputWi
 }
 
 func (o TunnelIamMemberConditionPtrOutput) Elem() TunnelIamMemberConditionOutput {
-	return o.ApplyT(func(v *TunnelIamMemberCondition) TunnelIamMemberCondition { return *v }).(TunnelIamMemberConditionOutput)
+	return o.ApplyT(func(v *TunnelIamMemberCondition) TunnelIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret TunnelIamMemberCondition
+		return ret
+	}).(TunnelIamMemberConditionOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1125,7 +1161,7 @@ func (o TunnelInstanceIAMBindingConditionOutput) ToTunnelInstanceIAMBindingCondi
 }
 
 func (o TunnelInstanceIAMBindingConditionOutput) ToTunnelInstanceIAMBindingConditionPtrOutputWithContext(ctx context.Context) TunnelInstanceIAMBindingConditionPtrOutput {
-	return o.ApplyT(func(v TunnelInstanceIAMBindingCondition) *TunnelInstanceIAMBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TunnelInstanceIAMBindingCondition) *TunnelInstanceIAMBindingCondition {
 		return &v
 	}).(TunnelInstanceIAMBindingConditionPtrOutput)
 }
@@ -1160,7 +1196,13 @@ func (o TunnelInstanceIAMBindingConditionPtrOutput) ToTunnelInstanceIAMBindingCo
 }
 
 func (o TunnelInstanceIAMBindingConditionPtrOutput) Elem() TunnelInstanceIAMBindingConditionOutput {
-	return o.ApplyT(func(v *TunnelInstanceIAMBindingCondition) TunnelInstanceIAMBindingCondition { return *v }).(TunnelInstanceIAMBindingConditionOutput)
+	return o.ApplyT(func(v *TunnelInstanceIAMBindingCondition) TunnelInstanceIAMBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret TunnelInstanceIAMBindingCondition
+		return ret
+	}).(TunnelInstanceIAMBindingConditionOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1294,7 +1336,7 @@ func (o TunnelInstanceIAMMemberConditionOutput) ToTunnelInstanceIAMMemberConditi
 }
 
 func (o TunnelInstanceIAMMemberConditionOutput) ToTunnelInstanceIAMMemberConditionPtrOutputWithContext(ctx context.Context) TunnelInstanceIAMMemberConditionPtrOutput {
-	return o.ApplyT(func(v TunnelInstanceIAMMemberCondition) *TunnelInstanceIAMMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TunnelInstanceIAMMemberCondition) *TunnelInstanceIAMMemberCondition {
 		return &v
 	}).(TunnelInstanceIAMMemberConditionPtrOutput)
 }
@@ -1329,7 +1371,13 @@ func (o TunnelInstanceIAMMemberConditionPtrOutput) ToTunnelInstanceIAMMemberCond
 }
 
 func (o TunnelInstanceIAMMemberConditionPtrOutput) Elem() TunnelInstanceIAMMemberConditionOutput {
-	return o.ApplyT(func(v *TunnelInstanceIAMMemberCondition) TunnelInstanceIAMMemberCondition { return *v }).(TunnelInstanceIAMMemberConditionOutput)
+	return o.ApplyT(func(v *TunnelInstanceIAMMemberCondition) TunnelInstanceIAMMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret TunnelInstanceIAMMemberCondition
+		return ret
+	}).(TunnelInstanceIAMMemberConditionOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1463,7 +1511,7 @@ func (o WebBackendServiceIamBindingConditionOutput) ToWebBackendServiceIamBindin
 }
 
 func (o WebBackendServiceIamBindingConditionOutput) ToWebBackendServiceIamBindingConditionPtrOutputWithContext(ctx context.Context) WebBackendServiceIamBindingConditionPtrOutput {
-	return o.ApplyT(func(v WebBackendServiceIamBindingCondition) *WebBackendServiceIamBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebBackendServiceIamBindingCondition) *WebBackendServiceIamBindingCondition {
 		return &v
 	}).(WebBackendServiceIamBindingConditionPtrOutput)
 }
@@ -1498,7 +1546,13 @@ func (o WebBackendServiceIamBindingConditionPtrOutput) ToWebBackendServiceIamBin
 }
 
 func (o WebBackendServiceIamBindingConditionPtrOutput) Elem() WebBackendServiceIamBindingConditionOutput {
-	return o.ApplyT(func(v *WebBackendServiceIamBindingCondition) WebBackendServiceIamBindingCondition { return *v }).(WebBackendServiceIamBindingConditionOutput)
+	return o.ApplyT(func(v *WebBackendServiceIamBindingCondition) WebBackendServiceIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret WebBackendServiceIamBindingCondition
+		return ret
+	}).(WebBackendServiceIamBindingConditionOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1632,7 +1686,7 @@ func (o WebBackendServiceIamMemberConditionOutput) ToWebBackendServiceIamMemberC
 }
 
 func (o WebBackendServiceIamMemberConditionOutput) ToWebBackendServiceIamMemberConditionPtrOutputWithContext(ctx context.Context) WebBackendServiceIamMemberConditionPtrOutput {
-	return o.ApplyT(func(v WebBackendServiceIamMemberCondition) *WebBackendServiceIamMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebBackendServiceIamMemberCondition) *WebBackendServiceIamMemberCondition {
 		return &v
 	}).(WebBackendServiceIamMemberConditionPtrOutput)
 }
@@ -1667,7 +1721,13 @@ func (o WebBackendServiceIamMemberConditionPtrOutput) ToWebBackendServiceIamMemb
 }
 
 func (o WebBackendServiceIamMemberConditionPtrOutput) Elem() WebBackendServiceIamMemberConditionOutput {
-	return o.ApplyT(func(v *WebBackendServiceIamMemberCondition) WebBackendServiceIamMemberCondition { return *v }).(WebBackendServiceIamMemberConditionOutput)
+	return o.ApplyT(func(v *WebBackendServiceIamMemberCondition) WebBackendServiceIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret WebBackendServiceIamMemberCondition
+		return ret
+	}).(WebBackendServiceIamMemberConditionOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1801,7 +1861,7 @@ func (o WebIamBindingConditionOutput) ToWebIamBindingConditionPtrOutput() WebIam
 }
 
 func (o WebIamBindingConditionOutput) ToWebIamBindingConditionPtrOutputWithContext(ctx context.Context) WebIamBindingConditionPtrOutput {
-	return o.ApplyT(func(v WebIamBindingCondition) *WebIamBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebIamBindingCondition) *WebIamBindingCondition {
 		return &v
 	}).(WebIamBindingConditionPtrOutput)
 }
@@ -1836,7 +1896,13 @@ func (o WebIamBindingConditionPtrOutput) ToWebIamBindingConditionPtrOutputWithCo
 }
 
 func (o WebIamBindingConditionPtrOutput) Elem() WebIamBindingConditionOutput {
-	return o.ApplyT(func(v *WebIamBindingCondition) WebIamBindingCondition { return *v }).(WebIamBindingConditionOutput)
+	return o.ApplyT(func(v *WebIamBindingCondition) WebIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret WebIamBindingCondition
+		return ret
+	}).(WebIamBindingConditionOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1970,7 +2036,7 @@ func (o WebIamMemberConditionOutput) ToWebIamMemberConditionPtrOutput() WebIamMe
 }
 
 func (o WebIamMemberConditionOutput) ToWebIamMemberConditionPtrOutputWithContext(ctx context.Context) WebIamMemberConditionPtrOutput {
-	return o.ApplyT(func(v WebIamMemberCondition) *WebIamMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebIamMemberCondition) *WebIamMemberCondition {
 		return &v
 	}).(WebIamMemberConditionPtrOutput)
 }
@@ -2005,7 +2071,13 @@ func (o WebIamMemberConditionPtrOutput) ToWebIamMemberConditionPtrOutputWithCont
 }
 
 func (o WebIamMemberConditionPtrOutput) Elem() WebIamMemberConditionOutput {
-	return o.ApplyT(func(v *WebIamMemberCondition) WebIamMemberCondition { return *v }).(WebIamMemberConditionOutput)
+	return o.ApplyT(func(v *WebIamMemberCondition) WebIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret WebIamMemberCondition
+		return ret
+	}).(WebIamMemberConditionOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -2139,7 +2211,7 @@ func (o WebTypeAppEngingIamBindingConditionOutput) ToWebTypeAppEngingIamBindingC
 }
 
 func (o WebTypeAppEngingIamBindingConditionOutput) ToWebTypeAppEngingIamBindingConditionPtrOutputWithContext(ctx context.Context) WebTypeAppEngingIamBindingConditionPtrOutput {
-	return o.ApplyT(func(v WebTypeAppEngingIamBindingCondition) *WebTypeAppEngingIamBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebTypeAppEngingIamBindingCondition) *WebTypeAppEngingIamBindingCondition {
 		return &v
 	}).(WebTypeAppEngingIamBindingConditionPtrOutput)
 }
@@ -2174,7 +2246,13 @@ func (o WebTypeAppEngingIamBindingConditionPtrOutput) ToWebTypeAppEngingIamBindi
 }
 
 func (o WebTypeAppEngingIamBindingConditionPtrOutput) Elem() WebTypeAppEngingIamBindingConditionOutput {
-	return o.ApplyT(func(v *WebTypeAppEngingIamBindingCondition) WebTypeAppEngingIamBindingCondition { return *v }).(WebTypeAppEngingIamBindingConditionOutput)
+	return o.ApplyT(func(v *WebTypeAppEngingIamBindingCondition) WebTypeAppEngingIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret WebTypeAppEngingIamBindingCondition
+		return ret
+	}).(WebTypeAppEngingIamBindingConditionOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -2308,7 +2386,7 @@ func (o WebTypeAppEngingIamMemberConditionOutput) ToWebTypeAppEngingIamMemberCon
 }
 
 func (o WebTypeAppEngingIamMemberConditionOutput) ToWebTypeAppEngingIamMemberConditionPtrOutputWithContext(ctx context.Context) WebTypeAppEngingIamMemberConditionPtrOutput {
-	return o.ApplyT(func(v WebTypeAppEngingIamMemberCondition) *WebTypeAppEngingIamMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebTypeAppEngingIamMemberCondition) *WebTypeAppEngingIamMemberCondition {
 		return &v
 	}).(WebTypeAppEngingIamMemberConditionPtrOutput)
 }
@@ -2343,7 +2421,13 @@ func (o WebTypeAppEngingIamMemberConditionPtrOutput) ToWebTypeAppEngingIamMember
 }
 
 func (o WebTypeAppEngingIamMemberConditionPtrOutput) Elem() WebTypeAppEngingIamMemberConditionOutput {
-	return o.ApplyT(func(v *WebTypeAppEngingIamMemberCondition) WebTypeAppEngingIamMemberCondition { return *v }).(WebTypeAppEngingIamMemberConditionOutput)
+	return o.ApplyT(func(v *WebTypeAppEngingIamMemberCondition) WebTypeAppEngingIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret WebTypeAppEngingIamMemberCondition
+		return ret
+	}).(WebTypeAppEngingIamMemberConditionOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -2477,7 +2561,7 @@ func (o WebTypeComputeIamBindingConditionOutput) ToWebTypeComputeIamBindingCondi
 }
 
 func (o WebTypeComputeIamBindingConditionOutput) ToWebTypeComputeIamBindingConditionPtrOutputWithContext(ctx context.Context) WebTypeComputeIamBindingConditionPtrOutput {
-	return o.ApplyT(func(v WebTypeComputeIamBindingCondition) *WebTypeComputeIamBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebTypeComputeIamBindingCondition) *WebTypeComputeIamBindingCondition {
 		return &v
 	}).(WebTypeComputeIamBindingConditionPtrOutput)
 }
@@ -2512,7 +2596,13 @@ func (o WebTypeComputeIamBindingConditionPtrOutput) ToWebTypeComputeIamBindingCo
 }
 
 func (o WebTypeComputeIamBindingConditionPtrOutput) Elem() WebTypeComputeIamBindingConditionOutput {
-	return o.ApplyT(func(v *WebTypeComputeIamBindingCondition) WebTypeComputeIamBindingCondition { return *v }).(WebTypeComputeIamBindingConditionOutput)
+	return o.ApplyT(func(v *WebTypeComputeIamBindingCondition) WebTypeComputeIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret WebTypeComputeIamBindingCondition
+		return ret
+	}).(WebTypeComputeIamBindingConditionOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -2646,7 +2736,7 @@ func (o WebTypeComputeIamMemberConditionOutput) ToWebTypeComputeIamMemberConditi
 }
 
 func (o WebTypeComputeIamMemberConditionOutput) ToWebTypeComputeIamMemberConditionPtrOutputWithContext(ctx context.Context) WebTypeComputeIamMemberConditionPtrOutput {
-	return o.ApplyT(func(v WebTypeComputeIamMemberCondition) *WebTypeComputeIamMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebTypeComputeIamMemberCondition) *WebTypeComputeIamMemberCondition {
 		return &v
 	}).(WebTypeComputeIamMemberConditionPtrOutput)
 }
@@ -2681,7 +2771,13 @@ func (o WebTypeComputeIamMemberConditionPtrOutput) ToWebTypeComputeIamMemberCond
 }
 
 func (o WebTypeComputeIamMemberConditionPtrOutput) Elem() WebTypeComputeIamMemberConditionOutput {
-	return o.ApplyT(func(v *WebTypeComputeIamMemberCondition) WebTypeComputeIamMemberCondition { return *v }).(WebTypeComputeIamMemberConditionOutput)
+	return o.ApplyT(func(v *WebTypeComputeIamMemberCondition) WebTypeComputeIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret WebTypeComputeIamMemberCondition
+		return ret
+	}).(WebTypeComputeIamMemberConditionOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.

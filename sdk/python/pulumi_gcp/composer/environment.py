@@ -289,13 +289,13 @@ class Environment(pulumi.CustomResource):
             region="us-central1",
             config=gcp.composer.EnvironmentConfigArgs(
                 node_count=4,
-                node_config={
-                    "zone": "us-central1-a",
-                    "machine_type": "e2-medium",
-                    "network": test_network.id,
-                    "subnetwork": test_subnetwork.id,
-                    "service_account": test_account.name,
-                },
+                node_config=gcp.composer.EnvironmentConfigNodeConfigArgs(
+                    zone="us-central1-a",
+                    machine_type="e2-medium",
+                    network=test_network.id,
+                    subnetwork=test_subnetwork.id,
+                    service_account=test_account.name,
+                ),
             ))
         composer_worker = gcp.projects.IAMMember("composer-worker",
             role="roles/composer.worker",
@@ -417,13 +417,13 @@ class Environment(pulumi.CustomResource):
             region="us-central1",
             config=gcp.composer.EnvironmentConfigArgs(
                 node_count=4,
-                node_config={
-                    "zone": "us-central1-a",
-                    "machine_type": "e2-medium",
-                    "network": test_network.id,
-                    "subnetwork": test_subnetwork.id,
-                    "service_account": test_account.name,
-                },
+                node_config=gcp.composer.EnvironmentConfigNodeConfigArgs(
+                    zone="us-central1-a",
+                    machine_type="e2-medium",
+                    network=test_network.id,
+                    subnetwork=test_subnetwork.id,
+                    service_account=test_account.name,
+                ),
             ))
         composer_worker = gcp.projects.IAMMember("composer-worker",
             role="roles/composer.worker",

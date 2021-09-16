@@ -12,6 +12,7 @@ __all__ = [
     'GetSecretVersionResult',
     'AwaitableGetSecretVersionResult',
     'get_secret_version',
+    'get_secret_version_output',
 ]
 
 warnings.warn("""gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion""", DeprecationWarning)
@@ -144,3 +145,15 @@ def get_secret_version(project: Optional[str] = None,
         secret=__ret__.secret,
         secret_data=__ret__.secret_data,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_secret_version)
+def get_secret_version_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                              secret: Optional[pulumi.Input[str]] = None,
+                              version: Optional[pulumi.Input[Optional[str]]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretVersionResult]:
+    """
+    Use this data source to access information about an existing resource.
+    """
+    pulumi.log.warn("""get_secret_version is deprecated: gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion""")
+    ...

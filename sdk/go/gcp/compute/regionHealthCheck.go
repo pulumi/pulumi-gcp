@@ -819,7 +819,7 @@ type RegionHealthCheckArrayInput interface {
 type RegionHealthCheckArray []RegionHealthCheckInput
 
 func (RegionHealthCheckArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*RegionHealthCheck)(nil))
+	return reflect.TypeOf((*[]*RegionHealthCheck)(nil)).Elem()
 }
 
 func (i RegionHealthCheckArray) ToRegionHealthCheckArrayOutput() RegionHealthCheckArrayOutput {
@@ -844,7 +844,7 @@ type RegionHealthCheckMapInput interface {
 type RegionHealthCheckMap map[string]RegionHealthCheckInput
 
 func (RegionHealthCheckMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*RegionHealthCheck)(nil))
+	return reflect.TypeOf((*map[string]*RegionHealthCheck)(nil)).Elem()
 }
 
 func (i RegionHealthCheckMap) ToRegionHealthCheckMapOutput() RegionHealthCheckMapOutput {
@@ -855,9 +855,7 @@ func (i RegionHealthCheckMap) ToRegionHealthCheckMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(RegionHealthCheckMapOutput)
 }
 
-type RegionHealthCheckOutput struct {
-	*pulumi.OutputState
-}
+type RegionHealthCheckOutput struct{ *pulumi.OutputState }
 
 func (RegionHealthCheckOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RegionHealthCheck)(nil))
@@ -876,14 +874,12 @@ func (o RegionHealthCheckOutput) ToRegionHealthCheckPtrOutput() RegionHealthChec
 }
 
 func (o RegionHealthCheckOutput) ToRegionHealthCheckPtrOutputWithContext(ctx context.Context) RegionHealthCheckPtrOutput {
-	return o.ApplyT(func(v RegionHealthCheck) *RegionHealthCheck {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionHealthCheck) *RegionHealthCheck {
 		return &v
 	}).(RegionHealthCheckPtrOutput)
 }
 
-type RegionHealthCheckPtrOutput struct {
-	*pulumi.OutputState
-}
+type RegionHealthCheckPtrOutput struct{ *pulumi.OutputState }
 
 func (RegionHealthCheckPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**RegionHealthCheck)(nil))
@@ -895,6 +891,16 @@ func (o RegionHealthCheckPtrOutput) ToRegionHealthCheckPtrOutput() RegionHealthC
 
 func (o RegionHealthCheckPtrOutput) ToRegionHealthCheckPtrOutputWithContext(ctx context.Context) RegionHealthCheckPtrOutput {
 	return o
+}
+
+func (o RegionHealthCheckPtrOutput) Elem() RegionHealthCheckOutput {
+	return o.ApplyT(func(v *RegionHealthCheck) RegionHealthCheck {
+		if v != nil {
+			return *v
+		}
+		var ret RegionHealthCheck
+		return ret
+	}).(RegionHealthCheckOutput)
 }
 
 type RegionHealthCheckArrayOutput struct{ *pulumi.OutputState }

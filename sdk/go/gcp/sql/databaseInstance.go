@@ -572,7 +572,7 @@ type DatabaseInstanceArrayInput interface {
 type DatabaseInstanceArray []DatabaseInstanceInput
 
 func (DatabaseInstanceArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*DatabaseInstance)(nil))
+	return reflect.TypeOf((*[]*DatabaseInstance)(nil)).Elem()
 }
 
 func (i DatabaseInstanceArray) ToDatabaseInstanceArrayOutput() DatabaseInstanceArrayOutput {
@@ -597,7 +597,7 @@ type DatabaseInstanceMapInput interface {
 type DatabaseInstanceMap map[string]DatabaseInstanceInput
 
 func (DatabaseInstanceMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*DatabaseInstance)(nil))
+	return reflect.TypeOf((*map[string]*DatabaseInstance)(nil)).Elem()
 }
 
 func (i DatabaseInstanceMap) ToDatabaseInstanceMapOutput() DatabaseInstanceMapOutput {
@@ -608,9 +608,7 @@ func (i DatabaseInstanceMap) ToDatabaseInstanceMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceMapOutput)
 }
 
-type DatabaseInstanceOutput struct {
-	*pulumi.OutputState
-}
+type DatabaseInstanceOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DatabaseInstance)(nil))
@@ -629,14 +627,12 @@ func (o DatabaseInstanceOutput) ToDatabaseInstancePtrOutput() DatabaseInstancePt
 }
 
 func (o DatabaseInstanceOutput) ToDatabaseInstancePtrOutputWithContext(ctx context.Context) DatabaseInstancePtrOutput {
-	return o.ApplyT(func(v DatabaseInstance) *DatabaseInstance {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseInstance) *DatabaseInstance {
 		return &v
 	}).(DatabaseInstancePtrOutput)
 }
 
-type DatabaseInstancePtrOutput struct {
-	*pulumi.OutputState
-}
+type DatabaseInstancePtrOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstancePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DatabaseInstance)(nil))
@@ -648,6 +644,16 @@ func (o DatabaseInstancePtrOutput) ToDatabaseInstancePtrOutput() DatabaseInstanc
 
 func (o DatabaseInstancePtrOutput) ToDatabaseInstancePtrOutputWithContext(ctx context.Context) DatabaseInstancePtrOutput {
 	return o
+}
+
+func (o DatabaseInstancePtrOutput) Elem() DatabaseInstanceOutput {
+	return o.ApplyT(func(v *DatabaseInstance) DatabaseInstance {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseInstance
+		return ret
+	}).(DatabaseInstanceOutput)
 }
 
 type DatabaseInstanceArrayOutput struct{ *pulumi.OutputState }

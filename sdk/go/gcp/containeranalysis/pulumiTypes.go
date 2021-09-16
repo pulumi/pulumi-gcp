@@ -119,7 +119,7 @@ func (o NoteAttestationAuthorityOutput) ToNoteAttestationAuthorityPtrOutput() No
 }
 
 func (o NoteAttestationAuthorityOutput) ToNoteAttestationAuthorityPtrOutputWithContext(ctx context.Context) NoteAttestationAuthorityPtrOutput {
-	return o.ApplyT(func(v NoteAttestationAuthority) *NoteAttestationAuthority {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NoteAttestationAuthority) *NoteAttestationAuthority {
 		return &v
 	}).(NoteAttestationAuthorityPtrOutput)
 }
@@ -152,7 +152,13 @@ func (o NoteAttestationAuthorityPtrOutput) ToNoteAttestationAuthorityPtrOutputWi
 }
 
 func (o NoteAttestationAuthorityPtrOutput) Elem() NoteAttestationAuthorityOutput {
-	return o.ApplyT(func(v *NoteAttestationAuthority) NoteAttestationAuthority { return *v }).(NoteAttestationAuthorityOutput)
+	return o.ApplyT(func(v *NoteAttestationAuthority) NoteAttestationAuthority {
+		if v != nil {
+			return *v
+		}
+		var ret NoteAttestationAuthority
+		return ret
+	}).(NoteAttestationAuthorityOutput)
 }
 
 // This submessage provides human-readable hints about the purpose of
@@ -268,7 +274,7 @@ func (o NoteAttestationAuthorityHintOutput) ToNoteAttestationAuthorityHintPtrOut
 }
 
 func (o NoteAttestationAuthorityHintOutput) ToNoteAttestationAuthorityHintPtrOutputWithContext(ctx context.Context) NoteAttestationAuthorityHintPtrOutput {
-	return o.ApplyT(func(v NoteAttestationAuthorityHint) *NoteAttestationAuthorityHint {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NoteAttestationAuthorityHint) *NoteAttestationAuthorityHint {
 		return &v
 	}).(NoteAttestationAuthorityHintPtrOutput)
 }
@@ -294,7 +300,13 @@ func (o NoteAttestationAuthorityHintPtrOutput) ToNoteAttestationAuthorityHintPtr
 }
 
 func (o NoteAttestationAuthorityHintPtrOutput) Elem() NoteAttestationAuthorityHintOutput {
-	return o.ApplyT(func(v *NoteAttestationAuthorityHint) NoteAttestationAuthorityHint { return *v }).(NoteAttestationAuthorityHintOutput)
+	return o.ApplyT(func(v *NoteAttestationAuthorityHint) NoteAttestationAuthorityHint {
+		if v != nil {
+			return *v
+		}
+		var ret NoteAttestationAuthorityHint
+		return ret
+	}).(NoteAttestationAuthorityHintOutput)
 }
 
 // The human readable name of this Attestation Authority, for
@@ -523,7 +535,7 @@ func (o OccurenceAttestationOutput) ToOccurenceAttestationPtrOutput() OccurenceA
 }
 
 func (o OccurenceAttestationOutput) ToOccurenceAttestationPtrOutputWithContext(ctx context.Context) OccurenceAttestationPtrOutput {
-	return o.ApplyT(func(v OccurenceAttestation) *OccurenceAttestation {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OccurenceAttestation) *OccurenceAttestation {
 		return &v
 	}).(OccurenceAttestationPtrOutput)
 }
@@ -559,7 +571,13 @@ func (o OccurenceAttestationPtrOutput) ToOccurenceAttestationPtrOutputWithContex
 }
 
 func (o OccurenceAttestationPtrOutput) Elem() OccurenceAttestationOutput {
-	return o.ApplyT(func(v *OccurenceAttestation) OccurenceAttestation { return *v }).(OccurenceAttestationOutput)
+	return o.ApplyT(func(v *OccurenceAttestation) OccurenceAttestation {
+		if v != nil {
+			return *v
+		}
+		var ret OccurenceAttestation
+		return ret
+	}).(OccurenceAttestationOutput)
 }
 
 // The serialized payload that is verified by one or

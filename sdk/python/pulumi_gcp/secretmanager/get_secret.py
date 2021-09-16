@@ -13,6 +13,7 @@ __all__ = [
     'GetSecretResult',
     'AwaitableGetSecretResult',
     'get_secret',
+    'get_secret_output',
 ]
 
 @pulumi.output_type
@@ -173,3 +174,26 @@ def get_secret(project: Optional[str] = None,
         secret_id=__ret__.secret_id,
         topics=__ret__.topics,
         ttl=__ret__.ttl)
+
+
+@_utilities.lift_output_func(get_secret)
+def get_secret_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                      secret_id: Optional[pulumi.Input[str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretResult]:
+    """
+    Use this data source to get information about a Secret Manager Secret
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    qa = gcp.secretmanager.get_secret(secret_id="foobar")
+    ```
+
+
+    :param str project: The ID of the project in which the resource belongs.
+    :param str secret_id: The name of the secret.
+    """
+    ...

@@ -374,7 +374,7 @@ type CxAgentArrayInput interface {
 type CxAgentArray []CxAgentInput
 
 func (CxAgentArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*CxAgent)(nil))
+	return reflect.TypeOf((*[]*CxAgent)(nil)).Elem()
 }
 
 func (i CxAgentArray) ToCxAgentArrayOutput() CxAgentArrayOutput {
@@ -399,7 +399,7 @@ type CxAgentMapInput interface {
 type CxAgentMap map[string]CxAgentInput
 
 func (CxAgentMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*CxAgent)(nil))
+	return reflect.TypeOf((*map[string]*CxAgent)(nil)).Elem()
 }
 
 func (i CxAgentMap) ToCxAgentMapOutput() CxAgentMapOutput {
@@ -410,9 +410,7 @@ func (i CxAgentMap) ToCxAgentMapOutputWithContext(ctx context.Context) CxAgentMa
 	return pulumi.ToOutputWithContext(ctx, i).(CxAgentMapOutput)
 }
 
-type CxAgentOutput struct {
-	*pulumi.OutputState
-}
+type CxAgentOutput struct{ *pulumi.OutputState }
 
 func (CxAgentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CxAgent)(nil))
@@ -431,14 +429,12 @@ func (o CxAgentOutput) ToCxAgentPtrOutput() CxAgentPtrOutput {
 }
 
 func (o CxAgentOutput) ToCxAgentPtrOutputWithContext(ctx context.Context) CxAgentPtrOutput {
-	return o.ApplyT(func(v CxAgent) *CxAgent {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxAgent) *CxAgent {
 		return &v
 	}).(CxAgentPtrOutput)
 }
 
-type CxAgentPtrOutput struct {
-	*pulumi.OutputState
-}
+type CxAgentPtrOutput struct{ *pulumi.OutputState }
 
 func (CxAgentPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**CxAgent)(nil))
@@ -450,6 +446,16 @@ func (o CxAgentPtrOutput) ToCxAgentPtrOutput() CxAgentPtrOutput {
 
 func (o CxAgentPtrOutput) ToCxAgentPtrOutputWithContext(ctx context.Context) CxAgentPtrOutput {
 	return o
+}
+
+func (o CxAgentPtrOutput) Elem() CxAgentOutput {
+	return o.ApplyT(func(v *CxAgent) CxAgent {
+		if v != nil {
+			return *v
+		}
+		var ret CxAgent
+		return ret
+	}).(CxAgentOutput)
 }
 
 type CxAgentArrayOutput struct{ *pulumi.OutputState }

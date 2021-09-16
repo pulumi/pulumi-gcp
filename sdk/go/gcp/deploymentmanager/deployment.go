@@ -384,7 +384,7 @@ type DeploymentArrayInput interface {
 type DeploymentArray []DeploymentInput
 
 func (DeploymentArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Deployment)(nil))
+	return reflect.TypeOf((*[]*Deployment)(nil)).Elem()
 }
 
 func (i DeploymentArray) ToDeploymentArrayOutput() DeploymentArrayOutput {
@@ -409,7 +409,7 @@ type DeploymentMapInput interface {
 type DeploymentMap map[string]DeploymentInput
 
 func (DeploymentMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Deployment)(nil))
+	return reflect.TypeOf((*map[string]*Deployment)(nil)).Elem()
 }
 
 func (i DeploymentMap) ToDeploymentMapOutput() DeploymentMapOutput {
@@ -420,9 +420,7 @@ func (i DeploymentMap) ToDeploymentMapOutputWithContext(ctx context.Context) Dep
 	return pulumi.ToOutputWithContext(ctx, i).(DeploymentMapOutput)
 }
 
-type DeploymentOutput struct {
-	*pulumi.OutputState
-}
+type DeploymentOutput struct{ *pulumi.OutputState }
 
 func (DeploymentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Deployment)(nil))
@@ -441,14 +439,12 @@ func (o DeploymentOutput) ToDeploymentPtrOutput() DeploymentPtrOutput {
 }
 
 func (o DeploymentOutput) ToDeploymentPtrOutputWithContext(ctx context.Context) DeploymentPtrOutput {
-	return o.ApplyT(func(v Deployment) *Deployment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Deployment) *Deployment {
 		return &v
 	}).(DeploymentPtrOutput)
 }
 
-type DeploymentPtrOutput struct {
-	*pulumi.OutputState
-}
+type DeploymentPtrOutput struct{ *pulumi.OutputState }
 
 func (DeploymentPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Deployment)(nil))
@@ -460,6 +456,16 @@ func (o DeploymentPtrOutput) ToDeploymentPtrOutput() DeploymentPtrOutput {
 
 func (o DeploymentPtrOutput) ToDeploymentPtrOutputWithContext(ctx context.Context) DeploymentPtrOutput {
 	return o
+}
+
+func (o DeploymentPtrOutput) Elem() DeploymentOutput {
+	return o.ApplyT(func(v *Deployment) Deployment {
+		if v != nil {
+			return *v
+		}
+		var ret Deployment
+		return ret
+	}).(DeploymentOutput)
 }
 
 type DeploymentArrayOutput struct{ *pulumi.OutputState }

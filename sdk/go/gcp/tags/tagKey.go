@@ -243,7 +243,7 @@ type TagKeyArrayInput interface {
 type TagKeyArray []TagKeyInput
 
 func (TagKeyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TagKey)(nil))
+	return reflect.TypeOf((*[]*TagKey)(nil)).Elem()
 }
 
 func (i TagKeyArray) ToTagKeyArrayOutput() TagKeyArrayOutput {
@@ -268,7 +268,7 @@ type TagKeyMapInput interface {
 type TagKeyMap map[string]TagKeyInput
 
 func (TagKeyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TagKey)(nil))
+	return reflect.TypeOf((*map[string]*TagKey)(nil)).Elem()
 }
 
 func (i TagKeyMap) ToTagKeyMapOutput() TagKeyMapOutput {
@@ -279,9 +279,7 @@ func (i TagKeyMap) ToTagKeyMapOutputWithContext(ctx context.Context) TagKeyMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(TagKeyMapOutput)
 }
 
-type TagKeyOutput struct {
-	*pulumi.OutputState
-}
+type TagKeyOutput struct{ *pulumi.OutputState }
 
 func (TagKeyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TagKey)(nil))
@@ -300,14 +298,12 @@ func (o TagKeyOutput) ToTagKeyPtrOutput() TagKeyPtrOutput {
 }
 
 func (o TagKeyOutput) ToTagKeyPtrOutputWithContext(ctx context.Context) TagKeyPtrOutput {
-	return o.ApplyT(func(v TagKey) *TagKey {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TagKey) *TagKey {
 		return &v
 	}).(TagKeyPtrOutput)
 }
 
-type TagKeyPtrOutput struct {
-	*pulumi.OutputState
-}
+type TagKeyPtrOutput struct{ *pulumi.OutputState }
 
 func (TagKeyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TagKey)(nil))
@@ -319,6 +315,16 @@ func (o TagKeyPtrOutput) ToTagKeyPtrOutput() TagKeyPtrOutput {
 
 func (o TagKeyPtrOutput) ToTagKeyPtrOutputWithContext(ctx context.Context) TagKeyPtrOutput {
 	return o
+}
+
+func (o TagKeyPtrOutput) Elem() TagKeyOutput {
+	return o.ApplyT(func(v *TagKey) TagKey {
+		if v != nil {
+			return *v
+		}
+		var ret TagKey
+		return ret
+	}).(TagKeyOutput)
 }
 
 type TagKeyArrayOutput struct{ *pulumi.OutputState }

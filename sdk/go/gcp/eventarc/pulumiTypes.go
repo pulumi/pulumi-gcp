@@ -103,7 +103,7 @@ func (o TriggerDestinationOutput) ToTriggerDestinationPtrOutput() TriggerDestina
 }
 
 func (o TriggerDestinationOutput) ToTriggerDestinationPtrOutputWithContext(ctx context.Context) TriggerDestinationPtrOutput {
-	return o.ApplyT(func(v TriggerDestination) *TriggerDestination {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerDestination) *TriggerDestination {
 		return &v
 	}).(TriggerDestinationPtrOutput)
 }
@@ -128,7 +128,13 @@ func (o TriggerDestinationPtrOutput) ToTriggerDestinationPtrOutputWithContext(ct
 }
 
 func (o TriggerDestinationPtrOutput) Elem() TriggerDestinationOutput {
-	return o.ApplyT(func(v *TriggerDestination) TriggerDestination { return *v }).(TriggerDestinationOutput)
+	return o.ApplyT(func(v *TriggerDestination) TriggerDestination {
+		if v != nil {
+			return *v
+		}
+		var ret TriggerDestination
+		return ret
+	}).(TriggerDestinationOutput)
 }
 
 // Cloud Run fully-managed service that receives the events. The service should be running in the same project as the trigger.
@@ -242,7 +248,7 @@ func (o TriggerDestinationCloudRunServiceOutput) ToTriggerDestinationCloudRunSer
 }
 
 func (o TriggerDestinationCloudRunServiceOutput) ToTriggerDestinationCloudRunServicePtrOutputWithContext(ctx context.Context) TriggerDestinationCloudRunServicePtrOutput {
-	return o.ApplyT(func(v TriggerDestinationCloudRunService) *TriggerDestinationCloudRunService {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerDestinationCloudRunService) *TriggerDestinationCloudRunService {
 		return &v
 	}).(TriggerDestinationCloudRunServicePtrOutput)
 }
@@ -277,7 +283,13 @@ func (o TriggerDestinationCloudRunServicePtrOutput) ToTriggerDestinationCloudRun
 }
 
 func (o TriggerDestinationCloudRunServicePtrOutput) Elem() TriggerDestinationCloudRunServiceOutput {
-	return o.ApplyT(func(v *TriggerDestinationCloudRunService) TriggerDestinationCloudRunService { return *v }).(TriggerDestinationCloudRunServiceOutput)
+	return o.ApplyT(func(v *TriggerDestinationCloudRunService) TriggerDestinationCloudRunService {
+		if v != nil {
+			return *v
+		}
+		var ret TriggerDestinationCloudRunService
+		return ret
+	}).(TriggerDestinationCloudRunServiceOutput)
 }
 
 // Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".

@@ -4,6 +4,9 @@
 package compute
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -68,4 +71,65 @@ type GetNodeTypesResult struct {
 	Names   []string `pulumi:"names"`
 	Project string   `pulumi:"project"`
 	Zone    string   `pulumi:"zone"`
+}
+
+func GetNodeTypesOutput(ctx *pulumi.Context, args GetNodeTypesOutputArgs, opts ...pulumi.InvokeOption) GetNodeTypesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetNodeTypesResult, error) {
+			args := v.(GetNodeTypesArgs)
+			r, err := GetNodeTypes(ctx, &args, opts...)
+			return *r, err
+		}).(GetNodeTypesResultOutput)
+}
+
+// A collection of arguments for invoking getNodeTypes.
+type GetNodeTypesOutputArgs struct {
+	// ID of the project to list available node types for.
+	// Should match the project the nodes of this type will be deployed to.
+	// Defaults to the project that the provider is authenticated with.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// The zone to list node types for. Should be in zone of intended node groups and region of referencing node template. If `zone` is not specified, the provider-level zone must be set and is used
+	// instead.
+	Zone pulumi.StringPtrInput `pulumi:"zone"`
+}
+
+func (GetNodeTypesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodeTypesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getNodeTypes.
+type GetNodeTypesResultOutput struct{ *pulumi.OutputState }
+
+func (GetNodeTypesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodeTypesResult)(nil)).Elem()
+}
+
+func (o GetNodeTypesResultOutput) ToGetNodeTypesResultOutput() GetNodeTypesResultOutput {
+	return o
+}
+
+func (o GetNodeTypesResultOutput) ToGetNodeTypesResultOutputWithContext(ctx context.Context) GetNodeTypesResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetNodeTypesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeTypesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of node types available in the given zone and project.
+func (o GetNodeTypesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNodeTypesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetNodeTypesResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeTypesResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o GetNodeTypesResultOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeTypesResult) string { return v.Zone }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetNodeTypesResultOutput{})
 }

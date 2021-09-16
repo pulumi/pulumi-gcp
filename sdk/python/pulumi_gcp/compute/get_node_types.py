@@ -12,6 +12,7 @@ __all__ = [
     'GetNodeTypesResult',
     'AwaitableGetNodeTypesResult',
     'get_node_types',
+    'get_node_types_output',
 ]
 
 @pulumi.output_type
@@ -112,3 +113,33 @@ def get_node_types(project: Optional[str] = None,
         names=__ret__.names,
         project=__ret__.project,
         zone=__ret__.zone)
+
+
+@_utilities.lift_output_func(get_node_types)
+def get_node_types_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                          zone: Optional[pulumi.Input[Optional[str]]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodeTypesResult]:
+    """
+    Provides available node types for Compute Engine sole-tenant nodes in a zone
+    for a given project. For more information, see [the official documentation](https://cloud.google.com/compute/docs/nodes/#types) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/nodeTypes).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    central1b = gcp.compute.get_node_types(zone="us-central1-b")
+    tmpl = gcp.compute.NodeTemplate("tmpl",
+        region="us-central1",
+        node_type=data["google_compute_node_types"]["types"]["names"])
+    ```
+
+
+    :param str project: ID of the project to list available node types for.
+           Should match the project the nodes of this type will be deployed to.
+           Defaults to the project that the provider is authenticated with.
+    :param str zone: The zone to list node types for. Should be in zone of intended node groups and region of referencing node template. If `zone` is not specified, the provider-level zone must be set and is used
+           instead.
+    """
+    ...

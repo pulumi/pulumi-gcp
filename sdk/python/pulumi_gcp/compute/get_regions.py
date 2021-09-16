@@ -12,6 +12,7 @@ __all__ = [
     'GetRegionsResult',
     'AwaitableGetRegionsResult',
     'get_regions',
+    'get_regions_output',
 ]
 
 @pulumi.output_type
@@ -98,3 +99,19 @@ def get_regions(project: Optional[str] = None,
         names=__ret__.names,
         project=__ret__.project,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_regions)
+def get_regions_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                       status: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionsResult]:
+    """
+    Provides access to available Google Compute regions for a given project.
+    See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
+
+
+    :param str project: Project from which to list available regions. Defaults to project declared in the provider.
+    :param str status: Allows to filter list of regions based on their current status. Status can be either `UP` or `DOWN`.
+           Defaults to no filtering (all available regions - both `UP` and `DOWN`).
+    """
+    ...

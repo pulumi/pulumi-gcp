@@ -4,6 +4,9 @@
 package monitoring
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -106,4 +109,75 @@ type GetAppEngineServiceResult struct {
 	Project     *string                        `pulumi:"project"`
 	ServiceId   string                         `pulumi:"serviceId"`
 	Telemetries []GetAppEngineServiceTelemetry `pulumi:"telemetries"`
+}
+
+func GetAppEngineServiceOutput(ctx *pulumi.Context, args GetAppEngineServiceOutputArgs, opts ...pulumi.InvokeOption) GetAppEngineServiceResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetAppEngineServiceResult, error) {
+			args := v.(GetAppEngineServiceArgs)
+			r, err := GetAppEngineService(ctx, &args, opts...)
+			return *r, err
+		}).(GetAppEngineServiceResultOutput)
+}
+
+// A collection of arguments for invoking getAppEngineService.
+type GetAppEngineServiceOutputArgs struct {
+	// The ID of the App Engine module underlying this
+	// service. Corresponds to the moduleId resource label in the [gaeApp](https://cloud.google.com/monitoring/api/resources#tag_gae_app) monitored resource, or the service/module name.
+	ModuleId pulumi.StringInput `pulumi:"moduleId"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (GetAppEngineServiceOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppEngineServiceArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAppEngineService.
+type GetAppEngineServiceResultOutput struct{ *pulumi.OutputState }
+
+func (GetAppEngineServiceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppEngineServiceResult)(nil)).Elem()
+}
+
+func (o GetAppEngineServiceResultOutput) ToGetAppEngineServiceResultOutput() GetAppEngineServiceResultOutput {
+	return o
+}
+
+func (o GetAppEngineServiceResultOutput) ToGetAppEngineServiceResultOutputWithContext(ctx context.Context) GetAppEngineServiceResultOutput {
+	return o
+}
+
+func (o GetAppEngineServiceResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppEngineServiceResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAppEngineServiceResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppEngineServiceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetAppEngineServiceResultOutput) ModuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppEngineServiceResult) string { return v.ModuleId }).(pulumi.StringOutput)
+}
+
+func (o GetAppEngineServiceResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppEngineServiceResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetAppEngineServiceResultOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppEngineServiceResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAppEngineServiceResultOutput) ServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppEngineServiceResult) string { return v.ServiceId }).(pulumi.StringOutput)
+}
+
+func (o GetAppEngineServiceResultOutput) Telemetries() GetAppEngineServiceTelemetryArrayOutput {
+	return o.ApplyT(func(v GetAppEngineServiceResult) []GetAppEngineServiceTelemetry { return v.Telemetries }).(GetAppEngineServiceTelemetryArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAppEngineServiceResultOutput{})
 }

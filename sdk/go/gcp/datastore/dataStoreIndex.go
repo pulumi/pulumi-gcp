@@ -259,7 +259,7 @@ type DataStoreIndexArrayInput interface {
 type DataStoreIndexArray []DataStoreIndexInput
 
 func (DataStoreIndexArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*DataStoreIndex)(nil))
+	return reflect.TypeOf((*[]*DataStoreIndex)(nil)).Elem()
 }
 
 func (i DataStoreIndexArray) ToDataStoreIndexArrayOutput() DataStoreIndexArrayOutput {
@@ -284,7 +284,7 @@ type DataStoreIndexMapInput interface {
 type DataStoreIndexMap map[string]DataStoreIndexInput
 
 func (DataStoreIndexMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*DataStoreIndex)(nil))
+	return reflect.TypeOf((*map[string]*DataStoreIndex)(nil)).Elem()
 }
 
 func (i DataStoreIndexMap) ToDataStoreIndexMapOutput() DataStoreIndexMapOutput {
@@ -295,9 +295,7 @@ func (i DataStoreIndexMap) ToDataStoreIndexMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(DataStoreIndexMapOutput)
 }
 
-type DataStoreIndexOutput struct {
-	*pulumi.OutputState
-}
+type DataStoreIndexOutput struct{ *pulumi.OutputState }
 
 func (DataStoreIndexOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DataStoreIndex)(nil))
@@ -316,14 +314,12 @@ func (o DataStoreIndexOutput) ToDataStoreIndexPtrOutput() DataStoreIndexPtrOutpu
 }
 
 func (o DataStoreIndexOutput) ToDataStoreIndexPtrOutputWithContext(ctx context.Context) DataStoreIndexPtrOutput {
-	return o.ApplyT(func(v DataStoreIndex) *DataStoreIndex {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataStoreIndex) *DataStoreIndex {
 		return &v
 	}).(DataStoreIndexPtrOutput)
 }
 
-type DataStoreIndexPtrOutput struct {
-	*pulumi.OutputState
-}
+type DataStoreIndexPtrOutput struct{ *pulumi.OutputState }
 
 func (DataStoreIndexPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DataStoreIndex)(nil))
@@ -335,6 +331,16 @@ func (o DataStoreIndexPtrOutput) ToDataStoreIndexPtrOutput() DataStoreIndexPtrOu
 
 func (o DataStoreIndexPtrOutput) ToDataStoreIndexPtrOutputWithContext(ctx context.Context) DataStoreIndexPtrOutput {
 	return o
+}
+
+func (o DataStoreIndexPtrOutput) Elem() DataStoreIndexOutput {
+	return o.ApplyT(func(v *DataStoreIndex) DataStoreIndex {
+		if v != nil {
+			return *v
+		}
+		var ret DataStoreIndex
+		return ret
+	}).(DataStoreIndexOutput)
 }
 
 type DataStoreIndexArrayOutput struct{ *pulumi.OutputState }

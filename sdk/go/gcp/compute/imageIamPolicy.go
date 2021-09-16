@@ -411,7 +411,7 @@ type ImageIamPolicyArrayInput interface {
 type ImageIamPolicyArray []ImageIamPolicyInput
 
 func (ImageIamPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ImageIamPolicy)(nil))
+	return reflect.TypeOf((*[]*ImageIamPolicy)(nil)).Elem()
 }
 
 func (i ImageIamPolicyArray) ToImageIamPolicyArrayOutput() ImageIamPolicyArrayOutput {
@@ -436,7 +436,7 @@ type ImageIamPolicyMapInput interface {
 type ImageIamPolicyMap map[string]ImageIamPolicyInput
 
 func (ImageIamPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ImageIamPolicy)(nil))
+	return reflect.TypeOf((*map[string]*ImageIamPolicy)(nil)).Elem()
 }
 
 func (i ImageIamPolicyMap) ToImageIamPolicyMapOutput() ImageIamPolicyMapOutput {
@@ -447,9 +447,7 @@ func (i ImageIamPolicyMap) ToImageIamPolicyMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ImageIamPolicyMapOutput)
 }
 
-type ImageIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type ImageIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (ImageIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ImageIamPolicy)(nil))
@@ -468,14 +466,12 @@ func (o ImageIamPolicyOutput) ToImageIamPolicyPtrOutput() ImageIamPolicyPtrOutpu
 }
 
 func (o ImageIamPolicyOutput) ToImageIamPolicyPtrOutputWithContext(ctx context.Context) ImageIamPolicyPtrOutput {
-	return o.ApplyT(func(v ImageIamPolicy) *ImageIamPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImageIamPolicy) *ImageIamPolicy {
 		return &v
 	}).(ImageIamPolicyPtrOutput)
 }
 
-type ImageIamPolicyPtrOutput struct {
-	*pulumi.OutputState
-}
+type ImageIamPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (ImageIamPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ImageIamPolicy)(nil))
@@ -487,6 +483,16 @@ func (o ImageIamPolicyPtrOutput) ToImageIamPolicyPtrOutput() ImageIamPolicyPtrOu
 
 func (o ImageIamPolicyPtrOutput) ToImageIamPolicyPtrOutputWithContext(ctx context.Context) ImageIamPolicyPtrOutput {
 	return o
+}
+
+func (o ImageIamPolicyPtrOutput) Elem() ImageIamPolicyOutput {
+	return o.ApplyT(func(v *ImageIamPolicy) ImageIamPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ImageIamPolicy
+		return ret
+	}).(ImageIamPolicyOutput)
 }
 
 type ImageIamPolicyArrayOutput struct{ *pulumi.OutputState }

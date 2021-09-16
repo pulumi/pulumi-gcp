@@ -242,7 +242,7 @@ type SourceArrayInput interface {
 type SourceArray []SourceInput
 
 func (SourceArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Source)(nil))
+	return reflect.TypeOf((*[]*Source)(nil)).Elem()
 }
 
 func (i SourceArray) ToSourceArrayOutput() SourceArrayOutput {
@@ -267,7 +267,7 @@ type SourceMapInput interface {
 type SourceMap map[string]SourceInput
 
 func (SourceMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Source)(nil))
+	return reflect.TypeOf((*map[string]*Source)(nil)).Elem()
 }
 
 func (i SourceMap) ToSourceMapOutput() SourceMapOutput {
@@ -278,9 +278,7 @@ func (i SourceMap) ToSourceMapOutputWithContext(ctx context.Context) SourceMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(SourceMapOutput)
 }
 
-type SourceOutput struct {
-	*pulumi.OutputState
-}
+type SourceOutput struct{ *pulumi.OutputState }
 
 func (SourceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Source)(nil))
@@ -299,14 +297,12 @@ func (o SourceOutput) ToSourcePtrOutput() SourcePtrOutput {
 }
 
 func (o SourceOutput) ToSourcePtrOutputWithContext(ctx context.Context) SourcePtrOutput {
-	return o.ApplyT(func(v Source) *Source {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Source) *Source {
 		return &v
 	}).(SourcePtrOutput)
 }
 
-type SourcePtrOutput struct {
-	*pulumi.OutputState
-}
+type SourcePtrOutput struct{ *pulumi.OutputState }
 
 func (SourcePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Source)(nil))
@@ -318,6 +314,16 @@ func (o SourcePtrOutput) ToSourcePtrOutput() SourcePtrOutput {
 
 func (o SourcePtrOutput) ToSourcePtrOutputWithContext(ctx context.Context) SourcePtrOutput {
 	return o
+}
+
+func (o SourcePtrOutput) Elem() SourceOutput {
+	return o.ApplyT(func(v *Source) Source {
+		if v != nil {
+			return *v
+		}
+		var ret Source
+		return ret
+	}).(SourceOutput)
 }
 
 type SourceArrayOutput struct{ *pulumi.OutputState }

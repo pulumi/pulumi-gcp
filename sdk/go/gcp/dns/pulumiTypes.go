@@ -129,7 +129,7 @@ func (o ManagedZoneDnssecConfigOutput) ToManagedZoneDnssecConfigPtrOutput() Mana
 }
 
 func (o ManagedZoneDnssecConfigOutput) ToManagedZoneDnssecConfigPtrOutputWithContext(ctx context.Context) ManagedZoneDnssecConfigPtrOutput {
-	return o.ApplyT(func(v ManagedZoneDnssecConfig) *ManagedZoneDnssecConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedZoneDnssecConfig) *ManagedZoneDnssecConfig {
 		return &v
 	}).(ManagedZoneDnssecConfigPtrOutput)
 }
@@ -176,7 +176,13 @@ func (o ManagedZoneDnssecConfigPtrOutput) ToManagedZoneDnssecConfigPtrOutputWith
 }
 
 func (o ManagedZoneDnssecConfigPtrOutput) Elem() ManagedZoneDnssecConfigOutput {
-	return o.ApplyT(func(v *ManagedZoneDnssecConfig) ManagedZoneDnssecConfig { return *v }).(ManagedZoneDnssecConfigOutput)
+	return o.ApplyT(func(v *ManagedZoneDnssecConfig) ManagedZoneDnssecConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedZoneDnssecConfig
+		return ret
+	}).(ManagedZoneDnssecConfigOutput)
 }
 
 // Specifies parameters that will be used for generating initial DnsKeys
@@ -470,7 +476,7 @@ func (o ManagedZoneForwardingConfigOutput) ToManagedZoneForwardingConfigPtrOutpu
 }
 
 func (o ManagedZoneForwardingConfigOutput) ToManagedZoneForwardingConfigPtrOutputWithContext(ctx context.Context) ManagedZoneForwardingConfigPtrOutput {
-	return o.ApplyT(func(v ManagedZoneForwardingConfig) *ManagedZoneForwardingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedZoneForwardingConfig) *ManagedZoneForwardingConfig {
 		return &v
 	}).(ManagedZoneForwardingConfigPtrOutput)
 }
@@ -500,7 +506,13 @@ func (o ManagedZoneForwardingConfigPtrOutput) ToManagedZoneForwardingConfigPtrOu
 }
 
 func (o ManagedZoneForwardingConfigPtrOutput) Elem() ManagedZoneForwardingConfigOutput {
-	return o.ApplyT(func(v *ManagedZoneForwardingConfig) ManagedZoneForwardingConfig { return *v }).(ManagedZoneForwardingConfigOutput)
+	return o.ApplyT(func(v *ManagedZoneForwardingConfig) ManagedZoneForwardingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedZoneForwardingConfig
+		return ret
+	}).(ManagedZoneForwardingConfigOutput)
 }
 
 // List of target name servers to forward to. Cloud DNS will
@@ -726,7 +738,7 @@ func (o ManagedZonePeeringConfigOutput) ToManagedZonePeeringConfigPtrOutput() Ma
 }
 
 func (o ManagedZonePeeringConfigOutput) ToManagedZonePeeringConfigPtrOutputWithContext(ctx context.Context) ManagedZonePeeringConfigPtrOutput {
-	return o.ApplyT(func(v ManagedZonePeeringConfig) *ManagedZonePeeringConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedZonePeeringConfig) *ManagedZonePeeringConfig {
 		return &v
 	}).(ManagedZonePeeringConfigPtrOutput)
 }
@@ -752,7 +764,13 @@ func (o ManagedZonePeeringConfigPtrOutput) ToManagedZonePeeringConfigPtrOutputWi
 }
 
 func (o ManagedZonePeeringConfigPtrOutput) Elem() ManagedZonePeeringConfigOutput {
-	return o.ApplyT(func(v *ManagedZonePeeringConfig) ManagedZonePeeringConfig { return *v }).(ManagedZonePeeringConfigOutput)
+	return o.ApplyT(func(v *ManagedZonePeeringConfig) ManagedZonePeeringConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedZonePeeringConfig
+		return ret
+	}).(ManagedZonePeeringConfigOutput)
 }
 
 // The network with which to peer.
@@ -863,7 +881,7 @@ func (o ManagedZonePeeringConfigTargetNetworkOutput) ToManagedZonePeeringConfigT
 }
 
 func (o ManagedZonePeeringConfigTargetNetworkOutput) ToManagedZonePeeringConfigTargetNetworkPtrOutputWithContext(ctx context.Context) ManagedZonePeeringConfigTargetNetworkPtrOutput {
-	return o.ApplyT(func(v ManagedZonePeeringConfigTargetNetwork) *ManagedZonePeeringConfigTargetNetwork {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedZonePeeringConfigTargetNetwork) *ManagedZonePeeringConfigTargetNetwork {
 		return &v
 	}).(ManagedZonePeeringConfigTargetNetworkPtrOutput)
 }
@@ -890,7 +908,13 @@ func (o ManagedZonePeeringConfigTargetNetworkPtrOutput) ToManagedZonePeeringConf
 }
 
 func (o ManagedZonePeeringConfigTargetNetworkPtrOutput) Elem() ManagedZonePeeringConfigTargetNetworkOutput {
-	return o.ApplyT(func(v *ManagedZonePeeringConfigTargetNetwork) ManagedZonePeeringConfigTargetNetwork { return *v }).(ManagedZonePeeringConfigTargetNetworkOutput)
+	return o.ApplyT(func(v *ManagedZonePeeringConfigTargetNetwork) ManagedZonePeeringConfigTargetNetwork {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedZonePeeringConfigTargetNetwork
+		return ret
+	}).(ManagedZonePeeringConfigTargetNetworkOutput)
 }
 
 // The id or fully qualified URL of the VPC network to forward queries to.
@@ -998,7 +1022,7 @@ func (o ManagedZonePrivateVisibilityConfigOutput) ToManagedZonePrivateVisibility
 }
 
 func (o ManagedZonePrivateVisibilityConfigOutput) ToManagedZonePrivateVisibilityConfigPtrOutputWithContext(ctx context.Context) ManagedZonePrivateVisibilityConfigPtrOutput {
-	return o.ApplyT(func(v ManagedZonePrivateVisibilityConfig) *ManagedZonePrivateVisibilityConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedZonePrivateVisibilityConfig) *ManagedZonePrivateVisibilityConfig {
 		return &v
 	}).(ManagedZonePrivateVisibilityConfigPtrOutput)
 }
@@ -1025,7 +1049,13 @@ func (o ManagedZonePrivateVisibilityConfigPtrOutput) ToManagedZonePrivateVisibil
 }
 
 func (o ManagedZonePrivateVisibilityConfigPtrOutput) Elem() ManagedZonePrivateVisibilityConfigOutput {
-	return o.ApplyT(func(v *ManagedZonePrivateVisibilityConfig) ManagedZonePrivateVisibilityConfig { return *v }).(ManagedZonePrivateVisibilityConfigOutput)
+	return o.ApplyT(func(v *ManagedZonePrivateVisibilityConfig) ManagedZonePrivateVisibilityConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedZonePrivateVisibilityConfig
+		return ret
+	}).(ManagedZonePrivateVisibilityConfigOutput)
 }
 
 // The list of VPC networks that can see this zone. Structure is documented below.
@@ -1236,7 +1266,7 @@ func (o ManagedZoneServiceDirectoryConfigOutput) ToManagedZoneServiceDirectoryCo
 }
 
 func (o ManagedZoneServiceDirectoryConfigOutput) ToManagedZoneServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) ManagedZoneServiceDirectoryConfigPtrOutput {
-	return o.ApplyT(func(v ManagedZoneServiceDirectoryConfig) *ManagedZoneServiceDirectoryConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedZoneServiceDirectoryConfig) *ManagedZoneServiceDirectoryConfig {
 		return &v
 	}).(ManagedZoneServiceDirectoryConfigPtrOutput)
 }
@@ -1264,7 +1294,13 @@ func (o ManagedZoneServiceDirectoryConfigPtrOutput) ToManagedZoneServiceDirector
 }
 
 func (o ManagedZoneServiceDirectoryConfigPtrOutput) Elem() ManagedZoneServiceDirectoryConfigOutput {
-	return o.ApplyT(func(v *ManagedZoneServiceDirectoryConfig) ManagedZoneServiceDirectoryConfig { return *v }).(ManagedZoneServiceDirectoryConfigOutput)
+	return o.ApplyT(func(v *ManagedZoneServiceDirectoryConfig) ManagedZoneServiceDirectoryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedZoneServiceDirectoryConfig
+		return ret
+	}).(ManagedZoneServiceDirectoryConfigOutput)
 }
 
 // The namespace associated with the zone.
@@ -1379,7 +1415,7 @@ func (o ManagedZoneServiceDirectoryConfigNamespaceOutput) ToManagedZoneServiceDi
 }
 
 func (o ManagedZoneServiceDirectoryConfigNamespaceOutput) ToManagedZoneServiceDirectoryConfigNamespacePtrOutputWithContext(ctx context.Context) ManagedZoneServiceDirectoryConfigNamespacePtrOutput {
-	return o.ApplyT(func(v ManagedZoneServiceDirectoryConfigNamespace) *ManagedZoneServiceDirectoryConfigNamespace {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedZoneServiceDirectoryConfigNamespace) *ManagedZoneServiceDirectoryConfigNamespace {
 		return &v
 	}).(ManagedZoneServiceDirectoryConfigNamespacePtrOutput)
 }
@@ -1409,7 +1445,11 @@ func (o ManagedZoneServiceDirectoryConfigNamespacePtrOutput) ToManagedZoneServic
 
 func (o ManagedZoneServiceDirectoryConfigNamespacePtrOutput) Elem() ManagedZoneServiceDirectoryConfigNamespaceOutput {
 	return o.ApplyT(func(v *ManagedZoneServiceDirectoryConfigNamespace) ManagedZoneServiceDirectoryConfigNamespace {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ManagedZoneServiceDirectoryConfigNamespace
+		return ret
 	}).(ManagedZoneServiceDirectoryConfigNamespaceOutput)
 }
 
@@ -1526,7 +1566,7 @@ func (o PolicyAlternativeNameServerConfigOutput) ToPolicyAlternativeNameServerCo
 }
 
 func (o PolicyAlternativeNameServerConfigOutput) ToPolicyAlternativeNameServerConfigPtrOutputWithContext(ctx context.Context) PolicyAlternativeNameServerConfigPtrOutput {
-	return o.ApplyT(func(v PolicyAlternativeNameServerConfig) *PolicyAlternativeNameServerConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyAlternativeNameServerConfig) *PolicyAlternativeNameServerConfig {
 		return &v
 	}).(PolicyAlternativeNameServerConfigPtrOutput)
 }
@@ -1556,7 +1596,13 @@ func (o PolicyAlternativeNameServerConfigPtrOutput) ToPolicyAlternativeNameServe
 }
 
 func (o PolicyAlternativeNameServerConfigPtrOutput) Elem() PolicyAlternativeNameServerConfigOutput {
-	return o.ApplyT(func(v *PolicyAlternativeNameServerConfig) PolicyAlternativeNameServerConfig { return *v }).(PolicyAlternativeNameServerConfigOutput)
+	return o.ApplyT(func(v *PolicyAlternativeNameServerConfig) PolicyAlternativeNameServerConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PolicyAlternativeNameServerConfig
+		return ret
+	}).(PolicyAlternativeNameServerConfigOutput)
 }
 
 // Sets an alternative name server for the associated networks. When specified,

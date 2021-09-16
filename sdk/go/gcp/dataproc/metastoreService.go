@@ -346,7 +346,7 @@ type MetastoreServiceArrayInput interface {
 type MetastoreServiceArray []MetastoreServiceInput
 
 func (MetastoreServiceArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*MetastoreService)(nil))
+	return reflect.TypeOf((*[]*MetastoreService)(nil)).Elem()
 }
 
 func (i MetastoreServiceArray) ToMetastoreServiceArrayOutput() MetastoreServiceArrayOutput {
@@ -371,7 +371,7 @@ type MetastoreServiceMapInput interface {
 type MetastoreServiceMap map[string]MetastoreServiceInput
 
 func (MetastoreServiceMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*MetastoreService)(nil))
+	return reflect.TypeOf((*map[string]*MetastoreService)(nil)).Elem()
 }
 
 func (i MetastoreServiceMap) ToMetastoreServiceMapOutput() MetastoreServiceMapOutput {
@@ -382,9 +382,7 @@ func (i MetastoreServiceMap) ToMetastoreServiceMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceMapOutput)
 }
 
-type MetastoreServiceOutput struct {
-	*pulumi.OutputState
-}
+type MetastoreServiceOutput struct{ *pulumi.OutputState }
 
 func (MetastoreServiceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MetastoreService)(nil))
@@ -403,14 +401,12 @@ func (o MetastoreServiceOutput) ToMetastoreServicePtrOutput() MetastoreServicePt
 }
 
 func (o MetastoreServiceOutput) ToMetastoreServicePtrOutputWithContext(ctx context.Context) MetastoreServicePtrOutput {
-	return o.ApplyT(func(v MetastoreService) *MetastoreService {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetastoreService) *MetastoreService {
 		return &v
 	}).(MetastoreServicePtrOutput)
 }
 
-type MetastoreServicePtrOutput struct {
-	*pulumi.OutputState
-}
+type MetastoreServicePtrOutput struct{ *pulumi.OutputState }
 
 func (MetastoreServicePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**MetastoreService)(nil))
@@ -422,6 +418,16 @@ func (o MetastoreServicePtrOutput) ToMetastoreServicePtrOutput() MetastoreServic
 
 func (o MetastoreServicePtrOutput) ToMetastoreServicePtrOutputWithContext(ctx context.Context) MetastoreServicePtrOutput {
 	return o
+}
+
+func (o MetastoreServicePtrOutput) Elem() MetastoreServiceOutput {
+	return o.ApplyT(func(v *MetastoreService) MetastoreService {
+		if v != nil {
+			return *v
+		}
+		var ret MetastoreService
+		return ret
+	}).(MetastoreServiceOutput)
 }
 
 type MetastoreServiceArrayOutput struct{ *pulumi.OutputState }

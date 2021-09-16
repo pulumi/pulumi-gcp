@@ -322,7 +322,7 @@ type CaPoolIamPolicyArrayInput interface {
 type CaPoolIamPolicyArray []CaPoolIamPolicyInput
 
 func (CaPoolIamPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*CaPoolIamPolicy)(nil))
+	return reflect.TypeOf((*[]*CaPoolIamPolicy)(nil)).Elem()
 }
 
 func (i CaPoolIamPolicyArray) ToCaPoolIamPolicyArrayOutput() CaPoolIamPolicyArrayOutput {
@@ -347,7 +347,7 @@ type CaPoolIamPolicyMapInput interface {
 type CaPoolIamPolicyMap map[string]CaPoolIamPolicyInput
 
 func (CaPoolIamPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*CaPoolIamPolicy)(nil))
+	return reflect.TypeOf((*map[string]*CaPoolIamPolicy)(nil)).Elem()
 }
 
 func (i CaPoolIamPolicyMap) ToCaPoolIamPolicyMapOutput() CaPoolIamPolicyMapOutput {
@@ -358,9 +358,7 @@ func (i CaPoolIamPolicyMap) ToCaPoolIamPolicyMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(CaPoolIamPolicyMapOutput)
 }
 
-type CaPoolIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type CaPoolIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (CaPoolIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CaPoolIamPolicy)(nil))
@@ -379,14 +377,12 @@ func (o CaPoolIamPolicyOutput) ToCaPoolIamPolicyPtrOutput() CaPoolIamPolicyPtrOu
 }
 
 func (o CaPoolIamPolicyOutput) ToCaPoolIamPolicyPtrOutputWithContext(ctx context.Context) CaPoolIamPolicyPtrOutput {
-	return o.ApplyT(func(v CaPoolIamPolicy) *CaPoolIamPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CaPoolIamPolicy) *CaPoolIamPolicy {
 		return &v
 	}).(CaPoolIamPolicyPtrOutput)
 }
 
-type CaPoolIamPolicyPtrOutput struct {
-	*pulumi.OutputState
-}
+type CaPoolIamPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (CaPoolIamPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**CaPoolIamPolicy)(nil))
@@ -398,6 +394,16 @@ func (o CaPoolIamPolicyPtrOutput) ToCaPoolIamPolicyPtrOutput() CaPoolIamPolicyPt
 
 func (o CaPoolIamPolicyPtrOutput) ToCaPoolIamPolicyPtrOutputWithContext(ctx context.Context) CaPoolIamPolicyPtrOutput {
 	return o
+}
+
+func (o CaPoolIamPolicyPtrOutput) Elem() CaPoolIamPolicyOutput {
+	return o.ApplyT(func(v *CaPoolIamPolicy) CaPoolIamPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret CaPoolIamPolicy
+		return ret
+	}).(CaPoolIamPolicyOutput)
 }
 
 type CaPoolIamPolicyArrayOutput struct{ *pulumi.OutputState }

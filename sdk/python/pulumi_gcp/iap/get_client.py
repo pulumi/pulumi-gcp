@@ -12,6 +12,7 @@ __all__ = [
     'GetClientResult',
     'AwaitableGetClientResult',
     'get_client',
+    'get_client_output',
 ]
 
 @pulumi.output_type
@@ -114,3 +115,28 @@ def get_client(brand: Optional[str] = None,
         display_name=__ret__.display_name,
         id=__ret__.id,
         secret=__ret__.secret)
+
+
+@_utilities.lift_output_func(get_client)
+def get_client_output(brand: Optional[pulumi.Input[str]] = None,
+                      client_id: Optional[pulumi.Input[str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClientResult]:
+    """
+    Get info about a Google Cloud IAP Client.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    project = gcp.organizations.get_project(project_id="foobar")
+    project_client = gcp.iap.get_client(brand=f"projects/{project.number}/brands/[BRAND_NUMBER]",
+        client_id=foo["apps"]["googleusercontent"]["com"])
+    ```
+
+
+    :param str brand: The name of the brand.
+    :param str client_id: The client_id of the brand.
+    """
+    ...

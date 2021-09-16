@@ -310,7 +310,7 @@ type ClusterIAMPolicyArrayInput interface {
 type ClusterIAMPolicyArray []ClusterIAMPolicyInput
 
 func (ClusterIAMPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ClusterIAMPolicy)(nil))
+	return reflect.TypeOf((*[]*ClusterIAMPolicy)(nil)).Elem()
 }
 
 func (i ClusterIAMPolicyArray) ToClusterIAMPolicyArrayOutput() ClusterIAMPolicyArrayOutput {
@@ -335,7 +335,7 @@ type ClusterIAMPolicyMapInput interface {
 type ClusterIAMPolicyMap map[string]ClusterIAMPolicyInput
 
 func (ClusterIAMPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ClusterIAMPolicy)(nil))
+	return reflect.TypeOf((*map[string]*ClusterIAMPolicy)(nil)).Elem()
 }
 
 func (i ClusterIAMPolicyMap) ToClusterIAMPolicyMapOutput() ClusterIAMPolicyMapOutput {
@@ -346,9 +346,7 @@ func (i ClusterIAMPolicyMap) ToClusterIAMPolicyMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMPolicyMapOutput)
 }
 
-type ClusterIAMPolicyOutput struct {
-	*pulumi.OutputState
-}
+type ClusterIAMPolicyOutput struct{ *pulumi.OutputState }
 
 func (ClusterIAMPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterIAMPolicy)(nil))
@@ -367,14 +365,12 @@ func (o ClusterIAMPolicyOutput) ToClusterIAMPolicyPtrOutput() ClusterIAMPolicyPt
 }
 
 func (o ClusterIAMPolicyOutput) ToClusterIAMPolicyPtrOutputWithContext(ctx context.Context) ClusterIAMPolicyPtrOutput {
-	return o.ApplyT(func(v ClusterIAMPolicy) *ClusterIAMPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterIAMPolicy) *ClusterIAMPolicy {
 		return &v
 	}).(ClusterIAMPolicyPtrOutput)
 }
 
-type ClusterIAMPolicyPtrOutput struct {
-	*pulumi.OutputState
-}
+type ClusterIAMPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterIAMPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ClusterIAMPolicy)(nil))
@@ -386,6 +382,16 @@ func (o ClusterIAMPolicyPtrOutput) ToClusterIAMPolicyPtrOutput() ClusterIAMPolic
 
 func (o ClusterIAMPolicyPtrOutput) ToClusterIAMPolicyPtrOutputWithContext(ctx context.Context) ClusterIAMPolicyPtrOutput {
 	return o
+}
+
+func (o ClusterIAMPolicyPtrOutput) Elem() ClusterIAMPolicyOutput {
+	return o.ApplyT(func(v *ClusterIAMPolicy) ClusterIAMPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterIAMPolicy
+		return ret
+	}).(ClusterIAMPolicyOutput)
 }
 
 type ClusterIAMPolicyArrayOutput struct{ *pulumi.OutputState }

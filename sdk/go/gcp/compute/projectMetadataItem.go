@@ -204,7 +204,7 @@ type ProjectMetadataItemArrayInput interface {
 type ProjectMetadataItemArray []ProjectMetadataItemInput
 
 func (ProjectMetadataItemArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ProjectMetadataItem)(nil))
+	return reflect.TypeOf((*[]*ProjectMetadataItem)(nil)).Elem()
 }
 
 func (i ProjectMetadataItemArray) ToProjectMetadataItemArrayOutput() ProjectMetadataItemArrayOutput {
@@ -229,7 +229,7 @@ type ProjectMetadataItemMapInput interface {
 type ProjectMetadataItemMap map[string]ProjectMetadataItemInput
 
 func (ProjectMetadataItemMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ProjectMetadataItem)(nil))
+	return reflect.TypeOf((*map[string]*ProjectMetadataItem)(nil)).Elem()
 }
 
 func (i ProjectMetadataItemMap) ToProjectMetadataItemMapOutput() ProjectMetadataItemMapOutput {
@@ -240,9 +240,7 @@ func (i ProjectMetadataItemMap) ToProjectMetadataItemMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectMetadataItemMapOutput)
 }
 
-type ProjectMetadataItemOutput struct {
-	*pulumi.OutputState
-}
+type ProjectMetadataItemOutput struct{ *pulumi.OutputState }
 
 func (ProjectMetadataItemOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ProjectMetadataItem)(nil))
@@ -261,14 +259,12 @@ func (o ProjectMetadataItemOutput) ToProjectMetadataItemPtrOutput() ProjectMetad
 }
 
 func (o ProjectMetadataItemOutput) ToProjectMetadataItemPtrOutputWithContext(ctx context.Context) ProjectMetadataItemPtrOutput {
-	return o.ApplyT(func(v ProjectMetadataItem) *ProjectMetadataItem {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectMetadataItem) *ProjectMetadataItem {
 		return &v
 	}).(ProjectMetadataItemPtrOutput)
 }
 
-type ProjectMetadataItemPtrOutput struct {
-	*pulumi.OutputState
-}
+type ProjectMetadataItemPtrOutput struct{ *pulumi.OutputState }
 
 func (ProjectMetadataItemPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ProjectMetadataItem)(nil))
@@ -280,6 +276,16 @@ func (o ProjectMetadataItemPtrOutput) ToProjectMetadataItemPtrOutput() ProjectMe
 
 func (o ProjectMetadataItemPtrOutput) ToProjectMetadataItemPtrOutputWithContext(ctx context.Context) ProjectMetadataItemPtrOutput {
 	return o
+}
+
+func (o ProjectMetadataItemPtrOutput) Elem() ProjectMetadataItemOutput {
+	return o.ApplyT(func(v *ProjectMetadataItem) ProjectMetadataItem {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectMetadataItem
+		return ret
+	}).(ProjectMetadataItemOutput)
 }
 
 type ProjectMetadataItemArrayOutput struct{ *pulumi.OutputState }

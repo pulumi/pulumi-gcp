@@ -322,7 +322,7 @@ type Hl7StoreIamBindingArrayInput interface {
 type Hl7StoreIamBindingArray []Hl7StoreIamBindingInput
 
 func (Hl7StoreIamBindingArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Hl7StoreIamBinding)(nil))
+	return reflect.TypeOf((*[]*Hl7StoreIamBinding)(nil)).Elem()
 }
 
 func (i Hl7StoreIamBindingArray) ToHl7StoreIamBindingArrayOutput() Hl7StoreIamBindingArrayOutput {
@@ -347,7 +347,7 @@ type Hl7StoreIamBindingMapInput interface {
 type Hl7StoreIamBindingMap map[string]Hl7StoreIamBindingInput
 
 func (Hl7StoreIamBindingMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Hl7StoreIamBinding)(nil))
+	return reflect.TypeOf((*map[string]*Hl7StoreIamBinding)(nil)).Elem()
 }
 
 func (i Hl7StoreIamBindingMap) ToHl7StoreIamBindingMapOutput() Hl7StoreIamBindingMapOutput {
@@ -358,9 +358,7 @@ func (i Hl7StoreIamBindingMap) ToHl7StoreIamBindingMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreIamBindingMapOutput)
 }
 
-type Hl7StoreIamBindingOutput struct {
-	*pulumi.OutputState
-}
+type Hl7StoreIamBindingOutput struct{ *pulumi.OutputState }
 
 func (Hl7StoreIamBindingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Hl7StoreIamBinding)(nil))
@@ -379,14 +377,12 @@ func (o Hl7StoreIamBindingOutput) ToHl7StoreIamBindingPtrOutput() Hl7StoreIamBin
 }
 
 func (o Hl7StoreIamBindingOutput) ToHl7StoreIamBindingPtrOutputWithContext(ctx context.Context) Hl7StoreIamBindingPtrOutput {
-	return o.ApplyT(func(v Hl7StoreIamBinding) *Hl7StoreIamBinding {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Hl7StoreIamBinding) *Hl7StoreIamBinding {
 		return &v
 	}).(Hl7StoreIamBindingPtrOutput)
 }
 
-type Hl7StoreIamBindingPtrOutput struct {
-	*pulumi.OutputState
-}
+type Hl7StoreIamBindingPtrOutput struct{ *pulumi.OutputState }
 
 func (Hl7StoreIamBindingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Hl7StoreIamBinding)(nil))
@@ -398,6 +394,16 @@ func (o Hl7StoreIamBindingPtrOutput) ToHl7StoreIamBindingPtrOutput() Hl7StoreIam
 
 func (o Hl7StoreIamBindingPtrOutput) ToHl7StoreIamBindingPtrOutputWithContext(ctx context.Context) Hl7StoreIamBindingPtrOutput {
 	return o
+}
+
+func (o Hl7StoreIamBindingPtrOutput) Elem() Hl7StoreIamBindingOutput {
+	return o.ApplyT(func(v *Hl7StoreIamBinding) Hl7StoreIamBinding {
+		if v != nil {
+			return *v
+		}
+		var ret Hl7StoreIamBinding
+		return ret
+	}).(Hl7StoreIamBindingOutput)
 }
 
 type Hl7StoreIamBindingArrayOutput struct{ *pulumi.OutputState }

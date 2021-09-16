@@ -13,6 +13,7 @@ __all__ = [
     'GetHealthCheckResult',
     'AwaitableGetHealthCheckResult',
     'get_health_check',
+    'get_health_check_output',
 ]
 
 @pulumi.output_type
@@ -244,3 +245,27 @@ def get_health_check(name: Optional[str] = None,
         timeout_sec=__ret__.timeout_sec,
         type=__ret__.type,
         unhealthy_threshold=__ret__.unhealthy_threshold)
+
+
+@_utilities.lift_output_func(get_health_check)
+def get_health_check_output(name: Optional[pulumi.Input[str]] = None,
+                            project: Optional[pulumi.Input[Optional[str]]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHealthCheckResult]:
+    """
+    Get information about a HealthCheck.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    health_check = gcp.compute.get_health_check(name="my-hc")
+    ```
+
+
+    :param str name: Name of the resource.
+    :param str project: The ID of the project in which the resource belongs. If it
+           is not provided, the provider project is used.
+    """
+    ...

@@ -1189,7 +1189,7 @@ type URLMapArrayInput interface {
 type URLMapArray []URLMapInput
 
 func (URLMapArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*URLMap)(nil))
+	return reflect.TypeOf((*[]*URLMap)(nil)).Elem()
 }
 
 func (i URLMapArray) ToURLMapArrayOutput() URLMapArrayOutput {
@@ -1214,7 +1214,7 @@ type URLMapMapInput interface {
 type URLMapMap map[string]URLMapInput
 
 func (URLMapMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*URLMap)(nil))
+	return reflect.TypeOf((*map[string]*URLMap)(nil)).Elem()
 }
 
 func (i URLMapMap) ToURLMapMapOutput() URLMapMapOutput {
@@ -1225,9 +1225,7 @@ func (i URLMapMap) ToURLMapMapOutputWithContext(ctx context.Context) URLMapMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(URLMapMapOutput)
 }
 
-type URLMapOutput struct {
-	*pulumi.OutputState
-}
+type URLMapOutput struct{ *pulumi.OutputState }
 
 func (URLMapOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*URLMap)(nil))
@@ -1246,14 +1244,12 @@ func (o URLMapOutput) ToURLMapPtrOutput() URLMapPtrOutput {
 }
 
 func (o URLMapOutput) ToURLMapPtrOutputWithContext(ctx context.Context) URLMapPtrOutput {
-	return o.ApplyT(func(v URLMap) *URLMap {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMap) *URLMap {
 		return &v
 	}).(URLMapPtrOutput)
 }
 
-type URLMapPtrOutput struct {
-	*pulumi.OutputState
-}
+type URLMapPtrOutput struct{ *pulumi.OutputState }
 
 func (URLMapPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**URLMap)(nil))
@@ -1265,6 +1261,16 @@ func (o URLMapPtrOutput) ToURLMapPtrOutput() URLMapPtrOutput {
 
 func (o URLMapPtrOutput) ToURLMapPtrOutputWithContext(ctx context.Context) URLMapPtrOutput {
 	return o
+}
+
+func (o URLMapPtrOutput) Elem() URLMapOutput {
+	return o.ApplyT(func(v *URLMap) URLMap {
+		if v != nil {
+			return *v
+		}
+		var ret URLMap
+		return ret
+	}).(URLMapOutput)
 }
 
 type URLMapArrayOutput struct{ *pulumi.OutputState }

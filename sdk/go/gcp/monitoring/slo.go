@@ -474,7 +474,7 @@ type SloArrayInput interface {
 type SloArray []SloInput
 
 func (SloArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Slo)(nil))
+	return reflect.TypeOf((*[]*Slo)(nil)).Elem()
 }
 
 func (i SloArray) ToSloArrayOutput() SloArrayOutput {
@@ -499,7 +499,7 @@ type SloMapInput interface {
 type SloMap map[string]SloInput
 
 func (SloMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Slo)(nil))
+	return reflect.TypeOf((*map[string]*Slo)(nil)).Elem()
 }
 
 func (i SloMap) ToSloMapOutput() SloMapOutput {
@@ -510,9 +510,7 @@ func (i SloMap) ToSloMapOutputWithContext(ctx context.Context) SloMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SloMapOutput)
 }
 
-type SloOutput struct {
-	*pulumi.OutputState
-}
+type SloOutput struct{ *pulumi.OutputState }
 
 func (SloOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Slo)(nil))
@@ -531,14 +529,12 @@ func (o SloOutput) ToSloPtrOutput() SloPtrOutput {
 }
 
 func (o SloOutput) ToSloPtrOutputWithContext(ctx context.Context) SloPtrOutput {
-	return o.ApplyT(func(v Slo) *Slo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Slo) *Slo {
 		return &v
 	}).(SloPtrOutput)
 }
 
-type SloPtrOutput struct {
-	*pulumi.OutputState
-}
+type SloPtrOutput struct{ *pulumi.OutputState }
 
 func (SloPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Slo)(nil))
@@ -550,6 +546,16 @@ func (o SloPtrOutput) ToSloPtrOutput() SloPtrOutput {
 
 func (o SloPtrOutput) ToSloPtrOutputWithContext(ctx context.Context) SloPtrOutput {
 	return o
+}
+
+func (o SloPtrOutput) Elem() SloOutput {
+	return o.ApplyT(func(v *Slo) Slo {
+		if v != nil {
+			return *v
+		}
+		var ret Slo
+		return ret
+	}).(SloOutput)
 }
 
 type SloArrayOutput struct{ *pulumi.OutputState }

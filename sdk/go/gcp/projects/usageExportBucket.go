@@ -240,7 +240,7 @@ type UsageExportBucketArrayInput interface {
 type UsageExportBucketArray []UsageExportBucketInput
 
 func (UsageExportBucketArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*UsageExportBucket)(nil))
+	return reflect.TypeOf((*[]*UsageExportBucket)(nil)).Elem()
 }
 
 func (i UsageExportBucketArray) ToUsageExportBucketArrayOutput() UsageExportBucketArrayOutput {
@@ -265,7 +265,7 @@ type UsageExportBucketMapInput interface {
 type UsageExportBucketMap map[string]UsageExportBucketInput
 
 func (UsageExportBucketMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*UsageExportBucket)(nil))
+	return reflect.TypeOf((*map[string]*UsageExportBucket)(nil)).Elem()
 }
 
 func (i UsageExportBucketMap) ToUsageExportBucketMapOutput() UsageExportBucketMapOutput {
@@ -276,9 +276,7 @@ func (i UsageExportBucketMap) ToUsageExportBucketMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(UsageExportBucketMapOutput)
 }
 
-type UsageExportBucketOutput struct {
-	*pulumi.OutputState
-}
+type UsageExportBucketOutput struct{ *pulumi.OutputState }
 
 func (UsageExportBucketOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*UsageExportBucket)(nil))
@@ -297,14 +295,12 @@ func (o UsageExportBucketOutput) ToUsageExportBucketPtrOutput() UsageExportBucke
 }
 
 func (o UsageExportBucketOutput) ToUsageExportBucketPtrOutputWithContext(ctx context.Context) UsageExportBucketPtrOutput {
-	return o.ApplyT(func(v UsageExportBucket) *UsageExportBucket {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UsageExportBucket) *UsageExportBucket {
 		return &v
 	}).(UsageExportBucketPtrOutput)
 }
 
-type UsageExportBucketPtrOutput struct {
-	*pulumi.OutputState
-}
+type UsageExportBucketPtrOutput struct{ *pulumi.OutputState }
 
 func (UsageExportBucketPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**UsageExportBucket)(nil))
@@ -316,6 +312,16 @@ func (o UsageExportBucketPtrOutput) ToUsageExportBucketPtrOutput() UsageExportBu
 
 func (o UsageExportBucketPtrOutput) ToUsageExportBucketPtrOutputWithContext(ctx context.Context) UsageExportBucketPtrOutput {
 	return o
+}
+
+func (o UsageExportBucketPtrOutput) Elem() UsageExportBucketOutput {
+	return o.ApplyT(func(v *UsageExportBucket) UsageExportBucket {
+		if v != nil {
+			return *v
+		}
+		var ret UsageExportBucket
+		return ret
+	}).(UsageExportBucketOutput)
 }
 
 type UsageExportBucketArrayOutput struct{ *pulumi.OutputState }

@@ -4,6 +4,9 @@
 package redis
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -82,4 +85,145 @@ type LookupInstanceResult struct {
 	ServerCaCerts          []GetInstanceServerCaCert `pulumi:"serverCaCerts"`
 	Tier                   string                    `pulumi:"tier"`
 	TransitEncryptionMode  string                    `pulumi:"transitEncryptionMode"`
+}
+
+func LookupInstanceOutput(ctx *pulumi.Context, args LookupInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupInstanceResult, error) {
+			args := v.(LookupInstanceArgs)
+			r, err := LookupInstance(ctx, &args, opts...)
+			return *r, err
+		}).(LookupInstanceResultOutput)
+}
+
+// A collection of arguments for invoking getInstance.
+type LookupInstanceOutputArgs struct {
+	// The name of a Redis instance.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The project in which the resource belongs. If it
+	// is not provided, the provider project is used.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// The region in which the resource belongs. If it
+	// is not provided, the provider region is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (LookupInstanceOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupInstanceArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getInstance.
+type LookupInstanceResultOutput struct{ *pulumi.OutputState }
+
+func (LookupInstanceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupInstanceResult)(nil)).Elem()
+}
+
+func (o LookupInstanceResultOutput) ToLookupInstanceResultOutput() LookupInstanceResultOutput {
+	return o
+}
+
+func (o LookupInstanceResultOutput) ToLookupInstanceResultOutputWithContext(ctx context.Context) LookupInstanceResultOutput {
+	return o
+}
+
+func (o LookupInstanceResultOutput) AlternativeLocationId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.AlternativeLocationId }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) AuthEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupInstanceResult) bool { return v.AuthEnabled }).(pulumi.BoolOutput)
+}
+
+func (o LookupInstanceResultOutput) AuthString() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.AuthString }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) AuthorizedNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.AuthorizedNetwork }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) ConnectMode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.ConnectMode }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) CurrentLocationId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.CurrentLocationId }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupInstanceResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupInstanceResultOutput) LocationId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.LocationId }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) MemorySizeGb() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupInstanceResult) int { return v.MemorySizeGb }).(pulumi.IntOutput)
+}
+
+func (o LookupInstanceResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) PersistenceIamIdentity() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.PersistenceIamIdentity }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupInstanceResult) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o LookupInstanceResultOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupInstanceResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupInstanceResultOutput) RedisConfigs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.RedisConfigs }).(pulumi.StringMapOutput)
+}
+
+func (o LookupInstanceResultOutput) RedisVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.RedisVersion }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupInstanceResult) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupInstanceResultOutput) ReservedIpRange() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.ReservedIpRange }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) ServerCaCerts() GetInstanceServerCaCertArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceServerCaCert { return v.ServerCaCerts }).(GetInstanceServerCaCertArrayOutput)
+}
+
+func (o LookupInstanceResultOutput) Tier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.Tier }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) TransitEncryptionMode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.TransitEncryptionMode }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupInstanceResultOutput{})
 }

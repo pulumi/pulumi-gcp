@@ -12,6 +12,7 @@ __all__ = [
     'GetForwardingRuleResult',
     'AwaitableGetForwardingRuleResult',
     'get_forwarding_rule',
+    'get_forwarding_rule_output',
 ]
 
 @pulumi.output_type
@@ -307,3 +308,30 @@ def get_forwarding_rule(name: Optional[str] = None,
         service_name=__ret__.service_name,
         subnetwork=__ret__.subnetwork,
         target=__ret__.target)
+
+
+@_utilities.lift_output_func(get_forwarding_rule)
+def get_forwarding_rule_output(name: Optional[pulumi.Input[str]] = None,
+                               project: Optional[pulumi.Input[Optional[str]]] = None,
+                               region: Optional[pulumi.Input[Optional[str]]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetForwardingRuleResult]:
+    """
+    Get a forwarding rule within GCE from its name.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_forwarding_rule = gcp.compute.get_forwarding_rule(name="forwarding-rule-us-east1")
+    ```
+
+
+    :param str name: The name of the forwarding rule.
+    :param str project: The project in which the resource belongs. If it
+           is not provided, the provider project is used.
+    :param str region: The region in which the resource belongs. If it
+           is not provided, the project region is used.
+    """
+    ...

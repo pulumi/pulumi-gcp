@@ -249,7 +249,7 @@ type InboundSamlConfigArrayInput interface {
 type InboundSamlConfigArray []InboundSamlConfigInput
 
 func (InboundSamlConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*InboundSamlConfig)(nil))
+	return reflect.TypeOf((*[]*InboundSamlConfig)(nil)).Elem()
 }
 
 func (i InboundSamlConfigArray) ToInboundSamlConfigArrayOutput() InboundSamlConfigArrayOutput {
@@ -274,7 +274,7 @@ type InboundSamlConfigMapInput interface {
 type InboundSamlConfigMap map[string]InboundSamlConfigInput
 
 func (InboundSamlConfigMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*InboundSamlConfig)(nil))
+	return reflect.TypeOf((*map[string]*InboundSamlConfig)(nil)).Elem()
 }
 
 func (i InboundSamlConfigMap) ToInboundSamlConfigMapOutput() InboundSamlConfigMapOutput {
@@ -285,9 +285,7 @@ func (i InboundSamlConfigMap) ToInboundSamlConfigMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(InboundSamlConfigMapOutput)
 }
 
-type InboundSamlConfigOutput struct {
-	*pulumi.OutputState
-}
+type InboundSamlConfigOutput struct{ *pulumi.OutputState }
 
 func (InboundSamlConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InboundSamlConfig)(nil))
@@ -306,14 +304,12 @@ func (o InboundSamlConfigOutput) ToInboundSamlConfigPtrOutput() InboundSamlConfi
 }
 
 func (o InboundSamlConfigOutput) ToInboundSamlConfigPtrOutputWithContext(ctx context.Context) InboundSamlConfigPtrOutput {
-	return o.ApplyT(func(v InboundSamlConfig) *InboundSamlConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InboundSamlConfig) *InboundSamlConfig {
 		return &v
 	}).(InboundSamlConfigPtrOutput)
 }
 
-type InboundSamlConfigPtrOutput struct {
-	*pulumi.OutputState
-}
+type InboundSamlConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (InboundSamlConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**InboundSamlConfig)(nil))
@@ -325,6 +321,16 @@ func (o InboundSamlConfigPtrOutput) ToInboundSamlConfigPtrOutput() InboundSamlCo
 
 func (o InboundSamlConfigPtrOutput) ToInboundSamlConfigPtrOutputWithContext(ctx context.Context) InboundSamlConfigPtrOutput {
 	return o
+}
+
+func (o InboundSamlConfigPtrOutput) Elem() InboundSamlConfigOutput {
+	return o.ApplyT(func(v *InboundSamlConfig) InboundSamlConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InboundSamlConfig
+		return ret
+	}).(InboundSamlConfigOutput)
 }
 
 type InboundSamlConfigArrayOutput struct{ *pulumi.OutputState }

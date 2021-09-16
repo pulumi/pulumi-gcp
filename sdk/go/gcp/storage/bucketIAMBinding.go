@@ -458,7 +458,7 @@ type BucketIAMBindingArrayInput interface {
 type BucketIAMBindingArray []BucketIAMBindingInput
 
 func (BucketIAMBindingArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*BucketIAMBinding)(nil))
+	return reflect.TypeOf((*[]*BucketIAMBinding)(nil)).Elem()
 }
 
 func (i BucketIAMBindingArray) ToBucketIAMBindingArrayOutput() BucketIAMBindingArrayOutput {
@@ -483,7 +483,7 @@ type BucketIAMBindingMapInput interface {
 type BucketIAMBindingMap map[string]BucketIAMBindingInput
 
 func (BucketIAMBindingMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*BucketIAMBinding)(nil))
+	return reflect.TypeOf((*map[string]*BucketIAMBinding)(nil)).Elem()
 }
 
 func (i BucketIAMBindingMap) ToBucketIAMBindingMapOutput() BucketIAMBindingMapOutput {
@@ -494,9 +494,7 @@ func (i BucketIAMBindingMap) ToBucketIAMBindingMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(BucketIAMBindingMapOutput)
 }
 
-type BucketIAMBindingOutput struct {
-	*pulumi.OutputState
-}
+type BucketIAMBindingOutput struct{ *pulumi.OutputState }
 
 func (BucketIAMBindingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BucketIAMBinding)(nil))
@@ -515,14 +513,12 @@ func (o BucketIAMBindingOutput) ToBucketIAMBindingPtrOutput() BucketIAMBindingPt
 }
 
 func (o BucketIAMBindingOutput) ToBucketIAMBindingPtrOutputWithContext(ctx context.Context) BucketIAMBindingPtrOutput {
-	return o.ApplyT(func(v BucketIAMBinding) *BucketIAMBinding {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketIAMBinding) *BucketIAMBinding {
 		return &v
 	}).(BucketIAMBindingPtrOutput)
 }
 
-type BucketIAMBindingPtrOutput struct {
-	*pulumi.OutputState
-}
+type BucketIAMBindingPtrOutput struct{ *pulumi.OutputState }
 
 func (BucketIAMBindingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**BucketIAMBinding)(nil))
@@ -534,6 +530,16 @@ func (o BucketIAMBindingPtrOutput) ToBucketIAMBindingPtrOutput() BucketIAMBindin
 
 func (o BucketIAMBindingPtrOutput) ToBucketIAMBindingPtrOutputWithContext(ctx context.Context) BucketIAMBindingPtrOutput {
 	return o
+}
+
+func (o BucketIAMBindingPtrOutput) Elem() BucketIAMBindingOutput {
+	return o.ApplyT(func(v *BucketIAMBinding) BucketIAMBinding {
+		if v != nil {
+			return *v
+		}
+		var ret BucketIAMBinding
+		return ret
+	}).(BucketIAMBindingOutput)
 }
 
 type BucketIAMBindingArrayOutput struct{ *pulumi.OutputState }

@@ -225,10 +225,11 @@ func (o BucketEncryptionOutput) ToBucketEncryptionPtrOutput() BucketEncryptionPt
 }
 
 func (o BucketEncryptionOutput) ToBucketEncryptionPtrOutputWithContext(ctx context.Context) BucketEncryptionPtrOutput {
-	return o.ApplyT(func(v BucketEncryption) *BucketEncryption {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketEncryption) *BucketEncryption {
 		return &v
 	}).(BucketEncryptionPtrOutput)
 }
+
 func (o BucketEncryptionOutput) DefaultKmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketEncryption) string { return v.DefaultKmsKeyName }).(pulumi.StringOutput)
 }
@@ -248,7 +249,13 @@ func (o BucketEncryptionPtrOutput) ToBucketEncryptionPtrOutputWithContext(ctx co
 }
 
 func (o BucketEncryptionPtrOutput) Elem() BucketEncryptionOutput {
-	return o.ApplyT(func(v *BucketEncryption) BucketEncryption { return *v }).(BucketEncryptionOutput)
+	return o.ApplyT(func(v *BucketEncryption) BucketEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret BucketEncryption
+		return ret
+	}).(BucketEncryptionOutput)
 }
 
 func (o BucketEncryptionPtrOutput) DefaultKmsKeyName() pulumi.StringPtrOutput {
@@ -361,7 +368,7 @@ func (o BucketIAMBindingConditionOutput) ToBucketIAMBindingConditionPtrOutput() 
 }
 
 func (o BucketIAMBindingConditionOutput) ToBucketIAMBindingConditionPtrOutputWithContext(ctx context.Context) BucketIAMBindingConditionPtrOutput {
-	return o.ApplyT(func(v BucketIAMBindingCondition) *BucketIAMBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketIAMBindingCondition) *BucketIAMBindingCondition {
 		return &v
 	}).(BucketIAMBindingConditionPtrOutput)
 }
@@ -396,7 +403,13 @@ func (o BucketIAMBindingConditionPtrOutput) ToBucketIAMBindingConditionPtrOutput
 }
 
 func (o BucketIAMBindingConditionPtrOutput) Elem() BucketIAMBindingConditionOutput {
-	return o.ApplyT(func(v *BucketIAMBindingCondition) BucketIAMBindingCondition { return *v }).(BucketIAMBindingConditionOutput)
+	return o.ApplyT(func(v *BucketIAMBindingCondition) BucketIAMBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret BucketIAMBindingCondition
+		return ret
+	}).(BucketIAMBindingConditionOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -530,7 +543,7 @@ func (o BucketIAMMemberConditionOutput) ToBucketIAMMemberConditionPtrOutput() Bu
 }
 
 func (o BucketIAMMemberConditionOutput) ToBucketIAMMemberConditionPtrOutputWithContext(ctx context.Context) BucketIAMMemberConditionPtrOutput {
-	return o.ApplyT(func(v BucketIAMMemberCondition) *BucketIAMMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketIAMMemberCondition) *BucketIAMMemberCondition {
 		return &v
 	}).(BucketIAMMemberConditionPtrOutput)
 }
@@ -565,7 +578,13 @@ func (o BucketIAMMemberConditionPtrOutput) ToBucketIAMMemberConditionPtrOutputWi
 }
 
 func (o BucketIAMMemberConditionPtrOutput) Elem() BucketIAMMemberConditionOutput {
-	return o.ApplyT(func(v *BucketIAMMemberCondition) BucketIAMMemberCondition { return *v }).(BucketIAMMemberConditionOutput)
+	return o.ApplyT(func(v *BucketIAMMemberCondition) BucketIAMMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret BucketIAMMemberCondition
+		return ret
+	}).(BucketIAMMemberConditionOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -988,7 +1007,7 @@ func (o BucketLoggingOutput) ToBucketLoggingPtrOutput() BucketLoggingPtrOutput {
 }
 
 func (o BucketLoggingOutput) ToBucketLoggingPtrOutputWithContext(ctx context.Context) BucketLoggingPtrOutput {
-	return o.ApplyT(func(v BucketLogging) *BucketLogging {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketLogging) *BucketLogging {
 		return &v
 	}).(BucketLoggingPtrOutput)
 }
@@ -1019,7 +1038,13 @@ func (o BucketLoggingPtrOutput) ToBucketLoggingPtrOutputWithContext(ctx context.
 }
 
 func (o BucketLoggingPtrOutput) Elem() BucketLoggingOutput {
-	return o.ApplyT(func(v *BucketLogging) BucketLogging { return *v }).(BucketLoggingOutput)
+	return o.ApplyT(func(v *BucketLogging) BucketLogging {
+		if v != nil {
+			return *v
+		}
+		var ret BucketLogging
+		return ret
+	}).(BucketLoggingOutput)
 }
 
 // The bucket that will receive log objects.
@@ -1140,7 +1165,7 @@ func (o BucketObjectCustomerEncryptionOutput) ToBucketObjectCustomerEncryptionPt
 }
 
 func (o BucketObjectCustomerEncryptionOutput) ToBucketObjectCustomerEncryptionPtrOutputWithContext(ctx context.Context) BucketObjectCustomerEncryptionPtrOutput {
-	return o.ApplyT(func(v BucketObjectCustomerEncryption) *BucketObjectCustomerEncryption {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketObjectCustomerEncryption) *BucketObjectCustomerEncryption {
 		return &v
 	}).(BucketObjectCustomerEncryptionPtrOutput)
 }
@@ -1170,7 +1195,13 @@ func (o BucketObjectCustomerEncryptionPtrOutput) ToBucketObjectCustomerEncryptio
 }
 
 func (o BucketObjectCustomerEncryptionPtrOutput) Elem() BucketObjectCustomerEncryptionOutput {
-	return o.ApplyT(func(v *BucketObjectCustomerEncryption) BucketObjectCustomerEncryption { return *v }).(BucketObjectCustomerEncryptionOutput)
+	return o.ApplyT(func(v *BucketObjectCustomerEncryption) BucketObjectCustomerEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret BucketObjectCustomerEncryption
+		return ret
+	}).(BucketObjectCustomerEncryptionOutput)
 }
 
 // Encryption algorithm. Default: AES256
@@ -1290,7 +1321,7 @@ func (o BucketRetentionPolicyOutput) ToBucketRetentionPolicyPtrOutput() BucketRe
 }
 
 func (o BucketRetentionPolicyOutput) ToBucketRetentionPolicyPtrOutputWithContext(ctx context.Context) BucketRetentionPolicyPtrOutput {
-	return o.ApplyT(func(v BucketRetentionPolicy) *BucketRetentionPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketRetentionPolicy) *BucketRetentionPolicy {
 		return &v
 	}).(BucketRetentionPolicyPtrOutput)
 }
@@ -1320,7 +1351,13 @@ func (o BucketRetentionPolicyPtrOutput) ToBucketRetentionPolicyPtrOutputWithCont
 }
 
 func (o BucketRetentionPolicyPtrOutput) Elem() BucketRetentionPolicyOutput {
-	return o.ApplyT(func(v *BucketRetentionPolicy) BucketRetentionPolicy { return *v }).(BucketRetentionPolicyOutput)
+	return o.ApplyT(func(v *BucketRetentionPolicy) BucketRetentionPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret BucketRetentionPolicy
+		return ret
+	}).(BucketRetentionPolicyOutput)
 }
 
 // If set to `true`, the bucket will be [locked](https://cloud.google.com/storage/docs/using-bucket-lock#lock-bucket) and permanently restrict edits to the bucket's retention policy.  Caution: Locking a bucket is an irreversible action.
@@ -1436,7 +1473,7 @@ func (o BucketVersioningOutput) ToBucketVersioningPtrOutput() BucketVersioningPt
 }
 
 func (o BucketVersioningOutput) ToBucketVersioningPtrOutputWithContext(ctx context.Context) BucketVersioningPtrOutput {
-	return o.ApplyT(func(v BucketVersioning) *BucketVersioning {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketVersioning) *BucketVersioning {
 		return &v
 	}).(BucketVersioningPtrOutput)
 }
@@ -1461,7 +1498,13 @@ func (o BucketVersioningPtrOutput) ToBucketVersioningPtrOutputWithContext(ctx co
 }
 
 func (o BucketVersioningPtrOutput) Elem() BucketVersioningOutput {
-	return o.ApplyT(func(v *BucketVersioning) BucketVersioning { return *v }).(BucketVersioningOutput)
+	return o.ApplyT(func(v *BucketVersioning) BucketVersioning {
+		if v != nil {
+			return *v
+		}
+		var ret BucketVersioning
+		return ret
+	}).(BucketVersioningOutput)
 }
 
 // While set to `true`, versioning is fully enabled for this bucket.
@@ -1575,7 +1618,7 @@ func (o BucketWebsiteOutput) ToBucketWebsitePtrOutput() BucketWebsitePtrOutput {
 }
 
 func (o BucketWebsiteOutput) ToBucketWebsitePtrOutputWithContext(ctx context.Context) BucketWebsitePtrOutput {
-	return o.ApplyT(func(v BucketWebsite) *BucketWebsite {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketWebsite) *BucketWebsite {
 		return &v
 	}).(BucketWebsitePtrOutput)
 }
@@ -1607,7 +1650,13 @@ func (o BucketWebsitePtrOutput) ToBucketWebsitePtrOutputWithContext(ctx context.
 }
 
 func (o BucketWebsitePtrOutput) Elem() BucketWebsiteOutput {
-	return o.ApplyT(func(v *BucketWebsite) BucketWebsite { return *v }).(BucketWebsiteOutput)
+	return o.ApplyT(func(v *BucketWebsite) BucketWebsite {
+		if v != nil {
+			return *v
+		}
+		var ret BucketWebsite
+		return ret
+	}).(BucketWebsiteOutput)
 }
 
 // Behaves as the bucket's directory index where
@@ -1933,7 +1982,7 @@ func (o TransferJobScheduleOutput) ToTransferJobSchedulePtrOutput() TransferJobS
 }
 
 func (o TransferJobScheduleOutput) ToTransferJobSchedulePtrOutputWithContext(ctx context.Context) TransferJobSchedulePtrOutput {
-	return o.ApplyT(func(v TransferJobSchedule) *TransferJobSchedule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferJobSchedule) *TransferJobSchedule {
 		return &v
 	}).(TransferJobSchedulePtrOutput)
 }
@@ -1968,7 +2017,13 @@ func (o TransferJobSchedulePtrOutput) ToTransferJobSchedulePtrOutputWithContext(
 }
 
 func (o TransferJobSchedulePtrOutput) Elem() TransferJobScheduleOutput {
-	return o.ApplyT(func(v *TransferJobSchedule) TransferJobSchedule { return *v }).(TransferJobScheduleOutput)
+	return o.ApplyT(func(v *TransferJobSchedule) TransferJobSchedule {
+		if v != nil {
+			return *v
+		}
+		var ret TransferJobSchedule
+		return ret
+	}).(TransferJobScheduleOutput)
 }
 
 // The last day the recurring transfer will be run. If `scheduleEndDate` is the same as `scheduleStartDate`, the transfer will be executed only once. Structure documented below.
@@ -2102,7 +2157,7 @@ func (o TransferJobScheduleScheduleEndDateOutput) ToTransferJobScheduleScheduleE
 }
 
 func (o TransferJobScheduleScheduleEndDateOutput) ToTransferJobScheduleScheduleEndDatePtrOutputWithContext(ctx context.Context) TransferJobScheduleScheduleEndDatePtrOutput {
-	return o.ApplyT(func(v TransferJobScheduleScheduleEndDate) *TransferJobScheduleScheduleEndDate {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferJobScheduleScheduleEndDate) *TransferJobScheduleScheduleEndDate {
 		return &v
 	}).(TransferJobScheduleScheduleEndDatePtrOutput)
 }
@@ -2137,7 +2192,13 @@ func (o TransferJobScheduleScheduleEndDatePtrOutput) ToTransferJobScheduleSchedu
 }
 
 func (o TransferJobScheduleScheduleEndDatePtrOutput) Elem() TransferJobScheduleScheduleEndDateOutput {
-	return o.ApplyT(func(v *TransferJobScheduleScheduleEndDate) TransferJobScheduleScheduleEndDate { return *v }).(TransferJobScheduleScheduleEndDateOutput)
+	return o.ApplyT(func(v *TransferJobScheduleScheduleEndDate) TransferJobScheduleScheduleEndDate {
+		if v != nil {
+			return *v
+		}
+		var ret TransferJobScheduleScheduleEndDate
+		return ret
+	}).(TransferJobScheduleScheduleEndDateOutput)
 }
 
 // Day of month. Must be from 1 to 31 and valid for the year and month.
@@ -2271,7 +2332,7 @@ func (o TransferJobScheduleScheduleStartDateOutput) ToTransferJobScheduleSchedul
 }
 
 func (o TransferJobScheduleScheduleStartDateOutput) ToTransferJobScheduleScheduleStartDatePtrOutputWithContext(ctx context.Context) TransferJobScheduleScheduleStartDatePtrOutput {
-	return o.ApplyT(func(v TransferJobScheduleScheduleStartDate) *TransferJobScheduleScheduleStartDate {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferJobScheduleScheduleStartDate) *TransferJobScheduleScheduleStartDate {
 		return &v
 	}).(TransferJobScheduleScheduleStartDatePtrOutput)
 }
@@ -2306,7 +2367,13 @@ func (o TransferJobScheduleScheduleStartDatePtrOutput) ToTransferJobScheduleSche
 }
 
 func (o TransferJobScheduleScheduleStartDatePtrOutput) Elem() TransferJobScheduleScheduleStartDateOutput {
-	return o.ApplyT(func(v *TransferJobScheduleScheduleStartDate) TransferJobScheduleScheduleStartDate { return *v }).(TransferJobScheduleScheduleStartDateOutput)
+	return o.ApplyT(func(v *TransferJobScheduleScheduleStartDate) TransferJobScheduleScheduleStartDate {
+		if v != nil {
+			return *v
+		}
+		var ret TransferJobScheduleScheduleStartDate
+		return ret
+	}).(TransferJobScheduleScheduleStartDateOutput)
 }
 
 // Day of month. Must be from 1 to 31 and valid for the year and month.
@@ -2444,7 +2511,7 @@ func (o TransferJobScheduleStartTimeOfDayOutput) ToTransferJobScheduleStartTimeO
 }
 
 func (o TransferJobScheduleStartTimeOfDayOutput) ToTransferJobScheduleStartTimeOfDayPtrOutputWithContext(ctx context.Context) TransferJobScheduleStartTimeOfDayPtrOutput {
-	return o.ApplyT(func(v TransferJobScheduleStartTimeOfDay) *TransferJobScheduleStartTimeOfDay {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferJobScheduleStartTimeOfDay) *TransferJobScheduleStartTimeOfDay {
 		return &v
 	}).(TransferJobScheduleStartTimeOfDayPtrOutput)
 }
@@ -2484,7 +2551,13 @@ func (o TransferJobScheduleStartTimeOfDayPtrOutput) ToTransferJobScheduleStartTi
 }
 
 func (o TransferJobScheduleStartTimeOfDayPtrOutput) Elem() TransferJobScheduleStartTimeOfDayOutput {
-	return o.ApplyT(func(v *TransferJobScheduleStartTimeOfDay) TransferJobScheduleStartTimeOfDay { return *v }).(TransferJobScheduleStartTimeOfDayOutput)
+	return o.ApplyT(func(v *TransferJobScheduleStartTimeOfDay) TransferJobScheduleStartTimeOfDay {
+		if v != nil {
+			return *v
+		}
+		var ret TransferJobScheduleStartTimeOfDay
+		return ret
+	}).(TransferJobScheduleStartTimeOfDayOutput)
 }
 
 // Hours of day in 24 hour format. Should be from 0 to 23
@@ -2644,7 +2717,7 @@ func (o TransferJobTransferSpecOutput) ToTransferJobTransferSpecPtrOutput() Tran
 }
 
 func (o TransferJobTransferSpecOutput) ToTransferJobTransferSpecPtrOutputWithContext(ctx context.Context) TransferJobTransferSpecPtrOutput {
-	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpec {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferJobTransferSpec) *TransferJobTransferSpec {
 		return &v
 	}).(TransferJobTransferSpecPtrOutput)
 }
@@ -2701,7 +2774,13 @@ func (o TransferJobTransferSpecPtrOutput) ToTransferJobTransferSpecPtrOutputWith
 }
 
 func (o TransferJobTransferSpecPtrOutput) Elem() TransferJobTransferSpecOutput {
-	return o.ApplyT(func(v *TransferJobTransferSpec) TransferJobTransferSpec { return *v }).(TransferJobTransferSpecOutput)
+	return o.ApplyT(func(v *TransferJobTransferSpec) TransferJobTransferSpec {
+		if v != nil {
+			return *v
+		}
+		var ret TransferJobTransferSpec
+		return ret
+	}).(TransferJobTransferSpecOutput)
 }
 
 // An AWS S3 data source. Structure documented below.
@@ -2871,7 +2950,7 @@ func (o TransferJobTransferSpecAwsS3DataSourceOutput) ToTransferJobTransferSpecA
 }
 
 func (o TransferJobTransferSpecAwsS3DataSourceOutput) ToTransferJobTransferSpecAwsS3DataSourcePtrOutputWithContext(ctx context.Context) TransferJobTransferSpecAwsS3DataSourcePtrOutput {
-	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSource) *TransferJobTransferSpecAwsS3DataSource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferJobTransferSpecAwsS3DataSource) *TransferJobTransferSpecAwsS3DataSource {
 		return &v
 	}).(TransferJobTransferSpecAwsS3DataSourcePtrOutput)
 }
@@ -2903,7 +2982,13 @@ func (o TransferJobTransferSpecAwsS3DataSourcePtrOutput) ToTransferJobTransferSp
 }
 
 func (o TransferJobTransferSpecAwsS3DataSourcePtrOutput) Elem() TransferJobTransferSpecAwsS3DataSourceOutput {
-	return o.ApplyT(func(v *TransferJobTransferSpecAwsS3DataSource) TransferJobTransferSpecAwsS3DataSource { return *v }).(TransferJobTransferSpecAwsS3DataSourceOutput)
+	return o.ApplyT(func(v *TransferJobTransferSpecAwsS3DataSource) TransferJobTransferSpecAwsS3DataSource {
+		if v != nil {
+			return *v
+		}
+		var ret TransferJobTransferSpecAwsS3DataSource
+		return ret
+	}).(TransferJobTransferSpecAwsS3DataSourceOutput)
 }
 
 // AWS credentials block.
@@ -3023,7 +3108,7 @@ func (o TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput) ToTransferJobT
 }
 
 func (o TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput) ToTransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutputWithContext(ctx context.Context) TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput {
-	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSourceAwsAccessKey) *TransferJobTransferSpecAwsS3DataSourceAwsAccessKey {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferJobTransferSpecAwsS3DataSourceAwsAccessKey) *TransferJobTransferSpecAwsS3DataSourceAwsAccessKey {
 		return &v
 	}).(TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput)
 }
@@ -3054,7 +3139,11 @@ func (o TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput) ToTransferJ
 
 func (o TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput) Elem() TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput {
 	return o.ApplyT(func(v *TransferJobTransferSpecAwsS3DataSourceAwsAccessKey) TransferJobTransferSpecAwsS3DataSourceAwsAccessKey {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret TransferJobTransferSpecAwsS3DataSourceAwsAccessKey
+		return ret
 	}).(TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput)
 }
 
@@ -3183,7 +3272,7 @@ func (o TransferJobTransferSpecAzureBlobStorageDataSourceOutput) ToTransferJobTr
 }
 
 func (o TransferJobTransferSpecAzureBlobStorageDataSourceOutput) ToTransferJobTransferSpecAzureBlobStorageDataSourcePtrOutputWithContext(ctx context.Context) TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput {
-	return o.ApplyT(func(v TransferJobTransferSpecAzureBlobStorageDataSource) *TransferJobTransferSpecAzureBlobStorageDataSource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferJobTransferSpecAzureBlobStorageDataSource) *TransferJobTransferSpecAzureBlobStorageDataSource {
 		return &v
 	}).(TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput)
 }
@@ -3226,7 +3315,11 @@ func (o TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput) ToTransferJo
 
 func (o TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput) Elem() TransferJobTransferSpecAzureBlobStorageDataSourceOutput {
 	return o.ApplyT(func(v *TransferJobTransferSpecAzureBlobStorageDataSource) TransferJobTransferSpecAzureBlobStorageDataSource {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret TransferJobTransferSpecAzureBlobStorageDataSource
+		return ret
 	}).(TransferJobTransferSpecAzureBlobStorageDataSourceOutput)
 }
 
@@ -3363,7 +3456,7 @@ func (o TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsOutput)
 }
 
 func (o TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsOutput) ToTransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutputWithContext(ctx context.Context) TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutput {
-	return o.ApplyT(func(v TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials) *TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials) *TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials {
 		return &v
 	}).(TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutput)
 }
@@ -3389,7 +3482,11 @@ func (o TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutp
 
 func (o TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutput) Elem() TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsOutput {
 	return o.ApplyT(func(v *TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials) TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials
+		return ret
 	}).(TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsOutput)
 }
 
@@ -3496,7 +3593,7 @@ func (o TransferJobTransferSpecGcsDataSinkOutput) ToTransferJobTransferSpecGcsDa
 }
 
 func (o TransferJobTransferSpecGcsDataSinkOutput) ToTransferJobTransferSpecGcsDataSinkPtrOutputWithContext(ctx context.Context) TransferJobTransferSpecGcsDataSinkPtrOutput {
-	return o.ApplyT(func(v TransferJobTransferSpecGcsDataSink) *TransferJobTransferSpecGcsDataSink {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferJobTransferSpecGcsDataSink) *TransferJobTransferSpecGcsDataSink {
 		return &v
 	}).(TransferJobTransferSpecGcsDataSinkPtrOutput)
 }
@@ -3521,7 +3618,13 @@ func (o TransferJobTransferSpecGcsDataSinkPtrOutput) ToTransferJobTransferSpecGc
 }
 
 func (o TransferJobTransferSpecGcsDataSinkPtrOutput) Elem() TransferJobTransferSpecGcsDataSinkOutput {
-	return o.ApplyT(func(v *TransferJobTransferSpecGcsDataSink) TransferJobTransferSpecGcsDataSink { return *v }).(TransferJobTransferSpecGcsDataSinkOutput)
+	return o.ApplyT(func(v *TransferJobTransferSpecGcsDataSink) TransferJobTransferSpecGcsDataSink {
+		if v != nil {
+			return *v
+		}
+		var ret TransferJobTransferSpecGcsDataSink
+		return ret
+	}).(TransferJobTransferSpecGcsDataSinkOutput)
 }
 
 // S3 Bucket name.
@@ -3627,7 +3730,7 @@ func (o TransferJobTransferSpecGcsDataSourceOutput) ToTransferJobTransferSpecGcs
 }
 
 func (o TransferJobTransferSpecGcsDataSourceOutput) ToTransferJobTransferSpecGcsDataSourcePtrOutputWithContext(ctx context.Context) TransferJobTransferSpecGcsDataSourcePtrOutput {
-	return o.ApplyT(func(v TransferJobTransferSpecGcsDataSource) *TransferJobTransferSpecGcsDataSource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferJobTransferSpecGcsDataSource) *TransferJobTransferSpecGcsDataSource {
 		return &v
 	}).(TransferJobTransferSpecGcsDataSourcePtrOutput)
 }
@@ -3652,7 +3755,13 @@ func (o TransferJobTransferSpecGcsDataSourcePtrOutput) ToTransferJobTransferSpec
 }
 
 func (o TransferJobTransferSpecGcsDataSourcePtrOutput) Elem() TransferJobTransferSpecGcsDataSourceOutput {
-	return o.ApplyT(func(v *TransferJobTransferSpecGcsDataSource) TransferJobTransferSpecGcsDataSource { return *v }).(TransferJobTransferSpecGcsDataSourceOutput)
+	return o.ApplyT(func(v *TransferJobTransferSpecGcsDataSource) TransferJobTransferSpecGcsDataSource {
+		if v != nil {
+			return *v
+		}
+		var ret TransferJobTransferSpecGcsDataSource
+		return ret
+	}).(TransferJobTransferSpecGcsDataSourceOutput)
 }
 
 // S3 Bucket name.
@@ -3758,7 +3867,7 @@ func (o TransferJobTransferSpecHttpDataSourceOutput) ToTransferJobTransferSpecHt
 }
 
 func (o TransferJobTransferSpecHttpDataSourceOutput) ToTransferJobTransferSpecHttpDataSourcePtrOutputWithContext(ctx context.Context) TransferJobTransferSpecHttpDataSourcePtrOutput {
-	return o.ApplyT(func(v TransferJobTransferSpecHttpDataSource) *TransferJobTransferSpecHttpDataSource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferJobTransferSpecHttpDataSource) *TransferJobTransferSpecHttpDataSource {
 		return &v
 	}).(TransferJobTransferSpecHttpDataSourcePtrOutput)
 }
@@ -3783,7 +3892,13 @@ func (o TransferJobTransferSpecHttpDataSourcePtrOutput) ToTransferJobTransferSpe
 }
 
 func (o TransferJobTransferSpecHttpDataSourcePtrOutput) Elem() TransferJobTransferSpecHttpDataSourceOutput {
-	return o.ApplyT(func(v *TransferJobTransferSpecHttpDataSource) TransferJobTransferSpecHttpDataSource { return *v }).(TransferJobTransferSpecHttpDataSourceOutput)
+	return o.ApplyT(func(v *TransferJobTransferSpecHttpDataSource) TransferJobTransferSpecHttpDataSource {
+		if v != nil {
+			return *v
+		}
+		var ret TransferJobTransferSpecHttpDataSource
+		return ret
+	}).(TransferJobTransferSpecHttpDataSourceOutput)
 }
 
 // The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
@@ -3901,7 +4016,7 @@ func (o TransferJobTransferSpecObjectConditionsOutput) ToTransferJobTransferSpec
 }
 
 func (o TransferJobTransferSpecObjectConditionsOutput) ToTransferJobTransferSpecObjectConditionsPtrOutputWithContext(ctx context.Context) TransferJobTransferSpecObjectConditionsPtrOutput {
-	return o.ApplyT(func(v TransferJobTransferSpecObjectConditions) *TransferJobTransferSpecObjectConditions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferJobTransferSpecObjectConditions) *TransferJobTransferSpecObjectConditions {
 		return &v
 	}).(TransferJobTransferSpecObjectConditionsPtrOutput)
 }
@@ -3941,7 +4056,13 @@ func (o TransferJobTransferSpecObjectConditionsPtrOutput) ToTransferJobTransferS
 }
 
 func (o TransferJobTransferSpecObjectConditionsPtrOutput) Elem() TransferJobTransferSpecObjectConditionsOutput {
-	return o.ApplyT(func(v *TransferJobTransferSpecObjectConditions) TransferJobTransferSpecObjectConditions { return *v }).(TransferJobTransferSpecObjectConditionsOutput)
+	return o.ApplyT(func(v *TransferJobTransferSpecObjectConditions) TransferJobTransferSpecObjectConditions {
+		if v != nil {
+			return *v
+		}
+		var ret TransferJobTransferSpecObjectConditions
+		return ret
+	}).(TransferJobTransferSpecObjectConditionsOutput)
 }
 
 // `excludePrefixes` must follow the requirements described for `includePrefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
@@ -4087,7 +4208,7 @@ func (o TransferJobTransferSpecTransferOptionsOutput) ToTransferJobTransferSpecT
 }
 
 func (o TransferJobTransferSpecTransferOptionsOutput) ToTransferJobTransferSpecTransferOptionsPtrOutputWithContext(ctx context.Context) TransferJobTransferSpecTransferOptionsPtrOutput {
-	return o.ApplyT(func(v TransferJobTransferSpecTransferOptions) *TransferJobTransferSpecTransferOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferJobTransferSpecTransferOptions) *TransferJobTransferSpecTransferOptions {
 		return &v
 	}).(TransferJobTransferSpecTransferOptionsPtrOutput)
 }
@@ -4123,7 +4244,13 @@ func (o TransferJobTransferSpecTransferOptionsPtrOutput) ToTransferJobTransferSp
 }
 
 func (o TransferJobTransferSpecTransferOptionsPtrOutput) Elem() TransferJobTransferSpecTransferOptionsOutput {
-	return o.ApplyT(func(v *TransferJobTransferSpecTransferOptions) TransferJobTransferSpecTransferOptions { return *v }).(TransferJobTransferSpecTransferOptionsOutput)
+	return o.ApplyT(func(v *TransferJobTransferSpecTransferOptions) TransferJobTransferSpecTransferOptions {
+		if v != nil {
+			return *v
+		}
+		var ret TransferJobTransferSpecTransferOptions
+		return ret
+	}).(TransferJobTransferSpecTransferOptionsOutput)
 }
 
 // Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `deleteObjectsUniqueInSink` are mutually exclusive.

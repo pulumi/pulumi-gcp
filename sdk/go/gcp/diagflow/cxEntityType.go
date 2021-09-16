@@ -394,7 +394,7 @@ type CxEntityTypeArrayInput interface {
 type CxEntityTypeArray []CxEntityTypeInput
 
 func (CxEntityTypeArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*CxEntityType)(nil))
+	return reflect.TypeOf((*[]*CxEntityType)(nil)).Elem()
 }
 
 func (i CxEntityTypeArray) ToCxEntityTypeArrayOutput() CxEntityTypeArrayOutput {
@@ -419,7 +419,7 @@ type CxEntityTypeMapInput interface {
 type CxEntityTypeMap map[string]CxEntityTypeInput
 
 func (CxEntityTypeMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*CxEntityType)(nil))
+	return reflect.TypeOf((*map[string]*CxEntityType)(nil)).Elem()
 }
 
 func (i CxEntityTypeMap) ToCxEntityTypeMapOutput() CxEntityTypeMapOutput {
@@ -430,9 +430,7 @@ func (i CxEntityTypeMap) ToCxEntityTypeMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(CxEntityTypeMapOutput)
 }
 
-type CxEntityTypeOutput struct {
-	*pulumi.OutputState
-}
+type CxEntityTypeOutput struct{ *pulumi.OutputState }
 
 func (CxEntityTypeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CxEntityType)(nil))
@@ -451,14 +449,12 @@ func (o CxEntityTypeOutput) ToCxEntityTypePtrOutput() CxEntityTypePtrOutput {
 }
 
 func (o CxEntityTypeOutput) ToCxEntityTypePtrOutputWithContext(ctx context.Context) CxEntityTypePtrOutput {
-	return o.ApplyT(func(v CxEntityType) *CxEntityType {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxEntityType) *CxEntityType {
 		return &v
 	}).(CxEntityTypePtrOutput)
 }
 
-type CxEntityTypePtrOutput struct {
-	*pulumi.OutputState
-}
+type CxEntityTypePtrOutput struct{ *pulumi.OutputState }
 
 func (CxEntityTypePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**CxEntityType)(nil))
@@ -470,6 +466,16 @@ func (o CxEntityTypePtrOutput) ToCxEntityTypePtrOutput() CxEntityTypePtrOutput {
 
 func (o CxEntityTypePtrOutput) ToCxEntityTypePtrOutputWithContext(ctx context.Context) CxEntityTypePtrOutput {
 	return o
+}
+
+func (o CxEntityTypePtrOutput) Elem() CxEntityTypeOutput {
+	return o.ApplyT(func(v *CxEntityType) CxEntityType {
+		if v != nil {
+			return *v
+		}
+		var ret CxEntityType
+		return ret
+	}).(CxEntityTypeOutput)
 }
 
 type CxEntityTypeArrayOutput struct{ *pulumi.OutputState }

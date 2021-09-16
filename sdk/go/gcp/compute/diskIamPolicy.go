@@ -322,7 +322,7 @@ type DiskIamPolicyArrayInput interface {
 type DiskIamPolicyArray []DiskIamPolicyInput
 
 func (DiskIamPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*DiskIamPolicy)(nil))
+	return reflect.TypeOf((*[]*DiskIamPolicy)(nil)).Elem()
 }
 
 func (i DiskIamPolicyArray) ToDiskIamPolicyArrayOutput() DiskIamPolicyArrayOutput {
@@ -347,7 +347,7 @@ type DiskIamPolicyMapInput interface {
 type DiskIamPolicyMap map[string]DiskIamPolicyInput
 
 func (DiskIamPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*DiskIamPolicy)(nil))
+	return reflect.TypeOf((*map[string]*DiskIamPolicy)(nil)).Elem()
 }
 
 func (i DiskIamPolicyMap) ToDiskIamPolicyMapOutput() DiskIamPolicyMapOutput {
@@ -358,9 +358,7 @@ func (i DiskIamPolicyMap) ToDiskIamPolicyMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(DiskIamPolicyMapOutput)
 }
 
-type DiskIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type DiskIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (DiskIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DiskIamPolicy)(nil))
@@ -379,14 +377,12 @@ func (o DiskIamPolicyOutput) ToDiskIamPolicyPtrOutput() DiskIamPolicyPtrOutput {
 }
 
 func (o DiskIamPolicyOutput) ToDiskIamPolicyPtrOutputWithContext(ctx context.Context) DiskIamPolicyPtrOutput {
-	return o.ApplyT(func(v DiskIamPolicy) *DiskIamPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiskIamPolicy) *DiskIamPolicy {
 		return &v
 	}).(DiskIamPolicyPtrOutput)
 }
 
-type DiskIamPolicyPtrOutput struct {
-	*pulumi.OutputState
-}
+type DiskIamPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (DiskIamPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DiskIamPolicy)(nil))
@@ -398,6 +394,16 @@ func (o DiskIamPolicyPtrOutput) ToDiskIamPolicyPtrOutput() DiskIamPolicyPtrOutpu
 
 func (o DiskIamPolicyPtrOutput) ToDiskIamPolicyPtrOutputWithContext(ctx context.Context) DiskIamPolicyPtrOutput {
 	return o
+}
+
+func (o DiskIamPolicyPtrOutput) Elem() DiskIamPolicyOutput {
+	return o.ApplyT(func(v *DiskIamPolicy) DiskIamPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret DiskIamPolicy
+		return ret
+	}).(DiskIamPolicyOutput)
 }
 
 type DiskIamPolicyArrayOutput struct{ *pulumi.OutputState }

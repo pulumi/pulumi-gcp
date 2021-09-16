@@ -257,7 +257,7 @@ type OauthIdpConfigArrayInput interface {
 type OauthIdpConfigArray []OauthIdpConfigInput
 
 func (OauthIdpConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*OauthIdpConfig)(nil))
+	return reflect.TypeOf((*[]*OauthIdpConfig)(nil)).Elem()
 }
 
 func (i OauthIdpConfigArray) ToOauthIdpConfigArrayOutput() OauthIdpConfigArrayOutput {
@@ -282,7 +282,7 @@ type OauthIdpConfigMapInput interface {
 type OauthIdpConfigMap map[string]OauthIdpConfigInput
 
 func (OauthIdpConfigMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*OauthIdpConfig)(nil))
+	return reflect.TypeOf((*map[string]*OauthIdpConfig)(nil)).Elem()
 }
 
 func (i OauthIdpConfigMap) ToOauthIdpConfigMapOutput() OauthIdpConfigMapOutput {
@@ -293,9 +293,7 @@ func (i OauthIdpConfigMap) ToOauthIdpConfigMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(OauthIdpConfigMapOutput)
 }
 
-type OauthIdpConfigOutput struct {
-	*pulumi.OutputState
-}
+type OauthIdpConfigOutput struct{ *pulumi.OutputState }
 
 func (OauthIdpConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OauthIdpConfig)(nil))
@@ -314,14 +312,12 @@ func (o OauthIdpConfigOutput) ToOauthIdpConfigPtrOutput() OauthIdpConfigPtrOutpu
 }
 
 func (o OauthIdpConfigOutput) ToOauthIdpConfigPtrOutputWithContext(ctx context.Context) OauthIdpConfigPtrOutput {
-	return o.ApplyT(func(v OauthIdpConfig) *OauthIdpConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OauthIdpConfig) *OauthIdpConfig {
 		return &v
 	}).(OauthIdpConfigPtrOutput)
 }
 
-type OauthIdpConfigPtrOutput struct {
-	*pulumi.OutputState
-}
+type OauthIdpConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (OauthIdpConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**OauthIdpConfig)(nil))
@@ -333,6 +329,16 @@ func (o OauthIdpConfigPtrOutput) ToOauthIdpConfigPtrOutput() OauthIdpConfigPtrOu
 
 func (o OauthIdpConfigPtrOutput) ToOauthIdpConfigPtrOutputWithContext(ctx context.Context) OauthIdpConfigPtrOutput {
 	return o
+}
+
+func (o OauthIdpConfigPtrOutput) Elem() OauthIdpConfigOutput {
+	return o.ApplyT(func(v *OauthIdpConfig) OauthIdpConfig {
+		if v != nil {
+			return *v
+		}
+		var ret OauthIdpConfig
+		return ret
+	}).(OauthIdpConfigOutput)
 }
 
 type OauthIdpConfigArrayOutput struct{ *pulumi.OutputState }

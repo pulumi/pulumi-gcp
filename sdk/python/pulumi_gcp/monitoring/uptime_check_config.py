@@ -454,7 +454,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
             monitored_resource=gcp.monitoring.UptimeCheckConfigMonitoredResourceArgs(
                 labels={
                     "host": "192.168.1.1",
-                    "project_id": "my-project-name",
+                    "projectId": "my-project-name",
                 },
                 type="uptime_url",
             ),
@@ -480,7 +480,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
             monitored_resource=gcp.monitoring.UptimeCheckConfigMonitoredResourceArgs(
                 labels={
                     "host": "192.168.1.1",
-                    "project_id": "my-project-name",
+                    "projectId": "my-project-name",
                 },
                 type="uptime_url",
             ),
@@ -574,7 +574,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
             monitored_resource=gcp.monitoring.UptimeCheckConfigMonitoredResourceArgs(
                 labels={
                     "host": "192.168.1.1",
-                    "project_id": "my-project-name",
+                    "projectId": "my-project-name",
                 },
                 type="uptime_url",
             ),
@@ -600,7 +600,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
             monitored_resource=gcp.monitoring.UptimeCheckConfigMonitoredResourceArgs(
                 labels={
                     "host": "192.168.1.1",
-                    "project_id": "my-project-name",
+                    "projectId": "my-project-name",
                 },
                 type="uptime_url",
             ),

@@ -332,7 +332,7 @@ type MembershipArrayInput interface {
 type MembershipArray []MembershipInput
 
 func (MembershipArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Membership)(nil))
+	return reflect.TypeOf((*[]*Membership)(nil)).Elem()
 }
 
 func (i MembershipArray) ToMembershipArrayOutput() MembershipArrayOutput {
@@ -357,7 +357,7 @@ type MembershipMapInput interface {
 type MembershipMap map[string]MembershipInput
 
 func (MembershipMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Membership)(nil))
+	return reflect.TypeOf((*map[string]*Membership)(nil)).Elem()
 }
 
 func (i MembershipMap) ToMembershipMapOutput() MembershipMapOutput {
@@ -368,9 +368,7 @@ func (i MembershipMap) ToMembershipMapOutputWithContext(ctx context.Context) Mem
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipMapOutput)
 }
 
-type MembershipOutput struct {
-	*pulumi.OutputState
-}
+type MembershipOutput struct{ *pulumi.OutputState }
 
 func (MembershipOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Membership)(nil))
@@ -389,14 +387,12 @@ func (o MembershipOutput) ToMembershipPtrOutput() MembershipPtrOutput {
 }
 
 func (o MembershipOutput) ToMembershipPtrOutputWithContext(ctx context.Context) MembershipPtrOutput {
-	return o.ApplyT(func(v Membership) *Membership {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Membership) *Membership {
 		return &v
 	}).(MembershipPtrOutput)
 }
 
-type MembershipPtrOutput struct {
-	*pulumi.OutputState
-}
+type MembershipPtrOutput struct{ *pulumi.OutputState }
 
 func (MembershipPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Membership)(nil))
@@ -408,6 +404,16 @@ func (o MembershipPtrOutput) ToMembershipPtrOutput() MembershipPtrOutput {
 
 func (o MembershipPtrOutput) ToMembershipPtrOutputWithContext(ctx context.Context) MembershipPtrOutput {
 	return o
+}
+
+func (o MembershipPtrOutput) Elem() MembershipOutput {
+	return o.ApplyT(func(v *Membership) Membership {
+		if v != nil {
+			return *v
+		}
+		var ret Membership
+		return ret
+	}).(MembershipOutput)
 }
 
 type MembershipArrayOutput struct{ *pulumi.OutputState }

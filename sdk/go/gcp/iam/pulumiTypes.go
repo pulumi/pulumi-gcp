@@ -103,7 +103,7 @@ func (o WorkloadIdentityPoolProviderAwsOutput) ToWorkloadIdentityPoolProviderAws
 }
 
 func (o WorkloadIdentityPoolProviderAwsOutput) ToWorkloadIdentityPoolProviderAwsPtrOutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderAwsPtrOutput {
-	return o.ApplyT(func(v WorkloadIdentityPoolProviderAws) *WorkloadIdentityPoolProviderAws {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkloadIdentityPoolProviderAws) *WorkloadIdentityPoolProviderAws {
 		return &v
 	}).(WorkloadIdentityPoolProviderAwsPtrOutput)
 }
@@ -128,7 +128,13 @@ func (o WorkloadIdentityPoolProviderAwsPtrOutput) ToWorkloadIdentityPoolProvider
 }
 
 func (o WorkloadIdentityPoolProviderAwsPtrOutput) Elem() WorkloadIdentityPoolProviderAwsOutput {
-	return o.ApplyT(func(v *WorkloadIdentityPoolProviderAws) WorkloadIdentityPoolProviderAws { return *v }).(WorkloadIdentityPoolProviderAwsOutput)
+	return o.ApplyT(func(v *WorkloadIdentityPoolProviderAws) WorkloadIdentityPoolProviderAws {
+		if v != nil {
+			return *v
+		}
+		var ret WorkloadIdentityPoolProviderAws
+		return ret
+	}).(WorkloadIdentityPoolProviderAwsOutput)
 }
 
 // The AWS account ID.
@@ -276,7 +282,7 @@ func (o WorkloadIdentityPoolProviderOidcOutput) ToWorkloadIdentityPoolProviderOi
 }
 
 func (o WorkloadIdentityPoolProviderOidcOutput) ToWorkloadIdentityPoolProviderOidcPtrOutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderOidcPtrOutput {
-	return o.ApplyT(func(v WorkloadIdentityPoolProviderOidc) *WorkloadIdentityPoolProviderOidc {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkloadIdentityPoolProviderOidc) *WorkloadIdentityPoolProviderOidc {
 		return &v
 	}).(WorkloadIdentityPoolProviderOidcPtrOutput)
 }
@@ -325,7 +331,13 @@ func (o WorkloadIdentityPoolProviderOidcPtrOutput) ToWorkloadIdentityPoolProvide
 }
 
 func (o WorkloadIdentityPoolProviderOidcPtrOutput) Elem() WorkloadIdentityPoolProviderOidcOutput {
-	return o.ApplyT(func(v *WorkloadIdentityPoolProviderOidc) WorkloadIdentityPoolProviderOidc { return *v }).(WorkloadIdentityPoolProviderOidcOutput)
+	return o.ApplyT(func(v *WorkloadIdentityPoolProviderOidc) WorkloadIdentityPoolProviderOidc {
+		if v != nil {
+			return *v
+		}
+		var ret WorkloadIdentityPoolProviderOidc
+		return ret
+	}).(WorkloadIdentityPoolProviderOidcOutput)
 }
 
 // Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange

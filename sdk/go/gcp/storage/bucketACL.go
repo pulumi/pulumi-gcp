@@ -219,7 +219,7 @@ type BucketACLArrayInput interface {
 type BucketACLArray []BucketACLInput
 
 func (BucketACLArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*BucketACL)(nil))
+	return reflect.TypeOf((*[]*BucketACL)(nil)).Elem()
 }
 
 func (i BucketACLArray) ToBucketACLArrayOutput() BucketACLArrayOutput {
@@ -244,7 +244,7 @@ type BucketACLMapInput interface {
 type BucketACLMap map[string]BucketACLInput
 
 func (BucketACLMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*BucketACL)(nil))
+	return reflect.TypeOf((*map[string]*BucketACL)(nil)).Elem()
 }
 
 func (i BucketACLMap) ToBucketACLMapOutput() BucketACLMapOutput {
@@ -255,9 +255,7 @@ func (i BucketACLMap) ToBucketACLMapOutputWithContext(ctx context.Context) Bucke
 	return pulumi.ToOutputWithContext(ctx, i).(BucketACLMapOutput)
 }
 
-type BucketACLOutput struct {
-	*pulumi.OutputState
-}
+type BucketACLOutput struct{ *pulumi.OutputState }
 
 func (BucketACLOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BucketACL)(nil))
@@ -276,14 +274,12 @@ func (o BucketACLOutput) ToBucketACLPtrOutput() BucketACLPtrOutput {
 }
 
 func (o BucketACLOutput) ToBucketACLPtrOutputWithContext(ctx context.Context) BucketACLPtrOutput {
-	return o.ApplyT(func(v BucketACL) *BucketACL {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketACL) *BucketACL {
 		return &v
 	}).(BucketACLPtrOutput)
 }
 
-type BucketACLPtrOutput struct {
-	*pulumi.OutputState
-}
+type BucketACLPtrOutput struct{ *pulumi.OutputState }
 
 func (BucketACLPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**BucketACL)(nil))
@@ -295,6 +291,16 @@ func (o BucketACLPtrOutput) ToBucketACLPtrOutput() BucketACLPtrOutput {
 
 func (o BucketACLPtrOutput) ToBucketACLPtrOutputWithContext(ctx context.Context) BucketACLPtrOutput {
 	return o
+}
+
+func (o BucketACLPtrOutput) Elem() BucketACLOutput {
+	return o.ApplyT(func(v *BucketACL) BucketACL {
+		if v != nil {
+			return *v
+		}
+		var ret BucketACL
+		return ret
+	}).(BucketACLOutput)
 }
 
 type BucketACLArrayOutput struct{ *pulumi.OutputState }

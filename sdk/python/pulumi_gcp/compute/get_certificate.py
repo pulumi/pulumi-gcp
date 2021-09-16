@@ -12,6 +12,7 @@ __all__ = [
     'GetCertificateResult',
     'AwaitableGetCertificateResult',
     'get_certificate',
+    'get_certificate_output',
 ]
 
 @pulumi.output_type
@@ -166,3 +167,30 @@ def get_certificate(name: Optional[str] = None,
         private_key=__ret__.private_key,
         project=__ret__.project,
         self_link=__ret__.self_link)
+
+
+@_utilities.lift_output_func(get_certificate)
+def get_certificate_output(name: Optional[pulumi.Input[str]] = None,
+                           project: Optional[pulumi.Input[Optional[str]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCertificateResult]:
+    """
+    Get info about a Google Compute SSL Certificate from its name.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_cert = gcp.compute.get_certificate(name="my-cert")
+    pulumi.export("certificate", my_cert.certificate)
+    pulumi.export("certificateId", my_cert.certificate_id)
+    pulumi.export("selfLink", my_cert.self_link)
+    ```
+
+
+    :param str name: The name of the certificate.
+    :param str project: The project in which the resource belongs. If it
+           is not provided, the provider project is used.
+    """
+    ...

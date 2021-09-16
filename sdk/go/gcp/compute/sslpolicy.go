@@ -406,7 +406,7 @@ type SSLPolicyArrayInput interface {
 type SSLPolicyArray []SSLPolicyInput
 
 func (SSLPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*SSLPolicy)(nil))
+	return reflect.TypeOf((*[]*SSLPolicy)(nil)).Elem()
 }
 
 func (i SSLPolicyArray) ToSSLPolicyArrayOutput() SSLPolicyArrayOutput {
@@ -431,7 +431,7 @@ type SSLPolicyMapInput interface {
 type SSLPolicyMap map[string]SSLPolicyInput
 
 func (SSLPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*SSLPolicy)(nil))
+	return reflect.TypeOf((*map[string]*SSLPolicy)(nil)).Elem()
 }
 
 func (i SSLPolicyMap) ToSSLPolicyMapOutput() SSLPolicyMapOutput {
@@ -442,9 +442,7 @@ func (i SSLPolicyMap) ToSSLPolicyMapOutputWithContext(ctx context.Context) SSLPo
 	return pulumi.ToOutputWithContext(ctx, i).(SSLPolicyMapOutput)
 }
 
-type SSLPolicyOutput struct {
-	*pulumi.OutputState
-}
+type SSLPolicyOutput struct{ *pulumi.OutputState }
 
 func (SSLPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SSLPolicy)(nil))
@@ -463,14 +461,12 @@ func (o SSLPolicyOutput) ToSSLPolicyPtrOutput() SSLPolicyPtrOutput {
 }
 
 func (o SSLPolicyOutput) ToSSLPolicyPtrOutputWithContext(ctx context.Context) SSLPolicyPtrOutput {
-	return o.ApplyT(func(v SSLPolicy) *SSLPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SSLPolicy) *SSLPolicy {
 		return &v
 	}).(SSLPolicyPtrOutput)
 }
 
-type SSLPolicyPtrOutput struct {
-	*pulumi.OutputState
-}
+type SSLPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (SSLPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SSLPolicy)(nil))
@@ -482,6 +478,16 @@ func (o SSLPolicyPtrOutput) ToSSLPolicyPtrOutput() SSLPolicyPtrOutput {
 
 func (o SSLPolicyPtrOutput) ToSSLPolicyPtrOutputWithContext(ctx context.Context) SSLPolicyPtrOutput {
 	return o
+}
+
+func (o SSLPolicyPtrOutput) Elem() SSLPolicyOutput {
+	return o.ApplyT(func(v *SSLPolicy) SSLPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret SSLPolicy
+		return ret
+	}).(SSLPolicyOutput)
 }
 
 type SSLPolicyArrayOutput struct{ *pulumi.OutputState }

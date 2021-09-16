@@ -310,7 +310,7 @@ type BucketAccessControlArrayInput interface {
 type BucketAccessControlArray []BucketAccessControlInput
 
 func (BucketAccessControlArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*BucketAccessControl)(nil))
+	return reflect.TypeOf((*[]*BucketAccessControl)(nil)).Elem()
 }
 
 func (i BucketAccessControlArray) ToBucketAccessControlArrayOutput() BucketAccessControlArrayOutput {
@@ -335,7 +335,7 @@ type BucketAccessControlMapInput interface {
 type BucketAccessControlMap map[string]BucketAccessControlInput
 
 func (BucketAccessControlMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*BucketAccessControl)(nil))
+	return reflect.TypeOf((*map[string]*BucketAccessControl)(nil)).Elem()
 }
 
 func (i BucketAccessControlMap) ToBucketAccessControlMapOutput() BucketAccessControlMapOutput {
@@ -346,9 +346,7 @@ func (i BucketAccessControlMap) ToBucketAccessControlMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(BucketAccessControlMapOutput)
 }
 
-type BucketAccessControlOutput struct {
-	*pulumi.OutputState
-}
+type BucketAccessControlOutput struct{ *pulumi.OutputState }
 
 func (BucketAccessControlOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BucketAccessControl)(nil))
@@ -367,14 +365,12 @@ func (o BucketAccessControlOutput) ToBucketAccessControlPtrOutput() BucketAccess
 }
 
 func (o BucketAccessControlOutput) ToBucketAccessControlPtrOutputWithContext(ctx context.Context) BucketAccessControlPtrOutput {
-	return o.ApplyT(func(v BucketAccessControl) *BucketAccessControl {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketAccessControl) *BucketAccessControl {
 		return &v
 	}).(BucketAccessControlPtrOutput)
 }
 
-type BucketAccessControlPtrOutput struct {
-	*pulumi.OutputState
-}
+type BucketAccessControlPtrOutput struct{ *pulumi.OutputState }
 
 func (BucketAccessControlPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**BucketAccessControl)(nil))
@@ -386,6 +382,16 @@ func (o BucketAccessControlPtrOutput) ToBucketAccessControlPtrOutput() BucketAcc
 
 func (o BucketAccessControlPtrOutput) ToBucketAccessControlPtrOutputWithContext(ctx context.Context) BucketAccessControlPtrOutput {
 	return o
+}
+
+func (o BucketAccessControlPtrOutput) Elem() BucketAccessControlOutput {
+	return o.ApplyT(func(v *BucketAccessControl) BucketAccessControl {
+		if v != nil {
+			return *v
+		}
+		var ret BucketAccessControl
+		return ret
+	}).(BucketAccessControlOutput)
 }
 
 type BucketAccessControlArrayOutput struct{ *pulumi.OutputState }

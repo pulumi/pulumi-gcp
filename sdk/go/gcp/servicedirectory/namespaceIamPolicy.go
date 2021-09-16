@@ -281,7 +281,7 @@ type NamespaceIamPolicyArrayInput interface {
 type NamespaceIamPolicyArray []NamespaceIamPolicyInput
 
 func (NamespaceIamPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*NamespaceIamPolicy)(nil))
+	return reflect.TypeOf((*[]*NamespaceIamPolicy)(nil)).Elem()
 }
 
 func (i NamespaceIamPolicyArray) ToNamespaceIamPolicyArrayOutput() NamespaceIamPolicyArrayOutput {
@@ -306,7 +306,7 @@ type NamespaceIamPolicyMapInput interface {
 type NamespaceIamPolicyMap map[string]NamespaceIamPolicyInput
 
 func (NamespaceIamPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*NamespaceIamPolicy)(nil))
+	return reflect.TypeOf((*map[string]*NamespaceIamPolicy)(nil)).Elem()
 }
 
 func (i NamespaceIamPolicyMap) ToNamespaceIamPolicyMapOutput() NamespaceIamPolicyMapOutput {
@@ -317,9 +317,7 @@ func (i NamespaceIamPolicyMap) ToNamespaceIamPolicyMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceIamPolicyMapOutput)
 }
 
-type NamespaceIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type NamespaceIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (NamespaceIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*NamespaceIamPolicy)(nil))
@@ -338,14 +336,12 @@ func (o NamespaceIamPolicyOutput) ToNamespaceIamPolicyPtrOutput() NamespaceIamPo
 }
 
 func (o NamespaceIamPolicyOutput) ToNamespaceIamPolicyPtrOutputWithContext(ctx context.Context) NamespaceIamPolicyPtrOutput {
-	return o.ApplyT(func(v NamespaceIamPolicy) *NamespaceIamPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NamespaceIamPolicy) *NamespaceIamPolicy {
 		return &v
 	}).(NamespaceIamPolicyPtrOutput)
 }
 
-type NamespaceIamPolicyPtrOutput struct {
-	*pulumi.OutputState
-}
+type NamespaceIamPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (NamespaceIamPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**NamespaceIamPolicy)(nil))
@@ -357,6 +353,16 @@ func (o NamespaceIamPolicyPtrOutput) ToNamespaceIamPolicyPtrOutput() NamespaceIa
 
 func (o NamespaceIamPolicyPtrOutput) ToNamespaceIamPolicyPtrOutputWithContext(ctx context.Context) NamespaceIamPolicyPtrOutput {
 	return o
+}
+
+func (o NamespaceIamPolicyPtrOutput) Elem() NamespaceIamPolicyOutput {
+	return o.ApplyT(func(v *NamespaceIamPolicy) NamespaceIamPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret NamespaceIamPolicy
+		return ret
+	}).(NamespaceIamPolicyOutput)
 }
 
 type NamespaceIamPolicyArrayOutput struct{ *pulumi.OutputState }

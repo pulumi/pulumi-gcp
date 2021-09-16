@@ -308,7 +308,7 @@ type DefaultObjectAccessControlArrayInput interface {
 type DefaultObjectAccessControlArray []DefaultObjectAccessControlInput
 
 func (DefaultObjectAccessControlArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*DefaultObjectAccessControl)(nil))
+	return reflect.TypeOf((*[]*DefaultObjectAccessControl)(nil)).Elem()
 }
 
 func (i DefaultObjectAccessControlArray) ToDefaultObjectAccessControlArrayOutput() DefaultObjectAccessControlArrayOutput {
@@ -333,7 +333,7 @@ type DefaultObjectAccessControlMapInput interface {
 type DefaultObjectAccessControlMap map[string]DefaultObjectAccessControlInput
 
 func (DefaultObjectAccessControlMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*DefaultObjectAccessControl)(nil))
+	return reflect.TypeOf((*map[string]*DefaultObjectAccessControl)(nil)).Elem()
 }
 
 func (i DefaultObjectAccessControlMap) ToDefaultObjectAccessControlMapOutput() DefaultObjectAccessControlMapOutput {
@@ -344,9 +344,7 @@ func (i DefaultObjectAccessControlMap) ToDefaultObjectAccessControlMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultObjectAccessControlMapOutput)
 }
 
-type DefaultObjectAccessControlOutput struct {
-	*pulumi.OutputState
-}
+type DefaultObjectAccessControlOutput struct{ *pulumi.OutputState }
 
 func (DefaultObjectAccessControlOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DefaultObjectAccessControl)(nil))
@@ -365,14 +363,12 @@ func (o DefaultObjectAccessControlOutput) ToDefaultObjectAccessControlPtrOutput(
 }
 
 func (o DefaultObjectAccessControlOutput) ToDefaultObjectAccessControlPtrOutputWithContext(ctx context.Context) DefaultObjectAccessControlPtrOutput {
-	return o.ApplyT(func(v DefaultObjectAccessControl) *DefaultObjectAccessControl {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefaultObjectAccessControl) *DefaultObjectAccessControl {
 		return &v
 	}).(DefaultObjectAccessControlPtrOutput)
 }
 
-type DefaultObjectAccessControlPtrOutput struct {
-	*pulumi.OutputState
-}
+type DefaultObjectAccessControlPtrOutput struct{ *pulumi.OutputState }
 
 func (DefaultObjectAccessControlPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DefaultObjectAccessControl)(nil))
@@ -384,6 +380,16 @@ func (o DefaultObjectAccessControlPtrOutput) ToDefaultObjectAccessControlPtrOutp
 
 func (o DefaultObjectAccessControlPtrOutput) ToDefaultObjectAccessControlPtrOutputWithContext(ctx context.Context) DefaultObjectAccessControlPtrOutput {
 	return o
+}
+
+func (o DefaultObjectAccessControlPtrOutput) Elem() DefaultObjectAccessControlOutput {
+	return o.ApplyT(func(v *DefaultObjectAccessControl) DefaultObjectAccessControl {
+		if v != nil {
+			return *v
+		}
+		var ret DefaultObjectAccessControl
+		return ret
+	}).(DefaultObjectAccessControlOutput)
 }
 
 type DefaultObjectAccessControlArrayOutput struct{ *pulumi.OutputState }

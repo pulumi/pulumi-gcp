@@ -4,6 +4,9 @@
 package compute
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -133,4 +136,76 @@ type GetInstanceSerialPortResult struct {
 	Port     int    `pulumi:"port"`
 	Project  string `pulumi:"project"`
 	Zone     string `pulumi:"zone"`
+}
+
+func GetInstanceSerialPortOutput(ctx *pulumi.Context, args GetInstanceSerialPortOutputArgs, opts ...pulumi.InvokeOption) GetInstanceSerialPortResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetInstanceSerialPortResult, error) {
+			args := v.(GetInstanceSerialPortArgs)
+			r, err := GetInstanceSerialPort(ctx, &args, opts...)
+			return *r, err
+		}).(GetInstanceSerialPortResultOutput)
+}
+
+// A collection of arguments for invoking getInstanceSerialPort.
+type GetInstanceSerialPortOutputArgs struct {
+	// The name of the Compute Instance to read output from.
+	Instance pulumi.StringInput `pulumi:"instance"`
+	// The number of the serial port to read output from. Possible values are 1-4.
+	Port pulumi.IntInput `pulumi:"port"`
+	// The project in which the Compute Instance exists. If it
+	// is not provided, the provider project is used.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// The zone in which the Compute Instance exists.
+	// If it is not provided, the provider zone is used.
+	Zone pulumi.StringPtrInput `pulumi:"zone"`
+}
+
+func (GetInstanceSerialPortOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceSerialPortArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getInstanceSerialPort.
+type GetInstanceSerialPortResultOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceSerialPortResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceSerialPortResult)(nil)).Elem()
+}
+
+func (o GetInstanceSerialPortResultOutput) ToGetInstanceSerialPortResultOutput() GetInstanceSerialPortResultOutput {
+	return o
+}
+
+func (o GetInstanceSerialPortResultOutput) ToGetInstanceSerialPortResultOutputWithContext(ctx context.Context) GetInstanceSerialPortResultOutput {
+	return o
+}
+
+// The output of the serial port. Serial port output is available only when the VM instance is running, and logs are limited to the most recent 1 MB of output per port.
+func (o GetInstanceSerialPortResultOutput) Contents() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceSerialPortResult) string { return v.Contents }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetInstanceSerialPortResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceSerialPortResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceSerialPortResultOutput) Instance() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceSerialPortResult) string { return v.Instance }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceSerialPortResultOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceSerialPortResult) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o GetInstanceSerialPortResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceSerialPortResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceSerialPortResultOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceSerialPortResult) string { return v.Zone }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetInstanceSerialPortResultOutput{})
 }

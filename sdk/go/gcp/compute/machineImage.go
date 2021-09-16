@@ -369,7 +369,7 @@ type MachineImageArrayInput interface {
 type MachineImageArray []MachineImageInput
 
 func (MachineImageArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*MachineImage)(nil))
+	return reflect.TypeOf((*[]*MachineImage)(nil)).Elem()
 }
 
 func (i MachineImageArray) ToMachineImageArrayOutput() MachineImageArrayOutput {
@@ -394,7 +394,7 @@ type MachineImageMapInput interface {
 type MachineImageMap map[string]MachineImageInput
 
 func (MachineImageMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*MachineImage)(nil))
+	return reflect.TypeOf((*map[string]*MachineImage)(nil)).Elem()
 }
 
 func (i MachineImageMap) ToMachineImageMapOutput() MachineImageMapOutput {
@@ -405,9 +405,7 @@ func (i MachineImageMap) ToMachineImageMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(MachineImageMapOutput)
 }
 
-type MachineImageOutput struct {
-	*pulumi.OutputState
-}
+type MachineImageOutput struct{ *pulumi.OutputState }
 
 func (MachineImageOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MachineImage)(nil))
@@ -426,14 +424,12 @@ func (o MachineImageOutput) ToMachineImagePtrOutput() MachineImagePtrOutput {
 }
 
 func (o MachineImageOutput) ToMachineImagePtrOutputWithContext(ctx context.Context) MachineImagePtrOutput {
-	return o.ApplyT(func(v MachineImage) *MachineImage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MachineImage) *MachineImage {
 		return &v
 	}).(MachineImagePtrOutput)
 }
 
-type MachineImagePtrOutput struct {
-	*pulumi.OutputState
-}
+type MachineImagePtrOutput struct{ *pulumi.OutputState }
 
 func (MachineImagePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**MachineImage)(nil))
@@ -445,6 +441,16 @@ func (o MachineImagePtrOutput) ToMachineImagePtrOutput() MachineImagePtrOutput {
 
 func (o MachineImagePtrOutput) ToMachineImagePtrOutputWithContext(ctx context.Context) MachineImagePtrOutput {
 	return o
+}
+
+func (o MachineImagePtrOutput) Elem() MachineImageOutput {
+	return o.ApplyT(func(v *MachineImage) MachineImage {
+		if v != nil {
+			return *v
+		}
+		var ret MachineImage
+		return ret
+	}).(MachineImageOutput)
 }
 
 type MachineImageArrayOutput struct{ *pulumi.OutputState }

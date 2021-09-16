@@ -328,7 +328,7 @@ type JobIAMMemberArrayInput interface {
 type JobIAMMemberArray []JobIAMMemberInput
 
 func (JobIAMMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*JobIAMMember)(nil))
+	return reflect.TypeOf((*[]*JobIAMMember)(nil)).Elem()
 }
 
 func (i JobIAMMemberArray) ToJobIAMMemberArrayOutput() JobIAMMemberArrayOutput {
@@ -353,7 +353,7 @@ type JobIAMMemberMapInput interface {
 type JobIAMMemberMap map[string]JobIAMMemberInput
 
 func (JobIAMMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*JobIAMMember)(nil))
+	return reflect.TypeOf((*map[string]*JobIAMMember)(nil)).Elem()
 }
 
 func (i JobIAMMemberMap) ToJobIAMMemberMapOutput() JobIAMMemberMapOutput {
@@ -364,9 +364,7 @@ func (i JobIAMMemberMap) ToJobIAMMemberMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(JobIAMMemberMapOutput)
 }
 
-type JobIAMMemberOutput struct {
-	*pulumi.OutputState
-}
+type JobIAMMemberOutput struct{ *pulumi.OutputState }
 
 func (JobIAMMemberOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*JobIAMMember)(nil))
@@ -385,14 +383,12 @@ func (o JobIAMMemberOutput) ToJobIAMMemberPtrOutput() JobIAMMemberPtrOutput {
 }
 
 func (o JobIAMMemberOutput) ToJobIAMMemberPtrOutputWithContext(ctx context.Context) JobIAMMemberPtrOutput {
-	return o.ApplyT(func(v JobIAMMember) *JobIAMMember {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobIAMMember) *JobIAMMember {
 		return &v
 	}).(JobIAMMemberPtrOutput)
 }
 
-type JobIAMMemberPtrOutput struct {
-	*pulumi.OutputState
-}
+type JobIAMMemberPtrOutput struct{ *pulumi.OutputState }
 
 func (JobIAMMemberPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**JobIAMMember)(nil))
@@ -404,6 +400,16 @@ func (o JobIAMMemberPtrOutput) ToJobIAMMemberPtrOutput() JobIAMMemberPtrOutput {
 
 func (o JobIAMMemberPtrOutput) ToJobIAMMemberPtrOutputWithContext(ctx context.Context) JobIAMMemberPtrOutput {
 	return o
+}
+
+func (o JobIAMMemberPtrOutput) Elem() JobIAMMemberOutput {
+	return o.ApplyT(func(v *JobIAMMember) JobIAMMember {
+		if v != nil {
+			return *v
+		}
+		var ret JobIAMMember
+		return ret
+	}).(JobIAMMemberOutput)
 }
 
 type JobIAMMemberArrayOutput struct{ *pulumi.OutputState }

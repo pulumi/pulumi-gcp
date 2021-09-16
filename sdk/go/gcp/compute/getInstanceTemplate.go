@@ -4,6 +4,9 @@
 package compute
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -150,4 +153,231 @@ type LookupInstanceTemplateResult struct {
 	Tags []string `pulumi:"tags"`
 	// The unique fingerprint of the tags.
 	TagsFingerprint string `pulumi:"tagsFingerprint"`
+}
+
+func LookupInstanceTemplateOutput(ctx *pulumi.Context, args LookupInstanceTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceTemplateResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupInstanceTemplateResult, error) {
+			args := v.(LookupInstanceTemplateArgs)
+			r, err := LookupInstanceTemplate(ctx, &args, opts...)
+			return *r, err
+		}).(LookupInstanceTemplateResultOutput)
+}
+
+// A collection of arguments for invoking getInstanceTemplate.
+type LookupInstanceTemplateOutputArgs struct {
+	// A filter to retrieve the instance templates.
+	// See [gcloud topic filters](https://cloud.google.com/sdk/gcloud/reference/topic/filters) for reference.
+	// If multiple instance templates match, either adjust the filter or specify `mostRecent`. One of `name` or `filter` must be provided.
+	Filter pulumi.StringPtrInput `pulumi:"filter"`
+	// If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name` or `filter` must be provided.
+	MostRecent pulumi.BoolPtrInput `pulumi:"mostRecent"`
+	// The name of the instance template. One of `name` or `filter` must be provided.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If `project` is not provided, the provider project is used.
+	Project pulumi.StringInput `pulumi:"project"`
+}
+
+func (LookupInstanceTemplateOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupInstanceTemplateArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getInstanceTemplate.
+type LookupInstanceTemplateResultOutput struct{ *pulumi.OutputState }
+
+func (LookupInstanceTemplateResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupInstanceTemplateResult)(nil)).Elem()
+}
+
+func (o LookupInstanceTemplateResultOutput) ToLookupInstanceTemplateResultOutput() LookupInstanceTemplateResultOutput {
+	return o
+}
+
+func (o LookupInstanceTemplateResultOutput) ToLookupInstanceTemplateResultOutputWithContext(ctx context.Context) LookupInstanceTemplateResultOutput {
+	return o
+}
+
+func (o LookupInstanceTemplateResultOutput) AdvancedMachineFeatures() GetInstanceTemplateAdvancedMachineFeatureArrayOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) []GetInstanceTemplateAdvancedMachineFeature {
+		return v.AdvancedMachineFeatures
+	}).(GetInstanceTemplateAdvancedMachineFeatureArrayOutput)
+}
+
+// Whether to allow sending and receiving of
+// packets with non-matching source or destination IPs. This defaults to false.
+func (o LookupInstanceTemplateResultOutput) CanIpForward() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) bool { return v.CanIpForward }).(pulumi.BoolOutput)
+}
+
+// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+func (o LookupInstanceTemplateResultOutput) ConfidentialInstanceConfigs() GetInstanceTemplateConfidentialInstanceConfigArrayOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) []GetInstanceTemplateConfidentialInstanceConfig {
+		return v.ConfidentialInstanceConfigs
+	}).(GetInstanceTemplateConfidentialInstanceConfigArrayOutput)
+}
+
+// A brief description of this resource.
+func (o LookupInstanceTemplateResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Disks to attach to instances created from this template.
+// This can be specified multiple times for multiple disks. Structure is
+// documented below.
+func (o LookupInstanceTemplateResultOutput) Disks() GetInstanceTemplateDiskArrayOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) []GetInstanceTemplateDisk { return v.Disks }).(GetInstanceTemplateDiskArrayOutput)
+}
+
+// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
+func (o LookupInstanceTemplateResultOutput) EnableDisplay() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) bool { return v.EnableDisplay }).(pulumi.BoolOutput)
+}
+
+func (o LookupInstanceTemplateResultOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) *string { return v.Filter }).(pulumi.StringPtrOutput)
+}
+
+// List of the type and count of accelerator cards attached to the instance. Structure documented below.
+func (o LookupInstanceTemplateResultOutput) GuestAccelerators() GetInstanceTemplateGuestAcceleratorArrayOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) []GetInstanceTemplateGuestAccelerator { return v.GuestAccelerators }).(GetInstanceTemplateGuestAcceleratorArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupInstanceTemplateResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A brief description to use for instances
+// created from this template.
+func (o LookupInstanceTemplateResultOutput) InstanceDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) string { return v.InstanceDescription }).(pulumi.StringOutput)
+}
+
+// (Optional) A set of ket/value label pairs to assign to disk created from
+// this template
+func (o LookupInstanceTemplateResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The machine type to create.
+func (o LookupInstanceTemplateResultOutput) MachineType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) string { return v.MachineType }).(pulumi.StringOutput)
+}
+
+// Metadata key/value pairs to make available from
+// within instances created from this template.
+func (o LookupInstanceTemplateResultOutput) Metadata() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) map[string]interface{} { return v.Metadata }).(pulumi.MapOutput)
+}
+
+// The unique fingerprint of the metadata.
+func (o LookupInstanceTemplateResultOutput) MetadataFingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) string { return v.MetadataFingerprint }).(pulumi.StringOutput)
+}
+
+// An alternative to using the
+// startup-script metadata key, mostly to match the computeInstance resource.
+// This replaces the startup-script metadata key on the created instance and
+// thus the two mechanisms are not allowed to be used simultaneously.
+func (o LookupInstanceTemplateResultOutput) MetadataStartupScript() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) string { return v.MetadataStartupScript }).(pulumi.StringOutput)
+}
+
+// Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
+// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
+func (o LookupInstanceTemplateResultOutput) MinCpuPlatform() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) string { return v.MinCpuPlatform }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceTemplateResultOutput) MostRecent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) *bool { return v.MostRecent }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the instance template. If you leave
+// this blank, the provider will auto-generate a unique name.
+func (o LookupInstanceTemplateResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Creates a unique name beginning with the specified
+// prefix. Conflicts with `name`.
+func (o LookupInstanceTemplateResultOutput) NamePrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) string { return v.NamePrefix }).(pulumi.StringOutput)
+}
+
+// Networks to attach to instances created from
+// this template. This can be specified multiple times for multiple networks.
+// Structure is documented below.
+func (o LookupInstanceTemplateResultOutput) NetworkInterfaces() GetInstanceTemplateNetworkInterfaceArrayOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) []GetInstanceTemplateNetworkInterface { return v.NetworkInterfaces }).(GetInstanceTemplateNetworkInterfaceArrayOutput)
+}
+
+// The network performance configuration setting
+// for the instance, if set. Structure is documented below.
+func (o LookupInstanceTemplateResultOutput) NetworkPerformanceConfigs() GetInstanceTemplateNetworkPerformanceConfigArrayOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) []GetInstanceTemplateNetworkPerformanceConfig {
+		return v.NetworkPerformanceConfigs
+	}).(GetInstanceTemplateNetworkPerformanceConfigArrayOutput)
+}
+
+// The ID of the project in which the resource belongs. If it
+// is not provided, the provider project is used.
+func (o LookupInstanceTemplateResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// An instance template is a global resource that is not
+// bound to a zone or a region. However, you can still specify some regional
+// resources in an instance template, which restricts the template to the
+// region where that resource resides. For example, a custom `subnetwork`
+// resource is tied to a specific region. Defaults to the region of the
+// Provider if no value is given.
+func (o LookupInstanceTemplateResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceTemplateResultOutput) ReservationAffinities() GetInstanceTemplateReservationAffinityArrayOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) []GetInstanceTemplateReservationAffinity {
+		return v.ReservationAffinities
+	}).(GetInstanceTemplateReservationAffinityArrayOutput)
+}
+
+// The scheduling strategy to use. More details about
+// this configuration option are detailed below.
+func (o LookupInstanceTemplateResultOutput) Schedulings() GetInstanceTemplateSchedulingArrayOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) []GetInstanceTemplateScheduling { return v.Schedulings }).(GetInstanceTemplateSchedulingArrayOutput)
+}
+
+// The URI of the created resource.
+func (o LookupInstanceTemplateResultOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Service account to attach to the instance. Structure is documented below.
+func (o LookupInstanceTemplateResultOutput) ServiceAccounts() GetInstanceTemplateServiceAccountArrayOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) []GetInstanceTemplateServiceAccount { return v.ServiceAccounts }).(GetInstanceTemplateServiceAccountArrayOutput)
+}
+
+// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
+// **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+func (o LookupInstanceTemplateResultOutput) ShieldedInstanceConfigs() GetInstanceTemplateShieldedInstanceConfigArrayOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) []GetInstanceTemplateShieldedInstanceConfig {
+		return v.ShieldedInstanceConfigs
+	}).(GetInstanceTemplateShieldedInstanceConfigArrayOutput)
+}
+
+// Tags to attach to the instance.
+func (o LookupInstanceTemplateResultOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The unique fingerprint of the tags.
+func (o LookupInstanceTemplateResultOutput) TagsFingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) string { return v.TagsFingerprint }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupInstanceTemplateResultOutput{})
 }

@@ -325,7 +325,7 @@ type TaxonomyIamMemberArrayInput interface {
 type TaxonomyIamMemberArray []TaxonomyIamMemberInput
 
 func (TaxonomyIamMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TaxonomyIamMember)(nil))
+	return reflect.TypeOf((*[]*TaxonomyIamMember)(nil)).Elem()
 }
 
 func (i TaxonomyIamMemberArray) ToTaxonomyIamMemberArrayOutput() TaxonomyIamMemberArrayOutput {
@@ -350,7 +350,7 @@ type TaxonomyIamMemberMapInput interface {
 type TaxonomyIamMemberMap map[string]TaxonomyIamMemberInput
 
 func (TaxonomyIamMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TaxonomyIamMember)(nil))
+	return reflect.TypeOf((*map[string]*TaxonomyIamMember)(nil)).Elem()
 }
 
 func (i TaxonomyIamMemberMap) ToTaxonomyIamMemberMapOutput() TaxonomyIamMemberMapOutput {
@@ -361,9 +361,7 @@ func (i TaxonomyIamMemberMap) ToTaxonomyIamMemberMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyIamMemberMapOutput)
 }
 
-type TaxonomyIamMemberOutput struct {
-	*pulumi.OutputState
-}
+type TaxonomyIamMemberOutput struct{ *pulumi.OutputState }
 
 func (TaxonomyIamMemberOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TaxonomyIamMember)(nil))
@@ -382,14 +380,12 @@ func (o TaxonomyIamMemberOutput) ToTaxonomyIamMemberPtrOutput() TaxonomyIamMembe
 }
 
 func (o TaxonomyIamMemberOutput) ToTaxonomyIamMemberPtrOutputWithContext(ctx context.Context) TaxonomyIamMemberPtrOutput {
-	return o.ApplyT(func(v TaxonomyIamMember) *TaxonomyIamMember {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TaxonomyIamMember) *TaxonomyIamMember {
 		return &v
 	}).(TaxonomyIamMemberPtrOutput)
 }
 
-type TaxonomyIamMemberPtrOutput struct {
-	*pulumi.OutputState
-}
+type TaxonomyIamMemberPtrOutput struct{ *pulumi.OutputState }
 
 func (TaxonomyIamMemberPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TaxonomyIamMember)(nil))
@@ -401,6 +397,16 @@ func (o TaxonomyIamMemberPtrOutput) ToTaxonomyIamMemberPtrOutput() TaxonomyIamMe
 
 func (o TaxonomyIamMemberPtrOutput) ToTaxonomyIamMemberPtrOutputWithContext(ctx context.Context) TaxonomyIamMemberPtrOutput {
 	return o
+}
+
+func (o TaxonomyIamMemberPtrOutput) Elem() TaxonomyIamMemberOutput {
+	return o.ApplyT(func(v *TaxonomyIamMember) TaxonomyIamMember {
+		if v != nil {
+			return *v
+		}
+		var ret TaxonomyIamMember
+		return ret
+	}).(TaxonomyIamMemberOutput)
 }
 
 type TaxonomyIamMemberArrayOutput struct{ *pulumi.OutputState }

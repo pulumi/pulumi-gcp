@@ -254,7 +254,7 @@ type ReservationArrayInput interface {
 type ReservationArray []ReservationInput
 
 func (ReservationArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Reservation)(nil))
+	return reflect.TypeOf((*[]*Reservation)(nil)).Elem()
 }
 
 func (i ReservationArray) ToReservationArrayOutput() ReservationArrayOutput {
@@ -279,7 +279,7 @@ type ReservationMapInput interface {
 type ReservationMap map[string]ReservationInput
 
 func (ReservationMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Reservation)(nil))
+	return reflect.TypeOf((*map[string]*Reservation)(nil)).Elem()
 }
 
 func (i ReservationMap) ToReservationMapOutput() ReservationMapOutput {
@@ -290,9 +290,7 @@ func (i ReservationMap) ToReservationMapOutputWithContext(ctx context.Context) R
 	return pulumi.ToOutputWithContext(ctx, i).(ReservationMapOutput)
 }
 
-type ReservationOutput struct {
-	*pulumi.OutputState
-}
+type ReservationOutput struct{ *pulumi.OutputState }
 
 func (ReservationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Reservation)(nil))
@@ -311,14 +309,12 @@ func (o ReservationOutput) ToReservationPtrOutput() ReservationPtrOutput {
 }
 
 func (o ReservationOutput) ToReservationPtrOutputWithContext(ctx context.Context) ReservationPtrOutput {
-	return o.ApplyT(func(v Reservation) *Reservation {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Reservation) *Reservation {
 		return &v
 	}).(ReservationPtrOutput)
 }
 
-type ReservationPtrOutput struct {
-	*pulumi.OutputState
-}
+type ReservationPtrOutput struct{ *pulumi.OutputState }
 
 func (ReservationPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Reservation)(nil))
@@ -330,6 +326,16 @@ func (o ReservationPtrOutput) ToReservationPtrOutput() ReservationPtrOutput {
 
 func (o ReservationPtrOutput) ToReservationPtrOutputWithContext(ctx context.Context) ReservationPtrOutput {
 	return o
+}
+
+func (o ReservationPtrOutput) Elem() ReservationOutput {
+	return o.ApplyT(func(v *Reservation) Reservation {
+		if v != nil {
+			return *v
+		}
+		var ret Reservation
+		return ret
+	}).(ReservationOutput)
 }
 
 type ReservationArrayOutput struct{ *pulumi.OutputState }

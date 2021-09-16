@@ -268,7 +268,7 @@ type ServicePerimetersArrayInput interface {
 type ServicePerimetersArray []ServicePerimetersInput
 
 func (ServicePerimetersArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ServicePerimeters)(nil))
+	return reflect.TypeOf((*[]*ServicePerimeters)(nil)).Elem()
 }
 
 func (i ServicePerimetersArray) ToServicePerimetersArrayOutput() ServicePerimetersArrayOutput {
@@ -293,7 +293,7 @@ type ServicePerimetersMapInput interface {
 type ServicePerimetersMap map[string]ServicePerimetersInput
 
 func (ServicePerimetersMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ServicePerimeters)(nil))
+	return reflect.TypeOf((*map[string]*ServicePerimeters)(nil)).Elem()
 }
 
 func (i ServicePerimetersMap) ToServicePerimetersMapOutput() ServicePerimetersMapOutput {
@@ -304,9 +304,7 @@ func (i ServicePerimetersMap) ToServicePerimetersMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersMapOutput)
 }
 
-type ServicePerimetersOutput struct {
-	*pulumi.OutputState
-}
+type ServicePerimetersOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimetersOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServicePerimeters)(nil))
@@ -325,14 +323,12 @@ func (o ServicePerimetersOutput) ToServicePerimetersPtrOutput() ServicePerimeter
 }
 
 func (o ServicePerimetersOutput) ToServicePerimetersPtrOutputWithContext(ctx context.Context) ServicePerimetersPtrOutput {
-	return o.ApplyT(func(v ServicePerimeters) *ServicePerimeters {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeters) *ServicePerimeters {
 		return &v
 	}).(ServicePerimetersPtrOutput)
 }
 
-type ServicePerimetersPtrOutput struct {
-	*pulumi.OutputState
-}
+type ServicePerimetersPtrOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimetersPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ServicePerimeters)(nil))
@@ -344,6 +340,16 @@ func (o ServicePerimetersPtrOutput) ToServicePerimetersPtrOutput() ServicePerime
 
 func (o ServicePerimetersPtrOutput) ToServicePerimetersPtrOutputWithContext(ctx context.Context) ServicePerimetersPtrOutput {
 	return o
+}
+
+func (o ServicePerimetersPtrOutput) Elem() ServicePerimetersOutput {
+	return o.ApplyT(func(v *ServicePerimeters) ServicePerimeters {
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimeters
+		return ret
+	}).(ServicePerimetersOutput)
 }
 
 type ServicePerimetersArrayOutput struct{ *pulumi.OutputState }

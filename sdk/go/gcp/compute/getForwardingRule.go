@@ -4,6 +4,9 @@
 package compute
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -79,4 +82,145 @@ type LookupForwardingRuleResult struct {
 	ServiceName          string            `pulumi:"serviceName"`
 	Subnetwork           string            `pulumi:"subnetwork"`
 	Target               string            `pulumi:"target"`
+}
+
+func LookupForwardingRuleOutput(ctx *pulumi.Context, args LookupForwardingRuleOutputArgs, opts ...pulumi.InvokeOption) LookupForwardingRuleResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupForwardingRuleResult, error) {
+			args := v.(LookupForwardingRuleArgs)
+			r, err := LookupForwardingRule(ctx, &args, opts...)
+			return *r, err
+		}).(LookupForwardingRuleResultOutput)
+}
+
+// A collection of arguments for invoking getForwardingRule.
+type LookupForwardingRuleOutputArgs struct {
+	// The name of the forwarding rule.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The project in which the resource belongs. If it
+	// is not provided, the provider project is used.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// The region in which the resource belongs. If it
+	// is not provided, the project region is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (LookupForwardingRuleOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupForwardingRuleArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getForwardingRule.
+type LookupForwardingRuleResultOutput struct{ *pulumi.OutputState }
+
+func (LookupForwardingRuleResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupForwardingRuleResult)(nil)).Elem()
+}
+
+func (o LookupForwardingRuleResultOutput) ToLookupForwardingRuleResultOutput() LookupForwardingRuleResultOutput {
+	return o
+}
+
+func (o LookupForwardingRuleResultOutput) ToLookupForwardingRuleResultOutputWithContext(ctx context.Context) LookupForwardingRuleResultOutput {
+	return o
+}
+
+func (o LookupForwardingRuleResultOutput) AllPorts() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) bool { return v.AllPorts }).(pulumi.BoolOutput)
+}
+
+func (o LookupForwardingRuleResultOutput) AllowGlobalAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) bool { return v.AllowGlobalAccess }).(pulumi.BoolOutput)
+}
+
+func (o LookupForwardingRuleResultOutput) BackendService() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.BackendService }).(pulumi.StringOutput)
+}
+
+func (o LookupForwardingRuleResultOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+func (o LookupForwardingRuleResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupForwardingRuleResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupForwardingRuleResultOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+func (o LookupForwardingRuleResultOutput) IpProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.IpProtocol }).(pulumi.StringOutput)
+}
+
+func (o LookupForwardingRuleResultOutput) IsMirroringCollector() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) bool { return v.IsMirroringCollector }).(pulumi.BoolOutput)
+}
+
+func (o LookupForwardingRuleResultOutput) LabelFingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.LabelFingerprint }).(pulumi.StringOutput)
+}
+
+func (o LookupForwardingRuleResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupForwardingRuleResultOutput) LoadBalancingScheme() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.LoadBalancingScheme }).(pulumi.StringOutput)
+}
+
+func (o LookupForwardingRuleResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupForwardingRuleResultOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.Network }).(pulumi.StringOutput)
+}
+
+func (o LookupForwardingRuleResultOutput) NetworkTier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.NetworkTier }).(pulumi.StringOutput)
+}
+
+func (o LookupForwardingRuleResultOutput) PortRange() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.PortRange }).(pulumi.StringOutput)
+}
+
+func (o LookupForwardingRuleResultOutput) Ports() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) []string { return v.Ports }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupForwardingRuleResultOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupForwardingRuleResultOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupForwardingRuleResultOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+func (o LookupForwardingRuleResultOutput) ServiceLabel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.ServiceLabel }).(pulumi.StringOutput)
+}
+
+func (o LookupForwardingRuleResultOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+func (o LookupForwardingRuleResultOutput) Subnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+func (o LookupForwardingRuleResultOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.Target }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupForwardingRuleResultOutput{})
 }

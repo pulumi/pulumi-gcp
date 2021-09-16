@@ -262,7 +262,7 @@ type FulfillmentArrayInput interface {
 type FulfillmentArray []FulfillmentInput
 
 func (FulfillmentArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Fulfillment)(nil))
+	return reflect.TypeOf((*[]*Fulfillment)(nil)).Elem()
 }
 
 func (i FulfillmentArray) ToFulfillmentArrayOutput() FulfillmentArrayOutput {
@@ -287,7 +287,7 @@ type FulfillmentMapInput interface {
 type FulfillmentMap map[string]FulfillmentInput
 
 func (FulfillmentMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Fulfillment)(nil))
+	return reflect.TypeOf((*map[string]*Fulfillment)(nil)).Elem()
 }
 
 func (i FulfillmentMap) ToFulfillmentMapOutput() FulfillmentMapOutput {
@@ -298,9 +298,7 @@ func (i FulfillmentMap) ToFulfillmentMapOutputWithContext(ctx context.Context) F
 	return pulumi.ToOutputWithContext(ctx, i).(FulfillmentMapOutput)
 }
 
-type FulfillmentOutput struct {
-	*pulumi.OutputState
-}
+type FulfillmentOutput struct{ *pulumi.OutputState }
 
 func (FulfillmentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Fulfillment)(nil))
@@ -319,14 +317,12 @@ func (o FulfillmentOutput) ToFulfillmentPtrOutput() FulfillmentPtrOutput {
 }
 
 func (o FulfillmentOutput) ToFulfillmentPtrOutputWithContext(ctx context.Context) FulfillmentPtrOutput {
-	return o.ApplyT(func(v Fulfillment) *Fulfillment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Fulfillment) *Fulfillment {
 		return &v
 	}).(FulfillmentPtrOutput)
 }
 
-type FulfillmentPtrOutput struct {
-	*pulumi.OutputState
-}
+type FulfillmentPtrOutput struct{ *pulumi.OutputState }
 
 func (FulfillmentPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Fulfillment)(nil))
@@ -338,6 +334,16 @@ func (o FulfillmentPtrOutput) ToFulfillmentPtrOutput() FulfillmentPtrOutput {
 
 func (o FulfillmentPtrOutput) ToFulfillmentPtrOutputWithContext(ctx context.Context) FulfillmentPtrOutput {
 	return o
+}
+
+func (o FulfillmentPtrOutput) Elem() FulfillmentOutput {
+	return o.ApplyT(func(v *Fulfillment) Fulfillment {
+		if v != nil {
+			return *v
+		}
+		var ret Fulfillment
+		return ret
+	}).(FulfillmentOutput)
 }
 
 type FulfillmentArrayOutput struct{ *pulumi.OutputState }

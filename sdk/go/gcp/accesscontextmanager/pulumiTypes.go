@@ -121,7 +121,7 @@ func (o AccessLevelBasicOutput) ToAccessLevelBasicPtrOutput() AccessLevelBasicPt
 }
 
 func (o AccessLevelBasicOutput) ToAccessLevelBasicPtrOutputWithContext(ctx context.Context) AccessLevelBasicPtrOutput {
-	return o.ApplyT(func(v AccessLevelBasic) *AccessLevelBasic {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessLevelBasic) *AccessLevelBasic {
 		return &v
 	}).(AccessLevelBasicPtrOutput)
 }
@@ -158,7 +158,13 @@ func (o AccessLevelBasicPtrOutput) ToAccessLevelBasicPtrOutputWithContext(ctx co
 }
 
 func (o AccessLevelBasicPtrOutput) Elem() AccessLevelBasicOutput {
-	return o.ApplyT(func(v *AccessLevelBasic) AccessLevelBasic { return *v }).(AccessLevelBasicOutput)
+	return o.ApplyT(func(v *AccessLevelBasic) AccessLevelBasic {
+		if v != nil {
+			return *v
+		}
+		var ret AccessLevelBasic
+		return ret
+	}).(AccessLevelBasicOutput)
 }
 
 // How the conditions list should be combined to determine if a request
@@ -535,7 +541,7 @@ func (o AccessLevelBasicConditionDevicePolicyOutput) ToAccessLevelBasicCondition
 }
 
 func (o AccessLevelBasicConditionDevicePolicyOutput) ToAccessLevelBasicConditionDevicePolicyPtrOutputWithContext(ctx context.Context) AccessLevelBasicConditionDevicePolicyPtrOutput {
-	return o.ApplyT(func(v AccessLevelBasicConditionDevicePolicy) *AccessLevelBasicConditionDevicePolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessLevelBasicConditionDevicePolicy) *AccessLevelBasicConditionDevicePolicy {
 		return &v
 	}).(AccessLevelBasicConditionDevicePolicyPtrOutput)
 }
@@ -594,7 +600,13 @@ func (o AccessLevelBasicConditionDevicePolicyPtrOutput) ToAccessLevelBasicCondit
 }
 
 func (o AccessLevelBasicConditionDevicePolicyPtrOutput) Elem() AccessLevelBasicConditionDevicePolicyOutput {
-	return o.ApplyT(func(v *AccessLevelBasicConditionDevicePolicy) AccessLevelBasicConditionDevicePolicy { return *v }).(AccessLevelBasicConditionDevicePolicyOutput)
+	return o.ApplyT(func(v *AccessLevelBasicConditionDevicePolicy) AccessLevelBasicConditionDevicePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret AccessLevelBasicConditionDevicePolicy
+		return ret
+	}).(AccessLevelBasicConditionDevicePolicyOutput)
 }
 
 // A list of allowed device management levels.
@@ -915,7 +927,7 @@ func (o AccessLevelConditionDevicePolicyOutput) ToAccessLevelConditionDevicePoli
 }
 
 func (o AccessLevelConditionDevicePolicyOutput) ToAccessLevelConditionDevicePolicyPtrOutputWithContext(ctx context.Context) AccessLevelConditionDevicePolicyPtrOutput {
-	return o.ApplyT(func(v AccessLevelConditionDevicePolicy) *AccessLevelConditionDevicePolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessLevelConditionDevicePolicy) *AccessLevelConditionDevicePolicy {
 		return &v
 	}).(AccessLevelConditionDevicePolicyPtrOutput)
 }
@@ -974,7 +986,13 @@ func (o AccessLevelConditionDevicePolicyPtrOutput) ToAccessLevelConditionDeviceP
 }
 
 func (o AccessLevelConditionDevicePolicyPtrOutput) Elem() AccessLevelConditionDevicePolicyOutput {
-	return o.ApplyT(func(v *AccessLevelConditionDevicePolicy) AccessLevelConditionDevicePolicy { return *v }).(AccessLevelConditionDevicePolicyOutput)
+	return o.ApplyT(func(v *AccessLevelConditionDevicePolicy) AccessLevelConditionDevicePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret AccessLevelConditionDevicePolicy
+		return ret
+	}).(AccessLevelConditionDevicePolicyOutput)
 }
 
 // A list of allowed device management levels.
@@ -1258,7 +1276,7 @@ func (o AccessLevelCustomOutput) ToAccessLevelCustomPtrOutput() AccessLevelCusto
 }
 
 func (o AccessLevelCustomOutput) ToAccessLevelCustomPtrOutputWithContext(ctx context.Context) AccessLevelCustomPtrOutput {
-	return o.ApplyT(func(v AccessLevelCustom) *AccessLevelCustom {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessLevelCustom) *AccessLevelCustom {
 		return &v
 	}).(AccessLevelCustomPtrOutput)
 }
@@ -1286,7 +1304,13 @@ func (o AccessLevelCustomPtrOutput) ToAccessLevelCustomPtrOutputWithContext(ctx 
 }
 
 func (o AccessLevelCustomPtrOutput) Elem() AccessLevelCustomOutput {
-	return o.ApplyT(func(v *AccessLevelCustom) AccessLevelCustom { return *v }).(AccessLevelCustomOutput)
+	return o.ApplyT(func(v *AccessLevelCustom) AccessLevelCustom {
+		if v != nil {
+			return *v
+		}
+		var ret AccessLevelCustom
+		return ret
+	}).(AccessLevelCustomOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
@@ -1407,7 +1431,7 @@ func (o AccessLevelCustomExprOutput) ToAccessLevelCustomExprPtrOutput() AccessLe
 }
 
 func (o AccessLevelCustomExprOutput) ToAccessLevelCustomExprPtrOutputWithContext(ctx context.Context) AccessLevelCustomExprPtrOutput {
-	return o.ApplyT(func(v AccessLevelCustomExpr) *AccessLevelCustomExpr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessLevelCustomExpr) *AccessLevelCustomExpr {
 		return &v
 	}).(AccessLevelCustomExprPtrOutput)
 }
@@ -1447,7 +1471,13 @@ func (o AccessLevelCustomExprPtrOutput) ToAccessLevelCustomExprPtrOutputWithCont
 }
 
 func (o AccessLevelCustomExprPtrOutput) Elem() AccessLevelCustomExprOutput {
-	return o.ApplyT(func(v *AccessLevelCustomExpr) AccessLevelCustomExpr { return *v }).(AccessLevelCustomExprOutput)
+	return o.ApplyT(func(v *AccessLevelCustomExpr) AccessLevelCustomExpr {
+		if v != nil {
+			return *v
+		}
+		var ret AccessLevelCustomExpr
+		return ret
+	}).(AccessLevelCustomExprOutput)
 }
 
 // Description of the expression
@@ -1749,7 +1779,7 @@ func (o AccessLevelsAccessLevelBasicOutput) ToAccessLevelsAccessLevelBasicPtrOut
 }
 
 func (o AccessLevelsAccessLevelBasicOutput) ToAccessLevelsAccessLevelBasicPtrOutputWithContext(ctx context.Context) AccessLevelsAccessLevelBasicPtrOutput {
-	return o.ApplyT(func(v AccessLevelsAccessLevelBasic) *AccessLevelsAccessLevelBasic {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessLevelsAccessLevelBasic) *AccessLevelsAccessLevelBasic {
 		return &v
 	}).(AccessLevelsAccessLevelBasicPtrOutput)
 }
@@ -1786,7 +1816,13 @@ func (o AccessLevelsAccessLevelBasicPtrOutput) ToAccessLevelsAccessLevelBasicPtr
 }
 
 func (o AccessLevelsAccessLevelBasicPtrOutput) Elem() AccessLevelsAccessLevelBasicOutput {
-	return o.ApplyT(func(v *AccessLevelsAccessLevelBasic) AccessLevelsAccessLevelBasic { return *v }).(AccessLevelsAccessLevelBasicOutput)
+	return o.ApplyT(func(v *AccessLevelsAccessLevelBasic) AccessLevelsAccessLevelBasic {
+		if v != nil {
+			return *v
+		}
+		var ret AccessLevelsAccessLevelBasic
+		return ret
+	}).(AccessLevelsAccessLevelBasicOutput)
 }
 
 // How the conditions list should be combined to determine if a request
@@ -2165,7 +2201,7 @@ func (o AccessLevelsAccessLevelBasicConditionDevicePolicyOutput) ToAccessLevelsA
 }
 
 func (o AccessLevelsAccessLevelBasicConditionDevicePolicyOutput) ToAccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutputWithContext(ctx context.Context) AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput {
-	return o.ApplyT(func(v AccessLevelsAccessLevelBasicConditionDevicePolicy) *AccessLevelsAccessLevelBasicConditionDevicePolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessLevelsAccessLevelBasicConditionDevicePolicy) *AccessLevelsAccessLevelBasicConditionDevicePolicy {
 		return &v
 	}).(AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput)
 }
@@ -2227,7 +2263,11 @@ func (o AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput) ToAccessLeve
 
 func (o AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput) Elem() AccessLevelsAccessLevelBasicConditionDevicePolicyOutput {
 	return o.ApplyT(func(v *AccessLevelsAccessLevelBasicConditionDevicePolicy) AccessLevelsAccessLevelBasicConditionDevicePolicy {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret AccessLevelsAccessLevelBasicConditionDevicePolicy
+		return ret
 	}).(AccessLevelsAccessLevelBasicConditionDevicePolicyOutput)
 }
 
@@ -2512,7 +2552,7 @@ func (o AccessLevelsAccessLevelCustomOutput) ToAccessLevelsAccessLevelCustomPtrO
 }
 
 func (o AccessLevelsAccessLevelCustomOutput) ToAccessLevelsAccessLevelCustomPtrOutputWithContext(ctx context.Context) AccessLevelsAccessLevelCustomPtrOutput {
-	return o.ApplyT(func(v AccessLevelsAccessLevelCustom) *AccessLevelsAccessLevelCustom {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessLevelsAccessLevelCustom) *AccessLevelsAccessLevelCustom {
 		return &v
 	}).(AccessLevelsAccessLevelCustomPtrOutput)
 }
@@ -2540,7 +2580,13 @@ func (o AccessLevelsAccessLevelCustomPtrOutput) ToAccessLevelsAccessLevelCustomP
 }
 
 func (o AccessLevelsAccessLevelCustomPtrOutput) Elem() AccessLevelsAccessLevelCustomOutput {
-	return o.ApplyT(func(v *AccessLevelsAccessLevelCustom) AccessLevelsAccessLevelCustom { return *v }).(AccessLevelsAccessLevelCustomOutput)
+	return o.ApplyT(func(v *AccessLevelsAccessLevelCustom) AccessLevelsAccessLevelCustom {
+		if v != nil {
+			return *v
+		}
+		var ret AccessLevelsAccessLevelCustom
+		return ret
+	}).(AccessLevelsAccessLevelCustomOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
@@ -2661,7 +2707,7 @@ func (o AccessLevelsAccessLevelCustomExprOutput) ToAccessLevelsAccessLevelCustom
 }
 
 func (o AccessLevelsAccessLevelCustomExprOutput) ToAccessLevelsAccessLevelCustomExprPtrOutputWithContext(ctx context.Context) AccessLevelsAccessLevelCustomExprPtrOutput {
-	return o.ApplyT(func(v AccessLevelsAccessLevelCustomExpr) *AccessLevelsAccessLevelCustomExpr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessLevelsAccessLevelCustomExpr) *AccessLevelsAccessLevelCustomExpr {
 		return &v
 	}).(AccessLevelsAccessLevelCustomExprPtrOutput)
 }
@@ -2701,7 +2747,13 @@ func (o AccessLevelsAccessLevelCustomExprPtrOutput) ToAccessLevelsAccessLevelCus
 }
 
 func (o AccessLevelsAccessLevelCustomExprPtrOutput) Elem() AccessLevelsAccessLevelCustomExprOutput {
-	return o.ApplyT(func(v *AccessLevelsAccessLevelCustomExpr) AccessLevelsAccessLevelCustomExpr { return *v }).(AccessLevelsAccessLevelCustomExprOutput)
+	return o.ApplyT(func(v *AccessLevelsAccessLevelCustomExpr) AccessLevelsAccessLevelCustomExpr {
+		if v != nil {
+			return *v
+		}
+		var ret AccessLevelsAccessLevelCustomExpr
+		return ret
+	}).(AccessLevelsAccessLevelCustomExprOutput)
 }
 
 // Description of the expression
@@ -2909,7 +2961,7 @@ func (o ServicePerimeterSpecOutput) ToServicePerimeterSpecPtrOutput() ServicePer
 }
 
 func (o ServicePerimeterSpecOutput) ToServicePerimeterSpecPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecPtrOutput {
-	return o.ApplyT(func(v ServicePerimeterSpec) *ServicePerimeterSpec {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeterSpec) *ServicePerimeterSpec {
 		return &v
 	}).(ServicePerimeterSpecPtrOutput)
 }
@@ -2987,7 +3039,13 @@ func (o ServicePerimeterSpecPtrOutput) ToServicePerimeterSpecPtrOutputWithContex
 }
 
 func (o ServicePerimeterSpecPtrOutput) Elem() ServicePerimeterSpecOutput {
-	return o.ApplyT(func(v *ServicePerimeterSpec) ServicePerimeterSpec { return *v }).(ServicePerimeterSpecOutput)
+	return o.ApplyT(func(v *ServicePerimeterSpec) ServicePerimeterSpec {
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimeterSpec
+		return ret
+	}).(ServicePerimeterSpecOutput)
 }
 
 // A list of AccessLevel resource names that allow resources within
@@ -3300,7 +3358,7 @@ func (o ServicePerimeterSpecEgressPolicyEgressFromOutput) ToServicePerimeterSpec
 }
 
 func (o ServicePerimeterSpecEgressPolicyEgressFromOutput) ToServicePerimeterSpecEgressPolicyEgressFromPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyEgressFromPtrOutput {
-	return o.ApplyT(func(v ServicePerimeterSpecEgressPolicyEgressFrom) *ServicePerimeterSpecEgressPolicyEgressFrom {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeterSpecEgressPolicyEgressFrom) *ServicePerimeterSpecEgressPolicyEgressFrom {
 		return &v
 	}).(ServicePerimeterSpecEgressPolicyEgressFromPtrOutput)
 }
@@ -3336,7 +3394,11 @@ func (o ServicePerimeterSpecEgressPolicyEgressFromPtrOutput) ToServicePerimeterS
 
 func (o ServicePerimeterSpecEgressPolicyEgressFromPtrOutput) Elem() ServicePerimeterSpecEgressPolicyEgressFromOutput {
 	return o.ApplyT(func(v *ServicePerimeterSpecEgressPolicyEgressFrom) ServicePerimeterSpecEgressPolicyEgressFrom {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimeterSpecEgressPolicyEgressFrom
+		return ret
 	}).(ServicePerimeterSpecEgressPolicyEgressFromOutput)
 }
 
@@ -3474,7 +3536,7 @@ func (o ServicePerimeterSpecEgressPolicyEgressToOutput) ToServicePerimeterSpecEg
 }
 
 func (o ServicePerimeterSpecEgressPolicyEgressToOutput) ToServicePerimeterSpecEgressPolicyEgressToPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyEgressToPtrOutput {
-	return o.ApplyT(func(v ServicePerimeterSpecEgressPolicyEgressTo) *ServicePerimeterSpecEgressPolicyEgressTo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeterSpecEgressPolicyEgressTo) *ServicePerimeterSpecEgressPolicyEgressTo {
 		return &v
 	}).(ServicePerimeterSpecEgressPolicyEgressToPtrOutput)
 }
@@ -3512,7 +3574,13 @@ func (o ServicePerimeterSpecEgressPolicyEgressToPtrOutput) ToServicePerimeterSpe
 }
 
 func (o ServicePerimeterSpecEgressPolicyEgressToPtrOutput) Elem() ServicePerimeterSpecEgressPolicyEgressToOutput {
-	return o.ApplyT(func(v *ServicePerimeterSpecEgressPolicyEgressTo) ServicePerimeterSpecEgressPolicyEgressTo { return *v }).(ServicePerimeterSpecEgressPolicyEgressToOutput)
+	return o.ApplyT(func(v *ServicePerimeterSpecEgressPolicyEgressTo) ServicePerimeterSpecEgressPolicyEgressTo {
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimeterSpecEgressPolicyEgressTo
+		return ret
+	}).(ServicePerimeterSpecEgressPolicyEgressToOutput)
 }
 
 // A list of `ApiOperations` that this egress rule applies to. A request matches
@@ -4017,7 +4085,7 @@ func (o ServicePerimeterSpecIngressPolicyIngressFromOutput) ToServicePerimeterSp
 }
 
 func (o ServicePerimeterSpecIngressPolicyIngressFromOutput) ToServicePerimeterSpecIngressPolicyIngressFromPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyIngressFromPtrOutput {
-	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicyIngressFrom) *ServicePerimeterSpecIngressPolicyIngressFrom {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeterSpecIngressPolicyIngressFrom) *ServicePerimeterSpecIngressPolicyIngressFrom {
 		return &v
 	}).(ServicePerimeterSpecIngressPolicyIngressFromPtrOutput)
 }
@@ -4061,7 +4129,11 @@ func (o ServicePerimeterSpecIngressPolicyIngressFromPtrOutput) ToServicePerimete
 
 func (o ServicePerimeterSpecIngressPolicyIngressFromPtrOutput) Elem() ServicePerimeterSpecIngressPolicyIngressFromOutput {
 	return o.ApplyT(func(v *ServicePerimeterSpecIngressPolicyIngressFrom) ServicePerimeterSpecIngressPolicyIngressFrom {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimeterSpecIngressPolicyIngressFrom
+		return ret
 	}).(ServicePerimeterSpecIngressPolicyIngressFromOutput)
 }
 
@@ -4352,7 +4424,7 @@ func (o ServicePerimeterSpecIngressPolicyIngressToOutput) ToServicePerimeterSpec
 }
 
 func (o ServicePerimeterSpecIngressPolicyIngressToOutput) ToServicePerimeterSpecIngressPolicyIngressToPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyIngressToPtrOutput {
-	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicyIngressTo) *ServicePerimeterSpecIngressPolicyIngressTo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeterSpecIngressPolicyIngressTo) *ServicePerimeterSpecIngressPolicyIngressTo {
 		return &v
 	}).(ServicePerimeterSpecIngressPolicyIngressToPtrOutput)
 }
@@ -4391,7 +4463,11 @@ func (o ServicePerimeterSpecIngressPolicyIngressToPtrOutput) ToServicePerimeterS
 
 func (o ServicePerimeterSpecIngressPolicyIngressToPtrOutput) Elem() ServicePerimeterSpecIngressPolicyIngressToOutput {
 	return o.ApplyT(func(v *ServicePerimeterSpecIngressPolicyIngressTo) ServicePerimeterSpecIngressPolicyIngressTo {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimeterSpecIngressPolicyIngressTo
+		return ret
 	}).(ServicePerimeterSpecIngressPolicyIngressToOutput)
 }
 
@@ -4763,7 +4839,7 @@ func (o ServicePerimeterSpecVpcAccessibleServicesOutput) ToServicePerimeterSpecV
 }
 
 func (o ServicePerimeterSpecVpcAccessibleServicesOutput) ToServicePerimeterSpecVpcAccessibleServicesPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecVpcAccessibleServicesPtrOutput {
-	return o.ApplyT(func(v ServicePerimeterSpecVpcAccessibleServices) *ServicePerimeterSpecVpcAccessibleServices {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeterSpecVpcAccessibleServices) *ServicePerimeterSpecVpcAccessibleServices {
 		return &v
 	}).(ServicePerimeterSpecVpcAccessibleServicesPtrOutput)
 }
@@ -4796,7 +4872,11 @@ func (o ServicePerimeterSpecVpcAccessibleServicesPtrOutput) ToServicePerimeterSp
 
 func (o ServicePerimeterSpecVpcAccessibleServicesPtrOutput) Elem() ServicePerimeterSpecVpcAccessibleServicesOutput {
 	return o.ApplyT(func(v *ServicePerimeterSpecVpcAccessibleServices) ServicePerimeterSpecVpcAccessibleServices {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimeterSpecVpcAccessibleServices
+		return ret
 	}).(ServicePerimeterSpecVpcAccessibleServicesOutput)
 }
 
@@ -4987,7 +5067,7 @@ func (o ServicePerimeterStatusOutput) ToServicePerimeterStatusPtrOutput() Servic
 }
 
 func (o ServicePerimeterStatusOutput) ToServicePerimeterStatusPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusPtrOutput {
-	return o.ApplyT(func(v ServicePerimeterStatus) *ServicePerimeterStatus {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeterStatus) *ServicePerimeterStatus {
 		return &v
 	}).(ServicePerimeterStatusPtrOutput)
 }
@@ -5065,7 +5145,13 @@ func (o ServicePerimeterStatusPtrOutput) ToServicePerimeterStatusPtrOutputWithCo
 }
 
 func (o ServicePerimeterStatusPtrOutput) Elem() ServicePerimeterStatusOutput {
-	return o.ApplyT(func(v *ServicePerimeterStatus) ServicePerimeterStatus { return *v }).(ServicePerimeterStatusOutput)
+	return o.ApplyT(func(v *ServicePerimeterStatus) ServicePerimeterStatus {
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimeterStatus
+		return ret
+	}).(ServicePerimeterStatusOutput)
 }
 
 // A list of AccessLevel resource names that allow resources within
@@ -5380,7 +5466,7 @@ func (o ServicePerimeterStatusEgressPolicyEgressFromOutput) ToServicePerimeterSt
 }
 
 func (o ServicePerimeterStatusEgressPolicyEgressFromOutput) ToServicePerimeterStatusEgressPolicyEgressFromPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyEgressFromPtrOutput {
-	return o.ApplyT(func(v ServicePerimeterStatusEgressPolicyEgressFrom) *ServicePerimeterStatusEgressPolicyEgressFrom {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeterStatusEgressPolicyEgressFrom) *ServicePerimeterStatusEgressPolicyEgressFrom {
 		return &v
 	}).(ServicePerimeterStatusEgressPolicyEgressFromPtrOutput)
 }
@@ -5416,7 +5502,11 @@ func (o ServicePerimeterStatusEgressPolicyEgressFromPtrOutput) ToServicePerimete
 
 func (o ServicePerimeterStatusEgressPolicyEgressFromPtrOutput) Elem() ServicePerimeterStatusEgressPolicyEgressFromOutput {
 	return o.ApplyT(func(v *ServicePerimeterStatusEgressPolicyEgressFrom) ServicePerimeterStatusEgressPolicyEgressFrom {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimeterStatusEgressPolicyEgressFrom
+		return ret
 	}).(ServicePerimeterStatusEgressPolicyEgressFromOutput)
 }
 
@@ -5554,7 +5644,7 @@ func (o ServicePerimeterStatusEgressPolicyEgressToOutput) ToServicePerimeterStat
 }
 
 func (o ServicePerimeterStatusEgressPolicyEgressToOutput) ToServicePerimeterStatusEgressPolicyEgressToPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyEgressToPtrOutput {
-	return o.ApplyT(func(v ServicePerimeterStatusEgressPolicyEgressTo) *ServicePerimeterStatusEgressPolicyEgressTo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeterStatusEgressPolicyEgressTo) *ServicePerimeterStatusEgressPolicyEgressTo {
 		return &v
 	}).(ServicePerimeterStatusEgressPolicyEgressToPtrOutput)
 }
@@ -5593,7 +5683,11 @@ func (o ServicePerimeterStatusEgressPolicyEgressToPtrOutput) ToServicePerimeterS
 
 func (o ServicePerimeterStatusEgressPolicyEgressToPtrOutput) Elem() ServicePerimeterStatusEgressPolicyEgressToOutput {
 	return o.ApplyT(func(v *ServicePerimeterStatusEgressPolicyEgressTo) ServicePerimeterStatusEgressPolicyEgressTo {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimeterStatusEgressPolicyEgressTo
+		return ret
 	}).(ServicePerimeterStatusEgressPolicyEgressToOutput)
 }
 
@@ -6099,7 +6193,7 @@ func (o ServicePerimeterStatusIngressPolicyIngressFromOutput) ToServicePerimeter
 }
 
 func (o ServicePerimeterStatusIngressPolicyIngressFromOutput) ToServicePerimeterStatusIngressPolicyIngressFromPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyIngressFromPtrOutput {
-	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicyIngressFrom) *ServicePerimeterStatusIngressPolicyIngressFrom {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeterStatusIngressPolicyIngressFrom) *ServicePerimeterStatusIngressPolicyIngressFrom {
 		return &v
 	}).(ServicePerimeterStatusIngressPolicyIngressFromPtrOutput)
 }
@@ -6143,7 +6237,11 @@ func (o ServicePerimeterStatusIngressPolicyIngressFromPtrOutput) ToServicePerime
 
 func (o ServicePerimeterStatusIngressPolicyIngressFromPtrOutput) Elem() ServicePerimeterStatusIngressPolicyIngressFromOutput {
 	return o.ApplyT(func(v *ServicePerimeterStatusIngressPolicyIngressFrom) ServicePerimeterStatusIngressPolicyIngressFrom {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimeterStatusIngressPolicyIngressFrom
+		return ret
 	}).(ServicePerimeterStatusIngressPolicyIngressFromOutput)
 }
 
@@ -6434,7 +6532,7 @@ func (o ServicePerimeterStatusIngressPolicyIngressToOutput) ToServicePerimeterSt
 }
 
 func (o ServicePerimeterStatusIngressPolicyIngressToOutput) ToServicePerimeterStatusIngressPolicyIngressToPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyIngressToPtrOutput {
-	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicyIngressTo) *ServicePerimeterStatusIngressPolicyIngressTo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeterStatusIngressPolicyIngressTo) *ServicePerimeterStatusIngressPolicyIngressTo {
 		return &v
 	}).(ServicePerimeterStatusIngressPolicyIngressToPtrOutput)
 }
@@ -6473,7 +6571,11 @@ func (o ServicePerimeterStatusIngressPolicyIngressToPtrOutput) ToServicePerimete
 
 func (o ServicePerimeterStatusIngressPolicyIngressToPtrOutput) Elem() ServicePerimeterStatusIngressPolicyIngressToOutput {
 	return o.ApplyT(func(v *ServicePerimeterStatusIngressPolicyIngressTo) ServicePerimeterStatusIngressPolicyIngressTo {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimeterStatusIngressPolicyIngressTo
+		return ret
 	}).(ServicePerimeterStatusIngressPolicyIngressToOutput)
 }
 
@@ -6847,7 +6949,7 @@ func (o ServicePerimeterStatusVpcAccessibleServicesOutput) ToServicePerimeterSta
 }
 
 func (o ServicePerimeterStatusVpcAccessibleServicesOutput) ToServicePerimeterStatusVpcAccessibleServicesPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusVpcAccessibleServicesPtrOutput {
-	return o.ApplyT(func(v ServicePerimeterStatusVpcAccessibleServices) *ServicePerimeterStatusVpcAccessibleServices {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeterStatusVpcAccessibleServices) *ServicePerimeterStatusVpcAccessibleServices {
 		return &v
 	}).(ServicePerimeterStatusVpcAccessibleServicesPtrOutput)
 }
@@ -6880,7 +6982,11 @@ func (o ServicePerimeterStatusVpcAccessibleServicesPtrOutput) ToServicePerimeter
 
 func (o ServicePerimeterStatusVpcAccessibleServicesPtrOutput) Elem() ServicePerimeterStatusVpcAccessibleServicesOutput {
 	return o.ApplyT(func(v *ServicePerimeterStatusVpcAccessibleServices) ServicePerimeterStatusVpcAccessibleServices {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimeterStatusVpcAccessibleServices
+		return ret
 	}).(ServicePerimeterStatusVpcAccessibleServicesOutput)
 }
 
@@ -7345,7 +7451,7 @@ func (o ServicePerimetersServicePerimeterSpecOutput) ToServicePerimetersServiceP
 }
 
 func (o ServicePerimetersServicePerimeterSpecOutput) ToServicePerimetersServicePerimeterSpecPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecPtrOutput {
-	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpec) *ServicePerimetersServicePerimeterSpec {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimetersServicePerimeterSpec) *ServicePerimetersServicePerimeterSpec {
 		return &v
 	}).(ServicePerimetersServicePerimeterSpecPtrOutput)
 }
@@ -7427,7 +7533,13 @@ func (o ServicePerimetersServicePerimeterSpecPtrOutput) ToServicePerimetersServi
 }
 
 func (o ServicePerimetersServicePerimeterSpecPtrOutput) Elem() ServicePerimetersServicePerimeterSpecOutput {
-	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpec) ServicePerimetersServicePerimeterSpec { return *v }).(ServicePerimetersServicePerimeterSpecOutput)
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpec) ServicePerimetersServicePerimeterSpec {
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimetersServicePerimeterSpec
+		return ret
+	}).(ServicePerimetersServicePerimeterSpecOutput)
 }
 
 // A list of AccessLevel resource names that allow resources within
@@ -7742,7 +7854,7 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput) ToSer
 }
 
 func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput {
-	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom) *ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom) *ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom {
 		return &v
 	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput)
 }
@@ -7778,7 +7890,11 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput) To
 
 func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput) Elem() ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom) ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom
+		return ret
 	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput)
 }
 
@@ -7916,7 +8032,7 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput) ToServi
 }
 
 func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput {
-	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo) *ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo) *ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo {
 		return &v
 	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput)
 }
@@ -7955,7 +8071,11 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput) ToSe
 
 func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput) Elem() ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo) ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo
+		return ret
 	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput)
 }
 
@@ -8467,7 +8587,7 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput) ToS
 }
 
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput {
-	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom) *ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom) *ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom {
 		return &v
 	}).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput)
 }
@@ -8511,7 +8631,11 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput) 
 
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput) Elem() ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom) ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom
+		return ret
 	}).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput)
 }
 
@@ -8804,7 +8928,7 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput) ToSer
 }
 
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput {
-	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo) *ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo) *ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo {
 		return &v
 	}).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput)
 }
@@ -8843,7 +8967,11 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput) To
 
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput) Elem() ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo) ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo
+		return ret
 	}).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput)
 }
 
@@ -9221,7 +9349,7 @@ func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput) ToServ
 }
 
 func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput {
-	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecVpcAccessibleServices) *ServicePerimetersServicePerimeterSpecVpcAccessibleServices {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimetersServicePerimeterSpecVpcAccessibleServices) *ServicePerimetersServicePerimeterSpecVpcAccessibleServices {
 		return &v
 	}).(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput)
 }
@@ -9254,7 +9382,11 @@ func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput) ToS
 
 func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput) Elem() ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecVpcAccessibleServices) ServicePerimetersServicePerimeterSpecVpcAccessibleServices {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimetersServicePerimeterSpecVpcAccessibleServices
+		return ret
 	}).(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput)
 }
 
@@ -9445,7 +9577,7 @@ func (o ServicePerimetersServicePerimeterStatusOutput) ToServicePerimetersServic
 }
 
 func (o ServicePerimetersServicePerimeterStatusOutput) ToServicePerimetersServicePerimeterStatusPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusPtrOutput {
-	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatus) *ServicePerimetersServicePerimeterStatus {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimetersServicePerimeterStatus) *ServicePerimetersServicePerimeterStatus {
 		return &v
 	}).(ServicePerimetersServicePerimeterStatusPtrOutput)
 }
@@ -9527,7 +9659,13 @@ func (o ServicePerimetersServicePerimeterStatusPtrOutput) ToServicePerimetersSer
 }
 
 func (o ServicePerimetersServicePerimeterStatusPtrOutput) Elem() ServicePerimetersServicePerimeterStatusOutput {
-	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatus) ServicePerimetersServicePerimeterStatus { return *v }).(ServicePerimetersServicePerimeterStatusOutput)
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatus) ServicePerimetersServicePerimeterStatus {
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimetersServicePerimeterStatus
+		return ret
+	}).(ServicePerimetersServicePerimeterStatusOutput)
 }
 
 // A list of AccessLevel resource names that allow resources within
@@ -9842,7 +9980,7 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput) ToS
 }
 
 func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput {
-	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom) *ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom) *ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom {
 		return &v
 	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput)
 }
@@ -9878,7 +10016,11 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput) 
 
 func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput) Elem() ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom) ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom
+		return ret
 	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput)
 }
 
@@ -10016,7 +10158,7 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput) ToSer
 }
 
 func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput {
-	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo) *ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo) *ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo {
 		return &v
 	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput)
 }
@@ -10055,7 +10197,11 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput) To
 
 func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput) Elem() ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo) ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo
+		return ret
 	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput)
 }
 
@@ -10567,7 +10713,7 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput) T
 }
 
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput {
-	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom) *ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom) *ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom {
 		return &v
 	}).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput)
 }
@@ -10611,7 +10757,11 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput
 
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput) Elem() ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom) ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom
+		return ret
 	}).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput)
 }
 
@@ -10906,7 +11056,7 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput) ToS
 }
 
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput {
-	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo) *ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo) *ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo {
 		return &v
 	}).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput)
 }
@@ -10945,7 +11095,11 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput) 
 
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput) Elem() ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo) ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo
+		return ret
 	}).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput)
 }
 
@@ -11323,7 +11477,7 @@ func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput) ToSe
 }
 
 func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput {
-	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusVpcAccessibleServices) *ServicePerimetersServicePerimeterStatusVpcAccessibleServices {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimetersServicePerimeterStatusVpcAccessibleServices) *ServicePerimetersServicePerimeterStatusVpcAccessibleServices {
 		return &v
 	}).(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput)
 }
@@ -11358,7 +11512,11 @@ func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput) T
 
 func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput) Elem() ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusVpcAccessibleServices) ServicePerimetersServicePerimeterStatusVpcAccessibleServices {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimetersServicePerimeterStatusVpcAccessibleServices
+		return ret
 	}).(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput)
 }
 

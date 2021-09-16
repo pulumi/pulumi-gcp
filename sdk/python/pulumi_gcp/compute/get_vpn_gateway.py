@@ -12,6 +12,7 @@ __all__ = [
     'GetVPNGatewayResult',
     'AwaitableGetVPNGatewayResult',
     'get_vpn_gateway',
+    'get_vpn_gateway_output',
 ]
 
 @pulumi.output_type
@@ -149,3 +150,30 @@ def get_vpn_gateway(name: Optional[str] = None,
         project=__ret__.project,
         region=__ret__.region,
         self_link=__ret__.self_link)
+
+
+@_utilities.lift_output_func(get_vpn_gateway)
+def get_vpn_gateway_output(name: Optional[pulumi.Input[str]] = None,
+                           project: Optional[pulumi.Input[Optional[str]]] = None,
+                           region: Optional[pulumi.Input[Optional[str]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVPNGatewayResult]:
+    """
+    Get a VPN gateway within GCE from its name.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_vpn_gateway = gcp.compute.get_vpn_gateway(name="vpn-gateway-us-east1")
+    ```
+
+
+    :param str name: The name of the VPN gateway.
+    :param str project: The project in which the resource belongs. If it
+           is not provided, the provider project is used.
+    :param str region: The region in which the resource belongs. If it
+           is not provided, the project region is used.
+    """
+    ...

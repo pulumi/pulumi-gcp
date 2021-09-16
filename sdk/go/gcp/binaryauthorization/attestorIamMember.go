@@ -323,7 +323,7 @@ type AttestorIamMemberArrayInput interface {
 type AttestorIamMemberArray []AttestorIamMemberInput
 
 func (AttestorIamMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AttestorIamMember)(nil))
+	return reflect.TypeOf((*[]*AttestorIamMember)(nil)).Elem()
 }
 
 func (i AttestorIamMemberArray) ToAttestorIamMemberArrayOutput() AttestorIamMemberArrayOutput {
@@ -348,7 +348,7 @@ type AttestorIamMemberMapInput interface {
 type AttestorIamMemberMap map[string]AttestorIamMemberInput
 
 func (AttestorIamMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AttestorIamMember)(nil))
+	return reflect.TypeOf((*map[string]*AttestorIamMember)(nil)).Elem()
 }
 
 func (i AttestorIamMemberMap) ToAttestorIamMemberMapOutput() AttestorIamMemberMapOutput {
@@ -359,9 +359,7 @@ func (i AttestorIamMemberMap) ToAttestorIamMemberMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorIamMemberMapOutput)
 }
 
-type AttestorIamMemberOutput struct {
-	*pulumi.OutputState
-}
+type AttestorIamMemberOutput struct{ *pulumi.OutputState }
 
 func (AttestorIamMemberOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AttestorIamMember)(nil))
@@ -380,14 +378,12 @@ func (o AttestorIamMemberOutput) ToAttestorIamMemberPtrOutput() AttestorIamMembe
 }
 
 func (o AttestorIamMemberOutput) ToAttestorIamMemberPtrOutputWithContext(ctx context.Context) AttestorIamMemberPtrOutput {
-	return o.ApplyT(func(v AttestorIamMember) *AttestorIamMember {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttestorIamMember) *AttestorIamMember {
 		return &v
 	}).(AttestorIamMemberPtrOutput)
 }
 
-type AttestorIamMemberPtrOutput struct {
-	*pulumi.OutputState
-}
+type AttestorIamMemberPtrOutput struct{ *pulumi.OutputState }
 
 func (AttestorIamMemberPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AttestorIamMember)(nil))
@@ -399,6 +395,16 @@ func (o AttestorIamMemberPtrOutput) ToAttestorIamMemberPtrOutput() AttestorIamMe
 
 func (o AttestorIamMemberPtrOutput) ToAttestorIamMemberPtrOutputWithContext(ctx context.Context) AttestorIamMemberPtrOutput {
 	return o
+}
+
+func (o AttestorIamMemberPtrOutput) Elem() AttestorIamMemberOutput {
+	return o.ApplyT(func(v *AttestorIamMember) AttestorIamMember {
+		if v != nil {
+			return *v
+		}
+		var ret AttestorIamMember
+		return ret
+	}).(AttestorIamMemberOutput)
 }
 
 type AttestorIamMemberArrayOutput struct{ *pulumi.OutputState }

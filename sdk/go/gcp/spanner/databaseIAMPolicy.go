@@ -321,7 +321,7 @@ type DatabaseIAMPolicyArrayInput interface {
 type DatabaseIAMPolicyArray []DatabaseIAMPolicyInput
 
 func (DatabaseIAMPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*DatabaseIAMPolicy)(nil))
+	return reflect.TypeOf((*[]*DatabaseIAMPolicy)(nil)).Elem()
 }
 
 func (i DatabaseIAMPolicyArray) ToDatabaseIAMPolicyArrayOutput() DatabaseIAMPolicyArrayOutput {
@@ -346,7 +346,7 @@ type DatabaseIAMPolicyMapInput interface {
 type DatabaseIAMPolicyMap map[string]DatabaseIAMPolicyInput
 
 func (DatabaseIAMPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*DatabaseIAMPolicy)(nil))
+	return reflect.TypeOf((*map[string]*DatabaseIAMPolicy)(nil)).Elem()
 }
 
 func (i DatabaseIAMPolicyMap) ToDatabaseIAMPolicyMapOutput() DatabaseIAMPolicyMapOutput {
@@ -357,9 +357,7 @@ func (i DatabaseIAMPolicyMap) ToDatabaseIAMPolicyMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMPolicyMapOutput)
 }
 
-type DatabaseIAMPolicyOutput struct {
-	*pulumi.OutputState
-}
+type DatabaseIAMPolicyOutput struct{ *pulumi.OutputState }
 
 func (DatabaseIAMPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DatabaseIAMPolicy)(nil))
@@ -378,14 +376,12 @@ func (o DatabaseIAMPolicyOutput) ToDatabaseIAMPolicyPtrOutput() DatabaseIAMPolic
 }
 
 func (o DatabaseIAMPolicyOutput) ToDatabaseIAMPolicyPtrOutputWithContext(ctx context.Context) DatabaseIAMPolicyPtrOutput {
-	return o.ApplyT(func(v DatabaseIAMPolicy) *DatabaseIAMPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseIAMPolicy) *DatabaseIAMPolicy {
 		return &v
 	}).(DatabaseIAMPolicyPtrOutput)
 }
 
-type DatabaseIAMPolicyPtrOutput struct {
-	*pulumi.OutputState
-}
+type DatabaseIAMPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (DatabaseIAMPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DatabaseIAMPolicy)(nil))
@@ -397,6 +393,16 @@ func (o DatabaseIAMPolicyPtrOutput) ToDatabaseIAMPolicyPtrOutput() DatabaseIAMPo
 
 func (o DatabaseIAMPolicyPtrOutput) ToDatabaseIAMPolicyPtrOutputWithContext(ctx context.Context) DatabaseIAMPolicyPtrOutput {
 	return o
+}
+
+func (o DatabaseIAMPolicyPtrOutput) Elem() DatabaseIAMPolicyOutput {
+	return o.ApplyT(func(v *DatabaseIAMPolicy) DatabaseIAMPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseIAMPolicy
+		return ret
+	}).(DatabaseIAMPolicyOutput)
 }
 
 type DatabaseIAMPolicyArrayOutput struct{ *pulumi.OutputState }

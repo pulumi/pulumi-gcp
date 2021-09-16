@@ -344,7 +344,7 @@ type TargetPoolArrayInput interface {
 type TargetPoolArray []TargetPoolInput
 
 func (TargetPoolArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TargetPool)(nil))
+	return reflect.TypeOf((*[]*TargetPool)(nil)).Elem()
 }
 
 func (i TargetPoolArray) ToTargetPoolArrayOutput() TargetPoolArrayOutput {
@@ -369,7 +369,7 @@ type TargetPoolMapInput interface {
 type TargetPoolMap map[string]TargetPoolInput
 
 func (TargetPoolMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TargetPool)(nil))
+	return reflect.TypeOf((*map[string]*TargetPool)(nil)).Elem()
 }
 
 func (i TargetPoolMap) ToTargetPoolMapOutput() TargetPoolMapOutput {
@@ -380,9 +380,7 @@ func (i TargetPoolMap) ToTargetPoolMapOutputWithContext(ctx context.Context) Tar
 	return pulumi.ToOutputWithContext(ctx, i).(TargetPoolMapOutput)
 }
 
-type TargetPoolOutput struct {
-	*pulumi.OutputState
-}
+type TargetPoolOutput struct{ *pulumi.OutputState }
 
 func (TargetPoolOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TargetPool)(nil))
@@ -401,14 +399,12 @@ func (o TargetPoolOutput) ToTargetPoolPtrOutput() TargetPoolPtrOutput {
 }
 
 func (o TargetPoolOutput) ToTargetPoolPtrOutputWithContext(ctx context.Context) TargetPoolPtrOutput {
-	return o.ApplyT(func(v TargetPool) *TargetPool {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TargetPool) *TargetPool {
 		return &v
 	}).(TargetPoolPtrOutput)
 }
 
-type TargetPoolPtrOutput struct {
-	*pulumi.OutputState
-}
+type TargetPoolPtrOutput struct{ *pulumi.OutputState }
 
 func (TargetPoolPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TargetPool)(nil))
@@ -420,6 +416,16 @@ func (o TargetPoolPtrOutput) ToTargetPoolPtrOutput() TargetPoolPtrOutput {
 
 func (o TargetPoolPtrOutput) ToTargetPoolPtrOutputWithContext(ctx context.Context) TargetPoolPtrOutput {
 	return o
+}
+
+func (o TargetPoolPtrOutput) Elem() TargetPoolOutput {
+	return o.ApplyT(func(v *TargetPool) TargetPool {
+		if v != nil {
+			return *v
+		}
+		var ret TargetPool
+		return ret
+	}).(TargetPoolOutput)
 }
 
 type TargetPoolArrayOutput struct{ *pulumi.OutputState }

@@ -13,6 +13,7 @@ __all__ = [
     'GetRegionInstanceGroupResult',
     'AwaitableGetRegionInstanceGroupResult',
     'get_region_instance_group',
+    'get_region_instance_group_output',
 ]
 
 @pulumi.output_type
@@ -153,3 +154,35 @@ def get_region_instance_group(name: Optional[str] = None,
         region=__ret__.region,
         self_link=__ret__.self_link,
         size=__ret__.size)
+
+
+@_utilities.lift_output_func(get_region_instance_group)
+def get_region_instance_group_output(name: Optional[pulumi.Input[Optional[str]]] = None,
+                                     project: Optional[pulumi.Input[Optional[str]]] = None,
+                                     region: Optional[pulumi.Input[Optional[str]]] = None,
+                                     self_link: Optional[pulumi.Input[Optional[str]]] = None,
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionInstanceGroupResult]:
+    """
+    Get a Compute Region Instance Group within GCE.
+    For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroups).
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    group = gcp.compute.get_region_instance_group(name="instance-group-name")
+    ```
+
+    The most common use of this datasource will be to fetch information about the instances inside regional managed instance groups, for instance:
+
+
+    :param str name: The name of the instance group.  One of `name` or `self_link` must be provided.
+    :param str project: The ID of the project in which the resource belongs.
+           If `self_link` is provided, this value is ignored.  If neither `self_link`
+           nor `project` are provided, the provider project is used.
+    :param str region: The region in which the resource belongs.  If `self_link`
+           is provided, this value is ignored.  If neither `self_link` nor `region` are
+           provided, the provider region is used.
+    :param str self_link: The link to the instance group.  One of `name` or `self_link` must be provided.
+    """
+    ...

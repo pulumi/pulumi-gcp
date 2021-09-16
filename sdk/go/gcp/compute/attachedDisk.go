@@ -314,7 +314,7 @@ type AttachedDiskArrayInput interface {
 type AttachedDiskArray []AttachedDiskInput
 
 func (AttachedDiskArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AttachedDisk)(nil))
+	return reflect.TypeOf((*[]*AttachedDisk)(nil)).Elem()
 }
 
 func (i AttachedDiskArray) ToAttachedDiskArrayOutput() AttachedDiskArrayOutput {
@@ -339,7 +339,7 @@ type AttachedDiskMapInput interface {
 type AttachedDiskMap map[string]AttachedDiskInput
 
 func (AttachedDiskMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AttachedDisk)(nil))
+	return reflect.TypeOf((*map[string]*AttachedDisk)(nil)).Elem()
 }
 
 func (i AttachedDiskMap) ToAttachedDiskMapOutput() AttachedDiskMapOutput {
@@ -350,9 +350,7 @@ func (i AttachedDiskMap) ToAttachedDiskMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(AttachedDiskMapOutput)
 }
 
-type AttachedDiskOutput struct {
-	*pulumi.OutputState
-}
+type AttachedDiskOutput struct{ *pulumi.OutputState }
 
 func (AttachedDiskOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AttachedDisk)(nil))
@@ -371,14 +369,12 @@ func (o AttachedDiskOutput) ToAttachedDiskPtrOutput() AttachedDiskPtrOutput {
 }
 
 func (o AttachedDiskOutput) ToAttachedDiskPtrOutputWithContext(ctx context.Context) AttachedDiskPtrOutput {
-	return o.ApplyT(func(v AttachedDisk) *AttachedDisk {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttachedDisk) *AttachedDisk {
 		return &v
 	}).(AttachedDiskPtrOutput)
 }
 
-type AttachedDiskPtrOutput struct {
-	*pulumi.OutputState
-}
+type AttachedDiskPtrOutput struct{ *pulumi.OutputState }
 
 func (AttachedDiskPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AttachedDisk)(nil))
@@ -390,6 +386,16 @@ func (o AttachedDiskPtrOutput) ToAttachedDiskPtrOutput() AttachedDiskPtrOutput {
 
 func (o AttachedDiskPtrOutput) ToAttachedDiskPtrOutputWithContext(ctx context.Context) AttachedDiskPtrOutput {
 	return o
+}
+
+func (o AttachedDiskPtrOutput) Elem() AttachedDiskOutput {
+	return o.ApplyT(func(v *AttachedDisk) AttachedDisk {
+		if v != nil {
+			return *v
+		}
+		var ret AttachedDisk
+		return ret
+	}).(AttachedDiskOutput)
 }
 
 type AttachedDiskArrayOutput struct{ *pulumi.OutputState }

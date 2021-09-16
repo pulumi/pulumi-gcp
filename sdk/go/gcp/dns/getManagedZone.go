@@ -4,6 +4,9 @@
 package dns
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -81,4 +84,80 @@ type LookupManagedZoneResult struct {
 	// The zone's visibility: public zones are exposed to the Internet,
 	// while private zones are visible only to Virtual Private Cloud resources.
 	Visibility string `pulumi:"visibility"`
+}
+
+func LookupManagedZoneOutput(ctx *pulumi.Context, args LookupManagedZoneOutputArgs, opts ...pulumi.InvokeOption) LookupManagedZoneResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupManagedZoneResult, error) {
+			args := v.(LookupManagedZoneArgs)
+			r, err := LookupManagedZone(ctx, &args, opts...)
+			return *r, err
+		}).(LookupManagedZoneResultOutput)
+}
+
+// A collection of arguments for invoking getManagedZone.
+type LookupManagedZoneOutputArgs struct {
+	// A unique name for the resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The ID of the project for the Google Cloud DNS zone.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupManagedZoneOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupManagedZoneArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getManagedZone.
+type LookupManagedZoneResultOutput struct{ *pulumi.OutputState }
+
+func (LookupManagedZoneResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupManagedZoneResult)(nil)).Elem()
+}
+
+func (o LookupManagedZoneResultOutput) ToLookupManagedZoneResultOutput() LookupManagedZoneResultOutput {
+	return o
+}
+
+func (o LookupManagedZoneResultOutput) ToLookupManagedZoneResultOutputWithContext(ctx context.Context) LookupManagedZoneResultOutput {
+	return o
+}
+
+// A textual description field.
+func (o LookupManagedZoneResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagedZoneResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The fully qualified DNS name of this zone, e.g. `example.io.`.
+func (o LookupManagedZoneResultOutput) DnsName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagedZoneResult) string { return v.DnsName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupManagedZoneResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagedZoneResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupManagedZoneResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagedZoneResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The list of nameservers that will be authoritative for this
+// domain. Use NS records to redirect from your DNS provider to these names,
+// thus making Google Cloud DNS authoritative for this zone.
+func (o LookupManagedZoneResultOutput) NameServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupManagedZoneResult) []string { return v.NameServers }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupManagedZoneResultOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupManagedZoneResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+// The zone's visibility: public zones are exposed to the Internet,
+// while private zones are visible only to Virtual Private Cloud resources.
+func (o LookupManagedZoneResultOutput) Visibility() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagedZoneResult) string { return v.Visibility }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupManagedZoneResultOutput{})
 }

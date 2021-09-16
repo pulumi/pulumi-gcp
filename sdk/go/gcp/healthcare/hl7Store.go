@@ -417,7 +417,7 @@ type Hl7StoreArrayInput interface {
 type Hl7StoreArray []Hl7StoreInput
 
 func (Hl7StoreArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Hl7Store)(nil))
+	return reflect.TypeOf((*[]*Hl7Store)(nil)).Elem()
 }
 
 func (i Hl7StoreArray) ToHl7StoreArrayOutput() Hl7StoreArrayOutput {
@@ -442,7 +442,7 @@ type Hl7StoreMapInput interface {
 type Hl7StoreMap map[string]Hl7StoreInput
 
 func (Hl7StoreMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Hl7Store)(nil))
+	return reflect.TypeOf((*map[string]*Hl7Store)(nil)).Elem()
 }
 
 func (i Hl7StoreMap) ToHl7StoreMapOutput() Hl7StoreMapOutput {
@@ -453,9 +453,7 @@ func (i Hl7StoreMap) ToHl7StoreMapOutputWithContext(ctx context.Context) Hl7Stor
 	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreMapOutput)
 }
 
-type Hl7StoreOutput struct {
-	*pulumi.OutputState
-}
+type Hl7StoreOutput struct{ *pulumi.OutputState }
 
 func (Hl7StoreOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Hl7Store)(nil))
@@ -474,14 +472,12 @@ func (o Hl7StoreOutput) ToHl7StorePtrOutput() Hl7StorePtrOutput {
 }
 
 func (o Hl7StoreOutput) ToHl7StorePtrOutputWithContext(ctx context.Context) Hl7StorePtrOutput {
-	return o.ApplyT(func(v Hl7Store) *Hl7Store {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Hl7Store) *Hl7Store {
 		return &v
 	}).(Hl7StorePtrOutput)
 }
 
-type Hl7StorePtrOutput struct {
-	*pulumi.OutputState
-}
+type Hl7StorePtrOutput struct{ *pulumi.OutputState }
 
 func (Hl7StorePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Hl7Store)(nil))
@@ -493,6 +489,16 @@ func (o Hl7StorePtrOutput) ToHl7StorePtrOutput() Hl7StorePtrOutput {
 
 func (o Hl7StorePtrOutput) ToHl7StorePtrOutputWithContext(ctx context.Context) Hl7StorePtrOutput {
 	return o
+}
+
+func (o Hl7StorePtrOutput) Elem() Hl7StoreOutput {
+	return o.ApplyT(func(v *Hl7Store) Hl7Store {
+		if v != nil {
+			return *v
+		}
+		var ret Hl7Store
+		return ret
+	}).(Hl7StoreOutput)
 }
 
 type Hl7StoreArrayOutput struct{ *pulumi.OutputState }

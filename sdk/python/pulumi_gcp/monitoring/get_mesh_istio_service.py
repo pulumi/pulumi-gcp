@@ -13,6 +13,7 @@ __all__ = [
     'GetMeshIstioServiceResult',
     'AwaitableGetMeshIstioServiceResult',
     'get_mesh_istio_service',
+    'get_mesh_istio_service_output',
 ]
 
 @pulumi.output_type
@@ -178,3 +179,49 @@ def get_mesh_istio_service(mesh_uid: Optional[str] = None,
         service_name=__ret__.service_name,
         service_namespace=__ret__.service_namespace,
         telemetries=__ret__.telemetries)
+
+
+@_utilities.lift_output_func(get_mesh_istio_service)
+def get_mesh_istio_service_output(mesh_uid: Optional[pulumi.Input[str]] = None,
+                                  project: Optional[pulumi.Input[Optional[str]]] = None,
+                                  service_name: Optional[pulumi.Input[str]] = None,
+                                  service_namespace: Optional[pulumi.Input[str]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMeshIstioServiceResult]:
+    """
+    A Monitoring Service is the root resource under which operational aspects of a
+    generic service are accessible. A service is some discrete, autonomous, and
+    network-accessible unit, designed to solve an individual concern
+
+    An Mesh Istio monitoring service is automatically created by GCP to monitor
+    Mesh Istio services.
+
+    To get more information about Service, see:
+
+    * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
+    * How-to Guides
+        * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+        * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+
+    ## Example Usage
+    ### Monitoring Mesh Istio Service
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    default = gcp.monitoring.get_mesh_istio_service(mesh_uid="proj-573164786102",
+        service_name="prometheus",
+        service_namespace="istio-system")
+    ```
+
+
+    :param str mesh_uid: Identifier for the mesh in which this Istio service is defined.
+           Corresponds to the meshUid metric label in Istio metrics.
+    :param str project: The ID of the project in which the resource belongs.
+           If it is not provided, the provider project is used.
+    :param str service_name: The name of the Istio service underlying this service.
+           Corresponds to the destination_service_name metric label in Istio metrics.
+    :param str service_namespace: The namespace of the Istio service underlying this service.
+           Corresponds to the destination_service_namespace metric label in Istio metrics.
+    """
+    ...

@@ -331,7 +331,7 @@ type WorkflowTemplateArrayInput interface {
 type WorkflowTemplateArray []WorkflowTemplateInput
 
 func (WorkflowTemplateArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*WorkflowTemplate)(nil))
+	return reflect.TypeOf((*[]*WorkflowTemplate)(nil)).Elem()
 }
 
 func (i WorkflowTemplateArray) ToWorkflowTemplateArrayOutput() WorkflowTemplateArrayOutput {
@@ -356,7 +356,7 @@ type WorkflowTemplateMapInput interface {
 type WorkflowTemplateMap map[string]WorkflowTemplateInput
 
 func (WorkflowTemplateMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*WorkflowTemplate)(nil))
+	return reflect.TypeOf((*map[string]*WorkflowTemplate)(nil)).Elem()
 }
 
 func (i WorkflowTemplateMap) ToWorkflowTemplateMapOutput() WorkflowTemplateMapOutput {
@@ -367,9 +367,7 @@ func (i WorkflowTemplateMap) ToWorkflowTemplateMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateMapOutput)
 }
 
-type WorkflowTemplateOutput struct {
-	*pulumi.OutputState
-}
+type WorkflowTemplateOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*WorkflowTemplate)(nil))
@@ -388,14 +386,12 @@ func (o WorkflowTemplateOutput) ToWorkflowTemplatePtrOutput() WorkflowTemplatePt
 }
 
 func (o WorkflowTemplateOutput) ToWorkflowTemplatePtrOutputWithContext(ctx context.Context) WorkflowTemplatePtrOutput {
-	return o.ApplyT(func(v WorkflowTemplate) *WorkflowTemplate {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplate) *WorkflowTemplate {
 		return &v
 	}).(WorkflowTemplatePtrOutput)
 }
 
-type WorkflowTemplatePtrOutput struct {
-	*pulumi.OutputState
-}
+type WorkflowTemplatePtrOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplatePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**WorkflowTemplate)(nil))
@@ -407,6 +403,16 @@ func (o WorkflowTemplatePtrOutput) ToWorkflowTemplatePtrOutput() WorkflowTemplat
 
 func (o WorkflowTemplatePtrOutput) ToWorkflowTemplatePtrOutputWithContext(ctx context.Context) WorkflowTemplatePtrOutput {
 	return o
+}
+
+func (o WorkflowTemplatePtrOutput) Elem() WorkflowTemplateOutput {
+	return o.ApplyT(func(v *WorkflowTemplate) WorkflowTemplate {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplate
+		return ret
+	}).(WorkflowTemplateOutput)
 }
 
 type WorkflowTemplateArrayOutput struct{ *pulumi.OutputState }

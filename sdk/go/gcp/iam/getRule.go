@@ -4,6 +4,9 @@
 package iam
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -56,4 +59,66 @@ type GetRuleResult struct {
 	Stage string `pulumi:"stage"`
 	// is a friendly title for the role, such as "Role Viewer"
 	Title string `pulumi:"title"`
+}
+
+func GetRuleOutput(ctx *pulumi.Context, args GetRuleOutputArgs, opts ...pulumi.InvokeOption) GetRuleResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetRuleResult, error) {
+			args := v.(GetRuleArgs)
+			r, err := GetRule(ctx, &args, opts...)
+			return *r, err
+		}).(GetRuleResultOutput)
+}
+
+// A collection of arguments for invoking getRule.
+type GetRuleOutputArgs struct {
+	// The name of the Role to lookup in the form `roles/{ROLE_NAME}`, `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}` or `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetRuleOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRuleArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getRule.
+type GetRuleResultOutput struct{ *pulumi.OutputState }
+
+func (GetRuleResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRuleResult)(nil)).Elem()
+}
+
+func (o GetRuleResultOutput) ToGetRuleResultOutput() GetRuleResultOutput {
+	return o
+}
+
+func (o GetRuleResultOutput) ToGetRuleResultOutputWithContext(ctx context.Context) GetRuleResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetRuleResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRuleResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// specifies the list of one or more permissions to include in the custom role, such as - `iam.roles.get`
+func (o GetRuleResultOutput) IncludedPermissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRuleResult) []string { return v.IncludedPermissions }).(pulumi.StringArrayOutput)
+}
+
+func (o GetRuleResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRuleResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// indicates the stage of a role in the launch lifecycle, such as `GA`, `BETA` or `ALPHA`.
+func (o GetRuleResultOutput) Stage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRuleResult) string { return v.Stage }).(pulumi.StringOutput)
+}
+
+// is a friendly title for the role, such as "Role Viewer"
+func (o GetRuleResultOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRuleResult) string { return v.Title }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetRuleResultOutput{})
 }

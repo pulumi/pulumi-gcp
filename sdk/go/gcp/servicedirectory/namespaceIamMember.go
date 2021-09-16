@@ -299,7 +299,7 @@ type NamespaceIamMemberArrayInput interface {
 type NamespaceIamMemberArray []NamespaceIamMemberInput
 
 func (NamespaceIamMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*NamespaceIamMember)(nil))
+	return reflect.TypeOf((*[]*NamespaceIamMember)(nil)).Elem()
 }
 
 func (i NamespaceIamMemberArray) ToNamespaceIamMemberArrayOutput() NamespaceIamMemberArrayOutput {
@@ -324,7 +324,7 @@ type NamespaceIamMemberMapInput interface {
 type NamespaceIamMemberMap map[string]NamespaceIamMemberInput
 
 func (NamespaceIamMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*NamespaceIamMember)(nil))
+	return reflect.TypeOf((*map[string]*NamespaceIamMember)(nil)).Elem()
 }
 
 func (i NamespaceIamMemberMap) ToNamespaceIamMemberMapOutput() NamespaceIamMemberMapOutput {
@@ -335,9 +335,7 @@ func (i NamespaceIamMemberMap) ToNamespaceIamMemberMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceIamMemberMapOutput)
 }
 
-type NamespaceIamMemberOutput struct {
-	*pulumi.OutputState
-}
+type NamespaceIamMemberOutput struct{ *pulumi.OutputState }
 
 func (NamespaceIamMemberOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*NamespaceIamMember)(nil))
@@ -356,14 +354,12 @@ func (o NamespaceIamMemberOutput) ToNamespaceIamMemberPtrOutput() NamespaceIamMe
 }
 
 func (o NamespaceIamMemberOutput) ToNamespaceIamMemberPtrOutputWithContext(ctx context.Context) NamespaceIamMemberPtrOutput {
-	return o.ApplyT(func(v NamespaceIamMember) *NamespaceIamMember {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NamespaceIamMember) *NamespaceIamMember {
 		return &v
 	}).(NamespaceIamMemberPtrOutput)
 }
 
-type NamespaceIamMemberPtrOutput struct {
-	*pulumi.OutputState
-}
+type NamespaceIamMemberPtrOutput struct{ *pulumi.OutputState }
 
 func (NamespaceIamMemberPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**NamespaceIamMember)(nil))
@@ -375,6 +371,16 @@ func (o NamespaceIamMemberPtrOutput) ToNamespaceIamMemberPtrOutput() NamespaceIa
 
 func (o NamespaceIamMemberPtrOutput) ToNamespaceIamMemberPtrOutputWithContext(ctx context.Context) NamespaceIamMemberPtrOutput {
 	return o
+}
+
+func (o NamespaceIamMemberPtrOutput) Elem() NamespaceIamMemberOutput {
+	return o.ApplyT(func(v *NamespaceIamMember) NamespaceIamMember {
+		if v != nil {
+			return *v
+		}
+		var ret NamespaceIamMember
+		return ret
+	}).(NamespaceIamMemberOutput)
 }
 
 type NamespaceIamMemberArrayOutput struct{ *pulumi.OutputState }

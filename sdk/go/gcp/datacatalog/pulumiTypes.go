@@ -531,7 +531,7 @@ func (o EntryGcsFilesetSpecOutput) ToEntryGcsFilesetSpecPtrOutput() EntryGcsFile
 }
 
 func (o EntryGcsFilesetSpecOutput) ToEntryGcsFilesetSpecPtrOutputWithContext(ctx context.Context) EntryGcsFilesetSpecPtrOutput {
-	return o.ApplyT(func(v EntryGcsFilesetSpec) *EntryGcsFilesetSpec {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EntryGcsFilesetSpec) *EntryGcsFilesetSpec {
 		return &v
 	}).(EntryGcsFilesetSpecPtrOutput)
 }
@@ -573,7 +573,13 @@ func (o EntryGcsFilesetSpecPtrOutput) ToEntryGcsFilesetSpecPtrOutputWithContext(
 }
 
 func (o EntryGcsFilesetSpecPtrOutput) Elem() EntryGcsFilesetSpecOutput {
-	return o.ApplyT(func(v *EntryGcsFilesetSpec) EntryGcsFilesetSpec { return *v }).(EntryGcsFilesetSpecOutput)
+	return o.ApplyT(func(v *EntryGcsFilesetSpec) EntryGcsFilesetSpec {
+		if v != nil {
+			return *v
+		}
+		var ret EntryGcsFilesetSpec
+		return ret
+	}).(EntryGcsFilesetSpecOutput)
 }
 
 // Patterns to identify a set of files in Google Cloud Storage.
@@ -815,10 +821,11 @@ func (o EntryGroupIamBindingConditionOutput) ToEntryGroupIamBindingConditionPtrO
 }
 
 func (o EntryGroupIamBindingConditionOutput) ToEntryGroupIamBindingConditionPtrOutputWithContext(ctx context.Context) EntryGroupIamBindingConditionPtrOutput {
-	return o.ApplyT(func(v EntryGroupIamBindingCondition) *EntryGroupIamBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EntryGroupIamBindingCondition) *EntryGroupIamBindingCondition {
 		return &v
 	}).(EntryGroupIamBindingConditionPtrOutput)
 }
+
 func (o EntryGroupIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EntryGroupIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -846,7 +853,13 @@ func (o EntryGroupIamBindingConditionPtrOutput) ToEntryGroupIamBindingConditionP
 }
 
 func (o EntryGroupIamBindingConditionPtrOutput) Elem() EntryGroupIamBindingConditionOutput {
-	return o.ApplyT(func(v *EntryGroupIamBindingCondition) EntryGroupIamBindingCondition { return *v }).(EntryGroupIamBindingConditionOutput)
+	return o.ApplyT(func(v *EntryGroupIamBindingCondition) EntryGroupIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret EntryGroupIamBindingCondition
+		return ret
+	}).(EntryGroupIamBindingConditionOutput)
 }
 
 func (o EntryGroupIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -971,10 +984,11 @@ func (o EntryGroupIamMemberConditionOutput) ToEntryGroupIamMemberConditionPtrOut
 }
 
 func (o EntryGroupIamMemberConditionOutput) ToEntryGroupIamMemberConditionPtrOutputWithContext(ctx context.Context) EntryGroupIamMemberConditionPtrOutput {
-	return o.ApplyT(func(v EntryGroupIamMemberCondition) *EntryGroupIamMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EntryGroupIamMemberCondition) *EntryGroupIamMemberCondition {
 		return &v
 	}).(EntryGroupIamMemberConditionPtrOutput)
 }
+
 func (o EntryGroupIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EntryGroupIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -1002,7 +1016,13 @@ func (o EntryGroupIamMemberConditionPtrOutput) ToEntryGroupIamMemberConditionPtr
 }
 
 func (o EntryGroupIamMemberConditionPtrOutput) Elem() EntryGroupIamMemberConditionOutput {
-	return o.ApplyT(func(v *EntryGroupIamMemberCondition) EntryGroupIamMemberCondition { return *v }).(EntryGroupIamMemberConditionOutput)
+	return o.ApplyT(func(v *EntryGroupIamMemberCondition) EntryGroupIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret EntryGroupIamMemberCondition
+		return ret
+	}).(EntryGroupIamMemberConditionOutput)
 }
 
 func (o EntryGroupIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -1127,10 +1147,11 @@ func (o PolicyTagIamBindingConditionOutput) ToPolicyTagIamBindingConditionPtrOut
 }
 
 func (o PolicyTagIamBindingConditionOutput) ToPolicyTagIamBindingConditionPtrOutputWithContext(ctx context.Context) PolicyTagIamBindingConditionPtrOutput {
-	return o.ApplyT(func(v PolicyTagIamBindingCondition) *PolicyTagIamBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyTagIamBindingCondition) *PolicyTagIamBindingCondition {
 		return &v
 	}).(PolicyTagIamBindingConditionPtrOutput)
 }
+
 func (o PolicyTagIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicyTagIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -1158,7 +1179,13 @@ func (o PolicyTagIamBindingConditionPtrOutput) ToPolicyTagIamBindingConditionPtr
 }
 
 func (o PolicyTagIamBindingConditionPtrOutput) Elem() PolicyTagIamBindingConditionOutput {
-	return o.ApplyT(func(v *PolicyTagIamBindingCondition) PolicyTagIamBindingCondition { return *v }).(PolicyTagIamBindingConditionOutput)
+	return o.ApplyT(func(v *PolicyTagIamBindingCondition) PolicyTagIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret PolicyTagIamBindingCondition
+		return ret
+	}).(PolicyTagIamBindingConditionOutput)
 }
 
 func (o PolicyTagIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -1283,10 +1310,11 @@ func (o PolicyTagIamMemberConditionOutput) ToPolicyTagIamMemberConditionPtrOutpu
 }
 
 func (o PolicyTagIamMemberConditionOutput) ToPolicyTagIamMemberConditionPtrOutputWithContext(ctx context.Context) PolicyTagIamMemberConditionPtrOutput {
-	return o.ApplyT(func(v PolicyTagIamMemberCondition) *PolicyTagIamMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyTagIamMemberCondition) *PolicyTagIamMemberCondition {
 		return &v
 	}).(PolicyTagIamMemberConditionPtrOutput)
 }
+
 func (o PolicyTagIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicyTagIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -1314,7 +1342,13 @@ func (o PolicyTagIamMemberConditionPtrOutput) ToPolicyTagIamMemberConditionPtrOu
 }
 
 func (o PolicyTagIamMemberConditionPtrOutput) Elem() PolicyTagIamMemberConditionOutput {
-	return o.ApplyT(func(v *PolicyTagIamMemberCondition) PolicyTagIamMemberCondition { return *v }).(PolicyTagIamMemberConditionOutput)
+	return o.ApplyT(func(v *PolicyTagIamMemberCondition) PolicyTagIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret PolicyTagIamMemberCondition
+		return ret
+	}).(PolicyTagIamMemberConditionOutput)
 }
 
 func (o PolicyTagIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -1858,7 +1892,7 @@ func (o TagTemplateFieldTypeEnumTypeOutput) ToTagTemplateFieldTypeEnumTypePtrOut
 }
 
 func (o TagTemplateFieldTypeEnumTypeOutput) ToTagTemplateFieldTypeEnumTypePtrOutputWithContext(ctx context.Context) TagTemplateFieldTypeEnumTypePtrOutput {
-	return o.ApplyT(func(v TagTemplateFieldTypeEnumType) *TagTemplateFieldTypeEnumType {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TagTemplateFieldTypeEnumType) *TagTemplateFieldTypeEnumType {
 		return &v
 	}).(TagTemplateFieldTypeEnumTypePtrOutput)
 }
@@ -1890,7 +1924,13 @@ func (o TagTemplateFieldTypeEnumTypePtrOutput) ToTagTemplateFieldTypeEnumTypePtr
 }
 
 func (o TagTemplateFieldTypeEnumTypePtrOutput) Elem() TagTemplateFieldTypeEnumTypeOutput {
-	return o.ApplyT(func(v *TagTemplateFieldTypeEnumType) TagTemplateFieldTypeEnumType { return *v }).(TagTemplateFieldTypeEnumTypeOutput)
+	return o.ApplyT(func(v *TagTemplateFieldTypeEnumType) TagTemplateFieldTypeEnumType {
+		if v != nil {
+			return *v
+		}
+		var ret TagTemplateFieldTypeEnumType
+		return ret
+	}).(TagTemplateFieldTypeEnumTypeOutput)
 }
 
 // The set of allowed values for this enum. The display names of the
@@ -2100,10 +2140,11 @@ func (o TagTemplateIamBindingConditionOutput) ToTagTemplateIamBindingConditionPt
 }
 
 func (o TagTemplateIamBindingConditionOutput) ToTagTemplateIamBindingConditionPtrOutputWithContext(ctx context.Context) TagTemplateIamBindingConditionPtrOutput {
-	return o.ApplyT(func(v TagTemplateIamBindingCondition) *TagTemplateIamBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TagTemplateIamBindingCondition) *TagTemplateIamBindingCondition {
 		return &v
 	}).(TagTemplateIamBindingConditionPtrOutput)
 }
+
 func (o TagTemplateIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TagTemplateIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -2131,7 +2172,13 @@ func (o TagTemplateIamBindingConditionPtrOutput) ToTagTemplateIamBindingConditio
 }
 
 func (o TagTemplateIamBindingConditionPtrOutput) Elem() TagTemplateIamBindingConditionOutput {
-	return o.ApplyT(func(v *TagTemplateIamBindingCondition) TagTemplateIamBindingCondition { return *v }).(TagTemplateIamBindingConditionOutput)
+	return o.ApplyT(func(v *TagTemplateIamBindingCondition) TagTemplateIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret TagTemplateIamBindingCondition
+		return ret
+	}).(TagTemplateIamBindingConditionOutput)
 }
 
 func (o TagTemplateIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -2256,10 +2303,11 @@ func (o TagTemplateIamMemberConditionOutput) ToTagTemplateIamMemberConditionPtrO
 }
 
 func (o TagTemplateIamMemberConditionOutput) ToTagTemplateIamMemberConditionPtrOutputWithContext(ctx context.Context) TagTemplateIamMemberConditionPtrOutput {
-	return o.ApplyT(func(v TagTemplateIamMemberCondition) *TagTemplateIamMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TagTemplateIamMemberCondition) *TagTemplateIamMemberCondition {
 		return &v
 	}).(TagTemplateIamMemberConditionPtrOutput)
 }
+
 func (o TagTemplateIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TagTemplateIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -2287,7 +2335,13 @@ func (o TagTemplateIamMemberConditionPtrOutput) ToTagTemplateIamMemberConditionP
 }
 
 func (o TagTemplateIamMemberConditionPtrOutput) Elem() TagTemplateIamMemberConditionOutput {
-	return o.ApplyT(func(v *TagTemplateIamMemberCondition) TagTemplateIamMemberCondition { return *v }).(TagTemplateIamMemberConditionOutput)
+	return o.ApplyT(func(v *TagTemplateIamMemberCondition) TagTemplateIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret TagTemplateIamMemberCondition
+		return ret
+	}).(TagTemplateIamMemberConditionOutput)
 }
 
 func (o TagTemplateIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -2412,10 +2466,11 @@ func (o TaxonomyIamBindingConditionOutput) ToTaxonomyIamBindingConditionPtrOutpu
 }
 
 func (o TaxonomyIamBindingConditionOutput) ToTaxonomyIamBindingConditionPtrOutputWithContext(ctx context.Context) TaxonomyIamBindingConditionPtrOutput {
-	return o.ApplyT(func(v TaxonomyIamBindingCondition) *TaxonomyIamBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TaxonomyIamBindingCondition) *TaxonomyIamBindingCondition {
 		return &v
 	}).(TaxonomyIamBindingConditionPtrOutput)
 }
+
 func (o TaxonomyIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TaxonomyIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -2443,7 +2498,13 @@ func (o TaxonomyIamBindingConditionPtrOutput) ToTaxonomyIamBindingConditionPtrOu
 }
 
 func (o TaxonomyIamBindingConditionPtrOutput) Elem() TaxonomyIamBindingConditionOutput {
-	return o.ApplyT(func(v *TaxonomyIamBindingCondition) TaxonomyIamBindingCondition { return *v }).(TaxonomyIamBindingConditionOutput)
+	return o.ApplyT(func(v *TaxonomyIamBindingCondition) TaxonomyIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret TaxonomyIamBindingCondition
+		return ret
+	}).(TaxonomyIamBindingConditionOutput)
 }
 
 func (o TaxonomyIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -2568,10 +2629,11 @@ func (o TaxonomyIamMemberConditionOutput) ToTaxonomyIamMemberConditionPtrOutput(
 }
 
 func (o TaxonomyIamMemberConditionOutput) ToTaxonomyIamMemberConditionPtrOutputWithContext(ctx context.Context) TaxonomyIamMemberConditionPtrOutput {
-	return o.ApplyT(func(v TaxonomyIamMemberCondition) *TaxonomyIamMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TaxonomyIamMemberCondition) *TaxonomyIamMemberCondition {
 		return &v
 	}).(TaxonomyIamMemberConditionPtrOutput)
 }
+
 func (o TaxonomyIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TaxonomyIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -2599,7 +2661,13 @@ func (o TaxonomyIamMemberConditionPtrOutput) ToTaxonomyIamMemberConditionPtrOutp
 }
 
 func (o TaxonomyIamMemberConditionPtrOutput) Elem() TaxonomyIamMemberConditionOutput {
-	return o.ApplyT(func(v *TaxonomyIamMemberCondition) TaxonomyIamMemberCondition { return *v }).(TaxonomyIamMemberConditionOutput)
+	return o.ApplyT(func(v *TaxonomyIamMemberCondition) TaxonomyIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret TaxonomyIamMemberCondition
+		return ret
+	}).(TaxonomyIamMemberConditionOutput)
 }
 
 func (o TaxonomyIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {

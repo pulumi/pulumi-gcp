@@ -127,7 +127,7 @@ func (o GroupGroupKeyOutput) ToGroupGroupKeyPtrOutput() GroupGroupKeyPtrOutput {
 }
 
 func (o GroupGroupKeyOutput) ToGroupGroupKeyPtrOutputWithContext(ctx context.Context) GroupGroupKeyPtrOutput {
-	return o.ApplyT(func(v GroupGroupKey) *GroupGroupKey {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupGroupKey) *GroupGroupKey {
 		return &v
 	}).(GroupGroupKeyPtrOutput)
 }
@@ -167,7 +167,13 @@ func (o GroupGroupKeyPtrOutput) ToGroupGroupKeyPtrOutputWithContext(ctx context.
 }
 
 func (o GroupGroupKeyPtrOutput) Elem() GroupGroupKeyOutput {
-	return o.ApplyT(func(v *GroupGroupKey) GroupGroupKey { return *v }).(GroupGroupKeyOutput)
+	return o.ApplyT(func(v *GroupGroupKey) GroupGroupKey {
+		if v != nil {
+			return *v
+		}
+		var ret GroupGroupKey
+		return ret
+	}).(GroupGroupKeyOutput)
 }
 
 // The ID of the entity.
@@ -317,7 +323,7 @@ func (o GroupMembershipMemberKeyOutput) ToGroupMembershipMemberKeyPtrOutput() Gr
 }
 
 func (o GroupMembershipMemberKeyOutput) ToGroupMembershipMemberKeyPtrOutputWithContext(ctx context.Context) GroupMembershipMemberKeyPtrOutput {
-	return o.ApplyT(func(v GroupMembershipMemberKey) *GroupMembershipMemberKey {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupMembershipMemberKey) *GroupMembershipMemberKey {
 		return &v
 	}).(GroupMembershipMemberKeyPtrOutput)
 }
@@ -357,7 +363,13 @@ func (o GroupMembershipMemberKeyPtrOutput) ToGroupMembershipMemberKeyPtrOutputWi
 }
 
 func (o GroupMembershipMemberKeyPtrOutput) Elem() GroupMembershipMemberKeyOutput {
-	return o.ApplyT(func(v *GroupMembershipMemberKey) GroupMembershipMemberKey { return *v }).(GroupMembershipMemberKeyOutput)
+	return o.ApplyT(func(v *GroupMembershipMemberKey) GroupMembershipMemberKey {
+		if v != nil {
+			return *v
+		}
+		var ret GroupMembershipMemberKey
+		return ret
+	}).(GroupMembershipMemberKeyOutput)
 }
 
 // The ID of the entity.
@@ -507,7 +519,7 @@ func (o GroupMembershipPreferredMemberKeyOutput) ToGroupMembershipPreferredMembe
 }
 
 func (o GroupMembershipPreferredMemberKeyOutput) ToGroupMembershipPreferredMemberKeyPtrOutputWithContext(ctx context.Context) GroupMembershipPreferredMemberKeyPtrOutput {
-	return o.ApplyT(func(v GroupMembershipPreferredMemberKey) *GroupMembershipPreferredMemberKey {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupMembershipPreferredMemberKey) *GroupMembershipPreferredMemberKey {
 		return &v
 	}).(GroupMembershipPreferredMemberKeyPtrOutput)
 }
@@ -547,7 +559,13 @@ func (o GroupMembershipPreferredMemberKeyPtrOutput) ToGroupMembershipPreferredMe
 }
 
 func (o GroupMembershipPreferredMemberKeyPtrOutput) Elem() GroupMembershipPreferredMemberKeyOutput {
-	return o.ApplyT(func(v *GroupMembershipPreferredMemberKey) GroupMembershipPreferredMemberKey { return *v }).(GroupMembershipPreferredMemberKeyOutput)
+	return o.ApplyT(func(v *GroupMembershipPreferredMemberKey) GroupMembershipPreferredMemberKey {
+		if v != nil {
+			return *v
+		}
+		var ret GroupMembershipPreferredMemberKey
+		return ret
+	}).(GroupMembershipPreferredMemberKeyOutput)
 }
 
 // The ID of the entity.

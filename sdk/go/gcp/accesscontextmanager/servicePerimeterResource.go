@@ -239,7 +239,7 @@ type ServicePerimeterResourceArrayInput interface {
 type ServicePerimeterResourceArray []ServicePerimeterResourceInput
 
 func (ServicePerimeterResourceArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ServicePerimeterResource)(nil))
+	return reflect.TypeOf((*[]*ServicePerimeterResource)(nil)).Elem()
 }
 
 func (i ServicePerimeterResourceArray) ToServicePerimeterResourceArrayOutput() ServicePerimeterResourceArrayOutput {
@@ -264,7 +264,7 @@ type ServicePerimeterResourceMapInput interface {
 type ServicePerimeterResourceMap map[string]ServicePerimeterResourceInput
 
 func (ServicePerimeterResourceMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ServicePerimeterResource)(nil))
+	return reflect.TypeOf((*map[string]*ServicePerimeterResource)(nil)).Elem()
 }
 
 func (i ServicePerimeterResourceMap) ToServicePerimeterResourceMapOutput() ServicePerimeterResourceMapOutput {
@@ -275,9 +275,7 @@ func (i ServicePerimeterResourceMap) ToServicePerimeterResourceMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterResourceMapOutput)
 }
 
-type ServicePerimeterResourceOutput struct {
-	*pulumi.OutputState
-}
+type ServicePerimeterResourceOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterResourceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServicePerimeterResource)(nil))
@@ -296,14 +294,12 @@ func (o ServicePerimeterResourceOutput) ToServicePerimeterResourcePtrOutput() Se
 }
 
 func (o ServicePerimeterResourceOutput) ToServicePerimeterResourcePtrOutputWithContext(ctx context.Context) ServicePerimeterResourcePtrOutput {
-	return o.ApplyT(func(v ServicePerimeterResource) *ServicePerimeterResource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeterResource) *ServicePerimeterResource {
 		return &v
 	}).(ServicePerimeterResourcePtrOutput)
 }
 
-type ServicePerimeterResourcePtrOutput struct {
-	*pulumi.OutputState
-}
+type ServicePerimeterResourcePtrOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterResourcePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ServicePerimeterResource)(nil))
@@ -315,6 +311,16 @@ func (o ServicePerimeterResourcePtrOutput) ToServicePerimeterResourcePtrOutput()
 
 func (o ServicePerimeterResourcePtrOutput) ToServicePerimeterResourcePtrOutputWithContext(ctx context.Context) ServicePerimeterResourcePtrOutput {
 	return o
+}
+
+func (o ServicePerimeterResourcePtrOutput) Elem() ServicePerimeterResourceOutput {
+	return o.ApplyT(func(v *ServicePerimeterResource) ServicePerimeterResource {
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimeterResource
+		return ret
+	}).(ServicePerimeterResourceOutput)
 }
 
 type ServicePerimeterResourceArrayOutput struct{ *pulumi.OutputState }

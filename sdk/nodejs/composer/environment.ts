@@ -55,7 +55,7 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  *     network: testNetwork.id,
  * });
- * const testAccount = new gcp.serviceAccount.Account("testAccount", {
+ * const testAccount = new gcp.serviceaccount.Account("testAccount", {
  *     accountId: "composer-env-account",
  *     displayName: "Test Service Account for Composer Environment",
  * });

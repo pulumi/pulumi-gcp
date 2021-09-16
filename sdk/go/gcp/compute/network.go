@@ -372,7 +372,7 @@ type NetworkArrayInput interface {
 type NetworkArray []NetworkInput
 
 func (NetworkArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Network)(nil))
+	return reflect.TypeOf((*[]*Network)(nil)).Elem()
 }
 
 func (i NetworkArray) ToNetworkArrayOutput() NetworkArrayOutput {
@@ -397,7 +397,7 @@ type NetworkMapInput interface {
 type NetworkMap map[string]NetworkInput
 
 func (NetworkMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Network)(nil))
+	return reflect.TypeOf((*map[string]*Network)(nil)).Elem()
 }
 
 func (i NetworkMap) ToNetworkMapOutput() NetworkMapOutput {
@@ -408,9 +408,7 @@ func (i NetworkMap) ToNetworkMapOutputWithContext(ctx context.Context) NetworkMa
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkMapOutput)
 }
 
-type NetworkOutput struct {
-	*pulumi.OutputState
-}
+type NetworkOutput struct{ *pulumi.OutputState }
 
 func (NetworkOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Network)(nil))
@@ -429,14 +427,12 @@ func (o NetworkOutput) ToNetworkPtrOutput() NetworkPtrOutput {
 }
 
 func (o NetworkOutput) ToNetworkPtrOutputWithContext(ctx context.Context) NetworkPtrOutput {
-	return o.ApplyT(func(v Network) *Network {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Network) *Network {
 		return &v
 	}).(NetworkPtrOutput)
 }
 
-type NetworkPtrOutput struct {
-	*pulumi.OutputState
-}
+type NetworkPtrOutput struct{ *pulumi.OutputState }
 
 func (NetworkPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Network)(nil))
@@ -448,6 +444,16 @@ func (o NetworkPtrOutput) ToNetworkPtrOutput() NetworkPtrOutput {
 
 func (o NetworkPtrOutput) ToNetworkPtrOutputWithContext(ctx context.Context) NetworkPtrOutput {
 	return o
+}
+
+func (o NetworkPtrOutput) Elem() NetworkOutput {
+	return o.ApplyT(func(v *Network) Network {
+		if v != nil {
+			return *v
+		}
+		var ret Network
+		return ret
+	}).(NetworkOutput)
 }
 
 type NetworkArrayOutput struct{ *pulumi.OutputState }

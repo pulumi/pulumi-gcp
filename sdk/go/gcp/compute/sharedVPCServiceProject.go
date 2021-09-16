@@ -198,7 +198,7 @@ type SharedVPCServiceProjectArrayInput interface {
 type SharedVPCServiceProjectArray []SharedVPCServiceProjectInput
 
 func (SharedVPCServiceProjectArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*SharedVPCServiceProject)(nil))
+	return reflect.TypeOf((*[]*SharedVPCServiceProject)(nil)).Elem()
 }
 
 func (i SharedVPCServiceProjectArray) ToSharedVPCServiceProjectArrayOutput() SharedVPCServiceProjectArrayOutput {
@@ -223,7 +223,7 @@ type SharedVPCServiceProjectMapInput interface {
 type SharedVPCServiceProjectMap map[string]SharedVPCServiceProjectInput
 
 func (SharedVPCServiceProjectMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*SharedVPCServiceProject)(nil))
+	return reflect.TypeOf((*map[string]*SharedVPCServiceProject)(nil)).Elem()
 }
 
 func (i SharedVPCServiceProjectMap) ToSharedVPCServiceProjectMapOutput() SharedVPCServiceProjectMapOutput {
@@ -234,9 +234,7 @@ func (i SharedVPCServiceProjectMap) ToSharedVPCServiceProjectMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(SharedVPCServiceProjectMapOutput)
 }
 
-type SharedVPCServiceProjectOutput struct {
-	*pulumi.OutputState
-}
+type SharedVPCServiceProjectOutput struct{ *pulumi.OutputState }
 
 func (SharedVPCServiceProjectOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SharedVPCServiceProject)(nil))
@@ -255,14 +253,12 @@ func (o SharedVPCServiceProjectOutput) ToSharedVPCServiceProjectPtrOutput() Shar
 }
 
 func (o SharedVPCServiceProjectOutput) ToSharedVPCServiceProjectPtrOutputWithContext(ctx context.Context) SharedVPCServiceProjectPtrOutput {
-	return o.ApplyT(func(v SharedVPCServiceProject) *SharedVPCServiceProject {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SharedVPCServiceProject) *SharedVPCServiceProject {
 		return &v
 	}).(SharedVPCServiceProjectPtrOutput)
 }
 
-type SharedVPCServiceProjectPtrOutput struct {
-	*pulumi.OutputState
-}
+type SharedVPCServiceProjectPtrOutput struct{ *pulumi.OutputState }
 
 func (SharedVPCServiceProjectPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SharedVPCServiceProject)(nil))
@@ -274,6 +270,16 @@ func (o SharedVPCServiceProjectPtrOutput) ToSharedVPCServiceProjectPtrOutput() S
 
 func (o SharedVPCServiceProjectPtrOutput) ToSharedVPCServiceProjectPtrOutputWithContext(ctx context.Context) SharedVPCServiceProjectPtrOutput {
 	return o
+}
+
+func (o SharedVPCServiceProjectPtrOutput) Elem() SharedVPCServiceProjectOutput {
+	return o.ApplyT(func(v *SharedVPCServiceProject) SharedVPCServiceProject {
+		if v != nil {
+			return *v
+		}
+		var ret SharedVPCServiceProject
+		return ret
+	}).(SharedVPCServiceProjectOutput)
 }
 
 type SharedVPCServiceProjectArrayOutput struct{ *pulumi.OutputState }

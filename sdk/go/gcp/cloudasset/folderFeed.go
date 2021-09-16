@@ -332,7 +332,7 @@ type FolderFeedArrayInput interface {
 type FolderFeedArray []FolderFeedInput
 
 func (FolderFeedArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*FolderFeed)(nil))
+	return reflect.TypeOf((*[]*FolderFeed)(nil)).Elem()
 }
 
 func (i FolderFeedArray) ToFolderFeedArrayOutput() FolderFeedArrayOutput {
@@ -357,7 +357,7 @@ type FolderFeedMapInput interface {
 type FolderFeedMap map[string]FolderFeedInput
 
 func (FolderFeedMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*FolderFeed)(nil))
+	return reflect.TypeOf((*map[string]*FolderFeed)(nil)).Elem()
 }
 
 func (i FolderFeedMap) ToFolderFeedMapOutput() FolderFeedMapOutput {
@@ -368,9 +368,7 @@ func (i FolderFeedMap) ToFolderFeedMapOutputWithContext(ctx context.Context) Fol
 	return pulumi.ToOutputWithContext(ctx, i).(FolderFeedMapOutput)
 }
 
-type FolderFeedOutput struct {
-	*pulumi.OutputState
-}
+type FolderFeedOutput struct{ *pulumi.OutputState }
 
 func (FolderFeedOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*FolderFeed)(nil))
@@ -389,14 +387,12 @@ func (o FolderFeedOutput) ToFolderFeedPtrOutput() FolderFeedPtrOutput {
 }
 
 func (o FolderFeedOutput) ToFolderFeedPtrOutputWithContext(ctx context.Context) FolderFeedPtrOutput {
-	return o.ApplyT(func(v FolderFeed) *FolderFeed {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FolderFeed) *FolderFeed {
 		return &v
 	}).(FolderFeedPtrOutput)
 }
 
-type FolderFeedPtrOutput struct {
-	*pulumi.OutputState
-}
+type FolderFeedPtrOutput struct{ *pulumi.OutputState }
 
 func (FolderFeedPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**FolderFeed)(nil))
@@ -408,6 +404,16 @@ func (o FolderFeedPtrOutput) ToFolderFeedPtrOutput() FolderFeedPtrOutput {
 
 func (o FolderFeedPtrOutput) ToFolderFeedPtrOutputWithContext(ctx context.Context) FolderFeedPtrOutput {
 	return o
+}
+
+func (o FolderFeedPtrOutput) Elem() FolderFeedOutput {
+	return o.ApplyT(func(v *FolderFeed) FolderFeed {
+		if v != nil {
+			return *v
+		}
+		var ret FolderFeed
+		return ret
+	}).(FolderFeedOutput)
 }
 
 type FolderFeedArrayOutput struct{ *pulumi.OutputState }

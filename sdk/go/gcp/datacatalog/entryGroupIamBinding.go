@@ -325,7 +325,7 @@ type EntryGroupIamBindingArrayInput interface {
 type EntryGroupIamBindingArray []EntryGroupIamBindingInput
 
 func (EntryGroupIamBindingArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*EntryGroupIamBinding)(nil))
+	return reflect.TypeOf((*[]*EntryGroupIamBinding)(nil)).Elem()
 }
 
 func (i EntryGroupIamBindingArray) ToEntryGroupIamBindingArrayOutput() EntryGroupIamBindingArrayOutput {
@@ -350,7 +350,7 @@ type EntryGroupIamBindingMapInput interface {
 type EntryGroupIamBindingMap map[string]EntryGroupIamBindingInput
 
 func (EntryGroupIamBindingMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*EntryGroupIamBinding)(nil))
+	return reflect.TypeOf((*map[string]*EntryGroupIamBinding)(nil)).Elem()
 }
 
 func (i EntryGroupIamBindingMap) ToEntryGroupIamBindingMapOutput() EntryGroupIamBindingMapOutput {
@@ -361,9 +361,7 @@ func (i EntryGroupIamBindingMap) ToEntryGroupIamBindingMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupIamBindingMapOutput)
 }
 
-type EntryGroupIamBindingOutput struct {
-	*pulumi.OutputState
-}
+type EntryGroupIamBindingOutput struct{ *pulumi.OutputState }
 
 func (EntryGroupIamBindingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EntryGroupIamBinding)(nil))
@@ -382,14 +380,12 @@ func (o EntryGroupIamBindingOutput) ToEntryGroupIamBindingPtrOutput() EntryGroup
 }
 
 func (o EntryGroupIamBindingOutput) ToEntryGroupIamBindingPtrOutputWithContext(ctx context.Context) EntryGroupIamBindingPtrOutput {
-	return o.ApplyT(func(v EntryGroupIamBinding) *EntryGroupIamBinding {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EntryGroupIamBinding) *EntryGroupIamBinding {
 		return &v
 	}).(EntryGroupIamBindingPtrOutput)
 }
 
-type EntryGroupIamBindingPtrOutput struct {
-	*pulumi.OutputState
-}
+type EntryGroupIamBindingPtrOutput struct{ *pulumi.OutputState }
 
 func (EntryGroupIamBindingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**EntryGroupIamBinding)(nil))
@@ -401,6 +397,16 @@ func (o EntryGroupIamBindingPtrOutput) ToEntryGroupIamBindingPtrOutput() EntryGr
 
 func (o EntryGroupIamBindingPtrOutput) ToEntryGroupIamBindingPtrOutputWithContext(ctx context.Context) EntryGroupIamBindingPtrOutput {
 	return o
+}
+
+func (o EntryGroupIamBindingPtrOutput) Elem() EntryGroupIamBindingOutput {
+	return o.ApplyT(func(v *EntryGroupIamBinding) EntryGroupIamBinding {
+		if v != nil {
+			return *v
+		}
+		var ret EntryGroupIamBinding
+		return ret
+	}).(EntryGroupIamBindingOutput)
 }
 
 type EntryGroupIamBindingArrayOutput struct{ *pulumi.OutputState }

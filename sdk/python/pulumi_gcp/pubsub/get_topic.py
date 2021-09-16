@@ -13,6 +13,7 @@ __all__ = [
     'GetTopicResult',
     'AwaitableGetTopicResult',
     'get_topic',
+    'get_topic_output',
 ]
 
 @pulumi.output_type
@@ -136,3 +137,29 @@ def get_topic(name: Optional[str] = None,
         name=__ret__.name,
         project=__ret__.project,
         schema_settings=__ret__.schema_settings)
+
+
+@_utilities.lift_output_func(get_topic)
+def get_topic_output(name: Optional[pulumi.Input[str]] = None,
+                     project: Optional[pulumi.Input[Optional[str]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTopicResult]:
+    """
+    Get information about a Google Cloud Pub/Sub Topic. For more information see
+    the [official documentation](https://cloud.google.com/pubsub/docs/)
+    and [API](https://cloud.google.com/pubsub/docs/apis).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_pubsub_topic = gcp.pubsub.get_topic(name="my-pubsub-topic")
+    ```
+
+
+    :param str name: The name of the Cloud Pub/Sub Topic.
+    :param str project: The project in which the resource belongs. If it
+           is not provided, the provider project is used.
+    """
+    ...

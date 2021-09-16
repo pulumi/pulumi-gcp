@@ -13,6 +13,7 @@ __all__ = [
     'GetAppEngineServiceResult',
     'AwaitableGetAppEngineServiceResult',
     'get_app_engine_service',
+    'get_app_engine_service_output',
 ]
 
 @pulumi.output_type
@@ -168,3 +169,61 @@ def get_app_engine_service(module_id: Optional[str] = None,
         project=__ret__.project,
         service_id=__ret__.service_id,
         telemetries=__ret__.telemetries)
+
+
+@_utilities.lift_output_func(get_app_engine_service)
+def get_app_engine_service_output(module_id: Optional[pulumi.Input[str]] = None,
+                                  project: Optional[pulumi.Input[Optional[str]]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAppEngineServiceResult]:
+    """
+    A Monitoring Service is the root resource under which operational aspects of a
+    generic service are accessible. A service is some discrete, autonomous, and
+    network-accessible unit, designed to solve an individual concern
+
+    An App Engine monitoring service is automatically created by GCP to monitor
+    App Engine services.
+
+    To get more information about Service, see:
+
+    * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
+    * How-to Guides
+        * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+        * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+
+    ## Example Usage
+    ### Monitoring App Engine Service
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    bucket = gcp.storage.Bucket("bucket")
+    object = gcp.storage.BucketObject("object",
+        bucket=bucket.name,
+        source=pulumi.FileAsset("./test-fixtures/appengine/hello-world.zip"))
+    myapp = gcp.appengine.StandardAppVersion("myapp",
+        version_id="v1",
+        service="myapp",
+        runtime="nodejs10",
+        entrypoint=gcp.appengine.StandardAppVersionEntrypointArgs(
+            shell="node ./app.js",
+        ),
+        deployment=gcp.appengine.StandardAppVersionDeploymentArgs(
+            zip=gcp.appengine.StandardAppVersionDeploymentZipArgs(
+                source_url=pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
+            ),
+        ),
+        env_variables={
+            "port": "8080",
+        },
+        delete_service_on_destroy=False)
+    srv = myapp.service.apply(lambda service: gcp.monitoring.get_app_engine_service(module_id=service))
+    ```
+
+
+    :param str module_id: The ID of the App Engine module underlying this
+           service. Corresponds to the moduleId resource label in the [gae_app](https://cloud.google.com/monitoring/api/resources#tag_gae_app) monitored resource, or the service/module name.
+    :param str project: The ID of the project in which the resource belongs.
+           If it is not provided, the provider project is used.
+    """
+    ...

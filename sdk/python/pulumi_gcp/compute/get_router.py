@@ -13,6 +13,7 @@ __all__ = [
     'GetRouterResult',
     'AwaitableGetRouterResult',
     'get_router',
+    'get_router_output',
 ]
 
 @pulumi.output_type
@@ -172,3 +173,33 @@ def get_router(name: Optional[str] = None,
         project=__ret__.project,
         region=__ret__.region,
         self_link=__ret__.self_link)
+
+
+@_utilities.lift_output_func(get_router)
+def get_router_output(name: Optional[pulumi.Input[str]] = None,
+                      network: Optional[pulumi.Input[str]] = None,
+                      project: Optional[pulumi.Input[Optional[str]]] = None,
+                      region: Optional[pulumi.Input[Optional[str]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRouterResult]:
+    """
+    Get a router within GCE from its name and VPC.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_router = gcp.compute.get_router(name="myrouter-us-east1",
+        network="my-network")
+    ```
+
+
+    :param str name: The name of the router.
+    :param str network: The VPC network on which this router lives.
+    :param str project: The ID of the project in which the resource
+           belongs. If it is not provided, the provider project is used.
+    :param str region: The region this router has been created in. If
+           unspecified, this defaults to the region configured in the provider.
+    """
+    ...

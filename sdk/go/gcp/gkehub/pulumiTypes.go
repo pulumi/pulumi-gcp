@@ -119,7 +119,7 @@ func (o FeatureMembershipConfigmanagementOutput) ToFeatureMembershipConfigmanage
 }
 
 func (o FeatureMembershipConfigmanagementOutput) ToFeatureMembershipConfigmanagementPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementPtrOutput {
-	return o.ApplyT(func(v FeatureMembershipConfigmanagement) *FeatureMembershipConfigmanagement {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureMembershipConfigmanagement) *FeatureMembershipConfigmanagement {
 		return &v
 	}).(FeatureMembershipConfigmanagementPtrOutput)
 }
@@ -172,7 +172,13 @@ func (o FeatureMembershipConfigmanagementPtrOutput) ToFeatureMembershipConfigman
 }
 
 func (o FeatureMembershipConfigmanagementPtrOutput) Elem() FeatureMembershipConfigmanagementOutput {
-	return o.ApplyT(func(v *FeatureMembershipConfigmanagement) FeatureMembershipConfigmanagement { return *v }).(FeatureMembershipConfigmanagementOutput)
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagement) FeatureMembershipConfigmanagement {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureMembershipConfigmanagement
+		return ret
+	}).(FeatureMembershipConfigmanagementOutput)
 }
 
 // Binauthz configuration for the cluster.
@@ -318,7 +324,7 @@ func (o FeatureMembershipConfigmanagementBinauthzOutput) ToFeatureMembershipConf
 }
 
 func (o FeatureMembershipConfigmanagementBinauthzOutput) ToFeatureMembershipConfigmanagementBinauthzPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementBinauthzPtrOutput {
-	return o.ApplyT(func(v FeatureMembershipConfigmanagementBinauthz) *FeatureMembershipConfigmanagementBinauthz {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureMembershipConfigmanagementBinauthz) *FeatureMembershipConfigmanagementBinauthz {
 		return &v
 	}).(FeatureMembershipConfigmanagementBinauthzPtrOutput)
 }
@@ -344,7 +350,11 @@ func (o FeatureMembershipConfigmanagementBinauthzPtrOutput) ToFeatureMembershipC
 
 func (o FeatureMembershipConfigmanagementBinauthzPtrOutput) Elem() FeatureMembershipConfigmanagementBinauthzOutput {
 	return o.ApplyT(func(v *FeatureMembershipConfigmanagementBinauthz) FeatureMembershipConfigmanagementBinauthz {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret FeatureMembershipConfigmanagementBinauthz
+		return ret
 	}).(FeatureMembershipConfigmanagementBinauthzOutput)
 }
 
@@ -457,7 +467,7 @@ func (o FeatureMembershipConfigmanagementConfigSyncOutput) ToFeatureMembershipCo
 }
 
 func (o FeatureMembershipConfigmanagementConfigSyncOutput) ToFeatureMembershipConfigmanagementConfigSyncPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementConfigSyncPtrOutput {
-	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSync) *FeatureMembershipConfigmanagementConfigSync {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureMembershipConfigmanagementConfigSync) *FeatureMembershipConfigmanagementConfigSync {
 		return &v
 	}).(FeatureMembershipConfigmanagementConfigSyncPtrOutput)
 }
@@ -491,7 +501,11 @@ func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) ToFeatureMembershi
 
 func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) Elem() FeatureMembershipConfigmanagementConfigSyncOutput {
 	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSync) FeatureMembershipConfigmanagementConfigSync {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret FeatureMembershipConfigmanagementConfigSync
+		return ret
 	}).(FeatureMembershipConfigmanagementConfigSyncOutput)
 }
 
@@ -633,7 +647,7 @@ func (o FeatureMembershipConfigmanagementConfigSyncGitOutput) ToFeatureMembershi
 }
 
 func (o FeatureMembershipConfigmanagementConfigSyncGitOutput) ToFeatureMembershipConfigmanagementConfigSyncGitPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementConfigSyncGitPtrOutput {
-	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSyncGit) *FeatureMembershipConfigmanagementConfigSyncGit {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureMembershipConfigmanagementConfigSyncGit) *FeatureMembershipConfigmanagementConfigSyncGit {
 		return &v
 	}).(FeatureMembershipConfigmanagementConfigSyncGitPtrOutput)
 }
@@ -689,7 +703,11 @@ func (o FeatureMembershipConfigmanagementConfigSyncGitPtrOutput) ToFeatureMember
 
 func (o FeatureMembershipConfigmanagementConfigSyncGitPtrOutput) Elem() FeatureMembershipConfigmanagementConfigSyncGitOutput {
 	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSyncGit) FeatureMembershipConfigmanagementConfigSyncGit {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret FeatureMembershipConfigmanagementConfigSyncGit
+		return ret
 	}).(FeatureMembershipConfigmanagementConfigSyncGitOutput)
 }
 
@@ -864,7 +882,7 @@ func (o FeatureMembershipConfigmanagementHierarchyControllerOutput) ToFeatureMem
 }
 
 func (o FeatureMembershipConfigmanagementHierarchyControllerOutput) ToFeatureMembershipConfigmanagementHierarchyControllerPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementHierarchyControllerPtrOutput {
-	return o.ApplyT(func(v FeatureMembershipConfigmanagementHierarchyController) *FeatureMembershipConfigmanagementHierarchyController {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureMembershipConfigmanagementHierarchyController) *FeatureMembershipConfigmanagementHierarchyController {
 		return &v
 	}).(FeatureMembershipConfigmanagementHierarchyControllerPtrOutput)
 }
@@ -902,7 +920,11 @@ func (o FeatureMembershipConfigmanagementHierarchyControllerPtrOutput) ToFeature
 
 func (o FeatureMembershipConfigmanagementHierarchyControllerPtrOutput) Elem() FeatureMembershipConfigmanagementHierarchyControllerOutput {
 	return o.ApplyT(func(v *FeatureMembershipConfigmanagementHierarchyController) FeatureMembershipConfigmanagementHierarchyController {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret FeatureMembershipConfigmanagementHierarchyController
+		return ret
 	}).(FeatureMembershipConfigmanagementHierarchyControllerOutput)
 }
 
@@ -1049,7 +1071,7 @@ func (o FeatureMembershipConfigmanagementPolicyControllerOutput) ToFeatureMember
 }
 
 func (o FeatureMembershipConfigmanagementPolicyControllerOutput) ToFeatureMembershipConfigmanagementPolicyControllerPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementPolicyControllerPtrOutput {
-	return o.ApplyT(func(v FeatureMembershipConfigmanagementPolicyController) *FeatureMembershipConfigmanagementPolicyController {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureMembershipConfigmanagementPolicyController) *FeatureMembershipConfigmanagementPolicyController {
 		return &v
 	}).(FeatureMembershipConfigmanagementPolicyControllerPtrOutput)
 }
@@ -1100,7 +1122,11 @@ func (o FeatureMembershipConfigmanagementPolicyControllerPtrOutput) ToFeatureMem
 
 func (o FeatureMembershipConfigmanagementPolicyControllerPtrOutput) Elem() FeatureMembershipConfigmanagementPolicyControllerOutput {
 	return o.ApplyT(func(v *FeatureMembershipConfigmanagementPolicyController) FeatureMembershipConfigmanagementPolicyController {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret FeatureMembershipConfigmanagementPolicyController
+		return ret
 	}).(FeatureMembershipConfigmanagementPolicyControllerOutput)
 }
 
@@ -1259,7 +1285,7 @@ func (o FeatureSpecOutput) ToFeatureSpecPtrOutput() FeatureSpecPtrOutput {
 }
 
 func (o FeatureSpecOutput) ToFeatureSpecPtrOutputWithContext(ctx context.Context) FeatureSpecPtrOutput {
-	return o.ApplyT(func(v FeatureSpec) *FeatureSpec {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureSpec) *FeatureSpec {
 		return &v
 	}).(FeatureSpecPtrOutput)
 }
@@ -1285,7 +1311,13 @@ func (o FeatureSpecPtrOutput) ToFeatureSpecPtrOutputWithContext(ctx context.Cont
 }
 
 func (o FeatureSpecPtrOutput) Elem() FeatureSpecOutput {
-	return o.ApplyT(func(v *FeatureSpec) FeatureSpec { return *v }).(FeatureSpecOutput)
+	return o.ApplyT(func(v *FeatureSpec) FeatureSpec {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureSpec
+		return ret
+	}).(FeatureSpecOutput)
 }
 
 // Multicluster Ingress-specific spec.
@@ -1392,7 +1424,7 @@ func (o FeatureSpecMulticlusteringressOutput) ToFeatureSpecMulticlusteringressPt
 }
 
 func (o FeatureSpecMulticlusteringressOutput) ToFeatureSpecMulticlusteringressPtrOutputWithContext(ctx context.Context) FeatureSpecMulticlusteringressPtrOutput {
-	return o.ApplyT(func(v FeatureSpecMulticlusteringress) *FeatureSpecMulticlusteringress {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureSpecMulticlusteringress) *FeatureSpecMulticlusteringress {
 		return &v
 	}).(FeatureSpecMulticlusteringressPtrOutput)
 }
@@ -1417,7 +1449,13 @@ func (o FeatureSpecMulticlusteringressPtrOutput) ToFeatureSpecMulticlusteringres
 }
 
 func (o FeatureSpecMulticlusteringressPtrOutput) Elem() FeatureSpecMulticlusteringressOutput {
-	return o.ApplyT(func(v *FeatureSpecMulticlusteringress) FeatureSpecMulticlusteringress { return *v }).(FeatureSpecMulticlusteringressOutput)
+	return o.ApplyT(func(v *FeatureSpecMulticlusteringress) FeatureSpecMulticlusteringress {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureSpecMulticlusteringress
+		return ret
+	}).(FeatureSpecMulticlusteringressOutput)
 }
 
 // Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
@@ -1521,10 +1559,11 @@ func (o MembershipAuthorityOutput) ToMembershipAuthorityPtrOutput() MembershipAu
 }
 
 func (o MembershipAuthorityOutput) ToMembershipAuthorityPtrOutputWithContext(ctx context.Context) MembershipAuthorityPtrOutput {
-	return o.ApplyT(func(v MembershipAuthority) *MembershipAuthority {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MembershipAuthority) *MembershipAuthority {
 		return &v
 	}).(MembershipAuthorityPtrOutput)
 }
+
 func (o MembershipAuthorityOutput) Issuer() pulumi.StringOutput {
 	return o.ApplyT(func(v MembershipAuthority) string { return v.Issuer }).(pulumi.StringOutput)
 }
@@ -1544,7 +1583,13 @@ func (o MembershipAuthorityPtrOutput) ToMembershipAuthorityPtrOutputWithContext(
 }
 
 func (o MembershipAuthorityPtrOutput) Elem() MembershipAuthorityOutput {
-	return o.ApplyT(func(v *MembershipAuthority) MembershipAuthority { return *v }).(MembershipAuthorityOutput)
+	return o.ApplyT(func(v *MembershipAuthority) MembershipAuthority {
+		if v != nil {
+			return *v
+		}
+		var ret MembershipAuthority
+		return ret
+	}).(MembershipAuthorityOutput)
 }
 
 func (o MembershipAuthorityPtrOutput) Issuer() pulumi.StringPtrOutput {
@@ -1651,7 +1696,7 @@ func (o MembershipEndpointOutput) ToMembershipEndpointPtrOutput() MembershipEndp
 }
 
 func (o MembershipEndpointOutput) ToMembershipEndpointPtrOutputWithContext(ctx context.Context) MembershipEndpointPtrOutput {
-	return o.ApplyT(func(v MembershipEndpoint) *MembershipEndpoint {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MembershipEndpoint) *MembershipEndpoint {
 		return &v
 	}).(MembershipEndpointPtrOutput)
 }
@@ -1677,7 +1722,13 @@ func (o MembershipEndpointPtrOutput) ToMembershipEndpointPtrOutputWithContext(ct
 }
 
 func (o MembershipEndpointPtrOutput) Elem() MembershipEndpointOutput {
-	return o.ApplyT(func(v *MembershipEndpoint) MembershipEndpoint { return *v }).(MembershipEndpointOutput)
+	return o.ApplyT(func(v *MembershipEndpoint) MembershipEndpoint {
+		if v != nil {
+			return *v
+		}
+		var ret MembershipEndpoint
+		return ret
+	}).(MembershipEndpointOutput)
 }
 
 // If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
@@ -1782,10 +1833,11 @@ func (o MembershipEndpointGkeClusterOutput) ToMembershipEndpointGkeClusterPtrOut
 }
 
 func (o MembershipEndpointGkeClusterOutput) ToMembershipEndpointGkeClusterPtrOutputWithContext(ctx context.Context) MembershipEndpointGkeClusterPtrOutput {
-	return o.ApplyT(func(v MembershipEndpointGkeCluster) *MembershipEndpointGkeCluster {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MembershipEndpointGkeCluster) *MembershipEndpointGkeCluster {
 		return &v
 	}).(MembershipEndpointGkeClusterPtrOutput)
 }
+
 func (o MembershipEndpointGkeClusterOutput) ResourceLink() pulumi.StringOutput {
 	return o.ApplyT(func(v MembershipEndpointGkeCluster) string { return v.ResourceLink }).(pulumi.StringOutput)
 }
@@ -1805,7 +1857,13 @@ func (o MembershipEndpointGkeClusterPtrOutput) ToMembershipEndpointGkeClusterPtr
 }
 
 func (o MembershipEndpointGkeClusterPtrOutput) Elem() MembershipEndpointGkeClusterOutput {
-	return o.ApplyT(func(v *MembershipEndpointGkeCluster) MembershipEndpointGkeCluster { return *v }).(MembershipEndpointGkeClusterOutput)
+	return o.ApplyT(func(v *MembershipEndpointGkeCluster) MembershipEndpointGkeCluster {
+		if v != nil {
+			return *v
+		}
+		var ret MembershipEndpointGkeCluster
+		return ret
+	}).(MembershipEndpointGkeClusterOutput)
 }
 
 func (o MembershipEndpointGkeClusterPtrOutput) ResourceLink() pulumi.StringPtrOutput {

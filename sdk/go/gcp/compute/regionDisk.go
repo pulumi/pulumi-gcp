@@ -594,7 +594,7 @@ type RegionDiskArrayInput interface {
 type RegionDiskArray []RegionDiskInput
 
 func (RegionDiskArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*RegionDisk)(nil))
+	return reflect.TypeOf((*[]*RegionDisk)(nil)).Elem()
 }
 
 func (i RegionDiskArray) ToRegionDiskArrayOutput() RegionDiskArrayOutput {
@@ -619,7 +619,7 @@ type RegionDiskMapInput interface {
 type RegionDiskMap map[string]RegionDiskInput
 
 func (RegionDiskMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*RegionDisk)(nil))
+	return reflect.TypeOf((*map[string]*RegionDisk)(nil)).Elem()
 }
 
 func (i RegionDiskMap) ToRegionDiskMapOutput() RegionDiskMapOutput {
@@ -630,9 +630,7 @@ func (i RegionDiskMap) ToRegionDiskMapOutputWithContext(ctx context.Context) Reg
 	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskMapOutput)
 }
 
-type RegionDiskOutput struct {
-	*pulumi.OutputState
-}
+type RegionDiskOutput struct{ *pulumi.OutputState }
 
 func (RegionDiskOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RegionDisk)(nil))
@@ -651,14 +649,12 @@ func (o RegionDiskOutput) ToRegionDiskPtrOutput() RegionDiskPtrOutput {
 }
 
 func (o RegionDiskOutput) ToRegionDiskPtrOutputWithContext(ctx context.Context) RegionDiskPtrOutput {
-	return o.ApplyT(func(v RegionDisk) *RegionDisk {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionDisk) *RegionDisk {
 		return &v
 	}).(RegionDiskPtrOutput)
 }
 
-type RegionDiskPtrOutput struct {
-	*pulumi.OutputState
-}
+type RegionDiskPtrOutput struct{ *pulumi.OutputState }
 
 func (RegionDiskPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**RegionDisk)(nil))
@@ -670,6 +666,16 @@ func (o RegionDiskPtrOutput) ToRegionDiskPtrOutput() RegionDiskPtrOutput {
 
 func (o RegionDiskPtrOutput) ToRegionDiskPtrOutputWithContext(ctx context.Context) RegionDiskPtrOutput {
 	return o
+}
+
+func (o RegionDiskPtrOutput) Elem() RegionDiskOutput {
+	return o.ApplyT(func(v *RegionDisk) RegionDisk {
+		if v != nil {
+			return *v
+		}
+		var ret RegionDisk
+		return ret
+	}).(RegionDiskOutput)
 }
 
 type RegionDiskArrayOutput struct{ *pulumi.OutputState }

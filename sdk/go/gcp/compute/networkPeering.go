@@ -283,7 +283,7 @@ type NetworkPeeringArrayInput interface {
 type NetworkPeeringArray []NetworkPeeringInput
 
 func (NetworkPeeringArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*NetworkPeering)(nil))
+	return reflect.TypeOf((*[]*NetworkPeering)(nil)).Elem()
 }
 
 func (i NetworkPeeringArray) ToNetworkPeeringArrayOutput() NetworkPeeringArrayOutput {
@@ -308,7 +308,7 @@ type NetworkPeeringMapInput interface {
 type NetworkPeeringMap map[string]NetworkPeeringInput
 
 func (NetworkPeeringMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*NetworkPeering)(nil))
+	return reflect.TypeOf((*map[string]*NetworkPeering)(nil)).Elem()
 }
 
 func (i NetworkPeeringMap) ToNetworkPeeringMapOutput() NetworkPeeringMapOutput {
@@ -319,9 +319,7 @@ func (i NetworkPeeringMap) ToNetworkPeeringMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkPeeringMapOutput)
 }
 
-type NetworkPeeringOutput struct {
-	*pulumi.OutputState
-}
+type NetworkPeeringOutput struct{ *pulumi.OutputState }
 
 func (NetworkPeeringOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*NetworkPeering)(nil))
@@ -340,14 +338,12 @@ func (o NetworkPeeringOutput) ToNetworkPeeringPtrOutput() NetworkPeeringPtrOutpu
 }
 
 func (o NetworkPeeringOutput) ToNetworkPeeringPtrOutputWithContext(ctx context.Context) NetworkPeeringPtrOutput {
-	return o.ApplyT(func(v NetworkPeering) *NetworkPeering {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkPeering) *NetworkPeering {
 		return &v
 	}).(NetworkPeeringPtrOutput)
 }
 
-type NetworkPeeringPtrOutput struct {
-	*pulumi.OutputState
-}
+type NetworkPeeringPtrOutput struct{ *pulumi.OutputState }
 
 func (NetworkPeeringPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**NetworkPeering)(nil))
@@ -359,6 +355,16 @@ func (o NetworkPeeringPtrOutput) ToNetworkPeeringPtrOutput() NetworkPeeringPtrOu
 
 func (o NetworkPeeringPtrOutput) ToNetworkPeeringPtrOutputWithContext(ctx context.Context) NetworkPeeringPtrOutput {
 	return o
+}
+
+func (o NetworkPeeringPtrOutput) Elem() NetworkPeeringOutput {
+	return o.ApplyT(func(v *NetworkPeering) NetworkPeering {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkPeering
+		return ret
+	}).(NetworkPeeringOutput)
 }
 
 type NetworkPeeringArrayOutput struct{ *pulumi.OutputState }

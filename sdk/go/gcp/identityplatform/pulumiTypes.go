@@ -117,7 +117,7 @@ func (o InboundSamlConfigIdpConfigOutput) ToInboundSamlConfigIdpConfigPtrOutput(
 }
 
 func (o InboundSamlConfigIdpConfigOutput) ToInboundSamlConfigIdpConfigPtrOutputWithContext(ctx context.Context) InboundSamlConfigIdpConfigPtrOutput {
-	return o.ApplyT(func(v InboundSamlConfigIdpConfig) *InboundSamlConfigIdpConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InboundSamlConfigIdpConfig) *InboundSamlConfigIdpConfig {
 		return &v
 	}).(InboundSamlConfigIdpConfigPtrOutput)
 }
@@ -160,7 +160,13 @@ func (o InboundSamlConfigIdpConfigPtrOutput) ToInboundSamlConfigIdpConfigPtrOutp
 }
 
 func (o InboundSamlConfigIdpConfigPtrOutput) Elem() InboundSamlConfigIdpConfigOutput {
-	return o.ApplyT(func(v *InboundSamlConfigIdpConfig) InboundSamlConfigIdpConfig { return *v }).(InboundSamlConfigIdpConfigOutput)
+	return o.ApplyT(func(v *InboundSamlConfigIdpConfig) InboundSamlConfigIdpConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InboundSamlConfigIdpConfig
+		return ret
+	}).(InboundSamlConfigIdpConfigOutput)
 }
 
 // The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
@@ -409,7 +415,7 @@ func (o InboundSamlConfigSpConfigOutput) ToInboundSamlConfigSpConfigPtrOutput() 
 }
 
 func (o InboundSamlConfigSpConfigOutput) ToInboundSamlConfigSpConfigPtrOutputWithContext(ctx context.Context) InboundSamlConfigSpConfigPtrOutput {
-	return o.ApplyT(func(v InboundSamlConfigSpConfig) *InboundSamlConfigSpConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InboundSamlConfigSpConfig) *InboundSamlConfigSpConfig {
 		return &v
 	}).(InboundSamlConfigSpConfigPtrOutput)
 }
@@ -446,7 +452,13 @@ func (o InboundSamlConfigSpConfigPtrOutput) ToInboundSamlConfigSpConfigPtrOutput
 }
 
 func (o InboundSamlConfigSpConfigPtrOutput) Elem() InboundSamlConfigSpConfigOutput {
-	return o.ApplyT(func(v *InboundSamlConfigSpConfig) InboundSamlConfigSpConfig { return *v }).(InboundSamlConfigSpConfigOutput)
+	return o.ApplyT(func(v *InboundSamlConfigSpConfig) InboundSamlConfigSpConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InboundSamlConfigSpConfig
+		return ret
+	}).(InboundSamlConfigSpConfigOutput)
 }
 
 // Callback URI where responses from IDP are handled. Must start with `https://`.
@@ -688,7 +700,7 @@ func (o TenantInboundSamlConfigIdpConfigOutput) ToTenantInboundSamlConfigIdpConf
 }
 
 func (o TenantInboundSamlConfigIdpConfigOutput) ToTenantInboundSamlConfigIdpConfigPtrOutputWithContext(ctx context.Context) TenantInboundSamlConfigIdpConfigPtrOutput {
-	return o.ApplyT(func(v TenantInboundSamlConfigIdpConfig) *TenantInboundSamlConfigIdpConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TenantInboundSamlConfigIdpConfig) *TenantInboundSamlConfigIdpConfig {
 		return &v
 	}).(TenantInboundSamlConfigIdpConfigPtrOutput)
 }
@@ -731,7 +743,13 @@ func (o TenantInboundSamlConfigIdpConfigPtrOutput) ToTenantInboundSamlConfigIdpC
 }
 
 func (o TenantInboundSamlConfigIdpConfigPtrOutput) Elem() TenantInboundSamlConfigIdpConfigOutput {
-	return o.ApplyT(func(v *TenantInboundSamlConfigIdpConfig) TenantInboundSamlConfigIdpConfig { return *v }).(TenantInboundSamlConfigIdpConfigOutput)
+	return o.ApplyT(func(v *TenantInboundSamlConfigIdpConfig) TenantInboundSamlConfigIdpConfig {
+		if v != nil {
+			return *v
+		}
+		var ret TenantInboundSamlConfigIdpConfig
+		return ret
+	}).(TenantInboundSamlConfigIdpConfigOutput)
 }
 
 // The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
@@ -980,7 +998,7 @@ func (o TenantInboundSamlConfigSpConfigOutput) ToTenantInboundSamlConfigSpConfig
 }
 
 func (o TenantInboundSamlConfigSpConfigOutput) ToTenantInboundSamlConfigSpConfigPtrOutputWithContext(ctx context.Context) TenantInboundSamlConfigSpConfigPtrOutput {
-	return o.ApplyT(func(v TenantInboundSamlConfigSpConfig) *TenantInboundSamlConfigSpConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TenantInboundSamlConfigSpConfig) *TenantInboundSamlConfigSpConfig {
 		return &v
 	}).(TenantInboundSamlConfigSpConfigPtrOutput)
 }
@@ -1019,7 +1037,13 @@ func (o TenantInboundSamlConfigSpConfigPtrOutput) ToTenantInboundSamlConfigSpCon
 }
 
 func (o TenantInboundSamlConfigSpConfigPtrOutput) Elem() TenantInboundSamlConfigSpConfigOutput {
-	return o.ApplyT(func(v *TenantInboundSamlConfigSpConfig) TenantInboundSamlConfigSpConfig { return *v }).(TenantInboundSamlConfigSpConfigOutput)
+	return o.ApplyT(func(v *TenantInboundSamlConfigSpConfig) TenantInboundSamlConfigSpConfig {
+		if v != nil {
+			return *v
+		}
+		var ret TenantInboundSamlConfigSpConfig
+		return ret
+	}).(TenantInboundSamlConfigSpConfigOutput)
 }
 
 // Callback URI where responses from IDP are handled. Must start with `https://`.

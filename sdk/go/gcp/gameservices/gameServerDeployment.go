@@ -250,7 +250,7 @@ type GameServerDeploymentArrayInput interface {
 type GameServerDeploymentArray []GameServerDeploymentInput
 
 func (GameServerDeploymentArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*GameServerDeployment)(nil))
+	return reflect.TypeOf((*[]*GameServerDeployment)(nil)).Elem()
 }
 
 func (i GameServerDeploymentArray) ToGameServerDeploymentArrayOutput() GameServerDeploymentArrayOutput {
@@ -275,7 +275,7 @@ type GameServerDeploymentMapInput interface {
 type GameServerDeploymentMap map[string]GameServerDeploymentInput
 
 func (GameServerDeploymentMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*GameServerDeployment)(nil))
+	return reflect.TypeOf((*map[string]*GameServerDeployment)(nil)).Elem()
 }
 
 func (i GameServerDeploymentMap) ToGameServerDeploymentMapOutput() GameServerDeploymentMapOutput {
@@ -286,9 +286,7 @@ func (i GameServerDeploymentMap) ToGameServerDeploymentMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerDeploymentMapOutput)
 }
 
-type GameServerDeploymentOutput struct {
-	*pulumi.OutputState
-}
+type GameServerDeploymentOutput struct{ *pulumi.OutputState }
 
 func (GameServerDeploymentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GameServerDeployment)(nil))
@@ -307,14 +305,12 @@ func (o GameServerDeploymentOutput) ToGameServerDeploymentPtrOutput() GameServer
 }
 
 func (o GameServerDeploymentOutput) ToGameServerDeploymentPtrOutputWithContext(ctx context.Context) GameServerDeploymentPtrOutput {
-	return o.ApplyT(func(v GameServerDeployment) *GameServerDeployment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GameServerDeployment) *GameServerDeployment {
 		return &v
 	}).(GameServerDeploymentPtrOutput)
 }
 
-type GameServerDeploymentPtrOutput struct {
-	*pulumi.OutputState
-}
+type GameServerDeploymentPtrOutput struct{ *pulumi.OutputState }
 
 func (GameServerDeploymentPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**GameServerDeployment)(nil))
@@ -326,6 +322,16 @@ func (o GameServerDeploymentPtrOutput) ToGameServerDeploymentPtrOutput() GameSer
 
 func (o GameServerDeploymentPtrOutput) ToGameServerDeploymentPtrOutputWithContext(ctx context.Context) GameServerDeploymentPtrOutput {
 	return o
+}
+
+func (o GameServerDeploymentPtrOutput) Elem() GameServerDeploymentOutput {
+	return o.ApplyT(func(v *GameServerDeployment) GameServerDeployment {
+		if v != nil {
+			return *v
+		}
+		var ret GameServerDeployment
+		return ret
+	}).(GameServerDeploymentOutput)
 }
 
 type GameServerDeploymentArrayOutput struct{ *pulumi.OutputState }

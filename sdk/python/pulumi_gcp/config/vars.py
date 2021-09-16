@@ -200,8 +200,8 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('dialogflowCxCustomEndpoint')
 
     @property
-    def disable_google_partner_name(self) -> Optional[str]:
-        return __config__.get('disableGooglePartnerName')
+    def disable_google_partner_name(self) -> Optional[bool]:
+        return __config__.get_bool('disableGooglePartnerName')
 
     @property
     def dns_custom_endpoint(self) -> Optional[str]:
@@ -424,8 +424,8 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('tpuCustomEndpoint')
 
     @property
-    def user_project_override(self) -> Optional[str]:
-        return __config__.get('userProjectOverride')
+    def user_project_override(self) -> Optional[bool]:
+        return __config__.get_bool('userProjectOverride')
 
     @property
     def vertex_ai_custom_endpoint(self) -> Optional[str]:

@@ -4,6 +4,9 @@
 package cloudrun
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -58,4 +61,57 @@ type GetLocationsResult struct {
 	// The list of Cloud Run locations available for the given project.
 	Locations []string `pulumi:"locations"`
 	Project   string   `pulumi:"project"`
+}
+
+func GetLocationsOutput(ctx *pulumi.Context, args GetLocationsOutputArgs, opts ...pulumi.InvokeOption) GetLocationsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetLocationsResult, error) {
+			args := v.(GetLocationsArgs)
+			r, err := GetLocations(ctx, &args, opts...)
+			return *r, err
+		}).(GetLocationsResultOutput)
+}
+
+// A collection of arguments for invoking getLocations.
+type GetLocationsOutputArgs struct {
+	// The project to list versions for. If it
+	// is not provided, the provider project is used.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (GetLocationsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLocationsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getLocations.
+type GetLocationsResultOutput struct{ *pulumi.OutputState }
+
+func (GetLocationsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLocationsResult)(nil)).Elem()
+}
+
+func (o GetLocationsResultOutput) ToGetLocationsResultOutput() GetLocationsResultOutput {
+	return o
+}
+
+func (o GetLocationsResultOutput) ToGetLocationsResultOutputWithContext(ctx context.Context) GetLocationsResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetLocationsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLocationsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The list of Cloud Run locations available for the given project.
+func (o GetLocationsResultOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetLocationsResult) []string { return v.Locations }).(pulumi.StringArrayOutput)
+}
+
+func (o GetLocationsResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLocationsResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetLocationsResultOutput{})
 }

@@ -47,7 +47,7 @@ import * as utilities from "../utilities";
  *
  * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"});
  * const my_consent = new gcp.healthcare.ConsentStore("my-consent", {dataset: dataset.id});
- * const test_account = new gcp.serviceAccount.Account("test-account", {
+ * const test_account = new gcp.serviceaccount.Account("test-account", {
  *     accountId: "my-account",
  *     displayName: "Test Service Account",
  * });

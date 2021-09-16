@@ -305,7 +305,7 @@ type TagKeyIamMemberArrayInput interface {
 type TagKeyIamMemberArray []TagKeyIamMemberInput
 
 func (TagKeyIamMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TagKeyIamMember)(nil))
+	return reflect.TypeOf((*[]*TagKeyIamMember)(nil)).Elem()
 }
 
 func (i TagKeyIamMemberArray) ToTagKeyIamMemberArrayOutput() TagKeyIamMemberArrayOutput {
@@ -330,7 +330,7 @@ type TagKeyIamMemberMapInput interface {
 type TagKeyIamMemberMap map[string]TagKeyIamMemberInput
 
 func (TagKeyIamMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TagKeyIamMember)(nil))
+	return reflect.TypeOf((*map[string]*TagKeyIamMember)(nil)).Elem()
 }
 
 func (i TagKeyIamMemberMap) ToTagKeyIamMemberMapOutput() TagKeyIamMemberMapOutput {
@@ -341,9 +341,7 @@ func (i TagKeyIamMemberMap) ToTagKeyIamMemberMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(TagKeyIamMemberMapOutput)
 }
 
-type TagKeyIamMemberOutput struct {
-	*pulumi.OutputState
-}
+type TagKeyIamMemberOutput struct{ *pulumi.OutputState }
 
 func (TagKeyIamMemberOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TagKeyIamMember)(nil))
@@ -362,14 +360,12 @@ func (o TagKeyIamMemberOutput) ToTagKeyIamMemberPtrOutput() TagKeyIamMemberPtrOu
 }
 
 func (o TagKeyIamMemberOutput) ToTagKeyIamMemberPtrOutputWithContext(ctx context.Context) TagKeyIamMemberPtrOutput {
-	return o.ApplyT(func(v TagKeyIamMember) *TagKeyIamMember {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TagKeyIamMember) *TagKeyIamMember {
 		return &v
 	}).(TagKeyIamMemberPtrOutput)
 }
 
-type TagKeyIamMemberPtrOutput struct {
-	*pulumi.OutputState
-}
+type TagKeyIamMemberPtrOutput struct{ *pulumi.OutputState }
 
 func (TagKeyIamMemberPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TagKeyIamMember)(nil))
@@ -381,6 +377,16 @@ func (o TagKeyIamMemberPtrOutput) ToTagKeyIamMemberPtrOutput() TagKeyIamMemberPt
 
 func (o TagKeyIamMemberPtrOutput) ToTagKeyIamMemberPtrOutputWithContext(ctx context.Context) TagKeyIamMemberPtrOutput {
 	return o
+}
+
+func (o TagKeyIamMemberPtrOutput) Elem() TagKeyIamMemberOutput {
+	return o.ApplyT(func(v *TagKeyIamMember) TagKeyIamMember {
+		if v != nil {
+			return *v
+		}
+		var ret TagKeyIamMember
+		return ret
+	}).(TagKeyIamMemberOutput)
 }
 
 type TagKeyIamMemberArrayOutput struct{ *pulumi.OutputState }

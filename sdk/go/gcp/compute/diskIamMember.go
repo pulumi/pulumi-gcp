@@ -340,7 +340,7 @@ type DiskIamMemberArrayInput interface {
 type DiskIamMemberArray []DiskIamMemberInput
 
 func (DiskIamMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*DiskIamMember)(nil))
+	return reflect.TypeOf((*[]*DiskIamMember)(nil)).Elem()
 }
 
 func (i DiskIamMemberArray) ToDiskIamMemberArrayOutput() DiskIamMemberArrayOutput {
@@ -365,7 +365,7 @@ type DiskIamMemberMapInput interface {
 type DiskIamMemberMap map[string]DiskIamMemberInput
 
 func (DiskIamMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*DiskIamMember)(nil))
+	return reflect.TypeOf((*map[string]*DiskIamMember)(nil)).Elem()
 }
 
 func (i DiskIamMemberMap) ToDiskIamMemberMapOutput() DiskIamMemberMapOutput {
@@ -376,9 +376,7 @@ func (i DiskIamMemberMap) ToDiskIamMemberMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(DiskIamMemberMapOutput)
 }
 
-type DiskIamMemberOutput struct {
-	*pulumi.OutputState
-}
+type DiskIamMemberOutput struct{ *pulumi.OutputState }
 
 func (DiskIamMemberOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DiskIamMember)(nil))
@@ -397,14 +395,12 @@ func (o DiskIamMemberOutput) ToDiskIamMemberPtrOutput() DiskIamMemberPtrOutput {
 }
 
 func (o DiskIamMemberOutput) ToDiskIamMemberPtrOutputWithContext(ctx context.Context) DiskIamMemberPtrOutput {
-	return o.ApplyT(func(v DiskIamMember) *DiskIamMember {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiskIamMember) *DiskIamMember {
 		return &v
 	}).(DiskIamMemberPtrOutput)
 }
 
-type DiskIamMemberPtrOutput struct {
-	*pulumi.OutputState
-}
+type DiskIamMemberPtrOutput struct{ *pulumi.OutputState }
 
 func (DiskIamMemberPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DiskIamMember)(nil))
@@ -416,6 +412,16 @@ func (o DiskIamMemberPtrOutput) ToDiskIamMemberPtrOutput() DiskIamMemberPtrOutpu
 
 func (o DiskIamMemberPtrOutput) ToDiskIamMemberPtrOutputWithContext(ctx context.Context) DiskIamMemberPtrOutput {
 	return o
+}
+
+func (o DiskIamMemberPtrOutput) Elem() DiskIamMemberOutput {
+	return o.ApplyT(func(v *DiskIamMember) DiskIamMember {
+		if v != nil {
+			return *v
+		}
+		var ret DiskIamMember
+		return ret
+	}).(DiskIamMemberOutput)
 }
 
 type DiskIamMemberArrayOutput struct{ *pulumi.OutputState }

@@ -269,7 +269,7 @@ type EdgeCacheKeysetArrayInput interface {
 type EdgeCacheKeysetArray []EdgeCacheKeysetInput
 
 func (EdgeCacheKeysetArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*EdgeCacheKeyset)(nil))
+	return reflect.TypeOf((*[]*EdgeCacheKeyset)(nil)).Elem()
 }
 
 func (i EdgeCacheKeysetArray) ToEdgeCacheKeysetArrayOutput() EdgeCacheKeysetArrayOutput {
@@ -294,7 +294,7 @@ type EdgeCacheKeysetMapInput interface {
 type EdgeCacheKeysetMap map[string]EdgeCacheKeysetInput
 
 func (EdgeCacheKeysetMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*EdgeCacheKeyset)(nil))
+	return reflect.TypeOf((*map[string]*EdgeCacheKeyset)(nil)).Elem()
 }
 
 func (i EdgeCacheKeysetMap) ToEdgeCacheKeysetMapOutput() EdgeCacheKeysetMapOutput {
@@ -305,9 +305,7 @@ func (i EdgeCacheKeysetMap) ToEdgeCacheKeysetMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheKeysetMapOutput)
 }
 
-type EdgeCacheKeysetOutput struct {
-	*pulumi.OutputState
-}
+type EdgeCacheKeysetOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheKeysetOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EdgeCacheKeyset)(nil))
@@ -326,14 +324,12 @@ func (o EdgeCacheKeysetOutput) ToEdgeCacheKeysetPtrOutput() EdgeCacheKeysetPtrOu
 }
 
 func (o EdgeCacheKeysetOutput) ToEdgeCacheKeysetPtrOutputWithContext(ctx context.Context) EdgeCacheKeysetPtrOutput {
-	return o.ApplyT(func(v EdgeCacheKeyset) *EdgeCacheKeyset {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCacheKeyset) *EdgeCacheKeyset {
 		return &v
 	}).(EdgeCacheKeysetPtrOutput)
 }
 
-type EdgeCacheKeysetPtrOutput struct {
-	*pulumi.OutputState
-}
+type EdgeCacheKeysetPtrOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheKeysetPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**EdgeCacheKeyset)(nil))
@@ -345,6 +341,16 @@ func (o EdgeCacheKeysetPtrOutput) ToEdgeCacheKeysetPtrOutput() EdgeCacheKeysetPt
 
 func (o EdgeCacheKeysetPtrOutput) ToEdgeCacheKeysetPtrOutputWithContext(ctx context.Context) EdgeCacheKeysetPtrOutput {
 	return o
+}
+
+func (o EdgeCacheKeysetPtrOutput) Elem() EdgeCacheKeysetOutput {
+	return o.ApplyT(func(v *EdgeCacheKeyset) EdgeCacheKeyset {
+		if v != nil {
+			return *v
+		}
+		var ret EdgeCacheKeyset
+		return ret
+	}).(EdgeCacheKeysetOutput)
 }
 
 type EdgeCacheKeysetArrayOutput struct{ *pulumi.OutputState }

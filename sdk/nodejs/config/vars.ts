@@ -5,112 +5,862 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
-let __config = new pulumi.Config("gcp");
+declare var exports: any;
+const __config = new pulumi.Config("gcp");
 
-export let accessApprovalCustomEndpoint: string | undefined = __config.get("accessApprovalCustomEndpoint");
-export let accessContextManagerCustomEndpoint: string | undefined = __config.get("accessContextManagerCustomEndpoint");
-export let accessToken: string | undefined = __config.get("accessToken");
-export let activeDirectoryCustomEndpoint: string | undefined = __config.get("activeDirectoryCustomEndpoint");
-export let apiGatewayCustomEndpoint: string | undefined = __config.get("apiGatewayCustomEndpoint");
-export let apigeeCustomEndpoint: string | undefined = __config.get("apigeeCustomEndpoint");
-export let appEngineCustomEndpoint: string | undefined = __config.get("appEngineCustomEndpoint");
-export let artifactRegistryCustomEndpoint: string | undefined = __config.get("artifactRegistryCustomEndpoint");
-export let assuredWorkloadsCustomEndpoint: string | undefined = __config.get("assuredWorkloadsCustomEndpoint");
-export let batching: outputs.config.Batching | undefined = __config.getObject<outputs.config.Batching>("batching");
-export let bigQueryCustomEndpoint: string | undefined = __config.get("bigQueryCustomEndpoint");
-export let bigqueryConnectionCustomEndpoint: string | undefined = __config.get("bigqueryConnectionCustomEndpoint");
-export let bigqueryDataTransferCustomEndpoint: string | undefined = __config.get("bigqueryDataTransferCustomEndpoint");
-export let bigqueryReservationCustomEndpoint: string | undefined = __config.get("bigqueryReservationCustomEndpoint");
-export let bigtableCustomEndpoint: string | undefined = __config.get("bigtableCustomEndpoint");
-export let billingCustomEndpoint: string | undefined = __config.get("billingCustomEndpoint");
-export let billingProject: string | undefined = __config.get("billingProject");
-export let binaryAuthorizationCustomEndpoint: string | undefined = __config.get("binaryAuthorizationCustomEndpoint");
-export let cloudAssetCustomEndpoint: string | undefined = __config.get("cloudAssetCustomEndpoint");
-export let cloudBillingCustomEndpoint: string | undefined = __config.get("cloudBillingCustomEndpoint");
-export let cloudBuildCustomEndpoint: string | undefined = __config.get("cloudBuildCustomEndpoint");
-export let cloudBuildWorkerPoolCustomEndpoint: string | undefined = __config.get("cloudBuildWorkerPoolCustomEndpoint");
-export let cloudFunctionsCustomEndpoint: string | undefined = __config.get("cloudFunctionsCustomEndpoint");
-export let cloudIdentityCustomEndpoint: string | undefined = __config.get("cloudIdentityCustomEndpoint");
-export let cloudIotCustomEndpoint: string | undefined = __config.get("cloudIotCustomEndpoint");
-export let cloudRunCustomEndpoint: string | undefined = __config.get("cloudRunCustomEndpoint");
-export let cloudSchedulerCustomEndpoint: string | undefined = __config.get("cloudSchedulerCustomEndpoint");
-export let cloudTasksCustomEndpoint: string | undefined = __config.get("cloudTasksCustomEndpoint");
-export let composerCustomEndpoint: string | undefined = __config.get("composerCustomEndpoint");
-export let computeBetaCustomEndpoint: string | undefined = __config.get("computeBetaCustomEndpoint");
-export let computeCustomEndpoint: string | undefined = __config.get("computeCustomEndpoint");
-export let containerAnalysisCustomEndpoint: string | undefined = __config.get("containerAnalysisCustomEndpoint");
-export let containerBetaCustomEndpoint: string | undefined = __config.get("containerBetaCustomEndpoint");
-export let containerCustomEndpoint: string | undefined = __config.get("containerCustomEndpoint");
-export let credentials: string | undefined = __config.get("credentials");
-export let dataCatalogCustomEndpoint: string | undefined = __config.get("dataCatalogCustomEndpoint");
-export let dataFusionCustomEndpoint: string | undefined = __config.get("dataFusionCustomEndpoint");
-export let dataLossPreventionCustomEndpoint: string | undefined = __config.get("dataLossPreventionCustomEndpoint");
-export let dataflowCustomEndpoint: string | undefined = __config.get("dataflowCustomEndpoint");
-export let dataprocBetaCustomEndpoint: string | undefined = __config.get("dataprocBetaCustomEndpoint");
-export let dataprocCustomEndpoint: string | undefined = __config.get("dataprocCustomEndpoint");
-export let dataprocMetastoreCustomEndpoint: string | undefined = __config.get("dataprocMetastoreCustomEndpoint");
-export let datastoreCustomEndpoint: string | undefined = __config.get("datastoreCustomEndpoint");
-export let deploymentManagerCustomEndpoint: string | undefined = __config.get("deploymentManagerCustomEndpoint");
-export let dialogflowCustomEndpoint: string | undefined = __config.get("dialogflowCustomEndpoint");
-export let dialogflowCxCustomEndpoint: string | undefined = __config.get("dialogflowCxCustomEndpoint");
-export let disableGooglePartnerName: boolean | undefined = __config.getObject<boolean>("disableGooglePartnerName");
-export let dnsCustomEndpoint: string | undefined = __config.get("dnsCustomEndpoint");
-export let essentialContactsCustomEndpoint: string | undefined = __config.get("essentialContactsCustomEndpoint");
-export let eventarcCustomEndpoint: string | undefined = __config.get("eventarcCustomEndpoint");
-export let filestoreCustomEndpoint: string | undefined = __config.get("filestoreCustomEndpoint");
-export let firebaseCustomEndpoint: string | undefined = __config.get("firebaseCustomEndpoint");
-export let firestoreCustomEndpoint: string | undefined = __config.get("firestoreCustomEndpoint");
-export let gameServicesCustomEndpoint: string | undefined = __config.get("gameServicesCustomEndpoint");
-export let gkeHubCustomEndpoint: string | undefined = __config.get("gkeHubCustomEndpoint");
-export let gkehubFeatureCustomEndpoint: string | undefined = __config.get("gkehubFeatureCustomEndpoint");
-export let googlePartnerName: string | undefined = __config.get("googlePartnerName");
-export let healthcareCustomEndpoint: string | undefined = __config.get("healthcareCustomEndpoint");
-export let iamBetaCustomEndpoint: string | undefined = __config.get("iamBetaCustomEndpoint");
-export let iamCredentialsCustomEndpoint: string | undefined = __config.get("iamCredentialsCustomEndpoint");
-export let iamCustomEndpoint: string | undefined = __config.get("iamCustomEndpoint");
-export let iapCustomEndpoint: string | undefined = __config.get("iapCustomEndpoint");
-export let identityPlatformCustomEndpoint: string | undefined = __config.get("identityPlatformCustomEndpoint");
-export let impersonateServiceAccount: string | undefined = __config.get("impersonateServiceAccount");
-export let impersonateServiceAccountDelegates: string[] | undefined = __config.getObject<string[]>("impersonateServiceAccountDelegates");
-export let kmsCustomEndpoint: string | undefined = __config.get("kmsCustomEndpoint");
-export let loggingCustomEndpoint: string | undefined = __config.get("loggingCustomEndpoint");
-export let memcacheCustomEndpoint: string | undefined = __config.get("memcacheCustomEndpoint");
-export let mlEngineCustomEndpoint: string | undefined = __config.get("mlEngineCustomEndpoint");
-export let monitoringCustomEndpoint: string | undefined = __config.get("monitoringCustomEndpoint");
-export let networkManagementCustomEndpoint: string | undefined = __config.get("networkManagementCustomEndpoint");
-export let networkServicesCustomEndpoint: string | undefined = __config.get("networkServicesCustomEndpoint");
-export let notebooksCustomEndpoint: string | undefined = __config.get("notebooksCustomEndpoint");
-export let osConfigCustomEndpoint: string | undefined = __config.get("osConfigCustomEndpoint");
-export let osLoginCustomEndpoint: string | undefined = __config.get("osLoginCustomEndpoint");
-export let privatecaCustomEndpoint: string | undefined = __config.get("privatecaCustomEndpoint");
-export let project: string | undefined = __config.get("project") || utilities.getEnv("GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT");
-export let pubsubCustomEndpoint: string | undefined = __config.get("pubsubCustomEndpoint");
-export let pubsubLiteCustomEndpoint: string | undefined = __config.get("pubsubLiteCustomEndpoint");
-export let redisCustomEndpoint: string | undefined = __config.get("redisCustomEndpoint");
-export let region: string | undefined = __config.get("region") || utilities.getEnv("GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION");
-export let requestReason: string | undefined = __config.get("requestReason");
-export let requestTimeout: string | undefined = __config.get("requestTimeout");
-export let resourceManagerCustomEndpoint: string | undefined = __config.get("resourceManagerCustomEndpoint");
-export let resourceManagerV2CustomEndpoint: string | undefined = __config.get("resourceManagerV2CustomEndpoint");
-export let runtimeConfigCustomEndpoint: string | undefined = __config.get("runtimeConfigCustomEndpoint");
-export let runtimeconfigCustomEndpoint: string | undefined = __config.get("runtimeconfigCustomEndpoint");
-export let scopes: string[] | undefined = __config.getObject<string[]>("scopes");
-export let secretManagerCustomEndpoint: string | undefined = __config.get("secretManagerCustomEndpoint");
-export let securityCenterCustomEndpoint: string | undefined = __config.get("securityCenterCustomEndpoint");
-export let securityScannerCustomEndpoint: string | undefined = __config.get("securityScannerCustomEndpoint");
-export let serviceDirectoryCustomEndpoint: string | undefined = __config.get("serviceDirectoryCustomEndpoint");
-export let serviceManagementCustomEndpoint: string | undefined = __config.get("serviceManagementCustomEndpoint");
-export let serviceNetworkingCustomEndpoint: string | undefined = __config.get("serviceNetworkingCustomEndpoint");
-export let serviceUsageCustomEndpoint: string | undefined = __config.get("serviceUsageCustomEndpoint");
-export let sourceRepoCustomEndpoint: string | undefined = __config.get("sourceRepoCustomEndpoint");
-export let spannerCustomEndpoint: string | undefined = __config.get("spannerCustomEndpoint");
-export let sqlCustomEndpoint: string | undefined = __config.get("sqlCustomEndpoint");
-export let storageCustomEndpoint: string | undefined = __config.get("storageCustomEndpoint");
-export let storageTransferCustomEndpoint: string | undefined = __config.get("storageTransferCustomEndpoint");
-export let tagsCustomEndpoint: string | undefined = __config.get("tagsCustomEndpoint");
-export let tpuCustomEndpoint: string | undefined = __config.get("tpuCustomEndpoint");
-export let userProjectOverride: boolean | undefined = __config.getObject<boolean>("userProjectOverride");
-export let vertexAiCustomEndpoint: string | undefined = __config.get("vertexAiCustomEndpoint");
-export let vpcAccessCustomEndpoint: string | undefined = __config.get("vpcAccessCustomEndpoint");
-export let workflowsCustomEndpoint: string | undefined = __config.get("workflowsCustomEndpoint");
-export let zone: string | undefined = __config.get("zone") || utilities.getEnv("GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE");
+export declare const accessApprovalCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "accessApprovalCustomEndpoint", {
+    get() {
+        return __config.get("accessApprovalCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const accessContextManagerCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "accessContextManagerCustomEndpoint", {
+    get() {
+        return __config.get("accessContextManagerCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const accessToken: string | undefined;
+Object.defineProperty(exports, "accessToken", {
+    get() {
+        return __config.get("accessToken");
+    },
+    enumerable: true,
+});
+
+export declare const activeDirectoryCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "activeDirectoryCustomEndpoint", {
+    get() {
+        return __config.get("activeDirectoryCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const apiGatewayCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "apiGatewayCustomEndpoint", {
+    get() {
+        return __config.get("apiGatewayCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const apigeeCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "apigeeCustomEndpoint", {
+    get() {
+        return __config.get("apigeeCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const appEngineCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "appEngineCustomEndpoint", {
+    get() {
+        return __config.get("appEngineCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const artifactRegistryCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "artifactRegistryCustomEndpoint", {
+    get() {
+        return __config.get("artifactRegistryCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const assuredWorkloadsCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "assuredWorkloadsCustomEndpoint", {
+    get() {
+        return __config.get("assuredWorkloadsCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const batching: outputs.config.Batching | undefined;
+Object.defineProperty(exports, "batching", {
+    get() {
+        return __config.getObject<outputs.config.Batching>("batching");
+    },
+    enumerable: true,
+});
+
+export declare const bigQueryCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "bigQueryCustomEndpoint", {
+    get() {
+        return __config.get("bigQueryCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const bigqueryConnectionCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "bigqueryConnectionCustomEndpoint", {
+    get() {
+        return __config.get("bigqueryConnectionCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const bigqueryDataTransferCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "bigqueryDataTransferCustomEndpoint", {
+    get() {
+        return __config.get("bigqueryDataTransferCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const bigqueryReservationCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "bigqueryReservationCustomEndpoint", {
+    get() {
+        return __config.get("bigqueryReservationCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const bigtableCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "bigtableCustomEndpoint", {
+    get() {
+        return __config.get("bigtableCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const billingCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "billingCustomEndpoint", {
+    get() {
+        return __config.get("billingCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const billingProject: string | undefined;
+Object.defineProperty(exports, "billingProject", {
+    get() {
+        return __config.get("billingProject");
+    },
+    enumerable: true,
+});
+
+export declare const binaryAuthorizationCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "binaryAuthorizationCustomEndpoint", {
+    get() {
+        return __config.get("binaryAuthorizationCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const cloudAssetCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "cloudAssetCustomEndpoint", {
+    get() {
+        return __config.get("cloudAssetCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const cloudBillingCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "cloudBillingCustomEndpoint", {
+    get() {
+        return __config.get("cloudBillingCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const cloudBuildCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "cloudBuildCustomEndpoint", {
+    get() {
+        return __config.get("cloudBuildCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const cloudBuildWorkerPoolCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "cloudBuildWorkerPoolCustomEndpoint", {
+    get() {
+        return __config.get("cloudBuildWorkerPoolCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const cloudFunctionsCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "cloudFunctionsCustomEndpoint", {
+    get() {
+        return __config.get("cloudFunctionsCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const cloudIdentityCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "cloudIdentityCustomEndpoint", {
+    get() {
+        return __config.get("cloudIdentityCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const cloudIotCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "cloudIotCustomEndpoint", {
+    get() {
+        return __config.get("cloudIotCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const cloudRunCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "cloudRunCustomEndpoint", {
+    get() {
+        return __config.get("cloudRunCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const cloudSchedulerCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "cloudSchedulerCustomEndpoint", {
+    get() {
+        return __config.get("cloudSchedulerCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const cloudTasksCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "cloudTasksCustomEndpoint", {
+    get() {
+        return __config.get("cloudTasksCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const composerCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "composerCustomEndpoint", {
+    get() {
+        return __config.get("composerCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const computeBetaCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "computeBetaCustomEndpoint", {
+    get() {
+        return __config.get("computeBetaCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const computeCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "computeCustomEndpoint", {
+    get() {
+        return __config.get("computeCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const containerAnalysisCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "containerAnalysisCustomEndpoint", {
+    get() {
+        return __config.get("containerAnalysisCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const containerBetaCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "containerBetaCustomEndpoint", {
+    get() {
+        return __config.get("containerBetaCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const containerCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "containerCustomEndpoint", {
+    get() {
+        return __config.get("containerCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const credentials: string | undefined;
+Object.defineProperty(exports, "credentials", {
+    get() {
+        return __config.get("credentials");
+    },
+    enumerable: true,
+});
+
+export declare const dataCatalogCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "dataCatalogCustomEndpoint", {
+    get() {
+        return __config.get("dataCatalogCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const dataFusionCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "dataFusionCustomEndpoint", {
+    get() {
+        return __config.get("dataFusionCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const dataLossPreventionCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "dataLossPreventionCustomEndpoint", {
+    get() {
+        return __config.get("dataLossPreventionCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const dataflowCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "dataflowCustomEndpoint", {
+    get() {
+        return __config.get("dataflowCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const dataprocBetaCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "dataprocBetaCustomEndpoint", {
+    get() {
+        return __config.get("dataprocBetaCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const dataprocCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "dataprocCustomEndpoint", {
+    get() {
+        return __config.get("dataprocCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const dataprocMetastoreCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "dataprocMetastoreCustomEndpoint", {
+    get() {
+        return __config.get("dataprocMetastoreCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const datastoreCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "datastoreCustomEndpoint", {
+    get() {
+        return __config.get("datastoreCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const deploymentManagerCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "deploymentManagerCustomEndpoint", {
+    get() {
+        return __config.get("deploymentManagerCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const dialogflowCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "dialogflowCustomEndpoint", {
+    get() {
+        return __config.get("dialogflowCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const dialogflowCxCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "dialogflowCxCustomEndpoint", {
+    get() {
+        return __config.get("dialogflowCxCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const disableGooglePartnerName: boolean | undefined;
+Object.defineProperty(exports, "disableGooglePartnerName", {
+    get() {
+        return __config.getObject<boolean>("disableGooglePartnerName");
+    },
+    enumerable: true,
+});
+
+export declare const dnsCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "dnsCustomEndpoint", {
+    get() {
+        return __config.get("dnsCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const essentialContactsCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "essentialContactsCustomEndpoint", {
+    get() {
+        return __config.get("essentialContactsCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const eventarcCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "eventarcCustomEndpoint", {
+    get() {
+        return __config.get("eventarcCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const filestoreCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "filestoreCustomEndpoint", {
+    get() {
+        return __config.get("filestoreCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const firebaseCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "firebaseCustomEndpoint", {
+    get() {
+        return __config.get("firebaseCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const firestoreCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "firestoreCustomEndpoint", {
+    get() {
+        return __config.get("firestoreCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const gameServicesCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "gameServicesCustomEndpoint", {
+    get() {
+        return __config.get("gameServicesCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const gkeHubCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "gkeHubCustomEndpoint", {
+    get() {
+        return __config.get("gkeHubCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const gkehubFeatureCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "gkehubFeatureCustomEndpoint", {
+    get() {
+        return __config.get("gkehubFeatureCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const googlePartnerName: string | undefined;
+Object.defineProperty(exports, "googlePartnerName", {
+    get() {
+        return __config.get("googlePartnerName");
+    },
+    enumerable: true,
+});
+
+export declare const healthcareCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "healthcareCustomEndpoint", {
+    get() {
+        return __config.get("healthcareCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const iamBetaCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "iamBetaCustomEndpoint", {
+    get() {
+        return __config.get("iamBetaCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const iamCredentialsCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "iamCredentialsCustomEndpoint", {
+    get() {
+        return __config.get("iamCredentialsCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const iamCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "iamCustomEndpoint", {
+    get() {
+        return __config.get("iamCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const iapCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "iapCustomEndpoint", {
+    get() {
+        return __config.get("iapCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const identityPlatformCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "identityPlatformCustomEndpoint", {
+    get() {
+        return __config.get("identityPlatformCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const impersonateServiceAccount: string | undefined;
+Object.defineProperty(exports, "impersonateServiceAccount", {
+    get() {
+        return __config.get("impersonateServiceAccount");
+    },
+    enumerable: true,
+});
+
+export declare const impersonateServiceAccountDelegates: string[] | undefined;
+Object.defineProperty(exports, "impersonateServiceAccountDelegates", {
+    get() {
+        return __config.getObject<string[]>("impersonateServiceAccountDelegates");
+    },
+    enumerable: true,
+});
+
+export declare const kmsCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "kmsCustomEndpoint", {
+    get() {
+        return __config.get("kmsCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const loggingCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "loggingCustomEndpoint", {
+    get() {
+        return __config.get("loggingCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const memcacheCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "memcacheCustomEndpoint", {
+    get() {
+        return __config.get("memcacheCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const mlEngineCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "mlEngineCustomEndpoint", {
+    get() {
+        return __config.get("mlEngineCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const monitoringCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "monitoringCustomEndpoint", {
+    get() {
+        return __config.get("monitoringCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const networkManagementCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "networkManagementCustomEndpoint", {
+    get() {
+        return __config.get("networkManagementCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const networkServicesCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "networkServicesCustomEndpoint", {
+    get() {
+        return __config.get("networkServicesCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const notebooksCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "notebooksCustomEndpoint", {
+    get() {
+        return __config.get("notebooksCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const osConfigCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "osConfigCustomEndpoint", {
+    get() {
+        return __config.get("osConfigCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const osLoginCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "osLoginCustomEndpoint", {
+    get() {
+        return __config.get("osLoginCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const privatecaCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "privatecaCustomEndpoint", {
+    get() {
+        return __config.get("privatecaCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const project: string | undefined;
+Object.defineProperty(exports, "project", {
+    get() {
+        return __config.get("project") ?? utilities.getEnv("GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT");
+    },
+    enumerable: true,
+});
+
+export declare const pubsubCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "pubsubCustomEndpoint", {
+    get() {
+        return __config.get("pubsubCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const pubsubLiteCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "pubsubLiteCustomEndpoint", {
+    get() {
+        return __config.get("pubsubLiteCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const redisCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "redisCustomEndpoint", {
+    get() {
+        return __config.get("redisCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const region: string | undefined;
+Object.defineProperty(exports, "region", {
+    get() {
+        return __config.get("region") ?? utilities.getEnv("GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION");
+    },
+    enumerable: true,
+});
+
+export declare const requestReason: string | undefined;
+Object.defineProperty(exports, "requestReason", {
+    get() {
+        return __config.get("requestReason");
+    },
+    enumerable: true,
+});
+
+export declare const requestTimeout: string | undefined;
+Object.defineProperty(exports, "requestTimeout", {
+    get() {
+        return __config.get("requestTimeout");
+    },
+    enumerable: true,
+});
+
+export declare const resourceManagerCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "resourceManagerCustomEndpoint", {
+    get() {
+        return __config.get("resourceManagerCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const resourceManagerV2CustomEndpoint: string | undefined;
+Object.defineProperty(exports, "resourceManagerV2CustomEndpoint", {
+    get() {
+        return __config.get("resourceManagerV2CustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const runtimeConfigCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "runtimeConfigCustomEndpoint", {
+    get() {
+        return __config.get("runtimeConfigCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const runtimeconfigCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "runtimeconfigCustomEndpoint", {
+    get() {
+        return __config.get("runtimeconfigCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const scopes: string[] | undefined;
+Object.defineProperty(exports, "scopes", {
+    get() {
+        return __config.getObject<string[]>("scopes");
+    },
+    enumerable: true,
+});
+
+export declare const secretManagerCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "secretManagerCustomEndpoint", {
+    get() {
+        return __config.get("secretManagerCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const securityCenterCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "securityCenterCustomEndpoint", {
+    get() {
+        return __config.get("securityCenterCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const securityScannerCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "securityScannerCustomEndpoint", {
+    get() {
+        return __config.get("securityScannerCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const serviceDirectoryCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "serviceDirectoryCustomEndpoint", {
+    get() {
+        return __config.get("serviceDirectoryCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const serviceManagementCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "serviceManagementCustomEndpoint", {
+    get() {
+        return __config.get("serviceManagementCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const serviceNetworkingCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "serviceNetworkingCustomEndpoint", {
+    get() {
+        return __config.get("serviceNetworkingCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const serviceUsageCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "serviceUsageCustomEndpoint", {
+    get() {
+        return __config.get("serviceUsageCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const sourceRepoCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "sourceRepoCustomEndpoint", {
+    get() {
+        return __config.get("sourceRepoCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const spannerCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "spannerCustomEndpoint", {
+    get() {
+        return __config.get("spannerCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const sqlCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "sqlCustomEndpoint", {
+    get() {
+        return __config.get("sqlCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const storageCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "storageCustomEndpoint", {
+    get() {
+        return __config.get("storageCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const storageTransferCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "storageTransferCustomEndpoint", {
+    get() {
+        return __config.get("storageTransferCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const tagsCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "tagsCustomEndpoint", {
+    get() {
+        return __config.get("tagsCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const tpuCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "tpuCustomEndpoint", {
+    get() {
+        return __config.get("tpuCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const userProjectOverride: boolean | undefined;
+Object.defineProperty(exports, "userProjectOverride", {
+    get() {
+        return __config.getObject<boolean>("userProjectOverride");
+    },
+    enumerable: true,
+});
+
+export declare const vertexAiCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "vertexAiCustomEndpoint", {
+    get() {
+        return __config.get("vertexAiCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const vpcAccessCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "vpcAccessCustomEndpoint", {
+    get() {
+        return __config.get("vpcAccessCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const workflowsCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "workflowsCustomEndpoint", {
+    get() {
+        return __config.get("workflowsCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const zone: string | undefined;
+Object.defineProperty(exports, "zone", {
+    get() {
+        return __config.get("zone") ?? utilities.getEnv("GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE");
+    },
+    enumerable: true,
+});
+

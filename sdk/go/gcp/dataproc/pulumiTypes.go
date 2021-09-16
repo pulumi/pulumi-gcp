@@ -113,7 +113,7 @@ func (o AutoscalingPolicyBasicAlgorithmOutput) ToAutoscalingPolicyBasicAlgorithm
 }
 
 func (o AutoscalingPolicyBasicAlgorithmOutput) ToAutoscalingPolicyBasicAlgorithmPtrOutputWithContext(ctx context.Context) AutoscalingPolicyBasicAlgorithmPtrOutput {
-	return o.ApplyT(func(v AutoscalingPolicyBasicAlgorithm) *AutoscalingPolicyBasicAlgorithm {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoscalingPolicyBasicAlgorithm) *AutoscalingPolicyBasicAlgorithm {
 		return &v
 	}).(AutoscalingPolicyBasicAlgorithmPtrOutput)
 }
@@ -146,7 +146,13 @@ func (o AutoscalingPolicyBasicAlgorithmPtrOutput) ToAutoscalingPolicyBasicAlgori
 }
 
 func (o AutoscalingPolicyBasicAlgorithmPtrOutput) Elem() AutoscalingPolicyBasicAlgorithmOutput {
-	return o.ApplyT(func(v *AutoscalingPolicyBasicAlgorithm) AutoscalingPolicyBasicAlgorithm { return *v }).(AutoscalingPolicyBasicAlgorithmOutput)
+	return o.ApplyT(func(v *AutoscalingPolicyBasicAlgorithm) AutoscalingPolicyBasicAlgorithm {
+		if v != nil {
+			return *v
+		}
+		var ret AutoscalingPolicyBasicAlgorithm
+		return ret
+	}).(AutoscalingPolicyBasicAlgorithmOutput)
 }
 
 // Duration between scaling events. A scaling period starts after the
@@ -323,7 +329,7 @@ func (o AutoscalingPolicyBasicAlgorithmYarnConfigOutput) ToAutoscalingPolicyBasi
 }
 
 func (o AutoscalingPolicyBasicAlgorithmYarnConfigOutput) ToAutoscalingPolicyBasicAlgorithmYarnConfigPtrOutputWithContext(ctx context.Context) AutoscalingPolicyBasicAlgorithmYarnConfigPtrOutput {
-	return o.ApplyT(func(v AutoscalingPolicyBasicAlgorithmYarnConfig) *AutoscalingPolicyBasicAlgorithmYarnConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoscalingPolicyBasicAlgorithmYarnConfig) *AutoscalingPolicyBasicAlgorithmYarnConfig {
 		return &v
 	}).(AutoscalingPolicyBasicAlgorithmYarnConfigPtrOutput)
 }
@@ -390,7 +396,11 @@ func (o AutoscalingPolicyBasicAlgorithmYarnConfigPtrOutput) ToAutoscalingPolicyB
 
 func (o AutoscalingPolicyBasicAlgorithmYarnConfigPtrOutput) Elem() AutoscalingPolicyBasicAlgorithmYarnConfigOutput {
 	return o.ApplyT(func(v *AutoscalingPolicyBasicAlgorithmYarnConfig) AutoscalingPolicyBasicAlgorithmYarnConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret AutoscalingPolicyBasicAlgorithmYarnConfig
+		return ret
 	}).(AutoscalingPolicyBasicAlgorithmYarnConfigOutput)
 }
 
@@ -592,7 +602,7 @@ func (o AutoscalingPolicySecondaryWorkerConfigOutput) ToAutoscalingPolicySeconda
 }
 
 func (o AutoscalingPolicySecondaryWorkerConfigOutput) ToAutoscalingPolicySecondaryWorkerConfigPtrOutputWithContext(ctx context.Context) AutoscalingPolicySecondaryWorkerConfigPtrOutput {
-	return o.ApplyT(func(v AutoscalingPolicySecondaryWorkerConfig) *AutoscalingPolicySecondaryWorkerConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoscalingPolicySecondaryWorkerConfig) *AutoscalingPolicySecondaryWorkerConfig {
 		return &v
 	}).(AutoscalingPolicySecondaryWorkerConfigPtrOutput)
 }
@@ -640,7 +650,13 @@ func (o AutoscalingPolicySecondaryWorkerConfigPtrOutput) ToAutoscalingPolicySeco
 }
 
 func (o AutoscalingPolicySecondaryWorkerConfigPtrOutput) Elem() AutoscalingPolicySecondaryWorkerConfigOutput {
-	return o.ApplyT(func(v *AutoscalingPolicySecondaryWorkerConfig) AutoscalingPolicySecondaryWorkerConfig { return *v }).(AutoscalingPolicySecondaryWorkerConfigOutput)
+	return o.ApplyT(func(v *AutoscalingPolicySecondaryWorkerConfig) AutoscalingPolicySecondaryWorkerConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AutoscalingPolicySecondaryWorkerConfig
+		return ret
+	}).(AutoscalingPolicySecondaryWorkerConfigOutput)
 }
 
 // Maximum number of instances for this group. Note that by default, clusters will not use
@@ -813,7 +829,7 @@ func (o AutoscalingPolicyWorkerConfigOutput) ToAutoscalingPolicyWorkerConfigPtrO
 }
 
 func (o AutoscalingPolicyWorkerConfigOutput) ToAutoscalingPolicyWorkerConfigPtrOutputWithContext(ctx context.Context) AutoscalingPolicyWorkerConfigPtrOutput {
-	return o.ApplyT(func(v AutoscalingPolicyWorkerConfig) *AutoscalingPolicyWorkerConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoscalingPolicyWorkerConfig) *AutoscalingPolicyWorkerConfig {
 		return &v
 	}).(AutoscalingPolicyWorkerConfigPtrOutput)
 }
@@ -861,7 +877,13 @@ func (o AutoscalingPolicyWorkerConfigPtrOutput) ToAutoscalingPolicyWorkerConfigP
 }
 
 func (o AutoscalingPolicyWorkerConfigPtrOutput) Elem() AutoscalingPolicyWorkerConfigOutput {
-	return o.ApplyT(func(v *AutoscalingPolicyWorkerConfig) AutoscalingPolicyWorkerConfig { return *v }).(AutoscalingPolicyWorkerConfigOutput)
+	return o.ApplyT(func(v *AutoscalingPolicyWorkerConfig) AutoscalingPolicyWorkerConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AutoscalingPolicyWorkerConfig
+		return ret
+	}).(AutoscalingPolicyWorkerConfigOutput)
 }
 
 // Maximum number of instances for this group. Note that by default, clusters will not use
@@ -1104,7 +1126,7 @@ func (o ClusterClusterConfigOutput) ToClusterClusterConfigPtrOutput() ClusterClu
 }
 
 func (o ClusterClusterConfigOutput) ToClusterClusterConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigPtrOutput {
-	return o.ApplyT(func(v ClusterClusterConfig) *ClusterClusterConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfig) *ClusterClusterConfig {
 		return &v
 	}).(ClusterClusterConfigPtrOutput)
 }
@@ -1227,7 +1249,13 @@ func (o ClusterClusterConfigPtrOutput) ToClusterClusterConfigPtrOutputWithContex
 }
 
 func (o ClusterClusterConfigPtrOutput) Elem() ClusterClusterConfigOutput {
-	return o.ApplyT(func(v *ClusterClusterConfig) ClusterClusterConfig { return *v }).(ClusterClusterConfigOutput)
+	return o.ApplyT(func(v *ClusterClusterConfig) ClusterClusterConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterClusterConfig
+		return ret
+	}).(ClusterClusterConfigOutput)
 }
 
 // The autoscaling policy config associated with the cluster.
@@ -1497,7 +1525,7 @@ func (o ClusterClusterConfigAutoscalingConfigOutput) ToClusterClusterConfigAutos
 }
 
 func (o ClusterClusterConfigAutoscalingConfigOutput) ToClusterClusterConfigAutoscalingConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigAutoscalingConfigPtrOutput {
-	return o.ApplyT(func(v ClusterClusterConfigAutoscalingConfig) *ClusterClusterConfigAutoscalingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigAutoscalingConfig) *ClusterClusterConfigAutoscalingConfig {
 		return &v
 	}).(ClusterClusterConfigAutoscalingConfigPtrOutput)
 }
@@ -1522,7 +1550,13 @@ func (o ClusterClusterConfigAutoscalingConfigPtrOutput) ToClusterClusterConfigAu
 }
 
 func (o ClusterClusterConfigAutoscalingConfigPtrOutput) Elem() ClusterClusterConfigAutoscalingConfigOutput {
-	return o.ApplyT(func(v *ClusterClusterConfigAutoscalingConfig) ClusterClusterConfigAutoscalingConfig { return *v }).(ClusterClusterConfigAutoscalingConfigOutput)
+	return o.ApplyT(func(v *ClusterClusterConfigAutoscalingConfig) ClusterClusterConfigAutoscalingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterClusterConfigAutoscalingConfig
+		return ret
+	}).(ClusterClusterConfigAutoscalingConfigOutput)
 }
 
 // The autoscaling policy used by the cluster.
@@ -1630,7 +1664,7 @@ func (o ClusterClusterConfigEncryptionConfigOutput) ToClusterClusterConfigEncryp
 }
 
 func (o ClusterClusterConfigEncryptionConfigOutput) ToClusterClusterConfigEncryptionConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigEncryptionConfigPtrOutput {
-	return o.ApplyT(func(v ClusterClusterConfigEncryptionConfig) *ClusterClusterConfigEncryptionConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigEncryptionConfig) *ClusterClusterConfigEncryptionConfig {
 		return &v
 	}).(ClusterClusterConfigEncryptionConfigPtrOutput)
 }
@@ -1656,7 +1690,13 @@ func (o ClusterClusterConfigEncryptionConfigPtrOutput) ToClusterClusterConfigEnc
 }
 
 func (o ClusterClusterConfigEncryptionConfigPtrOutput) Elem() ClusterClusterConfigEncryptionConfigOutput {
-	return o.ApplyT(func(v *ClusterClusterConfigEncryptionConfig) ClusterClusterConfigEncryptionConfig { return *v }).(ClusterClusterConfigEncryptionConfigOutput)
+	return o.ApplyT(func(v *ClusterClusterConfigEncryptionConfig) ClusterClusterConfigEncryptionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterClusterConfigEncryptionConfig
+		return ret
+	}).(ClusterClusterConfigEncryptionConfigOutput)
 }
 
 // The Cloud KMS key name to use for PD disk encryption for
@@ -1767,7 +1807,7 @@ func (o ClusterClusterConfigEndpointConfigOutput) ToClusterClusterConfigEndpoint
 }
 
 func (o ClusterClusterConfigEndpointConfigOutput) ToClusterClusterConfigEndpointConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigEndpointConfigPtrOutput {
-	return o.ApplyT(func(v ClusterClusterConfigEndpointConfig) *ClusterClusterConfigEndpointConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigEndpointConfig) *ClusterClusterConfigEndpointConfig {
 		return &v
 	}).(ClusterClusterConfigEndpointConfigPtrOutput)
 }
@@ -1797,7 +1837,13 @@ func (o ClusterClusterConfigEndpointConfigPtrOutput) ToClusterClusterConfigEndpo
 }
 
 func (o ClusterClusterConfigEndpointConfigPtrOutput) Elem() ClusterClusterConfigEndpointConfigOutput {
-	return o.ApplyT(func(v *ClusterClusterConfigEndpointConfig) ClusterClusterConfigEndpointConfig { return *v }).(ClusterClusterConfigEndpointConfigOutput)
+	return o.ApplyT(func(v *ClusterClusterConfigEndpointConfig) ClusterClusterConfigEndpointConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterClusterConfigEndpointConfig
+		return ret
+	}).(ClusterClusterConfigEndpointConfigOutput)
 }
 
 // The flag to enable http access to specific ports
@@ -1985,7 +2031,7 @@ func (o ClusterClusterConfigGceClusterConfigOutput) ToClusterClusterConfigGceClu
 }
 
 func (o ClusterClusterConfigGceClusterConfigOutput) ToClusterClusterConfigGceClusterConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigGceClusterConfigPtrOutput {
-	return o.ApplyT(func(v ClusterClusterConfigGceClusterConfig) *ClusterClusterConfigGceClusterConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigGceClusterConfig) *ClusterClusterConfigGceClusterConfig {
 		return &v
 	}).(ClusterClusterConfigGceClusterConfigPtrOutput)
 }
@@ -2072,7 +2118,13 @@ func (o ClusterClusterConfigGceClusterConfigPtrOutput) ToClusterClusterConfigGce
 }
 
 func (o ClusterClusterConfigGceClusterConfigPtrOutput) Elem() ClusterClusterConfigGceClusterConfigOutput {
-	return o.ApplyT(func(v *ClusterClusterConfigGceClusterConfig) ClusterClusterConfigGceClusterConfig { return *v }).(ClusterClusterConfigGceClusterConfigOutput)
+	return o.ApplyT(func(v *ClusterClusterConfigGceClusterConfig) ClusterClusterConfigGceClusterConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterClusterConfigGceClusterConfig
+		return ret
+	}).(ClusterClusterConfigGceClusterConfigOutput)
 }
 
 // By default, clusters are not restricted to internal IP addresses,
@@ -2286,7 +2338,7 @@ func (o ClusterClusterConfigGceClusterConfigShieldedInstanceConfigOutput) ToClus
 }
 
 func (o ClusterClusterConfigGceClusterConfigShieldedInstanceConfigOutput) ToClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput {
-	return o.ApplyT(func(v ClusterClusterConfigGceClusterConfigShieldedInstanceConfig) *ClusterClusterConfigGceClusterConfigShieldedInstanceConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigGceClusterConfigShieldedInstanceConfig) *ClusterClusterConfigGceClusterConfigShieldedInstanceConfig {
 		return &v
 	}).(ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput)
 }
@@ -2324,7 +2376,11 @@ func (o ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput) ToC
 
 func (o ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput) Elem() ClusterClusterConfigGceClusterConfigShieldedInstanceConfigOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigGceClusterConfigShieldedInstanceConfig) ClusterClusterConfigGceClusterConfigShieldedInstanceConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ClusterClusterConfigGceClusterConfigShieldedInstanceConfig
+		return ret
 	}).(ClusterClusterConfigGceClusterConfigShieldedInstanceConfigOutput)
 }
 
@@ -2578,7 +2634,7 @@ func (o ClusterClusterConfigLifecycleConfigOutput) ToClusterClusterConfigLifecyc
 }
 
 func (o ClusterClusterConfigLifecycleConfigOutput) ToClusterClusterConfigLifecycleConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigLifecycleConfigPtrOutput {
-	return o.ApplyT(func(v ClusterClusterConfigLifecycleConfig) *ClusterClusterConfigLifecycleConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigLifecycleConfig) *ClusterClusterConfigLifecycleConfig {
 		return &v
 	}).(ClusterClusterConfigLifecycleConfigPtrOutput)
 }
@@ -2615,7 +2671,13 @@ func (o ClusterClusterConfigLifecycleConfigPtrOutput) ToClusterClusterConfigLife
 }
 
 func (o ClusterClusterConfigLifecycleConfigPtrOutput) Elem() ClusterClusterConfigLifecycleConfigOutput {
-	return o.ApplyT(func(v *ClusterClusterConfigLifecycleConfig) ClusterClusterConfigLifecycleConfig { return *v }).(ClusterClusterConfigLifecycleConfigOutput)
+	return o.ApplyT(func(v *ClusterClusterConfigLifecycleConfig) ClusterClusterConfigLifecycleConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterClusterConfigLifecycleConfig
+		return ret
+	}).(ClusterClusterConfigLifecycleConfigOutput)
 }
 
 // The time when cluster will be auto-deleted.
@@ -2779,7 +2841,7 @@ func (o ClusterClusterConfigMasterConfigOutput) ToClusterClusterConfigMasterConf
 }
 
 func (o ClusterClusterConfigMasterConfigOutput) ToClusterClusterConfigMasterConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigMasterConfigPtrOutput {
-	return o.ApplyT(func(v ClusterClusterConfigMasterConfig) *ClusterClusterConfigMasterConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigMasterConfig) *ClusterClusterConfigMasterConfig {
 		return &v
 	}).(ClusterClusterConfigMasterConfigPtrOutput)
 }
@@ -2844,7 +2906,13 @@ func (o ClusterClusterConfigMasterConfigPtrOutput) ToClusterClusterConfigMasterC
 }
 
 func (o ClusterClusterConfigMasterConfigPtrOutput) Elem() ClusterClusterConfigMasterConfigOutput {
-	return o.ApplyT(func(v *ClusterClusterConfigMasterConfig) ClusterClusterConfigMasterConfig { return *v }).(ClusterClusterConfigMasterConfigOutput)
+	return o.ApplyT(func(v *ClusterClusterConfigMasterConfig) ClusterClusterConfigMasterConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterClusterConfigMasterConfig
+		return ret
+	}).(ClusterClusterConfigMasterConfigOutput)
 }
 
 // The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
@@ -3140,7 +3208,7 @@ func (o ClusterClusterConfigMasterConfigDiskConfigOutput) ToClusterClusterConfig
 }
 
 func (o ClusterClusterConfigMasterConfigDiskConfigOutput) ToClusterClusterConfigMasterConfigDiskConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigMasterConfigDiskConfigPtrOutput {
-	return o.ApplyT(func(v ClusterClusterConfigMasterConfigDiskConfig) *ClusterClusterConfigMasterConfigDiskConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigMasterConfigDiskConfig) *ClusterClusterConfigMasterConfigDiskConfig {
 		return &v
 	}).(ClusterClusterConfigMasterConfigDiskConfigPtrOutput)
 }
@@ -3181,7 +3249,11 @@ func (o ClusterClusterConfigMasterConfigDiskConfigPtrOutput) ToClusterClusterCon
 
 func (o ClusterClusterConfigMasterConfigDiskConfigPtrOutput) Elem() ClusterClusterConfigMasterConfigDiskConfigOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigMasterConfigDiskConfig) ClusterClusterConfigMasterConfigDiskConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ClusterClusterConfigMasterConfigDiskConfig
+		return ret
 	}).(ClusterClusterConfigMasterConfigDiskConfigOutput)
 }
 
@@ -3313,7 +3385,7 @@ func (o ClusterClusterConfigMetastoreConfigOutput) ToClusterClusterConfigMetasto
 }
 
 func (o ClusterClusterConfigMetastoreConfigOutput) ToClusterClusterConfigMetastoreConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigMetastoreConfigPtrOutput {
-	return o.ApplyT(func(v ClusterClusterConfigMetastoreConfig) *ClusterClusterConfigMetastoreConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigMetastoreConfig) *ClusterClusterConfigMetastoreConfig {
 		return &v
 	}).(ClusterClusterConfigMetastoreConfigPtrOutput)
 }
@@ -3338,7 +3410,13 @@ func (o ClusterClusterConfigMetastoreConfigPtrOutput) ToClusterClusterConfigMeta
 }
 
 func (o ClusterClusterConfigMetastoreConfigPtrOutput) Elem() ClusterClusterConfigMetastoreConfigOutput {
-	return o.ApplyT(func(v *ClusterClusterConfigMetastoreConfig) ClusterClusterConfigMetastoreConfig { return *v }).(ClusterClusterConfigMetastoreConfigOutput)
+	return o.ApplyT(func(v *ClusterClusterConfigMetastoreConfig) ClusterClusterConfigMetastoreConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterClusterConfigMetastoreConfig
+		return ret
+	}).(ClusterClusterConfigMetastoreConfigOutput)
 }
 
 // Resource name of an existing Dataproc Metastore service.
@@ -3452,7 +3530,7 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigOutput) ToClusterClusterConfi
 }
 
 func (o ClusterClusterConfigPreemptibleWorkerConfigOutput) ToClusterClusterConfigPreemptibleWorkerConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigPreemptibleWorkerConfigPtrOutput {
-	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfig) *ClusterClusterConfigPreemptibleWorkerConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigPreemptibleWorkerConfig) *ClusterClusterConfigPreemptibleWorkerConfig {
 		return &v
 	}).(ClusterClusterConfigPreemptibleWorkerConfigPtrOutput)
 }
@@ -3490,7 +3568,11 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigPtrOutput) ToClusterClusterCo
 
 func (o ClusterClusterConfigPreemptibleWorkerConfigPtrOutput) Elem() ClusterClusterConfigPreemptibleWorkerConfigOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigPreemptibleWorkerConfig) ClusterClusterConfigPreemptibleWorkerConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ClusterClusterConfigPreemptibleWorkerConfig
+		return ret
 	}).(ClusterClusterConfigPreemptibleWorkerConfigOutput)
 }
 
@@ -3635,7 +3717,7 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigOutput) ToClusterCl
 }
 
 func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigOutput) ToClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrOutput {
-	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigDiskConfig) *ClusterClusterConfigPreemptibleWorkerConfigDiskConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigPreemptibleWorkerConfigDiskConfig) *ClusterClusterConfigPreemptibleWorkerConfigDiskConfig {
 		return &v
 	}).(ClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrOutput)
 }
@@ -3676,7 +3758,11 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrOutput) ToCluste
 
 func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrOutput) Elem() ClusterClusterConfigPreemptibleWorkerConfigDiskConfigOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigPreemptibleWorkerConfigDiskConfig) ClusterClusterConfigPreemptibleWorkerConfigDiskConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ClusterClusterConfigPreemptibleWorkerConfigDiskConfig
+		return ret
 	}).(ClusterClusterConfigPreemptibleWorkerConfigDiskConfigOutput)
 }
 
@@ -3808,7 +3894,7 @@ func (o ClusterClusterConfigSecurityConfigOutput) ToClusterClusterConfigSecurity
 }
 
 func (o ClusterClusterConfigSecurityConfigOutput) ToClusterClusterConfigSecurityConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigSecurityConfigPtrOutput {
-	return o.ApplyT(func(v ClusterClusterConfigSecurityConfig) *ClusterClusterConfigSecurityConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigSecurityConfig) *ClusterClusterConfigSecurityConfig {
 		return &v
 	}).(ClusterClusterConfigSecurityConfigPtrOutput)
 }
@@ -3835,7 +3921,13 @@ func (o ClusterClusterConfigSecurityConfigPtrOutput) ToClusterClusterConfigSecur
 }
 
 func (o ClusterClusterConfigSecurityConfigPtrOutput) Elem() ClusterClusterConfigSecurityConfigOutput {
-	return o.ApplyT(func(v *ClusterClusterConfigSecurityConfig) ClusterClusterConfigSecurityConfig { return *v }).(ClusterClusterConfigSecurityConfigOutput)
+	return o.ApplyT(func(v *ClusterClusterConfigSecurityConfig) ClusterClusterConfigSecurityConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterClusterConfigSecurityConfig
+		return ret
+	}).(ClusterClusterConfigSecurityConfigOutput)
 }
 
 // Kerberos Configuration
@@ -4029,7 +4121,7 @@ func (o ClusterClusterConfigSecurityConfigKerberosConfigOutput) ToClusterCluster
 }
 
 func (o ClusterClusterConfigSecurityConfigKerberosConfigOutput) ToClusterClusterConfigSecurityConfigKerberosConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigSecurityConfigKerberosConfigPtrOutput {
-	return o.ApplyT(func(v ClusterClusterConfigSecurityConfigKerberosConfig) *ClusterClusterConfigSecurityConfigKerberosConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigSecurityConfigKerberosConfig) *ClusterClusterConfigSecurityConfigKerberosConfig {
 		return &v
 	}).(ClusterClusterConfigSecurityConfigKerberosConfigPtrOutput)
 }
@@ -4143,7 +4235,11 @@ func (o ClusterClusterConfigSecurityConfigKerberosConfigPtrOutput) ToClusterClus
 
 func (o ClusterClusterConfigSecurityConfigKerberosConfigPtrOutput) Elem() ClusterClusterConfigSecurityConfigKerberosConfigOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigSecurityConfigKerberosConfig) ClusterClusterConfigSecurityConfigKerberosConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ClusterClusterConfigSecurityConfigKerberosConfig
+		return ret
 	}).(ClusterClusterConfigSecurityConfigKerberosConfigOutput)
 }
 
@@ -4454,7 +4550,7 @@ func (o ClusterClusterConfigSoftwareConfigOutput) ToClusterClusterConfigSoftware
 }
 
 func (o ClusterClusterConfigSoftwareConfigOutput) ToClusterClusterConfigSoftwareConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigSoftwareConfigPtrOutput {
-	return o.ApplyT(func(v ClusterClusterConfigSoftwareConfig) *ClusterClusterConfigSoftwareConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigSoftwareConfig) *ClusterClusterConfigSoftwareConfig {
 		return &v
 	}).(ClusterClusterConfigSoftwareConfigPtrOutput)
 }
@@ -4512,7 +4608,13 @@ func (o ClusterClusterConfigSoftwareConfigPtrOutput) ToClusterClusterConfigSoftw
 }
 
 func (o ClusterClusterConfigSoftwareConfigPtrOutput) Elem() ClusterClusterConfigSoftwareConfigOutput {
-	return o.ApplyT(func(v *ClusterClusterConfigSoftwareConfig) ClusterClusterConfigSoftwareConfig { return *v }).(ClusterClusterConfigSoftwareConfigOutput)
+	return o.ApplyT(func(v *ClusterClusterConfigSoftwareConfig) ClusterClusterConfigSoftwareConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterClusterConfigSoftwareConfig
+		return ret
+	}).(ClusterClusterConfigSoftwareConfigOutput)
 }
 
 // The Cloud Dataproc image version to use
@@ -4702,7 +4804,7 @@ func (o ClusterClusterConfigWorkerConfigOutput) ToClusterClusterConfigWorkerConf
 }
 
 func (o ClusterClusterConfigWorkerConfigOutput) ToClusterClusterConfigWorkerConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigWorkerConfigPtrOutput {
-	return o.ApplyT(func(v ClusterClusterConfigWorkerConfig) *ClusterClusterConfigWorkerConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigWorkerConfig) *ClusterClusterConfigWorkerConfig {
 		return &v
 	}).(ClusterClusterConfigWorkerConfigPtrOutput)
 }
@@ -4767,7 +4869,13 @@ func (o ClusterClusterConfigWorkerConfigPtrOutput) ToClusterClusterConfigWorkerC
 }
 
 func (o ClusterClusterConfigWorkerConfigPtrOutput) Elem() ClusterClusterConfigWorkerConfigOutput {
-	return o.ApplyT(func(v *ClusterClusterConfigWorkerConfig) ClusterClusterConfigWorkerConfig { return *v }).(ClusterClusterConfigWorkerConfigOutput)
+	return o.ApplyT(func(v *ClusterClusterConfigWorkerConfig) ClusterClusterConfigWorkerConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterClusterConfigWorkerConfig
+		return ret
+	}).(ClusterClusterConfigWorkerConfigOutput)
 }
 
 // The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
@@ -5063,7 +5171,7 @@ func (o ClusterClusterConfigWorkerConfigDiskConfigOutput) ToClusterClusterConfig
 }
 
 func (o ClusterClusterConfigWorkerConfigDiskConfigOutput) ToClusterClusterConfigWorkerConfigDiskConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigWorkerConfigDiskConfigPtrOutput {
-	return o.ApplyT(func(v ClusterClusterConfigWorkerConfigDiskConfig) *ClusterClusterConfigWorkerConfigDiskConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigWorkerConfigDiskConfig) *ClusterClusterConfigWorkerConfigDiskConfig {
 		return &v
 	}).(ClusterClusterConfigWorkerConfigDiskConfigPtrOutput)
 }
@@ -5104,7 +5212,11 @@ func (o ClusterClusterConfigWorkerConfigDiskConfigPtrOutput) ToClusterClusterCon
 
 func (o ClusterClusterConfigWorkerConfigDiskConfigPtrOutput) Elem() ClusterClusterConfigWorkerConfigDiskConfigOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigWorkerConfigDiskConfig) ClusterClusterConfigWorkerConfigDiskConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ClusterClusterConfigWorkerConfigDiskConfig
+		return ret
 	}).(ClusterClusterConfigWorkerConfigDiskConfigOutput)
 }
 
@@ -5238,10 +5350,11 @@ func (o ClusterIAMBindingConditionOutput) ToClusterIAMBindingConditionPtrOutput(
 }
 
 func (o ClusterIAMBindingConditionOutput) ToClusterIAMBindingConditionPtrOutputWithContext(ctx context.Context) ClusterIAMBindingConditionPtrOutput {
-	return o.ApplyT(func(v ClusterIAMBindingCondition) *ClusterIAMBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterIAMBindingCondition) *ClusterIAMBindingCondition {
 		return &v
 	}).(ClusterIAMBindingConditionPtrOutput)
 }
+
 func (o ClusterIAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -5269,7 +5382,13 @@ func (o ClusterIAMBindingConditionPtrOutput) ToClusterIAMBindingConditionPtrOutp
 }
 
 func (o ClusterIAMBindingConditionPtrOutput) Elem() ClusterIAMBindingConditionOutput {
-	return o.ApplyT(func(v *ClusterIAMBindingCondition) ClusterIAMBindingCondition { return *v }).(ClusterIAMBindingConditionOutput)
+	return o.ApplyT(func(v *ClusterIAMBindingCondition) ClusterIAMBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterIAMBindingCondition
+		return ret
+	}).(ClusterIAMBindingConditionOutput)
 }
 
 func (o ClusterIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -5394,10 +5513,11 @@ func (o ClusterIAMMemberConditionOutput) ToClusterIAMMemberConditionPtrOutput() 
 }
 
 func (o ClusterIAMMemberConditionOutput) ToClusterIAMMemberConditionPtrOutputWithContext(ctx context.Context) ClusterIAMMemberConditionPtrOutput {
-	return o.ApplyT(func(v ClusterIAMMemberCondition) *ClusterIAMMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterIAMMemberCondition) *ClusterIAMMemberCondition {
 		return &v
 	}).(ClusterIAMMemberConditionPtrOutput)
 }
+
 func (o ClusterIAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -5425,7 +5545,13 @@ func (o ClusterIAMMemberConditionPtrOutput) ToClusterIAMMemberConditionPtrOutput
 }
 
 func (o ClusterIAMMemberConditionPtrOutput) Elem() ClusterIAMMemberConditionOutput {
-	return o.ApplyT(func(v *ClusterIAMMemberCondition) ClusterIAMMemberCondition { return *v }).(ClusterIAMMemberConditionOutput)
+	return o.ApplyT(func(v *ClusterIAMMemberCondition) ClusterIAMMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterIAMMemberCondition
+		return ret
+	}).(ClusterIAMMemberConditionOutput)
 }
 
 func (o ClusterIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -5574,7 +5700,7 @@ func (o JobHadoopConfigOutput) ToJobHadoopConfigPtrOutput() JobHadoopConfigPtrOu
 }
 
 func (o JobHadoopConfigOutput) ToJobHadoopConfigPtrOutputWithContext(ctx context.Context) JobHadoopConfigPtrOutput {
-	return o.ApplyT(func(v JobHadoopConfig) *JobHadoopConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobHadoopConfig) *JobHadoopConfig {
 		return &v
 	}).(JobHadoopConfigPtrOutput)
 }
@@ -5633,7 +5759,13 @@ func (o JobHadoopConfigPtrOutput) ToJobHadoopConfigPtrOutputWithContext(ctx cont
 }
 
 func (o JobHadoopConfigPtrOutput) Elem() JobHadoopConfigOutput {
-	return o.ApplyT(func(v *JobHadoopConfig) JobHadoopConfig { return *v }).(JobHadoopConfigOutput)
+	return o.ApplyT(func(v *JobHadoopConfig) JobHadoopConfig {
+		if v != nil {
+			return *v
+		}
+		var ret JobHadoopConfig
+		return ret
+	}).(JobHadoopConfigOutput)
 }
 
 // HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -5806,10 +5938,11 @@ func (o JobHadoopConfigLoggingConfigOutput) ToJobHadoopConfigLoggingConfigPtrOut
 }
 
 func (o JobHadoopConfigLoggingConfigOutput) ToJobHadoopConfigLoggingConfigPtrOutputWithContext(ctx context.Context) JobHadoopConfigLoggingConfigPtrOutput {
-	return o.ApplyT(func(v JobHadoopConfigLoggingConfig) *JobHadoopConfigLoggingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobHadoopConfigLoggingConfig) *JobHadoopConfigLoggingConfig {
 		return &v
 	}).(JobHadoopConfigLoggingConfigPtrOutput)
 }
+
 func (o JobHadoopConfigLoggingConfigOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobHadoopConfigLoggingConfig) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
 }
@@ -5829,7 +5962,13 @@ func (o JobHadoopConfigLoggingConfigPtrOutput) ToJobHadoopConfigLoggingConfigPtr
 }
 
 func (o JobHadoopConfigLoggingConfigPtrOutput) Elem() JobHadoopConfigLoggingConfigOutput {
-	return o.ApplyT(func(v *JobHadoopConfigLoggingConfig) JobHadoopConfigLoggingConfig { return *v }).(JobHadoopConfigLoggingConfigOutput)
+	return o.ApplyT(func(v *JobHadoopConfigLoggingConfig) JobHadoopConfigLoggingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret JobHadoopConfigLoggingConfig
+		return ret
+	}).(JobHadoopConfigLoggingConfigOutput)
 }
 
 func (o JobHadoopConfigLoggingConfigPtrOutput) DriverLogLevels() pulumi.StringMapOutput {
@@ -5958,7 +6097,7 @@ func (o JobHiveConfigOutput) ToJobHiveConfigPtrOutput() JobHiveConfigPtrOutput {
 }
 
 func (o JobHiveConfigOutput) ToJobHiveConfigPtrOutputWithContext(ctx context.Context) JobHiveConfigPtrOutput {
-	return o.ApplyT(func(v JobHiveConfig) *JobHiveConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobHiveConfig) *JobHiveConfig {
 		return &v
 	}).(JobHiveConfigPtrOutput)
 }
@@ -6010,7 +6149,13 @@ func (o JobHiveConfigPtrOutput) ToJobHiveConfigPtrOutputWithContext(ctx context.
 }
 
 func (o JobHiveConfigPtrOutput) Elem() JobHiveConfigOutput {
-	return o.ApplyT(func(v *JobHiveConfig) JobHiveConfig { return *v }).(JobHiveConfigOutput)
+	return o.ApplyT(func(v *JobHiveConfig) JobHiveConfig {
+		if v != nil {
+			return *v
+		}
+		var ret JobHiveConfig
+		return ret
+	}).(JobHiveConfigOutput)
 }
 
 // Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
@@ -6170,10 +6315,11 @@ func (o JobIAMBindingConditionOutput) ToJobIAMBindingConditionPtrOutput() JobIAM
 }
 
 func (o JobIAMBindingConditionOutput) ToJobIAMBindingConditionPtrOutputWithContext(ctx context.Context) JobIAMBindingConditionPtrOutput {
-	return o.ApplyT(func(v JobIAMBindingCondition) *JobIAMBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobIAMBindingCondition) *JobIAMBindingCondition {
 		return &v
 	}).(JobIAMBindingConditionPtrOutput)
 }
+
 func (o JobIAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -6201,7 +6347,13 @@ func (o JobIAMBindingConditionPtrOutput) ToJobIAMBindingConditionPtrOutputWithCo
 }
 
 func (o JobIAMBindingConditionPtrOutput) Elem() JobIAMBindingConditionOutput {
-	return o.ApplyT(func(v *JobIAMBindingCondition) JobIAMBindingCondition { return *v }).(JobIAMBindingConditionOutput)
+	return o.ApplyT(func(v *JobIAMBindingCondition) JobIAMBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret JobIAMBindingCondition
+		return ret
+	}).(JobIAMBindingConditionOutput)
 }
 
 func (o JobIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -6326,10 +6478,11 @@ func (o JobIAMMemberConditionOutput) ToJobIAMMemberConditionPtrOutput() JobIAMMe
 }
 
 func (o JobIAMMemberConditionOutput) ToJobIAMMemberConditionPtrOutputWithContext(ctx context.Context) JobIAMMemberConditionPtrOutput {
-	return o.ApplyT(func(v JobIAMMemberCondition) *JobIAMMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobIAMMemberCondition) *JobIAMMemberCondition {
 		return &v
 	}).(JobIAMMemberConditionPtrOutput)
 }
+
 func (o JobIAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -6357,7 +6510,13 @@ func (o JobIAMMemberConditionPtrOutput) ToJobIAMMemberConditionPtrOutputWithCont
 }
 
 func (o JobIAMMemberConditionPtrOutput) Elem() JobIAMMemberConditionOutput {
-	return o.ApplyT(func(v *JobIAMMemberCondition) JobIAMMemberCondition { return *v }).(JobIAMMemberConditionOutput)
+	return o.ApplyT(func(v *JobIAMMemberCondition) JobIAMMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret JobIAMMemberCondition
+		return ret
+	}).(JobIAMMemberConditionOutput)
 }
 
 func (o JobIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -6506,7 +6665,7 @@ func (o JobPigConfigOutput) ToJobPigConfigPtrOutput() JobPigConfigPtrOutput {
 }
 
 func (o JobPigConfigOutput) ToJobPigConfigPtrOutputWithContext(ctx context.Context) JobPigConfigPtrOutput {
-	return o.ApplyT(func(v JobPigConfig) *JobPigConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobPigConfig) *JobPigConfig {
 		return &v
 	}).(JobPigConfigPtrOutput)
 }
@@ -6562,7 +6721,13 @@ func (o JobPigConfigPtrOutput) ToJobPigConfigPtrOutputWithContext(ctx context.Co
 }
 
 func (o JobPigConfigPtrOutput) Elem() JobPigConfigOutput {
-	return o.ApplyT(func(v *JobPigConfig) JobPigConfig { return *v }).(JobPigConfigOutput)
+	return o.ApplyT(func(v *JobPigConfig) JobPigConfig {
+		if v != nil {
+			return *v
+		}
+		var ret JobPigConfig
+		return ret
+	}).(JobPigConfigOutput)
 }
 
 // Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
@@ -6727,10 +6892,11 @@ func (o JobPigConfigLoggingConfigOutput) ToJobPigConfigLoggingConfigPtrOutput() 
 }
 
 func (o JobPigConfigLoggingConfigOutput) ToJobPigConfigLoggingConfigPtrOutputWithContext(ctx context.Context) JobPigConfigLoggingConfigPtrOutput {
-	return o.ApplyT(func(v JobPigConfigLoggingConfig) *JobPigConfigLoggingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobPigConfigLoggingConfig) *JobPigConfigLoggingConfig {
 		return &v
 	}).(JobPigConfigLoggingConfigPtrOutput)
 }
+
 func (o JobPigConfigLoggingConfigOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobPigConfigLoggingConfig) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
 }
@@ -6750,7 +6916,13 @@ func (o JobPigConfigLoggingConfigPtrOutput) ToJobPigConfigLoggingConfigPtrOutput
 }
 
 func (o JobPigConfigLoggingConfigPtrOutput) Elem() JobPigConfigLoggingConfigOutput {
-	return o.ApplyT(func(v *JobPigConfigLoggingConfig) JobPigConfigLoggingConfig { return *v }).(JobPigConfigLoggingConfigOutput)
+	return o.ApplyT(func(v *JobPigConfigLoggingConfig) JobPigConfigLoggingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret JobPigConfigLoggingConfig
+		return ret
+	}).(JobPigConfigLoggingConfigOutput)
 }
 
 func (o JobPigConfigLoggingConfigPtrOutput) DriverLogLevels() pulumi.StringMapOutput {
@@ -6855,10 +7027,11 @@ func (o JobPlacementOutput) ToJobPlacementPtrOutput() JobPlacementPtrOutput {
 }
 
 func (o JobPlacementOutput) ToJobPlacementPtrOutputWithContext(ctx context.Context) JobPlacementPtrOutput {
-	return o.ApplyT(func(v JobPlacement) *JobPlacement {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobPlacement) *JobPlacement {
 		return &v
 	}).(JobPlacementPtrOutput)
 }
+
 func (o JobPlacementOutput) ClusterName() pulumi.StringOutput {
 	return o.ApplyT(func(v JobPlacement) string { return v.ClusterName }).(pulumi.StringOutput)
 }
@@ -6882,7 +7055,13 @@ func (o JobPlacementPtrOutput) ToJobPlacementPtrOutputWithContext(ctx context.Co
 }
 
 func (o JobPlacementPtrOutput) Elem() JobPlacementOutput {
-	return o.ApplyT(func(v *JobPlacement) JobPlacement { return *v }).(JobPlacementOutput)
+	return o.ApplyT(func(v *JobPlacement) JobPlacement {
+		if v != nil {
+			return *v
+		}
+		var ret JobPlacement
+		return ret
+	}).(JobPlacementOutput)
 }
 
 func (o JobPlacementPtrOutput) ClusterName() pulumi.StringPtrOutput {
@@ -7022,7 +7201,7 @@ func (o JobPysparkConfigOutput) ToJobPysparkConfigPtrOutput() JobPysparkConfigPt
 }
 
 func (o JobPysparkConfigOutput) ToJobPysparkConfigPtrOutputWithContext(ctx context.Context) JobPysparkConfigPtrOutput {
-	return o.ApplyT(func(v JobPysparkConfig) *JobPysparkConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobPysparkConfig) *JobPysparkConfig {
 		return &v
 	}).(JobPysparkConfigPtrOutput)
 }
@@ -7081,7 +7260,13 @@ func (o JobPysparkConfigPtrOutput) ToJobPysparkConfigPtrOutputWithContext(ctx co
 }
 
 func (o JobPysparkConfigPtrOutput) Elem() JobPysparkConfigOutput {
-	return o.ApplyT(func(v *JobPysparkConfig) JobPysparkConfig { return *v }).(JobPysparkConfigOutput)
+	return o.ApplyT(func(v *JobPysparkConfig) JobPysparkConfig {
+		if v != nil {
+			return *v
+		}
+		var ret JobPysparkConfig
+		return ret
+	}).(JobPysparkConfigOutput)
 }
 
 // HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -7254,10 +7439,11 @@ func (o JobPysparkConfigLoggingConfigOutput) ToJobPysparkConfigLoggingConfigPtrO
 }
 
 func (o JobPysparkConfigLoggingConfigOutput) ToJobPysparkConfigLoggingConfigPtrOutputWithContext(ctx context.Context) JobPysparkConfigLoggingConfigPtrOutput {
-	return o.ApplyT(func(v JobPysparkConfigLoggingConfig) *JobPysparkConfigLoggingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobPysparkConfigLoggingConfig) *JobPysparkConfigLoggingConfig {
 		return &v
 	}).(JobPysparkConfigLoggingConfigPtrOutput)
 }
+
 func (o JobPysparkConfigLoggingConfigOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobPysparkConfigLoggingConfig) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
 }
@@ -7277,7 +7463,13 @@ func (o JobPysparkConfigLoggingConfigPtrOutput) ToJobPysparkConfigLoggingConfigP
 }
 
 func (o JobPysparkConfigLoggingConfigPtrOutput) Elem() JobPysparkConfigLoggingConfigOutput {
-	return o.ApplyT(func(v *JobPysparkConfigLoggingConfig) JobPysparkConfigLoggingConfig { return *v }).(JobPysparkConfigLoggingConfigOutput)
+	return o.ApplyT(func(v *JobPysparkConfigLoggingConfig) JobPysparkConfigLoggingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret JobPysparkConfigLoggingConfig
+		return ret
+	}).(JobPysparkConfigLoggingConfigOutput)
 }
 
 func (o JobPysparkConfigLoggingConfigPtrOutput) DriverLogLevels() pulumi.StringMapOutput {
@@ -7380,10 +7572,11 @@ func (o JobReferenceOutput) ToJobReferencePtrOutput() JobReferencePtrOutput {
 }
 
 func (o JobReferenceOutput) ToJobReferencePtrOutputWithContext(ctx context.Context) JobReferencePtrOutput {
-	return o.ApplyT(func(v JobReference) *JobReference {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobReference) *JobReference {
 		return &v
 	}).(JobReferencePtrOutput)
 }
+
 func (o JobReferenceOutput) JobId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobReference) *string { return v.JobId }).(pulumi.StringPtrOutput)
 }
@@ -7403,7 +7596,13 @@ func (o JobReferencePtrOutput) ToJobReferencePtrOutputWithContext(ctx context.Co
 }
 
 func (o JobReferencePtrOutput) Elem() JobReferenceOutput {
-	return o.ApplyT(func(v *JobReference) JobReference { return *v }).(JobReferenceOutput)
+	return o.ApplyT(func(v *JobReference) JobReference {
+		if v != nil {
+			return *v
+		}
+		var ret JobReference
+		return ret
+	}).(JobReferenceOutput)
 }
 
 func (o JobReferencePtrOutput) JobId() pulumi.StringPtrOutput {
@@ -7508,10 +7707,11 @@ func (o JobSchedulingOutput) ToJobSchedulingPtrOutput() JobSchedulingPtrOutput {
 }
 
 func (o JobSchedulingOutput) ToJobSchedulingPtrOutputWithContext(ctx context.Context) JobSchedulingPtrOutput {
-	return o.ApplyT(func(v JobScheduling) *JobScheduling {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobScheduling) *JobScheduling {
 		return &v
 	}).(JobSchedulingPtrOutput)
 }
+
 func (o JobSchedulingOutput) MaxFailuresPerHour() pulumi.IntOutput {
 	return o.ApplyT(func(v JobScheduling) int { return v.MaxFailuresPerHour }).(pulumi.IntOutput)
 }
@@ -7535,7 +7735,13 @@ func (o JobSchedulingPtrOutput) ToJobSchedulingPtrOutputWithContext(ctx context.
 }
 
 func (o JobSchedulingPtrOutput) Elem() JobSchedulingOutput {
-	return o.ApplyT(func(v *JobScheduling) JobScheduling { return *v }).(JobSchedulingOutput)
+	return o.ApplyT(func(v *JobScheduling) JobScheduling {
+		if v != nil {
+			return *v
+		}
+		var ret JobScheduling
+		return ret
+	}).(JobSchedulingOutput)
 }
 
 func (o JobSchedulingPtrOutput) MaxFailuresPerHour() pulumi.IntPtrOutput {
@@ -7675,7 +7881,7 @@ func (o JobSparkConfigOutput) ToJobSparkConfigPtrOutput() JobSparkConfigPtrOutpu
 }
 
 func (o JobSparkConfigOutput) ToJobSparkConfigPtrOutputWithContext(ctx context.Context) JobSparkConfigPtrOutput {
-	return o.ApplyT(func(v JobSparkConfig) *JobSparkConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobSparkConfig) *JobSparkConfig {
 		return &v
 	}).(JobSparkConfigPtrOutput)
 }
@@ -7734,7 +7940,13 @@ func (o JobSparkConfigPtrOutput) ToJobSparkConfigPtrOutputWithContext(ctx contex
 }
 
 func (o JobSparkConfigPtrOutput) Elem() JobSparkConfigOutput {
-	return o.ApplyT(func(v *JobSparkConfig) JobSparkConfig { return *v }).(JobSparkConfigOutput)
+	return o.ApplyT(func(v *JobSparkConfig) JobSparkConfig {
+		if v != nil {
+			return *v
+		}
+		var ret JobSparkConfig
+		return ret
+	}).(JobSparkConfigOutput)
 }
 
 // HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -7907,10 +8119,11 @@ func (o JobSparkConfigLoggingConfigOutput) ToJobSparkConfigLoggingConfigPtrOutpu
 }
 
 func (o JobSparkConfigLoggingConfigOutput) ToJobSparkConfigLoggingConfigPtrOutputWithContext(ctx context.Context) JobSparkConfigLoggingConfigPtrOutput {
-	return o.ApplyT(func(v JobSparkConfigLoggingConfig) *JobSparkConfigLoggingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobSparkConfigLoggingConfig) *JobSparkConfigLoggingConfig {
 		return &v
 	}).(JobSparkConfigLoggingConfigPtrOutput)
 }
+
 func (o JobSparkConfigLoggingConfigOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobSparkConfigLoggingConfig) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
 }
@@ -7930,7 +8143,13 @@ func (o JobSparkConfigLoggingConfigPtrOutput) ToJobSparkConfigLoggingConfigPtrOu
 }
 
 func (o JobSparkConfigLoggingConfigPtrOutput) Elem() JobSparkConfigLoggingConfigOutput {
-	return o.ApplyT(func(v *JobSparkConfigLoggingConfig) JobSparkConfigLoggingConfig { return *v }).(JobSparkConfigLoggingConfigOutput)
+	return o.ApplyT(func(v *JobSparkConfigLoggingConfig) JobSparkConfigLoggingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret JobSparkConfigLoggingConfig
+		return ret
+	}).(JobSparkConfigLoggingConfigOutput)
 }
 
 func (o JobSparkConfigLoggingConfigPtrOutput) DriverLogLevels() pulumi.StringMapOutput {
@@ -8057,7 +8276,7 @@ func (o JobSparksqlConfigOutput) ToJobSparksqlConfigPtrOutput() JobSparksqlConfi
 }
 
 func (o JobSparksqlConfigOutput) ToJobSparksqlConfigPtrOutputWithContext(ctx context.Context) JobSparksqlConfigPtrOutput {
-	return o.ApplyT(func(v JobSparksqlConfig) *JobSparksqlConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobSparksqlConfig) *JobSparksqlConfig {
 		return &v
 	}).(JobSparksqlConfigPtrOutput)
 }
@@ -8108,7 +8327,13 @@ func (o JobSparksqlConfigPtrOutput) ToJobSparksqlConfigPtrOutputWithContext(ctx 
 }
 
 func (o JobSparksqlConfigPtrOutput) Elem() JobSparksqlConfigOutput {
-	return o.ApplyT(func(v *JobSparksqlConfig) JobSparksqlConfig { return *v }).(JobSparksqlConfigOutput)
+	return o.ApplyT(func(v *JobSparksqlConfig) JobSparksqlConfig {
+		if v != nil {
+			return *v
+		}
+		var ret JobSparksqlConfig
+		return ret
+	}).(JobSparksqlConfigOutput)
 }
 
 // HCFS URIs of jar files to be added to the Spark CLASSPATH.
@@ -8263,10 +8488,11 @@ func (o JobSparksqlConfigLoggingConfigOutput) ToJobSparksqlConfigLoggingConfigPt
 }
 
 func (o JobSparksqlConfigLoggingConfigOutput) ToJobSparksqlConfigLoggingConfigPtrOutputWithContext(ctx context.Context) JobSparksqlConfigLoggingConfigPtrOutput {
-	return o.ApplyT(func(v JobSparksqlConfigLoggingConfig) *JobSparksqlConfigLoggingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobSparksqlConfigLoggingConfig) *JobSparksqlConfigLoggingConfig {
 		return &v
 	}).(JobSparksqlConfigLoggingConfigPtrOutput)
 }
+
 func (o JobSparksqlConfigLoggingConfigOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobSparksqlConfigLoggingConfig) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
 }
@@ -8286,7 +8512,13 @@ func (o JobSparksqlConfigLoggingConfigPtrOutput) ToJobSparksqlConfigLoggingConfi
 }
 
 func (o JobSparksqlConfigLoggingConfigPtrOutput) Elem() JobSparksqlConfigLoggingConfigOutput {
-	return o.ApplyT(func(v *JobSparksqlConfigLoggingConfig) JobSparksqlConfigLoggingConfig { return *v }).(JobSparksqlConfigLoggingConfigOutput)
+	return o.ApplyT(func(v *JobSparksqlConfigLoggingConfig) JobSparksqlConfigLoggingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret JobSparksqlConfigLoggingConfig
+		return ret
+	}).(JobSparksqlConfigLoggingConfigOutput)
 }
 
 func (o JobSparksqlConfigLoggingConfigPtrOutput) DriverLogLevels() pulumi.StringMapOutput {
@@ -8515,7 +8747,7 @@ func (o MetastoreServiceHiveMetastoreConfigOutput) ToMetastoreServiceHiveMetasto
 }
 
 func (o MetastoreServiceHiveMetastoreConfigOutput) ToMetastoreServiceHiveMetastoreConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceHiveMetastoreConfigPtrOutput {
-	return o.ApplyT(func(v MetastoreServiceHiveMetastoreConfig) *MetastoreServiceHiveMetastoreConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetastoreServiceHiveMetastoreConfig) *MetastoreServiceHiveMetastoreConfig {
 		return &v
 	}).(MetastoreServiceHiveMetastoreConfigPtrOutput)
 }
@@ -8554,7 +8786,13 @@ func (o MetastoreServiceHiveMetastoreConfigPtrOutput) ToMetastoreServiceHiveMeta
 }
 
 func (o MetastoreServiceHiveMetastoreConfigPtrOutput) Elem() MetastoreServiceHiveMetastoreConfigOutput {
-	return o.ApplyT(func(v *MetastoreServiceHiveMetastoreConfig) MetastoreServiceHiveMetastoreConfig { return *v }).(MetastoreServiceHiveMetastoreConfigOutput)
+	return o.ApplyT(func(v *MetastoreServiceHiveMetastoreConfig) MetastoreServiceHiveMetastoreConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MetastoreServiceHiveMetastoreConfig
+		return ret
+	}).(MetastoreServiceHiveMetastoreConfigOutput)
 }
 
 // A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
@@ -8692,7 +8930,7 @@ func (o MetastoreServiceHiveMetastoreConfigKerberosConfigOutput) ToMetastoreServ
 }
 
 func (o MetastoreServiceHiveMetastoreConfigKerberosConfigOutput) ToMetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput {
-	return o.ApplyT(func(v MetastoreServiceHiveMetastoreConfigKerberosConfig) *MetastoreServiceHiveMetastoreConfigKerberosConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetastoreServiceHiveMetastoreConfigKerberosConfig) *MetastoreServiceHiveMetastoreConfigKerberosConfig {
 		return &v
 	}).(MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput)
 }
@@ -8731,7 +8969,11 @@ func (o MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput) ToMetastoreS
 
 func (o MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput) Elem() MetastoreServiceHiveMetastoreConfigKerberosConfigOutput {
 	return o.ApplyT(func(v *MetastoreServiceHiveMetastoreConfigKerberosConfig) MetastoreServiceHiveMetastoreConfigKerberosConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret MetastoreServiceHiveMetastoreConfigKerberosConfig
+		return ret
 	}).(MetastoreServiceHiveMetastoreConfigKerberosConfigOutput)
 }
 
@@ -8861,7 +9103,7 @@ func (o MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput) ToMetasto
 }
 
 func (o MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput) ToMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutputWithContext(ctx context.Context) MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput {
-	return o.ApplyT(func(v MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab) *MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab) *MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab {
 		return &v
 	}).(MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput)
 }
@@ -8888,7 +9130,11 @@ func (o MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput) ToMeta
 
 func (o MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput) Elem() MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput {
 	return o.ApplyT(func(v *MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab) MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab
+		return ret
 	}).(MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput)
 }
 
@@ -9002,7 +9248,7 @@ func (o MetastoreServiceMaintenanceWindowOutput) ToMetastoreServiceMaintenanceWi
 }
 
 func (o MetastoreServiceMaintenanceWindowOutput) ToMetastoreServiceMaintenanceWindowPtrOutputWithContext(ctx context.Context) MetastoreServiceMaintenanceWindowPtrOutput {
-	return o.ApplyT(func(v MetastoreServiceMaintenanceWindow) *MetastoreServiceMaintenanceWindow {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetastoreServiceMaintenanceWindow) *MetastoreServiceMaintenanceWindow {
 		return &v
 	}).(MetastoreServiceMaintenanceWindowPtrOutput)
 }
@@ -9033,7 +9279,13 @@ func (o MetastoreServiceMaintenanceWindowPtrOutput) ToMetastoreServiceMaintenanc
 }
 
 func (o MetastoreServiceMaintenanceWindowPtrOutput) Elem() MetastoreServiceMaintenanceWindowOutput {
-	return o.ApplyT(func(v *MetastoreServiceMaintenanceWindow) MetastoreServiceMaintenanceWindow { return *v }).(MetastoreServiceMaintenanceWindowOutput)
+	return o.ApplyT(func(v *MetastoreServiceMaintenanceWindow) MetastoreServiceMaintenanceWindow {
+		if v != nil {
+			return *v
+		}
+		var ret MetastoreServiceMaintenanceWindow
+		return ret
+	}).(MetastoreServiceMaintenanceWindowOutput)
 }
 
 // The day of week, when the window starts.
@@ -9374,7 +9626,7 @@ func (o WorkflowTemplateJobHadoopJobOutput) ToWorkflowTemplateJobHadoopJobPtrOut
 }
 
 func (o WorkflowTemplateJobHadoopJobOutput) ToWorkflowTemplateJobHadoopJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobHadoopJobPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplateJobHadoopJob) *WorkflowTemplateJobHadoopJob {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplateJobHadoopJob) *WorkflowTemplateJobHadoopJob {
 		return &v
 	}).(WorkflowTemplateJobHadoopJobPtrOutput)
 }
@@ -9436,7 +9688,13 @@ func (o WorkflowTemplateJobHadoopJobPtrOutput) ToWorkflowTemplateJobHadoopJobPtr
 }
 
 func (o WorkflowTemplateJobHadoopJobPtrOutput) Elem() WorkflowTemplateJobHadoopJobOutput {
-	return o.ApplyT(func(v *WorkflowTemplateJobHadoopJob) WorkflowTemplateJobHadoopJob { return *v }).(WorkflowTemplateJobHadoopJobOutput)
+	return o.ApplyT(func(v *WorkflowTemplateJobHadoopJob) WorkflowTemplateJobHadoopJob {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplateJobHadoopJob
+		return ret
+	}).(WorkflowTemplateJobHadoopJobOutput)
 }
 
 // Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -9612,7 +9870,7 @@ func (o WorkflowTemplateJobHadoopJobLoggingConfigOutput) ToWorkflowTemplateJobHa
 }
 
 func (o WorkflowTemplateJobHadoopJobLoggingConfigOutput) ToWorkflowTemplateJobHadoopJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobHadoopJobLoggingConfigPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplateJobHadoopJobLoggingConfig) *WorkflowTemplateJobHadoopJobLoggingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplateJobHadoopJobLoggingConfig) *WorkflowTemplateJobHadoopJobLoggingConfig {
 		return &v
 	}).(WorkflowTemplateJobHadoopJobLoggingConfigPtrOutput)
 }
@@ -9638,7 +9896,11 @@ func (o WorkflowTemplateJobHadoopJobLoggingConfigPtrOutput) ToWorkflowTemplateJo
 
 func (o WorkflowTemplateJobHadoopJobLoggingConfigPtrOutput) Elem() WorkflowTemplateJobHadoopJobLoggingConfigOutput {
 	return o.ApplyT(func(v *WorkflowTemplateJobHadoopJobLoggingConfig) WorkflowTemplateJobHadoopJobLoggingConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplateJobHadoopJobLoggingConfig
+		return ret
 	}).(WorkflowTemplateJobHadoopJobLoggingConfigOutput)
 }
 
@@ -9765,7 +10027,7 @@ func (o WorkflowTemplateJobHiveJobOutput) ToWorkflowTemplateJobHiveJobPtrOutput(
 }
 
 func (o WorkflowTemplateJobHiveJobOutput) ToWorkflowTemplateJobHiveJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobHiveJobPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplateJobHiveJob) *WorkflowTemplateJobHiveJob {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplateJobHiveJob) *WorkflowTemplateJobHiveJob {
 		return &v
 	}).(WorkflowTemplateJobHiveJobPtrOutput)
 }
@@ -9815,7 +10077,13 @@ func (o WorkflowTemplateJobHiveJobPtrOutput) ToWorkflowTemplateJobHiveJobPtrOutp
 }
 
 func (o WorkflowTemplateJobHiveJobPtrOutput) Elem() WorkflowTemplateJobHiveJobOutput {
-	return o.ApplyT(func(v *WorkflowTemplateJobHiveJob) WorkflowTemplateJobHiveJob { return *v }).(WorkflowTemplateJobHiveJobOutput)
+	return o.ApplyT(func(v *WorkflowTemplateJobHiveJob) WorkflowTemplateJobHiveJob {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplateJobHiveJob
+		return ret
+	}).(WorkflowTemplateJobHiveJobOutput)
 }
 
 // Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
@@ -9971,7 +10239,7 @@ func (o WorkflowTemplateJobHiveJobQueryListOutput) ToWorkflowTemplateJobHiveJobQ
 }
 
 func (o WorkflowTemplateJobHiveJobQueryListOutput) ToWorkflowTemplateJobHiveJobQueryListPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobHiveJobQueryListPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplateJobHiveJobQueryList) *WorkflowTemplateJobHiveJobQueryList {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplateJobHiveJobQueryList) *WorkflowTemplateJobHiveJobQueryList {
 		return &v
 	}).(WorkflowTemplateJobHiveJobQueryListPtrOutput)
 }
@@ -9996,7 +10264,13 @@ func (o WorkflowTemplateJobHiveJobQueryListPtrOutput) ToWorkflowTemplateJobHiveJ
 }
 
 func (o WorkflowTemplateJobHiveJobQueryListPtrOutput) Elem() WorkflowTemplateJobHiveJobQueryListOutput {
-	return o.ApplyT(func(v *WorkflowTemplateJobHiveJobQueryList) WorkflowTemplateJobHiveJobQueryList { return *v }).(WorkflowTemplateJobHiveJobQueryListOutput)
+	return o.ApplyT(func(v *WorkflowTemplateJobHiveJobQueryList) WorkflowTemplateJobHiveJobQueryList {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplateJobHiveJobQueryList
+		return ret
+	}).(WorkflowTemplateJobHiveJobQueryListOutput)
 }
 
 // Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
@@ -10126,7 +10400,7 @@ func (o WorkflowTemplateJobPigJobOutput) ToWorkflowTemplateJobPigJobPtrOutput() 
 }
 
 func (o WorkflowTemplateJobPigJobOutput) ToWorkflowTemplateJobPigJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPigJobPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplateJobPigJob) *WorkflowTemplateJobPigJob {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplateJobPigJob) *WorkflowTemplateJobPigJob {
 		return &v
 	}).(WorkflowTemplateJobPigJobPtrOutput)
 }
@@ -10181,7 +10455,13 @@ func (o WorkflowTemplateJobPigJobPtrOutput) ToWorkflowTemplateJobPigJobPtrOutput
 }
 
 func (o WorkflowTemplateJobPigJobPtrOutput) Elem() WorkflowTemplateJobPigJobOutput {
-	return o.ApplyT(func(v *WorkflowTemplateJobPigJob) WorkflowTemplateJobPigJob { return *v }).(WorkflowTemplateJobPigJobOutput)
+	return o.ApplyT(func(v *WorkflowTemplateJobPigJob) WorkflowTemplateJobPigJob {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplateJobPigJob
+		return ret
+	}).(WorkflowTemplateJobPigJobOutput)
 }
 
 // Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
@@ -10347,7 +10627,7 @@ func (o WorkflowTemplateJobPigJobLoggingConfigOutput) ToWorkflowTemplateJobPigJo
 }
 
 func (o WorkflowTemplateJobPigJobLoggingConfigOutput) ToWorkflowTemplateJobPigJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPigJobLoggingConfigPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplateJobPigJobLoggingConfig) *WorkflowTemplateJobPigJobLoggingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplateJobPigJobLoggingConfig) *WorkflowTemplateJobPigJobLoggingConfig {
 		return &v
 	}).(WorkflowTemplateJobPigJobLoggingConfigPtrOutput)
 }
@@ -10372,7 +10652,13 @@ func (o WorkflowTemplateJobPigJobLoggingConfigPtrOutput) ToWorkflowTemplateJobPi
 }
 
 func (o WorkflowTemplateJobPigJobLoggingConfigPtrOutput) Elem() WorkflowTemplateJobPigJobLoggingConfigOutput {
-	return o.ApplyT(func(v *WorkflowTemplateJobPigJobLoggingConfig) WorkflowTemplateJobPigJobLoggingConfig { return *v }).(WorkflowTemplateJobPigJobLoggingConfigOutput)
+	return o.ApplyT(func(v *WorkflowTemplateJobPigJobLoggingConfig) WorkflowTemplateJobPigJobLoggingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplateJobPigJobLoggingConfig
+		return ret
+	}).(WorkflowTemplateJobPigJobLoggingConfigOutput)
 }
 
 // The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
@@ -10478,7 +10764,7 @@ func (o WorkflowTemplateJobPigJobQueryListOutput) ToWorkflowTemplateJobPigJobQue
 }
 
 func (o WorkflowTemplateJobPigJobQueryListOutput) ToWorkflowTemplateJobPigJobQueryListPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPigJobQueryListPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplateJobPigJobQueryList) *WorkflowTemplateJobPigJobQueryList {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplateJobPigJobQueryList) *WorkflowTemplateJobPigJobQueryList {
 		return &v
 	}).(WorkflowTemplateJobPigJobQueryListPtrOutput)
 }
@@ -10503,7 +10789,13 @@ func (o WorkflowTemplateJobPigJobQueryListPtrOutput) ToWorkflowTemplateJobPigJob
 }
 
 func (o WorkflowTemplateJobPigJobQueryListPtrOutput) Elem() WorkflowTemplateJobPigJobQueryListOutput {
-	return o.ApplyT(func(v *WorkflowTemplateJobPigJobQueryList) WorkflowTemplateJobPigJobQueryList { return *v }).(WorkflowTemplateJobPigJobQueryListOutput)
+	return o.ApplyT(func(v *WorkflowTemplateJobPigJobQueryList) WorkflowTemplateJobPigJobQueryList {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplateJobPigJobQueryList
+		return ret
+	}).(WorkflowTemplateJobPigJobQueryListOutput)
 }
 
 // Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
@@ -10633,7 +10925,7 @@ func (o WorkflowTemplateJobPrestoJobOutput) ToWorkflowTemplateJobPrestoJobPtrOut
 }
 
 func (o WorkflowTemplateJobPrestoJobOutput) ToWorkflowTemplateJobPrestoJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPrestoJobPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplateJobPrestoJob) *WorkflowTemplateJobPrestoJob {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplateJobPrestoJob) *WorkflowTemplateJobPrestoJob {
 		return &v
 	}).(WorkflowTemplateJobPrestoJobPtrOutput)
 }
@@ -10690,7 +10982,13 @@ func (o WorkflowTemplateJobPrestoJobPtrOutput) ToWorkflowTemplateJobPrestoJobPtr
 }
 
 func (o WorkflowTemplateJobPrestoJobPtrOutput) Elem() WorkflowTemplateJobPrestoJobOutput {
-	return o.ApplyT(func(v *WorkflowTemplateJobPrestoJob) WorkflowTemplateJobPrestoJob { return *v }).(WorkflowTemplateJobPrestoJobOutput)
+	return o.ApplyT(func(v *WorkflowTemplateJobPrestoJob) WorkflowTemplateJobPrestoJob {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplateJobPrestoJob
+		return ret
+	}).(WorkflowTemplateJobPrestoJobOutput)
 }
 
 // Optional. Presto client tags to attach to this query
@@ -10856,7 +11154,7 @@ func (o WorkflowTemplateJobPrestoJobLoggingConfigOutput) ToWorkflowTemplateJobPr
 }
 
 func (o WorkflowTemplateJobPrestoJobLoggingConfigOutput) ToWorkflowTemplateJobPrestoJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPrestoJobLoggingConfigPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplateJobPrestoJobLoggingConfig) *WorkflowTemplateJobPrestoJobLoggingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplateJobPrestoJobLoggingConfig) *WorkflowTemplateJobPrestoJobLoggingConfig {
 		return &v
 	}).(WorkflowTemplateJobPrestoJobLoggingConfigPtrOutput)
 }
@@ -10882,7 +11180,11 @@ func (o WorkflowTemplateJobPrestoJobLoggingConfigPtrOutput) ToWorkflowTemplateJo
 
 func (o WorkflowTemplateJobPrestoJobLoggingConfigPtrOutput) Elem() WorkflowTemplateJobPrestoJobLoggingConfigOutput {
 	return o.ApplyT(func(v *WorkflowTemplateJobPrestoJobLoggingConfig) WorkflowTemplateJobPrestoJobLoggingConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplateJobPrestoJobLoggingConfig
+		return ret
 	}).(WorkflowTemplateJobPrestoJobLoggingConfigOutput)
 }
 
@@ -10989,7 +11291,7 @@ func (o WorkflowTemplateJobPrestoJobQueryListOutput) ToWorkflowTemplateJobPresto
 }
 
 func (o WorkflowTemplateJobPrestoJobQueryListOutput) ToWorkflowTemplateJobPrestoJobQueryListPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPrestoJobQueryListPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplateJobPrestoJobQueryList) *WorkflowTemplateJobPrestoJobQueryList {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplateJobPrestoJobQueryList) *WorkflowTemplateJobPrestoJobQueryList {
 		return &v
 	}).(WorkflowTemplateJobPrestoJobQueryListPtrOutput)
 }
@@ -11014,7 +11316,13 @@ func (o WorkflowTemplateJobPrestoJobQueryListPtrOutput) ToWorkflowTemplateJobPre
 }
 
 func (o WorkflowTemplateJobPrestoJobQueryListPtrOutput) Elem() WorkflowTemplateJobPrestoJobQueryListOutput {
-	return o.ApplyT(func(v *WorkflowTemplateJobPrestoJobQueryList) WorkflowTemplateJobPrestoJobQueryList { return *v }).(WorkflowTemplateJobPrestoJobQueryListOutput)
+	return o.ApplyT(func(v *WorkflowTemplateJobPrestoJobQueryList) WorkflowTemplateJobPrestoJobQueryList {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplateJobPrestoJobQueryList
+		return ret
+	}).(WorkflowTemplateJobPrestoJobQueryListOutput)
 }
 
 // Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
@@ -11148,7 +11456,7 @@ func (o WorkflowTemplateJobPysparkJobOutput) ToWorkflowTemplateJobPysparkJobPtrO
 }
 
 func (o WorkflowTemplateJobPysparkJobOutput) ToWorkflowTemplateJobPysparkJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPysparkJobPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplateJobPysparkJob) *WorkflowTemplateJobPysparkJob {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplateJobPysparkJob) *WorkflowTemplateJobPysparkJob {
 		return &v
 	}).(WorkflowTemplateJobPysparkJobPtrOutput)
 }
@@ -11210,7 +11518,13 @@ func (o WorkflowTemplateJobPysparkJobPtrOutput) ToWorkflowTemplateJobPysparkJobP
 }
 
 func (o WorkflowTemplateJobPysparkJobPtrOutput) Elem() WorkflowTemplateJobPysparkJobOutput {
-	return o.ApplyT(func(v *WorkflowTemplateJobPysparkJob) WorkflowTemplateJobPysparkJob { return *v }).(WorkflowTemplateJobPysparkJobOutput)
+	return o.ApplyT(func(v *WorkflowTemplateJobPysparkJob) WorkflowTemplateJobPysparkJob {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplateJobPysparkJob
+		return ret
+	}).(WorkflowTemplateJobPysparkJobOutput)
 }
 
 // Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -11386,7 +11700,7 @@ func (o WorkflowTemplateJobPysparkJobLoggingConfigOutput) ToWorkflowTemplateJobP
 }
 
 func (o WorkflowTemplateJobPysparkJobLoggingConfigOutput) ToWorkflowTemplateJobPysparkJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobPysparkJobLoggingConfigPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplateJobPysparkJobLoggingConfig) *WorkflowTemplateJobPysparkJobLoggingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplateJobPysparkJobLoggingConfig) *WorkflowTemplateJobPysparkJobLoggingConfig {
 		return &v
 	}).(WorkflowTemplateJobPysparkJobLoggingConfigPtrOutput)
 }
@@ -11412,7 +11726,11 @@ func (o WorkflowTemplateJobPysparkJobLoggingConfigPtrOutput) ToWorkflowTemplateJ
 
 func (o WorkflowTemplateJobPysparkJobLoggingConfigPtrOutput) Elem() WorkflowTemplateJobPysparkJobLoggingConfigOutput {
 	return o.ApplyT(func(v *WorkflowTemplateJobPysparkJobLoggingConfig) WorkflowTemplateJobPysparkJobLoggingConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplateJobPysparkJobLoggingConfig
+		return ret
 	}).(WorkflowTemplateJobPysparkJobLoggingConfigOutput)
 }
 
@@ -11523,7 +11841,7 @@ func (o WorkflowTemplateJobSchedulingOutput) ToWorkflowTemplateJobSchedulingPtrO
 }
 
 func (o WorkflowTemplateJobSchedulingOutput) ToWorkflowTemplateJobSchedulingPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSchedulingPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplateJobScheduling) *WorkflowTemplateJobScheduling {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplateJobScheduling) *WorkflowTemplateJobScheduling {
 		return &v
 	}).(WorkflowTemplateJobSchedulingPtrOutput)
 }
@@ -11553,7 +11871,13 @@ func (o WorkflowTemplateJobSchedulingPtrOutput) ToWorkflowTemplateJobSchedulingP
 }
 
 func (o WorkflowTemplateJobSchedulingPtrOutput) Elem() WorkflowTemplateJobSchedulingOutput {
-	return o.ApplyT(func(v *WorkflowTemplateJobScheduling) WorkflowTemplateJobScheduling { return *v }).(WorkflowTemplateJobSchedulingOutput)
+	return o.ApplyT(func(v *WorkflowTemplateJobScheduling) WorkflowTemplateJobScheduling {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplateJobScheduling
+		return ret
+	}).(WorkflowTemplateJobSchedulingOutput)
 }
 
 // Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window. Maximum value is 10.
@@ -11697,7 +12021,7 @@ func (o WorkflowTemplateJobSparkJobOutput) ToWorkflowTemplateJobSparkJobPtrOutpu
 }
 
 func (o WorkflowTemplateJobSparkJobOutput) ToWorkflowTemplateJobSparkJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkJobPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplateJobSparkJob) *WorkflowTemplateJobSparkJob {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplateJobSparkJob) *WorkflowTemplateJobSparkJob {
 		return &v
 	}).(WorkflowTemplateJobSparkJobPtrOutput)
 }
@@ -11757,7 +12081,13 @@ func (o WorkflowTemplateJobSparkJobPtrOutput) ToWorkflowTemplateJobSparkJobPtrOu
 }
 
 func (o WorkflowTemplateJobSparkJobPtrOutput) Elem() WorkflowTemplateJobSparkJobOutput {
-	return o.ApplyT(func(v *WorkflowTemplateJobSparkJob) WorkflowTemplateJobSparkJob { return *v }).(WorkflowTemplateJobSparkJobOutput)
+	return o.ApplyT(func(v *WorkflowTemplateJobSparkJob) WorkflowTemplateJobSparkJob {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplateJobSparkJob
+		return ret
+	}).(WorkflowTemplateJobSparkJobOutput)
 }
 
 // Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -11933,7 +12263,7 @@ func (o WorkflowTemplateJobSparkJobLoggingConfigOutput) ToWorkflowTemplateJobSpa
 }
 
 func (o WorkflowTemplateJobSparkJobLoggingConfigOutput) ToWorkflowTemplateJobSparkJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkJobLoggingConfigPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplateJobSparkJobLoggingConfig) *WorkflowTemplateJobSparkJobLoggingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplateJobSparkJobLoggingConfig) *WorkflowTemplateJobSparkJobLoggingConfig {
 		return &v
 	}).(WorkflowTemplateJobSparkJobLoggingConfigPtrOutput)
 }
@@ -11958,7 +12288,13 @@ func (o WorkflowTemplateJobSparkJobLoggingConfigPtrOutput) ToWorkflowTemplateJob
 }
 
 func (o WorkflowTemplateJobSparkJobLoggingConfigPtrOutput) Elem() WorkflowTemplateJobSparkJobLoggingConfigOutput {
-	return o.ApplyT(func(v *WorkflowTemplateJobSparkJobLoggingConfig) WorkflowTemplateJobSparkJobLoggingConfig { return *v }).(WorkflowTemplateJobSparkJobLoggingConfigOutput)
+	return o.ApplyT(func(v *WorkflowTemplateJobSparkJobLoggingConfig) WorkflowTemplateJobSparkJobLoggingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplateJobSparkJobLoggingConfig
+		return ret
+	}).(WorkflowTemplateJobSparkJobLoggingConfigOutput)
 }
 
 // The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
@@ -12084,7 +12420,7 @@ func (o WorkflowTemplateJobSparkRJobOutput) ToWorkflowTemplateJobSparkRJobPtrOut
 }
 
 func (o WorkflowTemplateJobSparkRJobOutput) ToWorkflowTemplateJobSparkRJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkRJobPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplateJobSparkRJob) *WorkflowTemplateJobSparkRJob {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplateJobSparkRJob) *WorkflowTemplateJobSparkRJob {
 		return &v
 	}).(WorkflowTemplateJobSparkRJobPtrOutput)
 }
@@ -12136,7 +12472,13 @@ func (o WorkflowTemplateJobSparkRJobPtrOutput) ToWorkflowTemplateJobSparkRJobPtr
 }
 
 func (o WorkflowTemplateJobSparkRJobPtrOutput) Elem() WorkflowTemplateJobSparkRJobOutput {
-	return o.ApplyT(func(v *WorkflowTemplateJobSparkRJob) WorkflowTemplateJobSparkRJob { return *v }).(WorkflowTemplateJobSparkRJobOutput)
+	return o.ApplyT(func(v *WorkflowTemplateJobSparkRJob) WorkflowTemplateJobSparkRJob {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplateJobSparkRJob
+		return ret
+	}).(WorkflowTemplateJobSparkRJobOutput)
 }
 
 // Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -12292,7 +12634,7 @@ func (o WorkflowTemplateJobSparkRJobLoggingConfigOutput) ToWorkflowTemplateJobSp
 }
 
 func (o WorkflowTemplateJobSparkRJobLoggingConfigOutput) ToWorkflowTemplateJobSparkRJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkRJobLoggingConfigPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplateJobSparkRJobLoggingConfig) *WorkflowTemplateJobSparkRJobLoggingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplateJobSparkRJobLoggingConfig) *WorkflowTemplateJobSparkRJobLoggingConfig {
 		return &v
 	}).(WorkflowTemplateJobSparkRJobLoggingConfigPtrOutput)
 }
@@ -12318,7 +12660,11 @@ func (o WorkflowTemplateJobSparkRJobLoggingConfigPtrOutput) ToWorkflowTemplateJo
 
 func (o WorkflowTemplateJobSparkRJobLoggingConfigPtrOutput) Elem() WorkflowTemplateJobSparkRJobLoggingConfigOutput {
 	return o.ApplyT(func(v *WorkflowTemplateJobSparkRJobLoggingConfig) WorkflowTemplateJobSparkRJobLoggingConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplateJobSparkRJobLoggingConfig
+		return ret
 	}).(WorkflowTemplateJobSparkRJobLoggingConfigOutput)
 }
 
@@ -12445,7 +12791,7 @@ func (o WorkflowTemplateJobSparkSqlJobOutput) ToWorkflowTemplateJobSparkSqlJobPt
 }
 
 func (o WorkflowTemplateJobSparkSqlJobOutput) ToWorkflowTemplateJobSparkSqlJobPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkSqlJobPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplateJobSparkSqlJob) *WorkflowTemplateJobSparkSqlJob {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplateJobSparkSqlJob) *WorkflowTemplateJobSparkSqlJob {
 		return &v
 	}).(WorkflowTemplateJobSparkSqlJobPtrOutput)
 }
@@ -12497,7 +12843,13 @@ func (o WorkflowTemplateJobSparkSqlJobPtrOutput) ToWorkflowTemplateJobSparkSqlJo
 }
 
 func (o WorkflowTemplateJobSparkSqlJobPtrOutput) Elem() WorkflowTemplateJobSparkSqlJobOutput {
-	return o.ApplyT(func(v *WorkflowTemplateJobSparkSqlJob) WorkflowTemplateJobSparkSqlJob { return *v }).(WorkflowTemplateJobSparkSqlJobOutput)
+	return o.ApplyT(func(v *WorkflowTemplateJobSparkSqlJob) WorkflowTemplateJobSparkSqlJob {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplateJobSparkSqlJob
+		return ret
+	}).(WorkflowTemplateJobSparkSqlJobOutput)
 }
 
 // Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
@@ -12653,7 +13005,7 @@ func (o WorkflowTemplateJobSparkSqlJobLoggingConfigOutput) ToWorkflowTemplateJob
 }
 
 func (o WorkflowTemplateJobSparkSqlJobLoggingConfigOutput) ToWorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplateJobSparkSqlJobLoggingConfig) *WorkflowTemplateJobSparkSqlJobLoggingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplateJobSparkSqlJobLoggingConfig) *WorkflowTemplateJobSparkSqlJobLoggingConfig {
 		return &v
 	}).(WorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput)
 }
@@ -12679,7 +13031,11 @@ func (o WorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput) ToWorkflowTemplate
 
 func (o WorkflowTemplateJobSparkSqlJobLoggingConfigPtrOutput) Elem() WorkflowTemplateJobSparkSqlJobLoggingConfigOutput {
 	return o.ApplyT(func(v *WorkflowTemplateJobSparkSqlJobLoggingConfig) WorkflowTemplateJobSparkSqlJobLoggingConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplateJobSparkSqlJobLoggingConfig
+		return ret
 	}).(WorkflowTemplateJobSparkSqlJobLoggingConfigOutput)
 }
 
@@ -12786,7 +13142,7 @@ func (o WorkflowTemplateJobSparkSqlJobQueryListOutput) ToWorkflowTemplateJobSpar
 }
 
 func (o WorkflowTemplateJobSparkSqlJobQueryListOutput) ToWorkflowTemplateJobSparkSqlJobQueryListPtrOutputWithContext(ctx context.Context) WorkflowTemplateJobSparkSqlJobQueryListPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplateJobSparkSqlJobQueryList) *WorkflowTemplateJobSparkSqlJobQueryList {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplateJobSparkSqlJobQueryList) *WorkflowTemplateJobSparkSqlJobQueryList {
 		return &v
 	}).(WorkflowTemplateJobSparkSqlJobQueryListPtrOutput)
 }
@@ -12811,7 +13167,13 @@ func (o WorkflowTemplateJobSparkSqlJobQueryListPtrOutput) ToWorkflowTemplateJobS
 }
 
 func (o WorkflowTemplateJobSparkSqlJobQueryListPtrOutput) Elem() WorkflowTemplateJobSparkSqlJobQueryListOutput {
-	return o.ApplyT(func(v *WorkflowTemplateJobSparkSqlJobQueryList) WorkflowTemplateJobSparkSqlJobQueryList { return *v }).(WorkflowTemplateJobSparkSqlJobQueryListOutput)
+	return o.ApplyT(func(v *WorkflowTemplateJobSparkSqlJobQueryList) WorkflowTemplateJobSparkSqlJobQueryList {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplateJobSparkSqlJobQueryList
+		return ret
+	}).(WorkflowTemplateJobSparkSqlJobQueryListOutput)
 }
 
 // Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
@@ -13045,7 +13407,7 @@ func (o WorkflowTemplateParameterValidationOutput) ToWorkflowTemplateParameterVa
 }
 
 func (o WorkflowTemplateParameterValidationOutput) ToWorkflowTemplateParameterValidationPtrOutputWithContext(ctx context.Context) WorkflowTemplateParameterValidationPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplateParameterValidation) *WorkflowTemplateParameterValidation {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplateParameterValidation) *WorkflowTemplateParameterValidation {
 		return &v
 	}).(WorkflowTemplateParameterValidationPtrOutput)
 }
@@ -13077,7 +13439,13 @@ func (o WorkflowTemplateParameterValidationPtrOutput) ToWorkflowTemplateParamete
 }
 
 func (o WorkflowTemplateParameterValidationPtrOutput) Elem() WorkflowTemplateParameterValidationOutput {
-	return o.ApplyT(func(v *WorkflowTemplateParameterValidation) WorkflowTemplateParameterValidation { return *v }).(WorkflowTemplateParameterValidationOutput)
+	return o.ApplyT(func(v *WorkflowTemplateParameterValidation) WorkflowTemplateParameterValidation {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplateParameterValidation
+		return ret
+	}).(WorkflowTemplateParameterValidationOutput)
 }
 
 // Validation based on regular expressions.
@@ -13193,7 +13561,7 @@ func (o WorkflowTemplateParameterValidationRegexOutput) ToWorkflowTemplateParame
 }
 
 func (o WorkflowTemplateParameterValidationRegexOutput) ToWorkflowTemplateParameterValidationRegexPtrOutputWithContext(ctx context.Context) WorkflowTemplateParameterValidationRegexPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplateParameterValidationRegex) *WorkflowTemplateParameterValidationRegex {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplateParameterValidationRegex) *WorkflowTemplateParameterValidationRegex {
 		return &v
 	}).(WorkflowTemplateParameterValidationRegexPtrOutput)
 }
@@ -13218,7 +13586,13 @@ func (o WorkflowTemplateParameterValidationRegexPtrOutput) ToWorkflowTemplatePar
 }
 
 func (o WorkflowTemplateParameterValidationRegexPtrOutput) Elem() WorkflowTemplateParameterValidationRegexOutput {
-	return o.ApplyT(func(v *WorkflowTemplateParameterValidationRegex) WorkflowTemplateParameterValidationRegex { return *v }).(WorkflowTemplateParameterValidationRegexOutput)
+	return o.ApplyT(func(v *WorkflowTemplateParameterValidationRegex) WorkflowTemplateParameterValidationRegex {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplateParameterValidationRegex
+		return ret
+	}).(WorkflowTemplateParameterValidationRegexOutput)
 }
 
 // Required. RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
@@ -13324,7 +13698,7 @@ func (o WorkflowTemplateParameterValidationValuesOutput) ToWorkflowTemplateParam
 }
 
 func (o WorkflowTemplateParameterValidationValuesOutput) ToWorkflowTemplateParameterValidationValuesPtrOutputWithContext(ctx context.Context) WorkflowTemplateParameterValidationValuesPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplateParameterValidationValues) *WorkflowTemplateParameterValidationValues {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplateParameterValidationValues) *WorkflowTemplateParameterValidationValues {
 		return &v
 	}).(WorkflowTemplateParameterValidationValuesPtrOutput)
 }
@@ -13350,7 +13724,11 @@ func (o WorkflowTemplateParameterValidationValuesPtrOutput) ToWorkflowTemplatePa
 
 func (o WorkflowTemplateParameterValidationValuesPtrOutput) Elem() WorkflowTemplateParameterValidationValuesOutput {
 	return o.ApplyT(func(v *WorkflowTemplateParameterValidationValues) WorkflowTemplateParameterValidationValues {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplateParameterValidationValues
+		return ret
 	}).(WorkflowTemplateParameterValidationValuesOutput)
 }
 
@@ -13461,7 +13839,7 @@ func (o WorkflowTemplatePlacementOutput) ToWorkflowTemplatePlacementPtrOutput() 
 }
 
 func (o WorkflowTemplatePlacementOutput) ToWorkflowTemplatePlacementPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplatePlacement) *WorkflowTemplatePlacement {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacement) *WorkflowTemplatePlacement {
 		return &v
 	}).(WorkflowTemplatePlacementPtrOutput)
 }
@@ -13491,7 +13869,13 @@ func (o WorkflowTemplatePlacementPtrOutput) ToWorkflowTemplatePlacementPtrOutput
 }
 
 func (o WorkflowTemplatePlacementPtrOutput) Elem() WorkflowTemplatePlacementOutput {
-	return o.ApplyT(func(v *WorkflowTemplatePlacement) WorkflowTemplatePlacement { return *v }).(WorkflowTemplatePlacementOutput)
+	return o.ApplyT(func(v *WorkflowTemplatePlacement) WorkflowTemplatePlacement {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplatePlacement
+		return ret
+	}).(WorkflowTemplatePlacementOutput)
 }
 
 // Optional. A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
@@ -13611,7 +13995,7 @@ func (o WorkflowTemplatePlacementClusterSelectorOutput) ToWorkflowTemplatePlacem
 }
 
 func (o WorkflowTemplatePlacementClusterSelectorOutput) ToWorkflowTemplatePlacementClusterSelectorPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementClusterSelectorPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplatePlacementClusterSelector) *WorkflowTemplatePlacementClusterSelector {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementClusterSelector) *WorkflowTemplatePlacementClusterSelector {
 		return &v
 	}).(WorkflowTemplatePlacementClusterSelectorPtrOutput)
 }
@@ -13641,7 +14025,13 @@ func (o WorkflowTemplatePlacementClusterSelectorPtrOutput) ToWorkflowTemplatePla
 }
 
 func (o WorkflowTemplatePlacementClusterSelectorPtrOutput) Elem() WorkflowTemplatePlacementClusterSelectorOutput {
-	return o.ApplyT(func(v *WorkflowTemplatePlacementClusterSelector) WorkflowTemplatePlacementClusterSelector { return *v }).(WorkflowTemplatePlacementClusterSelectorOutput)
+	return o.ApplyT(func(v *WorkflowTemplatePlacementClusterSelector) WorkflowTemplatePlacementClusterSelector {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplatePlacementClusterSelector
+		return ret
+	}).(WorkflowTemplatePlacementClusterSelectorOutput)
 }
 
 // Required. The cluster labels. Cluster must have all labels to match.
@@ -13765,7 +14155,7 @@ func (o WorkflowTemplatePlacementManagedClusterOutput) ToWorkflowTemplatePlaceme
 }
 
 func (o WorkflowTemplatePlacementManagedClusterOutput) ToWorkflowTemplatePlacementManagedClusterPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplatePlacementManagedCluster) *WorkflowTemplatePlacementManagedCluster {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedCluster) *WorkflowTemplatePlacementManagedCluster {
 		return &v
 	}).(WorkflowTemplatePlacementManagedClusterPtrOutput)
 }
@@ -13802,7 +14192,13 @@ func (o WorkflowTemplatePlacementManagedClusterPtrOutput) ToWorkflowTemplatePlac
 }
 
 func (o WorkflowTemplatePlacementManagedClusterPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterOutput {
-	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedCluster) WorkflowTemplatePlacementManagedCluster { return *v }).(WorkflowTemplatePlacementManagedClusterOutput)
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedCluster) WorkflowTemplatePlacementManagedCluster {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplatePlacementManagedCluster
+		return ret
+	}).(WorkflowTemplatePlacementManagedClusterOutput)
 }
 
 // Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix. The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
@@ -13984,7 +14380,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigOutput) ToWorkflowTemplateP
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfig {
 		return &v
 	}).(WorkflowTemplatePlacementManagedClusterConfigPtrOutput)
 }
@@ -14106,7 +14502,11 @@ func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) ToWorkflowTempla
 
 func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfig) WorkflowTemplatePlacementManagedClusterConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplatePlacementManagedClusterConfig
+		return ret
 	}).(WorkflowTemplatePlacementManagedClusterConfigOutput)
 }
 
@@ -14353,7 +14753,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigOutput) To
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig) *WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig) *WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig {
 		return &v
 	}).(WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput)
 }
@@ -14379,7 +14779,11 @@ func (o WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput)
 
 func (o WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig) WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig
+		return ret
 	}).(WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigOutput)
 }
 
@@ -14486,7 +14890,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigOutput) ToW
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig) *WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig) *WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig {
 		return &v
 	}).(WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput)
 }
@@ -14514,7 +14918,11 @@ func (o WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput) 
 
 func (o WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig) WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig
+		return ret
 	}).(WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigOutput)
 }
 
@@ -14627,7 +15035,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigEndpointConfigOutput) ToWor
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigEndpointConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigEndpointConfig) *WorkflowTemplatePlacementManagedClusterConfigEndpointConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigEndpointConfig) *WorkflowTemplatePlacementManagedClusterConfigEndpointConfig {
 		return &v
 	}).(WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput)
 }
@@ -14663,7 +15071,11 @@ func (o WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput) To
 
 func (o WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigEndpointConfigOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigEndpointConfig) WorkflowTemplatePlacementManagedClusterConfigEndpointConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplatePlacementManagedClusterConfigEndpointConfig
+		return ret
 	}).(WorkflowTemplatePlacementManagedClusterConfigEndpointConfigOutput)
 }
 
@@ -14821,7 +15233,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput) ToW
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig {
 		return &v
 	}).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput)
 }
@@ -14907,7 +15319,11 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput) 
 
 func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
+		return ret
 	}).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput)
 }
 
@@ -15114,7 +15530,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAf
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityOutput) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity) *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity) *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity {
 		return &v
 	}).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput)
 }
@@ -15142,7 +15558,11 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAf
 
 func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity
+		return ret
 	}).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityOutput)
 }
 
@@ -15257,7 +15677,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservation
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityOutput) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity) *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity) *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity {
 		return &v
 	}).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput)
 }
@@ -15299,7 +15719,11 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservation
 
 func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity
+		return ret
 	}).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityOutput)
 }
 
@@ -15426,7 +15850,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutput) ToW
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig {
 		return &v
 	}).(WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput)
 }
@@ -15454,7 +15878,11 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput) 
 
 func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig) WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig
+		return ret
 	}).(WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutput)
 }
 
@@ -15565,7 +15993,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedG
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetOutput) ToWorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget) *WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget) *WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget {
 		return &v
 	}).(WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput)
 }
@@ -15600,7 +16028,11 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedG
 
 func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget) WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget
+		return ret
 	}).(WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetOutput)
 }
 
@@ -15841,7 +16273,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutput) ToWo
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig) *WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig) *WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig {
 		return &v
 	}).(WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput)
 }
@@ -15883,7 +16315,11 @@ func (o WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput) T
 
 func (o WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig) WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig
+		return ret
 	}).(WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigOutput)
 }
 
@@ -16063,7 +16499,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput) ToWorkf
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfig) *WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigMasterConfig) *WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
 		return &v
 	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput)
 }
@@ -16143,7 +16579,11 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput) ToWo
 
 func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfig) WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplatePlacementManagedClusterConfigMasterConfig
+		return ret
 	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput)
 }
 
@@ -16461,7 +16901,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutpu
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig) *WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig) *WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig {
 		return &v
 	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput)
 }
@@ -16503,7 +16943,11 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOu
 
 func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig) WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig
+		return ret
 	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput)
 }
 
@@ -16734,7 +17178,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutput) ToWo
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig) *WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig) *WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig {
 		return &v
 	}).(WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput)
 }
@@ -16762,7 +17206,11 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput) T
 
 func (o WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig) WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig
+		return ret
 	}).(WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutput)
 }
 
@@ -16911,7 +17359,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig {
 		return &v
 	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput)
 }
@@ -17001,7 +17449,11 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOut
 
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig
+		return ret
 	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput)
 }
 
@@ -17319,7 +17771,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskCo
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig) *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig) *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig {
 		return &v
 	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput)
 }
@@ -17361,7 +17813,11 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskCo
 
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig
+		return ret
 	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput)
 }
 
@@ -17592,7 +18048,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutput) ToWor
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecurityConfig) *WorkflowTemplatePlacementManagedClusterConfigSecurityConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigSecurityConfig) *WorkflowTemplatePlacementManagedClusterConfigSecurityConfig {
 		return &v
 	}).(WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput)
 }
@@ -17620,7 +18076,11 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput) To
 
 func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecurityConfig) WorkflowTemplatePlacementManagedClusterConfigSecurityConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplatePlacementManagedClusterConfigSecurityConfig
+		return ret
 	}).(WorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutput)
 }
 
@@ -17783,7 +18243,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfi
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig) *WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig) *WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig {
 		return &v
 	}).(WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput)
 }
@@ -17909,7 +18369,11 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfi
 
 func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig) WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig
+		return ret
 	}).(WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput)
 }
 
@@ -18160,7 +18624,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput) ToWor
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig) *WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig) *WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig {
 		return &v
 	}).(WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput)
 }
@@ -18193,7 +18657,11 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput) To
 
 func (o WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig) WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig
+		return ret
 	}).(WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput)
 }
 
@@ -18352,7 +18820,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput) ToWorkf
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) *WorkflowTemplatePlacementManagedClusterConfigWorkerConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) *WorkflowTemplatePlacementManagedClusterConfigWorkerConfig {
 		return &v
 	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput)
 }
@@ -18432,7 +18900,11 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput) ToWo
 
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) WorkflowTemplatePlacementManagedClusterConfigWorkerConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplatePlacementManagedClusterConfigWorkerConfig
+		return ret
 	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput)
 }
 
@@ -18750,7 +19222,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutpu
 }
 
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig) *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig) *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig {
 		return &v
 	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput)
 }
@@ -18792,7 +19264,11 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOu
 
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig
+		return ret
 	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput)
 }
 

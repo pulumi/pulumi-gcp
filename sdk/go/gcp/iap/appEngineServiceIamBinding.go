@@ -458,7 +458,7 @@ type AppEngineServiceIamBindingArrayInput interface {
 type AppEngineServiceIamBindingArray []AppEngineServiceIamBindingInput
 
 func (AppEngineServiceIamBindingArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AppEngineServiceIamBinding)(nil))
+	return reflect.TypeOf((*[]*AppEngineServiceIamBinding)(nil)).Elem()
 }
 
 func (i AppEngineServiceIamBindingArray) ToAppEngineServiceIamBindingArrayOutput() AppEngineServiceIamBindingArrayOutput {
@@ -483,7 +483,7 @@ type AppEngineServiceIamBindingMapInput interface {
 type AppEngineServiceIamBindingMap map[string]AppEngineServiceIamBindingInput
 
 func (AppEngineServiceIamBindingMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AppEngineServiceIamBinding)(nil))
+	return reflect.TypeOf((*map[string]*AppEngineServiceIamBinding)(nil)).Elem()
 }
 
 func (i AppEngineServiceIamBindingMap) ToAppEngineServiceIamBindingMapOutput() AppEngineServiceIamBindingMapOutput {
@@ -494,9 +494,7 @@ func (i AppEngineServiceIamBindingMap) ToAppEngineServiceIamBindingMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineServiceIamBindingMapOutput)
 }
 
-type AppEngineServiceIamBindingOutput struct {
-	*pulumi.OutputState
-}
+type AppEngineServiceIamBindingOutput struct{ *pulumi.OutputState }
 
 func (AppEngineServiceIamBindingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AppEngineServiceIamBinding)(nil))
@@ -515,14 +513,12 @@ func (o AppEngineServiceIamBindingOutput) ToAppEngineServiceIamBindingPtrOutput(
 }
 
 func (o AppEngineServiceIamBindingOutput) ToAppEngineServiceIamBindingPtrOutputWithContext(ctx context.Context) AppEngineServiceIamBindingPtrOutput {
-	return o.ApplyT(func(v AppEngineServiceIamBinding) *AppEngineServiceIamBinding {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEngineServiceIamBinding) *AppEngineServiceIamBinding {
 		return &v
 	}).(AppEngineServiceIamBindingPtrOutput)
 }
 
-type AppEngineServiceIamBindingPtrOutput struct {
-	*pulumi.OutputState
-}
+type AppEngineServiceIamBindingPtrOutput struct{ *pulumi.OutputState }
 
 func (AppEngineServiceIamBindingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AppEngineServiceIamBinding)(nil))
@@ -534,6 +530,16 @@ func (o AppEngineServiceIamBindingPtrOutput) ToAppEngineServiceIamBindingPtrOutp
 
 func (o AppEngineServiceIamBindingPtrOutput) ToAppEngineServiceIamBindingPtrOutputWithContext(ctx context.Context) AppEngineServiceIamBindingPtrOutput {
 	return o
+}
+
+func (o AppEngineServiceIamBindingPtrOutput) Elem() AppEngineServiceIamBindingOutput {
+	return o.ApplyT(func(v *AppEngineServiceIamBinding) AppEngineServiceIamBinding {
+		if v != nil {
+			return *v
+		}
+		var ret AppEngineServiceIamBinding
+		return ret
+	}).(AppEngineServiceIamBindingOutput)
 }
 
 type AppEngineServiceIamBindingArrayOutput struct{ *pulumi.OutputState }

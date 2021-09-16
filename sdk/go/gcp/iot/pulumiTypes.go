@@ -410,7 +410,7 @@ func (o DeviceGatewayConfigOutput) ToDeviceGatewayConfigPtrOutput() DeviceGatewa
 }
 
 func (o DeviceGatewayConfigOutput) ToDeviceGatewayConfigPtrOutputWithContext(ctx context.Context) DeviceGatewayConfigPtrOutput {
-	return o.ApplyT(func(v DeviceGatewayConfig) *DeviceGatewayConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeviceGatewayConfig) *DeviceGatewayConfig {
 		return &v
 	}).(DeviceGatewayConfigPtrOutput)
 }
@@ -455,7 +455,13 @@ func (o DeviceGatewayConfigPtrOutput) ToDeviceGatewayConfigPtrOutputWithContext(
 }
 
 func (o DeviceGatewayConfigPtrOutput) Elem() DeviceGatewayConfigOutput {
-	return o.ApplyT(func(v *DeviceGatewayConfig) DeviceGatewayConfig { return *v }).(DeviceGatewayConfigOutput)
+	return o.ApplyT(func(v *DeviceGatewayConfig) DeviceGatewayConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DeviceGatewayConfig
+		return ret
+	}).(DeviceGatewayConfigOutput)
 }
 
 // Indicates whether the device is a gateway.

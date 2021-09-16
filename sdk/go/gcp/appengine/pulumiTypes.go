@@ -105,7 +105,7 @@ func (o ApplicationFeatureSettingsOutput) ToApplicationFeatureSettingsPtrOutput(
 }
 
 func (o ApplicationFeatureSettingsOutput) ToApplicationFeatureSettingsPtrOutputWithContext(ctx context.Context) ApplicationFeatureSettingsPtrOutput {
-	return o.ApplyT(func(v ApplicationFeatureSettings) *ApplicationFeatureSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationFeatureSettings) *ApplicationFeatureSettings {
 		return &v
 	}).(ApplicationFeatureSettingsPtrOutput)
 }
@@ -131,7 +131,13 @@ func (o ApplicationFeatureSettingsPtrOutput) ToApplicationFeatureSettingsPtrOutp
 }
 
 func (o ApplicationFeatureSettingsPtrOutput) Elem() ApplicationFeatureSettingsOutput {
-	return o.ApplyT(func(v *ApplicationFeatureSettings) ApplicationFeatureSettings { return *v }).(ApplicationFeatureSettingsOutput)
+	return o.ApplyT(func(v *ApplicationFeatureSettings) ApplicationFeatureSettings {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationFeatureSettings
+		return ret
+	}).(ApplicationFeatureSettingsOutput)
 }
 
 // Set to false to use the legacy health check instead of the readiness
@@ -254,7 +260,7 @@ func (o ApplicationIapOutput) ToApplicationIapPtrOutput() ApplicationIapPtrOutpu
 }
 
 func (o ApplicationIapOutput) ToApplicationIapPtrOutputWithContext(ctx context.Context) ApplicationIapPtrOutput {
-	return o.ApplyT(func(v ApplicationIap) *ApplicationIap {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationIap) *ApplicationIap {
 		return &v
 	}).(ApplicationIapPtrOutput)
 }
@@ -296,7 +302,13 @@ func (o ApplicationIapPtrOutput) ToApplicationIapPtrOutputWithContext(ctx contex
 }
 
 func (o ApplicationIapPtrOutput) Elem() ApplicationIapOutput {
-	return o.ApplyT(func(v *ApplicationIap) ApplicationIap { return *v }).(ApplicationIapOutput)
+	return o.ApplyT(func(v *ApplicationIap) ApplicationIap {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationIap
+		return ret
+	}).(ApplicationIapOutput)
 }
 
 // (Optional) Whether the serving infrastructure will authenticate and authorize all incoming requests.
@@ -802,7 +814,7 @@ func (o DomainMappingSslSettingsOutput) ToDomainMappingSslSettingsPtrOutput() Do
 }
 
 func (o DomainMappingSslSettingsOutput) ToDomainMappingSslSettingsPtrOutputWithContext(ctx context.Context) DomainMappingSslSettingsPtrOutput {
-	return o.ApplyT(func(v DomainMappingSslSettings) *DomainMappingSslSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainMappingSslSettings) *DomainMappingSslSettings {
 		return &v
 	}).(DomainMappingSslSettingsPtrOutput)
 }
@@ -849,7 +861,13 @@ func (o DomainMappingSslSettingsPtrOutput) ToDomainMappingSslSettingsPtrOutputWi
 }
 
 func (o DomainMappingSslSettingsPtrOutput) Elem() DomainMappingSslSettingsOutput {
-	return o.ApplyT(func(v *DomainMappingSslSettings) DomainMappingSslSettings { return *v }).(DomainMappingSslSettingsOutput)
+	return o.ApplyT(func(v *DomainMappingSslSettings) DomainMappingSslSettings {
+		if v != nil {
+			return *v
+		}
+		var ret DomainMappingSslSettings
+		return ret
+	}).(DomainMappingSslSettingsOutput)
 }
 
 // ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will
@@ -993,7 +1011,7 @@ func (o EngineSplitTrafficSplitOutput) ToEngineSplitTrafficSplitPtrOutput() Engi
 }
 
 func (o EngineSplitTrafficSplitOutput) ToEngineSplitTrafficSplitPtrOutputWithContext(ctx context.Context) EngineSplitTrafficSplitPtrOutput {
-	return o.ApplyT(func(v EngineSplitTrafficSplit) *EngineSplitTrafficSplit {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EngineSplitTrafficSplit) *EngineSplitTrafficSplit {
 		return &v
 	}).(EngineSplitTrafficSplitPtrOutput)
 }
@@ -1024,7 +1042,13 @@ func (o EngineSplitTrafficSplitPtrOutput) ToEngineSplitTrafficSplitPtrOutputWith
 }
 
 func (o EngineSplitTrafficSplitPtrOutput) Elem() EngineSplitTrafficSplitOutput {
-	return o.ApplyT(func(v *EngineSplitTrafficSplit) EngineSplitTrafficSplit { return *v }).(EngineSplitTrafficSplitOutput)
+	return o.ApplyT(func(v *EngineSplitTrafficSplit) EngineSplitTrafficSplit {
+		if v != nil {
+			return *v
+		}
+		var ret EngineSplitTrafficSplit
+		return ret
+	}).(EngineSplitTrafficSplitOutput)
 }
 
 // Mapping from version IDs within the service to fractional (0.000, 1] allocations of traffic for that version. Each version can be specified only once, but some versions in the service may not have any traffic allocation. Services that have traffic allocated cannot be deleted until either the service is deleted or their traffic allocation is removed. Allocations must sum to 1. Up to two decimal place precision is supported for IP-based splits and up to three decimal places is supported for cookie-based splits.
@@ -1167,7 +1191,7 @@ func (o FlexibleAppVersionApiConfigOutput) ToFlexibleAppVersionApiConfigPtrOutpu
 }
 
 func (o FlexibleAppVersionApiConfigOutput) ToFlexibleAppVersionApiConfigPtrOutputWithContext(ctx context.Context) FlexibleAppVersionApiConfigPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionApiConfig) *FlexibleAppVersionApiConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexibleAppVersionApiConfig) *FlexibleAppVersionApiConfig {
 		return &v
 	}).(FlexibleAppVersionApiConfigPtrOutput)
 }
@@ -1217,7 +1241,13 @@ func (o FlexibleAppVersionApiConfigPtrOutput) ToFlexibleAppVersionApiConfigPtrOu
 }
 
 func (o FlexibleAppVersionApiConfigPtrOutput) Elem() FlexibleAppVersionApiConfigOutput {
-	return o.ApplyT(func(v *FlexibleAppVersionApiConfig) FlexibleAppVersionApiConfig { return *v }).(FlexibleAppVersionApiConfigOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionApiConfig) FlexibleAppVersionApiConfig {
+		if v != nil {
+			return *v
+		}
+		var ret FlexibleAppVersionApiConfig
+		return ret
+	}).(FlexibleAppVersionApiConfigOutput)
 }
 
 // Action to take when users access resources that require authentication.
@@ -1426,7 +1456,7 @@ func (o FlexibleAppVersionAutomaticScalingOutput) ToFlexibleAppVersionAutomaticS
 }
 
 func (o FlexibleAppVersionAutomaticScalingOutput) ToFlexibleAppVersionAutomaticScalingPtrOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *FlexibleAppVersionAutomaticScaling {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexibleAppVersionAutomaticScaling) *FlexibleAppVersionAutomaticScaling {
 		return &v
 	}).(FlexibleAppVersionAutomaticScalingPtrOutput)
 }
@@ -1521,7 +1551,13 @@ func (o FlexibleAppVersionAutomaticScalingPtrOutput) ToFlexibleAppVersionAutomat
 }
 
 func (o FlexibleAppVersionAutomaticScalingPtrOutput) Elem() FlexibleAppVersionAutomaticScalingOutput {
-	return o.ApplyT(func(v *FlexibleAppVersionAutomaticScaling) FlexibleAppVersionAutomaticScaling { return *v }).(FlexibleAppVersionAutomaticScalingOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionAutomaticScaling) FlexibleAppVersionAutomaticScaling {
+		if v != nil {
+			return *v
+		}
+		var ret FlexibleAppVersionAutomaticScaling
+		return ret
+	}).(FlexibleAppVersionAutomaticScalingOutput)
 }
 
 // The time period that the Autoscaler should wait before it starts collecting information from a new instance.
@@ -1748,7 +1784,7 @@ func (o FlexibleAppVersionAutomaticScalingCpuUtilizationOutput) ToFlexibleAppVer
 }
 
 func (o FlexibleAppVersionAutomaticScalingCpuUtilizationOutput) ToFlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingCpuUtilization) *FlexibleAppVersionAutomaticScalingCpuUtilization {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexibleAppVersionAutomaticScalingCpuUtilization) *FlexibleAppVersionAutomaticScalingCpuUtilization {
 		return &v
 	}).(FlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput)
 }
@@ -1779,7 +1815,11 @@ func (o FlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput) ToFlexibleApp
 
 func (o FlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput) Elem() FlexibleAppVersionAutomaticScalingCpuUtilizationOutput {
 	return o.ApplyT(func(v *FlexibleAppVersionAutomaticScalingCpuUtilization) FlexibleAppVersionAutomaticScalingCpuUtilization {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret FlexibleAppVersionAutomaticScalingCpuUtilization
+		return ret
 	}).(FlexibleAppVersionAutomaticScalingCpuUtilizationOutput)
 }
 
@@ -1908,7 +1948,7 @@ func (o FlexibleAppVersionAutomaticScalingDiskUtilizationOutput) ToFlexibleAppVe
 }
 
 func (o FlexibleAppVersionAutomaticScalingDiskUtilizationOutput) ToFlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingDiskUtilization) *FlexibleAppVersionAutomaticScalingDiskUtilization {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexibleAppVersionAutomaticScalingDiskUtilization) *FlexibleAppVersionAutomaticScalingDiskUtilization {
 		return &v
 	}).(FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput)
 }
@@ -1949,7 +1989,11 @@ func (o FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput) ToFlexibleAp
 
 func (o FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput) Elem() FlexibleAppVersionAutomaticScalingDiskUtilizationOutput {
 	return o.ApplyT(func(v *FlexibleAppVersionAutomaticScalingDiskUtilization) FlexibleAppVersionAutomaticScalingDiskUtilization {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret FlexibleAppVersionAutomaticScalingDiskUtilization
+		return ret
 	}).(FlexibleAppVersionAutomaticScalingDiskUtilizationOutput)
 }
 
@@ -2098,7 +2142,7 @@ func (o FlexibleAppVersionAutomaticScalingNetworkUtilizationOutput) ToFlexibleAp
 }
 
 func (o FlexibleAppVersionAutomaticScalingNetworkUtilizationOutput) ToFlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingNetworkUtilization) *FlexibleAppVersionAutomaticScalingNetworkUtilization {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexibleAppVersionAutomaticScalingNetworkUtilization) *FlexibleAppVersionAutomaticScalingNetworkUtilization {
 		return &v
 	}).(FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput)
 }
@@ -2143,7 +2187,11 @@ func (o FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput) ToFlexibl
 
 func (o FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput) Elem() FlexibleAppVersionAutomaticScalingNetworkUtilizationOutput {
 	return o.ApplyT(func(v *FlexibleAppVersionAutomaticScalingNetworkUtilization) FlexibleAppVersionAutomaticScalingNetworkUtilization {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret FlexibleAppVersionAutomaticScalingNetworkUtilization
+		return ret
 	}).(FlexibleAppVersionAutomaticScalingNetworkUtilizationOutput)
 }
 
@@ -2284,7 +2332,7 @@ func (o FlexibleAppVersionAutomaticScalingRequestUtilizationOutput) ToFlexibleAp
 }
 
 func (o FlexibleAppVersionAutomaticScalingRequestUtilizationOutput) ToFlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingRequestUtilization) *FlexibleAppVersionAutomaticScalingRequestUtilization {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexibleAppVersionAutomaticScalingRequestUtilization) *FlexibleAppVersionAutomaticScalingRequestUtilization {
 		return &v
 	}).(FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput)
 }
@@ -2319,7 +2367,11 @@ func (o FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput) ToFlexibl
 
 func (o FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput) Elem() FlexibleAppVersionAutomaticScalingRequestUtilizationOutput {
 	return o.ApplyT(func(v *FlexibleAppVersionAutomaticScalingRequestUtilization) FlexibleAppVersionAutomaticScalingRequestUtilization {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret FlexibleAppVersionAutomaticScalingRequestUtilization
+		return ret
 	}).(FlexibleAppVersionAutomaticScalingRequestUtilizationOutput)
 }
 
@@ -2458,7 +2510,7 @@ func (o FlexibleAppVersionDeploymentOutput) ToFlexibleAppVersionDeploymentPtrOut
 }
 
 func (o FlexibleAppVersionDeploymentOutput) ToFlexibleAppVersionDeploymentPtrOutputWithContext(ctx context.Context) FlexibleAppVersionDeploymentPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionDeployment) *FlexibleAppVersionDeployment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexibleAppVersionDeployment) *FlexibleAppVersionDeployment {
 		return &v
 	}).(FlexibleAppVersionDeploymentPtrOutput)
 }
@@ -2505,7 +2557,13 @@ func (o FlexibleAppVersionDeploymentPtrOutput) ToFlexibleAppVersionDeploymentPtr
 }
 
 func (o FlexibleAppVersionDeploymentPtrOutput) Elem() FlexibleAppVersionDeploymentOutput {
-	return o.ApplyT(func(v *FlexibleAppVersionDeployment) FlexibleAppVersionDeployment { return *v }).(FlexibleAppVersionDeploymentOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionDeployment) FlexibleAppVersionDeployment {
+		if v != nil {
+			return *v
+		}
+		var ret FlexibleAppVersionDeployment
+		return ret
+	}).(FlexibleAppVersionDeploymentOutput)
 }
 
 // Options for the build operations performed as a part of the version deployment. Only applicable when creating a version using source code directly.
@@ -2652,7 +2710,7 @@ func (o FlexibleAppVersionDeploymentCloudBuildOptionsOutput) ToFlexibleAppVersio
 }
 
 func (o FlexibleAppVersionDeploymentCloudBuildOptionsOutput) ToFlexibleAppVersionDeploymentCloudBuildOptionsPtrOutputWithContext(ctx context.Context) FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionDeploymentCloudBuildOptions) *FlexibleAppVersionDeploymentCloudBuildOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexibleAppVersionDeploymentCloudBuildOptions) *FlexibleAppVersionDeploymentCloudBuildOptions {
 		return &v
 	}).(FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput)
 }
@@ -2684,7 +2742,11 @@ func (o FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput) ToFlexibleAppVer
 
 func (o FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput) Elem() FlexibleAppVersionDeploymentCloudBuildOptionsOutput {
 	return o.ApplyT(func(v *FlexibleAppVersionDeploymentCloudBuildOptions) FlexibleAppVersionDeploymentCloudBuildOptions {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret FlexibleAppVersionDeploymentCloudBuildOptions
+		return ret
 	}).(FlexibleAppVersionDeploymentCloudBuildOptionsOutput)
 }
 
@@ -2804,7 +2866,7 @@ func (o FlexibleAppVersionDeploymentContainerOutput) ToFlexibleAppVersionDeploym
 }
 
 func (o FlexibleAppVersionDeploymentContainerOutput) ToFlexibleAppVersionDeploymentContainerPtrOutputWithContext(ctx context.Context) FlexibleAppVersionDeploymentContainerPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionDeploymentContainer) *FlexibleAppVersionDeploymentContainer {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexibleAppVersionDeploymentContainer) *FlexibleAppVersionDeploymentContainer {
 		return &v
 	}).(FlexibleAppVersionDeploymentContainerPtrOutput)
 }
@@ -2830,7 +2892,13 @@ func (o FlexibleAppVersionDeploymentContainerPtrOutput) ToFlexibleAppVersionDepl
 }
 
 func (o FlexibleAppVersionDeploymentContainerPtrOutput) Elem() FlexibleAppVersionDeploymentContainerOutput {
-	return o.ApplyT(func(v *FlexibleAppVersionDeploymentContainer) FlexibleAppVersionDeploymentContainer { return *v }).(FlexibleAppVersionDeploymentContainerOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionDeploymentContainer) FlexibleAppVersionDeploymentContainer {
+		if v != nil {
+			return *v
+		}
+		var ret FlexibleAppVersionDeploymentContainer
+		return ret
+	}).(FlexibleAppVersionDeploymentContainerOutput)
 }
 
 // URI to the hosted container image in Google Container Registry. The URI must be fully qualified and include a tag or digest.
@@ -3056,7 +3124,7 @@ func (o FlexibleAppVersionDeploymentZipOutput) ToFlexibleAppVersionDeploymentZip
 }
 
 func (o FlexibleAppVersionDeploymentZipOutput) ToFlexibleAppVersionDeploymentZipPtrOutputWithContext(ctx context.Context) FlexibleAppVersionDeploymentZipPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionDeploymentZip) *FlexibleAppVersionDeploymentZip {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexibleAppVersionDeploymentZip) *FlexibleAppVersionDeploymentZip {
 		return &v
 	}).(FlexibleAppVersionDeploymentZipPtrOutput)
 }
@@ -3086,7 +3154,13 @@ func (o FlexibleAppVersionDeploymentZipPtrOutput) ToFlexibleAppVersionDeployment
 }
 
 func (o FlexibleAppVersionDeploymentZipPtrOutput) Elem() FlexibleAppVersionDeploymentZipOutput {
-	return o.ApplyT(func(v *FlexibleAppVersionDeploymentZip) FlexibleAppVersionDeploymentZip { return *v }).(FlexibleAppVersionDeploymentZipOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionDeploymentZip) FlexibleAppVersionDeploymentZip {
+		if v != nil {
+			return *v
+		}
+		var ret FlexibleAppVersionDeploymentZip
+		return ret
+	}).(FlexibleAppVersionDeploymentZipOutput)
 }
 
 // files count
@@ -3228,7 +3302,7 @@ func (o FlexibleAppVersionEndpointsApiServiceOutput) ToFlexibleAppVersionEndpoin
 }
 
 func (o FlexibleAppVersionEndpointsApiServiceOutput) ToFlexibleAppVersionEndpointsApiServicePtrOutputWithContext(ctx context.Context) FlexibleAppVersionEndpointsApiServicePtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionEndpointsApiService) *FlexibleAppVersionEndpointsApiService {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexibleAppVersionEndpointsApiService) *FlexibleAppVersionEndpointsApiService {
 		return &v
 	}).(FlexibleAppVersionEndpointsApiServicePtrOutput)
 }
@@ -3275,7 +3349,13 @@ func (o FlexibleAppVersionEndpointsApiServicePtrOutput) ToFlexibleAppVersionEndp
 }
 
 func (o FlexibleAppVersionEndpointsApiServicePtrOutput) Elem() FlexibleAppVersionEndpointsApiServiceOutput {
-	return o.ApplyT(func(v *FlexibleAppVersionEndpointsApiService) FlexibleAppVersionEndpointsApiService { return *v }).(FlexibleAppVersionEndpointsApiServiceOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionEndpointsApiService) FlexibleAppVersionEndpointsApiService {
+		if v != nil {
+			return *v
+		}
+		var ret FlexibleAppVersionEndpointsApiService
+		return ret
+	}).(FlexibleAppVersionEndpointsApiServiceOutput)
 }
 
 // Endpoints service configuration ID as specified by the Service Management API. For example "2016-09-19r1".
@@ -3418,7 +3498,7 @@ func (o FlexibleAppVersionEntrypointOutput) ToFlexibleAppVersionEntrypointPtrOut
 }
 
 func (o FlexibleAppVersionEntrypointOutput) ToFlexibleAppVersionEntrypointPtrOutputWithContext(ctx context.Context) FlexibleAppVersionEntrypointPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionEntrypoint) *FlexibleAppVersionEntrypoint {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexibleAppVersionEntrypoint) *FlexibleAppVersionEntrypoint {
 		return &v
 	}).(FlexibleAppVersionEntrypointPtrOutput)
 }
@@ -3443,7 +3523,13 @@ func (o FlexibleAppVersionEntrypointPtrOutput) ToFlexibleAppVersionEntrypointPtr
 }
 
 func (o FlexibleAppVersionEntrypointPtrOutput) Elem() FlexibleAppVersionEntrypointOutput {
-	return o.ApplyT(func(v *FlexibleAppVersionEntrypoint) FlexibleAppVersionEntrypoint { return *v }).(FlexibleAppVersionEntrypointOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionEntrypoint) FlexibleAppVersionEntrypoint {
+		if v != nil {
+			return *v
+		}
+		var ret FlexibleAppVersionEntrypoint
+		return ret
+	}).(FlexibleAppVersionEntrypointOutput)
 }
 
 // The format should be a shell command that can be fed to bash -c.
@@ -3727,7 +3813,7 @@ func (o FlexibleAppVersionHandlerScriptOutput) ToFlexibleAppVersionHandlerScript
 }
 
 func (o FlexibleAppVersionHandlerScriptOutput) ToFlexibleAppVersionHandlerScriptPtrOutputWithContext(ctx context.Context) FlexibleAppVersionHandlerScriptPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionHandlerScript) *FlexibleAppVersionHandlerScript {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexibleAppVersionHandlerScript) *FlexibleAppVersionHandlerScript {
 		return &v
 	}).(FlexibleAppVersionHandlerScriptPtrOutput)
 }
@@ -3752,7 +3838,13 @@ func (o FlexibleAppVersionHandlerScriptPtrOutput) ToFlexibleAppVersionHandlerScr
 }
 
 func (o FlexibleAppVersionHandlerScriptPtrOutput) Elem() FlexibleAppVersionHandlerScriptOutput {
-	return o.ApplyT(func(v *FlexibleAppVersionHandlerScript) FlexibleAppVersionHandlerScript { return *v }).(FlexibleAppVersionHandlerScriptOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionHandlerScript) FlexibleAppVersionHandlerScript {
+		if v != nil {
+			return *v
+		}
+		var ret FlexibleAppVersionHandlerScript
+		return ret
+	}).(FlexibleAppVersionHandlerScriptOutput)
 }
 
 // Path to the script from the application root directory.
@@ -3896,7 +3988,7 @@ func (o FlexibleAppVersionHandlerStaticFilesOutput) ToFlexibleAppVersionHandlerS
 }
 
 func (o FlexibleAppVersionHandlerStaticFilesOutput) ToFlexibleAppVersionHandlerStaticFilesPtrOutputWithContext(ctx context.Context) FlexibleAppVersionHandlerStaticFilesPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionHandlerStaticFiles) *FlexibleAppVersionHandlerStaticFiles {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexibleAppVersionHandlerStaticFiles) *FlexibleAppVersionHandlerStaticFiles {
 		return &v
 	}).(FlexibleAppVersionHandlerStaticFilesPtrOutput)
 }
@@ -3958,7 +4050,13 @@ func (o FlexibleAppVersionHandlerStaticFilesPtrOutput) ToFlexibleAppVersionHandl
 }
 
 func (o FlexibleAppVersionHandlerStaticFilesPtrOutput) Elem() FlexibleAppVersionHandlerStaticFilesOutput {
-	return o.ApplyT(func(v *FlexibleAppVersionHandlerStaticFiles) FlexibleAppVersionHandlerStaticFiles { return *v }).(FlexibleAppVersionHandlerStaticFilesOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionHandlerStaticFiles) FlexibleAppVersionHandlerStaticFiles {
+		if v != nil {
+			return *v
+		}
+		var ret FlexibleAppVersionHandlerStaticFiles
+		return ret
+	}).(FlexibleAppVersionHandlerStaticFilesOutput)
 }
 
 // Whether files should also be uploaded as code data. By default, files declared in static file handlers are
@@ -4157,7 +4255,7 @@ func (o FlexibleAppVersionLivenessCheckOutput) ToFlexibleAppVersionLivenessCheck
 }
 
 func (o FlexibleAppVersionLivenessCheckOutput) ToFlexibleAppVersionLivenessCheckPtrOutputWithContext(ctx context.Context) FlexibleAppVersionLivenessCheckPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionLivenessCheck) *FlexibleAppVersionLivenessCheck {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexibleAppVersionLivenessCheck) *FlexibleAppVersionLivenessCheck {
 		return &v
 	}).(FlexibleAppVersionLivenessCheckPtrOutput)
 }
@@ -4213,7 +4311,13 @@ func (o FlexibleAppVersionLivenessCheckPtrOutput) ToFlexibleAppVersionLivenessCh
 }
 
 func (o FlexibleAppVersionLivenessCheckPtrOutput) Elem() FlexibleAppVersionLivenessCheckOutput {
-	return o.ApplyT(func(v *FlexibleAppVersionLivenessCheck) FlexibleAppVersionLivenessCheck { return *v }).(FlexibleAppVersionLivenessCheckOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionLivenessCheck) FlexibleAppVersionLivenessCheck {
+		if v != nil {
+			return *v
+		}
+		var ret FlexibleAppVersionLivenessCheck
+		return ret
+	}).(FlexibleAppVersionLivenessCheckOutput)
 }
 
 // Interval between health checks.
@@ -4384,7 +4488,7 @@ func (o FlexibleAppVersionManualScalingOutput) ToFlexibleAppVersionManualScaling
 }
 
 func (o FlexibleAppVersionManualScalingOutput) ToFlexibleAppVersionManualScalingPtrOutputWithContext(ctx context.Context) FlexibleAppVersionManualScalingPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionManualScaling) *FlexibleAppVersionManualScaling {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexibleAppVersionManualScaling) *FlexibleAppVersionManualScaling {
 		return &v
 	}).(FlexibleAppVersionManualScalingPtrOutput)
 }
@@ -4411,7 +4515,13 @@ func (o FlexibleAppVersionManualScalingPtrOutput) ToFlexibleAppVersionManualScal
 }
 
 func (o FlexibleAppVersionManualScalingPtrOutput) Elem() FlexibleAppVersionManualScalingOutput {
-	return o.ApplyT(func(v *FlexibleAppVersionManualScaling) FlexibleAppVersionManualScaling { return *v }).(FlexibleAppVersionManualScalingOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionManualScaling) FlexibleAppVersionManualScaling {
+		if v != nil {
+			return *v
+		}
+		var ret FlexibleAppVersionManualScaling
+		return ret
+	}).(FlexibleAppVersionManualScalingOutput)
 }
 
 // Number of instances to assign to the service at the start.
@@ -4543,7 +4653,7 @@ func (o FlexibleAppVersionNetworkOutput) ToFlexibleAppVersionNetworkPtrOutput() 
 }
 
 func (o FlexibleAppVersionNetworkOutput) ToFlexibleAppVersionNetworkPtrOutputWithContext(ctx context.Context) FlexibleAppVersionNetworkPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionNetwork) *FlexibleAppVersionNetwork {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexibleAppVersionNetwork) *FlexibleAppVersionNetwork {
 		return &v
 	}).(FlexibleAppVersionNetworkPtrOutput)
 }
@@ -4592,7 +4702,13 @@ func (o FlexibleAppVersionNetworkPtrOutput) ToFlexibleAppVersionNetworkPtrOutput
 }
 
 func (o FlexibleAppVersionNetworkPtrOutput) Elem() FlexibleAppVersionNetworkOutput {
-	return o.ApplyT(func(v *FlexibleAppVersionNetwork) FlexibleAppVersionNetwork { return *v }).(FlexibleAppVersionNetworkOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionNetwork) FlexibleAppVersionNetwork {
+		if v != nil {
+			return *v
+		}
+		var ret FlexibleAppVersionNetwork
+		return ret
+	}).(FlexibleAppVersionNetworkOutput)
 }
 
 // List of ports, or port pairs, to forward from the virtual machine to the application container.
@@ -4770,7 +4886,7 @@ func (o FlexibleAppVersionReadinessCheckOutput) ToFlexibleAppVersionReadinessChe
 }
 
 func (o FlexibleAppVersionReadinessCheckOutput) ToFlexibleAppVersionReadinessCheckPtrOutputWithContext(ctx context.Context) FlexibleAppVersionReadinessCheckPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionReadinessCheck) *FlexibleAppVersionReadinessCheck {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexibleAppVersionReadinessCheck) *FlexibleAppVersionReadinessCheck {
 		return &v
 	}).(FlexibleAppVersionReadinessCheckPtrOutput)
 }
@@ -4827,7 +4943,13 @@ func (o FlexibleAppVersionReadinessCheckPtrOutput) ToFlexibleAppVersionReadiness
 }
 
 func (o FlexibleAppVersionReadinessCheckPtrOutput) Elem() FlexibleAppVersionReadinessCheckOutput {
-	return o.ApplyT(func(v *FlexibleAppVersionReadinessCheck) FlexibleAppVersionReadinessCheck { return *v }).(FlexibleAppVersionReadinessCheckOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionReadinessCheck) FlexibleAppVersionReadinessCheck {
+		if v != nil {
+			return *v
+		}
+		var ret FlexibleAppVersionReadinessCheck
+		return ret
+	}).(FlexibleAppVersionReadinessCheckOutput)
 }
 
 // A maximum time limit on application initialization, measured from moment the application successfully
@@ -5009,7 +5131,7 @@ func (o FlexibleAppVersionResourcesOutput) ToFlexibleAppVersionResourcesPtrOutpu
 }
 
 func (o FlexibleAppVersionResourcesOutput) ToFlexibleAppVersionResourcesPtrOutputWithContext(ctx context.Context) FlexibleAppVersionResourcesPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionResources) *FlexibleAppVersionResources {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexibleAppVersionResources) *FlexibleAppVersionResources {
 		return &v
 	}).(FlexibleAppVersionResourcesPtrOutput)
 }
@@ -5050,7 +5172,13 @@ func (o FlexibleAppVersionResourcesPtrOutput) ToFlexibleAppVersionResourcesPtrOu
 }
 
 func (o FlexibleAppVersionResourcesPtrOutput) Elem() FlexibleAppVersionResourcesOutput {
-	return o.ApplyT(func(v *FlexibleAppVersionResources) FlexibleAppVersionResources { return *v }).(FlexibleAppVersionResourcesOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionResources) FlexibleAppVersionResources {
+		if v != nil {
+			return *v
+		}
+		var ret FlexibleAppVersionResources
+		return ret
+	}).(FlexibleAppVersionResourcesOutput)
 }
 
 // Number of CPU cores needed.
@@ -5302,7 +5430,7 @@ func (o FlexibleAppVersionVpcAccessConnectorOutput) ToFlexibleAppVersionVpcAcces
 }
 
 func (o FlexibleAppVersionVpcAccessConnectorOutput) ToFlexibleAppVersionVpcAccessConnectorPtrOutputWithContext(ctx context.Context) FlexibleAppVersionVpcAccessConnectorPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionVpcAccessConnector) *FlexibleAppVersionVpcAccessConnector {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexibleAppVersionVpcAccessConnector) *FlexibleAppVersionVpcAccessConnector {
 		return &v
 	}).(FlexibleAppVersionVpcAccessConnectorPtrOutput)
 }
@@ -5327,7 +5455,13 @@ func (o FlexibleAppVersionVpcAccessConnectorPtrOutput) ToFlexibleAppVersionVpcAc
 }
 
 func (o FlexibleAppVersionVpcAccessConnectorPtrOutput) Elem() FlexibleAppVersionVpcAccessConnectorOutput {
-	return o.ApplyT(func(v *FlexibleAppVersionVpcAccessConnector) FlexibleAppVersionVpcAccessConnector { return *v }).(FlexibleAppVersionVpcAccessConnectorOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionVpcAccessConnector) FlexibleAppVersionVpcAccessConnector {
+		if v != nil {
+			return *v
+		}
+		var ret FlexibleAppVersionVpcAccessConnector
+		return ret
+	}).(FlexibleAppVersionVpcAccessConnectorOutput)
 }
 
 // Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
@@ -5437,7 +5571,7 @@ func (o ServiceNetworkSettingsNetworkSettingsOutput) ToServiceNetworkSettingsNet
 }
 
 func (o ServiceNetworkSettingsNetworkSettingsOutput) ToServiceNetworkSettingsNetworkSettingsPtrOutputWithContext(ctx context.Context) ServiceNetworkSettingsNetworkSettingsPtrOutput {
-	return o.ApplyT(func(v ServiceNetworkSettingsNetworkSettings) *ServiceNetworkSettingsNetworkSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceNetworkSettingsNetworkSettings) *ServiceNetworkSettingsNetworkSettings {
 		return &v
 	}).(ServiceNetworkSettingsNetworkSettingsPtrOutput)
 }
@@ -5464,7 +5598,13 @@ func (o ServiceNetworkSettingsNetworkSettingsPtrOutput) ToServiceNetworkSettings
 }
 
 func (o ServiceNetworkSettingsNetworkSettingsPtrOutput) Elem() ServiceNetworkSettingsNetworkSettingsOutput {
-	return o.ApplyT(func(v *ServiceNetworkSettingsNetworkSettings) ServiceNetworkSettingsNetworkSettings { return *v }).(ServiceNetworkSettingsNetworkSettingsOutput)
+	return o.ApplyT(func(v *ServiceNetworkSettingsNetworkSettings) ServiceNetworkSettingsNetworkSettings {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceNetworkSettingsNetworkSettings
+		return ret
+	}).(ServiceNetworkSettingsNetworkSettingsOutput)
 }
 
 // The ingress settings for version or service.
@@ -5600,7 +5740,7 @@ func (o StandardAppVersionAutomaticScalingOutput) ToStandardAppVersionAutomaticS
 }
 
 func (o StandardAppVersionAutomaticScalingOutput) ToStandardAppVersionAutomaticScalingPtrOutputWithContext(ctx context.Context) StandardAppVersionAutomaticScalingPtrOutput {
-	return o.ApplyT(func(v StandardAppVersionAutomaticScaling) *StandardAppVersionAutomaticScaling {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StandardAppVersionAutomaticScaling) *StandardAppVersionAutomaticScaling {
 		return &v
 	}).(StandardAppVersionAutomaticScalingPtrOutput)
 }
@@ -5656,7 +5796,13 @@ func (o StandardAppVersionAutomaticScalingPtrOutput) ToStandardAppVersionAutomat
 }
 
 func (o StandardAppVersionAutomaticScalingPtrOutput) Elem() StandardAppVersionAutomaticScalingOutput {
-	return o.ApplyT(func(v *StandardAppVersionAutomaticScaling) StandardAppVersionAutomaticScaling { return *v }).(StandardAppVersionAutomaticScalingOutput)
+	return o.ApplyT(func(v *StandardAppVersionAutomaticScaling) StandardAppVersionAutomaticScaling {
+		if v != nil {
+			return *v
+		}
+		var ret StandardAppVersionAutomaticScaling
+		return ret
+	}).(StandardAppVersionAutomaticScalingOutput)
 }
 
 // Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.
@@ -5828,7 +5974,7 @@ func (o StandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput) ToSta
 }
 
 func (o StandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput) ToStandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutputWithContext(ctx context.Context) StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput {
-	return o.ApplyT(func(v StandardAppVersionAutomaticScalingStandardSchedulerSettings) *StandardAppVersionAutomaticScalingStandardSchedulerSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StandardAppVersionAutomaticScalingStandardSchedulerSettings) *StandardAppVersionAutomaticScalingStandardSchedulerSettings {
 		return &v
 	}).(StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput)
 }
@@ -5873,7 +6019,11 @@ func (o StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput) To
 
 func (o StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput) Elem() StandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput {
 	return o.ApplyT(func(v *StandardAppVersionAutomaticScalingStandardSchedulerSettings) StandardAppVersionAutomaticScalingStandardSchedulerSettings {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret StandardAppVersionAutomaticScalingStandardSchedulerSettings
+		return ret
 	}).(StandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput)
 }
 
@@ -6016,7 +6166,7 @@ func (o StandardAppVersionBasicScalingOutput) ToStandardAppVersionBasicScalingPt
 }
 
 func (o StandardAppVersionBasicScalingOutput) ToStandardAppVersionBasicScalingPtrOutputWithContext(ctx context.Context) StandardAppVersionBasicScalingPtrOutput {
-	return o.ApplyT(func(v StandardAppVersionBasicScaling) *StandardAppVersionBasicScaling {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StandardAppVersionBasicScaling) *StandardAppVersionBasicScaling {
 		return &v
 	}).(StandardAppVersionBasicScalingPtrOutput)
 }
@@ -6047,7 +6197,13 @@ func (o StandardAppVersionBasicScalingPtrOutput) ToStandardAppVersionBasicScalin
 }
 
 func (o StandardAppVersionBasicScalingPtrOutput) Elem() StandardAppVersionBasicScalingOutput {
-	return o.ApplyT(func(v *StandardAppVersionBasicScaling) StandardAppVersionBasicScaling { return *v }).(StandardAppVersionBasicScalingOutput)
+	return o.ApplyT(func(v *StandardAppVersionBasicScaling) StandardAppVersionBasicScaling {
+		if v != nil {
+			return *v
+		}
+		var ret StandardAppVersionBasicScaling
+		return ret
+	}).(StandardAppVersionBasicScalingOutput)
 }
 
 // Duration of time after the last request that an instance must wait before the instance is shut down.
@@ -6174,7 +6330,7 @@ func (o StandardAppVersionDeploymentOutput) ToStandardAppVersionDeploymentPtrOut
 }
 
 func (o StandardAppVersionDeploymentOutput) ToStandardAppVersionDeploymentPtrOutputWithContext(ctx context.Context) StandardAppVersionDeploymentPtrOutput {
-	return o.ApplyT(func(v StandardAppVersionDeployment) *StandardAppVersionDeployment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StandardAppVersionDeployment) *StandardAppVersionDeployment {
 		return &v
 	}).(StandardAppVersionDeploymentPtrOutput)
 }
@@ -6207,7 +6363,13 @@ func (o StandardAppVersionDeploymentPtrOutput) ToStandardAppVersionDeploymentPtr
 }
 
 func (o StandardAppVersionDeploymentPtrOutput) Elem() StandardAppVersionDeploymentOutput {
-	return o.ApplyT(func(v *StandardAppVersionDeployment) StandardAppVersionDeployment { return *v }).(StandardAppVersionDeploymentOutput)
+	return o.ApplyT(func(v *StandardAppVersionDeployment) StandardAppVersionDeployment {
+		if v != nil {
+			return *v
+		}
+		var ret StandardAppVersionDeployment
+		return ret
+	}).(StandardAppVersionDeploymentOutput)
 }
 
 // Manifest of the files stored in Google Cloud Storage that are included as part of this version.
@@ -6445,7 +6607,7 @@ func (o StandardAppVersionDeploymentZipOutput) ToStandardAppVersionDeploymentZip
 }
 
 func (o StandardAppVersionDeploymentZipOutput) ToStandardAppVersionDeploymentZipPtrOutputWithContext(ctx context.Context) StandardAppVersionDeploymentZipPtrOutput {
-	return o.ApplyT(func(v StandardAppVersionDeploymentZip) *StandardAppVersionDeploymentZip {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StandardAppVersionDeploymentZip) *StandardAppVersionDeploymentZip {
 		return &v
 	}).(StandardAppVersionDeploymentZipPtrOutput)
 }
@@ -6475,7 +6637,13 @@ func (o StandardAppVersionDeploymentZipPtrOutput) ToStandardAppVersionDeployment
 }
 
 func (o StandardAppVersionDeploymentZipPtrOutput) Elem() StandardAppVersionDeploymentZipOutput {
-	return o.ApplyT(func(v *StandardAppVersionDeploymentZip) StandardAppVersionDeploymentZip { return *v }).(StandardAppVersionDeploymentZipOutput)
+	return o.ApplyT(func(v *StandardAppVersionDeploymentZip) StandardAppVersionDeploymentZip {
+		if v != nil {
+			return *v
+		}
+		var ret StandardAppVersionDeploymentZip
+		return ret
+	}).(StandardAppVersionDeploymentZipOutput)
 }
 
 // files count
@@ -6591,7 +6759,7 @@ func (o StandardAppVersionEntrypointOutput) ToStandardAppVersionEntrypointPtrOut
 }
 
 func (o StandardAppVersionEntrypointOutput) ToStandardAppVersionEntrypointPtrOutputWithContext(ctx context.Context) StandardAppVersionEntrypointPtrOutput {
-	return o.ApplyT(func(v StandardAppVersionEntrypoint) *StandardAppVersionEntrypoint {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StandardAppVersionEntrypoint) *StandardAppVersionEntrypoint {
 		return &v
 	}).(StandardAppVersionEntrypointPtrOutput)
 }
@@ -6616,7 +6784,13 @@ func (o StandardAppVersionEntrypointPtrOutput) ToStandardAppVersionEntrypointPtr
 }
 
 func (o StandardAppVersionEntrypointPtrOutput) Elem() StandardAppVersionEntrypointOutput {
-	return o.ApplyT(func(v *StandardAppVersionEntrypoint) StandardAppVersionEntrypoint { return *v }).(StandardAppVersionEntrypointOutput)
+	return o.ApplyT(func(v *StandardAppVersionEntrypoint) StandardAppVersionEntrypoint {
+		if v != nil {
+			return *v
+		}
+		var ret StandardAppVersionEntrypoint
+		return ret
+	}).(StandardAppVersionEntrypointOutput)
 }
 
 // The format should be a shell command that can be fed to bash -c.
@@ -6897,7 +7071,7 @@ func (o StandardAppVersionHandlerScriptOutput) ToStandardAppVersionHandlerScript
 }
 
 func (o StandardAppVersionHandlerScriptOutput) ToStandardAppVersionHandlerScriptPtrOutputWithContext(ctx context.Context) StandardAppVersionHandlerScriptPtrOutput {
-	return o.ApplyT(func(v StandardAppVersionHandlerScript) *StandardAppVersionHandlerScript {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StandardAppVersionHandlerScript) *StandardAppVersionHandlerScript {
 		return &v
 	}).(StandardAppVersionHandlerScriptPtrOutput)
 }
@@ -6922,7 +7096,13 @@ func (o StandardAppVersionHandlerScriptPtrOutput) ToStandardAppVersionHandlerScr
 }
 
 func (o StandardAppVersionHandlerScriptPtrOutput) Elem() StandardAppVersionHandlerScriptOutput {
-	return o.ApplyT(func(v *StandardAppVersionHandlerScript) StandardAppVersionHandlerScript { return *v }).(StandardAppVersionHandlerScriptOutput)
+	return o.ApplyT(func(v *StandardAppVersionHandlerScript) StandardAppVersionHandlerScript {
+		if v != nil {
+			return *v
+		}
+		var ret StandardAppVersionHandlerScript
+		return ret
+	}).(StandardAppVersionHandlerScriptOutput)
 }
 
 // Path to the script from the application root directory.
@@ -7062,7 +7242,7 @@ func (o StandardAppVersionHandlerStaticFilesOutput) ToStandardAppVersionHandlerS
 }
 
 func (o StandardAppVersionHandlerStaticFilesOutput) ToStandardAppVersionHandlerStaticFilesPtrOutputWithContext(ctx context.Context) StandardAppVersionHandlerStaticFilesPtrOutput {
-	return o.ApplyT(func(v StandardAppVersionHandlerStaticFiles) *StandardAppVersionHandlerStaticFiles {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StandardAppVersionHandlerStaticFiles) *StandardAppVersionHandlerStaticFiles {
 		return &v
 	}).(StandardAppVersionHandlerStaticFilesPtrOutput)
 }
@@ -7122,7 +7302,13 @@ func (o StandardAppVersionHandlerStaticFilesPtrOutput) ToStandardAppVersionHandl
 }
 
 func (o StandardAppVersionHandlerStaticFilesPtrOutput) Elem() StandardAppVersionHandlerStaticFilesOutput {
-	return o.ApplyT(func(v *StandardAppVersionHandlerStaticFiles) StandardAppVersionHandlerStaticFiles { return *v }).(StandardAppVersionHandlerStaticFilesOutput)
+	return o.ApplyT(func(v *StandardAppVersionHandlerStaticFiles) StandardAppVersionHandlerStaticFiles {
+		if v != nil {
+			return *v
+		}
+		var ret StandardAppVersionHandlerStaticFiles
+		return ret
+	}).(StandardAppVersionHandlerStaticFilesOutput)
 }
 
 // Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as
@@ -7403,7 +7589,7 @@ func (o StandardAppVersionManualScalingOutput) ToStandardAppVersionManualScaling
 }
 
 func (o StandardAppVersionManualScalingOutput) ToStandardAppVersionManualScalingPtrOutputWithContext(ctx context.Context) StandardAppVersionManualScalingPtrOutput {
-	return o.ApplyT(func(v StandardAppVersionManualScaling) *StandardAppVersionManualScaling {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StandardAppVersionManualScaling) *StandardAppVersionManualScaling {
 		return &v
 	}).(StandardAppVersionManualScalingPtrOutput)
 }
@@ -7430,7 +7616,13 @@ func (o StandardAppVersionManualScalingPtrOutput) ToStandardAppVersionManualScal
 }
 
 func (o StandardAppVersionManualScalingPtrOutput) Elem() StandardAppVersionManualScalingOutput {
-	return o.ApplyT(func(v *StandardAppVersionManualScaling) StandardAppVersionManualScaling { return *v }).(StandardAppVersionManualScalingOutput)
+	return o.ApplyT(func(v *StandardAppVersionManualScaling) StandardAppVersionManualScaling {
+		if v != nil {
+			return *v
+		}
+		var ret StandardAppVersionManualScaling
+		return ret
+	}).(StandardAppVersionManualScalingOutput)
 }
 
 // Number of instances to assign to the service at the start.
@@ -7538,7 +7730,7 @@ func (o StandardAppVersionVpcAccessConnectorOutput) ToStandardAppVersionVpcAcces
 }
 
 func (o StandardAppVersionVpcAccessConnectorOutput) ToStandardAppVersionVpcAccessConnectorPtrOutputWithContext(ctx context.Context) StandardAppVersionVpcAccessConnectorPtrOutput {
-	return o.ApplyT(func(v StandardAppVersionVpcAccessConnector) *StandardAppVersionVpcAccessConnector {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StandardAppVersionVpcAccessConnector) *StandardAppVersionVpcAccessConnector {
 		return &v
 	}).(StandardAppVersionVpcAccessConnectorPtrOutput)
 }
@@ -7563,7 +7755,13 @@ func (o StandardAppVersionVpcAccessConnectorPtrOutput) ToStandardAppVersionVpcAc
 }
 
 func (o StandardAppVersionVpcAccessConnectorPtrOutput) Elem() StandardAppVersionVpcAccessConnectorOutput {
-	return o.ApplyT(func(v *StandardAppVersionVpcAccessConnector) StandardAppVersionVpcAccessConnector { return *v }).(StandardAppVersionVpcAccessConnectorOutput)
+	return o.ApplyT(func(v *StandardAppVersionVpcAccessConnector) StandardAppVersionVpcAccessConnector {
+		if v != nil {
+			return *v
+		}
+		var ret StandardAppVersionVpcAccessConnector
+		return ret
+	}).(StandardAppVersionVpcAccessConnectorOutput)
 }
 
 // Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.

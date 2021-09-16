@@ -4,6 +4,9 @@
 package compute
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -101,4 +104,66 @@ type GetNetblockIPRangesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id        string  `pulumi:"id"`
 	RangeType *string `pulumi:"rangeType"`
+}
+
+func GetNetblockIPRangesOutput(ctx *pulumi.Context, args GetNetblockIPRangesOutputArgs, opts ...pulumi.InvokeOption) GetNetblockIPRangesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetNetblockIPRangesResult, error) {
+			args := v.(GetNetblockIPRangesArgs)
+			r, err := GetNetblockIPRanges(ctx, &args, opts...)
+			return *r, err
+		}).(GetNetblockIPRangesResultOutput)
+}
+
+// A collection of arguments for invoking getNetblockIPRanges.
+type GetNetblockIPRangesOutputArgs struct {
+	// The type of range for which to provide results.
+	RangeType pulumi.StringPtrInput `pulumi:"rangeType"`
+}
+
+func (GetNetblockIPRangesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetblockIPRangesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getNetblockIPRanges.
+type GetNetblockIPRangesResultOutput struct{ *pulumi.OutputState }
+
+func (GetNetblockIPRangesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetblockIPRangesResult)(nil)).Elem()
+}
+
+func (o GetNetblockIPRangesResultOutput) ToGetNetblockIPRangesResultOutput() GetNetblockIPRangesResultOutput {
+	return o
+}
+
+func (o GetNetblockIPRangesResultOutput) ToGetNetblockIPRangesResultOutputWithContext(ctx context.Context) GetNetblockIPRangesResultOutput {
+	return o
+}
+
+// Retrieve list of all CIDR blocks.
+func (o GetNetblockIPRangesResultOutput) CidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetblockIPRangesResult) []string { return v.CidrBlocks }).(pulumi.StringArrayOutput)
+}
+
+// Retrieve list of the IPv4 CIDR blocks
+func (o GetNetblockIPRangesResultOutput) CidrBlocksIpv4s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetblockIPRangesResult) []string { return v.CidrBlocksIpv4s }).(pulumi.StringArrayOutput)
+}
+
+// Retrieve list of the IPv6 CIDR blocks, if available.
+func (o GetNetblockIPRangesResultOutput) CidrBlocksIpv6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetblockIPRangesResult) []string { return v.CidrBlocksIpv6s }).(pulumi.StringArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetNetblockIPRangesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetblockIPRangesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetNetblockIPRangesResultOutput) RangeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetblockIPRangesResult) *string { return v.RangeType }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetNetblockIPRangesResultOutput{})
 }

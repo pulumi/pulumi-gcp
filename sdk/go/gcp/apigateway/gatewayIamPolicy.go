@@ -328,7 +328,7 @@ type GatewayIamPolicyArrayInput interface {
 type GatewayIamPolicyArray []GatewayIamPolicyInput
 
 func (GatewayIamPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*GatewayIamPolicy)(nil))
+	return reflect.TypeOf((*[]*GatewayIamPolicy)(nil)).Elem()
 }
 
 func (i GatewayIamPolicyArray) ToGatewayIamPolicyArrayOutput() GatewayIamPolicyArrayOutput {
@@ -353,7 +353,7 @@ type GatewayIamPolicyMapInput interface {
 type GatewayIamPolicyMap map[string]GatewayIamPolicyInput
 
 func (GatewayIamPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*GatewayIamPolicy)(nil))
+	return reflect.TypeOf((*map[string]*GatewayIamPolicy)(nil)).Elem()
 }
 
 func (i GatewayIamPolicyMap) ToGatewayIamPolicyMapOutput() GatewayIamPolicyMapOutput {
@@ -364,9 +364,7 @@ func (i GatewayIamPolicyMap) ToGatewayIamPolicyMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayIamPolicyMapOutput)
 }
 
-type GatewayIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type GatewayIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (GatewayIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GatewayIamPolicy)(nil))
@@ -385,14 +383,12 @@ func (o GatewayIamPolicyOutput) ToGatewayIamPolicyPtrOutput() GatewayIamPolicyPt
 }
 
 func (o GatewayIamPolicyOutput) ToGatewayIamPolicyPtrOutputWithContext(ctx context.Context) GatewayIamPolicyPtrOutput {
-	return o.ApplyT(func(v GatewayIamPolicy) *GatewayIamPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayIamPolicy) *GatewayIamPolicy {
 		return &v
 	}).(GatewayIamPolicyPtrOutput)
 }
 
-type GatewayIamPolicyPtrOutput struct {
-	*pulumi.OutputState
-}
+type GatewayIamPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (GatewayIamPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**GatewayIamPolicy)(nil))
@@ -404,6 +400,16 @@ func (o GatewayIamPolicyPtrOutput) ToGatewayIamPolicyPtrOutput() GatewayIamPolic
 
 func (o GatewayIamPolicyPtrOutput) ToGatewayIamPolicyPtrOutputWithContext(ctx context.Context) GatewayIamPolicyPtrOutput {
 	return o
+}
+
+func (o GatewayIamPolicyPtrOutput) Elem() GatewayIamPolicyOutput {
+	return o.ApplyT(func(v *GatewayIamPolicy) GatewayIamPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayIamPolicy
+		return ret
+	}).(GatewayIamPolicyOutput)
 }
 
 type GatewayIamPolicyArrayOutput struct{ *pulumi.OutputState }

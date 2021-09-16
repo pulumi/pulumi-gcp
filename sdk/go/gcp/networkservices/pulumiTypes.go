@@ -235,7 +235,7 @@ func (o EdgeCacheOriginTimeoutOutput) ToEdgeCacheOriginTimeoutPtrOutput() EdgeCa
 }
 
 func (o EdgeCacheOriginTimeoutOutput) ToEdgeCacheOriginTimeoutPtrOutputWithContext(ctx context.Context) EdgeCacheOriginTimeoutPtrOutput {
-	return o.ApplyT(func(v EdgeCacheOriginTimeout) *EdgeCacheOriginTimeout {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCacheOriginTimeout) *EdgeCacheOriginTimeout {
 		return &v
 	}).(EdgeCacheOriginTimeoutPtrOutput)
 }
@@ -273,7 +273,13 @@ func (o EdgeCacheOriginTimeoutPtrOutput) ToEdgeCacheOriginTimeoutPtrOutputWithCo
 }
 
 func (o EdgeCacheOriginTimeoutPtrOutput) Elem() EdgeCacheOriginTimeoutOutput {
-	return o.ApplyT(func(v *EdgeCacheOriginTimeout) EdgeCacheOriginTimeout { return *v }).(EdgeCacheOriginTimeoutOutput)
+	return o.ApplyT(func(v *EdgeCacheOriginTimeout) EdgeCacheOriginTimeout {
+		if v != nil {
+			return *v
+		}
+		var ret EdgeCacheOriginTimeout
+		return ret
+	}).(EdgeCacheOriginTimeoutOutput)
 }
 
 // The maximum duration to wait for the origin connection to be established, including DNS lookup, TLS handshake and TCP/QUIC connection establishment.
@@ -408,7 +414,7 @@ func (o EdgeCacheServiceLogConfigOutput) ToEdgeCacheServiceLogConfigPtrOutput() 
 }
 
 func (o EdgeCacheServiceLogConfigOutput) ToEdgeCacheServiceLogConfigPtrOutputWithContext(ctx context.Context) EdgeCacheServiceLogConfigPtrOutput {
-	return o.ApplyT(func(v EdgeCacheServiceLogConfig) *EdgeCacheServiceLogConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCacheServiceLogConfig) *EdgeCacheServiceLogConfig {
 		return &v
 	}).(EdgeCacheServiceLogConfigPtrOutput)
 }
@@ -439,7 +445,13 @@ func (o EdgeCacheServiceLogConfigPtrOutput) ToEdgeCacheServiceLogConfigPtrOutput
 }
 
 func (o EdgeCacheServiceLogConfigPtrOutput) Elem() EdgeCacheServiceLogConfigOutput {
-	return o.ApplyT(func(v *EdgeCacheServiceLogConfig) EdgeCacheServiceLogConfig { return *v }).(EdgeCacheServiceLogConfigOutput)
+	return o.ApplyT(func(v *EdgeCacheServiceLogConfig) EdgeCacheServiceLogConfig {
+		if v != nil {
+			return *v
+		}
+		var ret EdgeCacheServiceLogConfig
+		return ret
+	}).(EdgeCacheServiceLogConfigOutput)
 }
 
 // Specifies whether to enable logging for traffic served by this service.
@@ -562,7 +574,7 @@ func (o EdgeCacheServiceRoutingOutput) ToEdgeCacheServiceRoutingPtrOutput() Edge
 }
 
 func (o EdgeCacheServiceRoutingOutput) ToEdgeCacheServiceRoutingPtrOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPtrOutput {
-	return o.ApplyT(func(v EdgeCacheServiceRouting) *EdgeCacheServiceRouting {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCacheServiceRouting) *EdgeCacheServiceRouting {
 		return &v
 	}).(EdgeCacheServiceRoutingPtrOutput)
 }
@@ -593,7 +605,13 @@ func (o EdgeCacheServiceRoutingPtrOutput) ToEdgeCacheServiceRoutingPtrOutputWith
 }
 
 func (o EdgeCacheServiceRoutingPtrOutput) Elem() EdgeCacheServiceRoutingOutput {
-	return o.ApplyT(func(v *EdgeCacheServiceRouting) EdgeCacheServiceRouting { return *v }).(EdgeCacheServiceRoutingOutput)
+	return o.ApplyT(func(v *EdgeCacheServiceRouting) EdgeCacheServiceRouting {
+		if v != nil {
+			return *v
+		}
+		var ret EdgeCacheServiceRouting
+		return ret
+	}).(EdgeCacheServiceRoutingOutput)
 }
 
 // The list of hostRules to match against. These rules define which hostnames the EdgeCacheService will match against, and which route configurations apply.
@@ -1162,7 +1180,7 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionOutput) ToEdgeCac
 }
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionPtrOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionPtrOutput {
-	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction) *EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction) *EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction {
 		return &v
 	}).(EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionPtrOutput)
 }
@@ -1216,7 +1234,11 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionPtrOutput) ToEdge
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionPtrOutput) Elem() EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionOutput {
 	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction) EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction
+		return ret
 	}).(EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionOutput)
 }
 
@@ -2264,7 +2286,7 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionOutput) ToEdgeCach
 }
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionPtrOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionPtrOutput {
-	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction) *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction) *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction {
 		return &v
 	}).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionPtrOutput)
 }
@@ -2309,7 +2331,11 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionPtrOutput) ToEdgeC
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionPtrOutput) Elem() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionOutput {
 	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction
+		return ret
 	}).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionOutput)
 }
 
@@ -2545,7 +2571,7 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyOutput) T
 }
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutput {
-	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy) *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy) *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy {
 		return &v
 	}).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutput)
 }
@@ -2658,7 +2684,11 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutput
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutput) Elem() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyOutput {
 	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy
+		return ret
 	}).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyOutput)
 }
 
@@ -2926,7 +2956,7 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyP
 }
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyPtrOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyPtrOutput {
-	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy) *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy) *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy {
 		return &v
 	}).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyPtrOutput)
 }
@@ -3001,7 +3031,11 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyP
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyPtrOutput) Elem() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyOutput {
 	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy
+		return ret
 	}).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyOutput)
 }
 
@@ -3206,7 +3240,7 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyOutput) 
 }
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyPtrOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput {
-	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy) *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy) *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy {
 		return &v
 	}).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput)
 }
@@ -3278,7 +3312,11 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyPtrOutpu
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput) Elem() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyOutput {
 	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy
+		return ret
 	}).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyOutput)
 }
 
@@ -3479,7 +3517,7 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteOutput) 
 }
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewritePtrOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewritePtrOutput {
-	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite) *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite) *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite {
 		return &v
 	}).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewritePtrOutput)
 }
@@ -3529,7 +3567,11 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewritePtrOutpu
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewritePtrOutput) Elem() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteOutput {
 	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite
+		return ret
 	}).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteOutput)
 }
 
@@ -3700,7 +3742,7 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectOutput) ToEdgeCach
 }
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtrOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtrOutput {
-	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect) *EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect) *EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect {
 		return &v
 	}).(EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtrOutput)
 }
@@ -3758,7 +3800,11 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtrOutput) ToEdgeC
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtrOutput) Elem() EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectOutput {
 	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect) EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect
+		return ret
 	}).(EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectOutput)
 }
 

@@ -310,7 +310,7 @@ type TableIamPolicyArrayInput interface {
 type TableIamPolicyArray []TableIamPolicyInput
 
 func (TableIamPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TableIamPolicy)(nil))
+	return reflect.TypeOf((*[]*TableIamPolicy)(nil)).Elem()
 }
 
 func (i TableIamPolicyArray) ToTableIamPolicyArrayOutput() TableIamPolicyArrayOutput {
@@ -335,7 +335,7 @@ type TableIamPolicyMapInput interface {
 type TableIamPolicyMap map[string]TableIamPolicyInput
 
 func (TableIamPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TableIamPolicy)(nil))
+	return reflect.TypeOf((*map[string]*TableIamPolicy)(nil)).Elem()
 }
 
 func (i TableIamPolicyMap) ToTableIamPolicyMapOutput() TableIamPolicyMapOutput {
@@ -346,9 +346,7 @@ func (i TableIamPolicyMap) ToTableIamPolicyMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(TableIamPolicyMapOutput)
 }
 
-type TableIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type TableIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (TableIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TableIamPolicy)(nil))
@@ -367,14 +365,12 @@ func (o TableIamPolicyOutput) ToTableIamPolicyPtrOutput() TableIamPolicyPtrOutpu
 }
 
 func (o TableIamPolicyOutput) ToTableIamPolicyPtrOutputWithContext(ctx context.Context) TableIamPolicyPtrOutput {
-	return o.ApplyT(func(v TableIamPolicy) *TableIamPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableIamPolicy) *TableIamPolicy {
 		return &v
 	}).(TableIamPolicyPtrOutput)
 }
 
-type TableIamPolicyPtrOutput struct {
-	*pulumi.OutputState
-}
+type TableIamPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (TableIamPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TableIamPolicy)(nil))
@@ -386,6 +382,16 @@ func (o TableIamPolicyPtrOutput) ToTableIamPolicyPtrOutput() TableIamPolicyPtrOu
 
 func (o TableIamPolicyPtrOutput) ToTableIamPolicyPtrOutputWithContext(ctx context.Context) TableIamPolicyPtrOutput {
 	return o
+}
+
+func (o TableIamPolicyPtrOutput) Elem() TableIamPolicyOutput {
+	return o.ApplyT(func(v *TableIamPolicy) TableIamPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret TableIamPolicy
+		return ret
+	}).(TableIamPolicyOutput)
 }
 
 type TableIamPolicyArrayOutput struct{ *pulumi.OutputState }

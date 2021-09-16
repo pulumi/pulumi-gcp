@@ -13,6 +13,7 @@ __all__ = [
     'GetOrganizationPolicyResult',
     'AwaitableGetOrganizationPolicyResult',
     'get_organization_policy',
+    'get_organization_policy_output',
 ]
 
 @pulumi.output_type
@@ -157,3 +158,30 @@ def get_organization_policy(constraint: Optional[str] = None,
         restore_policies=__ret__.restore_policies,
         update_time=__ret__.update_time,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_organization_policy)
+def get_organization_policy_output(constraint: Optional[pulumi.Input[str]] = None,
+                                   folder: Optional[pulumi.Input[str]] = None,
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrganizationPolicyResult]:
+    """
+    Allows management of Organization policies for a Google Folder. For more information see
+    [the official
+    documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.folder.get_organization_policy(folder="folders/folderid",
+        constraint="constraints/compute.trustedImageProjects")
+    pulumi.export("version", policy.version)
+    ```
+
+
+    :param str constraint: (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+    :param str folder: The resource name of the folder to set the policy for. Its format is folders/{folder_id}.
+    """
+    ...

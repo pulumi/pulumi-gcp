@@ -607,7 +607,7 @@ type HaVpnGatewayArrayInput interface {
 type HaVpnGatewayArray []HaVpnGatewayInput
 
 func (HaVpnGatewayArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*HaVpnGateway)(nil))
+	return reflect.TypeOf((*[]*HaVpnGateway)(nil)).Elem()
 }
 
 func (i HaVpnGatewayArray) ToHaVpnGatewayArrayOutput() HaVpnGatewayArrayOutput {
@@ -632,7 +632,7 @@ type HaVpnGatewayMapInput interface {
 type HaVpnGatewayMap map[string]HaVpnGatewayInput
 
 func (HaVpnGatewayMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*HaVpnGateway)(nil))
+	return reflect.TypeOf((*map[string]*HaVpnGateway)(nil)).Elem()
 }
 
 func (i HaVpnGatewayMap) ToHaVpnGatewayMapOutput() HaVpnGatewayMapOutput {
@@ -643,9 +643,7 @@ func (i HaVpnGatewayMap) ToHaVpnGatewayMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(HaVpnGatewayMapOutput)
 }
 
-type HaVpnGatewayOutput struct {
-	*pulumi.OutputState
-}
+type HaVpnGatewayOutput struct{ *pulumi.OutputState }
 
 func (HaVpnGatewayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*HaVpnGateway)(nil))
@@ -664,14 +662,12 @@ func (o HaVpnGatewayOutput) ToHaVpnGatewayPtrOutput() HaVpnGatewayPtrOutput {
 }
 
 func (o HaVpnGatewayOutput) ToHaVpnGatewayPtrOutputWithContext(ctx context.Context) HaVpnGatewayPtrOutput {
-	return o.ApplyT(func(v HaVpnGateway) *HaVpnGateway {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HaVpnGateway) *HaVpnGateway {
 		return &v
 	}).(HaVpnGatewayPtrOutput)
 }
 
-type HaVpnGatewayPtrOutput struct {
-	*pulumi.OutputState
-}
+type HaVpnGatewayPtrOutput struct{ *pulumi.OutputState }
 
 func (HaVpnGatewayPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**HaVpnGateway)(nil))
@@ -683,6 +679,16 @@ func (o HaVpnGatewayPtrOutput) ToHaVpnGatewayPtrOutput() HaVpnGatewayPtrOutput {
 
 func (o HaVpnGatewayPtrOutput) ToHaVpnGatewayPtrOutputWithContext(ctx context.Context) HaVpnGatewayPtrOutput {
 	return o
+}
+
+func (o HaVpnGatewayPtrOutput) Elem() HaVpnGatewayOutput {
+	return o.ApplyT(func(v *HaVpnGateway) HaVpnGateway {
+		if v != nil {
+			return *v
+		}
+		var ret HaVpnGateway
+		return ret
+	}).(HaVpnGatewayOutput)
 }
 
 type HaVpnGatewayArrayOutput struct{ *pulumi.OutputState }

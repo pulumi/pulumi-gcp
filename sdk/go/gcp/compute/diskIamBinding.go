@@ -340,7 +340,7 @@ type DiskIamBindingArrayInput interface {
 type DiskIamBindingArray []DiskIamBindingInput
 
 func (DiskIamBindingArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*DiskIamBinding)(nil))
+	return reflect.TypeOf((*[]*DiskIamBinding)(nil)).Elem()
 }
 
 func (i DiskIamBindingArray) ToDiskIamBindingArrayOutput() DiskIamBindingArrayOutput {
@@ -365,7 +365,7 @@ type DiskIamBindingMapInput interface {
 type DiskIamBindingMap map[string]DiskIamBindingInput
 
 func (DiskIamBindingMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*DiskIamBinding)(nil))
+	return reflect.TypeOf((*map[string]*DiskIamBinding)(nil)).Elem()
 }
 
 func (i DiskIamBindingMap) ToDiskIamBindingMapOutput() DiskIamBindingMapOutput {
@@ -376,9 +376,7 @@ func (i DiskIamBindingMap) ToDiskIamBindingMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(DiskIamBindingMapOutput)
 }
 
-type DiskIamBindingOutput struct {
-	*pulumi.OutputState
-}
+type DiskIamBindingOutput struct{ *pulumi.OutputState }
 
 func (DiskIamBindingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DiskIamBinding)(nil))
@@ -397,14 +395,12 @@ func (o DiskIamBindingOutput) ToDiskIamBindingPtrOutput() DiskIamBindingPtrOutpu
 }
 
 func (o DiskIamBindingOutput) ToDiskIamBindingPtrOutputWithContext(ctx context.Context) DiskIamBindingPtrOutput {
-	return o.ApplyT(func(v DiskIamBinding) *DiskIamBinding {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiskIamBinding) *DiskIamBinding {
 		return &v
 	}).(DiskIamBindingPtrOutput)
 }
 
-type DiskIamBindingPtrOutput struct {
-	*pulumi.OutputState
-}
+type DiskIamBindingPtrOutput struct{ *pulumi.OutputState }
 
 func (DiskIamBindingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DiskIamBinding)(nil))
@@ -416,6 +412,16 @@ func (o DiskIamBindingPtrOutput) ToDiskIamBindingPtrOutput() DiskIamBindingPtrOu
 
 func (o DiskIamBindingPtrOutput) ToDiskIamBindingPtrOutputWithContext(ctx context.Context) DiskIamBindingPtrOutput {
 	return o
+}
+
+func (o DiskIamBindingPtrOutput) Elem() DiskIamBindingOutput {
+	return o.ApplyT(func(v *DiskIamBinding) DiskIamBinding {
+		if v != nil {
+			return *v
+		}
+		var ret DiskIamBinding
+		return ret
+	}).(DiskIamBindingOutput)
 }
 
 type DiskIamBindingArrayOutput struct{ *pulumi.OutputState }

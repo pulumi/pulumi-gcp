@@ -155,7 +155,7 @@ func (o AttestorAttestationAuthorityNoteOutput) ToAttestorAttestationAuthorityNo
 }
 
 func (o AttestorAttestationAuthorityNoteOutput) ToAttestorAttestationAuthorityNotePtrOutputWithContext(ctx context.Context) AttestorAttestationAuthorityNotePtrOutput {
-	return o.ApplyT(func(v AttestorAttestationAuthorityNote) *AttestorAttestationAuthorityNote {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttestorAttestationAuthorityNote) *AttestorAttestationAuthorityNote {
 		return &v
 	}).(AttestorAttestationAuthorityNotePtrOutput)
 }
@@ -214,7 +214,13 @@ func (o AttestorAttestationAuthorityNotePtrOutput) ToAttestorAttestationAuthorit
 }
 
 func (o AttestorAttestationAuthorityNotePtrOutput) Elem() AttestorAttestationAuthorityNoteOutput {
-	return o.ApplyT(func(v *AttestorAttestationAuthorityNote) AttestorAttestationAuthorityNote { return *v }).(AttestorAttestationAuthorityNoteOutput)
+	return o.ApplyT(func(v *AttestorAttestationAuthorityNote) AttestorAttestationAuthorityNote {
+		if v != nil {
+			return *v
+		}
+		var ret AttestorAttestationAuthorityNote
+		return ret
+	}).(AttestorAttestationAuthorityNoteOutput)
 }
 
 // -
@@ -556,7 +562,7 @@ func (o AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyOutput) ToAttestor
 }
 
 func (o AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyOutput) ToAttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrOutputWithContext(ctx context.Context) AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrOutput {
-	return o.ApplyT(func(v AttestorAttestationAuthorityNotePublicKeyPkixPublicKey) *AttestorAttestationAuthorityNotePublicKeyPkixPublicKey {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttestorAttestationAuthorityNotePublicKeyPkixPublicKey) *AttestorAttestationAuthorityNotePublicKeyPkixPublicKey {
 		return &v
 	}).(AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrOutput)
 }
@@ -592,7 +598,11 @@ func (o AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrOutput) ToAttes
 
 func (o AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrOutput) Elem() AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyOutput {
 	return o.ApplyT(func(v *AttestorAttestationAuthorityNotePublicKeyPkixPublicKey) AttestorAttestationAuthorityNotePublicKeyPkixPublicKey {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret AttestorAttestationAuthorityNotePublicKeyPkixPublicKey
+		return ret
 	}).(AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyOutput)
 }
 
@@ -716,10 +726,11 @@ func (o AttestorIamBindingConditionOutput) ToAttestorIamBindingConditionPtrOutpu
 }
 
 func (o AttestorIamBindingConditionOutput) ToAttestorIamBindingConditionPtrOutputWithContext(ctx context.Context) AttestorIamBindingConditionPtrOutput {
-	return o.ApplyT(func(v AttestorIamBindingCondition) *AttestorIamBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttestorIamBindingCondition) *AttestorIamBindingCondition {
 		return &v
 	}).(AttestorIamBindingConditionPtrOutput)
 }
+
 func (o AttestorIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AttestorIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -747,7 +758,13 @@ func (o AttestorIamBindingConditionPtrOutput) ToAttestorIamBindingConditionPtrOu
 }
 
 func (o AttestorIamBindingConditionPtrOutput) Elem() AttestorIamBindingConditionOutput {
-	return o.ApplyT(func(v *AttestorIamBindingCondition) AttestorIamBindingCondition { return *v }).(AttestorIamBindingConditionOutput)
+	return o.ApplyT(func(v *AttestorIamBindingCondition) AttestorIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret AttestorIamBindingCondition
+		return ret
+	}).(AttestorIamBindingConditionOutput)
 }
 
 func (o AttestorIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -872,10 +889,11 @@ func (o AttestorIamMemberConditionOutput) ToAttestorIamMemberConditionPtrOutput(
 }
 
 func (o AttestorIamMemberConditionOutput) ToAttestorIamMemberConditionPtrOutputWithContext(ctx context.Context) AttestorIamMemberConditionPtrOutput {
-	return o.ApplyT(func(v AttestorIamMemberCondition) *AttestorIamMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttestorIamMemberCondition) *AttestorIamMemberCondition {
 		return &v
 	}).(AttestorIamMemberConditionPtrOutput)
 }
+
 func (o AttestorIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AttestorIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -903,7 +921,13 @@ func (o AttestorIamMemberConditionPtrOutput) ToAttestorIamMemberConditionPtrOutp
 }
 
 func (o AttestorIamMemberConditionPtrOutput) Elem() AttestorIamMemberConditionOutput {
-	return o.ApplyT(func(v *AttestorIamMemberCondition) AttestorIamMemberCondition { return *v }).(AttestorIamMemberConditionOutput)
+	return o.ApplyT(func(v *AttestorIamMemberCondition) AttestorIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret AttestorIamMemberCondition
+		return ret
+	}).(AttestorIamMemberConditionOutput)
 }
 
 func (o AttestorIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -1309,7 +1333,7 @@ func (o PolicyDefaultAdmissionRuleOutput) ToPolicyDefaultAdmissionRulePtrOutput(
 }
 
 func (o PolicyDefaultAdmissionRuleOutput) ToPolicyDefaultAdmissionRulePtrOutputWithContext(ctx context.Context) PolicyDefaultAdmissionRulePtrOutput {
-	return o.ApplyT(func(v PolicyDefaultAdmissionRule) *PolicyDefaultAdmissionRule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyDefaultAdmissionRule) *PolicyDefaultAdmissionRule {
 		return &v
 	}).(PolicyDefaultAdmissionRulePtrOutput)
 }
@@ -1353,7 +1377,13 @@ func (o PolicyDefaultAdmissionRulePtrOutput) ToPolicyDefaultAdmissionRulePtrOutp
 }
 
 func (o PolicyDefaultAdmissionRulePtrOutput) Elem() PolicyDefaultAdmissionRuleOutput {
-	return o.ApplyT(func(v *PolicyDefaultAdmissionRule) PolicyDefaultAdmissionRule { return *v }).(PolicyDefaultAdmissionRuleOutput)
+	return o.ApplyT(func(v *PolicyDefaultAdmissionRule) PolicyDefaultAdmissionRule {
+		if v != nil {
+			return *v
+		}
+		var ret PolicyDefaultAdmissionRule
+		return ret
+	}).(PolicyDefaultAdmissionRuleOutput)
 }
 
 // The action when a pod creation is denied by the admission rule.

@@ -4,6 +4,9 @@
 package sql
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,4 +41,67 @@ type GetCaCertsResult struct {
 	Id       string `pulumi:"id"`
 	Instance string `pulumi:"instance"`
 	Project  string `pulumi:"project"`
+}
+
+func GetCaCertsOutput(ctx *pulumi.Context, args GetCaCertsOutputArgs, opts ...pulumi.InvokeOption) GetCaCertsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetCaCertsResult, error) {
+			args := v.(GetCaCertsArgs)
+			r, err := GetCaCerts(ctx, &args, opts...)
+			return *r, err
+		}).(GetCaCertsResultOutput)
+}
+
+// A collection of arguments for invoking getCaCerts.
+type GetCaCertsOutputArgs struct {
+	// The name or self link of the instance.
+	Instance pulumi.StringInput `pulumi:"instance"`
+	// The ID of the project in which the resource belongs. If `project` is not provided, the provider project is used.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (GetCaCertsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCaCertsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getCaCerts.
+type GetCaCertsResultOutput struct{ *pulumi.OutputState }
+
+func (GetCaCertsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCaCertsResult)(nil)).Elem()
+}
+
+func (o GetCaCertsResultOutput) ToGetCaCertsResultOutput() GetCaCertsResultOutput {
+	return o
+}
+
+func (o GetCaCertsResultOutput) ToGetCaCertsResultOutputWithContext(ctx context.Context) GetCaCertsResultOutput {
+	return o
+}
+
+// SHA1 fingerprint of the currently active CA certificate.
+func (o GetCaCertsResultOutput) ActiveVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCaCertsResult) string { return v.ActiveVersion }).(pulumi.StringOutput)
+}
+
+// A list of server CA certificates for the instance. Each contains:
+func (o GetCaCertsResultOutput) Certs() GetCaCertsCertArrayOutput {
+	return o.ApplyT(func(v GetCaCertsResult) []GetCaCertsCert { return v.Certs }).(GetCaCertsCertArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetCaCertsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCaCertsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetCaCertsResultOutput) Instance() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCaCertsResult) string { return v.Instance }).(pulumi.StringOutput)
+}
+
+func (o GetCaCertsResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCaCertsResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetCaCertsResultOutput{})
 }

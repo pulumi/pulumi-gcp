@@ -226,7 +226,7 @@ type AccessPolicyArrayInput interface {
 type AccessPolicyArray []AccessPolicyInput
 
 func (AccessPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AccessPolicy)(nil))
+	return reflect.TypeOf((*[]*AccessPolicy)(nil)).Elem()
 }
 
 func (i AccessPolicyArray) ToAccessPolicyArrayOutput() AccessPolicyArrayOutput {
@@ -251,7 +251,7 @@ type AccessPolicyMapInput interface {
 type AccessPolicyMap map[string]AccessPolicyInput
 
 func (AccessPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AccessPolicy)(nil))
+	return reflect.TypeOf((*map[string]*AccessPolicy)(nil)).Elem()
 }
 
 func (i AccessPolicyMap) ToAccessPolicyMapOutput() AccessPolicyMapOutput {
@@ -262,9 +262,7 @@ func (i AccessPolicyMap) ToAccessPolicyMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyMapOutput)
 }
 
-type AccessPolicyOutput struct {
-	*pulumi.OutputState
-}
+type AccessPolicyOutput struct{ *pulumi.OutputState }
 
 func (AccessPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AccessPolicy)(nil))
@@ -283,14 +281,12 @@ func (o AccessPolicyOutput) ToAccessPolicyPtrOutput() AccessPolicyPtrOutput {
 }
 
 func (o AccessPolicyOutput) ToAccessPolicyPtrOutputWithContext(ctx context.Context) AccessPolicyPtrOutput {
-	return o.ApplyT(func(v AccessPolicy) *AccessPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessPolicy) *AccessPolicy {
 		return &v
 	}).(AccessPolicyPtrOutput)
 }
 
-type AccessPolicyPtrOutput struct {
-	*pulumi.OutputState
-}
+type AccessPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (AccessPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AccessPolicy)(nil))
@@ -302,6 +298,16 @@ func (o AccessPolicyPtrOutput) ToAccessPolicyPtrOutput() AccessPolicyPtrOutput {
 
 func (o AccessPolicyPtrOutput) ToAccessPolicyPtrOutputWithContext(ctx context.Context) AccessPolicyPtrOutput {
 	return o
+}
+
+func (o AccessPolicyPtrOutput) Elem() AccessPolicyOutput {
+	return o.ApplyT(func(v *AccessPolicy) AccessPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret AccessPolicy
+		return ret
+	}).(AccessPolicyOutput)
 }
 
 type AccessPolicyArrayOutput struct{ *pulumi.OutputState }

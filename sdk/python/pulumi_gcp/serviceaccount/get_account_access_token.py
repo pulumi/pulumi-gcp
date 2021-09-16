@@ -12,6 +12,7 @@ __all__ = [
     'GetAccountAccessTokenResult',
     'AwaitableGetAccountAccessTokenResult',
     'get_account_access_token',
+    'get_account_access_token_output',
 ]
 
 @pulumi.output_type
@@ -125,3 +126,24 @@ def get_account_access_token(delegates: Optional[Sequence[str]] = None,
         lifetime=__ret__.lifetime,
         scopes=__ret__.scopes,
         target_service_account=__ret__.target_service_account)
+
+
+@_utilities.lift_output_func(get_account_access_token)
+def get_account_access_token_output(delegates: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                    lifetime: Optional[pulumi.Input[Optional[str]]] = None,
+                                    scopes: Optional[pulumi.Input[Sequence[str]]] = None,
+                                    target_service_account: Optional[pulumi.Input[str]] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountAccessTokenResult]:
+    """
+    This data source provides a google `oauth2` `access_token` for a different service account than the one initially running the script.
+
+    For more information see
+    [the official documentation](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials) as well as [iamcredentials.generateAccessToken()](https://cloud.google.com/iam/credentials/reference/rest/v1/projects.serviceAccounts/generateAccessToken)
+
+
+    :param Sequence[str] delegates: Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.  (e.g. `["projects/-/serviceAccounts/delegate-svc-account@project-id.iam.gserviceaccount.com"]`)
+    :param str lifetime: Lifetime of the impersonated token (defaults to its max: `3600s`).
+    :param Sequence[str] scopes: The scopes the new credential should have (e.g. `["cloud-platform"]`)
+    :param str target_service_account: The service account _to_ impersonate (e.g. `service_B@your-project-id.iam.gserviceaccount.com`)
+    """
+    ...

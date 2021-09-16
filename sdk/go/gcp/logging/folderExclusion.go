@@ -251,7 +251,7 @@ type FolderExclusionArrayInput interface {
 type FolderExclusionArray []FolderExclusionInput
 
 func (FolderExclusionArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*FolderExclusion)(nil))
+	return reflect.TypeOf((*[]*FolderExclusion)(nil)).Elem()
 }
 
 func (i FolderExclusionArray) ToFolderExclusionArrayOutput() FolderExclusionArrayOutput {
@@ -276,7 +276,7 @@ type FolderExclusionMapInput interface {
 type FolderExclusionMap map[string]FolderExclusionInput
 
 func (FolderExclusionMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*FolderExclusion)(nil))
+	return reflect.TypeOf((*map[string]*FolderExclusion)(nil)).Elem()
 }
 
 func (i FolderExclusionMap) ToFolderExclusionMapOutput() FolderExclusionMapOutput {
@@ -287,9 +287,7 @@ func (i FolderExclusionMap) ToFolderExclusionMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(FolderExclusionMapOutput)
 }
 
-type FolderExclusionOutput struct {
-	*pulumi.OutputState
-}
+type FolderExclusionOutput struct{ *pulumi.OutputState }
 
 func (FolderExclusionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*FolderExclusion)(nil))
@@ -308,14 +306,12 @@ func (o FolderExclusionOutput) ToFolderExclusionPtrOutput() FolderExclusionPtrOu
 }
 
 func (o FolderExclusionOutput) ToFolderExclusionPtrOutputWithContext(ctx context.Context) FolderExclusionPtrOutput {
-	return o.ApplyT(func(v FolderExclusion) *FolderExclusion {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FolderExclusion) *FolderExclusion {
 		return &v
 	}).(FolderExclusionPtrOutput)
 }
 
-type FolderExclusionPtrOutput struct {
-	*pulumi.OutputState
-}
+type FolderExclusionPtrOutput struct{ *pulumi.OutputState }
 
 func (FolderExclusionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**FolderExclusion)(nil))
@@ -327,6 +323,16 @@ func (o FolderExclusionPtrOutput) ToFolderExclusionPtrOutput() FolderExclusionPt
 
 func (o FolderExclusionPtrOutput) ToFolderExclusionPtrOutputWithContext(ctx context.Context) FolderExclusionPtrOutput {
 	return o
+}
+
+func (o FolderExclusionPtrOutput) Elem() FolderExclusionOutput {
+	return o.ApplyT(func(v *FolderExclusion) FolderExclusion {
+		if v != nil {
+			return *v
+		}
+		var ret FolderExclusion
+		return ret
+	}).(FolderExclusionOutput)
 }
 
 type FolderExclusionArrayOutput struct{ *pulumi.OutputState }

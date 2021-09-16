@@ -378,7 +378,7 @@ type NodeTemplateArrayInput interface {
 type NodeTemplateArray []NodeTemplateInput
 
 func (NodeTemplateArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*NodeTemplate)(nil))
+	return reflect.TypeOf((*[]*NodeTemplate)(nil)).Elem()
 }
 
 func (i NodeTemplateArray) ToNodeTemplateArrayOutput() NodeTemplateArrayOutput {
@@ -403,7 +403,7 @@ type NodeTemplateMapInput interface {
 type NodeTemplateMap map[string]NodeTemplateInput
 
 func (NodeTemplateMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*NodeTemplate)(nil))
+	return reflect.TypeOf((*map[string]*NodeTemplate)(nil)).Elem()
 }
 
 func (i NodeTemplateMap) ToNodeTemplateMapOutput() NodeTemplateMapOutput {
@@ -414,9 +414,7 @@ func (i NodeTemplateMap) ToNodeTemplateMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(NodeTemplateMapOutput)
 }
 
-type NodeTemplateOutput struct {
-	*pulumi.OutputState
-}
+type NodeTemplateOutput struct{ *pulumi.OutputState }
 
 func (NodeTemplateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*NodeTemplate)(nil))
@@ -435,14 +433,12 @@ func (o NodeTemplateOutput) ToNodeTemplatePtrOutput() NodeTemplatePtrOutput {
 }
 
 func (o NodeTemplateOutput) ToNodeTemplatePtrOutputWithContext(ctx context.Context) NodeTemplatePtrOutput {
-	return o.ApplyT(func(v NodeTemplate) *NodeTemplate {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeTemplate) *NodeTemplate {
 		return &v
 	}).(NodeTemplatePtrOutput)
 }
 
-type NodeTemplatePtrOutput struct {
-	*pulumi.OutputState
-}
+type NodeTemplatePtrOutput struct{ *pulumi.OutputState }
 
 func (NodeTemplatePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**NodeTemplate)(nil))
@@ -454,6 +450,16 @@ func (o NodeTemplatePtrOutput) ToNodeTemplatePtrOutput() NodeTemplatePtrOutput {
 
 func (o NodeTemplatePtrOutput) ToNodeTemplatePtrOutputWithContext(ctx context.Context) NodeTemplatePtrOutput {
 	return o
+}
+
+func (o NodeTemplatePtrOutput) Elem() NodeTemplateOutput {
+	return o.ApplyT(func(v *NodeTemplate) NodeTemplate {
+		if v != nil {
+			return *v
+		}
+		var ret NodeTemplate
+		return ret
+	}).(NodeTemplateOutput)
 }
 
 type NodeTemplateArrayOutput struct{ *pulumi.OutputState }

@@ -336,7 +336,7 @@ type IamBindingArrayInput interface {
 type IamBindingArray []IamBindingInput
 
 func (IamBindingArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*IamBinding)(nil))
+	return reflect.TypeOf((*[]*IamBinding)(nil)).Elem()
 }
 
 func (i IamBindingArray) ToIamBindingArrayOutput() IamBindingArrayOutput {
@@ -361,7 +361,7 @@ type IamBindingMapInput interface {
 type IamBindingMap map[string]IamBindingInput
 
 func (IamBindingMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*IamBinding)(nil))
+	return reflect.TypeOf((*map[string]*IamBinding)(nil)).Elem()
 }
 
 func (i IamBindingMap) ToIamBindingMapOutput() IamBindingMapOutput {
@@ -372,9 +372,7 @@ func (i IamBindingMap) ToIamBindingMapOutputWithContext(ctx context.Context) Iam
 	return pulumi.ToOutputWithContext(ctx, i).(IamBindingMapOutput)
 }
 
-type IamBindingOutput struct {
-	*pulumi.OutputState
-}
+type IamBindingOutput struct{ *pulumi.OutputState }
 
 func (IamBindingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*IamBinding)(nil))
@@ -393,14 +391,12 @@ func (o IamBindingOutput) ToIamBindingPtrOutput() IamBindingPtrOutput {
 }
 
 func (o IamBindingOutput) ToIamBindingPtrOutputWithContext(ctx context.Context) IamBindingPtrOutput {
-	return o.ApplyT(func(v IamBinding) *IamBinding {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IamBinding) *IamBinding {
 		return &v
 	}).(IamBindingPtrOutput)
 }
 
-type IamBindingPtrOutput struct {
-	*pulumi.OutputState
-}
+type IamBindingPtrOutput struct{ *pulumi.OutputState }
 
 func (IamBindingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**IamBinding)(nil))
@@ -412,6 +408,16 @@ func (o IamBindingPtrOutput) ToIamBindingPtrOutput() IamBindingPtrOutput {
 
 func (o IamBindingPtrOutput) ToIamBindingPtrOutputWithContext(ctx context.Context) IamBindingPtrOutput {
 	return o
+}
+
+func (o IamBindingPtrOutput) Elem() IamBindingOutput {
+	return o.ApplyT(func(v *IamBinding) IamBinding {
+		if v != nil {
+			return *v
+		}
+		var ret IamBinding
+		return ret
+	}).(IamBindingOutput)
 }
 
 type IamBindingArrayOutput struct{ *pulumi.OutputState }

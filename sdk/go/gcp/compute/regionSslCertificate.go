@@ -320,7 +320,7 @@ type RegionSslCertificateArrayInput interface {
 type RegionSslCertificateArray []RegionSslCertificateInput
 
 func (RegionSslCertificateArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*RegionSslCertificate)(nil))
+	return reflect.TypeOf((*[]*RegionSslCertificate)(nil)).Elem()
 }
 
 func (i RegionSslCertificateArray) ToRegionSslCertificateArrayOutput() RegionSslCertificateArrayOutput {
@@ -345,7 +345,7 @@ type RegionSslCertificateMapInput interface {
 type RegionSslCertificateMap map[string]RegionSslCertificateInput
 
 func (RegionSslCertificateMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*RegionSslCertificate)(nil))
+	return reflect.TypeOf((*map[string]*RegionSslCertificate)(nil)).Elem()
 }
 
 func (i RegionSslCertificateMap) ToRegionSslCertificateMapOutput() RegionSslCertificateMapOutput {
@@ -356,9 +356,7 @@ func (i RegionSslCertificateMap) ToRegionSslCertificateMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(RegionSslCertificateMapOutput)
 }
 
-type RegionSslCertificateOutput struct {
-	*pulumi.OutputState
-}
+type RegionSslCertificateOutput struct{ *pulumi.OutputState }
 
 func (RegionSslCertificateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RegionSslCertificate)(nil))
@@ -377,14 +375,12 @@ func (o RegionSslCertificateOutput) ToRegionSslCertificatePtrOutput() RegionSslC
 }
 
 func (o RegionSslCertificateOutput) ToRegionSslCertificatePtrOutputWithContext(ctx context.Context) RegionSslCertificatePtrOutput {
-	return o.ApplyT(func(v RegionSslCertificate) *RegionSslCertificate {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionSslCertificate) *RegionSslCertificate {
 		return &v
 	}).(RegionSslCertificatePtrOutput)
 }
 
-type RegionSslCertificatePtrOutput struct {
-	*pulumi.OutputState
-}
+type RegionSslCertificatePtrOutput struct{ *pulumi.OutputState }
 
 func (RegionSslCertificatePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**RegionSslCertificate)(nil))
@@ -396,6 +392,16 @@ func (o RegionSslCertificatePtrOutput) ToRegionSslCertificatePtrOutput() RegionS
 
 func (o RegionSslCertificatePtrOutput) ToRegionSslCertificatePtrOutputWithContext(ctx context.Context) RegionSslCertificatePtrOutput {
 	return o
+}
+
+func (o RegionSslCertificatePtrOutput) Elem() RegionSslCertificateOutput {
+	return o.ApplyT(func(v *RegionSslCertificate) RegionSslCertificate {
+		if v != nil {
+			return *v
+		}
+		var ret RegionSslCertificate
+		return ret
+	}).(RegionSslCertificateOutput)
 }
 
 type RegionSslCertificateArrayOutput struct{ *pulumi.OutputState }

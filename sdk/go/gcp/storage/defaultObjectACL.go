@@ -212,7 +212,7 @@ type DefaultObjectACLArrayInput interface {
 type DefaultObjectACLArray []DefaultObjectACLInput
 
 func (DefaultObjectACLArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*DefaultObjectACL)(nil))
+	return reflect.TypeOf((*[]*DefaultObjectACL)(nil)).Elem()
 }
 
 func (i DefaultObjectACLArray) ToDefaultObjectACLArrayOutput() DefaultObjectACLArrayOutput {
@@ -237,7 +237,7 @@ type DefaultObjectACLMapInput interface {
 type DefaultObjectACLMap map[string]DefaultObjectACLInput
 
 func (DefaultObjectACLMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*DefaultObjectACL)(nil))
+	return reflect.TypeOf((*map[string]*DefaultObjectACL)(nil)).Elem()
 }
 
 func (i DefaultObjectACLMap) ToDefaultObjectACLMapOutput() DefaultObjectACLMapOutput {
@@ -248,9 +248,7 @@ func (i DefaultObjectACLMap) ToDefaultObjectACLMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultObjectACLMapOutput)
 }
 
-type DefaultObjectACLOutput struct {
-	*pulumi.OutputState
-}
+type DefaultObjectACLOutput struct{ *pulumi.OutputState }
 
 func (DefaultObjectACLOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DefaultObjectACL)(nil))
@@ -269,14 +267,12 @@ func (o DefaultObjectACLOutput) ToDefaultObjectACLPtrOutput() DefaultObjectACLPt
 }
 
 func (o DefaultObjectACLOutput) ToDefaultObjectACLPtrOutputWithContext(ctx context.Context) DefaultObjectACLPtrOutput {
-	return o.ApplyT(func(v DefaultObjectACL) *DefaultObjectACL {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefaultObjectACL) *DefaultObjectACL {
 		return &v
 	}).(DefaultObjectACLPtrOutput)
 }
 
-type DefaultObjectACLPtrOutput struct {
-	*pulumi.OutputState
-}
+type DefaultObjectACLPtrOutput struct{ *pulumi.OutputState }
 
 func (DefaultObjectACLPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DefaultObjectACL)(nil))
@@ -288,6 +284,16 @@ func (o DefaultObjectACLPtrOutput) ToDefaultObjectACLPtrOutput() DefaultObjectAC
 
 func (o DefaultObjectACLPtrOutput) ToDefaultObjectACLPtrOutputWithContext(ctx context.Context) DefaultObjectACLPtrOutput {
 	return o
+}
+
+func (o DefaultObjectACLPtrOutput) Elem() DefaultObjectACLOutput {
+	return o.ApplyT(func(v *DefaultObjectACL) DefaultObjectACL {
+		if v != nil {
+			return *v
+		}
+		var ret DefaultObjectACL
+		return ret
+	}).(DefaultObjectACLOutput)
 }
 
 type DefaultObjectACLArrayOutput struct{ *pulumi.OutputState }

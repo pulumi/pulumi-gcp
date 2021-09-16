@@ -12,6 +12,7 @@ __all__ = [
     'GetAccountResult',
     'AwaitableGetAccountResult',
     'get_account',
+    'get_account_output',
 ]
 
 @pulumi.output_type
@@ -60,7 +61,7 @@ class GetAccountResult:
     def email(self) -> str:
         """
         The e-mail address of the service account. This value
-        should be referenced from any `organizations.getIAMPolicy` data sources
+        should be referenced from any `organizations.get_iam_policy` data sources
         that would grant the service account privileges.
         """
         return pulumi.get(self, "email")
@@ -148,3 +149,28 @@ def get_account(account_id: Optional[str] = None,
         name=__ret__.name,
         project=__ret__.project,
         unique_id=__ret__.unique_id)
+
+
+@_utilities.lift_output_func(get_account)
+def get_account_output(account_id: Optional[pulumi.Input[str]] = None,
+                       project: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountResult]:
+    """
+    Get the service account from a project. For more information see
+    the official [API](https://cloud.google.com/compute/docs/access/service-accounts) documentation.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    object_viewer = gcp.serviceAccount.get_account(account_id="object-viewer")
+    ```
+
+
+    :param str account_id: The Google service account ID. This be one of:
+    :param str project: The ID of the project that the service account is present in.
+           Defaults to the provider project configuration.
+    """
+    ...

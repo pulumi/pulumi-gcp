@@ -12,6 +12,7 @@ __all__ = [
     'GetFolderResult',
     'AwaitableGetFolderResult',
     'get_folder',
+    'get_folder_output',
 ]
 
 @pulumi.output_type
@@ -182,3 +183,28 @@ def get_folder(folder: Optional[str] = None,
         name=__ret__.name,
         organization=__ret__.organization,
         parent=__ret__.parent)
+
+
+@_utilities.lift_output_func(get_folder)
+def get_folder_output(folder: Optional[pulumi.Input[str]] = None,
+                      lookup_organization: Optional[pulumi.Input[Optional[bool]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFolderResult]:
+    """
+    Use this data source to get information about a Google Cloud Folder.
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_folder1 = gcp.organizations.get_folder(folder="folders/12345",
+        lookup_organization=True)
+    my_folder2 = gcp.organizations.get_folder(folder="folders/23456")
+    pulumi.export("myFolder1Organization", my_folder1.organization)
+    pulumi.export("myFolder2Parent", my_folder2.parent)
+    ```
+
+
+    :param str folder: The name of the Folder in the form `{folder_id}` or `folders/{folder_id}`.
+    :param bool lookup_organization: `true` to find the organization that the folder belongs, `false` to avoid the lookup. It searches up the tree. (defaults to `false`)
+    """
+    ...

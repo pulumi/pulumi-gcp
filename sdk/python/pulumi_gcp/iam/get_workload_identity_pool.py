@@ -12,6 +12,7 @@ __all__ = [
     'GetWorkloadIdentityPoolResult',
     'AwaitableGetWorkloadIdentityPoolResult',
     'get_workload_identity_pool',
+    'get_workload_identity_pool_output',
 ]
 
 @pulumi.output_type
@@ -144,3 +145,28 @@ def get_workload_identity_pool(project: Optional[str] = None,
         project=__ret__.project,
         state=__ret__.state,
         workload_identity_pool_id=__ret__.workload_identity_pool_id)
+
+
+@_utilities.lift_output_func(get_workload_identity_pool)
+def get_workload_identity_pool_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                                      workload_identity_pool_id: Optional[pulumi.Input[str]] = None,
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWorkloadIdentityPoolResult]:
+    """
+    Get a IAM workload identity pool from Google Cloud by its id.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    foo = gcp.iam.get_workload_identity_pool(workload_identity_pool_id="foo-pool")
+    ```
+
+
+    :param str project: The project in which the resource belongs. If it
+           is not provided, the provider project is used.
+    :param str workload_identity_pool_id: The id of the pool which is the
+           final component of the resource name.
+    """
+    ...

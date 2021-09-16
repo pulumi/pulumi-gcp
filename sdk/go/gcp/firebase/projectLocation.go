@@ -190,7 +190,7 @@ type ProjectLocationArrayInput interface {
 type ProjectLocationArray []ProjectLocationInput
 
 func (ProjectLocationArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ProjectLocation)(nil))
+	return reflect.TypeOf((*[]*ProjectLocation)(nil)).Elem()
 }
 
 func (i ProjectLocationArray) ToProjectLocationArrayOutput() ProjectLocationArrayOutput {
@@ -215,7 +215,7 @@ type ProjectLocationMapInput interface {
 type ProjectLocationMap map[string]ProjectLocationInput
 
 func (ProjectLocationMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ProjectLocation)(nil))
+	return reflect.TypeOf((*map[string]*ProjectLocation)(nil)).Elem()
 }
 
 func (i ProjectLocationMap) ToProjectLocationMapOutput() ProjectLocationMapOutput {
@@ -226,9 +226,7 @@ func (i ProjectLocationMap) ToProjectLocationMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectLocationMapOutput)
 }
 
-type ProjectLocationOutput struct {
-	*pulumi.OutputState
-}
+type ProjectLocationOutput struct{ *pulumi.OutputState }
 
 func (ProjectLocationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ProjectLocation)(nil))
@@ -247,14 +245,12 @@ func (o ProjectLocationOutput) ToProjectLocationPtrOutput() ProjectLocationPtrOu
 }
 
 func (o ProjectLocationOutput) ToProjectLocationPtrOutputWithContext(ctx context.Context) ProjectLocationPtrOutput {
-	return o.ApplyT(func(v ProjectLocation) *ProjectLocation {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectLocation) *ProjectLocation {
 		return &v
 	}).(ProjectLocationPtrOutput)
 }
 
-type ProjectLocationPtrOutput struct {
-	*pulumi.OutputState
-}
+type ProjectLocationPtrOutput struct{ *pulumi.OutputState }
 
 func (ProjectLocationPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ProjectLocation)(nil))
@@ -266,6 +262,16 @@ func (o ProjectLocationPtrOutput) ToProjectLocationPtrOutput() ProjectLocationPt
 
 func (o ProjectLocationPtrOutput) ToProjectLocationPtrOutputWithContext(ctx context.Context) ProjectLocationPtrOutput {
 	return o
+}
+
+func (o ProjectLocationPtrOutput) Elem() ProjectLocationOutput {
+	return o.ApplyT(func(v *ProjectLocation) ProjectLocation {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectLocation
+		return ret
+	}).(ProjectLocationOutput)
 }
 
 type ProjectLocationArrayOutput struct{ *pulumi.OutputState }

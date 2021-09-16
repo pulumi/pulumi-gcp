@@ -4,6 +4,9 @@
 package secretmanager
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -70,4 +73,91 @@ type LookupSecretVersionResult struct {
 	// The secret data. No larger than 64KiB.
 	SecretData string `pulumi:"secretData"`
 	Version    string `pulumi:"version"`
+}
+
+func LookupSecretVersionOutput(ctx *pulumi.Context, args LookupSecretVersionOutputArgs, opts ...pulumi.InvokeOption) LookupSecretVersionResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupSecretVersionResult, error) {
+			args := v.(LookupSecretVersionArgs)
+			r, err := LookupSecretVersion(ctx, &args, opts...)
+			return *r, err
+		}).(LookupSecretVersionResultOutput)
+}
+
+// A collection of arguments for invoking getSecretVersion.
+type LookupSecretVersionOutputArgs struct {
+	// The project to get the secret version for. If it
+	// is not provided, the provider project is used.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// The secret to get the secret version for.
+	Secret pulumi.StringInput `pulumi:"secret"`
+	// The version of the secret to get. If it
+	// is not provided, the latest version is retrieved.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (LookupSecretVersionOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSecretVersionArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getSecretVersion.
+type LookupSecretVersionResultOutput struct{ *pulumi.OutputState }
+
+func (LookupSecretVersionResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSecretVersionResult)(nil)).Elem()
+}
+
+func (o LookupSecretVersionResultOutput) ToLookupSecretVersionResultOutput() LookupSecretVersionResultOutput {
+	return o
+}
+
+func (o LookupSecretVersionResultOutput) ToLookupSecretVersionResultOutputWithContext(ctx context.Context) LookupSecretVersionResultOutput {
+	return o
+}
+
+// The time at which the Secret was created.
+func (o LookupSecretVersionResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretVersionResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The time at which the Secret was destroyed. Only present if state is DESTROYED.
+func (o LookupSecretVersionResultOutput) DestroyTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretVersionResult) string { return v.DestroyTime }).(pulumi.StringOutput)
+}
+
+// True if the current state of the SecretVersion is enabled.
+func (o LookupSecretVersionResultOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupSecretVersionResult) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupSecretVersionResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretVersionResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The resource name of the SecretVersion. Format:
+// `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
+func (o LookupSecretVersionResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretVersionResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupSecretVersionResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretVersionResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o LookupSecretVersionResultOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretVersionResult) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+// The secret data. No larger than 64KiB.
+func (o LookupSecretVersionResultOutput) SecretData() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretVersionResult) string { return v.SecretData }).(pulumi.StringOutput)
+}
+
+func (o LookupSecretVersionResultOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretVersionResult) string { return v.Version }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupSecretVersionResultOutput{})
 }

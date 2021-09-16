@@ -323,7 +323,7 @@ type ConfigIamMemberArrayInput interface {
 type ConfigIamMemberArray []ConfigIamMemberInput
 
 func (ConfigIamMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ConfigIamMember)(nil))
+	return reflect.TypeOf((*[]*ConfigIamMember)(nil)).Elem()
 }
 
 func (i ConfigIamMemberArray) ToConfigIamMemberArrayOutput() ConfigIamMemberArrayOutput {
@@ -348,7 +348,7 @@ type ConfigIamMemberMapInput interface {
 type ConfigIamMemberMap map[string]ConfigIamMemberInput
 
 func (ConfigIamMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ConfigIamMember)(nil))
+	return reflect.TypeOf((*map[string]*ConfigIamMember)(nil)).Elem()
 }
 
 func (i ConfigIamMemberMap) ToConfigIamMemberMapOutput() ConfigIamMemberMapOutput {
@@ -359,9 +359,7 @@ func (i ConfigIamMemberMap) ToConfigIamMemberMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigIamMemberMapOutput)
 }
 
-type ConfigIamMemberOutput struct {
-	*pulumi.OutputState
-}
+type ConfigIamMemberOutput struct{ *pulumi.OutputState }
 
 func (ConfigIamMemberOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ConfigIamMember)(nil))
@@ -380,14 +378,12 @@ func (o ConfigIamMemberOutput) ToConfigIamMemberPtrOutput() ConfigIamMemberPtrOu
 }
 
 func (o ConfigIamMemberOutput) ToConfigIamMemberPtrOutputWithContext(ctx context.Context) ConfigIamMemberPtrOutput {
-	return o.ApplyT(func(v ConfigIamMember) *ConfigIamMember {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigIamMember) *ConfigIamMember {
 		return &v
 	}).(ConfigIamMemberPtrOutput)
 }
 
-type ConfigIamMemberPtrOutput struct {
-	*pulumi.OutputState
-}
+type ConfigIamMemberPtrOutput struct{ *pulumi.OutputState }
 
 func (ConfigIamMemberPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ConfigIamMember)(nil))
@@ -399,6 +395,16 @@ func (o ConfigIamMemberPtrOutput) ToConfigIamMemberPtrOutput() ConfigIamMemberPt
 
 func (o ConfigIamMemberPtrOutput) ToConfigIamMemberPtrOutputWithContext(ctx context.Context) ConfigIamMemberPtrOutput {
 	return o
+}
+
+func (o ConfigIamMemberPtrOutput) Elem() ConfigIamMemberOutput {
+	return o.ApplyT(func(v *ConfigIamMember) ConfigIamMember {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigIamMember
+		return ret
+	}).(ConfigIamMemberOutput)
 }
 
 type ConfigIamMemberArrayOutput struct{ *pulumi.OutputState }

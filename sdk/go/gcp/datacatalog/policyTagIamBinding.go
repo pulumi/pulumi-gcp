@@ -305,7 +305,7 @@ type PolicyTagIamBindingArrayInput interface {
 type PolicyTagIamBindingArray []PolicyTagIamBindingInput
 
 func (PolicyTagIamBindingArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*PolicyTagIamBinding)(nil))
+	return reflect.TypeOf((*[]*PolicyTagIamBinding)(nil)).Elem()
 }
 
 func (i PolicyTagIamBindingArray) ToPolicyTagIamBindingArrayOutput() PolicyTagIamBindingArrayOutput {
@@ -330,7 +330,7 @@ type PolicyTagIamBindingMapInput interface {
 type PolicyTagIamBindingMap map[string]PolicyTagIamBindingInput
 
 func (PolicyTagIamBindingMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*PolicyTagIamBinding)(nil))
+	return reflect.TypeOf((*map[string]*PolicyTagIamBinding)(nil)).Elem()
 }
 
 func (i PolicyTagIamBindingMap) ToPolicyTagIamBindingMapOutput() PolicyTagIamBindingMapOutput {
@@ -341,9 +341,7 @@ func (i PolicyTagIamBindingMap) ToPolicyTagIamBindingMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyTagIamBindingMapOutput)
 }
 
-type PolicyTagIamBindingOutput struct {
-	*pulumi.OutputState
-}
+type PolicyTagIamBindingOutput struct{ *pulumi.OutputState }
 
 func (PolicyTagIamBindingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*PolicyTagIamBinding)(nil))
@@ -362,14 +360,12 @@ func (o PolicyTagIamBindingOutput) ToPolicyTagIamBindingPtrOutput() PolicyTagIam
 }
 
 func (o PolicyTagIamBindingOutput) ToPolicyTagIamBindingPtrOutputWithContext(ctx context.Context) PolicyTagIamBindingPtrOutput {
-	return o.ApplyT(func(v PolicyTagIamBinding) *PolicyTagIamBinding {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyTagIamBinding) *PolicyTagIamBinding {
 		return &v
 	}).(PolicyTagIamBindingPtrOutput)
 }
 
-type PolicyTagIamBindingPtrOutput struct {
-	*pulumi.OutputState
-}
+type PolicyTagIamBindingPtrOutput struct{ *pulumi.OutputState }
 
 func (PolicyTagIamBindingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**PolicyTagIamBinding)(nil))
@@ -381,6 +377,16 @@ func (o PolicyTagIamBindingPtrOutput) ToPolicyTagIamBindingPtrOutput() PolicyTag
 
 func (o PolicyTagIamBindingPtrOutput) ToPolicyTagIamBindingPtrOutputWithContext(ctx context.Context) PolicyTagIamBindingPtrOutput {
 	return o
+}
+
+func (o PolicyTagIamBindingPtrOutput) Elem() PolicyTagIamBindingOutput {
+	return o.ApplyT(func(v *PolicyTagIamBinding) PolicyTagIamBinding {
+		if v != nil {
+			return *v
+		}
+		var ret PolicyTagIamBinding
+		return ret
+	}).(PolicyTagIamBindingOutput)
 }
 
 type PolicyTagIamBindingArrayOutput struct{ *pulumi.OutputState }

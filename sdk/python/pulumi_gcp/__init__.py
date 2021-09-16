@@ -10,83 +10,160 @@ from ._inputs import *
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
-    import pulumi_gcp.accesscontextmanager as accesscontextmanager
-    import pulumi_gcp.activedirectory as activedirectory
-    import pulumi_gcp.apigateway as apigateway
-    import pulumi_gcp.apigee as apigee
-    import pulumi_gcp.appengine as appengine
-    import pulumi_gcp.artifactregistry as artifactregistry
-    import pulumi_gcp.bigquery as bigquery
-    import pulumi_gcp.bigtable as bigtable
-    import pulumi_gcp.billing as billing
-    import pulumi_gcp.binaryauthorization as binaryauthorization
-    import pulumi_gcp.certificateauthority as certificateauthority
-    import pulumi_gcp.cloudasset as cloudasset
-    import pulumi_gcp.cloudbuild as cloudbuild
-    import pulumi_gcp.cloudfunctions as cloudfunctions
-    import pulumi_gcp.cloudidentity as cloudidentity
-    import pulumi_gcp.cloudrun as cloudrun
-    import pulumi_gcp.cloudscheduler as cloudscheduler
-    import pulumi_gcp.cloudtasks as cloudtasks
-    import pulumi_gcp.composer as composer
-    import pulumi_gcp.compute as compute
-    import pulumi_gcp.config as config
-    import pulumi_gcp.container as container
-    import pulumi_gcp.containeranalysis as containeranalysis
-    import pulumi_gcp.datacatalog as datacatalog
-    import pulumi_gcp.dataflow as dataflow
-    import pulumi_gcp.datafusion as datafusion
-    import pulumi_gcp.dataloss as dataloss
-    import pulumi_gcp.dataproc as dataproc
-    import pulumi_gcp.datastore as datastore
-    import pulumi_gcp.deploymentmanager as deploymentmanager
-    import pulumi_gcp.diagflow as diagflow
-    import pulumi_gcp.dns as dns
-    import pulumi_gcp.endpoints as endpoints
-    import pulumi_gcp.essentialcontacts as essentialcontacts
-    import pulumi_gcp.eventarc as eventarc
-    import pulumi_gcp.filestore as filestore
-    import pulumi_gcp.firebase as firebase
-    import pulumi_gcp.firestore as firestore
-    import pulumi_gcp.folder as folder
-    import pulumi_gcp.gameservices as gameservices
-    import pulumi_gcp.gkehub as gkehub
-    import pulumi_gcp.healthcare as healthcare
-    import pulumi_gcp.iam as iam
-    import pulumi_gcp.iap as iap
-    import pulumi_gcp.identityplatform as identityplatform
-    import pulumi_gcp.iot as iot
-    import pulumi_gcp.kms as kms
-    import pulumi_gcp.logging as logging
-    import pulumi_gcp.memcache as memcache
-    import pulumi_gcp.ml as ml
-    import pulumi_gcp.monitoring as monitoring
-    import pulumi_gcp.networkmanagement as networkmanagement
-    import pulumi_gcp.networkservices as networkservices
-    import pulumi_gcp.notebooks as notebooks
-    import pulumi_gcp.organizations as organizations
-    import pulumi_gcp.osconfig as osconfig
-    import pulumi_gcp.oslogin as oslogin
-    import pulumi_gcp.projects as projects
-    import pulumi_gcp.pubsub as pubsub
-    import pulumi_gcp.redis as redis
-    import pulumi_gcp.resourcemanager as resourcemanager
-    import pulumi_gcp.runtimeconfig as runtimeconfig
-    import pulumi_gcp.secretmanager as secretmanager
-    import pulumi_gcp.securitycenter as securitycenter
-    import pulumi_gcp.serviceaccount as serviceaccount
-    import pulumi_gcp.servicedirectory as servicedirectory
-    import pulumi_gcp.servicenetworking as servicenetworking
-    import pulumi_gcp.serviceusage as serviceusage
-    import pulumi_gcp.sourcerepo as sourcerepo
-    import pulumi_gcp.spanner as spanner
-    import pulumi_gcp.sql as sql
-    import pulumi_gcp.storage as storage
-    import pulumi_gcp.tags as tags
-    import pulumi_gcp.tpu as tpu
-    import pulumi_gcp.vertex as vertex
-    import pulumi_gcp.vpcaccess as vpcaccess
-    import pulumi_gcp.workflows as workflows
+    import pulumi_gcp.accesscontextmanager as __accesscontextmanager
+    accesscontextmanager = __accesscontextmanager
+    import pulumi_gcp.activedirectory as __activedirectory
+    activedirectory = __activedirectory
+    import pulumi_gcp.apigateway as __apigateway
+    apigateway = __apigateway
+    import pulumi_gcp.apigee as __apigee
+    apigee = __apigee
+    import pulumi_gcp.appengine as __appengine
+    appengine = __appengine
+    import pulumi_gcp.artifactregistry as __artifactregistry
+    artifactregistry = __artifactregistry
+    import pulumi_gcp.bigquery as __bigquery
+    bigquery = __bigquery
+    import pulumi_gcp.bigtable as __bigtable
+    bigtable = __bigtable
+    import pulumi_gcp.billing as __billing
+    billing = __billing
+    import pulumi_gcp.binaryauthorization as __binaryauthorization
+    binaryauthorization = __binaryauthorization
+    import pulumi_gcp.certificateauthority as __certificateauthority
+    certificateauthority = __certificateauthority
+    import pulumi_gcp.cloudasset as __cloudasset
+    cloudasset = __cloudasset
+    import pulumi_gcp.cloudbuild as __cloudbuild
+    cloudbuild = __cloudbuild
+    import pulumi_gcp.cloudfunctions as __cloudfunctions
+    cloudfunctions = __cloudfunctions
+    import pulumi_gcp.cloudidentity as __cloudidentity
+    cloudidentity = __cloudidentity
+    import pulumi_gcp.cloudrun as __cloudrun
+    cloudrun = __cloudrun
+    import pulumi_gcp.cloudscheduler as __cloudscheduler
+    cloudscheduler = __cloudscheduler
+    import pulumi_gcp.cloudtasks as __cloudtasks
+    cloudtasks = __cloudtasks
+    import pulumi_gcp.composer as __composer
+    composer = __composer
+    import pulumi_gcp.compute as __compute
+    compute = __compute
+    import pulumi_gcp.config as __config
+    config = __config
+    import pulumi_gcp.container as __container
+    container = __container
+    import pulumi_gcp.containeranalysis as __containeranalysis
+    containeranalysis = __containeranalysis
+    import pulumi_gcp.datacatalog as __datacatalog
+    datacatalog = __datacatalog
+    import pulumi_gcp.dataflow as __dataflow
+    dataflow = __dataflow
+    import pulumi_gcp.datafusion as __datafusion
+    datafusion = __datafusion
+    import pulumi_gcp.dataloss as __dataloss
+    dataloss = __dataloss
+    import pulumi_gcp.dataproc as __dataproc
+    dataproc = __dataproc
+    import pulumi_gcp.datastore as __datastore
+    datastore = __datastore
+    import pulumi_gcp.deploymentmanager as __deploymentmanager
+    deploymentmanager = __deploymentmanager
+    import pulumi_gcp.diagflow as __diagflow
+    diagflow = __diagflow
+    import pulumi_gcp.dns as __dns
+    dns = __dns
+    import pulumi_gcp.endpoints as __endpoints
+    endpoints = __endpoints
+    import pulumi_gcp.essentialcontacts as __essentialcontacts
+    essentialcontacts = __essentialcontacts
+    import pulumi_gcp.eventarc as __eventarc
+    eventarc = __eventarc
+    import pulumi_gcp.filestore as __filestore
+    filestore = __filestore
+    import pulumi_gcp.firebase as __firebase
+    firebase = __firebase
+    import pulumi_gcp.firestore as __firestore
+    firestore = __firestore
+    import pulumi_gcp.folder as __folder
+    folder = __folder
+    import pulumi_gcp.gameservices as __gameservices
+    gameservices = __gameservices
+    import pulumi_gcp.gkehub as __gkehub
+    gkehub = __gkehub
+    import pulumi_gcp.healthcare as __healthcare
+    healthcare = __healthcare
+    import pulumi_gcp.iam as __iam
+    iam = __iam
+    import pulumi_gcp.iap as __iap
+    iap = __iap
+    import pulumi_gcp.identityplatform as __identityplatform
+    identityplatform = __identityplatform
+    import pulumi_gcp.iot as __iot
+    iot = __iot
+    import pulumi_gcp.kms as __kms
+    kms = __kms
+    import pulumi_gcp.logging as __logging
+    logging = __logging
+    import pulumi_gcp.memcache as __memcache
+    memcache = __memcache
+    import pulumi_gcp.ml as __ml
+    ml = __ml
+    import pulumi_gcp.monitoring as __monitoring
+    monitoring = __monitoring
+    import pulumi_gcp.networkmanagement as __networkmanagement
+    networkmanagement = __networkmanagement
+    import pulumi_gcp.networkservices as __networkservices
+    networkservices = __networkservices
+    import pulumi_gcp.notebooks as __notebooks
+    notebooks = __notebooks
+    import pulumi_gcp.organizations as __organizations
+    organizations = __organizations
+    import pulumi_gcp.osconfig as __osconfig
+    osconfig = __osconfig
+    import pulumi_gcp.oslogin as __oslogin
+    oslogin = __oslogin
+    import pulumi_gcp.projects as __projects
+    projects = __projects
+    import pulumi_gcp.pubsub as __pubsub
+    pubsub = __pubsub
+    import pulumi_gcp.redis as __redis
+    redis = __redis
+    import pulumi_gcp.resourcemanager as __resourcemanager
+    resourcemanager = __resourcemanager
+    import pulumi_gcp.runtimeconfig as __runtimeconfig
+    runtimeconfig = __runtimeconfig
+    import pulumi_gcp.secretmanager as __secretmanager
+    secretmanager = __secretmanager
+    import pulumi_gcp.securitycenter as __securitycenter
+    securitycenter = __securitycenter
+    import pulumi_gcp.serviceaccount as __serviceaccount
+    serviceaccount = __serviceaccount
+    import pulumi_gcp.servicedirectory as __servicedirectory
+    servicedirectory = __servicedirectory
+    import pulumi_gcp.servicenetworking as __servicenetworking
+    servicenetworking = __servicenetworking
+    import pulumi_gcp.serviceusage as __serviceusage
+    serviceusage = __serviceusage
+    import pulumi_gcp.sourcerepo as __sourcerepo
+    sourcerepo = __sourcerepo
+    import pulumi_gcp.spanner as __spanner
+    spanner = __spanner
+    import pulumi_gcp.sql as __sql
+    sql = __sql
+    import pulumi_gcp.storage as __storage
+    storage = __storage
+    import pulumi_gcp.tags as __tags
+    tags = __tags
+    import pulumi_gcp.tpu as __tpu
+    tpu = __tpu
+    import pulumi_gcp.vertex as __vertex
+    vertex = __vertex
+    import pulumi_gcp.vpcaccess as __vpcaccess
+    vpcaccess = __vpcaccess
+    import pulumi_gcp.workflows as __workflows
+    workflows = __workflows
 else:
     accesscontextmanager = _utilities.lazy_import('pulumi_gcp.accesscontextmanager')
     activedirectory = _utilities.lazy_import('pulumi_gcp.activedirectory')

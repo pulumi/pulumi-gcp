@@ -175,7 +175,7 @@ func (o TriggerBuildOutput) ToTriggerBuildPtrOutput() TriggerBuildPtrOutput {
 }
 
 func (o TriggerBuildOutput) ToTriggerBuildPtrOutputWithContext(ctx context.Context) TriggerBuildPtrOutput {
-	return o.ApplyT(func(v TriggerBuild) *TriggerBuild {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerBuild) *TriggerBuild {
 		return &v
 	}).(TriggerBuildPtrOutput)
 }
@@ -266,7 +266,13 @@ func (o TriggerBuildPtrOutput) ToTriggerBuildPtrOutputWithContext(ctx context.Co
 }
 
 func (o TriggerBuildPtrOutput) Elem() TriggerBuildOutput {
-	return o.ApplyT(func(v *TriggerBuild) TriggerBuild { return *v }).(TriggerBuildOutput)
+	return o.ApplyT(func(v *TriggerBuild) TriggerBuild {
+		if v != nil {
+			return *v
+		}
+		var ret TriggerBuild
+		return ret
+	}).(TriggerBuildOutput)
 }
 
 // Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
@@ -508,7 +514,7 @@ func (o TriggerBuildArtifactsOutput) ToTriggerBuildArtifactsPtrOutput() TriggerB
 }
 
 func (o TriggerBuildArtifactsOutput) ToTriggerBuildArtifactsPtrOutputWithContext(ctx context.Context) TriggerBuildArtifactsPtrOutput {
-	return o.ApplyT(func(v TriggerBuildArtifacts) *TriggerBuildArtifacts {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerBuildArtifacts) *TriggerBuildArtifacts {
 		return &v
 	}).(TriggerBuildArtifactsPtrOutput)
 }
@@ -546,7 +552,13 @@ func (o TriggerBuildArtifactsPtrOutput) ToTriggerBuildArtifactsPtrOutputWithCont
 }
 
 func (o TriggerBuildArtifactsPtrOutput) Elem() TriggerBuildArtifactsOutput {
-	return o.ApplyT(func(v *TriggerBuildArtifacts) TriggerBuildArtifacts { return *v }).(TriggerBuildArtifactsOutput)
+	return o.ApplyT(func(v *TriggerBuildArtifacts) TriggerBuildArtifacts {
+		if v != nil {
+			return *v
+		}
+		var ret TriggerBuildArtifacts
+		return ret
+	}).(TriggerBuildArtifactsOutput)
 }
 
 // A list of images to be pushed upon the successful completion of all build steps.
@@ -686,7 +698,7 @@ func (o TriggerBuildArtifactsObjectsOutput) ToTriggerBuildArtifactsObjectsPtrOut
 }
 
 func (o TriggerBuildArtifactsObjectsOutput) ToTriggerBuildArtifactsObjectsPtrOutputWithContext(ctx context.Context) TriggerBuildArtifactsObjectsPtrOutput {
-	return o.ApplyT(func(v TriggerBuildArtifactsObjects) *TriggerBuildArtifactsObjects {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerBuildArtifactsObjects) *TriggerBuildArtifactsObjects {
 		return &v
 	}).(TriggerBuildArtifactsObjectsPtrOutput)
 }
@@ -725,7 +737,13 @@ func (o TriggerBuildArtifactsObjectsPtrOutput) ToTriggerBuildArtifactsObjectsPtr
 }
 
 func (o TriggerBuildArtifactsObjectsPtrOutput) Elem() TriggerBuildArtifactsObjectsOutput {
-	return o.ApplyT(func(v *TriggerBuildArtifactsObjects) TriggerBuildArtifactsObjects { return *v }).(TriggerBuildArtifactsObjectsOutput)
+	return o.ApplyT(func(v *TriggerBuildArtifactsObjects) TriggerBuildArtifactsObjects {
+		if v != nil {
+			return *v
+		}
+		var ret TriggerBuildArtifactsObjects
+		return ret
+	}).(TriggerBuildArtifactsObjectsOutput)
 }
 
 // Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
@@ -1067,7 +1085,7 @@ func (o TriggerBuildOptionsOutput) ToTriggerBuildOptionsPtrOutput() TriggerBuild
 }
 
 func (o TriggerBuildOptionsOutput) ToTriggerBuildOptionsPtrOutputWithContext(ctx context.Context) TriggerBuildOptionsPtrOutput {
-	return o.ApplyT(func(v TriggerBuildOptions) *TriggerBuildOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerBuildOptions) *TriggerBuildOptions {
 		return &v
 	}).(TriggerBuildOptionsPtrOutput)
 }
@@ -1172,7 +1190,13 @@ func (o TriggerBuildOptionsPtrOutput) ToTriggerBuildOptionsPtrOutputWithContext(
 }
 
 func (o TriggerBuildOptionsPtrOutput) Elem() TriggerBuildOptionsOutput {
-	return o.ApplyT(func(v *TriggerBuildOptions) TriggerBuildOptions { return *v }).(TriggerBuildOptionsOutput)
+	return o.ApplyT(func(v *TriggerBuildOptions) TriggerBuildOptions {
+		if v != nil {
+			return *v
+		}
+		var ret TriggerBuildOptions
+		return ret
+	}).(TriggerBuildOptionsOutput)
 }
 
 // Requested disk size for the VM that runs the build. Note that this is NOT "disk free";
@@ -1651,7 +1675,7 @@ func (o TriggerBuildSourceOutput) ToTriggerBuildSourcePtrOutput() TriggerBuildSo
 }
 
 func (o TriggerBuildSourceOutput) ToTriggerBuildSourcePtrOutputWithContext(ctx context.Context) TriggerBuildSourcePtrOutput {
-	return o.ApplyT(func(v TriggerBuildSource) *TriggerBuildSource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerBuildSource) *TriggerBuildSource {
 		return &v
 	}).(TriggerBuildSourcePtrOutput)
 }
@@ -1683,7 +1707,13 @@ func (o TriggerBuildSourcePtrOutput) ToTriggerBuildSourcePtrOutputWithContext(ct
 }
 
 func (o TriggerBuildSourcePtrOutput) Elem() TriggerBuildSourceOutput {
-	return o.ApplyT(func(v *TriggerBuildSource) TriggerBuildSource { return *v }).(TriggerBuildSourceOutput)
+	return o.ApplyT(func(v *TriggerBuildSource) TriggerBuildSource {
+		if v != nil {
+			return *v
+		}
+		var ret TriggerBuildSource
+		return ret
+	}).(TriggerBuildSourceOutput)
 }
 
 // Location of the source in a Google Cloud Source Repository.
@@ -1855,7 +1885,7 @@ func (o TriggerBuildSourceRepoSourceOutput) ToTriggerBuildSourceRepoSourcePtrOut
 }
 
 func (o TriggerBuildSourceRepoSourceOutput) ToTriggerBuildSourceRepoSourcePtrOutputWithContext(ctx context.Context) TriggerBuildSourceRepoSourcePtrOutput {
-	return o.ApplyT(func(v TriggerBuildSourceRepoSource) *TriggerBuildSourceRepoSource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerBuildSourceRepoSource) *TriggerBuildSourceRepoSource {
 		return &v
 	}).(TriggerBuildSourceRepoSourcePtrOutput)
 }
@@ -1928,7 +1958,13 @@ func (o TriggerBuildSourceRepoSourcePtrOutput) ToTriggerBuildSourceRepoSourcePtr
 }
 
 func (o TriggerBuildSourceRepoSourcePtrOutput) Elem() TriggerBuildSourceRepoSourceOutput {
-	return o.ApplyT(func(v *TriggerBuildSourceRepoSource) TriggerBuildSourceRepoSource { return *v }).(TriggerBuildSourceRepoSourceOutput)
+	return o.ApplyT(func(v *TriggerBuildSourceRepoSource) TriggerBuildSourceRepoSource {
+		if v != nil {
+			return *v
+		}
+		var ret TriggerBuildSourceRepoSource
+		return ret
+	}).(TriggerBuildSourceRepoSourceOutput)
 }
 
 // Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
@@ -2129,7 +2165,7 @@ func (o TriggerBuildSourceStorageSourceOutput) ToTriggerBuildSourceStorageSource
 }
 
 func (o TriggerBuildSourceStorageSourceOutput) ToTriggerBuildSourceStorageSourcePtrOutputWithContext(ctx context.Context) TriggerBuildSourceStorageSourcePtrOutput {
-	return o.ApplyT(func(v TriggerBuildSourceStorageSource) *TriggerBuildSourceStorageSource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerBuildSourceStorageSource) *TriggerBuildSourceStorageSource {
 		return &v
 	}).(TriggerBuildSourceStorageSourcePtrOutput)
 }
@@ -2166,7 +2202,13 @@ func (o TriggerBuildSourceStorageSourcePtrOutput) ToTriggerBuildSourceStorageSou
 }
 
 func (o TriggerBuildSourceStorageSourcePtrOutput) Elem() TriggerBuildSourceStorageSourceOutput {
-	return o.ApplyT(func(v *TriggerBuildSourceStorageSource) TriggerBuildSourceStorageSource { return *v }).(TriggerBuildSourceStorageSourceOutput)
+	return o.ApplyT(func(v *TriggerBuildSourceStorageSource) TriggerBuildSourceStorageSource {
+		if v != nil {
+			return *v
+		}
+		var ret TriggerBuildSourceStorageSource
+		return ret
+	}).(TriggerBuildSourceStorageSourceOutput)
 }
 
 // Google Cloud Storage bucket containing the source.
@@ -2732,7 +2774,7 @@ func (o TriggerGithubOutput) ToTriggerGithubPtrOutput() TriggerGithubPtrOutput {
 }
 
 func (o TriggerGithubOutput) ToTriggerGithubPtrOutputWithContext(ctx context.Context) TriggerGithubPtrOutput {
-	return o.ApplyT(func(v TriggerGithub) *TriggerGithub {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerGithub) *TriggerGithub {
 		return &v
 	}).(TriggerGithubPtrOutput)
 }
@@ -2777,7 +2819,13 @@ func (o TriggerGithubPtrOutput) ToTriggerGithubPtrOutputWithContext(ctx context.
 }
 
 func (o TriggerGithubPtrOutput) Elem() TriggerGithubOutput {
-	return o.ApplyT(func(v *TriggerGithub) TriggerGithub { return *v }).(TriggerGithubOutput)
+	return o.ApplyT(func(v *TriggerGithub) TriggerGithub {
+		if v != nil {
+			return *v
+		}
+		var ret TriggerGithub
+		return ret
+	}).(TriggerGithubOutput)
 }
 
 // Name of the volume to mount.
@@ -2928,7 +2976,7 @@ func (o TriggerGithubPullRequestOutput) ToTriggerGithubPullRequestPtrOutput() Tr
 }
 
 func (o TriggerGithubPullRequestOutput) ToTriggerGithubPullRequestPtrOutputWithContext(ctx context.Context) TriggerGithubPullRequestPtrOutput {
-	return o.ApplyT(func(v TriggerGithubPullRequest) *TriggerGithubPullRequest {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerGithubPullRequest) *TriggerGithubPullRequest {
 		return &v
 	}).(TriggerGithubPullRequestPtrOutput)
 }
@@ -2964,7 +3012,13 @@ func (o TriggerGithubPullRequestPtrOutput) ToTriggerGithubPullRequestPtrOutputWi
 }
 
 func (o TriggerGithubPullRequestPtrOutput) Elem() TriggerGithubPullRequestOutput {
-	return o.ApplyT(func(v *TriggerGithubPullRequest) TriggerGithubPullRequest { return *v }).(TriggerGithubPullRequestOutput)
+	return o.ApplyT(func(v *TriggerGithubPullRequest) TriggerGithubPullRequest {
+		if v != nil {
+			return *v
+		}
+		var ret TriggerGithubPullRequest
+		return ret
+	}).(TriggerGithubPullRequestOutput)
 }
 
 // Regex of branches to match.  Specify only one of branch or tag.
@@ -3099,7 +3153,7 @@ func (o TriggerGithubPushOutput) ToTriggerGithubPushPtrOutput() TriggerGithubPus
 }
 
 func (o TriggerGithubPushOutput) ToTriggerGithubPushPtrOutputWithContext(ctx context.Context) TriggerGithubPushPtrOutput {
-	return o.ApplyT(func(v TriggerGithubPush) *TriggerGithubPush {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerGithubPush) *TriggerGithubPush {
 		return &v
 	}).(TriggerGithubPushPtrOutput)
 }
@@ -3134,7 +3188,13 @@ func (o TriggerGithubPushPtrOutput) ToTriggerGithubPushPtrOutputWithContext(ctx 
 }
 
 func (o TriggerGithubPushPtrOutput) Elem() TriggerGithubPushOutput {
-	return o.ApplyT(func(v *TriggerGithubPush) TriggerGithubPush { return *v }).(TriggerGithubPushOutput)
+	return o.ApplyT(func(v *TriggerGithubPush) TriggerGithubPush {
+		if v != nil {
+			return *v
+		}
+		var ret TriggerGithubPush
+		return ret
+	}).(TriggerGithubPushOutput)
 }
 
 // Regex of branches to match.  Specify only one of branch or tag.
@@ -3278,7 +3338,7 @@ func (o TriggerPubsubConfigOutput) ToTriggerPubsubConfigPtrOutput() TriggerPubsu
 }
 
 func (o TriggerPubsubConfigOutput) ToTriggerPubsubConfigPtrOutputWithContext(ctx context.Context) TriggerPubsubConfigPtrOutput {
-	return o.ApplyT(func(v TriggerPubsubConfig) *TriggerPubsubConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerPubsubConfig) *TriggerPubsubConfig {
 		return &v
 	}).(TriggerPubsubConfigPtrOutput)
 }
@@ -3321,7 +3381,13 @@ func (o TriggerPubsubConfigPtrOutput) ToTriggerPubsubConfigPtrOutputWithContext(
 }
 
 func (o TriggerPubsubConfigPtrOutput) Elem() TriggerPubsubConfigOutput {
-	return o.ApplyT(func(v *TriggerPubsubConfig) TriggerPubsubConfig { return *v }).(TriggerPubsubConfigOutput)
+	return o.ApplyT(func(v *TriggerPubsubConfig) TriggerPubsubConfig {
+		if v != nil {
+			return *v
+		}
+		var ret TriggerPubsubConfig
+		return ret
+	}).(TriggerPubsubConfigOutput)
 }
 
 // Service account that will make the push request.
@@ -3510,7 +3576,7 @@ func (o TriggerTriggerTemplateOutput) ToTriggerTriggerTemplatePtrOutput() Trigge
 }
 
 func (o TriggerTriggerTemplateOutput) ToTriggerTriggerTemplatePtrOutputWithContext(ctx context.Context) TriggerTriggerTemplatePtrOutput {
-	return o.ApplyT(func(v TriggerTriggerTemplate) *TriggerTriggerTemplate {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerTriggerTemplate) *TriggerTriggerTemplate {
 		return &v
 	}).(TriggerTriggerTemplatePtrOutput)
 }
@@ -3578,7 +3644,13 @@ func (o TriggerTriggerTemplatePtrOutput) ToTriggerTriggerTemplatePtrOutputWithCo
 }
 
 func (o TriggerTriggerTemplatePtrOutput) Elem() TriggerTriggerTemplateOutput {
-	return o.ApplyT(func(v *TriggerTriggerTemplate) TriggerTriggerTemplate { return *v }).(TriggerTriggerTemplateOutput)
+	return o.ApplyT(func(v *TriggerTriggerTemplate) TriggerTriggerTemplate {
+		if v != nil {
+			return *v
+		}
+		var ret TriggerTriggerTemplate
+		return ret
+	}).(TriggerTriggerTemplateOutput)
 }
 
 // Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
@@ -3767,7 +3839,7 @@ func (o TriggerWebhookConfigOutput) ToTriggerWebhookConfigPtrOutput() TriggerWeb
 }
 
 func (o TriggerWebhookConfigOutput) ToTriggerWebhookConfigPtrOutputWithContext(ctx context.Context) TriggerWebhookConfigPtrOutput {
-	return o.ApplyT(func(v TriggerWebhookConfig) *TriggerWebhookConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerWebhookConfig) *TriggerWebhookConfig {
 		return &v
 	}).(TriggerWebhookConfigPtrOutput)
 }
@@ -3800,7 +3872,13 @@ func (o TriggerWebhookConfigPtrOutput) ToTriggerWebhookConfigPtrOutputWithContex
 }
 
 func (o TriggerWebhookConfigPtrOutput) Elem() TriggerWebhookConfigOutput {
-	return o.ApplyT(func(v *TriggerWebhookConfig) TriggerWebhookConfig { return *v }).(TriggerWebhookConfigOutput)
+	return o.ApplyT(func(v *TriggerWebhookConfig) TriggerWebhookConfig {
+		if v != nil {
+			return *v
+		}
+		var ret TriggerWebhookConfig
+		return ret
+	}).(TriggerWebhookConfigOutput)
 }
 
 // Secrets to decrypt using Cloud Key Management Service.
@@ -3919,7 +3997,7 @@ func (o WorkerPoolNetworkConfigOutput) ToWorkerPoolNetworkConfigPtrOutput() Work
 }
 
 func (o WorkerPoolNetworkConfigOutput) ToWorkerPoolNetworkConfigPtrOutputWithContext(ctx context.Context) WorkerPoolNetworkConfigPtrOutput {
-	return o.ApplyT(func(v WorkerPoolNetworkConfig) *WorkerPoolNetworkConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerPoolNetworkConfig) *WorkerPoolNetworkConfig {
 		return &v
 	}).(WorkerPoolNetworkConfigPtrOutput)
 }
@@ -3944,7 +4022,13 @@ func (o WorkerPoolNetworkConfigPtrOutput) ToWorkerPoolNetworkConfigPtrOutputWith
 }
 
 func (o WorkerPoolNetworkConfigPtrOutput) Elem() WorkerPoolNetworkConfigOutput {
-	return o.ApplyT(func(v *WorkerPoolNetworkConfig) WorkerPoolNetworkConfig { return *v }).(WorkerPoolNetworkConfigOutput)
+	return o.ApplyT(func(v *WorkerPoolNetworkConfig) WorkerPoolNetworkConfig {
+		if v != nil {
+			return *v
+		}
+		var ret WorkerPoolNetworkConfig
+		return ret
+	}).(WorkerPoolNetworkConfigOutput)
 }
 
 // Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See (https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
@@ -4058,7 +4142,7 @@ func (o WorkerPoolWorkerConfigOutput) ToWorkerPoolWorkerConfigPtrOutput() Worker
 }
 
 func (o WorkerPoolWorkerConfigOutput) ToWorkerPoolWorkerConfigPtrOutputWithContext(ctx context.Context) WorkerPoolWorkerConfigPtrOutput {
-	return o.ApplyT(func(v WorkerPoolWorkerConfig) *WorkerPoolWorkerConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerPoolWorkerConfig) *WorkerPoolWorkerConfig {
 		return &v
 	}).(WorkerPoolWorkerConfigPtrOutput)
 }
@@ -4093,7 +4177,13 @@ func (o WorkerPoolWorkerConfigPtrOutput) ToWorkerPoolWorkerConfigPtrOutputWithCo
 }
 
 func (o WorkerPoolWorkerConfigPtrOutput) Elem() WorkerPoolWorkerConfigOutput {
-	return o.ApplyT(func(v *WorkerPoolWorkerConfig) WorkerPoolWorkerConfig { return *v }).(WorkerPoolWorkerConfigOutput)
+	return o.ApplyT(func(v *WorkerPoolWorkerConfig) WorkerPoolWorkerConfig {
+		if v != nil {
+			return *v
+		}
+		var ret WorkerPoolWorkerConfig
+		return ret
+	}).(WorkerPoolWorkerConfigOutput)
 }
 
 // Size of the disk attached to the worker, in GB. See (https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.

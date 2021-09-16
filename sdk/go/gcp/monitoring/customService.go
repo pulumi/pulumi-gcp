@@ -234,7 +234,7 @@ type CustomServiceArrayInput interface {
 type CustomServiceArray []CustomServiceInput
 
 func (CustomServiceArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*CustomService)(nil))
+	return reflect.TypeOf((*[]*CustomService)(nil)).Elem()
 }
 
 func (i CustomServiceArray) ToCustomServiceArrayOutput() CustomServiceArrayOutput {
@@ -259,7 +259,7 @@ type CustomServiceMapInput interface {
 type CustomServiceMap map[string]CustomServiceInput
 
 func (CustomServiceMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*CustomService)(nil))
+	return reflect.TypeOf((*map[string]*CustomService)(nil)).Elem()
 }
 
 func (i CustomServiceMap) ToCustomServiceMapOutput() CustomServiceMapOutput {
@@ -270,9 +270,7 @@ func (i CustomServiceMap) ToCustomServiceMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(CustomServiceMapOutput)
 }
 
-type CustomServiceOutput struct {
-	*pulumi.OutputState
-}
+type CustomServiceOutput struct{ *pulumi.OutputState }
 
 func (CustomServiceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CustomService)(nil))
@@ -291,14 +289,12 @@ func (o CustomServiceOutput) ToCustomServicePtrOutput() CustomServicePtrOutput {
 }
 
 func (o CustomServiceOutput) ToCustomServicePtrOutputWithContext(ctx context.Context) CustomServicePtrOutput {
-	return o.ApplyT(func(v CustomService) *CustomService {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomService) *CustomService {
 		return &v
 	}).(CustomServicePtrOutput)
 }
 
-type CustomServicePtrOutput struct {
-	*pulumi.OutputState
-}
+type CustomServicePtrOutput struct{ *pulumi.OutputState }
 
 func (CustomServicePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**CustomService)(nil))
@@ -310,6 +306,16 @@ func (o CustomServicePtrOutput) ToCustomServicePtrOutput() CustomServicePtrOutpu
 
 func (o CustomServicePtrOutput) ToCustomServicePtrOutputWithContext(ctx context.Context) CustomServicePtrOutput {
 	return o
+}
+
+func (o CustomServicePtrOutput) Elem() CustomServiceOutput {
+	return o.ApplyT(func(v *CustomService) CustomService {
+		if v != nil {
+			return *v
+		}
+		var ret CustomService
+		return ret
+	}).(CustomServiceOutput)
 }
 
 type CustomServiceArrayOutput struct{ *pulumi.OutputState }

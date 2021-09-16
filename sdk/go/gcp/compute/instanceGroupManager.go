@@ -514,7 +514,7 @@ type InstanceGroupManagerArrayInput interface {
 type InstanceGroupManagerArray []InstanceGroupManagerInput
 
 func (InstanceGroupManagerArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*InstanceGroupManager)(nil))
+	return reflect.TypeOf((*[]*InstanceGroupManager)(nil)).Elem()
 }
 
 func (i InstanceGroupManagerArray) ToInstanceGroupManagerArrayOutput() InstanceGroupManagerArrayOutput {
@@ -539,7 +539,7 @@ type InstanceGroupManagerMapInput interface {
 type InstanceGroupManagerMap map[string]InstanceGroupManagerInput
 
 func (InstanceGroupManagerMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*InstanceGroupManager)(nil))
+	return reflect.TypeOf((*map[string]*InstanceGroupManager)(nil)).Elem()
 }
 
 func (i InstanceGroupManagerMap) ToInstanceGroupManagerMapOutput() InstanceGroupManagerMapOutput {
@@ -550,9 +550,7 @@ func (i InstanceGroupManagerMap) ToInstanceGroupManagerMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerMapOutput)
 }
 
-type InstanceGroupManagerOutput struct {
-	*pulumi.OutputState
-}
+type InstanceGroupManagerOutput struct{ *pulumi.OutputState }
 
 func (InstanceGroupManagerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceGroupManager)(nil))
@@ -571,14 +569,12 @@ func (o InstanceGroupManagerOutput) ToInstanceGroupManagerPtrOutput() InstanceGr
 }
 
 func (o InstanceGroupManagerOutput) ToInstanceGroupManagerPtrOutputWithContext(ctx context.Context) InstanceGroupManagerPtrOutput {
-	return o.ApplyT(func(v InstanceGroupManager) *InstanceGroupManager {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceGroupManager) *InstanceGroupManager {
 		return &v
 	}).(InstanceGroupManagerPtrOutput)
 }
 
-type InstanceGroupManagerPtrOutput struct {
-	*pulumi.OutputState
-}
+type InstanceGroupManagerPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceGroupManagerPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**InstanceGroupManager)(nil))
@@ -590,6 +586,16 @@ func (o InstanceGroupManagerPtrOutput) ToInstanceGroupManagerPtrOutput() Instanc
 
 func (o InstanceGroupManagerPtrOutput) ToInstanceGroupManagerPtrOutputWithContext(ctx context.Context) InstanceGroupManagerPtrOutput {
 	return o
+}
+
+func (o InstanceGroupManagerPtrOutput) Elem() InstanceGroupManagerOutput {
+	return o.ApplyT(func(v *InstanceGroupManager) InstanceGroupManager {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceGroupManager
+		return ret
+	}).(InstanceGroupManagerOutput)
 }
 
 type InstanceGroupManagerArrayOutput struct{ *pulumi.OutputState }

@@ -4,6 +4,9 @@
 package compute
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -68,4 +71,91 @@ type LookupRouterResult struct {
 	Project  *string `pulumi:"project"`
 	Region   *string `pulumi:"region"`
 	SelfLink string  `pulumi:"selfLink"`
+}
+
+func LookupRouterOutput(ctx *pulumi.Context, args LookupRouterOutputArgs, opts ...pulumi.InvokeOption) LookupRouterResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupRouterResult, error) {
+			args := v.(LookupRouterArgs)
+			r, err := LookupRouter(ctx, &args, opts...)
+			return *r, err
+		}).(LookupRouterResultOutput)
+}
+
+// A collection of arguments for invoking getRouter.
+type LookupRouterOutputArgs struct {
+	// The name of the router.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The VPC network on which this router lives.
+	Network pulumi.StringInput `pulumi:"network"`
+	// The ID of the project in which the resource
+	// belongs. If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// The region this router has been created in. If
+	// unspecified, this defaults to the region configured in the provider.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (LookupRouterOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRouterArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getRouter.
+type LookupRouterResultOutput struct{ *pulumi.OutputState }
+
+func (LookupRouterResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRouterResult)(nil)).Elem()
+}
+
+func (o LookupRouterResultOutput) ToLookupRouterResultOutput() LookupRouterResultOutput {
+	return o
+}
+
+func (o LookupRouterResultOutput) ToLookupRouterResultOutputWithContext(ctx context.Context) LookupRouterResultOutput {
+	return o
+}
+
+func (o LookupRouterResultOutput) Bgps() GetRouterBgpArrayOutput {
+	return o.ApplyT(func(v LookupRouterResult) []GetRouterBgp { return v.Bgps }).(GetRouterBgpArrayOutput)
+}
+
+func (o LookupRouterResultOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRouterResult) string { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+func (o LookupRouterResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRouterResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupRouterResultOutput) EncryptedInterconnectRouter() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupRouterResult) bool { return v.EncryptedInterconnectRouter }).(pulumi.BoolOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupRouterResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRouterResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupRouterResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRouterResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupRouterResultOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRouterResult) string { return v.Network }).(pulumi.StringOutput)
+}
+
+func (o LookupRouterResultOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupRouterResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupRouterResultOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupRouterResult) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupRouterResultOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRouterResult) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupRouterResultOutput{})
 }

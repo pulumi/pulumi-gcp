@@ -4,6 +4,9 @@
 package projects
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -64,4 +67,56 @@ type GetProjectResult struct {
 	Id string `pulumi:"id"`
 	// A list of projects matching the provided filter. Structure is defined below.
 	Projects []GetProjectProject `pulumi:"projects"`
+}
+
+func GetProjectOutput(ctx *pulumi.Context, args GetProjectOutputArgs, opts ...pulumi.InvokeOption) GetProjectResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetProjectResult, error) {
+			args := v.(GetProjectArgs)
+			r, err := GetProject(ctx, &args, opts...)
+			return *r, err
+		}).(GetProjectResultOutput)
+}
+
+// A collection of arguments for invoking getProject.
+type GetProjectOutputArgs struct {
+	// A string filter as defined in the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list#query-parameters).
+	Filter pulumi.StringInput `pulumi:"filter"`
+}
+
+func (GetProjectOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getProject.
+type GetProjectResultOutput struct{ *pulumi.OutputState }
+
+func (GetProjectResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectResult)(nil)).Elem()
+}
+
+func (o GetProjectResultOutput) ToGetProjectResultOutput() GetProjectResultOutput {
+	return o
+}
+
+func (o GetProjectResultOutput) ToGetProjectResultOutputWithContext(ctx context.Context) GetProjectResultOutput {
+	return o
+}
+
+func (o GetProjectResultOutput) Filter() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectResult) string { return v.Filter }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetProjectResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of projects matching the provided filter. Structure is defined below.
+func (o GetProjectResultOutput) Projects() GetProjectProjectArrayOutput {
+	return o.ApplyT(func(v GetProjectResult) []GetProjectProject { return v.Projects }).(GetProjectProjectArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetProjectResultOutput{})
 }

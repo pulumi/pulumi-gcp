@@ -227,7 +227,7 @@ func (o InstanceMemcacheParametersOutput) ToInstanceMemcacheParametersPtrOutput(
 }
 
 func (o InstanceMemcacheParametersOutput) ToInstanceMemcacheParametersPtrOutputWithContext(ctx context.Context) InstanceMemcacheParametersPtrOutput {
-	return o.ApplyT(func(v InstanceMemcacheParameters) *InstanceMemcacheParameters {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceMemcacheParameters) *InstanceMemcacheParameters {
 		return &v
 	}).(InstanceMemcacheParametersPtrOutput)
 }
@@ -258,7 +258,13 @@ func (o InstanceMemcacheParametersPtrOutput) ToInstanceMemcacheParametersPtrOutp
 }
 
 func (o InstanceMemcacheParametersPtrOutput) Elem() InstanceMemcacheParametersOutput {
-	return o.ApplyT(func(v *InstanceMemcacheParameters) InstanceMemcacheParameters { return *v }).(InstanceMemcacheParametersOutput)
+	return o.ApplyT(func(v *InstanceMemcacheParameters) InstanceMemcacheParameters {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceMemcacheParameters
+		return ret
+	}).(InstanceMemcacheParametersOutput)
 }
 
 // -
@@ -379,7 +385,7 @@ func (o InstanceNodeConfigOutput) ToInstanceNodeConfigPtrOutput() InstanceNodeCo
 }
 
 func (o InstanceNodeConfigOutput) ToInstanceNodeConfigPtrOutputWithContext(ctx context.Context) InstanceNodeConfigPtrOutput {
-	return o.ApplyT(func(v InstanceNodeConfig) *InstanceNodeConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceNodeConfig) *InstanceNodeConfig {
 		return &v
 	}).(InstanceNodeConfigPtrOutput)
 }
@@ -409,7 +415,13 @@ func (o InstanceNodeConfigPtrOutput) ToInstanceNodeConfigPtrOutputWithContext(ct
 }
 
 func (o InstanceNodeConfigPtrOutput) Elem() InstanceNodeConfigOutput {
-	return o.ApplyT(func(v *InstanceNodeConfig) InstanceNodeConfig { return *v }).(InstanceNodeConfigOutput)
+	return o.ApplyT(func(v *InstanceNodeConfig) InstanceNodeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceNodeConfig
+		return ret
+	}).(InstanceNodeConfigOutput)
 }
 
 // Number of CPUs per node.

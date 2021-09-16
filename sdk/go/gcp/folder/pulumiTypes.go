@@ -283,10 +283,11 @@ func (o IAMBindingConditionOutput) ToIAMBindingConditionPtrOutput() IAMBindingCo
 }
 
 func (o IAMBindingConditionOutput) ToIAMBindingConditionPtrOutputWithContext(ctx context.Context) IAMBindingConditionPtrOutput {
-	return o.ApplyT(func(v IAMBindingCondition) *IAMBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IAMBindingCondition) *IAMBindingCondition {
 		return &v
 	}).(IAMBindingConditionPtrOutput)
 }
+
 func (o IAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -314,7 +315,13 @@ func (o IAMBindingConditionPtrOutput) ToIAMBindingConditionPtrOutputWithContext(
 }
 
 func (o IAMBindingConditionPtrOutput) Elem() IAMBindingConditionOutput {
-	return o.ApplyT(func(v *IAMBindingCondition) IAMBindingCondition { return *v }).(IAMBindingConditionOutput)
+	return o.ApplyT(func(v *IAMBindingCondition) IAMBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret IAMBindingCondition
+		return ret
+	}).(IAMBindingConditionOutput)
 }
 
 func (o IAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -439,10 +446,11 @@ func (o IAMMemberConditionOutput) ToIAMMemberConditionPtrOutput() IAMMemberCondi
 }
 
 func (o IAMMemberConditionOutput) ToIAMMemberConditionPtrOutputWithContext(ctx context.Context) IAMMemberConditionPtrOutput {
-	return o.ApplyT(func(v IAMMemberCondition) *IAMMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IAMMemberCondition) *IAMMemberCondition {
 		return &v
 	}).(IAMMemberConditionPtrOutput)
 }
+
 func (o IAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -470,7 +478,13 @@ func (o IAMMemberConditionPtrOutput) ToIAMMemberConditionPtrOutputWithContext(ct
 }
 
 func (o IAMMemberConditionPtrOutput) Elem() IAMMemberConditionOutput {
-	return o.ApplyT(func(v *IAMMemberCondition) IAMMemberCondition { return *v }).(IAMMemberConditionOutput)
+	return o.ApplyT(func(v *IAMMemberCondition) IAMMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret IAMMemberCondition
+		return ret
+	}).(IAMMemberConditionOutput)
 }
 
 func (o IAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -693,7 +707,7 @@ func (o OrganizationPolicyBooleanPolicyOutput) ToOrganizationPolicyBooleanPolicy
 }
 
 func (o OrganizationPolicyBooleanPolicyOutput) ToOrganizationPolicyBooleanPolicyPtrOutputWithContext(ctx context.Context) OrganizationPolicyBooleanPolicyPtrOutput {
-	return o.ApplyT(func(v OrganizationPolicyBooleanPolicy) *OrganizationPolicyBooleanPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationPolicyBooleanPolicy) *OrganizationPolicyBooleanPolicy {
 		return &v
 	}).(OrganizationPolicyBooleanPolicyPtrOutput)
 }
@@ -718,7 +732,13 @@ func (o OrganizationPolicyBooleanPolicyPtrOutput) ToOrganizationPolicyBooleanPol
 }
 
 func (o OrganizationPolicyBooleanPolicyPtrOutput) Elem() OrganizationPolicyBooleanPolicyOutput {
-	return o.ApplyT(func(v *OrganizationPolicyBooleanPolicy) OrganizationPolicyBooleanPolicy { return *v }).(OrganizationPolicyBooleanPolicyOutput)
+	return o.ApplyT(func(v *OrganizationPolicyBooleanPolicy) OrganizationPolicyBooleanPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret OrganizationPolicyBooleanPolicy
+		return ret
+	}).(OrganizationPolicyBooleanPolicyOutput)
 }
 
 // If true, then the Policy is enforced. If false, then any configuration is acceptable.
@@ -836,7 +856,7 @@ func (o OrganizationPolicyListPolicyOutput) ToOrganizationPolicyListPolicyPtrOut
 }
 
 func (o OrganizationPolicyListPolicyOutput) ToOrganizationPolicyListPolicyPtrOutputWithContext(ctx context.Context) OrganizationPolicyListPolicyPtrOutput {
-	return o.ApplyT(func(v OrganizationPolicyListPolicy) *OrganizationPolicyListPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationPolicyListPolicy) *OrganizationPolicyListPolicy {
 		return &v
 	}).(OrganizationPolicyListPolicyPtrOutput)
 }
@@ -876,7 +896,13 @@ func (o OrganizationPolicyListPolicyPtrOutput) ToOrganizationPolicyListPolicyPtr
 }
 
 func (o OrganizationPolicyListPolicyPtrOutput) Elem() OrganizationPolicyListPolicyOutput {
-	return o.ApplyT(func(v *OrganizationPolicyListPolicy) OrganizationPolicyListPolicy { return *v }).(OrganizationPolicyListPolicyOutput)
+	return o.ApplyT(func(v *OrganizationPolicyListPolicy) OrganizationPolicyListPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret OrganizationPolicyListPolicy
+		return ret
+	}).(OrganizationPolicyListPolicyOutput)
 }
 
 // or `deny` - (Optional) One or the other must be set.
@@ -1016,7 +1042,7 @@ func (o OrganizationPolicyListPolicyAllowOutput) ToOrganizationPolicyListPolicyA
 }
 
 func (o OrganizationPolicyListPolicyAllowOutput) ToOrganizationPolicyListPolicyAllowPtrOutputWithContext(ctx context.Context) OrganizationPolicyListPolicyAllowPtrOutput {
-	return o.ApplyT(func(v OrganizationPolicyListPolicyAllow) *OrganizationPolicyListPolicyAllow {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationPolicyListPolicyAllow) *OrganizationPolicyListPolicyAllow {
 		return &v
 	}).(OrganizationPolicyListPolicyAllowPtrOutput)
 }
@@ -1046,7 +1072,13 @@ func (o OrganizationPolicyListPolicyAllowPtrOutput) ToOrganizationPolicyListPoli
 }
 
 func (o OrganizationPolicyListPolicyAllowPtrOutput) Elem() OrganizationPolicyListPolicyAllowOutput {
-	return o.ApplyT(func(v *OrganizationPolicyListPolicyAllow) OrganizationPolicyListPolicyAllow { return *v }).(OrganizationPolicyListPolicyAllowOutput)
+	return o.ApplyT(func(v *OrganizationPolicyListPolicyAllow) OrganizationPolicyListPolicyAllow {
+		if v != nil {
+			return *v
+		}
+		var ret OrganizationPolicyListPolicyAllow
+		return ret
+	}).(OrganizationPolicyListPolicyAllowOutput)
 }
 
 // The policy allows or denies all values.
@@ -1166,7 +1198,7 @@ func (o OrganizationPolicyListPolicyDenyOutput) ToOrganizationPolicyListPolicyDe
 }
 
 func (o OrganizationPolicyListPolicyDenyOutput) ToOrganizationPolicyListPolicyDenyPtrOutputWithContext(ctx context.Context) OrganizationPolicyListPolicyDenyPtrOutput {
-	return o.ApplyT(func(v OrganizationPolicyListPolicyDeny) *OrganizationPolicyListPolicyDeny {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationPolicyListPolicyDeny) *OrganizationPolicyListPolicyDeny {
 		return &v
 	}).(OrganizationPolicyListPolicyDenyPtrOutput)
 }
@@ -1196,7 +1228,13 @@ func (o OrganizationPolicyListPolicyDenyPtrOutput) ToOrganizationPolicyListPolic
 }
 
 func (o OrganizationPolicyListPolicyDenyPtrOutput) Elem() OrganizationPolicyListPolicyDenyOutput {
-	return o.ApplyT(func(v *OrganizationPolicyListPolicyDeny) OrganizationPolicyListPolicyDeny { return *v }).(OrganizationPolicyListPolicyDenyOutput)
+	return o.ApplyT(func(v *OrganizationPolicyListPolicyDeny) OrganizationPolicyListPolicyDeny {
+		if v != nil {
+			return *v
+		}
+		var ret OrganizationPolicyListPolicyDeny
+		return ret
+	}).(OrganizationPolicyListPolicyDenyOutput)
 }
 
 // The policy allows or denies all values.
@@ -1312,7 +1350,7 @@ func (o OrganizationPolicyRestorePolicyOutput) ToOrganizationPolicyRestorePolicy
 }
 
 func (o OrganizationPolicyRestorePolicyOutput) ToOrganizationPolicyRestorePolicyPtrOutputWithContext(ctx context.Context) OrganizationPolicyRestorePolicyPtrOutput {
-	return o.ApplyT(func(v OrganizationPolicyRestorePolicy) *OrganizationPolicyRestorePolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationPolicyRestorePolicy) *OrganizationPolicyRestorePolicy {
 		return &v
 	}).(OrganizationPolicyRestorePolicyPtrOutput)
 }
@@ -1337,7 +1375,13 @@ func (o OrganizationPolicyRestorePolicyPtrOutput) ToOrganizationPolicyRestorePol
 }
 
 func (o OrganizationPolicyRestorePolicyPtrOutput) Elem() OrganizationPolicyRestorePolicyOutput {
-	return o.ApplyT(func(v *OrganizationPolicyRestorePolicy) OrganizationPolicyRestorePolicy { return *v }).(OrganizationPolicyRestorePolicyOutput)
+	return o.ApplyT(func(v *OrganizationPolicyRestorePolicy) OrganizationPolicyRestorePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret OrganizationPolicyRestorePolicy
+		return ret
+	}).(OrganizationPolicyRestorePolicyOutput)
 }
 
 // May only be set to true. If set, then the default Policy is restored.

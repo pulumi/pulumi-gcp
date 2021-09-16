@@ -143,7 +143,7 @@ func (o GuestPoliciesAssignmentOutput) ToGuestPoliciesAssignmentPtrOutput() Gues
 }
 
 func (o GuestPoliciesAssignmentOutput) ToGuestPoliciesAssignmentPtrOutputWithContext(ctx context.Context) GuestPoliciesAssignmentPtrOutput {
-	return o.ApplyT(func(v GuestPoliciesAssignment) *GuestPoliciesAssignment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestPoliciesAssignment) *GuestPoliciesAssignment {
 		return &v
 	}).(GuestPoliciesAssignmentPtrOutput)
 }
@@ -200,7 +200,13 @@ func (o GuestPoliciesAssignmentPtrOutput) ToGuestPoliciesAssignmentPtrOutputWith
 }
 
 func (o GuestPoliciesAssignmentPtrOutput) Elem() GuestPoliciesAssignmentOutput {
-	return o.ApplyT(func(v *GuestPoliciesAssignment) GuestPoliciesAssignment { return *v }).(GuestPoliciesAssignmentOutput)
+	return o.ApplyT(func(v *GuestPoliciesAssignment) GuestPoliciesAssignment {
+		if v != nil {
+			return *v
+		}
+		var ret GuestPoliciesAssignment
+		return ret
+	}).(GuestPoliciesAssignmentOutput)
 }
 
 // Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups,
@@ -888,7 +894,7 @@ func (o GuestPoliciesPackageRepositoryAptOutput) ToGuestPoliciesPackageRepositor
 }
 
 func (o GuestPoliciesPackageRepositoryAptOutput) ToGuestPoliciesPackageRepositoryAptPtrOutputWithContext(ctx context.Context) GuestPoliciesPackageRepositoryAptPtrOutput {
-	return o.ApplyT(func(v GuestPoliciesPackageRepositoryApt) *GuestPoliciesPackageRepositoryApt {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestPoliciesPackageRepositoryApt) *GuestPoliciesPackageRepositoryApt {
 		return &v
 	}).(GuestPoliciesPackageRepositoryAptPtrOutput)
 }
@@ -936,7 +942,13 @@ func (o GuestPoliciesPackageRepositoryAptPtrOutput) ToGuestPoliciesPackageReposi
 }
 
 func (o GuestPoliciesPackageRepositoryAptPtrOutput) Elem() GuestPoliciesPackageRepositoryAptOutput {
-	return o.ApplyT(func(v *GuestPoliciesPackageRepositoryApt) GuestPoliciesPackageRepositoryApt { return *v }).(GuestPoliciesPackageRepositoryAptOutput)
+	return o.ApplyT(func(v *GuestPoliciesPackageRepositoryApt) GuestPoliciesPackageRepositoryApt {
+		if v != nil {
+			return *v
+		}
+		var ret GuestPoliciesPackageRepositoryApt
+		return ret
+	}).(GuestPoliciesPackageRepositoryAptOutput)
 }
 
 // Type of archive files in this repository. The default behavior is DEB.
@@ -1095,7 +1107,7 @@ func (o GuestPoliciesPackageRepositoryGooOutput) ToGuestPoliciesPackageRepositor
 }
 
 func (o GuestPoliciesPackageRepositoryGooOutput) ToGuestPoliciesPackageRepositoryGooPtrOutputWithContext(ctx context.Context) GuestPoliciesPackageRepositoryGooPtrOutput {
-	return o.ApplyT(func(v GuestPoliciesPackageRepositoryGoo) *GuestPoliciesPackageRepositoryGoo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestPoliciesPackageRepositoryGoo) *GuestPoliciesPackageRepositoryGoo {
 		return &v
 	}).(GuestPoliciesPackageRepositoryGooPtrOutput)
 }
@@ -1128,7 +1140,13 @@ func (o GuestPoliciesPackageRepositoryGooPtrOutput) ToGuestPoliciesPackageReposi
 }
 
 func (o GuestPoliciesPackageRepositoryGooPtrOutput) Elem() GuestPoliciesPackageRepositoryGooOutput {
-	return o.ApplyT(func(v *GuestPoliciesPackageRepositoryGoo) GuestPoliciesPackageRepositoryGoo { return *v }).(GuestPoliciesPackageRepositoryGooOutput)
+	return o.ApplyT(func(v *GuestPoliciesPackageRepositoryGoo) GuestPoliciesPackageRepositoryGoo {
+		if v != nil {
+			return *v
+		}
+		var ret GuestPoliciesPackageRepositoryGoo
+		return ret
+	}).(GuestPoliciesPackageRepositoryGooOutput)
 }
 
 // Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
@@ -1261,7 +1279,7 @@ func (o GuestPoliciesPackageRepositoryYumOutput) ToGuestPoliciesPackageRepositor
 }
 
 func (o GuestPoliciesPackageRepositoryYumOutput) ToGuestPoliciesPackageRepositoryYumPtrOutputWithContext(ctx context.Context) GuestPoliciesPackageRepositoryYumPtrOutput {
-	return o.ApplyT(func(v GuestPoliciesPackageRepositoryYum) *GuestPoliciesPackageRepositoryYum {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestPoliciesPackageRepositoryYum) *GuestPoliciesPackageRepositoryYum {
 		return &v
 	}).(GuestPoliciesPackageRepositoryYumPtrOutput)
 }
@@ -1302,7 +1320,13 @@ func (o GuestPoliciesPackageRepositoryYumPtrOutput) ToGuestPoliciesPackageReposi
 }
 
 func (o GuestPoliciesPackageRepositoryYumPtrOutput) Elem() GuestPoliciesPackageRepositoryYumOutput {
-	return o.ApplyT(func(v *GuestPoliciesPackageRepositoryYum) GuestPoliciesPackageRepositoryYum { return *v }).(GuestPoliciesPackageRepositoryYumOutput)
+	return o.ApplyT(func(v *GuestPoliciesPackageRepositoryYum) GuestPoliciesPackageRepositoryYum {
+		if v != nil {
+			return *v
+		}
+		var ret GuestPoliciesPackageRepositoryYum
+		return ret
+	}).(GuestPoliciesPackageRepositoryYumOutput)
 }
 
 // The location of the repository directory.
@@ -1453,7 +1477,7 @@ func (o GuestPoliciesPackageRepositoryZypperOutput) ToGuestPoliciesPackageReposi
 }
 
 func (o GuestPoliciesPackageRepositoryZypperOutput) ToGuestPoliciesPackageRepositoryZypperPtrOutputWithContext(ctx context.Context) GuestPoliciesPackageRepositoryZypperPtrOutput {
-	return o.ApplyT(func(v GuestPoliciesPackageRepositoryZypper) *GuestPoliciesPackageRepositoryZypper {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestPoliciesPackageRepositoryZypper) *GuestPoliciesPackageRepositoryZypper {
 		return &v
 	}).(GuestPoliciesPackageRepositoryZypperPtrOutput)
 }
@@ -1494,7 +1518,13 @@ func (o GuestPoliciesPackageRepositoryZypperPtrOutput) ToGuestPoliciesPackageRep
 }
 
 func (o GuestPoliciesPackageRepositoryZypperPtrOutput) Elem() GuestPoliciesPackageRepositoryZypperOutput {
-	return o.ApplyT(func(v *GuestPoliciesPackageRepositoryZypper) GuestPoliciesPackageRepositoryZypper { return *v }).(GuestPoliciesPackageRepositoryZypperOutput)
+	return o.ApplyT(func(v *GuestPoliciesPackageRepositoryZypper) GuestPoliciesPackageRepositoryZypper {
+		if v != nil {
+			return *v
+		}
+		var ret GuestPoliciesPackageRepositoryZypper
+		return ret
+	}).(GuestPoliciesPackageRepositoryZypperOutput)
 }
 
 // The location of the repository directory.
@@ -1968,7 +1998,7 @@ func (o GuestPoliciesRecipeArtifactGcsOutput) ToGuestPoliciesRecipeArtifactGcsPt
 }
 
 func (o GuestPoliciesRecipeArtifactGcsOutput) ToGuestPoliciesRecipeArtifactGcsPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeArtifactGcsPtrOutput {
-	return o.ApplyT(func(v GuestPoliciesRecipeArtifactGcs) *GuestPoliciesRecipeArtifactGcs {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestPoliciesRecipeArtifactGcs) *GuestPoliciesRecipeArtifactGcs {
 		return &v
 	}).(GuestPoliciesRecipeArtifactGcsPtrOutput)
 }
@@ -2006,7 +2036,13 @@ func (o GuestPoliciesRecipeArtifactGcsPtrOutput) ToGuestPoliciesRecipeArtifactGc
 }
 
 func (o GuestPoliciesRecipeArtifactGcsPtrOutput) Elem() GuestPoliciesRecipeArtifactGcsOutput {
-	return o.ApplyT(func(v *GuestPoliciesRecipeArtifactGcs) GuestPoliciesRecipeArtifactGcs { return *v }).(GuestPoliciesRecipeArtifactGcsOutput)
+	return o.ApplyT(func(v *GuestPoliciesRecipeArtifactGcs) GuestPoliciesRecipeArtifactGcs {
+		if v != nil {
+			return *v
+		}
+		var ret GuestPoliciesRecipeArtifactGcs
+		return ret
+	}).(GuestPoliciesRecipeArtifactGcsOutput)
 }
 
 // Bucket of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
@@ -2143,7 +2179,7 @@ func (o GuestPoliciesRecipeArtifactRemoteOutput) ToGuestPoliciesRecipeArtifactRe
 }
 
 func (o GuestPoliciesRecipeArtifactRemoteOutput) ToGuestPoliciesRecipeArtifactRemotePtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeArtifactRemotePtrOutput {
-	return o.ApplyT(func(v GuestPoliciesRecipeArtifactRemote) *GuestPoliciesRecipeArtifactRemote {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestPoliciesRecipeArtifactRemote) *GuestPoliciesRecipeArtifactRemote {
 		return &v
 	}).(GuestPoliciesRecipeArtifactRemotePtrOutput)
 }
@@ -2175,7 +2211,13 @@ func (o GuestPoliciesRecipeArtifactRemotePtrOutput) ToGuestPoliciesRecipeArtifac
 }
 
 func (o GuestPoliciesRecipeArtifactRemotePtrOutput) Elem() GuestPoliciesRecipeArtifactRemoteOutput {
-	return o.ApplyT(func(v *GuestPoliciesRecipeArtifactRemote) GuestPoliciesRecipeArtifactRemote { return *v }).(GuestPoliciesRecipeArtifactRemoteOutput)
+	return o.ApplyT(func(v *GuestPoliciesRecipeArtifactRemote) GuestPoliciesRecipeArtifactRemote {
+		if v != nil {
+			return *v
+		}
+		var ret GuestPoliciesRecipeArtifactRemote
+		return ret
+	}).(GuestPoliciesRecipeArtifactRemoteOutput)
 }
 
 // Must be provided if allowInsecure is false. SHA256 checksum in hex format, to compare to the checksum of the artifact.
@@ -2483,7 +2525,7 @@ func (o GuestPoliciesRecipeInstallStepArchiveExtractionOutput) ToGuestPoliciesRe
 }
 
 func (o GuestPoliciesRecipeInstallStepArchiveExtractionOutput) ToGuestPoliciesRecipeInstallStepArchiveExtractionPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput {
-	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepArchiveExtraction) *GuestPoliciesRecipeInstallStepArchiveExtraction {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestPoliciesRecipeInstallStepArchiveExtraction) *GuestPoliciesRecipeInstallStepArchiveExtraction {
 		return &v
 	}).(GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput)
 }
@@ -2520,7 +2562,11 @@ func (o GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput) ToGuestPolicie
 
 func (o GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput) Elem() GuestPoliciesRecipeInstallStepArchiveExtractionOutput {
 	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepArchiveExtraction) GuestPoliciesRecipeInstallStepArchiveExtraction {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GuestPoliciesRecipeInstallStepArchiveExtraction
+		return ret
 	}).(GuestPoliciesRecipeInstallStepArchiveExtractionOutput)
 }
 
@@ -2648,7 +2694,7 @@ func (o GuestPoliciesRecipeInstallStepDpkgInstallationOutput) ToGuestPoliciesRec
 }
 
 func (o GuestPoliciesRecipeInstallStepDpkgInstallationOutput) ToGuestPoliciesRecipeInstallStepDpkgInstallationPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput {
-	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepDpkgInstallation) *GuestPoliciesRecipeInstallStepDpkgInstallation {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestPoliciesRecipeInstallStepDpkgInstallation) *GuestPoliciesRecipeInstallStepDpkgInstallation {
 		return &v
 	}).(GuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput)
 }
@@ -2674,7 +2720,11 @@ func (o GuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput) ToGuestPolicies
 
 func (o GuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput) Elem() GuestPoliciesRecipeInstallStepDpkgInstallationOutput {
 	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepDpkgInstallation) GuestPoliciesRecipeInstallStepDpkgInstallation {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GuestPoliciesRecipeInstallStepDpkgInstallation
+		return ret
 	}).(GuestPoliciesRecipeInstallStepDpkgInstallationOutput)
 }
 
@@ -2805,7 +2855,7 @@ func (o GuestPoliciesRecipeInstallStepFileCopyOutput) ToGuestPoliciesRecipeInsta
 }
 
 func (o GuestPoliciesRecipeInstallStepFileCopyOutput) ToGuestPoliciesRecipeInstallStepFileCopyPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepFileCopyPtrOutput {
-	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepFileCopy) *GuestPoliciesRecipeInstallStepFileCopy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestPoliciesRecipeInstallStepFileCopy) *GuestPoliciesRecipeInstallStepFileCopy {
 		return &v
 	}).(GuestPoliciesRecipeInstallStepFileCopyPtrOutput)
 }
@@ -2851,7 +2901,13 @@ func (o GuestPoliciesRecipeInstallStepFileCopyPtrOutput) ToGuestPoliciesRecipeIn
 }
 
 func (o GuestPoliciesRecipeInstallStepFileCopyPtrOutput) Elem() GuestPoliciesRecipeInstallStepFileCopyOutput {
-	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepFileCopy) GuestPoliciesRecipeInstallStepFileCopy { return *v }).(GuestPoliciesRecipeInstallStepFileCopyOutput)
+	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepFileCopy) GuestPoliciesRecipeInstallStepFileCopy {
+		if v != nil {
+			return *v
+		}
+		var ret GuestPoliciesRecipeInstallStepFileCopy
+		return ret
+	}).(GuestPoliciesRecipeInstallStepFileCopyOutput)
 }
 
 // The id of the relevant artifact in the recipe.
@@ -3005,7 +3061,7 @@ func (o GuestPoliciesRecipeInstallStepFileExecOutput) ToGuestPoliciesRecipeInsta
 }
 
 func (o GuestPoliciesRecipeInstallStepFileExecOutput) ToGuestPoliciesRecipeInstallStepFileExecPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepFileExecPtrOutput {
-	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepFileExec) *GuestPoliciesRecipeInstallStepFileExec {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestPoliciesRecipeInstallStepFileExec) *GuestPoliciesRecipeInstallStepFileExec {
 		return &v
 	}).(GuestPoliciesRecipeInstallStepFileExecPtrOutput)
 }
@@ -3045,7 +3101,13 @@ func (o GuestPoliciesRecipeInstallStepFileExecPtrOutput) ToGuestPoliciesRecipeIn
 }
 
 func (o GuestPoliciesRecipeInstallStepFileExecPtrOutput) Elem() GuestPoliciesRecipeInstallStepFileExecOutput {
-	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepFileExec) GuestPoliciesRecipeInstallStepFileExec { return *v }).(GuestPoliciesRecipeInstallStepFileExecOutput)
+	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepFileExec) GuestPoliciesRecipeInstallStepFileExec {
+		if v != nil {
+			return *v
+		}
+		var ret GuestPoliciesRecipeInstallStepFileExec
+		return ret
+	}).(GuestPoliciesRecipeInstallStepFileExecOutput)
 }
 
 // Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
@@ -3189,7 +3251,7 @@ func (o GuestPoliciesRecipeInstallStepMsiInstallationOutput) ToGuestPoliciesReci
 }
 
 func (o GuestPoliciesRecipeInstallStepMsiInstallationOutput) ToGuestPoliciesRecipeInstallStepMsiInstallationPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepMsiInstallationPtrOutput {
-	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepMsiInstallation) *GuestPoliciesRecipeInstallStepMsiInstallation {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestPoliciesRecipeInstallStepMsiInstallation) *GuestPoliciesRecipeInstallStepMsiInstallation {
 		return &v
 	}).(GuestPoliciesRecipeInstallStepMsiInstallationPtrOutput)
 }
@@ -3225,7 +3287,11 @@ func (o GuestPoliciesRecipeInstallStepMsiInstallationPtrOutput) ToGuestPoliciesR
 
 func (o GuestPoliciesRecipeInstallStepMsiInstallationPtrOutput) Elem() GuestPoliciesRecipeInstallStepMsiInstallationOutput {
 	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepMsiInstallation) GuestPoliciesRecipeInstallStepMsiInstallation {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GuestPoliciesRecipeInstallStepMsiInstallation
+		return ret
 	}).(GuestPoliciesRecipeInstallStepMsiInstallationOutput)
 }
 
@@ -3352,7 +3418,7 @@ func (o GuestPoliciesRecipeInstallStepRpmInstallationOutput) ToGuestPoliciesReci
 }
 
 func (o GuestPoliciesRecipeInstallStepRpmInstallationOutput) ToGuestPoliciesRecipeInstallStepRpmInstallationPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepRpmInstallationPtrOutput {
-	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepRpmInstallation) *GuestPoliciesRecipeInstallStepRpmInstallation {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestPoliciesRecipeInstallStepRpmInstallation) *GuestPoliciesRecipeInstallStepRpmInstallation {
 		return &v
 	}).(GuestPoliciesRecipeInstallStepRpmInstallationPtrOutput)
 }
@@ -3378,7 +3444,11 @@ func (o GuestPoliciesRecipeInstallStepRpmInstallationPtrOutput) ToGuestPoliciesR
 
 func (o GuestPoliciesRecipeInstallStepRpmInstallationPtrOutput) Elem() GuestPoliciesRecipeInstallStepRpmInstallationOutput {
 	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepRpmInstallation) GuestPoliciesRecipeInstallStepRpmInstallation {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GuestPoliciesRecipeInstallStepRpmInstallation
+		return ret
 	}).(GuestPoliciesRecipeInstallStepRpmInstallationOutput)
 }
 
@@ -3497,7 +3567,7 @@ func (o GuestPoliciesRecipeInstallStepScriptRunOutput) ToGuestPoliciesRecipeInst
 }
 
 func (o GuestPoliciesRecipeInstallStepScriptRunOutput) ToGuestPoliciesRecipeInstallStepScriptRunPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepScriptRunPtrOutput {
-	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepScriptRun) *GuestPoliciesRecipeInstallStepScriptRun {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestPoliciesRecipeInstallStepScriptRun) *GuestPoliciesRecipeInstallStepScriptRun {
 		return &v
 	}).(GuestPoliciesRecipeInstallStepScriptRunPtrOutput)
 }
@@ -3534,7 +3604,13 @@ func (o GuestPoliciesRecipeInstallStepScriptRunPtrOutput) ToGuestPoliciesRecipeI
 }
 
 func (o GuestPoliciesRecipeInstallStepScriptRunPtrOutput) Elem() GuestPoliciesRecipeInstallStepScriptRunOutput {
-	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepScriptRun) GuestPoliciesRecipeInstallStepScriptRun { return *v }).(GuestPoliciesRecipeInstallStepScriptRunOutput)
+	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepScriptRun) GuestPoliciesRecipeInstallStepScriptRun {
+		if v != nil {
+			return *v
+		}
+		var ret GuestPoliciesRecipeInstallStepScriptRun
+		return ret
+	}).(GuestPoliciesRecipeInstallStepScriptRunOutput)
 }
 
 // Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
@@ -3852,7 +3928,7 @@ func (o GuestPoliciesRecipeUpdateStepArchiveExtractionOutput) ToGuestPoliciesRec
 }
 
 func (o GuestPoliciesRecipeUpdateStepArchiveExtractionOutput) ToGuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput {
-	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepArchiveExtraction) *GuestPoliciesRecipeUpdateStepArchiveExtraction {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestPoliciesRecipeUpdateStepArchiveExtraction) *GuestPoliciesRecipeUpdateStepArchiveExtraction {
 		return &v
 	}).(GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput)
 }
@@ -3889,7 +3965,11 @@ func (o GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput) ToGuestPolicies
 
 func (o GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput) Elem() GuestPoliciesRecipeUpdateStepArchiveExtractionOutput {
 	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepArchiveExtraction) GuestPoliciesRecipeUpdateStepArchiveExtraction {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GuestPoliciesRecipeUpdateStepArchiveExtraction
+		return ret
 	}).(GuestPoliciesRecipeUpdateStepArchiveExtractionOutput)
 }
 
@@ -4017,7 +4097,7 @@ func (o GuestPoliciesRecipeUpdateStepDpkgInstallationOutput) ToGuestPoliciesReci
 }
 
 func (o GuestPoliciesRecipeUpdateStepDpkgInstallationOutput) ToGuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput {
-	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepDpkgInstallation) *GuestPoliciesRecipeUpdateStepDpkgInstallation {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestPoliciesRecipeUpdateStepDpkgInstallation) *GuestPoliciesRecipeUpdateStepDpkgInstallation {
 		return &v
 	}).(GuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput)
 }
@@ -4043,7 +4123,11 @@ func (o GuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput) ToGuestPoliciesR
 
 func (o GuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput) Elem() GuestPoliciesRecipeUpdateStepDpkgInstallationOutput {
 	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepDpkgInstallation) GuestPoliciesRecipeUpdateStepDpkgInstallation {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GuestPoliciesRecipeUpdateStepDpkgInstallation
+		return ret
 	}).(GuestPoliciesRecipeUpdateStepDpkgInstallationOutput)
 }
 
@@ -4174,7 +4258,7 @@ func (o GuestPoliciesRecipeUpdateStepFileCopyOutput) ToGuestPoliciesRecipeUpdate
 }
 
 func (o GuestPoliciesRecipeUpdateStepFileCopyOutput) ToGuestPoliciesRecipeUpdateStepFileCopyPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepFileCopyPtrOutput {
-	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepFileCopy) *GuestPoliciesRecipeUpdateStepFileCopy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestPoliciesRecipeUpdateStepFileCopy) *GuestPoliciesRecipeUpdateStepFileCopy {
 		return &v
 	}).(GuestPoliciesRecipeUpdateStepFileCopyPtrOutput)
 }
@@ -4220,7 +4304,13 @@ func (o GuestPoliciesRecipeUpdateStepFileCopyPtrOutput) ToGuestPoliciesRecipeUpd
 }
 
 func (o GuestPoliciesRecipeUpdateStepFileCopyPtrOutput) Elem() GuestPoliciesRecipeUpdateStepFileCopyOutput {
-	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepFileCopy) GuestPoliciesRecipeUpdateStepFileCopy { return *v }).(GuestPoliciesRecipeUpdateStepFileCopyOutput)
+	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepFileCopy) GuestPoliciesRecipeUpdateStepFileCopy {
+		if v != nil {
+			return *v
+		}
+		var ret GuestPoliciesRecipeUpdateStepFileCopy
+		return ret
+	}).(GuestPoliciesRecipeUpdateStepFileCopyOutput)
 }
 
 // The id of the relevant artifact in the recipe.
@@ -4374,7 +4464,7 @@ func (o GuestPoliciesRecipeUpdateStepFileExecOutput) ToGuestPoliciesRecipeUpdate
 }
 
 func (o GuestPoliciesRecipeUpdateStepFileExecOutput) ToGuestPoliciesRecipeUpdateStepFileExecPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepFileExecPtrOutput {
-	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepFileExec) *GuestPoliciesRecipeUpdateStepFileExec {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestPoliciesRecipeUpdateStepFileExec) *GuestPoliciesRecipeUpdateStepFileExec {
 		return &v
 	}).(GuestPoliciesRecipeUpdateStepFileExecPtrOutput)
 }
@@ -4414,7 +4504,13 @@ func (o GuestPoliciesRecipeUpdateStepFileExecPtrOutput) ToGuestPoliciesRecipeUpd
 }
 
 func (o GuestPoliciesRecipeUpdateStepFileExecPtrOutput) Elem() GuestPoliciesRecipeUpdateStepFileExecOutput {
-	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepFileExec) GuestPoliciesRecipeUpdateStepFileExec { return *v }).(GuestPoliciesRecipeUpdateStepFileExecOutput)
+	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepFileExec) GuestPoliciesRecipeUpdateStepFileExec {
+		if v != nil {
+			return *v
+		}
+		var ret GuestPoliciesRecipeUpdateStepFileExec
+		return ret
+	}).(GuestPoliciesRecipeUpdateStepFileExecOutput)
 }
 
 // Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
@@ -4558,7 +4654,7 @@ func (o GuestPoliciesRecipeUpdateStepMsiInstallationOutput) ToGuestPoliciesRecip
 }
 
 func (o GuestPoliciesRecipeUpdateStepMsiInstallationOutput) ToGuestPoliciesRecipeUpdateStepMsiInstallationPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput {
-	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepMsiInstallation) *GuestPoliciesRecipeUpdateStepMsiInstallation {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestPoliciesRecipeUpdateStepMsiInstallation) *GuestPoliciesRecipeUpdateStepMsiInstallation {
 		return &v
 	}).(GuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput)
 }
@@ -4594,7 +4690,11 @@ func (o GuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput) ToGuestPoliciesRe
 
 func (o GuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput) Elem() GuestPoliciesRecipeUpdateStepMsiInstallationOutput {
 	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepMsiInstallation) GuestPoliciesRecipeUpdateStepMsiInstallation {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GuestPoliciesRecipeUpdateStepMsiInstallation
+		return ret
 	}).(GuestPoliciesRecipeUpdateStepMsiInstallationOutput)
 }
 
@@ -4721,7 +4821,7 @@ func (o GuestPoliciesRecipeUpdateStepRpmInstallationOutput) ToGuestPoliciesRecip
 }
 
 func (o GuestPoliciesRecipeUpdateStepRpmInstallationOutput) ToGuestPoliciesRecipeUpdateStepRpmInstallationPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput {
-	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepRpmInstallation) *GuestPoliciesRecipeUpdateStepRpmInstallation {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestPoliciesRecipeUpdateStepRpmInstallation) *GuestPoliciesRecipeUpdateStepRpmInstallation {
 		return &v
 	}).(GuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput)
 }
@@ -4747,7 +4847,11 @@ func (o GuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput) ToGuestPoliciesRe
 
 func (o GuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput) Elem() GuestPoliciesRecipeUpdateStepRpmInstallationOutput {
 	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepRpmInstallation) GuestPoliciesRecipeUpdateStepRpmInstallation {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GuestPoliciesRecipeUpdateStepRpmInstallation
+		return ret
 	}).(GuestPoliciesRecipeUpdateStepRpmInstallationOutput)
 }
 
@@ -4866,7 +4970,7 @@ func (o GuestPoliciesRecipeUpdateStepScriptRunOutput) ToGuestPoliciesRecipeUpdat
 }
 
 func (o GuestPoliciesRecipeUpdateStepScriptRunOutput) ToGuestPoliciesRecipeUpdateStepScriptRunPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepScriptRunPtrOutput {
-	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepScriptRun) *GuestPoliciesRecipeUpdateStepScriptRun {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestPoliciesRecipeUpdateStepScriptRun) *GuestPoliciesRecipeUpdateStepScriptRun {
 		return &v
 	}).(GuestPoliciesRecipeUpdateStepScriptRunPtrOutput)
 }
@@ -4903,7 +5007,13 @@ func (o GuestPoliciesRecipeUpdateStepScriptRunPtrOutput) ToGuestPoliciesRecipeUp
 }
 
 func (o GuestPoliciesRecipeUpdateStepScriptRunPtrOutput) Elem() GuestPoliciesRecipeUpdateStepScriptRunOutput {
-	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepScriptRun) GuestPoliciesRecipeUpdateStepScriptRun { return *v }).(GuestPoliciesRecipeUpdateStepScriptRunOutput)
+	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepScriptRun) GuestPoliciesRecipeUpdateStepScriptRun {
+		if v != nil {
+			return *v
+		}
+		var ret GuestPoliciesRecipeUpdateStepScriptRun
+		return ret
+	}).(GuestPoliciesRecipeUpdateStepScriptRunOutput)
 }
 
 // Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
@@ -5055,7 +5165,7 @@ func (o PatchDeploymentInstanceFilterOutput) ToPatchDeploymentInstanceFilterPtrO
 }
 
 func (o PatchDeploymentInstanceFilterOutput) ToPatchDeploymentInstanceFilterPtrOutputWithContext(ctx context.Context) PatchDeploymentInstanceFilterPtrOutput {
-	return o.ApplyT(func(v PatchDeploymentInstanceFilter) *PatchDeploymentInstanceFilter {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentInstanceFilter) *PatchDeploymentInstanceFilter {
 		return &v
 	}).(PatchDeploymentInstanceFilterPtrOutput)
 }
@@ -5104,7 +5214,13 @@ func (o PatchDeploymentInstanceFilterPtrOutput) ToPatchDeploymentInstanceFilterP
 }
 
 func (o PatchDeploymentInstanceFilterPtrOutput) Elem() PatchDeploymentInstanceFilterOutput {
-	return o.ApplyT(func(v *PatchDeploymentInstanceFilter) PatchDeploymentInstanceFilter { return *v }).(PatchDeploymentInstanceFilterOutput)
+	return o.ApplyT(func(v *PatchDeploymentInstanceFilter) PatchDeploymentInstanceFilter {
+		if v != nil {
+			return *v
+		}
+		var ret PatchDeploymentInstanceFilter
+		return ret
+	}).(PatchDeploymentInstanceFilterOutput)
 }
 
 // Target all VM instances in the project. If true, no other criteria is permitted.
@@ -5353,7 +5469,7 @@ func (o PatchDeploymentOneTimeScheduleOutput) ToPatchDeploymentOneTimeSchedulePt
 }
 
 func (o PatchDeploymentOneTimeScheduleOutput) ToPatchDeploymentOneTimeSchedulePtrOutputWithContext(ctx context.Context) PatchDeploymentOneTimeSchedulePtrOutput {
-	return o.ApplyT(func(v PatchDeploymentOneTimeSchedule) *PatchDeploymentOneTimeSchedule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentOneTimeSchedule) *PatchDeploymentOneTimeSchedule {
 		return &v
 	}).(PatchDeploymentOneTimeSchedulePtrOutput)
 }
@@ -5379,7 +5495,13 @@ func (o PatchDeploymentOneTimeSchedulePtrOutput) ToPatchDeploymentOneTimeSchedul
 }
 
 func (o PatchDeploymentOneTimeSchedulePtrOutput) Elem() PatchDeploymentOneTimeScheduleOutput {
-	return o.ApplyT(func(v *PatchDeploymentOneTimeSchedule) PatchDeploymentOneTimeSchedule { return *v }).(PatchDeploymentOneTimeScheduleOutput)
+	return o.ApplyT(func(v *PatchDeploymentOneTimeSchedule) PatchDeploymentOneTimeSchedule {
+		if v != nil {
+			return *v
+		}
+		var ret PatchDeploymentOneTimeSchedule
+		return ret
+	}).(PatchDeploymentOneTimeScheduleOutput)
 }
 
 // The desired patch job execution time. A timestamp in RFC3339 UTC "Zulu" format,
@@ -5530,7 +5652,7 @@ func (o PatchDeploymentPatchConfigOutput) ToPatchDeploymentPatchConfigPtrOutput(
 }
 
 func (o PatchDeploymentPatchConfigOutput) ToPatchDeploymentPatchConfigPtrOutputWithContext(ctx context.Context) PatchDeploymentPatchConfigPtrOutput {
-	return o.ApplyT(func(v PatchDeploymentPatchConfig) *PatchDeploymentPatchConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentPatchConfig) *PatchDeploymentPatchConfig {
 		return &v
 	}).(PatchDeploymentPatchConfigPtrOutput)
 }
@@ -5598,7 +5720,13 @@ func (o PatchDeploymentPatchConfigPtrOutput) ToPatchDeploymentPatchConfigPtrOutp
 }
 
 func (o PatchDeploymentPatchConfigPtrOutput) Elem() PatchDeploymentPatchConfigOutput {
-	return o.ApplyT(func(v *PatchDeploymentPatchConfig) PatchDeploymentPatchConfig { return *v }).(PatchDeploymentPatchConfigOutput)
+	return o.ApplyT(func(v *PatchDeploymentPatchConfig) PatchDeploymentPatchConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PatchDeploymentPatchConfig
+		return ret
+	}).(PatchDeploymentPatchConfigOutput)
 }
 
 // Apt update settings. Use this setting to override the default apt patch rules.
@@ -5796,7 +5924,7 @@ func (o PatchDeploymentPatchConfigAptOutput) ToPatchDeploymentPatchConfigAptPtrO
 }
 
 func (o PatchDeploymentPatchConfigAptOutput) ToPatchDeploymentPatchConfigAptPtrOutputWithContext(ctx context.Context) PatchDeploymentPatchConfigAptPtrOutput {
-	return o.ApplyT(func(v PatchDeploymentPatchConfigApt) *PatchDeploymentPatchConfigApt {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentPatchConfigApt) *PatchDeploymentPatchConfigApt {
 		return &v
 	}).(PatchDeploymentPatchConfigAptPtrOutput)
 }
@@ -5834,7 +5962,13 @@ func (o PatchDeploymentPatchConfigAptPtrOutput) ToPatchDeploymentPatchConfigAptP
 }
 
 func (o PatchDeploymentPatchConfigAptPtrOutput) Elem() PatchDeploymentPatchConfigAptOutput {
-	return o.ApplyT(func(v *PatchDeploymentPatchConfigApt) PatchDeploymentPatchConfigApt { return *v }).(PatchDeploymentPatchConfigAptOutput)
+	return o.ApplyT(func(v *PatchDeploymentPatchConfigApt) PatchDeploymentPatchConfigApt {
+		if v != nil {
+			return *v
+		}
+		var ret PatchDeploymentPatchConfigApt
+		return ret
+	}).(PatchDeploymentPatchConfigAptOutput)
 }
 
 // List of KBs to exclude from update.
@@ -5963,7 +6097,7 @@ func (o PatchDeploymentPatchConfigGooOutput) ToPatchDeploymentPatchConfigGooPtrO
 }
 
 func (o PatchDeploymentPatchConfigGooOutput) ToPatchDeploymentPatchConfigGooPtrOutputWithContext(ctx context.Context) PatchDeploymentPatchConfigGooPtrOutput {
-	return o.ApplyT(func(v PatchDeploymentPatchConfigGoo) *PatchDeploymentPatchConfigGoo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentPatchConfigGoo) *PatchDeploymentPatchConfigGoo {
 		return &v
 	}).(PatchDeploymentPatchConfigGooPtrOutput)
 }
@@ -5988,7 +6122,13 @@ func (o PatchDeploymentPatchConfigGooPtrOutput) ToPatchDeploymentPatchConfigGooP
 }
 
 func (o PatchDeploymentPatchConfigGooPtrOutput) Elem() PatchDeploymentPatchConfigGooOutput {
-	return o.ApplyT(func(v *PatchDeploymentPatchConfigGoo) PatchDeploymentPatchConfigGoo { return *v }).(PatchDeploymentPatchConfigGooOutput)
+	return o.ApplyT(func(v *PatchDeploymentPatchConfigGoo) PatchDeploymentPatchConfigGoo {
+		if v != nil {
+			return *v
+		}
+		var ret PatchDeploymentPatchConfigGoo
+		return ret
+	}).(PatchDeploymentPatchConfigGooOutput)
 }
 
 // goo update settings. Use this setting to override the default goo patch rules.
@@ -6102,7 +6242,7 @@ func (o PatchDeploymentPatchConfigPostStepOutput) ToPatchDeploymentPatchConfigPo
 }
 
 func (o PatchDeploymentPatchConfigPostStepOutput) ToPatchDeploymentPatchConfigPostStepPtrOutputWithContext(ctx context.Context) PatchDeploymentPatchConfigPostStepPtrOutput {
-	return o.ApplyT(func(v PatchDeploymentPatchConfigPostStep) *PatchDeploymentPatchConfigPostStep {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentPatchConfigPostStep) *PatchDeploymentPatchConfigPostStep {
 		return &v
 	}).(PatchDeploymentPatchConfigPostStepPtrOutput)
 }
@@ -6138,7 +6278,13 @@ func (o PatchDeploymentPatchConfigPostStepPtrOutput) ToPatchDeploymentPatchConfi
 }
 
 func (o PatchDeploymentPatchConfigPostStepPtrOutput) Elem() PatchDeploymentPatchConfigPostStepOutput {
-	return o.ApplyT(func(v *PatchDeploymentPatchConfigPostStep) PatchDeploymentPatchConfigPostStep { return *v }).(PatchDeploymentPatchConfigPostStepOutput)
+	return o.ApplyT(func(v *PatchDeploymentPatchConfigPostStep) PatchDeploymentPatchConfigPostStep {
+		if v != nil {
+			return *v
+		}
+		var ret PatchDeploymentPatchConfigPostStep
+		return ret
+	}).(PatchDeploymentPatchConfigPostStepOutput)
 }
 
 // The ExecStepConfig for all Linux VMs targeted by the PatchJob.
@@ -6274,7 +6420,7 @@ func (o PatchDeploymentPatchConfigPostStepLinuxExecStepConfigOutput) ToPatchDepl
 }
 
 func (o PatchDeploymentPatchConfigPostStepLinuxExecStepConfigOutput) ToPatchDeploymentPatchConfigPostStepLinuxExecStepConfigPtrOutputWithContext(ctx context.Context) PatchDeploymentPatchConfigPostStepLinuxExecStepConfigPtrOutput {
-	return o.ApplyT(func(v PatchDeploymentPatchConfigPostStepLinuxExecStepConfig) *PatchDeploymentPatchConfigPostStepLinuxExecStepConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentPatchConfigPostStepLinuxExecStepConfig) *PatchDeploymentPatchConfigPostStepLinuxExecStepConfig {
 		return &v
 	}).(PatchDeploymentPatchConfigPostStepLinuxExecStepConfigPtrOutput)
 }
@@ -6320,7 +6466,11 @@ func (o PatchDeploymentPatchConfigPostStepLinuxExecStepConfigPtrOutput) ToPatchD
 
 func (o PatchDeploymentPatchConfigPostStepLinuxExecStepConfigPtrOutput) Elem() PatchDeploymentPatchConfigPostStepLinuxExecStepConfigOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfigPostStepLinuxExecStepConfig) PatchDeploymentPatchConfigPostStepLinuxExecStepConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret PatchDeploymentPatchConfigPostStepLinuxExecStepConfig
+		return ret
 	}).(PatchDeploymentPatchConfigPostStepLinuxExecStepConfigOutput)
 }
 
@@ -6468,7 +6618,7 @@ func (o PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectOutput) To
 }
 
 func (o PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectOutput) ToPatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectPtrOutputWithContext(ctx context.Context) PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectPtrOutput {
-	return o.ApplyT(func(v PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject) *PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject) *PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject {
 		return &v
 	}).(PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectPtrOutput)
 }
@@ -6506,7 +6656,11 @@ func (o PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectPtrOutput)
 
 func (o PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectPtrOutput) Elem() PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject) PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject
+		return ret
 	}).(PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectOutput)
 }
 
@@ -6651,7 +6805,7 @@ func (o PatchDeploymentPatchConfigPostStepWindowsExecStepConfigOutput) ToPatchDe
 }
 
 func (o PatchDeploymentPatchConfigPostStepWindowsExecStepConfigOutput) ToPatchDeploymentPatchConfigPostStepWindowsExecStepConfigPtrOutputWithContext(ctx context.Context) PatchDeploymentPatchConfigPostStepWindowsExecStepConfigPtrOutput {
-	return o.ApplyT(func(v PatchDeploymentPatchConfigPostStepWindowsExecStepConfig) *PatchDeploymentPatchConfigPostStepWindowsExecStepConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentPatchConfigPostStepWindowsExecStepConfig) *PatchDeploymentPatchConfigPostStepWindowsExecStepConfig {
 		return &v
 	}).(PatchDeploymentPatchConfigPostStepWindowsExecStepConfigPtrOutput)
 }
@@ -6697,7 +6851,11 @@ func (o PatchDeploymentPatchConfigPostStepWindowsExecStepConfigPtrOutput) ToPatc
 
 func (o PatchDeploymentPatchConfigPostStepWindowsExecStepConfigPtrOutput) Elem() PatchDeploymentPatchConfigPostStepWindowsExecStepConfigOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfigPostStepWindowsExecStepConfig) PatchDeploymentPatchConfigPostStepWindowsExecStepConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret PatchDeploymentPatchConfigPostStepWindowsExecStepConfig
+		return ret
 	}).(PatchDeploymentPatchConfigPostStepWindowsExecStepConfigOutput)
 }
 
@@ -6845,7 +7003,7 @@ func (o PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectOutput) 
 }
 
 func (o PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectOutput) ToPatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectPtrOutputWithContext(ctx context.Context) PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectPtrOutput {
-	return o.ApplyT(func(v PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject) *PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject) *PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject {
 		return &v
 	}).(PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectPtrOutput)
 }
@@ -6883,7 +7041,11 @@ func (o PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectPtrOutpu
 
 func (o PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectPtrOutput) Elem() PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject) PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject
+		return ret
 	}).(PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectOutput)
 }
 
@@ -7018,7 +7180,7 @@ func (o PatchDeploymentPatchConfigPreStepOutput) ToPatchDeploymentPatchConfigPre
 }
 
 func (o PatchDeploymentPatchConfigPreStepOutput) ToPatchDeploymentPatchConfigPreStepPtrOutputWithContext(ctx context.Context) PatchDeploymentPatchConfigPreStepPtrOutput {
-	return o.ApplyT(func(v PatchDeploymentPatchConfigPreStep) *PatchDeploymentPatchConfigPreStep {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentPatchConfigPreStep) *PatchDeploymentPatchConfigPreStep {
 		return &v
 	}).(PatchDeploymentPatchConfigPreStepPtrOutput)
 }
@@ -7054,7 +7216,13 @@ func (o PatchDeploymentPatchConfigPreStepPtrOutput) ToPatchDeploymentPatchConfig
 }
 
 func (o PatchDeploymentPatchConfigPreStepPtrOutput) Elem() PatchDeploymentPatchConfigPreStepOutput {
-	return o.ApplyT(func(v *PatchDeploymentPatchConfigPreStep) PatchDeploymentPatchConfigPreStep { return *v }).(PatchDeploymentPatchConfigPreStepOutput)
+	return o.ApplyT(func(v *PatchDeploymentPatchConfigPreStep) PatchDeploymentPatchConfigPreStep {
+		if v != nil {
+			return *v
+		}
+		var ret PatchDeploymentPatchConfigPreStep
+		return ret
+	}).(PatchDeploymentPatchConfigPreStepOutput)
 }
 
 // The ExecStepConfig for all Linux VMs targeted by the PatchJob.
@@ -7190,7 +7358,7 @@ func (o PatchDeploymentPatchConfigPreStepLinuxExecStepConfigOutput) ToPatchDeplo
 }
 
 func (o PatchDeploymentPatchConfigPreStepLinuxExecStepConfigOutput) ToPatchDeploymentPatchConfigPreStepLinuxExecStepConfigPtrOutputWithContext(ctx context.Context) PatchDeploymentPatchConfigPreStepLinuxExecStepConfigPtrOutput {
-	return o.ApplyT(func(v PatchDeploymentPatchConfigPreStepLinuxExecStepConfig) *PatchDeploymentPatchConfigPreStepLinuxExecStepConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentPatchConfigPreStepLinuxExecStepConfig) *PatchDeploymentPatchConfigPreStepLinuxExecStepConfig {
 		return &v
 	}).(PatchDeploymentPatchConfigPreStepLinuxExecStepConfigPtrOutput)
 }
@@ -7236,7 +7404,11 @@ func (o PatchDeploymentPatchConfigPreStepLinuxExecStepConfigPtrOutput) ToPatchDe
 
 func (o PatchDeploymentPatchConfigPreStepLinuxExecStepConfigPtrOutput) Elem() PatchDeploymentPatchConfigPreStepLinuxExecStepConfigOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfigPreStepLinuxExecStepConfig) PatchDeploymentPatchConfigPreStepLinuxExecStepConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret PatchDeploymentPatchConfigPreStepLinuxExecStepConfig
+		return ret
 	}).(PatchDeploymentPatchConfigPreStepLinuxExecStepConfigOutput)
 }
 
@@ -7384,7 +7556,7 @@ func (o PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectOutput) ToP
 }
 
 func (o PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectOutput) ToPatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectPtrOutputWithContext(ctx context.Context) PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectPtrOutput {
-	return o.ApplyT(func(v PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject) *PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject) *PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject {
 		return &v
 	}).(PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectPtrOutput)
 }
@@ -7422,7 +7594,11 @@ func (o PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectPtrOutput) 
 
 func (o PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectPtrOutput) Elem() PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject) PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject
+		return ret
 	}).(PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectOutput)
 }
 
@@ -7567,7 +7743,7 @@ func (o PatchDeploymentPatchConfigPreStepWindowsExecStepConfigOutput) ToPatchDep
 }
 
 func (o PatchDeploymentPatchConfigPreStepWindowsExecStepConfigOutput) ToPatchDeploymentPatchConfigPreStepWindowsExecStepConfigPtrOutputWithContext(ctx context.Context) PatchDeploymentPatchConfigPreStepWindowsExecStepConfigPtrOutput {
-	return o.ApplyT(func(v PatchDeploymentPatchConfigPreStepWindowsExecStepConfig) *PatchDeploymentPatchConfigPreStepWindowsExecStepConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentPatchConfigPreStepWindowsExecStepConfig) *PatchDeploymentPatchConfigPreStepWindowsExecStepConfig {
 		return &v
 	}).(PatchDeploymentPatchConfigPreStepWindowsExecStepConfigPtrOutput)
 }
@@ -7613,7 +7789,11 @@ func (o PatchDeploymentPatchConfigPreStepWindowsExecStepConfigPtrOutput) ToPatch
 
 func (o PatchDeploymentPatchConfigPreStepWindowsExecStepConfigPtrOutput) Elem() PatchDeploymentPatchConfigPreStepWindowsExecStepConfigOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfigPreStepWindowsExecStepConfig) PatchDeploymentPatchConfigPreStepWindowsExecStepConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret PatchDeploymentPatchConfigPreStepWindowsExecStepConfig
+		return ret
 	}).(PatchDeploymentPatchConfigPreStepWindowsExecStepConfigOutput)
 }
 
@@ -7761,7 +7941,7 @@ func (o PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectOutput) T
 }
 
 func (o PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectOutput) ToPatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectPtrOutputWithContext(ctx context.Context) PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectPtrOutput {
-	return o.ApplyT(func(v PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject) *PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject) *PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject {
 		return &v
 	}).(PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectPtrOutput)
 }
@@ -7799,7 +7979,11 @@ func (o PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectPtrOutput
 
 func (o PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectPtrOutput) Elem() PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject) PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject
+		return ret
 	}).(PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectOutput)
 }
 
@@ -7938,7 +8122,7 @@ func (o PatchDeploymentPatchConfigWindowsUpdateOutput) ToPatchDeploymentPatchCon
 }
 
 func (o PatchDeploymentPatchConfigWindowsUpdateOutput) ToPatchDeploymentPatchConfigWindowsUpdatePtrOutputWithContext(ctx context.Context) PatchDeploymentPatchConfigWindowsUpdatePtrOutput {
-	return o.ApplyT(func(v PatchDeploymentPatchConfigWindowsUpdate) *PatchDeploymentPatchConfigWindowsUpdate {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentPatchConfigWindowsUpdate) *PatchDeploymentPatchConfigWindowsUpdate {
 		return &v
 	}).(PatchDeploymentPatchConfigWindowsUpdatePtrOutput)
 }
@@ -7975,7 +8159,13 @@ func (o PatchDeploymentPatchConfigWindowsUpdatePtrOutput) ToPatchDeploymentPatch
 }
 
 func (o PatchDeploymentPatchConfigWindowsUpdatePtrOutput) Elem() PatchDeploymentPatchConfigWindowsUpdateOutput {
-	return o.ApplyT(func(v *PatchDeploymentPatchConfigWindowsUpdate) PatchDeploymentPatchConfigWindowsUpdate { return *v }).(PatchDeploymentPatchConfigWindowsUpdateOutput)
+	return o.ApplyT(func(v *PatchDeploymentPatchConfigWindowsUpdate) PatchDeploymentPatchConfigWindowsUpdate {
+		if v != nil {
+			return *v
+		}
+		var ret PatchDeploymentPatchConfigWindowsUpdate
+		return ret
+	}).(PatchDeploymentPatchConfigWindowsUpdateOutput)
 }
 
 // Only apply updates of these windows update classifications. If empty, all updates are applied.
@@ -8119,7 +8309,7 @@ func (o PatchDeploymentPatchConfigYumOutput) ToPatchDeploymentPatchConfigYumPtrO
 }
 
 func (o PatchDeploymentPatchConfigYumOutput) ToPatchDeploymentPatchConfigYumPtrOutputWithContext(ctx context.Context) PatchDeploymentPatchConfigYumPtrOutput {
-	return o.ApplyT(func(v PatchDeploymentPatchConfigYum) *PatchDeploymentPatchConfigYum {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentPatchConfigYum) *PatchDeploymentPatchConfigYum {
 		return &v
 	}).(PatchDeploymentPatchConfigYumPtrOutput)
 }
@@ -8161,7 +8351,13 @@ func (o PatchDeploymentPatchConfigYumPtrOutput) ToPatchDeploymentPatchConfigYumP
 }
 
 func (o PatchDeploymentPatchConfigYumPtrOutput) Elem() PatchDeploymentPatchConfigYumOutput {
-	return o.ApplyT(func(v *PatchDeploymentPatchConfigYum) PatchDeploymentPatchConfigYum { return *v }).(PatchDeploymentPatchConfigYumOutput)
+	return o.ApplyT(func(v *PatchDeploymentPatchConfigYum) PatchDeploymentPatchConfigYum {
+		if v != nil {
+			return *v
+		}
+		var ret PatchDeploymentPatchConfigYum
+		return ret
+	}).(PatchDeploymentPatchConfigYumOutput)
 }
 
 // List of KBs to exclude from update.
@@ -8321,7 +8517,7 @@ func (o PatchDeploymentPatchConfigZypperOutput) ToPatchDeploymentPatchConfigZypp
 }
 
 func (o PatchDeploymentPatchConfigZypperOutput) ToPatchDeploymentPatchConfigZypperPtrOutputWithContext(ctx context.Context) PatchDeploymentPatchConfigZypperPtrOutput {
-	return o.ApplyT(func(v PatchDeploymentPatchConfigZypper) *PatchDeploymentPatchConfigZypper {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentPatchConfigZypper) *PatchDeploymentPatchConfigZypper {
 		return &v
 	}).(PatchDeploymentPatchConfigZypperPtrOutput)
 }
@@ -8372,7 +8568,13 @@ func (o PatchDeploymentPatchConfigZypperPtrOutput) ToPatchDeploymentPatchConfigZ
 }
 
 func (o PatchDeploymentPatchConfigZypperPtrOutput) Elem() PatchDeploymentPatchConfigZypperOutput {
-	return o.ApplyT(func(v *PatchDeploymentPatchConfigZypper) PatchDeploymentPatchConfigZypper { return *v }).(PatchDeploymentPatchConfigZypperOutput)
+	return o.ApplyT(func(v *PatchDeploymentPatchConfigZypper) PatchDeploymentPatchConfigZypper {
+		if v != nil {
+			return *v
+		}
+		var ret PatchDeploymentPatchConfigZypper
+		return ret
+	}).(PatchDeploymentPatchConfigZypperOutput)
 }
 
 // Install only patches with these categories. Common categories include security, recommended, and feature.
@@ -8579,7 +8781,7 @@ func (o PatchDeploymentRecurringScheduleOutput) ToPatchDeploymentRecurringSchedu
 }
 
 func (o PatchDeploymentRecurringScheduleOutput) ToPatchDeploymentRecurringSchedulePtrOutputWithContext(ctx context.Context) PatchDeploymentRecurringSchedulePtrOutput {
-	return o.ApplyT(func(v PatchDeploymentRecurringSchedule) *PatchDeploymentRecurringSchedule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentRecurringSchedule) *PatchDeploymentRecurringSchedule {
 		return &v
 	}).(PatchDeploymentRecurringSchedulePtrOutput)
 }
@@ -8650,7 +8852,13 @@ func (o PatchDeploymentRecurringSchedulePtrOutput) ToPatchDeploymentRecurringSch
 }
 
 func (o PatchDeploymentRecurringSchedulePtrOutput) Elem() PatchDeploymentRecurringScheduleOutput {
-	return o.ApplyT(func(v *PatchDeploymentRecurringSchedule) PatchDeploymentRecurringSchedule { return *v }).(PatchDeploymentRecurringScheduleOutput)
+	return o.ApplyT(func(v *PatchDeploymentRecurringSchedule) PatchDeploymentRecurringSchedule {
+		if v != nil {
+			return *v
+		}
+		var ret PatchDeploymentRecurringSchedule
+		return ret
+	}).(PatchDeploymentRecurringScheduleOutput)
 }
 
 // The end time at which a recurring patch deployment schedule is no longer active.
@@ -8847,7 +9055,7 @@ func (o PatchDeploymentRecurringScheduleMonthlyOutput) ToPatchDeploymentRecurrin
 }
 
 func (o PatchDeploymentRecurringScheduleMonthlyOutput) ToPatchDeploymentRecurringScheduleMonthlyPtrOutputWithContext(ctx context.Context) PatchDeploymentRecurringScheduleMonthlyPtrOutput {
-	return o.ApplyT(func(v PatchDeploymentRecurringScheduleMonthly) *PatchDeploymentRecurringScheduleMonthly {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentRecurringScheduleMonthly) *PatchDeploymentRecurringScheduleMonthly {
 		return &v
 	}).(PatchDeploymentRecurringScheduleMonthlyPtrOutput)
 }
@@ -8882,7 +9090,13 @@ func (o PatchDeploymentRecurringScheduleMonthlyPtrOutput) ToPatchDeploymentRecur
 }
 
 func (o PatchDeploymentRecurringScheduleMonthlyPtrOutput) Elem() PatchDeploymentRecurringScheduleMonthlyOutput {
-	return o.ApplyT(func(v *PatchDeploymentRecurringScheduleMonthly) PatchDeploymentRecurringScheduleMonthly { return *v }).(PatchDeploymentRecurringScheduleMonthlyOutput)
+	return o.ApplyT(func(v *PatchDeploymentRecurringScheduleMonthly) PatchDeploymentRecurringScheduleMonthly {
+		if v != nil {
+			return *v
+		}
+		var ret PatchDeploymentRecurringScheduleMonthly
+		return ret
+	}).(PatchDeploymentRecurringScheduleMonthlyOutput)
 }
 
 // One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month.
@@ -9007,7 +9221,7 @@ func (o PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthOutput) ToPatchDepl
 }
 
 func (o PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthOutput) ToPatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthPtrOutputWithContext(ctx context.Context) PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthPtrOutput {
-	return o.ApplyT(func(v PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth) *PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth) *PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth {
 		return &v
 	}).(PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthPtrOutput)
 }
@@ -9039,7 +9253,11 @@ func (o PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthPtrOutput) ToPatchD
 
 func (o PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthPtrOutput) Elem() PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthOutput {
 	return o.ApplyT(func(v *PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth) PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth
+		return ret
 	}).(PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthOutput)
 }
 
@@ -9171,7 +9389,7 @@ func (o PatchDeploymentRecurringScheduleTimeOfDayOutput) ToPatchDeploymentRecurr
 }
 
 func (o PatchDeploymentRecurringScheduleTimeOfDayOutput) ToPatchDeploymentRecurringScheduleTimeOfDayPtrOutputWithContext(ctx context.Context) PatchDeploymentRecurringScheduleTimeOfDayPtrOutput {
-	return o.ApplyT(func(v PatchDeploymentRecurringScheduleTimeOfDay) *PatchDeploymentRecurringScheduleTimeOfDay {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentRecurringScheduleTimeOfDay) *PatchDeploymentRecurringScheduleTimeOfDay {
 		return &v
 	}).(PatchDeploymentRecurringScheduleTimeOfDayPtrOutput)
 }
@@ -9213,7 +9431,11 @@ func (o PatchDeploymentRecurringScheduleTimeOfDayPtrOutput) ToPatchDeploymentRec
 
 func (o PatchDeploymentRecurringScheduleTimeOfDayPtrOutput) Elem() PatchDeploymentRecurringScheduleTimeOfDayOutput {
 	return o.ApplyT(func(v *PatchDeploymentRecurringScheduleTimeOfDay) PatchDeploymentRecurringScheduleTimeOfDay {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret PatchDeploymentRecurringScheduleTimeOfDay
+		return ret
 	}).(PatchDeploymentRecurringScheduleTimeOfDayOutput)
 }
 
@@ -9355,7 +9577,7 @@ func (o PatchDeploymentRecurringScheduleTimeZoneOutput) ToPatchDeploymentRecurri
 }
 
 func (o PatchDeploymentRecurringScheduleTimeZoneOutput) ToPatchDeploymentRecurringScheduleTimeZonePtrOutputWithContext(ctx context.Context) PatchDeploymentRecurringScheduleTimeZonePtrOutput {
-	return o.ApplyT(func(v PatchDeploymentRecurringScheduleTimeZone) *PatchDeploymentRecurringScheduleTimeZone {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentRecurringScheduleTimeZone) *PatchDeploymentRecurringScheduleTimeZone {
 		return &v
 	}).(PatchDeploymentRecurringScheduleTimeZonePtrOutput)
 }
@@ -9385,7 +9607,13 @@ func (o PatchDeploymentRecurringScheduleTimeZonePtrOutput) ToPatchDeploymentRecu
 }
 
 func (o PatchDeploymentRecurringScheduleTimeZonePtrOutput) Elem() PatchDeploymentRecurringScheduleTimeZoneOutput {
-	return o.ApplyT(func(v *PatchDeploymentRecurringScheduleTimeZone) PatchDeploymentRecurringScheduleTimeZone { return *v }).(PatchDeploymentRecurringScheduleTimeZoneOutput)
+	return o.ApplyT(func(v *PatchDeploymentRecurringScheduleTimeZone) PatchDeploymentRecurringScheduleTimeZone {
+		if v != nil {
+			return *v
+		}
+		var ret PatchDeploymentRecurringScheduleTimeZone
+		return ret
+	}).(PatchDeploymentRecurringScheduleTimeZoneOutput)
 }
 
 // IANA Time Zone Database time zone, e.g. "America/New_York".
@@ -9503,7 +9731,7 @@ func (o PatchDeploymentRecurringScheduleWeeklyOutput) ToPatchDeploymentRecurring
 }
 
 func (o PatchDeploymentRecurringScheduleWeeklyOutput) ToPatchDeploymentRecurringScheduleWeeklyPtrOutputWithContext(ctx context.Context) PatchDeploymentRecurringScheduleWeeklyPtrOutput {
-	return o.ApplyT(func(v PatchDeploymentRecurringScheduleWeekly) *PatchDeploymentRecurringScheduleWeekly {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentRecurringScheduleWeekly) *PatchDeploymentRecurringScheduleWeekly {
 		return &v
 	}).(PatchDeploymentRecurringScheduleWeeklyPtrOutput)
 }
@@ -9529,7 +9757,13 @@ func (o PatchDeploymentRecurringScheduleWeeklyPtrOutput) ToPatchDeploymentRecurr
 }
 
 func (o PatchDeploymentRecurringScheduleWeeklyPtrOutput) Elem() PatchDeploymentRecurringScheduleWeeklyOutput {
-	return o.ApplyT(func(v *PatchDeploymentRecurringScheduleWeekly) PatchDeploymentRecurringScheduleWeekly { return *v }).(PatchDeploymentRecurringScheduleWeeklyOutput)
+	return o.ApplyT(func(v *PatchDeploymentRecurringScheduleWeekly) PatchDeploymentRecurringScheduleWeekly {
+		if v != nil {
+			return *v
+		}
+		var ret PatchDeploymentRecurringScheduleWeekly
+		return ret
+	}).(PatchDeploymentRecurringScheduleWeeklyOutput)
 }
 
 // A day of the week.
@@ -9652,7 +9886,7 @@ func (o PatchDeploymentRolloutOutput) ToPatchDeploymentRolloutPtrOutput() PatchD
 }
 
 func (o PatchDeploymentRolloutOutput) ToPatchDeploymentRolloutPtrOutputWithContext(ctx context.Context) PatchDeploymentRolloutPtrOutput {
-	return o.ApplyT(func(v PatchDeploymentRollout) *PatchDeploymentRollout {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentRollout) *PatchDeploymentRollout {
 		return &v
 	}).(PatchDeploymentRolloutPtrOutput)
 }
@@ -9688,7 +9922,13 @@ func (o PatchDeploymentRolloutPtrOutput) ToPatchDeploymentRolloutPtrOutputWithCo
 }
 
 func (o PatchDeploymentRolloutPtrOutput) Elem() PatchDeploymentRolloutOutput {
-	return o.ApplyT(func(v *PatchDeploymentRollout) PatchDeploymentRollout { return *v }).(PatchDeploymentRolloutOutput)
+	return o.ApplyT(func(v *PatchDeploymentRollout) PatchDeploymentRollout {
+		if v != nil {
+			return *v
+		}
+		var ret PatchDeploymentRollout
+		return ret
+	}).(PatchDeploymentRolloutOutput)
 }
 
 // The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up.
@@ -9814,7 +10054,7 @@ func (o PatchDeploymentRolloutDisruptionBudgetOutput) ToPatchDeploymentRolloutDi
 }
 
 func (o PatchDeploymentRolloutDisruptionBudgetOutput) ToPatchDeploymentRolloutDisruptionBudgetPtrOutputWithContext(ctx context.Context) PatchDeploymentRolloutDisruptionBudgetPtrOutput {
-	return o.ApplyT(func(v PatchDeploymentRolloutDisruptionBudget) *PatchDeploymentRolloutDisruptionBudget {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentRolloutDisruptionBudget) *PatchDeploymentRolloutDisruptionBudget {
 		return &v
 	}).(PatchDeploymentRolloutDisruptionBudgetPtrOutput)
 }
@@ -9844,7 +10084,13 @@ func (o PatchDeploymentRolloutDisruptionBudgetPtrOutput) ToPatchDeploymentRollou
 }
 
 func (o PatchDeploymentRolloutDisruptionBudgetPtrOutput) Elem() PatchDeploymentRolloutDisruptionBudgetOutput {
-	return o.ApplyT(func(v *PatchDeploymentRolloutDisruptionBudget) PatchDeploymentRolloutDisruptionBudget { return *v }).(PatchDeploymentRolloutDisruptionBudgetOutput)
+	return o.ApplyT(func(v *PatchDeploymentRolloutDisruptionBudget) PatchDeploymentRolloutDisruptionBudget {
+		if v != nil {
+			return *v
+		}
+		var ret PatchDeploymentRolloutDisruptionBudget
+		return ret
+	}).(PatchDeploymentRolloutDisruptionBudgetOutput)
 }
 
 // Specifies a fixed value.

@@ -103,7 +103,7 @@ func (o EngineModelDefaultVersionOutput) ToEngineModelDefaultVersionPtrOutput() 
 }
 
 func (o EngineModelDefaultVersionOutput) ToEngineModelDefaultVersionPtrOutputWithContext(ctx context.Context) EngineModelDefaultVersionPtrOutput {
-	return o.ApplyT(func(v EngineModelDefaultVersion) *EngineModelDefaultVersion {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EngineModelDefaultVersion) *EngineModelDefaultVersion {
 		return &v
 	}).(EngineModelDefaultVersionPtrOutput)
 }
@@ -128,7 +128,13 @@ func (o EngineModelDefaultVersionPtrOutput) ToEngineModelDefaultVersionPtrOutput
 }
 
 func (o EngineModelDefaultVersionPtrOutput) Elem() EngineModelDefaultVersionOutput {
-	return o.ApplyT(func(v *EngineModelDefaultVersion) EngineModelDefaultVersion { return *v }).(EngineModelDefaultVersionOutput)
+	return o.ApplyT(func(v *EngineModelDefaultVersion) EngineModelDefaultVersion {
+		if v != nil {
+			return *v
+		}
+		var ret EngineModelDefaultVersion
+		return ret
+	}).(EngineModelDefaultVersionOutput)
 }
 
 // The name specified for the version when it was created.

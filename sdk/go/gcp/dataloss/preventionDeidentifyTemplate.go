@@ -344,7 +344,7 @@ type PreventionDeidentifyTemplateArrayInput interface {
 type PreventionDeidentifyTemplateArray []PreventionDeidentifyTemplateInput
 
 func (PreventionDeidentifyTemplateArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*PreventionDeidentifyTemplate)(nil))
+	return reflect.TypeOf((*[]*PreventionDeidentifyTemplate)(nil)).Elem()
 }
 
 func (i PreventionDeidentifyTemplateArray) ToPreventionDeidentifyTemplateArrayOutput() PreventionDeidentifyTemplateArrayOutput {
@@ -369,7 +369,7 @@ type PreventionDeidentifyTemplateMapInput interface {
 type PreventionDeidentifyTemplateMap map[string]PreventionDeidentifyTemplateInput
 
 func (PreventionDeidentifyTemplateMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*PreventionDeidentifyTemplate)(nil))
+	return reflect.TypeOf((*map[string]*PreventionDeidentifyTemplate)(nil)).Elem()
 }
 
 func (i PreventionDeidentifyTemplateMap) ToPreventionDeidentifyTemplateMapOutput() PreventionDeidentifyTemplateMapOutput {
@@ -380,9 +380,7 @@ func (i PreventionDeidentifyTemplateMap) ToPreventionDeidentifyTemplateMapOutput
 	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateMapOutput)
 }
 
-type PreventionDeidentifyTemplateOutput struct {
-	*pulumi.OutputState
-}
+type PreventionDeidentifyTemplateOutput struct{ *pulumi.OutputState }
 
 func (PreventionDeidentifyTemplateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*PreventionDeidentifyTemplate)(nil))
@@ -401,14 +399,12 @@ func (o PreventionDeidentifyTemplateOutput) ToPreventionDeidentifyTemplatePtrOut
 }
 
 func (o PreventionDeidentifyTemplateOutput) ToPreventionDeidentifyTemplatePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplatePtrOutput {
-	return o.ApplyT(func(v PreventionDeidentifyTemplate) *PreventionDeidentifyTemplate {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionDeidentifyTemplate) *PreventionDeidentifyTemplate {
 		return &v
 	}).(PreventionDeidentifyTemplatePtrOutput)
 }
 
-type PreventionDeidentifyTemplatePtrOutput struct {
-	*pulumi.OutputState
-}
+type PreventionDeidentifyTemplatePtrOutput struct{ *pulumi.OutputState }
 
 func (PreventionDeidentifyTemplatePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**PreventionDeidentifyTemplate)(nil))
@@ -420,6 +416,16 @@ func (o PreventionDeidentifyTemplatePtrOutput) ToPreventionDeidentifyTemplatePtr
 
 func (o PreventionDeidentifyTemplatePtrOutput) ToPreventionDeidentifyTemplatePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplatePtrOutput {
 	return o
+}
+
+func (o PreventionDeidentifyTemplatePtrOutput) Elem() PreventionDeidentifyTemplateOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplate) PreventionDeidentifyTemplate {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionDeidentifyTemplate
+		return ret
+	}).(PreventionDeidentifyTemplateOutput)
 }
 
 type PreventionDeidentifyTemplateArrayOutput struct{ *pulumi.OutputState }

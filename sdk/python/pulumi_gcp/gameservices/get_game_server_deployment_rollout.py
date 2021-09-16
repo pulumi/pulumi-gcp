@@ -13,6 +13,7 @@ __all__ = [
     'GetGameServerDeploymentRolloutResult',
     'AwaitableGetGameServerDeploymentRolloutResult',
     'get_game_server_deployment_rollout',
+    'get_game_server_deployment_rollout_output',
 ]
 
 @pulumi.output_type
@@ -126,3 +127,26 @@ def get_game_server_deployment_rollout(deployment_id: Optional[str] = None,
         id=__ret__.id,
         name=__ret__.name,
         project=__ret__.project)
+
+
+@_utilities.lift_output_func(get_game_server_deployment_rollout)
+def get_game_server_deployment_rollout_output(deployment_id: Optional[pulumi.Input[str]] = None,
+                                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGameServerDeploymentRolloutResult]:
+    """
+    Use this data source to get the rollout state.
+
+    https://cloud.google.com/game-servers/docs/reference/rest/v1beta/GameServerDeploymentRollout
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    qa = gcp.gameservices.get_game_server_deployment_rollout(deployment_id="tf-test-deployment-s8sn12jt2c")
+    ```
+
+
+    :param str deployment_id: The deployment to get the rollout state from. Only 1 rollout must be associated with each deployment.
+    """
+    ...

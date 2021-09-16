@@ -12,6 +12,7 @@ __all__ = [
     'GetRuleResult',
     'AwaitableGetRuleResult',
     'get_rule',
+    'get_rule_output',
 ]
 
 @pulumi.output_type
@@ -117,3 +118,23 @@ def get_rule(name: Optional[str] = None,
         name=__ret__.name,
         stage=__ret__.stage,
         title=__ret__.title)
+
+
+@_utilities.lift_output_func(get_rule)
+def get_rule_output(name: Optional[pulumi.Input[str]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRuleResult]:
+    """
+    Use this data source to get information about a Google IAM Role.
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    roleinfo = gcp.iam.get_rule(name="roles/compute.viewer")
+    pulumi.export("theRolePermissions", roleinfo.included_permissions)
+    ```
+
+
+    :param str name: The name of the Role to lookup in the form `roles/{ROLE_NAME}`, `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}` or `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
+    """
+    ...

@@ -481,7 +481,7 @@ type EntryArrayInput interface {
 type EntryArray []EntryInput
 
 func (EntryArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Entry)(nil))
+	return reflect.TypeOf((*[]*Entry)(nil)).Elem()
 }
 
 func (i EntryArray) ToEntryArrayOutput() EntryArrayOutput {
@@ -506,7 +506,7 @@ type EntryMapInput interface {
 type EntryMap map[string]EntryInput
 
 func (EntryMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Entry)(nil))
+	return reflect.TypeOf((*map[string]*Entry)(nil)).Elem()
 }
 
 func (i EntryMap) ToEntryMapOutput() EntryMapOutput {
@@ -517,9 +517,7 @@ func (i EntryMap) ToEntryMapOutputWithContext(ctx context.Context) EntryMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(EntryMapOutput)
 }
 
-type EntryOutput struct {
-	*pulumi.OutputState
-}
+type EntryOutput struct{ *pulumi.OutputState }
 
 func (EntryOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Entry)(nil))
@@ -538,14 +536,12 @@ func (o EntryOutput) ToEntryPtrOutput() EntryPtrOutput {
 }
 
 func (o EntryOutput) ToEntryPtrOutputWithContext(ctx context.Context) EntryPtrOutput {
-	return o.ApplyT(func(v Entry) *Entry {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Entry) *Entry {
 		return &v
 	}).(EntryPtrOutput)
 }
 
-type EntryPtrOutput struct {
-	*pulumi.OutputState
-}
+type EntryPtrOutput struct{ *pulumi.OutputState }
 
 func (EntryPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Entry)(nil))
@@ -557,6 +553,16 @@ func (o EntryPtrOutput) ToEntryPtrOutput() EntryPtrOutput {
 
 func (o EntryPtrOutput) ToEntryPtrOutputWithContext(ctx context.Context) EntryPtrOutput {
 	return o
+}
+
+func (o EntryPtrOutput) Elem() EntryOutput {
+	return o.ApplyT(func(v *Entry) Entry {
+		if v != nil {
+			return *v
+		}
+		var ret Entry
+		return ret
+	}).(EntryOutput)
 }
 
 type EntryArrayOutput struct{ *pulumi.OutputState }

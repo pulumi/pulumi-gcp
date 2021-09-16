@@ -12,6 +12,7 @@ __all__ = [
     'GetBillingAccountResult',
     'AwaitableGetBillingAccountResult',
     'get_billing_account',
+    'get_billing_account_output',
 ]
 
 @pulumi.output_type
@@ -134,3 +135,31 @@ def get_billing_account(billing_account: Optional[str] = None,
         name=__ret__.name,
         open=__ret__.open,
         project_ids=__ret__.project_ids)
+
+
+@_utilities.lift_output_func(get_billing_account)
+def get_billing_account_output(billing_account: Optional[pulumi.Input[Optional[str]]] = None,
+                               display_name: Optional[pulumi.Input[Optional[str]]] = None,
+                               open: Optional[pulumi.Input[Optional[bool]]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBillingAccountResult]:
+    """
+    Use this data source to get information about a Google Billing Account.
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    acct = gcp.organizations.get_billing_account(display_name="My Billing Account",
+        open=True)
+    my_project = gcp.organizations.Project("myProject",
+        project_id="your-project-id",
+        org_id="1234567",
+        billing_account=acct.id)
+    ```
+
+
+    :param str billing_account: The name of the billing account in the form `{billing_account_id}` or `billingAccounts/{billing_account_id}`.
+    :param str display_name: The display name of the billing account.
+    :param bool open: `true` if the billing account is open, `false` if the billing account is closed.
+    """
+    ...

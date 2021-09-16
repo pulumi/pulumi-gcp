@@ -4,6 +4,9 @@
 package monitoring
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -108,4 +111,99 @@ type LookupNotificationChannelResult struct {
 	Type               *string                                `pulumi:"type"`
 	UserLabels         map[string]string                      `pulumi:"userLabels"`
 	VerificationStatus string                                 `pulumi:"verificationStatus"`
+}
+
+func LookupNotificationChannelOutput(ctx *pulumi.Context, args LookupNotificationChannelOutputArgs, opts ...pulumi.InvokeOption) LookupNotificationChannelResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupNotificationChannelResult, error) {
+			args := v.(LookupNotificationChannelArgs)
+			r, err := LookupNotificationChannel(ctx, &args, opts...)
+			return *r, err
+		}).(LookupNotificationChannelResultOutput)
+}
+
+// A collection of arguments for invoking getNotificationChannel.
+type LookupNotificationChannelOutputArgs struct {
+	// The display name for this notification channel.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Labels (corresponding to the
+	// NotificationChannelDescriptor schema) to filter the notification channels by.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// The type of the notification channel.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// User-provided key-value labels to filter by.
+	UserLabels pulumi.StringMapInput `pulumi:"userLabels"`
+}
+
+func (LookupNotificationChannelOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupNotificationChannelArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getNotificationChannel.
+type LookupNotificationChannelResultOutput struct{ *pulumi.OutputState }
+
+func (LookupNotificationChannelResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupNotificationChannelResult)(nil)).Elem()
+}
+
+func (o LookupNotificationChannelResultOutput) ToLookupNotificationChannelResultOutput() LookupNotificationChannelResultOutput {
+	return o
+}
+
+func (o LookupNotificationChannelResultOutput) ToLookupNotificationChannelResultOutputWithContext(ctx context.Context) LookupNotificationChannelResultOutput {
+	return o
+}
+
+func (o LookupNotificationChannelResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNotificationChannelResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupNotificationChannelResultOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNotificationChannelResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupNotificationChannelResultOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupNotificationChannelResult) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupNotificationChannelResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNotificationChannelResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupNotificationChannelResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupNotificationChannelResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupNotificationChannelResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNotificationChannelResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupNotificationChannelResultOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNotificationChannelResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupNotificationChannelResultOutput) SensitiveLabels() GetNotificationChannelSensitiveLabelArrayOutput {
+	return o.ApplyT(func(v LookupNotificationChannelResult) []GetNotificationChannelSensitiveLabel {
+		return v.SensitiveLabels
+	}).(GetNotificationChannelSensitiveLabelArrayOutput)
+}
+
+func (o LookupNotificationChannelResultOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNotificationChannelResult) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupNotificationChannelResultOutput) UserLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupNotificationChannelResult) map[string]string { return v.UserLabels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupNotificationChannelResultOutput) VerificationStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNotificationChannelResult) string { return v.VerificationStatus }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupNotificationChannelResultOutput{})
 }

@@ -13,6 +13,7 @@ __all__ = [
     'GetInstanceResult',
     'AwaitableGetInstanceResult',
     'get_instance',
+    'get_instance_output',
 ]
 
 @pulumi.output_type
@@ -516,3 +517,38 @@ def get_instance(name: Optional[str] = None,
         tags=__ret__.tags,
         tags_fingerprint=__ret__.tags_fingerprint,
         zone=__ret__.zone)
+
+
+@_utilities.lift_output_func(get_instance)
+def get_instance_output(name: Optional[pulumi.Input[Optional[str]]] = None,
+                        project: Optional[pulumi.Input[Optional[str]]] = None,
+                        self_link: Optional[pulumi.Input[Optional[str]]] = None,
+                        zone: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceResult]:
+    """
+    Get information about a VM instance resource within GCE. For more information see
+    [the official documentation](https://cloud.google.com/compute/docs/instances)
+    and
+    [API](https://cloud.google.com/compute/docs/reference/latest/instances).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    appserver = gcp.compute.get_instance(name="primary-application-server",
+        zone="us-central1-a")
+    ```
+
+
+    :param str name: The name of the instance. One of `name` or `self_link` must be provided.
+    :param str project: The ID of the project in which the resource belongs.
+           If `self_link` is provided, this value is ignored.  If neither `self_link`
+           nor `project` are provided, the provider project is used.
+    :param str self_link: The self link of the instance. One of `name` or `self_link` must be provided.
+    :param str zone: The zone of the instance. If `self_link` is provided, this
+           value is ignored.  If neither `self_link` nor `zone` are provided, the
+           provider zone is used.
+    """
+    ...

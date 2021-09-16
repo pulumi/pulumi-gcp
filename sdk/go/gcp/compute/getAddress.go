@@ -4,6 +4,9 @@
 package compute
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -89,4 +92,80 @@ type LookupAddressResult struct {
 	SelfLink string `pulumi:"selfLink"`
 	// Indicates if the address is used. Possible values are: RESERVED or IN_USE.
 	Status string `pulumi:"status"`
+}
+
+func LookupAddressOutput(ctx *pulumi.Context, args LookupAddressOutputArgs, opts ...pulumi.InvokeOption) LookupAddressResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupAddressResult, error) {
+			args := v.(LookupAddressArgs)
+			r, err := LookupAddress(ctx, &args, opts...)
+			return *r, err
+		}).(LookupAddressResultOutput)
+}
+
+// A collection of arguments for invoking getAddress.
+type LookupAddressOutputArgs struct {
+	// A unique name for the resource, required by GCE.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The project in which the resource belongs. If it
+	// is not provided, the provider project is used.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// The Region in which the created address reside.
+	// If it is not provided, the provider region is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (LookupAddressOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAddressArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAddress.
+type LookupAddressResultOutput struct{ *pulumi.OutputState }
+
+func (LookupAddressResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAddressResult)(nil)).Elem()
+}
+
+func (o LookupAddressResultOutput) ToLookupAddressResultOutput() LookupAddressResultOutput {
+	return o
+}
+
+func (o LookupAddressResultOutput) ToLookupAddressResultOutputWithContext(ctx context.Context) LookupAddressResultOutput {
+	return o
+}
+
+// The IP of the created resource.
+func (o LookupAddressResultOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAddressResult) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupAddressResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAddressResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupAddressResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAddressResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupAddressResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAddressResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o LookupAddressResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAddressResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The URI of the created resource.
+func (o LookupAddressResultOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAddressResult) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Indicates if the address is used. Possible values are: RESERVED or IN_USE.
+func (o LookupAddressResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAddressResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupAddressResultOutput{})
 }

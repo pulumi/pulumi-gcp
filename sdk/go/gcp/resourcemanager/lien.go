@@ -290,7 +290,7 @@ type LienArrayInput interface {
 type LienArray []LienInput
 
 func (LienArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Lien)(nil))
+	return reflect.TypeOf((*[]*Lien)(nil)).Elem()
 }
 
 func (i LienArray) ToLienArrayOutput() LienArrayOutput {
@@ -315,7 +315,7 @@ type LienMapInput interface {
 type LienMap map[string]LienInput
 
 func (LienMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Lien)(nil))
+	return reflect.TypeOf((*map[string]*Lien)(nil)).Elem()
 }
 
 func (i LienMap) ToLienMapOutput() LienMapOutput {
@@ -326,9 +326,7 @@ func (i LienMap) ToLienMapOutputWithContext(ctx context.Context) LienMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LienMapOutput)
 }
 
-type LienOutput struct {
-	*pulumi.OutputState
-}
+type LienOutput struct{ *pulumi.OutputState }
 
 func (LienOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Lien)(nil))
@@ -347,14 +345,12 @@ func (o LienOutput) ToLienPtrOutput() LienPtrOutput {
 }
 
 func (o LienOutput) ToLienPtrOutputWithContext(ctx context.Context) LienPtrOutput {
-	return o.ApplyT(func(v Lien) *Lien {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Lien) *Lien {
 		return &v
 	}).(LienPtrOutput)
 }
 
-type LienPtrOutput struct {
-	*pulumi.OutputState
-}
+type LienPtrOutput struct{ *pulumi.OutputState }
 
 func (LienPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Lien)(nil))
@@ -366,6 +362,16 @@ func (o LienPtrOutput) ToLienPtrOutput() LienPtrOutput {
 
 func (o LienPtrOutput) ToLienPtrOutputWithContext(ctx context.Context) LienPtrOutput {
 	return o
+}
+
+func (o LienPtrOutput) Elem() LienOutput {
+	return o.ApplyT(func(v *Lien) Lien {
+		if v != nil {
+			return *v
+		}
+		var ret Lien
+		return ret
+	}).(LienOutput)
 }
 
 type LienArrayOutput struct{ *pulumi.OutputState }

@@ -585,7 +585,7 @@ type InstanceFromTemplateArrayInput interface {
 type InstanceFromTemplateArray []InstanceFromTemplateInput
 
 func (InstanceFromTemplateArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*InstanceFromTemplate)(nil))
+	return reflect.TypeOf((*[]*InstanceFromTemplate)(nil)).Elem()
 }
 
 func (i InstanceFromTemplateArray) ToInstanceFromTemplateArrayOutput() InstanceFromTemplateArrayOutput {
@@ -610,7 +610,7 @@ type InstanceFromTemplateMapInput interface {
 type InstanceFromTemplateMap map[string]InstanceFromTemplateInput
 
 func (InstanceFromTemplateMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*InstanceFromTemplate)(nil))
+	return reflect.TypeOf((*map[string]*InstanceFromTemplate)(nil)).Elem()
 }
 
 func (i InstanceFromTemplateMap) ToInstanceFromTemplateMapOutput() InstanceFromTemplateMapOutput {
@@ -621,9 +621,7 @@ func (i InstanceFromTemplateMap) ToInstanceFromTemplateMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromTemplateMapOutput)
 }
 
-type InstanceFromTemplateOutput struct {
-	*pulumi.OutputState
-}
+type InstanceFromTemplateOutput struct{ *pulumi.OutputState }
 
 func (InstanceFromTemplateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceFromTemplate)(nil))
@@ -642,14 +640,12 @@ func (o InstanceFromTemplateOutput) ToInstanceFromTemplatePtrOutput() InstanceFr
 }
 
 func (o InstanceFromTemplateOutput) ToInstanceFromTemplatePtrOutputWithContext(ctx context.Context) InstanceFromTemplatePtrOutput {
-	return o.ApplyT(func(v InstanceFromTemplate) *InstanceFromTemplate {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceFromTemplate) *InstanceFromTemplate {
 		return &v
 	}).(InstanceFromTemplatePtrOutput)
 }
 
-type InstanceFromTemplatePtrOutput struct {
-	*pulumi.OutputState
-}
+type InstanceFromTemplatePtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceFromTemplatePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**InstanceFromTemplate)(nil))
@@ -661,6 +657,16 @@ func (o InstanceFromTemplatePtrOutput) ToInstanceFromTemplatePtrOutput() Instanc
 
 func (o InstanceFromTemplatePtrOutput) ToInstanceFromTemplatePtrOutputWithContext(ctx context.Context) InstanceFromTemplatePtrOutput {
 	return o
+}
+
+func (o InstanceFromTemplatePtrOutput) Elem() InstanceFromTemplateOutput {
+	return o.ApplyT(func(v *InstanceFromTemplate) InstanceFromTemplate {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceFromTemplate
+		return ret
+	}).(InstanceFromTemplateOutput)
 }
 
 type InstanceFromTemplateArrayOutput struct{ *pulumi.OutputState }

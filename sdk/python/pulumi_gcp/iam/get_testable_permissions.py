@@ -13,6 +13,7 @@ __all__ = [
     'GetTestablePermissionsResult',
     'AwaitableGetTestablePermissionsResult',
     'get_testable_permissions',
+    'get_testable_permissions_output',
 ]
 
 @pulumi.output_type
@@ -128,3 +129,34 @@ def get_testable_permissions(custom_support_level: Optional[str] = None,
         id=__ret__.id,
         permissions=__ret__.permissions,
         stages=__ret__.stages)
+
+
+@_utilities.lift_output_func(get_testable_permissions)
+def get_testable_permissions_output(custom_support_level: Optional[pulumi.Input[Optional[str]]] = None,
+                                    full_resource_name: Optional[pulumi.Input[str]] = None,
+                                    stages: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTestablePermissionsResult]:
+    """
+    Retrieve a list of testable permissions for a resource. Testable permissions mean the permissions that user can add or remove in a role at a given resource. The resource can be referenced either via the full resource name or via a URI.
+
+    ## Example Usage
+
+    Retrieve all the supported permissions able to be set on `my-project` that are in either GA or BETA. This is useful for dynamically constructing custom roles.
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    perms = gcp.iam.get_testable_permissions(full_resource_name="//cloudresourcemanager.googleapis.com/projects/my-project",
+        stages=[
+            "GA",
+            "BETA",
+        ])
+    ```
+
+
+    :param str custom_support_level: The level of support for custom roles. Can be one of `"NOT_SUPPORTED"`, `"SUPPORTED"`, `"TESTING"`. Default is `"SUPPORTED"`
+    :param str full_resource_name: See [full resource name documentation](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more detail.
+    :param Sequence[str] stages: The acceptable release stages of the permission in the output. Note that `BETA` does not include permissions in `GA`, but you can specify both with `["GA", "BETA"]` for example. Can be a list of `"ALPHA"`, `"BETA"`, `"GA"`, `"DEPRECATED"`. Default is `["GA"]`.
+    """
+    ...

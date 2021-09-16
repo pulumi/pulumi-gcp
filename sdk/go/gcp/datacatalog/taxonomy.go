@@ -270,7 +270,7 @@ type TaxonomyArrayInput interface {
 type TaxonomyArray []TaxonomyInput
 
 func (TaxonomyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Taxonomy)(nil))
+	return reflect.TypeOf((*[]*Taxonomy)(nil)).Elem()
 }
 
 func (i TaxonomyArray) ToTaxonomyArrayOutput() TaxonomyArrayOutput {
@@ -295,7 +295,7 @@ type TaxonomyMapInput interface {
 type TaxonomyMap map[string]TaxonomyInput
 
 func (TaxonomyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Taxonomy)(nil))
+	return reflect.TypeOf((*map[string]*Taxonomy)(nil)).Elem()
 }
 
 func (i TaxonomyMap) ToTaxonomyMapOutput() TaxonomyMapOutput {
@@ -306,9 +306,7 @@ func (i TaxonomyMap) ToTaxonomyMapOutputWithContext(ctx context.Context) Taxonom
 	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyMapOutput)
 }
 
-type TaxonomyOutput struct {
-	*pulumi.OutputState
-}
+type TaxonomyOutput struct{ *pulumi.OutputState }
 
 func (TaxonomyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Taxonomy)(nil))
@@ -327,14 +325,12 @@ func (o TaxonomyOutput) ToTaxonomyPtrOutput() TaxonomyPtrOutput {
 }
 
 func (o TaxonomyOutput) ToTaxonomyPtrOutputWithContext(ctx context.Context) TaxonomyPtrOutput {
-	return o.ApplyT(func(v Taxonomy) *Taxonomy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Taxonomy) *Taxonomy {
 		return &v
 	}).(TaxonomyPtrOutput)
 }
 
-type TaxonomyPtrOutput struct {
-	*pulumi.OutputState
-}
+type TaxonomyPtrOutput struct{ *pulumi.OutputState }
 
 func (TaxonomyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Taxonomy)(nil))
@@ -346,6 +342,16 @@ func (o TaxonomyPtrOutput) ToTaxonomyPtrOutput() TaxonomyPtrOutput {
 
 func (o TaxonomyPtrOutput) ToTaxonomyPtrOutputWithContext(ctx context.Context) TaxonomyPtrOutput {
 	return o
+}
+
+func (o TaxonomyPtrOutput) Elem() TaxonomyOutput {
+	return o.ApplyT(func(v *Taxonomy) Taxonomy {
+		if v != nil {
+			return *v
+		}
+		var ret Taxonomy
+		return ret
+	}).(TaxonomyOutput)
 }
 
 type TaxonomyArrayOutput struct{ *pulumi.OutputState }

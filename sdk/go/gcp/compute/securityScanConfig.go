@@ -358,7 +358,7 @@ type SecurityScanConfigArrayInput interface {
 type SecurityScanConfigArray []SecurityScanConfigInput
 
 func (SecurityScanConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*SecurityScanConfig)(nil))
+	return reflect.TypeOf((*[]*SecurityScanConfig)(nil)).Elem()
 }
 
 func (i SecurityScanConfigArray) ToSecurityScanConfigArrayOutput() SecurityScanConfigArrayOutput {
@@ -383,7 +383,7 @@ type SecurityScanConfigMapInput interface {
 type SecurityScanConfigMap map[string]SecurityScanConfigInput
 
 func (SecurityScanConfigMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*SecurityScanConfig)(nil))
+	return reflect.TypeOf((*map[string]*SecurityScanConfig)(nil)).Elem()
 }
 
 func (i SecurityScanConfigMap) ToSecurityScanConfigMapOutput() SecurityScanConfigMapOutput {
@@ -394,9 +394,7 @@ func (i SecurityScanConfigMap) ToSecurityScanConfigMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityScanConfigMapOutput)
 }
 
-type SecurityScanConfigOutput struct {
-	*pulumi.OutputState
-}
+type SecurityScanConfigOutput struct{ *pulumi.OutputState }
 
 func (SecurityScanConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SecurityScanConfig)(nil))
@@ -415,14 +413,12 @@ func (o SecurityScanConfigOutput) ToSecurityScanConfigPtrOutput() SecurityScanCo
 }
 
 func (o SecurityScanConfigOutput) ToSecurityScanConfigPtrOutputWithContext(ctx context.Context) SecurityScanConfigPtrOutput {
-	return o.ApplyT(func(v SecurityScanConfig) *SecurityScanConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityScanConfig) *SecurityScanConfig {
 		return &v
 	}).(SecurityScanConfigPtrOutput)
 }
 
-type SecurityScanConfigPtrOutput struct {
-	*pulumi.OutputState
-}
+type SecurityScanConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (SecurityScanConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SecurityScanConfig)(nil))
@@ -434,6 +430,16 @@ func (o SecurityScanConfigPtrOutput) ToSecurityScanConfigPtrOutput() SecuritySca
 
 func (o SecurityScanConfigPtrOutput) ToSecurityScanConfigPtrOutputWithContext(ctx context.Context) SecurityScanConfigPtrOutput {
 	return o
+}
+
+func (o SecurityScanConfigPtrOutput) Elem() SecurityScanConfigOutput {
+	return o.ApplyT(func(v *SecurityScanConfig) SecurityScanConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityScanConfig
+		return ret
+	}).(SecurityScanConfigOutput)
 }
 
 type SecurityScanConfigArrayOutput struct{ *pulumi.OutputState }

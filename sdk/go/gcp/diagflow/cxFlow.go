@@ -416,7 +416,7 @@ type CxFlowArrayInput interface {
 type CxFlowArray []CxFlowInput
 
 func (CxFlowArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*CxFlow)(nil))
+	return reflect.TypeOf((*[]*CxFlow)(nil)).Elem()
 }
 
 func (i CxFlowArray) ToCxFlowArrayOutput() CxFlowArrayOutput {
@@ -441,7 +441,7 @@ type CxFlowMapInput interface {
 type CxFlowMap map[string]CxFlowInput
 
 func (CxFlowMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*CxFlow)(nil))
+	return reflect.TypeOf((*map[string]*CxFlow)(nil)).Elem()
 }
 
 func (i CxFlowMap) ToCxFlowMapOutput() CxFlowMapOutput {
@@ -452,9 +452,7 @@ func (i CxFlowMap) ToCxFlowMapOutputWithContext(ctx context.Context) CxFlowMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowMapOutput)
 }
 
-type CxFlowOutput struct {
-	*pulumi.OutputState
-}
+type CxFlowOutput struct{ *pulumi.OutputState }
 
 func (CxFlowOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CxFlow)(nil))
@@ -473,14 +471,12 @@ func (o CxFlowOutput) ToCxFlowPtrOutput() CxFlowPtrOutput {
 }
 
 func (o CxFlowOutput) ToCxFlowPtrOutputWithContext(ctx context.Context) CxFlowPtrOutput {
-	return o.ApplyT(func(v CxFlow) *CxFlow {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlow) *CxFlow {
 		return &v
 	}).(CxFlowPtrOutput)
 }
 
-type CxFlowPtrOutput struct {
-	*pulumi.OutputState
-}
+type CxFlowPtrOutput struct{ *pulumi.OutputState }
 
 func (CxFlowPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**CxFlow)(nil))
@@ -492,6 +488,16 @@ func (o CxFlowPtrOutput) ToCxFlowPtrOutput() CxFlowPtrOutput {
 
 func (o CxFlowPtrOutput) ToCxFlowPtrOutputWithContext(ctx context.Context) CxFlowPtrOutput {
 	return o
+}
+
+func (o CxFlowPtrOutput) Elem() CxFlowOutput {
+	return o.ApplyT(func(v *CxFlow) CxFlow {
+		if v != nil {
+			return *v
+		}
+		var ret CxFlow
+		return ret
+	}).(CxFlowOutput)
 }
 
 type CxFlowArrayOutput struct{ *pulumi.OutputState }

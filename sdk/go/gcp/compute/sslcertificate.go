@@ -301,7 +301,7 @@ type SSLCertificateArrayInput interface {
 type SSLCertificateArray []SSLCertificateInput
 
 func (SSLCertificateArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*SSLCertificate)(nil))
+	return reflect.TypeOf((*[]*SSLCertificate)(nil)).Elem()
 }
 
 func (i SSLCertificateArray) ToSSLCertificateArrayOutput() SSLCertificateArrayOutput {
@@ -326,7 +326,7 @@ type SSLCertificateMapInput interface {
 type SSLCertificateMap map[string]SSLCertificateInput
 
 func (SSLCertificateMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*SSLCertificate)(nil))
+	return reflect.TypeOf((*map[string]*SSLCertificate)(nil)).Elem()
 }
 
 func (i SSLCertificateMap) ToSSLCertificateMapOutput() SSLCertificateMapOutput {
@@ -337,9 +337,7 @@ func (i SSLCertificateMap) ToSSLCertificateMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(SSLCertificateMapOutput)
 }
 
-type SSLCertificateOutput struct {
-	*pulumi.OutputState
-}
+type SSLCertificateOutput struct{ *pulumi.OutputState }
 
 func (SSLCertificateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SSLCertificate)(nil))
@@ -358,14 +356,12 @@ func (o SSLCertificateOutput) ToSSLCertificatePtrOutput() SSLCertificatePtrOutpu
 }
 
 func (o SSLCertificateOutput) ToSSLCertificatePtrOutputWithContext(ctx context.Context) SSLCertificatePtrOutput {
-	return o.ApplyT(func(v SSLCertificate) *SSLCertificate {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SSLCertificate) *SSLCertificate {
 		return &v
 	}).(SSLCertificatePtrOutput)
 }
 
-type SSLCertificatePtrOutput struct {
-	*pulumi.OutputState
-}
+type SSLCertificatePtrOutput struct{ *pulumi.OutputState }
 
 func (SSLCertificatePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SSLCertificate)(nil))
@@ -377,6 +373,16 @@ func (o SSLCertificatePtrOutput) ToSSLCertificatePtrOutput() SSLCertificatePtrOu
 
 func (o SSLCertificatePtrOutput) ToSSLCertificatePtrOutputWithContext(ctx context.Context) SSLCertificatePtrOutput {
 	return o
+}
+
+func (o SSLCertificatePtrOutput) Elem() SSLCertificateOutput {
+	return o.ApplyT(func(v *SSLCertificate) SSLCertificate {
+		if v != nil {
+			return *v
+		}
+		var ret SSLCertificate
+		return ret
+	}).(SSLCertificateOutput)
 }
 
 type SSLCertificateArrayOutput struct{ *pulumi.OutputState }

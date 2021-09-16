@@ -736,10 +736,10 @@ class DatabaseInstance(pulumi.CustomResource):
             region="us-central1",
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
                 tier="db-f1-micro",
-                ip_configuration={
-                    "ipv4Enabled": False,
-                    "privateNetwork": private_network.id,
-                },
+                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
+                    ipv4_enabled=False,
+                    private_network=private_network.id,
+                ),
             ),
             opts=pulumi.ResourceOptions(provider=google_beta,
                 depends_on=[private_vpc_connection]))
@@ -885,10 +885,10 @@ class DatabaseInstance(pulumi.CustomResource):
             region="us-central1",
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
                 tier="db-f1-micro",
-                ip_configuration={
-                    "ipv4Enabled": False,
-                    "privateNetwork": private_network.id,
-                },
+                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
+                    ipv4_enabled=False,
+                    private_network=private_network.id,
+                ),
             ),
             opts=pulumi.ResourceOptions(provider=google_beta,
                 depends_on=[private_vpc_connection]))

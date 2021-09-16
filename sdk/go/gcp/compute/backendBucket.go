@@ -319,7 +319,7 @@ type BackendBucketArrayInput interface {
 type BackendBucketArray []BackendBucketInput
 
 func (BackendBucketArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*BackendBucket)(nil))
+	return reflect.TypeOf((*[]*BackendBucket)(nil)).Elem()
 }
 
 func (i BackendBucketArray) ToBackendBucketArrayOutput() BackendBucketArrayOutput {
@@ -344,7 +344,7 @@ type BackendBucketMapInput interface {
 type BackendBucketMap map[string]BackendBucketInput
 
 func (BackendBucketMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*BackendBucket)(nil))
+	return reflect.TypeOf((*map[string]*BackendBucket)(nil)).Elem()
 }
 
 func (i BackendBucketMap) ToBackendBucketMapOutput() BackendBucketMapOutput {
@@ -355,9 +355,7 @@ func (i BackendBucketMap) ToBackendBucketMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(BackendBucketMapOutput)
 }
 
-type BackendBucketOutput struct {
-	*pulumi.OutputState
-}
+type BackendBucketOutput struct{ *pulumi.OutputState }
 
 func (BackendBucketOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BackendBucket)(nil))
@@ -376,14 +374,12 @@ func (o BackendBucketOutput) ToBackendBucketPtrOutput() BackendBucketPtrOutput {
 }
 
 func (o BackendBucketOutput) ToBackendBucketPtrOutputWithContext(ctx context.Context) BackendBucketPtrOutput {
-	return o.ApplyT(func(v BackendBucket) *BackendBucket {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackendBucket) *BackendBucket {
 		return &v
 	}).(BackendBucketPtrOutput)
 }
 
-type BackendBucketPtrOutput struct {
-	*pulumi.OutputState
-}
+type BackendBucketPtrOutput struct{ *pulumi.OutputState }
 
 func (BackendBucketPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**BackendBucket)(nil))
@@ -395,6 +391,16 @@ func (o BackendBucketPtrOutput) ToBackendBucketPtrOutput() BackendBucketPtrOutpu
 
 func (o BackendBucketPtrOutput) ToBackendBucketPtrOutputWithContext(ctx context.Context) BackendBucketPtrOutput {
 	return o
+}
+
+func (o BackendBucketPtrOutput) Elem() BackendBucketOutput {
+	return o.ApplyT(func(v *BackendBucket) BackendBucket {
+		if v != nil {
+			return *v
+		}
+		var ret BackendBucket
+		return ret
+	}).(BackendBucketOutput)
 }
 
 type BackendBucketArrayOutput struct{ *pulumi.OutputState }

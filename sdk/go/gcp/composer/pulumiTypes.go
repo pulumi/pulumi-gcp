@@ -141,10 +141,11 @@ func (o EnvironmentConfigOutput) ToEnvironmentConfigPtrOutput() EnvironmentConfi
 }
 
 func (o EnvironmentConfigOutput) ToEnvironmentConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigPtrOutput {
-	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentConfig) *EnvironmentConfig {
 		return &v
 	}).(EnvironmentConfigPtrOutput)
 }
+
 func (o EnvironmentConfigOutput) AirflowUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *string { return v.AirflowUri }).(pulumi.StringPtrOutput)
 }
@@ -221,7 +222,13 @@ func (o EnvironmentConfigPtrOutput) ToEnvironmentConfigPtrOutputWithContext(ctx 
 }
 
 func (o EnvironmentConfigPtrOutput) Elem() EnvironmentConfigOutput {
-	return o.ApplyT(func(v *EnvironmentConfig) EnvironmentConfig { return *v }).(EnvironmentConfigOutput)
+	return o.ApplyT(func(v *EnvironmentConfig) EnvironmentConfig {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentConfig
+		return ret
+	}).(EnvironmentConfigOutput)
 }
 
 func (o EnvironmentConfigPtrOutput) AirflowUri() pulumi.StringPtrOutput {
@@ -440,7 +447,7 @@ func (o EnvironmentConfigDatabaseConfigOutput) ToEnvironmentConfigDatabaseConfig
 }
 
 func (o EnvironmentConfigDatabaseConfigOutput) ToEnvironmentConfigDatabaseConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigDatabaseConfigPtrOutput {
-	return o.ApplyT(func(v EnvironmentConfigDatabaseConfig) *EnvironmentConfigDatabaseConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentConfigDatabaseConfig) *EnvironmentConfigDatabaseConfig {
 		return &v
 	}).(EnvironmentConfigDatabaseConfigPtrOutput)
 }
@@ -468,7 +475,13 @@ func (o EnvironmentConfigDatabaseConfigPtrOutput) ToEnvironmentConfigDatabaseCon
 }
 
 func (o EnvironmentConfigDatabaseConfigPtrOutput) Elem() EnvironmentConfigDatabaseConfigOutput {
-	return o.ApplyT(func(v *EnvironmentConfigDatabaseConfig) EnvironmentConfigDatabaseConfig { return *v }).(EnvironmentConfigDatabaseConfigOutput)
+	return o.ApplyT(func(v *EnvironmentConfigDatabaseConfig) EnvironmentConfigDatabaseConfig {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentConfigDatabaseConfig
+		return ret
+	}).(EnvironmentConfigDatabaseConfigOutput)
 }
 
 // Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2,
@@ -581,7 +594,7 @@ func (o EnvironmentConfigEncryptionConfigOutput) ToEnvironmentConfigEncryptionCo
 }
 
 func (o EnvironmentConfigEncryptionConfigOutput) ToEnvironmentConfigEncryptionConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigEncryptionConfigPtrOutput {
-	return o.ApplyT(func(v EnvironmentConfigEncryptionConfig) *EnvironmentConfigEncryptionConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentConfigEncryptionConfig) *EnvironmentConfigEncryptionConfig {
 		return &v
 	}).(EnvironmentConfigEncryptionConfigPtrOutput)
 }
@@ -608,7 +621,13 @@ func (o EnvironmentConfigEncryptionConfigPtrOutput) ToEnvironmentConfigEncryptio
 }
 
 func (o EnvironmentConfigEncryptionConfigPtrOutput) Elem() EnvironmentConfigEncryptionConfigOutput {
-	return o.ApplyT(func(v *EnvironmentConfigEncryptionConfig) EnvironmentConfigEncryptionConfig { return *v }).(EnvironmentConfigEncryptionConfigOutput)
+	return o.ApplyT(func(v *EnvironmentConfigEncryptionConfig) EnvironmentConfigEncryptionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentConfigEncryptionConfig
+		return ret
+	}).(EnvironmentConfigEncryptionConfigOutput)
 }
 
 // Customer-managed Encryption Key available through Google's Key Management Service. It must
@@ -730,7 +749,7 @@ func (o EnvironmentConfigMaintenanceWindowOutput) ToEnvironmentConfigMaintenance
 }
 
 func (o EnvironmentConfigMaintenanceWindowOutput) ToEnvironmentConfigMaintenanceWindowPtrOutputWithContext(ctx context.Context) EnvironmentConfigMaintenanceWindowPtrOutput {
-	return o.ApplyT(func(v EnvironmentConfigMaintenanceWindow) *EnvironmentConfigMaintenanceWindow {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentConfigMaintenanceWindow) *EnvironmentConfigMaintenanceWindow {
 		return &v
 	}).(EnvironmentConfigMaintenanceWindowPtrOutput)
 }
@@ -768,7 +787,13 @@ func (o EnvironmentConfigMaintenanceWindowPtrOutput) ToEnvironmentConfigMaintena
 }
 
 func (o EnvironmentConfigMaintenanceWindowPtrOutput) Elem() EnvironmentConfigMaintenanceWindowOutput {
-	return o.ApplyT(func(v *EnvironmentConfigMaintenanceWindow) EnvironmentConfigMaintenanceWindow { return *v }).(EnvironmentConfigMaintenanceWindowOutput)
+	return o.ApplyT(func(v *EnvironmentConfigMaintenanceWindow) EnvironmentConfigMaintenanceWindow {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentConfigMaintenanceWindow
+		return ret
+	}).(EnvironmentConfigMaintenanceWindowOutput)
 }
 
 // Maintenance window end time. It is used only to calculate the duration of the maintenance window.
@@ -977,7 +1002,7 @@ func (o EnvironmentConfigNodeConfigOutput) ToEnvironmentConfigNodeConfigPtrOutpu
 }
 
 func (o EnvironmentConfigNodeConfigOutput) ToEnvironmentConfigNodeConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigNodeConfigPtrOutput {
-	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *EnvironmentConfigNodeConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentConfigNodeConfig) *EnvironmentConfigNodeConfig {
 		return &v
 	}).(EnvironmentConfigNodeConfigPtrOutput)
 }
@@ -1071,7 +1096,13 @@ func (o EnvironmentConfigNodeConfigPtrOutput) ToEnvironmentConfigNodeConfigPtrOu
 }
 
 func (o EnvironmentConfigNodeConfigPtrOutput) Elem() EnvironmentConfigNodeConfigOutput {
-	return o.ApplyT(func(v *EnvironmentConfigNodeConfig) EnvironmentConfigNodeConfig { return *v }).(EnvironmentConfigNodeConfigOutput)
+	return o.ApplyT(func(v *EnvironmentConfigNodeConfig) EnvironmentConfigNodeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentConfigNodeConfig
+		return ret
+	}).(EnvironmentConfigNodeConfigOutput)
 }
 
 // The disk size in GB used for node VMs. Minimum size is 20GB.
@@ -1335,7 +1366,7 @@ func (o EnvironmentConfigNodeConfigIpAllocationPolicyOutput) ToEnvironmentConfig
 }
 
 func (o EnvironmentConfigNodeConfigIpAllocationPolicyOutput) ToEnvironmentConfigNodeConfigIpAllocationPolicyPtrOutputWithContext(ctx context.Context) EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput {
-	return o.ApplyT(func(v EnvironmentConfigNodeConfigIpAllocationPolicy) *EnvironmentConfigNodeConfigIpAllocationPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentConfigNodeConfigIpAllocationPolicy) *EnvironmentConfigNodeConfigIpAllocationPolicy {
 		return &v
 	}).(EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput)
 }
@@ -1396,7 +1427,11 @@ func (o EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput) ToEnvironmentCon
 
 func (o EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput) Elem() EnvironmentConfigNodeConfigIpAllocationPolicyOutput {
 	return o.ApplyT(func(v *EnvironmentConfigNodeConfigIpAllocationPolicy) EnvironmentConfigNodeConfigIpAllocationPolicy {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentConfigNodeConfigIpAllocationPolicy
+		return ret
 	}).(EnvironmentConfigNodeConfigIpAllocationPolicyOutput)
 }
 
@@ -1580,7 +1615,7 @@ func (o EnvironmentConfigPrivateEnvironmentConfigOutput) ToEnvironmentConfigPriv
 }
 
 func (o EnvironmentConfigPrivateEnvironmentConfigOutput) ToEnvironmentConfigPrivateEnvironmentConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigPrivateEnvironmentConfigPtrOutput {
-	return o.ApplyT(func(v EnvironmentConfigPrivateEnvironmentConfig) *EnvironmentConfigPrivateEnvironmentConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentConfigPrivateEnvironmentConfig) *EnvironmentConfigPrivateEnvironmentConfig {
 		return &v
 	}).(EnvironmentConfigPrivateEnvironmentConfigPtrOutput)
 }
@@ -1626,7 +1661,11 @@ func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) ToEnvironmentConfigP
 
 func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) Elem() EnvironmentConfigPrivateEnvironmentConfigOutput {
 	return o.ApplyT(func(v *EnvironmentConfigPrivateEnvironmentConfig) EnvironmentConfigPrivateEnvironmentConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentConfigPrivateEnvironmentConfig
+		return ret
 	}).(EnvironmentConfigPrivateEnvironmentConfigOutput)
 }
 
@@ -1844,7 +1883,7 @@ func (o EnvironmentConfigSoftwareConfigOutput) ToEnvironmentConfigSoftwareConfig
 }
 
 func (o EnvironmentConfigSoftwareConfigOutput) ToEnvironmentConfigSoftwareConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigSoftwareConfigPtrOutput {
-	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) *EnvironmentConfigSoftwareConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentConfigSoftwareConfig) *EnvironmentConfigSoftwareConfig {
 		return &v
 	}).(EnvironmentConfigSoftwareConfigPtrOutput)
 }
@@ -1919,7 +1958,13 @@ func (o EnvironmentConfigSoftwareConfigPtrOutput) ToEnvironmentConfigSoftwareCon
 }
 
 func (o EnvironmentConfigSoftwareConfigPtrOutput) Elem() EnvironmentConfigSoftwareConfigOutput {
-	return o.ApplyT(func(v *EnvironmentConfigSoftwareConfig) EnvironmentConfigSoftwareConfig { return *v }).(EnvironmentConfigSoftwareConfigOutput)
+	return o.ApplyT(func(v *EnvironmentConfigSoftwareConfig) EnvironmentConfigSoftwareConfig {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentConfigSoftwareConfig
+		return ret
+	}).(EnvironmentConfigSoftwareConfigOutput)
 }
 
 // -
@@ -2101,7 +2146,7 @@ func (o EnvironmentConfigWebServerConfigOutput) ToEnvironmentConfigWebServerConf
 }
 
 func (o EnvironmentConfigWebServerConfigOutput) ToEnvironmentConfigWebServerConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigWebServerConfigPtrOutput {
-	return o.ApplyT(func(v EnvironmentConfigWebServerConfig) *EnvironmentConfigWebServerConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentConfigWebServerConfig) *EnvironmentConfigWebServerConfig {
 		return &v
 	}).(EnvironmentConfigWebServerConfigPtrOutput)
 }
@@ -2129,7 +2174,13 @@ func (o EnvironmentConfigWebServerConfigPtrOutput) ToEnvironmentConfigWebServerC
 }
 
 func (o EnvironmentConfigWebServerConfigPtrOutput) Elem() EnvironmentConfigWebServerConfigOutput {
-	return o.ApplyT(func(v *EnvironmentConfigWebServerConfig) EnvironmentConfigWebServerConfig { return *v }).(EnvironmentConfigWebServerConfigOutput)
+	return o.ApplyT(func(v *EnvironmentConfigWebServerConfig) EnvironmentConfigWebServerConfig {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentConfigWebServerConfig
+		return ret
+	}).(EnvironmentConfigWebServerConfigOutput)
 }
 
 // Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2,
@@ -2240,7 +2291,7 @@ func (o EnvironmentConfigWebServerNetworkAccessControlOutput) ToEnvironmentConfi
 }
 
 func (o EnvironmentConfigWebServerNetworkAccessControlOutput) ToEnvironmentConfigWebServerNetworkAccessControlPtrOutputWithContext(ctx context.Context) EnvironmentConfigWebServerNetworkAccessControlPtrOutput {
-	return o.ApplyT(func(v EnvironmentConfigWebServerNetworkAccessControl) *EnvironmentConfigWebServerNetworkAccessControl {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentConfigWebServerNetworkAccessControl) *EnvironmentConfigWebServerNetworkAccessControl {
 		return &v
 	}).(EnvironmentConfigWebServerNetworkAccessControlPtrOutput)
 }
@@ -2269,7 +2320,11 @@ func (o EnvironmentConfigWebServerNetworkAccessControlPtrOutput) ToEnvironmentCo
 
 func (o EnvironmentConfigWebServerNetworkAccessControlPtrOutput) Elem() EnvironmentConfigWebServerNetworkAccessControlOutput {
 	return o.ApplyT(func(v *EnvironmentConfigWebServerNetworkAccessControl) EnvironmentConfigWebServerNetworkAccessControl {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentConfigWebServerNetworkAccessControl
+		return ret
 	}).(EnvironmentConfigWebServerNetworkAccessControlOutput)
 }
 

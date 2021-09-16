@@ -4,6 +4,9 @@
 package kms
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -81,4 +84,91 @@ type GetKMSCryptoKeyResult struct {
 	SelfLink                   string                           `pulumi:"selfLink"`
 	SkipInitialVersionCreation bool                             `pulumi:"skipInitialVersionCreation"`
 	VersionTemplates           []GetKMSCryptoKeyVersionTemplate `pulumi:"versionTemplates"`
+}
+
+func GetKMSCryptoKeyOutput(ctx *pulumi.Context, args GetKMSCryptoKeyOutputArgs, opts ...pulumi.InvokeOption) GetKMSCryptoKeyResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetKMSCryptoKeyResult, error) {
+			args := v.(GetKMSCryptoKeyArgs)
+			r, err := GetKMSCryptoKey(ctx, &args, opts...)
+			return *r, err
+		}).(GetKMSCryptoKeyResultOutput)
+}
+
+// A collection of arguments for invoking getKMSCryptoKey.
+type GetKMSCryptoKeyOutputArgs struct {
+	// The `selfLink` of the Google Cloud Platform KeyRing to which the key belongs.
+	KeyRing pulumi.StringInput `pulumi:"keyRing"`
+	// The CryptoKey's name.
+	// A CryptoKey’s name belonging to the specified Google Cloud Platform KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetKMSCryptoKeyOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKMSCryptoKeyArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getKMSCryptoKey.
+type GetKMSCryptoKeyResultOutput struct{ *pulumi.OutputState }
+
+func (GetKMSCryptoKeyResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKMSCryptoKeyResult)(nil)).Elem()
+}
+
+func (o GetKMSCryptoKeyResultOutput) ToGetKMSCryptoKeyResultOutput() GetKMSCryptoKeyResultOutput {
+	return o
+}
+
+func (o GetKMSCryptoKeyResultOutput) ToGetKMSCryptoKeyResultOutputWithContext(ctx context.Context) GetKMSCryptoKeyResultOutput {
+	return o
+}
+
+func (o GetKMSCryptoKeyResultOutput) DestroyScheduledDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKMSCryptoKeyResult) string { return v.DestroyScheduledDuration }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetKMSCryptoKeyResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKMSCryptoKeyResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetKMSCryptoKeyResultOutput) KeyRing() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKMSCryptoKeyResult) string { return v.KeyRing }).(pulumi.StringOutput)
+}
+
+func (o GetKMSCryptoKeyResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetKMSCryptoKeyResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o GetKMSCryptoKeyResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKMSCryptoKeyResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Defines the cryptographic capabilities of the key.
+func (o GetKMSCryptoKeyResultOutput) Purpose() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKMSCryptoKeyResult) string { return v.Purpose }).(pulumi.StringOutput)
+}
+
+// Every time this period passes, generate a new CryptoKeyVersion and set it as
+// the primary. The first rotation will take place after the specified period. The rotation period has the format
+// of a decimal number with up to 9 fractional digits, followed by the letter s (seconds).
+func (o GetKMSCryptoKeyResultOutput) RotationPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKMSCryptoKeyResult) string { return v.RotationPeriod }).(pulumi.StringOutput)
+}
+
+// The self link of the created CryptoKey. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}/cryptoKeys/{cryptoKeyName}`.
+func (o GetKMSCryptoKeyResultOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKMSCryptoKeyResult) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+func (o GetKMSCryptoKeyResultOutput) SkipInitialVersionCreation() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKMSCryptoKeyResult) bool { return v.SkipInitialVersionCreation }).(pulumi.BoolOutput)
+}
+
+func (o GetKMSCryptoKeyResultOutput) VersionTemplates() GetKMSCryptoKeyVersionTemplateArrayOutput {
+	return o.ApplyT(func(v GetKMSCryptoKeyResult) []GetKMSCryptoKeyVersionTemplate { return v.VersionTemplates }).(GetKMSCryptoKeyVersionTemplateArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetKMSCryptoKeyResultOutput{})
 }

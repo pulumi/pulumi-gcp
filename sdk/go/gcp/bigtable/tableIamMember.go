@@ -333,7 +333,7 @@ type TableIamMemberArrayInput interface {
 type TableIamMemberArray []TableIamMemberInput
 
 func (TableIamMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TableIamMember)(nil))
+	return reflect.TypeOf((*[]*TableIamMember)(nil)).Elem()
 }
 
 func (i TableIamMemberArray) ToTableIamMemberArrayOutput() TableIamMemberArrayOutput {
@@ -358,7 +358,7 @@ type TableIamMemberMapInput interface {
 type TableIamMemberMap map[string]TableIamMemberInput
 
 func (TableIamMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TableIamMember)(nil))
+	return reflect.TypeOf((*map[string]*TableIamMember)(nil)).Elem()
 }
 
 func (i TableIamMemberMap) ToTableIamMemberMapOutput() TableIamMemberMapOutput {
@@ -369,9 +369,7 @@ func (i TableIamMemberMap) ToTableIamMemberMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(TableIamMemberMapOutput)
 }
 
-type TableIamMemberOutput struct {
-	*pulumi.OutputState
-}
+type TableIamMemberOutput struct{ *pulumi.OutputState }
 
 func (TableIamMemberOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TableIamMember)(nil))
@@ -390,14 +388,12 @@ func (o TableIamMemberOutput) ToTableIamMemberPtrOutput() TableIamMemberPtrOutpu
 }
 
 func (o TableIamMemberOutput) ToTableIamMemberPtrOutputWithContext(ctx context.Context) TableIamMemberPtrOutput {
-	return o.ApplyT(func(v TableIamMember) *TableIamMember {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableIamMember) *TableIamMember {
 		return &v
 	}).(TableIamMemberPtrOutput)
 }
 
-type TableIamMemberPtrOutput struct {
-	*pulumi.OutputState
-}
+type TableIamMemberPtrOutput struct{ *pulumi.OutputState }
 
 func (TableIamMemberPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TableIamMember)(nil))
@@ -409,6 +405,16 @@ func (o TableIamMemberPtrOutput) ToTableIamMemberPtrOutput() TableIamMemberPtrOu
 
 func (o TableIamMemberPtrOutput) ToTableIamMemberPtrOutputWithContext(ctx context.Context) TableIamMemberPtrOutput {
 	return o
+}
+
+func (o TableIamMemberPtrOutput) Elem() TableIamMemberOutput {
+	return o.ApplyT(func(v *TableIamMember) TableIamMember {
+		if v != nil {
+			return *v
+		}
+		var ret TableIamMember
+		return ret
+	}).(TableIamMemberOutput)
 }
 
 type TableIamMemberArrayOutput struct{ *pulumi.OutputState }

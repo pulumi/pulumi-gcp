@@ -336,7 +336,7 @@ type ProjectSinkArrayInput interface {
 type ProjectSinkArray []ProjectSinkInput
 
 func (ProjectSinkArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ProjectSink)(nil))
+	return reflect.TypeOf((*[]*ProjectSink)(nil)).Elem()
 }
 
 func (i ProjectSinkArray) ToProjectSinkArrayOutput() ProjectSinkArrayOutput {
@@ -361,7 +361,7 @@ type ProjectSinkMapInput interface {
 type ProjectSinkMap map[string]ProjectSinkInput
 
 func (ProjectSinkMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ProjectSink)(nil))
+	return reflect.TypeOf((*map[string]*ProjectSink)(nil)).Elem()
 }
 
 func (i ProjectSinkMap) ToProjectSinkMapOutput() ProjectSinkMapOutput {
@@ -372,9 +372,7 @@ func (i ProjectSinkMap) ToProjectSinkMapOutputWithContext(ctx context.Context) P
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectSinkMapOutput)
 }
 
-type ProjectSinkOutput struct {
-	*pulumi.OutputState
-}
+type ProjectSinkOutput struct{ *pulumi.OutputState }
 
 func (ProjectSinkOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ProjectSink)(nil))
@@ -393,14 +391,12 @@ func (o ProjectSinkOutput) ToProjectSinkPtrOutput() ProjectSinkPtrOutput {
 }
 
 func (o ProjectSinkOutput) ToProjectSinkPtrOutputWithContext(ctx context.Context) ProjectSinkPtrOutput {
-	return o.ApplyT(func(v ProjectSink) *ProjectSink {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectSink) *ProjectSink {
 		return &v
 	}).(ProjectSinkPtrOutput)
 }
 
-type ProjectSinkPtrOutput struct {
-	*pulumi.OutputState
-}
+type ProjectSinkPtrOutput struct{ *pulumi.OutputState }
 
 func (ProjectSinkPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ProjectSink)(nil))
@@ -412,6 +408,16 @@ func (o ProjectSinkPtrOutput) ToProjectSinkPtrOutput() ProjectSinkPtrOutput {
 
 func (o ProjectSinkPtrOutput) ToProjectSinkPtrOutputWithContext(ctx context.Context) ProjectSinkPtrOutput {
 	return o
+}
+
+func (o ProjectSinkPtrOutput) Elem() ProjectSinkOutput {
+	return o.ApplyT(func(v *ProjectSink) ProjectSink {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectSink
+		return ret
+	}).(ProjectSinkOutput)
 }
 
 type ProjectSinkArrayOutput struct{ *pulumi.OutputState }

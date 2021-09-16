@@ -105,7 +105,7 @@ func (o ApiConfigGatewayConfigOutput) ToApiConfigGatewayConfigPtrOutput() ApiCon
 }
 
 func (o ApiConfigGatewayConfigOutput) ToApiConfigGatewayConfigPtrOutputWithContext(ctx context.Context) ApiConfigGatewayConfigPtrOutput {
-	return o.ApplyT(func(v ApiConfigGatewayConfig) *ApiConfigGatewayConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiConfigGatewayConfig) *ApiConfigGatewayConfig {
 		return &v
 	}).(ApiConfigGatewayConfigPtrOutput)
 }
@@ -131,7 +131,13 @@ func (o ApiConfigGatewayConfigPtrOutput) ToApiConfigGatewayConfigPtrOutputWithCo
 }
 
 func (o ApiConfigGatewayConfigPtrOutput) Elem() ApiConfigGatewayConfigOutput {
-	return o.ApplyT(func(v *ApiConfigGatewayConfig) ApiConfigGatewayConfig { return *v }).(ApiConfigGatewayConfigOutput)
+	return o.ApplyT(func(v *ApiConfigGatewayConfig) ApiConfigGatewayConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ApiConfigGatewayConfig
+		return ret
+	}).(ApiConfigGatewayConfigOutput)
 }
 
 // Backend settings that are applied to all backends of the Gateway.
@@ -240,7 +246,7 @@ func (o ApiConfigGatewayConfigBackendConfigOutput) ToApiConfigGatewayConfigBacke
 }
 
 func (o ApiConfigGatewayConfigBackendConfigOutput) ToApiConfigGatewayConfigBackendConfigPtrOutputWithContext(ctx context.Context) ApiConfigGatewayConfigBackendConfigPtrOutput {
-	return o.ApplyT(func(v ApiConfigGatewayConfigBackendConfig) *ApiConfigGatewayConfigBackendConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiConfigGatewayConfigBackendConfig) *ApiConfigGatewayConfigBackendConfig {
 		return &v
 	}).(ApiConfigGatewayConfigBackendConfigPtrOutput)
 }
@@ -266,7 +272,13 @@ func (o ApiConfigGatewayConfigBackendConfigPtrOutput) ToApiConfigGatewayConfigBa
 }
 
 func (o ApiConfigGatewayConfigBackendConfigPtrOutput) Elem() ApiConfigGatewayConfigBackendConfigOutput {
-	return o.ApplyT(func(v *ApiConfigGatewayConfigBackendConfig) ApiConfigGatewayConfigBackendConfig { return *v }).(ApiConfigGatewayConfigBackendConfigOutput)
+	return o.ApplyT(func(v *ApiConfigGatewayConfigBackendConfig) ApiConfigGatewayConfigBackendConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ApiConfigGatewayConfigBackendConfig
+		return ret
+	}).(ApiConfigGatewayConfigBackendConfigOutput)
 }
 
 // Google Cloud IAM service account used to sign OIDC tokens for backends that have authentication configured
@@ -375,10 +387,11 @@ func (o ApiConfigIamBindingConditionOutput) ToApiConfigIamBindingConditionPtrOut
 }
 
 func (o ApiConfigIamBindingConditionOutput) ToApiConfigIamBindingConditionPtrOutputWithContext(ctx context.Context) ApiConfigIamBindingConditionPtrOutput {
-	return o.ApplyT(func(v ApiConfigIamBindingCondition) *ApiConfigIamBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiConfigIamBindingCondition) *ApiConfigIamBindingCondition {
 		return &v
 	}).(ApiConfigIamBindingConditionPtrOutput)
 }
+
 func (o ApiConfigIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiConfigIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -406,7 +419,13 @@ func (o ApiConfigIamBindingConditionPtrOutput) ToApiConfigIamBindingConditionPtr
 }
 
 func (o ApiConfigIamBindingConditionPtrOutput) Elem() ApiConfigIamBindingConditionOutput {
-	return o.ApplyT(func(v *ApiConfigIamBindingCondition) ApiConfigIamBindingCondition { return *v }).(ApiConfigIamBindingConditionOutput)
+	return o.ApplyT(func(v *ApiConfigIamBindingCondition) ApiConfigIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret ApiConfigIamBindingCondition
+		return ret
+	}).(ApiConfigIamBindingConditionOutput)
 }
 
 func (o ApiConfigIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -531,10 +550,11 @@ func (o ApiConfigIamMemberConditionOutput) ToApiConfigIamMemberConditionPtrOutpu
 }
 
 func (o ApiConfigIamMemberConditionOutput) ToApiConfigIamMemberConditionPtrOutputWithContext(ctx context.Context) ApiConfigIamMemberConditionPtrOutput {
-	return o.ApplyT(func(v ApiConfigIamMemberCondition) *ApiConfigIamMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiConfigIamMemberCondition) *ApiConfigIamMemberCondition {
 		return &v
 	}).(ApiConfigIamMemberConditionPtrOutput)
 }
+
 func (o ApiConfigIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiConfigIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -562,7 +582,13 @@ func (o ApiConfigIamMemberConditionPtrOutput) ToApiConfigIamMemberConditionPtrOu
 }
 
 func (o ApiConfigIamMemberConditionPtrOutput) Elem() ApiConfigIamMemberConditionOutput {
-	return o.ApplyT(func(v *ApiConfigIamMemberCondition) ApiConfigIamMemberCondition { return *v }).(ApiConfigIamMemberConditionOutput)
+	return o.ApplyT(func(v *ApiConfigIamMemberCondition) ApiConfigIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret ApiConfigIamMemberCondition
+		return ret
+	}).(ApiConfigIamMemberConditionOutput)
 }
 
 func (o ApiConfigIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -848,10 +874,11 @@ func (o ApiIamBindingConditionOutput) ToApiIamBindingConditionPtrOutput() ApiIam
 }
 
 func (o ApiIamBindingConditionOutput) ToApiIamBindingConditionPtrOutputWithContext(ctx context.Context) ApiIamBindingConditionPtrOutput {
-	return o.ApplyT(func(v ApiIamBindingCondition) *ApiIamBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiIamBindingCondition) *ApiIamBindingCondition {
 		return &v
 	}).(ApiIamBindingConditionPtrOutput)
 }
+
 func (o ApiIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -879,7 +906,13 @@ func (o ApiIamBindingConditionPtrOutput) ToApiIamBindingConditionPtrOutputWithCo
 }
 
 func (o ApiIamBindingConditionPtrOutput) Elem() ApiIamBindingConditionOutput {
-	return o.ApplyT(func(v *ApiIamBindingCondition) ApiIamBindingCondition { return *v }).(ApiIamBindingConditionOutput)
+	return o.ApplyT(func(v *ApiIamBindingCondition) ApiIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret ApiIamBindingCondition
+		return ret
+	}).(ApiIamBindingConditionOutput)
 }
 
 func (o ApiIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -1004,10 +1037,11 @@ func (o ApiIamMemberConditionOutput) ToApiIamMemberConditionPtrOutput() ApiIamMe
 }
 
 func (o ApiIamMemberConditionOutput) ToApiIamMemberConditionPtrOutputWithContext(ctx context.Context) ApiIamMemberConditionPtrOutput {
-	return o.ApplyT(func(v ApiIamMemberCondition) *ApiIamMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiIamMemberCondition) *ApiIamMemberCondition {
 		return &v
 	}).(ApiIamMemberConditionPtrOutput)
 }
+
 func (o ApiIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -1035,7 +1069,13 @@ func (o ApiIamMemberConditionPtrOutput) ToApiIamMemberConditionPtrOutputWithCont
 }
 
 func (o ApiIamMemberConditionPtrOutput) Elem() ApiIamMemberConditionOutput {
-	return o.ApplyT(func(v *ApiIamMemberCondition) ApiIamMemberCondition { return *v }).(ApiIamMemberConditionOutput)
+	return o.ApplyT(func(v *ApiIamMemberCondition) ApiIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret ApiIamMemberCondition
+		return ret
+	}).(ApiIamMemberConditionOutput)
 }
 
 func (o ApiIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -1160,10 +1200,11 @@ func (o GatewayIamBindingConditionOutput) ToGatewayIamBindingConditionPtrOutput(
 }
 
 func (o GatewayIamBindingConditionOutput) ToGatewayIamBindingConditionPtrOutputWithContext(ctx context.Context) GatewayIamBindingConditionPtrOutput {
-	return o.ApplyT(func(v GatewayIamBindingCondition) *GatewayIamBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayIamBindingCondition) *GatewayIamBindingCondition {
 		return &v
 	}).(GatewayIamBindingConditionPtrOutput)
 }
+
 func (o GatewayIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -1191,7 +1232,13 @@ func (o GatewayIamBindingConditionPtrOutput) ToGatewayIamBindingConditionPtrOutp
 }
 
 func (o GatewayIamBindingConditionPtrOutput) Elem() GatewayIamBindingConditionOutput {
-	return o.ApplyT(func(v *GatewayIamBindingCondition) GatewayIamBindingCondition { return *v }).(GatewayIamBindingConditionOutput)
+	return o.ApplyT(func(v *GatewayIamBindingCondition) GatewayIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayIamBindingCondition
+		return ret
+	}).(GatewayIamBindingConditionOutput)
 }
 
 func (o GatewayIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -1316,10 +1363,11 @@ func (o GatewayIamMemberConditionOutput) ToGatewayIamMemberConditionPtrOutput() 
 }
 
 func (o GatewayIamMemberConditionOutput) ToGatewayIamMemberConditionPtrOutputWithContext(ctx context.Context) GatewayIamMemberConditionPtrOutput {
-	return o.ApplyT(func(v GatewayIamMemberCondition) *GatewayIamMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayIamMemberCondition) *GatewayIamMemberCondition {
 		return &v
 	}).(GatewayIamMemberConditionPtrOutput)
 }
+
 func (o GatewayIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -1347,7 +1395,13 @@ func (o GatewayIamMemberConditionPtrOutput) ToGatewayIamMemberConditionPtrOutput
 }
 
 func (o GatewayIamMemberConditionPtrOutput) Elem() GatewayIamMemberConditionOutput {
-	return o.ApplyT(func(v *GatewayIamMemberCondition) GatewayIamMemberCondition { return *v }).(GatewayIamMemberConditionOutput)
+	return o.ApplyT(func(v *GatewayIamMemberCondition) GatewayIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayIamMemberCondition
+		return ret
+	}).(GatewayIamMemberConditionOutput)
 }
 
 func (o GatewayIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {

@@ -115,7 +115,7 @@ func (o InstanceFileSharesOutput) ToInstanceFileSharesPtrOutput() InstanceFileSh
 }
 
 func (o InstanceFileSharesOutput) ToInstanceFileSharesPtrOutputWithContext(ctx context.Context) InstanceFileSharesPtrOutput {
-	return o.ApplyT(func(v InstanceFileShares) *InstanceFileShares {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceFileShares) *InstanceFileShares {
 		return &v
 	}).(InstanceFileSharesPtrOutput)
 }
@@ -152,7 +152,13 @@ func (o InstanceFileSharesPtrOutput) ToInstanceFileSharesPtrOutputWithContext(ct
 }
 
 func (o InstanceFileSharesPtrOutput) Elem() InstanceFileSharesOutput {
-	return o.ApplyT(func(v *InstanceFileShares) InstanceFileShares { return *v }).(InstanceFileSharesOutput)
+	return o.ApplyT(func(v *InstanceFileShares) InstanceFileShares {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceFileShares
+		return ret
+	}).(InstanceFileSharesOutput)
 }
 
 // File share capacity in GiB. This must be at least 1024 GiB

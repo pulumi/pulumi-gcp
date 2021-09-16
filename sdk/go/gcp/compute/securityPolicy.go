@@ -272,7 +272,7 @@ type SecurityPolicyArrayInput interface {
 type SecurityPolicyArray []SecurityPolicyInput
 
 func (SecurityPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*SecurityPolicy)(nil))
+	return reflect.TypeOf((*[]*SecurityPolicy)(nil)).Elem()
 }
 
 func (i SecurityPolicyArray) ToSecurityPolicyArrayOutput() SecurityPolicyArrayOutput {
@@ -297,7 +297,7 @@ type SecurityPolicyMapInput interface {
 type SecurityPolicyMap map[string]SecurityPolicyInput
 
 func (SecurityPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*SecurityPolicy)(nil))
+	return reflect.TypeOf((*map[string]*SecurityPolicy)(nil)).Elem()
 }
 
 func (i SecurityPolicyMap) ToSecurityPolicyMapOutput() SecurityPolicyMapOutput {
@@ -308,9 +308,7 @@ func (i SecurityPolicyMap) ToSecurityPolicyMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyMapOutput)
 }
 
-type SecurityPolicyOutput struct {
-	*pulumi.OutputState
-}
+type SecurityPolicyOutput struct{ *pulumi.OutputState }
 
 func (SecurityPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SecurityPolicy)(nil))
@@ -329,14 +327,12 @@ func (o SecurityPolicyOutput) ToSecurityPolicyPtrOutput() SecurityPolicyPtrOutpu
 }
 
 func (o SecurityPolicyOutput) ToSecurityPolicyPtrOutputWithContext(ctx context.Context) SecurityPolicyPtrOutput {
-	return o.ApplyT(func(v SecurityPolicy) *SecurityPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicy) *SecurityPolicy {
 		return &v
 	}).(SecurityPolicyPtrOutput)
 }
 
-type SecurityPolicyPtrOutput struct {
-	*pulumi.OutputState
-}
+type SecurityPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (SecurityPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SecurityPolicy)(nil))
@@ -348,6 +344,16 @@ func (o SecurityPolicyPtrOutput) ToSecurityPolicyPtrOutput() SecurityPolicyPtrOu
 
 func (o SecurityPolicyPtrOutput) ToSecurityPolicyPtrOutputWithContext(ctx context.Context) SecurityPolicyPtrOutput {
 	return o
+}
+
+func (o SecurityPolicyPtrOutput) Elem() SecurityPolicyOutput {
+	return o.ApplyT(func(v *SecurityPolicy) SecurityPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicy
+		return ret
+	}).(SecurityPolicyOutput)
 }
 
 type SecurityPolicyArrayOutput struct{ *pulumi.OutputState }

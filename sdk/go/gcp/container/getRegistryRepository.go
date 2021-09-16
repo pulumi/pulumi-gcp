@@ -4,6 +4,9 @@
 package container
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -54,4 +57,59 @@ type GetRegistryRepositoryResult struct {
 	Project       string  `pulumi:"project"`
 	Region        *string `pulumi:"region"`
 	RepositoryUrl string  `pulumi:"repositoryUrl"`
+}
+
+func GetRegistryRepositoryOutput(ctx *pulumi.Context, args GetRegistryRepositoryOutputArgs, opts ...pulumi.InvokeOption) GetRegistryRepositoryResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetRegistryRepositoryResult, error) {
+			args := v.(GetRegistryRepositoryArgs)
+			r, err := GetRegistryRepository(ctx, &args, opts...)
+			return *r, err
+		}).(GetRegistryRepositoryResultOutput)
+}
+
+// A collection of arguments for invoking getRegistryRepository.
+type GetRegistryRepositoryOutputArgs struct {
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	Region  pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (GetRegistryRepositoryOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegistryRepositoryArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getRegistryRepository.
+type GetRegistryRepositoryResultOutput struct{ *pulumi.OutputState }
+
+func (GetRegistryRepositoryResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegistryRepositoryResult)(nil)).Elem()
+}
+
+func (o GetRegistryRepositoryResultOutput) ToGetRegistryRepositoryResultOutput() GetRegistryRepositoryResultOutput {
+	return o
+}
+
+func (o GetRegistryRepositoryResultOutput) ToGetRegistryRepositoryResultOutputWithContext(ctx context.Context) GetRegistryRepositoryResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetRegistryRepositoryResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryRepositoryResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetRegistryRepositoryResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryRepositoryResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o GetRegistryRepositoryResultOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegistryRepositoryResult) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+func (o GetRegistryRepositoryResultOutput) RepositoryUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryRepositoryResult) string { return v.RepositoryUrl }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetRegistryRepositoryResultOutput{})
 }

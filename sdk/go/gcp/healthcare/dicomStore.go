@@ -379,7 +379,7 @@ type DicomStoreArrayInput interface {
 type DicomStoreArray []DicomStoreInput
 
 func (DicomStoreArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*DicomStore)(nil))
+	return reflect.TypeOf((*[]*DicomStore)(nil)).Elem()
 }
 
 func (i DicomStoreArray) ToDicomStoreArrayOutput() DicomStoreArrayOutput {
@@ -404,7 +404,7 @@ type DicomStoreMapInput interface {
 type DicomStoreMap map[string]DicomStoreInput
 
 func (DicomStoreMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*DicomStore)(nil))
+	return reflect.TypeOf((*map[string]*DicomStore)(nil)).Elem()
 }
 
 func (i DicomStoreMap) ToDicomStoreMapOutput() DicomStoreMapOutput {
@@ -415,9 +415,7 @@ func (i DicomStoreMap) ToDicomStoreMapOutputWithContext(ctx context.Context) Dic
 	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreMapOutput)
 }
 
-type DicomStoreOutput struct {
-	*pulumi.OutputState
-}
+type DicomStoreOutput struct{ *pulumi.OutputState }
 
 func (DicomStoreOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DicomStore)(nil))
@@ -436,14 +434,12 @@ func (o DicomStoreOutput) ToDicomStorePtrOutput() DicomStorePtrOutput {
 }
 
 func (o DicomStoreOutput) ToDicomStorePtrOutputWithContext(ctx context.Context) DicomStorePtrOutput {
-	return o.ApplyT(func(v DicomStore) *DicomStore {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DicomStore) *DicomStore {
 		return &v
 	}).(DicomStorePtrOutput)
 }
 
-type DicomStorePtrOutput struct {
-	*pulumi.OutputState
-}
+type DicomStorePtrOutput struct{ *pulumi.OutputState }
 
 func (DicomStorePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DicomStore)(nil))
@@ -455,6 +451,16 @@ func (o DicomStorePtrOutput) ToDicomStorePtrOutput() DicomStorePtrOutput {
 
 func (o DicomStorePtrOutput) ToDicomStorePtrOutputWithContext(ctx context.Context) DicomStorePtrOutput {
 	return o
+}
+
+func (o DicomStorePtrOutput) Elem() DicomStoreOutput {
+	return o.ApplyT(func(v *DicomStore) DicomStore {
+		if v != nil {
+			return *v
+		}
+		var ret DicomStore
+		return ret
+	}).(DicomStoreOutput)
 }
 
 type DicomStoreArrayOutput struct{ *pulumi.OutputState }

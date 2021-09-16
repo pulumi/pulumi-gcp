@@ -4,6 +4,9 @@
 package pubsub
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -61,4 +64,74 @@ type LookupTopicResult struct {
 	Name                   string                         `pulumi:"name"`
 	Project                *string                        `pulumi:"project"`
 	SchemaSettings         []GetTopicSchemaSetting        `pulumi:"schemaSettings"`
+}
+
+func LookupTopicOutput(ctx *pulumi.Context, args LookupTopicOutputArgs, opts ...pulumi.InvokeOption) LookupTopicResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupTopicResult, error) {
+			args := v.(LookupTopicArgs)
+			r, err := LookupTopic(ctx, &args, opts...)
+			return *r, err
+		}).(LookupTopicResultOutput)
+}
+
+// A collection of arguments for invoking getTopic.
+type LookupTopicOutputArgs struct {
+	// The name of the Cloud Pub/Sub Topic.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The project in which the resource belongs. If it
+	// is not provided, the provider project is used.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupTopicOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTopicArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getTopic.
+type LookupTopicResultOutput struct{ *pulumi.OutputState }
+
+func (LookupTopicResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTopicResult)(nil)).Elem()
+}
+
+func (o LookupTopicResultOutput) ToLookupTopicResultOutput() LookupTopicResultOutput {
+	return o
+}
+
+func (o LookupTopicResultOutput) ToLookupTopicResultOutputWithContext(ctx context.Context) LookupTopicResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupTopicResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTopicResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupTopicResultOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTopicResult) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+func (o LookupTopicResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupTopicResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupTopicResultOutput) MessageStoragePolicies() GetTopicMessageStoragePolicyArrayOutput {
+	return o.ApplyT(func(v LookupTopicResult) []GetTopicMessageStoragePolicy { return v.MessageStoragePolicies }).(GetTopicMessageStoragePolicyArrayOutput)
+}
+
+func (o LookupTopicResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTopicResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupTopicResultOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupTopicResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupTopicResultOutput) SchemaSettings() GetTopicSchemaSettingArrayOutput {
+	return o.ApplyT(func(v LookupTopicResult) []GetTopicSchemaSetting { return v.SchemaSettings }).(GetTopicSchemaSettingArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupTopicResultOutput{})
 }

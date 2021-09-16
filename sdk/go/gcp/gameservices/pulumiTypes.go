@@ -113,7 +113,7 @@ func (o GameServerClusterConnectionInfoOutput) ToGameServerClusterConnectionInfo
 }
 
 func (o GameServerClusterConnectionInfoOutput) ToGameServerClusterConnectionInfoPtrOutputWithContext(ctx context.Context) GameServerClusterConnectionInfoPtrOutput {
-	return o.ApplyT(func(v GameServerClusterConnectionInfo) *GameServerClusterConnectionInfo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GameServerClusterConnectionInfo) *GameServerClusterConnectionInfo {
 		return &v
 	}).(GameServerClusterConnectionInfoPtrOutput)
 }
@@ -148,7 +148,13 @@ func (o GameServerClusterConnectionInfoPtrOutput) ToGameServerClusterConnectionI
 }
 
 func (o GameServerClusterConnectionInfoPtrOutput) Elem() GameServerClusterConnectionInfoOutput {
-	return o.ApplyT(func(v *GameServerClusterConnectionInfo) GameServerClusterConnectionInfo { return *v }).(GameServerClusterConnectionInfoOutput)
+	return o.ApplyT(func(v *GameServerClusterConnectionInfo) GameServerClusterConnectionInfo {
+		if v != nil {
+			return *v
+		}
+		var ret GameServerClusterConnectionInfo
+		return ret
+	}).(GameServerClusterConnectionInfoOutput)
 }
 
 // Reference of the GKE cluster where the game servers are installed.
@@ -281,7 +287,7 @@ func (o GameServerClusterConnectionInfoGkeClusterReferenceOutput) ToGameServerCl
 }
 
 func (o GameServerClusterConnectionInfoGkeClusterReferenceOutput) ToGameServerClusterConnectionInfoGkeClusterReferencePtrOutputWithContext(ctx context.Context) GameServerClusterConnectionInfoGkeClusterReferencePtrOutput {
-	return o.ApplyT(func(v GameServerClusterConnectionInfoGkeClusterReference) *GameServerClusterConnectionInfoGkeClusterReference {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GameServerClusterConnectionInfoGkeClusterReference) *GameServerClusterConnectionInfoGkeClusterReference {
 		return &v
 	}).(GameServerClusterConnectionInfoGkeClusterReferencePtrOutput)
 }
@@ -314,7 +320,11 @@ func (o GameServerClusterConnectionInfoGkeClusterReferencePtrOutput) ToGameServe
 
 func (o GameServerClusterConnectionInfoGkeClusterReferencePtrOutput) Elem() GameServerClusterConnectionInfoGkeClusterReferenceOutput {
 	return o.ApplyT(func(v *GameServerClusterConnectionInfoGkeClusterReference) GameServerClusterConnectionInfoGkeClusterReference {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GameServerClusterConnectionInfoGkeClusterReference
+		return ret
 	}).(GameServerClusterConnectionInfoGkeClusterReferenceOutput)
 }
 
@@ -1044,7 +1054,7 @@ func (o GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput)
 }
 
 func (o GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput) ToGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrOutputWithContext(ctx context.Context) GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrOutput {
-	return o.ApplyT(func(v GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector) *GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector) *GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector {
 		return &v
 	}).(GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrOutput)
 }
@@ -1070,7 +1080,11 @@ func (o GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrOutp
 
 func (o GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrOutput) Elem() GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput {
 	return o.ApplyT(func(v *GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector) GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector
+		return ret
 	}).(GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput)
 }
 

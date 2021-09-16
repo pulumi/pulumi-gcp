@@ -59,6 +59,54 @@ import (
 // 	})
 // }
 // ```
+// ### Monitoring Metric Descriptor Alert
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/monitoring"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		withAlert, err := monitoring.NewMetricDescriptor(ctx, "withAlert", &monitoring.MetricDescriptorArgs{
+// 			Description: pulumi.String("Daily sales records from all branch stores."),
+// 			DisplayName: pulumi.String("metric-descriptor"),
+// 			MetricKind:  pulumi.String("GAUGE"),
+// 			Type:        pulumi.String("custom.googleapis.com/stores/daily_sales"),
+// 			Unit:        pulumi.String("{USD}"),
+// 			ValueType:   pulumi.String("DOUBLE"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = monitoring.NewAlertPolicy(ctx, "alertPolicy", &monitoring.AlertPolicyArgs{
+// 			Combiner: pulumi.String("OR"),
+// 			Conditions: monitoring.AlertPolicyConditionArray{
+// 				&monitoring.AlertPolicyConditionArgs{
+// 					ConditionThreshold: &monitoring.AlertPolicyConditionConditionThresholdArgs{
+// 						Comparison: pulumi.String("COMPARISON_GT"),
+// 						Duration:   pulumi.String("60s"),
+// 						Filter: withAlert.Type.ApplyT(func(_type string) (string, error) {
+// 							return fmt.Sprintf("%v%v%v", "metric.type=\"", _type, "\" AND resource.type=\"gce_instance\""), nil
+// 						}).(pulumi.StringOutput),
+// 					},
+// 					DisplayName: pulumi.String("test condition"),
+// 				},
+// 			},
+// 			DisplayName: pulumi.String("metric-descriptor"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //
@@ -434,7 +482,7 @@ type MetricDescriptorArrayInput interface {
 type MetricDescriptorArray []MetricDescriptorInput
 
 func (MetricDescriptorArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*MetricDescriptor)(nil))
+	return reflect.TypeOf((*[]*MetricDescriptor)(nil)).Elem()
 }
 
 func (i MetricDescriptorArray) ToMetricDescriptorArrayOutput() MetricDescriptorArrayOutput {
@@ -459,7 +507,7 @@ type MetricDescriptorMapInput interface {
 type MetricDescriptorMap map[string]MetricDescriptorInput
 
 func (MetricDescriptorMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*MetricDescriptor)(nil))
+	return reflect.TypeOf((*map[string]*MetricDescriptor)(nil)).Elem()
 }
 
 func (i MetricDescriptorMap) ToMetricDescriptorMapOutput() MetricDescriptorMapOutput {
@@ -470,9 +518,7 @@ func (i MetricDescriptorMap) ToMetricDescriptorMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(MetricDescriptorMapOutput)
 }
 
-type MetricDescriptorOutput struct {
-	*pulumi.OutputState
-}
+type MetricDescriptorOutput struct{ *pulumi.OutputState }
 
 func (MetricDescriptorOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MetricDescriptor)(nil))
@@ -491,14 +537,12 @@ func (o MetricDescriptorOutput) ToMetricDescriptorPtrOutput() MetricDescriptorPt
 }
 
 func (o MetricDescriptorOutput) ToMetricDescriptorPtrOutputWithContext(ctx context.Context) MetricDescriptorPtrOutput {
-	return o.ApplyT(func(v MetricDescriptor) *MetricDescriptor {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricDescriptor) *MetricDescriptor {
 		return &v
 	}).(MetricDescriptorPtrOutput)
 }
 
-type MetricDescriptorPtrOutput struct {
-	*pulumi.OutputState
-}
+type MetricDescriptorPtrOutput struct{ *pulumi.OutputState }
 
 func (MetricDescriptorPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**MetricDescriptor)(nil))
@@ -510,6 +554,16 @@ func (o MetricDescriptorPtrOutput) ToMetricDescriptorPtrOutput() MetricDescripto
 
 func (o MetricDescriptorPtrOutput) ToMetricDescriptorPtrOutputWithContext(ctx context.Context) MetricDescriptorPtrOutput {
 	return o
+}
+
+func (o MetricDescriptorPtrOutput) Elem() MetricDescriptorOutput {
+	return o.ApplyT(func(v *MetricDescriptor) MetricDescriptor {
+		if v != nil {
+			return *v
+		}
+		var ret MetricDescriptor
+		return ret
+	}).(MetricDescriptorOutput)
 }
 
 type MetricDescriptorArrayOutput struct{ *pulumi.OutputState }

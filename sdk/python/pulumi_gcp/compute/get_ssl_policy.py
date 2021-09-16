@@ -12,6 +12,7 @@ __all__ = [
     'GetSSLPolicyResult',
     'AwaitableGetSSLPolicyResult',
     'get_ssl_policy',
+    'get_ssl_policy_output',
 ]
 
 @pulumi.output_type
@@ -197,3 +198,28 @@ def get_ssl_policy(name: Optional[str] = None,
         profile=__ret__.profile,
         project=__ret__.project,
         self_link=__ret__.self_link)
+
+
+@_utilities.lift_output_func(get_ssl_policy)
+def get_ssl_policy_output(name: Optional[pulumi.Input[str]] = None,
+                          project: Optional[pulumi.Input[Optional[str]]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSSLPolicyResult]:
+    """
+    Gets an SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.
+        For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_ssl_policy = gcp.compute.get_ssl_policy(name="production-ssl-policy")
+    ```
+
+
+    :param str name: The name of the SSL Policy.
+    :param str project: The ID of the project in which the resource belongs. If it
+           is not provided, the provider project is used.
+    """
+    ...

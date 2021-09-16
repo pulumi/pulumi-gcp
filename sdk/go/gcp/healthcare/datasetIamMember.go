@@ -326,7 +326,7 @@ type DatasetIamMemberArrayInput interface {
 type DatasetIamMemberArray []DatasetIamMemberInput
 
 func (DatasetIamMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*DatasetIamMember)(nil))
+	return reflect.TypeOf((*[]*DatasetIamMember)(nil)).Elem()
 }
 
 func (i DatasetIamMemberArray) ToDatasetIamMemberArrayOutput() DatasetIamMemberArrayOutput {
@@ -351,7 +351,7 @@ type DatasetIamMemberMapInput interface {
 type DatasetIamMemberMap map[string]DatasetIamMemberInput
 
 func (DatasetIamMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*DatasetIamMember)(nil))
+	return reflect.TypeOf((*map[string]*DatasetIamMember)(nil)).Elem()
 }
 
 func (i DatasetIamMemberMap) ToDatasetIamMemberMapOutput() DatasetIamMemberMapOutput {
@@ -362,9 +362,7 @@ func (i DatasetIamMemberMap) ToDatasetIamMemberMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamMemberMapOutput)
 }
 
-type DatasetIamMemberOutput struct {
-	*pulumi.OutputState
-}
+type DatasetIamMemberOutput struct{ *pulumi.OutputState }
 
 func (DatasetIamMemberOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DatasetIamMember)(nil))
@@ -383,14 +381,12 @@ func (o DatasetIamMemberOutput) ToDatasetIamMemberPtrOutput() DatasetIamMemberPt
 }
 
 func (o DatasetIamMemberOutput) ToDatasetIamMemberPtrOutputWithContext(ctx context.Context) DatasetIamMemberPtrOutput {
-	return o.ApplyT(func(v DatasetIamMember) *DatasetIamMember {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatasetIamMember) *DatasetIamMember {
 		return &v
 	}).(DatasetIamMemberPtrOutput)
 }
 
-type DatasetIamMemberPtrOutput struct {
-	*pulumi.OutputState
-}
+type DatasetIamMemberPtrOutput struct{ *pulumi.OutputState }
 
 func (DatasetIamMemberPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DatasetIamMember)(nil))
@@ -402,6 +398,16 @@ func (o DatasetIamMemberPtrOutput) ToDatasetIamMemberPtrOutput() DatasetIamMembe
 
 func (o DatasetIamMemberPtrOutput) ToDatasetIamMemberPtrOutputWithContext(ctx context.Context) DatasetIamMemberPtrOutput {
 	return o
+}
+
+func (o DatasetIamMemberPtrOutput) Elem() DatasetIamMemberOutput {
+	return o.ApplyT(func(v *DatasetIamMember) DatasetIamMember {
+		if v != nil {
+			return *v
+		}
+		var ret DatasetIamMember
+		return ret
+	}).(DatasetIamMemberOutput)
 }
 
 type DatasetIamMemberArrayOutput struct{ *pulumi.OutputState }

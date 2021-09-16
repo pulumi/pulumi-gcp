@@ -295,7 +295,7 @@ type IndexArrayInput interface {
 type IndexArray []IndexInput
 
 func (IndexArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Index)(nil))
+	return reflect.TypeOf((*[]*Index)(nil)).Elem()
 }
 
 func (i IndexArray) ToIndexArrayOutput() IndexArrayOutput {
@@ -320,7 +320,7 @@ type IndexMapInput interface {
 type IndexMap map[string]IndexInput
 
 func (IndexMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Index)(nil))
+	return reflect.TypeOf((*map[string]*Index)(nil)).Elem()
 }
 
 func (i IndexMap) ToIndexMapOutput() IndexMapOutput {
@@ -331,9 +331,7 @@ func (i IndexMap) ToIndexMapOutputWithContext(ctx context.Context) IndexMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(IndexMapOutput)
 }
 
-type IndexOutput struct {
-	*pulumi.OutputState
-}
+type IndexOutput struct{ *pulumi.OutputState }
 
 func (IndexOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Index)(nil))
@@ -352,14 +350,12 @@ func (o IndexOutput) ToIndexPtrOutput() IndexPtrOutput {
 }
 
 func (o IndexOutput) ToIndexPtrOutputWithContext(ctx context.Context) IndexPtrOutput {
-	return o.ApplyT(func(v Index) *Index {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Index) *Index {
 		return &v
 	}).(IndexPtrOutput)
 }
 
-type IndexPtrOutput struct {
-	*pulumi.OutputState
-}
+type IndexPtrOutput struct{ *pulumi.OutputState }
 
 func (IndexPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Index)(nil))
@@ -371,6 +367,16 @@ func (o IndexPtrOutput) ToIndexPtrOutput() IndexPtrOutput {
 
 func (o IndexPtrOutput) ToIndexPtrOutputWithContext(ctx context.Context) IndexPtrOutput {
 	return o
+}
+
+func (o IndexPtrOutput) Elem() IndexOutput {
+	return o.ApplyT(func(v *Index) Index {
+		if v != nil {
+			return *v
+		}
+		var ret Index
+		return ret
+	}).(IndexOutput)
 }
 
 type IndexArrayOutput struct{ *pulumi.OutputState }

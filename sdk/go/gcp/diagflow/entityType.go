@@ -290,7 +290,7 @@ type EntityTypeArrayInput interface {
 type EntityTypeArray []EntityTypeInput
 
 func (EntityTypeArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*EntityType)(nil))
+	return reflect.TypeOf((*[]*EntityType)(nil)).Elem()
 }
 
 func (i EntityTypeArray) ToEntityTypeArrayOutput() EntityTypeArrayOutput {
@@ -315,7 +315,7 @@ type EntityTypeMapInput interface {
 type EntityTypeMap map[string]EntityTypeInput
 
 func (EntityTypeMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*EntityType)(nil))
+	return reflect.TypeOf((*map[string]*EntityType)(nil)).Elem()
 }
 
 func (i EntityTypeMap) ToEntityTypeMapOutput() EntityTypeMapOutput {
@@ -326,9 +326,7 @@ func (i EntityTypeMap) ToEntityTypeMapOutputWithContext(ctx context.Context) Ent
 	return pulumi.ToOutputWithContext(ctx, i).(EntityTypeMapOutput)
 }
 
-type EntityTypeOutput struct {
-	*pulumi.OutputState
-}
+type EntityTypeOutput struct{ *pulumi.OutputState }
 
 func (EntityTypeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EntityType)(nil))
@@ -347,14 +345,12 @@ func (o EntityTypeOutput) ToEntityTypePtrOutput() EntityTypePtrOutput {
 }
 
 func (o EntityTypeOutput) ToEntityTypePtrOutputWithContext(ctx context.Context) EntityTypePtrOutput {
-	return o.ApplyT(func(v EntityType) *EntityType {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EntityType) *EntityType {
 		return &v
 	}).(EntityTypePtrOutput)
 }
 
-type EntityTypePtrOutput struct {
-	*pulumi.OutputState
-}
+type EntityTypePtrOutput struct{ *pulumi.OutputState }
 
 func (EntityTypePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**EntityType)(nil))
@@ -366,6 +362,16 @@ func (o EntityTypePtrOutput) ToEntityTypePtrOutput() EntityTypePtrOutput {
 
 func (o EntityTypePtrOutput) ToEntityTypePtrOutputWithContext(ctx context.Context) EntityTypePtrOutput {
 	return o
+}
+
+func (o EntityTypePtrOutput) Elem() EntityTypeOutput {
+	return o.ApplyT(func(v *EntityType) EntityType {
+		if v != nil {
+			return *v
+		}
+		var ret EntityType
+		return ret
+	}).(EntityTypeOutput)
 }
 
 type EntityTypeArrayOutput struct{ *pulumi.OutputState }

@@ -103,10 +103,11 @@ func (o ProviderBatchingOutput) ToProviderBatchingPtrOutput() ProviderBatchingPt
 }
 
 func (o ProviderBatchingOutput) ToProviderBatchingPtrOutputWithContext(ctx context.Context) ProviderBatchingPtrOutput {
-	return o.ApplyT(func(v ProviderBatching) *ProviderBatching {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProviderBatching) *ProviderBatching {
 		return &v
 	}).(ProviderBatchingPtrOutput)
 }
+
 func (o ProviderBatchingOutput) EnableBatching() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProviderBatching) *bool { return v.EnableBatching }).(pulumi.BoolPtrOutput)
 }
@@ -130,7 +131,13 @@ func (o ProviderBatchingPtrOutput) ToProviderBatchingPtrOutputWithContext(ctx co
 }
 
 func (o ProviderBatchingPtrOutput) Elem() ProviderBatchingOutput {
-	return o.ApplyT(func(v *ProviderBatching) ProviderBatching { return *v }).(ProviderBatchingOutput)
+	return o.ApplyT(func(v *ProviderBatching) ProviderBatching {
+		if v != nil {
+			return *v
+		}
+		var ret ProviderBatching
+		return ret
+	}).(ProviderBatchingOutput)
 }
 
 func (o ProviderBatchingPtrOutput) EnableBatching() pulumi.BoolPtrOutput {

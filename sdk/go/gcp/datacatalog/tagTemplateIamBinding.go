@@ -169,7 +169,7 @@ type TagTemplateIamBindingArrayInput interface {
 type TagTemplateIamBindingArray []TagTemplateIamBindingInput
 
 func (TagTemplateIamBindingArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TagTemplateIamBinding)(nil))
+	return reflect.TypeOf((*[]*TagTemplateIamBinding)(nil)).Elem()
 }
 
 func (i TagTemplateIamBindingArray) ToTagTemplateIamBindingArrayOutput() TagTemplateIamBindingArrayOutput {
@@ -194,7 +194,7 @@ type TagTemplateIamBindingMapInput interface {
 type TagTemplateIamBindingMap map[string]TagTemplateIamBindingInput
 
 func (TagTemplateIamBindingMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TagTemplateIamBinding)(nil))
+	return reflect.TypeOf((*map[string]*TagTemplateIamBinding)(nil)).Elem()
 }
 
 func (i TagTemplateIamBindingMap) ToTagTemplateIamBindingMapOutput() TagTemplateIamBindingMapOutput {
@@ -205,9 +205,7 @@ func (i TagTemplateIamBindingMap) ToTagTemplateIamBindingMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateIamBindingMapOutput)
 }
 
-type TagTemplateIamBindingOutput struct {
-	*pulumi.OutputState
-}
+type TagTemplateIamBindingOutput struct{ *pulumi.OutputState }
 
 func (TagTemplateIamBindingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TagTemplateIamBinding)(nil))
@@ -226,14 +224,12 @@ func (o TagTemplateIamBindingOutput) ToTagTemplateIamBindingPtrOutput() TagTempl
 }
 
 func (o TagTemplateIamBindingOutput) ToTagTemplateIamBindingPtrOutputWithContext(ctx context.Context) TagTemplateIamBindingPtrOutput {
-	return o.ApplyT(func(v TagTemplateIamBinding) *TagTemplateIamBinding {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TagTemplateIamBinding) *TagTemplateIamBinding {
 		return &v
 	}).(TagTemplateIamBindingPtrOutput)
 }
 
-type TagTemplateIamBindingPtrOutput struct {
-	*pulumi.OutputState
-}
+type TagTemplateIamBindingPtrOutput struct{ *pulumi.OutputState }
 
 func (TagTemplateIamBindingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TagTemplateIamBinding)(nil))
@@ -245,6 +241,16 @@ func (o TagTemplateIamBindingPtrOutput) ToTagTemplateIamBindingPtrOutput() TagTe
 
 func (o TagTemplateIamBindingPtrOutput) ToTagTemplateIamBindingPtrOutputWithContext(ctx context.Context) TagTemplateIamBindingPtrOutput {
 	return o
+}
+
+func (o TagTemplateIamBindingPtrOutput) Elem() TagTemplateIamBindingOutput {
+	return o.ApplyT(func(v *TagTemplateIamBinding) TagTemplateIamBinding {
+		if v != nil {
+			return *v
+		}
+		var ret TagTemplateIamBinding
+		return ret
+	}).(TagTemplateIamBindingOutput)
 }
 
 type TagTemplateIamBindingArrayOutput struct{ *pulumi.OutputState }

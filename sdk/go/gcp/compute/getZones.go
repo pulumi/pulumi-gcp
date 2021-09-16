@@ -4,6 +4,9 @@
 package compute
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,4 +41,69 @@ type GetZonesResult struct {
 	Project string   `pulumi:"project"`
 	Region  *string  `pulumi:"region"`
 	Status  *string  `pulumi:"status"`
+}
+
+func GetZonesOutput(ctx *pulumi.Context, args GetZonesOutputArgs, opts ...pulumi.InvokeOption) GetZonesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetZonesResult, error) {
+			args := v.(GetZonesArgs)
+			r, err := GetZones(ctx, &args, opts...)
+			return *r, err
+		}).(GetZonesResultOutput)
+}
+
+// A collection of arguments for invoking getZones.
+type GetZonesOutputArgs struct {
+	// Project from which to list available zones. Defaults to project declared in the provider.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// Region from which to list available zones. Defaults to region declared in the provider.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// Allows to filter list of zones based on their current status. Status can be either `UP` or `DOWN`.
+	// Defaults to no filtering (all available zones - both `UP` and `DOWN`).
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetZonesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZonesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getZones.
+type GetZonesResultOutput struct{ *pulumi.OutputState }
+
+func (GetZonesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZonesResult)(nil)).Elem()
+}
+
+func (o GetZonesResultOutput) ToGetZonesResultOutput() GetZonesResultOutput {
+	return o
+}
+
+func (o GetZonesResultOutput) ToGetZonesResultOutputWithContext(ctx context.Context) GetZonesResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetZonesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of zones available in the given region
+func (o GetZonesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetZonesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetZonesResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o GetZonesResultOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetZonesResult) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+func (o GetZonesResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetZonesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetZonesResultOutput{})
 }

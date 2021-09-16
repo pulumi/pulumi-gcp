@@ -387,7 +387,7 @@ func (o AlertPolicyConditionConditionAbsentOutput) ToAlertPolicyConditionConditi
 }
 
 func (o AlertPolicyConditionConditionAbsentOutput) ToAlertPolicyConditionConditionAbsentPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionAbsentPtrOutput {
-	return o.ApplyT(func(v AlertPolicyConditionConditionAbsent) *AlertPolicyConditionConditionAbsent {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertPolicyConditionConditionAbsent) *AlertPolicyConditionConditionAbsent {
 		return &v
 	}).(AlertPolicyConditionConditionAbsentPtrOutput)
 }
@@ -477,7 +477,13 @@ func (o AlertPolicyConditionConditionAbsentPtrOutput) ToAlertPolicyConditionCond
 }
 
 func (o AlertPolicyConditionConditionAbsentPtrOutput) Elem() AlertPolicyConditionConditionAbsentOutput {
-	return o.ApplyT(func(v *AlertPolicyConditionConditionAbsent) AlertPolicyConditionConditionAbsent { return *v }).(AlertPolicyConditionConditionAbsentOutput)
+	return o.ApplyT(func(v *AlertPolicyConditionConditionAbsent) AlertPolicyConditionConditionAbsent {
+		if v != nil {
+			return *v
+		}
+		var ret AlertPolicyConditionConditionAbsent
+		return ret
+	}).(AlertPolicyConditionConditionAbsentOutput)
 }
 
 // Specifies the alignment of data points in
@@ -1008,7 +1014,7 @@ func (o AlertPolicyConditionConditionAbsentTriggerOutput) ToAlertPolicyCondition
 }
 
 func (o AlertPolicyConditionConditionAbsentTriggerOutput) ToAlertPolicyConditionConditionAbsentTriggerPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionAbsentTriggerPtrOutput {
-	return o.ApplyT(func(v AlertPolicyConditionConditionAbsentTrigger) *AlertPolicyConditionConditionAbsentTrigger {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertPolicyConditionConditionAbsentTrigger) *AlertPolicyConditionConditionAbsentTrigger {
 		return &v
 	}).(AlertPolicyConditionConditionAbsentTriggerPtrOutput)
 }
@@ -1043,7 +1049,11 @@ func (o AlertPolicyConditionConditionAbsentTriggerPtrOutput) ToAlertPolicyCondit
 
 func (o AlertPolicyConditionConditionAbsentTriggerPtrOutput) Elem() AlertPolicyConditionConditionAbsentTriggerOutput {
 	return o.ApplyT(func(v *AlertPolicyConditionConditionAbsentTrigger) AlertPolicyConditionConditionAbsentTrigger {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret AlertPolicyConditionConditionAbsentTrigger
+		return ret
 	}).(AlertPolicyConditionConditionAbsentTriggerOutput)
 }
 
@@ -1216,7 +1226,7 @@ func (o AlertPolicyConditionConditionMonitoringQueryLanguageOutput) ToAlertPolic
 }
 
 func (o AlertPolicyConditionConditionMonitoringQueryLanguageOutput) ToAlertPolicyConditionConditionMonitoringQueryLanguagePtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput {
-	return o.ApplyT(func(v AlertPolicyConditionConditionMonitoringQueryLanguage) *AlertPolicyConditionConditionMonitoringQueryLanguage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertPolicyConditionConditionMonitoringQueryLanguage) *AlertPolicyConditionConditionMonitoringQueryLanguage {
 		return &v
 	}).(AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput)
 }
@@ -1276,7 +1286,11 @@ func (o AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput) ToAlertPo
 
 func (o AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput) Elem() AlertPolicyConditionConditionMonitoringQueryLanguageOutput {
 	return o.ApplyT(func(v *AlertPolicyConditionConditionMonitoringQueryLanguage) AlertPolicyConditionConditionMonitoringQueryLanguage {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret AlertPolicyConditionConditionMonitoringQueryLanguage
+		return ret
 	}).(AlertPolicyConditionConditionMonitoringQueryLanguageOutput)
 }
 
@@ -1437,7 +1451,7 @@ func (o AlertPolicyConditionConditionMonitoringQueryLanguageTriggerOutput) ToAle
 }
 
 func (o AlertPolicyConditionConditionMonitoringQueryLanguageTriggerOutput) ToAlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput {
-	return o.ApplyT(func(v AlertPolicyConditionConditionMonitoringQueryLanguageTrigger) *AlertPolicyConditionConditionMonitoringQueryLanguageTrigger {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertPolicyConditionConditionMonitoringQueryLanguageTrigger) *AlertPolicyConditionConditionMonitoringQueryLanguageTrigger {
 		return &v
 	}).(AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput)
 }
@@ -1472,7 +1486,11 @@ func (o AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput) To
 
 func (o AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput) Elem() AlertPolicyConditionConditionMonitoringQueryLanguageTriggerOutput {
 	return o.ApplyT(func(v *AlertPolicyConditionConditionMonitoringQueryLanguageTrigger) AlertPolicyConditionConditionMonitoringQueryLanguageTrigger {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret AlertPolicyConditionConditionMonitoringQueryLanguageTrigger
+		return ret
 	}).(AlertPolicyConditionConditionMonitoringQueryLanguageTriggerOutput)
 }
 
@@ -1791,7 +1809,7 @@ func (o AlertPolicyConditionConditionThresholdOutput) ToAlertPolicyConditionCond
 }
 
 func (o AlertPolicyConditionConditionThresholdOutput) ToAlertPolicyConditionConditionThresholdPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionThresholdPtrOutput {
-	return o.ApplyT(func(v AlertPolicyConditionConditionThreshold) *AlertPolicyConditionConditionThreshold {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertPolicyConditionConditionThreshold) *AlertPolicyConditionConditionThreshold {
 		return &v
 	}).(AlertPolicyConditionConditionThresholdPtrOutput)
 }
@@ -1942,7 +1960,13 @@ func (o AlertPolicyConditionConditionThresholdPtrOutput) ToAlertPolicyConditionC
 }
 
 func (o AlertPolicyConditionConditionThresholdPtrOutput) Elem() AlertPolicyConditionConditionThresholdOutput {
-	return o.ApplyT(func(v *AlertPolicyConditionConditionThreshold) AlertPolicyConditionConditionThreshold { return *v }).(AlertPolicyConditionConditionThresholdOutput)
+	return o.ApplyT(func(v *AlertPolicyConditionConditionThreshold) AlertPolicyConditionConditionThreshold {
+		if v != nil {
+			return *v
+		}
+		var ret AlertPolicyConditionConditionThreshold
+		return ret
+	}).(AlertPolicyConditionConditionThresholdOutput)
 }
 
 // Specifies the alignment of data points in
@@ -2893,7 +2917,7 @@ func (o AlertPolicyConditionConditionThresholdTriggerOutput) ToAlertPolicyCondit
 }
 
 func (o AlertPolicyConditionConditionThresholdTriggerOutput) ToAlertPolicyConditionConditionThresholdTriggerPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionThresholdTriggerPtrOutput {
-	return o.ApplyT(func(v AlertPolicyConditionConditionThresholdTrigger) *AlertPolicyConditionConditionThresholdTrigger {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertPolicyConditionConditionThresholdTrigger) *AlertPolicyConditionConditionThresholdTrigger {
 		return &v
 	}).(AlertPolicyConditionConditionThresholdTriggerPtrOutput)
 }
@@ -2928,7 +2952,11 @@ func (o AlertPolicyConditionConditionThresholdTriggerPtrOutput) ToAlertPolicyCon
 
 func (o AlertPolicyConditionConditionThresholdTriggerPtrOutput) Elem() AlertPolicyConditionConditionThresholdTriggerOutput {
 	return o.ApplyT(func(v *AlertPolicyConditionConditionThresholdTrigger) AlertPolicyConditionConditionThresholdTrigger {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret AlertPolicyConditionConditionThresholdTrigger
+		return ret
 	}).(AlertPolicyConditionConditionThresholdTriggerOutput)
 }
 
@@ -3161,7 +3189,7 @@ func (o AlertPolicyDocumentationOutput) ToAlertPolicyDocumentationPtrOutput() Al
 }
 
 func (o AlertPolicyDocumentationOutput) ToAlertPolicyDocumentationPtrOutputWithContext(ctx context.Context) AlertPolicyDocumentationPtrOutput {
-	return o.ApplyT(func(v AlertPolicyDocumentation) *AlertPolicyDocumentation {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertPolicyDocumentation) *AlertPolicyDocumentation {
 		return &v
 	}).(AlertPolicyDocumentationPtrOutput)
 }
@@ -3195,7 +3223,13 @@ func (o AlertPolicyDocumentationPtrOutput) ToAlertPolicyDocumentationPtrOutputWi
 }
 
 func (o AlertPolicyDocumentationPtrOutput) Elem() AlertPolicyDocumentationOutput {
-	return o.ApplyT(func(v *AlertPolicyDocumentation) AlertPolicyDocumentation { return *v }).(AlertPolicyDocumentationOutput)
+	return o.ApplyT(func(v *AlertPolicyDocumentation) AlertPolicyDocumentation {
+		if v != nil {
+			return *v
+		}
+		var ret AlertPolicyDocumentation
+		return ret
+	}).(AlertPolicyDocumentationOutput)
 }
 
 // The text of the documentation, interpreted according to mimeType.
@@ -3319,7 +3353,7 @@ func (o CustomServiceTelemetryOutput) ToCustomServiceTelemetryPtrOutput() Custom
 }
 
 func (o CustomServiceTelemetryOutput) ToCustomServiceTelemetryPtrOutputWithContext(ctx context.Context) CustomServiceTelemetryPtrOutput {
-	return o.ApplyT(func(v CustomServiceTelemetry) *CustomServiceTelemetry {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomServiceTelemetry) *CustomServiceTelemetry {
 		return &v
 	}).(CustomServiceTelemetryPtrOutput)
 }
@@ -3346,7 +3380,13 @@ func (o CustomServiceTelemetryPtrOutput) ToCustomServiceTelemetryPtrOutputWithCo
 }
 
 func (o CustomServiceTelemetryPtrOutput) Elem() CustomServiceTelemetryOutput {
-	return o.ApplyT(func(v *CustomServiceTelemetry) CustomServiceTelemetry { return *v }).(CustomServiceTelemetryOutput)
+	return o.ApplyT(func(v *CustomServiceTelemetry) CustomServiceTelemetry {
+		if v != nil {
+			return *v
+		}
+		var ret CustomServiceTelemetry
+		return ret
+	}).(CustomServiceTelemetryOutput)
 }
 
 // The full name of the resource that defines this service.
@@ -3579,7 +3619,7 @@ func (o MetricDescriptorMetadataOutput) ToMetricDescriptorMetadataPtrOutput() Me
 }
 
 func (o MetricDescriptorMetadataOutput) ToMetricDescriptorMetadataPtrOutputWithContext(ctx context.Context) MetricDescriptorMetadataPtrOutput {
-	return o.ApplyT(func(v MetricDescriptorMetadata) *MetricDescriptorMetadata {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricDescriptorMetadata) *MetricDescriptorMetadata {
 		return &v
 	}).(MetricDescriptorMetadataPtrOutput)
 }
@@ -3609,7 +3649,13 @@ func (o MetricDescriptorMetadataPtrOutput) ToMetricDescriptorMetadataPtrOutputWi
 }
 
 func (o MetricDescriptorMetadataPtrOutput) Elem() MetricDescriptorMetadataOutput {
-	return o.ApplyT(func(v *MetricDescriptorMetadata) MetricDescriptorMetadata { return *v }).(MetricDescriptorMetadataOutput)
+	return o.ApplyT(func(v *MetricDescriptorMetadata) MetricDescriptorMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret MetricDescriptorMetadata
+		return ret
+	}).(MetricDescriptorMetadataOutput)
 }
 
 // The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors. In `[duration format](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf?&_ga=2.264881487.1507873253.1593446723-935052455.1591817775#google.protobuf.Duration)`.
@@ -3739,7 +3785,7 @@ func (o NotificationChannelSensitiveLabelsOutput) ToNotificationChannelSensitive
 }
 
 func (o NotificationChannelSensitiveLabelsOutput) ToNotificationChannelSensitiveLabelsPtrOutputWithContext(ctx context.Context) NotificationChannelSensitiveLabelsPtrOutput {
-	return o.ApplyT(func(v NotificationChannelSensitiveLabels) *NotificationChannelSensitiveLabels {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotificationChannelSensitiveLabels) *NotificationChannelSensitiveLabels {
 		return &v
 	}).(NotificationChannelSensitiveLabelsPtrOutput)
 }
@@ -3777,7 +3823,13 @@ func (o NotificationChannelSensitiveLabelsPtrOutput) ToNotificationChannelSensit
 }
 
 func (o NotificationChannelSensitiveLabelsPtrOutput) Elem() NotificationChannelSensitiveLabelsOutput {
-	return o.ApplyT(func(v *NotificationChannelSensitiveLabels) NotificationChannelSensitiveLabels { return *v }).(NotificationChannelSensitiveLabelsOutput)
+	return o.ApplyT(func(v *NotificationChannelSensitiveLabels) NotificationChannelSensitiveLabels {
+		if v != nil {
+			return *v
+		}
+		var ret NotificationChannelSensitiveLabels
+		return ret
+	}).(NotificationChannelSensitiveLabelsOutput)
 }
 
 // An authorization token for a notification channel. Channel types that support this field include: slack
@@ -3956,7 +4008,7 @@ func (o SloBasicSliOutput) ToSloBasicSliPtrOutput() SloBasicSliPtrOutput {
 }
 
 func (o SloBasicSliOutput) ToSloBasicSliPtrOutputWithContext(ctx context.Context) SloBasicSliPtrOutput {
-	return o.ApplyT(func(v SloBasicSli) *SloBasicSli {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloBasicSli) *SloBasicSli {
 		return &v
 	}).(SloBasicSliPtrOutput)
 }
@@ -4018,7 +4070,13 @@ func (o SloBasicSliPtrOutput) ToSloBasicSliPtrOutputWithContext(ctx context.Cont
 }
 
 func (o SloBasicSliPtrOutput) Elem() SloBasicSliOutput {
-	return o.ApplyT(func(v *SloBasicSli) SloBasicSli { return *v }).(SloBasicSliOutput)
+	return o.ApplyT(func(v *SloBasicSli) SloBasicSli {
+		if v != nil {
+			return *v
+		}
+		var ret SloBasicSli
+		return ret
+	}).(SloBasicSliOutput)
 }
 
 // Availability based SLI, dervied from count of requests made to this service that return successfully.
@@ -4181,7 +4239,7 @@ func (o SloBasicSliAvailabilityOutput) ToSloBasicSliAvailabilityPtrOutput() SloB
 }
 
 func (o SloBasicSliAvailabilityOutput) ToSloBasicSliAvailabilityPtrOutputWithContext(ctx context.Context) SloBasicSliAvailabilityPtrOutput {
-	return o.ApplyT(func(v SloBasicSliAvailability) *SloBasicSliAvailability {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloBasicSliAvailability) *SloBasicSliAvailability {
 		return &v
 	}).(SloBasicSliAvailabilityPtrOutput)
 }
@@ -4206,7 +4264,13 @@ func (o SloBasicSliAvailabilityPtrOutput) ToSloBasicSliAvailabilityPtrOutputWith
 }
 
 func (o SloBasicSliAvailabilityPtrOutput) Elem() SloBasicSliAvailabilityOutput {
-	return o.ApplyT(func(v *SloBasicSliAvailability) SloBasicSliAvailability { return *v }).(SloBasicSliAvailabilityOutput)
+	return o.ApplyT(func(v *SloBasicSliAvailability) SloBasicSliAvailability {
+		if v != nil {
+			return *v
+		}
+		var ret SloBasicSliAvailability
+		return ret
+	}).(SloBasicSliAvailabilityOutput)
 }
 
 // Whether an availability SLI is enabled or not. Must be set to ` true. Defaults to  `true`.
@@ -4316,7 +4380,7 @@ func (o SloBasicSliLatencyOutput) ToSloBasicSliLatencyPtrOutput() SloBasicSliLat
 }
 
 func (o SloBasicSliLatencyOutput) ToSloBasicSliLatencyPtrOutputWithContext(ctx context.Context) SloBasicSliLatencyPtrOutput {
-	return o.ApplyT(func(v SloBasicSliLatency) *SloBasicSliLatency {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloBasicSliLatency) *SloBasicSliLatency {
 		return &v
 	}).(SloBasicSliLatencyPtrOutput)
 }
@@ -4343,7 +4407,13 @@ func (o SloBasicSliLatencyPtrOutput) ToSloBasicSliLatencyPtrOutputWithContext(ct
 }
 
 func (o SloBasicSliLatencyPtrOutput) Elem() SloBasicSliLatencyOutput {
-	return o.ApplyT(func(v *SloBasicSliLatency) SloBasicSliLatency { return *v }).(SloBasicSliLatencyOutput)
+	return o.ApplyT(func(v *SloBasicSliLatency) SloBasicSliLatency {
+		if v != nil {
+			return *v
+		}
+		var ret SloBasicSliLatency
+		return ret
+	}).(SloBasicSliLatencyOutput)
 }
 
 // A duration string, e.g. 10s.
@@ -4475,7 +4545,7 @@ func (o SloRequestBasedSliOutput) ToSloRequestBasedSliPtrOutput() SloRequestBase
 }
 
 func (o SloRequestBasedSliOutput) ToSloRequestBasedSliPtrOutputWithContext(ctx context.Context) SloRequestBasedSliPtrOutput {
-	return o.ApplyT(func(v SloRequestBasedSli) *SloRequestBasedSli {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloRequestBasedSli) *SloRequestBasedSli {
 		return &v
 	}).(SloRequestBasedSliPtrOutput)
 }
@@ -4515,7 +4585,13 @@ func (o SloRequestBasedSliPtrOutput) ToSloRequestBasedSliPtrOutputWithContext(ct
 }
 
 func (o SloRequestBasedSliPtrOutput) Elem() SloRequestBasedSliOutput {
-	return o.ApplyT(func(v *SloRequestBasedSli) SloRequestBasedSli { return *v }).(SloRequestBasedSliOutput)
+	return o.ApplyT(func(v *SloRequestBasedSli) SloRequestBasedSli {
+		if v != nil {
+			return *v
+		}
+		var ret SloRequestBasedSli
+		return ret
+	}).(SloRequestBasedSliOutput)
 }
 
 // Used when goodService is defined by a count of values aggregated in a
@@ -4663,7 +4739,7 @@ func (o SloRequestBasedSliDistributionCutOutput) ToSloRequestBasedSliDistributio
 }
 
 func (o SloRequestBasedSliDistributionCutOutput) ToSloRequestBasedSliDistributionCutPtrOutputWithContext(ctx context.Context) SloRequestBasedSliDistributionCutPtrOutput {
-	return o.ApplyT(func(v SloRequestBasedSliDistributionCut) *SloRequestBasedSliDistributionCut {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloRequestBasedSliDistributionCut) *SloRequestBasedSliDistributionCut {
 		return &v
 	}).(SloRequestBasedSliDistributionCutPtrOutput)
 }
@@ -4702,7 +4778,13 @@ func (o SloRequestBasedSliDistributionCutPtrOutput) ToSloRequestBasedSliDistribu
 }
 
 func (o SloRequestBasedSliDistributionCutPtrOutput) Elem() SloRequestBasedSliDistributionCutOutput {
-	return o.ApplyT(func(v *SloRequestBasedSliDistributionCut) SloRequestBasedSliDistributionCut { return *v }).(SloRequestBasedSliDistributionCutOutput)
+	return o.ApplyT(func(v *SloRequestBasedSliDistributionCut) SloRequestBasedSliDistributionCut {
+		if v != nil {
+			return *v
+		}
+		var ret SloRequestBasedSliDistributionCut
+		return ret
+	}).(SloRequestBasedSliDistributionCutOutput)
 }
 
 // A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
@@ -4839,7 +4921,7 @@ func (o SloRequestBasedSliDistributionCutRangeOutput) ToSloRequestBasedSliDistri
 }
 
 func (o SloRequestBasedSliDistributionCutRangeOutput) ToSloRequestBasedSliDistributionCutRangePtrOutputWithContext(ctx context.Context) SloRequestBasedSliDistributionCutRangePtrOutput {
-	return o.ApplyT(func(v SloRequestBasedSliDistributionCutRange) *SloRequestBasedSliDistributionCutRange {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloRequestBasedSliDistributionCutRange) *SloRequestBasedSliDistributionCutRange {
 		return &v
 	}).(SloRequestBasedSliDistributionCutRangePtrOutput)
 }
@@ -4873,7 +4955,13 @@ func (o SloRequestBasedSliDistributionCutRangePtrOutput) ToSloRequestBasedSliDis
 }
 
 func (o SloRequestBasedSliDistributionCutRangePtrOutput) Elem() SloRequestBasedSliDistributionCutRangeOutput {
-	return o.ApplyT(func(v *SloRequestBasedSliDistributionCutRange) SloRequestBasedSliDistributionCutRange { return *v }).(SloRequestBasedSliDistributionCutRangeOutput)
+	return o.ApplyT(func(v *SloRequestBasedSliDistributionCutRange) SloRequestBasedSliDistributionCutRange {
+		if v != nil {
+			return *v
+		}
+		var ret SloRequestBasedSliDistributionCutRange
+		return ret
+	}).(SloRequestBasedSliDistributionCutRangeOutput)
 }
 
 // max value for the range (inclusive). If not given,
@@ -5035,7 +5123,7 @@ func (o SloRequestBasedSliGoodTotalRatioOutput) ToSloRequestBasedSliGoodTotalRat
 }
 
 func (o SloRequestBasedSliGoodTotalRatioOutput) ToSloRequestBasedSliGoodTotalRatioPtrOutputWithContext(ctx context.Context) SloRequestBasedSliGoodTotalRatioPtrOutput {
-	return o.ApplyT(func(v SloRequestBasedSliGoodTotalRatio) *SloRequestBasedSliGoodTotalRatio {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloRequestBasedSliGoodTotalRatio) *SloRequestBasedSliGoodTotalRatio {
 		return &v
 	}).(SloRequestBasedSliGoodTotalRatioPtrOutput)
 }
@@ -5087,7 +5175,13 @@ func (o SloRequestBasedSliGoodTotalRatioPtrOutput) ToSloRequestBasedSliGoodTotal
 }
 
 func (o SloRequestBasedSliGoodTotalRatioPtrOutput) Elem() SloRequestBasedSliGoodTotalRatioOutput {
-	return o.ApplyT(func(v *SloRequestBasedSliGoodTotalRatio) SloRequestBasedSliGoodTotalRatio { return *v }).(SloRequestBasedSliGoodTotalRatioOutput)
+	return o.ApplyT(func(v *SloRequestBasedSliGoodTotalRatio) SloRequestBasedSliGoodTotalRatio {
+		if v != nil {
+			return *v
+		}
+		var ret SloRequestBasedSliGoodTotalRatio
+		return ret
+	}).(SloRequestBasedSliGoodTotalRatioOutput)
 }
 
 // A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
@@ -5294,7 +5388,7 @@ func (o SloWindowsBasedSliOutput) ToSloWindowsBasedSliPtrOutput() SloWindowsBase
 }
 
 func (o SloWindowsBasedSliOutput) ToSloWindowsBasedSliPtrOutputWithContext(ctx context.Context) SloWindowsBasedSliPtrOutput {
-	return o.ApplyT(func(v SloWindowsBasedSli) *SloWindowsBasedSli {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloWindowsBasedSli) *SloWindowsBasedSli {
 		return &v
 	}).(SloWindowsBasedSliPtrOutput)
 }
@@ -5365,7 +5459,13 @@ func (o SloWindowsBasedSliPtrOutput) ToSloWindowsBasedSliPtrOutputWithContext(ct
 }
 
 func (o SloWindowsBasedSliPtrOutput) Elem() SloWindowsBasedSliOutput {
-	return o.ApplyT(func(v *SloWindowsBasedSli) SloWindowsBasedSli { return *v }).(SloWindowsBasedSliOutput)
+	return o.ApplyT(func(v *SloWindowsBasedSli) SloWindowsBasedSli {
+		if v != nil {
+			return *v
+		}
+		var ret SloWindowsBasedSli
+		return ret
+	}).(SloWindowsBasedSliOutput)
 }
 
 // A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
@@ -5551,7 +5651,7 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdOutput) ToSloWindowsBasedSliGoo
 }
 
 func (o SloWindowsBasedSliGoodTotalRatioThresholdOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdPtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput {
-	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThreshold) *SloWindowsBasedSliGoodTotalRatioThreshold {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloWindowsBasedSliGoodTotalRatioThreshold) *SloWindowsBasedSliGoodTotalRatioThreshold {
 		return &v
 	}).(SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput)
 }
@@ -5595,7 +5695,11 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput) ToSloWindowsBasedSli
 
 func (o SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput) Elem() SloWindowsBasedSliGoodTotalRatioThresholdOutput {
 	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThreshold) SloWindowsBasedSliGoodTotalRatioThreshold {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret SloWindowsBasedSliGoodTotalRatioThreshold
+		return ret
 	}).(SloWindowsBasedSliGoodTotalRatioThresholdOutput)
 }
 
@@ -5776,7 +5880,7 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput) ToSl
 }
 
 func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput {
-	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance) *SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance) *SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance {
 		return &v
 	}).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput)
 }
@@ -5843,7 +5947,11 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput) T
 
 func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput) Elem() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput {
 	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance
+		return ret
 	}).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput)
 }
 
@@ -6007,7 +6115,7 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability
 }
 
 func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput {
-	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability) *SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability) *SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability {
 		return &v
 	}).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput)
 }
@@ -6035,7 +6143,11 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability
 
 func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput) Elem() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityOutput {
 	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability
+		return ret
 	}).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityOutput)
 }
 
@@ -6146,7 +6258,7 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutpu
 }
 
 func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput {
-	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency) *SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency) *SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency {
 		return &v
 	}).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput)
 }
@@ -6174,7 +6286,11 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOu
 
 func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput) Elem() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutput {
 	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency
+		return ret
 	}).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutput)
 }
 
@@ -6307,7 +6423,7 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutput) ToSloWindows
 }
 
 func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput {
-	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdPerformance) *SloWindowsBasedSliGoodTotalRatioThresholdPerformance {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloWindowsBasedSliGoodTotalRatioThresholdPerformance) *SloWindowsBasedSliGoodTotalRatioThresholdPerformance {
 		return &v
 	}).(SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput)
 }
@@ -6352,7 +6468,11 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput) ToSloWind
 
 func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput) Elem() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutput {
 	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThresholdPerformance) SloWindowsBasedSliGoodTotalRatioThresholdPerformance {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret SloWindowsBasedSliGoodTotalRatioThresholdPerformance
+		return ret
 	}).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutput)
 }
 
@@ -6501,7 +6621,7 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutpu
 }
 
 func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput {
-	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut) *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut) *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut {
 		return &v
 	}).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput)
 }
@@ -6545,7 +6665,11 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOu
 
 func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput) Elem() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutput {
 	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut
+		return ret
 	}).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutput)
 }
 
@@ -6683,7 +6807,7 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange
 }
 
 func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput {
-	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange) *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange) *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange {
 		return &v
 	}).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput)
 }
@@ -6722,7 +6846,11 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange
 
 func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput) Elem() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput {
 	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange
+		return ret
 	}).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput)
 }
 
@@ -6885,7 +7013,7 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioOutput
 }
 
 func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput {
-	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio) *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio) *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio {
 		return &v
 	}).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput)
 }
@@ -6944,7 +7072,11 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOut
 
 func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput) Elem() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioOutput {
 	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio
+		return ret
 	}).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioOutput)
 }
 
@@ -7116,7 +7248,7 @@ func (o SloWindowsBasedSliMetricMeanInRangeOutput) ToSloWindowsBasedSliMetricMea
 }
 
 func (o SloWindowsBasedSliMetricMeanInRangeOutput) ToSloWindowsBasedSliMetricMeanInRangePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliMetricMeanInRangePtrOutput {
-	return o.ApplyT(func(v SloWindowsBasedSliMetricMeanInRange) *SloWindowsBasedSliMetricMeanInRange {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloWindowsBasedSliMetricMeanInRange) *SloWindowsBasedSliMetricMeanInRange {
 		return &v
 	}).(SloWindowsBasedSliMetricMeanInRangePtrOutput)
 }
@@ -7158,7 +7290,13 @@ func (o SloWindowsBasedSliMetricMeanInRangePtrOutput) ToSloWindowsBasedSliMetric
 }
 
 func (o SloWindowsBasedSliMetricMeanInRangePtrOutput) Elem() SloWindowsBasedSliMetricMeanInRangeOutput {
-	return o.ApplyT(func(v *SloWindowsBasedSliMetricMeanInRange) SloWindowsBasedSliMetricMeanInRange { return *v }).(SloWindowsBasedSliMetricMeanInRangeOutput)
+	return o.ApplyT(func(v *SloWindowsBasedSliMetricMeanInRange) SloWindowsBasedSliMetricMeanInRange {
+		if v != nil {
+			return *v
+		}
+		var ret SloWindowsBasedSliMetricMeanInRange
+		return ret
+	}).(SloWindowsBasedSliMetricMeanInRangeOutput)
 }
 
 // Range of numerical values. The computed goodService
@@ -7298,7 +7436,7 @@ func (o SloWindowsBasedSliMetricMeanInRangeRangeOutput) ToSloWindowsBasedSliMetr
 }
 
 func (o SloWindowsBasedSliMetricMeanInRangeRangeOutput) ToSloWindowsBasedSliMetricMeanInRangeRangePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliMetricMeanInRangeRangePtrOutput {
-	return o.ApplyT(func(v SloWindowsBasedSliMetricMeanInRangeRange) *SloWindowsBasedSliMetricMeanInRangeRange {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloWindowsBasedSliMetricMeanInRangeRange) *SloWindowsBasedSliMetricMeanInRangeRange {
 		return &v
 	}).(SloWindowsBasedSliMetricMeanInRangeRangePtrOutput)
 }
@@ -7332,7 +7470,13 @@ func (o SloWindowsBasedSliMetricMeanInRangeRangePtrOutput) ToSloWindowsBasedSliM
 }
 
 func (o SloWindowsBasedSliMetricMeanInRangeRangePtrOutput) Elem() SloWindowsBasedSliMetricMeanInRangeRangeOutput {
-	return o.ApplyT(func(v *SloWindowsBasedSliMetricMeanInRangeRange) SloWindowsBasedSliMetricMeanInRangeRange { return *v }).(SloWindowsBasedSliMetricMeanInRangeRangeOutput)
+	return o.ApplyT(func(v *SloWindowsBasedSliMetricMeanInRangeRange) SloWindowsBasedSliMetricMeanInRangeRange {
+		if v != nil {
+			return *v
+		}
+		var ret SloWindowsBasedSliMetricMeanInRangeRange
+		return ret
+	}).(SloWindowsBasedSliMetricMeanInRangeRangeOutput)
 }
 
 // max value for the range (inclusive). If not given,
@@ -7480,7 +7624,7 @@ func (o SloWindowsBasedSliMetricSumInRangeOutput) ToSloWindowsBasedSliMetricSumI
 }
 
 func (o SloWindowsBasedSliMetricSumInRangeOutput) ToSloWindowsBasedSliMetricSumInRangePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliMetricSumInRangePtrOutput {
-	return o.ApplyT(func(v SloWindowsBasedSliMetricSumInRange) *SloWindowsBasedSliMetricSumInRange {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloWindowsBasedSliMetricSumInRange) *SloWindowsBasedSliMetricSumInRange {
 		return &v
 	}).(SloWindowsBasedSliMetricSumInRangePtrOutput)
 }
@@ -7522,7 +7666,13 @@ func (o SloWindowsBasedSliMetricSumInRangePtrOutput) ToSloWindowsBasedSliMetricS
 }
 
 func (o SloWindowsBasedSliMetricSumInRangePtrOutput) Elem() SloWindowsBasedSliMetricSumInRangeOutput {
-	return o.ApplyT(func(v *SloWindowsBasedSliMetricSumInRange) SloWindowsBasedSliMetricSumInRange { return *v }).(SloWindowsBasedSliMetricSumInRangeOutput)
+	return o.ApplyT(func(v *SloWindowsBasedSliMetricSumInRange) SloWindowsBasedSliMetricSumInRange {
+		if v != nil {
+			return *v
+		}
+		var ret SloWindowsBasedSliMetricSumInRange
+		return ret
+	}).(SloWindowsBasedSliMetricSumInRangeOutput)
 }
 
 // Range of numerical values. The computed goodService
@@ -7662,7 +7812,7 @@ func (o SloWindowsBasedSliMetricSumInRangeRangeOutput) ToSloWindowsBasedSliMetri
 }
 
 func (o SloWindowsBasedSliMetricSumInRangeRangeOutput) ToSloWindowsBasedSliMetricSumInRangeRangePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliMetricSumInRangeRangePtrOutput {
-	return o.ApplyT(func(v SloWindowsBasedSliMetricSumInRangeRange) *SloWindowsBasedSliMetricSumInRangeRange {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloWindowsBasedSliMetricSumInRangeRange) *SloWindowsBasedSliMetricSumInRangeRange {
 		return &v
 	}).(SloWindowsBasedSliMetricSumInRangeRangePtrOutput)
 }
@@ -7696,7 +7846,13 @@ func (o SloWindowsBasedSliMetricSumInRangeRangePtrOutput) ToSloWindowsBasedSliMe
 }
 
 func (o SloWindowsBasedSliMetricSumInRangeRangePtrOutput) Elem() SloWindowsBasedSliMetricSumInRangeRangeOutput {
-	return o.ApplyT(func(v *SloWindowsBasedSliMetricSumInRangeRange) SloWindowsBasedSliMetricSumInRangeRange { return *v }).(SloWindowsBasedSliMetricSumInRangeRangeOutput)
+	return o.ApplyT(func(v *SloWindowsBasedSliMetricSumInRangeRange) SloWindowsBasedSliMetricSumInRangeRange {
+		if v != nil {
+			return *v
+		}
+		var ret SloWindowsBasedSliMetricSumInRangeRange
+		return ret
+	}).(SloWindowsBasedSliMetricSumInRangeRangeOutput)
 }
 
 // max value for the range (inclusive). If not given,
@@ -7972,7 +8128,7 @@ func (o UptimeCheckConfigHttpCheckOutput) ToUptimeCheckConfigHttpCheckPtrOutput(
 }
 
 func (o UptimeCheckConfigHttpCheckOutput) ToUptimeCheckConfigHttpCheckPtrOutputWithContext(ctx context.Context) UptimeCheckConfigHttpCheckPtrOutput {
-	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *UptimeCheckConfigHttpCheck {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UptimeCheckConfigHttpCheck) *UptimeCheckConfigHttpCheck {
 		return &v
 	}).(UptimeCheckConfigHttpCheckPtrOutput)
 }
@@ -8046,7 +8202,13 @@ func (o UptimeCheckConfigHttpCheckPtrOutput) ToUptimeCheckConfigHttpCheckPtrOutp
 }
 
 func (o UptimeCheckConfigHttpCheckPtrOutput) Elem() UptimeCheckConfigHttpCheckOutput {
-	return o.ApplyT(func(v *UptimeCheckConfigHttpCheck) UptimeCheckConfigHttpCheck { return *v }).(UptimeCheckConfigHttpCheckOutput)
+	return o.ApplyT(func(v *UptimeCheckConfigHttpCheck) UptimeCheckConfigHttpCheck {
+		if v != nil {
+			return *v
+		}
+		var ret UptimeCheckConfigHttpCheck
+		return ret
+	}).(UptimeCheckConfigHttpCheckOutput)
 }
 
 // The authentication information. Optional when creating an HTTP check; defaults to empty.
@@ -8252,7 +8414,7 @@ func (o UptimeCheckConfigHttpCheckAuthInfoOutput) ToUptimeCheckConfigHttpCheckAu
 }
 
 func (o UptimeCheckConfigHttpCheckAuthInfoOutput) ToUptimeCheckConfigHttpCheckAuthInfoPtrOutputWithContext(ctx context.Context) UptimeCheckConfigHttpCheckAuthInfoPtrOutput {
-	return o.ApplyT(func(v UptimeCheckConfigHttpCheckAuthInfo) *UptimeCheckConfigHttpCheckAuthInfo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UptimeCheckConfigHttpCheckAuthInfo) *UptimeCheckConfigHttpCheckAuthInfo {
 		return &v
 	}).(UptimeCheckConfigHttpCheckAuthInfoPtrOutput)
 }
@@ -8283,7 +8445,13 @@ func (o UptimeCheckConfigHttpCheckAuthInfoPtrOutput) ToUptimeCheckConfigHttpChec
 }
 
 func (o UptimeCheckConfigHttpCheckAuthInfoPtrOutput) Elem() UptimeCheckConfigHttpCheckAuthInfoOutput {
-	return o.ApplyT(func(v *UptimeCheckConfigHttpCheckAuthInfo) UptimeCheckConfigHttpCheckAuthInfo { return *v }).(UptimeCheckConfigHttpCheckAuthInfoOutput)
+	return o.ApplyT(func(v *UptimeCheckConfigHttpCheckAuthInfo) UptimeCheckConfigHttpCheckAuthInfo {
+		if v != nil {
+			return *v
+		}
+		var ret UptimeCheckConfigHttpCheckAuthInfo
+		return ret
+	}).(UptimeCheckConfigHttpCheckAuthInfoOutput)
 }
 
 // The password to authenticate.
@@ -8404,7 +8572,7 @@ func (o UptimeCheckConfigMonitoredResourceOutput) ToUptimeCheckConfigMonitoredRe
 }
 
 func (o UptimeCheckConfigMonitoredResourceOutput) ToUptimeCheckConfigMonitoredResourcePtrOutputWithContext(ctx context.Context) UptimeCheckConfigMonitoredResourcePtrOutput {
-	return o.ApplyT(func(v UptimeCheckConfigMonitoredResource) *UptimeCheckConfigMonitoredResource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UptimeCheckConfigMonitoredResource) *UptimeCheckConfigMonitoredResource {
 		return &v
 	}).(UptimeCheckConfigMonitoredResourcePtrOutput)
 }
@@ -8434,7 +8602,13 @@ func (o UptimeCheckConfigMonitoredResourcePtrOutput) ToUptimeCheckConfigMonitore
 }
 
 func (o UptimeCheckConfigMonitoredResourcePtrOutput) Elem() UptimeCheckConfigMonitoredResourceOutput {
-	return o.ApplyT(func(v *UptimeCheckConfigMonitoredResource) UptimeCheckConfigMonitoredResource { return *v }).(UptimeCheckConfigMonitoredResourceOutput)
+	return o.ApplyT(func(v *UptimeCheckConfigMonitoredResource) UptimeCheckConfigMonitoredResource {
+		if v != nil {
+			return *v
+		}
+		var ret UptimeCheckConfigMonitoredResource
+		return ret
+	}).(UptimeCheckConfigMonitoredResourceOutput)
 }
 
 // Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "projectId", "instanceId", and "zone".
@@ -8556,7 +8730,7 @@ func (o UptimeCheckConfigResourceGroupOutput) ToUptimeCheckConfigResourceGroupPt
 }
 
 func (o UptimeCheckConfigResourceGroupOutput) ToUptimeCheckConfigResourceGroupPtrOutputWithContext(ctx context.Context) UptimeCheckConfigResourceGroupPtrOutput {
-	return o.ApplyT(func(v UptimeCheckConfigResourceGroup) *UptimeCheckConfigResourceGroup {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UptimeCheckConfigResourceGroup) *UptimeCheckConfigResourceGroup {
 		return &v
 	}).(UptimeCheckConfigResourceGroupPtrOutput)
 }
@@ -8587,7 +8761,13 @@ func (o UptimeCheckConfigResourceGroupPtrOutput) ToUptimeCheckConfigResourceGrou
 }
 
 func (o UptimeCheckConfigResourceGroupPtrOutput) Elem() UptimeCheckConfigResourceGroupOutput {
-	return o.ApplyT(func(v *UptimeCheckConfigResourceGroup) UptimeCheckConfigResourceGroup { return *v }).(UptimeCheckConfigResourceGroupOutput)
+	return o.ApplyT(func(v *UptimeCheckConfigResourceGroup) UptimeCheckConfigResourceGroup {
+		if v != nil {
+			return *v
+		}
+		var ret UptimeCheckConfigResourceGroup
+		return ret
+	}).(UptimeCheckConfigResourceGroupOutput)
 }
 
 // The group of resources being monitored. Should be the `name` of a group
@@ -8704,7 +8884,7 @@ func (o UptimeCheckConfigTcpCheckOutput) ToUptimeCheckConfigTcpCheckPtrOutput() 
 }
 
 func (o UptimeCheckConfigTcpCheckOutput) ToUptimeCheckConfigTcpCheckPtrOutputWithContext(ctx context.Context) UptimeCheckConfigTcpCheckPtrOutput {
-	return o.ApplyT(func(v UptimeCheckConfigTcpCheck) *UptimeCheckConfigTcpCheck {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UptimeCheckConfigTcpCheck) *UptimeCheckConfigTcpCheck {
 		return &v
 	}).(UptimeCheckConfigTcpCheckPtrOutput)
 }
@@ -8729,7 +8909,13 @@ func (o UptimeCheckConfigTcpCheckPtrOutput) ToUptimeCheckConfigTcpCheckPtrOutput
 }
 
 func (o UptimeCheckConfigTcpCheckPtrOutput) Elem() UptimeCheckConfigTcpCheckOutput {
-	return o.ApplyT(func(v *UptimeCheckConfigTcpCheck) UptimeCheckConfigTcpCheck { return *v }).(UptimeCheckConfigTcpCheckOutput)
+	return o.ApplyT(func(v *UptimeCheckConfigTcpCheck) UptimeCheckConfigTcpCheck {
+		if v != nil {
+			return *v
+		}
+		var ret UptimeCheckConfigTcpCheck
+		return ret
+	}).(UptimeCheckConfigTcpCheckOutput)
 }
 
 // The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.

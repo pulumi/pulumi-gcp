@@ -245,7 +245,7 @@ type BillingAccountBucketConfigArrayInput interface {
 type BillingAccountBucketConfigArray []BillingAccountBucketConfigInput
 
 func (BillingAccountBucketConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*BillingAccountBucketConfig)(nil))
+	return reflect.TypeOf((*[]*BillingAccountBucketConfig)(nil)).Elem()
 }
 
 func (i BillingAccountBucketConfigArray) ToBillingAccountBucketConfigArrayOutput() BillingAccountBucketConfigArrayOutput {
@@ -270,7 +270,7 @@ type BillingAccountBucketConfigMapInput interface {
 type BillingAccountBucketConfigMap map[string]BillingAccountBucketConfigInput
 
 func (BillingAccountBucketConfigMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*BillingAccountBucketConfig)(nil))
+	return reflect.TypeOf((*map[string]*BillingAccountBucketConfig)(nil)).Elem()
 }
 
 func (i BillingAccountBucketConfigMap) ToBillingAccountBucketConfigMapOutput() BillingAccountBucketConfigMapOutput {
@@ -281,9 +281,7 @@ func (i BillingAccountBucketConfigMap) ToBillingAccountBucketConfigMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountBucketConfigMapOutput)
 }
 
-type BillingAccountBucketConfigOutput struct {
-	*pulumi.OutputState
-}
+type BillingAccountBucketConfigOutput struct{ *pulumi.OutputState }
 
 func (BillingAccountBucketConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BillingAccountBucketConfig)(nil))
@@ -302,14 +300,12 @@ func (o BillingAccountBucketConfigOutput) ToBillingAccountBucketConfigPtrOutput(
 }
 
 func (o BillingAccountBucketConfigOutput) ToBillingAccountBucketConfigPtrOutputWithContext(ctx context.Context) BillingAccountBucketConfigPtrOutput {
-	return o.ApplyT(func(v BillingAccountBucketConfig) *BillingAccountBucketConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BillingAccountBucketConfig) *BillingAccountBucketConfig {
 		return &v
 	}).(BillingAccountBucketConfigPtrOutput)
 }
 
-type BillingAccountBucketConfigPtrOutput struct {
-	*pulumi.OutputState
-}
+type BillingAccountBucketConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (BillingAccountBucketConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**BillingAccountBucketConfig)(nil))
@@ -321,6 +317,16 @@ func (o BillingAccountBucketConfigPtrOutput) ToBillingAccountBucketConfigPtrOutp
 
 func (o BillingAccountBucketConfigPtrOutput) ToBillingAccountBucketConfigPtrOutputWithContext(ctx context.Context) BillingAccountBucketConfigPtrOutput {
 	return o
+}
+
+func (o BillingAccountBucketConfigPtrOutput) Elem() BillingAccountBucketConfigOutput {
+	return o.ApplyT(func(v *BillingAccountBucketConfig) BillingAccountBucketConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BillingAccountBucketConfig
+		return ret
+	}).(BillingAccountBucketConfigOutput)
 }
 
 type BillingAccountBucketConfigArrayOutput struct{ *pulumi.OutputState }

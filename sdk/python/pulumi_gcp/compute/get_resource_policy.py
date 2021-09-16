@@ -13,6 +13,7 @@ __all__ = [
     'GetResourcePolicyResult',
     'AwaitableGetResourcePolicyResult',
     'get_resource_policy',
+    'get_resource_policy_output',
 ]
 
 @pulumi.output_type
@@ -161,3 +162,27 @@ def get_resource_policy(name: Optional[str] = None,
         region=__ret__.region,
         self_link=__ret__.self_link,
         snapshot_schedule_policies=__ret__.snapshot_schedule_policies)
+
+
+@_utilities.lift_output_func(get_resource_policy)
+def get_resource_policy_output(name: Optional[pulumi.Input[str]] = None,
+                               project: Optional[pulumi.Input[Optional[str]]] = None,
+                               region: Optional[pulumi.Input[Optional[str]]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetResourcePolicyResult]:
+    """
+    Provide access to a Resource Policy's attributes. For more information see [the official documentation](https://cloud.google.com/compute/docs/disks/scheduled-snapshots) or the [API](https://cloud.google.com/compute/docs/reference/rest/beta/resourcePolicies).
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    daily = gcp.compute.get_resource_policy(name="daily",
+        region="us-central1")
+    ```
+
+
+    :param str name: The name of the Resource Policy.
+    :param str project: Project from which to list the Resource Policy. Defaults to project declared in the provider.
+    :param str region: Region where the Resource Policy resides.
+    """
+    ...

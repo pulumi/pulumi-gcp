@@ -4,6 +4,9 @@
 package serviceaccount
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -69,4 +72,75 @@ type GetAccountKeyResult struct {
 	// The public key, base64 encoded
 	PublicKey     string  `pulumi:"publicKey"`
 	PublicKeyType *string `pulumi:"publicKeyType"`
+}
+
+func GetAccountKeyOutput(ctx *pulumi.Context, args GetAccountKeyOutputArgs, opts ...pulumi.InvokeOption) GetAccountKeyResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetAccountKeyResult, error) {
+			args := v.(GetAccountKeyArgs)
+			r, err := GetAccountKey(ctx, &args, opts...)
+			return *r, err
+		}).(GetAccountKeyResultOutput)
+}
+
+// A collection of arguments for invoking getAccountKey.
+type GetAccountKeyOutputArgs struct {
+	// The name of the service account key. This must have format
+	// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{KEYID}`, where `{ACCOUNT}`
+	// is the email address or unique id of the service account.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The ID of the project that the service account will be created in.
+	// Defaults to the provider project configuration.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
+	PublicKeyType pulumi.StringPtrInput `pulumi:"publicKeyType"`
+}
+
+func (GetAccountKeyOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountKeyArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAccountKey.
+type GetAccountKeyResultOutput struct{ *pulumi.OutputState }
+
+func (GetAccountKeyResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountKeyResult)(nil)).Elem()
+}
+
+func (o GetAccountKeyResultOutput) ToGetAccountKeyResultOutput() GetAccountKeyResultOutput {
+	return o
+}
+
+func (o GetAccountKeyResultOutput) ToGetAccountKeyResultOutputWithContext(ctx context.Context) GetAccountKeyResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAccountKeyResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountKeyResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetAccountKeyResultOutput) KeyAlgorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountKeyResult) string { return v.KeyAlgorithm }).(pulumi.StringOutput)
+}
+
+func (o GetAccountKeyResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountKeyResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetAccountKeyResultOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountKeyResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+// The public key, base64 encoded
+func (o GetAccountKeyResultOutput) PublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountKeyResult) string { return v.PublicKey }).(pulumi.StringOutput)
+}
+
+func (o GetAccountKeyResultOutput) PublicKeyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountKeyResult) *string { return v.PublicKeyType }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAccountKeyResultOutput{})
 }

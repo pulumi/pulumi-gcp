@@ -4,6 +4,9 @@
 package dns
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,4 +70,67 @@ type GetKeysResult struct {
 	Project        string                 `pulumi:"project"`
 	// A list of Zone-signing key (ZSK) records. Structure is documented below.
 	ZoneSigningKeys []GetKeysZoneSigningKey `pulumi:"zoneSigningKeys"`
+}
+
+func GetKeysOutput(ctx *pulumi.Context, args GetKeysOutputArgs, opts ...pulumi.InvokeOption) GetKeysResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetKeysResult, error) {
+			args := v.(GetKeysArgs)
+			r, err := GetKeys(ctx, &args, opts...)
+			return *r, err
+		}).(GetKeysResultOutput)
+}
+
+// A collection of arguments for invoking getKeys.
+type GetKeysOutputArgs struct {
+	// The name or id of the Cloud DNS managed zone.
+	ManagedZone pulumi.StringInput `pulumi:"managedZone"`
+	// The ID of the project in which the resource belongs. If `project` is not provided, the provider project is used.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (GetKeysOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeysArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getKeys.
+type GetKeysResultOutput struct{ *pulumi.OutputState }
+
+func (GetKeysResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeysResult)(nil)).Elem()
+}
+
+func (o GetKeysResultOutput) ToGetKeysResultOutput() GetKeysResultOutput {
+	return o
+}
+
+func (o GetKeysResultOutput) ToGetKeysResultOutputWithContext(ctx context.Context) GetKeysResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetKeysResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of Key-signing key (KSK) records. Structure is documented below. Additionally, the DS record is provided:
+func (o GetKeysResultOutput) KeySigningKeys() GetKeysKeySigningKeyArrayOutput {
+	return o.ApplyT(func(v GetKeysResult) []GetKeysKeySigningKey { return v.KeySigningKeys }).(GetKeysKeySigningKeyArrayOutput)
+}
+
+func (o GetKeysResultOutput) ManagedZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysResult) string { return v.ManagedZone }).(pulumi.StringOutput)
+}
+
+func (o GetKeysResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// A list of Zone-signing key (ZSK) records. Structure is documented below.
+func (o GetKeysResultOutput) ZoneSigningKeys() GetKeysZoneSigningKeyArrayOutput {
+	return o.ApplyT(func(v GetKeysResult) []GetKeysZoneSigningKey { return v.ZoneSigningKeys }).(GetKeysZoneSigningKeyArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetKeysResultOutput{})
 }

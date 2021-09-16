@@ -646,7 +646,7 @@ type AuthorityArrayInput interface {
 type AuthorityArray []AuthorityInput
 
 func (AuthorityArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Authority)(nil))
+	return reflect.TypeOf((*[]*Authority)(nil)).Elem()
 }
 
 func (i AuthorityArray) ToAuthorityArrayOutput() AuthorityArrayOutput {
@@ -671,7 +671,7 @@ type AuthorityMapInput interface {
 type AuthorityMap map[string]AuthorityInput
 
 func (AuthorityMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Authority)(nil))
+	return reflect.TypeOf((*map[string]*Authority)(nil)).Elem()
 }
 
 func (i AuthorityMap) ToAuthorityMapOutput() AuthorityMapOutput {
@@ -682,9 +682,7 @@ func (i AuthorityMap) ToAuthorityMapOutputWithContext(ctx context.Context) Autho
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorityMapOutput)
 }
 
-type AuthorityOutput struct {
-	*pulumi.OutputState
-}
+type AuthorityOutput struct{ *pulumi.OutputState }
 
 func (AuthorityOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Authority)(nil))
@@ -703,14 +701,12 @@ func (o AuthorityOutput) ToAuthorityPtrOutput() AuthorityPtrOutput {
 }
 
 func (o AuthorityOutput) ToAuthorityPtrOutputWithContext(ctx context.Context) AuthorityPtrOutput {
-	return o.ApplyT(func(v Authority) *Authority {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Authority) *Authority {
 		return &v
 	}).(AuthorityPtrOutput)
 }
 
-type AuthorityPtrOutput struct {
-	*pulumi.OutputState
-}
+type AuthorityPtrOutput struct{ *pulumi.OutputState }
 
 func (AuthorityPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Authority)(nil))
@@ -722,6 +718,16 @@ func (o AuthorityPtrOutput) ToAuthorityPtrOutput() AuthorityPtrOutput {
 
 func (o AuthorityPtrOutput) ToAuthorityPtrOutputWithContext(ctx context.Context) AuthorityPtrOutput {
 	return o
+}
+
+func (o AuthorityPtrOutput) Elem() AuthorityOutput {
+	return o.ApplyT(func(v *Authority) Authority {
+		if v != nil {
+			return *v
+		}
+		var ret Authority
+		return ret
+	}).(AuthorityOutput)
 }
 
 type AuthorityArrayOutput struct{ *pulumi.OutputState }

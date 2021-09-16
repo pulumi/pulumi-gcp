@@ -304,7 +304,7 @@ type OccurenceArrayInput interface {
 type OccurenceArray []OccurenceInput
 
 func (OccurenceArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Occurence)(nil))
+	return reflect.TypeOf((*[]*Occurence)(nil)).Elem()
 }
 
 func (i OccurenceArray) ToOccurenceArrayOutput() OccurenceArrayOutput {
@@ -329,7 +329,7 @@ type OccurenceMapInput interface {
 type OccurenceMap map[string]OccurenceInput
 
 func (OccurenceMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Occurence)(nil))
+	return reflect.TypeOf((*map[string]*Occurence)(nil)).Elem()
 }
 
 func (i OccurenceMap) ToOccurenceMapOutput() OccurenceMapOutput {
@@ -340,9 +340,7 @@ func (i OccurenceMap) ToOccurenceMapOutputWithContext(ctx context.Context) Occur
 	return pulumi.ToOutputWithContext(ctx, i).(OccurenceMapOutput)
 }
 
-type OccurenceOutput struct {
-	*pulumi.OutputState
-}
+type OccurenceOutput struct{ *pulumi.OutputState }
 
 func (OccurenceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Occurence)(nil))
@@ -361,14 +359,12 @@ func (o OccurenceOutput) ToOccurencePtrOutput() OccurencePtrOutput {
 }
 
 func (o OccurenceOutput) ToOccurencePtrOutputWithContext(ctx context.Context) OccurencePtrOutput {
-	return o.ApplyT(func(v Occurence) *Occurence {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Occurence) *Occurence {
 		return &v
 	}).(OccurencePtrOutput)
 }
 
-type OccurencePtrOutput struct {
-	*pulumi.OutputState
-}
+type OccurencePtrOutput struct{ *pulumi.OutputState }
 
 func (OccurencePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Occurence)(nil))
@@ -380,6 +376,16 @@ func (o OccurencePtrOutput) ToOccurencePtrOutput() OccurencePtrOutput {
 
 func (o OccurencePtrOutput) ToOccurencePtrOutputWithContext(ctx context.Context) OccurencePtrOutput {
 	return o
+}
+
+func (o OccurencePtrOutput) Elem() OccurenceOutput {
+	return o.ApplyT(func(v *Occurence) Occurence {
+		if v != nil {
+			return *v
+		}
+		var ret Occurence
+		return ret
+	}).(OccurenceOutput)
 }
 
 type OccurenceArrayOutput struct{ *pulumi.OutputState }

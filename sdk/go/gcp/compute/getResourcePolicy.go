@@ -4,6 +4,9 @@
 package compute
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -64,4 +67,91 @@ type LookupResourcePolicyResult struct {
 	// The URI of the resource.
 	SelfLink                 string                                    `pulumi:"selfLink"`
 	SnapshotSchedulePolicies []GetResourcePolicySnapshotSchedulePolicy `pulumi:"snapshotSchedulePolicies"`
+}
+
+func LookupResourcePolicyOutput(ctx *pulumi.Context, args LookupResourcePolicyOutputArgs, opts ...pulumi.InvokeOption) LookupResourcePolicyResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupResourcePolicyResult, error) {
+			args := v.(LookupResourcePolicyArgs)
+			r, err := LookupResourcePolicy(ctx, &args, opts...)
+			return *r, err
+		}).(LookupResourcePolicyResultOutput)
+}
+
+// A collection of arguments for invoking getResourcePolicy.
+type LookupResourcePolicyOutputArgs struct {
+	// The name of the Resource Policy.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Project from which to list the Resource Policy. Defaults to project declared in the provider.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// Region where the Resource Policy resides.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (LookupResourcePolicyOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupResourcePolicyArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getResourcePolicy.
+type LookupResourcePolicyResultOutput struct{ *pulumi.OutputState }
+
+func (LookupResourcePolicyResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupResourcePolicyResult)(nil)).Elem()
+}
+
+func (o LookupResourcePolicyResultOutput) ToLookupResourcePolicyResultOutput() LookupResourcePolicyResultOutput {
+	return o
+}
+
+func (o LookupResourcePolicyResultOutput) ToLookupResourcePolicyResultOutputWithContext(ctx context.Context) LookupResourcePolicyResultOutput {
+	return o
+}
+
+// Description of this Resource Policy.
+func (o LookupResourcePolicyResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourcePolicyResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupResourcePolicyResultOutput) GroupPlacementPolicies() GetResourcePolicyGroupPlacementPolicyArrayOutput {
+	return o.ApplyT(func(v LookupResourcePolicyResult) []GetResourcePolicyGroupPlacementPolicy {
+		return v.GroupPlacementPolicies
+	}).(GetResourcePolicyGroupPlacementPolicyArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupResourcePolicyResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourcePolicyResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupResourcePolicyResultOutput) InstanceSchedulePolicies() GetResourcePolicyInstanceSchedulePolicyArrayOutput {
+	return o.ApplyT(func(v LookupResourcePolicyResult) []GetResourcePolicyInstanceSchedulePolicy {
+		return v.InstanceSchedulePolicies
+	}).(GetResourcePolicyInstanceSchedulePolicyArrayOutput)
+}
+
+func (o LookupResourcePolicyResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourcePolicyResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupResourcePolicyResultOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupResourcePolicyResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupResourcePolicyResultOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupResourcePolicyResult) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// The URI of the resource.
+func (o LookupResourcePolicyResultOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourcePolicyResult) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+func (o LookupResourcePolicyResultOutput) SnapshotSchedulePolicies() GetResourcePolicySnapshotSchedulePolicyArrayOutput {
+	return o.ApplyT(func(v LookupResourcePolicyResult) []GetResourcePolicySnapshotSchedulePolicy {
+		return v.SnapshotSchedulePolicies
+	}).(GetResourcePolicySnapshotSchedulePolicyArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupResourcePolicyResultOutput{})
 }

@@ -339,7 +339,7 @@ type DatabaseIAMBindingArrayInput interface {
 type DatabaseIAMBindingArray []DatabaseIAMBindingInput
 
 func (DatabaseIAMBindingArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*DatabaseIAMBinding)(nil))
+	return reflect.TypeOf((*[]*DatabaseIAMBinding)(nil)).Elem()
 }
 
 func (i DatabaseIAMBindingArray) ToDatabaseIAMBindingArrayOutput() DatabaseIAMBindingArrayOutput {
@@ -364,7 +364,7 @@ type DatabaseIAMBindingMapInput interface {
 type DatabaseIAMBindingMap map[string]DatabaseIAMBindingInput
 
 func (DatabaseIAMBindingMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*DatabaseIAMBinding)(nil))
+	return reflect.TypeOf((*map[string]*DatabaseIAMBinding)(nil)).Elem()
 }
 
 func (i DatabaseIAMBindingMap) ToDatabaseIAMBindingMapOutput() DatabaseIAMBindingMapOutput {
@@ -375,9 +375,7 @@ func (i DatabaseIAMBindingMap) ToDatabaseIAMBindingMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMBindingMapOutput)
 }
 
-type DatabaseIAMBindingOutput struct {
-	*pulumi.OutputState
-}
+type DatabaseIAMBindingOutput struct{ *pulumi.OutputState }
 
 func (DatabaseIAMBindingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DatabaseIAMBinding)(nil))
@@ -396,14 +394,12 @@ func (o DatabaseIAMBindingOutput) ToDatabaseIAMBindingPtrOutput() DatabaseIAMBin
 }
 
 func (o DatabaseIAMBindingOutput) ToDatabaseIAMBindingPtrOutputWithContext(ctx context.Context) DatabaseIAMBindingPtrOutput {
-	return o.ApplyT(func(v DatabaseIAMBinding) *DatabaseIAMBinding {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseIAMBinding) *DatabaseIAMBinding {
 		return &v
 	}).(DatabaseIAMBindingPtrOutput)
 }
 
-type DatabaseIAMBindingPtrOutput struct {
-	*pulumi.OutputState
-}
+type DatabaseIAMBindingPtrOutput struct{ *pulumi.OutputState }
 
 func (DatabaseIAMBindingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DatabaseIAMBinding)(nil))
@@ -415,6 +411,16 @@ func (o DatabaseIAMBindingPtrOutput) ToDatabaseIAMBindingPtrOutput() DatabaseIAM
 
 func (o DatabaseIAMBindingPtrOutput) ToDatabaseIAMBindingPtrOutputWithContext(ctx context.Context) DatabaseIAMBindingPtrOutput {
 	return o
+}
+
+func (o DatabaseIAMBindingPtrOutput) Elem() DatabaseIAMBindingOutput {
+	return o.ApplyT(func(v *DatabaseIAMBinding) DatabaseIAMBinding {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseIAMBinding
+		return ret
+	}).(DatabaseIAMBindingOutput)
 }
 
 type DatabaseIAMBindingArrayOutput struct{ *pulumi.OutputState }

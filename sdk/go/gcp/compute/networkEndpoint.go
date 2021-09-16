@@ -335,7 +335,7 @@ type NetworkEndpointArrayInput interface {
 type NetworkEndpointArray []NetworkEndpointInput
 
 func (NetworkEndpointArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*NetworkEndpoint)(nil))
+	return reflect.TypeOf((*[]*NetworkEndpoint)(nil)).Elem()
 }
 
 func (i NetworkEndpointArray) ToNetworkEndpointArrayOutput() NetworkEndpointArrayOutput {
@@ -360,7 +360,7 @@ type NetworkEndpointMapInput interface {
 type NetworkEndpointMap map[string]NetworkEndpointInput
 
 func (NetworkEndpointMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*NetworkEndpoint)(nil))
+	return reflect.TypeOf((*map[string]*NetworkEndpoint)(nil)).Elem()
 }
 
 func (i NetworkEndpointMap) ToNetworkEndpointMapOutput() NetworkEndpointMapOutput {
@@ -371,9 +371,7 @@ func (i NetworkEndpointMap) ToNetworkEndpointMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointMapOutput)
 }
 
-type NetworkEndpointOutput struct {
-	*pulumi.OutputState
-}
+type NetworkEndpointOutput struct{ *pulumi.OutputState }
 
 func (NetworkEndpointOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*NetworkEndpoint)(nil))
@@ -392,14 +390,12 @@ func (o NetworkEndpointOutput) ToNetworkEndpointPtrOutput() NetworkEndpointPtrOu
 }
 
 func (o NetworkEndpointOutput) ToNetworkEndpointPtrOutputWithContext(ctx context.Context) NetworkEndpointPtrOutput {
-	return o.ApplyT(func(v NetworkEndpoint) *NetworkEndpoint {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkEndpoint) *NetworkEndpoint {
 		return &v
 	}).(NetworkEndpointPtrOutput)
 }
 
-type NetworkEndpointPtrOutput struct {
-	*pulumi.OutputState
-}
+type NetworkEndpointPtrOutput struct{ *pulumi.OutputState }
 
 func (NetworkEndpointPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**NetworkEndpoint)(nil))
@@ -411,6 +407,16 @@ func (o NetworkEndpointPtrOutput) ToNetworkEndpointPtrOutput() NetworkEndpointPt
 
 func (o NetworkEndpointPtrOutput) ToNetworkEndpointPtrOutputWithContext(ctx context.Context) NetworkEndpointPtrOutput {
 	return o
+}
+
+func (o NetworkEndpointPtrOutput) Elem() NetworkEndpointOutput {
+	return o.ApplyT(func(v *NetworkEndpoint) NetworkEndpoint {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkEndpoint
+		return ret
+	}).(NetworkEndpointOutput)
 }
 
 type NetworkEndpointArrayOutput struct{ *pulumi.OutputState }

@@ -318,7 +318,7 @@ type ObjectAccessControlArrayInput interface {
 type ObjectAccessControlArray []ObjectAccessControlInput
 
 func (ObjectAccessControlArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ObjectAccessControl)(nil))
+	return reflect.TypeOf((*[]*ObjectAccessControl)(nil)).Elem()
 }
 
 func (i ObjectAccessControlArray) ToObjectAccessControlArrayOutput() ObjectAccessControlArrayOutput {
@@ -343,7 +343,7 @@ type ObjectAccessControlMapInput interface {
 type ObjectAccessControlMap map[string]ObjectAccessControlInput
 
 func (ObjectAccessControlMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ObjectAccessControl)(nil))
+	return reflect.TypeOf((*map[string]*ObjectAccessControl)(nil)).Elem()
 }
 
 func (i ObjectAccessControlMap) ToObjectAccessControlMapOutput() ObjectAccessControlMapOutput {
@@ -354,9 +354,7 @@ func (i ObjectAccessControlMap) ToObjectAccessControlMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectAccessControlMapOutput)
 }
 
-type ObjectAccessControlOutput struct {
-	*pulumi.OutputState
-}
+type ObjectAccessControlOutput struct{ *pulumi.OutputState }
 
 func (ObjectAccessControlOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ObjectAccessControl)(nil))
@@ -375,14 +373,12 @@ func (o ObjectAccessControlOutput) ToObjectAccessControlPtrOutput() ObjectAccess
 }
 
 func (o ObjectAccessControlOutput) ToObjectAccessControlPtrOutputWithContext(ctx context.Context) ObjectAccessControlPtrOutput {
-	return o.ApplyT(func(v ObjectAccessControl) *ObjectAccessControl {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ObjectAccessControl) *ObjectAccessControl {
 		return &v
 	}).(ObjectAccessControlPtrOutput)
 }
 
-type ObjectAccessControlPtrOutput struct {
-	*pulumi.OutputState
-}
+type ObjectAccessControlPtrOutput struct{ *pulumi.OutputState }
 
 func (ObjectAccessControlPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ObjectAccessControl)(nil))
@@ -394,6 +390,16 @@ func (o ObjectAccessControlPtrOutput) ToObjectAccessControlPtrOutput() ObjectAcc
 
 func (o ObjectAccessControlPtrOutput) ToObjectAccessControlPtrOutputWithContext(ctx context.Context) ObjectAccessControlPtrOutput {
 	return o
+}
+
+func (o ObjectAccessControlPtrOutput) Elem() ObjectAccessControlOutput {
+	return o.ApplyT(func(v *ObjectAccessControl) ObjectAccessControl {
+		if v != nil {
+			return *v
+		}
+		var ret ObjectAccessControl
+		return ret
+	}).(ObjectAccessControlOutput)
 }
 
 type ObjectAccessControlArrayOutput struct{ *pulumi.OutputState }

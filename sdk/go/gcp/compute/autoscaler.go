@@ -470,7 +470,7 @@ type AutoscalerArrayInput interface {
 type AutoscalerArray []AutoscalerInput
 
 func (AutoscalerArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Autoscaler)(nil))
+	return reflect.TypeOf((*[]*Autoscaler)(nil)).Elem()
 }
 
 func (i AutoscalerArray) ToAutoscalerArrayOutput() AutoscalerArrayOutput {
@@ -495,7 +495,7 @@ type AutoscalerMapInput interface {
 type AutoscalerMap map[string]AutoscalerInput
 
 func (AutoscalerMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Autoscaler)(nil))
+	return reflect.TypeOf((*map[string]*Autoscaler)(nil)).Elem()
 }
 
 func (i AutoscalerMap) ToAutoscalerMapOutput() AutoscalerMapOutput {
@@ -506,9 +506,7 @@ func (i AutoscalerMap) ToAutoscalerMapOutputWithContext(ctx context.Context) Aut
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalerMapOutput)
 }
 
-type AutoscalerOutput struct {
-	*pulumi.OutputState
-}
+type AutoscalerOutput struct{ *pulumi.OutputState }
 
 func (AutoscalerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Autoscaler)(nil))
@@ -527,14 +525,12 @@ func (o AutoscalerOutput) ToAutoscalerPtrOutput() AutoscalerPtrOutput {
 }
 
 func (o AutoscalerOutput) ToAutoscalerPtrOutputWithContext(ctx context.Context) AutoscalerPtrOutput {
-	return o.ApplyT(func(v Autoscaler) *Autoscaler {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Autoscaler) *Autoscaler {
 		return &v
 	}).(AutoscalerPtrOutput)
 }
 
-type AutoscalerPtrOutput struct {
-	*pulumi.OutputState
-}
+type AutoscalerPtrOutput struct{ *pulumi.OutputState }
 
 func (AutoscalerPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Autoscaler)(nil))
@@ -546,6 +542,16 @@ func (o AutoscalerPtrOutput) ToAutoscalerPtrOutput() AutoscalerPtrOutput {
 
 func (o AutoscalerPtrOutput) ToAutoscalerPtrOutputWithContext(ctx context.Context) AutoscalerPtrOutput {
 	return o
+}
+
+func (o AutoscalerPtrOutput) Elem() AutoscalerOutput {
+	return o.ApplyT(func(v *Autoscaler) Autoscaler {
+		if v != nil {
+			return *v
+		}
+		var ret Autoscaler
+		return ret
+	}).(AutoscalerOutput)
 }
 
 type AutoscalerArrayOutput struct{ *pulumi.OutputState }

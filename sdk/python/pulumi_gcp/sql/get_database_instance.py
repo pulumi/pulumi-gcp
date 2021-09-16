@@ -13,6 +13,7 @@ __all__ = [
     'GetDatabaseInstanceResult',
     'AwaitableGetDatabaseInstanceResult',
     'get_database_instance',
+    'get_database_instance_output',
 ]
 
 @pulumi.output_type
@@ -273,3 +274,26 @@ def get_database_instance(name: Optional[str] = None,
         server_ca_certs=__ret__.server_ca_certs,
         service_account_email_address=__ret__.service_account_email_address,
         settings=__ret__.settings)
+
+
+@_utilities.lift_output_func(get_database_instance)
+def get_database_instance_output(name: Optional[pulumi.Input[str]] = None,
+                                 project: Optional[pulumi.Input[Optional[str]]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseInstanceResult]:
+    """
+    Use this data source to get information about a Cloud SQL instance.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    qa = gcp.sql.get_database_instance(name="test-sql-instance")
+    ```
+
+
+    :param str name: The name of the instance.
+    :param str project: The ID of the project in which the resource belongs.
+    """
+    ...

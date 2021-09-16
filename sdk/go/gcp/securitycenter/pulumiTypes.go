@@ -139,7 +139,7 @@ func (o NotificationConfigStreamingConfigOutput) ToNotificationConfigStreamingCo
 }
 
 func (o NotificationConfigStreamingConfigOutput) ToNotificationConfigStreamingConfigPtrOutputWithContext(ctx context.Context) NotificationConfigStreamingConfigPtrOutput {
-	return o.ApplyT(func(v NotificationConfigStreamingConfig) *NotificationConfigStreamingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotificationConfigStreamingConfig) *NotificationConfigStreamingConfig {
 		return &v
 	}).(NotificationConfigStreamingConfigPtrOutput)
 }
@@ -182,7 +182,13 @@ func (o NotificationConfigStreamingConfigPtrOutput) ToNotificationConfigStreamin
 }
 
 func (o NotificationConfigStreamingConfigPtrOutput) Elem() NotificationConfigStreamingConfigOutput {
-	return o.ApplyT(func(v *NotificationConfigStreamingConfig) NotificationConfigStreamingConfig { return *v }).(NotificationConfigStreamingConfigOutput)
+	return o.ApplyT(func(v *NotificationConfigStreamingConfig) NotificationConfigStreamingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NotificationConfigStreamingConfig
+		return ret
+	}).(NotificationConfigStreamingConfigOutput)
 }
 
 // Expression that defines the filter to apply across create/update
