@@ -493,7 +493,7 @@ type DataTransferConfigArrayInput interface {
 type DataTransferConfigArray []DataTransferConfigInput
 
 func (DataTransferConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*DataTransferConfig)(nil))
+	return reflect.TypeOf((*[]*DataTransferConfig)(nil)).Elem()
 }
 
 func (i DataTransferConfigArray) ToDataTransferConfigArrayOutput() DataTransferConfigArrayOutput {
@@ -518,7 +518,7 @@ type DataTransferConfigMapInput interface {
 type DataTransferConfigMap map[string]DataTransferConfigInput
 
 func (DataTransferConfigMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*DataTransferConfig)(nil))
+	return reflect.TypeOf((*map[string]*DataTransferConfig)(nil)).Elem()
 }
 
 func (i DataTransferConfigMap) ToDataTransferConfigMapOutput() DataTransferConfigMapOutput {
@@ -529,9 +529,7 @@ func (i DataTransferConfigMap) ToDataTransferConfigMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(DataTransferConfigMapOutput)
 }
 
-type DataTransferConfigOutput struct {
-	*pulumi.OutputState
-}
+type DataTransferConfigOutput struct{ *pulumi.OutputState }
 
 func (DataTransferConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DataTransferConfig)(nil))
@@ -550,14 +548,12 @@ func (o DataTransferConfigOutput) ToDataTransferConfigPtrOutput() DataTransferCo
 }
 
 func (o DataTransferConfigOutput) ToDataTransferConfigPtrOutputWithContext(ctx context.Context) DataTransferConfigPtrOutput {
-	return o.ApplyT(func(v DataTransferConfig) *DataTransferConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataTransferConfig) *DataTransferConfig {
 		return &v
 	}).(DataTransferConfigPtrOutput)
 }
 
-type DataTransferConfigPtrOutput struct {
-	*pulumi.OutputState
-}
+type DataTransferConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (DataTransferConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DataTransferConfig)(nil))
@@ -569,6 +565,16 @@ func (o DataTransferConfigPtrOutput) ToDataTransferConfigPtrOutput() DataTransfe
 
 func (o DataTransferConfigPtrOutput) ToDataTransferConfigPtrOutputWithContext(ctx context.Context) DataTransferConfigPtrOutput {
 	return o
+}
+
+func (o DataTransferConfigPtrOutput) Elem() DataTransferConfigOutput {
+	return o.ApplyT(func(v *DataTransferConfig) DataTransferConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DataTransferConfig
+		return ret
+	}).(DataTransferConfigOutput)
 }
 
 type DataTransferConfigArrayOutput struct{ *pulumi.OutputState }

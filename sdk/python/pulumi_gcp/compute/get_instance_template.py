@@ -13,6 +13,7 @@ __all__ = [
     'GetInstanceTemplateResult',
     'AwaitableGetInstanceTemplateResult',
     'get_instance_template',
+    'get_instance_template_output',
 ]
 
 @pulumi.output_type
@@ -476,3 +477,38 @@ def get_instance_template(filter: Optional[str] = None,
         shielded_instance_configs=__ret__.shielded_instance_configs,
         tags=__ret__.tags,
         tags_fingerprint=__ret__.tags_fingerprint)
+
+
+@_utilities.lift_output_func(get_instance_template)
+def get_instance_template_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
+                                 most_recent: Optional[pulumi.Input[Optional[bool]]] = None,
+                                 name: Optional[pulumi.Input[Optional[str]]] = None,
+                                 project: Optional[pulumi.Input[str]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceTemplateResult]:
+    """
+    Get information about a VM instance template resource within GCE. For more information see
+    [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
+    and
+    [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    generic = gcp.compute.get_instance_template(name="generic-tpl-20200107")
+    generic_regex = gcp.compute.get_instance_template(filter="name != generic-tpl-20200107",
+        most_recent=True)
+    ```
+
+
+    :param str filter: A filter to retrieve the instance templates.
+           See [gcloud topic filters](https://cloud.google.com/sdk/gcloud/reference/topic/filters) for reference.
+           If multiple instance templates match, either adjust the filter or specify `most_recent`. One of `name` or `filter` must be provided.
+    :param bool most_recent: If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name` or `filter` must be provided.
+    :param str name: The name of the instance template. One of `name` or `filter` must be provided.
+    :param str project: The ID of the project in which the resource belongs.
+           If `project` is not provided, the provider project is used.
+    """
+    ...

@@ -282,7 +282,7 @@ type IAMCustomRoleArrayInput interface {
 type IAMCustomRoleArray []IAMCustomRoleInput
 
 func (IAMCustomRoleArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*IAMCustomRole)(nil))
+	return reflect.TypeOf((*[]*IAMCustomRole)(nil)).Elem()
 }
 
 func (i IAMCustomRoleArray) ToIAMCustomRoleArrayOutput() IAMCustomRoleArrayOutput {
@@ -307,7 +307,7 @@ type IAMCustomRoleMapInput interface {
 type IAMCustomRoleMap map[string]IAMCustomRoleInput
 
 func (IAMCustomRoleMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*IAMCustomRole)(nil))
+	return reflect.TypeOf((*map[string]*IAMCustomRole)(nil)).Elem()
 }
 
 func (i IAMCustomRoleMap) ToIAMCustomRoleMapOutput() IAMCustomRoleMapOutput {
@@ -318,9 +318,7 @@ func (i IAMCustomRoleMap) ToIAMCustomRoleMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(IAMCustomRoleMapOutput)
 }
 
-type IAMCustomRoleOutput struct {
-	*pulumi.OutputState
-}
+type IAMCustomRoleOutput struct{ *pulumi.OutputState }
 
 func (IAMCustomRoleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*IAMCustomRole)(nil))
@@ -339,14 +337,12 @@ func (o IAMCustomRoleOutput) ToIAMCustomRolePtrOutput() IAMCustomRolePtrOutput {
 }
 
 func (o IAMCustomRoleOutput) ToIAMCustomRolePtrOutputWithContext(ctx context.Context) IAMCustomRolePtrOutput {
-	return o.ApplyT(func(v IAMCustomRole) *IAMCustomRole {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IAMCustomRole) *IAMCustomRole {
 		return &v
 	}).(IAMCustomRolePtrOutput)
 }
 
-type IAMCustomRolePtrOutput struct {
-	*pulumi.OutputState
-}
+type IAMCustomRolePtrOutput struct{ *pulumi.OutputState }
 
 func (IAMCustomRolePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**IAMCustomRole)(nil))
@@ -358,6 +354,16 @@ func (o IAMCustomRolePtrOutput) ToIAMCustomRolePtrOutput() IAMCustomRolePtrOutpu
 
 func (o IAMCustomRolePtrOutput) ToIAMCustomRolePtrOutputWithContext(ctx context.Context) IAMCustomRolePtrOutput {
 	return o
+}
+
+func (o IAMCustomRolePtrOutput) Elem() IAMCustomRoleOutput {
+	return o.ApplyT(func(v *IAMCustomRole) IAMCustomRole {
+		if v != nil {
+			return *v
+		}
+		var ret IAMCustomRole
+		return ret
+	}).(IAMCustomRoleOutput)
 }
 
 type IAMCustomRoleArrayOutput struct{ *pulumi.OutputState }

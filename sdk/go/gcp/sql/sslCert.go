@@ -272,7 +272,7 @@ type SslCertArrayInput interface {
 type SslCertArray []SslCertInput
 
 func (SslCertArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*SslCert)(nil))
+	return reflect.TypeOf((*[]*SslCert)(nil)).Elem()
 }
 
 func (i SslCertArray) ToSslCertArrayOutput() SslCertArrayOutput {
@@ -297,7 +297,7 @@ type SslCertMapInput interface {
 type SslCertMap map[string]SslCertInput
 
 func (SslCertMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*SslCert)(nil))
+	return reflect.TypeOf((*map[string]*SslCert)(nil)).Elem()
 }
 
 func (i SslCertMap) ToSslCertMapOutput() SslCertMapOutput {
@@ -308,9 +308,7 @@ func (i SslCertMap) ToSslCertMapOutputWithContext(ctx context.Context) SslCertMa
 	return pulumi.ToOutputWithContext(ctx, i).(SslCertMapOutput)
 }
 
-type SslCertOutput struct {
-	*pulumi.OutputState
-}
+type SslCertOutput struct{ *pulumi.OutputState }
 
 func (SslCertOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SslCert)(nil))
@@ -329,14 +327,12 @@ func (o SslCertOutput) ToSslCertPtrOutput() SslCertPtrOutput {
 }
 
 func (o SslCertOutput) ToSslCertPtrOutputWithContext(ctx context.Context) SslCertPtrOutput {
-	return o.ApplyT(func(v SslCert) *SslCert {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SslCert) *SslCert {
 		return &v
 	}).(SslCertPtrOutput)
 }
 
-type SslCertPtrOutput struct {
-	*pulumi.OutputState
-}
+type SslCertPtrOutput struct{ *pulumi.OutputState }
 
 func (SslCertPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SslCert)(nil))
@@ -348,6 +344,16 @@ func (o SslCertPtrOutput) ToSslCertPtrOutput() SslCertPtrOutput {
 
 func (o SslCertPtrOutput) ToSslCertPtrOutputWithContext(ctx context.Context) SslCertPtrOutput {
 	return o
+}
+
+func (o SslCertPtrOutput) Elem() SslCertOutput {
+	return o.ApplyT(func(v *SslCert) SslCert {
+		if v != nil {
+			return *v
+		}
+		var ret SslCert
+		return ret
+	}).(SslCertOutput)
 }
 
 type SslCertArrayOutput struct{ *pulumi.OutputState }

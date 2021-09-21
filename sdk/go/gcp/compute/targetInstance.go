@@ -424,7 +424,7 @@ type TargetInstanceArrayInput interface {
 type TargetInstanceArray []TargetInstanceInput
 
 func (TargetInstanceArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TargetInstance)(nil))
+	return reflect.TypeOf((*[]*TargetInstance)(nil)).Elem()
 }
 
 func (i TargetInstanceArray) ToTargetInstanceArrayOutput() TargetInstanceArrayOutput {
@@ -449,7 +449,7 @@ type TargetInstanceMapInput interface {
 type TargetInstanceMap map[string]TargetInstanceInput
 
 func (TargetInstanceMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TargetInstance)(nil))
+	return reflect.TypeOf((*map[string]*TargetInstance)(nil)).Elem()
 }
 
 func (i TargetInstanceMap) ToTargetInstanceMapOutput() TargetInstanceMapOutput {
@@ -460,9 +460,7 @@ func (i TargetInstanceMap) ToTargetInstanceMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(TargetInstanceMapOutput)
 }
 
-type TargetInstanceOutput struct {
-	*pulumi.OutputState
-}
+type TargetInstanceOutput struct{ *pulumi.OutputState }
 
 func (TargetInstanceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TargetInstance)(nil))
@@ -481,14 +479,12 @@ func (o TargetInstanceOutput) ToTargetInstancePtrOutput() TargetInstancePtrOutpu
 }
 
 func (o TargetInstanceOutput) ToTargetInstancePtrOutputWithContext(ctx context.Context) TargetInstancePtrOutput {
-	return o.ApplyT(func(v TargetInstance) *TargetInstance {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TargetInstance) *TargetInstance {
 		return &v
 	}).(TargetInstancePtrOutput)
 }
 
-type TargetInstancePtrOutput struct {
-	*pulumi.OutputState
-}
+type TargetInstancePtrOutput struct{ *pulumi.OutputState }
 
 func (TargetInstancePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TargetInstance)(nil))
@@ -500,6 +496,16 @@ func (o TargetInstancePtrOutput) ToTargetInstancePtrOutput() TargetInstancePtrOu
 
 func (o TargetInstancePtrOutput) ToTargetInstancePtrOutputWithContext(ctx context.Context) TargetInstancePtrOutput {
 	return o
+}
+
+func (o TargetInstancePtrOutput) Elem() TargetInstanceOutput {
+	return o.ApplyT(func(v *TargetInstance) TargetInstance {
+		if v != nil {
+			return *v
+		}
+		var ret TargetInstance
+		return ret
+	}).(TargetInstanceOutput)
 }
 
 type TargetInstanceArrayOutput struct{ *pulumi.OutputState }

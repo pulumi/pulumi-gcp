@@ -4,6 +4,9 @@
 package monitoring
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -88,4 +91,96 @@ type GetClusterIstioServiceResult struct {
 	ServiceName      string                            `pulumi:"serviceName"`
 	ServiceNamespace string                            `pulumi:"serviceNamespace"`
 	Telemetries      []GetClusterIstioServiceTelemetry `pulumi:"telemetries"`
+}
+
+func GetClusterIstioServiceOutput(ctx *pulumi.Context, args GetClusterIstioServiceOutputArgs, opts ...pulumi.InvokeOption) GetClusterIstioServiceResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetClusterIstioServiceResult, error) {
+			args := v.(GetClusterIstioServiceArgs)
+			r, err := GetClusterIstioService(ctx, &args, opts...)
+			return *r, err
+		}).(GetClusterIstioServiceResultOutput)
+}
+
+// A collection of arguments for invoking getClusterIstioService.
+type GetClusterIstioServiceOutputArgs struct {
+	// The name of the Kubernetes cluster in which this Istio service
+	// is defined. Corresponds to the clusterName resource label in k8sCluster resources.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// The location of the Kubernetes cluster in which this Istio service
+	// is defined. Corresponds to the location resource label in k8sCluster resources.
+	Location pulumi.StringInput `pulumi:"location"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// The name of the Istio service underlying this service.
+	// Corresponds to the destinationServiceName metric label in Istio metrics.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// The namespace of the Istio service underlying this service.
+	// Corresponds to the destinationServiceNamespace metric label in Istio metrics.
+	ServiceNamespace pulumi.StringInput `pulumi:"serviceNamespace"`
+}
+
+func (GetClusterIstioServiceOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterIstioServiceArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getClusterIstioService.
+type GetClusterIstioServiceResultOutput struct{ *pulumi.OutputState }
+
+func (GetClusterIstioServiceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterIstioServiceResult)(nil)).Elem()
+}
+
+func (o GetClusterIstioServiceResultOutput) ToGetClusterIstioServiceResultOutput() GetClusterIstioServiceResultOutput {
+	return o
+}
+
+func (o GetClusterIstioServiceResultOutput) ToGetClusterIstioServiceResultOutputWithContext(ctx context.Context) GetClusterIstioServiceResultOutput {
+	return o
+}
+
+func (o GetClusterIstioServiceResultOutput) ClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterIstioServiceResult) string { return v.ClusterName }).(pulumi.StringOutput)
+}
+
+func (o GetClusterIstioServiceResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterIstioServiceResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetClusterIstioServiceResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterIstioServiceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetClusterIstioServiceResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterIstioServiceResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o GetClusterIstioServiceResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterIstioServiceResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetClusterIstioServiceResultOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterIstioServiceResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterIstioServiceResultOutput) ServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterIstioServiceResult) string { return v.ServiceId }).(pulumi.StringOutput)
+}
+
+func (o GetClusterIstioServiceResultOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterIstioServiceResult) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+func (o GetClusterIstioServiceResultOutput) ServiceNamespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterIstioServiceResult) string { return v.ServiceNamespace }).(pulumi.StringOutput)
+}
+
+func (o GetClusterIstioServiceResultOutput) Telemetries() GetClusterIstioServiceTelemetryArrayOutput {
+	return o.ApplyT(func(v GetClusterIstioServiceResult) []GetClusterIstioServiceTelemetry { return v.Telemetries }).(GetClusterIstioServiceTelemetryArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetClusterIstioServiceResultOutput{})
 }

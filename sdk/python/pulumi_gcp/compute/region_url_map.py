@@ -554,16 +554,16 @@ class RegionUrlMap(pulumi.CustomResource):
                         request_mirror_policy=gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs(
                             backend_service=home.id,
                         ),
-                        retry_policy={
-                            "numRetries": 4,
-                            "perTryTimeout": {
-                                "seconds": 30,
-                            },
-                            "retry_conditions": [
+                        retry_policy=gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyArgs(
+                            num_retries=4,
+                            per_try_timeout=gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs(
+                                seconds="30",
+                            ),
+                            retry_conditions=[
                                 "5xx",
                                 "deadline-exceeded",
                             ],
-                        },
+                        ),
                         timeout=gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionTimeoutArgs(
                             seconds="20",
                             nanos=750000000,
@@ -575,20 +575,20 @@ class RegionUrlMap(pulumi.CustomResource):
                         weighted_backend_services=[gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs(
                             backend_service=home.id,
                             weight=400,
-                            header_action={
-                                "requestHeadersToRemoves": ["RemoveMe"],
-                                "requestHeadersToAdds": [{
-                                    "headerName": "AddMe",
-                                    "headerValue": "MyValue",
-                                    "replace": True,
-                                }],
-                                "responseHeadersToRemoves": ["RemoveMe"],
-                                "responseHeadersToAdds": [{
-                                    "headerName": "AddMe",
-                                    "headerValue": "MyValue",
-                                    "replace": False,
-                                }],
-                            },
+                            header_action=gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs(
+                                request_headers_to_removes=["RemoveMe"],
+                                request_headers_to_adds=[gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs(
+                                    header_name="AddMe",
+                                    header_value="MyValue",
+                                    replace=True,
+                                )],
+                                response_headers_to_removes=["RemoveMe"],
+                                response_headers_to_adds=[gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs(
+                                    header_name="AddMe",
+                                    header_value="MyValue",
+                                    replace=False,
+                                )],
+                            ),
                         )],
                     ),
                 )],
@@ -626,16 +626,16 @@ class RegionUrlMap(pulumi.CustomResource):
                 path_rules=[gcp.compute.RegionUrlMapPathMatcherPathRuleArgs(
                     paths=["/home"],
                     route_action=gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionArgs(
-                        retry_policy={
-                            "numRetries": 4,
-                            "perTryTimeout": {
-                                "seconds": 30,
-                            },
-                            "retry_conditions": [
+                        retry_policy=gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyArgs(
+                            num_retries=4,
+                            per_try_timeout=gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs(
+                                seconds="30",
+                            ),
+                            retry_conditions=[
                                 "5xx",
                                 "deadline-exceeded",
                             ],
-                        },
+                        ),
                         timeout=gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionTimeoutArgs(
                             seconds="20",
                             nanos=750000000,
@@ -647,13 +647,13 @@ class RegionUrlMap(pulumi.CustomResource):
                         weighted_backend_services=[gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs(
                             backend_service=home.id,
                             weight=400,
-                            header_action={
-                                "responseHeadersToAdds": [{
-                                    "headerName": "AddMe",
-                                    "headerValue": "MyValue",
-                                    "replace": False,
-                                }],
-                            },
+                            header_action=gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs(
+                                response_headers_to_adds=[gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs(
+                                    header_name="AddMe",
+                                    header_value="MyValue",
+                                    replace=False,
+                                )],
+                            ),
                         )],
                     ),
                 )],
@@ -690,20 +690,20 @@ class RegionUrlMap(pulumi.CustomResource):
                 default_service=home.id,
                 route_rules=[gcp.compute.RegionUrlMapPathMatcherRouteRuleArgs(
                     priority=1,
-                    header_action={
-                        "requestHeadersToRemoves": ["RemoveMe2"],
-                        "requestHeadersToAdds": [{
-                            "headerName": "AddSomethingElse",
-                            "headerValue": "MyOtherValue",
-                            "replace": True,
-                        }],
-                        "responseHeadersToRemoves": ["RemoveMe3"],
-                        "responseHeadersToAdds": [{
-                            "headerName": "AddMe",
-                            "headerValue": "MyValue",
-                            "replace": False,
-                        }],
-                    },
+                    header_action=gcp.compute.RegionUrlMapPathMatcherRouteRuleHeaderActionArgs(
+                        request_headers_to_removes=["RemoveMe2"],
+                        request_headers_to_adds=[gcp.compute.RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs(
+                            header_name="AddSomethingElse",
+                            header_value="MyOtherValue",
+                            replace=True,
+                        )],
+                        response_headers_to_removes=["RemoveMe3"],
+                        response_headers_to_adds=[gcp.compute.RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs(
+                            header_name="AddMe",
+                            header_value="MyValue",
+                            replace=False,
+                        )],
+                    ),
                     match_rules=[gcp.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleArgs(
                         full_path_match="a full path",
                         header_matches=[gcp.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs(
@@ -712,13 +712,13 @@ class RegionUrlMap(pulumi.CustomResource):
                             invert_match=True,
                         )],
                         ignore_case=True,
-                        metadata_filters=[{
-                            "filterMatchCriteria": "MATCH_ANY",
-                            "filterLabels": [{
-                                "name": "PLANET",
-                                "value": "MARS",
-                            }],
-                        }],
+                        metadata_filters=[gcp.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs(
+                            filter_match_criteria="MATCH_ANY",
+                            filter_labels=[gcp.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs(
+                                name="PLANET",
+                                value="MARS",
+                            )],
+                        )],
                         query_parameter_matches=[gcp.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs(
                             name="a query parameter",
                             present_match=True,
@@ -766,9 +766,9 @@ class RegionUrlMap(pulumi.CustomResource):
                 route_rules=[gcp.compute.RegionUrlMapPathMatcherRouteRuleArgs(
                     priority=1,
                     service=home.id,
-                    header_action={
-                        "requestHeadersToRemoves": ["RemoveMe2"],
-                    },
+                    header_action=gcp.compute.RegionUrlMapPathMatcherRouteRuleHeaderActionArgs(
+                        request_headers_to_removes=["RemoveMe2"],
+                    ),
                     match_rules=[gcp.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleArgs(
                         full_path_match="a full path",
                         header_matches=[gcp.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs(
@@ -951,16 +951,16 @@ class RegionUrlMap(pulumi.CustomResource):
                         request_mirror_policy=gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs(
                             backend_service=home.id,
                         ),
-                        retry_policy={
-                            "numRetries": 4,
-                            "perTryTimeout": {
-                                "seconds": 30,
-                            },
-                            "retry_conditions": [
+                        retry_policy=gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyArgs(
+                            num_retries=4,
+                            per_try_timeout=gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs(
+                                seconds="30",
+                            ),
+                            retry_conditions=[
                                 "5xx",
                                 "deadline-exceeded",
                             ],
-                        },
+                        ),
                         timeout=gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionTimeoutArgs(
                             seconds="20",
                             nanos=750000000,
@@ -972,20 +972,20 @@ class RegionUrlMap(pulumi.CustomResource):
                         weighted_backend_services=[gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs(
                             backend_service=home.id,
                             weight=400,
-                            header_action={
-                                "requestHeadersToRemoves": ["RemoveMe"],
-                                "requestHeadersToAdds": [{
-                                    "headerName": "AddMe",
-                                    "headerValue": "MyValue",
-                                    "replace": True,
-                                }],
-                                "responseHeadersToRemoves": ["RemoveMe"],
-                                "responseHeadersToAdds": [{
-                                    "headerName": "AddMe",
-                                    "headerValue": "MyValue",
-                                    "replace": False,
-                                }],
-                            },
+                            header_action=gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs(
+                                request_headers_to_removes=["RemoveMe"],
+                                request_headers_to_adds=[gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs(
+                                    header_name="AddMe",
+                                    header_value="MyValue",
+                                    replace=True,
+                                )],
+                                response_headers_to_removes=["RemoveMe"],
+                                response_headers_to_adds=[gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs(
+                                    header_name="AddMe",
+                                    header_value="MyValue",
+                                    replace=False,
+                                )],
+                            ),
                         )],
                     ),
                 )],
@@ -1023,16 +1023,16 @@ class RegionUrlMap(pulumi.CustomResource):
                 path_rules=[gcp.compute.RegionUrlMapPathMatcherPathRuleArgs(
                     paths=["/home"],
                     route_action=gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionArgs(
-                        retry_policy={
-                            "numRetries": 4,
-                            "perTryTimeout": {
-                                "seconds": 30,
-                            },
-                            "retry_conditions": [
+                        retry_policy=gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyArgs(
+                            num_retries=4,
+                            per_try_timeout=gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs(
+                                seconds="30",
+                            ),
+                            retry_conditions=[
                                 "5xx",
                                 "deadline-exceeded",
                             ],
-                        },
+                        ),
                         timeout=gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionTimeoutArgs(
                             seconds="20",
                             nanos=750000000,
@@ -1044,13 +1044,13 @@ class RegionUrlMap(pulumi.CustomResource):
                         weighted_backend_services=[gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs(
                             backend_service=home.id,
                             weight=400,
-                            header_action={
-                                "responseHeadersToAdds": [{
-                                    "headerName": "AddMe",
-                                    "headerValue": "MyValue",
-                                    "replace": False,
-                                }],
-                            },
+                            header_action=gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs(
+                                response_headers_to_adds=[gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs(
+                                    header_name="AddMe",
+                                    header_value="MyValue",
+                                    replace=False,
+                                )],
+                            ),
                         )],
                     ),
                 )],
@@ -1087,20 +1087,20 @@ class RegionUrlMap(pulumi.CustomResource):
                 default_service=home.id,
                 route_rules=[gcp.compute.RegionUrlMapPathMatcherRouteRuleArgs(
                     priority=1,
-                    header_action={
-                        "requestHeadersToRemoves": ["RemoveMe2"],
-                        "requestHeadersToAdds": [{
-                            "headerName": "AddSomethingElse",
-                            "headerValue": "MyOtherValue",
-                            "replace": True,
-                        }],
-                        "responseHeadersToRemoves": ["RemoveMe3"],
-                        "responseHeadersToAdds": [{
-                            "headerName": "AddMe",
-                            "headerValue": "MyValue",
-                            "replace": False,
-                        }],
-                    },
+                    header_action=gcp.compute.RegionUrlMapPathMatcherRouteRuleHeaderActionArgs(
+                        request_headers_to_removes=["RemoveMe2"],
+                        request_headers_to_adds=[gcp.compute.RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs(
+                            header_name="AddSomethingElse",
+                            header_value="MyOtherValue",
+                            replace=True,
+                        )],
+                        response_headers_to_removes=["RemoveMe3"],
+                        response_headers_to_adds=[gcp.compute.RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs(
+                            header_name="AddMe",
+                            header_value="MyValue",
+                            replace=False,
+                        )],
+                    ),
                     match_rules=[gcp.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleArgs(
                         full_path_match="a full path",
                         header_matches=[gcp.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs(
@@ -1109,13 +1109,13 @@ class RegionUrlMap(pulumi.CustomResource):
                             invert_match=True,
                         )],
                         ignore_case=True,
-                        metadata_filters=[{
-                            "filterMatchCriteria": "MATCH_ANY",
-                            "filterLabels": [{
-                                "name": "PLANET",
-                                "value": "MARS",
-                            }],
-                        }],
+                        metadata_filters=[gcp.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs(
+                            filter_match_criteria="MATCH_ANY",
+                            filter_labels=[gcp.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs(
+                                name="PLANET",
+                                value="MARS",
+                            )],
+                        )],
                         query_parameter_matches=[gcp.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs(
                             name="a query parameter",
                             present_match=True,
@@ -1163,9 +1163,9 @@ class RegionUrlMap(pulumi.CustomResource):
                 route_rules=[gcp.compute.RegionUrlMapPathMatcherRouteRuleArgs(
                     priority=1,
                     service=home.id,
-                    header_action={
-                        "requestHeadersToRemoves": ["RemoveMe2"],
-                    },
+                    header_action=gcp.compute.RegionUrlMapPathMatcherRouteRuleHeaderActionArgs(
+                        request_headers_to_removes=["RemoveMe2"],
+                    ),
                     match_rules=[gcp.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleArgs(
                         full_path_match="a full path",
                         header_matches=[gcp.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs(

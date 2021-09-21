@@ -13,6 +13,7 @@ __all__ = [
     'GetKMSCryptoKeyVersionResult',
     'AwaitableGetKMSCryptoKeyVersionResult',
     'get_kms_crypto_key_version',
+    'get_kms_crypto_key_version_output',
 ]
 
 @pulumi.output_type
@@ -168,3 +169,36 @@ def get_kms_crypto_key_version(crypto_key: Optional[str] = None,
         public_keys=__ret__.public_keys,
         state=__ret__.state,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_kms_crypto_key_version)
+def get_kms_crypto_key_version_output(crypto_key: Optional[pulumi.Input[str]] = None,
+                                      version: Optional[pulumi.Input[Optional[int]]] = None,
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKMSCryptoKeyVersionResult]:
+    """
+    Provides access to a Google Cloud Platform KMS CryptoKeyVersion. For more information see
+    [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key_version)
+    and
+    [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions).
+
+    A CryptoKeyVersion represents an individual cryptographic key, and the associated key material.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_key_ring = gcp.kms.get_kms_key_ring(name="my-key-ring",
+        location="us-central1")
+    my_crypto_key = gcp.kms.get_kms_crypto_key(name="my-crypto-key",
+        key_ring=my_key_ring.id)
+    my_crypto_key_version = gcp.kms.get_kms_crypto_key_version(crypto_key=data["google_kms_key"]["my_key"]["id"])
+    ```
+
+
+    :param str crypto_key: The `self_link` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the 
+           `kms.CryptoKey` resource/datasource.
+    :param int version: The version number for this CryptoKeyVersion. Defaults to `1`.
+    """
+    ...

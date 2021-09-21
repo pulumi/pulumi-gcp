@@ -279,7 +279,7 @@ type NotificationConfigArrayInput interface {
 type NotificationConfigArray []NotificationConfigInput
 
 func (NotificationConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*NotificationConfig)(nil))
+	return reflect.TypeOf((*[]*NotificationConfig)(nil)).Elem()
 }
 
 func (i NotificationConfigArray) ToNotificationConfigArrayOutput() NotificationConfigArrayOutput {
@@ -304,7 +304,7 @@ type NotificationConfigMapInput interface {
 type NotificationConfigMap map[string]NotificationConfigInput
 
 func (NotificationConfigMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*NotificationConfig)(nil))
+	return reflect.TypeOf((*map[string]*NotificationConfig)(nil)).Elem()
 }
 
 func (i NotificationConfigMap) ToNotificationConfigMapOutput() NotificationConfigMapOutput {
@@ -315,9 +315,7 @@ func (i NotificationConfigMap) ToNotificationConfigMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationConfigMapOutput)
 }
 
-type NotificationConfigOutput struct {
-	*pulumi.OutputState
-}
+type NotificationConfigOutput struct{ *pulumi.OutputState }
 
 func (NotificationConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*NotificationConfig)(nil))
@@ -336,14 +334,12 @@ func (o NotificationConfigOutput) ToNotificationConfigPtrOutput() NotificationCo
 }
 
 func (o NotificationConfigOutput) ToNotificationConfigPtrOutputWithContext(ctx context.Context) NotificationConfigPtrOutput {
-	return o.ApplyT(func(v NotificationConfig) *NotificationConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotificationConfig) *NotificationConfig {
 		return &v
 	}).(NotificationConfigPtrOutput)
 }
 
-type NotificationConfigPtrOutput struct {
-	*pulumi.OutputState
-}
+type NotificationConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (NotificationConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**NotificationConfig)(nil))
@@ -355,6 +351,16 @@ func (o NotificationConfigPtrOutput) ToNotificationConfigPtrOutput() Notificatio
 
 func (o NotificationConfigPtrOutput) ToNotificationConfigPtrOutputWithContext(ctx context.Context) NotificationConfigPtrOutput {
 	return o
+}
+
+func (o NotificationConfigPtrOutput) Elem() NotificationConfigOutput {
+	return o.ApplyT(func(v *NotificationConfig) NotificationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NotificationConfig
+		return ret
+	}).(NotificationConfigOutput)
 }
 
 type NotificationConfigArrayOutput struct{ *pulumi.OutputState }

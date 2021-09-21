@@ -265,7 +265,7 @@ type SecretCiphertextArrayInput interface {
 type SecretCiphertextArray []SecretCiphertextInput
 
 func (SecretCiphertextArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*SecretCiphertext)(nil))
+	return reflect.TypeOf((*[]*SecretCiphertext)(nil)).Elem()
 }
 
 func (i SecretCiphertextArray) ToSecretCiphertextArrayOutput() SecretCiphertextArrayOutput {
@@ -290,7 +290,7 @@ type SecretCiphertextMapInput interface {
 type SecretCiphertextMap map[string]SecretCiphertextInput
 
 func (SecretCiphertextMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*SecretCiphertext)(nil))
+	return reflect.TypeOf((*map[string]*SecretCiphertext)(nil)).Elem()
 }
 
 func (i SecretCiphertextMap) ToSecretCiphertextMapOutput() SecretCiphertextMapOutput {
@@ -301,9 +301,7 @@ func (i SecretCiphertextMap) ToSecretCiphertextMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(SecretCiphertextMapOutput)
 }
 
-type SecretCiphertextOutput struct {
-	*pulumi.OutputState
-}
+type SecretCiphertextOutput struct{ *pulumi.OutputState }
 
 func (SecretCiphertextOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SecretCiphertext)(nil))
@@ -322,14 +320,12 @@ func (o SecretCiphertextOutput) ToSecretCiphertextPtrOutput() SecretCiphertextPt
 }
 
 func (o SecretCiphertextOutput) ToSecretCiphertextPtrOutputWithContext(ctx context.Context) SecretCiphertextPtrOutput {
-	return o.ApplyT(func(v SecretCiphertext) *SecretCiphertext {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretCiphertext) *SecretCiphertext {
 		return &v
 	}).(SecretCiphertextPtrOutput)
 }
 
-type SecretCiphertextPtrOutput struct {
-	*pulumi.OutputState
-}
+type SecretCiphertextPtrOutput struct{ *pulumi.OutputState }
 
 func (SecretCiphertextPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SecretCiphertext)(nil))
@@ -341,6 +337,16 @@ func (o SecretCiphertextPtrOutput) ToSecretCiphertextPtrOutput() SecretCiphertex
 
 func (o SecretCiphertextPtrOutput) ToSecretCiphertextPtrOutputWithContext(ctx context.Context) SecretCiphertextPtrOutput {
 	return o
+}
+
+func (o SecretCiphertextPtrOutput) Elem() SecretCiphertextOutput {
+	return o.ApplyT(func(v *SecretCiphertext) SecretCiphertext {
+		if v != nil {
+			return *v
+		}
+		var ret SecretCiphertext
+		return ret
+	}).(SecretCiphertextOutput)
 }
 
 type SecretCiphertextArrayOutput struct{ *pulumi.OutputState }

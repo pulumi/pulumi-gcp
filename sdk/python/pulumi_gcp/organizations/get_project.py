@@ -12,6 +12,7 @@ __all__ = [
     'GetProjectResult',
     'AwaitableGetProjectResult',
     'get_project',
+    'get_project_output',
 ]
 
 @pulumi.output_type
@@ -165,3 +166,27 @@ def get_project(project_id: Optional[str] = None,
         org_id=__ret__.org_id,
         project_id=__ret__.project_id,
         skip_delete=__ret__.skip_delete)
+
+
+@_utilities.lift_output_func(get_project)
+def get_project_output(project_id: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectResult]:
+    """
+    Use this data source to get project details.
+    For more information see
+    [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    project = gcp.organizations.get_project()
+    pulumi.export("projectNumber", project.number)
+    ```
+
+
+    :param str project_id: The project ID. If it is not provided, the provider project is used.
+    """
+    ...

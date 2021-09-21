@@ -369,7 +369,7 @@ type RegionAutoscalerArrayInput interface {
 type RegionAutoscalerArray []RegionAutoscalerInput
 
 func (RegionAutoscalerArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*RegionAutoscaler)(nil))
+	return reflect.TypeOf((*[]*RegionAutoscaler)(nil)).Elem()
 }
 
 func (i RegionAutoscalerArray) ToRegionAutoscalerArrayOutput() RegionAutoscalerArrayOutput {
@@ -394,7 +394,7 @@ type RegionAutoscalerMapInput interface {
 type RegionAutoscalerMap map[string]RegionAutoscalerInput
 
 func (RegionAutoscalerMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*RegionAutoscaler)(nil))
+	return reflect.TypeOf((*map[string]*RegionAutoscaler)(nil)).Elem()
 }
 
 func (i RegionAutoscalerMap) ToRegionAutoscalerMapOutput() RegionAutoscalerMapOutput {
@@ -405,9 +405,7 @@ func (i RegionAutoscalerMap) ToRegionAutoscalerMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(RegionAutoscalerMapOutput)
 }
 
-type RegionAutoscalerOutput struct {
-	*pulumi.OutputState
-}
+type RegionAutoscalerOutput struct{ *pulumi.OutputState }
 
 func (RegionAutoscalerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RegionAutoscaler)(nil))
@@ -426,14 +424,12 @@ func (o RegionAutoscalerOutput) ToRegionAutoscalerPtrOutput() RegionAutoscalerPt
 }
 
 func (o RegionAutoscalerOutput) ToRegionAutoscalerPtrOutputWithContext(ctx context.Context) RegionAutoscalerPtrOutput {
-	return o.ApplyT(func(v RegionAutoscaler) *RegionAutoscaler {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionAutoscaler) *RegionAutoscaler {
 		return &v
 	}).(RegionAutoscalerPtrOutput)
 }
 
-type RegionAutoscalerPtrOutput struct {
-	*pulumi.OutputState
-}
+type RegionAutoscalerPtrOutput struct{ *pulumi.OutputState }
 
 func (RegionAutoscalerPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**RegionAutoscaler)(nil))
@@ -445,6 +441,16 @@ func (o RegionAutoscalerPtrOutput) ToRegionAutoscalerPtrOutput() RegionAutoscale
 
 func (o RegionAutoscalerPtrOutput) ToRegionAutoscalerPtrOutputWithContext(ctx context.Context) RegionAutoscalerPtrOutput {
 	return o
+}
+
+func (o RegionAutoscalerPtrOutput) Elem() RegionAutoscalerOutput {
+	return o.ApplyT(func(v *RegionAutoscaler) RegionAutoscaler {
+		if v != nil {
+			return *v
+		}
+		var ret RegionAutoscaler
+		return ret
+	}).(RegionAutoscalerOutput)
 }
 
 type RegionAutoscalerArrayOutput struct{ *pulumi.OutputState }

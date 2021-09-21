@@ -467,10 +467,10 @@ class Device(pulumi.CustomResource):
         test_device = gcp.iot.Device("test-device",
             registry=registry.id,
             credentials=[gcp.iot.DeviceCredentialArgs(
-                public_key={
-                    "format": "RSA_PEM",
-                    "key": (lambda path: open(path).read())("test-fixtures/rsa_public.pem"),
-                },
+                public_key=gcp.iot.DeviceCredentialPublicKeyArgs(
+                    format="RSA_PEM",
+                    key=(lambda path: open(path).read())("test-fixtures/rsa_public.pem"),
+                ),
             )],
             blocked=False,
             log_level="INFO",
@@ -538,10 +538,10 @@ class Device(pulumi.CustomResource):
         test_device = gcp.iot.Device("test-device",
             registry=registry.id,
             credentials=[gcp.iot.DeviceCredentialArgs(
-                public_key={
-                    "format": "RSA_PEM",
-                    "key": (lambda path: open(path).read())("test-fixtures/rsa_public.pem"),
-                },
+                public_key=gcp.iot.DeviceCredentialPublicKeyArgs(
+                    format="RSA_PEM",
+                    key=(lambda path: open(path).read())("test-fixtures/rsa_public.pem"),
+                ),
             )],
             blocked=False,
             log_level="INFO",

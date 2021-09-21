@@ -235,7 +235,7 @@ type TagBindingArrayInput interface {
 type TagBindingArray []TagBindingInput
 
 func (TagBindingArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TagBinding)(nil))
+	return reflect.TypeOf((*[]*TagBinding)(nil)).Elem()
 }
 
 func (i TagBindingArray) ToTagBindingArrayOutput() TagBindingArrayOutput {
@@ -260,7 +260,7 @@ type TagBindingMapInput interface {
 type TagBindingMap map[string]TagBindingInput
 
 func (TagBindingMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TagBinding)(nil))
+	return reflect.TypeOf((*map[string]*TagBinding)(nil)).Elem()
 }
 
 func (i TagBindingMap) ToTagBindingMapOutput() TagBindingMapOutput {
@@ -271,9 +271,7 @@ func (i TagBindingMap) ToTagBindingMapOutputWithContext(ctx context.Context) Tag
 	return pulumi.ToOutputWithContext(ctx, i).(TagBindingMapOutput)
 }
 
-type TagBindingOutput struct {
-	*pulumi.OutputState
-}
+type TagBindingOutput struct{ *pulumi.OutputState }
 
 func (TagBindingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TagBinding)(nil))
@@ -292,14 +290,12 @@ func (o TagBindingOutput) ToTagBindingPtrOutput() TagBindingPtrOutput {
 }
 
 func (o TagBindingOutput) ToTagBindingPtrOutputWithContext(ctx context.Context) TagBindingPtrOutput {
-	return o.ApplyT(func(v TagBinding) *TagBinding {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TagBinding) *TagBinding {
 		return &v
 	}).(TagBindingPtrOutput)
 }
 
-type TagBindingPtrOutput struct {
-	*pulumi.OutputState
-}
+type TagBindingPtrOutput struct{ *pulumi.OutputState }
 
 func (TagBindingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TagBinding)(nil))
@@ -311,6 +307,16 @@ func (o TagBindingPtrOutput) ToTagBindingPtrOutput() TagBindingPtrOutput {
 
 func (o TagBindingPtrOutput) ToTagBindingPtrOutputWithContext(ctx context.Context) TagBindingPtrOutput {
 	return o
+}
+
+func (o TagBindingPtrOutput) Elem() TagBindingOutput {
+	return o.ApplyT(func(v *TagBinding) TagBinding {
+		if v != nil {
+			return *v
+		}
+		var ret TagBinding
+		return ret
+	}).(TagBindingOutput)
 }
 
 type TagBindingArrayOutput struct{ *pulumi.OutputState }

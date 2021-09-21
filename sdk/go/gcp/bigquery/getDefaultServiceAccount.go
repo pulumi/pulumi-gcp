@@ -4,6 +4,9 @@
 package bigquery
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -71,4 +74,57 @@ type GetDefaultServiceAccountResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id      string `pulumi:"id"`
 	Project string `pulumi:"project"`
+}
+
+func GetDefaultServiceAccountOutput(ctx *pulumi.Context, args GetDefaultServiceAccountOutputArgs, opts ...pulumi.InvokeOption) GetDefaultServiceAccountResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetDefaultServiceAccountResult, error) {
+			args := v.(GetDefaultServiceAccountArgs)
+			r, err := GetDefaultServiceAccount(ctx, &args, opts...)
+			return *r, err
+		}).(GetDefaultServiceAccountResultOutput)
+}
+
+// A collection of arguments for invoking getDefaultServiceAccount.
+type GetDefaultServiceAccountOutputArgs struct {
+	// The project the unique service account was created for. If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (GetDefaultServiceAccountOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDefaultServiceAccountArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getDefaultServiceAccount.
+type GetDefaultServiceAccountResultOutput struct{ *pulumi.OutputState }
+
+func (GetDefaultServiceAccountResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDefaultServiceAccountResult)(nil)).Elem()
+}
+
+func (o GetDefaultServiceAccountResultOutput) ToGetDefaultServiceAccountResultOutput() GetDefaultServiceAccountResultOutput {
+	return o
+}
+
+func (o GetDefaultServiceAccountResultOutput) ToGetDefaultServiceAccountResultOutputWithContext(ctx context.Context) GetDefaultServiceAccountResultOutput {
+	return o
+}
+
+// The email address of the service account. This value is often used to refer to the service account
+// in order to grant IAM permissions.
+func (o GetDefaultServiceAccountResultOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefaultServiceAccountResult) string { return v.Email }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetDefaultServiceAccountResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefaultServiceAccountResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetDefaultServiceAccountResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefaultServiceAccountResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetDefaultServiceAccountResultOutput{})
 }

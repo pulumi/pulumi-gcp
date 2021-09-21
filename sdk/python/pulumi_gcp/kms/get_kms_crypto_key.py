@@ -13,6 +13,7 @@ __all__ = [
     'GetKMSCryptoKeyResult',
     'AwaitableGetKMSCryptoKeyResult',
     'get_kms_crypto_key',
+    'get_kms_crypto_key_output',
 ]
 
 @pulumi.output_type
@@ -184,3 +185,36 @@ def get_kms_crypto_key(key_ring: Optional[str] = None,
         self_link=__ret__.self_link,
         skip_initial_version_creation=__ret__.skip_initial_version_creation,
         version_templates=__ret__.version_templates)
+
+
+@_utilities.lift_output_func(get_kms_crypto_key)
+def get_kms_crypto_key_output(key_ring: Optional[pulumi.Input[str]] = None,
+                              name: Optional[pulumi.Input[str]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKMSCryptoKeyResult]:
+    """
+    Provides access to a Google Cloud Platform KMS CryptoKey. For more information see
+    [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key)
+    and
+    [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys).
+
+    A CryptoKey is an interface to key material which can be used to encrypt and decrypt data. A CryptoKey belongs to a
+    Google Cloud KMS KeyRing.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_key_ring = gcp.kms.get_kms_key_ring(name="my-key-ring",
+        location="us-central1")
+    my_crypto_key = gcp.kms.get_kms_crypto_key(name="my-crypto-key",
+        key_ring=my_key_ring.self_link)
+    ```
+
+
+    :param str key_ring: The `self_link` of the Google Cloud Platform KeyRing to which the key belongs.
+    :param str name: The CryptoKey's name.
+           A CryptoKey’s name belonging to the specified Google Cloud Platform KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+    """
+    ...

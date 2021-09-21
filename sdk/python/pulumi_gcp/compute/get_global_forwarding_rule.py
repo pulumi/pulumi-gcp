@@ -13,6 +13,7 @@ __all__ = [
     'GetGlobalForwardingRuleResult',
     'AwaitableGetGlobalForwardingRuleResult',
     'get_global_forwarding_rule',
+    'get_global_forwarding_rule_output',
 ]
 
 @pulumi.output_type
@@ -214,3 +215,27 @@ def get_global_forwarding_rule(name: Optional[str] = None,
         project=__ret__.project,
         self_link=__ret__.self_link,
         target=__ret__.target)
+
+
+@_utilities.lift_output_func(get_global_forwarding_rule)
+def get_global_forwarding_rule_output(name: Optional[pulumi.Input[str]] = None,
+                                      project: Optional[pulumi.Input[Optional[str]]] = None,
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGlobalForwardingRuleResult]:
+    """
+    Get a global forwarding rule within GCE from its name.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_forwarding_rule = gcp.compute.get_global_forwarding_rule(name="forwarding-rule-global")
+    ```
+
+
+    :param str name: The name of the global forwarding rule.
+    :param str project: The project in which the resource belongs. If it
+           is not provided, the provider project is used.
+    """
+    ...

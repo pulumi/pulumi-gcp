@@ -470,7 +470,7 @@ type SubnetworkIAMMemberArrayInput interface {
 type SubnetworkIAMMemberArray []SubnetworkIAMMemberInput
 
 func (SubnetworkIAMMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*SubnetworkIAMMember)(nil))
+	return reflect.TypeOf((*[]*SubnetworkIAMMember)(nil)).Elem()
 }
 
 func (i SubnetworkIAMMemberArray) ToSubnetworkIAMMemberArrayOutput() SubnetworkIAMMemberArrayOutput {
@@ -495,7 +495,7 @@ type SubnetworkIAMMemberMapInput interface {
 type SubnetworkIAMMemberMap map[string]SubnetworkIAMMemberInput
 
 func (SubnetworkIAMMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*SubnetworkIAMMember)(nil))
+	return reflect.TypeOf((*map[string]*SubnetworkIAMMember)(nil)).Elem()
 }
 
 func (i SubnetworkIAMMemberMap) ToSubnetworkIAMMemberMapOutput() SubnetworkIAMMemberMapOutput {
@@ -506,9 +506,7 @@ func (i SubnetworkIAMMemberMap) ToSubnetworkIAMMemberMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkIAMMemberMapOutput)
 }
 
-type SubnetworkIAMMemberOutput struct {
-	*pulumi.OutputState
-}
+type SubnetworkIAMMemberOutput struct{ *pulumi.OutputState }
 
 func (SubnetworkIAMMemberOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SubnetworkIAMMember)(nil))
@@ -527,14 +525,12 @@ func (o SubnetworkIAMMemberOutput) ToSubnetworkIAMMemberPtrOutput() SubnetworkIA
 }
 
 func (o SubnetworkIAMMemberOutput) ToSubnetworkIAMMemberPtrOutputWithContext(ctx context.Context) SubnetworkIAMMemberPtrOutput {
-	return o.ApplyT(func(v SubnetworkIAMMember) *SubnetworkIAMMember {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubnetworkIAMMember) *SubnetworkIAMMember {
 		return &v
 	}).(SubnetworkIAMMemberPtrOutput)
 }
 
-type SubnetworkIAMMemberPtrOutput struct {
-	*pulumi.OutputState
-}
+type SubnetworkIAMMemberPtrOutput struct{ *pulumi.OutputState }
 
 func (SubnetworkIAMMemberPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SubnetworkIAMMember)(nil))
@@ -546,6 +542,16 @@ func (o SubnetworkIAMMemberPtrOutput) ToSubnetworkIAMMemberPtrOutput() Subnetwor
 
 func (o SubnetworkIAMMemberPtrOutput) ToSubnetworkIAMMemberPtrOutputWithContext(ctx context.Context) SubnetworkIAMMemberPtrOutput {
 	return o
+}
+
+func (o SubnetworkIAMMemberPtrOutput) Elem() SubnetworkIAMMemberOutput {
+	return o.ApplyT(func(v *SubnetworkIAMMember) SubnetworkIAMMember {
+		if v != nil {
+			return *v
+		}
+		var ret SubnetworkIAMMember
+		return ret
+	}).(SubnetworkIAMMemberOutput)
 }
 
 type SubnetworkIAMMemberArrayOutput struct{ *pulumi.OutputState }

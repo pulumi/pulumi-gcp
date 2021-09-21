@@ -13,6 +13,7 @@ __all__ = [
     'GetClusterIstioServiceResult',
     'AwaitableGetClusterIstioServiceResult',
     'get_cluster_istio_service',
+    'get_cluster_istio_service_output',
 ]
 
 @pulumi.output_type
@@ -193,3 +194,53 @@ def get_cluster_istio_service(cluster_name: Optional[str] = None,
         service_name=__ret__.service_name,
         service_namespace=__ret__.service_namespace,
         telemetries=__ret__.telemetries)
+
+
+@_utilities.lift_output_func(get_cluster_istio_service)
+def get_cluster_istio_service_output(cluster_name: Optional[pulumi.Input[str]] = None,
+                                     location: Optional[pulumi.Input[str]] = None,
+                                     project: Optional[pulumi.Input[Optional[str]]] = None,
+                                     service_name: Optional[pulumi.Input[str]] = None,
+                                     service_namespace: Optional[pulumi.Input[str]] = None,
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterIstioServiceResult]:
+    """
+    A Monitoring Service is the root resource under which operational aspects of a
+    generic service are accessible. A service is some discrete, autonomous, and
+    network-accessible unit, designed to solve an individual concern
+
+    An Cluster Istio monitoring service is automatically created by GCP to monitor
+    Cluster Istio services.
+
+    To get more information about Service, see:
+
+    * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
+    * How-to Guides
+        * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+        * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+
+    ## Example Usage
+    ### Monitoring Cluster Istio Service
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    default = gcp.monitoring.get_cluster_istio_service(cluster_name="west",
+        location="us-west2-a",
+        service_name="istio-policy",
+        service_namespace="istio-system")
+    ```
+
+
+    :param str cluster_name: The name of the Kubernetes cluster in which this Istio service 
+           is defined. Corresponds to the clusterName resource label in k8s_cluster resources.
+    :param str location: The location of the Kubernetes cluster in which this Istio service 
+           is defined. Corresponds to the location resource label in k8s_cluster resources.
+    :param str project: The ID of the project in which the resource belongs.
+           If it is not provided, the provider project is used.
+    :param str service_name: The name of the Istio service underlying this service.
+           Corresponds to the destination_service_name metric label in Istio metrics.
+    :param str service_namespace: The namespace of the Istio service underlying this service.
+           Corresponds to the destination_service_namespace metric label in Istio metrics.
+    """
+    ...

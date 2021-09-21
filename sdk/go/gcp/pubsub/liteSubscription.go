@@ -276,7 +276,7 @@ type LiteSubscriptionArrayInput interface {
 type LiteSubscriptionArray []LiteSubscriptionInput
 
 func (LiteSubscriptionArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*LiteSubscription)(nil))
+	return reflect.TypeOf((*[]*LiteSubscription)(nil)).Elem()
 }
 
 func (i LiteSubscriptionArray) ToLiteSubscriptionArrayOutput() LiteSubscriptionArrayOutput {
@@ -301,7 +301,7 @@ type LiteSubscriptionMapInput interface {
 type LiteSubscriptionMap map[string]LiteSubscriptionInput
 
 func (LiteSubscriptionMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*LiteSubscription)(nil))
+	return reflect.TypeOf((*map[string]*LiteSubscription)(nil)).Elem()
 }
 
 func (i LiteSubscriptionMap) ToLiteSubscriptionMapOutput() LiteSubscriptionMapOutput {
@@ -312,9 +312,7 @@ func (i LiteSubscriptionMap) ToLiteSubscriptionMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(LiteSubscriptionMapOutput)
 }
 
-type LiteSubscriptionOutput struct {
-	*pulumi.OutputState
-}
+type LiteSubscriptionOutput struct{ *pulumi.OutputState }
 
 func (LiteSubscriptionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*LiteSubscription)(nil))
@@ -333,14 +331,12 @@ func (o LiteSubscriptionOutput) ToLiteSubscriptionPtrOutput() LiteSubscriptionPt
 }
 
 func (o LiteSubscriptionOutput) ToLiteSubscriptionPtrOutputWithContext(ctx context.Context) LiteSubscriptionPtrOutput {
-	return o.ApplyT(func(v LiteSubscription) *LiteSubscription {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LiteSubscription) *LiteSubscription {
 		return &v
 	}).(LiteSubscriptionPtrOutput)
 }
 
-type LiteSubscriptionPtrOutput struct {
-	*pulumi.OutputState
-}
+type LiteSubscriptionPtrOutput struct{ *pulumi.OutputState }
 
 func (LiteSubscriptionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**LiteSubscription)(nil))
@@ -352,6 +348,16 @@ func (o LiteSubscriptionPtrOutput) ToLiteSubscriptionPtrOutput() LiteSubscriptio
 
 func (o LiteSubscriptionPtrOutput) ToLiteSubscriptionPtrOutputWithContext(ctx context.Context) LiteSubscriptionPtrOutput {
 	return o
+}
+
+func (o LiteSubscriptionPtrOutput) Elem() LiteSubscriptionOutput {
+	return o.ApplyT(func(v *LiteSubscription) LiteSubscription {
+		if v != nil {
+			return *v
+		}
+		var ret LiteSubscription
+		return ret
+	}).(LiteSubscriptionOutput)
 }
 
 type LiteSubscriptionArrayOutput struct{ *pulumi.OutputState }

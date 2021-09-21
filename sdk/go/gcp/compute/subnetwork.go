@@ -587,7 +587,7 @@ type SubnetworkArrayInput interface {
 type SubnetworkArray []SubnetworkInput
 
 func (SubnetworkArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Subnetwork)(nil))
+	return reflect.TypeOf((*[]*Subnetwork)(nil)).Elem()
 }
 
 func (i SubnetworkArray) ToSubnetworkArrayOutput() SubnetworkArrayOutput {
@@ -612,7 +612,7 @@ type SubnetworkMapInput interface {
 type SubnetworkMap map[string]SubnetworkInput
 
 func (SubnetworkMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Subnetwork)(nil))
+	return reflect.TypeOf((*map[string]*Subnetwork)(nil)).Elem()
 }
 
 func (i SubnetworkMap) ToSubnetworkMapOutput() SubnetworkMapOutput {
@@ -623,9 +623,7 @@ func (i SubnetworkMap) ToSubnetworkMapOutputWithContext(ctx context.Context) Sub
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkMapOutput)
 }
 
-type SubnetworkOutput struct {
-	*pulumi.OutputState
-}
+type SubnetworkOutput struct{ *pulumi.OutputState }
 
 func (SubnetworkOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Subnetwork)(nil))
@@ -644,14 +642,12 @@ func (o SubnetworkOutput) ToSubnetworkPtrOutput() SubnetworkPtrOutput {
 }
 
 func (o SubnetworkOutput) ToSubnetworkPtrOutputWithContext(ctx context.Context) SubnetworkPtrOutput {
-	return o.ApplyT(func(v Subnetwork) *Subnetwork {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Subnetwork) *Subnetwork {
 		return &v
 	}).(SubnetworkPtrOutput)
 }
 
-type SubnetworkPtrOutput struct {
-	*pulumi.OutputState
-}
+type SubnetworkPtrOutput struct{ *pulumi.OutputState }
 
 func (SubnetworkPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Subnetwork)(nil))
@@ -663,6 +659,16 @@ func (o SubnetworkPtrOutput) ToSubnetworkPtrOutput() SubnetworkPtrOutput {
 
 func (o SubnetworkPtrOutput) ToSubnetworkPtrOutputWithContext(ctx context.Context) SubnetworkPtrOutput {
 	return o
+}
+
+func (o SubnetworkPtrOutput) Elem() SubnetworkOutput {
+	return o.ApplyT(func(v *Subnetwork) Subnetwork {
+		if v != nil {
+			return *v
+		}
+		var ret Subnetwork
+		return ret
+	}).(SubnetworkOutput)
 }
 
 type SubnetworkArrayOutput struct{ *pulumi.OutputState }

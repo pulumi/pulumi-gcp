@@ -325,7 +325,7 @@ type RegionDiskIamMemberArrayInput interface {
 type RegionDiskIamMemberArray []RegionDiskIamMemberInput
 
 func (RegionDiskIamMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*RegionDiskIamMember)(nil))
+	return reflect.TypeOf((*[]*RegionDiskIamMember)(nil)).Elem()
 }
 
 func (i RegionDiskIamMemberArray) ToRegionDiskIamMemberArrayOutput() RegionDiskIamMemberArrayOutput {
@@ -350,7 +350,7 @@ type RegionDiskIamMemberMapInput interface {
 type RegionDiskIamMemberMap map[string]RegionDiskIamMemberInput
 
 func (RegionDiskIamMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*RegionDiskIamMember)(nil))
+	return reflect.TypeOf((*map[string]*RegionDiskIamMember)(nil)).Elem()
 }
 
 func (i RegionDiskIamMemberMap) ToRegionDiskIamMemberMapOutput() RegionDiskIamMemberMapOutput {
@@ -361,9 +361,7 @@ func (i RegionDiskIamMemberMap) ToRegionDiskIamMemberMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskIamMemberMapOutput)
 }
 
-type RegionDiskIamMemberOutput struct {
-	*pulumi.OutputState
-}
+type RegionDiskIamMemberOutput struct{ *pulumi.OutputState }
 
 func (RegionDiskIamMemberOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RegionDiskIamMember)(nil))
@@ -382,14 +380,12 @@ func (o RegionDiskIamMemberOutput) ToRegionDiskIamMemberPtrOutput() RegionDiskIa
 }
 
 func (o RegionDiskIamMemberOutput) ToRegionDiskIamMemberPtrOutputWithContext(ctx context.Context) RegionDiskIamMemberPtrOutput {
-	return o.ApplyT(func(v RegionDiskIamMember) *RegionDiskIamMember {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionDiskIamMember) *RegionDiskIamMember {
 		return &v
 	}).(RegionDiskIamMemberPtrOutput)
 }
 
-type RegionDiskIamMemberPtrOutput struct {
-	*pulumi.OutputState
-}
+type RegionDiskIamMemberPtrOutput struct{ *pulumi.OutputState }
 
 func (RegionDiskIamMemberPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**RegionDiskIamMember)(nil))
@@ -401,6 +397,16 @@ func (o RegionDiskIamMemberPtrOutput) ToRegionDiskIamMemberPtrOutput() RegionDis
 
 func (o RegionDiskIamMemberPtrOutput) ToRegionDiskIamMemberPtrOutputWithContext(ctx context.Context) RegionDiskIamMemberPtrOutput {
 	return o
+}
+
+func (o RegionDiskIamMemberPtrOutput) Elem() RegionDiskIamMemberOutput {
+	return o.ApplyT(func(v *RegionDiskIamMember) RegionDiskIamMember {
+		if v != nil {
+			return *v
+		}
+		var ret RegionDiskIamMember
+		return ret
+	}).(RegionDiskIamMemberOutput)
 }
 
 type RegionDiskIamMemberArrayOutput struct{ *pulumi.OutputState }

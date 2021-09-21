@@ -386,14 +386,14 @@ class CaPool(pulumi.CustomResource):
                         ),
                     ],
                 ),
-                identity_constraints={
-                    "allowSubjectAltNamesPassthrough": True,
-                    "allowSubjectPassthrough": True,
-                    "celExpression": {
-                        "expression": "subject_alt_names.all(san, san.type == DNS || san.type == EMAIL )",
-                        "title": "My title",
-                    },
-                },
+                identity_constraints=gcp.certificateauthority.CaPoolIssuancePolicyIdentityConstraintsArgs(
+                    allow_subject_alt_names_passthrough=True,
+                    allow_subject_passthrough=True,
+                    cel_expression=gcp.certificateauthority.CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgs(
+                        expression="subject_alt_names.all(san, san.type == DNS || san.type == EMAIL )",
+                        title="My title",
+                    ),
+                ),
                 maximum_lifetime="50000s",
             ),
             labels={
@@ -544,14 +544,14 @@ class CaPool(pulumi.CustomResource):
                         ),
                     ],
                 ),
-                identity_constraints={
-                    "allowSubjectAltNamesPassthrough": True,
-                    "allowSubjectPassthrough": True,
-                    "celExpression": {
-                        "expression": "subject_alt_names.all(san, san.type == DNS || san.type == EMAIL )",
-                        "title": "My title",
-                    },
-                },
+                identity_constraints=gcp.certificateauthority.CaPoolIssuancePolicyIdentityConstraintsArgs(
+                    allow_subject_alt_names_passthrough=True,
+                    allow_subject_passthrough=True,
+                    cel_expression=gcp.certificateauthority.CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgs(
+                        expression="subject_alt_names.all(san, san.type == DNS || san.type == EMAIL )",
+                        title="My title",
+                    ),
+                ),
                 maximum_lifetime="50000s",
             ),
             labels={

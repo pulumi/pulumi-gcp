@@ -105,10 +105,11 @@ func (o AccountIamBindingConditionOutput) ToAccountIamBindingConditionPtrOutput(
 }
 
 func (o AccountIamBindingConditionOutput) ToAccountIamBindingConditionPtrOutputWithContext(ctx context.Context) AccountIamBindingConditionPtrOutput {
-	return o.ApplyT(func(v AccountIamBindingCondition) *AccountIamBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccountIamBindingCondition) *AccountIamBindingCondition {
 		return &v
 	}).(AccountIamBindingConditionPtrOutput)
 }
+
 func (o AccountIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccountIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -136,7 +137,13 @@ func (o AccountIamBindingConditionPtrOutput) ToAccountIamBindingConditionPtrOutp
 }
 
 func (o AccountIamBindingConditionPtrOutput) Elem() AccountIamBindingConditionOutput {
-	return o.ApplyT(func(v *AccountIamBindingCondition) AccountIamBindingCondition { return *v }).(AccountIamBindingConditionOutput)
+	return o.ApplyT(func(v *AccountIamBindingCondition) AccountIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret AccountIamBindingCondition
+		return ret
+	}).(AccountIamBindingConditionOutput)
 }
 
 func (o AccountIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -261,10 +268,11 @@ func (o AccountIamMemberConditionOutput) ToAccountIamMemberConditionPtrOutput() 
 }
 
 func (o AccountIamMemberConditionOutput) ToAccountIamMemberConditionPtrOutputWithContext(ctx context.Context) AccountIamMemberConditionPtrOutput {
-	return o.ApplyT(func(v AccountIamMemberCondition) *AccountIamMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccountIamMemberCondition) *AccountIamMemberCondition {
 		return &v
 	}).(AccountIamMemberConditionPtrOutput)
 }
+
 func (o AccountIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccountIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -292,7 +300,13 @@ func (o AccountIamMemberConditionPtrOutput) ToAccountIamMemberConditionPtrOutput
 }
 
 func (o AccountIamMemberConditionPtrOutput) Elem() AccountIamMemberConditionOutput {
-	return o.ApplyT(func(v *AccountIamMemberCondition) AccountIamMemberCondition { return *v }).(AccountIamMemberConditionOutput)
+	return o.ApplyT(func(v *AccountIamMemberCondition) AccountIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret AccountIamMemberCondition
+		return ret
+	}).(AccountIamMemberConditionOutput)
 }
 
 func (o AccountIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -449,7 +463,7 @@ func (o BudgetAllUpdatesRuleOutput) ToBudgetAllUpdatesRulePtrOutput() BudgetAllU
 }
 
 func (o BudgetAllUpdatesRuleOutput) ToBudgetAllUpdatesRulePtrOutputWithContext(ctx context.Context) BudgetAllUpdatesRulePtrOutput {
-	return o.ApplyT(func(v BudgetAllUpdatesRule) *BudgetAllUpdatesRule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BudgetAllUpdatesRule) *BudgetAllUpdatesRule {
 		return &v
 	}).(BudgetAllUpdatesRulePtrOutput)
 }
@@ -500,7 +514,13 @@ func (o BudgetAllUpdatesRulePtrOutput) ToBudgetAllUpdatesRulePtrOutputWithContex
 }
 
 func (o BudgetAllUpdatesRulePtrOutput) Elem() BudgetAllUpdatesRuleOutput {
-	return o.ApplyT(func(v *BudgetAllUpdatesRule) BudgetAllUpdatesRule { return *v }).(BudgetAllUpdatesRuleOutput)
+	return o.ApplyT(func(v *BudgetAllUpdatesRule) BudgetAllUpdatesRule {
+		if v != nil {
+			return *v
+		}
+		var ret BudgetAllUpdatesRule
+		return ret
+	}).(BudgetAllUpdatesRuleOutput)
 }
 
 // Boolean. When set to true, disables default notifications sent
@@ -663,7 +683,7 @@ func (o BudgetAmountOutput) ToBudgetAmountPtrOutput() BudgetAmountPtrOutput {
 }
 
 func (o BudgetAmountOutput) ToBudgetAmountPtrOutputWithContext(ctx context.Context) BudgetAmountPtrOutput {
-	return o.ApplyT(func(v BudgetAmount) *BudgetAmount {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BudgetAmount) *BudgetAmount {
 		return &v
 	}).(BudgetAmountPtrOutput)
 }
@@ -699,7 +719,13 @@ func (o BudgetAmountPtrOutput) ToBudgetAmountPtrOutputWithContext(ctx context.Co
 }
 
 func (o BudgetAmountPtrOutput) Elem() BudgetAmountOutput {
-	return o.ApplyT(func(v *BudgetAmount) BudgetAmount { return *v }).(BudgetAmountOutput)
+	return o.ApplyT(func(v *BudgetAmount) BudgetAmount {
+		if v != nil {
+			return *v
+		}
+		var ret BudgetAmount
+		return ret
+	}).(BudgetAmountOutput)
 }
 
 // Configures a budget amount that is automatically set to 100% of
@@ -843,7 +869,7 @@ func (o BudgetAmountSpecifiedAmountOutput) ToBudgetAmountSpecifiedAmountPtrOutpu
 }
 
 func (o BudgetAmountSpecifiedAmountOutput) ToBudgetAmountSpecifiedAmountPtrOutputWithContext(ctx context.Context) BudgetAmountSpecifiedAmountPtrOutput {
-	return o.ApplyT(func(v BudgetAmountSpecifiedAmount) *BudgetAmountSpecifiedAmount {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BudgetAmountSpecifiedAmount) *BudgetAmountSpecifiedAmount {
 		return &v
 	}).(BudgetAmountSpecifiedAmountPtrOutput)
 }
@@ -885,7 +911,13 @@ func (o BudgetAmountSpecifiedAmountPtrOutput) ToBudgetAmountSpecifiedAmountPtrOu
 }
 
 func (o BudgetAmountSpecifiedAmountPtrOutput) Elem() BudgetAmountSpecifiedAmountOutput {
-	return o.ApplyT(func(v *BudgetAmountSpecifiedAmount) BudgetAmountSpecifiedAmount { return *v }).(BudgetAmountSpecifiedAmountOutput)
+	return o.ApplyT(func(v *BudgetAmountSpecifiedAmount) BudgetAmountSpecifiedAmount {
+		if v != nil {
+			return *v
+		}
+		var ret BudgetAmountSpecifiedAmount
+		return ret
+	}).(BudgetAmountSpecifiedAmountOutput)
 }
 
 // The 3-letter currency code defined in ISO 4217.
@@ -1084,7 +1116,7 @@ func (o BudgetBudgetFilterOutput) ToBudgetBudgetFilterPtrOutput() BudgetBudgetFi
 }
 
 func (o BudgetBudgetFilterOutput) ToBudgetBudgetFilterPtrOutputWithContext(ctx context.Context) BudgetBudgetFilterPtrOutput {
-	return o.ApplyT(func(v BudgetBudgetFilter) *BudgetBudgetFilter {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BudgetBudgetFilter) *BudgetBudgetFilter {
 		return &v
 	}).(BudgetBudgetFilterPtrOutput)
 }
@@ -1157,7 +1189,13 @@ func (o BudgetBudgetFilterPtrOutput) ToBudgetBudgetFilterPtrOutputWithContext(ct
 }
 
 func (o BudgetBudgetFilterPtrOutput) Elem() BudgetBudgetFilterOutput {
-	return o.ApplyT(func(v *BudgetBudgetFilter) BudgetBudgetFilter { return *v }).(BudgetBudgetFilterOutput)
+	return o.ApplyT(func(v *BudgetBudgetFilter) BudgetBudgetFilter {
+		if v != nil {
+			return *v
+		}
+		var ret BudgetBudgetFilter
+		return ret
+	}).(BudgetBudgetFilterOutput)
 }
 
 // A set of subaccounts of the form billingAccounts/{account_id},

@@ -493,7 +493,7 @@ type EdgeCacheOriginArrayInput interface {
 type EdgeCacheOriginArray []EdgeCacheOriginInput
 
 func (EdgeCacheOriginArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*EdgeCacheOrigin)(nil))
+	return reflect.TypeOf((*[]*EdgeCacheOrigin)(nil)).Elem()
 }
 
 func (i EdgeCacheOriginArray) ToEdgeCacheOriginArrayOutput() EdgeCacheOriginArrayOutput {
@@ -518,7 +518,7 @@ type EdgeCacheOriginMapInput interface {
 type EdgeCacheOriginMap map[string]EdgeCacheOriginInput
 
 func (EdgeCacheOriginMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*EdgeCacheOrigin)(nil))
+	return reflect.TypeOf((*map[string]*EdgeCacheOrigin)(nil)).Elem()
 }
 
 func (i EdgeCacheOriginMap) ToEdgeCacheOriginMapOutput() EdgeCacheOriginMapOutput {
@@ -529,9 +529,7 @@ func (i EdgeCacheOriginMap) ToEdgeCacheOriginMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginMapOutput)
 }
 
-type EdgeCacheOriginOutput struct {
-	*pulumi.OutputState
-}
+type EdgeCacheOriginOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheOriginOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EdgeCacheOrigin)(nil))
@@ -550,14 +548,12 @@ func (o EdgeCacheOriginOutput) ToEdgeCacheOriginPtrOutput() EdgeCacheOriginPtrOu
 }
 
 func (o EdgeCacheOriginOutput) ToEdgeCacheOriginPtrOutputWithContext(ctx context.Context) EdgeCacheOriginPtrOutput {
-	return o.ApplyT(func(v EdgeCacheOrigin) *EdgeCacheOrigin {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCacheOrigin) *EdgeCacheOrigin {
 		return &v
 	}).(EdgeCacheOriginPtrOutput)
 }
 
-type EdgeCacheOriginPtrOutput struct {
-	*pulumi.OutputState
-}
+type EdgeCacheOriginPtrOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheOriginPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**EdgeCacheOrigin)(nil))
@@ -569,6 +565,16 @@ func (o EdgeCacheOriginPtrOutput) ToEdgeCacheOriginPtrOutput() EdgeCacheOriginPt
 
 func (o EdgeCacheOriginPtrOutput) ToEdgeCacheOriginPtrOutputWithContext(ctx context.Context) EdgeCacheOriginPtrOutput {
 	return o
+}
+
+func (o EdgeCacheOriginPtrOutput) Elem() EdgeCacheOriginOutput {
+	return o.ApplyT(func(v *EdgeCacheOrigin) EdgeCacheOrigin {
+		if v != nil {
+			return *v
+		}
+		var ret EdgeCacheOrigin
+		return ret
+	}).(EdgeCacheOriginOutput)
 }
 
 type EdgeCacheOriginArrayOutput struct{ *pulumi.OutputState }

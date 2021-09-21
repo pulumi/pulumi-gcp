@@ -318,7 +318,7 @@ type RepositoryIamBindingArrayInput interface {
 type RepositoryIamBindingArray []RepositoryIamBindingInput
 
 func (RepositoryIamBindingArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*RepositoryIamBinding)(nil))
+	return reflect.TypeOf((*[]*RepositoryIamBinding)(nil)).Elem()
 }
 
 func (i RepositoryIamBindingArray) ToRepositoryIamBindingArrayOutput() RepositoryIamBindingArrayOutput {
@@ -343,7 +343,7 @@ type RepositoryIamBindingMapInput interface {
 type RepositoryIamBindingMap map[string]RepositoryIamBindingInput
 
 func (RepositoryIamBindingMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*RepositoryIamBinding)(nil))
+	return reflect.TypeOf((*map[string]*RepositoryIamBinding)(nil)).Elem()
 }
 
 func (i RepositoryIamBindingMap) ToRepositoryIamBindingMapOutput() RepositoryIamBindingMapOutput {
@@ -354,9 +354,7 @@ func (i RepositoryIamBindingMap) ToRepositoryIamBindingMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamBindingMapOutput)
 }
 
-type RepositoryIamBindingOutput struct {
-	*pulumi.OutputState
-}
+type RepositoryIamBindingOutput struct{ *pulumi.OutputState }
 
 func (RepositoryIamBindingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RepositoryIamBinding)(nil))
@@ -375,14 +373,12 @@ func (o RepositoryIamBindingOutput) ToRepositoryIamBindingPtrOutput() Repository
 }
 
 func (o RepositoryIamBindingOutput) ToRepositoryIamBindingPtrOutputWithContext(ctx context.Context) RepositoryIamBindingPtrOutput {
-	return o.ApplyT(func(v RepositoryIamBinding) *RepositoryIamBinding {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryIamBinding) *RepositoryIamBinding {
 		return &v
 	}).(RepositoryIamBindingPtrOutput)
 }
 
-type RepositoryIamBindingPtrOutput struct {
-	*pulumi.OutputState
-}
+type RepositoryIamBindingPtrOutput struct{ *pulumi.OutputState }
 
 func (RepositoryIamBindingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**RepositoryIamBinding)(nil))
@@ -394,6 +390,16 @@ func (o RepositoryIamBindingPtrOutput) ToRepositoryIamBindingPtrOutput() Reposit
 
 func (o RepositoryIamBindingPtrOutput) ToRepositoryIamBindingPtrOutputWithContext(ctx context.Context) RepositoryIamBindingPtrOutput {
 	return o
+}
+
+func (o RepositoryIamBindingPtrOutput) Elem() RepositoryIamBindingOutput {
+	return o.ApplyT(func(v *RepositoryIamBinding) RepositoryIamBinding {
+		if v != nil {
+			return *v
+		}
+		var ret RepositoryIamBinding
+		return ret
+	}).(RepositoryIamBindingOutput)
 }
 
 type RepositoryIamBindingArrayOutput struct{ *pulumi.OutputState }

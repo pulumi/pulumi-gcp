@@ -486,7 +486,7 @@ type RouterNatArrayInput interface {
 type RouterNatArray []RouterNatInput
 
 func (RouterNatArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*RouterNat)(nil))
+	return reflect.TypeOf((*[]*RouterNat)(nil)).Elem()
 }
 
 func (i RouterNatArray) ToRouterNatArrayOutput() RouterNatArrayOutput {
@@ -511,7 +511,7 @@ type RouterNatMapInput interface {
 type RouterNatMap map[string]RouterNatInput
 
 func (RouterNatMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*RouterNat)(nil))
+	return reflect.TypeOf((*map[string]*RouterNat)(nil)).Elem()
 }
 
 func (i RouterNatMap) ToRouterNatMapOutput() RouterNatMapOutput {
@@ -522,9 +522,7 @@ func (i RouterNatMap) ToRouterNatMapOutputWithContext(ctx context.Context) Route
 	return pulumi.ToOutputWithContext(ctx, i).(RouterNatMapOutput)
 }
 
-type RouterNatOutput struct {
-	*pulumi.OutputState
-}
+type RouterNatOutput struct{ *pulumi.OutputState }
 
 func (RouterNatOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RouterNat)(nil))
@@ -543,14 +541,12 @@ func (o RouterNatOutput) ToRouterNatPtrOutput() RouterNatPtrOutput {
 }
 
 func (o RouterNatOutput) ToRouterNatPtrOutputWithContext(ctx context.Context) RouterNatPtrOutput {
-	return o.ApplyT(func(v RouterNat) *RouterNat {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RouterNat) *RouterNat {
 		return &v
 	}).(RouterNatPtrOutput)
 }
 
-type RouterNatPtrOutput struct {
-	*pulumi.OutputState
-}
+type RouterNatPtrOutput struct{ *pulumi.OutputState }
 
 func (RouterNatPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**RouterNat)(nil))
@@ -562,6 +558,16 @@ func (o RouterNatPtrOutput) ToRouterNatPtrOutput() RouterNatPtrOutput {
 
 func (o RouterNatPtrOutput) ToRouterNatPtrOutputWithContext(ctx context.Context) RouterNatPtrOutput {
 	return o
+}
+
+func (o RouterNatPtrOutput) Elem() RouterNatOutput {
+	return o.ApplyT(func(v *RouterNat) RouterNat {
+		if v != nil {
+			return *v
+		}
+		var ret RouterNat
+		return ret
+	}).(RouterNatOutput)
 }
 
 type RouterNatArrayOutput struct{ *pulumi.OutputState }

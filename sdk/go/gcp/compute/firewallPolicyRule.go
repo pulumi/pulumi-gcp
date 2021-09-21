@@ -320,7 +320,7 @@ type FirewallPolicyRuleArrayInput interface {
 type FirewallPolicyRuleArray []FirewallPolicyRuleInput
 
 func (FirewallPolicyRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*FirewallPolicyRule)(nil))
+	return reflect.TypeOf((*[]*FirewallPolicyRule)(nil)).Elem()
 }
 
 func (i FirewallPolicyRuleArray) ToFirewallPolicyRuleArrayOutput() FirewallPolicyRuleArrayOutput {
@@ -345,7 +345,7 @@ type FirewallPolicyRuleMapInput interface {
 type FirewallPolicyRuleMap map[string]FirewallPolicyRuleInput
 
 func (FirewallPolicyRuleMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*FirewallPolicyRule)(nil))
+	return reflect.TypeOf((*map[string]*FirewallPolicyRule)(nil)).Elem()
 }
 
 func (i FirewallPolicyRuleMap) ToFirewallPolicyRuleMapOutput() FirewallPolicyRuleMapOutput {
@@ -356,9 +356,7 @@ func (i FirewallPolicyRuleMap) ToFirewallPolicyRuleMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyRuleMapOutput)
 }
 
-type FirewallPolicyRuleOutput struct {
-	*pulumi.OutputState
-}
+type FirewallPolicyRuleOutput struct{ *pulumi.OutputState }
 
 func (FirewallPolicyRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*FirewallPolicyRule)(nil))
@@ -377,14 +375,12 @@ func (o FirewallPolicyRuleOutput) ToFirewallPolicyRulePtrOutput() FirewallPolicy
 }
 
 func (o FirewallPolicyRuleOutput) ToFirewallPolicyRulePtrOutputWithContext(ctx context.Context) FirewallPolicyRulePtrOutput {
-	return o.ApplyT(func(v FirewallPolicyRule) *FirewallPolicyRule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FirewallPolicyRule) *FirewallPolicyRule {
 		return &v
 	}).(FirewallPolicyRulePtrOutput)
 }
 
-type FirewallPolicyRulePtrOutput struct {
-	*pulumi.OutputState
-}
+type FirewallPolicyRulePtrOutput struct{ *pulumi.OutputState }
 
 func (FirewallPolicyRulePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**FirewallPolicyRule)(nil))
@@ -396,6 +392,16 @@ func (o FirewallPolicyRulePtrOutput) ToFirewallPolicyRulePtrOutput() FirewallPol
 
 func (o FirewallPolicyRulePtrOutput) ToFirewallPolicyRulePtrOutputWithContext(ctx context.Context) FirewallPolicyRulePtrOutput {
 	return o
+}
+
+func (o FirewallPolicyRulePtrOutput) Elem() FirewallPolicyRuleOutput {
+	return o.ApplyT(func(v *FirewallPolicyRule) FirewallPolicyRule {
+		if v != nil {
+			return *v
+		}
+		var ret FirewallPolicyRule
+		return ret
+	}).(FirewallPolicyRuleOutput)
 }
 
 type FirewallPolicyRuleArrayOutput struct{ *pulumi.OutputState }

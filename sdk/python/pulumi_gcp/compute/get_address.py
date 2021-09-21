@@ -12,6 +12,7 @@ __all__ = [
     'GetAddressResult',
     'AwaitableGetAddressResult',
     'get_address',
+    'get_address_output',
 ]
 
 @pulumi.output_type
@@ -154,3 +155,38 @@ def get_address(name: Optional[str] = None,
         region=__ret__.region,
         self_link=__ret__.self_link,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_address)
+def get_address_output(name: Optional[pulumi.Input[str]] = None,
+                       project: Optional[pulumi.Input[Optional[str]]] = None,
+                       region: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAddressResult]:
+    """
+    Get the IP address from a static address. For more information see
+    the official [API](https://cloud.google.com/compute/docs/reference/latest/addresses/get) documentation.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_address = gcp.compute.get_address(name="foobar")
+    prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
+    frontend = gcp.dns.RecordSet("frontend",
+        name=prod.dns_name.apply(lambda dns_name: f"frontend.{dns_name}"),
+        type="A",
+        ttl=300,
+        managed_zone=prod.name,
+        rrdatas=[my_address.address])
+    ```
+
+
+    :param str name: A unique name for the resource, required by GCE.
+    :param str project: The project in which the resource belongs. If it
+           is not provided, the provider project is used.
+    :param str region: The Region in which the created address reside.
+           If it is not provided, the provider region is used.
+    """
+    ...

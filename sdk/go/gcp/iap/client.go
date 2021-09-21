@@ -203,7 +203,7 @@ type ClientArrayInput interface {
 type ClientArray []ClientInput
 
 func (ClientArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Client)(nil))
+	return reflect.TypeOf((*[]*Client)(nil)).Elem()
 }
 
 func (i ClientArray) ToClientArrayOutput() ClientArrayOutput {
@@ -228,7 +228,7 @@ type ClientMapInput interface {
 type ClientMap map[string]ClientInput
 
 func (ClientMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Client)(nil))
+	return reflect.TypeOf((*map[string]*Client)(nil)).Elem()
 }
 
 func (i ClientMap) ToClientMapOutput() ClientMapOutput {
@@ -239,9 +239,7 @@ func (i ClientMap) ToClientMapOutputWithContext(ctx context.Context) ClientMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(ClientMapOutput)
 }
 
-type ClientOutput struct {
-	*pulumi.OutputState
-}
+type ClientOutput struct{ *pulumi.OutputState }
 
 func (ClientOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Client)(nil))
@@ -260,14 +258,12 @@ func (o ClientOutput) ToClientPtrOutput() ClientPtrOutput {
 }
 
 func (o ClientOutput) ToClientPtrOutputWithContext(ctx context.Context) ClientPtrOutput {
-	return o.ApplyT(func(v Client) *Client {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Client) *Client {
 		return &v
 	}).(ClientPtrOutput)
 }
 
-type ClientPtrOutput struct {
-	*pulumi.OutputState
-}
+type ClientPtrOutput struct{ *pulumi.OutputState }
 
 func (ClientPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Client)(nil))
@@ -279,6 +275,16 @@ func (o ClientPtrOutput) ToClientPtrOutput() ClientPtrOutput {
 
 func (o ClientPtrOutput) ToClientPtrOutputWithContext(ctx context.Context) ClientPtrOutput {
 	return o
+}
+
+func (o ClientPtrOutput) Elem() ClientOutput {
+	return o.ApplyT(func(v *Client) Client {
+		if v != nil {
+			return *v
+		}
+		var ret Client
+		return ret
+	}).(ClientOutput)
 }
 
 type ClientArrayOutput struct{ *pulumi.OutputState }

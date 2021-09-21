@@ -324,7 +324,7 @@ type TransferJobArrayInput interface {
 type TransferJobArray []TransferJobInput
 
 func (TransferJobArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TransferJob)(nil))
+	return reflect.TypeOf((*[]*TransferJob)(nil)).Elem()
 }
 
 func (i TransferJobArray) ToTransferJobArrayOutput() TransferJobArrayOutput {
@@ -349,7 +349,7 @@ type TransferJobMapInput interface {
 type TransferJobMap map[string]TransferJobInput
 
 func (TransferJobMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TransferJob)(nil))
+	return reflect.TypeOf((*map[string]*TransferJob)(nil)).Elem()
 }
 
 func (i TransferJobMap) ToTransferJobMapOutput() TransferJobMapOutput {
@@ -360,9 +360,7 @@ func (i TransferJobMap) ToTransferJobMapOutputWithContext(ctx context.Context) T
 	return pulumi.ToOutputWithContext(ctx, i).(TransferJobMapOutput)
 }
 
-type TransferJobOutput struct {
-	*pulumi.OutputState
-}
+type TransferJobOutput struct{ *pulumi.OutputState }
 
 func (TransferJobOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TransferJob)(nil))
@@ -381,14 +379,12 @@ func (o TransferJobOutput) ToTransferJobPtrOutput() TransferJobPtrOutput {
 }
 
 func (o TransferJobOutput) ToTransferJobPtrOutputWithContext(ctx context.Context) TransferJobPtrOutput {
-	return o.ApplyT(func(v TransferJob) *TransferJob {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferJob) *TransferJob {
 		return &v
 	}).(TransferJobPtrOutput)
 }
 
-type TransferJobPtrOutput struct {
-	*pulumi.OutputState
-}
+type TransferJobPtrOutput struct{ *pulumi.OutputState }
 
 func (TransferJobPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TransferJob)(nil))
@@ -400,6 +396,16 @@ func (o TransferJobPtrOutput) ToTransferJobPtrOutput() TransferJobPtrOutput {
 
 func (o TransferJobPtrOutput) ToTransferJobPtrOutputWithContext(ctx context.Context) TransferJobPtrOutput {
 	return o
+}
+
+func (o TransferJobPtrOutput) Elem() TransferJobOutput {
+	return o.ApplyT(func(v *TransferJob) TransferJob {
+		if v != nil {
+			return *v
+		}
+		var ret TransferJob
+		return ret
+	}).(TransferJobOutput)
 }
 
 type TransferJobArrayOutput struct{ *pulumi.OutputState }

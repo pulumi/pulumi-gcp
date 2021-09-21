@@ -13,6 +13,7 @@ __all__ = [
     'GetNotificationChannelResult',
     'AwaitableGetNotificationChannelResult',
     'get_notification_channel',
+    'get_notification_channel_output',
 ]
 
 @pulumi.output_type
@@ -211,3 +212,61 @@ def get_notification_channel(display_name: Optional[str] = None,
         type=__ret__.type,
         user_labels=__ret__.user_labels,
         verification_status=__ret__.verification_status)
+
+
+@_utilities.lift_output_func(get_notification_channel)
+def get_notification_channel_output(display_name: Optional[pulumi.Input[Optional[str]]] = None,
+                                    labels: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
+                                    project: Optional[pulumi.Input[Optional[str]]] = None,
+                                    type: Optional[pulumi.Input[Optional[str]]] = None,
+                                    user_labels: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNotificationChannelResult]:
+    """
+    A NotificationChannel is a medium through which an alert is delivered
+    when a policy violation is detected. Examples of channels include email, SMS,
+    and third-party messaging applications. Fields containing sensitive information
+    like authentication tokens or contact info are only partially populated on retrieval.
+
+    To get more information about NotificationChannel, see:
+
+    * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannels)
+    * How-to Guides
+        * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
+        * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+
+    ## Example Usage
+    ### Notification Channel Basic
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    basic = gcp.monitoring.get_notification_channel(display_name="Test Notification Channel")
+    alert_policy = gcp.monitoring.AlertPolicy("alertPolicy",
+        display_name="My Alert Policy",
+        notification_channels=[basic.name],
+        combiner="OR",
+        conditions=[gcp.monitoring.AlertPolicyConditionArgs(
+            display_name="test condition",
+            condition_threshold=gcp.monitoring.AlertPolicyConditionConditionThresholdArgs(
+                filter="metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"",
+                duration="60s",
+                comparison="COMPARISON_GT",
+                aggregations=[gcp.monitoring.AlertPolicyConditionConditionThresholdAggregationArgs(
+                    alignment_period="60s",
+                    per_series_aligner="ALIGN_RATE",
+                )],
+            ),
+        )])
+    ```
+
+
+    :param str display_name: The display name for this notification channel.
+    :param Mapping[str, str] labels: Labels (corresponding to the
+           NotificationChannelDescriptor schema) to filter the notification channels by.
+    :param str project: The ID of the project in which the resource belongs.
+           If it is not provided, the provider project is used.
+    :param str type: The type of the notification channel.
+    :param Mapping[str, str] user_labels: User-provided key-value labels to filter by.
+    """
+    ...

@@ -105,10 +105,11 @@ func (o NamespaceIamBindingConditionOutput) ToNamespaceIamBindingConditionPtrOut
 }
 
 func (o NamespaceIamBindingConditionOutput) ToNamespaceIamBindingConditionPtrOutputWithContext(ctx context.Context) NamespaceIamBindingConditionPtrOutput {
-	return o.ApplyT(func(v NamespaceIamBindingCondition) *NamespaceIamBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NamespaceIamBindingCondition) *NamespaceIamBindingCondition {
 		return &v
 	}).(NamespaceIamBindingConditionPtrOutput)
 }
+
 func (o NamespaceIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NamespaceIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -136,7 +137,13 @@ func (o NamespaceIamBindingConditionPtrOutput) ToNamespaceIamBindingConditionPtr
 }
 
 func (o NamespaceIamBindingConditionPtrOutput) Elem() NamespaceIamBindingConditionOutput {
-	return o.ApplyT(func(v *NamespaceIamBindingCondition) NamespaceIamBindingCondition { return *v }).(NamespaceIamBindingConditionOutput)
+	return o.ApplyT(func(v *NamespaceIamBindingCondition) NamespaceIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret NamespaceIamBindingCondition
+		return ret
+	}).(NamespaceIamBindingConditionOutput)
 }
 
 func (o NamespaceIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -261,10 +268,11 @@ func (o NamespaceIamMemberConditionOutput) ToNamespaceIamMemberConditionPtrOutpu
 }
 
 func (o NamespaceIamMemberConditionOutput) ToNamespaceIamMemberConditionPtrOutputWithContext(ctx context.Context) NamespaceIamMemberConditionPtrOutput {
-	return o.ApplyT(func(v NamespaceIamMemberCondition) *NamespaceIamMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NamespaceIamMemberCondition) *NamespaceIamMemberCondition {
 		return &v
 	}).(NamespaceIamMemberConditionPtrOutput)
 }
+
 func (o NamespaceIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NamespaceIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -292,7 +300,13 @@ func (o NamespaceIamMemberConditionPtrOutput) ToNamespaceIamMemberConditionPtrOu
 }
 
 func (o NamespaceIamMemberConditionPtrOutput) Elem() NamespaceIamMemberConditionOutput {
-	return o.ApplyT(func(v *NamespaceIamMemberCondition) NamespaceIamMemberCondition { return *v }).(NamespaceIamMemberConditionOutput)
+	return o.ApplyT(func(v *NamespaceIamMemberCondition) NamespaceIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret NamespaceIamMemberCondition
+		return ret
+	}).(NamespaceIamMemberConditionOutput)
 }
 
 func (o NamespaceIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -417,10 +431,11 @@ func (o ServiceIamBindingConditionOutput) ToServiceIamBindingConditionPtrOutput(
 }
 
 func (o ServiceIamBindingConditionOutput) ToServiceIamBindingConditionPtrOutputWithContext(ctx context.Context) ServiceIamBindingConditionPtrOutput {
-	return o.ApplyT(func(v ServiceIamBindingCondition) *ServiceIamBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceIamBindingCondition) *ServiceIamBindingCondition {
 		return &v
 	}).(ServiceIamBindingConditionPtrOutput)
 }
+
 func (o ServiceIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -448,7 +463,13 @@ func (o ServiceIamBindingConditionPtrOutput) ToServiceIamBindingConditionPtrOutp
 }
 
 func (o ServiceIamBindingConditionPtrOutput) Elem() ServiceIamBindingConditionOutput {
-	return o.ApplyT(func(v *ServiceIamBindingCondition) ServiceIamBindingCondition { return *v }).(ServiceIamBindingConditionOutput)
+	return o.ApplyT(func(v *ServiceIamBindingCondition) ServiceIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceIamBindingCondition
+		return ret
+	}).(ServiceIamBindingConditionOutput)
 }
 
 func (o ServiceIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -573,10 +594,11 @@ func (o ServiceIamMemberConditionOutput) ToServiceIamMemberConditionPtrOutput() 
 }
 
 func (o ServiceIamMemberConditionOutput) ToServiceIamMemberConditionPtrOutputWithContext(ctx context.Context) ServiceIamMemberConditionPtrOutput {
-	return o.ApplyT(func(v ServiceIamMemberCondition) *ServiceIamMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceIamMemberCondition) *ServiceIamMemberCondition {
 		return &v
 	}).(ServiceIamMemberConditionPtrOutput)
 }
+
 func (o ServiceIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -604,7 +626,13 @@ func (o ServiceIamMemberConditionPtrOutput) ToServiceIamMemberConditionPtrOutput
 }
 
 func (o ServiceIamMemberConditionPtrOutput) Elem() ServiceIamMemberConditionOutput {
-	return o.ApplyT(func(v *ServiceIamMemberCondition) ServiceIamMemberCondition { return *v }).(ServiceIamMemberConditionOutput)
+	return o.ApplyT(func(v *ServiceIamMemberCondition) ServiceIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceIamMemberCondition
+		return ret
+	}).(ServiceIamMemberConditionOutput)
 }
 
 func (o ServiceIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {

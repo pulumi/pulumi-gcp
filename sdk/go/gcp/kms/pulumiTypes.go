@@ -111,7 +111,7 @@ func (o CryptoKeyIAMBindingConditionOutput) ToCryptoKeyIAMBindingConditionPtrOut
 }
 
 func (o CryptoKeyIAMBindingConditionOutput) ToCryptoKeyIAMBindingConditionPtrOutputWithContext(ctx context.Context) CryptoKeyIAMBindingConditionPtrOutput {
-	return o.ApplyT(func(v CryptoKeyIAMBindingCondition) *CryptoKeyIAMBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CryptoKeyIAMBindingCondition) *CryptoKeyIAMBindingCondition {
 		return &v
 	}).(CryptoKeyIAMBindingConditionPtrOutput)
 }
@@ -146,7 +146,13 @@ func (o CryptoKeyIAMBindingConditionPtrOutput) ToCryptoKeyIAMBindingConditionPtr
 }
 
 func (o CryptoKeyIAMBindingConditionPtrOutput) Elem() CryptoKeyIAMBindingConditionOutput {
-	return o.ApplyT(func(v *CryptoKeyIAMBindingCondition) CryptoKeyIAMBindingCondition { return *v }).(CryptoKeyIAMBindingConditionOutput)
+	return o.ApplyT(func(v *CryptoKeyIAMBindingCondition) CryptoKeyIAMBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret CryptoKeyIAMBindingCondition
+		return ret
+	}).(CryptoKeyIAMBindingConditionOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -280,7 +286,7 @@ func (o CryptoKeyIAMMemberConditionOutput) ToCryptoKeyIAMMemberConditionPtrOutpu
 }
 
 func (o CryptoKeyIAMMemberConditionOutput) ToCryptoKeyIAMMemberConditionPtrOutputWithContext(ctx context.Context) CryptoKeyIAMMemberConditionPtrOutput {
-	return o.ApplyT(func(v CryptoKeyIAMMemberCondition) *CryptoKeyIAMMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CryptoKeyIAMMemberCondition) *CryptoKeyIAMMemberCondition {
 		return &v
 	}).(CryptoKeyIAMMemberConditionPtrOutput)
 }
@@ -315,7 +321,13 @@ func (o CryptoKeyIAMMemberConditionPtrOutput) ToCryptoKeyIAMMemberConditionPtrOu
 }
 
 func (o CryptoKeyIAMMemberConditionPtrOutput) Elem() CryptoKeyIAMMemberConditionOutput {
-	return o.ApplyT(func(v *CryptoKeyIAMMemberCondition) CryptoKeyIAMMemberCondition { return *v }).(CryptoKeyIAMMemberConditionOutput)
+	return o.ApplyT(func(v *CryptoKeyIAMMemberCondition) CryptoKeyIAMMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret CryptoKeyIAMMemberCondition
+		return ret
+	}).(CryptoKeyIAMMemberConditionOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -451,7 +463,7 @@ func (o CryptoKeyVersionTemplateOutput) ToCryptoKeyVersionTemplatePtrOutput() Cr
 }
 
 func (o CryptoKeyVersionTemplateOutput) ToCryptoKeyVersionTemplatePtrOutputWithContext(ctx context.Context) CryptoKeyVersionTemplatePtrOutput {
-	return o.ApplyT(func(v CryptoKeyVersionTemplate) *CryptoKeyVersionTemplate {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CryptoKeyVersionTemplate) *CryptoKeyVersionTemplate {
 		return &v
 	}).(CryptoKeyVersionTemplatePtrOutput)
 }
@@ -484,7 +496,13 @@ func (o CryptoKeyVersionTemplatePtrOutput) ToCryptoKeyVersionTemplatePtrOutputWi
 }
 
 func (o CryptoKeyVersionTemplatePtrOutput) Elem() CryptoKeyVersionTemplateOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionTemplate) CryptoKeyVersionTemplate { return *v }).(CryptoKeyVersionTemplateOutput)
+	return o.ApplyT(func(v *CryptoKeyVersionTemplate) CryptoKeyVersionTemplate {
+		if v != nil {
+			return *v
+		}
+		var ret CryptoKeyVersionTemplate
+		return ret
+	}).(CryptoKeyVersionTemplateOutput)
 }
 
 // The algorithm to use when creating a version based on this template.
@@ -611,7 +629,7 @@ func (o KeyRingIAMBindingConditionOutput) ToKeyRingIAMBindingConditionPtrOutput(
 }
 
 func (o KeyRingIAMBindingConditionOutput) ToKeyRingIAMBindingConditionPtrOutputWithContext(ctx context.Context) KeyRingIAMBindingConditionPtrOutput {
-	return o.ApplyT(func(v KeyRingIAMBindingCondition) *KeyRingIAMBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyRingIAMBindingCondition) *KeyRingIAMBindingCondition {
 		return &v
 	}).(KeyRingIAMBindingConditionPtrOutput)
 }
@@ -646,7 +664,13 @@ func (o KeyRingIAMBindingConditionPtrOutput) ToKeyRingIAMBindingConditionPtrOutp
 }
 
 func (o KeyRingIAMBindingConditionPtrOutput) Elem() KeyRingIAMBindingConditionOutput {
-	return o.ApplyT(func(v *KeyRingIAMBindingCondition) KeyRingIAMBindingCondition { return *v }).(KeyRingIAMBindingConditionOutput)
+	return o.ApplyT(func(v *KeyRingIAMBindingCondition) KeyRingIAMBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret KeyRingIAMBindingCondition
+		return ret
+	}).(KeyRingIAMBindingConditionOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -780,7 +804,7 @@ func (o KeyRingIAMMemberConditionOutput) ToKeyRingIAMMemberConditionPtrOutput() 
 }
 
 func (o KeyRingIAMMemberConditionOutput) ToKeyRingIAMMemberConditionPtrOutputWithContext(ctx context.Context) KeyRingIAMMemberConditionPtrOutput {
-	return o.ApplyT(func(v KeyRingIAMMemberCondition) *KeyRingIAMMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyRingIAMMemberCondition) *KeyRingIAMMemberCondition {
 		return &v
 	}).(KeyRingIAMMemberConditionPtrOutput)
 }
@@ -815,7 +839,13 @@ func (o KeyRingIAMMemberConditionPtrOutput) ToKeyRingIAMMemberConditionPtrOutput
 }
 
 func (o KeyRingIAMMemberConditionPtrOutput) Elem() KeyRingIAMMemberConditionOutput {
-	return o.ApplyT(func(v *KeyRingIAMMemberCondition) KeyRingIAMMemberCondition { return *v }).(KeyRingIAMMemberConditionOutput)
+	return o.ApplyT(func(v *KeyRingIAMMemberCondition) KeyRingIAMMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret KeyRingIAMMemberCondition
+		return ret
+	}).(KeyRingIAMMemberConditionOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.

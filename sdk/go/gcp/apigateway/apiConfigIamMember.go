@@ -336,7 +336,7 @@ type ApiConfigIamMemberArrayInput interface {
 type ApiConfigIamMemberArray []ApiConfigIamMemberInput
 
 func (ApiConfigIamMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ApiConfigIamMember)(nil))
+	return reflect.TypeOf((*[]*ApiConfigIamMember)(nil)).Elem()
 }
 
 func (i ApiConfigIamMemberArray) ToApiConfigIamMemberArrayOutput() ApiConfigIamMemberArrayOutput {
@@ -361,7 +361,7 @@ type ApiConfigIamMemberMapInput interface {
 type ApiConfigIamMemberMap map[string]ApiConfigIamMemberInput
 
 func (ApiConfigIamMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ApiConfigIamMember)(nil))
+	return reflect.TypeOf((*map[string]*ApiConfigIamMember)(nil)).Elem()
 }
 
 func (i ApiConfigIamMemberMap) ToApiConfigIamMemberMapOutput() ApiConfigIamMemberMapOutput {
@@ -372,9 +372,7 @@ func (i ApiConfigIamMemberMap) ToApiConfigIamMemberMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigIamMemberMapOutput)
 }
 
-type ApiConfigIamMemberOutput struct {
-	*pulumi.OutputState
-}
+type ApiConfigIamMemberOutput struct{ *pulumi.OutputState }
 
 func (ApiConfigIamMemberOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ApiConfigIamMember)(nil))
@@ -393,14 +391,12 @@ func (o ApiConfigIamMemberOutput) ToApiConfigIamMemberPtrOutput() ApiConfigIamMe
 }
 
 func (o ApiConfigIamMemberOutput) ToApiConfigIamMemberPtrOutputWithContext(ctx context.Context) ApiConfigIamMemberPtrOutput {
-	return o.ApplyT(func(v ApiConfigIamMember) *ApiConfigIamMember {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiConfigIamMember) *ApiConfigIamMember {
 		return &v
 	}).(ApiConfigIamMemberPtrOutput)
 }
 
-type ApiConfigIamMemberPtrOutput struct {
-	*pulumi.OutputState
-}
+type ApiConfigIamMemberPtrOutput struct{ *pulumi.OutputState }
 
 func (ApiConfigIamMemberPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ApiConfigIamMember)(nil))
@@ -412,6 +408,16 @@ func (o ApiConfigIamMemberPtrOutput) ToApiConfigIamMemberPtrOutput() ApiConfigIa
 
 func (o ApiConfigIamMemberPtrOutput) ToApiConfigIamMemberPtrOutputWithContext(ctx context.Context) ApiConfigIamMemberPtrOutput {
 	return o
+}
+
+func (o ApiConfigIamMemberPtrOutput) Elem() ApiConfigIamMemberOutput {
+	return o.ApplyT(func(v *ApiConfigIamMember) ApiConfigIamMember {
+		if v != nil {
+			return *v
+		}
+		var ret ApiConfigIamMember
+		return ret
+	}).(ApiConfigIamMemberOutput)
 }
 
 type ApiConfigIamMemberArrayOutput struct{ *pulumi.OutputState }

@@ -105,10 +105,11 @@ func (o RepositoryIamBindingConditionOutput) ToRepositoryIamBindingConditionPtrO
 }
 
 func (o RepositoryIamBindingConditionOutput) ToRepositoryIamBindingConditionPtrOutputWithContext(ctx context.Context) RepositoryIamBindingConditionPtrOutput {
-	return o.ApplyT(func(v RepositoryIamBindingCondition) *RepositoryIamBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryIamBindingCondition) *RepositoryIamBindingCondition {
 		return &v
 	}).(RepositoryIamBindingConditionPtrOutput)
 }
+
 func (o RepositoryIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RepositoryIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -136,7 +137,13 @@ func (o RepositoryIamBindingConditionPtrOutput) ToRepositoryIamBindingConditionP
 }
 
 func (o RepositoryIamBindingConditionPtrOutput) Elem() RepositoryIamBindingConditionOutput {
-	return o.ApplyT(func(v *RepositoryIamBindingCondition) RepositoryIamBindingCondition { return *v }).(RepositoryIamBindingConditionOutput)
+	return o.ApplyT(func(v *RepositoryIamBindingCondition) RepositoryIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret RepositoryIamBindingCondition
+		return ret
+	}).(RepositoryIamBindingConditionOutput)
 }
 
 func (o RepositoryIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -261,10 +268,11 @@ func (o RepositoryIamMemberConditionOutput) ToRepositoryIamMemberConditionPtrOut
 }
 
 func (o RepositoryIamMemberConditionOutput) ToRepositoryIamMemberConditionPtrOutputWithContext(ctx context.Context) RepositoryIamMemberConditionPtrOutput {
-	return o.ApplyT(func(v RepositoryIamMemberCondition) *RepositoryIamMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryIamMemberCondition) *RepositoryIamMemberCondition {
 		return &v
 	}).(RepositoryIamMemberConditionPtrOutput)
 }
+
 func (o RepositoryIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RepositoryIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -292,7 +300,13 @@ func (o RepositoryIamMemberConditionPtrOutput) ToRepositoryIamMemberConditionPtr
 }
 
 func (o RepositoryIamMemberConditionPtrOutput) Elem() RepositoryIamMemberConditionOutput {
-	return o.ApplyT(func(v *RepositoryIamMemberCondition) RepositoryIamMemberCondition { return *v }).(RepositoryIamMemberConditionOutput)
+	return o.ApplyT(func(v *RepositoryIamMemberCondition) RepositoryIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret RepositoryIamMemberCondition
+		return ret
+	}).(RepositoryIamMemberConditionOutput)
 }
 
 func (o RepositoryIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {

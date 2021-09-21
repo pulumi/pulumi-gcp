@@ -378,7 +378,7 @@ type JobArrayInput interface {
 type JobArray []JobInput
 
 func (JobArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Job)(nil))
+	return reflect.TypeOf((*[]*Job)(nil)).Elem()
 }
 
 func (i JobArray) ToJobArrayOutput() JobArrayOutput {
@@ -403,7 +403,7 @@ type JobMapInput interface {
 type JobMap map[string]JobInput
 
 func (JobMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Job)(nil))
+	return reflect.TypeOf((*map[string]*Job)(nil)).Elem()
 }
 
 func (i JobMap) ToJobMapOutput() JobMapOutput {
@@ -414,9 +414,7 @@ func (i JobMap) ToJobMapOutputWithContext(ctx context.Context) JobMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(JobMapOutput)
 }
 
-type JobOutput struct {
-	*pulumi.OutputState
-}
+type JobOutput struct{ *pulumi.OutputState }
 
 func (JobOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Job)(nil))
@@ -435,14 +433,12 @@ func (o JobOutput) ToJobPtrOutput() JobPtrOutput {
 }
 
 func (o JobOutput) ToJobPtrOutputWithContext(ctx context.Context) JobPtrOutput {
-	return o.ApplyT(func(v Job) *Job {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Job) *Job {
 		return &v
 	}).(JobPtrOutput)
 }
 
-type JobPtrOutput struct {
-	*pulumi.OutputState
-}
+type JobPtrOutput struct{ *pulumi.OutputState }
 
 func (JobPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Job)(nil))
@@ -454,6 +450,16 @@ func (o JobPtrOutput) ToJobPtrOutput() JobPtrOutput {
 
 func (o JobPtrOutput) ToJobPtrOutputWithContext(ctx context.Context) JobPtrOutput {
 	return o
+}
+
+func (o JobPtrOutput) Elem() JobOutput {
+	return o.ApplyT(func(v *Job) Job {
+		if v != nil {
+			return *v
+		}
+		var ret Job
+		return ret
+	}).(JobOutput)
 }
 
 type JobArrayOutput struct{ *pulumi.OutputState }

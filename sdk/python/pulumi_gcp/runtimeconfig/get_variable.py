@@ -12,6 +12,7 @@ __all__ = [
     'GetVariableResult',
     'AwaitableGetVariableResult',
     'get_variable',
+    'get_variable_output',
 ]
 
 @pulumi.output_type
@@ -141,3 +142,34 @@ def get_variable(name: Optional[str] = None,
         text=__ret__.text,
         update_time=__ret__.update_time,
         value=__ret__.value)
+
+
+@_utilities.lift_output_func(get_variable)
+def get_variable_output(name: Optional[pulumi.Input[str]] = None,
+                        parent: Optional[pulumi.Input[str]] = None,
+                        project: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVariableResult]:
+    """
+    To get more information about RuntimeConfigs, see:
+
+    * [API documentation](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/v1beta1/projects.configs)
+    * How-to Guides
+        * [Runtime Configurator Fundamentals](https://cloud.google.com/deployment-manager/runtime-configurator/)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    run_service = gcp.runtimeconfig.get_variable(name="prod-variables/hostname",
+        parent="my-service")
+    ```
+
+
+    :param str name: The name of the Runtime Configurator configuration.
+    :param str parent: The name of the RuntimeConfig resource containing this variable.
+    :param str project: The project in which the resource belongs. If it
+           is not provided, the provider project is used.
+    """
+    ...

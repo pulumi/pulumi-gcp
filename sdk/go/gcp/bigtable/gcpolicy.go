@@ -298,7 +298,7 @@ type GCPolicyArrayInput interface {
 type GCPolicyArray []GCPolicyInput
 
 func (GCPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*GCPolicy)(nil))
+	return reflect.TypeOf((*[]*GCPolicy)(nil)).Elem()
 }
 
 func (i GCPolicyArray) ToGCPolicyArrayOutput() GCPolicyArrayOutput {
@@ -323,7 +323,7 @@ type GCPolicyMapInput interface {
 type GCPolicyMap map[string]GCPolicyInput
 
 func (GCPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*GCPolicy)(nil))
+	return reflect.TypeOf((*map[string]*GCPolicy)(nil)).Elem()
 }
 
 func (i GCPolicyMap) ToGCPolicyMapOutput() GCPolicyMapOutput {
@@ -334,9 +334,7 @@ func (i GCPolicyMap) ToGCPolicyMapOutputWithContext(ctx context.Context) GCPolic
 	return pulumi.ToOutputWithContext(ctx, i).(GCPolicyMapOutput)
 }
 
-type GCPolicyOutput struct {
-	*pulumi.OutputState
-}
+type GCPolicyOutput struct{ *pulumi.OutputState }
 
 func (GCPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GCPolicy)(nil))
@@ -355,14 +353,12 @@ func (o GCPolicyOutput) ToGCPolicyPtrOutput() GCPolicyPtrOutput {
 }
 
 func (o GCPolicyOutput) ToGCPolicyPtrOutputWithContext(ctx context.Context) GCPolicyPtrOutput {
-	return o.ApplyT(func(v GCPolicy) *GCPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GCPolicy) *GCPolicy {
 		return &v
 	}).(GCPolicyPtrOutput)
 }
 
-type GCPolicyPtrOutput struct {
-	*pulumi.OutputState
-}
+type GCPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (GCPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**GCPolicy)(nil))
@@ -374,6 +370,16 @@ func (o GCPolicyPtrOutput) ToGCPolicyPtrOutput() GCPolicyPtrOutput {
 
 func (o GCPolicyPtrOutput) ToGCPolicyPtrOutputWithContext(ctx context.Context) GCPolicyPtrOutput {
 	return o
+}
+
+func (o GCPolicyPtrOutput) Elem() GCPolicyOutput {
+	return o.ApplyT(func(v *GCPolicy) GCPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret GCPolicy
+		return ret
+	}).(GCPolicyOutput)
 }
 
 type GCPolicyArrayOutput struct{ *pulumi.OutputState }

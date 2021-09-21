@@ -146,7 +146,7 @@ type IAMPolicyArrayInput interface {
 type IAMPolicyArray []IAMPolicyInput
 
 func (IAMPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*IAMPolicy)(nil))
+	return reflect.TypeOf((*[]*IAMPolicy)(nil)).Elem()
 }
 
 func (i IAMPolicyArray) ToIAMPolicyArrayOutput() IAMPolicyArrayOutput {
@@ -171,7 +171,7 @@ type IAMPolicyMapInput interface {
 type IAMPolicyMap map[string]IAMPolicyInput
 
 func (IAMPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*IAMPolicy)(nil))
+	return reflect.TypeOf((*map[string]*IAMPolicy)(nil)).Elem()
 }
 
 func (i IAMPolicyMap) ToIAMPolicyMapOutput() IAMPolicyMapOutput {
@@ -182,9 +182,7 @@ func (i IAMPolicyMap) ToIAMPolicyMapOutputWithContext(ctx context.Context) IAMPo
 	return pulumi.ToOutputWithContext(ctx, i).(IAMPolicyMapOutput)
 }
 
-type IAMPolicyOutput struct {
-	*pulumi.OutputState
-}
+type IAMPolicyOutput struct{ *pulumi.OutputState }
 
 func (IAMPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*IAMPolicy)(nil))
@@ -203,14 +201,12 @@ func (o IAMPolicyOutput) ToIAMPolicyPtrOutput() IAMPolicyPtrOutput {
 }
 
 func (o IAMPolicyOutput) ToIAMPolicyPtrOutputWithContext(ctx context.Context) IAMPolicyPtrOutput {
-	return o.ApplyT(func(v IAMPolicy) *IAMPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IAMPolicy) *IAMPolicy {
 		return &v
 	}).(IAMPolicyPtrOutput)
 }
 
-type IAMPolicyPtrOutput struct {
-	*pulumi.OutputState
-}
+type IAMPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (IAMPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**IAMPolicy)(nil))
@@ -222,6 +218,16 @@ func (o IAMPolicyPtrOutput) ToIAMPolicyPtrOutput() IAMPolicyPtrOutput {
 
 func (o IAMPolicyPtrOutput) ToIAMPolicyPtrOutputWithContext(ctx context.Context) IAMPolicyPtrOutput {
 	return o
+}
+
+func (o IAMPolicyPtrOutput) Elem() IAMPolicyOutput {
+	return o.ApplyT(func(v *IAMPolicy) IAMPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret IAMPolicy
+		return ret
+	}).(IAMPolicyOutput)
 }
 
 type IAMPolicyArrayOutput struct{ *pulumi.OutputState }

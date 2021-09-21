@@ -105,7 +105,7 @@ func (o AiDatasetEncryptionSpecOutput) ToAiDatasetEncryptionSpecPtrOutput() AiDa
 }
 
 func (o AiDatasetEncryptionSpecOutput) ToAiDatasetEncryptionSpecPtrOutputWithContext(ctx context.Context) AiDatasetEncryptionSpecPtrOutput {
-	return o.ApplyT(func(v AiDatasetEncryptionSpec) *AiDatasetEncryptionSpec {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiDatasetEncryptionSpec) *AiDatasetEncryptionSpec {
 		return &v
 	}).(AiDatasetEncryptionSpecPtrOutput)
 }
@@ -131,7 +131,13 @@ func (o AiDatasetEncryptionSpecPtrOutput) ToAiDatasetEncryptionSpecPtrOutputWith
 }
 
 func (o AiDatasetEncryptionSpecPtrOutput) Elem() AiDatasetEncryptionSpecOutput {
-	return o.ApplyT(func(v *AiDatasetEncryptionSpec) AiDatasetEncryptionSpec { return *v }).(AiDatasetEncryptionSpecOutput)
+	return o.ApplyT(func(v *AiDatasetEncryptionSpec) AiDatasetEncryptionSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiDatasetEncryptionSpec
+		return ret
+	}).(AiDatasetEncryptionSpecOutput)
 }
 
 // Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
@@ -240,7 +246,7 @@ func (o AiFeatureStoreEntityTypeMonitoringConfigOutput) ToAiFeatureStoreEntityTy
 }
 
 func (o AiFeatureStoreEntityTypeMonitoringConfigOutput) ToAiFeatureStoreEntityTypeMonitoringConfigPtrOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeMonitoringConfigPtrOutput {
-	return o.ApplyT(func(v AiFeatureStoreEntityTypeMonitoringConfig) *AiFeatureStoreEntityTypeMonitoringConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureStoreEntityTypeMonitoringConfig) *AiFeatureStoreEntityTypeMonitoringConfig {
 		return &v
 	}).(AiFeatureStoreEntityTypeMonitoringConfigPtrOutput)
 }
@@ -268,7 +274,13 @@ func (o AiFeatureStoreEntityTypeMonitoringConfigPtrOutput) ToAiFeatureStoreEntit
 }
 
 func (o AiFeatureStoreEntityTypeMonitoringConfigPtrOutput) Elem() AiFeatureStoreEntityTypeMonitoringConfigOutput {
-	return o.ApplyT(func(v *AiFeatureStoreEntityTypeMonitoringConfig) AiFeatureStoreEntityTypeMonitoringConfig { return *v }).(AiFeatureStoreEntityTypeMonitoringConfigOutput)
+	return o.ApplyT(func(v *AiFeatureStoreEntityTypeMonitoringConfig) AiFeatureStoreEntityTypeMonitoringConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiFeatureStoreEntityTypeMonitoringConfig
+		return ret
+	}).(AiFeatureStoreEntityTypeMonitoringConfigOutput)
 }
 
 // Configuration of how features in Featurestore are monitored.
@@ -381,7 +393,7 @@ func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput) ToAiFeat
 }
 
 func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput) ToAiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput {
-	return o.ApplyT(func(v AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis) *AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis) *AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis {
 		return &v
 	}).(AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput)
 }
@@ -413,7 +425,11 @@ func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput) ToAiF
 
 func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput) Elem() AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput {
 	return o.ApplyT(func(v *AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis) AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis
+		return ret
 	}).(AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput)
 }
 
@@ -531,7 +547,7 @@ func (o AiFeatureStoreOnlineServingConfigOutput) ToAiFeatureStoreOnlineServingCo
 }
 
 func (o AiFeatureStoreOnlineServingConfigOutput) ToAiFeatureStoreOnlineServingConfigPtrOutputWithContext(ctx context.Context) AiFeatureStoreOnlineServingConfigPtrOutput {
-	return o.ApplyT(func(v AiFeatureStoreOnlineServingConfig) *AiFeatureStoreOnlineServingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureStoreOnlineServingConfig) *AiFeatureStoreOnlineServingConfig {
 		return &v
 	}).(AiFeatureStoreOnlineServingConfigPtrOutput)
 }
@@ -556,7 +572,13 @@ func (o AiFeatureStoreOnlineServingConfigPtrOutput) ToAiFeatureStoreOnlineServin
 }
 
 func (o AiFeatureStoreOnlineServingConfigPtrOutput) Elem() AiFeatureStoreOnlineServingConfigOutput {
-	return o.ApplyT(func(v *AiFeatureStoreOnlineServingConfig) AiFeatureStoreOnlineServingConfig { return *v }).(AiFeatureStoreOnlineServingConfigOutput)
+	return o.ApplyT(func(v *AiFeatureStoreOnlineServingConfig) AiFeatureStoreOnlineServingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiFeatureStoreOnlineServingConfig
+		return ret
+	}).(AiFeatureStoreOnlineServingConfigOutput)
 }
 
 // The number of nodes for each cluster. The number of nodes will not scale automatically but can be scaled manually by providing different values when updating.

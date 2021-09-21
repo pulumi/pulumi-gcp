@@ -107,7 +107,7 @@ func (o DatabaseInstanceCloneOutput) ToDatabaseInstanceClonePtrOutput() Database
 }
 
 func (o DatabaseInstanceCloneOutput) ToDatabaseInstanceClonePtrOutputWithContext(ctx context.Context) DatabaseInstanceClonePtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceClone) *DatabaseInstanceClone {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseInstanceClone) *DatabaseInstanceClone {
 		return &v
 	}).(DatabaseInstanceClonePtrOutput)
 }
@@ -137,7 +137,13 @@ func (o DatabaseInstanceClonePtrOutput) ToDatabaseInstanceClonePtrOutputWithCont
 }
 
 func (o DatabaseInstanceClonePtrOutput) Elem() DatabaseInstanceCloneOutput {
-	return o.ApplyT(func(v *DatabaseInstanceClone) DatabaseInstanceClone { return *v }).(DatabaseInstanceCloneOutput)
+	return o.ApplyT(func(v *DatabaseInstanceClone) DatabaseInstanceClone {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseInstanceClone
+		return ret
+	}).(DatabaseInstanceCloneOutput)
 }
 
 // The timestamp of the point in time that should be restored.
@@ -417,7 +423,7 @@ func (o DatabaseInstanceReplicaConfigurationOutput) ToDatabaseInstanceReplicaCon
 }
 
 func (o DatabaseInstanceReplicaConfigurationOutput) ToDatabaseInstanceReplicaConfigurationPtrOutputWithContext(ctx context.Context) DatabaseInstanceReplicaConfigurationPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *DatabaseInstanceReplicaConfiguration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseInstanceReplicaConfiguration) *DatabaseInstanceReplicaConfiguration {
 		return &v
 	}).(DatabaseInstanceReplicaConfigurationPtrOutput)
 }
@@ -501,7 +507,13 @@ func (o DatabaseInstanceReplicaConfigurationPtrOutput) ToDatabaseInstanceReplica
 }
 
 func (o DatabaseInstanceReplicaConfigurationPtrOutput) Elem() DatabaseInstanceReplicaConfigurationOutput {
-	return o.ApplyT(func(v *DatabaseInstanceReplicaConfiguration) DatabaseInstanceReplicaConfiguration { return *v }).(DatabaseInstanceReplicaConfigurationOutput)
+	return o.ApplyT(func(v *DatabaseInstanceReplicaConfiguration) DatabaseInstanceReplicaConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseInstanceReplicaConfiguration
+		return ret
+	}).(DatabaseInstanceReplicaConfigurationOutput)
 }
 
 // PEM representation of the trusted CA's x509
@@ -726,7 +738,7 @@ func (o DatabaseInstanceRestoreBackupContextOutput) ToDatabaseInstanceRestoreBac
 }
 
 func (o DatabaseInstanceRestoreBackupContextOutput) ToDatabaseInstanceRestoreBackupContextPtrOutputWithContext(ctx context.Context) DatabaseInstanceRestoreBackupContextPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceRestoreBackupContext) *DatabaseInstanceRestoreBackupContext {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseInstanceRestoreBackupContext) *DatabaseInstanceRestoreBackupContext {
 		return &v
 	}).(DatabaseInstanceRestoreBackupContextPtrOutput)
 }
@@ -762,7 +774,13 @@ func (o DatabaseInstanceRestoreBackupContextPtrOutput) ToDatabaseInstanceRestore
 }
 
 func (o DatabaseInstanceRestoreBackupContextPtrOutput) Elem() DatabaseInstanceRestoreBackupContextOutput {
-	return o.ApplyT(func(v *DatabaseInstanceRestoreBackupContext) DatabaseInstanceRestoreBackupContext { return *v }).(DatabaseInstanceRestoreBackupContextOutput)
+	return o.ApplyT(func(v *DatabaseInstanceRestoreBackupContext) DatabaseInstanceRestoreBackupContext {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseInstanceRestoreBackupContext
+		return ret
+	}).(DatabaseInstanceRestoreBackupContextOutput)
 }
 
 // The ID of the backup run to restore from.
@@ -1117,7 +1135,7 @@ func (o DatabaseInstanceSettingsOutput) ToDatabaseInstanceSettingsPtrOutput() Da
 }
 
 func (o DatabaseInstanceSettingsOutput) ToDatabaseInstanceSettingsPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettings) *DatabaseInstanceSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseInstanceSettings) *DatabaseInstanceSettings {
 		return &v
 	}).(DatabaseInstanceSettingsPtrOutput)
 }
@@ -1257,7 +1275,13 @@ func (o DatabaseInstanceSettingsPtrOutput) ToDatabaseInstanceSettingsPtrOutputWi
 }
 
 func (o DatabaseInstanceSettingsPtrOutput) Elem() DatabaseInstanceSettingsOutput {
-	return o.ApplyT(func(v *DatabaseInstanceSettings) DatabaseInstanceSettings { return *v }).(DatabaseInstanceSettingsOutput)
+	return o.ApplyT(func(v *DatabaseInstanceSettings) DatabaseInstanceSettings {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseInstanceSettings
+		return ret
+	}).(DatabaseInstanceSettingsOutput)
 }
 
 // This specifies when the instance should be
@@ -1597,7 +1621,7 @@ func (o DatabaseInstanceSettingsBackupConfigurationOutput) ToDatabaseInstanceSet
 }
 
 func (o DatabaseInstanceSettingsBackupConfigurationOutput) ToDatabaseInstanceSettingsBackupConfigurationPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsBackupConfigurationPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettingsBackupConfiguration) *DatabaseInstanceSettingsBackupConfiguration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseInstanceSettingsBackupConfiguration) *DatabaseInstanceSettingsBackupConfiguration {
 		return &v
 	}).(DatabaseInstanceSettingsBackupConfigurationPtrOutput)
 }
@@ -1658,7 +1682,11 @@ func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) ToDatabaseInstance
 
 func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) Elem() DatabaseInstanceSettingsBackupConfigurationOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettingsBackupConfiguration) DatabaseInstanceSettingsBackupConfiguration {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseInstanceSettingsBackupConfiguration
+		return ret
 	}).(DatabaseInstanceSettingsBackupConfigurationOutput)
 }
 
@@ -1834,7 +1862,7 @@ func (o DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutput
 }
 
 func (o DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutput) ToDatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings) *DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings) *DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings {
 		return &v
 	}).(DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput)
 }
@@ -1870,7 +1898,11 @@ func (o DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOut
 
 func (o DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput) Elem() DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings) DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings
+		return ret
 	}).(DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutput)
 }
 
@@ -2112,7 +2144,7 @@ func (o DatabaseInstanceSettingsInsightsConfigOutput) ToDatabaseInstanceSettings
 }
 
 func (o DatabaseInstanceSettingsInsightsConfigOutput) ToDatabaseInstanceSettingsInsightsConfigPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsInsightsConfigPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettingsInsightsConfig) *DatabaseInstanceSettingsInsightsConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseInstanceSettingsInsightsConfig) *DatabaseInstanceSettingsInsightsConfig {
 		return &v
 	}).(DatabaseInstanceSettingsInsightsConfigPtrOutput)
 }
@@ -2152,7 +2184,13 @@ func (o DatabaseInstanceSettingsInsightsConfigPtrOutput) ToDatabaseInstanceSetti
 }
 
 func (o DatabaseInstanceSettingsInsightsConfigPtrOutput) Elem() DatabaseInstanceSettingsInsightsConfigOutput {
-	return o.ApplyT(func(v *DatabaseInstanceSettingsInsightsConfig) DatabaseInstanceSettingsInsightsConfig { return *v }).(DatabaseInstanceSettingsInsightsConfigOutput)
+	return o.ApplyT(func(v *DatabaseInstanceSettingsInsightsConfig) DatabaseInstanceSettingsInsightsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseInstanceSettingsInsightsConfig
+		return ret
+	}).(DatabaseInstanceSettingsInsightsConfigOutput)
 }
 
 // True if Query Insights feature is enabled.
@@ -2310,10 +2348,11 @@ func (o DatabaseInstanceSettingsIpConfigurationOutput) ToDatabaseInstanceSetting
 }
 
 func (o DatabaseInstanceSettingsIpConfigurationOutput) ToDatabaseInstanceSettingsIpConfigurationPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsIpConfigurationPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfiguration) *DatabaseInstanceSettingsIpConfiguration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseInstanceSettingsIpConfiguration) *DatabaseInstanceSettingsIpConfiguration {
 		return &v
 	}).(DatabaseInstanceSettingsIpConfigurationPtrOutput)
 }
+
 func (o DatabaseInstanceSettingsIpConfigurationOutput) AuthorizedNetworks() DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfiguration) []DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork {
 		return v.AuthorizedNetworks
@@ -2356,7 +2395,13 @@ func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) ToDatabaseInstanceSett
 }
 
 func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) Elem() DatabaseInstanceSettingsIpConfigurationOutput {
-	return o.ApplyT(func(v *DatabaseInstanceSettingsIpConfiguration) DatabaseInstanceSettingsIpConfiguration { return *v }).(DatabaseInstanceSettingsIpConfigurationOutput)
+	return o.ApplyT(func(v *DatabaseInstanceSettingsIpConfiguration) DatabaseInstanceSettingsIpConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseInstanceSettingsIpConfiguration
+		return ret
+	}).(DatabaseInstanceSettingsIpConfigurationOutput)
 }
 
 func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) AuthorizedNetworks() DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayOutput {
@@ -2629,7 +2674,7 @@ func (o DatabaseInstanceSettingsLocationPreferenceOutput) ToDatabaseInstanceSett
 }
 
 func (o DatabaseInstanceSettingsLocationPreferenceOutput) ToDatabaseInstanceSettingsLocationPreferencePtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsLocationPreferencePtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettingsLocationPreference) *DatabaseInstanceSettingsLocationPreference {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseInstanceSettingsLocationPreference) *DatabaseInstanceSettingsLocationPreference {
 		return &v
 	}).(DatabaseInstanceSettingsLocationPreferencePtrOutput)
 }
@@ -2662,7 +2707,11 @@ func (o DatabaseInstanceSettingsLocationPreferencePtrOutput) ToDatabaseInstanceS
 
 func (o DatabaseInstanceSettingsLocationPreferencePtrOutput) Elem() DatabaseInstanceSettingsLocationPreferenceOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettingsLocationPreference) DatabaseInstanceSettingsLocationPreference {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseInstanceSettingsLocationPreference
+		return ret
 	}).(DatabaseInstanceSettingsLocationPreferenceOutput)
 }
 
@@ -2791,7 +2840,7 @@ func (o DatabaseInstanceSettingsMaintenanceWindowOutput) ToDatabaseInstanceSetti
 }
 
 func (o DatabaseInstanceSettingsMaintenanceWindowOutput) ToDatabaseInstanceSettingsMaintenanceWindowPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsMaintenanceWindowPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettingsMaintenanceWindow) *DatabaseInstanceSettingsMaintenanceWindow {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseInstanceSettingsMaintenanceWindow) *DatabaseInstanceSettingsMaintenanceWindow {
 		return &v
 	}).(DatabaseInstanceSettingsMaintenanceWindowPtrOutput)
 }
@@ -2828,7 +2877,11 @@ func (o DatabaseInstanceSettingsMaintenanceWindowPtrOutput) ToDatabaseInstanceSe
 
 func (o DatabaseInstanceSettingsMaintenanceWindowPtrOutput) Elem() DatabaseInstanceSettingsMaintenanceWindowOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettingsMaintenanceWindow) DatabaseInstanceSettingsMaintenanceWindow {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseInstanceSettingsMaintenanceWindow
+		return ret
 	}).(DatabaseInstanceSettingsMaintenanceWindowOutput)
 }
 

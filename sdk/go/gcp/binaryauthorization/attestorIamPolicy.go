@@ -305,7 +305,7 @@ type AttestorIamPolicyArrayInput interface {
 type AttestorIamPolicyArray []AttestorIamPolicyInput
 
 func (AttestorIamPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AttestorIamPolicy)(nil))
+	return reflect.TypeOf((*[]*AttestorIamPolicy)(nil)).Elem()
 }
 
 func (i AttestorIamPolicyArray) ToAttestorIamPolicyArrayOutput() AttestorIamPolicyArrayOutput {
@@ -330,7 +330,7 @@ type AttestorIamPolicyMapInput interface {
 type AttestorIamPolicyMap map[string]AttestorIamPolicyInput
 
 func (AttestorIamPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AttestorIamPolicy)(nil))
+	return reflect.TypeOf((*map[string]*AttestorIamPolicy)(nil)).Elem()
 }
 
 func (i AttestorIamPolicyMap) ToAttestorIamPolicyMapOutput() AttestorIamPolicyMapOutput {
@@ -341,9 +341,7 @@ func (i AttestorIamPolicyMap) ToAttestorIamPolicyMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorIamPolicyMapOutput)
 }
 
-type AttestorIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type AttestorIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (AttestorIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AttestorIamPolicy)(nil))
@@ -362,14 +360,12 @@ func (o AttestorIamPolicyOutput) ToAttestorIamPolicyPtrOutput() AttestorIamPolic
 }
 
 func (o AttestorIamPolicyOutput) ToAttestorIamPolicyPtrOutputWithContext(ctx context.Context) AttestorIamPolicyPtrOutput {
-	return o.ApplyT(func(v AttestorIamPolicy) *AttestorIamPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttestorIamPolicy) *AttestorIamPolicy {
 		return &v
 	}).(AttestorIamPolicyPtrOutput)
 }
 
-type AttestorIamPolicyPtrOutput struct {
-	*pulumi.OutputState
-}
+type AttestorIamPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (AttestorIamPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AttestorIamPolicy)(nil))
@@ -381,6 +377,16 @@ func (o AttestorIamPolicyPtrOutput) ToAttestorIamPolicyPtrOutput() AttestorIamPo
 
 func (o AttestorIamPolicyPtrOutput) ToAttestorIamPolicyPtrOutputWithContext(ctx context.Context) AttestorIamPolicyPtrOutput {
 	return o
+}
+
+func (o AttestorIamPolicyPtrOutput) Elem() AttestorIamPolicyOutput {
+	return o.ApplyT(func(v *AttestorIamPolicy) AttestorIamPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret AttestorIamPolicy
+		return ret
+	}).(AttestorIamPolicyOutput)
 }
 
 type AttestorIamPolicyArrayOutput struct{ *pulumi.OutputState }

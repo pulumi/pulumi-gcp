@@ -4,6 +4,9 @@
 package compute
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -65,4 +68,86 @@ type GetCertificateResult struct {
 	PrivateKey string  `pulumi:"privateKey"`
 	Project    *string `pulumi:"project"`
 	SelfLink   string  `pulumi:"selfLink"`
+}
+
+func GetCertificateOutput(ctx *pulumi.Context, args GetCertificateOutputArgs, opts ...pulumi.InvokeOption) GetCertificateResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetCertificateResult, error) {
+			args := v.(GetCertificateArgs)
+			r, err := GetCertificate(ctx, &args, opts...)
+			return *r, err
+		}).(GetCertificateResultOutput)
+}
+
+// A collection of arguments for invoking getCertificate.
+type GetCertificateOutputArgs struct {
+	// The name of the certificate.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The project in which the resource belongs. If it
+	// is not provided, the provider project is used.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (GetCertificateOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCertificateArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getCertificate.
+type GetCertificateResultOutput struct{ *pulumi.OutputState }
+
+func (GetCertificateResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCertificateResult)(nil)).Elem()
+}
+
+func (o GetCertificateResultOutput) ToGetCertificateResultOutput() GetCertificateResultOutput {
+	return o
+}
+
+func (o GetCertificateResultOutput) ToGetCertificateResultOutputWithContext(ctx context.Context) GetCertificateResultOutput {
+	return o
+}
+
+func (o GetCertificateResultOutput) Certificate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificateResult) string { return v.Certificate }).(pulumi.StringOutput)
+}
+
+func (o GetCertificateResultOutput) CertificateId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCertificateResult) int { return v.CertificateId }).(pulumi.IntOutput)
+}
+
+func (o GetCertificateResultOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificateResult) string { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+func (o GetCertificateResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificateResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetCertificateResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificateResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetCertificateResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificateResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetCertificateResultOutput) NamePrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificateResult) string { return v.NamePrefix }).(pulumi.StringOutput)
+}
+
+func (o GetCertificateResultOutput) PrivateKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificateResult) string { return v.PrivateKey }).(pulumi.StringOutput)
+}
+
+func (o GetCertificateResultOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCertificateResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o GetCertificateResultOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificateResult) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetCertificateResultOutput{})
 }

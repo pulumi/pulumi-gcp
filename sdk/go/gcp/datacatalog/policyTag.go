@@ -330,7 +330,7 @@ type PolicyTagArrayInput interface {
 type PolicyTagArray []PolicyTagInput
 
 func (PolicyTagArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*PolicyTag)(nil))
+	return reflect.TypeOf((*[]*PolicyTag)(nil)).Elem()
 }
 
 func (i PolicyTagArray) ToPolicyTagArrayOutput() PolicyTagArrayOutput {
@@ -355,7 +355,7 @@ type PolicyTagMapInput interface {
 type PolicyTagMap map[string]PolicyTagInput
 
 func (PolicyTagMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*PolicyTag)(nil))
+	return reflect.TypeOf((*map[string]*PolicyTag)(nil)).Elem()
 }
 
 func (i PolicyTagMap) ToPolicyTagMapOutput() PolicyTagMapOutput {
@@ -366,9 +366,7 @@ func (i PolicyTagMap) ToPolicyTagMapOutputWithContext(ctx context.Context) Polic
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyTagMapOutput)
 }
 
-type PolicyTagOutput struct {
-	*pulumi.OutputState
-}
+type PolicyTagOutput struct{ *pulumi.OutputState }
 
 func (PolicyTagOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*PolicyTag)(nil))
@@ -387,14 +385,12 @@ func (o PolicyTagOutput) ToPolicyTagPtrOutput() PolicyTagPtrOutput {
 }
 
 func (o PolicyTagOutput) ToPolicyTagPtrOutputWithContext(ctx context.Context) PolicyTagPtrOutput {
-	return o.ApplyT(func(v PolicyTag) *PolicyTag {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyTag) *PolicyTag {
 		return &v
 	}).(PolicyTagPtrOutput)
 }
 
-type PolicyTagPtrOutput struct {
-	*pulumi.OutputState
-}
+type PolicyTagPtrOutput struct{ *pulumi.OutputState }
 
 func (PolicyTagPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**PolicyTag)(nil))
@@ -406,6 +402,16 @@ func (o PolicyTagPtrOutput) ToPolicyTagPtrOutput() PolicyTagPtrOutput {
 
 func (o PolicyTagPtrOutput) ToPolicyTagPtrOutputWithContext(ctx context.Context) PolicyTagPtrOutput {
 	return o
+}
+
+func (o PolicyTagPtrOutput) Elem() PolicyTagOutput {
+	return o.ApplyT(func(v *PolicyTag) PolicyTag {
+		if v != nil {
+			return *v
+		}
+		var ret PolicyTag
+		return ret
+	}).(PolicyTagOutput)
 }
 
 type PolicyTagArrayOutput struct{ *pulumi.OutputState }

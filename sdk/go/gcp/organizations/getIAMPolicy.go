@@ -4,6 +4,9 @@
 package organizations
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -96,4 +99,65 @@ type LookupIAMPolicyResult struct {
 	// The above bindings serialized in a format suitable for
 	// referencing from a resource that supports IAM.
 	PolicyData string `pulumi:"policyData"`
+}
+
+func LookupIAMPolicyOutput(ctx *pulumi.Context, args LookupIAMPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupIAMPolicyResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupIAMPolicyResult, error) {
+			args := v.(LookupIAMPolicyArgs)
+			r, err := LookupIAMPolicy(ctx, &args, opts...)
+			return *r, err
+		}).(LookupIAMPolicyResultOutput)
+}
+
+// A collection of arguments for invoking getIAMPolicy.
+type LookupIAMPolicyOutputArgs struct {
+	// A nested configuration block that defines logging additional configuration for your project. This field is only supported on `projects.IAMPolicy`, `folder.IAMPolicy` and `organizations.IAMPolicy`.
+	AuditConfigs GetIAMPolicyAuditConfigArrayInput `pulumi:"auditConfigs"`
+	// A nested configuration block (described below)
+	// defining a binding to be included in the policy document. Multiple
+	// `binding` arguments are supported.
+	Bindings GetIAMPolicyBindingArrayInput `pulumi:"bindings"`
+}
+
+func (LookupIAMPolicyOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupIAMPolicyArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getIAMPolicy.
+type LookupIAMPolicyResultOutput struct{ *pulumi.OutputState }
+
+func (LookupIAMPolicyResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupIAMPolicyResult)(nil)).Elem()
+}
+
+func (o LookupIAMPolicyResultOutput) ToLookupIAMPolicyResultOutput() LookupIAMPolicyResultOutput {
+	return o
+}
+
+func (o LookupIAMPolicyResultOutput) ToLookupIAMPolicyResultOutputWithContext(ctx context.Context) LookupIAMPolicyResultOutput {
+	return o
+}
+
+func (o LookupIAMPolicyResultOutput) AuditConfigs() GetIAMPolicyAuditConfigArrayOutput {
+	return o.ApplyT(func(v LookupIAMPolicyResult) []GetIAMPolicyAuditConfig { return v.AuditConfigs }).(GetIAMPolicyAuditConfigArrayOutput)
+}
+
+func (o LookupIAMPolicyResultOutput) Bindings() GetIAMPolicyBindingArrayOutput {
+	return o.ApplyT(func(v LookupIAMPolicyResult) []GetIAMPolicyBinding { return v.Bindings }).(GetIAMPolicyBindingArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupIAMPolicyResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIAMPolicyResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The above bindings serialized in a format suitable for
+// referencing from a resource that supports IAM.
+func (o LookupIAMPolicyResultOutput) PolicyData() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIAMPolicyResult) string { return v.PolicyData }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupIAMPolicyResultOutput{})
 }

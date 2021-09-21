@@ -305,7 +305,7 @@ type TagValueIamMemberArrayInput interface {
 type TagValueIamMemberArray []TagValueIamMemberInput
 
 func (TagValueIamMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TagValueIamMember)(nil))
+	return reflect.TypeOf((*[]*TagValueIamMember)(nil)).Elem()
 }
 
 func (i TagValueIamMemberArray) ToTagValueIamMemberArrayOutput() TagValueIamMemberArrayOutput {
@@ -330,7 +330,7 @@ type TagValueIamMemberMapInput interface {
 type TagValueIamMemberMap map[string]TagValueIamMemberInput
 
 func (TagValueIamMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TagValueIamMember)(nil))
+	return reflect.TypeOf((*map[string]*TagValueIamMember)(nil)).Elem()
 }
 
 func (i TagValueIamMemberMap) ToTagValueIamMemberMapOutput() TagValueIamMemberMapOutput {
@@ -341,9 +341,7 @@ func (i TagValueIamMemberMap) ToTagValueIamMemberMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(TagValueIamMemberMapOutput)
 }
 
-type TagValueIamMemberOutput struct {
-	*pulumi.OutputState
-}
+type TagValueIamMemberOutput struct{ *pulumi.OutputState }
 
 func (TagValueIamMemberOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TagValueIamMember)(nil))
@@ -362,14 +360,12 @@ func (o TagValueIamMemberOutput) ToTagValueIamMemberPtrOutput() TagValueIamMembe
 }
 
 func (o TagValueIamMemberOutput) ToTagValueIamMemberPtrOutputWithContext(ctx context.Context) TagValueIamMemberPtrOutput {
-	return o.ApplyT(func(v TagValueIamMember) *TagValueIamMember {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TagValueIamMember) *TagValueIamMember {
 		return &v
 	}).(TagValueIamMemberPtrOutput)
 }
 
-type TagValueIamMemberPtrOutput struct {
-	*pulumi.OutputState
-}
+type TagValueIamMemberPtrOutput struct{ *pulumi.OutputState }
 
 func (TagValueIamMemberPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TagValueIamMember)(nil))
@@ -381,6 +377,16 @@ func (o TagValueIamMemberPtrOutput) ToTagValueIamMemberPtrOutput() TagValueIamMe
 
 func (o TagValueIamMemberPtrOutput) ToTagValueIamMemberPtrOutputWithContext(ctx context.Context) TagValueIamMemberPtrOutput {
 	return o
+}
+
+func (o TagValueIamMemberPtrOutput) Elem() TagValueIamMemberOutput {
+	return o.ApplyT(func(v *TagValueIamMember) TagValueIamMember {
+		if v != nil {
+			return *v
+		}
+		var ret TagValueIamMember
+		return ret
+	}).(TagValueIamMemberOutput)
 }
 
 type TagValueIamMemberArrayOutput struct{ *pulumi.OutputState }

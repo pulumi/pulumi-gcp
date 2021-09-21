@@ -323,7 +323,7 @@ type ConfigIamBindingArrayInput interface {
 type ConfigIamBindingArray []ConfigIamBindingInput
 
 func (ConfigIamBindingArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ConfigIamBinding)(nil))
+	return reflect.TypeOf((*[]*ConfigIamBinding)(nil)).Elem()
 }
 
 func (i ConfigIamBindingArray) ToConfigIamBindingArrayOutput() ConfigIamBindingArrayOutput {
@@ -348,7 +348,7 @@ type ConfigIamBindingMapInput interface {
 type ConfigIamBindingMap map[string]ConfigIamBindingInput
 
 func (ConfigIamBindingMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ConfigIamBinding)(nil))
+	return reflect.TypeOf((*map[string]*ConfigIamBinding)(nil)).Elem()
 }
 
 func (i ConfigIamBindingMap) ToConfigIamBindingMapOutput() ConfigIamBindingMapOutput {
@@ -359,9 +359,7 @@ func (i ConfigIamBindingMap) ToConfigIamBindingMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigIamBindingMapOutput)
 }
 
-type ConfigIamBindingOutput struct {
-	*pulumi.OutputState
-}
+type ConfigIamBindingOutput struct{ *pulumi.OutputState }
 
 func (ConfigIamBindingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ConfigIamBinding)(nil))
@@ -380,14 +378,12 @@ func (o ConfigIamBindingOutput) ToConfigIamBindingPtrOutput() ConfigIamBindingPt
 }
 
 func (o ConfigIamBindingOutput) ToConfigIamBindingPtrOutputWithContext(ctx context.Context) ConfigIamBindingPtrOutput {
-	return o.ApplyT(func(v ConfigIamBinding) *ConfigIamBinding {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigIamBinding) *ConfigIamBinding {
 		return &v
 	}).(ConfigIamBindingPtrOutput)
 }
 
-type ConfigIamBindingPtrOutput struct {
-	*pulumi.OutputState
-}
+type ConfigIamBindingPtrOutput struct{ *pulumi.OutputState }
 
 func (ConfigIamBindingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ConfigIamBinding)(nil))
@@ -399,6 +395,16 @@ func (o ConfigIamBindingPtrOutput) ToConfigIamBindingPtrOutput() ConfigIamBindin
 
 func (o ConfigIamBindingPtrOutput) ToConfigIamBindingPtrOutputWithContext(ctx context.Context) ConfigIamBindingPtrOutput {
 	return o
+}
+
+func (o ConfigIamBindingPtrOutput) Elem() ConfigIamBindingOutput {
+	return o.ApplyT(func(v *ConfigIamBinding) ConfigIamBinding {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigIamBinding
+		return ret
+	}).(ConfigIamBindingOutput)
 }
 
 type ConfigIamBindingArrayOutput struct{ *pulumi.OutputState }

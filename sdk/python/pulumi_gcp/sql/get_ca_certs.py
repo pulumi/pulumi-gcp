@@ -13,6 +13,7 @@ __all__ = [
     'GetCaCertsResult',
     'AwaitableGetCaCertsResult',
     'get_ca_certs',
+    'get_ca_certs_output',
 ]
 
 @pulumi.output_type
@@ -113,3 +114,20 @@ def get_ca_certs(instance: Optional[str] = None,
         id=__ret__.id,
         instance=__ret__.instance,
         project=__ret__.project)
+
+
+@_utilities.lift_output_func(get_ca_certs)
+def get_ca_certs_output(instance: Optional[pulumi.Input[str]] = None,
+                        project: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCaCertsResult]:
+    """
+    Get all of the trusted Certificate Authorities (CAs) for the specified SQL database instance. For more information see the
+    [official documentation](https://cloud.google.com/sql/)
+    and
+    [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
+
+
+    :param str instance: The name or self link of the instance.
+    :param str project: The ID of the project in which the resource belongs. If `project` is not provided, the provider project is used.
+    """
+    ...

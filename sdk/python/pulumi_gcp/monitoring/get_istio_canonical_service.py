@@ -13,6 +13,7 @@ __all__ = [
     'GetIstioCanonicalServiceResult',
     'AwaitableGetIstioCanonicalServiceResult',
     'get_istio_canonical_service',
+    'get_istio_canonical_service_output',
 ]
 
 @pulumi.output_type
@@ -178,3 +179,49 @@ def get_istio_canonical_service(canonical_service: Optional[str] = None,
         project=__ret__.project,
         service_id=__ret__.service_id,
         telemetries=__ret__.telemetries)
+
+
+@_utilities.lift_output_func(get_istio_canonical_service)
+def get_istio_canonical_service_output(canonical_service: Optional[pulumi.Input[str]] = None,
+                                       canonical_service_namespace: Optional[pulumi.Input[str]] = None,
+                                       mesh_uid: Optional[pulumi.Input[str]] = None,
+                                       project: Optional[pulumi.Input[Optional[str]]] = None,
+                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIstioCanonicalServiceResult]:
+    """
+    A Monitoring Service is the root resource under which operational aspects of a
+    generic service are accessible. A service is some discrete, autonomous, and
+    network-accessible unit, designed to solve an individual concern
+
+    A monitoring Istio Canonical Service is automatically created by GCP to monitor
+    Istio Canonical Services.
+
+    To get more information about Service, see:
+
+    * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
+    * How-to Guides
+        * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+        * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+
+    ## Example Usage
+    ### Monitoring Istio Canonical Service
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    default = gcp.monitoring.get_istio_canonical_service(canonical_service="prometheus",
+        canonical_service_namespace="istio-system",
+        mesh_uid="proj-573164786102")
+    ```
+
+
+    :param str canonical_service: The name of the canonical service underlying this service.
+           Corresponds to the destination_canonical_service_name metric label in label in Istio metrics.
+    :param str canonical_service_namespace: The namespace of the canonical service underlying this service.
+           Corresponds to the destination_canonical_service_namespace metric label in Istio metrics.
+    :param str mesh_uid: Identifier for the mesh in which this Istio service is defined.
+           Corresponds to the meshUid metric label in Istio metrics.
+    :param str project: The ID of the project in which the resource belongs.
+           If it is not provided, the provider project is used.
+    """
+    ...

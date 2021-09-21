@@ -392,7 +392,7 @@ type WebIamPolicyArrayInput interface {
 type WebIamPolicyArray []WebIamPolicyInput
 
 func (WebIamPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*WebIamPolicy)(nil))
+	return reflect.TypeOf((*[]*WebIamPolicy)(nil)).Elem()
 }
 
 func (i WebIamPolicyArray) ToWebIamPolicyArrayOutput() WebIamPolicyArrayOutput {
@@ -417,7 +417,7 @@ type WebIamPolicyMapInput interface {
 type WebIamPolicyMap map[string]WebIamPolicyInput
 
 func (WebIamPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*WebIamPolicy)(nil))
+	return reflect.TypeOf((*map[string]*WebIamPolicy)(nil)).Elem()
 }
 
 func (i WebIamPolicyMap) ToWebIamPolicyMapOutput() WebIamPolicyMapOutput {
@@ -428,9 +428,7 @@ func (i WebIamPolicyMap) ToWebIamPolicyMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(WebIamPolicyMapOutput)
 }
 
-type WebIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type WebIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (WebIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*WebIamPolicy)(nil))
@@ -449,14 +447,12 @@ func (o WebIamPolicyOutput) ToWebIamPolicyPtrOutput() WebIamPolicyPtrOutput {
 }
 
 func (o WebIamPolicyOutput) ToWebIamPolicyPtrOutputWithContext(ctx context.Context) WebIamPolicyPtrOutput {
-	return o.ApplyT(func(v WebIamPolicy) *WebIamPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebIamPolicy) *WebIamPolicy {
 		return &v
 	}).(WebIamPolicyPtrOutput)
 }
 
-type WebIamPolicyPtrOutput struct {
-	*pulumi.OutputState
-}
+type WebIamPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (WebIamPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**WebIamPolicy)(nil))
@@ -468,6 +464,16 @@ func (o WebIamPolicyPtrOutput) ToWebIamPolicyPtrOutput() WebIamPolicyPtrOutput {
 
 func (o WebIamPolicyPtrOutput) ToWebIamPolicyPtrOutputWithContext(ctx context.Context) WebIamPolicyPtrOutput {
 	return o
+}
+
+func (o WebIamPolicyPtrOutput) Elem() WebIamPolicyOutput {
+	return o.ApplyT(func(v *WebIamPolicy) WebIamPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret WebIamPolicy
+		return ret
+	}).(WebIamPolicyOutput)
 }
 
 type WebIamPolicyArrayOutput struct{ *pulumi.OutputState }

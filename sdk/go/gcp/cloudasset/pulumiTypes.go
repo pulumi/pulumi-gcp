@@ -121,7 +121,7 @@ func (o FolderFeedConditionOutput) ToFolderFeedConditionPtrOutput() FolderFeedCo
 }
 
 func (o FolderFeedConditionOutput) ToFolderFeedConditionPtrOutputWithContext(ctx context.Context) FolderFeedConditionPtrOutput {
-	return o.ApplyT(func(v FolderFeedCondition) *FolderFeedCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FolderFeedCondition) *FolderFeedCondition {
 		return &v
 	}).(FolderFeedConditionPtrOutput)
 }
@@ -164,7 +164,13 @@ func (o FolderFeedConditionPtrOutput) ToFolderFeedConditionPtrOutputWithContext(
 }
 
 func (o FolderFeedConditionPtrOutput) Elem() FolderFeedConditionOutput {
-	return o.ApplyT(func(v *FolderFeedCondition) FolderFeedCondition { return *v }).(FolderFeedConditionOutput)
+	return o.ApplyT(func(v *FolderFeedCondition) FolderFeedCondition {
+		if v != nil {
+			return *v
+		}
+		var ret FolderFeedCondition
+		return ret
+	}).(FolderFeedConditionOutput)
 }
 
 // Description of the expression. This is a longer text which describes the expression,
@@ -305,7 +311,7 @@ func (o FolderFeedFeedOutputConfigOutput) ToFolderFeedFeedOutputConfigPtrOutput(
 }
 
 func (o FolderFeedFeedOutputConfigOutput) ToFolderFeedFeedOutputConfigPtrOutputWithContext(ctx context.Context) FolderFeedFeedOutputConfigPtrOutput {
-	return o.ApplyT(func(v FolderFeedFeedOutputConfig) *FolderFeedFeedOutputConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FolderFeedFeedOutputConfig) *FolderFeedFeedOutputConfig {
 		return &v
 	}).(FolderFeedFeedOutputConfigPtrOutput)
 }
@@ -333,7 +339,13 @@ func (o FolderFeedFeedOutputConfigPtrOutput) ToFolderFeedFeedOutputConfigPtrOutp
 }
 
 func (o FolderFeedFeedOutputConfigPtrOutput) Elem() FolderFeedFeedOutputConfigOutput {
-	return o.ApplyT(func(v *FolderFeedFeedOutputConfig) FolderFeedFeedOutputConfig { return *v }).(FolderFeedFeedOutputConfigOutput)
+	return o.ApplyT(func(v *FolderFeedFeedOutputConfig) FolderFeedFeedOutputConfig {
+		if v != nil {
+			return *v
+		}
+		var ret FolderFeedFeedOutputConfig
+		return ret
+	}).(FolderFeedFeedOutputConfigOutput)
 }
 
 // Destination on Cloud Pubsub.
@@ -440,7 +452,7 @@ func (o FolderFeedFeedOutputConfigPubsubDestinationOutput) ToFolderFeedFeedOutpu
 }
 
 func (o FolderFeedFeedOutputConfigPubsubDestinationOutput) ToFolderFeedFeedOutputConfigPubsubDestinationPtrOutputWithContext(ctx context.Context) FolderFeedFeedOutputConfigPubsubDestinationPtrOutput {
-	return o.ApplyT(func(v FolderFeedFeedOutputConfigPubsubDestination) *FolderFeedFeedOutputConfigPubsubDestination {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FolderFeedFeedOutputConfigPubsubDestination) *FolderFeedFeedOutputConfigPubsubDestination {
 		return &v
 	}).(FolderFeedFeedOutputConfigPubsubDestinationPtrOutput)
 }
@@ -466,7 +478,11 @@ func (o FolderFeedFeedOutputConfigPubsubDestinationPtrOutput) ToFolderFeedFeedOu
 
 func (o FolderFeedFeedOutputConfigPubsubDestinationPtrOutput) Elem() FolderFeedFeedOutputConfigPubsubDestinationOutput {
 	return o.ApplyT(func(v *FolderFeedFeedOutputConfigPubsubDestination) FolderFeedFeedOutputConfigPubsubDestination {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret FolderFeedFeedOutputConfigPubsubDestination
+		return ret
 	}).(FolderFeedFeedOutputConfigPubsubDestinationOutput)
 }
 
@@ -591,7 +607,7 @@ func (o OrganizationFeedConditionOutput) ToOrganizationFeedConditionPtrOutput() 
 }
 
 func (o OrganizationFeedConditionOutput) ToOrganizationFeedConditionPtrOutputWithContext(ctx context.Context) OrganizationFeedConditionPtrOutput {
-	return o.ApplyT(func(v OrganizationFeedCondition) *OrganizationFeedCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationFeedCondition) *OrganizationFeedCondition {
 		return &v
 	}).(OrganizationFeedConditionPtrOutput)
 }
@@ -634,7 +650,13 @@ func (o OrganizationFeedConditionPtrOutput) ToOrganizationFeedConditionPtrOutput
 }
 
 func (o OrganizationFeedConditionPtrOutput) Elem() OrganizationFeedConditionOutput {
-	return o.ApplyT(func(v *OrganizationFeedCondition) OrganizationFeedCondition { return *v }).(OrganizationFeedConditionOutput)
+	return o.ApplyT(func(v *OrganizationFeedCondition) OrganizationFeedCondition {
+		if v != nil {
+			return *v
+		}
+		var ret OrganizationFeedCondition
+		return ret
+	}).(OrganizationFeedConditionOutput)
 }
 
 // Description of the expression. This is a longer text which describes the expression,
@@ -775,7 +797,7 @@ func (o OrganizationFeedFeedOutputConfigOutput) ToOrganizationFeedFeedOutputConf
 }
 
 func (o OrganizationFeedFeedOutputConfigOutput) ToOrganizationFeedFeedOutputConfigPtrOutputWithContext(ctx context.Context) OrganizationFeedFeedOutputConfigPtrOutput {
-	return o.ApplyT(func(v OrganizationFeedFeedOutputConfig) *OrganizationFeedFeedOutputConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationFeedFeedOutputConfig) *OrganizationFeedFeedOutputConfig {
 		return &v
 	}).(OrganizationFeedFeedOutputConfigPtrOutput)
 }
@@ -803,7 +825,13 @@ func (o OrganizationFeedFeedOutputConfigPtrOutput) ToOrganizationFeedFeedOutputC
 }
 
 func (o OrganizationFeedFeedOutputConfigPtrOutput) Elem() OrganizationFeedFeedOutputConfigOutput {
-	return o.ApplyT(func(v *OrganizationFeedFeedOutputConfig) OrganizationFeedFeedOutputConfig { return *v }).(OrganizationFeedFeedOutputConfigOutput)
+	return o.ApplyT(func(v *OrganizationFeedFeedOutputConfig) OrganizationFeedFeedOutputConfig {
+		if v != nil {
+			return *v
+		}
+		var ret OrganizationFeedFeedOutputConfig
+		return ret
+	}).(OrganizationFeedFeedOutputConfigOutput)
 }
 
 // Destination on Cloud Pubsub.
@@ -910,7 +938,7 @@ func (o OrganizationFeedFeedOutputConfigPubsubDestinationOutput) ToOrganizationF
 }
 
 func (o OrganizationFeedFeedOutputConfigPubsubDestinationOutput) ToOrganizationFeedFeedOutputConfigPubsubDestinationPtrOutputWithContext(ctx context.Context) OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput {
-	return o.ApplyT(func(v OrganizationFeedFeedOutputConfigPubsubDestination) *OrganizationFeedFeedOutputConfigPubsubDestination {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationFeedFeedOutputConfigPubsubDestination) *OrganizationFeedFeedOutputConfigPubsubDestination {
 		return &v
 	}).(OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput)
 }
@@ -936,7 +964,11 @@ func (o OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput) ToOrganizati
 
 func (o OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput) Elem() OrganizationFeedFeedOutputConfigPubsubDestinationOutput {
 	return o.ApplyT(func(v *OrganizationFeedFeedOutputConfigPubsubDestination) OrganizationFeedFeedOutputConfigPubsubDestination {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret OrganizationFeedFeedOutputConfigPubsubDestination
+		return ret
 	}).(OrganizationFeedFeedOutputConfigPubsubDestinationOutput)
 }
 
@@ -1061,7 +1093,7 @@ func (o ProjectFeedConditionOutput) ToProjectFeedConditionPtrOutput() ProjectFee
 }
 
 func (o ProjectFeedConditionOutput) ToProjectFeedConditionPtrOutputWithContext(ctx context.Context) ProjectFeedConditionPtrOutput {
-	return o.ApplyT(func(v ProjectFeedCondition) *ProjectFeedCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectFeedCondition) *ProjectFeedCondition {
 		return &v
 	}).(ProjectFeedConditionPtrOutput)
 }
@@ -1104,7 +1136,13 @@ func (o ProjectFeedConditionPtrOutput) ToProjectFeedConditionPtrOutputWithContex
 }
 
 func (o ProjectFeedConditionPtrOutput) Elem() ProjectFeedConditionOutput {
-	return o.ApplyT(func(v *ProjectFeedCondition) ProjectFeedCondition { return *v }).(ProjectFeedConditionOutput)
+	return o.ApplyT(func(v *ProjectFeedCondition) ProjectFeedCondition {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectFeedCondition
+		return ret
+	}).(ProjectFeedConditionOutput)
 }
 
 // Description of the expression. This is a longer text which describes the expression,
@@ -1245,7 +1283,7 @@ func (o ProjectFeedFeedOutputConfigOutput) ToProjectFeedFeedOutputConfigPtrOutpu
 }
 
 func (o ProjectFeedFeedOutputConfigOutput) ToProjectFeedFeedOutputConfigPtrOutputWithContext(ctx context.Context) ProjectFeedFeedOutputConfigPtrOutput {
-	return o.ApplyT(func(v ProjectFeedFeedOutputConfig) *ProjectFeedFeedOutputConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectFeedFeedOutputConfig) *ProjectFeedFeedOutputConfig {
 		return &v
 	}).(ProjectFeedFeedOutputConfigPtrOutput)
 }
@@ -1273,7 +1311,13 @@ func (o ProjectFeedFeedOutputConfigPtrOutput) ToProjectFeedFeedOutputConfigPtrOu
 }
 
 func (o ProjectFeedFeedOutputConfigPtrOutput) Elem() ProjectFeedFeedOutputConfigOutput {
-	return o.ApplyT(func(v *ProjectFeedFeedOutputConfig) ProjectFeedFeedOutputConfig { return *v }).(ProjectFeedFeedOutputConfigOutput)
+	return o.ApplyT(func(v *ProjectFeedFeedOutputConfig) ProjectFeedFeedOutputConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectFeedFeedOutputConfig
+		return ret
+	}).(ProjectFeedFeedOutputConfigOutput)
 }
 
 // Destination on Cloud Pubsub.
@@ -1380,7 +1424,7 @@ func (o ProjectFeedFeedOutputConfigPubsubDestinationOutput) ToProjectFeedFeedOut
 }
 
 func (o ProjectFeedFeedOutputConfigPubsubDestinationOutput) ToProjectFeedFeedOutputConfigPubsubDestinationPtrOutputWithContext(ctx context.Context) ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput {
-	return o.ApplyT(func(v ProjectFeedFeedOutputConfigPubsubDestination) *ProjectFeedFeedOutputConfigPubsubDestination {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectFeedFeedOutputConfigPubsubDestination) *ProjectFeedFeedOutputConfigPubsubDestination {
 		return &v
 	}).(ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput)
 }
@@ -1406,7 +1450,11 @@ func (o ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput) ToProjectFeedFeed
 
 func (o ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput) Elem() ProjectFeedFeedOutputConfigPubsubDestinationOutput {
 	return o.ApplyT(func(v *ProjectFeedFeedOutputConfigPubsubDestination) ProjectFeedFeedOutputConfigPubsubDestination {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ProjectFeedFeedOutputConfigPubsubDestination
+		return ret
 	}).(ProjectFeedFeedOutputConfigPubsubDestinationOutput)
 }
 

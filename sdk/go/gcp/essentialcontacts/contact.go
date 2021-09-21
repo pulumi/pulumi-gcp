@@ -240,7 +240,7 @@ type ContactArrayInput interface {
 type ContactArray []ContactInput
 
 func (ContactArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Contact)(nil))
+	return reflect.TypeOf((*[]*Contact)(nil)).Elem()
 }
 
 func (i ContactArray) ToContactArrayOutput() ContactArrayOutput {
@@ -265,7 +265,7 @@ type ContactMapInput interface {
 type ContactMap map[string]ContactInput
 
 func (ContactMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Contact)(nil))
+	return reflect.TypeOf((*map[string]*Contact)(nil)).Elem()
 }
 
 func (i ContactMap) ToContactMapOutput() ContactMapOutput {
@@ -276,9 +276,7 @@ func (i ContactMap) ToContactMapOutputWithContext(ctx context.Context) ContactMa
 	return pulumi.ToOutputWithContext(ctx, i).(ContactMapOutput)
 }
 
-type ContactOutput struct {
-	*pulumi.OutputState
-}
+type ContactOutput struct{ *pulumi.OutputState }
 
 func (ContactOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Contact)(nil))
@@ -297,14 +295,12 @@ func (o ContactOutput) ToContactPtrOutput() ContactPtrOutput {
 }
 
 func (o ContactOutput) ToContactPtrOutputWithContext(ctx context.Context) ContactPtrOutput {
-	return o.ApplyT(func(v Contact) *Contact {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Contact) *Contact {
 		return &v
 	}).(ContactPtrOutput)
 }
 
-type ContactPtrOutput struct {
-	*pulumi.OutputState
-}
+type ContactPtrOutput struct{ *pulumi.OutputState }
 
 func (ContactPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Contact)(nil))
@@ -316,6 +312,16 @@ func (o ContactPtrOutput) ToContactPtrOutput() ContactPtrOutput {
 
 func (o ContactPtrOutput) ToContactPtrOutputWithContext(ctx context.Context) ContactPtrOutput {
 	return o
+}
+
+func (o ContactPtrOutput) Elem() ContactOutput {
+	return o.ApplyT(func(v *Contact) Contact {
+		if v != nil {
+			return *v
+		}
+		var ret Contact
+		return ret
+	}).(ContactOutput)
 }
 
 type ContactArrayOutput struct{ *pulumi.OutputState }

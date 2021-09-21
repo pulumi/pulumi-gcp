@@ -300,7 +300,7 @@ type AccessLevelArrayInput interface {
 type AccessLevelArray []AccessLevelInput
 
 func (AccessLevelArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AccessLevel)(nil))
+	return reflect.TypeOf((*[]*AccessLevel)(nil)).Elem()
 }
 
 func (i AccessLevelArray) ToAccessLevelArrayOutput() AccessLevelArrayOutput {
@@ -325,7 +325,7 @@ type AccessLevelMapInput interface {
 type AccessLevelMap map[string]AccessLevelInput
 
 func (AccessLevelMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AccessLevel)(nil))
+	return reflect.TypeOf((*map[string]*AccessLevel)(nil)).Elem()
 }
 
 func (i AccessLevelMap) ToAccessLevelMapOutput() AccessLevelMapOutput {
@@ -336,9 +336,7 @@ func (i AccessLevelMap) ToAccessLevelMapOutputWithContext(ctx context.Context) A
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelMapOutput)
 }
 
-type AccessLevelOutput struct {
-	*pulumi.OutputState
-}
+type AccessLevelOutput struct{ *pulumi.OutputState }
 
 func (AccessLevelOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AccessLevel)(nil))
@@ -357,14 +355,12 @@ func (o AccessLevelOutput) ToAccessLevelPtrOutput() AccessLevelPtrOutput {
 }
 
 func (o AccessLevelOutput) ToAccessLevelPtrOutputWithContext(ctx context.Context) AccessLevelPtrOutput {
-	return o.ApplyT(func(v AccessLevel) *AccessLevel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessLevel) *AccessLevel {
 		return &v
 	}).(AccessLevelPtrOutput)
 }
 
-type AccessLevelPtrOutput struct {
-	*pulumi.OutputState
-}
+type AccessLevelPtrOutput struct{ *pulumi.OutputState }
 
 func (AccessLevelPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AccessLevel)(nil))
@@ -376,6 +372,16 @@ func (o AccessLevelPtrOutput) ToAccessLevelPtrOutput() AccessLevelPtrOutput {
 
 func (o AccessLevelPtrOutput) ToAccessLevelPtrOutputWithContext(ctx context.Context) AccessLevelPtrOutput {
 	return o
+}
+
+func (o AccessLevelPtrOutput) Elem() AccessLevelOutput {
+	return o.ApplyT(func(v *AccessLevel) AccessLevel {
+		if v != nil {
+			return *v
+		}
+		var ret AccessLevel
+		return ret
+	}).(AccessLevelOutput)
 }
 
 type AccessLevelArrayOutput struct{ *pulumi.OutputState }

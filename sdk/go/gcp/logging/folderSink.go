@@ -387,7 +387,7 @@ type FolderSinkArrayInput interface {
 type FolderSinkArray []FolderSinkInput
 
 func (FolderSinkArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*FolderSink)(nil))
+	return reflect.TypeOf((*[]*FolderSink)(nil)).Elem()
 }
 
 func (i FolderSinkArray) ToFolderSinkArrayOutput() FolderSinkArrayOutput {
@@ -412,7 +412,7 @@ type FolderSinkMapInput interface {
 type FolderSinkMap map[string]FolderSinkInput
 
 func (FolderSinkMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*FolderSink)(nil))
+	return reflect.TypeOf((*map[string]*FolderSink)(nil)).Elem()
 }
 
 func (i FolderSinkMap) ToFolderSinkMapOutput() FolderSinkMapOutput {
@@ -423,9 +423,7 @@ func (i FolderSinkMap) ToFolderSinkMapOutputWithContext(ctx context.Context) Fol
 	return pulumi.ToOutputWithContext(ctx, i).(FolderSinkMapOutput)
 }
 
-type FolderSinkOutput struct {
-	*pulumi.OutputState
-}
+type FolderSinkOutput struct{ *pulumi.OutputState }
 
 func (FolderSinkOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*FolderSink)(nil))
@@ -444,14 +442,12 @@ func (o FolderSinkOutput) ToFolderSinkPtrOutput() FolderSinkPtrOutput {
 }
 
 func (o FolderSinkOutput) ToFolderSinkPtrOutputWithContext(ctx context.Context) FolderSinkPtrOutput {
-	return o.ApplyT(func(v FolderSink) *FolderSink {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FolderSink) *FolderSink {
 		return &v
 	}).(FolderSinkPtrOutput)
 }
 
-type FolderSinkPtrOutput struct {
-	*pulumi.OutputState
-}
+type FolderSinkPtrOutput struct{ *pulumi.OutputState }
 
 func (FolderSinkPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**FolderSink)(nil))
@@ -463,6 +459,16 @@ func (o FolderSinkPtrOutput) ToFolderSinkPtrOutput() FolderSinkPtrOutput {
 
 func (o FolderSinkPtrOutput) ToFolderSinkPtrOutputWithContext(ctx context.Context) FolderSinkPtrOutput {
 	return o
+}
+
+func (o FolderSinkPtrOutput) Elem() FolderSinkOutput {
+	return o.ApplyT(func(v *FolderSink) FolderSink {
+		if v != nil {
+			return *v
+		}
+		var ret FolderSink
+		return ret
+	}).(FolderSinkOutput)
 }
 
 type FolderSinkArrayOutput struct{ *pulumi.OutputState }

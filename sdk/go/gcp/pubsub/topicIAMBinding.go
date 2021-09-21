@@ -323,7 +323,7 @@ type TopicIAMBindingArrayInput interface {
 type TopicIAMBindingArray []TopicIAMBindingInput
 
 func (TopicIAMBindingArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TopicIAMBinding)(nil))
+	return reflect.TypeOf((*[]*TopicIAMBinding)(nil)).Elem()
 }
 
 func (i TopicIAMBindingArray) ToTopicIAMBindingArrayOutput() TopicIAMBindingArrayOutput {
@@ -348,7 +348,7 @@ type TopicIAMBindingMapInput interface {
 type TopicIAMBindingMap map[string]TopicIAMBindingInput
 
 func (TopicIAMBindingMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TopicIAMBinding)(nil))
+	return reflect.TypeOf((*map[string]*TopicIAMBinding)(nil)).Elem()
 }
 
 func (i TopicIAMBindingMap) ToTopicIAMBindingMapOutput() TopicIAMBindingMapOutput {
@@ -359,9 +359,7 @@ func (i TopicIAMBindingMap) ToTopicIAMBindingMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMBindingMapOutput)
 }
 
-type TopicIAMBindingOutput struct {
-	*pulumi.OutputState
-}
+type TopicIAMBindingOutput struct{ *pulumi.OutputState }
 
 func (TopicIAMBindingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TopicIAMBinding)(nil))
@@ -380,14 +378,12 @@ func (o TopicIAMBindingOutput) ToTopicIAMBindingPtrOutput() TopicIAMBindingPtrOu
 }
 
 func (o TopicIAMBindingOutput) ToTopicIAMBindingPtrOutputWithContext(ctx context.Context) TopicIAMBindingPtrOutput {
-	return o.ApplyT(func(v TopicIAMBinding) *TopicIAMBinding {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TopicIAMBinding) *TopicIAMBinding {
 		return &v
 	}).(TopicIAMBindingPtrOutput)
 }
 
-type TopicIAMBindingPtrOutput struct {
-	*pulumi.OutputState
-}
+type TopicIAMBindingPtrOutput struct{ *pulumi.OutputState }
 
 func (TopicIAMBindingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TopicIAMBinding)(nil))
@@ -399,6 +395,16 @@ func (o TopicIAMBindingPtrOutput) ToTopicIAMBindingPtrOutput() TopicIAMBindingPt
 
 func (o TopicIAMBindingPtrOutput) ToTopicIAMBindingPtrOutputWithContext(ctx context.Context) TopicIAMBindingPtrOutput {
 	return o
+}
+
+func (o TopicIAMBindingPtrOutput) Elem() TopicIAMBindingOutput {
+	return o.ApplyT(func(v *TopicIAMBinding) TopicIAMBinding {
+		if v != nil {
+			return *v
+		}
+		var ret TopicIAMBinding
+		return ret
+	}).(TopicIAMBindingOutput)
 }
 
 type TopicIAMBindingArrayOutput struct{ *pulumi.OutputState }

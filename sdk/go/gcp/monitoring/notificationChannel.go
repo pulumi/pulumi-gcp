@@ -391,7 +391,7 @@ type NotificationChannelArrayInput interface {
 type NotificationChannelArray []NotificationChannelInput
 
 func (NotificationChannelArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*NotificationChannel)(nil))
+	return reflect.TypeOf((*[]*NotificationChannel)(nil)).Elem()
 }
 
 func (i NotificationChannelArray) ToNotificationChannelArrayOutput() NotificationChannelArrayOutput {
@@ -416,7 +416,7 @@ type NotificationChannelMapInput interface {
 type NotificationChannelMap map[string]NotificationChannelInput
 
 func (NotificationChannelMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*NotificationChannel)(nil))
+	return reflect.TypeOf((*map[string]*NotificationChannel)(nil)).Elem()
 }
 
 func (i NotificationChannelMap) ToNotificationChannelMapOutput() NotificationChannelMapOutput {
@@ -427,9 +427,7 @@ func (i NotificationChannelMap) ToNotificationChannelMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationChannelMapOutput)
 }
 
-type NotificationChannelOutput struct {
-	*pulumi.OutputState
-}
+type NotificationChannelOutput struct{ *pulumi.OutputState }
 
 func (NotificationChannelOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*NotificationChannel)(nil))
@@ -448,14 +446,12 @@ func (o NotificationChannelOutput) ToNotificationChannelPtrOutput() Notification
 }
 
 func (o NotificationChannelOutput) ToNotificationChannelPtrOutputWithContext(ctx context.Context) NotificationChannelPtrOutput {
-	return o.ApplyT(func(v NotificationChannel) *NotificationChannel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotificationChannel) *NotificationChannel {
 		return &v
 	}).(NotificationChannelPtrOutput)
 }
 
-type NotificationChannelPtrOutput struct {
-	*pulumi.OutputState
-}
+type NotificationChannelPtrOutput struct{ *pulumi.OutputState }
 
 func (NotificationChannelPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**NotificationChannel)(nil))
@@ -467,6 +463,16 @@ func (o NotificationChannelPtrOutput) ToNotificationChannelPtrOutput() Notificat
 
 func (o NotificationChannelPtrOutput) ToNotificationChannelPtrOutputWithContext(ctx context.Context) NotificationChannelPtrOutput {
 	return o
+}
+
+func (o NotificationChannelPtrOutput) Elem() NotificationChannelOutput {
+	return o.ApplyT(func(v *NotificationChannel) NotificationChannel {
+		if v != nil {
+			return *v
+		}
+		var ret NotificationChannel
+		return ret
+	}).(NotificationChannelOutput)
 }
 
 type NotificationChannelArrayOutput struct{ *pulumi.OutputState }

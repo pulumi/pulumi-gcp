@@ -299,7 +299,7 @@ type ServiceIamBindingArrayInput interface {
 type ServiceIamBindingArray []ServiceIamBindingInput
 
 func (ServiceIamBindingArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ServiceIamBinding)(nil))
+	return reflect.TypeOf((*[]*ServiceIamBinding)(nil)).Elem()
 }
 
 func (i ServiceIamBindingArray) ToServiceIamBindingArrayOutput() ServiceIamBindingArrayOutput {
@@ -324,7 +324,7 @@ type ServiceIamBindingMapInput interface {
 type ServiceIamBindingMap map[string]ServiceIamBindingInput
 
 func (ServiceIamBindingMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ServiceIamBinding)(nil))
+	return reflect.TypeOf((*map[string]*ServiceIamBinding)(nil)).Elem()
 }
 
 func (i ServiceIamBindingMap) ToServiceIamBindingMapOutput() ServiceIamBindingMapOutput {
@@ -335,9 +335,7 @@ func (i ServiceIamBindingMap) ToServiceIamBindingMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamBindingMapOutput)
 }
 
-type ServiceIamBindingOutput struct {
-	*pulumi.OutputState
-}
+type ServiceIamBindingOutput struct{ *pulumi.OutputState }
 
 func (ServiceIamBindingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServiceIamBinding)(nil))
@@ -356,14 +354,12 @@ func (o ServiceIamBindingOutput) ToServiceIamBindingPtrOutput() ServiceIamBindin
 }
 
 func (o ServiceIamBindingOutput) ToServiceIamBindingPtrOutputWithContext(ctx context.Context) ServiceIamBindingPtrOutput {
-	return o.ApplyT(func(v ServiceIamBinding) *ServiceIamBinding {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceIamBinding) *ServiceIamBinding {
 		return &v
 	}).(ServiceIamBindingPtrOutput)
 }
 
-type ServiceIamBindingPtrOutput struct {
-	*pulumi.OutputState
-}
+type ServiceIamBindingPtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceIamBindingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ServiceIamBinding)(nil))
@@ -375,6 +371,16 @@ func (o ServiceIamBindingPtrOutput) ToServiceIamBindingPtrOutput() ServiceIamBin
 
 func (o ServiceIamBindingPtrOutput) ToServiceIamBindingPtrOutputWithContext(ctx context.Context) ServiceIamBindingPtrOutput {
 	return o
+}
+
+func (o ServiceIamBindingPtrOutput) Elem() ServiceIamBindingOutput {
+	return o.ApplyT(func(v *ServiceIamBinding) ServiceIamBinding {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceIamBinding
+		return ret
+	}).(ServiceIamBindingOutput)
 }
 
 type ServiceIamBindingArrayOutput struct{ *pulumi.OutputState }

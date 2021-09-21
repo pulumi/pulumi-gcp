@@ -458,7 +458,7 @@ type AppEngineServiceIamMemberArrayInput interface {
 type AppEngineServiceIamMemberArray []AppEngineServiceIamMemberInput
 
 func (AppEngineServiceIamMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AppEngineServiceIamMember)(nil))
+	return reflect.TypeOf((*[]*AppEngineServiceIamMember)(nil)).Elem()
 }
 
 func (i AppEngineServiceIamMemberArray) ToAppEngineServiceIamMemberArrayOutput() AppEngineServiceIamMemberArrayOutput {
@@ -483,7 +483,7 @@ type AppEngineServiceIamMemberMapInput interface {
 type AppEngineServiceIamMemberMap map[string]AppEngineServiceIamMemberInput
 
 func (AppEngineServiceIamMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AppEngineServiceIamMember)(nil))
+	return reflect.TypeOf((*map[string]*AppEngineServiceIamMember)(nil)).Elem()
 }
 
 func (i AppEngineServiceIamMemberMap) ToAppEngineServiceIamMemberMapOutput() AppEngineServiceIamMemberMapOutput {
@@ -494,9 +494,7 @@ func (i AppEngineServiceIamMemberMap) ToAppEngineServiceIamMemberMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineServiceIamMemberMapOutput)
 }
 
-type AppEngineServiceIamMemberOutput struct {
-	*pulumi.OutputState
-}
+type AppEngineServiceIamMemberOutput struct{ *pulumi.OutputState }
 
 func (AppEngineServiceIamMemberOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AppEngineServiceIamMember)(nil))
@@ -515,14 +513,12 @@ func (o AppEngineServiceIamMemberOutput) ToAppEngineServiceIamMemberPtrOutput() 
 }
 
 func (o AppEngineServiceIamMemberOutput) ToAppEngineServiceIamMemberPtrOutputWithContext(ctx context.Context) AppEngineServiceIamMemberPtrOutput {
-	return o.ApplyT(func(v AppEngineServiceIamMember) *AppEngineServiceIamMember {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEngineServiceIamMember) *AppEngineServiceIamMember {
 		return &v
 	}).(AppEngineServiceIamMemberPtrOutput)
 }
 
-type AppEngineServiceIamMemberPtrOutput struct {
-	*pulumi.OutputState
-}
+type AppEngineServiceIamMemberPtrOutput struct{ *pulumi.OutputState }
 
 func (AppEngineServiceIamMemberPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AppEngineServiceIamMember)(nil))
@@ -534,6 +530,16 @@ func (o AppEngineServiceIamMemberPtrOutput) ToAppEngineServiceIamMemberPtrOutput
 
 func (o AppEngineServiceIamMemberPtrOutput) ToAppEngineServiceIamMemberPtrOutputWithContext(ctx context.Context) AppEngineServiceIamMemberPtrOutput {
 	return o
+}
+
+func (o AppEngineServiceIamMemberPtrOutput) Elem() AppEngineServiceIamMemberOutput {
+	return o.ApplyT(func(v *AppEngineServiceIamMember) AppEngineServiceIamMember {
+		if v != nil {
+			return *v
+		}
+		var ret AppEngineServiceIamMember
+		return ret
+	}).(AppEngineServiceIamMemberOutput)
 }
 
 type AppEngineServiceIamMemberArrayOutput struct{ *pulumi.OutputState }

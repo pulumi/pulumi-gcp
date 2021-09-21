@@ -4,6 +4,9 @@
 package composer
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,4 +70,64 @@ type GetImageVersionsResult struct {
 	ImageVersions []GetImageVersionsImageVersion `pulumi:"imageVersions"`
 	Project       string                         `pulumi:"project"`
 	Region        string                         `pulumi:"region"`
+}
+
+func GetImageVersionsOutput(ctx *pulumi.Context, args GetImageVersionsOutputArgs, opts ...pulumi.InvokeOption) GetImageVersionsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetImageVersionsResult, error) {
+			args := v.(GetImageVersionsArgs)
+			r, err := GetImageVersions(ctx, &args, opts...)
+			return *r, err
+		}).(GetImageVersionsResultOutput)
+}
+
+// A collection of arguments for invoking getImageVersions.
+type GetImageVersionsOutputArgs struct {
+	// The ID of the project to list versions in.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// The location to list versions in.
+	// If it is not provider, the provider region is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (GetImageVersionsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImageVersionsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getImageVersions.
+type GetImageVersionsResultOutput struct{ *pulumi.OutputState }
+
+func (GetImageVersionsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImageVersionsResult)(nil)).Elem()
+}
+
+func (o GetImageVersionsResultOutput) ToGetImageVersionsResultOutput() GetImageVersionsResultOutput {
+	return o
+}
+
+func (o GetImageVersionsResultOutput) ToGetImageVersionsResultOutputWithContext(ctx context.Context) GetImageVersionsResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetImageVersionsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageVersionsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of composer image versions available in the given project and location. Each `imageVersion` contains:
+func (o GetImageVersionsResultOutput) ImageVersions() GetImageVersionsImageVersionArrayOutput {
+	return o.ApplyT(func(v GetImageVersionsResult) []GetImageVersionsImageVersion { return v.ImageVersions }).(GetImageVersionsImageVersionArrayOutput)
+}
+
+func (o GetImageVersionsResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageVersionsResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o GetImageVersionsResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageVersionsResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetImageVersionsResultOutput{})
 }

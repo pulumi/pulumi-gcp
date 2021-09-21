@@ -264,7 +264,7 @@ type AiDatasetArrayInput interface {
 type AiDatasetArray []AiDatasetInput
 
 func (AiDatasetArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AiDataset)(nil))
+	return reflect.TypeOf((*[]*AiDataset)(nil)).Elem()
 }
 
 func (i AiDatasetArray) ToAiDatasetArrayOutput() AiDatasetArrayOutput {
@@ -289,7 +289,7 @@ type AiDatasetMapInput interface {
 type AiDatasetMap map[string]AiDatasetInput
 
 func (AiDatasetMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AiDataset)(nil))
+	return reflect.TypeOf((*map[string]*AiDataset)(nil)).Elem()
 }
 
 func (i AiDatasetMap) ToAiDatasetMapOutput() AiDatasetMapOutput {
@@ -300,9 +300,7 @@ func (i AiDatasetMap) ToAiDatasetMapOutputWithContext(ctx context.Context) AiDat
 	return pulumi.ToOutputWithContext(ctx, i).(AiDatasetMapOutput)
 }
 
-type AiDatasetOutput struct {
-	*pulumi.OutputState
-}
+type AiDatasetOutput struct{ *pulumi.OutputState }
 
 func (AiDatasetOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AiDataset)(nil))
@@ -321,14 +319,12 @@ func (o AiDatasetOutput) ToAiDatasetPtrOutput() AiDatasetPtrOutput {
 }
 
 func (o AiDatasetOutput) ToAiDatasetPtrOutputWithContext(ctx context.Context) AiDatasetPtrOutput {
-	return o.ApplyT(func(v AiDataset) *AiDataset {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiDataset) *AiDataset {
 		return &v
 	}).(AiDatasetPtrOutput)
 }
 
-type AiDatasetPtrOutput struct {
-	*pulumi.OutputState
-}
+type AiDatasetPtrOutput struct{ *pulumi.OutputState }
 
 func (AiDatasetPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AiDataset)(nil))
@@ -340,6 +336,16 @@ func (o AiDatasetPtrOutput) ToAiDatasetPtrOutput() AiDatasetPtrOutput {
 
 func (o AiDatasetPtrOutput) ToAiDatasetPtrOutputWithContext(ctx context.Context) AiDatasetPtrOutput {
 	return o
+}
+
+func (o AiDatasetPtrOutput) Elem() AiDatasetOutput {
+	return o.ApplyT(func(v *AiDataset) AiDataset {
+		if v != nil {
+			return *v
+		}
+		var ret AiDataset
+		return ret
+	}).(AiDatasetOutput)
 }
 
 type AiDatasetArrayOutput struct{ *pulumi.OutputState }

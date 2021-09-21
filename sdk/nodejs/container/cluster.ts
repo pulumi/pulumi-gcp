@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const _default = new gcp.serviceAccount.Account("default", {
+ * const _default = new gcp.serviceaccount.Account("default", {
  *     accountId: "service-account-id",
  *     displayName: "Service Account",
  * });
@@ -48,7 +48,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const _default = new gcp.serviceAccount.Account("default", {
+ * const _default = new gcp.serviceaccount.Account("default", {
  *     accountId: "service-account-id",
  *     displayName: "Service Account",
  * });

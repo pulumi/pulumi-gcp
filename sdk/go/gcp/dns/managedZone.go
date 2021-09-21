@@ -600,7 +600,7 @@ type ManagedZoneArrayInput interface {
 type ManagedZoneArray []ManagedZoneInput
 
 func (ManagedZoneArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ManagedZone)(nil))
+	return reflect.TypeOf((*[]*ManagedZone)(nil)).Elem()
 }
 
 func (i ManagedZoneArray) ToManagedZoneArrayOutput() ManagedZoneArrayOutput {
@@ -625,7 +625,7 @@ type ManagedZoneMapInput interface {
 type ManagedZoneMap map[string]ManagedZoneInput
 
 func (ManagedZoneMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ManagedZone)(nil))
+	return reflect.TypeOf((*map[string]*ManagedZone)(nil)).Elem()
 }
 
 func (i ManagedZoneMap) ToManagedZoneMapOutput() ManagedZoneMapOutput {
@@ -636,9 +636,7 @@ func (i ManagedZoneMap) ToManagedZoneMapOutputWithContext(ctx context.Context) M
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneMapOutput)
 }
 
-type ManagedZoneOutput struct {
-	*pulumi.OutputState
-}
+type ManagedZoneOutput struct{ *pulumi.OutputState }
 
 func (ManagedZoneOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ManagedZone)(nil))
@@ -657,14 +655,12 @@ func (o ManagedZoneOutput) ToManagedZonePtrOutput() ManagedZonePtrOutput {
 }
 
 func (o ManagedZoneOutput) ToManagedZonePtrOutputWithContext(ctx context.Context) ManagedZonePtrOutput {
-	return o.ApplyT(func(v ManagedZone) *ManagedZone {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedZone) *ManagedZone {
 		return &v
 	}).(ManagedZonePtrOutput)
 }
 
-type ManagedZonePtrOutput struct {
-	*pulumi.OutputState
-}
+type ManagedZonePtrOutput struct{ *pulumi.OutputState }
 
 func (ManagedZonePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ManagedZone)(nil))
@@ -676,6 +672,16 @@ func (o ManagedZonePtrOutput) ToManagedZonePtrOutput() ManagedZonePtrOutput {
 
 func (o ManagedZonePtrOutput) ToManagedZonePtrOutputWithContext(ctx context.Context) ManagedZonePtrOutput {
 	return o
+}
+
+func (o ManagedZonePtrOutput) Elem() ManagedZoneOutput {
+	return o.ApplyT(func(v *ManagedZone) ManagedZone {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedZone
+		return ret
+	}).(ManagedZoneOutput)
 }
 
 type ManagedZoneArrayOutput struct{ *pulumi.OutputState }

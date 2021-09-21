@@ -372,7 +372,7 @@ type OrganizationSinkArrayInput interface {
 type OrganizationSinkArray []OrganizationSinkInput
 
 func (OrganizationSinkArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*OrganizationSink)(nil))
+	return reflect.TypeOf((*[]*OrganizationSink)(nil)).Elem()
 }
 
 func (i OrganizationSinkArray) ToOrganizationSinkArrayOutput() OrganizationSinkArrayOutput {
@@ -397,7 +397,7 @@ type OrganizationSinkMapInput interface {
 type OrganizationSinkMap map[string]OrganizationSinkInput
 
 func (OrganizationSinkMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*OrganizationSink)(nil))
+	return reflect.TypeOf((*map[string]*OrganizationSink)(nil)).Elem()
 }
 
 func (i OrganizationSinkMap) ToOrganizationSinkMapOutput() OrganizationSinkMapOutput {
@@ -408,9 +408,7 @@ func (i OrganizationSinkMap) ToOrganizationSinkMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSinkMapOutput)
 }
 
-type OrganizationSinkOutput struct {
-	*pulumi.OutputState
-}
+type OrganizationSinkOutput struct{ *pulumi.OutputState }
 
 func (OrganizationSinkOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OrganizationSink)(nil))
@@ -429,14 +427,12 @@ func (o OrganizationSinkOutput) ToOrganizationSinkPtrOutput() OrganizationSinkPt
 }
 
 func (o OrganizationSinkOutput) ToOrganizationSinkPtrOutputWithContext(ctx context.Context) OrganizationSinkPtrOutput {
-	return o.ApplyT(func(v OrganizationSink) *OrganizationSink {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationSink) *OrganizationSink {
 		return &v
 	}).(OrganizationSinkPtrOutput)
 }
 
-type OrganizationSinkPtrOutput struct {
-	*pulumi.OutputState
-}
+type OrganizationSinkPtrOutput struct{ *pulumi.OutputState }
 
 func (OrganizationSinkPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**OrganizationSink)(nil))
@@ -448,6 +444,16 @@ func (o OrganizationSinkPtrOutput) ToOrganizationSinkPtrOutput() OrganizationSin
 
 func (o OrganizationSinkPtrOutput) ToOrganizationSinkPtrOutputWithContext(ctx context.Context) OrganizationSinkPtrOutput {
 	return o
+}
+
+func (o OrganizationSinkPtrOutput) Elem() OrganizationSinkOutput {
+	return o.ApplyT(func(v *OrganizationSink) OrganizationSink {
+		if v != nil {
+			return *v
+		}
+		var ret OrganizationSink
+		return ret
+	}).(OrganizationSinkOutput)
 }
 
 type OrganizationSinkArrayOutput struct{ *pulumi.OutputState }

@@ -59,7 +59,7 @@ import * as utilities from "../utilities";
  * }, {
  *     provider: google_beta,
  * });
- * const test_account = new gcp.serviceAccount.Account("test-account", {
+ * const test_account = new gcp.serviceaccount.Account("test-account", {
  *     accountId: "my-account",
  *     displayName: "Test Service Account",
  * }, {

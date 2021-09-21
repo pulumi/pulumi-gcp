@@ -420,7 +420,7 @@ type TunnelIamBindingArrayInput interface {
 type TunnelIamBindingArray []TunnelIamBindingInput
 
 func (TunnelIamBindingArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TunnelIamBinding)(nil))
+	return reflect.TypeOf((*[]*TunnelIamBinding)(nil)).Elem()
 }
 
 func (i TunnelIamBindingArray) ToTunnelIamBindingArrayOutput() TunnelIamBindingArrayOutput {
@@ -445,7 +445,7 @@ type TunnelIamBindingMapInput interface {
 type TunnelIamBindingMap map[string]TunnelIamBindingInput
 
 func (TunnelIamBindingMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TunnelIamBinding)(nil))
+	return reflect.TypeOf((*map[string]*TunnelIamBinding)(nil)).Elem()
 }
 
 func (i TunnelIamBindingMap) ToTunnelIamBindingMapOutput() TunnelIamBindingMapOutput {
@@ -456,9 +456,7 @@ func (i TunnelIamBindingMap) ToTunnelIamBindingMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(TunnelIamBindingMapOutput)
 }
 
-type TunnelIamBindingOutput struct {
-	*pulumi.OutputState
-}
+type TunnelIamBindingOutput struct{ *pulumi.OutputState }
 
 func (TunnelIamBindingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TunnelIamBinding)(nil))
@@ -477,14 +475,12 @@ func (o TunnelIamBindingOutput) ToTunnelIamBindingPtrOutput() TunnelIamBindingPt
 }
 
 func (o TunnelIamBindingOutput) ToTunnelIamBindingPtrOutputWithContext(ctx context.Context) TunnelIamBindingPtrOutput {
-	return o.ApplyT(func(v TunnelIamBinding) *TunnelIamBinding {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TunnelIamBinding) *TunnelIamBinding {
 		return &v
 	}).(TunnelIamBindingPtrOutput)
 }
 
-type TunnelIamBindingPtrOutput struct {
-	*pulumi.OutputState
-}
+type TunnelIamBindingPtrOutput struct{ *pulumi.OutputState }
 
 func (TunnelIamBindingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TunnelIamBinding)(nil))
@@ -496,6 +492,16 @@ func (o TunnelIamBindingPtrOutput) ToTunnelIamBindingPtrOutput() TunnelIamBindin
 
 func (o TunnelIamBindingPtrOutput) ToTunnelIamBindingPtrOutputWithContext(ctx context.Context) TunnelIamBindingPtrOutput {
 	return o
+}
+
+func (o TunnelIamBindingPtrOutput) Elem() TunnelIamBindingOutput {
+	return o.ApplyT(func(v *TunnelIamBinding) TunnelIamBinding {
+		if v != nil {
+			return *v
+		}
+		var ret TunnelIamBinding
+		return ret
+	}).(TunnelIamBindingOutput)
 }
 
 type TunnelIamBindingArrayOutput struct{ *pulumi.OutputState }

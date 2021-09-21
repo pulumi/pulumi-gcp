@@ -260,7 +260,7 @@ type DomainMappingArrayInput interface {
 type DomainMappingArray []DomainMappingInput
 
 func (DomainMappingArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*DomainMapping)(nil))
+	return reflect.TypeOf((*[]*DomainMapping)(nil)).Elem()
 }
 
 func (i DomainMappingArray) ToDomainMappingArrayOutput() DomainMappingArrayOutput {
@@ -285,7 +285,7 @@ type DomainMappingMapInput interface {
 type DomainMappingMap map[string]DomainMappingInput
 
 func (DomainMappingMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*DomainMapping)(nil))
+	return reflect.TypeOf((*map[string]*DomainMapping)(nil)).Elem()
 }
 
 func (i DomainMappingMap) ToDomainMappingMapOutput() DomainMappingMapOutput {
@@ -296,9 +296,7 @@ func (i DomainMappingMap) ToDomainMappingMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingMapOutput)
 }
 
-type DomainMappingOutput struct {
-	*pulumi.OutputState
-}
+type DomainMappingOutput struct{ *pulumi.OutputState }
 
 func (DomainMappingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DomainMapping)(nil))
@@ -317,14 +315,12 @@ func (o DomainMappingOutput) ToDomainMappingPtrOutput() DomainMappingPtrOutput {
 }
 
 func (o DomainMappingOutput) ToDomainMappingPtrOutputWithContext(ctx context.Context) DomainMappingPtrOutput {
-	return o.ApplyT(func(v DomainMapping) *DomainMapping {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainMapping) *DomainMapping {
 		return &v
 	}).(DomainMappingPtrOutput)
 }
 
-type DomainMappingPtrOutput struct {
-	*pulumi.OutputState
-}
+type DomainMappingPtrOutput struct{ *pulumi.OutputState }
 
 func (DomainMappingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DomainMapping)(nil))
@@ -336,6 +332,16 @@ func (o DomainMappingPtrOutput) ToDomainMappingPtrOutput() DomainMappingPtrOutpu
 
 func (o DomainMappingPtrOutput) ToDomainMappingPtrOutputWithContext(ctx context.Context) DomainMappingPtrOutput {
 	return o
+}
+
+func (o DomainMappingPtrOutput) Elem() DomainMappingOutput {
+	return o.ApplyT(func(v *DomainMapping) DomainMapping {
+		if v != nil {
+			return *v
+		}
+		var ret DomainMapping
+		return ret
+	}).(DomainMappingOutput)
 }
 
 type DomainMappingArrayOutput struct{ *pulumi.OutputState }

@@ -298,7 +298,7 @@ type SubscriptionIAMPolicyArrayInput interface {
 type SubscriptionIAMPolicyArray []SubscriptionIAMPolicyInput
 
 func (SubscriptionIAMPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*SubscriptionIAMPolicy)(nil))
+	return reflect.TypeOf((*[]*SubscriptionIAMPolicy)(nil)).Elem()
 }
 
 func (i SubscriptionIAMPolicyArray) ToSubscriptionIAMPolicyArrayOutput() SubscriptionIAMPolicyArrayOutput {
@@ -323,7 +323,7 @@ type SubscriptionIAMPolicyMapInput interface {
 type SubscriptionIAMPolicyMap map[string]SubscriptionIAMPolicyInput
 
 func (SubscriptionIAMPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*SubscriptionIAMPolicy)(nil))
+	return reflect.TypeOf((*map[string]*SubscriptionIAMPolicy)(nil)).Elem()
 }
 
 func (i SubscriptionIAMPolicyMap) ToSubscriptionIAMPolicyMapOutput() SubscriptionIAMPolicyMapOutput {
@@ -334,9 +334,7 @@ func (i SubscriptionIAMPolicyMap) ToSubscriptionIAMPolicyMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIAMPolicyMapOutput)
 }
 
-type SubscriptionIAMPolicyOutput struct {
-	*pulumi.OutputState
-}
+type SubscriptionIAMPolicyOutput struct{ *pulumi.OutputState }
 
 func (SubscriptionIAMPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SubscriptionIAMPolicy)(nil))
@@ -355,14 +353,12 @@ func (o SubscriptionIAMPolicyOutput) ToSubscriptionIAMPolicyPtrOutput() Subscrip
 }
 
 func (o SubscriptionIAMPolicyOutput) ToSubscriptionIAMPolicyPtrOutputWithContext(ctx context.Context) SubscriptionIAMPolicyPtrOutput {
-	return o.ApplyT(func(v SubscriptionIAMPolicy) *SubscriptionIAMPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubscriptionIAMPolicy) *SubscriptionIAMPolicy {
 		return &v
 	}).(SubscriptionIAMPolicyPtrOutput)
 }
 
-type SubscriptionIAMPolicyPtrOutput struct {
-	*pulumi.OutputState
-}
+type SubscriptionIAMPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (SubscriptionIAMPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SubscriptionIAMPolicy)(nil))
@@ -374,6 +370,16 @@ func (o SubscriptionIAMPolicyPtrOutput) ToSubscriptionIAMPolicyPtrOutput() Subsc
 
 func (o SubscriptionIAMPolicyPtrOutput) ToSubscriptionIAMPolicyPtrOutputWithContext(ctx context.Context) SubscriptionIAMPolicyPtrOutput {
 	return o
+}
+
+func (o SubscriptionIAMPolicyPtrOutput) Elem() SubscriptionIAMPolicyOutput {
+	return o.ApplyT(func(v *SubscriptionIAMPolicy) SubscriptionIAMPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret SubscriptionIAMPolicy
+		return ret
+	}).(SubscriptionIAMPolicyOutput)
 }
 
 type SubscriptionIAMPolicyArrayOutput struct{ *pulumi.OutputState }

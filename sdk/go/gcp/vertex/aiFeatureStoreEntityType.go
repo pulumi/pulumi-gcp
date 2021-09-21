@@ -211,7 +211,7 @@ type AiFeatureStoreEntityTypeArrayInput interface {
 type AiFeatureStoreEntityTypeArray []AiFeatureStoreEntityTypeInput
 
 func (AiFeatureStoreEntityTypeArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AiFeatureStoreEntityType)(nil))
+	return reflect.TypeOf((*[]*AiFeatureStoreEntityType)(nil)).Elem()
 }
 
 func (i AiFeatureStoreEntityTypeArray) ToAiFeatureStoreEntityTypeArrayOutput() AiFeatureStoreEntityTypeArrayOutput {
@@ -236,7 +236,7 @@ type AiFeatureStoreEntityTypeMapInput interface {
 type AiFeatureStoreEntityTypeMap map[string]AiFeatureStoreEntityTypeInput
 
 func (AiFeatureStoreEntityTypeMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AiFeatureStoreEntityType)(nil))
+	return reflect.TypeOf((*map[string]*AiFeatureStoreEntityType)(nil)).Elem()
 }
 
 func (i AiFeatureStoreEntityTypeMap) ToAiFeatureStoreEntityTypeMapOutput() AiFeatureStoreEntityTypeMapOutput {
@@ -247,9 +247,7 @@ func (i AiFeatureStoreEntityTypeMap) ToAiFeatureStoreEntityTypeMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeMapOutput)
 }
 
-type AiFeatureStoreEntityTypeOutput struct {
-	*pulumi.OutputState
-}
+type AiFeatureStoreEntityTypeOutput struct{ *pulumi.OutputState }
 
 func (AiFeatureStoreEntityTypeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AiFeatureStoreEntityType)(nil))
@@ -268,14 +266,12 @@ func (o AiFeatureStoreEntityTypeOutput) ToAiFeatureStoreEntityTypePtrOutput() Ai
 }
 
 func (o AiFeatureStoreEntityTypeOutput) ToAiFeatureStoreEntityTypePtrOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypePtrOutput {
-	return o.ApplyT(func(v AiFeatureStoreEntityType) *AiFeatureStoreEntityType {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureStoreEntityType) *AiFeatureStoreEntityType {
 		return &v
 	}).(AiFeatureStoreEntityTypePtrOutput)
 }
 
-type AiFeatureStoreEntityTypePtrOutput struct {
-	*pulumi.OutputState
-}
+type AiFeatureStoreEntityTypePtrOutput struct{ *pulumi.OutputState }
 
 func (AiFeatureStoreEntityTypePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AiFeatureStoreEntityType)(nil))
@@ -287,6 +283,16 @@ func (o AiFeatureStoreEntityTypePtrOutput) ToAiFeatureStoreEntityTypePtrOutput()
 
 func (o AiFeatureStoreEntityTypePtrOutput) ToAiFeatureStoreEntityTypePtrOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypePtrOutput {
 	return o
+}
+
+func (o AiFeatureStoreEntityTypePtrOutput) Elem() AiFeatureStoreEntityTypeOutput {
+	return o.ApplyT(func(v *AiFeatureStoreEntityType) AiFeatureStoreEntityType {
+		if v != nil {
+			return *v
+		}
+		var ret AiFeatureStoreEntityType
+		return ret
+	}).(AiFeatureStoreEntityTypeOutput)
 }
 
 type AiFeatureStoreEntityTypeArrayOutput struct{ *pulumi.OutputState }

@@ -109,7 +109,7 @@ func (o EnvironmentContainerImageOutput) ToEnvironmentContainerImagePtrOutput() 
 }
 
 func (o EnvironmentContainerImageOutput) ToEnvironmentContainerImagePtrOutputWithContext(ctx context.Context) EnvironmentContainerImagePtrOutput {
-	return o.ApplyT(func(v EnvironmentContainerImage) *EnvironmentContainerImage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentContainerImage) *EnvironmentContainerImage {
 		return &v
 	}).(EnvironmentContainerImagePtrOutput)
 }
@@ -140,7 +140,13 @@ func (o EnvironmentContainerImagePtrOutput) ToEnvironmentContainerImagePtrOutput
 }
 
 func (o EnvironmentContainerImagePtrOutput) Elem() EnvironmentContainerImageOutput {
-	return o.ApplyT(func(v *EnvironmentContainerImage) EnvironmentContainerImage { return *v }).(EnvironmentContainerImageOutput)
+	return o.ApplyT(func(v *EnvironmentContainerImage) EnvironmentContainerImage {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentContainerImage
+		return ret
+	}).(EnvironmentContainerImageOutput)
 }
 
 // The path to the container image repository.
@@ -267,7 +273,7 @@ func (o EnvironmentVmImageOutput) ToEnvironmentVmImagePtrOutput() EnvironmentVmI
 }
 
 func (o EnvironmentVmImageOutput) ToEnvironmentVmImagePtrOutputWithContext(ctx context.Context) EnvironmentVmImagePtrOutput {
-	return o.ApplyT(func(v EnvironmentVmImage) *EnvironmentVmImage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentVmImage) *EnvironmentVmImage {
 		return &v
 	}).(EnvironmentVmImagePtrOutput)
 }
@@ -303,7 +309,13 @@ func (o EnvironmentVmImagePtrOutput) ToEnvironmentVmImagePtrOutputWithContext(ct
 }
 
 func (o EnvironmentVmImagePtrOutput) Elem() EnvironmentVmImageOutput {
-	return o.ApplyT(func(v *EnvironmentVmImage) EnvironmentVmImage { return *v }).(EnvironmentVmImageOutput)
+	return o.ApplyT(func(v *EnvironmentVmImage) EnvironmentVmImage {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentVmImage
+		return ret
+	}).(EnvironmentVmImageOutput)
 }
 
 // Use this VM image family to find the image; the newest image in this family will be used.
@@ -436,7 +448,7 @@ func (o InstanceAcceleratorConfigOutput) ToInstanceAcceleratorConfigPtrOutput() 
 }
 
 func (o InstanceAcceleratorConfigOutput) ToInstanceAcceleratorConfigPtrOutputWithContext(ctx context.Context) InstanceAcceleratorConfigPtrOutput {
-	return o.ApplyT(func(v InstanceAcceleratorConfig) *InstanceAcceleratorConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceAcceleratorConfig) *InstanceAcceleratorConfig {
 		return &v
 	}).(InstanceAcceleratorConfigPtrOutput)
 }
@@ -467,7 +479,13 @@ func (o InstanceAcceleratorConfigPtrOutput) ToInstanceAcceleratorConfigPtrOutput
 }
 
 func (o InstanceAcceleratorConfigPtrOutput) Elem() InstanceAcceleratorConfigOutput {
-	return o.ApplyT(func(v *InstanceAcceleratorConfig) InstanceAcceleratorConfig { return *v }).(InstanceAcceleratorConfigOutput)
+	return o.ApplyT(func(v *InstanceAcceleratorConfig) InstanceAcceleratorConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceAcceleratorConfig
+		return ret
+	}).(InstanceAcceleratorConfigOutput)
 }
 
 // Count of cores of this accelerator.
@@ -590,7 +608,7 @@ func (o InstanceContainerImageOutput) ToInstanceContainerImagePtrOutput() Instan
 }
 
 func (o InstanceContainerImageOutput) ToInstanceContainerImagePtrOutputWithContext(ctx context.Context) InstanceContainerImagePtrOutput {
-	return o.ApplyT(func(v InstanceContainerImage) *InstanceContainerImage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceContainerImage) *InstanceContainerImage {
 		return &v
 	}).(InstanceContainerImagePtrOutput)
 }
@@ -621,7 +639,13 @@ func (o InstanceContainerImagePtrOutput) ToInstanceContainerImagePtrOutputWithCo
 }
 
 func (o InstanceContainerImagePtrOutput) Elem() InstanceContainerImageOutput {
-	return o.ApplyT(func(v *InstanceContainerImage) InstanceContainerImage { return *v }).(InstanceContainerImageOutput)
+	return o.ApplyT(func(v *InstanceContainerImage) InstanceContainerImage {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceContainerImage
+		return ret
+	}).(InstanceContainerImageOutput)
 }
 
 // The path to the container image repository.
@@ -740,10 +764,11 @@ func (o InstanceIamBindingConditionOutput) ToInstanceIamBindingConditionPtrOutpu
 }
 
 func (o InstanceIamBindingConditionOutput) ToInstanceIamBindingConditionPtrOutputWithContext(ctx context.Context) InstanceIamBindingConditionPtrOutput {
-	return o.ApplyT(func(v InstanceIamBindingCondition) *InstanceIamBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceIamBindingCondition) *InstanceIamBindingCondition {
 		return &v
 	}).(InstanceIamBindingConditionPtrOutput)
 }
+
 func (o InstanceIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -771,7 +796,13 @@ func (o InstanceIamBindingConditionPtrOutput) ToInstanceIamBindingConditionPtrOu
 }
 
 func (o InstanceIamBindingConditionPtrOutput) Elem() InstanceIamBindingConditionOutput {
-	return o.ApplyT(func(v *InstanceIamBindingCondition) InstanceIamBindingCondition { return *v }).(InstanceIamBindingConditionOutput)
+	return o.ApplyT(func(v *InstanceIamBindingCondition) InstanceIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceIamBindingCondition
+		return ret
+	}).(InstanceIamBindingConditionOutput)
 }
 
 func (o InstanceIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -896,10 +927,11 @@ func (o InstanceIamMemberConditionOutput) ToInstanceIamMemberConditionPtrOutput(
 }
 
 func (o InstanceIamMemberConditionOutput) ToInstanceIamMemberConditionPtrOutputWithContext(ctx context.Context) InstanceIamMemberConditionPtrOutput {
-	return o.ApplyT(func(v InstanceIamMemberCondition) *InstanceIamMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceIamMemberCondition) *InstanceIamMemberCondition {
 		return &v
 	}).(InstanceIamMemberConditionPtrOutput)
 }
+
 func (o InstanceIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -927,7 +959,13 @@ func (o InstanceIamMemberConditionPtrOutput) ToInstanceIamMemberConditionPtrOutp
 }
 
 func (o InstanceIamMemberConditionPtrOutput) Elem() InstanceIamMemberConditionOutput {
-	return o.ApplyT(func(v *InstanceIamMemberCondition) InstanceIamMemberCondition { return *v }).(InstanceIamMemberConditionOutput)
+	return o.ApplyT(func(v *InstanceIamMemberCondition) InstanceIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceIamMemberCondition
+		return ret
+	}).(InstanceIamMemberConditionOutput)
 }
 
 func (o InstanceIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -1060,7 +1098,7 @@ func (o InstanceReservationAffinityOutput) ToInstanceReservationAffinityPtrOutpu
 }
 
 func (o InstanceReservationAffinityOutput) ToInstanceReservationAffinityPtrOutputWithContext(ctx context.Context) InstanceReservationAffinityPtrOutput {
-	return o.ApplyT(func(v InstanceReservationAffinity) *InstanceReservationAffinity {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceReservationAffinity) *InstanceReservationAffinity {
 		return &v
 	}).(InstanceReservationAffinityPtrOutput)
 }
@@ -1096,7 +1134,13 @@ func (o InstanceReservationAffinityPtrOutput) ToInstanceReservationAffinityPtrOu
 }
 
 func (o InstanceReservationAffinityPtrOutput) Elem() InstanceReservationAffinityOutput {
-	return o.ApplyT(func(v *InstanceReservationAffinity) InstanceReservationAffinity { return *v }).(InstanceReservationAffinityOutput)
+	return o.ApplyT(func(v *InstanceReservationAffinity) InstanceReservationAffinity {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceReservationAffinity
+		return ret
+	}).(InstanceReservationAffinityOutput)
 }
 
 // The type of Compute Reservation.
@@ -1245,7 +1289,7 @@ func (o InstanceShieldedInstanceConfigOutput) ToInstanceShieldedInstanceConfigPt
 }
 
 func (o InstanceShieldedInstanceConfigOutput) ToInstanceShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) InstanceShieldedInstanceConfigPtrOutput {
-	return o.ApplyT(func(v InstanceShieldedInstanceConfig) *InstanceShieldedInstanceConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceShieldedInstanceConfig) *InstanceShieldedInstanceConfig {
 		return &v
 	}).(InstanceShieldedInstanceConfigPtrOutput)
 }
@@ -1287,7 +1331,13 @@ func (o InstanceShieldedInstanceConfigPtrOutput) ToInstanceShieldedInstanceConfi
 }
 
 func (o InstanceShieldedInstanceConfigPtrOutput) Elem() InstanceShieldedInstanceConfigOutput {
-	return o.ApplyT(func(v *InstanceShieldedInstanceConfig) InstanceShieldedInstanceConfig { return *v }).(InstanceShieldedInstanceConfigOutput)
+	return o.ApplyT(func(v *InstanceShieldedInstanceConfig) InstanceShieldedInstanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceShieldedInstanceConfig
+		return ret
+	}).(InstanceShieldedInstanceConfigOutput)
 }
 
 // Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the
@@ -1430,7 +1480,7 @@ func (o InstanceVmImageOutput) ToInstanceVmImagePtrOutput() InstanceVmImagePtrOu
 }
 
 func (o InstanceVmImageOutput) ToInstanceVmImagePtrOutputWithContext(ctx context.Context) InstanceVmImagePtrOutput {
-	return o.ApplyT(func(v InstanceVmImage) *InstanceVmImage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceVmImage) *InstanceVmImage {
 		return &v
 	}).(InstanceVmImagePtrOutput)
 }
@@ -1466,7 +1516,13 @@ func (o InstanceVmImagePtrOutput) ToInstanceVmImagePtrOutputWithContext(ctx cont
 }
 
 func (o InstanceVmImagePtrOutput) Elem() InstanceVmImageOutput {
-	return o.ApplyT(func(v *InstanceVmImage) InstanceVmImage { return *v }).(InstanceVmImageOutput)
+	return o.ApplyT(func(v *InstanceVmImage) InstanceVmImage {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceVmImage
+		return ret
+	}).(InstanceVmImageOutput)
 }
 
 // Use this VM image family to find the image; the newest image in this family will be used.

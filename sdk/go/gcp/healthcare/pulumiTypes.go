@@ -105,10 +105,11 @@ func (o ConsentStoreIamBindingConditionOutput) ToConsentStoreIamBindingCondition
 }
 
 func (o ConsentStoreIamBindingConditionOutput) ToConsentStoreIamBindingConditionPtrOutputWithContext(ctx context.Context) ConsentStoreIamBindingConditionPtrOutput {
-	return o.ApplyT(func(v ConsentStoreIamBindingCondition) *ConsentStoreIamBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConsentStoreIamBindingCondition) *ConsentStoreIamBindingCondition {
 		return &v
 	}).(ConsentStoreIamBindingConditionPtrOutput)
 }
+
 func (o ConsentStoreIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConsentStoreIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -136,7 +137,13 @@ func (o ConsentStoreIamBindingConditionPtrOutput) ToConsentStoreIamBindingCondit
 }
 
 func (o ConsentStoreIamBindingConditionPtrOutput) Elem() ConsentStoreIamBindingConditionOutput {
-	return o.ApplyT(func(v *ConsentStoreIamBindingCondition) ConsentStoreIamBindingCondition { return *v }).(ConsentStoreIamBindingConditionOutput)
+	return o.ApplyT(func(v *ConsentStoreIamBindingCondition) ConsentStoreIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret ConsentStoreIamBindingCondition
+		return ret
+	}).(ConsentStoreIamBindingConditionOutput)
 }
 
 func (o ConsentStoreIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -261,10 +268,11 @@ func (o ConsentStoreIamMemberConditionOutput) ToConsentStoreIamMemberConditionPt
 }
 
 func (o ConsentStoreIamMemberConditionOutput) ToConsentStoreIamMemberConditionPtrOutputWithContext(ctx context.Context) ConsentStoreIamMemberConditionPtrOutput {
-	return o.ApplyT(func(v ConsentStoreIamMemberCondition) *ConsentStoreIamMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConsentStoreIamMemberCondition) *ConsentStoreIamMemberCondition {
 		return &v
 	}).(ConsentStoreIamMemberConditionPtrOutput)
 }
+
 func (o ConsentStoreIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConsentStoreIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -292,7 +300,13 @@ func (o ConsentStoreIamMemberConditionPtrOutput) ToConsentStoreIamMemberConditio
 }
 
 func (o ConsentStoreIamMemberConditionPtrOutput) Elem() ConsentStoreIamMemberConditionOutput {
-	return o.ApplyT(func(v *ConsentStoreIamMemberCondition) ConsentStoreIamMemberCondition { return *v }).(ConsentStoreIamMemberConditionOutput)
+	return o.ApplyT(func(v *ConsentStoreIamMemberCondition) ConsentStoreIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret ConsentStoreIamMemberCondition
+		return ret
+	}).(ConsentStoreIamMemberConditionOutput)
 }
 
 func (o ConsentStoreIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -417,10 +431,11 @@ func (o DatasetIamBindingConditionOutput) ToDatasetIamBindingConditionPtrOutput(
 }
 
 func (o DatasetIamBindingConditionOutput) ToDatasetIamBindingConditionPtrOutputWithContext(ctx context.Context) DatasetIamBindingConditionPtrOutput {
-	return o.ApplyT(func(v DatasetIamBindingCondition) *DatasetIamBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatasetIamBindingCondition) *DatasetIamBindingCondition {
 		return &v
 	}).(DatasetIamBindingConditionPtrOutput)
 }
+
 func (o DatasetIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatasetIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -448,7 +463,13 @@ func (o DatasetIamBindingConditionPtrOutput) ToDatasetIamBindingConditionPtrOutp
 }
 
 func (o DatasetIamBindingConditionPtrOutput) Elem() DatasetIamBindingConditionOutput {
-	return o.ApplyT(func(v *DatasetIamBindingCondition) DatasetIamBindingCondition { return *v }).(DatasetIamBindingConditionOutput)
+	return o.ApplyT(func(v *DatasetIamBindingCondition) DatasetIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret DatasetIamBindingCondition
+		return ret
+	}).(DatasetIamBindingConditionOutput)
 }
 
 func (o DatasetIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -573,10 +594,11 @@ func (o DatasetIamMemberConditionOutput) ToDatasetIamMemberConditionPtrOutput() 
 }
 
 func (o DatasetIamMemberConditionOutput) ToDatasetIamMemberConditionPtrOutputWithContext(ctx context.Context) DatasetIamMemberConditionPtrOutput {
-	return o.ApplyT(func(v DatasetIamMemberCondition) *DatasetIamMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatasetIamMemberCondition) *DatasetIamMemberCondition {
 		return &v
 	}).(DatasetIamMemberConditionPtrOutput)
 }
+
 func (o DatasetIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatasetIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -604,7 +626,13 @@ func (o DatasetIamMemberConditionPtrOutput) ToDatasetIamMemberConditionPtrOutput
 }
 
 func (o DatasetIamMemberConditionPtrOutput) Elem() DatasetIamMemberConditionOutput {
-	return o.ApplyT(func(v *DatasetIamMemberCondition) DatasetIamMemberCondition { return *v }).(DatasetIamMemberConditionOutput)
+	return o.ApplyT(func(v *DatasetIamMemberCondition) DatasetIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret DatasetIamMemberCondition
+		return ret
+	}).(DatasetIamMemberConditionOutput)
 }
 
 func (o DatasetIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -729,10 +757,11 @@ func (o DicomStoreIamBindingConditionOutput) ToDicomStoreIamBindingConditionPtrO
 }
 
 func (o DicomStoreIamBindingConditionOutput) ToDicomStoreIamBindingConditionPtrOutputWithContext(ctx context.Context) DicomStoreIamBindingConditionPtrOutput {
-	return o.ApplyT(func(v DicomStoreIamBindingCondition) *DicomStoreIamBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DicomStoreIamBindingCondition) *DicomStoreIamBindingCondition {
 		return &v
 	}).(DicomStoreIamBindingConditionPtrOutput)
 }
+
 func (o DicomStoreIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DicomStoreIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -760,7 +789,13 @@ func (o DicomStoreIamBindingConditionPtrOutput) ToDicomStoreIamBindingConditionP
 }
 
 func (o DicomStoreIamBindingConditionPtrOutput) Elem() DicomStoreIamBindingConditionOutput {
-	return o.ApplyT(func(v *DicomStoreIamBindingCondition) DicomStoreIamBindingCondition { return *v }).(DicomStoreIamBindingConditionOutput)
+	return o.ApplyT(func(v *DicomStoreIamBindingCondition) DicomStoreIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret DicomStoreIamBindingCondition
+		return ret
+	}).(DicomStoreIamBindingConditionOutput)
 }
 
 func (o DicomStoreIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -885,10 +920,11 @@ func (o DicomStoreIamMemberConditionOutput) ToDicomStoreIamMemberConditionPtrOut
 }
 
 func (o DicomStoreIamMemberConditionOutput) ToDicomStoreIamMemberConditionPtrOutputWithContext(ctx context.Context) DicomStoreIamMemberConditionPtrOutput {
-	return o.ApplyT(func(v DicomStoreIamMemberCondition) *DicomStoreIamMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DicomStoreIamMemberCondition) *DicomStoreIamMemberCondition {
 		return &v
 	}).(DicomStoreIamMemberConditionPtrOutput)
 }
+
 func (o DicomStoreIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DicomStoreIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -916,7 +952,13 @@ func (o DicomStoreIamMemberConditionPtrOutput) ToDicomStoreIamMemberConditionPtr
 }
 
 func (o DicomStoreIamMemberConditionPtrOutput) Elem() DicomStoreIamMemberConditionOutput {
-	return o.ApplyT(func(v *DicomStoreIamMemberCondition) DicomStoreIamMemberCondition { return *v }).(DicomStoreIamMemberConditionOutput)
+	return o.ApplyT(func(v *DicomStoreIamMemberCondition) DicomStoreIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret DicomStoreIamMemberCondition
+		return ret
+	}).(DicomStoreIamMemberConditionOutput)
 }
 
 func (o DicomStoreIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -1049,7 +1091,7 @@ func (o DicomStoreNotificationConfigOutput) ToDicomStoreNotificationConfigPtrOut
 }
 
 func (o DicomStoreNotificationConfigOutput) ToDicomStoreNotificationConfigPtrOutputWithContext(ctx context.Context) DicomStoreNotificationConfigPtrOutput {
-	return o.ApplyT(func(v DicomStoreNotificationConfig) *DicomStoreNotificationConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DicomStoreNotificationConfig) *DicomStoreNotificationConfig {
 		return &v
 	}).(DicomStoreNotificationConfigPtrOutput)
 }
@@ -1079,7 +1121,13 @@ func (o DicomStoreNotificationConfigPtrOutput) ToDicomStoreNotificationConfigPtr
 }
 
 func (o DicomStoreNotificationConfigPtrOutput) Elem() DicomStoreNotificationConfigOutput {
-	return o.ApplyT(func(v *DicomStoreNotificationConfig) DicomStoreNotificationConfig { return *v }).(DicomStoreNotificationConfigOutput)
+	return o.ApplyT(func(v *DicomStoreNotificationConfig) DicomStoreNotificationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DicomStoreNotificationConfig
+		return ret
+	}).(DicomStoreNotificationConfigOutput)
 }
 
 // The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
@@ -1344,10 +1392,11 @@ func (o FhirStoreIamBindingConditionOutput) ToFhirStoreIamBindingConditionPtrOut
 }
 
 func (o FhirStoreIamBindingConditionOutput) ToFhirStoreIamBindingConditionPtrOutputWithContext(ctx context.Context) FhirStoreIamBindingConditionPtrOutput {
-	return o.ApplyT(func(v FhirStoreIamBindingCondition) *FhirStoreIamBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FhirStoreIamBindingCondition) *FhirStoreIamBindingCondition {
 		return &v
 	}).(FhirStoreIamBindingConditionPtrOutput)
 }
+
 func (o FhirStoreIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FhirStoreIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -1375,7 +1424,13 @@ func (o FhirStoreIamBindingConditionPtrOutput) ToFhirStoreIamBindingConditionPtr
 }
 
 func (o FhirStoreIamBindingConditionPtrOutput) Elem() FhirStoreIamBindingConditionOutput {
-	return o.ApplyT(func(v *FhirStoreIamBindingCondition) FhirStoreIamBindingCondition { return *v }).(FhirStoreIamBindingConditionOutput)
+	return o.ApplyT(func(v *FhirStoreIamBindingCondition) FhirStoreIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret FhirStoreIamBindingCondition
+		return ret
+	}).(FhirStoreIamBindingConditionOutput)
 }
 
 func (o FhirStoreIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -1500,10 +1555,11 @@ func (o FhirStoreIamMemberConditionOutput) ToFhirStoreIamMemberConditionPtrOutpu
 }
 
 func (o FhirStoreIamMemberConditionOutput) ToFhirStoreIamMemberConditionPtrOutputWithContext(ctx context.Context) FhirStoreIamMemberConditionPtrOutput {
-	return o.ApplyT(func(v FhirStoreIamMemberCondition) *FhirStoreIamMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FhirStoreIamMemberCondition) *FhirStoreIamMemberCondition {
 		return &v
 	}).(FhirStoreIamMemberConditionPtrOutput)
 }
+
 func (o FhirStoreIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FhirStoreIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -1531,7 +1587,13 @@ func (o FhirStoreIamMemberConditionPtrOutput) ToFhirStoreIamMemberConditionPtrOu
 }
 
 func (o FhirStoreIamMemberConditionPtrOutput) Elem() FhirStoreIamMemberConditionOutput {
-	return o.ApplyT(func(v *FhirStoreIamMemberCondition) FhirStoreIamMemberCondition { return *v }).(FhirStoreIamMemberConditionOutput)
+	return o.ApplyT(func(v *FhirStoreIamMemberCondition) FhirStoreIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret FhirStoreIamMemberCondition
+		return ret
+	}).(FhirStoreIamMemberConditionOutput)
 }
 
 func (o FhirStoreIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -1664,7 +1726,7 @@ func (o FhirStoreNotificationConfigOutput) ToFhirStoreNotificationConfigPtrOutpu
 }
 
 func (o FhirStoreNotificationConfigOutput) ToFhirStoreNotificationConfigPtrOutputWithContext(ctx context.Context) FhirStoreNotificationConfigPtrOutput {
-	return o.ApplyT(func(v FhirStoreNotificationConfig) *FhirStoreNotificationConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FhirStoreNotificationConfig) *FhirStoreNotificationConfig {
 		return &v
 	}).(FhirStoreNotificationConfigPtrOutput)
 }
@@ -1694,7 +1756,13 @@ func (o FhirStoreNotificationConfigPtrOutput) ToFhirStoreNotificationConfigPtrOu
 }
 
 func (o FhirStoreNotificationConfigPtrOutput) Elem() FhirStoreNotificationConfigOutput {
-	return o.ApplyT(func(v *FhirStoreNotificationConfig) FhirStoreNotificationConfig { return *v }).(FhirStoreNotificationConfigOutput)
+	return o.ApplyT(func(v *FhirStoreNotificationConfig) FhirStoreNotificationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret FhirStoreNotificationConfig
+		return ret
+	}).(FhirStoreNotificationConfigOutput)
 }
 
 // The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
@@ -2082,10 +2150,11 @@ func (o Hl7StoreIamBindingConditionOutput) ToHl7StoreIamBindingConditionPtrOutpu
 }
 
 func (o Hl7StoreIamBindingConditionOutput) ToHl7StoreIamBindingConditionPtrOutputWithContext(ctx context.Context) Hl7StoreIamBindingConditionPtrOutput {
-	return o.ApplyT(func(v Hl7StoreIamBindingCondition) *Hl7StoreIamBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Hl7StoreIamBindingCondition) *Hl7StoreIamBindingCondition {
 		return &v
 	}).(Hl7StoreIamBindingConditionPtrOutput)
 }
+
 func (o Hl7StoreIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Hl7StoreIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -2113,7 +2182,13 @@ func (o Hl7StoreIamBindingConditionPtrOutput) ToHl7StoreIamBindingConditionPtrOu
 }
 
 func (o Hl7StoreIamBindingConditionPtrOutput) Elem() Hl7StoreIamBindingConditionOutput {
-	return o.ApplyT(func(v *Hl7StoreIamBindingCondition) Hl7StoreIamBindingCondition { return *v }).(Hl7StoreIamBindingConditionOutput)
+	return o.ApplyT(func(v *Hl7StoreIamBindingCondition) Hl7StoreIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret Hl7StoreIamBindingCondition
+		return ret
+	}).(Hl7StoreIamBindingConditionOutput)
 }
 
 func (o Hl7StoreIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -2238,10 +2313,11 @@ func (o Hl7StoreIamMemberConditionOutput) ToHl7StoreIamMemberConditionPtrOutput(
 }
 
 func (o Hl7StoreIamMemberConditionOutput) ToHl7StoreIamMemberConditionPtrOutputWithContext(ctx context.Context) Hl7StoreIamMemberConditionPtrOutput {
-	return o.ApplyT(func(v Hl7StoreIamMemberCondition) *Hl7StoreIamMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Hl7StoreIamMemberCondition) *Hl7StoreIamMemberCondition {
 		return &v
 	}).(Hl7StoreIamMemberConditionPtrOutput)
 }
+
 func (o Hl7StoreIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Hl7StoreIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -2269,7 +2345,13 @@ func (o Hl7StoreIamMemberConditionPtrOutput) ToHl7StoreIamMemberConditionPtrOutp
 }
 
 func (o Hl7StoreIamMemberConditionPtrOutput) Elem() Hl7StoreIamMemberConditionOutput {
-	return o.ApplyT(func(v *Hl7StoreIamMemberCondition) Hl7StoreIamMemberCondition { return *v }).(Hl7StoreIamMemberConditionOutput)
+	return o.ApplyT(func(v *Hl7StoreIamMemberCondition) Hl7StoreIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret Hl7StoreIamMemberCondition
+		return ret
+	}).(Hl7StoreIamMemberConditionOutput)
 }
 
 func (o Hl7StoreIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -2402,7 +2484,7 @@ func (o Hl7StoreNotificationConfigOutput) ToHl7StoreNotificationConfigPtrOutput(
 }
 
 func (o Hl7StoreNotificationConfigOutput) ToHl7StoreNotificationConfigPtrOutputWithContext(ctx context.Context) Hl7StoreNotificationConfigPtrOutput {
-	return o.ApplyT(func(v Hl7StoreNotificationConfig) *Hl7StoreNotificationConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Hl7StoreNotificationConfig) *Hl7StoreNotificationConfig {
 		return &v
 	}).(Hl7StoreNotificationConfigPtrOutput)
 }
@@ -2432,7 +2514,13 @@ func (o Hl7StoreNotificationConfigPtrOutput) ToHl7StoreNotificationConfigPtrOutp
 }
 
 func (o Hl7StoreNotificationConfigPtrOutput) Elem() Hl7StoreNotificationConfigOutput {
-	return o.ApplyT(func(v *Hl7StoreNotificationConfig) Hl7StoreNotificationConfig { return *v }).(Hl7StoreNotificationConfigOutput)
+	return o.ApplyT(func(v *Hl7StoreNotificationConfig) Hl7StoreNotificationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret Hl7StoreNotificationConfig
+		return ret
+	}).(Hl7StoreNotificationConfigOutput)
 }
 
 // The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
@@ -2708,7 +2796,7 @@ func (o Hl7StoreParserConfigOutput) ToHl7StoreParserConfigPtrOutput() Hl7StorePa
 }
 
 func (o Hl7StoreParserConfigOutput) ToHl7StoreParserConfigPtrOutputWithContext(ctx context.Context) Hl7StoreParserConfigPtrOutput {
-	return o.ApplyT(func(v Hl7StoreParserConfig) *Hl7StoreParserConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Hl7StoreParserConfig) *Hl7StoreParserConfig {
 		return &v
 	}).(Hl7StoreParserConfigPtrOutput)
 }
@@ -2752,7 +2840,13 @@ func (o Hl7StoreParserConfigPtrOutput) ToHl7StoreParserConfigPtrOutputWithContex
 }
 
 func (o Hl7StoreParserConfigPtrOutput) Elem() Hl7StoreParserConfigOutput {
-	return o.ApplyT(func(v *Hl7StoreParserConfig) Hl7StoreParserConfig { return *v }).(Hl7StoreParserConfigOutput)
+	return o.ApplyT(func(v *Hl7StoreParserConfig) Hl7StoreParserConfig {
+		if v != nil {
+			return *v
+		}
+		var ret Hl7StoreParserConfig
+		return ret
+	}).(Hl7StoreParserConfigOutput)
 }
 
 // Determines whether messages with no header are allowed.

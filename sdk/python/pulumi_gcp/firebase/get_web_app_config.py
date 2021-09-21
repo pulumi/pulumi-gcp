@@ -12,6 +12,7 @@ __all__ = [
     'GetWebAppConfigResult',
     'AwaitableGetWebAppConfigResult',
     'get_web_app_config',
+    'get_web_app_config_output',
 ]
 
 @pulumi.output_type
@@ -160,3 +161,24 @@ def get_web_app_config(project: Optional[str] = None,
         project=__ret__.project,
         storage_bucket=__ret__.storage_bucket,
         web_app_id=__ret__.web_app_id)
+
+
+@_utilities.lift_output_func(get_web_app_config)
+def get_web_app_config_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                              web_app_id: Optional[pulumi.Input[str]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWebAppConfigResult]:
+    """
+    A Google Cloud Firebase web application configuration
+
+    To get more information about WebApp, see:
+
+    * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps)
+    * How-to Guides
+        * [Official Documentation](https://firebase.google.com/)
+
+
+    :param str project: The ID of the project in which the resource belongs. If it
+           is not provided, the provider project is used.
+    :param str web_app_id: the id of the firebase web app
+    """
+    ...

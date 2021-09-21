@@ -109,7 +109,7 @@ func (o AppProfileSingleClusterRoutingOutput) ToAppProfileSingleClusterRoutingPt
 }
 
 func (o AppProfileSingleClusterRoutingOutput) ToAppProfileSingleClusterRoutingPtrOutputWithContext(ctx context.Context) AppProfileSingleClusterRoutingPtrOutput {
-	return o.ApplyT(func(v AppProfileSingleClusterRouting) *AppProfileSingleClusterRouting {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppProfileSingleClusterRouting) *AppProfileSingleClusterRouting {
 		return &v
 	}).(AppProfileSingleClusterRoutingPtrOutput)
 }
@@ -140,7 +140,13 @@ func (o AppProfileSingleClusterRoutingPtrOutput) ToAppProfileSingleClusterRoutin
 }
 
 func (o AppProfileSingleClusterRoutingPtrOutput) Elem() AppProfileSingleClusterRoutingOutput {
-	return o.ApplyT(func(v *AppProfileSingleClusterRouting) AppProfileSingleClusterRouting { return *v }).(AppProfileSingleClusterRoutingOutput)
+	return o.ApplyT(func(v *AppProfileSingleClusterRouting) AppProfileSingleClusterRouting {
+		if v != nil {
+			return *v
+		}
+		var ret AppProfileSingleClusterRouting
+		return ret
+	}).(AppProfileSingleClusterRoutingOutput)
 }
 
 // If true, CheckAndMutateRow and ReadModifyWriteRow requests are allowed by this app profile.
@@ -273,7 +279,7 @@ func (o ConnectionCloudSqlOutput) ToConnectionCloudSqlPtrOutput() ConnectionClou
 }
 
 func (o ConnectionCloudSqlOutput) ToConnectionCloudSqlPtrOutputWithContext(ctx context.Context) ConnectionCloudSqlPtrOutput {
-	return o.ApplyT(func(v ConnectionCloudSql) *ConnectionCloudSql {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionCloudSql) *ConnectionCloudSql {
 		return &v
 	}).(ConnectionCloudSqlPtrOutput)
 }
@@ -315,7 +321,13 @@ func (o ConnectionCloudSqlPtrOutput) ToConnectionCloudSqlPtrOutputWithContext(ct
 }
 
 func (o ConnectionCloudSqlPtrOutput) Elem() ConnectionCloudSqlOutput {
-	return o.ApplyT(func(v *ConnectionCloudSql) ConnectionCloudSql { return *v }).(ConnectionCloudSqlOutput)
+	return o.ApplyT(func(v *ConnectionCloudSql) ConnectionCloudSql {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionCloudSql
+		return ret
+	}).(ConnectionCloudSqlOutput)
 }
 
 // Cloud SQL properties.
@@ -459,7 +471,7 @@ func (o ConnectionCloudSqlCredentialOutput) ToConnectionCloudSqlCredentialPtrOut
 }
 
 func (o ConnectionCloudSqlCredentialOutput) ToConnectionCloudSqlCredentialPtrOutputWithContext(ctx context.Context) ConnectionCloudSqlCredentialPtrOutput {
-	return o.ApplyT(func(v ConnectionCloudSqlCredential) *ConnectionCloudSqlCredential {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionCloudSqlCredential) *ConnectionCloudSqlCredential {
 		return &v
 	}).(ConnectionCloudSqlCredentialPtrOutput)
 }
@@ -490,7 +502,13 @@ func (o ConnectionCloudSqlCredentialPtrOutput) ToConnectionCloudSqlCredentialPtr
 }
 
 func (o ConnectionCloudSqlCredentialPtrOutput) Elem() ConnectionCloudSqlCredentialOutput {
-	return o.ApplyT(func(v *ConnectionCloudSqlCredential) ConnectionCloudSqlCredential { return *v }).(ConnectionCloudSqlCredentialOutput)
+	return o.ApplyT(func(v *ConnectionCloudSqlCredential) ConnectionCloudSqlCredential {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionCloudSqlCredential
+		return ret
+	}).(ConnectionCloudSqlCredentialOutput)
 }
 
 // Password for database.
@@ -607,7 +625,7 @@ func (o DataTransferConfigEmailPreferencesOutput) ToDataTransferConfigEmailPrefe
 }
 
 func (o DataTransferConfigEmailPreferencesOutput) ToDataTransferConfigEmailPreferencesPtrOutputWithContext(ctx context.Context) DataTransferConfigEmailPreferencesPtrOutput {
-	return o.ApplyT(func(v DataTransferConfigEmailPreferences) *DataTransferConfigEmailPreferences {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataTransferConfigEmailPreferences) *DataTransferConfigEmailPreferences {
 		return &v
 	}).(DataTransferConfigEmailPreferencesPtrOutput)
 }
@@ -632,7 +650,13 @@ func (o DataTransferConfigEmailPreferencesPtrOutput) ToDataTransferConfigEmailPr
 }
 
 func (o DataTransferConfigEmailPreferencesPtrOutput) Elem() DataTransferConfigEmailPreferencesOutput {
-	return o.ApplyT(func(v *DataTransferConfigEmailPreferences) DataTransferConfigEmailPreferences { return *v }).(DataTransferConfigEmailPreferencesOutput)
+	return o.ApplyT(func(v *DataTransferConfigEmailPreferences) DataTransferConfigEmailPreferences {
+		if v != nil {
+			return *v
+		}
+		var ret DataTransferConfigEmailPreferences
+		return ret
+	}).(DataTransferConfigEmailPreferencesOutput)
 }
 
 // If true, email notifications will be sent on transfer run failures.
@@ -768,7 +792,7 @@ func (o DataTransferConfigScheduleOptionsOutput) ToDataTransferConfigScheduleOpt
 }
 
 func (o DataTransferConfigScheduleOptionsOutput) ToDataTransferConfigScheduleOptionsPtrOutputWithContext(ctx context.Context) DataTransferConfigScheduleOptionsPtrOutput {
-	return o.ApplyT(func(v DataTransferConfigScheduleOptions) *DataTransferConfigScheduleOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataTransferConfigScheduleOptions) *DataTransferConfigScheduleOptions {
 		return &v
 	}).(DataTransferConfigScheduleOptionsPtrOutput)
 }
@@ -814,7 +838,13 @@ func (o DataTransferConfigScheduleOptionsPtrOutput) ToDataTransferConfigSchedule
 }
 
 func (o DataTransferConfigScheduleOptionsPtrOutput) Elem() DataTransferConfigScheduleOptionsOutput {
-	return o.ApplyT(func(v *DataTransferConfigScheduleOptions) DataTransferConfigScheduleOptions { return *v }).(DataTransferConfigScheduleOptionsOutput)
+	return o.ApplyT(func(v *DataTransferConfigScheduleOptions) DataTransferConfigScheduleOptions {
+		if v != nil {
+			return *v
+		}
+		var ret DataTransferConfigScheduleOptions
+		return ret
+	}).(DataTransferConfigScheduleOptionsOutput)
 }
 
 // If true, automatic scheduling of data transfer runs for this
@@ -953,7 +983,7 @@ func (o DataTransferConfigSensitiveParamsOutput) ToDataTransferConfigSensitivePa
 }
 
 func (o DataTransferConfigSensitiveParamsOutput) ToDataTransferConfigSensitiveParamsPtrOutputWithContext(ctx context.Context) DataTransferConfigSensitiveParamsPtrOutput {
-	return o.ApplyT(func(v DataTransferConfigSensitiveParams) *DataTransferConfigSensitiveParams {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataTransferConfigSensitiveParams) *DataTransferConfigSensitiveParams {
 		return &v
 	}).(DataTransferConfigSensitiveParamsPtrOutput)
 }
@@ -979,7 +1009,13 @@ func (o DataTransferConfigSensitiveParamsPtrOutput) ToDataTransferConfigSensitiv
 }
 
 func (o DataTransferConfigSensitiveParamsPtrOutput) Elem() DataTransferConfigSensitiveParamsOutput {
-	return o.ApplyT(func(v *DataTransferConfigSensitiveParams) DataTransferConfigSensitiveParams { return *v }).(DataTransferConfigSensitiveParamsOutput)
+	return o.ApplyT(func(v *DataTransferConfigSensitiveParams) DataTransferConfigSensitiveParams {
+		if v != nil {
+			return *v
+		}
+		var ret DataTransferConfigSensitiveParams
+		return ret
+	}).(DataTransferConfigSensitiveParamsOutput)
 }
 
 // The Secret Access Key of the AWS account transferring data from.
@@ -1273,7 +1309,7 @@ func (o DatasetAccessViewOutput) ToDatasetAccessViewPtrOutput() DatasetAccessVie
 }
 
 func (o DatasetAccessViewOutput) ToDatasetAccessViewPtrOutputWithContext(ctx context.Context) DatasetAccessViewPtrOutput {
-	return o.ApplyT(func(v DatasetAccessView) *DatasetAccessView {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatasetAccessView) *DatasetAccessView {
 		return &v
 	}).(DatasetAccessViewPtrOutput)
 }
@@ -1310,7 +1346,13 @@ func (o DatasetAccessViewPtrOutput) ToDatasetAccessViewPtrOutputWithContext(ctx 
 }
 
 func (o DatasetAccessViewPtrOutput) Elem() DatasetAccessViewOutput {
-	return o.ApplyT(func(v *DatasetAccessView) DatasetAccessView { return *v }).(DatasetAccessViewOutput)
+	return o.ApplyT(func(v *DatasetAccessView) DatasetAccessView {
+		if v != nil {
+			return *v
+		}
+		var ret DatasetAccessView
+		return ret
+	}).(DatasetAccessViewOutput)
 }
 
 // The ID of the dataset containing this table.
@@ -1442,7 +1484,7 @@ func (o DatasetDefaultEncryptionConfigurationOutput) ToDatasetDefaultEncryptionC
 }
 
 func (o DatasetDefaultEncryptionConfigurationOutput) ToDatasetDefaultEncryptionConfigurationPtrOutputWithContext(ctx context.Context) DatasetDefaultEncryptionConfigurationPtrOutput {
-	return o.ApplyT(func(v DatasetDefaultEncryptionConfiguration) *DatasetDefaultEncryptionConfiguration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatasetDefaultEncryptionConfiguration) *DatasetDefaultEncryptionConfiguration {
 		return &v
 	}).(DatasetDefaultEncryptionConfigurationPtrOutput)
 }
@@ -1469,7 +1511,13 @@ func (o DatasetDefaultEncryptionConfigurationPtrOutput) ToDatasetDefaultEncrypti
 }
 
 func (o DatasetDefaultEncryptionConfigurationPtrOutput) Elem() DatasetDefaultEncryptionConfigurationOutput {
-	return o.ApplyT(func(v *DatasetDefaultEncryptionConfiguration) DatasetDefaultEncryptionConfiguration { return *v }).(DatasetDefaultEncryptionConfigurationOutput)
+	return o.ApplyT(func(v *DatasetDefaultEncryptionConfiguration) DatasetDefaultEncryptionConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret DatasetDefaultEncryptionConfiguration
+		return ret
+	}).(DatasetDefaultEncryptionConfigurationOutput)
 }
 
 // Describes the Cloud KMS encryption key that will be used to protect destination
@@ -1579,10 +1627,11 @@ func (o DatasetIamBindingConditionOutput) ToDatasetIamBindingConditionPtrOutput(
 }
 
 func (o DatasetIamBindingConditionOutput) ToDatasetIamBindingConditionPtrOutputWithContext(ctx context.Context) DatasetIamBindingConditionPtrOutput {
-	return o.ApplyT(func(v DatasetIamBindingCondition) *DatasetIamBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatasetIamBindingCondition) *DatasetIamBindingCondition {
 		return &v
 	}).(DatasetIamBindingConditionPtrOutput)
 }
+
 func (o DatasetIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatasetIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -1610,7 +1659,13 @@ func (o DatasetIamBindingConditionPtrOutput) ToDatasetIamBindingConditionPtrOutp
 }
 
 func (o DatasetIamBindingConditionPtrOutput) Elem() DatasetIamBindingConditionOutput {
-	return o.ApplyT(func(v *DatasetIamBindingCondition) DatasetIamBindingCondition { return *v }).(DatasetIamBindingConditionOutput)
+	return o.ApplyT(func(v *DatasetIamBindingCondition) DatasetIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret DatasetIamBindingCondition
+		return ret
+	}).(DatasetIamBindingConditionOutput)
 }
 
 func (o DatasetIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -1735,10 +1790,11 @@ func (o DatasetIamMemberConditionOutput) ToDatasetIamMemberConditionPtrOutput() 
 }
 
 func (o DatasetIamMemberConditionOutput) ToDatasetIamMemberConditionPtrOutputWithContext(ctx context.Context) DatasetIamMemberConditionPtrOutput {
-	return o.ApplyT(func(v DatasetIamMemberCondition) *DatasetIamMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatasetIamMemberCondition) *DatasetIamMemberCondition {
 		return &v
 	}).(DatasetIamMemberConditionPtrOutput)
 }
+
 func (o DatasetIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatasetIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -1766,7 +1822,13 @@ func (o DatasetIamMemberConditionPtrOutput) ToDatasetIamMemberConditionPtrOutput
 }
 
 func (o DatasetIamMemberConditionPtrOutput) Elem() DatasetIamMemberConditionOutput {
-	return o.ApplyT(func(v *DatasetIamMemberCondition) DatasetIamMemberCondition { return *v }).(DatasetIamMemberConditionOutput)
+	return o.ApplyT(func(v *DatasetIamMemberCondition) DatasetIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret DatasetIamMemberCondition
+		return ret
+	}).(DatasetIamMemberConditionOutput)
 }
 
 func (o DatasetIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -1897,7 +1959,7 @@ func (o IamBindingConditionOutput) ToIamBindingConditionPtrOutput() IamBindingCo
 }
 
 func (o IamBindingConditionOutput) ToIamBindingConditionPtrOutputWithContext(ctx context.Context) IamBindingConditionPtrOutput {
-	return o.ApplyT(func(v IamBindingCondition) *IamBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IamBindingCondition) *IamBindingCondition {
 		return &v
 	}).(IamBindingConditionPtrOutput)
 }
@@ -1932,7 +1994,13 @@ func (o IamBindingConditionPtrOutput) ToIamBindingConditionPtrOutputWithContext(
 }
 
 func (o IamBindingConditionPtrOutput) Elem() IamBindingConditionOutput {
-	return o.ApplyT(func(v *IamBindingCondition) IamBindingCondition { return *v }).(IamBindingConditionOutput)
+	return o.ApplyT(func(v *IamBindingCondition) IamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret IamBindingCondition
+		return ret
+	}).(IamBindingConditionOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -2066,7 +2134,7 @@ func (o IamMemberConditionOutput) ToIamMemberConditionPtrOutput() IamMemberCondi
 }
 
 func (o IamMemberConditionOutput) ToIamMemberConditionPtrOutputWithContext(ctx context.Context) IamMemberConditionPtrOutput {
-	return o.ApplyT(func(v IamMemberCondition) *IamMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IamMemberCondition) *IamMemberCondition {
 		return &v
 	}).(IamMemberConditionPtrOutput)
 }
@@ -2101,7 +2169,13 @@ func (o IamMemberConditionPtrOutput) ToIamMemberConditionPtrOutputWithContext(ct
 }
 
 func (o IamMemberConditionPtrOutput) Elem() IamMemberConditionOutput {
-	return o.ApplyT(func(v *IamMemberCondition) IamMemberCondition { return *v }).(IamMemberConditionOutput)
+	return o.ApplyT(func(v *IamMemberCondition) IamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret IamMemberCondition
+		return ret
+	}).(IamMemberConditionOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -2273,7 +2347,7 @@ func (o JobCopyOutput) ToJobCopyPtrOutput() JobCopyPtrOutput {
 }
 
 func (o JobCopyOutput) ToJobCopyPtrOutputWithContext(ctx context.Context) JobCopyPtrOutput {
-	return o.ApplyT(func(v JobCopy) *JobCopy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobCopy) *JobCopy {
 		return &v
 	}).(JobCopyPtrOutput)
 }
@@ -2335,7 +2409,13 @@ func (o JobCopyPtrOutput) ToJobCopyPtrOutputWithContext(ctx context.Context) Job
 }
 
 func (o JobCopyPtrOutput) Elem() JobCopyOutput {
-	return o.ApplyT(func(v *JobCopy) JobCopy { return *v }).(JobCopyOutput)
+	return o.ApplyT(func(v *JobCopy) JobCopy {
+		if v != nil {
+			return *v
+		}
+		var ret JobCopy
+		return ret
+	}).(JobCopyOutput)
 }
 
 // Specifies whether the job is allowed to create new tables. The following values are supported:
@@ -2504,7 +2584,7 @@ func (o JobCopyDestinationEncryptionConfigurationOutput) ToJobCopyDestinationEnc
 }
 
 func (o JobCopyDestinationEncryptionConfigurationOutput) ToJobCopyDestinationEncryptionConfigurationPtrOutputWithContext(ctx context.Context) JobCopyDestinationEncryptionConfigurationPtrOutput {
-	return o.ApplyT(func(v JobCopyDestinationEncryptionConfiguration) *JobCopyDestinationEncryptionConfiguration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobCopyDestinationEncryptionConfiguration) *JobCopyDestinationEncryptionConfiguration {
 		return &v
 	}).(JobCopyDestinationEncryptionConfigurationPtrOutput)
 }
@@ -2537,7 +2617,11 @@ func (o JobCopyDestinationEncryptionConfigurationPtrOutput) ToJobCopyDestination
 
 func (o JobCopyDestinationEncryptionConfigurationPtrOutput) Elem() JobCopyDestinationEncryptionConfigurationOutput {
 	return o.ApplyT(func(v *JobCopyDestinationEncryptionConfiguration) JobCopyDestinationEncryptionConfiguration {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret JobCopyDestinationEncryptionConfiguration
+		return ret
 	}).(JobCopyDestinationEncryptionConfigurationOutput)
 }
 
@@ -2666,7 +2750,7 @@ func (o JobCopyDestinationTableOutput) ToJobCopyDestinationTablePtrOutput() JobC
 }
 
 func (o JobCopyDestinationTableOutput) ToJobCopyDestinationTablePtrOutputWithContext(ctx context.Context) JobCopyDestinationTablePtrOutput {
-	return o.ApplyT(func(v JobCopyDestinationTable) *JobCopyDestinationTable {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobCopyDestinationTable) *JobCopyDestinationTable {
 		return &v
 	}).(JobCopyDestinationTablePtrOutput)
 }
@@ -2702,7 +2786,13 @@ func (o JobCopyDestinationTablePtrOutput) ToJobCopyDestinationTablePtrOutputWith
 }
 
 func (o JobCopyDestinationTablePtrOutput) Elem() JobCopyDestinationTableOutput {
-	return o.ApplyT(func(v *JobCopyDestinationTable) JobCopyDestinationTable { return *v }).(JobCopyDestinationTableOutput)
+	return o.ApplyT(func(v *JobCopyDestinationTable) JobCopyDestinationTable {
+		if v != nil {
+			return *v
+		}
+		var ret JobCopyDestinationTable
+		return ret
+	}).(JobCopyDestinationTableOutput)
 }
 
 // The ID of the dataset containing this model.
@@ -2987,7 +3077,7 @@ func (o JobExtractOutput) ToJobExtractPtrOutput() JobExtractPtrOutput {
 }
 
 func (o JobExtractOutput) ToJobExtractPtrOutputWithContext(ctx context.Context) JobExtractPtrOutput {
-	return o.ApplyT(func(v JobExtract) *JobExtract {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobExtract) *JobExtract {
 		return &v
 	}).(JobExtractPtrOutput)
 }
@@ -3053,7 +3143,13 @@ func (o JobExtractPtrOutput) ToJobExtractPtrOutputWithContext(ctx context.Contex
 }
 
 func (o JobExtractPtrOutput) Elem() JobExtractOutput {
-	return o.ApplyT(func(v *JobExtract) JobExtract { return *v }).(JobExtractOutput)
+	return o.ApplyT(func(v *JobExtract) JobExtract {
+		if v != nil {
+			return *v
+		}
+		var ret JobExtract
+		return ret
+	}).(JobExtractOutput)
 }
 
 // The compression type to use for exported files. Possible values include GZIP, DEFLATE, SNAPPY, and NONE.
@@ -3243,7 +3339,7 @@ func (o JobExtractSourceModelOutput) ToJobExtractSourceModelPtrOutput() JobExtra
 }
 
 func (o JobExtractSourceModelOutput) ToJobExtractSourceModelPtrOutputWithContext(ctx context.Context) JobExtractSourceModelPtrOutput {
-	return o.ApplyT(func(v JobExtractSourceModel) *JobExtractSourceModel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobExtractSourceModel) *JobExtractSourceModel {
 		return &v
 	}).(JobExtractSourceModelPtrOutput)
 }
@@ -3278,7 +3374,13 @@ func (o JobExtractSourceModelPtrOutput) ToJobExtractSourceModelPtrOutputWithCont
 }
 
 func (o JobExtractSourceModelPtrOutput) Elem() JobExtractSourceModelOutput {
-	return o.ApplyT(func(v *JobExtractSourceModel) JobExtractSourceModel { return *v }).(JobExtractSourceModelOutput)
+	return o.ApplyT(func(v *JobExtractSourceModel) JobExtractSourceModel {
+		if v != nil {
+			return *v
+		}
+		var ret JobExtractSourceModel
+		return ret
+	}).(JobExtractSourceModelOutput)
 }
 
 // The ID of the dataset containing this model.
@@ -3414,7 +3516,7 @@ func (o JobExtractSourceTableOutput) ToJobExtractSourceTablePtrOutput() JobExtra
 }
 
 func (o JobExtractSourceTableOutput) ToJobExtractSourceTablePtrOutputWithContext(ctx context.Context) JobExtractSourceTablePtrOutput {
-	return o.ApplyT(func(v JobExtractSourceTable) *JobExtractSourceTable {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobExtractSourceTable) *JobExtractSourceTable {
 		return &v
 	}).(JobExtractSourceTablePtrOutput)
 }
@@ -3450,7 +3552,13 @@ func (o JobExtractSourceTablePtrOutput) ToJobExtractSourceTablePtrOutputWithCont
 }
 
 func (o JobExtractSourceTablePtrOutput) Elem() JobExtractSourceTableOutput {
-	return o.ApplyT(func(v *JobExtractSourceTable) JobExtractSourceTable { return *v }).(JobExtractSourceTableOutput)
+	return o.ApplyT(func(v *JobExtractSourceTable) JobExtractSourceTable {
+		if v != nil {
+			return *v
+		}
+		var ret JobExtractSourceTable
+		return ret
+	}).(JobExtractSourceTableOutput)
 }
 
 // The ID of the dataset containing this model.
@@ -3759,7 +3867,7 @@ func (o JobLoadOutput) ToJobLoadPtrOutput() JobLoadPtrOutput {
 }
 
 func (o JobLoadOutput) ToJobLoadPtrOutputWithContext(ctx context.Context) JobLoadPtrOutput {
-	return o.ApplyT(func(v JobLoad) *JobLoad {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobLoad) *JobLoad {
 		return &v
 	}).(JobLoadPtrOutput)
 }
@@ -3931,7 +4039,13 @@ func (o JobLoadPtrOutput) ToJobLoadPtrOutputWithContext(ctx context.Context) Job
 }
 
 func (o JobLoadPtrOutput) Elem() JobLoadOutput {
-	return o.ApplyT(func(v *JobLoad) JobLoad { return *v }).(JobLoadOutput)
+	return o.ApplyT(func(v *JobLoad) JobLoad {
+		if v != nil {
+			return *v
+		}
+		var ret JobLoad
+		return ret
+	}).(JobLoadOutput)
 }
 
 // Accept rows that are missing trailing optional columns. The missing values are treated as nulls.
@@ -4280,7 +4394,7 @@ func (o JobLoadDestinationEncryptionConfigurationOutput) ToJobLoadDestinationEnc
 }
 
 func (o JobLoadDestinationEncryptionConfigurationOutput) ToJobLoadDestinationEncryptionConfigurationPtrOutputWithContext(ctx context.Context) JobLoadDestinationEncryptionConfigurationPtrOutput {
-	return o.ApplyT(func(v JobLoadDestinationEncryptionConfiguration) *JobLoadDestinationEncryptionConfiguration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobLoadDestinationEncryptionConfiguration) *JobLoadDestinationEncryptionConfiguration {
 		return &v
 	}).(JobLoadDestinationEncryptionConfigurationPtrOutput)
 }
@@ -4313,7 +4427,11 @@ func (o JobLoadDestinationEncryptionConfigurationPtrOutput) ToJobLoadDestination
 
 func (o JobLoadDestinationEncryptionConfigurationPtrOutput) Elem() JobLoadDestinationEncryptionConfigurationOutput {
 	return o.ApplyT(func(v *JobLoadDestinationEncryptionConfiguration) JobLoadDestinationEncryptionConfiguration {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret JobLoadDestinationEncryptionConfiguration
+		return ret
 	}).(JobLoadDestinationEncryptionConfigurationOutput)
 }
 
@@ -4442,7 +4560,7 @@ func (o JobLoadDestinationTableOutput) ToJobLoadDestinationTablePtrOutput() JobL
 }
 
 func (o JobLoadDestinationTableOutput) ToJobLoadDestinationTablePtrOutputWithContext(ctx context.Context) JobLoadDestinationTablePtrOutput {
-	return o.ApplyT(func(v JobLoadDestinationTable) *JobLoadDestinationTable {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobLoadDestinationTable) *JobLoadDestinationTable {
 		return &v
 	}).(JobLoadDestinationTablePtrOutput)
 }
@@ -4478,7 +4596,13 @@ func (o JobLoadDestinationTablePtrOutput) ToJobLoadDestinationTablePtrOutputWith
 }
 
 func (o JobLoadDestinationTablePtrOutput) Elem() JobLoadDestinationTableOutput {
-	return o.ApplyT(func(v *JobLoadDestinationTable) JobLoadDestinationTable { return *v }).(JobLoadDestinationTableOutput)
+	return o.ApplyT(func(v *JobLoadDestinationTable) JobLoadDestinationTable {
+		if v != nil {
+			return *v
+		}
+		var ret JobLoadDestinationTable
+		return ret
+	}).(JobLoadDestinationTableOutput)
 }
 
 // The ID of the dataset containing this model.
@@ -4619,7 +4743,7 @@ func (o JobLoadTimePartitioningOutput) ToJobLoadTimePartitioningPtrOutput() JobL
 }
 
 func (o JobLoadTimePartitioningOutput) ToJobLoadTimePartitioningPtrOutputWithContext(ctx context.Context) JobLoadTimePartitioningPtrOutput {
-	return o.ApplyT(func(v JobLoadTimePartitioning) *JobLoadTimePartitioning {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobLoadTimePartitioning) *JobLoadTimePartitioning {
 		return &v
 	}).(JobLoadTimePartitioningPtrOutput)
 }
@@ -4657,7 +4781,13 @@ func (o JobLoadTimePartitioningPtrOutput) ToJobLoadTimePartitioningPtrOutputWith
 }
 
 func (o JobLoadTimePartitioningPtrOutput) Elem() JobLoadTimePartitioningOutput {
-	return o.ApplyT(func(v *JobLoadTimePartitioning) JobLoadTimePartitioning { return *v }).(JobLoadTimePartitioningOutput)
+	return o.ApplyT(func(v *JobLoadTimePartitioning) JobLoadTimePartitioning {
+		if v != nil {
+			return *v
+		}
+		var ret JobLoadTimePartitioning
+		return ret
+	}).(JobLoadTimePartitioningOutput)
 }
 
 // Number of milliseconds for which to keep the storage for a partition. A wrapper is used here because 0 is an invalid value.
@@ -4916,7 +5046,7 @@ func (o JobQueryOutput) ToJobQueryPtrOutput() JobQueryPtrOutput {
 }
 
 func (o JobQueryOutput) ToJobQueryPtrOutputWithContext(ctx context.Context) JobQueryPtrOutput {
-	return o.ApplyT(func(v JobQuery) *JobQuery {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobQuery) *JobQuery {
 		return &v
 	}).(JobQueryPtrOutput)
 }
@@ -5056,7 +5186,13 @@ func (o JobQueryPtrOutput) ToJobQueryPtrOutputWithContext(ctx context.Context) J
 }
 
 func (o JobQueryPtrOutput) Elem() JobQueryOutput {
-	return o.ApplyT(func(v *JobQuery) JobQuery { return *v }).(JobQueryOutput)
+	return o.ApplyT(func(v *JobQuery) JobQuery {
+		if v != nil {
+			return *v
+		}
+		var ret JobQuery
+		return ret
+	}).(JobQueryOutput)
 }
 
 // If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large result tables at a slight cost in performance.
@@ -5359,7 +5495,7 @@ func (o JobQueryDefaultDatasetOutput) ToJobQueryDefaultDatasetPtrOutput() JobQue
 }
 
 func (o JobQueryDefaultDatasetOutput) ToJobQueryDefaultDatasetPtrOutputWithContext(ctx context.Context) JobQueryDefaultDatasetPtrOutput {
-	return o.ApplyT(func(v JobQueryDefaultDataset) *JobQueryDefaultDataset {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobQueryDefaultDataset) *JobQueryDefaultDataset {
 		return &v
 	}).(JobQueryDefaultDatasetPtrOutput)
 }
@@ -5389,7 +5525,13 @@ func (o JobQueryDefaultDatasetPtrOutput) ToJobQueryDefaultDatasetPtrOutputWithCo
 }
 
 func (o JobQueryDefaultDatasetPtrOutput) Elem() JobQueryDefaultDatasetOutput {
-	return o.ApplyT(func(v *JobQueryDefaultDataset) JobQueryDefaultDataset { return *v }).(JobQueryDefaultDatasetOutput)
+	return o.ApplyT(func(v *JobQueryDefaultDataset) JobQueryDefaultDataset {
+		if v != nil {
+			return *v
+		}
+		var ret JobQueryDefaultDataset
+		return ret
+	}).(JobQueryDefaultDatasetOutput)
 }
 
 // The ID of the dataset containing this model.
@@ -5513,7 +5655,7 @@ func (o JobQueryDestinationEncryptionConfigurationOutput) ToJobQueryDestinationE
 }
 
 func (o JobQueryDestinationEncryptionConfigurationOutput) ToJobQueryDestinationEncryptionConfigurationPtrOutputWithContext(ctx context.Context) JobQueryDestinationEncryptionConfigurationPtrOutput {
-	return o.ApplyT(func(v JobQueryDestinationEncryptionConfiguration) *JobQueryDestinationEncryptionConfiguration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobQueryDestinationEncryptionConfiguration) *JobQueryDestinationEncryptionConfiguration {
 		return &v
 	}).(JobQueryDestinationEncryptionConfigurationPtrOutput)
 }
@@ -5546,7 +5688,11 @@ func (o JobQueryDestinationEncryptionConfigurationPtrOutput) ToJobQueryDestinati
 
 func (o JobQueryDestinationEncryptionConfigurationPtrOutput) Elem() JobQueryDestinationEncryptionConfigurationOutput {
 	return o.ApplyT(func(v *JobQueryDestinationEncryptionConfiguration) JobQueryDestinationEncryptionConfiguration {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret JobQueryDestinationEncryptionConfiguration
+		return ret
 	}).(JobQueryDestinationEncryptionConfigurationOutput)
 }
 
@@ -5675,7 +5821,7 @@ func (o JobQueryDestinationTableOutput) ToJobQueryDestinationTablePtrOutput() Jo
 }
 
 func (o JobQueryDestinationTableOutput) ToJobQueryDestinationTablePtrOutputWithContext(ctx context.Context) JobQueryDestinationTablePtrOutput {
-	return o.ApplyT(func(v JobQueryDestinationTable) *JobQueryDestinationTable {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobQueryDestinationTable) *JobQueryDestinationTable {
 		return &v
 	}).(JobQueryDestinationTablePtrOutput)
 }
@@ -5711,7 +5857,13 @@ func (o JobQueryDestinationTablePtrOutput) ToJobQueryDestinationTablePtrOutputWi
 }
 
 func (o JobQueryDestinationTablePtrOutput) Elem() JobQueryDestinationTableOutput {
-	return o.ApplyT(func(v *JobQueryDestinationTable) JobQueryDestinationTable { return *v }).(JobQueryDestinationTableOutput)
+	return o.ApplyT(func(v *JobQueryDestinationTable) JobQueryDestinationTable {
+		if v != nil {
+			return *v
+		}
+		var ret JobQueryDestinationTable
+		return ret
+	}).(JobQueryDestinationTableOutput)
 }
 
 // The ID of the dataset containing this model.
@@ -5850,7 +6002,7 @@ func (o JobQueryScriptOptionsOutput) ToJobQueryScriptOptionsPtrOutput() JobQuery
 }
 
 func (o JobQueryScriptOptionsOutput) ToJobQueryScriptOptionsPtrOutputWithContext(ctx context.Context) JobQueryScriptOptionsPtrOutput {
-	return o.ApplyT(func(v JobQueryScriptOptions) *JobQueryScriptOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobQueryScriptOptions) *JobQueryScriptOptions {
 		return &v
 	}).(JobQueryScriptOptionsPtrOutput)
 }
@@ -5887,7 +6039,13 @@ func (o JobQueryScriptOptionsPtrOutput) ToJobQueryScriptOptionsPtrOutputWithCont
 }
 
 func (o JobQueryScriptOptionsPtrOutput) Elem() JobQueryScriptOptionsOutput {
-	return o.ApplyT(func(v *JobQueryScriptOptions) JobQueryScriptOptions { return *v }).(JobQueryScriptOptionsOutput)
+	return o.ApplyT(func(v *JobQueryScriptOptions) JobQueryScriptOptions {
+		if v != nil {
+			return *v
+		}
+		var ret JobQueryScriptOptions
+		return ret
+	}).(JobQueryScriptOptionsOutput)
 }
 
 // Determines which statement in the script represents the "key result",
@@ -6611,7 +6769,7 @@ func (o TableEncryptionConfigurationOutput) ToTableEncryptionConfigurationPtrOut
 }
 
 func (o TableEncryptionConfigurationOutput) ToTableEncryptionConfigurationPtrOutputWithContext(ctx context.Context) TableEncryptionConfigurationPtrOutput {
-	return o.ApplyT(func(v TableEncryptionConfiguration) *TableEncryptionConfiguration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableEncryptionConfiguration) *TableEncryptionConfiguration {
 		return &v
 	}).(TableEncryptionConfigurationPtrOutput)
 }
@@ -6645,7 +6803,13 @@ func (o TableEncryptionConfigurationPtrOutput) ToTableEncryptionConfigurationPtr
 }
 
 func (o TableEncryptionConfigurationPtrOutput) Elem() TableEncryptionConfigurationOutput {
-	return o.ApplyT(func(v *TableEncryptionConfiguration) TableEncryptionConfiguration { return *v }).(TableEncryptionConfigurationOutput)
+	return o.ApplyT(func(v *TableEncryptionConfiguration) TableEncryptionConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret TableEncryptionConfiguration
+		return ret
+	}).(TableEncryptionConfigurationOutput)
 }
 
 // The self link or full name of a key which should be used to
@@ -6859,7 +7023,7 @@ func (o TableExternalDataConfigurationOutput) ToTableExternalDataConfigurationPt
 }
 
 func (o TableExternalDataConfigurationOutput) ToTableExternalDataConfigurationPtrOutputWithContext(ctx context.Context) TableExternalDataConfigurationPtrOutput {
-	return o.ApplyT(func(v TableExternalDataConfiguration) *TableExternalDataConfiguration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableExternalDataConfiguration) *TableExternalDataConfiguration {
 		return &v
 	}).(TableExternalDataConfigurationPtrOutput)
 }
@@ -6962,7 +7126,13 @@ func (o TableExternalDataConfigurationPtrOutput) ToTableExternalDataConfiguratio
 }
 
 func (o TableExternalDataConfigurationPtrOutput) Elem() TableExternalDataConfigurationOutput {
-	return o.ApplyT(func(v *TableExternalDataConfiguration) TableExternalDataConfiguration { return *v }).(TableExternalDataConfigurationOutput)
+	return o.ApplyT(func(v *TableExternalDataConfiguration) TableExternalDataConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret TableExternalDataConfiguration
+		return ret
+	}).(TableExternalDataConfigurationOutput)
 }
 
 // - Let BigQuery try to autodetect the schema
@@ -7231,7 +7401,7 @@ func (o TableExternalDataConfigurationCsvOptionsOutput) ToTableExternalDataConfi
 }
 
 func (o TableExternalDataConfigurationCsvOptionsOutput) ToTableExternalDataConfigurationCsvOptionsPtrOutputWithContext(ctx context.Context) TableExternalDataConfigurationCsvOptionsPtrOutput {
-	return o.ApplyT(func(v TableExternalDataConfigurationCsvOptions) *TableExternalDataConfigurationCsvOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableExternalDataConfigurationCsvOptions) *TableExternalDataConfigurationCsvOptions {
 		return &v
 	}).(TableExternalDataConfigurationCsvOptionsPtrOutput)
 }
@@ -7293,7 +7463,13 @@ func (o TableExternalDataConfigurationCsvOptionsPtrOutput) ToTableExternalDataCo
 }
 
 func (o TableExternalDataConfigurationCsvOptionsPtrOutput) Elem() TableExternalDataConfigurationCsvOptionsOutput {
-	return o.ApplyT(func(v *TableExternalDataConfigurationCsvOptions) TableExternalDataConfigurationCsvOptions { return *v }).(TableExternalDataConfigurationCsvOptionsOutput)
+	return o.ApplyT(func(v *TableExternalDataConfigurationCsvOptions) TableExternalDataConfigurationCsvOptions {
+		if v != nil {
+			return *v
+		}
+		var ret TableExternalDataConfigurationCsvOptions
+		return ret
+	}).(TableExternalDataConfigurationCsvOptionsOutput)
 }
 
 // Indicates if BigQuery should accept rows
@@ -7471,7 +7647,7 @@ func (o TableExternalDataConfigurationGoogleSheetsOptionsOutput) ToTableExternal
 }
 
 func (o TableExternalDataConfigurationGoogleSheetsOptionsOutput) ToTableExternalDataConfigurationGoogleSheetsOptionsPtrOutputWithContext(ctx context.Context) TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput {
-	return o.ApplyT(func(v TableExternalDataConfigurationGoogleSheetsOptions) *TableExternalDataConfigurationGoogleSheetsOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableExternalDataConfigurationGoogleSheetsOptions) *TableExternalDataConfigurationGoogleSheetsOptions {
 		return &v
 	}).(TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput)
 }
@@ -7505,7 +7681,11 @@ func (o TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput) ToTableExter
 
 func (o TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput) Elem() TableExternalDataConfigurationGoogleSheetsOptionsOutput {
 	return o.ApplyT(func(v *TableExternalDataConfigurationGoogleSheetsOptions) TableExternalDataConfigurationGoogleSheetsOptions {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret TableExternalDataConfigurationGoogleSheetsOptions
+		return ret
 	}).(TableExternalDataConfigurationGoogleSheetsOptionsOutput)
 }
 
@@ -7665,7 +7845,7 @@ func (o TableExternalDataConfigurationHivePartitioningOptionsOutput) ToTableExte
 }
 
 func (o TableExternalDataConfigurationHivePartitioningOptionsOutput) ToTableExternalDataConfigurationHivePartitioningOptionsPtrOutputWithContext(ctx context.Context) TableExternalDataConfigurationHivePartitioningOptionsPtrOutput {
-	return o.ApplyT(func(v TableExternalDataConfigurationHivePartitioningOptions) *TableExternalDataConfigurationHivePartitioningOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableExternalDataConfigurationHivePartitioningOptions) *TableExternalDataConfigurationHivePartitioningOptions {
 		return &v
 	}).(TableExternalDataConfigurationHivePartitioningOptionsPtrOutput)
 }
@@ -7717,7 +7897,11 @@ func (o TableExternalDataConfigurationHivePartitioningOptionsPtrOutput) ToTableE
 
 func (o TableExternalDataConfigurationHivePartitioningOptionsPtrOutput) Elem() TableExternalDataConfigurationHivePartitioningOptionsOutput {
 	return o.ApplyT(func(v *TableExternalDataConfigurationHivePartitioningOptions) TableExternalDataConfigurationHivePartitioningOptions {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret TableExternalDataConfigurationHivePartitioningOptions
+		return ret
 	}).(TableExternalDataConfigurationHivePartitioningOptionsOutput)
 }
 
@@ -7872,7 +8056,7 @@ func (o TableMaterializedViewOutput) ToTableMaterializedViewPtrOutput() TableMat
 }
 
 func (o TableMaterializedViewOutput) ToTableMaterializedViewPtrOutputWithContext(ctx context.Context) TableMaterializedViewPtrOutput {
-	return o.ApplyT(func(v TableMaterializedView) *TableMaterializedView {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableMaterializedView) *TableMaterializedView {
 		return &v
 	}).(TableMaterializedViewPtrOutput)
 }
@@ -7909,7 +8093,13 @@ func (o TableMaterializedViewPtrOutput) ToTableMaterializedViewPtrOutputWithCont
 }
 
 func (o TableMaterializedViewPtrOutput) Elem() TableMaterializedViewOutput {
-	return o.ApplyT(func(v *TableMaterializedView) TableMaterializedView { return *v }).(TableMaterializedViewOutput)
+	return o.ApplyT(func(v *TableMaterializedView) TableMaterializedView {
+		if v != nil {
+			return *v
+		}
+		var ret TableMaterializedView
+		return ret
+	}).(TableMaterializedViewOutput)
 }
 
 // Specifies whether to use BigQuery's automatic refresh for this materialized view when the base table is updated.
@@ -8045,7 +8235,7 @@ func (o TableRangePartitioningOutput) ToTableRangePartitioningPtrOutput() TableR
 }
 
 func (o TableRangePartitioningOutput) ToTableRangePartitioningPtrOutputWithContext(ctx context.Context) TableRangePartitioningPtrOutput {
-	return o.ApplyT(func(v TableRangePartitioning) *TableRangePartitioning {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableRangePartitioning) *TableRangePartitioning {
 		return &v
 	}).(TableRangePartitioningPtrOutput)
 }
@@ -8077,7 +8267,13 @@ func (o TableRangePartitioningPtrOutput) ToTableRangePartitioningPtrOutputWithCo
 }
 
 func (o TableRangePartitioningPtrOutput) Elem() TableRangePartitioningOutput {
-	return o.ApplyT(func(v *TableRangePartitioning) TableRangePartitioning { return *v }).(TableRangePartitioningOutput)
+	return o.ApplyT(func(v *TableRangePartitioning) TableRangePartitioning {
+		if v != nil {
+			return *v
+		}
+		var ret TableRangePartitioning
+		return ret
+	}).(TableRangePartitioningOutput)
 }
 
 // The field used to determine how to create a range-based
@@ -8203,7 +8399,7 @@ func (o TableRangePartitioningRangeOutput) ToTableRangePartitioningRangePtrOutpu
 }
 
 func (o TableRangePartitioningRangeOutput) ToTableRangePartitioningRangePtrOutputWithContext(ctx context.Context) TableRangePartitioningRangePtrOutput {
-	return o.ApplyT(func(v TableRangePartitioningRange) *TableRangePartitioningRange {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableRangePartitioningRange) *TableRangePartitioningRange {
 		return &v
 	}).(TableRangePartitioningRangePtrOutput)
 }
@@ -8238,7 +8434,13 @@ func (o TableRangePartitioningRangePtrOutput) ToTableRangePartitioningRangePtrOu
 }
 
 func (o TableRangePartitioningRangePtrOutput) Elem() TableRangePartitioningRangeOutput {
-	return o.ApplyT(func(v *TableRangePartitioningRange) TableRangePartitioningRange { return *v }).(TableRangePartitioningRangeOutput)
+	return o.ApplyT(func(v *TableRangePartitioningRange) TableRangePartitioningRange {
+		if v != nil {
+			return *v
+		}
+		var ret TableRangePartitioningRange
+		return ret
+	}).(TableRangePartitioningRangeOutput)
 }
 
 // End of the range partitioning, exclusive.
@@ -8386,7 +8588,7 @@ func (o TableTimePartitioningOutput) ToTableTimePartitioningPtrOutput() TableTim
 }
 
 func (o TableTimePartitioningOutput) ToTableTimePartitioningPtrOutputWithContext(ctx context.Context) TableTimePartitioningPtrOutput {
-	return o.ApplyT(func(v TableTimePartitioning) *TableTimePartitioning {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableTimePartitioning) *TableTimePartitioning {
 		return &v
 	}).(TableTimePartitioningPtrOutput)
 }
@@ -8431,7 +8633,13 @@ func (o TableTimePartitioningPtrOutput) ToTableTimePartitioningPtrOutputWithCont
 }
 
 func (o TableTimePartitioningPtrOutput) Elem() TableTimePartitioningOutput {
-	return o.ApplyT(func(v *TableTimePartitioning) TableTimePartitioning { return *v }).(TableTimePartitioningOutput)
+	return o.ApplyT(func(v *TableTimePartitioning) TableTimePartitioning {
+		if v != nil {
+			return *v
+		}
+		var ret TableTimePartitioning
+		return ret
+	}).(TableTimePartitioningOutput)
 }
 
 // Number of milliseconds for which to keep the
@@ -8578,7 +8786,7 @@ func (o TableViewOutput) ToTableViewPtrOutput() TableViewPtrOutput {
 }
 
 func (o TableViewOutput) ToTableViewPtrOutputWithContext(ctx context.Context) TableViewPtrOutput {
-	return o.ApplyT(func(v TableView) *TableView {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableView) *TableView {
 		return &v
 	}).(TableViewPtrOutput)
 }
@@ -8609,7 +8817,13 @@ func (o TableViewPtrOutput) ToTableViewPtrOutputWithContext(ctx context.Context)
 }
 
 func (o TableViewPtrOutput) Elem() TableViewOutput {
-	return o.ApplyT(func(v *TableView) TableView { return *v }).(TableViewOutput)
+	return o.ApplyT(func(v *TableView) TableView {
+		if v != nil {
+			return *v
+		}
+		var ret TableView
+		return ret
+	}).(TableViewOutput)
 }
 
 // A query whose result is persisted.

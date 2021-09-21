@@ -323,7 +323,7 @@ type TopicIAMMemberArrayInput interface {
 type TopicIAMMemberArray []TopicIAMMemberInput
 
 func (TopicIAMMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TopicIAMMember)(nil))
+	return reflect.TypeOf((*[]*TopicIAMMember)(nil)).Elem()
 }
 
 func (i TopicIAMMemberArray) ToTopicIAMMemberArrayOutput() TopicIAMMemberArrayOutput {
@@ -348,7 +348,7 @@ type TopicIAMMemberMapInput interface {
 type TopicIAMMemberMap map[string]TopicIAMMemberInput
 
 func (TopicIAMMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TopicIAMMember)(nil))
+	return reflect.TypeOf((*map[string]*TopicIAMMember)(nil)).Elem()
 }
 
 func (i TopicIAMMemberMap) ToTopicIAMMemberMapOutput() TopicIAMMemberMapOutput {
@@ -359,9 +359,7 @@ func (i TopicIAMMemberMap) ToTopicIAMMemberMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMMemberMapOutput)
 }
 
-type TopicIAMMemberOutput struct {
-	*pulumi.OutputState
-}
+type TopicIAMMemberOutput struct{ *pulumi.OutputState }
 
 func (TopicIAMMemberOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TopicIAMMember)(nil))
@@ -380,14 +378,12 @@ func (o TopicIAMMemberOutput) ToTopicIAMMemberPtrOutput() TopicIAMMemberPtrOutpu
 }
 
 func (o TopicIAMMemberOutput) ToTopicIAMMemberPtrOutputWithContext(ctx context.Context) TopicIAMMemberPtrOutput {
-	return o.ApplyT(func(v TopicIAMMember) *TopicIAMMember {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TopicIAMMember) *TopicIAMMember {
 		return &v
 	}).(TopicIAMMemberPtrOutput)
 }
 
-type TopicIAMMemberPtrOutput struct {
-	*pulumi.OutputState
-}
+type TopicIAMMemberPtrOutput struct{ *pulumi.OutputState }
 
 func (TopicIAMMemberPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TopicIAMMember)(nil))
@@ -399,6 +395,16 @@ func (o TopicIAMMemberPtrOutput) ToTopicIAMMemberPtrOutput() TopicIAMMemberPtrOu
 
 func (o TopicIAMMemberPtrOutput) ToTopicIAMMemberPtrOutputWithContext(ctx context.Context) TopicIAMMemberPtrOutput {
 	return o
+}
+
+func (o TopicIAMMemberPtrOutput) Elem() TopicIAMMemberOutput {
+	return o.ApplyT(func(v *TopicIAMMember) TopicIAMMember {
+		if v != nil {
+			return *v
+		}
+		var ret TopicIAMMember
+		return ret
+	}).(TopicIAMMemberOutput)
 }
 
 type TopicIAMMemberArrayOutput struct{ *pulumi.OutputState }

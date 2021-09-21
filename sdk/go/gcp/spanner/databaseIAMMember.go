@@ -339,7 +339,7 @@ type DatabaseIAMMemberArrayInput interface {
 type DatabaseIAMMemberArray []DatabaseIAMMemberInput
 
 func (DatabaseIAMMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*DatabaseIAMMember)(nil))
+	return reflect.TypeOf((*[]*DatabaseIAMMember)(nil)).Elem()
 }
 
 func (i DatabaseIAMMemberArray) ToDatabaseIAMMemberArrayOutput() DatabaseIAMMemberArrayOutput {
@@ -364,7 +364,7 @@ type DatabaseIAMMemberMapInput interface {
 type DatabaseIAMMemberMap map[string]DatabaseIAMMemberInput
 
 func (DatabaseIAMMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*DatabaseIAMMember)(nil))
+	return reflect.TypeOf((*map[string]*DatabaseIAMMember)(nil)).Elem()
 }
 
 func (i DatabaseIAMMemberMap) ToDatabaseIAMMemberMapOutput() DatabaseIAMMemberMapOutput {
@@ -375,9 +375,7 @@ func (i DatabaseIAMMemberMap) ToDatabaseIAMMemberMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMMemberMapOutput)
 }
 
-type DatabaseIAMMemberOutput struct {
-	*pulumi.OutputState
-}
+type DatabaseIAMMemberOutput struct{ *pulumi.OutputState }
 
 func (DatabaseIAMMemberOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DatabaseIAMMember)(nil))
@@ -396,14 +394,12 @@ func (o DatabaseIAMMemberOutput) ToDatabaseIAMMemberPtrOutput() DatabaseIAMMembe
 }
 
 func (o DatabaseIAMMemberOutput) ToDatabaseIAMMemberPtrOutputWithContext(ctx context.Context) DatabaseIAMMemberPtrOutput {
-	return o.ApplyT(func(v DatabaseIAMMember) *DatabaseIAMMember {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseIAMMember) *DatabaseIAMMember {
 		return &v
 	}).(DatabaseIAMMemberPtrOutput)
 }
 
-type DatabaseIAMMemberPtrOutput struct {
-	*pulumi.OutputState
-}
+type DatabaseIAMMemberPtrOutput struct{ *pulumi.OutputState }
 
 func (DatabaseIAMMemberPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DatabaseIAMMember)(nil))
@@ -415,6 +411,16 @@ func (o DatabaseIAMMemberPtrOutput) ToDatabaseIAMMemberPtrOutput() DatabaseIAMMe
 
 func (o DatabaseIAMMemberPtrOutput) ToDatabaseIAMMemberPtrOutputWithContext(ctx context.Context) DatabaseIAMMemberPtrOutput {
 	return o
+}
+
+func (o DatabaseIAMMemberPtrOutput) Elem() DatabaseIAMMemberOutput {
+	return o.ApplyT(func(v *DatabaseIAMMember) DatabaseIAMMember {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseIAMMember
+		return ret
+	}).(DatabaseIAMMemberOutput)
 }
 
 type DatabaseIAMMemberArrayOutput struct{ *pulumi.OutputState }

@@ -390,7 +390,7 @@ type RoutineArrayInput interface {
 type RoutineArray []RoutineInput
 
 func (RoutineArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Routine)(nil))
+	return reflect.TypeOf((*[]*Routine)(nil)).Elem()
 }
 
 func (i RoutineArray) ToRoutineArrayOutput() RoutineArrayOutput {
@@ -415,7 +415,7 @@ type RoutineMapInput interface {
 type RoutineMap map[string]RoutineInput
 
 func (RoutineMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Routine)(nil))
+	return reflect.TypeOf((*map[string]*Routine)(nil)).Elem()
 }
 
 func (i RoutineMap) ToRoutineMapOutput() RoutineMapOutput {
@@ -426,9 +426,7 @@ func (i RoutineMap) ToRoutineMapOutputWithContext(ctx context.Context) RoutineMa
 	return pulumi.ToOutputWithContext(ctx, i).(RoutineMapOutput)
 }
 
-type RoutineOutput struct {
-	*pulumi.OutputState
-}
+type RoutineOutput struct{ *pulumi.OutputState }
 
 func (RoutineOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Routine)(nil))
@@ -447,14 +445,12 @@ func (o RoutineOutput) ToRoutinePtrOutput() RoutinePtrOutput {
 }
 
 func (o RoutineOutput) ToRoutinePtrOutputWithContext(ctx context.Context) RoutinePtrOutput {
-	return o.ApplyT(func(v Routine) *Routine {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Routine) *Routine {
 		return &v
 	}).(RoutinePtrOutput)
 }
 
-type RoutinePtrOutput struct {
-	*pulumi.OutputState
-}
+type RoutinePtrOutput struct{ *pulumi.OutputState }
 
 func (RoutinePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Routine)(nil))
@@ -466,6 +462,16 @@ func (o RoutinePtrOutput) ToRoutinePtrOutput() RoutinePtrOutput {
 
 func (o RoutinePtrOutput) ToRoutinePtrOutputWithContext(ctx context.Context) RoutinePtrOutput {
 	return o
+}
+
+func (o RoutinePtrOutput) Elem() RoutineOutput {
+	return o.ApplyT(func(v *Routine) Routine {
+		if v != nil {
+			return *v
+		}
+		var ret Routine
+		return ret
+	}).(RoutineOutput)
 }
 
 type RoutineArrayOutput struct{ *pulumi.OutputState }

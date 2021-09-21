@@ -641,7 +641,7 @@ type VPNTunnelArrayInput interface {
 type VPNTunnelArray []VPNTunnelInput
 
 func (VPNTunnelArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*VPNTunnel)(nil))
+	return reflect.TypeOf((*[]*VPNTunnel)(nil)).Elem()
 }
 
 func (i VPNTunnelArray) ToVPNTunnelArrayOutput() VPNTunnelArrayOutput {
@@ -666,7 +666,7 @@ type VPNTunnelMapInput interface {
 type VPNTunnelMap map[string]VPNTunnelInput
 
 func (VPNTunnelMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*VPNTunnel)(nil))
+	return reflect.TypeOf((*map[string]*VPNTunnel)(nil)).Elem()
 }
 
 func (i VPNTunnelMap) ToVPNTunnelMapOutput() VPNTunnelMapOutput {
@@ -677,9 +677,7 @@ func (i VPNTunnelMap) ToVPNTunnelMapOutputWithContext(ctx context.Context) VPNTu
 	return pulumi.ToOutputWithContext(ctx, i).(VPNTunnelMapOutput)
 }
 
-type VPNTunnelOutput struct {
-	*pulumi.OutputState
-}
+type VPNTunnelOutput struct{ *pulumi.OutputState }
 
 func (VPNTunnelOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*VPNTunnel)(nil))
@@ -698,14 +696,12 @@ func (o VPNTunnelOutput) ToVPNTunnelPtrOutput() VPNTunnelPtrOutput {
 }
 
 func (o VPNTunnelOutput) ToVPNTunnelPtrOutputWithContext(ctx context.Context) VPNTunnelPtrOutput {
-	return o.ApplyT(func(v VPNTunnel) *VPNTunnel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VPNTunnel) *VPNTunnel {
 		return &v
 	}).(VPNTunnelPtrOutput)
 }
 
-type VPNTunnelPtrOutput struct {
-	*pulumi.OutputState
-}
+type VPNTunnelPtrOutput struct{ *pulumi.OutputState }
 
 func (VPNTunnelPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**VPNTunnel)(nil))
@@ -717,6 +713,16 @@ func (o VPNTunnelPtrOutput) ToVPNTunnelPtrOutput() VPNTunnelPtrOutput {
 
 func (o VPNTunnelPtrOutput) ToVPNTunnelPtrOutputWithContext(ctx context.Context) VPNTunnelPtrOutput {
 	return o
+}
+
+func (o VPNTunnelPtrOutput) Elem() VPNTunnelOutput {
+	return o.ApplyT(func(v *VPNTunnel) VPNTunnel {
+		if v != nil {
+			return *v
+		}
+		var ret VPNTunnel
+		return ret
+	}).(VPNTunnelOutput)
 }
 
 type VPNTunnelArrayOutput struct{ *pulumi.OutputState }

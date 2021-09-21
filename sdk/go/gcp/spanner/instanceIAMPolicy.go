@@ -305,7 +305,7 @@ type InstanceIAMPolicyArrayInput interface {
 type InstanceIAMPolicyArray []InstanceIAMPolicyInput
 
 func (InstanceIAMPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*InstanceIAMPolicy)(nil))
+	return reflect.TypeOf((*[]*InstanceIAMPolicy)(nil)).Elem()
 }
 
 func (i InstanceIAMPolicyArray) ToInstanceIAMPolicyArrayOutput() InstanceIAMPolicyArrayOutput {
@@ -330,7 +330,7 @@ type InstanceIAMPolicyMapInput interface {
 type InstanceIAMPolicyMap map[string]InstanceIAMPolicyInput
 
 func (InstanceIAMPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*InstanceIAMPolicy)(nil))
+	return reflect.TypeOf((*map[string]*InstanceIAMPolicy)(nil)).Elem()
 }
 
 func (i InstanceIAMPolicyMap) ToInstanceIAMPolicyMapOutput() InstanceIAMPolicyMapOutput {
@@ -341,9 +341,7 @@ func (i InstanceIAMPolicyMap) ToInstanceIAMPolicyMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMPolicyMapOutput)
 }
 
-type InstanceIAMPolicyOutput struct {
-	*pulumi.OutputState
-}
+type InstanceIAMPolicyOutput struct{ *pulumi.OutputState }
 
 func (InstanceIAMPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceIAMPolicy)(nil))
@@ -362,14 +360,12 @@ func (o InstanceIAMPolicyOutput) ToInstanceIAMPolicyPtrOutput() InstanceIAMPolic
 }
 
 func (o InstanceIAMPolicyOutput) ToInstanceIAMPolicyPtrOutputWithContext(ctx context.Context) InstanceIAMPolicyPtrOutput {
-	return o.ApplyT(func(v InstanceIAMPolicy) *InstanceIAMPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceIAMPolicy) *InstanceIAMPolicy {
 		return &v
 	}).(InstanceIAMPolicyPtrOutput)
 }
 
-type InstanceIAMPolicyPtrOutput struct {
-	*pulumi.OutputState
-}
+type InstanceIAMPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceIAMPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**InstanceIAMPolicy)(nil))
@@ -381,6 +377,16 @@ func (o InstanceIAMPolicyPtrOutput) ToInstanceIAMPolicyPtrOutput() InstanceIAMPo
 
 func (o InstanceIAMPolicyPtrOutput) ToInstanceIAMPolicyPtrOutputWithContext(ctx context.Context) InstanceIAMPolicyPtrOutput {
 	return o
+}
+
+func (o InstanceIAMPolicyPtrOutput) Elem() InstanceIAMPolicyOutput {
+	return o.ApplyT(func(v *InstanceIAMPolicy) InstanceIAMPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceIAMPolicy
+		return ret
+	}).(InstanceIAMPolicyOutput)
 }
 
 type InstanceIAMPolicyArrayOutput struct{ *pulumi.OutputState }

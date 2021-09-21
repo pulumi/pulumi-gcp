@@ -372,7 +372,7 @@ type CxIntentArrayInput interface {
 type CxIntentArray []CxIntentInput
 
 func (CxIntentArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*CxIntent)(nil))
+	return reflect.TypeOf((*[]*CxIntent)(nil)).Elem()
 }
 
 func (i CxIntentArray) ToCxIntentArrayOutput() CxIntentArrayOutput {
@@ -397,7 +397,7 @@ type CxIntentMapInput interface {
 type CxIntentMap map[string]CxIntentInput
 
 func (CxIntentMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*CxIntent)(nil))
+	return reflect.TypeOf((*map[string]*CxIntent)(nil)).Elem()
 }
 
 func (i CxIntentMap) ToCxIntentMapOutput() CxIntentMapOutput {
@@ -408,9 +408,7 @@ func (i CxIntentMap) ToCxIntentMapOutputWithContext(ctx context.Context) CxInten
 	return pulumi.ToOutputWithContext(ctx, i).(CxIntentMapOutput)
 }
 
-type CxIntentOutput struct {
-	*pulumi.OutputState
-}
+type CxIntentOutput struct{ *pulumi.OutputState }
 
 func (CxIntentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CxIntent)(nil))
@@ -429,14 +427,12 @@ func (o CxIntentOutput) ToCxIntentPtrOutput() CxIntentPtrOutput {
 }
 
 func (o CxIntentOutput) ToCxIntentPtrOutputWithContext(ctx context.Context) CxIntentPtrOutput {
-	return o.ApplyT(func(v CxIntent) *CxIntent {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxIntent) *CxIntent {
 		return &v
 	}).(CxIntentPtrOutput)
 }
 
-type CxIntentPtrOutput struct {
-	*pulumi.OutputState
-}
+type CxIntentPtrOutput struct{ *pulumi.OutputState }
 
 func (CxIntentPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**CxIntent)(nil))
@@ -448,6 +444,16 @@ func (o CxIntentPtrOutput) ToCxIntentPtrOutput() CxIntentPtrOutput {
 
 func (o CxIntentPtrOutput) ToCxIntentPtrOutputWithContext(ctx context.Context) CxIntentPtrOutput {
 	return o
+}
+
+func (o CxIntentPtrOutput) Elem() CxIntentOutput {
+	return o.ApplyT(func(v *CxIntent) CxIntent {
+		if v != nil {
+			return *v
+		}
+		var ret CxIntent
+		return ret
+	}).(CxIntentOutput)
 }
 
 type CxIntentArrayOutput struct{ *pulumi.OutputState }

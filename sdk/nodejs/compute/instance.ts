@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultAccount = new gcp.serviceAccount.Account("defaultAccount", {
+ * const defaultAccount = new gcp.serviceaccount.Account("defaultAccount", {
  *     accountId: "service_account_id",
  *     displayName: "Service Account",
  * });

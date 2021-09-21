@@ -275,7 +275,7 @@ type ApiConfigArrayInput interface {
 type ApiConfigArray []ApiConfigInput
 
 func (ApiConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ApiConfig)(nil))
+	return reflect.TypeOf((*[]*ApiConfig)(nil)).Elem()
 }
 
 func (i ApiConfigArray) ToApiConfigArrayOutput() ApiConfigArrayOutput {
@@ -300,7 +300,7 @@ type ApiConfigMapInput interface {
 type ApiConfigMap map[string]ApiConfigInput
 
 func (ApiConfigMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ApiConfig)(nil))
+	return reflect.TypeOf((*map[string]*ApiConfig)(nil)).Elem()
 }
 
 func (i ApiConfigMap) ToApiConfigMapOutput() ApiConfigMapOutput {
@@ -311,9 +311,7 @@ func (i ApiConfigMap) ToApiConfigMapOutputWithContext(ctx context.Context) ApiCo
 	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigMapOutput)
 }
 
-type ApiConfigOutput struct {
-	*pulumi.OutputState
-}
+type ApiConfigOutput struct{ *pulumi.OutputState }
 
 func (ApiConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ApiConfig)(nil))
@@ -332,14 +330,12 @@ func (o ApiConfigOutput) ToApiConfigPtrOutput() ApiConfigPtrOutput {
 }
 
 func (o ApiConfigOutput) ToApiConfigPtrOutputWithContext(ctx context.Context) ApiConfigPtrOutput {
-	return o.ApplyT(func(v ApiConfig) *ApiConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiConfig) *ApiConfig {
 		return &v
 	}).(ApiConfigPtrOutput)
 }
 
-type ApiConfigPtrOutput struct {
-	*pulumi.OutputState
-}
+type ApiConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ApiConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ApiConfig)(nil))
@@ -351,6 +347,16 @@ func (o ApiConfigPtrOutput) ToApiConfigPtrOutput() ApiConfigPtrOutput {
 
 func (o ApiConfigPtrOutput) ToApiConfigPtrOutputWithContext(ctx context.Context) ApiConfigPtrOutput {
 	return o
+}
+
+func (o ApiConfigPtrOutput) Elem() ApiConfigOutput {
+	return o.ApplyT(func(v *ApiConfig) ApiConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ApiConfig
+		return ret
+	}).(ApiConfigOutput)
 }
 
 type ApiConfigArrayOutput struct{ *pulumi.OutputState }

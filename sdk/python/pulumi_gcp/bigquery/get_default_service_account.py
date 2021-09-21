@@ -12,6 +12,7 @@ __all__ = [
     'GetDefaultServiceAccountResult',
     'AwaitableGetDefaultServiceAccountResult',
     'get_default_service_account',
+    'get_default_service_account_output',
 ]
 
 @pulumi.output_type
@@ -105,3 +106,36 @@ def get_default_service_account(project: Optional[str] = None,
         email=__ret__.email,
         id=__ret__.id,
         project=__ret__.project)
+
+
+@_utilities.lift_output_func(get_default_service_account)
+def get_default_service_account_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDefaultServiceAccountResult]:
+    """
+    Get the email address of a project's unique BigQuery service account.
+
+    Each Google Cloud project has a unique service account used by BigQuery. When using
+    BigQuery with [customer-managed encryption keys](https://cloud.google.com/bigquery/docs/customer-managed-encryption),
+    this account needs to be granted the
+    `cloudkms.cryptoKeyEncrypterDecrypter` IAM role on the customer-managed Cloud KMS key used to protect the data.
+
+    For more information see
+    [the API reference](https://cloud.google.com/bigquery/docs/reference/rest/v2/projects/getServiceAccount).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    bq_sa = gcp.bigquery.get_default_service_account()
+    key_sa_user = gcp.kms.CryptoKeyIAMMember("keySaUser",
+        crypto_key_id=google_kms_crypto_key["key"]["id"],
+        role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+        member=f"serviceAccount:{bq_sa.email}")
+    ```
+
+
+    :param str project: The project the unique service account was created for. If it is not provided, the provider project is used.
+    """
+    ...

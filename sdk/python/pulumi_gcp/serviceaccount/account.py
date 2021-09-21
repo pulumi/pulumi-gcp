@@ -114,7 +114,7 @@ class _AccountState:
         :param pulumi.Input[str] display_name: The display name for the service account.
                Can be updated without creating a new resource.
         :param pulumi.Input[str] email: The e-mail address of the service account. This value
-               should be referenced from any `organizations.getIAMPolicy` data sources
+               should be referenced from any `organizations.get_iam_policy` data sources
                that would grant the service account privileges.
         :param pulumi.Input[str] name: The fully-qualified name of the service account.
         :param pulumi.Input[str] project: The ID of the project that the service account will be created in.
@@ -182,7 +182,7 @@ class _AccountState:
     def email(self) -> Optional[pulumi.Input[str]]:
         """
         The e-mail address of the service account. This value
-        should be referenced from any `organizations.getIAMPolicy` data sources
+        should be referenced from any `organizations.get_iam_policy` data sources
         that would grant the service account privileges.
         """
         return pulumi.get(self, "email")
@@ -399,7 +399,7 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The display name for the service account.
                Can be updated without creating a new resource.
         :param pulumi.Input[str] email: The e-mail address of the service account. This value
-               should be referenced from any `organizations.getIAMPolicy` data sources
+               should be referenced from any `organizations.get_iam_policy` data sources
                that would grant the service account privileges.
         :param pulumi.Input[str] name: The fully-qualified name of the service account.
         :param pulumi.Input[str] project: The ID of the project that the service account will be created in.
@@ -453,7 +453,7 @@ class Account(pulumi.CustomResource):
     def email(self) -> pulumi.Output[str]:
         """
         The e-mail address of the service account. This value
-        should be referenced from any `organizations.getIAMPolicy` data sources
+        should be referenced from any `organizations.get_iam_policy` data sources
         that would grant the service account privileges.
         """
         return pulumi.get(self, "email")

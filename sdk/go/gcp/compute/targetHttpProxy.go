@@ -369,7 +369,7 @@ type TargetHttpProxyArrayInput interface {
 type TargetHttpProxyArray []TargetHttpProxyInput
 
 func (TargetHttpProxyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TargetHttpProxy)(nil))
+	return reflect.TypeOf((*[]*TargetHttpProxy)(nil)).Elem()
 }
 
 func (i TargetHttpProxyArray) ToTargetHttpProxyArrayOutput() TargetHttpProxyArrayOutput {
@@ -394,7 +394,7 @@ type TargetHttpProxyMapInput interface {
 type TargetHttpProxyMap map[string]TargetHttpProxyInput
 
 func (TargetHttpProxyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TargetHttpProxy)(nil))
+	return reflect.TypeOf((*map[string]*TargetHttpProxy)(nil)).Elem()
 }
 
 func (i TargetHttpProxyMap) ToTargetHttpProxyMapOutput() TargetHttpProxyMapOutput {
@@ -405,9 +405,7 @@ func (i TargetHttpProxyMap) ToTargetHttpProxyMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(TargetHttpProxyMapOutput)
 }
 
-type TargetHttpProxyOutput struct {
-	*pulumi.OutputState
-}
+type TargetHttpProxyOutput struct{ *pulumi.OutputState }
 
 func (TargetHttpProxyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TargetHttpProxy)(nil))
@@ -426,14 +424,12 @@ func (o TargetHttpProxyOutput) ToTargetHttpProxyPtrOutput() TargetHttpProxyPtrOu
 }
 
 func (o TargetHttpProxyOutput) ToTargetHttpProxyPtrOutputWithContext(ctx context.Context) TargetHttpProxyPtrOutput {
-	return o.ApplyT(func(v TargetHttpProxy) *TargetHttpProxy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TargetHttpProxy) *TargetHttpProxy {
 		return &v
 	}).(TargetHttpProxyPtrOutput)
 }
 
-type TargetHttpProxyPtrOutput struct {
-	*pulumi.OutputState
-}
+type TargetHttpProxyPtrOutput struct{ *pulumi.OutputState }
 
 func (TargetHttpProxyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TargetHttpProxy)(nil))
@@ -445,6 +441,16 @@ func (o TargetHttpProxyPtrOutput) ToTargetHttpProxyPtrOutput() TargetHttpProxyPt
 
 func (o TargetHttpProxyPtrOutput) ToTargetHttpProxyPtrOutputWithContext(ctx context.Context) TargetHttpProxyPtrOutput {
 	return o
+}
+
+func (o TargetHttpProxyPtrOutput) Elem() TargetHttpProxyOutput {
+	return o.ApplyT(func(v *TargetHttpProxy) TargetHttpProxy {
+		if v != nil {
+			return *v
+		}
+		var ret TargetHttpProxy
+		return ret
+	}).(TargetHttpProxyOutput)
 }
 
 type TargetHttpProxyArrayOutput struct{ *pulumi.OutputState }

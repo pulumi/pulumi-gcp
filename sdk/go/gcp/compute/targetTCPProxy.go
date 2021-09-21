@@ -332,7 +332,7 @@ type TargetTCPProxyArrayInput interface {
 type TargetTCPProxyArray []TargetTCPProxyInput
 
 func (TargetTCPProxyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TargetTCPProxy)(nil))
+	return reflect.TypeOf((*[]*TargetTCPProxy)(nil)).Elem()
 }
 
 func (i TargetTCPProxyArray) ToTargetTCPProxyArrayOutput() TargetTCPProxyArrayOutput {
@@ -357,7 +357,7 @@ type TargetTCPProxyMapInput interface {
 type TargetTCPProxyMap map[string]TargetTCPProxyInput
 
 func (TargetTCPProxyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TargetTCPProxy)(nil))
+	return reflect.TypeOf((*map[string]*TargetTCPProxy)(nil)).Elem()
 }
 
 func (i TargetTCPProxyMap) ToTargetTCPProxyMapOutput() TargetTCPProxyMapOutput {
@@ -368,9 +368,7 @@ func (i TargetTCPProxyMap) ToTargetTCPProxyMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(TargetTCPProxyMapOutput)
 }
 
-type TargetTCPProxyOutput struct {
-	*pulumi.OutputState
-}
+type TargetTCPProxyOutput struct{ *pulumi.OutputState }
 
 func (TargetTCPProxyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TargetTCPProxy)(nil))
@@ -389,14 +387,12 @@ func (o TargetTCPProxyOutput) ToTargetTCPProxyPtrOutput() TargetTCPProxyPtrOutpu
 }
 
 func (o TargetTCPProxyOutput) ToTargetTCPProxyPtrOutputWithContext(ctx context.Context) TargetTCPProxyPtrOutput {
-	return o.ApplyT(func(v TargetTCPProxy) *TargetTCPProxy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TargetTCPProxy) *TargetTCPProxy {
 		return &v
 	}).(TargetTCPProxyPtrOutput)
 }
 
-type TargetTCPProxyPtrOutput struct {
-	*pulumi.OutputState
-}
+type TargetTCPProxyPtrOutput struct{ *pulumi.OutputState }
 
 func (TargetTCPProxyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TargetTCPProxy)(nil))
@@ -408,6 +404,16 @@ func (o TargetTCPProxyPtrOutput) ToTargetTCPProxyPtrOutput() TargetTCPProxyPtrOu
 
 func (o TargetTCPProxyPtrOutput) ToTargetTCPProxyPtrOutputWithContext(ctx context.Context) TargetTCPProxyPtrOutput {
 	return o
+}
+
+func (o TargetTCPProxyPtrOutput) Elem() TargetTCPProxyOutput {
+	return o.ApplyT(func(v *TargetTCPProxy) TargetTCPProxy {
+		if v != nil {
+			return *v
+		}
+		var ret TargetTCPProxy
+		return ret
+	}).(TargetTCPProxyOutput)
 }
 
 type TargetTCPProxyArrayOutput struct{ *pulumi.OutputState }

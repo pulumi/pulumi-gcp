@@ -239,7 +239,7 @@ type ProjectExclusionArrayInput interface {
 type ProjectExclusionArray []ProjectExclusionInput
 
 func (ProjectExclusionArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ProjectExclusion)(nil))
+	return reflect.TypeOf((*[]*ProjectExclusion)(nil)).Elem()
 }
 
 func (i ProjectExclusionArray) ToProjectExclusionArrayOutput() ProjectExclusionArrayOutput {
@@ -264,7 +264,7 @@ type ProjectExclusionMapInput interface {
 type ProjectExclusionMap map[string]ProjectExclusionInput
 
 func (ProjectExclusionMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ProjectExclusion)(nil))
+	return reflect.TypeOf((*map[string]*ProjectExclusion)(nil)).Elem()
 }
 
 func (i ProjectExclusionMap) ToProjectExclusionMapOutput() ProjectExclusionMapOutput {
@@ -275,9 +275,7 @@ func (i ProjectExclusionMap) ToProjectExclusionMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectExclusionMapOutput)
 }
 
-type ProjectExclusionOutput struct {
-	*pulumi.OutputState
-}
+type ProjectExclusionOutput struct{ *pulumi.OutputState }
 
 func (ProjectExclusionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ProjectExclusion)(nil))
@@ -296,14 +294,12 @@ func (o ProjectExclusionOutput) ToProjectExclusionPtrOutput() ProjectExclusionPt
 }
 
 func (o ProjectExclusionOutput) ToProjectExclusionPtrOutputWithContext(ctx context.Context) ProjectExclusionPtrOutput {
-	return o.ApplyT(func(v ProjectExclusion) *ProjectExclusion {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectExclusion) *ProjectExclusion {
 		return &v
 	}).(ProjectExclusionPtrOutput)
 }
 
-type ProjectExclusionPtrOutput struct {
-	*pulumi.OutputState
-}
+type ProjectExclusionPtrOutput struct{ *pulumi.OutputState }
 
 func (ProjectExclusionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ProjectExclusion)(nil))
@@ -315,6 +311,16 @@ func (o ProjectExclusionPtrOutput) ToProjectExclusionPtrOutput() ProjectExclusio
 
 func (o ProjectExclusionPtrOutput) ToProjectExclusionPtrOutputWithContext(ctx context.Context) ProjectExclusionPtrOutput {
 	return o
+}
+
+func (o ProjectExclusionPtrOutput) Elem() ProjectExclusionOutput {
+	return o.ApplyT(func(v *ProjectExclusion) ProjectExclusion {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectExclusion
+		return ret
+	}).(ProjectExclusionOutput)
 }
 
 type ProjectExclusionArrayOutput struct{ *pulumi.OutputState }

@@ -12,6 +12,7 @@ __all__ = [
     'GetSecretVersionResult',
     'AwaitableGetSecretVersionResult',
     'get_secret_version',
+    'get_secret_version_output',
 ]
 
 @pulumi.output_type
@@ -173,3 +174,30 @@ def get_secret_version(project: Optional[str] = None,
         secret=__ret__.secret,
         secret_data=__ret__.secret_data,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_secret_version)
+def get_secret_version_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                              secret: Optional[pulumi.Input[str]] = None,
+                              version: Optional[pulumi.Input[Optional[str]]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretVersionResult]:
+    """
+    Get a Secret Manager secret's version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    basic = gcp.secretmanager.get_secret_version(secret="my-secret")
+    ```
+
+
+    :param str project: The project to get the secret version for. If it
+           is not provided, the provider project is used.
+    :param str secret: The secret to get the secret version for.
+    :param str version: The version of the secret to get. If it
+           is not provided, the latest version is retrieved.
+    """
+    ...

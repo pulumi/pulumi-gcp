@@ -169,7 +169,7 @@ type FunctionIamBindingArrayInput interface {
 type FunctionIamBindingArray []FunctionIamBindingInput
 
 func (FunctionIamBindingArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*FunctionIamBinding)(nil))
+	return reflect.TypeOf((*[]*FunctionIamBinding)(nil)).Elem()
 }
 
 func (i FunctionIamBindingArray) ToFunctionIamBindingArrayOutput() FunctionIamBindingArrayOutput {
@@ -194,7 +194,7 @@ type FunctionIamBindingMapInput interface {
 type FunctionIamBindingMap map[string]FunctionIamBindingInput
 
 func (FunctionIamBindingMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*FunctionIamBinding)(nil))
+	return reflect.TypeOf((*map[string]*FunctionIamBinding)(nil)).Elem()
 }
 
 func (i FunctionIamBindingMap) ToFunctionIamBindingMapOutput() FunctionIamBindingMapOutput {
@@ -205,9 +205,7 @@ func (i FunctionIamBindingMap) ToFunctionIamBindingMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionIamBindingMapOutput)
 }
 
-type FunctionIamBindingOutput struct {
-	*pulumi.OutputState
-}
+type FunctionIamBindingOutput struct{ *pulumi.OutputState }
 
 func (FunctionIamBindingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*FunctionIamBinding)(nil))
@@ -226,14 +224,12 @@ func (o FunctionIamBindingOutput) ToFunctionIamBindingPtrOutput() FunctionIamBin
 }
 
 func (o FunctionIamBindingOutput) ToFunctionIamBindingPtrOutputWithContext(ctx context.Context) FunctionIamBindingPtrOutput {
-	return o.ApplyT(func(v FunctionIamBinding) *FunctionIamBinding {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FunctionIamBinding) *FunctionIamBinding {
 		return &v
 	}).(FunctionIamBindingPtrOutput)
 }
 
-type FunctionIamBindingPtrOutput struct {
-	*pulumi.OutputState
-}
+type FunctionIamBindingPtrOutput struct{ *pulumi.OutputState }
 
 func (FunctionIamBindingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**FunctionIamBinding)(nil))
@@ -245,6 +241,16 @@ func (o FunctionIamBindingPtrOutput) ToFunctionIamBindingPtrOutput() FunctionIam
 
 func (o FunctionIamBindingPtrOutput) ToFunctionIamBindingPtrOutputWithContext(ctx context.Context) FunctionIamBindingPtrOutput {
 	return o
+}
+
+func (o FunctionIamBindingPtrOutput) Elem() FunctionIamBindingOutput {
+	return o.ApplyT(func(v *FunctionIamBinding) FunctionIamBinding {
+		if v != nil {
+			return *v
+		}
+		var ret FunctionIamBinding
+		return ret
+	}).(FunctionIamBindingOutput)
 }
 
 type FunctionIamBindingArrayOutput struct{ *pulumi.OutputState }

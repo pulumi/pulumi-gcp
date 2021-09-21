@@ -4,6 +4,9 @@
 package iap
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,4 +70,65 @@ type LookupClientResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id     string `pulumi:"id"`
 	Secret string `pulumi:"secret"`
+}
+
+func LookupClientOutput(ctx *pulumi.Context, args LookupClientOutputArgs, opts ...pulumi.InvokeOption) LookupClientResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupClientResult, error) {
+			args := v.(LookupClientArgs)
+			r, err := LookupClient(ctx, &args, opts...)
+			return *r, err
+		}).(LookupClientResultOutput)
+}
+
+// A collection of arguments for invoking getClient.
+type LookupClientOutputArgs struct {
+	// The name of the brand.
+	Brand pulumi.StringInput `pulumi:"brand"`
+	// The clientId of the brand.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+}
+
+func (LookupClientOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupClientArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getClient.
+type LookupClientResultOutput struct{ *pulumi.OutputState }
+
+func (LookupClientResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupClientResult)(nil)).Elem()
+}
+
+func (o LookupClientResultOutput) ToLookupClientResultOutput() LookupClientResultOutput {
+	return o
+}
+
+func (o LookupClientResultOutput) ToLookupClientResultOutputWithContext(ctx context.Context) LookupClientResultOutput {
+	return o
+}
+
+func (o LookupClientResultOutput) Brand() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClientResult) string { return v.Brand }).(pulumi.StringOutput)
+}
+
+func (o LookupClientResultOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClientResult) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+func (o LookupClientResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClientResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupClientResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClientResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupClientResultOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClientResult) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupClientResultOutput{})
 }

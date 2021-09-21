@@ -30,11 +30,11 @@ import * as utilities from "../utilities";
  *         members: ["user:jane@example.com"],
  *     }],
  * });
- * const sa = new gcp.serviceAccount.Account("sa", {
+ * const sa = new gcp.serviceaccount.Account("sa", {
  *     accountId: "my-service-account",
  *     displayName: "A service account that only Jane can interact with",
  * });
- * const admin_account_iam = new gcp.serviceAccount.IAMPolicy("admin-account-iam", {
+ * const admin_account_iam = new gcp.serviceaccount.IAMPolicy("admin-account-iam", {
  *     serviceAccountId: sa.name,
  *     policyData: admin.then(admin => admin.policyData),
  * });
@@ -46,11 +46,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const sa = new gcp.serviceAccount.Account("sa", {
+ * const sa = new gcp.serviceaccount.Account("sa", {
  *     accountId: "my-service-account",
  *     displayName: "A service account that only Jane can use",
  * });
- * const admin_account_iam = new gcp.serviceAccount.IAMBinding("admin-account-iam", {
+ * const admin_account_iam = new gcp.serviceaccount.IAMBinding("admin-account-iam", {
  *     serviceAccountId: sa.name,
  *     role: "roles/iam.serviceAccountUser",
  *     members: ["user:jane@example.com"],
@@ -86,17 +86,17 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const default = gcp.compute.getDefaultServiceAccount({});
- * const sa = new gcp.serviceAccount.Account("sa", {
+ * const sa = new gcp.serviceaccount.Account("sa", {
  *     accountId: "my-service-account",
  *     displayName: "A service account that Jane can use",
  * });
- * const admin_account_iam = new gcp.serviceAccount.IAMMember("admin-account-iam", {
+ * const admin_account_iam = new gcp.serviceaccount.IAMMember("admin-account-iam", {
  *     serviceAccountId: sa.name,
  *     role: "roles/iam.serviceAccountUser",
  *     member: "user:jane@example.com",
  * });
  * // Allow SA service account use the default GCE account
- * const gce_default_account_iam = new gcp.serviceAccount.IAMMember("gce-default-account-iam", {
+ * const gce_default_account_iam = new gcp.serviceaccount.IAMMember("gce-default-account-iam", {
  *     serviceAccountId: _default.then(_default => _default.name),
  *     role: "roles/iam.serviceAccountUser",
  *     member: pulumi.interpolate`serviceAccount:${sa.email}`,

@@ -4,6 +4,9 @@
 package iam
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -66,4 +69,69 @@ type GetTestablePermissionsResult struct {
 	// A list of permissions matching the provided input. Structure is defined below.
 	Permissions []GetTestablePermissionsPermission `pulumi:"permissions"`
 	Stages      []string                           `pulumi:"stages"`
+}
+
+func GetTestablePermissionsOutput(ctx *pulumi.Context, args GetTestablePermissionsOutputArgs, opts ...pulumi.InvokeOption) GetTestablePermissionsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetTestablePermissionsResult, error) {
+			args := v.(GetTestablePermissionsArgs)
+			r, err := GetTestablePermissions(ctx, &args, opts...)
+			return *r, err
+		}).(GetTestablePermissionsResultOutput)
+}
+
+// A collection of arguments for invoking getTestablePermissions.
+type GetTestablePermissionsOutputArgs struct {
+	// The level of support for custom roles. Can be one of `"NOT_SUPPORTED"`, `"SUPPORTED"`, `"TESTING"`. Default is `"SUPPORTED"`
+	CustomSupportLevel pulumi.StringPtrInput `pulumi:"customSupportLevel"`
+	// See [full resource name documentation](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more detail.
+	FullResourceName pulumi.StringInput `pulumi:"fullResourceName"`
+	// The acceptable release stages of the permission in the output. Note that `BETA` does not include permissions in `GA`, but you can specify both with `["GA", "BETA"]` for example. Can be a list of `"ALPHA"`, `"BETA"`, `"GA"`, `"DEPRECATED"`. Default is `["GA"]`.
+	Stages pulumi.StringArrayInput `pulumi:"stages"`
+}
+
+func (GetTestablePermissionsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTestablePermissionsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getTestablePermissions.
+type GetTestablePermissionsResultOutput struct{ *pulumi.OutputState }
+
+func (GetTestablePermissionsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTestablePermissionsResult)(nil)).Elem()
+}
+
+func (o GetTestablePermissionsResultOutput) ToGetTestablePermissionsResultOutput() GetTestablePermissionsResultOutput {
+	return o
+}
+
+func (o GetTestablePermissionsResultOutput) ToGetTestablePermissionsResultOutputWithContext(ctx context.Context) GetTestablePermissionsResultOutput {
+	return o
+}
+
+// The the support level of this permission for custom roles.
+func (o GetTestablePermissionsResultOutput) CustomSupportLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTestablePermissionsResult) *string { return v.CustomSupportLevel }).(pulumi.StringPtrOutput)
+}
+
+func (o GetTestablePermissionsResultOutput) FullResourceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTestablePermissionsResult) string { return v.FullResourceName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetTestablePermissionsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTestablePermissionsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of permissions matching the provided input. Structure is defined below.
+func (o GetTestablePermissionsResultOutput) Permissions() GetTestablePermissionsPermissionArrayOutput {
+	return o.ApplyT(func(v GetTestablePermissionsResult) []GetTestablePermissionsPermission { return v.Permissions }).(GetTestablePermissionsPermissionArrayOutput)
+}
+
+func (o GetTestablePermissionsResultOutput) Stages() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTestablePermissionsResult) []string { return v.Stages }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetTestablePermissionsResultOutput{})
 }

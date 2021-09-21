@@ -474,7 +474,7 @@ type CxPageArrayInput interface {
 type CxPageArray []CxPageInput
 
 func (CxPageArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*CxPage)(nil))
+	return reflect.TypeOf((*[]*CxPage)(nil)).Elem()
 }
 
 func (i CxPageArray) ToCxPageArrayOutput() CxPageArrayOutput {
@@ -499,7 +499,7 @@ type CxPageMapInput interface {
 type CxPageMap map[string]CxPageInput
 
 func (CxPageMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*CxPage)(nil))
+	return reflect.TypeOf((*map[string]*CxPage)(nil)).Elem()
 }
 
 func (i CxPageMap) ToCxPageMapOutput() CxPageMapOutput {
@@ -510,9 +510,7 @@ func (i CxPageMap) ToCxPageMapOutputWithContext(ctx context.Context) CxPageMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageMapOutput)
 }
 
-type CxPageOutput struct {
-	*pulumi.OutputState
-}
+type CxPageOutput struct{ *pulumi.OutputState }
 
 func (CxPageOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CxPage)(nil))
@@ -531,14 +529,12 @@ func (o CxPageOutput) ToCxPagePtrOutput() CxPagePtrOutput {
 }
 
 func (o CxPageOutput) ToCxPagePtrOutputWithContext(ctx context.Context) CxPagePtrOutput {
-	return o.ApplyT(func(v CxPage) *CxPage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPage) *CxPage {
 		return &v
 	}).(CxPagePtrOutput)
 }
 
-type CxPagePtrOutput struct {
-	*pulumi.OutputState
-}
+type CxPagePtrOutput struct{ *pulumi.OutputState }
 
 func (CxPagePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**CxPage)(nil))
@@ -550,6 +546,16 @@ func (o CxPagePtrOutput) ToCxPagePtrOutput() CxPagePtrOutput {
 
 func (o CxPagePtrOutput) ToCxPagePtrOutputWithContext(ctx context.Context) CxPagePtrOutput {
 	return o
+}
+
+func (o CxPagePtrOutput) Elem() CxPageOutput {
+	return o.ApplyT(func(v *CxPage) CxPage {
+		if v != nil {
+			return *v
+		}
+		var ret CxPage
+		return ret
+	}).(CxPageOutput)
 }
 
 type CxPageArrayOutput struct{ *pulumi.OutputState }

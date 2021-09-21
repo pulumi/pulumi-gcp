@@ -12,6 +12,7 @@ __all__ = [
     'GetZonesResult',
     'AwaitableGetZonesResult',
     'get_zones',
+    'get_zones_output',
 ]
 
 @pulumi.output_type
@@ -111,3 +112,21 @@ def get_zones(project: Optional[str] = None,
         project=__ret__.project,
         region=__ret__.region,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_zones)
+def get_zones_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                     region: Optional[pulumi.Input[Optional[str]]] = None,
+                     status: Optional[pulumi.Input[Optional[str]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZonesResult]:
+    """
+    Provides access to available Google Compute zones in a region for a given project.
+    See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
+
+
+    :param str project: Project from which to list available zones. Defaults to project declared in the provider.
+    :param str region: Region from which to list available zones. Defaults to region declared in the provider.
+    :param str status: Allows to filter list of zones based on their current status. Status can be either `UP` or `DOWN`.
+           Defaults to no filtering (all available zones - both `UP` and `DOWN`).
+    """
+    ...

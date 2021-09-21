@@ -322,7 +322,7 @@ type FhirStoreIamMemberArrayInput interface {
 type FhirStoreIamMemberArray []FhirStoreIamMemberInput
 
 func (FhirStoreIamMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*FhirStoreIamMember)(nil))
+	return reflect.TypeOf((*[]*FhirStoreIamMember)(nil)).Elem()
 }
 
 func (i FhirStoreIamMemberArray) ToFhirStoreIamMemberArrayOutput() FhirStoreIamMemberArrayOutput {
@@ -347,7 +347,7 @@ type FhirStoreIamMemberMapInput interface {
 type FhirStoreIamMemberMap map[string]FhirStoreIamMemberInput
 
 func (FhirStoreIamMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*FhirStoreIamMember)(nil))
+	return reflect.TypeOf((*map[string]*FhirStoreIamMember)(nil)).Elem()
 }
 
 func (i FhirStoreIamMemberMap) ToFhirStoreIamMemberMapOutput() FhirStoreIamMemberMapOutput {
@@ -358,9 +358,7 @@ func (i FhirStoreIamMemberMap) ToFhirStoreIamMemberMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamMemberMapOutput)
 }
 
-type FhirStoreIamMemberOutput struct {
-	*pulumi.OutputState
-}
+type FhirStoreIamMemberOutput struct{ *pulumi.OutputState }
 
 func (FhirStoreIamMemberOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*FhirStoreIamMember)(nil))
@@ -379,14 +377,12 @@ func (o FhirStoreIamMemberOutput) ToFhirStoreIamMemberPtrOutput() FhirStoreIamMe
 }
 
 func (o FhirStoreIamMemberOutput) ToFhirStoreIamMemberPtrOutputWithContext(ctx context.Context) FhirStoreIamMemberPtrOutput {
-	return o.ApplyT(func(v FhirStoreIamMember) *FhirStoreIamMember {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FhirStoreIamMember) *FhirStoreIamMember {
 		return &v
 	}).(FhirStoreIamMemberPtrOutput)
 }
 
-type FhirStoreIamMemberPtrOutput struct {
-	*pulumi.OutputState
-}
+type FhirStoreIamMemberPtrOutput struct{ *pulumi.OutputState }
 
 func (FhirStoreIamMemberPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**FhirStoreIamMember)(nil))
@@ -398,6 +394,16 @@ func (o FhirStoreIamMemberPtrOutput) ToFhirStoreIamMemberPtrOutput() FhirStoreIa
 
 func (o FhirStoreIamMemberPtrOutput) ToFhirStoreIamMemberPtrOutputWithContext(ctx context.Context) FhirStoreIamMemberPtrOutput {
 	return o
+}
+
+func (o FhirStoreIamMemberPtrOutput) Elem() FhirStoreIamMemberOutput {
+	return o.ApplyT(func(v *FhirStoreIamMember) FhirStoreIamMember {
+		if v != nil {
+			return *v
+		}
+		var ret FhirStoreIamMember
+		return ret
+	}).(FhirStoreIamMemberOutput)
 }
 
 type FhirStoreIamMemberArrayOutput struct{ *pulumi.OutputState }

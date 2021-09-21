@@ -30,7 +30,7 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	case "gcp:bigquery/dataset:Dataset":
 		r = &Dataset{}
 	case "gcp:bigquery/datasetAccess:DatasetAccess":
-		r = &DatasetAccess{}
+		r = &DatasetAccessType{}
 	case "gcp:bigquery/datasetIamBinding:DatasetIamBinding":
 		r = &DatasetIamBinding{}
 	case "gcp:bigquery/datasetIamMember:DatasetIamMember":

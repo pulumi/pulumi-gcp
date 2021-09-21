@@ -379,7 +379,7 @@ type HttpsHealthCheckArrayInput interface {
 type HttpsHealthCheckArray []HttpsHealthCheckInput
 
 func (HttpsHealthCheckArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*HttpsHealthCheck)(nil))
+	return reflect.TypeOf((*[]*HttpsHealthCheck)(nil)).Elem()
 }
 
 func (i HttpsHealthCheckArray) ToHttpsHealthCheckArrayOutput() HttpsHealthCheckArrayOutput {
@@ -404,7 +404,7 @@ type HttpsHealthCheckMapInput interface {
 type HttpsHealthCheckMap map[string]HttpsHealthCheckInput
 
 func (HttpsHealthCheckMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*HttpsHealthCheck)(nil))
+	return reflect.TypeOf((*map[string]*HttpsHealthCheck)(nil)).Elem()
 }
 
 func (i HttpsHealthCheckMap) ToHttpsHealthCheckMapOutput() HttpsHealthCheckMapOutput {
@@ -415,9 +415,7 @@ func (i HttpsHealthCheckMap) ToHttpsHealthCheckMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(HttpsHealthCheckMapOutput)
 }
 
-type HttpsHealthCheckOutput struct {
-	*pulumi.OutputState
-}
+type HttpsHealthCheckOutput struct{ *pulumi.OutputState }
 
 func (HttpsHealthCheckOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*HttpsHealthCheck)(nil))
@@ -436,14 +434,12 @@ func (o HttpsHealthCheckOutput) ToHttpsHealthCheckPtrOutput() HttpsHealthCheckPt
 }
 
 func (o HttpsHealthCheckOutput) ToHttpsHealthCheckPtrOutputWithContext(ctx context.Context) HttpsHealthCheckPtrOutput {
-	return o.ApplyT(func(v HttpsHealthCheck) *HttpsHealthCheck {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpsHealthCheck) *HttpsHealthCheck {
 		return &v
 	}).(HttpsHealthCheckPtrOutput)
 }
 
-type HttpsHealthCheckPtrOutput struct {
-	*pulumi.OutputState
-}
+type HttpsHealthCheckPtrOutput struct{ *pulumi.OutputState }
 
 func (HttpsHealthCheckPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**HttpsHealthCheck)(nil))
@@ -455,6 +451,16 @@ func (o HttpsHealthCheckPtrOutput) ToHttpsHealthCheckPtrOutput() HttpsHealthChec
 
 func (o HttpsHealthCheckPtrOutput) ToHttpsHealthCheckPtrOutputWithContext(ctx context.Context) HttpsHealthCheckPtrOutput {
 	return o
+}
+
+func (o HttpsHealthCheckPtrOutput) Elem() HttpsHealthCheckOutput {
+	return o.ApplyT(func(v *HttpsHealthCheck) HttpsHealthCheck {
+		if v != nil {
+			return *v
+		}
+		var ret HttpsHealthCheck
+		return ret
+	}).(HttpsHealthCheckOutput)
 }
 
 type HttpsHealthCheckArrayOutput struct{ *pulumi.OutputState }

@@ -12,6 +12,7 @@ __all__ = [
     'GetDefaultServiceAccountResult',
     'AwaitableGetDefaultServiceAccountResult',
     'get_default_service_account',
+    'get_default_service_account_output',
 ]
 
 @pulumi.output_type
@@ -132,3 +133,25 @@ def get_default_service_account(project: Optional[str] = None,
         name=__ret__.name,
         project=__ret__.project,
         unique_id=__ret__.unique_id)
+
+
+@_utilities.lift_output_func(get_default_service_account)
+def get_default_service_account_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDefaultServiceAccountResult]:
+    """
+    Use this data source to retrieve default service account for this project
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    default = gcp.compute.get_default_service_account()
+    pulumi.export("defaultAccount", default.email)
+    ```
+
+
+    :param str project: The project ID. If it is not provided, the provider project is used.
+    """
+    ...

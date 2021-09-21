@@ -340,7 +340,7 @@ type CaPoolIamMemberArrayInput interface {
 type CaPoolIamMemberArray []CaPoolIamMemberInput
 
 func (CaPoolIamMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*CaPoolIamMember)(nil))
+	return reflect.TypeOf((*[]*CaPoolIamMember)(nil)).Elem()
 }
 
 func (i CaPoolIamMemberArray) ToCaPoolIamMemberArrayOutput() CaPoolIamMemberArrayOutput {
@@ -365,7 +365,7 @@ type CaPoolIamMemberMapInput interface {
 type CaPoolIamMemberMap map[string]CaPoolIamMemberInput
 
 func (CaPoolIamMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*CaPoolIamMember)(nil))
+	return reflect.TypeOf((*map[string]*CaPoolIamMember)(nil)).Elem()
 }
 
 func (i CaPoolIamMemberMap) ToCaPoolIamMemberMapOutput() CaPoolIamMemberMapOutput {
@@ -376,9 +376,7 @@ func (i CaPoolIamMemberMap) ToCaPoolIamMemberMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(CaPoolIamMemberMapOutput)
 }
 
-type CaPoolIamMemberOutput struct {
-	*pulumi.OutputState
-}
+type CaPoolIamMemberOutput struct{ *pulumi.OutputState }
 
 func (CaPoolIamMemberOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CaPoolIamMember)(nil))
@@ -397,14 +395,12 @@ func (o CaPoolIamMemberOutput) ToCaPoolIamMemberPtrOutput() CaPoolIamMemberPtrOu
 }
 
 func (o CaPoolIamMemberOutput) ToCaPoolIamMemberPtrOutputWithContext(ctx context.Context) CaPoolIamMemberPtrOutput {
-	return o.ApplyT(func(v CaPoolIamMember) *CaPoolIamMember {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CaPoolIamMember) *CaPoolIamMember {
 		return &v
 	}).(CaPoolIamMemberPtrOutput)
 }
 
-type CaPoolIamMemberPtrOutput struct {
-	*pulumi.OutputState
-}
+type CaPoolIamMemberPtrOutput struct{ *pulumi.OutputState }
 
 func (CaPoolIamMemberPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**CaPoolIamMember)(nil))
@@ -416,6 +412,16 @@ func (o CaPoolIamMemberPtrOutput) ToCaPoolIamMemberPtrOutput() CaPoolIamMemberPt
 
 func (o CaPoolIamMemberPtrOutput) ToCaPoolIamMemberPtrOutputWithContext(ctx context.Context) CaPoolIamMemberPtrOutput {
 	return o
+}
+
+func (o CaPoolIamMemberPtrOutput) Elem() CaPoolIamMemberOutput {
+	return o.ApplyT(func(v *CaPoolIamMember) CaPoolIamMember {
+		if v != nil {
+			return *v
+		}
+		var ret CaPoolIamMember
+		return ret
+	}).(CaPoolIamMemberOutput)
 }
 
 type CaPoolIamMemberArrayOutput struct{ *pulumi.OutputState }

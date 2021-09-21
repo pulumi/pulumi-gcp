@@ -267,7 +267,7 @@ type LiteTopicArrayInput interface {
 type LiteTopicArray []LiteTopicInput
 
 func (LiteTopicArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*LiteTopic)(nil))
+	return reflect.TypeOf((*[]*LiteTopic)(nil)).Elem()
 }
 
 func (i LiteTopicArray) ToLiteTopicArrayOutput() LiteTopicArrayOutput {
@@ -292,7 +292,7 @@ type LiteTopicMapInput interface {
 type LiteTopicMap map[string]LiteTopicInput
 
 func (LiteTopicMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*LiteTopic)(nil))
+	return reflect.TypeOf((*map[string]*LiteTopic)(nil)).Elem()
 }
 
 func (i LiteTopicMap) ToLiteTopicMapOutput() LiteTopicMapOutput {
@@ -303,9 +303,7 @@ func (i LiteTopicMap) ToLiteTopicMapOutputWithContext(ctx context.Context) LiteT
 	return pulumi.ToOutputWithContext(ctx, i).(LiteTopicMapOutput)
 }
 
-type LiteTopicOutput struct {
-	*pulumi.OutputState
-}
+type LiteTopicOutput struct{ *pulumi.OutputState }
 
 func (LiteTopicOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*LiteTopic)(nil))
@@ -324,14 +322,12 @@ func (o LiteTopicOutput) ToLiteTopicPtrOutput() LiteTopicPtrOutput {
 }
 
 func (o LiteTopicOutput) ToLiteTopicPtrOutputWithContext(ctx context.Context) LiteTopicPtrOutput {
-	return o.ApplyT(func(v LiteTopic) *LiteTopic {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LiteTopic) *LiteTopic {
 		return &v
 	}).(LiteTopicPtrOutput)
 }
 
-type LiteTopicPtrOutput struct {
-	*pulumi.OutputState
-}
+type LiteTopicPtrOutput struct{ *pulumi.OutputState }
 
 func (LiteTopicPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**LiteTopic)(nil))
@@ -343,6 +339,16 @@ func (o LiteTopicPtrOutput) ToLiteTopicPtrOutput() LiteTopicPtrOutput {
 
 func (o LiteTopicPtrOutput) ToLiteTopicPtrOutputWithContext(ctx context.Context) LiteTopicPtrOutput {
 	return o
+}
+
+func (o LiteTopicPtrOutput) Elem() LiteTopicOutput {
+	return o.ApplyT(func(v *LiteTopic) LiteTopic {
+		if v != nil {
+			return *v
+		}
+		var ret LiteTopic
+		return ret
+	}).(LiteTopicOutput)
 }
 
 type LiteTopicArrayOutput struct{ *pulumi.OutputState }

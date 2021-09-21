@@ -4,6 +4,9 @@
 package sql
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -68,4 +71,81 @@ type GetBackupRunResult struct {
 	StartTime string `pulumi:"startTime"`
 	// The status of this run. Refer to [API reference](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/backupRuns#SqlBackupRunStatus) for possible status values.
 	Status string `pulumi:"status"`
+}
+
+func GetBackupRunOutput(ctx *pulumi.Context, args GetBackupRunOutputArgs, opts ...pulumi.InvokeOption) GetBackupRunResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetBackupRunResult, error) {
+			args := v.(GetBackupRunArgs)
+			r, err := GetBackupRun(ctx, &args, opts...)
+			return *r, err
+		}).(GetBackupRunResultOutput)
+}
+
+// A collection of arguments for invoking getBackupRun.
+type GetBackupRunOutputArgs struct {
+	// The identifier for this backup run. Unique only for a specific Cloud SQL instance.
+	// If left empty and multiple backups exist for the instance, `mostRecent` must be set to `true`.
+	BackupId pulumi.IntPtrInput `pulumi:"backupId"`
+	// The name of the instance the backup is taken from.
+	Instance pulumi.StringInput `pulumi:"instance"`
+	// Toggles use of the most recent backup run if multiple backups exist for a
+	// Cloud SQL instance.
+	MostRecent pulumi.BoolPtrInput `pulumi:"mostRecent"`
+}
+
+func (GetBackupRunOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupRunArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getBackupRun.
+type GetBackupRunResultOutput struct{ *pulumi.OutputState }
+
+func (GetBackupRunResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupRunResult)(nil)).Elem()
+}
+
+func (o GetBackupRunResultOutput) ToGetBackupRunResultOutput() GetBackupRunResultOutput {
+	return o
+}
+
+func (o GetBackupRunResultOutput) ToGetBackupRunResultOutputWithContext(ctx context.Context) GetBackupRunResultOutput {
+	return o
+}
+
+func (o GetBackupRunResultOutput) BackupId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackupRunResult) int { return v.BackupId }).(pulumi.IntOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetBackupRunResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupRunResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetBackupRunResultOutput) Instance() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupRunResult) string { return v.Instance }).(pulumi.StringOutput)
+}
+
+// Location of the backups.
+func (o GetBackupRunResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupRunResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o GetBackupRunResultOutput) MostRecent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetBackupRunResult) *bool { return v.MostRecent }).(pulumi.BoolPtrOutput)
+}
+
+// The time the backup operation actually started in UTC timezone in RFC 3339 format, for
+// example 2012-11-15T16:19:00.094Z.
+func (o GetBackupRunResultOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupRunResult) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// The status of this run. Refer to [API reference](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/backupRuns#SqlBackupRunStatus) for possible status values.
+func (o GetBackupRunResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupRunResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetBackupRunResultOutput{})
 }

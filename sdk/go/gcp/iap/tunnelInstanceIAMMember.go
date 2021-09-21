@@ -450,7 +450,7 @@ type TunnelInstanceIAMMemberArrayInput interface {
 type TunnelInstanceIAMMemberArray []TunnelInstanceIAMMemberInput
 
 func (TunnelInstanceIAMMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TunnelInstanceIAMMember)(nil))
+	return reflect.TypeOf((*[]*TunnelInstanceIAMMember)(nil)).Elem()
 }
 
 func (i TunnelInstanceIAMMemberArray) ToTunnelInstanceIAMMemberArrayOutput() TunnelInstanceIAMMemberArrayOutput {
@@ -475,7 +475,7 @@ type TunnelInstanceIAMMemberMapInput interface {
 type TunnelInstanceIAMMemberMap map[string]TunnelInstanceIAMMemberInput
 
 func (TunnelInstanceIAMMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TunnelInstanceIAMMember)(nil))
+	return reflect.TypeOf((*map[string]*TunnelInstanceIAMMember)(nil)).Elem()
 }
 
 func (i TunnelInstanceIAMMemberMap) ToTunnelInstanceIAMMemberMapOutput() TunnelInstanceIAMMemberMapOutput {
@@ -486,9 +486,7 @@ func (i TunnelInstanceIAMMemberMap) ToTunnelInstanceIAMMemberMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(TunnelInstanceIAMMemberMapOutput)
 }
 
-type TunnelInstanceIAMMemberOutput struct {
-	*pulumi.OutputState
-}
+type TunnelInstanceIAMMemberOutput struct{ *pulumi.OutputState }
 
 func (TunnelInstanceIAMMemberOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TunnelInstanceIAMMember)(nil))
@@ -507,14 +505,12 @@ func (o TunnelInstanceIAMMemberOutput) ToTunnelInstanceIAMMemberPtrOutput() Tunn
 }
 
 func (o TunnelInstanceIAMMemberOutput) ToTunnelInstanceIAMMemberPtrOutputWithContext(ctx context.Context) TunnelInstanceIAMMemberPtrOutput {
-	return o.ApplyT(func(v TunnelInstanceIAMMember) *TunnelInstanceIAMMember {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TunnelInstanceIAMMember) *TunnelInstanceIAMMember {
 		return &v
 	}).(TunnelInstanceIAMMemberPtrOutput)
 }
 
-type TunnelInstanceIAMMemberPtrOutput struct {
-	*pulumi.OutputState
-}
+type TunnelInstanceIAMMemberPtrOutput struct{ *pulumi.OutputState }
 
 func (TunnelInstanceIAMMemberPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TunnelInstanceIAMMember)(nil))
@@ -526,6 +522,16 @@ func (o TunnelInstanceIAMMemberPtrOutput) ToTunnelInstanceIAMMemberPtrOutput() T
 
 func (o TunnelInstanceIAMMemberPtrOutput) ToTunnelInstanceIAMMemberPtrOutputWithContext(ctx context.Context) TunnelInstanceIAMMemberPtrOutput {
 	return o
+}
+
+func (o TunnelInstanceIAMMemberPtrOutput) Elem() TunnelInstanceIAMMemberOutput {
+	return o.ApplyT(func(v *TunnelInstanceIAMMember) TunnelInstanceIAMMember {
+		if v != nil {
+			return *v
+		}
+		var ret TunnelInstanceIAMMember
+		return ret
+	}).(TunnelInstanceIAMMemberOutput)
 }
 
 type TunnelInstanceIAMMemberArrayOutput struct{ *pulumi.OutputState }

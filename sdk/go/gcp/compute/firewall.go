@@ -752,7 +752,7 @@ type FirewallArrayInput interface {
 type FirewallArray []FirewallInput
 
 func (FirewallArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Firewall)(nil))
+	return reflect.TypeOf((*[]*Firewall)(nil)).Elem()
 }
 
 func (i FirewallArray) ToFirewallArrayOutput() FirewallArrayOutput {
@@ -777,7 +777,7 @@ type FirewallMapInput interface {
 type FirewallMap map[string]FirewallInput
 
 func (FirewallMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Firewall)(nil))
+	return reflect.TypeOf((*map[string]*Firewall)(nil)).Elem()
 }
 
 func (i FirewallMap) ToFirewallMapOutput() FirewallMapOutput {
@@ -788,9 +788,7 @@ func (i FirewallMap) ToFirewallMapOutputWithContext(ctx context.Context) Firewal
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallMapOutput)
 }
 
-type FirewallOutput struct {
-	*pulumi.OutputState
-}
+type FirewallOutput struct{ *pulumi.OutputState }
 
 func (FirewallOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Firewall)(nil))
@@ -809,14 +807,12 @@ func (o FirewallOutput) ToFirewallPtrOutput() FirewallPtrOutput {
 }
 
 func (o FirewallOutput) ToFirewallPtrOutputWithContext(ctx context.Context) FirewallPtrOutput {
-	return o.ApplyT(func(v Firewall) *Firewall {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Firewall) *Firewall {
 		return &v
 	}).(FirewallPtrOutput)
 }
 
-type FirewallPtrOutput struct {
-	*pulumi.OutputState
-}
+type FirewallPtrOutput struct{ *pulumi.OutputState }
 
 func (FirewallPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Firewall)(nil))
@@ -828,6 +824,16 @@ func (o FirewallPtrOutput) ToFirewallPtrOutput() FirewallPtrOutput {
 
 func (o FirewallPtrOutput) ToFirewallPtrOutputWithContext(ctx context.Context) FirewallPtrOutput {
 	return o
+}
+
+func (o FirewallPtrOutput) Elem() FirewallOutput {
+	return o.ApplyT(func(v *Firewall) Firewall {
+		if v != nil {
+			return *v
+		}
+		var ret Firewall
+		return ret
+	}).(FirewallOutput)
 }
 
 type FirewallArrayOutput struct{ *pulumi.OutputState }

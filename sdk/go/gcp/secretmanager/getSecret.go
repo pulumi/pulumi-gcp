@@ -4,6 +4,9 @@
 package secretmanager
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -62,4 +65,89 @@ type LookupSecretResult struct {
 	SecretId     string                 `pulumi:"secretId"`
 	Topics       []GetSecretTopic       `pulumi:"topics"`
 	Ttl          string                 `pulumi:"ttl"`
+}
+
+func LookupSecretOutput(ctx *pulumi.Context, args LookupSecretOutputArgs, opts ...pulumi.InvokeOption) LookupSecretResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupSecretResult, error) {
+			args := v.(LookupSecretArgs)
+			r, err := LookupSecret(ctx, &args, opts...)
+			return *r, err
+		}).(LookupSecretResultOutput)
+}
+
+// A collection of arguments for invoking getSecret.
+type LookupSecretOutputArgs struct {
+	// The ID of the project in which the resource belongs.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// The name of the secret.
+	SecretId pulumi.StringInput `pulumi:"secretId"`
+}
+
+func (LookupSecretOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSecretArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getSecret.
+type LookupSecretResultOutput struct{ *pulumi.OutputState }
+
+func (LookupSecretResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSecretResult)(nil)).Elem()
+}
+
+func (o LookupSecretResultOutput) ToLookupSecretResultOutput() LookupSecretResultOutput {
+	return o
+}
+
+func (o LookupSecretResultOutput) ToLookupSecretResultOutputWithContext(ctx context.Context) LookupSecretResultOutput {
+	return o
+}
+
+func (o LookupSecretResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o LookupSecretResultOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretResult) string { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupSecretResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupSecretResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupSecretResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupSecretResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupSecretResultOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupSecretResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupSecretResultOutput) Replications() GetSecretReplicationArrayOutput {
+	return o.ApplyT(func(v LookupSecretResult) []GetSecretReplication { return v.Replications }).(GetSecretReplicationArrayOutput)
+}
+
+func (o LookupSecretResultOutput) Rotations() GetSecretRotationArrayOutput {
+	return o.ApplyT(func(v LookupSecretResult) []GetSecretRotation { return v.Rotations }).(GetSecretRotationArrayOutput)
+}
+
+func (o LookupSecretResultOutput) SecretId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretResult) string { return v.SecretId }).(pulumi.StringOutput)
+}
+
+func (o LookupSecretResultOutput) Topics() GetSecretTopicArrayOutput {
+	return o.ApplyT(func(v LookupSecretResult) []GetSecretTopic { return v.Topics }).(GetSecretTopicArrayOutput)
+}
+
+func (o LookupSecretResultOutput) Ttl() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretResult) string { return v.Ttl }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupSecretResultOutput{})
 }

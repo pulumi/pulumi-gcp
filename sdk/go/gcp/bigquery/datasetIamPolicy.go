@@ -334,7 +334,7 @@ type DatasetIamPolicyArrayInput interface {
 type DatasetIamPolicyArray []DatasetIamPolicyInput
 
 func (DatasetIamPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*DatasetIamPolicy)(nil))
+	return reflect.TypeOf((*[]*DatasetIamPolicy)(nil)).Elem()
 }
 
 func (i DatasetIamPolicyArray) ToDatasetIamPolicyArrayOutput() DatasetIamPolicyArrayOutput {
@@ -359,7 +359,7 @@ type DatasetIamPolicyMapInput interface {
 type DatasetIamPolicyMap map[string]DatasetIamPolicyInput
 
 func (DatasetIamPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*DatasetIamPolicy)(nil))
+	return reflect.TypeOf((*map[string]*DatasetIamPolicy)(nil)).Elem()
 }
 
 func (i DatasetIamPolicyMap) ToDatasetIamPolicyMapOutput() DatasetIamPolicyMapOutput {
@@ -370,9 +370,7 @@ func (i DatasetIamPolicyMap) ToDatasetIamPolicyMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamPolicyMapOutput)
 }
 
-type DatasetIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type DatasetIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (DatasetIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DatasetIamPolicy)(nil))
@@ -391,14 +389,12 @@ func (o DatasetIamPolicyOutput) ToDatasetIamPolicyPtrOutput() DatasetIamPolicyPt
 }
 
 func (o DatasetIamPolicyOutput) ToDatasetIamPolicyPtrOutputWithContext(ctx context.Context) DatasetIamPolicyPtrOutput {
-	return o.ApplyT(func(v DatasetIamPolicy) *DatasetIamPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatasetIamPolicy) *DatasetIamPolicy {
 		return &v
 	}).(DatasetIamPolicyPtrOutput)
 }
 
-type DatasetIamPolicyPtrOutput struct {
-	*pulumi.OutputState
-}
+type DatasetIamPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (DatasetIamPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DatasetIamPolicy)(nil))
@@ -410,6 +406,16 @@ func (o DatasetIamPolicyPtrOutput) ToDatasetIamPolicyPtrOutput() DatasetIamPolic
 
 func (o DatasetIamPolicyPtrOutput) ToDatasetIamPolicyPtrOutputWithContext(ctx context.Context) DatasetIamPolicyPtrOutput {
 	return o
+}
+
+func (o DatasetIamPolicyPtrOutput) Elem() DatasetIamPolicyOutput {
+	return o.ApplyT(func(v *DatasetIamPolicy) DatasetIamPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret DatasetIamPolicy
+		return ret
+	}).(DatasetIamPolicyOutput)
 }
 
 type DatasetIamPolicyArrayOutput struct{ *pulumi.OutputState }

@@ -311,7 +311,7 @@ type RegionPerInstanceConfigArrayInput interface {
 type RegionPerInstanceConfigArray []RegionPerInstanceConfigInput
 
 func (RegionPerInstanceConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*RegionPerInstanceConfig)(nil))
+	return reflect.TypeOf((*[]*RegionPerInstanceConfig)(nil)).Elem()
 }
 
 func (i RegionPerInstanceConfigArray) ToRegionPerInstanceConfigArrayOutput() RegionPerInstanceConfigArrayOutput {
@@ -336,7 +336,7 @@ type RegionPerInstanceConfigMapInput interface {
 type RegionPerInstanceConfigMap map[string]RegionPerInstanceConfigInput
 
 func (RegionPerInstanceConfigMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*RegionPerInstanceConfig)(nil))
+	return reflect.TypeOf((*map[string]*RegionPerInstanceConfig)(nil)).Elem()
 }
 
 func (i RegionPerInstanceConfigMap) ToRegionPerInstanceConfigMapOutput() RegionPerInstanceConfigMapOutput {
@@ -347,9 +347,7 @@ func (i RegionPerInstanceConfigMap) ToRegionPerInstanceConfigMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(RegionPerInstanceConfigMapOutput)
 }
 
-type RegionPerInstanceConfigOutput struct {
-	*pulumi.OutputState
-}
+type RegionPerInstanceConfigOutput struct{ *pulumi.OutputState }
 
 func (RegionPerInstanceConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RegionPerInstanceConfig)(nil))
@@ -368,14 +366,12 @@ func (o RegionPerInstanceConfigOutput) ToRegionPerInstanceConfigPtrOutput() Regi
 }
 
 func (o RegionPerInstanceConfigOutput) ToRegionPerInstanceConfigPtrOutputWithContext(ctx context.Context) RegionPerInstanceConfigPtrOutput {
-	return o.ApplyT(func(v RegionPerInstanceConfig) *RegionPerInstanceConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionPerInstanceConfig) *RegionPerInstanceConfig {
 		return &v
 	}).(RegionPerInstanceConfigPtrOutput)
 }
 
-type RegionPerInstanceConfigPtrOutput struct {
-	*pulumi.OutputState
-}
+type RegionPerInstanceConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (RegionPerInstanceConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**RegionPerInstanceConfig)(nil))
@@ -387,6 +383,16 @@ func (o RegionPerInstanceConfigPtrOutput) ToRegionPerInstanceConfigPtrOutput() R
 
 func (o RegionPerInstanceConfigPtrOutput) ToRegionPerInstanceConfigPtrOutputWithContext(ctx context.Context) RegionPerInstanceConfigPtrOutput {
 	return o
+}
+
+func (o RegionPerInstanceConfigPtrOutput) Elem() RegionPerInstanceConfigOutput {
+	return o.ApplyT(func(v *RegionPerInstanceConfig) RegionPerInstanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RegionPerInstanceConfig
+		return ret
+	}).(RegionPerInstanceConfigOutput)
 }
 
 type RegionPerInstanceConfigArrayOutput struct{ *pulumi.OutputState }

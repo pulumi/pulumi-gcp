@@ -164,7 +164,7 @@ type IAMMemberArrayInput interface {
 type IAMMemberArray []IAMMemberInput
 
 func (IAMMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*IAMMember)(nil))
+	return reflect.TypeOf((*[]*IAMMember)(nil)).Elem()
 }
 
 func (i IAMMemberArray) ToIAMMemberArrayOutput() IAMMemberArrayOutput {
@@ -189,7 +189,7 @@ type IAMMemberMapInput interface {
 type IAMMemberMap map[string]IAMMemberInput
 
 func (IAMMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*IAMMember)(nil))
+	return reflect.TypeOf((*map[string]*IAMMember)(nil)).Elem()
 }
 
 func (i IAMMemberMap) ToIAMMemberMapOutput() IAMMemberMapOutput {
@@ -200,9 +200,7 @@ func (i IAMMemberMap) ToIAMMemberMapOutputWithContext(ctx context.Context) IAMMe
 	return pulumi.ToOutputWithContext(ctx, i).(IAMMemberMapOutput)
 }
 
-type IAMMemberOutput struct {
-	*pulumi.OutputState
-}
+type IAMMemberOutput struct{ *pulumi.OutputState }
 
 func (IAMMemberOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*IAMMember)(nil))
@@ -221,14 +219,12 @@ func (o IAMMemberOutput) ToIAMMemberPtrOutput() IAMMemberPtrOutput {
 }
 
 func (o IAMMemberOutput) ToIAMMemberPtrOutputWithContext(ctx context.Context) IAMMemberPtrOutput {
-	return o.ApplyT(func(v IAMMember) *IAMMember {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IAMMember) *IAMMember {
 		return &v
 	}).(IAMMemberPtrOutput)
 }
 
-type IAMMemberPtrOutput struct {
-	*pulumi.OutputState
-}
+type IAMMemberPtrOutput struct{ *pulumi.OutputState }
 
 func (IAMMemberPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**IAMMember)(nil))
@@ -240,6 +236,16 @@ func (o IAMMemberPtrOutput) ToIAMMemberPtrOutput() IAMMemberPtrOutput {
 
 func (o IAMMemberPtrOutput) ToIAMMemberPtrOutputWithContext(ctx context.Context) IAMMemberPtrOutput {
 	return o
+}
+
+func (o IAMMemberPtrOutput) Elem() IAMMemberOutput {
+	return o.ApplyT(func(v *IAMMember) IAMMember {
+		if v != nil {
+			return *v
+		}
+		var ret IAMMember
+		return ret
+	}).(IAMMemberOutput)
 }
 
 type IAMMemberArrayOutput struct{ *pulumi.OutputState }

@@ -250,7 +250,7 @@ type TenantArrayInput interface {
 type TenantArray []TenantInput
 
 func (TenantArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Tenant)(nil))
+	return reflect.TypeOf((*[]*Tenant)(nil)).Elem()
 }
 
 func (i TenantArray) ToTenantArrayOutput() TenantArrayOutput {
@@ -275,7 +275,7 @@ type TenantMapInput interface {
 type TenantMap map[string]TenantInput
 
 func (TenantMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Tenant)(nil))
+	return reflect.TypeOf((*map[string]*Tenant)(nil)).Elem()
 }
 
 func (i TenantMap) ToTenantMapOutput() TenantMapOutput {
@@ -286,9 +286,7 @@ func (i TenantMap) ToTenantMapOutputWithContext(ctx context.Context) TenantMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(TenantMapOutput)
 }
 
-type TenantOutput struct {
-	*pulumi.OutputState
-}
+type TenantOutput struct{ *pulumi.OutputState }
 
 func (TenantOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Tenant)(nil))
@@ -307,14 +305,12 @@ func (o TenantOutput) ToTenantPtrOutput() TenantPtrOutput {
 }
 
 func (o TenantOutput) ToTenantPtrOutputWithContext(ctx context.Context) TenantPtrOutput {
-	return o.ApplyT(func(v Tenant) *Tenant {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Tenant) *Tenant {
 		return &v
 	}).(TenantPtrOutput)
 }
 
-type TenantPtrOutput struct {
-	*pulumi.OutputState
-}
+type TenantPtrOutput struct{ *pulumi.OutputState }
 
 func (TenantPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Tenant)(nil))
@@ -326,6 +322,16 @@ func (o TenantPtrOutput) ToTenantPtrOutput() TenantPtrOutput {
 
 func (o TenantPtrOutput) ToTenantPtrOutputWithContext(ctx context.Context) TenantPtrOutput {
 	return o
+}
+
+func (o TenantPtrOutput) Elem() TenantOutput {
+	return o.ApplyT(func(v *Tenant) Tenant {
+		if v != nil {
+			return *v
+		}
+		var ret Tenant
+		return ret
+	}).(TenantOutput)
 }
 
 type TenantArrayOutput struct{ *pulumi.OutputState }

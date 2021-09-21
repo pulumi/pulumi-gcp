@@ -13,6 +13,7 @@ __all__ = [
     'GetSubnetworkResult',
     'AwaitableGetSubnetworkResult',
     'get_subnetwork',
+    'get_subnetwork_output',
 ]
 
 @pulumi.output_type
@@ -207,3 +208,35 @@ def get_subnetwork(name: Optional[str] = None,
         region=__ret__.region,
         secondary_ip_ranges=__ret__.secondary_ip_ranges,
         self_link=__ret__.self_link)
+
+
+@_utilities.lift_output_func(get_subnetwork)
+def get_subnetwork_output(name: Optional[pulumi.Input[Optional[str]]] = None,
+                          project: Optional[pulumi.Input[Optional[str]]] = None,
+                          region: Optional[pulumi.Input[Optional[str]]] = None,
+                          self_link: Optional[pulumi.Input[Optional[str]]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSubnetworkResult]:
+    """
+    Get a subnetwork within GCE from its name and region.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_subnetwork = gcp.compute.get_subnetwork(name="default-us-east1",
+        region="us-east1")
+    ```
+
+
+    :param str name: The name of the subnetwork. One of `name` or `self_link`
+           must be specified.
+    :param str project: The ID of the project in which the resource belongs. If it
+           is not provided, the provider project is used.
+    :param str region: The region this subnetwork has been created in. If
+           unspecified, this defaults to the region configured in the provider.
+    :param str self_link: The self link of the subnetwork. If `self_link` is
+           specified, `name`, `project`, and `region` are ignored.
+    """
+    ...

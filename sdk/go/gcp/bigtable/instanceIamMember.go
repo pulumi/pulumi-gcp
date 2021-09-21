@@ -317,7 +317,7 @@ type InstanceIamMemberArrayInput interface {
 type InstanceIamMemberArray []InstanceIamMemberInput
 
 func (InstanceIamMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*InstanceIamMember)(nil))
+	return reflect.TypeOf((*[]*InstanceIamMember)(nil)).Elem()
 }
 
 func (i InstanceIamMemberArray) ToInstanceIamMemberArrayOutput() InstanceIamMemberArrayOutput {
@@ -342,7 +342,7 @@ type InstanceIamMemberMapInput interface {
 type InstanceIamMemberMap map[string]InstanceIamMemberInput
 
 func (InstanceIamMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*InstanceIamMember)(nil))
+	return reflect.TypeOf((*map[string]*InstanceIamMember)(nil)).Elem()
 }
 
 func (i InstanceIamMemberMap) ToInstanceIamMemberMapOutput() InstanceIamMemberMapOutput {
@@ -353,9 +353,7 @@ func (i InstanceIamMemberMap) ToInstanceIamMemberMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamMemberMapOutput)
 }
 
-type InstanceIamMemberOutput struct {
-	*pulumi.OutputState
-}
+type InstanceIamMemberOutput struct{ *pulumi.OutputState }
 
 func (InstanceIamMemberOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceIamMember)(nil))
@@ -374,14 +372,12 @@ func (o InstanceIamMemberOutput) ToInstanceIamMemberPtrOutput() InstanceIamMembe
 }
 
 func (o InstanceIamMemberOutput) ToInstanceIamMemberPtrOutputWithContext(ctx context.Context) InstanceIamMemberPtrOutput {
-	return o.ApplyT(func(v InstanceIamMember) *InstanceIamMember {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceIamMember) *InstanceIamMember {
 		return &v
 	}).(InstanceIamMemberPtrOutput)
 }
 
-type InstanceIamMemberPtrOutput struct {
-	*pulumi.OutputState
-}
+type InstanceIamMemberPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceIamMemberPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**InstanceIamMember)(nil))
@@ -393,6 +389,16 @@ func (o InstanceIamMemberPtrOutput) ToInstanceIamMemberPtrOutput() InstanceIamMe
 
 func (o InstanceIamMemberPtrOutput) ToInstanceIamMemberPtrOutputWithContext(ctx context.Context) InstanceIamMemberPtrOutput {
 	return o
+}
+
+func (o InstanceIamMemberPtrOutput) Elem() InstanceIamMemberOutput {
+	return o.ApplyT(func(v *InstanceIamMember) InstanceIamMember {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceIamMember
+		return ret
+	}).(InstanceIamMemberOutput)
 }
 
 type InstanceIamMemberArrayOutput struct{ *pulumi.OutputState }

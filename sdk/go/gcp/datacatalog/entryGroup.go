@@ -262,7 +262,7 @@ type EntryGroupArrayInput interface {
 type EntryGroupArray []EntryGroupInput
 
 func (EntryGroupArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*EntryGroup)(nil))
+	return reflect.TypeOf((*[]*EntryGroup)(nil)).Elem()
 }
 
 func (i EntryGroupArray) ToEntryGroupArrayOutput() EntryGroupArrayOutput {
@@ -287,7 +287,7 @@ type EntryGroupMapInput interface {
 type EntryGroupMap map[string]EntryGroupInput
 
 func (EntryGroupMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*EntryGroup)(nil))
+	return reflect.TypeOf((*map[string]*EntryGroup)(nil)).Elem()
 }
 
 func (i EntryGroupMap) ToEntryGroupMapOutput() EntryGroupMapOutput {
@@ -298,9 +298,7 @@ func (i EntryGroupMap) ToEntryGroupMapOutputWithContext(ctx context.Context) Ent
 	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupMapOutput)
 }
 
-type EntryGroupOutput struct {
-	*pulumi.OutputState
-}
+type EntryGroupOutput struct{ *pulumi.OutputState }
 
 func (EntryGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EntryGroup)(nil))
@@ -319,14 +317,12 @@ func (o EntryGroupOutput) ToEntryGroupPtrOutput() EntryGroupPtrOutput {
 }
 
 func (o EntryGroupOutput) ToEntryGroupPtrOutputWithContext(ctx context.Context) EntryGroupPtrOutput {
-	return o.ApplyT(func(v EntryGroup) *EntryGroup {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EntryGroup) *EntryGroup {
 		return &v
 	}).(EntryGroupPtrOutput)
 }
 
-type EntryGroupPtrOutput struct {
-	*pulumi.OutputState
-}
+type EntryGroupPtrOutput struct{ *pulumi.OutputState }
 
 func (EntryGroupPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**EntryGroup)(nil))
@@ -338,6 +334,16 @@ func (o EntryGroupPtrOutput) ToEntryGroupPtrOutput() EntryGroupPtrOutput {
 
 func (o EntryGroupPtrOutput) ToEntryGroupPtrOutputWithContext(ctx context.Context) EntryGroupPtrOutput {
 	return o
+}
+
+func (o EntryGroupPtrOutput) Elem() EntryGroupOutput {
+	return o.ApplyT(func(v *EntryGroup) EntryGroup {
+		if v != nil {
+			return *v
+		}
+		var ret EntryGroup
+		return ret
+	}).(EntryGroupOutput)
 }
 
 type EntryGroupArrayOutput struct{ *pulumi.OutputState }

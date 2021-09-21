@@ -427,7 +427,7 @@ type RepositoryArrayInput interface {
 type RepositoryArray []RepositoryInput
 
 func (RepositoryArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Repository)(nil))
+	return reflect.TypeOf((*[]*Repository)(nil)).Elem()
 }
 
 func (i RepositoryArray) ToRepositoryArrayOutput() RepositoryArrayOutput {
@@ -452,7 +452,7 @@ type RepositoryMapInput interface {
 type RepositoryMap map[string]RepositoryInput
 
 func (RepositoryMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Repository)(nil))
+	return reflect.TypeOf((*map[string]*Repository)(nil)).Elem()
 }
 
 func (i RepositoryMap) ToRepositoryMapOutput() RepositoryMapOutput {
@@ -463,9 +463,7 @@ func (i RepositoryMap) ToRepositoryMapOutputWithContext(ctx context.Context) Rep
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryMapOutput)
 }
 
-type RepositoryOutput struct {
-	*pulumi.OutputState
-}
+type RepositoryOutput struct{ *pulumi.OutputState }
 
 func (RepositoryOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Repository)(nil))
@@ -484,14 +482,12 @@ func (o RepositoryOutput) ToRepositoryPtrOutput() RepositoryPtrOutput {
 }
 
 func (o RepositoryOutput) ToRepositoryPtrOutputWithContext(ctx context.Context) RepositoryPtrOutput {
-	return o.ApplyT(func(v Repository) *Repository {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Repository) *Repository {
 		return &v
 	}).(RepositoryPtrOutput)
 }
 
-type RepositoryPtrOutput struct {
-	*pulumi.OutputState
-}
+type RepositoryPtrOutput struct{ *pulumi.OutputState }
 
 func (RepositoryPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Repository)(nil))
@@ -503,6 +499,16 @@ func (o RepositoryPtrOutput) ToRepositoryPtrOutput() RepositoryPtrOutput {
 
 func (o RepositoryPtrOutput) ToRepositoryPtrOutputWithContext(ctx context.Context) RepositoryPtrOutput {
 	return o
+}
+
+func (o RepositoryPtrOutput) Elem() RepositoryOutput {
+	return o.ApplyT(func(v *Repository) Repository {
+		if v != nil {
+			return *v
+		}
+		var ret Repository
+		return ret
+	}).(RepositoryOutput)
 }
 
 type RepositoryArrayOutput struct{ *pulumi.OutputState }

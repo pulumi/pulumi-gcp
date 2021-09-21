@@ -563,7 +563,7 @@ type FhirStoreArrayInput interface {
 type FhirStoreArray []FhirStoreInput
 
 func (FhirStoreArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*FhirStore)(nil))
+	return reflect.TypeOf((*[]*FhirStore)(nil)).Elem()
 }
 
 func (i FhirStoreArray) ToFhirStoreArrayOutput() FhirStoreArrayOutput {
@@ -588,7 +588,7 @@ type FhirStoreMapInput interface {
 type FhirStoreMap map[string]FhirStoreInput
 
 func (FhirStoreMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*FhirStore)(nil))
+	return reflect.TypeOf((*map[string]*FhirStore)(nil)).Elem()
 }
 
 func (i FhirStoreMap) ToFhirStoreMapOutput() FhirStoreMapOutput {
@@ -599,9 +599,7 @@ func (i FhirStoreMap) ToFhirStoreMapOutputWithContext(ctx context.Context) FhirS
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreMapOutput)
 }
 
-type FhirStoreOutput struct {
-	*pulumi.OutputState
-}
+type FhirStoreOutput struct{ *pulumi.OutputState }
 
 func (FhirStoreOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*FhirStore)(nil))
@@ -620,14 +618,12 @@ func (o FhirStoreOutput) ToFhirStorePtrOutput() FhirStorePtrOutput {
 }
 
 func (o FhirStoreOutput) ToFhirStorePtrOutputWithContext(ctx context.Context) FhirStorePtrOutput {
-	return o.ApplyT(func(v FhirStore) *FhirStore {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FhirStore) *FhirStore {
 		return &v
 	}).(FhirStorePtrOutput)
 }
 
-type FhirStorePtrOutput struct {
-	*pulumi.OutputState
-}
+type FhirStorePtrOutput struct{ *pulumi.OutputState }
 
 func (FhirStorePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**FhirStore)(nil))
@@ -639,6 +635,16 @@ func (o FhirStorePtrOutput) ToFhirStorePtrOutput() FhirStorePtrOutput {
 
 func (o FhirStorePtrOutput) ToFhirStorePtrOutputWithContext(ctx context.Context) FhirStorePtrOutput {
 	return o
+}
+
+func (o FhirStorePtrOutput) Elem() FhirStoreOutput {
+	return o.ApplyT(func(v *FhirStore) FhirStore {
+		if v != nil {
+			return *v
+		}
+		var ret FhirStore
+		return ret
+	}).(FhirStoreOutput)
 }
 
 type FhirStoreArrayOutput struct{ *pulumi.OutputState }

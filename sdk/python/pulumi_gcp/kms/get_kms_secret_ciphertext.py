@@ -12,6 +12,7 @@ __all__ = [
     'GetKMSSecretCiphertextResult',
     'AwaitableGetKMSSecretCiphertextResult',
     'get_kms_secret_ciphertext',
+    'get_kms_secret_ciphertext_output',
 ]
 
 @pulumi.output_type
@@ -109,3 +110,30 @@ def get_kms_secret_ciphertext(crypto_key: Optional[str] = None,
         crypto_key=__ret__.crypto_key,
         id=__ret__.id,
         plaintext=__ret__.plaintext)
+
+
+@_utilities.lift_output_func(get_kms_secret_ciphertext)
+def get_kms_secret_ciphertext_output(crypto_key: Optional[pulumi.Input[str]] = None,
+                                     plaintext: Optional[pulumi.Input[str]] = None,
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKMSSecretCiphertextResult]:
+    """
+    !> **Warning:** This data source is deprecated. Use the `kms.SecretCiphertext` **resource** instead.
+
+    This data source allows you to encrypt data with Google Cloud KMS and use the
+    ciphertext within your resource definitions.
+
+    For more information see
+    [the official documentation](https://cloud.google.com/kms/docs/encrypt-decrypt).
+
+    > **NOTE:** Using this data source will allow you to conceal secret data within your
+    resource definitions, but it does not take care of protecting that data in the
+    logging output, plan output, or state output.  Please take care to secure your secret
+    data outside of resource definitions.
+
+
+    :param str crypto_key: The id of the CryptoKey that will be used to
+           encrypt the provided plaintext. This is represented by the format
+           `{projectId}/{location}/{keyRingName}/{cryptoKeyName}`.
+    :param str plaintext: The plaintext to be encrypted
+    """
+    ...

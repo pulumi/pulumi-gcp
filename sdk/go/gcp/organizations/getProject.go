@@ -4,6 +4,9 @@
 package organizations
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -61,4 +64,84 @@ type LookupProjectResult struct {
 	OrgId      string  `pulumi:"orgId"`
 	ProjectId  *string `pulumi:"projectId"`
 	SkipDelete bool    `pulumi:"skipDelete"`
+}
+
+func LookupProjectOutput(ctx *pulumi.Context, args LookupProjectOutputArgs, opts ...pulumi.InvokeOption) LookupProjectResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupProjectResult, error) {
+			args := v.(LookupProjectArgs)
+			r, err := LookupProject(ctx, &args, opts...)
+			return *r, err
+		}).(LookupProjectResultOutput)
+}
+
+// A collection of arguments for invoking getProject.
+type LookupProjectOutputArgs struct {
+	// The project ID. If it is not provided, the provider project is used.
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+}
+
+func (LookupProjectOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupProjectArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getProject.
+type LookupProjectResultOutput struct{ *pulumi.OutputState }
+
+func (LookupProjectResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupProjectResult)(nil)).Elem()
+}
+
+func (o LookupProjectResultOutput) ToLookupProjectResultOutput() LookupProjectResultOutput {
+	return o
+}
+
+func (o LookupProjectResultOutput) ToLookupProjectResultOutputWithContext(ctx context.Context) LookupProjectResultOutput {
+	return o
+}
+
+func (o LookupProjectResultOutput) AutoCreateNetwork() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupProjectResult) bool { return v.AutoCreateNetwork }).(pulumi.BoolOutput)
+}
+
+func (o LookupProjectResultOutput) BillingAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.BillingAccount }).(pulumi.StringOutput)
+}
+
+func (o LookupProjectResultOutput) FolderId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.FolderId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupProjectResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupProjectResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupProjectResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupProjectResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The numeric identifier of the project.
+func (o LookupProjectResultOutput) Number() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.Number }).(pulumi.StringOutput)
+}
+
+func (o LookupProjectResultOutput) OrgId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.OrgId }).(pulumi.StringOutput)
+}
+
+func (o LookupProjectResultOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupProjectResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupProjectResultOutput) SkipDelete() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupProjectResult) bool { return v.SkipDelete }).(pulumi.BoolOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupProjectResultOutput{})
 }

@@ -105,7 +105,7 @@ func (o DatabaseEncryptionConfigOutput) ToDatabaseEncryptionConfigPtrOutput() Da
 }
 
 func (o DatabaseEncryptionConfigOutput) ToDatabaseEncryptionConfigPtrOutputWithContext(ctx context.Context) DatabaseEncryptionConfigPtrOutput {
-	return o.ApplyT(func(v DatabaseEncryptionConfig) *DatabaseEncryptionConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseEncryptionConfig) *DatabaseEncryptionConfig {
 		return &v
 	}).(DatabaseEncryptionConfigPtrOutput)
 }
@@ -131,7 +131,13 @@ func (o DatabaseEncryptionConfigPtrOutput) ToDatabaseEncryptionConfigPtrOutputWi
 }
 
 func (o DatabaseEncryptionConfigPtrOutput) Elem() DatabaseEncryptionConfigOutput {
-	return o.ApplyT(func(v *DatabaseEncryptionConfig) DatabaseEncryptionConfig { return *v }).(DatabaseEncryptionConfigOutput)
+	return o.ApplyT(func(v *DatabaseEncryptionConfig) DatabaseEncryptionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseEncryptionConfig
+		return ret
+	}).(DatabaseEncryptionConfigOutput)
 }
 
 // Fully qualified name of the KMS key to use to encrypt this database. This key must exist
@@ -240,10 +246,11 @@ func (o DatabaseIAMBindingConditionOutput) ToDatabaseIAMBindingConditionPtrOutpu
 }
 
 func (o DatabaseIAMBindingConditionOutput) ToDatabaseIAMBindingConditionPtrOutputWithContext(ctx context.Context) DatabaseIAMBindingConditionPtrOutput {
-	return o.ApplyT(func(v DatabaseIAMBindingCondition) *DatabaseIAMBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseIAMBindingCondition) *DatabaseIAMBindingCondition {
 		return &v
 	}).(DatabaseIAMBindingConditionPtrOutput)
 }
+
 func (o DatabaseIAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -271,7 +278,13 @@ func (o DatabaseIAMBindingConditionPtrOutput) ToDatabaseIAMBindingConditionPtrOu
 }
 
 func (o DatabaseIAMBindingConditionPtrOutput) Elem() DatabaseIAMBindingConditionOutput {
-	return o.ApplyT(func(v *DatabaseIAMBindingCondition) DatabaseIAMBindingCondition { return *v }).(DatabaseIAMBindingConditionOutput)
+	return o.ApplyT(func(v *DatabaseIAMBindingCondition) DatabaseIAMBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseIAMBindingCondition
+		return ret
+	}).(DatabaseIAMBindingConditionOutput)
 }
 
 func (o DatabaseIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -396,10 +409,11 @@ func (o DatabaseIAMMemberConditionOutput) ToDatabaseIAMMemberConditionPtrOutput(
 }
 
 func (o DatabaseIAMMemberConditionOutput) ToDatabaseIAMMemberConditionPtrOutputWithContext(ctx context.Context) DatabaseIAMMemberConditionPtrOutput {
-	return o.ApplyT(func(v DatabaseIAMMemberCondition) *DatabaseIAMMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseIAMMemberCondition) *DatabaseIAMMemberCondition {
 		return &v
 	}).(DatabaseIAMMemberConditionPtrOutput)
 }
+
 func (o DatabaseIAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -427,7 +441,13 @@ func (o DatabaseIAMMemberConditionPtrOutput) ToDatabaseIAMMemberConditionPtrOutp
 }
 
 func (o DatabaseIAMMemberConditionPtrOutput) Elem() DatabaseIAMMemberConditionOutput {
-	return o.ApplyT(func(v *DatabaseIAMMemberCondition) DatabaseIAMMemberCondition { return *v }).(DatabaseIAMMemberConditionOutput)
+	return o.ApplyT(func(v *DatabaseIAMMemberCondition) DatabaseIAMMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseIAMMemberCondition
+		return ret
+	}).(DatabaseIAMMemberConditionOutput)
 }
 
 func (o DatabaseIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -552,10 +572,11 @@ func (o InstanceIAMBindingConditionOutput) ToInstanceIAMBindingConditionPtrOutpu
 }
 
 func (o InstanceIAMBindingConditionOutput) ToInstanceIAMBindingConditionPtrOutputWithContext(ctx context.Context) InstanceIAMBindingConditionPtrOutput {
-	return o.ApplyT(func(v InstanceIAMBindingCondition) *InstanceIAMBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceIAMBindingCondition) *InstanceIAMBindingCondition {
 		return &v
 	}).(InstanceIAMBindingConditionPtrOutput)
 }
+
 func (o InstanceIAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -583,7 +604,13 @@ func (o InstanceIAMBindingConditionPtrOutput) ToInstanceIAMBindingConditionPtrOu
 }
 
 func (o InstanceIAMBindingConditionPtrOutput) Elem() InstanceIAMBindingConditionOutput {
-	return o.ApplyT(func(v *InstanceIAMBindingCondition) InstanceIAMBindingCondition { return *v }).(InstanceIAMBindingConditionOutput)
+	return o.ApplyT(func(v *InstanceIAMBindingCondition) InstanceIAMBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceIAMBindingCondition
+		return ret
+	}).(InstanceIAMBindingConditionOutput)
 }
 
 func (o InstanceIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -708,10 +735,11 @@ func (o InstanceIAMMemberConditionOutput) ToInstanceIAMMemberConditionPtrOutput(
 }
 
 func (o InstanceIAMMemberConditionOutput) ToInstanceIAMMemberConditionPtrOutputWithContext(ctx context.Context) InstanceIAMMemberConditionPtrOutput {
-	return o.ApplyT(func(v InstanceIAMMemberCondition) *InstanceIAMMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceIAMMemberCondition) *InstanceIAMMemberCondition {
 		return &v
 	}).(InstanceIAMMemberConditionPtrOutput)
 }
+
 func (o InstanceIAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -739,7 +767,13 @@ func (o InstanceIAMMemberConditionPtrOutput) ToInstanceIAMMemberConditionPtrOutp
 }
 
 func (o InstanceIAMMemberConditionPtrOutput) Elem() InstanceIAMMemberConditionOutput {
-	return o.ApplyT(func(v *InstanceIAMMemberCondition) InstanceIAMMemberCondition { return *v }).(InstanceIAMMemberConditionOutput)
+	return o.ApplyT(func(v *InstanceIAMMemberCondition) InstanceIAMMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceIAMMemberCondition
+		return ret
+	}).(InstanceIAMMemberConditionOutput)
 }
 
 func (o InstanceIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {

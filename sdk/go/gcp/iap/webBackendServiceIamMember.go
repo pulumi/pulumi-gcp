@@ -439,7 +439,7 @@ type WebBackendServiceIamMemberArrayInput interface {
 type WebBackendServiceIamMemberArray []WebBackendServiceIamMemberInput
 
 func (WebBackendServiceIamMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*WebBackendServiceIamMember)(nil))
+	return reflect.TypeOf((*[]*WebBackendServiceIamMember)(nil)).Elem()
 }
 
 func (i WebBackendServiceIamMemberArray) ToWebBackendServiceIamMemberArrayOutput() WebBackendServiceIamMemberArrayOutput {
@@ -464,7 +464,7 @@ type WebBackendServiceIamMemberMapInput interface {
 type WebBackendServiceIamMemberMap map[string]WebBackendServiceIamMemberInput
 
 func (WebBackendServiceIamMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*WebBackendServiceIamMember)(nil))
+	return reflect.TypeOf((*map[string]*WebBackendServiceIamMember)(nil)).Elem()
 }
 
 func (i WebBackendServiceIamMemberMap) ToWebBackendServiceIamMemberMapOutput() WebBackendServiceIamMemberMapOutput {
@@ -475,9 +475,7 @@ func (i WebBackendServiceIamMemberMap) ToWebBackendServiceIamMemberMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(WebBackendServiceIamMemberMapOutput)
 }
 
-type WebBackendServiceIamMemberOutput struct {
-	*pulumi.OutputState
-}
+type WebBackendServiceIamMemberOutput struct{ *pulumi.OutputState }
 
 func (WebBackendServiceIamMemberOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*WebBackendServiceIamMember)(nil))
@@ -496,14 +494,12 @@ func (o WebBackendServiceIamMemberOutput) ToWebBackendServiceIamMemberPtrOutput(
 }
 
 func (o WebBackendServiceIamMemberOutput) ToWebBackendServiceIamMemberPtrOutputWithContext(ctx context.Context) WebBackendServiceIamMemberPtrOutput {
-	return o.ApplyT(func(v WebBackendServiceIamMember) *WebBackendServiceIamMember {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebBackendServiceIamMember) *WebBackendServiceIamMember {
 		return &v
 	}).(WebBackendServiceIamMemberPtrOutput)
 }
 
-type WebBackendServiceIamMemberPtrOutput struct {
-	*pulumi.OutputState
-}
+type WebBackendServiceIamMemberPtrOutput struct{ *pulumi.OutputState }
 
 func (WebBackendServiceIamMemberPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**WebBackendServiceIamMember)(nil))
@@ -515,6 +511,16 @@ func (o WebBackendServiceIamMemberPtrOutput) ToWebBackendServiceIamMemberPtrOutp
 
 func (o WebBackendServiceIamMemberPtrOutput) ToWebBackendServiceIamMemberPtrOutputWithContext(ctx context.Context) WebBackendServiceIamMemberPtrOutput {
 	return o
+}
+
+func (o WebBackendServiceIamMemberPtrOutput) Elem() WebBackendServiceIamMemberOutput {
+	return o.ApplyT(func(v *WebBackendServiceIamMember) WebBackendServiceIamMember {
+		if v != nil {
+			return *v
+		}
+		var ret WebBackendServiceIamMember
+		return ret
+	}).(WebBackendServiceIamMemberOutput)
 }
 
 type WebBackendServiceIamMemberArrayOutput struct{ *pulumi.OutputState }

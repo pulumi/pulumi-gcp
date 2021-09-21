@@ -384,20 +384,20 @@ class TargetGrpcProxy(pulumi.CustomResource):
                 default_service=home.id,
                 route_rules=[gcp.compute.URLMapPathMatcherRouteRuleArgs(
                     priority=1,
-                    header_action={
-                        "requestHeadersToRemoves": ["RemoveMe2"],
-                        "requestHeadersToAdds": [{
-                            "headerName": "AddSomethingElse",
-                            "headerValue": "MyOtherValue",
-                            "replace": True,
-                        }],
-                        "responseHeadersToRemoves": ["RemoveMe3"],
-                        "responseHeadersToAdds": [{
-                            "headerName": "AddMe",
-                            "headerValue": "MyValue",
-                            "replace": False,
-                        }],
-                    },
+                    header_action=gcp.compute.URLMapPathMatcherRouteRuleHeaderActionArgs(
+                        request_headers_to_removes=["RemoveMe2"],
+                        request_headers_to_adds=[gcp.compute.URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs(
+                            header_name="AddSomethingElse",
+                            header_value="MyOtherValue",
+                            replace=True,
+                        )],
+                        response_headers_to_removes=["RemoveMe3"],
+                        response_headers_to_adds=[gcp.compute.URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs(
+                            header_name="AddMe",
+                            header_value="MyValue",
+                            replace=False,
+                        )],
+                    ),
                     match_rules=[gcp.compute.URLMapPathMatcherRouteRuleMatchRuleArgs(
                         full_path_match="a full path",
                         header_matches=[gcp.compute.URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs(
@@ -406,13 +406,13 @@ class TargetGrpcProxy(pulumi.CustomResource):
                             invert_match=True,
                         )],
                         ignore_case=True,
-                        metadata_filters=[{
-                            "filterMatchCriteria": "MATCH_ANY",
-                            "filterLabels": [{
-                                "name": "PLANET",
-                                "value": "MARS",
-                            }],
-                        }],
+                        metadata_filters=[gcp.compute.URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs(
+                            filter_match_criteria="MATCH_ANY",
+                            filter_labels=[gcp.compute.URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs(
+                                name="PLANET",
+                                value="MARS",
+                            )],
+                        )],
                         query_parameter_matches=[gcp.compute.URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs(
                             name="a query parameter",
                             present_match=True,
@@ -530,20 +530,20 @@ class TargetGrpcProxy(pulumi.CustomResource):
                 default_service=home.id,
                 route_rules=[gcp.compute.URLMapPathMatcherRouteRuleArgs(
                     priority=1,
-                    header_action={
-                        "requestHeadersToRemoves": ["RemoveMe2"],
-                        "requestHeadersToAdds": [{
-                            "headerName": "AddSomethingElse",
-                            "headerValue": "MyOtherValue",
-                            "replace": True,
-                        }],
-                        "responseHeadersToRemoves": ["RemoveMe3"],
-                        "responseHeadersToAdds": [{
-                            "headerName": "AddMe",
-                            "headerValue": "MyValue",
-                            "replace": False,
-                        }],
-                    },
+                    header_action=gcp.compute.URLMapPathMatcherRouteRuleHeaderActionArgs(
+                        request_headers_to_removes=["RemoveMe2"],
+                        request_headers_to_adds=[gcp.compute.URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs(
+                            header_name="AddSomethingElse",
+                            header_value="MyOtherValue",
+                            replace=True,
+                        )],
+                        response_headers_to_removes=["RemoveMe3"],
+                        response_headers_to_adds=[gcp.compute.URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs(
+                            header_name="AddMe",
+                            header_value="MyValue",
+                            replace=False,
+                        )],
+                    ),
                     match_rules=[gcp.compute.URLMapPathMatcherRouteRuleMatchRuleArgs(
                         full_path_match="a full path",
                         header_matches=[gcp.compute.URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs(
@@ -552,13 +552,13 @@ class TargetGrpcProxy(pulumi.CustomResource):
                             invert_match=True,
                         )],
                         ignore_case=True,
-                        metadata_filters=[{
-                            "filterMatchCriteria": "MATCH_ANY",
-                            "filterLabels": [{
-                                "name": "PLANET",
-                                "value": "MARS",
-                            }],
-                        }],
+                        metadata_filters=[gcp.compute.URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs(
+                            filter_match_criteria="MATCH_ANY",
+                            filter_labels=[gcp.compute.URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs(
+                                name="PLANET",
+                                value="MARS",
+                            )],
+                        )],
                         query_parameter_matches=[gcp.compute.URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs(
                             name="a query parameter",
                             present_match=True,

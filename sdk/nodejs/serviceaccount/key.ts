@@ -18,11 +18,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const myaccount = new gcp.serviceAccount.Account("myaccount", {
+ * const myaccount = new gcp.serviceaccount.Account("myaccount", {
  *     accountId: "myaccount",
  *     displayName: "My Service Account",
  * });
- * const mykey = new gcp.serviceAccount.Key("mykey", {
+ * const mykey = new gcp.serviceaccount.Key("mykey", {
  *     serviceAccountId: myaccount.name,
  *     publicKeyType: "TYPE_X509_PEM_FILE",
  * });

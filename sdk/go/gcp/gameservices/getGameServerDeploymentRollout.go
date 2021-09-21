@@ -4,6 +4,9 @@
 package gameservices
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -59,4 +62,71 @@ type LookupGameServerDeploymentRolloutResult struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project string `pulumi:"project"`
+}
+
+func LookupGameServerDeploymentRolloutOutput(ctx *pulumi.Context, args LookupGameServerDeploymentRolloutOutputArgs, opts ...pulumi.InvokeOption) LookupGameServerDeploymentRolloutResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupGameServerDeploymentRolloutResult, error) {
+			args := v.(LookupGameServerDeploymentRolloutArgs)
+			r, err := LookupGameServerDeploymentRollout(ctx, &args, opts...)
+			return *r, err
+		}).(LookupGameServerDeploymentRolloutResultOutput)
+}
+
+// A collection of arguments for invoking getGameServerDeploymentRollout.
+type LookupGameServerDeploymentRolloutOutputArgs struct {
+	// The deployment to get the rollout state from. Only 1 rollout must be associated with each deployment.
+	DeploymentId pulumi.StringInput `pulumi:"deploymentId"`
+}
+
+func (LookupGameServerDeploymentRolloutOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupGameServerDeploymentRolloutArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getGameServerDeploymentRollout.
+type LookupGameServerDeploymentRolloutResultOutput struct{ *pulumi.OutputState }
+
+func (LookupGameServerDeploymentRolloutResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupGameServerDeploymentRolloutResult)(nil)).Elem()
+}
+
+func (o LookupGameServerDeploymentRolloutResultOutput) ToLookupGameServerDeploymentRolloutResultOutput() LookupGameServerDeploymentRolloutResultOutput {
+	return o
+}
+
+func (o LookupGameServerDeploymentRolloutResultOutput) ToLookupGameServerDeploymentRolloutResultOutputWithContext(ctx context.Context) LookupGameServerDeploymentRolloutResultOutput {
+	return o
+}
+
+func (o LookupGameServerDeploymentRolloutResultOutput) DefaultGameServerConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGameServerDeploymentRolloutResult) string { return v.DefaultGameServerConfig }).(pulumi.StringOutput)
+}
+
+func (o LookupGameServerDeploymentRolloutResultOutput) DeploymentId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGameServerDeploymentRolloutResult) string { return v.DeploymentId }).(pulumi.StringOutput)
+}
+
+func (o LookupGameServerDeploymentRolloutResultOutput) GameServerConfigOverrides() GetGameServerDeploymentRolloutGameServerConfigOverrideArrayOutput {
+	return o.ApplyT(func(v LookupGameServerDeploymentRolloutResult) []GetGameServerDeploymentRolloutGameServerConfigOverride {
+		return v.GameServerConfigOverrides
+	}).(GetGameServerDeploymentRolloutGameServerConfigOverrideArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupGameServerDeploymentRolloutResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGameServerDeploymentRolloutResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupGameServerDeploymentRolloutResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGameServerDeploymentRolloutResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
+func (o LookupGameServerDeploymentRolloutResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGameServerDeploymentRolloutResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupGameServerDeploymentRolloutResultOutput{})
 }

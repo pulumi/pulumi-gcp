@@ -12,6 +12,7 @@ __all__ = [
     'GetLocationsResult',
     'AwaitableGetLocationsResult',
     'get_locations',
+    'get_locations_output',
 ]
 
 @pulumi.output_type
@@ -99,3 +100,31 @@ def get_locations(project: Optional[str] = None,
         id=__ret__.id,
         locations=__ret__.locations,
         project=__ret__.project)
+
+
+@_utilities.lift_output_func(get_locations)
+def get_locations_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLocationsResult]:
+    """
+    Get Cloud Run locations available for a project.
+
+    To get more information about Cloud Run, see:
+
+    * [API documentation](https://cloud.google.com/run/docs/reference/rest/v1/projects.locations)
+    * How-to Guides
+        * [Official Documentation](https://cloud.google.com/run/docs/)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    available = gcp.cloudrun.get_locations()
+    ```
+
+
+    :param str project: The project to list versions for. If it
+           is not provided, the provider project is used.
+    """
+    ...

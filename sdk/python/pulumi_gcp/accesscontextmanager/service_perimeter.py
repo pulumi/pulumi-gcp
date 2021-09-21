@@ -506,12 +506,12 @@ class ServicePerimeter(pulumi.CustomResource):
         access_level = gcp.accesscontextmanager.AccessLevel("access-level",
             basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
                 conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
-                    device_policy={
-                        "osConstraints": [{
-                            "osType": "DESKTOP_CHROME_OS",
-                        }],
-                        "requireScreenLock": False,
-                    },
+                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
+                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs(
+                            os_type="DESKTOP_CHROME_OS",
+                        )],
+                        require_screen_lock=False,
+                    ),
                     regions=[
                         "CH",
                         "IT",
@@ -558,12 +558,12 @@ class ServicePerimeter(pulumi.CustomResource):
             title="secure_data_exchange",
             basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
                 conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
-                    device_policy={
-                        "requireScreenLock": False,
-                        "osConstraints": [{
-                            "osType": "DESKTOP_CHROME_OS",
-                        }],
-                    },
+                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
+                        require_screen_lock=False,
+                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs(
+                            os_type="DESKTOP_CHROME_OS",
+                        )],
+                    ),
                     regions=[
                         "CH",
                         "IT",
@@ -750,12 +750,12 @@ class ServicePerimeter(pulumi.CustomResource):
         access_level = gcp.accesscontextmanager.AccessLevel("access-level",
             basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
                 conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
-                    device_policy={
-                        "osConstraints": [{
-                            "osType": "DESKTOP_CHROME_OS",
-                        }],
-                        "requireScreenLock": False,
-                    },
+                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
+                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs(
+                            os_type="DESKTOP_CHROME_OS",
+                        )],
+                        require_screen_lock=False,
+                    ),
                     regions=[
                         "CH",
                         "IT",
@@ -802,12 +802,12 @@ class ServicePerimeter(pulumi.CustomResource):
             title="secure_data_exchange",
             basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
                 conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
-                    device_policy={
-                        "requireScreenLock": False,
-                        "osConstraints": [{
-                            "osType": "DESKTOP_CHROME_OS",
-                        }],
-                    },
+                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
+                        require_screen_lock=False,
+                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs(
+                            os_type="DESKTOP_CHROME_OS",
+                        )],
+                    ),
                     regions=[
                         "CH",
                         "IT",

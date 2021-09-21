@@ -4,6 +4,9 @@
 package compute
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -63,4 +66,81 @@ type GetHcVpnGatewayResult struct {
 	Region        *string                       `pulumi:"region"`
 	SelfLink      string                        `pulumi:"selfLink"`
 	VpnInterfaces []GetHcVpnGatewayVpnInterface `pulumi:"vpnInterfaces"`
+}
+
+func GetHcVpnGatewayOutput(ctx *pulumi.Context, args GetHcVpnGatewayOutputArgs, opts ...pulumi.InvokeOption) GetHcVpnGatewayResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetHcVpnGatewayResult, error) {
+			args := v.(GetHcVpnGatewayArgs)
+			r, err := GetHcVpnGateway(ctx, &args, opts...)
+			return *r, err
+		}).(GetHcVpnGatewayResultOutput)
+}
+
+// A collection of arguments for invoking getHcVpnGateway.
+type GetHcVpnGatewayOutputArgs struct {
+	// The name of the forwarding rule.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The project in which the resource belongs. If it
+	// is not provided, the provider project is used.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// The region in which the resource belongs. If it
+	// is not provided, the project region is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (GetHcVpnGatewayOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHcVpnGatewayArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getHcVpnGateway.
+type GetHcVpnGatewayResultOutput struct{ *pulumi.OutputState }
+
+func (GetHcVpnGatewayResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHcVpnGatewayResult)(nil)).Elem()
+}
+
+func (o GetHcVpnGatewayResultOutput) ToGetHcVpnGatewayResultOutput() GetHcVpnGatewayResultOutput {
+	return o
+}
+
+func (o GetHcVpnGatewayResultOutput) ToGetHcVpnGatewayResultOutputWithContext(ctx context.Context) GetHcVpnGatewayResultOutput {
+	return o
+}
+
+func (o GetHcVpnGatewayResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHcVpnGatewayResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetHcVpnGatewayResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHcVpnGatewayResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetHcVpnGatewayResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHcVpnGatewayResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetHcVpnGatewayResultOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHcVpnGatewayResult) string { return v.Network }).(pulumi.StringOutput)
+}
+
+func (o GetHcVpnGatewayResultOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetHcVpnGatewayResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o GetHcVpnGatewayResultOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetHcVpnGatewayResult) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+func (o GetHcVpnGatewayResultOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHcVpnGatewayResult) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+func (o GetHcVpnGatewayResultOutput) VpnInterfaces() GetHcVpnGatewayVpnInterfaceArrayOutput {
+	return o.ApplyT(func(v GetHcVpnGatewayResult) []GetHcVpnGatewayVpnInterface { return v.VpnInterfaces }).(GetHcVpnGatewayVpnInterfaceArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetHcVpnGatewayResultOutput{})
 }

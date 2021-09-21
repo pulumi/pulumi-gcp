@@ -4,6 +4,9 @@
 package compute
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -111,4 +114,151 @@ type LookupImageResult struct {
 	SourceImageId string `pulumi:"sourceImageId"`
 	// The status of the image. Possible values are **FAILED**, **PENDING**, or **READY**.
 	Status string `pulumi:"status"`
+}
+
+func LookupImageOutput(ctx *pulumi.Context, args LookupImageOutputArgs, opts ...pulumi.InvokeOption) LookupImageResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupImageResult, error) {
+			args := v.(LookupImageArgs)
+			r, err := LookupImage(ctx, &args, opts...)
+			return *r, err
+		}).(LookupImageResultOutput)
+}
+
+// A collection of arguments for invoking getImage.
+type LookupImageOutputArgs struct {
+	// The family name of the image.
+	Family pulumi.StringPtrInput `pulumi:"family"`
+	Filter pulumi.StringPtrInput `pulumi:"filter"`
+	// The name of the image.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The project in which the resource belongs. If it is not
+	// provided, the provider project is used. If you are using a
+	// [public base image][pubimg], be sure to specify the correct Image Project.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupImageOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupImageArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getImage.
+type LookupImageResultOutput struct{ *pulumi.OutputState }
+
+func (LookupImageResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupImageResult)(nil)).Elem()
+}
+
+func (o LookupImageResultOutput) ToLookupImageResultOutput() LookupImageResultOutput {
+	return o
+}
+
+func (o LookupImageResultOutput) ToLookupImageResultOutputWithContext(ctx context.Context) LookupImageResultOutput {
+	return o
+}
+
+// The size of the image tar.gz archive stored in Google Cloud Storage in bytes.
+func (o LookupImageResultOutput) ArchiveSizeBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupImageResult) int { return v.ArchiveSizeBytes }).(pulumi.IntOutput)
+}
+
+// The creation timestamp in RFC3339 text format.
+func (o LookupImageResultOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageResult) string { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// An optional description of this image.
+func (o LookupImageResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The size of the image when restored onto a persistent disk in gigabytes.
+func (o LookupImageResultOutput) DiskSizeGb() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupImageResult) int { return v.DiskSizeGb }).(pulumi.IntOutput)
+}
+
+// The family name of the image.
+func (o LookupImageResultOutput) Family() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageResult) string { return v.Family }).(pulumi.StringOutput)
+}
+
+func (o LookupImageResultOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupImageResult) *string { return v.Filter }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupImageResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+// encoded SHA-256 hash of the [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption)
+// that protects this image.
+func (o LookupImageResultOutput) ImageEncryptionKeySha256() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageResult) string { return v.ImageEncryptionKeySha256 }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the image.
+func (o LookupImageResultOutput) ImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageResult) string { return v.ImageId }).(pulumi.StringOutput)
+}
+
+// A fingerprint for the labels being applied to this image.
+func (o LookupImageResultOutput) LabelFingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageResult) string { return v.LabelFingerprint }).(pulumi.StringOutput)
+}
+
+// A map of labels applied to this image.
+func (o LookupImageResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupImageResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// A list of applicable license URI.
+func (o LookupImageResultOutput) Licenses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupImageResult) []string { return v.Licenses }).(pulumi.StringArrayOutput)
+}
+
+// The name of the image.
+func (o LookupImageResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupImageResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// The URI of the image.
+func (o LookupImageResultOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageResult) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// The URL of the source disk used to create this image.
+func (o LookupImageResultOutput) SourceDisk() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageResult) string { return v.SourceDisk }).(pulumi.StringOutput)
+}
+
+// The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+// encoded SHA-256 hash of the [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption)
+// that protects this image.
+func (o LookupImageResultOutput) SourceDiskEncryptionKeySha256() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageResult) string { return v.SourceDiskEncryptionKeySha256 }).(pulumi.StringOutput)
+}
+
+// The ID value of the disk used to create this image.
+func (o LookupImageResultOutput) SourceDiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageResult) string { return v.SourceDiskId }).(pulumi.StringOutput)
+}
+
+// The ID value of the image used to create this image.
+func (o LookupImageResultOutput) SourceImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageResult) string { return v.SourceImageId }).(pulumi.StringOutput)
+}
+
+// The status of the image. Possible values are **FAILED**, **PENDING**, or **READY**.
+func (o LookupImageResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupImageResultOutput{})
 }

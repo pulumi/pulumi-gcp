@@ -326,7 +326,7 @@ type OrganizationFeedArrayInput interface {
 type OrganizationFeedArray []OrganizationFeedInput
 
 func (OrganizationFeedArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*OrganizationFeed)(nil))
+	return reflect.TypeOf((*[]*OrganizationFeed)(nil)).Elem()
 }
 
 func (i OrganizationFeedArray) ToOrganizationFeedArrayOutput() OrganizationFeedArrayOutput {
@@ -351,7 +351,7 @@ type OrganizationFeedMapInput interface {
 type OrganizationFeedMap map[string]OrganizationFeedInput
 
 func (OrganizationFeedMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*OrganizationFeed)(nil))
+	return reflect.TypeOf((*map[string]*OrganizationFeed)(nil)).Elem()
 }
 
 func (i OrganizationFeedMap) ToOrganizationFeedMapOutput() OrganizationFeedMapOutput {
@@ -362,9 +362,7 @@ func (i OrganizationFeedMap) ToOrganizationFeedMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationFeedMapOutput)
 }
 
-type OrganizationFeedOutput struct {
-	*pulumi.OutputState
-}
+type OrganizationFeedOutput struct{ *pulumi.OutputState }
 
 func (OrganizationFeedOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OrganizationFeed)(nil))
@@ -383,14 +381,12 @@ func (o OrganizationFeedOutput) ToOrganizationFeedPtrOutput() OrganizationFeedPt
 }
 
 func (o OrganizationFeedOutput) ToOrganizationFeedPtrOutputWithContext(ctx context.Context) OrganizationFeedPtrOutput {
-	return o.ApplyT(func(v OrganizationFeed) *OrganizationFeed {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationFeed) *OrganizationFeed {
 		return &v
 	}).(OrganizationFeedPtrOutput)
 }
 
-type OrganizationFeedPtrOutput struct {
-	*pulumi.OutputState
-}
+type OrganizationFeedPtrOutput struct{ *pulumi.OutputState }
 
 func (OrganizationFeedPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**OrganizationFeed)(nil))
@@ -402,6 +398,16 @@ func (o OrganizationFeedPtrOutput) ToOrganizationFeedPtrOutput() OrganizationFee
 
 func (o OrganizationFeedPtrOutput) ToOrganizationFeedPtrOutputWithContext(ctx context.Context) OrganizationFeedPtrOutput {
 	return o
+}
+
+func (o OrganizationFeedPtrOutput) Elem() OrganizationFeedOutput {
+	return o.ApplyT(func(v *OrganizationFeed) OrganizationFeed {
+		if v != nil {
+			return *v
+		}
+		var ret OrganizationFeed
+		return ret
+	}).(OrganizationFeedOutput)
 }
 
 type OrganizationFeedArrayOutput struct{ *pulumi.OutputState }

@@ -446,7 +446,7 @@ type AgentArrayInput interface {
 type AgentArray []AgentInput
 
 func (AgentArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Agent)(nil))
+	return reflect.TypeOf((*[]*Agent)(nil)).Elem()
 }
 
 func (i AgentArray) ToAgentArrayOutput() AgentArrayOutput {
@@ -471,7 +471,7 @@ type AgentMapInput interface {
 type AgentMap map[string]AgentInput
 
 func (AgentMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Agent)(nil))
+	return reflect.TypeOf((*map[string]*Agent)(nil)).Elem()
 }
 
 func (i AgentMap) ToAgentMapOutput() AgentMapOutput {
@@ -482,9 +482,7 @@ func (i AgentMap) ToAgentMapOutputWithContext(ctx context.Context) AgentMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(AgentMapOutput)
 }
 
-type AgentOutput struct {
-	*pulumi.OutputState
-}
+type AgentOutput struct{ *pulumi.OutputState }
 
 func (AgentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Agent)(nil))
@@ -503,14 +501,12 @@ func (o AgentOutput) ToAgentPtrOutput() AgentPtrOutput {
 }
 
 func (o AgentOutput) ToAgentPtrOutputWithContext(ctx context.Context) AgentPtrOutput {
-	return o.ApplyT(func(v Agent) *Agent {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Agent) *Agent {
 		return &v
 	}).(AgentPtrOutput)
 }
 
-type AgentPtrOutput struct {
-	*pulumi.OutputState
-}
+type AgentPtrOutput struct{ *pulumi.OutputState }
 
 func (AgentPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Agent)(nil))
@@ -522,6 +518,16 @@ func (o AgentPtrOutput) ToAgentPtrOutput() AgentPtrOutput {
 
 func (o AgentPtrOutput) ToAgentPtrOutputWithContext(ctx context.Context) AgentPtrOutput {
 	return o
+}
+
+func (o AgentPtrOutput) Elem() AgentOutput {
+	return o.ApplyT(func(v *Agent) Agent {
+		if v != nil {
+			return *v
+		}
+		var ret Agent
+		return ret
+	}).(AgentOutput)
 }
 
 type AgentArrayOutput struct{ *pulumi.OutputState }

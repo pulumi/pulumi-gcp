@@ -227,7 +227,7 @@ type BrandArrayInput interface {
 type BrandArray []BrandInput
 
 func (BrandArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Brand)(nil))
+	return reflect.TypeOf((*[]*Brand)(nil)).Elem()
 }
 
 func (i BrandArray) ToBrandArrayOutput() BrandArrayOutput {
@@ -252,7 +252,7 @@ type BrandMapInput interface {
 type BrandMap map[string]BrandInput
 
 func (BrandMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Brand)(nil))
+	return reflect.TypeOf((*map[string]*Brand)(nil)).Elem()
 }
 
 func (i BrandMap) ToBrandMapOutput() BrandMapOutput {
@@ -263,9 +263,7 @@ func (i BrandMap) ToBrandMapOutputWithContext(ctx context.Context) BrandMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(BrandMapOutput)
 }
 
-type BrandOutput struct {
-	*pulumi.OutputState
-}
+type BrandOutput struct{ *pulumi.OutputState }
 
 func (BrandOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Brand)(nil))
@@ -284,14 +282,12 @@ func (o BrandOutput) ToBrandPtrOutput() BrandPtrOutput {
 }
 
 func (o BrandOutput) ToBrandPtrOutputWithContext(ctx context.Context) BrandPtrOutput {
-	return o.ApplyT(func(v Brand) *Brand {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Brand) *Brand {
 		return &v
 	}).(BrandPtrOutput)
 }
 
-type BrandPtrOutput struct {
-	*pulumi.OutputState
-}
+type BrandPtrOutput struct{ *pulumi.OutputState }
 
 func (BrandPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Brand)(nil))
@@ -303,6 +299,16 @@ func (o BrandPtrOutput) ToBrandPtrOutput() BrandPtrOutput {
 
 func (o BrandPtrOutput) ToBrandPtrOutputWithContext(ctx context.Context) BrandPtrOutput {
 	return o
+}
+
+func (o BrandPtrOutput) Elem() BrandOutput {
+	return o.ApplyT(func(v *Brand) Brand {
+		if v != nil {
+			return *v
+		}
+		var ret Brand
+		return ret
+	}).(BrandOutput)
 }
 
 type BrandArrayOutput struct{ *pulumi.OutputState }

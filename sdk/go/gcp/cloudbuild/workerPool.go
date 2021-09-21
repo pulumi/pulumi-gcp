@@ -219,7 +219,7 @@ type WorkerPoolArrayInput interface {
 type WorkerPoolArray []WorkerPoolInput
 
 func (WorkerPoolArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*WorkerPool)(nil))
+	return reflect.TypeOf((*[]*WorkerPool)(nil)).Elem()
 }
 
 func (i WorkerPoolArray) ToWorkerPoolArrayOutput() WorkerPoolArrayOutput {
@@ -244,7 +244,7 @@ type WorkerPoolMapInput interface {
 type WorkerPoolMap map[string]WorkerPoolInput
 
 func (WorkerPoolMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*WorkerPool)(nil))
+	return reflect.TypeOf((*map[string]*WorkerPool)(nil)).Elem()
 }
 
 func (i WorkerPoolMap) ToWorkerPoolMapOutput() WorkerPoolMapOutput {
@@ -255,9 +255,7 @@ func (i WorkerPoolMap) ToWorkerPoolMapOutputWithContext(ctx context.Context) Wor
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolMapOutput)
 }
 
-type WorkerPoolOutput struct {
-	*pulumi.OutputState
-}
+type WorkerPoolOutput struct{ *pulumi.OutputState }
 
 func (WorkerPoolOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*WorkerPool)(nil))
@@ -276,14 +274,12 @@ func (o WorkerPoolOutput) ToWorkerPoolPtrOutput() WorkerPoolPtrOutput {
 }
 
 func (o WorkerPoolOutput) ToWorkerPoolPtrOutputWithContext(ctx context.Context) WorkerPoolPtrOutput {
-	return o.ApplyT(func(v WorkerPool) *WorkerPool {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerPool) *WorkerPool {
 		return &v
 	}).(WorkerPoolPtrOutput)
 }
 
-type WorkerPoolPtrOutput struct {
-	*pulumi.OutputState
-}
+type WorkerPoolPtrOutput struct{ *pulumi.OutputState }
 
 func (WorkerPoolPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**WorkerPool)(nil))
@@ -295,6 +291,16 @@ func (o WorkerPoolPtrOutput) ToWorkerPoolPtrOutput() WorkerPoolPtrOutput {
 
 func (o WorkerPoolPtrOutput) ToWorkerPoolPtrOutputWithContext(ctx context.Context) WorkerPoolPtrOutput {
 	return o
+}
+
+func (o WorkerPoolPtrOutput) Elem() WorkerPoolOutput {
+	return o.ApplyT(func(v *WorkerPool) WorkerPool {
+		if v != nil {
+			return *v
+		}
+		var ret WorkerPool
+		return ret
+	}).(WorkerPoolOutput)
 }
 
 type WorkerPoolArrayOutput struct{ *pulumi.OutputState }

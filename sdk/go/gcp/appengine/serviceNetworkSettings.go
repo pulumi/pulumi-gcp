@@ -259,7 +259,7 @@ type ServiceNetworkSettingsArrayInput interface {
 type ServiceNetworkSettingsArray []ServiceNetworkSettingsInput
 
 func (ServiceNetworkSettingsArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ServiceNetworkSettings)(nil))
+	return reflect.TypeOf((*[]*ServiceNetworkSettings)(nil)).Elem()
 }
 
 func (i ServiceNetworkSettingsArray) ToServiceNetworkSettingsArrayOutput() ServiceNetworkSettingsArrayOutput {
@@ -284,7 +284,7 @@ type ServiceNetworkSettingsMapInput interface {
 type ServiceNetworkSettingsMap map[string]ServiceNetworkSettingsInput
 
 func (ServiceNetworkSettingsMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ServiceNetworkSettings)(nil))
+	return reflect.TypeOf((*map[string]*ServiceNetworkSettings)(nil)).Elem()
 }
 
 func (i ServiceNetworkSettingsMap) ToServiceNetworkSettingsMapOutput() ServiceNetworkSettingsMapOutput {
@@ -295,9 +295,7 @@ func (i ServiceNetworkSettingsMap) ToServiceNetworkSettingsMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceNetworkSettingsMapOutput)
 }
 
-type ServiceNetworkSettingsOutput struct {
-	*pulumi.OutputState
-}
+type ServiceNetworkSettingsOutput struct{ *pulumi.OutputState }
 
 func (ServiceNetworkSettingsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServiceNetworkSettings)(nil))
@@ -316,14 +314,12 @@ func (o ServiceNetworkSettingsOutput) ToServiceNetworkSettingsPtrOutput() Servic
 }
 
 func (o ServiceNetworkSettingsOutput) ToServiceNetworkSettingsPtrOutputWithContext(ctx context.Context) ServiceNetworkSettingsPtrOutput {
-	return o.ApplyT(func(v ServiceNetworkSettings) *ServiceNetworkSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceNetworkSettings) *ServiceNetworkSettings {
 		return &v
 	}).(ServiceNetworkSettingsPtrOutput)
 }
 
-type ServiceNetworkSettingsPtrOutput struct {
-	*pulumi.OutputState
-}
+type ServiceNetworkSettingsPtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceNetworkSettingsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ServiceNetworkSettings)(nil))
@@ -335,6 +331,16 @@ func (o ServiceNetworkSettingsPtrOutput) ToServiceNetworkSettingsPtrOutput() Ser
 
 func (o ServiceNetworkSettingsPtrOutput) ToServiceNetworkSettingsPtrOutputWithContext(ctx context.Context) ServiceNetworkSettingsPtrOutput {
 	return o
+}
+
+func (o ServiceNetworkSettingsPtrOutput) Elem() ServiceNetworkSettingsOutput {
+	return o.ApplyT(func(v *ServiceNetworkSettings) ServiceNetworkSettings {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceNetworkSettings
+		return ret
+	}).(ServiceNetworkSettingsOutput)
 }
 
 type ServiceNetworkSettingsArrayOutput struct{ *pulumi.OutputState }

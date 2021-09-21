@@ -105,10 +105,11 @@ func (o SecretIamBindingConditionOutput) ToSecretIamBindingConditionPtrOutput() 
 }
 
 func (o SecretIamBindingConditionOutput) ToSecretIamBindingConditionPtrOutputWithContext(ctx context.Context) SecretIamBindingConditionPtrOutput {
-	return o.ApplyT(func(v SecretIamBindingCondition) *SecretIamBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretIamBindingCondition) *SecretIamBindingCondition {
 		return &v
 	}).(SecretIamBindingConditionPtrOutput)
 }
+
 func (o SecretIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -136,7 +137,13 @@ func (o SecretIamBindingConditionPtrOutput) ToSecretIamBindingConditionPtrOutput
 }
 
 func (o SecretIamBindingConditionPtrOutput) Elem() SecretIamBindingConditionOutput {
-	return o.ApplyT(func(v *SecretIamBindingCondition) SecretIamBindingCondition { return *v }).(SecretIamBindingConditionOutput)
+	return o.ApplyT(func(v *SecretIamBindingCondition) SecretIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret SecretIamBindingCondition
+		return ret
+	}).(SecretIamBindingConditionOutput)
 }
 
 func (o SecretIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -261,10 +268,11 @@ func (o SecretIamMemberConditionOutput) ToSecretIamMemberConditionPtrOutput() Se
 }
 
 func (o SecretIamMemberConditionOutput) ToSecretIamMemberConditionPtrOutputWithContext(ctx context.Context) SecretIamMemberConditionPtrOutput {
-	return o.ApplyT(func(v SecretIamMemberCondition) *SecretIamMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretIamMemberCondition) *SecretIamMemberCondition {
 		return &v
 	}).(SecretIamMemberConditionPtrOutput)
 }
+
 func (o SecretIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -292,7 +300,13 @@ func (o SecretIamMemberConditionPtrOutput) ToSecretIamMemberConditionPtrOutputWi
 }
 
 func (o SecretIamMemberConditionPtrOutput) Elem() SecretIamMemberConditionOutput {
-	return o.ApplyT(func(v *SecretIamMemberCondition) SecretIamMemberCondition { return *v }).(SecretIamMemberConditionOutput)
+	return o.ApplyT(func(v *SecretIamMemberCondition) SecretIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret SecretIamMemberCondition
+		return ret
+	}).(SecretIamMemberConditionOutput)
 }
 
 func (o SecretIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -421,7 +435,7 @@ func (o SecretReplicationOutput) ToSecretReplicationPtrOutput() SecretReplicatio
 }
 
 func (o SecretReplicationOutput) ToSecretReplicationPtrOutputWithContext(ctx context.Context) SecretReplicationPtrOutput {
-	return o.ApplyT(func(v SecretReplication) *SecretReplication {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretReplication) *SecretReplication {
 		return &v
 	}).(SecretReplicationPtrOutput)
 }
@@ -452,7 +466,13 @@ func (o SecretReplicationPtrOutput) ToSecretReplicationPtrOutputWithContext(ctx 
 }
 
 func (o SecretReplicationPtrOutput) Elem() SecretReplicationOutput {
-	return o.ApplyT(func(v *SecretReplication) SecretReplication { return *v }).(SecretReplicationOutput)
+	return o.ApplyT(func(v *SecretReplication) SecretReplication {
+		if v != nil {
+			return *v
+		}
+		var ret SecretReplication
+		return ret
+	}).(SecretReplicationOutput)
 }
 
 // The Secret will automatically be replicated without any restrictions.
@@ -571,7 +591,7 @@ func (o SecretReplicationUserManagedOutput) ToSecretReplicationUserManagedPtrOut
 }
 
 func (o SecretReplicationUserManagedOutput) ToSecretReplicationUserManagedPtrOutputWithContext(ctx context.Context) SecretReplicationUserManagedPtrOutput {
-	return o.ApplyT(func(v SecretReplicationUserManaged) *SecretReplicationUserManaged {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretReplicationUserManaged) *SecretReplicationUserManaged {
 		return &v
 	}).(SecretReplicationUserManagedPtrOutput)
 }
@@ -597,7 +617,13 @@ func (o SecretReplicationUserManagedPtrOutput) ToSecretReplicationUserManagedPtr
 }
 
 func (o SecretReplicationUserManagedPtrOutput) Elem() SecretReplicationUserManagedOutput {
-	return o.ApplyT(func(v *SecretReplicationUserManaged) SecretReplicationUserManaged { return *v }).(SecretReplicationUserManagedOutput)
+	return o.ApplyT(func(v *SecretReplicationUserManaged) SecretReplicationUserManaged {
+		if v != nil {
+			return *v
+		}
+		var ret SecretReplicationUserManaged
+		return ret
+	}).(SecretReplicationUserManagedOutput)
 }
 
 // The list of Replicas for this Secret. Cannot be empty.
@@ -815,7 +841,7 @@ func (o SecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput) ToSe
 }
 
 func (o SecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput) ToSecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutputWithContext(ctx context.Context) SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput {
-	return o.ApplyT(func(v SecretReplicationUserManagedReplicaCustomerManagedEncryption) *SecretReplicationUserManagedReplicaCustomerManagedEncryption {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretReplicationUserManagedReplicaCustomerManagedEncryption) *SecretReplicationUserManagedReplicaCustomerManagedEncryption {
 		return &v
 	}).(SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput)
 }
@@ -841,7 +867,11 @@ func (o SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput) T
 
 func (o SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput) Elem() SecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput {
 	return o.ApplyT(func(v *SecretReplicationUserManagedReplicaCustomerManagedEncryption) SecretReplicationUserManagedReplicaCustomerManagedEncryption {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret SecretReplicationUserManagedReplicaCustomerManagedEncryption
+		return ret
 	}).(SecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput)
 }
 
@@ -956,7 +986,7 @@ func (o SecretRotationOutput) ToSecretRotationPtrOutput() SecretRotationPtrOutpu
 }
 
 func (o SecretRotationOutput) ToSecretRotationPtrOutputWithContext(ctx context.Context) SecretRotationPtrOutput {
-	return o.ApplyT(func(v SecretRotation) *SecretRotation {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretRotation) *SecretRotation {
 		return &v
 	}).(SecretRotationPtrOutput)
 }
@@ -988,7 +1018,13 @@ func (o SecretRotationPtrOutput) ToSecretRotationPtrOutputWithContext(ctx contex
 }
 
 func (o SecretRotationPtrOutput) Elem() SecretRotationOutput {
-	return o.ApplyT(func(v *SecretRotation) SecretRotation { return *v }).(SecretRotationOutput)
+	return o.ApplyT(func(v *SecretRotation) SecretRotation {
+		if v != nil {
+			return *v
+		}
+		var ret SecretRotation
+		return ret
+	}).(SecretRotationOutput)
 }
 
 // Timestamp in UTC at which the Secret is scheduled to rotate.

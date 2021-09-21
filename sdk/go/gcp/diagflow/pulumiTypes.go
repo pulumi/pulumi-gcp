@@ -103,7 +103,7 @@ func (o CxAgentSpeechToTextSettingsOutput) ToCxAgentSpeechToTextSettingsPtrOutpu
 }
 
 func (o CxAgentSpeechToTextSettingsOutput) ToCxAgentSpeechToTextSettingsPtrOutputWithContext(ctx context.Context) CxAgentSpeechToTextSettingsPtrOutput {
-	return o.ApplyT(func(v CxAgentSpeechToTextSettings) *CxAgentSpeechToTextSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxAgentSpeechToTextSettings) *CxAgentSpeechToTextSettings {
 		return &v
 	}).(CxAgentSpeechToTextSettingsPtrOutput)
 }
@@ -128,7 +128,13 @@ func (o CxAgentSpeechToTextSettingsPtrOutput) ToCxAgentSpeechToTextSettingsPtrOu
 }
 
 func (o CxAgentSpeechToTextSettingsPtrOutput) Elem() CxAgentSpeechToTextSettingsOutput {
-	return o.ApplyT(func(v *CxAgentSpeechToTextSettings) CxAgentSpeechToTextSettings { return *v }).(CxAgentSpeechToTextSettingsOutput)
+	return o.ApplyT(func(v *CxAgentSpeechToTextSettings) CxAgentSpeechToTextSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CxAgentSpeechToTextSettings
+		return ret
+	}).(CxAgentSpeechToTextSettingsOutput)
 }
 
 // Whether to use speech adaptation for speech recognition.
@@ -696,7 +702,7 @@ func (o CxFlowEventHandlerTriggerFulfillmentOutput) ToCxFlowEventHandlerTriggerF
 }
 
 func (o CxFlowEventHandlerTriggerFulfillmentOutput) ToCxFlowEventHandlerTriggerFulfillmentPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentPtrOutput {
-	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillment) *CxFlowEventHandlerTriggerFulfillment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowEventHandlerTriggerFulfillment) *CxFlowEventHandlerTriggerFulfillment {
 		return &v
 	}).(CxFlowEventHandlerTriggerFulfillmentPtrOutput)
 }
@@ -739,7 +745,13 @@ func (o CxFlowEventHandlerTriggerFulfillmentPtrOutput) ToCxFlowEventHandlerTrigg
 }
 
 func (o CxFlowEventHandlerTriggerFulfillmentPtrOutput) Elem() CxFlowEventHandlerTriggerFulfillmentOutput {
-	return o.ApplyT(func(v *CxFlowEventHandlerTriggerFulfillment) CxFlowEventHandlerTriggerFulfillment { return *v }).(CxFlowEventHandlerTriggerFulfillmentOutput)
+	return o.ApplyT(func(v *CxFlowEventHandlerTriggerFulfillment) CxFlowEventHandlerTriggerFulfillment {
+		if v != nil {
+			return *v
+		}
+		var ret CxFlowEventHandlerTriggerFulfillment
+		return ret
+	}).(CxFlowEventHandlerTriggerFulfillmentOutput)
 }
 
 // The list of rich message responses to present to the user.
@@ -981,7 +993,7 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageTextOutput) ToCxFlowEventHand
 }
 
 func (o CxFlowEventHandlerTriggerFulfillmentMessageTextOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput {
-	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentMessageText) *CxFlowEventHandlerTriggerFulfillmentMessageText {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowEventHandlerTriggerFulfillmentMessageText) *CxFlowEventHandlerTriggerFulfillmentMessageText {
 		return &v
 	}).(CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput)
 }
@@ -1013,7 +1025,11 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput) ToCxFlowEventH
 
 func (o CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput) Elem() CxFlowEventHandlerTriggerFulfillmentMessageTextOutput {
 	return o.ApplyT(func(v *CxFlowEventHandlerTriggerFulfillmentMessageText) CxFlowEventHandlerTriggerFulfillmentMessageText {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret CxFlowEventHandlerTriggerFulfillmentMessageText
+		return ret
 	}).(CxFlowEventHandlerTriggerFulfillmentMessageTextOutput)
 }
 
@@ -1153,7 +1169,7 @@ func (o CxFlowNluSettingsOutput) ToCxFlowNluSettingsPtrOutput() CxFlowNluSetting
 }
 
 func (o CxFlowNluSettingsOutput) ToCxFlowNluSettingsPtrOutputWithContext(ctx context.Context) CxFlowNluSettingsPtrOutput {
-	return o.ApplyT(func(v CxFlowNluSettings) *CxFlowNluSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowNluSettings) *CxFlowNluSettings {
 		return &v
 	}).(CxFlowNluSettingsPtrOutput)
 }
@@ -1195,7 +1211,13 @@ func (o CxFlowNluSettingsPtrOutput) ToCxFlowNluSettingsPtrOutputWithContext(ctx 
 }
 
 func (o CxFlowNluSettingsPtrOutput) Elem() CxFlowNluSettingsOutput {
-	return o.ApplyT(func(v *CxFlowNluSettings) CxFlowNluSettings { return *v }).(CxFlowNluSettingsOutput)
+	return o.ApplyT(func(v *CxFlowNluSettings) CxFlowNluSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CxFlowNluSettings
+		return ret
+	}).(CxFlowNluSettingsOutput)
 }
 
 // To filter out false positive results and still get variety in matched natural language inputs for your agent, you can tune the machine learning classification threshold.
@@ -1502,7 +1524,7 @@ func (o CxFlowTransitionRouteTriggerFulfillmentOutput) ToCxFlowTransitionRouteTr
 }
 
 func (o CxFlowTransitionRouteTriggerFulfillmentOutput) ToCxFlowTransitionRouteTriggerFulfillmentPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentPtrOutput {
-	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillment) *CxFlowTransitionRouteTriggerFulfillment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowTransitionRouteTriggerFulfillment) *CxFlowTransitionRouteTriggerFulfillment {
 		return &v
 	}).(CxFlowTransitionRouteTriggerFulfillmentPtrOutput)
 }
@@ -1545,7 +1567,13 @@ func (o CxFlowTransitionRouteTriggerFulfillmentPtrOutput) ToCxFlowTransitionRout
 }
 
 func (o CxFlowTransitionRouteTriggerFulfillmentPtrOutput) Elem() CxFlowTransitionRouteTriggerFulfillmentOutput {
-	return o.ApplyT(func(v *CxFlowTransitionRouteTriggerFulfillment) CxFlowTransitionRouteTriggerFulfillment { return *v }).(CxFlowTransitionRouteTriggerFulfillmentOutput)
+	return o.ApplyT(func(v *CxFlowTransitionRouteTriggerFulfillment) CxFlowTransitionRouteTriggerFulfillment {
+		if v != nil {
+			return *v
+		}
+		var ret CxFlowTransitionRouteTriggerFulfillment
+		return ret
+	}).(CxFlowTransitionRouteTriggerFulfillmentOutput)
 }
 
 // The list of rich message responses to present to the user.
@@ -1787,7 +1815,7 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput) ToCxFlowTransi
 }
 
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput {
-	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentMessageText) *CxFlowTransitionRouteTriggerFulfillmentMessageText {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowTransitionRouteTriggerFulfillmentMessageText) *CxFlowTransitionRouteTriggerFulfillmentMessageText {
 		return &v
 	}).(CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput)
 }
@@ -1819,7 +1847,11 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput) ToCxFlowTra
 
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput) Elem() CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput {
 	return o.ApplyT(func(v *CxFlowTransitionRouteTriggerFulfillmentMessageText) CxFlowTransitionRouteTriggerFulfillmentMessageText {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret CxFlowTransitionRouteTriggerFulfillmentMessageText
+		return ret
 	}).(CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput)
 }
 
@@ -2323,7 +2355,7 @@ func (o CxPageEntryFulfillmentOutput) ToCxPageEntryFulfillmentPtrOutput() CxPage
 }
 
 func (o CxPageEntryFulfillmentOutput) ToCxPageEntryFulfillmentPtrOutputWithContext(ctx context.Context) CxPageEntryFulfillmentPtrOutput {
-	return o.ApplyT(func(v CxPageEntryFulfillment) *CxPageEntryFulfillment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageEntryFulfillment) *CxPageEntryFulfillment {
 		return &v
 	}).(CxPageEntryFulfillmentPtrOutput)
 }
@@ -2364,7 +2396,13 @@ func (o CxPageEntryFulfillmentPtrOutput) ToCxPageEntryFulfillmentPtrOutputWithCo
 }
 
 func (o CxPageEntryFulfillmentPtrOutput) Elem() CxPageEntryFulfillmentOutput {
-	return o.ApplyT(func(v *CxPageEntryFulfillment) CxPageEntryFulfillment { return *v }).(CxPageEntryFulfillmentOutput)
+	return o.ApplyT(func(v *CxPageEntryFulfillment) CxPageEntryFulfillment {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageEntryFulfillment
+		return ret
+	}).(CxPageEntryFulfillmentOutput)
 }
 
 // The list of rich message responses to present to the user.
@@ -2604,7 +2642,7 @@ func (o CxPageEntryFulfillmentMessageTextOutput) ToCxPageEntryFulfillmentMessage
 }
 
 func (o CxPageEntryFulfillmentMessageTextOutput) ToCxPageEntryFulfillmentMessageTextPtrOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessageTextPtrOutput {
-	return o.ApplyT(func(v CxPageEntryFulfillmentMessageText) *CxPageEntryFulfillmentMessageText {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageEntryFulfillmentMessageText) *CxPageEntryFulfillmentMessageText {
 		return &v
 	}).(CxPageEntryFulfillmentMessageTextPtrOutput)
 }
@@ -2635,7 +2673,13 @@ func (o CxPageEntryFulfillmentMessageTextPtrOutput) ToCxPageEntryFulfillmentMess
 }
 
 func (o CxPageEntryFulfillmentMessageTextPtrOutput) Elem() CxPageEntryFulfillmentMessageTextOutput {
-	return o.ApplyT(func(v *CxPageEntryFulfillmentMessageText) CxPageEntryFulfillmentMessageText { return *v }).(CxPageEntryFulfillmentMessageTextOutput)
+	return o.ApplyT(func(v *CxPageEntryFulfillmentMessageText) CxPageEntryFulfillmentMessageText {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageEntryFulfillmentMessageText
+		return ret
+	}).(CxPageEntryFulfillmentMessageTextOutput)
 }
 
 // -
@@ -2911,7 +2955,7 @@ func (o CxPageEventHandlerTriggerFulfillmentOutput) ToCxPageEventHandlerTriggerF
 }
 
 func (o CxPageEventHandlerTriggerFulfillmentOutput) ToCxPageEventHandlerTriggerFulfillmentPtrOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentPtrOutput {
-	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillment) *CxPageEventHandlerTriggerFulfillment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageEventHandlerTriggerFulfillment) *CxPageEventHandlerTriggerFulfillment {
 		return &v
 	}).(CxPageEventHandlerTriggerFulfillmentPtrOutput)
 }
@@ -2954,7 +2998,13 @@ func (o CxPageEventHandlerTriggerFulfillmentPtrOutput) ToCxPageEventHandlerTrigg
 }
 
 func (o CxPageEventHandlerTriggerFulfillmentPtrOutput) Elem() CxPageEventHandlerTriggerFulfillmentOutput {
-	return o.ApplyT(func(v *CxPageEventHandlerTriggerFulfillment) CxPageEventHandlerTriggerFulfillment { return *v }).(CxPageEventHandlerTriggerFulfillmentOutput)
+	return o.ApplyT(func(v *CxPageEventHandlerTriggerFulfillment) CxPageEventHandlerTriggerFulfillment {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageEventHandlerTriggerFulfillment
+		return ret
+	}).(CxPageEventHandlerTriggerFulfillmentOutput)
 }
 
 // The list of rich message responses to present to the user.
@@ -3196,7 +3246,7 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageTextOutput) ToCxPageEventHand
 }
 
 func (o CxPageEventHandlerTriggerFulfillmentMessageTextOutput) ToCxPageEventHandlerTriggerFulfillmentMessageTextPtrOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessageTextPtrOutput {
-	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillmentMessageText) *CxPageEventHandlerTriggerFulfillmentMessageText {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageEventHandlerTriggerFulfillmentMessageText) *CxPageEventHandlerTriggerFulfillmentMessageText {
 		return &v
 	}).(CxPageEventHandlerTriggerFulfillmentMessageTextPtrOutput)
 }
@@ -3228,7 +3278,11 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageTextPtrOutput) ToCxPageEventH
 
 func (o CxPageEventHandlerTriggerFulfillmentMessageTextPtrOutput) Elem() CxPageEventHandlerTriggerFulfillmentMessageTextOutput {
 	return o.ApplyT(func(v *CxPageEventHandlerTriggerFulfillmentMessageText) CxPageEventHandlerTriggerFulfillmentMessageText {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret CxPageEventHandlerTriggerFulfillmentMessageText
+		return ret
 	}).(CxPageEventHandlerTriggerFulfillmentMessageTextOutput)
 }
 
@@ -3348,7 +3402,7 @@ func (o CxPageFormOutput) ToCxPageFormPtrOutput() CxPageFormPtrOutput {
 }
 
 func (o CxPageFormOutput) ToCxPageFormPtrOutputWithContext(ctx context.Context) CxPageFormPtrOutput {
-	return o.ApplyT(func(v CxPageForm) *CxPageForm {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageForm) *CxPageForm {
 		return &v
 	}).(CxPageFormPtrOutput)
 }
@@ -3374,7 +3428,13 @@ func (o CxPageFormPtrOutput) ToCxPageFormPtrOutputWithContext(ctx context.Contex
 }
 
 func (o CxPageFormPtrOutput) Elem() CxPageFormOutput {
-	return o.ApplyT(func(v *CxPageForm) CxPageForm { return *v }).(CxPageFormOutput)
+	return o.ApplyT(func(v *CxPageForm) CxPageForm {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageForm
+		return ret
+	}).(CxPageFormOutput)
 }
 
 // Parameters to collect from the user.
@@ -3637,7 +3697,7 @@ func (o CxPageFormParameterFillBehaviorOutput) ToCxPageFormParameterFillBehavior
 }
 
 func (o CxPageFormParameterFillBehaviorOutput) ToCxPageFormParameterFillBehaviorPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorPtrOutput {
-	return o.ApplyT(func(v CxPageFormParameterFillBehavior) *CxPageFormParameterFillBehavior {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageFormParameterFillBehavior) *CxPageFormParameterFillBehavior {
 		return &v
 	}).(CxPageFormParameterFillBehaviorPtrOutput)
 }
@@ -3665,7 +3725,13 @@ func (o CxPageFormParameterFillBehaviorPtrOutput) ToCxPageFormParameterFillBehav
 }
 
 func (o CxPageFormParameterFillBehaviorPtrOutput) Elem() CxPageFormParameterFillBehaviorOutput {
-	return o.ApplyT(func(v *CxPageFormParameterFillBehavior) CxPageFormParameterFillBehavior { return *v }).(CxPageFormParameterFillBehaviorOutput)
+	return o.ApplyT(func(v *CxPageFormParameterFillBehavior) CxPageFormParameterFillBehavior {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageFormParameterFillBehavior
+		return ret
+	}).(CxPageFormParameterFillBehaviorOutput)
 }
 
 // The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
@@ -3786,7 +3852,7 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentOutput) ToCxPageF
 }
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrOutput {
-	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillment) *CxPageFormParameterFillBehaviorInitialPromptFulfillment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageFormParameterFillBehaviorInitialPromptFulfillment) *CxPageFormParameterFillBehaviorInitialPromptFulfillment {
 		return &v
 	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrOutput)
 }
@@ -3830,7 +3896,11 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrOutput) ToCxPa
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrOutput) Elem() CxPageFormParameterFillBehaviorInitialPromptFulfillmentOutput {
 	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorInitialPromptFulfillment) CxPageFormParameterFillBehaviorInitialPromptFulfillment {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret CxPageFormParameterFillBehaviorInitialPromptFulfillment
+		return ret
 	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentOutput)
 }
 
@@ -4073,7 +4143,7 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextOutput
 }
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrOutput {
-	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText) *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText) *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText {
 		return &v
 	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrOutput)
 }
@@ -4107,7 +4177,11 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrOut
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrOutput) Elem() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextOutput {
 	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText
+		return ret
 	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextOutput)
 }
 
@@ -4399,7 +4473,7 @@ func (o CxPageTransitionRouteTriggerFulfillmentOutput) ToCxPageTransitionRouteTr
 }
 
 func (o CxPageTransitionRouteTriggerFulfillmentOutput) ToCxPageTransitionRouteTriggerFulfillmentPtrOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentPtrOutput {
-	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillment) *CxPageTransitionRouteTriggerFulfillment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageTransitionRouteTriggerFulfillment) *CxPageTransitionRouteTriggerFulfillment {
 		return &v
 	}).(CxPageTransitionRouteTriggerFulfillmentPtrOutput)
 }
@@ -4442,7 +4516,13 @@ func (o CxPageTransitionRouteTriggerFulfillmentPtrOutput) ToCxPageTransitionRout
 }
 
 func (o CxPageTransitionRouteTriggerFulfillmentPtrOutput) Elem() CxPageTransitionRouteTriggerFulfillmentOutput {
-	return o.ApplyT(func(v *CxPageTransitionRouteTriggerFulfillment) CxPageTransitionRouteTriggerFulfillment { return *v }).(CxPageTransitionRouteTriggerFulfillmentOutput)
+	return o.ApplyT(func(v *CxPageTransitionRouteTriggerFulfillment) CxPageTransitionRouteTriggerFulfillment {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageTransitionRouteTriggerFulfillment
+		return ret
+	}).(CxPageTransitionRouteTriggerFulfillmentOutput)
 }
 
 // The list of rich message responses to present to the user.
@@ -4684,7 +4764,7 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageTextOutput) ToCxPageTransi
 }
 
 func (o CxPageTransitionRouteTriggerFulfillmentMessageTextOutput) ToCxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutput {
-	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillmentMessageText) *CxPageTransitionRouteTriggerFulfillmentMessageText {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageTransitionRouteTriggerFulfillmentMessageText) *CxPageTransitionRouteTriggerFulfillmentMessageText {
 		return &v
 	}).(CxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutput)
 }
@@ -4716,7 +4796,11 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutput) ToCxPageTra
 
 func (o CxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutput) Elem() CxPageTransitionRouteTriggerFulfillmentMessageTextOutput {
 	return o.ApplyT(func(v *CxPageTransitionRouteTriggerFulfillmentMessageText) CxPageTransitionRouteTriggerFulfillmentMessageText {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret CxPageTransitionRouteTriggerFulfillmentMessageText
+		return ret
 	}).(CxPageTransitionRouteTriggerFulfillmentMessageTextOutput)
 }
 
@@ -5185,7 +5269,7 @@ func (o FulfillmentGenericWebServiceOutput) ToFulfillmentGenericWebServicePtrOut
 }
 
 func (o FulfillmentGenericWebServiceOutput) ToFulfillmentGenericWebServicePtrOutputWithContext(ctx context.Context) FulfillmentGenericWebServicePtrOutput {
-	return o.ApplyT(func(v FulfillmentGenericWebService) *FulfillmentGenericWebService {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FulfillmentGenericWebService) *FulfillmentGenericWebService {
 		return &v
 	}).(FulfillmentGenericWebServicePtrOutput)
 }
@@ -5225,7 +5309,13 @@ func (o FulfillmentGenericWebServicePtrOutput) ToFulfillmentGenericWebServicePtr
 }
 
 func (o FulfillmentGenericWebServicePtrOutput) Elem() FulfillmentGenericWebServiceOutput {
-	return o.ApplyT(func(v *FulfillmentGenericWebService) FulfillmentGenericWebService { return *v }).(FulfillmentGenericWebServiceOutput)
+	return o.ApplyT(func(v *FulfillmentGenericWebService) FulfillmentGenericWebService {
+		if v != nil {
+			return *v
+		}
+		var ret FulfillmentGenericWebService
+		return ret
+	}).(FulfillmentGenericWebServiceOutput)
 }
 
 // The password for HTTP Basic authentication.

@@ -13,6 +13,7 @@ __all__ = [
     'GetInstanceResult',
     'AwaitableGetInstanceResult',
     'get_instance',
+    'get_instance_output',
 ]
 
 @pulumi.output_type
@@ -311,3 +312,33 @@ def get_instance(name: Optional[str] = None,
         server_ca_certs=__ret__.server_ca_certs,
         tier=__ret__.tier,
         transit_encryption_mode=__ret__.transit_encryption_mode)
+
+
+@_utilities.lift_output_func(get_instance)
+def get_instance_output(name: Optional[pulumi.Input[str]] = None,
+                        project: Optional[pulumi.Input[Optional[str]]] = None,
+                        region: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceResult]:
+    """
+    Get info about a Google Cloud Redis instance.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_instance = gcp.redis.get_instance(name="my-redis-instance")
+    pulumi.export("instanceMemorySizeGb", my_instance.memory_size_gb)
+    pulumi.export("instanceConnectMode", my_instance.connect_mode)
+    pulumi.export("instanceAuthorizedNetwork", my_instance.authorized_network)
+    ```
+
+
+    :param str name: The name of a Redis instance.
+    :param str project: The project in which the resource belongs. If it
+           is not provided, the provider project is used.
+    :param str region: The region in which the resource belongs. If it
+           is not provided, the provider region is used.
+    """
+    ...

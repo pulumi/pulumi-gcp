@@ -506,7 +506,7 @@ type RouterPeerArrayInput interface {
 type RouterPeerArray []RouterPeerInput
 
 func (RouterPeerArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*RouterPeer)(nil))
+	return reflect.TypeOf((*[]*RouterPeer)(nil)).Elem()
 }
 
 func (i RouterPeerArray) ToRouterPeerArrayOutput() RouterPeerArrayOutput {
@@ -531,7 +531,7 @@ type RouterPeerMapInput interface {
 type RouterPeerMap map[string]RouterPeerInput
 
 func (RouterPeerMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*RouterPeer)(nil))
+	return reflect.TypeOf((*map[string]*RouterPeer)(nil)).Elem()
 }
 
 func (i RouterPeerMap) ToRouterPeerMapOutput() RouterPeerMapOutput {
@@ -542,9 +542,7 @@ func (i RouterPeerMap) ToRouterPeerMapOutputWithContext(ctx context.Context) Rou
 	return pulumi.ToOutputWithContext(ctx, i).(RouterPeerMapOutput)
 }
 
-type RouterPeerOutput struct {
-	*pulumi.OutputState
-}
+type RouterPeerOutput struct{ *pulumi.OutputState }
 
 func (RouterPeerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RouterPeer)(nil))
@@ -563,14 +561,12 @@ func (o RouterPeerOutput) ToRouterPeerPtrOutput() RouterPeerPtrOutput {
 }
 
 func (o RouterPeerOutput) ToRouterPeerPtrOutputWithContext(ctx context.Context) RouterPeerPtrOutput {
-	return o.ApplyT(func(v RouterPeer) *RouterPeer {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RouterPeer) *RouterPeer {
 		return &v
 	}).(RouterPeerPtrOutput)
 }
 
-type RouterPeerPtrOutput struct {
-	*pulumi.OutputState
-}
+type RouterPeerPtrOutput struct{ *pulumi.OutputState }
 
 func (RouterPeerPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**RouterPeer)(nil))
@@ -582,6 +578,16 @@ func (o RouterPeerPtrOutput) ToRouterPeerPtrOutput() RouterPeerPtrOutput {
 
 func (o RouterPeerPtrOutput) ToRouterPeerPtrOutputWithContext(ctx context.Context) RouterPeerPtrOutput {
 	return o
+}
+
+func (o RouterPeerPtrOutput) Elem() RouterPeerOutput {
+	return o.ApplyT(func(v *RouterPeer) RouterPeer {
+		if v != nil {
+			return *v
+		}
+		var ret RouterPeer
+		return ret
+	}).(RouterPeerOutput)
 }
 
 type RouterPeerArrayOutput struct{ *pulumi.OutputState }

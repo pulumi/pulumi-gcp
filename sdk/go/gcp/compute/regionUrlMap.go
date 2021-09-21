@@ -894,7 +894,7 @@ type RegionUrlMapArrayInput interface {
 type RegionUrlMapArray []RegionUrlMapInput
 
 func (RegionUrlMapArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*RegionUrlMap)(nil))
+	return reflect.TypeOf((*[]*RegionUrlMap)(nil)).Elem()
 }
 
 func (i RegionUrlMapArray) ToRegionUrlMapArrayOutput() RegionUrlMapArrayOutput {
@@ -919,7 +919,7 @@ type RegionUrlMapMapInput interface {
 type RegionUrlMapMap map[string]RegionUrlMapInput
 
 func (RegionUrlMapMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*RegionUrlMap)(nil))
+	return reflect.TypeOf((*map[string]*RegionUrlMap)(nil)).Elem()
 }
 
 func (i RegionUrlMapMap) ToRegionUrlMapMapOutput() RegionUrlMapMapOutput {
@@ -930,9 +930,7 @@ func (i RegionUrlMapMap) ToRegionUrlMapMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(RegionUrlMapMapOutput)
 }
 
-type RegionUrlMapOutput struct {
-	*pulumi.OutputState
-}
+type RegionUrlMapOutput struct{ *pulumi.OutputState }
 
 func (RegionUrlMapOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RegionUrlMap)(nil))
@@ -951,14 +949,12 @@ func (o RegionUrlMapOutput) ToRegionUrlMapPtrOutput() RegionUrlMapPtrOutput {
 }
 
 func (o RegionUrlMapOutput) ToRegionUrlMapPtrOutputWithContext(ctx context.Context) RegionUrlMapPtrOutput {
-	return o.ApplyT(func(v RegionUrlMap) *RegionUrlMap {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionUrlMap) *RegionUrlMap {
 		return &v
 	}).(RegionUrlMapPtrOutput)
 }
 
-type RegionUrlMapPtrOutput struct {
-	*pulumi.OutputState
-}
+type RegionUrlMapPtrOutput struct{ *pulumi.OutputState }
 
 func (RegionUrlMapPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**RegionUrlMap)(nil))
@@ -970,6 +966,16 @@ func (o RegionUrlMapPtrOutput) ToRegionUrlMapPtrOutput() RegionUrlMapPtrOutput {
 
 func (o RegionUrlMapPtrOutput) ToRegionUrlMapPtrOutputWithContext(ctx context.Context) RegionUrlMapPtrOutput {
 	return o
+}
+
+func (o RegionUrlMapPtrOutput) Elem() RegionUrlMapOutput {
+	return o.ApplyT(func(v *RegionUrlMap) RegionUrlMap {
+		if v != nil {
+			return *v
+		}
+		var ret RegionUrlMap
+		return ret
+	}).(RegionUrlMapOutput)
 }
 
 type RegionUrlMapArrayOutput struct{ *pulumi.OutputState }

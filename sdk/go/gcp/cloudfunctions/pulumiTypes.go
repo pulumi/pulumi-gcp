@@ -117,7 +117,7 @@ func (o FunctionEventTriggerOutput) ToFunctionEventTriggerPtrOutput() FunctionEv
 }
 
 func (o FunctionEventTriggerOutput) ToFunctionEventTriggerPtrOutputWithContext(ctx context.Context) FunctionEventTriggerPtrOutput {
-	return o.ApplyT(func(v FunctionEventTrigger) *FunctionEventTrigger {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FunctionEventTrigger) *FunctionEventTrigger {
 		return &v
 	}).(FunctionEventTriggerPtrOutput)
 }
@@ -155,7 +155,13 @@ func (o FunctionEventTriggerPtrOutput) ToFunctionEventTriggerPtrOutputWithContex
 }
 
 func (o FunctionEventTriggerPtrOutput) Elem() FunctionEventTriggerOutput {
-	return o.ApplyT(func(v *FunctionEventTrigger) FunctionEventTrigger { return *v }).(FunctionEventTriggerOutput)
+	return o.ApplyT(func(v *FunctionEventTrigger) FunctionEventTrigger {
+		if v != nil {
+			return *v
+		}
+		var ret FunctionEventTrigger
+		return ret
+	}).(FunctionEventTriggerOutput)
 }
 
 // The type of event to observe. For example: `"google.storage.object.finalize"`.
@@ -284,7 +290,7 @@ func (o FunctionEventTriggerFailurePolicyOutput) ToFunctionEventTriggerFailurePo
 }
 
 func (o FunctionEventTriggerFailurePolicyOutput) ToFunctionEventTriggerFailurePolicyPtrOutputWithContext(ctx context.Context) FunctionEventTriggerFailurePolicyPtrOutput {
-	return o.ApplyT(func(v FunctionEventTriggerFailurePolicy) *FunctionEventTriggerFailurePolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FunctionEventTriggerFailurePolicy) *FunctionEventTriggerFailurePolicy {
 		return &v
 	}).(FunctionEventTriggerFailurePolicyPtrOutput)
 }
@@ -309,7 +315,13 @@ func (o FunctionEventTriggerFailurePolicyPtrOutput) ToFunctionEventTriggerFailur
 }
 
 func (o FunctionEventTriggerFailurePolicyPtrOutput) Elem() FunctionEventTriggerFailurePolicyOutput {
-	return o.ApplyT(func(v *FunctionEventTriggerFailurePolicy) FunctionEventTriggerFailurePolicy { return *v }).(FunctionEventTriggerFailurePolicyOutput)
+	return o.ApplyT(func(v *FunctionEventTriggerFailurePolicy) FunctionEventTriggerFailurePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret FunctionEventTriggerFailurePolicy
+		return ret
+	}).(FunctionEventTriggerFailurePolicyOutput)
 }
 
 // Whether the function should be retried on failure. Defaults to `false`.
@@ -417,10 +429,11 @@ func (o FunctionIamBindingConditionOutput) ToFunctionIamBindingConditionPtrOutpu
 }
 
 func (o FunctionIamBindingConditionOutput) ToFunctionIamBindingConditionPtrOutputWithContext(ctx context.Context) FunctionIamBindingConditionPtrOutput {
-	return o.ApplyT(func(v FunctionIamBindingCondition) *FunctionIamBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FunctionIamBindingCondition) *FunctionIamBindingCondition {
 		return &v
 	}).(FunctionIamBindingConditionPtrOutput)
 }
+
 func (o FunctionIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -448,7 +461,13 @@ func (o FunctionIamBindingConditionPtrOutput) ToFunctionIamBindingConditionPtrOu
 }
 
 func (o FunctionIamBindingConditionPtrOutput) Elem() FunctionIamBindingConditionOutput {
-	return o.ApplyT(func(v *FunctionIamBindingCondition) FunctionIamBindingCondition { return *v }).(FunctionIamBindingConditionOutput)
+	return o.ApplyT(func(v *FunctionIamBindingCondition) FunctionIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret FunctionIamBindingCondition
+		return ret
+	}).(FunctionIamBindingConditionOutput)
 }
 
 func (o FunctionIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -573,10 +592,11 @@ func (o FunctionIamMemberConditionOutput) ToFunctionIamMemberConditionPtrOutput(
 }
 
 func (o FunctionIamMemberConditionOutput) ToFunctionIamMemberConditionPtrOutputWithContext(ctx context.Context) FunctionIamMemberConditionPtrOutput {
-	return o.ApplyT(func(v FunctionIamMemberCondition) *FunctionIamMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FunctionIamMemberCondition) *FunctionIamMemberCondition {
 		return &v
 	}).(FunctionIamMemberConditionPtrOutput)
 }
+
 func (o FunctionIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -604,7 +624,13 @@ func (o FunctionIamMemberConditionPtrOutput) ToFunctionIamMemberConditionPtrOutp
 }
 
 func (o FunctionIamMemberConditionPtrOutput) Elem() FunctionIamMemberConditionOutput {
-	return o.ApplyT(func(v *FunctionIamMemberCondition) FunctionIamMemberCondition { return *v }).(FunctionIamMemberConditionOutput)
+	return o.ApplyT(func(v *FunctionIamMemberCondition) FunctionIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret FunctionIamMemberCondition
+		return ret
+	}).(FunctionIamMemberConditionOutput)
 }
 
 func (o FunctionIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -729,10 +755,11 @@ func (o FunctionSourceRepositoryOutput) ToFunctionSourceRepositoryPtrOutput() Fu
 }
 
 func (o FunctionSourceRepositoryOutput) ToFunctionSourceRepositoryPtrOutputWithContext(ctx context.Context) FunctionSourceRepositoryPtrOutput {
-	return o.ApplyT(func(v FunctionSourceRepository) *FunctionSourceRepository {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FunctionSourceRepository) *FunctionSourceRepository {
 		return &v
 	}).(FunctionSourceRepositoryPtrOutput)
 }
+
 func (o FunctionSourceRepositoryOutput) DeployedUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionSourceRepository) *string { return v.DeployedUrl }).(pulumi.StringPtrOutput)
 }
@@ -757,7 +784,13 @@ func (o FunctionSourceRepositoryPtrOutput) ToFunctionSourceRepositoryPtrOutputWi
 }
 
 func (o FunctionSourceRepositoryPtrOutput) Elem() FunctionSourceRepositoryOutput {
-	return o.ApplyT(func(v *FunctionSourceRepository) FunctionSourceRepository { return *v }).(FunctionSourceRepositoryOutput)
+	return o.ApplyT(func(v *FunctionSourceRepository) FunctionSourceRepository {
+		if v != nil {
+			return *v
+		}
+		var ret FunctionSourceRepository
+		return ret
+	}).(FunctionSourceRepositoryOutput)
 }
 
 func (o FunctionSourceRepositoryPtrOutput) DeployedUrl() pulumi.StringPtrOutput {

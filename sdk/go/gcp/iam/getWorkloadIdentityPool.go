@@ -4,6 +4,9 @@
 package iam
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -61,4 +64,79 @@ type LookupWorkloadIdentityPoolResult struct {
 	Project                *string `pulumi:"project"`
 	State                  string  `pulumi:"state"`
 	WorkloadIdentityPoolId string  `pulumi:"workloadIdentityPoolId"`
+}
+
+func LookupWorkloadIdentityPoolOutput(ctx *pulumi.Context, args LookupWorkloadIdentityPoolOutputArgs, opts ...pulumi.InvokeOption) LookupWorkloadIdentityPoolResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupWorkloadIdentityPoolResult, error) {
+			args := v.(LookupWorkloadIdentityPoolArgs)
+			r, err := LookupWorkloadIdentityPool(ctx, &args, opts...)
+			return *r, err
+		}).(LookupWorkloadIdentityPoolResultOutput)
+}
+
+// A collection of arguments for invoking getWorkloadIdentityPool.
+type LookupWorkloadIdentityPoolOutputArgs struct {
+	// The project in which the resource belongs. If it
+	// is not provided, the provider project is used.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// The id of the pool which is the
+	// final component of the resource name.
+	WorkloadIdentityPoolId pulumi.StringInput `pulumi:"workloadIdentityPoolId"`
+}
+
+func (LookupWorkloadIdentityPoolOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupWorkloadIdentityPoolArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getWorkloadIdentityPool.
+type LookupWorkloadIdentityPoolResultOutput struct{ *pulumi.OutputState }
+
+func (LookupWorkloadIdentityPoolResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupWorkloadIdentityPoolResult)(nil)).Elem()
+}
+
+func (o LookupWorkloadIdentityPoolResultOutput) ToLookupWorkloadIdentityPoolResultOutput() LookupWorkloadIdentityPoolResultOutput {
+	return o
+}
+
+func (o LookupWorkloadIdentityPoolResultOutput) ToLookupWorkloadIdentityPoolResultOutputWithContext(ctx context.Context) LookupWorkloadIdentityPoolResultOutput {
+	return o
+}
+
+func (o LookupWorkloadIdentityPoolResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkloadIdentityPoolResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupWorkloadIdentityPoolResultOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupWorkloadIdentityPoolResult) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+func (o LookupWorkloadIdentityPoolResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkloadIdentityPoolResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupWorkloadIdentityPoolResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkloadIdentityPoolResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupWorkloadIdentityPoolResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkloadIdentityPoolResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupWorkloadIdentityPoolResultOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkloadIdentityPoolResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupWorkloadIdentityPoolResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkloadIdentityPoolResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+func (o LookupWorkloadIdentityPoolResultOutput) WorkloadIdentityPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkloadIdentityPoolResult) string { return v.WorkloadIdentityPoolId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupWorkloadIdentityPoolResultOutput{})
 }

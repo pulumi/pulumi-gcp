@@ -213,7 +213,7 @@ type IamAuditConfigArrayInput interface {
 type IamAuditConfigArray []IamAuditConfigInput
 
 func (IamAuditConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*IamAuditConfig)(nil))
+	return reflect.TypeOf((*[]*IamAuditConfig)(nil)).Elem()
 }
 
 func (i IamAuditConfigArray) ToIamAuditConfigArrayOutput() IamAuditConfigArrayOutput {
@@ -238,7 +238,7 @@ type IamAuditConfigMapInput interface {
 type IamAuditConfigMap map[string]IamAuditConfigInput
 
 func (IamAuditConfigMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*IamAuditConfig)(nil))
+	return reflect.TypeOf((*map[string]*IamAuditConfig)(nil)).Elem()
 }
 
 func (i IamAuditConfigMap) ToIamAuditConfigMapOutput() IamAuditConfigMapOutput {
@@ -249,9 +249,7 @@ func (i IamAuditConfigMap) ToIamAuditConfigMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(IamAuditConfigMapOutput)
 }
 
-type IamAuditConfigOutput struct {
-	*pulumi.OutputState
-}
+type IamAuditConfigOutput struct{ *pulumi.OutputState }
 
 func (IamAuditConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*IamAuditConfig)(nil))
@@ -270,14 +268,12 @@ func (o IamAuditConfigOutput) ToIamAuditConfigPtrOutput() IamAuditConfigPtrOutpu
 }
 
 func (o IamAuditConfigOutput) ToIamAuditConfigPtrOutputWithContext(ctx context.Context) IamAuditConfigPtrOutput {
-	return o.ApplyT(func(v IamAuditConfig) *IamAuditConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IamAuditConfig) *IamAuditConfig {
 		return &v
 	}).(IamAuditConfigPtrOutput)
 }
 
-type IamAuditConfigPtrOutput struct {
-	*pulumi.OutputState
-}
+type IamAuditConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (IamAuditConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**IamAuditConfig)(nil))
@@ -289,6 +285,16 @@ func (o IamAuditConfigPtrOutput) ToIamAuditConfigPtrOutput() IamAuditConfigPtrOu
 
 func (o IamAuditConfigPtrOutput) ToIamAuditConfigPtrOutputWithContext(ctx context.Context) IamAuditConfigPtrOutput {
 	return o
+}
+
+func (o IamAuditConfigPtrOutput) Elem() IamAuditConfigOutput {
+	return o.ApplyT(func(v *IamAuditConfig) IamAuditConfig {
+		if v != nil {
+			return *v
+		}
+		var ret IamAuditConfig
+		return ret
+	}).(IamAuditConfigOutput)
 }
 
 type IamAuditConfigArrayOutput struct{ *pulumi.OutputState }

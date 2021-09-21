@@ -13,6 +13,7 @@ __all__ = [
     'GetBackendBucketResult',
     'AwaitableGetBackendBucketResult',
     'get_backend_bucket',
+    'get_backend_bucket_output',
 ]
 
 @pulumi.output_type
@@ -164,3 +165,27 @@ def get_backend_bucket(name: Optional[str] = None,
         name=__ret__.name,
         project=__ret__.project,
         self_link=__ret__.self_link)
+
+
+@_utilities.lift_output_func(get_backend_bucket)
+def get_backend_bucket_output(name: Optional[pulumi.Input[str]] = None,
+                              project: Optional[pulumi.Input[Optional[str]]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBackendBucketResult]:
+    """
+    Get information about a BackendBucket.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_backend_bucket = gcp.compute.get_backend_bucket(name="my-backend")
+    ```
+
+
+    :param str name: Name of the resource.
+    :param str project: The ID of the project in which the resource belongs. If it
+           is not provided, the provider project is used.
+    """
+    ...

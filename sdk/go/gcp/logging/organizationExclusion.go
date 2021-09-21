@@ -238,7 +238,7 @@ type OrganizationExclusionArrayInput interface {
 type OrganizationExclusionArray []OrganizationExclusionInput
 
 func (OrganizationExclusionArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*OrganizationExclusion)(nil))
+	return reflect.TypeOf((*[]*OrganizationExclusion)(nil)).Elem()
 }
 
 func (i OrganizationExclusionArray) ToOrganizationExclusionArrayOutput() OrganizationExclusionArrayOutput {
@@ -263,7 +263,7 @@ type OrganizationExclusionMapInput interface {
 type OrganizationExclusionMap map[string]OrganizationExclusionInput
 
 func (OrganizationExclusionMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*OrganizationExclusion)(nil))
+	return reflect.TypeOf((*map[string]*OrganizationExclusion)(nil)).Elem()
 }
 
 func (i OrganizationExclusionMap) ToOrganizationExclusionMapOutput() OrganizationExclusionMapOutput {
@@ -274,9 +274,7 @@ func (i OrganizationExclusionMap) ToOrganizationExclusionMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationExclusionMapOutput)
 }
 
-type OrganizationExclusionOutput struct {
-	*pulumi.OutputState
-}
+type OrganizationExclusionOutput struct{ *pulumi.OutputState }
 
 func (OrganizationExclusionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OrganizationExclusion)(nil))
@@ -295,14 +293,12 @@ func (o OrganizationExclusionOutput) ToOrganizationExclusionPtrOutput() Organiza
 }
 
 func (o OrganizationExclusionOutput) ToOrganizationExclusionPtrOutputWithContext(ctx context.Context) OrganizationExclusionPtrOutput {
-	return o.ApplyT(func(v OrganizationExclusion) *OrganizationExclusion {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationExclusion) *OrganizationExclusion {
 		return &v
 	}).(OrganizationExclusionPtrOutput)
 }
 
-type OrganizationExclusionPtrOutput struct {
-	*pulumi.OutputState
-}
+type OrganizationExclusionPtrOutput struct{ *pulumi.OutputState }
 
 func (OrganizationExclusionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**OrganizationExclusion)(nil))
@@ -314,6 +310,16 @@ func (o OrganizationExclusionPtrOutput) ToOrganizationExclusionPtrOutput() Organ
 
 func (o OrganizationExclusionPtrOutput) ToOrganizationExclusionPtrOutputWithContext(ctx context.Context) OrganizationExclusionPtrOutput {
 	return o
+}
+
+func (o OrganizationExclusionPtrOutput) Elem() OrganizationExclusionOutput {
+	return o.ApplyT(func(v *OrganizationExclusion) OrganizationExclusion {
+		if v != nil {
+			return *v
+		}
+		var ret OrganizationExclusion
+		return ret
+	}).(OrganizationExclusionOutput)
 }
 
 type OrganizationExclusionArrayOutput struct{ *pulumi.OutputState }

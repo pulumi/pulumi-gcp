@@ -4,6 +4,9 @@
 package organizations
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -75,4 +78,91 @@ type LookupFolderResult struct {
 	Organization string `pulumi:"organization"`
 	// The resource name of the parent Folder or Organization.
 	Parent string `pulumi:"parent"`
+}
+
+func LookupFolderOutput(ctx *pulumi.Context, args LookupFolderOutputArgs, opts ...pulumi.InvokeOption) LookupFolderResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupFolderResult, error) {
+			args := v.(LookupFolderArgs)
+			r, err := LookupFolder(ctx, &args, opts...)
+			return *r, err
+		}).(LookupFolderResultOutput)
+}
+
+// A collection of arguments for invoking getFolder.
+type LookupFolderOutputArgs struct {
+	// The name of the Folder in the form `{folder_id}` or `folders/{folder_id}`.
+	Folder pulumi.StringInput `pulumi:"folder"`
+	// `true` to find the organization that the folder belongs, `false` to avoid the lookup. It searches up the tree. (defaults to `false`)
+	LookupOrganization pulumi.BoolPtrInput `pulumi:"lookupOrganization"`
+}
+
+func (LookupFolderOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupFolderArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getFolder.
+type LookupFolderResultOutput struct{ *pulumi.OutputState }
+
+func (LookupFolderResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupFolderResult)(nil)).Elem()
+}
+
+func (o LookupFolderResultOutput) ToLookupFolderResultOutput() LookupFolderResultOutput {
+	return o
+}
+
+func (o LookupFolderResultOutput) ToLookupFolderResultOutputWithContext(ctx context.Context) LookupFolderResultOutput {
+	return o
+}
+
+// Timestamp when the Organization was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+func (o LookupFolderResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFolderResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The folder's display name.
+func (o LookupFolderResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFolderResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+func (o LookupFolderResultOutput) Folder() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFolderResult) string { return v.Folder }).(pulumi.StringOutput)
+}
+
+func (o LookupFolderResultOutput) FolderId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFolderResult) string { return v.FolderId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupFolderResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFolderResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Folder's current lifecycle state.
+func (o LookupFolderResultOutput) LifecycleState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFolderResult) string { return v.LifecycleState }).(pulumi.StringOutput)
+}
+
+func (o LookupFolderResultOutput) LookupOrganization() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupFolderResult) *bool { return v.LookupOrganization }).(pulumi.BoolPtrOutput)
+}
+
+// The resource name of the Folder in the form `folders/{folder_id}`.
+func (o LookupFolderResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFolderResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// If `lookupOrganization` is enable, the resource name of the Organization that the folder belongs.
+func (o LookupFolderResultOutput) Organization() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFolderResult) string { return v.Organization }).(pulumi.StringOutput)
+}
+
+// The resource name of the parent Folder or Organization.
+func (o LookupFolderResultOutput) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFolderResult) string { return v.Parent }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupFolderResultOutput{})
 }

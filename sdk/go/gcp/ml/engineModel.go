@@ -305,7 +305,7 @@ type EngineModelArrayInput interface {
 type EngineModelArray []EngineModelInput
 
 func (EngineModelArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*EngineModel)(nil))
+	return reflect.TypeOf((*[]*EngineModel)(nil)).Elem()
 }
 
 func (i EngineModelArray) ToEngineModelArrayOutput() EngineModelArrayOutput {
@@ -330,7 +330,7 @@ type EngineModelMapInput interface {
 type EngineModelMap map[string]EngineModelInput
 
 func (EngineModelMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*EngineModel)(nil))
+	return reflect.TypeOf((*map[string]*EngineModel)(nil)).Elem()
 }
 
 func (i EngineModelMap) ToEngineModelMapOutput() EngineModelMapOutput {
@@ -341,9 +341,7 @@ func (i EngineModelMap) ToEngineModelMapOutputWithContext(ctx context.Context) E
 	return pulumi.ToOutputWithContext(ctx, i).(EngineModelMapOutput)
 }
 
-type EngineModelOutput struct {
-	*pulumi.OutputState
-}
+type EngineModelOutput struct{ *pulumi.OutputState }
 
 func (EngineModelOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EngineModel)(nil))
@@ -362,14 +360,12 @@ func (o EngineModelOutput) ToEngineModelPtrOutput() EngineModelPtrOutput {
 }
 
 func (o EngineModelOutput) ToEngineModelPtrOutputWithContext(ctx context.Context) EngineModelPtrOutput {
-	return o.ApplyT(func(v EngineModel) *EngineModel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EngineModel) *EngineModel {
 		return &v
 	}).(EngineModelPtrOutput)
 }
 
-type EngineModelPtrOutput struct {
-	*pulumi.OutputState
-}
+type EngineModelPtrOutput struct{ *pulumi.OutputState }
 
 func (EngineModelPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**EngineModel)(nil))
@@ -381,6 +377,16 @@ func (o EngineModelPtrOutput) ToEngineModelPtrOutput() EngineModelPtrOutput {
 
 func (o EngineModelPtrOutput) ToEngineModelPtrOutputWithContext(ctx context.Context) EngineModelPtrOutput {
 	return o
+}
+
+func (o EngineModelPtrOutput) Elem() EngineModelOutput {
+	return o.ApplyT(func(v *EngineModel) EngineModel {
+		if v != nil {
+			return *v
+		}
+		var ret EngineModel
+		return ret
+	}).(EngineModelOutput)
 }
 
 type EngineModelArrayOutput struct{ *pulumi.OutputState }

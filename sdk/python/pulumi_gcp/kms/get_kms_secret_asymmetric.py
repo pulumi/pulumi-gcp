@@ -12,6 +12,7 @@ __all__ = [
     'GetKMSSecretAsymmetricResult',
     'AwaitableGetKMSSecretAsymmetricResult',
     'get_kms_secret_asymmetric',
+    'get_kms_secret_asymmetric_output',
 ]
 
 @pulumi.output_type
@@ -113,3 +114,20 @@ def get_kms_secret_asymmetric(ciphertext: Optional[str] = None,
         crypto_key_version=__ret__.crypto_key_version,
         id=__ret__.id,
         plaintext=__ret__.plaintext)
+
+
+@_utilities.lift_output_func(get_kms_secret_asymmetric)
+def get_kms_secret_asymmetric_output(ciphertext: Optional[pulumi.Input[str]] = None,
+                                     crc32: Optional[pulumi.Input[Optional[str]]] = None,
+                                     crypto_key_version: Optional[pulumi.Input[str]] = None,
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKMSSecretAsymmetricResult]:
+    """
+    Use this data source to access information about an existing resource.
+
+    :param str ciphertext: The ciphertext to be decrypted, encoded in base64
+    :param str crc32: The crc32 checksum of the `ciphertext` in hexadecimal notation. If not specified, it will be computed.
+    :param str crypto_key_version: The id of the CryptoKey version that will be used to
+           decrypt the provided ciphertext. This is represented by the format
+           `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}/cryptoKeyVersions/{version}`.
+    """
+    ...

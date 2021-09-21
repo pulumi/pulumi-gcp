@@ -318,7 +318,7 @@ type SecretIamMemberArrayInput interface {
 type SecretIamMemberArray []SecretIamMemberInput
 
 func (SecretIamMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*SecretIamMember)(nil))
+	return reflect.TypeOf((*[]*SecretIamMember)(nil)).Elem()
 }
 
 func (i SecretIamMemberArray) ToSecretIamMemberArrayOutput() SecretIamMemberArrayOutput {
@@ -343,7 +343,7 @@ type SecretIamMemberMapInput interface {
 type SecretIamMemberMap map[string]SecretIamMemberInput
 
 func (SecretIamMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*SecretIamMember)(nil))
+	return reflect.TypeOf((*map[string]*SecretIamMember)(nil)).Elem()
 }
 
 func (i SecretIamMemberMap) ToSecretIamMemberMapOutput() SecretIamMemberMapOutput {
@@ -354,9 +354,7 @@ func (i SecretIamMemberMap) ToSecretIamMemberMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(SecretIamMemberMapOutput)
 }
 
-type SecretIamMemberOutput struct {
-	*pulumi.OutputState
-}
+type SecretIamMemberOutput struct{ *pulumi.OutputState }
 
 func (SecretIamMemberOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SecretIamMember)(nil))
@@ -375,14 +373,12 @@ func (o SecretIamMemberOutput) ToSecretIamMemberPtrOutput() SecretIamMemberPtrOu
 }
 
 func (o SecretIamMemberOutput) ToSecretIamMemberPtrOutputWithContext(ctx context.Context) SecretIamMemberPtrOutput {
-	return o.ApplyT(func(v SecretIamMember) *SecretIamMember {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretIamMember) *SecretIamMember {
 		return &v
 	}).(SecretIamMemberPtrOutput)
 }
 
-type SecretIamMemberPtrOutput struct {
-	*pulumi.OutputState
-}
+type SecretIamMemberPtrOutput struct{ *pulumi.OutputState }
 
 func (SecretIamMemberPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SecretIamMember)(nil))
@@ -394,6 +390,16 @@ func (o SecretIamMemberPtrOutput) ToSecretIamMemberPtrOutput() SecretIamMemberPt
 
 func (o SecretIamMemberPtrOutput) ToSecretIamMemberPtrOutputWithContext(ctx context.Context) SecretIamMemberPtrOutput {
 	return o
+}
+
+func (o SecretIamMemberPtrOutput) Elem() SecretIamMemberOutput {
+	return o.ApplyT(func(v *SecretIamMember) SecretIamMember {
+		if v != nil {
+			return *v
+		}
+		var ret SecretIamMember
+		return ret
+	}).(SecretIamMemberOutput)
 }
 
 type SecretIamMemberArrayOutput struct{ *pulumi.OutputState }

@@ -233,7 +233,7 @@ type MangedSslCertificateArrayInput interface {
 type MangedSslCertificateArray []MangedSslCertificateInput
 
 func (MangedSslCertificateArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*MangedSslCertificate)(nil))
+	return reflect.TypeOf((*[]*MangedSslCertificate)(nil)).Elem()
 }
 
 func (i MangedSslCertificateArray) ToMangedSslCertificateArrayOutput() MangedSslCertificateArrayOutput {
@@ -258,7 +258,7 @@ type MangedSslCertificateMapInput interface {
 type MangedSslCertificateMap map[string]MangedSslCertificateInput
 
 func (MangedSslCertificateMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*MangedSslCertificate)(nil))
+	return reflect.TypeOf((*map[string]*MangedSslCertificate)(nil)).Elem()
 }
 
 func (i MangedSslCertificateMap) ToMangedSslCertificateMapOutput() MangedSslCertificateMapOutput {
@@ -269,9 +269,7 @@ func (i MangedSslCertificateMap) ToMangedSslCertificateMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(MangedSslCertificateMapOutput)
 }
 
-type MangedSslCertificateOutput struct {
-	*pulumi.OutputState
-}
+type MangedSslCertificateOutput struct{ *pulumi.OutputState }
 
 func (MangedSslCertificateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MangedSslCertificate)(nil))
@@ -290,14 +288,12 @@ func (o MangedSslCertificateOutput) ToMangedSslCertificatePtrOutput() MangedSslC
 }
 
 func (o MangedSslCertificateOutput) ToMangedSslCertificatePtrOutputWithContext(ctx context.Context) MangedSslCertificatePtrOutput {
-	return o.ApplyT(func(v MangedSslCertificate) *MangedSslCertificate {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MangedSslCertificate) *MangedSslCertificate {
 		return &v
 	}).(MangedSslCertificatePtrOutput)
 }
 
-type MangedSslCertificatePtrOutput struct {
-	*pulumi.OutputState
-}
+type MangedSslCertificatePtrOutput struct{ *pulumi.OutputState }
 
 func (MangedSslCertificatePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**MangedSslCertificate)(nil))
@@ -309,6 +305,16 @@ func (o MangedSslCertificatePtrOutput) ToMangedSslCertificatePtrOutput() MangedS
 
 func (o MangedSslCertificatePtrOutput) ToMangedSslCertificatePtrOutputWithContext(ctx context.Context) MangedSslCertificatePtrOutput {
 	return o
+}
+
+func (o MangedSslCertificatePtrOutput) Elem() MangedSslCertificateOutput {
+	return o.ApplyT(func(v *MangedSslCertificate) MangedSslCertificate {
+		if v != nil {
+			return *v
+		}
+		var ret MangedSslCertificate
+		return ret
+	}).(MangedSslCertificateOutput)
 }
 
 type MangedSslCertificateArrayOutput struct{ *pulumi.OutputState }

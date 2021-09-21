@@ -1045,7 +1045,7 @@ type RegionBackendServiceArrayInput interface {
 type RegionBackendServiceArray []RegionBackendServiceInput
 
 func (RegionBackendServiceArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*RegionBackendService)(nil))
+	return reflect.TypeOf((*[]*RegionBackendService)(nil)).Elem()
 }
 
 func (i RegionBackendServiceArray) ToRegionBackendServiceArrayOutput() RegionBackendServiceArrayOutput {
@@ -1070,7 +1070,7 @@ type RegionBackendServiceMapInput interface {
 type RegionBackendServiceMap map[string]RegionBackendServiceInput
 
 func (RegionBackendServiceMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*RegionBackendService)(nil))
+	return reflect.TypeOf((*map[string]*RegionBackendService)(nil)).Elem()
 }
 
 func (i RegionBackendServiceMap) ToRegionBackendServiceMapOutput() RegionBackendServiceMapOutput {
@@ -1081,9 +1081,7 @@ func (i RegionBackendServiceMap) ToRegionBackendServiceMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(RegionBackendServiceMapOutput)
 }
 
-type RegionBackendServiceOutput struct {
-	*pulumi.OutputState
-}
+type RegionBackendServiceOutput struct{ *pulumi.OutputState }
 
 func (RegionBackendServiceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RegionBackendService)(nil))
@@ -1102,14 +1100,12 @@ func (o RegionBackendServiceOutput) ToRegionBackendServicePtrOutput() RegionBack
 }
 
 func (o RegionBackendServiceOutput) ToRegionBackendServicePtrOutputWithContext(ctx context.Context) RegionBackendServicePtrOutput {
-	return o.ApplyT(func(v RegionBackendService) *RegionBackendService {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionBackendService) *RegionBackendService {
 		return &v
 	}).(RegionBackendServicePtrOutput)
 }
 
-type RegionBackendServicePtrOutput struct {
-	*pulumi.OutputState
-}
+type RegionBackendServicePtrOutput struct{ *pulumi.OutputState }
 
 func (RegionBackendServicePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**RegionBackendService)(nil))
@@ -1121,6 +1117,16 @@ func (o RegionBackendServicePtrOutput) ToRegionBackendServicePtrOutput() RegionB
 
 func (o RegionBackendServicePtrOutput) ToRegionBackendServicePtrOutputWithContext(ctx context.Context) RegionBackendServicePtrOutput {
 	return o
+}
+
+func (o RegionBackendServicePtrOutput) Elem() RegionBackendServiceOutput {
+	return o.ApplyT(func(v *RegionBackendService) RegionBackendService {
+		if v != nil {
+			return *v
+		}
+		var ret RegionBackendService
+		return ret
+	}).(RegionBackendServiceOutput)
 }
 
 type RegionBackendServiceArrayOutput struct{ *pulumi.OutputState }

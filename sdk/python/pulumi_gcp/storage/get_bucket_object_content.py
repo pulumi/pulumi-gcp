@@ -13,6 +13,7 @@ __all__ = [
     'GetBucketObjectContentResult',
     'AwaitableGetBucketObjectContentResult',
     'get_bucket_object_content',
+    'get_bucket_object_content_output',
 ]
 
 @pulumi.output_type
@@ -298,3 +299,37 @@ def get_bucket_object_content(bucket: Optional[str] = None,
         source=__ret__.source,
         storage_class=__ret__.storage_class,
         temporary_hold=__ret__.temporary_hold)
+
+
+@_utilities.lift_output_func(get_bucket_object_content)
+def get_bucket_object_content_output(bucket: Optional[pulumi.Input[str]] = None,
+                                     content: Optional[pulumi.Input[Optional[str]]] = None,
+                                     name: Optional[pulumi.Input[str]] = None,
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBucketObjectContentResult]:
+    """
+    Gets an existing object content inside an existing bucket in Google Cloud Storage service (GCS).
+    See [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
+    and
+    [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
+
+    > **Warning:** The object content will be saved in the state, and visiable to everyone who has access to the state file.
+
+    ## Example Usage
+
+    Example file object  stored within a folder.
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    key = gcp.storage.get_bucket_object_content(name="encryptedkey",
+        bucket="keystore")
+    pulumi.export("encrypted", key.content)
+    ```
+
+
+    :param str bucket: The name of the containing bucket.
+    :param str content: (Computed) [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object content.
+    :param str name: The name of the object.
+    """
+    ...

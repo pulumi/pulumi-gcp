@@ -271,7 +271,7 @@ type ProjectBucketConfigArrayInput interface {
 type ProjectBucketConfigArray []ProjectBucketConfigInput
 
 func (ProjectBucketConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ProjectBucketConfig)(nil))
+	return reflect.TypeOf((*[]*ProjectBucketConfig)(nil)).Elem()
 }
 
 func (i ProjectBucketConfigArray) ToProjectBucketConfigArrayOutput() ProjectBucketConfigArrayOutput {
@@ -296,7 +296,7 @@ type ProjectBucketConfigMapInput interface {
 type ProjectBucketConfigMap map[string]ProjectBucketConfigInput
 
 func (ProjectBucketConfigMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ProjectBucketConfig)(nil))
+	return reflect.TypeOf((*map[string]*ProjectBucketConfig)(nil)).Elem()
 }
 
 func (i ProjectBucketConfigMap) ToProjectBucketConfigMapOutput() ProjectBucketConfigMapOutput {
@@ -307,9 +307,7 @@ func (i ProjectBucketConfigMap) ToProjectBucketConfigMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectBucketConfigMapOutput)
 }
 
-type ProjectBucketConfigOutput struct {
-	*pulumi.OutputState
-}
+type ProjectBucketConfigOutput struct{ *pulumi.OutputState }
 
 func (ProjectBucketConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ProjectBucketConfig)(nil))
@@ -328,14 +326,12 @@ func (o ProjectBucketConfigOutput) ToProjectBucketConfigPtrOutput() ProjectBucke
 }
 
 func (o ProjectBucketConfigOutput) ToProjectBucketConfigPtrOutputWithContext(ctx context.Context) ProjectBucketConfigPtrOutput {
-	return o.ApplyT(func(v ProjectBucketConfig) *ProjectBucketConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectBucketConfig) *ProjectBucketConfig {
 		return &v
 	}).(ProjectBucketConfigPtrOutput)
 }
 
-type ProjectBucketConfigPtrOutput struct {
-	*pulumi.OutputState
-}
+type ProjectBucketConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ProjectBucketConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ProjectBucketConfig)(nil))
@@ -347,6 +343,16 @@ func (o ProjectBucketConfigPtrOutput) ToProjectBucketConfigPtrOutput() ProjectBu
 
 func (o ProjectBucketConfigPtrOutput) ToProjectBucketConfigPtrOutputWithContext(ctx context.Context) ProjectBucketConfigPtrOutput {
 	return o
+}
+
+func (o ProjectBucketConfigPtrOutput) Elem() ProjectBucketConfigOutput {
+	return o.ApplyT(func(v *ProjectBucketConfig) ProjectBucketConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectBucketConfig
+		return ret
+	}).(ProjectBucketConfigOutput)
 }
 
 type ProjectBucketConfigArrayOutput struct{ *pulumi.OutputState }

@@ -486,7 +486,7 @@ type IAMBindingArrayInput interface {
 type IAMBindingArray []IAMBindingInput
 
 func (IAMBindingArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*IAMBinding)(nil))
+	return reflect.TypeOf((*[]*IAMBinding)(nil)).Elem()
 }
 
 func (i IAMBindingArray) ToIAMBindingArrayOutput() IAMBindingArrayOutput {
@@ -511,7 +511,7 @@ type IAMBindingMapInput interface {
 type IAMBindingMap map[string]IAMBindingInput
 
 func (IAMBindingMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*IAMBinding)(nil))
+	return reflect.TypeOf((*map[string]*IAMBinding)(nil)).Elem()
 }
 
 func (i IAMBindingMap) ToIAMBindingMapOutput() IAMBindingMapOutput {
@@ -522,9 +522,7 @@ func (i IAMBindingMap) ToIAMBindingMapOutputWithContext(ctx context.Context) IAM
 	return pulumi.ToOutputWithContext(ctx, i).(IAMBindingMapOutput)
 }
 
-type IAMBindingOutput struct {
-	*pulumi.OutputState
-}
+type IAMBindingOutput struct{ *pulumi.OutputState }
 
 func (IAMBindingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*IAMBinding)(nil))
@@ -543,14 +541,12 @@ func (o IAMBindingOutput) ToIAMBindingPtrOutput() IAMBindingPtrOutput {
 }
 
 func (o IAMBindingOutput) ToIAMBindingPtrOutputWithContext(ctx context.Context) IAMBindingPtrOutput {
-	return o.ApplyT(func(v IAMBinding) *IAMBinding {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IAMBinding) *IAMBinding {
 		return &v
 	}).(IAMBindingPtrOutput)
 }
 
-type IAMBindingPtrOutput struct {
-	*pulumi.OutputState
-}
+type IAMBindingPtrOutput struct{ *pulumi.OutputState }
 
 func (IAMBindingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**IAMBinding)(nil))
@@ -562,6 +558,16 @@ func (o IAMBindingPtrOutput) ToIAMBindingPtrOutput() IAMBindingPtrOutput {
 
 func (o IAMBindingPtrOutput) ToIAMBindingPtrOutputWithContext(ctx context.Context) IAMBindingPtrOutput {
 	return o
+}
+
+func (o IAMBindingPtrOutput) Elem() IAMBindingOutput {
+	return o.ApplyT(func(v *IAMBinding) IAMBinding {
+		if v != nil {
+			return *v
+		}
+		var ret IAMBinding
+		return ret
+	}).(IAMBindingOutput)
 }
 
 type IAMBindingArrayOutput struct{ *pulumi.OutputState }

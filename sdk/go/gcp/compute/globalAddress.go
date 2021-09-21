@@ -400,7 +400,7 @@ type GlobalAddressArrayInput interface {
 type GlobalAddressArray []GlobalAddressInput
 
 func (GlobalAddressArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*GlobalAddress)(nil))
+	return reflect.TypeOf((*[]*GlobalAddress)(nil)).Elem()
 }
 
 func (i GlobalAddressArray) ToGlobalAddressArrayOutput() GlobalAddressArrayOutput {
@@ -425,7 +425,7 @@ type GlobalAddressMapInput interface {
 type GlobalAddressMap map[string]GlobalAddressInput
 
 func (GlobalAddressMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*GlobalAddress)(nil))
+	return reflect.TypeOf((*map[string]*GlobalAddress)(nil)).Elem()
 }
 
 func (i GlobalAddressMap) ToGlobalAddressMapOutput() GlobalAddressMapOutput {
@@ -436,9 +436,7 @@ func (i GlobalAddressMap) ToGlobalAddressMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalAddressMapOutput)
 }
 
-type GlobalAddressOutput struct {
-	*pulumi.OutputState
-}
+type GlobalAddressOutput struct{ *pulumi.OutputState }
 
 func (GlobalAddressOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GlobalAddress)(nil))
@@ -457,14 +455,12 @@ func (o GlobalAddressOutput) ToGlobalAddressPtrOutput() GlobalAddressPtrOutput {
 }
 
 func (o GlobalAddressOutput) ToGlobalAddressPtrOutputWithContext(ctx context.Context) GlobalAddressPtrOutput {
-	return o.ApplyT(func(v GlobalAddress) *GlobalAddress {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GlobalAddress) *GlobalAddress {
 		return &v
 	}).(GlobalAddressPtrOutput)
 }
 
-type GlobalAddressPtrOutput struct {
-	*pulumi.OutputState
-}
+type GlobalAddressPtrOutput struct{ *pulumi.OutputState }
 
 func (GlobalAddressPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**GlobalAddress)(nil))
@@ -476,6 +472,16 @@ func (o GlobalAddressPtrOutput) ToGlobalAddressPtrOutput() GlobalAddressPtrOutpu
 
 func (o GlobalAddressPtrOutput) ToGlobalAddressPtrOutputWithContext(ctx context.Context) GlobalAddressPtrOutput {
 	return o
+}
+
+func (o GlobalAddressPtrOutput) Elem() GlobalAddressOutput {
+	return o.ApplyT(func(v *GlobalAddress) GlobalAddress {
+		if v != nil {
+			return *v
+		}
+		var ret GlobalAddress
+		return ret
+	}).(GlobalAddressOutput)
 }
 
 type GlobalAddressArrayOutput struct{ *pulumi.OutputState }

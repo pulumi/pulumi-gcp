@@ -12,6 +12,7 @@ __all__ = [
     'GetTransferProjectServieAccountResult',
     'AwaitableGetTransferProjectServieAccountResult',
     'get_transfer_project_servie_account',
+    'get_transfer_project_servie_account_output',
 ]
 
 @pulumi.output_type
@@ -93,3 +94,25 @@ def get_transfer_project_servie_account(project: Optional[str] = None,
         email=__ret__.email,
         id=__ret__.id,
         project=__ret__.project)
+
+
+@_utilities.lift_output_func(get_transfer_project_servie_account)
+def get_transfer_project_servie_account_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTransferProjectServieAccountResult]:
+    """
+    Use this data source to retrieve Storage Transfer service account for this project
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    default = gcp.storage.get_transfer_project_servie_account()
+    pulumi.export("defaultAccount", default.email)
+    ```
+
+
+    :param str project: The project ID. If it is not provided, the provider project is used.
+    """
+    ...

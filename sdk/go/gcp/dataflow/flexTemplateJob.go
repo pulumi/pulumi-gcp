@@ -332,7 +332,7 @@ type FlexTemplateJobArrayInput interface {
 type FlexTemplateJobArray []FlexTemplateJobInput
 
 func (FlexTemplateJobArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*FlexTemplateJob)(nil))
+	return reflect.TypeOf((*[]*FlexTemplateJob)(nil)).Elem()
 }
 
 func (i FlexTemplateJobArray) ToFlexTemplateJobArrayOutput() FlexTemplateJobArrayOutput {
@@ -357,7 +357,7 @@ type FlexTemplateJobMapInput interface {
 type FlexTemplateJobMap map[string]FlexTemplateJobInput
 
 func (FlexTemplateJobMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*FlexTemplateJob)(nil))
+	return reflect.TypeOf((*map[string]*FlexTemplateJob)(nil)).Elem()
 }
 
 func (i FlexTemplateJobMap) ToFlexTemplateJobMapOutput() FlexTemplateJobMapOutput {
@@ -368,9 +368,7 @@ func (i FlexTemplateJobMap) ToFlexTemplateJobMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(FlexTemplateJobMapOutput)
 }
 
-type FlexTemplateJobOutput struct {
-	*pulumi.OutputState
-}
+type FlexTemplateJobOutput struct{ *pulumi.OutputState }
 
 func (FlexTemplateJobOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*FlexTemplateJob)(nil))
@@ -389,14 +387,12 @@ func (o FlexTemplateJobOutput) ToFlexTemplateJobPtrOutput() FlexTemplateJobPtrOu
 }
 
 func (o FlexTemplateJobOutput) ToFlexTemplateJobPtrOutputWithContext(ctx context.Context) FlexTemplateJobPtrOutput {
-	return o.ApplyT(func(v FlexTemplateJob) *FlexTemplateJob {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexTemplateJob) *FlexTemplateJob {
 		return &v
 	}).(FlexTemplateJobPtrOutput)
 }
 
-type FlexTemplateJobPtrOutput struct {
-	*pulumi.OutputState
-}
+type FlexTemplateJobPtrOutput struct{ *pulumi.OutputState }
 
 func (FlexTemplateJobPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**FlexTemplateJob)(nil))
@@ -408,6 +404,16 @@ func (o FlexTemplateJobPtrOutput) ToFlexTemplateJobPtrOutput() FlexTemplateJobPt
 
 func (o FlexTemplateJobPtrOutput) ToFlexTemplateJobPtrOutputWithContext(ctx context.Context) FlexTemplateJobPtrOutput {
 	return o
+}
+
+func (o FlexTemplateJobPtrOutput) Elem() FlexTemplateJobOutput {
+	return o.ApplyT(func(v *FlexTemplateJob) FlexTemplateJob {
+		if v != nil {
+			return *v
+		}
+		var ret FlexTemplateJob
+		return ret
+	}).(FlexTemplateJobOutput)
 }
 
 type FlexTemplateJobArrayOutput struct{ *pulumi.OutputState }

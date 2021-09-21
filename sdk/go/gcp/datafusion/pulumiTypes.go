@@ -113,7 +113,7 @@ func (o InstanceNetworkConfigOutput) ToInstanceNetworkConfigPtrOutput() Instance
 }
 
 func (o InstanceNetworkConfigOutput) ToInstanceNetworkConfigPtrOutputWithContext(ctx context.Context) InstanceNetworkConfigPtrOutput {
-	return o.ApplyT(func(v InstanceNetworkConfig) *InstanceNetworkConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceNetworkConfig) *InstanceNetworkConfig {
 		return &v
 	}).(InstanceNetworkConfigPtrOutput)
 }
@@ -146,7 +146,13 @@ func (o InstanceNetworkConfigPtrOutput) ToInstanceNetworkConfigPtrOutputWithCont
 }
 
 func (o InstanceNetworkConfigPtrOutput) Elem() InstanceNetworkConfigOutput {
-	return o.ApplyT(func(v *InstanceNetworkConfig) InstanceNetworkConfig { return *v }).(InstanceNetworkConfigOutput)
+	return o.ApplyT(func(v *InstanceNetworkConfig) InstanceNetworkConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceNetworkConfig
+		return ret
+	}).(InstanceNetworkConfigOutput)
 }
 
 // The IP range in CIDR notation to use for the managed Data Fusion instance

@@ -265,7 +265,7 @@ type CxVersionArrayInput interface {
 type CxVersionArray []CxVersionInput
 
 func (CxVersionArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*CxVersion)(nil))
+	return reflect.TypeOf((*[]*CxVersion)(nil)).Elem()
 }
 
 func (i CxVersionArray) ToCxVersionArrayOutput() CxVersionArrayOutput {
@@ -290,7 +290,7 @@ type CxVersionMapInput interface {
 type CxVersionMap map[string]CxVersionInput
 
 func (CxVersionMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*CxVersion)(nil))
+	return reflect.TypeOf((*map[string]*CxVersion)(nil)).Elem()
 }
 
 func (i CxVersionMap) ToCxVersionMapOutput() CxVersionMapOutput {
@@ -301,9 +301,7 @@ func (i CxVersionMap) ToCxVersionMapOutputWithContext(ctx context.Context) CxVer
 	return pulumi.ToOutputWithContext(ctx, i).(CxVersionMapOutput)
 }
 
-type CxVersionOutput struct {
-	*pulumi.OutputState
-}
+type CxVersionOutput struct{ *pulumi.OutputState }
 
 func (CxVersionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CxVersion)(nil))
@@ -322,14 +320,12 @@ func (o CxVersionOutput) ToCxVersionPtrOutput() CxVersionPtrOutput {
 }
 
 func (o CxVersionOutput) ToCxVersionPtrOutputWithContext(ctx context.Context) CxVersionPtrOutput {
-	return o.ApplyT(func(v CxVersion) *CxVersion {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxVersion) *CxVersion {
 		return &v
 	}).(CxVersionPtrOutput)
 }
 
-type CxVersionPtrOutput struct {
-	*pulumi.OutputState
-}
+type CxVersionPtrOutput struct{ *pulumi.OutputState }
 
 func (CxVersionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**CxVersion)(nil))
@@ -341,6 +337,16 @@ func (o CxVersionPtrOutput) ToCxVersionPtrOutput() CxVersionPtrOutput {
 
 func (o CxVersionPtrOutput) ToCxVersionPtrOutputWithContext(ctx context.Context) CxVersionPtrOutput {
 	return o
+}
+
+func (o CxVersionPtrOutput) Elem() CxVersionOutput {
+	return o.ApplyT(func(v *CxVersion) CxVersion {
+		if v != nil {
+			return *v
+		}
+		var ret CxVersion
+		return ret
+	}).(CxVersionOutput)
 }
 
 type CxVersionArrayOutput struct{ *pulumi.OutputState }

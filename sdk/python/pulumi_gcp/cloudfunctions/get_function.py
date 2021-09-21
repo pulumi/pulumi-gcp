@@ -13,6 +13,7 @@ __all__ = [
     'GetFunctionResult',
     'AwaitableGetFunctionResult',
     'get_function',
+    'get_function_output',
 ]
 
 @pulumi.output_type
@@ -354,3 +355,32 @@ def get_function(name: Optional[str] = None,
         trigger_http=__ret__.trigger_http,
         vpc_connector=__ret__.vpc_connector,
         vpc_connector_egress_settings=__ret__.vpc_connector_egress_settings)
+
+
+@_utilities.lift_output_func(get_function)
+def get_function_output(name: Optional[pulumi.Input[str]] = None,
+                        project: Optional[pulumi.Input[Optional[str]]] = None,
+                        region: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFunctionResult]:
+    """
+    Get information about a Google Cloud Function. For more information see
+    the [official documentation](https://cloud.google.com/functions/docs/)
+    and [API](https://cloud.google.com/functions/docs/apis).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_function = gcp.cloudfunctions.get_function(name="function")
+    ```
+
+
+    :param str name: The name of a Cloud Function.
+    :param str project: The project in which the resource belongs. If it
+           is not provided, the provider project is used.
+    :param str region: The region in which the resource belongs. If it
+           is not provided, the provider region is used.
+    """
+    ...

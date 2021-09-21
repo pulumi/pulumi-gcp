@@ -442,7 +442,7 @@ type SubnetworkIAMPolicyArrayInput interface {
 type SubnetworkIAMPolicyArray []SubnetworkIAMPolicyInput
 
 func (SubnetworkIAMPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*SubnetworkIAMPolicy)(nil))
+	return reflect.TypeOf((*[]*SubnetworkIAMPolicy)(nil)).Elem()
 }
 
 func (i SubnetworkIAMPolicyArray) ToSubnetworkIAMPolicyArrayOutput() SubnetworkIAMPolicyArrayOutput {
@@ -467,7 +467,7 @@ type SubnetworkIAMPolicyMapInput interface {
 type SubnetworkIAMPolicyMap map[string]SubnetworkIAMPolicyInput
 
 func (SubnetworkIAMPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*SubnetworkIAMPolicy)(nil))
+	return reflect.TypeOf((*map[string]*SubnetworkIAMPolicy)(nil)).Elem()
 }
 
 func (i SubnetworkIAMPolicyMap) ToSubnetworkIAMPolicyMapOutput() SubnetworkIAMPolicyMapOutput {
@@ -478,9 +478,7 @@ func (i SubnetworkIAMPolicyMap) ToSubnetworkIAMPolicyMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkIAMPolicyMapOutput)
 }
 
-type SubnetworkIAMPolicyOutput struct {
-	*pulumi.OutputState
-}
+type SubnetworkIAMPolicyOutput struct{ *pulumi.OutputState }
 
 func (SubnetworkIAMPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SubnetworkIAMPolicy)(nil))
@@ -499,14 +497,12 @@ func (o SubnetworkIAMPolicyOutput) ToSubnetworkIAMPolicyPtrOutput() SubnetworkIA
 }
 
 func (o SubnetworkIAMPolicyOutput) ToSubnetworkIAMPolicyPtrOutputWithContext(ctx context.Context) SubnetworkIAMPolicyPtrOutput {
-	return o.ApplyT(func(v SubnetworkIAMPolicy) *SubnetworkIAMPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubnetworkIAMPolicy) *SubnetworkIAMPolicy {
 		return &v
 	}).(SubnetworkIAMPolicyPtrOutput)
 }
 
-type SubnetworkIAMPolicyPtrOutput struct {
-	*pulumi.OutputState
-}
+type SubnetworkIAMPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (SubnetworkIAMPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SubnetworkIAMPolicy)(nil))
@@ -518,6 +514,16 @@ func (o SubnetworkIAMPolicyPtrOutput) ToSubnetworkIAMPolicyPtrOutput() Subnetwor
 
 func (o SubnetworkIAMPolicyPtrOutput) ToSubnetworkIAMPolicyPtrOutputWithContext(ctx context.Context) SubnetworkIAMPolicyPtrOutput {
 	return o
+}
+
+func (o SubnetworkIAMPolicyPtrOutput) Elem() SubnetworkIAMPolicyOutput {
+	return o.ApplyT(func(v *SubnetworkIAMPolicy) SubnetworkIAMPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret SubnetworkIAMPolicy
+		return ret
+	}).(SubnetworkIAMPolicyOutput)
 }
 
 type SubnetworkIAMPolicyArrayOutput struct{ *pulumi.OutputState }

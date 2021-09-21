@@ -12,6 +12,7 @@ __all__ = [
     'GetActiveFolderResult',
     'AwaitableGetActiveFolderResult',
     'get_active_folder',
+    'get_active_folder_output',
 ]
 
 @pulumi.output_type
@@ -106,3 +107,27 @@ def get_active_folder(display_name: Optional[str] = None,
         id=__ret__.id,
         name=__ret__.name,
         parent=__ret__.parent)
+
+
+@_utilities.lift_output_func(get_active_folder)
+def get_active_folder_output(display_name: Optional[pulumi.Input[str]] = None,
+                             parent: Optional[pulumi.Input[str]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetActiveFolderResult]:
+    """
+    Get an active folder within GCP by `display_name` and `parent`.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    department1 = gcp.organizations.get_active_folder(display_name="Department 1",
+        parent="organizations/1234567")
+    ```
+
+
+    :param str display_name: The folder's display name.
+    :param str parent: The resource name of the parent Folder or Organization.
+    """
+    ...

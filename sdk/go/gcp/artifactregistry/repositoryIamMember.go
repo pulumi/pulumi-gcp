@@ -341,7 +341,7 @@ type RepositoryIamMemberArrayInput interface {
 type RepositoryIamMemberArray []RepositoryIamMemberInput
 
 func (RepositoryIamMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*RepositoryIamMember)(nil))
+	return reflect.TypeOf((*[]*RepositoryIamMember)(nil)).Elem()
 }
 
 func (i RepositoryIamMemberArray) ToRepositoryIamMemberArrayOutput() RepositoryIamMemberArrayOutput {
@@ -366,7 +366,7 @@ type RepositoryIamMemberMapInput interface {
 type RepositoryIamMemberMap map[string]RepositoryIamMemberInput
 
 func (RepositoryIamMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*RepositoryIamMember)(nil))
+	return reflect.TypeOf((*map[string]*RepositoryIamMember)(nil)).Elem()
 }
 
 func (i RepositoryIamMemberMap) ToRepositoryIamMemberMapOutput() RepositoryIamMemberMapOutput {
@@ -377,9 +377,7 @@ func (i RepositoryIamMemberMap) ToRepositoryIamMemberMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamMemberMapOutput)
 }
 
-type RepositoryIamMemberOutput struct {
-	*pulumi.OutputState
-}
+type RepositoryIamMemberOutput struct{ *pulumi.OutputState }
 
 func (RepositoryIamMemberOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RepositoryIamMember)(nil))
@@ -398,14 +396,12 @@ func (o RepositoryIamMemberOutput) ToRepositoryIamMemberPtrOutput() RepositoryIa
 }
 
 func (o RepositoryIamMemberOutput) ToRepositoryIamMemberPtrOutputWithContext(ctx context.Context) RepositoryIamMemberPtrOutput {
-	return o.ApplyT(func(v RepositoryIamMember) *RepositoryIamMember {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryIamMember) *RepositoryIamMember {
 		return &v
 	}).(RepositoryIamMemberPtrOutput)
 }
 
-type RepositoryIamMemberPtrOutput struct {
-	*pulumi.OutputState
-}
+type RepositoryIamMemberPtrOutput struct{ *pulumi.OutputState }
 
 func (RepositoryIamMemberPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**RepositoryIamMember)(nil))
@@ -417,6 +413,16 @@ func (o RepositoryIamMemberPtrOutput) ToRepositoryIamMemberPtrOutput() Repositor
 
 func (o RepositoryIamMemberPtrOutput) ToRepositoryIamMemberPtrOutputWithContext(ctx context.Context) RepositoryIamMemberPtrOutput {
 	return o
+}
+
+func (o RepositoryIamMemberPtrOutput) Elem() RepositoryIamMemberOutput {
+	return o.ApplyT(func(v *RepositoryIamMember) RepositoryIamMember {
+		if v != nil {
+			return *v
+		}
+		var ret RepositoryIamMember
+		return ret
+	}).(RepositoryIamMemberOutput)
 }
 
 type RepositoryIamMemberArrayOutput struct{ *pulumi.OutputState }

@@ -13,6 +13,7 @@ __all__ = [
     'GetGroupsResult',
     'AwaitableGetGroupsResult',
     'get_groups',
+    'get_groups_output',
 ]
 
 @pulumi.output_type
@@ -95,3 +96,26 @@ def get_groups(parent: Optional[str] = None,
         groups=__ret__.groups,
         id=__ret__.id,
         parent=__ret__.parent)
+
+
+@_utilities.lift_output_func(get_groups)
+def get_groups_output(parent: Optional[pulumi.Input[str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupsResult]:
+    """
+    Use this data source to get list of the Cloud Identity Groups under a customer or namespace.
+
+    https://cloud.google.com/identity/docs/concepts/overview#groups
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    groups = gcp.cloudidentity.get_groups(parent="customers/A01b123xz")
+    ```
+
+
+    :param str parent: The parent resource under which to list all Groups. Must be of the form identitysources/{identity_source_id} for external- identity-mapped groups or customers/{customer_id} for Google Groups.
+    """
+    ...

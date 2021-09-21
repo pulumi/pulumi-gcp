@@ -159,7 +159,7 @@ type AccountIamMemberArrayInput interface {
 type AccountIamMemberArray []AccountIamMemberInput
 
 func (AccountIamMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AccountIamMember)(nil))
+	return reflect.TypeOf((*[]*AccountIamMember)(nil)).Elem()
 }
 
 func (i AccountIamMemberArray) ToAccountIamMemberArrayOutput() AccountIamMemberArrayOutput {
@@ -184,7 +184,7 @@ type AccountIamMemberMapInput interface {
 type AccountIamMemberMap map[string]AccountIamMemberInput
 
 func (AccountIamMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AccountIamMember)(nil))
+	return reflect.TypeOf((*map[string]*AccountIamMember)(nil)).Elem()
 }
 
 func (i AccountIamMemberMap) ToAccountIamMemberMapOutput() AccountIamMemberMapOutput {
@@ -195,9 +195,7 @@ func (i AccountIamMemberMap) ToAccountIamMemberMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AccountIamMemberMapOutput)
 }
 
-type AccountIamMemberOutput struct {
-	*pulumi.OutputState
-}
+type AccountIamMemberOutput struct{ *pulumi.OutputState }
 
 func (AccountIamMemberOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AccountIamMember)(nil))
@@ -216,14 +214,12 @@ func (o AccountIamMemberOutput) ToAccountIamMemberPtrOutput() AccountIamMemberPt
 }
 
 func (o AccountIamMemberOutput) ToAccountIamMemberPtrOutputWithContext(ctx context.Context) AccountIamMemberPtrOutput {
-	return o.ApplyT(func(v AccountIamMember) *AccountIamMember {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccountIamMember) *AccountIamMember {
 		return &v
 	}).(AccountIamMemberPtrOutput)
 }
 
-type AccountIamMemberPtrOutput struct {
-	*pulumi.OutputState
-}
+type AccountIamMemberPtrOutput struct{ *pulumi.OutputState }
 
 func (AccountIamMemberPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AccountIamMember)(nil))
@@ -235,6 +231,16 @@ func (o AccountIamMemberPtrOutput) ToAccountIamMemberPtrOutput() AccountIamMembe
 
 func (o AccountIamMemberPtrOutput) ToAccountIamMemberPtrOutputWithContext(ctx context.Context) AccountIamMemberPtrOutput {
 	return o
+}
+
+func (o AccountIamMemberPtrOutput) Elem() AccountIamMemberOutput {
+	return o.ApplyT(func(v *AccountIamMember) AccountIamMember {
+		if v != nil {
+			return *v
+		}
+		var ret AccountIamMember
+		return ret
+	}).(AccountIamMemberOutput)
 }
 
 type AccountIamMemberArrayOutput struct{ *pulumi.OutputState }

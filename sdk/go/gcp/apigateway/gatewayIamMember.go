@@ -346,7 +346,7 @@ type GatewayIamMemberArrayInput interface {
 type GatewayIamMemberArray []GatewayIamMemberInput
 
 func (GatewayIamMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*GatewayIamMember)(nil))
+	return reflect.TypeOf((*[]*GatewayIamMember)(nil)).Elem()
 }
 
 func (i GatewayIamMemberArray) ToGatewayIamMemberArrayOutput() GatewayIamMemberArrayOutput {
@@ -371,7 +371,7 @@ type GatewayIamMemberMapInput interface {
 type GatewayIamMemberMap map[string]GatewayIamMemberInput
 
 func (GatewayIamMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*GatewayIamMember)(nil))
+	return reflect.TypeOf((*map[string]*GatewayIamMember)(nil)).Elem()
 }
 
 func (i GatewayIamMemberMap) ToGatewayIamMemberMapOutput() GatewayIamMemberMapOutput {
@@ -382,9 +382,7 @@ func (i GatewayIamMemberMap) ToGatewayIamMemberMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayIamMemberMapOutput)
 }
 
-type GatewayIamMemberOutput struct {
-	*pulumi.OutputState
-}
+type GatewayIamMemberOutput struct{ *pulumi.OutputState }
 
 func (GatewayIamMemberOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GatewayIamMember)(nil))
@@ -403,14 +401,12 @@ func (o GatewayIamMemberOutput) ToGatewayIamMemberPtrOutput() GatewayIamMemberPt
 }
 
 func (o GatewayIamMemberOutput) ToGatewayIamMemberPtrOutputWithContext(ctx context.Context) GatewayIamMemberPtrOutput {
-	return o.ApplyT(func(v GatewayIamMember) *GatewayIamMember {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayIamMember) *GatewayIamMember {
 		return &v
 	}).(GatewayIamMemberPtrOutput)
 }
 
-type GatewayIamMemberPtrOutput struct {
-	*pulumi.OutputState
-}
+type GatewayIamMemberPtrOutput struct{ *pulumi.OutputState }
 
 func (GatewayIamMemberPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**GatewayIamMember)(nil))
@@ -422,6 +418,16 @@ func (o GatewayIamMemberPtrOutput) ToGatewayIamMemberPtrOutput() GatewayIamMembe
 
 func (o GatewayIamMemberPtrOutput) ToGatewayIamMemberPtrOutputWithContext(ctx context.Context) GatewayIamMemberPtrOutput {
 	return o
+}
+
+func (o GatewayIamMemberPtrOutput) Elem() GatewayIamMemberOutput {
+	return o.ApplyT(func(v *GatewayIamMember) GatewayIamMember {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayIamMember
+		return ret
+	}).(GatewayIamMemberOutput)
 }
 
 type GatewayIamMemberArrayOutput struct{ *pulumi.OutputState }

@@ -439,7 +439,7 @@ type ImageIamMemberArrayInput interface {
 type ImageIamMemberArray []ImageIamMemberInput
 
 func (ImageIamMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ImageIamMember)(nil))
+	return reflect.TypeOf((*[]*ImageIamMember)(nil)).Elem()
 }
 
 func (i ImageIamMemberArray) ToImageIamMemberArrayOutput() ImageIamMemberArrayOutput {
@@ -464,7 +464,7 @@ type ImageIamMemberMapInput interface {
 type ImageIamMemberMap map[string]ImageIamMemberInput
 
 func (ImageIamMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ImageIamMember)(nil))
+	return reflect.TypeOf((*map[string]*ImageIamMember)(nil)).Elem()
 }
 
 func (i ImageIamMemberMap) ToImageIamMemberMapOutput() ImageIamMemberMapOutput {
@@ -475,9 +475,7 @@ func (i ImageIamMemberMap) ToImageIamMemberMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ImageIamMemberMapOutput)
 }
 
-type ImageIamMemberOutput struct {
-	*pulumi.OutputState
-}
+type ImageIamMemberOutput struct{ *pulumi.OutputState }
 
 func (ImageIamMemberOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ImageIamMember)(nil))
@@ -496,14 +494,12 @@ func (o ImageIamMemberOutput) ToImageIamMemberPtrOutput() ImageIamMemberPtrOutpu
 }
 
 func (o ImageIamMemberOutput) ToImageIamMemberPtrOutputWithContext(ctx context.Context) ImageIamMemberPtrOutput {
-	return o.ApplyT(func(v ImageIamMember) *ImageIamMember {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImageIamMember) *ImageIamMember {
 		return &v
 	}).(ImageIamMemberPtrOutput)
 }
 
-type ImageIamMemberPtrOutput struct {
-	*pulumi.OutputState
-}
+type ImageIamMemberPtrOutput struct{ *pulumi.OutputState }
 
 func (ImageIamMemberPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ImageIamMember)(nil))
@@ -515,6 +511,16 @@ func (o ImageIamMemberPtrOutput) ToImageIamMemberPtrOutput() ImageIamMemberPtrOu
 
 func (o ImageIamMemberPtrOutput) ToImageIamMemberPtrOutputWithContext(ctx context.Context) ImageIamMemberPtrOutput {
 	return o
+}
+
+func (o ImageIamMemberPtrOutput) Elem() ImageIamMemberOutput {
+	return o.ApplyT(func(v *ImageIamMember) ImageIamMember {
+		if v != nil {
+			return *v
+		}
+		var ret ImageIamMember
+		return ret
+	}).(ImageIamMemberOutput)
 }
 
 type ImageIamMemberArrayOutput struct{ *pulumi.OutputState }

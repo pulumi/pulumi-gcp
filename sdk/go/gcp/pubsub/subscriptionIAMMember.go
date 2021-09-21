@@ -316,7 +316,7 @@ type SubscriptionIAMMemberArrayInput interface {
 type SubscriptionIAMMemberArray []SubscriptionIAMMemberInput
 
 func (SubscriptionIAMMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*SubscriptionIAMMember)(nil))
+	return reflect.TypeOf((*[]*SubscriptionIAMMember)(nil)).Elem()
 }
 
 func (i SubscriptionIAMMemberArray) ToSubscriptionIAMMemberArrayOutput() SubscriptionIAMMemberArrayOutput {
@@ -341,7 +341,7 @@ type SubscriptionIAMMemberMapInput interface {
 type SubscriptionIAMMemberMap map[string]SubscriptionIAMMemberInput
 
 func (SubscriptionIAMMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*SubscriptionIAMMember)(nil))
+	return reflect.TypeOf((*map[string]*SubscriptionIAMMember)(nil)).Elem()
 }
 
 func (i SubscriptionIAMMemberMap) ToSubscriptionIAMMemberMapOutput() SubscriptionIAMMemberMapOutput {
@@ -352,9 +352,7 @@ func (i SubscriptionIAMMemberMap) ToSubscriptionIAMMemberMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIAMMemberMapOutput)
 }
 
-type SubscriptionIAMMemberOutput struct {
-	*pulumi.OutputState
-}
+type SubscriptionIAMMemberOutput struct{ *pulumi.OutputState }
 
 func (SubscriptionIAMMemberOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SubscriptionIAMMember)(nil))
@@ -373,14 +371,12 @@ func (o SubscriptionIAMMemberOutput) ToSubscriptionIAMMemberPtrOutput() Subscrip
 }
 
 func (o SubscriptionIAMMemberOutput) ToSubscriptionIAMMemberPtrOutputWithContext(ctx context.Context) SubscriptionIAMMemberPtrOutput {
-	return o.ApplyT(func(v SubscriptionIAMMember) *SubscriptionIAMMember {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubscriptionIAMMember) *SubscriptionIAMMember {
 		return &v
 	}).(SubscriptionIAMMemberPtrOutput)
 }
 
-type SubscriptionIAMMemberPtrOutput struct {
-	*pulumi.OutputState
-}
+type SubscriptionIAMMemberPtrOutput struct{ *pulumi.OutputState }
 
 func (SubscriptionIAMMemberPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SubscriptionIAMMember)(nil))
@@ -392,6 +388,16 @@ func (o SubscriptionIAMMemberPtrOutput) ToSubscriptionIAMMemberPtrOutput() Subsc
 
 func (o SubscriptionIAMMemberPtrOutput) ToSubscriptionIAMMemberPtrOutputWithContext(ctx context.Context) SubscriptionIAMMemberPtrOutput {
 	return o
+}
+
+func (o SubscriptionIAMMemberPtrOutput) Elem() SubscriptionIAMMemberOutput {
+	return o.ApplyT(func(v *SubscriptionIAMMember) SubscriptionIAMMember {
+		if v != nil {
+			return *v
+		}
+		var ret SubscriptionIAMMember
+		return ret
+	}).(SubscriptionIAMMemberOutput)
 }
 
 type SubscriptionIAMMemberArrayOutput struct{ *pulumi.OutputState }

@@ -12,6 +12,7 @@ __all__ = [
     'GetKMSSecretResult',
     'AwaitableGetKMSSecretResult',
     'get_kms_secret',
+    'get_kms_secret_output',
 ]
 
 @pulumi.output_type
@@ -120,3 +121,30 @@ def get_kms_secret(additional_authenticated_data: Optional[str] = None,
         crypto_key=__ret__.crypto_key,
         id=__ret__.id,
         plaintext=__ret__.plaintext)
+
+
+@_utilities.lift_output_func(get_kms_secret)
+def get_kms_secret_output(additional_authenticated_data: Optional[pulumi.Input[Optional[str]]] = None,
+                          ciphertext: Optional[pulumi.Input[str]] = None,
+                          crypto_key: Optional[pulumi.Input[str]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKMSSecretResult]:
+    """
+    This data source allows you to use data encrypted with Google Cloud KMS
+    within your resource definitions.
+
+    For more information see
+    [the official documentation](https://cloud.google.com/kms/docs/encrypt-decrypt).
+
+    > **NOTE:** Using this data provider will allow you to conceal secret data within your
+    resource definitions, but it does not take care of protecting that data in the
+    logging output, plan output, or state output.  Please take care to secure your secret
+    data outside of resource definitions.
+
+
+    :param str additional_authenticated_data: The [additional authenticated data](https://cloud.google.com/kms/docs/additional-authenticated-data) used for integrity checks during encryption and decryption.
+    :param str ciphertext: The ciphertext to be decrypted, encoded in base64
+    :param str crypto_key: The id of the CryptoKey that will be used to
+           decrypt the provided ciphertext. This is represented by the format
+           `{projectId}/{location}/{keyRingName}/{cryptoKeyName}`.
+    """
+    ...

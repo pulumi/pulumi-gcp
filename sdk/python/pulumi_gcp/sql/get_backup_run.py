@@ -12,6 +12,7 @@ __all__ = [
     'GetBackupRunResult',
     'AwaitableGetBackupRunResult',
     'get_backup_run',
+    'get_backup_run_output',
 ]
 
 @pulumi.output_type
@@ -148,3 +149,31 @@ def get_backup_run(backup_id: Optional[int] = None,
         most_recent=__ret__.most_recent,
         start_time=__ret__.start_time,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_backup_run)
+def get_backup_run_output(backup_id: Optional[pulumi.Input[Optional[int]]] = None,
+                          instance: Optional[pulumi.Input[str]] = None,
+                          most_recent: Optional[pulumi.Input[Optional[bool]]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBackupRunResult]:
+    """
+    Use this data source to get information about a Cloud SQL instance backup run.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    backup = gcp.sql.get_backup_run(instance=google_sql_database_instance["master"]["name"],
+        most_recent=True)
+    ```
+
+
+    :param int backup_id: The identifier for this backup run. Unique only for a specific Cloud SQL instance.
+           If left empty and multiple backups exist for the instance, `most_recent` must be set to `true`.
+    :param str instance: The name of the instance the backup is taken from.
+    :param bool most_recent: Toggles use of the most recent backup run if multiple backups exist for a 
+           Cloud SQL instance.
+    """
+    ...

@@ -211,7 +211,7 @@ func (o AuthorityConfigOutput) ToAuthorityConfigPtrOutput() AuthorityConfigPtrOu
 }
 
 func (o AuthorityConfigOutput) ToAuthorityConfigPtrOutputWithContext(ctx context.Context) AuthorityConfigPtrOutput {
-	return o.ApplyT(func(v AuthorityConfig) *AuthorityConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthorityConfig) *AuthorityConfig {
 		return &v
 	}).(AuthorityConfigPtrOutput)
 }
@@ -243,7 +243,13 @@ func (o AuthorityConfigPtrOutput) ToAuthorityConfigPtrOutputWithContext(ctx cont
 }
 
 func (o AuthorityConfigPtrOutput) Elem() AuthorityConfigOutput {
-	return o.ApplyT(func(v *AuthorityConfig) AuthorityConfig { return *v }).(AuthorityConfigOutput)
+	return o.ApplyT(func(v *AuthorityConfig) AuthorityConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AuthorityConfig
+		return ret
+	}).(AuthorityConfigOutput)
 }
 
 // Specifies some of the values in a certificate that are related to the subject.
@@ -369,7 +375,7 @@ func (o AuthorityConfigSubjectConfigOutput) ToAuthorityConfigSubjectConfigPtrOut
 }
 
 func (o AuthorityConfigSubjectConfigOutput) ToAuthorityConfigSubjectConfigPtrOutputWithContext(ctx context.Context) AuthorityConfigSubjectConfigPtrOutput {
-	return o.ApplyT(func(v AuthorityConfigSubjectConfig) *AuthorityConfigSubjectConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthorityConfigSubjectConfig) *AuthorityConfigSubjectConfig {
 		return &v
 	}).(AuthorityConfigSubjectConfigPtrOutput)
 }
@@ -403,7 +409,13 @@ func (o AuthorityConfigSubjectConfigPtrOutput) ToAuthorityConfigSubjectConfigPtr
 }
 
 func (o AuthorityConfigSubjectConfigPtrOutput) Elem() AuthorityConfigSubjectConfigOutput {
-	return o.ApplyT(func(v *AuthorityConfigSubjectConfig) AuthorityConfigSubjectConfig { return *v }).(AuthorityConfigSubjectConfigOutput)
+	return o.ApplyT(func(v *AuthorityConfigSubjectConfig) AuthorityConfigSubjectConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AuthorityConfigSubjectConfig
+		return ret
+	}).(AuthorityConfigSubjectConfigOutput)
 }
 
 // Contains distinguished name fields such as the location and organization.
@@ -549,7 +561,7 @@ func (o AuthorityConfigSubjectConfigSubjectOutput) ToAuthorityConfigSubjectConfi
 }
 
 func (o AuthorityConfigSubjectConfigSubjectOutput) ToAuthorityConfigSubjectConfigSubjectPtrOutputWithContext(ctx context.Context) AuthorityConfigSubjectConfigSubjectPtrOutput {
-	return o.ApplyT(func(v AuthorityConfigSubjectConfigSubject) *AuthorityConfigSubjectConfigSubject {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthorityConfigSubjectConfigSubject) *AuthorityConfigSubjectConfigSubject {
 		return &v
 	}).(AuthorityConfigSubjectConfigSubjectPtrOutput)
 }
@@ -609,7 +621,13 @@ func (o AuthorityConfigSubjectConfigSubjectPtrOutput) ToAuthorityConfigSubjectCo
 }
 
 func (o AuthorityConfigSubjectConfigSubjectPtrOutput) Elem() AuthorityConfigSubjectConfigSubjectOutput {
-	return o.ApplyT(func(v *AuthorityConfigSubjectConfigSubject) AuthorityConfigSubjectConfigSubject { return *v }).(AuthorityConfigSubjectConfigSubjectOutput)
+	return o.ApplyT(func(v *AuthorityConfigSubjectConfigSubject) AuthorityConfigSubjectConfigSubject {
+		if v != nil {
+			return *v
+		}
+		var ret AuthorityConfigSubjectConfigSubject
+		return ret
+	}).(AuthorityConfigSubjectConfigSubjectOutput)
 }
 
 // The common name of the distinguished name.
@@ -797,7 +815,7 @@ func (o AuthorityConfigSubjectConfigSubjectAltNameOutput) ToAuthorityConfigSubje
 }
 
 func (o AuthorityConfigSubjectConfigSubjectAltNameOutput) ToAuthorityConfigSubjectConfigSubjectAltNamePtrOutputWithContext(ctx context.Context) AuthorityConfigSubjectConfigSubjectAltNamePtrOutput {
-	return o.ApplyT(func(v AuthorityConfigSubjectConfigSubjectAltName) *AuthorityConfigSubjectConfigSubjectAltName {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthorityConfigSubjectConfigSubjectAltName) *AuthorityConfigSubjectConfigSubjectAltName {
 		return &v
 	}).(AuthorityConfigSubjectConfigSubjectAltNamePtrOutput)
 }
@@ -838,7 +856,11 @@ func (o AuthorityConfigSubjectConfigSubjectAltNamePtrOutput) ToAuthorityConfigSu
 
 func (o AuthorityConfigSubjectConfigSubjectAltNamePtrOutput) Elem() AuthorityConfigSubjectConfigSubjectAltNameOutput {
 	return o.ApplyT(func(v *AuthorityConfigSubjectConfigSubjectAltName) AuthorityConfigSubjectConfigSubjectAltName {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret AuthorityConfigSubjectConfigSubjectAltName
+		return ret
 	}).(AuthorityConfigSubjectConfigSubjectAltNameOutput)
 }
 
@@ -1001,7 +1023,7 @@ func (o AuthorityConfigX509ConfigOutput) ToAuthorityConfigX509ConfigPtrOutput() 
 }
 
 func (o AuthorityConfigX509ConfigOutput) ToAuthorityConfigX509ConfigPtrOutputWithContext(ctx context.Context) AuthorityConfigX509ConfigPtrOutput {
-	return o.ApplyT(func(v AuthorityConfigX509Config) *AuthorityConfigX509Config {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthorityConfigX509Config) *AuthorityConfigX509Config {
 		return &v
 	}).(AuthorityConfigX509ConfigPtrOutput)
 }
@@ -1053,7 +1075,13 @@ func (o AuthorityConfigX509ConfigPtrOutput) ToAuthorityConfigX509ConfigPtrOutput
 }
 
 func (o AuthorityConfigX509ConfigPtrOutput) Elem() AuthorityConfigX509ConfigOutput {
-	return o.ApplyT(func(v *AuthorityConfigX509Config) AuthorityConfigX509Config { return *v }).(AuthorityConfigX509ConfigOutput)
+	return o.ApplyT(func(v *AuthorityConfigX509Config) AuthorityConfigX509Config {
+		if v != nil {
+			return *v
+		}
+		var ret AuthorityConfigX509Config
+		return ret
+	}).(AuthorityConfigX509ConfigOutput)
 }
 
 // Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
@@ -1389,7 +1417,7 @@ func (o AuthorityConfigX509ConfigCaOptionsOutput) ToAuthorityConfigX509ConfigCaO
 }
 
 func (o AuthorityConfigX509ConfigCaOptionsOutput) ToAuthorityConfigX509ConfigCaOptionsPtrOutputWithContext(ctx context.Context) AuthorityConfigX509ConfigCaOptionsPtrOutput {
-	return o.ApplyT(func(v AuthorityConfigX509ConfigCaOptions) *AuthorityConfigX509ConfigCaOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthorityConfigX509ConfigCaOptions) *AuthorityConfigX509ConfigCaOptions {
 		return &v
 	}).(AuthorityConfigX509ConfigCaOptionsPtrOutput)
 }
@@ -1422,7 +1450,13 @@ func (o AuthorityConfigX509ConfigCaOptionsPtrOutput) ToAuthorityConfigX509Config
 }
 
 func (o AuthorityConfigX509ConfigCaOptionsPtrOutput) Elem() AuthorityConfigX509ConfigCaOptionsOutput {
-	return o.ApplyT(func(v *AuthorityConfigX509ConfigCaOptions) AuthorityConfigX509ConfigCaOptions { return *v }).(AuthorityConfigX509ConfigCaOptionsOutput)
+	return o.ApplyT(func(v *AuthorityConfigX509ConfigCaOptions) AuthorityConfigX509ConfigCaOptions {
+		if v != nil {
+			return *v
+		}
+		var ret AuthorityConfigX509ConfigCaOptions
+		return ret
+	}).(AuthorityConfigX509ConfigCaOptionsOutput)
 }
 
 // Refers to the "CA" X.509 extension, which is a boolean value. When this value is missing,
@@ -1555,7 +1589,7 @@ func (o AuthorityConfigX509ConfigKeyUsageOutput) ToAuthorityConfigX509ConfigKeyU
 }
 
 func (o AuthorityConfigX509ConfigKeyUsageOutput) ToAuthorityConfigX509ConfigKeyUsagePtrOutputWithContext(ctx context.Context) AuthorityConfigX509ConfigKeyUsagePtrOutput {
-	return o.ApplyT(func(v AuthorityConfigX509ConfigKeyUsage) *AuthorityConfigX509ConfigKeyUsage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthorityConfigX509ConfigKeyUsage) *AuthorityConfigX509ConfigKeyUsage {
 		return &v
 	}).(AuthorityConfigX509ConfigKeyUsagePtrOutput)
 }
@@ -1599,7 +1633,13 @@ func (o AuthorityConfigX509ConfigKeyUsagePtrOutput) ToAuthorityConfigX509ConfigK
 }
 
 func (o AuthorityConfigX509ConfigKeyUsagePtrOutput) Elem() AuthorityConfigX509ConfigKeyUsageOutput {
-	return o.ApplyT(func(v *AuthorityConfigX509ConfigKeyUsage) AuthorityConfigX509ConfigKeyUsage { return *v }).(AuthorityConfigX509ConfigKeyUsageOutput)
+	return o.ApplyT(func(v *AuthorityConfigX509ConfigKeyUsage) AuthorityConfigX509ConfigKeyUsage {
+		if v != nil {
+			return *v
+		}
+		var ret AuthorityConfigX509ConfigKeyUsage
+		return ret
+	}).(AuthorityConfigX509ConfigKeyUsageOutput)
 }
 
 // Describes high-level ways in which a key may be used.
@@ -1760,7 +1800,7 @@ func (o AuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput) ToAuthorityConfigX5
 }
 
 func (o AuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput) ToAuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutputWithContext(ctx context.Context) AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput {
-	return o.ApplyT(func(v AuthorityConfigX509ConfigKeyUsageBaseKeyUsage) *AuthorityConfigX509ConfigKeyUsageBaseKeyUsage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthorityConfigX509ConfigKeyUsageBaseKeyUsage) *AuthorityConfigX509ConfigKeyUsageBaseKeyUsage {
 		return &v
 	}).(AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput)
 }
@@ -1826,7 +1866,11 @@ func (o AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput) ToAuthorityConfi
 
 func (o AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput) Elem() AuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput {
 	return o.ApplyT(func(v *AuthorityConfigX509ConfigKeyUsageBaseKeyUsage) AuthorityConfigX509ConfigKeyUsageBaseKeyUsage {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret AuthorityConfigX509ConfigKeyUsageBaseKeyUsage
+		return ret
 	}).(AuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput)
 }
 
@@ -2033,7 +2077,7 @@ func (o AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput) ToAuthorityConf
 }
 
 func (o AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput) ToAuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutputWithContext(ctx context.Context) AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput {
-	return o.ApplyT(func(v AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage) *AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage) *AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage {
 		return &v
 	}).(AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput)
 }
@@ -2084,7 +2128,11 @@ func (o AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput) ToAuthorityC
 
 func (o AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput) Elem() AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput {
 	return o.ApplyT(func(v *AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage) AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage
+		return ret
 	}).(AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput)
 }
 
@@ -2445,7 +2493,7 @@ func (o AuthorityKeySpecOutput) ToAuthorityKeySpecPtrOutput() AuthorityKeySpecPt
 }
 
 func (o AuthorityKeySpecOutput) ToAuthorityKeySpecPtrOutputWithContext(ctx context.Context) AuthorityKeySpecPtrOutput {
-	return o.ApplyT(func(v AuthorityKeySpec) *AuthorityKeySpec {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthorityKeySpec) *AuthorityKeySpec {
 		return &v
 	}).(AuthorityKeySpecPtrOutput)
 }
@@ -2478,7 +2526,13 @@ func (o AuthorityKeySpecPtrOutput) ToAuthorityKeySpecPtrOutputWithContext(ctx co
 }
 
 func (o AuthorityKeySpecPtrOutput) Elem() AuthorityKeySpecOutput {
-	return o.ApplyT(func(v *AuthorityKeySpec) AuthorityKeySpec { return *v }).(AuthorityKeySpecOutput)
+	return o.ApplyT(func(v *AuthorityKeySpec) AuthorityKeySpec {
+		if v != nil {
+			return *v
+		}
+		var ret AuthorityKeySpec
+		return ret
+	}).(AuthorityKeySpecOutput)
 }
 
 // The algorithm to use for creating a managed Cloud KMS key for a for a simplified
@@ -2599,10 +2653,11 @@ func (o CaPoolIamBindingConditionOutput) ToCaPoolIamBindingConditionPtrOutput() 
 }
 
 func (o CaPoolIamBindingConditionOutput) ToCaPoolIamBindingConditionPtrOutputWithContext(ctx context.Context) CaPoolIamBindingConditionPtrOutput {
-	return o.ApplyT(func(v CaPoolIamBindingCondition) *CaPoolIamBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CaPoolIamBindingCondition) *CaPoolIamBindingCondition {
 		return &v
 	}).(CaPoolIamBindingConditionPtrOutput)
 }
+
 func (o CaPoolIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CaPoolIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -2630,7 +2685,13 @@ func (o CaPoolIamBindingConditionPtrOutput) ToCaPoolIamBindingConditionPtrOutput
 }
 
 func (o CaPoolIamBindingConditionPtrOutput) Elem() CaPoolIamBindingConditionOutput {
-	return o.ApplyT(func(v *CaPoolIamBindingCondition) CaPoolIamBindingCondition { return *v }).(CaPoolIamBindingConditionOutput)
+	return o.ApplyT(func(v *CaPoolIamBindingCondition) CaPoolIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret CaPoolIamBindingCondition
+		return ret
+	}).(CaPoolIamBindingConditionOutput)
 }
 
 func (o CaPoolIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -2755,10 +2816,11 @@ func (o CaPoolIamMemberConditionOutput) ToCaPoolIamMemberConditionPtrOutput() Ca
 }
 
 func (o CaPoolIamMemberConditionOutput) ToCaPoolIamMemberConditionPtrOutputWithContext(ctx context.Context) CaPoolIamMemberConditionPtrOutput {
-	return o.ApplyT(func(v CaPoolIamMemberCondition) *CaPoolIamMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CaPoolIamMemberCondition) *CaPoolIamMemberCondition {
 		return &v
 	}).(CaPoolIamMemberConditionPtrOutput)
 }
+
 func (o CaPoolIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CaPoolIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -2786,7 +2848,13 @@ func (o CaPoolIamMemberConditionPtrOutput) ToCaPoolIamMemberConditionPtrOutputWi
 }
 
 func (o CaPoolIamMemberConditionPtrOutput) Elem() CaPoolIamMemberConditionOutput {
-	return o.ApplyT(func(v *CaPoolIamMemberCondition) CaPoolIamMemberCondition { return *v }).(CaPoolIamMemberConditionOutput)
+	return o.ApplyT(func(v *CaPoolIamMemberCondition) CaPoolIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret CaPoolIamMemberCondition
+		return ret
+	}).(CaPoolIamMemberConditionOutput)
 }
 
 func (o CaPoolIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -2945,7 +3013,7 @@ func (o CaPoolIssuancePolicyOutput) ToCaPoolIssuancePolicyPtrOutput() CaPoolIssu
 }
 
 func (o CaPoolIssuancePolicyOutput) ToCaPoolIssuancePolicyPtrOutputWithContext(ctx context.Context) CaPoolIssuancePolicyPtrOutput {
-	return o.ApplyT(func(v CaPoolIssuancePolicy) *CaPoolIssuancePolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CaPoolIssuancePolicy) *CaPoolIssuancePolicy {
 		return &v
 	}).(CaPoolIssuancePolicyPtrOutput)
 }
@@ -3000,7 +3068,13 @@ func (o CaPoolIssuancePolicyPtrOutput) ToCaPoolIssuancePolicyPtrOutputWithContex
 }
 
 func (o CaPoolIssuancePolicyPtrOutput) Elem() CaPoolIssuancePolicyOutput {
-	return o.ApplyT(func(v *CaPoolIssuancePolicy) CaPoolIssuancePolicy { return *v }).(CaPoolIssuancePolicyOutput)
+	return o.ApplyT(func(v *CaPoolIssuancePolicy) CaPoolIssuancePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret CaPoolIssuancePolicy
+		return ret
+	}).(CaPoolIssuancePolicyOutput)
 }
 
 // IssuanceModes specifies the allowed ways in which Certificates may be requested from this CaPool.
@@ -3160,7 +3234,7 @@ func (o CaPoolIssuancePolicyAllowedIssuanceModesOutput) ToCaPoolIssuancePolicyAl
 }
 
 func (o CaPoolIssuancePolicyAllowedIssuanceModesOutput) ToCaPoolIssuancePolicyAllowedIssuanceModesPtrOutputWithContext(ctx context.Context) CaPoolIssuancePolicyAllowedIssuanceModesPtrOutput {
-	return o.ApplyT(func(v CaPoolIssuancePolicyAllowedIssuanceModes) *CaPoolIssuancePolicyAllowedIssuanceModes {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CaPoolIssuancePolicyAllowedIssuanceModes) *CaPoolIssuancePolicyAllowedIssuanceModes {
 		return &v
 	}).(CaPoolIssuancePolicyAllowedIssuanceModesPtrOutput)
 }
@@ -3190,7 +3264,13 @@ func (o CaPoolIssuancePolicyAllowedIssuanceModesPtrOutput) ToCaPoolIssuancePolic
 }
 
 func (o CaPoolIssuancePolicyAllowedIssuanceModesPtrOutput) Elem() CaPoolIssuancePolicyAllowedIssuanceModesOutput {
-	return o.ApplyT(func(v *CaPoolIssuancePolicyAllowedIssuanceModes) CaPoolIssuancePolicyAllowedIssuanceModes { return *v }).(CaPoolIssuancePolicyAllowedIssuanceModesOutput)
+	return o.ApplyT(func(v *CaPoolIssuancePolicyAllowedIssuanceModes) CaPoolIssuancePolicyAllowedIssuanceModes {
+		if v != nil {
+			return *v
+		}
+		var ret CaPoolIssuancePolicyAllowedIssuanceModes
+		return ret
+	}).(CaPoolIssuancePolicyAllowedIssuanceModesOutput)
 }
 
 // When true, allows callers to create Certificates by specifying a CertificateConfig.
@@ -3422,7 +3502,7 @@ func (o CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveOutput) ToCaPoolIssuanceP
 }
 
 func (o CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveOutput) ToCaPoolIssuancePolicyAllowedKeyTypeEllipticCurvePtrOutputWithContext(ctx context.Context) CaPoolIssuancePolicyAllowedKeyTypeEllipticCurvePtrOutput {
-	return o.ApplyT(func(v CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve) *CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve) *CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve {
 		return &v
 	}).(CaPoolIssuancePolicyAllowedKeyTypeEllipticCurvePtrOutput)
 }
@@ -3449,7 +3529,11 @@ func (o CaPoolIssuancePolicyAllowedKeyTypeEllipticCurvePtrOutput) ToCaPoolIssuan
 
 func (o CaPoolIssuancePolicyAllowedKeyTypeEllipticCurvePtrOutput) Elem() CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveOutput {
 	return o.ApplyT(func(v *CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve) CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve
+		return ret
 	}).(CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveOutput)
 }
 
@@ -3565,7 +3649,7 @@ func (o CaPoolIssuancePolicyAllowedKeyTypeRsaOutput) ToCaPoolIssuancePolicyAllow
 }
 
 func (o CaPoolIssuancePolicyAllowedKeyTypeRsaOutput) ToCaPoolIssuancePolicyAllowedKeyTypeRsaPtrOutputWithContext(ctx context.Context) CaPoolIssuancePolicyAllowedKeyTypeRsaPtrOutput {
-	return o.ApplyT(func(v CaPoolIssuancePolicyAllowedKeyTypeRsa) *CaPoolIssuancePolicyAllowedKeyTypeRsa {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CaPoolIssuancePolicyAllowedKeyTypeRsa) *CaPoolIssuancePolicyAllowedKeyTypeRsa {
 		return &v
 	}).(CaPoolIssuancePolicyAllowedKeyTypeRsaPtrOutput)
 }
@@ -3597,7 +3681,13 @@ func (o CaPoolIssuancePolicyAllowedKeyTypeRsaPtrOutput) ToCaPoolIssuancePolicyAl
 }
 
 func (o CaPoolIssuancePolicyAllowedKeyTypeRsaPtrOutput) Elem() CaPoolIssuancePolicyAllowedKeyTypeRsaOutput {
-	return o.ApplyT(func(v *CaPoolIssuancePolicyAllowedKeyTypeRsa) CaPoolIssuancePolicyAllowedKeyTypeRsa { return *v }).(CaPoolIssuancePolicyAllowedKeyTypeRsaOutput)
+	return o.ApplyT(func(v *CaPoolIssuancePolicyAllowedKeyTypeRsa) CaPoolIssuancePolicyAllowedKeyTypeRsa {
+		if v != nil {
+			return *v
+		}
+		var ret CaPoolIssuancePolicyAllowedKeyTypeRsa
+		return ret
+	}).(CaPoolIssuancePolicyAllowedKeyTypeRsaOutput)
 }
 
 // The maximum allowed RSA modulus size, in bits. If this is not set, or if set to zero, the
@@ -3741,7 +3831,7 @@ func (o CaPoolIssuancePolicyBaselineValuesOutput) ToCaPoolIssuancePolicyBaseline
 }
 
 func (o CaPoolIssuancePolicyBaselineValuesOutput) ToCaPoolIssuancePolicyBaselineValuesPtrOutputWithContext(ctx context.Context) CaPoolIssuancePolicyBaselineValuesPtrOutput {
-	return o.ApplyT(func(v CaPoolIssuancePolicyBaselineValues) *CaPoolIssuancePolicyBaselineValues {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CaPoolIssuancePolicyBaselineValues) *CaPoolIssuancePolicyBaselineValues {
 		return &v
 	}).(CaPoolIssuancePolicyBaselineValuesPtrOutput)
 }
@@ -3799,7 +3889,13 @@ func (o CaPoolIssuancePolicyBaselineValuesPtrOutput) ToCaPoolIssuancePolicyBasel
 }
 
 func (o CaPoolIssuancePolicyBaselineValuesPtrOutput) Elem() CaPoolIssuancePolicyBaselineValuesOutput {
-	return o.ApplyT(func(v *CaPoolIssuancePolicyBaselineValues) CaPoolIssuancePolicyBaselineValues { return *v }).(CaPoolIssuancePolicyBaselineValuesOutput)
+	return o.ApplyT(func(v *CaPoolIssuancePolicyBaselineValues) CaPoolIssuancePolicyBaselineValues {
+		if v != nil {
+			return *v
+		}
+		var ret CaPoolIssuancePolicyBaselineValues
+		return ret
+	}).(CaPoolIssuancePolicyBaselineValuesOutput)
 }
 
 // Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
@@ -4135,7 +4231,7 @@ func (o CaPoolIssuancePolicyBaselineValuesCaOptionsOutput) ToCaPoolIssuancePolic
 }
 
 func (o CaPoolIssuancePolicyBaselineValuesCaOptionsOutput) ToCaPoolIssuancePolicyBaselineValuesCaOptionsPtrOutputWithContext(ctx context.Context) CaPoolIssuancePolicyBaselineValuesCaOptionsPtrOutput {
-	return o.ApplyT(func(v CaPoolIssuancePolicyBaselineValuesCaOptions) *CaPoolIssuancePolicyBaselineValuesCaOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CaPoolIssuancePolicyBaselineValuesCaOptions) *CaPoolIssuancePolicyBaselineValuesCaOptions {
 		return &v
 	}).(CaPoolIssuancePolicyBaselineValuesCaOptionsPtrOutput)
 }
@@ -4169,7 +4265,11 @@ func (o CaPoolIssuancePolicyBaselineValuesCaOptionsPtrOutput) ToCaPoolIssuancePo
 
 func (o CaPoolIssuancePolicyBaselineValuesCaOptionsPtrOutput) Elem() CaPoolIssuancePolicyBaselineValuesCaOptionsOutput {
 	return o.ApplyT(func(v *CaPoolIssuancePolicyBaselineValuesCaOptions) CaPoolIssuancePolicyBaselineValuesCaOptions {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret CaPoolIssuancePolicyBaselineValuesCaOptions
+		return ret
 	}).(CaPoolIssuancePolicyBaselineValuesCaOptionsOutput)
 }
 
@@ -4303,7 +4403,7 @@ func (o CaPoolIssuancePolicyBaselineValuesKeyUsageOutput) ToCaPoolIssuancePolicy
 }
 
 func (o CaPoolIssuancePolicyBaselineValuesKeyUsageOutput) ToCaPoolIssuancePolicyBaselineValuesKeyUsagePtrOutputWithContext(ctx context.Context) CaPoolIssuancePolicyBaselineValuesKeyUsagePtrOutput {
-	return o.ApplyT(func(v CaPoolIssuancePolicyBaselineValuesKeyUsage) *CaPoolIssuancePolicyBaselineValuesKeyUsage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CaPoolIssuancePolicyBaselineValuesKeyUsage) *CaPoolIssuancePolicyBaselineValuesKeyUsage {
 		return &v
 	}).(CaPoolIssuancePolicyBaselineValuesKeyUsagePtrOutput)
 }
@@ -4348,7 +4448,11 @@ func (o CaPoolIssuancePolicyBaselineValuesKeyUsagePtrOutput) ToCaPoolIssuancePol
 
 func (o CaPoolIssuancePolicyBaselineValuesKeyUsagePtrOutput) Elem() CaPoolIssuancePolicyBaselineValuesKeyUsageOutput {
 	return o.ApplyT(func(v *CaPoolIssuancePolicyBaselineValuesKeyUsage) CaPoolIssuancePolicyBaselineValuesKeyUsage {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret CaPoolIssuancePolicyBaselineValuesKeyUsage
+		return ret
 	}).(CaPoolIssuancePolicyBaselineValuesKeyUsageOutput)
 }
 
@@ -4510,7 +4614,7 @@ func (o CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageOutput) ToCaPoolIs
 }
 
 func (o CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageOutput) ToCaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsagePtrOutputWithContext(ctx context.Context) CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsagePtrOutput {
-	return o.ApplyT(func(v CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsage) *CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsage) *CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsage {
 		return &v
 	}).(CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsagePtrOutput)
 }
@@ -4576,7 +4680,11 @@ func (o CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsagePtrOutput) ToCaPoo
 
 func (o CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsagePtrOutput) Elem() CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageOutput {
 	return o.ApplyT(func(v *CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsage) CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsage {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsage
+		return ret
 	}).(CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageOutput)
 }
 
@@ -4783,7 +4891,7 @@ func (o CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageOutput) ToCaPo
 }
 
 func (o CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageOutput) ToCaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsagePtrOutputWithContext(ctx context.Context) CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsagePtrOutput {
-	return o.ApplyT(func(v CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsage) *CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsage) *CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsage {
 		return &v
 	}).(CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsagePtrOutput)
 }
@@ -4834,7 +4942,11 @@ func (o CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsagePtrOutput) ToC
 
 func (o CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsagePtrOutput) Elem() CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageOutput {
 	return o.ApplyT(func(v *CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsage) CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsage {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsage
+		return ret
 	}).(CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageOutput)
 }
 
@@ -5205,7 +5317,7 @@ func (o CaPoolIssuancePolicyIdentityConstraintsOutput) ToCaPoolIssuancePolicyIde
 }
 
 func (o CaPoolIssuancePolicyIdentityConstraintsOutput) ToCaPoolIssuancePolicyIdentityConstraintsPtrOutputWithContext(ctx context.Context) CaPoolIssuancePolicyIdentityConstraintsPtrOutput {
-	return o.ApplyT(func(v CaPoolIssuancePolicyIdentityConstraints) *CaPoolIssuancePolicyIdentityConstraints {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CaPoolIssuancePolicyIdentityConstraints) *CaPoolIssuancePolicyIdentityConstraints {
 		return &v
 	}).(CaPoolIssuancePolicyIdentityConstraintsPtrOutput)
 }
@@ -5247,7 +5359,13 @@ func (o CaPoolIssuancePolicyIdentityConstraintsPtrOutput) ToCaPoolIssuancePolicy
 }
 
 func (o CaPoolIssuancePolicyIdentityConstraintsPtrOutput) Elem() CaPoolIssuancePolicyIdentityConstraintsOutput {
-	return o.ApplyT(func(v *CaPoolIssuancePolicyIdentityConstraints) CaPoolIssuancePolicyIdentityConstraints { return *v }).(CaPoolIssuancePolicyIdentityConstraintsOutput)
+	return o.ApplyT(func(v *CaPoolIssuancePolicyIdentityConstraints) CaPoolIssuancePolicyIdentityConstraints {
+		if v != nil {
+			return *v
+		}
+		var ret CaPoolIssuancePolicyIdentityConstraints
+		return ret
+	}).(CaPoolIssuancePolicyIdentityConstraintsOutput)
 }
 
 // If this is set, the SubjectAltNames extension may be copied from a certificate request into the signed certificate.
@@ -5390,7 +5508,7 @@ func (o CaPoolIssuancePolicyIdentityConstraintsCelExpressionOutput) ToCaPoolIssu
 }
 
 func (o CaPoolIssuancePolicyIdentityConstraintsCelExpressionOutput) ToCaPoolIssuancePolicyIdentityConstraintsCelExpressionPtrOutputWithContext(ctx context.Context) CaPoolIssuancePolicyIdentityConstraintsCelExpressionPtrOutput {
-	return o.ApplyT(func(v CaPoolIssuancePolicyIdentityConstraintsCelExpression) *CaPoolIssuancePolicyIdentityConstraintsCelExpression {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CaPoolIssuancePolicyIdentityConstraintsCelExpression) *CaPoolIssuancePolicyIdentityConstraintsCelExpression {
 		return &v
 	}).(CaPoolIssuancePolicyIdentityConstraintsCelExpressionPtrOutput)
 }
@@ -5431,7 +5549,11 @@ func (o CaPoolIssuancePolicyIdentityConstraintsCelExpressionPtrOutput) ToCaPoolI
 
 func (o CaPoolIssuancePolicyIdentityConstraintsCelExpressionPtrOutput) Elem() CaPoolIssuancePolicyIdentityConstraintsCelExpressionOutput {
 	return o.ApplyT(func(v *CaPoolIssuancePolicyIdentityConstraintsCelExpression) CaPoolIssuancePolicyIdentityConstraintsCelExpression {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret CaPoolIssuancePolicyIdentityConstraintsCelExpression
+		return ret
 	}).(CaPoolIssuancePolicyIdentityConstraintsCelExpressionOutput)
 }
 
@@ -5582,7 +5704,7 @@ func (o CaPoolPublishingOptionsOutput) ToCaPoolPublishingOptionsPtrOutput() CaPo
 }
 
 func (o CaPoolPublishingOptionsOutput) ToCaPoolPublishingOptionsPtrOutputWithContext(ctx context.Context) CaPoolPublishingOptionsPtrOutput {
-	return o.ApplyT(func(v CaPoolPublishingOptions) *CaPoolPublishingOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CaPoolPublishingOptions) *CaPoolPublishingOptions {
 		return &v
 	}).(CaPoolPublishingOptionsPtrOutput)
 }
@@ -5617,7 +5739,13 @@ func (o CaPoolPublishingOptionsPtrOutput) ToCaPoolPublishingOptionsPtrOutputWith
 }
 
 func (o CaPoolPublishingOptionsPtrOutput) Elem() CaPoolPublishingOptionsOutput {
-	return o.ApplyT(func(v *CaPoolPublishingOptions) CaPoolPublishingOptions { return *v }).(CaPoolPublishingOptionsOutput)
+	return o.ApplyT(func(v *CaPoolPublishingOptions) CaPoolPublishingOptions {
+		if v != nil {
+			return *v
+		}
+		var ret CaPoolPublishingOptions
+		return ret
+	}).(CaPoolPublishingOptionsOutput)
 }
 
 // When true, publishes each CertificateAuthority's CA certificate and includes its URL in the "Authority Information Access"
@@ -7828,7 +7956,7 @@ func (o CertificateConfigOutput) ToCertificateConfigPtrOutput() CertificateConfi
 }
 
 func (o CertificateConfigOutput) ToCertificateConfigPtrOutputWithContext(ctx context.Context) CertificateConfigPtrOutput {
-	return o.ApplyT(func(v CertificateConfig) *CertificateConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateConfig) *CertificateConfig {
 		return &v
 	}).(CertificateConfigPtrOutput)
 }
@@ -7866,7 +7994,13 @@ func (o CertificateConfigPtrOutput) ToCertificateConfigPtrOutputWithContext(ctx 
 }
 
 func (o CertificateConfigPtrOutput) Elem() CertificateConfigOutput {
-	return o.ApplyT(func(v *CertificateConfig) CertificateConfig { return *v }).(CertificateConfigOutput)
+	return o.ApplyT(func(v *CertificateConfig) CertificateConfig {
+		if v != nil {
+			return *v
+		}
+		var ret CertificateConfig
+		return ret
+	}).(CertificateConfigOutput)
 }
 
 // A PublicKey describes a public key.
@@ -8001,7 +8135,7 @@ func (o CertificateConfigPublicKeyOutput) ToCertificateConfigPublicKeyPtrOutput(
 }
 
 func (o CertificateConfigPublicKeyOutput) ToCertificateConfigPublicKeyPtrOutputWithContext(ctx context.Context) CertificateConfigPublicKeyPtrOutput {
-	return o.ApplyT(func(v CertificateConfigPublicKey) *CertificateConfigPublicKey {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateConfigPublicKey) *CertificateConfigPublicKey {
 		return &v
 	}).(CertificateConfigPublicKeyPtrOutput)
 }
@@ -8032,7 +8166,13 @@ func (o CertificateConfigPublicKeyPtrOutput) ToCertificateConfigPublicKeyPtrOutp
 }
 
 func (o CertificateConfigPublicKeyPtrOutput) Elem() CertificateConfigPublicKeyOutput {
-	return o.ApplyT(func(v *CertificateConfigPublicKey) CertificateConfigPublicKey { return *v }).(CertificateConfigPublicKeyOutput)
+	return o.ApplyT(func(v *CertificateConfigPublicKey) CertificateConfigPublicKey {
+		if v != nil {
+			return *v
+		}
+		var ret CertificateConfigPublicKey
+		return ret
+	}).(CertificateConfigPublicKeyOutput)
 }
 
 // The format of the public key. Currently, only PEM format is supported.
@@ -8157,7 +8297,7 @@ func (o CertificateConfigSubjectConfigOutput) ToCertificateConfigSubjectConfigPt
 }
 
 func (o CertificateConfigSubjectConfigOutput) ToCertificateConfigSubjectConfigPtrOutputWithContext(ctx context.Context) CertificateConfigSubjectConfigPtrOutput {
-	return o.ApplyT(func(v CertificateConfigSubjectConfig) *CertificateConfigSubjectConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateConfigSubjectConfig) *CertificateConfigSubjectConfig {
 		return &v
 	}).(CertificateConfigSubjectConfigPtrOutput)
 }
@@ -8191,7 +8331,13 @@ func (o CertificateConfigSubjectConfigPtrOutput) ToCertificateConfigSubjectConfi
 }
 
 func (o CertificateConfigSubjectConfigPtrOutput) Elem() CertificateConfigSubjectConfigOutput {
-	return o.ApplyT(func(v *CertificateConfigSubjectConfig) CertificateConfigSubjectConfig { return *v }).(CertificateConfigSubjectConfigOutput)
+	return o.ApplyT(func(v *CertificateConfigSubjectConfig) CertificateConfigSubjectConfig {
+		if v != nil {
+			return *v
+		}
+		var ret CertificateConfigSubjectConfig
+		return ret
+	}).(CertificateConfigSubjectConfigOutput)
 }
 
 // Contains distinguished name fields such as the location and organization.
@@ -8337,7 +8483,7 @@ func (o CertificateConfigSubjectConfigSubjectOutput) ToCertificateConfigSubjectC
 }
 
 func (o CertificateConfigSubjectConfigSubjectOutput) ToCertificateConfigSubjectConfigSubjectPtrOutputWithContext(ctx context.Context) CertificateConfigSubjectConfigSubjectPtrOutput {
-	return o.ApplyT(func(v CertificateConfigSubjectConfigSubject) *CertificateConfigSubjectConfigSubject {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateConfigSubjectConfigSubject) *CertificateConfigSubjectConfigSubject {
 		return &v
 	}).(CertificateConfigSubjectConfigSubjectPtrOutput)
 }
@@ -8397,7 +8543,13 @@ func (o CertificateConfigSubjectConfigSubjectPtrOutput) ToCertificateConfigSubje
 }
 
 func (o CertificateConfigSubjectConfigSubjectPtrOutput) Elem() CertificateConfigSubjectConfigSubjectOutput {
-	return o.ApplyT(func(v *CertificateConfigSubjectConfigSubject) CertificateConfigSubjectConfigSubject { return *v }).(CertificateConfigSubjectConfigSubjectOutput)
+	return o.ApplyT(func(v *CertificateConfigSubjectConfigSubject) CertificateConfigSubjectConfigSubject {
+		if v != nil {
+			return *v
+		}
+		var ret CertificateConfigSubjectConfigSubject
+		return ret
+	}).(CertificateConfigSubjectConfigSubjectOutput)
 }
 
 // The common name of the distinguished name.
@@ -8585,7 +8737,7 @@ func (o CertificateConfigSubjectConfigSubjectAltNameOutput) ToCertificateConfigS
 }
 
 func (o CertificateConfigSubjectConfigSubjectAltNameOutput) ToCertificateConfigSubjectConfigSubjectAltNamePtrOutputWithContext(ctx context.Context) CertificateConfigSubjectConfigSubjectAltNamePtrOutput {
-	return o.ApplyT(func(v CertificateConfigSubjectConfigSubjectAltName) *CertificateConfigSubjectConfigSubjectAltName {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateConfigSubjectConfigSubjectAltName) *CertificateConfigSubjectConfigSubjectAltName {
 		return &v
 	}).(CertificateConfigSubjectConfigSubjectAltNamePtrOutput)
 }
@@ -8626,7 +8778,11 @@ func (o CertificateConfigSubjectConfigSubjectAltNamePtrOutput) ToCertificateConf
 
 func (o CertificateConfigSubjectConfigSubjectAltNamePtrOutput) Elem() CertificateConfigSubjectConfigSubjectAltNameOutput {
 	return o.ApplyT(func(v *CertificateConfigSubjectConfigSubjectAltName) CertificateConfigSubjectConfigSubjectAltName {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret CertificateConfigSubjectConfigSubjectAltName
+		return ret
 	}).(CertificateConfigSubjectConfigSubjectAltNameOutput)
 }
 
@@ -8789,7 +8945,7 @@ func (o CertificateConfigX509ConfigOutput) ToCertificateConfigX509ConfigPtrOutpu
 }
 
 func (o CertificateConfigX509ConfigOutput) ToCertificateConfigX509ConfigPtrOutputWithContext(ctx context.Context) CertificateConfigX509ConfigPtrOutput {
-	return o.ApplyT(func(v CertificateConfigX509Config) *CertificateConfigX509Config {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateConfigX509Config) *CertificateConfigX509Config {
 		return &v
 	}).(CertificateConfigX509ConfigPtrOutput)
 }
@@ -8841,7 +8997,13 @@ func (o CertificateConfigX509ConfigPtrOutput) ToCertificateConfigX509ConfigPtrOu
 }
 
 func (o CertificateConfigX509ConfigPtrOutput) Elem() CertificateConfigX509ConfigOutput {
-	return o.ApplyT(func(v *CertificateConfigX509Config) CertificateConfigX509Config { return *v }).(CertificateConfigX509ConfigOutput)
+	return o.ApplyT(func(v *CertificateConfigX509Config) CertificateConfigX509Config {
+		if v != nil {
+			return *v
+		}
+		var ret CertificateConfigX509Config
+		return ret
+	}).(CertificateConfigX509ConfigOutput)
 }
 
 // Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
@@ -9177,7 +9339,7 @@ func (o CertificateConfigX509ConfigCaOptionsOutput) ToCertificateConfigX509Confi
 }
 
 func (o CertificateConfigX509ConfigCaOptionsOutput) ToCertificateConfigX509ConfigCaOptionsPtrOutputWithContext(ctx context.Context) CertificateConfigX509ConfigCaOptionsPtrOutput {
-	return o.ApplyT(func(v CertificateConfigX509ConfigCaOptions) *CertificateConfigX509ConfigCaOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateConfigX509ConfigCaOptions) *CertificateConfigX509ConfigCaOptions {
 		return &v
 	}).(CertificateConfigX509ConfigCaOptionsPtrOutput)
 }
@@ -9210,7 +9372,13 @@ func (o CertificateConfigX509ConfigCaOptionsPtrOutput) ToCertificateConfigX509Co
 }
 
 func (o CertificateConfigX509ConfigCaOptionsPtrOutput) Elem() CertificateConfigX509ConfigCaOptionsOutput {
-	return o.ApplyT(func(v *CertificateConfigX509ConfigCaOptions) CertificateConfigX509ConfigCaOptions { return *v }).(CertificateConfigX509ConfigCaOptionsOutput)
+	return o.ApplyT(func(v *CertificateConfigX509ConfigCaOptions) CertificateConfigX509ConfigCaOptions {
+		if v != nil {
+			return *v
+		}
+		var ret CertificateConfigX509ConfigCaOptions
+		return ret
+	}).(CertificateConfigX509ConfigCaOptionsOutput)
 }
 
 // Refers to the "CA" X.509 extension, which is a boolean value. When this value is missing,
@@ -9343,7 +9511,7 @@ func (o CertificateConfigX509ConfigKeyUsageOutput) ToCertificateConfigX509Config
 }
 
 func (o CertificateConfigX509ConfigKeyUsageOutput) ToCertificateConfigX509ConfigKeyUsagePtrOutputWithContext(ctx context.Context) CertificateConfigX509ConfigKeyUsagePtrOutput {
-	return o.ApplyT(func(v CertificateConfigX509ConfigKeyUsage) *CertificateConfigX509ConfigKeyUsage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateConfigX509ConfigKeyUsage) *CertificateConfigX509ConfigKeyUsage {
 		return &v
 	}).(CertificateConfigX509ConfigKeyUsagePtrOutput)
 }
@@ -9387,7 +9555,13 @@ func (o CertificateConfigX509ConfigKeyUsagePtrOutput) ToCertificateConfigX509Con
 }
 
 func (o CertificateConfigX509ConfigKeyUsagePtrOutput) Elem() CertificateConfigX509ConfigKeyUsageOutput {
-	return o.ApplyT(func(v *CertificateConfigX509ConfigKeyUsage) CertificateConfigX509ConfigKeyUsage { return *v }).(CertificateConfigX509ConfigKeyUsageOutput)
+	return o.ApplyT(func(v *CertificateConfigX509ConfigKeyUsage) CertificateConfigX509ConfigKeyUsage {
+		if v != nil {
+			return *v
+		}
+		var ret CertificateConfigX509ConfigKeyUsage
+		return ret
+	}).(CertificateConfigX509ConfigKeyUsageOutput)
 }
 
 // Describes high-level ways in which a key may be used.
@@ -9548,7 +9722,7 @@ func (o CertificateConfigX509ConfigKeyUsageBaseKeyUsageOutput) ToCertificateConf
 }
 
 func (o CertificateConfigX509ConfigKeyUsageBaseKeyUsageOutput) ToCertificateConfigX509ConfigKeyUsageBaseKeyUsagePtrOutputWithContext(ctx context.Context) CertificateConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput {
-	return o.ApplyT(func(v CertificateConfigX509ConfigKeyUsageBaseKeyUsage) *CertificateConfigX509ConfigKeyUsageBaseKeyUsage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateConfigX509ConfigKeyUsageBaseKeyUsage) *CertificateConfigX509ConfigKeyUsageBaseKeyUsage {
 		return &v
 	}).(CertificateConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput)
 }
@@ -9614,7 +9788,11 @@ func (o CertificateConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput) ToCertificateC
 
 func (o CertificateConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput) Elem() CertificateConfigX509ConfigKeyUsageBaseKeyUsageOutput {
 	return o.ApplyT(func(v *CertificateConfigX509ConfigKeyUsageBaseKeyUsage) CertificateConfigX509ConfigKeyUsageBaseKeyUsage {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret CertificateConfigX509ConfigKeyUsageBaseKeyUsage
+		return ret
 	}).(CertificateConfigX509ConfigKeyUsageBaseKeyUsageOutput)
 }
 
@@ -9821,7 +9999,7 @@ func (o CertificateConfigX509ConfigKeyUsageExtendedKeyUsageOutput) ToCertificate
 }
 
 func (o CertificateConfigX509ConfigKeyUsageExtendedKeyUsageOutput) ToCertificateConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutputWithContext(ctx context.Context) CertificateConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput {
-	return o.ApplyT(func(v CertificateConfigX509ConfigKeyUsageExtendedKeyUsage) *CertificateConfigX509ConfigKeyUsageExtendedKeyUsage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateConfigX509ConfigKeyUsageExtendedKeyUsage) *CertificateConfigX509ConfigKeyUsageExtendedKeyUsage {
 		return &v
 	}).(CertificateConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput)
 }
@@ -9872,7 +10050,11 @@ func (o CertificateConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput) ToCertific
 
 func (o CertificateConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput) Elem() CertificateConfigX509ConfigKeyUsageExtendedKeyUsageOutput {
 	return o.ApplyT(func(v *CertificateConfigX509ConfigKeyUsageExtendedKeyUsage) CertificateConfigX509ConfigKeyUsageExtendedKeyUsage {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret CertificateConfigX509ConfigKeyUsageExtendedKeyUsage
+		return ret
 	}).(CertificateConfigX509ConfigKeyUsageExtendedKeyUsageOutput)
 }
 
@@ -10331,7 +10513,7 @@ func (o CertificateTemplateIdentityConstraintsOutput) ToCertificateTemplateIdent
 }
 
 func (o CertificateTemplateIdentityConstraintsOutput) ToCertificateTemplateIdentityConstraintsPtrOutputWithContext(ctx context.Context) CertificateTemplateIdentityConstraintsPtrOutput {
-	return o.ApplyT(func(v CertificateTemplateIdentityConstraints) *CertificateTemplateIdentityConstraints {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateTemplateIdentityConstraints) *CertificateTemplateIdentityConstraints {
 		return &v
 	}).(CertificateTemplateIdentityConstraintsPtrOutput)
 }
@@ -10368,7 +10550,13 @@ func (o CertificateTemplateIdentityConstraintsPtrOutput) ToCertificateTemplateId
 }
 
 func (o CertificateTemplateIdentityConstraintsPtrOutput) Elem() CertificateTemplateIdentityConstraintsOutput {
-	return o.ApplyT(func(v *CertificateTemplateIdentityConstraints) CertificateTemplateIdentityConstraints { return *v }).(CertificateTemplateIdentityConstraintsOutput)
+	return o.ApplyT(func(v *CertificateTemplateIdentityConstraints) CertificateTemplateIdentityConstraints {
+		if v != nil {
+			return *v
+		}
+		var ret CertificateTemplateIdentityConstraints
+		return ret
+	}).(CertificateTemplateIdentityConstraintsOutput)
 }
 
 // Required. If this is true, the SubjectAltNames extension may be copied from a certificate request into the signed certificate. Otherwise, the requested SubjectAltNames will be discarded.
@@ -10506,7 +10694,7 @@ func (o CertificateTemplateIdentityConstraintsCelExpressionOutput) ToCertificate
 }
 
 func (o CertificateTemplateIdentityConstraintsCelExpressionOutput) ToCertificateTemplateIdentityConstraintsCelExpressionPtrOutputWithContext(ctx context.Context) CertificateTemplateIdentityConstraintsCelExpressionPtrOutput {
-	return o.ApplyT(func(v CertificateTemplateIdentityConstraintsCelExpression) *CertificateTemplateIdentityConstraintsCelExpression {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateTemplateIdentityConstraintsCelExpression) *CertificateTemplateIdentityConstraintsCelExpression {
 		return &v
 	}).(CertificateTemplateIdentityConstraintsCelExpressionPtrOutput)
 }
@@ -10547,7 +10735,11 @@ func (o CertificateTemplateIdentityConstraintsCelExpressionPtrOutput) ToCertific
 
 func (o CertificateTemplateIdentityConstraintsCelExpressionPtrOutput) Elem() CertificateTemplateIdentityConstraintsCelExpressionOutput {
 	return o.ApplyT(func(v *CertificateTemplateIdentityConstraintsCelExpression) CertificateTemplateIdentityConstraintsCelExpression {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret CertificateTemplateIdentityConstraintsCelExpression
+		return ret
 	}).(CertificateTemplateIdentityConstraintsCelExpressionOutput)
 }
 
@@ -10688,7 +10880,7 @@ func (o CertificateTemplatePassthroughExtensionsOutput) ToCertificateTemplatePas
 }
 
 func (o CertificateTemplatePassthroughExtensionsOutput) ToCertificateTemplatePassthroughExtensionsPtrOutputWithContext(ctx context.Context) CertificateTemplatePassthroughExtensionsPtrOutput {
-	return o.ApplyT(func(v CertificateTemplatePassthroughExtensions) *CertificateTemplatePassthroughExtensions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateTemplatePassthroughExtensions) *CertificateTemplatePassthroughExtensions {
 		return &v
 	}).(CertificateTemplatePassthroughExtensionsPtrOutput)
 }
@@ -10720,7 +10912,13 @@ func (o CertificateTemplatePassthroughExtensionsPtrOutput) ToCertificateTemplate
 }
 
 func (o CertificateTemplatePassthroughExtensionsPtrOutput) Elem() CertificateTemplatePassthroughExtensionsOutput {
-	return o.ApplyT(func(v *CertificateTemplatePassthroughExtensions) CertificateTemplatePassthroughExtensions { return *v }).(CertificateTemplatePassthroughExtensionsOutput)
+	return o.ApplyT(func(v *CertificateTemplatePassthroughExtensions) CertificateTemplatePassthroughExtensions {
+		if v != nil {
+			return *v
+		}
+		var ret CertificateTemplatePassthroughExtensions
+		return ret
+	}).(CertificateTemplatePassthroughExtensionsOutput)
 }
 
 // Optional. Describes custom X.509 extensions.
@@ -10949,7 +11147,7 @@ func (o CertificateTemplatePredefinedValuesOutput) ToCertificateTemplatePredefin
 }
 
 func (o CertificateTemplatePredefinedValuesOutput) ToCertificateTemplatePredefinedValuesPtrOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesPtrOutput {
-	return o.ApplyT(func(v CertificateTemplatePredefinedValues) *CertificateTemplatePredefinedValues {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateTemplatePredefinedValues) *CertificateTemplatePredefinedValues {
 		return &v
 	}).(CertificateTemplatePredefinedValuesPtrOutput)
 }
@@ -11002,7 +11200,13 @@ func (o CertificateTemplatePredefinedValuesPtrOutput) ToCertificateTemplatePrede
 }
 
 func (o CertificateTemplatePredefinedValuesPtrOutput) Elem() CertificateTemplatePredefinedValuesOutput {
-	return o.ApplyT(func(v *CertificateTemplatePredefinedValues) CertificateTemplatePredefinedValues { return *v }).(CertificateTemplatePredefinedValuesOutput)
+	return o.ApplyT(func(v *CertificateTemplatePredefinedValues) CertificateTemplatePredefinedValues {
+		if v != nil {
+			return *v
+		}
+		var ret CertificateTemplatePredefinedValues
+		return ret
+	}).(CertificateTemplatePredefinedValuesOutput)
 }
 
 // Optional. Describes custom X.509 extensions.
@@ -11321,7 +11525,7 @@ func (o CertificateTemplatePredefinedValuesCaOptionsOutput) ToCertificateTemplat
 }
 
 func (o CertificateTemplatePredefinedValuesCaOptionsOutput) ToCertificateTemplatePredefinedValuesCaOptionsPtrOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesCaOptionsPtrOutput {
-	return o.ApplyT(func(v CertificateTemplatePredefinedValuesCaOptions) *CertificateTemplatePredefinedValuesCaOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateTemplatePredefinedValuesCaOptions) *CertificateTemplatePredefinedValuesCaOptions {
 		return &v
 	}).(CertificateTemplatePredefinedValuesCaOptionsPtrOutput)
 }
@@ -11352,7 +11556,11 @@ func (o CertificateTemplatePredefinedValuesCaOptionsPtrOutput) ToCertificateTemp
 
 func (o CertificateTemplatePredefinedValuesCaOptionsPtrOutput) Elem() CertificateTemplatePredefinedValuesCaOptionsOutput {
 	return o.ApplyT(func(v *CertificateTemplatePredefinedValuesCaOptions) CertificateTemplatePredefinedValuesCaOptions {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret CertificateTemplatePredefinedValuesCaOptions
+		return ret
 	}).(CertificateTemplatePredefinedValuesCaOptionsOutput)
 }
 
@@ -11477,7 +11685,7 @@ func (o CertificateTemplatePredefinedValuesKeyUsageOutput) ToCertificateTemplate
 }
 
 func (o CertificateTemplatePredefinedValuesKeyUsageOutput) ToCertificateTemplatePredefinedValuesKeyUsagePtrOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesKeyUsagePtrOutput {
-	return o.ApplyT(func(v CertificateTemplatePredefinedValuesKeyUsage) *CertificateTemplatePredefinedValuesKeyUsage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateTemplatePredefinedValuesKeyUsage) *CertificateTemplatePredefinedValuesKeyUsage {
 		return &v
 	}).(CertificateTemplatePredefinedValuesKeyUsagePtrOutput)
 }
@@ -11519,7 +11727,11 @@ func (o CertificateTemplatePredefinedValuesKeyUsagePtrOutput) ToCertificateTempl
 
 func (o CertificateTemplatePredefinedValuesKeyUsagePtrOutput) Elem() CertificateTemplatePredefinedValuesKeyUsageOutput {
 	return o.ApplyT(func(v *CertificateTemplatePredefinedValuesKeyUsage) CertificateTemplatePredefinedValuesKeyUsage {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret CertificateTemplatePredefinedValuesKeyUsage
+		return ret
 	}).(CertificateTemplatePredefinedValuesKeyUsageOutput)
 }
 
@@ -11678,7 +11890,7 @@ func (o CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageOutput) ToCertifi
 }
 
 func (o CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageOutput) ToCertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput {
-	return o.ApplyT(func(v CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage) *CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage) *CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage {
 		return &v
 	}).(CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput)
 }
@@ -11744,7 +11956,11 @@ func (o CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput) ToCert
 
 func (o CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput) Elem() CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageOutput {
 	return o.ApplyT(func(v *CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage) CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage
+		return ret
 	}).(CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageOutput)
 }
 
@@ -11951,7 +12167,7 @@ func (o CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageOutput) ToCer
 }
 
 func (o CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageOutput) ToCertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutputWithContext(ctx context.Context) CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput {
-	return o.ApplyT(func(v CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage) *CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage) *CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage {
 		return &v
 	}).(CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput)
 }
@@ -12002,7 +12218,11 @@ func (o CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput) To
 
 func (o CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput) Elem() CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageOutput {
 	return o.ApplyT(func(v *CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage) CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage
+		return ret
 	}).(CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageOutput)
 }
 

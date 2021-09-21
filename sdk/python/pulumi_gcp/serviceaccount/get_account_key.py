@@ -12,6 +12,7 @@ __all__ = [
     'GetAccountKeyResult',
     'AwaitableGetAccountKeyResult',
     'get_account_key',
+    'get_account_key_output',
 ]
 
 @pulumi.output_type
@@ -134,3 +135,34 @@ def get_account_key(name: Optional[str] = None,
         project=__ret__.project,
         public_key=__ret__.public_key,
         public_key_type=__ret__.public_key_type)
+
+
+@_utilities.lift_output_func(get_account_key)
+def get_account_key_output(name: Optional[pulumi.Input[str]] = None,
+                           project: Optional[pulumi.Input[Optional[str]]] = None,
+                           public_key_type: Optional[pulumi.Input[Optional[str]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountKeyResult]:
+    """
+    Get service account public key. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys/get).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    myaccount = gcp.service_account.Account("myaccount", account_id="dev-foo-account")
+    mykey_key = gcp.service_account.Key("mykeyKey", service_account_id=myaccount.name)
+    mykey_account_key = mykey_key.name.apply(lambda name: gcp.serviceAccount.get_account_key(name=name,
+        public_key_type="TYPE_X509_PEM_FILE"))
+    ```
+
+
+    :param str name: The name of the service account key. This must have format
+           `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{KEYID}`, where `{ACCOUNT}`
+           is the email address or unique id of the service account.
+    :param str project: The ID of the project that the service account will be created in.
+           Defaults to the provider project configuration.
+    :param str public_key_type: The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
+    """
+    ...

@@ -221,7 +221,7 @@ func (o DeploymentTargetOutput) ToDeploymentTargetPtrOutput() DeploymentTargetPt
 }
 
 func (o DeploymentTargetOutput) ToDeploymentTargetPtrOutputWithContext(ctx context.Context) DeploymentTargetPtrOutput {
-	return o.ApplyT(func(v DeploymentTarget) *DeploymentTarget {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentTarget) *DeploymentTarget {
 		return &v
 	}).(DeploymentTargetPtrOutput)
 }
@@ -255,7 +255,13 @@ func (o DeploymentTargetPtrOutput) ToDeploymentTargetPtrOutputWithContext(ctx co
 }
 
 func (o DeploymentTargetPtrOutput) Elem() DeploymentTargetOutput {
-	return o.ApplyT(func(v *DeploymentTarget) DeploymentTarget { return *v }).(DeploymentTargetOutput)
+	return o.ApplyT(func(v *DeploymentTarget) DeploymentTarget {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentTarget
+		return ret
+	}).(DeploymentTargetOutput)
 }
 
 // The root configuration file to use for this deployment.
@@ -375,7 +381,7 @@ func (o DeploymentTargetConfigOutput) ToDeploymentTargetConfigPtrOutput() Deploy
 }
 
 func (o DeploymentTargetConfigOutput) ToDeploymentTargetConfigPtrOutputWithContext(ctx context.Context) DeploymentTargetConfigPtrOutput {
-	return o.ApplyT(func(v DeploymentTargetConfig) *DeploymentTargetConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentTargetConfig) *DeploymentTargetConfig {
 		return &v
 	}).(DeploymentTargetConfigPtrOutput)
 }
@@ -400,7 +406,13 @@ func (o DeploymentTargetConfigPtrOutput) ToDeploymentTargetConfigPtrOutputWithCo
 }
 
 func (o DeploymentTargetConfigPtrOutput) Elem() DeploymentTargetConfigOutput {
-	return o.ApplyT(func(v *DeploymentTargetConfig) DeploymentTargetConfig { return *v }).(DeploymentTargetConfigOutput)
+	return o.ApplyT(func(v *DeploymentTargetConfig) DeploymentTargetConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentTargetConfig
+		return ret
+	}).(DeploymentTargetConfigOutput)
 }
 
 // The full contents of the template that you want to import.

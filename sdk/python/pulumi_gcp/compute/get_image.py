@@ -12,6 +12,7 @@ __all__ = [
     'GetImageResult',
     'AwaitableGetImageResult',
     'get_image',
+    'get_image_output',
 ]
 
 @pulumi.output_type
@@ -332,3 +333,39 @@ def get_image(family: Optional[str] = None,
         source_disk_id=__ret__.source_disk_id,
         source_image_id=__ret__.source_image_id,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_image)
+def get_image_output(family: Optional[pulumi.Input[Optional[str]]] = None,
+                     filter: Optional[pulumi.Input[Optional[str]]] = None,
+                     name: Optional[pulumi.Input[Optional[str]]] = None,
+                     project: Optional[pulumi.Input[Optional[str]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImageResult]:
+    """
+    Get information about a Google Compute Image. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images][pubimg], do not forget to specify the dedicated project. For more information see
+    [the official documentation](https://cloud.google.com/compute/docs/images) and its [API](https://cloud.google.com/compute/docs/reference/latest/images).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_image = gcp.compute.get_image(family="debian-9",
+        project="debian-cloud")
+    # ...
+    default = gcp.compute.Instance("default", boot_disk=gcp.compute.InstanceBootDiskArgs(
+        initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+            image=my_image.self_link,
+        ),
+    ))
+    ```
+
+
+    :param str family: The family name of the image.
+    :param str name: The name of the image.
+    :param str project: The project in which the resource belongs. If it is not
+           provided, the provider project is used. If you are using a
+           [public base image][pubimg], be sure to specify the correct Image Project.
+    """
+    ...

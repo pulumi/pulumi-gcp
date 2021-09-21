@@ -12,6 +12,7 @@ __all__ = [
     'GetNetworkEndpointGroupResult',
     'AwaitableGetNetworkEndpointGroupResult',
     'get_network_endpoint_group',
+    'get_network_endpoint_group_output',
 ]
 
 @pulumi.output_type
@@ -202,3 +203,36 @@ def get_network_endpoint_group(name: Optional[str] = None,
         size=__ret__.size,
         subnetwork=__ret__.subnetwork,
         zone=__ret__.zone)
+
+
+@_utilities.lift_output_func(get_network_endpoint_group)
+def get_network_endpoint_group_output(name: Optional[pulumi.Input[Optional[str]]] = None,
+                                      project: Optional[pulumi.Input[Optional[str]]] = None,
+                                      self_link: Optional[pulumi.Input[Optional[str]]] = None,
+                                      zone: Optional[pulumi.Input[Optional[str]]] = None,
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkEndpointGroupResult]:
+    """
+    Use this data source to access a Network Endpoint Group's attributes.
+
+    The NEG may be found by providing either a `self_link`, or a `name` and a `zone`.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    neg1 = gcp.compute.get_network_endpoint_group(name="k8s1-abcdef01-myns-mysvc-8080-4b6bac43",
+        zone="us-central1-a")
+    neg2 = gcp.compute.get_network_endpoint_group(self_link="https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43")
+    ```
+
+
+    :param str name: The Network Endpoint Group name.
+           Provide either this or a `self_link`.
+    :param str project: The ID of the project to list versions in.
+           If it is not provided, the provider project is used.
+    :param str self_link: The Network Endpoint Group self\_link.
+    :param str zone: The Network Endpoint Group availability zone.
+    """
+    ...

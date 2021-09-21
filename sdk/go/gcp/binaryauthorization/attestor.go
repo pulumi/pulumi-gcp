@@ -319,7 +319,7 @@ type AttestorArrayInput interface {
 type AttestorArray []AttestorInput
 
 func (AttestorArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Attestor)(nil))
+	return reflect.TypeOf((*[]*Attestor)(nil)).Elem()
 }
 
 func (i AttestorArray) ToAttestorArrayOutput() AttestorArrayOutput {
@@ -344,7 +344,7 @@ type AttestorMapInput interface {
 type AttestorMap map[string]AttestorInput
 
 func (AttestorMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Attestor)(nil))
+	return reflect.TypeOf((*map[string]*Attestor)(nil)).Elem()
 }
 
 func (i AttestorMap) ToAttestorMapOutput() AttestorMapOutput {
@@ -355,9 +355,7 @@ func (i AttestorMap) ToAttestorMapOutputWithContext(ctx context.Context) Attesto
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorMapOutput)
 }
 
-type AttestorOutput struct {
-	*pulumi.OutputState
-}
+type AttestorOutput struct{ *pulumi.OutputState }
 
 func (AttestorOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Attestor)(nil))
@@ -376,14 +374,12 @@ func (o AttestorOutput) ToAttestorPtrOutput() AttestorPtrOutput {
 }
 
 func (o AttestorOutput) ToAttestorPtrOutputWithContext(ctx context.Context) AttestorPtrOutput {
-	return o.ApplyT(func(v Attestor) *Attestor {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Attestor) *Attestor {
 		return &v
 	}).(AttestorPtrOutput)
 }
 
-type AttestorPtrOutput struct {
-	*pulumi.OutputState
-}
+type AttestorPtrOutput struct{ *pulumi.OutputState }
 
 func (AttestorPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Attestor)(nil))
@@ -395,6 +391,16 @@ func (o AttestorPtrOutput) ToAttestorPtrOutput() AttestorPtrOutput {
 
 func (o AttestorPtrOutput) ToAttestorPtrOutputWithContext(ctx context.Context) AttestorPtrOutput {
 	return o
+}
+
+func (o AttestorPtrOutput) Elem() AttestorOutput {
+	return o.ApplyT(func(v *Attestor) Attestor {
+		if v != nil {
+			return *v
+		}
+		var ret Attestor
+		return ret
+	}).(AttestorOutput)
 }
 
 type AttestorArrayOutput struct{ *pulumi.OutputState }

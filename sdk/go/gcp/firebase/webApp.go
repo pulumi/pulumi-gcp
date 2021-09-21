@@ -187,7 +187,7 @@ type WebAppArrayInput interface {
 type WebAppArray []WebAppInput
 
 func (WebAppArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*WebApp)(nil))
+	return reflect.TypeOf((*[]*WebApp)(nil)).Elem()
 }
 
 func (i WebAppArray) ToWebAppArrayOutput() WebAppArrayOutput {
@@ -212,7 +212,7 @@ type WebAppMapInput interface {
 type WebAppMap map[string]WebAppInput
 
 func (WebAppMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*WebApp)(nil))
+	return reflect.TypeOf((*map[string]*WebApp)(nil)).Elem()
 }
 
 func (i WebAppMap) ToWebAppMapOutput() WebAppMapOutput {
@@ -223,9 +223,7 @@ func (i WebAppMap) ToWebAppMapOutputWithContext(ctx context.Context) WebAppMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppMapOutput)
 }
 
-type WebAppOutput struct {
-	*pulumi.OutputState
-}
+type WebAppOutput struct{ *pulumi.OutputState }
 
 func (WebAppOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*WebApp)(nil))
@@ -244,14 +242,12 @@ func (o WebAppOutput) ToWebAppPtrOutput() WebAppPtrOutput {
 }
 
 func (o WebAppOutput) ToWebAppPtrOutputWithContext(ctx context.Context) WebAppPtrOutput {
-	return o.ApplyT(func(v WebApp) *WebApp {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebApp) *WebApp {
 		return &v
 	}).(WebAppPtrOutput)
 }
 
-type WebAppPtrOutput struct {
-	*pulumi.OutputState
-}
+type WebAppPtrOutput struct{ *pulumi.OutputState }
 
 func (WebAppPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**WebApp)(nil))
@@ -263,6 +259,16 @@ func (o WebAppPtrOutput) ToWebAppPtrOutput() WebAppPtrOutput {
 
 func (o WebAppPtrOutput) ToWebAppPtrOutputWithContext(ctx context.Context) WebAppPtrOutput {
 	return o
+}
+
+func (o WebAppPtrOutput) Elem() WebAppOutput {
+	return o.ApplyT(func(v *WebApp) WebApp {
+		if v != nil {
+			return *v
+		}
+		var ret WebApp
+		return ret
+	}).(WebAppOutput)
 }
 
 type WebAppArrayOutput struct{ *pulumi.OutputState }

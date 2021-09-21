@@ -335,7 +335,7 @@ type AppProfileArrayInput interface {
 type AppProfileArray []AppProfileInput
 
 func (AppProfileArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AppProfile)(nil))
+	return reflect.TypeOf((*[]*AppProfile)(nil)).Elem()
 }
 
 func (i AppProfileArray) ToAppProfileArrayOutput() AppProfileArrayOutput {
@@ -360,7 +360,7 @@ type AppProfileMapInput interface {
 type AppProfileMap map[string]AppProfileInput
 
 func (AppProfileMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AppProfile)(nil))
+	return reflect.TypeOf((*map[string]*AppProfile)(nil)).Elem()
 }
 
 func (i AppProfileMap) ToAppProfileMapOutput() AppProfileMapOutput {
@@ -371,9 +371,7 @@ func (i AppProfileMap) ToAppProfileMapOutputWithContext(ctx context.Context) App
 	return pulumi.ToOutputWithContext(ctx, i).(AppProfileMapOutput)
 }
 
-type AppProfileOutput struct {
-	*pulumi.OutputState
-}
+type AppProfileOutput struct{ *pulumi.OutputState }
 
 func (AppProfileOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AppProfile)(nil))
@@ -392,14 +390,12 @@ func (o AppProfileOutput) ToAppProfilePtrOutput() AppProfilePtrOutput {
 }
 
 func (o AppProfileOutput) ToAppProfilePtrOutputWithContext(ctx context.Context) AppProfilePtrOutput {
-	return o.ApplyT(func(v AppProfile) *AppProfile {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppProfile) *AppProfile {
 		return &v
 	}).(AppProfilePtrOutput)
 }
 
-type AppProfilePtrOutput struct {
-	*pulumi.OutputState
-}
+type AppProfilePtrOutput struct{ *pulumi.OutputState }
 
 func (AppProfilePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AppProfile)(nil))
@@ -411,6 +407,16 @@ func (o AppProfilePtrOutput) ToAppProfilePtrOutput() AppProfilePtrOutput {
 
 func (o AppProfilePtrOutput) ToAppProfilePtrOutputWithContext(ctx context.Context) AppProfilePtrOutput {
 	return o
+}
+
+func (o AppProfilePtrOutput) Elem() AppProfileOutput {
+	return o.ApplyT(func(v *AppProfile) AppProfile {
+		if v != nil {
+			return *v
+		}
+		var ret AppProfile
+		return ret
+	}).(AppProfileOutput)
 }
 
 type AppProfileArrayOutput struct{ *pulumi.OutputState }

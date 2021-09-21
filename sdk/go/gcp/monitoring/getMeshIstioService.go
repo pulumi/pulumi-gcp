@@ -4,6 +4,9 @@
 package monitoring
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -83,4 +86,89 @@ type GetMeshIstioServiceResult struct {
 	ServiceName      string                         `pulumi:"serviceName"`
 	ServiceNamespace string                         `pulumi:"serviceNamespace"`
 	Telemetries      []GetMeshIstioServiceTelemetry `pulumi:"telemetries"`
+}
+
+func GetMeshIstioServiceOutput(ctx *pulumi.Context, args GetMeshIstioServiceOutputArgs, opts ...pulumi.InvokeOption) GetMeshIstioServiceResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetMeshIstioServiceResult, error) {
+			args := v.(GetMeshIstioServiceArgs)
+			r, err := GetMeshIstioService(ctx, &args, opts...)
+			return *r, err
+		}).(GetMeshIstioServiceResultOutput)
+}
+
+// A collection of arguments for invoking getMeshIstioService.
+type GetMeshIstioServiceOutputArgs struct {
+	// Identifier for the mesh in which this Istio service is defined.
+	// Corresponds to the meshUid metric label in Istio metrics.
+	MeshUid pulumi.StringInput `pulumi:"meshUid"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// The name of the Istio service underlying this service.
+	// Corresponds to the destinationServiceName metric label in Istio metrics.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// The namespace of the Istio service underlying this service.
+	// Corresponds to the destinationServiceNamespace metric label in Istio metrics.
+	ServiceNamespace pulumi.StringInput `pulumi:"serviceNamespace"`
+}
+
+func (GetMeshIstioServiceOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMeshIstioServiceArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getMeshIstioService.
+type GetMeshIstioServiceResultOutput struct{ *pulumi.OutputState }
+
+func (GetMeshIstioServiceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMeshIstioServiceResult)(nil)).Elem()
+}
+
+func (o GetMeshIstioServiceResultOutput) ToGetMeshIstioServiceResultOutput() GetMeshIstioServiceResultOutput {
+	return o
+}
+
+func (o GetMeshIstioServiceResultOutput) ToGetMeshIstioServiceResultOutputWithContext(ctx context.Context) GetMeshIstioServiceResultOutput {
+	return o
+}
+
+func (o GetMeshIstioServiceResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMeshIstioServiceResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetMeshIstioServiceResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMeshIstioServiceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetMeshIstioServiceResultOutput) MeshUid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMeshIstioServiceResult) string { return v.MeshUid }).(pulumi.StringOutput)
+}
+
+func (o GetMeshIstioServiceResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMeshIstioServiceResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetMeshIstioServiceResultOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMeshIstioServiceResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMeshIstioServiceResultOutput) ServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMeshIstioServiceResult) string { return v.ServiceId }).(pulumi.StringOutput)
+}
+
+func (o GetMeshIstioServiceResultOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMeshIstioServiceResult) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+func (o GetMeshIstioServiceResultOutput) ServiceNamespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMeshIstioServiceResult) string { return v.ServiceNamespace }).(pulumi.StringOutput)
+}
+
+func (o GetMeshIstioServiceResultOutput) Telemetries() GetMeshIstioServiceTelemetryArrayOutput {
+	return o.ApplyT(func(v GetMeshIstioServiceResult) []GetMeshIstioServiceTelemetry { return v.Telemetries }).(GetMeshIstioServiceTelemetryArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetMeshIstioServiceResultOutput{})
 }

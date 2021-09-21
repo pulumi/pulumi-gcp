@@ -261,7 +261,7 @@ type DiskResourcePolicyAttachmentArrayInput interface {
 type DiskResourcePolicyAttachmentArray []DiskResourcePolicyAttachmentInput
 
 func (DiskResourcePolicyAttachmentArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*DiskResourcePolicyAttachment)(nil))
+	return reflect.TypeOf((*[]*DiskResourcePolicyAttachment)(nil)).Elem()
 }
 
 func (i DiskResourcePolicyAttachmentArray) ToDiskResourcePolicyAttachmentArrayOutput() DiskResourcePolicyAttachmentArrayOutput {
@@ -286,7 +286,7 @@ type DiskResourcePolicyAttachmentMapInput interface {
 type DiskResourcePolicyAttachmentMap map[string]DiskResourcePolicyAttachmentInput
 
 func (DiskResourcePolicyAttachmentMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*DiskResourcePolicyAttachment)(nil))
+	return reflect.TypeOf((*map[string]*DiskResourcePolicyAttachment)(nil)).Elem()
 }
 
 func (i DiskResourcePolicyAttachmentMap) ToDiskResourcePolicyAttachmentMapOutput() DiskResourcePolicyAttachmentMapOutput {
@@ -297,9 +297,7 @@ func (i DiskResourcePolicyAttachmentMap) ToDiskResourcePolicyAttachmentMapOutput
 	return pulumi.ToOutputWithContext(ctx, i).(DiskResourcePolicyAttachmentMapOutput)
 }
 
-type DiskResourcePolicyAttachmentOutput struct {
-	*pulumi.OutputState
-}
+type DiskResourcePolicyAttachmentOutput struct{ *pulumi.OutputState }
 
 func (DiskResourcePolicyAttachmentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DiskResourcePolicyAttachment)(nil))
@@ -318,14 +316,12 @@ func (o DiskResourcePolicyAttachmentOutput) ToDiskResourcePolicyAttachmentPtrOut
 }
 
 func (o DiskResourcePolicyAttachmentOutput) ToDiskResourcePolicyAttachmentPtrOutputWithContext(ctx context.Context) DiskResourcePolicyAttachmentPtrOutput {
-	return o.ApplyT(func(v DiskResourcePolicyAttachment) *DiskResourcePolicyAttachment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiskResourcePolicyAttachment) *DiskResourcePolicyAttachment {
 		return &v
 	}).(DiskResourcePolicyAttachmentPtrOutput)
 }
 
-type DiskResourcePolicyAttachmentPtrOutput struct {
-	*pulumi.OutputState
-}
+type DiskResourcePolicyAttachmentPtrOutput struct{ *pulumi.OutputState }
 
 func (DiskResourcePolicyAttachmentPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DiskResourcePolicyAttachment)(nil))
@@ -337,6 +333,16 @@ func (o DiskResourcePolicyAttachmentPtrOutput) ToDiskResourcePolicyAttachmentPtr
 
 func (o DiskResourcePolicyAttachmentPtrOutput) ToDiskResourcePolicyAttachmentPtrOutputWithContext(ctx context.Context) DiskResourcePolicyAttachmentPtrOutput {
 	return o
+}
+
+func (o DiskResourcePolicyAttachmentPtrOutput) Elem() DiskResourcePolicyAttachmentOutput {
+	return o.ApplyT(func(v *DiskResourcePolicyAttachment) DiskResourcePolicyAttachment {
+		if v != nil {
+			return *v
+		}
+		var ret DiskResourcePolicyAttachment
+		return ret
+	}).(DiskResourcePolicyAttachmentOutput)
 }
 
 type DiskResourcePolicyAttachmentArrayOutput struct{ *pulumi.OutputState }

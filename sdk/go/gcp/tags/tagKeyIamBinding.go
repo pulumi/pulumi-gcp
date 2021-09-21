@@ -305,7 +305,7 @@ type TagKeyIamBindingArrayInput interface {
 type TagKeyIamBindingArray []TagKeyIamBindingInput
 
 func (TagKeyIamBindingArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TagKeyIamBinding)(nil))
+	return reflect.TypeOf((*[]*TagKeyIamBinding)(nil)).Elem()
 }
 
 func (i TagKeyIamBindingArray) ToTagKeyIamBindingArrayOutput() TagKeyIamBindingArrayOutput {
@@ -330,7 +330,7 @@ type TagKeyIamBindingMapInput interface {
 type TagKeyIamBindingMap map[string]TagKeyIamBindingInput
 
 func (TagKeyIamBindingMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TagKeyIamBinding)(nil))
+	return reflect.TypeOf((*map[string]*TagKeyIamBinding)(nil)).Elem()
 }
 
 func (i TagKeyIamBindingMap) ToTagKeyIamBindingMapOutput() TagKeyIamBindingMapOutput {
@@ -341,9 +341,7 @@ func (i TagKeyIamBindingMap) ToTagKeyIamBindingMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(TagKeyIamBindingMapOutput)
 }
 
-type TagKeyIamBindingOutput struct {
-	*pulumi.OutputState
-}
+type TagKeyIamBindingOutput struct{ *pulumi.OutputState }
 
 func (TagKeyIamBindingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TagKeyIamBinding)(nil))
@@ -362,14 +360,12 @@ func (o TagKeyIamBindingOutput) ToTagKeyIamBindingPtrOutput() TagKeyIamBindingPt
 }
 
 func (o TagKeyIamBindingOutput) ToTagKeyIamBindingPtrOutputWithContext(ctx context.Context) TagKeyIamBindingPtrOutput {
-	return o.ApplyT(func(v TagKeyIamBinding) *TagKeyIamBinding {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TagKeyIamBinding) *TagKeyIamBinding {
 		return &v
 	}).(TagKeyIamBindingPtrOutput)
 }
 
-type TagKeyIamBindingPtrOutput struct {
-	*pulumi.OutputState
-}
+type TagKeyIamBindingPtrOutput struct{ *pulumi.OutputState }
 
 func (TagKeyIamBindingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TagKeyIamBinding)(nil))
@@ -381,6 +377,16 @@ func (o TagKeyIamBindingPtrOutput) ToTagKeyIamBindingPtrOutput() TagKeyIamBindin
 
 func (o TagKeyIamBindingPtrOutput) ToTagKeyIamBindingPtrOutputWithContext(ctx context.Context) TagKeyIamBindingPtrOutput {
 	return o
+}
+
+func (o TagKeyIamBindingPtrOutput) Elem() TagKeyIamBindingOutput {
+	return o.ApplyT(func(v *TagKeyIamBinding) TagKeyIamBinding {
+		if v != nil {
+			return *v
+		}
+		var ret TagKeyIamBinding
+		return ret
+	}).(TagKeyIamBindingOutput)
 }
 
 type TagKeyIamBindingArrayOutput struct{ *pulumi.OutputState }

@@ -101,7 +101,7 @@ dialogflowCustomEndpoint: Optional[str]
 
 dialogflowCxCustomEndpoint: Optional[str]
 
-disableGooglePartnerName: Optional[str]
+disableGooglePartnerName: Optional[bool]
 
 dnsCustomEndpoint: Optional[str]
 
@@ -213,7 +213,7 @@ tagsCustomEndpoint: Optional[str]
 
 tpuCustomEndpoint: Optional[str]
 
-userProjectOverride: Optional[str]
+userProjectOverride: Optional[bool]
 
 vertexAiCustomEndpoint: Optional[str]
 

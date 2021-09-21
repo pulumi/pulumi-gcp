@@ -589,7 +589,7 @@ type PatchDeploymentArrayInput interface {
 type PatchDeploymentArray []PatchDeploymentInput
 
 func (PatchDeploymentArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*PatchDeployment)(nil))
+	return reflect.TypeOf((*[]*PatchDeployment)(nil)).Elem()
 }
 
 func (i PatchDeploymentArray) ToPatchDeploymentArrayOutput() PatchDeploymentArrayOutput {
@@ -614,7 +614,7 @@ type PatchDeploymentMapInput interface {
 type PatchDeploymentMap map[string]PatchDeploymentInput
 
 func (PatchDeploymentMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*PatchDeployment)(nil))
+	return reflect.TypeOf((*map[string]*PatchDeployment)(nil)).Elem()
 }
 
 func (i PatchDeploymentMap) ToPatchDeploymentMapOutput() PatchDeploymentMapOutput {
@@ -625,9 +625,7 @@ func (i PatchDeploymentMap) ToPatchDeploymentMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentMapOutput)
 }
 
-type PatchDeploymentOutput struct {
-	*pulumi.OutputState
-}
+type PatchDeploymentOutput struct{ *pulumi.OutputState }
 
 func (PatchDeploymentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*PatchDeployment)(nil))
@@ -646,14 +644,12 @@ func (o PatchDeploymentOutput) ToPatchDeploymentPtrOutput() PatchDeploymentPtrOu
 }
 
 func (o PatchDeploymentOutput) ToPatchDeploymentPtrOutputWithContext(ctx context.Context) PatchDeploymentPtrOutput {
-	return o.ApplyT(func(v PatchDeployment) *PatchDeployment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeployment) *PatchDeployment {
 		return &v
 	}).(PatchDeploymentPtrOutput)
 }
 
-type PatchDeploymentPtrOutput struct {
-	*pulumi.OutputState
-}
+type PatchDeploymentPtrOutput struct{ *pulumi.OutputState }
 
 func (PatchDeploymentPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**PatchDeployment)(nil))
@@ -665,6 +661,16 @@ func (o PatchDeploymentPtrOutput) ToPatchDeploymentPtrOutput() PatchDeploymentPt
 
 func (o PatchDeploymentPtrOutput) ToPatchDeploymentPtrOutputWithContext(ctx context.Context) PatchDeploymentPtrOutput {
 	return o
+}
+
+func (o PatchDeploymentPtrOutput) Elem() PatchDeploymentOutput {
+	return o.ApplyT(func(v *PatchDeployment) PatchDeployment {
+		if v != nil {
+			return *v
+		}
+		var ret PatchDeployment
+		return ret
+	}).(PatchDeploymentOutput)
 }
 
 type PatchDeploymentArrayOutput struct{ *pulumi.OutputState }

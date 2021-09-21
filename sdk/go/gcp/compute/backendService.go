@@ -1001,7 +1001,7 @@ type BackendServiceArrayInput interface {
 type BackendServiceArray []BackendServiceInput
 
 func (BackendServiceArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*BackendService)(nil))
+	return reflect.TypeOf((*[]*BackendService)(nil)).Elem()
 }
 
 func (i BackendServiceArray) ToBackendServiceArrayOutput() BackendServiceArrayOutput {
@@ -1026,7 +1026,7 @@ type BackendServiceMapInput interface {
 type BackendServiceMap map[string]BackendServiceInput
 
 func (BackendServiceMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*BackendService)(nil))
+	return reflect.TypeOf((*map[string]*BackendService)(nil)).Elem()
 }
 
 func (i BackendServiceMap) ToBackendServiceMapOutput() BackendServiceMapOutput {
@@ -1037,9 +1037,7 @@ func (i BackendServiceMap) ToBackendServiceMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceMapOutput)
 }
 
-type BackendServiceOutput struct {
-	*pulumi.OutputState
-}
+type BackendServiceOutput struct{ *pulumi.OutputState }
 
 func (BackendServiceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BackendService)(nil))
@@ -1058,14 +1056,12 @@ func (o BackendServiceOutput) ToBackendServicePtrOutput() BackendServicePtrOutpu
 }
 
 func (o BackendServiceOutput) ToBackendServicePtrOutputWithContext(ctx context.Context) BackendServicePtrOutput {
-	return o.ApplyT(func(v BackendService) *BackendService {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackendService) *BackendService {
 		return &v
 	}).(BackendServicePtrOutput)
 }
 
-type BackendServicePtrOutput struct {
-	*pulumi.OutputState
-}
+type BackendServicePtrOutput struct{ *pulumi.OutputState }
 
 func (BackendServicePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**BackendService)(nil))
@@ -1077,6 +1073,16 @@ func (o BackendServicePtrOutput) ToBackendServicePtrOutput() BackendServicePtrOu
 
 func (o BackendServicePtrOutput) ToBackendServicePtrOutputWithContext(ctx context.Context) BackendServicePtrOutput {
 	return o
+}
+
+func (o BackendServicePtrOutput) Elem() BackendServiceOutput {
+	return o.ApplyT(func(v *BackendService) BackendService {
+		if v != nil {
+			return *v
+		}
+		var ret BackendService
+		return ret
+	}).(BackendServiceOutput)
 }
 
 type BackendServiceArrayOutput struct{ *pulumi.OutputState }

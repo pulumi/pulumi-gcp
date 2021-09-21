@@ -299,7 +299,7 @@ type ServiceIamMemberArrayInput interface {
 type ServiceIamMemberArray []ServiceIamMemberInput
 
 func (ServiceIamMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ServiceIamMember)(nil))
+	return reflect.TypeOf((*[]*ServiceIamMember)(nil)).Elem()
 }
 
 func (i ServiceIamMemberArray) ToServiceIamMemberArrayOutput() ServiceIamMemberArrayOutput {
@@ -324,7 +324,7 @@ type ServiceIamMemberMapInput interface {
 type ServiceIamMemberMap map[string]ServiceIamMemberInput
 
 func (ServiceIamMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ServiceIamMember)(nil))
+	return reflect.TypeOf((*map[string]*ServiceIamMember)(nil)).Elem()
 }
 
 func (i ServiceIamMemberMap) ToServiceIamMemberMapOutput() ServiceIamMemberMapOutput {
@@ -335,9 +335,7 @@ func (i ServiceIamMemberMap) ToServiceIamMemberMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamMemberMapOutput)
 }
 
-type ServiceIamMemberOutput struct {
-	*pulumi.OutputState
-}
+type ServiceIamMemberOutput struct{ *pulumi.OutputState }
 
 func (ServiceIamMemberOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServiceIamMember)(nil))
@@ -356,14 +354,12 @@ func (o ServiceIamMemberOutput) ToServiceIamMemberPtrOutput() ServiceIamMemberPt
 }
 
 func (o ServiceIamMemberOutput) ToServiceIamMemberPtrOutputWithContext(ctx context.Context) ServiceIamMemberPtrOutput {
-	return o.ApplyT(func(v ServiceIamMember) *ServiceIamMember {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceIamMember) *ServiceIamMember {
 		return &v
 	}).(ServiceIamMemberPtrOutput)
 }
 
-type ServiceIamMemberPtrOutput struct {
-	*pulumi.OutputState
-}
+type ServiceIamMemberPtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceIamMemberPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ServiceIamMember)(nil))
@@ -375,6 +371,16 @@ func (o ServiceIamMemberPtrOutput) ToServiceIamMemberPtrOutput() ServiceIamMembe
 
 func (o ServiceIamMemberPtrOutput) ToServiceIamMemberPtrOutputWithContext(ctx context.Context) ServiceIamMemberPtrOutput {
 	return o
+}
+
+func (o ServiceIamMemberPtrOutput) Elem() ServiceIamMemberOutput {
+	return o.ApplyT(func(v *ServiceIamMember) ServiceIamMember {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceIamMember
+		return ret
+	}).(ServiceIamMemberOutput)
 }
 
 type ServiceIamMemberArrayOutput struct{ *pulumi.OutputState }

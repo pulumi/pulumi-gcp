@@ -765,9 +765,9 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                 ),
                 gcp.compute.RegionInstanceGroupManagerVersionArgs(
                     instance_template=google_compute_instance_template["appserver-canary"]["id"],
-                    target_size={
-                        "fixed": 1,
-                    },
+                    target_size=gcp.compute.RegionInstanceGroupManagerVersionTargetSizeArgs(
+                        fixed=1,
+                    ),
                 ),
             ])
         ```
@@ -889,9 +889,9 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                 ),
                 gcp.compute.RegionInstanceGroupManagerVersionArgs(
                     instance_template=google_compute_instance_template["appserver-canary"]["id"],
-                    target_size={
-                        "fixed": 1,
-                    },
+                    target_size=gcp.compute.RegionInstanceGroupManagerVersionTargetSizeArgs(
+                        fixed=1,
+                    ),
                 ),
             ])
         ```

@@ -440,7 +440,7 @@ type AlertPolicyArrayInput interface {
 type AlertPolicyArray []AlertPolicyInput
 
 func (AlertPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AlertPolicy)(nil))
+	return reflect.TypeOf((*[]*AlertPolicy)(nil)).Elem()
 }
 
 func (i AlertPolicyArray) ToAlertPolicyArrayOutput() AlertPolicyArrayOutput {
@@ -465,7 +465,7 @@ type AlertPolicyMapInput interface {
 type AlertPolicyMap map[string]AlertPolicyInput
 
 func (AlertPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AlertPolicy)(nil))
+	return reflect.TypeOf((*map[string]*AlertPolicy)(nil)).Elem()
 }
 
 func (i AlertPolicyMap) ToAlertPolicyMapOutput() AlertPolicyMapOutput {
@@ -476,9 +476,7 @@ func (i AlertPolicyMap) ToAlertPolicyMapOutputWithContext(ctx context.Context) A
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyMapOutput)
 }
 
-type AlertPolicyOutput struct {
-	*pulumi.OutputState
-}
+type AlertPolicyOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AlertPolicy)(nil))
@@ -497,14 +495,12 @@ func (o AlertPolicyOutput) ToAlertPolicyPtrOutput() AlertPolicyPtrOutput {
 }
 
 func (o AlertPolicyOutput) ToAlertPolicyPtrOutputWithContext(ctx context.Context) AlertPolicyPtrOutput {
-	return o.ApplyT(func(v AlertPolicy) *AlertPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertPolicy) *AlertPolicy {
 		return &v
 	}).(AlertPolicyPtrOutput)
 }
 
-type AlertPolicyPtrOutput struct {
-	*pulumi.OutputState
-}
+type AlertPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AlertPolicy)(nil))
@@ -516,6 +512,16 @@ func (o AlertPolicyPtrOutput) ToAlertPolicyPtrOutput() AlertPolicyPtrOutput {
 
 func (o AlertPolicyPtrOutput) ToAlertPolicyPtrOutputWithContext(ctx context.Context) AlertPolicyPtrOutput {
 	return o
+}
+
+func (o AlertPolicyPtrOutput) Elem() AlertPolicyOutput {
+	return o.ApplyT(func(v *AlertPolicy) AlertPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret AlertPolicy
+		return ret
+	}).(AlertPolicyOutput)
 }
 
 type AlertPolicyArrayOutput struct{ *pulumi.OutputState }

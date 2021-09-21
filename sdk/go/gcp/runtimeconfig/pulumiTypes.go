@@ -105,10 +105,11 @@ func (o ConfigIamBindingConditionOutput) ToConfigIamBindingConditionPtrOutput() 
 }
 
 func (o ConfigIamBindingConditionOutput) ToConfigIamBindingConditionPtrOutputWithContext(ctx context.Context) ConfigIamBindingConditionPtrOutput {
-	return o.ApplyT(func(v ConfigIamBindingCondition) *ConfigIamBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigIamBindingCondition) *ConfigIamBindingCondition {
 		return &v
 	}).(ConfigIamBindingConditionPtrOutput)
 }
+
 func (o ConfigIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConfigIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -136,7 +137,13 @@ func (o ConfigIamBindingConditionPtrOutput) ToConfigIamBindingConditionPtrOutput
 }
 
 func (o ConfigIamBindingConditionPtrOutput) Elem() ConfigIamBindingConditionOutput {
-	return o.ApplyT(func(v *ConfigIamBindingCondition) ConfigIamBindingCondition { return *v }).(ConfigIamBindingConditionOutput)
+	return o.ApplyT(func(v *ConfigIamBindingCondition) ConfigIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigIamBindingCondition
+		return ret
+	}).(ConfigIamBindingConditionOutput)
 }
 
 func (o ConfigIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -261,10 +268,11 @@ func (o ConfigIamMemberConditionOutput) ToConfigIamMemberConditionPtrOutput() Co
 }
 
 func (o ConfigIamMemberConditionOutput) ToConfigIamMemberConditionPtrOutputWithContext(ctx context.Context) ConfigIamMemberConditionPtrOutput {
-	return o.ApplyT(func(v ConfigIamMemberCondition) *ConfigIamMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigIamMemberCondition) *ConfigIamMemberCondition {
 		return &v
 	}).(ConfigIamMemberConditionPtrOutput)
 }
+
 func (o ConfigIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConfigIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -292,7 +300,13 @@ func (o ConfigIamMemberConditionPtrOutput) ToConfigIamMemberConditionPtrOutputWi
 }
 
 func (o ConfigIamMemberConditionPtrOutput) Elem() ConfigIamMemberConditionOutput {
-	return o.ApplyT(func(v *ConfigIamMemberCondition) ConfigIamMemberCondition { return *v }).(ConfigIamMemberConditionOutput)
+	return o.ApplyT(func(v *ConfigIamMemberCondition) ConfigIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigIamMemberCondition
+		return ret
+	}).(ConfigIamMemberConditionOutput)
 }
 
 func (o ConfigIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {

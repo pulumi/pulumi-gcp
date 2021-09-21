@@ -13,6 +13,7 @@ __all__ = [
     'GetClusterResult',
     'AwaitableGetClusterResult',
     'get_cluster',
+    'get_cluster_output',
 ]
 
 @pulumi.output_type
@@ -646,3 +647,38 @@ def get_cluster(location: Optional[str] = None,
         tpu_ipv4_cidr_block=__ret__.tpu_ipv4_cidr_block,
         vertical_pod_autoscalings=__ret__.vertical_pod_autoscalings,
         workload_identity_configs=__ret__.workload_identity_configs)
+
+
+@_utilities.lift_output_func(get_cluster)
+def get_cluster_output(location: Optional[pulumi.Input[Optional[str]]] = None,
+                       name: Optional[pulumi.Input[str]] = None,
+                       project: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterResult]:
+    """
+    Get info about a GKE cluster from its name and location.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_cluster = gcp.container.get_cluster(name="my-cluster",
+        location="us-east1-a")
+    pulumi.export("clusterUsername", my_cluster.master_auths[0].username)
+    pulumi.export("clusterPassword", my_cluster.master_auths[0].password)
+    pulumi.export("endpoint", my_cluster.endpoint)
+    pulumi.export("instanceGroupUrls", my_cluster.instance_group_urls)
+    pulumi.export("nodeConfig", my_cluster.node_configs)
+    pulumi.export("nodePools", my_cluster.node_pools)
+    ```
+
+
+    :param str location: The location (zone or region) this cluster has been
+           created in. One of `location`, `region`, `zone`, or a provider-level `zone` must
+           be specified.
+    :param str name: The name of the cluster.
+    :param str project: The project in which the resource belongs. If it
+           is not provided, the provider project is used.
+    """
+    ...

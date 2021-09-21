@@ -286,7 +286,7 @@ type RecordSetArrayInput interface {
 type RecordSetArray []RecordSetInput
 
 func (RecordSetArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*RecordSet)(nil))
+	return reflect.TypeOf((*[]*RecordSet)(nil)).Elem()
 }
 
 func (i RecordSetArray) ToRecordSetArrayOutput() RecordSetArrayOutput {
@@ -311,7 +311,7 @@ type RecordSetMapInput interface {
 type RecordSetMap map[string]RecordSetInput
 
 func (RecordSetMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*RecordSet)(nil))
+	return reflect.TypeOf((*map[string]*RecordSet)(nil)).Elem()
 }
 
 func (i RecordSetMap) ToRecordSetMapOutput() RecordSetMapOutput {
@@ -322,9 +322,7 @@ func (i RecordSetMap) ToRecordSetMapOutputWithContext(ctx context.Context) Recor
 	return pulumi.ToOutputWithContext(ctx, i).(RecordSetMapOutput)
 }
 
-type RecordSetOutput struct {
-	*pulumi.OutputState
-}
+type RecordSetOutput struct{ *pulumi.OutputState }
 
 func (RecordSetOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RecordSet)(nil))
@@ -343,14 +341,12 @@ func (o RecordSetOutput) ToRecordSetPtrOutput() RecordSetPtrOutput {
 }
 
 func (o RecordSetOutput) ToRecordSetPtrOutputWithContext(ctx context.Context) RecordSetPtrOutput {
-	return o.ApplyT(func(v RecordSet) *RecordSet {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RecordSet) *RecordSet {
 		return &v
 	}).(RecordSetPtrOutput)
 }
 
-type RecordSetPtrOutput struct {
-	*pulumi.OutputState
-}
+type RecordSetPtrOutput struct{ *pulumi.OutputState }
 
 func (RecordSetPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**RecordSet)(nil))
@@ -362,6 +358,16 @@ func (o RecordSetPtrOutput) ToRecordSetPtrOutput() RecordSetPtrOutput {
 
 func (o RecordSetPtrOutput) ToRecordSetPtrOutputWithContext(ctx context.Context) RecordSetPtrOutput {
 	return o
+}
+
+func (o RecordSetPtrOutput) Elem() RecordSetOutput {
+	return o.ApplyT(func(v *RecordSet) RecordSet {
+		if v != nil {
+			return *v
+		}
+		var ret RecordSet
+		return ret
+	}).(RecordSetOutput)
 }
 
 type RecordSetArrayOutput struct{ *pulumi.OutputState }

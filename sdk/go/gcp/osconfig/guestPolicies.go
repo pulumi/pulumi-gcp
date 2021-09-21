@@ -558,7 +558,7 @@ type GuestPoliciesArrayInput interface {
 type GuestPoliciesArray []GuestPoliciesInput
 
 func (GuestPoliciesArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*GuestPolicies)(nil))
+	return reflect.TypeOf((*[]*GuestPolicies)(nil)).Elem()
 }
 
 func (i GuestPoliciesArray) ToGuestPoliciesArrayOutput() GuestPoliciesArrayOutput {
@@ -583,7 +583,7 @@ type GuestPoliciesMapInput interface {
 type GuestPoliciesMap map[string]GuestPoliciesInput
 
 func (GuestPoliciesMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*GuestPolicies)(nil))
+	return reflect.TypeOf((*map[string]*GuestPolicies)(nil)).Elem()
 }
 
 func (i GuestPoliciesMap) ToGuestPoliciesMapOutput() GuestPoliciesMapOutput {
@@ -594,9 +594,7 @@ func (i GuestPoliciesMap) ToGuestPoliciesMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesMapOutput)
 }
 
-type GuestPoliciesOutput struct {
-	*pulumi.OutputState
-}
+type GuestPoliciesOutput struct{ *pulumi.OutputState }
 
 func (GuestPoliciesOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GuestPolicies)(nil))
@@ -615,14 +613,12 @@ func (o GuestPoliciesOutput) ToGuestPoliciesPtrOutput() GuestPoliciesPtrOutput {
 }
 
 func (o GuestPoliciesOutput) ToGuestPoliciesPtrOutputWithContext(ctx context.Context) GuestPoliciesPtrOutput {
-	return o.ApplyT(func(v GuestPolicies) *GuestPolicies {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestPolicies) *GuestPolicies {
 		return &v
 	}).(GuestPoliciesPtrOutput)
 }
 
-type GuestPoliciesPtrOutput struct {
-	*pulumi.OutputState
-}
+type GuestPoliciesPtrOutput struct{ *pulumi.OutputState }
 
 func (GuestPoliciesPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**GuestPolicies)(nil))
@@ -634,6 +630,16 @@ func (o GuestPoliciesPtrOutput) ToGuestPoliciesPtrOutput() GuestPoliciesPtrOutpu
 
 func (o GuestPoliciesPtrOutput) ToGuestPoliciesPtrOutputWithContext(ctx context.Context) GuestPoliciesPtrOutput {
 	return o
+}
+
+func (o GuestPoliciesPtrOutput) Elem() GuestPoliciesOutput {
+	return o.ApplyT(func(v *GuestPolicies) GuestPolicies {
+		if v != nil {
+			return *v
+		}
+		var ret GuestPolicies
+		return ret
+	}).(GuestPoliciesOutput)
 }
 
 type GuestPoliciesArrayOutput struct{ *pulumi.OutputState }

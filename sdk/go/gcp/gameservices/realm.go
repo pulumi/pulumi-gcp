@@ -273,7 +273,7 @@ type RealmArrayInput interface {
 type RealmArray []RealmInput
 
 func (RealmArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Realm)(nil))
+	return reflect.TypeOf((*[]*Realm)(nil)).Elem()
 }
 
 func (i RealmArray) ToRealmArrayOutput() RealmArrayOutput {
@@ -298,7 +298,7 @@ type RealmMapInput interface {
 type RealmMap map[string]RealmInput
 
 func (RealmMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Realm)(nil))
+	return reflect.TypeOf((*map[string]*Realm)(nil)).Elem()
 }
 
 func (i RealmMap) ToRealmMapOutput() RealmMapOutput {
@@ -309,9 +309,7 @@ func (i RealmMap) ToRealmMapOutputWithContext(ctx context.Context) RealmMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(RealmMapOutput)
 }
 
-type RealmOutput struct {
-	*pulumi.OutputState
-}
+type RealmOutput struct{ *pulumi.OutputState }
 
 func (RealmOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Realm)(nil))
@@ -330,14 +328,12 @@ func (o RealmOutput) ToRealmPtrOutput() RealmPtrOutput {
 }
 
 func (o RealmOutput) ToRealmPtrOutputWithContext(ctx context.Context) RealmPtrOutput {
-	return o.ApplyT(func(v Realm) *Realm {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Realm) *Realm {
 		return &v
 	}).(RealmPtrOutput)
 }
 
-type RealmPtrOutput struct {
-	*pulumi.OutputState
-}
+type RealmPtrOutput struct{ *pulumi.OutputState }
 
 func (RealmPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Realm)(nil))
@@ -349,6 +345,16 @@ func (o RealmPtrOutput) ToRealmPtrOutput() RealmPtrOutput {
 
 func (o RealmPtrOutput) ToRealmPtrOutputWithContext(ctx context.Context) RealmPtrOutput {
 	return o
+}
+
+func (o RealmPtrOutput) Elem() RealmOutput {
+	return o.ApplyT(func(v *Realm) Realm {
+		if v != nil {
+			return *v
+		}
+		var ret Realm
+		return ret
+	}).(RealmOutput)
 }
 
 type RealmArrayOutput struct{ *pulumi.OutputState }

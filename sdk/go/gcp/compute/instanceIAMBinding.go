@@ -465,7 +465,7 @@ type InstanceIAMBindingArrayInput interface {
 type InstanceIAMBindingArray []InstanceIAMBindingInput
 
 func (InstanceIAMBindingArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*InstanceIAMBinding)(nil))
+	return reflect.TypeOf((*[]*InstanceIAMBinding)(nil)).Elem()
 }
 
 func (i InstanceIAMBindingArray) ToInstanceIAMBindingArrayOutput() InstanceIAMBindingArrayOutput {
@@ -490,7 +490,7 @@ type InstanceIAMBindingMapInput interface {
 type InstanceIAMBindingMap map[string]InstanceIAMBindingInput
 
 func (InstanceIAMBindingMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*InstanceIAMBinding)(nil))
+	return reflect.TypeOf((*map[string]*InstanceIAMBinding)(nil)).Elem()
 }
 
 func (i InstanceIAMBindingMap) ToInstanceIAMBindingMapOutput() InstanceIAMBindingMapOutput {
@@ -501,9 +501,7 @@ func (i InstanceIAMBindingMap) ToInstanceIAMBindingMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMBindingMapOutput)
 }
 
-type InstanceIAMBindingOutput struct {
-	*pulumi.OutputState
-}
+type InstanceIAMBindingOutput struct{ *pulumi.OutputState }
 
 func (InstanceIAMBindingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceIAMBinding)(nil))
@@ -522,14 +520,12 @@ func (o InstanceIAMBindingOutput) ToInstanceIAMBindingPtrOutput() InstanceIAMBin
 }
 
 func (o InstanceIAMBindingOutput) ToInstanceIAMBindingPtrOutputWithContext(ctx context.Context) InstanceIAMBindingPtrOutput {
-	return o.ApplyT(func(v InstanceIAMBinding) *InstanceIAMBinding {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceIAMBinding) *InstanceIAMBinding {
 		return &v
 	}).(InstanceIAMBindingPtrOutput)
 }
 
-type InstanceIAMBindingPtrOutput struct {
-	*pulumi.OutputState
-}
+type InstanceIAMBindingPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceIAMBindingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**InstanceIAMBinding)(nil))
@@ -541,6 +537,16 @@ func (o InstanceIAMBindingPtrOutput) ToInstanceIAMBindingPtrOutput() InstanceIAM
 
 func (o InstanceIAMBindingPtrOutput) ToInstanceIAMBindingPtrOutputWithContext(ctx context.Context) InstanceIAMBindingPtrOutput {
 	return o
+}
+
+func (o InstanceIAMBindingPtrOutput) Elem() InstanceIAMBindingOutput {
+	return o.ApplyT(func(v *InstanceIAMBinding) InstanceIAMBinding {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceIAMBinding
+		return ret
+	}).(InstanceIAMBindingOutput)
 }
 
 type InstanceIAMBindingArrayOutput struct{ *pulumi.OutputState }

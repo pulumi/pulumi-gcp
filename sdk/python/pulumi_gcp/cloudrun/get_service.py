@@ -13,6 +13,7 @@ __all__ = [
     'GetServiceResult',
     'AwaitableGetServiceResult',
     'get_service',
+    'get_service_output',
 ]
 
 @pulumi.output_type
@@ -160,3 +161,32 @@ def get_service(location: Optional[str] = None,
         statuses=__ret__.statuses,
         templates=__ret__.templates,
         traffics=__ret__.traffics)
+
+
+@_utilities.lift_output_func(get_service)
+def get_service_output(location: Optional[pulumi.Input[str]] = None,
+                       name: Optional[pulumi.Input[str]] = None,
+                       project: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceResult]:
+    """
+    Get information about a Google Cloud Run Service. For more information see
+    the [official documentation](https://cloud.google.com/run/docs/)
+    and [API](https://cloud.google.com/run/docs/apis).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    run_service = gcp.cloudrun.get_service(location="us-central1",
+        name="my-service")
+    ```
+
+
+    :param str location: The location of the cloud run instance. eg us-central1
+    :param str name: The name of the Cloud Run Service.
+    :param str project: The project in which the resource belongs. If it
+           is not provided, the provider project is used.
+    """
+    ...

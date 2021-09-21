@@ -4,6 +4,9 @@
 package compute
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -76,4 +79,97 @@ type LookupInstanceGroupResult struct {
 	// The number of instances in the group.
 	Size int    `pulumi:"size"`
 	Zone string `pulumi:"zone"`
+}
+
+func LookupInstanceGroupOutput(ctx *pulumi.Context, args LookupInstanceGroupOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceGroupResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupInstanceGroupResult, error) {
+			args := v.(LookupInstanceGroupArgs)
+			r, err := LookupInstanceGroup(ctx, &args, opts...)
+			return *r, err
+		}).(LookupInstanceGroupResultOutput)
+}
+
+// A collection of arguments for invoking getInstanceGroup.
+type LookupInstanceGroupOutputArgs struct {
+	// The name of the instance group. Either `name` or `selfLink` must be provided.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The ID of the project in which the resource belongs. If it
+	// is not provided, the provider project is used.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// The self link of the instance group. Either `name` or `selfLink` must be provided.
+	SelfLink pulumi.StringPtrInput `pulumi:"selfLink"`
+	// The zone of the instance group. If referencing the instance group by name
+	// and `zone` is not provided, the provider zone is used.
+	Zone pulumi.StringPtrInput `pulumi:"zone"`
+}
+
+func (LookupInstanceGroupOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupInstanceGroupArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getInstanceGroup.
+type LookupInstanceGroupResultOutput struct{ *pulumi.OutputState }
+
+func (LookupInstanceGroupResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupInstanceGroupResult)(nil)).Elem()
+}
+
+func (o LookupInstanceGroupResultOutput) ToLookupInstanceGroupResultOutput() LookupInstanceGroupResultOutput {
+	return o
+}
+
+func (o LookupInstanceGroupResultOutput) ToLookupInstanceGroupResultOutputWithContext(ctx context.Context) LookupInstanceGroupResultOutput {
+	return o
+}
+
+// Textual description of the instance group.
+func (o LookupInstanceGroupResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceGroupResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupInstanceGroupResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceGroupResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// List of instances in the group.
+func (o LookupInstanceGroupResultOutput) Instances() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupInstanceGroupResult) []string { return v.Instances }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupInstanceGroupResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupInstanceGroupResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// List of named ports in the group.
+func (o LookupInstanceGroupResultOutput) NamedPorts() GetInstanceGroupNamedPortTypeArrayOutput {
+	return o.ApplyT(func(v LookupInstanceGroupResult) []GetInstanceGroupNamedPortType { return v.NamedPorts }).(GetInstanceGroupNamedPortTypeArrayOutput)
+}
+
+// The URL of the network the instance group is in.
+func (o LookupInstanceGroupResultOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceGroupResult) string { return v.Network }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceGroupResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceGroupResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// The URI of the resource.
+func (o LookupInstanceGroupResultOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceGroupResult) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// The number of instances in the group.
+func (o LookupInstanceGroupResultOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupInstanceGroupResult) int { return v.Size }).(pulumi.IntOutput)
+}
+
+func (o LookupInstanceGroupResultOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceGroupResult) string { return v.Zone }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupInstanceGroupResultOutput{})
 }

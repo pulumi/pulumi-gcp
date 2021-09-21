@@ -318,7 +318,7 @@ type ApiIamMemberArrayInput interface {
 type ApiIamMemberArray []ApiIamMemberInput
 
 func (ApiIamMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ApiIamMember)(nil))
+	return reflect.TypeOf((*[]*ApiIamMember)(nil)).Elem()
 }
 
 func (i ApiIamMemberArray) ToApiIamMemberArrayOutput() ApiIamMemberArrayOutput {
@@ -343,7 +343,7 @@ type ApiIamMemberMapInput interface {
 type ApiIamMemberMap map[string]ApiIamMemberInput
 
 func (ApiIamMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ApiIamMember)(nil))
+	return reflect.TypeOf((*map[string]*ApiIamMember)(nil)).Elem()
 }
 
 func (i ApiIamMemberMap) ToApiIamMemberMapOutput() ApiIamMemberMapOutput {
@@ -354,9 +354,7 @@ func (i ApiIamMemberMap) ToApiIamMemberMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ApiIamMemberMapOutput)
 }
 
-type ApiIamMemberOutput struct {
-	*pulumi.OutputState
-}
+type ApiIamMemberOutput struct{ *pulumi.OutputState }
 
 func (ApiIamMemberOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ApiIamMember)(nil))
@@ -375,14 +373,12 @@ func (o ApiIamMemberOutput) ToApiIamMemberPtrOutput() ApiIamMemberPtrOutput {
 }
 
 func (o ApiIamMemberOutput) ToApiIamMemberPtrOutputWithContext(ctx context.Context) ApiIamMemberPtrOutput {
-	return o.ApplyT(func(v ApiIamMember) *ApiIamMember {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiIamMember) *ApiIamMember {
 		return &v
 	}).(ApiIamMemberPtrOutput)
 }
 
-type ApiIamMemberPtrOutput struct {
-	*pulumi.OutputState
-}
+type ApiIamMemberPtrOutput struct{ *pulumi.OutputState }
 
 func (ApiIamMemberPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ApiIamMember)(nil))
@@ -394,6 +390,16 @@ func (o ApiIamMemberPtrOutput) ToApiIamMemberPtrOutput() ApiIamMemberPtrOutput {
 
 func (o ApiIamMemberPtrOutput) ToApiIamMemberPtrOutputWithContext(ctx context.Context) ApiIamMemberPtrOutput {
 	return o
+}
+
+func (o ApiIamMemberPtrOutput) Elem() ApiIamMemberOutput {
+	return o.ApplyT(func(v *ApiIamMember) ApiIamMember {
+		if v != nil {
+			return *v
+		}
+		var ret ApiIamMember
+		return ret
+	}).(ApiIamMemberOutput)
 }
 
 type ApiIamMemberArrayOutput struct{ *pulumi.OutputState }

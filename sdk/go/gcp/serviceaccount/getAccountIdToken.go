@@ -4,6 +4,9 @@
 package serviceaccount
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -53,4 +56,74 @@ type GetAccountIdTokenResult struct {
 	IncludeEmail         *bool   `pulumi:"includeEmail"`
 	TargetAudience       string  `pulumi:"targetAudience"`
 	TargetServiceAccount *string `pulumi:"targetServiceAccount"`
+}
+
+func GetAccountIdTokenOutput(ctx *pulumi.Context, args GetAccountIdTokenOutputArgs, opts ...pulumi.InvokeOption) GetAccountIdTokenResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetAccountIdTokenResult, error) {
+			args := v.(GetAccountIdTokenArgs)
+			r, err := GetAccountIdToken(ctx, &args, opts...)
+			return *r, err
+		}).(GetAccountIdTokenResultOutput)
+}
+
+// A collection of arguments for invoking getAccountIdToken.
+type GetAccountIdTokenOutputArgs struct {
+	// Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.   Used only when using impersonation mode.
+	Delegates pulumi.StringArrayInput `pulumi:"delegates"`
+	// Include the verified email in the claim. Used only when using impersonation mode.
+	IncludeEmail pulumi.BoolPtrInput `pulumi:"includeEmail"`
+	// The audience claim for the `idToken`.
+	TargetAudience pulumi.StringInput `pulumi:"targetAudience"`
+	// The email of the service account being impersonated.  Used only when using impersonation mode.
+	TargetServiceAccount pulumi.StringPtrInput `pulumi:"targetServiceAccount"`
+}
+
+func (GetAccountIdTokenOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountIdTokenArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAccountIdToken.
+type GetAccountIdTokenResultOutput struct{ *pulumi.OutputState }
+
+func (GetAccountIdTokenResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountIdTokenResult)(nil)).Elem()
+}
+
+func (o GetAccountIdTokenResultOutput) ToGetAccountIdTokenResultOutput() GetAccountIdTokenResultOutput {
+	return o
+}
+
+func (o GetAccountIdTokenResultOutput) ToGetAccountIdTokenResultOutputWithContext(ctx context.Context) GetAccountIdTokenResultOutput {
+	return o
+}
+
+func (o GetAccountIdTokenResultOutput) Delegates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAccountIdTokenResult) []string { return v.Delegates }).(pulumi.StringArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAccountIdTokenResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountIdTokenResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The `idToken` representing the new generated identity.
+func (o GetAccountIdTokenResultOutput) IdToken() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountIdTokenResult) string { return v.IdToken }).(pulumi.StringOutput)
+}
+
+func (o GetAccountIdTokenResultOutput) IncludeEmail() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAccountIdTokenResult) *bool { return v.IncludeEmail }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetAccountIdTokenResultOutput) TargetAudience() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountIdTokenResult) string { return v.TargetAudience }).(pulumi.StringOutput)
+}
+
+func (o GetAccountIdTokenResultOutput) TargetServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountIdTokenResult) *string { return v.TargetServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAccountIdTokenResultOutput{})
 }

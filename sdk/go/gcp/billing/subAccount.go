@@ -229,7 +229,7 @@ type SubAccountArrayInput interface {
 type SubAccountArray []SubAccountInput
 
 func (SubAccountArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*SubAccount)(nil))
+	return reflect.TypeOf((*[]*SubAccount)(nil)).Elem()
 }
 
 func (i SubAccountArray) ToSubAccountArrayOutput() SubAccountArrayOutput {
@@ -254,7 +254,7 @@ type SubAccountMapInput interface {
 type SubAccountMap map[string]SubAccountInput
 
 func (SubAccountMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*SubAccount)(nil))
+	return reflect.TypeOf((*map[string]*SubAccount)(nil)).Elem()
 }
 
 func (i SubAccountMap) ToSubAccountMapOutput() SubAccountMapOutput {
@@ -265,9 +265,7 @@ func (i SubAccountMap) ToSubAccountMapOutputWithContext(ctx context.Context) Sub
 	return pulumi.ToOutputWithContext(ctx, i).(SubAccountMapOutput)
 }
 
-type SubAccountOutput struct {
-	*pulumi.OutputState
-}
+type SubAccountOutput struct{ *pulumi.OutputState }
 
 func (SubAccountOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SubAccount)(nil))
@@ -286,14 +284,12 @@ func (o SubAccountOutput) ToSubAccountPtrOutput() SubAccountPtrOutput {
 }
 
 func (o SubAccountOutput) ToSubAccountPtrOutputWithContext(ctx context.Context) SubAccountPtrOutput {
-	return o.ApplyT(func(v SubAccount) *SubAccount {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubAccount) *SubAccount {
 		return &v
 	}).(SubAccountPtrOutput)
 }
 
-type SubAccountPtrOutput struct {
-	*pulumi.OutputState
-}
+type SubAccountPtrOutput struct{ *pulumi.OutputState }
 
 func (SubAccountPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SubAccount)(nil))
@@ -305,6 +301,16 @@ func (o SubAccountPtrOutput) ToSubAccountPtrOutput() SubAccountPtrOutput {
 
 func (o SubAccountPtrOutput) ToSubAccountPtrOutputWithContext(ctx context.Context) SubAccountPtrOutput {
 	return o
+}
+
+func (o SubAccountPtrOutput) Elem() SubAccountOutput {
+	return o.ApplyT(func(v *SubAccount) SubAccount {
+		if v != nil {
+			return *v
+		}
+		var ret SubAccount
+		return ret
+	}).(SubAccountOutput)
 }
 
 type SubAccountArrayOutput struct{ *pulumi.OutputState }

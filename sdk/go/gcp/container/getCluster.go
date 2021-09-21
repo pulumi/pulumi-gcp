@@ -4,6 +4,9 @@
 package container
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -121,4 +124,280 @@ type LookupClusterResult struct {
 	TpuIpv4CidrBlock                string                                     `pulumi:"tpuIpv4CidrBlock"`
 	VerticalPodAutoscalings         []GetClusterVerticalPodAutoscaling         `pulumi:"verticalPodAutoscalings"`
 	WorkloadIdentityConfigs         []GetClusterWorkloadIdentityConfig         `pulumi:"workloadIdentityConfigs"`
+}
+
+func LookupClusterOutput(ctx *pulumi.Context, args LookupClusterOutputArgs, opts ...pulumi.InvokeOption) LookupClusterResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupClusterResult, error) {
+			args := v.(LookupClusterArgs)
+			r, err := LookupCluster(ctx, &args, opts...)
+			return *r, err
+		}).(LookupClusterResultOutput)
+}
+
+// A collection of arguments for invoking getCluster.
+type LookupClusterOutputArgs struct {
+	// The location (zone or region) this cluster has been
+	// created in. One of `location`, `region`, `zone`, or a provider-level `zone` must
+	// be specified.
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// The name of the cluster.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The project in which the resource belongs. If it
+	// is not provided, the provider project is used.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupClusterOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupClusterArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getCluster.
+type LookupClusterResultOutput struct{ *pulumi.OutputState }
+
+func (LookupClusterResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupClusterResult)(nil)).Elem()
+}
+
+func (o LookupClusterResultOutput) ToLookupClusterResultOutput() LookupClusterResultOutput {
+	return o
+}
+
+func (o LookupClusterResultOutput) ToLookupClusterResultOutputWithContext(ctx context.Context) LookupClusterResultOutput {
+	return o
+}
+
+func (o LookupClusterResultOutput) AddonsConfigs() GetClusterAddonsConfigArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterAddonsConfig { return v.AddonsConfigs }).(GetClusterAddonsConfigArrayOutput)
+}
+
+func (o LookupClusterResultOutput) AuthenticatorGroupsConfigs() GetClusterAuthenticatorGroupsConfigArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterAuthenticatorGroupsConfig { return v.AuthenticatorGroupsConfigs }).(GetClusterAuthenticatorGroupsConfigArrayOutput)
+}
+
+func (o LookupClusterResultOutput) ClusterAutoscalings() GetClusterClusterAutoscalingArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterClusterAutoscaling { return v.ClusterAutoscalings }).(GetClusterClusterAutoscalingArrayOutput)
+}
+
+func (o LookupClusterResultOutput) ClusterIpv4Cidr() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.ClusterIpv4Cidr }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) ClusterTelemetries() GetClusterClusterTelemetryArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterClusterTelemetry { return v.ClusterTelemetries }).(GetClusterClusterTelemetryArrayOutput)
+}
+
+func (o LookupClusterResultOutput) ConfidentialNodes() GetClusterConfidentialNodeArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterConfidentialNode { return v.ConfidentialNodes }).(GetClusterConfidentialNodeArrayOutput)
+}
+
+func (o LookupClusterResultOutput) DatabaseEncryptions() GetClusterDatabaseEncryptionArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterDatabaseEncryption { return v.DatabaseEncryptions }).(GetClusterDatabaseEncryptionArrayOutput)
+}
+
+func (o LookupClusterResultOutput) DatapathProvider() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.DatapathProvider }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) DefaultMaxPodsPerNode() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupClusterResult) int { return v.DefaultMaxPodsPerNode }).(pulumi.IntOutput)
+}
+
+func (o LookupClusterResultOutput) DefaultSnatStatuses() GetClusterDefaultSnatStatusArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterDefaultSnatStatus { return v.DefaultSnatStatuses }).(GetClusterDefaultSnatStatusArrayOutput)
+}
+
+func (o LookupClusterResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) EnableAutopilot() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupClusterResult) bool { return v.EnableAutopilot }).(pulumi.BoolOutput)
+}
+
+func (o LookupClusterResultOutput) EnableBinaryAuthorization() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupClusterResult) bool { return v.EnableBinaryAuthorization }).(pulumi.BoolOutput)
+}
+
+func (o LookupClusterResultOutput) EnableIntranodeVisibility() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupClusterResult) bool { return v.EnableIntranodeVisibility }).(pulumi.BoolOutput)
+}
+
+func (o LookupClusterResultOutput) EnableKubernetesAlpha() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupClusterResult) bool { return v.EnableKubernetesAlpha }).(pulumi.BoolOutput)
+}
+
+func (o LookupClusterResultOutput) EnableL4IlbSubsetting() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupClusterResult) bool { return v.EnableL4IlbSubsetting }).(pulumi.BoolOutput)
+}
+
+func (o LookupClusterResultOutput) EnableLegacyAbac() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupClusterResult) bool { return v.EnableLegacyAbac }).(pulumi.BoolOutput)
+}
+
+func (o LookupClusterResultOutput) EnableShieldedNodes() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupClusterResult) bool { return v.EnableShieldedNodes }).(pulumi.BoolOutput)
+}
+
+func (o LookupClusterResultOutput) EnableTpu() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupClusterResult) bool { return v.EnableTpu }).(pulumi.BoolOutput)
+}
+
+func (o LookupClusterResultOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupClusterResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) InitialNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupClusterResult) int { return v.InitialNodeCount }).(pulumi.IntOutput)
+}
+
+func (o LookupClusterResultOutput) InstanceGroupUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []string { return v.InstanceGroupUrls }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupClusterResultOutput) IpAllocationPolicies() GetClusterIpAllocationPolicyArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterIpAllocationPolicy { return v.IpAllocationPolicies }).(GetClusterIpAllocationPolicyArrayOutput)
+}
+
+func (o LookupClusterResultOutput) LabelFingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.LabelFingerprint }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupClusterResult) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupClusterResultOutput) LoggingService() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.LoggingService }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) MaintenancePolicies() GetClusterMaintenancePolicyArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterMaintenancePolicy { return v.MaintenancePolicies }).(GetClusterMaintenancePolicyArrayOutput)
+}
+
+func (o LookupClusterResultOutput) MasterAuthorizedNetworksConfigs() GetClusterMasterAuthorizedNetworksConfigArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterMasterAuthorizedNetworksConfig {
+		return v.MasterAuthorizedNetworksConfigs
+	}).(GetClusterMasterAuthorizedNetworksConfigArrayOutput)
+}
+
+func (o LookupClusterResultOutput) MasterAuths() GetClusterMasterAuthArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterMasterAuth { return v.MasterAuths }).(GetClusterMasterAuthArrayOutput)
+}
+
+func (o LookupClusterResultOutput) MasterVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.MasterVersion }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) MinMasterVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.MinMasterVersion }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) MonitoringService() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.MonitoringService }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.Network }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) NetworkPolicies() GetClusterNetworkPolicyArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterNetworkPolicy { return v.NetworkPolicies }).(GetClusterNetworkPolicyArrayOutput)
+}
+
+func (o LookupClusterResultOutput) NetworkingMode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.NetworkingMode }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) NodeConfigs() GetClusterNodeConfigArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterNodeConfig { return v.NodeConfigs }).(GetClusterNodeConfigArrayOutput)
+}
+
+func (o LookupClusterResultOutput) NodeLocations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []string { return v.NodeLocations }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupClusterResultOutput) NodePools() GetClusterNodePoolArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterNodePool { return v.NodePools }).(GetClusterNodePoolArrayOutput)
+}
+
+func (o LookupClusterResultOutput) NodeVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.NodeVersion }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) NotificationConfigs() GetClusterNotificationConfigArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterNotificationConfig { return v.NotificationConfigs }).(GetClusterNotificationConfigArrayOutput)
+}
+
+func (o LookupClusterResultOutput) Operation() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.Operation }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) PodSecurityPolicyConfigs() GetClusterPodSecurityPolicyConfigArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterPodSecurityPolicyConfig { return v.PodSecurityPolicyConfigs }).(GetClusterPodSecurityPolicyConfigArrayOutput)
+}
+
+func (o LookupClusterResultOutput) PrivateClusterConfigs() GetClusterPrivateClusterConfigArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterPrivateClusterConfig { return v.PrivateClusterConfigs }).(GetClusterPrivateClusterConfigArrayOutput)
+}
+
+func (o LookupClusterResultOutput) PrivateIpv6GoogleAccess() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.PrivateIpv6GoogleAccess }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupClusterResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupClusterResultOutput) ReleaseChannels() GetClusterReleaseChannelArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterReleaseChannel { return v.ReleaseChannels }).(GetClusterReleaseChannelArrayOutput)
+}
+
+func (o LookupClusterResultOutput) RemoveDefaultNodePool() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupClusterResult) bool { return v.RemoveDefaultNodePool }).(pulumi.BoolOutput)
+}
+
+func (o LookupClusterResultOutput) ResourceLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupClusterResult) map[string]string { return v.ResourceLabels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupClusterResultOutput) ResourceUsageExportConfigs() GetClusterResourceUsageExportConfigArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterResourceUsageExportConfig { return v.ResourceUsageExportConfigs }).(GetClusterResourceUsageExportConfigArrayOutput)
+}
+
+func (o LookupClusterResultOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) ServicesIpv4Cidr() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.ServicesIpv4Cidr }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) Subnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) TpuIpv4CidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.TpuIpv4CidrBlock }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) VerticalPodAutoscalings() GetClusterVerticalPodAutoscalingArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterVerticalPodAutoscaling { return v.VerticalPodAutoscalings }).(GetClusterVerticalPodAutoscalingArrayOutput)
+}
+
+func (o LookupClusterResultOutput) WorkloadIdentityConfigs() GetClusterWorkloadIdentityConfigArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterWorkloadIdentityConfig { return v.WorkloadIdentityConfigs }).(GetClusterWorkloadIdentityConfigArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupClusterResultOutput{})
 }

@@ -13,6 +13,7 @@ __all__ = [
     'GetBackendServiceResult',
     'AwaitableGetBackendServiceResult',
     'get_backend_service',
+    'get_backend_service_output',
 ]
 
 @pulumi.output_type
@@ -369,3 +370,19 @@ def get_backend_service(name: Optional[str] = None,
         self_link=__ret__.self_link,
         session_affinity=__ret__.session_affinity,
         timeout_sec=__ret__.timeout_sec)
+
+
+@_utilities.lift_output_func(get_backend_service)
+def get_backend_service_output(name: Optional[pulumi.Input[str]] = None,
+                               project: Optional[pulumi.Input[Optional[str]]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBackendServiceResult]:
+    """
+    Provide access to a Backend Service's attribute. For more information
+    see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
+    and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
+
+
+    :param str name: The name of the Backend Service.
+    :param str project: The project in which the resource belongs. If it is not provided, the provider project is used.
+    """
+    ...

@@ -420,7 +420,7 @@ type WebIamMemberArrayInput interface {
 type WebIamMemberArray []WebIamMemberInput
 
 func (WebIamMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*WebIamMember)(nil))
+	return reflect.TypeOf((*[]*WebIamMember)(nil)).Elem()
 }
 
 func (i WebIamMemberArray) ToWebIamMemberArrayOutput() WebIamMemberArrayOutput {
@@ -445,7 +445,7 @@ type WebIamMemberMapInput interface {
 type WebIamMemberMap map[string]WebIamMemberInput
 
 func (WebIamMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*WebIamMember)(nil))
+	return reflect.TypeOf((*map[string]*WebIamMember)(nil)).Elem()
 }
 
 func (i WebIamMemberMap) ToWebIamMemberMapOutput() WebIamMemberMapOutput {
@@ -456,9 +456,7 @@ func (i WebIamMemberMap) ToWebIamMemberMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(WebIamMemberMapOutput)
 }
 
-type WebIamMemberOutput struct {
-	*pulumi.OutputState
-}
+type WebIamMemberOutput struct{ *pulumi.OutputState }
 
 func (WebIamMemberOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*WebIamMember)(nil))
@@ -477,14 +475,12 @@ func (o WebIamMemberOutput) ToWebIamMemberPtrOutput() WebIamMemberPtrOutput {
 }
 
 func (o WebIamMemberOutput) ToWebIamMemberPtrOutputWithContext(ctx context.Context) WebIamMemberPtrOutput {
-	return o.ApplyT(func(v WebIamMember) *WebIamMember {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebIamMember) *WebIamMember {
 		return &v
 	}).(WebIamMemberPtrOutput)
 }
 
-type WebIamMemberPtrOutput struct {
-	*pulumi.OutputState
-}
+type WebIamMemberPtrOutput struct{ *pulumi.OutputState }
 
 func (WebIamMemberPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**WebIamMember)(nil))
@@ -496,6 +492,16 @@ func (o WebIamMemberPtrOutput) ToWebIamMemberPtrOutput() WebIamMemberPtrOutput {
 
 func (o WebIamMemberPtrOutput) ToWebIamMemberPtrOutputWithContext(ctx context.Context) WebIamMemberPtrOutput {
 	return o
+}
+
+func (o WebIamMemberPtrOutput) Elem() WebIamMemberOutput {
+	return o.ApplyT(func(v *WebIamMember) WebIamMember {
+		if v != nil {
+			return *v
+		}
+		var ret WebIamMember
+		return ret
+	}).(WebIamMemberOutput)
 }
 
 type WebIamMemberArrayOutput struct{ *pulumi.OutputState }

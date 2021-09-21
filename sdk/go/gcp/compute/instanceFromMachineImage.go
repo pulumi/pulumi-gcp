@@ -546,7 +546,7 @@ type InstanceFromMachineImageArrayInput interface {
 type InstanceFromMachineImageArray []InstanceFromMachineImageInput
 
 func (InstanceFromMachineImageArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*InstanceFromMachineImage)(nil))
+	return reflect.TypeOf((*[]*InstanceFromMachineImage)(nil)).Elem()
 }
 
 func (i InstanceFromMachineImageArray) ToInstanceFromMachineImageArrayOutput() InstanceFromMachineImageArrayOutput {
@@ -571,7 +571,7 @@ type InstanceFromMachineImageMapInput interface {
 type InstanceFromMachineImageMap map[string]InstanceFromMachineImageInput
 
 func (InstanceFromMachineImageMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*InstanceFromMachineImage)(nil))
+	return reflect.TypeOf((*map[string]*InstanceFromMachineImage)(nil)).Elem()
 }
 
 func (i InstanceFromMachineImageMap) ToInstanceFromMachineImageMapOutput() InstanceFromMachineImageMapOutput {
@@ -582,9 +582,7 @@ func (i InstanceFromMachineImageMap) ToInstanceFromMachineImageMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageMapOutput)
 }
 
-type InstanceFromMachineImageOutput struct {
-	*pulumi.OutputState
-}
+type InstanceFromMachineImageOutput struct{ *pulumi.OutputState }
 
 func (InstanceFromMachineImageOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceFromMachineImage)(nil))
@@ -603,14 +601,12 @@ func (o InstanceFromMachineImageOutput) ToInstanceFromMachineImagePtrOutput() In
 }
 
 func (o InstanceFromMachineImageOutput) ToInstanceFromMachineImagePtrOutputWithContext(ctx context.Context) InstanceFromMachineImagePtrOutput {
-	return o.ApplyT(func(v InstanceFromMachineImage) *InstanceFromMachineImage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceFromMachineImage) *InstanceFromMachineImage {
 		return &v
 	}).(InstanceFromMachineImagePtrOutput)
 }
 
-type InstanceFromMachineImagePtrOutput struct {
-	*pulumi.OutputState
-}
+type InstanceFromMachineImagePtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceFromMachineImagePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**InstanceFromMachineImage)(nil))
@@ -622,6 +618,16 @@ func (o InstanceFromMachineImagePtrOutput) ToInstanceFromMachineImagePtrOutput()
 
 func (o InstanceFromMachineImagePtrOutput) ToInstanceFromMachineImagePtrOutputWithContext(ctx context.Context) InstanceFromMachineImagePtrOutput {
 	return o
+}
+
+func (o InstanceFromMachineImagePtrOutput) Elem() InstanceFromMachineImageOutput {
+	return o.ApplyT(func(v *InstanceFromMachineImage) InstanceFromMachineImage {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceFromMachineImage
+		return ret
+	}).(InstanceFromMachineImageOutput)
 }
 
 type InstanceFromMachineImageArrayOutput struct{ *pulumi.OutputState }

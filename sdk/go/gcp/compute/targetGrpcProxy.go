@@ -466,7 +466,7 @@ type TargetGrpcProxyArrayInput interface {
 type TargetGrpcProxyArray []TargetGrpcProxyInput
 
 func (TargetGrpcProxyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TargetGrpcProxy)(nil))
+	return reflect.TypeOf((*[]*TargetGrpcProxy)(nil)).Elem()
 }
 
 func (i TargetGrpcProxyArray) ToTargetGrpcProxyArrayOutput() TargetGrpcProxyArrayOutput {
@@ -491,7 +491,7 @@ type TargetGrpcProxyMapInput interface {
 type TargetGrpcProxyMap map[string]TargetGrpcProxyInput
 
 func (TargetGrpcProxyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TargetGrpcProxy)(nil))
+	return reflect.TypeOf((*map[string]*TargetGrpcProxy)(nil)).Elem()
 }
 
 func (i TargetGrpcProxyMap) ToTargetGrpcProxyMapOutput() TargetGrpcProxyMapOutput {
@@ -502,9 +502,7 @@ func (i TargetGrpcProxyMap) ToTargetGrpcProxyMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(TargetGrpcProxyMapOutput)
 }
 
-type TargetGrpcProxyOutput struct {
-	*pulumi.OutputState
-}
+type TargetGrpcProxyOutput struct{ *pulumi.OutputState }
 
 func (TargetGrpcProxyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TargetGrpcProxy)(nil))
@@ -523,14 +521,12 @@ func (o TargetGrpcProxyOutput) ToTargetGrpcProxyPtrOutput() TargetGrpcProxyPtrOu
 }
 
 func (o TargetGrpcProxyOutput) ToTargetGrpcProxyPtrOutputWithContext(ctx context.Context) TargetGrpcProxyPtrOutput {
-	return o.ApplyT(func(v TargetGrpcProxy) *TargetGrpcProxy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TargetGrpcProxy) *TargetGrpcProxy {
 		return &v
 	}).(TargetGrpcProxyPtrOutput)
 }
 
-type TargetGrpcProxyPtrOutput struct {
-	*pulumi.OutputState
-}
+type TargetGrpcProxyPtrOutput struct{ *pulumi.OutputState }
 
 func (TargetGrpcProxyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TargetGrpcProxy)(nil))
@@ -542,6 +538,16 @@ func (o TargetGrpcProxyPtrOutput) ToTargetGrpcProxyPtrOutput() TargetGrpcProxyPt
 
 func (o TargetGrpcProxyPtrOutput) ToTargetGrpcProxyPtrOutputWithContext(ctx context.Context) TargetGrpcProxyPtrOutput {
 	return o
+}
+
+func (o TargetGrpcProxyPtrOutput) Elem() TargetGrpcProxyOutput {
+	return o.ApplyT(func(v *TargetGrpcProxy) TargetGrpcProxy {
+		if v != nil {
+			return *v
+		}
+		var ret TargetGrpcProxy
+		return ret
+	}).(TargetGrpcProxyOutput)
 }
 
 type TargetGrpcProxyArrayOutput struct{ *pulumi.OutputState }

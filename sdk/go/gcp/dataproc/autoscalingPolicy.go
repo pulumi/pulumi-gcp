@@ -294,7 +294,7 @@ type AutoscalingPolicyArrayInput interface {
 type AutoscalingPolicyArray []AutoscalingPolicyInput
 
 func (AutoscalingPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AutoscalingPolicy)(nil))
+	return reflect.TypeOf((*[]*AutoscalingPolicy)(nil)).Elem()
 }
 
 func (i AutoscalingPolicyArray) ToAutoscalingPolicyArrayOutput() AutoscalingPolicyArrayOutput {
@@ -319,7 +319,7 @@ type AutoscalingPolicyMapInput interface {
 type AutoscalingPolicyMap map[string]AutoscalingPolicyInput
 
 func (AutoscalingPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AutoscalingPolicy)(nil))
+	return reflect.TypeOf((*map[string]*AutoscalingPolicy)(nil)).Elem()
 }
 
 func (i AutoscalingPolicyMap) ToAutoscalingPolicyMapOutput() AutoscalingPolicyMapOutput {
@@ -330,9 +330,7 @@ func (i AutoscalingPolicyMap) ToAutoscalingPolicyMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyMapOutput)
 }
 
-type AutoscalingPolicyOutput struct {
-	*pulumi.OutputState
-}
+type AutoscalingPolicyOutput struct{ *pulumi.OutputState }
 
 func (AutoscalingPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AutoscalingPolicy)(nil))
@@ -351,14 +349,12 @@ func (o AutoscalingPolicyOutput) ToAutoscalingPolicyPtrOutput() AutoscalingPolic
 }
 
 func (o AutoscalingPolicyOutput) ToAutoscalingPolicyPtrOutputWithContext(ctx context.Context) AutoscalingPolicyPtrOutput {
-	return o.ApplyT(func(v AutoscalingPolicy) *AutoscalingPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoscalingPolicy) *AutoscalingPolicy {
 		return &v
 	}).(AutoscalingPolicyPtrOutput)
 }
 
-type AutoscalingPolicyPtrOutput struct {
-	*pulumi.OutputState
-}
+type AutoscalingPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (AutoscalingPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AutoscalingPolicy)(nil))
@@ -370,6 +366,16 @@ func (o AutoscalingPolicyPtrOutput) ToAutoscalingPolicyPtrOutput() AutoscalingPo
 
 func (o AutoscalingPolicyPtrOutput) ToAutoscalingPolicyPtrOutputWithContext(ctx context.Context) AutoscalingPolicyPtrOutput {
 	return o
+}
+
+func (o AutoscalingPolicyPtrOutput) Elem() AutoscalingPolicyOutput {
+	return o.ApplyT(func(v *AutoscalingPolicy) AutoscalingPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret AutoscalingPolicy
+		return ret
+	}).(AutoscalingPolicyOutput)
 }
 
 type AutoscalingPolicyArrayOutput struct{ *pulumi.OutputState }

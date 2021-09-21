@@ -305,7 +305,7 @@ type JobIAMPolicyArrayInput interface {
 type JobIAMPolicyArray []JobIAMPolicyInput
 
 func (JobIAMPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*JobIAMPolicy)(nil))
+	return reflect.TypeOf((*[]*JobIAMPolicy)(nil)).Elem()
 }
 
 func (i JobIAMPolicyArray) ToJobIAMPolicyArrayOutput() JobIAMPolicyArrayOutput {
@@ -330,7 +330,7 @@ type JobIAMPolicyMapInput interface {
 type JobIAMPolicyMap map[string]JobIAMPolicyInput
 
 func (JobIAMPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*JobIAMPolicy)(nil))
+	return reflect.TypeOf((*map[string]*JobIAMPolicy)(nil)).Elem()
 }
 
 func (i JobIAMPolicyMap) ToJobIAMPolicyMapOutput() JobIAMPolicyMapOutput {
@@ -341,9 +341,7 @@ func (i JobIAMPolicyMap) ToJobIAMPolicyMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(JobIAMPolicyMapOutput)
 }
 
-type JobIAMPolicyOutput struct {
-	*pulumi.OutputState
-}
+type JobIAMPolicyOutput struct{ *pulumi.OutputState }
 
 func (JobIAMPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*JobIAMPolicy)(nil))
@@ -362,14 +360,12 @@ func (o JobIAMPolicyOutput) ToJobIAMPolicyPtrOutput() JobIAMPolicyPtrOutput {
 }
 
 func (o JobIAMPolicyOutput) ToJobIAMPolicyPtrOutputWithContext(ctx context.Context) JobIAMPolicyPtrOutput {
-	return o.ApplyT(func(v JobIAMPolicy) *JobIAMPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobIAMPolicy) *JobIAMPolicy {
 		return &v
 	}).(JobIAMPolicyPtrOutput)
 }
 
-type JobIAMPolicyPtrOutput struct {
-	*pulumi.OutputState
-}
+type JobIAMPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (JobIAMPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**JobIAMPolicy)(nil))
@@ -381,6 +377,16 @@ func (o JobIAMPolicyPtrOutput) ToJobIAMPolicyPtrOutput() JobIAMPolicyPtrOutput {
 
 func (o JobIAMPolicyPtrOutput) ToJobIAMPolicyPtrOutputWithContext(ctx context.Context) JobIAMPolicyPtrOutput {
 	return o
+}
+
+func (o JobIAMPolicyPtrOutput) Elem() JobIAMPolicyOutput {
+	return o.ApplyT(func(v *JobIAMPolicy) JobIAMPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret JobIAMPolicy
+		return ret
+	}).(JobIAMPolicyOutput)
 }
 
 type JobIAMPolicyArrayOutput struct{ *pulumi.OutputState }

@@ -357,7 +357,7 @@ type ConsentStoreArrayInput interface {
 type ConsentStoreArray []ConsentStoreInput
 
 func (ConsentStoreArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ConsentStore)(nil))
+	return reflect.TypeOf((*[]*ConsentStore)(nil)).Elem()
 }
 
 func (i ConsentStoreArray) ToConsentStoreArrayOutput() ConsentStoreArrayOutput {
@@ -382,7 +382,7 @@ type ConsentStoreMapInput interface {
 type ConsentStoreMap map[string]ConsentStoreInput
 
 func (ConsentStoreMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ConsentStore)(nil))
+	return reflect.TypeOf((*map[string]*ConsentStore)(nil)).Elem()
 }
 
 func (i ConsentStoreMap) ToConsentStoreMapOutput() ConsentStoreMapOutput {
@@ -393,9 +393,7 @@ func (i ConsentStoreMap) ToConsentStoreMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ConsentStoreMapOutput)
 }
 
-type ConsentStoreOutput struct {
-	*pulumi.OutputState
-}
+type ConsentStoreOutput struct{ *pulumi.OutputState }
 
 func (ConsentStoreOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ConsentStore)(nil))
@@ -414,14 +412,12 @@ func (o ConsentStoreOutput) ToConsentStorePtrOutput() ConsentStorePtrOutput {
 }
 
 func (o ConsentStoreOutput) ToConsentStorePtrOutputWithContext(ctx context.Context) ConsentStorePtrOutput {
-	return o.ApplyT(func(v ConsentStore) *ConsentStore {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConsentStore) *ConsentStore {
 		return &v
 	}).(ConsentStorePtrOutput)
 }
 
-type ConsentStorePtrOutput struct {
-	*pulumi.OutputState
-}
+type ConsentStorePtrOutput struct{ *pulumi.OutputState }
 
 func (ConsentStorePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ConsentStore)(nil))
@@ -433,6 +429,16 @@ func (o ConsentStorePtrOutput) ToConsentStorePtrOutput() ConsentStorePtrOutput {
 
 func (o ConsentStorePtrOutput) ToConsentStorePtrOutputWithContext(ctx context.Context) ConsentStorePtrOutput {
 	return o
+}
+
+func (o ConsentStorePtrOutput) Elem() ConsentStoreOutput {
+	return o.ApplyT(func(v *ConsentStore) ConsentStore {
+		if v != nil {
+			return *v
+		}
+		var ret ConsentStore
+		return ret
+	}).(ConsentStoreOutput)
 }
 
 type ConsentStoreArrayOutput struct{ *pulumi.OutputState }

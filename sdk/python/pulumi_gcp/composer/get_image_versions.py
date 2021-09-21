@@ -13,6 +13,7 @@ __all__ = [
     'GetImageVersionsResult',
     'AwaitableGetImageVersionsResult',
     'get_image_versions',
+    'get_image_versions_output',
 ]
 
 @pulumi.output_type
@@ -115,3 +116,35 @@ def get_image_versions(project: Optional[str] = None,
         image_versions=__ret__.image_versions,
         project=__ret__.project,
         region=__ret__.region)
+
+
+@_utilities.lift_output_func(get_image_versions)
+def get_image_versions_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+                              region: Optional[pulumi.Input[Optional[str]]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImageVersionsResult]:
+    """
+    Provides access to available Cloud Composer versions in a region for a given project.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    all = gcp.composer.get_image_versions()
+    test = gcp.composer.Environment("test",
+        region="us-central1",
+        config=gcp.composer.EnvironmentConfigArgs(
+            software_config=gcp.composer.EnvironmentConfigSoftwareConfigArgs(
+                image_version=all.image_versions[0].image_version_id,
+            ),
+        ))
+    ```
+
+
+    :param str project: The ID of the project to list versions in.
+           If it is not provided, the provider project is used.
+    :param str region: The location to list versions in.
+           If it is not provider, the provider region is used.
+    """
+    ...

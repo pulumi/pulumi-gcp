@@ -12,6 +12,7 @@ __all__ = [
     'GetInstanceResult',
     'AwaitableGetInstanceResult',
     'get_instance',
+    'get_instance_output',
 ]
 
 @pulumi.output_type
@@ -175,3 +176,33 @@ def get_instance(config: Optional[str] = None,
         processing_units=__ret__.processing_units,
         project=__ret__.project,
         state=__ret__.state)
+
+
+@_utilities.lift_output_func(get_instance)
+def get_instance_output(config: Optional[pulumi.Input[Optional[str]]] = None,
+                        display_name: Optional[pulumi.Input[Optional[str]]] = None,
+                        force_destroy: Optional[pulumi.Input[Optional[bool]]] = None,
+                        labels: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
+                        name: Optional[pulumi.Input[str]] = None,
+                        num_nodes: Optional[pulumi.Input[Optional[int]]] = None,
+                        processing_units: Optional[pulumi.Input[Optional[int]]] = None,
+                        project: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceResult]:
+    """
+    Get a spanner instance from Google Cloud by its name.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    foo = gcp.spanner.get_instance(name="bar")
+    ```
+
+
+    :param str name: The name of the spanner instance.
+    :param str project: The project in which the resource belongs. If it
+           is not provided, the provider project is used.
+    """
+    ...

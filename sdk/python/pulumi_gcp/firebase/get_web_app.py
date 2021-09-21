@@ -12,6 +12,7 @@ __all__ = [
     'GetWebAppResult',
     'AwaitableGetWebAppResult',
     'get_web_app',
+    'get_web_app_output',
 ]
 
 @pulumi.output_type
@@ -100,3 +101,15 @@ def get_web_app(app_id: Optional[str] = None,
         id=__ret__.id,
         name=__ret__.name,
         project=__ret__.project)
+
+
+@_utilities.lift_output_func(get_web_app)
+def get_web_app_output(app_id: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWebAppResult]:
+    """
+    A Google Cloud Firebase web application instance
+
+
+    :param str app_id: The app_ip of name of the Firebase webApp.
+    """
+    ...

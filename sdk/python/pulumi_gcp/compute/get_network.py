@@ -12,6 +12,7 @@ __all__ = [
     'GetNetworkResult',
     'AwaitableGetNetworkResult',
     'get_network',
+    'get_network_output',
 ]
 
 @pulumi.output_type
@@ -145,3 +146,27 @@ def get_network(name: Optional[str] = None,
         project=__ret__.project,
         self_link=__ret__.self_link,
         subnetworks_self_links=__ret__.subnetworks_self_links)
+
+
+@_utilities.lift_output_func(get_network)
+def get_network_output(name: Optional[pulumi.Input[str]] = None,
+                       project: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkResult]:
+    """
+    Get a network within GCE from its name.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_network = gcp.compute.get_network(name="default-us-east1")
+    ```
+
+
+    :param str name: The name of the network.
+    :param str project: The ID of the project in which the resource belongs. If it
+           is not provided, the provider project is used.
+    """
+    ...

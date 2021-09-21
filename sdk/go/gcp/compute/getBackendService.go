@@ -4,6 +4,9 @@
 package compute
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -69,4 +72,168 @@ type LookupBackendServiceResult struct {
 	SessionAffinity string `pulumi:"sessionAffinity"`
 	// The number of seconds to wait for a backend to respond to a request before considering the request failed.
 	TimeoutSec int `pulumi:"timeoutSec"`
+}
+
+func LookupBackendServiceOutput(ctx *pulumi.Context, args LookupBackendServiceOutputArgs, opts ...pulumi.InvokeOption) LookupBackendServiceResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupBackendServiceResult, error) {
+			args := v.(LookupBackendServiceArgs)
+			r, err := LookupBackendService(ctx, &args, opts...)
+			return *r, err
+		}).(LookupBackendServiceResultOutput)
+}
+
+// A collection of arguments for invoking getBackendService.
+type LookupBackendServiceOutputArgs struct {
+	// The name of the Backend Service.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The project in which the resource belongs. If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupBackendServiceOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupBackendServiceArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getBackendService.
+type LookupBackendServiceResultOutput struct{ *pulumi.OutputState }
+
+func (LookupBackendServiceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupBackendServiceResult)(nil)).Elem()
+}
+
+func (o LookupBackendServiceResultOutput) ToLookupBackendServiceResultOutput() LookupBackendServiceResultOutput {
+	return o
+}
+
+func (o LookupBackendServiceResultOutput) ToLookupBackendServiceResultOutputWithContext(ctx context.Context) LookupBackendServiceResultOutput {
+	return o
+}
+
+func (o LookupBackendServiceResultOutput) AffinityCookieTtlSec() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) int { return v.AffinityCookieTtlSec }).(pulumi.IntOutput)
+}
+
+// The set of backends that serve this Backend Service.
+func (o LookupBackendServiceResultOutput) Backends() GetBackendServiceBackendArrayOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) []GetBackendServiceBackend { return v.Backends }).(GetBackendServiceBackendArrayOutput)
+}
+
+func (o LookupBackendServiceResultOutput) CdnPolicies() GetBackendServiceCdnPolicyArrayOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) []GetBackendServiceCdnPolicy { return v.CdnPolicies }).(GetBackendServiceCdnPolicyArrayOutput)
+}
+
+func (o LookupBackendServiceResultOutput) CircuitBreakers() GetBackendServiceCircuitBreakerArrayOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) []GetBackendServiceCircuitBreaker { return v.CircuitBreakers }).(GetBackendServiceCircuitBreakerArrayOutput)
+}
+
+// Time for which instance will be drained (not accept new connections, but still work to finish started ones).
+func (o LookupBackendServiceResultOutput) ConnectionDrainingTimeoutSec() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) int { return v.ConnectionDrainingTimeoutSec }).(pulumi.IntOutput)
+}
+
+func (o LookupBackendServiceResultOutput) ConsistentHash() GetBackendServiceConsistentHashArrayOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) []GetBackendServiceConsistentHash { return v.ConsistentHash }).(GetBackendServiceConsistentHashArrayOutput)
+}
+
+func (o LookupBackendServiceResultOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) string { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+func (o LookupBackendServiceResultOutput) CustomRequestHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) []string { return v.CustomRequestHeaders }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupBackendServiceResultOutput) CustomResponseHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) []string { return v.CustomResponseHeaders }).(pulumi.StringArrayOutput)
+}
+
+// Textual description for the Backend Service.
+func (o LookupBackendServiceResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Whether or not Cloud CDN is enabled on the Backend Service.
+func (o LookupBackendServiceResultOutput) EnableCdn() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) bool { return v.EnableCdn }).(pulumi.BoolOutput)
+}
+
+// The fingerprint of the Backend Service.
+func (o LookupBackendServiceResultOutput) Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) string { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// The set of HTTP/HTTPS health checks used by the Backend Service.
+func (o LookupBackendServiceResultOutput) HealthChecks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) []string { return v.HealthChecks }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupBackendServiceResultOutput) Iaps() GetBackendServiceIapArrayOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) []GetBackendServiceIap { return v.Iaps }).(GetBackendServiceIapArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupBackendServiceResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupBackendServiceResultOutput) LoadBalancingScheme() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) string { return v.LoadBalancingScheme }).(pulumi.StringOutput)
+}
+
+func (o LookupBackendServiceResultOutput) LocalityLbPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) string { return v.LocalityLbPolicy }).(pulumi.StringOutput)
+}
+
+func (o LookupBackendServiceResultOutput) LogConfigs() GetBackendServiceLogConfigArrayOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) []GetBackendServiceLogConfig { return v.LogConfigs }).(GetBackendServiceLogConfigArrayOutput)
+}
+
+func (o LookupBackendServiceResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupBackendServiceResultOutput) OutlierDetections() GetBackendServiceOutlierDetectionArrayOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) []GetBackendServiceOutlierDetection { return v.OutlierDetections }).(GetBackendServiceOutlierDetectionArrayOutput)
+}
+
+// The name of a service that has been added to an instance group in this backend.
+func (o LookupBackendServiceResultOutput) PortName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) string { return v.PortName }).(pulumi.StringOutput)
+}
+
+func (o LookupBackendServiceResultOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+// The protocol for incoming requests.
+func (o LookupBackendServiceResultOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+func (o LookupBackendServiceResultOutput) SecurityPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) string { return v.SecurityPolicy }).(pulumi.StringOutput)
+}
+
+func (o LookupBackendServiceResultOutput) SecuritySettings() GetBackendServiceSecuritySettingArrayOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) []GetBackendServiceSecuritySetting { return v.SecuritySettings }).(GetBackendServiceSecuritySettingArrayOutput)
+}
+
+// The URI of the Backend Service.
+func (o LookupBackendServiceResultOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// The Backend Service session stickiness configuration.
+func (o LookupBackendServiceResultOutput) SessionAffinity() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) string { return v.SessionAffinity }).(pulumi.StringOutput)
+}
+
+// The number of seconds to wait for a backend to respond to a request before considering the request failed.
+func (o LookupBackendServiceResultOutput) TimeoutSec() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) int { return v.TimeoutSec }).(pulumi.IntOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupBackendServiceResultOutput{})
 }

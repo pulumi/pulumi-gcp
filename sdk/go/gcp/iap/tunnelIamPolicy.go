@@ -392,7 +392,7 @@ type TunnelIamPolicyArrayInput interface {
 type TunnelIamPolicyArray []TunnelIamPolicyInput
 
 func (TunnelIamPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TunnelIamPolicy)(nil))
+	return reflect.TypeOf((*[]*TunnelIamPolicy)(nil)).Elem()
 }
 
 func (i TunnelIamPolicyArray) ToTunnelIamPolicyArrayOutput() TunnelIamPolicyArrayOutput {
@@ -417,7 +417,7 @@ type TunnelIamPolicyMapInput interface {
 type TunnelIamPolicyMap map[string]TunnelIamPolicyInput
 
 func (TunnelIamPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TunnelIamPolicy)(nil))
+	return reflect.TypeOf((*map[string]*TunnelIamPolicy)(nil)).Elem()
 }
 
 func (i TunnelIamPolicyMap) ToTunnelIamPolicyMapOutput() TunnelIamPolicyMapOutput {
@@ -428,9 +428,7 @@ func (i TunnelIamPolicyMap) ToTunnelIamPolicyMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(TunnelIamPolicyMapOutput)
 }
 
-type TunnelIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type TunnelIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (TunnelIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TunnelIamPolicy)(nil))
@@ -449,14 +447,12 @@ func (o TunnelIamPolicyOutput) ToTunnelIamPolicyPtrOutput() TunnelIamPolicyPtrOu
 }
 
 func (o TunnelIamPolicyOutput) ToTunnelIamPolicyPtrOutputWithContext(ctx context.Context) TunnelIamPolicyPtrOutput {
-	return o.ApplyT(func(v TunnelIamPolicy) *TunnelIamPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TunnelIamPolicy) *TunnelIamPolicy {
 		return &v
 	}).(TunnelIamPolicyPtrOutput)
 }
 
-type TunnelIamPolicyPtrOutput struct {
-	*pulumi.OutputState
-}
+type TunnelIamPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (TunnelIamPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TunnelIamPolicy)(nil))
@@ -468,6 +464,16 @@ func (o TunnelIamPolicyPtrOutput) ToTunnelIamPolicyPtrOutput() TunnelIamPolicyPt
 
 func (o TunnelIamPolicyPtrOutput) ToTunnelIamPolicyPtrOutputWithContext(ctx context.Context) TunnelIamPolicyPtrOutput {
 	return o
+}
+
+func (o TunnelIamPolicyPtrOutput) Elem() TunnelIamPolicyOutput {
+	return o.ApplyT(func(v *TunnelIamPolicy) TunnelIamPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret TunnelIamPolicy
+		return ret
+	}).(TunnelIamPolicyOutput)
 }
 
 type TunnelIamPolicyArrayOutput struct{ *pulumi.OutputState }

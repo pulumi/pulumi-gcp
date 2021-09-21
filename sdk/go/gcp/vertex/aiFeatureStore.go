@@ -239,7 +239,7 @@ type AiFeatureStoreArrayInput interface {
 type AiFeatureStoreArray []AiFeatureStoreInput
 
 func (AiFeatureStoreArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AiFeatureStore)(nil))
+	return reflect.TypeOf((*[]*AiFeatureStore)(nil)).Elem()
 }
 
 func (i AiFeatureStoreArray) ToAiFeatureStoreArrayOutput() AiFeatureStoreArrayOutput {
@@ -264,7 +264,7 @@ type AiFeatureStoreMapInput interface {
 type AiFeatureStoreMap map[string]AiFeatureStoreInput
 
 func (AiFeatureStoreMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AiFeatureStore)(nil))
+	return reflect.TypeOf((*map[string]*AiFeatureStore)(nil)).Elem()
 }
 
 func (i AiFeatureStoreMap) ToAiFeatureStoreMapOutput() AiFeatureStoreMapOutput {
@@ -275,9 +275,7 @@ func (i AiFeatureStoreMap) ToAiFeatureStoreMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreMapOutput)
 }
 
-type AiFeatureStoreOutput struct {
-	*pulumi.OutputState
-}
+type AiFeatureStoreOutput struct{ *pulumi.OutputState }
 
 func (AiFeatureStoreOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AiFeatureStore)(nil))
@@ -296,14 +294,12 @@ func (o AiFeatureStoreOutput) ToAiFeatureStorePtrOutput() AiFeatureStorePtrOutpu
 }
 
 func (o AiFeatureStoreOutput) ToAiFeatureStorePtrOutputWithContext(ctx context.Context) AiFeatureStorePtrOutput {
-	return o.ApplyT(func(v AiFeatureStore) *AiFeatureStore {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureStore) *AiFeatureStore {
 		return &v
 	}).(AiFeatureStorePtrOutput)
 }
 
-type AiFeatureStorePtrOutput struct {
-	*pulumi.OutputState
-}
+type AiFeatureStorePtrOutput struct{ *pulumi.OutputState }
 
 func (AiFeatureStorePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AiFeatureStore)(nil))
@@ -315,6 +311,16 @@ func (o AiFeatureStorePtrOutput) ToAiFeatureStorePtrOutput() AiFeatureStorePtrOu
 
 func (o AiFeatureStorePtrOutput) ToAiFeatureStorePtrOutputWithContext(ctx context.Context) AiFeatureStorePtrOutput {
 	return o
+}
+
+func (o AiFeatureStorePtrOutput) Elem() AiFeatureStoreOutput {
+	return o.ApplyT(func(v *AiFeatureStore) AiFeatureStore {
+		if v != nil {
+			return *v
+		}
+		var ret AiFeatureStore
+		return ret
+	}).(AiFeatureStoreOutput)
 }
 
 type AiFeatureStoreArrayOutput struct{ *pulumi.OutputState }

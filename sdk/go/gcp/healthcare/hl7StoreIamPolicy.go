@@ -304,7 +304,7 @@ type Hl7StoreIamPolicyArrayInput interface {
 type Hl7StoreIamPolicyArray []Hl7StoreIamPolicyInput
 
 func (Hl7StoreIamPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Hl7StoreIamPolicy)(nil))
+	return reflect.TypeOf((*[]*Hl7StoreIamPolicy)(nil)).Elem()
 }
 
 func (i Hl7StoreIamPolicyArray) ToHl7StoreIamPolicyArrayOutput() Hl7StoreIamPolicyArrayOutput {
@@ -329,7 +329,7 @@ type Hl7StoreIamPolicyMapInput interface {
 type Hl7StoreIamPolicyMap map[string]Hl7StoreIamPolicyInput
 
 func (Hl7StoreIamPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Hl7StoreIamPolicy)(nil))
+	return reflect.TypeOf((*map[string]*Hl7StoreIamPolicy)(nil)).Elem()
 }
 
 func (i Hl7StoreIamPolicyMap) ToHl7StoreIamPolicyMapOutput() Hl7StoreIamPolicyMapOutput {
@@ -340,9 +340,7 @@ func (i Hl7StoreIamPolicyMap) ToHl7StoreIamPolicyMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreIamPolicyMapOutput)
 }
 
-type Hl7StoreIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type Hl7StoreIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (Hl7StoreIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Hl7StoreIamPolicy)(nil))
@@ -361,14 +359,12 @@ func (o Hl7StoreIamPolicyOutput) ToHl7StoreIamPolicyPtrOutput() Hl7StoreIamPolic
 }
 
 func (o Hl7StoreIamPolicyOutput) ToHl7StoreIamPolicyPtrOutputWithContext(ctx context.Context) Hl7StoreIamPolicyPtrOutput {
-	return o.ApplyT(func(v Hl7StoreIamPolicy) *Hl7StoreIamPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Hl7StoreIamPolicy) *Hl7StoreIamPolicy {
 		return &v
 	}).(Hl7StoreIamPolicyPtrOutput)
 }
 
-type Hl7StoreIamPolicyPtrOutput struct {
-	*pulumi.OutputState
-}
+type Hl7StoreIamPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (Hl7StoreIamPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Hl7StoreIamPolicy)(nil))
@@ -380,6 +376,16 @@ func (o Hl7StoreIamPolicyPtrOutput) ToHl7StoreIamPolicyPtrOutput() Hl7StoreIamPo
 
 func (o Hl7StoreIamPolicyPtrOutput) ToHl7StoreIamPolicyPtrOutputWithContext(ctx context.Context) Hl7StoreIamPolicyPtrOutput {
 	return o
+}
+
+func (o Hl7StoreIamPolicyPtrOutput) Elem() Hl7StoreIamPolicyOutput {
+	return o.ApplyT(func(v *Hl7StoreIamPolicy) Hl7StoreIamPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret Hl7StoreIamPolicy
+		return ret
+	}).(Hl7StoreIamPolicyOutput)
 }
 
 type Hl7StoreIamPolicyArrayOutput struct{ *pulumi.OutputState }

@@ -352,12 +352,12 @@ class Router(pulumi.CustomResource):
                 advertise_mode="CUSTOM",
                 advertised_groups=["ALL_SUBNETS"],
                 advertised_ip_ranges=[
-                    {
-                        "range": "1.2.3.4",
-                    },
-                    {
-                        "range": "6.7.0.0/16",
-                    },
+                    gcp.compute.RouterBgpAdvertisedIpRangeArgs(
+                        range="1.2.3.4",
+                    ),
+                    gcp.compute.RouterBgpAdvertisedIpRangeArgs(
+                        range="6.7.0.0/16",
+                    ),
                 ],
             ))
         ```
@@ -444,12 +444,12 @@ class Router(pulumi.CustomResource):
                 advertise_mode="CUSTOM",
                 advertised_groups=["ALL_SUBNETS"],
                 advertised_ip_ranges=[
-                    {
-                        "range": "1.2.3.4",
-                    },
-                    {
-                        "range": "6.7.0.0/16",
-                    },
+                    gcp.compute.RouterBgpAdvertisedIpRangeArgs(
+                        range="1.2.3.4",
+                    ),
+                    gcp.compute.RouterBgpAdvertisedIpRangeArgs(
+                        range="6.7.0.0/16",
+                    ),
                 ],
             ))
         ```

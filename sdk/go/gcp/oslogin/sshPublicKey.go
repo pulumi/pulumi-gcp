@@ -200,7 +200,7 @@ type SshPublicKeyArrayInput interface {
 type SshPublicKeyArray []SshPublicKeyInput
 
 func (SshPublicKeyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*SshPublicKey)(nil))
+	return reflect.TypeOf((*[]*SshPublicKey)(nil)).Elem()
 }
 
 func (i SshPublicKeyArray) ToSshPublicKeyArrayOutput() SshPublicKeyArrayOutput {
@@ -225,7 +225,7 @@ type SshPublicKeyMapInput interface {
 type SshPublicKeyMap map[string]SshPublicKeyInput
 
 func (SshPublicKeyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*SshPublicKey)(nil))
+	return reflect.TypeOf((*map[string]*SshPublicKey)(nil)).Elem()
 }
 
 func (i SshPublicKeyMap) ToSshPublicKeyMapOutput() SshPublicKeyMapOutput {
@@ -236,9 +236,7 @@ func (i SshPublicKeyMap) ToSshPublicKeyMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(SshPublicKeyMapOutput)
 }
 
-type SshPublicKeyOutput struct {
-	*pulumi.OutputState
-}
+type SshPublicKeyOutput struct{ *pulumi.OutputState }
 
 func (SshPublicKeyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SshPublicKey)(nil))
@@ -257,14 +255,12 @@ func (o SshPublicKeyOutput) ToSshPublicKeyPtrOutput() SshPublicKeyPtrOutput {
 }
 
 func (o SshPublicKeyOutput) ToSshPublicKeyPtrOutputWithContext(ctx context.Context) SshPublicKeyPtrOutput {
-	return o.ApplyT(func(v SshPublicKey) *SshPublicKey {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SshPublicKey) *SshPublicKey {
 		return &v
 	}).(SshPublicKeyPtrOutput)
 }
 
-type SshPublicKeyPtrOutput struct {
-	*pulumi.OutputState
-}
+type SshPublicKeyPtrOutput struct{ *pulumi.OutputState }
 
 func (SshPublicKeyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SshPublicKey)(nil))
@@ -276,6 +272,16 @@ func (o SshPublicKeyPtrOutput) ToSshPublicKeyPtrOutput() SshPublicKeyPtrOutput {
 
 func (o SshPublicKeyPtrOutput) ToSshPublicKeyPtrOutputWithContext(ctx context.Context) SshPublicKeyPtrOutput {
 	return o
+}
+
+func (o SshPublicKeyPtrOutput) Elem() SshPublicKeyOutput {
+	return o.ApplyT(func(v *SshPublicKey) SshPublicKey {
+		if v != nil {
+			return *v
+		}
+		var ret SshPublicKey
+		return ret
+	}).(SshPublicKeyOutput)
 }
 
 type SshPublicKeyArrayOutput struct{ *pulumi.OutputState }

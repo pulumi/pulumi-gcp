@@ -344,7 +344,7 @@ type CertificateTemplateArrayInput interface {
 type CertificateTemplateArray []CertificateTemplateInput
 
 func (CertificateTemplateArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*CertificateTemplate)(nil))
+	return reflect.TypeOf((*[]*CertificateTemplate)(nil)).Elem()
 }
 
 func (i CertificateTemplateArray) ToCertificateTemplateArrayOutput() CertificateTemplateArrayOutput {
@@ -369,7 +369,7 @@ type CertificateTemplateMapInput interface {
 type CertificateTemplateMap map[string]CertificateTemplateInput
 
 func (CertificateTemplateMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*CertificateTemplate)(nil))
+	return reflect.TypeOf((*map[string]*CertificateTemplate)(nil)).Elem()
 }
 
 func (i CertificateTemplateMap) ToCertificateTemplateMapOutput() CertificateTemplateMapOutput {
@@ -380,9 +380,7 @@ func (i CertificateTemplateMap) ToCertificateTemplateMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplateMapOutput)
 }
 
-type CertificateTemplateOutput struct {
-	*pulumi.OutputState
-}
+type CertificateTemplateOutput struct{ *pulumi.OutputState }
 
 func (CertificateTemplateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CertificateTemplate)(nil))
@@ -401,14 +399,12 @@ func (o CertificateTemplateOutput) ToCertificateTemplatePtrOutput() CertificateT
 }
 
 func (o CertificateTemplateOutput) ToCertificateTemplatePtrOutputWithContext(ctx context.Context) CertificateTemplatePtrOutput {
-	return o.ApplyT(func(v CertificateTemplate) *CertificateTemplate {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateTemplate) *CertificateTemplate {
 		return &v
 	}).(CertificateTemplatePtrOutput)
 }
 
-type CertificateTemplatePtrOutput struct {
-	*pulumi.OutputState
-}
+type CertificateTemplatePtrOutput struct{ *pulumi.OutputState }
 
 func (CertificateTemplatePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**CertificateTemplate)(nil))
@@ -420,6 +416,16 @@ func (o CertificateTemplatePtrOutput) ToCertificateTemplatePtrOutput() Certifica
 
 func (o CertificateTemplatePtrOutput) ToCertificateTemplatePtrOutputWithContext(ctx context.Context) CertificateTemplatePtrOutput {
 	return o
+}
+
+func (o CertificateTemplatePtrOutput) Elem() CertificateTemplateOutput {
+	return o.ApplyT(func(v *CertificateTemplate) CertificateTemplate {
+		if v != nil {
+			return *v
+		}
+		var ret CertificateTemplate
+		return ret
+	}).(CertificateTemplateOutput)
 }
 
 type CertificateTemplateArrayOutput struct{ *pulumi.OutputState }

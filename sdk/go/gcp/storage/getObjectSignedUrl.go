@@ -4,6 +4,9 @@
 package storage
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -87,4 +90,103 @@ type GetObjectSignedUrlResult struct {
 	Path string `pulumi:"path"`
 	// The signed URL that can be used to access the storage object without authentication.
 	SignedUrl string `pulumi:"signedUrl"`
+}
+
+func GetObjectSignedUrlOutput(ctx *pulumi.Context, args GetObjectSignedUrlOutputArgs, opts ...pulumi.InvokeOption) GetObjectSignedUrlResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetObjectSignedUrlResult, error) {
+			args := v.(GetObjectSignedUrlArgs)
+			r, err := GetObjectSignedUrl(ctx, &args, opts...)
+			return *r, err
+		}).(GetObjectSignedUrlResultOutput)
+}
+
+// A collection of arguments for invoking getObjectSignedUrl.
+type GetObjectSignedUrlOutputArgs struct {
+	// The name of the bucket to read the object from
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// The [MD5 digest](https://cloud.google.com/storage/docs/hashes-etags#_MD5) value in Base64.
+	// Typically retrieved from `google_storage_bucket_object.object.md5hash` attribute.
+	// If you provide this in the datasource, the client (e.g. browser, curl) must provide the `Content-MD5` HTTP header with this same value in its request.
+	ContentMd5 pulumi.StringPtrInput `pulumi:"contentMd5"`
+	// If you specify this in the datasource, the client must provide the `Content-Type` HTTP header with the same value in its request.
+	ContentType pulumi.StringPtrInput `pulumi:"contentType"`
+	// What Google service account credentials json should be used to sign the URL.
+	// This data source checks the following locations for credentials, in order of preference: data source `credentials` attribute, provider `credentials` attribute and finally the GOOGLE_APPLICATION_CREDENTIALS environment variable.
+	Credentials pulumi.StringPtrInput `pulumi:"credentials"`
+	// For how long shall the signed URL be valid (defaults to 1 hour - i.e. `1h`).
+	// See [here](https://golang.org/pkg/time/#ParseDuration) for info on valid duration formats.
+	Duration pulumi.StringPtrInput `pulumi:"duration"`
+	// As needed. The server checks to make sure that the client provides matching values in requests using the signed URL.
+	// Any header starting with `x-goog-` is accepted but see the [Google Docs](https://cloud.google.com/storage/docs/xml-api/reference-headers) for list of headers that are supported by Google.
+	ExtensionHeaders pulumi.StringMapInput `pulumi:"extensionHeaders"`
+	// What HTTP Method will the signed URL allow (defaults to `GET`)
+	HttpMethod pulumi.StringPtrInput `pulumi:"httpMethod"`
+	// The full path to the object inside the bucket
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (GetObjectSignedUrlOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetObjectSignedUrlArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getObjectSignedUrl.
+type GetObjectSignedUrlResultOutput struct{ *pulumi.OutputState }
+
+func (GetObjectSignedUrlResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetObjectSignedUrlResult)(nil)).Elem()
+}
+
+func (o GetObjectSignedUrlResultOutput) ToGetObjectSignedUrlResultOutput() GetObjectSignedUrlResultOutput {
+	return o
+}
+
+func (o GetObjectSignedUrlResultOutput) ToGetObjectSignedUrlResultOutputWithContext(ctx context.Context) GetObjectSignedUrlResultOutput {
+	return o
+}
+
+func (o GetObjectSignedUrlResultOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GetObjectSignedUrlResult) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+func (o GetObjectSignedUrlResultOutput) ContentMd5() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetObjectSignedUrlResult) *string { return v.ContentMd5 }).(pulumi.StringPtrOutput)
+}
+
+func (o GetObjectSignedUrlResultOutput) ContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetObjectSignedUrlResult) *string { return v.ContentType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetObjectSignedUrlResultOutput) Credentials() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetObjectSignedUrlResult) *string { return v.Credentials }).(pulumi.StringPtrOutput)
+}
+
+func (o GetObjectSignedUrlResultOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetObjectSignedUrlResult) *string { return v.Duration }).(pulumi.StringPtrOutput)
+}
+
+func (o GetObjectSignedUrlResultOutput) ExtensionHeaders() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetObjectSignedUrlResult) map[string]string { return v.ExtensionHeaders }).(pulumi.StringMapOutput)
+}
+
+func (o GetObjectSignedUrlResultOutput) HttpMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetObjectSignedUrlResult) *string { return v.HttpMethod }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetObjectSignedUrlResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetObjectSignedUrlResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetObjectSignedUrlResultOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetObjectSignedUrlResult) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// The signed URL that can be used to access the storage object without authentication.
+func (o GetObjectSignedUrlResultOutput) SignedUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetObjectSignedUrlResult) string { return v.SignedUrl }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetObjectSignedUrlResultOutput{})
 }

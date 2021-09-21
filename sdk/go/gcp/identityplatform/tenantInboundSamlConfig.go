@@ -262,7 +262,7 @@ type TenantInboundSamlConfigArrayInput interface {
 type TenantInboundSamlConfigArray []TenantInboundSamlConfigInput
 
 func (TenantInboundSamlConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TenantInboundSamlConfig)(nil))
+	return reflect.TypeOf((*[]*TenantInboundSamlConfig)(nil)).Elem()
 }
 
 func (i TenantInboundSamlConfigArray) ToTenantInboundSamlConfigArrayOutput() TenantInboundSamlConfigArrayOutput {
@@ -287,7 +287,7 @@ type TenantInboundSamlConfigMapInput interface {
 type TenantInboundSamlConfigMap map[string]TenantInboundSamlConfigInput
 
 func (TenantInboundSamlConfigMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TenantInboundSamlConfig)(nil))
+	return reflect.TypeOf((*map[string]*TenantInboundSamlConfig)(nil)).Elem()
 }
 
 func (i TenantInboundSamlConfigMap) ToTenantInboundSamlConfigMapOutput() TenantInboundSamlConfigMapOutput {
@@ -298,9 +298,7 @@ func (i TenantInboundSamlConfigMap) ToTenantInboundSamlConfigMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(TenantInboundSamlConfigMapOutput)
 }
 
-type TenantInboundSamlConfigOutput struct {
-	*pulumi.OutputState
-}
+type TenantInboundSamlConfigOutput struct{ *pulumi.OutputState }
 
 func (TenantInboundSamlConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TenantInboundSamlConfig)(nil))
@@ -319,14 +317,12 @@ func (o TenantInboundSamlConfigOutput) ToTenantInboundSamlConfigPtrOutput() Tena
 }
 
 func (o TenantInboundSamlConfigOutput) ToTenantInboundSamlConfigPtrOutputWithContext(ctx context.Context) TenantInboundSamlConfigPtrOutput {
-	return o.ApplyT(func(v TenantInboundSamlConfig) *TenantInboundSamlConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TenantInboundSamlConfig) *TenantInboundSamlConfig {
 		return &v
 	}).(TenantInboundSamlConfigPtrOutput)
 }
 
-type TenantInboundSamlConfigPtrOutput struct {
-	*pulumi.OutputState
-}
+type TenantInboundSamlConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (TenantInboundSamlConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TenantInboundSamlConfig)(nil))
@@ -338,6 +334,16 @@ func (o TenantInboundSamlConfigPtrOutput) ToTenantInboundSamlConfigPtrOutput() T
 
 func (o TenantInboundSamlConfigPtrOutput) ToTenantInboundSamlConfigPtrOutputWithContext(ctx context.Context) TenantInboundSamlConfigPtrOutput {
 	return o
+}
+
+func (o TenantInboundSamlConfigPtrOutput) Elem() TenantInboundSamlConfigOutput {
+	return o.ApplyT(func(v *TenantInboundSamlConfig) TenantInboundSamlConfig {
+		if v != nil {
+			return *v
+		}
+		var ret TenantInboundSamlConfig
+		return ret
+	}).(TenantInboundSamlConfigOutput)
 }
 
 type TenantInboundSamlConfigArrayOutput struct{ *pulumi.OutputState }

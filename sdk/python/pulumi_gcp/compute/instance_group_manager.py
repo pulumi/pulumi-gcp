@@ -704,9 +704,9 @@ class InstanceGroupManager(pulumi.CustomResource):
                 gcp.compute.InstanceGroupManagerVersionArgs(
                     name="appserver-canary",
                     instance_template=google_compute_instance_template["appserver-canary"]["id"],
-                    target_size={
-                        "fixed": 1,
-                    },
+                    target_size=gcp.compute.InstanceGroupManagerVersionTargetSizeArgs(
+                        fixed=1,
+                    ),
                 ),
             ],
             opts=pulumi.ResourceOptions(provider=google_beta))
@@ -832,9 +832,9 @@ class InstanceGroupManager(pulumi.CustomResource):
                 gcp.compute.InstanceGroupManagerVersionArgs(
                     name="appserver-canary",
                     instance_template=google_compute_instance_template["appserver-canary"]["id"],
-                    target_size={
-                        "fixed": 1,
-                    },
+                    target_size=gcp.compute.InstanceGroupManagerVersionTargetSizeArgs(
+                        fixed=1,
+                    ),
                 ),
             ],
             opts=pulumi.ResourceOptions(provider=google_beta))

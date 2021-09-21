@@ -103,10 +103,11 @@ func (o ConnectorSubnetOutput) ToConnectorSubnetPtrOutput() ConnectorSubnetPtrOu
 }
 
 func (o ConnectorSubnetOutput) ToConnectorSubnetPtrOutputWithContext(ctx context.Context) ConnectorSubnetPtrOutput {
-	return o.ApplyT(func(v ConnectorSubnet) *ConnectorSubnet {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectorSubnet) *ConnectorSubnet {
 		return &v
 	}).(ConnectorSubnetPtrOutput)
 }
+
 func (o ConnectorSubnetOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorSubnet) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -130,7 +131,13 @@ func (o ConnectorSubnetPtrOutput) ToConnectorSubnetPtrOutputWithContext(ctx cont
 }
 
 func (o ConnectorSubnetPtrOutput) Elem() ConnectorSubnetOutput {
-	return o.ApplyT(func(v *ConnectorSubnet) ConnectorSubnet { return *v }).(ConnectorSubnetOutput)
+	return o.ApplyT(func(v *ConnectorSubnet) ConnectorSubnet {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectorSubnet
+		return ret
+	}).(ConnectorSubnetOutput)
 }
 
 func (o ConnectorSubnetPtrOutput) Name() pulumi.StringPtrOutput {

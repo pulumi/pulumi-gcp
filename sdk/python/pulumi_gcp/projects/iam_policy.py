@@ -17,7 +17,7 @@ class IAMPolicyArgs:
                  project: pulumi.Input[str]):
         """
         The set of arguments for constructing a IAMPolicy resource.
-        :param pulumi.Input[str] policy_data: The `organizations.getIAMPolicy` data source that represents
+        :param pulumi.Input[str] policy_data: The `organizations.get_iam_policy` data source that represents
                the IAM policy that will be applied to the project. The policy will be
                merged with any existing policy applied to the project.
         :param pulumi.Input[str] project: The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
@@ -31,7 +31,7 @@ class IAMPolicyArgs:
     @pulumi.getter(name="policyData")
     def policy_data(self) -> pulumi.Input[str]:
         """
-        The `organizations.getIAMPolicy` data source that represents
+        The `organizations.get_iam_policy` data source that represents
         the IAM policy that will be applied to the project. The policy will be
         merged with any existing policy applied to the project.
         """
@@ -65,7 +65,7 @@ class _IAMPolicyState:
         """
         Input properties used for looking up and filtering IAMPolicy resources.
         :param pulumi.Input[str] etag: (Computed) The etag of the project's IAM policy.
-        :param pulumi.Input[str] policy_data: The `organizations.getIAMPolicy` data source that represents
+        :param pulumi.Input[str] policy_data: The `organizations.get_iam_policy` data source that represents
                the IAM policy that will be applied to the project. The policy will be
                merged with any existing policy applied to the project.
         :param pulumi.Input[str] project: The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
@@ -95,7 +95,7 @@ class _IAMPolicyState:
     @pulumi.getter(name="policyData")
     def policy_data(self) -> Optional[pulumi.Input[str]]:
         """
-        The `organizations.getIAMPolicy` data source that represents
+        The `organizations.get_iam_policy` data source that represents
         the IAM policy that will be applied to the project. The policy will be
         merged with any existing policy applied to the project.
         """
@@ -302,7 +302,7 @@ class IAMPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] policy_data: The `organizations.getIAMPolicy` data source that represents
+        :param pulumi.Input[str] policy_data: The `organizations.get_iam_policy` data source that represents
                the IAM policy that will be applied to the project. The policy will be
                merged with any existing policy applied to the project.
         :param pulumi.Input[str] project: The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
@@ -544,7 +544,7 @@ class IAMPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] etag: (Computed) The etag of the project's IAM policy.
-        :param pulumi.Input[str] policy_data: The `organizations.getIAMPolicy` data source that represents
+        :param pulumi.Input[str] policy_data: The `organizations.get_iam_policy` data source that represents
                the IAM policy that will be applied to the project. The policy will be
                merged with any existing policy applied to the project.
         :param pulumi.Input[str] project: The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
@@ -572,7 +572,7 @@ class IAMPolicy(pulumi.CustomResource):
     @pulumi.getter(name="policyData")
     def policy_data(self) -> pulumi.Output[str]:
         """
-        The `organizations.getIAMPolicy` data source that represents
+        The `organizations.get_iam_policy` data source that represents
         the IAM policy that will be applied to the project. The policy will be
         merged with any existing policy applied to the project.
         """

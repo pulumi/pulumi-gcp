@@ -137,7 +137,7 @@ func (o JobAppEngineHttpTargetOutput) ToJobAppEngineHttpTargetPtrOutput() JobApp
 }
 
 func (o JobAppEngineHttpTargetOutput) ToJobAppEngineHttpTargetPtrOutputWithContext(ctx context.Context) JobAppEngineHttpTargetPtrOutput {
-	return o.ApplyT(func(v JobAppEngineHttpTarget) *JobAppEngineHttpTarget {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobAppEngineHttpTarget) *JobAppEngineHttpTarget {
 		return &v
 	}).(JobAppEngineHttpTargetPtrOutput)
 }
@@ -191,7 +191,13 @@ func (o JobAppEngineHttpTargetPtrOutput) ToJobAppEngineHttpTargetPtrOutputWithCo
 }
 
 func (o JobAppEngineHttpTargetPtrOutput) Elem() JobAppEngineHttpTargetOutput {
-	return o.ApplyT(func(v *JobAppEngineHttpTarget) JobAppEngineHttpTarget { return *v }).(JobAppEngineHttpTargetOutput)
+	return o.ApplyT(func(v *JobAppEngineHttpTarget) JobAppEngineHttpTarget {
+		if v != nil {
+			return *v
+		}
+		var ret JobAppEngineHttpTarget
+		return ret
+	}).(JobAppEngineHttpTargetOutput)
 }
 
 // App Engine Routing setting for the job.
@@ -360,7 +366,7 @@ func (o JobAppEngineHttpTargetAppEngineRoutingOutput) ToJobAppEngineHttpTargetAp
 }
 
 func (o JobAppEngineHttpTargetAppEngineRoutingOutput) ToJobAppEngineHttpTargetAppEngineRoutingPtrOutputWithContext(ctx context.Context) JobAppEngineHttpTargetAppEngineRoutingPtrOutput {
-	return o.ApplyT(func(v JobAppEngineHttpTargetAppEngineRouting) *JobAppEngineHttpTargetAppEngineRouting {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobAppEngineHttpTargetAppEngineRouting) *JobAppEngineHttpTargetAppEngineRouting {
 		return &v
 	}).(JobAppEngineHttpTargetAppEngineRoutingPtrOutput)
 }
@@ -398,7 +404,13 @@ func (o JobAppEngineHttpTargetAppEngineRoutingPtrOutput) ToJobAppEngineHttpTarge
 }
 
 func (o JobAppEngineHttpTargetAppEngineRoutingPtrOutput) Elem() JobAppEngineHttpTargetAppEngineRoutingOutput {
-	return o.ApplyT(func(v *JobAppEngineHttpTargetAppEngineRouting) JobAppEngineHttpTargetAppEngineRouting { return *v }).(JobAppEngineHttpTargetAppEngineRoutingOutput)
+	return o.ApplyT(func(v *JobAppEngineHttpTargetAppEngineRouting) JobAppEngineHttpTargetAppEngineRouting {
+		if v != nil {
+			return *v
+		}
+		var ret JobAppEngineHttpTargetAppEngineRouting
+		return ret
+	}).(JobAppEngineHttpTargetAppEngineRoutingOutput)
 }
 
 // App instance.
@@ -563,7 +575,7 @@ func (o JobHttpTargetOutput) ToJobHttpTargetPtrOutput() JobHttpTargetPtrOutput {
 }
 
 func (o JobHttpTargetOutput) ToJobHttpTargetPtrOutputWithContext(ctx context.Context) JobHttpTargetPtrOutput {
-	return o.ApplyT(func(v JobHttpTarget) *JobHttpTarget {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobHttpTarget) *JobHttpTarget {
 		return &v
 	}).(JobHttpTargetPtrOutput)
 }
@@ -621,7 +633,13 @@ func (o JobHttpTargetPtrOutput) ToJobHttpTargetPtrOutputWithContext(ctx context.
 }
 
 func (o JobHttpTargetPtrOutput) Elem() JobHttpTargetOutput {
-	return o.ApplyT(func(v *JobHttpTarget) JobHttpTarget { return *v }).(JobHttpTargetOutput)
+	return o.ApplyT(func(v *JobHttpTarget) JobHttpTarget {
+		if v != nil {
+			return *v
+		}
+		var ret JobHttpTarget
+		return ret
+	}).(JobHttpTargetOutput)
 }
 
 // HTTP request body.
@@ -793,7 +811,7 @@ func (o JobHttpTargetOauthTokenOutput) ToJobHttpTargetOauthTokenPtrOutput() JobH
 }
 
 func (o JobHttpTargetOauthTokenOutput) ToJobHttpTargetOauthTokenPtrOutputWithContext(ctx context.Context) JobHttpTargetOauthTokenPtrOutput {
-	return o.ApplyT(func(v JobHttpTargetOauthToken) *JobHttpTargetOauthToken {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobHttpTargetOauthToken) *JobHttpTargetOauthToken {
 		return &v
 	}).(JobHttpTargetOauthTokenPtrOutput)
 }
@@ -825,7 +843,13 @@ func (o JobHttpTargetOauthTokenPtrOutput) ToJobHttpTargetOauthTokenPtrOutputWith
 }
 
 func (o JobHttpTargetOauthTokenPtrOutput) Elem() JobHttpTargetOauthTokenOutput {
-	return o.ApplyT(func(v *JobHttpTargetOauthToken) JobHttpTargetOauthToken { return *v }).(JobHttpTargetOauthTokenOutput)
+	return o.ApplyT(func(v *JobHttpTargetOauthToken) JobHttpTargetOauthToken {
+		if v != nil {
+			return *v
+		}
+		var ret JobHttpTargetOauthToken
+		return ret
+	}).(JobHttpTargetOauthTokenOutput)
 }
 
 // OAuth scope to be used for generating OAuth access token. If not specified,
@@ -951,7 +975,7 @@ func (o JobHttpTargetOidcTokenOutput) ToJobHttpTargetOidcTokenPtrOutput() JobHtt
 }
 
 func (o JobHttpTargetOidcTokenOutput) ToJobHttpTargetOidcTokenPtrOutputWithContext(ctx context.Context) JobHttpTargetOidcTokenPtrOutput {
-	return o.ApplyT(func(v JobHttpTargetOidcToken) *JobHttpTargetOidcToken {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobHttpTargetOidcToken) *JobHttpTargetOidcToken {
 		return &v
 	}).(JobHttpTargetOidcTokenPtrOutput)
 }
@@ -983,7 +1007,13 @@ func (o JobHttpTargetOidcTokenPtrOutput) ToJobHttpTargetOidcTokenPtrOutputWithCo
 }
 
 func (o JobHttpTargetOidcTokenPtrOutput) Elem() JobHttpTargetOidcTokenOutput {
-	return o.ApplyT(func(v *JobHttpTargetOidcToken) JobHttpTargetOidcToken { return *v }).(JobHttpTargetOidcTokenOutput)
+	return o.ApplyT(func(v *JobHttpTargetOidcToken) JobHttpTargetOidcToken {
+		if v != nil {
+			return *v
+		}
+		var ret JobHttpTargetOidcToken
+		return ret
+	}).(JobHttpTargetOidcTokenOutput)
 }
 
 // Audience to be used when generating OIDC token. If not specified,
@@ -1121,7 +1151,7 @@ func (o JobPubsubTargetOutput) ToJobPubsubTargetPtrOutput() JobPubsubTargetPtrOu
 }
 
 func (o JobPubsubTargetOutput) ToJobPubsubTargetPtrOutputWithContext(ctx context.Context) JobPubsubTargetPtrOutput {
-	return o.ApplyT(func(v JobPubsubTarget) *JobPubsubTarget {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobPubsubTarget) *JobPubsubTarget {
 		return &v
 	}).(JobPubsubTargetPtrOutput)
 }
@@ -1162,7 +1192,13 @@ func (o JobPubsubTargetPtrOutput) ToJobPubsubTargetPtrOutputWithContext(ctx cont
 }
 
 func (o JobPubsubTargetPtrOutput) Elem() JobPubsubTargetOutput {
-	return o.ApplyT(func(v *JobPubsubTarget) JobPubsubTarget { return *v }).(JobPubsubTargetOutput)
+	return o.ApplyT(func(v *JobPubsubTarget) JobPubsubTarget {
+		if v != nil {
+			return *v
+		}
+		var ret JobPubsubTarget
+		return ret
+	}).(JobPubsubTargetOutput)
 }
 
 // Attributes for PubsubMessage.
@@ -1328,7 +1364,7 @@ func (o JobRetryConfigOutput) ToJobRetryConfigPtrOutput() JobRetryConfigPtrOutpu
 }
 
 func (o JobRetryConfigOutput) ToJobRetryConfigPtrOutputWithContext(ctx context.Context) JobRetryConfigPtrOutput {
-	return o.ApplyT(func(v JobRetryConfig) *JobRetryConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobRetryConfig) *JobRetryConfig {
 		return &v
 	}).(JobRetryConfigPtrOutput)
 }
@@ -1382,7 +1418,13 @@ func (o JobRetryConfigPtrOutput) ToJobRetryConfigPtrOutputWithContext(ctx contex
 }
 
 func (o JobRetryConfigPtrOutput) Elem() JobRetryConfigOutput {
-	return o.ApplyT(func(v *JobRetryConfig) JobRetryConfig { return *v }).(JobRetryConfigOutput)
+	return o.ApplyT(func(v *JobRetryConfig) JobRetryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret JobRetryConfig
+		return ret
+	}).(JobRetryConfigOutput)
 }
 
 // The maximum amount of time to wait before retrying a job after it fails.

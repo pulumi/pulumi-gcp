@@ -322,7 +322,7 @@ type DicomStoreIamMemberArrayInput interface {
 type DicomStoreIamMemberArray []DicomStoreIamMemberInput
 
 func (DicomStoreIamMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*DicomStoreIamMember)(nil))
+	return reflect.TypeOf((*[]*DicomStoreIamMember)(nil)).Elem()
 }
 
 func (i DicomStoreIamMemberArray) ToDicomStoreIamMemberArrayOutput() DicomStoreIamMemberArrayOutput {
@@ -347,7 +347,7 @@ type DicomStoreIamMemberMapInput interface {
 type DicomStoreIamMemberMap map[string]DicomStoreIamMemberInput
 
 func (DicomStoreIamMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*DicomStoreIamMember)(nil))
+	return reflect.TypeOf((*map[string]*DicomStoreIamMember)(nil)).Elem()
 }
 
 func (i DicomStoreIamMemberMap) ToDicomStoreIamMemberMapOutput() DicomStoreIamMemberMapOutput {
@@ -358,9 +358,7 @@ func (i DicomStoreIamMemberMap) ToDicomStoreIamMemberMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreIamMemberMapOutput)
 }
 
-type DicomStoreIamMemberOutput struct {
-	*pulumi.OutputState
-}
+type DicomStoreIamMemberOutput struct{ *pulumi.OutputState }
 
 func (DicomStoreIamMemberOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DicomStoreIamMember)(nil))
@@ -379,14 +377,12 @@ func (o DicomStoreIamMemberOutput) ToDicomStoreIamMemberPtrOutput() DicomStoreIa
 }
 
 func (o DicomStoreIamMemberOutput) ToDicomStoreIamMemberPtrOutputWithContext(ctx context.Context) DicomStoreIamMemberPtrOutput {
-	return o.ApplyT(func(v DicomStoreIamMember) *DicomStoreIamMember {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DicomStoreIamMember) *DicomStoreIamMember {
 		return &v
 	}).(DicomStoreIamMemberPtrOutput)
 }
 
-type DicomStoreIamMemberPtrOutput struct {
-	*pulumi.OutputState
-}
+type DicomStoreIamMemberPtrOutput struct{ *pulumi.OutputState }
 
 func (DicomStoreIamMemberPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DicomStoreIamMember)(nil))
@@ -398,6 +394,16 @@ func (o DicomStoreIamMemberPtrOutput) ToDicomStoreIamMemberPtrOutput() DicomStor
 
 func (o DicomStoreIamMemberPtrOutput) ToDicomStoreIamMemberPtrOutputWithContext(ctx context.Context) DicomStoreIamMemberPtrOutput {
 	return o
+}
+
+func (o DicomStoreIamMemberPtrOutput) Elem() DicomStoreIamMemberOutput {
+	return o.ApplyT(func(v *DicomStoreIamMember) DicomStoreIamMember {
+		if v != nil {
+			return *v
+		}
+		var ret DicomStoreIamMember
+		return ret
+	}).(DicomStoreIamMemberOutput)
 }
 
 type DicomStoreIamMemberArrayOutput struct{ *pulumi.OutputState }

@@ -169,7 +169,7 @@ func (o DomainMappingMetadataOutput) ToDomainMappingMetadataPtrOutput() DomainMa
 }
 
 func (o DomainMappingMetadataOutput) ToDomainMappingMetadataPtrOutputWithContext(ctx context.Context) DomainMappingMetadataPtrOutput {
-	return o.ApplyT(func(v DomainMappingMetadata) *DomainMappingMetadata {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainMappingMetadata) *DomainMappingMetadata {
 		return &v
 	}).(DomainMappingMetadataPtrOutput)
 }
@@ -245,7 +245,13 @@ func (o DomainMappingMetadataPtrOutput) ToDomainMappingMetadataPtrOutputWithCont
 }
 
 func (o DomainMappingMetadataPtrOutput) Elem() DomainMappingMetadataOutput {
-	return o.ApplyT(func(v *DomainMappingMetadata) DomainMappingMetadata { return *v }).(DomainMappingMetadataOutput)
+	return o.ApplyT(func(v *DomainMappingMetadata) DomainMappingMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret DomainMappingMetadata
+		return ret
+	}).(DomainMappingMetadataOutput)
 }
 
 // Annotations is a key value map stored with a resource that
@@ -452,7 +458,7 @@ func (o DomainMappingSpecOutput) ToDomainMappingSpecPtrOutput() DomainMappingSpe
 }
 
 func (o DomainMappingSpecOutput) ToDomainMappingSpecPtrOutputWithContext(ctx context.Context) DomainMappingSpecPtrOutput {
-	return o.ApplyT(func(v DomainMappingSpec) *DomainMappingSpec {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainMappingSpec) *DomainMappingSpec {
 		return &v
 	}).(DomainMappingSpecPtrOutput)
 }
@@ -493,7 +499,13 @@ func (o DomainMappingSpecPtrOutput) ToDomainMappingSpecPtrOutputWithContext(ctx 
 }
 
 func (o DomainMappingSpecPtrOutput) Elem() DomainMappingSpecOutput {
-	return o.ApplyT(func(v *DomainMappingSpec) DomainMappingSpec { return *v }).(DomainMappingSpecOutput)
+	return o.ApplyT(func(v *DomainMappingSpec) DomainMappingSpec {
+		if v != nil {
+			return *v
+		}
+		var ret DomainMappingSpec
+		return ret
+	}).(DomainMappingSpecOutput)
 }
 
 // The mode of the certificate.
@@ -960,10 +972,11 @@ func (o IamBindingConditionOutput) ToIamBindingConditionPtrOutput() IamBindingCo
 }
 
 func (o IamBindingConditionOutput) ToIamBindingConditionPtrOutputWithContext(ctx context.Context) IamBindingConditionPtrOutput {
-	return o.ApplyT(func(v IamBindingCondition) *IamBindingCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IamBindingCondition) *IamBindingCondition {
 		return &v
 	}).(IamBindingConditionPtrOutput)
 }
+
 func (o IamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -991,7 +1004,13 @@ func (o IamBindingConditionPtrOutput) ToIamBindingConditionPtrOutputWithContext(
 }
 
 func (o IamBindingConditionPtrOutput) Elem() IamBindingConditionOutput {
-	return o.ApplyT(func(v *IamBindingCondition) IamBindingCondition { return *v }).(IamBindingConditionOutput)
+	return o.ApplyT(func(v *IamBindingCondition) IamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret IamBindingCondition
+		return ret
+	}).(IamBindingConditionOutput)
 }
 
 func (o IamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -1116,10 +1135,11 @@ func (o IamMemberConditionOutput) ToIamMemberConditionPtrOutput() IamMemberCondi
 }
 
 func (o IamMemberConditionOutput) ToIamMemberConditionPtrOutputWithContext(ctx context.Context) IamMemberConditionPtrOutput {
-	return o.ApplyT(func(v IamMemberCondition) *IamMemberCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IamMemberCondition) *IamMemberCondition {
 		return &v
 	}).(IamMemberConditionPtrOutput)
 }
+
 func (o IamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -1147,7 +1167,13 @@ func (o IamMemberConditionPtrOutput) ToIamMemberConditionPtrOutputWithContext(ct
 }
 
 func (o IamMemberConditionPtrOutput) Elem() IamMemberConditionOutput {
-	return o.ApplyT(func(v *IamMemberCondition) IamMemberCondition { return *v }).(IamMemberConditionOutput)
+	return o.ApplyT(func(v *IamMemberCondition) IamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret IamMemberCondition
+		return ret
+	}).(IamMemberConditionOutput)
 }
 
 func (o IamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
@@ -1342,7 +1368,7 @@ func (o ServiceMetadataOutput) ToServiceMetadataPtrOutput() ServiceMetadataPtrOu
 }
 
 func (o ServiceMetadataOutput) ToServiceMetadataPtrOutputWithContext(ctx context.Context) ServiceMetadataPtrOutput {
-	return o.ApplyT(func(v ServiceMetadata) *ServiceMetadata {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceMetadata) *ServiceMetadata {
 		return &v
 	}).(ServiceMetadataPtrOutput)
 }
@@ -1421,7 +1447,13 @@ func (o ServiceMetadataPtrOutput) ToServiceMetadataPtrOutputWithContext(ctx cont
 }
 
 func (o ServiceMetadataPtrOutput) Elem() ServiceMetadataOutput {
-	return o.ApplyT(func(v *ServiceMetadata) ServiceMetadata { return *v }).(ServiceMetadataOutput)
+	return o.ApplyT(func(v *ServiceMetadata) ServiceMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceMetadata
+		return ret
+	}).(ServiceMetadataOutput)
 }
 
 // Annotations is a key value map stored with a resource that
@@ -1851,7 +1883,7 @@ func (o ServiceTemplateOutput) ToServiceTemplatePtrOutput() ServiceTemplatePtrOu
 }
 
 func (o ServiceTemplateOutput) ToServiceTemplatePtrOutputWithContext(ctx context.Context) ServiceTemplatePtrOutput {
-	return o.ApplyT(func(v ServiceTemplate) *ServiceTemplate {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplate) *ServiceTemplate {
 		return &v
 	}).(ServiceTemplatePtrOutput)
 }
@@ -1884,7 +1916,13 @@ func (o ServiceTemplatePtrOutput) ToServiceTemplatePtrOutputWithContext(ctx cont
 }
 
 func (o ServiceTemplatePtrOutput) Elem() ServiceTemplateOutput {
-	return o.ApplyT(func(v *ServiceTemplate) ServiceTemplate { return *v }).(ServiceTemplateOutput)
+	return o.ApplyT(func(v *ServiceTemplate) ServiceTemplate {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTemplate
+		return ret
+	}).(ServiceTemplateOutput)
 }
 
 // Metadata associated with this Service, including name, namespace, labels,
@@ -2079,7 +2117,7 @@ func (o ServiceTemplateMetadataOutput) ToServiceTemplateMetadataPtrOutput() Serv
 }
 
 func (o ServiceTemplateMetadataOutput) ToServiceTemplateMetadataPtrOutputWithContext(ctx context.Context) ServiceTemplateMetadataPtrOutput {
-	return o.ApplyT(func(v ServiceTemplateMetadata) *ServiceTemplateMetadata {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateMetadata) *ServiceTemplateMetadata {
 		return &v
 	}).(ServiceTemplateMetadataPtrOutput)
 }
@@ -2163,7 +2201,13 @@ func (o ServiceTemplateMetadataPtrOutput) ToServiceTemplateMetadataPtrOutputWith
 }
 
 func (o ServiceTemplateMetadataPtrOutput) Elem() ServiceTemplateMetadataOutput {
-	return o.ApplyT(func(v *ServiceTemplateMetadata) ServiceTemplateMetadata { return *v }).(ServiceTemplateMetadataOutput)
+	return o.ApplyT(func(v *ServiceTemplateMetadata) ServiceTemplateMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTemplateMetadata
+		return ret
+	}).(ServiceTemplateMetadataOutput)
 }
 
 // Annotations is a key value map stored with a resource that
@@ -2411,7 +2455,7 @@ func (o ServiceTemplateSpecOutput) ToServiceTemplateSpecPtrOutput() ServiceTempl
 }
 
 func (o ServiceTemplateSpecOutput) ToServiceTemplateSpecPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecPtrOutput {
-	return o.ApplyT(func(v ServiceTemplateSpec) *ServiceTemplateSpec {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateSpec) *ServiceTemplateSpec {
 		return &v
 	}).(ServiceTemplateSpecPtrOutput)
 }
@@ -2475,7 +2519,13 @@ func (o ServiceTemplateSpecPtrOutput) ToServiceTemplateSpecPtrOutputWithContext(
 }
 
 func (o ServiceTemplateSpecPtrOutput) Elem() ServiceTemplateSpecOutput {
-	return o.ApplyT(func(v *ServiceTemplateSpec) ServiceTemplateSpec { return *v }).(ServiceTemplateSpecOutput)
+	return o.ApplyT(func(v *ServiceTemplateSpec) ServiceTemplateSpec {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTemplateSpec
+		return ret
+	}).(ServiceTemplateSpecOutput)
 }
 
 // ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
@@ -3195,7 +3245,7 @@ func (o ServiceTemplateSpecContainerEnvFromConfigMapRefOutput) ToServiceTemplate
 }
 
 func (o ServiceTemplateSpecContainerEnvFromConfigMapRefOutput) ToServiceTemplateSpecContainerEnvFromConfigMapRefPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerEnvFromConfigMapRefPtrOutput {
-	return o.ApplyT(func(v ServiceTemplateSpecContainerEnvFromConfigMapRef) *ServiceTemplateSpecContainerEnvFromConfigMapRef {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateSpecContainerEnvFromConfigMapRef) *ServiceTemplateSpecContainerEnvFromConfigMapRef {
 		return &v
 	}).(ServiceTemplateSpecContainerEnvFromConfigMapRefPtrOutput)
 }
@@ -3229,7 +3279,11 @@ func (o ServiceTemplateSpecContainerEnvFromConfigMapRefPtrOutput) ToServiceTempl
 
 func (o ServiceTemplateSpecContainerEnvFromConfigMapRefPtrOutput) Elem() ServiceTemplateSpecContainerEnvFromConfigMapRefOutput {
 	return o.ApplyT(func(v *ServiceTemplateSpecContainerEnvFromConfigMapRef) ServiceTemplateSpecContainerEnvFromConfigMapRef {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTemplateSpecContainerEnvFromConfigMapRef
+		return ret
 	}).(ServiceTemplateSpecContainerEnvFromConfigMapRefOutput)
 }
 
@@ -3347,7 +3401,7 @@ func (o ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceOutpu
 }
 
 func (o ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceOutput) ToServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtrOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtrOutput {
-	return o.ApplyT(func(v ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference) *ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference) *ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference {
 		return &v
 	}).(ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtrOutput)
 }
@@ -3373,7 +3427,11 @@ func (o ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtrOu
 
 func (o ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtrOutput) Elem() ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceOutput {
 	return o.ApplyT(func(v *ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference) ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference
+		return ret
 	}).(ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceOutput)
 }
 
@@ -3486,7 +3544,7 @@ func (o ServiceTemplateSpecContainerEnvFromSecretRefOutput) ToServiceTemplateSpe
 }
 
 func (o ServiceTemplateSpecContainerEnvFromSecretRefOutput) ToServiceTemplateSpecContainerEnvFromSecretRefPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerEnvFromSecretRefPtrOutput {
-	return o.ApplyT(func(v ServiceTemplateSpecContainerEnvFromSecretRef) *ServiceTemplateSpecContainerEnvFromSecretRef {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateSpecContainerEnvFromSecretRef) *ServiceTemplateSpecContainerEnvFromSecretRef {
 		return &v
 	}).(ServiceTemplateSpecContainerEnvFromSecretRefPtrOutput)
 }
@@ -3520,7 +3578,11 @@ func (o ServiceTemplateSpecContainerEnvFromSecretRefPtrOutput) ToServiceTemplate
 
 func (o ServiceTemplateSpecContainerEnvFromSecretRefPtrOutput) Elem() ServiceTemplateSpecContainerEnvFromSecretRefOutput {
 	return o.ApplyT(func(v *ServiceTemplateSpecContainerEnvFromSecretRef) ServiceTemplateSpecContainerEnvFromSecretRef {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTemplateSpecContainerEnvFromSecretRef
+		return ret
 	}).(ServiceTemplateSpecContainerEnvFromSecretRefOutput)
 }
 
@@ -3638,7 +3700,7 @@ func (o ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceOutput) 
 }
 
 func (o ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceOutput) ToServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtrOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtrOutput {
-	return o.ApplyT(func(v ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference) *ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference) *ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference {
 		return &v
 	}).(ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtrOutput)
 }
@@ -3664,7 +3726,11 @@ func (o ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtrOutpu
 
 func (o ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtrOutput) Elem() ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceOutput {
 	return o.ApplyT(func(v *ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference) ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference
+		return ret
 	}).(ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceOutput)
 }
 
@@ -3773,7 +3839,7 @@ func (o ServiceTemplateSpecContainerEnvValueFromOutput) ToServiceTemplateSpecCon
 }
 
 func (o ServiceTemplateSpecContainerEnvValueFromOutput) ToServiceTemplateSpecContainerEnvValueFromPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerEnvValueFromPtrOutput {
-	return o.ApplyT(func(v ServiceTemplateSpecContainerEnvValueFrom) *ServiceTemplateSpecContainerEnvValueFrom {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateSpecContainerEnvValueFrom) *ServiceTemplateSpecContainerEnvValueFrom {
 		return &v
 	}).(ServiceTemplateSpecContainerEnvValueFromPtrOutput)
 }
@@ -3801,7 +3867,13 @@ func (o ServiceTemplateSpecContainerEnvValueFromPtrOutput) ToServiceTemplateSpec
 }
 
 func (o ServiceTemplateSpecContainerEnvValueFromPtrOutput) Elem() ServiceTemplateSpecContainerEnvValueFromOutput {
-	return o.ApplyT(func(v *ServiceTemplateSpecContainerEnvValueFrom) ServiceTemplateSpecContainerEnvValueFrom { return *v }).(ServiceTemplateSpecContainerEnvValueFromOutput)
+	return o.ApplyT(func(v *ServiceTemplateSpecContainerEnvValueFrom) ServiceTemplateSpecContainerEnvValueFrom {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTemplateSpecContainerEnvValueFrom
+		return ret
+	}).(ServiceTemplateSpecContainerEnvValueFromOutput)
 }
 
 // Selects a key (version) of a secret in Secret Manager.
@@ -3914,7 +3986,7 @@ func (o ServiceTemplateSpecContainerEnvValueFromSecretKeyRefOutput) ToServiceTem
 }
 
 func (o ServiceTemplateSpecContainerEnvValueFromSecretKeyRefOutput) ToServiceTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput {
-	return o.ApplyT(func(v ServiceTemplateSpecContainerEnvValueFromSecretKeyRef) *ServiceTemplateSpecContainerEnvValueFromSecretKeyRef {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateSpecContainerEnvValueFromSecretKeyRef) *ServiceTemplateSpecContainerEnvValueFromSecretKeyRef {
 		return &v
 	}).(ServiceTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput)
 }
@@ -3946,7 +4018,11 @@ func (o ServiceTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput) ToService
 
 func (o ServiceTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput) Elem() ServiceTemplateSpecContainerEnvValueFromSecretKeyRefOutput {
 	return o.ApplyT(func(v *ServiceTemplateSpecContainerEnvValueFromSecretKeyRef) ServiceTemplateSpecContainerEnvValueFromSecretKeyRef {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTemplateSpecContainerEnvValueFromSecretKeyRef
+		return ret
 	}).(ServiceTemplateSpecContainerEnvValueFromSecretKeyRefOutput)
 }
 
@@ -4195,7 +4271,7 @@ func (o ServiceTemplateSpecContainerResourcesOutput) ToServiceTemplateSpecContai
 }
 
 func (o ServiceTemplateSpecContainerResourcesOutput) ToServiceTemplateSpecContainerResourcesPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerResourcesPtrOutput {
-	return o.ApplyT(func(v ServiceTemplateSpecContainerResources) *ServiceTemplateSpecContainerResources {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateSpecContainerResources) *ServiceTemplateSpecContainerResources {
 		return &v
 	}).(ServiceTemplateSpecContainerResourcesPtrOutput)
 }
@@ -4231,7 +4307,13 @@ func (o ServiceTemplateSpecContainerResourcesPtrOutput) ToServiceTemplateSpecCon
 }
 
 func (o ServiceTemplateSpecContainerResourcesPtrOutput) Elem() ServiceTemplateSpecContainerResourcesOutput {
-	return o.ApplyT(func(v *ServiceTemplateSpecContainerResources) ServiceTemplateSpecContainerResources { return *v }).(ServiceTemplateSpecContainerResourcesOutput)
+	return o.ApplyT(func(v *ServiceTemplateSpecContainerResources) ServiceTemplateSpecContainerResources {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTemplateSpecContainerResources
+		return ret
+	}).(ServiceTemplateSpecContainerResourcesOutput)
 }
 
 // Limits describes the maximum amount of compute resources allowed.

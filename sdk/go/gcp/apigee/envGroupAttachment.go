@@ -185,7 +185,7 @@ type EnvGroupAttachmentArrayInput interface {
 type EnvGroupAttachmentArray []EnvGroupAttachmentInput
 
 func (EnvGroupAttachmentArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*EnvGroupAttachment)(nil))
+	return reflect.TypeOf((*[]*EnvGroupAttachment)(nil)).Elem()
 }
 
 func (i EnvGroupAttachmentArray) ToEnvGroupAttachmentArrayOutput() EnvGroupAttachmentArrayOutput {
@@ -210,7 +210,7 @@ type EnvGroupAttachmentMapInput interface {
 type EnvGroupAttachmentMap map[string]EnvGroupAttachmentInput
 
 func (EnvGroupAttachmentMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*EnvGroupAttachment)(nil))
+	return reflect.TypeOf((*map[string]*EnvGroupAttachment)(nil)).Elem()
 }
 
 func (i EnvGroupAttachmentMap) ToEnvGroupAttachmentMapOutput() EnvGroupAttachmentMapOutput {
@@ -221,9 +221,7 @@ func (i EnvGroupAttachmentMap) ToEnvGroupAttachmentMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(EnvGroupAttachmentMapOutput)
 }
 
-type EnvGroupAttachmentOutput struct {
-	*pulumi.OutputState
-}
+type EnvGroupAttachmentOutput struct{ *pulumi.OutputState }
 
 func (EnvGroupAttachmentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EnvGroupAttachment)(nil))
@@ -242,14 +240,12 @@ func (o EnvGroupAttachmentOutput) ToEnvGroupAttachmentPtrOutput() EnvGroupAttach
 }
 
 func (o EnvGroupAttachmentOutput) ToEnvGroupAttachmentPtrOutputWithContext(ctx context.Context) EnvGroupAttachmentPtrOutput {
-	return o.ApplyT(func(v EnvGroupAttachment) *EnvGroupAttachment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvGroupAttachment) *EnvGroupAttachment {
 		return &v
 	}).(EnvGroupAttachmentPtrOutput)
 }
 
-type EnvGroupAttachmentPtrOutput struct {
-	*pulumi.OutputState
-}
+type EnvGroupAttachmentPtrOutput struct{ *pulumi.OutputState }
 
 func (EnvGroupAttachmentPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**EnvGroupAttachment)(nil))
@@ -261,6 +257,16 @@ func (o EnvGroupAttachmentPtrOutput) ToEnvGroupAttachmentPtrOutput() EnvGroupAtt
 
 func (o EnvGroupAttachmentPtrOutput) ToEnvGroupAttachmentPtrOutputWithContext(ctx context.Context) EnvGroupAttachmentPtrOutput {
 	return o
+}
+
+func (o EnvGroupAttachmentPtrOutput) Elem() EnvGroupAttachmentOutput {
+	return o.ApplyT(func(v *EnvGroupAttachment) EnvGroupAttachment {
+		if v != nil {
+			return *v
+		}
+		var ret EnvGroupAttachment
+		return ret
+	}).(EnvGroupAttachmentOutput)
 }
 
 type EnvGroupAttachmentArrayOutput struct{ *pulumi.OutputState }

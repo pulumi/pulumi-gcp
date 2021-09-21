@@ -139,7 +139,7 @@ func (o ConnectivityTestDestinationOutput) ToConnectivityTestDestinationPtrOutpu
 }
 
 func (o ConnectivityTestDestinationOutput) ToConnectivityTestDestinationPtrOutputWithContext(ctx context.Context) ConnectivityTestDestinationPtrOutput {
-	return o.ApplyT(func(v ConnectivityTestDestination) *ConnectivityTestDestination {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectivityTestDestination) *ConnectivityTestDestination {
 		return &v
 	}).(ConnectivityTestDestinationPtrOutput)
 }
@@ -194,7 +194,13 @@ func (o ConnectivityTestDestinationPtrOutput) ToConnectivityTestDestinationPtrOu
 }
 
 func (o ConnectivityTestDestinationPtrOutput) Elem() ConnectivityTestDestinationOutput {
-	return o.ApplyT(func(v *ConnectivityTestDestination) ConnectivityTestDestination { return *v }).(ConnectivityTestDestinationOutput)
+	return o.ApplyT(func(v *ConnectivityTestDestination) ConnectivityTestDestination {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectivityTestDestination
+		return ret
+	}).(ConnectivityTestDestinationOutput)
 }
 
 // A Compute Engine instance URI.
@@ -392,7 +398,7 @@ func (o ConnectivityTestSourceOutput) ToConnectivityTestSourcePtrOutput() Connec
 }
 
 func (o ConnectivityTestSourceOutput) ToConnectivityTestSourcePtrOutputWithContext(ctx context.Context) ConnectivityTestSourcePtrOutput {
-	return o.ApplyT(func(v ConnectivityTestSource) *ConnectivityTestSource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectivityTestSource) *ConnectivityTestSource {
 		return &v
 	}).(ConnectivityTestSourcePtrOutput)
 }
@@ -453,7 +459,13 @@ func (o ConnectivityTestSourcePtrOutput) ToConnectivityTestSourcePtrOutputWithCo
 }
 
 func (o ConnectivityTestSourcePtrOutput) Elem() ConnectivityTestSourceOutput {
-	return o.ApplyT(func(v *ConnectivityTestSource) ConnectivityTestSource { return *v }).(ConnectivityTestSourceOutput)
+	return o.ApplyT(func(v *ConnectivityTestSource) ConnectivityTestSource {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectivityTestSource
+		return ret
+	}).(ConnectivityTestSourceOutput)
 }
 
 // A Compute Engine instance URI.

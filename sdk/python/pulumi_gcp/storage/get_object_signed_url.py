@@ -12,6 +12,7 @@ __all__ = [
     'GetObjectSignedUrlResult',
     'AwaitableGetObjectSignedUrlResult',
     'get_object_signed_url',
+    'get_object_signed_url_output',
 ]
 
 @pulumi.output_type
@@ -208,3 +209,63 @@ def get_object_signed_url(bucket: Optional[str] = None,
         id=__ret__.id,
         path=__ret__.path,
         signed_url=__ret__.signed_url)
+
+
+@_utilities.lift_output_func(get_object_signed_url)
+def get_object_signed_url_output(bucket: Optional[pulumi.Input[str]] = None,
+                                 content_md5: Optional[pulumi.Input[Optional[str]]] = None,
+                                 content_type: Optional[pulumi.Input[Optional[str]]] = None,
+                                 credentials: Optional[pulumi.Input[Optional[str]]] = None,
+                                 duration: Optional[pulumi.Input[Optional[str]]] = None,
+                                 extension_headers: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
+                                 http_method: Optional[pulumi.Input[Optional[str]]] = None,
+                                 path: Optional[pulumi.Input[str]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetObjectSignedUrlResult]:
+    """
+    The Google Cloud storage signed URL data source generates a signed URL for a given storage object. Signed URLs provide a way to give time-limited read or write access to anyone in possession of the URL, regardless of whether they have a Google account.
+
+    For more info about signed URL's is available [here](https://cloud.google.com/storage/docs/access-control/signed-urls).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    artifact = gcp.storage.get_object_signed_url(bucket="install_binaries",
+        path="path/to/install_file.bin")
+    vm = gcp.compute.Instance("vm")
+    ```
+    ## Full Example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    get_url = gcp.storage.get_object_signed_url(bucket="fried_chicken",
+        path="path/to/file",
+        content_md5="pRviqwS4c4OTJRTe03FD1w==",
+        content_type="text/plain",
+        duration="2d",
+        credentials=(lambda path: open(path).read())("path/to/credentials.json"),
+        extension_headers={
+            "x-goog-if-generation-match": "1",
+        })
+    ```
+
+
+    :param str bucket: The name of the bucket to read the object from
+    :param str content_md5: The [MD5 digest](https://cloud.google.com/storage/docs/hashes-etags#_MD5) value in Base64.
+           Typically retrieved from `google_storage_bucket_object.object.md5hash` attribute.
+           If you provide this in the datasource, the client (e.g. browser, curl) must provide the `Content-MD5` HTTP header with this same value in its request.
+    :param str content_type: If you specify this in the datasource, the client must provide the `Content-Type` HTTP header with the same value in its request.
+    :param str credentials: What Google service account credentials json should be used to sign the URL.
+           This data source checks the following locations for credentials, in order of preference: data source `credentials` attribute, provider `credentials` attribute and finally the GOOGLE_APPLICATION_CREDENTIALS environment variable.
+    :param str duration: For how long shall the signed URL be valid (defaults to 1 hour - i.e. `1h`).
+           See [here](https://golang.org/pkg/time/#ParseDuration) for info on valid duration formats.
+    :param Mapping[str, str] extension_headers: As needed. The server checks to make sure that the client provides matching values in requests using the signed URL.
+           Any header starting with `x-goog-` is accepted but see the [Google Docs](https://cloud.google.com/storage/docs/xml-api/reference-headers) for list of headers that are supported by Google.
+    :param str http_method: What HTTP Method will the signed URL allow (defaults to `GET`)
+    :param str path: The full path to the object inside the bucket
+    """
+    ...

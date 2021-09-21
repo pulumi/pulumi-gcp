@@ -123,7 +123,7 @@ func (o QueueAppEngineRoutingOverrideOutput) ToQueueAppEngineRoutingOverridePtrO
 }
 
 func (o QueueAppEngineRoutingOverrideOutput) ToQueueAppEngineRoutingOverridePtrOutputWithContext(ctx context.Context) QueueAppEngineRoutingOverridePtrOutput {
-	return o.ApplyT(func(v QueueAppEngineRoutingOverride) *QueueAppEngineRoutingOverride {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueueAppEngineRoutingOverride) *QueueAppEngineRoutingOverride {
 		return &v
 	}).(QueueAppEngineRoutingOverridePtrOutput)
 }
@@ -167,7 +167,13 @@ func (o QueueAppEngineRoutingOverridePtrOutput) ToQueueAppEngineRoutingOverrideP
 }
 
 func (o QueueAppEngineRoutingOverridePtrOutput) Elem() QueueAppEngineRoutingOverrideOutput {
-	return o.ApplyT(func(v *QueueAppEngineRoutingOverride) QueueAppEngineRoutingOverride { return *v }).(QueueAppEngineRoutingOverrideOutput)
+	return o.ApplyT(func(v *QueueAppEngineRoutingOverride) QueueAppEngineRoutingOverride {
+		if v != nil {
+			return *v
+		}
+		var ret QueueAppEngineRoutingOverride
+		return ret
+	}).(QueueAppEngineRoutingOverrideOutput)
 }
 
 // -
@@ -333,7 +339,7 @@ func (o QueueRateLimitsOutput) ToQueueRateLimitsPtrOutput() QueueRateLimitsPtrOu
 }
 
 func (o QueueRateLimitsOutput) ToQueueRateLimitsPtrOutputWithContext(ctx context.Context) QueueRateLimitsPtrOutput {
-	return o.ApplyT(func(v QueueRateLimits) *QueueRateLimits {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueueRateLimits) *QueueRateLimits {
 		return &v
 	}).(QueueRateLimitsPtrOutput)
 }
@@ -377,7 +383,13 @@ func (o QueueRateLimitsPtrOutput) ToQueueRateLimitsPtrOutputWithContext(ctx cont
 }
 
 func (o QueueRateLimitsPtrOutput) Elem() QueueRateLimitsOutput {
-	return o.ApplyT(func(v *QueueRateLimits) QueueRateLimits { return *v }).(QueueRateLimitsOutput)
+	return o.ApplyT(func(v *QueueRateLimits) QueueRateLimits {
+		if v != nil {
+			return *v
+		}
+		var ret QueueRateLimits
+		return ret
+	}).(QueueRateLimitsOutput)
 }
 
 // -
@@ -564,7 +576,7 @@ func (o QueueRetryConfigOutput) ToQueueRetryConfigPtrOutput() QueueRetryConfigPt
 }
 
 func (o QueueRetryConfigOutput) ToQueueRetryConfigPtrOutputWithContext(ctx context.Context) QueueRetryConfigPtrOutput {
-	return o.ApplyT(func(v QueueRetryConfig) *QueueRetryConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueueRetryConfig) *QueueRetryConfig {
 		return &v
 	}).(QueueRetryConfigPtrOutput)
 }
@@ -627,7 +639,13 @@ func (o QueueRetryConfigPtrOutput) ToQueueRetryConfigPtrOutputWithContext(ctx co
 }
 
 func (o QueueRetryConfigPtrOutput) Elem() QueueRetryConfigOutput {
-	return o.ApplyT(func(v *QueueRetryConfig) QueueRetryConfig { return *v }).(QueueRetryConfigOutput)
+	return o.ApplyT(func(v *QueueRetryConfig) QueueRetryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret QueueRetryConfig
+		return ret
+	}).(QueueRetryConfigOutput)
 }
 
 // Number of attempts per task.
@@ -795,7 +813,7 @@ func (o QueueStackdriverLoggingConfigOutput) ToQueueStackdriverLoggingConfigPtrO
 }
 
 func (o QueueStackdriverLoggingConfigOutput) ToQueueStackdriverLoggingConfigPtrOutputWithContext(ctx context.Context) QueueStackdriverLoggingConfigPtrOutput {
-	return o.ApplyT(func(v QueueStackdriverLoggingConfig) *QueueStackdriverLoggingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueueStackdriverLoggingConfig) *QueueStackdriverLoggingConfig {
 		return &v
 	}).(QueueStackdriverLoggingConfigPtrOutput)
 }
@@ -822,7 +840,13 @@ func (o QueueStackdriverLoggingConfigPtrOutput) ToQueueStackdriverLoggingConfigP
 }
 
 func (o QueueStackdriverLoggingConfigPtrOutput) Elem() QueueStackdriverLoggingConfigOutput {
-	return o.ApplyT(func(v *QueueStackdriverLoggingConfig) QueueStackdriverLoggingConfig { return *v }).(QueueStackdriverLoggingConfigOutput)
+	return o.ApplyT(func(v *QueueStackdriverLoggingConfig) QueueStackdriverLoggingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret QueueStackdriverLoggingConfig
+		return ret
+	}).(QueueStackdriverLoggingConfigOutput)
 }
 
 // Specifies the fraction of operations to write to Stackdriver Logging.

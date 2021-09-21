@@ -4,6 +4,9 @@
 package storage
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -144,4 +147,64 @@ type GetProjectServiceAccountResult struct {
 	Id          string  `pulumi:"id"`
 	Project     string  `pulumi:"project"`
 	UserProject *string `pulumi:"userProject"`
+}
+
+func GetProjectServiceAccountOutput(ctx *pulumi.Context, args GetProjectServiceAccountOutputArgs, opts ...pulumi.InvokeOption) GetProjectServiceAccountResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetProjectServiceAccountResult, error) {
+			args := v.(GetProjectServiceAccountArgs)
+			r, err := GetProjectServiceAccount(ctx, &args, opts...)
+			return *r, err
+		}).(GetProjectServiceAccountResultOutput)
+}
+
+// A collection of arguments for invoking getProjectServiceAccount.
+type GetProjectServiceAccountOutputArgs struct {
+	// The project the unique service account was created for. If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// The project the lookup originates from. This field is used if you are making the request
+	// from a different account than the one you are finding the service account for.
+	UserProject pulumi.StringPtrInput `pulumi:"userProject"`
+}
+
+func (GetProjectServiceAccountOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectServiceAccountArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getProjectServiceAccount.
+type GetProjectServiceAccountResultOutput struct{ *pulumi.OutputState }
+
+func (GetProjectServiceAccountResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectServiceAccountResult)(nil)).Elem()
+}
+
+func (o GetProjectServiceAccountResultOutput) ToGetProjectServiceAccountResultOutput() GetProjectServiceAccountResultOutput {
+	return o
+}
+
+func (o GetProjectServiceAccountResultOutput) ToGetProjectServiceAccountResultOutputWithContext(ctx context.Context) GetProjectServiceAccountResultOutput {
+	return o
+}
+
+// The email address of the service account. This value is often used to refer to the service account
+// in order to grant IAM permissions.
+func (o GetProjectServiceAccountResultOutput) EmailAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectServiceAccountResult) string { return v.EmailAddress }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetProjectServiceAccountResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectServiceAccountResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetProjectServiceAccountResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectServiceAccountResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o GetProjectServiceAccountResultOutput) UserProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProjectServiceAccountResult) *string { return v.UserProject }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetProjectServiceAccountResultOutput{})
 }

@@ -336,7 +336,7 @@ type ApiConfigIamBindingArrayInput interface {
 type ApiConfigIamBindingArray []ApiConfigIamBindingInput
 
 func (ApiConfigIamBindingArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ApiConfigIamBinding)(nil))
+	return reflect.TypeOf((*[]*ApiConfigIamBinding)(nil)).Elem()
 }
 
 func (i ApiConfigIamBindingArray) ToApiConfigIamBindingArrayOutput() ApiConfigIamBindingArrayOutput {
@@ -361,7 +361,7 @@ type ApiConfigIamBindingMapInput interface {
 type ApiConfigIamBindingMap map[string]ApiConfigIamBindingInput
 
 func (ApiConfigIamBindingMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ApiConfigIamBinding)(nil))
+	return reflect.TypeOf((*map[string]*ApiConfigIamBinding)(nil)).Elem()
 }
 
 func (i ApiConfigIamBindingMap) ToApiConfigIamBindingMapOutput() ApiConfigIamBindingMapOutput {
@@ -372,9 +372,7 @@ func (i ApiConfigIamBindingMap) ToApiConfigIamBindingMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigIamBindingMapOutput)
 }
 
-type ApiConfigIamBindingOutput struct {
-	*pulumi.OutputState
-}
+type ApiConfigIamBindingOutput struct{ *pulumi.OutputState }
 
 func (ApiConfigIamBindingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ApiConfigIamBinding)(nil))
@@ -393,14 +391,12 @@ func (o ApiConfigIamBindingOutput) ToApiConfigIamBindingPtrOutput() ApiConfigIam
 }
 
 func (o ApiConfigIamBindingOutput) ToApiConfigIamBindingPtrOutputWithContext(ctx context.Context) ApiConfigIamBindingPtrOutput {
-	return o.ApplyT(func(v ApiConfigIamBinding) *ApiConfigIamBinding {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiConfigIamBinding) *ApiConfigIamBinding {
 		return &v
 	}).(ApiConfigIamBindingPtrOutput)
 }
 
-type ApiConfigIamBindingPtrOutput struct {
-	*pulumi.OutputState
-}
+type ApiConfigIamBindingPtrOutput struct{ *pulumi.OutputState }
 
 func (ApiConfigIamBindingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ApiConfigIamBinding)(nil))
@@ -412,6 +408,16 @@ func (o ApiConfigIamBindingPtrOutput) ToApiConfigIamBindingPtrOutput() ApiConfig
 
 func (o ApiConfigIamBindingPtrOutput) ToApiConfigIamBindingPtrOutputWithContext(ctx context.Context) ApiConfigIamBindingPtrOutput {
 	return o
+}
+
+func (o ApiConfigIamBindingPtrOutput) Elem() ApiConfigIamBindingOutput {
+	return o.ApplyT(func(v *ApiConfigIamBinding) ApiConfigIamBinding {
+		if v != nil {
+			return *v
+		}
+		var ret ApiConfigIamBinding
+		return ret
+	}).(ApiConfigIamBindingOutput)
 }
 
 type ApiConfigIamBindingArrayOutput struct{ *pulumi.OutputState }

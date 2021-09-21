@@ -197,7 +197,7 @@ type ProjectDefaultNetworkTierArrayInput interface {
 type ProjectDefaultNetworkTierArray []ProjectDefaultNetworkTierInput
 
 func (ProjectDefaultNetworkTierArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ProjectDefaultNetworkTier)(nil))
+	return reflect.TypeOf((*[]*ProjectDefaultNetworkTier)(nil)).Elem()
 }
 
 func (i ProjectDefaultNetworkTierArray) ToProjectDefaultNetworkTierArrayOutput() ProjectDefaultNetworkTierArrayOutput {
@@ -222,7 +222,7 @@ type ProjectDefaultNetworkTierMapInput interface {
 type ProjectDefaultNetworkTierMap map[string]ProjectDefaultNetworkTierInput
 
 func (ProjectDefaultNetworkTierMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ProjectDefaultNetworkTier)(nil))
+	return reflect.TypeOf((*map[string]*ProjectDefaultNetworkTier)(nil)).Elem()
 }
 
 func (i ProjectDefaultNetworkTierMap) ToProjectDefaultNetworkTierMapOutput() ProjectDefaultNetworkTierMapOutput {
@@ -233,9 +233,7 @@ func (i ProjectDefaultNetworkTierMap) ToProjectDefaultNetworkTierMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultNetworkTierMapOutput)
 }
 
-type ProjectDefaultNetworkTierOutput struct {
-	*pulumi.OutputState
-}
+type ProjectDefaultNetworkTierOutput struct{ *pulumi.OutputState }
 
 func (ProjectDefaultNetworkTierOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ProjectDefaultNetworkTier)(nil))
@@ -254,14 +252,12 @@ func (o ProjectDefaultNetworkTierOutput) ToProjectDefaultNetworkTierPtrOutput() 
 }
 
 func (o ProjectDefaultNetworkTierOutput) ToProjectDefaultNetworkTierPtrOutputWithContext(ctx context.Context) ProjectDefaultNetworkTierPtrOutput {
-	return o.ApplyT(func(v ProjectDefaultNetworkTier) *ProjectDefaultNetworkTier {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectDefaultNetworkTier) *ProjectDefaultNetworkTier {
 		return &v
 	}).(ProjectDefaultNetworkTierPtrOutput)
 }
 
-type ProjectDefaultNetworkTierPtrOutput struct {
-	*pulumi.OutputState
-}
+type ProjectDefaultNetworkTierPtrOutput struct{ *pulumi.OutputState }
 
 func (ProjectDefaultNetworkTierPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ProjectDefaultNetworkTier)(nil))
@@ -273,6 +269,16 @@ func (o ProjectDefaultNetworkTierPtrOutput) ToProjectDefaultNetworkTierPtrOutput
 
 func (o ProjectDefaultNetworkTierPtrOutput) ToProjectDefaultNetworkTierPtrOutputWithContext(ctx context.Context) ProjectDefaultNetworkTierPtrOutput {
 	return o
+}
+
+func (o ProjectDefaultNetworkTierPtrOutput) Elem() ProjectDefaultNetworkTierOutput {
+	return o.ApplyT(func(v *ProjectDefaultNetworkTier) ProjectDefaultNetworkTier {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectDefaultNetworkTier
+		return ret
+	}).(ProjectDefaultNetworkTierOutput)
 }
 
 type ProjectDefaultNetworkTierArrayOutput struct{ *pulumi.OutputState }
