@@ -320,17 +320,11 @@ class ManagedZonePeeringConfigTargetNetworkArgs:
 class ManagedZonePrivateVisibilityConfigArgs:
     def __init__(__self__, *,
                  networks: pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgs']]]):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgs']]] networks: The list of VPC networks that can see this zone. Structure is documented below.
-        """
         pulumi.set(__self__, "networks", networks)
 
     @property
     @pulumi.getter
     def networks(self) -> pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgs']]]:
-        """
-        The list of VPC networks that can see this zone. Structure is documented below.
-        """
         return pulumi.get(self, "networks")
 
     @networks.setter

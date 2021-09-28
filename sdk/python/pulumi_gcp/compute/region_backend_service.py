@@ -25,6 +25,7 @@ class RegionBackendServiceArgs:
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
                  failover_policy: Optional[pulumi.Input['RegionBackendServiceFailoverPolicyArgs']] = None,
                  health_checks: Optional[pulumi.Input[str]] = None,
+                 iap: Optional[pulumi.Input['RegionBackendServiceIapArgs']] = None,
                  load_balancing_scheme: Optional[pulumi.Input[str]] = None,
                  locality_lb_policy: Optional[pulumi.Input[str]] = None,
                  log_config: Optional[pulumi.Input['RegionBackendServiceLogConfigArgs']] = None,
@@ -71,6 +72,8 @@ class RegionBackendServiceArgs:
                check can be specified.
                A health check must be specified unless the backend service uses an internet
                or serverless NEG as a backend.
+        :param pulumi.Input['RegionBackendServiceIapArgs'] iap: Settings for enabling Cloud Identity Aware Proxy
+               Structure is documented below.
         :param pulumi.Input[str] load_balancing_scheme: Indicates what kind of load balancing this regional backend service
                will be used for. A backend service created for one type of load
                balancing cannot be used with the other(s).
@@ -150,6 +153,8 @@ class RegionBackendServiceArgs:
             pulumi.set(__self__, "failover_policy", failover_policy)
         if health_checks is not None:
             pulumi.set(__self__, "health_checks", health_checks)
+        if iap is not None:
+            pulumi.set(__self__, "iap", iap)
         if load_balancing_scheme is not None:
             pulumi.set(__self__, "load_balancing_scheme", load_balancing_scheme)
         if locality_lb_policy is not None:
@@ -316,6 +321,19 @@ class RegionBackendServiceArgs:
     @health_checks.setter
     def health_checks(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "health_checks", value)
+
+    @property
+    @pulumi.getter
+    def iap(self) -> Optional[pulumi.Input['RegionBackendServiceIapArgs']]:
+        """
+        Settings for enabling Cloud Identity Aware Proxy
+        Structure is documented below.
+        """
+        return pulumi.get(self, "iap")
+
+    @iap.setter
+    def iap(self, value: Optional[pulumi.Input['RegionBackendServiceIapArgs']]):
+        pulumi.set(self, "iap", value)
 
     @property
     @pulumi.getter(name="loadBalancingScheme")
@@ -523,6 +541,7 @@ class _RegionBackendServiceState:
                  failover_policy: Optional[pulumi.Input['RegionBackendServiceFailoverPolicyArgs']] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  health_checks: Optional[pulumi.Input[str]] = None,
+                 iap: Optional[pulumi.Input['RegionBackendServiceIapArgs']] = None,
                  load_balancing_scheme: Optional[pulumi.Input[str]] = None,
                  locality_lb_policy: Optional[pulumi.Input[str]] = None,
                  log_config: Optional[pulumi.Input['RegionBackendServiceLogConfigArgs']] = None,
@@ -572,6 +591,8 @@ class _RegionBackendServiceState:
                check can be specified.
                A health check must be specified unless the backend service uses an internet
                or serverless NEG as a backend.
+        :param pulumi.Input['RegionBackendServiceIapArgs'] iap: Settings for enabling Cloud Identity Aware Proxy
+               Structure is documented below.
         :param pulumi.Input[str] load_balancing_scheme: Indicates what kind of load balancing this regional backend service
                will be used for. A backend service created for one type of load
                balancing cannot be used with the other(s).
@@ -656,6 +677,8 @@ class _RegionBackendServiceState:
             pulumi.set(__self__, "fingerprint", fingerprint)
         if health_checks is not None:
             pulumi.set(__self__, "health_checks", health_checks)
+        if iap is not None:
+            pulumi.set(__self__, "iap", iap)
         if load_balancing_scheme is not None:
             pulumi.set(__self__, "load_balancing_scheme", load_balancing_scheme)
         if locality_lb_policy is not None:
@@ -848,6 +871,19 @@ class _RegionBackendServiceState:
     @health_checks.setter
     def health_checks(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "health_checks", value)
+
+    @property
+    @pulumi.getter
+    def iap(self) -> Optional[pulumi.Input['RegionBackendServiceIapArgs']]:
+        """
+        Settings for enabling Cloud Identity Aware Proxy
+        Structure is documented below.
+        """
+        return pulumi.get(self, "iap")
+
+    @iap.setter
+    def iap(self, value: Optional[pulumi.Input['RegionBackendServiceIapArgs']]):
+        pulumi.set(self, "iap", value)
 
     @property
     @pulumi.getter(name="loadBalancingScheme")
@@ -1067,6 +1103,7 @@ class RegionBackendService(pulumi.CustomResource):
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
                  failover_policy: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceFailoverPolicyArgs']]] = None,
                  health_checks: Optional[pulumi.Input[str]] = None,
+                 iap: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceIapArgs']]] = None,
                  load_balancing_scheme: Optional[pulumi.Input[str]] = None,
                  locality_lb_policy: Optional[pulumi.Input[str]] = None,
                  log_config: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceLogConfigArgs']]] = None,
@@ -1089,6 +1126,9 @@ class RegionBackendService(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/compute/docs/reference/latest/regionBackendServices)
         * How-to Guides
             * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
+
+        > **Warning:** All arguments including `iap.oauth2_client_secret` and `iap.oauth2_client_secret_sha256` will be stored in the raw
+        state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 
         ## Example Usage
         ### Region Backend Service Basic
@@ -1314,6 +1354,8 @@ class RegionBackendService(pulumi.CustomResource):
                check can be specified.
                A health check must be specified unless the backend service uses an internet
                or serverless NEG as a backend.
+        :param pulumi.Input[pulumi.InputType['RegionBackendServiceIapArgs']] iap: Settings for enabling Cloud Identity Aware Proxy
+               Structure is documented below.
         :param pulumi.Input[str] load_balancing_scheme: Indicates what kind of load balancing this regional backend service
                will be used for. A backend service created for one type of load
                balancing cannot be used with the other(s).
@@ -1388,6 +1430,9 @@ class RegionBackendService(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/compute/docs/reference/latest/regionBackendServices)
         * How-to Guides
             * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
+
+        > **Warning:** All arguments including `iap.oauth2_client_secret` and `iap.oauth2_client_secret_sha256` will be stored in the raw
+        state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 
         ## Example Usage
         ### Region Backend Service Basic
@@ -1604,6 +1649,7 @@ class RegionBackendService(pulumi.CustomResource):
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
                  failover_policy: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceFailoverPolicyArgs']]] = None,
                  health_checks: Optional[pulumi.Input[str]] = None,
+                 iap: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceIapArgs']]] = None,
                  load_balancing_scheme: Optional[pulumi.Input[str]] = None,
                  locality_lb_policy: Optional[pulumi.Input[str]] = None,
                  log_config: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceLogConfigArgs']]] = None,
@@ -1638,6 +1684,7 @@ class RegionBackendService(pulumi.CustomResource):
             __props__.__dict__["enable_cdn"] = enable_cdn
             __props__.__dict__["failover_policy"] = failover_policy
             __props__.__dict__["health_checks"] = health_checks
+            __props__.__dict__["iap"] = iap
             __props__.__dict__["load_balancing_scheme"] = load_balancing_scheme
             __props__.__dict__["locality_lb_policy"] = locality_lb_policy
             __props__.__dict__["log_config"] = log_config
@@ -1675,6 +1722,7 @@ class RegionBackendService(pulumi.CustomResource):
             failover_policy: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceFailoverPolicyArgs']]] = None,
             fingerprint: Optional[pulumi.Input[str]] = None,
             health_checks: Optional[pulumi.Input[str]] = None,
+            iap: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceIapArgs']]] = None,
             load_balancing_scheme: Optional[pulumi.Input[str]] = None,
             locality_lb_policy: Optional[pulumi.Input[str]] = None,
             log_config: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceLogConfigArgs']]] = None,
@@ -1729,6 +1777,8 @@ class RegionBackendService(pulumi.CustomResource):
                check can be specified.
                A health check must be specified unless the backend service uses an internet
                or serverless NEG as a backend.
+        :param pulumi.Input[pulumi.InputType['RegionBackendServiceIapArgs']] iap: Settings for enabling Cloud Identity Aware Proxy
+               Structure is documented below.
         :param pulumi.Input[str] load_balancing_scheme: Indicates what kind of load balancing this regional backend service
                will be used for. A backend service created for one type of load
                balancing cannot be used with the other(s).
@@ -1805,6 +1855,7 @@ class RegionBackendService(pulumi.CustomResource):
         __props__.__dict__["failover_policy"] = failover_policy
         __props__.__dict__["fingerprint"] = fingerprint
         __props__.__dict__["health_checks"] = health_checks
+        __props__.__dict__["iap"] = iap
         __props__.__dict__["load_balancing_scheme"] = load_balancing_scheme
         __props__.__dict__["locality_lb_policy"] = locality_lb_policy
         __props__.__dict__["log_config"] = log_config
@@ -1937,6 +1988,15 @@ class RegionBackendService(pulumi.CustomResource):
         or serverless NEG as a backend.
         """
         return pulumi.get(self, "health_checks")
+
+    @property
+    @pulumi.getter
+    def iap(self) -> pulumi.Output[Optional['outputs.RegionBackendServiceIap']]:
+        """
+        Settings for enabling Cloud Identity Aware Proxy
+        Structure is documented below.
+        """
+        return pulumi.get(self, "iap")
 
     @property
     @pulumi.getter(name="loadBalancingScheme")

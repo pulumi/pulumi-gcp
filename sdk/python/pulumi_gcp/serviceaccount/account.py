@@ -15,6 +15,7 @@ class AccountArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -25,6 +26,8 @@ class AccountArgs:
                to comply with RFC1035. Changing this forces a new service account to be created.
         :param pulumi.Input[str] description: A text description of the service account.
                Must be less than or equal to 256 UTF-8 bytes.
+        :param pulumi.Input[bool] disabled: Whether a service account is disabled or not. Defaults to `false`. This field has no effect during creation.
+               Must be set after creation to disable a service account.
         :param pulumi.Input[str] display_name: The display name for the service account.
                Can be updated without creating a new resource.
         :param pulumi.Input[str] project: The ID of the project that the service account will be created in.
@@ -33,6 +36,8 @@ class AccountArgs:
         pulumi.set(__self__, "account_id", account_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if project is not None:
@@ -67,6 +72,19 @@ class AccountArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether a service account is disabled or not. Defaults to `false`. This field has no effect during creation.
+        Must be set after creation to disable a service account.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -98,6 +116,7 @@ class _AccountState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  email: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -111,6 +130,8 @@ class _AccountState:
                to comply with RFC1035. Changing this forces a new service account to be created.
         :param pulumi.Input[str] description: A text description of the service account.
                Must be less than or equal to 256 UTF-8 bytes.
+        :param pulumi.Input[bool] disabled: Whether a service account is disabled or not. Defaults to `false`. This field has no effect during creation.
+               Must be set after creation to disable a service account.
         :param pulumi.Input[str] display_name: The display name for the service account.
                Can be updated without creating a new resource.
         :param pulumi.Input[str] email: The e-mail address of the service account. This value
@@ -125,6 +146,8 @@ class _AccountState:
             pulumi.set(__self__, "account_id", account_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if email is not None:
@@ -163,6 +186,19 @@ class _AccountState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether a service account is disabled or not. Defaults to `false`. This field has no effect during creation.
+        Must be set after creation to disable a service account.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -236,6 +272,7 @@ class Account(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -281,6 +318,8 @@ class Account(pulumi.CustomResource):
                to comply with RFC1035. Changing this forces a new service account to be created.
         :param pulumi.Input[str] description: A text description of the service account.
                Must be less than or equal to 256 UTF-8 bytes.
+        :param pulumi.Input[bool] disabled: Whether a service account is disabled or not. Defaults to `false`. This field has no effect during creation.
+               Must be set after creation to disable a service account.
         :param pulumi.Input[str] display_name: The display name for the service account.
                Can be updated without creating a new resource.
         :param pulumi.Input[str] project: The ID of the project that the service account will be created in.
@@ -343,6 +382,7 @@ class Account(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -361,6 +401,7 @@ class Account(pulumi.CustomResource):
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["description"] = description
+            __props__.__dict__["disabled"] = disabled
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["project"] = project
             __props__.__dict__["email"] = None
@@ -378,6 +419,7 @@ class Account(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            disabled: Optional[pulumi.Input[bool]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             email: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -396,6 +438,8 @@ class Account(pulumi.CustomResource):
                to comply with RFC1035. Changing this forces a new service account to be created.
         :param pulumi.Input[str] description: A text description of the service account.
                Must be less than or equal to 256 UTF-8 bytes.
+        :param pulumi.Input[bool] disabled: Whether a service account is disabled or not. Defaults to `false`. This field has no effect during creation.
+               Must be set after creation to disable a service account.
         :param pulumi.Input[str] display_name: The display name for the service account.
                Can be updated without creating a new resource.
         :param pulumi.Input[str] email: The e-mail address of the service account. This value
@@ -412,6 +456,7 @@ class Account(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["description"] = description
+        __props__.__dict__["disabled"] = disabled
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["email"] = email
         __props__.__dict__["name"] = name
@@ -438,6 +483,15 @@ class Account(pulumi.CustomResource):
         Must be less than or equal to 256 UTF-8 bytes.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether a service account is disabled or not. Defaults to `false`. This field has no effect during creation.
+        Must be set after creation to disable a service account.
+        """
+        return pulumi.get(self, "disabled")
 
     @property
     @pulumi.getter(name="displayName")

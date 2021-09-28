@@ -15,6 +15,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
  *
+ * > **Warning:** All arguments including `iap.oauth2_client_secret` and `iap.oauth2_client_secret_sha256` will be stored in the raw
+ * state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+ *
  * ## Example Usage
  * ### Region Backend Service Basic
  *
@@ -324,6 +327,11 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     public readonly healthChecks!: pulumi.Output<string | undefined>;
     /**
+     * Settings for enabling Cloud Identity Aware Proxy
+     * Structure is documented below.
+     */
+    public readonly iap!: pulumi.Output<outputs.compute.RegionBackendServiceIap | undefined>;
+    /**
      * Indicates what kind of load balancing this regional backend service
      * will be used for. A backend service created for one type of load
      * balancing cannot be used with the other(s).
@@ -447,6 +455,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             inputs["failoverPolicy"] = state ? state.failoverPolicy : undefined;
             inputs["fingerprint"] = state ? state.fingerprint : undefined;
             inputs["healthChecks"] = state ? state.healthChecks : undefined;
+            inputs["iap"] = state ? state.iap : undefined;
             inputs["loadBalancingScheme"] = state ? state.loadBalancingScheme : undefined;
             inputs["localityLbPolicy"] = state ? state.localityLbPolicy : undefined;
             inputs["logConfig"] = state ? state.logConfig : undefined;
@@ -472,6 +481,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             inputs["enableCdn"] = args ? args.enableCdn : undefined;
             inputs["failoverPolicy"] = args ? args.failoverPolicy : undefined;
             inputs["healthChecks"] = args ? args.healthChecks : undefined;
+            inputs["iap"] = args ? args.iap : undefined;
             inputs["loadBalancingScheme"] = args ? args.loadBalancingScheme : undefined;
             inputs["localityLbPolicy"] = args ? args.localityLbPolicy : undefined;
             inputs["logConfig"] = args ? args.logConfig : undefined;
@@ -569,6 +579,11 @@ export interface RegionBackendServiceState {
      * or serverless NEG as a backend.
      */
     healthChecks?: pulumi.Input<string>;
+    /**
+     * Settings for enabling Cloud Identity Aware Proxy
+     * Structure is documented below.
+     */
+    iap?: pulumi.Input<inputs.compute.RegionBackendServiceIap>;
     /**
      * Indicates what kind of load balancing this regional backend service
      * will be used for. A backend service created for one type of load
@@ -735,6 +750,11 @@ export interface RegionBackendServiceArgs {
      * or serverless NEG as a backend.
      */
     healthChecks?: pulumi.Input<string>;
+    /**
+     * Settings for enabling Cloud Identity Aware Proxy
+     * Structure is documented below.
+     */
+    iap?: pulumi.Input<inputs.compute.RegionBackendServiceIap>;
     /**
      * Indicates what kind of load balancing this regional backend service
      * will be used for. A backend service created for one type of load

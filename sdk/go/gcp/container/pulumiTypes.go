@@ -2946,6 +2946,181 @@ func (o ClusterDefaultSnatStatusPtrOutput) Disabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+type ClusterDnsConfig struct {
+	// Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
+	ClusterDns *string `pulumi:"clusterDns"`
+	// The suffix used for all cluster service records.
+	ClusterDnsDomain *string `pulumi:"clusterDnsDomain"`
+	// The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
+	ClusterDnsScope *string `pulumi:"clusterDnsScope"`
+}
+
+// ClusterDnsConfigInput is an input type that accepts ClusterDnsConfigArgs and ClusterDnsConfigOutput values.
+// You can construct a concrete instance of `ClusterDnsConfigInput` via:
+//
+//          ClusterDnsConfigArgs{...}
+type ClusterDnsConfigInput interface {
+	pulumi.Input
+
+	ToClusterDnsConfigOutput() ClusterDnsConfigOutput
+	ToClusterDnsConfigOutputWithContext(context.Context) ClusterDnsConfigOutput
+}
+
+type ClusterDnsConfigArgs struct {
+	// Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
+	ClusterDns pulumi.StringPtrInput `pulumi:"clusterDns"`
+	// The suffix used for all cluster service records.
+	ClusterDnsDomain pulumi.StringPtrInput `pulumi:"clusterDnsDomain"`
+	// The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
+	ClusterDnsScope pulumi.StringPtrInput `pulumi:"clusterDnsScope"`
+}
+
+func (ClusterDnsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterDnsConfig)(nil)).Elem()
+}
+
+func (i ClusterDnsConfigArgs) ToClusterDnsConfigOutput() ClusterDnsConfigOutput {
+	return i.ToClusterDnsConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterDnsConfigArgs) ToClusterDnsConfigOutputWithContext(ctx context.Context) ClusterDnsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterDnsConfigOutput)
+}
+
+func (i ClusterDnsConfigArgs) ToClusterDnsConfigPtrOutput() ClusterDnsConfigPtrOutput {
+	return i.ToClusterDnsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterDnsConfigArgs) ToClusterDnsConfigPtrOutputWithContext(ctx context.Context) ClusterDnsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterDnsConfigOutput).ToClusterDnsConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterDnsConfigPtrInput is an input type that accepts ClusterDnsConfigArgs, ClusterDnsConfigPtr and ClusterDnsConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterDnsConfigPtrInput` via:
+//
+//          ClusterDnsConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterDnsConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterDnsConfigPtrOutput() ClusterDnsConfigPtrOutput
+	ToClusterDnsConfigPtrOutputWithContext(context.Context) ClusterDnsConfigPtrOutput
+}
+
+type clusterDnsConfigPtrType ClusterDnsConfigArgs
+
+func ClusterDnsConfigPtr(v *ClusterDnsConfigArgs) ClusterDnsConfigPtrInput {
+	return (*clusterDnsConfigPtrType)(v)
+}
+
+func (*clusterDnsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterDnsConfig)(nil)).Elem()
+}
+
+func (i *clusterDnsConfigPtrType) ToClusterDnsConfigPtrOutput() ClusterDnsConfigPtrOutput {
+	return i.ToClusterDnsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterDnsConfigPtrType) ToClusterDnsConfigPtrOutputWithContext(ctx context.Context) ClusterDnsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterDnsConfigPtrOutput)
+}
+
+type ClusterDnsConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterDnsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterDnsConfig)(nil)).Elem()
+}
+
+func (o ClusterDnsConfigOutput) ToClusterDnsConfigOutput() ClusterDnsConfigOutput {
+	return o
+}
+
+func (o ClusterDnsConfigOutput) ToClusterDnsConfigOutputWithContext(ctx context.Context) ClusterDnsConfigOutput {
+	return o
+}
+
+func (o ClusterDnsConfigOutput) ToClusterDnsConfigPtrOutput() ClusterDnsConfigPtrOutput {
+	return o.ToClusterDnsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterDnsConfigOutput) ToClusterDnsConfigPtrOutputWithContext(ctx context.Context) ClusterDnsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterDnsConfig) *ClusterDnsConfig {
+		return &v
+	}).(ClusterDnsConfigPtrOutput)
+}
+
+// Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
+func (o ClusterDnsConfigOutput) ClusterDns() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterDnsConfig) *string { return v.ClusterDns }).(pulumi.StringPtrOutput)
+}
+
+// The suffix used for all cluster service records.
+func (o ClusterDnsConfigOutput) ClusterDnsDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterDnsConfig) *string { return v.ClusterDnsDomain }).(pulumi.StringPtrOutput)
+}
+
+// The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
+func (o ClusterDnsConfigOutput) ClusterDnsScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterDnsConfig) *string { return v.ClusterDnsScope }).(pulumi.StringPtrOutput)
+}
+
+type ClusterDnsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterDnsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterDnsConfig)(nil)).Elem()
+}
+
+func (o ClusterDnsConfigPtrOutput) ToClusterDnsConfigPtrOutput() ClusterDnsConfigPtrOutput {
+	return o
+}
+
+func (o ClusterDnsConfigPtrOutput) ToClusterDnsConfigPtrOutputWithContext(ctx context.Context) ClusterDnsConfigPtrOutput {
+	return o
+}
+
+func (o ClusterDnsConfigPtrOutput) Elem() ClusterDnsConfigOutput {
+	return o.ApplyT(func(v *ClusterDnsConfig) ClusterDnsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterDnsConfig
+		return ret
+	}).(ClusterDnsConfigOutput)
+}
+
+// Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
+func (o ClusterDnsConfigPtrOutput) ClusterDns() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterDnsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterDns
+	}).(pulumi.StringPtrOutput)
+}
+
+// The suffix used for all cluster service records.
+func (o ClusterDnsConfigPtrOutput) ClusterDnsDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterDnsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterDnsDomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
+func (o ClusterDnsConfigPtrOutput) ClusterDnsScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterDnsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterDnsScope
+	}).(pulumi.StringPtrOutput)
+}
+
 type ClusterIpAllocationPolicy struct {
 	// The IP address range for the cluster pod IPs.
 	// Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
@@ -14633,6 +14808,112 @@ func (o GetClusterDefaultSnatStatusArrayOutput) Index(i pulumi.IntInput) GetClus
 	}).(GetClusterDefaultSnatStatusOutput)
 }
 
+type GetClusterDnsConfig struct {
+	ClusterDns       string `pulumi:"clusterDns"`
+	ClusterDnsDomain string `pulumi:"clusterDnsDomain"`
+	ClusterDnsScope  string `pulumi:"clusterDnsScope"`
+}
+
+// GetClusterDnsConfigInput is an input type that accepts GetClusterDnsConfigArgs and GetClusterDnsConfigOutput values.
+// You can construct a concrete instance of `GetClusterDnsConfigInput` via:
+//
+//          GetClusterDnsConfigArgs{...}
+type GetClusterDnsConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterDnsConfigOutput() GetClusterDnsConfigOutput
+	ToGetClusterDnsConfigOutputWithContext(context.Context) GetClusterDnsConfigOutput
+}
+
+type GetClusterDnsConfigArgs struct {
+	ClusterDns       pulumi.StringInput `pulumi:"clusterDns"`
+	ClusterDnsDomain pulumi.StringInput `pulumi:"clusterDnsDomain"`
+	ClusterDnsScope  pulumi.StringInput `pulumi:"clusterDnsScope"`
+}
+
+func (GetClusterDnsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterDnsConfig)(nil)).Elem()
+}
+
+func (i GetClusterDnsConfigArgs) ToGetClusterDnsConfigOutput() GetClusterDnsConfigOutput {
+	return i.ToGetClusterDnsConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterDnsConfigArgs) ToGetClusterDnsConfigOutputWithContext(ctx context.Context) GetClusterDnsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterDnsConfigOutput)
+}
+
+// GetClusterDnsConfigArrayInput is an input type that accepts GetClusterDnsConfigArray and GetClusterDnsConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterDnsConfigArrayInput` via:
+//
+//          GetClusterDnsConfigArray{ GetClusterDnsConfigArgs{...} }
+type GetClusterDnsConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterDnsConfigArrayOutput() GetClusterDnsConfigArrayOutput
+	ToGetClusterDnsConfigArrayOutputWithContext(context.Context) GetClusterDnsConfigArrayOutput
+}
+
+type GetClusterDnsConfigArray []GetClusterDnsConfigInput
+
+func (GetClusterDnsConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterDnsConfig)(nil)).Elem()
+}
+
+func (i GetClusterDnsConfigArray) ToGetClusterDnsConfigArrayOutput() GetClusterDnsConfigArrayOutput {
+	return i.ToGetClusterDnsConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterDnsConfigArray) ToGetClusterDnsConfigArrayOutputWithContext(ctx context.Context) GetClusterDnsConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterDnsConfigArrayOutput)
+}
+
+type GetClusterDnsConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterDnsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterDnsConfig)(nil)).Elem()
+}
+
+func (o GetClusterDnsConfigOutput) ToGetClusterDnsConfigOutput() GetClusterDnsConfigOutput {
+	return o
+}
+
+func (o GetClusterDnsConfigOutput) ToGetClusterDnsConfigOutputWithContext(ctx context.Context) GetClusterDnsConfigOutput {
+	return o
+}
+
+func (o GetClusterDnsConfigOutput) ClusterDns() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterDnsConfig) string { return v.ClusterDns }).(pulumi.StringOutput)
+}
+
+func (o GetClusterDnsConfigOutput) ClusterDnsDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterDnsConfig) string { return v.ClusterDnsDomain }).(pulumi.StringOutput)
+}
+
+func (o GetClusterDnsConfigOutput) ClusterDnsScope() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterDnsConfig) string { return v.ClusterDnsScope }).(pulumi.StringOutput)
+}
+
+type GetClusterDnsConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterDnsConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterDnsConfig)(nil)).Elem()
+}
+
+func (o GetClusterDnsConfigArrayOutput) ToGetClusterDnsConfigArrayOutput() GetClusterDnsConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterDnsConfigArrayOutput) ToGetClusterDnsConfigArrayOutputWithContext(ctx context.Context) GetClusterDnsConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterDnsConfigArrayOutput) Index(i pulumi.IntInput) GetClusterDnsConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterDnsConfig {
+		return vs[0].([]GetClusterDnsConfig)[vs[1].(int)]
+	}).(GetClusterDnsConfigOutput)
+}
+
 type GetClusterIpAllocationPolicy struct {
 	ClusterIpv4CidrBlock       string `pulumi:"clusterIpv4CidrBlock"`
 	ClusterSecondaryRangeName  string `pulumi:"clusterSecondaryRangeName"`
@@ -19319,6 +19600,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterDatabaseEncryptionPtrOutput{})
 	pulumi.RegisterOutputType(ClusterDefaultSnatStatusOutput{})
 	pulumi.RegisterOutputType(ClusterDefaultSnatStatusPtrOutput{})
+	pulumi.RegisterOutputType(ClusterDnsConfigOutput{})
+	pulumi.RegisterOutputType(ClusterDnsConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterIpAllocationPolicyOutput{})
 	pulumi.RegisterOutputType(ClusterIpAllocationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ClusterMaintenancePolicyOutput{})
@@ -19467,6 +19750,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterDatabaseEncryptionArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterDefaultSnatStatusOutput{})
 	pulumi.RegisterOutputType(GetClusterDefaultSnatStatusArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterDnsConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterDnsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterIpAllocationPolicyOutput{})
 	pulumi.RegisterOutputType(GetClusterIpAllocationPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterMaintenancePolicyOutput{})

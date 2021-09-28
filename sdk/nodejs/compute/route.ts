@@ -87,6 +87,86 @@ import * as utilities from "../utilities";
  *     priority: 2000,
  * });
  * ```
+ * ### Route Ilb Vip
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const producerNetwork = new gcp.compute.Network("producerNetwork", {autoCreateSubnetworks: false}, {
+ *     provider: google_beta,
+ * });
+ * const producerSubnetwork = new gcp.compute.Subnetwork("producerSubnetwork", {
+ *     ipCidrRange: "10.0.1.0/24",
+ *     region: "us-central1",
+ *     network: producerNetwork.id,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const consumerNetwork = new gcp.compute.Network("consumerNetwork", {autoCreateSubnetworks: false}, {
+ *     provider: google_beta,
+ * });
+ * const consumerSubnetwork = new gcp.compute.Subnetwork("consumerSubnetwork", {
+ *     ipCidrRange: "10.0.2.0/24",
+ *     region: "us-central1",
+ *     network: consumerNetwork.id,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const peering1 = new gcp.compute.NetworkPeering("peering1", {
+ *     network: consumerNetwork.id,
+ *     peerNetwork: producerNetwork.id,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const peering2 = new gcp.compute.NetworkPeering("peering2", {
+ *     network: producerNetwork.id,
+ *     peerNetwork: consumerNetwork.id,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const hc = new gcp.compute.HealthCheck("hc", {
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ *     tcpHealthCheck: {
+ *         port: "80",
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const backend = new gcp.compute.RegionBackendService("backend", {
+ *     region: "us-central1",
+ *     healthChecks: [hc.id],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const _default = new gcp.compute.ForwardingRule("default", {
+ *     region: "us-central1",
+ *     loadBalancingScheme: "INTERNAL",
+ *     backendService: backend.id,
+ *     allPorts: true,
+ *     network: producerNetwork.name,
+ *     subnetwork: producerSubnetwork.name,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const route_ilb = new gcp.compute.Route("route-ilb", {
+ *     destRange: "0.0.0.0/0",
+ *     network: consumerNetwork.name,
+ *     nextHopIlb: _default.ipAddress,
+ *     priority: 2000,
+ *     tags: [
+ *         "tag1",
+ *         "tag2",
+ *     ],
+ * }, {
+ *     provider: google_beta,
+ *     dependsOn: [
+ *         peering1,
+ *         peering2,
+ *     ],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -167,11 +247,19 @@ export class Route extends pulumi.CustomResource {
      */
     public readonly nextHopGateway!: pulumi.Output<string | undefined>;
     /**
-     * The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets.
-     * You can only specify the forwarding rule as a partial or full URL. For example, the following are all valid URLs:
-     * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
-     * regions/region/forwardingRules/forwardingRule
-     * Note that this can only be used when the destinationRange is a public (non-RFC 1918) IP CIDR range.
+     * The IP address or URL to a forwarding rule of type
+     * loadBalancingScheme=INTERNAL that should handle matching
+     * packets.
+     * With the GA provider you can only specify the forwarding
+     * rule as a partial or full URL. For example, the following
+     * are all valid values:
+     * * 10.128.0.56
+     * * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+     * * regions/region/forwardingRules/forwardingRule
+     * When the beta provider, you can also specify the IP address
+     * of a forwarding rule from the same VPC or any peered VPC.
+     * Note that this can only be used when the destinationRange is
+     * a public (non-RFC 1918) IP CIDR range.
      */
     public readonly nextHopIlb!: pulumi.Output<string | undefined>;
     /**
@@ -322,11 +410,19 @@ export interface RouteState {
      */
     nextHopGateway?: pulumi.Input<string>;
     /**
-     * The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets.
-     * You can only specify the forwarding rule as a partial or full URL. For example, the following are all valid URLs:
-     * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
-     * regions/region/forwardingRules/forwardingRule
-     * Note that this can only be used when the destinationRange is a public (non-RFC 1918) IP CIDR range.
+     * The IP address or URL to a forwarding rule of type
+     * loadBalancingScheme=INTERNAL that should handle matching
+     * packets.
+     * With the GA provider you can only specify the forwarding
+     * rule as a partial or full URL. For example, the following
+     * are all valid values:
+     * * 10.128.0.56
+     * * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+     * * regions/region/forwardingRules/forwardingRule
+     * When the beta provider, you can also specify the IP address
+     * of a forwarding rule from the same VPC or any peered VPC.
+     * Note that this can only be used when the destinationRange is
+     * a public (non-RFC 1918) IP CIDR range.
      */
     nextHopIlb?: pulumi.Input<string>;
     /**
@@ -419,11 +515,19 @@ export interface RouteArgs {
      */
     nextHopGateway?: pulumi.Input<string>;
     /**
-     * The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets.
-     * You can only specify the forwarding rule as a partial or full URL. For example, the following are all valid URLs:
-     * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
-     * regions/region/forwardingRules/forwardingRule
-     * Note that this can only be used when the destinationRange is a public (non-RFC 1918) IP CIDR range.
+     * The IP address or URL to a forwarding rule of type
+     * loadBalancingScheme=INTERNAL that should handle matching
+     * packets.
+     * With the GA provider you can only specify the forwarding
+     * rule as a partial or full URL. For example, the following
+     * are all valid values:
+     * * 10.128.0.56
+     * * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+     * * regions/region/forwardingRules/forwardingRule
+     * When the beta provider, you can also specify the IP address
+     * of a forwarding rule from the same VPC or any peered VPC.
+     * Note that this can only be used when the destinationRange is
+     * a public (non-RFC 1918) IP CIDR range.
      */
     nextHopIlb?: pulumi.Input<string>;
     /**

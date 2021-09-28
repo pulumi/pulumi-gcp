@@ -70,7 +70,8 @@ class SubnetworkArgs:
         :param pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances
                contained in this subnetwork. The primary IP of such VM must belong
                to the primary ipCidrRange of the subnetwork. The alias IPs may belong
-               to either primary or secondary ranges. Structure is documented below.
+               to either primary or secondary ranges.
+               Structure is documented below.
         """
         pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
         pulumi.set(__self__, "network", network)
@@ -261,7 +262,8 @@ class SubnetworkArgs:
         An array of configurations for secondary IP ranges for VM instances
         contained in this subnetwork. The primary IP of such VM must belong
         to the primary ipCidrRange of the subnetwork. The alias IPs may belong
-        to either primary or secondary ranges. Structure is documented below.
+        to either primary or secondary ranges.
+        Structure is documented below.
         """
         return pulumi.get(self, "secondary_ip_ranges")
 
@@ -335,7 +337,8 @@ class _SubnetworkState:
         :param pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances
                contained in this subnetwork. The primary IP of such VM must belong
                to the primary ipCidrRange of the subnetwork. The alias IPs may belong
-               to either primary or secondary ranges. Structure is documented below.
+               to either primary or secondary ranges.
+               Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         """
         if creation_timestamp is not None:
@@ -576,7 +579,8 @@ class _SubnetworkState:
         An array of configurations for secondary IP ranges for VM instances
         contained in this subnetwork. The primary IP of such VM must belong
         to the primary ipCidrRange of the subnetwork. The alias IPs may belong
-        to either primary or secondary ranges. Structure is documented below.
+        to either primary or secondary ranges.
+        Structure is documented below.
         """
         return pulumi.get(self, "secondary_ip_ranges")
 
@@ -760,7 +764,8 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetworkSecondaryIpRangeArgs']]]] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances
                contained in this subnetwork. The primary IP of such VM must belong
                to the primary ipCidrRange of the subnetwork. The alias IPs may belong
-               to either primary or secondary ranges. Structure is documented below.
+               to either primary or secondary ranges.
+               Structure is documented below.
         """
         ...
     @overload
@@ -1006,7 +1011,8 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetworkSecondaryIpRangeArgs']]]] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances
                contained in this subnetwork. The primary IP of such VM must belong
                to the primary ipCidrRange of the subnetwork. The alias IPs may belong
-               to either primary or secondary ranges. Structure is documented below.
+               to either primary or secondary ranges.
+               Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1177,7 +1183,8 @@ class Subnetwork(pulumi.CustomResource):
         An array of configurations for secondary IP ranges for VM instances
         contained in this subnetwork. The primary IP of such VM must belong
         to the primary ipCidrRange of the subnetwork. The alias IPs may belong
-        to either primary or secondary ranges. Structure is documented below.
+        to either primary or secondary ranges.
+        Structure is documented below.
         """
         return pulumi.get(self, "secondary_ip_ranges")
 

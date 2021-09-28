@@ -67,6 +67,9 @@ type Account struct {
 	// A text description of the service account.
 	// Must be less than or equal to 256 UTF-8 bytes.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Whether a service account is disabled or not. Defaults to `false`. This field has no effect during creation.
+	// Must be set after creation to disable a service account.
+	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
 	// The display name for the service account.
 	// Can be updated without creating a new resource.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
@@ -123,6 +126,9 @@ type accountState struct {
 	// A text description of the service account.
 	// Must be less than or equal to 256 UTF-8 bytes.
 	Description *string `pulumi:"description"`
+	// Whether a service account is disabled or not. Defaults to `false`. This field has no effect during creation.
+	// Must be set after creation to disable a service account.
+	Disabled *bool `pulumi:"disabled"`
 	// The display name for the service account.
 	// Can be updated without creating a new resource.
 	DisplayName *string `pulumi:"displayName"`
@@ -148,6 +154,9 @@ type AccountState struct {
 	// A text description of the service account.
 	// Must be less than or equal to 256 UTF-8 bytes.
 	Description pulumi.StringPtrInput
+	// Whether a service account is disabled or not. Defaults to `false`. This field has no effect during creation.
+	// Must be set after creation to disable a service account.
+	Disabled pulumi.BoolPtrInput
 	// The display name for the service account.
 	// Can be updated without creating a new resource.
 	DisplayName pulumi.StringPtrInput
@@ -177,6 +186,9 @@ type accountArgs struct {
 	// A text description of the service account.
 	// Must be less than or equal to 256 UTF-8 bytes.
 	Description *string `pulumi:"description"`
+	// Whether a service account is disabled or not. Defaults to `false`. This field has no effect during creation.
+	// Must be set after creation to disable a service account.
+	Disabled *bool `pulumi:"disabled"`
 	// The display name for the service account.
 	// Can be updated without creating a new resource.
 	DisplayName *string `pulumi:"displayName"`
@@ -195,6 +207,9 @@ type AccountArgs struct {
 	// A text description of the service account.
 	// Must be less than or equal to 256 UTF-8 bytes.
 	Description pulumi.StringPtrInput
+	// Whether a service account is disabled or not. Defaults to `false`. This field has no effect during creation.
+	// Must be set after creation to disable a service account.
+	Disabled pulumi.BoolPtrInput
 	// The display name for the service account.
 	// Can be updated without creating a new resource.
 	DisplayName pulumi.StringPtrInput

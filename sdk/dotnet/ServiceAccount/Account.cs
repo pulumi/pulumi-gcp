@@ -72,6 +72,13 @@ namespace Pulumi.Gcp.ServiceAccount
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Whether a service account is disabled or not. Defaults to `false`. This field has no effect during creation.
+        /// Must be set after creation to disable a service account.
+        /// </summary>
+        [Output("disabled")]
+        public Output<bool?> Disabled { get; private set; } = null!;
+
+        /// <summary>
         /// The display name for the service account.
         /// Can be updated without creating a new resource.
         /// </summary>
@@ -168,6 +175,13 @@ namespace Pulumi.Gcp.ServiceAccount
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Whether a service account is disabled or not. Defaults to `false`. This field has no effect during creation.
+        /// Must be set after creation to disable a service account.
+        /// </summary>
+        [Input("disabled")]
+        public Input<bool>? Disabled { get; set; }
+
+        /// <summary>
         /// The display name for the service account.
         /// Can be updated without creating a new resource.
         /// </summary>
@@ -203,6 +217,13 @@ namespace Pulumi.Gcp.ServiceAccount
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Whether a service account is disabled or not. Defaults to `false`. This field has no effect during creation.
+        /// Must be set after creation to disable a service account.
+        /// </summary>
+        [Input("disabled")]
+        public Input<bool>? Disabled { get; set; }
 
         /// <summary>
         /// The display name for the service account.

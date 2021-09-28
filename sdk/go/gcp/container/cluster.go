@@ -157,6 +157,9 @@ type Cluster struct {
 	DefaultSnatStatus ClusterDefaultSnatStatusOutput `pulumi:"defaultSnatStatus"`
 	// Description of the cluster.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// )
+	// Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
+	DnsConfig ClusterDnsConfigPtrOutput `pulumi:"dnsConfig"`
 	// Enable Autopilot for this cluster. Defaults to `false`.
 	// Note that when this option is enabled, certain features of Standard GKE are not available.
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
@@ -418,6 +421,9 @@ type clusterState struct {
 	DefaultSnatStatus *ClusterDefaultSnatStatus `pulumi:"defaultSnatStatus"`
 	// Description of the cluster.
 	Description *string `pulumi:"description"`
+	// )
+	// Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
+	DnsConfig *ClusterDnsConfig `pulumi:"dnsConfig"`
 	// Enable Autopilot for this cluster. Defaults to `false`.
 	// Note that when this option is enabled, certain features of Standard GKE are not available.
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
@@ -651,6 +657,9 @@ type ClusterState struct {
 	DefaultSnatStatus ClusterDefaultSnatStatusPtrInput
 	// Description of the cluster.
 	Description pulumi.StringPtrInput
+	// )
+	// Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
+	DnsConfig ClusterDnsConfigPtrInput
 	// Enable Autopilot for this cluster. Defaults to `false`.
 	// Note that when this option is enabled, certain features of Standard GKE are not available.
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
@@ -888,6 +897,9 @@ type clusterArgs struct {
 	DefaultSnatStatus *ClusterDefaultSnatStatus `pulumi:"defaultSnatStatus"`
 	// Description of the cluster.
 	Description *string `pulumi:"description"`
+	// )
+	// Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
+	DnsConfig *ClusterDnsConfig `pulumi:"dnsConfig"`
 	// Enable Autopilot for this cluster. Defaults to `false`.
 	// Note that when this option is enabled, certain features of Standard GKE are not available.
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
@@ -1099,6 +1111,9 @@ type ClusterArgs struct {
 	DefaultSnatStatus ClusterDefaultSnatStatusPtrInput
 	// Description of the cluster.
 	Description pulumi.StringPtrInput
+	// )
+	// Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
+	DnsConfig ClusterDnsConfigPtrInput
 	// Enable Autopilot for this cluster. Defaults to `false`.
 	// Note that when this option is enabled, certain features of Standard GKE are not available.
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)

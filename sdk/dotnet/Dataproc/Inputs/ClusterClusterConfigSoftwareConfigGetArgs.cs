@@ -30,6 +30,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         /// Accepted values are:
         /// * ANACONDA
         /// * DRUID
+        /// * FLINK
         /// * HBASE
         /// * HIVE_WEBHCAT
         /// * JUPYTER

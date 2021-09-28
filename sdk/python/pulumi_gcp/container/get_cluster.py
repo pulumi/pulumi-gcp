@@ -21,7 +21,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, addons_configs=None, authenticator_groups_configs=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, cluster_telemetries=None, confidential_nodes=None, database_encryptions=None, datapath_provider=None, default_max_pods_per_node=None, default_snat_statuses=None, description=None, enable_autopilot=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_l4_ilb_subsetting=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, id=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_service=None, maintenance_policies=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policies=None, networking_mode=None, node_configs=None, node_locations=None, node_pools=None, node_version=None, notification_configs=None, operation=None, pod_security_policy_configs=None, private_cluster_configs=None, private_ipv6_google_access=None, project=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, self_link=None, services_ipv4_cidr=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscalings=None, workload_identity_configs=None):
+    def __init__(__self__, addons_configs=None, authenticator_groups_configs=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, cluster_telemetries=None, confidential_nodes=None, database_encryptions=None, datapath_provider=None, default_max_pods_per_node=None, default_snat_statuses=None, description=None, dns_configs=None, enable_autopilot=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_l4_ilb_subsetting=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, id=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_service=None, maintenance_policies=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policies=None, networking_mode=None, node_configs=None, node_locations=None, node_pools=None, node_version=None, notification_configs=None, operation=None, pod_security_policy_configs=None, private_cluster_configs=None, private_ipv6_google_access=None, project=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, self_link=None, services_ipv4_cidr=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscalings=None, workload_identity_configs=None):
         if addons_configs and not isinstance(addons_configs, list):
             raise TypeError("Expected argument 'addons_configs' to be a list")
         pulumi.set(__self__, "addons_configs", addons_configs)
@@ -55,6 +55,9 @@ class GetClusterResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if dns_configs and not isinstance(dns_configs, list):
+            raise TypeError("Expected argument 'dns_configs' to be a list")
+        pulumi.set(__self__, "dns_configs", dns_configs)
         if enable_autopilot and not isinstance(enable_autopilot, bool):
             raise TypeError("Expected argument 'enable_autopilot' to be a bool")
         pulumi.set(__self__, "enable_autopilot", enable_autopilot)
@@ -248,6 +251,11 @@ class GetClusterResult:
     @pulumi.getter
     def description(self) -> str:
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="dnsConfigs")
+    def dns_configs(self) -> Sequence['outputs.GetClusterDnsConfigResult']:
+        return pulumi.get(self, "dns_configs")
 
     @property
     @pulumi.getter(name="enableAutopilot")
@@ -500,6 +508,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             default_max_pods_per_node=self.default_max_pods_per_node,
             default_snat_statuses=self.default_snat_statuses,
             description=self.description,
+            dns_configs=self.dns_configs,
             enable_autopilot=self.enable_autopilot,
             enable_binary_authorization=self.enable_binary_authorization,
             enable_intranode_visibility=self.enable_intranode_visibility,
@@ -601,6 +610,7 @@ def get_cluster(location: Optional[str] = None,
         default_max_pods_per_node=__ret__.default_max_pods_per_node,
         default_snat_statuses=__ret__.default_snat_statuses,
         description=__ret__.description,
+        dns_configs=__ret__.dns_configs,
         enable_autopilot=__ret__.enable_autopilot,
         enable_binary_authorization=__ret__.enable_binary_authorization,
         enable_intranode_visibility=__ret__.enable_intranode_visibility,

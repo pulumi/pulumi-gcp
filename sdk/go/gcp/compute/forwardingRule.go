@@ -931,7 +931,7 @@ type ForwardingRule struct {
 	// A BackendService to receive the matched traffic. This is used only
 	// for INTERNAL load balancing.
 	BackendService pulumi.StringPtrOutput `pulumi:"backendService"`
-	// Creation timestamp in RFC3339 text format.
+	// [Output Only] Creation timestamp in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
@@ -962,7 +962,7 @@ type ForwardingRule struct {
 	// can only be set to true for load balancers that have their
 	// loadBalancingScheme set to INTERNAL.
 	IsMirroringCollector pulumi.BoolPtrOutput `pulumi:"isMirroringCollector"`
-	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+	// Used internally during label updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
 	// Labels to apply to this forwarding rule.  A list of key->value pairs.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
@@ -1039,7 +1039,8 @@ type ForwardingRule struct {
 	// character, which cannot be a dash.
 	// This field is only used for INTERNAL load balancing.
 	ServiceLabel pulumi.StringPtrOutput `pulumi:"serviceLabel"`
-	// The internal fully qualified service name for this Forwarding Rule. This field is only used for INTERNAL load balancing.
+	// [Output Only] The internal fully qualified service name for this Forwarding Rule. This field is only used for internal
+	// load balancing.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// The subnetwork that the load balanced IP should belong to for this
 	// Forwarding Rule.  This field is only used for INTERNAL load balancing.
@@ -1097,7 +1098,7 @@ type forwardingRuleState struct {
 	// A BackendService to receive the matched traffic. This is used only
 	// for INTERNAL load balancing.
 	BackendService *string `pulumi:"backendService"`
-	// Creation timestamp in RFC3339 text format.
+	// [Output Only] Creation timestamp in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
@@ -1128,7 +1129,7 @@ type forwardingRuleState struct {
 	// can only be set to true for load balancers that have their
 	// loadBalancingScheme set to INTERNAL.
 	IsMirroringCollector *bool `pulumi:"isMirroringCollector"`
-	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+	// Used internally during label updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
 	// Labels to apply to this forwarding rule.  A list of key->value pairs.
 	Labels map[string]string `pulumi:"labels"`
@@ -1205,7 +1206,8 @@ type forwardingRuleState struct {
 	// character, which cannot be a dash.
 	// This field is only used for INTERNAL load balancing.
 	ServiceLabel *string `pulumi:"serviceLabel"`
-	// The internal fully qualified service name for this Forwarding Rule. This field is only used for INTERNAL load balancing.
+	// [Output Only] The internal fully qualified service name for this Forwarding Rule. This field is only used for internal
+	// load balancing.
 	ServiceName *string `pulumi:"serviceName"`
 	// The subnetwork that the load balanced IP should belong to for this
 	// Forwarding Rule.  This field is only used for INTERNAL load balancing.
@@ -1235,7 +1237,7 @@ type ForwardingRuleState struct {
 	// A BackendService to receive the matched traffic. This is used only
 	// for INTERNAL load balancing.
 	BackendService pulumi.StringPtrInput
-	// Creation timestamp in RFC3339 text format.
+	// [Output Only] Creation timestamp in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
@@ -1266,7 +1268,7 @@ type ForwardingRuleState struct {
 	// can only be set to true for load balancers that have their
 	// loadBalancingScheme set to INTERNAL.
 	IsMirroringCollector pulumi.BoolPtrInput
-	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+	// Used internally during label updates.
 	LabelFingerprint pulumi.StringPtrInput
 	// Labels to apply to this forwarding rule.  A list of key->value pairs.
 	Labels pulumi.StringMapInput
@@ -1343,7 +1345,8 @@ type ForwardingRuleState struct {
 	// character, which cannot be a dash.
 	// This field is only used for INTERNAL load balancing.
 	ServiceLabel pulumi.StringPtrInput
-	// The internal fully qualified service name for this Forwarding Rule. This field is only used for INTERNAL load balancing.
+	// [Output Only] The internal fully qualified service name for this Forwarding Rule. This field is only used for internal
+	// load balancing.
 	ServiceName pulumi.StringPtrInput
 	// The subnetwork that the load balanced IP should belong to for this
 	// Forwarding Rule.  This field is only used for INTERNAL load balancing.

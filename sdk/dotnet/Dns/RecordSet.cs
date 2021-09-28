@@ -10,86 +10,43 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dns
 {
     /// <summary>
-    /// A single DNS record that exists on a domain name (i.e. in a managed zone).
-    /// This record defines the information about the domain and where the
-    /// domain / subdomains direct to.
-    /// 
-    /// The record will include the domain/subdomain name, a type (i.e. A, AAA,
-    /// CAA, MX, CNAME, NS, etc)
-    /// 
-    /// ## Example Usage
-    /// ### Dns Record Set Basic
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var parent_zone = new Gcp.Dns.ManagedZone("parent-zone", new Gcp.Dns.ManagedZoneArgs
-    ///         {
-    ///             DnsName = "my-zone.hashicorptest.com.",
-    ///             Description = "Test Description",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = "google-beta",
-    ///         });
-    ///         var resource_recordset = new Gcp.Dns.RecordSet("resource-recordset", new Gcp.Dns.RecordSetArgs
-    ///         {
-    ///             ManagedZone = parent_zone.Name,
-    ///             Name = "test-record.my-zone.hashicorptest.com.",
-    ///             Type = "A",
-    ///             Rrdatas = 
-    ///             {
-    ///                 "10.0.0.1",
-    ///                 "10.1.0.1",
-    ///             },
-    ///             Ttl = 86400,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = "google-beta",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
     /// ## Import
     /// 
-    /// ResourceDnsRecordSet can be imported using any of these accepted formats
+    /// DNS record sets can be imported using either of these accepted formats
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:dns/recordSet:RecordSet default projects/{{project}}/managedZones/{{managed_zone}}/rrsets/{{name}}/{{type}}
+    ///  $ pulumi import gcp:dns/recordSet:RecordSet frontend projects/{{project}}/managedZones/{{zone}}/rrsets/{{name}}/{{type}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:dns/recordSet:RecordSet default {{project}}/{{managed_zone}}/{{name}}/{{type}}
+    ///  $ pulumi import gcp:dns/recordSet:RecordSet frontend {{project}}/{{zone}}/{{name}}/{{type}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:dns/recordSet:RecordSet default {{managed_zone}}/{{name}}/{{type}}
+    ///  $ pulumi import gcp:dns/recordSet:RecordSet frontend {{zone}}/{{name}}/{{type}}
     /// ```
+    /// 
+    ///  NoteThe record name must include the trailing dot at the end.
     /// </summary>
     [GcpResourceType("gcp:dns/recordSet:RecordSet")]
     public partial class RecordSet : Pulumi.CustomResource
     {
         /// <summary>
-        /// Identifies the managed zone addressed by this request.
+        /// The name of the zone in which this record set will
+        /// reside.
         /// </summary>
         [Output("managedZone")]
         public Output<string> ManagedZone { get; private set; } = null!;
 
         /// <summary>
-        /// For example, www.example.com.
+        /// The DNS name this record set will apply to.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
+        /// The ID of the project in which the resource belongs. If it
+        /// is not provided, the provider project is used.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -104,15 +61,13 @@ namespace Pulumi.Gcp.Dns
         public Output<ImmutableArray<string>> Rrdatas { get; private set; } = null!;
 
         /// <summary>
-        /// Number of seconds that this ResourceRecordSet can be cached by
-        /// resolvers.
+        /// The time-to-live of this record set (seconds).
         /// </summary>
         [Output("ttl")]
         public Output<int?> Ttl { get; private set; } = null!;
 
         /// <summary>
-        /// One of valid DNS resource types.
-        /// Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `TLSA`, and `TXT`.
+        /// The DNS record set type.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -164,25 +119,26 @@ namespace Pulumi.Gcp.Dns
     public sealed class RecordSetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifies the managed zone addressed by this request.
+        /// The name of the zone in which this record set will
+        /// reside.
         /// </summary>
         [Input("managedZone", required: true)]
         public Input<string> ManagedZone { get; set; } = null!;
 
         /// <summary>
-        /// For example, www.example.com.
+        /// The DNS name this record set will apply to.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
+        /// The ID of the project in which the resource belongs. If it
+        /// is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
-        [Input("rrdatas")]
+        [Input("rrdatas", required: true)]
         private InputList<string>? _rrdatas;
 
         /// <summary>
@@ -198,15 +154,13 @@ namespace Pulumi.Gcp.Dns
         }
 
         /// <summary>
-        /// Number of seconds that this ResourceRecordSet can be cached by
-        /// resolvers.
+        /// The time-to-live of this record set (seconds).
         /// </summary>
         [Input("ttl")]
         public Input<int>? Ttl { get; set; }
 
         /// <summary>
-        /// One of valid DNS resource types.
-        /// Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `TLSA`, and `TXT`.
+        /// The DNS record set type.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -219,20 +173,21 @@ namespace Pulumi.Gcp.Dns
     public sealed class RecordSetState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifies the managed zone addressed by this request.
+        /// The name of the zone in which this record set will
+        /// reside.
         /// </summary>
         [Input("managedZone")]
         public Input<string>? ManagedZone { get; set; }
 
         /// <summary>
-        /// For example, www.example.com.
+        /// The DNS name this record set will apply to.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
+        /// The ID of the project in which the resource belongs. If it
+        /// is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -253,15 +208,13 @@ namespace Pulumi.Gcp.Dns
         }
 
         /// <summary>
-        /// Number of seconds that this ResourceRecordSet can be cached by
-        /// resolvers.
+        /// The time-to-live of this record set (seconds).
         /// </summary>
         [Input("ttl")]
         public Input<int>? Ttl { get; set; }
 
         /// <summary>
-        /// One of valid DNS resource types.
-        /// Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `TLSA`, and `TXT`.
+        /// The DNS record set type.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -19,6 +19,9 @@ import (
 // * How-to Guides
 //     * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
 //
+// > **Warning:** All arguments including `iap.oauth2_client_secret` and `iap.oauth2_client_secret_sha256` will be stored in the raw
+// state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+//
 // ## Example Usage
 // ### Region Backend Service Basic
 //
@@ -400,6 +403,9 @@ type RegionBackendService struct {
 	// A health check must be specified unless the backend service uses an internet
 	// or serverless NEG as a backend.
 	HealthChecks pulumi.StringPtrOutput `pulumi:"healthChecks"`
+	// Settings for enabling Cloud Identity Aware Proxy
+	// Structure is documented below.
+	Iap RegionBackendServiceIapPtrOutput `pulumi:"iap"`
 	// Indicates what kind of load balancing this regional backend service
 	// will be used for. A backend service created for one type of load
 	// balancing cannot be used with the other(s).
@@ -549,6 +555,9 @@ type regionBackendServiceState struct {
 	// A health check must be specified unless the backend service uses an internet
 	// or serverless NEG as a backend.
 	HealthChecks *string `pulumi:"healthChecks"`
+	// Settings for enabling Cloud Identity Aware Proxy
+	// Structure is documented below.
+	Iap *RegionBackendServiceIap `pulumi:"iap"`
 	// Indicates what kind of load balancing this regional backend service
 	// will be used for. A backend service created for one type of load
 	// balancing cannot be used with the other(s).
@@ -670,6 +679,9 @@ type RegionBackendServiceState struct {
 	// A health check must be specified unless the backend service uses an internet
 	// or serverless NEG as a backend.
 	HealthChecks pulumi.StringPtrInput
+	// Settings for enabling Cloud Identity Aware Proxy
+	// Structure is documented below.
+	Iap RegionBackendServiceIapPtrInput
 	// Indicates what kind of load balancing this regional backend service
 	// will be used for. A backend service created for one type of load
 	// balancing cannot be used with the other(s).
@@ -791,6 +803,9 @@ type regionBackendServiceArgs struct {
 	// A health check must be specified unless the backend service uses an internet
 	// or serverless NEG as a backend.
 	HealthChecks *string `pulumi:"healthChecks"`
+	// Settings for enabling Cloud Identity Aware Proxy
+	// Structure is documented below.
+	Iap *RegionBackendServiceIap `pulumi:"iap"`
 	// Indicates what kind of load balancing this regional backend service
 	// will be used for. A backend service created for one type of load
 	// balancing cannot be used with the other(s).
@@ -907,6 +922,9 @@ type RegionBackendServiceArgs struct {
 	// A health check must be specified unless the backend service uses an internet
 	// or serverless NEG as a backend.
 	HealthChecks pulumi.StringPtrInput
+	// Settings for enabling Cloud Identity Aware Proxy
+	// Structure is documented below.
+	Iap RegionBackendServiceIapPtrInput
 	// Indicates what kind of load balancing this regional backend service
 	// will be used for. A backend service created for one type of load
 	// balancing cannot be used with the other(s).

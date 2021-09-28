@@ -1208,11 +1208,15 @@ class TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs:
 @pulumi.input_type
 class TransferJobTransferSpecGcsDataSinkArgs:
     def __init__(__self__, *,
-                 bucket_name: pulumi.Input[str]):
+                 bucket_name: pulumi.Input[str],
+                 path: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] bucket_name: S3 Bucket name.
+        :param pulumi.Input[str] path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
         """
         pulumi.set(__self__, "bucket_name", bucket_name)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
 
     @property
     @pulumi.getter(name="bucketName")
@@ -1225,16 +1229,32 @@ class TransferJobTransferSpecGcsDataSinkArgs:
     @bucket_name.setter
     def bucket_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "bucket_name", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
 
 
 @pulumi.input_type
 class TransferJobTransferSpecGcsDataSourceArgs:
     def __init__(__self__, *,
-                 bucket_name: pulumi.Input[str]):
+                 bucket_name: pulumi.Input[str],
+                 path: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] bucket_name: S3 Bucket name.
+        :param pulumi.Input[str] path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
         """
         pulumi.set(__self__, "bucket_name", bucket_name)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
 
     @property
     @pulumi.getter(name="bucketName")
@@ -1247,6 +1267,18 @@ class TransferJobTransferSpecGcsDataSourceArgs:
     @bucket_name.setter
     def bucket_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "bucket_name", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
 
 
 @pulumi.input_type

@@ -20,6 +20,160 @@ import (
 // https://cloud.google.com/compute/docs/load-balancing/http/
 //
 // ## Example Usage
+// ### External Http Lb Mig Backend Custom Header
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		xlbNetwork, err := compute.NewNetwork(ctx, "xlbNetwork", &compute.NetworkArgs{
+// 			AutoCreateSubnetworks: pulumi.Bool(false),
+// 		}, pulumi.Provider(google))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		xlbSubnet, err := compute.NewSubnetwork(ctx, "xlbSubnet", &compute.SubnetworkArgs{
+// 			IpCidrRange: pulumi.String("10.0.1.0/24"),
+// 			Region:      pulumi.String("us-central1"),
+// 			Network:     xlbNetwork.ID(),
+// 		}, pulumi.Provider(google))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultHealthCheck, err := compute.NewHealthCheck(ctx, "defaultHealthCheck", &compute.HealthCheckArgs{
+// 			HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+// 				PortSpecification: pulumi.String("USE_SERVING_PORT"),
+// 			},
+// 		}, pulumi.Provider(google))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		instanceTemplate, err := compute.NewInstanceTemplate(ctx, "instanceTemplate", &compute.InstanceTemplateArgs{
+// 			MachineType: pulumi.String("e2-small"),
+// 			Tags: pulumi.StringArray{
+// 				pulumi.String("allow-health-check"),
+// 			},
+// 			NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
+// 				&compute.InstanceTemplateNetworkInterfaceArgs{
+// 					Network:    xlbNetwork.ID(),
+// 					Subnetwork: xlbSubnet.ID(),
+// 					AccessConfigs: compute.InstanceTemplateNetworkInterfaceAccessConfigArray{
+// 						nil,
+// 					},
+// 				},
+// 			},
+// 			Disks: compute.InstanceTemplateDiskArray{
+// 				&compute.InstanceTemplateDiskArgs{
+// 					SourceImage: pulumi.String("debian-cloud/debian-10"),
+// 					AutoDelete:  pulumi.Bool(true),
+// 					Boot:        pulumi.Bool(true),
+// 				},
+// 			},
+// 			Metadata: pulumi.AnyMap{
+// 				"startup-script": pulumi.Any(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "#! /bin/bash\n", "set -euo pipefail\n", "\n", "export DEBIAN_FRONTEND=noninteractive\n", "apt-get update\n", "apt-get install -y nginx-light jq\n", "\n", "NAME=", "$", "(curl -H \"Metadata-Flavor: Google\" \"http://metadata.google.internal/computeMetadata/v1/instance/hostname\")\n", "IP=", "$", "(curl -H \"Metadata-Flavor: Google\" \"http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip\")\n", "METADATA=", "$", "(curl -f -H \"Metadata-Flavor: Google\" \"http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True\" | jq 'del(.[\"startup-script\"])')\n", "\n", "cat <<EOF > /var/www/html/index.html\n", "<pre>\n", "Name: ", "$", "NAME\n", "IP: ", "$", "IP\n", "Metadata: ", "$", "METADATA\n", "</pre>\n", "EOF\n")),
+// 			},
+// 		}, pulumi.Provider(google))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		mig, err := compute.NewInstanceGroupManager(ctx, "mig", &compute.InstanceGroupManagerArgs{
+// 			Zone: pulumi.String("us-central1-c"),
+// 			NamedPorts: compute.InstanceGroupManagerNamedPortArray{
+// 				&compute.InstanceGroupManagerNamedPortArgs{
+// 					Name: pulumi.String("http"),
+// 					Port: pulumi.Int(8080),
+// 				},
+// 			},
+// 			Versions: compute.InstanceGroupManagerVersionArray{
+// 				&compute.InstanceGroupManagerVersionArgs{
+// 					InstanceTemplate: instanceTemplate.ID(),
+// 					Name:             pulumi.String("primary"),
+// 				},
+// 			},
+// 			BaseInstanceName: pulumi.String("vm"),
+// 			TargetSize:       pulumi.Int(2),
+// 		}, pulumi.Provider(google))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultBackendService, err := compute.NewBackendService(ctx, "defaultBackendService", &compute.BackendServiceArgs{
+// 			Protocol:            pulumi.String("HTTP"),
+// 			PortName:            pulumi.String("my-port"),
+// 			LoadBalancingScheme: pulumi.String("EXTERNAL"),
+// 			TimeoutSec:          pulumi.Int(10),
+// 			EnableCdn:           pulumi.Bool(true),
+// 			CustomRequestHeaders: pulumi.StringArray{
+// 				pulumi.String("X-Client-Geo-Location: {client_region_subdivision}, {client_city}"),
+// 			},
+// 			CustomResponseHeaders: pulumi.StringArray{
+// 				pulumi.String("X-Cache-Hit: {cdn_cache_status}"),
+// 			},
+// 			HealthChecks: pulumi.String{
+// 				defaultHealthCheck.ID(),
+// 			},
+// 			Backends: compute.BackendServiceBackendArray{
+// 				&compute.BackendServiceBackendArgs{
+// 					Group:          mig.InstanceGroup,
+// 					BalancingMode:  pulumi.String("UTILIZATION"),
+// 					CapacityScaler: pulumi.Float64(1),
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultURLMap, err := compute.NewURLMap(ctx, "defaultURLMap", &compute.URLMapArgs{
+// 			DefaultService: defaultBackendService.ID(),
+// 		}, pulumi.Provider(google))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultTargetHttpProxy, err := compute.NewTargetHttpProxy(ctx, "defaultTargetHttpProxy", &compute.TargetHttpProxyArgs{
+// 			UrlMap: defaultURLMap.ID(),
+// 		}, pulumi.Provider(google))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewGlobalForwardingRule(ctx, "googleComputeGlobalForwardingRule", &compute.GlobalForwardingRuleArgs{
+// 			IpProtocol:          pulumi.String("TCP"),
+// 			LoadBalancingScheme: pulumi.String("EXTERNAL"),
+// 			PortRange:           pulumi.String("80"),
+// 			Target:              defaultTargetHttpProxy.ID(),
+// 		}, pulumi.Provider(google))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewFirewall(ctx, "fwHealthCheck", &compute.FirewallArgs{
+// 			Direction: pulumi.String("INGRESS"),
+// 			Network:   xlbNetwork.ID(),
+// 			SourceRanges: pulumi.StringArray{
+// 				pulumi.String("130.211.0.0/22"),
+// 				pulumi.String("35.191.0.0/16"),
+// 			},
+// 			Allows: compute.FirewallAllowArray{
+// 				&compute.FirewallAllowArgs{
+// 					Protocol: pulumi.String("tcp"),
+// 				},
+// 			},
+// 			TargetTags: pulumi.StringArray{
+// 				pulumi.String("allow-health-check"),
+// 			},
+// 		}, pulumi.Provider(google))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 // ### Global Forwarding Rule Http
 //
 // ```go
@@ -339,7 +493,7 @@ type GlobalForwardingRule struct {
 	// The IP Version that will be used by this global forwarding rule.
 	// Possible values are `IPV4` and `IPV6`.
 	IpVersion pulumi.StringPtrOutput `pulumi:"ipVersion"`
-	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+	// Used internally during label updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
 	// Labels to apply to this forwarding rule.  A list of key->value pairs.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
@@ -467,7 +621,7 @@ type globalForwardingRuleState struct {
 	// The IP Version that will be used by this global forwarding rule.
 	// Possible values are `IPV4` and `IPV6`.
 	IpVersion *string `pulumi:"ipVersion"`
-	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+	// Used internally during label updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
 	// Labels to apply to this forwarding rule.  A list of key->value pairs.
 	Labels map[string]string `pulumi:"labels"`
@@ -564,7 +718,7 @@ type GlobalForwardingRuleState struct {
 	// The IP Version that will be used by this global forwarding rule.
 	// Possible values are `IPV4` and `IPV6`.
 	IpVersion pulumi.StringPtrInput
-	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+	// Used internally during label updates.
 	LabelFingerprint pulumi.StringPtrInput
 	// Labels to apply to this forwarding rule.  A list of key->value pairs.
 	Labels pulumi.StringMapInput

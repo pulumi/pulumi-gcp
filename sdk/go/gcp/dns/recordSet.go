@@ -11,86 +11,42 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A single DNS record that exists on a domain name (i.e. in a managed zone).
-// This record defines the information about the domain and where the
-// domain / subdomains direct to.
-//
-// The record will include the domain/subdomain name, a type (i.e. A, AAA,
-// CAA, MX, CNAME, NS, etc)
-//
-// ## Example Usage
-// ### Dns Record Set Basic
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/dns"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := dns.NewManagedZone(ctx, "parent_zone", &dns.ManagedZoneArgs{
-// 			DnsName:     pulumi.String("my-zone.hashicorptest.com."),
-// 			Description: pulumi.String("Test Description"),
-// 		}, pulumi.Provider("google-beta"))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = dns.NewRecordSet(ctx, "resource_recordset", &dns.RecordSetArgs{
-// 			ManagedZone: parent_zone.Name,
-// 			Name:        pulumi.String("test-record.my-zone.hashicorptest.com."),
-// 			Type:        pulumi.String("A"),
-// 			Rrdatas: pulumi.StringArray{
-// 				pulumi.String("10.0.0.1"),
-// 				pulumi.String("10.1.0.1"),
-// 			},
-// 			Ttl: pulumi.Int(86400),
-// 		}, pulumi.Provider("google-beta"))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
 // ## Import
 //
-// ResourceDnsRecordSet can be imported using any of these accepted formats
+// DNS record sets can be imported using either of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:dns/recordSet:RecordSet default projects/{{project}}/managedZones/{{managed_zone}}/rrsets/{{name}}/{{type}}
+//  $ pulumi import gcp:dns/recordSet:RecordSet frontend projects/{{project}}/managedZones/{{zone}}/rrsets/{{name}}/{{type}}
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:dns/recordSet:RecordSet default {{project}}/{{managed_zone}}/{{name}}/{{type}}
+//  $ pulumi import gcp:dns/recordSet:RecordSet frontend {{project}}/{{zone}}/{{name}}/{{type}}
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:dns/recordSet:RecordSet default {{managed_zone}}/{{name}}/{{type}}
+//  $ pulumi import gcp:dns/recordSet:RecordSet frontend {{zone}}/{{name}}/{{type}}
 // ```
+//
+//  NoteThe record name must include the trailing dot at the end.
 type RecordSet struct {
 	pulumi.CustomResourceState
 
-	// Identifies the managed zone addressed by this request.
+	// The name of the zone in which this record set will
+	// reside.
 	ManagedZone pulumi.StringOutput `pulumi:"managedZone"`
-	// For example, www.example.com.
+	// The DNS name this record set will apply to.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs. If it
+	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
 	// data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
 	// record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
 	// string (e.g. "first255characters\"\"morecharacters").
 	Rrdatas pulumi.StringArrayOutput `pulumi:"rrdatas"`
-	// Number of seconds that this ResourceRecordSet can be cached by
-	// resolvers.
+	// The time-to-live of this record set (seconds).
 	Ttl pulumi.IntPtrOutput `pulumi:"ttl"`
-	// One of valid DNS resource types.
-	// Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `TLSA`, and `TXT`.
+	// The DNS record set type.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -106,6 +62,9 @@ func NewRecordSet(ctx *pulumi.Context,
 	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
+	}
+	if args.Rrdatas == nil {
+		return nil, errors.New("invalid value for required argument 'Rrdatas'")
 	}
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
@@ -132,44 +91,42 @@ func GetRecordSet(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RecordSet resources.
 type recordSetState struct {
-	// Identifies the managed zone addressed by this request.
+	// The name of the zone in which this record set will
+	// reside.
 	ManagedZone *string `pulumi:"managedZone"`
-	// For example, www.example.com.
+	// The DNS name this record set will apply to.
 	Name *string `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs. If it
+	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
 	// data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
 	// record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
 	// string (e.g. "first255characters\"\"morecharacters").
 	Rrdatas []string `pulumi:"rrdatas"`
-	// Number of seconds that this ResourceRecordSet can be cached by
-	// resolvers.
+	// The time-to-live of this record set (seconds).
 	Ttl *int `pulumi:"ttl"`
-	// One of valid DNS resource types.
-	// Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `TLSA`, and `TXT`.
+	// The DNS record set type.
 	Type *string `pulumi:"type"`
 }
 
 type RecordSetState struct {
-	// Identifies the managed zone addressed by this request.
+	// The name of the zone in which this record set will
+	// reside.
 	ManagedZone pulumi.StringPtrInput
-	// For example, www.example.com.
+	// The DNS name this record set will apply to.
 	Name pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs. If it
+	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
 	// data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
 	// record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
 	// string (e.g. "first255characters\"\"morecharacters").
 	Rrdatas pulumi.StringArrayInput
-	// Number of seconds that this ResourceRecordSet can be cached by
-	// resolvers.
+	// The time-to-live of this record set (seconds).
 	Ttl pulumi.IntPtrInput
-	// One of valid DNS resource types.
-	// Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `TLSA`, and `TXT`.
+	// The DNS record set type.
 	Type pulumi.StringPtrInput
 }
 
@@ -178,45 +135,43 @@ func (RecordSetState) ElementType() reflect.Type {
 }
 
 type recordSetArgs struct {
-	// Identifies the managed zone addressed by this request.
+	// The name of the zone in which this record set will
+	// reside.
 	ManagedZone string `pulumi:"managedZone"`
-	// For example, www.example.com.
+	// The DNS name this record set will apply to.
 	Name string `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs. If it
+	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
 	// data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
 	// record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
 	// string (e.g. "first255characters\"\"morecharacters").
 	Rrdatas []string `pulumi:"rrdatas"`
-	// Number of seconds that this ResourceRecordSet can be cached by
-	// resolvers.
+	// The time-to-live of this record set (seconds).
 	Ttl *int `pulumi:"ttl"`
-	// One of valid DNS resource types.
-	// Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `TLSA`, and `TXT`.
+	// The DNS record set type.
 	Type string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a RecordSet resource.
 type RecordSetArgs struct {
-	// Identifies the managed zone addressed by this request.
+	// The name of the zone in which this record set will
+	// reside.
 	ManagedZone pulumi.StringInput
-	// For example, www.example.com.
+	// The DNS name this record set will apply to.
 	Name pulumi.StringInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs. If it
+	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
 	// data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
 	// record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
 	// string (e.g. "first255characters\"\"morecharacters").
 	Rrdatas pulumi.StringArrayInput
-	// Number of seconds that this ResourceRecordSet can be cached by
-	// resolvers.
+	// The time-to-live of this record set (seconds).
 	Ttl pulumi.IntPtrInput
-	// One of valid DNS resource types.
-	// Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `TLSA`, and `TXT`.
+	// The DNS record set type.
 	Type pulumi.StringInput
 }
 

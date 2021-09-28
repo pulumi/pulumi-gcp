@@ -77,6 +77,7 @@ export interface GetClusterResult {
     readonly defaultMaxPodsPerNode: number;
     readonly defaultSnatStatuses: outputs.container.GetClusterDefaultSnatStatus[];
     readonly description: string;
+    readonly dnsConfigs: outputs.container.GetClusterDnsConfig[];
     readonly enableAutopilot: boolean;
     readonly enableBinaryAuthorization: boolean;
     readonly enableIntranodeVisibility: boolean;

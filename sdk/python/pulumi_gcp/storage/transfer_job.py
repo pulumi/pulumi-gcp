@@ -311,6 +311,7 @@ class TransferJob(pulumi.CustomResource):
                 ),
                 gcs_data_sink=gcp.storage.TransferJobTransferSpecGcsDataSinkArgs(
                     bucket_name=s3_backup_bucket_bucket.name,
+                    path="foo/bar/",
                 ),
             ),
             schedule=gcp.storage.TransferJobScheduleArgs(
@@ -404,6 +405,7 @@ class TransferJob(pulumi.CustomResource):
                 ),
                 gcs_data_sink=gcp.storage.TransferJobTransferSpecGcsDataSinkArgs(
                     bucket_name=s3_backup_bucket_bucket.name,
+                    path="foo/bar/",
                 ),
             ),
             schedule=gcp.storage.TransferJobScheduleArgs(

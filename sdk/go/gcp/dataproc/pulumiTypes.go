@@ -4420,6 +4420,7 @@ type ClusterClusterConfigSoftwareConfig struct {
 	// Accepted values are:
 	// * ANACONDA
 	// * DRUID
+	// * FLINK
 	// * HBASE
 	// * HIVE_WEBHCAT
 	// * JUPYTER
@@ -4460,6 +4461,7 @@ type ClusterClusterConfigSoftwareConfigArgs struct {
 	// Accepted values are:
 	// * ANACONDA
 	// * DRUID
+	// * FLINK
 	// * HBASE
 	// * HIVE_WEBHCAT
 	// * JUPYTER
@@ -4568,6 +4570,7 @@ func (o ClusterClusterConfigSoftwareConfigOutput) ImageVersion() pulumi.StringPt
 // Accepted values are:
 // * ANACONDA
 // * DRUID
+// * FLINK
 // * HBASE
 // * HIVE_WEBHCAT
 // * JUPYTER
@@ -4635,6 +4638,7 @@ func (o ClusterClusterConfigSoftwareConfigPtrOutput) ImageVersion() pulumi.Strin
 // Accepted values are:
 // * ANACONDA
 // * DRUID
+// * FLINK
 // * HBASE
 // * HIVE_WEBHCAT
 // * JUPYTER

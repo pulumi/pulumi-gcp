@@ -151,6 +151,14 @@ class WebApp(pulumi.CustomResource):
         WebApp can be imported using any of these accepted formats
 
         ```sh
+         $ pulumi import gcp:firebase/webApp:WebApp default {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:firebase/webApp:WebApp default {{project}} {{name}}
+        ```
+
+        ```sh
          $ pulumi import gcp:firebase/webApp:WebApp default {{name}}
         ```
 
@@ -180,6 +188,14 @@ class WebApp(pulumi.CustomResource):
         ## Import
 
         WebApp can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:firebase/webApp:WebApp default {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:firebase/webApp:WebApp default {{project}} {{name}}
+        ```
 
         ```sh
          $ pulumi import gcp:firebase/webApp:WebApp default {{name}}

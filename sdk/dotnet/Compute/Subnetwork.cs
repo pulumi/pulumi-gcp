@@ -274,7 +274,8 @@ namespace Pulumi.Gcp.Compute
         /// An array of configurations for secondary IP ranges for VM instances
         /// contained in this subnetwork. The primary IP of such VM must belong
         /// to the primary ipCidrRange of the subnetwork. The alias IPs may belong
-        /// to either primary or secondary ranges. Structure is documented below.
+        /// to either primary or secondary ranges.
+        /// Structure is documented below.
         /// </summary>
         [Output("secondaryIpRanges")]
         public Output<ImmutableArray<Outputs.SubnetworkSecondaryIpRange>> SecondaryIpRanges { get; private set; } = null!;
@@ -431,7 +432,8 @@ namespace Pulumi.Gcp.Compute
         /// An array of configurations for secondary IP ranges for VM instances
         /// contained in this subnetwork. The primary IP of such VM must belong
         /// to the primary ipCidrRange of the subnetwork. The alias IPs may belong
-        /// to either primary or secondary ranges. Structure is documented below.
+        /// to either primary or secondary ranges.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.SubnetworkSecondaryIpRangeArgs> SecondaryIpRanges
         {
@@ -564,7 +566,8 @@ namespace Pulumi.Gcp.Compute
         /// An array of configurations for secondary IP ranges for VM instances
         /// contained in this subnetwork. The primary IP of such VM must belong
         /// to the primary ipCidrRange of the subnetwork. The alias IPs may belong
-        /// to either primary or secondary ranges. Structure is documented below.
+        /// to either primary or secondary ranges.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.SubnetworkSecondaryIpRangeGetArgs> SecondaryIpRanges
         {

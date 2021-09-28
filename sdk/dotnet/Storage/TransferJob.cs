@@ -82,6 +82,7 @@ namespace Pulumi.Gcp.Storage
     ///                 GcsDataSink = new Gcp.Storage.Inputs.TransferJobTransferSpecGcsDataSinkArgs
     ///                 {
     ///                     BucketName = s3_backup_bucketBucket.Name,
+    ///                     Path = "foo/bar/",
     ///                 },
     ///             },
     ///             Schedule = new Gcp.Storage.Inputs.TransferJobScheduleArgs

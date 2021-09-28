@@ -384,7 +384,7 @@ class _GlobalForwardingRuleState:
                Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this global forwarding rule.
                Possible values are `IPV4` and `IPV6`.
-        :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        :param pulumi.Input[str] label_fingerprint: Used internally during label updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this forwarding rule.  A list of key->value pairs.
         :param pulumi.Input[str] load_balancing_scheme: This signifies what the GlobalForwardingRule will be used for.
                The value of INTERNAL_SELF_MANAGED means that this will be used for
@@ -542,7 +542,7 @@ class _GlobalForwardingRuleState:
     @pulumi.getter(name="labelFingerprint")
     def label_fingerprint(self) -> Optional[pulumi.Input[str]]:
         """
-        The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        Used internally during label updates.
         """
         return pulumi.get(self, "label_fingerprint")
 
@@ -735,6 +735,121 @@ class GlobalForwardingRule(pulumi.CustomResource):
         https://cloud.google.com/compute/docs/load-balancing/http/
 
         ## Example Usage
+        ### External Http Lb Mig Backend Custom Header
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # External HTTP load balancer with a CDN-enabled managed instance group backend
+        # and custom request and response headers
+        # VPC
+        xlb_network = gcp.compute.Network("xlbNetwork", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google))
+        # backend subnet
+        xlb_subnet = gcp.compute.Subnetwork("xlbSubnet",
+            ip_cidr_range="10.0.1.0/24",
+            region="us-central1",
+            network=xlb_network.id,
+            opts=pulumi.ResourceOptions(provider=google))
+        # health check
+        default_health_check = gcp.compute.HealthCheck("defaultHealthCheck", http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
+            port_specification="USE_SERVING_PORT",
+        ),
+        opts=pulumi.ResourceOptions(provider=google))
+        # instance template
+        instance_template = gcp.compute.InstanceTemplate("instanceTemplate",
+            machine_type="e2-small",
+            tags=["allow-health-check"],
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                network=xlb_network.id,
+                subnetwork=xlb_subnet.id,
+                access_configs=[gcp.compute.InstanceTemplateNetworkInterfaceAccessConfigArgs()],
+            )],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image="debian-cloud/debian-10",
+                auto_delete=True,
+                boot=True,
+            )],
+            metadata={
+                "startup-script": \"\"\"#! /bin/bash
+        set -euo pipefail
+
+        export DEBIAN_FRONTEND=noninteractive
+        apt-get update
+        apt-get install -y nginx-light jq
+
+        NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
+        IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
+        METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
+
+        cat <<EOF > /var/www/html/index.html
+        <pre>
+        Name: $NAME
+        IP: $IP
+        Metadata: $METADATA
+        </pre>
+        EOF
+        \"\"\",
+            },
+            opts=pulumi.ResourceOptions(provider=google))
+        # MIG
+        mig = gcp.compute.InstanceGroupManager("mig",
+            zone="us-central1-c",
+            named_ports=[gcp.compute.InstanceGroupManagerNamedPortArgs(
+                name="http",
+                port=8080,
+            )],
+            versions=[gcp.compute.InstanceGroupManagerVersionArgs(
+                instance_template=instance_template.id,
+                name="primary",
+            )],
+            base_instance_name="vm",
+            target_size=2,
+            opts=pulumi.ResourceOptions(provider=google))
+        # backend service with custom request and response headers
+        default_backend_service = gcp.compute.BackendService("defaultBackendService",
+            protocol="HTTP",
+            port_name="my-port",
+            load_balancing_scheme="EXTERNAL",
+            timeout_sec=10,
+            enable_cdn=True,
+            custom_request_headers=["X-Client-Geo-Location: {client_region_subdivision}, {client_city}"],
+            custom_response_headers=["X-Cache-Hit: {cdn_cache_status}"],
+            health_checks=[default_health_check.id],
+            backends=[gcp.compute.BackendServiceBackendArgs(
+                group=mig.instance_group,
+                balancing_mode="UTILIZATION",
+                capacity_scaler=1,
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # url map
+        default_url_map = gcp.compute.URLMap("defaultURLMap", default_service=default_backend_service.id,
+        opts=pulumi.ResourceOptions(provider=google))
+        # http proxy
+        default_target_http_proxy = gcp.compute.TargetHttpProxy("defaultTargetHttpProxy", url_map=default_url_map.id,
+        opts=pulumi.ResourceOptions(provider=google))
+        # forwarding rule
+        google_compute_global_forwarding_rule = gcp.compute.GlobalForwardingRule("googleComputeGlobalForwardingRule",
+            ip_protocol="TCP",
+            load_balancing_scheme="EXTERNAL",
+            port_range="80",
+            target=default_target_http_proxy.id,
+            opts=pulumi.ResourceOptions(provider=google))
+        # allow access from health check ranges
+        fw_health_check = gcp.compute.Firewall("fwHealthCheck",
+            direction="INGRESS",
+            network=xlb_network.id,
+            source_ranges=[
+                "130.211.0.0/22",
+                "35.191.0.0/16",
+            ],
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+            )],
+            target_tags=["allow-health-check"],
+            opts=pulumi.ResourceOptions(provider=google))
+        ```
         ### Global Forwarding Rule Http
 
         ```python
@@ -1000,6 +1115,121 @@ class GlobalForwardingRule(pulumi.CustomResource):
         https://cloud.google.com/compute/docs/load-balancing/http/
 
         ## Example Usage
+        ### External Http Lb Mig Backend Custom Header
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # External HTTP load balancer with a CDN-enabled managed instance group backend
+        # and custom request and response headers
+        # VPC
+        xlb_network = gcp.compute.Network("xlbNetwork", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google))
+        # backend subnet
+        xlb_subnet = gcp.compute.Subnetwork("xlbSubnet",
+            ip_cidr_range="10.0.1.0/24",
+            region="us-central1",
+            network=xlb_network.id,
+            opts=pulumi.ResourceOptions(provider=google))
+        # health check
+        default_health_check = gcp.compute.HealthCheck("defaultHealthCheck", http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
+            port_specification="USE_SERVING_PORT",
+        ),
+        opts=pulumi.ResourceOptions(provider=google))
+        # instance template
+        instance_template = gcp.compute.InstanceTemplate("instanceTemplate",
+            machine_type="e2-small",
+            tags=["allow-health-check"],
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                network=xlb_network.id,
+                subnetwork=xlb_subnet.id,
+                access_configs=[gcp.compute.InstanceTemplateNetworkInterfaceAccessConfigArgs()],
+            )],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image="debian-cloud/debian-10",
+                auto_delete=True,
+                boot=True,
+            )],
+            metadata={
+                "startup-script": \"\"\"#! /bin/bash
+        set -euo pipefail
+
+        export DEBIAN_FRONTEND=noninteractive
+        apt-get update
+        apt-get install -y nginx-light jq
+
+        NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
+        IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
+        METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
+
+        cat <<EOF > /var/www/html/index.html
+        <pre>
+        Name: $NAME
+        IP: $IP
+        Metadata: $METADATA
+        </pre>
+        EOF
+        \"\"\",
+            },
+            opts=pulumi.ResourceOptions(provider=google))
+        # MIG
+        mig = gcp.compute.InstanceGroupManager("mig",
+            zone="us-central1-c",
+            named_ports=[gcp.compute.InstanceGroupManagerNamedPortArgs(
+                name="http",
+                port=8080,
+            )],
+            versions=[gcp.compute.InstanceGroupManagerVersionArgs(
+                instance_template=instance_template.id,
+                name="primary",
+            )],
+            base_instance_name="vm",
+            target_size=2,
+            opts=pulumi.ResourceOptions(provider=google))
+        # backend service with custom request and response headers
+        default_backend_service = gcp.compute.BackendService("defaultBackendService",
+            protocol="HTTP",
+            port_name="my-port",
+            load_balancing_scheme="EXTERNAL",
+            timeout_sec=10,
+            enable_cdn=True,
+            custom_request_headers=["X-Client-Geo-Location: {client_region_subdivision}, {client_city}"],
+            custom_response_headers=["X-Cache-Hit: {cdn_cache_status}"],
+            health_checks=[default_health_check.id],
+            backends=[gcp.compute.BackendServiceBackendArgs(
+                group=mig.instance_group,
+                balancing_mode="UTILIZATION",
+                capacity_scaler=1,
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # url map
+        default_url_map = gcp.compute.URLMap("defaultURLMap", default_service=default_backend_service.id,
+        opts=pulumi.ResourceOptions(provider=google))
+        # http proxy
+        default_target_http_proxy = gcp.compute.TargetHttpProxy("defaultTargetHttpProxy", url_map=default_url_map.id,
+        opts=pulumi.ResourceOptions(provider=google))
+        # forwarding rule
+        google_compute_global_forwarding_rule = gcp.compute.GlobalForwardingRule("googleComputeGlobalForwardingRule",
+            ip_protocol="TCP",
+            load_balancing_scheme="EXTERNAL",
+            port_range="80",
+            target=default_target_http_proxy.id,
+            opts=pulumi.ResourceOptions(provider=google))
+        # allow access from health check ranges
+        fw_health_check = gcp.compute.Firewall("fwHealthCheck",
+            direction="INGRESS",
+            network=xlb_network.id,
+            source_ranges=[
+                "130.211.0.0/22",
+                "35.191.0.0/16",
+            ],
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+            )],
+            target_tags=["allow-health-check"],
+            opts=pulumi.ResourceOptions(provider=google))
+        ```
         ### Global Forwarding Rule Http
 
         ```python
@@ -1276,7 +1506,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this global forwarding rule.
                Possible values are `IPV4` and `IPV6`.
-        :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        :param pulumi.Input[str] label_fingerprint: Used internally during label updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this forwarding rule.  A list of key->value pairs.
         :param pulumi.Input[str] load_balancing_scheme: This signifies what the GlobalForwardingRule will be used for.
                The value of INTERNAL_SELF_MANAGED means that this will be used for
@@ -1409,7 +1639,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
     @pulumi.getter(name="labelFingerprint")
     def label_fingerprint(self) -> pulumi.Output[str]:
         """
-        The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        Used internally during label updates.
         """
         return pulumi.get(self, "label_fingerprint")
 

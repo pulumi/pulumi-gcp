@@ -26,6 +26,7 @@ class ClusterArgs:
                  default_max_pods_per_node: Optional[pulumi.Input[int]] = None,
                  default_snat_status: Optional[pulumi.Input['ClusterDefaultSnatStatusArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 dns_config: Optional[pulumi.Input['ClusterDnsConfigArgs']] = None,
                  enable_autopilot: Optional[pulumi.Input[bool]] = None,
                  enable_binary_authorization: Optional[pulumi.Input[bool]] = None,
                  enable_intranode_visibility: Optional[pulumi.Input[bool]] = None,
@@ -92,6 +93,8 @@ class ClusterArgs:
                for more information.
         :param pulumi.Input['ClusterDefaultSnatStatusArgs'] default_snat_status: [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig).
         :param pulumi.Input[str] description: Description of the cluster.
+        :param pulumi.Input['ClusterDnsConfigArgs'] dns_config: )
+               Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
         :param pulumi.Input[bool] enable_autopilot: Enable Autopilot for this cluster. Defaults to `false`.
                Note that when this option is enabled, certain features of Standard GKE are not available.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
@@ -247,6 +250,8 @@ class ClusterArgs:
             pulumi.set(__self__, "default_snat_status", default_snat_status)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if dns_config is not None:
+            pulumi.set(__self__, "dns_config", dns_config)
         if enable_autopilot is not None:
             pulumi.set(__self__, "enable_autopilot", enable_autopilot)
         if enable_binary_authorization is not None:
@@ -469,6 +474,19 @@ class ClusterArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="dnsConfig")
+    def dns_config(self) -> Optional[pulumi.Input['ClusterDnsConfigArgs']]:
+        """
+        )
+        Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
+        """
+        return pulumi.get(self, "dns_config")
+
+    @dns_config.setter
+    def dns_config(self, value: Optional[pulumi.Input['ClusterDnsConfigArgs']]):
+        pulumi.set(self, "dns_config", value)
 
     @property
     @pulumi.getter(name="enableAutopilot")
@@ -1024,6 +1042,7 @@ class _ClusterState:
                  default_max_pods_per_node: Optional[pulumi.Input[int]] = None,
                  default_snat_status: Optional[pulumi.Input['ClusterDefaultSnatStatusArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 dns_config: Optional[pulumi.Input['ClusterDnsConfigArgs']] = None,
                  enable_autopilot: Optional[pulumi.Input[bool]] = None,
                  enable_binary_authorization: Optional[pulumi.Input[bool]] = None,
                  enable_intranode_visibility: Optional[pulumi.Input[bool]] = None,
@@ -1098,6 +1117,8 @@ class _ClusterState:
                for more information.
         :param pulumi.Input['ClusterDefaultSnatStatusArgs'] default_snat_status: [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig).
         :param pulumi.Input[str] description: Description of the cluster.
+        :param pulumi.Input['ClusterDnsConfigArgs'] dns_config: )
+               Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
         :param pulumi.Input[bool] enable_autopilot: Enable Autopilot for this cluster. Defaults to `false`.
                Note that when this option is enabled, certain features of Standard GKE are not available.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
@@ -1268,6 +1289,8 @@ class _ClusterState:
             pulumi.set(__self__, "default_snat_status", default_snat_status)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if dns_config is not None:
+            pulumi.set(__self__, "dns_config", dns_config)
         if enable_autopilot is not None:
             pulumi.set(__self__, "enable_autopilot", enable_autopilot)
         if enable_binary_authorization is not None:
@@ -1506,6 +1529,19 @@ class _ClusterState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="dnsConfig")
+    def dns_config(self) -> Optional[pulumi.Input['ClusterDnsConfigArgs']]:
+        """
+        )
+        Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
+        """
+        return pulumi.get(self, "dns_config")
+
+    @dns_config.setter
+    def dns_config(self, value: Optional[pulumi.Input['ClusterDnsConfigArgs']]):
+        pulumi.set(self, "dns_config", value)
 
     @property
     @pulumi.getter(name="enableAutopilot")
@@ -2164,6 +2200,7 @@ class Cluster(pulumi.CustomResource):
                  default_max_pods_per_node: Optional[pulumi.Input[int]] = None,
                  default_snat_status: Optional[pulumi.Input[pulumi.InputType['ClusterDefaultSnatStatusArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 dns_config: Optional[pulumi.Input[pulumi.InputType['ClusterDnsConfigArgs']]] = None,
                  enable_autopilot: Optional[pulumi.Input[bool]] = None,
                  enable_binary_authorization: Optional[pulumi.Input[bool]] = None,
                  enable_intranode_visibility: Optional[pulumi.Input[bool]] = None,
@@ -2297,6 +2334,8 @@ class Cluster(pulumi.CustomResource):
                for more information.
         :param pulumi.Input[pulumi.InputType['ClusterDefaultSnatStatusArgs']] default_snat_status: [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig).
         :param pulumi.Input[str] description: Description of the cluster.
+        :param pulumi.Input[pulumi.InputType['ClusterDnsConfigArgs']] dns_config: )
+               Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
         :param pulumi.Input[bool] enable_autopilot: Enable Autopilot for this cluster. Defaults to `false`.
                Note that when this option is enabled, certain features of Standard GKE are not available.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
@@ -2528,6 +2567,7 @@ class Cluster(pulumi.CustomResource):
                  default_max_pods_per_node: Optional[pulumi.Input[int]] = None,
                  default_snat_status: Optional[pulumi.Input[pulumi.InputType['ClusterDefaultSnatStatusArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 dns_config: Optional[pulumi.Input[pulumi.InputType['ClusterDnsConfigArgs']]] = None,
                  enable_autopilot: Optional[pulumi.Input[bool]] = None,
                  enable_binary_authorization: Optional[pulumi.Input[bool]] = None,
                  enable_intranode_visibility: Optional[pulumi.Input[bool]] = None,
@@ -2588,6 +2628,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["default_max_pods_per_node"] = default_max_pods_per_node
             __props__.__dict__["default_snat_status"] = default_snat_status
             __props__.__dict__["description"] = description
+            __props__.__dict__["dns_config"] = dns_config
             __props__.__dict__["enable_autopilot"] = enable_autopilot
             __props__.__dict__["enable_binary_authorization"] = enable_binary_authorization
             __props__.__dict__["enable_intranode_visibility"] = enable_intranode_visibility
@@ -2654,6 +2695,7 @@ class Cluster(pulumi.CustomResource):
             default_max_pods_per_node: Optional[pulumi.Input[int]] = None,
             default_snat_status: Optional[pulumi.Input[pulumi.InputType['ClusterDefaultSnatStatusArgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            dns_config: Optional[pulumi.Input[pulumi.InputType['ClusterDnsConfigArgs']]] = None,
             enable_autopilot: Optional[pulumi.Input[bool]] = None,
             enable_binary_authorization: Optional[pulumi.Input[bool]] = None,
             enable_intranode_visibility: Optional[pulumi.Input[bool]] = None,
@@ -2733,6 +2775,8 @@ class Cluster(pulumi.CustomResource):
                for more information.
         :param pulumi.Input[pulumi.InputType['ClusterDefaultSnatStatusArgs']] default_snat_status: [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig).
         :param pulumi.Input[str] description: Description of the cluster.
+        :param pulumi.Input[pulumi.InputType['ClusterDnsConfigArgs']] dns_config: )
+               Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
         :param pulumi.Input[bool] enable_autopilot: Enable Autopilot for this cluster. Defaults to `false`.
                Note that when this option is enabled, certain features of Standard GKE are not available.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
@@ -2896,6 +2940,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["default_max_pods_per_node"] = default_max_pods_per_node
         __props__.__dict__["default_snat_status"] = default_snat_status
         __props__.__dict__["description"] = description
+        __props__.__dict__["dns_config"] = dns_config
         __props__.__dict__["enable_autopilot"] = enable_autopilot
         __props__.__dict__["enable_binary_authorization"] = enable_binary_authorization
         __props__.__dict__["enable_intranode_visibility"] = enable_intranode_visibility
@@ -3046,6 +3091,15 @@ class Cluster(pulumi.CustomResource):
         Description of the cluster.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="dnsConfig")
+    def dns_config(self) -> pulumi.Output[Optional['outputs.ClusterDnsConfig']]:
+        """
+        )
+        Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
+        """
+        return pulumi.get(self, "dns_config")
 
     @property
     @pulumi.getter(name="enableAutopilot")

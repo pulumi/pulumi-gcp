@@ -15,6 +15,137 @@ import * as utilities from "../utilities";
  * https://cloud.google.com/compute/docs/load-balancing/http/
  *
  * ## Example Usage
+ * ### External Http Lb Mig Backend Custom Header
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * // External HTTP load balancer with a CDN-enabled managed instance group backend
+ * // and custom request and response headers
+ * // VPC
+ * const xlbNetwork = new gcp.compute.Network("xlbNetwork", {autoCreateSubnetworks: false}, {
+ *     provider: google,
+ * });
+ * // backend subnet
+ * const xlbSubnet = new gcp.compute.Subnetwork("xlbSubnet", {
+ *     ipCidrRange: "10.0.1.0/24",
+ *     region: "us-central1",
+ *     network: xlbNetwork.id,
+ * }, {
+ *     provider: google,
+ * });
+ * // health check
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("defaultHealthCheck", {httpHealthCheck: {
+ *     portSpecification: "USE_SERVING_PORT",
+ * }}, {
+ *     provider: google,
+ * });
+ * // instance template
+ * const instanceTemplate = new gcp.compute.InstanceTemplate("instanceTemplate", {
+ *     machineType: "e2-small",
+ *     tags: ["allow-health-check"],
+ *     networkInterfaces: [{
+ *         network: xlbNetwork.id,
+ *         subnetwork: xlbSubnet.id,
+ *         accessConfigs: [{}],
+ *     }],
+ *     disks: [{
+ *         sourceImage: "debian-cloud/debian-10",
+ *         autoDelete: true,
+ *         boot: true,
+ *     }],
+ *     metadata: {
+ *         "startup-script": `#! /bin/bash
+ * set -euo pipefail
+ *
+ * export DEBIAN_FRONTEND=noninteractive
+ * apt-get update
+ * apt-get install -y nginx-light jq
+ *
+ * NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
+ * IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
+ * METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
+ *
+ * cat <<EOF > /var/www/html/index.html
+ * <pre>
+ * Name: $NAME
+ * IP: $IP
+ * Metadata: $METADATA
+ * </pre>
+ * EOF
+ * `,
+ *     },
+ * }, {
+ *     provider: google,
+ * });
+ * // MIG
+ * const mig = new gcp.compute.InstanceGroupManager("mig", {
+ *     zone: "us-central1-c",
+ *     namedPorts: [{
+ *         name: "http",
+ *         port: 8080,
+ *     }],
+ *     versions: [{
+ *         instanceTemplate: instanceTemplate.id,
+ *         name: "primary",
+ *     }],
+ *     baseInstanceName: "vm",
+ *     targetSize: 2,
+ * }, {
+ *     provider: google,
+ * });
+ * // backend service with custom request and response headers
+ * const defaultBackendService = new gcp.compute.BackendService("defaultBackendService", {
+ *     protocol: "HTTP",
+ *     portName: "my-port",
+ *     loadBalancingScheme: "EXTERNAL",
+ *     timeoutSec: 10,
+ *     enableCdn: true,
+ *     customRequestHeaders: ["X-Client-Geo-Location: {client_region_subdivision}, {client_city}"],
+ *     customResponseHeaders: ["X-Cache-Hit: {cdn_cache_status}"],
+ *     healthChecks: [defaultHealthCheck.id],
+ *     backends: [{
+ *         group: mig.instanceGroup,
+ *         balancingMode: "UTILIZATION",
+ *         capacityScaler: 1,
+ *     }],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * // url map
+ * const defaultURLMap = new gcp.compute.URLMap("defaultURLMap", {defaultService: defaultBackendService.id}, {
+ *     provider: google,
+ * });
+ * // http proxy
+ * const defaultTargetHttpProxy = new gcp.compute.TargetHttpProxy("defaultTargetHttpProxy", {urlMap: defaultURLMap.id}, {
+ *     provider: google,
+ * });
+ * // forwarding rule
+ * const googleComputeGlobalForwardingRule = new gcp.compute.GlobalForwardingRule("googleComputeGlobalForwardingRule", {
+ *     ipProtocol: "TCP",
+ *     loadBalancingScheme: "EXTERNAL",
+ *     portRange: "80",
+ *     target: defaultTargetHttpProxy.id,
+ * }, {
+ *     provider: google,
+ * });
+ * // allow access from health check ranges
+ * const fwHealthCheck = new gcp.compute.Firewall("fwHealthCheck", {
+ *     direction: "INGRESS",
+ *     network: xlbNetwork.id,
+ *     sourceRanges: [
+ *         "130.211.0.0/22",
+ *         "35.191.0.0/16",
+ *     ],
+ *     allows: [{
+ *         protocol: "tcp",
+ *     }],
+ *     targetTags: ["allow-health-check"],
+ * }, {
+ *     provider: google,
+ * });
+ * ```
  * ### Global Forwarding Rule Http
  *
  * ```typescript
@@ -275,7 +406,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      */
     public readonly ipVersion!: pulumi.Output<string | undefined>;
     /**
-     * The fingerprint used for optimistic locking of this resource. Used internally during updates.
+     * Used internally during label updates.
      */
     public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
     /**
@@ -456,7 +587,7 @@ export interface GlobalForwardingRuleState {
      */
     ipVersion?: pulumi.Input<string>;
     /**
-     * The fingerprint used for optimistic locking of this resource. Used internally during updates.
+     * Used internally during label updates.
      */
     labelFingerprint?: pulumi.Input<string>;
     /**

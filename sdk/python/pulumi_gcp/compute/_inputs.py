@@ -188,6 +188,7 @@ __all__ = [
     'RegionBackendServiceConsistentHashHttpCookieArgs',
     'RegionBackendServiceConsistentHashHttpCookieTtlArgs',
     'RegionBackendServiceFailoverPolicyArgs',
+    'RegionBackendServiceIapArgs',
     'RegionBackendServiceLogConfigArgs',
     'RegionBackendServiceOutlierDetectionArgs',
     'RegionBackendServiceOutlierDetectionBaseEjectionTimeArgs',
@@ -2708,7 +2709,8 @@ class BackendServiceCircuitBreakersArgs:
                  max_requests_per_connection: Optional[pulumi.Input[int]] = None,
                  max_retries: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input['BackendServiceCircuitBreakersConnectTimeoutArgs'] connect_timeout: The timeout for new network connections to hosts.  Structure is documented below.
+        :param pulumi.Input['BackendServiceCircuitBreakersConnectTimeoutArgs'] connect_timeout: The timeout for new network connections to hosts.
+               Structure is documented below.
         :param pulumi.Input[int] max_connections: The maximum number of connections to the backend cluster.
                Defaults to 1024.
         :param pulumi.Input[int] max_pending_requests: The maximum number of pending requests to the backend cluster.
@@ -2739,7 +2741,8 @@ class BackendServiceCircuitBreakersArgs:
     @pulumi.getter(name="connectTimeout")
     def connect_timeout(self) -> Optional[pulumi.Input['BackendServiceCircuitBreakersConnectTimeoutArgs']]:
         """
-        The timeout for new network connections to hosts.  Structure is documented below.
+        The timeout for new network connections to hosts.
+        Structure is documented below.
         """
         return pulumi.get(self, "connect_timeout")
 
@@ -11978,7 +11981,8 @@ class RegionBackendServiceCircuitBreakersArgs:
                  max_requests_per_connection: Optional[pulumi.Input[int]] = None,
                  max_retries: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input['RegionBackendServiceCircuitBreakersConnectTimeoutArgs'] connect_timeout: The timeout for new network connections to hosts.  Structure is documented below.
+        :param pulumi.Input['RegionBackendServiceCircuitBreakersConnectTimeoutArgs'] connect_timeout: The timeout for new network connections to hosts.
+               Structure is documented below.
         :param pulumi.Input[int] max_connections: The maximum number of connections to the backend cluster.
                Defaults to 1024.
         :param pulumi.Input[int] max_pending_requests: The maximum number of pending requests to the backend cluster.
@@ -12009,7 +12013,8 @@ class RegionBackendServiceCircuitBreakersArgs:
     @pulumi.getter(name="connectTimeout")
     def connect_timeout(self) -> Optional[pulumi.Input['RegionBackendServiceCircuitBreakersConnectTimeoutArgs']]:
         """
-        The timeout for new network connections to hosts.  Structure is documented below.
+        The timeout for new network connections to hosts.
+        Structure is documented below.
         """
         return pulumi.get(self, "connect_timeout")
 
@@ -12392,6 +12397,65 @@ class RegionBackendServiceFailoverPolicyArgs:
     @failover_ratio.setter
     def failover_ratio(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "failover_ratio", value)
+
+
+@pulumi.input_type
+class RegionBackendServiceIapArgs:
+    def __init__(__self__, *,
+                 oauth2_client_id: pulumi.Input[str],
+                 oauth2_client_secret: pulumi.Input[str],
+                 oauth2_client_secret_sha256: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] oauth2_client_id: OAuth2 Client ID for IAP
+        :param pulumi.Input[str] oauth2_client_secret: OAuth2 Client Secret for IAP
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[str] oauth2_client_secret_sha256: -
+               OAuth2 Client Secret SHA-256 for IAP
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        pulumi.set(__self__, "oauth2_client_id", oauth2_client_id)
+        pulumi.set(__self__, "oauth2_client_secret", oauth2_client_secret)
+        if oauth2_client_secret_sha256 is not None:
+            pulumi.set(__self__, "oauth2_client_secret_sha256", oauth2_client_secret_sha256)
+
+    @property
+    @pulumi.getter(name="oauth2ClientId")
+    def oauth2_client_id(self) -> pulumi.Input[str]:
+        """
+        OAuth2 Client ID for IAP
+        """
+        return pulumi.get(self, "oauth2_client_id")
+
+    @oauth2_client_id.setter
+    def oauth2_client_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "oauth2_client_id", value)
+
+    @property
+    @pulumi.getter(name="oauth2ClientSecret")
+    def oauth2_client_secret(self) -> pulumi.Input[str]:
+        """
+        OAuth2 Client Secret for IAP
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "oauth2_client_secret")
+
+    @oauth2_client_secret.setter
+    def oauth2_client_secret(self, value: pulumi.Input[str]):
+        pulumi.set(self, "oauth2_client_secret", value)
+
+    @property
+    @pulumi.getter(name="oauth2ClientSecretSha256")
+    def oauth2_client_secret_sha256(self) -> Optional[pulumi.Input[str]]:
+        """
+        -
+        OAuth2 Client Secret SHA-256 for IAP
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "oauth2_client_secret_sha256")
+
+    @oauth2_client_secret_sha256.setter
+    def oauth2_client_secret_sha256(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "oauth2_client_secret_sha256", value)
 
 
 @pulumi.input_type

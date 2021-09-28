@@ -17,11 +17,19 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// S3 Bucket name.
         /// </summary>
         public readonly string BucketName;
+        /// <summary>
+        /// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+        /// </summary>
+        public readonly string? Path;
 
         [OutputConstructor]
-        private TransferJobTransferSpecGcsDataSink(string bucketName)
+        private TransferJobTransferSpecGcsDataSink(
+            string bucketName,
+
+            string? path)
         {
             BucketName = bucketName;
+            Path = path;
         }
     }
 }

@@ -1985,6 +1985,7 @@ class ClusterClusterConfigSoftwareConfig(dict):
                Accepted values are:
                * ANACONDA
                * DRUID
+               * FLINK
                * HBASE
                * HIVE_WEBHCAT
                * JUPYTER
@@ -2028,6 +2029,7 @@ class ClusterClusterConfigSoftwareConfig(dict):
         Accepted values are:
         * ANACONDA
         * DRUID
+        * FLINK
         * HBASE
         * HIVE_WEBHCAT
         * JUPYTER

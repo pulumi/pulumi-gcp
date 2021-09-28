@@ -27,6 +27,7 @@ __all__ = [
     'ClusterConfidentialNodesArgs',
     'ClusterDatabaseEncryptionArgs',
     'ClusterDefaultSnatStatusArgs',
+    'ClusterDnsConfigArgs',
     'ClusterIpAllocationPolicyArgs',
     'ClusterMaintenancePolicyArgs',
     'ClusterMaintenancePolicyDailyMaintenanceWindowArgs',
@@ -861,6 +862,61 @@ class ClusterDefaultSnatStatusArgs:
     @disabled.setter
     def disabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "disabled", value)
+
+
+@pulumi.input_type
+class ClusterDnsConfigArgs:
+    def __init__(__self__, *,
+                 cluster_dns: Optional[pulumi.Input[str]] = None,
+                 cluster_dns_domain: Optional[pulumi.Input[str]] = None,
+                 cluster_dns_scope: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] cluster_dns: Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
+        :param pulumi.Input[str] cluster_dns_domain: The suffix used for all cluster service records.
+        :param pulumi.Input[str] cluster_dns_scope: The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
+        """
+        if cluster_dns is not None:
+            pulumi.set(__self__, "cluster_dns", cluster_dns)
+        if cluster_dns_domain is not None:
+            pulumi.set(__self__, "cluster_dns_domain", cluster_dns_domain)
+        if cluster_dns_scope is not None:
+            pulumi.set(__self__, "cluster_dns_scope", cluster_dns_scope)
+
+    @property
+    @pulumi.getter(name="clusterDns")
+    def cluster_dns(self) -> Optional[pulumi.Input[str]]:
+        """
+        Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
+        """
+        return pulumi.get(self, "cluster_dns")
+
+    @cluster_dns.setter
+    def cluster_dns(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_dns", value)
+
+    @property
+    @pulumi.getter(name="clusterDnsDomain")
+    def cluster_dns_domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        The suffix used for all cluster service records.
+        """
+        return pulumi.get(self, "cluster_dns_domain")
+
+    @cluster_dns_domain.setter
+    def cluster_dns_domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_dns_domain", value)
+
+    @property
+    @pulumi.getter(name="clusterDnsScope")
+    def cluster_dns_scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
+        """
+        return pulumi.get(self, "cluster_dns_scope")
+
+    @cluster_dns_scope.setter
+    def cluster_dns_scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_dns_scope", value)
 
 
 @pulumi.input_type

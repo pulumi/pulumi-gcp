@@ -104,6 +104,7 @@ namespace Pulumi.Gcp.Container
         public readonly int DefaultMaxPodsPerNode;
         public readonly ImmutableArray<Outputs.GetClusterDefaultSnatStatusResult> DefaultSnatStatuses;
         public readonly string Description;
+        public readonly ImmutableArray<Outputs.GetClusterDnsConfigResult> DnsConfigs;
         public readonly bool EnableAutopilot;
         public readonly bool EnableBinaryAuthorization;
         public readonly bool EnableIntranodeVisibility;
@@ -177,6 +178,8 @@ namespace Pulumi.Gcp.Container
             ImmutableArray<Outputs.GetClusterDefaultSnatStatusResult> defaultSnatStatuses,
 
             string description,
+
+            ImmutableArray<Outputs.GetClusterDnsConfigResult> dnsConfigs,
 
             bool enableAutopilot,
 
@@ -281,6 +284,7 @@ namespace Pulumi.Gcp.Container
             DefaultMaxPodsPerNode = defaultMaxPodsPerNode;
             DefaultSnatStatuses = defaultSnatStatuses;
             Description = description;
+            DnsConfigs = dnsConfigs;
             EnableAutopilot = enableAutopilot;
             EnableBinaryAuthorization = enableBinaryAuthorization;
             EnableIntranodeVisibility = enableIntranodeVisibility;
