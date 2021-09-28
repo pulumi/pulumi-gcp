@@ -7,6 +7,7 @@ _(none)_
 ---
 
 ## 5.21.0 (2021-09-28)
+* Upgrade to v3.86.0 of the Google Beta Terraform Provider
 * Upgrade to pulumi sdk + codegen v3.11.0
 * Upgrade to pulumi-terraform-bridge v3.7.0
 
