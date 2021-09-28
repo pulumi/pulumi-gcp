@@ -80,6 +80,11 @@ export class Account extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Whether a service account is disabled or not. Defaults to `false`. This field has no effect during creation.
+     * Must be set after creation to disable a service account.
+     */
+    public readonly disabled!: pulumi.Output<boolean | undefined>;
+    /**
      * The display name for the service account.
      * Can be updated without creating a new resource.
      */
@@ -119,6 +124,7 @@ export class Account extends pulumi.CustomResource {
             const state = argsOrState as AccountState | undefined;
             inputs["accountId"] = state ? state.accountId : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["disabled"] = state ? state.disabled : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["email"] = state ? state.email : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -131,6 +137,7 @@ export class Account extends pulumi.CustomResource {
             }
             inputs["accountId"] = args ? args.accountId : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["disabled"] = args ? args.disabled : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["email"] = undefined /*out*/;
@@ -160,6 +167,11 @@ export interface AccountState {
      * Must be less than or equal to 256 UTF-8 bytes.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Whether a service account is disabled or not. Defaults to `false`. This field has no effect during creation.
+     * Must be set after creation to disable a service account.
+     */
+    disabled?: pulumi.Input<boolean>;
     /**
      * The display name for the service account.
      * Can be updated without creating a new resource.
@@ -202,6 +214,11 @@ export interface AccountArgs {
      * Must be less than or equal to 256 UTF-8 bytes.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Whether a service account is disabled or not. Defaults to `false`. This field has no effect during creation.
+     * Must be set after creation to disable a service account.
+     */
+    disabled?: pulumi.Input<boolean>;
     /**
      * The display name for the service account.
      * Can be updated without creating a new resource.

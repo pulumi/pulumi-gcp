@@ -7703,7 +7703,8 @@ export namespace compute {
 
     export interface BackendServiceCircuitBreakers {
         /**
-         * The timeout for new network connections to hosts.  Structure is documented below.
+         * The timeout for new network connections to hosts.
+         * Structure is documented below.
          */
         connectTimeout?: pulumi.Input<inputs.compute.BackendServiceCircuitBreakersConnectTimeout>;
         /**
@@ -10324,7 +10325,8 @@ export namespace compute {
 
     export interface RegionBackendServiceCircuitBreakers {
         /**
-         * The timeout for new network connections to hosts.  Structure is documented below.
+         * The timeout for new network connections to hosts.
+         * Structure is documented below.
          */
         connectTimeout?: pulumi.Input<inputs.compute.RegionBackendServiceCircuitBreakersConnectTimeout>;
         /**
@@ -10455,6 +10457,24 @@ export namespace compute {
          * This field is only used with l4 load balancing.
          */
         failoverRatio?: pulumi.Input<number>;
+    }
+
+    export interface RegionBackendServiceIap {
+        /**
+         * OAuth2 Client ID for IAP
+         */
+        oauth2ClientId: pulumi.Input<string>;
+        /**
+         * OAuth2 Client Secret for IAP
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        oauth2ClientSecret: pulumi.Input<string>;
+        /**
+         * -
+         * OAuth2 Client Secret SHA-256 for IAP
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        oauth2ClientSecretSha256?: pulumi.Input<string>;
     }
 
     export interface RegionBackendServiceLogConfig {
@@ -15222,6 +15242,21 @@ export namespace container {
         disabled: pulumi.Input<boolean>;
     }
 
+    export interface ClusterDnsConfig {
+        /**
+         * Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
+         */
+        clusterDns?: pulumi.Input<string>;
+        /**
+         * The suffix used for all cluster service records.
+         */
+        clusterDnsDomain?: pulumi.Input<string>;
+        /**
+         * The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
+         */
+        clusterDnsScope?: pulumi.Input<string>;
+    }
+
     export interface ClusterIpAllocationPolicy {
         /**
          * The IP address range for the cluster pod IPs.
@@ -18042,6 +18077,7 @@ export namespace dataproc {
          * Accepted values are:
          * * ANACONDA
          * * DRUID
+         * * FLINK
          * * HBASE
          * * HIVE_WEBHCAT
          * * JUPYTER
@@ -20154,9 +20190,6 @@ export namespace dns {
     }
 
     export interface ManagedZonePrivateVisibilityConfig {
-        /**
-         * The list of VPC networks that can see this zone. Structure is documented below.
-         */
         networks: pulumi.Input<pulumi.Input<inputs.dns.ManagedZonePrivateVisibilityConfigNetwork>[]>;
     }
 
@@ -26195,6 +26228,10 @@ export namespace storage {
          * S3 Bucket name.
          */
         bucketName: pulumi.Input<string>;
+        /**
+         * Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+         */
+        path?: pulumi.Input<string>;
     }
 
     export interface TransferJobTransferSpecGcsDataSource {
@@ -26202,6 +26239,10 @@ export namespace storage {
          * S3 Bucket name.
          */
         bucketName: pulumi.Input<string>;
+        /**
+         * Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+         */
+        path?: pulumi.Input<string>;
     }
 
     export interface TransferJobTransferSpecHttpDataSource {

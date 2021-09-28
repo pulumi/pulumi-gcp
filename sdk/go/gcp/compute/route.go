@@ -139,6 +139,110 @@ import (
 // 	})
 // }
 // ```
+// ### Route Ilb Vip
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		producerNetwork, err := compute.NewNetwork(ctx, "producerNetwork", &compute.NetworkArgs{
+// 			AutoCreateSubnetworks: pulumi.Bool(false),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		producerSubnetwork, err := compute.NewSubnetwork(ctx, "producerSubnetwork", &compute.SubnetworkArgs{
+// 			IpCidrRange: pulumi.String("10.0.1.0/24"),
+// 			Region:      pulumi.String("us-central1"),
+// 			Network:     producerNetwork.ID(),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		consumerNetwork, err := compute.NewNetwork(ctx, "consumerNetwork", &compute.NetworkArgs{
+// 			AutoCreateSubnetworks: pulumi.Bool(false),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewSubnetwork(ctx, "consumerSubnetwork", &compute.SubnetworkArgs{
+// 			IpCidrRange: pulumi.String("10.0.2.0/24"),
+// 			Region:      pulumi.String("us-central1"),
+// 			Network:     consumerNetwork.ID(),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		peering1, err := compute.NewNetworkPeering(ctx, "peering1", &compute.NetworkPeeringArgs{
+// 			Network:     consumerNetwork.ID(),
+// 			PeerNetwork: producerNetwork.ID(),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		peering2, err := compute.NewNetworkPeering(ctx, "peering2", &compute.NetworkPeeringArgs{
+// 			Network:     producerNetwork.ID(),
+// 			PeerNetwork: consumerNetwork.ID(),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		hc, err := compute.NewHealthCheck(ctx, "hc", &compute.HealthCheckArgs{
+// 			CheckIntervalSec: pulumi.Int(1),
+// 			TimeoutSec:       pulumi.Int(1),
+// 			TcpHealthCheck: &compute.HealthCheckTcpHealthCheckArgs{
+// 				Port: pulumi.Int(80),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		backend, err := compute.NewRegionBackendService(ctx, "backend", &compute.RegionBackendServiceArgs{
+// 			Region: pulumi.String("us-central1"),
+// 			HealthChecks: pulumi.String{
+// 				hc.ID(),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewForwardingRule(ctx, "_default", &compute.ForwardingRuleArgs{
+// 			Region:              pulumi.String("us-central1"),
+// 			LoadBalancingScheme: pulumi.String("INTERNAL"),
+// 			BackendService:      backend.ID(),
+// 			AllPorts:            pulumi.Bool(true),
+// 			Network:             producerNetwork.Name,
+// 			Subnetwork:          producerSubnetwork.Name,
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewRoute(ctx, "route_ilb", &compute.RouteArgs{
+// 			DestRange:  pulumi.String("0.0.0.0/0"),
+// 			Network:    consumerNetwork.Name,
+// 			NextHopIlb: _default.IpAddress,
+// 			Priority:   pulumi.Int(2000),
+// 			Tags: pulumi.StringArray{
+// 				pulumi.String("tag1"),
+// 				pulumi.String("tag2"),
+// 			},
+// 		}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+// 			peering1,
+// 			peering2,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //
@@ -182,11 +286,19 @@ type Route struct {
 	// * `global/gateways/default-internet-gateway`
 	// * The string `default-internet-gateway`.
 	NextHopGateway pulumi.StringPtrOutput `pulumi:"nextHopGateway"`
-	// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets.
-	// You can only specify the forwarding rule as a partial or full URL. For example, the following are all valid URLs:
-	// https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
-	// regions/region/forwardingRules/forwardingRule
-	// Note that this can only be used when the destinationRange is a public (non-RFC 1918) IP CIDR range.
+	// The IP address or URL to a forwarding rule of type
+	// loadBalancingScheme=INTERNAL that should handle matching
+	// packets.
+	// With the GA provider you can only specify the forwarding
+	// rule as a partial or full URL. For example, the following
+	// are all valid values:
+	// * 10.128.0.56
+	// * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+	// * regions/region/forwardingRules/forwardingRule
+	//   When the beta provider, you can also specify the IP address
+	//   of a forwarding rule from the same VPC or any peered VPC.
+	//   Note that this can only be used when the destinationRange is
+	//   a public (non-RFC 1918) IP CIDR range.
 	NextHopIlb pulumi.StringPtrOutput `pulumi:"nextHopIlb"`
 	// URL to an instance that should handle matching packets.
 	// You can specify this as a full or partial URL. For example:
@@ -280,11 +392,19 @@ type routeState struct {
 	// * `global/gateways/default-internet-gateway`
 	// * The string `default-internet-gateway`.
 	NextHopGateway *string `pulumi:"nextHopGateway"`
-	// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets.
-	// You can only specify the forwarding rule as a partial or full URL. For example, the following are all valid URLs:
-	// https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
-	// regions/region/forwardingRules/forwardingRule
-	// Note that this can only be used when the destinationRange is a public (non-RFC 1918) IP CIDR range.
+	// The IP address or URL to a forwarding rule of type
+	// loadBalancingScheme=INTERNAL that should handle matching
+	// packets.
+	// With the GA provider you can only specify the forwarding
+	// rule as a partial or full URL. For example, the following
+	// are all valid values:
+	// * 10.128.0.56
+	// * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+	// * regions/region/forwardingRules/forwardingRule
+	//   When the beta provider, you can also specify the IP address
+	//   of a forwarding rule from the same VPC or any peered VPC.
+	//   Note that this can only be used when the destinationRange is
+	//   a public (non-RFC 1918) IP CIDR range.
 	NextHopIlb *string `pulumi:"nextHopIlb"`
 	// URL to an instance that should handle matching packets.
 	// You can specify this as a full or partial URL. For example:
@@ -344,11 +464,19 @@ type RouteState struct {
 	// * `global/gateways/default-internet-gateway`
 	// * The string `default-internet-gateway`.
 	NextHopGateway pulumi.StringPtrInput
-	// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets.
-	// You can only specify the forwarding rule as a partial or full URL. For example, the following are all valid URLs:
-	// https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
-	// regions/region/forwardingRules/forwardingRule
-	// Note that this can only be used when the destinationRange is a public (non-RFC 1918) IP CIDR range.
+	// The IP address or URL to a forwarding rule of type
+	// loadBalancingScheme=INTERNAL that should handle matching
+	// packets.
+	// With the GA provider you can only specify the forwarding
+	// rule as a partial or full URL. For example, the following
+	// are all valid values:
+	// * 10.128.0.56
+	// * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+	// * regions/region/forwardingRules/forwardingRule
+	//   When the beta provider, you can also specify the IP address
+	//   of a forwarding rule from the same VPC or any peered VPC.
+	//   Note that this can only be used when the destinationRange is
+	//   a public (non-RFC 1918) IP CIDR range.
 	NextHopIlb pulumi.StringPtrInput
 	// URL to an instance that should handle matching packets.
 	// You can specify this as a full or partial URL. For example:
@@ -412,11 +540,19 @@ type routeArgs struct {
 	// * `global/gateways/default-internet-gateway`
 	// * The string `default-internet-gateway`.
 	NextHopGateway *string `pulumi:"nextHopGateway"`
-	// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets.
-	// You can only specify the forwarding rule as a partial or full URL. For example, the following are all valid URLs:
-	// https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
-	// regions/region/forwardingRules/forwardingRule
-	// Note that this can only be used when the destinationRange is a public (non-RFC 1918) IP CIDR range.
+	// The IP address or URL to a forwarding rule of type
+	// loadBalancingScheme=INTERNAL that should handle matching
+	// packets.
+	// With the GA provider you can only specify the forwarding
+	// rule as a partial or full URL. For example, the following
+	// are all valid values:
+	// * 10.128.0.56
+	// * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+	// * regions/region/forwardingRules/forwardingRule
+	//   When the beta provider, you can also specify the IP address
+	//   of a forwarding rule from the same VPC or any peered VPC.
+	//   Note that this can only be used when the destinationRange is
+	//   a public (non-RFC 1918) IP CIDR range.
 	NextHopIlb *string `pulumi:"nextHopIlb"`
 	// URL to an instance that should handle matching packets.
 	// You can specify this as a full or partial URL. For example:
@@ -473,11 +609,19 @@ type RouteArgs struct {
 	// * `global/gateways/default-internet-gateway`
 	// * The string `default-internet-gateway`.
 	NextHopGateway pulumi.StringPtrInput
-	// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets.
-	// You can only specify the forwarding rule as a partial or full URL. For example, the following are all valid URLs:
-	// https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
-	// regions/region/forwardingRules/forwardingRule
-	// Note that this can only be used when the destinationRange is a public (non-RFC 1918) IP CIDR range.
+	// The IP address or URL to a forwarding rule of type
+	// loadBalancingScheme=INTERNAL that should handle matching
+	// packets.
+	// With the GA provider you can only specify the forwarding
+	// rule as a partial or full URL. For example, the following
+	// are all valid values:
+	// * 10.128.0.56
+	// * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+	// * regions/region/forwardingRules/forwardingRule
+	//   When the beta provider, you can also specify the IP address
+	//   of a forwarding rule from the same VPC or any peered VPC.
+	//   Note that this can only be used when the destinationRange is
+	//   a public (non-RFC 1918) IP CIDR range.
 	NextHopIlb pulumi.StringPtrInput
 	// URL to an instance that should handle matching packets.
 	// You can specify this as a full or partial URL. For example:

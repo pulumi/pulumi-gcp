@@ -28,6 +28,7 @@ __all__ = [
     'ClusterConfidentialNodes',
     'ClusterDatabaseEncryption',
     'ClusterDefaultSnatStatus',
+    'ClusterDnsConfig',
     'ClusterIpAllocationPolicy',
     'ClusterMaintenancePolicy',
     'ClusterMaintenancePolicyDailyMaintenanceWindow',
@@ -102,6 +103,7 @@ __all__ = [
     'GetClusterConfidentialNodeResult',
     'GetClusterDatabaseEncryptionResult',
     'GetClusterDefaultSnatStatusResult',
+    'GetClusterDnsConfigResult',
     'GetClusterIpAllocationPolicyResult',
     'GetClusterMaintenancePolicyResult',
     'GetClusterMaintenancePolicyDailyMaintenanceWindowResult',
@@ -922,6 +924,70 @@ class ClusterDefaultSnatStatus(dict):
         cluster. It is disabled by default. Set `disabled = false` to enable.
         """
         return pulumi.get(self, "disabled")
+
+
+@pulumi.output_type
+class ClusterDnsConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterDns":
+            suggest = "cluster_dns"
+        elif key == "clusterDnsDomain":
+            suggest = "cluster_dns_domain"
+        elif key == "clusterDnsScope":
+            suggest = "cluster_dns_scope"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterDnsConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterDnsConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterDnsConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cluster_dns: Optional[str] = None,
+                 cluster_dns_domain: Optional[str] = None,
+                 cluster_dns_scope: Optional[str] = None):
+        """
+        :param str cluster_dns: Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
+        :param str cluster_dns_domain: The suffix used for all cluster service records.
+        :param str cluster_dns_scope: The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
+        """
+        if cluster_dns is not None:
+            pulumi.set(__self__, "cluster_dns", cluster_dns)
+        if cluster_dns_domain is not None:
+            pulumi.set(__self__, "cluster_dns_domain", cluster_dns_domain)
+        if cluster_dns_scope is not None:
+            pulumi.set(__self__, "cluster_dns_scope", cluster_dns_scope)
+
+    @property
+    @pulumi.getter(name="clusterDns")
+    def cluster_dns(self) -> Optional[str]:
+        """
+        Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
+        """
+        return pulumi.get(self, "cluster_dns")
+
+    @property
+    @pulumi.getter(name="clusterDnsDomain")
+    def cluster_dns_domain(self) -> Optional[str]:
+        """
+        The suffix used for all cluster service records.
+        """
+        return pulumi.get(self, "cluster_dns_domain")
+
+    @property
+    @pulumi.getter(name="clusterDnsScope")
+    def cluster_dns_scope(self) -> Optional[str]:
+        """
+        The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
+        """
+        return pulumi.get(self, "cluster_dns_scope")
 
 
 @pulumi.output_type
@@ -4676,6 +4742,32 @@ class GetClusterDefaultSnatStatusResult(dict):
     @pulumi.getter
     def disabled(self) -> bool:
         return pulumi.get(self, "disabled")
+
+
+@pulumi.output_type
+class GetClusterDnsConfigResult(dict):
+    def __init__(__self__, *,
+                 cluster_dns: str,
+                 cluster_dns_domain: str,
+                 cluster_dns_scope: str):
+        pulumi.set(__self__, "cluster_dns", cluster_dns)
+        pulumi.set(__self__, "cluster_dns_domain", cluster_dns_domain)
+        pulumi.set(__self__, "cluster_dns_scope", cluster_dns_scope)
+
+    @property
+    @pulumi.getter(name="clusterDns")
+    def cluster_dns(self) -> str:
+        return pulumi.get(self, "cluster_dns")
+
+    @property
+    @pulumi.getter(name="clusterDnsDomain")
+    def cluster_dns_domain(self) -> str:
+        return pulumi.get(self, "cluster_dns_domain")
+
+    @property
+    @pulumi.getter(name="clusterDnsScope")
+    def cluster_dns_scope(self) -> str:
+        return pulumi.get(self, "cluster_dns_scope")
 
 
 @pulumi.output_type

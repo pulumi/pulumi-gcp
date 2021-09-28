@@ -26,6 +26,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// Accepted values are:
         /// * ANACONDA
         /// * DRUID
+        /// * FLINK
         /// * HBASE
         /// * HIVE_WEBHCAT
         /// * JUPYTER

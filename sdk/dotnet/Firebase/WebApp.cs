@@ -25,6 +25,14 @@ namespace Pulumi.Gcp.Firebase
     /// WebApp can be imported using any of these accepted formats
     /// 
     /// ```sh
+    ///  $ pulumi import gcp:firebase/webApp:WebApp default {{project}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:firebase/webApp:WebApp default {{project}} {{name}}
+    /// ```
+    /// 
+    /// ```sh
     ///  $ pulumi import gcp:firebase/webApp:WebApp default {{name}}
     /// ```
     /// </summary>

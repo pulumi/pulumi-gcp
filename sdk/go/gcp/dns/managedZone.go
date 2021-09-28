@@ -306,7 +306,8 @@ type ManagedZone struct {
 	// lookup queries using automatically configured records for VPC resources. This only applies
 	// to networks listed under `privateVisibilityConfig`.
 	ReverseLookup pulumi.BoolPtrOutput `pulumi:"reverseLookup"`
-	// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.  Structure is documented below.
+	// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
+	// Structure is documented below.
 	ServiceDirectoryConfig ManagedZoneServiceDirectoryConfigPtrOutput `pulumi:"serviceDirectoryConfig"`
 	// The zone's visibility: public zones are exposed to the Internet,
 	// while private zones are visible only to Virtual Private Cloud resources.
@@ -386,7 +387,8 @@ type managedZoneState struct {
 	// lookup queries using automatically configured records for VPC resources. This only applies
 	// to networks listed under `privateVisibilityConfig`.
 	ReverseLookup *bool `pulumi:"reverseLookup"`
-	// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.  Structure is documented below.
+	// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
+	// Structure is documented below.
 	ServiceDirectoryConfig *ManagedZoneServiceDirectoryConfig `pulumi:"serviceDirectoryConfig"`
 	// The zone's visibility: public zones are exposed to the Internet,
 	// while private zones are visible only to Virtual Private Cloud resources.
@@ -432,7 +434,8 @@ type ManagedZoneState struct {
 	// lookup queries using automatically configured records for VPC resources. This only applies
 	// to networks listed under `privateVisibilityConfig`.
 	ReverseLookup pulumi.BoolPtrInput
-	// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.  Structure is documented below.
+	// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
+	// Structure is documented below.
 	ServiceDirectoryConfig ManagedZoneServiceDirectoryConfigPtrInput
 	// The zone's visibility: public zones are exposed to the Internet,
 	// while private zones are visible only to Virtual Private Cloud resources.
@@ -480,7 +483,8 @@ type managedZoneArgs struct {
 	// lookup queries using automatically configured records for VPC resources. This only applies
 	// to networks listed under `privateVisibilityConfig`.
 	ReverseLookup *bool `pulumi:"reverseLookup"`
-	// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.  Structure is documented below.
+	// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
+	// Structure is documented below.
 	ServiceDirectoryConfig *ManagedZoneServiceDirectoryConfig `pulumi:"serviceDirectoryConfig"`
 	// The zone's visibility: public zones are exposed to the Internet,
 	// while private zones are visible only to Virtual Private Cloud resources.
@@ -525,7 +529,8 @@ type ManagedZoneArgs struct {
 	// lookup queries using automatically configured records for VPC resources. This only applies
 	// to networks listed under `privateVisibilityConfig`.
 	ReverseLookup pulumi.BoolPtrInput
-	// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.  Structure is documented below.
+	// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
+	// Structure is documented below.
 	ServiceDirectoryConfig ManagedZoneServiceDirectoryConfigPtrInput
 	// The zone's visibility: public zones are exposed to the Internet,
 	// while private zones are visible only to Virtual Private Cloud resources.

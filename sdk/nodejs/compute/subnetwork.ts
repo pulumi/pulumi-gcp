@@ -229,7 +229,8 @@ export class Subnetwork extends pulumi.CustomResource {
      * An array of configurations for secondary IP ranges for VM instances
      * contained in this subnetwork. The primary IP of such VM must belong
      * to the primary ipCidrRange of the subnetwork. The alias IPs may belong
-     * to either primary or secondary ranges. Structure is documented below.
+     * to either primary or secondary ranges.
+     * Structure is documented below.
      */
     public readonly secondaryIpRanges!: pulumi.Output<outputs.compute.SubnetworkSecondaryIpRange[]>;
     /**
@@ -391,7 +392,8 @@ export interface SubnetworkState {
      * An array of configurations for secondary IP ranges for VM instances
      * contained in this subnetwork. The primary IP of such VM must belong
      * to the primary ipCidrRange of the subnetwork. The alias IPs may belong
-     * to either primary or secondary ranges. Structure is documented below.
+     * to either primary or secondary ranges.
+     * Structure is documented below.
      */
     secondaryIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.SubnetworkSecondaryIpRange>[]>;
     /**
@@ -479,7 +481,8 @@ export interface SubnetworkArgs {
      * An array of configurations for secondary IP ranges for VM instances
      * contained in this subnetwork. The primary IP of such VM must belong
      * to the primary ipCidrRange of the subnetwork. The alias IPs may belong
-     * to either primary or secondary ranges. Structure is documented below.
+     * to either primary or secondary ranges.
+     * Structure is documented below.
      */
     secondaryIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.SubnetworkSecondaryIpRange>[]>;
 }

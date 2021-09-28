@@ -189,6 +189,7 @@ __all__ = [
     'RegionBackendServiceConsistentHashHttpCookie',
     'RegionBackendServiceConsistentHashHttpCookieTtl',
     'RegionBackendServiceFailoverPolicy',
+    'RegionBackendServiceIap',
     'RegionBackendServiceLogConfig',
     'RegionBackendServiceOutlierDetection',
     'RegionBackendServiceOutlierDetectionBaseEjectionTime',
@@ -2771,7 +2772,8 @@ class BackendServiceCircuitBreakers(dict):
                  max_requests_per_connection: Optional[int] = None,
                  max_retries: Optional[int] = None):
         """
-        :param 'BackendServiceCircuitBreakersConnectTimeoutArgs' connect_timeout: The timeout for new network connections to hosts.  Structure is documented below.
+        :param 'BackendServiceCircuitBreakersConnectTimeoutArgs' connect_timeout: The timeout for new network connections to hosts.
+               Structure is documented below.
         :param int max_connections: The maximum number of connections to the backend cluster.
                Defaults to 1024.
         :param int max_pending_requests: The maximum number of pending requests to the backend cluster.
@@ -2802,7 +2804,8 @@ class BackendServiceCircuitBreakers(dict):
     @pulumi.getter(name="connectTimeout")
     def connect_timeout(self) -> Optional['outputs.BackendServiceCircuitBreakersConnectTimeout']:
         """
-        The timeout for new network connections to hosts.  Structure is documented below.
+        The timeout for new network connections to hosts.
+        Structure is documented below.
         """
         return pulumi.get(self, "connect_timeout")
 
@@ -12024,7 +12027,8 @@ class RegionBackendServiceCircuitBreakers(dict):
                  max_requests_per_connection: Optional[int] = None,
                  max_retries: Optional[int] = None):
         """
-        :param 'RegionBackendServiceCircuitBreakersConnectTimeoutArgs' connect_timeout: The timeout for new network connections to hosts.  Structure is documented below.
+        :param 'RegionBackendServiceCircuitBreakersConnectTimeoutArgs' connect_timeout: The timeout for new network connections to hosts.
+               Structure is documented below.
         :param int max_connections: The maximum number of connections to the backend cluster.
                Defaults to 1024.
         :param int max_pending_requests: The maximum number of pending requests to the backend cluster.
@@ -12055,7 +12059,8 @@ class RegionBackendServiceCircuitBreakers(dict):
     @pulumi.getter(name="connectTimeout")
     def connect_timeout(self) -> Optional['outputs.RegionBackendServiceCircuitBreakersConnectTimeout']:
         """
-        The timeout for new network connections to hosts.  Structure is documented below.
+        The timeout for new network connections to hosts.
+        Structure is documented below.
         """
         return pulumi.get(self, "connect_timeout")
 
@@ -12404,6 +12409,74 @@ class RegionBackendServiceFailoverPolicy(dict):
         This field is only used with l4 load balancing.
         """
         return pulumi.get(self, "failover_ratio")
+
+
+@pulumi.output_type
+class RegionBackendServiceIap(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "oauth2ClientId":
+            suggest = "oauth2_client_id"
+        elif key == "oauth2ClientSecret":
+            suggest = "oauth2_client_secret"
+        elif key == "oauth2ClientSecretSha256":
+            suggest = "oauth2_client_secret_sha256"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionBackendServiceIap. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionBackendServiceIap.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionBackendServiceIap.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 oauth2_client_id: str,
+                 oauth2_client_secret: str,
+                 oauth2_client_secret_sha256: Optional[str] = None):
+        """
+        :param str oauth2_client_id: OAuth2 Client ID for IAP
+        :param str oauth2_client_secret: OAuth2 Client Secret for IAP
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param str oauth2_client_secret_sha256: -
+               OAuth2 Client Secret SHA-256 for IAP
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        pulumi.set(__self__, "oauth2_client_id", oauth2_client_id)
+        pulumi.set(__self__, "oauth2_client_secret", oauth2_client_secret)
+        if oauth2_client_secret_sha256 is not None:
+            pulumi.set(__self__, "oauth2_client_secret_sha256", oauth2_client_secret_sha256)
+
+    @property
+    @pulumi.getter(name="oauth2ClientId")
+    def oauth2_client_id(self) -> str:
+        """
+        OAuth2 Client ID for IAP
+        """
+        return pulumi.get(self, "oauth2_client_id")
+
+    @property
+    @pulumi.getter(name="oauth2ClientSecret")
+    def oauth2_client_secret(self) -> str:
+        """
+        OAuth2 Client Secret for IAP
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "oauth2_client_secret")
+
+    @property
+    @pulumi.getter(name="oauth2ClientSecretSha256")
+    def oauth2_client_secret_sha256(self) -> Optional[str]:
+        """
+        -
+        OAuth2 Client Secret SHA-256 for IAP
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "oauth2_client_secret_sha256")
 
 
 @pulumi.output_type

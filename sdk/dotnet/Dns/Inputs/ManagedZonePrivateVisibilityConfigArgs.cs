@@ -14,10 +14,6 @@ namespace Pulumi.Gcp.Dns.Inputs
     {
         [Input("networks", required: true)]
         private InputList<Inputs.ManagedZonePrivateVisibilityConfigNetworkArgs>? _networks;
-
-        /// <summary>
-        /// The list of VPC networks that can see this zone. Structure is documented below.
-        /// </summary>
         public InputList<Inputs.ManagedZonePrivateVisibilityConfigNetworkArgs> Networks
         {
             get => _networks ?? (_networks = new InputList<Inputs.ManagedZonePrivateVisibilityConfigNetworkArgs>());

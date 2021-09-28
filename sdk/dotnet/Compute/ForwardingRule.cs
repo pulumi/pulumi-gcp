@@ -1117,7 +1117,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> BackendService { get; private set; } = null!;
 
         /// <summary>
-        /// Creation timestamp in RFC3339 text format.
+        /// [Output Only] Creation timestamp in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
         /// </summary>
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
@@ -1168,7 +1168,7 @@ namespace Pulumi.Gcp.Compute
         public Output<bool?> IsMirroringCollector { get; private set; } = null!;
 
         /// <summary>
-        /// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        /// Used internally during label updates.
         /// </summary>
         [Output("labelFingerprint")]
         public Output<string> LabelFingerprint { get; private set; } = null!;
@@ -1293,7 +1293,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> ServiceLabel { get; private set; } = null!;
 
         /// <summary>
-        /// The internal fully qualified service name for this Forwarding Rule. This field is only used for INTERNAL load balancing.
+        /// [Output Only] The internal fully qualified service name for this Forwarding Rule. This field is only used for internal
+        /// load balancing.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -1612,7 +1613,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? BackendService { get; set; }
 
         /// <summary>
-        /// Creation timestamp in RFC3339 text format.
+        /// [Output Only] Creation timestamp in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
         /// </summary>
         [Input("creationTimestamp")]
         public Input<string>? CreationTimestamp { get; set; }
@@ -1663,7 +1664,7 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? IsMirroringCollector { get; set; }
 
         /// <summary>
-        /// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        /// Used internally during label updates.
         /// </summary>
         [Input("labelFingerprint")]
         public Input<string>? LabelFingerprint { get; set; }
@@ -1800,7 +1801,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? ServiceLabel { get; set; }
 
         /// <summary>
-        /// The internal fully qualified service name for this Forwarding Rule. This field is only used for INTERNAL load balancing.
+        /// [Output Only] The internal fully qualified service name for this Forwarding Rule. This field is only used for internal
+        /// load balancing.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

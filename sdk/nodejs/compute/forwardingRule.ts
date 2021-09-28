@@ -758,7 +758,7 @@ export class ForwardingRule extends pulumi.CustomResource {
      */
     public readonly backendService!: pulumi.Output<string | undefined>;
     /**
-     * Creation timestamp in RFC3339 text format.
+     * [Output Only] Creation timestamp in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
@@ -799,7 +799,7 @@ export class ForwardingRule extends pulumi.CustomResource {
      */
     public readonly isMirroringCollector!: pulumi.Output<boolean | undefined>;
     /**
-     * The fingerprint used for optimistic locking of this resource. Used internally during updates.
+     * Used internally during label updates.
      */
     public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
     /**
@@ -900,7 +900,8 @@ export class ForwardingRule extends pulumi.CustomResource {
      */
     public readonly serviceLabel!: pulumi.Output<string | undefined>;
     /**
-     * The internal fully qualified service name for this Forwarding Rule. This field is only used for INTERNAL load balancing.
+     * [Output Only] The internal fully qualified service name for this Forwarding Rule. This field is only used for internal
+     * load balancing.
      */
     public /*out*/ readonly serviceName!: pulumi.Output<string>;
     /**
@@ -1013,7 +1014,7 @@ export interface ForwardingRuleState {
      */
     backendService?: pulumi.Input<string>;
     /**
-     * Creation timestamp in RFC3339 text format.
+     * [Output Only] Creation timestamp in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
      */
     creationTimestamp?: pulumi.Input<string>;
     /**
@@ -1054,7 +1055,7 @@ export interface ForwardingRuleState {
      */
     isMirroringCollector?: pulumi.Input<boolean>;
     /**
-     * The fingerprint used for optimistic locking of this resource. Used internally during updates.
+     * Used internally during label updates.
      */
     labelFingerprint?: pulumi.Input<string>;
     /**
@@ -1155,7 +1156,8 @@ export interface ForwardingRuleState {
      */
     serviceLabel?: pulumi.Input<string>;
     /**
-     * The internal fully qualified service name for this Forwarding Rule. This field is only used for INTERNAL load balancing.
+     * [Output Only] The internal fully qualified service name for this Forwarding Rule. This field is only used for internal
+     * load balancing.
      */
     serviceName?: pulumi.Input<string>;
     /**

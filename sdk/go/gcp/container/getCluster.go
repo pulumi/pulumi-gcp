@@ -77,6 +77,7 @@ type LookupClusterResult struct {
 	DefaultMaxPodsPerNode      int                                   `pulumi:"defaultMaxPodsPerNode"`
 	DefaultSnatStatuses        []GetClusterDefaultSnatStatus         `pulumi:"defaultSnatStatuses"`
 	Description                string                                `pulumi:"description"`
+	DnsConfigs                 []GetClusterDnsConfig                 `pulumi:"dnsConfigs"`
 	EnableAutopilot            bool                                  `pulumi:"enableAutopilot"`
 	EnableBinaryAuthorization  bool                                  `pulumi:"enableBinaryAuthorization"`
 	EnableIntranodeVisibility  bool                                  `pulumi:"enableIntranodeVisibility"`
@@ -209,6 +210,10 @@ func (o LookupClusterResultOutput) DefaultSnatStatuses() GetClusterDefaultSnatSt
 
 func (o LookupClusterResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) DnsConfigs() GetClusterDnsConfigArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterDnsConfig { return v.DnsConfigs }).(GetClusterDnsConfigArrayOutput)
 }
 
 func (o LookupClusterResultOutput) EnableAutopilot() pulumi.BoolOutput {

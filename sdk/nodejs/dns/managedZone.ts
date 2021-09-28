@@ -253,7 +253,8 @@ export class ManagedZone extends pulumi.CustomResource {
      */
     public readonly reverseLookup!: pulumi.Output<boolean | undefined>;
     /**
-     * The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.  Structure is documented below.
+     * The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
+     * Structure is documented below.
      */
     public readonly serviceDirectoryConfig!: pulumi.Output<outputs.dns.ManagedZoneServiceDirectoryConfig | undefined>;
     /**
@@ -383,7 +384,8 @@ export interface ManagedZoneState {
      */
     reverseLookup?: pulumi.Input<boolean>;
     /**
-     * The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.  Structure is documented below.
+     * The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
+     * Structure is documented below.
      */
     serviceDirectoryConfig?: pulumi.Input<inputs.dns.ManagedZoneServiceDirectoryConfig>;
     /**
@@ -456,7 +458,8 @@ export interface ManagedZoneArgs {
      */
     reverseLookup?: pulumi.Input<boolean>;
     /**
-     * The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.  Structure is documented below.
+     * The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
+     * Structure is documented below.
      */
     serviceDirectoryConfig?: pulumi.Input<inputs.dns.ManagedZoneServiceDirectoryConfig>;
     /**

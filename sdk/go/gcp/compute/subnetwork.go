@@ -228,7 +228,8 @@ type Subnetwork struct {
 	// An array of configurations for secondary IP ranges for VM instances
 	// contained in this subnetwork. The primary IP of such VM must belong
 	// to the primary ipCidrRange of the subnetwork. The alias IPs may belong
-	// to either primary or secondary ranges. Structure is documented below.
+	// to either primary or secondary ranges.
+	// Structure is documented below.
 	SecondaryIpRanges SubnetworkSecondaryIpRangeArrayOutput `pulumi:"secondaryIpRanges"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -329,7 +330,8 @@ type subnetworkState struct {
 	// An array of configurations for secondary IP ranges for VM instances
 	// contained in this subnetwork. The primary IP of such VM must belong
 	// to the primary ipCidrRange of the subnetwork. The alias IPs may belong
-	// to either primary or secondary ranges. Structure is documented below.
+	// to either primary or secondary ranges.
+	// Structure is documented below.
 	SecondaryIpRanges []SubnetworkSecondaryIpRange `pulumi:"secondaryIpRanges"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -396,7 +398,8 @@ type SubnetworkState struct {
 	// An array of configurations for secondary IP ranges for VM instances
 	// contained in this subnetwork. The primary IP of such VM must belong
 	// to the primary ipCidrRange of the subnetwork. The alias IPs may belong
-	// to either primary or secondary ranges. Structure is documented below.
+	// to either primary or secondary ranges.
+	// Structure is documented below.
 	SecondaryIpRanges SubnetworkSecondaryIpRangeArrayInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
@@ -459,7 +462,8 @@ type subnetworkArgs struct {
 	// An array of configurations for secondary IP ranges for VM instances
 	// contained in this subnetwork. The primary IP of such VM must belong
 	// to the primary ipCidrRange of the subnetwork. The alias IPs may belong
-	// to either primary or secondary ranges. Structure is documented below.
+	// to either primary or secondary ranges.
+	// Structure is documented below.
 	SecondaryIpRanges []SubnetworkSecondaryIpRange `pulumi:"secondaryIpRanges"`
 }
 
@@ -517,7 +521,8 @@ type SubnetworkArgs struct {
 	// An array of configurations for secondary IP ranges for VM instances
 	// contained in this subnetwork. The primary IP of such VM must belong
 	// to the primary ipCidrRange of the subnetwork. The alias IPs may belong
-	// to either primary or secondary ranges. Structure is documented below.
+	// to either primary or secondary ranges.
+	// Structure is documented below.
 	SecondaryIpRanges SubnetworkSecondaryIpRangeArrayInput
 }
 

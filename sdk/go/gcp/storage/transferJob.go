@@ -82,6 +82,7 @@ import (
 // 				},
 // 				GcsDataSink: &storage.TransferJobTransferSpecGcsDataSinkArgs{
 // 					BucketName: s3_backup_bucketBucket.Name,
+// 					Path:       pulumi.String("foo/bar/"),
 // 				},
 // 			},
 // 			Schedule: &storage.TransferJobScheduleArgs{

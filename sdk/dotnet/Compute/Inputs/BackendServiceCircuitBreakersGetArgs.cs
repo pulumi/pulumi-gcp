@@ -13,7 +13,8 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class BackendServiceCircuitBreakersGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The timeout for new network connections to hosts.  Structure is documented below.
+        /// The timeout for new network connections to hosts.
+        /// Structure is documented below.
         /// </summary>
         [Input("connectTimeout")]
         public Input<Inputs.BackendServiceCircuitBreakersConnectTimeoutGetArgs>? ConnectTimeout { get; set; }

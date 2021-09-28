@@ -1853,6 +1853,7 @@ class ClusterClusterConfigSoftwareConfigArgs:
                Accepted values are:
                * ANACONDA
                * DRUID
+               * FLINK
                * HBASE
                * HIVE_WEBHCAT
                * JUPYTER
@@ -1900,6 +1901,7 @@ class ClusterClusterConfigSoftwareConfigArgs:
         Accepted values are:
         * ANACONDA
         * DRUID
+        * FLINK
         * HBASE
         * HIVE_WEBHCAT
         * JUPYTER

@@ -3503,6 +3503,8 @@ func (o TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutp
 type TransferJobTransferSpecGcsDataSink struct {
 	// S3 Bucket name.
 	BucketName string `pulumi:"bucketName"`
+	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+	Path *string `pulumi:"path"`
 }
 
 // TransferJobTransferSpecGcsDataSinkInput is an input type that accepts TransferJobTransferSpecGcsDataSinkArgs and TransferJobTransferSpecGcsDataSinkOutput values.
@@ -3519,6 +3521,8 @@ type TransferJobTransferSpecGcsDataSinkInput interface {
 type TransferJobTransferSpecGcsDataSinkArgs struct {
 	// S3 Bucket name.
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+	Path pulumi.StringPtrInput `pulumi:"path"`
 }
 
 func (TransferJobTransferSpecGcsDataSinkArgs) ElementType() reflect.Type {
@@ -3603,6 +3607,11 @@ func (o TransferJobTransferSpecGcsDataSinkOutput) BucketName() pulumi.StringOutp
 	return o.ApplyT(func(v TransferJobTransferSpecGcsDataSink) string { return v.BucketName }).(pulumi.StringOutput)
 }
 
+// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+func (o TransferJobTransferSpecGcsDataSinkOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransferJobTransferSpecGcsDataSink) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
 type TransferJobTransferSpecGcsDataSinkPtrOutput struct{ *pulumi.OutputState }
 
 func (TransferJobTransferSpecGcsDataSinkPtrOutput) ElementType() reflect.Type {
@@ -3637,9 +3646,21 @@ func (o TransferJobTransferSpecGcsDataSinkPtrOutput) BucketName() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+func (o TransferJobTransferSpecGcsDataSinkPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecGcsDataSink) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
 type TransferJobTransferSpecGcsDataSource struct {
 	// S3 Bucket name.
 	BucketName string `pulumi:"bucketName"`
+	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+	Path *string `pulumi:"path"`
 }
 
 // TransferJobTransferSpecGcsDataSourceInput is an input type that accepts TransferJobTransferSpecGcsDataSourceArgs and TransferJobTransferSpecGcsDataSourceOutput values.
@@ -3656,6 +3677,8 @@ type TransferJobTransferSpecGcsDataSourceInput interface {
 type TransferJobTransferSpecGcsDataSourceArgs struct {
 	// S3 Bucket name.
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+	Path pulumi.StringPtrInput `pulumi:"path"`
 }
 
 func (TransferJobTransferSpecGcsDataSourceArgs) ElementType() reflect.Type {
@@ -3740,6 +3763,11 @@ func (o TransferJobTransferSpecGcsDataSourceOutput) BucketName() pulumi.StringOu
 	return o.ApplyT(func(v TransferJobTransferSpecGcsDataSource) string { return v.BucketName }).(pulumi.StringOutput)
 }
 
+// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+func (o TransferJobTransferSpecGcsDataSourceOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransferJobTransferSpecGcsDataSource) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
 type TransferJobTransferSpecGcsDataSourcePtrOutput struct{ *pulumi.OutputState }
 
 func (TransferJobTransferSpecGcsDataSourcePtrOutput) ElementType() reflect.Type {
@@ -3771,6 +3799,16 @@ func (o TransferJobTransferSpecGcsDataSourcePtrOutput) BucketName() pulumi.Strin
 			return nil
 		}
 		return &v.BucketName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+func (o TransferJobTransferSpecGcsDataSourcePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecGcsDataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
 	}).(pulumi.StringPtrOutput)
 }
 

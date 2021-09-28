@@ -19,6 +19,9 @@ namespace Pulumi.Gcp.Compute
     /// * How-to Guides
     ///     * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
     /// 
+    /// &gt; **Warning:** All arguments including `iap.oauth2_client_secret` and `iap.oauth2_client_secret_sha256` will be stored in the raw
+    /// state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+    /// 
     /// ## Example Usage
     /// ### Region Backend Service Basic
     /// 
@@ -441,6 +444,13 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> HealthChecks { get; private set; } = null!;
 
         /// <summary>
+        /// Settings for enabling Cloud Identity Aware Proxy
+        /// Structure is documented below.
+        /// </summary>
+        [Output("iap")]
+        public Output<Outputs.RegionBackendServiceIap?> Iap { get; private set; } = null!;
+
+        /// <summary>
         /// Indicates what kind of load balancing this regional backend service
         /// will be used for. A backend service created for one type of load
         /// balancing cannot be used with the other(s).
@@ -699,6 +709,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? HealthChecks { get; set; }
 
         /// <summary>
+        /// Settings for enabling Cloud Identity Aware Proxy
+        /// Structure is documented below.
+        /// </summary>
+        [Input("iap")]
+        public Input<Inputs.RegionBackendServiceIapArgs>? Iap { get; set; }
+
+        /// <summary>
         /// Indicates what kind of load balancing this regional backend service
         /// will be used for. A backend service created for one type of load
         /// balancing cannot be used with the other(s).
@@ -922,6 +939,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("healthChecks")]
         public Input<string>? HealthChecks { get; set; }
+
+        /// <summary>
+        /// Settings for enabling Cloud Identity Aware Proxy
+        /// Structure is documented below.
+        /// </summary>
+        [Input("iap")]
+        public Input<Inputs.RegionBackendServiceIapGetArgs>? Iap { get; set; }
 
         /// <summary>
         /// Indicates what kind of load balancing this regional backend service

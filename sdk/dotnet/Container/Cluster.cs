@@ -189,6 +189,13 @@ namespace Pulumi.Gcp.Container
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// )
+        /// Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
+        /// </summary>
+        [Output("dnsConfig")]
+        public Output<Outputs.ClusterDnsConfig?> DnsConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Enable Autopilot for this cluster. Defaults to `false`.
         /// Note that when this option is enabled, certain features of Standard GKE are not available.
         /// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
@@ -687,6 +694,13 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// )
+        /// Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
+        /// </summary>
+        [Input("dnsConfig")]
+        public Input<Inputs.ClusterDnsConfigArgs>? DnsConfig { get; set; }
+
+        /// <summary>
         /// Enable Autopilot for this cluster. Defaults to `false`.
         /// Note that when this option is enabled, certain features of Standard GKE are not available.
         /// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
@@ -1109,6 +1123,13 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// )
+        /// Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
+        /// </summary>
+        [Input("dnsConfig")]
+        public Input<Inputs.ClusterDnsConfigGetArgs>? DnsConfig { get; set; }
 
         /// <summary>
         /// Enable Autopilot for this cluster. Defaults to `false`.

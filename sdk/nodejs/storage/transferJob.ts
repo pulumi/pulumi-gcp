@@ -57,6 +57,7 @@ import * as utilities from "../utilities";
  *         },
  *         gcsDataSink: {
  *             bucketName: s3_backup_bucketBucket.name,
+ *             path: "foo/bar/",
  *         },
  *     },
  *     schedule: {

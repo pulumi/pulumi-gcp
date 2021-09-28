@@ -47,11 +47,19 @@ class RouteArgs:
                * `projects/project/global/gateways/default-internet-gateway`
                * `global/gateways/default-internet-gateway`
                * The string `default-internet-gateway`.
-        :param pulumi.Input[str] next_hop_ilb: The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets.
-               You can only specify the forwarding rule as a partial or full URL. For example, the following are all valid URLs:
-               https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
-               regions/region/forwardingRules/forwardingRule
-               Note that this can only be used when the destinationRange is a public (non-RFC 1918) IP CIDR range.
+        :param pulumi.Input[str] next_hop_ilb: The IP address or URL to a forwarding rule of type
+               loadBalancingScheme=INTERNAL that should handle matching
+               packets.
+               With the GA provider you can only specify the forwarding
+               rule as a partial or full URL. For example, the following
+               are all valid values:
+               * 10.128.0.56
+               * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+               * regions/region/forwardingRules/forwardingRule
+               When the beta provider, you can also specify the IP address
+               of a forwarding rule from the same VPC or any peered VPC.
+               Note that this can only be used when the destinationRange is
+               a public (non-RFC 1918) IP CIDR range.
         :param pulumi.Input[str] next_hop_instance: URL to an instance that should handle matching packets.
                You can specify this as a full or partial URL. For example:
                * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
@@ -176,11 +184,19 @@ class RouteArgs:
     @pulumi.getter(name="nextHopIlb")
     def next_hop_ilb(self) -> Optional[pulumi.Input[str]]:
         """
-        The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets.
-        You can only specify the forwarding rule as a partial or full URL. For example, the following are all valid URLs:
-        https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
-        regions/region/forwardingRules/forwardingRule
-        Note that this can only be used when the destinationRange is a public (non-RFC 1918) IP CIDR range.
+        The IP address or URL to a forwarding rule of type
+        loadBalancingScheme=INTERNAL that should handle matching
+        packets.
+        With the GA provider you can only specify the forwarding
+        rule as a partial or full URL. For example, the following
+        are all valid values:
+        * 10.128.0.56
+        * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+        * regions/region/forwardingRules/forwardingRule
+        When the beta provider, you can also specify the IP address
+        of a forwarding rule from the same VPC or any peered VPC.
+        Note that this can only be used when the destinationRange is
+        a public (non-RFC 1918) IP CIDR range.
         """
         return pulumi.get(self, "next_hop_ilb")
 
@@ -325,11 +341,19 @@ class _RouteState:
                * `projects/project/global/gateways/default-internet-gateway`
                * `global/gateways/default-internet-gateway`
                * The string `default-internet-gateway`.
-        :param pulumi.Input[str] next_hop_ilb: The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets.
-               You can only specify the forwarding rule as a partial or full URL. For example, the following are all valid URLs:
-               https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
-               regions/region/forwardingRules/forwardingRule
-               Note that this can only be used when the destinationRange is a public (non-RFC 1918) IP CIDR range.
+        :param pulumi.Input[str] next_hop_ilb: The IP address or URL to a forwarding rule of type
+               loadBalancingScheme=INTERNAL that should handle matching
+               packets.
+               With the GA provider you can only specify the forwarding
+               rule as a partial or full URL. For example, the following
+               are all valid values:
+               * 10.128.0.56
+               * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+               * regions/region/forwardingRules/forwardingRule
+               When the beta provider, you can also specify the IP address
+               of a forwarding rule from the same VPC or any peered VPC.
+               Note that this can only be used when the destinationRange is
+               a public (non-RFC 1918) IP CIDR range.
         :param pulumi.Input[str] next_hop_instance: URL to an instance that should handle matching packets.
                You can specify this as a full or partial URL. For example:
                * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
@@ -462,11 +486,19 @@ class _RouteState:
     @pulumi.getter(name="nextHopIlb")
     def next_hop_ilb(self) -> Optional[pulumi.Input[str]]:
         """
-        The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets.
-        You can only specify the forwarding rule as a partial or full URL. For example, the following are all valid URLs:
-        https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
-        regions/region/forwardingRules/forwardingRule
-        Note that this can only be used when the destinationRange is a public (non-RFC 1918) IP CIDR range.
+        The IP address or URL to a forwarding rule of type
+        loadBalancingScheme=INTERNAL that should handle matching
+        packets.
+        With the GA provider you can only specify the forwarding
+        rule as a partial or full URL. For example, the following
+        are all valid values:
+        * 10.128.0.56
+        * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+        * regions/region/forwardingRules/forwardingRule
+        When the beta provider, you can also specify the IP address
+        of a forwarding rule from the same VPC or any peered VPC.
+        Note that this can only be used when the destinationRange is
+        a public (non-RFC 1918) IP CIDR range.
         """
         return pulumi.get(self, "next_hop_ilb")
 
@@ -692,6 +724,68 @@ class Route(pulumi.CustomResource):
             next_hop_ilb=default_forwarding_rule.id,
             priority=2000)
         ```
+        ### Route Ilb Vip
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        producer_network = gcp.compute.Network("producerNetwork", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        producer_subnetwork = gcp.compute.Subnetwork("producerSubnetwork",
+            ip_cidr_range="10.0.1.0/24",
+            region="us-central1",
+            network=producer_network.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        consumer_network = gcp.compute.Network("consumerNetwork", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        consumer_subnetwork = gcp.compute.Subnetwork("consumerSubnetwork",
+            ip_cidr_range="10.0.2.0/24",
+            region="us-central1",
+            network=consumer_network.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        peering1 = gcp.compute.NetworkPeering("peering1",
+            network=consumer_network.id,
+            peer_network=producer_network.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        peering2 = gcp.compute.NetworkPeering("peering2",
+            network=producer_network.id,
+            peer_network=consumer_network.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        hc = gcp.compute.HealthCheck("hc",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=80,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        backend = gcp.compute.RegionBackendService("backend",
+            region="us-central1",
+            health_checks=[hc.id],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default = gcp.compute.ForwardingRule("default",
+            region="us-central1",
+            load_balancing_scheme="INTERNAL",
+            backend_service=backend.id,
+            all_ports=True,
+            network=producer_network.name,
+            subnetwork=producer_subnetwork.name,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        route_ilb = gcp.compute.Route("route-ilb",
+            dest_range="0.0.0.0/0",
+            network=consumer_network.name,
+            next_hop_ilb=default.ip_address,
+            priority=2000,
+            tags=[
+                "tag1",
+                "tag2",
+            ],
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[
+                    peering1,
+                    peering2,
+                ]))
+        ```
 
         ## Import
 
@@ -730,11 +824,19 @@ class Route(pulumi.CustomResource):
                * `projects/project/global/gateways/default-internet-gateway`
                * `global/gateways/default-internet-gateway`
                * The string `default-internet-gateway`.
-        :param pulumi.Input[str] next_hop_ilb: The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets.
-               You can only specify the forwarding rule as a partial or full URL. For example, the following are all valid URLs:
-               https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
-               regions/region/forwardingRules/forwardingRule
-               Note that this can only be used when the destinationRange is a public (non-RFC 1918) IP CIDR range.
+        :param pulumi.Input[str] next_hop_ilb: The IP address or URL to a forwarding rule of type
+               loadBalancingScheme=INTERNAL that should handle matching
+               packets.
+               With the GA provider you can only specify the forwarding
+               rule as a partial or full URL. For example, the following
+               are all valid values:
+               * 10.128.0.56
+               * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+               * regions/region/forwardingRules/forwardingRule
+               When the beta provider, you can also specify the IP address
+               of a forwarding rule from the same VPC or any peered VPC.
+               Note that this can only be used when the destinationRange is
+               a public (non-RFC 1918) IP CIDR range.
         :param pulumi.Input[str] next_hop_instance: URL to an instance that should handle matching packets.
                You can specify this as a full or partial URL. For example:
                * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
@@ -838,6 +940,68 @@ class Route(pulumi.CustomResource):
             network=default_network.name,
             next_hop_ilb=default_forwarding_rule.id,
             priority=2000)
+        ```
+        ### Route Ilb Vip
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        producer_network = gcp.compute.Network("producerNetwork", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        producer_subnetwork = gcp.compute.Subnetwork("producerSubnetwork",
+            ip_cidr_range="10.0.1.0/24",
+            region="us-central1",
+            network=producer_network.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        consumer_network = gcp.compute.Network("consumerNetwork", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        consumer_subnetwork = gcp.compute.Subnetwork("consumerSubnetwork",
+            ip_cidr_range="10.0.2.0/24",
+            region="us-central1",
+            network=consumer_network.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        peering1 = gcp.compute.NetworkPeering("peering1",
+            network=consumer_network.id,
+            peer_network=producer_network.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        peering2 = gcp.compute.NetworkPeering("peering2",
+            network=producer_network.id,
+            peer_network=consumer_network.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        hc = gcp.compute.HealthCheck("hc",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=80,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        backend = gcp.compute.RegionBackendService("backend",
+            region="us-central1",
+            health_checks=[hc.id],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default = gcp.compute.ForwardingRule("default",
+            region="us-central1",
+            load_balancing_scheme="INTERNAL",
+            backend_service=backend.id,
+            all_ports=True,
+            network=producer_network.name,
+            subnetwork=producer_subnetwork.name,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        route_ilb = gcp.compute.Route("route-ilb",
+            dest_range="0.0.0.0/0",
+            network=consumer_network.name,
+            next_hop_ilb=default.ip_address,
+            priority=2000,
+            tags=[
+                "tag1",
+                "tag2",
+            ],
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[
+                    peering1,
+                    peering2,
+                ]))
         ```
 
         ## Import
@@ -966,11 +1130,19 @@ class Route(pulumi.CustomResource):
                * `projects/project/global/gateways/default-internet-gateway`
                * `global/gateways/default-internet-gateway`
                * The string `default-internet-gateway`.
-        :param pulumi.Input[str] next_hop_ilb: The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets.
-               You can only specify the forwarding rule as a partial or full URL. For example, the following are all valid URLs:
-               https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
-               regions/region/forwardingRules/forwardingRule
-               Note that this can only be used when the destinationRange is a public (non-RFC 1918) IP CIDR range.
+        :param pulumi.Input[str] next_hop_ilb: The IP address or URL to a forwarding rule of type
+               loadBalancingScheme=INTERNAL that should handle matching
+               packets.
+               With the GA provider you can only specify the forwarding
+               rule as a partial or full URL. For example, the following
+               are all valid values:
+               * 10.128.0.56
+               * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+               * regions/region/forwardingRules/forwardingRule
+               When the beta provider, you can also specify the IP address
+               of a forwarding rule from the same VPC or any peered VPC.
+               Note that this can only be used when the destinationRange is
+               a public (non-RFC 1918) IP CIDR range.
         :param pulumi.Input[str] next_hop_instance: URL to an instance that should handle matching packets.
                You can specify this as a full or partial URL. For example:
                * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
@@ -1073,11 +1245,19 @@ class Route(pulumi.CustomResource):
     @pulumi.getter(name="nextHopIlb")
     def next_hop_ilb(self) -> pulumi.Output[Optional[str]]:
         """
-        The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets.
-        You can only specify the forwarding rule as a partial or full URL. For example, the following are all valid URLs:
-        https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
-        regions/region/forwardingRules/forwardingRule
-        Note that this can only be used when the destinationRange is a public (non-RFC 1918) IP CIDR range.
+        The IP address or URL to a forwarding rule of type
+        loadBalancingScheme=INTERNAL that should handle matching
+        packets.
+        With the GA provider you can only specify the forwarding
+        rule as a partial or full URL. For example, the following
+        are all valid values:
+        * 10.128.0.56
+        * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+        * regions/region/forwardingRules/forwardingRule
+        When the beta provider, you can also specify the IP address
+        of a forwarding rule from the same VPC or any peered VPC.
+        Note that this can only be used when the destinationRange is
+        a public (non-RFC 1918) IP CIDR range.
         """
         return pulumi.get(self, "next_hop_ilb")
 

@@ -13,9 +13,6 @@ namespace Pulumi.Gcp.Dns.Outputs
     [OutputType]
     public sealed class ManagedZonePrivateVisibilityConfig
     {
-        /// <summary>
-        /// The list of VPC networks that can see this zone. Structure is documented below.
-        /// </summary>
         public readonly ImmutableArray<Outputs.ManagedZonePrivateVisibilityConfigNetwork> Networks;
 
         [OutputConstructor]

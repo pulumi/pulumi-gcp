@@ -198,6 +198,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * )
+     * Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
+     */
+    public readonly dnsConfig!: pulumi.Output<outputs.container.ClusterDnsConfig | undefined>;
+    /**
      * Enable Autopilot for this cluster. Defaults to `false`.
      * Note that when this option is enabled, certain features of Standard GKE are not available.
      * See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
@@ -502,6 +507,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["defaultMaxPodsPerNode"] = state ? state.defaultMaxPodsPerNode : undefined;
             inputs["defaultSnatStatus"] = state ? state.defaultSnatStatus : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["dnsConfig"] = state ? state.dnsConfig : undefined;
             inputs["enableAutopilot"] = state ? state.enableAutopilot : undefined;
             inputs["enableBinaryAuthorization"] = state ? state.enableBinaryAuthorization : undefined;
             inputs["enableIntranodeVisibility"] = state ? state.enableIntranodeVisibility : undefined;
@@ -560,6 +566,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["defaultMaxPodsPerNode"] = args ? args.defaultMaxPodsPerNode : undefined;
             inputs["defaultSnatStatus"] = args ? args.defaultSnatStatus : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["dnsConfig"] = args ? args.dnsConfig : undefined;
             inputs["enableAutopilot"] = args ? args.enableAutopilot : undefined;
             inputs["enableBinaryAuthorization"] = args ? args.enableBinaryAuthorization : undefined;
             inputs["enableIntranodeVisibility"] = args ? args.enableIntranodeVisibility : undefined;
@@ -677,6 +684,11 @@ export interface ClusterState {
      * Description of the cluster.
      */
     description?: pulumi.Input<string>;
+    /**
+     * )
+     * Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
+     */
+    dnsConfig?: pulumi.Input<inputs.container.ClusterDnsConfig>;
     /**
      * Enable Autopilot for this cluster. Defaults to `false`.
      * Note that when this option is enabled, certain features of Standard GKE are not available.
@@ -1023,6 +1035,11 @@ export interface ClusterArgs {
      * Description of the cluster.
      */
     description?: pulumi.Input<string>;
+    /**
+     * )
+     * Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
+     */
+    dnsConfig?: pulumi.Input<inputs.container.ClusterDnsConfig>;
     /**
      * Enable Autopilot for this cluster. Defaults to `false`.
      * Note that when this option is enabled, certain features of Standard GKE are not available.

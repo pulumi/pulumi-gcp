@@ -5,55 +5,23 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * A single DNS record that exists on a domain name (i.e. in a managed zone).
- * This record defines the information about the domain and where the
- * domain / subdomains direct to.
- *
- * The record will include the domain/subdomain name, a type (i.e. A, AAA,
- * CAA, MX, CNAME, NS, etc)
- *
- * ## Example Usage
- * ### Dns Record Set Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const parent_zone = new gcp.dns.ManagedZone("parent-zone", {
- *     dnsName: "my-zone.hashicorptest.com.",
- *     description: "Test Description",
- * }, {
- *     provider: "google-beta",
- * });
- * const resource_recordset = new gcp.dns.RecordSet("resource-recordset", {
- *     managedZone: parent_zone.name,
- *     name: "test-record.my-zone.hashicorptest.com.",
- *     type: "A",
- *     rrdatas: [
- *         "10.0.0.1",
- *         "10.1.0.1",
- *     ],
- *     ttl: 86400,
- * }, {
- *     provider: "google-beta",
- * });
- * ```
- *
  * ## Import
  *
- * ResourceDnsRecordSet can be imported using any of these accepted formats
+ * DNS record sets can be imported using either of these accepted formats
  *
  * ```sh
- *  $ pulumi import gcp:dns/recordSet:RecordSet default projects/{{project}}/managedZones/{{managed_zone}}/rrsets/{{name}}/{{type}}
+ *  $ pulumi import gcp:dns/recordSet:RecordSet frontend projects/{{project}}/managedZones/{{zone}}/rrsets/{{name}}/{{type}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:dns/recordSet:RecordSet default {{project}}/{{managed_zone}}/{{name}}/{{type}}
+ *  $ pulumi import gcp:dns/recordSet:RecordSet frontend {{project}}/{{zone}}/{{name}}/{{type}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:dns/recordSet:RecordSet default {{managed_zone}}/{{name}}/{{type}}
+ *  $ pulumi import gcp:dns/recordSet:RecordSet frontend {{zone}}/{{name}}/{{type}}
  * ```
+ *
+ *  NoteThe record name must include the trailing dot at the end.
  */
 export class RecordSet extends pulumi.CustomResource {
     /**
@@ -84,16 +52,17 @@ export class RecordSet extends pulumi.CustomResource {
     }
 
     /**
-     * Identifies the managed zone addressed by this request.
+     * The name of the zone in which this record set will
+     * reside.
      */
     public readonly managedZone!: pulumi.Output<string>;
     /**
-     * For example, www.example.com.
+     * The DNS name this record set will apply to.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -102,15 +71,13 @@ export class RecordSet extends pulumi.CustomResource {
      * record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
      * string (e.g. "first255characters\"\"morecharacters").
      */
-    public readonly rrdatas!: pulumi.Output<string[] | undefined>;
+    public readonly rrdatas!: pulumi.Output<string[]>;
     /**
-     * Number of seconds that this ResourceRecordSet can be cached by
-     * resolvers.
+     * The time-to-live of this record set (seconds).
      */
     public readonly ttl!: pulumi.Output<number | undefined>;
     /**
-     * One of valid DNS resource types.
-     * Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `TLSA`, and `TXT`.
+     * The DNS record set type.
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -141,6 +108,9 @@ export class RecordSet extends pulumi.CustomResource {
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
+            if ((!args || args.rrdatas === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'rrdatas'");
+            }
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
@@ -163,16 +133,17 @@ export class RecordSet extends pulumi.CustomResource {
  */
 export interface RecordSetState {
     /**
-     * Identifies the managed zone addressed by this request.
+     * The name of the zone in which this record set will
+     * reside.
      */
     managedZone?: pulumi.Input<string>;
     /**
-     * For example, www.example.com.
+     * The DNS name this record set will apply to.
      */
     name?: pulumi.Input<string>;
     /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**
@@ -183,13 +154,11 @@ export interface RecordSetState {
      */
     rrdatas?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Number of seconds that this ResourceRecordSet can be cached by
-     * resolvers.
+     * The time-to-live of this record set (seconds).
      */
     ttl?: pulumi.Input<number>;
     /**
-     * One of valid DNS resource types.
-     * Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `TLSA`, and `TXT`.
+     * The DNS record set type.
      */
     type?: pulumi.Input<string>;
 }
@@ -199,16 +168,17 @@ export interface RecordSetState {
  */
 export interface RecordSetArgs {
     /**
-     * Identifies the managed zone addressed by this request.
+     * The name of the zone in which this record set will
+     * reside.
      */
     managedZone: pulumi.Input<string>;
     /**
-     * For example, www.example.com.
+     * The DNS name this record set will apply to.
      */
     name: pulumi.Input<string>;
     /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**
@@ -217,15 +187,13 @@ export interface RecordSetArgs {
      * record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
      * string (e.g. "first255characters\"\"morecharacters").
      */
-    rrdatas?: pulumi.Input<pulumi.Input<string>[]>;
+    rrdatas: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Number of seconds that this ResourceRecordSet can be cached by
-     * resolvers.
+     * The time-to-live of this record set (seconds).
      */
     ttl?: pulumi.Input<number>;
     /**
-     * One of valid DNS resource types.
-     * Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `TLSA`, and `TXT`.
+     * The DNS record set type.
      */
     type: pulumi.Input<string>;
 }

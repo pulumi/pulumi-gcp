@@ -15,32 +15,30 @@ class RecordSetArgs:
     def __init__(__self__, *,
                  managed_zone: pulumi.Input[str],
                  name: pulumi.Input[str],
+                 rrdatas: pulumi.Input[Sequence[pulumi.Input[str]]],
                  type: pulumi.Input[str],
                  project: Optional[pulumi.Input[str]] = None,
-                 rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ttl: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a RecordSet resource.
-        :param pulumi.Input[str] managed_zone: Identifies the managed zone addressed by this request.
-        :param pulumi.Input[str] name: For example, www.example.com.
-        :param pulumi.Input[str] type: One of valid DNS resource types.
-               Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `TLSA`, and `TXT`.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] managed_zone: The name of the zone in which this record set will
+               reside.
+        :param pulumi.Input[str] name: The DNS name this record set will apply to.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
                data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
                record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
                string (e.g. "first255characters\"\"morecharacters").
-        :param pulumi.Input[int] ttl: Number of seconds that this ResourceRecordSet can be cached by
-               resolvers.
+        :param pulumi.Input[str] type: The DNS record set type.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        :param pulumi.Input[int] ttl: The time-to-live of this record set (seconds).
         """
         pulumi.set(__self__, "managed_zone", managed_zone)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "rrdatas", rrdatas)
         pulumi.set(__self__, "type", type)
         if project is not None:
             pulumi.set(__self__, "project", project)
-        if rrdatas is not None:
-            pulumi.set(__self__, "rrdatas", rrdatas)
         if ttl is not None:
             pulumi.set(__self__, "ttl", ttl)
 
@@ -48,7 +46,8 @@ class RecordSetArgs:
     @pulumi.getter(name="managedZone")
     def managed_zone(self) -> pulumi.Input[str]:
         """
-        Identifies the managed zone addressed by this request.
+        The name of the zone in which this record set will
+        reside.
         """
         return pulumi.get(self, "managed_zone")
 
@@ -60,7 +59,7 @@ class RecordSetArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        For example, www.example.com.
+        The DNS name this record set will apply to.
         """
         return pulumi.get(self, "name")
 
@@ -70,10 +69,24 @@ class RecordSetArgs:
 
     @property
     @pulumi.getter
+    def rrdatas(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
+        data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
+        record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
+        string (e.g. "first255characters\"\"morecharacters").
+        """
+        return pulumi.get(self, "rrdatas")
+
+    @rrdatas.setter
+    def rrdatas(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "rrdatas", value)
+
+    @property
+    @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        One of valid DNS resource types.
-        Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `TLSA`, and `TXT`.
+        The DNS record set type.
         """
         return pulumi.get(self, "type")
 
@@ -85,8 +98,8 @@ class RecordSetArgs:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
+        The ID of the project in which the resource belongs. If it
+        is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -96,25 +109,9 @@ class RecordSetArgs:
 
     @property
     @pulumi.getter
-    def rrdatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
-        data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
-        record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
-        string (e.g. "first255characters\"\"morecharacters").
-        """
-        return pulumi.get(self, "rrdatas")
-
-    @rrdatas.setter
-    def rrdatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "rrdatas", value)
-
-    @property
-    @pulumi.getter
     def ttl(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of seconds that this ResourceRecordSet can be cached by
-        resolvers.
+        The time-to-live of this record set (seconds).
         """
         return pulumi.get(self, "ttl")
 
@@ -134,18 +131,17 @@ class _RecordSetState:
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RecordSet resources.
-        :param pulumi.Input[str] managed_zone: Identifies the managed zone addressed by this request.
-        :param pulumi.Input[str] name: For example, www.example.com.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] managed_zone: The name of the zone in which this record set will
+               reside.
+        :param pulumi.Input[str] name: The DNS name this record set will apply to.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
                data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
                record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
                string (e.g. "first255characters\"\"morecharacters").
-        :param pulumi.Input[int] ttl: Number of seconds that this ResourceRecordSet can be cached by
-               resolvers.
-        :param pulumi.Input[str] type: One of valid DNS resource types.
-               Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `TLSA`, and `TXT`.
+        :param pulumi.Input[int] ttl: The time-to-live of this record set (seconds).
+        :param pulumi.Input[str] type: The DNS record set type.
         """
         if managed_zone is not None:
             pulumi.set(__self__, "managed_zone", managed_zone)
@@ -164,7 +160,8 @@ class _RecordSetState:
     @pulumi.getter(name="managedZone")
     def managed_zone(self) -> Optional[pulumi.Input[str]]:
         """
-        Identifies the managed zone addressed by this request.
+        The name of the zone in which this record set will
+        reside.
         """
         return pulumi.get(self, "managed_zone")
 
@@ -176,7 +173,7 @@ class _RecordSetState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        For example, www.example.com.
+        The DNS name this record set will apply to.
         """
         return pulumi.get(self, "name")
 
@@ -188,8 +185,8 @@ class _RecordSetState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
+        The ID of the project in which the resource belongs. If it
+        is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -216,8 +213,7 @@ class _RecordSetState:
     @pulumi.getter
     def ttl(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of seconds that this ResourceRecordSet can be cached by
-        resolvers.
+        The time-to-live of this record set (seconds).
         """
         return pulumi.get(self, "ttl")
 
@@ -229,8 +225,7 @@ class _RecordSetState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        One of valid DNS resource types.
-        Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `TLSA`, and `TXT`.
+        The DNS record set type.
         """
         return pulumi.get(self, "type")
 
@@ -252,66 +247,37 @@ class RecordSet(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        A single DNS record that exists on a domain name (i.e. in a managed zone).
-        This record defines the information about the domain and where the
-        domain / subdomains direct to.
-
-        The record will include the domain/subdomain name, a type (i.e. A, AAA,
-        CAA, MX, CNAME, NS, etc)
-
-        ## Example Usage
-        ### Dns Record Set Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        parent_zone = gcp.dns.ManagedZone("parent-zone",
-            dns_name="my-zone.hashicorptest.com.",
-            description="Test Description",
-            opts=pulumi.ResourceOptions(provider="google-beta"))
-        resource_recordset = gcp.dns.RecordSet("resource-recordset",
-            managed_zone=parent_zone.name,
-            name="test-record.my-zone.hashicorptest.com.",
-            type="A",
-            rrdatas=[
-                "10.0.0.1",
-                "10.1.0.1",
-            ],
-            ttl=86400,
-            opts=pulumi.ResourceOptions(provider="google-beta"))
-        ```
-
         ## Import
 
-        ResourceDnsRecordSet can be imported using any of these accepted formats
+        DNS record sets can be imported using either of these accepted formats
 
         ```sh
-         $ pulumi import gcp:dns/recordSet:RecordSet default projects/{{project}}/managedZones/{{managed_zone}}/rrsets/{{name}}/{{type}}
+         $ pulumi import gcp:dns/recordSet:RecordSet frontend projects/{{project}}/managedZones/{{zone}}/rrsets/{{name}}/{{type}}
         ```
 
         ```sh
-         $ pulumi import gcp:dns/recordSet:RecordSet default {{project}}/{{managed_zone}}/{{name}}/{{type}}
+         $ pulumi import gcp:dns/recordSet:RecordSet frontend {{project}}/{{zone}}/{{name}}/{{type}}
         ```
 
         ```sh
-         $ pulumi import gcp:dns/recordSet:RecordSet default {{managed_zone}}/{{name}}/{{type}}
+         $ pulumi import gcp:dns/recordSet:RecordSet frontend {{zone}}/{{name}}/{{type}}
         ```
+
+         NoteThe record name must include the trailing dot at the end.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] managed_zone: Identifies the managed zone addressed by this request.
-        :param pulumi.Input[str] name: For example, www.example.com.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] managed_zone: The name of the zone in which this record set will
+               reside.
+        :param pulumi.Input[str] name: The DNS name this record set will apply to.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
                data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
                record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
                string (e.g. "first255characters\"\"morecharacters").
-        :param pulumi.Input[int] ttl: Number of seconds that this ResourceRecordSet can be cached by
-               resolvers.
-        :param pulumi.Input[str] type: One of valid DNS resource types.
-               Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `TLSA`, and `TXT`.
+        :param pulumi.Input[int] ttl: The time-to-live of this record set (seconds).
+        :param pulumi.Input[str] type: The DNS record set type.
         """
         ...
     @overload
@@ -320,51 +286,23 @@ class RecordSet(pulumi.CustomResource):
                  args: RecordSetArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        A single DNS record that exists on a domain name (i.e. in a managed zone).
-        This record defines the information about the domain and where the
-        domain / subdomains direct to.
-
-        The record will include the domain/subdomain name, a type (i.e. A, AAA,
-        CAA, MX, CNAME, NS, etc)
-
-        ## Example Usage
-        ### Dns Record Set Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        parent_zone = gcp.dns.ManagedZone("parent-zone",
-            dns_name="my-zone.hashicorptest.com.",
-            description="Test Description",
-            opts=pulumi.ResourceOptions(provider="google-beta"))
-        resource_recordset = gcp.dns.RecordSet("resource-recordset",
-            managed_zone=parent_zone.name,
-            name="test-record.my-zone.hashicorptest.com.",
-            type="A",
-            rrdatas=[
-                "10.0.0.1",
-                "10.1.0.1",
-            ],
-            ttl=86400,
-            opts=pulumi.ResourceOptions(provider="google-beta"))
-        ```
-
         ## Import
 
-        ResourceDnsRecordSet can be imported using any of these accepted formats
+        DNS record sets can be imported using either of these accepted formats
 
         ```sh
-         $ pulumi import gcp:dns/recordSet:RecordSet default projects/{{project}}/managedZones/{{managed_zone}}/rrsets/{{name}}/{{type}}
+         $ pulumi import gcp:dns/recordSet:RecordSet frontend projects/{{project}}/managedZones/{{zone}}/rrsets/{{name}}/{{type}}
         ```
 
         ```sh
-         $ pulumi import gcp:dns/recordSet:RecordSet default {{project}}/{{managed_zone}}/{{name}}/{{type}}
+         $ pulumi import gcp:dns/recordSet:RecordSet frontend {{project}}/{{zone}}/{{name}}/{{type}}
         ```
 
         ```sh
-         $ pulumi import gcp:dns/recordSet:RecordSet default {{managed_zone}}/{{name}}/{{type}}
+         $ pulumi import gcp:dns/recordSet:RecordSet frontend {{zone}}/{{name}}/{{type}}
         ```
+
+         NoteThe record name must include the trailing dot at the end.
 
         :param str resource_name: The name of the resource.
         :param RecordSetArgs args: The arguments to use to populate this resource's properties.
@@ -406,6 +344,8 @@ class RecordSet(pulumi.CustomResource):
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            if rrdatas is None and not opts.urn:
+                raise TypeError("Missing required property 'rrdatas'")
             __props__.__dict__["rrdatas"] = rrdatas
             __props__.__dict__["ttl"] = ttl
             if type is None and not opts.urn:
@@ -434,18 +374,17 @@ class RecordSet(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] managed_zone: Identifies the managed zone addressed by this request.
-        :param pulumi.Input[str] name: For example, www.example.com.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] managed_zone: The name of the zone in which this record set will
+               reside.
+        :param pulumi.Input[str] name: The DNS name this record set will apply to.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
                data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
                record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
                string (e.g. "first255characters\"\"morecharacters").
-        :param pulumi.Input[int] ttl: Number of seconds that this ResourceRecordSet can be cached by
-               resolvers.
-        :param pulumi.Input[str] type: One of valid DNS resource types.
-               Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `TLSA`, and `TXT`.
+        :param pulumi.Input[int] ttl: The time-to-live of this record set (seconds).
+        :param pulumi.Input[str] type: The DNS record set type.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -463,7 +402,8 @@ class RecordSet(pulumi.CustomResource):
     @pulumi.getter(name="managedZone")
     def managed_zone(self) -> pulumi.Output[str]:
         """
-        Identifies the managed zone addressed by this request.
+        The name of the zone in which this record set will
+        reside.
         """
         return pulumi.get(self, "managed_zone")
 
@@ -471,7 +411,7 @@ class RecordSet(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        For example, www.example.com.
+        The DNS name this record set will apply to.
         """
         return pulumi.get(self, "name")
 
@@ -479,14 +419,14 @@ class RecordSet(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
+        The ID of the project in which the resource belongs. If it
+        is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter
-    def rrdatas(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def rrdatas(self) -> pulumi.Output[Sequence[str]]:
         """
         The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
         data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
@@ -499,8 +439,7 @@ class RecordSet(pulumi.CustomResource):
     @pulumi.getter
     def ttl(self) -> pulumi.Output[Optional[int]]:
         """
-        Number of seconds that this ResourceRecordSet can be cached by
-        resolvers.
+        The time-to-live of this record set (seconds).
         """
         return pulumi.get(self, "ttl")
 
@@ -508,8 +447,7 @@ class RecordSet(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        One of valid DNS resource types.
-        Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `TLSA`, and `TXT`.
+        The DNS record set type.
         """
         return pulumi.get(self, "type")
 
