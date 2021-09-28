@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to pulumi sdk + codegen v3.11.0
-* Upgrade to pulumi-terraform-bridge v3.7.0
+_(none)_
 
 ---
+
+## 5.21.0 (2021-09-28)
+* Upgrade to pulumi sdk + codegen v3.11.0
+* Upgrade to pulumi-terraform-bridge v3.7.0
 
 ## 5.20.0 (2021-09-15)
 * Upgrade to v3.84.0 of the Google Beta Terraform Provider
