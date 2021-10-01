@@ -76,6 +76,82 @@ import (
 // 	})
 // }
 // ```
+// ### Network Peering Routes Config Gke
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/container"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		containerNetwork, err := compute.NewNetwork(ctx, "containerNetwork", &compute.NetworkArgs{
+// 			AutoCreateSubnetworks: pulumi.Bool(false),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		containerSubnetwork, err := compute.NewSubnetwork(ctx, "containerSubnetwork", &compute.SubnetworkArgs{
+// 			Region:                pulumi.String("us-central1"),
+// 			Network:               containerNetwork.Name,
+// 			IpCidrRange:           pulumi.String("10.0.36.0/24"),
+// 			PrivateIpGoogleAccess: pulumi.Bool(true),
+// 			SecondaryIpRanges: compute.SubnetworkSecondaryIpRangeArray{
+// 				&compute.SubnetworkSecondaryIpRangeArgs{
+// 					RangeName:   pulumi.String("pod"),
+// 					IpCidrRange: pulumi.String("10.0.0.0/19"),
+// 				},
+// 				&compute.SubnetworkSecondaryIpRangeArgs{
+// 					RangeName:   pulumi.String("svc"),
+// 					IpCidrRange: pulumi.String("10.0.32.0/22"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		privateCluster, err := container.NewCluster(ctx, "privateCluster", &container.ClusterArgs{
+// 			Location:         pulumi.String("us-central1-a"),
+// 			InitialNodeCount: pulumi.Int(1),
+// 			Network:          containerNetwork.Name,
+// 			Subnetwork:       containerSubnetwork.Name,
+// 			PrivateClusterConfig: &container.ClusterPrivateClusterConfigArgs{
+// 				EnablePrivateEndpoint: pulumi.Bool(true),
+// 				EnablePrivateNodes:    pulumi.Bool(true),
+// 				MasterIpv4CidrBlock:   pulumi.String("10.42.0.0/28"),
+// 			},
+// 			MasterAuthorizedNetworksConfig: nil,
+// 			IpAllocationPolicy: &container.ClusterIpAllocationPolicyArgs{
+// 				ClusterSecondaryRangeName: containerSubnetwork.SecondaryIpRanges.ApplyT(func(secondaryIpRanges []compute.SubnetworkSecondaryIpRange) (string, error) {
+// 					return secondaryIpRanges[0].RangeName, nil
+// 				}).(pulumi.StringOutput),
+// 				ServicesSecondaryRangeName: containerSubnetwork.SecondaryIpRanges.ApplyT(func(secondaryIpRanges []compute.SubnetworkSecondaryIpRange) (string, error) {
+// 					return secondaryIpRanges[1].RangeName, nil
+// 				}).(pulumi.StringOutput),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewNetworkPeeringRoutesConfig(ctx, "peeringGkeRoutes", &compute.NetworkPeeringRoutesConfigArgs{
+// 			Peering: privateCluster.PrivateClusterConfig.ApplyT(func(privateClusterConfig container.ClusterPrivateClusterConfig) (string, error) {
+// 				return privateClusterConfig.PeeringName, nil
+// 			}).(pulumi.StringOutput),
+// 			Network:            containerNetwork.Name,
+// 			ImportCustomRoutes: pulumi.Bool(true),
+// 			ExportCustomRoutes: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //

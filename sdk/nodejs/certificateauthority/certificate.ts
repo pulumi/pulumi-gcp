@@ -12,6 +12,90 @@ import * as utilities from "../utilities";
  * `tier = "ENTERPRISE"`
  *
  * ## Example Usage
+ * ### Privateca Certificate Config
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * from "fs";
+ *
+ * const test_ca = new gcp.certificateauthority.Authority("test-ca", {
+ *     certificateAuthorityId: "my-certificate-authority",
+ *     location: "us-central1",
+ *     pool: "",
+ *     ignoreActiveCertificatesOnDeletion: true,
+ *     config: {
+ *         subjectConfig: {
+ *             subject: {
+ *                 organization: "HashiCorp",
+ *                 commonName: "my-certificate-authority",
+ *             },
+ *             subjectAltName: {
+ *                 dnsNames: ["hashicorp.com"],
+ *             },
+ *         },
+ *         x509Config: {
+ *             caOptions: {
+ *                 isCa: true,
+ *             },
+ *             keyUsage: {
+ *                 baseKeyUsage: {
+ *                     certSign: true,
+ *                     crlSign: true,
+ *                 },
+ *                 extendedKeyUsage: {
+ *                     serverAuth: true,
+ *                 },
+ *             },
+ *         },
+ *     },
+ *     keySpec: {
+ *         algorithm: "RSA_PKCS1_4096_SHA256",
+ *     },
+ * });
+ * const _default = new gcp.certificateauthority.Certificate("default", {
+ *     pool: "",
+ *     location: "us-central1",
+ *     certificateAuthority: test_ca.certificateAuthorityId,
+ *     lifetime: "860s",
+ *     config: {
+ *         subjectConfig: {
+ *             subject: {
+ *                 commonName: "san1.example.com",
+ *                 countryCode: "us",
+ *                 organization: "google",
+ *                 organizationalUnit: "enterprise",
+ *                 locality: "mountain view",
+ *                 province: "california",
+ *                 streetAddress: "1600 amphitheatre parkway",
+ *             },
+ *             subjectAltName: {
+ *                 emailAddresses: ["email@example.com"],
+ *                 ipAddresses: ["127.0.0.1"],
+ *                 uris: ["http://www.ietf.org/rfc/rfc3986.txt"],
+ *             },
+ *         },
+ *         x509Config: {
+ *             caOptions: {
+ *                 isCa: false,
+ *             },
+ *             keyUsage: {
+ *                 baseKeyUsage: {
+ *                     crlSign: false,
+ *                     decipherOnly: false,
+ *                 },
+ *                 extendedKeyUsage: {
+ *                     serverAuth: false,
+ *                 },
+ *             },
+ *         },
+ *         publicKey: {
+ *             format: "PEM",
+ *             key: Buffer.from(fs.readFileSync("test-fixtures/rsa_public.pem"), 'binary').toString('base64'),
+ *         },
+ *     },
+ * });
+ * ```
  * ### Privateca Certificate With Template
  *
  * ```typescript
@@ -180,6 +264,87 @@ import * as utilities from "../utilities";
  *     certificateAuthority: test_ca.certificateAuthorityId,
  *     lifetime: "860s",
  *     pemCsr: fs.readFileSync("test-fixtures/rsa_csr.pem"),
+ * });
+ * ```
+ * ### Privateca Certificate No Authority
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * from "fs";
+ *
+ * const authority = new gcp.certificateauthority.Authority("authority", {
+ *     pool: "",
+ *     certificateAuthorityId: "my-authority",
+ *     location: "us-central1",
+ *     config: {
+ *         subjectConfig: {
+ *             subject: {
+ *                 organization: "HashiCorp",
+ *                 commonName: "my-certificate-authority",
+ *             },
+ *             subjectAltName: {
+ *                 dnsNames: ["hashicorp.com"],
+ *             },
+ *         },
+ *         x509Config: {
+ *             caOptions: {
+ *                 isCa: true,
+ *             },
+ *             keyUsage: {
+ *                 baseKeyUsage: {
+ *                     digitalSignature: true,
+ *                     certSign: true,
+ *                     crlSign: true,
+ *                 },
+ *                 extendedKeyUsage: {
+ *                     serverAuth: true,
+ *                 },
+ *             },
+ *         },
+ *     },
+ *     lifetime: "86400s",
+ *     keySpec: {
+ *         algorithm: "RSA_PKCS1_4096_SHA256",
+ *     },
+ * });
+ * const _default = new gcp.certificateauthority.Certificate("default", {
+ *     pool: "",
+ *     location: "us-central1",
+ *     lifetime: "860s",
+ *     config: {
+ *         subjectConfig: {
+ *             subject: {
+ *                 commonName: "san1.example.com",
+ *                 countryCode: "us",
+ *                 organization: "google",
+ *                 organizationalUnit: "enterprise",
+ *                 locality: "mountain view",
+ *                 province: "california",
+ *                 streetAddress: "1600 amphitheatre parkway",
+ *                 postalCode: "94109",
+ *             },
+ *         },
+ *         x509Config: {
+ *             caOptions: {
+ *                 isCa: false,
+ *             },
+ *             keyUsage: {
+ *                 baseKeyUsage: {
+ *                     crlSign: true,
+ *                 },
+ *                 extendedKeyUsage: {
+ *                     serverAuth: true,
+ *                 },
+ *             },
+ *         },
+ *         publicKey: {
+ *             format: "PEM",
+ *             key: Buffer.from(fs.readFileSync("test-fixtures/rsa_public.pem"), 'binary').toString('base64'),
+ *         },
+ *     },
+ * }, {
+ *     dependsOn: [authority],
  * });
  * ```
  *

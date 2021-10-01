@@ -26,6 +26,64 @@ import (
 // `billingProject` you defined.
 //
 // ## Example Usage
+// ### Cloud Identity Group Membership
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/cloudidentity"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		group, err := cloudidentity.NewGroup(ctx, "group", &cloudidentity.GroupArgs{
+// 			DisplayName: pulumi.String("my-identity-group"),
+// 			Parent:      pulumi.String("customers/A01b123xz"),
+// 			GroupKey: &cloudidentity.GroupGroupKeyArgs{
+// 				Id: pulumi.String("my-identity-group@example.com"),
+// 			},
+// 			Labels: pulumi.StringMap{
+// 				"cloudidentity.googleapis.com/groups.discussion_forum": pulumi.String(""),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudidentity.NewGroup(ctx, "child_group", &cloudidentity.GroupArgs{
+// 			DisplayName: pulumi.String("my-identity-group-child"),
+// 			Parent:      pulumi.String("customers/A01b123xz"),
+// 			GroupKey: &cloudidentity.GroupGroupKeyArgs{
+// 				Id: pulumi.String("my-identity-group-child@example.com"),
+// 			},
+// 			Labels: pulumi.StringMap{
+// 				"cloudidentity.googleapis.com/groups.discussion_forum": pulumi.String(""),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudidentity.NewGroupMembership(ctx, "cloudIdentityGroupMembershipBasic", &cloudidentity.GroupMembershipArgs{
+// 			Group: group.ID(),
+// 			PreferredMemberKey: &cloudidentity.GroupMembershipPreferredMemberKeyArgs{
+// 				Id: child_group.GroupKey.ApplyT(func(groupKey cloudidentity.GroupGroupKey) (string, error) {
+// 					return groupKey.Id, nil
+// 				}).(pulumi.StringOutput),
+// 			},
+// 			Roles: cloudidentity.GroupMembershipRoleArray{
+// 				&cloudidentity.GroupMembershipRoleArgs{
+// 					Name: pulumi.String("MEMBER"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 // ### Cloud Identity Group Membership User
 //
 // ```go

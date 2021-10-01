@@ -358,6 +358,26 @@ class ApiConfig(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/api-gateway/docs/creating-api-config)
 
         ## Example Usage
+        ### Apigateway Api Config Basic
+
+        ```python
+        import pulumi
+        import base64
+        import pulumi_gcp as gcp
+
+        api_cfg_api = gcp.apigateway.Api("apiCfgApi", api_id="api-cfg",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        api_cfg_api_config = gcp.apigateway.ApiConfig("apiCfgApiConfig",
+            api=api_cfg_api.api_id,
+            api_config_id="cfg",
+            openapi_documents=[gcp.apigateway.ApiConfigOpenapiDocumentArgs(
+                document=gcp.apigateway.ApiConfigOpenapiDocumentDocumentArgs(
+                    path="spec.yaml",
+                    contents=(lambda path: base64.b64encode(open(path).read().encode()).decode())("test-fixtures/apigateway/openapi.yaml"),
+                ),
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -407,6 +427,26 @@ class ApiConfig(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/api-gateway/docs/creating-api-config)
 
         ## Example Usage
+        ### Apigateway Api Config Basic
+
+        ```python
+        import pulumi
+        import base64
+        import pulumi_gcp as gcp
+
+        api_cfg_api = gcp.apigateway.Api("apiCfgApi", api_id="api-cfg",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        api_cfg_api_config = gcp.apigateway.ApiConfig("apiCfgApiConfig",
+            api=api_cfg_api.api_id,
+            api_config_id="cfg",
+            openapi_documents=[gcp.apigateway.ApiConfigOpenapiDocumentArgs(
+                document=gcp.apigateway.ApiConfigOpenapiDocumentDocumentArgs(
+                    path="spec.yaml",
+                    contents=(lambda path: base64.b64encode(open(path).read().encode()).decode())("test-fixtures/apigateway/openapi.yaml"),
+                ),
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

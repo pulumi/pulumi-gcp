@@ -107,7 +107,7 @@ import (
 // ```sh
 //  $ pulumi import gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort default {{group}}/{{port}}/{{name}}
 // ```
-type InstanceGroupNamedPortType struct {
+type InstanceGroupNamedPort struct {
 	pulumi.CustomResourceState
 
 	// The name of the instance group.
@@ -124,9 +124,9 @@ type InstanceGroupNamedPortType struct {
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
-// NewInstanceGroupNamedPortType registers a new resource with the given unique name, arguments, and options.
-func NewInstanceGroupNamedPortType(ctx *pulumi.Context,
-	name string, args *InstanceGroupNamedPortTypeArgs, opts ...pulumi.ResourceOption) (*InstanceGroupNamedPortType, error) {
+// NewInstanceGroupNamedPort registers a new resource with the given unique name, arguments, and options.
+func NewInstanceGroupNamedPort(ctx *pulumi.Context,
+	name string, args *InstanceGroupNamedPortArgs, opts ...pulumi.ResourceOption) (*InstanceGroupNamedPort, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -137,7 +137,7 @@ func NewInstanceGroupNamedPortType(ctx *pulumi.Context,
 	if args.Port == nil {
 		return nil, errors.New("invalid value for required argument 'Port'")
 	}
-	var resource InstanceGroupNamedPortType
+	var resource InstanceGroupNamedPort
 	err := ctx.RegisterResource("gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
@@ -145,11 +145,11 @@ func NewInstanceGroupNamedPortType(ctx *pulumi.Context,
 	return &resource, nil
 }
 
-// GetInstanceGroupNamedPortType gets an existing InstanceGroupNamedPortType resource's state with the given name, ID, and optional
+// GetInstanceGroupNamedPort gets an existing InstanceGroupNamedPort resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetInstanceGroupNamedPortType(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *InstanceGroupNamedPortTypeState, opts ...pulumi.ResourceOption) (*InstanceGroupNamedPortType, error) {
-	var resource InstanceGroupNamedPortType
+func GetInstanceGroupNamedPort(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *InstanceGroupNamedPortState, opts ...pulumi.ResourceOption) (*InstanceGroupNamedPort, error) {
+	var resource InstanceGroupNamedPort
 	err := ctx.ReadResource("gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
@@ -157,8 +157,8 @@ func GetInstanceGroupNamedPortType(ctx *pulumi.Context,
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering InstanceGroupNamedPortType resources.
-type instanceGroupNamedPortTypeState struct {
+// Input properties used for looking up and filtering InstanceGroupNamedPort resources.
+type instanceGroupNamedPortState struct {
 	// The name of the instance group.
 	Group *string `pulumi:"group"`
 	// The name for this named port. The name must be 1-63 characters
@@ -173,7 +173,7 @@ type instanceGroupNamedPortTypeState struct {
 	Zone *string `pulumi:"zone"`
 }
 
-type InstanceGroupNamedPortTypeState struct {
+type InstanceGroupNamedPortState struct {
 	// The name of the instance group.
 	Group pulumi.StringPtrInput
 	// The name for this named port. The name must be 1-63 characters
@@ -188,11 +188,11 @@ type InstanceGroupNamedPortTypeState struct {
 	Zone pulumi.StringPtrInput
 }
 
-func (InstanceGroupNamedPortTypeState) ElementType() reflect.Type {
-	return reflect.TypeOf((*instanceGroupNamedPortTypeState)(nil)).Elem()
+func (InstanceGroupNamedPortState) ElementType() reflect.Type {
+	return reflect.TypeOf((*instanceGroupNamedPortState)(nil)).Elem()
 }
 
-type instanceGroupNamedPortTypeArgs struct {
+type instanceGroupNamedPortArgs struct {
 	// The name of the instance group.
 	Group string `pulumi:"group"`
 	// The name for this named port. The name must be 1-63 characters
@@ -207,8 +207,8 @@ type instanceGroupNamedPortTypeArgs struct {
 	Zone *string `pulumi:"zone"`
 }
 
-// The set of arguments for constructing a InstanceGroupNamedPortType resource.
-type InstanceGroupNamedPortTypeArgs struct {
+// The set of arguments for constructing a InstanceGroupNamedPort resource.
+type InstanceGroupNamedPortArgs struct {
 	// The name of the instance group.
 	Group pulumi.StringInput
 	// The name for this named port. The name must be 1-63 characters
@@ -223,199 +223,199 @@ type InstanceGroupNamedPortTypeArgs struct {
 	Zone pulumi.StringPtrInput
 }
 
-func (InstanceGroupNamedPortTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*instanceGroupNamedPortTypeArgs)(nil)).Elem()
+func (InstanceGroupNamedPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*instanceGroupNamedPortArgs)(nil)).Elem()
 }
 
-type InstanceGroupNamedPortTypeInput interface {
+type InstanceGroupNamedPortInput interface {
 	pulumi.Input
 
-	ToInstanceGroupNamedPortTypeOutput() InstanceGroupNamedPortTypeOutput
-	ToInstanceGroupNamedPortTypeOutputWithContext(ctx context.Context) InstanceGroupNamedPortTypeOutput
+	ToInstanceGroupNamedPortOutput() InstanceGroupNamedPortOutput
+	ToInstanceGroupNamedPortOutputWithContext(ctx context.Context) InstanceGroupNamedPortOutput
 }
 
-func (*InstanceGroupNamedPortType) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceGroupNamedPortType)(nil))
+func (*InstanceGroupNamedPort) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupNamedPort)(nil))
 }
 
-func (i *InstanceGroupNamedPortType) ToInstanceGroupNamedPortTypeOutput() InstanceGroupNamedPortTypeOutput {
-	return i.ToInstanceGroupNamedPortTypeOutputWithContext(context.Background())
+func (i *InstanceGroupNamedPort) ToInstanceGroupNamedPortOutput() InstanceGroupNamedPortOutput {
+	return i.ToInstanceGroupNamedPortOutputWithContext(context.Background())
 }
 
-func (i *InstanceGroupNamedPortType) ToInstanceGroupNamedPortTypeOutputWithContext(ctx context.Context) InstanceGroupNamedPortTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupNamedPortTypeOutput)
+func (i *InstanceGroupNamedPort) ToInstanceGroupNamedPortOutputWithContext(ctx context.Context) InstanceGroupNamedPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupNamedPortOutput)
 }
 
-func (i *InstanceGroupNamedPortType) ToInstanceGroupNamedPortTypePtrOutput() InstanceGroupNamedPortTypePtrOutput {
-	return i.ToInstanceGroupNamedPortTypePtrOutputWithContext(context.Background())
+func (i *InstanceGroupNamedPort) ToInstanceGroupNamedPortPtrOutput() InstanceGroupNamedPortPtrOutput {
+	return i.ToInstanceGroupNamedPortPtrOutputWithContext(context.Background())
 }
 
-func (i *InstanceGroupNamedPortType) ToInstanceGroupNamedPortTypePtrOutputWithContext(ctx context.Context) InstanceGroupNamedPortTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupNamedPortTypePtrOutput)
+func (i *InstanceGroupNamedPort) ToInstanceGroupNamedPortPtrOutputWithContext(ctx context.Context) InstanceGroupNamedPortPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupNamedPortPtrOutput)
 }
 
-type InstanceGroupNamedPortTypePtrInput interface {
+type InstanceGroupNamedPortPtrInput interface {
 	pulumi.Input
 
-	ToInstanceGroupNamedPortTypePtrOutput() InstanceGroupNamedPortTypePtrOutput
-	ToInstanceGroupNamedPortTypePtrOutputWithContext(ctx context.Context) InstanceGroupNamedPortTypePtrOutput
+	ToInstanceGroupNamedPortPtrOutput() InstanceGroupNamedPortPtrOutput
+	ToInstanceGroupNamedPortPtrOutputWithContext(ctx context.Context) InstanceGroupNamedPortPtrOutput
 }
 
-type instanceGroupNamedPortTypePtrType InstanceGroupNamedPortTypeArgs
+type instanceGroupNamedPortPtrType InstanceGroupNamedPortArgs
 
-func (*instanceGroupNamedPortTypePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceGroupNamedPortType)(nil))
+func (*instanceGroupNamedPortPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceGroupNamedPort)(nil))
 }
 
-func (i *instanceGroupNamedPortTypePtrType) ToInstanceGroupNamedPortTypePtrOutput() InstanceGroupNamedPortTypePtrOutput {
-	return i.ToInstanceGroupNamedPortTypePtrOutputWithContext(context.Background())
+func (i *instanceGroupNamedPortPtrType) ToInstanceGroupNamedPortPtrOutput() InstanceGroupNamedPortPtrOutput {
+	return i.ToInstanceGroupNamedPortPtrOutputWithContext(context.Background())
 }
 
-func (i *instanceGroupNamedPortTypePtrType) ToInstanceGroupNamedPortTypePtrOutputWithContext(ctx context.Context) InstanceGroupNamedPortTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupNamedPortTypePtrOutput)
+func (i *instanceGroupNamedPortPtrType) ToInstanceGroupNamedPortPtrOutputWithContext(ctx context.Context) InstanceGroupNamedPortPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupNamedPortPtrOutput)
 }
 
-// InstanceGroupNamedPortTypeArrayInput is an input type that accepts InstanceGroupNamedPortTypeArray and InstanceGroupNamedPortTypeArrayOutput values.
-// You can construct a concrete instance of `InstanceGroupNamedPortTypeArrayInput` via:
+// InstanceGroupNamedPortArrayInput is an input type that accepts InstanceGroupNamedPortArray and InstanceGroupNamedPortArrayOutput values.
+// You can construct a concrete instance of `InstanceGroupNamedPortArrayInput` via:
 //
-//          InstanceGroupNamedPortTypeArray{ InstanceGroupNamedPortTypeArgs{...} }
-type InstanceGroupNamedPortTypeArrayInput interface {
+//          InstanceGroupNamedPortArray{ InstanceGroupNamedPortArgs{...} }
+type InstanceGroupNamedPortArrayInput interface {
 	pulumi.Input
 
-	ToInstanceGroupNamedPortTypeArrayOutput() InstanceGroupNamedPortTypeArrayOutput
-	ToInstanceGroupNamedPortTypeArrayOutputWithContext(context.Context) InstanceGroupNamedPortTypeArrayOutput
+	ToInstanceGroupNamedPortArrayOutput() InstanceGroupNamedPortArrayOutput
+	ToInstanceGroupNamedPortArrayOutputWithContext(context.Context) InstanceGroupNamedPortArrayOutput
 }
 
-type InstanceGroupNamedPortTypeArray []InstanceGroupNamedPortTypeInput
+type InstanceGroupNamedPortArray []InstanceGroupNamedPortInput
 
-func (InstanceGroupNamedPortTypeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*InstanceGroupNamedPortType)(nil)).Elem()
+func (InstanceGroupNamedPortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*InstanceGroupNamedPort)(nil)).Elem()
 }
 
-func (i InstanceGroupNamedPortTypeArray) ToInstanceGroupNamedPortTypeArrayOutput() InstanceGroupNamedPortTypeArrayOutput {
-	return i.ToInstanceGroupNamedPortTypeArrayOutputWithContext(context.Background())
+func (i InstanceGroupNamedPortArray) ToInstanceGroupNamedPortArrayOutput() InstanceGroupNamedPortArrayOutput {
+	return i.ToInstanceGroupNamedPortArrayOutputWithContext(context.Background())
 }
 
-func (i InstanceGroupNamedPortTypeArray) ToInstanceGroupNamedPortTypeArrayOutputWithContext(ctx context.Context) InstanceGroupNamedPortTypeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupNamedPortTypeArrayOutput)
+func (i InstanceGroupNamedPortArray) ToInstanceGroupNamedPortArrayOutputWithContext(ctx context.Context) InstanceGroupNamedPortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupNamedPortArrayOutput)
 }
 
-// InstanceGroupNamedPortTypeMapInput is an input type that accepts InstanceGroupNamedPortTypeMap and InstanceGroupNamedPortTypeMapOutput values.
-// You can construct a concrete instance of `InstanceGroupNamedPortTypeMapInput` via:
+// InstanceGroupNamedPortMapInput is an input type that accepts InstanceGroupNamedPortMap and InstanceGroupNamedPortMapOutput values.
+// You can construct a concrete instance of `InstanceGroupNamedPortMapInput` via:
 //
-//          InstanceGroupNamedPortTypeMap{ "key": InstanceGroupNamedPortTypeArgs{...} }
-type InstanceGroupNamedPortTypeMapInput interface {
+//          InstanceGroupNamedPortMap{ "key": InstanceGroupNamedPortArgs{...} }
+type InstanceGroupNamedPortMapInput interface {
 	pulumi.Input
 
-	ToInstanceGroupNamedPortTypeMapOutput() InstanceGroupNamedPortTypeMapOutput
-	ToInstanceGroupNamedPortTypeMapOutputWithContext(context.Context) InstanceGroupNamedPortTypeMapOutput
+	ToInstanceGroupNamedPortMapOutput() InstanceGroupNamedPortMapOutput
+	ToInstanceGroupNamedPortMapOutputWithContext(context.Context) InstanceGroupNamedPortMapOutput
 }
 
-type InstanceGroupNamedPortTypeMap map[string]InstanceGroupNamedPortTypeInput
+type InstanceGroupNamedPortMap map[string]InstanceGroupNamedPortInput
 
-func (InstanceGroupNamedPortTypeMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*InstanceGroupNamedPortType)(nil)).Elem()
+func (InstanceGroupNamedPortMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*InstanceGroupNamedPort)(nil)).Elem()
 }
 
-func (i InstanceGroupNamedPortTypeMap) ToInstanceGroupNamedPortTypeMapOutput() InstanceGroupNamedPortTypeMapOutput {
-	return i.ToInstanceGroupNamedPortTypeMapOutputWithContext(context.Background())
+func (i InstanceGroupNamedPortMap) ToInstanceGroupNamedPortMapOutput() InstanceGroupNamedPortMapOutput {
+	return i.ToInstanceGroupNamedPortMapOutputWithContext(context.Background())
 }
 
-func (i InstanceGroupNamedPortTypeMap) ToInstanceGroupNamedPortTypeMapOutputWithContext(ctx context.Context) InstanceGroupNamedPortTypeMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupNamedPortTypeMapOutput)
+func (i InstanceGroupNamedPortMap) ToInstanceGroupNamedPortMapOutputWithContext(ctx context.Context) InstanceGroupNamedPortMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupNamedPortMapOutput)
 }
 
-type InstanceGroupNamedPortTypeOutput struct{ *pulumi.OutputState }
+type InstanceGroupNamedPortOutput struct{ *pulumi.OutputState }
 
-func (InstanceGroupNamedPortTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceGroupNamedPortType)(nil))
+func (InstanceGroupNamedPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupNamedPort)(nil))
 }
 
-func (o InstanceGroupNamedPortTypeOutput) ToInstanceGroupNamedPortTypeOutput() InstanceGroupNamedPortTypeOutput {
+func (o InstanceGroupNamedPortOutput) ToInstanceGroupNamedPortOutput() InstanceGroupNamedPortOutput {
 	return o
 }
 
-func (o InstanceGroupNamedPortTypeOutput) ToInstanceGroupNamedPortTypeOutputWithContext(ctx context.Context) InstanceGroupNamedPortTypeOutput {
+func (o InstanceGroupNamedPortOutput) ToInstanceGroupNamedPortOutputWithContext(ctx context.Context) InstanceGroupNamedPortOutput {
 	return o
 }
 
-func (o InstanceGroupNamedPortTypeOutput) ToInstanceGroupNamedPortTypePtrOutput() InstanceGroupNamedPortTypePtrOutput {
-	return o.ToInstanceGroupNamedPortTypePtrOutputWithContext(context.Background())
+func (o InstanceGroupNamedPortOutput) ToInstanceGroupNamedPortPtrOutput() InstanceGroupNamedPortPtrOutput {
+	return o.ToInstanceGroupNamedPortPtrOutputWithContext(context.Background())
 }
 
-func (o InstanceGroupNamedPortTypeOutput) ToInstanceGroupNamedPortTypePtrOutputWithContext(ctx context.Context) InstanceGroupNamedPortTypePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceGroupNamedPortType) *InstanceGroupNamedPortType {
+func (o InstanceGroupNamedPortOutput) ToInstanceGroupNamedPortPtrOutputWithContext(ctx context.Context) InstanceGroupNamedPortPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceGroupNamedPort) *InstanceGroupNamedPort {
 		return &v
-	}).(InstanceGroupNamedPortTypePtrOutput)
+	}).(InstanceGroupNamedPortPtrOutput)
 }
 
-type InstanceGroupNamedPortTypePtrOutput struct{ *pulumi.OutputState }
+type InstanceGroupNamedPortPtrOutput struct{ *pulumi.OutputState }
 
-func (InstanceGroupNamedPortTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceGroupNamedPortType)(nil))
+func (InstanceGroupNamedPortPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceGroupNamedPort)(nil))
 }
 
-func (o InstanceGroupNamedPortTypePtrOutput) ToInstanceGroupNamedPortTypePtrOutput() InstanceGroupNamedPortTypePtrOutput {
+func (o InstanceGroupNamedPortPtrOutput) ToInstanceGroupNamedPortPtrOutput() InstanceGroupNamedPortPtrOutput {
 	return o
 }
 
-func (o InstanceGroupNamedPortTypePtrOutput) ToInstanceGroupNamedPortTypePtrOutputWithContext(ctx context.Context) InstanceGroupNamedPortTypePtrOutput {
+func (o InstanceGroupNamedPortPtrOutput) ToInstanceGroupNamedPortPtrOutputWithContext(ctx context.Context) InstanceGroupNamedPortPtrOutput {
 	return o
 }
 
-func (o InstanceGroupNamedPortTypePtrOutput) Elem() InstanceGroupNamedPortTypeOutput {
-	return o.ApplyT(func(v *InstanceGroupNamedPortType) InstanceGroupNamedPortType {
+func (o InstanceGroupNamedPortPtrOutput) Elem() InstanceGroupNamedPortOutput {
+	return o.ApplyT(func(v *InstanceGroupNamedPort) InstanceGroupNamedPort {
 		if v != nil {
 			return *v
 		}
-		var ret InstanceGroupNamedPortType
+		var ret InstanceGroupNamedPort
 		return ret
-	}).(InstanceGroupNamedPortTypeOutput)
+	}).(InstanceGroupNamedPortOutput)
 }
 
-type InstanceGroupNamedPortTypeArrayOutput struct{ *pulumi.OutputState }
+type InstanceGroupNamedPortArrayOutput struct{ *pulumi.OutputState }
 
-func (InstanceGroupNamedPortTypeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]InstanceGroupNamedPortType)(nil))
+func (InstanceGroupNamedPortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceGroupNamedPort)(nil))
 }
 
-func (o InstanceGroupNamedPortTypeArrayOutput) ToInstanceGroupNamedPortTypeArrayOutput() InstanceGroupNamedPortTypeArrayOutput {
+func (o InstanceGroupNamedPortArrayOutput) ToInstanceGroupNamedPortArrayOutput() InstanceGroupNamedPortArrayOutput {
 	return o
 }
 
-func (o InstanceGroupNamedPortTypeArrayOutput) ToInstanceGroupNamedPortTypeArrayOutputWithContext(ctx context.Context) InstanceGroupNamedPortTypeArrayOutput {
+func (o InstanceGroupNamedPortArrayOutput) ToInstanceGroupNamedPortArrayOutputWithContext(ctx context.Context) InstanceGroupNamedPortArrayOutput {
 	return o
 }
 
-func (o InstanceGroupNamedPortTypeArrayOutput) Index(i pulumi.IntInput) InstanceGroupNamedPortTypeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceGroupNamedPortType {
-		return vs[0].([]InstanceGroupNamedPortType)[vs[1].(int)]
-	}).(InstanceGroupNamedPortTypeOutput)
+func (o InstanceGroupNamedPortArrayOutput) Index(i pulumi.IntInput) InstanceGroupNamedPortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceGroupNamedPort {
+		return vs[0].([]InstanceGroupNamedPort)[vs[1].(int)]
+	}).(InstanceGroupNamedPortOutput)
 }
 
-type InstanceGroupNamedPortTypeMapOutput struct{ *pulumi.OutputState }
+type InstanceGroupNamedPortMapOutput struct{ *pulumi.OutputState }
 
-func (InstanceGroupNamedPortTypeMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]InstanceGroupNamedPortType)(nil))
+func (InstanceGroupNamedPortMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]InstanceGroupNamedPort)(nil))
 }
 
-func (o InstanceGroupNamedPortTypeMapOutput) ToInstanceGroupNamedPortTypeMapOutput() InstanceGroupNamedPortTypeMapOutput {
+func (o InstanceGroupNamedPortMapOutput) ToInstanceGroupNamedPortMapOutput() InstanceGroupNamedPortMapOutput {
 	return o
 }
 
-func (o InstanceGroupNamedPortTypeMapOutput) ToInstanceGroupNamedPortTypeMapOutputWithContext(ctx context.Context) InstanceGroupNamedPortTypeMapOutput {
+func (o InstanceGroupNamedPortMapOutput) ToInstanceGroupNamedPortMapOutputWithContext(ctx context.Context) InstanceGroupNamedPortMapOutput {
 	return o
 }
 
-func (o InstanceGroupNamedPortTypeMapOutput) MapIndex(k pulumi.StringInput) InstanceGroupNamedPortTypeOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) InstanceGroupNamedPortType {
-		return vs[0].(map[string]InstanceGroupNamedPortType)[vs[1].(string)]
-	}).(InstanceGroupNamedPortTypeOutput)
+func (o InstanceGroupNamedPortMapOutput) MapIndex(k pulumi.StringInput) InstanceGroupNamedPortOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) InstanceGroupNamedPort {
+		return vs[0].(map[string]InstanceGroupNamedPort)[vs[1].(string)]
+	}).(InstanceGroupNamedPortOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(InstanceGroupNamedPortTypeOutput{})
-	pulumi.RegisterOutputType(InstanceGroupNamedPortTypePtrOutput{})
-	pulumi.RegisterOutputType(InstanceGroupNamedPortTypeArrayOutput{})
-	pulumi.RegisterOutputType(InstanceGroupNamedPortTypeMapOutput{})
+	pulumi.RegisterOutputType(InstanceGroupNamedPortOutput{})
+	pulumi.RegisterOutputType(InstanceGroupNamedPortPtrOutput{})
+	pulumi.RegisterOutputType(InstanceGroupNamedPortArrayOutput{})
+	pulumi.RegisterOutputType(InstanceGroupNamedPortMapOutput{})
 }
