@@ -63,6 +63,70 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// }
     /// ```
+    /// ### Network Peering Routes Config Gke
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var containerNetwork = new Gcp.Compute.Network("containerNetwork", new Gcp.Compute.NetworkArgs
+    ///         {
+    ///             AutoCreateSubnetworks = false,
+    ///         });
+    ///         var containerSubnetwork = new Gcp.Compute.Subnetwork("containerSubnetwork", new Gcp.Compute.SubnetworkArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             Network = containerNetwork.Name,
+    ///             IpCidrRange = "10.0.36.0/24",
+    ///             PrivateIpGoogleAccess = true,
+    ///             SecondaryIpRanges = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.SubnetworkSecondaryIpRangeArgs
+    ///                 {
+    ///                     RangeName = "pod",
+    ///                     IpCidrRange = "10.0.0.0/19",
+    ///                 },
+    ///                 new Gcp.Compute.Inputs.SubnetworkSecondaryIpRangeArgs
+    ///                 {
+    ///                     RangeName = "svc",
+    ///                     IpCidrRange = "10.0.32.0/22",
+    ///                 },
+    ///             },
+    ///         });
+    ///         var privateCluster = new Gcp.Container.Cluster("privateCluster", new Gcp.Container.ClusterArgs
+    ///         {
+    ///             Location = "us-central1-a",
+    ///             InitialNodeCount = 1,
+    ///             Network = containerNetwork.Name,
+    ///             Subnetwork = containerSubnetwork.Name,
+    ///             PrivateClusterConfig = new Gcp.Container.Inputs.ClusterPrivateClusterConfigArgs
+    ///             {
+    ///                 EnablePrivateEndpoint = true,
+    ///                 EnablePrivateNodes = true,
+    ///                 MasterIpv4CidrBlock = "10.42.0.0/28",
+    ///             },
+    ///             MasterAuthorizedNetworksConfig = ,
+    ///             IpAllocationPolicy = new Gcp.Container.Inputs.ClusterIpAllocationPolicyArgs
+    ///             {
+    ///                 ClusterSecondaryRangeName = containerSubnetwork.SecondaryIpRanges.Apply(secondaryIpRanges =&gt; secondaryIpRanges[0].RangeName),
+    ///                 ServicesSecondaryRangeName = containerSubnetwork.SecondaryIpRanges.Apply(secondaryIpRanges =&gt; secondaryIpRanges[1].RangeName),
+    ///             },
+    ///         });
+    ///         var peeringGkeRoutes = new Gcp.Compute.NetworkPeeringRoutesConfig("peeringGkeRoutes", new Gcp.Compute.NetworkPeeringRoutesConfigArgs
+    ///         {
+    ///             Peering = privateCluster.PrivateClusterConfig.Apply(privateClusterConfig =&gt; privateClusterConfig.PeeringName),
+    ///             Network = containerNetwork.Name,
+    ///             ImportCustomRoutes = true,
+    ///             ExportCustomRoutes = true,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 

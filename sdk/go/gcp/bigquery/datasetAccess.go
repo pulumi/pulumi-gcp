@@ -14,7 +14,7 @@ import (
 // ## Import
 //
 // This resource does not support import.
-type DatasetAccessType struct {
+type DatasetAccess struct {
 	pulumi.CustomResourceState
 
 	// If true, represents that that the iam_member in the config was translated to a different member type by the API, and is
@@ -54,9 +54,9 @@ type DatasetAccessType struct {
 	View DatasetAccessViewPtrOutput `pulumi:"view"`
 }
 
-// NewDatasetAccessType registers a new resource with the given unique name, arguments, and options.
-func NewDatasetAccessType(ctx *pulumi.Context,
-	name string, args *DatasetAccessTypeArgs, opts ...pulumi.ResourceOption) (*DatasetAccessType, error) {
+// NewDatasetAccess registers a new resource with the given unique name, arguments, and options.
+func NewDatasetAccess(ctx *pulumi.Context,
+	name string, args *DatasetAccessArgs, opts ...pulumi.ResourceOption) (*DatasetAccess, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -64,7 +64,7 @@ func NewDatasetAccessType(ctx *pulumi.Context,
 	if args.DatasetId == nil {
 		return nil, errors.New("invalid value for required argument 'DatasetId'")
 	}
-	var resource DatasetAccessType
+	var resource DatasetAccess
 	err := ctx.RegisterResource("gcp:bigquery/datasetAccess:DatasetAccess", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
@@ -72,11 +72,11 @@ func NewDatasetAccessType(ctx *pulumi.Context,
 	return &resource, nil
 }
 
-// GetDatasetAccessType gets an existing DatasetAccessType resource's state with the given name, ID, and optional
+// GetDatasetAccess gets an existing DatasetAccess resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetDatasetAccessType(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *DatasetAccessTypeState, opts ...pulumi.ResourceOption) (*DatasetAccessType, error) {
-	var resource DatasetAccessType
+func GetDatasetAccess(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *DatasetAccessState, opts ...pulumi.ResourceOption) (*DatasetAccess, error) {
+	var resource DatasetAccess
 	err := ctx.ReadResource("gcp:bigquery/datasetAccess:DatasetAccess", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
@@ -84,8 +84,8 @@ func GetDatasetAccessType(ctx *pulumi.Context,
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering DatasetAccessType resources.
-type datasetAccessTypeState struct {
+// Input properties used for looking up and filtering DatasetAccess resources.
+type datasetAccessState struct {
 	// If true, represents that that the iam_member in the config was translated to a different member type by the API, and is
 	// stored in state as a different member type
 	ApiUpdatedMember *bool `pulumi:"apiUpdatedMember"`
@@ -123,7 +123,7 @@ type datasetAccessTypeState struct {
 	View *DatasetAccessView `pulumi:"view"`
 }
 
-type DatasetAccessTypeState struct {
+type DatasetAccessState struct {
 	// If true, represents that that the iam_member in the config was translated to a different member type by the API, and is
 	// stored in state as a different member type
 	ApiUpdatedMember pulumi.BoolPtrInput
@@ -161,11 +161,11 @@ type DatasetAccessTypeState struct {
 	View DatasetAccessViewPtrInput
 }
 
-func (DatasetAccessTypeState) ElementType() reflect.Type {
-	return reflect.TypeOf((*datasetAccessTypeState)(nil)).Elem()
+func (DatasetAccessState) ElementType() reflect.Type {
+	return reflect.TypeOf((*datasetAccessState)(nil)).Elem()
 }
 
-type datasetAccessTypeArgs struct {
+type datasetAccessArgs struct {
 	// The ID of the dataset containing this table.
 	DatasetId string `pulumi:"datasetId"`
 	// A domain to grant access to. Any users signed in with the
@@ -200,8 +200,8 @@ type datasetAccessTypeArgs struct {
 	View *DatasetAccessView `pulumi:"view"`
 }
 
-// The set of arguments for constructing a DatasetAccessType resource.
-type DatasetAccessTypeArgs struct {
+// The set of arguments for constructing a DatasetAccess resource.
+type DatasetAccessArgs struct {
 	// The ID of the dataset containing this table.
 	DatasetId pulumi.StringInput
 	// A domain to grant access to. Any users signed in with the
@@ -236,199 +236,199 @@ type DatasetAccessTypeArgs struct {
 	View DatasetAccessViewPtrInput
 }
 
-func (DatasetAccessTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*datasetAccessTypeArgs)(nil)).Elem()
+func (DatasetAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*datasetAccessArgs)(nil)).Elem()
 }
 
-type DatasetAccessTypeInput interface {
+type DatasetAccessInput interface {
 	pulumi.Input
 
-	ToDatasetAccessTypeOutput() DatasetAccessTypeOutput
-	ToDatasetAccessTypeOutputWithContext(ctx context.Context) DatasetAccessTypeOutput
+	ToDatasetAccessOutput() DatasetAccessOutput
+	ToDatasetAccessOutputWithContext(ctx context.Context) DatasetAccessOutput
 }
 
-func (*DatasetAccessType) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetAccessType)(nil))
+func (*DatasetAccess) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetAccess)(nil))
 }
 
-func (i *DatasetAccessType) ToDatasetAccessTypeOutput() DatasetAccessTypeOutput {
-	return i.ToDatasetAccessTypeOutputWithContext(context.Background())
+func (i *DatasetAccess) ToDatasetAccessOutput() DatasetAccessOutput {
+	return i.ToDatasetAccessOutputWithContext(context.Background())
 }
 
-func (i *DatasetAccessType) ToDatasetAccessTypeOutputWithContext(ctx context.Context) DatasetAccessTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessTypeOutput)
+func (i *DatasetAccess) ToDatasetAccessOutputWithContext(ctx context.Context) DatasetAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessOutput)
 }
 
-func (i *DatasetAccessType) ToDatasetAccessTypePtrOutput() DatasetAccessTypePtrOutput {
-	return i.ToDatasetAccessTypePtrOutputWithContext(context.Background())
+func (i *DatasetAccess) ToDatasetAccessPtrOutput() DatasetAccessPtrOutput {
+	return i.ToDatasetAccessPtrOutputWithContext(context.Background())
 }
 
-func (i *DatasetAccessType) ToDatasetAccessTypePtrOutputWithContext(ctx context.Context) DatasetAccessTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessTypePtrOutput)
+func (i *DatasetAccess) ToDatasetAccessPtrOutputWithContext(ctx context.Context) DatasetAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessPtrOutput)
 }
 
-type DatasetAccessTypePtrInput interface {
+type DatasetAccessPtrInput interface {
 	pulumi.Input
 
-	ToDatasetAccessTypePtrOutput() DatasetAccessTypePtrOutput
-	ToDatasetAccessTypePtrOutputWithContext(ctx context.Context) DatasetAccessTypePtrOutput
+	ToDatasetAccessPtrOutput() DatasetAccessPtrOutput
+	ToDatasetAccessPtrOutputWithContext(ctx context.Context) DatasetAccessPtrOutput
 }
 
-type datasetAccessTypePtrType DatasetAccessTypeArgs
+type datasetAccessPtrType DatasetAccessArgs
 
-func (*datasetAccessTypePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatasetAccessType)(nil))
+func (*datasetAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetAccess)(nil))
 }
 
-func (i *datasetAccessTypePtrType) ToDatasetAccessTypePtrOutput() DatasetAccessTypePtrOutput {
-	return i.ToDatasetAccessTypePtrOutputWithContext(context.Background())
+func (i *datasetAccessPtrType) ToDatasetAccessPtrOutput() DatasetAccessPtrOutput {
+	return i.ToDatasetAccessPtrOutputWithContext(context.Background())
 }
 
-func (i *datasetAccessTypePtrType) ToDatasetAccessTypePtrOutputWithContext(ctx context.Context) DatasetAccessTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessTypePtrOutput)
+func (i *datasetAccessPtrType) ToDatasetAccessPtrOutputWithContext(ctx context.Context) DatasetAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessPtrOutput)
 }
 
-// DatasetAccessTypeArrayInput is an input type that accepts DatasetAccessTypeArray and DatasetAccessTypeArrayOutput values.
-// You can construct a concrete instance of `DatasetAccessTypeArrayInput` via:
+// DatasetAccessArrayInput is an input type that accepts DatasetAccessArray and DatasetAccessArrayOutput values.
+// You can construct a concrete instance of `DatasetAccessArrayInput` via:
 //
-//          DatasetAccessTypeArray{ DatasetAccessTypeArgs{...} }
-type DatasetAccessTypeArrayInput interface {
+//          DatasetAccessArray{ DatasetAccessArgs{...} }
+type DatasetAccessArrayInput interface {
 	pulumi.Input
 
-	ToDatasetAccessTypeArrayOutput() DatasetAccessTypeArrayOutput
-	ToDatasetAccessTypeArrayOutputWithContext(context.Context) DatasetAccessTypeArrayOutput
+	ToDatasetAccessArrayOutput() DatasetAccessArrayOutput
+	ToDatasetAccessArrayOutputWithContext(context.Context) DatasetAccessArrayOutput
 }
 
-type DatasetAccessTypeArray []DatasetAccessTypeInput
+type DatasetAccessArray []DatasetAccessInput
 
-func (DatasetAccessTypeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*DatasetAccessType)(nil)).Elem()
+func (DatasetAccessArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*DatasetAccess)(nil)).Elem()
 }
 
-func (i DatasetAccessTypeArray) ToDatasetAccessTypeArrayOutput() DatasetAccessTypeArrayOutput {
-	return i.ToDatasetAccessTypeArrayOutputWithContext(context.Background())
+func (i DatasetAccessArray) ToDatasetAccessArrayOutput() DatasetAccessArrayOutput {
+	return i.ToDatasetAccessArrayOutputWithContext(context.Background())
 }
 
-func (i DatasetAccessTypeArray) ToDatasetAccessTypeArrayOutputWithContext(ctx context.Context) DatasetAccessTypeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessTypeArrayOutput)
+func (i DatasetAccessArray) ToDatasetAccessArrayOutputWithContext(ctx context.Context) DatasetAccessArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessArrayOutput)
 }
 
-// DatasetAccessTypeMapInput is an input type that accepts DatasetAccessTypeMap and DatasetAccessTypeMapOutput values.
-// You can construct a concrete instance of `DatasetAccessTypeMapInput` via:
+// DatasetAccessMapInput is an input type that accepts DatasetAccessMap and DatasetAccessMapOutput values.
+// You can construct a concrete instance of `DatasetAccessMapInput` via:
 //
-//          DatasetAccessTypeMap{ "key": DatasetAccessTypeArgs{...} }
-type DatasetAccessTypeMapInput interface {
+//          DatasetAccessMap{ "key": DatasetAccessArgs{...} }
+type DatasetAccessMapInput interface {
 	pulumi.Input
 
-	ToDatasetAccessTypeMapOutput() DatasetAccessTypeMapOutput
-	ToDatasetAccessTypeMapOutputWithContext(context.Context) DatasetAccessTypeMapOutput
+	ToDatasetAccessMapOutput() DatasetAccessMapOutput
+	ToDatasetAccessMapOutputWithContext(context.Context) DatasetAccessMapOutput
 }
 
-type DatasetAccessTypeMap map[string]DatasetAccessTypeInput
+type DatasetAccessMap map[string]DatasetAccessInput
 
-func (DatasetAccessTypeMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*DatasetAccessType)(nil)).Elem()
+func (DatasetAccessMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*DatasetAccess)(nil)).Elem()
 }
 
-func (i DatasetAccessTypeMap) ToDatasetAccessTypeMapOutput() DatasetAccessTypeMapOutput {
-	return i.ToDatasetAccessTypeMapOutputWithContext(context.Background())
+func (i DatasetAccessMap) ToDatasetAccessMapOutput() DatasetAccessMapOutput {
+	return i.ToDatasetAccessMapOutputWithContext(context.Background())
 }
 
-func (i DatasetAccessTypeMap) ToDatasetAccessTypeMapOutputWithContext(ctx context.Context) DatasetAccessTypeMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessTypeMapOutput)
+func (i DatasetAccessMap) ToDatasetAccessMapOutputWithContext(ctx context.Context) DatasetAccessMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessMapOutput)
 }
 
-type DatasetAccessTypeOutput struct{ *pulumi.OutputState }
+type DatasetAccessOutput struct{ *pulumi.OutputState }
 
-func (DatasetAccessTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetAccessType)(nil))
+func (DatasetAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetAccess)(nil))
 }
 
-func (o DatasetAccessTypeOutput) ToDatasetAccessTypeOutput() DatasetAccessTypeOutput {
+func (o DatasetAccessOutput) ToDatasetAccessOutput() DatasetAccessOutput {
 	return o
 }
 
-func (o DatasetAccessTypeOutput) ToDatasetAccessTypeOutputWithContext(ctx context.Context) DatasetAccessTypeOutput {
+func (o DatasetAccessOutput) ToDatasetAccessOutputWithContext(ctx context.Context) DatasetAccessOutput {
 	return o
 }
 
-func (o DatasetAccessTypeOutput) ToDatasetAccessTypePtrOutput() DatasetAccessTypePtrOutput {
-	return o.ToDatasetAccessTypePtrOutputWithContext(context.Background())
+func (o DatasetAccessOutput) ToDatasetAccessPtrOutput() DatasetAccessPtrOutput {
+	return o.ToDatasetAccessPtrOutputWithContext(context.Background())
 }
 
-func (o DatasetAccessTypeOutput) ToDatasetAccessTypePtrOutputWithContext(ctx context.Context) DatasetAccessTypePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatasetAccessType) *DatasetAccessType {
+func (o DatasetAccessOutput) ToDatasetAccessPtrOutputWithContext(ctx context.Context) DatasetAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatasetAccess) *DatasetAccess {
 		return &v
-	}).(DatasetAccessTypePtrOutput)
+	}).(DatasetAccessPtrOutput)
 }
 
-type DatasetAccessTypePtrOutput struct{ *pulumi.OutputState }
+type DatasetAccessPtrOutput struct{ *pulumi.OutputState }
 
-func (DatasetAccessTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatasetAccessType)(nil))
+func (DatasetAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetAccess)(nil))
 }
 
-func (o DatasetAccessTypePtrOutput) ToDatasetAccessTypePtrOutput() DatasetAccessTypePtrOutput {
+func (o DatasetAccessPtrOutput) ToDatasetAccessPtrOutput() DatasetAccessPtrOutput {
 	return o
 }
 
-func (o DatasetAccessTypePtrOutput) ToDatasetAccessTypePtrOutputWithContext(ctx context.Context) DatasetAccessTypePtrOutput {
+func (o DatasetAccessPtrOutput) ToDatasetAccessPtrOutputWithContext(ctx context.Context) DatasetAccessPtrOutput {
 	return o
 }
 
-func (o DatasetAccessTypePtrOutput) Elem() DatasetAccessTypeOutput {
-	return o.ApplyT(func(v *DatasetAccessType) DatasetAccessType {
+func (o DatasetAccessPtrOutput) Elem() DatasetAccessOutput {
+	return o.ApplyT(func(v *DatasetAccess) DatasetAccess {
 		if v != nil {
 			return *v
 		}
-		var ret DatasetAccessType
+		var ret DatasetAccess
 		return ret
-	}).(DatasetAccessTypeOutput)
+	}).(DatasetAccessOutput)
 }
 
-type DatasetAccessTypeArrayOutput struct{ *pulumi.OutputState }
+type DatasetAccessArrayOutput struct{ *pulumi.OutputState }
 
-func (DatasetAccessTypeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DatasetAccessType)(nil))
+func (DatasetAccessArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatasetAccess)(nil))
 }
 
-func (o DatasetAccessTypeArrayOutput) ToDatasetAccessTypeArrayOutput() DatasetAccessTypeArrayOutput {
+func (o DatasetAccessArrayOutput) ToDatasetAccessArrayOutput() DatasetAccessArrayOutput {
 	return o
 }
 
-func (o DatasetAccessTypeArrayOutput) ToDatasetAccessTypeArrayOutputWithContext(ctx context.Context) DatasetAccessTypeArrayOutput {
+func (o DatasetAccessArrayOutput) ToDatasetAccessArrayOutputWithContext(ctx context.Context) DatasetAccessArrayOutput {
 	return o
 }
 
-func (o DatasetAccessTypeArrayOutput) Index(i pulumi.IntInput) DatasetAccessTypeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatasetAccessType {
-		return vs[0].([]DatasetAccessType)[vs[1].(int)]
-	}).(DatasetAccessTypeOutput)
+func (o DatasetAccessArrayOutput) Index(i pulumi.IntInput) DatasetAccessOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatasetAccess {
+		return vs[0].([]DatasetAccess)[vs[1].(int)]
+	}).(DatasetAccessOutput)
 }
 
-type DatasetAccessTypeMapOutput struct{ *pulumi.OutputState }
+type DatasetAccessMapOutput struct{ *pulumi.OutputState }
 
-func (DatasetAccessTypeMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DatasetAccessType)(nil))
+func (DatasetAccessMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DatasetAccess)(nil))
 }
 
-func (o DatasetAccessTypeMapOutput) ToDatasetAccessTypeMapOutput() DatasetAccessTypeMapOutput {
+func (o DatasetAccessMapOutput) ToDatasetAccessMapOutput() DatasetAccessMapOutput {
 	return o
 }
 
-func (o DatasetAccessTypeMapOutput) ToDatasetAccessTypeMapOutputWithContext(ctx context.Context) DatasetAccessTypeMapOutput {
+func (o DatasetAccessMapOutput) ToDatasetAccessMapOutputWithContext(ctx context.Context) DatasetAccessMapOutput {
 	return o
 }
 
-func (o DatasetAccessTypeMapOutput) MapIndex(k pulumi.StringInput) DatasetAccessTypeOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DatasetAccessType {
-		return vs[0].(map[string]DatasetAccessType)[vs[1].(string)]
-	}).(DatasetAccessTypeOutput)
+func (o DatasetAccessMapOutput) MapIndex(k pulumi.StringInput) DatasetAccessOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DatasetAccess {
+		return vs[0].(map[string]DatasetAccess)[vs[1].(string)]
+	}).(DatasetAccessOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(DatasetAccessTypeOutput{})
-	pulumi.RegisterOutputType(DatasetAccessTypePtrOutput{})
-	pulumi.RegisterOutputType(DatasetAccessTypeArrayOutput{})
-	pulumi.RegisterOutputType(DatasetAccessTypeMapOutput{})
+	pulumi.RegisterOutputType(DatasetAccessOutput{})
+	pulumi.RegisterOutputType(DatasetAccessPtrOutput{})
+	pulumi.RegisterOutputType(DatasetAccessArrayOutput{})
+	pulumi.RegisterOutputType(DatasetAccessMapOutput{})
 }

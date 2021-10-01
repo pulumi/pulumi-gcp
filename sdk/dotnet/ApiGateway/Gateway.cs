@@ -19,6 +19,60 @@ namespace Pulumi.Gcp.ApiGateway
     ///     * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
     /// 
     /// ## Example Usage
+    /// ### Apigateway Gateway Basic
+    /// 
+    /// ```csharp
+    /// using System;
+    /// using System.IO;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    /// 	private static string ReadFileBase64(string path) {
+    /// 		return Convert.ToBase64String(System.Text.UTF8.GetBytes(File.ReadAllText(path)))
+    /// 	}
+    /// 
+    ///     public MyStack()
+    ///     {
+    ///         var apiGwApi = new Gcp.ApiGateway.Api("apiGwApi", new Gcp.ApiGateway.ApiArgs
+    ///         {
+    ///             ApiId = "api-gw",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var apiGwApiConfig = new Gcp.ApiGateway.ApiConfig("apiGwApiConfig", new Gcp.ApiGateway.ApiConfigArgs
+    ///         {
+    ///             Api = apiGwApi.ApiId,
+    ///             ApiConfigId = "config",
+    ///             OpenapiDocuments = 
+    ///             {
+    ///                 new Gcp.ApiGateway.Inputs.ApiConfigOpenapiDocumentArgs
+    ///                 {
+    ///                     Document = new Gcp.ApiGateway.Inputs.ApiConfigOpenapiDocumentDocumentArgs
+    ///                     {
+    ///                         Path = "spec.yaml",
+    ///                         Contents = ReadFileBase64("test-fixtures/apigateway/openapi.yaml"),
+    ///                     },
+    ///                 },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var apiGwGateway = new Gcp.ApiGateway.Gateway("apiGwGateway", new Gcp.ApiGateway.GatewayArgs
+    ///         {
+    ///             ApiConfig = apiGwApiConfig.Id,
+    ///             GatewayId = "api-gw",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 

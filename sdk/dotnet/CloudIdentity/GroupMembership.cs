@@ -25,6 +25,61 @@ namespace Pulumi.Gcp.CloudIdentity
     /// `billing_project` you defined.
     /// 
     /// ## Example Usage
+    /// ### Cloud Identity Group Membership
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @group = new Gcp.CloudIdentity.Group("group", new Gcp.CloudIdentity.GroupArgs
+    ///         {
+    ///             DisplayName = "my-identity-group",
+    ///             Parent = "customers/A01b123xz",
+    ///             GroupKey = new Gcp.CloudIdentity.Inputs.GroupGroupKeyArgs
+    ///             {
+    ///                 Id = "my-identity-group@example.com",
+    ///             },
+    ///             Labels = 
+    ///             {
+    ///                 { "cloudidentity.googleapis.com/groups.discussion_forum", "" },
+    ///             },
+    ///         });
+    ///         var child_group = new Gcp.CloudIdentity.Group("child-group", new Gcp.CloudIdentity.GroupArgs
+    ///         {
+    ///             DisplayName = "my-identity-group-child",
+    ///             Parent = "customers/A01b123xz",
+    ///             GroupKey = new Gcp.CloudIdentity.Inputs.GroupGroupKeyArgs
+    ///             {
+    ///                 Id = "my-identity-group-child@example.com",
+    ///             },
+    ///             Labels = 
+    ///             {
+    ///                 { "cloudidentity.googleapis.com/groups.discussion_forum", "" },
+    ///             },
+    ///         });
+    ///         var cloudIdentityGroupMembershipBasic = new Gcp.CloudIdentity.GroupMembership("cloudIdentityGroupMembershipBasic", new Gcp.CloudIdentity.GroupMembershipArgs
+    ///         {
+    ///             Group = @group.Id,
+    ///             PreferredMemberKey = new Gcp.CloudIdentity.Inputs.GroupMembershipPreferredMemberKeyArgs
+    ///             {
+    ///                 Id = child_group.GroupKey.Apply(groupKey =&gt; groupKey.Id),
+    ///             },
+    ///             Roles = 
+    ///             {
+    ///                 new Gcp.CloudIdentity.Inputs.GroupMembershipRoleArgs
+    ///                 {
+    ///                     Name = "MEMBER",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// ### Cloud Identity Group Membership User
     /// 
     /// ```csharp

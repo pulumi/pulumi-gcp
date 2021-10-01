@@ -21,6 +21,98 @@ import (
 //     * [Official Documentation](https://cloud.google.com/container-analysis/)
 //
 // ## Example Usage
+// ### Container Analysis Occurrence Kms
+//
+// ```go
+// package main
+//
+// import (
+// 	"encoding/base64"
+// 	"io/ioutil"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/binaryauthorization"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/containeranalysis"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/kms"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func filebase64OrPanic(path string) pulumi.StringPtrInput {
+// 	if fileData, err := ioutil.ReadFile(path); err == nil {
+// 		return pulumi.String(base64.StdEncoding.EncodeToString(fileData[:]))
+// 	} else {
+// 		panic(err.Error())
+// 	}
+// }
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		note, err := containeranalysis.NewNote(ctx, "note", &containeranalysis.NoteArgs{
+// 			AttestationAuthority: &containeranalysis.NoteAttestationAuthorityArgs{
+// 				Hint: &containeranalysis.NoteAttestationAuthorityHintArgs{
+// 					HumanReadableName: pulumi.String("Attestor Note"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		keyring, err := kms.GetKMSKeyRing(ctx, &kms.GetKMSKeyRingArgs{
+// 			Name:     "my-key-ring",
+// 			Location: "global",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		crypto_key, err := kms.GetKMSCryptoKey(ctx, &kms.GetKMSCryptoKeyArgs{
+// 			Name:    "my-key",
+// 			KeyRing: keyring.SelfLink,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		version, err := kms.GetKMSCryptoKeyVersion(ctx, &kms.GetKMSCryptoKeyVersionArgs{
+// 			CryptoKey: crypto_key.SelfLink,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = binaryauthorization.NewAttestor(ctx, "attestor", &binaryauthorization.AttestorArgs{
+// 			AttestationAuthorityNote: &binaryauthorization.AttestorAttestationAuthorityNoteArgs{
+// 				NoteReference: note.Name,
+// 				PublicKeys: binaryauthorization.AttestorAttestationAuthorityNotePublicKeyArray{
+// 					&binaryauthorization.AttestorAttestationAuthorityNotePublicKeyArgs{
+// 						Id: pulumi.String(version.Id),
+// 						PkixPublicKey: &binaryauthorization.AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs{
+// 							PublicKeyPem:       pulumi.String(version.PublicKeys[0].Pem),
+// 							SignatureAlgorithm: pulumi.String(version.PublicKeys[0].Algorithm),
+// 						},
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = containeranalysis.NewOccurence(ctx, "occurrence", &containeranalysis.OccurenceArgs{
+// 			ResourceUri: pulumi.String("gcr.io/my-project/my-image"),
+// 			NoteName:    note.ID(),
+// 			Attestation: &containeranalysis.OccurenceAttestationArgs{
+// 				SerializedPayload: filebase64OrPanic("path/to/my/payload.json"),
+// 				Signatures: containeranalysis.OccurenceAttestationSignatureArray{
+// 					&containeranalysis.OccurenceAttestationSignatureArgs{
+// 						PublicKeyId:       pulumi.String(version.Id),
+// 						SerializedPayload: filebase64OrPanic("path/to/my/payload.json.sig"),
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //

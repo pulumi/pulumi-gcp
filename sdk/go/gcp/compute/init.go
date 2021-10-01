@@ -94,7 +94,7 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	case "gcp:compute/instanceGroupManager:InstanceGroupManager":
 		r = &InstanceGroupManager{}
 	case "gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort":
-		r = &InstanceGroupNamedPortType{}
+		r = &InstanceGroupNamedPort{}
 	case "gcp:compute/instanceIAMBinding:InstanceIAMBinding":
 		r = &InstanceIAMBinding{}
 	case "gcp:compute/instanceIAMMember:InstanceIAMMember":

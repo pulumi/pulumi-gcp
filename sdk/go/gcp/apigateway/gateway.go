@@ -20,6 +20,61 @@ import (
 //     * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
 //
 // ## Example Usage
+// ### Apigateway Gateway Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"encoding/base64"
+// 	"io/ioutil"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/apigateway"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func filebase64OrPanic(path string) pulumi.StringPtrInput {
+// 	if fileData, err := ioutil.ReadFile(path); err == nil {
+// 		return pulumi.String(base64.StdEncoding.EncodeToString(fileData[:]))
+// 	} else {
+// 		panic(err.Error())
+// 	}
+// }
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		apiGwApi, err := apigateway.NewApi(ctx, "apiGwApi", &apigateway.ApiArgs{
+// 			ApiId: pulumi.String("api-gw"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		apiGwApiConfig, err := apigateway.NewApiConfig(ctx, "apiGwApiConfig", &apigateway.ApiConfigArgs{
+// 			Api:         apiGwApi.ApiId,
+// 			ApiConfigId: pulumi.String("config"),
+// 			OpenapiDocuments: apigateway.ApiConfigOpenapiDocumentArray{
+// 				&apigateway.ApiConfigOpenapiDocumentArgs{
+// 					Document: &apigateway.ApiConfigOpenapiDocumentDocumentArgs{
+// 						Path:     pulumi.String("spec.yaml"),
+// 						Contents: filebase64OrPanic("test-fixtures/apigateway/openapi.yaml"),
+// 					},
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = apigateway.NewGateway(ctx, "apiGwGateway", &apigateway.GatewayArgs{
+// 			ApiConfig: apiGwApiConfig.ID(),
+// 			GatewayId: pulumi.String("api-gw"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //

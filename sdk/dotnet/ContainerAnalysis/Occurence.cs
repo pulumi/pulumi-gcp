@@ -20,6 +20,86 @@ namespace Pulumi.Gcp.ContainerAnalysis
     ///     * [Official Documentation](https://cloud.google.com/container-analysis/)
     /// 
     /// ## Example Usage
+    /// ### Container Analysis Occurrence Kms
+    /// 
+    /// ```csharp
+    /// using System;
+    /// using System.IO;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    /// 	private static string ReadFileBase64(string path) {
+    /// 		return Convert.ToBase64String(System.Text.UTF8.GetBytes(File.ReadAllText(path)))
+    /// 	}
+    /// 
+    ///     public MyStack()
+    ///     {
+    ///         var note = new Gcp.ContainerAnalysis.Note("note", new Gcp.ContainerAnalysis.NoteArgs
+    ///         {
+    ///             AttestationAuthority = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityArgs
+    ///             {
+    ///                 Hint = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityHintArgs
+    ///                 {
+    ///                     HumanReadableName = "Attestor Note",
+    ///                 },
+    ///             },
+    ///         });
+    ///         var keyring = Output.Create(Gcp.Kms.GetKMSKeyRing.InvokeAsync(new Gcp.Kms.GetKMSKeyRingArgs
+    ///         {
+    ///             Name = "my-key-ring",
+    ///             Location = "global",
+    ///         }));
+    ///         var crypto_key = keyring.Apply(keyring =&gt; Output.Create(Gcp.Kms.GetKMSCryptoKey.InvokeAsync(new Gcp.Kms.GetKMSCryptoKeyArgs
+    ///         {
+    ///             Name = "my-key",
+    ///             KeyRing = keyring.SelfLink,
+    ///         })));
+    ///         var version = crypto_key.Apply(crypto_key =&gt; Output.Create(Gcp.Kms.GetKMSCryptoKeyVersion.InvokeAsync(new Gcp.Kms.GetKMSCryptoKeyVersionArgs
+    ///         {
+    ///             CryptoKey = crypto_key.SelfLink,
+    ///         })));
+    ///         var attestor = new Gcp.BinaryAuthorization.Attestor("attestor", new Gcp.BinaryAuthorization.AttestorArgs
+    ///         {
+    ///             AttestationAuthorityNote = new Gcp.BinaryAuthorization.Inputs.AttestorAttestationAuthorityNoteArgs
+    ///             {
+    ///                 NoteReference = note.Name,
+    ///                 PublicKeys = 
+    ///                 {
+    ///                     new Gcp.BinaryAuthorization.Inputs.AttestorAttestationAuthorityNotePublicKeyArgs
+    ///                     {
+    ///                         Id = version.Apply(version =&gt; version.Id),
+    ///                         PkixPublicKey = new Gcp.BinaryAuthorization.Inputs.AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs
+    ///                         {
+    ///                             PublicKeyPem = version.Apply(version =&gt; version.PublicKeys?[0]?.Pem),
+    ///                             SignatureAlgorithm = version.Apply(version =&gt; version.PublicKeys?[0]?.Algorithm),
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///         var occurrence = new Gcp.ContainerAnalysis.Occurence("occurrence", new Gcp.ContainerAnalysis.OccurenceArgs
+    ///         {
+    ///             ResourceUri = "gcr.io/my-project/my-image",
+    ///             NoteName = note.Id,
+    ///             Attestation = new Gcp.ContainerAnalysis.Inputs.OccurenceAttestationArgs
+    ///             {
+    ///                 SerializedPayload = ReadFileBase64("path/to/my/payload.json"),
+    ///                 Signatures = 
+    ///                 {
+    ///                     new Gcp.ContainerAnalysis.Inputs.OccurenceAttestationSignatureArgs
+    ///                     {
+    ///                         PublicKeyId = version.Apply(version =&gt; version.Id),
+    ///                         SerializedPayload = ReadFileBase64("path/to/my/payload.json.sig"),
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 

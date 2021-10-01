@@ -42,6 +42,50 @@ import (
 // 	})
 // }
 // ```
+// ## Full Example
+//
+// ```go
+// package main
+//
+// import (
+// 	"io/ioutil"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func readFileOrPanic(path string) pulumi.StringPtrInput {
+// 	data, err := ioutil.ReadFile(path)
+// 	if err != nil {
+// 		panic(err.Error())
+// 	}
+// 	return pulumi.String(string(data))
+// }
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "pRviqwS4c4OTJRTe03FD1w=="
+// 		opt1 := "text/plain"
+// 		opt2 := "2d"
+// 		opt3 := readFileOrPanic("path/to/credentials.json")
+// 		_, err := storage.GetObjectSignedUrl(ctx, &storage.GetObjectSignedUrlArgs{
+// 			Bucket:      "fried_chicken",
+// 			Path:        "path/to/file",
+// 			ContentMd5:  &opt0,
+// 			ContentType: &opt1,
+// 			Duration:    &opt2,
+// 			Credentials: &opt3,
+// 			ExtensionHeaders: map[string]interface{}{
+// 				"x-goog-if-generation-match": "1",
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetObjectSignedUrl(ctx *pulumi.Context, args *GetObjectSignedUrlArgs, opts ...pulumi.InvokeOption) (*GetObjectSignedUrlResult, error) {
 	var rv GetObjectSignedUrlResult
 	err := ctx.Invoke("gcp:storage/getObjectSignedUrl:getObjectSignedUrl", args, &rv, opts...)

@@ -42,6 +42,52 @@ import * as utilities from "../utilities";
  *     peerNetwork: networkPrimary.id,
  * });
  * ```
+ * ### Network Peering Routes Config Gke
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const containerNetwork = new gcp.compute.Network("containerNetwork", {autoCreateSubnetworks: false});
+ * const containerSubnetwork = new gcp.compute.Subnetwork("containerSubnetwork", {
+ *     region: "us-central1",
+ *     network: containerNetwork.name,
+ *     ipCidrRange: "10.0.36.0/24",
+ *     privateIpGoogleAccess: true,
+ *     secondaryIpRanges: [
+ *         {
+ *             rangeName: "pod",
+ *             ipCidrRange: "10.0.0.0/19",
+ *         },
+ *         {
+ *             rangeName: "svc",
+ *             ipCidrRange: "10.0.32.0/22",
+ *         },
+ *     ],
+ * });
+ * const privateCluster = new gcp.container.Cluster("privateCluster", {
+ *     location: "us-central1-a",
+ *     initialNodeCount: 1,
+ *     network: containerNetwork.name,
+ *     subnetwork: containerSubnetwork.name,
+ *     privateClusterConfig: {
+ *         enablePrivateEndpoint: true,
+ *         enablePrivateNodes: true,
+ *         masterIpv4CidrBlock: "10.42.0.0/28",
+ *     },
+ *     masterAuthorizedNetworksConfig: {},
+ *     ipAllocationPolicy: {
+ *         clusterSecondaryRangeName: containerSubnetwork.secondaryIpRanges.apply(secondaryIpRanges => secondaryIpRanges[0].rangeName),
+ *         servicesSecondaryRangeName: containerSubnetwork.secondaryIpRanges.apply(secondaryIpRanges => secondaryIpRanges[1].rangeName),
+ *     },
+ * });
+ * const peeringGkeRoutes = new gcp.compute.NetworkPeeringRoutesConfig("peeringGkeRoutes", {
+ *     peering: privateCluster.privateClusterConfig.apply(privateClusterConfig => privateClusterConfig.peeringName),
+ *     network: containerNetwork.name,
+ *     importCustomRoutes: true,
+ *     exportCustomRoutes: true,
+ * });
+ * ```
  *
  * ## Import
  *

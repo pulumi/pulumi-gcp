@@ -325,6 +325,44 @@ class Occurence(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/container-analysis/)
 
         ## Example Usage
+        ### Container Analysis Occurrence Kms
+
+        ```python
+        import pulumi
+        import base64
+        import pulumi_gcp as gcp
+
+        note = gcp.containeranalysis.Note("note", attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
+            hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
+                human_readable_name="Attestor Note",
+            ),
+        ))
+        keyring = gcp.kms.get_kms_key_ring(name="my-key-ring",
+            location="global")
+        crypto_key = gcp.kms.get_kms_crypto_key(name="my-key",
+            key_ring=keyring.self_link)
+        version = gcp.kms.get_kms_crypto_key_version(crypto_key=crypto_key.self_link)
+        attestor = gcp.binaryauthorization.Attestor("attestor", attestation_authority_note=gcp.binaryauthorization.AttestorAttestationAuthorityNoteArgs(
+            note_reference=note.name,
+            public_keys=[gcp.binaryauthorization.AttestorAttestationAuthorityNotePublicKeyArgs(
+                id=version.id,
+                pkix_public_key=gcp.binaryauthorization.AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs(
+                    public_key_pem=version.public_keys[0].pem,
+                    signature_algorithm=version.public_keys[0].algorithm,
+                ),
+            )],
+        ))
+        occurrence = gcp.containeranalysis.Occurence("occurrence",
+            resource_uri="gcr.io/my-project/my-image",
+            note_name=note.id,
+            attestation=gcp.containeranalysis.OccurenceAttestationArgs(
+                serialized_payload=(lambda path: base64.b64encode(open(path).read().encode()).decode())("path/to/my/payload.json"),
+                signatures=[gcp.containeranalysis.OccurenceAttestationSignatureArgs(
+                    public_key_id=version.id,
+                    serialized_payload=(lambda path: base64.b64encode(open(path).read().encode()).decode())("path/to/my/payload.json.sig"),
+                )],
+            ))
+        ```
 
         ## Import
 
@@ -380,6 +418,44 @@ class Occurence(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/container-analysis/)
 
         ## Example Usage
+        ### Container Analysis Occurrence Kms
+
+        ```python
+        import pulumi
+        import base64
+        import pulumi_gcp as gcp
+
+        note = gcp.containeranalysis.Note("note", attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
+            hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
+                human_readable_name="Attestor Note",
+            ),
+        ))
+        keyring = gcp.kms.get_kms_key_ring(name="my-key-ring",
+            location="global")
+        crypto_key = gcp.kms.get_kms_crypto_key(name="my-key",
+            key_ring=keyring.self_link)
+        version = gcp.kms.get_kms_crypto_key_version(crypto_key=crypto_key.self_link)
+        attestor = gcp.binaryauthorization.Attestor("attestor", attestation_authority_note=gcp.binaryauthorization.AttestorAttestationAuthorityNoteArgs(
+            note_reference=note.name,
+            public_keys=[gcp.binaryauthorization.AttestorAttestationAuthorityNotePublicKeyArgs(
+                id=version.id,
+                pkix_public_key=gcp.binaryauthorization.AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs(
+                    public_key_pem=version.public_keys[0].pem,
+                    signature_algorithm=version.public_keys[0].algorithm,
+                ),
+            )],
+        ))
+        occurrence = gcp.containeranalysis.Occurence("occurrence",
+            resource_uri="gcr.io/my-project/my-image",
+            note_name=note.id,
+            attestation=gcp.containeranalysis.OccurenceAttestationArgs(
+                serialized_payload=(lambda path: base64.b64encode(open(path).read().encode()).decode())("path/to/my/payload.json"),
+                signatures=[gcp.containeranalysis.OccurenceAttestationSignatureArgs(
+                    public_key_id=version.id,
+                    serialized_payload=(lambda path: base64.b64encode(open(path).read().encode()).decode())("path/to/my/payload.json.sig"),
+                )],
+            ))
+        ```
 
         ## Import
 

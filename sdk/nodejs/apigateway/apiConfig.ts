@@ -15,6 +15,29 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/api-gateway/docs/creating-api-config)
  *
  * ## Example Usage
+ * ### Apigateway Api Config Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * from "fs";
+ *
+ * const apiCfgApi = new gcp.apigateway.Api("apiCfgApi", {apiId: "api-cfg"}, {
+ *     provider: google_beta,
+ * });
+ * const apiCfgApiConfig = new gcp.apigateway.ApiConfig("apiCfgApiConfig", {
+ *     api: apiCfgApi.apiId,
+ *     apiConfigId: "cfg",
+ *     openapiDocuments: [{
+ *         document: {
+ *             path: "spec.yaml",
+ *             contents: Buffer.from(fs.readFileSync("test-fixtures/apigateway/openapi.yaml"), 'binary').toString('base64'),
+ *         },
+ *     }],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *
