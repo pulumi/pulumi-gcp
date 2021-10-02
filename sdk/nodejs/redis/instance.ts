@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const redis-network = gcp.compute.getNetwork({
+ * const redis_network = gcp.compute.getNetwork({
  *     name: "redis-test-network",
  * });
  * const cache = new gcp.redis.Instance("cache", {
@@ -55,7 +55,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const redis-network = gcp.compute.getNetwork({
+ * const redis_network = gcp.compute.getNetwork({
  *     name: "redis-test-network",
  * });
  * const serviceRange = new gcp.compute.GlobalAddress("serviceRange", {
