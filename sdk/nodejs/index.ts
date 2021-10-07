@@ -64,6 +64,7 @@ import * as networkmanagement from "./networkmanagement";
 import * as networkservices from "./networkservices";
 import * as notebooks from "./notebooks";
 import * as organizations from "./organizations";
+import * as orgpolicy from "./orgpolicy";
 import * as osconfig from "./osconfig";
 import * as oslogin from "./oslogin";
 import * as projects from "./projects";
@@ -144,6 +145,7 @@ export {
     networkservices,
     notebooks,
     organizations,
+    orgpolicy,
     osconfig,
     oslogin,
     projects,

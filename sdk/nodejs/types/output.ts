@@ -7201,6 +7201,11 @@ export namespace composer {
          * Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
          */
         pythonVersion: string;
+        /**
+         * -
+         * The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.`
+         */
+        schedulerCount: number;
     }
 
     export interface EnvironmentConfigWebServerConfig {
@@ -7298,6 +7303,7 @@ export namespace composer {
         imageVersion: string;
         pypiPackages: {[key: string]: string};
         pythonVersion: string;
+        schedulerCount: number;
     }
 
     export interface GetEnvironmentConfigWebServerConfig {
@@ -16476,6 +16482,14 @@ export namespace container {
         servicesSecondaryRangeName: string;
     }
 
+    export interface ClusterLoggingConfig {
+        /**
+         * The GKE components exposing logs. Only `SYSTEM_COMPONENTS`
+         * is supported.
+         */
+        enableComponents: string[];
+    }
+
     export interface ClusterMaintenancePolicy {
         /**
          * Time window specified for daily maintenance operations.
@@ -16552,6 +16566,14 @@ export namespace container {
          * Field for users to identify CIDR blocks.
          */
         displayName?: string;
+    }
+
+    export interface ClusterMonitoringConfig {
+        /**
+         * The GKE components exposing logs. Only `SYSTEM_COMPONENTS`
+         * is supported.
+         */
+        enableComponents: string[];
     }
 
     export interface ClusterNetworkPolicy {
@@ -17307,6 +17329,10 @@ export namespace container {
         servicesSecondaryRangeName: string;
     }
 
+    export interface GetClusterLoggingConfig {
+        enableComponents: string[];
+    }
+
     export interface GetClusterMaintenancePolicy {
         dailyMaintenanceWindows: outputs.container.GetClusterMaintenancePolicyDailyMaintenanceWindow[];
         maintenanceExclusions: outputs.container.GetClusterMaintenancePolicyMaintenanceExclusion[];
@@ -17350,6 +17376,10 @@ export namespace container {
     export interface GetClusterMasterAuthorizedNetworksConfigCidrBlock {
         cidrBlock: string;
         displayName: string;
+    }
+
+    export interface GetClusterMonitoringConfig {
+        enableComponents: string[];
     }
 
     export interface GetClusterNetworkPolicy {
@@ -20520,7 +20550,7 @@ export namespace dataproc {
         /**
          * Optional. The Compute Engine config settings for additional worker instances in a cluster.
          */
-        masterConfig?: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfig;
+        masterConfig: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfig;
         /**
          * Optional. Metastore configuration.
          */
@@ -20528,7 +20558,7 @@ export namespace dataproc {
         /**
          * Optional. The Compute Engine config settings for additional worker instances in a cluster.
          */
-        secondaryWorkerConfig?: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig;
+        secondaryWorkerConfig: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig;
         /**
          * Optional. Security settings for the cluster.
          */
@@ -20548,7 +20578,7 @@ export namespace dataproc {
         /**
          * Optional. The Compute Engine config settings for additional worker instances in a cluster.
          */
-        workerConfig?: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfig;
+        workerConfig: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfig;
     }
 
     export interface WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig {
@@ -20699,11 +20729,11 @@ export namespace dataproc {
         /**
          * Optional. The Compute Engine accelerator configuration for these instances.
          */
-        accelerators?: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator[];
+        accelerators: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator[];
         /**
          * Optional. Disk option config settings.
          */
-        diskConfig?: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig;
+        diskConfig: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig;
         /**
          * Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
          */
@@ -20730,7 +20760,7 @@ export namespace dataproc {
         /**
          * Optional. Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
          */
-        minCpuPlatform?: string;
+        minCpuPlatform: string;
         /**
          * Optional. The number of VM instances in the instance group. For master instance groups, must be set to 1.
          */
@@ -20783,11 +20813,11 @@ export namespace dataproc {
         /**
          * Optional. The Compute Engine accelerator configuration for these instances.
          */
-        accelerators?: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator[];
+        accelerators: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator[];
         /**
          * Optional. Disk option config settings.
          */
-        diskConfig?: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig;
+        diskConfig: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig;
         /**
          * Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
          */
@@ -20814,7 +20844,7 @@ export namespace dataproc {
         /**
          * Optional. Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
          */
-        minCpuPlatform?: string;
+        minCpuPlatform: string;
         /**
          * Optional. The number of VM instances in the instance group. For master instance groups, must be set to 1.
          */
@@ -20931,6 +20961,7 @@ export namespace dataproc {
          * Optional. The version of software inside the cluster. It must be one of the supported (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
          */
         imageVersion?: string;
+        optionalComponents?: string[];
         /**
          * Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
          */
@@ -20941,11 +20972,11 @@ export namespace dataproc {
         /**
          * Optional. The Compute Engine accelerator configuration for these instances.
          */
-        accelerators?: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator[];
+        accelerators: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator[];
         /**
          * Optional. Disk option config settings.
          */
-        diskConfig?: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig;
+        diskConfig: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig;
         /**
          * Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
          */
@@ -20972,7 +21003,7 @@ export namespace dataproc {
         /**
          * Optional. Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
          */
-        minCpuPlatform?: string;
+        minCpuPlatform: string;
         /**
          * Optional. The number of VM instances in the instance group. For master instance groups, must be set to 1.
          */
@@ -25726,6 +25757,87 @@ export namespace organizations {
          */
         default: boolean;
     }
+}
+
+export namespace orgpolicy {
+    export interface PolicySpec {
+        /**
+         * -
+         * An opaque tag indicating the current version of the `Policy`, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the `Policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
+         */
+        etag: string;
+        /**
+         * Determines the inheritance behavior for this `Policy`. If `inheritFromParent` is true, PolicyRules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this Policy becomes the new root for evaluation. This field can be set only for Policies which configure list constraints.
+         */
+        inheritFromParent?: boolean;
+        /**
+         * Ignores policies set above this resource and restores the `constraintDefault` enforcement behavior of the specific `Constraint` at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inheritFromParent` must be set to false.
+         */
+        reset?: boolean;
+        /**
+         * Up to 10 PolicyRules are allowed. In Policies for boolean constraints, the following requirements apply: - There must be one and only one PolicyRule where condition is unset. - BooleanPolicyRules with conditions must set `enforced` to the opposite of the PolicyRule without a condition. - During policy evaluation, PolicyRules with conditions that are true for a target resource take precedence.
+         */
+        rules?: outputs.orgpolicy.PolicySpecRule[];
+        /**
+         * -
+         * Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that `Policy`.
+         */
+        updateTime: string;
+    }
+
+    export interface PolicySpecRule {
+        /**
+         * Setting this to true means that all values are allowed. This field can be set only in Policies for list constraints.
+         */
+        allowAll?: string;
+        /**
+         * A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr' must include from 1 to 10 subexpressions, joined by the "||" or "&&" operators. Each subexpression must be of the form "resource.matchTag('/tag_key_short_name, 'tag_value_short_name')". or "resource.matchTagId('tagKeys/key_id', 'tagValues/value_id')". where keyName and valueName are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: "resource.matchTag('123456789/environment, 'prod')". or "resource.matchTagId('tagKeys/123', 'tagValues/456')".
+         */
+        condition?: outputs.orgpolicy.PolicySpecRuleCondition;
+        /**
+         * Setting this to true means that all values are denied. This field can be set only in Policies for list constraints.
+         */
+        denyAll?: string;
+        /**
+         * If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
+         */
+        enforce?: string;
+        /**
+         * List of values to be used for this PolicyRule. This field can be set only in Policies for list constraints.
+         */
+        values?: outputs.orgpolicy.PolicySpecRuleValues;
+    }
+
+    export interface PolicySpecRuleCondition {
+        /**
+         * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         */
+        description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression?: string;
+        /**
+         * Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+         */
+        location?: string;
+        /**
+         * Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+         */
+        title?: string;
+    }
+
+    export interface PolicySpecRuleValues {
+        /**
+         * List of values allowed at this resource.
+         */
+        allowedValues?: string[];
+        /**
+         * List of values denied at this resource.
+         */
+        deniedValues?: string[];
+    }
+
 }
 
 export namespace osconfig {

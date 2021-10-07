@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.Composer.Outputs
         public readonly string ImageVersion;
         public readonly ImmutableDictionary<string, string> PypiPackages;
         public readonly string PythonVersion;
+        public readonly int SchedulerCount;
 
         [OutputConstructor]
         private GetEnvironmentConfigSoftwareConfigResult(
@@ -29,13 +30,16 @@ namespace Pulumi.Gcp.Composer.Outputs
 
             ImmutableDictionary<string, string> pypiPackages,
 
-            string pythonVersion)
+            string pythonVersion,
+
+            int schedulerCount)
         {
             AirflowConfigOverrides = airflowConfigOverrides;
             EnvVariables = envVariables;
             ImageVersion = imageVersion;
             PypiPackages = pypiPackages;
             PythonVersion = pythonVersion;
+            SchedulerCount = schedulerCount;
         }
     }
 }

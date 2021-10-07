@@ -170,7 +170,7 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly networkConfig!: pulumi.Output<outputs.container.NodePoolNetworkConfig>;
     /**
-     * The network configuration of the pool. See
+     * Parameters used in creating the default node pool. See
      * gcp.container.Cluster for schema.
      */
     public readonly nodeConfig!: pulumi.Output<outputs.container.NodePoolNodeConfig>;
@@ -328,7 +328,7 @@ export interface NodePoolState {
      */
     networkConfig?: pulumi.Input<inputs.container.NodePoolNetworkConfig>;
     /**
-     * The network configuration of the pool. See
+     * Parameters used in creating the default node pool. See
      * gcp.container.Cluster for schema.
      */
     nodeConfig?: pulumi.Input<inputs.container.NodePoolNodeConfig>;
@@ -423,7 +423,7 @@ export interface NodePoolArgs {
      */
     networkConfig?: pulumi.Input<inputs.container.NodePoolNetworkConfig>;
     /**
-     * The network configuration of the pool. See
+     * Parameters used in creating the default node pool. See
      * gcp.container.Cluster for schema.
      */
     nodeConfig?: pulumi.Input<inputs.container.NodePoolNodeConfig>;

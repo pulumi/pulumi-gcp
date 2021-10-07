@@ -38,11 +38,13 @@ class ClusterArgs:
                  initial_node_count: Optional[pulumi.Input[int]] = None,
                  ip_allocation_policy: Optional[pulumi.Input['ClusterIpAllocationPolicyArgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 logging_config: Optional[pulumi.Input['ClusterLoggingConfigArgs']] = None,
                  logging_service: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input['ClusterMaintenancePolicyArgs']] = None,
                  master_auth: Optional[pulumi.Input['ClusterMasterAuthArgs']] = None,
                  master_authorized_networks_config: Optional[pulumi.Input['ClusterMasterAuthorizedNetworksConfigArgs']] = None,
                  min_master_version: Optional[pulumi.Input[str]] = None,
+                 monitoring_config: Optional[pulumi.Input['ClusterMonitoringConfigArgs']] = None,
                  monitoring_service: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -130,6 +132,8 @@ class ClusterArgs:
                single cluster master. If you specify a region (such as `us-west1`), the
                cluster will be a regional cluster with multiple masters spread across zones in
                the region, and with default node locations in those zones as well
+        :param pulumi.Input['ClusterLoggingConfigArgs'] logging_config: Logging configuration for the cluster.
+               Structure is documented below.
         :param pulumi.Input[str] logging_service: The logging service that the cluster should
                write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
                `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
@@ -153,6 +157,8 @@ class ClusterArgs:
                are available. If you intend to specify versions manually,
                [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
                describe the various acceptable formats for this field.
+        :param pulumi.Input['ClusterMonitoringConfigArgs'] monitoring_config: Monitoring configuration for the cluster.
+               Structure is documented below.
         :param pulumi.Input[str] monitoring_service: The monitoring service that the cluster
                should write metrics to.
                Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
@@ -274,6 +280,8 @@ class ClusterArgs:
             pulumi.set(__self__, "ip_allocation_policy", ip_allocation_policy)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if logging_config is not None:
+            pulumi.set(__self__, "logging_config", logging_config)
         if logging_service is not None:
             pulumi.set(__self__, "logging_service", logging_service)
         if maintenance_policy is not None:
@@ -284,6 +292,8 @@ class ClusterArgs:
             pulumi.set(__self__, "master_authorized_networks_config", master_authorized_networks_config)
         if min_master_version is not None:
             pulumi.set(__self__, "min_master_version", min_master_version)
+        if monitoring_config is not None:
+            pulumi.set(__self__, "monitoring_config", monitoring_config)
         if monitoring_service is not None:
             pulumi.set(__self__, "monitoring_service", monitoring_service)
         if name is not None:
@@ -645,6 +655,19 @@ class ClusterArgs:
         pulumi.set(self, "location", value)
 
     @property
+    @pulumi.getter(name="loggingConfig")
+    def logging_config(self) -> Optional[pulumi.Input['ClusterLoggingConfigArgs']]:
+        """
+        Logging configuration for the cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "logging_config")
+
+    @logging_config.setter
+    def logging_config(self, value: Optional[pulumi.Input['ClusterLoggingConfigArgs']]):
+        pulumi.set(self, "logging_config", value)
+
+    @property
     @pulumi.getter(name="loggingService")
     def logging_service(self) -> Optional[pulumi.Input[str]]:
         """
@@ -721,6 +744,19 @@ class ClusterArgs:
     @min_master_version.setter
     def min_master_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "min_master_version", value)
+
+    @property
+    @pulumi.getter(name="monitoringConfig")
+    def monitoring_config(self) -> Optional[pulumi.Input['ClusterMonitoringConfigArgs']]:
+        """
+        Monitoring configuration for the cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "monitoring_config")
+
+    @monitoring_config.setter
+    def monitoring_config(self, value: Optional[pulumi.Input['ClusterMonitoringConfigArgs']]):
+        pulumi.set(self, "monitoring_config", value)
 
     @property
     @pulumi.getter(name="monitoringService")
@@ -1057,12 +1093,14 @@ class _ClusterState:
                  ip_allocation_policy: Optional[pulumi.Input['ClusterIpAllocationPolicyArgs']] = None,
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 logging_config: Optional[pulumi.Input['ClusterLoggingConfigArgs']] = None,
                  logging_service: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input['ClusterMaintenancePolicyArgs']] = None,
                  master_auth: Optional[pulumi.Input['ClusterMasterAuthArgs']] = None,
                  master_authorized_networks_config: Optional[pulumi.Input['ClusterMasterAuthorizedNetworksConfigArgs']] = None,
                  master_version: Optional[pulumi.Input[str]] = None,
                  min_master_version: Optional[pulumi.Input[str]] = None,
+                 monitoring_config: Optional[pulumi.Input['ClusterMonitoringConfigArgs']] = None,
                  monitoring_service: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -1158,6 +1196,8 @@ class _ClusterState:
                single cluster master. If you specify a region (such as `us-west1`), the
                cluster will be a regional cluster with multiple masters spread across zones in
                the region, and with default node locations in those zones as well
+        :param pulumi.Input['ClusterLoggingConfigArgs'] logging_config: Logging configuration for the cluster.
+               Structure is documented below.
         :param pulumi.Input[str] logging_service: The logging service that the cluster should
                write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
                `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
@@ -1184,6 +1224,8 @@ class _ClusterState:
                are available. If you intend to specify versions manually,
                [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
                describe the various acceptable formats for this field.
+        :param pulumi.Input['ClusterMonitoringConfigArgs'] monitoring_config: Monitoring configuration for the cluster.
+               Structure is documented below.
         :param pulumi.Input[str] monitoring_service: The monitoring service that the cluster
                should write metrics to.
                Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
@@ -1319,6 +1361,8 @@ class _ClusterState:
             pulumi.set(__self__, "label_fingerprint", label_fingerprint)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if logging_config is not None:
+            pulumi.set(__self__, "logging_config", logging_config)
         if logging_service is not None:
             pulumi.set(__self__, "logging_service", logging_service)
         if maintenance_policy is not None:
@@ -1331,6 +1375,8 @@ class _ClusterState:
             pulumi.set(__self__, "master_version", master_version)
         if min_master_version is not None:
             pulumi.set(__self__, "min_master_version", min_master_version)
+        if monitoring_config is not None:
+            pulumi.set(__self__, "monitoring_config", monitoring_config)
         if monitoring_service is not None:
             pulumi.set(__self__, "monitoring_service", monitoring_service)
         if name is not None:
@@ -1737,6 +1783,19 @@ class _ClusterState:
         pulumi.set(self, "location", value)
 
     @property
+    @pulumi.getter(name="loggingConfig")
+    def logging_config(self) -> Optional[pulumi.Input['ClusterLoggingConfigArgs']]:
+        """
+        Logging configuration for the cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "logging_config")
+
+    @logging_config.setter
+    def logging_config(self, value: Optional[pulumi.Input['ClusterLoggingConfigArgs']]):
+        pulumi.set(self, "logging_config", value)
+
+    @property
     @pulumi.getter(name="loggingService")
     def logging_service(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1827,6 +1886,19 @@ class _ClusterState:
     @min_master_version.setter
     def min_master_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "min_master_version", value)
+
+    @property
+    @pulumi.getter(name="monitoringConfig")
+    def monitoring_config(self) -> Optional[pulumi.Input['ClusterMonitoringConfigArgs']]:
+        """
+        Monitoring configuration for the cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "monitoring_config")
+
+    @monitoring_config.setter
+    def monitoring_config(self, value: Optional[pulumi.Input['ClusterMonitoringConfigArgs']]):
+        pulumi.set(self, "monitoring_config", value)
 
     @property
     @pulumi.getter(name="monitoringService")
@@ -2212,11 +2284,13 @@ class Cluster(pulumi.CustomResource):
                  initial_node_count: Optional[pulumi.Input[int]] = None,
                  ip_allocation_policy: Optional[pulumi.Input[pulumi.InputType['ClusterIpAllocationPolicyArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 logging_config: Optional[pulumi.Input[pulumi.InputType['ClusterLoggingConfigArgs']]] = None,
                  logging_service: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input[pulumi.InputType['ClusterMaintenancePolicyArgs']]] = None,
                  master_auth: Optional[pulumi.Input[pulumi.InputType['ClusterMasterAuthArgs']]] = None,
                  master_authorized_networks_config: Optional[pulumi.Input[pulumi.InputType['ClusterMasterAuthorizedNetworksConfigArgs']]] = None,
                  min_master_version: Optional[pulumi.Input[str]] = None,
+                 monitoring_config: Optional[pulumi.Input[pulumi.InputType['ClusterMonitoringConfigArgs']]] = None,
                  monitoring_service: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -2371,6 +2445,8 @@ class Cluster(pulumi.CustomResource):
                single cluster master. If you specify a region (such as `us-west1`), the
                cluster will be a regional cluster with multiple masters spread across zones in
                the region, and with default node locations in those zones as well
+        :param pulumi.Input[pulumi.InputType['ClusterLoggingConfigArgs']] logging_config: Logging configuration for the cluster.
+               Structure is documented below.
         :param pulumi.Input[str] logging_service: The logging service that the cluster should
                write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
                `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
@@ -2394,6 +2470,8 @@ class Cluster(pulumi.CustomResource):
                are available. If you intend to specify versions manually,
                [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
                describe the various acceptable formats for this field.
+        :param pulumi.Input[pulumi.InputType['ClusterMonitoringConfigArgs']] monitoring_config: Monitoring configuration for the cluster.
+               Structure is documented below.
         :param pulumi.Input[str] monitoring_service: The monitoring service that the cluster
                should write metrics to.
                Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
@@ -2579,11 +2657,13 @@ class Cluster(pulumi.CustomResource):
                  initial_node_count: Optional[pulumi.Input[int]] = None,
                  ip_allocation_policy: Optional[pulumi.Input[pulumi.InputType['ClusterIpAllocationPolicyArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 logging_config: Optional[pulumi.Input[pulumi.InputType['ClusterLoggingConfigArgs']]] = None,
                  logging_service: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input[pulumi.InputType['ClusterMaintenancePolicyArgs']]] = None,
                  master_auth: Optional[pulumi.Input[pulumi.InputType['ClusterMasterAuthArgs']]] = None,
                  master_authorized_networks_config: Optional[pulumi.Input[pulumi.InputType['ClusterMasterAuthorizedNetworksConfigArgs']]] = None,
                  min_master_version: Optional[pulumi.Input[str]] = None,
+                 monitoring_config: Optional[pulumi.Input[pulumi.InputType['ClusterMonitoringConfigArgs']]] = None,
                  monitoring_service: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -2640,11 +2720,13 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["initial_node_count"] = initial_node_count
             __props__.__dict__["ip_allocation_policy"] = ip_allocation_policy
             __props__.__dict__["location"] = location
+            __props__.__dict__["logging_config"] = logging_config
             __props__.__dict__["logging_service"] = logging_service
             __props__.__dict__["maintenance_policy"] = maintenance_policy
             __props__.__dict__["master_auth"] = master_auth
             __props__.__dict__["master_authorized_networks_config"] = master_authorized_networks_config
             __props__.__dict__["min_master_version"] = min_master_version
+            __props__.__dict__["monitoring_config"] = monitoring_config
             __props__.__dict__["monitoring_service"] = monitoring_service
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
@@ -2710,12 +2792,14 @@ class Cluster(pulumi.CustomResource):
             ip_allocation_policy: Optional[pulumi.Input[pulumi.InputType['ClusterIpAllocationPolicyArgs']]] = None,
             label_fingerprint: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
+            logging_config: Optional[pulumi.Input[pulumi.InputType['ClusterLoggingConfigArgs']]] = None,
             logging_service: Optional[pulumi.Input[str]] = None,
             maintenance_policy: Optional[pulumi.Input[pulumi.InputType['ClusterMaintenancePolicyArgs']]] = None,
             master_auth: Optional[pulumi.Input[pulumi.InputType['ClusterMasterAuthArgs']]] = None,
             master_authorized_networks_config: Optional[pulumi.Input[pulumi.InputType['ClusterMasterAuthorizedNetworksConfigArgs']]] = None,
             master_version: Optional[pulumi.Input[str]] = None,
             min_master_version: Optional[pulumi.Input[str]] = None,
+            monitoring_config: Optional[pulumi.Input[pulumi.InputType['ClusterMonitoringConfigArgs']]] = None,
             monitoring_service: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
@@ -2816,6 +2900,8 @@ class Cluster(pulumi.CustomResource):
                single cluster master. If you specify a region (such as `us-west1`), the
                cluster will be a regional cluster with multiple masters spread across zones in
                the region, and with default node locations in those zones as well
+        :param pulumi.Input[pulumi.InputType['ClusterLoggingConfigArgs']] logging_config: Logging configuration for the cluster.
+               Structure is documented below.
         :param pulumi.Input[str] logging_service: The logging service that the cluster should
                write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
                `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
@@ -2842,6 +2928,8 @@ class Cluster(pulumi.CustomResource):
                are available. If you intend to specify versions manually,
                [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
                describe the various acceptable formats for this field.
+        :param pulumi.Input[pulumi.InputType['ClusterMonitoringConfigArgs']] monitoring_config: Monitoring configuration for the cluster.
+               Structure is documented below.
         :param pulumi.Input[str] monitoring_service: The monitoring service that the cluster
                should write metrics to.
                Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
@@ -2955,12 +3043,14 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["ip_allocation_policy"] = ip_allocation_policy
         __props__.__dict__["label_fingerprint"] = label_fingerprint
         __props__.__dict__["location"] = location
+        __props__.__dict__["logging_config"] = logging_config
         __props__.__dict__["logging_service"] = logging_service
         __props__.__dict__["maintenance_policy"] = maintenance_policy
         __props__.__dict__["master_auth"] = master_auth
         __props__.__dict__["master_authorized_networks_config"] = master_authorized_networks_config
         __props__.__dict__["master_version"] = master_version
         __props__.__dict__["min_master_version"] = min_master_version
+        __props__.__dict__["monitoring_config"] = monitoring_config
         __props__.__dict__["monitoring_service"] = monitoring_service
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
@@ -3239,6 +3329,15 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "location")
 
     @property
+    @pulumi.getter(name="loggingConfig")
+    def logging_config(self) -> pulumi.Output['outputs.ClusterLoggingConfig']:
+        """
+        Logging configuration for the cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "logging_config")
+
+    @property
     @pulumi.getter(name="loggingService")
     def logging_service(self) -> pulumi.Output[str]:
         """
@@ -3305,6 +3404,15 @@ class Cluster(pulumi.CustomResource):
         describe the various acceptable formats for this field.
         """
         return pulumi.get(self, "min_master_version")
+
+    @property
+    @pulumi.getter(name="monitoringConfig")
+    def monitoring_config(self) -> pulumi.Output['outputs.ClusterMonitoringConfig']:
+        """
+        Monitoring configuration for the cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "monitoring_config")
 
     @property
     @pulumi.getter(name="monitoringService")

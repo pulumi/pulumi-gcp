@@ -90,6 +90,9 @@ namespace Pulumi.Gcp
         [Output("cloudIotCustomEndpoint")]
         public Output<string?> CloudIotCustomEndpoint { get; private set; } = null!;
 
+        [Output("cloudResourceManagerCustomEndpoint")]
+        public Output<string?> CloudResourceManagerCustomEndpoint { get; private set; } = null!;
+
         [Output("cloudRunCustomEndpoint")]
         public Output<string?> CloudRunCustomEndpoint { get; private set; } = null!;
 
@@ -227,6 +230,9 @@ namespace Pulumi.Gcp
 
         [Output("notebooksCustomEndpoint")]
         public Output<string?> NotebooksCustomEndpoint { get; private set; } = null!;
+
+        [Output("orgPolicyCustomEndpoint")]
+        public Output<string?> OrgPolicyCustomEndpoint { get; private set; } = null!;
 
         [Output("osConfigCustomEndpoint")]
         public Output<string?> OsConfigCustomEndpoint { get; private set; } = null!;
@@ -427,6 +433,9 @@ namespace Pulumi.Gcp
         [Input("cloudIotCustomEndpoint")]
         public Input<string>? CloudIotCustomEndpoint { get; set; }
 
+        [Input("cloudResourceManagerCustomEndpoint")]
+        public Input<string>? CloudResourceManagerCustomEndpoint { get; set; }
+
         [Input("cloudRunCustomEndpoint")]
         public Input<string>? CloudRunCustomEndpoint { get; set; }
 
@@ -575,6 +584,9 @@ namespace Pulumi.Gcp
 
         [Input("notebooksCustomEndpoint")]
         public Input<string>? NotebooksCustomEndpoint { get; set; }
+
+        [Input("orgPolicyCustomEndpoint")]
+        public Input<string>? OrgPolicyCustomEndpoint { get; set; }
 
         [Input("osConfigCustomEndpoint")]
         public Input<string>? OsConfigCustomEndpoint { get; set; }

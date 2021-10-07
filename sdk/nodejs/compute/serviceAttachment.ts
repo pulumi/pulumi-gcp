@@ -64,7 +64,6 @@ import * as utilities from "../utilities";
  *     region: "us-west2",
  *     subnetwork: "default",
  *     addressType: "INTERNAL",
- *     address: "10.168.0.17",
  * });
  * const pscIlbConsumer = new gcp.compute.ForwardingRule("pscIlbConsumer", {
  *     region: "us-west2",

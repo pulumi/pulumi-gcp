@@ -77,6 +77,7 @@ const (
 	gcpNetworkServices      = "NetworkServices"      // Network Services resources
 	gcpNotebooks            = "Notebooks"            // Notebooks resources
 	gcpOrganization         = "Organizations"        // Organization resources
+	gcpOrgPolicy            = "OrgPolicy"            // Org Policy
 	gcpOsConfig             = "OsConfig"             // OsConfig resources
 	gcpOsLogin              = "OsLogin"              // OsLogin resources
 	gcpProject              = "Projects"             // Project resources
@@ -1001,6 +1002,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_monitoring_slo":               {Tok: gcpResource(gcpMonitoring, "Slo")},
 			"google_monitoring_dashboard":         {Tok: gcpResource(gcpMonitoring, "Dashboard")},
 			"google_monitoring_metric_descriptor": {Tok: gcpResource(gcpMonitoring, "MetricDescriptor")},
+			"google_monitoring_monitored_project": {Tok: gcpResource(gcpMonitoring, "MonitoredProject")},
 
 			// PubSub resources
 			"google_pubsub_topic": {Tok: gcpResource(gcpPubSub, "Topic")},
@@ -1650,6 +1652,9 @@ func Provider() tfbridge.ProviderInfo {
 
 			// OS Login
 			"google_os_login_ssh_public_key": {Tok: gcpResource(gcpOsLogin, "SshPublicKey")},
+
+			// Org Policy
+			"google_org_policy_policy": {Tok: gcpResource(gcpOrgPolicy, "Policy")},
 
 			// OS Config
 			"google_os_config_patch_deployment": {Tok: gcpResource(gcpOsConfig, "PatchDeployment")},

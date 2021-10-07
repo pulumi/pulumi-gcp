@@ -165,6 +165,51 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// }
     /// ```
+    /// ### Cloudbuild Trigger Service Account
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var cloudbuildServiceAccount = new Gcp.ServiceAccount.Account("cloudbuildServiceAccount", new Gcp.ServiceAccount.AccountArgs
+    ///         {
+    ///             AccountId = "my-service-account",
+    ///         });
+    ///         var actAs = new Gcp.Projects.IAMMember("actAs", new Gcp.Projects.IAMMemberArgs
+    ///         {
+    ///             Role = "roles/iam.serviceAccountUser",
+    ///             Member = cloudbuildServiceAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///         });
+    ///         var logsWriter = new Gcp.Projects.IAMMember("logsWriter", new Gcp.Projects.IAMMemberArgs
+    ///         {
+    ///             Role = "roles/logging.logWriter",
+    ///             Member = cloudbuildServiceAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///         });
+    ///         var service_account_trigger = new Gcp.CloudBuild.Trigger("service-account-trigger", new Gcp.CloudBuild.TriggerArgs
+    ///         {
+    ///             TriggerTemplate = new Gcp.CloudBuild.Inputs.TriggerTriggerTemplateArgs
+    ///             {
+    ///                 BranchName = "master",
+    ///                 RepoName = "my-repo",
+    ///             },
+    ///             ServiceAccount = cloudbuildServiceAccount.Id,
+    ///             Filename = "cloudbuild.yaml",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 actAs,
+    ///                 logsWriter,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -273,6 +318,16 @@ namespace Pulumi.Gcp.CloudBuild
         /// </summary>
         [Output("pubsubConfig")]
         public Output<Outputs.TriggerPubsubConfig?> PubsubConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// The service account used for all user-controlled operations including
+        /// triggers.patch, triggers.run, builds.create, and builds.cancel.
+        /// If no service account is set, then the standard Cloud Build service account
+        /// ([PROJECT_NUM]@system.gserviceaccount.com) will be used instead.
+        /// Format: projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}
+        /// </summary>
+        [Output("serviceAccount")]
+        public Output<string?> ServiceAccount { get; private set; } = null!;
 
         /// <summary>
         /// Substitutions to use in a triggered build. Should only be used with triggers.run
@@ -453,6 +508,16 @@ namespace Pulumi.Gcp.CloudBuild
         [Input("pubsubConfig")]
         public Input<Inputs.TriggerPubsubConfigArgs>? PubsubConfig { get; set; }
 
+        /// <summary>
+        /// The service account used for all user-controlled operations including
+        /// triggers.patch, triggers.run, builds.create, and builds.cancel.
+        /// If no service account is set, then the standard Cloud Build service account
+        /// ([PROJECT_NUM]@system.gserviceaccount.com) will be used instead.
+        /// Format: projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}
+        /// </summary>
+        [Input("serviceAccount")]
+        public Input<string>? ServiceAccount { get; set; }
+
         [Input("substitutions")]
         private InputMap<string>? _substitutions;
 
@@ -604,6 +669,16 @@ namespace Pulumi.Gcp.CloudBuild
         /// </summary>
         [Input("pubsubConfig")]
         public Input<Inputs.TriggerPubsubConfigGetArgs>? PubsubConfig { get; set; }
+
+        /// <summary>
+        /// The service account used for all user-controlled operations including
+        /// triggers.patch, triggers.run, builds.create, and builds.cancel.
+        /// If no service account is set, then the standard Cloud Build service account
+        /// ([PROJECT_NUM]@system.gserviceaccount.com) will be used instead.
+        /// Format: projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}
+        /// </summary>
+        [Input("serviceAccount")]
+        public Input<string>? ServiceAccount { get; set; }
 
         [Input("substitutions")]
         private InputMap<string>? _substitutions;

@@ -61,6 +61,11 @@ namespace Pulumi.Gcp.Composer.Outputs
         /// Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
         /// </summary>
         public readonly string? PythonVersion;
+        /// <summary>
+        /// -
+        /// The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.`
+        /// </summary>
+        public readonly int? SchedulerCount;
 
         [OutputConstructor]
         private EnvironmentConfigSoftwareConfig(
@@ -72,13 +77,16 @@ namespace Pulumi.Gcp.Composer.Outputs
 
             ImmutableDictionary<string, string>? pypiPackages,
 
-            string? pythonVersion)
+            string? pythonVersion,
+
+            int? schedulerCount)
         {
             AirflowConfigOverrides = airflowConfigOverrides;
             EnvVariables = envVariables;
             ImageVersion = imageVersion;
             PypiPackages = pypiPackages;
             PythonVersion = pythonVersion;
+            SchedulerCount = schedulerCount;
         }
     }
 }

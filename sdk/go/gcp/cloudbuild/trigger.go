@@ -151,6 +151,64 @@ import (
 // 	})
 // }
 // ```
+// ### Cloudbuild Trigger Service Account
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/cloudbuild"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/projects"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/serviceAccount"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		cloudbuildServiceAccount, err := serviceAccount.NewAccount(ctx, "cloudbuildServiceAccount", &serviceAccount.AccountArgs{
+// 			AccountId: pulumi.String("my-service-account"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		actAs, err := projects.NewIAMMember(ctx, "actAs", &projects.IAMMemberArgs{
+// 			Role: pulumi.String("roles/iam.serviceAccountUser"),
+// 			Member: cloudbuildServiceAccount.Email.ApplyT(func(email string) (string, error) {
+// 				return fmt.Sprintf("%v%v", "serviceAccount:", email), nil
+// 			}).(pulumi.StringOutput),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		logsWriter, err := projects.NewIAMMember(ctx, "logsWriter", &projects.IAMMemberArgs{
+// 			Role: pulumi.String("roles/logging.logWriter"),
+// 			Member: cloudbuildServiceAccount.Email.ApplyT(func(email string) (string, error) {
+// 				return fmt.Sprintf("%v%v", "serviceAccount:", email), nil
+// 			}).(pulumi.StringOutput),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudbuild.NewTrigger(ctx, "service_account_trigger", &cloudbuild.TriggerArgs{
+// 			TriggerTemplate: &cloudbuild.TriggerTriggerTemplateArgs{
+// 				BranchName: pulumi.String("master"),
+// 				RepoName:   pulumi.String("my-repo"),
+// 			},
+// 			ServiceAccount: cloudbuildServiceAccount.ID(),
+// 			Filename:       pulumi.String("cloudbuild.yaml"),
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			actAs,
+// 			logsWriter,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //
@@ -215,6 +273,12 @@ type Trigger struct {
 	// One of `triggerTemplate`, `github`, `pubsubConfig` or `webhookConfig` must be provided.
 	// Structure is documented below.
 	PubsubConfig TriggerPubsubConfigPtrOutput `pulumi:"pubsubConfig"`
+	// The service account used for all user-controlled operations including
+	// triggers.patch, triggers.run, builds.create, and builds.cancel.
+	// If no service account is set, then the standard Cloud Build service account
+	// ([PROJECT_NUM]@system.gserviceaccount.com) will be used instead.
+	// Format: projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}
+	ServiceAccount pulumi.StringPtrOutput `pulumi:"serviceAccount"`
 	// Substitutions to use in a triggered build. Should only be used with triggers.run
 	Substitutions pulumi.StringMapOutput `pulumi:"substitutions"`
 	// Tags for annotation of a Build. These are not docker tags.
@@ -309,6 +373,12 @@ type triggerState struct {
 	// One of `triggerTemplate`, `github`, `pubsubConfig` or `webhookConfig` must be provided.
 	// Structure is documented below.
 	PubsubConfig *TriggerPubsubConfig `pulumi:"pubsubConfig"`
+	// The service account used for all user-controlled operations including
+	// triggers.patch, triggers.run, builds.create, and builds.cancel.
+	// If no service account is set, then the standard Cloud Build service account
+	// ([PROJECT_NUM]@system.gserviceaccount.com) will be used instead.
+	// Format: projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}
+	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Substitutions to use in a triggered build. Should only be used with triggers.run
 	Substitutions map[string]string `pulumi:"substitutions"`
 	// Tags for annotation of a Build. These are not docker tags.
@@ -375,6 +445,12 @@ type TriggerState struct {
 	// One of `triggerTemplate`, `github`, `pubsubConfig` or `webhookConfig` must be provided.
 	// Structure is documented below.
 	PubsubConfig TriggerPubsubConfigPtrInput
+	// The service account used for all user-controlled operations including
+	// triggers.patch, triggers.run, builds.create, and builds.cancel.
+	// If no service account is set, then the standard Cloud Build service account
+	// ([PROJECT_NUM]@system.gserviceaccount.com) will be used instead.
+	// Format: projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}
+	ServiceAccount pulumi.StringPtrInput
 	// Substitutions to use in a triggered build. Should only be used with triggers.run
 	Substitutions pulumi.StringMapInput
 	// Tags for annotation of a Build. These are not docker tags.
@@ -443,6 +519,12 @@ type triggerArgs struct {
 	// One of `triggerTemplate`, `github`, `pubsubConfig` or `webhookConfig` must be provided.
 	// Structure is documented below.
 	PubsubConfig *TriggerPubsubConfig `pulumi:"pubsubConfig"`
+	// The service account used for all user-controlled operations including
+	// triggers.patch, triggers.run, builds.create, and builds.cancel.
+	// If no service account is set, then the standard Cloud Build service account
+	// ([PROJECT_NUM]@system.gserviceaccount.com) will be used instead.
+	// Format: projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}
+	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Substitutions to use in a triggered build. Should only be used with triggers.run
 	Substitutions map[string]string `pulumi:"substitutions"`
 	// Tags for annotation of a Build. These are not docker tags.
@@ -506,6 +588,12 @@ type TriggerArgs struct {
 	// One of `triggerTemplate`, `github`, `pubsubConfig` or `webhookConfig` must be provided.
 	// Structure is documented below.
 	PubsubConfig TriggerPubsubConfigPtrInput
+	// The service account used for all user-controlled operations including
+	// triggers.patch, triggers.run, builds.create, and builds.cancel.
+	// If no service account is set, then the standard Cloud Build service account
+	// ([PROJECT_NUM]@system.gserviceaccount.com) will be used instead.
+	// Format: projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}
+	ServiceAccount pulumi.StringPtrInput
 	// Substitutions to use in a triggered build. Should only be used with triggers.run
 	Substitutions pulumi.StringMapInput
 	// Tags for annotation of a Build. These are not docker tags.

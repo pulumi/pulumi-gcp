@@ -16,55 +16,6 @@ import * as utilities from "../utilities";
  *     * [REST API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services.consumerQuotaMetrics.limits.consumerOverrides)
  *
  * ## Example Usage
- * ### Consumer Quota Override
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const myProject = new gcp.organizations.Project("myProject", {
- *     projectId: "quota",
- *     orgId: "123456789",
- * }, {
- *     provider: google_beta,
- * });
- * const override = new gcp.serviceusage.ConsumerQuotaOverride("override", {
- *     project: myProject.projectId,
- *     service: "servicemanagement.googleapis.com",
- *     metric: `servicemanagement.googleapis.com%2Fdefault_requests`,
- *     limit: `%2Fmin%2Fproject`,
- *     overrideValue: "95",
- *     force: true,
- * }, {
- *     provider: google_beta,
- * });
- * ```
- * ### Region Consumer Quota Override
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const myProject = new gcp.organizations.Project("myProject", {
- *     projectId: "quota",
- *     orgId: "123456789",
- * }, {
- *     provider: google_beta,
- * });
- * const override = new gcp.serviceusage.ConsumerQuotaOverride("override", {
- *     dimensions: {
- *         region: "us-central1",
- *     },
- *     project: myProject.projectId,
- *     service: "compute.googleapis.com",
- *     metric: `compute.googleapis.com%2Fn2_cpus`,
- *     limit: `%2Fproject%2Fregion`,
- *     overrideValue: "8",
- *     force: true,
- * }, {
- *     provider: google_beta,
- * });
- * ```
  *
  * ## Import
  *

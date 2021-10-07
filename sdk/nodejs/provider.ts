@@ -50,6 +50,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly cloudFunctionsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudIdentityCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudIotCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly cloudResourceManagerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudRunCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudSchedulerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudTasksCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -96,6 +97,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly networkManagementCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly networkServicesCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly notebooksCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly orgPolicyCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly osConfigCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly osLoginCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly privatecaCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -165,6 +167,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["cloudFunctionsCustomEndpoint"] = args ? args.cloudFunctionsCustomEndpoint : undefined;
             inputs["cloudIdentityCustomEndpoint"] = args ? args.cloudIdentityCustomEndpoint : undefined;
             inputs["cloudIotCustomEndpoint"] = args ? args.cloudIotCustomEndpoint : undefined;
+            inputs["cloudResourceManagerCustomEndpoint"] = args ? args.cloudResourceManagerCustomEndpoint : undefined;
             inputs["cloudRunCustomEndpoint"] = args ? args.cloudRunCustomEndpoint : undefined;
             inputs["cloudSchedulerCustomEndpoint"] = args ? args.cloudSchedulerCustomEndpoint : undefined;
             inputs["cloudTasksCustomEndpoint"] = args ? args.cloudTasksCustomEndpoint : undefined;
@@ -213,6 +216,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["networkManagementCustomEndpoint"] = args ? args.networkManagementCustomEndpoint : undefined;
             inputs["networkServicesCustomEndpoint"] = args ? args.networkServicesCustomEndpoint : undefined;
             inputs["notebooksCustomEndpoint"] = args ? args.notebooksCustomEndpoint : undefined;
+            inputs["orgPolicyCustomEndpoint"] = args ? args.orgPolicyCustomEndpoint : undefined;
             inputs["osConfigCustomEndpoint"] = args ? args.osConfigCustomEndpoint : undefined;
             inputs["osLoginCustomEndpoint"] = args ? args.osLoginCustomEndpoint : undefined;
             inputs["privatecaCustomEndpoint"] = args ? args.privatecaCustomEndpoint : undefined;
@@ -284,6 +288,7 @@ export interface ProviderArgs {
     cloudFunctionsCustomEndpoint?: pulumi.Input<string>;
     cloudIdentityCustomEndpoint?: pulumi.Input<string>;
     cloudIotCustomEndpoint?: pulumi.Input<string>;
+    cloudResourceManagerCustomEndpoint?: pulumi.Input<string>;
     cloudRunCustomEndpoint?: pulumi.Input<string>;
     cloudSchedulerCustomEndpoint?: pulumi.Input<string>;
     cloudTasksCustomEndpoint?: pulumi.Input<string>;
@@ -332,6 +337,7 @@ export interface ProviderArgs {
     networkManagementCustomEndpoint?: pulumi.Input<string>;
     networkServicesCustomEndpoint?: pulumi.Input<string>;
     notebooksCustomEndpoint?: pulumi.Input<string>;
+    orgPolicyCustomEndpoint?: pulumi.Input<string>;
     osConfigCustomEndpoint?: pulumi.Input<string>;
     osLoginCustomEndpoint?: pulumi.Input<string>;
     privatecaCustomEndpoint?: pulumi.Input<string>;

@@ -97,6 +97,10 @@ export class CryptoKey extends pulumi.CustomResource {
      */
     public readonly destroyScheduledDuration!: pulumi.Output<string>;
     /**
+     * Whether this key may contain imported versions only.
+     */
+    public readonly importOnly!: pulumi.Output<boolean>;
+    /**
      * The KeyRing that this key belongs to.
      * Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
      */
@@ -155,6 +159,7 @@ export class CryptoKey extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as CryptoKeyState | undefined;
             inputs["destroyScheduledDuration"] = state ? state.destroyScheduledDuration : undefined;
+            inputs["importOnly"] = state ? state.importOnly : undefined;
             inputs["keyRing"] = state ? state.keyRing : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -169,6 +174,7 @@ export class CryptoKey extends pulumi.CustomResource {
                 throw new Error("Missing required property 'keyRing'");
             }
             inputs["destroyScheduledDuration"] = args ? args.destroyScheduledDuration : undefined;
+            inputs["importOnly"] = args ? args.importOnly : undefined;
             inputs["keyRing"] = args ? args.keyRing : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -194,6 +200,10 @@ export interface CryptoKeyState {
      * If not specified at creation time, the default duration is 24 hours.
      */
     destroyScheduledDuration?: pulumi.Input<string>;
+    /**
+     * Whether this key may contain imported versions only.
+     */
+    importOnly?: pulumi.Input<boolean>;
     /**
      * The KeyRing that this key belongs to.
      * Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
@@ -249,6 +259,10 @@ export interface CryptoKeyArgs {
      * If not specified at creation time, the default duration is 24 hours.
      */
     destroyScheduledDuration?: pulumi.Input<string>;
+    /**
+     * Whether this key may contain imported versions only.
+     */
+    importOnly?: pulumi.Input<boolean>;
     /**
      * The KeyRing that this key belongs to.
      * Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.

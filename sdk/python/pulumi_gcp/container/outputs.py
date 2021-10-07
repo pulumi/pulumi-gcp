@@ -30,6 +30,7 @@ __all__ = [
     'ClusterDefaultSnatStatus',
     'ClusterDnsConfig',
     'ClusterIpAllocationPolicy',
+    'ClusterLoggingConfig',
     'ClusterMaintenancePolicy',
     'ClusterMaintenancePolicyDailyMaintenanceWindow',
     'ClusterMaintenancePolicyMaintenanceExclusion',
@@ -38,6 +39,7 @@ __all__ = [
     'ClusterMasterAuthClientCertificateConfig',
     'ClusterMasterAuthorizedNetworksConfig',
     'ClusterMasterAuthorizedNetworksConfigCidrBlock',
+    'ClusterMonitoringConfig',
     'ClusterNetworkPolicy',
     'ClusterNodeConfig',
     'ClusterNodeConfigEphemeralStorageConfig',
@@ -105,6 +107,7 @@ __all__ = [
     'GetClusterDefaultSnatStatusResult',
     'GetClusterDnsConfigResult',
     'GetClusterIpAllocationPolicyResult',
+    'GetClusterLoggingConfigResult',
     'GetClusterMaintenancePolicyResult',
     'GetClusterMaintenancePolicyDailyMaintenanceWindowResult',
     'GetClusterMaintenancePolicyMaintenanceExclusionResult',
@@ -113,6 +116,7 @@ __all__ = [
     'GetClusterMasterAuthClientCertificateConfigResult',
     'GetClusterMasterAuthorizedNetworksConfigResult',
     'GetClusterMasterAuthorizedNetworksConfigCidrBlockResult',
+    'GetClusterMonitoringConfigResult',
     'GetClusterNetworkPolicyResult',
     'GetClusterNodeConfigResult',
     'GetClusterNodeConfigEphemeralStorageConfigResult',
@@ -1095,6 +1099,43 @@ class ClusterIpAllocationPolicy(dict):
 
 
 @pulumi.output_type
+class ClusterLoggingConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableComponents":
+            suggest = "enable_components"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterLoggingConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterLoggingConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterLoggingConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_components: Sequence[str]):
+        """
+        :param Sequence[str] enable_components: The GKE components exposing logs. Only `SYSTEM_COMPONENTS`
+               is supported.
+        """
+        pulumi.set(__self__, "enable_components", enable_components)
+
+    @property
+    @pulumi.getter(name="enableComponents")
+    def enable_components(self) -> Sequence[str]:
+        """
+        The GKE components exposing logs. Only `SYSTEM_COMPONENTS`
+        is supported.
+        """
+        return pulumi.get(self, "enable_components")
+
+
+@pulumi.output_type
 class ClusterMaintenancePolicy(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1501,6 +1542,43 @@ class ClusterMasterAuthorizedNetworksConfigCidrBlock(dict):
         Field for users to identify CIDR blocks.
         """
         return pulumi.get(self, "display_name")
+
+
+@pulumi.output_type
+class ClusterMonitoringConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableComponents":
+            suggest = "enable_components"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterMonitoringConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterMonitoringConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterMonitoringConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_components: Sequence[str]):
+        """
+        :param Sequence[str] enable_components: The GKE components exposing logs. Only `SYSTEM_COMPONENTS`
+               is supported.
+        """
+        pulumi.set(__self__, "enable_components", enable_components)
+
+    @property
+    @pulumi.getter(name="enableComponents")
+    def enable_components(self) -> Sequence[str]:
+        """
+        The GKE components exposing logs. Only `SYSTEM_COMPONENTS`
+        is supported.
+        """
+        return pulumi.get(self, "enable_components")
 
 
 @pulumi.output_type
@@ -4804,6 +4882,18 @@ class GetClusterIpAllocationPolicyResult(dict):
 
 
 @pulumi.output_type
+class GetClusterLoggingConfigResult(dict):
+    def __init__(__self__, *,
+                 enable_components: Sequence[str]):
+        pulumi.set(__self__, "enable_components", enable_components)
+
+    @property
+    @pulumi.getter(name="enableComponents")
+    def enable_components(self) -> Sequence[str]:
+        return pulumi.get(self, "enable_components")
+
+
+@pulumi.output_type
 class GetClusterMaintenancePolicyResult(dict):
     def __init__(__self__, *,
                  daily_maintenance_windows: Sequence['outputs.GetClusterMaintenancePolicyDailyMaintenanceWindowResult'],
@@ -4988,6 +5078,18 @@ class GetClusterMasterAuthorizedNetworksConfigCidrBlockResult(dict):
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         return pulumi.get(self, "display_name")
+
+
+@pulumi.output_type
+class GetClusterMonitoringConfigResult(dict):
+    def __init__(__self__, *,
+                 enable_components: Sequence[str]):
+        pulumi.set(__self__, "enable_components", enable_components)
+
+    @property
+    @pulumi.getter(name="enableComponents")
+    def enable_components(self) -> Sequence[str]:
+        return pulumi.get(self, "enable_components")
 
 
 @pulumi.output_type

@@ -21,7 +21,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, addons_configs=None, authenticator_groups_configs=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, cluster_telemetries=None, confidential_nodes=None, database_encryptions=None, datapath_provider=None, default_max_pods_per_node=None, default_snat_statuses=None, description=None, dns_configs=None, enable_autopilot=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_l4_ilb_subsetting=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, id=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_service=None, maintenance_policies=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policies=None, networking_mode=None, node_configs=None, node_locations=None, node_pools=None, node_version=None, notification_configs=None, operation=None, pod_security_policy_configs=None, private_cluster_configs=None, private_ipv6_google_access=None, project=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, self_link=None, services_ipv4_cidr=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscalings=None, workload_identity_configs=None):
+    def __init__(__self__, addons_configs=None, authenticator_groups_configs=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, cluster_telemetries=None, confidential_nodes=None, database_encryptions=None, datapath_provider=None, default_max_pods_per_node=None, default_snat_statuses=None, description=None, dns_configs=None, enable_autopilot=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_l4_ilb_subsetting=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, id=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_configs=None, logging_service=None, maintenance_policies=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, min_master_version=None, monitoring_configs=None, monitoring_service=None, name=None, network=None, network_policies=None, networking_mode=None, node_configs=None, node_locations=None, node_pools=None, node_version=None, notification_configs=None, operation=None, pod_security_policy_configs=None, private_cluster_configs=None, private_ipv6_google_access=None, project=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, self_link=None, services_ipv4_cidr=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscalings=None, workload_identity_configs=None):
         if addons_configs and not isinstance(addons_configs, list):
             raise TypeError("Expected argument 'addons_configs' to be a list")
         pulumi.set(__self__, "addons_configs", addons_configs)
@@ -103,6 +103,9 @@ class GetClusterResult:
         if location and not isinstance(location, str):
             raise TypeError("Expected argument 'location' to be a str")
         pulumi.set(__self__, "location", location)
+        if logging_configs and not isinstance(logging_configs, list):
+            raise TypeError("Expected argument 'logging_configs' to be a list")
+        pulumi.set(__self__, "logging_configs", logging_configs)
         if logging_service and not isinstance(logging_service, str):
             raise TypeError("Expected argument 'logging_service' to be a str")
         pulumi.set(__self__, "logging_service", logging_service)
@@ -121,6 +124,9 @@ class GetClusterResult:
         if min_master_version and not isinstance(min_master_version, str):
             raise TypeError("Expected argument 'min_master_version' to be a str")
         pulumi.set(__self__, "min_master_version", min_master_version)
+        if monitoring_configs and not isinstance(monitoring_configs, list):
+            raise TypeError("Expected argument 'monitoring_configs' to be a list")
+        pulumi.set(__self__, "monitoring_configs", monitoring_configs)
         if monitoring_service and not isinstance(monitoring_service, str):
             raise TypeError("Expected argument 'monitoring_service' to be a str")
         pulumi.set(__self__, "monitoring_service", monitoring_service)
@@ -336,6 +342,11 @@ class GetClusterResult:
         return pulumi.get(self, "location")
 
     @property
+    @pulumi.getter(name="loggingConfigs")
+    def logging_configs(self) -> Sequence['outputs.GetClusterLoggingConfigResult']:
+        return pulumi.get(self, "logging_configs")
+
+    @property
     @pulumi.getter(name="loggingService")
     def logging_service(self) -> str:
         return pulumi.get(self, "logging_service")
@@ -364,6 +375,11 @@ class GetClusterResult:
     @pulumi.getter(name="minMasterVersion")
     def min_master_version(self) -> str:
         return pulumi.get(self, "min_master_version")
+
+    @property
+    @pulumi.getter(name="monitoringConfigs")
+    def monitoring_configs(self) -> Sequence['outputs.GetClusterMonitoringConfigResult']:
+        return pulumi.get(self, "monitoring_configs")
 
     @property
     @pulumi.getter(name="monitoringService")
@@ -524,12 +540,14 @@ class AwaitableGetClusterResult(GetClusterResult):
             ip_allocation_policies=self.ip_allocation_policies,
             label_fingerprint=self.label_fingerprint,
             location=self.location,
+            logging_configs=self.logging_configs,
             logging_service=self.logging_service,
             maintenance_policies=self.maintenance_policies,
             master_authorized_networks_configs=self.master_authorized_networks_configs,
             master_auths=self.master_auths,
             master_version=self.master_version,
             min_master_version=self.min_master_version,
+            monitoring_configs=self.monitoring_configs,
             monitoring_service=self.monitoring_service,
             name=self.name,
             network=self.network,
@@ -626,12 +644,14 @@ def get_cluster(location: Optional[str] = None,
         ip_allocation_policies=__ret__.ip_allocation_policies,
         label_fingerprint=__ret__.label_fingerprint,
         location=__ret__.location,
+        logging_configs=__ret__.logging_configs,
         logging_service=__ret__.logging_service,
         maintenance_policies=__ret__.maintenance_policies,
         master_authorized_networks_configs=__ret__.master_authorized_networks_configs,
         master_auths=__ret__.master_auths,
         master_version=__ret__.master_version,
         min_master_version=__ret__.min_master_version,
+        monitoring_configs=__ret__.monitoring_configs,
         monitoring_service=__ret__.monitoring_service,
         name=__ret__.name,
         network=__ret__.network,

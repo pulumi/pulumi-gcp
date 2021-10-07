@@ -3367,6 +3367,147 @@ func (o ClusterIpAllocationPolicyPtrOutput) ServicesSecondaryRangeName() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+type ClusterLoggingConfig struct {
+	// The GKE components exposing logs. Only `SYSTEM_COMPONENTS`
+	// is supported.
+	EnableComponents []string `pulumi:"enableComponents"`
+}
+
+// ClusterLoggingConfigInput is an input type that accepts ClusterLoggingConfigArgs and ClusterLoggingConfigOutput values.
+// You can construct a concrete instance of `ClusterLoggingConfigInput` via:
+//
+//          ClusterLoggingConfigArgs{...}
+type ClusterLoggingConfigInput interface {
+	pulumi.Input
+
+	ToClusterLoggingConfigOutput() ClusterLoggingConfigOutput
+	ToClusterLoggingConfigOutputWithContext(context.Context) ClusterLoggingConfigOutput
+}
+
+type ClusterLoggingConfigArgs struct {
+	// The GKE components exposing logs. Only `SYSTEM_COMPONENTS`
+	// is supported.
+	EnableComponents pulumi.StringArrayInput `pulumi:"enableComponents"`
+}
+
+func (ClusterLoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterLoggingConfig)(nil)).Elem()
+}
+
+func (i ClusterLoggingConfigArgs) ToClusterLoggingConfigOutput() ClusterLoggingConfigOutput {
+	return i.ToClusterLoggingConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterLoggingConfigArgs) ToClusterLoggingConfigOutputWithContext(ctx context.Context) ClusterLoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingConfigOutput)
+}
+
+func (i ClusterLoggingConfigArgs) ToClusterLoggingConfigPtrOutput() ClusterLoggingConfigPtrOutput {
+	return i.ToClusterLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterLoggingConfigArgs) ToClusterLoggingConfigPtrOutputWithContext(ctx context.Context) ClusterLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingConfigOutput).ToClusterLoggingConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterLoggingConfigPtrInput is an input type that accepts ClusterLoggingConfigArgs, ClusterLoggingConfigPtr and ClusterLoggingConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterLoggingConfigPtrInput` via:
+//
+//          ClusterLoggingConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterLoggingConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterLoggingConfigPtrOutput() ClusterLoggingConfigPtrOutput
+	ToClusterLoggingConfigPtrOutputWithContext(context.Context) ClusterLoggingConfigPtrOutput
+}
+
+type clusterLoggingConfigPtrType ClusterLoggingConfigArgs
+
+func ClusterLoggingConfigPtr(v *ClusterLoggingConfigArgs) ClusterLoggingConfigPtrInput {
+	return (*clusterLoggingConfigPtrType)(v)
+}
+
+func (*clusterLoggingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterLoggingConfig)(nil)).Elem()
+}
+
+func (i *clusterLoggingConfigPtrType) ToClusterLoggingConfigPtrOutput() ClusterLoggingConfigPtrOutput {
+	return i.ToClusterLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterLoggingConfigPtrType) ToClusterLoggingConfigPtrOutputWithContext(ctx context.Context) ClusterLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingConfigPtrOutput)
+}
+
+type ClusterLoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterLoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterLoggingConfig)(nil)).Elem()
+}
+
+func (o ClusterLoggingConfigOutput) ToClusterLoggingConfigOutput() ClusterLoggingConfigOutput {
+	return o
+}
+
+func (o ClusterLoggingConfigOutput) ToClusterLoggingConfigOutputWithContext(ctx context.Context) ClusterLoggingConfigOutput {
+	return o
+}
+
+func (o ClusterLoggingConfigOutput) ToClusterLoggingConfigPtrOutput() ClusterLoggingConfigPtrOutput {
+	return o.ToClusterLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterLoggingConfigOutput) ToClusterLoggingConfigPtrOutputWithContext(ctx context.Context) ClusterLoggingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterLoggingConfig) *ClusterLoggingConfig {
+		return &v
+	}).(ClusterLoggingConfigPtrOutput)
+}
+
+// The GKE components exposing logs. Only `SYSTEM_COMPONENTS`
+// is supported.
+func (o ClusterLoggingConfigOutput) EnableComponents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterLoggingConfig) []string { return v.EnableComponents }).(pulumi.StringArrayOutput)
+}
+
+type ClusterLoggingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterLoggingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterLoggingConfig)(nil)).Elem()
+}
+
+func (o ClusterLoggingConfigPtrOutput) ToClusterLoggingConfigPtrOutput() ClusterLoggingConfigPtrOutput {
+	return o
+}
+
+func (o ClusterLoggingConfigPtrOutput) ToClusterLoggingConfigPtrOutputWithContext(ctx context.Context) ClusterLoggingConfigPtrOutput {
+	return o
+}
+
+func (o ClusterLoggingConfigPtrOutput) Elem() ClusterLoggingConfigOutput {
+	return o.ApplyT(func(v *ClusterLoggingConfig) ClusterLoggingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterLoggingConfig
+		return ret
+	}).(ClusterLoggingConfigOutput)
+}
+
+// The GKE components exposing logs. Only `SYSTEM_COMPONENTS`
+// is supported.
+func (o ClusterLoggingConfigPtrOutput) EnableComponents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClusterLoggingConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EnableComponents
+	}).(pulumi.StringArrayOutput)
+}
+
 type ClusterMaintenancePolicy struct {
 	// Time window specified for daily maintenance operations.
 	// Specify `startTime` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "HH:MM”,
@@ -4582,6 +4723,147 @@ func (o ClusterMasterAuthorizedNetworksConfigCidrBlockArrayOutput) Index(i pulum
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterMasterAuthorizedNetworksConfigCidrBlock {
 		return vs[0].([]ClusterMasterAuthorizedNetworksConfigCidrBlock)[vs[1].(int)]
 	}).(ClusterMasterAuthorizedNetworksConfigCidrBlockOutput)
+}
+
+type ClusterMonitoringConfig struct {
+	// The GKE components exposing logs. Only `SYSTEM_COMPONENTS`
+	// is supported.
+	EnableComponents []string `pulumi:"enableComponents"`
+}
+
+// ClusterMonitoringConfigInput is an input type that accepts ClusterMonitoringConfigArgs and ClusterMonitoringConfigOutput values.
+// You can construct a concrete instance of `ClusterMonitoringConfigInput` via:
+//
+//          ClusterMonitoringConfigArgs{...}
+type ClusterMonitoringConfigInput interface {
+	pulumi.Input
+
+	ToClusterMonitoringConfigOutput() ClusterMonitoringConfigOutput
+	ToClusterMonitoringConfigOutputWithContext(context.Context) ClusterMonitoringConfigOutput
+}
+
+type ClusterMonitoringConfigArgs struct {
+	// The GKE components exposing logs. Only `SYSTEM_COMPONENTS`
+	// is supported.
+	EnableComponents pulumi.StringArrayInput `pulumi:"enableComponents"`
+}
+
+func (ClusterMonitoringConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterMonitoringConfig)(nil)).Elem()
+}
+
+func (i ClusterMonitoringConfigArgs) ToClusterMonitoringConfigOutput() ClusterMonitoringConfigOutput {
+	return i.ToClusterMonitoringConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterMonitoringConfigArgs) ToClusterMonitoringConfigOutputWithContext(ctx context.Context) ClusterMonitoringConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMonitoringConfigOutput)
+}
+
+func (i ClusterMonitoringConfigArgs) ToClusterMonitoringConfigPtrOutput() ClusterMonitoringConfigPtrOutput {
+	return i.ToClusterMonitoringConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterMonitoringConfigArgs) ToClusterMonitoringConfigPtrOutputWithContext(ctx context.Context) ClusterMonitoringConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMonitoringConfigOutput).ToClusterMonitoringConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterMonitoringConfigPtrInput is an input type that accepts ClusterMonitoringConfigArgs, ClusterMonitoringConfigPtr and ClusterMonitoringConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterMonitoringConfigPtrInput` via:
+//
+//          ClusterMonitoringConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterMonitoringConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterMonitoringConfigPtrOutput() ClusterMonitoringConfigPtrOutput
+	ToClusterMonitoringConfigPtrOutputWithContext(context.Context) ClusterMonitoringConfigPtrOutput
+}
+
+type clusterMonitoringConfigPtrType ClusterMonitoringConfigArgs
+
+func ClusterMonitoringConfigPtr(v *ClusterMonitoringConfigArgs) ClusterMonitoringConfigPtrInput {
+	return (*clusterMonitoringConfigPtrType)(v)
+}
+
+func (*clusterMonitoringConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterMonitoringConfig)(nil)).Elem()
+}
+
+func (i *clusterMonitoringConfigPtrType) ToClusterMonitoringConfigPtrOutput() ClusterMonitoringConfigPtrOutput {
+	return i.ToClusterMonitoringConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterMonitoringConfigPtrType) ToClusterMonitoringConfigPtrOutputWithContext(ctx context.Context) ClusterMonitoringConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMonitoringConfigPtrOutput)
+}
+
+type ClusterMonitoringConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterMonitoringConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterMonitoringConfig)(nil)).Elem()
+}
+
+func (o ClusterMonitoringConfigOutput) ToClusterMonitoringConfigOutput() ClusterMonitoringConfigOutput {
+	return o
+}
+
+func (o ClusterMonitoringConfigOutput) ToClusterMonitoringConfigOutputWithContext(ctx context.Context) ClusterMonitoringConfigOutput {
+	return o
+}
+
+func (o ClusterMonitoringConfigOutput) ToClusterMonitoringConfigPtrOutput() ClusterMonitoringConfigPtrOutput {
+	return o.ToClusterMonitoringConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterMonitoringConfigOutput) ToClusterMonitoringConfigPtrOutputWithContext(ctx context.Context) ClusterMonitoringConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterMonitoringConfig) *ClusterMonitoringConfig {
+		return &v
+	}).(ClusterMonitoringConfigPtrOutput)
+}
+
+// The GKE components exposing logs. Only `SYSTEM_COMPONENTS`
+// is supported.
+func (o ClusterMonitoringConfigOutput) EnableComponents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterMonitoringConfig) []string { return v.EnableComponents }).(pulumi.StringArrayOutput)
+}
+
+type ClusterMonitoringConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterMonitoringConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterMonitoringConfig)(nil)).Elem()
+}
+
+func (o ClusterMonitoringConfigPtrOutput) ToClusterMonitoringConfigPtrOutput() ClusterMonitoringConfigPtrOutput {
+	return o
+}
+
+func (o ClusterMonitoringConfigPtrOutput) ToClusterMonitoringConfigPtrOutputWithContext(ctx context.Context) ClusterMonitoringConfigPtrOutput {
+	return o
+}
+
+func (o ClusterMonitoringConfigPtrOutput) Elem() ClusterMonitoringConfigOutput {
+	return o.ApplyT(func(v *ClusterMonitoringConfig) ClusterMonitoringConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterMonitoringConfig
+		return ret
+	}).(ClusterMonitoringConfigOutput)
+}
+
+// The GKE components exposing logs. Only `SYSTEM_COMPONENTS`
+// is supported.
+func (o ClusterMonitoringConfigPtrOutput) EnableComponents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClusterMonitoringConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EnableComponents
+	}).(pulumi.StringArrayOutput)
 }
 
 type ClusterNetworkPolicy struct {
@@ -15026,6 +15308,100 @@ func (o GetClusterIpAllocationPolicyArrayOutput) Index(i pulumi.IntInput) GetClu
 	}).(GetClusterIpAllocationPolicyOutput)
 }
 
+type GetClusterLoggingConfig struct {
+	EnableComponents []string `pulumi:"enableComponents"`
+}
+
+// GetClusterLoggingConfigInput is an input type that accepts GetClusterLoggingConfigArgs and GetClusterLoggingConfigOutput values.
+// You can construct a concrete instance of `GetClusterLoggingConfigInput` via:
+//
+//          GetClusterLoggingConfigArgs{...}
+type GetClusterLoggingConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterLoggingConfigOutput() GetClusterLoggingConfigOutput
+	ToGetClusterLoggingConfigOutputWithContext(context.Context) GetClusterLoggingConfigOutput
+}
+
+type GetClusterLoggingConfigArgs struct {
+	EnableComponents pulumi.StringArrayInput `pulumi:"enableComponents"`
+}
+
+func (GetClusterLoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterLoggingConfig)(nil)).Elem()
+}
+
+func (i GetClusterLoggingConfigArgs) ToGetClusterLoggingConfigOutput() GetClusterLoggingConfigOutput {
+	return i.ToGetClusterLoggingConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterLoggingConfigArgs) ToGetClusterLoggingConfigOutputWithContext(ctx context.Context) GetClusterLoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterLoggingConfigOutput)
+}
+
+// GetClusterLoggingConfigArrayInput is an input type that accepts GetClusterLoggingConfigArray and GetClusterLoggingConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterLoggingConfigArrayInput` via:
+//
+//          GetClusterLoggingConfigArray{ GetClusterLoggingConfigArgs{...} }
+type GetClusterLoggingConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterLoggingConfigArrayOutput() GetClusterLoggingConfigArrayOutput
+	ToGetClusterLoggingConfigArrayOutputWithContext(context.Context) GetClusterLoggingConfigArrayOutput
+}
+
+type GetClusterLoggingConfigArray []GetClusterLoggingConfigInput
+
+func (GetClusterLoggingConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterLoggingConfig)(nil)).Elem()
+}
+
+func (i GetClusterLoggingConfigArray) ToGetClusterLoggingConfigArrayOutput() GetClusterLoggingConfigArrayOutput {
+	return i.ToGetClusterLoggingConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterLoggingConfigArray) ToGetClusterLoggingConfigArrayOutputWithContext(ctx context.Context) GetClusterLoggingConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterLoggingConfigArrayOutput)
+}
+
+type GetClusterLoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterLoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterLoggingConfig)(nil)).Elem()
+}
+
+func (o GetClusterLoggingConfigOutput) ToGetClusterLoggingConfigOutput() GetClusterLoggingConfigOutput {
+	return o
+}
+
+func (o GetClusterLoggingConfigOutput) ToGetClusterLoggingConfigOutputWithContext(ctx context.Context) GetClusterLoggingConfigOutput {
+	return o
+}
+
+func (o GetClusterLoggingConfigOutput) EnableComponents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterLoggingConfig) []string { return v.EnableComponents }).(pulumi.StringArrayOutput)
+}
+
+type GetClusterLoggingConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterLoggingConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterLoggingConfig)(nil)).Elem()
+}
+
+func (o GetClusterLoggingConfigArrayOutput) ToGetClusterLoggingConfigArrayOutput() GetClusterLoggingConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterLoggingConfigArrayOutput) ToGetClusterLoggingConfigArrayOutputWithContext(ctx context.Context) GetClusterLoggingConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterLoggingConfigArrayOutput) Index(i pulumi.IntInput) GetClusterLoggingConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterLoggingConfig {
+		return vs[0].([]GetClusterLoggingConfig)[vs[1].(int)]
+	}).(GetClusterLoggingConfigOutput)
+}
+
 type GetClusterMaintenancePolicy struct {
 	DailyMaintenanceWindows []GetClusterMaintenancePolicyDailyMaintenanceWindow `pulumi:"dailyMaintenanceWindows"`
 	MaintenanceExclusions   []GetClusterMaintenancePolicyMaintenanceExclusion   `pulumi:"maintenanceExclusions"`
@@ -15864,6 +16240,100 @@ func (o GetClusterMasterAuthorizedNetworksConfigCidrBlockArrayOutput) Index(i pu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterMasterAuthorizedNetworksConfigCidrBlock {
 		return vs[0].([]GetClusterMasterAuthorizedNetworksConfigCidrBlock)[vs[1].(int)]
 	}).(GetClusterMasterAuthorizedNetworksConfigCidrBlockOutput)
+}
+
+type GetClusterMonitoringConfig struct {
+	EnableComponents []string `pulumi:"enableComponents"`
+}
+
+// GetClusterMonitoringConfigInput is an input type that accepts GetClusterMonitoringConfigArgs and GetClusterMonitoringConfigOutput values.
+// You can construct a concrete instance of `GetClusterMonitoringConfigInput` via:
+//
+//          GetClusterMonitoringConfigArgs{...}
+type GetClusterMonitoringConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterMonitoringConfigOutput() GetClusterMonitoringConfigOutput
+	ToGetClusterMonitoringConfigOutputWithContext(context.Context) GetClusterMonitoringConfigOutput
+}
+
+type GetClusterMonitoringConfigArgs struct {
+	EnableComponents pulumi.StringArrayInput `pulumi:"enableComponents"`
+}
+
+func (GetClusterMonitoringConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterMonitoringConfig)(nil)).Elem()
+}
+
+func (i GetClusterMonitoringConfigArgs) ToGetClusterMonitoringConfigOutput() GetClusterMonitoringConfigOutput {
+	return i.ToGetClusterMonitoringConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterMonitoringConfigArgs) ToGetClusterMonitoringConfigOutputWithContext(ctx context.Context) GetClusterMonitoringConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterMonitoringConfigOutput)
+}
+
+// GetClusterMonitoringConfigArrayInput is an input type that accepts GetClusterMonitoringConfigArray and GetClusterMonitoringConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterMonitoringConfigArrayInput` via:
+//
+//          GetClusterMonitoringConfigArray{ GetClusterMonitoringConfigArgs{...} }
+type GetClusterMonitoringConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterMonitoringConfigArrayOutput() GetClusterMonitoringConfigArrayOutput
+	ToGetClusterMonitoringConfigArrayOutputWithContext(context.Context) GetClusterMonitoringConfigArrayOutput
+}
+
+type GetClusterMonitoringConfigArray []GetClusterMonitoringConfigInput
+
+func (GetClusterMonitoringConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterMonitoringConfig)(nil)).Elem()
+}
+
+func (i GetClusterMonitoringConfigArray) ToGetClusterMonitoringConfigArrayOutput() GetClusterMonitoringConfigArrayOutput {
+	return i.ToGetClusterMonitoringConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterMonitoringConfigArray) ToGetClusterMonitoringConfigArrayOutputWithContext(ctx context.Context) GetClusterMonitoringConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterMonitoringConfigArrayOutput)
+}
+
+type GetClusterMonitoringConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterMonitoringConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterMonitoringConfig)(nil)).Elem()
+}
+
+func (o GetClusterMonitoringConfigOutput) ToGetClusterMonitoringConfigOutput() GetClusterMonitoringConfigOutput {
+	return o
+}
+
+func (o GetClusterMonitoringConfigOutput) ToGetClusterMonitoringConfigOutputWithContext(ctx context.Context) GetClusterMonitoringConfigOutput {
+	return o
+}
+
+func (o GetClusterMonitoringConfigOutput) EnableComponents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterMonitoringConfig) []string { return v.EnableComponents }).(pulumi.StringArrayOutput)
+}
+
+type GetClusterMonitoringConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterMonitoringConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterMonitoringConfig)(nil)).Elem()
+}
+
+func (o GetClusterMonitoringConfigArrayOutput) ToGetClusterMonitoringConfigArrayOutput() GetClusterMonitoringConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterMonitoringConfigArrayOutput) ToGetClusterMonitoringConfigArrayOutputWithContext(ctx context.Context) GetClusterMonitoringConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterMonitoringConfigArrayOutput) Index(i pulumi.IntInput) GetClusterMonitoringConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterMonitoringConfig {
+		return vs[0].([]GetClusterMonitoringConfig)[vs[1].(int)]
+	}).(GetClusterMonitoringConfigOutput)
 }
 
 type GetClusterNetworkPolicy struct {
@@ -19604,6 +20074,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterDnsConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterIpAllocationPolicyOutput{})
 	pulumi.RegisterOutputType(ClusterIpAllocationPolicyPtrOutput{})
+	pulumi.RegisterOutputType(ClusterLoggingConfigOutput{})
+	pulumi.RegisterOutputType(ClusterLoggingConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterMaintenancePolicyOutput{})
 	pulumi.RegisterOutputType(ClusterMaintenancePolicyPtrOutput{})
 	pulumi.RegisterOutputType(ClusterMaintenancePolicyDailyMaintenanceWindowOutput{})
@@ -19620,6 +20092,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterMasterAuthorizedNetworksConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterMasterAuthorizedNetworksConfigCidrBlockOutput{})
 	pulumi.RegisterOutputType(ClusterMasterAuthorizedNetworksConfigCidrBlockArrayOutput{})
+	pulumi.RegisterOutputType(ClusterMonitoringConfigOutput{})
+	pulumi.RegisterOutputType(ClusterMonitoringConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNetworkPolicyOutput{})
 	pulumi.RegisterOutputType(ClusterNetworkPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigOutput{})
@@ -19754,6 +20228,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterDnsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterIpAllocationPolicyOutput{})
 	pulumi.RegisterOutputType(GetClusterIpAllocationPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterLoggingConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterLoggingConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterMaintenancePolicyOutput{})
 	pulumi.RegisterOutputType(GetClusterMaintenancePolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterMaintenancePolicyDailyMaintenanceWindowOutput{})
@@ -19770,6 +20246,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterMasterAuthorizedNetworksConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterMasterAuthorizedNetworksConfigCidrBlockOutput{})
 	pulumi.RegisterOutputType(GetClusterMasterAuthorizedNetworksConfigCidrBlockArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterMonitoringConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterMonitoringConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNetworkPolicyOutput{})
 	pulumi.RegisterOutputType(GetClusterNetworkPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigOutput{})

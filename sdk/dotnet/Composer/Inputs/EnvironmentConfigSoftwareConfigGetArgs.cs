@@ -88,6 +88,13 @@ namespace Pulumi.Gcp.Composer.Inputs
         [Input("pythonVersion")]
         public Input<string>? PythonVersion { get; set; }
 
+        /// <summary>
+        /// -
+        /// The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.`
+        /// </summary>
+        [Input("schedulerCount")]
+        public Input<int>? SchedulerCount { get; set; }
+
         public EnvironmentConfigSoftwareConfigGetArgs()
         {
         }

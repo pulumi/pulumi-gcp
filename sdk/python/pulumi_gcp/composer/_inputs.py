@@ -731,7 +731,8 @@ class EnvironmentConfigSoftwareConfigArgs:
                  env_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  image_version: Optional[pulumi.Input[str]] = None,
                  pypi_packages: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 python_version: Optional[pulumi.Input[str]] = None):
+                 python_version: Optional[pulumi.Input[str]] = None,
+                 scheduler_count: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] airflow_config_overrides: -
                (Optional) Apache Airflow configuration properties to override. Property keys contain the section and property names,
@@ -758,6 +759,8 @@ class EnvironmentConfigSoftwareConfigArgs:
         :param pulumi.Input[str] python_version: -
                The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes.
                Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
+        :param pulumi.Input[int] scheduler_count: -
+               The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.`
         """
         if airflow_config_overrides is not None:
             pulumi.set(__self__, "airflow_config_overrides", airflow_config_overrides)
@@ -769,6 +772,8 @@ class EnvironmentConfigSoftwareConfigArgs:
             pulumi.set(__self__, "pypi_packages", pypi_packages)
         if python_version is not None:
             pulumi.set(__self__, "python_version", python_version)
+        if scheduler_count is not None:
+            pulumi.set(__self__, "scheduler_count", scheduler_count)
 
     @property
     @pulumi.getter(name="airflowConfigOverrides")
@@ -849,6 +854,19 @@ class EnvironmentConfigSoftwareConfigArgs:
     @python_version.setter
     def python_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "python_version", value)
+
+    @property
+    @pulumi.getter(name="schedulerCount")
+    def scheduler_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        -
+        The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.`
+        """
+        return pulumi.get(self, "scheduler_count")
+
+    @scheduler_count.setter
+    def scheduler_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "scheduler_count", value)
 
 
 @pulumi.input_type

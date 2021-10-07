@@ -18533,7 +18533,8 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfi
 
 type WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig struct {
 	// Optional. The version of software inside the cluster. It must be one of the supported (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
-	ImageVersion *string `pulumi:"imageVersion"`
+	ImageVersion       *string  `pulumi:"imageVersion"`
+	OptionalComponents []string `pulumi:"optionalComponents"`
 	// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
 	Properties map[string]string `pulumi:"properties"`
 }
@@ -18551,7 +18552,8 @@ type WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigInput interface 
 
 type WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs struct {
 	// Optional. The version of software inside the cluster. It must be one of the supported (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
-	ImageVersion pulumi.StringPtrInput `pulumi:"imageVersion"`
+	ImageVersion       pulumi.StringPtrInput   `pulumi:"imageVersion"`
+	OptionalComponents pulumi.StringArrayInput `pulumi:"optionalComponents"`
 	// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
 	Properties pulumi.StringMapInput `pulumi:"properties"`
 }
@@ -18638,6 +18640,12 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput) Image
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig) *string { return v.ImageVersion }).(pulumi.StringPtrOutput)
 }
 
+func (o WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput) OptionalComponents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig) []string {
+		return v.OptionalComponents
+	}).(pulumi.StringArrayOutput)
+}
+
 // Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
 func (o WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig) map[string]string {
@@ -18677,6 +18685,15 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput) Im
 		}
 		return v.ImageVersion
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput) OptionalComponents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.OptionalComponents
+	}).(pulumi.StringArrayOutput)
 }
 
 // Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).

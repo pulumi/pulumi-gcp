@@ -10,10 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Projects
 {
     /// <summary>
-    /// Allows management of Organization policies for a Google Project. For more information see
-    /// [the official
-    /// documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview) and
-    /// [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setOrgPolicy).
+    /// Allows management of Organization Policies for a Google Cloud Project.
+    /// 
+    /// &gt; **Warning:** This resource has been superseded by `gcp.orgpolicy.Policy`. `gcp.orgpolicy.Policy` uses Organization Policy API V2 instead of Cloud Resource Manager API V1 and it supports additional features such as tags and conditions.
+    /// 
+    /// To get more information about Organization Policies, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setOrgPolicy)
+    /// * How-to Guides
+    ///     * [Introduction to the Organization Policy Service](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
     /// 
     /// ## Example Usage
     /// 

@@ -102,7 +102,6 @@ import (
 // 			Region:      pulumi.String("us-west2"),
 // 			Subnetwork:  pulumi.String("default"),
 // 			AddressType: pulumi.String("INTERNAL"),
-// 			Address:     pulumi.String("10.168.0.17"),
 // 		})
 // 		if err != nil {
 // 			return err

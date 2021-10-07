@@ -120,6 +120,8 @@ if typing.TYPE_CHECKING:
     notebooks = __notebooks
     import pulumi_gcp.organizations as __organizations
     organizations = __organizations
+    import pulumi_gcp.orgpolicy as __orgpolicy
+    orgpolicy = __orgpolicy
     import pulumi_gcp.osconfig as __osconfig
     osconfig = __osconfig
     import pulumi_gcp.oslogin as __oslogin
@@ -220,6 +222,7 @@ else:
     networkservices = _utilities.lazy_import('pulumi_gcp.networkservices')
     notebooks = _utilities.lazy_import('pulumi_gcp.notebooks')
     organizations = _utilities.lazy_import('pulumi_gcp.organizations')
+    orgpolicy = _utilities.lazy_import('pulumi_gcp.orgpolicy')
     osconfig = _utilities.lazy_import('pulumi_gcp.osconfig')
     oslogin = _utilities.lazy_import('pulumi_gcp.oslogin')
     projects = _utilities.lazy_import('pulumi_gcp.projects')
@@ -3272,6 +3275,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "monitoring/monitoredProject",
+  "fqn": "pulumi_gcp.monitoring",
+  "classes": {
+   "gcp:monitoring/monitoredProject:MonitoredProject": "MonitoredProject"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "monitoring/notificationChannel",
   "fqn": "pulumi_gcp.monitoring",
   "classes": {
@@ -3444,6 +3455,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.organizations",
   "classes": {
    "gcp:organizations/project:Project": "Project"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "orgpolicy/policy",
+  "fqn": "pulumi_gcp.orgpolicy",
+  "classes": {
+   "gcp:orgpolicy/policy:Policy": "Policy"
   }
  },
  {

@@ -18,6 +18,14 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         [Input("imageVersion")]
         public Input<string>? ImageVersion { get; set; }
 
+        [Input("optionalComponents")]
+        private InputList<string>? _optionalComponents;
+        public InputList<string> OptionalComponents
+        {
+            get => _optionalComponents ?? (_optionalComponents = new InputList<string>());
+            set => _optionalComponents = value;
+        }
+
         [Input("properties")]
         private InputMap<string>? _properties;
 

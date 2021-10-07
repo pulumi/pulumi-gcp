@@ -111,8 +111,8 @@ type InstanceFromMachineImage struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Specifies the reservations that this instance can consume from.
 	ReservationAffinity InstanceFromMachineImageReservationAffinityOutput `pulumi:"reservationAffinity"`
-	// A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the
-	// instance to recreate. Currently a max of 1 resource policy is supported.
+	// A list of short names or self_links of resource policies to attach to the instance. Currently a max of 1 resource policy
+	// is supported.
 	ResourcePolicies pulumi.StringOutput `pulumi:"resourcePolicies"`
 	// The scheduling strategy being used by the instance.
 	Scheduling InstanceFromMachineImageSchedulingOutput `pulumi:"scheduling"`
@@ -229,8 +229,8 @@ type instanceFromMachineImageState struct {
 	Project *string `pulumi:"project"`
 	// Specifies the reservations that this instance can consume from.
 	ReservationAffinity *InstanceFromMachineImageReservationAffinity `pulumi:"reservationAffinity"`
-	// A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the
-	// instance to recreate. Currently a max of 1 resource policy is supported.
+	// A list of short names or self_links of resource policies to attach to the instance. Currently a max of 1 resource policy
+	// is supported.
 	ResourcePolicies *string `pulumi:"resourcePolicies"`
 	// The scheduling strategy being used by the instance.
 	Scheduling *InstanceFromMachineImageScheduling `pulumi:"scheduling"`
@@ -316,8 +316,8 @@ type InstanceFromMachineImageState struct {
 	Project pulumi.StringPtrInput
 	// Specifies the reservations that this instance can consume from.
 	ReservationAffinity InstanceFromMachineImageReservationAffinityPtrInput
-	// A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the
-	// instance to recreate. Currently a max of 1 resource policy is supported.
+	// A list of short names or self_links of resource policies to attach to the instance. Currently a max of 1 resource policy
+	// is supported.
 	ResourcePolicies pulumi.StringPtrInput
 	// The scheduling strategy being used by the instance.
 	Scheduling InstanceFromMachineImageSchedulingPtrInput
@@ -393,8 +393,8 @@ type instanceFromMachineImageArgs struct {
 	Project *string `pulumi:"project"`
 	// Specifies the reservations that this instance can consume from.
 	ReservationAffinity *InstanceFromMachineImageReservationAffinity `pulumi:"reservationAffinity"`
-	// A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the
-	// instance to recreate. Currently a max of 1 resource policy is supported.
+	// A list of short names or self_links of resource policies to attach to the instance. Currently a max of 1 resource policy
+	// is supported.
 	ResourcePolicies *string `pulumi:"resourcePolicies"`
 	// The scheduling strategy being used by the instance.
 	Scheduling *InstanceFromMachineImageScheduling `pulumi:"scheduling"`
@@ -461,8 +461,8 @@ type InstanceFromMachineImageArgs struct {
 	Project pulumi.StringPtrInput
 	// Specifies the reservations that this instance can consume from.
 	ReservationAffinity InstanceFromMachineImageReservationAffinityPtrInput
-	// A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the
-	// instance to recreate. Currently a max of 1 resource policy is supported.
+	// A list of short names or self_links of resource policies to attach to the instance. Currently a max of 1 resource policy
+	// is supported.
 	ResourcePolicies pulumi.StringPtrInput
 	// The scheduling strategy being used by the instance.
 	Scheduling InstanceFromMachineImageSchedulingPtrInput

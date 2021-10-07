@@ -39,6 +39,7 @@ class ProviderArgs:
                  cloud_functions_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_identity_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_iot_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_resource_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_run_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_scheduler_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_tasks_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -87,6 +88,7 @@ class ProviderArgs:
                  network_management_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  network_services_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  notebooks_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 org_policy_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  os_config_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  os_login_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  privateca_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -174,6 +176,8 @@ class ProviderArgs:
             pulumi.set(__self__, "cloud_identity_custom_endpoint", cloud_identity_custom_endpoint)
         if cloud_iot_custom_endpoint is not None:
             pulumi.set(__self__, "cloud_iot_custom_endpoint", cloud_iot_custom_endpoint)
+        if cloud_resource_manager_custom_endpoint is not None:
+            pulumi.set(__self__, "cloud_resource_manager_custom_endpoint", cloud_resource_manager_custom_endpoint)
         if cloud_run_custom_endpoint is not None:
             pulumi.set(__self__, "cloud_run_custom_endpoint", cloud_run_custom_endpoint)
         if cloud_scheduler_custom_endpoint is not None:
@@ -270,6 +274,8 @@ class ProviderArgs:
             pulumi.set(__self__, "network_services_custom_endpoint", network_services_custom_endpoint)
         if notebooks_custom_endpoint is not None:
             pulumi.set(__self__, "notebooks_custom_endpoint", notebooks_custom_endpoint)
+        if org_policy_custom_endpoint is not None:
+            pulumi.set(__self__, "org_policy_custom_endpoint", org_policy_custom_endpoint)
         if os_config_custom_endpoint is not None:
             pulumi.set(__self__, "os_config_custom_endpoint", os_config_custom_endpoint)
         if os_login_custom_endpoint is not None:
@@ -569,6 +575,15 @@ class ProviderArgs:
     @cloud_iot_custom_endpoint.setter
     def cloud_iot_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cloud_iot_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="cloudResourceManagerCustomEndpoint")
+    def cloud_resource_manager_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cloud_resource_manager_custom_endpoint")
+
+    @cloud_resource_manager_custom_endpoint.setter
+    def cloud_resource_manager_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cloud_resource_manager_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="cloudRunCustomEndpoint")
@@ -1003,6 +1018,15 @@ class ProviderArgs:
         pulumi.set(self, "notebooks_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="orgPolicyCustomEndpoint")
+    def org_policy_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "org_policy_custom_endpoint")
+
+    @org_policy_custom_endpoint.setter
+    def org_policy_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "org_policy_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="osConfigCustomEndpoint")
     def os_config_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "os_config_custom_endpoint")
@@ -1339,6 +1363,7 @@ class Provider(pulumi.ProviderResource):
                  cloud_functions_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_identity_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_iot_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_resource_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_run_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_scheduler_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_tasks_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1387,6 +1412,7 @@ class Provider(pulumi.ProviderResource):
                  network_management_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  network_services_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  notebooks_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 org_policy_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  os_config_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  os_login_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  privateca_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1483,6 +1509,7 @@ class Provider(pulumi.ProviderResource):
                  cloud_functions_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_identity_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_iot_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_resource_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_run_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_scheduler_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_tasks_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1531,6 +1558,7 @@ class Provider(pulumi.ProviderResource):
                  network_management_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  network_services_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  notebooks_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 org_policy_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  os_config_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  os_login_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  privateca_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1602,6 +1630,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["cloud_functions_custom_endpoint"] = cloud_functions_custom_endpoint
             __props__.__dict__["cloud_identity_custom_endpoint"] = cloud_identity_custom_endpoint
             __props__.__dict__["cloud_iot_custom_endpoint"] = cloud_iot_custom_endpoint
+            __props__.__dict__["cloud_resource_manager_custom_endpoint"] = cloud_resource_manager_custom_endpoint
             __props__.__dict__["cloud_run_custom_endpoint"] = cloud_run_custom_endpoint
             __props__.__dict__["cloud_scheduler_custom_endpoint"] = cloud_scheduler_custom_endpoint
             __props__.__dict__["cloud_tasks_custom_endpoint"] = cloud_tasks_custom_endpoint
@@ -1650,6 +1679,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["network_management_custom_endpoint"] = network_management_custom_endpoint
             __props__.__dict__["network_services_custom_endpoint"] = network_services_custom_endpoint
             __props__.__dict__["notebooks_custom_endpoint"] = notebooks_custom_endpoint
+            __props__.__dict__["org_policy_custom_endpoint"] = org_policy_custom_endpoint
             __props__.__dict__["os_config_custom_endpoint"] = os_config_custom_endpoint
             __props__.__dict__["os_login_custom_endpoint"] = os_login_custom_endpoint
             __props__.__dict__["privateca_custom_endpoint"] = privateca_custom_endpoint
@@ -1815,6 +1845,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="cloudIotCustomEndpoint")
     def cloud_iot_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "cloud_iot_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="cloudResourceManagerCustomEndpoint")
+    def cloud_resource_manager_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "cloud_resource_manager_custom_endpoint")
 
     @property
     @pulumi.getter(name="cloudRunCustomEndpoint")
@@ -2045,6 +2080,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="notebooksCustomEndpoint")
     def notebooks_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "notebooks_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="orgPolicyCustomEndpoint")
+    def org_policy_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "org_policy_custom_endpoint")
 
     @property
     @pulumi.getter(name="osConfigCustomEndpoint")

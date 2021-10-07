@@ -25,6 +25,7 @@ class TriggerArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pubsub_config: Optional[pulumi.Input['TriggerPubsubConfigArgs']] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
                  substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  trigger_template: Optional[pulumi.Input['TriggerTriggerTemplateArgs']] = None,
@@ -64,6 +65,11 @@ class TriggerArgs:
                a build whenever a Pub/Sub message is published.
                One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
                Structure is documented below.
+        :param pulumi.Input[str] service_account: The service account used for all user-controlled operations including
+               triggers.patch, triggers.run, builds.create, and builds.cancel.
+               If no service account is set, then the standard Cloud Build service account
+               ([PROJECT_NUM]@system.gserviceaccount.com) will be used instead.
+               Format: projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] substitutions: Substitutions to use in a triggered build. Should only be used with triggers.run
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for annotation of a Build. These are not docker tags.
         :param pulumi.Input['TriggerTriggerTemplateArgs'] trigger_template: Template describing the types of source changes to trigger a build.
@@ -97,6 +103,8 @@ class TriggerArgs:
             pulumi.set(__self__, "project", project)
         if pubsub_config is not None:
             pulumi.set(__self__, "pubsub_config", pubsub_config)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
         if substitutions is not None:
             pulumi.set(__self__, "substitutions", substitutions)
         if tags is not None:
@@ -250,6 +258,22 @@ class TriggerArgs:
         pulumi.set(self, "pubsub_config", value)
 
     @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        The service account used for all user-controlled operations including
+        triggers.patch, triggers.run, builds.create, and builds.cancel.
+        If no service account is set, then the standard Cloud Build service account
+        ([PROJECT_NUM]@system.gserviceaccount.com) will be used instead.
+        Format: projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account", value)
+
+    @property
     @pulumi.getter
     def substitutions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -320,6 +344,7 @@ class _TriggerState:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pubsub_config: Optional[pulumi.Input['TriggerPubsubConfigArgs']] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
                  substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  trigger_id: Optional[pulumi.Input[str]] = None,
@@ -361,6 +386,11 @@ class _TriggerState:
                a build whenever a Pub/Sub message is published.
                One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
                Structure is documented below.
+        :param pulumi.Input[str] service_account: The service account used for all user-controlled operations including
+               triggers.patch, triggers.run, builds.create, and builds.cancel.
+               If no service account is set, then the standard Cloud Build service account
+               ([PROJECT_NUM]@system.gserviceaccount.com) will be used instead.
+               Format: projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] substitutions: Substitutions to use in a triggered build. Should only be used with triggers.run
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for annotation of a Build. These are not docker tags.
         :param pulumi.Input[str] trigger_id: The unique identifier for the trigger.
@@ -397,6 +427,8 @@ class _TriggerState:
             pulumi.set(__self__, "project", project)
         if pubsub_config is not None:
             pulumi.set(__self__, "pubsub_config", pubsub_config)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
         if substitutions is not None:
             pulumi.set(__self__, "substitutions", substitutions)
         if tags is not None:
@@ -564,6 +596,22 @@ class _TriggerState:
         pulumi.set(self, "pubsub_config", value)
 
     @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        The service account used for all user-controlled operations including
+        triggers.patch, triggers.run, builds.create, and builds.cancel.
+        If no service account is set, then the standard Cloud Build service account
+        ([PROJECT_NUM]@system.gserviceaccount.com) will be used instead.
+        Format: projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account", value)
+
+    @property
     @pulumi.getter
     def substitutions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -647,6 +695,7 @@ class Trigger(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pubsub_config: Optional[pulumi.Input[pulumi.InputType['TriggerPubsubConfigArgs']]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
                  substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  trigger_template: Optional[pulumi.Input[pulumi.InputType['TriggerTriggerTemplateArgs']]] = None,
@@ -750,6 +799,31 @@ class Trigger(pulumi.CustomResource):
                 repo_name="my-repo",
             ))
         ```
+        ### Cloudbuild Trigger Service Account
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cloudbuild_service_account = gcp.service_account.Account("cloudbuildServiceAccount", account_id="my-service-account")
+        act_as = gcp.projects.IAMMember("actAs",
+            role="roles/iam.serviceAccountUser",
+            member=cloudbuild_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        logs_writer = gcp.projects.IAMMember("logsWriter",
+            role="roles/logging.logWriter",
+            member=cloudbuild_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        service_account_trigger = gcp.cloudbuild.Trigger("service-account-trigger",
+            trigger_template=gcp.cloudbuild.TriggerTriggerTemplateArgs(
+                branch_name="master",
+                repo_name="my-repo",
+            ),
+            service_account=cloudbuild_service_account.id,
+            filename="cloudbuild.yaml",
+            opts=pulumi.ResourceOptions(depends_on=[
+                    act_as,
+                    logs_writer,
+                ]))
+        ```
 
         ## Import
 
@@ -802,6 +876,11 @@ class Trigger(pulumi.CustomResource):
                a build whenever a Pub/Sub message is published.
                One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
                Structure is documented below.
+        :param pulumi.Input[str] service_account: The service account used for all user-controlled operations including
+               triggers.patch, triggers.run, builds.create, and builds.cancel.
+               If no service account is set, then the standard Cloud Build service account
+               ([PROJECT_NUM]@system.gserviceaccount.com) will be used instead.
+               Format: projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] substitutions: Substitutions to use in a triggered build. Should only be used with triggers.run
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for annotation of a Build. These are not docker tags.
         :param pulumi.Input[pulumi.InputType['TriggerTriggerTemplateArgs']] trigger_template: Template describing the types of source changes to trigger a build.
@@ -919,6 +998,31 @@ class Trigger(pulumi.CustomResource):
                 repo_name="my-repo",
             ))
         ```
+        ### Cloudbuild Trigger Service Account
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cloudbuild_service_account = gcp.service_account.Account("cloudbuildServiceAccount", account_id="my-service-account")
+        act_as = gcp.projects.IAMMember("actAs",
+            role="roles/iam.serviceAccountUser",
+            member=cloudbuild_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        logs_writer = gcp.projects.IAMMember("logsWriter",
+            role="roles/logging.logWriter",
+            member=cloudbuild_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        service_account_trigger = gcp.cloudbuild.Trigger("service-account-trigger",
+            trigger_template=gcp.cloudbuild.TriggerTriggerTemplateArgs(
+                branch_name="master",
+                repo_name="my-repo",
+            ),
+            service_account=cloudbuild_service_account.id,
+            filename="cloudbuild.yaml",
+            opts=pulumi.ResourceOptions(depends_on=[
+                    act_as,
+                    logs_writer,
+                ]))
+        ```
 
         ## Import
 
@@ -961,6 +1065,7 @@ class Trigger(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pubsub_config: Optional[pulumi.Input[pulumi.InputType['TriggerPubsubConfigArgs']]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
                  substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  trigger_template: Optional[pulumi.Input[pulumi.InputType['TriggerTriggerTemplateArgs']]] = None,
@@ -987,6 +1092,7 @@ class Trigger(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["pubsub_config"] = pubsub_config
+            __props__.__dict__["service_account"] = service_account
             __props__.__dict__["substitutions"] = substitutions
             __props__.__dict__["tags"] = tags
             __props__.__dict__["trigger_template"] = trigger_template
@@ -1014,6 +1120,7 @@ class Trigger(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pubsub_config: Optional[pulumi.Input[pulumi.InputType['TriggerPubsubConfigArgs']]] = None,
+            service_account: Optional[pulumi.Input[str]] = None,
             substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             trigger_id: Optional[pulumi.Input[str]] = None,
@@ -1060,6 +1167,11 @@ class Trigger(pulumi.CustomResource):
                a build whenever a Pub/Sub message is published.
                One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
                Structure is documented below.
+        :param pulumi.Input[str] service_account: The service account used for all user-controlled operations including
+               triggers.patch, triggers.run, builds.create, and builds.cancel.
+               If no service account is set, then the standard Cloud Build service account
+               ([PROJECT_NUM]@system.gserviceaccount.com) will be used instead.
+               Format: projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] substitutions: Substitutions to use in a triggered build. Should only be used with triggers.run
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for annotation of a Build. These are not docker tags.
         :param pulumi.Input[str] trigger_id: The unique identifier for the trigger.
@@ -1089,6 +1201,7 @@ class Trigger(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["pubsub_config"] = pubsub_config
+        __props__.__dict__["service_account"] = service_account
         __props__.__dict__["substitutions"] = substitutions
         __props__.__dict__["tags"] = tags
         __props__.__dict__["trigger_id"] = trigger_id
@@ -1206,6 +1319,18 @@ class Trigger(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "pubsub_config")
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> pulumi.Output[Optional[str]]:
+        """
+        The service account used for all user-controlled operations including
+        triggers.patch, triggers.run, builds.create, and builds.cancel.
+        If no service account is set, then the standard Cloud Build service account
+        ([PROJECT_NUM]@system.gserviceaccount.com) will be used instead.
+        Format: projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}
+        """
+        return pulumi.get(self, "service_account")
 
     @property
     @pulumi.getter

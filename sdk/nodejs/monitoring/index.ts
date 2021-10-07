@@ -17,6 +17,7 @@ export * from "./getSecretVersion";
 export * from "./getUptimeCheckIPs";
 export * from "./group";
 export * from "./metricDescriptor";
+export * from "./monitoredProject";
 export * from "./notificationChannel";
 export * from "./slo";
 export * from "./uptimeCheckConfig";
@@ -27,6 +28,7 @@ import { CustomService } from "./customService";
 import { Dashboard } from "./dashboard";
 import { Group } from "./group";
 import { MetricDescriptor } from "./metricDescriptor";
+import { MonitoredProject } from "./monitoredProject";
 import { NotificationChannel } from "./notificationChannel";
 import { Slo } from "./slo";
 import { UptimeCheckConfig } from "./uptimeCheckConfig";
@@ -45,6 +47,8 @@ const _module = {
                 return new Group(name, <any>undefined, { urn })
             case "gcp:monitoring/metricDescriptor:MetricDescriptor":
                 return new MetricDescriptor(name, <any>undefined, { urn })
+            case "gcp:monitoring/monitoredProject:MonitoredProject":
+                return new MonitoredProject(name, <any>undefined, { urn })
             case "gcp:monitoring/notificationChannel:NotificationChannel":
                 return new NotificationChannel(name, <any>undefined, { urn })
             case "gcp:monitoring/slo:Slo":
@@ -61,6 +65,7 @@ pulumi.runtime.registerResourceModule("gcp", "monitoring/customService", _module
 pulumi.runtime.registerResourceModule("gcp", "monitoring/dashboard", _module)
 pulumi.runtime.registerResourceModule("gcp", "monitoring/group", _module)
 pulumi.runtime.registerResourceModule("gcp", "monitoring/metricDescriptor", _module)
+pulumi.runtime.registerResourceModule("gcp", "monitoring/monitoredProject", _module)
 pulumi.runtime.registerResourceModule("gcp", "monitoring/notificationChannel", _module)
 pulumi.runtime.registerResourceModule("gcp", "monitoring/slo", _module)
 pulumi.runtime.registerResourceModule("gcp", "monitoring/uptimeCheckConfig", _module)

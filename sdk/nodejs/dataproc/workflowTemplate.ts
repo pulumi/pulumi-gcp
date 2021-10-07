@@ -156,6 +156,8 @@ export class WorkflowTemplate extends pulumi.CustomResource {
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
      * Optional. Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
+     *
+     * @deprecated version is not useful as a configurable field, and will be removed in the future.
      */
     public readonly version!: pulumi.Output<number>;
 
@@ -259,6 +261,8 @@ export interface WorkflowTemplateState {
     updateTime?: pulumi.Input<string>;
     /**
      * Optional. Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
+     *
+     * @deprecated version is not useful as a configurable field, and will be removed in the future.
      */
     version?: pulumi.Input<number>;
 }
@@ -301,6 +305,8 @@ export interface WorkflowTemplateArgs {
     project?: pulumi.Input<string>;
     /**
      * Optional. Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
+     *
+     * @deprecated version is not useful as a configurable field, and will be removed in the future.
      */
     version?: pulumi.Input<number>;
 }

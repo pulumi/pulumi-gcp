@@ -70,10 +70,11 @@ type GetKMSCryptoKeyArgs struct {
 type GetKMSCryptoKeyResult struct {
 	DestroyScheduledDuration string `pulumi:"destroyScheduledDuration"`
 	// The provider-assigned unique ID for this managed resource.
-	Id      string            `pulumi:"id"`
-	KeyRing string            `pulumi:"keyRing"`
-	Labels  map[string]string `pulumi:"labels"`
-	Name    string            `pulumi:"name"`
+	Id         string            `pulumi:"id"`
+	ImportOnly bool              `pulumi:"importOnly"`
+	KeyRing    string            `pulumi:"keyRing"`
+	Labels     map[string]string `pulumi:"labels"`
+	Name       string            `pulumi:"name"`
 	// Defines the cryptographic capabilities of the key.
 	Purpose string `pulumi:"purpose"`
 	// Every time this period passes, generate a new CryptoKeyVersion and set it as
@@ -130,6 +131,10 @@ func (o GetKMSCryptoKeyResultOutput) DestroyScheduledDuration() pulumi.StringOut
 // The provider-assigned unique ID for this managed resource.
 func (o GetKMSCryptoKeyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKMSCryptoKeyResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetKMSCryptoKeyResultOutput) ImportOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKMSCryptoKeyResult) bool { return v.ImportOnly }).(pulumi.BoolOutput)
 }
 
 func (o GetKMSCryptoKeyResultOutput) KeyRing() pulumi.StringOutput {

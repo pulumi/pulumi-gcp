@@ -10,12 +10,19 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Projects
 {
     /// <summary>
-    /// Allows management of a single API service for an existing Google Cloud Platform project.
+    /// Allows management of a single API service for a Google Cloud Platform project.
     /// 
-    /// For a list of services available, visit the
-    /// [API library page](https://console.cloud.google.com/apis/library) or run `gcloud services list --available`.
+    /// For a list of services available, visit the [API library page](https://console.cloud.google.com/apis/library)
+    /// or run `gcloud services list --available`.
     /// 
-    /// Requires [Service Usage API](https://console.cloud.google.com/apis/library/serviceusage.googleapis.com).
+    /// This resource requires the [Service Usage API](https://console.cloud.google.com/apis/library/serviceusage.googleapis.com)
+    /// to use.
+    /// 
+    /// To get more information about `gcp.projects.Service`, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1/services)
+    /// * How-to Guides
+    ///     * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
     /// 
     /// ## Example Usage
     /// 
@@ -52,20 +59,23 @@ namespace Pulumi.Gcp.Projects
     public partial class Service : Pulumi.CustomResource
     {
         /// <summary>
-        /// If `true`, services that are enabled and which depend on this service should also be disabled when this service is destroyed.
-        /// If `false` or unset, an error will be generated if any enabled services depend on this service when destroying it.
+        /// If `true`, services that are enabled
+        /// and which depend on this service should also be disabled when this service is
+        /// destroyed. If `false` or unset, an error will be generated if any enabled
+        /// services depend on this service when destroying it.
         /// </summary>
         [Output("disableDependentServices")]
         public Output<bool?> DisableDependentServices { get; private set; } = null!;
 
         /// <summary>
-        /// If true, disable the service when the resource is destroyed.  Defaults to true.  May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
+        /// If true, disable the service when the resource is destroyed. Defaults to true. May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
         /// </summary>
         [Output("disableOnDestroy")]
         public Output<bool?> DisableOnDestroy { get; private set; } = null!;
 
         /// <summary>
-        /// The project ID. If not provided, the provider project is used.
+        /// The project ID. If not provided, the provider project
+        /// is used.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -123,20 +133,23 @@ namespace Pulumi.Gcp.Projects
     public sealed class ServiceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If `true`, services that are enabled and which depend on this service should also be disabled when this service is destroyed.
-        /// If `false` or unset, an error will be generated if any enabled services depend on this service when destroying it.
+        /// If `true`, services that are enabled
+        /// and which depend on this service should also be disabled when this service is
+        /// destroyed. If `false` or unset, an error will be generated if any enabled
+        /// services depend on this service when destroying it.
         /// </summary>
         [Input("disableDependentServices")]
         public Input<bool>? DisableDependentServices { get; set; }
 
         /// <summary>
-        /// If true, disable the service when the resource is destroyed.  Defaults to true.  May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
+        /// If true, disable the service when the resource is destroyed. Defaults to true. May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
         /// </summary>
         [Input("disableOnDestroy")]
         public Input<bool>? DisableOnDestroy { get; set; }
 
         /// <summary>
-        /// The project ID. If not provided, the provider project is used.
+        /// The project ID. If not provided, the provider project
+        /// is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -155,20 +168,23 @@ namespace Pulumi.Gcp.Projects
     public sealed class ServiceState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If `true`, services that are enabled and which depend on this service should also be disabled when this service is destroyed.
-        /// If `false` or unset, an error will be generated if any enabled services depend on this service when destroying it.
+        /// If `true`, services that are enabled
+        /// and which depend on this service should also be disabled when this service is
+        /// destroyed. If `false` or unset, an error will be generated if any enabled
+        /// services depend on this service when destroying it.
         /// </summary>
         [Input("disableDependentServices")]
         public Input<bool>? DisableDependentServices { get; set; }
 
         /// <summary>
-        /// If true, disable the service when the resource is destroyed.  Defaults to true.  May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
+        /// If true, disable the service when the resource is destroyed. Defaults to true. May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
         /// </summary>
         [Input("disableOnDestroy")]
         public Input<bool>? DisableOnDestroy { get; set; }
 
         /// <summary>
-        /// The project ID. If not provided, the provider project is used.
+        /// The project ID. If not provided, the provider project
+        /// is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

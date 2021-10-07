@@ -220,8 +220,8 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.InstanceFromMachineImageReservationAffinity> ReservationAffinity { get; private set; } = null!;
 
         /// <summary>
-        /// A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the
-        /// instance to recreate. Currently a max of 1 resource policy is supported.
+        /// A list of short names or self_links of resource policies to attach to the instance. Currently a max of 1 resource policy
+        /// is supported.
         /// </summary>
         [Output("resourcePolicies")]
         public Output<string> ResourcePolicies { get; private set; } = null!;
@@ -480,8 +480,8 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.InstanceFromMachineImageReservationAffinityArgs>? ReservationAffinity { get; set; }
 
         /// <summary>
-        /// A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the
-        /// instance to recreate. Currently a max of 1 resource policy is supported.
+        /// A list of short names or self_links of resource policies to attach to the instance. Currently a max of 1 resource policy
+        /// is supported.
         /// </summary>
         [Input("resourcePolicies")]
         public Input<string>? ResourcePolicies { get; set; }
@@ -743,8 +743,8 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.InstanceFromMachineImageReservationAffinityGetArgs>? ReservationAffinity { get; set; }
 
         /// <summary>
-        /// A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the
-        /// instance to recreate. Currently a max of 1 resource policy is supported.
+        /// A list of short names or self_links of resource policies to attach to the instance. Currently a max of 1 resource policy
+        /// is supported.
         /// </summary>
         [Input("resourcePolicies")]
         public Input<string>? ResourcePolicies { get; set; }
