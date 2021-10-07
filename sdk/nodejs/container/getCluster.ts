@@ -96,12 +96,14 @@ export interface GetClusterResult {
     readonly ipAllocationPolicies: outputs.container.GetClusterIpAllocationPolicy[];
     readonly labelFingerprint: string;
     readonly location?: string;
+    readonly loggingConfigs: outputs.container.GetClusterLoggingConfig[];
     readonly loggingService: string;
     readonly maintenancePolicies: outputs.container.GetClusterMaintenancePolicy[];
     readonly masterAuthorizedNetworksConfigs: outputs.container.GetClusterMasterAuthorizedNetworksConfig[];
     readonly masterAuths: outputs.container.GetClusterMasterAuth[];
     readonly masterVersion: string;
     readonly minMasterVersion: string;
+    readonly monitoringConfigs: outputs.container.GetClusterMonitoringConfig[];
     readonly monitoringService: string;
     readonly name: string;
     readonly network: string;

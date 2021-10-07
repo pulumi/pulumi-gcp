@@ -512,8 +512,7 @@ class ServiceAttachment(pulumi.CustomResource):
         psc_ilb_consumer_address = gcp.compute.Address("pscIlbConsumerAddress",
             region="us-west2",
             subnetwork="default",
-            address_type="INTERNAL",
-            address="10.168.0.17")
+            address_type="INTERNAL")
         psc_ilb_consumer = gcp.compute.ForwardingRule("pscIlbConsumer",
             region="us-west2",
             target=psc_ilb_service_attachment.id,
@@ -685,8 +684,7 @@ class ServiceAttachment(pulumi.CustomResource):
         psc_ilb_consumer_address = gcp.compute.Address("pscIlbConsumerAddress",
             region="us-west2",
             subnetwork="default",
-            address_type="INTERNAL",
-            address="10.168.0.17")
+            address_type="INTERNAL")
         psc_ilb_consumer = gcp.compute.ForwardingRule("pscIlbConsumer",
             region="us-west2",
             target=psc_ilb_service_attachment.id,

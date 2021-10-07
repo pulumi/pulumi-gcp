@@ -195,8 +195,8 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
      */
     public readonly reservationAffinity!: pulumi.Output<outputs.compute.InstanceFromTemplateReservationAffinity>;
     /**
-     * A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the
-     * instance to recreate. Currently a max of 1 resource policy is supported.
+     * A list of short names or self_links of resource policies to attach to the instance. Currently a max of 1 resource policy
+     * is supported.
      */
     public readonly resourcePolicies!: pulumi.Output<string>;
     /**
@@ -458,8 +458,8 @@ export interface InstanceFromTemplateState {
      */
     reservationAffinity?: pulumi.Input<inputs.compute.InstanceFromTemplateReservationAffinity>;
     /**
-     * A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the
-     * instance to recreate. Currently a max of 1 resource policy is supported.
+     * A list of short names or self_links of resource policies to attach to the instance. Currently a max of 1 resource policy
+     * is supported.
      */
     resourcePolicies?: pulumi.Input<string>;
     /**
@@ -602,8 +602,8 @@ export interface InstanceFromTemplateArgs {
      */
     reservationAffinity?: pulumi.Input<inputs.compute.InstanceFromTemplateReservationAffinity>;
     /**
-     * A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the
-     * instance to recreate. Currently a max of 1 resource policy is supported.
+     * A list of short names or self_links of resource policies to attach to the instance. Currently a max of 1 resource policy
+     * is supported.
      */
     resourcePolicies?: pulumi.Input<string>;
     /**

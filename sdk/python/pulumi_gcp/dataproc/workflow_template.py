@@ -50,6 +50,9 @@ class WorkflowTemplateArgs:
         if project is not None:
             pulumi.set(__self__, "project", project)
         if version is not None:
+            warnings.warn("""version is not useful as a configurable field, and will be removed in the future.""", DeprecationWarning)
+            pulumi.log.warn("""version is deprecated: version is not useful as a configurable field, and will be removed in the future.""")
+        if version is not None:
             pulumi.set(__self__, "version", version)
 
     @property
@@ -209,6 +212,9 @@ class _WorkflowTemplateState:
             pulumi.set(__self__, "project", project)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
+        if version is not None:
+            warnings.warn("""version is not useful as a configurable field, and will be removed in the future.""", DeprecationWarning)
+            pulumi.log.warn("""version is deprecated: version is not useful as a configurable field, and will be removed in the future.""")
         if version is not None:
             pulumi.set(__self__, "version", version)
 
@@ -588,6 +594,9 @@ class WorkflowTemplate(pulumi.CustomResource):
                 raise TypeError("Missing required property 'placement'")
             __props__.__dict__["placement"] = placement
             __props__.__dict__["project"] = project
+            if version is not None and not opts.urn:
+                warnings.warn("""version is not useful as a configurable field, and will be removed in the future.""", DeprecationWarning)
+                pulumi.log.warn("""version is deprecated: version is not useful as a configurable field, and will be removed in the future.""")
             __props__.__dict__["version"] = version
             __props__.__dict__["create_time"] = None
             __props__.__dict__["update_time"] = None

@@ -213,6 +213,9 @@ type Cluster struct {
 	// cluster will be a regional cluster with multiple masters spread across zones in
 	// the region, and with default node locations in those zones as well
 	Location pulumi.StringOutput `pulumi:"location"`
+	// Logging configuration for the cluster.
+	// Structure is documented below.
+	LoggingConfig ClusterLoggingConfigOutput `pulumi:"loggingConfig"`
 	// The logging service that the cluster should
 	// write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
 	// `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
@@ -245,6 +248,9 @@ type Cluster struct {
 	// [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
 	// describe the various acceptable formats for this field.
 	MinMasterVersion pulumi.StringPtrOutput `pulumi:"minMasterVersion"`
+	// Monitoring configuration for the cluster.
+	// Structure is documented below.
+	MonitoringConfig ClusterMonitoringConfigOutput `pulumi:"monitoringConfig"`
 	// The monitoring service that the cluster
 	// should write metrics to.
 	// Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
@@ -477,6 +483,9 @@ type clusterState struct {
 	// cluster will be a regional cluster with multiple masters spread across zones in
 	// the region, and with default node locations in those zones as well
 	Location *string `pulumi:"location"`
+	// Logging configuration for the cluster.
+	// Structure is documented below.
+	LoggingConfig *ClusterLoggingConfig `pulumi:"loggingConfig"`
 	// The logging service that the cluster should
 	// write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
 	// `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
@@ -509,6 +518,9 @@ type clusterState struct {
 	// [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
 	// describe the various acceptable formats for this field.
 	MinMasterVersion *string `pulumi:"minMasterVersion"`
+	// Monitoring configuration for the cluster.
+	// Structure is documented below.
+	MonitoringConfig *ClusterMonitoringConfig `pulumi:"monitoringConfig"`
 	// The monitoring service that the cluster
 	// should write metrics to.
 	// Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
@@ -713,6 +725,9 @@ type ClusterState struct {
 	// cluster will be a regional cluster with multiple masters spread across zones in
 	// the region, and with default node locations in those zones as well
 	Location pulumi.StringPtrInput
+	// Logging configuration for the cluster.
+	// Structure is documented below.
+	LoggingConfig ClusterLoggingConfigPtrInput
 	// The logging service that the cluster should
 	// write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
 	// `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
@@ -745,6 +760,9 @@ type ClusterState struct {
 	// [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
 	// describe the various acceptable formats for this field.
 	MinMasterVersion pulumi.StringPtrInput
+	// Monitoring configuration for the cluster.
+	// Structure is documented below.
+	MonitoringConfig ClusterMonitoringConfigPtrInput
 	// The monitoring service that the cluster
 	// should write metrics to.
 	// Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
@@ -946,6 +964,9 @@ type clusterArgs struct {
 	// cluster will be a regional cluster with multiple masters spread across zones in
 	// the region, and with default node locations in those zones as well
 	Location *string `pulumi:"location"`
+	// Logging configuration for the cluster.
+	// Structure is documented below.
+	LoggingConfig *ClusterLoggingConfig `pulumi:"loggingConfig"`
 	// The logging service that the cluster should
 	// write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
 	// `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
@@ -974,6 +995,9 @@ type clusterArgs struct {
 	// [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
 	// describe the various acceptable formats for this field.
 	MinMasterVersion *string `pulumi:"minMasterVersion"`
+	// Monitoring configuration for the cluster.
+	// Structure is documented below.
+	MonitoringConfig *ClusterMonitoringConfig `pulumi:"monitoringConfig"`
 	// The monitoring service that the cluster
 	// should write metrics to.
 	// Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
@@ -1160,6 +1184,9 @@ type ClusterArgs struct {
 	// cluster will be a regional cluster with multiple masters spread across zones in
 	// the region, and with default node locations in those zones as well
 	Location pulumi.StringPtrInput
+	// Logging configuration for the cluster.
+	// Structure is documented below.
+	LoggingConfig ClusterLoggingConfigPtrInput
 	// The logging service that the cluster should
 	// write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
 	// `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
@@ -1188,6 +1215,9 @@ type ClusterArgs struct {
 	// [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
 	// describe the various acceptable formats for this field.
 	MinMasterVersion pulumi.StringPtrInput
+	// Monitoring configuration for the cluster.
+	// Structure is documented below.
+	MonitoringConfig ClusterMonitoringConfigPtrInput
 	// The monitoring service that the cluster
 	// should write metrics to.
 	// Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.

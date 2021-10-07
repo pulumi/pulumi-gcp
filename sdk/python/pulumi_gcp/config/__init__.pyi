@@ -59,6 +59,8 @@ cloudIdentityCustomEndpoint: Optional[str]
 
 cloudIotCustomEndpoint: Optional[str]
 
+cloudResourceManagerCustomEndpoint: Optional[str]
+
 cloudRunCustomEndpoint: Optional[str]
 
 cloudSchedulerCustomEndpoint: Optional[str]
@@ -154,6 +156,8 @@ networkManagementCustomEndpoint: Optional[str]
 networkServicesCustomEndpoint: Optional[str]
 
 notebooksCustomEndpoint: Optional[str]
+
+orgPolicyCustomEndpoint: Optional[str]
 
 osConfigCustomEndpoint: Optional[str]
 

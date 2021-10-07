@@ -17,6 +17,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// Optional. The version of software inside the cluster. It must be one of the supported (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
         /// </summary>
         public readonly string? ImageVersion;
+        public readonly ImmutableArray<string> OptionalComponents;
         /// <summary>
         /// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
         /// </summary>
@@ -26,9 +27,12 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         private WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig(
             string? imageVersion,
 
+            ImmutableArray<string> optionalComponents,
+
             ImmutableDictionary<string, string>? properties)
         {
             ImageVersion = imageVersion;
+            OptionalComponents = optionalComponents;
             Properties = properties;
         }
     }

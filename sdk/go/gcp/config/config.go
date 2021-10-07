@@ -83,6 +83,9 @@ func GetCloudIdentityCustomEndpoint(ctx *pulumi.Context) string {
 func GetCloudIotCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:cloudIotCustomEndpoint")
 }
+func GetCloudResourceManagerCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:cloudResourceManagerCustomEndpoint")
+}
 func GetCloudRunCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:cloudRunCustomEndpoint")
 }
@@ -226,6 +229,9 @@ func GetNetworkServicesCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetNotebooksCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:notebooksCustomEndpoint")
+}
+func GetOrgPolicyCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:orgPolicyCustomEndpoint")
 }
 func GetOsConfigCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:osConfigCustomEndpoint")

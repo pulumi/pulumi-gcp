@@ -68,6 +68,7 @@ export interface GetKMSCryptoKeyResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly importOnly: boolean;
     readonly keyRing: string;
     readonly labels: {[key: string]: string};
     readonly name: string;

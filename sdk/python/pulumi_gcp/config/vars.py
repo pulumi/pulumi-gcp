@@ -116,6 +116,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('cloudIotCustomEndpoint')
 
     @property
+    def cloud_resource_manager_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('cloudResourceManagerCustomEndpoint')
+
+    @property
     def cloud_run_custom_endpoint(self) -> Optional[str]:
         return __config__.get('cloudRunCustomEndpoint')
 
@@ -306,6 +310,10 @@ class _ExportableConfig(types.ModuleType):
     @property
     def notebooks_custom_endpoint(self) -> Optional[str]:
         return __config__.get('notebooksCustomEndpoint')
+
+    @property
+    def org_policy_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('orgPolicyCustomEndpoint')
 
     @property
     def os_config_custom_endpoint(self) -> Optional[str]:

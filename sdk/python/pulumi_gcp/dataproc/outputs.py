@@ -7161,6 +7161,8 @@ class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig(dict):
         suggest = None
         if key == "imageVersion":
             suggest = "image_version"
+        elif key == "optionalComponents":
+            suggest = "optional_components"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig. Access the value via the '{suggest}' property getter instead.")
@@ -7175,6 +7177,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig(dict):
 
     def __init__(__self__, *,
                  image_version: Optional[str] = None,
+                 optional_components: Optional[Sequence[str]] = None,
                  properties: Optional[Mapping[str, str]] = None):
         """
         :param str image_version: Optional. The version of software inside the cluster. It must be one of the supported (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
@@ -7182,6 +7185,8 @@ class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig(dict):
         """
         if image_version is not None:
             pulumi.set(__self__, "image_version", image_version)
+        if optional_components is not None:
+            pulumi.set(__self__, "optional_components", optional_components)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
 
@@ -7192,6 +7197,11 @@ class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig(dict):
         Optional. The version of software inside the cluster. It must be one of the supported (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
         """
         return pulumi.get(self, "image_version")
+
+    @property
+    @pulumi.getter(name="optionalComponents")
+    def optional_components(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "optional_components")
 
     @property
     @pulumi.getter

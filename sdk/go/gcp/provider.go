@@ -41,6 +41,7 @@ type Provider struct {
 	CloudFunctionsCustomEndpoint       pulumi.StringPtrOutput `pulumi:"cloudFunctionsCustomEndpoint"`
 	CloudIdentityCustomEndpoint        pulumi.StringPtrOutput `pulumi:"cloudIdentityCustomEndpoint"`
 	CloudIotCustomEndpoint             pulumi.StringPtrOutput `pulumi:"cloudIotCustomEndpoint"`
+	CloudResourceManagerCustomEndpoint pulumi.StringPtrOutput `pulumi:"cloudResourceManagerCustomEndpoint"`
 	CloudRunCustomEndpoint             pulumi.StringPtrOutput `pulumi:"cloudRunCustomEndpoint"`
 	CloudSchedulerCustomEndpoint       pulumi.StringPtrOutput `pulumi:"cloudSchedulerCustomEndpoint"`
 	CloudTasksCustomEndpoint           pulumi.StringPtrOutput `pulumi:"cloudTasksCustomEndpoint"`
@@ -87,6 +88,7 @@ type Provider struct {
 	NetworkManagementCustomEndpoint    pulumi.StringPtrOutput `pulumi:"networkManagementCustomEndpoint"`
 	NetworkServicesCustomEndpoint      pulumi.StringPtrOutput `pulumi:"networkServicesCustomEndpoint"`
 	NotebooksCustomEndpoint            pulumi.StringPtrOutput `pulumi:"notebooksCustomEndpoint"`
+	OrgPolicyCustomEndpoint            pulumi.StringPtrOutput `pulumi:"orgPolicyCustomEndpoint"`
 	OsConfigCustomEndpoint             pulumi.StringPtrOutput `pulumi:"osConfigCustomEndpoint"`
 	OsLoginCustomEndpoint              pulumi.StringPtrOutput `pulumi:"osLoginCustomEndpoint"`
 	PrivatecaCustomEndpoint            pulumi.StringPtrOutput `pulumi:"privatecaCustomEndpoint"`
@@ -171,6 +173,7 @@ type providerArgs struct {
 	CloudFunctionsCustomEndpoint       *string           `pulumi:"cloudFunctionsCustomEndpoint"`
 	CloudIdentityCustomEndpoint        *string           `pulumi:"cloudIdentityCustomEndpoint"`
 	CloudIotCustomEndpoint             *string           `pulumi:"cloudIotCustomEndpoint"`
+	CloudResourceManagerCustomEndpoint *string           `pulumi:"cloudResourceManagerCustomEndpoint"`
 	CloudRunCustomEndpoint             *string           `pulumi:"cloudRunCustomEndpoint"`
 	CloudSchedulerCustomEndpoint       *string           `pulumi:"cloudSchedulerCustomEndpoint"`
 	CloudTasksCustomEndpoint           *string           `pulumi:"cloudTasksCustomEndpoint"`
@@ -219,6 +222,7 @@ type providerArgs struct {
 	NetworkManagementCustomEndpoint    *string           `pulumi:"networkManagementCustomEndpoint"`
 	NetworkServicesCustomEndpoint      *string           `pulumi:"networkServicesCustomEndpoint"`
 	NotebooksCustomEndpoint            *string           `pulumi:"notebooksCustomEndpoint"`
+	OrgPolicyCustomEndpoint            *string           `pulumi:"orgPolicyCustomEndpoint"`
 	OsConfigCustomEndpoint             *string           `pulumi:"osConfigCustomEndpoint"`
 	OsLoginCustomEndpoint              *string           `pulumi:"osLoginCustomEndpoint"`
 	PrivatecaCustomEndpoint            *string           `pulumi:"privatecaCustomEndpoint"`
@@ -282,6 +286,7 @@ type ProviderArgs struct {
 	CloudFunctionsCustomEndpoint       pulumi.StringPtrInput
 	CloudIdentityCustomEndpoint        pulumi.StringPtrInput
 	CloudIotCustomEndpoint             pulumi.StringPtrInput
+	CloudResourceManagerCustomEndpoint pulumi.StringPtrInput
 	CloudRunCustomEndpoint             pulumi.StringPtrInput
 	CloudSchedulerCustomEndpoint       pulumi.StringPtrInput
 	CloudTasksCustomEndpoint           pulumi.StringPtrInput
@@ -330,6 +335,7 @@ type ProviderArgs struct {
 	NetworkManagementCustomEndpoint    pulumi.StringPtrInput
 	NetworkServicesCustomEndpoint      pulumi.StringPtrInput
 	NotebooksCustomEndpoint            pulumi.StringPtrInput
+	OrgPolicyCustomEndpoint            pulumi.StringPtrInput
 	OsConfigCustomEndpoint             pulumi.StringPtrInput
 	OsLoginCustomEndpoint              pulumi.StringPtrInput
 	PrivatecaCustomEndpoint            pulumi.StringPtrInput

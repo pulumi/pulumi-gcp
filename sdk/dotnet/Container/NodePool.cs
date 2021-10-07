@@ -147,7 +147,7 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.NodePoolNetworkConfig> NetworkConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The network configuration of the pool. See
+        /// Parameters used in creating the default node pool. See
         /// gcp.container.Cluster for schema.
         /// </summary>
         [Output("nodeConfig")]
@@ -314,7 +314,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.NodePoolNetworkConfigArgs>? NetworkConfig { get; set; }
 
         /// <summary>
-        /// The network configuration of the pool. See
+        /// Parameters used in creating the default node pool. See
         /// gcp.container.Cluster for schema.
         /// </summary>
         [Input("nodeConfig")]
@@ -457,7 +457,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.NodePoolNetworkConfigGetArgs>? NetworkConfig { get; set; }
 
         /// <summary>
-        /// The network configuration of the pool. See
+        /// Parameters used in creating the default node pool. See
         /// gcp.container.Cluster for schema.
         /// </summary>
         [Input("nodeConfig")]

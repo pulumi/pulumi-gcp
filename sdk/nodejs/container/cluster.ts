@@ -284,6 +284,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
+     * Logging configuration for the cluster.
+     * Structure is documented below.
+     */
+    public readonly loggingConfig!: pulumi.Output<outputs.container.ClusterLoggingConfig>;
+    /**
      * The logging service that the cluster should
      * write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
      * `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
@@ -327,6 +332,11 @@ export class Cluster extends pulumi.CustomResource {
      * describe the various acceptable formats for this field.
      */
     public readonly minMasterVersion!: pulumi.Output<string | undefined>;
+    /**
+     * Monitoring configuration for the cluster.
+     * Structure is documented below.
+     */
+    public readonly monitoringConfig!: pulumi.Output<outputs.container.ClusterMonitoringConfig>;
     /**
      * The monitoring service that the cluster
      * should write metrics to.
@@ -522,12 +532,14 @@ export class Cluster extends pulumi.CustomResource {
             inputs["ipAllocationPolicy"] = state ? state.ipAllocationPolicy : undefined;
             inputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
             inputs["location"] = state ? state.location : undefined;
+            inputs["loggingConfig"] = state ? state.loggingConfig : undefined;
             inputs["loggingService"] = state ? state.loggingService : undefined;
             inputs["maintenancePolicy"] = state ? state.maintenancePolicy : undefined;
             inputs["masterAuth"] = state ? state.masterAuth : undefined;
             inputs["masterAuthorizedNetworksConfig"] = state ? state.masterAuthorizedNetworksConfig : undefined;
             inputs["masterVersion"] = state ? state.masterVersion : undefined;
             inputs["minMasterVersion"] = state ? state.minMasterVersion : undefined;
+            inputs["monitoringConfig"] = state ? state.monitoringConfig : undefined;
             inputs["monitoringService"] = state ? state.monitoringService : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["network"] = state ? state.network : undefined;
@@ -578,11 +590,13 @@ export class Cluster extends pulumi.CustomResource {
             inputs["initialNodeCount"] = args ? args.initialNodeCount : undefined;
             inputs["ipAllocationPolicy"] = args ? args.ipAllocationPolicy : undefined;
             inputs["location"] = args ? args.location : undefined;
+            inputs["loggingConfig"] = args ? args.loggingConfig : undefined;
             inputs["loggingService"] = args ? args.loggingService : undefined;
             inputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
             inputs["masterAuth"] = args ? args.masterAuth : undefined;
             inputs["masterAuthorizedNetworksConfig"] = args ? args.masterAuthorizedNetworksConfig : undefined;
             inputs["minMasterVersion"] = args ? args.minMasterVersion : undefined;
+            inputs["monitoringConfig"] = args ? args.monitoringConfig : undefined;
             inputs["monitoringService"] = args ? args.monitoringService : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
@@ -771,6 +785,11 @@ export interface ClusterState {
      */
     location?: pulumi.Input<string>;
     /**
+     * Logging configuration for the cluster.
+     * Structure is documented below.
+     */
+    loggingConfig?: pulumi.Input<inputs.container.ClusterLoggingConfig>;
+    /**
      * The logging service that the cluster should
      * write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
      * `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
@@ -814,6 +833,11 @@ export interface ClusterState {
      * describe the various acceptable formats for this field.
      */
     minMasterVersion?: pulumi.Input<string>;
+    /**
+     * Monitoring configuration for the cluster.
+     * Structure is documented below.
+     */
+    monitoringConfig?: pulumi.Input<inputs.container.ClusterMonitoringConfig>;
     /**
      * The monitoring service that the cluster
      * should write metrics to.
@@ -1109,6 +1133,11 @@ export interface ClusterArgs {
      */
     location?: pulumi.Input<string>;
     /**
+     * Logging configuration for the cluster.
+     * Structure is documented below.
+     */
+    loggingConfig?: pulumi.Input<inputs.container.ClusterLoggingConfig>;
+    /**
      * The logging service that the cluster should
      * write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
      * `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
@@ -1146,6 +1175,11 @@ export interface ClusterArgs {
      * describe the various acceptable formats for this field.
      */
     minMasterVersion?: pulumi.Input<string>;
+    /**
+     * Monitoring configuration for the cluster.
+     * Structure is documented below.
+     */
+    monitoringConfig?: pulumi.Input<inputs.container.ClusterMonitoringConfig>;
     /**
      * The monitoring service that the cluster
      * should write metrics to.

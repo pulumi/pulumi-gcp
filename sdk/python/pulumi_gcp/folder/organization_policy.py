@@ -267,9 +267,15 @@ class OrganizationPolicy(pulumi.CustomResource):
                  version: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Allows management of Organization policies for a Google Folder. For more information see
-        [the official documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview) and
-        [API](https://cloud.google.com/resource-manager/reference/rest/v1/folders/setOrgPolicy).
+        Allows management of Organization Policies for a Google Cloud Folder.
+
+        > **Warning:** This resource has been superseded by `orgpolicy.Policy`. `orgpolicy.Policy` uses Organization Policy API V2 instead of Cloud Resource Manager API V1 and it supports additional features such as tags and conditions.
+
+        To get more information about Organization Policies, see:
+
+        * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v1/folders/setOrgPolicy)
+        * How-to Guides
+            * [Introduction to the Organization Policy Service](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
 
         ## Example Usage
 
@@ -363,9 +369,15 @@ class OrganizationPolicy(pulumi.CustomResource):
                  args: OrganizationPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Allows management of Organization policies for a Google Folder. For more information see
-        [the official documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview) and
-        [API](https://cloud.google.com/resource-manager/reference/rest/v1/folders/setOrgPolicy).
+        Allows management of Organization Policies for a Google Cloud Folder.
+
+        > **Warning:** This resource has been superseded by `orgpolicy.Policy`. `orgpolicy.Policy` uses Organization Policy API V2 instead of Cloud Resource Manager API V1 and it supports additional features such as tags and conditions.
+
+        To get more information about Organization Policies, see:
+
+        * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v1/folders/setOrgPolicy)
+        * How-to Guides
+            * [Introduction to the Organization Policy Service](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
 
         ## Example Usage
 

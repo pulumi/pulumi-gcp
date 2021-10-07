@@ -89,7 +89,6 @@ namespace Pulumi.Gcp.Compute
     ///             Region = "us-west2",
     ///             Subnetwork = "default",
     ///             AddressType = "INTERNAL",
-    ///             Address = "10.168.0.17",
     ///         });
     ///         var pscIlbConsumer = new Gcp.Compute.ForwardingRule("pscIlbConsumer", new Gcp.Compute.ForwardingRuleArgs
     ///         {

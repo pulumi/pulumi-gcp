@@ -105,6 +105,35 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Cloudbuild Trigger Service Account
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const cloudbuildServiceAccount = new gcp.serviceaccount.Account("cloudbuildServiceAccount", {accountId: "my-service-account"});
+ * const actAs = new gcp.projects.IAMMember("actAs", {
+ *     role: "roles/iam.serviceAccountUser",
+ *     member: pulumi.interpolate`serviceAccount:${cloudbuildServiceAccount.email}`,
+ * });
+ * const logsWriter = new gcp.projects.IAMMember("logsWriter", {
+ *     role: "roles/logging.logWriter",
+ *     member: pulumi.interpolate`serviceAccount:${cloudbuildServiceAccount.email}`,
+ * });
+ * const service_account_trigger = new gcp.cloudbuild.Trigger("service-account-trigger", {
+ *     triggerTemplate: {
+ *         branchName: "master",
+ *         repoName: "my-repo",
+ *     },
+ *     serviceAccount: cloudbuildServiceAccount.id,
+ *     filename: "cloudbuild.yaml",
+ * }, {
+ *     dependsOn: [
+ *         actAs,
+ *         logsWriter,
+ *     ],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -218,6 +247,14 @@ export class Trigger extends pulumi.CustomResource {
      */
     public readonly pubsubConfig!: pulumi.Output<outputs.cloudbuild.TriggerPubsubConfig | undefined>;
     /**
+     * The service account used for all user-controlled operations including
+     * triggers.patch, triggers.run, builds.create, and builds.cancel.
+     * If no service account is set, then the standard Cloud Build service account
+     * ([PROJECT_NUM]@system.gserviceaccount.com) will be used instead.
+     * Format: projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}
+     */
+    public readonly serviceAccount!: pulumi.Output<string | undefined>;
+    /**
      * Substitutions to use in a triggered build. Should only be used with triggers.run
      */
     public readonly substitutions!: pulumi.Output<{[key: string]: string} | undefined>;
@@ -270,6 +307,7 @@ export class Trigger extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["pubsubConfig"] = state ? state.pubsubConfig : undefined;
+            inputs["serviceAccount"] = state ? state.serviceAccount : undefined;
             inputs["substitutions"] = state ? state.substitutions : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["triggerId"] = state ? state.triggerId : undefined;
@@ -287,6 +325,7 @@ export class Trigger extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["pubsubConfig"] = args ? args.pubsubConfig : undefined;
+            inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             inputs["substitutions"] = args ? args.substitutions : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["triggerTemplate"] = args ? args.triggerTemplate : undefined;
@@ -372,6 +411,14 @@ export interface TriggerState {
      * Structure is documented below.
      */
     pubsubConfig?: pulumi.Input<inputs.cloudbuild.TriggerPubsubConfig>;
+    /**
+     * The service account used for all user-controlled operations including
+     * triggers.patch, triggers.run, builds.create, and builds.cancel.
+     * If no service account is set, then the standard Cloud Build service account
+     * ([PROJECT_NUM]@system.gserviceaccount.com) will be used instead.
+     * Format: projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}
+     */
+    serviceAccount?: pulumi.Input<string>;
     /**
      * Substitutions to use in a triggered build. Should only be used with triggers.run
      */
@@ -469,6 +516,14 @@ export interface TriggerArgs {
      * Structure is documented below.
      */
     pubsubConfig?: pulumi.Input<inputs.cloudbuild.TriggerPubsubConfig>;
+    /**
+     * The service account used for all user-controlled operations including
+     * triggers.patch, triggers.run, builds.create, and builds.cancel.
+     * If no service account is set, then the standard Cloud Build service account
+     * ([PROJECT_NUM]@system.gserviceaccount.com) will be used instead.
+     * Format: projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}
+     */
+    serviceAccount?: pulumi.Input<string>;
     /**
      * Substitutions to use in a triggered build. Should only be used with triggers.run
      */

@@ -101,6 +101,12 @@ namespace Pulumi.Gcp.Kms
         public Output<string> DestroyScheduledDuration { get; private set; } = null!;
 
         /// <summary>
+        /// Whether this key may contain imported versions only.
+        /// </summary>
+        [Output("importOnly")]
+        public Output<bool> ImportOnly { get; private set; } = null!;
+
+        /// <summary>
         /// The KeyRing that this key belongs to.
         /// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
         /// </summary>
@@ -212,6 +218,12 @@ namespace Pulumi.Gcp.Kms
         public Input<string>? DestroyScheduledDuration { get; set; }
 
         /// <summary>
+        /// Whether this key may contain imported versions only.
+        /// </summary>
+        [Input("importOnly")]
+        public Input<bool>? ImportOnly { get; set; }
+
+        /// <summary>
         /// The KeyRing that this key belongs to.
         /// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
         /// </summary>
@@ -282,6 +294,12 @@ namespace Pulumi.Gcp.Kms
         /// </summary>
         [Input("destroyScheduledDuration")]
         public Input<string>? DestroyScheduledDuration { get; set; }
+
+        /// <summary>
+        /// Whether this key may contain imported versions only.
+        /// </summary>
+        [Input("importOnly")]
+        public Input<bool>? ImportOnly { get; set; }
 
         /// <summary>
         /// The KeyRing that this key belongs to.

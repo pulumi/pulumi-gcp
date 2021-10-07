@@ -6805,6 +6805,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigA
 class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs:
     def __init__(__self__, *,
                  image_version: Optional[pulumi.Input[str]] = None,
+                 optional_components: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] image_version: Optional. The version of software inside the cluster. It must be one of the supported (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
@@ -6812,6 +6813,8 @@ class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs:
         """
         if image_version is not None:
             pulumi.set(__self__, "image_version", image_version)
+        if optional_components is not None:
+            pulumi.set(__self__, "optional_components", optional_components)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
 
@@ -6826,6 +6829,15 @@ class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs:
     @image_version.setter
     def image_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "image_version", value)
+
+    @property
+    @pulumi.getter(name="optionalComponents")
+    def optional_components(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "optional_components")
+
+    @optional_components.setter
+    def optional_components(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "optional_components", value)
 
     @property
     @pulumi.getter

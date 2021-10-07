@@ -31,6 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Group{}
 	case "gcp:monitoring/metricDescriptor:MetricDescriptor":
 		r = &MetricDescriptor{}
+	case "gcp:monitoring/monitoredProject:MonitoredProject":
+		r = &MonitoredProject{}
 	case "gcp:monitoring/notificationChannel:NotificationChannel":
 		r = &NotificationChannel{}
 	case "gcp:monitoring/slo:Slo":
@@ -73,6 +75,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"monitoring/metricDescriptor",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"monitoring/monitoredProject",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

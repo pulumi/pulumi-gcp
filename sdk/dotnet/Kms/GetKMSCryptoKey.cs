@@ -83,6 +83,7 @@ namespace Pulumi.Gcp.Kms
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly bool ImportOnly;
         public readonly string KeyRing;
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
@@ -109,6 +110,8 @@ namespace Pulumi.Gcp.Kms
 
             string id,
 
+            bool importOnly,
+
             string keyRing,
 
             ImmutableDictionary<string, string> labels,
@@ -127,6 +130,7 @@ namespace Pulumi.Gcp.Kms
         {
             DestroyScheduledDuration = destroyScheduledDuration;
             Id = id;
+            ImportOnly = importOnly;
             KeyRing = keyRing;
             Labels = labels;
             Name = name;

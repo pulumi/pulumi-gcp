@@ -21,13 +21,16 @@ class GetKMSCryptoKeyResult:
     """
     A collection of values returned by getKMSCryptoKey.
     """
-    def __init__(__self__, destroy_scheduled_duration=None, id=None, key_ring=None, labels=None, name=None, purpose=None, rotation_period=None, self_link=None, skip_initial_version_creation=None, version_templates=None):
+    def __init__(__self__, destroy_scheduled_duration=None, id=None, import_only=None, key_ring=None, labels=None, name=None, purpose=None, rotation_period=None, self_link=None, skip_initial_version_creation=None, version_templates=None):
         if destroy_scheduled_duration and not isinstance(destroy_scheduled_duration, str):
             raise TypeError("Expected argument 'destroy_scheduled_duration' to be a str")
         pulumi.set(__self__, "destroy_scheduled_duration", destroy_scheduled_duration)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if import_only and not isinstance(import_only, bool):
+            raise TypeError("Expected argument 'import_only' to be a bool")
+        pulumi.set(__self__, "import_only", import_only)
         if key_ring and not isinstance(key_ring, str):
             raise TypeError("Expected argument 'key_ring' to be a str")
         pulumi.set(__self__, "key_ring", key_ring)
@@ -65,6 +68,11 @@ class GetKMSCryptoKeyResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="importOnly")
+    def import_only(self) -> bool:
+        return pulumi.get(self, "import_only")
 
     @property
     @pulumi.getter(name="keyRing")
@@ -126,6 +134,7 @@ class AwaitableGetKMSCryptoKeyResult(GetKMSCryptoKeyResult):
         return GetKMSCryptoKeyResult(
             destroy_scheduled_duration=self.destroy_scheduled_duration,
             id=self.id,
+            import_only=self.import_only,
             key_ring=self.key_ring,
             labels=self.labels,
             name=self.name,
@@ -177,6 +186,7 @@ def get_kms_crypto_key(key_ring: Optional[str] = None,
     return AwaitableGetKMSCryptoKeyResult(
         destroy_scheduled_duration=__ret__.destroy_scheduled_duration,
         id=__ret__.id,
+        import_only=__ret__.import_only,
         key_ring=__ret__.key_ring,
         labels=__ret__.labels,
         name=__ret__.name,

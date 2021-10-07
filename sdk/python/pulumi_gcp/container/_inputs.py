@@ -29,6 +29,7 @@ __all__ = [
     'ClusterDefaultSnatStatusArgs',
     'ClusterDnsConfigArgs',
     'ClusterIpAllocationPolicyArgs',
+    'ClusterLoggingConfigArgs',
     'ClusterMaintenancePolicyArgs',
     'ClusterMaintenancePolicyDailyMaintenanceWindowArgs',
     'ClusterMaintenancePolicyMaintenanceExclusionArgs',
@@ -37,6 +38,7 @@ __all__ = [
     'ClusterMasterAuthClientCertificateConfigArgs',
     'ClusterMasterAuthorizedNetworksConfigArgs',
     'ClusterMasterAuthorizedNetworksConfigCidrBlockArgs',
+    'ClusterMonitoringConfigArgs',
     'ClusterNetworkPolicyArgs',
     'ClusterNodeConfigArgs',
     'ClusterNodeConfigEphemeralStorageConfigArgs',
@@ -1017,6 +1019,30 @@ class ClusterIpAllocationPolicyArgs:
 
 
 @pulumi.input_type
+class ClusterLoggingConfigArgs:
+    def __init__(__self__, *,
+                 enable_components: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] enable_components: The GKE components exposing logs. Only `SYSTEM_COMPONENTS`
+               is supported.
+        """
+        pulumi.set(__self__, "enable_components", enable_components)
+
+    @property
+    @pulumi.getter(name="enableComponents")
+    def enable_components(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The GKE components exposing logs. Only `SYSTEM_COMPONENTS`
+        is supported.
+        """
+        return pulumi.get(self, "enable_components")
+
+    @enable_components.setter
+    def enable_components(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "enable_components", value)
+
+
+@pulumi.input_type
 class ClusterMaintenancePolicyArgs:
     def __init__(__self__, *,
                  daily_maintenance_window: Optional[pulumi.Input['ClusterMaintenancePolicyDailyMaintenanceWindowArgs']] = None,
@@ -1353,6 +1379,30 @@ class ClusterMasterAuthorizedNetworksConfigCidrBlockArgs:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+
+@pulumi.input_type
+class ClusterMonitoringConfigArgs:
+    def __init__(__self__, *,
+                 enable_components: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] enable_components: The GKE components exposing logs. Only `SYSTEM_COMPONENTS`
+               is supported.
+        """
+        pulumi.set(__self__, "enable_components", enable_components)
+
+    @property
+    @pulumi.getter(name="enableComponents")
+    def enable_components(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The GKE components exposing logs. Only `SYSTEM_COMPONENTS`
+        is supported.
+        """
+        return pulumi.get(self, "enable_components")
+
+    @enable_components.setter
+    def enable_components(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "enable_components", value)
 
 
 @pulumi.input_type

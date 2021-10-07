@@ -94,12 +94,14 @@ type LookupClusterResult struct {
 	IpAllocationPolicies            []GetClusterIpAllocationPolicy             `pulumi:"ipAllocationPolicies"`
 	LabelFingerprint                string                                     `pulumi:"labelFingerprint"`
 	Location                        *string                                    `pulumi:"location"`
+	LoggingConfigs                  []GetClusterLoggingConfig                  `pulumi:"loggingConfigs"`
 	LoggingService                  string                                     `pulumi:"loggingService"`
 	MaintenancePolicies             []GetClusterMaintenancePolicy              `pulumi:"maintenancePolicies"`
 	MasterAuthorizedNetworksConfigs []GetClusterMasterAuthorizedNetworksConfig `pulumi:"masterAuthorizedNetworksConfigs"`
 	MasterAuths                     []GetClusterMasterAuth                     `pulumi:"masterAuths"`
 	MasterVersion                   string                                     `pulumi:"masterVersion"`
 	MinMasterVersion                string                                     `pulumi:"minMasterVersion"`
+	MonitoringConfigs               []GetClusterMonitoringConfig               `pulumi:"monitoringConfigs"`
 	MonitoringService               string                                     `pulumi:"monitoringService"`
 	Name                            string                                     `pulumi:"name"`
 	Network                         string                                     `pulumi:"network"`
@@ -277,6 +279,10 @@ func (o LookupClusterResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupClusterResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+func (o LookupClusterResultOutput) LoggingConfigs() GetClusterLoggingConfigArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterLoggingConfig { return v.LoggingConfigs }).(GetClusterLoggingConfigArrayOutput)
+}
+
 func (o LookupClusterResultOutput) LoggingService() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.LoggingService }).(pulumi.StringOutput)
 }
@@ -301,6 +307,10 @@ func (o LookupClusterResultOutput) MasterVersion() pulumi.StringOutput {
 
 func (o LookupClusterResultOutput) MinMasterVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.MinMasterVersion }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) MonitoringConfigs() GetClusterMonitoringConfigArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterMonitoringConfig { return v.MonitoringConfigs }).(GetClusterMonitoringConfigArrayOutput)
 }
 
 func (o LookupClusterResultOutput) MonitoringService() pulumi.StringOutput {

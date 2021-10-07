@@ -775,6 +775,8 @@ class EnvironmentConfigSoftwareConfig(dict):
             suggest = "pypi_packages"
         elif key == "pythonVersion":
             suggest = "python_version"
+        elif key == "schedulerCount":
+            suggest = "scheduler_count"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in EnvironmentConfigSoftwareConfig. Access the value via the '{suggest}' property getter instead.")
@@ -792,7 +794,8 @@ class EnvironmentConfigSoftwareConfig(dict):
                  env_variables: Optional[Mapping[str, str]] = None,
                  image_version: Optional[str] = None,
                  pypi_packages: Optional[Mapping[str, str]] = None,
-                 python_version: Optional[str] = None):
+                 python_version: Optional[str] = None,
+                 scheduler_count: Optional[int] = None):
         """
         :param Mapping[str, str] airflow_config_overrides: -
                (Optional) Apache Airflow configuration properties to override. Property keys contain the section and property names,
@@ -819,6 +822,8 @@ class EnvironmentConfigSoftwareConfig(dict):
         :param str python_version: -
                The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes.
                Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
+        :param int scheduler_count: -
+               The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.`
         """
         if airflow_config_overrides is not None:
             pulumi.set(__self__, "airflow_config_overrides", airflow_config_overrides)
@@ -830,6 +835,8 @@ class EnvironmentConfigSoftwareConfig(dict):
             pulumi.set(__self__, "pypi_packages", pypi_packages)
         if python_version is not None:
             pulumi.set(__self__, "python_version", python_version)
+        if scheduler_count is not None:
+            pulumi.set(__self__, "scheduler_count", scheduler_count)
 
     @property
     @pulumi.getter(name="airflowConfigOverrides")
@@ -890,6 +897,15 @@ class EnvironmentConfigSoftwareConfig(dict):
         Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
         """
         return pulumi.get(self, "python_version")
+
+    @property
+    @pulumi.getter(name="schedulerCount")
+    def scheduler_count(self) -> Optional[int]:
+        """
+        -
+        The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.`
+        """
+        return pulumi.get(self, "scheduler_count")
 
 
 @pulumi.output_type
@@ -1301,12 +1317,14 @@ class GetEnvironmentConfigSoftwareConfigResult(dict):
                  env_variables: Mapping[str, str],
                  image_version: str,
                  pypi_packages: Mapping[str, str],
-                 python_version: str):
+                 python_version: str,
+                 scheduler_count: int):
         pulumi.set(__self__, "airflow_config_overrides", airflow_config_overrides)
         pulumi.set(__self__, "env_variables", env_variables)
         pulumi.set(__self__, "image_version", image_version)
         pulumi.set(__self__, "pypi_packages", pypi_packages)
         pulumi.set(__self__, "python_version", python_version)
+        pulumi.set(__self__, "scheduler_count", scheduler_count)
 
     @property
     @pulumi.getter(name="airflowConfigOverrides")
@@ -1332,6 +1350,11 @@ class GetEnvironmentConfigSoftwareConfigResult(dict):
     @pulumi.getter(name="pythonVersion")
     def python_version(self) -> str:
         return pulumi.get(self, "python_version")
+
+    @property
+    @pulumi.getter(name="schedulerCount")
+    def scheduler_count(self) -> int:
+        return pulumi.get(self, "scheduler_count")
 
 
 @pulumi.output_type

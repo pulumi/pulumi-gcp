@@ -56,7 +56,7 @@ class NodePoolArgs:
                with the specified prefix. Conflicts with `name`.
         :param pulumi.Input['NodePoolNetworkConfigArgs'] network_config: The network configuration of the pool. See
                container.Cluster for schema.
-        :param pulumi.Input['NodePoolNodeConfigArgs'] node_config: The network configuration of the pool. See
+        :param pulumi.Input['NodePoolNodeConfigArgs'] node_config: Parameters used in creating the default node pool. See
                container.Cluster for schema.
         :param pulumi.Input[int] node_count: The number of nodes per instance group. This field can be used to
                update the number of nodes per instance group but should not be used alongside `autoscaling`.
@@ -233,7 +233,7 @@ class NodePoolArgs:
     @pulumi.getter(name="nodeConfig")
     def node_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigArgs']]:
         """
-        The network configuration of the pool. See
+        Parameters used in creating the default node pool. See
         container.Cluster for schema.
         """
         return pulumi.get(self, "node_config")
@@ -362,7 +362,7 @@ class _NodePoolState:
                with the specified prefix. Conflicts with `name`.
         :param pulumi.Input['NodePoolNetworkConfigArgs'] network_config: The network configuration of the pool. See
                container.Cluster for schema.
-        :param pulumi.Input['NodePoolNodeConfigArgs'] node_config: The network configuration of the pool. See
+        :param pulumi.Input['NodePoolNodeConfigArgs'] node_config: Parameters used in creating the default node pool. See
                container.Cluster for schema.
         :param pulumi.Input[int] node_count: The number of nodes per instance group. This field can be used to
                update the number of nodes per instance group but should not be used alongside `autoscaling`.
@@ -556,7 +556,7 @@ class _NodePoolState:
     @pulumi.getter(name="nodeConfig")
     def node_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigArgs']]:
         """
-        The network configuration of the pool. See
+        Parameters used in creating the default node pool. See
         container.Cluster for schema.
         """
         return pulumi.get(self, "node_config")
@@ -736,7 +736,7 @@ class NodePool(pulumi.CustomResource):
                with the specified prefix. Conflicts with `name`.
         :param pulumi.Input[pulumi.InputType['NodePoolNetworkConfigArgs']] network_config: The network configuration of the pool. See
                container.Cluster for schema.
-        :param pulumi.Input[pulumi.InputType['NodePoolNodeConfigArgs']] node_config: The network configuration of the pool. See
+        :param pulumi.Input[pulumi.InputType['NodePoolNodeConfigArgs']] node_config: Parameters used in creating the default node pool. See
                container.Cluster for schema.
         :param pulumi.Input[int] node_count: The number of nodes per instance group. This field can be used to
                update the number of nodes per instance group but should not be used alongside `autoscaling`.
@@ -924,7 +924,7 @@ class NodePool(pulumi.CustomResource):
                with the specified prefix. Conflicts with `name`.
         :param pulumi.Input[pulumi.InputType['NodePoolNetworkConfigArgs']] network_config: The network configuration of the pool. See
                container.Cluster for schema.
-        :param pulumi.Input[pulumi.InputType['NodePoolNodeConfigArgs']] node_config: The network configuration of the pool. See
+        :param pulumi.Input[pulumi.InputType['NodePoolNodeConfigArgs']] node_config: Parameters used in creating the default node pool. See
                container.Cluster for schema.
         :param pulumi.Input[int] node_count: The number of nodes per instance group. This field can be used to
                update the number of nodes per instance group but should not be used alongside `autoscaling`.
@@ -1066,7 +1066,7 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter(name="nodeConfig")
     def node_config(self) -> pulumi.Output['outputs.NodePoolNodeConfig']:
         """
-        The network configuration of the pool. See
+        Parameters used in creating the default node pool. See
         container.Cluster for schema.
         """
         return pulumi.get(self, "node_config")

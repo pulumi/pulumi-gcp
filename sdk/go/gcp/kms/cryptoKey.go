@@ -107,6 +107,8 @@ type CryptoKey struct {
 	// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
 	// If not specified at creation time, the default duration is 24 hours.
 	DestroyScheduledDuration pulumi.StringOutput `pulumi:"destroyScheduledDuration"`
+	// Whether this key may contain imported versions only.
+	ImportOnly pulumi.BoolOutput `pulumi:"importOnly"`
 	// The KeyRing that this key belongs to.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
 	KeyRing pulumi.StringOutput `pulumi:"keyRing"`
@@ -172,6 +174,8 @@ type cryptoKeyState struct {
 	// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
 	// If not specified at creation time, the default duration is 24 hours.
 	DestroyScheduledDuration *string `pulumi:"destroyScheduledDuration"`
+	// Whether this key may contain imported versions only.
+	ImportOnly *bool `pulumi:"importOnly"`
 	// The KeyRing that this key belongs to.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
 	KeyRing *string `pulumi:"keyRing"`
@@ -206,6 +210,8 @@ type CryptoKeyState struct {
 	// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
 	// If not specified at creation time, the default duration is 24 hours.
 	DestroyScheduledDuration pulumi.StringPtrInput
+	// Whether this key may contain imported versions only.
+	ImportOnly pulumi.BoolPtrInput
 	// The KeyRing that this key belongs to.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
 	KeyRing pulumi.StringPtrInput
@@ -244,6 +250,8 @@ type cryptoKeyArgs struct {
 	// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
 	// If not specified at creation time, the default duration is 24 hours.
 	DestroyScheduledDuration *string `pulumi:"destroyScheduledDuration"`
+	// Whether this key may contain imported versions only.
+	ImportOnly *bool `pulumi:"importOnly"`
 	// The KeyRing that this key belongs to.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
 	KeyRing string `pulumi:"keyRing"`
@@ -275,6 +283,8 @@ type CryptoKeyArgs struct {
 	// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
 	// If not specified at creation time, the default duration is 24 hours.
 	DestroyScheduledDuration pulumi.StringPtrInput
+	// Whether this key may contain imported versions only.
+	ImportOnly pulumi.BoolPtrInput
 	// The KeyRing that this key belongs to.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
 	KeyRing pulumi.StringInput

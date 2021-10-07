@@ -305,6 +305,13 @@ namespace Pulumi.Gcp.Container
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
+        /// Logging configuration for the cluster.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("loggingConfig")]
+        public Output<Outputs.ClusterLoggingConfig> LoggingConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The logging service that the cluster should
         /// write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
         /// `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
@@ -359,6 +366,13 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Output("minMasterVersion")]
         public Output<string?> MinMasterVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// Monitoring configuration for the cluster.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("monitoringConfig")]
+        public Output<Outputs.ClusterMonitoringConfig> MonitoringConfig { get; private set; } = null!;
 
         /// <summary>
         /// The monitoring service that the cluster
@@ -791,6 +805,13 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Location { get; set; }
 
         /// <summary>
+        /// Logging configuration for the cluster.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("loggingConfig")]
+        public Input<Inputs.ClusterLoggingConfigArgs>? LoggingConfig { get; set; }
+
+        /// <summary>
         /// The logging service that the cluster should
         /// write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
         /// `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
@@ -837,6 +858,13 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("minMasterVersion")]
         public Input<string>? MinMasterVersion { get; set; }
+
+        /// <summary>
+        /// Monitoring configuration for the cluster.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("monitoringConfig")]
+        public Input<Inputs.ClusterMonitoringConfigArgs>? MonitoringConfig { get; set; }
 
         /// <summary>
         /// The monitoring service that the cluster
@@ -1247,6 +1275,13 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Location { get; set; }
 
         /// <summary>
+        /// Logging configuration for the cluster.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("loggingConfig")]
+        public Input<Inputs.ClusterLoggingConfigGetArgs>? LoggingConfig { get; set; }
+
+        /// <summary>
         /// The logging service that the cluster should
         /// write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
         /// `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
@@ -1301,6 +1336,13 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("minMasterVersion")]
         public Input<string>? MinMasterVersion { get; set; }
+
+        /// <summary>
+        /// Monitoring configuration for the cluster.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("monitoringConfig")]
+        public Input<Inputs.ClusterMonitoringConfigGetArgs>? MonitoringConfig { get; set; }
 
         /// <summary>
         /// The monitoring service that the cluster

@@ -11,12 +11,19 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Allows management of a single API service for an existing Google Cloud Platform project.
+// Allows management of a single API service for a Google Cloud Platform project.
 //
-// For a list of services available, visit the
-// [API library page](https://console.cloud.google.com/apis/library) or run `gcloud services list --available`.
+// For a list of services available, visit the [API library page](https://console.cloud.google.com/apis/library)
+// or run `gcloud services list --available`.
 //
-// Requires [Service Usage API](https://console.cloud.google.com/apis/library/serviceusage.googleapis.com).
+// This resource requires the [Service Usage API](https://console.cloud.google.com/apis/library/serviceusage.googleapis.com)
+// to use.
+//
+// To get more information about `projects.Service`, see:
+//
+// * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1/services)
+// * How-to Guides
+//     * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
 //
 // ## Example Usage
 //
@@ -55,12 +62,15 @@ import (
 type Service struct {
 	pulumi.CustomResourceState
 
-	// If `true`, services that are enabled and which depend on this service should also be disabled when this service is destroyed.
-	// If `false` or unset, an error will be generated if any enabled services depend on this service when destroying it.
+	// If `true`, services that are enabled
+	// and which depend on this service should also be disabled when this service is
+	// destroyed. If `false` or unset, an error will be generated if any enabled
+	// services depend on this service when destroying it.
 	DisableDependentServices pulumi.BoolPtrOutput `pulumi:"disableDependentServices"`
-	// If true, disable the service when the resource is destroyed.  Defaults to true.  May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
+	// If true, disable the service when the resource is destroyed. Defaults to true. May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
 	DisableOnDestroy pulumi.BoolPtrOutput `pulumi:"disableOnDestroy"`
-	// The project ID. If not provided, the provider project is used.
+	// The project ID. If not provided, the provider project
+	// is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The service to enable.
 	Service pulumi.StringOutput `pulumi:"service"`
@@ -98,24 +108,30 @@ func GetService(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Service resources.
 type serviceState struct {
-	// If `true`, services that are enabled and which depend on this service should also be disabled when this service is destroyed.
-	// If `false` or unset, an error will be generated if any enabled services depend on this service when destroying it.
+	// If `true`, services that are enabled
+	// and which depend on this service should also be disabled when this service is
+	// destroyed. If `false` or unset, an error will be generated if any enabled
+	// services depend on this service when destroying it.
 	DisableDependentServices *bool `pulumi:"disableDependentServices"`
-	// If true, disable the service when the resource is destroyed.  Defaults to true.  May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
+	// If true, disable the service when the resource is destroyed. Defaults to true. May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
 	DisableOnDestroy *bool `pulumi:"disableOnDestroy"`
-	// The project ID. If not provided, the provider project is used.
+	// The project ID. If not provided, the provider project
+	// is used.
 	Project *string `pulumi:"project"`
 	// The service to enable.
 	Service *string `pulumi:"service"`
 }
 
 type ServiceState struct {
-	// If `true`, services that are enabled and which depend on this service should also be disabled when this service is destroyed.
-	// If `false` or unset, an error will be generated if any enabled services depend on this service when destroying it.
+	// If `true`, services that are enabled
+	// and which depend on this service should also be disabled when this service is
+	// destroyed. If `false` or unset, an error will be generated if any enabled
+	// services depend on this service when destroying it.
 	DisableDependentServices pulumi.BoolPtrInput
-	// If true, disable the service when the resource is destroyed.  Defaults to true.  May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
+	// If true, disable the service when the resource is destroyed. Defaults to true. May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
 	DisableOnDestroy pulumi.BoolPtrInput
-	// The project ID. If not provided, the provider project is used.
+	// The project ID. If not provided, the provider project
+	// is used.
 	Project pulumi.StringPtrInput
 	// The service to enable.
 	Service pulumi.StringPtrInput
@@ -126,12 +142,15 @@ func (ServiceState) ElementType() reflect.Type {
 }
 
 type serviceArgs struct {
-	// If `true`, services that are enabled and which depend on this service should also be disabled when this service is destroyed.
-	// If `false` or unset, an error will be generated if any enabled services depend on this service when destroying it.
+	// If `true`, services that are enabled
+	// and which depend on this service should also be disabled when this service is
+	// destroyed. If `false` or unset, an error will be generated if any enabled
+	// services depend on this service when destroying it.
 	DisableDependentServices *bool `pulumi:"disableDependentServices"`
-	// If true, disable the service when the resource is destroyed.  Defaults to true.  May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
+	// If true, disable the service when the resource is destroyed. Defaults to true. May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
 	DisableOnDestroy *bool `pulumi:"disableOnDestroy"`
-	// The project ID. If not provided, the provider project is used.
+	// The project ID. If not provided, the provider project
+	// is used.
 	Project *string `pulumi:"project"`
 	// The service to enable.
 	Service string `pulumi:"service"`
@@ -139,12 +158,15 @@ type serviceArgs struct {
 
 // The set of arguments for constructing a Service resource.
 type ServiceArgs struct {
-	// If `true`, services that are enabled and which depend on this service should also be disabled when this service is destroyed.
-	// If `false` or unset, an error will be generated if any enabled services depend on this service when destroying it.
+	// If `true`, services that are enabled
+	// and which depend on this service should also be disabled when this service is
+	// destroyed. If `false` or unset, an error will be generated if any enabled
+	// services depend on this service when destroying it.
 	DisableDependentServices pulumi.BoolPtrInput
-	// If true, disable the service when the resource is destroyed.  Defaults to true.  May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
+	// If true, disable the service when the resource is destroyed. Defaults to true. May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
 	DisableOnDestroy pulumi.BoolPtrInput
-	// The project ID. If not provided, the provider project is used.
+	// The project ID. If not provided, the provider project
+	// is used.
 	Project pulumi.StringPtrInput
 	// The service to enable.
 	Service pulumi.StringInput

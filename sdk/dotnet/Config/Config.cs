@@ -207,6 +207,13 @@ namespace Pulumi.Gcp
             set => _cloudIotCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _cloudResourceManagerCustomEndpoint = new __Value<string?>(() => __config.Get("cloudResourceManagerCustomEndpoint"));
+        public static string? CloudResourceManagerCustomEndpoint
+        {
+            get => _cloudResourceManagerCustomEndpoint.Get();
+            set => _cloudResourceManagerCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _cloudRunCustomEndpoint = new __Value<string?>(() => __config.Get("cloudRunCustomEndpoint"));
         public static string? CloudRunCustomEndpoint
         {
@@ -541,6 +548,13 @@ namespace Pulumi.Gcp
         {
             get => _notebooksCustomEndpoint.Get();
             set => _notebooksCustomEndpoint.Set(value);
+        }
+
+        private static readonly __Value<string?> _orgPolicyCustomEndpoint = new __Value<string?>(() => __config.Get("orgPolicyCustomEndpoint"));
+        public static string? OrgPolicyCustomEndpoint
+        {
+            get => _orgPolicyCustomEndpoint.Get();
+            set => _orgPolicyCustomEndpoint.Set(value);
         }
 
         private static readonly __Value<string?> _osConfigCustomEndpoint = new __Value<string?>(() => __config.Get("osConfigCustomEndpoint"));

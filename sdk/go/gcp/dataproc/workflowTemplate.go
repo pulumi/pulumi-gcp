@@ -128,6 +128,8 @@ type WorkflowTemplate struct {
 	// Output only. The time template was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Optional. Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
+	//
+	// Deprecated: version is not useful as a configurable field, and will be removed in the future.
 	Version pulumi.IntOutput `pulumi:"version"`
 }
 
@@ -190,6 +192,8 @@ type workflowTemplateState struct {
 	// Output only. The time template was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
 	// Optional. Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
+	//
+	// Deprecated: version is not useful as a configurable field, and will be removed in the future.
 	Version *int `pulumi:"version"`
 }
 
@@ -215,6 +219,8 @@ type WorkflowTemplateState struct {
 	// Output only. The time template was last updated.
 	UpdateTime pulumi.StringPtrInput
 	// Optional. Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
+	//
+	// Deprecated: version is not useful as a configurable field, and will be removed in the future.
 	Version pulumi.IntPtrInput
 }
 
@@ -240,6 +246,8 @@ type workflowTemplateArgs struct {
 	// The project for the resource
 	Project *string `pulumi:"project"`
 	// Optional. Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
+	//
+	// Deprecated: version is not useful as a configurable field, and will be removed in the future.
 	Version *int `pulumi:"version"`
 }
 
@@ -262,6 +270,8 @@ type WorkflowTemplateArgs struct {
 	// The project for the resource
 	Project pulumi.StringPtrInput
 	// Optional. Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
+	//
+	// Deprecated: version is not useful as a configurable field, and will be removed in the future.
 	Version pulumi.IntPtrInput
 }
 

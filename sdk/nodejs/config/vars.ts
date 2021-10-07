@@ -208,6 +208,14 @@ Object.defineProperty(exports, "cloudIotCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const cloudResourceManagerCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "cloudResourceManagerCustomEndpoint", {
+    get() {
+        return __config.get("cloudResourceManagerCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const cloudRunCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "cloudRunCustomEndpoint", {
     get() {
@@ -588,6 +596,14 @@ export declare const notebooksCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "notebooksCustomEndpoint", {
     get() {
         return __config.get("notebooksCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const orgPolicyCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "orgPolicyCustomEndpoint", {
+    get() {
+        return __config.get("orgPolicyCustomEndpoint");
     },
     enumerable: true,
 });

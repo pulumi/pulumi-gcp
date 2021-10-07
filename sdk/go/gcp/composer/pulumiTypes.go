@@ -1755,6 +1755,9 @@ type EnvironmentConfigSoftwareConfig struct {
 	// The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes.
 	// Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
 	PythonVersion *string `pulumi:"pythonVersion"`
+	// -
+	// The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.`
+	SchedulerCount *int `pulumi:"schedulerCount"`
 }
 
 // EnvironmentConfigSoftwareConfigInput is an input type that accepts EnvironmentConfigSoftwareConfigArgs and EnvironmentConfigSoftwareConfigOutput values.
@@ -1809,6 +1812,9 @@ type EnvironmentConfigSoftwareConfigArgs struct {
 	// The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes.
 	// Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
 	PythonVersion pulumi.StringPtrInput `pulumi:"pythonVersion"`
+	// -
+	// The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.`
+	SchedulerCount pulumi.IntPtrInput `pulumi:"schedulerCount"`
 }
 
 func (EnvironmentConfigSoftwareConfigArgs) ElementType() reflect.Type {
@@ -1943,6 +1949,12 @@ func (o EnvironmentConfigSoftwareConfigOutput) PythonVersion() pulumi.StringPtrO
 	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) *string { return v.PythonVersion }).(pulumi.StringPtrOutput)
 }
 
+// -
+// The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.`
+func (o EnvironmentConfigSoftwareConfigOutput) SchedulerCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) *int { return v.SchedulerCount }).(pulumi.IntPtrOutput)
+}
+
 type EnvironmentConfigSoftwareConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentConfigSoftwareConfigPtrOutput) ElementType() reflect.Type {
@@ -2045,6 +2057,17 @@ func (o EnvironmentConfigSoftwareConfigPtrOutput) PythonVersion() pulumi.StringP
 		}
 		return v.PythonVersion
 	}).(pulumi.StringPtrOutput)
+}
+
+// -
+// The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.`
+func (o EnvironmentConfigSoftwareConfigPtrOutput) SchedulerCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfigSoftwareConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SchedulerCount
+	}).(pulumi.IntPtrOutput)
 }
 
 type EnvironmentConfigWebServerConfig struct {
@@ -3298,6 +3321,7 @@ type GetEnvironmentConfigSoftwareConfig struct {
 	ImageVersion           string            `pulumi:"imageVersion"`
 	PypiPackages           map[string]string `pulumi:"pypiPackages"`
 	PythonVersion          string            `pulumi:"pythonVersion"`
+	SchedulerCount         int               `pulumi:"schedulerCount"`
 }
 
 // GetEnvironmentConfigSoftwareConfigInput is an input type that accepts GetEnvironmentConfigSoftwareConfigArgs and GetEnvironmentConfigSoftwareConfigOutput values.
@@ -3317,6 +3341,7 @@ type GetEnvironmentConfigSoftwareConfigArgs struct {
 	ImageVersion           pulumi.StringInput    `pulumi:"imageVersion"`
 	PypiPackages           pulumi.StringMapInput `pulumi:"pypiPackages"`
 	PythonVersion          pulumi.StringInput    `pulumi:"pythonVersion"`
+	SchedulerCount         pulumi.IntInput       `pulumi:"schedulerCount"`
 }
 
 func (GetEnvironmentConfigSoftwareConfigArgs) ElementType() reflect.Type {
@@ -3388,6 +3413,10 @@ func (o GetEnvironmentConfigSoftwareConfigOutput) PypiPackages() pulumi.StringMa
 
 func (o GetEnvironmentConfigSoftwareConfigOutput) PythonVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigSoftwareConfig) string { return v.PythonVersion }).(pulumi.StringOutput)
+}
+
+func (o GetEnvironmentConfigSoftwareConfigOutput) SchedulerCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigSoftwareConfig) int { return v.SchedulerCount }).(pulumi.IntOutput)
 }
 
 type GetEnvironmentConfigSoftwareConfigArrayOutput struct{ *pulumi.OutputState }

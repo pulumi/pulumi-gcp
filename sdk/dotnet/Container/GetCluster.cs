@@ -123,12 +123,14 @@ namespace Pulumi.Gcp.Container
         public readonly ImmutableArray<Outputs.GetClusterIpAllocationPolicyResult> IpAllocationPolicies;
         public readonly string LabelFingerprint;
         public readonly string? Location;
+        public readonly ImmutableArray<Outputs.GetClusterLoggingConfigResult> LoggingConfigs;
         public readonly string LoggingService;
         public readonly ImmutableArray<Outputs.GetClusterMaintenancePolicyResult> MaintenancePolicies;
         public readonly ImmutableArray<Outputs.GetClusterMasterAuthorizedNetworksConfigResult> MasterAuthorizedNetworksConfigs;
         public readonly ImmutableArray<Outputs.GetClusterMasterAuthResult> MasterAuths;
         public readonly string MasterVersion;
         public readonly string MinMasterVersion;
+        public readonly ImmutableArray<Outputs.GetClusterMonitoringConfigResult> MonitoringConfigs;
         public readonly string MonitoringService;
         public readonly string Name;
         public readonly string Network;
@@ -211,6 +213,8 @@ namespace Pulumi.Gcp.Container
 
             string? location,
 
+            ImmutableArray<Outputs.GetClusterLoggingConfigResult> loggingConfigs,
+
             string loggingService,
 
             ImmutableArray<Outputs.GetClusterMaintenancePolicyResult> maintenancePolicies,
@@ -222,6 +226,8 @@ namespace Pulumi.Gcp.Container
             string masterVersion,
 
             string minMasterVersion,
+
+            ImmutableArray<Outputs.GetClusterMonitoringConfigResult> monitoringConfigs,
 
             string monitoringService,
 
@@ -300,12 +306,14 @@ namespace Pulumi.Gcp.Container
             IpAllocationPolicies = ipAllocationPolicies;
             LabelFingerprint = labelFingerprint;
             Location = location;
+            LoggingConfigs = loggingConfigs;
             LoggingService = loggingService;
             MaintenancePolicies = maintenancePolicies;
             MasterAuthorizedNetworksConfigs = masterAuthorizedNetworksConfigs;
             MasterAuths = masterAuths;
             MasterVersion = masterVersion;
             MinMasterVersion = minMasterVersion;
+            MonitoringConfigs = monitoringConfigs;
             MonitoringService = monitoringService;
             Name = name;
             Network = network;
