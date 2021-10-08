@@ -79,3 +79,27 @@ export interface GetBackupRunResult {
      */
     readonly status: string;
 }
+
+export function getBackupRunOutput(args: GetBackupRunOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackupRunResult> {
+    return pulumi.output(args).apply(a => getBackupRun(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getBackupRun.
+ */
+export interface GetBackupRunOutputArgs {
+    /**
+     * The identifier for this backup run. Unique only for a specific Cloud SQL instance.
+     * If left empty and multiple backups exist for the instance, `mostRecent` must be set to `true`.
+     */
+    backupId?: pulumi.Input<number>;
+    /**
+     * The name of the instance the backup is taken from.
+     */
+    instance: pulumi.Input<string>;
+    /**
+     * Toggles use of the most recent backup run if multiple backups exist for a 
+     * Cloud SQL instance.
+     */
+    mostRecent?: pulumi.Input<boolean>;
+}

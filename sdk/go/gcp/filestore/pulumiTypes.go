@@ -508,6 +508,12 @@ func (o InstanceNetworkArrayOutput) Index(i pulumi.IntInput) InstanceNetworkOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceFileSharesInput)(nil)).Elem(), InstanceFileSharesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceFileSharesPtrInput)(nil)).Elem(), InstanceFileSharesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceFileSharesNfsExportOptionInput)(nil)).Elem(), InstanceFileSharesNfsExportOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceFileSharesNfsExportOptionArrayInput)(nil)).Elem(), InstanceFileSharesNfsExportOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkInput)(nil)).Elem(), InstanceNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkArrayInput)(nil)).Elem(), InstanceNetworkArray{})
 	pulumi.RegisterOutputType(InstanceFileSharesOutput{})
 	pulumi.RegisterOutputType(InstanceFileSharesPtrOutput{})
 	pulumi.RegisterOutputType(InstanceFileSharesNfsExportOptionOutput{})

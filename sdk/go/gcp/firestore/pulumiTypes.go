@@ -138,6 +138,8 @@ func (o IndexFieldArrayOutput) Index(i pulumi.IntInput) IndexFieldOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*IndexFieldInput)(nil)).Elem(), IndexFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IndexFieldArrayInput)(nil)).Elem(), IndexFieldArray{})
 	pulumi.RegisterOutputType(IndexFieldOutput{})
 	pulumi.RegisterOutputType(IndexFieldArrayOutput{})
 }

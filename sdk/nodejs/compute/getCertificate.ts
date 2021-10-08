@@ -68,3 +68,22 @@ export interface GetCertificateResult {
     readonly project?: string;
     readonly selfLink: string;
 }
+
+export function getCertificateOutput(args: GetCertificateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificateResult> {
+    return pulumi.output(args).apply(a => getCertificate(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCertificate.
+ */
+export interface GetCertificateOutputArgs {
+    /**
+     * The name of the certificate.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
+    project?: pulumi.Input<string>;
+}

@@ -663,6 +663,14 @@ func (o ServiceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceIamBindingConditionInput)(nil)).Elem(), NamespaceIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceIamBindingConditionPtrInput)(nil)).Elem(), NamespaceIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceIamMemberConditionInput)(nil)).Elem(), NamespaceIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceIamMemberConditionPtrInput)(nil)).Elem(), NamespaceIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIamBindingConditionInput)(nil)).Elem(), ServiceIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIamBindingConditionPtrInput)(nil)).Elem(), ServiceIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIamMemberConditionInput)(nil)).Elem(), ServiceIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIamMemberConditionPtrInput)(nil)).Elem(), ServiceIamMemberConditionArgs{})
 	pulumi.RegisterOutputType(NamespaceIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(NamespaceIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(NamespaceIamMemberConditionOutput{})

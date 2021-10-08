@@ -1400,6 +1400,20 @@ func (o BudgetThresholdRuleArrayOutput) Index(i pulumi.IntInput) BudgetThreshold
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountIamBindingConditionInput)(nil)).Elem(), AccountIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountIamBindingConditionPtrInput)(nil)).Elem(), AccountIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountIamMemberConditionInput)(nil)).Elem(), AccountIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountIamMemberConditionPtrInput)(nil)).Elem(), AccountIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BudgetAllUpdatesRuleInput)(nil)).Elem(), BudgetAllUpdatesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BudgetAllUpdatesRulePtrInput)(nil)).Elem(), BudgetAllUpdatesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BudgetAmountInput)(nil)).Elem(), BudgetAmountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BudgetAmountPtrInput)(nil)).Elem(), BudgetAmountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BudgetAmountSpecifiedAmountInput)(nil)).Elem(), BudgetAmountSpecifiedAmountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BudgetAmountSpecifiedAmountPtrInput)(nil)).Elem(), BudgetAmountSpecifiedAmountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BudgetBudgetFilterInput)(nil)).Elem(), BudgetBudgetFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BudgetBudgetFilterPtrInput)(nil)).Elem(), BudgetBudgetFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BudgetThresholdRuleInput)(nil)).Elem(), BudgetThresholdRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BudgetThresholdRuleArrayInput)(nil)).Elem(), BudgetThresholdRuleArray{})
 	pulumi.RegisterOutputType(AccountIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(AccountIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(AccountIamMemberConditionOutput{})

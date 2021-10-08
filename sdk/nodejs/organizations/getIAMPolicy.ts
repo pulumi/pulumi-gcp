@@ -95,3 +95,23 @@ export interface GetIAMPolicyResult {
      */
     readonly policyData: string;
 }
+
+export function getIAMPolicyOutput(args?: GetIAMPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIAMPolicyResult> {
+    return pulumi.output(args).apply(a => getIAMPolicy(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getIAMPolicy.
+ */
+export interface GetIAMPolicyOutputArgs {
+    /**
+     * A nested configuration block that defines logging additional configuration for your project. This field is only supported on `gcp.projects.IAMPolicy`, `gcp.folder.IAMPolicy` and `gcp.organizations.IAMPolicy`.
+     */
+    auditConfigs?: pulumi.Input<pulumi.Input<inputs.organizations.GetIAMPolicyAuditConfigArgs>[]>;
+    /**
+     * A nested configuration block (described below)
+     * defining a binding to be included in the policy document. Multiple
+     * `binding` arguments are supported.
+     */
+    bindings?: pulumi.Input<pulumi.Input<inputs.organizations.GetIAMPolicyBindingArgs>[]>;
+}

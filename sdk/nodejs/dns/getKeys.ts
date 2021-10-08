@@ -76,3 +76,21 @@ export interface GetKeysResult {
      */
     readonly zoneSigningKeys: outputs.dns.GetKeysZoneSigningKey[];
 }
+
+export function getKeysOutput(args: GetKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeysResult> {
+    return pulumi.output(args).apply(a => getKeys(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getKeys.
+ */
+export interface GetKeysOutputArgs {
+    /**
+     * The name or id of the Cloud DNS managed zone.
+     */
+    managedZone: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs. If `project` is not provided, the provider project is used.
+     */
+    project?: pulumi.Input<string>;
+}

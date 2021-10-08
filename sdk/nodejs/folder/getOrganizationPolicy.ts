@@ -68,3 +68,21 @@ export interface GetOrganizationPolicyResult {
     readonly updateTime: string;
     readonly version: number;
 }
+
+export function getOrganizationPolicyOutput(args: GetOrganizationPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationPolicyResult> {
+    return pulumi.output(args).apply(a => getOrganizationPolicy(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getOrganizationPolicy.
+ */
+export interface GetOrganizationPolicyOutputArgs {
+    /**
+     * (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+     */
+    constraint: pulumi.Input<string>;
+    /**
+     * The resource name of the folder to set the policy for. Its format is folders/{folder_id}.
+     */
+    folder: pulumi.Input<string>;
+}

@@ -64,3 +64,23 @@ export interface GetWorkloadIdentityPoolResult {
     readonly state: string;
     readonly workloadIdentityPoolId: string;
 }
+
+export function getWorkloadIdentityPoolOutput(args: GetWorkloadIdentityPoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkloadIdentityPoolResult> {
+    return pulumi.output(args).apply(a => getWorkloadIdentityPool(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getWorkloadIdentityPool.
+ */
+export interface GetWorkloadIdentityPoolOutputArgs {
+    /**
+     * The project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
+    project?: pulumi.Input<string>;
+    /**
+     * The id of the pool which is the
+     * final component of the resource name.
+     */
+    workloadIdentityPoolId: pulumi.Input<string>;
+}

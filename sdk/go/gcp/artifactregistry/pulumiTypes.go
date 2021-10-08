@@ -337,6 +337,10 @@ func (o RepositoryIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryIamBindingConditionInput)(nil)).Elem(), RepositoryIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryIamBindingConditionPtrInput)(nil)).Elem(), RepositoryIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryIamMemberConditionInput)(nil)).Elem(), RepositoryIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryIamMemberConditionPtrInput)(nil)).Elem(), RepositoryIamMemberConditionArgs{})
 	pulumi.RegisterOutputType(RepositoryIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(RepositoryIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryIamMemberConditionOutput{})

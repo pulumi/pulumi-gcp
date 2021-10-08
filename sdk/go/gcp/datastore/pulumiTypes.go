@@ -120,6 +120,8 @@ func (o DataStoreIndexPropertyArrayOutput) Index(i pulumi.IntInput) DataStoreInd
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreIndexPropertyInput)(nil)).Elem(), DataStoreIndexPropertyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreIndexPropertyArrayInput)(nil)).Elem(), DataStoreIndexPropertyArray{})
 	pulumi.RegisterOutputType(DataStoreIndexPropertyOutput{})
 	pulumi.RegisterOutputType(DataStoreIndexPropertyArrayOutput{})
 }

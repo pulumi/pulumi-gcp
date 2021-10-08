@@ -76,3 +76,23 @@ export interface GetTensorflowVersionsResult {
     readonly versions: string[];
     readonly zone: string;
 }
+
+export function getTensorflowVersionsOutput(args?: GetTensorflowVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTensorflowVersionsResult> {
+    return pulumi.output(args).apply(a => getTensorflowVersions(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTensorflowVersions.
+ */
+export interface GetTensorflowVersionsOutputArgs {
+    /**
+     * The project to list versions for. If it
+     * is not provided, the provider project is used.
+     */
+    project?: pulumi.Input<string>;
+    /**
+     * The zone to list versions for. If it
+     * is not provided, the provider zone is used.
+     */
+    zone?: pulumi.Input<string>;
+}

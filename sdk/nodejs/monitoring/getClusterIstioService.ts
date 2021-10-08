@@ -102,3 +102,38 @@ export interface GetClusterIstioServiceResult {
     readonly serviceNamespace: string;
     readonly telemetries: outputs.monitoring.GetClusterIstioServiceTelemetry[];
 }
+
+export function getClusterIstioServiceOutput(args: GetClusterIstioServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterIstioServiceResult> {
+    return pulumi.output(args).apply(a => getClusterIstioService(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getClusterIstioService.
+ */
+export interface GetClusterIstioServiceOutputArgs {
+    /**
+     * The name of the Kubernetes cluster in which this Istio service 
+     * is defined. Corresponds to the clusterName resource label in k8sCluster resources.
+     */
+    clusterName: pulumi.Input<string>;
+    /**
+     * The location of the Kubernetes cluster in which this Istio service 
+     * is defined. Corresponds to the location resource label in k8sCluster resources.
+     */
+    location: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
+    project?: pulumi.Input<string>;
+    /**
+     * The name of the Istio service underlying this service.
+     * Corresponds to the destinationServiceName metric label in Istio metrics.
+     */
+    serviceName: pulumi.Input<string>;
+    /**
+     * The namespace of the Istio service underlying this service.
+     * Corresponds to the destinationServiceNamespace metric label in Istio metrics.
+     */
+    serviceNamespace: pulumi.Input<string>;
+}

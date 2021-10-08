@@ -663,6 +663,14 @@ func (o TagValueIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TagKeyIamBindingConditionInput)(nil)).Elem(), TagKeyIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TagKeyIamBindingConditionPtrInput)(nil)).Elem(), TagKeyIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TagKeyIamMemberConditionInput)(nil)).Elem(), TagKeyIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TagKeyIamMemberConditionPtrInput)(nil)).Elem(), TagKeyIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TagValueIamBindingConditionInput)(nil)).Elem(), TagValueIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TagValueIamBindingConditionPtrInput)(nil)).Elem(), TagValueIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TagValueIamMemberConditionInput)(nil)).Elem(), TagValueIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TagValueIamMemberConditionPtrInput)(nil)).Elem(), TagValueIamMemberConditionArgs{})
 	pulumi.RegisterOutputType(TagKeyIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(TagKeyIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(TagKeyIamMemberConditionOutput{})

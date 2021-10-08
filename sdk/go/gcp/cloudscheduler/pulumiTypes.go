@@ -1487,6 +1487,20 @@ func (o JobRetryConfigPtrOutput) RetryCount() pulumi.IntPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*JobAppEngineHttpTargetInput)(nil)).Elem(), JobAppEngineHttpTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobAppEngineHttpTargetPtrInput)(nil)).Elem(), JobAppEngineHttpTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobAppEngineHttpTargetAppEngineRoutingInput)(nil)).Elem(), JobAppEngineHttpTargetAppEngineRoutingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobAppEngineHttpTargetAppEngineRoutingPtrInput)(nil)).Elem(), JobAppEngineHttpTargetAppEngineRoutingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobHttpTargetInput)(nil)).Elem(), JobHttpTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobHttpTargetPtrInput)(nil)).Elem(), JobHttpTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobHttpTargetOauthTokenInput)(nil)).Elem(), JobHttpTargetOauthTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobHttpTargetOauthTokenPtrInput)(nil)).Elem(), JobHttpTargetOauthTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobHttpTargetOidcTokenInput)(nil)).Elem(), JobHttpTargetOidcTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobHttpTargetOidcTokenPtrInput)(nil)).Elem(), JobHttpTargetOidcTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobPubsubTargetInput)(nil)).Elem(), JobPubsubTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobPubsubTargetPtrInput)(nil)).Elem(), JobPubsubTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobRetryConfigInput)(nil)).Elem(), JobRetryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobRetryConfigPtrInput)(nil)).Elem(), JobRetryConfigArgs{})
 	pulumi.RegisterOutputType(JobAppEngineHttpTargetOutput{})
 	pulumi.RegisterOutputType(JobAppEngineHttpTargetPtrOutput{})
 	pulumi.RegisterOutputType(JobAppEngineHttpTargetAppEngineRoutingOutput{})

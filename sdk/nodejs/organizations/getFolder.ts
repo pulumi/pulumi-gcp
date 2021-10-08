@@ -86,3 +86,21 @@ export interface GetFolderResult {
      */
     readonly parent: string;
 }
+
+export function getFolderOutput(args: GetFolderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFolderResult> {
+    return pulumi.output(args).apply(a => getFolder(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getFolder.
+ */
+export interface GetFolderOutputArgs {
+    /**
+     * The name of the Folder in the form `{folder_id}` or `folders/{folder_id}`.
+     */
+    folder: pulumi.Input<string>;
+    /**
+     * `true` to find the organization that the folder belongs, `false` to avoid the lookup. It searches up the tree. (defaults to `false`)
+     */
+    lookupOrganization?: pulumi.Input<boolean>;
+}

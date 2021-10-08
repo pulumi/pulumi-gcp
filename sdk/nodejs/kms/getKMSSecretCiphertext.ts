@@ -63,3 +63,23 @@ export interface GetKMSSecretCiphertextResult {
     readonly id: string;
     readonly plaintext: string;
 }
+
+export function getKMSSecretCiphertextOutput(args: GetKMSSecretCiphertextOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKMSSecretCiphertextResult> {
+    return pulumi.output(args).apply(a => getKMSSecretCiphertext(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getKMSSecretCiphertext.
+ */
+export interface GetKMSSecretCiphertextOutputArgs {
+    /**
+     * The id of the CryptoKey that will be used to
+     * encrypt the provided plaintext. This is represented by the format
+     * `{projectId}/{location}/{keyRingName}/{cryptoKeyName}`.
+     */
+    cryptoKey: pulumi.Input<string>;
+    /**
+     * The plaintext to be encrypted
+     */
+    plaintext: pulumi.Input<string>;
+}

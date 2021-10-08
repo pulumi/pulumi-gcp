@@ -60,3 +60,22 @@ export interface GetWebAppConfigResult {
     readonly storageBucket: string;
     readonly webAppId: string;
 }
+
+export function getWebAppConfigOutput(args: GetWebAppConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebAppConfigResult> {
+    return pulumi.output(args).apply(a => getWebAppConfig(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getWebAppConfig.
+ */
+export interface GetWebAppConfigOutputArgs {
+    /**
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
+    project?: pulumi.Input<string>;
+    /**
+     * the id of the firebase web app
+     */
+    webAppId: pulumi.Input<string>;
+}

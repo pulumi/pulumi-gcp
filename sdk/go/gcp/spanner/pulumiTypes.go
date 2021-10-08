@@ -804,6 +804,16 @@ func (o InstanceIAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseEncryptionConfigInput)(nil)).Elem(), DatabaseEncryptionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseEncryptionConfigPtrInput)(nil)).Elem(), DatabaseEncryptionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseIAMBindingConditionInput)(nil)).Elem(), DatabaseIAMBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseIAMBindingConditionPtrInput)(nil)).Elem(), DatabaseIAMBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseIAMMemberConditionInput)(nil)).Elem(), DatabaseIAMMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseIAMMemberConditionPtrInput)(nil)).Elem(), DatabaseIAMMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIAMBindingConditionInput)(nil)).Elem(), InstanceIAMBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIAMBindingConditionPtrInput)(nil)).Elem(), InstanceIAMBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIAMMemberConditionInput)(nil)).Elem(), InstanceIAMMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIAMMemberConditionPtrInput)(nil)).Elem(), InstanceIAMMemberConditionArgs{})
 	pulumi.RegisterOutputType(DatabaseEncryptionConfigOutput{})
 	pulumi.RegisterOutputType(DatabaseEncryptionConfigPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseIAMBindingConditionOutput{})

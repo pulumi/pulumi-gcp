@@ -58,3 +58,21 @@ export interface GetCaCertsResult {
     readonly instance: string;
     readonly project: string;
 }
+
+export function getCaCertsOutput(args: GetCaCertsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCaCertsResult> {
+    return pulumi.output(args).apply(a => getCaCerts(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCaCerts.
+ */
+export interface GetCaCertsOutputArgs {
+    /**
+     * The name or self link of the instance.
+     */
+    instance: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs. If `project` is not provided, the provider project is used.
+     */
+    project?: pulumi.Input<string>;
+}

@@ -1134,6 +1134,22 @@ func (o GetFunctionSourceRepositoryArrayOutput) Index(i pulumi.IntInput) GetFunc
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionEventTriggerInput)(nil)).Elem(), FunctionEventTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionEventTriggerPtrInput)(nil)).Elem(), FunctionEventTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionEventTriggerFailurePolicyInput)(nil)).Elem(), FunctionEventTriggerFailurePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionEventTriggerFailurePolicyPtrInput)(nil)).Elem(), FunctionEventTriggerFailurePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionIamBindingConditionInput)(nil)).Elem(), FunctionIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionIamBindingConditionPtrInput)(nil)).Elem(), FunctionIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionIamMemberConditionInput)(nil)).Elem(), FunctionIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionIamMemberConditionPtrInput)(nil)).Elem(), FunctionIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionSourceRepositoryInput)(nil)).Elem(), FunctionSourceRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionSourceRepositoryPtrInput)(nil)).Elem(), FunctionSourceRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionEventTriggerInput)(nil)).Elem(), GetFunctionEventTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionEventTriggerArrayInput)(nil)).Elem(), GetFunctionEventTriggerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionEventTriggerFailurePolicyInput)(nil)).Elem(), GetFunctionEventTriggerFailurePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionEventTriggerFailurePolicyArrayInput)(nil)).Elem(), GetFunctionEventTriggerFailurePolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionSourceRepositoryInput)(nil)).Elem(), GetFunctionSourceRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionSourceRepositoryArrayInput)(nil)).Elem(), GetFunctionSourceRepositoryArray{})
 	pulumi.RegisterOutputType(FunctionEventTriggerOutput{})
 	pulumi.RegisterOutputType(FunctionEventTriggerPtrOutput{})
 	pulumi.RegisterOutputType(FunctionEventTriggerFailurePolicyOutput{})

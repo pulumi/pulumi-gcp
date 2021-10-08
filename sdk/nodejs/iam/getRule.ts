@@ -62,3 +62,17 @@ export interface GetRuleResult {
      */
     readonly title: string;
 }
+
+export function getRuleOutput(args: GetRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRuleResult> {
+    return pulumi.output(args).apply(a => getRule(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRule.
+ */
+export interface GetRuleOutputArgs {
+    /**
+     * The name of the Role to lookup in the form `roles/{ROLE_NAME}`, `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}` or `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
+     */
+    name: pulumi.Input<string>;
+}

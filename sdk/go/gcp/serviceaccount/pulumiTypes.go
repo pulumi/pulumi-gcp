@@ -361,6 +361,10 @@ func (o IAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*IAMBindingConditionInput)(nil)).Elem(), IAMBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IAMBindingConditionPtrInput)(nil)).Elem(), IAMBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IAMMemberConditionInput)(nil)).Elem(), IAMMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IAMMemberConditionPtrInput)(nil)).Elem(), IAMMemberConditionArgs{})
 	pulumi.RegisterOutputType(IAMBindingConditionOutput{})
 	pulumi.RegisterOutputType(IAMBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(IAMMemberConditionOutput{})

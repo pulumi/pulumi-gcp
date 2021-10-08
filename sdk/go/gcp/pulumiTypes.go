@@ -159,6 +159,8 @@ func (o ProviderBatchingPtrOutput) SendAfter() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderBatchingInput)(nil)).Elem(), ProviderBatchingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderBatchingPtrInput)(nil)).Elem(), ProviderBatchingArgs{})
 	pulumi.RegisterOutputType(ProviderBatchingOutput{})
 	pulumi.RegisterOutputType(ProviderBatchingPtrOutput{})
 }

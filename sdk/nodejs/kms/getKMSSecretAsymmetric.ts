@@ -58,3 +58,27 @@ export interface GetKMSSecretAsymmetricResult {
      */
     readonly plaintext: string;
 }
+
+export function getKMSSecretAsymmetricOutput(args: GetKMSSecretAsymmetricOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKMSSecretAsymmetricResult> {
+    return pulumi.output(args).apply(a => getKMSSecretAsymmetric(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getKMSSecretAsymmetric.
+ */
+export interface GetKMSSecretAsymmetricOutputArgs {
+    /**
+     * The ciphertext to be decrypted, encoded in base64
+     */
+    ciphertext: pulumi.Input<string>;
+    /**
+     * The crc32 checksum of the `ciphertext` in hexadecimal notation. If not specified, it will be computed.
+     */
+    crc32?: pulumi.Input<string>;
+    /**
+     * The id of the CryptoKey version that will be used to
+     * decrypt the provided ciphertext. This is represented by the format
+     * `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}/cryptoKeyVersions/{version}`.
+     */
+    cryptoKeyVersion: pulumi.Input<string>;
+}

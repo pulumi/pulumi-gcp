@@ -71,3 +71,22 @@ export interface GetGlobalForwardingRuleResult {
     readonly selfLink: string;
     readonly target: string;
 }
+
+export function getGlobalForwardingRuleOutput(args: GetGlobalForwardingRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGlobalForwardingRuleResult> {
+    return pulumi.output(args).apply(a => getGlobalForwardingRule(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getGlobalForwardingRule.
+ */
+export interface GetGlobalForwardingRuleOutputArgs {
+    /**
+     * The name of the global forwarding rule.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
+    project?: pulumi.Input<string>;
+}

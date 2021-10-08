@@ -707,6 +707,16 @@ func (o GetWorkloadIdentityPoolProviderOidcArrayOutput) Index(i pulumi.IntInput)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolProviderAwsInput)(nil)).Elem(), WorkloadIdentityPoolProviderAwsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolProviderAwsPtrInput)(nil)).Elem(), WorkloadIdentityPoolProviderAwsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolProviderOidcInput)(nil)).Elem(), WorkloadIdentityPoolProviderOidcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolProviderOidcPtrInput)(nil)).Elem(), WorkloadIdentityPoolProviderOidcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTestablePermissionsPermissionInput)(nil)).Elem(), GetTestablePermissionsPermissionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTestablePermissionsPermissionArrayInput)(nil)).Elem(), GetTestablePermissionsPermissionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkloadIdentityPoolProviderAwInput)(nil)).Elem(), GetWorkloadIdentityPoolProviderAwArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkloadIdentityPoolProviderAwArrayInput)(nil)).Elem(), GetWorkloadIdentityPoolProviderAwArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkloadIdentityPoolProviderOidcInput)(nil)).Elem(), GetWorkloadIdentityPoolProviderOidcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkloadIdentityPoolProviderOidcArrayInput)(nil)).Elem(), GetWorkloadIdentityPoolProviderOidcArray{})
 	pulumi.RegisterOutputType(WorkloadIdentityPoolProviderAwsOutput{})
 	pulumi.RegisterOutputType(WorkloadIdentityPoolProviderAwsPtrOutput{})
 	pulumi.RegisterOutputType(WorkloadIdentityPoolProviderOidcOutput{})

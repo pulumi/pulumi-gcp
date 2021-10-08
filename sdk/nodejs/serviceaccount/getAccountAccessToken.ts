@@ -65,3 +65,29 @@ export interface GetAccountAccessTokenResult {
     readonly scopes: string[];
     readonly targetServiceAccount: string;
 }
+
+export function getAccountAccessTokenOutput(args: GetAccountAccessTokenOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountAccessTokenResult> {
+    return pulumi.output(args).apply(a => getAccountAccessToken(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAccountAccessToken.
+ */
+export interface GetAccountAccessTokenOutputArgs {
+    /**
+     * Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.  (e.g. `["projects/-/serviceAccounts/delegate-svc-account@project-id.iam.gserviceaccount.com"]`)
+     */
+    delegates?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Lifetime of the impersonated token (defaults to its max: `3600s`).
+     */
+    lifetime?: pulumi.Input<string>;
+    /**
+     * The scopes the new credential should have (e.g. `["cloud-platform"]`)
+     */
+    scopes: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The service account _to_ impersonate (e.g. `service_B@your-project-id.iam.gserviceaccount.com`)
+     */
+    targetServiceAccount: pulumi.Input<string>;
+}

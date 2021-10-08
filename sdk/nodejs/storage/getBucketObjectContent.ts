@@ -94,3 +94,25 @@ export interface GetBucketObjectContentResult {
     readonly storageClass: string;
     readonly temporaryHold: boolean;
 }
+
+export function getBucketObjectContentOutput(args: GetBucketObjectContentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBucketObjectContentResult> {
+    return pulumi.output(args).apply(a => getBucketObjectContent(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getBucketObjectContent.
+ */
+export interface GetBucketObjectContentOutputArgs {
+    /**
+     * The name of the containing bucket.
+     */
+    bucket: pulumi.Input<string>;
+    /**
+     * (Computed) [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object content.
+     */
+    content?: pulumi.Input<string>;
+    /**
+     * The name of the object.
+     */
+    name: pulumi.Input<string>;
+}

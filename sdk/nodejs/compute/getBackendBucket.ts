@@ -66,3 +66,22 @@ export interface GetBackendBucketResult {
     readonly project?: string;
     readonly selfLink: string;
 }
+
+export function getBackendBucketOutput(args: GetBackendBucketOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackendBucketResult> {
+    return pulumi.output(args).apply(a => getBackendBucket(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getBackendBucket.
+ */
+export interface GetBackendBucketOutputArgs {
+    /**
+     * Name of the resource.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
+    project?: pulumi.Input<string>;
+}

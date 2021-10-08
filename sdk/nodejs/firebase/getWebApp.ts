@@ -43,3 +43,17 @@ export interface GetWebAppResult {
     readonly name: string;
     readonly project: string;
 }
+
+export function getWebAppOutput(args: GetWebAppOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebAppResult> {
+    return pulumi.output(args).apply(a => getWebApp(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getWebApp.
+ */
+export interface GetWebAppOutputArgs {
+    /**
+     * The appIp of name of the Firebase webApp.
+     */
+    appId: pulumi.Input<string>;
+}

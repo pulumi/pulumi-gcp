@@ -540,6 +540,10 @@ func (o ConnectivityTestSourcePtrOutput) ProjectId() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectivityTestDestinationInput)(nil)).Elem(), ConnectivityTestDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectivityTestDestinationPtrInput)(nil)).Elem(), ConnectivityTestDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectivityTestSourceInput)(nil)).Elem(), ConnectivityTestSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectivityTestSourcePtrInput)(nil)).Elem(), ConnectivityTestSourceArgs{})
 	pulumi.RegisterOutputType(ConnectivityTestDestinationOutput{})
 	pulumi.RegisterOutputType(ConnectivityTestDestinationPtrOutput{})
 	pulumi.RegisterOutputType(ConnectivityTestSourceOutput{})

@@ -117,3 +117,21 @@ export interface GetBucketObjectResult {
     readonly storageClass: string;
     readonly temporaryHold: boolean;
 }
+
+export function getBucketObjectOutput(args?: GetBucketObjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBucketObjectResult> {
+    return pulumi.output(args).apply(a => getBucketObject(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getBucketObject.
+ */
+export interface GetBucketObjectOutputArgs {
+    /**
+     * The name of the containing bucket.
+     */
+    bucket?: pulumi.Input<string>;
+    /**
+     * The name of the object.
+     */
+    name?: pulumi.Input<string>;
+}

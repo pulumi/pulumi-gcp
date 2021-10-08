@@ -99,3 +99,23 @@ export interface GetAppEngineServiceResult {
     readonly serviceId: string;
     readonly telemetries: outputs.monitoring.GetAppEngineServiceTelemetry[];
 }
+
+export function getAppEngineServiceOutput(args: GetAppEngineServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppEngineServiceResult> {
+    return pulumi.output(args).apply(a => getAppEngineService(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAppEngineService.
+ */
+export interface GetAppEngineServiceOutputArgs {
+    /**
+     * The ID of the App Engine module underlying this
+     * service. Corresponds to the moduleId resource label in the [gaeApp](https://cloud.google.com/monitoring/api/resources#tag_gae_app) monitored resource, or the service/module name.
+     */
+    moduleId: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
+    project?: pulumi.Input<string>;
+}

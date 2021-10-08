@@ -179,6 +179,8 @@ func (o InstanceNetworkConfigPtrOutput) Network() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkConfigInput)(nil)).Elem(), InstanceNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkConfigPtrInput)(nil)).Elem(), InstanceNetworkConfigArgs{})
 	pulumi.RegisterOutputType(InstanceNetworkConfigOutput{})
 	pulumi.RegisterOutputType(InstanceNetworkConfigPtrOutput{})
 }

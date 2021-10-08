@@ -445,6 +445,12 @@ func (o InstanceNodeConfigPtrOutput) MemorySizeMb() pulumi.IntPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMemcacheNodeInput)(nil)).Elem(), InstanceMemcacheNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMemcacheNodeArrayInput)(nil)).Elem(), InstanceMemcacheNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMemcacheParametersInput)(nil)).Elem(), InstanceMemcacheParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMemcacheParametersPtrInput)(nil)).Elem(), InstanceMemcacheParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNodeConfigInput)(nil)).Elem(), InstanceNodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNodeConfigPtrInput)(nil)).Elem(), InstanceNodeConfigArgs{})
 	pulumi.RegisterOutputType(InstanceMemcacheNodeOutput{})
 	pulumi.RegisterOutputType(InstanceMemcacheNodeArrayOutput{})
 	pulumi.RegisterOutputType(InstanceMemcacheParametersOutput{})
