@@ -76,3 +76,25 @@ export interface GetBillingAccountResult {
      */
     readonly projectIds: string[];
 }
+
+export function getBillingAccountOutput(args?: GetBillingAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBillingAccountResult> {
+    return pulumi.output(args).apply(a => getBillingAccount(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getBillingAccount.
+ */
+export interface GetBillingAccountOutputArgs {
+    /**
+     * The name of the billing account in the form `{billing_account_id}` or `billingAccounts/{billing_account_id}`.
+     */
+    billingAccount?: pulumi.Input<string>;
+    /**
+     * The display name of the billing account.
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * `true` if the billing account is open, `false` if the billing account is closed.
+     */
+    open?: pulumi.Input<boolean>;
+}

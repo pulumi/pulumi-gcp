@@ -66,5 +66,6 @@ func (o BatchingOutput) SendAfter() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BatchingInput)(nil)).Elem(), BatchingArgs{})
 	pulumi.RegisterOutputType(BatchingOutput{})
 }

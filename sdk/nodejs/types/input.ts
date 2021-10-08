@@ -23818,6 +23818,28 @@ export namespace organizations {
         service: string;
     }
 
+    export interface GetIAMPolicyAuditConfigArgs {
+        /**
+         * A nested block that defines the operations you'd like to log.
+         */
+        auditLogConfigs: pulumi.Input<pulumi.Input<inputs.organizations.GetIAMPolicyAuditConfigAuditLogConfigArgs>[]>;
+        /**
+         * Defines a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+         */
+        service: pulumi.Input<string>;
+    }
+
+    export interface GetIAMPolicyAuditConfigAuditLogConfigArgs {
+        /**
+         * Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
+         */
+        exemptedMembers?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.
+         */
+        logType: pulumi.Input<string>;
+    }
+
     export interface GetIAMPolicyAuditConfigAuditLogConfig {
         /**
          * Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
@@ -23827,6 +23849,30 @@ export namespace organizations {
          * Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.
          */
         logType: string;
+    }
+
+    export interface GetIAMPolicyBindingArgs {
+        /**
+         * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
+         */
+        condition?: pulumi.Input<inputs.organizations.GetIAMPolicyBindingConditionArgs>;
+        /**
+         * An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+         * Each entry can have one of the following values:
+         * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account. Some resources **don't** support this identity.
+         * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account. Some resources **don't** support this identity.
+         * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com.
+         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+         * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+         * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+         */
+        members: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The role/permission that will be granted to the members.
+         * See the [IAM Roles](https://cloud.google.com/compute/docs/access/iam) documentation for a complete list of roles.
+         * Note that custom roles must be of the format `[projects|organizations]/{parent-name}/roles/{role-name}`.
+         */
+        role: pulumi.Input<string>;
     }
 
     export interface GetIAMPolicyBinding {
@@ -23866,6 +23912,21 @@ export namespace organizations {
          * A title for the expression, i.e. a short string describing its purpose.
          */
         title: string;
+    }
+
+    export interface GetIAMPolicyBindingConditionArgs {
+        /**
+         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: pulumi.Input<string>;
     }
 
     export interface IAMBindingCondition {

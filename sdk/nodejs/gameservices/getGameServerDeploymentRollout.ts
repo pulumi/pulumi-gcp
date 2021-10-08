@@ -62,3 +62,17 @@ export interface GetGameServerDeploymentRolloutResult {
      */
     readonly project: string;
 }
+
+export function getGameServerDeploymentRolloutOutput(args: GetGameServerDeploymentRolloutOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGameServerDeploymentRolloutResult> {
+    return pulumi.output(args).apply(a => getGameServerDeploymentRollout(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getGameServerDeploymentRollout.
+ */
+export interface GetGameServerDeploymentRolloutOutputArgs {
+    /**
+     * The deployment to get the rollout state from. Only 1 rollout must be associated with each deployment.
+     */
+    deploymentId: pulumi.Input<string>;
+}

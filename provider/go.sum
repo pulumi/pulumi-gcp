@@ -1178,10 +1178,17 @@ github.com/pseudomuto/protokit v0.2.0 h1:hlnBDcy3YEDXH7kc9gV+NLaN0cDzhDvD1s7Y6FZ
 github.com/pseudomuto/protokit v0.2.0/go.mod h1:2PdH30hxVHsup8KpBTOXTBeMVhJZVio3Q8ViKSAXT0Q=
 github.com/pulumi/pulumi-terraform-bridge/v3 v3.8.2-0.20210930033847-5bba386a0e79 h1:jzJuuMuqd0jOzHdkspIObjfLg9GtIMX9bTLmJ7PjYs0=
 github.com/pulumi/pulumi-terraform-bridge/v3 v3.8.2-0.20210930033847-5bba386a0e79/go.mod h1:os2fJtJ6BQbsiMFbWXVaBBDTgevfdtw2Ge6zQJtGY9w=
+github.com/pulumi/pulumi-terraform-bridge/v3 v3.9.0 h1:82RtX8iHxwd3oyNbZaJL8LOOJfzkhtvvWx8ztJhVTkE=
+github.com/pulumi/pulumi-terraform-bridge/v3 v3.9.0/go.mod h1:ZhTWHryVwUoLD0b0LwpamivcMI+OrCziGGilPaVqUp8=
 github.com/pulumi/pulumi/pkg/v3 v3.13.3-0.20210930031156-f21eda521f88 h1:nsFE6oSFt8H7oLdKD2X7wosFyPhRd12QvJrlD+T0fkk=
 github.com/pulumi/pulumi/pkg/v3 v3.13.3-0.20210930031156-f21eda521f88/go.mod h1:HAxhHJ8tjAgClpx1P09tRmggsPWXLM3lM72dXNeSmfA=
+github.com/pulumi/pulumi/pkg/v3 v3.14.1-0.20211007222624-789e39219452 h1:rdT803kl455OP5g5zvLsWuolfAWCigE1QmmkGplgbAw=
+github.com/pulumi/pulumi/pkg/v3 v3.14.1-0.20211007222624-789e39219452/go.mod h1:0w8C+JDP+OuihIgj/TNljRJdNHyW1vNiH1zzbeB4xeM=
 github.com/pulumi/pulumi/sdk/v3 v3.13.2 h1:WACuLmogYmUubf3jKcnkN9ACJ5G+3PLSPkCI86DpY9k=
 github.com/pulumi/pulumi/sdk/v3 v3.13.2/go.mod h1:aT7YmFdR6/T7tp2tMIZ68WRD1Xyv5a6Y4BhsuaCNpW0=
+github.com/pulumi/pulumi/sdk/v3 v3.14.0/go.mod h1:aT7YmFdR6/T7tp2tMIZ68WRD1Xyv5a6Y4BhsuaCNpW0=
+github.com/pulumi/pulumi/sdk/v3 v3.14.1-0.20211007222624-789e39219452 h1:ROybvuc1v+eqYOnP+BFN6WRGWpF4WbNWV0YT1vwpVHE=
+github.com/pulumi/pulumi/sdk/v3 v3.14.1-0.20211007222624-789e39219452/go.mod h1:aT7YmFdR6/T7tp2tMIZ68WRD1Xyv5a6Y4BhsuaCNpW0=
 github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e h1:Dik4Qe/+xguB8JagPyXNlbOnRiXGmq/PSPQTGunYnTk=
 github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e/go.mod h1:sZ9FUzGO+yM41hsQHs/yIcj/Y993qMdBxBU5mpDmAfQ=
 github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20201218231525-9cca98608a5e h1:jl43csgF3BSlNRmjo+TGgjW/uXk9h7+NoR3doKQ0BT4=

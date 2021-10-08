@@ -123,3 +123,31 @@ export interface GetInstanceSerialPortResult {
     readonly project: string;
     readonly zone: string;
 }
+
+export function getInstanceSerialPortOutput(args: GetInstanceSerialPortOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceSerialPortResult> {
+    return pulumi.output(args).apply(a => getInstanceSerialPort(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getInstanceSerialPort.
+ */
+export interface GetInstanceSerialPortOutputArgs {
+    /**
+     * The name of the Compute Instance to read output from.
+     */
+    instance: pulumi.Input<string>;
+    /**
+     * The number of the serial port to read output from. Possible values are 1-4.
+     */
+    port: pulumi.Input<number>;
+    /**
+     * The project in which the Compute Instance exists. If it
+     * is not provided, the provider project is used.
+     */
+    project?: pulumi.Input<string>;
+    /**
+     * The zone in which the Compute Instance exists.
+     * If it is not provided, the provider zone is used.
+     */
+    zone?: pulumi.Input<string>;
+}

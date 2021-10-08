@@ -87,3 +87,33 @@ export interface GetRegionInstanceGroupResult {
      */
     readonly size: number;
 }
+
+export function getRegionInstanceGroupOutput(args?: GetRegionInstanceGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionInstanceGroupResult> {
+    return pulumi.output(args).apply(a => getRegionInstanceGroup(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRegionInstanceGroup.
+ */
+export interface GetRegionInstanceGroupOutputArgs {
+    /**
+     * The name of the instance group.  One of `name` or `selfLink` must be provided.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If `selfLink` is provided, this value is ignored.  If neither `selfLink`
+     * nor `project` are provided, the provider project is used.
+     */
+    project?: pulumi.Input<string>;
+    /**
+     * The region in which the resource belongs.  If `selfLink`
+     * is provided, this value is ignored.  If neither `selfLink` nor `region` are
+     * provided, the provider region is used.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * The link to the instance group.  One of `name` or `selfLink` must be provided.
+     */
+    selfLink?: pulumi.Input<string>;
+}

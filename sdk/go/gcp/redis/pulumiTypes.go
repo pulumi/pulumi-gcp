@@ -247,6 +247,10 @@ func (o GetInstanceServerCaCertArrayOutput) Index(i pulumi.IntInput) GetInstance
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceServerCaCertInput)(nil)).Elem(), InstanceServerCaCertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceServerCaCertArrayInput)(nil)).Elem(), InstanceServerCaCertArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceServerCaCertInput)(nil)).Elem(), GetInstanceServerCaCertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceServerCaCertArrayInput)(nil)).Elem(), GetInstanceServerCaCertArray{})
 	pulumi.RegisterOutputType(InstanceServerCaCertOutput{})
 	pulumi.RegisterOutputType(InstanceServerCaCertArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceServerCaCertOutput{})

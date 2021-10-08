@@ -65,3 +65,22 @@ export interface GetTopicResult {
     readonly project?: string;
     readonly schemaSettings: outputs.pubsub.GetTopicSchemaSetting[];
 }
+
+export function getTopicOutput(args: GetTopicOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTopicResult> {
+    return pulumi.output(args).apply(a => getTopic(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTopic.
+ */
+export interface GetTopicOutputArgs {
+    /**
+     * The name of the Cloud Pub/Sub Topic.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
+    project?: pulumi.Input<string>;
+}

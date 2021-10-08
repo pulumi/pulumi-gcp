@@ -220,6 +220,8 @@ func (o NotificationConfigStreamingConfigPtrOutput) Filter() pulumi.StringPtrOut
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigStreamingConfigInput)(nil)).Elem(), NotificationConfigStreamingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigStreamingConfigPtrInput)(nil)).Elem(), NotificationConfigStreamingConfigArgs{})
 	pulumi.RegisterOutputType(NotificationConfigStreamingConfigOutput{})
 	pulumi.RegisterOutputType(NotificationConfigStreamingConfigPtrOutput{})
 }

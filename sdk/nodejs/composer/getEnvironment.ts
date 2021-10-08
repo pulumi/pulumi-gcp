@@ -59,3 +59,26 @@ export interface GetEnvironmentResult {
     readonly project?: string;
     readonly region?: string;
 }
+
+export function getEnvironmentOutput(args: GetEnvironmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnvironmentResult> {
+    return pulumi.output(args).apply(a => getEnvironment(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getEnvironment.
+ */
+export interface GetEnvironmentOutputArgs {
+    /**
+     * Name of the environment.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
+    project?: pulumi.Input<string>;
+    /**
+     * The location or Compute Engine region of the environment.
+     */
+    region?: pulumi.Input<string>;
+}

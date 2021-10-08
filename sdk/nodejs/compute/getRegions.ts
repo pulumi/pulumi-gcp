@@ -53,3 +53,22 @@ export interface GetRegionsResult {
     readonly project: string;
     readonly status?: string;
 }
+
+export function getRegionsOutput(args?: GetRegionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionsResult> {
+    return pulumi.output(args).apply(a => getRegions(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRegions.
+ */
+export interface GetRegionsOutputArgs {
+    /**
+     * Project from which to list available regions. Defaults to project declared in the provider.
+     */
+    project?: pulumi.Input<string>;
+    /**
+     * Allows to filter list of regions based on their current status. Status can be either `UP` or `DOWN`.
+     * Defaults to no filtering (all available regions - both `UP` and `DOWN`).
+     */
+    status?: pulumi.Input<string>;
+}

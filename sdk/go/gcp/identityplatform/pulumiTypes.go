@@ -1179,6 +1179,22 @@ func (o TenantInboundSamlConfigSpConfigSpCertificateArrayOutput) Index(i pulumi.
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InboundSamlConfigIdpConfigInput)(nil)).Elem(), InboundSamlConfigIdpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InboundSamlConfigIdpConfigPtrInput)(nil)).Elem(), InboundSamlConfigIdpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InboundSamlConfigIdpConfigIdpCertificateInput)(nil)).Elem(), InboundSamlConfigIdpConfigIdpCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InboundSamlConfigIdpConfigIdpCertificateArrayInput)(nil)).Elem(), InboundSamlConfigIdpConfigIdpCertificateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InboundSamlConfigSpConfigInput)(nil)).Elem(), InboundSamlConfigSpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InboundSamlConfigSpConfigPtrInput)(nil)).Elem(), InboundSamlConfigSpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InboundSamlConfigSpConfigSpCertificateInput)(nil)).Elem(), InboundSamlConfigSpConfigSpCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InboundSamlConfigSpConfigSpCertificateArrayInput)(nil)).Elem(), InboundSamlConfigSpConfigSpCertificateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantInboundSamlConfigIdpConfigInput)(nil)).Elem(), TenantInboundSamlConfigIdpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantInboundSamlConfigIdpConfigPtrInput)(nil)).Elem(), TenantInboundSamlConfigIdpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantInboundSamlConfigIdpConfigIdpCertificateInput)(nil)).Elem(), TenantInboundSamlConfigIdpConfigIdpCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantInboundSamlConfigIdpConfigIdpCertificateArrayInput)(nil)).Elem(), TenantInboundSamlConfigIdpConfigIdpCertificateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantInboundSamlConfigSpConfigInput)(nil)).Elem(), TenantInboundSamlConfigSpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantInboundSamlConfigSpConfigPtrInput)(nil)).Elem(), TenantInboundSamlConfigSpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantInboundSamlConfigSpConfigSpCertificateInput)(nil)).Elem(), TenantInboundSamlConfigSpConfigSpCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantInboundSamlConfigSpConfigSpCertificateArrayInput)(nil)).Elem(), TenantInboundSamlConfigSpConfigSpCertificateArray{})
 	pulumi.RegisterOutputType(InboundSamlConfigIdpConfigOutput{})
 	pulumi.RegisterOutputType(InboundSamlConfigIdpConfigPtrOutput{})
 	pulumi.RegisterOutputType(InboundSamlConfigIdpConfigIdpCertificateOutput{})

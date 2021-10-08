@@ -70,3 +70,27 @@ export interface GetHcVpnGatewayResult {
     readonly selfLink: string;
     readonly vpnInterfaces: outputs.compute.GetHcVpnGatewayVpnInterface[];
 }
+
+export function getHcVpnGatewayOutput(args: GetHcVpnGatewayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHcVpnGatewayResult> {
+    return pulumi.output(args).apply(a => getHcVpnGateway(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getHcVpnGateway.
+ */
+export interface GetHcVpnGatewayOutputArgs {
+    /**
+     * The name of the forwarding rule.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
+    project?: pulumi.Input<string>;
+    /**
+     * The region in which the resource belongs. If it
+     * is not provided, the project region is used.
+     */
+    region?: pulumi.Input<string>;
+}

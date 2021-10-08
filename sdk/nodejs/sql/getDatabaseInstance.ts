@@ -76,3 +76,21 @@ export interface GetDatabaseInstanceResult {
     readonly serviceAccountEmailAddress: string;
     readonly settings: outputs.sql.GetDatabaseInstanceSetting[];
 }
+
+export function getDatabaseInstanceOutput(args: GetDatabaseInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseInstanceResult> {
+    return pulumi.output(args).apply(a => getDatabaseInstance(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDatabaseInstance.
+ */
+export interface GetDatabaseInstanceOutputArgs {
+    /**
+     * The name of the instance.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     */
+    project?: pulumi.Input<string>;
+}

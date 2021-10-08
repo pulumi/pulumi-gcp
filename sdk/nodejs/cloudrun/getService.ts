@@ -73,3 +73,26 @@ export interface GetServiceResult {
     readonly templates: outputs.cloudrun.GetServiceTemplate[];
     readonly traffics: outputs.cloudrun.GetServiceTraffic[];
 }
+
+export function getServiceOutput(args: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
+    return pulumi.output(args).apply(a => getService(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getService.
+ */
+export interface GetServiceOutputArgs {
+    /**
+     * The location of the cloud run instance. eg us-central1
+     */
+    location: pulumi.Input<string>;
+    /**
+     * The name of the Cloud Run Service.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
+    project?: pulumi.Input<string>;
+}

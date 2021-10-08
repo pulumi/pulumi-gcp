@@ -1426,6 +1426,22 @@ func (o PolicyDefaultAdmissionRulePtrOutput) RequireAttestationsBies() pulumi.St
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AttestorAttestationAuthorityNoteInput)(nil)).Elem(), AttestorAttestationAuthorityNoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttestorAttestationAuthorityNotePtrInput)(nil)).Elem(), AttestorAttestationAuthorityNoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttestorAttestationAuthorityNotePublicKeyInput)(nil)).Elem(), AttestorAttestationAuthorityNotePublicKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttestorAttestationAuthorityNotePublicKeyArrayInput)(nil)).Elem(), AttestorAttestationAuthorityNotePublicKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyInput)(nil)).Elem(), AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrInput)(nil)).Elem(), AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttestorIamBindingConditionInput)(nil)).Elem(), AttestorIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttestorIamBindingConditionPtrInput)(nil)).Elem(), AttestorIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttestorIamMemberConditionInput)(nil)).Elem(), AttestorIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttestorIamMemberConditionPtrInput)(nil)).Elem(), AttestorIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyAdmissionWhitelistPatternInput)(nil)).Elem(), PolicyAdmissionWhitelistPatternArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyAdmissionWhitelistPatternArrayInput)(nil)).Elem(), PolicyAdmissionWhitelistPatternArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyClusterAdmissionRuleInput)(nil)).Elem(), PolicyClusterAdmissionRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyClusterAdmissionRuleArrayInput)(nil)).Elem(), PolicyClusterAdmissionRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyDefaultAdmissionRuleInput)(nil)).Elem(), PolicyDefaultAdmissionRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyDefaultAdmissionRulePtrInput)(nil)).Elem(), PolicyDefaultAdmissionRuleArgs{})
 	pulumi.RegisterOutputType(AttestorAttestationAuthorityNoteOutput{})
 	pulumi.RegisterOutputType(AttestorAttestationAuthorityNotePtrOutput{})
 	pulumi.RegisterOutputType(AttestorAttestationAuthorityNotePublicKeyOutput{})

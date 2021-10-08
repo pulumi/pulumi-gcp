@@ -79,3 +79,22 @@ export interface GetGlobalAddressResult {
      */
     readonly status: string;
 }
+
+export function getGlobalAddressOutput(args: GetGlobalAddressOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGlobalAddressResult> {
+    return pulumi.output(args).apply(a => getGlobalAddress(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getGlobalAddress.
+ */
+export interface GetGlobalAddressOutputArgs {
+    /**
+     * A unique name for the resource, required by GCE.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
+    project?: pulumi.Input<string>;
+}

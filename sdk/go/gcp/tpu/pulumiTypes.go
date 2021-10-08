@@ -248,6 +248,10 @@ func (o NodeSchedulingConfigPtrOutput) Preemptible() pulumi.BoolPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeNetworkEndpointInput)(nil)).Elem(), NodeNetworkEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeNetworkEndpointArrayInput)(nil)).Elem(), NodeNetworkEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeSchedulingConfigInput)(nil)).Elem(), NodeSchedulingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeSchedulingConfigPtrInput)(nil)).Elem(), NodeSchedulingConfigArgs{})
 	pulumi.RegisterOutputType(NodeNetworkEndpointOutput{})
 	pulumi.RegisterOutputType(NodeNetworkEndpointArrayOutput{})
 	pulumi.RegisterOutputType(NodeSchedulingConfigOutput{})

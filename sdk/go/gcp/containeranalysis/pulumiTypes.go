@@ -758,6 +758,16 @@ func (o OccurenceAttestationSignatureArrayOutput) Index(i pulumi.IntInput) Occur
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NoteAttestationAuthorityInput)(nil)).Elem(), NoteAttestationAuthorityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NoteAttestationAuthorityPtrInput)(nil)).Elem(), NoteAttestationAuthorityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NoteAttestationAuthorityHintInput)(nil)).Elem(), NoteAttestationAuthorityHintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NoteAttestationAuthorityHintPtrInput)(nil)).Elem(), NoteAttestationAuthorityHintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NoteRelatedUrlInput)(nil)).Elem(), NoteRelatedUrlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NoteRelatedUrlArrayInput)(nil)).Elem(), NoteRelatedUrlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OccurenceAttestationInput)(nil)).Elem(), OccurenceAttestationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OccurenceAttestationPtrInput)(nil)).Elem(), OccurenceAttestationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OccurenceAttestationSignatureInput)(nil)).Elem(), OccurenceAttestationSignatureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OccurenceAttestationSignatureArrayInput)(nil)).Elem(), OccurenceAttestationSignatureArray{})
 	pulumi.RegisterOutputType(NoteAttestationAuthorityOutput{})
 	pulumi.RegisterOutputType(NoteAttestationAuthorityPtrOutput{})
 	pulumi.RegisterOutputType(NoteAttestationAuthorityHintOutput{})

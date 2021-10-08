@@ -77,3 +77,28 @@ export interface GetKMSKeyRingResult {
      */
     readonly selfLink: string;
 }
+
+export function getKMSKeyRingOutput(args: GetKMSKeyRingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKMSKeyRingResult> {
+    return pulumi.output(args).apply(a => getKMSKeyRing(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getKMSKeyRing.
+ */
+export interface GetKMSKeyRingOutputArgs {
+    /**
+     * The Google Cloud Platform location for the KeyRing.
+     * A full list of valid locations can be found by running `gcloud kms locations list`.
+     */
+    location: pulumi.Input<string>;
+    /**
+     * The KeyRing's name.
+     * A KeyRing name must exist within the provided location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
+    project?: pulumi.Input<string>;
+}

@@ -715,6 +715,14 @@ func (o PolicySpecRuleValuesPtrOutput) DeniedValues() pulumi.StringArrayOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicySpecInput)(nil)).Elem(), PolicySpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicySpecPtrInput)(nil)).Elem(), PolicySpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicySpecRuleInput)(nil)).Elem(), PolicySpecRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicySpecRuleArrayInput)(nil)).Elem(), PolicySpecRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicySpecRuleConditionInput)(nil)).Elem(), PolicySpecRuleConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicySpecRuleConditionPtrInput)(nil)).Elem(), PolicySpecRuleConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicySpecRuleValuesInput)(nil)).Elem(), PolicySpecRuleValuesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicySpecRuleValuesPtrInput)(nil)).Elem(), PolicySpecRuleValuesArgs{})
 	pulumi.RegisterOutputType(PolicySpecOutput{})
 	pulumi.RegisterOutputType(PolicySpecPtrOutput{})
 	pulumi.RegisterOutputType(PolicySpecRuleOutput{})

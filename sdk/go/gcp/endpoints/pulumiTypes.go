@@ -661,6 +661,16 @@ func (o ServiceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceApiInput)(nil)).Elem(), ServiceApiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceApiArrayInput)(nil)).Elem(), ServiceApiArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceApiMethodInput)(nil)).Elem(), ServiceApiMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceApiMethodArrayInput)(nil)).Elem(), ServiceApiMethodArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceEndpointInput)(nil)).Elem(), ServiceEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceEndpointArrayInput)(nil)).Elem(), ServiceEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIamBindingConditionInput)(nil)).Elem(), ServiceIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIamBindingConditionPtrInput)(nil)).Elem(), ServiceIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIamMemberConditionInput)(nil)).Elem(), ServiceIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIamMemberConditionPtrInput)(nil)).Elem(), ServiceIamMemberConditionArgs{})
 	pulumi.RegisterOutputType(ServiceApiOutput{})
 	pulumi.RegisterOutputType(ServiceApiArrayOutput{})
 	pulumi.RegisterOutputType(ServiceApiMethodOutput{})

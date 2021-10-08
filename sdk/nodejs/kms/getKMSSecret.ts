@@ -67,3 +67,27 @@ export interface GetKMSSecretResult {
      */
     readonly plaintext: string;
 }
+
+export function getKMSSecretOutput(args: GetKMSSecretOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKMSSecretResult> {
+    return pulumi.output(args).apply(a => getKMSSecret(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getKMSSecret.
+ */
+export interface GetKMSSecretOutputArgs {
+    /**
+     * The [additional authenticated data](https://cloud.google.com/kms/docs/additional-authenticated-data) used for integrity checks during encryption and decryption.
+     */
+    additionalAuthenticatedData?: pulumi.Input<string>;
+    /**
+     * The ciphertext to be decrypted, encoded in base64
+     */
+    ciphertext: pulumi.Input<string>;
+    /**
+     * The id of the CryptoKey that will be used to
+     * decrypt the provided ciphertext. This is represented by the format
+     * `{projectId}/{location}/{keyRingName}/{cryptoKeyName}`.
+     */
+    cryptoKey: pulumi.Input<string>;
+}

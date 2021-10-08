@@ -89,3 +89,22 @@ export interface GetKMSCryptoKeyResult {
     readonly skipInitialVersionCreation: boolean;
     readonly versionTemplates: outputs.kms.GetKMSCryptoKeyVersionTemplate[];
 }
+
+export function getKMSCryptoKeyOutput(args: GetKMSCryptoKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKMSCryptoKeyResult> {
+    return pulumi.output(args).apply(a => getKMSCryptoKey(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getKMSCryptoKey.
+ */
+export interface GetKMSCryptoKeyOutputArgs {
+    /**
+     * The `selfLink` of the Google Cloud Platform KeyRing to which the key belongs.
+     */
+    keyRing: pulumi.Input<string>;
+    /**
+     * The CryptoKey's name.
+     * A CryptoKey’s name belonging to the specified Google Cloud Platform KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+     */
+    name: pulumi.Input<string>;
+}

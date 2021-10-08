@@ -70,3 +70,24 @@ export interface GetNodeTypesResult {
     readonly project: string;
     readonly zone: string;
 }
+
+export function getNodeTypesOutput(args?: GetNodeTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeTypesResult> {
+    return pulumi.output(args).apply(a => getNodeTypes(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getNodeTypes.
+ */
+export interface GetNodeTypesOutputArgs {
+    /**
+     * ID of the project to list available node types for.
+     * Should match the project the nodes of this type will be deployed to.
+     * Defaults to the project that the provider is authenticated with.
+     */
+    project?: pulumi.Input<string>;
+    /**
+     * The zone to list node types for. Should be in zone of intended node groups and region of referencing node template. If `zone` is not specified, the provider-level zone must be set and is used
+     * instead.
+     */
+    zone?: pulumi.Input<string>;
+}

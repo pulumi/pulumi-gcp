@@ -592,6 +592,14 @@ func (o AiFeatureStoreOnlineServingConfigPtrOutput) FixedNodeCount() pulumi.IntP
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AiDatasetEncryptionSpecInput)(nil)).Elem(), AiDatasetEncryptionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiDatasetEncryptionSpecPtrInput)(nil)).Elem(), AiDatasetEncryptionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEntityTypeMonitoringConfigInput)(nil)).Elem(), AiFeatureStoreEntityTypeMonitoringConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEntityTypeMonitoringConfigPtrInput)(nil)).Elem(), AiFeatureStoreEntityTypeMonitoringConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisInput)(nil)).Elem(), AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrInput)(nil)).Elem(), AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreOnlineServingConfigInput)(nil)).Elem(), AiFeatureStoreOnlineServingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreOnlineServingConfigPtrInput)(nil)).Elem(), AiFeatureStoreOnlineServingConfigArgs{})
 	pulumi.RegisterOutputType(AiDatasetEncryptionSpecOutput{})
 	pulumi.RegisterOutputType(AiDatasetEncryptionSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreEntityTypeMonitoringConfigOutput{})

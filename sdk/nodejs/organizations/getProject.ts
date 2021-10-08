@@ -64,3 +64,17 @@ export interface GetProjectResult {
     readonly projectId?: string;
     readonly skipDelete: boolean;
 }
+
+export function getProjectOutput(args?: GetProjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectResult> {
+    return pulumi.output(args).apply(a => getProject(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getProject.
+ */
+export interface GetProjectOutputArgs {
+    /**
+     * The project ID. If it is not provided, the provider project is used.
+     */
+    projectId?: pulumi.Input<string>;
+}

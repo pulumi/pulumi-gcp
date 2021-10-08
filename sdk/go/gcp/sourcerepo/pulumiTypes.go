@@ -470,6 +470,12 @@ func (o RepositoryPubsubConfigArrayOutput) Index(i pulumi.IntInput) RepositoryPu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryIamBindingConditionInput)(nil)).Elem(), RepositoryIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryIamBindingConditionPtrInput)(nil)).Elem(), RepositoryIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryIamMemberConditionInput)(nil)).Elem(), RepositoryIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryIamMemberConditionPtrInput)(nil)).Elem(), RepositoryIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryPubsubConfigInput)(nil)).Elem(), RepositoryPubsubConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryPubsubConfigArrayInput)(nil)).Elem(), RepositoryPubsubConfigArray{})
 	pulumi.RegisterOutputType(RepositoryIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(RepositoryIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryIamMemberConditionOutput{})

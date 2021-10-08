@@ -535,6 +535,14 @@ func (o DeploymentTargetImportArrayOutput) Index(i pulumi.IntInput) DeploymentTa
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentLabelInput)(nil)).Elem(), DeploymentLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentLabelArrayInput)(nil)).Elem(), DeploymentLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentTargetInput)(nil)).Elem(), DeploymentTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentTargetPtrInput)(nil)).Elem(), DeploymentTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentTargetConfigInput)(nil)).Elem(), DeploymentTargetConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentTargetConfigPtrInput)(nil)).Elem(), DeploymentTargetConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentTargetImportInput)(nil)).Elem(), DeploymentTargetImportArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentTargetImportArrayInput)(nil)).Elem(), DeploymentTargetImportArray{})
 	pulumi.RegisterOutputType(DeploymentLabelOutput{})
 	pulumi.RegisterOutputType(DeploymentLabelArrayOutput{})
 	pulumi.RegisterOutputType(DeploymentTargetOutput{})

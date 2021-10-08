@@ -66,3 +66,21 @@ export interface GetSecretResult {
     readonly topics: outputs.secretmanager.GetSecretTopic[];
     readonly ttl: string;
 }
+
+export function getSecretOutput(args: GetSecretOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretResult> {
+    return pulumi.output(args).apply(a => getSecret(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSecret.
+ */
+export interface GetSecretOutputArgs {
+    /**
+     * The ID of the project in which the resource belongs.
+     */
+    project?: pulumi.Input<string>;
+    /**
+     * The name of the secret.
+     */
+    secretId: pulumi.Input<string>;
+}

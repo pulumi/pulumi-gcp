@@ -635,6 +635,16 @@ func (o TriggerTransportPubsubArrayOutput) Index(i pulumi.IntInput) TriggerTrans
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerDestinationInput)(nil)).Elem(), TriggerDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerDestinationPtrInput)(nil)).Elem(), TriggerDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerDestinationCloudRunServiceInput)(nil)).Elem(), TriggerDestinationCloudRunServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerDestinationCloudRunServicePtrInput)(nil)).Elem(), TriggerDestinationCloudRunServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerMatchingCriteriaInput)(nil)).Elem(), TriggerMatchingCriteriaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerMatchingCriteriaArrayInput)(nil)).Elem(), TriggerMatchingCriteriaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerTransportInput)(nil)).Elem(), TriggerTransportArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerTransportArrayInput)(nil)).Elem(), TriggerTransportArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerTransportPubsubInput)(nil)).Elem(), TriggerTransportPubsubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerTransportPubsubArrayInput)(nil)).Elem(), TriggerTransportPubsubArray{})
 	pulumi.RegisterOutputType(TriggerDestinationOutput{})
 	pulumi.RegisterOutputType(TriggerDestinationPtrOutput{})
 	pulumi.RegisterOutputType(TriggerDestinationCloudRunServiceOutput{})

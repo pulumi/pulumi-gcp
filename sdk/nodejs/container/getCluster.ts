@@ -130,3 +130,28 @@ export interface GetClusterResult {
     readonly verticalPodAutoscalings: outputs.container.GetClusterVerticalPodAutoscaling[];
     readonly workloadIdentityConfigs: outputs.container.GetClusterWorkloadIdentityConfig[];
 }
+
+export function getClusterOutput(args: GetClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterResult> {
+    return pulumi.output(args).apply(a => getCluster(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCluster.
+ */
+export interface GetClusterOutputArgs {
+    /**
+     * The location (zone or region) this cluster has been
+     * created in. One of `location`, `region`, `zone`, or a provider-level `zone` must
+     * be specified.
+     */
+    location?: pulumi.Input<string>;
+    /**
+     * The name of the cluster.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
+    project?: pulumi.Input<string>;
+}

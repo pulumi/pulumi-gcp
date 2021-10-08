@@ -112,3 +112,35 @@ export interface GetNotificationChannelResult {
     readonly userLabels?: {[key: string]: string};
     readonly verificationStatus: string;
 }
+
+export function getNotificationChannelOutput(args?: GetNotificationChannelOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNotificationChannelResult> {
+    return pulumi.output(args).apply(a => getNotificationChannel(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getNotificationChannel.
+ */
+export interface GetNotificationChannelOutputArgs {
+    /**
+     * The display name for this notification channel.
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * Labels (corresponding to the
+     * NotificationChannelDescriptor schema) to filter the notification channels by.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
+    project?: pulumi.Input<string>;
+    /**
+     * The type of the notification channel.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * User-provided key-value labels to filter by.
+     */
+    userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}

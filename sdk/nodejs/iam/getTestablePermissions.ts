@@ -77,3 +77,25 @@ export interface GetTestablePermissionsResult {
     readonly permissions: outputs.iam.GetTestablePermissionsPermission[];
     readonly stages?: string[];
 }
+
+export function getTestablePermissionsOutput(args: GetTestablePermissionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTestablePermissionsResult> {
+    return pulumi.output(args).apply(a => getTestablePermissions(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTestablePermissions.
+ */
+export interface GetTestablePermissionsOutputArgs {
+    /**
+     * The level of support for custom roles. Can be one of `"NOT_SUPPORTED"`, `"SUPPORTED"`, `"TESTING"`. Default is `"SUPPORTED"`
+     */
+    customSupportLevel?: pulumi.Input<string>;
+    /**
+     * See [full resource name documentation](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more detail.
+     */
+    fullResourceName: pulumi.Input<string>;
+    /**
+     * The acceptable release stages of the permission in the output. Note that `BETA` does not include permissions in `GA`, but you can specify both with `["GA", "BETA"]` for example. Can be a list of `"ALPHA"`, `"BETA"`, `"GA"`, `"DEPRECATED"`. Default is `["GA"]`.
+     */
+    stages?: pulumi.Input<pulumi.Input<string>[]>;
+}

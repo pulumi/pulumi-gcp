@@ -74,3 +74,28 @@ export interface GetAccountKeyResult {
     readonly publicKey: string;
     readonly publicKeyType?: string;
 }
+
+export function getAccountKeyOutput(args: GetAccountKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountKeyResult> {
+    return pulumi.output(args).apply(a => getAccountKey(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAccountKey.
+ */
+export interface GetAccountKeyOutputArgs {
+    /**
+     * The name of the service account key. This must have format
+     * `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{KEYID}`, where `{ACCOUNT}`
+     * is the email address or unique id of the service account.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The ID of the project that the service account will be created in.
+     * Defaults to the provider project configuration.
+     */
+    project?: pulumi.Input<string>;
+    /**
+     * The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
+     */
+    publicKeyType?: pulumi.Input<string>;
+}

@@ -148,6 +148,8 @@ func (o EngineModelDefaultVersionPtrOutput) Name() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EngineModelDefaultVersionInput)(nil)).Elem(), EngineModelDefaultVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EngineModelDefaultVersionPtrInput)(nil)).Elem(), EngineModelDefaultVersionArgs{})
 	pulumi.RegisterOutputType(EngineModelDefaultVersionOutput{})
 	pulumi.RegisterOutputType(EngineModelDefaultVersionPtrOutput{})
 }

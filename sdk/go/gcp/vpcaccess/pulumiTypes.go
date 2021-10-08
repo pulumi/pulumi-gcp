@@ -159,6 +159,8 @@ func (o ConnectorSubnetPtrOutput) ProjectId() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorSubnetInput)(nil)).Elem(), ConnectorSubnetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorSubnetPtrInput)(nil)).Elem(), ConnectorSubnetArgs{})
 	pulumi.RegisterOutputType(ConnectorSubnetOutput{})
 	pulumi.RegisterOutputType(ConnectorSubnetPtrOutput{})
 }

@@ -1169,6 +1169,22 @@ func (o TableIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GCPolicyMaxAgeInput)(nil)).Elem(), GCPolicyMaxAgeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GCPolicyMaxAgePtrInput)(nil)).Elem(), GCPolicyMaxAgeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GCPolicyMaxVersionInput)(nil)).Elem(), GCPolicyMaxVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GCPolicyMaxVersionArrayInput)(nil)).Elem(), GCPolicyMaxVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceClusterInput)(nil)).Elem(), InstanceClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceClusterArrayInput)(nil)).Elem(), InstanceClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIamBindingConditionInput)(nil)).Elem(), InstanceIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIamBindingConditionPtrInput)(nil)).Elem(), InstanceIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIamMemberConditionInput)(nil)).Elem(), InstanceIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIamMemberConditionPtrInput)(nil)).Elem(), InstanceIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableColumnFamilyInput)(nil)).Elem(), TableColumnFamilyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableColumnFamilyArrayInput)(nil)).Elem(), TableColumnFamilyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableIamBindingConditionInput)(nil)).Elem(), TableIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableIamBindingConditionPtrInput)(nil)).Elem(), TableIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableIamMemberConditionInput)(nil)).Elem(), TableIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableIamMemberConditionPtrInput)(nil)).Elem(), TableIamMemberConditionArgs{})
 	pulumi.RegisterOutputType(GCPolicyMaxAgeOutput{})
 	pulumi.RegisterOutputType(GCPolicyMaxAgePtrOutput{})
 	pulumi.RegisterOutputType(GCPolicyMaxVersionOutput{})

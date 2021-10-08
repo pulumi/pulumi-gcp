@@ -862,6 +862,14 @@ func (o QueueStackdriverLoggingConfigPtrOutput) SamplingRatio() pulumi.Float64Pt
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*QueueAppEngineRoutingOverrideInput)(nil)).Elem(), QueueAppEngineRoutingOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueueAppEngineRoutingOverridePtrInput)(nil)).Elem(), QueueAppEngineRoutingOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueueRateLimitsInput)(nil)).Elem(), QueueRateLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueueRateLimitsPtrInput)(nil)).Elem(), QueueRateLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueueRetryConfigInput)(nil)).Elem(), QueueRetryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueueRetryConfigPtrInput)(nil)).Elem(), QueueRetryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueueStackdriverLoggingConfigInput)(nil)).Elem(), QueueStackdriverLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueueStackdriverLoggingConfigPtrInput)(nil)).Elem(), QueueStackdriverLoggingConfigArgs{})
 	pulumi.RegisterOutputType(QueueAppEngineRoutingOverrideOutput{})
 	pulumi.RegisterOutputType(QueueAppEngineRoutingOverridePtrOutput{})
 	pulumi.RegisterOutputType(QueueRateLimitsOutput{})

@@ -55,3 +55,17 @@ export interface GetTransferProjectServieAccountResult {
     readonly id: string;
     readonly project: string;
 }
+
+export function getTransferProjectServieAccountOutput(args?: GetTransferProjectServieAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransferProjectServieAccountResult> {
+    return pulumi.output(args).apply(a => getTransferProjectServieAccount(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTransferProjectServieAccount.
+ */
+export interface GetTransferProjectServieAccountOutputArgs {
+    /**
+     * The project ID. If it is not provided, the provider project is used.
+     */
+    project?: pulumi.Input<string>;
+}
