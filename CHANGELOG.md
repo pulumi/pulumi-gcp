@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v3.9.0 of the pulumi-terraform-bridge. This includes a change to emit input type registrations.
+_(none)_
 
 ---
+
+## 5.23.0 (2021-10-08)
+* Upgrade to v3.9.0 of the pulumi-terraform-bridge. This includes a change to emit input type registrations.
 
 ## 5.22.0 (2021-10-07)
 * Upgrade to v3.87.0 of the Google Beta Terraform Provider
