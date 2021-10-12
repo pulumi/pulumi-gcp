@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v3.88.0 of the Google Beta Terraform Provider
-  **PLEASE NOTE** there are breaking changes in the `gcp.gkehub.Feature` and `gcp.gkehub.FeatureMembership` where a number of parameters are not required due to changes in the upstream Google API.
+_(none)_
 
 ---
+
+## 5.24.0 (2021-10-12)
+* Upgrade to v3.88.0 of the Google Beta Terraform Provider
+  **PLEASE NOTE** there are breaking changes in the `gcp.gkehub.Feature` and `gcp.gkehub.FeatureMembership` where a number of parameters are not required due to changes in the upstream Google API.
 
 ## 5.23.0 (2021-10-08)
 * Upgrade to v3.9.0 of the pulumi-terraform-bridge. This includes a change to emit input type registrations.
