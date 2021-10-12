@@ -75,9 +75,17 @@ export class Feature extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * State of the Feature resource itself.
+     */
+    public /*out*/ readonly resourceStates!: pulumi.Output<outputs.gkehub.FeatureResourceState[]>;
+    /**
      * Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
      */
     public readonly spec!: pulumi.Output<outputs.gkehub.FeatureSpec | undefined>;
+    /**
+     * Output only. The Hub-wide Feature state
+     */
+    public /*out*/ readonly states!: pulumi.Output<outputs.gkehub.FeatureState[]>;
     /**
      * Output only. When the Feature resource was last updated.
      */
@@ -102,7 +110,9 @@ export class Feature extends pulumi.CustomResource {
             inputs["location"] = state ? state.location : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
+            inputs["resourceStates"] = state ? state.resourceStates : undefined;
             inputs["spec"] = state ? state.spec : undefined;
+            inputs["states"] = state ? state.states : undefined;
             inputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as FeatureArgs | undefined;
@@ -116,6 +126,8 @@ export class Feature extends pulumi.CustomResource {
             inputs["spec"] = args ? args.spec : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["deleteTime"] = undefined /*out*/;
+            inputs["resourceStates"] = undefined /*out*/;
+            inputs["states"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -154,9 +166,17 @@ export interface FeatureState {
      */
     project?: pulumi.Input<string>;
     /**
+     * State of the Feature resource itself.
+     */
+    resourceStates?: pulumi.Input<pulumi.Input<inputs.gkehub.FeatureResourceState>[]>;
+    /**
      * Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
      */
     spec?: pulumi.Input<inputs.gkehub.FeatureSpec>;
+    /**
+     * Output only. The Hub-wide Feature state
+     */
+    states?: pulumi.Input<pulumi.Input<inputs.gkehub.FeatureState>[]>;
     /**
      * Output only. When the Feature resource was last updated.
      */

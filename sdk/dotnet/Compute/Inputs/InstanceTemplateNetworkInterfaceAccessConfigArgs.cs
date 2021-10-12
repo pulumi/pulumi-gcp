@@ -20,9 +20,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? NatIp { get; set; }
 
         /// <summary>
-        /// The [networking tier][network-tier] used for configuring
-        /// this instance template. This field can take the following values: PREMIUM or
-        /// STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+        /// The service-level to be provided for IPv6 traffic when the
+        /// subnet has an external subnet. Only PREMIUM tier is valid for IPv6.
         /// </summary>
         [Input("networkTier")]
         public Input<string>? NetworkTier { get; set; }

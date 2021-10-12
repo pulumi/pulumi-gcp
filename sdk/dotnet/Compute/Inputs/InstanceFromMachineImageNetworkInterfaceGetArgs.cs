@@ -28,6 +28,17 @@ namespace Pulumi.Gcp.Compute.Inputs
             set => _aliasIpRanges = value;
         }
 
+        [Input("ipv6AccessConfigs")]
+        private InputList<Inputs.InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigGetArgs>? _ipv6AccessConfigs;
+        public InputList<Inputs.InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigGetArgs> Ipv6AccessConfigs
+        {
+            get => _ipv6AccessConfigs ?? (_ipv6AccessConfigs = new InputList<Inputs.InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigGetArgs>());
+            set => _ipv6AccessConfigs = value;
+        }
+
+        [Input("ipv6AccessType")]
+        public Input<string>? Ipv6AccessType { get; set; }
+
         /// <summary>
         /// A unique name for the resource, required by GCE.
         /// Changing this forces a new resource to be created.
@@ -43,6 +54,9 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         [Input("nicType")]
         public Input<string>? NicType { get; set; }
+
+        [Input("stackType")]
+        public Input<string>? StackType { get; set; }
 
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }

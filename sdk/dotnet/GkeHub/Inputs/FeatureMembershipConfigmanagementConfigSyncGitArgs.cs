@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.GkeHub.Inputs
 
     public sealed class FeatureMembershipConfigmanagementConfigSyncGitArgs : Pulumi.ResourceArgs
     {
+        [Input("gcpServiceAccountEmail")]
+        public Input<string>? GcpServiceAccountEmail { get; set; }
+
         /// <summary>
         /// URL for the HTTPS proxy to be used when communicating with the Git repo.
         /// </summary>

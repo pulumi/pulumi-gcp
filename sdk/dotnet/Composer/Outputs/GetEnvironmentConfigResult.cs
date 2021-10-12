@@ -25,6 +25,7 @@ namespace Pulumi.Gcp.Composer.Outputs
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigSoftwareConfigResult> SoftwareConfigs;
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigWebServerConfigResult> WebServerConfigs;
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigWebServerNetworkAccessControlResult> WebServerNetworkAccessControls;
+        public readonly ImmutableArray<Outputs.GetEnvironmentConfigWorkloadsConfigResult> WorkloadsConfigs;
 
         [OutputConstructor]
         private GetEnvironmentConfigResult(
@@ -50,7 +51,9 @@ namespace Pulumi.Gcp.Composer.Outputs
 
             ImmutableArray<Outputs.GetEnvironmentConfigWebServerConfigResult> webServerConfigs,
 
-            ImmutableArray<Outputs.GetEnvironmentConfigWebServerNetworkAccessControlResult> webServerNetworkAccessControls)
+            ImmutableArray<Outputs.GetEnvironmentConfigWebServerNetworkAccessControlResult> webServerNetworkAccessControls,
+
+            ImmutableArray<Outputs.GetEnvironmentConfigWorkloadsConfigResult> workloadsConfigs)
         {
             AirflowUri = airflowUri;
             DagGcsPrefix = dagGcsPrefix;
@@ -64,6 +67,7 @@ namespace Pulumi.Gcp.Composer.Outputs
             SoftwareConfigs = softwareConfigs;
             WebServerConfigs = webServerConfigs;
             WebServerNetworkAccessControls = webServerNetworkAccessControls;
+            WorkloadsConfigs = workloadsConfigs;
         }
     }
 }

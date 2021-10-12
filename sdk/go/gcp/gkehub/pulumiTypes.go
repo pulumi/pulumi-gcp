@@ -531,6 +531,7 @@ func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) SourceFormat() pul
 }
 
 type FeatureMembershipConfigmanagementConfigSyncGit struct {
+	GcpServiceAccountEmail *string `pulumi:"gcpServiceAccountEmail"`
 	// URL for the HTTPS proxy to be used when communicating with the Git repo.
 	HttpsProxy *string `pulumi:"httpsProxy"`
 	// The path within the Git repository that represents the top level of the repo to sync. Default: the root directory of the repository.
@@ -559,6 +560,7 @@ type FeatureMembershipConfigmanagementConfigSyncGitInput interface {
 }
 
 type FeatureMembershipConfigmanagementConfigSyncGitArgs struct {
+	GcpServiceAccountEmail pulumi.StringPtrInput `pulumi:"gcpServiceAccountEmail"`
 	// URL for the HTTPS proxy to be used when communicating with the Git repo.
 	HttpsProxy pulumi.StringPtrInput `pulumi:"httpsProxy"`
 	// The path within the Git repository that represents the top level of the repo to sync. Default: the root directory of the repository.
@@ -652,6 +654,10 @@ func (o FeatureMembershipConfigmanagementConfigSyncGitOutput) ToFeatureMembershi
 	}).(FeatureMembershipConfigmanagementConfigSyncGitPtrOutput)
 }
 
+func (o FeatureMembershipConfigmanagementConfigSyncGitOutput) GcpServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSyncGit) *string { return v.GcpServiceAccountEmail }).(pulumi.StringPtrOutput)
+}
+
 // URL for the HTTPS proxy to be used when communicating with the Git repo.
 func (o FeatureMembershipConfigmanagementConfigSyncGitOutput) HttpsProxy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSyncGit) *string { return v.HttpsProxy }).(pulumi.StringPtrOutput)
@@ -709,6 +715,15 @@ func (o FeatureMembershipConfigmanagementConfigSyncGitPtrOutput) Elem() FeatureM
 		var ret FeatureMembershipConfigmanagementConfigSyncGit
 		return ret
 	}).(FeatureMembershipConfigmanagementConfigSyncGitOutput)
+}
+
+func (o FeatureMembershipConfigmanagementConfigSyncGitPtrOutput) GcpServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSyncGit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GcpServiceAccountEmail
+	}).(pulumi.StringPtrOutput)
 }
 
 // URL for the HTTPS proxy to be used when communicating with the Git repo.
@@ -1190,6 +1205,106 @@ func (o FeatureMembershipConfigmanagementPolicyControllerPtrOutput) TemplateLibr
 	}).(pulumi.BoolPtrOutput)
 }
 
+type FeatureResourceState struct {
+	HasResources *bool   `pulumi:"hasResources"`
+	State        *string `pulumi:"state"`
+}
+
+// FeatureResourceStateInput is an input type that accepts FeatureResourceStateArgs and FeatureResourceStateOutput values.
+// You can construct a concrete instance of `FeatureResourceStateInput` via:
+//
+//          FeatureResourceStateArgs{...}
+type FeatureResourceStateInput interface {
+	pulumi.Input
+
+	ToFeatureResourceStateOutput() FeatureResourceStateOutput
+	ToFeatureResourceStateOutputWithContext(context.Context) FeatureResourceStateOutput
+}
+
+type FeatureResourceStateArgs struct {
+	HasResources pulumi.BoolPtrInput   `pulumi:"hasResources"`
+	State        pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (FeatureResourceStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureResourceState)(nil)).Elem()
+}
+
+func (i FeatureResourceStateArgs) ToFeatureResourceStateOutput() FeatureResourceStateOutput {
+	return i.ToFeatureResourceStateOutputWithContext(context.Background())
+}
+
+func (i FeatureResourceStateArgs) ToFeatureResourceStateOutputWithContext(ctx context.Context) FeatureResourceStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureResourceStateOutput)
+}
+
+// FeatureResourceStateArrayInput is an input type that accepts FeatureResourceStateArray and FeatureResourceStateArrayOutput values.
+// You can construct a concrete instance of `FeatureResourceStateArrayInput` via:
+//
+//          FeatureResourceStateArray{ FeatureResourceStateArgs{...} }
+type FeatureResourceStateArrayInput interface {
+	pulumi.Input
+
+	ToFeatureResourceStateArrayOutput() FeatureResourceStateArrayOutput
+	ToFeatureResourceStateArrayOutputWithContext(context.Context) FeatureResourceStateArrayOutput
+}
+
+type FeatureResourceStateArray []FeatureResourceStateInput
+
+func (FeatureResourceStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FeatureResourceState)(nil)).Elem()
+}
+
+func (i FeatureResourceStateArray) ToFeatureResourceStateArrayOutput() FeatureResourceStateArrayOutput {
+	return i.ToFeatureResourceStateArrayOutputWithContext(context.Background())
+}
+
+func (i FeatureResourceStateArray) ToFeatureResourceStateArrayOutputWithContext(ctx context.Context) FeatureResourceStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureResourceStateArrayOutput)
+}
+
+type FeatureResourceStateOutput struct{ *pulumi.OutputState }
+
+func (FeatureResourceStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureResourceState)(nil)).Elem()
+}
+
+func (o FeatureResourceStateOutput) ToFeatureResourceStateOutput() FeatureResourceStateOutput {
+	return o
+}
+
+func (o FeatureResourceStateOutput) ToFeatureResourceStateOutputWithContext(ctx context.Context) FeatureResourceStateOutput {
+	return o
+}
+
+func (o FeatureResourceStateOutput) HasResources() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FeatureResourceState) *bool { return v.HasResources }).(pulumi.BoolPtrOutput)
+}
+
+func (o FeatureResourceStateOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureResourceState) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type FeatureResourceStateArrayOutput struct{ *pulumi.OutputState }
+
+func (FeatureResourceStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FeatureResourceState)(nil)).Elem()
+}
+
+func (o FeatureResourceStateArrayOutput) ToFeatureResourceStateArrayOutput() FeatureResourceStateArrayOutput {
+	return o
+}
+
+func (o FeatureResourceStateArrayOutput) ToFeatureResourceStateArrayOutputWithContext(ctx context.Context) FeatureResourceStateArrayOutput {
+	return o
+}
+
+func (o FeatureResourceStateArrayOutput) Index(i pulumi.IntInput) FeatureResourceStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FeatureResourceState {
+		return vs[0].([]FeatureResourceState)[vs[1].(int)]
+	}).(FeatureResourceStateOutput)
+}
+
 type FeatureSpec struct {
 	// Multicluster Ingress-specific spec.
 	// The `multiclusteringress` block supports:
@@ -1333,7 +1448,7 @@ func (o FeatureSpecPtrOutput) Multiclusteringress() FeatureSpecMulticlusteringre
 
 type FeatureSpecMulticlusteringress struct {
 	// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
-	ConfigMembership *string `pulumi:"configMembership"`
+	ConfigMembership string `pulumi:"configMembership"`
 }
 
 // FeatureSpecMulticlusteringressInput is an input type that accepts FeatureSpecMulticlusteringressArgs and FeatureSpecMulticlusteringressOutput values.
@@ -1349,7 +1464,7 @@ type FeatureSpecMulticlusteringressInput interface {
 
 type FeatureSpecMulticlusteringressArgs struct {
 	// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
-	ConfigMembership pulumi.StringPtrInput `pulumi:"configMembership"`
+	ConfigMembership pulumi.StringInput `pulumi:"configMembership"`
 }
 
 func (FeatureSpecMulticlusteringressArgs) ElementType() reflect.Type {
@@ -1430,8 +1545,8 @@ func (o FeatureSpecMulticlusteringressOutput) ToFeatureSpecMulticlusteringressPt
 }
 
 // Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
-func (o FeatureSpecMulticlusteringressOutput) ConfigMembership() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FeatureSpecMulticlusteringress) *string { return v.ConfigMembership }).(pulumi.StringPtrOutput)
+func (o FeatureSpecMulticlusteringressOutput) ConfigMembership() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureSpecMulticlusteringress) string { return v.ConfigMembership }).(pulumi.StringOutput)
 }
 
 type FeatureSpecMulticlusteringressPtrOutput struct{ *pulumi.OutputState }
@@ -1464,8 +1579,208 @@ func (o FeatureSpecMulticlusteringressPtrOutput) ConfigMembership() pulumi.Strin
 		if v == nil {
 			return nil
 		}
-		return v.ConfigMembership
+		return &v.ConfigMembership
 	}).(pulumi.StringPtrOutput)
+}
+
+type FeatureStateType struct {
+	States []FeatureStateState `pulumi:"states"`
+}
+
+// FeatureStateTypeInput is an input type that accepts FeatureStateTypeArgs and FeatureStateTypeOutput values.
+// You can construct a concrete instance of `FeatureStateTypeInput` via:
+//
+//          FeatureStateTypeArgs{...}
+type FeatureStateTypeInput interface {
+	pulumi.Input
+
+	ToFeatureStateTypeOutput() FeatureStateTypeOutput
+	ToFeatureStateTypeOutputWithContext(context.Context) FeatureStateTypeOutput
+}
+
+type FeatureStateTypeArgs struct {
+	States FeatureStateStateArrayInput `pulumi:"states"`
+}
+
+func (FeatureStateTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureStateType)(nil)).Elem()
+}
+
+func (i FeatureStateTypeArgs) ToFeatureStateTypeOutput() FeatureStateTypeOutput {
+	return i.ToFeatureStateTypeOutputWithContext(context.Background())
+}
+
+func (i FeatureStateTypeArgs) ToFeatureStateTypeOutputWithContext(ctx context.Context) FeatureStateTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureStateTypeOutput)
+}
+
+// FeatureStateTypeArrayInput is an input type that accepts FeatureStateTypeArray and FeatureStateTypeArrayOutput values.
+// You can construct a concrete instance of `FeatureStateTypeArrayInput` via:
+//
+//          FeatureStateTypeArray{ FeatureStateTypeArgs{...} }
+type FeatureStateTypeArrayInput interface {
+	pulumi.Input
+
+	ToFeatureStateTypeArrayOutput() FeatureStateTypeArrayOutput
+	ToFeatureStateTypeArrayOutputWithContext(context.Context) FeatureStateTypeArrayOutput
+}
+
+type FeatureStateTypeArray []FeatureStateTypeInput
+
+func (FeatureStateTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FeatureStateType)(nil)).Elem()
+}
+
+func (i FeatureStateTypeArray) ToFeatureStateTypeArrayOutput() FeatureStateTypeArrayOutput {
+	return i.ToFeatureStateTypeArrayOutputWithContext(context.Background())
+}
+
+func (i FeatureStateTypeArray) ToFeatureStateTypeArrayOutputWithContext(ctx context.Context) FeatureStateTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureStateTypeArrayOutput)
+}
+
+type FeatureStateTypeOutput struct{ *pulumi.OutputState }
+
+func (FeatureStateTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureStateType)(nil)).Elem()
+}
+
+func (o FeatureStateTypeOutput) ToFeatureStateTypeOutput() FeatureStateTypeOutput {
+	return o
+}
+
+func (o FeatureStateTypeOutput) ToFeatureStateTypeOutputWithContext(ctx context.Context) FeatureStateTypeOutput {
+	return o
+}
+
+func (o FeatureStateTypeOutput) States() FeatureStateStateArrayOutput {
+	return o.ApplyT(func(v FeatureStateType) []FeatureStateState { return v.States }).(FeatureStateStateArrayOutput)
+}
+
+type FeatureStateTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (FeatureStateTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FeatureStateType)(nil)).Elem()
+}
+
+func (o FeatureStateTypeArrayOutput) ToFeatureStateTypeArrayOutput() FeatureStateTypeArrayOutput {
+	return o
+}
+
+func (o FeatureStateTypeArrayOutput) ToFeatureStateTypeArrayOutputWithContext(ctx context.Context) FeatureStateTypeArrayOutput {
+	return o
+}
+
+func (o FeatureStateTypeArrayOutput) Index(i pulumi.IntInput) FeatureStateTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FeatureStateType {
+		return vs[0].([]FeatureStateType)[vs[1].(int)]
+	}).(FeatureStateTypeOutput)
+}
+
+type FeatureStateState struct {
+	Code        *string `pulumi:"code"`
+	Description *string `pulumi:"description"`
+	UpdateTime  *string `pulumi:"updateTime"`
+}
+
+// FeatureStateStateInput is an input type that accepts FeatureStateStateArgs and FeatureStateStateOutput values.
+// You can construct a concrete instance of `FeatureStateStateInput` via:
+//
+//          FeatureStateStateArgs{...}
+type FeatureStateStateInput interface {
+	pulumi.Input
+
+	ToFeatureStateStateOutput() FeatureStateStateOutput
+	ToFeatureStateStateOutputWithContext(context.Context) FeatureStateStateOutput
+}
+
+type FeatureStateStateArgs struct {
+	Code        pulumi.StringPtrInput `pulumi:"code"`
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	UpdateTime  pulumi.StringPtrInput `pulumi:"updateTime"`
+}
+
+func (FeatureStateStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureStateState)(nil)).Elem()
+}
+
+func (i FeatureStateStateArgs) ToFeatureStateStateOutput() FeatureStateStateOutput {
+	return i.ToFeatureStateStateOutputWithContext(context.Background())
+}
+
+func (i FeatureStateStateArgs) ToFeatureStateStateOutputWithContext(ctx context.Context) FeatureStateStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureStateStateOutput)
+}
+
+// FeatureStateStateArrayInput is an input type that accepts FeatureStateStateArray and FeatureStateStateArrayOutput values.
+// You can construct a concrete instance of `FeatureStateStateArrayInput` via:
+//
+//          FeatureStateStateArray{ FeatureStateStateArgs{...} }
+type FeatureStateStateArrayInput interface {
+	pulumi.Input
+
+	ToFeatureStateStateArrayOutput() FeatureStateStateArrayOutput
+	ToFeatureStateStateArrayOutputWithContext(context.Context) FeatureStateStateArrayOutput
+}
+
+type FeatureStateStateArray []FeatureStateStateInput
+
+func (FeatureStateStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FeatureStateState)(nil)).Elem()
+}
+
+func (i FeatureStateStateArray) ToFeatureStateStateArrayOutput() FeatureStateStateArrayOutput {
+	return i.ToFeatureStateStateArrayOutputWithContext(context.Background())
+}
+
+func (i FeatureStateStateArray) ToFeatureStateStateArrayOutputWithContext(ctx context.Context) FeatureStateStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureStateStateArrayOutput)
+}
+
+type FeatureStateStateOutput struct{ *pulumi.OutputState }
+
+func (FeatureStateStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureStateState)(nil)).Elem()
+}
+
+func (o FeatureStateStateOutput) ToFeatureStateStateOutput() FeatureStateStateOutput {
+	return o
+}
+
+func (o FeatureStateStateOutput) ToFeatureStateStateOutputWithContext(ctx context.Context) FeatureStateStateOutput {
+	return o
+}
+
+func (o FeatureStateStateOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureStateState) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+func (o FeatureStateStateOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureStateState) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o FeatureStateStateOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureStateState) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+}
+
+type FeatureStateStateArrayOutput struct{ *pulumi.OutputState }
+
+func (FeatureStateStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FeatureStateState)(nil)).Elem()
+}
+
+func (o FeatureStateStateArrayOutput) ToFeatureStateStateArrayOutput() FeatureStateStateArrayOutput {
+	return o
+}
+
+func (o FeatureStateStateArrayOutput) ToFeatureStateStateArrayOutputWithContext(ctx context.Context) FeatureStateStateArrayOutput {
+	return o
+}
+
+func (o FeatureStateStateArrayOutput) Index(i pulumi.IntInput) FeatureStateStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FeatureStateState {
+		return vs[0].([]FeatureStateState)[vs[1].(int)]
+	}).(FeatureStateStateOutput)
 }
 
 type MembershipAuthority struct {
@@ -1888,10 +2203,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipConfigmanagementHierarchyControllerPtrInput)(nil)).Elem(), FeatureMembershipConfigmanagementHierarchyControllerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipConfigmanagementPolicyControllerInput)(nil)).Elem(), FeatureMembershipConfigmanagementPolicyControllerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipConfigmanagementPolicyControllerPtrInput)(nil)).Elem(), FeatureMembershipConfigmanagementPolicyControllerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureResourceStateInput)(nil)).Elem(), FeatureResourceStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureResourceStateArrayInput)(nil)).Elem(), FeatureResourceStateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecInput)(nil)).Elem(), FeatureSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecPtrInput)(nil)).Elem(), FeatureSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecMulticlusteringressInput)(nil)).Elem(), FeatureSpecMulticlusteringressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecMulticlusteringressPtrInput)(nil)).Elem(), FeatureSpecMulticlusteringressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureStateTypeInput)(nil)).Elem(), FeatureStateTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureStateTypeArrayInput)(nil)).Elem(), FeatureStateTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureStateStateInput)(nil)).Elem(), FeatureStateStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureStateStateArrayInput)(nil)).Elem(), FeatureStateStateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipAuthorityInput)(nil)).Elem(), MembershipAuthorityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipAuthorityPtrInput)(nil)).Elem(), MembershipAuthorityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipEndpointInput)(nil)).Elem(), MembershipEndpointArgs{})
@@ -1910,10 +2231,16 @@ func init() {
 	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementHierarchyControllerPtrOutput{})
 	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementPolicyControllerOutput{})
 	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementPolicyControllerPtrOutput{})
+	pulumi.RegisterOutputType(FeatureResourceStateOutput{})
+	pulumi.RegisterOutputType(FeatureResourceStateArrayOutput{})
 	pulumi.RegisterOutputType(FeatureSpecOutput{})
 	pulumi.RegisterOutputType(FeatureSpecPtrOutput{})
 	pulumi.RegisterOutputType(FeatureSpecMulticlusteringressOutput{})
 	pulumi.RegisterOutputType(FeatureSpecMulticlusteringressPtrOutput{})
+	pulumi.RegisterOutputType(FeatureStateTypeOutput{})
+	pulumi.RegisterOutputType(FeatureStateTypeArrayOutput{})
+	pulumi.RegisterOutputType(FeatureStateStateOutput{})
+	pulumi.RegisterOutputType(FeatureStateStateArrayOutput{})
 	pulumi.RegisterOutputType(MembershipAuthorityOutput{})
 	pulumi.RegisterOutputType(MembershipAuthorityPtrOutput{})
 	pulumi.RegisterOutputType(MembershipEndpointOutput{})

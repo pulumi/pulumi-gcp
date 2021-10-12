@@ -28,6 +28,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// interfaces on subnet-mode networks. Structure documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceTemplateNetworkInterfaceAliasIpRangeResult> AliasIpRanges;
+        public readonly ImmutableArray<Outputs.GetInstanceTemplateNetworkInterfaceIpv6AccessConfigResult> Ipv6AccessConfigs;
+        public readonly string Ipv6AccessType;
         /// <summary>
         /// The name of the instance template. One of `name` or `filter` must be provided.
         /// </summary>
@@ -44,6 +46,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string NetworkIp;
         public readonly string NicType;
+        public readonly string StackType;
         /// <summary>
         /// the name of the subnetwork to attach this interface
         /// to. The subnetwork must exist in the same `region` this instance will be
@@ -62,6 +65,10 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             ImmutableArray<Outputs.GetInstanceTemplateNetworkInterfaceAliasIpRangeResult> aliasIpRanges,
 
+            ImmutableArray<Outputs.GetInstanceTemplateNetworkInterfaceIpv6AccessConfigResult> ipv6AccessConfigs,
+
+            string ipv6AccessType,
+
             string name,
 
             string network,
@@ -70,16 +77,21 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string nicType,
 
+            string stackType,
+
             string subnetwork,
 
             string subnetworkProject)
         {
             AccessConfigs = accessConfigs;
             AliasIpRanges = aliasIpRanges;
+            Ipv6AccessConfigs = ipv6AccessConfigs;
+            Ipv6AccessType = ipv6AccessType;
             Name = name;
             Network = network;
             NetworkIp = networkIp;
             NicType = nicType;
+            StackType = stackType;
             Subnetwork = subnetwork;
             SubnetworkProject = subnetworkProject;
         }

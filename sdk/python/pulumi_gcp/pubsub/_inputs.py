@@ -12,6 +12,7 @@ __all__ = [
     'LiteSubscriptionDeliveryConfigArgs',
     'LiteTopicPartitionConfigArgs',
     'LiteTopicPartitionConfigCapacityArgs',
+    'LiteTopicReservationConfigArgs',
     'LiteTopicRetentionConfigArgs',
     'SubscriptionDeadLetterPolicyArgs',
     'SubscriptionExpirationPolicyArgs',
@@ -125,6 +126,29 @@ class LiteTopicPartitionConfigCapacityArgs:
     @subscribe_mib_per_sec.setter
     def subscribe_mib_per_sec(self, value: pulumi.Input[int]):
         pulumi.set(self, "subscribe_mib_per_sec", value)
+
+
+@pulumi.input_type
+class LiteTopicReservationConfigArgs:
+    def __init__(__self__, *,
+                 throughput_reservation: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] throughput_reservation: The Reservation to use for this topic's throughput capacity.
+        """
+        if throughput_reservation is not None:
+            pulumi.set(__self__, "throughput_reservation", throughput_reservation)
+
+    @property
+    @pulumi.getter(name="throughputReservation")
+    def throughput_reservation(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Reservation to use for this topic's throughput capacity.
+        """
+        return pulumi.get(self, "throughput_reservation")
+
+    @throughput_reservation.setter
+    def throughput_reservation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "throughput_reservation", value)
 
 
 @pulumi.input_type

@@ -14,6 +14,7 @@ export * from "./bucketIAMPolicy";
 export * from "./bucketObject";
 export * from "./defaultObjectACL";
 export * from "./defaultObjectAccessControl";
+export * from "./getBucket";
 export * from "./getBucketObject";
 export * from "./getBucketObjectContent";
 export * from "./getObjectSignedUrl";

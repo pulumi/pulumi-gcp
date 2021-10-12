@@ -27,7 +27,7 @@ class TriggerArgs:
         The set of arguments for constructing a Trigger resource.
         :param pulumi.Input['TriggerDestinationArgs'] destination: Required. Destination specifies where the events should be sent to.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[Sequence[pulumi.Input['TriggerMatchingCriteriaArgs']]] matching_criterias: Required. The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+        :param pulumi.Input[Sequence[pulumi.Input['TriggerMatchingCriteriaArgs']]] matching_criterias: Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User labels attached to the triggers that can be used to group resources.
         :param pulumi.Input[str] name: Required. The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
         :param pulumi.Input[str] project: The project for the resource
@@ -76,7 +76,7 @@ class TriggerArgs:
     @pulumi.getter(name="matchingCriterias")
     def matching_criterias(self) -> pulumi.Input[Sequence[pulumi.Input['TriggerMatchingCriteriaArgs']]]:
         """
-        Required. The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+        Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
         """
         return pulumi.get(self, "matching_criterias")
 
@@ -158,6 +158,7 @@ class _TriggerState:
                  project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  transports: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerTransportArgs']]]] = None,
+                 uid: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Trigger resources.
@@ -167,11 +168,13 @@ class _TriggerState:
                requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User labels attached to the triggers that can be used to group resources.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[Sequence[pulumi.Input['TriggerMatchingCriteriaArgs']]] matching_criterias: Required. The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+        :param pulumi.Input[Sequence[pulumi.Input['TriggerMatchingCriteriaArgs']]] matching_criterias: Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
         :param pulumi.Input[str] name: Required. The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] service_account: Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
         :param pulumi.Input[Sequence[pulumi.Input['TriggerTransportArgs']]] transports: Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+        :param pulumi.Input[str] uid: Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain
+               unchanged until the resource is deleted.
         :param pulumi.Input[str] update_time: Output only. The last-modified time.
         """
         if create_time is not None:
@@ -194,6 +197,8 @@ class _TriggerState:
             pulumi.set(__self__, "service_account", service_account)
         if transports is not None:
             pulumi.set(__self__, "transports", transports)
+        if uid is not None:
+            pulumi.set(__self__, "uid", uid)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
 
@@ -262,7 +267,7 @@ class _TriggerState:
     @pulumi.getter(name="matchingCriterias")
     def matching_criterias(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TriggerMatchingCriteriaArgs']]]]:
         """
-        Required. The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+        Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
         """
         return pulumi.get(self, "matching_criterias")
 
@@ -317,6 +322,19 @@ class _TriggerState:
     @transports.setter
     def transports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerTransportArgs']]]]):
         pulumi.set(self, "transports", value)
+
+    @property
+    @pulumi.getter
+    def uid(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain
+        unchanged until the resource is deleted.
+        """
+        return pulumi.get(self, "uid")
+
+    @uid.setter
+    def uid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uid", value)
 
     @property
     @pulumi.getter(name="updateTime")
@@ -409,7 +427,7 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['TriggerDestinationArgs']] destination: Required. Destination specifies where the events should be sent to.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User labels attached to the triggers that can be used to group resources.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerMatchingCriteriaArgs']]]] matching_criterias: Required. The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerMatchingCriteriaArgs']]]] matching_criterias: Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
         :param pulumi.Input[str] name: Required. The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] service_account: Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
@@ -531,6 +549,7 @@ class Trigger(pulumi.CustomResource):
             __props__.__dict__["transports"] = transports
             __props__.__dict__["create_time"] = None
             __props__.__dict__["etag"] = None
+            __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
         super(Trigger, __self__).__init__(
             'gcp:eventarc/trigger:Trigger',
@@ -552,6 +571,7 @@ class Trigger(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             service_account: Optional[pulumi.Input[str]] = None,
             transports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerTransportArgs']]]]] = None,
+            uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Trigger':
         """
         Get an existing Trigger resource's state with the given name, id, and optional extra
@@ -566,11 +586,13 @@ class Trigger(pulumi.CustomResource):
                requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User labels attached to the triggers that can be used to group resources.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerMatchingCriteriaArgs']]]] matching_criterias: Required. The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerMatchingCriteriaArgs']]]] matching_criterias: Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
         :param pulumi.Input[str] name: Required. The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] service_account: Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerTransportArgs']]]] transports: Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+        :param pulumi.Input[str] uid: Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain
+               unchanged until the resource is deleted.
         :param pulumi.Input[str] update_time: Output only. The last-modified time.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -587,6 +609,7 @@ class Trigger(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["service_account"] = service_account
         __props__.__dict__["transports"] = transports
+        __props__.__dict__["uid"] = uid
         __props__.__dict__["update_time"] = update_time
         return Trigger(resource_name, opts=opts, __props__=__props__)
 
@@ -635,7 +658,7 @@ class Trigger(pulumi.CustomResource):
     @pulumi.getter(name="matchingCriterias")
     def matching_criterias(self) -> pulumi.Output[Sequence['outputs.TriggerMatchingCriteria']]:
         """
-        Required. The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+        Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
         """
         return pulumi.get(self, "matching_criterias")
 
@@ -670,6 +693,15 @@ class Trigger(pulumi.CustomResource):
         Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
         """
         return pulumi.get(self, "transports")
+
+    @property
+    @pulumi.getter
+    def uid(self) -> pulumi.Output[str]:
+        """
+        Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain
+        unchanged until the resource is deleted.
+        """
+        return pulumi.get(self, "uid")
 
     @property
     @pulumi.getter(name="updateTime")

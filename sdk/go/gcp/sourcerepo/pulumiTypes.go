@@ -469,6 +469,112 @@ func (o RepositoryPubsubConfigArrayOutput) Index(i pulumi.IntInput) RepositoryPu
 	}).(RepositoryPubsubConfigOutput)
 }
 
+type GetRepositoryPubsubConfig struct {
+	MessageFormat       string `pulumi:"messageFormat"`
+	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
+	Topic               string `pulumi:"topic"`
+}
+
+// GetRepositoryPubsubConfigInput is an input type that accepts GetRepositoryPubsubConfigArgs and GetRepositoryPubsubConfigOutput values.
+// You can construct a concrete instance of `GetRepositoryPubsubConfigInput` via:
+//
+//          GetRepositoryPubsubConfigArgs{...}
+type GetRepositoryPubsubConfigInput interface {
+	pulumi.Input
+
+	ToGetRepositoryPubsubConfigOutput() GetRepositoryPubsubConfigOutput
+	ToGetRepositoryPubsubConfigOutputWithContext(context.Context) GetRepositoryPubsubConfigOutput
+}
+
+type GetRepositoryPubsubConfigArgs struct {
+	MessageFormat       pulumi.StringInput `pulumi:"messageFormat"`
+	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
+	Topic               pulumi.StringInput `pulumi:"topic"`
+}
+
+func (GetRepositoryPubsubConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryPubsubConfig)(nil)).Elem()
+}
+
+func (i GetRepositoryPubsubConfigArgs) ToGetRepositoryPubsubConfigOutput() GetRepositoryPubsubConfigOutput {
+	return i.ToGetRepositoryPubsubConfigOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryPubsubConfigArgs) ToGetRepositoryPubsubConfigOutputWithContext(ctx context.Context) GetRepositoryPubsubConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryPubsubConfigOutput)
+}
+
+// GetRepositoryPubsubConfigArrayInput is an input type that accepts GetRepositoryPubsubConfigArray and GetRepositoryPubsubConfigArrayOutput values.
+// You can construct a concrete instance of `GetRepositoryPubsubConfigArrayInput` via:
+//
+//          GetRepositoryPubsubConfigArray{ GetRepositoryPubsubConfigArgs{...} }
+type GetRepositoryPubsubConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRepositoryPubsubConfigArrayOutput() GetRepositoryPubsubConfigArrayOutput
+	ToGetRepositoryPubsubConfigArrayOutputWithContext(context.Context) GetRepositoryPubsubConfigArrayOutput
+}
+
+type GetRepositoryPubsubConfigArray []GetRepositoryPubsubConfigInput
+
+func (GetRepositoryPubsubConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryPubsubConfig)(nil)).Elem()
+}
+
+func (i GetRepositoryPubsubConfigArray) ToGetRepositoryPubsubConfigArrayOutput() GetRepositoryPubsubConfigArrayOutput {
+	return i.ToGetRepositoryPubsubConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryPubsubConfigArray) ToGetRepositoryPubsubConfigArrayOutputWithContext(ctx context.Context) GetRepositoryPubsubConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryPubsubConfigArrayOutput)
+}
+
+type GetRepositoryPubsubConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryPubsubConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryPubsubConfig)(nil)).Elem()
+}
+
+func (o GetRepositoryPubsubConfigOutput) ToGetRepositoryPubsubConfigOutput() GetRepositoryPubsubConfigOutput {
+	return o
+}
+
+func (o GetRepositoryPubsubConfigOutput) ToGetRepositoryPubsubConfigOutputWithContext(ctx context.Context) GetRepositoryPubsubConfigOutput {
+	return o
+}
+
+func (o GetRepositoryPubsubConfigOutput) MessageFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoryPubsubConfig) string { return v.MessageFormat }).(pulumi.StringOutput)
+}
+
+func (o GetRepositoryPubsubConfigOutput) ServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoryPubsubConfig) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
+}
+
+func (o GetRepositoryPubsubConfigOutput) Topic() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoryPubsubConfig) string { return v.Topic }).(pulumi.StringOutput)
+}
+
+type GetRepositoryPubsubConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryPubsubConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryPubsubConfig)(nil)).Elem()
+}
+
+func (o GetRepositoryPubsubConfigArrayOutput) ToGetRepositoryPubsubConfigArrayOutput() GetRepositoryPubsubConfigArrayOutput {
+	return o
+}
+
+func (o GetRepositoryPubsubConfigArrayOutput) ToGetRepositoryPubsubConfigArrayOutputWithContext(ctx context.Context) GetRepositoryPubsubConfigArrayOutput {
+	return o
+}
+
+func (o GetRepositoryPubsubConfigArrayOutput) Index(i pulumi.IntInput) GetRepositoryPubsubConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRepositoryPubsubConfig {
+		return vs[0].([]GetRepositoryPubsubConfig)[vs[1].(int)]
+	}).(GetRepositoryPubsubConfigOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryIamBindingConditionInput)(nil)).Elem(), RepositoryIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryIamBindingConditionPtrInput)(nil)).Elem(), RepositoryIamBindingConditionArgs{})
@@ -476,10 +582,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryIamMemberConditionPtrInput)(nil)).Elem(), RepositoryIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryPubsubConfigInput)(nil)).Elem(), RepositoryPubsubConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryPubsubConfigArrayInput)(nil)).Elem(), RepositoryPubsubConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryPubsubConfigInput)(nil)).Elem(), GetRepositoryPubsubConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryPubsubConfigArrayInput)(nil)).Elem(), GetRepositoryPubsubConfigArray{})
 	pulumi.RegisterOutputType(RepositoryIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(RepositoryIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(RepositoryIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryPubsubConfigOutput{})
 	pulumi.RegisterOutputType(RepositoryPubsubConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetRepositoryPubsubConfigOutput{})
+	pulumi.RegisterOutputType(GetRepositoryPubsubConfigArrayOutput{})
 }

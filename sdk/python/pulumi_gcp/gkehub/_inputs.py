@@ -15,8 +15,11 @@ __all__ = [
     'FeatureMembershipConfigmanagementConfigSyncGitArgs',
     'FeatureMembershipConfigmanagementHierarchyControllerArgs',
     'FeatureMembershipConfigmanagementPolicyControllerArgs',
+    'FeatureResourceStateArgs',
     'FeatureSpecArgs',
     'FeatureSpecMulticlusteringressArgs',
+    'FeatureStateArgs',
+    'FeatureStateStateArgs',
     'MembershipAuthorityArgs',
     'MembershipEndpointArgs',
     'MembershipEndpointGkeClusterArgs',
@@ -176,6 +179,7 @@ class FeatureMembershipConfigmanagementConfigSyncArgs:
 @pulumi.input_type
 class FeatureMembershipConfigmanagementConfigSyncGitArgs:
     def __init__(__self__, *,
+                 gcp_service_account_email: Optional[pulumi.Input[str]] = None,
                  https_proxy: Optional[pulumi.Input[str]] = None,
                  policy_dir: Optional[pulumi.Input[str]] = None,
                  secret_type: Optional[pulumi.Input[str]] = None,
@@ -192,6 +196,8 @@ class FeatureMembershipConfigmanagementConfigSyncGitArgs:
         :param pulumi.Input[str] sync_rev: Git revision (tag or hash) to check out. Default HEAD.
         :param pulumi.Input[str] sync_wait_secs: Period in seconds between consecutive syncs. Default: 15.
         """
+        if gcp_service_account_email is not None:
+            pulumi.set(__self__, "gcp_service_account_email", gcp_service_account_email)
         if https_proxy is not None:
             pulumi.set(__self__, "https_proxy", https_proxy)
         if policy_dir is not None:
@@ -206,6 +212,15 @@ class FeatureMembershipConfigmanagementConfigSyncGitArgs:
             pulumi.set(__self__, "sync_rev", sync_rev)
         if sync_wait_secs is not None:
             pulumi.set(__self__, "sync_wait_secs", sync_wait_secs)
+
+    @property
+    @pulumi.getter(name="gcpServiceAccountEmail")
+    def gcp_service_account_email(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "gcp_service_account_email")
+
+    @gcp_service_account_email.setter
+    def gcp_service_account_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gcp_service_account_email", value)
 
     @property
     @pulumi.getter(name="httpsProxy")
@@ -451,6 +466,35 @@ class FeatureMembershipConfigmanagementPolicyControllerArgs:
 
 
 @pulumi.input_type
+class FeatureResourceStateArgs:
+    def __init__(__self__, *,
+                 has_resources: Optional[pulumi.Input[bool]] = None,
+                 state: Optional[pulumi.Input[str]] = None):
+        if has_resources is not None:
+            pulumi.set(__self__, "has_resources", has_resources)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="hasResources")
+    def has_resources(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "has_resources")
+
+    @has_resources.setter
+    def has_resources(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "has_resources", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+
+@pulumi.input_type
 class FeatureSpecArgs:
     def __init__(__self__, *,
                  multiclusteringress: Optional[pulumi.Input['FeatureSpecMulticlusteringressArgs']] = None):
@@ -478,24 +522,81 @@ class FeatureSpecArgs:
 @pulumi.input_type
 class FeatureSpecMulticlusteringressArgs:
     def __init__(__self__, *,
-                 config_membership: Optional[pulumi.Input[str]] = None):
+                 config_membership: pulumi.Input[str]):
         """
         :param pulumi.Input[str] config_membership: Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
         """
-        if config_membership is not None:
-            pulumi.set(__self__, "config_membership", config_membership)
+        pulumi.set(__self__, "config_membership", config_membership)
 
     @property
     @pulumi.getter(name="configMembership")
-    def config_membership(self) -> Optional[pulumi.Input[str]]:
+    def config_membership(self) -> pulumi.Input[str]:
         """
         Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
         """
         return pulumi.get(self, "config_membership")
 
     @config_membership.setter
-    def config_membership(self, value: Optional[pulumi.Input[str]]):
+    def config_membership(self, value: pulumi.Input[str]):
         pulumi.set(self, "config_membership", value)
+
+
+@pulumi.input_type
+class FeatureStateArgs:
+    def __init__(__self__, *,
+                 states: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureStateStateArgs']]]] = None):
+        if states is not None:
+            pulumi.set(__self__, "states", states)
+
+    @property
+    @pulumi.getter
+    def states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureStateStateArgs']]]]:
+        return pulumi.get(self, "states")
+
+    @states.setter
+    def states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureStateStateArgs']]]]):
+        pulumi.set(self, "states", value)
+
+
+@pulumi.input_type
+class FeatureStateStateArgs:
+    def __init__(__self__, *,
+                 code: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 update_time: Optional[pulumi.Input[str]] = None):
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "code", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update_time", value)
 
 
 @pulumi.input_type

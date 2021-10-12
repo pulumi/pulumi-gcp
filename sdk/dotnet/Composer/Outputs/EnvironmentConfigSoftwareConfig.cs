@@ -58,7 +58,10 @@ namespace Pulumi.Gcp.Composer.Outputs
         /// <summary>
         /// -
         /// The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes.
-        /// Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
+        /// Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be
+        /// updated. This field is supported for Cloud Composer environments in versions
+        /// composer-1.*.*-airflow-*.*.*. Environments in newer versions always use
+        /// Python major version 3.
         /// </summary>
         public readonly string? PythonVersion;
         /// <summary>

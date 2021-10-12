@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Eventarc.Inputs
     public sealed class TriggerDestinationArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cloud Run fully-managed service that receives the events. The service should be running in the same project as the trigger.
+        /// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: projects/{project}/locations/{location}/functions/{function}
+        /// </summary>
+        [Input("cloudFunction")]
+        public Input<string>? CloudFunction { get; set; }
+
+        /// <summary>
+        /// Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
         /// </summary>
         [Input("cloudRunService")]
         public Input<Inputs.TriggerDestinationCloudRunServiceArgs>? CloudRunService { get; set; }

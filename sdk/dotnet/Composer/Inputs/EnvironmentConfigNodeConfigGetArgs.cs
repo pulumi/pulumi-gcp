@@ -14,10 +14,14 @@ namespace Pulumi.Gcp.Composer.Inputs
     {
         /// <summary>
         /// The disk size in GB used for node VMs. Minimum size is 20GB.
-        /// If unspecified, defaults to 100GB. Cannot be updated.
+        /// If unspecified, defaults to 100GB. Cannot be updated. This field is supported
+        /// for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         [Input("diskSizeGb")]
         public Input<int>? DiskSizeGb { get; set; }
+
+        [Input("enableIpMasqAgent")]
+        public Input<bool>? EnableIpMasqAgent { get; set; }
 
         /// <summary>
         /// Configuration for controlling how IPs are allocated in the GKE cluster.
@@ -36,6 +40,14 @@ namespace Pulumi.Gcp.Composer.Inputs
         [Input("machineType")]
         public Input<string>? MachineType { get; set; }
 
+        /// <summary>
+        /// The maximum pods per node in the GKE cluster allocated during environment
+        /// creation. Lowering this value reduces IP address consumption by the Cloud
+        /// Composer Kubernetes cluster. This value can only be set if the environment is VPC-Native.
+        /// The range of possible values is 8-110, and the default is 32.
+        /// Cannot be updated. This field is supported for Cloud Composer environments
+        /// in versions composer-1.*.*-airflow-*.*.*.
+        /// </summary>
         [Input("maxPodsPerNode")]
         public Input<int>? MaxPodsPerNode { get; set; }
 
@@ -53,7 +65,9 @@ namespace Pulumi.Gcp.Composer.Inputs
         /// <summary>
         /// The set of Google API scopes to be made available on all node
         /// VMs. Cannot be updated. If empty, defaults to
-        /// `["https://www.googleapis.com/auth/cloud-platform"]`
+        /// `["https://www.googleapis.com/auth/cloud-platform"]`. This field is
+        /// supported for Cloud Composer environments in versions
+        /// composer-1.*.*-airflow-*.*.*.
         /// </summary>
         public InputList<string> OauthScopes
         {
@@ -87,7 +101,8 @@ namespace Pulumi.Gcp.Composer.Inputs
         /// The list of instance tags applied to all node VMs. Tags are
         /// used to identify valid sources or targets for network
         /// firewalls. Each tag within the list must comply with RFC1035.
-        /// Cannot be updated.
+        /// Cannot be updated. This field is supported for Cloud Composer
+        /// environments in versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         public InputList<string> Tags
         {
@@ -98,8 +113,10 @@ namespace Pulumi.Gcp.Composer.Inputs
         /// <summary>
         /// The Compute Engine zone in which to deploy the VMs running the
         /// Apache Airflow software, specified as the zone name or
-        /// relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project
-        /// and region.
+        /// relative resource name (e.g. "projects/{project}/zones/{zone}"). Must
+        /// belong to the enclosing environment's project and region. This field is
+        /// supported for Cloud Composer environments in versions
+        /// composer-1.*.*-airflow-*.*.*.
         /// </summary>
         [Input("zone", required: true)]
         public Input<string> Zone { get; set; } = null!;

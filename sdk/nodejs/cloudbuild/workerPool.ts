@@ -75,7 +75,7 @@ export class WorkerPool extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
+     * Output only. `WorkerPool` state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
@@ -160,7 +160,7 @@ export interface WorkerPoolState {
      */
     project?: pulumi.Input<string>;
     /**
-     * Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
+     * Output only. `WorkerPool` state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
      */
     state?: pulumi.Input<string>;
     /**

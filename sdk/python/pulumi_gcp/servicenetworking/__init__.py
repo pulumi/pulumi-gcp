@@ -6,3 +6,5 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .connection import *
+from .get_peered_dns_domain import *
+from .peered_dns_domain import *

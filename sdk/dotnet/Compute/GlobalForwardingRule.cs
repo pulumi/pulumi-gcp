@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.Compute
     ///         // External HTTP load balancer with a CDN-enabled managed instance group backend
     ///         // and custom request and response headers
     ///         // VPC
-    ///         var xlbNetwork = new Gcp.Compute.Network("xlbNetwork", new Gcp.Compute.NetworkArgs
+    ///         var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new Gcp.Compute.NetworkArgs
     ///         {
     ///             AutoCreateSubnetworks = false,
     ///         }, new CustomResourceOptions
@@ -40,14 +40,18 @@ namespace Pulumi.Gcp.Compute
     ///             Provider = google,
     ///         });
     ///         // backend subnet
-    ///         var xlbSubnet = new Gcp.Compute.Subnetwork("xlbSubnet", new Gcp.Compute.SubnetworkArgs
+    ///         var defaultSubnetwork = new Gcp.Compute.Subnetwork("defaultSubnetwork", new Gcp.Compute.SubnetworkArgs
     ///         {
     ///             IpCidrRange = "10.0.1.0/24",
     ///             Region = "us-central1",
-    ///             Network = xlbNetwork.Id,
+    ///             Network = defaultNetwork.Id,
     ///         }, new CustomResourceOptions
     ///         {
     ///             Provider = google,
+    ///         });
+    ///         // reserved IP address
+    ///         var defaultGlobalAddress = new Gcp.Compute.GlobalAddress("defaultGlobalAddress", new Gcp.Compute.GlobalAddressArgs
+    ///         {
     ///         });
     ///         // health check
     ///         var defaultHealthCheck = new Gcp.Compute.HealthCheck("defaultHealthCheck", new Gcp.Compute.HealthCheckArgs
@@ -61,7 +65,7 @@ namespace Pulumi.Gcp.Compute
     ///             Provider = google,
     ///         });
     ///         // instance template
-    ///         var instanceTemplate = new Gcp.Compute.InstanceTemplate("instanceTemplate", new Gcp.Compute.InstanceTemplateArgs
+    ///         var defaultInstanceTemplate = new Gcp.Compute.InstanceTemplate("defaultInstanceTemplate", new Gcp.Compute.InstanceTemplateArgs
     ///         {
     ///             MachineType = "e2-small",
     ///             Tags = 
@@ -72,8 +76,8 @@ namespace Pulumi.Gcp.Compute
     ///             {
     ///                 new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
     ///                 {
-    ///                     Network = xlbNetwork.Id,
-    ///                     Subnetwork = xlbSubnet.Id,
+    ///                     Network = defaultNetwork.Id,
+    ///                     Subnetwork = defaultSubnetwork.Id,
     ///                     AccessConfigs = 
     ///                     {
     ///                         ,
@@ -116,7 +120,7 @@ namespace Pulumi.Gcp.Compute
     ///             Provider = google,
     ///         });
     ///         // MIG
-    ///         var mig = new Gcp.Compute.InstanceGroupManager("mig", new Gcp.Compute.InstanceGroupManagerArgs
+    ///         var defaultInstanceGroupManager = new Gcp.Compute.InstanceGroupManager("defaultInstanceGroupManager", new Gcp.Compute.InstanceGroupManagerArgs
     ///         {
     ///             Zone = "us-central1-c",
     ///             NamedPorts = 
@@ -131,7 +135,7 @@ namespace Pulumi.Gcp.Compute
     ///             {
     ///                 new Gcp.Compute.Inputs.InstanceGroupManagerVersionArgs
     ///                 {
-    ///                     InstanceTemplate = instanceTemplate.Id,
+    ///                     InstanceTemplate = defaultInstanceTemplate.Id,
     ///                     Name = "primary",
     ///                 },
     ///             },
@@ -165,7 +169,7 @@ namespace Pulumi.Gcp.Compute
     ///             {
     ///                 new Gcp.Compute.Inputs.BackendServiceBackendArgs
     ///                 {
-    ///                     Group = mig.InstanceGroup,
+    ///                     Group = defaultInstanceGroupManager.InstanceGroup,
     ///                     BalancingMode = "UTILIZATION",
     ///                     CapacityScaler = 1,
     ///                 },
@@ -191,21 +195,22 @@ namespace Pulumi.Gcp.Compute
     ///             Provider = google,
     ///         });
     ///         // forwarding rule
-    ///         var googleComputeGlobalForwardingRule = new Gcp.Compute.GlobalForwardingRule("googleComputeGlobalForwardingRule", new Gcp.Compute.GlobalForwardingRuleArgs
+    ///         var defaultGlobalForwardingRule = new Gcp.Compute.GlobalForwardingRule("defaultGlobalForwardingRule", new Gcp.Compute.GlobalForwardingRuleArgs
     ///         {
     ///             IpProtocol = "TCP",
     ///             LoadBalancingScheme = "EXTERNAL",
     ///             PortRange = "80",
     ///             Target = defaultTargetHttpProxy.Id,
+    ///             IpAddress = defaultGlobalAddress.Id,
     ///         }, new CustomResourceOptions
     ///         {
     ///             Provider = google,
     ///         });
     ///         // allow access from health check ranges
-    ///         var fwHealthCheck = new Gcp.Compute.Firewall("fwHealthCheck", new Gcp.Compute.FirewallArgs
+    ///         var defaultFirewall = new Gcp.Compute.Firewall("defaultFirewall", new Gcp.Compute.FirewallArgs
     ///         {
     ///             Direction = "INGRESS",
-    ///             Network = xlbNetwork.Id,
+    ///             Network = defaultNetwork.Id,
     ///             SourceRanges = 
     ///             {
     ///                 "130.211.0.0/22",

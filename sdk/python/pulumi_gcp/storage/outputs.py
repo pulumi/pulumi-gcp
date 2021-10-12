@@ -38,8 +38,17 @@ __all__ = [
     'TransferJobTransferSpecHttpDataSource',
     'TransferJobTransferSpecObjectConditions',
     'TransferJobTransferSpecTransferOptions',
+    'GetBucketCorResult',
+    'GetBucketEncryptionResult',
+    'GetBucketLifecycleRuleResult',
+    'GetBucketLifecycleRuleActionResult',
+    'GetBucketLifecycleRuleConditionResult',
+    'GetBucketLoggingResult',
     'GetBucketObjectContentCustomerEncryptionResult',
     'GetBucketObjectCustomerEncryptionResult',
+    'GetBucketRetentionPolicyResult',
+    'GetBucketVersioningResult',
+    'GetBucketWebsiteResult',
 ]
 
 @pulumi.output_type
@@ -1536,6 +1545,176 @@ class TransferJobTransferSpecTransferOptions(dict):
 
 
 @pulumi.output_type
+class GetBucketCorResult(dict):
+    def __init__(__self__, *,
+                 max_age_seconds: int,
+                 methods: Sequence[str],
+                 origins: Sequence[str],
+                 response_headers: Sequence[str]):
+        pulumi.set(__self__, "max_age_seconds", max_age_seconds)
+        pulumi.set(__self__, "methods", methods)
+        pulumi.set(__self__, "origins", origins)
+        pulumi.set(__self__, "response_headers", response_headers)
+
+    @property
+    @pulumi.getter(name="maxAgeSeconds")
+    def max_age_seconds(self) -> int:
+        return pulumi.get(self, "max_age_seconds")
+
+    @property
+    @pulumi.getter
+    def methods(self) -> Sequence[str]:
+        return pulumi.get(self, "methods")
+
+    @property
+    @pulumi.getter
+    def origins(self) -> Sequence[str]:
+        return pulumi.get(self, "origins")
+
+    @property
+    @pulumi.getter(name="responseHeaders")
+    def response_headers(self) -> Sequence[str]:
+        return pulumi.get(self, "response_headers")
+
+
+@pulumi.output_type
+class GetBucketEncryptionResult(dict):
+    def __init__(__self__, *,
+                 default_kms_key_name: str):
+        pulumi.set(__self__, "default_kms_key_name", default_kms_key_name)
+
+    @property
+    @pulumi.getter(name="defaultKmsKeyName")
+    def default_kms_key_name(self) -> str:
+        return pulumi.get(self, "default_kms_key_name")
+
+
+@pulumi.output_type
+class GetBucketLifecycleRuleResult(dict):
+    def __init__(__self__, *,
+                 actions: Sequence['outputs.GetBucketLifecycleRuleActionResult'],
+                 conditions: Sequence['outputs.GetBucketLifecycleRuleConditionResult']):
+        pulumi.set(__self__, "actions", actions)
+        pulumi.set(__self__, "conditions", conditions)
+
+    @property
+    @pulumi.getter
+    def actions(self) -> Sequence['outputs.GetBucketLifecycleRuleActionResult']:
+        return pulumi.get(self, "actions")
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> Sequence['outputs.GetBucketLifecycleRuleConditionResult']:
+        return pulumi.get(self, "conditions")
+
+
+@pulumi.output_type
+class GetBucketLifecycleRuleActionResult(dict):
+    def __init__(__self__, *,
+                 storage_class: str,
+                 type: str):
+        pulumi.set(__self__, "storage_class", storage_class)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="storageClass")
+    def storage_class(self) -> str:
+        return pulumi.get(self, "storage_class")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetBucketLifecycleRuleConditionResult(dict):
+    def __init__(__self__, *,
+                 age: int,
+                 created_before: str,
+                 custom_time_before: str,
+                 days_since_custom_time: int,
+                 days_since_noncurrent_time: int,
+                 matches_storage_classes: Sequence[str],
+                 noncurrent_time_before: str,
+                 num_newer_versions: int,
+                 with_state: str):
+        pulumi.set(__self__, "age", age)
+        pulumi.set(__self__, "created_before", created_before)
+        pulumi.set(__self__, "custom_time_before", custom_time_before)
+        pulumi.set(__self__, "days_since_custom_time", days_since_custom_time)
+        pulumi.set(__self__, "days_since_noncurrent_time", days_since_noncurrent_time)
+        pulumi.set(__self__, "matches_storage_classes", matches_storage_classes)
+        pulumi.set(__self__, "noncurrent_time_before", noncurrent_time_before)
+        pulumi.set(__self__, "num_newer_versions", num_newer_versions)
+        pulumi.set(__self__, "with_state", with_state)
+
+    @property
+    @pulumi.getter
+    def age(self) -> int:
+        return pulumi.get(self, "age")
+
+    @property
+    @pulumi.getter(name="createdBefore")
+    def created_before(self) -> str:
+        return pulumi.get(self, "created_before")
+
+    @property
+    @pulumi.getter(name="customTimeBefore")
+    def custom_time_before(self) -> str:
+        return pulumi.get(self, "custom_time_before")
+
+    @property
+    @pulumi.getter(name="daysSinceCustomTime")
+    def days_since_custom_time(self) -> int:
+        return pulumi.get(self, "days_since_custom_time")
+
+    @property
+    @pulumi.getter(name="daysSinceNoncurrentTime")
+    def days_since_noncurrent_time(self) -> int:
+        return pulumi.get(self, "days_since_noncurrent_time")
+
+    @property
+    @pulumi.getter(name="matchesStorageClasses")
+    def matches_storage_classes(self) -> Sequence[str]:
+        return pulumi.get(self, "matches_storage_classes")
+
+    @property
+    @pulumi.getter(name="noncurrentTimeBefore")
+    def noncurrent_time_before(self) -> str:
+        return pulumi.get(self, "noncurrent_time_before")
+
+    @property
+    @pulumi.getter(name="numNewerVersions")
+    def num_newer_versions(self) -> int:
+        return pulumi.get(self, "num_newer_versions")
+
+    @property
+    @pulumi.getter(name="withState")
+    def with_state(self) -> str:
+        return pulumi.get(self, "with_state")
+
+
+@pulumi.output_type
+class GetBucketLoggingResult(dict):
+    def __init__(__self__, *,
+                 log_bucket: str,
+                 log_object_prefix: str):
+        pulumi.set(__self__, "log_bucket", log_bucket)
+        pulumi.set(__self__, "log_object_prefix", log_object_prefix)
+
+    @property
+    @pulumi.getter(name="logBucket")
+    def log_bucket(self) -> str:
+        return pulumi.get(self, "log_bucket")
+
+    @property
+    @pulumi.getter(name="logObjectPrefix")
+    def log_object_prefix(self) -> str:
+        return pulumi.get(self, "log_object_prefix")
+
+
+@pulumi.output_type
 class GetBucketObjectContentCustomerEncryptionResult(dict):
     def __init__(__self__, *,
                  encryption_algorithm: str,
@@ -1571,5 +1750,55 @@ class GetBucketObjectCustomerEncryptionResult(dict):
     @pulumi.getter(name="encryptionKey")
     def encryption_key(self) -> str:
         return pulumi.get(self, "encryption_key")
+
+
+@pulumi.output_type
+class GetBucketRetentionPolicyResult(dict):
+    def __init__(__self__, *,
+                 is_locked: bool,
+                 retention_period: int):
+        pulumi.set(__self__, "is_locked", is_locked)
+        pulumi.set(__self__, "retention_period", retention_period)
+
+    @property
+    @pulumi.getter(name="isLocked")
+    def is_locked(self) -> bool:
+        return pulumi.get(self, "is_locked")
+
+    @property
+    @pulumi.getter(name="retentionPeriod")
+    def retention_period(self) -> int:
+        return pulumi.get(self, "retention_period")
+
+
+@pulumi.output_type
+class GetBucketVersioningResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetBucketWebsiteResult(dict):
+    def __init__(__self__, *,
+                 main_page_suffix: str,
+                 not_found_page: str):
+        pulumi.set(__self__, "main_page_suffix", main_page_suffix)
+        pulumi.set(__self__, "not_found_page", not_found_page)
+
+    @property
+    @pulumi.getter(name="mainPageSuffix")
+    def main_page_suffix(self) -> str:
+        return pulumi.get(self, "main_page_suffix")
+
+    @property
+    @pulumi.getter(name="notFoundPage")
+    def not_found_page(self) -> str:
+        return pulumi.get(self, "not_found_page")
 
 

@@ -13,6 +13,7 @@ __all__ = [
     'LiteSubscriptionDeliveryConfig',
     'LiteTopicPartitionConfig',
     'LiteTopicPartitionConfigCapacity',
+    'LiteTopicReservationConfig',
     'LiteTopicRetentionConfig',
     'SubscriptionDeadLetterPolicy',
     'SubscriptionExpirationPolicy',
@@ -144,6 +145,42 @@ class LiteTopicPartitionConfigCapacity(dict):
         Publish throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
         """
         return pulumi.get(self, "subscribe_mib_per_sec")
+
+
+@pulumi.output_type
+class LiteTopicReservationConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "throughputReservation":
+            suggest = "throughput_reservation"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LiteTopicReservationConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LiteTopicReservationConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LiteTopicReservationConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 throughput_reservation: Optional[str] = None):
+        """
+        :param str throughput_reservation: The Reservation to use for this topic's throughput capacity.
+        """
+        if throughput_reservation is not None:
+            pulumi.set(__self__, "throughput_reservation", throughput_reservation)
+
+    @property
+    @pulumi.getter(name="throughputReservation")
+    def throughput_reservation(self) -> Optional[str]:
+        """
+        The Reservation to use for this topic's throughput capacity.
+        """
+        return pulumi.get(self, "throughput_reservation")
 
 
 @pulumi.output_type

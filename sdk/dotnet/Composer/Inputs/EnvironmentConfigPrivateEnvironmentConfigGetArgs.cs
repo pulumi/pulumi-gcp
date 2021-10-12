@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Composer.Inputs
 
     public sealed class EnvironmentConfigPrivateEnvironmentConfigGetArgs : Pulumi.ResourceArgs
     {
+        [Input("cloudComposerNetworkIpv4CidrBlock")]
+        public Input<string>? CloudComposerNetworkIpv4CidrBlock { get; set; }
+
         /// <summary>
         /// The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `web_server_ipv4_cidr_block`
         /// </summary>
@@ -21,9 +24,15 @@ namespace Pulumi.Gcp.Composer.Inputs
         /// <summary>
         /// -
         /// If true, access to the public endpoint of the GKE cluster is denied.
+        /// If this field is set to true, `ip_allocation_policy.use_ip_aliases` must
+        /// be set to true for Cloud Composer environments in versions
+        /// composer-1.*.*-airflow-*.*.*.
         /// </summary>
         [Input("enablePrivateEndpoint")]
         public Input<bool>? EnablePrivateEndpoint { get; set; }
+
+        [Input("enablePrivatelyUsedPublicIps")]
+        public Input<bool>? EnablePrivatelyUsedPublicIps { get; set; }
 
         /// <summary>
         /// The IP range in CIDR notation to use for the hosted master network. This range is used
@@ -36,7 +45,7 @@ namespace Pulumi.Gcp.Composer.Inputs
         public Input<string>? MasterIpv4CidrBlock { get; set; }
 
         /// <summary>
-        /// The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`.
+        /// The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         [Input("webServerIpv4CidrBlock")]
         public Input<string>? WebServerIpv4CidrBlock { get; set; }

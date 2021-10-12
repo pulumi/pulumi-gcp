@@ -83,6 +83,7 @@ __all__ = [
     'InstanceFromMachineImageNetworkInterfaceArgs',
     'InstanceFromMachineImageNetworkInterfaceAccessConfigArgs',
     'InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgs',
+    'InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgs',
     'InstanceFromMachineImageNetworkPerformanceConfigArgs',
     'InstanceFromMachineImageReservationAffinityArgs',
     'InstanceFromMachineImageReservationAffinitySpecificReservationArgs',
@@ -100,6 +101,7 @@ __all__ = [
     'InstanceFromTemplateNetworkInterfaceArgs',
     'InstanceFromTemplateNetworkInterfaceAccessConfigArgs',
     'InstanceFromTemplateNetworkInterfaceAliasIpRangeArgs',
+    'InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs',
     'InstanceFromTemplateNetworkPerformanceConfigArgs',
     'InstanceFromTemplateReservationAffinityArgs',
     'InstanceFromTemplateReservationAffinitySpecificReservationArgs',
@@ -125,6 +127,7 @@ __all__ = [
     'InstanceNetworkInterfaceArgs',
     'InstanceNetworkInterfaceAccessConfigArgs',
     'InstanceNetworkInterfaceAliasIpRangeArgs',
+    'InstanceNetworkInterfaceIpv6AccessConfigArgs',
     'InstanceNetworkPerformanceConfigArgs',
     'InstanceReservationAffinityArgs',
     'InstanceReservationAffinitySpecificReservationArgs',
@@ -141,6 +144,7 @@ __all__ = [
     'InstanceTemplateNetworkInterfaceArgs',
     'InstanceTemplateNetworkInterfaceAccessConfigArgs',
     'InstanceTemplateNetworkInterfaceAliasIpRangeArgs',
+    'InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs',
     'InstanceTemplateNetworkPerformanceConfigArgs',
     'InstanceTemplateReservationAffinityArgs',
     'InstanceTemplateReservationAffinitySpecificReservationArgs',
@@ -6106,10 +6110,13 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
     def __init__(__self__, *,
                  access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceAccessConfigArgs']]]] = None,
                  alias_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgs']]]] = None,
+                 ipv6_access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgs']]]] = None,
+                 ipv6_access_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  network_ip: Optional[pulumi.Input[str]] = None,
                  nic_type: Optional[pulumi.Input[str]] = None,
+                 stack_type: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  subnetwork_project: Optional[pulumi.Input[str]] = None):
         """
@@ -6120,6 +6127,10 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
             pulumi.set(__self__, "access_configs", access_configs)
         if alias_ip_ranges is not None:
             pulumi.set(__self__, "alias_ip_ranges", alias_ip_ranges)
+        if ipv6_access_configs is not None:
+            pulumi.set(__self__, "ipv6_access_configs", ipv6_access_configs)
+        if ipv6_access_type is not None:
+            pulumi.set(__self__, "ipv6_access_type", ipv6_access_type)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network is not None:
@@ -6128,6 +6139,8 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
             pulumi.set(__self__, "network_ip", network_ip)
         if nic_type is not None:
             pulumi.set(__self__, "nic_type", nic_type)
+        if stack_type is not None:
+            pulumi.set(__self__, "stack_type", stack_type)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
         if subnetwork_project is not None:
@@ -6150,6 +6163,24 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
     @alias_ip_ranges.setter
     def alias_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgs']]]]):
         pulumi.set(self, "alias_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="ipv6AccessConfigs")
+    def ipv6_access_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgs']]]]:
+        return pulumi.get(self, "ipv6_access_configs")
+
+    @ipv6_access_configs.setter
+    def ipv6_access_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgs']]]]):
+        pulumi.set(self, "ipv6_access_configs", value)
+
+    @property
+    @pulumi.getter(name="ipv6AccessType")
+    def ipv6_access_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ipv6_access_type")
+
+    @ipv6_access_type.setter
+    def ipv6_access_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv6_access_type", value)
 
     @property
     @pulumi.getter
@@ -6190,6 +6221,15 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
     @nic_type.setter
     def nic_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "nic_type", value)
+
+    @property
+    @pulumi.getter(name="stackType")
+    def stack_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "stack_type")
+
+    @stack_type.setter
+    def stack_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "stack_type", value)
 
     @property
     @pulumi.getter
@@ -6277,6 +6317,58 @@ class InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgs:
     @subnetwork_range_name.setter
     def subnetwork_range_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subnetwork_range_name", value)
+
+
+@pulumi.input_type
+class InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgs:
+    def __init__(__self__, *,
+                 network_tier: pulumi.Input[str],
+                 external_ipv6: Optional[pulumi.Input[str]] = None,
+                 external_ipv6_prefix_length: Optional[pulumi.Input[str]] = None,
+                 public_ptr_domain_name: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "network_tier", network_tier)
+        if external_ipv6 is not None:
+            pulumi.set(__self__, "external_ipv6", external_ipv6)
+        if external_ipv6_prefix_length is not None:
+            pulumi.set(__self__, "external_ipv6_prefix_length", external_ipv6_prefix_length)
+        if public_ptr_domain_name is not None:
+            pulumi.set(__self__, "public_ptr_domain_name", public_ptr_domain_name)
+
+    @property
+    @pulumi.getter(name="networkTier")
+    def network_tier(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "network_tier")
+
+    @network_tier.setter
+    def network_tier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network_tier", value)
+
+    @property
+    @pulumi.getter(name="externalIpv6")
+    def external_ipv6(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "external_ipv6")
+
+    @external_ipv6.setter
+    def external_ipv6(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "external_ipv6", value)
+
+    @property
+    @pulumi.getter(name="externalIpv6PrefixLength")
+    def external_ipv6_prefix_length(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "external_ipv6_prefix_length")
+
+    @external_ipv6_prefix_length.setter
+    def external_ipv6_prefix_length(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "external_ipv6_prefix_length", value)
+
+    @property
+    @pulumi.getter(name="publicPtrDomainName")
+    def public_ptr_domain_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "public_ptr_domain_name")
+
+    @public_ptr_domain_name.setter
+    def public_ptr_domain_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "public_ptr_domain_name", value)
 
 
 @pulumi.input_type
@@ -6845,10 +6937,13 @@ class InstanceFromTemplateNetworkInterfaceArgs:
     def __init__(__self__, *,
                  access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceAccessConfigArgs']]]] = None,
                  alias_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceAliasIpRangeArgs']]]] = None,
+                 ipv6_access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs']]]] = None,
+                 ipv6_access_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  network_ip: Optional[pulumi.Input[str]] = None,
                  nic_type: Optional[pulumi.Input[str]] = None,
+                 stack_type: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  subnetwork_project: Optional[pulumi.Input[str]] = None):
         """
@@ -6859,6 +6954,10 @@ class InstanceFromTemplateNetworkInterfaceArgs:
             pulumi.set(__self__, "access_configs", access_configs)
         if alias_ip_ranges is not None:
             pulumi.set(__self__, "alias_ip_ranges", alias_ip_ranges)
+        if ipv6_access_configs is not None:
+            pulumi.set(__self__, "ipv6_access_configs", ipv6_access_configs)
+        if ipv6_access_type is not None:
+            pulumi.set(__self__, "ipv6_access_type", ipv6_access_type)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network is not None:
@@ -6867,6 +6966,8 @@ class InstanceFromTemplateNetworkInterfaceArgs:
             pulumi.set(__self__, "network_ip", network_ip)
         if nic_type is not None:
             pulumi.set(__self__, "nic_type", nic_type)
+        if stack_type is not None:
+            pulumi.set(__self__, "stack_type", stack_type)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
         if subnetwork_project is not None:
@@ -6889,6 +6990,24 @@ class InstanceFromTemplateNetworkInterfaceArgs:
     @alias_ip_ranges.setter
     def alias_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceAliasIpRangeArgs']]]]):
         pulumi.set(self, "alias_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="ipv6AccessConfigs")
+    def ipv6_access_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs']]]]:
+        return pulumi.get(self, "ipv6_access_configs")
+
+    @ipv6_access_configs.setter
+    def ipv6_access_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs']]]]):
+        pulumi.set(self, "ipv6_access_configs", value)
+
+    @property
+    @pulumi.getter(name="ipv6AccessType")
+    def ipv6_access_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ipv6_access_type")
+
+    @ipv6_access_type.setter
+    def ipv6_access_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv6_access_type", value)
 
     @property
     @pulumi.getter
@@ -6929,6 +7048,15 @@ class InstanceFromTemplateNetworkInterfaceArgs:
     @nic_type.setter
     def nic_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "nic_type", value)
+
+    @property
+    @pulumi.getter(name="stackType")
+    def stack_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "stack_type")
+
+    @stack_type.setter
+    def stack_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "stack_type", value)
 
     @property
     @pulumi.getter
@@ -7016,6 +7144,58 @@ class InstanceFromTemplateNetworkInterfaceAliasIpRangeArgs:
     @subnetwork_range_name.setter
     def subnetwork_range_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subnetwork_range_name", value)
+
+
+@pulumi.input_type
+class InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs:
+    def __init__(__self__, *,
+                 network_tier: pulumi.Input[str],
+                 external_ipv6: Optional[pulumi.Input[str]] = None,
+                 external_ipv6_prefix_length: Optional[pulumi.Input[str]] = None,
+                 public_ptr_domain_name: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "network_tier", network_tier)
+        if external_ipv6 is not None:
+            pulumi.set(__self__, "external_ipv6", external_ipv6)
+        if external_ipv6_prefix_length is not None:
+            pulumi.set(__self__, "external_ipv6_prefix_length", external_ipv6_prefix_length)
+        if public_ptr_domain_name is not None:
+            pulumi.set(__self__, "public_ptr_domain_name", public_ptr_domain_name)
+
+    @property
+    @pulumi.getter(name="networkTier")
+    def network_tier(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "network_tier")
+
+    @network_tier.setter
+    def network_tier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network_tier", value)
+
+    @property
+    @pulumi.getter(name="externalIpv6")
+    def external_ipv6(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "external_ipv6")
+
+    @external_ipv6.setter
+    def external_ipv6(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "external_ipv6", value)
+
+    @property
+    @pulumi.getter(name="externalIpv6PrefixLength")
+    def external_ipv6_prefix_length(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "external_ipv6_prefix_length")
+
+    @external_ipv6_prefix_length.setter
+    def external_ipv6_prefix_length(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "external_ipv6_prefix_length", value)
+
+    @property
+    @pulumi.getter(name="publicPtrDomainName")
+    def public_ptr_domain_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "public_ptr_domain_name")
+
+    @public_ptr_domain_name.setter
+    def public_ptr_domain_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "public_ptr_domain_name", value)
 
 
 @pulumi.input_type
@@ -7944,10 +8124,13 @@ class InstanceNetworkInterfaceArgs:
     def __init__(__self__, *,
                  access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceAccessConfigArgs']]]] = None,
                  alias_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceAliasIpRangeArgs']]]] = None,
+                 ipv6_access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceIpv6AccessConfigArgs']]]] = None,
+                 ipv6_access_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  network_ip: Optional[pulumi.Input[str]] = None,
                  nic_type: Optional[pulumi.Input[str]] = None,
+                 stack_type: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  subnetwork_project: Optional[pulumi.Input[str]] = None):
         """
@@ -7960,17 +8143,27 @@ class InstanceNetworkInterfaceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceAliasIpRangeArgs']]] alias_ip_ranges: An
                array of alias IP ranges for this network interface. Can only be specified for network
                interfaces on subnet-mode networks. Structure documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceIpv6AccessConfigArgs']]] ipv6_access_configs: An array of IPv6 access configurations for this interface.
+               Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
+               specified, then this instance will have no external IPv6 Internet access. Structure documented below.
+        :param pulumi.Input[str] ipv6_access_type: One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet.
+               This field is always inherited from its subnetwork.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE.
                Changing this forces a new resource to be created.
         :param pulumi.Input[str] network: The name or self_link of the network to attach this interface to.
-               Either `network` or `subnetwork` must be provided.
+               Either `network` or `subnetwork` must be provided. If network isn't provided it will
+               be inferred from the subnetwork.
         :param pulumi.Input[str] network_ip: The private IP address to assign to the instance. If
                empty, the address will be automatically assigned.
         :param pulumi.Input[str] nic_type: The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
+        :param pulumi.Input[str] stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
         :param pulumi.Input[str] subnetwork: The name or self_link of the subnetwork to attach this
-               interface to. The subnetwork must exist in the same region this instance will be
-               created in. If network isn't provided it will be inferred from the subnetwork.
-               Either `network` or `subnetwork` must be provided.
+               interface to. Either `network` or `subnetwork` must be provided. If network isn't provided
+               it will be inferred from the subnetwork. The subnetwork must exist in the same region this
+               instance will be created in. If the network resource is in
+               [legacy](https://cloud.google.com/vpc/docs/legacy) mode, do not specify this field. If the
+               network is in auto subnet mode, specifying the subnetwork is optional. If the network is
+               in custom subnet mode, specifying the subnetwork is required.
         :param pulumi.Input[str] subnetwork_project: The project in which the subnetwork belongs.
                If the `subnetwork` is a self_link, this field is ignored in favor of the project
                defined in the subnetwork self_link. If the `subnetwork` is a name and this
@@ -7980,6 +8173,10 @@ class InstanceNetworkInterfaceArgs:
             pulumi.set(__self__, "access_configs", access_configs)
         if alias_ip_ranges is not None:
             pulumi.set(__self__, "alias_ip_ranges", alias_ip_ranges)
+        if ipv6_access_configs is not None:
+            pulumi.set(__self__, "ipv6_access_configs", ipv6_access_configs)
+        if ipv6_access_type is not None:
+            pulumi.set(__self__, "ipv6_access_type", ipv6_access_type)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network is not None:
@@ -7988,6 +8185,8 @@ class InstanceNetworkInterfaceArgs:
             pulumi.set(__self__, "network_ip", network_ip)
         if nic_type is not None:
             pulumi.set(__self__, "nic_type", nic_type)
+        if stack_type is not None:
+            pulumi.set(__self__, "stack_type", stack_type)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
         if subnetwork_project is not None:
@@ -8025,6 +8224,33 @@ class InstanceNetworkInterfaceArgs:
         pulumi.set(self, "alias_ip_ranges", value)
 
     @property
+    @pulumi.getter(name="ipv6AccessConfigs")
+    def ipv6_access_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceIpv6AccessConfigArgs']]]]:
+        """
+        An array of IPv6 access configurations for this interface.
+        Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
+        specified, then this instance will have no external IPv6 Internet access. Structure documented below.
+        """
+        return pulumi.get(self, "ipv6_access_configs")
+
+    @ipv6_access_configs.setter
+    def ipv6_access_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceIpv6AccessConfigArgs']]]]):
+        pulumi.set(self, "ipv6_access_configs", value)
+
+    @property
+    @pulumi.getter(name="ipv6AccessType")
+    def ipv6_access_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet.
+        This field is always inherited from its subnetwork.
+        """
+        return pulumi.get(self, "ipv6_access_type")
+
+    @ipv6_access_type.setter
+    def ipv6_access_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv6_access_type", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -8042,7 +8268,8 @@ class InstanceNetworkInterfaceArgs:
     def network(self) -> Optional[pulumi.Input[str]]:
         """
         The name or self_link of the network to attach this interface to.
-        Either `network` or `subnetwork` must be provided.
+        Either `network` or `subnetwork` must be provided. If network isn't provided it will
+        be inferred from the subnetwork.
         """
         return pulumi.get(self, "network")
 
@@ -8076,13 +8303,28 @@ class InstanceNetworkInterfaceArgs:
         pulumi.set(self, "nic_type", value)
 
     @property
+    @pulumi.getter(name="stackType")
+    def stack_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
+        """
+        return pulumi.get(self, "stack_type")
+
+    @stack_type.setter
+    def stack_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "stack_type", value)
+
+    @property
     @pulumi.getter
     def subnetwork(self) -> Optional[pulumi.Input[str]]:
         """
         The name or self_link of the subnetwork to attach this
-        interface to. The subnetwork must exist in the same region this instance will be
-        created in. If network isn't provided it will be inferred from the subnetwork.
-        Either `network` or `subnetwork` must be provided.
+        interface to. Either `network` or `subnetwork` must be provided. If network isn't provided
+        it will be inferred from the subnetwork. The subnetwork must exist in the same region this
+        instance will be created in. If the network resource is in
+        [legacy](https://cloud.google.com/vpc/docs/legacy) mode, do not specify this field. If the
+        network is in auto subnet mode, specifying the subnetwork is optional. If the network is
+        in custom subnet mode, specifying the subnetwork is required.
         """
         return pulumi.get(self, "subnetwork")
 
@@ -8115,13 +8357,10 @@ class InstanceNetworkInterfaceAccessConfigArgs:
         """
         :param pulumi.Input[str] nat_ip: The IP address that will be 1:1 mapped to the instance's
                network ip. If not given, one will be generated.
-        :param pulumi.Input[str] network_tier: The [networking tier][network-tier] used for configuring this instance.
-               This field can take the following values: PREMIUM or STANDARD. If this field is
-               not specified, it is assumed to be PREMIUM.
-        :param pulumi.Input[str] public_ptr_domain_name: The DNS domain name for the public PTR record.
-               To set this field on an instance, you must be verified as the owner of the domain.
-               See [the docs](https://cloud.google.com/compute/docs/instances/create-ptr-record) for how
-               to become verified as a domain owner.
+        :param pulumi.Input[str] network_tier: The service-level to be provided for IPv6 traffic when the
+               subnet has an external subnet. Only PREMIUM tier is valid for IPv6.
+        :param pulumi.Input[str] public_ptr_domain_name: The domain name to be used when creating DNSv6
+               records for the external IPv6 ranges..
         """
         if nat_ip is not None:
             pulumi.set(__self__, "nat_ip", nat_ip)
@@ -8147,9 +8386,8 @@ class InstanceNetworkInterfaceAccessConfigArgs:
     @pulumi.getter(name="networkTier")
     def network_tier(self) -> Optional[pulumi.Input[str]]:
         """
-        The [networking tier][network-tier] used for configuring this instance.
-        This field can take the following values: PREMIUM or STANDARD. If this field is
-        not specified, it is assumed to be PREMIUM.
+        The service-level to be provided for IPv6 traffic when the
+        subnet has an external subnet. Only PREMIUM tier is valid for IPv6.
         """
         return pulumi.get(self, "network_tier")
 
@@ -8161,10 +8399,8 @@ class InstanceNetworkInterfaceAccessConfigArgs:
     @pulumi.getter(name="publicPtrDomainName")
     def public_ptr_domain_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The DNS domain name for the public PTR record.
-        To set this field on an instance, you must be verified as the owner of the domain.
-        See [the docs](https://cloud.google.com/compute/docs/instances/create-ptr-record) for how
-        to become verified as a domain owner.
+        The domain name to be used when creating DNSv6
+        records for the external IPv6 ranges..
         """
         return pulumi.get(self, "public_ptr_domain_name")
 
@@ -8219,6 +8455,72 @@ class InstanceNetworkInterfaceAliasIpRangeArgs:
     @subnetwork_range_name.setter
     def subnetwork_range_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subnetwork_range_name", value)
+
+
+@pulumi.input_type
+class InstanceNetworkInterfaceIpv6AccessConfigArgs:
+    def __init__(__self__, *,
+                 network_tier: pulumi.Input[str],
+                 external_ipv6: Optional[pulumi.Input[str]] = None,
+                 external_ipv6_prefix_length: Optional[pulumi.Input[str]] = None,
+                 public_ptr_domain_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] network_tier: The service-level to be provided for IPv6 traffic when the
+               subnet has an external subnet. Only PREMIUM tier is valid for IPv6.
+        :param pulumi.Input[str] public_ptr_domain_name: The domain name to be used when creating DNSv6
+               records for the external IPv6 ranges..
+        """
+        pulumi.set(__self__, "network_tier", network_tier)
+        if external_ipv6 is not None:
+            pulumi.set(__self__, "external_ipv6", external_ipv6)
+        if external_ipv6_prefix_length is not None:
+            pulumi.set(__self__, "external_ipv6_prefix_length", external_ipv6_prefix_length)
+        if public_ptr_domain_name is not None:
+            pulumi.set(__self__, "public_ptr_domain_name", public_ptr_domain_name)
+
+    @property
+    @pulumi.getter(name="networkTier")
+    def network_tier(self) -> pulumi.Input[str]:
+        """
+        The service-level to be provided for IPv6 traffic when the
+        subnet has an external subnet. Only PREMIUM tier is valid for IPv6.
+        """
+        return pulumi.get(self, "network_tier")
+
+    @network_tier.setter
+    def network_tier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network_tier", value)
+
+    @property
+    @pulumi.getter(name="externalIpv6")
+    def external_ipv6(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "external_ipv6")
+
+    @external_ipv6.setter
+    def external_ipv6(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "external_ipv6", value)
+
+    @property
+    @pulumi.getter(name="externalIpv6PrefixLength")
+    def external_ipv6_prefix_length(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "external_ipv6_prefix_length")
+
+    @external_ipv6_prefix_length.setter
+    def external_ipv6_prefix_length(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "external_ipv6_prefix_length", value)
+
+    @property
+    @pulumi.getter(name="publicPtrDomainName")
+    def public_ptr_domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain name to be used when creating DNSv6
+        records for the external IPv6 ranges..
+        """
+        return pulumi.get(self, "public_ptr_domain_name")
+
+    @public_ptr_domain_name.setter
+    def public_ptr_domain_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "public_ptr_domain_name", value)
 
 
 @pulumi.input_type
@@ -9012,10 +9314,13 @@ class InstanceTemplateNetworkInterfaceArgs:
     def __init__(__self__, *,
                  access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceAccessConfigArgs']]]] = None,
                  alias_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceAliasIpRangeArgs']]]] = None,
+                 ipv6_access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs']]]] = None,
+                 ipv6_access_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  network_ip: Optional[pulumi.Input[str]] = None,
                  nic_type: Optional[pulumi.Input[str]] = None,
+                 stack_type: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  subnetwork_project: Optional[pulumi.Input[str]] = None):
         """
@@ -9028,6 +9333,9 @@ class InstanceTemplateNetworkInterfaceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceAliasIpRangeArgs']]] alias_ip_ranges: An
                array of alias IP ranges for this network interface. Can only be specified for network
                interfaces on subnet-mode networks. Structure documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs']]] ipv6_access_configs: An array of IPv6 access configurations for this interface.
+               Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
+               specified, then this instance will have no external IPv6 Internet access. Structure documented below.
         :param pulumi.Input[str] name: The name of the instance template. If you leave
                this blank, the provider will auto-generate a unique name.
         :param pulumi.Input[str] network: The name or self_link of the network to attach this interface to.
@@ -9036,6 +9344,7 @@ class InstanceTemplateNetworkInterfaceArgs:
         :param pulumi.Input[str] network_ip: The private IP address to assign to the instance. If
                empty, the address will be automatically assigned.
         :param pulumi.Input[str] nic_type: The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
+        :param pulumi.Input[str] stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
         :param pulumi.Input[str] subnetwork: the name of the subnetwork to attach this interface
                to. The subnetwork must exist in the same `region` this instance will be
                created in. Either `network` or `subnetwork` must be provided.
@@ -9046,6 +9355,10 @@ class InstanceTemplateNetworkInterfaceArgs:
             pulumi.set(__self__, "access_configs", access_configs)
         if alias_ip_ranges is not None:
             pulumi.set(__self__, "alias_ip_ranges", alias_ip_ranges)
+        if ipv6_access_configs is not None:
+            pulumi.set(__self__, "ipv6_access_configs", ipv6_access_configs)
+        if ipv6_access_type is not None:
+            pulumi.set(__self__, "ipv6_access_type", ipv6_access_type)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network is not None:
@@ -9054,6 +9367,8 @@ class InstanceTemplateNetworkInterfaceArgs:
             pulumi.set(__self__, "network_ip", network_ip)
         if nic_type is not None:
             pulumi.set(__self__, "nic_type", nic_type)
+        if stack_type is not None:
+            pulumi.set(__self__, "stack_type", stack_type)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
         if subnetwork_project is not None:
@@ -9089,6 +9404,29 @@ class InstanceTemplateNetworkInterfaceArgs:
     @alias_ip_ranges.setter
     def alias_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceAliasIpRangeArgs']]]]):
         pulumi.set(self, "alias_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="ipv6AccessConfigs")
+    def ipv6_access_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs']]]]:
+        """
+        An array of IPv6 access configurations for this interface.
+        Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
+        specified, then this instance will have no external IPv6 Internet access. Structure documented below.
+        """
+        return pulumi.get(self, "ipv6_access_configs")
+
+    @ipv6_access_configs.setter
+    def ipv6_access_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs']]]]):
+        pulumi.set(self, "ipv6_access_configs", value)
+
+    @property
+    @pulumi.getter(name="ipv6AccessType")
+    def ipv6_access_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ipv6_access_type")
+
+    @ipv6_access_type.setter
+    def ipv6_access_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv6_access_type", value)
 
     @property
     @pulumi.getter
@@ -9143,6 +9481,18 @@ class InstanceTemplateNetworkInterfaceArgs:
         pulumi.set(self, "nic_type", value)
 
     @property
+    @pulumi.getter(name="stackType")
+    def stack_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
+        """
+        return pulumi.get(self, "stack_type")
+
+    @stack_type.setter
+    def stack_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "stack_type", value)
+
+    @property
     @pulumi.getter
     def subnetwork(self) -> Optional[pulumi.Input[str]]:
         """
@@ -9179,9 +9529,8 @@ class InstanceTemplateNetworkInterfaceAccessConfigArgs:
         """
         :param pulumi.Input[str] nat_ip: The IP address that will be 1:1 mapped to the instance's
                network ip. If not given, one will be generated.
-        :param pulumi.Input[str] network_tier: The [networking tier][network-tier] used for configuring
-               this instance template. This field can take the following values: PREMIUM or
-               STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+        :param pulumi.Input[str] network_tier: The service-level to be provided for IPv6 traffic when the
+               subnet has an external subnet. Only PREMIUM tier is valid for IPv6.
         """
         if nat_ip is not None:
             pulumi.set(__self__, "nat_ip", nat_ip)
@@ -9207,9 +9556,8 @@ class InstanceTemplateNetworkInterfaceAccessConfigArgs:
     @pulumi.getter(name="networkTier")
     def network_tier(self) -> Optional[pulumi.Input[str]]:
         """
-        The [networking tier][network-tier] used for configuring
-        this instance template. This field can take the following values: PREMIUM or
-        STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+        The service-level to be provided for IPv6 traffic when the
+        subnet has an external subnet. Only PREMIUM tier is valid for IPv6.
         """
         return pulumi.get(self, "network_tier")
 
@@ -9275,6 +9623,66 @@ class InstanceTemplateNetworkInterfaceAliasIpRangeArgs:
     @subnetwork_range_name.setter
     def subnetwork_range_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subnetwork_range_name", value)
+
+
+@pulumi.input_type
+class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs:
+    def __init__(__self__, *,
+                 network_tier: pulumi.Input[str],
+                 external_ipv6: Optional[pulumi.Input[str]] = None,
+                 external_ipv6_prefix_length: Optional[pulumi.Input[str]] = None,
+                 public_ptr_domain_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] network_tier: The service-level to be provided for IPv6 traffic when the
+               subnet has an external subnet. Only PREMIUM tier is valid for IPv6.
+        """
+        pulumi.set(__self__, "network_tier", network_tier)
+        if external_ipv6 is not None:
+            pulumi.set(__self__, "external_ipv6", external_ipv6)
+        if external_ipv6_prefix_length is not None:
+            pulumi.set(__self__, "external_ipv6_prefix_length", external_ipv6_prefix_length)
+        if public_ptr_domain_name is not None:
+            pulumi.set(__self__, "public_ptr_domain_name", public_ptr_domain_name)
+
+    @property
+    @pulumi.getter(name="networkTier")
+    def network_tier(self) -> pulumi.Input[str]:
+        """
+        The service-level to be provided for IPv6 traffic when the
+        subnet has an external subnet. Only PREMIUM tier is valid for IPv6.
+        """
+        return pulumi.get(self, "network_tier")
+
+    @network_tier.setter
+    def network_tier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network_tier", value)
+
+    @property
+    @pulumi.getter(name="externalIpv6")
+    def external_ipv6(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "external_ipv6")
+
+    @external_ipv6.setter
+    def external_ipv6(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "external_ipv6", value)
+
+    @property
+    @pulumi.getter(name="externalIpv6PrefixLength")
+    def external_ipv6_prefix_length(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "external_ipv6_prefix_length")
+
+    @external_ipv6_prefix_length.setter
+    def external_ipv6_prefix_length(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "external_ipv6_prefix_length", value)
+
+    @property
+    @pulumi.getter(name="publicPtrDomainName")
+    def public_ptr_domain_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "public_ptr_domain_name")
+
+    @public_ptr_domain_name.setter
+    def public_ptr_domain_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "public_ptr_domain_name", value)
 
 
 @pulumi.input_type

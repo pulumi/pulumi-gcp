@@ -2123,22 +2123,50 @@ class ClusterNodeConfigTaintArgs:
 @pulumi.input_type
 class ClusterNodeConfigWorkloadMetadataConfigArgs:
     def __init__(__self__, *,
-                 node_metadata: pulumi.Input[str]):
+                 mode: Optional[pulumi.Input[str]] = None,
+                 node_metadata: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] node_metadata: How to expose the node metadata to the workload running on the node.
+        :param pulumi.Input[str] mode: How to expose the node metadata to the workload running on the node.
+               Accepted values are:
+               * UNSPECIFIED: Not Set
+               * GCE_METADATA: Expose all Compute Engine metadata to pods.
+               * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
+        :param pulumi.Input[str] node_metadata: How to expose the node metadata to the workload running on the node. This is deprecated in favor of `mode`
                Accepted values are:
                * UNSPECIFIED: Not Set
                * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
                * EXPOSE: Expose all VM metadata to pods.
                * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
         """
-        pulumi.set(__self__, "node_metadata", node_metadata)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if node_metadata is not None:
+            warnings.warn("""Deprecated in favor of mode.""", DeprecationWarning)
+            pulumi.log.warn("""node_metadata is deprecated: Deprecated in favor of mode.""")
+        if node_metadata is not None:
+            pulumi.set(__self__, "node_metadata", node_metadata)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        How to expose the node metadata to the workload running on the node.
+        Accepted values are:
+        * UNSPECIFIED: Not Set
+        * GCE_METADATA: Expose all Compute Engine metadata to pods.
+        * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
 
     @property
     @pulumi.getter(name="nodeMetadata")
-    def node_metadata(self) -> pulumi.Input[str]:
+    def node_metadata(self) -> Optional[pulumi.Input[str]]:
         """
-        How to expose the node metadata to the workload running on the node.
+        How to expose the node metadata to the workload running on the node. This is deprecated in favor of `mode`
         Accepted values are:
         * UNSPECIFIED: Not Set
         * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
@@ -2148,7 +2176,7 @@ class ClusterNodeConfigWorkloadMetadataConfigArgs:
         return pulumi.get(self, "node_metadata")
 
     @node_metadata.setter
-    def node_metadata(self, value: pulumi.Input[str]):
+    def node_metadata(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "node_metadata", value)
 
 
@@ -3157,22 +3185,50 @@ class ClusterNodePoolNodeConfigTaintArgs:
 @pulumi.input_type
 class ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs:
     def __init__(__self__, *,
-                 node_metadata: pulumi.Input[str]):
+                 mode: Optional[pulumi.Input[str]] = None,
+                 node_metadata: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] node_metadata: How to expose the node metadata to the workload running on the node.
+        :param pulumi.Input[str] mode: How to expose the node metadata to the workload running on the node.
+               Accepted values are:
+               * UNSPECIFIED: Not Set
+               * GCE_METADATA: Expose all Compute Engine metadata to pods.
+               * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
+        :param pulumi.Input[str] node_metadata: How to expose the node metadata to the workload running on the node. This is deprecated in favor of `mode`
                Accepted values are:
                * UNSPECIFIED: Not Set
                * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
                * EXPOSE: Expose all VM metadata to pods.
                * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
         """
-        pulumi.set(__self__, "node_metadata", node_metadata)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if node_metadata is not None:
+            warnings.warn("""Deprecated in favor of mode.""", DeprecationWarning)
+            pulumi.log.warn("""node_metadata is deprecated: Deprecated in favor of mode.""")
+        if node_metadata is not None:
+            pulumi.set(__self__, "node_metadata", node_metadata)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        How to expose the node metadata to the workload running on the node.
+        Accepted values are:
+        * UNSPECIFIED: Not Set
+        * GCE_METADATA: Expose all Compute Engine metadata to pods.
+        * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
 
     @property
     @pulumi.getter(name="nodeMetadata")
-    def node_metadata(self) -> pulumi.Input[str]:
+    def node_metadata(self) -> Optional[pulumi.Input[str]]:
         """
-        How to expose the node metadata to the workload running on the node.
+        How to expose the node metadata to the workload running on the node. This is deprecated in favor of `mode`
         Accepted values are:
         * UNSPECIFIED: Not Set
         * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
@@ -3182,7 +3238,7 @@ class ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs:
         return pulumi.get(self, "node_metadata")
 
     @node_metadata.setter
-    def node_metadata(self, value: pulumi.Input[str]):
+    def node_metadata(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "node_metadata", value)
 
 
@@ -4187,16 +4243,32 @@ class NodePoolNodeConfigTaintArgs:
 @pulumi.input_type
 class NodePoolNodeConfigWorkloadMetadataConfigArgs:
     def __init__(__self__, *,
-                 node_metadata: pulumi.Input[str]):
-        pulumi.set(__self__, "node_metadata", node_metadata)
+                 mode: Optional[pulumi.Input[str]] = None,
+                 node_metadata: Optional[pulumi.Input[str]] = None):
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if node_metadata is not None:
+            warnings.warn("""Deprecated in favor of mode.""", DeprecationWarning)
+            pulumi.log.warn("""node_metadata is deprecated: Deprecated in favor of mode.""")
+        if node_metadata is not None:
+            pulumi.set(__self__, "node_metadata", node_metadata)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
 
     @property
     @pulumi.getter(name="nodeMetadata")
-    def node_metadata(self) -> pulumi.Input[str]:
+    def node_metadata(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "node_metadata")
 
     @node_metadata.setter
-    def node_metadata(self, value: pulumi.Input[str]):
+    def node_metadata(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "node_metadata", value)
 
 

@@ -25,11 +25,17 @@ namespace Pulumi.Gcp.Monitoring
     ///         var primary = new Gcp.Monitoring.MonitoredProject("primary", new Gcp.Monitoring.MonitoredProjectArgs
     ///         {
     ///             MetricsScope = "my-project-name",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///         var basic = new Gcp.Organizations.Project("basic", new Gcp.Organizations.ProjectArgs
     ///         {
     ///             ProjectId = "id",
     ///             OrgId = "123456789",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 

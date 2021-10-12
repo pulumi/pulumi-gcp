@@ -19,13 +19,17 @@ namespace Pulumi.Gcp.Composer.Inputs
         public Input<string>? DagGcsPrefix { get; set; }
 
         /// <summary>
-        /// The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
+        /// The configuration settings for Cloud SQL instance used internally
+        /// by Apache Airflow software. This field is supported for Cloud
+        /// Composer environments in versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         [Input("databaseConfig")]
         public Input<Inputs.EnvironmentConfigDatabaseConfigArgs>? DatabaseConfig { get; set; }
 
         /// <summary>
-        /// The encryption options for the Cloud Composer environment and its dependencies.
+        /// The encryption options for the Cloud Composer environment and its
+        /// dependencies. This field is supported for Cloud Composer environments in
+        /// versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         [Input("encryptionConfig")]
         public Input<Inputs.EnvironmentConfigEncryptionConfigArgs>? EncryptionConfig { get; set; }
@@ -33,6 +37,9 @@ namespace Pulumi.Gcp.Composer.Inputs
         [Input("gkeCluster")]
         public Input<string>? GkeCluster { get; set; }
 
+        /// <summary>
+        /// The configuration settings for Cloud Composer maintenance window.
+        /// </summary>
         [Input("maintenanceWindow")]
         public Input<Inputs.EnvironmentConfigMaintenanceWindowArgs>? MaintenanceWindow { get; set; }
 
@@ -44,7 +51,9 @@ namespace Pulumi.Gcp.Composer.Inputs
 
         /// <summary>
         /// The number of nodes in the Kubernetes Engine cluster that
-        /// will be used to run this environment.
+        /// will be used to run this environment. This field is
+        /// supported for Cloud Composer environments in versions
+        /// composer-1.*.*-airflow-*.*.*.
         /// </summary>
         [Input("nodeCount")]
         public Input<int>? NodeCount { get; set; }
@@ -63,15 +72,22 @@ namespace Pulumi.Gcp.Composer.Inputs
 
         /// <summary>
         /// The configuration settings for the Airflow web server App Engine instance.
+        /// This field is supported for Cloud Composer environments in versions
+        /// composer-1.*.*-airflow-*.*.*.
         /// </summary>
         [Input("webServerConfig")]
         public Input<Inputs.EnvironmentConfigWebServerConfigArgs>? WebServerConfig { get; set; }
 
-        /// <summary>
-        /// The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
-        /// </summary>
         [Input("webServerNetworkAccessControl")]
         public Input<Inputs.EnvironmentConfigWebServerNetworkAccessControlArgs>? WebServerNetworkAccessControl { get; set; }
+
+        /// <summary>
+        /// The Kubernetes workloads configuration for GKE cluster associated with the
+        /// Cloud Composer environment. Supported for Cloud Composer environments in
+        /// versions composer-2.*.*-airflow-*.*.* and newer.
+        /// </summary>
+        [Input("workloadsConfig")]
+        public Input<Inputs.EnvironmentConfigWorkloadsConfigArgs>? WorkloadsConfig { get; set; }
 
         public EnvironmentConfigArgs()
         {

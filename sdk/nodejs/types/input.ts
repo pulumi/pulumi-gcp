@@ -6686,14 +6686,21 @@ export namespace composer {
         airflowUri?: pulumi.Input<string>;
         dagGcsPrefix?: pulumi.Input<string>;
         /**
-         * The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
+         * The configuration settings for Cloud SQL instance used internally
+         * by Apache Airflow software. This field is supported for Cloud
+         * Composer environments in versions composer-1.*.*-airflow-*.*.*.
          */
         databaseConfig?: pulumi.Input<inputs.composer.EnvironmentConfigDatabaseConfig>;
         /**
-         * The encryption options for the Cloud Composer environment and its dependencies.
+         * The encryption options for the Cloud Composer environment and its
+         * dependencies. This field is supported for Cloud Composer environments in
+         * versions composer-1.*.*-airflow-*.*.*.
          */
         encryptionConfig?: pulumi.Input<inputs.composer.EnvironmentConfigEncryptionConfig>;
         gkeCluster?: pulumi.Input<string>;
+        /**
+         * The configuration settings for Cloud Composer maintenance window.
+         */
         maintenanceWindow?: pulumi.Input<inputs.composer.EnvironmentConfigMaintenanceWindow>;
         /**
          * The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
@@ -6701,7 +6708,9 @@ export namespace composer {
         nodeConfig?: pulumi.Input<inputs.composer.EnvironmentConfigNodeConfig>;
         /**
          * The number of nodes in the Kubernetes Engine cluster that
-         * will be used to run this environment.
+         * will be used to run this environment. This field is
+         * supported for Cloud Composer environments in versions
+         * composer-1.*.*-airflow-*.*.*.
          */
         nodeCount?: pulumi.Input<number>;
         /**
@@ -6714,12 +6723,17 @@ export namespace composer {
         softwareConfig?: pulumi.Input<inputs.composer.EnvironmentConfigSoftwareConfig>;
         /**
          * The configuration settings for the Airflow web server App Engine instance.
+         * This field is supported for Cloud Composer environments in versions
+         * composer-1.*.*-airflow-*.*.*.
          */
         webServerConfig?: pulumi.Input<inputs.composer.EnvironmentConfigWebServerConfig>;
-        /**
-         * The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
-         */
         webServerNetworkAccessControl?: pulumi.Input<inputs.composer.EnvironmentConfigWebServerNetworkAccessControl>;
+        /**
+         * The Kubernetes workloads configuration for GKE cluster associated with the
+         * Cloud Composer environment. Supported for Cloud Composer environments in
+         * versions composer-2.*.*-airflow-*.*.* and newer.
+         */
+        workloadsConfig?: pulumi.Input<inputs.composer.EnvironmentConfigWorkloadsConfig>;
     }
 
     export interface EnvironmentConfigDatabaseConfig {
@@ -6762,9 +6776,11 @@ export namespace composer {
     export interface EnvironmentConfigNodeConfig {
         /**
          * The disk size in GB used for node VMs. Minimum size is 20GB.
-         * If unspecified, defaults to 100GB. Cannot be updated.
+         * If unspecified, defaults to 100GB. Cannot be updated. This field is supported
+         * for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
          */
         diskSizeGb?: pulumi.Input<number>;
+        enableIpMasqAgent?: pulumi.Input<boolean>;
         /**
          * Configuration for controlling how IPs are allocated in the GKE cluster.
          * Structure is documented below.
@@ -6778,6 +6794,14 @@ export namespace composer {
          * manually changed to a non-standard values.
          */
         machineType?: pulumi.Input<string>;
+        /**
+         * The maximum pods per node in the GKE cluster allocated during environment
+         * creation. Lowering this value reduces IP address consumption by the Cloud
+         * Composer Kubernetes cluster. This value can only be set if the environment is VPC-Native.
+         * The range of possible values is 8-110, and the default is 32.
+         * Cannot be updated. This field is supported for Cloud Composer environments
+         * in versions composer-1.*.*-airflow-*.*.*.
+         */
         maxPodsPerNode?: pulumi.Input<number>;
         /**
          * The Compute Engine network to be used for machine
@@ -6788,7 +6812,9 @@ export namespace composer {
         /**
          * The set of Google API scopes to be made available on all node
          * VMs. Cannot be updated. If empty, defaults to
-         * `["https://www.googleapis.com/auth/cloud-platform"]`
+         * `["https://www.googleapis.com/auth/cloud-platform"]`. This field is
+         * supported for Cloud Composer environments in versions
+         * composer-1.*.*-airflow-*.*.*.
          */
         oauthScopes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -6810,14 +6836,17 @@ export namespace composer {
          * The list of instance tags applied to all node VMs. Tags are
          * used to identify valid sources or targets for network
          * firewalls. Each tag within the list must comply with RFC1035.
-         * Cannot be updated.
+         * Cannot be updated. This field is supported for Cloud Composer
+         * environments in versions composer-1.*.*-airflow-*.*.*.
          */
         tags?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * The Compute Engine zone in which to deploy the VMs running the
          * Apache Airflow software, specified as the zone name or
-         * relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project
-         * and region.
+         * relative resource name (e.g. "projects/{project}/zones/{zone}"). Must
+         * belong to the enclosing environment's project and region. This field is
+         * supported for Cloud Composer environments in versions
+         * composer-1.*.*-airflow-*.*.*.
          */
         zone: pulumi.Input<string>;
     }
@@ -6825,6 +6854,8 @@ export namespace composer {
     export interface EnvironmentConfigNodeConfigIpAllocationPolicy {
         /**
          * The IP address range used to allocate IP addresses to pods in the cluster.
+         * For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*,
+         * this field is applicable only when `useIpAliases` is true.
          * Set to blank to have GKE choose a range with the default size.
          * Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask.
          * Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks
@@ -6835,11 +6866,14 @@ export namespace composer {
         /**
          * The name of the cluster's secondary range used to allocate IP addresses to pods.
          * Specify either `clusterSecondaryRangeName` or `clusterIpv4CidrBlock` but not both.
-         * This field is applicable only when `useIpAliases` is true.
+         * For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*,
+         * this field is applicable only when `useIpAliases` is true.
          */
         clusterSecondaryRangeName?: pulumi.Input<string>;
         /**
          * The IP address range used to allocate IP addresses in this cluster.
+         * For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*,
+         * this field is applicable only when `useIpAliases` is true.
          * Set to blank to have GKE choose a range with the default size.
          * Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask.
          * Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks
@@ -6850,17 +6884,22 @@ export namespace composer {
         /**
          * The name of the services' secondary range used to allocate IP addresses to the cluster.
          * Specify either `servicesSecondaryRangeName` or `servicesIpv4CidrBlock` but not both.
-         * This field is applicable only when `useIpAliases` is true.
+         * For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*,
+         * this field is applicable only when `useIpAliases` is true.
          */
         servicesSecondaryRangeName?: pulumi.Input<string>;
         /**
          * Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created.
          * Defaults to true if the `ipAllocationPolicy` block is present in config.
+         * This field is only supported for Cloud Composer environments in versions
+         * composer-1.*.*-airflow-*.*.*. Environments in newer versions always use
+         * VPC-native GKE clusters.
          */
         useIpAliases: pulumi.Input<boolean>;
     }
 
     export interface EnvironmentConfigPrivateEnvironmentConfig {
+        cloudComposerNetworkIpv4CidrBlock?: pulumi.Input<string>;
         /**
          * The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `webServerIpv4CidrBlock`
          */
@@ -6868,8 +6907,12 @@ export namespace composer {
         /**
          * -
          * If true, access to the public endpoint of the GKE cluster is denied.
+         * If this field is set to true, `ip_allocation_policy.use_ip_aliases` must
+         * be set to true for Cloud Composer environments in versions
+         * composer-1.*.*-airflow-*.*.*.
          */
         enablePrivateEndpoint?: pulumi.Input<boolean>;
+        enablePrivatelyUsedPublicIps?: pulumi.Input<boolean>;
         /**
          * The IP range in CIDR notation to use for the hosted master network. This range is used
          * for assigning internal IP addresses to the cluster master or set of masters and to the
@@ -6879,7 +6922,7 @@ export namespace composer {
          */
         masterIpv4CidrBlock?: pulumi.Input<string>;
         /**
-         * The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `masterIpv4CidrBlock` and `cloudSqlIpv4CidrBlock`.
+         * The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `masterIpv4CidrBlock` and `cloudSqlIpv4CidrBlock`. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
          */
         webServerIpv4CidrBlock?: pulumi.Input<string>;
     }
@@ -6922,7 +6965,10 @@ export namespace composer {
         /**
          * -
          * The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes.
-         * Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
+         * Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be
+         * updated. This field is supported for Cloud Composer environments in versions
+         * composer-1.*.*-airflow-*.*.*. Environments in newer versions always use
+         * Python major version 3.
          */
         pythonVersion?: pulumi.Input<string>;
         /**
@@ -6962,6 +7008,78 @@ export namespace composer {
          * `1.2.3.4/24` should be truncated to `1.2.3.0/24`. Similarly, for IPv6, `2001:db8::1/32` should be truncated to `2001:db8::/32`.
          */
         value: pulumi.Input<string>;
+    }
+
+    export interface EnvironmentConfigWorkloadsConfig {
+        /**
+         * Configuration for resources used by Airflow schedulers.
+         */
+        scheduler?: pulumi.Input<inputs.composer.EnvironmentConfigWorkloadsConfigScheduler>;
+        /**
+         * Configuration for resources used by Airflow web server.
+         */
+        webServer?: pulumi.Input<inputs.composer.EnvironmentConfigWorkloadsConfigWebServer>;
+        /**
+         * Configuration for resources used by Airflow workers.
+         */
+        worker?: pulumi.Input<inputs.composer.EnvironmentConfigWorkloadsConfigWorker>;
+    }
+
+    export interface EnvironmentConfigWorkloadsConfigScheduler {
+        /**
+         * The number of schedulers.
+         */
+        count?: pulumi.Input<number>;
+        /**
+         * CPU request and limit for a single Airflow worker replica.
+         */
+        cpu?: pulumi.Input<number>;
+        /**
+         * Memory (GB) request and limit for a single Airflow worker replica.
+         */
+        memoryGb?: pulumi.Input<number>;
+        /**
+         * Storage (GB) request and limit for Airflow web server.
+         */
+        storageGb?: pulumi.Input<number>;
+    }
+
+    export interface EnvironmentConfigWorkloadsConfigWebServer {
+        /**
+         * CPU request and limit for a single Airflow worker replica.
+         */
+        cpu?: pulumi.Input<number>;
+        /**
+         * Memory (GB) request and limit for a single Airflow worker replica.
+         */
+        memoryGb?: pulumi.Input<number>;
+        /**
+         * Storage (GB) request and limit for Airflow web server.
+         */
+        storageGb?: pulumi.Input<number>;
+    }
+
+    export interface EnvironmentConfigWorkloadsConfigWorker {
+        /**
+         * CPU request and limit for a single Airflow worker replica.
+         */
+        cpu?: pulumi.Input<number>;
+        /**
+         * Maximum number of workers for autoscaling.
+         */
+        maxCount?: pulumi.Input<number>;
+        /**
+         * Memory (GB) request and limit for a single Airflow worker replica.
+         */
+        memoryGb?: pulumi.Input<number>;
+        /**
+         * Minimum number of workers for autoscaling.
+         */
+        minCount?: pulumi.Input<number>;
+        /**
+         * Storage (GB) request and limit for Airflow web server.
+         */
+        storageGb?: pulumi.Input<number>;
     }
 
 }
@@ -8711,6 +8829,8 @@ export namespace compute {
     export interface InstanceFromMachineImageNetworkInterface {
         accessConfigs?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromMachineImageNetworkInterfaceAccessConfig>[]>;
         aliasIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromMachineImageNetworkInterfaceAliasIpRange>[]>;
+        ipv6AccessConfigs?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromMachineImageNetworkInterfaceIpv6AccessConfig>[]>;
+        ipv6AccessType?: pulumi.Input<string>;
         /**
          * A unique name for the resource, required by GCE.
          * Changing this forces a new resource to be created.
@@ -8719,6 +8839,7 @@ export namespace compute {
         network?: pulumi.Input<string>;
         networkIp?: pulumi.Input<string>;
         nicType?: pulumi.Input<string>;
+        stackType?: pulumi.Input<string>;
         subnetwork?: pulumi.Input<string>;
         subnetworkProject?: pulumi.Input<string>;
     }
@@ -8732,6 +8853,13 @@ export namespace compute {
     export interface InstanceFromMachineImageNetworkInterfaceAliasIpRange {
         ipCidrRange: pulumi.Input<string>;
         subnetworkRangeName?: pulumi.Input<string>;
+    }
+
+    export interface InstanceFromMachineImageNetworkInterfaceIpv6AccessConfig {
+        externalIpv6?: pulumi.Input<string>;
+        externalIpv6PrefixLength?: pulumi.Input<string>;
+        networkTier: pulumi.Input<string>;
+        publicPtrDomainName?: pulumi.Input<string>;
     }
 
     export interface InstanceFromMachineImageNetworkPerformanceConfig {
@@ -8821,6 +8949,8 @@ export namespace compute {
     export interface InstanceFromTemplateNetworkInterface {
         accessConfigs?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromTemplateNetworkInterfaceAccessConfig>[]>;
         aliasIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromTemplateNetworkInterfaceAliasIpRange>[]>;
+        ipv6AccessConfigs?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromTemplateNetworkInterfaceIpv6AccessConfig>[]>;
+        ipv6AccessType?: pulumi.Input<string>;
         /**
          * A unique name for the resource, required by GCE.
          * Changing this forces a new resource to be created.
@@ -8829,6 +8959,7 @@ export namespace compute {
         network?: pulumi.Input<string>;
         networkIp?: pulumi.Input<string>;
         nicType?: pulumi.Input<string>;
+        stackType?: pulumi.Input<string>;
         subnetwork?: pulumi.Input<string>;
         subnetworkProject?: pulumi.Input<string>;
     }
@@ -8842,6 +8973,13 @@ export namespace compute {
     export interface InstanceFromTemplateNetworkInterfaceAliasIpRange {
         ipCidrRange: pulumi.Input<string>;
         subnetworkRangeName?: pulumi.Input<string>;
+    }
+
+    export interface InstanceFromTemplateNetworkInterfaceIpv6AccessConfig {
+        externalIpv6?: pulumi.Input<string>;
+        externalIpv6PrefixLength?: pulumi.Input<string>;
+        networkTier: pulumi.Input<string>;
+        publicPtrDomainName?: pulumi.Input<string>;
     }
 
     export interface InstanceFromTemplateNetworkPerformanceConfig {
@@ -9092,13 +9230,25 @@ export namespace compute {
          */
         aliasIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.InstanceNetworkInterfaceAliasIpRange>[]>;
         /**
+         * An array of IPv6 access configurations for this interface.
+         * Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
+         * specified, then this instance will have no external IPv6 Internet access. Structure documented below.
+         */
+        ipv6AccessConfigs?: pulumi.Input<pulumi.Input<inputs.compute.InstanceNetworkInterfaceIpv6AccessConfig>[]>;
+        /**
+         * One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet.
+         * This field is always inherited from its subnetwork.
+         */
+        ipv6AccessType?: pulumi.Input<string>;
+        /**
          * A unique name for the resource, required by GCE.
          * Changing this forces a new resource to be created.
          */
         name?: pulumi.Input<string>;
         /**
          * The name or selfLink of the network to attach this interface to.
-         * Either `network` or `subnetwork` must be provided.
+         * Either `network` or `subnetwork` must be provided. If network isn't provided it will
+         * be inferred from the subnetwork.
          */
         network?: pulumi.Input<string>;
         /**
@@ -9111,10 +9261,17 @@ export namespace compute {
          */
         nicType?: pulumi.Input<string>;
         /**
+         * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
+         */
+        stackType?: pulumi.Input<string>;
+        /**
          * The name or selfLink of the subnetwork to attach this
-         * interface to. The subnetwork must exist in the same region this instance will be
-         * created in. If network isn't provided it will be inferred from the subnetwork.
-         * Either `network` or `subnetwork` must be provided.
+         * interface to. Either `network` or `subnetwork` must be provided. If network isn't provided
+         * it will be inferred from the subnetwork. The subnetwork must exist in the same region this
+         * instance will be created in. If the network resource is in
+         * [legacy](https://cloud.google.com/vpc/docs/legacy) mode, do not specify this field. If the
+         * network is in auto subnet mode, specifying the subnetwork is optional. If the network is
+         * in custom subnet mode, specifying the subnetwork is required.
          */
         subnetwork?: pulumi.Input<string>;
         /**
@@ -9133,16 +9290,13 @@ export namespace compute {
          */
         natIp?: pulumi.Input<string>;
         /**
-         * The [networking tier][network-tier] used for configuring this instance.
-         * This field can take the following values: PREMIUM or STANDARD. If this field is
-         * not specified, it is assumed to be PREMIUM.
+         * The service-level to be provided for IPv6 traffic when the
+         * subnet has an external subnet. Only PREMIUM tier is valid for IPv6.
          */
         networkTier?: pulumi.Input<string>;
         /**
-         * The DNS domain name for the public PTR record.
-         * To set this field on an instance, you must be verified as the owner of the domain.
-         * See [the docs](https://cloud.google.com/compute/docs/instances/create-ptr-record) for how
-         * to become verified as a domain owner.
+         * The domain name to be used when creating DNSv6
+         * records for the external IPv6 ranges..
          */
         publicPtrDomainName?: pulumi.Input<string>;
     }
@@ -9161,6 +9315,21 @@ export namespace compute {
          * range. If left unspecified, the primary range of the subnetwork will be used.
          */
         subnetworkRangeName?: pulumi.Input<string>;
+    }
+
+    export interface InstanceNetworkInterfaceIpv6AccessConfig {
+        externalIpv6?: pulumi.Input<string>;
+        externalIpv6PrefixLength?: pulumi.Input<string>;
+        /**
+         * The service-level to be provided for IPv6 traffic when the
+         * subnet has an external subnet. Only PREMIUM tier is valid for IPv6.
+         */
+        networkTier: pulumi.Input<string>;
+        /**
+         * The domain name to be used when creating DNSv6
+         * records for the external IPv6 ranges..
+         */
+        publicPtrDomainName?: pulumi.Input<string>;
     }
 
     export interface InstanceNetworkPerformanceConfig {
@@ -9417,6 +9586,13 @@ export namespace compute {
          */
         aliasIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateNetworkInterfaceAliasIpRange>[]>;
         /**
+         * An array of IPv6 access configurations for this interface.
+         * Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
+         * specified, then this instance will have no external IPv6 Internet access. Structure documented below.
+         */
+        ipv6AccessConfigs?: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateNetworkInterfaceIpv6AccessConfig>[]>;
+        ipv6AccessType?: pulumi.Input<string>;
+        /**
          * The name of the instance template. If you leave
          * this blank, the provider will auto-generate a unique name.
          */
@@ -9437,6 +9613,10 @@ export namespace compute {
          */
         nicType?: pulumi.Input<string>;
         /**
+         * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
+         */
+        stackType?: pulumi.Input<string>;
+        /**
          * the name of the subnetwork to attach this interface
          * to. The subnetwork must exist in the same `region` this instance will be
          * created in. Either `network` or `subnetwork` must be provided.
@@ -9456,9 +9636,8 @@ export namespace compute {
          */
         natIp?: pulumi.Input<string>;
         /**
-         * The [networking tier][network-tier] used for configuring
-         * this instance template. This field can take the following values: PREMIUM or
-         * STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+         * The service-level to be provided for IPv6 traffic when the
+         * subnet has an external subnet. Only PREMIUM tier is valid for IPv6.
          */
         networkTier?: pulumi.Input<string>;
         publicPtrDomainName?: pulumi.Input<string>;
@@ -9479,6 +9658,17 @@ export namespace compute {
          * range. If left unspecified, the primary range of the subnetwork will be used.
          */
         subnetworkRangeName?: pulumi.Input<string>;
+    }
+
+    export interface InstanceTemplateNetworkInterfaceIpv6AccessConfig {
+        externalIpv6?: pulumi.Input<string>;
+        externalIpv6PrefixLength?: pulumi.Input<string>;
+        /**
+         * The service-level to be provided for IPv6 traffic when the
+         * subnet has an external subnet. Only PREMIUM tier is valid for IPv6.
+         */
+        networkTier: pulumi.Input<string>;
+        publicPtrDomainName?: pulumi.Input<string>;
     }
 
     export interface InstanceTemplateNetworkPerformanceConfig {
@@ -15607,11 +15797,21 @@ export namespace container {
          * How to expose the node metadata to the workload running on the node.
          * Accepted values are:
          * * UNSPECIFIED: Not Set
+         * * GCE_METADATA: Expose all Compute Engine metadata to pods.
+         * * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
+         */
+        mode?: pulumi.Input<string>;
+        /**
+         * How to expose the node metadata to the workload running on the node. This is deprecated in favor of `mode`
+         * Accepted values are:
+         * * UNSPECIFIED: Not Set
          * * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
          * * EXPOSE: Expose all VM metadata to pods.
          * * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
+         *
+         * @deprecated Deprecated in favor of mode.
          */
-        nodeMetadata: pulumi.Input<string>;
+        nodeMetadata?: pulumi.Input<string>;
     }
 
     export interface ClusterNodePool {
@@ -15895,11 +16095,21 @@ export namespace container {
          * How to expose the node metadata to the workload running on the node.
          * Accepted values are:
          * * UNSPECIFIED: Not Set
+         * * GCE_METADATA: Expose all Compute Engine metadata to pods.
+         * * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
+         */
+        mode?: pulumi.Input<string>;
+        /**
+         * How to expose the node metadata to the workload running on the node. This is deprecated in favor of `mode`
+         * Accepted values are:
+         * * UNSPECIFIED: Not Set
          * * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
          * * EXPOSE: Expose all VM metadata to pods.
          * * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
+         *
+         * @deprecated Deprecated in favor of mode.
          */
-        nodeMetadata: pulumi.Input<string>;
+        nodeMetadata?: pulumi.Input<string>;
     }
 
     export interface ClusterNodePoolUpgradeSettings {
@@ -16126,7 +16336,11 @@ export namespace container {
     }
 
     export interface NodePoolNodeConfigWorkloadMetadataConfig {
-        nodeMetadata: pulumi.Input<string>;
+        mode?: pulumi.Input<string>;
+        /**
+         * @deprecated Deprecated in favor of mode.
+         */
+        nodeMetadata?: pulumi.Input<string>;
     }
 
     export interface NodePoolUpgradeSettings {
@@ -20314,7 +20528,11 @@ export namespace endpoints {
 export namespace eventarc {
     export interface TriggerDestination {
         /**
-         * Cloud Run fully-managed service that receives the events. The service should be running in the same project as the trigger.
+         * The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: projects/{project}/locations/{location}/functions/{function}
+         */
+        cloudFunction?: pulumi.Input<string>;
+        /**
+         * Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
          */
         cloudRunService?: pulumi.Input<inputs.eventarc.TriggerDestinationCloudRunService>;
     }
@@ -20329,14 +20547,14 @@ export namespace eventarc {
          */
         region?: pulumi.Input<string>;
         /**
-         * Required. The name of the Cloud run service being addressed (see https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services). Only services located in the same project of the trigger object can be addressed.
+         * Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
          */
         service: pulumi.Input<string>;
     }
 
     export interface TriggerMatchingCriteria {
         /**
-         * Required. The name of a CloudEvents attribute. Currently, only a subset of attributes can be specified. All triggers MUST provide a matching criteria for the 'type' attribute.
+         * Required. The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
          */
         attribute: pulumi.Input<string>;
         /**
@@ -20359,7 +20577,7 @@ export namespace eventarc {
          */
         subscription?: pulumi.Input<string>;
         /**
-         * Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You may set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
+         * Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME You may set an existing topic for triggers of the type google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
          */
         topic?: pulumi.Input<string>;
     }
@@ -20741,6 +20959,7 @@ export namespace gkehub {
     }
 
     export interface FeatureMembershipConfigmanagementConfigSyncGit {
+        gcpServiceAccountEmail?: pulumi.Input<string>;
         /**
          * URL for the HTTPS proxy to be used when communicating with the Git repo.
          */
@@ -20813,6 +21032,11 @@ export namespace gkehub {
         templateLibraryInstalled?: pulumi.Input<boolean>;
     }
 
+    export interface FeatureResourceState {
+        hasResources?: pulumi.Input<boolean>;
+        state?: pulumi.Input<string>;
+    }
+
     export interface FeatureSpec {
         /**
          * Multicluster Ingress-specific spec.
@@ -20825,7 +21049,17 @@ export namespace gkehub {
         /**
          * Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
          */
-        configMembership?: pulumi.Input<string>;
+        configMembership: pulumi.Input<string>;
+    }
+
+    export interface FeatureState {
+        states?: pulumi.Input<pulumi.Input<inputs.gkehub.FeatureStateState>[]>;
+    }
+
+    export interface FeatureStateState {
+        code?: pulumi.Input<string>;
+        description?: pulumi.Input<string>;
+        updateTime?: pulumi.Input<string>;
     }
 
     export interface MembershipAuthority {
@@ -22980,7 +23214,7 @@ export namespace monitoring {
         /**
          * The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
          * Default value is `CONTAINS_STRING`.
-         * Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, and `NON_MATCHES_REGEX`.
+         * Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, and `NOT_MATCHES_REGEX`.
          */
         matcher?: pulumi.Input<string>;
     }
@@ -25307,6 +25541,13 @@ export namespace pubsub {
          * Publish throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
          */
         subscribeMibPerSec: pulumi.Input<number>;
+    }
+
+    export interface LiteTopicReservationConfig {
+        /**
+         * The Reservation to use for this topic's throughput capacity.
+         */
+        throughputReservation?: pulumi.Input<string>;
     }
 
     export interface LiteTopicRetentionConfig {

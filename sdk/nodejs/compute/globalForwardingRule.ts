@@ -24,17 +24,19 @@ import * as utilities from "../utilities";
  * // External HTTP load balancer with a CDN-enabled managed instance group backend
  * // and custom request and response headers
  * // VPC
- * const xlbNetwork = new gcp.compute.Network("xlbNetwork", {autoCreateSubnetworks: false}, {
+ * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {autoCreateSubnetworks: false}, {
  *     provider: google,
  * });
  * // backend subnet
- * const xlbSubnet = new gcp.compute.Subnetwork("xlbSubnet", {
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
  *     ipCidrRange: "10.0.1.0/24",
  *     region: "us-central1",
- *     network: xlbNetwork.id,
+ *     network: defaultNetwork.id,
  * }, {
  *     provider: google,
  * });
+ * // reserved IP address
+ * const defaultGlobalAddress = new gcp.compute.GlobalAddress("defaultGlobalAddress", {});
  * // health check
  * const defaultHealthCheck = new gcp.compute.HealthCheck("defaultHealthCheck", {httpHealthCheck: {
  *     portSpecification: "USE_SERVING_PORT",
@@ -42,12 +44,12 @@ import * as utilities from "../utilities";
  *     provider: google,
  * });
  * // instance template
- * const instanceTemplate = new gcp.compute.InstanceTemplate("instanceTemplate", {
+ * const defaultInstanceTemplate = new gcp.compute.InstanceTemplate("defaultInstanceTemplate", {
  *     machineType: "e2-small",
  *     tags: ["allow-health-check"],
  *     networkInterfaces: [{
- *         network: xlbNetwork.id,
- *         subnetwork: xlbSubnet.id,
+ *         network: defaultNetwork.id,
+ *         subnetwork: defaultSubnetwork.id,
  *         accessConfigs: [{}],
  *     }],
  *     disks: [{
@@ -80,14 +82,14 @@ import * as utilities from "../utilities";
  *     provider: google,
  * });
  * // MIG
- * const mig = new gcp.compute.InstanceGroupManager("mig", {
+ * const defaultInstanceGroupManager = new gcp.compute.InstanceGroupManager("defaultInstanceGroupManager", {
  *     zone: "us-central1-c",
  *     namedPorts: [{
  *         name: "http",
  *         port: 8080,
  *     }],
  *     versions: [{
- *         instanceTemplate: instanceTemplate.id,
+ *         instanceTemplate: defaultInstanceTemplate.id,
  *         name: "primary",
  *     }],
  *     baseInstanceName: "vm",
@@ -106,7 +108,7 @@ import * as utilities from "../utilities";
  *     customResponseHeaders: ["X-Cache-Hit: {cdn_cache_status}"],
  *     healthChecks: [defaultHealthCheck.id],
  *     backends: [{
- *         group: mig.instanceGroup,
+ *         group: defaultInstanceGroupManager.instanceGroup,
  *         balancingMode: "UTILIZATION",
  *         capacityScaler: 1,
  *     }],
@@ -122,18 +124,19 @@ import * as utilities from "../utilities";
  *     provider: google,
  * });
  * // forwarding rule
- * const googleComputeGlobalForwardingRule = new gcp.compute.GlobalForwardingRule("googleComputeGlobalForwardingRule", {
+ * const defaultGlobalForwardingRule = new gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule", {
  *     ipProtocol: "TCP",
  *     loadBalancingScheme: "EXTERNAL",
  *     portRange: "80",
  *     target: defaultTargetHttpProxy.id,
+ *     ipAddress: defaultGlobalAddress.id,
  * }, {
  *     provider: google,
  * });
  * // allow access from health check ranges
- * const fwHealthCheck = new gcp.compute.Firewall("fwHealthCheck", {
+ * const defaultFirewall = new gcp.compute.Firewall("defaultFirewall", {
  *     direction: "INGRESS",
- *     network: xlbNetwork.id,
+ *     network: defaultNetwork.id,
  *     sourceRanges: [
  *         "130.211.0.0/22",
  *         "35.191.0.0/16",

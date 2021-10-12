@@ -34,17 +34,21 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		xlbNetwork, err := compute.NewNetwork(ctx, "xlbNetwork", &compute.NetworkArgs{
+// 		defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", &compute.NetworkArgs{
 // 			AutoCreateSubnetworks: pulumi.Bool(false),
 // 		}, pulumi.Provider(google))
 // 		if err != nil {
 // 			return err
 // 		}
-// 		xlbSubnet, err := compute.NewSubnetwork(ctx, "xlbSubnet", &compute.SubnetworkArgs{
+// 		defaultSubnetwork, err := compute.NewSubnetwork(ctx, "defaultSubnetwork", &compute.SubnetworkArgs{
 // 			IpCidrRange: pulumi.String("10.0.1.0/24"),
 // 			Region:      pulumi.String("us-central1"),
-// 			Network:     xlbNetwork.ID(),
+// 			Network:     defaultNetwork.ID(),
 // 		}, pulumi.Provider(google))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultGlobalAddress, err := compute.NewGlobalAddress(ctx, "defaultGlobalAddress", nil)
 // 		if err != nil {
 // 			return err
 // 		}
@@ -56,15 +60,15 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		instanceTemplate, err := compute.NewInstanceTemplate(ctx, "instanceTemplate", &compute.InstanceTemplateArgs{
+// 		defaultInstanceTemplate, err := compute.NewInstanceTemplate(ctx, "defaultInstanceTemplate", &compute.InstanceTemplateArgs{
 // 			MachineType: pulumi.String("e2-small"),
 // 			Tags: pulumi.StringArray{
 // 				pulumi.String("allow-health-check"),
 // 			},
 // 			NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
 // 				&compute.InstanceTemplateNetworkInterfaceArgs{
-// 					Network:    xlbNetwork.ID(),
-// 					Subnetwork: xlbSubnet.ID(),
+// 					Network:    defaultNetwork.ID(),
+// 					Subnetwork: defaultSubnetwork.ID(),
 // 					AccessConfigs: compute.InstanceTemplateNetworkInterfaceAccessConfigArray{
 // 						nil,
 // 					},
@@ -84,7 +88,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		mig, err := compute.NewInstanceGroupManager(ctx, "mig", &compute.InstanceGroupManagerArgs{
+// 		defaultInstanceGroupManager, err := compute.NewInstanceGroupManager(ctx, "defaultInstanceGroupManager", &compute.InstanceGroupManagerArgs{
 // 			Zone: pulumi.String("us-central1-c"),
 // 			NamedPorts: compute.InstanceGroupManagerNamedPortArray{
 // 				&compute.InstanceGroupManagerNamedPortArgs{
@@ -94,7 +98,7 @@ import (
 // 			},
 // 			Versions: compute.InstanceGroupManagerVersionArray{
 // 				&compute.InstanceGroupManagerVersionArgs{
-// 					InstanceTemplate: instanceTemplate.ID(),
+// 					InstanceTemplate: defaultInstanceTemplate.ID(),
 // 					Name:             pulumi.String("primary"),
 // 				},
 // 			},
@@ -121,7 +125,7 @@ import (
 // 			},
 // 			Backends: compute.BackendServiceBackendArray{
 // 				&compute.BackendServiceBackendArgs{
-// 					Group:          mig.InstanceGroup,
+// 					Group:          defaultInstanceGroupManager.InstanceGroup,
 // 					BalancingMode:  pulumi.String("UTILIZATION"),
 // 					CapacityScaler: pulumi.Float64(1),
 // 				},
@@ -142,18 +146,19 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = compute.NewGlobalForwardingRule(ctx, "googleComputeGlobalForwardingRule", &compute.GlobalForwardingRuleArgs{
+// 		_, err = compute.NewGlobalForwardingRule(ctx, "defaultGlobalForwardingRule", &compute.GlobalForwardingRuleArgs{
 // 			IpProtocol:          pulumi.String("TCP"),
 // 			LoadBalancingScheme: pulumi.String("EXTERNAL"),
 // 			PortRange:           pulumi.String("80"),
 // 			Target:              defaultTargetHttpProxy.ID(),
+// 			IpAddress:           defaultGlobalAddress.ID(),
 // 		}, pulumi.Provider(google))
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = compute.NewFirewall(ctx, "fwHealthCheck", &compute.FirewallArgs{
+// 		_, err = compute.NewFirewall(ctx, "defaultFirewall", &compute.FirewallArgs{
 // 			Direction: pulumi.String("INGRESS"),
-// 			Network:   xlbNetwork.ID(),
+// 			Network:   defaultNetwork.ID(),
 // 			SourceRanges: pulumi.StringArray{
 // 				pulumi.String("130.211.0.0/22"),
 // 				pulumi.String("35.191.0.0/16"),

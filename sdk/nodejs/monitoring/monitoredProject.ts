@@ -13,10 +13,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const primary = new gcp.monitoring.MonitoredProject("primary", {metricsScope: "my-project-name"});
+ * const primary = new gcp.monitoring.MonitoredProject("primary", {metricsScope: "my-project-name"}, {
+ *     provider: google_beta,
+ * });
  * const basic = new gcp.organizations.Project("basic", {
  *     projectId: "id",
  *     orgId: "123456789",
+ * }, {
+ *     provider: google_beta,
  * });
  * ```
  *

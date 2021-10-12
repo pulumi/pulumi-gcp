@@ -135,6 +135,32 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// }
     /// ```
+    /// ### Subnetwork Ipv6
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var custom_test = new Gcp.Compute.Network("custom-test", new Gcp.Compute.NetworkArgs
+    ///         {
+    ///             AutoCreateSubnetworks = false,
+    ///         });
+    ///         var subnetwork_ipv6 = new Gcp.Compute.Subnetwork("subnetwork-ipv6", new Gcp.Compute.SubnetworkArgs
+    ///         {
+    ///             IpCidrRange = "10.0.0.0/22",
+    ///             Region = "us-west2",
+    ///             StackType = "IPV4_IPV6",
+    ///             Ipv6AccessType = "EXTERNAL",
+    ///             Network = custom_test.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -174,6 +200,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// The range of external IPv6 addresses that are owned by this subnetwork.
+        /// </summary>
+        [Output("externalIpv6Prefix")]
+        public Output<string> ExternalIpv6Prefix { get; private set; } = null!;
+
+        /// <summary>
         /// Fingerprint of this resource. This field is used internally during updates of this resource.
         /// </summary>
         [Output("fingerprint")]
@@ -193,6 +225,21 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("ipCidrRange")]
         public Output<string> IpCidrRange { get; private set; } = null!;
+
+        /// <summary>
+        /// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
+        /// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
+        /// cannot enable direct path.
+        /// Possible values are `EXTERNAL`.
+        /// </summary>
+        [Output("ipv6AccessType")]
+        public Output<string?> Ipv6AccessType { get; private set; } = null!;
+
+        /// <summary>
+        /// The range of internal IPv6 addresses that are owned by this subnetwork.
+        /// </summary>
+        [Output("ipv6CidrRange")]
+        public Output<string> Ipv6CidrRange { get; private set; } = null!;
 
         /// <summary>
         /// Denotes the logging options for the subnetwork flow logs. If logging is enabled
@@ -286,6 +333,14 @@ namespace Pulumi.Gcp.Compute
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
+        /// <summary>
+        /// The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
+        /// If not specified IPV4_ONLY will be used.
+        /// Possible values are `IPV4_ONLY` and `IPV4_IPV6`.
+        /// </summary>
+        [Output("stackType")]
+        public Output<string> StackType { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Subnetwork resource with the given unique name, arguments, and options.
@@ -348,6 +403,15 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("ipCidrRange", required: true)]
         public Input<string> IpCidrRange { get; set; } = null!;
+
+        /// <summary>
+        /// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
+        /// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
+        /// cannot enable direct path.
+        /// Possible values are `EXTERNAL`.
+        /// </summary>
+        [Input("ipv6AccessType")]
+        public Input<string>? Ipv6AccessType { get; set; }
 
         /// <summary>
         /// Denotes the logging options for the subnetwork flow logs. If logging is enabled
@@ -441,6 +505,14 @@ namespace Pulumi.Gcp.Compute
             set => _secondaryIpRanges = value;
         }
 
+        /// <summary>
+        /// The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
+        /// If not specified IPV4_ONLY will be used.
+        /// Possible values are `IPV4_ONLY` and `IPV4_IPV6`.
+        /// </summary>
+        [Input("stackType")]
+        public Input<string>? StackType { get; set; }
+
         public SubnetworkArgs()
         {
         }
@@ -463,6 +535,12 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// The range of external IPv6 addresses that are owned by this subnetwork.
+        /// </summary>
+        [Input("externalIpv6Prefix")]
+        public Input<string>? ExternalIpv6Prefix { get; set; }
+
+        /// <summary>
         /// Fingerprint of this resource. This field is used internally during updates of this resource.
         /// </summary>
         [Input("fingerprint")]
@@ -482,6 +560,21 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("ipCidrRange")]
         public Input<string>? IpCidrRange { get; set; }
+
+        /// <summary>
+        /// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
+        /// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
+        /// cannot enable direct path.
+        /// Possible values are `EXTERNAL`.
+        /// </summary>
+        [Input("ipv6AccessType")]
+        public Input<string>? Ipv6AccessType { get; set; }
+
+        /// <summary>
+        /// The range of internal IPv6 addresses that are owned by this subnetwork.
+        /// </summary>
+        [Input("ipv6CidrRange")]
+        public Input<string>? Ipv6CidrRange { get; set; }
 
         /// <summary>
         /// Denotes the logging options for the subnetwork flow logs. If logging is enabled
@@ -580,6 +673,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
+
+        /// <summary>
+        /// The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
+        /// If not specified IPV4_ONLY will be used.
+        /// Possible values are `IPV4_ONLY` and `IPV4_IPV6`.
+        /// </summary>
+        [Input("stackType")]
+        public Input<string>? StackType { get; set; }
 
         public SubnetworkState()
         {

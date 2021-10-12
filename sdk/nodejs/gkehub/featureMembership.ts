@@ -53,19 +53,19 @@ export class FeatureMembership extends pulumi.CustomResource {
     /**
      * Config Management-specific spec.
      */
-    public readonly configmanagement!: pulumi.Output<outputs.gkehub.FeatureMembershipConfigmanagement | undefined>;
+    public readonly configmanagement!: pulumi.Output<outputs.gkehub.FeatureMembershipConfigmanagement>;
     /**
      * The name of the feature
      */
-    public readonly feature!: pulumi.Output<string | undefined>;
+    public readonly feature!: pulumi.Output<string>;
     /**
      * The location of the feature
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The name of the membership
      */
-    public readonly membership!: pulumi.Output<string | undefined>;
+    public readonly membership!: pulumi.Output<string>;
     /**
      * The project of the feature
      */
@@ -78,7 +78,7 @@ export class FeatureMembership extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: FeatureMembershipArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: FeatureMembershipArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FeatureMembershipArgs | FeatureMembershipState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -91,6 +91,18 @@ export class FeatureMembership extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as FeatureMembershipArgs | undefined;
+            if ((!args || args.configmanagement === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'configmanagement'");
+            }
+            if ((!args || args.feature === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'feature'");
+            }
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
+            }
+            if ((!args || args.membership === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'membership'");
+            }
             inputs["configmanagement"] = args ? args.configmanagement : undefined;
             inputs["feature"] = args ? args.feature : undefined;
             inputs["location"] = args ? args.location : undefined;
@@ -137,19 +149,19 @@ export interface FeatureMembershipArgs {
     /**
      * Config Management-specific spec.
      */
-    configmanagement?: pulumi.Input<inputs.gkehub.FeatureMembershipConfigmanagement>;
+    configmanagement: pulumi.Input<inputs.gkehub.FeatureMembershipConfigmanagement>;
     /**
      * The name of the feature
      */
-    feature?: pulumi.Input<string>;
+    feature: pulumi.Input<string>;
     /**
      * The location of the feature
      */
-    location?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * The name of the membership
      */
-    membership?: pulumi.Input<string>;
+    membership: pulumi.Input<string>;
     /**
      * The project of the feature
      */

@@ -41,8 +41,12 @@ type Feature struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
+	// State of the Feature resource itself.
+	ResourceStates FeatureResourceStateArrayOutput `pulumi:"resourceStates"`
 	// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
 	Spec FeatureSpecPtrOutput `pulumi:"spec"`
+	// Output only. The Hub-wide Feature state
+	States FeatureStateTypeArrayOutput `pulumi:"states"`
 	// Output only. When the Feature resource was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -91,8 +95,12 @@ type featureState struct {
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
+	// State of the Feature resource itself.
+	ResourceStates []FeatureResourceState `pulumi:"resourceStates"`
 	// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
 	Spec *FeatureSpec `pulumi:"spec"`
+	// Output only. The Hub-wide Feature state
+	States []FeatureStateType `pulumi:"states"`
 	// Output only. When the Feature resource was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -110,8 +118,12 @@ type FeatureState struct {
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
+	// State of the Feature resource itself.
+	ResourceStates FeatureResourceStateArrayInput
 	// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
 	Spec FeatureSpecPtrInput
+	// Output only. The Hub-wide Feature state
+	States FeatureStateTypeArrayInput
 	// Output only. When the Feature resource was last updated.
 	UpdateTime pulumi.StringPtrInput
 }

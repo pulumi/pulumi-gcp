@@ -33,25 +33,25 @@ namespace Pulumi.Gcp.GkeHub
         /// Config Management-specific spec.
         /// </summary>
         [Output("configmanagement")]
-        public Output<Outputs.FeatureMembershipConfigmanagement?> Configmanagement { get; private set; } = null!;
+        public Output<Outputs.FeatureMembershipConfigmanagement> Configmanagement { get; private set; } = null!;
 
         /// <summary>
         /// The name of the feature
         /// </summary>
         [Output("feature")]
-        public Output<string?> Feature { get; private set; } = null!;
+        public Output<string> Feature { get; private set; } = null!;
 
         /// <summary>
         /// The location of the feature
         /// </summary>
         [Output("location")]
-        public Output<string?> Location { get; private set; } = null!;
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// The name of the membership
         /// </summary>
         [Output("membership")]
-        public Output<string?> Membership { get; private set; } = null!;
+        public Output<string> Membership { get; private set; } = null!;
 
         /// <summary>
         /// The project of the feature
@@ -67,7 +67,7 @@ namespace Pulumi.Gcp.GkeHub
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public FeatureMembership(string name, FeatureMembershipArgs? args = null, CustomResourceOptions? options = null)
+        public FeatureMembership(string name, FeatureMembershipArgs args, CustomResourceOptions? options = null)
             : base("gcp:gkehub/featureMembership:FeatureMembership", name, args ?? new FeatureMembershipArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -108,26 +108,26 @@ namespace Pulumi.Gcp.GkeHub
         /// <summary>
         /// Config Management-specific spec.
         /// </summary>
-        [Input("configmanagement")]
-        public Input<Inputs.FeatureMembershipConfigmanagementArgs>? Configmanagement { get; set; }
+        [Input("configmanagement", required: true)]
+        public Input<Inputs.FeatureMembershipConfigmanagementArgs> Configmanagement { get; set; } = null!;
 
         /// <summary>
         /// The name of the feature
         /// </summary>
-        [Input("feature")]
-        public Input<string>? Feature { get; set; }
+        [Input("feature", required: true)]
+        public Input<string> Feature { get; set; } = null!;
 
         /// <summary>
         /// The location of the feature
         /// </summary>
-        [Input("location")]
-        public Input<string>? Location { get; set; }
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// The name of the membership
         /// </summary>
-        [Input("membership")]
-        public Input<string>? Membership { get; set; }
+        [Input("membership", required: true)]
+        public Input<string> Membership { get; set; } = null!;
 
         /// <summary>
         /// The project of the feature

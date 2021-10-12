@@ -43,6 +43,23 @@ namespace Pulumi.Gcp.Compute.Inputs
             set => _aliasIpRanges = value;
         }
 
+        [Input("ipv6AccessConfigs")]
+        private InputList<Inputs.InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs>? _ipv6AccessConfigs;
+
+        /// <summary>
+        /// An array of IPv6 access configurations for this interface.
+        /// Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
+        /// specified, then this instance will have no external IPv6 Internet access. Structure documented below.
+        /// </summary>
+        public InputList<Inputs.InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs> Ipv6AccessConfigs
+        {
+            get => _ipv6AccessConfigs ?? (_ipv6AccessConfigs = new InputList<Inputs.InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs>());
+            set => _ipv6AccessConfigs = value;
+        }
+
+        [Input("ipv6AccessType")]
+        public Input<string>? Ipv6AccessType { get; set; }
+
         /// <summary>
         /// The name of the instance template. If you leave
         /// this blank, the provider will auto-generate a unique name.
@@ -70,6 +87,12 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// </summary>
         [Input("nicType")]
         public Input<string>? NicType { get; set; }
+
+        /// <summary>
+        /// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
+        /// </summary>
+        [Input("stackType")]
+        public Input<string>? StackType { get; set; }
 
         /// <summary>
         /// the name of the subnetwork to attach this interface

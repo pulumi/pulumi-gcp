@@ -6962,14 +6962,21 @@ export namespace composer {
         airflowUri: string;
         dagGcsPrefix: string;
         /**
-         * The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
+         * The configuration settings for Cloud SQL instance used internally
+         * by Apache Airflow software. This field is supported for Cloud
+         * Composer environments in versions composer-1.*.*-airflow-*.*.*.
          */
         databaseConfig: outputs.composer.EnvironmentConfigDatabaseConfig;
         /**
-         * The encryption options for the Cloud Composer environment and its dependencies.
+         * The encryption options for the Cloud Composer environment and its
+         * dependencies. This field is supported for Cloud Composer environments in
+         * versions composer-1.*.*-airflow-*.*.*.
          */
         encryptionConfig: outputs.composer.EnvironmentConfigEncryptionConfig;
         gkeCluster: string;
+        /**
+         * The configuration settings for Cloud Composer maintenance window.
+         */
         maintenanceWindow: outputs.composer.EnvironmentConfigMaintenanceWindow;
         /**
          * The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
@@ -6977,7 +6984,9 @@ export namespace composer {
         nodeConfig: outputs.composer.EnvironmentConfigNodeConfig;
         /**
          * The number of nodes in the Kubernetes Engine cluster that
-         * will be used to run this environment.
+         * will be used to run this environment. This field is
+         * supported for Cloud Composer environments in versions
+         * composer-1.*.*-airflow-*.*.*.
          */
         nodeCount: number;
         /**
@@ -6990,12 +6999,17 @@ export namespace composer {
         softwareConfig: outputs.composer.EnvironmentConfigSoftwareConfig;
         /**
          * The configuration settings for the Airflow web server App Engine instance.
+         * This field is supported for Cloud Composer environments in versions
+         * composer-1.*.*-airflow-*.*.*.
          */
         webServerConfig: outputs.composer.EnvironmentConfigWebServerConfig;
-        /**
-         * The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
-         */
         webServerNetworkAccessControl: outputs.composer.EnvironmentConfigWebServerNetworkAccessControl;
+        /**
+         * The Kubernetes workloads configuration for GKE cluster associated with the
+         * Cloud Composer environment. Supported for Cloud Composer environments in
+         * versions composer-2.*.*-airflow-*.*.* and newer.
+         */
+        workloadsConfig: outputs.composer.EnvironmentConfigWorkloadsConfig;
     }
 
     export interface EnvironmentConfigDatabaseConfig {
@@ -7038,9 +7052,11 @@ export namespace composer {
     export interface EnvironmentConfigNodeConfig {
         /**
          * The disk size in GB used for node VMs. Minimum size is 20GB.
-         * If unspecified, defaults to 100GB. Cannot be updated.
+         * If unspecified, defaults to 100GB. Cannot be updated. This field is supported
+         * for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
          */
         diskSizeGb: number;
+        enableIpMasqAgent: boolean;
         /**
          * Configuration for controlling how IPs are allocated in the GKE cluster.
          * Structure is documented below.
@@ -7054,6 +7070,14 @@ export namespace composer {
          * manually changed to a non-standard values.
          */
         machineType: string;
+        /**
+         * The maximum pods per node in the GKE cluster allocated during environment
+         * creation. Lowering this value reduces IP address consumption by the Cloud
+         * Composer Kubernetes cluster. This value can only be set if the environment is VPC-Native.
+         * The range of possible values is 8-110, and the default is 32.
+         * Cannot be updated. This field is supported for Cloud Composer environments
+         * in versions composer-1.*.*-airflow-*.*.*.
+         */
         maxPodsPerNode: number;
         /**
          * The Compute Engine network to be used for machine
@@ -7064,7 +7088,9 @@ export namespace composer {
         /**
          * The set of Google API scopes to be made available on all node
          * VMs. Cannot be updated. If empty, defaults to
-         * `["https://www.googleapis.com/auth/cloud-platform"]`
+         * `["https://www.googleapis.com/auth/cloud-platform"]`. This field is
+         * supported for Cloud Composer environments in versions
+         * composer-1.*.*-airflow-*.*.*.
          */
         oauthScopes: string[];
         /**
@@ -7086,14 +7112,17 @@ export namespace composer {
          * The list of instance tags applied to all node VMs. Tags are
          * used to identify valid sources or targets for network
          * firewalls. Each tag within the list must comply with RFC1035.
-         * Cannot be updated.
+         * Cannot be updated. This field is supported for Cloud Composer
+         * environments in versions composer-1.*.*-airflow-*.*.*.
          */
         tags?: string[];
         /**
          * The Compute Engine zone in which to deploy the VMs running the
          * Apache Airflow software, specified as the zone name or
-         * relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project
-         * and region.
+         * relative resource name (e.g. "projects/{project}/zones/{zone}"). Must
+         * belong to the enclosing environment's project and region. This field is
+         * supported for Cloud Composer environments in versions
+         * composer-1.*.*-airflow-*.*.*.
          */
         zone: string;
     }
@@ -7101,6 +7130,8 @@ export namespace composer {
     export interface EnvironmentConfigNodeConfigIpAllocationPolicy {
         /**
          * The IP address range used to allocate IP addresses to pods in the cluster.
+         * For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*,
+         * this field is applicable only when `useIpAliases` is true.
          * Set to blank to have GKE choose a range with the default size.
          * Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask.
          * Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks
@@ -7111,11 +7142,14 @@ export namespace composer {
         /**
          * The name of the cluster's secondary range used to allocate IP addresses to pods.
          * Specify either `clusterSecondaryRangeName` or `clusterIpv4CidrBlock` but not both.
-         * This field is applicable only when `useIpAliases` is true.
+         * For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*,
+         * this field is applicable only when `useIpAliases` is true.
          */
         clusterSecondaryRangeName?: string;
         /**
          * The IP address range used to allocate IP addresses in this cluster.
+         * For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*,
+         * this field is applicable only when `useIpAliases` is true.
          * Set to blank to have GKE choose a range with the default size.
          * Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask.
          * Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks
@@ -7126,17 +7160,22 @@ export namespace composer {
         /**
          * The name of the services' secondary range used to allocate IP addresses to the cluster.
          * Specify either `servicesSecondaryRangeName` or `servicesIpv4CidrBlock` but not both.
-         * This field is applicable only when `useIpAliases` is true.
+         * For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*,
+         * this field is applicable only when `useIpAliases` is true.
          */
         servicesSecondaryRangeName?: string;
         /**
          * Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created.
          * Defaults to true if the `ipAllocationPolicy` block is present in config.
+         * This field is only supported for Cloud Composer environments in versions
+         * composer-1.*.*-airflow-*.*.*. Environments in newer versions always use
+         * VPC-native GKE clusters.
          */
         useIpAliases: boolean;
     }
 
     export interface EnvironmentConfigPrivateEnvironmentConfig {
+        cloudComposerNetworkIpv4CidrBlock: string;
         /**
          * The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `webServerIpv4CidrBlock`
          */
@@ -7144,8 +7183,12 @@ export namespace composer {
         /**
          * -
          * If true, access to the public endpoint of the GKE cluster is denied.
+         * If this field is set to true, `ip_allocation_policy.use_ip_aliases` must
+         * be set to true for Cloud Composer environments in versions
+         * composer-1.*.*-airflow-*.*.*.
          */
         enablePrivateEndpoint?: boolean;
+        enablePrivatelyUsedPublicIps: boolean;
         /**
          * The IP range in CIDR notation to use for the hosted master network. This range is used
          * for assigning internal IP addresses to the cluster master or set of masters and to the
@@ -7155,7 +7198,7 @@ export namespace composer {
          */
         masterIpv4CidrBlock: string;
         /**
-         * The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `masterIpv4CidrBlock` and `cloudSqlIpv4CidrBlock`.
+         * The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `masterIpv4CidrBlock` and `cloudSqlIpv4CidrBlock`. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
          */
         webServerIpv4CidrBlock: string;
     }
@@ -7198,7 +7241,10 @@ export namespace composer {
         /**
          * -
          * The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes.
-         * Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
+         * Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be
+         * updated. This field is supported for Cloud Composer environments in versions
+         * composer-1.*.*-airflow-*.*.*. Environments in newer versions always use
+         * Python major version 3.
          */
         pythonVersion: string;
         /**
@@ -7240,6 +7286,78 @@ export namespace composer {
         value: string;
     }
 
+    export interface EnvironmentConfigWorkloadsConfig {
+        /**
+         * Configuration for resources used by Airflow schedulers.
+         */
+        scheduler?: outputs.composer.EnvironmentConfigWorkloadsConfigScheduler;
+        /**
+         * Configuration for resources used by Airflow web server.
+         */
+        webServer?: outputs.composer.EnvironmentConfigWorkloadsConfigWebServer;
+        /**
+         * Configuration for resources used by Airflow workers.
+         */
+        worker?: outputs.composer.EnvironmentConfigWorkloadsConfigWorker;
+    }
+
+    export interface EnvironmentConfigWorkloadsConfigScheduler {
+        /**
+         * The number of schedulers.
+         */
+        count?: number;
+        /**
+         * CPU request and limit for a single Airflow worker replica.
+         */
+        cpu?: number;
+        /**
+         * Memory (GB) request and limit for a single Airflow worker replica.
+         */
+        memoryGb?: number;
+        /**
+         * Storage (GB) request and limit for Airflow web server.
+         */
+        storageGb?: number;
+    }
+
+    export interface EnvironmentConfigWorkloadsConfigWebServer {
+        /**
+         * CPU request and limit for a single Airflow worker replica.
+         */
+        cpu?: number;
+        /**
+         * Memory (GB) request and limit for a single Airflow worker replica.
+         */
+        memoryGb?: number;
+        /**
+         * Storage (GB) request and limit for Airflow web server.
+         */
+        storageGb?: number;
+    }
+
+    export interface EnvironmentConfigWorkloadsConfigWorker {
+        /**
+         * CPU request and limit for a single Airflow worker replica.
+         */
+        cpu?: number;
+        /**
+         * Maximum number of workers for autoscaling.
+         */
+        maxCount?: number;
+        /**
+         * Memory (GB) request and limit for a single Airflow worker replica.
+         */
+        memoryGb?: number;
+        /**
+         * Minimum number of workers for autoscaling.
+         */
+        minCount?: number;
+        /**
+         * Storage (GB) request and limit for Airflow web server.
+         */
+        storageGb?: number;
+    }
+
     export interface GetEnvironmentConfig {
         airflowUri: string;
         dagGcsPrefix: string;
@@ -7253,6 +7371,7 @@ export namespace composer {
         softwareConfigs: outputs.composer.GetEnvironmentConfigSoftwareConfig[];
         webServerConfigs: outputs.composer.GetEnvironmentConfigWebServerConfig[];
         webServerNetworkAccessControls: outputs.composer.GetEnvironmentConfigWebServerNetworkAccessControl[];
+        workloadsConfigs: outputs.composer.GetEnvironmentConfigWorkloadsConfig[];
     }
 
     export interface GetEnvironmentConfigDatabaseConfig {
@@ -7271,6 +7390,7 @@ export namespace composer {
 
     export interface GetEnvironmentConfigNodeConfig {
         diskSizeGb: number;
+        enableIpMasqAgent: boolean;
         ipAllocationPolicies: outputs.composer.GetEnvironmentConfigNodeConfigIpAllocationPolicy[];
         machineType: string;
         maxPodsPerNode: number;
@@ -7291,8 +7411,10 @@ export namespace composer {
     }
 
     export interface GetEnvironmentConfigPrivateEnvironmentConfig {
+        cloudComposerNetworkIpv4CidrBlock: string;
         cloudSqlIpv4CidrBlock: string;
         enablePrivateEndpoint: boolean;
+        enablePrivatelyUsedPublicIps: boolean;
         masterIpv4CidrBlock: string;
         webServerIpv4CidrBlock: string;
     }
@@ -7317,6 +7439,33 @@ export namespace composer {
     export interface GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange {
         description: string;
         value: string;
+    }
+
+    export interface GetEnvironmentConfigWorkloadsConfig {
+        schedulers: outputs.composer.GetEnvironmentConfigWorkloadsConfigScheduler[];
+        webServers: outputs.composer.GetEnvironmentConfigWorkloadsConfigWebServer[];
+        workers: outputs.composer.GetEnvironmentConfigWorkloadsConfigWorker[];
+    }
+
+    export interface GetEnvironmentConfigWorkloadsConfigScheduler {
+        count: number;
+        cpu: number;
+        memoryGb: number;
+        storageGb: number;
+    }
+
+    export interface GetEnvironmentConfigWorkloadsConfigWebServer {
+        cpu: number;
+        memoryGb: number;
+        storageGb: number;
+    }
+
+    export interface GetEnvironmentConfigWorkloadsConfigWorker {
+        cpu: number;
+        maxCount: number;
+        memoryGb: number;
+        minCount: number;
+        storageGb: number;
     }
 
     export interface GetImageVersionsImageVersion {
@@ -8813,6 +8962,8 @@ export namespace compute {
          * An array of alias IP ranges for this network interface. Structure documented below.
          */
         aliasIpRanges: outputs.compute.GetInstanceNetworkInterfaceAliasIpRange[];
+        ipv6AccessConfigs: outputs.compute.GetInstanceNetworkInterfaceIpv6AccessConfig[];
+        ipv6AccessType: string;
         /**
          * The name of the instance. One of `name` or `selfLink` must be provided.
          */
@@ -8826,6 +8977,7 @@ export namespace compute {
          */
         networkIp: string;
         nicType: string;
+        stackType: string;
         /**
          * The name or selfLink of the subnetwork attached to this interface.
          */
@@ -8863,6 +9015,19 @@ export namespace compute {
          * range.
          */
         subnetworkRangeName: string;
+    }
+
+    export interface GetInstanceNetworkInterfaceIpv6AccessConfig {
+        externalIpv6: string;
+        externalIpv6PrefixLength: string;
+        /**
+         * The [networking tier][network-tier] used for configuring this instance. One of `PREMIUM` or `STANDARD`.
+         */
+        networkTier: string;
+        /**
+         * The DNS domain name for the public PTR record.
+         */
+        publicPtrDomainName: string;
     }
 
     export interface GetInstanceNetworkPerformanceConfig {
@@ -9055,6 +9220,8 @@ export namespace compute {
          * interfaces on subnet-mode networks. Structure documented below.
          */
         aliasIpRanges: outputs.compute.GetInstanceTemplateNetworkInterfaceAliasIpRange[];
+        ipv6AccessConfigs: outputs.compute.GetInstanceTemplateNetworkInterfaceIpv6AccessConfig[];
+        ipv6AccessType: string;
         /**
          * The name of the instance template. One of `name` or `filter` must be provided.
          */
@@ -9071,6 +9238,7 @@ export namespace compute {
          */
         networkIp: string;
         nicType: string;
+        stackType: string;
         /**
          * the name of the subnetwork to attach this interface
          * to. The subnetwork must exist in the same `region` this instance will be
@@ -9114,6 +9282,18 @@ export namespace compute {
          * range. If left unspecified, the primary range of the subnetwork will be used.
          */
         subnetworkRangeName: string;
+    }
+
+    export interface GetInstanceTemplateNetworkInterfaceIpv6AccessConfig {
+        externalIpv6: string;
+        externalIpv6PrefixLength: string;
+        /**
+         * The [networking tier][network-tier] used for configuring
+         * this instance template. This field can take the following values: PREMIUM or
+         * STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+         */
+        networkTier: string;
+        publicPtrDomainName: string;
     }
 
     export interface GetInstanceTemplateNetworkPerformanceConfig {
@@ -9894,6 +10074,8 @@ export namespace compute {
     export interface InstanceFromMachineImageNetworkInterface {
         accessConfigs: outputs.compute.InstanceFromMachineImageNetworkInterfaceAccessConfig[];
         aliasIpRanges: outputs.compute.InstanceFromMachineImageNetworkInterfaceAliasIpRange[];
+        ipv6AccessConfigs: outputs.compute.InstanceFromMachineImageNetworkInterfaceIpv6AccessConfig[];
+        ipv6AccessType: string;
         /**
          * A unique name for the resource, required by GCE.
          * Changing this forces a new resource to be created.
@@ -9902,6 +10084,7 @@ export namespace compute {
         network: string;
         networkIp: string;
         nicType: string;
+        stackType: string;
         subnetwork: string;
         subnetworkProject: string;
     }
@@ -9915,6 +10098,13 @@ export namespace compute {
     export interface InstanceFromMachineImageNetworkInterfaceAliasIpRange {
         ipCidrRange: string;
         subnetworkRangeName: string;
+    }
+
+    export interface InstanceFromMachineImageNetworkInterfaceIpv6AccessConfig {
+        externalIpv6: string;
+        externalIpv6PrefixLength: string;
+        networkTier: string;
+        publicPtrDomainName: string;
     }
 
     export interface InstanceFromMachineImageNetworkPerformanceConfig {
@@ -10004,6 +10194,8 @@ export namespace compute {
     export interface InstanceFromTemplateNetworkInterface {
         accessConfigs: outputs.compute.InstanceFromTemplateNetworkInterfaceAccessConfig[];
         aliasIpRanges: outputs.compute.InstanceFromTemplateNetworkInterfaceAliasIpRange[];
+        ipv6AccessConfigs: outputs.compute.InstanceFromTemplateNetworkInterfaceIpv6AccessConfig[];
+        ipv6AccessType: string;
         /**
          * A unique name for the resource, required by GCE.
          * Changing this forces a new resource to be created.
@@ -10012,6 +10204,7 @@ export namespace compute {
         network: string;
         networkIp: string;
         nicType: string;
+        stackType: string;
         subnetwork: string;
         subnetworkProject: string;
     }
@@ -10025,6 +10218,13 @@ export namespace compute {
     export interface InstanceFromTemplateNetworkInterfaceAliasIpRange {
         ipCidrRange: string;
         subnetworkRangeName: string;
+    }
+
+    export interface InstanceFromTemplateNetworkInterfaceIpv6AccessConfig {
+        externalIpv6: string;
+        externalIpv6PrefixLength: string;
+        networkTier: string;
+        publicPtrDomainName: string;
     }
 
     export interface InstanceFromTemplateNetworkPerformanceConfig {
@@ -10275,13 +10475,25 @@ export namespace compute {
          */
         aliasIpRanges?: outputs.compute.InstanceNetworkInterfaceAliasIpRange[];
         /**
+         * An array of IPv6 access configurations for this interface.
+         * Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
+         * specified, then this instance will have no external IPv6 Internet access. Structure documented below.
+         */
+        ipv6AccessConfigs?: outputs.compute.InstanceNetworkInterfaceIpv6AccessConfig[];
+        /**
+         * One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet.
+         * This field is always inherited from its subnetwork.
+         */
+        ipv6AccessType: string;
+        /**
          * A unique name for the resource, required by GCE.
          * Changing this forces a new resource to be created.
          */
         name: string;
         /**
          * The name or selfLink of the network to attach this interface to.
-         * Either `network` or `subnetwork` must be provided.
+         * Either `network` or `subnetwork` must be provided. If network isn't provided it will
+         * be inferred from the subnetwork.
          */
         network: string;
         /**
@@ -10294,10 +10506,17 @@ export namespace compute {
          */
         nicType?: string;
         /**
+         * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
+         */
+        stackType: string;
+        /**
          * The name or selfLink of the subnetwork to attach this
-         * interface to. The subnetwork must exist in the same region this instance will be
-         * created in. If network isn't provided it will be inferred from the subnetwork.
-         * Either `network` or `subnetwork` must be provided.
+         * interface to. Either `network` or `subnetwork` must be provided. If network isn't provided
+         * it will be inferred from the subnetwork. The subnetwork must exist in the same region this
+         * instance will be created in. If the network resource is in
+         * [legacy](https://cloud.google.com/vpc/docs/legacy) mode, do not specify this field. If the
+         * network is in auto subnet mode, specifying the subnetwork is optional. If the network is
+         * in custom subnet mode, specifying the subnetwork is required.
          */
         subnetwork: string;
         /**
@@ -10316,16 +10535,13 @@ export namespace compute {
          */
         natIp: string;
         /**
-         * The [networking tier][network-tier] used for configuring this instance.
-         * This field can take the following values: PREMIUM or STANDARD. If this field is
-         * not specified, it is assumed to be PREMIUM.
+         * The service-level to be provided for IPv6 traffic when the
+         * subnet has an external subnet. Only PREMIUM tier is valid for IPv6.
          */
         networkTier: string;
         /**
-         * The DNS domain name for the public PTR record.
-         * To set this field on an instance, you must be verified as the owner of the domain.
-         * See [the docs](https://cloud.google.com/compute/docs/instances/create-ptr-record) for how
-         * to become verified as a domain owner.
+         * The domain name to be used when creating DNSv6
+         * records for the external IPv6 ranges..
          */
         publicPtrDomainName?: string;
     }
@@ -10344,6 +10560,21 @@ export namespace compute {
          * range. If left unspecified, the primary range of the subnetwork will be used.
          */
         subnetworkRangeName?: string;
+    }
+
+    export interface InstanceNetworkInterfaceIpv6AccessConfig {
+        externalIpv6: string;
+        externalIpv6PrefixLength: string;
+        /**
+         * The service-level to be provided for IPv6 traffic when the
+         * subnet has an external subnet. Only PREMIUM tier is valid for IPv6.
+         */
+        networkTier: string;
+        /**
+         * The domain name to be used when creating DNSv6
+         * records for the external IPv6 ranges..
+         */
+        publicPtrDomainName?: string;
     }
 
     export interface InstanceNetworkPerformanceConfig {
@@ -10600,6 +10831,13 @@ export namespace compute {
          */
         aliasIpRanges?: outputs.compute.InstanceTemplateNetworkInterfaceAliasIpRange[];
         /**
+         * An array of IPv6 access configurations for this interface.
+         * Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
+         * specified, then this instance will have no external IPv6 Internet access. Structure documented below.
+         */
+        ipv6AccessConfigs?: outputs.compute.InstanceTemplateNetworkInterfaceIpv6AccessConfig[];
+        ipv6AccessType: string;
+        /**
          * The name of the instance template. If you leave
          * this blank, the provider will auto-generate a unique name.
          */
@@ -10620,6 +10858,10 @@ export namespace compute {
          */
         nicType?: string;
         /**
+         * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
+         */
+        stackType: string;
+        /**
          * the name of the subnetwork to attach this interface
          * to. The subnetwork must exist in the same `region` this instance will be
          * created in. Either `network` or `subnetwork` must be provided.
@@ -10639,9 +10881,8 @@ export namespace compute {
          */
         natIp: string;
         /**
-         * The [networking tier][network-tier] used for configuring
-         * this instance template. This field can take the following values: PREMIUM or
-         * STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+         * The service-level to be provided for IPv6 traffic when the
+         * subnet has an external subnet. Only PREMIUM tier is valid for IPv6.
          */
         networkTier: string;
         publicPtrDomainName: string;
@@ -10662,6 +10903,17 @@ export namespace compute {
          * range. If left unspecified, the primary range of the subnetwork will be used.
          */
         subnetworkRangeName?: string;
+    }
+
+    export interface InstanceTemplateNetworkInterfaceIpv6AccessConfig {
+        externalIpv6: string;
+        externalIpv6PrefixLength: string;
+        /**
+         * The service-level to be provided for IPv6 traffic when the
+         * subnet has an external subnet. Only PREMIUM tier is valid for IPv6.
+         */
+        networkTier: string;
+        publicPtrDomainName: string;
     }
 
     export interface InstanceTemplateNetworkPerformanceConfig {
@@ -16795,9 +17047,19 @@ export namespace container {
          * How to expose the node metadata to the workload running on the node.
          * Accepted values are:
          * * UNSPECIFIED: Not Set
+         * * GCE_METADATA: Expose all Compute Engine metadata to pods.
+         * * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
+         */
+        mode?: string;
+        /**
+         * How to expose the node metadata to the workload running on the node. This is deprecated in favor of `mode`
+         * Accepted values are:
+         * * UNSPECIFIED: Not Set
          * * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
          * * EXPOSE: Expose all VM metadata to pods.
          * * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
+         *
+         * @deprecated Deprecated in favor of mode.
          */
         nodeMetadata: string;
     }
@@ -17083,9 +17345,19 @@ export namespace container {
          * How to expose the node metadata to the workload running on the node.
          * Accepted values are:
          * * UNSPECIFIED: Not Set
+         * * GCE_METADATA: Expose all Compute Engine metadata to pods.
+         * * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
+         */
+        mode?: string;
+        /**
+         * How to expose the node metadata to the workload running on the node. This is deprecated in favor of `mode`
+         * Accepted values are:
+         * * UNSPECIFIED: Not Set
          * * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
          * * EXPOSE: Expose all VM metadata to pods.
          * * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
+         *
+         * @deprecated Deprecated in favor of mode.
          */
         nodeMetadata: string;
     }
@@ -17446,6 +17718,7 @@ export namespace container {
     }
 
     export interface GetClusterNodeConfigWorkloadMetadataConfig {
+        mode: string;
         nodeMetadata: string;
     }
 
@@ -17543,6 +17816,7 @@ export namespace container {
     }
 
     export interface GetClusterNodePoolNodeConfigWorkloadMetadataConfig {
+        mode: string;
         nodeMetadata: string;
     }
 
@@ -17688,6 +17962,10 @@ export namespace container {
     }
 
     export interface NodePoolNodeConfigWorkloadMetadataConfig {
+        mode?: string;
+        /**
+         * @deprecated Deprecated in favor of mode.
+         */
         nodeMetadata: string;
     }
 
@@ -21986,7 +22264,11 @@ export namespace endpoints {
 export namespace eventarc {
     export interface TriggerDestination {
         /**
-         * Cloud Run fully-managed service that receives the events. The service should be running in the same project as the trigger.
+         * The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: projects/{project}/locations/{location}/functions/{function}
+         */
+        cloudFunction?: string;
+        /**
+         * Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
          */
         cloudRunService?: outputs.eventarc.TriggerDestinationCloudRunService;
     }
@@ -22001,14 +22283,14 @@ export namespace eventarc {
          */
         region: string;
         /**
-         * Required. The name of the Cloud run service being addressed (see https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services). Only services located in the same project of the trigger object can be addressed.
+         * Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
          */
         service: string;
     }
 
     export interface TriggerMatchingCriteria {
         /**
-         * Required. The name of a CloudEvents attribute. Currently, only a subset of attributes can be specified. All triggers MUST provide a matching criteria for the 'type' attribute.
+         * Required. The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
          */
         attribute: string;
         /**
@@ -22031,7 +22313,7 @@ export namespace eventarc {
          */
         subscription: string;
         /**
-         * Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You may set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
+         * Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME You may set an existing topic for triggers of the type google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
          */
         topic?: string;
     }
@@ -22449,6 +22731,7 @@ export namespace gkehub {
     }
 
     export interface FeatureMembershipConfigmanagementConfigSyncGit {
+        gcpServiceAccountEmail?: string;
         /**
          * URL for the HTTPS proxy to be used when communicating with the Git repo.
          */
@@ -22521,6 +22804,11 @@ export namespace gkehub {
         templateLibraryInstalled?: boolean;
     }
 
+    export interface FeatureResourceState {
+        hasResources: boolean;
+        state: string;
+    }
+
     export interface FeatureSpec {
         /**
          * Multicluster Ingress-specific spec.
@@ -22533,7 +22821,17 @@ export namespace gkehub {
         /**
          * Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
          */
-        configMembership?: string;
+        configMembership: string;
+    }
+
+    export interface FeatureState {
+        states: outputs.gkehub.FeatureStateState[];
+    }
+
+    export interface FeatureStateState {
+        code: string;
+        description: string;
+        updateTime: string;
     }
 
     export interface MembershipAuthority {
@@ -24787,7 +25085,7 @@ export namespace monitoring {
         /**
          * The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
          * Default value is `CONTAINS_STRING`.
-         * Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, and `NON_MATCHES_REGEX`.
+         * Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, and `NOT_MATCHES_REGEX`.
          */
         matcher?: string;
     }
@@ -27104,6 +27402,13 @@ export namespace pubsub {
         subscribeMibPerSec: number;
     }
 
+    export interface LiteTopicReservationConfig {
+        /**
+         * The Reservation to use for this topic's throughput capacity.
+         */
+        throughputReservation?: string;
+    }
+
     export interface LiteTopicRetentionConfig {
         /**
          * The provisioned storage, in bytes, per partition. If the number of bytes stored
@@ -27501,6 +27806,12 @@ export namespace servicedirectory {
 }
 
 export namespace sourcerepo {
+    export interface GetRepositoryPubsubConfig {
+        messageFormat: string;
+        serviceAccountEmail: string;
+        topic: string;
+    }
+
     export interface RepositoryIamBindingCondition {
         description?: string;
         expression: string;
@@ -28220,6 +28531,44 @@ export namespace storage {
         team?: string;
     }
 
+    export interface GetBucketCor {
+        maxAgeSeconds: number;
+        methods: string[];
+        origins: string[];
+        responseHeaders: string[];
+    }
+
+    export interface GetBucketEncryption {
+        defaultKmsKeyName: string;
+    }
+
+    export interface GetBucketLifecycleRule {
+        actions: outputs.storage.GetBucketLifecycleRuleAction[];
+        conditions: outputs.storage.GetBucketLifecycleRuleCondition[];
+    }
+
+    export interface GetBucketLifecycleRuleAction {
+        storageClass: string;
+        type: string;
+    }
+
+    export interface GetBucketLifecycleRuleCondition {
+        age: number;
+        createdBefore: string;
+        customTimeBefore: string;
+        daysSinceCustomTime: number;
+        daysSinceNoncurrentTime: number;
+        matchesStorageClasses: string[];
+        noncurrentTimeBefore: string;
+        numNewerVersions: number;
+        withState: string;
+    }
+
+    export interface GetBucketLogging {
+        logBucket: string;
+        logObjectPrefix: string;
+    }
+
     export interface GetBucketObjectContentCustomerEncryption {
         encryptionAlgorithm: string;
         encryptionKey: string;
@@ -28228,6 +28577,20 @@ export namespace storage {
     export interface GetBucketObjectCustomerEncryption {
         encryptionAlgorithm: string;
         encryptionKey: string;
+    }
+
+    export interface GetBucketRetentionPolicy {
+        isLocked: boolean;
+        retentionPeriod: number;
+    }
+
+    export interface GetBucketVersioning {
+        enabled: boolean;
+    }
+
+    export interface GetBucketWebsite {
+        mainPageSuffix: string;
+        notFoundPage: string;
     }
 
     export interface ObjectAccessControlProjectTeam {
@@ -28441,6 +28804,7 @@ export namespace storage {
          */
         overwriteObjectsAlreadyExistingInSink?: boolean;
     }
+
 }
 
 export namespace tags {

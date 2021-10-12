@@ -11,9 +11,9 @@ import * as utilities from "../utilities";
  *
  * To get more information about Subscription, see:
  *
- * * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.subscriptions)
+ * * [API documentation](https://cloud.google.com/pubsub/lite/docs/reference/rest/v1/admin.projects.locations.subscriptions)
  * * How-to Guides
- *     * [Managing Subscriptions](https://cloud.google.com/pubsub/docs/admin#managing_subscriptions)
+ *     * [Managing Subscriptions](https://cloud.google.com/pubsub/lite/docs/subscriptions)
  *
  * ## Example Usage
  * ### Pubsub Lite Subscription Basic

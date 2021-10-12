@@ -6,9 +6,12 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./connection";
+export * from "./getPeeredDnsDomain";
+export * from "./peeredDnsDomain";
 
 // Import resources to register:
 import { Connection } from "./connection";
+import { PeeredDnsDomain } from "./peeredDnsDomain";
 
 const _module = {
     version: utilities.getVersion(),
@@ -16,9 +19,12 @@ const _module = {
         switch (type) {
             case "gcp:servicenetworking/connection:Connection":
                 return new Connection(name, <any>undefined, { urn })
+            case "gcp:servicenetworking/peeredDnsDomain:PeeredDnsDomain":
+                return new PeeredDnsDomain(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "servicenetworking/connection", _module)
+pulumi.runtime.registerResourceModule("gcp", "servicenetworking/peeredDnsDomain", _module)

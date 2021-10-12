@@ -12,6 +12,7 @@ __all__ = [
     'RepositoryIamBindingCondition',
     'RepositoryIamMemberCondition',
     'RepositoryPubsubConfig',
+    'GetRepositoryPubsubConfigResult',
 ]
 
 @pulumi.output_type
@@ -138,5 +139,31 @@ class RepositoryPubsubConfig(dict):
         If unspecified, it defaults to the compute engine default service account.
         """
         return pulumi.get(self, "service_account_email")
+
+
+@pulumi.output_type
+class GetRepositoryPubsubConfigResult(dict):
+    def __init__(__self__, *,
+                 message_format: str,
+                 service_account_email: str,
+                 topic: str):
+        pulumi.set(__self__, "message_format", message_format)
+        pulumi.set(__self__, "service_account_email", service_account_email)
+        pulumi.set(__self__, "topic", topic)
+
+    @property
+    @pulumi.getter(name="messageFormat")
+    def message_format(self) -> str:
+        return pulumi.get(self, "message_format")
+
+    @property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> str:
+        return pulumi.get(self, "service_account_email")
+
+    @property
+    @pulumi.getter
+    def topic(self) -> str:
+        return pulumi.get(self, "topic")
 
 
