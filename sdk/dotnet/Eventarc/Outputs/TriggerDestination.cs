@@ -14,13 +14,21 @@ namespace Pulumi.Gcp.Eventarc.Outputs
     public sealed class TriggerDestination
     {
         /// <summary>
-        /// Cloud Run fully-managed service that receives the events. The service should be running in the same project as the trigger.
+        /// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: projects/{project}/locations/{location}/functions/{function}
+        /// </summary>
+        public readonly string? CloudFunction;
+        /// <summary>
+        /// Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
         /// </summary>
         public readonly Outputs.TriggerDestinationCloudRunService? CloudRunService;
 
         [OutputConstructor]
-        private TriggerDestination(Outputs.TriggerDestinationCloudRunService? cloudRunService)
+        private TriggerDestination(
+            string? cloudFunction,
+
+            Outputs.TriggerDestinationCloudRunService? cloudRunService)
         {
+            CloudFunction = cloudFunction;
             CloudRunService = cloudRunService;
         }
     }

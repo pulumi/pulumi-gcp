@@ -16,10 +16,10 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         /// <summary>
         /// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
         /// </summary>
-        public readonly string? ConfigMembership;
+        public readonly string ConfigMembership;
 
         [OutputConstructor]
-        private FeatureSpecMulticlusteringress(string? configMembership)
+        private FeatureSpecMulticlusteringress(string configMembership)
         {
             ConfigMembership = configMembership;
         }

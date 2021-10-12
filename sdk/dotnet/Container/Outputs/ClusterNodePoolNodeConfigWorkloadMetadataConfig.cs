@@ -17,15 +17,27 @@ namespace Pulumi.Gcp.Container.Outputs
         /// How to expose the node metadata to the workload running on the node.
         /// Accepted values are:
         /// * UNSPECIFIED: Not Set
+        /// * GCE_METADATA: Expose all Compute Engine metadata to pods.
+        /// * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
+        /// </summary>
+        public readonly string? Mode;
+        /// <summary>
+        /// How to expose the node metadata to the workload running on the node. This is deprecated in favor of `mode`
+        /// Accepted values are:
+        /// * UNSPECIFIED: Not Set
         /// * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
         /// * EXPOSE: Expose all VM metadata to pods.
         /// * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
         /// </summary>
-        public readonly string NodeMetadata;
+        public readonly string? NodeMetadata;
 
         [OutputConstructor]
-        private ClusterNodePoolNodeConfigWorkloadMetadataConfig(string nodeMetadata)
+        private ClusterNodePoolNodeConfigWorkloadMetadataConfig(
+            string? mode,
+
+            string? nodeMetadata)
         {
+            Mode = mode;
             NodeMetadata = nodeMetadata;
         }
     }

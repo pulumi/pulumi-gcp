@@ -22,6 +22,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// An array of alias IP ranges for this network interface. Structure documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceNetworkInterfaceAliasIpRangeResult> AliasIpRanges;
+        public readonly ImmutableArray<Outputs.GetInstanceNetworkInterfaceIpv6AccessConfigResult> Ipv6AccessConfigs;
+        public readonly string Ipv6AccessType;
         /// <summary>
         /// The name of the instance. One of `name` or `self_link` must be provided.
         /// </summary>
@@ -35,6 +37,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string NetworkIp;
         public readonly string NicType;
+        public readonly string StackType;
         /// <summary>
         /// The name or self_link of the subnetwork attached to this interface.
         /// </summary>
@@ -50,6 +53,10 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             ImmutableArray<Outputs.GetInstanceNetworkInterfaceAliasIpRangeResult> aliasIpRanges,
 
+            ImmutableArray<Outputs.GetInstanceNetworkInterfaceIpv6AccessConfigResult> ipv6AccessConfigs,
+
+            string ipv6AccessType,
+
             string name,
 
             string network,
@@ -58,16 +65,21 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string nicType,
 
+            string stackType,
+
             string subnetwork,
 
             string subnetworkProject)
         {
             AccessConfigs = accessConfigs;
             AliasIpRanges = aliasIpRanges;
+            Ipv6AccessConfigs = ipv6AccessConfigs;
+            Ipv6AccessType = ipv6AccessType;
             Name = name;
             Network = network;
             NetworkIp = networkIp;
             NicType = nicType;
+            StackType = stackType;
             Subnetwork = subnetwork;
             SubnetworkProject = subnetworkProject;
         }

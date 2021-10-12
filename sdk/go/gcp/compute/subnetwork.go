@@ -145,6 +145,38 @@ import (
 // 	})
 // }
 // ```
+// ### Subnetwork Ipv6
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewNetwork(ctx, "custom_test", &compute.NetworkArgs{
+// 			AutoCreateSubnetworks: pulumi.Bool(false),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewSubnetwork(ctx, "subnetwork_ipv6", &compute.SubnetworkArgs{
+// 			IpCidrRange:    pulumi.String("10.0.0.0/22"),
+// 			Region:         pulumi.String("us-west2"),
+// 			StackType:      pulumi.String("IPV4_IPV6"),
+// 			Ipv6AccessType: pulumi.String("EXTERNAL"),
+// 			Network:        custom_test.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //
@@ -174,6 +206,8 @@ type Subnetwork struct {
 	// you create the resource. This field can be set only at resource
 	// creation time.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The range of external IPv6 addresses that are owned by this subnetwork.
+	ExternalIpv6Prefix pulumi.StringOutput `pulumi:"externalIpv6Prefix"`
 	// Fingerprint of this resource. This field is used internally during updates of this resource.
 	//
 	// Deprecated: This field is not useful for users, and has been removed as an output.
@@ -185,6 +219,13 @@ type Subnetwork struct {
 	// Ranges must be unique and non-overlapping with all primary and
 	// secondary IP ranges within a network. Only IPv4 is supported.
 	IpCidrRange pulumi.StringOutput `pulumi:"ipCidrRange"`
+	// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
+	// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
+	// cannot enable direct path.
+	// Possible values are `EXTERNAL`.
+	Ipv6AccessType pulumi.StringPtrOutput `pulumi:"ipv6AccessType"`
+	// The range of internal IPv6 addresses that are owned by this subnetwork.
+	Ipv6CidrRange pulumi.StringOutput `pulumi:"ipv6CidrRange"`
 	// Denotes the logging options for the subnetwork flow logs. If logging is enabled
 	// logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
 	// subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
@@ -233,6 +274,10 @@ type Subnetwork struct {
 	SecondaryIpRanges SubnetworkSecondaryIpRangeArrayOutput `pulumi:"secondaryIpRanges"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
+	// If not specified IPV4_ONLY will be used.
+	// Possible values are `IPV4_ONLY` and `IPV4_IPV6`.
+	StackType pulumi.StringOutput `pulumi:"stackType"`
 }
 
 // NewSubnetwork registers a new resource with the given unique name, arguments, and options.
@@ -276,6 +321,8 @@ type subnetworkState struct {
 	// you create the resource. This field can be set only at resource
 	// creation time.
 	Description *string `pulumi:"description"`
+	// The range of external IPv6 addresses that are owned by this subnetwork.
+	ExternalIpv6Prefix *string `pulumi:"externalIpv6Prefix"`
 	// Fingerprint of this resource. This field is used internally during updates of this resource.
 	//
 	// Deprecated: This field is not useful for users, and has been removed as an output.
@@ -287,6 +334,13 @@ type subnetworkState struct {
 	// Ranges must be unique and non-overlapping with all primary and
 	// secondary IP ranges within a network. Only IPv4 is supported.
 	IpCidrRange *string `pulumi:"ipCidrRange"`
+	// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
+	// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
+	// cannot enable direct path.
+	// Possible values are `EXTERNAL`.
+	Ipv6AccessType *string `pulumi:"ipv6AccessType"`
+	// The range of internal IPv6 addresses that are owned by this subnetwork.
+	Ipv6CidrRange *string `pulumi:"ipv6CidrRange"`
 	// Denotes the logging options for the subnetwork flow logs. If logging is enabled
 	// logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
 	// subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
@@ -335,6 +389,10 @@ type subnetworkState struct {
 	SecondaryIpRanges []SubnetworkSecondaryIpRange `pulumi:"secondaryIpRanges"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
+	// The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
+	// If not specified IPV4_ONLY will be used.
+	// Possible values are `IPV4_ONLY` and `IPV4_IPV6`.
+	StackType *string `pulumi:"stackType"`
 }
 
 type SubnetworkState struct {
@@ -344,6 +402,8 @@ type SubnetworkState struct {
 	// you create the resource. This field can be set only at resource
 	// creation time.
 	Description pulumi.StringPtrInput
+	// The range of external IPv6 addresses that are owned by this subnetwork.
+	ExternalIpv6Prefix pulumi.StringPtrInput
 	// Fingerprint of this resource. This field is used internally during updates of this resource.
 	//
 	// Deprecated: This field is not useful for users, and has been removed as an output.
@@ -355,6 +415,13 @@ type SubnetworkState struct {
 	// Ranges must be unique and non-overlapping with all primary and
 	// secondary IP ranges within a network. Only IPv4 is supported.
 	IpCidrRange pulumi.StringPtrInput
+	// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
+	// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
+	// cannot enable direct path.
+	// Possible values are `EXTERNAL`.
+	Ipv6AccessType pulumi.StringPtrInput
+	// The range of internal IPv6 addresses that are owned by this subnetwork.
+	Ipv6CidrRange pulumi.StringPtrInput
 	// Denotes the logging options for the subnetwork flow logs. If logging is enabled
 	// logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
 	// subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
@@ -403,6 +470,10 @@ type SubnetworkState struct {
 	SecondaryIpRanges SubnetworkSecondaryIpRangeArrayInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
+	// The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
+	// If not specified IPV4_ONLY will be used.
+	// Possible values are `IPV4_ONLY` and `IPV4_IPV6`.
+	StackType pulumi.StringPtrInput
 }
 
 func (SubnetworkState) ElementType() reflect.Type {
@@ -419,6 +490,11 @@ type subnetworkArgs struct {
 	// Ranges must be unique and non-overlapping with all primary and
 	// secondary IP ranges within a network. Only IPv4 is supported.
 	IpCidrRange string `pulumi:"ipCidrRange"`
+	// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
+	// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
+	// cannot enable direct path.
+	// Possible values are `EXTERNAL`.
+	Ipv6AccessType *string `pulumi:"ipv6AccessType"`
 	// Denotes the logging options for the subnetwork flow logs. If logging is enabled
 	// logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
 	// subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
@@ -465,6 +541,10 @@ type subnetworkArgs struct {
 	// to either primary or secondary ranges.
 	// Structure is documented below.
 	SecondaryIpRanges []SubnetworkSecondaryIpRange `pulumi:"secondaryIpRanges"`
+	// The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
+	// If not specified IPV4_ONLY will be used.
+	// Possible values are `IPV4_ONLY` and `IPV4_IPV6`.
+	StackType *string `pulumi:"stackType"`
 }
 
 // The set of arguments for constructing a Subnetwork resource.
@@ -478,6 +558,11 @@ type SubnetworkArgs struct {
 	// Ranges must be unique and non-overlapping with all primary and
 	// secondary IP ranges within a network. Only IPv4 is supported.
 	IpCidrRange pulumi.StringInput
+	// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
+	// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
+	// cannot enable direct path.
+	// Possible values are `EXTERNAL`.
+	Ipv6AccessType pulumi.StringPtrInput
 	// Denotes the logging options for the subnetwork flow logs. If logging is enabled
 	// logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
 	// subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
@@ -524,6 +609,10 @@ type SubnetworkArgs struct {
 	// to either primary or secondary ranges.
 	// Structure is documented below.
 	SecondaryIpRanges SubnetworkSecondaryIpRangeArrayInput
+	// The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
+	// If not specified IPV4_ONLY will be used.
+	// Possible values are `IPV4_ONLY` and `IPV4_IPV6`.
+	StackType pulumi.StringPtrInput
 }
 
 func (SubnetworkArgs) ElementType() reflect.Type {

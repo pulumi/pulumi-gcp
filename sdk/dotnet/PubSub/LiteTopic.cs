@@ -14,9 +14,9 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// To get more information about Topic, see:
     /// 
-    /// * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics)
+    /// * [API documentation](https://cloud.google.com/pubsub/lite/docs/reference/rest/v1/admin.projects.locations.topics)
     /// * How-to Guides
-    ///     * [Managing Topics](https://cloud.google.com/pubsub/docs/admin#managing_topics)
+    ///     * [Managing Topics](https://cloud.google.com/pubsub/lite/docs/topics)
     /// 
     /// ## Example Usage
     /// ### Pubsub Lite Topic Basic
@@ -30,7 +30,12 @@ namespace Pulumi.Gcp.PubSub
     ///     public MyStack()
     ///     {
     ///         var project = Output.Create(Gcp.Organizations.GetProject.InvokeAsync());
-    ///         var example = new Gcp.PubSub.LiteTopic("example", new Gcp.PubSub.LiteTopicArgs
+    ///         var exampleLiteReservation = new Gcp.PubSub.LiteReservation("exampleLiteReservation", new Gcp.PubSub.LiteReservationArgs
+    ///         {
+    ///             Project = project.Apply(project =&gt; project.Number),
+    ///             ThroughputCapacity = 2,
+    ///         });
+    ///         var exampleLiteTopic = new Gcp.PubSub.LiteTopic("exampleLiteTopic", new Gcp.PubSub.LiteTopicArgs
     ///         {
     ///             Project = project.Apply(project =&gt; project.Number),
     ///             PartitionConfig = new Gcp.PubSub.Inputs.LiteTopicPartitionConfigArgs
@@ -45,6 +50,10 @@ namespace Pulumi.Gcp.PubSub
     ///             RetentionConfig = new Gcp.PubSub.Inputs.LiteTopicRetentionConfigArgs
     ///             {
     ///                 PerPartitionBytes = "32212254720",
+    ///             },
+    ///             ReservationConfig = new Gcp.PubSub.Inputs.LiteTopicReservationConfigArgs
+    ///             {
+    ///                 ThroughputReservation = exampleLiteReservation.Name,
     ///             },
     ///         });
     ///     }
@@ -100,6 +109,13 @@ namespace Pulumi.Gcp.PubSub
         /// </summary>
         [Output("region")]
         public Output<string?> Region { get; private set; } = null!;
+
+        /// <summary>
+        /// The settings for this topic's Reservation usage.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("reservationConfig")]
+        public Output<Outputs.LiteTopicReservationConfig?> ReservationConfig { get; private set; } = null!;
 
         /// <summary>
         /// The settings for a topic's message retention.
@@ -187,6 +203,13 @@ namespace Pulumi.Gcp.PubSub
         public Input<string>? Region { get; set; }
 
         /// <summary>
+        /// The settings for this topic's Reservation usage.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("reservationConfig")]
+        public Input<Inputs.LiteTopicReservationConfigArgs>? ReservationConfig { get; set; }
+
+        /// <summary>
         /// The settings for a topic's message retention.
         /// Structure is documented below.
         /// </summary>
@@ -231,6 +254,13 @@ namespace Pulumi.Gcp.PubSub
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// The settings for this topic's Reservation usage.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("reservationConfig")]
+        public Input<Inputs.LiteTopicReservationConfigGetArgs>? ReservationConfig { get; set; }
 
         /// <summary>
         /// The settings for a topic's message retention.

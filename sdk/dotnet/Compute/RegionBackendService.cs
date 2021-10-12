@@ -562,7 +562,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Type of session affinity to use. The default is NONE. Session affinity is
         /// not applicable if the protocol is UDP.
-        /// Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
+        /// Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, and `CLIENT_IP_NO_DESTINATION`.
         /// </summary>
         [Output("sessionAffinity")]
         public Output<string> SessionAffinity { get; private set; } = null!;
@@ -821,7 +821,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Type of session affinity to use. The default is NONE. Session affinity is
         /// not applicable if the protocol is UDP.
-        /// Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
+        /// Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, and `CLIENT_IP_NO_DESTINATION`.
         /// </summary>
         [Input("sessionAffinity")]
         public Input<string>? SessionAffinity { get; set; }
@@ -1059,7 +1059,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Type of session affinity to use. The default is NONE. Session affinity is
         /// not applicable if the protocol is UDP.
-        /// Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
+        /// Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, and `CLIENT_IP_NO_DESTINATION`.
         /// </summary>
         [Input("sessionAffinity")]
         public Input<string>? SessionAffinity { get; set; }

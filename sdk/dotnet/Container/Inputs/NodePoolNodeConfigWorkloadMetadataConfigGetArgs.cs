@@ -12,8 +12,11 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class NodePoolNodeConfigWorkloadMetadataConfigGetArgs : Pulumi.ResourceArgs
     {
-        [Input("nodeMetadata", required: true)]
-        public Input<string> NodeMetadata { get; set; } = null!;
+        [Input("mode")]
+        public Input<string>? Mode { get; set; }
+
+        [Input("nodeMetadata")]
+        public Input<string>? NodeMetadata { get; set; }
 
         public NodePoolNodeConfigWorkloadMetadataConfigGetArgs()
         {

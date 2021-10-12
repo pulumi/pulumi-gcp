@@ -76,6 +76,8 @@ def get_config(name: Optional[str] = None,
     """
     To get more information about RuntimeConfigs, see:
 
+    !> This datasource has been deprecated in the google (GA) provider, and will only be available in the google-beta provider in a future release.
+
     * [API documentation](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/v1beta1/projects.configs)
     * How-to Guides
         * [Runtime Configurator Fundamentals](https://cloud.google.com/deployment-manager/runtime-configurator/)
@@ -116,6 +118,8 @@ def get_config_output(name: Optional[pulumi.Input[str]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConfigResult]:
     """
     To get more information about RuntimeConfigs, see:
+
+    !> This datasource has been deprecated in the google (GA) provider, and will only be available in the google-beta provider in a future release.
 
     * [API documentation](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/v1beta1/projects.configs)
     * How-to Guides

@@ -18,6 +18,7 @@ class SubnetworkArgs:
                  ip_cidr_range: pulumi.Input[str],
                  network: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
+                 ipv6_access_type: Optional[pulumi.Input[str]] = None,
                  log_config: Optional[pulumi.Input['SubnetworkLogConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  private_ip_google_access: Optional[pulumi.Input[bool]] = None,
@@ -26,7 +27,8 @@ class SubnetworkArgs:
                  purpose: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
-                 secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]]] = None):
+                 secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]]] = None,
+                 stack_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Subnetwork resource.
         :param pulumi.Input[str] ip_cidr_range: The range of IP addresses belonging to this subnetwork secondary
@@ -38,6 +40,10 @@ class SubnetworkArgs:
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource. This field can be set only at resource
                creation time.
+        :param pulumi.Input[str] ipv6_access_type: The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
+               or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
+               cannot enable direct path.
+               Possible values are `EXTERNAL`.
         :param pulumi.Input['SubnetworkLogConfigArgs'] log_config: Denotes the logging options for the subnetwork flow logs. If logging is enabled
                logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
                subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
@@ -72,11 +78,16 @@ class SubnetworkArgs:
                to the primary ipCidrRange of the subnetwork. The alias IPs may belong
                to either primary or secondary ranges.
                Structure is documented below.
+        :param pulumi.Input[str] stack_type: The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
+               If not specified IPV4_ONLY will be used.
+               Possible values are `IPV4_ONLY` and `IPV4_IPV6`.
         """
         pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
         pulumi.set(__self__, "network", network)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if ipv6_access_type is not None:
+            pulumi.set(__self__, "ipv6_access_type", ipv6_access_type)
         if log_config is not None:
             pulumi.set(__self__, "log_config", log_config)
         if name is not None:
@@ -95,6 +106,8 @@ class SubnetworkArgs:
             pulumi.set(__self__, "role", role)
         if secondary_ip_ranges is not None:
             pulumi.set(__self__, "secondary_ip_ranges", secondary_ip_ranges)
+        if stack_type is not None:
+            pulumi.set(__self__, "stack_type", stack_type)
 
     @property
     @pulumi.getter(name="ipCidrRange")
@@ -137,6 +150,21 @@ class SubnetworkArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="ipv6AccessType")
+    def ipv6_access_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
+        or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
+        cannot enable direct path.
+        Possible values are `EXTERNAL`.
+        """
+        return pulumi.get(self, "ipv6_access_type")
+
+    @ipv6_access_type.setter
+    def ipv6_access_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv6_access_type", value)
 
     @property
     @pulumi.getter(name="logConfig")
@@ -271,15 +299,32 @@ class SubnetworkArgs:
     def secondary_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]]]):
         pulumi.set(self, "secondary_ip_ranges", value)
 
+    @property
+    @pulumi.getter(name="stackType")
+    def stack_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
+        If not specified IPV4_ONLY will be used.
+        Possible values are `IPV4_ONLY` and `IPV4_IPV6`.
+        """
+        return pulumi.get(self, "stack_type")
+
+    @stack_type.setter
+    def stack_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "stack_type", value)
+
 
 @pulumi.input_type
 class _SubnetworkState:
     def __init__(__self__, *,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 external_ipv6_prefix: Optional[pulumi.Input[str]] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  gateway_address: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
+                 ipv6_access_type: Optional[pulumi.Input[str]] = None,
+                 ipv6_cidr_range: Optional[pulumi.Input[str]] = None,
                  log_config: Optional[pulumi.Input['SubnetworkLogConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -290,19 +335,26 @@ class _SubnetworkState:
                  region: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None):
+                 self_link: Optional[pulumi.Input[str]] = None,
+                 stack_type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Subnetwork resources.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource. This field can be set only at resource
                creation time.
+        :param pulumi.Input[str] external_ipv6_prefix: The range of external IPv6 addresses that are owned by this subnetwork.
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource. This field is used internally during updates of this resource.
         :param pulumi.Input[str] gateway_address: The gateway address for default routes to reach destination addresses outside this subnetwork.
         :param pulumi.Input[str] ip_cidr_range: The range of IP addresses belonging to this subnetwork secondary
                range. Provide this property when you create the subnetwork.
                Ranges must be unique and non-overlapping with all primary and
                secondary IP ranges within a network. Only IPv4 is supported.
+        :param pulumi.Input[str] ipv6_access_type: The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
+               or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
+               cannot enable direct path.
+               Possible values are `EXTERNAL`.
+        :param pulumi.Input[str] ipv6_cidr_range: The range of internal IPv6 addresses that are owned by this subnetwork.
         :param pulumi.Input['SubnetworkLogConfigArgs'] log_config: Denotes the logging options for the subnetwork flow logs. If logging is enabled
                logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
                subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
@@ -340,11 +392,16 @@ class _SubnetworkState:
                to either primary or secondary ranges.
                Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[str] stack_type: The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
+               If not specified IPV4_ONLY will be used.
+               Possible values are `IPV4_ONLY` and `IPV4_IPV6`.
         """
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if external_ipv6_prefix is not None:
+            pulumi.set(__self__, "external_ipv6_prefix", external_ipv6_prefix)
         if fingerprint is not None:
             warnings.warn("""This field is not useful for users, and has been removed as an output.""", DeprecationWarning)
             pulumi.log.warn("""fingerprint is deprecated: This field is not useful for users, and has been removed as an output.""")
@@ -354,6 +411,10 @@ class _SubnetworkState:
             pulumi.set(__self__, "gateway_address", gateway_address)
         if ip_cidr_range is not None:
             pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
+        if ipv6_access_type is not None:
+            pulumi.set(__self__, "ipv6_access_type", ipv6_access_type)
+        if ipv6_cidr_range is not None:
+            pulumi.set(__self__, "ipv6_cidr_range", ipv6_cidr_range)
         if log_config is not None:
             pulumi.set(__self__, "log_config", log_config)
         if name is not None:
@@ -376,6 +437,8 @@ class _SubnetworkState:
             pulumi.set(__self__, "secondary_ip_ranges", secondary_ip_ranges)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
+        if stack_type is not None:
+            pulumi.set(__self__, "stack_type", stack_type)
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -402,6 +465,18 @@ class _SubnetworkState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="externalIpv6Prefix")
+    def external_ipv6_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        The range of external IPv6 addresses that are owned by this subnetwork.
+        """
+        return pulumi.get(self, "external_ipv6_prefix")
+
+    @external_ipv6_prefix.setter
+    def external_ipv6_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "external_ipv6_prefix", value)
 
     @property
     @pulumi.getter
@@ -441,6 +516,33 @@ class _SubnetworkState:
     @ip_cidr_range.setter
     def ip_cidr_range(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ip_cidr_range", value)
+
+    @property
+    @pulumi.getter(name="ipv6AccessType")
+    def ipv6_access_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
+        or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
+        cannot enable direct path.
+        Possible values are `EXTERNAL`.
+        """
+        return pulumi.get(self, "ipv6_access_type")
+
+    @ipv6_access_type.setter
+    def ipv6_access_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv6_access_type", value)
+
+    @property
+    @pulumi.getter(name="ipv6CidrRange")
+    def ipv6_cidr_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        The range of internal IPv6 addresses that are owned by this subnetwork.
+        """
+        return pulumi.get(self, "ipv6_cidr_range")
+
+    @ipv6_cidr_range.setter
+    def ipv6_cidr_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv6_cidr_range", value)
 
     @property
     @pulumi.getter(name="logConfig")
@@ -600,6 +702,20 @@ class _SubnetworkState:
     def self_link(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "self_link", value)
 
+    @property
+    @pulumi.getter(name="stackType")
+    def stack_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
+        If not specified IPV4_ONLY will be used.
+        Possible values are `IPV4_ONLY` and `IPV4_IPV6`.
+        """
+        return pulumi.get(self, "stack_type")
+
+    @stack_type.setter
+    def stack_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "stack_type", value)
+
 
 class Subnetwork(pulumi.CustomResource):
     @overload
@@ -608,6 +724,7 @@ class Subnetwork(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
+                 ipv6_access_type: Optional[pulumi.Input[str]] = None,
                  log_config: Optional[pulumi.Input[pulumi.InputType['SubnetworkLogConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -618,6 +735,7 @@ class Subnetwork(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetworkSecondaryIpRangeArgs']]]]] = None,
+                 stack_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         A VPC network is a virtual version of the traditional physical networks
@@ -700,6 +818,20 @@ class Subnetwork(pulumi.CustomResource):
             network=custom_test.id,
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
+        ### Subnetwork Ipv6
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        custom_test = gcp.compute.Network("custom-test", auto_create_subnetworks=False)
+        subnetwork_ipv6 = gcp.compute.Subnetwork("subnetwork-ipv6",
+            ip_cidr_range="10.0.0.0/22",
+            region="us-west2",
+            stack_type="IPV4_IPV6",
+            ipv6_access_type="EXTERNAL",
+            network=custom_test.id)
+        ```
 
         ## Import
 
@@ -730,6 +862,10 @@ class Subnetwork(pulumi.CustomResource):
                range. Provide this property when you create the subnetwork.
                Ranges must be unique and non-overlapping with all primary and
                secondary IP ranges within a network. Only IPv4 is supported.
+        :param pulumi.Input[str] ipv6_access_type: The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
+               or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
+               cannot enable direct path.
+               Possible values are `EXTERNAL`.
         :param pulumi.Input[pulumi.InputType['SubnetworkLogConfigArgs']] log_config: Denotes the logging options for the subnetwork flow logs. If logging is enabled
                logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
                subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
@@ -766,6 +902,9 @@ class Subnetwork(pulumi.CustomResource):
                to the primary ipCidrRange of the subnetwork. The alias IPs may belong
                to either primary or secondary ranges.
                Structure is documented below.
+        :param pulumi.Input[str] stack_type: The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
+               If not specified IPV4_ONLY will be used.
+               Possible values are `IPV4_ONLY` and `IPV4_IPV6`.
         """
         ...
     @overload
@@ -854,6 +993,20 @@ class Subnetwork(pulumi.CustomResource):
             network=custom_test.id,
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
+        ### Subnetwork Ipv6
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        custom_test = gcp.compute.Network("custom-test", auto_create_subnetworks=False)
+        subnetwork_ipv6 = gcp.compute.Subnetwork("subnetwork-ipv6",
+            ip_cidr_range="10.0.0.0/22",
+            region="us-west2",
+            stack_type="IPV4_IPV6",
+            ipv6_access_type="EXTERNAL",
+            network=custom_test.id)
+        ```
 
         ## Import
 
@@ -892,6 +1045,7 @@ class Subnetwork(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
+                 ipv6_access_type: Optional[pulumi.Input[str]] = None,
                  log_config: Optional[pulumi.Input[pulumi.InputType['SubnetworkLogConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -902,6 +1056,7 @@ class Subnetwork(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetworkSecondaryIpRangeArgs']]]]] = None,
+                 stack_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -918,6 +1073,7 @@ class Subnetwork(pulumi.CustomResource):
             if ip_cidr_range is None and not opts.urn:
                 raise TypeError("Missing required property 'ip_cidr_range'")
             __props__.__dict__["ip_cidr_range"] = ip_cidr_range
+            __props__.__dict__["ipv6_access_type"] = ipv6_access_type
             __props__.__dict__["log_config"] = log_config
             __props__.__dict__["name"] = name
             if network is None and not opts.urn:
@@ -930,9 +1086,12 @@ class Subnetwork(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["role"] = role
             __props__.__dict__["secondary_ip_ranges"] = secondary_ip_ranges
+            __props__.__dict__["stack_type"] = stack_type
             __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["external_ipv6_prefix"] = None
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["gateway_address"] = None
+            __props__.__dict__["ipv6_cidr_range"] = None
             __props__.__dict__["self_link"] = None
         super(Subnetwork, __self__).__init__(
             'gcp:compute/subnetwork:Subnetwork',
@@ -946,9 +1105,12 @@ class Subnetwork(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            external_ipv6_prefix: Optional[pulumi.Input[str]] = None,
             fingerprint: Optional[pulumi.Input[str]] = None,
             gateway_address: Optional[pulumi.Input[str]] = None,
             ip_cidr_range: Optional[pulumi.Input[str]] = None,
+            ipv6_access_type: Optional[pulumi.Input[str]] = None,
+            ipv6_cidr_range: Optional[pulumi.Input[str]] = None,
             log_config: Optional[pulumi.Input[pulumi.InputType['SubnetworkLogConfigArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
@@ -959,7 +1121,8 @@ class Subnetwork(pulumi.CustomResource):
             region: Optional[pulumi.Input[str]] = None,
             role: Optional[pulumi.Input[str]] = None,
             secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetworkSecondaryIpRangeArgs']]]]] = None,
-            self_link: Optional[pulumi.Input[str]] = None) -> 'Subnetwork':
+            self_link: Optional[pulumi.Input[str]] = None,
+            stack_type: Optional[pulumi.Input[str]] = None) -> 'Subnetwork':
         """
         Get an existing Subnetwork resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -971,12 +1134,18 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource. This field can be set only at resource
                creation time.
+        :param pulumi.Input[str] external_ipv6_prefix: The range of external IPv6 addresses that are owned by this subnetwork.
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource. This field is used internally during updates of this resource.
         :param pulumi.Input[str] gateway_address: The gateway address for default routes to reach destination addresses outside this subnetwork.
         :param pulumi.Input[str] ip_cidr_range: The range of IP addresses belonging to this subnetwork secondary
                range. Provide this property when you create the subnetwork.
                Ranges must be unique and non-overlapping with all primary and
                secondary IP ranges within a network. Only IPv4 is supported.
+        :param pulumi.Input[str] ipv6_access_type: The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
+               or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
+               cannot enable direct path.
+               Possible values are `EXTERNAL`.
+        :param pulumi.Input[str] ipv6_cidr_range: The range of internal IPv6 addresses that are owned by this subnetwork.
         :param pulumi.Input[pulumi.InputType['SubnetworkLogConfigArgs']] log_config: Denotes the logging options for the subnetwork flow logs. If logging is enabled
                logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
                subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
@@ -1014,6 +1183,9 @@ class Subnetwork(pulumi.CustomResource):
                to either primary or secondary ranges.
                Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[str] stack_type: The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
+               If not specified IPV4_ONLY will be used.
+               Possible values are `IPV4_ONLY` and `IPV4_IPV6`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1021,9 +1193,12 @@ class Subnetwork(pulumi.CustomResource):
 
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
+        __props__.__dict__["external_ipv6_prefix"] = external_ipv6_prefix
         __props__.__dict__["fingerprint"] = fingerprint
         __props__.__dict__["gateway_address"] = gateway_address
         __props__.__dict__["ip_cidr_range"] = ip_cidr_range
+        __props__.__dict__["ipv6_access_type"] = ipv6_access_type
+        __props__.__dict__["ipv6_cidr_range"] = ipv6_cidr_range
         __props__.__dict__["log_config"] = log_config
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
@@ -1035,6 +1210,7 @@ class Subnetwork(pulumi.CustomResource):
         __props__.__dict__["role"] = role
         __props__.__dict__["secondary_ip_ranges"] = secondary_ip_ranges
         __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["stack_type"] = stack_type
         return Subnetwork(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1054,6 +1230,14 @@ class Subnetwork(pulumi.CustomResource):
         creation time.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="externalIpv6Prefix")
+    def external_ipv6_prefix(self) -> pulumi.Output[str]:
+        """
+        The range of external IPv6 addresses that are owned by this subnetwork.
+        """
+        return pulumi.get(self, "external_ipv6_prefix")
 
     @property
     @pulumi.getter
@@ -1081,6 +1265,25 @@ class Subnetwork(pulumi.CustomResource):
         secondary IP ranges within a network. Only IPv4 is supported.
         """
         return pulumi.get(self, "ip_cidr_range")
+
+    @property
+    @pulumi.getter(name="ipv6AccessType")
+    def ipv6_access_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
+        or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
+        cannot enable direct path.
+        Possible values are `EXTERNAL`.
+        """
+        return pulumi.get(self, "ipv6_access_type")
+
+    @property
+    @pulumi.getter(name="ipv6CidrRange")
+    def ipv6_cidr_range(self) -> pulumi.Output[str]:
+        """
+        The range of internal IPv6 addresses that are owned by this subnetwork.
+        """
+        return pulumi.get(self, "ipv6_cidr_range")
 
     @property
     @pulumi.getter(name="logConfig")
@@ -1195,4 +1398,14 @@ class Subnetwork(pulumi.CustomResource):
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="stackType")
+    def stack_type(self) -> pulumi.Output[str]:
+        """
+        The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
+        If not specified IPV4_ONLY will be used.
+        Possible values are `IPV4_ONLY` and `IPV4_IPV6`.
+        """
+        return pulumi.get(self, "stack_type")
 

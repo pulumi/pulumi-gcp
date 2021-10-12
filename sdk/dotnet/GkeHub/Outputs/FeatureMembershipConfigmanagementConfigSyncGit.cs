@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.GkeHub.Outputs
     [OutputType]
     public sealed class FeatureMembershipConfigmanagementConfigSyncGit
     {
+        public readonly string? GcpServiceAccountEmail;
         /// <summary>
         /// URL for the HTTPS proxy to be used when communicating with the Git repo.
         /// </summary>
@@ -44,6 +45,8 @@ namespace Pulumi.Gcp.GkeHub.Outputs
 
         [OutputConstructor]
         private FeatureMembershipConfigmanagementConfigSyncGit(
+            string? gcpServiceAccountEmail,
+
             string? httpsProxy,
 
             string? policyDir,
@@ -58,6 +61,7 @@ namespace Pulumi.Gcp.GkeHub.Outputs
 
             string? syncWaitSecs)
         {
+            GcpServiceAccountEmail = gcpServiceAccountEmail;
             HttpsProxy = httpsProxy;
             PolicyDir = policyDir;
             SecretType = secretType;

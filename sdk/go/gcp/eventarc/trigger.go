@@ -112,7 +112,7 @@ type Trigger struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Required. The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+	// Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
 	MatchingCriterias TriggerMatchingCriteriaArrayOutput `pulumi:"matchingCriterias"`
 	// Required. The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -122,6 +122,9 @@ type Trigger struct {
 	ServiceAccount pulumi.StringPtrOutput `pulumi:"serviceAccount"`
 	// Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
 	Transports TriggerTransportArrayOutput `pulumi:"transports"`
+	// Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain
+	// unchanged until the resource is deleted.
+	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Output only. The last-modified time.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -175,7 +178,7 @@ type triggerState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	Location *string `pulumi:"location"`
-	// Required. The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+	// Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
 	MatchingCriterias []TriggerMatchingCriteria `pulumi:"matchingCriterias"`
 	// Required. The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
 	Name *string `pulumi:"name"`
@@ -185,6 +188,9 @@ type triggerState struct {
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
 	Transports []TriggerTransport `pulumi:"transports"`
+	// Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain
+	// unchanged until the resource is deleted.
+	Uid *string `pulumi:"uid"`
 	// Output only. The last-modified time.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -201,7 +207,7 @@ type TriggerState struct {
 	Labels pulumi.StringMapInput
 	// The location for the resource
 	Location pulumi.StringPtrInput
-	// Required. The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+	// Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
 	MatchingCriterias TriggerMatchingCriteriaArrayInput
 	// Required. The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
 	Name pulumi.StringPtrInput
@@ -211,6 +217,9 @@ type TriggerState struct {
 	ServiceAccount pulumi.StringPtrInput
 	// Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
 	Transports TriggerTransportArrayInput
+	// Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain
+	// unchanged until the resource is deleted.
+	Uid pulumi.StringPtrInput
 	// Output only. The last-modified time.
 	UpdateTime pulumi.StringPtrInput
 }
@@ -226,7 +235,7 @@ type triggerArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	Location string `pulumi:"location"`
-	// Required. The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+	// Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
 	MatchingCriterias []TriggerMatchingCriteria `pulumi:"matchingCriterias"`
 	// Required. The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
 	Name *string `pulumi:"name"`
@@ -246,7 +255,7 @@ type TriggerArgs struct {
 	Labels pulumi.StringMapInput
 	// The location for the resource
 	Location pulumi.StringInput
-	// Required. The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+	// Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
 	MatchingCriterias TriggerMatchingCriteriaArrayInput
 	// Required. The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
 	Name pulumi.StringPtrInput

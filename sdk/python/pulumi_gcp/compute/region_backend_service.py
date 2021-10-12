@@ -129,7 +129,7 @@ class RegionBackendServiceArgs:
                If it is not provided, the provider region is used.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
-               Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
+               Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, and `CLIENT_IP_NO_DESTINATION`.
         :param pulumi.Input[int] timeout_sec: How many seconds to wait for the backend before considering it a
                failed request. Default is 30 seconds. Valid range is [1, 86400].
         """
@@ -504,7 +504,7 @@ class RegionBackendServiceArgs:
         """
         Type of session affinity to use. The default is NONE. Session affinity is
         not applicable if the protocol is UDP.
-        Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
+        Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, and `CLIENT_IP_NO_DESTINATION`.
         """
         return pulumi.get(self, "session_affinity")
 
@@ -649,7 +649,7 @@ class _RegionBackendServiceState:
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
-               Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
+               Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, and `CLIENT_IP_NO_DESTINATION`.
         :param pulumi.Input[int] timeout_sec: How many seconds to wait for the backend before considering it a
                failed request. Default is 30 seconds. Valid range is [1, 86400].
         """
@@ -1066,7 +1066,7 @@ class _RegionBackendServiceState:
         """
         Type of session affinity to use. The default is NONE. Session affinity is
         not applicable if the protocol is UDP.
-        Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
+        Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, and `CLIENT_IP_NO_DESTINATION`.
         """
         return pulumi.get(self, "session_affinity")
 
@@ -1411,7 +1411,7 @@ class RegionBackendService(pulumi.CustomResource):
                If it is not provided, the provider region is used.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
-               Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
+               Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, and `CLIENT_IP_NO_DESTINATION`.
         :param pulumi.Input[int] timeout_sec: How many seconds to wait for the backend before considering it a
                failed request. Default is 30 seconds. Valid range is [1, 86400].
         """
@@ -1835,7 +1835,7 @@ class RegionBackendService(pulumi.CustomResource):
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
-               Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
+               Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, and `CLIENT_IP_NO_DESTINATION`.
         :param pulumi.Input[int] timeout_sec: How many seconds to wait for the backend before considering it a
                failed request. Default is 30 seconds. Valid range is [1, 86400].
         """
@@ -2135,7 +2135,7 @@ class RegionBackendService(pulumi.CustomResource):
         """
         Type of session affinity to use. The default is NONE. Session affinity is
         not applicable if the protocol is UDP.
-        Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
+        Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, and `CLIENT_IP_NO_DESTINATION`.
         """
         return pulumi.get(self, "session_affinity")
 

@@ -249,6 +249,9 @@ namespace Pulumi.Gcp.Storage
         /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
         /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
         /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        /// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+        /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+        /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         /// </summary>
         [Output("members")]
         public Output<ImmutableArray<string>> Members { get; private set; } = null!;
@@ -332,6 +335,9 @@ namespace Pulumi.Gcp.Storage
         /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
         /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
         /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        /// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+        /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+        /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         /// </summary>
         public InputList<string> Members
         {
@@ -385,6 +391,9 @@ namespace Pulumi.Gcp.Storage
         /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
         /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
         /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        /// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+        /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+        /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         /// </summary>
         public InputList<string> Members
         {

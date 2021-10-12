@@ -41,7 +41,7 @@ type WorkerPool struct {
 	NetworkConfig WorkerPoolNetworkConfigPtrOutput `pulumi:"networkConfig"`
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
+	// Output only. `WorkerPool` state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
 	State pulumi.StringOutput `pulumi:"state"`
 	// Output only. Time at which the request to update the `WorkerPool` was received.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -93,7 +93,7 @@ type workerPoolState struct {
 	NetworkConfig *WorkerPoolNetworkConfig `pulumi:"networkConfig"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
-	// Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
+	// Output only. `WorkerPool` state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
 	State *string `pulumi:"state"`
 	// Output only. Time at which the request to update the `WorkerPool` was received.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -114,7 +114,7 @@ type WorkerPoolState struct {
 	NetworkConfig WorkerPoolNetworkConfigPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
-	// Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
+	// Output only. `WorkerPool` state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
 	State pulumi.StringPtrInput
 	// Output only. Time at which the request to update the `WorkerPool` was received.
 	UpdateTime pulumi.StringPtrInput

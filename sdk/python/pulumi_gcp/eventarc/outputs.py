@@ -22,7 +22,9 @@ class TriggerDestination(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "cloudRunService":
+        if key == "cloudFunction":
+            suggest = "cloud_function"
+        elif key == "cloudRunService":
             suggest = "cloud_run_service"
 
         if suggest:
@@ -37,18 +39,30 @@ class TriggerDestination(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 cloud_function: Optional[str] = None,
                  cloud_run_service: Optional['outputs.TriggerDestinationCloudRunService'] = None):
         """
-        :param 'TriggerDestinationCloudRunServiceArgs' cloud_run_service: Cloud Run fully-managed service that receives the events. The service should be running in the same project as the trigger.
+        :param str cloud_function: The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: projects/{project}/locations/{location}/functions/{function}
+        :param 'TriggerDestinationCloudRunServiceArgs' cloud_run_service: Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
         """
+        if cloud_function is not None:
+            pulumi.set(__self__, "cloud_function", cloud_function)
         if cloud_run_service is not None:
             pulumi.set(__self__, "cloud_run_service", cloud_run_service)
+
+    @property
+    @pulumi.getter(name="cloudFunction")
+    def cloud_function(self) -> Optional[str]:
+        """
+        The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: projects/{project}/locations/{location}/functions/{function}
+        """
+        return pulumi.get(self, "cloud_function")
 
     @property
     @pulumi.getter(name="cloudRunService")
     def cloud_run_service(self) -> Optional['outputs.TriggerDestinationCloudRunService']:
         """
-        Cloud Run fully-managed service that receives the events. The service should be running in the same project as the trigger.
+        Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
         """
         return pulumi.get(self, "cloud_run_service")
 
@@ -60,7 +74,7 @@ class TriggerDestinationCloudRunService(dict):
                  path: Optional[str] = None,
                  region: Optional[str] = None):
         """
-        :param str service: Required. The name of the Cloud run service being addressed (see https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services). Only services located in the same project of the trigger object can be addressed.
+        :param str service: Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
         :param str path: Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
         :param str region: Required. The region the Cloud Run service is deployed in.
         """
@@ -74,7 +88,7 @@ class TriggerDestinationCloudRunService(dict):
     @pulumi.getter
     def service(self) -> str:
         """
-        Required. The name of the Cloud run service being addressed (see https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services). Only services located in the same project of the trigger object can be addressed.
+        Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
         """
         return pulumi.get(self, "service")
 
@@ -101,7 +115,7 @@ class TriggerMatchingCriteria(dict):
                  attribute: str,
                  value: str):
         """
-        :param str attribute: Required. The name of a CloudEvents attribute. Currently, only a subset of attributes can be specified. All triggers MUST provide a matching criteria for the 'type' attribute.
+        :param str attribute: Required. The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
         :param str value: Required. The value for the attribute.
         """
         pulumi.set(__self__, "attribute", attribute)
@@ -111,7 +125,7 @@ class TriggerMatchingCriteria(dict):
     @pulumi.getter
     def attribute(self) -> str:
         """
-        Required. The name of a CloudEvents attribute. Currently, only a subset of attributes can be specified. All triggers MUST provide a matching criteria for the 'type' attribute.
+        Required. The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
         """
         return pulumi.get(self, "attribute")
 
@@ -151,7 +165,7 @@ class TriggerTransportPubsub(dict):
         """
         :param str subscription: -
                Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
-        :param str topic: Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You may set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
+        :param str topic: Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME You may set an existing topic for triggers of the type google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
         """
         if subscription is not None:
             pulumi.set(__self__, "subscription", subscription)
@@ -171,7 +185,7 @@ class TriggerTransportPubsub(dict):
     @pulumi.getter
     def topic(self) -> Optional[str]:
         """
-        Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You may set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
+        Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME You may set an existing topic for triggers of the type google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
         """
         return pulumi.get(self, "topic")
 

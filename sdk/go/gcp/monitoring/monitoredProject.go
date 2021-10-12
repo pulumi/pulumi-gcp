@@ -28,14 +28,14 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := monitoring.NewMonitoredProject(ctx, "primary", &monitoring.MonitoredProjectArgs{
 // 			MetricsScope: pulumi.String("my-project-name"),
-// 		})
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = organizations.NewProject(ctx, "basic", &organizations.ProjectArgs{
 // 			ProjectId: pulumi.String("id"),
 // 			OrgId:     pulumi.String("123456789"),
-// 		})
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}

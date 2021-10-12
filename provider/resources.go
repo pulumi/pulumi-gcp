@@ -1024,7 +1024,8 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "pubsub_topic_iam.html.markdown",
 				},
 			},
-			"google_pubsub_subscription": {Tok: gcpResource(gcpPubSub, "Subscription")},
+			"google_pubsub_subscription":     {Tok: gcpResource(gcpPubSub, "Subscription")},
+			"google_pubsub_lite_reservation": {Tok: gcpResource(gcpPubSub, "LiteReservation")},
 			"google_pubsub_subscription_iam_binding": {
 				Tok: gcpResource(gcpPubSub, "SubscriptionIAMBinding"),
 				Docs: &tfbridge.DocInfo{
@@ -1080,7 +1081,8 @@ func Provider() tfbridge.ProviderInfo {
 			},
 
 			// Service Networking resources
-			"google_service_networking_connection": {Tok: gcpResource(gcpServiceNetworking, "Connection")},
+			"google_service_networking_connection":        {Tok: gcpResource(gcpServiceNetworking, "Connection")},
+			"google_service_networking_peered_dns_domain": {Tok: gcpResource(gcpServiceNetworking, "PeeredDnsDomain")},
 
 			// Source Repository resources
 			"google_sourcerepo_repository": {
@@ -2373,6 +2375,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_storage_bucket_object_content": {
 				Tok: gcpDataSource(gcpStorage, "getBucketObjectContent"),
 			},
+			"google_storage_bucket": {Tok: gcpDataSource(gcpStorage, "getBucket")},
 			"google_service_account": {
 				Tok: gcpDataSource(gcpServiceAccount, "getAccount"),
 				Docs: &tfbridge.DocInfo{
@@ -2427,6 +2430,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_sql_database_instance": {
 				Tok: gcpDataSource(gcpSQL, "getDatabaseInstance"),
+			},
+			"google_service_networking_peered_dns_domain": {
+				Tok: gcpDataSource(gcpServiceNetworking, "getPeeredDnsDomain"),
 			},
 			"google_sql_backup_run": {Tok: gcpDataSource(gcpSQL, "getBackupRun")},
 			"google_monitoring_notification_channel": {
@@ -2496,6 +2502,9 @@ func Provider() tfbridge.ProviderInfo {
 
 			//Appengine
 			"google_app_engine_default_service_account": {Tok: gcpDataSource(gcpAppEngine, "getDefaultServiceAccount")},
+
+			// Source repo
+			"google_sourcerepo_repository": {Tok: gcpDataSource(gcpSourceRepo, "getRepository")},
 
 			// Spanner
 			"google_spanner_instance": {Tok: gcpDataSource(gcpSpanner, "getInstance")},

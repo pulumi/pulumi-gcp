@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Eventarc.Inputs
     public sealed class TriggerMatchingCriteriaArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The name of a CloudEvents attribute. Currently, only a subset of attributes can be specified. All triggers MUST provide a matching criteria for the 'type' attribute.
+        /// Required. The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
         /// </summary>
         [Input("attribute", required: true)]
         public Input<string> Attribute { get; set; } = null!;

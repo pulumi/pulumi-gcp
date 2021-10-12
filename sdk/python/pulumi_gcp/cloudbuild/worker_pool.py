@@ -119,7 +119,7 @@ class _WorkerPoolState:
         :param pulumi.Input[str] name: User-defined name of the `WorkerPool`.
         :param pulumi.Input['WorkerPoolNetworkConfigArgs'] network_config: Network configuration for the `WorkerPool`.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[str] state: Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
+        :param pulumi.Input[str] state: Output only. `WorkerPool` state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
         :param pulumi.Input[str] update_time: Output only. Time at which the request to update the `WorkerPool` was received.
         :param pulumi.Input['WorkerPoolWorkerConfigArgs'] worker_config: Configuration to be used for a creating workers in the `WorkerPool`.
         """
@@ -218,7 +218,7 @@ class _WorkerPoolState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
+        Output only. `WorkerPool` state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
         """
         return pulumi.get(self, "state")
 
@@ -385,7 +385,7 @@ class WorkerPool(pulumi.CustomResource):
         :param pulumi.Input[str] name: User-defined name of the `WorkerPool`.
         :param pulumi.Input[pulumi.InputType['WorkerPoolNetworkConfigArgs']] network_config: Network configuration for the `WorkerPool`.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[str] state: Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
+        :param pulumi.Input[str] state: Output only. `WorkerPool` state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
         :param pulumi.Input[str] update_time: Output only. Time at which the request to update the `WorkerPool` was received.
         :param pulumi.Input[pulumi.InputType['WorkerPoolWorkerConfigArgs']] worker_config: Configuration to be used for a creating workers in the `WorkerPool`.
         """
@@ -456,7 +456,7 @@ class WorkerPool(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
+        Output only. `WorkerPool` state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
         """
         return pulumi.get(self, "state")
 

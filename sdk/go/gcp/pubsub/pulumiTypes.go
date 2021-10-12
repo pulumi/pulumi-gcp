@@ -467,6 +467,143 @@ func (o LiteTopicPartitionConfigCapacityPtrOutput) SubscribeMibPerSec() pulumi.I
 	}).(pulumi.IntPtrOutput)
 }
 
+type LiteTopicReservationConfig struct {
+	// The Reservation to use for this topic's throughput capacity.
+	ThroughputReservation *string `pulumi:"throughputReservation"`
+}
+
+// LiteTopicReservationConfigInput is an input type that accepts LiteTopicReservationConfigArgs and LiteTopicReservationConfigOutput values.
+// You can construct a concrete instance of `LiteTopicReservationConfigInput` via:
+//
+//          LiteTopicReservationConfigArgs{...}
+type LiteTopicReservationConfigInput interface {
+	pulumi.Input
+
+	ToLiteTopicReservationConfigOutput() LiteTopicReservationConfigOutput
+	ToLiteTopicReservationConfigOutputWithContext(context.Context) LiteTopicReservationConfigOutput
+}
+
+type LiteTopicReservationConfigArgs struct {
+	// The Reservation to use for this topic's throughput capacity.
+	ThroughputReservation pulumi.StringPtrInput `pulumi:"throughputReservation"`
+}
+
+func (LiteTopicReservationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LiteTopicReservationConfig)(nil)).Elem()
+}
+
+func (i LiteTopicReservationConfigArgs) ToLiteTopicReservationConfigOutput() LiteTopicReservationConfigOutput {
+	return i.ToLiteTopicReservationConfigOutputWithContext(context.Background())
+}
+
+func (i LiteTopicReservationConfigArgs) ToLiteTopicReservationConfigOutputWithContext(ctx context.Context) LiteTopicReservationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LiteTopicReservationConfigOutput)
+}
+
+func (i LiteTopicReservationConfigArgs) ToLiteTopicReservationConfigPtrOutput() LiteTopicReservationConfigPtrOutput {
+	return i.ToLiteTopicReservationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i LiteTopicReservationConfigArgs) ToLiteTopicReservationConfigPtrOutputWithContext(ctx context.Context) LiteTopicReservationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LiteTopicReservationConfigOutput).ToLiteTopicReservationConfigPtrOutputWithContext(ctx)
+}
+
+// LiteTopicReservationConfigPtrInput is an input type that accepts LiteTopicReservationConfigArgs, LiteTopicReservationConfigPtr and LiteTopicReservationConfigPtrOutput values.
+// You can construct a concrete instance of `LiteTopicReservationConfigPtrInput` via:
+//
+//          LiteTopicReservationConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type LiteTopicReservationConfigPtrInput interface {
+	pulumi.Input
+
+	ToLiteTopicReservationConfigPtrOutput() LiteTopicReservationConfigPtrOutput
+	ToLiteTopicReservationConfigPtrOutputWithContext(context.Context) LiteTopicReservationConfigPtrOutput
+}
+
+type liteTopicReservationConfigPtrType LiteTopicReservationConfigArgs
+
+func LiteTopicReservationConfigPtr(v *LiteTopicReservationConfigArgs) LiteTopicReservationConfigPtrInput {
+	return (*liteTopicReservationConfigPtrType)(v)
+}
+
+func (*liteTopicReservationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LiteTopicReservationConfig)(nil)).Elem()
+}
+
+func (i *liteTopicReservationConfigPtrType) ToLiteTopicReservationConfigPtrOutput() LiteTopicReservationConfigPtrOutput {
+	return i.ToLiteTopicReservationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *liteTopicReservationConfigPtrType) ToLiteTopicReservationConfigPtrOutputWithContext(ctx context.Context) LiteTopicReservationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LiteTopicReservationConfigPtrOutput)
+}
+
+type LiteTopicReservationConfigOutput struct{ *pulumi.OutputState }
+
+func (LiteTopicReservationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LiteTopicReservationConfig)(nil)).Elem()
+}
+
+func (o LiteTopicReservationConfigOutput) ToLiteTopicReservationConfigOutput() LiteTopicReservationConfigOutput {
+	return o
+}
+
+func (o LiteTopicReservationConfigOutput) ToLiteTopicReservationConfigOutputWithContext(ctx context.Context) LiteTopicReservationConfigOutput {
+	return o
+}
+
+func (o LiteTopicReservationConfigOutput) ToLiteTopicReservationConfigPtrOutput() LiteTopicReservationConfigPtrOutput {
+	return o.ToLiteTopicReservationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o LiteTopicReservationConfigOutput) ToLiteTopicReservationConfigPtrOutputWithContext(ctx context.Context) LiteTopicReservationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LiteTopicReservationConfig) *LiteTopicReservationConfig {
+		return &v
+	}).(LiteTopicReservationConfigPtrOutput)
+}
+
+// The Reservation to use for this topic's throughput capacity.
+func (o LiteTopicReservationConfigOutput) ThroughputReservation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LiteTopicReservationConfig) *string { return v.ThroughputReservation }).(pulumi.StringPtrOutput)
+}
+
+type LiteTopicReservationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (LiteTopicReservationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LiteTopicReservationConfig)(nil)).Elem()
+}
+
+func (o LiteTopicReservationConfigPtrOutput) ToLiteTopicReservationConfigPtrOutput() LiteTopicReservationConfigPtrOutput {
+	return o
+}
+
+func (o LiteTopicReservationConfigPtrOutput) ToLiteTopicReservationConfigPtrOutputWithContext(ctx context.Context) LiteTopicReservationConfigPtrOutput {
+	return o
+}
+
+func (o LiteTopicReservationConfigPtrOutput) Elem() LiteTopicReservationConfigOutput {
+	return o.ApplyT(func(v *LiteTopicReservationConfig) LiteTopicReservationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret LiteTopicReservationConfig
+		return ret
+	}).(LiteTopicReservationConfigOutput)
+}
+
+// The Reservation to use for this topic's throughput capacity.
+func (o LiteTopicReservationConfigPtrOutput) ThroughputReservation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LiteTopicReservationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ThroughputReservation
+	}).(pulumi.StringPtrOutput)
+}
+
 type LiteTopicRetentionConfig struct {
 	// The provisioned storage, in bytes, per partition. If the number of bytes stored
 	// in any of the topic's partitions grows beyond this value, older messages will be
@@ -2801,6 +2938,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LiteTopicPartitionConfigPtrInput)(nil)).Elem(), LiteTopicPartitionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LiteTopicPartitionConfigCapacityInput)(nil)).Elem(), LiteTopicPartitionConfigCapacityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LiteTopicPartitionConfigCapacityPtrInput)(nil)).Elem(), LiteTopicPartitionConfigCapacityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LiteTopicReservationConfigInput)(nil)).Elem(), LiteTopicReservationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LiteTopicReservationConfigPtrInput)(nil)).Elem(), LiteTopicReservationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LiteTopicRetentionConfigInput)(nil)).Elem(), LiteTopicRetentionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LiteTopicRetentionConfigPtrInput)(nil)).Elem(), LiteTopicRetentionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionDeadLetterPolicyInput)(nil)).Elem(), SubscriptionDeadLetterPolicyArgs{})
@@ -2835,6 +2974,8 @@ func init() {
 	pulumi.RegisterOutputType(LiteTopicPartitionConfigPtrOutput{})
 	pulumi.RegisterOutputType(LiteTopicPartitionConfigCapacityOutput{})
 	pulumi.RegisterOutputType(LiteTopicPartitionConfigCapacityPtrOutput{})
+	pulumi.RegisterOutputType(LiteTopicReservationConfigOutput{})
+	pulumi.RegisterOutputType(LiteTopicReservationConfigPtrOutput{})
 	pulumi.RegisterOutputType(LiteTopicRetentionConfigOutput{})
 	pulumi.RegisterOutputType(LiteTopicRetentionConfigPtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionDeadLetterPolicyOutput{})

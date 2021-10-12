@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,13 +30,13 @@ type FeatureMembership struct {
 	pulumi.CustomResourceState
 
 	// Config Management-specific spec.
-	Configmanagement FeatureMembershipConfigmanagementPtrOutput `pulumi:"configmanagement"`
+	Configmanagement FeatureMembershipConfigmanagementOutput `pulumi:"configmanagement"`
 	// The name of the feature
-	Feature pulumi.StringPtrOutput `pulumi:"feature"`
+	Feature pulumi.StringOutput `pulumi:"feature"`
 	// The location of the feature
-	Location pulumi.StringPtrOutput `pulumi:"location"`
+	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the membership
-	Membership pulumi.StringPtrOutput `pulumi:"membership"`
+	Membership pulumi.StringOutput `pulumi:"membership"`
 	// The project of the feature
 	Project pulumi.StringOutput `pulumi:"project"`
 }
@@ -44,9 +45,21 @@ type FeatureMembership struct {
 func NewFeatureMembership(ctx *pulumi.Context,
 	name string, args *FeatureMembershipArgs, opts ...pulumi.ResourceOption) (*FeatureMembership, error) {
 	if args == nil {
-		args = &FeatureMembershipArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Configmanagement == nil {
+		return nil, errors.New("invalid value for required argument 'Configmanagement'")
+	}
+	if args.Feature == nil {
+		return nil, errors.New("invalid value for required argument 'Feature'")
+	}
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
+	}
+	if args.Membership == nil {
+		return nil, errors.New("invalid value for required argument 'Membership'")
+	}
 	var resource FeatureMembership
 	err := ctx.RegisterResource("gcp:gkehub/featureMembership:FeatureMembership", name, args, &resource, opts...)
 	if err != nil {
@@ -100,13 +113,13 @@ func (FeatureMembershipState) ElementType() reflect.Type {
 
 type featureMembershipArgs struct {
 	// Config Management-specific spec.
-	Configmanagement *FeatureMembershipConfigmanagement `pulumi:"configmanagement"`
+	Configmanagement FeatureMembershipConfigmanagement `pulumi:"configmanagement"`
 	// The name of the feature
-	Feature *string `pulumi:"feature"`
+	Feature string `pulumi:"feature"`
 	// The location of the feature
-	Location *string `pulumi:"location"`
+	Location string `pulumi:"location"`
 	// The name of the membership
-	Membership *string `pulumi:"membership"`
+	Membership string `pulumi:"membership"`
 	// The project of the feature
 	Project *string `pulumi:"project"`
 }
@@ -114,13 +127,13 @@ type featureMembershipArgs struct {
 // The set of arguments for constructing a FeatureMembership resource.
 type FeatureMembershipArgs struct {
 	// Config Management-specific spec.
-	Configmanagement FeatureMembershipConfigmanagementPtrInput
+	Configmanagement FeatureMembershipConfigmanagementInput
 	// The name of the feature
-	Feature pulumi.StringPtrInput
+	Feature pulumi.StringInput
 	// The location of the feature
-	Location pulumi.StringPtrInput
+	Location pulumi.StringInput
 	// The name of the membership
-	Membership pulumi.StringPtrInput
+	Membership pulumi.StringInput
 	// The project of the feature
 	Project pulumi.StringPtrInput
 }

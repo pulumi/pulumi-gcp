@@ -10,9 +10,9 @@ import * as utilities from "../utilities";
  *
  * To get more information about Topic, see:
  *
- * * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics)
+ * * [API documentation](https://cloud.google.com/pubsub/lite/docs/reference/rest/v1/admin.projects.locations.topics)
  * * How-to Guides
- *     * [Managing Topics](https://cloud.google.com/pubsub/docs/admin#managing_topics)
+ *     * [Managing Topics](https://cloud.google.com/pubsub/lite/docs/topics)
  *
  * ## Example Usage
  * ### Pubsub Lite Topic Basic
@@ -22,7 +22,11 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const project = gcp.organizations.getProject({});
- * const example = new gcp.pubsub.LiteTopic("example", {
+ * const exampleLiteReservation = new gcp.pubsub.LiteReservation("exampleLiteReservation", {
+ *     project: project.then(project => project.number),
+ *     throughputCapacity: 2,
+ * });
+ * const exampleLiteTopic = new gcp.pubsub.LiteTopic("exampleLiteTopic", {
  *     project: project.then(project => project.number),
  *     partitionConfig: {
  *         count: 1,
@@ -33,6 +37,9 @@ import * as utilities from "../utilities";
  *     },
  *     retentionConfig: {
  *         perPartitionBytes: 32212254720,
+ *     },
+ *     reservationConfig: {
+ *         throughputReservation: exampleLiteReservation.name,
  *     },
  * });
  * ```
@@ -104,6 +111,11 @@ export class LiteTopic extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string | undefined>;
     /**
+     * The settings for this topic's Reservation usage.
+     * Structure is documented below.
+     */
+    public readonly reservationConfig!: pulumi.Output<outputs.pubsub.LiteTopicReservationConfig | undefined>;
+    /**
      * The settings for a topic's message retention.
      * Structure is documented below.
      */
@@ -130,6 +142,7 @@ export class LiteTopic extends pulumi.CustomResource {
             inputs["partitionConfig"] = state ? state.partitionConfig : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["region"] = state ? state.region : undefined;
+            inputs["reservationConfig"] = state ? state.reservationConfig : undefined;
             inputs["retentionConfig"] = state ? state.retentionConfig : undefined;
             inputs["zone"] = state ? state.zone : undefined;
         } else {
@@ -138,6 +151,7 @@ export class LiteTopic extends pulumi.CustomResource {
             inputs["partitionConfig"] = args ? args.partitionConfig : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["reservationConfig"] = args ? args.reservationConfig : undefined;
             inputs["retentionConfig"] = args ? args.retentionConfig : undefined;
             inputs["zone"] = args ? args.zone : undefined;
         }
@@ -171,6 +185,11 @@ export interface LiteTopicState {
      */
     region?: pulumi.Input<string>;
     /**
+     * The settings for this topic's Reservation usage.
+     * Structure is documented below.
+     */
+    reservationConfig?: pulumi.Input<inputs.pubsub.LiteTopicReservationConfig>;
+    /**
      * The settings for a topic's message retention.
      * Structure is documented below.
      */
@@ -203,6 +222,11 @@ export interface LiteTopicArgs {
      * The region of the pubsub lite topic.
      */
     region?: pulumi.Input<string>;
+    /**
+     * The settings for this topic's Reservation usage.
+     * Structure is documented below.
+     */
+    reservationConfig?: pulumi.Input<inputs.pubsub.LiteTopicReservationConfig>;
     /**
      * The settings for a topic's message retention.
      * Structure is documented below.

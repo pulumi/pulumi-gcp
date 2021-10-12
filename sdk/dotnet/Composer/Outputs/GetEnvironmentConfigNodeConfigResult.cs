@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.Composer.Outputs
     public sealed class GetEnvironmentConfigNodeConfigResult
     {
         public readonly int DiskSizeGb;
+        public readonly bool EnableIpMasqAgent;
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigNodeConfigIpAllocationPolicyResult> IpAllocationPolicies;
         public readonly string MachineType;
         public readonly int MaxPodsPerNode;
@@ -27,6 +28,8 @@ namespace Pulumi.Gcp.Composer.Outputs
         [OutputConstructor]
         private GetEnvironmentConfigNodeConfigResult(
             int diskSizeGb,
+
+            bool enableIpMasqAgent,
 
             ImmutableArray<Outputs.GetEnvironmentConfigNodeConfigIpAllocationPolicyResult> ipAllocationPolicies,
 
@@ -47,6 +50,7 @@ namespace Pulumi.Gcp.Composer.Outputs
             string zone)
         {
             DiskSizeGb = diskSizeGb;
+            EnableIpMasqAgent = enableIpMasqAgent;
             IpAllocationPolicies = ipAllocationPolicies;
             MachineType = machineType;
             MaxPodsPerNode = maxPodsPerNode;

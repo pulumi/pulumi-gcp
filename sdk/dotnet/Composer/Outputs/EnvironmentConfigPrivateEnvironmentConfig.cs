@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.Composer.Outputs
     [OutputType]
     public sealed class EnvironmentConfigPrivateEnvironmentConfig
     {
+        public readonly string? CloudComposerNetworkIpv4CidrBlock;
         /// <summary>
         /// The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `web_server_ipv4_cidr_block`
         /// </summary>
@@ -20,8 +21,12 @@ namespace Pulumi.Gcp.Composer.Outputs
         /// <summary>
         /// -
         /// If true, access to the public endpoint of the GKE cluster is denied.
+        /// If this field is set to true, `ip_allocation_policy.use_ip_aliases` must
+        /// be set to true for Cloud Composer environments in versions
+        /// composer-1.*.*-airflow-*.*.*.
         /// </summary>
         public readonly bool? EnablePrivateEndpoint;
+        public readonly bool? EnablePrivatelyUsedPublicIps;
         /// <summary>
         /// The IP range in CIDR notation to use for the hosted master network. This range is used
         /// for assigning internal IP addresses to the cluster master or set of masters and to the
@@ -31,22 +36,28 @@ namespace Pulumi.Gcp.Composer.Outputs
         /// </summary>
         public readonly string? MasterIpv4CidrBlock;
         /// <summary>
-        /// The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`.
+        /// The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         public readonly string? WebServerIpv4CidrBlock;
 
         [OutputConstructor]
         private EnvironmentConfigPrivateEnvironmentConfig(
+            string? cloudComposerNetworkIpv4CidrBlock,
+
             string? cloudSqlIpv4CidrBlock,
 
             bool? enablePrivateEndpoint,
+
+            bool? enablePrivatelyUsedPublicIps,
 
             string? masterIpv4CidrBlock,
 
             string? webServerIpv4CidrBlock)
         {
+            CloudComposerNetworkIpv4CidrBlock = cloudComposerNetworkIpv4CidrBlock;
             CloudSqlIpv4CidrBlock = cloudSqlIpv4CidrBlock;
             EnablePrivateEndpoint = enablePrivateEndpoint;
+            EnablePrivatelyUsedPublicIps = enablePrivatelyUsedPublicIps;
             MasterIpv4CidrBlock = masterIpv4CidrBlock;
             WebServerIpv4CidrBlock = webServerIpv4CidrBlock;
         }

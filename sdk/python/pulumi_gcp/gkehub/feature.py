@@ -108,7 +108,9 @@ class _FeatureState:
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 resource_states: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureResourceStateArgs']]]] = None,
                  spec: Optional[pulumi.Input['FeatureSpecArgs']] = None,
+                 states: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureStateArgs']]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Feature resources.
@@ -118,7 +120,9 @@ class _FeatureState:
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: The full, unique name of this Feature resource
         :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[Sequence[pulumi.Input['FeatureResourceStateArgs']]] resource_states: State of the Feature resource itself.
         :param pulumi.Input['FeatureSpecArgs'] spec: Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+        :param pulumi.Input[Sequence[pulumi.Input['FeatureStateArgs']]] states: Output only. The Hub-wide Feature state
         :param pulumi.Input[str] update_time: Output only. When the Feature resource was last updated.
         """
         if create_time is not None:
@@ -133,8 +137,12 @@ class _FeatureState:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if resource_states is not None:
+            pulumi.set(__self__, "resource_states", resource_states)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
+        if states is not None:
+            pulumi.set(__self__, "states", states)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
 
@@ -211,6 +219,18 @@ class _FeatureState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="resourceStates")
+    def resource_states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureResourceStateArgs']]]]:
+        """
+        State of the Feature resource itself.
+        """
+        return pulumi.get(self, "resource_states")
+
+    @resource_states.setter
+    def resource_states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureResourceStateArgs']]]]):
+        pulumi.set(self, "resource_states", value)
+
+    @property
     @pulumi.getter
     def spec(self) -> Optional[pulumi.Input['FeatureSpecArgs']]:
         """
@@ -221,6 +241,18 @@ class _FeatureState:
     @spec.setter
     def spec(self, value: Optional[pulumi.Input['FeatureSpecArgs']]):
         pulumi.set(self, "spec", value)
+
+    @property
+    @pulumi.getter
+    def states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureStateArgs']]]]:
+        """
+        Output only. The Hub-wide Feature state
+        """
+        return pulumi.get(self, "states")
+
+    @states.setter
+    def states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureStateArgs']]]]):
+        pulumi.set(self, "states", value)
 
     @property
     @pulumi.getter(name="updateTime")
@@ -335,6 +367,8 @@ class Feature(pulumi.CustomResource):
             __props__.__dict__["spec"] = spec
             __props__.__dict__["create_time"] = None
             __props__.__dict__["delete_time"] = None
+            __props__.__dict__["resource_states"] = None
+            __props__.__dict__["states"] = None
             __props__.__dict__["update_time"] = None
         super(Feature, __self__).__init__(
             'gcp:gkehub/feature:Feature',
@@ -352,7 +386,9 @@ class Feature(pulumi.CustomResource):
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            resource_states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureResourceStateArgs']]]]] = None,
             spec: Optional[pulumi.Input[pulumi.InputType['FeatureSpecArgs']]] = None,
+            states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureStateArgs']]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Feature':
         """
         Get an existing Feature resource's state with the given name, id, and optional extra
@@ -367,7 +403,9 @@ class Feature(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: The full, unique name of this Feature resource
         :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureResourceStateArgs']]]] resource_states: State of the Feature resource itself.
         :param pulumi.Input[pulumi.InputType['FeatureSpecArgs']] spec: Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureStateArgs']]]] states: Output only. The Hub-wide Feature state
         :param pulumi.Input[str] update_time: Output only. When the Feature resource was last updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -380,7 +418,9 @@ class Feature(pulumi.CustomResource):
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["resource_states"] = resource_states
         __props__.__dict__["spec"] = spec
+        __props__.__dict__["states"] = states
         __props__.__dict__["update_time"] = update_time
         return Feature(resource_name, opts=opts, __props__=__props__)
 
@@ -433,12 +473,28 @@ class Feature(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="resourceStates")
+    def resource_states(self) -> pulumi.Output[Sequence['outputs.FeatureResourceState']]:
+        """
+        State of the Feature resource itself.
+        """
+        return pulumi.get(self, "resource_states")
+
+    @property
     @pulumi.getter
     def spec(self) -> pulumi.Output[Optional['outputs.FeatureSpec']]:
         """
         Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
         """
         return pulumi.get(self, "spec")
+
+    @property
+    @pulumi.getter
+    def states(self) -> pulumi.Output[Sequence['outputs.FeatureState']]:
+        """
+        Output only. The Hub-wide Feature state
+        """
+        return pulumi.get(self, "states")
 
     @property
     @pulumi.getter(name="updateTime")

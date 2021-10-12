@@ -14,9 +14,9 @@ import (
 //
 // To get more information about Topic, see:
 //
-// * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics)
+// * [API documentation](https://cloud.google.com/pubsub/lite/docs/reference/rest/v1/admin.projects.locations.topics)
 // * How-to Guides
-//     * [Managing Topics](https://cloud.google.com/pubsub/docs/admin#managing_topics)
+//     * [Managing Topics](https://cloud.google.com/pubsub/lite/docs/topics)
 //
 // ## Example Usage
 // ### Pubsub Lite Topic Basic
@@ -36,7 +36,14 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = pubsub.NewLiteTopic(ctx, "example", &pubsub.LiteTopicArgs{
+// 		exampleLiteReservation, err := pubsub.NewLiteReservation(ctx, "exampleLiteReservation", &pubsub.LiteReservationArgs{
+// 			Project:            pulumi.String(project.Number),
+// 			ThroughputCapacity: pulumi.Int(2),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = pubsub.NewLiteTopic(ctx, "exampleLiteTopic", &pubsub.LiteTopicArgs{
 // 			Project: pulumi.String(project.Number),
 // 			PartitionConfig: &pubsub.LiteTopicPartitionConfigArgs{
 // 				Count: pulumi.Int(1),
@@ -47,6 +54,9 @@ import (
 // 			},
 // 			RetentionConfig: &pubsub.LiteTopicRetentionConfigArgs{
 // 				PerPartitionBytes: pulumi.String("32212254720"),
+// 			},
+// 			ReservationConfig: &pubsub.LiteTopicReservationConfigArgs{
+// 				ThroughputReservation: exampleLiteReservation.Name,
 // 			},
 // 		})
 // 		if err != nil {
@@ -89,6 +99,9 @@ type LiteTopic struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The region of the pubsub lite topic.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
+	// The settings for this topic's Reservation usage.
+	// Structure is documented below.
+	ReservationConfig LiteTopicReservationConfigPtrOutput `pulumi:"reservationConfig"`
 	// The settings for a topic's message retention.
 	// Structure is documented below.
 	RetentionConfig LiteTopicRetentionConfigPtrOutput `pulumi:"retentionConfig"`
@@ -135,6 +148,9 @@ type liteTopicState struct {
 	Project *string `pulumi:"project"`
 	// The region of the pubsub lite topic.
 	Region *string `pulumi:"region"`
+	// The settings for this topic's Reservation usage.
+	// Structure is documented below.
+	ReservationConfig *LiteTopicReservationConfig `pulumi:"reservationConfig"`
 	// The settings for a topic's message retention.
 	// Structure is documented below.
 	RetentionConfig *LiteTopicRetentionConfig `pulumi:"retentionConfig"`
@@ -153,6 +169,9 @@ type LiteTopicState struct {
 	Project pulumi.StringPtrInput
 	// The region of the pubsub lite topic.
 	Region pulumi.StringPtrInput
+	// The settings for this topic's Reservation usage.
+	// Structure is documented below.
+	ReservationConfig LiteTopicReservationConfigPtrInput
 	// The settings for a topic's message retention.
 	// Structure is documented below.
 	RetentionConfig LiteTopicRetentionConfigPtrInput
@@ -175,6 +194,9 @@ type liteTopicArgs struct {
 	Project *string `pulumi:"project"`
 	// The region of the pubsub lite topic.
 	Region *string `pulumi:"region"`
+	// The settings for this topic's Reservation usage.
+	// Structure is documented below.
+	ReservationConfig *LiteTopicReservationConfig `pulumi:"reservationConfig"`
 	// The settings for a topic's message retention.
 	// Structure is documented below.
 	RetentionConfig *LiteTopicRetentionConfig `pulumi:"retentionConfig"`
@@ -194,6 +216,9 @@ type LiteTopicArgs struct {
 	Project pulumi.StringPtrInput
 	// The region of the pubsub lite topic.
 	Region pulumi.StringPtrInput
+	// The settings for this topic's Reservation usage.
+	// Structure is documented below.
+	ReservationConfig LiteTopicReservationConfigPtrInput
 	// The settings for a topic's message retention.
 	// Structure is documented below.
 	RetentionConfig LiteTopicRetentionConfigPtrInput

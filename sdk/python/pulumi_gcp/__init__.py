@@ -3579,6 +3579,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "pubsub/liteReservation",
+  "fqn": "pulumi_gcp.pubsub",
+  "classes": {
+   "gcp:pubsub/liteReservation:LiteReservation": "LiteReservation"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "pubsub/liteSubscription",
   "fqn": "pulumi_gcp.pubsub",
   "classes": {
@@ -3895,6 +3903,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.servicenetworking",
   "classes": {
    "gcp:servicenetworking/connection:Connection": "Connection"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "servicenetworking/peeredDnsDomain",
+  "fqn": "pulumi_gcp.servicenetworking",
+  "classes": {
+   "gcp:servicenetworking/peeredDnsDomain:PeeredDnsDomain": "PeeredDnsDomain"
   }
  },
  {

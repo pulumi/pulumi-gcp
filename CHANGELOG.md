@@ -2,7 +2,8 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade to v3.88.0 of the Google Beta Terraform Provider
+  **PLEASE NOTE** there are breaking changes in the `gcp.gkehub.Feature` and `gcp.gkehub.FeatureMembership` where a number of parameters are not required due to changes in the upstream Google API.
 
 ---
 

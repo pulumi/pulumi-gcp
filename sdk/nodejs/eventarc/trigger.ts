@@ -116,7 +116,7 @@ export class Trigger extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * Required. The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+     * Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
      */
     public readonly matchingCriterias!: pulumi.Output<outputs.eventarc.TriggerMatchingCriteria[]>;
     /**
@@ -135,6 +135,11 @@ export class Trigger extends pulumi.CustomResource {
      * Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
      */
     public readonly transports!: pulumi.Output<outputs.eventarc.TriggerTransport[]>;
+    /**
+     * Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain
+     * unchanged until the resource is deleted.
+     */
+    public /*out*/ readonly uid!: pulumi.Output<string>;
     /**
      * Output only. The last-modified time.
      */
@@ -163,6 +168,7 @@ export class Trigger extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
             inputs["serviceAccount"] = state ? state.serviceAccount : undefined;
             inputs["transports"] = state ? state.transports : undefined;
+            inputs["uid"] = state ? state.uid : undefined;
             inputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as TriggerArgs | undefined;
@@ -185,6 +191,7 @@ export class Trigger extends pulumi.CustomResource {
             inputs["transports"] = args ? args.transports : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["etag"] = undefined /*out*/;
+            inputs["uid"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -220,7 +227,7 @@ export interface TriggerState {
      */
     location?: pulumi.Input<string>;
     /**
-     * Required. The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+     * Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
      */
     matchingCriterias?: pulumi.Input<pulumi.Input<inputs.eventarc.TriggerMatchingCriteria>[]>;
     /**
@@ -239,6 +246,11 @@ export interface TriggerState {
      * Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
      */
     transports?: pulumi.Input<pulumi.Input<inputs.eventarc.TriggerTransport>[]>;
+    /**
+     * Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain
+     * unchanged until the resource is deleted.
+     */
+    uid?: pulumi.Input<string>;
     /**
      * Output only. The last-modified time.
      */
@@ -262,7 +274,7 @@ export interface TriggerArgs {
      */
     location: pulumi.Input<string>;
     /**
-     * Required. The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+     * Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
      */
     matchingCriterias: pulumi.Input<pulumi.Input<inputs.eventarc.TriggerMatchingCriteria>[]>;
     /**

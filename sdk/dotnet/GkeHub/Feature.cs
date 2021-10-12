@@ -66,10 +66,22 @@ namespace Pulumi.Gcp.GkeHub
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// State of the Feature resource itself.
+        /// </summary>
+        [Output("resourceStates")]
+        public Output<ImmutableArray<Outputs.FeatureResourceState>> ResourceStates { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
         /// </summary>
         [Output("spec")]
         public Output<Outputs.FeatureSpec?> Spec { get; private set; } = null!;
+
+        /// <summary>
+        /// Output only. The Hub-wide Feature state
+        /// </summary>
+        [Output("states")]
+        public Output<ImmutableArray<Outputs.FeatureState>> States { get; private set; } = null!;
 
         /// <summary>
         /// Output only. When the Feature resource was last updated.
@@ -208,11 +220,35 @@ namespace Pulumi.Gcp.GkeHub
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("resourceStates")]
+        private InputList<Inputs.FeatureResourceStateGetArgs>? _resourceStates;
+
+        /// <summary>
+        /// State of the Feature resource itself.
+        /// </summary>
+        public InputList<Inputs.FeatureResourceStateGetArgs> ResourceStates
+        {
+            get => _resourceStates ?? (_resourceStates = new InputList<Inputs.FeatureResourceStateGetArgs>());
+            set => _resourceStates = value;
+        }
+
         /// <summary>
         /// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
         /// </summary>
         [Input("spec")]
         public Input<Inputs.FeatureSpecGetArgs>? Spec { get; set; }
+
+        [Input("states")]
+        private InputList<Inputs.FeatureStateGetArgs>? _states;
+
+        /// <summary>
+        /// Output only. The Hub-wide Feature state
+        /// </summary>
+        public InputList<Inputs.FeatureStateGetArgs> States
+        {
+            get => _states ?? (_states = new InputList<Inputs.FeatureStateGetArgs>());
+            set => _states = value;
+        }
 
         /// <summary>
         /// Output only. When the Feature resource was last updated.

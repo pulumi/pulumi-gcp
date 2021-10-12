@@ -6678,10 +6678,18 @@ type ClusterNodeConfigWorkloadMetadataConfig struct {
 	// How to expose the node metadata to the workload running on the node.
 	// Accepted values are:
 	// * UNSPECIFIED: Not Set
+	// * GCE_METADATA: Expose all Compute Engine metadata to pods.
+	// * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
+	Mode *string `pulumi:"mode"`
+	// How to expose the node metadata to the workload running on the node. This is deprecated in favor of `mode`
+	// Accepted values are:
+	// * UNSPECIFIED: Not Set
 	// * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
 	// * EXPOSE: Expose all VM metadata to pods.
 	// * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
-	NodeMetadata string `pulumi:"nodeMetadata"`
+	//
+	// Deprecated: Deprecated in favor of mode.
+	NodeMetadata *string `pulumi:"nodeMetadata"`
 }
 
 // ClusterNodeConfigWorkloadMetadataConfigInput is an input type that accepts ClusterNodeConfigWorkloadMetadataConfigArgs and ClusterNodeConfigWorkloadMetadataConfigOutput values.
@@ -6699,10 +6707,18 @@ type ClusterNodeConfigWorkloadMetadataConfigArgs struct {
 	// How to expose the node metadata to the workload running on the node.
 	// Accepted values are:
 	// * UNSPECIFIED: Not Set
+	// * GCE_METADATA: Expose all Compute Engine metadata to pods.
+	// * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// How to expose the node metadata to the workload running on the node. This is deprecated in favor of `mode`
+	// Accepted values are:
+	// * UNSPECIFIED: Not Set
 	// * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
 	// * EXPOSE: Expose all VM metadata to pods.
 	// * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
-	NodeMetadata pulumi.StringInput `pulumi:"nodeMetadata"`
+	//
+	// Deprecated: Deprecated in favor of mode.
+	NodeMetadata pulumi.StringPtrInput `pulumi:"nodeMetadata"`
 }
 
 func (ClusterNodeConfigWorkloadMetadataConfigArgs) ElementType() reflect.Type {
@@ -6785,11 +6801,22 @@ func (o ClusterNodeConfigWorkloadMetadataConfigOutput) ToClusterNodeConfigWorklo
 // How to expose the node metadata to the workload running on the node.
 // Accepted values are:
 // * UNSPECIFIED: Not Set
+// * GCE_METADATA: Expose all Compute Engine metadata to pods.
+// * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
+func (o ClusterNodeConfigWorkloadMetadataConfigOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfigWorkloadMetadataConfig) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// How to expose the node metadata to the workload running on the node. This is deprecated in favor of `mode`
+// Accepted values are:
+// * UNSPECIFIED: Not Set
 // * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
 // * EXPOSE: Expose all VM metadata to pods.
 // * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
-func (o ClusterNodeConfigWorkloadMetadataConfigOutput) NodeMetadata() pulumi.StringOutput {
-	return o.ApplyT(func(v ClusterNodeConfigWorkloadMetadataConfig) string { return v.NodeMetadata }).(pulumi.StringOutput)
+//
+// Deprecated: Deprecated in favor of mode.
+func (o ClusterNodeConfigWorkloadMetadataConfigOutput) NodeMetadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfigWorkloadMetadataConfig) *string { return v.NodeMetadata }).(pulumi.StringPtrOutput)
 }
 
 type ClusterNodeConfigWorkloadMetadataConfigPtrOutput struct{ *pulumi.OutputState }
@@ -6819,15 +6846,31 @@ func (o ClusterNodeConfigWorkloadMetadataConfigPtrOutput) Elem() ClusterNodeConf
 // How to expose the node metadata to the workload running on the node.
 // Accepted values are:
 // * UNSPECIFIED: Not Set
+// * GCE_METADATA: Expose all Compute Engine metadata to pods.
+// * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
+func (o ClusterNodeConfigWorkloadMetadataConfigPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigWorkloadMetadataConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// How to expose the node metadata to the workload running on the node. This is deprecated in favor of `mode`
+// Accepted values are:
+// * UNSPECIFIED: Not Set
 // * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
 // * EXPOSE: Expose all VM metadata to pods.
 // * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
+//
+// Deprecated: Deprecated in favor of mode.
 func (o ClusterNodeConfigWorkloadMetadataConfigPtrOutput) NodeMetadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfigWorkloadMetadataConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.NodeMetadata
+		return v.NodeMetadata
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -9191,10 +9234,18 @@ type ClusterNodePoolNodeConfigWorkloadMetadataConfig struct {
 	// How to expose the node metadata to the workload running on the node.
 	// Accepted values are:
 	// * UNSPECIFIED: Not Set
+	// * GCE_METADATA: Expose all Compute Engine metadata to pods.
+	// * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
+	Mode *string `pulumi:"mode"`
+	// How to expose the node metadata to the workload running on the node. This is deprecated in favor of `mode`
+	// Accepted values are:
+	// * UNSPECIFIED: Not Set
 	// * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
 	// * EXPOSE: Expose all VM metadata to pods.
 	// * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
-	NodeMetadata string `pulumi:"nodeMetadata"`
+	//
+	// Deprecated: Deprecated in favor of mode.
+	NodeMetadata *string `pulumi:"nodeMetadata"`
 }
 
 // ClusterNodePoolNodeConfigWorkloadMetadataConfigInput is an input type that accepts ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs and ClusterNodePoolNodeConfigWorkloadMetadataConfigOutput values.
@@ -9212,10 +9263,18 @@ type ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs struct {
 	// How to expose the node metadata to the workload running on the node.
 	// Accepted values are:
 	// * UNSPECIFIED: Not Set
+	// * GCE_METADATA: Expose all Compute Engine metadata to pods.
+	// * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// How to expose the node metadata to the workload running on the node. This is deprecated in favor of `mode`
+	// Accepted values are:
+	// * UNSPECIFIED: Not Set
 	// * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
 	// * EXPOSE: Expose all VM metadata to pods.
 	// * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
-	NodeMetadata pulumi.StringInput `pulumi:"nodeMetadata"`
+	//
+	// Deprecated: Deprecated in favor of mode.
+	NodeMetadata pulumi.StringPtrInput `pulumi:"nodeMetadata"`
 }
 
 func (ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs) ElementType() reflect.Type {
@@ -9298,11 +9357,22 @@ func (o ClusterNodePoolNodeConfigWorkloadMetadataConfigOutput) ToClusterNodePool
 // How to expose the node metadata to the workload running on the node.
 // Accepted values are:
 // * UNSPECIFIED: Not Set
+// * GCE_METADATA: Expose all Compute Engine metadata to pods.
+// * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
+func (o ClusterNodePoolNodeConfigWorkloadMetadataConfigOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigWorkloadMetadataConfig) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// How to expose the node metadata to the workload running on the node. This is deprecated in favor of `mode`
+// Accepted values are:
+// * UNSPECIFIED: Not Set
 // * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
 // * EXPOSE: Expose all VM metadata to pods.
 // * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
-func (o ClusterNodePoolNodeConfigWorkloadMetadataConfigOutput) NodeMetadata() pulumi.StringOutput {
-	return o.ApplyT(func(v ClusterNodePoolNodeConfigWorkloadMetadataConfig) string { return v.NodeMetadata }).(pulumi.StringOutput)
+//
+// Deprecated: Deprecated in favor of mode.
+func (o ClusterNodePoolNodeConfigWorkloadMetadataConfigOutput) NodeMetadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigWorkloadMetadataConfig) *string { return v.NodeMetadata }).(pulumi.StringPtrOutput)
 }
 
 type ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrOutput struct{ *pulumi.OutputState }
@@ -9332,15 +9402,31 @@ func (o ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrOutput) Elem() Cluster
 // How to expose the node metadata to the workload running on the node.
 // Accepted values are:
 // * UNSPECIFIED: Not Set
+// * GCE_METADATA: Expose all Compute Engine metadata to pods.
+// * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
+func (o ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigWorkloadMetadataConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// How to expose the node metadata to the workload running on the node. This is deprecated in favor of `mode`
+// Accepted values are:
+// * UNSPECIFIED: Not Set
 // * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
 // * EXPOSE: Expose all VM metadata to pods.
 // * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
+//
+// Deprecated: Deprecated in favor of mode.
 func (o ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrOutput) NodeMetadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfigWorkloadMetadataConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.NodeMetadata
+		return v.NodeMetadata
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -12974,7 +13060,9 @@ func (o NodePoolNodeConfigTaintArrayOutput) Index(i pulumi.IntInput) NodePoolNod
 }
 
 type NodePoolNodeConfigWorkloadMetadataConfig struct {
-	NodeMetadata string `pulumi:"nodeMetadata"`
+	Mode *string `pulumi:"mode"`
+	// Deprecated: Deprecated in favor of mode.
+	NodeMetadata *string `pulumi:"nodeMetadata"`
 }
 
 // NodePoolNodeConfigWorkloadMetadataConfigInput is an input type that accepts NodePoolNodeConfigWorkloadMetadataConfigArgs and NodePoolNodeConfigWorkloadMetadataConfigOutput values.
@@ -12989,7 +13077,9 @@ type NodePoolNodeConfigWorkloadMetadataConfigInput interface {
 }
 
 type NodePoolNodeConfigWorkloadMetadataConfigArgs struct {
-	NodeMetadata pulumi.StringInput `pulumi:"nodeMetadata"`
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// Deprecated: Deprecated in favor of mode.
+	NodeMetadata pulumi.StringPtrInput `pulumi:"nodeMetadata"`
 }
 
 func (NodePoolNodeConfigWorkloadMetadataConfigArgs) ElementType() reflect.Type {
@@ -13069,8 +13159,13 @@ func (o NodePoolNodeConfigWorkloadMetadataConfigOutput) ToNodePoolNodeConfigWork
 	}).(NodePoolNodeConfigWorkloadMetadataConfigPtrOutput)
 }
 
-func (o NodePoolNodeConfigWorkloadMetadataConfigOutput) NodeMetadata() pulumi.StringOutput {
-	return o.ApplyT(func(v NodePoolNodeConfigWorkloadMetadataConfig) string { return v.NodeMetadata }).(pulumi.StringOutput)
+func (o NodePoolNodeConfigWorkloadMetadataConfigOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigWorkloadMetadataConfig) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// Deprecated: Deprecated in favor of mode.
+func (o NodePoolNodeConfigWorkloadMetadataConfigOutput) NodeMetadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigWorkloadMetadataConfig) *string { return v.NodeMetadata }).(pulumi.StringPtrOutput)
 }
 
 type NodePoolNodeConfigWorkloadMetadataConfigPtrOutput struct{ *pulumi.OutputState }
@@ -13097,12 +13192,22 @@ func (o NodePoolNodeConfigWorkloadMetadataConfigPtrOutput) Elem() NodePoolNodeCo
 	}).(NodePoolNodeConfigWorkloadMetadataConfigOutput)
 }
 
+func (o NodePoolNodeConfigWorkloadMetadataConfigPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigWorkloadMetadataConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Deprecated: Deprecated in favor of mode.
 func (o NodePoolNodeConfigWorkloadMetadataConfigPtrOutput) NodeMetadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolNodeConfigWorkloadMetadataConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.NodeMetadata
+		return v.NodeMetadata
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -17351,6 +17456,7 @@ func (o GetClusterNodeConfigTaintArrayOutput) Index(i pulumi.IntInput) GetCluste
 }
 
 type GetClusterNodeConfigWorkloadMetadataConfig struct {
+	Mode         string `pulumi:"mode"`
 	NodeMetadata string `pulumi:"nodeMetadata"`
 }
 
@@ -17366,6 +17472,7 @@ type GetClusterNodeConfigWorkloadMetadataConfigInput interface {
 }
 
 type GetClusterNodeConfigWorkloadMetadataConfigArgs struct {
+	Mode         pulumi.StringInput `pulumi:"mode"`
 	NodeMetadata pulumi.StringInput `pulumi:"nodeMetadata"`
 }
 
@@ -17418,6 +17525,10 @@ func (o GetClusterNodeConfigWorkloadMetadataConfigOutput) ToGetClusterNodeConfig
 
 func (o GetClusterNodeConfigWorkloadMetadataConfigOutput) ToGetClusterNodeConfigWorkloadMetadataConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigWorkloadMetadataConfigOutput {
 	return o
+}
+
+func (o GetClusterNodeConfigWorkloadMetadataConfigOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigWorkloadMetadataConfig) string { return v.Mode }).(pulumi.StringOutput)
 }
 
 func (o GetClusterNodeConfigWorkloadMetadataConfigOutput) NodeMetadata() pulumi.StringOutput {
@@ -18842,6 +18953,7 @@ func (o GetClusterNodePoolNodeConfigTaintArrayOutput) Index(i pulumi.IntInput) G
 }
 
 type GetClusterNodePoolNodeConfigWorkloadMetadataConfig struct {
+	Mode         string `pulumi:"mode"`
 	NodeMetadata string `pulumi:"nodeMetadata"`
 }
 
@@ -18857,6 +18969,7 @@ type GetClusterNodePoolNodeConfigWorkloadMetadataConfigInput interface {
 }
 
 type GetClusterNodePoolNodeConfigWorkloadMetadataConfigArgs struct {
+	Mode         pulumi.StringInput `pulumi:"mode"`
 	NodeMetadata pulumi.StringInput `pulumi:"nodeMetadata"`
 }
 
@@ -18909,6 +19022,10 @@ func (o GetClusterNodePoolNodeConfigWorkloadMetadataConfigOutput) ToGetClusterNo
 
 func (o GetClusterNodePoolNodeConfigWorkloadMetadataConfigOutput) ToGetClusterNodePoolNodeConfigWorkloadMetadataConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigWorkloadMetadataConfigOutput {
 	return o
+}
+
+func (o GetClusterNodePoolNodeConfigWorkloadMetadataConfigOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigWorkloadMetadataConfig) string { return v.Mode }).(pulumi.StringOutput)
 }
 
 func (o GetClusterNodePoolNodeConfigWorkloadMetadataConfigOutput) NodeMetadata() pulumi.StringOutput {

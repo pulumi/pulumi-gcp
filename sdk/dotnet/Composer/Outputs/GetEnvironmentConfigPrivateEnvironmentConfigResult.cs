@@ -13,23 +13,31 @@ namespace Pulumi.Gcp.Composer.Outputs
     [OutputType]
     public sealed class GetEnvironmentConfigPrivateEnvironmentConfigResult
     {
+        public readonly string CloudComposerNetworkIpv4CidrBlock;
         public readonly string CloudSqlIpv4CidrBlock;
         public readonly bool EnablePrivateEndpoint;
+        public readonly bool EnablePrivatelyUsedPublicIps;
         public readonly string MasterIpv4CidrBlock;
         public readonly string WebServerIpv4CidrBlock;
 
         [OutputConstructor]
         private GetEnvironmentConfigPrivateEnvironmentConfigResult(
+            string cloudComposerNetworkIpv4CidrBlock,
+
             string cloudSqlIpv4CidrBlock,
 
             bool enablePrivateEndpoint,
+
+            bool enablePrivatelyUsedPublicIps,
 
             string masterIpv4CidrBlock,
 
             string webServerIpv4CidrBlock)
         {
+            CloudComposerNetworkIpv4CidrBlock = cloudComposerNetworkIpv4CidrBlock;
             CloudSqlIpv4CidrBlock = cloudSqlIpv4CidrBlock;
             EnablePrivateEndpoint = enablePrivateEndpoint;
+            EnablePrivatelyUsedPublicIps = enablePrivatelyUsedPublicIps;
             MasterIpv4CidrBlock = masterIpv4CidrBlock;
             WebServerIpv4CidrBlock = webServerIpv4CidrBlock;
         }

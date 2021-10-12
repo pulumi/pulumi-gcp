@@ -16,8 +16,11 @@ __all__ = [
     'FeatureMembershipConfigmanagementConfigSyncGit',
     'FeatureMembershipConfigmanagementHierarchyController',
     'FeatureMembershipConfigmanagementPolicyController',
+    'FeatureResourceState',
     'FeatureSpec',
     'FeatureSpecMulticlusteringress',
+    'FeatureState',
+    'FeatureStateState',
     'MembershipAuthority',
     'MembershipEndpoint',
     'MembershipEndpointGkeCluster',
@@ -185,7 +188,9 @@ class FeatureMembershipConfigmanagementConfigSyncGit(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "httpsProxy":
+        if key == "gcpServiceAccountEmail":
+            suggest = "gcp_service_account_email"
+        elif key == "httpsProxy":
             suggest = "https_proxy"
         elif key == "policyDir":
             suggest = "policy_dir"
@@ -212,6 +217,7 @@ class FeatureMembershipConfigmanagementConfigSyncGit(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 gcp_service_account_email: Optional[str] = None,
                  https_proxy: Optional[str] = None,
                  policy_dir: Optional[str] = None,
                  secret_type: Optional[str] = None,
@@ -228,6 +234,8 @@ class FeatureMembershipConfigmanagementConfigSyncGit(dict):
         :param str sync_rev: Git revision (tag or hash) to check out. Default HEAD.
         :param str sync_wait_secs: Period in seconds between consecutive syncs. Default: 15.
         """
+        if gcp_service_account_email is not None:
+            pulumi.set(__self__, "gcp_service_account_email", gcp_service_account_email)
         if https_proxy is not None:
             pulumi.set(__self__, "https_proxy", https_proxy)
         if policy_dir is not None:
@@ -242,6 +250,11 @@ class FeatureMembershipConfigmanagementConfigSyncGit(dict):
             pulumi.set(__self__, "sync_rev", sync_rev)
         if sync_wait_secs is not None:
             pulumi.set(__self__, "sync_wait_secs", sync_wait_secs)
+
+    @property
+    @pulumi.getter(name="gcpServiceAccountEmail")
+    def gcp_service_account_email(self) -> Optional[str]:
+        return pulumi.get(self, "gcp_service_account_email")
 
     @property
     @pulumi.getter(name="httpsProxy")
@@ -467,6 +480,44 @@ class FeatureMembershipConfigmanagementPolicyController(dict):
 
 
 @pulumi.output_type
+class FeatureResourceState(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hasResources":
+            suggest = "has_resources"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureResourceState. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureResourceState.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureResourceState.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 has_resources: Optional[bool] = None,
+                 state: Optional[str] = None):
+        if has_resources is not None:
+            pulumi.set(__self__, "has_resources", has_resources)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="hasResources")
+    def has_resources(self) -> Optional[bool]:
+        return pulumi.get(self, "has_resources")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
 class FeatureSpec(dict):
     def __init__(__self__, *,
                  multiclusteringress: Optional['outputs.FeatureSpecMulticlusteringress'] = None):
@@ -507,20 +558,78 @@ class FeatureSpecMulticlusteringress(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 config_membership: Optional[str] = None):
+                 config_membership: str):
         """
         :param str config_membership: Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
         """
-        if config_membership is not None:
-            pulumi.set(__self__, "config_membership", config_membership)
+        pulumi.set(__self__, "config_membership", config_membership)
 
     @property
     @pulumi.getter(name="configMembership")
-    def config_membership(self) -> Optional[str]:
+    def config_membership(self) -> str:
         """
         Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
         """
         return pulumi.get(self, "config_membership")
+
+
+@pulumi.output_type
+class FeatureState(dict):
+    def __init__(__self__, *,
+                 states: Optional[Sequence['outputs.FeatureStateState']] = None):
+        if states is not None:
+            pulumi.set(__self__, "states", states)
+
+    @property
+    @pulumi.getter
+    def states(self) -> Optional[Sequence['outputs.FeatureStateState']]:
+        return pulumi.get(self, "states")
+
+
+@pulumi.output_type
+class FeatureStateState(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureStateState. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureStateState.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureStateState.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 code: Optional[str] = None,
+                 description: Optional[str] = None,
+                 update_time: Optional[str] = None):
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[str]:
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[str]:
+        return pulumi.get(self, "update_time")
 
 
 @pulumi.output_type

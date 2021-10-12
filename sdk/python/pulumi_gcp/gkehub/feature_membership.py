@@ -15,10 +15,10 @@ __all__ = ['FeatureMembershipArgs', 'FeatureMembership']
 @pulumi.input_type
 class FeatureMembershipArgs:
     def __init__(__self__, *,
-                 configmanagement: Optional[pulumi.Input['FeatureMembershipConfigmanagementArgs']] = None,
-                 feature: Optional[pulumi.Input[str]] = None,
-                 location: Optional[pulumi.Input[str]] = None,
-                 membership: Optional[pulumi.Input[str]] = None,
+                 configmanagement: pulumi.Input['FeatureMembershipConfigmanagementArgs'],
+                 feature: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 membership: pulumi.Input[str],
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a FeatureMembership resource.
@@ -28,63 +28,59 @@ class FeatureMembershipArgs:
         :param pulumi.Input[str] membership: The name of the membership
         :param pulumi.Input[str] project: The project of the feature
         """
-        if configmanagement is not None:
-            pulumi.set(__self__, "configmanagement", configmanagement)
-        if feature is not None:
-            pulumi.set(__self__, "feature", feature)
-        if location is not None:
-            pulumi.set(__self__, "location", location)
-        if membership is not None:
-            pulumi.set(__self__, "membership", membership)
+        pulumi.set(__self__, "configmanagement", configmanagement)
+        pulumi.set(__self__, "feature", feature)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "membership", membership)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
-    def configmanagement(self) -> Optional[pulumi.Input['FeatureMembershipConfigmanagementArgs']]:
+    def configmanagement(self) -> pulumi.Input['FeatureMembershipConfigmanagementArgs']:
         """
         Config Management-specific spec.
         """
         return pulumi.get(self, "configmanagement")
 
     @configmanagement.setter
-    def configmanagement(self, value: Optional[pulumi.Input['FeatureMembershipConfigmanagementArgs']]):
+    def configmanagement(self, value: pulumi.Input['FeatureMembershipConfigmanagementArgs']):
         pulumi.set(self, "configmanagement", value)
 
     @property
     @pulumi.getter
-    def feature(self) -> Optional[pulumi.Input[str]]:
+    def feature(self) -> pulumi.Input[str]:
         """
         The name of the feature
         """
         return pulumi.get(self, "feature")
 
     @feature.setter
-    def feature(self, value: Optional[pulumi.Input[str]]):
+    def feature(self, value: pulumi.Input[str]):
         pulumi.set(self, "feature", value)
 
     @property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[str]]:
+    def location(self) -> pulumi.Input[str]:
         """
         The location of the feature
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[str]]):
+    def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
-    def membership(self) -> Optional[pulumi.Input[str]]:
+    def membership(self) -> pulumi.Input[str]:
         """
         The name of the membership
         """
         return pulumi.get(self, "membership")
 
     @membership.setter
-    def membership(self, value: Optional[pulumi.Input[str]]):
+    def membership(self, value: pulumi.Input[str]):
         pulumi.set(self, "membership", value)
 
     @property
@@ -228,7 +224,7 @@ class FeatureMembership(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[FeatureMembershipArgs] = None,
+                 args: FeatureMembershipArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Import
@@ -279,9 +275,17 @@ class FeatureMembership(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = FeatureMembershipArgs.__new__(FeatureMembershipArgs)
 
+            if configmanagement is None and not opts.urn:
+                raise TypeError("Missing required property 'configmanagement'")
             __props__.__dict__["configmanagement"] = configmanagement
+            if feature is None and not opts.urn:
+                raise TypeError("Missing required property 'feature'")
             __props__.__dict__["feature"] = feature
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
+            if membership is None and not opts.urn:
+                raise TypeError("Missing required property 'membership'")
             __props__.__dict__["membership"] = membership
             __props__.__dict__["project"] = project
         super(FeatureMembership, __self__).__init__(
@@ -325,7 +329,7 @@ class FeatureMembership(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def configmanagement(self) -> pulumi.Output[Optional['outputs.FeatureMembershipConfigmanagement']]:
+    def configmanagement(self) -> pulumi.Output['outputs.FeatureMembershipConfigmanagement']:
         """
         Config Management-specific spec.
         """
@@ -333,7 +337,7 @@ class FeatureMembership(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def feature(self) -> pulumi.Output[Optional[str]]:
+    def feature(self) -> pulumi.Output[str]:
         """
         The name of the feature
         """
@@ -341,7 +345,7 @@ class FeatureMembership(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def location(self) -> pulumi.Output[Optional[str]]:
+    def location(self) -> pulumi.Output[str]:
         """
         The location of the feature
         """
@@ -349,7 +353,7 @@ class FeatureMembership(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def membership(self) -> pulumi.Output[Optional[str]]:
+    def membership(self) -> pulumi.Output[str]:
         """
         The name of the membership
         """

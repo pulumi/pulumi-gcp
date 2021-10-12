@@ -4322,6 +4322,654 @@ func (o TransferJobTransferSpecTransferOptionsPtrOutput) OverwriteObjectsAlready
 	}).(pulumi.BoolPtrOutput)
 }
 
+type GetBucketCor struct {
+	MaxAgeSeconds   int      `pulumi:"maxAgeSeconds"`
+	Methods         []string `pulumi:"methods"`
+	Origins         []string `pulumi:"origins"`
+	ResponseHeaders []string `pulumi:"responseHeaders"`
+}
+
+// GetBucketCorInput is an input type that accepts GetBucketCorArgs and GetBucketCorOutput values.
+// You can construct a concrete instance of `GetBucketCorInput` via:
+//
+//          GetBucketCorArgs{...}
+type GetBucketCorInput interface {
+	pulumi.Input
+
+	ToGetBucketCorOutput() GetBucketCorOutput
+	ToGetBucketCorOutputWithContext(context.Context) GetBucketCorOutput
+}
+
+type GetBucketCorArgs struct {
+	MaxAgeSeconds   pulumi.IntInput         `pulumi:"maxAgeSeconds"`
+	Methods         pulumi.StringArrayInput `pulumi:"methods"`
+	Origins         pulumi.StringArrayInput `pulumi:"origins"`
+	ResponseHeaders pulumi.StringArrayInput `pulumi:"responseHeaders"`
+}
+
+func (GetBucketCorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketCor)(nil)).Elem()
+}
+
+func (i GetBucketCorArgs) ToGetBucketCorOutput() GetBucketCorOutput {
+	return i.ToGetBucketCorOutputWithContext(context.Background())
+}
+
+func (i GetBucketCorArgs) ToGetBucketCorOutputWithContext(ctx context.Context) GetBucketCorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketCorOutput)
+}
+
+// GetBucketCorArrayInput is an input type that accepts GetBucketCorArray and GetBucketCorArrayOutput values.
+// You can construct a concrete instance of `GetBucketCorArrayInput` via:
+//
+//          GetBucketCorArray{ GetBucketCorArgs{...} }
+type GetBucketCorArrayInput interface {
+	pulumi.Input
+
+	ToGetBucketCorArrayOutput() GetBucketCorArrayOutput
+	ToGetBucketCorArrayOutputWithContext(context.Context) GetBucketCorArrayOutput
+}
+
+type GetBucketCorArray []GetBucketCorInput
+
+func (GetBucketCorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketCor)(nil)).Elem()
+}
+
+func (i GetBucketCorArray) ToGetBucketCorArrayOutput() GetBucketCorArrayOutput {
+	return i.ToGetBucketCorArrayOutputWithContext(context.Background())
+}
+
+func (i GetBucketCorArray) ToGetBucketCorArrayOutputWithContext(ctx context.Context) GetBucketCorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketCorArrayOutput)
+}
+
+type GetBucketCorOutput struct{ *pulumi.OutputState }
+
+func (GetBucketCorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketCor)(nil)).Elem()
+}
+
+func (o GetBucketCorOutput) ToGetBucketCorOutput() GetBucketCorOutput {
+	return o
+}
+
+func (o GetBucketCorOutput) ToGetBucketCorOutputWithContext(ctx context.Context) GetBucketCorOutput {
+	return o
+}
+
+func (o GetBucketCorOutput) MaxAgeSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBucketCor) int { return v.MaxAgeSeconds }).(pulumi.IntOutput)
+}
+
+func (o GetBucketCorOutput) Methods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetBucketCor) []string { return v.Methods }).(pulumi.StringArrayOutput)
+}
+
+func (o GetBucketCorOutput) Origins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetBucketCor) []string { return v.Origins }).(pulumi.StringArrayOutput)
+}
+
+func (o GetBucketCorOutput) ResponseHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetBucketCor) []string { return v.ResponseHeaders }).(pulumi.StringArrayOutput)
+}
+
+type GetBucketCorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBucketCorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketCor)(nil)).Elem()
+}
+
+func (o GetBucketCorArrayOutput) ToGetBucketCorArrayOutput() GetBucketCorArrayOutput {
+	return o
+}
+
+func (o GetBucketCorArrayOutput) ToGetBucketCorArrayOutputWithContext(ctx context.Context) GetBucketCorArrayOutput {
+	return o
+}
+
+func (o GetBucketCorArrayOutput) Index(i pulumi.IntInput) GetBucketCorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBucketCor {
+		return vs[0].([]GetBucketCor)[vs[1].(int)]
+	}).(GetBucketCorOutput)
+}
+
+type GetBucketEncryption struct {
+	DefaultKmsKeyName string `pulumi:"defaultKmsKeyName"`
+}
+
+// GetBucketEncryptionInput is an input type that accepts GetBucketEncryptionArgs and GetBucketEncryptionOutput values.
+// You can construct a concrete instance of `GetBucketEncryptionInput` via:
+//
+//          GetBucketEncryptionArgs{...}
+type GetBucketEncryptionInput interface {
+	pulumi.Input
+
+	ToGetBucketEncryptionOutput() GetBucketEncryptionOutput
+	ToGetBucketEncryptionOutputWithContext(context.Context) GetBucketEncryptionOutput
+}
+
+type GetBucketEncryptionArgs struct {
+	DefaultKmsKeyName pulumi.StringInput `pulumi:"defaultKmsKeyName"`
+}
+
+func (GetBucketEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketEncryption)(nil)).Elem()
+}
+
+func (i GetBucketEncryptionArgs) ToGetBucketEncryptionOutput() GetBucketEncryptionOutput {
+	return i.ToGetBucketEncryptionOutputWithContext(context.Background())
+}
+
+func (i GetBucketEncryptionArgs) ToGetBucketEncryptionOutputWithContext(ctx context.Context) GetBucketEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketEncryptionOutput)
+}
+
+// GetBucketEncryptionArrayInput is an input type that accepts GetBucketEncryptionArray and GetBucketEncryptionArrayOutput values.
+// You can construct a concrete instance of `GetBucketEncryptionArrayInput` via:
+//
+//          GetBucketEncryptionArray{ GetBucketEncryptionArgs{...} }
+type GetBucketEncryptionArrayInput interface {
+	pulumi.Input
+
+	ToGetBucketEncryptionArrayOutput() GetBucketEncryptionArrayOutput
+	ToGetBucketEncryptionArrayOutputWithContext(context.Context) GetBucketEncryptionArrayOutput
+}
+
+type GetBucketEncryptionArray []GetBucketEncryptionInput
+
+func (GetBucketEncryptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketEncryption)(nil)).Elem()
+}
+
+func (i GetBucketEncryptionArray) ToGetBucketEncryptionArrayOutput() GetBucketEncryptionArrayOutput {
+	return i.ToGetBucketEncryptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetBucketEncryptionArray) ToGetBucketEncryptionArrayOutputWithContext(ctx context.Context) GetBucketEncryptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketEncryptionArrayOutput)
+}
+
+type GetBucketEncryptionOutput struct{ *pulumi.OutputState }
+
+func (GetBucketEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketEncryption)(nil)).Elem()
+}
+
+func (o GetBucketEncryptionOutput) ToGetBucketEncryptionOutput() GetBucketEncryptionOutput {
+	return o
+}
+
+func (o GetBucketEncryptionOutput) ToGetBucketEncryptionOutputWithContext(ctx context.Context) GetBucketEncryptionOutput {
+	return o
+}
+
+func (o GetBucketEncryptionOutput) DefaultKmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketEncryption) string { return v.DefaultKmsKeyName }).(pulumi.StringOutput)
+}
+
+type GetBucketEncryptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBucketEncryptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketEncryption)(nil)).Elem()
+}
+
+func (o GetBucketEncryptionArrayOutput) ToGetBucketEncryptionArrayOutput() GetBucketEncryptionArrayOutput {
+	return o
+}
+
+func (o GetBucketEncryptionArrayOutput) ToGetBucketEncryptionArrayOutputWithContext(ctx context.Context) GetBucketEncryptionArrayOutput {
+	return o
+}
+
+func (o GetBucketEncryptionArrayOutput) Index(i pulumi.IntInput) GetBucketEncryptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBucketEncryption {
+		return vs[0].([]GetBucketEncryption)[vs[1].(int)]
+	}).(GetBucketEncryptionOutput)
+}
+
+type GetBucketLifecycleRule struct {
+	Actions    []GetBucketLifecycleRuleAction    `pulumi:"actions"`
+	Conditions []GetBucketLifecycleRuleCondition `pulumi:"conditions"`
+}
+
+// GetBucketLifecycleRuleInput is an input type that accepts GetBucketLifecycleRuleArgs and GetBucketLifecycleRuleOutput values.
+// You can construct a concrete instance of `GetBucketLifecycleRuleInput` via:
+//
+//          GetBucketLifecycleRuleArgs{...}
+type GetBucketLifecycleRuleInput interface {
+	pulumi.Input
+
+	ToGetBucketLifecycleRuleOutput() GetBucketLifecycleRuleOutput
+	ToGetBucketLifecycleRuleOutputWithContext(context.Context) GetBucketLifecycleRuleOutput
+}
+
+type GetBucketLifecycleRuleArgs struct {
+	Actions    GetBucketLifecycleRuleActionArrayInput    `pulumi:"actions"`
+	Conditions GetBucketLifecycleRuleConditionArrayInput `pulumi:"conditions"`
+}
+
+func (GetBucketLifecycleRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketLifecycleRule)(nil)).Elem()
+}
+
+func (i GetBucketLifecycleRuleArgs) ToGetBucketLifecycleRuleOutput() GetBucketLifecycleRuleOutput {
+	return i.ToGetBucketLifecycleRuleOutputWithContext(context.Background())
+}
+
+func (i GetBucketLifecycleRuleArgs) ToGetBucketLifecycleRuleOutputWithContext(ctx context.Context) GetBucketLifecycleRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketLifecycleRuleOutput)
+}
+
+// GetBucketLifecycleRuleArrayInput is an input type that accepts GetBucketLifecycleRuleArray and GetBucketLifecycleRuleArrayOutput values.
+// You can construct a concrete instance of `GetBucketLifecycleRuleArrayInput` via:
+//
+//          GetBucketLifecycleRuleArray{ GetBucketLifecycleRuleArgs{...} }
+type GetBucketLifecycleRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetBucketLifecycleRuleArrayOutput() GetBucketLifecycleRuleArrayOutput
+	ToGetBucketLifecycleRuleArrayOutputWithContext(context.Context) GetBucketLifecycleRuleArrayOutput
+}
+
+type GetBucketLifecycleRuleArray []GetBucketLifecycleRuleInput
+
+func (GetBucketLifecycleRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketLifecycleRule)(nil)).Elem()
+}
+
+func (i GetBucketLifecycleRuleArray) ToGetBucketLifecycleRuleArrayOutput() GetBucketLifecycleRuleArrayOutput {
+	return i.ToGetBucketLifecycleRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetBucketLifecycleRuleArray) ToGetBucketLifecycleRuleArrayOutputWithContext(ctx context.Context) GetBucketLifecycleRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketLifecycleRuleArrayOutput)
+}
+
+type GetBucketLifecycleRuleOutput struct{ *pulumi.OutputState }
+
+func (GetBucketLifecycleRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketLifecycleRule)(nil)).Elem()
+}
+
+func (o GetBucketLifecycleRuleOutput) ToGetBucketLifecycleRuleOutput() GetBucketLifecycleRuleOutput {
+	return o
+}
+
+func (o GetBucketLifecycleRuleOutput) ToGetBucketLifecycleRuleOutputWithContext(ctx context.Context) GetBucketLifecycleRuleOutput {
+	return o
+}
+
+func (o GetBucketLifecycleRuleOutput) Actions() GetBucketLifecycleRuleActionArrayOutput {
+	return o.ApplyT(func(v GetBucketLifecycleRule) []GetBucketLifecycleRuleAction { return v.Actions }).(GetBucketLifecycleRuleActionArrayOutput)
+}
+
+func (o GetBucketLifecycleRuleOutput) Conditions() GetBucketLifecycleRuleConditionArrayOutput {
+	return o.ApplyT(func(v GetBucketLifecycleRule) []GetBucketLifecycleRuleCondition { return v.Conditions }).(GetBucketLifecycleRuleConditionArrayOutput)
+}
+
+type GetBucketLifecycleRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBucketLifecycleRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketLifecycleRule)(nil)).Elem()
+}
+
+func (o GetBucketLifecycleRuleArrayOutput) ToGetBucketLifecycleRuleArrayOutput() GetBucketLifecycleRuleArrayOutput {
+	return o
+}
+
+func (o GetBucketLifecycleRuleArrayOutput) ToGetBucketLifecycleRuleArrayOutputWithContext(ctx context.Context) GetBucketLifecycleRuleArrayOutput {
+	return o
+}
+
+func (o GetBucketLifecycleRuleArrayOutput) Index(i pulumi.IntInput) GetBucketLifecycleRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBucketLifecycleRule {
+		return vs[0].([]GetBucketLifecycleRule)[vs[1].(int)]
+	}).(GetBucketLifecycleRuleOutput)
+}
+
+type GetBucketLifecycleRuleAction struct {
+	StorageClass string `pulumi:"storageClass"`
+	Type         string `pulumi:"type"`
+}
+
+// GetBucketLifecycleRuleActionInput is an input type that accepts GetBucketLifecycleRuleActionArgs and GetBucketLifecycleRuleActionOutput values.
+// You can construct a concrete instance of `GetBucketLifecycleRuleActionInput` via:
+//
+//          GetBucketLifecycleRuleActionArgs{...}
+type GetBucketLifecycleRuleActionInput interface {
+	pulumi.Input
+
+	ToGetBucketLifecycleRuleActionOutput() GetBucketLifecycleRuleActionOutput
+	ToGetBucketLifecycleRuleActionOutputWithContext(context.Context) GetBucketLifecycleRuleActionOutput
+}
+
+type GetBucketLifecycleRuleActionArgs struct {
+	StorageClass pulumi.StringInput `pulumi:"storageClass"`
+	Type         pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetBucketLifecycleRuleActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketLifecycleRuleAction)(nil)).Elem()
+}
+
+func (i GetBucketLifecycleRuleActionArgs) ToGetBucketLifecycleRuleActionOutput() GetBucketLifecycleRuleActionOutput {
+	return i.ToGetBucketLifecycleRuleActionOutputWithContext(context.Background())
+}
+
+func (i GetBucketLifecycleRuleActionArgs) ToGetBucketLifecycleRuleActionOutputWithContext(ctx context.Context) GetBucketLifecycleRuleActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketLifecycleRuleActionOutput)
+}
+
+// GetBucketLifecycleRuleActionArrayInput is an input type that accepts GetBucketLifecycleRuleActionArray and GetBucketLifecycleRuleActionArrayOutput values.
+// You can construct a concrete instance of `GetBucketLifecycleRuleActionArrayInput` via:
+//
+//          GetBucketLifecycleRuleActionArray{ GetBucketLifecycleRuleActionArgs{...} }
+type GetBucketLifecycleRuleActionArrayInput interface {
+	pulumi.Input
+
+	ToGetBucketLifecycleRuleActionArrayOutput() GetBucketLifecycleRuleActionArrayOutput
+	ToGetBucketLifecycleRuleActionArrayOutputWithContext(context.Context) GetBucketLifecycleRuleActionArrayOutput
+}
+
+type GetBucketLifecycleRuleActionArray []GetBucketLifecycleRuleActionInput
+
+func (GetBucketLifecycleRuleActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketLifecycleRuleAction)(nil)).Elem()
+}
+
+func (i GetBucketLifecycleRuleActionArray) ToGetBucketLifecycleRuleActionArrayOutput() GetBucketLifecycleRuleActionArrayOutput {
+	return i.ToGetBucketLifecycleRuleActionArrayOutputWithContext(context.Background())
+}
+
+func (i GetBucketLifecycleRuleActionArray) ToGetBucketLifecycleRuleActionArrayOutputWithContext(ctx context.Context) GetBucketLifecycleRuleActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketLifecycleRuleActionArrayOutput)
+}
+
+type GetBucketLifecycleRuleActionOutput struct{ *pulumi.OutputState }
+
+func (GetBucketLifecycleRuleActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketLifecycleRuleAction)(nil)).Elem()
+}
+
+func (o GetBucketLifecycleRuleActionOutput) ToGetBucketLifecycleRuleActionOutput() GetBucketLifecycleRuleActionOutput {
+	return o
+}
+
+func (o GetBucketLifecycleRuleActionOutput) ToGetBucketLifecycleRuleActionOutputWithContext(ctx context.Context) GetBucketLifecycleRuleActionOutput {
+	return o
+}
+
+func (o GetBucketLifecycleRuleActionOutput) StorageClass() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketLifecycleRuleAction) string { return v.StorageClass }).(pulumi.StringOutput)
+}
+
+func (o GetBucketLifecycleRuleActionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketLifecycleRuleAction) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetBucketLifecycleRuleActionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBucketLifecycleRuleActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketLifecycleRuleAction)(nil)).Elem()
+}
+
+func (o GetBucketLifecycleRuleActionArrayOutput) ToGetBucketLifecycleRuleActionArrayOutput() GetBucketLifecycleRuleActionArrayOutput {
+	return o
+}
+
+func (o GetBucketLifecycleRuleActionArrayOutput) ToGetBucketLifecycleRuleActionArrayOutputWithContext(ctx context.Context) GetBucketLifecycleRuleActionArrayOutput {
+	return o
+}
+
+func (o GetBucketLifecycleRuleActionArrayOutput) Index(i pulumi.IntInput) GetBucketLifecycleRuleActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBucketLifecycleRuleAction {
+		return vs[0].([]GetBucketLifecycleRuleAction)[vs[1].(int)]
+	}).(GetBucketLifecycleRuleActionOutput)
+}
+
+type GetBucketLifecycleRuleCondition struct {
+	Age                     int      `pulumi:"age"`
+	CreatedBefore           string   `pulumi:"createdBefore"`
+	CustomTimeBefore        string   `pulumi:"customTimeBefore"`
+	DaysSinceCustomTime     int      `pulumi:"daysSinceCustomTime"`
+	DaysSinceNoncurrentTime int      `pulumi:"daysSinceNoncurrentTime"`
+	MatchesStorageClasses   []string `pulumi:"matchesStorageClasses"`
+	NoncurrentTimeBefore    string   `pulumi:"noncurrentTimeBefore"`
+	NumNewerVersions        int      `pulumi:"numNewerVersions"`
+	WithState               string   `pulumi:"withState"`
+}
+
+// GetBucketLifecycleRuleConditionInput is an input type that accepts GetBucketLifecycleRuleConditionArgs and GetBucketLifecycleRuleConditionOutput values.
+// You can construct a concrete instance of `GetBucketLifecycleRuleConditionInput` via:
+//
+//          GetBucketLifecycleRuleConditionArgs{...}
+type GetBucketLifecycleRuleConditionInput interface {
+	pulumi.Input
+
+	ToGetBucketLifecycleRuleConditionOutput() GetBucketLifecycleRuleConditionOutput
+	ToGetBucketLifecycleRuleConditionOutputWithContext(context.Context) GetBucketLifecycleRuleConditionOutput
+}
+
+type GetBucketLifecycleRuleConditionArgs struct {
+	Age                     pulumi.IntInput         `pulumi:"age"`
+	CreatedBefore           pulumi.StringInput      `pulumi:"createdBefore"`
+	CustomTimeBefore        pulumi.StringInput      `pulumi:"customTimeBefore"`
+	DaysSinceCustomTime     pulumi.IntInput         `pulumi:"daysSinceCustomTime"`
+	DaysSinceNoncurrentTime pulumi.IntInput         `pulumi:"daysSinceNoncurrentTime"`
+	MatchesStorageClasses   pulumi.StringArrayInput `pulumi:"matchesStorageClasses"`
+	NoncurrentTimeBefore    pulumi.StringInput      `pulumi:"noncurrentTimeBefore"`
+	NumNewerVersions        pulumi.IntInput         `pulumi:"numNewerVersions"`
+	WithState               pulumi.StringInput      `pulumi:"withState"`
+}
+
+func (GetBucketLifecycleRuleConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketLifecycleRuleCondition)(nil)).Elem()
+}
+
+func (i GetBucketLifecycleRuleConditionArgs) ToGetBucketLifecycleRuleConditionOutput() GetBucketLifecycleRuleConditionOutput {
+	return i.ToGetBucketLifecycleRuleConditionOutputWithContext(context.Background())
+}
+
+func (i GetBucketLifecycleRuleConditionArgs) ToGetBucketLifecycleRuleConditionOutputWithContext(ctx context.Context) GetBucketLifecycleRuleConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketLifecycleRuleConditionOutput)
+}
+
+// GetBucketLifecycleRuleConditionArrayInput is an input type that accepts GetBucketLifecycleRuleConditionArray and GetBucketLifecycleRuleConditionArrayOutput values.
+// You can construct a concrete instance of `GetBucketLifecycleRuleConditionArrayInput` via:
+//
+//          GetBucketLifecycleRuleConditionArray{ GetBucketLifecycleRuleConditionArgs{...} }
+type GetBucketLifecycleRuleConditionArrayInput interface {
+	pulumi.Input
+
+	ToGetBucketLifecycleRuleConditionArrayOutput() GetBucketLifecycleRuleConditionArrayOutput
+	ToGetBucketLifecycleRuleConditionArrayOutputWithContext(context.Context) GetBucketLifecycleRuleConditionArrayOutput
+}
+
+type GetBucketLifecycleRuleConditionArray []GetBucketLifecycleRuleConditionInput
+
+func (GetBucketLifecycleRuleConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketLifecycleRuleCondition)(nil)).Elem()
+}
+
+func (i GetBucketLifecycleRuleConditionArray) ToGetBucketLifecycleRuleConditionArrayOutput() GetBucketLifecycleRuleConditionArrayOutput {
+	return i.ToGetBucketLifecycleRuleConditionArrayOutputWithContext(context.Background())
+}
+
+func (i GetBucketLifecycleRuleConditionArray) ToGetBucketLifecycleRuleConditionArrayOutputWithContext(ctx context.Context) GetBucketLifecycleRuleConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketLifecycleRuleConditionArrayOutput)
+}
+
+type GetBucketLifecycleRuleConditionOutput struct{ *pulumi.OutputState }
+
+func (GetBucketLifecycleRuleConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketLifecycleRuleCondition)(nil)).Elem()
+}
+
+func (o GetBucketLifecycleRuleConditionOutput) ToGetBucketLifecycleRuleConditionOutput() GetBucketLifecycleRuleConditionOutput {
+	return o
+}
+
+func (o GetBucketLifecycleRuleConditionOutput) ToGetBucketLifecycleRuleConditionOutputWithContext(ctx context.Context) GetBucketLifecycleRuleConditionOutput {
+	return o
+}
+
+func (o GetBucketLifecycleRuleConditionOutput) Age() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBucketLifecycleRuleCondition) int { return v.Age }).(pulumi.IntOutput)
+}
+
+func (o GetBucketLifecycleRuleConditionOutput) CreatedBefore() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketLifecycleRuleCondition) string { return v.CreatedBefore }).(pulumi.StringOutput)
+}
+
+func (o GetBucketLifecycleRuleConditionOutput) CustomTimeBefore() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketLifecycleRuleCondition) string { return v.CustomTimeBefore }).(pulumi.StringOutput)
+}
+
+func (o GetBucketLifecycleRuleConditionOutput) DaysSinceCustomTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBucketLifecycleRuleCondition) int { return v.DaysSinceCustomTime }).(pulumi.IntOutput)
+}
+
+func (o GetBucketLifecycleRuleConditionOutput) DaysSinceNoncurrentTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBucketLifecycleRuleCondition) int { return v.DaysSinceNoncurrentTime }).(pulumi.IntOutput)
+}
+
+func (o GetBucketLifecycleRuleConditionOutput) MatchesStorageClasses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetBucketLifecycleRuleCondition) []string { return v.MatchesStorageClasses }).(pulumi.StringArrayOutput)
+}
+
+func (o GetBucketLifecycleRuleConditionOutput) NoncurrentTimeBefore() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketLifecycleRuleCondition) string { return v.NoncurrentTimeBefore }).(pulumi.StringOutput)
+}
+
+func (o GetBucketLifecycleRuleConditionOutput) NumNewerVersions() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBucketLifecycleRuleCondition) int { return v.NumNewerVersions }).(pulumi.IntOutput)
+}
+
+func (o GetBucketLifecycleRuleConditionOutput) WithState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketLifecycleRuleCondition) string { return v.WithState }).(pulumi.StringOutput)
+}
+
+type GetBucketLifecycleRuleConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBucketLifecycleRuleConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketLifecycleRuleCondition)(nil)).Elem()
+}
+
+func (o GetBucketLifecycleRuleConditionArrayOutput) ToGetBucketLifecycleRuleConditionArrayOutput() GetBucketLifecycleRuleConditionArrayOutput {
+	return o
+}
+
+func (o GetBucketLifecycleRuleConditionArrayOutput) ToGetBucketLifecycleRuleConditionArrayOutputWithContext(ctx context.Context) GetBucketLifecycleRuleConditionArrayOutput {
+	return o
+}
+
+func (o GetBucketLifecycleRuleConditionArrayOutput) Index(i pulumi.IntInput) GetBucketLifecycleRuleConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBucketLifecycleRuleCondition {
+		return vs[0].([]GetBucketLifecycleRuleCondition)[vs[1].(int)]
+	}).(GetBucketLifecycleRuleConditionOutput)
+}
+
+type GetBucketLogging struct {
+	LogBucket       string `pulumi:"logBucket"`
+	LogObjectPrefix string `pulumi:"logObjectPrefix"`
+}
+
+// GetBucketLoggingInput is an input type that accepts GetBucketLoggingArgs and GetBucketLoggingOutput values.
+// You can construct a concrete instance of `GetBucketLoggingInput` via:
+//
+//          GetBucketLoggingArgs{...}
+type GetBucketLoggingInput interface {
+	pulumi.Input
+
+	ToGetBucketLoggingOutput() GetBucketLoggingOutput
+	ToGetBucketLoggingOutputWithContext(context.Context) GetBucketLoggingOutput
+}
+
+type GetBucketLoggingArgs struct {
+	LogBucket       pulumi.StringInput `pulumi:"logBucket"`
+	LogObjectPrefix pulumi.StringInput `pulumi:"logObjectPrefix"`
+}
+
+func (GetBucketLoggingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketLogging)(nil)).Elem()
+}
+
+func (i GetBucketLoggingArgs) ToGetBucketLoggingOutput() GetBucketLoggingOutput {
+	return i.ToGetBucketLoggingOutputWithContext(context.Background())
+}
+
+func (i GetBucketLoggingArgs) ToGetBucketLoggingOutputWithContext(ctx context.Context) GetBucketLoggingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketLoggingOutput)
+}
+
+// GetBucketLoggingArrayInput is an input type that accepts GetBucketLoggingArray and GetBucketLoggingArrayOutput values.
+// You can construct a concrete instance of `GetBucketLoggingArrayInput` via:
+//
+//          GetBucketLoggingArray{ GetBucketLoggingArgs{...} }
+type GetBucketLoggingArrayInput interface {
+	pulumi.Input
+
+	ToGetBucketLoggingArrayOutput() GetBucketLoggingArrayOutput
+	ToGetBucketLoggingArrayOutputWithContext(context.Context) GetBucketLoggingArrayOutput
+}
+
+type GetBucketLoggingArray []GetBucketLoggingInput
+
+func (GetBucketLoggingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketLogging)(nil)).Elem()
+}
+
+func (i GetBucketLoggingArray) ToGetBucketLoggingArrayOutput() GetBucketLoggingArrayOutput {
+	return i.ToGetBucketLoggingArrayOutputWithContext(context.Background())
+}
+
+func (i GetBucketLoggingArray) ToGetBucketLoggingArrayOutputWithContext(ctx context.Context) GetBucketLoggingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketLoggingArrayOutput)
+}
+
+type GetBucketLoggingOutput struct{ *pulumi.OutputState }
+
+func (GetBucketLoggingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketLogging)(nil)).Elem()
+}
+
+func (o GetBucketLoggingOutput) ToGetBucketLoggingOutput() GetBucketLoggingOutput {
+	return o
+}
+
+func (o GetBucketLoggingOutput) ToGetBucketLoggingOutputWithContext(ctx context.Context) GetBucketLoggingOutput {
+	return o
+}
+
+func (o GetBucketLoggingOutput) LogBucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketLogging) string { return v.LogBucket }).(pulumi.StringOutput)
+}
+
+func (o GetBucketLoggingOutput) LogObjectPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketLogging) string { return v.LogObjectPrefix }).(pulumi.StringOutput)
+}
+
+type GetBucketLoggingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBucketLoggingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketLogging)(nil)).Elem()
+}
+
+func (o GetBucketLoggingArrayOutput) ToGetBucketLoggingArrayOutput() GetBucketLoggingArrayOutput {
+	return o
+}
+
+func (o GetBucketLoggingArrayOutput) ToGetBucketLoggingArrayOutputWithContext(ctx context.Context) GetBucketLoggingArrayOutput {
+	return o
+}
+
+func (o GetBucketLoggingArrayOutput) Index(i pulumi.IntInput) GetBucketLoggingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBucketLogging {
+		return vs[0].([]GetBucketLogging)[vs[1].(int)]
+	}).(GetBucketLoggingOutput)
+}
+
 type GetBucketObjectContentCustomerEncryption struct {
 	EncryptionAlgorithm string `pulumi:"encryptionAlgorithm"`
 	EncryptionKey       string `pulumi:"encryptionKey"`
@@ -4522,6 +5170,300 @@ func (o GetBucketObjectCustomerEncryptionArrayOutput) Index(i pulumi.IntInput) G
 	}).(GetBucketObjectCustomerEncryptionOutput)
 }
 
+type GetBucketRetentionPolicy struct {
+	IsLocked        bool `pulumi:"isLocked"`
+	RetentionPeriod int  `pulumi:"retentionPeriod"`
+}
+
+// GetBucketRetentionPolicyInput is an input type that accepts GetBucketRetentionPolicyArgs and GetBucketRetentionPolicyOutput values.
+// You can construct a concrete instance of `GetBucketRetentionPolicyInput` via:
+//
+//          GetBucketRetentionPolicyArgs{...}
+type GetBucketRetentionPolicyInput interface {
+	pulumi.Input
+
+	ToGetBucketRetentionPolicyOutput() GetBucketRetentionPolicyOutput
+	ToGetBucketRetentionPolicyOutputWithContext(context.Context) GetBucketRetentionPolicyOutput
+}
+
+type GetBucketRetentionPolicyArgs struct {
+	IsLocked        pulumi.BoolInput `pulumi:"isLocked"`
+	RetentionPeriod pulumi.IntInput  `pulumi:"retentionPeriod"`
+}
+
+func (GetBucketRetentionPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketRetentionPolicy)(nil)).Elem()
+}
+
+func (i GetBucketRetentionPolicyArgs) ToGetBucketRetentionPolicyOutput() GetBucketRetentionPolicyOutput {
+	return i.ToGetBucketRetentionPolicyOutputWithContext(context.Background())
+}
+
+func (i GetBucketRetentionPolicyArgs) ToGetBucketRetentionPolicyOutputWithContext(ctx context.Context) GetBucketRetentionPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketRetentionPolicyOutput)
+}
+
+// GetBucketRetentionPolicyArrayInput is an input type that accepts GetBucketRetentionPolicyArray and GetBucketRetentionPolicyArrayOutput values.
+// You can construct a concrete instance of `GetBucketRetentionPolicyArrayInput` via:
+//
+//          GetBucketRetentionPolicyArray{ GetBucketRetentionPolicyArgs{...} }
+type GetBucketRetentionPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetBucketRetentionPolicyArrayOutput() GetBucketRetentionPolicyArrayOutput
+	ToGetBucketRetentionPolicyArrayOutputWithContext(context.Context) GetBucketRetentionPolicyArrayOutput
+}
+
+type GetBucketRetentionPolicyArray []GetBucketRetentionPolicyInput
+
+func (GetBucketRetentionPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketRetentionPolicy)(nil)).Elem()
+}
+
+func (i GetBucketRetentionPolicyArray) ToGetBucketRetentionPolicyArrayOutput() GetBucketRetentionPolicyArrayOutput {
+	return i.ToGetBucketRetentionPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetBucketRetentionPolicyArray) ToGetBucketRetentionPolicyArrayOutputWithContext(ctx context.Context) GetBucketRetentionPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketRetentionPolicyArrayOutput)
+}
+
+type GetBucketRetentionPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetBucketRetentionPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketRetentionPolicy)(nil)).Elem()
+}
+
+func (o GetBucketRetentionPolicyOutput) ToGetBucketRetentionPolicyOutput() GetBucketRetentionPolicyOutput {
+	return o
+}
+
+func (o GetBucketRetentionPolicyOutput) ToGetBucketRetentionPolicyOutputWithContext(ctx context.Context) GetBucketRetentionPolicyOutput {
+	return o
+}
+
+func (o GetBucketRetentionPolicyOutput) IsLocked() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBucketRetentionPolicy) bool { return v.IsLocked }).(pulumi.BoolOutput)
+}
+
+func (o GetBucketRetentionPolicyOutput) RetentionPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBucketRetentionPolicy) int { return v.RetentionPeriod }).(pulumi.IntOutput)
+}
+
+type GetBucketRetentionPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBucketRetentionPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketRetentionPolicy)(nil)).Elem()
+}
+
+func (o GetBucketRetentionPolicyArrayOutput) ToGetBucketRetentionPolicyArrayOutput() GetBucketRetentionPolicyArrayOutput {
+	return o
+}
+
+func (o GetBucketRetentionPolicyArrayOutput) ToGetBucketRetentionPolicyArrayOutputWithContext(ctx context.Context) GetBucketRetentionPolicyArrayOutput {
+	return o
+}
+
+func (o GetBucketRetentionPolicyArrayOutput) Index(i pulumi.IntInput) GetBucketRetentionPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBucketRetentionPolicy {
+		return vs[0].([]GetBucketRetentionPolicy)[vs[1].(int)]
+	}).(GetBucketRetentionPolicyOutput)
+}
+
+type GetBucketVersioning struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetBucketVersioningInput is an input type that accepts GetBucketVersioningArgs and GetBucketVersioningOutput values.
+// You can construct a concrete instance of `GetBucketVersioningInput` via:
+//
+//          GetBucketVersioningArgs{...}
+type GetBucketVersioningInput interface {
+	pulumi.Input
+
+	ToGetBucketVersioningOutput() GetBucketVersioningOutput
+	ToGetBucketVersioningOutputWithContext(context.Context) GetBucketVersioningOutput
+}
+
+type GetBucketVersioningArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetBucketVersioningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketVersioning)(nil)).Elem()
+}
+
+func (i GetBucketVersioningArgs) ToGetBucketVersioningOutput() GetBucketVersioningOutput {
+	return i.ToGetBucketVersioningOutputWithContext(context.Background())
+}
+
+func (i GetBucketVersioningArgs) ToGetBucketVersioningOutputWithContext(ctx context.Context) GetBucketVersioningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketVersioningOutput)
+}
+
+// GetBucketVersioningArrayInput is an input type that accepts GetBucketVersioningArray and GetBucketVersioningArrayOutput values.
+// You can construct a concrete instance of `GetBucketVersioningArrayInput` via:
+//
+//          GetBucketVersioningArray{ GetBucketVersioningArgs{...} }
+type GetBucketVersioningArrayInput interface {
+	pulumi.Input
+
+	ToGetBucketVersioningArrayOutput() GetBucketVersioningArrayOutput
+	ToGetBucketVersioningArrayOutputWithContext(context.Context) GetBucketVersioningArrayOutput
+}
+
+type GetBucketVersioningArray []GetBucketVersioningInput
+
+func (GetBucketVersioningArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketVersioning)(nil)).Elem()
+}
+
+func (i GetBucketVersioningArray) ToGetBucketVersioningArrayOutput() GetBucketVersioningArrayOutput {
+	return i.ToGetBucketVersioningArrayOutputWithContext(context.Background())
+}
+
+func (i GetBucketVersioningArray) ToGetBucketVersioningArrayOutputWithContext(ctx context.Context) GetBucketVersioningArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketVersioningArrayOutput)
+}
+
+type GetBucketVersioningOutput struct{ *pulumi.OutputState }
+
+func (GetBucketVersioningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketVersioning)(nil)).Elem()
+}
+
+func (o GetBucketVersioningOutput) ToGetBucketVersioningOutput() GetBucketVersioningOutput {
+	return o
+}
+
+func (o GetBucketVersioningOutput) ToGetBucketVersioningOutputWithContext(ctx context.Context) GetBucketVersioningOutput {
+	return o
+}
+
+func (o GetBucketVersioningOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBucketVersioning) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetBucketVersioningArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBucketVersioningArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketVersioning)(nil)).Elem()
+}
+
+func (o GetBucketVersioningArrayOutput) ToGetBucketVersioningArrayOutput() GetBucketVersioningArrayOutput {
+	return o
+}
+
+func (o GetBucketVersioningArrayOutput) ToGetBucketVersioningArrayOutputWithContext(ctx context.Context) GetBucketVersioningArrayOutput {
+	return o
+}
+
+func (o GetBucketVersioningArrayOutput) Index(i pulumi.IntInput) GetBucketVersioningOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBucketVersioning {
+		return vs[0].([]GetBucketVersioning)[vs[1].(int)]
+	}).(GetBucketVersioningOutput)
+}
+
+type GetBucketWebsite struct {
+	MainPageSuffix string `pulumi:"mainPageSuffix"`
+	NotFoundPage   string `pulumi:"notFoundPage"`
+}
+
+// GetBucketWebsiteInput is an input type that accepts GetBucketWebsiteArgs and GetBucketWebsiteOutput values.
+// You can construct a concrete instance of `GetBucketWebsiteInput` via:
+//
+//          GetBucketWebsiteArgs{...}
+type GetBucketWebsiteInput interface {
+	pulumi.Input
+
+	ToGetBucketWebsiteOutput() GetBucketWebsiteOutput
+	ToGetBucketWebsiteOutputWithContext(context.Context) GetBucketWebsiteOutput
+}
+
+type GetBucketWebsiteArgs struct {
+	MainPageSuffix pulumi.StringInput `pulumi:"mainPageSuffix"`
+	NotFoundPage   pulumi.StringInput `pulumi:"notFoundPage"`
+}
+
+func (GetBucketWebsiteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketWebsite)(nil)).Elem()
+}
+
+func (i GetBucketWebsiteArgs) ToGetBucketWebsiteOutput() GetBucketWebsiteOutput {
+	return i.ToGetBucketWebsiteOutputWithContext(context.Background())
+}
+
+func (i GetBucketWebsiteArgs) ToGetBucketWebsiteOutputWithContext(ctx context.Context) GetBucketWebsiteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketWebsiteOutput)
+}
+
+// GetBucketWebsiteArrayInput is an input type that accepts GetBucketWebsiteArray and GetBucketWebsiteArrayOutput values.
+// You can construct a concrete instance of `GetBucketWebsiteArrayInput` via:
+//
+//          GetBucketWebsiteArray{ GetBucketWebsiteArgs{...} }
+type GetBucketWebsiteArrayInput interface {
+	pulumi.Input
+
+	ToGetBucketWebsiteArrayOutput() GetBucketWebsiteArrayOutput
+	ToGetBucketWebsiteArrayOutputWithContext(context.Context) GetBucketWebsiteArrayOutput
+}
+
+type GetBucketWebsiteArray []GetBucketWebsiteInput
+
+func (GetBucketWebsiteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketWebsite)(nil)).Elem()
+}
+
+func (i GetBucketWebsiteArray) ToGetBucketWebsiteArrayOutput() GetBucketWebsiteArrayOutput {
+	return i.ToGetBucketWebsiteArrayOutputWithContext(context.Background())
+}
+
+func (i GetBucketWebsiteArray) ToGetBucketWebsiteArrayOutputWithContext(ctx context.Context) GetBucketWebsiteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketWebsiteArrayOutput)
+}
+
+type GetBucketWebsiteOutput struct{ *pulumi.OutputState }
+
+func (GetBucketWebsiteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketWebsite)(nil)).Elem()
+}
+
+func (o GetBucketWebsiteOutput) ToGetBucketWebsiteOutput() GetBucketWebsiteOutput {
+	return o
+}
+
+func (o GetBucketWebsiteOutput) ToGetBucketWebsiteOutputWithContext(ctx context.Context) GetBucketWebsiteOutput {
+	return o
+}
+
+func (o GetBucketWebsiteOutput) MainPageSuffix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketWebsite) string { return v.MainPageSuffix }).(pulumi.StringOutput)
+}
+
+func (o GetBucketWebsiteOutput) NotFoundPage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketWebsite) string { return v.NotFoundPage }).(pulumi.StringOutput)
+}
+
+type GetBucketWebsiteArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBucketWebsiteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketWebsite)(nil)).Elem()
+}
+
+func (o GetBucketWebsiteArrayOutput) ToGetBucketWebsiteArrayOutput() GetBucketWebsiteArrayOutput {
+	return o
+}
+
+func (o GetBucketWebsiteArrayOutput) ToGetBucketWebsiteArrayOutputWithContext(ctx context.Context) GetBucketWebsiteArrayOutput {
+	return o
+}
+
+func (o GetBucketWebsiteArrayOutput) Index(i pulumi.IntInput) GetBucketWebsiteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBucketWebsite {
+		return vs[0].([]GetBucketWebsite)[vs[1].(int)]
+	}).(GetBucketWebsiteOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketCorInput)(nil)).Elem(), BucketCorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketCorArrayInput)(nil)).Elem(), BucketCorArray{})
@@ -4577,10 +5519,28 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecObjectConditionsPtrInput)(nil)).Elem(), TransferJobTransferSpecObjectConditionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecTransferOptionsInput)(nil)).Elem(), TransferJobTransferSpecTransferOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecTransferOptionsPtrInput)(nil)).Elem(), TransferJobTransferSpecTransferOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketCorInput)(nil)).Elem(), GetBucketCorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketCorArrayInput)(nil)).Elem(), GetBucketCorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketEncryptionInput)(nil)).Elem(), GetBucketEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketEncryptionArrayInput)(nil)).Elem(), GetBucketEncryptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketLifecycleRuleInput)(nil)).Elem(), GetBucketLifecycleRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketLifecycleRuleArrayInput)(nil)).Elem(), GetBucketLifecycleRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketLifecycleRuleActionInput)(nil)).Elem(), GetBucketLifecycleRuleActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketLifecycleRuleActionArrayInput)(nil)).Elem(), GetBucketLifecycleRuleActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketLifecycleRuleConditionInput)(nil)).Elem(), GetBucketLifecycleRuleConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketLifecycleRuleConditionArrayInput)(nil)).Elem(), GetBucketLifecycleRuleConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketLoggingInput)(nil)).Elem(), GetBucketLoggingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketLoggingArrayInput)(nil)).Elem(), GetBucketLoggingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketObjectContentCustomerEncryptionInput)(nil)).Elem(), GetBucketObjectContentCustomerEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketObjectContentCustomerEncryptionArrayInput)(nil)).Elem(), GetBucketObjectContentCustomerEncryptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketObjectCustomerEncryptionInput)(nil)).Elem(), GetBucketObjectCustomerEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketObjectCustomerEncryptionArrayInput)(nil)).Elem(), GetBucketObjectCustomerEncryptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketRetentionPolicyInput)(nil)).Elem(), GetBucketRetentionPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketRetentionPolicyArrayInput)(nil)).Elem(), GetBucketRetentionPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketVersioningInput)(nil)).Elem(), GetBucketVersioningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketVersioningArrayInput)(nil)).Elem(), GetBucketVersioningArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketWebsiteInput)(nil)).Elem(), GetBucketWebsiteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketWebsiteArrayInput)(nil)).Elem(), GetBucketWebsiteArray{})
 	pulumi.RegisterOutputType(BucketCorOutput{})
 	pulumi.RegisterOutputType(BucketCorArrayOutput{})
 	pulumi.RegisterOutputType(BucketEncryptionOutput{})
@@ -4635,8 +5595,26 @@ func init() {
 	pulumi.RegisterOutputType(TransferJobTransferSpecObjectConditionsPtrOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecTransferOptionsOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecTransferOptionsPtrOutput{})
+	pulumi.RegisterOutputType(GetBucketCorOutput{})
+	pulumi.RegisterOutputType(GetBucketCorArrayOutput{})
+	pulumi.RegisterOutputType(GetBucketEncryptionOutput{})
+	pulumi.RegisterOutputType(GetBucketEncryptionArrayOutput{})
+	pulumi.RegisterOutputType(GetBucketLifecycleRuleOutput{})
+	pulumi.RegisterOutputType(GetBucketLifecycleRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetBucketLifecycleRuleActionOutput{})
+	pulumi.RegisterOutputType(GetBucketLifecycleRuleActionArrayOutput{})
+	pulumi.RegisterOutputType(GetBucketLifecycleRuleConditionOutput{})
+	pulumi.RegisterOutputType(GetBucketLifecycleRuleConditionArrayOutput{})
+	pulumi.RegisterOutputType(GetBucketLoggingOutput{})
+	pulumi.RegisterOutputType(GetBucketLoggingArrayOutput{})
 	pulumi.RegisterOutputType(GetBucketObjectContentCustomerEncryptionOutput{})
 	pulumi.RegisterOutputType(GetBucketObjectContentCustomerEncryptionArrayOutput{})
 	pulumi.RegisterOutputType(GetBucketObjectCustomerEncryptionOutput{})
 	pulumi.RegisterOutputType(GetBucketObjectCustomerEncryptionArrayOutput{})
+	pulumi.RegisterOutputType(GetBucketRetentionPolicyOutput{})
+	pulumi.RegisterOutputType(GetBucketRetentionPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetBucketVersioningOutput{})
+	pulumi.RegisterOutputType(GetBucketVersioningArrayOutput{})
+	pulumi.RegisterOutputType(GetBucketWebsiteOutput{})
+	pulumi.RegisterOutputType(GetBucketWebsiteArrayOutput{})
 }

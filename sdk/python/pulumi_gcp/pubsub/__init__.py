@@ -6,6 +6,7 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .get_topic import *
+from .lite_reservation import *
 from .lite_subscription import *
 from .lite_topic import *
 from .schema import *

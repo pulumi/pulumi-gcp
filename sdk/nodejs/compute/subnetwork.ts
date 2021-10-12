@@ -91,6 +91,21 @@ import * as utilities from "../utilities";
  *     provider: google_beta,
  * });
  * ```
+ * ### Subnetwork Ipv6
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const custom_test = new gcp.compute.Network("custom-test", {autoCreateSubnetworks: false});
+ * const subnetwork_ipv6 = new gcp.compute.Subnetwork("subnetwork-ipv6", {
+ *     ipCidrRange: "10.0.0.0/22",
+ *     region: "us-west2",
+ *     stackType: "IPV4_IPV6",
+ *     ipv6AccessType: "EXTERNAL",
+ *     network: custom_test.id,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -151,6 +166,10 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * The range of external IPv6 addresses that are owned by this subnetwork.
+     */
+    public /*out*/ readonly externalIpv6Prefix!: pulumi.Output<string>;
+    /**
      * Fingerprint of this resource. This field is used internally during updates of this resource.
      *
      * @deprecated This field is not useful for users, and has been removed as an output.
@@ -167,6 +186,17 @@ export class Subnetwork extends pulumi.CustomResource {
      * secondary IP ranges within a network. Only IPv4 is supported.
      */
     public readonly ipCidrRange!: pulumi.Output<string>;
+    /**
+     * The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
+     * or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
+     * cannot enable direct path.
+     * Possible values are `EXTERNAL`.
+     */
+    public readonly ipv6AccessType!: pulumi.Output<string | undefined>;
+    /**
+     * The range of internal IPv6 addresses that are owned by this subnetwork.
+     */
+    public /*out*/ readonly ipv6CidrRange!: pulumi.Output<string>;
     /**
      * Denotes the logging options for the subnetwork flow logs. If logging is enabled
      * logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
@@ -237,6 +267,12 @@ export class Subnetwork extends pulumi.CustomResource {
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    /**
+     * The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
+     * If not specified IPV4_ONLY will be used.
+     * Possible values are `IPV4_ONLY` and `IPV4_IPV6`.
+     */
+    public readonly stackType!: pulumi.Output<string>;
 
     /**
      * Create a Subnetwork resource with the given unique name, arguments, and options.
@@ -253,9 +289,12 @@ export class Subnetwork extends pulumi.CustomResource {
             const state = argsOrState as SubnetworkState | undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["externalIpv6Prefix"] = state ? state.externalIpv6Prefix : undefined;
             inputs["fingerprint"] = state ? state.fingerprint : undefined;
             inputs["gatewayAddress"] = state ? state.gatewayAddress : undefined;
             inputs["ipCidrRange"] = state ? state.ipCidrRange : undefined;
+            inputs["ipv6AccessType"] = state ? state.ipv6AccessType : undefined;
+            inputs["ipv6CidrRange"] = state ? state.ipv6CidrRange : undefined;
             inputs["logConfig"] = state ? state.logConfig : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["network"] = state ? state.network : undefined;
@@ -267,6 +306,7 @@ export class Subnetwork extends pulumi.CustomResource {
             inputs["role"] = state ? state.role : undefined;
             inputs["secondaryIpRanges"] = state ? state.secondaryIpRanges : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
+            inputs["stackType"] = state ? state.stackType : undefined;
         } else {
             const args = argsOrState as SubnetworkArgs | undefined;
             if ((!args || args.ipCidrRange === undefined) && !opts.urn) {
@@ -277,6 +317,7 @@ export class Subnetwork extends pulumi.CustomResource {
             }
             inputs["description"] = args ? args.description : undefined;
             inputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
+            inputs["ipv6AccessType"] = args ? args.ipv6AccessType : undefined;
             inputs["logConfig"] = args ? args.logConfig : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
@@ -287,9 +328,12 @@ export class Subnetwork extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["role"] = args ? args.role : undefined;
             inputs["secondaryIpRanges"] = args ? args.secondaryIpRanges : undefined;
+            inputs["stackType"] = args ? args.stackType : undefined;
             inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["externalIpv6Prefix"] = undefined /*out*/;
             inputs["fingerprint"] = undefined /*out*/;
             inputs["gatewayAddress"] = undefined /*out*/;
+            inputs["ipv6CidrRange"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -314,6 +358,10 @@ export interface SubnetworkState {
      */
     description?: pulumi.Input<string>;
     /**
+     * The range of external IPv6 addresses that are owned by this subnetwork.
+     */
+    externalIpv6Prefix?: pulumi.Input<string>;
+    /**
      * Fingerprint of this resource. This field is used internally during updates of this resource.
      *
      * @deprecated This field is not useful for users, and has been removed as an output.
@@ -330,6 +378,17 @@ export interface SubnetworkState {
      * secondary IP ranges within a network. Only IPv4 is supported.
      */
     ipCidrRange?: pulumi.Input<string>;
+    /**
+     * The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
+     * or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
+     * cannot enable direct path.
+     * Possible values are `EXTERNAL`.
+     */
+    ipv6AccessType?: pulumi.Input<string>;
+    /**
+     * The range of internal IPv6 addresses that are owned by this subnetwork.
+     */
+    ipv6CidrRange?: pulumi.Input<string>;
     /**
      * Denotes the logging options for the subnetwork flow logs. If logging is enabled
      * logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
@@ -400,6 +459,12 @@ export interface SubnetworkState {
      * The URI of the created resource.
      */
     selfLink?: pulumi.Input<string>;
+    /**
+     * The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
+     * If not specified IPV4_ONLY will be used.
+     * Possible values are `IPV4_ONLY` and `IPV4_IPV6`.
+     */
+    stackType?: pulumi.Input<string>;
 }
 
 /**
@@ -419,6 +484,13 @@ export interface SubnetworkArgs {
      * secondary IP ranges within a network. Only IPv4 is supported.
      */
     ipCidrRange: pulumi.Input<string>;
+    /**
+     * The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
+     * or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
+     * cannot enable direct path.
+     * Possible values are `EXTERNAL`.
+     */
+    ipv6AccessType?: pulumi.Input<string>;
     /**
      * Denotes the logging options for the subnetwork flow logs. If logging is enabled
      * logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
@@ -485,4 +557,10 @@ export interface SubnetworkArgs {
      * Structure is documented below.
      */
     secondaryIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.SubnetworkSecondaryIpRange>[]>;
+    /**
+     * The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
+     * If not specified IPV4_ONLY will be used.
+     * Possible values are `IPV4_ONLY` and `IPV4_IPV6`.
+     */
+    stackType?: pulumi.Input<string>;
 }

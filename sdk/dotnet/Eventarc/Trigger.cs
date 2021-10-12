@@ -137,7 +137,7 @@ namespace Pulumi.Gcp.Eventarc
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+        /// Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
         /// </summary>
         [Output("matchingCriterias")]
         public Output<ImmutableArray<Outputs.TriggerMatchingCriteria>> MatchingCriterias { get; private set; } = null!;
@@ -165,6 +165,13 @@ namespace Pulumi.Gcp.Eventarc
         /// </summary>
         [Output("transports")]
         public Output<ImmutableArray<Outputs.TriggerTransport>> Transports { get; private set; } = null!;
+
+        /// <summary>
+        /// Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain
+        /// unchanged until the resource is deleted.
+        /// </summary>
+        [Output("uid")]
+        public Output<string> Uid { get; private set; } = null!;
 
         /// <summary>
         /// Output only. The last-modified time.
@@ -246,7 +253,7 @@ namespace Pulumi.Gcp.Eventarc
         private InputList<Inputs.TriggerMatchingCriteriaArgs>? _matchingCriterias;
 
         /// <summary>
-        /// Required. The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+        /// Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
         /// </summary>
         public InputList<Inputs.TriggerMatchingCriteriaArgs> MatchingCriterias
         {
@@ -332,7 +339,7 @@ namespace Pulumi.Gcp.Eventarc
         private InputList<Inputs.TriggerMatchingCriteriaGetArgs>? _matchingCriterias;
 
         /// <summary>
-        /// Required. The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+        /// Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
         /// </summary>
         public InputList<Inputs.TriggerMatchingCriteriaGetArgs> MatchingCriterias
         {
@@ -369,6 +376,13 @@ namespace Pulumi.Gcp.Eventarc
             get => _transports ?? (_transports = new InputList<Inputs.TriggerTransportGetArgs>());
             set => _transports = value;
         }
+
+        /// <summary>
+        /// Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain
+        /// unchanged until the resource is deleted.
+        /// </summary>
+        [Input("uid")]
+        public Input<string>? Uid { get; set; }
 
         /// <summary>
         /// Output only. The last-modified time.

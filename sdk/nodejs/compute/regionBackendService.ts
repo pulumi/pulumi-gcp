@@ -421,7 +421,7 @@ export class RegionBackendService extends pulumi.CustomResource {
     /**
      * Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.
-     * Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
+     * Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, and `CLIENT_IP_NO_DESTINATION`.
      */
     public readonly sessionAffinity!: pulumi.Output<string>;
     /**
@@ -674,7 +674,7 @@ export interface RegionBackendServiceState {
     /**
      * Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.
-     * Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
+     * Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, and `CLIENT_IP_NO_DESTINATION`.
      */
     sessionAffinity?: pulumi.Input<string>;
     /**
@@ -841,7 +841,7 @@ export interface RegionBackendServiceArgs {
     /**
      * Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.
-     * Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
+     * Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, and `CLIENT_IP_NO_DESTINATION`.
      */
     sessionAffinity?: pulumi.Input<string>;
     /**

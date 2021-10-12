@@ -142,6 +142,8 @@ class Config(pulumi.CustomResource):
         """
         Manages a RuntimeConfig resource in Google Cloud.
 
+        !> This resource has been deprecated in the google (GA) provider, and will only be available in the google-beta provider in a future release.
+
         To get more information about RuntimeConfigs, see:
 
         * [API documentation](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/v1beta1/projects.configs)
@@ -189,6 +191,8 @@ class Config(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a RuntimeConfig resource in Google Cloud.
+
+        !> This resource has been deprecated in the google (GA) provider, and will only be available in the google-beta provider in a future release.
 
         To get more information about RuntimeConfigs, see:
 

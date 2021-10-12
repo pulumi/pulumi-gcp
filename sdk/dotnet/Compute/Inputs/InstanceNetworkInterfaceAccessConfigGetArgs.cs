@@ -20,18 +20,15 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? NatIp { get; set; }
 
         /// <summary>
-        /// The [networking tier][network-tier] used for configuring this instance.
-        /// This field can take the following values: PREMIUM or STANDARD. If this field is
-        /// not specified, it is assumed to be PREMIUM.
+        /// The service-level to be provided for IPv6 traffic when the
+        /// subnet has an external subnet. Only PREMIUM tier is valid for IPv6.
         /// </summary>
         [Input("networkTier")]
         public Input<string>? NetworkTier { get; set; }
 
         /// <summary>
-        /// The DNS domain name for the public PTR record.
-        /// To set this field on an instance, you must be verified as the owner of the domain.
-        /// See [the docs](https://cloud.google.com/compute/docs/instances/create-ptr-record) for how
-        /// to become verified as a domain owner.
+        /// The domain name to be used when creating DNSv6
+        /// records for the external IPv6 ranges..
         /// </summary>
         [Input("publicPtrDomainName")]
         public Input<string>? PublicPtrDomainName { get; set; }

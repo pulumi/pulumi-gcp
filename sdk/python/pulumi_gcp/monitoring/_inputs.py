@@ -3035,7 +3035,7 @@ class UptimeCheckConfigContentMatcherArgs:
         :param pulumi.Input[str] content: String or regex content to match (max 1024 bytes)
         :param pulumi.Input[str] matcher: The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
                Default value is `CONTAINS_STRING`.
-               Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, and `NON_MATCHES_REGEX`.
+               Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, and `NOT_MATCHES_REGEX`.
         """
         pulumi.set(__self__, "content", content)
         if matcher is not None:
@@ -3059,7 +3059,7 @@ class UptimeCheckConfigContentMatcherArgs:
         """
         The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
         Default value is `CONTAINS_STRING`.
-        Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, and `NON_MATCHES_REGEX`.
+        Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, and `NOT_MATCHES_REGEX`.
         """
         return pulumi.get(self, "matcher")
 

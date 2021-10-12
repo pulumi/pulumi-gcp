@@ -744,26 +744,28 @@ class GlobalForwardingRule(pulumi.CustomResource):
         # External HTTP load balancer with a CDN-enabled managed instance group backend
         # and custom request and response headers
         # VPC
-        xlb_network = gcp.compute.Network("xlbNetwork", auto_create_subnetworks=False,
+        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
         opts=pulumi.ResourceOptions(provider=google))
         # backend subnet
-        xlb_subnet = gcp.compute.Subnetwork("xlbSubnet",
+        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
             ip_cidr_range="10.0.1.0/24",
             region="us-central1",
-            network=xlb_network.id,
+            network=default_network.id,
             opts=pulumi.ResourceOptions(provider=google))
+        # reserved IP address
+        default_global_address = gcp.compute.GlobalAddress("defaultGlobalAddress")
         # health check
         default_health_check = gcp.compute.HealthCheck("defaultHealthCheck", http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
             port_specification="USE_SERVING_PORT",
         ),
         opts=pulumi.ResourceOptions(provider=google))
         # instance template
-        instance_template = gcp.compute.InstanceTemplate("instanceTemplate",
+        default_instance_template = gcp.compute.InstanceTemplate("defaultInstanceTemplate",
             machine_type="e2-small",
             tags=["allow-health-check"],
             network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
-                network=xlb_network.id,
-                subnetwork=xlb_subnet.id,
+                network=default_network.id,
+                subnetwork=default_subnetwork.id,
                 access_configs=[gcp.compute.InstanceTemplateNetworkInterfaceAccessConfigArgs()],
             )],
             disks=[gcp.compute.InstanceTemplateDiskArgs(
@@ -794,14 +796,14 @@ class GlobalForwardingRule(pulumi.CustomResource):
             },
             opts=pulumi.ResourceOptions(provider=google))
         # MIG
-        mig = gcp.compute.InstanceGroupManager("mig",
+        default_instance_group_manager = gcp.compute.InstanceGroupManager("defaultInstanceGroupManager",
             zone="us-central1-c",
             named_ports=[gcp.compute.InstanceGroupManagerNamedPortArgs(
                 name="http",
                 port=8080,
             )],
             versions=[gcp.compute.InstanceGroupManagerVersionArgs(
-                instance_template=instance_template.id,
+                instance_template=default_instance_template.id,
                 name="primary",
             )],
             base_instance_name="vm",
@@ -818,7 +820,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             custom_response_headers=["X-Cache-Hit: {cdn_cache_status}"],
             health_checks=[default_health_check.id],
             backends=[gcp.compute.BackendServiceBackendArgs(
-                group=mig.instance_group,
+                group=default_instance_group_manager.instance_group,
                 balancing_mode="UTILIZATION",
                 capacity_scaler=1,
             )],
@@ -830,16 +832,17 @@ class GlobalForwardingRule(pulumi.CustomResource):
         default_target_http_proxy = gcp.compute.TargetHttpProxy("defaultTargetHttpProxy", url_map=default_url_map.id,
         opts=pulumi.ResourceOptions(provider=google))
         # forwarding rule
-        google_compute_global_forwarding_rule = gcp.compute.GlobalForwardingRule("googleComputeGlobalForwardingRule",
+        default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule",
             ip_protocol="TCP",
             load_balancing_scheme="EXTERNAL",
             port_range="80",
             target=default_target_http_proxy.id,
+            ip_address=default_global_address.id,
             opts=pulumi.ResourceOptions(provider=google))
         # allow access from health check ranges
-        fw_health_check = gcp.compute.Firewall("fwHealthCheck",
+        default_firewall = gcp.compute.Firewall("defaultFirewall",
             direction="INGRESS",
-            network=xlb_network.id,
+            network=default_network.id,
             source_ranges=[
                 "130.211.0.0/22",
                 "35.191.0.0/16",
@@ -1124,26 +1127,28 @@ class GlobalForwardingRule(pulumi.CustomResource):
         # External HTTP load balancer with a CDN-enabled managed instance group backend
         # and custom request and response headers
         # VPC
-        xlb_network = gcp.compute.Network("xlbNetwork", auto_create_subnetworks=False,
+        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
         opts=pulumi.ResourceOptions(provider=google))
         # backend subnet
-        xlb_subnet = gcp.compute.Subnetwork("xlbSubnet",
+        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
             ip_cidr_range="10.0.1.0/24",
             region="us-central1",
-            network=xlb_network.id,
+            network=default_network.id,
             opts=pulumi.ResourceOptions(provider=google))
+        # reserved IP address
+        default_global_address = gcp.compute.GlobalAddress("defaultGlobalAddress")
         # health check
         default_health_check = gcp.compute.HealthCheck("defaultHealthCheck", http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
             port_specification="USE_SERVING_PORT",
         ),
         opts=pulumi.ResourceOptions(provider=google))
         # instance template
-        instance_template = gcp.compute.InstanceTemplate("instanceTemplate",
+        default_instance_template = gcp.compute.InstanceTemplate("defaultInstanceTemplate",
             machine_type="e2-small",
             tags=["allow-health-check"],
             network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
-                network=xlb_network.id,
-                subnetwork=xlb_subnet.id,
+                network=default_network.id,
+                subnetwork=default_subnetwork.id,
                 access_configs=[gcp.compute.InstanceTemplateNetworkInterfaceAccessConfigArgs()],
             )],
             disks=[gcp.compute.InstanceTemplateDiskArgs(
@@ -1174,14 +1179,14 @@ class GlobalForwardingRule(pulumi.CustomResource):
             },
             opts=pulumi.ResourceOptions(provider=google))
         # MIG
-        mig = gcp.compute.InstanceGroupManager("mig",
+        default_instance_group_manager = gcp.compute.InstanceGroupManager("defaultInstanceGroupManager",
             zone="us-central1-c",
             named_ports=[gcp.compute.InstanceGroupManagerNamedPortArgs(
                 name="http",
                 port=8080,
             )],
             versions=[gcp.compute.InstanceGroupManagerVersionArgs(
-                instance_template=instance_template.id,
+                instance_template=default_instance_template.id,
                 name="primary",
             )],
             base_instance_name="vm",
@@ -1198,7 +1203,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             custom_response_headers=["X-Cache-Hit: {cdn_cache_status}"],
             health_checks=[default_health_check.id],
             backends=[gcp.compute.BackendServiceBackendArgs(
-                group=mig.instance_group,
+                group=default_instance_group_manager.instance_group,
                 balancing_mode="UTILIZATION",
                 capacity_scaler=1,
             )],
@@ -1210,16 +1215,17 @@ class GlobalForwardingRule(pulumi.CustomResource):
         default_target_http_proxy = gcp.compute.TargetHttpProxy("defaultTargetHttpProxy", url_map=default_url_map.id,
         opts=pulumi.ResourceOptions(provider=google))
         # forwarding rule
-        google_compute_global_forwarding_rule = gcp.compute.GlobalForwardingRule("googleComputeGlobalForwardingRule",
+        default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule",
             ip_protocol="TCP",
             load_balancing_scheme="EXTERNAL",
             port_range="80",
             target=default_target_http_proxy.id,
+            ip_address=default_global_address.id,
             opts=pulumi.ResourceOptions(provider=google))
         # allow access from health check ranges
-        fw_health_check = gcp.compute.Firewall("fwHealthCheck",
+        default_firewall = gcp.compute.Firewall("defaultFirewall",
             direction="INGRESS",
-            network=xlb_network.id,
+            network=default_network.id,
             source_ranges=[
                 "130.211.0.0/22",
                 "35.191.0.0/16",

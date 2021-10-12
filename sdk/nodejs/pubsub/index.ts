@@ -6,6 +6,7 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./getTopic";
+export * from "./liteReservation";
 export * from "./liteSubscription";
 export * from "./liteTopic";
 export * from "./schema";
@@ -20,6 +21,7 @@ export * from "./topicIAMPolicy";
 export * from "./zMixins";
 
 // Import resources to register:
+import { LiteReservation } from "./liteReservation";
 import { LiteSubscription } from "./liteSubscription";
 import { LiteTopic } from "./liteTopic";
 import { Schema } from "./schema";
@@ -36,6 +38,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:pubsub/liteReservation:LiteReservation":
+                return new LiteReservation(name, <any>undefined, { urn })
             case "gcp:pubsub/liteSubscription:LiteSubscription":
                 return new LiteSubscription(name, <any>undefined, { urn })
             case "gcp:pubsub/liteTopic:LiteTopic":
@@ -63,6 +67,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "pubsub/liteReservation", _module)
 pulumi.runtime.registerResourceModule("gcp", "pubsub/liteSubscription", _module)
 pulumi.runtime.registerResourceModule("gcp", "pubsub/liteTopic", _module)
 pulumi.runtime.registerResourceModule("gcp", "pubsub/schema", _module)

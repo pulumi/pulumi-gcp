@@ -15,6 +15,8 @@ namespace Pulumi.Gcp.Compute.Outputs
     {
         public readonly ImmutableArray<Outputs.InstanceFromTemplateNetworkInterfaceAccessConfig> AccessConfigs;
         public readonly ImmutableArray<Outputs.InstanceFromTemplateNetworkInterfaceAliasIpRange> AliasIpRanges;
+        public readonly ImmutableArray<Outputs.InstanceFromTemplateNetworkInterfaceIpv6AccessConfig> Ipv6AccessConfigs;
+        public readonly string? Ipv6AccessType;
         /// <summary>
         /// A unique name for the resource, required by GCE.
         /// Changing this forces a new resource to be created.
@@ -23,6 +25,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly string? Network;
         public readonly string? NetworkIp;
         public readonly string? NicType;
+        public readonly string? StackType;
         public readonly string? Subnetwork;
         public readonly string? SubnetworkProject;
 
@@ -32,6 +35,10 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             ImmutableArray<Outputs.InstanceFromTemplateNetworkInterfaceAliasIpRange> aliasIpRanges,
 
+            ImmutableArray<Outputs.InstanceFromTemplateNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs,
+
+            string? ipv6AccessType,
+
             string? name,
 
             string? network,
@@ -40,16 +47,21 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? nicType,
 
+            string? stackType,
+
             string? subnetwork,
 
             string? subnetworkProject)
         {
             AccessConfigs = accessConfigs;
             AliasIpRanges = aliasIpRanges;
+            Ipv6AccessConfigs = ipv6AccessConfigs;
+            Ipv6AccessType = ipv6AccessType;
             Name = name;
             Network = network;
             NetworkIp = networkIp;
             NicType = nicType;
+            StackType = stackType;
             Subnetwork = subnetwork;
             SubnetworkProject = subnetworkProject;
         }

@@ -29,6 +29,13 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.InstanceTemplateNetworkInterfaceAliasIpRange> AliasIpRanges;
         /// <summary>
+        /// An array of IPv6 access configurations for this interface.
+        /// Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
+        /// specified, then this instance will have no external IPv6 Internet access. Structure documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.InstanceTemplateNetworkInterfaceIpv6AccessConfig> Ipv6AccessConfigs;
+        public readonly string? Ipv6AccessType;
+        /// <summary>
         /// The name of the instance template. If you leave
         /// this blank, the provider will auto-generate a unique name.
         /// </summary>
@@ -49,6 +56,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? NicType;
         /// <summary>
+        /// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
+        /// </summary>
+        public readonly string? StackType;
+        /// <summary>
         /// the name of the subnetwork to attach this interface
         /// to. The subnetwork must exist in the same `region` this instance will be
         /// created in. Either `network` or `subnetwork` must be provided.
@@ -66,6 +77,10 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             ImmutableArray<Outputs.InstanceTemplateNetworkInterfaceAliasIpRange> aliasIpRanges,
 
+            ImmutableArray<Outputs.InstanceTemplateNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs,
+
+            string? ipv6AccessType,
+
             string? name,
 
             string? network,
@@ -74,16 +89,21 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? nicType,
 
+            string? stackType,
+
             string? subnetwork,
 
             string? subnetworkProject)
         {
             AccessConfigs = accessConfigs;
             AliasIpRanges = aliasIpRanges;
+            Ipv6AccessConfigs = ipv6AccessConfigs;
+            Ipv6AccessType = ipv6AccessType;
             Name = name;
             Network = network;
             NetworkIp = networkIp;
             NicType = nicType;
+            StackType = stackType;
             Subnetwork = subnetwork;
             SubnetworkProject = subnetworkProject;
         }

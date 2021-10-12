@@ -43,6 +43,27 @@ namespace Pulumi.Gcp.Compute.Inputs
             set => _aliasIpRanges = value;
         }
 
+        [Input("ipv6AccessConfigs")]
+        private InputList<Inputs.InstanceNetworkInterfaceIpv6AccessConfigArgs>? _ipv6AccessConfigs;
+
+        /// <summary>
+        /// An array of IPv6 access configurations for this interface.
+        /// Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
+        /// specified, then this instance will have no external IPv6 Internet access. Structure documented below.
+        /// </summary>
+        public InputList<Inputs.InstanceNetworkInterfaceIpv6AccessConfigArgs> Ipv6AccessConfigs
+        {
+            get => _ipv6AccessConfigs ?? (_ipv6AccessConfigs = new InputList<Inputs.InstanceNetworkInterfaceIpv6AccessConfigArgs>());
+            set => _ipv6AccessConfigs = value;
+        }
+
+        /// <summary>
+        /// One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet.
+        /// This field is always inherited from its subnetwork.
+        /// </summary>
+        [Input("ipv6AccessType")]
+        public Input<string>? Ipv6AccessType { get; set; }
+
         /// <summary>
         /// A unique name for the resource, required by GCE.
         /// Changing this forces a new resource to be created.
@@ -52,7 +73,8 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// The name or self_link of the network to attach this interface to.
-        /// Either `network` or `subnetwork` must be provided.
+        /// Either `network` or `subnetwork` must be provided. If network isn't provided it will
+        /// be inferred from the subnetwork.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
@@ -71,10 +93,19 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? NicType { get; set; }
 
         /// <summary>
+        /// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
+        /// </summary>
+        [Input("stackType")]
+        public Input<string>? StackType { get; set; }
+
+        /// <summary>
         /// The name or self_link of the subnetwork to attach this
-        /// interface to. The subnetwork must exist in the same region this instance will be
-        /// created in. If network isn't provided it will be inferred from the subnetwork.
-        /// Either `network` or `subnetwork` must be provided.
+        /// interface to. Either `network` or `subnetwork` must be provided. If network isn't provided
+        /// it will be inferred from the subnetwork. The subnetwork must exist in the same region this
+        /// instance will be created in. If the network resource is in
+        /// [legacy](https://cloud.google.com/vpc/docs/legacy) mode, do not specify this field. If the
+        /// network is in auto subnet mode, specifying the subnetwork is optional. If the network is
+        /// in custom subnet mode, specifying the subnetwork is required.
         /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }

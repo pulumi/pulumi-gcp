@@ -15,9 +15,11 @@ namespace Pulumi.Gcp.Composer.Outputs
     {
         /// <summary>
         /// The disk size in GB used for node VMs. Minimum size is 20GB.
-        /// If unspecified, defaults to 100GB. Cannot be updated.
+        /// If unspecified, defaults to 100GB. Cannot be updated. This field is supported
+        /// for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         public readonly int? DiskSizeGb;
+        public readonly bool? EnableIpMasqAgent;
         /// <summary>
         /// Configuration for controlling how IPs are allocated in the GKE cluster.
         /// Structure is documented below.
@@ -31,6 +33,14 @@ namespace Pulumi.Gcp.Composer.Outputs
         /// manually changed to a non-standard values.
         /// </summary>
         public readonly string? MachineType;
+        /// <summary>
+        /// The maximum pods per node in the GKE cluster allocated during environment
+        /// creation. Lowering this value reduces IP address consumption by the Cloud
+        /// Composer Kubernetes cluster. This value can only be set if the environment is VPC-Native.
+        /// The range of possible values is 8-110, and the default is 32.
+        /// Cannot be updated. This field is supported for Cloud Composer environments
+        /// in versions composer-1.*.*-airflow-*.*.*.
+        /// </summary>
         public readonly int? MaxPodsPerNode;
         /// <summary>
         /// The Compute Engine network to be used for machine
@@ -41,7 +51,9 @@ namespace Pulumi.Gcp.Composer.Outputs
         /// <summary>
         /// The set of Google API scopes to be made available on all node
         /// VMs. Cannot be updated. If empty, defaults to
-        /// `["https://www.googleapis.com/auth/cloud-platform"]`
+        /// `["https://www.googleapis.com/auth/cloud-platform"]`. This field is
+        /// supported for Cloud Composer environments in versions
+        /// composer-1.*.*-airflow-*.*.*.
         /// </summary>
         public readonly ImmutableArray<string> OauthScopes;
         /// <summary>
@@ -63,20 +75,25 @@ namespace Pulumi.Gcp.Composer.Outputs
         /// The list of instance tags applied to all node VMs. Tags are
         /// used to identify valid sources or targets for network
         /// firewalls. Each tag within the list must comply with RFC1035.
-        /// Cannot be updated.
+        /// Cannot be updated. This field is supported for Cloud Composer
+        /// environments in versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
         /// The Compute Engine zone in which to deploy the VMs running the
         /// Apache Airflow software, specified as the zone name or
-        /// relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project
-        /// and region.
+        /// relative resource name (e.g. "projects/{project}/zones/{zone}"). Must
+        /// belong to the enclosing environment's project and region. This field is
+        /// supported for Cloud Composer environments in versions
+        /// composer-1.*.*-airflow-*.*.*.
         /// </summary>
         public readonly string Zone;
 
         [OutputConstructor]
         private EnvironmentConfigNodeConfig(
             int? diskSizeGb,
+
+            bool? enableIpMasqAgent,
 
             Outputs.EnvironmentConfigNodeConfigIpAllocationPolicy? ipAllocationPolicy,
 
@@ -97,6 +114,7 @@ namespace Pulumi.Gcp.Composer.Outputs
             string zone)
         {
             DiskSizeGb = diskSizeGb;
+            EnableIpMasqAgent = enableIpMasqAgent;
             IpAllocationPolicy = ipAllocationPolicy;
             MachineType = machineType;
             MaxPodsPerNode = maxPodsPerNode;
