@@ -15,6 +15,126 @@ import * as utilities from "../utilities";
  * https://cloud.google.com/compute/docs/load-balancing/http/
  *
  * ## Example Usage
+ * ### External Tcp Proxy Lb Mig Backend Custom Header
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * // External TCP proxy load balancer with managed instance group backend
+ * // VPC
+ * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {autoCreateSubnetworks: false}, {
+ *     provider: google,
+ * });
+ * // backend subnet
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
+ *     ipCidrRange: "10.0.1.0/24",
+ *     region: "us-central1",
+ *     network: defaultNetwork.id,
+ * }, {
+ *     provider: google,
+ * });
+ * // reserved IP address
+ * const defaultGlobalAddress = new gcp.compute.GlobalAddress("defaultGlobalAddress", {});
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("defaultHealthCheck", {
+ *     timeoutSec: 1,
+ *     checkIntervalSec: 1,
+ *     tcpHealthCheck: {
+ *         port: "80",
+ *     },
+ * });
+ * // instance template
+ * const defaultInstanceTemplate = new gcp.compute.InstanceTemplate("defaultInstanceTemplate", {
+ *     machineType: "e2-small",
+ *     tags: ["allow-health-check"],
+ *     networkInterfaces: [{
+ *         network: defaultNetwork.id,
+ *         subnetwork: defaultSubnetwork.id,
+ *         accessConfigs: [{}],
+ *     }],
+ *     disks: [{
+ *         sourceImage: "debian-cloud/debian-10",
+ *         autoDelete: true,
+ *         boot: true,
+ *     }],
+ *     metadata: {
+ *         "startup-script": `#! /bin/bash
+ * set -euo pipefail
+ * export DEBIAN_FRONTEND=noninteractive
+ * apt-get update
+ * apt-get install -y nginx-light jq
+ * NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
+ * IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
+ * METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
+ * cat <<EOF > /var/www/html/index.html
+ * <pre>
+ * Name: $NAME
+ * IP: $IP
+ * Metadata: $METADATA
+ * </pre>
+ * EOF
+ * `,
+ *     },
+ * }, {
+ *     provider: google,
+ * });
+ * // MIG
+ * const defaultInstanceGroupManager = new gcp.compute.InstanceGroupManager("defaultInstanceGroupManager", {
+ *     zone: "us-central1-c",
+ *     namedPorts: [{
+ *         name: "tcp",
+ *         port: 110,
+ *     }],
+ *     versions: [{
+ *         instanceTemplate: defaultInstanceTemplate.id,
+ *         name: "primary",
+ *     }],
+ *     baseInstanceName: "vm",
+ *     targetSize: 2,
+ * }, {
+ *     provider: google,
+ * });
+ * // backend service
+ * const defaultBackendService = new gcp.compute.BackendService("defaultBackendService", {
+ *     protocol: "TCP",
+ *     portName: "tcp",
+ *     loadBalancingScheme: "EXTERNAL",
+ *     timeoutSec: 10,
+ *     healthChecks: [defaultHealthCheck.id],
+ *     backends: [{
+ *         group: defaultInstanceGroupManager.instanceGroup,
+ *         balancingMode: "UTILIZATION",
+ *         maxUtilization: 1,
+ *         capacityScaler: 1,
+ *     }],
+ * });
+ * const defaultTargetTCPProxy = new gcp.compute.TargetTCPProxy("defaultTargetTCPProxy", {backendService: defaultBackendService.id});
+ * // forwarding rule
+ * const defaultGlobalForwardingRule = new gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule", {
+ *     ipProtocol: "TCP",
+ *     loadBalancingScheme: "EXTERNAL",
+ *     portRange: "110",
+ *     target: defaultTargetTCPProxy.id,
+ *     ipAddress: defaultGlobalAddress.id,
+ * }, {
+ *     provider: google,
+ * });
+ * // allow access from health check ranges
+ * const defaultFirewall = new gcp.compute.Firewall("defaultFirewall", {
+ *     direction: "INGRESS",
+ *     network: defaultNetwork.id,
+ *     sourceRanges: [
+ *         "130.211.0.0/22",
+ *         "35.191.0.0/16",
+ *     ],
+ *     allows: [{
+ *         protocol: "tcp",
+ *     }],
+ *     targetTags: ["allow-health-check"],
+ * }, {
+ *     provider: google,
+ * });
+ * ```
  * ### External Http Lb Mig Backend Custom Header
  *
  * ```typescript

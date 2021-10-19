@@ -253,8 +253,8 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<Outputs.InstanceTemplateDisk>> Disks { get; private set; } = null!;
 
         /// <summary>
-        /// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-        /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+        /// ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+        /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field. Note: This attribute is currently in beta and will be removed from the google provider. Please use the google-beta provider to continue using this attribute.
         /// </summary>
         [Output("enableDisplay")]
         public Output<bool?> EnableDisplay { get; private set; } = null!;
@@ -496,8 +496,8 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-        /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+        /// ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+        /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field. Note: This attribute is currently in beta and will be removed from the google provider. Please use the google-beta provider to continue using this attribute.
         /// </summary>
         [Input("enableDisplay")]
         public Input<bool>? EnableDisplay { get; set; }
@@ -712,8 +712,8 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-        /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+        /// ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+        /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field. Note: This attribute is currently in beta and will be removed from the google provider. Please use the google-beta provider to continue using this attribute.
         /// </summary>
         [Input("enableDisplay")]
         public Input<bool>? EnableDisplay { get; set; }
