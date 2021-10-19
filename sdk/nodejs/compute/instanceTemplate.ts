@@ -239,8 +239,8 @@ export class InstanceTemplate extends pulumi.CustomResource {
      */
     public readonly disks!: pulumi.Output<outputs.compute.InstanceTemplateDisk[]>;
     /**
-     * Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-     * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
+     * ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+     * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field. Note: This attribute is currently in beta and will be removed from the google provider. Please use the google-beta provider to continue using this attribute.
      */
     public readonly enableDisplay!: pulumi.Output<boolean | undefined>;
     /**
@@ -464,8 +464,8 @@ export interface InstanceTemplateState {
      */
     disks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateDisk>[]>;
     /**
-     * Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-     * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
+     * ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+     * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field. Note: This attribute is currently in beta and will be removed from the google provider. Please use the google-beta provider to continue using this attribute.
      */
     enableDisplay?: pulumi.Input<boolean>;
     /**
@@ -607,8 +607,8 @@ export interface InstanceTemplateArgs {
      */
     disks: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateDisk>[]>;
     /**
-     * Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-     * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
+     * ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+     * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field. Note: This attribute is currently in beta and will be removed from the google provider. Please use the google-beta provider to continue using this attribute.
      */
     enableDisplay?: pulumi.Input<boolean>;
     /**

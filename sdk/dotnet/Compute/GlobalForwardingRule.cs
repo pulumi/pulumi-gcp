@@ -19,6 +19,193 @@ namespace Pulumi.Gcp.Compute
     /// https://cloud.google.com/compute/docs/load-balancing/http/
     /// 
     /// ## Example Usage
+    /// ### External Tcp Proxy Lb Mig Backend Custom Header
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // External TCP proxy load balancer with managed instance group backend
+    ///         // VPC
+    ///         var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new Gcp.Compute.NetworkArgs
+    ///         {
+    ///             AutoCreateSubnetworks = false,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google,
+    ///         });
+    ///         // backend subnet
+    ///         var defaultSubnetwork = new Gcp.Compute.Subnetwork("defaultSubnetwork", new Gcp.Compute.SubnetworkArgs
+    ///         {
+    ///             IpCidrRange = "10.0.1.0/24",
+    ///             Region = "us-central1",
+    ///             Network = defaultNetwork.Id,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google,
+    ///         });
+    ///         // reserved IP address
+    ///         var defaultGlobalAddress = new Gcp.Compute.GlobalAddress("defaultGlobalAddress", new Gcp.Compute.GlobalAddressArgs
+    ///         {
+    ///         });
+    ///         var defaultHealthCheck = new Gcp.Compute.HealthCheck("defaultHealthCheck", new Gcp.Compute.HealthCheckArgs
+    ///         {
+    ///             TimeoutSec = 1,
+    ///             CheckIntervalSec = 1,
+    ///             TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
+    ///             {
+    ///                 Port = 80,
+    ///             },
+    ///         });
+    ///         // instance template
+    ///         var defaultInstanceTemplate = new Gcp.Compute.InstanceTemplate("defaultInstanceTemplate", new Gcp.Compute.InstanceTemplateArgs
+    ///         {
+    ///             MachineType = "e2-small",
+    ///             Tags = 
+    ///             {
+    ///                 "allow-health-check",
+    ///             },
+    ///             NetworkInterfaces = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
+    ///                 {
+    ///                     Network = defaultNetwork.Id,
+    ///                     Subnetwork = defaultSubnetwork.Id,
+    ///                     AccessConfigs = 
+    ///                     {
+    ///                         ,
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Disks = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+    ///                 {
+    ///                     SourceImage = "debian-cloud/debian-10",
+    ///                     AutoDelete = true,
+    ///                     Boot = true,
+    ///                 },
+    ///             },
+    ///             Metadata = 
+    ///             {
+    ///                 { "startup-script", @"#! /bin/bash
+    /// set -euo pipefail
+    /// export DEBIAN_FRONTEND=noninteractive
+    /// apt-get update
+    /// apt-get install -y nginx-light jq
+    /// NAME=$(curl -H ""Metadata-Flavor: Google"" ""http://metadata.google.internal/computeMetadata/v1/instance/hostname"")
+    /// IP=$(curl -H ""Metadata-Flavor: Google"" ""http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip"")
+    /// METADATA=$(curl -f -H ""Metadata-Flavor: Google"" ""http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True"" | jq 'del(.[""startup-script""])')
+    /// cat &lt;&lt;EOF &gt; /var/www/html/index.html
+    /// &lt;pre&gt;
+    /// Name: $NAME
+    /// IP: $IP
+    /// Metadata: $METADATA
+    /// &lt;/pre&gt;
+    /// EOF
+    /// " },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google,
+    ///         });
+    ///         // MIG
+    ///         var defaultInstanceGroupManager = new Gcp.Compute.InstanceGroupManager("defaultInstanceGroupManager", new Gcp.Compute.InstanceGroupManagerArgs
+    ///         {
+    ///             Zone = "us-central1-c",
+    ///             NamedPorts = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceGroupManagerNamedPortArgs
+    ///                 {
+    ///                     Name = "tcp",
+    ///                     Port = 110,
+    ///                 },
+    ///             },
+    ///             Versions = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceGroupManagerVersionArgs
+    ///                 {
+    ///                     InstanceTemplate = defaultInstanceTemplate.Id,
+    ///                     Name = "primary",
+    ///                 },
+    ///             },
+    ///             BaseInstanceName = "vm",
+    ///             TargetSize = 2,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google,
+    ///         });
+    ///         // backend service
+    ///         var defaultBackendService = new Gcp.Compute.BackendService("defaultBackendService", new Gcp.Compute.BackendServiceArgs
+    ///         {
+    ///             Protocol = "TCP",
+    ///             PortName = "tcp",
+    ///             LoadBalancingScheme = "EXTERNAL",
+    ///             TimeoutSec = 10,
+    ///             HealthChecks = 
+    ///             {
+    ///                 defaultHealthCheck.Id,
+    ///             },
+    ///             Backends = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.BackendServiceBackendArgs
+    ///                 {
+    ///                     Group = defaultInstanceGroupManager.InstanceGroup,
+    ///                     BalancingMode = "UTILIZATION",
+    ///                     MaxUtilization = 1,
+    ///                     CapacityScaler = 1,
+    ///                 },
+    ///             },
+    ///         });
+    ///         var defaultTargetTCPProxy = new Gcp.Compute.TargetTCPProxy("defaultTargetTCPProxy", new Gcp.Compute.TargetTCPProxyArgs
+    ///         {
+    ///             BackendService = defaultBackendService.Id,
+    ///         });
+    ///         // forwarding rule
+    ///         var defaultGlobalForwardingRule = new Gcp.Compute.GlobalForwardingRule("defaultGlobalForwardingRule", new Gcp.Compute.GlobalForwardingRuleArgs
+    ///         {
+    ///             IpProtocol = "TCP",
+    ///             LoadBalancingScheme = "EXTERNAL",
+    ///             PortRange = "110",
+    ///             Target = defaultTargetTCPProxy.Id,
+    ///             IpAddress = defaultGlobalAddress.Id,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google,
+    ///         });
+    ///         // allow access from health check ranges
+    ///         var defaultFirewall = new Gcp.Compute.Firewall("defaultFirewall", new Gcp.Compute.FirewallArgs
+    ///         {
+    ///             Direction = "INGRESS",
+    ///             Network = defaultNetwork.Id,
+    ///             SourceRanges = 
+    ///             {
+    ///                 "130.211.0.0/22",
+    ///                 "35.191.0.0/16",
+    ///             },
+    ///             Allows = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///                 {
+    ///                     Protocol = "tcp",
+    ///                 },
+    ///             },
+    ///             TargetTags = 
+    ///             {
+    ///                 "allow-health-check",
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// ### External Http Lb Mig Backend Custom Header
     /// 
     /// ```csharp

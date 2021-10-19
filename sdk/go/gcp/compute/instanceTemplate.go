@@ -240,8 +240,8 @@ type InstanceTemplate struct {
 	// This can be specified multiple times for multiple disks. Structure is
 	// documented below.
 	Disks InstanceTemplateDiskArrayOutput `pulumi:"disks"`
-	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
+	// ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field. Note: This attribute is currently in beta and will be removed from the google provider. Please use the google-beta provider to continue using this attribute.
 	EnableDisplay pulumi.BoolPtrOutput `pulumi:"enableDisplay"`
 	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
 	GuestAccelerators InstanceTemplateGuestAcceleratorArrayOutput `pulumi:"guestAccelerators"`
@@ -360,8 +360,8 @@ type instanceTemplateState struct {
 	// This can be specified multiple times for multiple disks. Structure is
 	// documented below.
 	Disks []InstanceTemplateDisk `pulumi:"disks"`
-	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
+	// ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field. Note: This attribute is currently in beta and will be removed from the google provider. Please use the google-beta provider to continue using this attribute.
 	EnableDisplay *bool `pulumi:"enableDisplay"`
 	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
 	GuestAccelerators []InstanceTemplateGuestAccelerator `pulumi:"guestAccelerators"`
@@ -446,8 +446,8 @@ type InstanceTemplateState struct {
 	// This can be specified multiple times for multiple disks. Structure is
 	// documented below.
 	Disks InstanceTemplateDiskArrayInput
-	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
+	// ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field. Note: This attribute is currently in beta and will be removed from the google provider. Please use the google-beta provider to continue using this attribute.
 	EnableDisplay pulumi.BoolPtrInput
 	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
 	GuestAccelerators InstanceTemplateGuestAcceleratorArrayInput
@@ -536,8 +536,8 @@ type instanceTemplateArgs struct {
 	// This can be specified multiple times for multiple disks. Structure is
 	// documented below.
 	Disks []InstanceTemplateDisk `pulumi:"disks"`
-	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
+	// ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field. Note: This attribute is currently in beta and will be removed from the google provider. Please use the google-beta provider to continue using this attribute.
 	EnableDisplay *bool `pulumi:"enableDisplay"`
 	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
 	GuestAccelerators []InstanceTemplateGuestAccelerator `pulumi:"guestAccelerators"`
@@ -617,8 +617,8 @@ type InstanceTemplateArgs struct {
 	// This can be specified multiple times for multiple disks. Structure is
 	// documented below.
 	Disks InstanceTemplateDiskArrayInput
-	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
+	// ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field. Note: This attribute is currently in beta and will be removed from the google provider. Please use the google-beta provider to continue using this attribute.
 	EnableDisplay pulumi.BoolPtrInput
 	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
 	GuestAccelerators InstanceTemplateGuestAcceleratorArrayInput
