@@ -48,7 +48,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         public readonly Outputs.ClusterClusterConfigLifecycleConfig? LifecycleConfig;
         /// <summary>
         /// The Google Compute Engine config settings for the master instances
-        /// in a cluster.. Structure defined below.
+        /// in a cluster. Structure defined below.
         /// </summary>
         public readonly Outputs.ClusterClusterConfigMasterConfig? MasterConfig;
         /// <summary>
@@ -92,7 +92,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         public readonly string? TempBucket;
         /// <summary>
         /// The Google Compute Engine config settings for the worker instances
-        /// in a cluster.. Structure defined below.
+        /// in a cluster. Structure defined below.
         /// </summary>
         public readonly Outputs.ClusterClusterConfigWorkerConfig? WorkerConfig;
 

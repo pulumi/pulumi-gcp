@@ -117,7 +117,8 @@ type Connector struct {
 	MinInstances pulumi.IntOutput `pulumi:"minInstances"`
 	// Minimum throughput of the connector in Mbps. Default and min is 200.
 	MinThroughput pulumi.IntPtrOutput `pulumi:"minThroughput"`
-	// The name of the resource (Max 25 characters).
+	// Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
+	// https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Name of the VPC network. Required if `ipCidrRange` is set.
 	Network pulumi.StringPtrOutput `pulumi:"network"`
@@ -131,6 +132,7 @@ type Connector struct {
 	// State of the VPC access connector.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The subnet in which to house the connector
+	// Structure is documented below.
 	Subnet ConnectorSubnetPtrOutput `pulumi:"subnet"`
 }
 
@@ -175,7 +177,8 @@ type connectorState struct {
 	MinInstances *int `pulumi:"minInstances"`
 	// Minimum throughput of the connector in Mbps. Default and min is 200.
 	MinThroughput *int `pulumi:"minThroughput"`
-	// The name of the resource (Max 25 characters).
+	// Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
+	// https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
 	Name *string `pulumi:"name"`
 	// Name of the VPC network. Required if `ipCidrRange` is set.
 	Network *string `pulumi:"network"`
@@ -189,6 +192,7 @@ type connectorState struct {
 	// State of the VPC access connector.
 	State *string `pulumi:"state"`
 	// The subnet in which to house the connector
+	// Structure is documented below.
 	Subnet *ConnectorSubnet `pulumi:"subnet"`
 }
 
@@ -205,7 +209,8 @@ type ConnectorState struct {
 	MinInstances pulumi.IntPtrInput
 	// Minimum throughput of the connector in Mbps. Default and min is 200.
 	MinThroughput pulumi.IntPtrInput
-	// The name of the resource (Max 25 characters).
+	// Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
+	// https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
 	Name pulumi.StringPtrInput
 	// Name of the VPC network. Required if `ipCidrRange` is set.
 	Network pulumi.StringPtrInput
@@ -219,6 +224,7 @@ type ConnectorState struct {
 	// State of the VPC access connector.
 	State pulumi.StringPtrInput
 	// The subnet in which to house the connector
+	// Structure is documented below.
 	Subnet ConnectorSubnetPtrInput
 }
 
@@ -239,7 +245,8 @@ type connectorArgs struct {
 	MinInstances *int `pulumi:"minInstances"`
 	// Minimum throughput of the connector in Mbps. Default and min is 200.
 	MinThroughput *int `pulumi:"minThroughput"`
-	// The name of the resource (Max 25 characters).
+	// Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
+	// https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
 	Name *string `pulumi:"name"`
 	// Name of the VPC network. Required if `ipCidrRange` is set.
 	Network *string `pulumi:"network"`
@@ -249,6 +256,7 @@ type connectorArgs struct {
 	// Region where the VPC Access connector resides. If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
 	// The subnet in which to house the connector
+	// Structure is documented below.
 	Subnet *ConnectorSubnet `pulumi:"subnet"`
 }
 
@@ -266,7 +274,8 @@ type ConnectorArgs struct {
 	MinInstances pulumi.IntPtrInput
 	// Minimum throughput of the connector in Mbps. Default and min is 200.
 	MinThroughput pulumi.IntPtrInput
-	// The name of the resource (Max 25 characters).
+	// Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
+	// https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
 	Name pulumi.StringPtrInput
 	// Name of the VPC network. Required if `ipCidrRange` is set.
 	Network pulumi.StringPtrInput
@@ -276,6 +285,7 @@ type ConnectorArgs struct {
 	// Region where the VPC Access connector resides. If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
 	// The subnet in which to house the connector
+	// Structure is documented below.
 	Subnet ConnectorSubnetPtrInput
 }
 

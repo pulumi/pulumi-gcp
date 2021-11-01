@@ -76,14 +76,14 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Node pools can be imported using the `project`, `zone`, `cluster` and `name`. If the project is omitted, the default provider value will be used. Examples
+ * Node pools can be imported using the `project`, `location`, `cluster` and `name`. If the project is omitted, the project value in the provider configuration will be used. Examples
  *
  * ```sh
  *  $ pulumi import gcp:container/nodePool:NodePool mainpool my-gcp-project/us-east1-a/my-cluster/main-pool
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:container/nodePool:NodePool mainpool us-east1-a/my-cluster/main-pool
+ *  $ pulumi import gcp:container/nodePool:NodePool mainpool us-east1/my-cluster/main-pool
  * ```
  */
 export class NodePool extends pulumi.CustomResource {
@@ -120,7 +120,7 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly autoscaling!: pulumi.Output<outputs.container.NodePoolAutoscaling | undefined>;
     /**
-     * The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
+     * The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
      */
     public readonly cluster!: pulumi.Output<string>;
     /**
@@ -170,7 +170,7 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly networkConfig!: pulumi.Output<outputs.container.NodePoolNetworkConfig>;
     /**
-     * Parameters used in creating the default node pool. See
+     * Parameters used in creating the node pool. See
      * gcp.container.Cluster for schema.
      */
     public readonly nodeConfig!: pulumi.Output<outputs.container.NodePoolNodeConfig>;
@@ -195,7 +195,7 @@ export class NodePool extends pulumi.CustomResource {
     /**
      * Specify node upgrade settings to change how many nodes GKE attempts to
      * upgrade at once. The number of nodes upgraded simultaneously is the sum of `maxSurge` and `maxUnavailable`.
-     * The maximum number of nodes upgraded simultaneously is limited to 20.
+     * The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
      */
     public readonly upgradeSettings!: pulumi.Output<outputs.container.NodePoolUpgradeSettings>;
     /**
@@ -278,7 +278,7 @@ export interface NodePoolState {
      */
     autoscaling?: pulumi.Input<inputs.container.NodePoolAutoscaling>;
     /**
-     * The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
+     * The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
      */
     cluster?: pulumi.Input<string>;
     /**
@@ -328,7 +328,7 @@ export interface NodePoolState {
      */
     networkConfig?: pulumi.Input<inputs.container.NodePoolNetworkConfig>;
     /**
-     * Parameters used in creating the default node pool. See
+     * Parameters used in creating the node pool. See
      * gcp.container.Cluster for schema.
      */
     nodeConfig?: pulumi.Input<inputs.container.NodePoolNodeConfig>;
@@ -353,7 +353,7 @@ export interface NodePoolState {
     /**
      * Specify node upgrade settings to change how many nodes GKE attempts to
      * upgrade at once. The number of nodes upgraded simultaneously is the sum of `maxSurge` and `maxUnavailable`.
-     * The maximum number of nodes upgraded simultaneously is limited to 20.
+     * The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
      */
     upgradeSettings?: pulumi.Input<inputs.container.NodePoolUpgradeSettings>;
     /**
@@ -377,7 +377,7 @@ export interface NodePoolArgs {
      */
     autoscaling?: pulumi.Input<inputs.container.NodePoolAutoscaling>;
     /**
-     * The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
+     * The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
      */
     cluster: pulumi.Input<string>;
     /**
@@ -423,7 +423,7 @@ export interface NodePoolArgs {
      */
     networkConfig?: pulumi.Input<inputs.container.NodePoolNetworkConfig>;
     /**
-     * Parameters used in creating the default node pool. See
+     * Parameters used in creating the node pool. See
      * gcp.container.Cluster for schema.
      */
     nodeConfig?: pulumi.Input<inputs.container.NodePoolNodeConfig>;
@@ -447,7 +447,7 @@ export interface NodePoolArgs {
     /**
      * Specify node upgrade settings to change how many nodes GKE attempts to
      * upgrade at once. The number of nodes upgraded simultaneously is the sum of `maxSurge` and `maxUnavailable`.
-     * The maximum number of nodes upgraded simultaneously is limited to 20.
+     * The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
      */
     upgradeSettings?: pulumi.Input<inputs.container.NodePoolUpgradeSettings>;
     /**

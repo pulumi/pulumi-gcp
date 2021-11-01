@@ -51,7 +51,7 @@ export class FeatureMembership extends pulumi.CustomResource {
     }
 
     /**
-     * Config Management-specific spec.
+     * Config Management-specific spec. Structure is documented below.
      */
     public readonly configmanagement!: pulumi.Output<outputs.gkehub.FeatureMembershipConfigmanagement>;
     /**
@@ -121,7 +121,7 @@ export class FeatureMembership extends pulumi.CustomResource {
  */
 export interface FeatureMembershipState {
     /**
-     * Config Management-specific spec.
+     * Config Management-specific spec. Structure is documented below.
      */
     configmanagement?: pulumi.Input<inputs.gkehub.FeatureMembershipConfigmanagement>;
     /**
@@ -147,7 +147,7 @@ export interface FeatureMembershipState {
  */
 export interface FeatureMembershipArgs {
     /**
-     * Config Management-specific spec.
+     * Config Management-specific spec. Structure is documented below.
      */
     configmanagement: pulumi.Input<inputs.gkehub.FeatureMembershipConfigmanagement>;
     /**

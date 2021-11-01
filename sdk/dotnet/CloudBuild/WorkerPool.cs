@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.CloudBuild
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Network configuration for the `WorkerPool`.
+        /// Network configuration for the `WorkerPool`. Structure is documented below.
         /// </summary>
         [Output("networkConfig")]
         public Output<Outputs.WorkerPoolNetworkConfig?> NetworkConfig { get; private set; } = null!;
@@ -78,7 +78,7 @@ namespace Pulumi.Gcp.CloudBuild
         public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration to be used for a creating workers in the `WorkerPool`.
+        /// Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
         /// </summary>
         [Output("workerConfig")]
         public Output<Outputs.WorkerPoolWorkerConfig> WorkerConfig { get; private set; } = null!;
@@ -142,7 +142,7 @@ namespace Pulumi.Gcp.CloudBuild
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Network configuration for the `WorkerPool`.
+        /// Network configuration for the `WorkerPool`. Structure is documented below.
         /// </summary>
         [Input("networkConfig")]
         public Input<Inputs.WorkerPoolNetworkConfigArgs>? NetworkConfig { get; set; }
@@ -154,7 +154,7 @@ namespace Pulumi.Gcp.CloudBuild
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Configuration to be used for a creating workers in the `WorkerPool`.
+        /// Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
         /// </summary>
         [Input("workerConfig")]
         public Input<Inputs.WorkerPoolWorkerConfigArgs>? WorkerConfig { get; set; }
@@ -191,7 +191,7 @@ namespace Pulumi.Gcp.CloudBuild
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Network configuration for the `WorkerPool`.
+        /// Network configuration for the `WorkerPool`. Structure is documented below.
         /// </summary>
         [Input("networkConfig")]
         public Input<Inputs.WorkerPoolNetworkConfigGetArgs>? NetworkConfig { get; set; }
@@ -215,7 +215,7 @@ namespace Pulumi.Gcp.CloudBuild
         public Input<string>? UpdateTime { get; set; }
 
         /// <summary>
-        /// Configuration to be used for a creating workers in the `WorkerPool`.
+        /// Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
         /// </summary>
         [Input("workerConfig")]
         public Input<Inputs.WorkerPoolWorkerConfigGetArgs>? WorkerConfig { get; set; }

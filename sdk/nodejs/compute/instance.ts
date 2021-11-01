@@ -98,7 +98,7 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
-     * Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
+     * Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
      */
     public readonly advancedMachineFeatures!: pulumi.Output<outputs.compute.InstanceAdvancedMachineFeatures | undefined>;
     /**
@@ -122,7 +122,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly canIpForward!: pulumi.Output<boolean | undefined>;
     /**
-     * Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+     * Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
      */
     public readonly confidentialInstanceConfig!: pulumi.Output<outputs.compute.InstanceConfidentialInstanceConfig>;
     /**
@@ -389,7 +389,7 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceState {
     /**
-     * Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
+     * Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
      */
     advancedMachineFeatures?: pulumi.Input<inputs.compute.InstanceAdvancedMachineFeatures>;
     /**
@@ -413,7 +413,7 @@ export interface InstanceState {
      */
     canIpForward?: pulumi.Input<boolean>;
     /**
-     * Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+     * Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
      */
     confidentialInstanceConfig?: pulumi.Input<inputs.compute.InstanceConfidentialInstanceConfig>;
     /**
@@ -577,7 +577,7 @@ export interface InstanceState {
  */
 export interface InstanceArgs {
     /**
-     * Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
+     * Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
      */
     advancedMachineFeatures?: pulumi.Input<inputs.compute.InstanceAdvancedMachineFeatures>;
     /**
@@ -601,7 +601,7 @@ export interface InstanceArgs {
      */
     canIpForward?: pulumi.Input<boolean>;
     /**
-     * Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+     * Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
      */
     confidentialInstanceConfig?: pulumi.Input<inputs.compute.InstanceConfidentialInstanceConfig>;
     /**

@@ -56,10 +56,10 @@ class FeatureMembershipConfigmanagement(dict):
                  policy_controller: Optional['outputs.FeatureMembershipConfigmanagementPolicyController'] = None,
                  version: Optional[str] = None):
         """
-        :param 'FeatureMembershipConfigmanagementBinauthzArgs' binauthz: Binauthz configuration for the cluster.
-        :param 'FeatureMembershipConfigmanagementConfigSyncArgs' config_sync: Config Sync configuration for the cluster.
-        :param 'FeatureMembershipConfigmanagementHierarchyControllerArgs' hierarchy_controller: Hierarchy Controller configuration for the cluster.
-        :param 'FeatureMembershipConfigmanagementPolicyControllerArgs' policy_controller: Policy Controller configuration for the cluster.
+        :param 'FeatureMembershipConfigmanagementBinauthzArgs' binauthz: Binauthz configuration for the cluster. Structure is documented below.
+        :param 'FeatureMembershipConfigmanagementConfigSyncArgs' config_sync: Config Sync configuration for the cluster. Structure is documented below.
+        :param 'FeatureMembershipConfigmanagementHierarchyControllerArgs' hierarchy_controller: Hierarchy Controller configuration for the cluster. Structure is documented below.
+        :param 'FeatureMembershipConfigmanagementPolicyControllerArgs' policy_controller: Policy Controller configuration for the cluster. Structure is documented below.
         :param str version: Version of ACM installed.
         """
         if binauthz is not None:
@@ -77,7 +77,7 @@ class FeatureMembershipConfigmanagement(dict):
     @pulumi.getter
     def binauthz(self) -> Optional['outputs.FeatureMembershipConfigmanagementBinauthz']:
         """
-        Binauthz configuration for the cluster.
+        Binauthz configuration for the cluster. Structure is documented below.
         """
         return pulumi.get(self, "binauthz")
 
@@ -85,7 +85,7 @@ class FeatureMembershipConfigmanagement(dict):
     @pulumi.getter(name="configSync")
     def config_sync(self) -> Optional['outputs.FeatureMembershipConfigmanagementConfigSync']:
         """
-        Config Sync configuration for the cluster.
+        Config Sync configuration for the cluster. Structure is documented below.
         """
         return pulumi.get(self, "config_sync")
 
@@ -93,7 +93,7 @@ class FeatureMembershipConfigmanagement(dict):
     @pulumi.getter(name="hierarchyController")
     def hierarchy_controller(self) -> Optional['outputs.FeatureMembershipConfigmanagementHierarchyController']:
         """
-        Hierarchy Controller configuration for the cluster.
+        Hierarchy Controller configuration for the cluster. Structure is documented below.
         """
         return pulumi.get(self, "hierarchy_controller")
 
@@ -101,7 +101,7 @@ class FeatureMembershipConfigmanagement(dict):
     @pulumi.getter(name="policyController")
     def policy_controller(self) -> Optional['outputs.FeatureMembershipConfigmanagementPolicyController']:
         """
-        Policy Controller configuration for the cluster.
+        Policy Controller configuration for the cluster. Structure is documented below.
         """
         return pulumi.get(self, "policy_controller")
 
@@ -157,7 +157,7 @@ class FeatureMembershipConfigmanagementConfigSync(dict):
                  source_format: Optional[str] = None):
         """
         :param 'FeatureMembershipConfigmanagementConfigSyncGitArgs' git: -
-               (Optional)
+               (Optional) Structure is documented below.
         :param str source_format: Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
         """
         if git is not None:
@@ -170,7 +170,7 @@ class FeatureMembershipConfigmanagementConfigSync(dict):
     def git(self) -> Optional['outputs.FeatureMembershipConfigmanagementConfigSyncGit']:
         """
         -
-        (Optional)
+        (Optional) Structure is documented below.
         """
         return pulumi.get(self, "git")
 

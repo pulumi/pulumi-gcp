@@ -251,7 +251,8 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly network!: pulumi.Output<string>;
     /**
-     * The type of vNIC driver. Possible values: ["UNSPECIFIED_NIC_TYPE", "VIRTIO_NET", "GVNIC"]
+     * The type of vNIC driver.
+     * Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
      */
     public readonly nicType!: pulumi.Output<string | undefined>;
     /**
@@ -283,6 +284,7 @@ export class Instance extends pulumi.CustomResource {
     public /*out*/ readonly proxyUri!: pulumi.Output<string>;
     /**
      * Reservation Affinity for consuming Zonal reservation.
+     * Structure is documented below.
      */
     public readonly reservationAffinity!: pulumi.Output<outputs.notebooks.InstanceReservationAffinity | undefined>;
     /**
@@ -526,7 +528,8 @@ export interface InstanceState {
      */
     network?: pulumi.Input<string>;
     /**
-     * The type of vNIC driver. Possible values: ["UNSPECIFIED_NIC_TYPE", "VIRTIO_NET", "GVNIC"]
+     * The type of vNIC driver.
+     * Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
      */
     nicType?: pulumi.Input<string>;
     /**
@@ -558,6 +561,7 @@ export interface InstanceState {
     proxyUri?: pulumi.Input<string>;
     /**
      * Reservation Affinity for consuming Zonal reservation.
+     * Structure is documented below.
      */
     reservationAffinity?: pulumi.Input<inputs.notebooks.InstanceReservationAffinity>;
     /**
@@ -705,7 +709,8 @@ export interface InstanceArgs {
      */
     network?: pulumi.Input<string>;
     /**
-     * The type of vNIC driver. Possible values: ["UNSPECIFIED_NIC_TYPE", "VIRTIO_NET", "GVNIC"]
+     * The type of vNIC driver.
+     * Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
      */
     nicType?: pulumi.Input<string>;
     /**
@@ -733,6 +738,7 @@ export interface InstanceArgs {
     project?: pulumi.Input<string>;
     /**
      * Reservation Affinity for consuming Zonal reservation.
+     * Structure is documented below.
      */
     reservationAffinity?: pulumi.Input<inputs.notebooks.InstanceReservationAffinity>;
     /**

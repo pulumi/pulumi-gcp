@@ -68,28 +68,12 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// }
     /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// Security policies can be imported using any of the following formats
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy projects/{{project}}/global/securityPolicies/{{name}}
-    /// ```
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy {{project}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy {{name}}
-    /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/securityPolicy:SecurityPolicy")]
     public partial class SecurityPolicy : Pulumi.CustomResource
     {
         /// <summary>
-        /// ) Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+        /// Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
         /// </summary>
         [Output("adaptiveProtectionConfig")]
         public Output<Outputs.SecurityPolicyAdaptiveProtectionConfig?> AdaptiveProtectionConfig { get; private set; } = null!;
@@ -128,7 +112,7 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<Outputs.SecurityPolicyRule>> Rules { get; private set; } = null!;
 
         /// <summary>
-        /// The URI of the created resource.
+        /// The URI of the created resourc
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
@@ -180,7 +164,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class SecurityPolicyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ) Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+        /// Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
         /// </summary>
         [Input("adaptiveProtectionConfig")]
         public Input<Inputs.SecurityPolicyAdaptiveProtectionConfigArgs>? AdaptiveProtectionConfig { get; set; }
@@ -226,7 +210,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class SecurityPolicyState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ) Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+        /// Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
         /// </summary>
         [Input("adaptiveProtectionConfig")]
         public Input<Inputs.SecurityPolicyAdaptiveProtectionConfigGetArgs>? AdaptiveProtectionConfig { get; set; }
@@ -271,7 +255,7 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// The URI of the created resource.
+        /// The URI of the created resourc
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }

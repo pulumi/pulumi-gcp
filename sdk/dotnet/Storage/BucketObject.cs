@@ -96,7 +96,7 @@ namespace Pulumi.Gcp.Storage
         public Output<string> Crc32c { get; private set; } = null!;
 
         /// <summary>
-        /// Enables object encryption with Customer-Supplied Encryption Key (CSEK). [Google documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
+        /// Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
         /// Structure is documented below.
         /// </summary>
         [Output("customerEncryption")]
@@ -268,7 +268,7 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? ContentType { get; set; }
 
         /// <summary>
-        /// Enables object encryption with Customer-Supplied Encryption Key (CSEK). [Google documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
+        /// Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
         /// Structure is documented below.
         /// </summary>
         [Input("customerEncryption")]
@@ -388,7 +388,7 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? Crc32c { get; set; }
 
         /// <summary>
-        /// Enables object encryption with Customer-Supplied Encryption Key (CSEK). [Google documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
+        /// Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
         /// Structure is documented below.
         /// </summary>
         [Input("customerEncryption")]

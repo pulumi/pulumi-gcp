@@ -243,7 +243,7 @@ import (
 type CryptoKeyIAMBinding struct {
 	pulumi.CustomResourceState
 
-	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition CryptoKeyIAMBindingConditionPtrOutput `pulumi:"condition"`
 	// The crypto key ID, in the form
@@ -297,7 +297,7 @@ func GetCryptoKeyIAMBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CryptoKeyIAMBinding resources.
 type cryptoKeyIAMBindingState struct {
-	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *CryptoKeyIAMBindingCondition `pulumi:"condition"`
 	// The crypto key ID, in the form
@@ -314,7 +314,7 @@ type cryptoKeyIAMBindingState struct {
 }
 
 type CryptoKeyIAMBindingState struct {
-	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition CryptoKeyIAMBindingConditionPtrInput
 	// The crypto key ID, in the form
@@ -335,7 +335,7 @@ func (CryptoKeyIAMBindingState) ElementType() reflect.Type {
 }
 
 type cryptoKeyIAMBindingArgs struct {
-	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *CryptoKeyIAMBindingCondition `pulumi:"condition"`
 	// The crypto key ID, in the form
@@ -351,7 +351,7 @@ type cryptoKeyIAMBindingArgs struct {
 
 // The set of arguments for constructing a CryptoKeyIAMBinding resource.
 type CryptoKeyIAMBindingArgs struct {
-	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition CryptoKeyIAMBindingConditionPtrInput
 	// The crypto key ID, in the form

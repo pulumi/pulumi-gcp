@@ -119,6 +119,12 @@ namespace Pulumi.Gcp.CloudRun.Inputs
 
         [Input("volumeMounts")]
         private InputList<Inputs.ServiceTemplateSpecContainerVolumeMountGetArgs>? _volumeMounts;
+
+        /// <summary>
+        /// Volume to mount into the container's filesystem.
+        /// Only supports SecretVolumeSources.
+        /// Structure is documented below.
+        /// </summary>
         public InputList<Inputs.ServiceTemplateSpecContainerVolumeMountGetArgs> VolumeMounts
         {
             get => _volumeMounts ?? (_volumeMounts = new InputList<Inputs.ServiceTemplateSpecContainerVolumeMountGetArgs>());

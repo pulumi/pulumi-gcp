@@ -93,7 +93,7 @@ export class BucketObject extends pulumi.CustomResource {
      */
     public /*out*/ readonly crc32c!: pulumi.Output<string>;
     /**
-     * Enables object encryption with Customer-Supplied Encryption Key (CSEK). [Google documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
+     * Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
      * Structure is documented below.
      */
     public readonly customerEncryption!: pulumi.Output<outputs.storage.BucketObjectCustomerEncryption | undefined>;
@@ -256,7 +256,7 @@ export interface BucketObjectState {
      */
     crc32c?: pulumi.Input<string>;
     /**
-     * Enables object encryption with Customer-Supplied Encryption Key (CSEK). [Google documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
+     * Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
      * Structure is documented below.
      */
     customerEncryption?: pulumi.Input<inputs.storage.BucketObjectCustomerEncryption>;
@@ -348,7 +348,7 @@ export interface BucketObjectArgs {
      */
     contentType?: pulumi.Input<string>;
     /**
-     * Enables object encryption with Customer-Supplied Encryption Key (CSEK). [Google documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
+     * Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
      * Structure is documented below.
      */
     customerEncryption?: pulumi.Input<inputs.storage.BucketObjectCustomerEncryption>;

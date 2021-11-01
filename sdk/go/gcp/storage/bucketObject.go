@@ -67,7 +67,7 @@ type BucketObject struct {
 	ContentType pulumi.StringOutput `pulumi:"contentType"`
 	// (Computed) Base 64 CRC32 hash of the uploaded data.
 	Crc32c pulumi.StringOutput `pulumi:"crc32c"`
-	// Enables object encryption with Customer-Supplied Encryption Key (CSEK). [Google documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
+	// Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
 	// Structure is documented below.
 	CustomerEncryption BucketObjectCustomerEncryptionPtrOutput `pulumi:"customerEncryption"`
 	DetectMd5hash      pulumi.StringPtrOutput                  `pulumi:"detectMd5hash"`
@@ -151,7 +151,7 @@ type bucketObjectState struct {
 	ContentType *string `pulumi:"contentType"`
 	// (Computed) Base 64 CRC32 hash of the uploaded data.
 	Crc32c *string `pulumi:"crc32c"`
-	// Enables object encryption with Customer-Supplied Encryption Key (CSEK). [Google documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
+	// Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
 	// Structure is documented below.
 	CustomerEncryption *BucketObjectCustomerEncryption `pulumi:"customerEncryption"`
 	DetectMd5hash      *string                         `pulumi:"detectMd5hash"`
@@ -204,7 +204,7 @@ type BucketObjectState struct {
 	ContentType pulumi.StringPtrInput
 	// (Computed) Base 64 CRC32 hash of the uploaded data.
 	Crc32c pulumi.StringPtrInput
-	// Enables object encryption with Customer-Supplied Encryption Key (CSEK). [Google documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
+	// Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
 	// Structure is documented below.
 	CustomerEncryption BucketObjectCustomerEncryptionPtrInput
 	DetectMd5hash      pulumi.StringPtrInput
@@ -259,7 +259,7 @@ type bucketObjectArgs struct {
 	ContentLanguage *string `pulumi:"contentLanguage"`
 	// [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
 	ContentType *string `pulumi:"contentType"`
-	// Enables object encryption with Customer-Supplied Encryption Key (CSEK). [Google documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
+	// Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
 	// Structure is documented below.
 	CustomerEncryption *BucketObjectCustomerEncryption `pulumi:"customerEncryption"`
 	DetectMd5hash      *string                         `pulumi:"detectMd5hash"`
@@ -302,7 +302,7 @@ type BucketObjectArgs struct {
 	ContentLanguage pulumi.StringPtrInput
 	// [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
 	ContentType pulumi.StringPtrInput
-	// Enables object encryption with Customer-Supplied Encryption Key (CSEK). [Google documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
+	// Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
 	// Structure is documented below.
 	CustomerEncryption BucketObjectCustomerEncryptionPtrInput
 	DetectMd5hash      pulumi.StringPtrInput

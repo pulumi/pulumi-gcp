@@ -73,6 +73,11 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ServiceTemplateSpecContainerResources? Resources;
+        /// <summary>
+        /// Volume to mount into the container's filesystem.
+        /// Only supports SecretVolumeSources.
+        /// Structure is documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.ServiceTemplateSpecContainerVolumeMount> VolumeMounts;
         /// <summary>
         /// -

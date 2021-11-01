@@ -2947,12 +2947,10 @@ func (o ClusterDefaultSnatStatusPtrOutput) Disabled() pulumi.BoolPtrOutput {
 }
 
 type ClusterDnsConfig struct {
-	// Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
-	ClusterDns *string `pulumi:"clusterDns"`
-	// The suffix used for all cluster service records.
+	// Which in-cluster DNS provider shoul
+	ClusterDns       *string `pulumi:"clusterDns"`
 	ClusterDnsDomain *string `pulumi:"clusterDnsDomain"`
-	// The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
-	ClusterDnsScope *string `pulumi:"clusterDnsScope"`
+	ClusterDnsScope  *string `pulumi:"clusterDnsScope"`
 }
 
 // ClusterDnsConfigInput is an input type that accepts ClusterDnsConfigArgs and ClusterDnsConfigOutput values.
@@ -2967,12 +2965,10 @@ type ClusterDnsConfigInput interface {
 }
 
 type ClusterDnsConfigArgs struct {
-	// Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
-	ClusterDns pulumi.StringPtrInput `pulumi:"clusterDns"`
-	// The suffix used for all cluster service records.
+	// Which in-cluster DNS provider shoul
+	ClusterDns       pulumi.StringPtrInput `pulumi:"clusterDns"`
 	ClusterDnsDomain pulumi.StringPtrInput `pulumi:"clusterDnsDomain"`
-	// The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
-	ClusterDnsScope pulumi.StringPtrInput `pulumi:"clusterDnsScope"`
+	ClusterDnsScope  pulumi.StringPtrInput `pulumi:"clusterDnsScope"`
 }
 
 func (ClusterDnsConfigArgs) ElementType() reflect.Type {
@@ -3052,17 +3048,15 @@ func (o ClusterDnsConfigOutput) ToClusterDnsConfigPtrOutputWithContext(ctx conte
 	}).(ClusterDnsConfigPtrOutput)
 }
 
-// Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
+// Which in-cluster DNS provider shoul
 func (o ClusterDnsConfigOutput) ClusterDns() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterDnsConfig) *string { return v.ClusterDns }).(pulumi.StringPtrOutput)
 }
 
-// The suffix used for all cluster service records.
 func (o ClusterDnsConfigOutput) ClusterDnsDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterDnsConfig) *string { return v.ClusterDnsDomain }).(pulumi.StringPtrOutput)
 }
 
-// The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
 func (o ClusterDnsConfigOutput) ClusterDnsScope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterDnsConfig) *string { return v.ClusterDnsScope }).(pulumi.StringPtrOutput)
 }
@@ -3091,7 +3085,7 @@ func (o ClusterDnsConfigPtrOutput) Elem() ClusterDnsConfigOutput {
 	}).(ClusterDnsConfigOutput)
 }
 
-// Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
+// Which in-cluster DNS provider shoul
 func (o ClusterDnsConfigPtrOutput) ClusterDns() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterDnsConfig) *string {
 		if v == nil {
@@ -3101,7 +3095,6 @@ func (o ClusterDnsConfigPtrOutput) ClusterDns() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The suffix used for all cluster service records.
 func (o ClusterDnsConfigPtrOutput) ClusterDnsDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterDnsConfig) *string {
 		if v == nil {
@@ -3111,7 +3104,6 @@ func (o ClusterDnsConfigPtrOutput) ClusterDnsDomain() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
 func (o ClusterDnsConfigPtrOutput) ClusterDnsScope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterDnsConfig) *string {
 		if v == nil {
@@ -3368,8 +3360,7 @@ func (o ClusterIpAllocationPolicyPtrOutput) ServicesSecondaryRangeName() pulumi.
 }
 
 type ClusterLoggingConfig struct {
-	// The GKE components exposing logs. Only `SYSTEM_COMPONENTS`
-	// is supported.
+	// The GKE components exposing logs. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported.
 	EnableComponents []string `pulumi:"enableComponents"`
 }
 
@@ -3385,8 +3376,7 @@ type ClusterLoggingConfigInput interface {
 }
 
 type ClusterLoggingConfigArgs struct {
-	// The GKE components exposing logs. Only `SYSTEM_COMPONENTS`
-	// is supported.
+	// The GKE components exposing logs. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported.
 	EnableComponents pulumi.StringArrayInput `pulumi:"enableComponents"`
 }
 
@@ -3467,8 +3457,7 @@ func (o ClusterLoggingConfigOutput) ToClusterLoggingConfigPtrOutputWithContext(c
 	}).(ClusterLoggingConfigPtrOutput)
 }
 
-// The GKE components exposing logs. Only `SYSTEM_COMPONENTS`
-// is supported.
+// The GKE components exposing logs. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported.
 func (o ClusterLoggingConfigOutput) EnableComponents() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterLoggingConfig) []string { return v.EnableComponents }).(pulumi.StringArrayOutput)
 }
@@ -3497,8 +3486,7 @@ func (o ClusterLoggingConfigPtrOutput) Elem() ClusterLoggingConfigOutput {
 	}).(ClusterLoggingConfigOutput)
 }
 
-// The GKE components exposing logs. Only `SYSTEM_COMPONENTS`
-// is supported.
+// The GKE components exposing logs. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported.
 func (o ClusterLoggingConfigPtrOutput) EnableComponents() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterLoggingConfig) []string {
 		if v == nil {
@@ -4726,8 +4714,7 @@ func (o ClusterMasterAuthorizedNetworksConfigCidrBlockArrayOutput) Index(i pulum
 }
 
 type ClusterMonitoringConfig struct {
-	// The GKE components exposing logs. Only `SYSTEM_COMPONENTS`
-	// is supported.
+	// The GKE components exposing logs. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported.
 	EnableComponents []string `pulumi:"enableComponents"`
 }
 
@@ -4743,8 +4730,7 @@ type ClusterMonitoringConfigInput interface {
 }
 
 type ClusterMonitoringConfigArgs struct {
-	// The GKE components exposing logs. Only `SYSTEM_COMPONENTS`
-	// is supported.
+	// The GKE components exposing logs. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported.
 	EnableComponents pulumi.StringArrayInput `pulumi:"enableComponents"`
 }
 
@@ -4825,8 +4811,7 @@ func (o ClusterMonitoringConfigOutput) ToClusterMonitoringConfigPtrOutputWithCon
 	}).(ClusterMonitoringConfigPtrOutput)
 }
 
-// The GKE components exposing logs. Only `SYSTEM_COMPONENTS`
-// is supported.
+// The GKE components exposing logs. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported.
 func (o ClusterMonitoringConfigOutput) EnableComponents() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterMonitoringConfig) []string { return v.EnableComponents }).(pulumi.StringArrayOutput)
 }
@@ -4855,8 +4840,7 @@ func (o ClusterMonitoringConfigPtrOutput) Elem() ClusterMonitoringConfigOutput {
 	}).(ClusterMonitoringConfigOutput)
 }
 
-// The GKE components exposing logs. Only `SYSTEM_COMPONENTS`
-// is supported.
+// The GKE components exposing logs. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported.
 func (o ClusterMonitoringConfigPtrOutput) EnableComponents() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterMonitoringConfig) []string {
 		if v == nil {
@@ -5815,6 +5799,8 @@ func (o ClusterNodeConfigEphemeralStorageConfigPtrOutput) LocalSsdCount() pulumi
 type ClusterNodeConfigGuestAccelerator struct {
 	// The number of the guest accelerator cards exposed to this instance.
 	Count int `pulumi:"count"`
+	// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+	GpuPartitionSize *string `pulumi:"gpuPartitionSize"`
 	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
 	Type string `pulumi:"type"`
 }
@@ -5833,6 +5819,8 @@ type ClusterNodeConfigGuestAcceleratorInput interface {
 type ClusterNodeConfigGuestAcceleratorArgs struct {
 	// The number of the guest accelerator cards exposed to this instance.
 	Count pulumi.IntInput `pulumi:"count"`
+	// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+	GpuPartitionSize pulumi.StringPtrInput `pulumi:"gpuPartitionSize"`
 	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
@@ -5891,6 +5879,11 @@ func (o ClusterNodeConfigGuestAcceleratorOutput) ToClusterNodeConfigGuestAcceler
 // The number of the guest accelerator cards exposed to this instance.
 func (o ClusterNodeConfigGuestAcceleratorOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterNodeConfigGuestAccelerator) int { return v.Count }).(pulumi.IntOutput)
+}
+
+// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+func (o ClusterNodeConfigGuestAcceleratorOutput) GpuPartitionSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfigGuestAccelerator) *string { return v.GpuPartitionSize }).(pulumi.StringPtrOutput)
 }
 
 // The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
@@ -6882,9 +6875,7 @@ type ClusterNodePool struct {
 	// `container.NodePool` objects with no default node pool, you'll need to
 	// set this to a value of at least `1`, alongside setting
 	// `removeDefaultNodePool` to `true`.
-	InitialNodeCount *int `pulumi:"initialNodeCount"`
-	// List of instance group URLs which have been assigned
-	// to the cluster.
+	InitialNodeCount  *int                       `pulumi:"initialNodeCount"`
 	InstanceGroupUrls []string                   `pulumi:"instanceGroupUrls"`
 	Management        *ClusterNodePoolManagement `pulumi:"management"`
 	MaxPodsPerNode    *int                       `pulumi:"maxPodsPerNode"`
@@ -6892,8 +6883,8 @@ type ClusterNodePool struct {
 	// location.
 	Name       *string `pulumi:"name"`
 	NamePrefix *string `pulumi:"namePrefix"`
-	// ) Configuration for
-	// [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool.
+	// Configuration for
+	// [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
 	NetworkConfig *ClusterNodePoolNetworkConfig `pulumi:"networkConfig"`
 	// Parameters used in creating the default node pool.
 	// Generally, this field should not be used at the same time as a
@@ -6930,9 +6921,7 @@ type ClusterNodePoolArgs struct {
 	// `container.NodePool` objects with no default node pool, you'll need to
 	// set this to a value of at least `1`, alongside setting
 	// `removeDefaultNodePool` to `true`.
-	InitialNodeCount pulumi.IntPtrInput `pulumi:"initialNodeCount"`
-	// List of instance group URLs which have been assigned
-	// to the cluster.
+	InitialNodeCount  pulumi.IntPtrInput                `pulumi:"initialNodeCount"`
 	InstanceGroupUrls pulumi.StringArrayInput           `pulumi:"instanceGroupUrls"`
 	Management        ClusterNodePoolManagementPtrInput `pulumi:"management"`
 	MaxPodsPerNode    pulumi.IntPtrInput                `pulumi:"maxPodsPerNode"`
@@ -6940,8 +6929,8 @@ type ClusterNodePoolArgs struct {
 	// location.
 	Name       pulumi.StringPtrInput `pulumi:"name"`
 	NamePrefix pulumi.StringPtrInput `pulumi:"namePrefix"`
-	// ) Configuration for
-	// [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool.
+	// Configuration for
+	// [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
 	NetworkConfig ClusterNodePoolNetworkConfigPtrInput `pulumi:"networkConfig"`
 	// Parameters used in creating the default node pool.
 	// Generally, this field should not be used at the same time as a
@@ -7024,8 +7013,6 @@ func (o ClusterNodePoolOutput) InitialNodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterNodePool) *int { return v.InitialNodeCount }).(pulumi.IntPtrOutput)
 }
 
-// List of instance group URLs which have been assigned
-// to the cluster.
 func (o ClusterNodePoolOutput) InstanceGroupUrls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterNodePool) []string { return v.InstanceGroupUrls }).(pulumi.StringArrayOutput)
 }
@@ -7048,8 +7035,8 @@ func (o ClusterNodePoolOutput) NamePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePool) *string { return v.NamePrefix }).(pulumi.StringPtrOutput)
 }
 
-// ) Configuration for
-// [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool.
+// Configuration for
+// [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
 func (o ClusterNodePoolOutput) NetworkConfig() ClusterNodePoolNetworkConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodePool) *ClusterNodePoolNetworkConfig { return v.NetworkConfig }).(ClusterNodePoolNetworkConfigPtrOutput)
 }
@@ -7400,11 +7387,11 @@ func (o ClusterNodePoolManagementPtrOutput) AutoUpgrade() pulumi.BoolPtrOutput {
 }
 
 type ClusterNodePoolNetworkConfig struct {
-	// ) Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
+	// Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
 	CreatePodRange *bool `pulumi:"createPodRange"`
-	// ) The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
+	// The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
 	PodIpv4CidrBlock *string `pulumi:"podIpv4CidrBlock"`
-	// ) The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
+	// The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
 	PodRange string `pulumi:"podRange"`
 }
 
@@ -7420,11 +7407,11 @@ type ClusterNodePoolNetworkConfigInput interface {
 }
 
 type ClusterNodePoolNetworkConfigArgs struct {
-	// ) Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
+	// Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
 	CreatePodRange pulumi.BoolPtrInput `pulumi:"createPodRange"`
-	// ) The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
+	// The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
 	PodIpv4CidrBlock pulumi.StringPtrInput `pulumi:"podIpv4CidrBlock"`
-	// ) The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
+	// The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
 	PodRange pulumi.StringInput `pulumi:"podRange"`
 }
 
@@ -7505,17 +7492,17 @@ func (o ClusterNodePoolNetworkConfigOutput) ToClusterNodePoolNetworkConfigPtrOut
 	}).(ClusterNodePoolNetworkConfigPtrOutput)
 }
 
-// ) Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
+// Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
 func (o ClusterNodePoolNetworkConfigOutput) CreatePodRange() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNetworkConfig) *bool { return v.CreatePodRange }).(pulumi.BoolPtrOutput)
 }
 
-// ) The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
+// The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
 func (o ClusterNodePoolNetworkConfigOutput) PodIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNetworkConfig) *string { return v.PodIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
-// ) The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
+// The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
 func (o ClusterNodePoolNetworkConfigOutput) PodRange() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodePoolNetworkConfig) string { return v.PodRange }).(pulumi.StringOutput)
 }
@@ -7544,7 +7531,7 @@ func (o ClusterNodePoolNetworkConfigPtrOutput) Elem() ClusterNodePoolNetworkConf
 	}).(ClusterNodePoolNetworkConfigOutput)
 }
 
-// ) Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
+// Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
 func (o ClusterNodePoolNetworkConfigPtrOutput) CreatePodRange() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNetworkConfig) *bool {
 		if v == nil {
@@ -7554,7 +7541,7 @@ func (o ClusterNodePoolNetworkConfigPtrOutput) CreatePodRange() pulumi.BoolPtrOu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// ) The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
+// The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
 func (o ClusterNodePoolNetworkConfigPtrOutput) PodIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNetworkConfig) *string {
 		if v == nil {
@@ -7564,7 +7551,7 @@ func (o ClusterNodePoolNetworkConfigPtrOutput) PodIpv4CidrBlock() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// ) The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
+// The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
 func (o ClusterNodePoolNetworkConfigPtrOutput) PodRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNetworkConfig) *string {
 		if v == nil {
@@ -8371,6 +8358,8 @@ func (o ClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput) LocalSsdCount(
 type ClusterNodePoolNodeConfigGuestAccelerator struct {
 	// The number of the guest accelerator cards exposed to this instance.
 	Count int `pulumi:"count"`
+	// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+	GpuPartitionSize *string `pulumi:"gpuPartitionSize"`
 	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
 	Type string `pulumi:"type"`
 }
@@ -8389,6 +8378,8 @@ type ClusterNodePoolNodeConfigGuestAcceleratorInput interface {
 type ClusterNodePoolNodeConfigGuestAcceleratorArgs struct {
 	// The number of the guest accelerator cards exposed to this instance.
 	Count pulumi.IntInput `pulumi:"count"`
+	// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+	GpuPartitionSize pulumi.StringPtrInput `pulumi:"gpuPartitionSize"`
 	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
@@ -8447,6 +8438,11 @@ func (o ClusterNodePoolNodeConfigGuestAcceleratorOutput) ToClusterNodePoolNodeCo
 // The number of the guest accelerator cards exposed to this instance.
 func (o ClusterNodePoolNodeConfigGuestAcceleratorOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigGuestAccelerator) int { return v.Count }).(pulumi.IntOutput)
+}
+
+// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+func (o ClusterNodePoolNodeConfigGuestAcceleratorOutput) GpuPartitionSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigGuestAccelerator) *string { return v.GpuPartitionSize }).(pulumi.StringPtrOutput)
 }
 
 // The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
@@ -11095,8 +11091,12 @@ func (o ClusterVerticalPodAutoscalingPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type ClusterWorkloadIdentityConfig struct {
-	// Currently, the only supported identity namespace is the project's default.
-	IdentityNamespace string `pulumi:"identityNamespace"`
+	// - Currently, the only supported identity namespace is the project's default.
+	//
+	// Deprecated: This field will be removed in a future major release as it has been deprecated in the API. Use `workload_pool` instead.
+	IdentityNamespace *string `pulumi:"identityNamespace"`
+	// The workload pool to attach all Kubernetes service accounts to. Currently, the only supported identity namespace is the project of the cluster.
+	WorkloadPool *string `pulumi:"workloadPool"`
 }
 
 // ClusterWorkloadIdentityConfigInput is an input type that accepts ClusterWorkloadIdentityConfigArgs and ClusterWorkloadIdentityConfigOutput values.
@@ -11111,8 +11111,12 @@ type ClusterWorkloadIdentityConfigInput interface {
 }
 
 type ClusterWorkloadIdentityConfigArgs struct {
-	// Currently, the only supported identity namespace is the project's default.
-	IdentityNamespace pulumi.StringInput `pulumi:"identityNamespace"`
+	// - Currently, the only supported identity namespace is the project's default.
+	//
+	// Deprecated: This field will be removed in a future major release as it has been deprecated in the API. Use `workload_pool` instead.
+	IdentityNamespace pulumi.StringPtrInput `pulumi:"identityNamespace"`
+	// The workload pool to attach all Kubernetes service accounts to. Currently, the only supported identity namespace is the project of the cluster.
+	WorkloadPool pulumi.StringPtrInput `pulumi:"workloadPool"`
 }
 
 func (ClusterWorkloadIdentityConfigArgs) ElementType() reflect.Type {
@@ -11192,9 +11196,16 @@ func (o ClusterWorkloadIdentityConfigOutput) ToClusterWorkloadIdentityConfigPtrO
 	}).(ClusterWorkloadIdentityConfigPtrOutput)
 }
 
-// Currently, the only supported identity namespace is the project's default.
-func (o ClusterWorkloadIdentityConfigOutput) IdentityNamespace() pulumi.StringOutput {
-	return o.ApplyT(func(v ClusterWorkloadIdentityConfig) string { return v.IdentityNamespace }).(pulumi.StringOutput)
+// - Currently, the only supported identity namespace is the project's default.
+//
+// Deprecated: This field will be removed in a future major release as it has been deprecated in the API. Use `workload_pool` instead.
+func (o ClusterWorkloadIdentityConfigOutput) IdentityNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterWorkloadIdentityConfig) *string { return v.IdentityNamespace }).(pulumi.StringPtrOutput)
+}
+
+// The workload pool to attach all Kubernetes service accounts to. Currently, the only supported identity namespace is the project of the cluster.
+func (o ClusterWorkloadIdentityConfigOutput) WorkloadPool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterWorkloadIdentityConfig) *string { return v.WorkloadPool }).(pulumi.StringPtrOutput)
 }
 
 type ClusterWorkloadIdentityConfigPtrOutput struct{ *pulumi.OutputState }
@@ -11221,13 +11232,25 @@ func (o ClusterWorkloadIdentityConfigPtrOutput) Elem() ClusterWorkloadIdentityCo
 	}).(ClusterWorkloadIdentityConfigOutput)
 }
 
-// Currently, the only supported identity namespace is the project's default.
+// - Currently, the only supported identity namespace is the project's default.
+//
+// Deprecated: This field will be removed in a future major release as it has been deprecated in the API. Use `workload_pool` instead.
 func (o ClusterWorkloadIdentityConfigPtrOutput) IdentityNamespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterWorkloadIdentityConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.IdentityNamespace
+		return v.IdentityNamespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// The workload pool to attach all Kubernetes service accounts to. Currently, the only supported identity namespace is the project of the cluster.
+func (o ClusterWorkloadIdentityConfigPtrOutput) WorkloadPool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterWorkloadIdentityConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkloadPool
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -12277,8 +12300,9 @@ func (o NodePoolNodeConfigEphemeralStorageConfigPtrOutput) LocalSsdCount() pulum
 }
 
 type NodePoolNodeConfigGuestAccelerator struct {
-	Count int    `pulumi:"count"`
-	Type  string `pulumi:"type"`
+	Count            int     `pulumi:"count"`
+	GpuPartitionSize *string `pulumi:"gpuPartitionSize"`
+	Type             string  `pulumi:"type"`
 }
 
 // NodePoolNodeConfigGuestAcceleratorInput is an input type that accepts NodePoolNodeConfigGuestAcceleratorArgs and NodePoolNodeConfigGuestAcceleratorOutput values.
@@ -12293,8 +12317,9 @@ type NodePoolNodeConfigGuestAcceleratorInput interface {
 }
 
 type NodePoolNodeConfigGuestAcceleratorArgs struct {
-	Count pulumi.IntInput    `pulumi:"count"`
-	Type  pulumi.StringInput `pulumi:"type"`
+	Count            pulumi.IntInput       `pulumi:"count"`
+	GpuPartitionSize pulumi.StringPtrInput `pulumi:"gpuPartitionSize"`
+	Type             pulumi.StringInput    `pulumi:"type"`
 }
 
 func (NodePoolNodeConfigGuestAcceleratorArgs) ElementType() reflect.Type {
@@ -12350,6 +12375,10 @@ func (o NodePoolNodeConfigGuestAcceleratorOutput) ToNodePoolNodeConfigGuestAccel
 
 func (o NodePoolNodeConfigGuestAcceleratorOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v NodePoolNodeConfigGuestAccelerator) int { return v.Count }).(pulumi.IntOutput)
+}
+
+func (o NodePoolNodeConfigGuestAcceleratorOutput) GpuPartitionSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigGuestAccelerator) *string { return v.GpuPartitionSize }).(pulumi.StringPtrOutput)
 }
 
 func (o NodePoolNodeConfigGuestAcceleratorOutput) Type() pulumi.StringOutput {
@@ -16856,8 +16885,9 @@ func (o GetClusterNodeConfigEphemeralStorageConfigArrayOutput) Index(i pulumi.In
 }
 
 type GetClusterNodeConfigGuestAccelerator struct {
-	Count int    `pulumi:"count"`
-	Type  string `pulumi:"type"`
+	Count            int    `pulumi:"count"`
+	GpuPartitionSize string `pulumi:"gpuPartitionSize"`
+	Type             string `pulumi:"type"`
 }
 
 // GetClusterNodeConfigGuestAcceleratorInput is an input type that accepts GetClusterNodeConfigGuestAcceleratorArgs and GetClusterNodeConfigGuestAcceleratorOutput values.
@@ -16872,8 +16902,9 @@ type GetClusterNodeConfigGuestAcceleratorInput interface {
 }
 
 type GetClusterNodeConfigGuestAcceleratorArgs struct {
-	Count pulumi.IntInput    `pulumi:"count"`
-	Type  pulumi.StringInput `pulumi:"type"`
+	Count            pulumi.IntInput    `pulumi:"count"`
+	GpuPartitionSize pulumi.StringInput `pulumi:"gpuPartitionSize"`
+	Type             pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetClusterNodeConfigGuestAcceleratorArgs) ElementType() reflect.Type {
@@ -16929,6 +16960,10 @@ func (o GetClusterNodeConfigGuestAcceleratorOutput) ToGetClusterNodeConfigGuestA
 
 func (o GetClusterNodeConfigGuestAcceleratorOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v GetClusterNodeConfigGuestAccelerator) int { return v.Count }).(pulumi.IntOutput)
+}
+
+func (o GetClusterNodeConfigGuestAcceleratorOutput) GpuPartitionSize() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigGuestAccelerator) string { return v.GpuPartitionSize }).(pulumi.StringOutput)
 }
 
 func (o GetClusterNodeConfigGuestAcceleratorOutput) Type() pulumi.StringOutput {
@@ -18353,8 +18388,9 @@ func (o GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayOutput) Index(i p
 }
 
 type GetClusterNodePoolNodeConfigGuestAccelerator struct {
-	Count int    `pulumi:"count"`
-	Type  string `pulumi:"type"`
+	Count            int    `pulumi:"count"`
+	GpuPartitionSize string `pulumi:"gpuPartitionSize"`
+	Type             string `pulumi:"type"`
 }
 
 // GetClusterNodePoolNodeConfigGuestAcceleratorInput is an input type that accepts GetClusterNodePoolNodeConfigGuestAcceleratorArgs and GetClusterNodePoolNodeConfigGuestAcceleratorOutput values.
@@ -18369,8 +18405,9 @@ type GetClusterNodePoolNodeConfigGuestAcceleratorInput interface {
 }
 
 type GetClusterNodePoolNodeConfigGuestAcceleratorArgs struct {
-	Count pulumi.IntInput    `pulumi:"count"`
-	Type  pulumi.StringInput `pulumi:"type"`
+	Count            pulumi.IntInput    `pulumi:"count"`
+	GpuPartitionSize pulumi.StringInput `pulumi:"gpuPartitionSize"`
+	Type             pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetClusterNodePoolNodeConfigGuestAcceleratorArgs) ElementType() reflect.Type {
@@ -18426,6 +18463,10 @@ func (o GetClusterNodePoolNodeConfigGuestAcceleratorOutput) ToGetClusterNodePool
 
 func (o GetClusterNodePoolNodeConfigGuestAcceleratorOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfigGuestAccelerator) int { return v.Count }).(pulumi.IntOutput)
+}
+
+func (o GetClusterNodePoolNodeConfigGuestAcceleratorOutput) GpuPartitionSize() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigGuestAccelerator) string { return v.GpuPartitionSize }).(pulumi.StringOutput)
 }
 
 func (o GetClusterNodePoolNodeConfigGuestAcceleratorOutput) Type() pulumi.StringOutput {
@@ -20058,6 +20099,7 @@ func (o GetClusterVerticalPodAutoscalingArrayOutput) Index(i pulumi.IntInput) Ge
 
 type GetClusterWorkloadIdentityConfig struct {
 	IdentityNamespace string `pulumi:"identityNamespace"`
+	WorkloadPool      string `pulumi:"workloadPool"`
 }
 
 // GetClusterWorkloadIdentityConfigInput is an input type that accepts GetClusterWorkloadIdentityConfigArgs and GetClusterWorkloadIdentityConfigOutput values.
@@ -20073,6 +20115,7 @@ type GetClusterWorkloadIdentityConfigInput interface {
 
 type GetClusterWorkloadIdentityConfigArgs struct {
 	IdentityNamespace pulumi.StringInput `pulumi:"identityNamespace"`
+	WorkloadPool      pulumi.StringInput `pulumi:"workloadPool"`
 }
 
 func (GetClusterWorkloadIdentityConfigArgs) ElementType() reflect.Type {
@@ -20128,6 +20171,10 @@ func (o GetClusterWorkloadIdentityConfigOutput) ToGetClusterWorkloadIdentityConf
 
 func (o GetClusterWorkloadIdentityConfigOutput) IdentityNamespace() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterWorkloadIdentityConfig) string { return v.IdentityNamespace }).(pulumi.StringOutput)
+}
+
+func (o GetClusterWorkloadIdentityConfigOutput) WorkloadPool() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterWorkloadIdentityConfig) string { return v.WorkloadPool }).(pulumi.StringOutput)
 }
 
 type GetClusterWorkloadIdentityConfigArrayOutput struct{ *pulumi.OutputState }

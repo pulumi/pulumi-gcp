@@ -363,9 +363,11 @@ export class BackendService extends pulumi.CustomResource {
      */
     public readonly securityPolicy!: pulumi.Output<string | undefined>;
     /**
-     * The security settings that apply to this backend service. This field is applicable to either a regional backend service
-     * with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED; or a global
-     * backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+     * The security settings that apply to this backend service. This field is applicable to either
+     * a regional backend service with the serviceProtocol set to HTTP, HTTPS, or HTTP2, and
+     * loadBalancingScheme set to INTERNAL_MANAGED; or a global backend service with the
+     * loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+     * Structure is documented below.
      */
     public readonly securitySettings!: pulumi.Output<outputs.compute.BackendServiceSecuritySettings | undefined>;
     /**
@@ -621,9 +623,11 @@ export interface BackendServiceState {
      */
     securityPolicy?: pulumi.Input<string>;
     /**
-     * The security settings that apply to this backend service. This field is applicable to either a regional backend service
-     * with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED; or a global
-     * backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+     * The security settings that apply to this backend service. This field is applicable to either
+     * a regional backend service with the serviceProtocol set to HTTP, HTTPS, or HTTP2, and
+     * loadBalancingScheme set to INTERNAL_MANAGED; or a global backend service with the
+     * loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+     * Structure is documented below.
      */
     securitySettings?: pulumi.Input<inputs.compute.BackendServiceSecuritySettings>;
     /**
@@ -795,9 +799,11 @@ export interface BackendServiceArgs {
      */
     securityPolicy?: pulumi.Input<string>;
     /**
-     * The security settings that apply to this backend service. This field is applicable to either a regional backend service
-     * with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED; or a global
-     * backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+     * The security settings that apply to this backend service. This field is applicable to either
+     * a regional backend service with the serviceProtocol set to HTTP, HTTPS, or HTTP2, and
+     * loadBalancingScheme set to INTERNAL_MANAGED; or a global backend service with the
+     * loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+     * Structure is documented below.
      */
     securitySettings?: pulumi.Input<inputs.compute.BackendServiceSecuritySettings>;
     /**

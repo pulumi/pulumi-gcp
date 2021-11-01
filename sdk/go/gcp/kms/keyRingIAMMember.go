@@ -256,7 +256,7 @@ import (
 type KeyRingIAMMember struct {
 	pulumi.CustomResourceState
 
-	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition KeyRingIAMMemberConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the key ring's IAM policy.
@@ -311,7 +311,7 @@ func GetKeyRingIAMMember(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KeyRingIAMMember resources.
 type keyRingIAMMemberState struct {
-	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *KeyRingIAMMemberCondition `pulumi:"condition"`
 	// (Computed) The etag of the key ring's IAM policy.
@@ -329,7 +329,7 @@ type keyRingIAMMemberState struct {
 }
 
 type KeyRingIAMMemberState struct {
-	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition KeyRingIAMMemberConditionPtrInput
 	// (Computed) The etag of the key ring's IAM policy.
@@ -351,7 +351,7 @@ func (KeyRingIAMMemberState) ElementType() reflect.Type {
 }
 
 type keyRingIAMMemberArgs struct {
-	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *KeyRingIAMMemberCondition `pulumi:"condition"`
 	// The key ring ID, in the form
@@ -368,7 +368,7 @@ type keyRingIAMMemberArgs struct {
 
 // The set of arguments for constructing a KeyRingIAMMember resource.
 type KeyRingIAMMemberArgs struct {
-	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition KeyRingIAMMemberConditionPtrInput
 	// The key ring ID, in the form

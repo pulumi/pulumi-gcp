@@ -29,7 +29,7 @@ import (
 type FeatureMembership struct {
 	pulumi.CustomResourceState
 
-	// Config Management-specific spec.
+	// Config Management-specific spec. Structure is documented below.
 	Configmanagement FeatureMembershipConfigmanagementOutput `pulumi:"configmanagement"`
 	// The name of the feature
 	Feature pulumi.StringOutput `pulumi:"feature"`
@@ -82,7 +82,7 @@ func GetFeatureMembership(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FeatureMembership resources.
 type featureMembershipState struct {
-	// Config Management-specific spec.
+	// Config Management-specific spec. Structure is documented below.
 	Configmanagement *FeatureMembershipConfigmanagement `pulumi:"configmanagement"`
 	// The name of the feature
 	Feature *string `pulumi:"feature"`
@@ -95,7 +95,7 @@ type featureMembershipState struct {
 }
 
 type FeatureMembershipState struct {
-	// Config Management-specific spec.
+	// Config Management-specific spec. Structure is documented below.
 	Configmanagement FeatureMembershipConfigmanagementPtrInput
 	// The name of the feature
 	Feature pulumi.StringPtrInput
@@ -112,7 +112,7 @@ func (FeatureMembershipState) ElementType() reflect.Type {
 }
 
 type featureMembershipArgs struct {
-	// Config Management-specific spec.
+	// Config Management-specific spec. Structure is documented below.
 	Configmanagement FeatureMembershipConfigmanagement `pulumi:"configmanagement"`
 	// The name of the feature
 	Feature string `pulumi:"feature"`
@@ -126,7 +126,7 @@ type featureMembershipArgs struct {
 
 // The set of arguments for constructing a FeatureMembership resource.
 type FeatureMembershipArgs struct {
-	// Config Management-specific spec.
+	// Config Management-specific spec. Structure is documented below.
 	Configmanagement FeatureMembershipConfigmanagementInput
 	// The name of the feature
 	Feature pulumi.StringInput

@@ -127,7 +127,7 @@ type Bucket struct {
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	Cors                  BucketCorArrayOutput `pulumi:"cors"`
 	DefaultEventBasedHold pulumi.BoolPtrOutput `pulumi:"defaultEventBasedHold"`
-	// The bucket's encryption configuration.
+	// The bucket's encryption configuration. Structure is documented below.
 	Encryption BucketEncryptionPtrOutput `pulumi:"encryption"`
 	// When deleting a bucket, this
 	// boolean option will delete all contained objects. If you try to delete a
@@ -139,7 +139,7 @@ type Bucket struct {
 	LifecycleRules BucketLifecycleRuleArrayOutput `pulumi:"lifecycleRules"`
 	// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
 	Location pulumi.StringPtrOutput `pulumi:"location"`
-	// The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration.
+	// The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
 	Logging BucketLoggingPtrOutput `pulumi:"logging"`
 	// The name of the bucket.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -158,7 +158,7 @@ type Bucket struct {
 	UniformBucketLevelAccess pulumi.BoolOutput `pulumi:"uniformBucketLevelAccess"`
 	// The base URL of the bucket, in the format `gs://<bucket-name>`.
 	Url pulumi.StringOutput `pulumi:"url"`
-	// The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
+	// The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
 	Versioning BucketVersioningPtrOutput `pulumi:"versioning"`
 	// Configuration if the bucket acts as a website. Structure is documented below.
 	Website BucketWebsitePtrOutput `pulumi:"website"`
@@ -200,7 +200,7 @@ type bucketState struct {
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	Cors                  []BucketCor `pulumi:"cors"`
 	DefaultEventBasedHold *bool       `pulumi:"defaultEventBasedHold"`
-	// The bucket's encryption configuration.
+	// The bucket's encryption configuration. Structure is documented below.
 	Encryption *BucketEncryption `pulumi:"encryption"`
 	// When deleting a bucket, this
 	// boolean option will delete all contained objects. If you try to delete a
@@ -212,7 +212,7 @@ type bucketState struct {
 	LifecycleRules []BucketLifecycleRule `pulumi:"lifecycleRules"`
 	// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
 	Location *string `pulumi:"location"`
-	// The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration.
+	// The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
 	Logging *BucketLogging `pulumi:"logging"`
 	// The name of the bucket.
 	Name *string `pulumi:"name"`
@@ -231,7 +231,7 @@ type bucketState struct {
 	UniformBucketLevelAccess *bool `pulumi:"uniformBucketLevelAccess"`
 	// The base URL of the bucket, in the format `gs://<bucket-name>`.
 	Url *string `pulumi:"url"`
-	// The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
+	// The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
 	Versioning *BucketVersioning `pulumi:"versioning"`
 	// Configuration if the bucket acts as a website. Structure is documented below.
 	Website *BucketWebsite `pulumi:"website"`
@@ -245,7 +245,7 @@ type BucketState struct {
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	Cors                  BucketCorArrayInput
 	DefaultEventBasedHold pulumi.BoolPtrInput
-	// The bucket's encryption configuration.
+	// The bucket's encryption configuration. Structure is documented below.
 	Encryption BucketEncryptionPtrInput
 	// When deleting a bucket, this
 	// boolean option will delete all contained objects. If you try to delete a
@@ -257,7 +257,7 @@ type BucketState struct {
 	LifecycleRules BucketLifecycleRuleArrayInput
 	// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
 	Location pulumi.StringPtrInput
-	// The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration.
+	// The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
 	Logging BucketLoggingPtrInput
 	// The name of the bucket.
 	Name pulumi.StringPtrInput
@@ -276,7 +276,7 @@ type BucketState struct {
 	UniformBucketLevelAccess pulumi.BoolPtrInput
 	// The base URL of the bucket, in the format `gs://<bucket-name>`.
 	Url pulumi.StringPtrInput
-	// The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
+	// The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
 	Versioning BucketVersioningPtrInput
 	// Configuration if the bucket acts as a website. Structure is documented below.
 	Website BucketWebsitePtrInput
@@ -294,7 +294,7 @@ type bucketArgs struct {
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	Cors                  []BucketCor `pulumi:"cors"`
 	DefaultEventBasedHold *bool       `pulumi:"defaultEventBasedHold"`
-	// The bucket's encryption configuration.
+	// The bucket's encryption configuration. Structure is documented below.
 	Encryption *BucketEncryption `pulumi:"encryption"`
 	// When deleting a bucket, this
 	// boolean option will delete all contained objects. If you try to delete a
@@ -306,7 +306,7 @@ type bucketArgs struct {
 	LifecycleRules []BucketLifecycleRule `pulumi:"lifecycleRules"`
 	// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
 	Location *string `pulumi:"location"`
-	// The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration.
+	// The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
 	Logging *BucketLogging `pulumi:"logging"`
 	// The name of the bucket.
 	Name *string `pulumi:"name"`
@@ -321,7 +321,7 @@ type bucketArgs struct {
 	StorageClass *string `pulumi:"storageClass"`
 	// Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
 	UniformBucketLevelAccess *bool `pulumi:"uniformBucketLevelAccess"`
-	// The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
+	// The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
 	Versioning *BucketVersioning `pulumi:"versioning"`
 	// Configuration if the bucket acts as a website. Structure is documented below.
 	Website *BucketWebsite `pulumi:"website"`
@@ -336,7 +336,7 @@ type BucketArgs struct {
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	Cors                  BucketCorArrayInput
 	DefaultEventBasedHold pulumi.BoolPtrInput
-	// The bucket's encryption configuration.
+	// The bucket's encryption configuration. Structure is documented below.
 	Encryption BucketEncryptionPtrInput
 	// When deleting a bucket, this
 	// boolean option will delete all contained objects. If you try to delete a
@@ -348,7 +348,7 @@ type BucketArgs struct {
 	LifecycleRules BucketLifecycleRuleArrayInput
 	// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
 	Location pulumi.StringPtrInput
-	// The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration.
+	// The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
 	Logging BucketLoggingPtrInput
 	// The name of the bucket.
 	Name pulumi.StringPtrInput
@@ -363,7 +363,7 @@ type BucketArgs struct {
 	StorageClass pulumi.StringPtrInput
 	// Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
 	UniformBucketLevelAccess pulumi.BoolPtrInput
-	// The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
+	// The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
 	Versioning BucketVersioningPtrInput
 	// Configuration if the bucket acts as a website. Structure is documented below.
 	Website BucketWebsitePtrInput

@@ -34,10 +34,10 @@ class FeatureMembershipConfigmanagementArgs:
                  policy_controller: Optional[pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerArgs']] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['FeatureMembershipConfigmanagementBinauthzArgs'] binauthz: Binauthz configuration for the cluster.
-        :param pulumi.Input['FeatureMembershipConfigmanagementConfigSyncArgs'] config_sync: Config Sync configuration for the cluster.
-        :param pulumi.Input['FeatureMembershipConfigmanagementHierarchyControllerArgs'] hierarchy_controller: Hierarchy Controller configuration for the cluster.
-        :param pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerArgs'] policy_controller: Policy Controller configuration for the cluster.
+        :param pulumi.Input['FeatureMembershipConfigmanagementBinauthzArgs'] binauthz: Binauthz configuration for the cluster. Structure is documented below.
+        :param pulumi.Input['FeatureMembershipConfigmanagementConfigSyncArgs'] config_sync: Config Sync configuration for the cluster. Structure is documented below.
+        :param pulumi.Input['FeatureMembershipConfigmanagementHierarchyControllerArgs'] hierarchy_controller: Hierarchy Controller configuration for the cluster. Structure is documented below.
+        :param pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerArgs'] policy_controller: Policy Controller configuration for the cluster. Structure is documented below.
         :param pulumi.Input[str] version: Version of ACM installed.
         """
         if binauthz is not None:
@@ -55,7 +55,7 @@ class FeatureMembershipConfigmanagementArgs:
     @pulumi.getter
     def binauthz(self) -> Optional[pulumi.Input['FeatureMembershipConfigmanagementBinauthzArgs']]:
         """
-        Binauthz configuration for the cluster.
+        Binauthz configuration for the cluster. Structure is documented below.
         """
         return pulumi.get(self, "binauthz")
 
@@ -67,7 +67,7 @@ class FeatureMembershipConfigmanagementArgs:
     @pulumi.getter(name="configSync")
     def config_sync(self) -> Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncArgs']]:
         """
-        Config Sync configuration for the cluster.
+        Config Sync configuration for the cluster. Structure is documented below.
         """
         return pulumi.get(self, "config_sync")
 
@@ -79,7 +79,7 @@ class FeatureMembershipConfigmanagementArgs:
     @pulumi.getter(name="hierarchyController")
     def hierarchy_controller(self) -> Optional[pulumi.Input['FeatureMembershipConfigmanagementHierarchyControllerArgs']]:
         """
-        Hierarchy Controller configuration for the cluster.
+        Hierarchy Controller configuration for the cluster. Structure is documented below.
         """
         return pulumi.get(self, "hierarchy_controller")
 
@@ -91,7 +91,7 @@ class FeatureMembershipConfigmanagementArgs:
     @pulumi.getter(name="policyController")
     def policy_controller(self) -> Optional[pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerArgs']]:
         """
-        Policy Controller configuration for the cluster.
+        Policy Controller configuration for the cluster. Structure is documented below.
         """
         return pulumi.get(self, "policy_controller")
 
@@ -142,7 +142,7 @@ class FeatureMembershipConfigmanagementConfigSyncArgs:
                  source_format: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input['FeatureMembershipConfigmanagementConfigSyncGitArgs'] git: -
-               (Optional)
+               (Optional) Structure is documented below.
         :param pulumi.Input[str] source_format: Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
         """
         if git is not None:
@@ -155,7 +155,7 @@ class FeatureMembershipConfigmanagementConfigSyncArgs:
     def git(self) -> Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncGitArgs']]:
         """
         -
-        (Optional)
+        (Optional) Structure is documented below.
         """
         return pulumi.get(self, "git")
 

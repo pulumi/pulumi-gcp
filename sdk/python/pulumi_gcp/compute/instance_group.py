@@ -31,7 +31,7 @@ class InstanceGroupArgs:
                network and zone as the instance group.
         :param pulumi.Input[str] name: The name which the port will be mapped to.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupNamedPortArgs']]] named_ports: The named port configuration. See the section below
-               for details on configuration.
+               for details on configuration. Structure is documented below.
         :param pulumi.Input[str] network: The URL of the network the instance group is in. If
                this is different from the network where the instances are in, the creation
                fails. Defaults to the network where the instances are in (if neither
@@ -99,7 +99,7 @@ class InstanceGroupArgs:
     def named_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupNamedPortArgs']]]]:
         """
         The named port configuration. See the section below
-        for details on configuration.
+        for details on configuration. Structure is documented below.
         """
         return pulumi.get(self, "named_ports")
 
@@ -169,7 +169,7 @@ class _InstanceGroupState:
                network and zone as the instance group.
         :param pulumi.Input[str] name: The name which the port will be mapped to.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupNamedPortArgs']]] named_ports: The named port configuration. See the section below
-               for details on configuration.
+               for details on configuration. Structure is documented below.
         :param pulumi.Input[str] network: The URL of the network the instance group is in. If
                this is different from the network where the instances are in, the creation
                fails. Defaults to the network where the instances are in (if neither
@@ -243,7 +243,7 @@ class _InstanceGroupState:
     def named_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupNamedPortArgs']]]]:
         """
         The named port configuration. See the section below
-        for details on configuration.
+        for details on configuration. Structure is documented below.
         """
         return pulumi.get(self, "named_ports")
 
@@ -440,7 +440,7 @@ class InstanceGroup(pulumi.CustomResource):
                network and zone as the instance group.
         :param pulumi.Input[str] name: The name which the port will be mapped to.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupNamedPortArgs']]]] named_ports: The named port configuration. See the section below
-               for details on configuration.
+               for details on configuration. Structure is documented below.
         :param pulumi.Input[str] network: The URL of the network the instance group is in. If
                this is different from the network where the instances are in, the creation
                fails. Defaults to the network where the instances are in (if neither
@@ -633,7 +633,7 @@ class InstanceGroup(pulumi.CustomResource):
                network and zone as the instance group.
         :param pulumi.Input[str] name: The name which the port will be mapped to.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupNamedPortArgs']]]] named_ports: The named port configuration. See the section below
-               for details on configuration.
+               for details on configuration. Structure is documented below.
         :param pulumi.Input[str] network: The URL of the network the instance group is in. If
                this is different from the network where the instances are in, the creation
                fails. Defaults to the network where the instances are in (if neither
@@ -691,7 +691,7 @@ class InstanceGroup(pulumi.CustomResource):
     def named_ports(self) -> pulumi.Output[Optional[Sequence['outputs.InstanceGroupNamedPort']]]:
         """
         The named port configuration. See the section below
-        for details on configuration.
+        for details on configuration. Structure is documented below.
         """
         return pulumi.get(self, "named_ports")
 

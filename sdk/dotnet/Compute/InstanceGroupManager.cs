@@ -204,7 +204,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+        /// ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
         /// </summary>
         [Output("statefulDisks")]
         public Output<ImmutableArray<Outputs.InstanceGroupManagerStatefulDisk>> StatefulDisks { get; private set; } = null!;
@@ -368,7 +368,7 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.InstanceGroupManagerStatefulDiskArgs>? _statefulDisks;
 
         /// <summary>
-        /// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+        /// ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
         /// </summary>
         public InputList<Inputs.InstanceGroupManagerStatefulDiskArgs> StatefulDisks
         {
@@ -523,7 +523,7 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.InstanceGroupManagerStatefulDiskGetArgs>? _statefulDisks;
 
         /// <summary>
-        /// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+        /// ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
         /// </summary>
         public InputList<Inputs.InstanceGroupManagerStatefulDiskGetArgs> StatefulDisks
         {

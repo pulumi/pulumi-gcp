@@ -324,7 +324,7 @@ class User(pulumi.CustomResource):
             password="changeme")
         ```
 
-        Example creating a Cloud IAM User.
+        Example creating a Cloud IAM User. (For MySQL, specify `cloudsql_iam_authentication`)
 
         ```python
         import pulumi
@@ -408,7 +408,7 @@ class User(pulumi.CustomResource):
             password="changeme")
         ```
 
-        Example creating a Cloud IAM User.
+        Example creating a Cloud IAM User. (For MySQL, specify `cloudsql_iam_authentication`)
 
         ```python
         import pulumi

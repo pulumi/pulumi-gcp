@@ -167,7 +167,7 @@ namespace Pulumi.Gcp.Compute
         public readonly ImmutableArray<Outputs.GetInstanceReservationAffinityResult> ReservationAffinities;
         public readonly ImmutableArray<string> ResourcePolicies;
         /// <summary>
-        /// The scheduling strategy being used by the instance.
+        /// The scheduling strategy being used by the instance. Structure is documented below
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceSchedulingResult> Schedulings;
         /// <summary>

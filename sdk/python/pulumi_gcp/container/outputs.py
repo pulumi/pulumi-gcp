@@ -958,9 +958,7 @@ class ClusterDnsConfig(dict):
                  cluster_dns_domain: Optional[str] = None,
                  cluster_dns_scope: Optional[str] = None):
         """
-        :param str cluster_dns: Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
-        :param str cluster_dns_domain: The suffix used for all cluster service records.
-        :param str cluster_dns_scope: The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
+        :param str cluster_dns: Which in-cluster DNS provider shoul
         """
         if cluster_dns is not None:
             pulumi.set(__self__, "cluster_dns", cluster_dns)
@@ -973,24 +971,18 @@ class ClusterDnsConfig(dict):
     @pulumi.getter(name="clusterDns")
     def cluster_dns(self) -> Optional[str]:
         """
-        Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
+        Which in-cluster DNS provider shoul
         """
         return pulumi.get(self, "cluster_dns")
 
     @property
     @pulumi.getter(name="clusterDnsDomain")
     def cluster_dns_domain(self) -> Optional[str]:
-        """
-        The suffix used for all cluster service records.
-        """
         return pulumi.get(self, "cluster_dns_domain")
 
     @property
     @pulumi.getter(name="clusterDnsScope")
     def cluster_dns_scope(self) -> Optional[str]:
-        """
-        The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
-        """
         return pulumi.get(self, "cluster_dns_scope")
 
 
@@ -1120,8 +1112,7 @@ class ClusterLoggingConfig(dict):
     def __init__(__self__, *,
                  enable_components: Sequence[str]):
         """
-        :param Sequence[str] enable_components: The GKE components exposing logs. Only `SYSTEM_COMPONENTS`
-               is supported.
+        :param Sequence[str] enable_components: The GKE components exposing logs. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported.
         """
         pulumi.set(__self__, "enable_components", enable_components)
 
@@ -1129,8 +1120,7 @@ class ClusterLoggingConfig(dict):
     @pulumi.getter(name="enableComponents")
     def enable_components(self) -> Sequence[str]:
         """
-        The GKE components exposing logs. Only `SYSTEM_COMPONENTS`
-        is supported.
+        The GKE components exposing logs. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported.
         """
         return pulumi.get(self, "enable_components")
 
@@ -1566,8 +1556,7 @@ class ClusterMonitoringConfig(dict):
     def __init__(__self__, *,
                  enable_components: Sequence[str]):
         """
-        :param Sequence[str] enable_components: The GKE components exposing logs. Only `SYSTEM_COMPONENTS`
-               is supported.
+        :param Sequence[str] enable_components: The GKE components exposing logs. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported.
         """
         pulumi.set(__self__, "enable_components", enable_components)
 
@@ -1575,8 +1564,7 @@ class ClusterMonitoringConfig(dict):
     @pulumi.getter(name="enableComponents")
     def enable_components(self) -> Sequence[str]:
         """
-        The GKE components exposing logs. Only `SYSTEM_COMPONENTS`
-        is supported.
+        The GKE components exposing logs. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported.
         """
         return pulumi.get(self, "enable_components")
 
@@ -2022,15 +2010,36 @@ class ClusterNodeConfigEphemeralStorageConfig(dict):
 
 @pulumi.output_type
 class ClusterNodeConfigGuestAccelerator(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gpuPartitionSize":
+            suggest = "gpu_partition_size"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigGuestAccelerator. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodeConfigGuestAccelerator.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodeConfigGuestAccelerator.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  count: int,
-                 type: str):
+                 type: str,
+                 gpu_partition_size: Optional[str] = None):
         """
         :param int count: The number of the guest accelerator cards exposed to this instance.
         :param str type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        :param str gpu_partition_size: Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "type", type)
+        if gpu_partition_size is not None:
+            pulumi.set(__self__, "gpu_partition_size", gpu_partition_size)
 
     @property
     @pulumi.getter
@@ -2047,6 +2056,14 @@ class ClusterNodeConfigGuestAccelerator(dict):
         The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="gpuPartitionSize")
+    def gpu_partition_size(self) -> Optional[str]:
+        """
+        Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+        """
+        return pulumi.get(self, "gpu_partition_size")
 
 
 @pulumi.output_type
@@ -2395,12 +2412,10 @@ class ClusterNodePool(dict):
                `container.NodePool` objects with no default node pool, you'll need to
                set this to a value of at least `1`, alongside setting
                `remove_default_node_pool` to `true`.
-        :param Sequence[str] instance_group_urls: List of instance group URLs which have been assigned
-               to the cluster.
         :param str name: The name of the cluster, unique within the project and
                location.
-        :param 'ClusterNodePoolNetworkConfigArgs' network_config: ) Configuration for
-               [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool.
+        :param 'ClusterNodePoolNetworkConfigArgs' network_config: Configuration for
+               [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
         :param 'ClusterNodePoolNodeConfigArgs' node_config: Parameters used in creating the default node pool.
                Generally, this field should not be used at the same time as a
                `container.NodePool` or a `node_pool` block; this configuration
@@ -2459,10 +2474,6 @@ class ClusterNodePool(dict):
     @property
     @pulumi.getter(name="instanceGroupUrls")
     def instance_group_urls(self) -> Optional[Sequence[str]]:
-        """
-        List of instance group URLs which have been assigned
-        to the cluster.
-        """
         return pulumi.get(self, "instance_group_urls")
 
     @property
@@ -2493,8 +2504,8 @@ class ClusterNodePool(dict):
     @pulumi.getter(name="networkConfig")
     def network_config(self) -> Optional['outputs.ClusterNodePoolNetworkConfig']:
         """
-        ) Configuration for
-        [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool.
+        Configuration for
+        [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
         """
         return pulumi.get(self, "network_config")
 
@@ -2643,9 +2654,9 @@ class ClusterNodePoolNetworkConfig(dict):
                  create_pod_range: Optional[bool] = None,
                  pod_ipv4_cidr_block: Optional[str] = None):
         """
-        :param str pod_range: ) The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
-        :param bool create_pod_range: ) Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
-        :param str pod_ipv4_cidr_block: ) The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
+        :param str pod_range: The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
+        :param bool create_pod_range: Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
+        :param str pod_ipv4_cidr_block: The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
         """
         pulumi.set(__self__, "pod_range", pod_range)
         if create_pod_range is not None:
@@ -2657,7 +2668,7 @@ class ClusterNodePoolNetworkConfig(dict):
     @pulumi.getter(name="podRange")
     def pod_range(self) -> str:
         """
-        ) The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
+        The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
         """
         return pulumi.get(self, "pod_range")
 
@@ -2665,7 +2676,7 @@ class ClusterNodePoolNetworkConfig(dict):
     @pulumi.getter(name="createPodRange")
     def create_pod_range(self) -> Optional[bool]:
         """
-        ) Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
+        Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
         """
         return pulumi.get(self, "create_pod_range")
 
@@ -2673,7 +2684,7 @@ class ClusterNodePoolNetworkConfig(dict):
     @pulumi.getter(name="podIpv4CidrBlock")
     def pod_ipv4_cidr_block(self) -> Optional[str]:
         """
-        ) The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
+        The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
         """
         return pulumi.get(self, "pod_ipv4_cidr_block")
 
@@ -3087,15 +3098,36 @@ class ClusterNodePoolNodeConfigEphemeralStorageConfig(dict):
 
 @pulumi.output_type
 class ClusterNodePoolNodeConfigGuestAccelerator(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gpuPartitionSize":
+            suggest = "gpu_partition_size"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigGuestAccelerator. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolNodeConfigGuestAccelerator.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolNodeConfigGuestAccelerator.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  count: int,
-                 type: str):
+                 type: str,
+                 gpu_partition_size: Optional[str] = None):
         """
         :param int count: The number of the guest accelerator cards exposed to this instance.
         :param str type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        :param str gpu_partition_size: Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "type", type)
+        if gpu_partition_size is not None:
+            pulumi.set(__self__, "gpu_partition_size", gpu_partition_size)
 
     @property
     @pulumi.getter
@@ -3112,6 +3144,14 @@ class ClusterNodePoolNodeConfigGuestAccelerator(dict):
         The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="gpuPartitionSize")
+    def gpu_partition_size(self) -> Optional[str]:
+        """
+        Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+        """
+        return pulumi.get(self, "gpu_partition_size")
 
 
 @pulumi.output_type
@@ -3836,6 +3876,8 @@ class ClusterWorkloadIdentityConfig(dict):
         suggest = None
         if key == "identityNamespace":
             suggest = "identity_namespace"
+        elif key == "workloadPool":
+            suggest = "workload_pool"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterWorkloadIdentityConfig. Access the value via the '{suggest}' property getter instead.")
@@ -3849,19 +3891,32 @@ class ClusterWorkloadIdentityConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 identity_namespace: str):
+                 identity_namespace: Optional[str] = None,
+                 workload_pool: Optional[str] = None):
         """
-        :param str identity_namespace: Currently, the only supported identity namespace is the project's default.
+        :param str identity_namespace: - Currently, the only supported identity namespace is the project's default.
+        :param str workload_pool: The workload pool to attach all Kubernetes service accounts to. Currently, the only supported identity namespace is the project of the cluster.
         """
-        pulumi.set(__self__, "identity_namespace", identity_namespace)
+        if identity_namespace is not None:
+            pulumi.set(__self__, "identity_namespace", identity_namespace)
+        if workload_pool is not None:
+            pulumi.set(__self__, "workload_pool", workload_pool)
 
     @property
     @pulumi.getter(name="identityNamespace")
-    def identity_namespace(self) -> str:
+    def identity_namespace(self) -> Optional[str]:
         """
-        Currently, the only supported identity namespace is the project's default.
+        - Currently, the only supported identity namespace is the project's default.
         """
         return pulumi.get(self, "identity_namespace")
+
+    @property
+    @pulumi.getter(name="workloadPool")
+    def workload_pool(self) -> Optional[str]:
+        """
+        The workload pool to attach all Kubernetes service accounts to. Currently, the only supported identity namespace is the project of the cluster.
+        """
+        return pulumi.get(self, "workload_pool")
 
 
 @pulumi.output_type
@@ -4264,11 +4319,31 @@ class NodePoolNodeConfigEphemeralStorageConfig(dict):
 
 @pulumi.output_type
 class NodePoolNodeConfigGuestAccelerator(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gpuPartitionSize":
+            suggest = "gpu_partition_size"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigGuestAccelerator. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolNodeConfigGuestAccelerator.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolNodeConfigGuestAccelerator.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  count: int,
-                 type: str):
+                 type: str,
+                 gpu_partition_size: Optional[str] = None):
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "type", type)
+        if gpu_partition_size is not None:
+            pulumi.set(__self__, "gpu_partition_size", gpu_partition_size)
 
     @property
     @pulumi.getter
@@ -4279,6 +4354,11 @@ class NodePoolNodeConfigGuestAccelerator(dict):
     @pulumi.getter
     def type(self) -> str:
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="gpuPartitionSize")
+    def gpu_partition_size(self) -> Optional[str]:
+        return pulumi.get(self, "gpu_partition_size")
 
 
 @pulumi.output_type
@@ -5330,14 +5410,21 @@ class GetClusterNodeConfigEphemeralStorageConfigResult(dict):
 class GetClusterNodeConfigGuestAcceleratorResult(dict):
     def __init__(__self__, *,
                  count: int,
+                 gpu_partition_size: str,
                  type: str):
         pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "gpu_partition_size", gpu_partition_size)
         pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
     def count(self) -> int:
         return pulumi.get(self, "count")
+
+    @property
+    @pulumi.getter(name="gpuPartitionSize")
+    def gpu_partition_size(self) -> str:
+        return pulumi.get(self, "gpu_partition_size")
 
     @property
     @pulumi.getter
@@ -5793,14 +5880,21 @@ class GetClusterNodePoolNodeConfigEphemeralStorageConfigResult(dict):
 class GetClusterNodePoolNodeConfigGuestAcceleratorResult(dict):
     def __init__(__self__, *,
                  count: int,
+                 gpu_partition_size: str,
                  type: str):
         pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "gpu_partition_size", gpu_partition_size)
         pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
     def count(self) -> int:
         return pulumi.get(self, "count")
+
+    @property
+    @pulumi.getter(name="gpuPartitionSize")
+    def gpu_partition_size(self) -> str:
+        return pulumi.get(self, "gpu_partition_size")
 
     @property
     @pulumi.getter
@@ -6115,12 +6209,19 @@ class GetClusterVerticalPodAutoscalingResult(dict):
 @pulumi.output_type
 class GetClusterWorkloadIdentityConfigResult(dict):
     def __init__(__self__, *,
-                 identity_namespace: str):
+                 identity_namespace: str,
+                 workload_pool: str):
         pulumi.set(__self__, "identity_namespace", identity_namespace)
+        pulumi.set(__self__, "workload_pool", workload_pool)
 
     @property
     @pulumi.getter(name="identityNamespace")
     def identity_namespace(self) -> str:
         return pulumi.get(self, "identity_namespace")
+
+    @property
+    @pulumi.getter(name="workloadPool")
+    def workload_pool(self) -> str:
+        return pulumi.get(self, "workload_pool")
 
 

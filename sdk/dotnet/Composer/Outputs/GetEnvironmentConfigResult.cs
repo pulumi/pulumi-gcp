@@ -17,6 +17,7 @@ namespace Pulumi.Gcp.Composer.Outputs
         public readonly string DagGcsPrefix;
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigDatabaseConfigResult> DatabaseConfigs;
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigEncryptionConfigResult> EncryptionConfigs;
+        public readonly string EnvironmentSize;
         public readonly string GkeCluster;
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigMaintenanceWindowResult> MaintenanceWindows;
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigNodeConfigResult> NodeConfigs;
@@ -36,6 +37,8 @@ namespace Pulumi.Gcp.Composer.Outputs
             ImmutableArray<Outputs.GetEnvironmentConfigDatabaseConfigResult> databaseConfigs,
 
             ImmutableArray<Outputs.GetEnvironmentConfigEncryptionConfigResult> encryptionConfigs,
+
+            string environmentSize,
 
             string gkeCluster,
 
@@ -59,6 +62,7 @@ namespace Pulumi.Gcp.Composer.Outputs
             DagGcsPrefix = dagGcsPrefix;
             DatabaseConfigs = databaseConfigs;
             EncryptionConfigs = encryptionConfigs;
+            EnvironmentSize = environmentSize;
             GkeCluster = gkeCluster;
             MaintenanceWindows = maintenanceWindows;
             NodeConfigs = nodeConfigs;

@@ -45,6 +45,40 @@ import (
 // 	})
 // }
 // ```
+// ### Pubsub Schema Protobuf
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/pubsub"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		exampleSchema, err := pubsub.NewSchema(ctx, "exampleSchema", &pubsub.SchemaArgs{
+// 			Type:       pulumi.String("PROTOCOL_BUFFER"),
+// 			Definition: pulumi.String("syntax = \"proto3\";\nmessage Results {\nstring message_request = 1;\nstring message_response = 2;\nstring timestamp_request = 3;\nstring timestamp_response = 4;\n}"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = pubsub.NewTopic(ctx, "exampleTopic", &pubsub.TopicArgs{
+// 			SchemaSettings: &pubsub.TopicSchemaSettingsArgs{
+// 				Schema:   pulumi.String("projects/my-project-name/schemas/example"),
+// 				Encoding: pulumi.String("JSON"),
+// 			},
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			exampleSchema,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //

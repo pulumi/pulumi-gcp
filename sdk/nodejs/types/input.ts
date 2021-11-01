@@ -3152,7 +3152,7 @@ export namespace bigquery {
          * When set, configures hive partitioning
          * support. Not all storage formats support hive partitioning -- requesting hive
          * partitioning on an unsupported format will lead to an error, as will providing
-         * an invalid specification.
+         * an invalid specification. Structure is documented below.
          */
         hivePartitioningOptions?: pulumi.Input<inputs.bigquery.TableExternalDataConfigurationHivePartitioningOptions>;
         /**
@@ -6126,6 +6126,10 @@ export namespace cloudrun {
          * TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
          */
         timeoutSeconds?: pulumi.Input<number>;
+        /**
+         * Volume represents a named volume in a container.
+         * Structure is documented below.
+         */
         volumes?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceTemplateSpecVolume>[]>;
     }
 
@@ -6192,6 +6196,11 @@ export namespace cloudrun {
          * Structure is documented below.
          */
         resources?: pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainerResources>;
+        /**
+         * Volume to mount into the container's filesystem.
+         * Only supports SecretVolumeSources.
+         * Structure is documented below.
+         */
         volumeMounts?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainerVolumeMount>[]>;
         /**
          * -
@@ -6221,6 +6230,10 @@ export namespace cloudrun {
          * Defaults to "".
          */
         value?: pulumi.Input<string>;
+        /**
+         * Source for the environment variable's value. Only supports secret_key_ref.
+         * Structure is documented below.
+         */
         valueFrom?: pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainerEnvValueFrom>;
     }
 
@@ -6688,18 +6701,19 @@ export namespace composer {
         /**
          * The configuration settings for Cloud SQL instance used internally
          * by Apache Airflow software. This field is supported for Cloud
-         * Composer environments in versions composer-1.*.*-airflow-*.*.*.
+         * Composer environments in versions composer-1.*.*-airflow-*.*.*. Structure is documented below.
          */
         databaseConfig?: pulumi.Input<inputs.composer.EnvironmentConfigDatabaseConfig>;
         /**
          * The encryption options for the Cloud Composer environment and its
          * dependencies. This field is supported for Cloud Composer environments in
-         * versions composer-1.*.*-airflow-*.*.*.
+         * versions composer-1.*.*-airflow-*.*.*. Structure is documented below.
          */
         encryptionConfig?: pulumi.Input<inputs.composer.EnvironmentConfigEncryptionConfig>;
+        environmentSize?: pulumi.Input<string>;
         gkeCluster?: pulumi.Input<string>;
         /**
-         * The configuration settings for Cloud Composer maintenance window.
+         * The configuration settings for Cloud Composer maintenance window. Structure is documented below.
          */
         maintenanceWindow?: pulumi.Input<inputs.composer.EnvironmentConfigMaintenanceWindow>;
         /**
@@ -6724,9 +6738,15 @@ export namespace composer {
         /**
          * The configuration settings for the Airflow web server App Engine instance.
          * This field is supported for Cloud Composer environments in versions
-         * composer-1.*.*-airflow-*.*.*.
+         * composer-1.*.*-airflow-*.*.*. Structure is documented below.
          */
         webServerConfig?: pulumi.Input<inputs.composer.EnvironmentConfigWebServerConfig>;
+        /**
+         * The network-level access control policy for the Airflow web server.
+         * If unspecified, no network-level access restrictions will be applied.
+         * This field is supported for Cloud Composer environments in versions
+         * composer-1.*.*-airflow-*.*.*.
+         */
         webServerNetworkAccessControl?: pulumi.Input<inputs.composer.EnvironmentConfigWebServerNetworkAccessControl>;
         /**
          * The Kubernetes workloads configuration for GKE cluster associated with the
@@ -6780,6 +6800,12 @@ export namespace composer {
          * for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
          */
         diskSizeGb?: pulumi.Input<number>;
+        /**
+         * Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines
+         * nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for
+         * all destination addresses, except between pods traffic.
+         * See the [documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent).
+         */
         enableIpMasqAgent?: pulumi.Input<boolean>;
         /**
          * Configuration for controlling how IPs are allocated in the GKE cluster.
@@ -6848,7 +6874,7 @@ export namespace composer {
          * supported for Cloud Composer environments in versions
          * composer-1.*.*-airflow-*.*.*.
          */
-        zone: pulumi.Input<string>;
+        zone?: pulumi.Input<string>;
     }
 
     export interface EnvironmentConfigNodeConfigIpAllocationPolicy {
@@ -6912,6 +6938,10 @@ export namespace composer {
          * composer-1.*.*-airflow-*.*.*.
          */
         enablePrivateEndpoint?: pulumi.Input<boolean>;
+        /**
+         * When enabled, IPs from public (non-RFC1918) ranges can be used for
+         * `ip_allocation_policy.cluster_ipv4_cidr_block` and `ip_allocation_policy.service_ipv4_cidr_block`.
+         */
         enablePrivatelyUsedPublicIps?: pulumi.Input<boolean>;
         /**
          * The IP range in CIDR notation to use for the hosted master network. This range is used
@@ -8231,7 +8261,7 @@ export namespace compute {
          */
         destIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Pairs of IP protocols and ports that the rule should match.
+         * Pairs of IP protocols and ports that the rule should match. Structure is documented below.
          */
         layer4Configs: pulumi.Input<pulumi.Input<inputs.compute.FirewallPolicyRuleMatchLayer4Config>[]>;
         /**
@@ -12970,18 +13000,18 @@ export namespace compute {
 
     export interface SecurityPolicyAdaptiveProtectionConfig {
         /**
-         * ) Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+         * Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
          */
         layer7DdosDefenseConfig?: pulumi.Input<inputs.compute.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig>;
     }
 
     export interface SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig {
         /**
-         * ) If set to true, enables CAAP for L7 DDoS detection.
+         * If set to true, enables CAAP for L7 DDoS detection.
          */
         enable?: pulumi.Input<boolean>;
         /**
-         * ) Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+         * Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
          */
         ruleVisibility?: pulumi.Input<string>;
     }
@@ -15439,16 +15469,10 @@ export namespace container {
 
     export interface ClusterDnsConfig {
         /**
-         * Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
+         * Which in-cluster DNS provider shoul
          */
         clusterDns?: pulumi.Input<string>;
-        /**
-         * The suffix used for all cluster service records.
-         */
         clusterDnsDomain?: pulumi.Input<string>;
-        /**
-         * The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
-         */
         clusterDnsScope?: pulumi.Input<string>;
     }
 
@@ -15486,8 +15510,7 @@ export namespace container {
 
     export interface ClusterLoggingConfig {
         /**
-         * The GKE components exposing logs. Only `SYSTEM_COMPONENTS`
-         * is supported.
+         * The GKE components exposing logs. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported.
          */
         enableComponents: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -15572,8 +15595,7 @@ export namespace container {
 
     export interface ClusterMonitoringConfig {
         /**
-         * The GKE components exposing logs. Only `SYSTEM_COMPONENTS`
-         * is supported.
+         * The GKE components exposing logs. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported.
          */
         enableComponents: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -15723,6 +15745,10 @@ export namespace container {
          */
         count: pulumi.Input<number>;
         /**
+         * Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+         */
+        gpuPartitionSize?: pulumi.Input<string>;
+        /**
          * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
          */
         type: pulumi.Input<string>;
@@ -15825,10 +15851,6 @@ export namespace container {
          * `removeDefaultNodePool` to `true`.
          */
         initialNodeCount?: pulumi.Input<number>;
-        /**
-         * List of instance group URLs which have been assigned
-         * to the cluster.
-         */
         instanceGroupUrls?: pulumi.Input<pulumi.Input<string>[]>;
         management?: pulumi.Input<inputs.container.ClusterNodePoolManagement>;
         maxPodsPerNode?: pulumi.Input<number>;
@@ -15839,8 +15861,8 @@ export namespace container {
         name?: pulumi.Input<string>;
         namePrefix?: pulumi.Input<string>;
         /**
-         * ) Configuration for
-         * [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool.
+         * Configuration for
+         * [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
          */
         networkConfig?: pulumi.Input<inputs.container.ClusterNodePoolNetworkConfig>;
         /**
@@ -15875,15 +15897,15 @@ export namespace container {
 
     export interface ClusterNodePoolNetworkConfig {
         /**
-         * ) Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
+         * Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
          */
         createPodRange?: pulumi.Input<boolean>;
         /**
-         * ) The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
+         * The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
          */
         podIpv4CidrBlock?: pulumi.Input<string>;
         /**
-         * ) The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
+         * The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
          */
         podRange: pulumi.Input<string>;
     }
@@ -16020,6 +16042,10 @@ export namespace container {
          * The number of the guest accelerator cards exposed to this instance.
          */
         count: pulumi.Input<number>;
+        /**
+         * Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+         */
+        gpuPartitionSize?: pulumi.Input<string>;
         /**
          * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
          */
@@ -16243,9 +16269,15 @@ export namespace container {
 
     export interface ClusterWorkloadIdentityConfig {
         /**
-         * Currently, the only supported identity namespace is the project's default.
+         * - Currently, the only supported identity namespace is the project's default.
+         *
+         * @deprecated This field will be removed in a future major release as it has been deprecated in the API. Use `workload_pool` instead.
          */
-        identityNamespace: pulumi.Input<string>;
+        identityNamespace?: pulumi.Input<string>;
+        /**
+         * The workload pool to attach all Kubernetes service accounts to. Currently, the only supported identity namespace is the project of the cluster.
+         */
+        workloadPool?: pulumi.Input<string>;
     }
 
     export interface NodePoolAutoscaling {
@@ -16307,6 +16339,7 @@ export namespace container {
 
     export interface NodePoolNodeConfigGuestAccelerator {
         count: pulumi.Input<number>;
+        gpuPartitionSize?: pulumi.Input<string>;
         type: pulumi.Input<string>;
     }
 
@@ -17930,7 +17963,7 @@ export namespace dataproc {
         lifecycleConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfigLifecycleConfig>;
         /**
          * The Google Compute Engine config settings for the master instances
-         * in a cluster.. Structure defined below.
+         * in a cluster. Structure defined below.
          */
         masterConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfigMasterConfig>;
         /**
@@ -17974,7 +18007,7 @@ export namespace dataproc {
         tempBucket?: pulumi.Input<string>;
         /**
          * The Google Compute Engine config settings for the worker instances
-         * in a cluster.. Structure defined below.
+         * in a cluster. Structure defined below.
          */
         workerConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfigWorkerConfig>;
     }
@@ -20637,6 +20670,13 @@ export namespace filestore {
     }
 
     export interface InstanceNetwork {
+        /**
+         * The network connect mode of the Filestore instance.
+         * If not provided, the connect mode defaults to
+         * DIRECT_PEERING.
+         * Default value is `DIRECT_PEERING`.
+         * Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
+         */
         connectMode?: pulumi.Input<string>;
         /**
          * -
@@ -20918,19 +20958,19 @@ export namespace gameservices {
 export namespace gkehub {
     export interface FeatureMembershipConfigmanagement {
         /**
-         * Binauthz configuration for the cluster.
+         * Binauthz configuration for the cluster. Structure is documented below.
          */
         binauthz?: pulumi.Input<inputs.gkehub.FeatureMembershipConfigmanagementBinauthz>;
         /**
-         * Config Sync configuration for the cluster.
+         * Config Sync configuration for the cluster. Structure is documented below.
          */
         configSync?: pulumi.Input<inputs.gkehub.FeatureMembershipConfigmanagementConfigSync>;
         /**
-         * Hierarchy Controller configuration for the cluster.
+         * Hierarchy Controller configuration for the cluster. Structure is documented below.
          */
         hierarchyController?: pulumi.Input<inputs.gkehub.FeatureMembershipConfigmanagementHierarchyController>;
         /**
-         * Policy Controller configuration for the cluster.
+         * Policy Controller configuration for the cluster. Structure is documented below.
          */
         policyController?: pulumi.Input<inputs.gkehub.FeatureMembershipConfigmanagementPolicyController>;
         /**
@@ -20949,7 +20989,7 @@ export namespace gkehub {
     export interface FeatureMembershipConfigmanagementConfigSync {
         /**
          * -
-         * (Optional)
+         * (Optional) Structure is documented below.
          */
         git?: pulumi.Input<inputs.gkehub.FeatureMembershipConfigmanagementConfigSyncGit>;
         /**
@@ -26771,7 +26811,14 @@ export namespace vertex {
 
 export namespace vpcaccess {
     export interface ConnectorSubnet {
+        /**
+         * Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
+         * https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
+         */
         name?: pulumi.Input<string>;
+        /**
+         * Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.
+         */
         projectId?: pulumi.Input<string>;
     }
 }

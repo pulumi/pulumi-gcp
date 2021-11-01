@@ -11,13 +11,13 @@ import (
 )
 
 type FeatureMembershipConfigmanagement struct {
-	// Binauthz configuration for the cluster.
+	// Binauthz configuration for the cluster. Structure is documented below.
 	Binauthz *FeatureMembershipConfigmanagementBinauthz `pulumi:"binauthz"`
-	// Config Sync configuration for the cluster.
+	// Config Sync configuration for the cluster. Structure is documented below.
 	ConfigSync *FeatureMembershipConfigmanagementConfigSync `pulumi:"configSync"`
-	// Hierarchy Controller configuration for the cluster.
+	// Hierarchy Controller configuration for the cluster. Structure is documented below.
 	HierarchyController *FeatureMembershipConfigmanagementHierarchyController `pulumi:"hierarchyController"`
-	// Policy Controller configuration for the cluster.
+	// Policy Controller configuration for the cluster. Structure is documented below.
 	PolicyController *FeatureMembershipConfigmanagementPolicyController `pulumi:"policyController"`
 	// Version of ACM installed.
 	Version *string `pulumi:"version"`
@@ -35,13 +35,13 @@ type FeatureMembershipConfigmanagementInput interface {
 }
 
 type FeatureMembershipConfigmanagementArgs struct {
-	// Binauthz configuration for the cluster.
+	// Binauthz configuration for the cluster. Structure is documented below.
 	Binauthz FeatureMembershipConfigmanagementBinauthzPtrInput `pulumi:"binauthz"`
-	// Config Sync configuration for the cluster.
+	// Config Sync configuration for the cluster. Structure is documented below.
 	ConfigSync FeatureMembershipConfigmanagementConfigSyncPtrInput `pulumi:"configSync"`
-	// Hierarchy Controller configuration for the cluster.
+	// Hierarchy Controller configuration for the cluster. Structure is documented below.
 	HierarchyController FeatureMembershipConfigmanagementHierarchyControllerPtrInput `pulumi:"hierarchyController"`
-	// Policy Controller configuration for the cluster.
+	// Policy Controller configuration for the cluster. Structure is documented below.
 	PolicyController FeatureMembershipConfigmanagementPolicyControllerPtrInput `pulumi:"policyController"`
 	// Version of ACM installed.
 	Version pulumi.StringPtrInput `pulumi:"version"`
@@ -124,28 +124,28 @@ func (o FeatureMembershipConfigmanagementOutput) ToFeatureMembershipConfigmanage
 	}).(FeatureMembershipConfigmanagementPtrOutput)
 }
 
-// Binauthz configuration for the cluster.
+// Binauthz configuration for the cluster. Structure is documented below.
 func (o FeatureMembershipConfigmanagementOutput) Binauthz() FeatureMembershipConfigmanagementBinauthzPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagement) *FeatureMembershipConfigmanagementBinauthz {
 		return v.Binauthz
 	}).(FeatureMembershipConfigmanagementBinauthzPtrOutput)
 }
 
-// Config Sync configuration for the cluster.
+// Config Sync configuration for the cluster. Structure is documented below.
 func (o FeatureMembershipConfigmanagementOutput) ConfigSync() FeatureMembershipConfigmanagementConfigSyncPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagement) *FeatureMembershipConfigmanagementConfigSync {
 		return v.ConfigSync
 	}).(FeatureMembershipConfigmanagementConfigSyncPtrOutput)
 }
 
-// Hierarchy Controller configuration for the cluster.
+// Hierarchy Controller configuration for the cluster. Structure is documented below.
 func (o FeatureMembershipConfigmanagementOutput) HierarchyController() FeatureMembershipConfigmanagementHierarchyControllerPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagement) *FeatureMembershipConfigmanagementHierarchyController {
 		return v.HierarchyController
 	}).(FeatureMembershipConfigmanagementHierarchyControllerPtrOutput)
 }
 
-// Policy Controller configuration for the cluster.
+// Policy Controller configuration for the cluster. Structure is documented below.
 func (o FeatureMembershipConfigmanagementOutput) PolicyController() FeatureMembershipConfigmanagementPolicyControllerPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagement) *FeatureMembershipConfigmanagementPolicyController {
 		return v.PolicyController
@@ -181,7 +181,7 @@ func (o FeatureMembershipConfigmanagementPtrOutput) Elem() FeatureMembershipConf
 	}).(FeatureMembershipConfigmanagementOutput)
 }
 
-// Binauthz configuration for the cluster.
+// Binauthz configuration for the cluster. Structure is documented below.
 func (o FeatureMembershipConfigmanagementPtrOutput) Binauthz() FeatureMembershipConfigmanagementBinauthzPtrOutput {
 	return o.ApplyT(func(v *FeatureMembershipConfigmanagement) *FeatureMembershipConfigmanagementBinauthz {
 		if v == nil {
@@ -191,7 +191,7 @@ func (o FeatureMembershipConfigmanagementPtrOutput) Binauthz() FeatureMembership
 	}).(FeatureMembershipConfigmanagementBinauthzPtrOutput)
 }
 
-// Config Sync configuration for the cluster.
+// Config Sync configuration for the cluster. Structure is documented below.
 func (o FeatureMembershipConfigmanagementPtrOutput) ConfigSync() FeatureMembershipConfigmanagementConfigSyncPtrOutput {
 	return o.ApplyT(func(v *FeatureMembershipConfigmanagement) *FeatureMembershipConfigmanagementConfigSync {
 		if v == nil {
@@ -201,7 +201,7 @@ func (o FeatureMembershipConfigmanagementPtrOutput) ConfigSync() FeatureMembersh
 	}).(FeatureMembershipConfigmanagementConfigSyncPtrOutput)
 }
 
-// Hierarchy Controller configuration for the cluster.
+// Hierarchy Controller configuration for the cluster. Structure is documented below.
 func (o FeatureMembershipConfigmanagementPtrOutput) HierarchyController() FeatureMembershipConfigmanagementHierarchyControllerPtrOutput {
 	return o.ApplyT(func(v *FeatureMembershipConfigmanagement) *FeatureMembershipConfigmanagementHierarchyController {
 		if v == nil {
@@ -211,7 +211,7 @@ func (o FeatureMembershipConfigmanagementPtrOutput) HierarchyController() Featur
 	}).(FeatureMembershipConfigmanagementHierarchyControllerPtrOutput)
 }
 
-// Policy Controller configuration for the cluster.
+// Policy Controller configuration for the cluster. Structure is documented below.
 func (o FeatureMembershipConfigmanagementPtrOutput) PolicyController() FeatureMembershipConfigmanagementPolicyControllerPtrOutput {
 	return o.ApplyT(func(v *FeatureMembershipConfigmanagement) *FeatureMembershipConfigmanagementPolicyController {
 		if v == nil {
@@ -370,7 +370,7 @@ func (o FeatureMembershipConfigmanagementBinauthzPtrOutput) Enabled() pulumi.Boo
 
 type FeatureMembershipConfigmanagementConfigSync struct {
 	// -
-	// (Optional)
+	// (Optional) Structure is documented below.
 	Git *FeatureMembershipConfigmanagementConfigSyncGit `pulumi:"git"`
 	// Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
 	SourceFormat *string `pulumi:"sourceFormat"`
@@ -389,7 +389,7 @@ type FeatureMembershipConfigmanagementConfigSyncInput interface {
 
 type FeatureMembershipConfigmanagementConfigSyncArgs struct {
 	// -
-	// (Optional)
+	// (Optional) Structure is documented below.
 	Git FeatureMembershipConfigmanagementConfigSyncGitPtrInput `pulumi:"git"`
 	// Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
 	SourceFormat pulumi.StringPtrInput `pulumi:"sourceFormat"`
@@ -473,7 +473,7 @@ func (o FeatureMembershipConfigmanagementConfigSyncOutput) ToFeatureMembershipCo
 }
 
 // -
-// (Optional)
+// (Optional) Structure is documented below.
 func (o FeatureMembershipConfigmanagementConfigSyncOutput) Git() FeatureMembershipConfigmanagementConfigSyncGitPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSync) *FeatureMembershipConfigmanagementConfigSyncGit {
 		return v.Git
@@ -510,7 +510,7 @@ func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) Elem() FeatureMemb
 }
 
 // -
-// (Optional)
+// (Optional) Structure is documented below.
 func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) Git() FeatureMembershipConfigmanagementConfigSyncGitPtrOutput {
 	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSync) *FeatureMembershipConfigmanagementConfigSyncGit {
 		if v == nil {

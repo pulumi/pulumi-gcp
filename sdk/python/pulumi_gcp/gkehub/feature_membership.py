@@ -22,7 +22,7 @@ class FeatureMembershipArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a FeatureMembership resource.
-        :param pulumi.Input['FeatureMembershipConfigmanagementArgs'] configmanagement: Config Management-specific spec.
+        :param pulumi.Input['FeatureMembershipConfigmanagementArgs'] configmanagement: Config Management-specific spec. Structure is documented below.
         :param pulumi.Input[str] feature: The name of the feature
         :param pulumi.Input[str] location: The location of the feature
         :param pulumi.Input[str] membership: The name of the membership
@@ -39,7 +39,7 @@ class FeatureMembershipArgs:
     @pulumi.getter
     def configmanagement(self) -> pulumi.Input['FeatureMembershipConfigmanagementArgs']:
         """
-        Config Management-specific spec.
+        Config Management-specific spec. Structure is documented below.
         """
         return pulumi.get(self, "configmanagement")
 
@@ -106,7 +106,7 @@ class _FeatureMembershipState:
                  project: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering FeatureMembership resources.
-        :param pulumi.Input['FeatureMembershipConfigmanagementArgs'] configmanagement: Config Management-specific spec.
+        :param pulumi.Input['FeatureMembershipConfigmanagementArgs'] configmanagement: Config Management-specific spec. Structure is documented below.
         :param pulumi.Input[str] feature: The name of the feature
         :param pulumi.Input[str] location: The location of the feature
         :param pulumi.Input[str] membership: The name of the membership
@@ -127,7 +127,7 @@ class _FeatureMembershipState:
     @pulumi.getter
     def configmanagement(self) -> Optional[pulumi.Input['FeatureMembershipConfigmanagementArgs']]:
         """
-        Config Management-specific spec.
+        Config Management-specific spec. Structure is documented below.
         """
         return pulumi.get(self, "configmanagement")
 
@@ -214,7 +214,7 @@ class FeatureMembership(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['FeatureMembershipConfigmanagementArgs']] configmanagement: Config Management-specific spec.
+        :param pulumi.Input[pulumi.InputType['FeatureMembershipConfigmanagementArgs']] configmanagement: Config Management-specific spec. Structure is documented below.
         :param pulumi.Input[str] feature: The name of the feature
         :param pulumi.Input[str] location: The location of the feature
         :param pulumi.Input[str] membership: The name of the membership
@@ -310,7 +310,7 @@ class FeatureMembership(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['FeatureMembershipConfigmanagementArgs']] configmanagement: Config Management-specific spec.
+        :param pulumi.Input[pulumi.InputType['FeatureMembershipConfigmanagementArgs']] configmanagement: Config Management-specific spec. Structure is documented below.
         :param pulumi.Input[str] feature: The name of the feature
         :param pulumi.Input[str] location: The location of the feature
         :param pulumi.Input[str] membership: The name of the membership
@@ -331,7 +331,7 @@ class FeatureMembership(pulumi.CustomResource):
     @pulumi.getter
     def configmanagement(self) -> pulumi.Output['outputs.FeatureMembershipConfigmanagement']:
         """
-        Config Management-specific spec.
+        Config Management-specific spec. Structure is documented below.
         """
         return pulumi.get(self, "configmanagement")
 

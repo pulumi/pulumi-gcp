@@ -161,7 +161,7 @@ type InstanceGroupManager struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The URL of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+	// ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
 	StatefulDisks InstanceGroupManagerStatefulDiskArrayOutput `pulumi:"statefulDisks"`
 	// The status of this managed instance group.
 	Statuses InstanceGroupManagerStatusArrayOutput `pulumi:"statuses"`
@@ -254,7 +254,7 @@ type instanceGroupManagerState struct {
 	Project *string `pulumi:"project"`
 	// The URL of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+	// ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
 	StatefulDisks []InstanceGroupManagerStatefulDisk `pulumi:"statefulDisks"`
 	// The status of this managed instance group.
 	Statuses []InstanceGroupManagerStatus `pulumi:"statuses"`
@@ -313,7 +313,7 @@ type InstanceGroupManagerState struct {
 	Project pulumi.StringPtrInput
 	// The URL of the created resource.
 	SelfLink pulumi.StringPtrInput
-	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+	// ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
 	StatefulDisks InstanceGroupManagerStatefulDiskArrayInput
 	// The status of this managed instance group.
 	Statuses InstanceGroupManagerStatusArrayInput
@@ -369,7 +369,7 @@ type instanceGroupManagerArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+	// ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
 	StatefulDisks []InstanceGroupManagerStatefulDisk `pulumi:"statefulDisks"`
 	// The full URL of all target pools to which new
 	// instances in the group are added. Updating the target pools attribute does
@@ -420,7 +420,7 @@ type InstanceGroupManagerArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+	// ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
 	StatefulDisks InstanceGroupManagerStatefulDiskArrayInput
 	// The full URL of all target pools to which new
 	// instances in the group are added. Updating the target pools attribute does

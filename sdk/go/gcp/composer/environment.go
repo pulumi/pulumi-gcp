@@ -161,22 +161,6 @@ import (
 // 	})
 // }
 // ```
-//
-// ## Import
-//
-// Environment can be imported using any of these accepted formats
-//
-// ```sh
-//  $ pulumi import gcp:composer/environment:Environment default projects/{{project}}/locations/{{region}}/environments/{{name}}
-// ```
-//
-// ```sh
-//  $ pulumi import gcp:composer/environment:Environment default {{project}}/{{region}}/{{name}}
-// ```
-//
-// ```sh
-//  $ pulumi import gcp:composer/environment:Environment default {{name}}
-// ```
 type Environment struct {
 	pulumi.CustomResourceState
 

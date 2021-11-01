@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.GkeHub
     public partial class FeatureMembership : Pulumi.CustomResource
     {
         /// <summary>
-        /// Config Management-specific spec.
+        /// Config Management-specific spec. Structure is documented below.
         /// </summary>
         [Output("configmanagement")]
         public Output<Outputs.FeatureMembershipConfigmanagement> Configmanagement { get; private set; } = null!;
@@ -106,7 +106,7 @@ namespace Pulumi.Gcp.GkeHub
     public sealed class FeatureMembershipArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Config Management-specific spec.
+        /// Config Management-specific spec. Structure is documented below.
         /// </summary>
         [Input("configmanagement", required: true)]
         public Input<Inputs.FeatureMembershipConfigmanagementArgs> Configmanagement { get; set; } = null!;
@@ -143,7 +143,7 @@ namespace Pulumi.Gcp.GkeHub
     public sealed class FeatureMembershipState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Config Management-specific spec.
+        /// Config Management-specific spec. Structure is documented below.
         /// </summary>
         [Input("configmanagement")]
         public Input<Inputs.FeatureMembershipConfigmanagementGetArgs>? Configmanagement { get; set; }

@@ -100,7 +100,7 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
-	// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
+	// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
 	AdvancedMachineFeatures InstanceAdvancedMachineFeaturesPtrOutput `pulumi:"advancedMachineFeatures"`
 	// If true, allows this prvider to stop the instance to update its properties.
 	// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
@@ -114,7 +114,7 @@ type Instance struct {
 	// packets with non-matching source or destination IPs.
 	// This defaults to false.
 	CanIpForward pulumi.BoolPtrOutput `pulumi:"canIpForward"`
-	// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+	// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
 	ConfidentialInstanceConfig InstanceConfidentialInstanceConfigOutput `pulumi:"confidentialInstanceConfig"`
 	// The CPU platform used by this instance.
 	CpuPlatform pulumi.StringOutput `pulumi:"cpuPlatform"`
@@ -250,7 +250,7 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
-	// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
+	// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
 	AdvancedMachineFeatures *InstanceAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
 	// If true, allows this prvider to stop the instance to update its properties.
 	// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
@@ -264,7 +264,7 @@ type instanceState struct {
 	// packets with non-matching source or destination IPs.
 	// This defaults to false.
 	CanIpForward *bool `pulumi:"canIpForward"`
-	// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+	// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
 	ConfidentialInstanceConfig *InstanceConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
 	// The CPU platform used by this instance.
 	CpuPlatform *string `pulumi:"cpuPlatform"`
@@ -363,7 +363,7 @@ type instanceState struct {
 }
 
 type InstanceState struct {
-	// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
+	// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
 	AdvancedMachineFeatures InstanceAdvancedMachineFeaturesPtrInput
 	// If true, allows this prvider to stop the instance to update its properties.
 	// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
@@ -377,7 +377,7 @@ type InstanceState struct {
 	// packets with non-matching source or destination IPs.
 	// This defaults to false.
 	CanIpForward pulumi.BoolPtrInput
-	// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+	// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
 	ConfidentialInstanceConfig InstanceConfidentialInstanceConfigPtrInput
 	// The CPU platform used by this instance.
 	CpuPlatform pulumi.StringPtrInput
@@ -480,7 +480,7 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
-	// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
+	// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
 	AdvancedMachineFeatures *InstanceAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
 	// If true, allows this prvider to stop the instance to update its properties.
 	// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
@@ -494,7 +494,7 @@ type instanceArgs struct {
 	// packets with non-matching source or destination IPs.
 	// This defaults to false.
 	CanIpForward *bool `pulumi:"canIpForward"`
-	// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+	// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
 	ConfidentialInstanceConfig *InstanceConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
 	// Enable deletion protection on this instance. Defaults to false.
 	// **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
@@ -580,7 +580,7 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
-	// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM.
+	// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
 	AdvancedMachineFeatures InstanceAdvancedMachineFeaturesPtrInput
 	// If true, allows this prvider to stop the instance to update its properties.
 	// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
@@ -594,7 +594,7 @@ type InstanceArgs struct {
 	// packets with non-matching source or destination IPs.
 	// This defaults to false.
 	CanIpForward pulumi.BoolPtrInput
-	// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+	// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
 	ConfidentialInstanceConfig InstanceConfidentialInstanceConfigPtrInput
 	// Enable deletion protection on this instance. Defaults to false.
 	// **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.

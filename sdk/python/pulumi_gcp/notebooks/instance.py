@@ -90,7 +90,8 @@ class InstanceArgs:
         :param pulumi.Input[str] name: The name specified for the Notebook instance.
         :param pulumi.Input[str] network: The name of the VPC that this instance is in.
                Format: projects/{project_id}/global/networks/{network_id}
-        :param pulumi.Input[str] nic_type: The type of vNIC driver. Possible values: ["UNSPECIFIED_NIC_TYPE", "VIRTIO_NET", "GVNIC"]
+        :param pulumi.Input[str] nic_type: The type of vNIC driver.
+               Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
         :param pulumi.Input[bool] no_proxy_access: The notebook instance will not register with the proxy..
         :param pulumi.Input[bool] no_public_ip: No public IP will be assigned to this instance.
         :param pulumi.Input[bool] no_remove_data_disk: If true, the data disk will not be auto deleted when deleting the instance.
@@ -100,6 +101,7 @@ class InstanceArgs:
         :param pulumi.Input[str] project: The name of the Google Cloud project that this VM image belongs to.
                Format: projects/{project_id}
         :param pulumi.Input['InstanceReservationAffinityArgs'] reservation_affinity: Reservation Affinity for consuming Zonal reservation.
+               Structure is documented below.
         :param pulumi.Input[str] service_account: The service account on this instance, giving access to other
                Google Cloud services. You can use any service account within
                the same project, but you must have the service account user
@@ -425,7 +427,8 @@ class InstanceArgs:
     @pulumi.getter(name="nicType")
     def nic_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of vNIC driver. Possible values: ["UNSPECIFIED_NIC_TYPE", "VIRTIO_NET", "GVNIC"]
+        The type of vNIC driver.
+        Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
         """
         return pulumi.get(self, "nic_type")
 
@@ -501,6 +504,7 @@ class InstanceArgs:
     def reservation_affinity(self) -> Optional[pulumi.Input['InstanceReservationAffinityArgs']]:
         """
         Reservation Affinity for consuming Zonal reservation.
+        Structure is documented below.
         """
         return pulumi.get(self, "reservation_affinity")
 
@@ -684,7 +688,8 @@ class _InstanceState:
         :param pulumi.Input[str] name: The name specified for the Notebook instance.
         :param pulumi.Input[str] network: The name of the VPC that this instance is in.
                Format: projects/{project_id}/global/networks/{network_id}
-        :param pulumi.Input[str] nic_type: The type of vNIC driver. Possible values: ["UNSPECIFIED_NIC_TYPE", "VIRTIO_NET", "GVNIC"]
+        :param pulumi.Input[str] nic_type: The type of vNIC driver.
+               Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
         :param pulumi.Input[bool] no_proxy_access: The notebook instance will not register with the proxy..
         :param pulumi.Input[bool] no_public_ip: No public IP will be assigned to this instance.
         :param pulumi.Input[bool] no_remove_data_disk: If true, the data disk will not be auto deleted when deleting the instance.
@@ -695,6 +700,7 @@ class _InstanceState:
                Format: projects/{project_id}
         :param pulumi.Input[str] proxy_uri: The proxy endpoint that is used to access the Jupyter notebook.
         :param pulumi.Input['InstanceReservationAffinityArgs'] reservation_affinity: Reservation Affinity for consuming Zonal reservation.
+               Structure is documented below.
         :param pulumi.Input[str] service_account: The service account on this instance, giving access to other
                Google Cloud services. You can use any service account within
                the same project, but you must have the service account user
@@ -1027,7 +1033,8 @@ class _InstanceState:
     @pulumi.getter(name="nicType")
     def nic_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of vNIC driver. Possible values: ["UNSPECIFIED_NIC_TYPE", "VIRTIO_NET", "GVNIC"]
+        The type of vNIC driver.
+        Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
         """
         return pulumi.get(self, "nic_type")
 
@@ -1115,6 +1122,7 @@ class _InstanceState:
     def reservation_affinity(self) -> Optional[pulumi.Input['InstanceReservationAffinityArgs']]:
         """
         Reservation Affinity for consuming Zonal reservation.
+        Structure is documented below.
         """
         return pulumi.get(self, "reservation_affinity")
 
@@ -1425,7 +1433,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name specified for the Notebook instance.
         :param pulumi.Input[str] network: The name of the VPC that this instance is in.
                Format: projects/{project_id}/global/networks/{network_id}
-        :param pulumi.Input[str] nic_type: The type of vNIC driver. Possible values: ["UNSPECIFIED_NIC_TYPE", "VIRTIO_NET", "GVNIC"]
+        :param pulumi.Input[str] nic_type: The type of vNIC driver.
+               Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
         :param pulumi.Input[bool] no_proxy_access: The notebook instance will not register with the proxy..
         :param pulumi.Input[bool] no_public_ip: No public IP will be assigned to this instance.
         :param pulumi.Input[bool] no_remove_data_disk: If true, the data disk will not be auto deleted when deleting the instance.
@@ -1435,6 +1444,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] project: The name of the Google Cloud project that this VM image belongs to.
                Format: projects/{project_id}
         :param pulumi.Input[pulumi.InputType['InstanceReservationAffinityArgs']] reservation_affinity: Reservation Affinity for consuming Zonal reservation.
+               Structure is documented below.
         :param pulumi.Input[str] service_account: The service account on this instance, giving access to other
                Google Cloud services. You can use any service account within
                the same project, but you must have the service account user
@@ -1763,7 +1773,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name specified for the Notebook instance.
         :param pulumi.Input[str] network: The name of the VPC that this instance is in.
                Format: projects/{project_id}/global/networks/{network_id}
-        :param pulumi.Input[str] nic_type: The type of vNIC driver. Possible values: ["UNSPECIFIED_NIC_TYPE", "VIRTIO_NET", "GVNIC"]
+        :param pulumi.Input[str] nic_type: The type of vNIC driver.
+               Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
         :param pulumi.Input[bool] no_proxy_access: The notebook instance will not register with the proxy..
         :param pulumi.Input[bool] no_public_ip: No public IP will be assigned to this instance.
         :param pulumi.Input[bool] no_remove_data_disk: If true, the data disk will not be auto deleted when deleting the instance.
@@ -1774,6 +1785,7 @@ class Instance(pulumi.CustomResource):
                Format: projects/{project_id}
         :param pulumi.Input[str] proxy_uri: The proxy endpoint that is used to access the Jupyter notebook.
         :param pulumi.Input[pulumi.InputType['InstanceReservationAffinityArgs']] reservation_affinity: Reservation Affinity for consuming Zonal reservation.
+               Structure is documented below.
         :param pulumi.Input[str] service_account: The service account on this instance, giving access to other
                Google Cloud services. You can use any service account within
                the same project, but you must have the service account user
@@ -2005,7 +2017,8 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="nicType")
     def nic_type(self) -> pulumi.Output[Optional[str]]:
         """
-        The type of vNIC driver. Possible values: ["UNSPECIFIED_NIC_TYPE", "VIRTIO_NET", "GVNIC"]
+        The type of vNIC driver.
+        Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
         """
         return pulumi.get(self, "nic_type")
 
@@ -2065,6 +2078,7 @@ class Instance(pulumi.CustomResource):
     def reservation_affinity(self) -> pulumi.Output[Optional['outputs.InstanceReservationAffinity']]:
         """
         Reservation Affinity for consuming Zonal reservation.
+        Structure is documented below.
         """
         return pulumi.get(self, "reservation_affinity")
 

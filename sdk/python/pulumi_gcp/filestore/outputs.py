@@ -230,6 +230,11 @@ class InstanceNetwork(dict):
                Each value may be one of `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, and `MODE_IPV6`.
         :param str network: The name of the GCE VPC network to which the
                instance is connected.
+        :param str connect_mode: The network connect mode of the Filestore instance.
+               If not provided, the connect mode defaults to
+               DIRECT_PEERING.
+               Default value is `DIRECT_PEERING`.
+               Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
         :param Sequence[str] ip_addresses: -
                A list of IPv4 or IPv6 addresses.
         :param str reserved_ip_range: A /29 CIDR block that identifies the range of IP
@@ -266,6 +271,13 @@ class InstanceNetwork(dict):
     @property
     @pulumi.getter(name="connectMode")
     def connect_mode(self) -> Optional[str]:
+        """
+        The network connect mode of the Filestore instance.
+        If not provided, the connect mode defaults to
+        DIRECT_PEERING.
+        Default value is `DIRECT_PEERING`.
+        Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
+        """
         return pulumi.get(self, "connect_mode")
 
     @property

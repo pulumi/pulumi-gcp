@@ -23,10 +23,6 @@ namespace Pulumi.Gcp.Container.Outputs
         /// `remove_default_node_pool` to `true`.
         /// </summary>
         public readonly int? InitialNodeCount;
-        /// <summary>
-        /// List of instance group URLs which have been assigned
-        /// to the cluster.
-        /// </summary>
         public readonly ImmutableArray<string> InstanceGroupUrls;
         public readonly Outputs.ClusterNodePoolManagement? Management;
         public readonly int? MaxPodsPerNode;
@@ -37,8 +33,8 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly string? Name;
         public readonly string? NamePrefix;
         /// <summary>
-        /// ) Configuration for
-        /// [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool.
+        /// Configuration for
+        /// [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
         /// </summary>
         public readonly Outputs.ClusterNodePoolNetworkConfig? NetworkConfig;
         /// <summary>

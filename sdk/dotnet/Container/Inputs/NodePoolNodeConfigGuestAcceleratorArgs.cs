@@ -15,6 +15,9 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("count", required: true)]
         public Input<int> Count { get; set; } = null!;
 
+        [Input("gpuPartitionSize")]
+        public Input<string>? GpuPartitionSize { get; set; }
+
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 

@@ -220,6 +220,27 @@ class Schema(pulumi.CustomResource):
         \"\"\",
             type="AVRO")
         ```
+        ### Pubsub Schema Protobuf
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_schema = gcp.pubsub.Schema("exampleSchema",
+            type="PROTOCOL_BUFFER",
+            definition=\"\"\"syntax = "proto3";
+        message Results {
+        string message_request = 1;
+        string message_response = 2;
+        string timestamp_request = 3;
+        string timestamp_response = 4;
+        }\"\"\")
+        example_topic = gcp.pubsub.Topic("exampleTopic", schema_settings=gcp.pubsub.TopicSchemaSettingsArgs(
+            schema="projects/my-project-name/schemas/example",
+            encoding="JSON",
+        ),
+        opts=pulumi.ResourceOptions(depends_on=[example_schema]))
+        ```
 
         ## Import
 
@@ -290,6 +311,27 @@ class Schema(pulumi.CustomResource):
 
         \"\"\",
             type="AVRO")
+        ```
+        ### Pubsub Schema Protobuf
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_schema = gcp.pubsub.Schema("exampleSchema",
+            type="PROTOCOL_BUFFER",
+            definition=\"\"\"syntax = "proto3";
+        message Results {
+        string message_request = 1;
+        string message_response = 2;
+        string timestamp_request = 3;
+        string timestamp_response = 4;
+        }\"\"\")
+        example_topic = gcp.pubsub.Topic("exampleTopic", schema_settings=gcp.pubsub.TopicSchemaSettingsArgs(
+            schema="projects/my-project-name/schemas/example",
+            encoding="JSON",
+        ),
+        opts=pulumi.ResourceOptions(depends_on=[example_schema]))
         ```
 
         ## Import

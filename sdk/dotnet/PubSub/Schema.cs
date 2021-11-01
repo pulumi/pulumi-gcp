@@ -54,6 +54,45 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// }
     /// ```
+    /// ### Pubsub Schema Protobuf
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var exampleSchema = new Gcp.PubSub.Schema("exampleSchema", new Gcp.PubSub.SchemaArgs
+    ///         {
+    ///             Type = "PROTOCOL_BUFFER",
+    ///             Definition = @"syntax = ""proto3"";
+    /// message Results {
+    /// string message_request = 1;
+    /// string message_response = 2;
+    /// string timestamp_request = 3;
+    /// string timestamp_response = 4;
+    /// }",
+    ///         });
+    ///         var exampleTopic = new Gcp.PubSub.Topic("exampleTopic", new Gcp.PubSub.TopicArgs
+    ///         {
+    ///             SchemaSettings = new Gcp.PubSub.Inputs.TopicSchemaSettingsArgs
+    ///             {
+    ///                 Schema = "projects/my-project-name/schemas/example",
+    ///                 Encoding = "JSON",
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 exampleSchema,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 

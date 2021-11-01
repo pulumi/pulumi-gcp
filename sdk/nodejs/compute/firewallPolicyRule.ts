@@ -111,7 +111,7 @@ export class FirewallPolicyRule extends pulumi.CustomResource {
      */
     public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
-     * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+     * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced. Structure is documented below.
      */
     public readonly match!: pulumi.Output<outputs.compute.FirewallPolicyRuleMatch>;
     /**
@@ -226,7 +226,7 @@ export interface FirewallPolicyRuleState {
      */
     kind?: pulumi.Input<string>;
     /**
-     * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+     * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced. Structure is documented below.
      */
     match?: pulumi.Input<inputs.compute.FirewallPolicyRuleMatch>;
     /**
@@ -276,7 +276,7 @@ export interface FirewallPolicyRuleArgs {
      */
     firewallPolicy: pulumi.Input<string>;
     /**
-     * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+     * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced. Structure is documented below.
      */
     match: pulumi.Input<inputs.compute.FirewallPolicyRuleMatch>;
     /**

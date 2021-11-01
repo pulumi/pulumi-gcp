@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * Example creating a Cloud IAM User.
+ * Example creating a Cloud IAM User. (For MySQL, specify `cloudsqlIamAuthentication`)
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -34,12 +34,14 @@ class ConnectorArgs:
         :param pulumi.Input[int] max_throughput: Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300.
         :param pulumi.Input[int] min_instances: Minimum value of instances in autoscaling group underlying the connector.
         :param pulumi.Input[int] min_throughput: Minimum throughput of the connector in Mbps. Default and min is 200.
-        :param pulumi.Input[str] name: The name of the resource (Max 25 characters).
+        :param pulumi.Input[str] name: Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
+               https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
         :param pulumi.Input[str] network: Name of the VPC network. Required if `ip_cidr_range` is set.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the VPC Access connector resides. If it is not provided, the provider region is used.
         :param pulumi.Input['ConnectorSubnetArgs'] subnet: The subnet in which to house the connector
+               Structure is documented below.
         """
         if ip_cidr_range is not None:
             pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
@@ -140,7 +142,8 @@ class ConnectorArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the resource (Max 25 characters).
+        Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
+        https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
         """
         return pulumi.get(self, "name")
 
@@ -190,6 +193,7 @@ class ConnectorArgs:
     def subnet(self) -> Optional[pulumi.Input['ConnectorSubnetArgs']]:
         """
         The subnet in which to house the connector
+        Structure is documented below.
         """
         return pulumi.get(self, "subnet")
 
@@ -222,7 +226,8 @@ class _ConnectorState:
         :param pulumi.Input[int] max_throughput: Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300.
         :param pulumi.Input[int] min_instances: Minimum value of instances in autoscaling group underlying the connector.
         :param pulumi.Input[int] min_throughput: Minimum throughput of the connector in Mbps. Default and min is 200.
-        :param pulumi.Input[str] name: The name of the resource (Max 25 characters).
+        :param pulumi.Input[str] name: Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
+               https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
         :param pulumi.Input[str] network: Name of the VPC network. Required if `ip_cidr_range` is set.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -230,6 +235,7 @@ class _ConnectorState:
         :param pulumi.Input[str] self_link: The fully qualified name of this VPC connector
         :param pulumi.Input[str] state: State of the VPC access connector.
         :param pulumi.Input['ConnectorSubnetArgs'] subnet: The subnet in which to house the connector
+               Structure is documented below.
         """
         if ip_cidr_range is not None:
             pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
@@ -334,7 +340,8 @@ class _ConnectorState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the resource (Max 25 characters).
+        Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
+        https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
         """
         return pulumi.get(self, "name")
 
@@ -408,6 +415,7 @@ class _ConnectorState:
     def subnet(self) -> Optional[pulumi.Input['ConnectorSubnetArgs']]:
         """
         The subnet in which to house the connector
+        Structure is documented below.
         """
         return pulumi.get(self, "subnet")
 
@@ -502,12 +510,14 @@ class Connector(pulumi.CustomResource):
         :param pulumi.Input[int] max_throughput: Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300.
         :param pulumi.Input[int] min_instances: Minimum value of instances in autoscaling group underlying the connector.
         :param pulumi.Input[int] min_throughput: Minimum throughput of the connector in Mbps. Default and min is 200.
-        :param pulumi.Input[str] name: The name of the resource (Max 25 characters).
+        :param pulumi.Input[str] name: Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
+               https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
         :param pulumi.Input[str] network: Name of the VPC network. Required if `ip_cidr_range` is set.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the VPC Access connector resides. If it is not provided, the provider region is used.
         :param pulumi.Input[pulumi.InputType['ConnectorSubnetArgs']] subnet: The subnet in which to house the connector
+               Structure is documented below.
         """
         ...
     @overload
@@ -663,7 +673,8 @@ class Connector(pulumi.CustomResource):
         :param pulumi.Input[int] max_throughput: Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300.
         :param pulumi.Input[int] min_instances: Minimum value of instances in autoscaling group underlying the connector.
         :param pulumi.Input[int] min_throughput: Minimum throughput of the connector in Mbps. Default and min is 200.
-        :param pulumi.Input[str] name: The name of the resource (Max 25 characters).
+        :param pulumi.Input[str] name: Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
+               https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
         :param pulumi.Input[str] network: Name of the VPC network. Required if `ip_cidr_range` is set.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -671,6 +682,7 @@ class Connector(pulumi.CustomResource):
         :param pulumi.Input[str] self_link: The fully qualified name of this VPC connector
         :param pulumi.Input[str] state: State of the VPC access connector.
         :param pulumi.Input[pulumi.InputType['ConnectorSubnetArgs']] subnet: The subnet in which to house the connector
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -743,7 +755,8 @@ class Connector(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the resource (Max 25 characters).
+        Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
+        https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
         """
         return pulumi.get(self, "name")
 
@@ -793,6 +806,7 @@ class Connector(pulumi.CustomResource):
     def subnet(self) -> pulumi.Output[Optional['outputs.ConnectorSubnet']]:
         """
         The subnet in which to house the connector
+        Structure is documented below.
         """
         return pulumi.get(self, "subnet")
 

@@ -197,7 +197,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The named port configuration. See the section below
-        /// for details on configuration.
+        /// for details on configuration. Structure is documented below.
         /// </summary>
         [Output("namedPorts")]
         public Output<ImmutableArray<Outputs.InstanceGroupNamedPort>> NamedPorts { get; private set; } = null!;
@@ -314,7 +314,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The named port configuration. See the section below
-        /// for details on configuration.
+        /// for details on configuration. Structure is documented below.
         /// </summary>
         public InputList<Inputs.InstanceGroupNamedPortArgs> NamedPorts
         {
@@ -383,7 +383,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The named port configuration. See the section below
-        /// for details on configuration.
+        /// for details on configuration. Structure is documented below.
         /// </summary>
         public InputList<Inputs.InstanceGroupNamedPortGetArgs> NamedPorts
         {

@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.Composer.Inputs
         /// <summary>
         /// The configuration settings for Cloud SQL instance used internally
         /// by Apache Airflow software. This field is supported for Cloud
-        /// Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        /// Composer environments in versions composer-1.*.*-airflow-*.*.*. Structure is documented below.
         /// </summary>
         [Input("databaseConfig")]
         public Input<Inputs.EnvironmentConfigDatabaseConfigGetArgs>? DatabaseConfig { get; set; }
@@ -29,16 +29,19 @@ namespace Pulumi.Gcp.Composer.Inputs
         /// <summary>
         /// The encryption options for the Cloud Composer environment and its
         /// dependencies. This field is supported for Cloud Composer environments in
-        /// versions composer-1.*.*-airflow-*.*.*.
+        /// versions composer-1.*.*-airflow-*.*.*. Structure is documented below.
         /// </summary>
         [Input("encryptionConfig")]
         public Input<Inputs.EnvironmentConfigEncryptionConfigGetArgs>? EncryptionConfig { get; set; }
+
+        [Input("environmentSize")]
+        public Input<string>? EnvironmentSize { get; set; }
 
         [Input("gkeCluster")]
         public Input<string>? GkeCluster { get; set; }
 
         /// <summary>
-        /// The configuration settings for Cloud Composer maintenance window.
+        /// The configuration settings for Cloud Composer maintenance window. Structure is documented below.
         /// </summary>
         [Input("maintenanceWindow")]
         public Input<Inputs.EnvironmentConfigMaintenanceWindowGetArgs>? MaintenanceWindow { get; set; }
@@ -73,11 +76,17 @@ namespace Pulumi.Gcp.Composer.Inputs
         /// <summary>
         /// The configuration settings for the Airflow web server App Engine instance.
         /// This field is supported for Cloud Composer environments in versions
-        /// composer-1.*.*-airflow-*.*.*.
+        /// composer-1.*.*-airflow-*.*.*. Structure is documented below.
         /// </summary>
         [Input("webServerConfig")]
         public Input<Inputs.EnvironmentConfigWebServerConfigGetArgs>? WebServerConfig { get; set; }
 
+        /// <summary>
+        /// The network-level access control policy for the Airflow web server.
+        /// If unspecified, no network-level access restrictions will be applied.
+        /// This field is supported for Cloud Composer environments in versions
+        /// composer-1.*.*-airflow-*.*.*.
+        /// </summary>
         [Input("webServerNetworkAccessControl")]
         public Input<Inputs.EnvironmentConfigWebServerNetworkAccessControlGetArgs>? WebServerNetworkAccessControl { get; set; }
 

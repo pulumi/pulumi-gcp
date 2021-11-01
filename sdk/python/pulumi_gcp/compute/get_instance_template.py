@@ -131,7 +131,7 @@ class GetInstanceTemplateResult:
     @pulumi.getter(name="confidentialInstanceConfigs")
     def confidential_instance_configs(self) -> Sequence['outputs.GetInstanceTemplateConfidentialInstanceConfigResult']:
         """
-        Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+        Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
         """
         return pulumi.get(self, "confidential_instance_configs")
 

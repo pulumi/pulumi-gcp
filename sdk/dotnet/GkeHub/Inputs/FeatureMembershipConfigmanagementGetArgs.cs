@@ -13,25 +13,25 @@ namespace Pulumi.Gcp.GkeHub.Inputs
     public sealed class FeatureMembershipConfigmanagementGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Binauthz configuration for the cluster.
+        /// Binauthz configuration for the cluster. Structure is documented below.
         /// </summary>
         [Input("binauthz")]
         public Input<Inputs.FeatureMembershipConfigmanagementBinauthzGetArgs>? Binauthz { get; set; }
 
         /// <summary>
-        /// Config Sync configuration for the cluster.
+        /// Config Sync configuration for the cluster. Structure is documented below.
         /// </summary>
         [Input("configSync")]
         public Input<Inputs.FeatureMembershipConfigmanagementConfigSyncGetArgs>? ConfigSync { get; set; }
 
         /// <summary>
-        /// Hierarchy Controller configuration for the cluster.
+        /// Hierarchy Controller configuration for the cluster. Structure is documented below.
         /// </summary>
         [Input("hierarchyController")]
         public Input<Inputs.FeatureMembershipConfigmanagementHierarchyControllerGetArgs>? HierarchyController { get; set; }
 
         /// <summary>
-        /// Policy Controller configuration for the cluster.
+        /// Policy Controller configuration for the cluster. Structure is documented below.
         /// </summary>
         [Input("policyController")]
         public Input<Inputs.FeatureMembershipConfigmanagementPolicyControllerGetArgs>? PolicyController { get; set; }

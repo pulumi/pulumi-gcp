@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableArray<string> DestIpRanges;
         /// <summary>
-        /// Pairs of IP protocols and ports that the rule should match.
+        /// Pairs of IP protocols and ports that the rule should match. Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.FirewallPolicyRuleMatchLayer4Config> Layer4Configs;
         /// <summary>

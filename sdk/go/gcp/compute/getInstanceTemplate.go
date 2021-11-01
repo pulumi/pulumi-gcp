@@ -77,7 +77,7 @@ type LookupInstanceTemplateResult struct {
 	// Whether to allow sending and receiving of
 	// packets with non-matching source or destination IPs. This defaults to false.
 	CanIpForward bool `pulumi:"canIpForward"`
-	// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+	// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
 	ConfidentialInstanceConfigs []GetInstanceTemplateConfidentialInstanceConfig `pulumi:"confidentialInstanceConfigs"`
 	// A brief description of this resource.
 	Description string `pulumi:"description"`
@@ -210,7 +210,7 @@ func (o LookupInstanceTemplateResultOutput) CanIpForward() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupInstanceTemplateResult) bool { return v.CanIpForward }).(pulumi.BoolOutput)
 }
 
-// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
 func (o LookupInstanceTemplateResultOutput) ConfidentialInstanceConfigs() GetInstanceTemplateConfidentialInstanceConfigArrayOutput {
 	return o.ApplyT(func(v LookupInstanceTemplateResult) []GetInstanceTemplateConfidentialInstanceConfig {
 		return v.ConfidentialInstanceConfigs

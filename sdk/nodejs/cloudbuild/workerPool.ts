@@ -67,7 +67,7 @@ export class WorkerPool extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Network configuration for the `WorkerPool`.
+     * Network configuration for the `WorkerPool`. Structure is documented below.
      */
     public readonly networkConfig!: pulumi.Output<outputs.cloudbuild.WorkerPoolNetworkConfig | undefined>;
     /**
@@ -83,7 +83,7 @@ export class WorkerPool extends pulumi.CustomResource {
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
-     * Configuration to be used for a creating workers in the `WorkerPool`.
+     * Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
      */
     public readonly workerConfig!: pulumi.Output<outputs.cloudbuild.WorkerPoolWorkerConfig>;
 
@@ -152,7 +152,7 @@ export interface WorkerPoolState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Network configuration for the `WorkerPool`.
+     * Network configuration for the `WorkerPool`. Structure is documented below.
      */
     networkConfig?: pulumi.Input<inputs.cloudbuild.WorkerPoolNetworkConfig>;
     /**
@@ -168,7 +168,7 @@ export interface WorkerPoolState {
      */
     updateTime?: pulumi.Input<string>;
     /**
-     * Configuration to be used for a creating workers in the `WorkerPool`.
+     * Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
      */
     workerConfig?: pulumi.Input<inputs.cloudbuild.WorkerPoolWorkerConfig>;
 }
@@ -186,7 +186,7 @@ export interface WorkerPoolArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Network configuration for the `WorkerPool`.
+     * Network configuration for the `WorkerPool`. Structure is documented below.
      */
     networkConfig?: pulumi.Input<inputs.cloudbuild.WorkerPoolNetworkConfig>;
     /**
@@ -194,7 +194,7 @@ export interface WorkerPoolArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * Configuration to be used for a creating workers in the `WorkerPool`.
+     * Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
      */
     workerConfig?: pulumi.Input<inputs.cloudbuild.WorkerPoolWorkerConfig>;
 }

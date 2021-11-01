@@ -67,7 +67,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
 
         /// <summary>
         /// The Google Compute Engine config settings for the master instances
-        /// in a cluster.. Structure defined below.
+        /// in a cluster. Structure defined below.
         /// </summary>
         [Input("masterConfig")]
         public Input<Inputs.ClusterClusterConfigMasterConfigGetArgs>? MasterConfig { get; set; }
@@ -125,7 +125,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
 
         /// <summary>
         /// The Google Compute Engine config settings for the worker instances
-        /// in a cluster.. Structure defined below.
+        /// in a cluster. Structure defined below.
         /// </summary>
         [Input("workerConfig")]
         public Input<Inputs.ClusterClusterConfigWorkerConfigGetArgs>? WorkerConfig { get; set; }

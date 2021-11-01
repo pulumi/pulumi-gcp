@@ -17,6 +17,11 @@ class ConnectorSubnetArgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
+               https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
+        :param pulumi.Input[str] project_id: Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.
+        """
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project_id is not None:
@@ -25,6 +30,10 @@ class ConnectorSubnetArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
+        https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -34,6 +43,9 @@ class ConnectorSubnetArgs:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.
+        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter

@@ -311,7 +311,8 @@ namespace Pulumi.Gcp.Notebooks
         public Output<string> Network { get; private set; } = null!;
 
         /// <summary>
-        /// The type of vNIC driver. Possible values: ["UNSPECIFIED_NIC_TYPE", "VIRTIO_NET", "GVNIC"]
+        /// The type of vNIC driver.
+        /// Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
         /// </summary>
         [Output("nicType")]
         public Output<string?> NicType { get; private set; } = null!;
@@ -357,6 +358,7 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// Reservation Affinity for consuming Zonal reservation.
+        /// Structure is documented below.
         /// </summary>
         [Output("reservationAffinity")]
         public Output<Outputs.InstanceReservationAffinity?> ReservationAffinity { get; private set; } = null!;
@@ -616,7 +618,8 @@ namespace Pulumi.Gcp.Notebooks
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// The type of vNIC driver. Possible values: ["UNSPECIFIED_NIC_TYPE", "VIRTIO_NET", "GVNIC"]
+        /// The type of vNIC driver.
+        /// Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
         /// </summary>
         [Input("nicType")]
         public Input<string>? NicType { get; set; }
@@ -656,6 +659,7 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// Reservation Affinity for consuming Zonal reservation.
+        /// Structure is documented below.
         /// </summary>
         [Input("reservationAffinity")]
         public Input<Inputs.InstanceReservationAffinityArgs>? ReservationAffinity { get; set; }
@@ -882,7 +886,8 @@ namespace Pulumi.Gcp.Notebooks
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// The type of vNIC driver. Possible values: ["UNSPECIFIED_NIC_TYPE", "VIRTIO_NET", "GVNIC"]
+        /// The type of vNIC driver.
+        /// Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
         /// </summary>
         [Input("nicType")]
         public Input<string>? NicType { get; set; }
@@ -928,6 +933,7 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// Reservation Affinity for consuming Zonal reservation.
+        /// Structure is documented below.
         /// </summary>
         [Input("reservationAffinity")]
         public Input<Inputs.InstanceReservationAffinityGetArgs>? ReservationAffinity { get; set; }

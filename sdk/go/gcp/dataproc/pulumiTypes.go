@@ -952,7 +952,7 @@ type ClusterClusterConfig struct {
 	// Structure defined below.
 	LifecycleConfig *ClusterClusterConfigLifecycleConfig `pulumi:"lifecycleConfig"`
 	// The Google Compute Engine config settings for the master instances
-	// in a cluster.. Structure defined below.
+	// in a cluster. Structure defined below.
 	MasterConfig *ClusterClusterConfigMasterConfig `pulumi:"masterConfig"`
 	// The config setting for metastore service with the cluster.
 	// Structure defined below.
@@ -982,7 +982,7 @@ type ClusterClusterConfig struct {
 	// Note: If you don't explicitly specify a `tempBucket` then GCP will auto create / assign one for you.
 	TempBucket *string `pulumi:"tempBucket"`
 	// The Google Compute Engine config settings for the worker instances
-	// in a cluster.. Structure defined below.
+	// in a cluster. Structure defined below.
 	WorkerConfig *ClusterClusterConfigWorkerConfig `pulumi:"workerConfig"`
 }
 
@@ -1020,7 +1020,7 @@ type ClusterClusterConfigArgs struct {
 	// Structure defined below.
 	LifecycleConfig ClusterClusterConfigLifecycleConfigPtrInput `pulumi:"lifecycleConfig"`
 	// The Google Compute Engine config settings for the master instances
-	// in a cluster.. Structure defined below.
+	// in a cluster. Structure defined below.
 	MasterConfig ClusterClusterConfigMasterConfigPtrInput `pulumi:"masterConfig"`
 	// The config setting for metastore service with the cluster.
 	// Structure defined below.
@@ -1050,7 +1050,7 @@ type ClusterClusterConfigArgs struct {
 	// Note: If you don't explicitly specify a `tempBucket` then GCP will auto create / assign one for you.
 	TempBucket pulumi.StringPtrInput `pulumi:"tempBucket"`
 	// The Google Compute Engine config settings for the worker instances
-	// in a cluster.. Structure defined below.
+	// in a cluster. Structure defined below.
 	WorkerConfig ClusterClusterConfigWorkerConfigPtrInput `pulumi:"workerConfig"`
 }
 
@@ -1176,7 +1176,7 @@ func (o ClusterClusterConfigOutput) LifecycleConfig() ClusterClusterConfigLifecy
 }
 
 // The Google Compute Engine config settings for the master instances
-// in a cluster.. Structure defined below.
+// in a cluster. Structure defined below.
 func (o ClusterClusterConfigOutput) MasterConfig() ClusterClusterConfigMasterConfigPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfig) *ClusterClusterConfigMasterConfig { return v.MasterConfig }).(ClusterClusterConfigMasterConfigPtrOutput)
 }
@@ -1229,7 +1229,7 @@ func (o ClusterClusterConfigOutput) TempBucket() pulumi.StringPtrOutput {
 }
 
 // The Google Compute Engine config settings for the worker instances
-// in a cluster.. Structure defined below.
+// in a cluster. Structure defined below.
 func (o ClusterClusterConfigOutput) WorkerConfig() ClusterClusterConfigWorkerConfigPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfig) *ClusterClusterConfigWorkerConfig { return v.WorkerConfig }).(ClusterClusterConfigWorkerConfigPtrOutput)
 }
@@ -1336,7 +1336,7 @@ func (o ClusterClusterConfigPtrOutput) LifecycleConfig() ClusterClusterConfigLif
 }
 
 // The Google Compute Engine config settings for the master instances
-// in a cluster.. Structure defined below.
+// in a cluster. Structure defined below.
 func (o ClusterClusterConfigPtrOutput) MasterConfig() ClusterClusterConfigMasterConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfig) *ClusterClusterConfigMasterConfig {
 		if v == nil {
@@ -1422,7 +1422,7 @@ func (o ClusterClusterConfigPtrOutput) TempBucket() pulumi.StringPtrOutput {
 }
 
 // The Google Compute Engine config settings for the worker instances
-// in a cluster.. Structure defined below.
+// in a cluster. Structure defined below.
 func (o ClusterClusterConfigPtrOutput) WorkerConfig() ClusterClusterConfigWorkerConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfig) *ClusterClusterConfigWorkerConfig {
 		if v == nil {

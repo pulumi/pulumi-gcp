@@ -55,7 +55,7 @@ import (
 // }
 // ```
 //
-// Example creating a Cloud IAM User.
+// Example creating a Cloud IAM User. (For MySQL, specify `cloudsqlIamAuthentication`)
 //
 // ```go
 // package main

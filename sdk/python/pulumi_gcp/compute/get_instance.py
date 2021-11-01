@@ -334,7 +334,7 @@ class GetInstanceResult:
     @pulumi.getter
     def schedulings(self) -> Sequence['outputs.GetInstanceSchedulingResult']:
         """
-        The scheduling strategy being used by the instance.
+        The scheduling strategy being used by the instance. Structure is documented below
         """
         return pulumi.get(self, "schedulings")
 

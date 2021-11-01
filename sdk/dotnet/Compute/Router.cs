@@ -132,8 +132,9 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud
-        /// Interconnect feature). Not currently available publicly.
+        /// Field to indicate if a router is dedicated to use with encrypted
+        /// Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
+        /// Not currently available publicly.
         /// </summary>
         [Output("encryptedInterconnectRouter")]
         public Output<bool?> EncryptedInterconnectRouter { get; private set; } = null!;
@@ -234,8 +235,9 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud
-        /// Interconnect feature). Not currently available publicly.
+        /// Field to indicate if a router is dedicated to use with encrypted
+        /// Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
+        /// Not currently available publicly.
         /// </summary>
         [Input("encryptedInterconnectRouter")]
         public Input<bool>? EncryptedInterconnectRouter { get; set; }
@@ -297,8 +299,9 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud
-        /// Interconnect feature). Not currently available publicly.
+        /// Field to indicate if a router is dedicated to use with encrypted
+        /// Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
+        /// Not currently available publicly.
         /// </summary>
         [Input("encryptedInterconnectRouter")]
         public Input<bool>? EncryptedInterconnectRouter { get; set; }

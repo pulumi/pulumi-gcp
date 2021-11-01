@@ -78,7 +78,7 @@ import (
 // 			Location:         pulumi.String("us-central1-a"),
 // 			InitialNodeCount: pulumi.Int(1),
 // 			WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
-// 				IdentityNamespace: pulumi.String("my-project-name.svc.id.goog"),
+// 				WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
 // 			},
 // 		})
 // 		if err != nil {

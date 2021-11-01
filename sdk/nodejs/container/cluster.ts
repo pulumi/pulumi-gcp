@@ -94,24 +94,6 @@ import * as utilities from "../utilities";
  *     update: "40m",
  * } });
  * ```
- *
- * ## Import
- *
- * GKE clusters can be imported using the `project` , `location`, and `name`. If the project is omitted, the default provider value will be used. Examples
- *
- * ```sh
- *  $ pulumi import gcp:container/cluster:Cluster mycluster projects/my-gcp-project/locations/us-east1-a/clusters/my-cluster
- * ```
- *
- * ```sh
- *  $ pulumi import gcp:container/cluster:Cluster mycluster my-gcp-project/us-east1-a/my-cluster
- * ```
- *
- * ```sh
- *  $ pulumi import gcp:container/cluster:Cluster mycluster us-east1-a/my-cluster
- * ```
- *
- *  For example, the following fields will show diffs if set in config- `min_master_version` - `remove_default_node_pool`
  */
 export class Cluster extends pulumi.CustomResource {
     /**
@@ -194,7 +176,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly defaultMaxPodsPerNode!: pulumi.Output<number>;
     /**
-     * [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig).
+     * [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
      */
     public readonly defaultSnatStatus!: pulumi.Output<outputs.container.ClusterDefaultSnatStatus>;
     /**
@@ -202,7 +184,6 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * )
      * Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
      */
     public readonly dnsConfig!: pulumi.Output<outputs.container.ClusterDnsConfig | undefined>;
@@ -229,7 +210,6 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly enableKubernetesAlpha!: pulumi.Output<boolean | undefined>;
     /**
-     * )
      * Whether L4ILB Subsetting is enabled for this cluster.
      */
     public readonly enableL4IlbSubsetting!: pulumi.Output<boolean | undefined>;
@@ -263,8 +243,9 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly initialNodeCount!: pulumi.Output<number | undefined>;
     /**
-     * List of instance group URLs which have been assigned
-     * to the cluster.
+     * List of instance group URLs which have been assigned to the cluster.
+     *
+     * @deprecated Please use node_pool.instance_group_urls instead.
      */
     public /*out*/ readonly instanceGroupUrls!: pulumi.Output<string[]>;
     /**
@@ -310,18 +291,21 @@ export class Cluster extends pulumi.CustomResource {
      * you see an unexpected diff removing a username/password or unsetting your client
      * cert, ensure you have the `container.clusters.getCredentials` permission.
      * Structure is documented below. This has been deprecated as of GKE 1.19.
+     *
+     * @deprecated Basic authentication was removed for GKE cluster versions >= 1.19.
      */
     public readonly masterAuth!: pulumi.Output<outputs.container.ClusterMasterAuth>;
     /**
-     * The desired configuration options
-     * for master authorized networks. Omit the nested `cidrBlocks` attribute to disallow
-     * external access (except the cluster node IPs, which GKE automatically whitelists).
+     * The desired
+     * configuration options for master authorized networks. Omit the
+     * nested `cidrBlocks` attribute to disallow external access (except
+     * the cluster node IPs, which GKE automatically whitelists).
+     * Structure is documented below.
      */
     public readonly masterAuthorizedNetworksConfig!: pulumi.Output<outputs.container.ClusterMasterAuthorizedNetworksConfig | undefined>;
     /**
-     * The current version of the master in the cluster. This may
-     * be different than the `minMasterVersion` set in the config if the master
-     * has been updated by GKE.
+     * The current version of the master in the cluster. This may be different than the min_master_version set in the config if
+     * the master has been updated by GKE.
      */
     public /*out*/ readonly masterVersion!: pulumi.Output<string>;
     /**
@@ -438,11 +422,11 @@ export class Cluster extends pulumi.CustomResource {
      * Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
      * feature, which provide more control over automatic upgrades of your GKE clusters.
      * When updating this field, GKE imposes specific version requirements. See
-     * [Migrating between release channels](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#migrating_between_release_channels)
+     * [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
      * for more details; the `gcp.container.getEngineVersions` datasource can provide
      * the default version for a channel. Note that removing the `releaseChannel`
      * field from your config will cause the provider to stop managing your cluster's
-     * release channel, but will not un-enroll it. Instead, use the `"UNSPECIFIED"`
+     * release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
      * channel. Structure is documented below.
      */
     public readonly releaseChannel!: pulumi.Output<outputs.container.ClusterReleaseChannel>;
@@ -464,14 +448,12 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly resourceUsageExportConfig!: pulumi.Output<outputs.container.ClusterResourceUsageExportConfig | undefined>;
     /**
-     * The server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * The IP address range of the Kubernetes services in this
-     * cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
-     * notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
-     * `/16` from the container CIDR.
+     * The IP address range of the Kubernetes services in this cluster, in CIDR notation (e.g. 1.2.3.4/29). Service addresses
+     * are typically put in the last /16 from the container CIDR.
      */
     public /*out*/ readonly servicesIpv4Cidr!: pulumi.Output<string>;
     /**
@@ -480,9 +462,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly subnetwork!: pulumi.Output<string>;
     /**
-     * The IP address range of the Cloud TPUs in this cluster, in
-     * [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
-     * notation (e.g. `1.2.3.4/29`).
+     * The IP address range of the Cloud TPUs in this cluster, in CIDR notation (e.g. 1.2.3.4/29).
      */
     public /*out*/ readonly tpuIpv4CidrBlock!: pulumi.Output<string>;
     /**
@@ -695,7 +675,7 @@ export interface ClusterState {
      */
     defaultMaxPodsPerNode?: pulumi.Input<number>;
     /**
-     * [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig).
+     * [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
      */
     defaultSnatStatus?: pulumi.Input<inputs.container.ClusterDefaultSnatStatus>;
     /**
@@ -703,7 +683,6 @@ export interface ClusterState {
      */
     description?: pulumi.Input<string>;
     /**
-     * )
      * Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
      */
     dnsConfig?: pulumi.Input<inputs.container.ClusterDnsConfig>;
@@ -730,7 +709,6 @@ export interface ClusterState {
      */
     enableKubernetesAlpha?: pulumi.Input<boolean>;
     /**
-     * )
      * Whether L4ILB Subsetting is enabled for this cluster.
      */
     enableL4IlbSubsetting?: pulumi.Input<boolean>;
@@ -764,8 +742,9 @@ export interface ClusterState {
      */
     initialNodeCount?: pulumi.Input<number>;
     /**
-     * List of instance group URLs which have been assigned
-     * to the cluster.
+     * List of instance group URLs which have been assigned to the cluster.
+     *
+     * @deprecated Please use node_pool.instance_group_urls instead.
      */
     instanceGroupUrls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -811,18 +790,21 @@ export interface ClusterState {
      * you see an unexpected diff removing a username/password or unsetting your client
      * cert, ensure you have the `container.clusters.getCredentials` permission.
      * Structure is documented below. This has been deprecated as of GKE 1.19.
+     *
+     * @deprecated Basic authentication was removed for GKE cluster versions >= 1.19.
      */
     masterAuth?: pulumi.Input<inputs.container.ClusterMasterAuth>;
     /**
-     * The desired configuration options
-     * for master authorized networks. Omit the nested `cidrBlocks` attribute to disallow
-     * external access (except the cluster node IPs, which GKE automatically whitelists).
+     * The desired
+     * configuration options for master authorized networks. Omit the
+     * nested `cidrBlocks` attribute to disallow external access (except
+     * the cluster node IPs, which GKE automatically whitelists).
+     * Structure is documented below.
      */
     masterAuthorizedNetworksConfig?: pulumi.Input<inputs.container.ClusterMasterAuthorizedNetworksConfig>;
     /**
-     * The current version of the master in the cluster. This may
-     * be different than the `minMasterVersion` set in the config if the master
-     * has been updated by GKE.
+     * The current version of the master in the cluster. This may be different than the min_master_version set in the config if
+     * the master has been updated by GKE.
      */
     masterVersion?: pulumi.Input<string>;
     /**
@@ -939,11 +921,11 @@ export interface ClusterState {
      * Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
      * feature, which provide more control over automatic upgrades of your GKE clusters.
      * When updating this field, GKE imposes specific version requirements. See
-     * [Migrating between release channels](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#migrating_between_release_channels)
+     * [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
      * for more details; the `gcp.container.getEngineVersions` datasource can provide
      * the default version for a channel. Note that removing the `releaseChannel`
      * field from your config will cause the provider to stop managing your cluster's
-     * release channel, but will not un-enroll it. Instead, use the `"UNSPECIFIED"`
+     * release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
      * channel. Structure is documented below.
      */
     releaseChannel?: pulumi.Input<inputs.container.ClusterReleaseChannel>;
@@ -965,14 +947,12 @@ export interface ClusterState {
      */
     resourceUsageExportConfig?: pulumi.Input<inputs.container.ClusterResourceUsageExportConfig>;
     /**
-     * The server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     selfLink?: pulumi.Input<string>;
     /**
-     * The IP address range of the Kubernetes services in this
-     * cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
-     * notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
-     * `/16` from the container CIDR.
+     * The IP address range of the Kubernetes services in this cluster, in CIDR notation (e.g. 1.2.3.4/29). Service addresses
+     * are typically put in the last /16 from the container CIDR.
      */
     servicesIpv4Cidr?: pulumi.Input<string>;
     /**
@@ -981,9 +961,7 @@ export interface ClusterState {
      */
     subnetwork?: pulumi.Input<string>;
     /**
-     * The IP address range of the Cloud TPUs in this cluster, in
-     * [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
-     * notation (e.g. `1.2.3.4/29`).
+     * The IP address range of the Cloud TPUs in this cluster, in CIDR notation (e.g. 1.2.3.4/29).
      */
     tpuIpv4CidrBlock?: pulumi.Input<string>;
     /**
@@ -1056,7 +1034,7 @@ export interface ClusterArgs {
      */
     defaultMaxPodsPerNode?: pulumi.Input<number>;
     /**
-     * [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig).
+     * [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
      */
     defaultSnatStatus?: pulumi.Input<inputs.container.ClusterDefaultSnatStatus>;
     /**
@@ -1064,7 +1042,6 @@ export interface ClusterArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * )
      * Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
      */
     dnsConfig?: pulumi.Input<inputs.container.ClusterDnsConfig>;
@@ -1091,7 +1068,6 @@ export interface ClusterArgs {
      */
     enableKubernetesAlpha?: pulumi.Input<boolean>;
     /**
-     * )
      * Whether L4ILB Subsetting is enabled for this cluster.
      */
     enableL4IlbSubsetting?: pulumi.Input<boolean>;
@@ -1159,12 +1135,16 @@ export interface ClusterArgs {
      * you see an unexpected diff removing a username/password or unsetting your client
      * cert, ensure you have the `container.clusters.getCredentials` permission.
      * Structure is documented below. This has been deprecated as of GKE 1.19.
+     *
+     * @deprecated Basic authentication was removed for GKE cluster versions >= 1.19.
      */
     masterAuth?: pulumi.Input<inputs.container.ClusterMasterAuth>;
     /**
-     * The desired configuration options
-     * for master authorized networks. Omit the nested `cidrBlocks` attribute to disallow
-     * external access (except the cluster node IPs, which GKE automatically whitelists).
+     * The desired
+     * configuration options for master authorized networks. Omit the
+     * nested `cidrBlocks` attribute to disallow external access (except
+     * the cluster node IPs, which GKE automatically whitelists).
+     * Structure is documented below.
      */
     masterAuthorizedNetworksConfig?: pulumi.Input<inputs.container.ClusterMasterAuthorizedNetworksConfig>;
     /**
@@ -1280,11 +1260,11 @@ export interface ClusterArgs {
      * Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
      * feature, which provide more control over automatic upgrades of your GKE clusters.
      * When updating this field, GKE imposes specific version requirements. See
-     * [Migrating between release channels](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#migrating_between_release_channels)
+     * [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
      * for more details; the `gcp.container.getEngineVersions` datasource can provide
      * the default version for a channel. Note that removing the `releaseChannel`
      * field from your config will cause the provider to stop managing your cluster's
-     * release channel, but will not un-enroll it. Instead, use the `"UNSPECIFIED"`
+     * release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
      * channel. Structure is documented below.
      */
     releaseChannel?: pulumi.Input<inputs.container.ClusterReleaseChannel>;

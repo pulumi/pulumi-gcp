@@ -310,7 +310,7 @@ class Membership(pulumi.CustomResource):
             location="us-central1-a",
             initial_node_count=1,
             workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                identity_namespace="my-project-name.svc.id.goog",
+                workload_pool="my-project-name.svc.id.goog",
             ))
         membership = gcp.gkehub.Membership("membership",
             membership_id="basic",
@@ -389,7 +389,7 @@ class Membership(pulumi.CustomResource):
             location="us-central1-a",
             initial_node_count=1,
             workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                identity_namespace="my-project-name.svc.id.goog",
+                workload_pool="my-project-name.svc.id.goog",
             ))
         membership = gcp.gkehub.Membership("membership",
             membership_id="basic",

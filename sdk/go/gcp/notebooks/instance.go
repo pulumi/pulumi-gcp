@@ -252,7 +252,8 @@ type Instance struct {
 	// The name of the VPC that this instance is in.
 	// Format: projects/{project_id}/global/networks/{network_id}
 	Network pulumi.StringOutput `pulumi:"network"`
-	// The type of vNIC driver. Possible values: ["UNSPECIFIED_NIC_TYPE", "VIRTIO_NET", "GVNIC"]
+	// The type of vNIC driver.
+	// Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
 	NicType pulumi.StringPtrOutput `pulumi:"nicType"`
 	// The notebook instance will not register with the proxy..
 	NoProxyAccess pulumi.BoolPtrOutput `pulumi:"noProxyAccess"`
@@ -270,6 +271,7 @@ type Instance struct {
 	// The proxy endpoint that is used to access the Jupyter notebook.
 	ProxyUri pulumi.StringOutput `pulumi:"proxyUri"`
 	// Reservation Affinity for consuming Zonal reservation.
+	// Structure is documented below.
 	ReservationAffinity InstanceReservationAffinityPtrOutput `pulumi:"reservationAffinity"`
 	// The service account on this instance, giving access to other
 	// Google Cloud services. You can use any service account within
@@ -394,7 +396,8 @@ type instanceState struct {
 	// The name of the VPC that this instance is in.
 	// Format: projects/{project_id}/global/networks/{network_id}
 	Network *string `pulumi:"network"`
-	// The type of vNIC driver. Possible values: ["UNSPECIFIED_NIC_TYPE", "VIRTIO_NET", "GVNIC"]
+	// The type of vNIC driver.
+	// Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
 	NicType *string `pulumi:"nicType"`
 	// The notebook instance will not register with the proxy..
 	NoProxyAccess *bool `pulumi:"noProxyAccess"`
@@ -412,6 +415,7 @@ type instanceState struct {
 	// The proxy endpoint that is used to access the Jupyter notebook.
 	ProxyUri *string `pulumi:"proxyUri"`
 	// Reservation Affinity for consuming Zonal reservation.
+	// Structure is documented below.
 	ReservationAffinity *InstanceReservationAffinity `pulumi:"reservationAffinity"`
 	// The service account on this instance, giving access to other
 	// Google Cloud services. You can use any service account within
@@ -502,7 +506,8 @@ type InstanceState struct {
 	// The name of the VPC that this instance is in.
 	// Format: projects/{project_id}/global/networks/{network_id}
 	Network pulumi.StringPtrInput
-	// The type of vNIC driver. Possible values: ["UNSPECIFIED_NIC_TYPE", "VIRTIO_NET", "GVNIC"]
+	// The type of vNIC driver.
+	// Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
 	NicType pulumi.StringPtrInput
 	// The notebook instance will not register with the proxy..
 	NoProxyAccess pulumi.BoolPtrInput
@@ -520,6 +525,7 @@ type InstanceState struct {
 	// The proxy endpoint that is used to access the Jupyter notebook.
 	ProxyUri pulumi.StringPtrInput
 	// Reservation Affinity for consuming Zonal reservation.
+	// Structure is documented below.
 	ReservationAffinity InstanceReservationAffinityPtrInput
 	// The service account on this instance, giving access to other
 	// Google Cloud services. You can use any service account within
@@ -614,7 +620,8 @@ type instanceArgs struct {
 	// The name of the VPC that this instance is in.
 	// Format: projects/{project_id}/global/networks/{network_id}
 	Network *string `pulumi:"network"`
-	// The type of vNIC driver. Possible values: ["UNSPECIFIED_NIC_TYPE", "VIRTIO_NET", "GVNIC"]
+	// The type of vNIC driver.
+	// Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
 	NicType *string `pulumi:"nicType"`
 	// The notebook instance will not register with the proxy..
 	NoProxyAccess *bool `pulumi:"noProxyAccess"`
@@ -630,6 +637,7 @@ type instanceArgs struct {
 	// Format: projects/{project_id}
 	Project *string `pulumi:"project"`
 	// Reservation Affinity for consuming Zonal reservation.
+	// Structure is documented below.
 	ReservationAffinity *InstanceReservationAffinity `pulumi:"reservationAffinity"`
 	// The service account on this instance, giving access to other
 	// Google Cloud services. You can use any service account within
@@ -719,7 +727,8 @@ type InstanceArgs struct {
 	// The name of the VPC that this instance is in.
 	// Format: projects/{project_id}/global/networks/{network_id}
 	Network pulumi.StringPtrInput
-	// The type of vNIC driver. Possible values: ["UNSPECIFIED_NIC_TYPE", "VIRTIO_NET", "GVNIC"]
+	// The type of vNIC driver.
+	// Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
 	NicType pulumi.StringPtrInput
 	// The notebook instance will not register with the proxy..
 	NoProxyAccess pulumi.BoolPtrInput
@@ -735,6 +744,7 @@ type InstanceArgs struct {
 	// Format: projects/{project_id}
 	Project pulumi.StringPtrInput
 	// Reservation Affinity for consuming Zonal reservation.
+	// Structure is documented below.
 	ReservationAffinity InstanceReservationAffinityPtrInput
 	// The service account on this instance, giving access to other
 	// Google Cloud services. You can use any service account within

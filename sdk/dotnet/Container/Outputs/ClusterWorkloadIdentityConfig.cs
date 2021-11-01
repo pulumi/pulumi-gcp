@@ -14,14 +14,22 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterWorkloadIdentityConfig
     {
         /// <summary>
-        /// Currently, the only supported identity namespace is the project's default.
+        /// - Currently, the only supported identity namespace is the project's default.
         /// </summary>
-        public readonly string IdentityNamespace;
+        public readonly string? IdentityNamespace;
+        /// <summary>
+        /// The workload pool to attach all Kubernetes service accounts to. Currently, the only supported identity namespace is the project of the cluster.
+        /// </summary>
+        public readonly string? WorkloadPool;
 
         [OutputConstructor]
-        private ClusterWorkloadIdentityConfig(string identityNamespace)
+        private ClusterWorkloadIdentityConfig(
+            string? identityNamespace,
+
+            string? workloadPool)
         {
             IdentityNamespace = identityNamespace;
+            WorkloadPool = workloadPool;
         }
     }
 }

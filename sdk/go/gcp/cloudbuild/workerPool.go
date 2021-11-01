@@ -37,7 +37,7 @@ type WorkerPool struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// User-defined name of the `WorkerPool`.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Network configuration for the `WorkerPool`.
+	// Network configuration for the `WorkerPool`. Structure is documented below.
 	NetworkConfig WorkerPoolNetworkConfigPtrOutput `pulumi:"networkConfig"`
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -45,7 +45,7 @@ type WorkerPool struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// Output only. Time at which the request to update the `WorkerPool` was received.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// Configuration to be used for a creating workers in the `WorkerPool`.
+	// Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
 	WorkerConfig WorkerPoolWorkerConfigOutput `pulumi:"workerConfig"`
 }
 
@@ -89,7 +89,7 @@ type workerPoolState struct {
 	Location *string `pulumi:"location"`
 	// User-defined name of the `WorkerPool`.
 	Name *string `pulumi:"name"`
-	// Network configuration for the `WorkerPool`.
+	// Network configuration for the `WorkerPool`. Structure is documented below.
 	NetworkConfig *WorkerPoolNetworkConfig `pulumi:"networkConfig"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
@@ -97,7 +97,7 @@ type workerPoolState struct {
 	State *string `pulumi:"state"`
 	// Output only. Time at which the request to update the `WorkerPool` was received.
 	UpdateTime *string `pulumi:"updateTime"`
-	// Configuration to be used for a creating workers in the `WorkerPool`.
+	// Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
 	WorkerConfig *WorkerPoolWorkerConfig `pulumi:"workerConfig"`
 }
 
@@ -110,7 +110,7 @@ type WorkerPoolState struct {
 	Location pulumi.StringPtrInput
 	// User-defined name of the `WorkerPool`.
 	Name pulumi.StringPtrInput
-	// Network configuration for the `WorkerPool`.
+	// Network configuration for the `WorkerPool`. Structure is documented below.
 	NetworkConfig WorkerPoolNetworkConfigPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
@@ -118,7 +118,7 @@ type WorkerPoolState struct {
 	State pulumi.StringPtrInput
 	// Output only. Time at which the request to update the `WorkerPool` was received.
 	UpdateTime pulumi.StringPtrInput
-	// Configuration to be used for a creating workers in the `WorkerPool`.
+	// Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
 	WorkerConfig WorkerPoolWorkerConfigPtrInput
 }
 
@@ -131,11 +131,11 @@ type workerPoolArgs struct {
 	Location string `pulumi:"location"`
 	// User-defined name of the `WorkerPool`.
 	Name *string `pulumi:"name"`
-	// Network configuration for the `WorkerPool`.
+	// Network configuration for the `WorkerPool`. Structure is documented below.
 	NetworkConfig *WorkerPoolNetworkConfig `pulumi:"networkConfig"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
-	// Configuration to be used for a creating workers in the `WorkerPool`.
+	// Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
 	WorkerConfig *WorkerPoolWorkerConfig `pulumi:"workerConfig"`
 }
 
@@ -145,11 +145,11 @@ type WorkerPoolArgs struct {
 	Location pulumi.StringInput
 	// User-defined name of the `WorkerPool`.
 	Name pulumi.StringPtrInput
-	// Network configuration for the `WorkerPool`.
+	// Network configuration for the `WorkerPool`. Structure is documented below.
 	NetworkConfig WorkerPoolNetworkConfigPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
-	// Configuration to be used for a creating workers in the `WorkerPool`.
+	// Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
 	WorkerConfig WorkerPoolWorkerConfigPtrInput
 }
 

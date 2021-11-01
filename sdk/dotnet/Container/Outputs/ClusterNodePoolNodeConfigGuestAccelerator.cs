@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly int Count;
         /// <summary>
+        /// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+        /// </summary>
+        public readonly string? GpuPartitionSize;
+        /// <summary>
         /// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
         /// </summary>
         public readonly string Type;
@@ -26,9 +30,12 @@ namespace Pulumi.Gcp.Container.Outputs
         private ClusterNodePoolNodeConfigGuestAccelerator(
             int count,
 
+            string? gpuPartitionSize,
+
             string type)
         {
             Count = count;
+            GpuPartitionSize = gpuPartitionSize;
             Type = type;
         }
     }

@@ -142,7 +142,8 @@ namespace Pulumi.Gcp.Organizations
     public partial class Policy : Pulumi.CustomResource
     {
         /// <summary>
-        /// A boolean policy is a constraint that is either enforced or not. Structure is documented below.
+        /// A boolean policy is a constraint that is either enforced or not. Structure is documented
+        /// below.
         /// </summary>
         [Output("booleanPolicy")]
         public Output<Outputs.PolicyBooleanPolicy?> BooleanPolicy { get; private set; } = null!;
@@ -236,7 +237,8 @@ namespace Pulumi.Gcp.Organizations
     public sealed class PolicyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A boolean policy is a constraint that is either enforced or not. Structure is documented below.
+        /// A boolean policy is a constraint that is either enforced or not. Structure is documented
+        /// below.
         /// </summary>
         [Input("booleanPolicy")]
         public Input<Inputs.PolicyBooleanPolicyArgs>? BooleanPolicy { get; set; }
@@ -279,7 +281,8 @@ namespace Pulumi.Gcp.Organizations
     public sealed class PolicyState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A boolean policy is a constraint that is either enforced or not. Structure is documented below.
+        /// A boolean policy is a constraint that is either enforced or not. Structure is documented
+        /// below.
         /// </summary>
         [Input("booleanPolicy")]
         public Input<Inputs.PolicyBooleanPolicyGetArgs>? BooleanPolicy { get; set; }

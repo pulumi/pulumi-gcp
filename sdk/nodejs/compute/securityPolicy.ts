@@ -43,22 +43,6 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- *
- * ## Import
- *
- * Security policies can be imported using any of the following formats
- *
- * ```sh
- *  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy projects/{{project}}/global/securityPolicies/{{name}}
- * ```
- *
- * ```sh
- *  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy {{project}}/{{name}}
- * ```
- *
- * ```sh
- *  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy {{name}}
- * ```
  */
 export class SecurityPolicy extends pulumi.CustomResource {
     /**
@@ -89,7 +73,7 @@ export class SecurityPolicy extends pulumi.CustomResource {
     }
 
     /**
-     * ) Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+     * Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
      */
     public readonly adaptiveProtectionConfig!: pulumi.Output<outputs.compute.SecurityPolicyAdaptiveProtectionConfig | undefined>;
     /**
@@ -116,7 +100,7 @@ export class SecurityPolicy extends pulumi.CustomResource {
      */
     public readonly rules!: pulumi.Output<outputs.compute.SecurityPolicyRule[]>;
     /**
-     * The URI of the created resource.
+     * The URI of the created resourc
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
 
@@ -162,7 +146,7 @@ export class SecurityPolicy extends pulumi.CustomResource {
  */
 export interface SecurityPolicyState {
     /**
-     * ) Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+     * Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
      */
     adaptiveProtectionConfig?: pulumi.Input<inputs.compute.SecurityPolicyAdaptiveProtectionConfig>;
     /**
@@ -189,7 +173,7 @@ export interface SecurityPolicyState {
      */
     rules?: pulumi.Input<pulumi.Input<inputs.compute.SecurityPolicyRule>[]>;
     /**
-     * The URI of the created resource.
+     * The URI of the created resourc
      */
     selfLink?: pulumi.Input<string>;
 }
@@ -199,7 +183,7 @@ export interface SecurityPolicyState {
  */
 export interface SecurityPolicyArgs {
     /**
-     * ) Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+     * Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
      */
     adaptiveProtectionConfig?: pulumi.Input<inputs.compute.SecurityPolicyAdaptiveProtectionConfig>;
     /**

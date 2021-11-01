@@ -324,22 +324,6 @@ class Environment(pulumi.CustomResource):
             region="us-central1")
         ```
 
-        ## Import
-
-        Environment can be imported using any of these accepted formats
-
-        ```sh
-         $ pulumi import gcp:composer/environment:Environment default projects/{{project}}/locations/{{region}}/environments/{{name}}
-        ```
-
-        ```sh
-         $ pulumi import gcp:composer/environment:Environment default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
-         $ pulumi import gcp:composer/environment:Environment default {{name}}
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['EnvironmentConfigArgs']] config: Configuration parameters for this environment  Structure is documented below.
@@ -450,22 +434,6 @@ class Environment(pulumi.CustomResource):
                 ),
             ),
             region="us-central1")
-        ```
-
-        ## Import
-
-        Environment can be imported using any of these accepted formats
-
-        ```sh
-         $ pulumi import gcp:composer/environment:Environment default projects/{{project}}/locations/{{region}}/environments/{{name}}
-        ```
-
-        ```sh
-         $ pulumi import gcp:composer/environment:Environment default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
-         $ pulumi import gcp:composer/environment:Environment default {{name}}
         ```
 
         :param str resource_name: The name of the resource.

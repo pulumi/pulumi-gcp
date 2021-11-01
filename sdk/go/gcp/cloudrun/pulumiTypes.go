@@ -2339,8 +2339,10 @@ type ServiceTemplateSpec struct {
 	// Deprecated: Not supported by Cloud Run fully managed
 	ServingState *string `pulumi:"servingState"`
 	// TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
-	TimeoutSeconds *int                        `pulumi:"timeoutSeconds"`
-	Volumes        []ServiceTemplateSpecVolume `pulumi:"volumes"`
+	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
+	// Volume represents a named volume in a container.
+	// Structure is documented below.
+	Volumes []ServiceTemplateSpecVolume `pulumi:"volumes"`
 }
 
 // ServiceTemplateSpecInput is an input type that accepts ServiceTemplateSpecArgs and ServiceTemplateSpecOutput values.
@@ -2379,8 +2381,10 @@ type ServiceTemplateSpecArgs struct {
 	// Deprecated: Not supported by Cloud Run fully managed
 	ServingState pulumi.StringPtrInput `pulumi:"servingState"`
 	// TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
-	TimeoutSeconds pulumi.IntPtrInput                  `pulumi:"timeoutSeconds"`
-	Volumes        ServiceTemplateSpecVolumeArrayInput `pulumi:"volumes"`
+	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
+	// Volume represents a named volume in a container.
+	// Structure is documented below.
+	Volumes ServiceTemplateSpecVolumeArrayInput `pulumi:"volumes"`
 }
 
 func (ServiceTemplateSpecArgs) ElementType() reflect.Type {
@@ -2500,6 +2504,8 @@ func (o ServiceTemplateSpecOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateSpec) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
 }
 
+// Volume represents a named volume in a container.
+// Structure is documented below.
 func (o ServiceTemplateSpecOutput) Volumes() ServiceTemplateSpecVolumeArrayOutput {
 	return o.ApplyT(func(v ServiceTemplateSpec) []ServiceTemplateSpecVolume { return v.Volumes }).(ServiceTemplateSpecVolumeArrayOutput)
 }
@@ -2593,6 +2599,8 @@ func (o ServiceTemplateSpecPtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Volume represents a named volume in a container.
+// Structure is documented below.
 func (o ServiceTemplateSpecPtrOutput) Volumes() ServiceTemplateSpecVolumeArrayOutput {
 	return o.ApplyT(func(v *ServiceTemplateSpec) []ServiceTemplateSpecVolume {
 		if v == nil {
@@ -2650,7 +2658,10 @@ type ServiceTemplateSpecContainer struct {
 	// More info:
 	// https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
 	// Structure is documented below.
-	Resources    *ServiceTemplateSpecContainerResources    `pulumi:"resources"`
+	Resources *ServiceTemplateSpecContainerResources `pulumi:"resources"`
+	// Volume to mount into the container's filesystem.
+	// Only supports SecretVolumeSources.
+	// Structure is documented below.
 	VolumeMounts []ServiceTemplateSpecContainerVolumeMount `pulumi:"volumeMounts"`
 	// -
 	// (Optional, Deprecated)
@@ -2721,7 +2732,10 @@ type ServiceTemplateSpecContainerArgs struct {
 	// More info:
 	// https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
 	// Structure is documented below.
-	Resources    ServiceTemplateSpecContainerResourcesPtrInput     `pulumi:"resources"`
+	Resources ServiceTemplateSpecContainerResourcesPtrInput `pulumi:"resources"`
+	// Volume to mount into the container's filesystem.
+	// Only supports SecretVolumeSources.
+	// Structure is documented below.
 	VolumeMounts ServiceTemplateSpecContainerVolumeMountArrayInput `pulumi:"volumeMounts"`
 	// -
 	// (Optional, Deprecated)
@@ -2853,6 +2867,9 @@ func (o ServiceTemplateSpecContainerOutput) Resources() ServiceTemplateSpecConta
 	return o.ApplyT(func(v ServiceTemplateSpecContainer) *ServiceTemplateSpecContainerResources { return v.Resources }).(ServiceTemplateSpecContainerResourcesPtrOutput)
 }
 
+// Volume to mount into the container's filesystem.
+// Only supports SecretVolumeSources.
+// Structure is documented below.
 func (o ServiceTemplateSpecContainerOutput) VolumeMounts() ServiceTemplateSpecContainerVolumeMountArrayOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecContainer) []ServiceTemplateSpecContainerVolumeMount { return v.VolumeMounts }).(ServiceTemplateSpecContainerVolumeMountArrayOutput)
 }
@@ -2899,7 +2916,9 @@ type ServiceTemplateSpecContainerEnv struct {
 	// references will never be expanded, regardless of whether the variable
 	// exists or not.
 	// Defaults to "".
-	Value     *string                                   `pulumi:"value"`
+	Value *string `pulumi:"value"`
+	// Source for the environment variable's value. Only supports secret_key_ref.
+	// Structure is documented below.
 	ValueFrom *ServiceTemplateSpecContainerEnvValueFrom `pulumi:"valueFrom"`
 }
 
@@ -2925,7 +2944,9 @@ type ServiceTemplateSpecContainerEnvArgs struct {
 	// references will never be expanded, regardless of whether the variable
 	// exists or not.
 	// Defaults to "".
-	Value     pulumi.StringPtrInput                            `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
+	// Source for the environment variable's value. Only supports secret_key_ref.
+	// Structure is documented below.
 	ValueFrom ServiceTemplateSpecContainerEnvValueFromPtrInput `pulumi:"valueFrom"`
 }
 
@@ -2997,6 +3018,8 @@ func (o ServiceTemplateSpecContainerEnvOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecContainerEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
+// Source for the environment variable's value. Only supports secret_key_ref.
+// Structure is documented below.
 func (o ServiceTemplateSpecContainerEnvOutput) ValueFrom() ServiceTemplateSpecContainerEnvValueFromPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecContainerEnv) *ServiceTemplateSpecContainerEnvValueFrom { return v.ValueFrom }).(ServiceTemplateSpecContainerEnvValueFromPtrOutput)
 }

@@ -150,7 +150,8 @@ import (
 type Policy struct {
 	pulumi.CustomResourceState
 
-	// A boolean policy is a constraint that is either enforced or not. Structure is documented below.
+	// A boolean policy is a constraint that is either enforced or not. Structure is documented
+	// below.
 	BooleanPolicy PolicyBooleanPolicyPtrOutput `pulumi:"booleanPolicy"`
 	// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
 	Constraint pulumi.StringOutput `pulumi:"constraint"`
@@ -203,7 +204,8 @@ func GetPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Policy resources.
 type policyState struct {
-	// A boolean policy is a constraint that is either enforced or not. Structure is documented below.
+	// A boolean policy is a constraint that is either enforced or not. Structure is documented
+	// below.
 	BooleanPolicy *PolicyBooleanPolicy `pulumi:"booleanPolicy"`
 	// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
 	Constraint *string `pulumi:"constraint"`
@@ -222,7 +224,8 @@ type policyState struct {
 }
 
 type PolicyState struct {
-	// A boolean policy is a constraint that is either enforced or not. Structure is documented below.
+	// A boolean policy is a constraint that is either enforced or not. Structure is documented
+	// below.
 	BooleanPolicy PolicyBooleanPolicyPtrInput
 	// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
 	Constraint pulumi.StringPtrInput
@@ -245,7 +248,8 @@ func (PolicyState) ElementType() reflect.Type {
 }
 
 type policyArgs struct {
-	// A boolean policy is a constraint that is either enforced or not. Structure is documented below.
+	// A boolean policy is a constraint that is either enforced or not. Structure is documented
+	// below.
 	BooleanPolicy *PolicyBooleanPolicy `pulumi:"booleanPolicy"`
 	// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
 	Constraint string `pulumi:"constraint"`
@@ -261,7 +265,8 @@ type policyArgs struct {
 
 // The set of arguments for constructing a Policy resource.
 type PolicyArgs struct {
-	// A boolean policy is a constraint that is either enforced or not. Structure is documented below.
+	// A boolean policy is a constraint that is either enforced or not. Structure is documented
+	// below.
 	BooleanPolicy PolicyBooleanPolicyPtrInput
 	// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
 	Constraint pulumi.StringInput

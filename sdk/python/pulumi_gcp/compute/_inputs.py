@@ -4031,7 +4031,7 @@ class FirewallPolicyRuleMatchArgs:
                  dest_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatchLayer4ConfigArgs']]] layer4_configs: Pairs of IP protocols and ports that the rule should match.
+        :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatchLayer4ConfigArgs']]] layer4_configs: Pairs of IP protocols and ports that the rule should match. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
         """
@@ -4045,7 +4045,7 @@ class FirewallPolicyRuleMatchArgs:
     @pulumi.getter(name="layer4Configs")
     def layer4_configs(self) -> pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatchLayer4ConfigArgs']]]:
         """
-        Pairs of IP protocols and ports that the rule should match.
+        Pairs of IP protocols and ports that the rule should match. Structure is documented below.
         """
         return pulumi.get(self, "layer4_configs")
 
@@ -20146,7 +20146,7 @@ class SecurityPolicyAdaptiveProtectionConfigArgs:
     def __init__(__self__, *,
                  layer7_ddos_defense_config: Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs']] = None):
         """
-        :param pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs'] layer7_ddos_defense_config: ) Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+        :param pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs'] layer7_ddos_defense_config: Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
         """
         if layer7_ddos_defense_config is not None:
             pulumi.set(__self__, "layer7_ddos_defense_config", layer7_ddos_defense_config)
@@ -20155,7 +20155,7 @@ class SecurityPolicyAdaptiveProtectionConfigArgs:
     @pulumi.getter(name="layer7DdosDefenseConfig")
     def layer7_ddos_defense_config(self) -> Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs']]:
         """
-        ) Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+        Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
         """
         return pulumi.get(self, "layer7_ddos_defense_config")
 
@@ -20170,8 +20170,8 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs:
                  enable: Optional[pulumi.Input[bool]] = None,
                  rule_visibility: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[bool] enable: ) If set to true, enables CAAP for L7 DDoS detection.
-        :param pulumi.Input[str] rule_visibility: ) Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+        :param pulumi.Input[bool] enable: If set to true, enables CAAP for L7 DDoS detection.
+        :param pulumi.Input[str] rule_visibility: Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
         """
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
@@ -20182,7 +20182,7 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs:
     @pulumi.getter
     def enable(self) -> Optional[pulumi.Input[bool]]:
         """
-        ) If set to true, enables CAAP for L7 DDoS detection.
+        If set to true, enables CAAP for L7 DDoS detection.
         """
         return pulumi.get(self, "enable")
 
@@ -20194,7 +20194,7 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs:
     @pulumi.getter(name="ruleVisibility")
     def rule_visibility(self) -> Optional[pulumi.Input[str]]:
         """
-        ) Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+        Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
         """
         return pulumi.get(self, "rule_visibility")
 

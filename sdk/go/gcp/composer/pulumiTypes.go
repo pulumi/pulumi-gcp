@@ -15,14 +15,15 @@ type EnvironmentConfig struct {
 	DagGcsPrefix *string `pulumi:"dagGcsPrefix"`
 	// The configuration settings for Cloud SQL instance used internally
 	// by Apache Airflow software. This field is supported for Cloud
-	// Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	// Composer environments in versions composer-1.*.*-airflow-*.*.*. Structure is documented below.
 	DatabaseConfig *EnvironmentConfigDatabaseConfig `pulumi:"databaseConfig"`
 	// The encryption options for the Cloud Composer environment and its
 	// dependencies. This field is supported for Cloud Composer environments in
-	// versions composer-1.*.*-airflow-*.*.*.
+	// versions composer-1.*.*-airflow-*.*.*. Structure is documented below.
 	EncryptionConfig *EnvironmentConfigEncryptionConfig `pulumi:"encryptionConfig"`
+	EnvironmentSize  *string                            `pulumi:"environmentSize"`
 	GkeCluster       *string                            `pulumi:"gkeCluster"`
-	// The configuration settings for Cloud Composer maintenance window.
+	// The configuration settings for Cloud Composer maintenance window. Structure is documented below.
 	MaintenanceWindow *EnvironmentConfigMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
 	NodeConfig *EnvironmentConfigNodeConfig `pulumi:"nodeConfig"`
@@ -37,8 +38,12 @@ type EnvironmentConfig struct {
 	SoftwareConfig *EnvironmentConfigSoftwareConfig `pulumi:"softwareConfig"`
 	// The configuration settings for the Airflow web server App Engine instance.
 	// This field is supported for Cloud Composer environments in versions
+	// composer-1.*.*-airflow-*.*.*. Structure is documented below.
+	WebServerConfig *EnvironmentConfigWebServerConfig `pulumi:"webServerConfig"`
+	// The network-level access control policy for the Airflow web server.
+	// If unspecified, no network-level access restrictions will be applied.
+	// This field is supported for Cloud Composer environments in versions
 	// composer-1.*.*-airflow-*.*.*.
-	WebServerConfig               *EnvironmentConfigWebServerConfig               `pulumi:"webServerConfig"`
 	WebServerNetworkAccessControl *EnvironmentConfigWebServerNetworkAccessControl `pulumi:"webServerNetworkAccessControl"`
 	// The Kubernetes workloads configuration for GKE cluster associated with the
 	// Cloud Composer environment. Supported for Cloud Composer environments in
@@ -62,14 +67,15 @@ type EnvironmentConfigArgs struct {
 	DagGcsPrefix pulumi.StringPtrInput `pulumi:"dagGcsPrefix"`
 	// The configuration settings for Cloud SQL instance used internally
 	// by Apache Airflow software. This field is supported for Cloud
-	// Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	// Composer environments in versions composer-1.*.*-airflow-*.*.*. Structure is documented below.
 	DatabaseConfig EnvironmentConfigDatabaseConfigPtrInput `pulumi:"databaseConfig"`
 	// The encryption options for the Cloud Composer environment and its
 	// dependencies. This field is supported for Cloud Composer environments in
-	// versions composer-1.*.*-airflow-*.*.*.
+	// versions composer-1.*.*-airflow-*.*.*. Structure is documented below.
 	EncryptionConfig EnvironmentConfigEncryptionConfigPtrInput `pulumi:"encryptionConfig"`
+	EnvironmentSize  pulumi.StringPtrInput                     `pulumi:"environmentSize"`
 	GkeCluster       pulumi.StringPtrInput                     `pulumi:"gkeCluster"`
-	// The configuration settings for Cloud Composer maintenance window.
+	// The configuration settings for Cloud Composer maintenance window. Structure is documented below.
 	MaintenanceWindow EnvironmentConfigMaintenanceWindowPtrInput `pulumi:"maintenanceWindow"`
 	// The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
 	NodeConfig EnvironmentConfigNodeConfigPtrInput `pulumi:"nodeConfig"`
@@ -84,8 +90,12 @@ type EnvironmentConfigArgs struct {
 	SoftwareConfig EnvironmentConfigSoftwareConfigPtrInput `pulumi:"softwareConfig"`
 	// The configuration settings for the Airflow web server App Engine instance.
 	// This field is supported for Cloud Composer environments in versions
+	// composer-1.*.*-airflow-*.*.*. Structure is documented below.
+	WebServerConfig EnvironmentConfigWebServerConfigPtrInput `pulumi:"webServerConfig"`
+	// The network-level access control policy for the Airflow web server.
+	// If unspecified, no network-level access restrictions will be applied.
+	// This field is supported for Cloud Composer environments in versions
 	// composer-1.*.*-airflow-*.*.*.
-	WebServerConfig               EnvironmentConfigWebServerConfigPtrInput               `pulumi:"webServerConfig"`
 	WebServerNetworkAccessControl EnvironmentConfigWebServerNetworkAccessControlPtrInput `pulumi:"webServerNetworkAccessControl"`
 	// The Kubernetes workloads configuration for GKE cluster associated with the
 	// Cloud Composer environment. Supported for Cloud Composer environments in
@@ -180,23 +190,27 @@ func (o EnvironmentConfigOutput) DagGcsPrefix() pulumi.StringPtrOutput {
 
 // The configuration settings for Cloud SQL instance used internally
 // by Apache Airflow software. This field is supported for Cloud
-// Composer environments in versions composer-1.*.*-airflow-*.*.*.
+// Composer environments in versions composer-1.*.*-airflow-*.*.*. Structure is documented below.
 func (o EnvironmentConfigOutput) DatabaseConfig() EnvironmentConfigDatabaseConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigDatabaseConfig { return v.DatabaseConfig }).(EnvironmentConfigDatabaseConfigPtrOutput)
 }
 
 // The encryption options for the Cloud Composer environment and its
 // dependencies. This field is supported for Cloud Composer environments in
-// versions composer-1.*.*-airflow-*.*.*.
+// versions composer-1.*.*-airflow-*.*.*. Structure is documented below.
 func (o EnvironmentConfigOutput) EncryptionConfig() EnvironmentConfigEncryptionConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigEncryptionConfig { return v.EncryptionConfig }).(EnvironmentConfigEncryptionConfigPtrOutput)
+}
+
+func (o EnvironmentConfigOutput) EnvironmentSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfig) *string { return v.EnvironmentSize }).(pulumi.StringPtrOutput)
 }
 
 func (o EnvironmentConfigOutput) GkeCluster() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *string { return v.GkeCluster }).(pulumi.StringPtrOutput)
 }
 
-// The configuration settings for Cloud Composer maintenance window.
+// The configuration settings for Cloud Composer maintenance window. Structure is documented below.
 func (o EnvironmentConfigOutput) MaintenanceWindow() EnvironmentConfigMaintenanceWindowPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigMaintenanceWindow { return v.MaintenanceWindow }).(EnvironmentConfigMaintenanceWindowPtrOutput)
 }
@@ -228,11 +242,15 @@ func (o EnvironmentConfigOutput) SoftwareConfig() EnvironmentConfigSoftwareConfi
 
 // The configuration settings for the Airflow web server App Engine instance.
 // This field is supported for Cloud Composer environments in versions
-// composer-1.*.*-airflow-*.*.*.
+// composer-1.*.*-airflow-*.*.*. Structure is documented below.
 func (o EnvironmentConfigOutput) WebServerConfig() EnvironmentConfigWebServerConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigWebServerConfig { return v.WebServerConfig }).(EnvironmentConfigWebServerConfigPtrOutput)
 }
 
+// The network-level access control policy for the Airflow web server.
+// If unspecified, no network-level access restrictions will be applied.
+// This field is supported for Cloud Composer environments in versions
+// composer-1.*.*-airflow-*.*.*.
 func (o EnvironmentConfigOutput) WebServerNetworkAccessControl() EnvironmentConfigWebServerNetworkAccessControlPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigWebServerNetworkAccessControl {
 		return v.WebServerNetworkAccessControl
@@ -290,7 +308,7 @@ func (o EnvironmentConfigPtrOutput) DagGcsPrefix() pulumi.StringPtrOutput {
 
 // The configuration settings for Cloud SQL instance used internally
 // by Apache Airflow software. This field is supported for Cloud
-// Composer environments in versions composer-1.*.*-airflow-*.*.*.
+// Composer environments in versions composer-1.*.*-airflow-*.*.*. Structure is documented below.
 func (o EnvironmentConfigPtrOutput) DatabaseConfig() EnvironmentConfigDatabaseConfigPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *EnvironmentConfigDatabaseConfig {
 		if v == nil {
@@ -302,7 +320,7 @@ func (o EnvironmentConfigPtrOutput) DatabaseConfig() EnvironmentConfigDatabaseCo
 
 // The encryption options for the Cloud Composer environment and its
 // dependencies. This field is supported for Cloud Composer environments in
-// versions composer-1.*.*-airflow-*.*.*.
+// versions composer-1.*.*-airflow-*.*.*. Structure is documented below.
 func (o EnvironmentConfigPtrOutput) EncryptionConfig() EnvironmentConfigEncryptionConfigPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *EnvironmentConfigEncryptionConfig {
 		if v == nil {
@@ -310,6 +328,15 @@ func (o EnvironmentConfigPtrOutput) EncryptionConfig() EnvironmentConfigEncrypti
 		}
 		return v.EncryptionConfig
 	}).(EnvironmentConfigEncryptionConfigPtrOutput)
+}
+
+func (o EnvironmentConfigPtrOutput) EnvironmentSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnvironmentSize
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o EnvironmentConfigPtrOutput) GkeCluster() pulumi.StringPtrOutput {
@@ -321,7 +348,7 @@ func (o EnvironmentConfigPtrOutput) GkeCluster() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The configuration settings for Cloud Composer maintenance window.
+// The configuration settings for Cloud Composer maintenance window. Structure is documented below.
 func (o EnvironmentConfigPtrOutput) MaintenanceWindow() EnvironmentConfigMaintenanceWindowPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *EnvironmentConfigMaintenanceWindow {
 		if v == nil {
@@ -376,7 +403,7 @@ func (o EnvironmentConfigPtrOutput) SoftwareConfig() EnvironmentConfigSoftwareCo
 
 // The configuration settings for the Airflow web server App Engine instance.
 // This field is supported for Cloud Composer environments in versions
-// composer-1.*.*-airflow-*.*.*.
+// composer-1.*.*-airflow-*.*.*. Structure is documented below.
 func (o EnvironmentConfigPtrOutput) WebServerConfig() EnvironmentConfigWebServerConfigPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *EnvironmentConfigWebServerConfig {
 		if v == nil {
@@ -386,6 +413,10 @@ func (o EnvironmentConfigPtrOutput) WebServerConfig() EnvironmentConfigWebServer
 	}).(EnvironmentConfigWebServerConfigPtrOutput)
 }
 
+// The network-level access control policy for the Airflow web server.
+// If unspecified, no network-level access restrictions will be applied.
+// This field is supported for Cloud Composer environments in versions
+// composer-1.*.*-airflow-*.*.*.
 func (o EnvironmentConfigPtrOutput) WebServerNetworkAccessControl() EnvironmentConfigWebServerNetworkAccessControlPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *EnvironmentConfigWebServerNetworkAccessControl {
 		if v == nil {
@@ -892,7 +923,11 @@ type EnvironmentConfigNodeConfig struct {
 	// The disk size in GB used for node VMs. Minimum size is 20GB.
 	// If unspecified, defaults to 100GB. Cannot be updated. This field is supported
 	// for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-	DiskSizeGb        *int  `pulumi:"diskSizeGb"`
+	DiskSizeGb *int `pulumi:"diskSizeGb"`
+	// Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines
+	// nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for
+	// all destination addresses, except between pods traffic.
+	// See the [documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent).
 	EnableIpMasqAgent *bool `pulumi:"enableIpMasqAgent"`
 	// Configuration for controlling how IPs are allocated in the GKE cluster.
 	// Structure is documented below.
@@ -943,7 +978,7 @@ type EnvironmentConfigNodeConfig struct {
 	// belong to the enclosing environment's project and region. This field is
 	// supported for Cloud Composer environments in versions
 	// composer-1.*.*-airflow-*.*.*.
-	Zone string `pulumi:"zone"`
+	Zone *string `pulumi:"zone"`
 }
 
 // EnvironmentConfigNodeConfigInput is an input type that accepts EnvironmentConfigNodeConfigArgs and EnvironmentConfigNodeConfigOutput values.
@@ -961,7 +996,11 @@ type EnvironmentConfigNodeConfigArgs struct {
 	// The disk size in GB used for node VMs. Minimum size is 20GB.
 	// If unspecified, defaults to 100GB. Cannot be updated. This field is supported
 	// for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-	DiskSizeGb        pulumi.IntPtrInput  `pulumi:"diskSizeGb"`
+	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
+	// Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines
+	// nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for
+	// all destination addresses, except between pods traffic.
+	// See the [documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent).
 	EnableIpMasqAgent pulumi.BoolPtrInput `pulumi:"enableIpMasqAgent"`
 	// Configuration for controlling how IPs are allocated in the GKE cluster.
 	// Structure is documented below.
@@ -1012,7 +1051,7 @@ type EnvironmentConfigNodeConfigArgs struct {
 	// belong to the enclosing environment's project and region. This field is
 	// supported for Cloud Composer environments in versions
 	// composer-1.*.*-airflow-*.*.*.
-	Zone pulumi.StringInput `pulumi:"zone"`
+	Zone pulumi.StringPtrInput `pulumi:"zone"`
 }
 
 func (EnvironmentConfigNodeConfigArgs) ElementType() reflect.Type {
@@ -1099,6 +1138,10 @@ func (o EnvironmentConfigNodeConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
 }
 
+// Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines
+// nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for
+// all destination addresses, except between pods traffic.
+// See the [documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent).
 func (o EnvironmentConfigNodeConfigOutput) EnableIpMasqAgent() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *bool { return v.EnableIpMasqAgent }).(pulumi.BoolPtrOutput)
 }
@@ -1178,8 +1221,8 @@ func (o EnvironmentConfigNodeConfigOutput) Tags() pulumi.StringArrayOutput {
 // belong to the enclosing environment's project and region. This field is
 // supported for Cloud Composer environments in versions
 // composer-1.*.*-airflow-*.*.*.
-func (o EnvironmentConfigNodeConfigOutput) Zone() pulumi.StringOutput {
-	return o.ApplyT(func(v EnvironmentConfigNodeConfig) string { return v.Zone }).(pulumi.StringOutput)
+func (o EnvironmentConfigNodeConfigOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *string { return v.Zone }).(pulumi.StringPtrOutput)
 }
 
 type EnvironmentConfigNodeConfigPtrOutput struct{ *pulumi.OutputState }
@@ -1218,6 +1261,10 @@ func (o EnvironmentConfigNodeConfigPtrOutput) DiskSizeGb() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines
+// nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for
+// all destination addresses, except between pods traffic.
+// See the [documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent).
 func (o EnvironmentConfigNodeConfigPtrOutput) EnableIpMasqAgent() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigNodeConfig) *bool {
 		if v == nil {
@@ -1345,7 +1392,7 @@ func (o EnvironmentConfigNodeConfigPtrOutput) Zone() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Zone
+		return v.Zone
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1667,7 +1714,9 @@ type EnvironmentConfigPrivateEnvironmentConfig struct {
 	// If this field is set to true, `ip_allocation_policy.use_ip_aliases` must
 	// be set to true for Cloud Composer environments in versions
 	// composer-1.*.*-airflow-*.*.*.
-	EnablePrivateEndpoint        *bool `pulumi:"enablePrivateEndpoint"`
+	EnablePrivateEndpoint *bool `pulumi:"enablePrivateEndpoint"`
+	// When enabled, IPs from public (non-RFC1918) ranges can be used for
+	// `ip_allocation_policy.cluster_ipv4_cidr_block` and `ip_allocation_policy.service_ipv4_cidr_block`.
 	EnablePrivatelyUsedPublicIps *bool `pulumi:"enablePrivatelyUsedPublicIps"`
 	// The IP range in CIDR notation to use for the hosted master network. This range is used
 	// for assigning internal IP addresses to the cluster master or set of masters and to the
@@ -1699,7 +1748,9 @@ type EnvironmentConfigPrivateEnvironmentConfigArgs struct {
 	// If this field is set to true, `ip_allocation_policy.use_ip_aliases` must
 	// be set to true for Cloud Composer environments in versions
 	// composer-1.*.*-airflow-*.*.*.
-	EnablePrivateEndpoint        pulumi.BoolPtrInput `pulumi:"enablePrivateEndpoint"`
+	EnablePrivateEndpoint pulumi.BoolPtrInput `pulumi:"enablePrivateEndpoint"`
+	// When enabled, IPs from public (non-RFC1918) ranges can be used for
+	// `ip_allocation_policy.cluster_ipv4_cidr_block` and `ip_allocation_policy.service_ipv4_cidr_block`.
 	EnablePrivatelyUsedPublicIps pulumi.BoolPtrInput `pulumi:"enablePrivatelyUsedPublicIps"`
 	// The IP range in CIDR notation to use for the hosted master network. This range is used
 	// for assigning internal IP addresses to the cluster master or set of masters and to the
@@ -1806,6 +1857,8 @@ func (o EnvironmentConfigPrivateEnvironmentConfigOutput) EnablePrivateEndpoint()
 	return o.ApplyT(func(v EnvironmentConfigPrivateEnvironmentConfig) *bool { return v.EnablePrivateEndpoint }).(pulumi.BoolPtrOutput)
 }
 
+// When enabled, IPs from public (non-RFC1918) ranges can be used for
+// `ip_allocation_policy.cluster_ipv4_cidr_block` and `ip_allocation_policy.service_ipv4_cidr_block`.
 func (o EnvironmentConfigPrivateEnvironmentConfigOutput) EnablePrivatelyUsedPublicIps() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigPrivateEnvironmentConfig) *bool { return v.EnablePrivatelyUsedPublicIps }).(pulumi.BoolPtrOutput)
 }
@@ -1881,6 +1934,8 @@ func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) EnablePrivateEndpoin
 	}).(pulumi.BoolPtrOutput)
 }
 
+// When enabled, IPs from public (non-RFC1918) ranges can be used for
+// `ip_allocation_policy.cluster_ipv4_cidr_block` and `ip_allocation_policy.service_ipv4_cidr_block`.
 func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) EnablePrivatelyUsedPublicIps() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigPrivateEnvironmentConfig) *bool {
 		if v == nil {
@@ -3455,6 +3510,7 @@ type GetEnvironmentConfig struct {
 	DagGcsPrefix                   string                                              `pulumi:"dagGcsPrefix"`
 	DatabaseConfigs                []GetEnvironmentConfigDatabaseConfig                `pulumi:"databaseConfigs"`
 	EncryptionConfigs              []GetEnvironmentConfigEncryptionConfig              `pulumi:"encryptionConfigs"`
+	EnvironmentSize                string                                              `pulumi:"environmentSize"`
 	GkeCluster                     string                                              `pulumi:"gkeCluster"`
 	MaintenanceWindows             []GetEnvironmentConfigMaintenanceWindow             `pulumi:"maintenanceWindows"`
 	NodeConfigs                    []GetEnvironmentConfigNodeConfig                    `pulumi:"nodeConfigs"`
@@ -3482,6 +3538,7 @@ type GetEnvironmentConfigArgs struct {
 	DagGcsPrefix                   pulumi.StringInput                                          `pulumi:"dagGcsPrefix"`
 	DatabaseConfigs                GetEnvironmentConfigDatabaseConfigArrayInput                `pulumi:"databaseConfigs"`
 	EncryptionConfigs              GetEnvironmentConfigEncryptionConfigArrayInput              `pulumi:"encryptionConfigs"`
+	EnvironmentSize                pulumi.StringInput                                          `pulumi:"environmentSize"`
 	GkeCluster                     pulumi.StringInput                                          `pulumi:"gkeCluster"`
 	MaintenanceWindows             GetEnvironmentConfigMaintenanceWindowArrayInput             `pulumi:"maintenanceWindows"`
 	NodeConfigs                    GetEnvironmentConfigNodeConfigArrayInput                    `pulumi:"nodeConfigs"`
@@ -3558,6 +3615,10 @@ func (o GetEnvironmentConfigOutput) DatabaseConfigs() GetEnvironmentConfigDataba
 
 func (o GetEnvironmentConfigOutput) EncryptionConfigs() GetEnvironmentConfigEncryptionConfigArrayOutput {
 	return o.ApplyT(func(v GetEnvironmentConfig) []GetEnvironmentConfigEncryptionConfig { return v.EncryptionConfigs }).(GetEnvironmentConfigEncryptionConfigArrayOutput)
+}
+
+func (o GetEnvironmentConfigOutput) EnvironmentSize() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentConfig) string { return v.EnvironmentSize }).(pulumi.StringOutput)
 }
 
 func (o GetEnvironmentConfigOutput) GkeCluster() pulumi.StringOutput {

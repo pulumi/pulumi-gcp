@@ -399,9 +399,11 @@ type BackendService struct {
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
 	// The security policy associated with this backend service.
 	SecurityPolicy pulumi.StringPtrOutput `pulumi:"securityPolicy"`
-	// The security settings that apply to this backend service. This field is applicable to either a regional backend service
-	// with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED; or a global
-	// backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+	// The security settings that apply to this backend service. This field is applicable to either
+	// a regional backend service with the serviceProtocol set to HTTP, HTTPS, or HTTP2, and
+	// loadBalancingScheme set to INTERNAL_MANAGED; or a global backend service with the
+	// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	// Structure is documented below.
 	SecuritySettings BackendServiceSecuritySettingsPtrOutput `pulumi:"securitySettings"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -552,9 +554,11 @@ type backendServiceState struct {
 	Protocol *string `pulumi:"protocol"`
 	// The security policy associated with this backend service.
 	SecurityPolicy *string `pulumi:"securityPolicy"`
-	// The security settings that apply to this backend service. This field is applicable to either a regional backend service
-	// with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED; or a global
-	// backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+	// The security settings that apply to this backend service. This field is applicable to either
+	// a regional backend service with the serviceProtocol set to HTTP, HTTPS, or HTTP2, and
+	// loadBalancingScheme set to INTERNAL_MANAGED; or a global backend service with the
+	// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	// Structure is documented below.
 	SecuritySettings *BackendServiceSecuritySettings `pulumi:"securitySettings"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -677,9 +681,11 @@ type BackendServiceState struct {
 	Protocol pulumi.StringPtrInput
 	// The security policy associated with this backend service.
 	SecurityPolicy pulumi.StringPtrInput
-	// The security settings that apply to this backend service. This field is applicable to either a regional backend service
-	// with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED; or a global
-	// backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+	// The security settings that apply to this backend service. This field is applicable to either
+	// a regional backend service with the serviceProtocol set to HTTP, HTTPS, or HTTP2, and
+	// loadBalancingScheme set to INTERNAL_MANAGED; or a global backend service with the
+	// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	// Structure is documented below.
 	SecuritySettings BackendServiceSecuritySettingsPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
@@ -802,9 +808,11 @@ type backendServiceArgs struct {
 	Protocol *string `pulumi:"protocol"`
 	// The security policy associated with this backend service.
 	SecurityPolicy *string `pulumi:"securityPolicy"`
-	// The security settings that apply to this backend service. This field is applicable to either a regional backend service
-	// with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED; or a global
-	// backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+	// The security settings that apply to this backend service. This field is applicable to either
+	// a regional backend service with the serviceProtocol set to HTTP, HTTPS, or HTTP2, and
+	// loadBalancingScheme set to INTERNAL_MANAGED; or a global backend service with the
+	// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	// Structure is documented below.
 	SecuritySettings *BackendServiceSecuritySettings `pulumi:"securitySettings"`
 	// Type of session affinity to use. The default is NONE. Session affinity is
 	// not applicable if the protocol is UDP.
@@ -922,9 +930,11 @@ type BackendServiceArgs struct {
 	Protocol pulumi.StringPtrInput
 	// The security policy associated with this backend service.
 	SecurityPolicy pulumi.StringPtrInput
-	// The security settings that apply to this backend service. This field is applicable to either a regional backend service
-	// with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED; or a global
-	// backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+	// The security settings that apply to this backend service. This field is applicable to either
+	// a regional backend service with the serviceProtocol set to HTTP, HTTPS, or HTTP2, and
+	// loadBalancingScheme set to INTERNAL_MANAGED; or a global backend service with the
+	// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	// Structure is documented below.
 	SecuritySettings BackendServiceSecuritySettingsPtrInput
 	// Type of session affinity to use. The default is NONE. Session affinity is
 	// not applicable if the protocol is UDP.

@@ -19,6 +19,12 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<int> Count { get; set; } = null!;
 
         /// <summary>
+        /// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+        /// </summary>
+        [Input("gpuPartitionSize")]
+        public Input<string>? GpuPartitionSize { get; set; }
+
+        /// <summary>
         /// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
         /// </summary>
         [Input("type", required: true)]

@@ -100,22 +100,6 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  * });
  * ```
- *
- * ## Import
- *
- * Environment can be imported using any of these accepted formats
- *
- * ```sh
- *  $ pulumi import gcp:composer/environment:Environment default projects/{{project}}/locations/{{region}}/environments/{{name}}
- * ```
- *
- * ```sh
- *  $ pulumi import gcp:composer/environment:Environment default {{project}}/{{region}}/{{name}}
- * ```
- *
- * ```sh
- *  $ pulumi import gcp:composer/environment:Environment default {{name}}
- * ```
  */
 export class Environment extends pulumi.CustomResource {
     /**
