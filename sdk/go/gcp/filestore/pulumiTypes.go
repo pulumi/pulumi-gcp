@@ -363,6 +363,11 @@ func (o InstanceFileSharesNfsExportOptionArrayOutput) Index(i pulumi.IntInput) I
 }
 
 type InstanceNetwork struct {
+	// The network connect mode of the Filestore instance.
+	// If not provided, the connect mode defaults to
+	// DIRECT_PEERING.
+	// Default value is `DIRECT_PEERING`.
+	// Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
 	ConnectMode *string `pulumi:"connectMode"`
 	// -
 	// A list of IPv4 or IPv6 addresses.
@@ -391,6 +396,11 @@ type InstanceNetworkInput interface {
 }
 
 type InstanceNetworkArgs struct {
+	// The network connect mode of the Filestore instance.
+	// If not provided, the connect mode defaults to
+	// DIRECT_PEERING.
+	// Default value is `DIRECT_PEERING`.
+	// Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
 	ConnectMode pulumi.StringPtrInput `pulumi:"connectMode"`
 	// -
 	// A list of IPv4 or IPv6 addresses.
@@ -458,6 +468,11 @@ func (o InstanceNetworkOutput) ToInstanceNetworkOutputWithContext(ctx context.Co
 	return o
 }
 
+// The network connect mode of the Filestore instance.
+// If not provided, the connect mode defaults to
+// DIRECT_PEERING.
+// Default value is `DIRECT_PEERING`.
+// Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
 func (o InstanceNetworkOutput) ConnectMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceNetwork) *string { return v.ConnectMode }).(pulumi.StringPtrOutput)
 }

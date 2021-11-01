@@ -28,6 +28,10 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// Defaults to "".
         /// </summary>
         public readonly string? Value;
+        /// <summary>
+        /// Source for the environment variable's value. Only supports secret_key_ref.
+        /// Structure is documented below.
+        /// </summary>
         public readonly Outputs.ServiceTemplateSpecContainerEnvValueFrom? ValueFrom;
 
         [OutputConstructor]

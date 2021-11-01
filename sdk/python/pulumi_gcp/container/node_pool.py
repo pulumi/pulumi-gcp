@@ -32,7 +32,7 @@ class NodePoolArgs:
                  version: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a NodePool resource.
-        :param pulumi.Input[str] cluster: The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
+        :param pulumi.Input[str] cluster: The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
         :param pulumi.Input['NodePoolAutoscalingArgs'] autoscaling: Configuration required by cluster autoscaler to adjust
                the size of the node pool to the current cluster usage. Structure is documented below.
         :param pulumi.Input[int] initial_node_count: The initial number of nodes for the pool. In
@@ -56,7 +56,7 @@ class NodePoolArgs:
                with the specified prefix. Conflicts with `name`.
         :param pulumi.Input['NodePoolNetworkConfigArgs'] network_config: The network configuration of the pool. See
                container.Cluster for schema.
-        :param pulumi.Input['NodePoolNodeConfigArgs'] node_config: Parameters used in creating the default node pool. See
+        :param pulumi.Input['NodePoolNodeConfigArgs'] node_config: Parameters used in creating the node pool. See
                container.Cluster for schema.
         :param pulumi.Input[int] node_count: The number of nodes per instance group. This field can be used to
                update the number of nodes per instance group but should not be used alongside `autoscaling`.
@@ -68,7 +68,7 @@ class NodePoolArgs:
                the provider-configured project will be used.
         :param pulumi.Input['NodePoolUpgradeSettingsArgs'] upgrade_settings: Specify node upgrade settings to change how many nodes GKE attempts to
                upgrade at once. The number of nodes upgraded simultaneously is the sum of `max_surge` and `max_unavailable`.
-               The maximum number of nodes upgraded simultaneously is limited to 20.
+               The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
         :param pulumi.Input[str] version: The Kubernetes version for the nodes in this pool. Note that if this field
                and `auto_upgrade` are both specified, they will fight each other for what the node version should
                be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
@@ -110,7 +110,7 @@ class NodePoolArgs:
     @pulumi.getter
     def cluster(self) -> pulumi.Input[str]:
         """
-        The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
+        The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
         """
         return pulumi.get(self, "cluster")
 
@@ -233,7 +233,7 @@ class NodePoolArgs:
     @pulumi.getter(name="nodeConfig")
     def node_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigArgs']]:
         """
-        Parameters used in creating the default node pool. See
+        Parameters used in creating the node pool. See
         container.Cluster for schema.
         """
         return pulumi.get(self, "node_config")
@@ -289,7 +289,7 @@ class NodePoolArgs:
         """
         Specify node upgrade settings to change how many nodes GKE attempts to
         upgrade at once. The number of nodes upgraded simultaneously is the sum of `max_surge` and `max_unavailable`.
-        The maximum number of nodes upgraded simultaneously is limited to 20.
+        The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
         """
         return pulumi.get(self, "upgrade_settings")
 
@@ -339,7 +339,7 @@ class _NodePoolState:
         Input properties used for looking up and filtering NodePool resources.
         :param pulumi.Input['NodePoolAutoscalingArgs'] autoscaling: Configuration required by cluster autoscaler to adjust
                the size of the node pool to the current cluster usage. Structure is documented below.
-        :param pulumi.Input[str] cluster: The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
+        :param pulumi.Input[str] cluster: The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
         :param pulumi.Input[int] initial_node_count: The initial number of nodes for the pool. In
                regional or multi-zonal clusters, this is the number of nodes per zone. Changing
                this will force recreation of the resource. WARNING: Resizing your node pool manually
@@ -362,7 +362,7 @@ class _NodePoolState:
                with the specified prefix. Conflicts with `name`.
         :param pulumi.Input['NodePoolNetworkConfigArgs'] network_config: The network configuration of the pool. See
                container.Cluster for schema.
-        :param pulumi.Input['NodePoolNodeConfigArgs'] node_config: Parameters used in creating the default node pool. See
+        :param pulumi.Input['NodePoolNodeConfigArgs'] node_config: Parameters used in creating the node pool. See
                container.Cluster for schema.
         :param pulumi.Input[int] node_count: The number of nodes per instance group. This field can be used to
                update the number of nodes per instance group but should not be used alongside `autoscaling`.
@@ -374,7 +374,7 @@ class _NodePoolState:
                the provider-configured project will be used.
         :param pulumi.Input['NodePoolUpgradeSettingsArgs'] upgrade_settings: Specify node upgrade settings to change how many nodes GKE attempts to
                upgrade at once. The number of nodes upgraded simultaneously is the sum of `max_surge` and `max_unavailable`.
-               The maximum number of nodes upgraded simultaneously is limited to 20.
+               The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
         :param pulumi.Input[str] version: The Kubernetes version for the nodes in this pool. Note that if this field
                and `auto_upgrade` are both specified, they will fight each other for what the node version should
                be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
@@ -434,7 +434,7 @@ class _NodePoolState:
     @pulumi.getter
     def cluster(self) -> Optional[pulumi.Input[str]]:
         """
-        The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
+        The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
         """
         return pulumi.get(self, "cluster")
 
@@ -556,7 +556,7 @@ class _NodePoolState:
     @pulumi.getter(name="nodeConfig")
     def node_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigArgs']]:
         """
-        Parameters used in creating the default node pool. See
+        Parameters used in creating the node pool. See
         container.Cluster for schema.
         """
         return pulumi.get(self, "node_config")
@@ -621,7 +621,7 @@ class _NodePoolState:
         """
         Specify node upgrade settings to change how many nodes GKE attempts to
         upgrade at once. The number of nodes upgraded simultaneously is the sum of `max_surge` and `max_unavailable`.
-        The maximum number of nodes upgraded simultaneously is limited to 20.
+        The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
         """
         return pulumi.get(self, "upgrade_settings")
 
@@ -700,21 +700,21 @@ class NodePool(pulumi.CustomResource):
 
         ## Import
 
-        Node pools can be imported using the `project`, `zone`, `cluster` and `name`. If the project is omitted, the default provider value will be used. Examples
+        Node pools can be imported using the `project`, `location`, `cluster` and `name`. If the project is omitted, the project value in the provider configuration will be used. Examples
 
         ```sh
          $ pulumi import gcp:container/nodePool:NodePool mainpool my-gcp-project/us-east1-a/my-cluster/main-pool
         ```
 
         ```sh
-         $ pulumi import gcp:container/nodePool:NodePool mainpool us-east1-a/my-cluster/main-pool
+         $ pulumi import gcp:container/nodePool:NodePool mainpool us-east1/my-cluster/main-pool
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['NodePoolAutoscalingArgs']] autoscaling: Configuration required by cluster autoscaler to adjust
                the size of the node pool to the current cluster usage. Structure is documented below.
-        :param pulumi.Input[str] cluster: The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
+        :param pulumi.Input[str] cluster: The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
         :param pulumi.Input[int] initial_node_count: The initial number of nodes for the pool. In
                regional or multi-zonal clusters, this is the number of nodes per zone. Changing
                this will force recreation of the resource. WARNING: Resizing your node pool manually
@@ -736,7 +736,7 @@ class NodePool(pulumi.CustomResource):
                with the specified prefix. Conflicts with `name`.
         :param pulumi.Input[pulumi.InputType['NodePoolNetworkConfigArgs']] network_config: The network configuration of the pool. See
                container.Cluster for schema.
-        :param pulumi.Input[pulumi.InputType['NodePoolNodeConfigArgs']] node_config: Parameters used in creating the default node pool. See
+        :param pulumi.Input[pulumi.InputType['NodePoolNodeConfigArgs']] node_config: Parameters used in creating the node pool. See
                container.Cluster for schema.
         :param pulumi.Input[int] node_count: The number of nodes per instance group. This field can be used to
                update the number of nodes per instance group but should not be used alongside `autoscaling`.
@@ -748,7 +748,7 @@ class NodePool(pulumi.CustomResource):
                the provider-configured project will be used.
         :param pulumi.Input[pulumi.InputType['NodePoolUpgradeSettingsArgs']] upgrade_settings: Specify node upgrade settings to change how many nodes GKE attempts to
                upgrade at once. The number of nodes upgraded simultaneously is the sum of `max_surge` and `max_unavailable`.
-               The maximum number of nodes upgraded simultaneously is limited to 20.
+               The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
         :param pulumi.Input[str] version: The Kubernetes version for the nodes in this pool. Note that if this field
                and `auto_upgrade` are both specified, they will fight each other for what the node version should
                be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
@@ -794,14 +794,14 @@ class NodePool(pulumi.CustomResource):
 
         ## Import
 
-        Node pools can be imported using the `project`, `zone`, `cluster` and `name`. If the project is omitted, the default provider value will be used. Examples
+        Node pools can be imported using the `project`, `location`, `cluster` and `name`. If the project is omitted, the project value in the provider configuration will be used. Examples
 
         ```sh
          $ pulumi import gcp:container/nodePool:NodePool mainpool my-gcp-project/us-east1-a/my-cluster/main-pool
         ```
 
         ```sh
-         $ pulumi import gcp:container/nodePool:NodePool mainpool us-east1-a/my-cluster/main-pool
+         $ pulumi import gcp:container/nodePool:NodePool mainpool us-east1/my-cluster/main-pool
         ```
 
         :param str resource_name: The name of the resource.
@@ -901,7 +901,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['NodePoolAutoscalingArgs']] autoscaling: Configuration required by cluster autoscaler to adjust
                the size of the node pool to the current cluster usage. Structure is documented below.
-        :param pulumi.Input[str] cluster: The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
+        :param pulumi.Input[str] cluster: The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
         :param pulumi.Input[int] initial_node_count: The initial number of nodes for the pool. In
                regional or multi-zonal clusters, this is the number of nodes per zone. Changing
                this will force recreation of the resource. WARNING: Resizing your node pool manually
@@ -924,7 +924,7 @@ class NodePool(pulumi.CustomResource):
                with the specified prefix. Conflicts with `name`.
         :param pulumi.Input[pulumi.InputType['NodePoolNetworkConfigArgs']] network_config: The network configuration of the pool. See
                container.Cluster for schema.
-        :param pulumi.Input[pulumi.InputType['NodePoolNodeConfigArgs']] node_config: Parameters used in creating the default node pool. See
+        :param pulumi.Input[pulumi.InputType['NodePoolNodeConfigArgs']] node_config: Parameters used in creating the node pool. See
                container.Cluster for schema.
         :param pulumi.Input[int] node_count: The number of nodes per instance group. This field can be used to
                update the number of nodes per instance group but should not be used alongside `autoscaling`.
@@ -936,7 +936,7 @@ class NodePool(pulumi.CustomResource):
                the provider-configured project will be used.
         :param pulumi.Input[pulumi.InputType['NodePoolUpgradeSettingsArgs']] upgrade_settings: Specify node upgrade settings to change how many nodes GKE attempts to
                upgrade at once. The number of nodes upgraded simultaneously is the sum of `max_surge` and `max_unavailable`.
-               The maximum number of nodes upgraded simultaneously is limited to 20.
+               The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
         :param pulumi.Input[str] version: The Kubernetes version for the nodes in this pool. Note that if this field
                and `auto_upgrade` are both specified, they will fight each other for what the node version should
                be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
@@ -980,7 +980,7 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter
     def cluster(self) -> pulumi.Output[str]:
         """
-        The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
+        The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
         """
         return pulumi.get(self, "cluster")
 
@@ -1066,7 +1066,7 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter(name="nodeConfig")
     def node_config(self) -> pulumi.Output['outputs.NodePoolNodeConfig']:
         """
-        Parameters used in creating the default node pool. See
+        Parameters used in creating the node pool. See
         container.Cluster for schema.
         """
         return pulumi.get(self, "node_config")
@@ -1111,7 +1111,7 @@ class NodePool(pulumi.CustomResource):
         """
         Specify node upgrade settings to change how many nodes GKE attempts to
         upgrade at once. The number of nodes upgraded simultaneously is the sum of `max_surge` and `max_unavailable`.
-        The maximum number of nodes upgraded simultaneously is limited to 20.
+        The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
         """
         return pulumi.get(self, "upgrade_settings")
 

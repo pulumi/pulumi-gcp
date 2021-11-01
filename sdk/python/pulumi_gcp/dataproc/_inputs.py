@@ -478,7 +478,7 @@ class ClusterClusterConfigArgs:
         :param pulumi.Input['ClusterClusterConfigLifecycleConfigArgs'] lifecycle_config: The settings for auto deletion cluster schedule.
                Structure defined below.
         :param pulumi.Input['ClusterClusterConfigMasterConfigArgs'] master_config: The Google Compute Engine config settings for the master instances
-               in a cluster.. Structure defined below.
+               in a cluster. Structure defined below.
         :param pulumi.Input['ClusterClusterConfigMetastoreConfigArgs'] metastore_config: The config setting for metastore service with the cluster.
                Structure defined below.
                - - -
@@ -501,7 +501,7 @@ class ClusterClusterConfigArgs:
                and jobs data, such as Spark and MapReduce history files.
                Note: If you don't explicitly specify a `temp_bucket` then GCP will auto create / assign one for you.
         :param pulumi.Input['ClusterClusterConfigWorkerConfigArgs'] worker_config: The Google Compute Engine config settings for the worker instances
-               in a cluster.. Structure defined below.
+               in a cluster. Structure defined below.
         """
         if autoscaling_config is not None:
             pulumi.set(__self__, "autoscaling_config", autoscaling_config)
@@ -628,7 +628,7 @@ class ClusterClusterConfigArgs:
     def master_config(self) -> Optional[pulumi.Input['ClusterClusterConfigMasterConfigArgs']]:
         """
         The Google Compute Engine config settings for the master instances
-        in a cluster.. Structure defined below.
+        in a cluster. Structure defined below.
         """
         return pulumi.get(self, "master_config")
 
@@ -728,7 +728,7 @@ class ClusterClusterConfigArgs:
     def worker_config(self) -> Optional[pulumi.Input['ClusterClusterConfigWorkerConfigArgs']]:
         """
         The Google Compute Engine config settings for the worker instances
-        in a cluster.. Structure defined below.
+        in a cluster. Structure defined below.
         """
         return pulumi.get(self, "worker_config")
 

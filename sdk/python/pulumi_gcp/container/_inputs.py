@@ -873,9 +873,7 @@ class ClusterDnsConfigArgs:
                  cluster_dns_domain: Optional[pulumi.Input[str]] = None,
                  cluster_dns_scope: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] cluster_dns: Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
-        :param pulumi.Input[str] cluster_dns_domain: The suffix used for all cluster service records.
-        :param pulumi.Input[str] cluster_dns_scope: The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
+        :param pulumi.Input[str] cluster_dns: Which in-cluster DNS provider shoul
         """
         if cluster_dns is not None:
             pulumi.set(__self__, "cluster_dns", cluster_dns)
@@ -888,7 +886,7 @@ class ClusterDnsConfigArgs:
     @pulumi.getter(name="clusterDns")
     def cluster_dns(self) -> Optional[pulumi.Input[str]]:
         """
-        Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
+        Which in-cluster DNS provider shoul
         """
         return pulumi.get(self, "cluster_dns")
 
@@ -899,9 +897,6 @@ class ClusterDnsConfigArgs:
     @property
     @pulumi.getter(name="clusterDnsDomain")
     def cluster_dns_domain(self) -> Optional[pulumi.Input[str]]:
-        """
-        The suffix used for all cluster service records.
-        """
         return pulumi.get(self, "cluster_dns_domain")
 
     @cluster_dns_domain.setter
@@ -911,9 +906,6 @@ class ClusterDnsConfigArgs:
     @property
     @pulumi.getter(name="clusterDnsScope")
     def cluster_dns_scope(self) -> Optional[pulumi.Input[str]]:
-        """
-        The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
-        """
         return pulumi.get(self, "cluster_dns_scope")
 
     @cluster_dns_scope.setter
@@ -1023,8 +1015,7 @@ class ClusterLoggingConfigArgs:
     def __init__(__self__, *,
                  enable_components: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] enable_components: The GKE components exposing logs. Only `SYSTEM_COMPONENTS`
-               is supported.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] enable_components: The GKE components exposing logs. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported.
         """
         pulumi.set(__self__, "enable_components", enable_components)
 
@@ -1032,8 +1023,7 @@ class ClusterLoggingConfigArgs:
     @pulumi.getter(name="enableComponents")
     def enable_components(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        The GKE components exposing logs. Only `SYSTEM_COMPONENTS`
-        is supported.
+        The GKE components exposing logs. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported.
         """
         return pulumi.get(self, "enable_components")
 
@@ -1386,8 +1376,7 @@ class ClusterMonitoringConfigArgs:
     def __init__(__self__, *,
                  enable_components: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] enable_components: The GKE components exposing logs. Only `SYSTEM_COMPONENTS`
-               is supported.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] enable_components: The GKE components exposing logs. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported.
         """
         pulumi.set(__self__, "enable_components", enable_components)
 
@@ -1395,8 +1384,7 @@ class ClusterMonitoringConfigArgs:
     @pulumi.getter(name="enableComponents")
     def enable_components(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        The GKE components exposing logs. Only `SYSTEM_COMPONENTS`
-        is supported.
+        The GKE components exposing logs. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported.
         """
         return pulumi.get(self, "enable_components")
 
@@ -1880,13 +1868,17 @@ class ClusterNodeConfigEphemeralStorageConfigArgs:
 class ClusterNodeConfigGuestAcceleratorArgs:
     def __init__(__self__, *,
                  count: pulumi.Input[int],
-                 type: pulumi.Input[str]):
+                 type: pulumi.Input[str],
+                 gpu_partition_size: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[int] count: The number of the guest accelerator cards exposed to this instance.
         :param pulumi.Input[str] type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        :param pulumi.Input[str] gpu_partition_size: Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "type", type)
+        if gpu_partition_size is not None:
+            pulumi.set(__self__, "gpu_partition_size", gpu_partition_size)
 
     @property
     @pulumi.getter
@@ -1911,6 +1903,18 @@ class ClusterNodeConfigGuestAcceleratorArgs:
     @type.setter
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="gpuPartitionSize")
+    def gpu_partition_size(self) -> Optional[pulumi.Input[str]]:
+        """
+        Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+        """
+        return pulumi.get(self, "gpu_partition_size")
+
+    @gpu_partition_size.setter
+    def gpu_partition_size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gpu_partition_size", value)
 
 
 @pulumi.input_type
@@ -2203,12 +2207,10 @@ class ClusterNodePoolArgs:
                `container.NodePool` objects with no default node pool, you'll need to
                set this to a value of at least `1`, alongside setting
                `remove_default_node_pool` to `true`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_group_urls: List of instance group URLs which have been assigned
-               to the cluster.
         :param pulumi.Input[str] name: The name of the cluster, unique within the project and
                location.
-        :param pulumi.Input['ClusterNodePoolNetworkConfigArgs'] network_config: ) Configuration for
-               [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool.
+        :param pulumi.Input['ClusterNodePoolNetworkConfigArgs'] network_config: Configuration for
+               [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
         :param pulumi.Input['ClusterNodePoolNodeConfigArgs'] node_config: Parameters used in creating the default node pool.
                Generally, this field should not be used at the same time as a
                `container.NodePool` or a `node_pool` block; this configuration
@@ -2275,10 +2277,6 @@ class ClusterNodePoolArgs:
     @property
     @pulumi.getter(name="instanceGroupUrls")
     def instance_group_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of instance group URLs which have been assigned
-        to the cluster.
-        """
         return pulumi.get(self, "instance_group_urls")
 
     @instance_group_urls.setter
@@ -2329,8 +2327,8 @@ class ClusterNodePoolArgs:
     @pulumi.getter(name="networkConfig")
     def network_config(self) -> Optional[pulumi.Input['ClusterNodePoolNetworkConfigArgs']]:
         """
-        ) Configuration for
-        [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool.
+        Configuration for
+        [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
         """
         return pulumi.get(self, "network_config")
 
@@ -2460,9 +2458,9 @@ class ClusterNodePoolNetworkConfigArgs:
                  create_pod_range: Optional[pulumi.Input[bool]] = None,
                  pod_ipv4_cidr_block: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] pod_range: ) The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
-        :param pulumi.Input[bool] create_pod_range: ) Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
-        :param pulumi.Input[str] pod_ipv4_cidr_block: ) The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
+        :param pulumi.Input[str] pod_range: The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
+        :param pulumi.Input[bool] create_pod_range: Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
+        :param pulumi.Input[str] pod_ipv4_cidr_block: The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
         """
         pulumi.set(__self__, "pod_range", pod_range)
         if create_pod_range is not None:
@@ -2474,7 +2472,7 @@ class ClusterNodePoolNetworkConfigArgs:
     @pulumi.getter(name="podRange")
     def pod_range(self) -> pulumi.Input[str]:
         """
-        ) The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
+        The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
         """
         return pulumi.get(self, "pod_range")
 
@@ -2486,7 +2484,7 @@ class ClusterNodePoolNetworkConfigArgs:
     @pulumi.getter(name="createPodRange")
     def create_pod_range(self) -> Optional[pulumi.Input[bool]]:
         """
-        ) Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
+        Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
         """
         return pulumi.get(self, "create_pod_range")
 
@@ -2498,7 +2496,7 @@ class ClusterNodePoolNetworkConfigArgs:
     @pulumi.getter(name="podIpv4CidrBlock")
     def pod_ipv4_cidr_block(self) -> Optional[pulumi.Input[str]]:
         """
-        ) The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
+        The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
         """
         return pulumi.get(self, "pod_ipv4_cidr_block")
 
@@ -2942,13 +2940,17 @@ class ClusterNodePoolNodeConfigEphemeralStorageConfigArgs:
 class ClusterNodePoolNodeConfigGuestAcceleratorArgs:
     def __init__(__self__, *,
                  count: pulumi.Input[int],
-                 type: pulumi.Input[str]):
+                 type: pulumi.Input[str],
+                 gpu_partition_size: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[int] count: The number of the guest accelerator cards exposed to this instance.
         :param pulumi.Input[str] type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        :param pulumi.Input[str] gpu_partition_size: Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "type", type)
+        if gpu_partition_size is not None:
+            pulumi.set(__self__, "gpu_partition_size", gpu_partition_size)
 
     @property
     @pulumi.getter
@@ -2973,6 +2975,18 @@ class ClusterNodePoolNodeConfigGuestAcceleratorArgs:
     @type.setter
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="gpuPartitionSize")
+    def gpu_partition_size(self) -> Optional[pulumi.Input[str]]:
+        """
+        Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+        """
+        return pulumi.get(self, "gpu_partition_size")
+
+    @gpu_partition_size.setter
+    def gpu_partition_size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gpu_partition_size", value)
 
 
 @pulumi.input_type
@@ -3664,23 +3678,43 @@ class ClusterVerticalPodAutoscalingArgs:
 @pulumi.input_type
 class ClusterWorkloadIdentityConfigArgs:
     def __init__(__self__, *,
-                 identity_namespace: pulumi.Input[str]):
+                 identity_namespace: Optional[pulumi.Input[str]] = None,
+                 workload_pool: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] identity_namespace: Currently, the only supported identity namespace is the project's default.
+        :param pulumi.Input[str] identity_namespace: - Currently, the only supported identity namespace is the project's default.
+        :param pulumi.Input[str] workload_pool: The workload pool to attach all Kubernetes service accounts to. Currently, the only supported identity namespace is the project of the cluster.
         """
-        pulumi.set(__self__, "identity_namespace", identity_namespace)
+        if identity_namespace is not None:
+            warnings.warn("""This field will be removed in a future major release as it has been deprecated in the API. Use `workload_pool` instead.""", DeprecationWarning)
+            pulumi.log.warn("""identity_namespace is deprecated: This field will be removed in a future major release as it has been deprecated in the API. Use `workload_pool` instead.""")
+        if identity_namespace is not None:
+            pulumi.set(__self__, "identity_namespace", identity_namespace)
+        if workload_pool is not None:
+            pulumi.set(__self__, "workload_pool", workload_pool)
 
     @property
     @pulumi.getter(name="identityNamespace")
-    def identity_namespace(self) -> pulumi.Input[str]:
+    def identity_namespace(self) -> Optional[pulumi.Input[str]]:
         """
-        Currently, the only supported identity namespace is the project's default.
+        - Currently, the only supported identity namespace is the project's default.
         """
         return pulumi.get(self, "identity_namespace")
 
     @identity_namespace.setter
-    def identity_namespace(self, value: pulumi.Input[str]):
+    def identity_namespace(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "identity_namespace", value)
+
+    @property
+    @pulumi.getter(name="workloadPool")
+    def workload_pool(self) -> Optional[pulumi.Input[str]]:
+        """
+        The workload pool to attach all Kubernetes service accounts to. Currently, the only supported identity namespace is the project of the cluster.
+        """
+        return pulumi.get(self, "workload_pool")
+
+    @workload_pool.setter
+    def workload_pool(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "workload_pool", value)
 
 
 @pulumi.input_type
@@ -4078,9 +4112,12 @@ class NodePoolNodeConfigEphemeralStorageConfigArgs:
 class NodePoolNodeConfigGuestAcceleratorArgs:
     def __init__(__self__, *,
                  count: pulumi.Input[int],
-                 type: pulumi.Input[str]):
+                 type: pulumi.Input[str],
+                 gpu_partition_size: Optional[pulumi.Input[str]] = None):
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "type", type)
+        if gpu_partition_size is not None:
+            pulumi.set(__self__, "gpu_partition_size", gpu_partition_size)
 
     @property
     @pulumi.getter
@@ -4099,6 +4136,15 @@ class NodePoolNodeConfigGuestAcceleratorArgs:
     @type.setter
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="gpuPartitionSize")
+    def gpu_partition_size(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "gpu_partition_size")
+
+    @gpu_partition_size.setter
+    def gpu_partition_size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gpu_partition_size", value)
 
 
 @pulumi.input_type

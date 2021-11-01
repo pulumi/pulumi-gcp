@@ -190,7 +190,7 @@ type InstanceGroup struct {
 	// The name which the port will be mapped to.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The named port configuration. See the section below
-	// for details on configuration.
+	// for details on configuration. Structure is documented below.
 	NamedPorts InstanceGroupNamedPortTypeArrayOutput `pulumi:"namedPorts"`
 	// The URL of the network the instance group is in. If
 	// this is different from the network where the instances are in, the creation
@@ -247,7 +247,7 @@ type instanceGroupState struct {
 	// The name which the port will be mapped to.
 	Name *string `pulumi:"name"`
 	// The named port configuration. See the section below
-	// for details on configuration.
+	// for details on configuration. Structure is documented below.
 	NamedPorts []InstanceGroupNamedPortType `pulumi:"namedPorts"`
 	// The URL of the network the instance group is in. If
 	// this is different from the network where the instances are in, the creation
@@ -276,7 +276,7 @@ type InstanceGroupState struct {
 	// The name which the port will be mapped to.
 	Name pulumi.StringPtrInput
 	// The named port configuration. See the section below
-	// for details on configuration.
+	// for details on configuration. Structure is documented below.
 	NamedPorts InstanceGroupNamedPortTypeArrayInput
 	// The URL of the network the instance group is in. If
 	// this is different from the network where the instances are in, the creation
@@ -309,7 +309,7 @@ type instanceGroupArgs struct {
 	// The name which the port will be mapped to.
 	Name *string `pulumi:"name"`
 	// The named port configuration. See the section below
-	// for details on configuration.
+	// for details on configuration. Structure is documented below.
 	NamedPorts []InstanceGroupNamedPortType `pulumi:"namedPorts"`
 	// The URL of the network the instance group is in. If
 	// this is different from the network where the instances are in, the creation
@@ -335,7 +335,7 @@ type InstanceGroupArgs struct {
 	// The name which the port will be mapped to.
 	Name pulumi.StringPtrInput
 	// The named port configuration. See the section below
-	// for details on configuration.
+	// for details on configuration. Structure is documented below.
 	NamedPorts InstanceGroupNamedPortTypeArrayInput
 	// The URL of the network the instance group is in. If
 	// this is different from the network where the instances are in, the creation

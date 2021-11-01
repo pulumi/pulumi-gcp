@@ -63,6 +63,11 @@ namespace Pulumi.Gcp.CloudRun.Inputs
 
         [Input("volumes")]
         private InputList<Inputs.ServiceTemplateSpecVolumeGetArgs>? _volumes;
+
+        /// <summary>
+        /// Volume represents a named volume in a container.
+        /// Structure is documented below.
+        /// </summary>
         public InputList<Inputs.ServiceTemplateSpecVolumeGetArgs> Volumes
         {
             get => _volumes ?? (_volumes = new InputList<Inputs.ServiceTemplateSpecVolumeGetArgs>());

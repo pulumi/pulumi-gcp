@@ -122,7 +122,8 @@ export class Policy extends pulumi.CustomResource {
     }
 
     /**
-     * A boolean policy is a constraint that is either enforced or not. Structure is documented below.
+     * A boolean policy is a constraint that is either enforced or not. Structure is documented
+     * below.
      */
     public readonly booleanPolicy!: pulumi.Output<outputs.organizations.PolicyBooleanPolicy | undefined>;
     /**
@@ -204,7 +205,8 @@ export class Policy extends pulumi.CustomResource {
  */
 export interface PolicyState {
     /**
-     * A boolean policy is a constraint that is either enforced or not. Structure is documented below.
+     * A boolean policy is a constraint that is either enforced or not. Structure is documented
+     * below.
      */
     booleanPolicy?: pulumi.Input<inputs.organizations.PolicyBooleanPolicy>;
     /**
@@ -242,7 +244,8 @@ export interface PolicyState {
  */
 export interface PolicyArgs {
     /**
-     * A boolean policy is a constraint that is either enforced or not. Structure is documented below.
+     * A boolean policy is a constraint that is either enforced or not. Structure is documented
+     * below.
      */
     booleanPolicy?: pulumi.Input<inputs.organizations.PolicyBooleanPolicy>;
     /**

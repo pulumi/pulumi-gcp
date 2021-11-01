@@ -122,7 +122,7 @@ export class Bucket extends pulumi.CustomResource {
     public readonly cors!: pulumi.Output<outputs.storage.BucketCor[] | undefined>;
     public readonly defaultEventBasedHold!: pulumi.Output<boolean | undefined>;
     /**
-     * The bucket's encryption configuration.
+     * The bucket's encryption configuration. Structure is documented below.
      */
     public readonly encryption!: pulumi.Output<outputs.storage.BucketEncryption | undefined>;
     /**
@@ -144,7 +144,7 @@ export class Bucket extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string | undefined>;
     /**
-     * The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration.
+     * The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
      */
     public readonly logging!: pulumi.Output<outputs.storage.BucketLogging | undefined>;
     /**
@@ -181,7 +181,7 @@ export class Bucket extends pulumi.CustomResource {
      */
     public /*out*/ readonly url!: pulumi.Output<string>;
     /**
-     * The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
+     * The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
      */
     public readonly versioning!: pulumi.Output<outputs.storage.BucketVersioning | undefined>;
     /**
@@ -266,7 +266,7 @@ export interface BucketState {
     cors?: pulumi.Input<pulumi.Input<inputs.storage.BucketCor>[]>;
     defaultEventBasedHold?: pulumi.Input<boolean>;
     /**
-     * The bucket's encryption configuration.
+     * The bucket's encryption configuration. Structure is documented below.
      */
     encryption?: pulumi.Input<inputs.storage.BucketEncryption>;
     /**
@@ -288,7 +288,7 @@ export interface BucketState {
      */
     location?: pulumi.Input<string>;
     /**
-     * The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration.
+     * The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
      */
     logging?: pulumi.Input<inputs.storage.BucketLogging>;
     /**
@@ -325,7 +325,7 @@ export interface BucketState {
      */
     url?: pulumi.Input<string>;
     /**
-     * The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
+     * The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
      */
     versioning?: pulumi.Input<inputs.storage.BucketVersioning>;
     /**
@@ -350,7 +350,7 @@ export interface BucketArgs {
     cors?: pulumi.Input<pulumi.Input<inputs.storage.BucketCor>[]>;
     defaultEventBasedHold?: pulumi.Input<boolean>;
     /**
-     * The bucket's encryption configuration.
+     * The bucket's encryption configuration. Structure is documented below.
      */
     encryption?: pulumi.Input<inputs.storage.BucketEncryption>;
     /**
@@ -372,7 +372,7 @@ export interface BucketArgs {
      */
     location?: pulumi.Input<string>;
     /**
-     * The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration.
+     * The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
      */
     logging?: pulumi.Input<inputs.storage.BucketLogging>;
     /**
@@ -401,7 +401,7 @@ export interface BucketArgs {
      */
     uniformBucketLevelAccess?: pulumi.Input<boolean>;
     /**
-     * The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
+     * The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
      */
     versioning?: pulumi.Input<inputs.storage.BucketVersioning>;
     /**

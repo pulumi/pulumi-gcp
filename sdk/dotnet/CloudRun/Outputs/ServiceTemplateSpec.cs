@@ -46,6 +46,10 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
         /// </summary>
         public readonly int? TimeoutSeconds;
+        /// <summary>
+        /// Volume represents a named volume in a container.
+        /// Structure is documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.ServiceTemplateSpecVolume> Volumes;
 
         [OutputConstructor]

@@ -490,9 +490,11 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> SecurityPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// The security settings that apply to this backend service. This field is applicable to either a regional backend service
-        /// with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED; or a global
-        /// backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+        /// The security settings that apply to this backend service. This field is applicable to either
+        /// a regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and
+        /// load_balancing_scheme set to INTERNAL_MANAGED; or a global backend service with the
+        /// load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+        /// Structure is documented below.
         /// </summary>
         [Output("securitySettings")]
         public Output<Outputs.BackendServiceSecuritySettings?> SecuritySettings { get; private set; } = null!;
@@ -772,9 +774,11 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SecurityPolicy { get; set; }
 
         /// <summary>
-        /// The security settings that apply to this backend service. This field is applicable to either a regional backend service
-        /// with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED; or a global
-        /// backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+        /// The security settings that apply to this backend service. This field is applicable to either
+        /// a regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and
+        /// load_balancing_scheme set to INTERNAL_MANAGED; or a global backend service with the
+        /// load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+        /// Structure is documented below.
         /// </summary>
         [Input("securitySettings")]
         public Input<Inputs.BackendServiceSecuritySettingsArgs>? SecuritySettings { get; set; }
@@ -1021,9 +1025,11 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SecurityPolicy { get; set; }
 
         /// <summary>
-        /// The security settings that apply to this backend service. This field is applicable to either a regional backend service
-        /// with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED; or a global
-        /// backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+        /// The security settings that apply to this backend service. This field is applicable to either
+        /// a regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and
+        /// load_balancing_scheme set to INTERNAL_MANAGED; or a global backend service with the
+        /// load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+        /// Structure is documented below.
         /// </summary>
         [Input("securitySettings")]
         public Input<Inputs.BackendServiceSecuritySettingsGetArgs>? SecuritySettings { get; set; }

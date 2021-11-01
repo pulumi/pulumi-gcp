@@ -169,7 +169,7 @@ export class CryptoKeyIAMBinding extends pulumi.CustomResource {
     }
 
     /**
-     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
     public readonly condition!: pulumi.Output<outputs.kms.CryptoKeyIAMBindingCondition | undefined>;
@@ -238,7 +238,7 @@ export class CryptoKeyIAMBinding extends pulumi.CustomResource {
  */
 export interface CryptoKeyIAMBindingState {
     /**
-     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
     condition?: pulumi.Input<inputs.kms.CryptoKeyIAMBindingCondition>;
@@ -266,7 +266,7 @@ export interface CryptoKeyIAMBindingState {
  */
 export interface CryptoKeyIAMBindingArgs {
     /**
-     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
     condition?: pulumi.Input<inputs.kms.CryptoKeyIAMBindingCondition>;

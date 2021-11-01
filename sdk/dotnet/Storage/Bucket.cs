@@ -139,7 +139,7 @@ namespace Pulumi.Gcp.Storage
         public Output<bool?> DefaultEventBasedHold { get; private set; } = null!;
 
         /// <summary>
-        /// The bucket's encryption configuration.
+        /// The bucket's encryption configuration. Structure is documented below.
         /// </summary>
         [Output("encryption")]
         public Output<Outputs.BucketEncryption?> Encryption { get; private set; } = null!;
@@ -171,7 +171,7 @@ namespace Pulumi.Gcp.Storage
         public Output<string?> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The bucket's [Access &amp; Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration.
+        /// The bucket's [Access &amp; Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
         /// </summary>
         [Output("logging")]
         public Output<Outputs.BucketLogging?> Logging { get; private set; } = null!;
@@ -226,7 +226,7 @@ namespace Pulumi.Gcp.Storage
         public Output<string> Url { get; private set; } = null!;
 
         /// <summary>
-        /// The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
+        /// The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
         /// </summary>
         [Output("versioning")]
         public Output<Outputs.BucketVersioning?> Versioning { get; private set; } = null!;
@@ -305,7 +305,7 @@ namespace Pulumi.Gcp.Storage
         public Input<bool>? DefaultEventBasedHold { get; set; }
 
         /// <summary>
-        /// The bucket's encryption configuration.
+        /// The bucket's encryption configuration. Structure is documented below.
         /// </summary>
         [Input("encryption")]
         public Input<Inputs.BucketEncryptionArgs>? Encryption { get; set; }
@@ -349,7 +349,7 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The bucket's [Access &amp; Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration.
+        /// The bucket's [Access &amp; Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
         /// </summary>
         [Input("logging")]
         public Input<Inputs.BucketLoggingArgs>? Logging { get; set; }
@@ -392,7 +392,7 @@ namespace Pulumi.Gcp.Storage
         public Input<bool>? UniformBucketLevelAccess { get; set; }
 
         /// <summary>
-        /// The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
+        /// The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
         /// </summary>
         [Input("versioning")]
         public Input<Inputs.BucketVersioningArgs>? Versioning { get; set; }
@@ -432,7 +432,7 @@ namespace Pulumi.Gcp.Storage
         public Input<bool>? DefaultEventBasedHold { get; set; }
 
         /// <summary>
-        /// The bucket's encryption configuration.
+        /// The bucket's encryption configuration. Structure is documented below.
         /// </summary>
         [Input("encryption")]
         public Input<Inputs.BucketEncryptionGetArgs>? Encryption { get; set; }
@@ -476,7 +476,7 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The bucket's [Access &amp; Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration.
+        /// The bucket's [Access &amp; Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
         /// </summary>
         [Input("logging")]
         public Input<Inputs.BucketLoggingGetArgs>? Logging { get; set; }
@@ -531,7 +531,7 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? Url { get; set; }
 
         /// <summary>
-        /// The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
+        /// The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
         /// </summary>
         [Input("versioning")]
         public Input<Inputs.BucketVersioningGetArgs>? Versioning { get; set; }

@@ -122,7 +122,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Kind { get; private set; } = null!;
 
         /// <summary>
-        /// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        /// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced. Structure is documented below.
         /// </summary>
         [Output("match")]
         public Output<Outputs.FirewallPolicyRuleMatch> Match { get; private set; } = null!;
@@ -234,7 +234,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string> FirewallPolicy { get; set; } = null!;
 
         /// <summary>
-        /// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        /// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced. Structure is documented below.
         /// </summary>
         [Input("match", required: true)]
         public Input<Inputs.FirewallPolicyRuleMatchArgs> Match { get; set; } = null!;
@@ -319,7 +319,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Kind { get; set; }
 
         /// <summary>
-        /// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        /// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced. Structure is documented below.
         /// </summary>
         [Input("match")]
         public Input<Inputs.FirewallPolicyRuleMatchGetArgs>? Match { get; set; }

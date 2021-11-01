@@ -28,8 +28,9 @@ class RouterArgs:
         :param pulumi.Input['RouterBgpArgs'] bgp: BGP information specific to this router.
                Structure is documented below.
         :param pulumi.Input[str] description: User-specified description for the IP range.
-        :param pulumi.Input[bool] encrypted_interconnect_router: Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud
-               Interconnect feature). Not currently available publicly.
+        :param pulumi.Input[bool] encrypted_interconnect_router: Field to indicate if a router is dedicated to use with encrypted
+               Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
+               Not currently available publicly.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -95,8 +96,9 @@ class RouterArgs:
     @pulumi.getter(name="encryptedInterconnectRouter")
     def encrypted_interconnect_router(self) -> Optional[pulumi.Input[bool]]:
         """
-        Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud
-        Interconnect feature). Not currently available publicly.
+        Field to indicate if a router is dedicated to use with encrypted
+        Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
+        Not currently available publicly.
         """
         return pulumi.get(self, "encrypted_interconnect_router")
 
@@ -165,8 +167,9 @@ class _RouterState:
                Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: User-specified description for the IP range.
-        :param pulumi.Input[bool] encrypted_interconnect_router: Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud
-               Interconnect feature). Not currently available publicly.
+        :param pulumi.Input[bool] encrypted_interconnect_router: Field to indicate if a router is dedicated to use with encrypted
+               Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
+               Not currently available publicly.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -239,8 +242,9 @@ class _RouterState:
     @pulumi.getter(name="encryptedInterconnectRouter")
     def encrypted_interconnect_router(self) -> Optional[pulumi.Input[bool]]:
         """
-        Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud
-        Interconnect feature). Not currently available publicly.
+        Field to indicate if a router is dedicated to use with encrypted
+        Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
+        Not currently available publicly.
         """
         return pulumi.get(self, "encrypted_interconnect_router")
 
@@ -401,8 +405,9 @@ class Router(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['RouterBgpArgs']] bgp: BGP information specific to this router.
                Structure is documented below.
         :param pulumi.Input[str] description: User-specified description for the IP range.
-        :param pulumi.Input[bool] encrypted_interconnect_router: Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud
-               Interconnect feature). Not currently available publicly.
+        :param pulumi.Input[bool] encrypted_interconnect_router: Field to indicate if a router is dedicated to use with encrypted
+               Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
+               Not currently available publicly.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -563,8 +568,9 @@ class Router(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: User-specified description for the IP range.
-        :param pulumi.Input[bool] encrypted_interconnect_router: Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud
-               Interconnect feature). Not currently available publicly.
+        :param pulumi.Input[bool] encrypted_interconnect_router: Field to indicate if a router is dedicated to use with encrypted
+               Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
+               Not currently available publicly.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -621,8 +627,9 @@ class Router(pulumi.CustomResource):
     @pulumi.getter(name="encryptedInterconnectRouter")
     def encrypted_interconnect_router(self) -> pulumi.Output[Optional[bool]]:
         """
-        Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud
-        Interconnect feature). Not currently available publicly.
+        Field to indicate if a router is dedicated to use with encrypted
+        Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
+        Not currently available publicly.
         """
         return pulumi.get(self, "encrypted_interconnect_router")
 

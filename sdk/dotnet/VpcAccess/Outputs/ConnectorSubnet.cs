@@ -13,7 +13,14 @@ namespace Pulumi.Gcp.VpcAccess.Outputs
     [OutputType]
     public sealed class ConnectorSubnet
     {
+        /// <summary>
+        /// Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
+        /// https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
+        /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.
+        /// </summary>
         public readonly string? ProjectId;
 
         [OutputConstructor]

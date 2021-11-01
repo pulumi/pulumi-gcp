@@ -125,7 +125,8 @@ export class Connector extends pulumi.CustomResource {
      */
     public readonly minThroughput!: pulumi.Output<number | undefined>;
     /**
-     * The name of the resource (Max 25 characters).
+     * Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
+     * https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -151,6 +152,7 @@ export class Connector extends pulumi.CustomResource {
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
      * The subnet in which to house the connector
+     * Structure is documented below.
      */
     public readonly subnet!: pulumi.Output<outputs.vpcaccess.ConnectorSubnet | undefined>;
 
@@ -232,7 +234,8 @@ export interface ConnectorState {
      */
     minThroughput?: pulumi.Input<number>;
     /**
-     * The name of the resource (Max 25 characters).
+     * Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
+     * https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
      */
     name?: pulumi.Input<string>;
     /**
@@ -258,6 +261,7 @@ export interface ConnectorState {
     state?: pulumi.Input<string>;
     /**
      * The subnet in which to house the connector
+     * Structure is documented below.
      */
     subnet?: pulumi.Input<inputs.vpcaccess.ConnectorSubnet>;
 }
@@ -291,7 +295,8 @@ export interface ConnectorArgs {
      */
     minThroughput?: pulumi.Input<number>;
     /**
-     * The name of the resource (Max 25 characters).
+     * Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
+     * https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
      */
     name?: pulumi.Input<string>;
     /**
@@ -309,6 +314,7 @@ export interface ConnectorArgs {
     region?: pulumi.Input<string>;
     /**
      * The subnet in which to house the connector
+     * Structure is documented below.
      */
     subnet?: pulumi.Input<inputs.vpcaccess.ConnectorSubnet>;
 }

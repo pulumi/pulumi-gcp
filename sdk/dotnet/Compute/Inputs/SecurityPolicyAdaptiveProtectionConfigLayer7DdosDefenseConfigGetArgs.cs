@@ -13,13 +13,13 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ) If set to true, enables CAAP for L7 DDoS detection.
+        /// If set to true, enables CAAP for L7 DDoS detection.
         /// </summary>
         [Input("enable")]
         public Input<bool>? Enable { get; set; }
 
         /// <summary>
-        /// ) Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+        /// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
         /// </summary>
         [Input("ruleVisibility")]
         public Input<string>? RuleVisibility { get; set; }

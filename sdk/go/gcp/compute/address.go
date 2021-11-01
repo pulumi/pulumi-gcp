@@ -264,6 +264,9 @@ type Address struct {
 	// * IPSEC_INTERCONNECT for addresses created from a private IP range
 	//   that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
 	//   Interconnect configuration. These addresses are regional resources.
+	// * PRIVATE_SERVICE_CONNECT for a private network address that is used
+	//   to configure Private Service Connect. Only global internal addresses
+	//   can use this purpose.
 	//   This should only be set when using an Internal address.
 	Purpose pulumi.StringOutput `pulumi:"purpose"`
 	// The Region in which the created address should reside.
@@ -355,6 +358,9 @@ type addressState struct {
 	// * IPSEC_INTERCONNECT for addresses created from a private IP range
 	//   that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
 	//   Interconnect configuration. These addresses are regional resources.
+	// * PRIVATE_SERVICE_CONNECT for a private network address that is used
+	//   to configure Private Service Connect. Only global internal addresses
+	//   can use this purpose.
 	//   This should only be set when using an Internal address.
 	Purpose *string `pulumi:"purpose"`
 	// The Region in which the created address should reside.
@@ -418,6 +424,9 @@ type AddressState struct {
 	// * IPSEC_INTERCONNECT for addresses created from a private IP range
 	//   that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
 	//   Interconnect configuration. These addresses are regional resources.
+	// * PRIVATE_SERVICE_CONNECT for a private network address that is used
+	//   to configure Private Service Connect. Only global internal addresses
+	//   can use this purpose.
 	//   This should only be set when using an Internal address.
 	Purpose pulumi.StringPtrInput
 	// The Region in which the created address should reside.
@@ -481,6 +490,9 @@ type addressArgs struct {
 	// * IPSEC_INTERCONNECT for addresses created from a private IP range
 	//   that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
 	//   Interconnect configuration. These addresses are regional resources.
+	// * PRIVATE_SERVICE_CONNECT for a private network address that is used
+	//   to configure Private Service Connect. Only global internal addresses
+	//   can use this purpose.
 	//   This should only be set when using an Internal address.
 	Purpose *string `pulumi:"purpose"`
 	// The Region in which the created address should reside.
@@ -537,6 +549,9 @@ type AddressArgs struct {
 	// * IPSEC_INTERCONNECT for addresses created from a private IP range
 	//   that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
 	//   Interconnect configuration. These addresses are regional resources.
+	// * PRIVATE_SERVICE_CONNECT for a private network address that is used
+	//   to configure Private Service Connect. Only global internal addresses
+	//   can use this purpose.
 	//   This should only be set when using an Internal address.
 	Purpose pulumi.StringPtrInput
 	// The Region in which the created address should reside.

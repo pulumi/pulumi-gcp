@@ -18,18 +18,19 @@ namespace Pulumi.Gcp.Composer.Outputs
         /// <summary>
         /// The configuration settings for Cloud SQL instance used internally
         /// by Apache Airflow software. This field is supported for Cloud
-        /// Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        /// Composer environments in versions composer-1.*.*-airflow-*.*.*. Structure is documented below.
         /// </summary>
         public readonly Outputs.EnvironmentConfigDatabaseConfig? DatabaseConfig;
         /// <summary>
         /// The encryption options for the Cloud Composer environment and its
         /// dependencies. This field is supported for Cloud Composer environments in
-        /// versions composer-1.*.*-airflow-*.*.*.
+        /// versions composer-1.*.*-airflow-*.*.*. Structure is documented below.
         /// </summary>
         public readonly Outputs.EnvironmentConfigEncryptionConfig? EncryptionConfig;
+        public readonly string? EnvironmentSize;
         public readonly string? GkeCluster;
         /// <summary>
-        /// The configuration settings for Cloud Composer maintenance window.
+        /// The configuration settings for Cloud Composer maintenance window. Structure is documented below.
         /// </summary>
         public readonly Outputs.EnvironmentConfigMaintenanceWindow? MaintenanceWindow;
         /// <summary>
@@ -54,9 +55,15 @@ namespace Pulumi.Gcp.Composer.Outputs
         /// <summary>
         /// The configuration settings for the Airflow web server App Engine instance.
         /// This field is supported for Cloud Composer environments in versions
-        /// composer-1.*.*-airflow-*.*.*.
+        /// composer-1.*.*-airflow-*.*.*. Structure is documented below.
         /// </summary>
         public readonly Outputs.EnvironmentConfigWebServerConfig? WebServerConfig;
+        /// <summary>
+        /// The network-level access control policy for the Airflow web server.
+        /// If unspecified, no network-level access restrictions will be applied.
+        /// This field is supported for Cloud Composer environments in versions
+        /// composer-1.*.*-airflow-*.*.*.
+        /// </summary>
         public readonly Outputs.EnvironmentConfigWebServerNetworkAccessControl? WebServerNetworkAccessControl;
         /// <summary>
         /// The Kubernetes workloads configuration for GKE cluster associated with the
@@ -74,6 +81,8 @@ namespace Pulumi.Gcp.Composer.Outputs
             Outputs.EnvironmentConfigDatabaseConfig? databaseConfig,
 
             Outputs.EnvironmentConfigEncryptionConfig? encryptionConfig,
+
+            string? environmentSize,
 
             string? gkeCluster,
 
@@ -97,6 +106,7 @@ namespace Pulumi.Gcp.Composer.Outputs
             DagGcsPrefix = dagGcsPrefix;
             DatabaseConfig = databaseConfig;
             EncryptionConfig = encryptionConfig;
+            EnvironmentSize = environmentSize;
             GkeCluster = gkeCluster;
             MaintenanceWindow = maintenanceWindow;
             NodeConfig = nodeConfig;

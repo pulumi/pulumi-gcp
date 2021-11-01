@@ -31,6 +31,10 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         [Input("value")]
         public Input<string>? Value { get; set; }
 
+        /// <summary>
+        /// Source for the environment variable's value. Only supports secret_key_ref.
+        /// Structure is documented below.
+        /// </summary>
         [Input("valueFrom")]
         public Input<Inputs.ServiceTemplateSpecContainerEnvValueFromArgs>? ValueFrom { get; set; }
 

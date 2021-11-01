@@ -47,7 +47,7 @@ namespace Pulumi.Gcp.Sql
     /// }
     /// ```
     /// 
-    /// Example creating a Cloud IAM User.
+    /// Example creating a Cloud IAM User. (For MySQL, specify `cloudsql_iam_authentication`)
     /// 
     /// ```csharp
     /// using Pulumi;

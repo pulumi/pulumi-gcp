@@ -227,12 +227,12 @@ import (
 type InstanceTemplate struct {
 	pulumi.CustomResourceState
 
-	// Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM.
+	// Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
 	AdvancedMachineFeatures InstanceTemplateAdvancedMachineFeaturesOutput `pulumi:"advancedMachineFeatures"`
 	// Whether to allow sending and receiving of
 	// packets with non-matching source or destination IPs. This defaults to false.
 	CanIpForward pulumi.BoolPtrOutput `pulumi:"canIpForward"`
-	// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+	// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
 	ConfidentialInstanceConfig InstanceTemplateConfidentialInstanceConfigOutput `pulumi:"confidentialInstanceConfig"`
 	// A brief description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -347,12 +347,12 @@ func GetInstanceTemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InstanceTemplate resources.
 type instanceTemplateState struct {
-	// Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM.
+	// Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
 	AdvancedMachineFeatures *InstanceTemplateAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
 	// Whether to allow sending and receiving of
 	// packets with non-matching source or destination IPs. This defaults to false.
 	CanIpForward *bool `pulumi:"canIpForward"`
-	// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+	// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
 	ConfidentialInstanceConfig *InstanceTemplateConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
 	// A brief description of this resource.
 	Description *string `pulumi:"description"`
@@ -433,12 +433,12 @@ type instanceTemplateState struct {
 }
 
 type InstanceTemplateState struct {
-	// Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM.
+	// Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
 	AdvancedMachineFeatures InstanceTemplateAdvancedMachineFeaturesPtrInput
 	// Whether to allow sending and receiving of
 	// packets with non-matching source or destination IPs. This defaults to false.
 	CanIpForward pulumi.BoolPtrInput
-	// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+	// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
 	ConfidentialInstanceConfig InstanceTemplateConfidentialInstanceConfigPtrInput
 	// A brief description of this resource.
 	Description pulumi.StringPtrInput
@@ -523,12 +523,12 @@ func (InstanceTemplateState) ElementType() reflect.Type {
 }
 
 type instanceTemplateArgs struct {
-	// Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM.
+	// Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
 	AdvancedMachineFeatures *InstanceTemplateAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
 	// Whether to allow sending and receiving of
 	// packets with non-matching source or destination IPs. This defaults to false.
 	CanIpForward *bool `pulumi:"canIpForward"`
-	// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+	// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
 	ConfidentialInstanceConfig *InstanceTemplateConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
 	// A brief description of this resource.
 	Description *string `pulumi:"description"`
@@ -604,12 +604,12 @@ type instanceTemplateArgs struct {
 
 // The set of arguments for constructing a InstanceTemplate resource.
 type InstanceTemplateArgs struct {
-	// Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM.
+	// Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
 	AdvancedMachineFeatures InstanceTemplateAdvancedMachineFeaturesPtrInput
 	// Whether to allow sending and receiving of
 	// packets with non-matching source or destination IPs. This defaults to false.
 	CanIpForward pulumi.BoolPtrInput
-	// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+	// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
 	ConfidentialInstanceConfig InstanceTemplateConfidentialInstanceConfigPtrInput
 	// A brief description of this resource.
 	Description pulumi.StringPtrInput

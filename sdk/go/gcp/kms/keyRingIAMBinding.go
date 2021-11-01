@@ -256,7 +256,7 @@ import (
 type KeyRingIAMBinding struct {
 	pulumi.CustomResourceState
 
-	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition KeyRingIAMBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the key ring's IAM policy.
@@ -311,7 +311,7 @@ func GetKeyRingIAMBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KeyRingIAMBinding resources.
 type keyRingIAMBindingState struct {
-	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *KeyRingIAMBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the key ring's IAM policy.
@@ -329,7 +329,7 @@ type keyRingIAMBindingState struct {
 }
 
 type KeyRingIAMBindingState struct {
-	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition KeyRingIAMBindingConditionPtrInput
 	// (Computed) The etag of the key ring's IAM policy.
@@ -351,7 +351,7 @@ func (KeyRingIAMBindingState) ElementType() reflect.Type {
 }
 
 type keyRingIAMBindingArgs struct {
-	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *KeyRingIAMBindingCondition `pulumi:"condition"`
 	// The key ring ID, in the form
@@ -368,7 +368,7 @@ type keyRingIAMBindingArgs struct {
 
 // The set of arguments for constructing a KeyRingIAMBinding resource.
 type KeyRingIAMBindingArgs struct {
-	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition KeyRingIAMBindingConditionPtrInput
 	// The key ring ID, in the form

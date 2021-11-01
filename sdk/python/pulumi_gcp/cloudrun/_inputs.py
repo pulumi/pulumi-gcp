@@ -1038,6 +1038,8 @@ class ServiceTemplateSpecArgs:
                It is expected
                that the system will manipulate this based on routability and load.
         :param pulumi.Input[int] timeout_seconds: TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecVolumeArgs']]] volumes: Volume represents a named volume in a container.
+               Structure is documented below.
         """
         if container_concurrency is not None:
             pulumi.set(__self__, "container_concurrency", container_concurrency)
@@ -1131,6 +1133,10 @@ class ServiceTemplateSpecArgs:
     @property
     @pulumi.getter
     def volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecVolumeArgs']]]]:
+        """
+        Volume represents a named volume in a container.
+        Structure is documented below.
+        """
         return pulumi.get(self, "volumes")
 
     @volumes.setter
@@ -1189,6 +1195,9 @@ class ServiceTemplateSpecContainerArgs:
         :param pulumi.Input['ServiceTemplateSpecContainerResourcesArgs'] resources: Compute Resources required by this container. Used to set values such as max memory
                More info:
                https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerVolumeMountArgs']]] volume_mounts: Volume to mount into the container's filesystem.
+               Only supports SecretVolumeSources.
                Structure is documented below.
         :param pulumi.Input[str] working_dir: -
                (Optional, Deprecated)
@@ -1339,6 +1348,11 @@ class ServiceTemplateSpecContainerArgs:
     @property
     @pulumi.getter(name="volumeMounts")
     def volume_mounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerVolumeMountArgs']]]]:
+        """
+        Volume to mount into the container's filesystem.
+        Only supports SecretVolumeSources.
+        Structure is documented below.
+        """
         return pulumi.get(self, "volume_mounts")
 
     @volume_mounts.setter
@@ -1378,6 +1392,8 @@ class ServiceTemplateSpecContainerEnvArgs:
                references will never be expanded, regardless of whether the variable
                exists or not.
                Defaults to "".
+        :param pulumi.Input['ServiceTemplateSpecContainerEnvValueFromArgs'] value_from: Source for the environment variable's value. Only supports secret_key_ref.
+               Structure is documented below.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -1420,6 +1436,10 @@ class ServiceTemplateSpecContainerEnvArgs:
     @property
     @pulumi.getter(name="valueFrom")
     def value_from(self) -> Optional[pulumi.Input['ServiceTemplateSpecContainerEnvValueFromArgs']]:
+        """
+        Source for the environment variable's value. Only supports secret_key_ref.
+        Structure is documented below.
+        """
         return pulumi.get(self, "value_from")
 
     @value_from.setter

@@ -2811,7 +2811,7 @@ class TableExternalDataConfiguration(dict):
         :param 'TableExternalDataConfigurationHivePartitioningOptionsArgs' hive_partitioning_options: When set, configures hive partitioning
                support. Not all storage formats support hive partitioning -- requesting hive
                partitioning on an unsupported format will lead to an error, as will providing
-               an invalid specification.
+               an invalid specification. Structure is documented below.
         :param bool ignore_unknown_values: Indicates if BigQuery should
                allow extra values that are not represented in the table schema.
                If true, the extra values are ignored. If false, records with
@@ -2915,7 +2915,7 @@ class TableExternalDataConfiguration(dict):
         When set, configures hive partitioning
         support. Not all storage formats support hive partitioning -- requesting hive
         partitioning on an unsupported format will lead to an error, as will providing
-        an invalid specification.
+        an invalid specification. Structure is documented below.
         """
         return pulumi.get(self, "hive_partitioning_options")
 

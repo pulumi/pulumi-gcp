@@ -14,15 +14,19 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class GetClusterNodePoolNodeConfigGuestAcceleratorResult
     {
         public readonly int Count;
+        public readonly string GpuPartitionSize;
         public readonly string Type;
 
         [OutputConstructor]
         private GetClusterNodePoolNodeConfigGuestAcceleratorResult(
             int count,
 
+            string gpuPartitionSize,
+
             string type)
         {
             Count = count;
+            GpuPartitionSize = gpuPartitionSize;
             Type = type;
         }
     }

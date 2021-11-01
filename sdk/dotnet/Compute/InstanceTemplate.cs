@@ -220,7 +220,7 @@ namespace Pulumi.Gcp.Compute
     public partial class InstanceTemplate : Pulumi.CustomResource
     {
         /// <summary>
-        /// Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM.
+        /// Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
         /// </summary>
         [Output("advancedMachineFeatures")]
         public Output<Outputs.InstanceTemplateAdvancedMachineFeatures> AdvancedMachineFeatures { get; private set; } = null!;
@@ -233,7 +233,7 @@ namespace Pulumi.Gcp.Compute
         public Output<bool?> CanIpForward { get; private set; } = null!;
 
         /// <summary>
-        /// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+        /// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
         /// </summary>
         [Output("confidentialInstanceConfig")]
         public Output<Outputs.InstanceTemplateConfidentialInstanceConfig> ConfidentialInstanceConfig { get; private set; } = null!;
@@ -457,7 +457,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class InstanceTemplateArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM.
+        /// Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
         /// </summary>
         [Input("advancedMachineFeatures")]
         public Input<Inputs.InstanceTemplateAdvancedMachineFeaturesArgs>? AdvancedMachineFeatures { get; set; }
@@ -470,7 +470,7 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? CanIpForward { get; set; }
 
         /// <summary>
-        /// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+        /// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
         /// </summary>
         [Input("confidentialInstanceConfig")]
         public Input<Inputs.InstanceTemplateConfidentialInstanceConfigArgs>? ConfidentialInstanceConfig { get; set; }
@@ -673,7 +673,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class InstanceTemplateState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM.
+        /// Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
         /// </summary>
         [Input("advancedMachineFeatures")]
         public Input<Inputs.InstanceTemplateAdvancedMachineFeaturesGetArgs>? AdvancedMachineFeatures { get; set; }
@@ -686,7 +686,7 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? CanIpForward { get; set; }
 
         /// <summary>
-        /// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+        /// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
         /// </summary>
         [Input("confidentialInstanceConfig")]
         public Input<Inputs.InstanceTemplateConfidentialInstanceConfigGetArgs>? ConfidentialInstanceConfig { get; set; }

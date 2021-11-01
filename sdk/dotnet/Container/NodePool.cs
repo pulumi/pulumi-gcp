@@ -58,14 +58,14 @@ namespace Pulumi.Gcp.Container
     /// 
     /// ## Import
     /// 
-    /// Node pools can be imported using the `project`, `zone`, `cluster` and `name`. If the project is omitted, the default provider value will be used. Examples
+    /// Node pools can be imported using the `project`, `location`, `cluster` and `name`. If the project is omitted, the project value in the provider configuration will be used. Examples
     /// 
     /// ```sh
     ///  $ pulumi import gcp:container/nodePool:NodePool mainpool my-gcp-project/us-east1-a/my-cluster/main-pool
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:container/nodePool:NodePool mainpool us-east1-a/my-cluster/main-pool
+    ///  $ pulumi import gcp:container/nodePool:NodePool mainpool us-east1/my-cluster/main-pool
     /// ```
     /// </summary>
     [GcpResourceType("gcp:container/nodePool:NodePool")]
@@ -79,7 +79,7 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.NodePoolAutoscaling?> Autoscaling { get; private set; } = null!;
 
         /// <summary>
-        /// The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
+        /// The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
         /// </summary>
         [Output("cluster")]
         public Output<string> Cluster { get; private set; } = null!;
@@ -147,7 +147,7 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.NodePoolNetworkConfig> NetworkConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Parameters used in creating the default node pool. See
+        /// Parameters used in creating the node pool. See
         /// gcp.container.Cluster for schema.
         /// </summary>
         [Output("nodeConfig")]
@@ -182,7 +182,7 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// Specify node upgrade settings to change how many nodes GKE attempts to
         /// upgrade at once. The number of nodes upgraded simultaneously is the sum of `max_surge` and `max_unavailable`.
-        /// The maximum number of nodes upgraded simultaneously is limited to 20.
+        /// The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
         /// </summary>
         [Output("upgradeSettings")]
         public Output<Outputs.NodePoolUpgradeSettings> UpgradeSettings { get; private set; } = null!;
@@ -252,7 +252,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.NodePoolAutoscalingArgs>? Autoscaling { get; set; }
 
         /// <summary>
-        /// The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
+        /// The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
         /// </summary>
         [Input("cluster", required: true)]
         public Input<string> Cluster { get; set; } = null!;
@@ -314,7 +314,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.NodePoolNetworkConfigArgs>? NetworkConfig { get; set; }
 
         /// <summary>
-        /// Parameters used in creating the default node pool. See
+        /// Parameters used in creating the node pool. See
         /// gcp.container.Cluster for schema.
         /// </summary>
         [Input("nodeConfig")]
@@ -352,7 +352,7 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// Specify node upgrade settings to change how many nodes GKE attempts to
         /// upgrade at once. The number of nodes upgraded simultaneously is the sum of `max_surge` and `max_unavailable`.
-        /// The maximum number of nodes upgraded simultaneously is limited to 20.
+        /// The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
         /// </summary>
         [Input("upgradeSettings")]
         public Input<Inputs.NodePoolUpgradeSettingsArgs>? UpgradeSettings { get; set; }
@@ -383,7 +383,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.NodePoolAutoscalingGetArgs>? Autoscaling { get; set; }
 
         /// <summary>
-        /// The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
+        /// The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
         /// </summary>
         [Input("cluster")]
         public Input<string>? Cluster { get; set; }
@@ -457,7 +457,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.NodePoolNetworkConfigGetArgs>? NetworkConfig { get; set; }
 
         /// <summary>
-        /// Parameters used in creating the default node pool. See
+        /// Parameters used in creating the node pool. See
         /// gcp.container.Cluster for schema.
         /// </summary>
         [Input("nodeConfig")]
@@ -498,7 +498,7 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// Specify node upgrade settings to change how many nodes GKE attempts to
         /// upgrade at once. The number of nodes upgraded simultaneously is the sum of `max_surge` and `max_unavailable`.
-        /// The maximum number of nodes upgraded simultaneously is limited to 20.
+        /// The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
         /// </summary>
         [Input("upgradeSettings")]
         public Input<Inputs.NodePoolUpgradeSettingsGetArgs>? UpgradeSettings { get; set; }

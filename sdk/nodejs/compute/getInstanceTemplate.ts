@@ -80,7 +80,7 @@ export interface GetInstanceTemplateResult {
      */
     readonly canIpForward: boolean;
     /**
-     * Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+     * Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
      */
     readonly confidentialInstanceConfigs: outputs.compute.GetInstanceTemplateConfidentialInstanceConfig[];
     /**

@@ -14,8 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterMonitoringConfig
     {
         /// <summary>
-        /// The GKE components exposing logs. Only `SYSTEM_COMPONENTS`
-        /// is supported.
+        /// The GKE components exposing logs. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported.
         /// </summary>
         public readonly ImmutableArray<string> EnableComponents;
 

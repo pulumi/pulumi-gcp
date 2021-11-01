@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class SecurityPolicyAdaptiveProtectionConfigGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ) Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+        /// Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
         /// </summary>
         [Input("layer7DdosDefenseConfig")]
         public Input<Inputs.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigGetArgs>? Layer7DdosDefenseConfig { get; set; }

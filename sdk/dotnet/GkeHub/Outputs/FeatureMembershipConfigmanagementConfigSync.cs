@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.GkeHub.Outputs
     {
         /// <summary>
         /// -
-        /// (Optional)
+        /// (Optional) Structure is documented below.
         /// </summary>
         public readonly Outputs.FeatureMembershipConfigmanagementConfigSyncGit? Git;
         /// <summary>

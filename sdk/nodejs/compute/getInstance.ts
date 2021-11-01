@@ -151,7 +151,7 @@ export interface GetInstanceResult {
     readonly reservationAffinities: outputs.compute.GetInstanceReservationAffinity[];
     readonly resourcePolicies: string[];
     /**
-     * The scheduling strategy being used by the instance.
+     * The scheduling strategy being used by the instance. Structure is documented below
      */
     readonly schedulings: outputs.compute.GetInstanceScheduling[];
     /**

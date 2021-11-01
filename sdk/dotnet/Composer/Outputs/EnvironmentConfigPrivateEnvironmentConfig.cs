@@ -26,6 +26,10 @@ namespace Pulumi.Gcp.Composer.Outputs
         /// composer-1.*.*-airflow-*.*.*.
         /// </summary>
         public readonly bool? EnablePrivateEndpoint;
+        /// <summary>
+        /// When enabled, IPs from public (non-RFC1918) ranges can be used for
+        /// `ip_allocation_policy.cluster_ipv4_cidr_block` and `ip_allocation_policy.service_ipv4_cidr_block`.
+        /// </summary>
         public readonly bool? EnablePrivatelyUsedPublicIps;
         /// <summary>
         /// The IP range in CIDR notation to use for the hosted master network. This range is used

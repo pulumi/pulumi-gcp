@@ -113,7 +113,7 @@ type LookupInstanceResult struct {
 	Project                   *string                               `pulumi:"project"`
 	ReservationAffinities     []GetInstanceReservationAffinity      `pulumi:"reservationAffinities"`
 	ResourcePolicies          []string                              `pulumi:"resourcePolicies"`
-	// The scheduling strategy being used by the instance.
+	// The scheduling strategy being used by the instance. Structure is documented below
 	Schedulings []GetInstanceScheduling `pulumi:"schedulings"`
 	// The scratch disks attached to the instance. Structure is documented below.
 	ScratchDisks []GetInstanceScratchDisk `pulumi:"scratchDisks"`
@@ -309,7 +309,7 @@ func (o LookupInstanceResultOutput) ResourcePolicies() pulumi.StringArrayOutput 
 	return o.ApplyT(func(v LookupInstanceResult) []string { return v.ResourcePolicies }).(pulumi.StringArrayOutput)
 }
 
-// The scheduling strategy being used by the instance.
+// The scheduling strategy being used by the instance. Structure is documented below
 func (o LookupInstanceResultOutput) Schedulings() GetInstanceSchedulingArrayOutput {
 	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceScheduling { return v.Schedulings }).(GetInstanceSchedulingArrayOutput)
 }

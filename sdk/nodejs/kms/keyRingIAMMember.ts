@@ -176,7 +176,7 @@ export class KeyRingIAMMember extends pulumi.CustomResource {
     }
 
     /**
-     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
     public readonly condition!: pulumi.Output<outputs.kms.KeyRingIAMMemberCondition | undefined>;
@@ -246,7 +246,7 @@ export class KeyRingIAMMember extends pulumi.CustomResource {
  */
 export interface KeyRingIAMMemberState {
     /**
-     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
     condition?: pulumi.Input<inputs.kms.KeyRingIAMMemberCondition>;
@@ -275,7 +275,7 @@ export interface KeyRingIAMMemberState {
  */
 export interface KeyRingIAMMemberArgs {
     /**
-     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
     condition?: pulumi.Input<inputs.kms.KeyRingIAMMemberCondition>;

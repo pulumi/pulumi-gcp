@@ -159,7 +159,7 @@ export class InstanceGroup extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The named port configuration. See the section below
-     * for details on configuration.
+     * for details on configuration. Structure is documented below.
      */
     public readonly namedPorts!: pulumi.Output<outputs.compute.InstanceGroupNamedPort[] | undefined>;
     /**
@@ -249,7 +249,7 @@ export interface InstanceGroupState {
     name?: pulumi.Input<string>;
     /**
      * The named port configuration. See the section below
-     * for details on configuration.
+     * for details on configuration. Structure is documented below.
      */
     namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupNamedPort>[]>;
     /**
@@ -299,7 +299,7 @@ export interface InstanceGroupArgs {
     name?: pulumi.Input<string>;
     /**
      * The named port configuration. See the section below
-     * for details on configuration.
+     * for details on configuration. Structure is documented below.
      */
     namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupNamedPort>[]>;
     /**

@@ -20,6 +20,12 @@ namespace Pulumi.Gcp.Composer.Inputs
         [Input("diskSizeGb")]
         public Input<int>? DiskSizeGb { get; set; }
 
+        /// <summary>
+        /// Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines
+        /// nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for
+        /// all destination addresses, except between pods traffic.
+        /// See the [documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent).
+        /// </summary>
         [Input("enableIpMasqAgent")]
         public Input<bool>? EnableIpMasqAgent { get; set; }
 
@@ -118,8 +124,8 @@ namespace Pulumi.Gcp.Composer.Inputs
         /// supported for Cloud Composer environments in versions
         /// composer-1.*.*-airflow-*.*.*.
         /// </summary>
-        [Input("zone", required: true)]
-        public Input<string> Zone { get; set; } = null!;
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
 
         public EnvironmentConfigNodeConfigGetArgs()
         {

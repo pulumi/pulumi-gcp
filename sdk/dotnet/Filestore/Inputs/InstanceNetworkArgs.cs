@@ -12,6 +12,13 @@ namespace Pulumi.Gcp.Filestore.Inputs
 
     public sealed class InstanceNetworkArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The network connect mode of the Filestore instance.
+        /// If not provided, the connect mode defaults to
+        /// DIRECT_PEERING.
+        /// Default value is `DIRECT_PEERING`.
+        /// Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
+        /// </summary>
         [Input("connectMode")]
         public Input<string>? ConnectMode { get; set; }
 

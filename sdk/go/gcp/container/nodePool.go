@@ -66,14 +66,14 @@ import (
 //
 // ## Import
 //
-// Node pools can be imported using the `project`, `zone`, `cluster` and `name`. If the project is omitted, the default provider value will be used. Examples
+// Node pools can be imported using the `project`, `location`, `cluster` and `name`. If the project is omitted, the project value in the provider configuration will be used. Examples
 //
 // ```sh
 //  $ pulumi import gcp:container/nodePool:NodePool mainpool my-gcp-project/us-east1-a/my-cluster/main-pool
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:container/nodePool:NodePool mainpool us-east1-a/my-cluster/main-pool
+//  $ pulumi import gcp:container/nodePool:NodePool mainpool us-east1/my-cluster/main-pool
 // ```
 type NodePool struct {
 	pulumi.CustomResourceState
@@ -81,7 +81,7 @@ type NodePool struct {
 	// Configuration required by cluster autoscaler to adjust
 	// the size of the node pool to the current cluster usage. Structure is documented below.
 	Autoscaling NodePoolAutoscalingPtrOutput `pulumi:"autoscaling"`
-	// The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
+	// The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
 	Cluster pulumi.StringOutput `pulumi:"cluster"`
 	// The initial number of nodes for the pool. In
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
@@ -113,7 +113,7 @@ type NodePool struct {
 	// The network configuration of the pool. See
 	// container.Cluster for schema.
 	NetworkConfig NodePoolNetworkConfigOutput `pulumi:"networkConfig"`
-	// Parameters used in creating the default node pool. See
+	// Parameters used in creating the node pool. See
 	// container.Cluster for schema.
 	NodeConfig NodePoolNodeConfigOutput `pulumi:"nodeConfig"`
 	// The number of nodes per instance group. This field can be used to
@@ -130,7 +130,7 @@ type NodePool struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Specify node upgrade settings to change how many nodes GKE attempts to
 	// upgrade at once. The number of nodes upgraded simultaneously is the sum of `maxSurge` and `maxUnavailable`.
-	// The maximum number of nodes upgraded simultaneously is limited to 20.
+	// The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
 	UpgradeSettings NodePoolUpgradeSettingsOutput `pulumi:"upgradeSettings"`
 	// The Kubernetes version for the nodes in this pool. Note that if this field
 	// and `autoUpgrade` are both specified, they will fight each other for what the node version should
@@ -176,7 +176,7 @@ type nodePoolState struct {
 	// Configuration required by cluster autoscaler to adjust
 	// the size of the node pool to the current cluster usage. Structure is documented below.
 	Autoscaling *NodePoolAutoscaling `pulumi:"autoscaling"`
-	// The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
+	// The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
 	Cluster *string `pulumi:"cluster"`
 	// The initial number of nodes for the pool. In
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
@@ -208,7 +208,7 @@ type nodePoolState struct {
 	// The network configuration of the pool. See
 	// container.Cluster for schema.
 	NetworkConfig *NodePoolNetworkConfig `pulumi:"networkConfig"`
-	// Parameters used in creating the default node pool. See
+	// Parameters used in creating the node pool. See
 	// container.Cluster for schema.
 	NodeConfig *NodePoolNodeConfig `pulumi:"nodeConfig"`
 	// The number of nodes per instance group. This field can be used to
@@ -225,7 +225,7 @@ type nodePoolState struct {
 	Project *string `pulumi:"project"`
 	// Specify node upgrade settings to change how many nodes GKE attempts to
 	// upgrade at once. The number of nodes upgraded simultaneously is the sum of `maxSurge` and `maxUnavailable`.
-	// The maximum number of nodes upgraded simultaneously is limited to 20.
+	// The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
 	UpgradeSettings *NodePoolUpgradeSettings `pulumi:"upgradeSettings"`
 	// The Kubernetes version for the nodes in this pool. Note that if this field
 	// and `autoUpgrade` are both specified, they will fight each other for what the node version should
@@ -240,7 +240,7 @@ type NodePoolState struct {
 	// Configuration required by cluster autoscaler to adjust
 	// the size of the node pool to the current cluster usage. Structure is documented below.
 	Autoscaling NodePoolAutoscalingPtrInput
-	// The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
+	// The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
 	Cluster pulumi.StringPtrInput
 	// The initial number of nodes for the pool. In
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
@@ -272,7 +272,7 @@ type NodePoolState struct {
 	// The network configuration of the pool. See
 	// container.Cluster for schema.
 	NetworkConfig NodePoolNetworkConfigPtrInput
-	// Parameters used in creating the default node pool. See
+	// Parameters used in creating the node pool. See
 	// container.Cluster for schema.
 	NodeConfig NodePoolNodeConfigPtrInput
 	// The number of nodes per instance group. This field can be used to
@@ -289,7 +289,7 @@ type NodePoolState struct {
 	Project pulumi.StringPtrInput
 	// Specify node upgrade settings to change how many nodes GKE attempts to
 	// upgrade at once. The number of nodes upgraded simultaneously is the sum of `maxSurge` and `maxUnavailable`.
-	// The maximum number of nodes upgraded simultaneously is limited to 20.
+	// The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
 	UpgradeSettings NodePoolUpgradeSettingsPtrInput
 	// The Kubernetes version for the nodes in this pool. Note that if this field
 	// and `autoUpgrade` are both specified, they will fight each other for what the node version should
@@ -308,7 +308,7 @@ type nodePoolArgs struct {
 	// Configuration required by cluster autoscaler to adjust
 	// the size of the node pool to the current cluster usage. Structure is documented below.
 	Autoscaling *NodePoolAutoscaling `pulumi:"autoscaling"`
-	// The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
+	// The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
 	Cluster string `pulumi:"cluster"`
 	// The initial number of nodes for the pool. In
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
@@ -338,7 +338,7 @@ type nodePoolArgs struct {
 	// The network configuration of the pool. See
 	// container.Cluster for schema.
 	NetworkConfig *NodePoolNetworkConfig `pulumi:"networkConfig"`
-	// Parameters used in creating the default node pool. See
+	// Parameters used in creating the node pool. See
 	// container.Cluster for schema.
 	NodeConfig *NodePoolNodeConfig `pulumi:"nodeConfig"`
 	// The number of nodes per instance group. This field can be used to
@@ -354,7 +354,7 @@ type nodePoolArgs struct {
 	Project *string `pulumi:"project"`
 	// Specify node upgrade settings to change how many nodes GKE attempts to
 	// upgrade at once. The number of nodes upgraded simultaneously is the sum of `maxSurge` and `maxUnavailable`.
-	// The maximum number of nodes upgraded simultaneously is limited to 20.
+	// The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
 	UpgradeSettings *NodePoolUpgradeSettings `pulumi:"upgradeSettings"`
 	// The Kubernetes version for the nodes in this pool. Note that if this field
 	// and `autoUpgrade` are both specified, they will fight each other for what the node version should
@@ -370,7 +370,7 @@ type NodePoolArgs struct {
 	// Configuration required by cluster autoscaler to adjust
 	// the size of the node pool to the current cluster usage. Structure is documented below.
 	Autoscaling NodePoolAutoscalingPtrInput
-	// The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
+	// The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
 	Cluster pulumi.StringInput
 	// The initial number of nodes for the pool. In
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
@@ -400,7 +400,7 @@ type NodePoolArgs struct {
 	// The network configuration of the pool. See
 	// container.Cluster for schema.
 	NetworkConfig NodePoolNetworkConfigPtrInput
-	// Parameters used in creating the default node pool. See
+	// Parameters used in creating the node pool. See
 	// container.Cluster for schema.
 	NodeConfig NodePoolNodeConfigPtrInput
 	// The number of nodes per instance group. This field can be used to
@@ -416,7 +416,7 @@ type NodePoolArgs struct {
 	Project pulumi.StringPtrInput
 	// Specify node upgrade settings to change how many nodes GKE attempts to
 	// upgrade at once. The number of nodes upgraded simultaneously is the sum of `maxSurge` and `maxUnavailable`.
-	// The maximum number of nodes upgraded simultaneously is limited to 20.
+	// The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
 	UpgradeSettings NodePoolUpgradeSettingsPtrInput
 	// The Kubernetes version for the nodes in this pool. Note that if this field
 	// and `autoUpgrade` are both specified, they will fight each other for what the node version should

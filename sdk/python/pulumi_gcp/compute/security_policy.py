@@ -22,7 +22,7 @@ class SecurityPolicyArgs:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]] = None):
         """
         The set of arguments for constructing a SecurityPolicy resource.
-        :param pulumi.Input['SecurityPolicyAdaptiveProtectionConfigArgs'] adaptive_protection_config: ) Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+        :param pulumi.Input['SecurityPolicyAdaptiveProtectionConfigArgs'] adaptive_protection_config: Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this rule. Max size is 64.
         :param pulumi.Input[str] name: The name of the security policy.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
@@ -46,7 +46,7 @@ class SecurityPolicyArgs:
     @pulumi.getter(name="adaptiveProtectionConfig")
     def adaptive_protection_config(self) -> Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigArgs']]:
         """
-        ) Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+        Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
         """
         return pulumi.get(self, "adaptive_protection_config")
 
@@ -118,7 +118,7 @@ class _SecurityPolicyState:
                  self_link: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SecurityPolicy resources.
-        :param pulumi.Input['SecurityPolicyAdaptiveProtectionConfigArgs'] adaptive_protection_config: ) Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+        :param pulumi.Input['SecurityPolicyAdaptiveProtectionConfigArgs'] adaptive_protection_config: Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this rule. Max size is 64.
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource.
         :param pulumi.Input[str] name: The name of the security policy.
@@ -127,7 +127,7 @@ class _SecurityPolicyState:
         :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]] rules: The set of rules that belong to this policy. There must always be a default
                rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
                security policy, a default rule with action "allow" will be added. Structure is documented below.
-        :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[str] self_link: The URI of the created resourc
         """
         if adaptive_protection_config is not None:
             pulumi.set(__self__, "adaptive_protection_config", adaptive_protection_config)
@@ -148,7 +148,7 @@ class _SecurityPolicyState:
     @pulumi.getter(name="adaptiveProtectionConfig")
     def adaptive_protection_config(self) -> Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigArgs']]:
         """
-        ) Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+        Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
         """
         return pulumi.get(self, "adaptive_protection_config")
 
@@ -223,7 +223,7 @@ class _SecurityPolicyState:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> Optional[pulumi.Input[str]]:
         """
-        The URI of the created resource.
+        The URI of the created resourc
         """
         return pulumi.get(self, "self_link")
 
@@ -280,25 +280,9 @@ class SecurityPolicy(pulumi.CustomResource):
         ])
         ```
 
-        ## Import
-
-        Security policies can be imported using any of the following formats
-
-        ```sh
-         $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy projects/{{project}}/global/securityPolicies/{{name}}
-        ```
-
-        ```sh
-         $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy {{project}}/{{name}}
-        ```
-
-        ```sh
-         $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy {{name}}
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['SecurityPolicyAdaptiveProtectionConfigArgs']] adaptive_protection_config: ) Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['SecurityPolicyAdaptiveProtectionConfigArgs']] adaptive_protection_config: Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this rule. Max size is 64.
         :param pulumi.Input[str] name: The name of the security policy.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
@@ -348,22 +332,6 @@ class SecurityPolicy(pulumi.CustomResource):
                 priority=2147483647,
             ),
         ])
-        ```
-
-        ## Import
-
-        Security policies can be imported using any of the following formats
-
-        ```sh
-         $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy projects/{{project}}/global/securityPolicies/{{name}}
-        ```
-
-        ```sh
-         $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy {{project}}/{{name}}
-        ```
-
-        ```sh
-         $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -429,7 +397,7 @@ class SecurityPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['SecurityPolicyAdaptiveProtectionConfigArgs']] adaptive_protection_config: ) Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['SecurityPolicyAdaptiveProtectionConfigArgs']] adaptive_protection_config: Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this rule. Max size is 64.
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource.
         :param pulumi.Input[str] name: The name of the security policy.
@@ -438,7 +406,7 @@ class SecurityPolicy(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]] rules: The set of rules that belong to this policy. There must always be a default
                rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
                security policy, a default rule with action "allow" will be added. Structure is documented below.
-        :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[str] self_link: The URI of the created resourc
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -457,7 +425,7 @@ class SecurityPolicy(pulumi.CustomResource):
     @pulumi.getter(name="adaptiveProtectionConfig")
     def adaptive_protection_config(self) -> pulumi.Output[Optional['outputs.SecurityPolicyAdaptiveProtectionConfig']]:
         """
-        ) Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+        Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
         """
         return pulumi.get(self, "adaptive_protection_config")
 
@@ -508,7 +476,7 @@ class SecurityPolicy(pulumi.CustomResource):
     @pulumi.getter(name="selfLink")
     def self_link(self) -> pulumi.Output[str]:
         """
-        The URI of the created resource.
+        The URI of the created resourc
         """
         return pulumi.get(self, "self_link")
 

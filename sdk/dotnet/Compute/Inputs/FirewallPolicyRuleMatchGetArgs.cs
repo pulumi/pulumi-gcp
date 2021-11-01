@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<Inputs.FirewallPolicyRuleMatchLayer4ConfigGetArgs>? _layer4Configs;
 
         /// <summary>
-        /// Pairs of IP protocols and ports that the rule should match.
+        /// Pairs of IP protocols and ports that the rule should match. Structure is documented below.
         /// </summary>
         public InputList<Inputs.FirewallPolicyRuleMatchLayer4ConfigGetArgs> Layer4Configs
         {

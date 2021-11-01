@@ -140,7 +140,8 @@ namespace Pulumi.Gcp.VpcAccess
         public Output<int?> MinThroughput { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the resource (Max 25 characters).
+        /// Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
+        /// https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -178,6 +179,7 @@ namespace Pulumi.Gcp.VpcAccess
 
         /// <summary>
         /// The subnet in which to house the connector
+        /// Structure is documented below.
         /// </summary>
         [Output("subnet")]
         public Output<Outputs.ConnectorSubnet?> Subnet { get; private set; } = null!;
@@ -265,7 +267,8 @@ namespace Pulumi.Gcp.VpcAccess
         public Input<int>? MinThroughput { get; set; }
 
         /// <summary>
-        /// The name of the resource (Max 25 characters).
+        /// Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
+        /// https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -291,6 +294,7 @@ namespace Pulumi.Gcp.VpcAccess
 
         /// <summary>
         /// The subnet in which to house the connector
+        /// Structure is documented below.
         /// </summary>
         [Input("subnet")]
         public Input<Inputs.ConnectorSubnetArgs>? Subnet { get; set; }
@@ -339,7 +343,8 @@ namespace Pulumi.Gcp.VpcAccess
         public Input<int>? MinThroughput { get; set; }
 
         /// <summary>
-        /// The name of the resource (Max 25 characters).
+        /// Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
+        /// https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -377,6 +382,7 @@ namespace Pulumi.Gcp.VpcAccess
 
         /// <summary>
         /// The subnet in which to house the connector
+        /// Structure is documented below.
         /// </summary>
         [Input("subnet")]
         public Input<Inputs.ConnectorSubnetGetArgs>? Subnet { get; set; }

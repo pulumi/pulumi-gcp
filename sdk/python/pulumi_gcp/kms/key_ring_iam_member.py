@@ -28,7 +28,7 @@ class KeyRingIAMMemberArgs:
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `kms.KeyRingIAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        :param pulumi.Input['KeyRingIAMMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input['KeyRingIAMMemberConditionArgs'] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         """
         pulumi.set(__self__, "key_ring_id", key_ring_id)
@@ -79,7 +79,7 @@ class KeyRingIAMMemberArgs:
     @pulumi.getter
     def condition(self) -> Optional[pulumi.Input['KeyRingIAMMemberConditionArgs']]:
         """
-        An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
         """
         return pulumi.get(self, "condition")
@@ -99,7 +99,7 @@ class _KeyRingIAMMemberState:
                  role: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering KeyRingIAMMember resources.
-        :param pulumi.Input['KeyRingIAMMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input['KeyRingIAMMemberConditionArgs'] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the key ring's IAM policy.
         :param pulumi.Input[str] key_ring_id: The key ring ID, in the form
@@ -125,7 +125,7 @@ class _KeyRingIAMMemberState:
     @pulumi.getter
     def condition(self) -> Optional[pulumi.Input['KeyRingIAMMemberConditionArgs']]:
         """
-        An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
         """
         return pulumi.get(self, "condition")
@@ -329,7 +329,7 @@ class KeyRingIAMMember(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['KeyRingIAMMemberConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[pulumi.InputType['KeyRingIAMMemberConditionArgs']] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] key_ring_id: The key ring ID, in the form
                `{project_id}/{location_name}/{key_ring_name}` or
@@ -541,7 +541,7 @@ class KeyRingIAMMember(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['KeyRingIAMMemberConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[pulumi.InputType['KeyRingIAMMemberConditionArgs']] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the key ring's IAM policy.
         :param pulumi.Input[str] key_ring_id: The key ring ID, in the form
@@ -567,7 +567,7 @@ class KeyRingIAMMember(pulumi.CustomResource):
     @pulumi.getter
     def condition(self) -> pulumi.Output[Optional['outputs.KeyRingIAMMemberCondition']]:
         """
-        An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
         """
         return pulumi.get(self, "condition")

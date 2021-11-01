@@ -94,7 +94,7 @@ type FirewallPolicyRule struct {
 	FirewallPolicy pulumi.StringOutput `pulumi:"firewallPolicy"`
 	// Type of the resource. Always `compute#firewallPolicyRule` for firewall policy rules
 	Kind pulumi.StringOutput `pulumi:"kind"`
-	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced. Structure is documented below.
 	Match FirewallPolicyRuleMatchOutput `pulumi:"match"`
 	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
 	Priority pulumi.IntOutput `pulumi:"priority"`
@@ -164,7 +164,7 @@ type firewallPolicyRuleState struct {
 	FirewallPolicy *string `pulumi:"firewallPolicy"`
 	// Type of the resource. Always `compute#firewallPolicyRule` for firewall policy rules
 	Kind *string `pulumi:"kind"`
-	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced. Structure is documented below.
 	Match *FirewallPolicyRuleMatch `pulumi:"match"`
 	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
 	Priority *int `pulumi:"priority"`
@@ -191,7 +191,7 @@ type FirewallPolicyRuleState struct {
 	FirewallPolicy pulumi.StringPtrInput
 	// Type of the resource. Always `compute#firewallPolicyRule` for firewall policy rules
 	Kind pulumi.StringPtrInput
-	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced. Structure is documented below.
 	Match FirewallPolicyRuleMatchPtrInput
 	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
 	Priority pulumi.IntPtrInput
@@ -220,7 +220,7 @@ type firewallPolicyRuleArgs struct {
 	EnableLogging *bool `pulumi:"enableLogging"`
 	// The firewall policy of the resource.
 	FirewallPolicy string `pulumi:"firewallPolicy"`
-	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced. Structure is documented below.
 	Match FirewallPolicyRuleMatch `pulumi:"match"`
 	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
 	Priority int `pulumi:"priority"`
@@ -244,7 +244,7 @@ type FirewallPolicyRuleArgs struct {
 	EnableLogging pulumi.BoolPtrInput
 	// The firewall policy of the resource.
 	FirewallPolicy pulumi.StringInput
-	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced. Structure is documented below.
 	Match FirewallPolicyRuleMatchInput
 	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
 	Priority pulumi.IntInput

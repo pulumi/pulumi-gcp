@@ -14,19 +14,19 @@ namespace Pulumi.Gcp.GkeHub.Outputs
     public sealed class FeatureMembershipConfigmanagement
     {
         /// <summary>
-        /// Binauthz configuration for the cluster.
+        /// Binauthz configuration for the cluster. Structure is documented below.
         /// </summary>
         public readonly Outputs.FeatureMembershipConfigmanagementBinauthz? Binauthz;
         /// <summary>
-        /// Config Sync configuration for the cluster.
+        /// Config Sync configuration for the cluster. Structure is documented below.
         /// </summary>
         public readonly Outputs.FeatureMembershipConfigmanagementConfigSync? ConfigSync;
         /// <summary>
-        /// Hierarchy Controller configuration for the cluster.
+        /// Hierarchy Controller configuration for the cluster. Structure is documented below.
         /// </summary>
         public readonly Outputs.FeatureMembershipConfigmanagementHierarchyController? HierarchyController;
         /// <summary>
-        /// Policy Controller configuration for the cluster.
+        /// Policy Controller configuration for the cluster. Structure is documented below.
         /// </summary>
         public readonly Outputs.FeatureMembershipConfigmanagementPolicyController? PolicyController;
         /// <summary>

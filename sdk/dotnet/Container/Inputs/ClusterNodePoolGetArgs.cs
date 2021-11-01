@@ -28,11 +28,6 @@ namespace Pulumi.Gcp.Container.Inputs
 
         [Input("instanceGroupUrls")]
         private InputList<string>? _instanceGroupUrls;
-
-        /// <summary>
-        /// List of instance group URLs which have been assigned
-        /// to the cluster.
-        /// </summary>
         public InputList<string> InstanceGroupUrls
         {
             get => _instanceGroupUrls ?? (_instanceGroupUrls = new InputList<string>());
@@ -56,8 +51,8 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<string>? NamePrefix { get; set; }
 
         /// <summary>
-        /// ) Configuration for
-        /// [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool.
+        /// Configuration for
+        /// [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
         /// </summary>
         [Input("networkConfig")]
         public Input<Inputs.ClusterNodePoolNetworkConfigGetArgs>? NetworkConfig { get; set; }

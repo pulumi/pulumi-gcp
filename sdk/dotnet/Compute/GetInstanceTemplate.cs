@@ -95,7 +95,7 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly bool CanIpForward;
         /// <summary>
-        /// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+        /// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceTemplateConfidentialInstanceConfigResult> ConfidentialInstanceConfigs;
         /// <summary>

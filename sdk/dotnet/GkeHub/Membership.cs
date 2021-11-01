@@ -65,7 +65,7 @@ namespace Pulumi.Gcp.GkeHub
     ///             InitialNodeCount = 1,
     ///             WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
     ///             {
-    ///                 IdentityNamespace = "my-project-name.svc.id.goog",
+    ///                 WorkloadPool = "my-project-name.svc.id.goog",
     ///             },
     ///         });
     ///         var membership = new Gcp.GkeHub.Membership("membership", new Gcp.GkeHub.MembershipArgs

@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         /// When set, configures hive partitioning
         /// support. Not all storage formats support hive partitioning -- requesting hive
         /// partitioning on an unsupported format will lead to an error, as will providing
-        /// an invalid specification.
+        /// an invalid specification. Structure is documented below.
         /// </summary>
         [Input("hivePartitioningOptions")]
         public Input<Inputs.TableExternalDataConfigurationHivePartitioningOptionsGetArgs>? HivePartitioningOptions { get; set; }

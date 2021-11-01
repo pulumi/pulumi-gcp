@@ -125,9 +125,11 @@ class BackendServiceArgs:
                types and may result in errors if used with the GA API.
                Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, and `GRPC`.
         :param pulumi.Input[str] security_policy: The security policy associated with this backend service.
-        :param pulumi.Input['BackendServiceSecuritySettingsArgs'] security_settings: The security settings that apply to this backend service. This field is applicable to either a regional backend service
-               with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED; or a global
-               backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+        :param pulumi.Input['BackendServiceSecuritySettingsArgs'] security_settings: The security settings that apply to this backend service. This field is applicable to either
+               a regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and
+               load_balancing_scheme set to INTERNAL_MANAGED; or a global backend service with the
+               load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+               Structure is documented below.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
                Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
@@ -502,9 +504,11 @@ class BackendServiceArgs:
     @pulumi.getter(name="securitySettings")
     def security_settings(self) -> Optional[pulumi.Input['BackendServiceSecuritySettingsArgs']]:
         """
-        The security settings that apply to this backend service. This field is applicable to either a regional backend service
-        with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED; or a global
-        backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+        The security settings that apply to this backend service. This field is applicable to either
+        a regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and
+        load_balancing_scheme set to INTERNAL_MANAGED; or a global backend service with the
+        load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+        Structure is documented below.
         """
         return pulumi.get(self, "security_settings")
 
@@ -658,9 +662,11 @@ class _BackendServiceState:
                types and may result in errors if used with the GA API.
                Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, and `GRPC`.
         :param pulumi.Input[str] security_policy: The security policy associated with this backend service.
-        :param pulumi.Input['BackendServiceSecuritySettingsArgs'] security_settings: The security settings that apply to this backend service. This field is applicable to either a regional backend service
-               with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED; or a global
-               backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+        :param pulumi.Input['BackendServiceSecuritySettingsArgs'] security_settings: The security settings that apply to this backend service. This field is applicable to either
+               a regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and
+               load_balancing_scheme set to INTERNAL_MANAGED; or a global backend service with the
+               load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+               Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
@@ -1066,9 +1072,11 @@ class _BackendServiceState:
     @pulumi.getter(name="securitySettings")
     def security_settings(self) -> Optional[pulumi.Input['BackendServiceSecuritySettingsArgs']]:
         """
-        The security settings that apply to this backend service. This field is applicable to either a regional backend service
-        with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED; or a global
-        backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+        The security settings that apply to this backend service. This field is applicable to either
+        a regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and
+        load_balancing_scheme set to INTERNAL_MANAGED; or a global backend service with the
+        load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+        Structure is documented below.
         """
         return pulumi.get(self, "security_settings")
 
@@ -1389,9 +1397,11 @@ class BackendService(pulumi.CustomResource):
                types and may result in errors if used with the GA API.
                Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, and `GRPC`.
         :param pulumi.Input[str] security_policy: The security policy associated with this backend service.
-        :param pulumi.Input[pulumi.InputType['BackendServiceSecuritySettingsArgs']] security_settings: The security settings that apply to this backend service. This field is applicable to either a regional backend service
-               with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED; or a global
-               backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+        :param pulumi.Input[pulumi.InputType['BackendServiceSecuritySettingsArgs']] security_settings: The security settings that apply to this backend service. This field is applicable to either
+               a regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and
+               load_balancing_scheme set to INTERNAL_MANAGED; or a global backend service with the
+               load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+               Structure is documented below.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
                Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
@@ -1769,9 +1779,11 @@ class BackendService(pulumi.CustomResource):
                types and may result in errors if used with the GA API.
                Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, and `GRPC`.
         :param pulumi.Input[str] security_policy: The security policy associated with this backend service.
-        :param pulumi.Input[pulumi.InputType['BackendServiceSecuritySettingsArgs']] security_settings: The security settings that apply to this backend service. This field is applicable to either a regional backend service
-               with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED; or a global
-               backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+        :param pulumi.Input[pulumi.InputType['BackendServiceSecuritySettingsArgs']] security_settings: The security settings that apply to this backend service. This field is applicable to either
+               a regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and
+               load_balancing_scheme set to INTERNAL_MANAGED; or a global backend service with the
+               load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+               Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
@@ -2063,9 +2075,11 @@ class BackendService(pulumi.CustomResource):
     @pulumi.getter(name="securitySettings")
     def security_settings(self) -> pulumi.Output[Optional['outputs.BackendServiceSecuritySettings']]:
         """
-        The security settings that apply to this backend service. This field is applicable to either a regional backend service
-        with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED; or a global
-        backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+        The security settings that apply to this backend service. This field is applicable to either
+        a regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and
+        load_balancing_scheme set to INTERNAL_MANAGED; or a global backend service with the
+        load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+        Structure is documented below.
         """
         return pulumi.get(self, "security_settings")
 

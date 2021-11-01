@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  *     location: "us-central1-a",
  *     initialNodeCount: 1,
  *     workloadIdentityConfig: {
- *         identityNamespace: "my-project-name.svc.id.goog",
+ *         workloadPool: "my-project-name.svc.id.goog",
  *     },
  * });
  * const membership = new gcp.gkehub.Membership("membership", {

@@ -63,26 +63,10 @@ import (
 // 	})
 // }
 // ```
-//
-// ## Import
-//
-// Security policies can be imported using any of the following formats
-//
-// ```sh
-//  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy projects/{{project}}/global/securityPolicies/{{name}}
-// ```
-//
-// ```sh
-//  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy {{project}}/{{name}}
-// ```
-//
-// ```sh
-//  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy {{name}}
-// ```
 type SecurityPolicy struct {
 	pulumi.CustomResourceState
 
-	// ) Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+	// Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
 	AdaptiveProtectionConfig SecurityPolicyAdaptiveProtectionConfigPtrOutput `pulumi:"adaptiveProtectionConfig"`
 	// An optional description of this rule. Max size is 64.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -97,7 +81,7 @@ type SecurityPolicy struct {
 	// rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
 	// security policy, a default rule with action "allow" will be added. Structure is documented below.
 	Rules SecurityPolicyRuleArrayOutput `pulumi:"rules"`
-	// The URI of the created resource.
+	// The URI of the created resourc
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 }
 
@@ -130,7 +114,7 @@ func GetSecurityPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SecurityPolicy resources.
 type securityPolicyState struct {
-	// ) Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+	// Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
 	AdaptiveProtectionConfig *SecurityPolicyAdaptiveProtectionConfig `pulumi:"adaptiveProtectionConfig"`
 	// An optional description of this rule. Max size is 64.
 	Description *string `pulumi:"description"`
@@ -145,12 +129,12 @@ type securityPolicyState struct {
 	// rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
 	// security policy, a default rule with action "allow" will be added. Structure is documented below.
 	Rules []SecurityPolicyRule `pulumi:"rules"`
-	// The URI of the created resource.
+	// The URI of the created resourc
 	SelfLink *string `pulumi:"selfLink"`
 }
 
 type SecurityPolicyState struct {
-	// ) Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+	// Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
 	AdaptiveProtectionConfig SecurityPolicyAdaptiveProtectionConfigPtrInput
 	// An optional description of this rule. Max size is 64.
 	Description pulumi.StringPtrInput
@@ -165,7 +149,7 @@ type SecurityPolicyState struct {
 	// rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
 	// security policy, a default rule with action "allow" will be added. Structure is documented below.
 	Rules SecurityPolicyRuleArrayInput
-	// The URI of the created resource.
+	// The URI of the created resourc
 	SelfLink pulumi.StringPtrInput
 }
 
@@ -174,7 +158,7 @@ func (SecurityPolicyState) ElementType() reflect.Type {
 }
 
 type securityPolicyArgs struct {
-	// ) Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+	// Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
 	AdaptiveProtectionConfig *SecurityPolicyAdaptiveProtectionConfig `pulumi:"adaptiveProtectionConfig"`
 	// An optional description of this rule. Max size is 64.
 	Description *string `pulumi:"description"`
@@ -191,7 +175,7 @@ type securityPolicyArgs struct {
 
 // The set of arguments for constructing a SecurityPolicy resource.
 type SecurityPolicyArgs struct {
-	// ) Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+	// Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
 	AdaptiveProtectionConfig SecurityPolicyAdaptiveProtectionConfigPtrInput
 	// An optional description of this rule. Max size is 64.
 	Description pulumi.StringPtrInput

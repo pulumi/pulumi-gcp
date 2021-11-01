@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.GkeHub.Inputs
     {
         /// <summary>
         /// -
-        /// (Optional)
+        /// (Optional) Structure is documented below.
         /// </summary>
         [Input("git")]
         public Input<Inputs.FeatureMembershipConfigmanagementConfigSyncGitArgs>? Git { get; set; }

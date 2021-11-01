@@ -31,6 +31,10 @@ namespace Pulumi.Gcp.Composer.Inputs
         [Input("enablePrivateEndpoint")]
         public Input<bool>? EnablePrivateEndpoint { get; set; }
 
+        /// <summary>
+        /// When enabled, IPs from public (non-RFC1918) ranges can be used for
+        /// `ip_allocation_policy.cluster_ipv4_cidr_block` and `ip_allocation_policy.service_ipv4_cidr_block`.
+        /// </summary>
         [Input("enablePrivatelyUsedPublicIps")]
         public Input<bool>? EnablePrivatelyUsedPublicIps { get; set; }
 
