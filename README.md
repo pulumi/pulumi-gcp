@@ -35,7 +35,7 @@ or `yarn`:
 
 To use from Python, install using `pip`:
 
-    $ pip install pulumi_gcp
+    $ pip install pulumi-gcp
 
 ### Go
 
