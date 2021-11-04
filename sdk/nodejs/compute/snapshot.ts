@@ -166,10 +166,6 @@ export class Snapshot extends pulumi.CustomResource {
      */
     public readonly sourceDiskEncryptionKey!: pulumi.Output<outputs.compute.SnapshotSourceDiskEncryptionKey | undefined>;
     /**
-     * @deprecated Deprecated in favor of source_disk, which contains a compatible value. This field will be removed in the next major release of the provider.
-     */
-    public /*out*/ readonly sourceDiskLink!: pulumi.Output<string>;
-    /**
      * A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
      * creation/deletion.
      */
@@ -209,7 +205,6 @@ export class Snapshot extends pulumi.CustomResource {
             inputs["snapshotId"] = state ? state.snapshotId : undefined;
             inputs["sourceDisk"] = state ? state.sourceDisk : undefined;
             inputs["sourceDiskEncryptionKey"] = state ? state.sourceDiskEncryptionKey : undefined;
-            inputs["sourceDiskLink"] = state ? state.sourceDiskLink : undefined;
             inputs["storageBytes"] = state ? state.storageBytes : undefined;
             inputs["storageLocations"] = state ? state.storageLocations : undefined;
             inputs["zone"] = state ? state.zone : undefined;
@@ -233,7 +228,6 @@ export class Snapshot extends pulumi.CustomResource {
             inputs["licenses"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
             inputs["snapshotId"] = undefined /*out*/;
-            inputs["sourceDiskLink"] = undefined /*out*/;
             inputs["storageBytes"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -313,10 +307,6 @@ export interface SnapshotState {
      * Structure is documented below.
      */
     sourceDiskEncryptionKey?: pulumi.Input<inputs.compute.SnapshotSourceDiskEncryptionKey>;
-    /**
-     * @deprecated Deprecated in favor of source_disk, which contains a compatible value. This field will be removed in the next major release of the provider.
-     */
-    sourceDiskLink?: pulumi.Input<string>;
     /**
      * A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
      * creation/deletion.

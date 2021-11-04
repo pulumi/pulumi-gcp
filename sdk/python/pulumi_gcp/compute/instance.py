@@ -76,16 +76,15 @@ class InstanceArgs:
                within the instance. Ssh keys attached in the Cloud Console will be removed.
                Add them to your config in order to keep them attached to your instance.
         :param pulumi.Input[str] metadata_startup_script: An alternative to using the
-               startup-script metadata key, except this one forces the instance to be
-               recreated (thus re-running the script) if it is changed. This replaces the
-               startup-script metadata key on the created instance and thus the two
-               mechanisms are not allowed to be used simultaneously.  Users are free to use
-               either mechanism - the only distinction is that this separate attribute
-               will cause a recreate on modification.  On import, `metadata_startup_script`
-               will be set, but `metadata.startup-script` will not - if you choose to use the
-               other mechanism, you will see a diff immediately after import, which will cause a
-               destroy/recreate operation.  You may want to modify your state file manually
-               using `pulumi stack` commands, depending on your use case.
+               startup-script metadata key, except this one forces the instance to be recreated
+               (thus re-running the script) if it is changed. This replaces the startup-script
+               metadata key on the created instance and thus the two mechanisms are not
+               allowed to be used simultaneously.  Users are free to use either mechanism - the
+               only distinction is that this separate attribute will cause a recreate on
+               modification.  On import, `metadata_startup_script` will not be set - if you
+               choose to specify it you will see a diff immediately after import causing a
+               destroy/recreate operation. If importing an instance and specifying this value
+               is desired, you will need to modify your state file.
         :param pulumi.Input[str] min_cpu_platform: Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
                `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
@@ -380,16 +379,15 @@ class InstanceArgs:
     def metadata_startup_script(self) -> Optional[pulumi.Input[str]]:
         """
         An alternative to using the
-        startup-script metadata key, except this one forces the instance to be
-        recreated (thus re-running the script) if it is changed. This replaces the
-        startup-script metadata key on the created instance and thus the two
-        mechanisms are not allowed to be used simultaneously.  Users are free to use
-        either mechanism - the only distinction is that this separate attribute
-        will cause a recreate on modification.  On import, `metadata_startup_script`
-        will be set, but `metadata.startup-script` will not - if you choose to use the
-        other mechanism, you will see a diff immediately after import, which will cause a
-        destroy/recreate operation.  You may want to modify your state file manually
-        using `pulumi stack` commands, depending on your use case.
+        startup-script metadata key, except this one forces the instance to be recreated
+        (thus re-running the script) if it is changed. This replaces the startup-script
+        metadata key on the created instance and thus the two mechanisms are not
+        allowed to be used simultaneously.  Users are free to use either mechanism - the
+        only distinction is that this separate attribute will cause a recreate on
+        modification.  On import, `metadata_startup_script` will not be set - if you
+        choose to specify it you will see a diff immediately after import causing a
+        destroy/recreate operation. If importing an instance and specifying this value
+        is desired, you will need to modify your state file.
         """
         return pulumi.get(self, "metadata_startup_script")
 
@@ -631,16 +629,15 @@ class _InstanceState:
                Add them to your config in order to keep them attached to your instance.
         :param pulumi.Input[str] metadata_fingerprint: The unique fingerprint of the metadata.
         :param pulumi.Input[str] metadata_startup_script: An alternative to using the
-               startup-script metadata key, except this one forces the instance to be
-               recreated (thus re-running the script) if it is changed. This replaces the
-               startup-script metadata key on the created instance and thus the two
-               mechanisms are not allowed to be used simultaneously.  Users are free to use
-               either mechanism - the only distinction is that this separate attribute
-               will cause a recreate on modification.  On import, `metadata_startup_script`
-               will be set, but `metadata.startup-script` will not - if you choose to use the
-               other mechanism, you will see a diff immediately after import, which will cause a
-               destroy/recreate operation.  You may want to modify your state file manually
-               using `pulumi stack` commands, depending on your use case.
+               startup-script metadata key, except this one forces the instance to be recreated
+               (thus re-running the script) if it is changed. This replaces the startup-script
+               metadata key on the created instance and thus the two mechanisms are not
+               allowed to be used simultaneously.  Users are free to use either mechanism - the
+               only distinction is that this separate attribute will cause a recreate on
+               modification.  On import, `metadata_startup_script` will not be set - if you
+               choose to specify it you will see a diff immediately after import causing a
+               destroy/recreate operation. If importing an instance and specifying this value
+               is desired, you will need to modify your state file.
         :param pulumi.Input[str] min_cpu_platform: Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
                `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
@@ -1003,16 +1000,15 @@ class _InstanceState:
     def metadata_startup_script(self) -> Optional[pulumi.Input[str]]:
         """
         An alternative to using the
-        startup-script metadata key, except this one forces the instance to be
-        recreated (thus re-running the script) if it is changed. This replaces the
-        startup-script metadata key on the created instance and thus the two
-        mechanisms are not allowed to be used simultaneously.  Users are free to use
-        either mechanism - the only distinction is that this separate attribute
-        will cause a recreate on modification.  On import, `metadata_startup_script`
-        will be set, but `metadata.startup-script` will not - if you choose to use the
-        other mechanism, you will see a diff immediately after import, which will cause a
-        destroy/recreate operation.  You may want to modify your state file manually
-        using `pulumi stack` commands, depending on your use case.
+        startup-script metadata key, except this one forces the instance to be recreated
+        (thus re-running the script) if it is changed. This replaces the startup-script
+        metadata key on the created instance and thus the two mechanisms are not
+        allowed to be used simultaneously.  Users are free to use either mechanism - the
+        only distinction is that this separate attribute will cause a recreate on
+        modification.  On import, `metadata_startup_script` will not be set - if you
+        choose to specify it you will see a diff immediately after import causing a
+        destroy/recreate operation. If importing an instance and specifying this value
+        is desired, you will need to modify your state file.
         """
         return pulumi.get(self, "metadata_startup_script")
 
@@ -1344,16 +1340,15 @@ class Instance(pulumi.CustomResource):
                within the instance. Ssh keys attached in the Cloud Console will be removed.
                Add them to your config in order to keep them attached to your instance.
         :param pulumi.Input[str] metadata_startup_script: An alternative to using the
-               startup-script metadata key, except this one forces the instance to be
-               recreated (thus re-running the script) if it is changed. This replaces the
-               startup-script metadata key on the created instance and thus the two
-               mechanisms are not allowed to be used simultaneously.  Users are free to use
-               either mechanism - the only distinction is that this separate attribute
-               will cause a recreate on modification.  On import, `metadata_startup_script`
-               will be set, but `metadata.startup-script` will not - if you choose to use the
-               other mechanism, you will see a diff immediately after import, which will cause a
-               destroy/recreate operation.  You may want to modify your state file manually
-               using `pulumi stack` commands, depending on your use case.
+               startup-script metadata key, except this one forces the instance to be recreated
+               (thus re-running the script) if it is changed. This replaces the startup-script
+               metadata key on the created instance and thus the two mechanisms are not
+               allowed to be used simultaneously.  Users are free to use either mechanism - the
+               only distinction is that this separate attribute will cause a recreate on
+               modification.  On import, `metadata_startup_script` will not be set - if you
+               choose to specify it you will see a diff immediately after import causing a
+               destroy/recreate operation. If importing an instance and specifying this value
+               is desired, you will need to modify your state file.
         :param pulumi.Input[str] min_cpu_platform: Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
                `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
@@ -1636,16 +1631,15 @@ class Instance(pulumi.CustomResource):
                Add them to your config in order to keep them attached to your instance.
         :param pulumi.Input[str] metadata_fingerprint: The unique fingerprint of the metadata.
         :param pulumi.Input[str] metadata_startup_script: An alternative to using the
-               startup-script metadata key, except this one forces the instance to be
-               recreated (thus re-running the script) if it is changed. This replaces the
-               startup-script metadata key on the created instance and thus the two
-               mechanisms are not allowed to be used simultaneously.  Users are free to use
-               either mechanism - the only distinction is that this separate attribute
-               will cause a recreate on modification.  On import, `metadata_startup_script`
-               will be set, but `metadata.startup-script` will not - if you choose to use the
-               other mechanism, you will see a diff immediately after import, which will cause a
-               destroy/recreate operation.  You may want to modify your state file manually
-               using `pulumi stack` commands, depending on your use case.
+               startup-script metadata key, except this one forces the instance to be recreated
+               (thus re-running the script) if it is changed. This replaces the startup-script
+               metadata key on the created instance and thus the two mechanisms are not
+               allowed to be used simultaneously.  Users are free to use either mechanism - the
+               only distinction is that this separate attribute will cause a recreate on
+               modification.  On import, `metadata_startup_script` will not be set - if you
+               choose to specify it you will see a diff immediately after import causing a
+               destroy/recreate operation. If importing an instance and specifying this value
+               is desired, you will need to modify your state file.
         :param pulumi.Input[str] min_cpu_platform: Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
                `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
@@ -1897,16 +1891,15 @@ class Instance(pulumi.CustomResource):
     def metadata_startup_script(self) -> pulumi.Output[Optional[str]]:
         """
         An alternative to using the
-        startup-script metadata key, except this one forces the instance to be
-        recreated (thus re-running the script) if it is changed. This replaces the
-        startup-script metadata key on the created instance and thus the two
-        mechanisms are not allowed to be used simultaneously.  Users are free to use
-        either mechanism - the only distinction is that this separate attribute
-        will cause a recreate on modification.  On import, `metadata_startup_script`
-        will be set, but `metadata.startup-script` will not - if you choose to use the
-        other mechanism, you will see a diff immediately after import, which will cause a
-        destroy/recreate operation.  You may want to modify your state file manually
-        using `pulumi stack` commands, depending on your use case.
+        startup-script metadata key, except this one forces the instance to be recreated
+        (thus re-running the script) if it is changed. This replaces the startup-script
+        metadata key on the created instance and thus the two mechanisms are not
+        allowed to be used simultaneously.  Users are free to use either mechanism - the
+        only distinction is that this separate attribute will cause a recreate on
+        modification.  On import, `metadata_startup_script` will not be set - if you
+        choose to specify it you will see a diff immediately after import causing a
+        destroy/recreate operation. If importing an instance and specifying this value
+        is desired, you will need to modify your state file.
         """
         return pulumi.get(self, "metadata_startup_script")
 

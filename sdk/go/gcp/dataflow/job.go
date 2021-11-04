@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/dataflow"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataflow"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -49,9 +49,9 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/dataflow"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/pubsub"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/storage"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataflow"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -62,12 +62,14 @@ import (
 // 			return err
 // 		}
 // 		bucket1, err := storage.NewBucket(ctx, "bucket1", &storage.BucketArgs{
+// 			Location:     pulumi.String("US"),
 // 			ForceDestroy: pulumi.Bool(true),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = storage.NewBucket(ctx, "bucket2", &storage.BucketArgs{
+// 			Location:     pulumi.String("US"),
 // 			ForceDestroy: pulumi.Bool(true),
 // 		})
 // 		if err != nil {

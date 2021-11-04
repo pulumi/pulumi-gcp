@@ -13,28 +13,6 @@ namespace Pulumi.Gcp.Sql
     /// Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/),
     /// or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances).
     /// 
-    /// &gt; **NOTE on `gcp.sql.DatabaseInstance`:** - First-generation instances have been
-    /// deprecated and should no longer be created, see [upgrade docs](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-    /// for more details.
-    /// To upgrade your First-generation instance, update your config that the instance has
-    /// * `settings.ip_configuration.ipv4_enabled=true`
-    /// * `settings.backup_configuration.enabled=true`
-    /// * `settings.backup_configuration.binary_log_enabled=true`.\
-    ///   Apply the config, then upgrade the instance in the console as described in the documentation.
-    ///   Once upgraded, update the following attributes in your config to the correct value according to
-    ///   the above documentation:
-    /// * `region`
-    /// * `database_version` (if applicable)
-    /// * `tier`
-    ///   Remove any fields that are not applicable to Second-generation instances:
-    /// * `settings.crash_safe_replication`
-    /// * `settings.replication_type`
-    /// * `settings.authorized_gae_applications`
-    ///   And change values to appropriate values for Second-generation instances for:
-    /// * `activation_policy` ("ON_DEMAND" is no longer an option)
-    /// * `pricing_plan` ("PER_USE" is now the only valid option)
-    ///   Change `settings.backup_configuration.enabled` attribute back to its desired value and apply as necessary.
-    /// 
     /// &gt; **NOTE on `gcp.sql.DatabaseInstance`:** - Second-generation instances include a
     /// default 'root'@'%' user with no password. This user will be deleted by the provider on
     /// instance creation. You should use `gcp.sql.User` to define a custom user with
@@ -115,6 +93,7 @@ namespace Pulumi.Gcp.Sql
     ///         var instance = new Gcp.Sql.DatabaseInstance("instance", new Gcp.Sql.DatabaseInstanceArgs
     ///         {
     ///             Region = "us-central1",
+    ///             DatabaseVersion = "MYSQL_5_7",
     ///             Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
     ///             {
     ///                 Tier = "db-f1-micro",
@@ -159,7 +138,9 @@ namespace Pulumi.Gcp.Sql
     public partial class DatabaseInstance : Pulumi.CustomResource
     {
         /// <summary>
-        /// Configuration for creating a new instance as a clone of another instance.
+        /// The context needed to create this instance as a clone of another instance. When this field is set during
+        /// resource creation, this provider will attempt to clone another instance as indicated in the context. The
+        /// configuration is detailed below.
         /// </summary>
         [Output("clone")]
         public Output<Outputs.DatabaseInstanceClone?> Clone { get; private set; } = null!;
@@ -173,15 +154,17 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The MySQL, PostgreSQL or
-        /// SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
+        /// SQL Server version to use. Supported values include `MYSQL_5_6`,
         /// `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
         /// `POSTGRES_12`, `POSTGRES_13`, `SQLSERVER_2017_STANDARD`,
         /// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
+        /// `SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,
+        /// `SQLSERVER_2019_WEB`.
         /// [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
         /// includes an up-to-date reference of supported versions.
         /// </summary>
         [Output("databaseVersion")]
-        public Output<string?> DatabaseVersion { get; private set; } = null!;
+        public Output<string> DatabaseVersion { get; private set; } = null!;
 
         /// <summary>
         /// Whether or not to allow he provider to destroy the instance. Unless this field is set to false
@@ -201,7 +184,7 @@ namespace Pulumi.Gcp.Sql
         /// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
         /// </summary>
         [Output("encryptionKeyName")]
-        public Output<string> EncryptionKeyName { get; private set; } = null!;
+        public Output<string?> EncryptionKeyName { get; private set; } = null!;
 
         /// <summary>
         /// The first IPv4 address of any type assigned.
@@ -264,9 +247,8 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The context needed to restore the database to a backup run. This field will
-        /// &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
         /// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
-        /// **NOTE:** Restoring from a backup is an imperative action and not recommended via the provider. Adding or modifying this
+        /// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
         /// block during resource creation/update will trigger the restore action after the resource is created/updated.
         /// </summary>
         [Output("restoreBackupContext")]
@@ -309,7 +291,7 @@ namespace Pulumi.Gcp.Sql
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public DatabaseInstance(string name, DatabaseInstanceArgs? args = null, CustomResourceOptions? options = null)
+        public DatabaseInstance(string name, DatabaseInstanceArgs args, CustomResourceOptions? options = null)
             : base("gcp:sql/databaseInstance:DatabaseInstance", name, args ?? new DatabaseInstanceArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -348,22 +330,26 @@ namespace Pulumi.Gcp.Sql
     public sealed class DatabaseInstanceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Configuration for creating a new instance as a clone of another instance.
+        /// The context needed to create this instance as a clone of another instance. When this field is set during
+        /// resource creation, this provider will attempt to clone another instance as indicated in the context. The
+        /// configuration is detailed below.
         /// </summary>
         [Input("clone")]
         public Input<Inputs.DatabaseInstanceCloneArgs>? Clone { get; set; }
 
         /// <summary>
         /// The MySQL, PostgreSQL or
-        /// SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
+        /// SQL Server version to use. Supported values include `MYSQL_5_6`,
         /// `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
         /// `POSTGRES_12`, `POSTGRES_13`, `SQLSERVER_2017_STANDARD`,
         /// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
+        /// `SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,
+        /// `SQLSERVER_2019_WEB`.
         /// [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
         /// includes an up-to-date reference of supported versions.
         /// </summary>
-        [Input("databaseVersion")]
-        public Input<string>? DatabaseVersion { get; set; }
+        [Input("databaseVersion", required: true)]
+        public Input<string> DatabaseVersion { get; set; } = null!;
 
         /// <summary>
         /// Whether or not to allow he provider to destroy the instance. Unless this field is set to false
@@ -425,9 +411,8 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The context needed to restore the database to a backup run. This field will
-        /// &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
         /// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
-        /// **NOTE:** Restoring from a backup is an imperative action and not recommended via the provider. Adding or modifying this
+        /// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
         /// block during resource creation/update will trigger the restore action after the resource is created/updated.
         /// </summary>
         [Input("restoreBackupContext")]
@@ -454,7 +439,9 @@ namespace Pulumi.Gcp.Sql
     public sealed class DatabaseInstanceState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Configuration for creating a new instance as a clone of another instance.
+        /// The context needed to create this instance as a clone of another instance. When this field is set during
+        /// resource creation, this provider will attempt to clone another instance as indicated in the context. The
+        /// configuration is detailed below.
         /// </summary>
         [Input("clone")]
         public Input<Inputs.DatabaseInstanceCloneGetArgs>? Clone { get; set; }
@@ -468,10 +455,12 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The MySQL, PostgreSQL or
-        /// SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
+        /// SQL Server version to use. Supported values include `MYSQL_5_6`,
         /// `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
         /// `POSTGRES_12`, `POSTGRES_13`, `SQLSERVER_2017_STANDARD`,
         /// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
+        /// `SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,
+        /// `SQLSERVER_2019_WEB`.
         /// [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
         /// includes an up-to-date reference of supported versions.
         /// </summary>
@@ -564,9 +553,8 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The context needed to restore the database to a backup run. This field will
-        /// &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
         /// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
-        /// **NOTE:** Restoring from a backup is an imperative action and not recommended via the provider. Adding or modifying this
+        /// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
         /// block during resource creation/update will trigger the restore action after the resource is created/updated.
         /// </summary>
         [Input("restoreBackupContext")]

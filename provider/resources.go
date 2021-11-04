@@ -9,7 +9,7 @@ import (
 	"unicode"
 
 	google "github.com/hashicorp/terraform-provider-google-beta/google-beta"
-	"github.com/pulumi/pulumi-gcp/provider/v5/pkg/version"
+	"github.com/pulumi/pulumi-gcp/provider/v6/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"

@@ -19,22 +19,6 @@ namespace Pulumi.Gcp.Sql.Inputs
         [Input("activationPolicy")]
         public Input<string>? ActivationPolicy { get; set; }
 
-        [Input("authorizedGaeApplications")]
-        private InputList<string>? _authorizedGaeApplications;
-
-        /// <summary>
-        /// This property is only applicable to First Generation instances.
-        /// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-        /// for information on how to upgrade to Second Generation instances.
-        /// A list of Google App Engine (GAE) project names that are allowed to access this instance.
-        /// </summary>
-        [Obsolete(@"This property is only applicable to First Generation instances, and First Generation instances are now deprecated.")]
-        public InputList<string> AuthorizedGaeApplications
-        {
-            get => _authorizedGaeApplications ?? (_authorizedGaeApplications = new InputList<string>());
-            set => _authorizedGaeApplications = value;
-        }
-
         /// <summary>
         /// The availability type of the Cloud SQL
         /// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For MySQL
@@ -53,16 +37,6 @@ namespace Pulumi.Gcp.Sql.Inputs
         [Input("collation")]
         public Input<string>? Collation { get; set; }
 
-        /// <summary>
-        /// This property is only applicable to First Generation instances.
-        /// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-        /// for information on how to upgrade to Second Generation instances.
-        /// Specific to read instances, indicates
-        /// when crash-safe replication flags are enabled.
-        /// </summary>
-        [Input("crashSafeReplication")]
-        public Input<bool>? CrashSafeReplication { get; set; }
-
         [Input("databaseFlags")]
         private InputList<Inputs.DatabaseInstanceSettingsDatabaseFlagGetArgs>? _databaseFlags;
         public InputList<Inputs.DatabaseInstanceSettingsDatabaseFlagGetArgs> DatabaseFlags
@@ -72,7 +46,7 @@ namespace Pulumi.Gcp.Sql.Inputs
         }
 
         /// <summary>
-        /// Configuration to increase storage size automatically.  Note that future `pulumi apply` calls will attempt to resize the disk to the value specified in `disk_size` - if this is set, do not set `disk_size`.
+        /// Configuration to increase storage size automatically.  Note that future apply calls will attempt to resize the disk to the value specified in `disk_size` - if this is set, do not set `disk_size`.
         /// </summary>
         [Input("diskAutoresize")]
         public Input<bool>? DiskAutoresize { get; set; }
@@ -109,15 +83,6 @@ namespace Pulumi.Gcp.Sql.Inputs
         /// </summary>
         [Input("pricingPlan")]
         public Input<string>? PricingPlan { get; set; }
-
-        /// <summary>
-        /// This property is only applicable to First Generation instances.
-        /// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-        /// for information on how to upgrade to Second Generation instances.
-        /// Replication type for this instance, can be one of `ASYNCHRONOUS` or `SYNCHRONOUS`.
-        /// </summary>
-        [Input("replicationType")]
-        public Input<string>? ReplicationType { get; set; }
 
         /// <summary>
         /// The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)

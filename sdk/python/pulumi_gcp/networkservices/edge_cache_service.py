@@ -468,7 +468,9 @@ class EdgeCacheService(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        dest = gcp.storage.Bucket("dest", force_destroy=True)
+        dest = gcp.storage.Bucket("dest",
+            location="US",
+            force_destroy=True)
         instance_edge_cache_origin = gcp.networkservices.EdgeCacheOrigin("instanceEdgeCacheOrigin",
             origin_address=dest.url,
             description="The default bucket for media edge test",
@@ -515,7 +517,9 @@ class EdgeCacheService(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        dest = gcp.storage.Bucket("dest", force_destroy=True)
+        dest = gcp.storage.Bucket("dest",
+            location="US",
+            force_destroy=True)
         google = gcp.networkservices.EdgeCacheOrigin("google",
             origin_address="google.com",
             description="The default bucket for media edge test",
@@ -752,7 +756,9 @@ class EdgeCacheService(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        dest = gcp.storage.Bucket("dest", force_destroy=True)
+        dest = gcp.storage.Bucket("dest",
+            location="US",
+            force_destroy=True)
         instance_edge_cache_origin = gcp.networkservices.EdgeCacheOrigin("instanceEdgeCacheOrigin",
             origin_address=dest.url,
             description="The default bucket for media edge test",
@@ -799,7 +805,9 @@ class EdgeCacheService(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        dest = gcp.storage.Bucket("dest", force_destroy=True)
+        dest = gcp.storage.Bucket("dest",
+            location="US",
+            force_destroy=True)
         google = gcp.networkservices.EdgeCacheOrigin("google",
             origin_address="google.com",
             description="The default bucket for media edge test",

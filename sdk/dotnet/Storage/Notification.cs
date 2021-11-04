@@ -53,6 +53,7 @@ namespace Pulumi.Gcp.Storage
     ///         // End enabling notifications
     ///         var bucket = new Gcp.Storage.Bucket("bucket", new Gcp.Storage.BucketArgs
     ///         {
+    ///             Location = "US",
     ///         });
     ///         var notification = new Gcp.Storage.Notification("notification", new Gcp.Storage.NotificationArgs
     ///         {

@@ -28,15 +28,17 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/logging"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/projects"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/storage"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := storage.NewBucket(ctx, "log_bucket", nil)
+// 		_, err := storage.NewBucket(ctx, "log_bucket", &storage.BucketArgs{
+// 			Location: pulumi.String("US"),
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -51,7 +53,8 @@ import (
 // 			return err
 // 		}
 // 		_, err = projects.NewIAMBinding(ctx, "log_writer", &projects.IAMBindingArgs{
-// 			Role: pulumi.String("roles/storage.objectCreator"),
+// 			Project: pulumi.String("your-project-id"),
+// 			Role:    pulumi.String("roles/storage.objectCreator"),
 // 			Members: pulumi.StringArray{
 // 				my_sink.WriterIdentity,
 // 			},

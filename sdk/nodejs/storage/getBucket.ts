@@ -49,7 +49,6 @@ export interface GetBucketArgs {
  * A collection of values returned by getBucket.
  */
 export interface GetBucketResult {
-    readonly bucketPolicyOnly: boolean;
     readonly cors: outputs.storage.GetBucketCor[];
     readonly defaultEventBasedHold: boolean;
     readonly encryptions: outputs.storage.GetBucketEncryption[];

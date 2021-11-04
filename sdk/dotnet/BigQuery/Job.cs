@@ -223,6 +223,7 @@ namespace Pulumi.Gcp.BigQuery
     ///         });
     ///         var dest = new Gcp.Storage.Bucket("dest", new Gcp.Storage.BucketArgs
     ///         {
+    ///             Location = "US",
     ///             ForceDestroy = true,
     ///         });
     ///         var job = new Gcp.BigQuery.Job("job", new Gcp.BigQuery.JobArgs

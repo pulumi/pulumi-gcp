@@ -184,9 +184,6 @@ namespace Pulumi.Gcp.Compute
         [Output("sourceDiskEncryptionKey")]
         public Output<Outputs.SnapshotSourceDiskEncryptionKey?> SourceDiskEncryptionKey { get; private set; } = null!;
 
-        [Output("sourceDiskLink")]
-        public Output<string> SourceDiskLink { get; private set; } = null!;
-
         /// <summary>
         /// A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
         /// creation/deletion.
@@ -440,9 +437,6 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("sourceDiskEncryptionKey")]
         public Input<Inputs.SnapshotSourceDiskEncryptionKeyGetArgs>? SourceDiskEncryptionKey { get; set; }
-
-        [Input("sourceDiskLink")]
-        public Input<string>? SourceDiskLink { get; set; }
 
         /// <summary>
         /// A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot

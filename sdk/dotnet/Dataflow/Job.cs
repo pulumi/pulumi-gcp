@@ -52,10 +52,12 @@ namespace Pulumi.Gcp.Dataflow
     ///         });
     ///         var bucket1 = new Gcp.Storage.Bucket("bucket1", new Gcp.Storage.BucketArgs
     ///         {
+    ///             Location = "US",
     ///             ForceDestroy = true,
     ///         });
     ///         var bucket2 = new Gcp.Storage.Bucket("bucket2", new Gcp.Storage.BucketArgs
     ///         {
+    ///             Location = "US",
     ///             ForceDestroy = true,
     ///         });
     ///         var pubsubStream = new Gcp.Dataflow.Job("pubsubStream", new Gcp.Dataflow.JobArgs

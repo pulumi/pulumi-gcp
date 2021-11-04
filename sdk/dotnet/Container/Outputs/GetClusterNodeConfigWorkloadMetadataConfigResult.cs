@@ -14,16 +14,11 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class GetClusterNodeConfigWorkloadMetadataConfigResult
     {
         public readonly string Mode;
-        public readonly string NodeMetadata;
 
         [OutputConstructor]
-        private GetClusterNodeConfigWorkloadMetadataConfigResult(
-            string mode,
-
-            string nodeMetadata)
+        private GetClusterNodeConfigWorkloadMetadataConfigResult(string mode)
         {
             Mode = mode;
-            NodeMetadata = nodeMetadata;
         }
     }
 }

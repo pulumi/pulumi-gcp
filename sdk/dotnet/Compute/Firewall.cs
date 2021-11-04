@@ -100,6 +100,10 @@ namespace Pulumi.Gcp.Compute
     ///             Description = "Creates firewall rule targeting tagged instances",
     ///             Network = "default",
     ///             Project = "my-project-name",
+    ///             SourceTags = 
+    ///             {
+    ///                 "foo",
+    ///             },
     ///             TargetTags = 
     ///             {
     ///                 "web",
@@ -171,7 +175,8 @@ namespace Pulumi.Gcp.Compute
         /// Direction of traffic to which this firewall applies; default is
         /// INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
         /// destinationRanges; For EGRESS traffic, it is NOT supported to specify
-        /// sourceRanges OR sourceTags.
+        /// `source_ranges` OR `source_tags`. For INGRESS traffic, one of `source_ranges`,
+        /// `source_tags` or `source_service_accounts` is required.
         /// Possible values are `INGRESS` and `EGRESS`.
         /// </summary>
         [Output("direction")]
@@ -406,7 +411,8 @@ namespace Pulumi.Gcp.Compute
         /// Direction of traffic to which this firewall applies; default is
         /// INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
         /// destinationRanges; For EGRESS traffic, it is NOT supported to specify
-        /// sourceRanges OR sourceTags.
+        /// `source_ranges` OR `source_tags`. For INGRESS traffic, one of `source_ranges`,
+        /// `source_tags` or `source_service_accounts` is required.
         /// Possible values are `INGRESS` and `EGRESS`.
         /// </summary>
         [Input("direction")]
@@ -632,7 +638,8 @@ namespace Pulumi.Gcp.Compute
         /// Direction of traffic to which this firewall applies; default is
         /// INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
         /// destinationRanges; For EGRESS traffic, it is NOT supported to specify
-        /// sourceRanges OR sourceTags.
+        /// `source_ranges` OR `source_tags`. For INGRESS traffic, one of `source_ranges`,
+        /// `source_tags` or `source_service_accounts` is required.
         /// Possible values are `INGRESS` and `EGRESS`.
         /// </summary>
         [Input("direction")]

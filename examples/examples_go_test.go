@@ -1,4 +1,5 @@
 // Copyright 2016-2017, Pulumi Corporation.  All rights reserved.
+//go:build go || all
 // +build go all
 
 package examples
@@ -11,6 +12,7 @@ import (
 )
 
 func TestAccBucketGo(t *testing.T) {
+	t.Skip("Skipping while major release in progress")
 	test := getGoBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir: filepath.Join(getCwd(t), "bucket-go"),

@@ -9,7 +9,9 @@ import (
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		bucket, err := storage.NewBucket(ctx, "demo-bucket", &storage.BucketArgs{})
+		bucket, err := storage.NewBucket(ctx, "demo-bucket", &storage.BucketArgs{
+			Location: pulumi.String("US"),
+		})
 		if err != nil {
 			return err
 		}

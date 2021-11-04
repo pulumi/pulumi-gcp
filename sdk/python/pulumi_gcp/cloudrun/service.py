@@ -406,6 +406,7 @@ class Service(pulumi.CustomResource):
 
         instance = gcp.sql.DatabaseInstance("instance",
             region="us-east1",
+            database_version="MYSQL_5_7",
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
                 tier="db-f1-micro",
             ),
@@ -738,6 +739,7 @@ class Service(pulumi.CustomResource):
 
         instance = gcp.sql.DatabaseInstance("instance",
             region="us-east1",
+            database_version="MYSQL_5_7",
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
                 tier="db-f1-micro",
             ),

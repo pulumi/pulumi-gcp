@@ -305,7 +305,7 @@ class ObjectAccessControl(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        bucket = gcp.storage.Bucket("bucket")
+        bucket = gcp.storage.Bucket("bucket", location="US")
         object = gcp.storage.BucketObject("object",
             bucket=bucket.name,
             source=pulumi.FileAsset("../static/img/header-logo.png"))
@@ -373,7 +373,7 @@ class ObjectAccessControl(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        bucket = gcp.storage.Bucket("bucket")
+        bucket = gcp.storage.Bucket("bucket", location="US")
         object = gcp.storage.BucketObject("object",
             bucket=bucket.name,
             source=pulumi.FileAsset("../static/img/header-logo.png"))

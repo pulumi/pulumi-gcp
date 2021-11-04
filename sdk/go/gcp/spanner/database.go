@@ -28,7 +28,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/spanner"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/spanner"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -37,6 +37,7 @@ import (
 // 		main, err := spanner.NewInstance(ctx, "main", &spanner.InstanceArgs{
 // 			Config:      pulumi.String("regional-europe-west1"),
 // 			DisplayName: pulumi.String("main-instance"),
+// 			NumNodes:    pulumi.Int(1),
 // 		})
 // 		if err != nil {
 // 			return err

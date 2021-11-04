@@ -94,6 +94,24 @@ import * as utilities from "../utilities";
  *     update: "40m",
  * } });
  * ```
+ *
+ * ## Import
+ *
+ * GKE clusters can be imported using the `project` , `location`, and `name`. If the project is omitted, the default provider value will be used. Examples
+ *
+ * ```sh
+ *  $ pulumi import gcp:container/cluster:Cluster mycluster projects/my-gcp-project/locations/us-east1-a/clusters/my-cluster
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:container/cluster:Cluster mycluster my-gcp-project/us-east1-a/my-cluster
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:container/cluster:Cluster mycluster us-east1-a/my-cluster
+ * ```
+ *
+ *  For example, the following fields will show diffs if set in config- `min_master_version` - `remove_default_node_pool`
  */
 export class Cluster extends pulumi.CustomResource {
     /**
@@ -221,9 +239,9 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly enableLegacyAbac!: pulumi.Output<boolean | undefined>;
     /**
-     * Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
+     * Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
      */
-    public readonly enableShieldedNodes!: pulumi.Output<boolean>;
+    public readonly enableShieldedNodes!: pulumi.Output<boolean | undefined>;
     /**
      * Whether to enable Cloud TPU resources in this cluster.
      * See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
@@ -242,12 +260,6 @@ export class Cluster extends pulumi.CustomResource {
      * `removeDefaultNodePool` to `true`.
      */
     public readonly initialNodeCount!: pulumi.Output<number | undefined>;
-    /**
-     * List of instance group URLs which have been assigned to the cluster.
-     *
-     * @deprecated Please use node_pool.instance_group_urls instead.
-     */
-    public /*out*/ readonly instanceGroupUrls!: pulumi.Output<string[]>;
     /**
      * Configuration of cluster IP allocation for
      * VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
@@ -288,11 +300,9 @@ export class Cluster extends pulumi.CustomResource {
      * The authentication information for accessing the
      * Kubernetes master. Some values in this block are only returned by the API if
      * your service account has permission to get credentials for your GKE cluster. If
-     * you see an unexpected diff removing a username/password or unsetting your client
-     * cert, ensure you have the `container.clusters.getCredentials` permission.
-     * Structure is documented below. This has been deprecated as of GKE 1.19.
-     *
-     * @deprecated Basic authentication was removed for GKE cluster versions >= 1.19.
+     * you see an unexpected diff unsetting your client cert, ensure you have the
+     * `container.clusters.getCredentials` permission.
+     * Structure is documented below.
      */
     public readonly masterAuth!: pulumi.Output<outputs.container.ClusterMasterAuth>;
     /**
@@ -304,8 +314,9 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly masterAuthorizedNetworksConfig!: pulumi.Output<outputs.container.ClusterMasterAuthorizedNetworksConfig | undefined>;
     /**
-     * The current version of the master in the cluster. This may be different than the min_master_version set in the config if
-     * the master has been updated by GKE.
+     * The current version of the master in the cluster. This may
+     * be different than the `minMasterVersion` set in the config if the master
+     * has been updated by GKE.
      */
     public /*out*/ readonly masterVersion!: pulumi.Output<string>;
     /**
@@ -448,12 +459,14 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly resourceUsageExportConfig!: pulumi.Output<outputs.container.ClusterResourceUsageExportConfig | undefined>;
     /**
-     * Server-defined URL for the resource.
+     * The server-defined URL for the resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * The IP address range of the Kubernetes services in this cluster, in CIDR notation (e.g. 1.2.3.4/29). Service addresses
-     * are typically put in the last /16 from the container CIDR.
+     * The IP address range of the Kubernetes services in this
+     * cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+     * notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
+     * `/16` from the container CIDR.
      */
     public /*out*/ readonly servicesIpv4Cidr!: pulumi.Output<string>;
     /**
@@ -462,7 +475,9 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly subnetwork!: pulumi.Output<string>;
     /**
-     * The IP address range of the Cloud TPUs in this cluster, in CIDR notation (e.g. 1.2.3.4/29).
+     * The IP address range of the Cloud TPUs in this cluster, in
+     * [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+     * notation (e.g. `1.2.3.4/29`).
      */
     public /*out*/ readonly tpuIpv4CidrBlock!: pulumi.Output<string>;
     /**
@@ -512,7 +527,6 @@ export class Cluster extends pulumi.CustomResource {
             inputs["enableTpu"] = state ? state.enableTpu : undefined;
             inputs["endpoint"] = state ? state.endpoint : undefined;
             inputs["initialNodeCount"] = state ? state.initialNodeCount : undefined;
-            inputs["instanceGroupUrls"] = state ? state.instanceGroupUrls : undefined;
             inputs["ipAllocationPolicy"] = state ? state.ipAllocationPolicy : undefined;
             inputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
             inputs["location"] = state ? state.location : undefined;
@@ -603,7 +617,6 @@ export class Cluster extends pulumi.CustomResource {
             inputs["verticalPodAutoscaling"] = args ? args.verticalPodAutoscaling : undefined;
             inputs["workloadIdentityConfig"] = args ? args.workloadIdentityConfig : undefined;
             inputs["endpoint"] = undefined /*out*/;
-            inputs["instanceGroupUrls"] = undefined /*out*/;
             inputs["labelFingerprint"] = undefined /*out*/;
             inputs["masterVersion"] = undefined /*out*/;
             inputs["operation"] = undefined /*out*/;
@@ -720,7 +733,7 @@ export interface ClusterState {
      */
     enableLegacyAbac?: pulumi.Input<boolean>;
     /**
-     * Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
+     * Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
      */
     enableShieldedNodes?: pulumi.Input<boolean>;
     /**
@@ -741,12 +754,6 @@ export interface ClusterState {
      * `removeDefaultNodePool` to `true`.
      */
     initialNodeCount?: pulumi.Input<number>;
-    /**
-     * List of instance group URLs which have been assigned to the cluster.
-     *
-     * @deprecated Please use node_pool.instance_group_urls instead.
-     */
-    instanceGroupUrls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Configuration of cluster IP allocation for
      * VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
@@ -787,11 +794,9 @@ export interface ClusterState {
      * The authentication information for accessing the
      * Kubernetes master. Some values in this block are only returned by the API if
      * your service account has permission to get credentials for your GKE cluster. If
-     * you see an unexpected diff removing a username/password or unsetting your client
-     * cert, ensure you have the `container.clusters.getCredentials` permission.
-     * Structure is documented below. This has been deprecated as of GKE 1.19.
-     *
-     * @deprecated Basic authentication was removed for GKE cluster versions >= 1.19.
+     * you see an unexpected diff unsetting your client cert, ensure you have the
+     * `container.clusters.getCredentials` permission.
+     * Structure is documented below.
      */
     masterAuth?: pulumi.Input<inputs.container.ClusterMasterAuth>;
     /**
@@ -803,8 +808,9 @@ export interface ClusterState {
      */
     masterAuthorizedNetworksConfig?: pulumi.Input<inputs.container.ClusterMasterAuthorizedNetworksConfig>;
     /**
-     * The current version of the master in the cluster. This may be different than the min_master_version set in the config if
-     * the master has been updated by GKE.
+     * The current version of the master in the cluster. This may
+     * be different than the `minMasterVersion` set in the config if the master
+     * has been updated by GKE.
      */
     masterVersion?: pulumi.Input<string>;
     /**
@@ -947,12 +953,14 @@ export interface ClusterState {
      */
     resourceUsageExportConfig?: pulumi.Input<inputs.container.ClusterResourceUsageExportConfig>;
     /**
-     * Server-defined URL for the resource.
+     * The server-defined URL for the resource.
      */
     selfLink?: pulumi.Input<string>;
     /**
-     * The IP address range of the Kubernetes services in this cluster, in CIDR notation (e.g. 1.2.3.4/29). Service addresses
-     * are typically put in the last /16 from the container CIDR.
+     * The IP address range of the Kubernetes services in this
+     * cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+     * notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
+     * `/16` from the container CIDR.
      */
     servicesIpv4Cidr?: pulumi.Input<string>;
     /**
@@ -961,7 +969,9 @@ export interface ClusterState {
      */
     subnetwork?: pulumi.Input<string>;
     /**
-     * The IP address range of the Cloud TPUs in this cluster, in CIDR notation (e.g. 1.2.3.4/29).
+     * The IP address range of the Cloud TPUs in this cluster, in
+     * [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+     * notation (e.g. `1.2.3.4/29`).
      */
     tpuIpv4CidrBlock?: pulumi.Input<string>;
     /**
@@ -1079,7 +1089,7 @@ export interface ClusterArgs {
      */
     enableLegacyAbac?: pulumi.Input<boolean>;
     /**
-     * Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
+     * Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
      */
     enableShieldedNodes?: pulumi.Input<boolean>;
     /**
@@ -1132,11 +1142,9 @@ export interface ClusterArgs {
      * The authentication information for accessing the
      * Kubernetes master. Some values in this block are only returned by the API if
      * your service account has permission to get credentials for your GKE cluster. If
-     * you see an unexpected diff removing a username/password or unsetting your client
-     * cert, ensure you have the `container.clusters.getCredentials` permission.
-     * Structure is documented below. This has been deprecated as of GKE 1.19.
-     *
-     * @deprecated Basic authentication was removed for GKE cluster versions >= 1.19.
+     * you see an unexpected diff unsetting your client cert, ensure you have the
+     * `container.clusters.getCredentials` permission.
+     * Structure is documented below.
      */
     masterAuth?: pulumi.Input<inputs.container.ClusterMasterAuth>;
     /**

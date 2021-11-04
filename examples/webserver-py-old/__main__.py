@@ -27,6 +27,7 @@ compute_firewall = compute.Firewall(
     "firewall",
     project=project_name,
     network=compute_network.self_link,
+    source_tags = ["foo"],
     allows=[
         {
             "protocol": "icmp",

@@ -64,9 +64,12 @@ import * as utilities from "../utilities";
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
  *     members: [gcsAccount.then(gcsAccount => `serviceAccount:${gcsAccount.emailAddress}`)],
  * });
- * const bucket = new gcp.storage.Bucket("bucket", {encryption: {
- *     defaultKmsKeyName: "your-crypto-key-id",
- * }}, {
+ * const bucket = new gcp.storage.Bucket("bucket", {
+ *     location: "US",
+ *     encryption: {
+ *         defaultKmsKeyName: "your-crypto-key-id",
+ *     },
+ * }, {
  *     dependsOn: [binding],
  * });
  * ```

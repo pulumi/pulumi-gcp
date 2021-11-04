@@ -325,7 +325,9 @@ class PreventionStoredInfoType(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        bucket = gcp.storage.Bucket("bucket", force_destroy=True)
+        bucket = gcp.storage.Bucket("bucket",
+            location="US",
+            force_destroy=True)
         object = gcp.storage.BucketObject("object",
             bucket=bucket.name,
             source=pulumi.FileAsset("./test-fixtures/dlp/words.txt"))
@@ -427,7 +429,9 @@ class PreventionStoredInfoType(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        bucket = gcp.storage.Bucket("bucket", force_destroy=True)
+        bucket = gcp.storage.Bucket("bucket",
+            location="US",
+            force_destroy=True)
         object = gcp.storage.BucketObject("object",
             bucket=bucket.name,
             source=pulumi.FileAsset("./test-fixtures/dlp/words.txt"))

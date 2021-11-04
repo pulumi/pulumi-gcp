@@ -11,37 +11,6 @@ namespace Pulumi.Gcp.RuntimeConfig
 {
     public static class GetVariable
     {
-        /// <summary>
-        /// To get more information about RuntimeConfigs, see:
-        /// 
-        /// * [API documentation](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/v1beta1/projects.configs)
-        /// * How-to Guides
-        ///     * [Runtime Configurator Fundamentals](https://cloud.google.com/deployment-manager/runtime-configurator/)
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var run_service = Output.Create(Gcp.RuntimeConfig.GetVariable.InvokeAsync(new Gcp.RuntimeConfig.GetVariableArgs
-        ///         {
-        ///             Name = "prod-variables/hostname",
-        ///             Parent = "my-service",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetVariableResult> InvokeAsync(GetVariableArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVariableResult>("gcp:runtimeconfig/getVariable:getVariable", args ?? new GetVariableArgs(), options.WithVersion());
     }

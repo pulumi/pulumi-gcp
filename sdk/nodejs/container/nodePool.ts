@@ -142,6 +142,10 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
+     * List of instance group URLs which have been assigned to this node pool.
+     */
+    public /*out*/ readonly managedInstanceGroupUrls!: pulumi.Output<string[]>;
+    /**
      * Node management configuration, wherein auto-repair and
      * auto-upgrade is configured. Structure is documented below.
      */
@@ -226,6 +230,7 @@ export class NodePool extends pulumi.CustomResource {
             inputs["initialNodeCount"] = state ? state.initialNodeCount : undefined;
             inputs["instanceGroupUrls"] = state ? state.instanceGroupUrls : undefined;
             inputs["location"] = state ? state.location : undefined;
+            inputs["managedInstanceGroupUrls"] = state ? state.managedInstanceGroupUrls : undefined;
             inputs["management"] = state ? state.management : undefined;
             inputs["maxPodsPerNode"] = state ? state.maxPodsPerNode : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -259,6 +264,7 @@ export class NodePool extends pulumi.CustomResource {
             inputs["upgradeSettings"] = args ? args.upgradeSettings : undefined;
             inputs["version"] = args ? args.version : undefined;
             inputs["instanceGroupUrls"] = undefined /*out*/;
+            inputs["managedInstanceGroupUrls"] = undefined /*out*/;
             inputs["operation"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -299,6 +305,10 @@ export interface NodePoolState {
      * The location (region or zone) of the cluster.
      */
     location?: pulumi.Input<string>;
+    /**
+     * List of instance group URLs which have been assigned to this node pool.
+     */
+    managedInstanceGroupUrls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Node management configuration, wherein auto-repair and
      * auto-upgrade is configured. Structure is documented below.

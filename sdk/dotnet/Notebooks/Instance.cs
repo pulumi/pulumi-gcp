@@ -149,11 +149,6 @@ namespace Pulumi.Gcp.Notebooks
     ///             {
     ///                 { "k", "val" },
     ///             },
-    ///             NicType = "VIRTIO_NET",
-    ///             ReservationAffinity = new Gcp.Notebooks.Inputs.InstanceReservationAffinityArgs
-    ///             {
-    ///                 ConsumeReservationType = "NO_RESERVATION",
-    ///             },
     ///         });
     ///     }
     /// 

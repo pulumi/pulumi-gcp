@@ -17,8 +17,6 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly ImmutableArray<Outputs.GetClusterMasterAuthClientCertificateConfigResult> ClientCertificateConfigs;
         public readonly string ClientKey;
         public readonly string ClusterCaCertificate;
-        public readonly string Password;
-        public readonly string Username;
 
         [OutputConstructor]
         private GetClusterMasterAuthResult(
@@ -28,18 +26,12 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string clientKey,
 
-            string clusterCaCertificate,
-
-            string password,
-
-            string username)
+            string clusterCaCertificate)
         {
             ClientCertificate = clientCertificate;
             ClientCertificateConfigs = clientCertificateConfigs;
             ClientKey = clientKey;
             ClusterCaCertificate = clusterCaCertificate;
-            Password = password;
-            Username = username;
         }
     }
 }

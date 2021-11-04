@@ -742,8 +742,12 @@ class Job(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         topic = gcp.pubsub.Topic("topic")
-        bucket1 = gcp.storage.Bucket("bucket1", force_destroy=True)
-        bucket2 = gcp.storage.Bucket("bucket2", force_destroy=True)
+        bucket1 = gcp.storage.Bucket("bucket1",
+            location="US",
+            force_destroy=True)
+        bucket2 = gcp.storage.Bucket("bucket2",
+            location="US",
+            force_destroy=True)
         pubsub_stream = gcp.dataflow.Job("pubsubStream",
             template_gcs_path="gs://my-bucket/templates/template_file",
             temp_gcs_location="gs://my-bucket/tmp_dir",
@@ -826,8 +830,12 @@ class Job(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         topic = gcp.pubsub.Topic("topic")
-        bucket1 = gcp.storage.Bucket("bucket1", force_destroy=True)
-        bucket2 = gcp.storage.Bucket("bucket2", force_destroy=True)
+        bucket1 = gcp.storage.Bucket("bucket1",
+            location="US",
+            force_destroy=True)
+        bucket2 = gcp.storage.Bucket("bucket2",
+            location="US",
+            force_destroy=True)
         pubsub_stream = gcp.dataflow.Job("pubsubStream",
             template_gcs_path="gs://my-bucket/templates/template_file",
             temp_gcs_location="gs://my-bucket/tmp_dir",

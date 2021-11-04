@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/storage"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -54,7 +54,6 @@ type LookupBucketArgs struct {
 
 // A collection of values returned by getBucket.
 type LookupBucketResult struct {
-	BucketPolicyOnly      bool                  `pulumi:"bucketPolicyOnly"`
 	Cors                  []GetBucketCor        `pulumi:"cors"`
 	DefaultEventBasedHold bool                  `pulumi:"defaultEventBasedHold"`
 	Encryptions           []GetBucketEncryption `pulumi:"encryptions"`
@@ -109,10 +108,6 @@ func (o LookupBucketResultOutput) ToLookupBucketResultOutput() LookupBucketResul
 
 func (o LookupBucketResultOutput) ToLookupBucketResultOutputWithContext(ctx context.Context) LookupBucketResultOutput {
 	return o
-}
-
-func (o LookupBucketResultOutput) BucketPolicyOnly() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupBucketResult) bool { return v.BucketPolicyOnly }).(pulumi.BoolOutput)
 }
 
 func (o LookupBucketResultOutput) Cors() GetBucketCorArrayOutput {

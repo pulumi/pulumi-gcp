@@ -27,10 +27,6 @@ import * as utilities from "../utilities";
  *     location: "us-central1-b",
  *     nodeVersion: central1b.then(central1b => central1b.latestNodeVersion),
  *     initialNodeCount: 1,
- *     masterAuth: {
- *         username: "mr.yoda",
- *         password: "adoy.rm",
- *     },
  * });
  * export const stableChannelVersion = central1b.then(central1b => central1b.releaseChannelDefaultVersion?.STABLE);
  * ```

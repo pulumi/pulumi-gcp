@@ -33,7 +33,7 @@ import (
 // import (
 // 	"io/ioutil"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -69,7 +69,7 @@ import (
 // import (
 // 	"io/ioutil"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //

@@ -1367,11 +1367,7 @@ class Instance(pulumi.CustomResource):
             subnet=my_subnetwork.id,
             labels={
                 "k": "val",
-            },
-            nic_type="VIRTIO_NET",
-            reservation_affinity=gcp.notebooks.InstanceReservationAffinityArgs(
-                consume_reservation_type="NO_RESERVATION",
-            ))
+            })
         ```
 
         ## Import
@@ -1561,11 +1557,7 @@ class Instance(pulumi.CustomResource):
             subnet=my_subnetwork.id,
             labels={
                 "k": "val",
-            },
-            nic_type="VIRTIO_NET",
-            reservation_affinity=gcp.notebooks.InstanceReservationAffinityArgs(
-                consume_reservation_type="NO_RESERVATION",
-            ))
+            })
         ```
 
         ## Import

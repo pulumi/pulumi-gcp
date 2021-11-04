@@ -12,11 +12,6 @@ namespace Pulumi.Gcp.Composer.Inputs
 
     public sealed class EnvironmentConfigEncryptionConfigGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Customer-managed Encryption Key available through Google's Key Management Service. It must
-        /// be the fully qualified resource name,
-        /// i.e. projects/project-id/locations/location/keyRings/keyring/cryptoKeys/key. Cannot be updated.
-        /// </summary>
         [Input("kmsKeyName", required: true)]
         public Input<string> KmsKeyName { get; set; } = null!;
 

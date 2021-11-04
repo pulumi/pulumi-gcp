@@ -39,8 +39,8 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/projects"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -77,8 +77,8 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/projects"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -120,7 +120,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/projects"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -147,7 +147,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/projects"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -179,7 +179,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/projects"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -204,7 +204,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/projects"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -234,7 +234,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/projects"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -307,9 +307,8 @@ type IAMPolicy struct {
 	// the IAM policy that will be applied to the project. The policy will be
 	// merged with any existing policy applied to the project.
 	PolicyData pulumi.StringOutput `pulumi:"policyData"`
-	// The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-	// Required for `projects.IAMPolicy` - you must explicitly set the project, and it
-	// will not be inferred from the provider.
+	// The project id of the target project. This is not
+	// inferred from the provider.
 	Project pulumi.StringOutput `pulumi:"project"`
 }
 
@@ -354,9 +353,8 @@ type iampolicyState struct {
 	// the IAM policy that will be applied to the project. The policy will be
 	// merged with any existing policy applied to the project.
 	PolicyData *string `pulumi:"policyData"`
-	// The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-	// Required for `projects.IAMPolicy` - you must explicitly set the project, and it
-	// will not be inferred from the provider.
+	// The project id of the target project. This is not
+	// inferred from the provider.
 	Project *string `pulumi:"project"`
 }
 
@@ -367,9 +365,8 @@ type IAMPolicyState struct {
 	// the IAM policy that will be applied to the project. The policy will be
 	// merged with any existing policy applied to the project.
 	PolicyData pulumi.StringPtrInput
-	// The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-	// Required for `projects.IAMPolicy` - you must explicitly set the project, and it
-	// will not be inferred from the provider.
+	// The project id of the target project. This is not
+	// inferred from the provider.
 	Project pulumi.StringPtrInput
 }
 
@@ -382,9 +379,8 @@ type iampolicyArgs struct {
 	// the IAM policy that will be applied to the project. The policy will be
 	// merged with any existing policy applied to the project.
 	PolicyData string `pulumi:"policyData"`
-	// The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-	// Required for `projects.IAMPolicy` - you must explicitly set the project, and it
-	// will not be inferred from the provider.
+	// The project id of the target project. This is not
+	// inferred from the provider.
 	Project string `pulumi:"project"`
 }
 
@@ -394,9 +390,8 @@ type IAMPolicyArgs struct {
 	// the IAM policy that will be applied to the project. The policy will be
 	// merged with any existing policy applied to the project.
 	PolicyData pulumi.StringInput
-	// The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-	// Required for `projects.IAMPolicy` - you must explicitly set the project, and it
-	// will not be inferred from the provider.
+	// The project id of the target project. This is not
+	// inferred from the provider.
 	Project pulumi.StringInput
 }
 

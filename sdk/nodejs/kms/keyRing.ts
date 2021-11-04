@@ -87,12 +87,6 @@ export class KeyRing extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
-    /**
-     * The self link of the created KeyRing in the format projects/{project}/locations/{location}/keyRings/{name}.
-     *
-     * @deprecated Deprecated in favor of id, which contains an identical value. This field will be removed in the next major release of the provider.
-     */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
 
     /**
      * Create a KeyRing resource with the given unique name, arguments, and options.
@@ -110,7 +104,6 @@ export class KeyRing extends pulumi.CustomResource {
             inputs["location"] = state ? state.location : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
         } else {
             const args = argsOrState as KeyRingArgs | undefined;
             if ((!args || args.location === undefined) && !opts.urn) {
@@ -119,7 +112,6 @@ export class KeyRing extends pulumi.CustomResource {
             inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["selfLink"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -146,12 +138,6 @@ export interface KeyRingState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
-    /**
-     * The self link of the created KeyRing in the format projects/{project}/locations/{location}/keyRings/{name}.
-     *
-     * @deprecated Deprecated in favor of id, which contains an identical value. This field will be removed in the next major release of the provider.
-     */
-    selfLink?: pulumi.Input<string>;
 }
 
 /**

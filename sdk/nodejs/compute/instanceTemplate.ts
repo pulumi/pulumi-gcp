@@ -218,7 +218,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
     /**
      * Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
      */
-    public readonly advancedMachineFeatures!: pulumi.Output<outputs.compute.InstanceTemplateAdvancedMachineFeatures>;
+    public readonly advancedMachineFeatures!: pulumi.Output<outputs.compute.InstanceTemplateAdvancedMachineFeatures | undefined>;
     /**
      * Whether to allow sending and receiving of
      * packets with non-matching source or destination IPs. This defaults to false.
@@ -240,7 +240,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
     public readonly disks!: pulumi.Output<outputs.compute.InstanceTemplateDisk[]>;
     /**
      * ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-     * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field. Note: This attribute is currently in beta and will be removed from the google provider. Please use the google-beta provider to continue using this attribute.
+     * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
      */
     public readonly enableDisplay!: pulumi.Output<boolean | undefined>;
     /**
@@ -465,7 +465,7 @@ export interface InstanceTemplateState {
     disks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateDisk>[]>;
     /**
      * ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-     * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field. Note: This attribute is currently in beta and will be removed from the google provider. Please use the google-beta provider to continue using this attribute.
+     * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
      */
     enableDisplay?: pulumi.Input<boolean>;
     /**
@@ -608,7 +608,7 @@ export interface InstanceTemplateArgs {
     disks: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateDisk>[]>;
     /**
      * ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-     * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field. Note: This attribute is currently in beta and will be removed from the google provider. Please use the google-beta provider to continue using this attribute.
+     * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
      */
     enableDisplay?: pulumi.Input<boolean>;
     /**

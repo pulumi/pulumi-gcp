@@ -6698,417 +6698,111 @@ export namespace composer {
     export interface EnvironmentConfig {
         airflowUri?: pulumi.Input<string>;
         dagGcsPrefix?: pulumi.Input<string>;
-        /**
-         * The configuration settings for Cloud SQL instance used internally
-         * by Apache Airflow software. This field is supported for Cloud
-         * Composer environments in versions composer-1.*.*-airflow-*.*.*. Structure is documented below.
-         */
         databaseConfig?: pulumi.Input<inputs.composer.EnvironmentConfigDatabaseConfig>;
-        /**
-         * The encryption options for the Cloud Composer environment and its
-         * dependencies. This field is supported for Cloud Composer environments in
-         * versions composer-1.*.*-airflow-*.*.*. Structure is documented below.
-         */
         encryptionConfig?: pulumi.Input<inputs.composer.EnvironmentConfigEncryptionConfig>;
         environmentSize?: pulumi.Input<string>;
         gkeCluster?: pulumi.Input<string>;
-        /**
-         * The configuration settings for Cloud Composer maintenance window. Structure is documented below.
-         */
         maintenanceWindow?: pulumi.Input<inputs.composer.EnvironmentConfigMaintenanceWindow>;
-        /**
-         * The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
-         */
         nodeConfig?: pulumi.Input<inputs.composer.EnvironmentConfigNodeConfig>;
-        /**
-         * The number of nodes in the Kubernetes Engine cluster that
-         * will be used to run this environment. This field is
-         * supported for Cloud Composer environments in versions
-         * composer-1.*.*-airflow-*.*.*.
-         */
         nodeCount?: pulumi.Input<number>;
-        /**
-         * The configuration used for the Private IP Cloud Composer environment. Structure is documented below.
-         */
         privateEnvironmentConfig?: pulumi.Input<inputs.composer.EnvironmentConfigPrivateEnvironmentConfig>;
-        /**
-         * The configuration settings for software inside the environment.  Structure is documented below.
-         */
         softwareConfig?: pulumi.Input<inputs.composer.EnvironmentConfigSoftwareConfig>;
-        /**
-         * The configuration settings for the Airflow web server App Engine instance.
-         * This field is supported for Cloud Composer environments in versions
-         * composer-1.*.*-airflow-*.*.*. Structure is documented below.
-         */
         webServerConfig?: pulumi.Input<inputs.composer.EnvironmentConfigWebServerConfig>;
-        /**
-         * The network-level access control policy for the Airflow web server.
-         * If unspecified, no network-level access restrictions will be applied.
-         * This field is supported for Cloud Composer environments in versions
-         * composer-1.*.*-airflow-*.*.*.
-         */
         webServerNetworkAccessControl?: pulumi.Input<inputs.composer.EnvironmentConfigWebServerNetworkAccessControl>;
-        /**
-         * The Kubernetes workloads configuration for GKE cluster associated with the
-         * Cloud Composer environment. Supported for Cloud Composer environments in
-         * versions composer-2.*.*-airflow-*.*.* and newer.
-         */
         workloadsConfig?: pulumi.Input<inputs.composer.EnvironmentConfigWorkloadsConfig>;
     }
 
     export interface EnvironmentConfigDatabaseConfig {
-        /**
-         * Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2,
-         * composer-n1-webserver-4 or composer-n1-webserver-8.
-         * Value custom is returned only in response, if Airflow web server parameters were
-         * manually changed to a non-standard values.
-         */
         machineType: pulumi.Input<string>;
     }
 
     export interface EnvironmentConfigEncryptionConfig {
-        /**
-         * Customer-managed Encryption Key available through Google's Key Management Service. It must
-         * be the fully qualified resource name,
-         * i.e. projects/project-id/locations/location/keyRings/keyring/cryptoKeys/key. Cannot be updated.
-         */
         kmsKeyName: pulumi.Input<string>;
     }
 
     export interface EnvironmentConfigMaintenanceWindow {
-        /**
-         * Maintenance window end time. It is used only to calculate the duration of the maintenance window.
-         * The value for end-time must be in the future, relative to 'start_time'.
-         */
         endTime: pulumi.Input<string>;
-        /**
-         * Maintenance window recurrence. Format is a subset of RFC-5545 (https://tools.ietf.org/html/rfc5545) 'RRULE'.
-         * The only allowed values for 'FREQ' field are 'FREQ=DAILY' and 'FREQ=WEEKLY;BYDAY=...'.
-         * Example values: 'FREQ=WEEKLY;BYDAY=TU,WE', 'FREQ=DAILY'.
-         */
         recurrence: pulumi.Input<string>;
-        /**
-         * Start time of the first recurrence of the maintenance window.
-         */
         startTime: pulumi.Input<string>;
     }
 
     export interface EnvironmentConfigNodeConfig {
-        /**
-         * The disk size in GB used for node VMs. Minimum size is 20GB.
-         * If unspecified, defaults to 100GB. Cannot be updated. This field is supported
-         * for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-         */
         diskSizeGb?: pulumi.Input<number>;
-        /**
-         * Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines
-         * nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for
-         * all destination addresses, except between pods traffic.
-         * See the [documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent).
-         */
         enableIpMasqAgent?: pulumi.Input<boolean>;
-        /**
-         * Configuration for controlling how IPs are allocated in the GKE cluster.
-         * Structure is documented below.
-         * Cannot be updated.
-         */
         ipAllocationPolicy?: pulumi.Input<inputs.composer.EnvironmentConfigNodeConfigIpAllocationPolicy>;
-        /**
-         * Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2,
-         * composer-n1-webserver-4 or composer-n1-webserver-8.
-         * Value custom is returned only in response, if Airflow web server parameters were
-         * manually changed to a non-standard values.
-         */
         machineType?: pulumi.Input<string>;
-        /**
-         * The maximum pods per node in the GKE cluster allocated during environment
-         * creation. Lowering this value reduces IP address consumption by the Cloud
-         * Composer Kubernetes cluster. This value can only be set if the environment is VPC-Native.
-         * The range of possible values is 8-110, and the default is 32.
-         * Cannot be updated. This field is supported for Cloud Composer environments
-         * in versions composer-1.*.*-airflow-*.*.*.
-         */
         maxPodsPerNode?: pulumi.Input<number>;
-        /**
-         * The Compute Engine network to be used for machine
-         * communications, specified as a self-link, relative resource name
-         * (e.g. "projects/{project}/global/networks/{network}"), by name.
-         */
         network?: pulumi.Input<string>;
-        /**
-         * The set of Google API scopes to be made available on all node
-         * VMs. Cannot be updated. If empty, defaults to
-         * `["https://www.googleapis.com/auth/cloud-platform"]`. This field is
-         * supported for Cloud Composer environments in versions
-         * composer-1.*.*-airflow-*.*.*.
-         */
         oauthScopes?: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * The Google Cloud Platform Service Account to be used by the
-         * node VMs. If a service account is not specified, the "default"
-         * Compute Engine service account is used. Cannot be updated. If given,
-         * note that the service account must have `roles/composer.worker`
-         * for any GCP resources created under the Cloud Composer Environment.
-         */
         serviceAccount?: pulumi.Input<string>;
-        /**
-         * The Compute Engine subnetwork to be used for machine
-         * communications, , specified as a self-link, relative resource name (e.g.
-         * "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided,
-         * network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
-         */
         subnetwork?: pulumi.Input<string>;
-        /**
-         * The list of instance tags applied to all node VMs. Tags are
-         * used to identify valid sources or targets for network
-         * firewalls. Each tag within the list must comply with RFC1035.
-         * Cannot be updated. This field is supported for Cloud Composer
-         * environments in versions composer-1.*.*-airflow-*.*.*.
-         */
         tags?: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * The Compute Engine zone in which to deploy the VMs running the
-         * Apache Airflow software, specified as the zone name or
-         * relative resource name (e.g. "projects/{project}/zones/{zone}"). Must
-         * belong to the enclosing environment's project and region. This field is
-         * supported for Cloud Composer environments in versions
-         * composer-1.*.*-airflow-*.*.*.
-         */
         zone?: pulumi.Input<string>;
     }
 
     export interface EnvironmentConfigNodeConfigIpAllocationPolicy {
-        /**
-         * The IP address range used to allocate IP addresses to pods in the cluster.
-         * For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*,
-         * this field is applicable only when `useIpAliases` is true.
-         * Set to blank to have GKE choose a range with the default size.
-         * Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask.
-         * Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks
-         * (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use.
-         * Specify either `clusterSecondaryRangeName` or `clusterIpv4CidrBlock` but not both.
-         */
         clusterIpv4CidrBlock?: pulumi.Input<string>;
-        /**
-         * The name of the cluster's secondary range used to allocate IP addresses to pods.
-         * Specify either `clusterSecondaryRangeName` or `clusterIpv4CidrBlock` but not both.
-         * For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*,
-         * this field is applicable only when `useIpAliases` is true.
-         */
         clusterSecondaryRangeName?: pulumi.Input<string>;
-        /**
-         * The IP address range used to allocate IP addresses in this cluster.
-         * For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*,
-         * this field is applicable only when `useIpAliases` is true.
-         * Set to blank to have GKE choose a range with the default size.
-         * Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask.
-         * Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks
-         * (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use.
-         * Specify either `servicesSecondaryRangeName` or `servicesIpv4CidrBlock` but not both.
-         */
         servicesIpv4CidrBlock?: pulumi.Input<string>;
-        /**
-         * The name of the services' secondary range used to allocate IP addresses to the cluster.
-         * Specify either `servicesSecondaryRangeName` or `servicesIpv4CidrBlock` but not both.
-         * For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*,
-         * this field is applicable only when `useIpAliases` is true.
-         */
         servicesSecondaryRangeName?: pulumi.Input<string>;
-        /**
-         * Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created.
-         * Defaults to true if the `ipAllocationPolicy` block is present in config.
-         * This field is only supported for Cloud Composer environments in versions
-         * composer-1.*.*-airflow-*.*.*. Environments in newer versions always use
-         * VPC-native GKE clusters.
-         */
-        useIpAliases: pulumi.Input<boolean>;
+        useIpAliases?: pulumi.Input<boolean>;
     }
 
     export interface EnvironmentConfigPrivateEnvironmentConfig {
         cloudComposerNetworkIpv4CidrBlock?: pulumi.Input<string>;
-        /**
-         * The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `webServerIpv4CidrBlock`
-         */
         cloudSqlIpv4CidrBlock?: pulumi.Input<string>;
-        /**
-         * -
-         * If true, access to the public endpoint of the GKE cluster is denied.
-         * If this field is set to true, `ip_allocation_policy.use_ip_aliases` must
-         * be set to true for Cloud Composer environments in versions
-         * composer-1.*.*-airflow-*.*.*.
-         */
         enablePrivateEndpoint?: pulumi.Input<boolean>;
-        /**
-         * When enabled, IPs from public (non-RFC1918) ranges can be used for
-         * `ip_allocation_policy.cluster_ipv4_cidr_block` and `ip_allocation_policy.service_ipv4_cidr_block`.
-         */
         enablePrivatelyUsedPublicIps?: pulumi.Input<boolean>;
-        /**
-         * The IP range in CIDR notation to use for the hosted master network. This range is used
-         * for assigning internal IP addresses to the cluster master or set of masters and to the
-         * internal load balancer virtual IP. This range must not overlap with any other ranges
-         * in use within the cluster's network.
-         * If left blank, the default value of is used. See [documentation](https://cloud.google.com/composer/docs/how-to/managing/configuring-private-ip#defaults) for default values per region.
-         */
         masterIpv4CidrBlock?: pulumi.Input<string>;
-        /**
-         * The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `masterIpv4CidrBlock` and `cloudSqlIpv4CidrBlock`. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-         */
         webServerIpv4CidrBlock?: pulumi.Input<string>;
     }
 
     export interface EnvironmentConfigSoftwareConfig {
-        /**
-         * -
-         * (Optional) Apache Airflow configuration properties to override. Property keys contain the section and property names,
-         * separated by a hyphen, for example "core-dags_are_paused_at_creation".
-         */
         airflowConfigOverrides?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-        /**
-         * Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes.
-         * Environment variable names must match the regular expression `[a-zA-Z_][a-zA-Z0-9_]*`.
-         * They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression
-         * `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the following reserved names:
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         */
         envVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-        /**
-         * -
-         * The version of the software running in the environment. This encapsulates both the version of Cloud Composer
-         * functionality and the version of Apache Airflow. It must match the regular expression
-         * `composer-[0-9]+\.[0-9]+(\.[0-9]+)?-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`.
-         * The Cloud Composer portion of the version is a semantic version.
-         * The portion of the image version following 'airflow-' is an official Apache Airflow repository release name.
-         * See [documentation](https://cloud.google.com/composer/docs/reference/rest/v1beta1/projects.locations.environments#softwareconfig)
-         * for allowed release names.
-         */
         imageVersion?: pulumi.Input<string>;
-        /**
-         * Custom Python Package Index (PyPI) packages to be installed
-         * in the environment. Keys refer to the lowercase package name (e.g. "numpy"). Values are the lowercase extras and
-         * version specifier (e.g. "==1.12.0", "[devel,gcp_api]", "[devel]>=1.8.2, <1.9.2"). To specify a package without
-         * pinning it to a version specifier, use the empty string as the value.
-         */
         pypiPackages?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-        /**
-         * -
-         * The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes.
-         * Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be
-         * updated. This field is supported for Cloud Composer environments in versions
-         * composer-1.*.*-airflow-*.*.*. Environments in newer versions always use
-         * Python major version 3.
-         */
         pythonVersion?: pulumi.Input<string>;
-        /**
-         * -
-         * The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.`
-         */
         schedulerCount?: pulumi.Input<number>;
     }
 
     export interface EnvironmentConfigWebServerConfig {
-        /**
-         * Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2,
-         * composer-n1-webserver-4 or composer-n1-webserver-8.
-         * Value custom is returned only in response, if Airflow web server parameters were
-         * manually changed to a non-standard values.
-         */
         machineType: pulumi.Input<string>;
     }
 
     export interface EnvironmentConfigWebServerNetworkAccessControl {
-        /**
-         * -
-         * A collection of allowed IP ranges with descriptions. Structure is documented below.
-         */
         allowedIpRanges?: pulumi.Input<pulumi.Input<inputs.composer.EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange>[]>;
     }
 
     export interface EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange {
-        /**
-         * A description of this ip range.
-         */
         description?: pulumi.Input<string>;
-        /**
-         * IP address or range, defined using CIDR notation, of requests that this rule applies to.
-         * Examples: `192.168.1.1` or `192.168.0.0/16` or `2001:db8::/32` or `2001:0db8:0000:0042:0000:8a2e:0370:7334`.
-         * IP range prefixes should be properly truncated. For example,
-         * `1.2.3.4/24` should be truncated to `1.2.3.0/24`. Similarly, for IPv6, `2001:db8::1/32` should be truncated to `2001:db8::/32`.
-         */
         value: pulumi.Input<string>;
     }
 
     export interface EnvironmentConfigWorkloadsConfig {
-        /**
-         * Configuration for resources used by Airflow schedulers.
-         */
         scheduler?: pulumi.Input<inputs.composer.EnvironmentConfigWorkloadsConfigScheduler>;
-        /**
-         * Configuration for resources used by Airflow web server.
-         */
         webServer?: pulumi.Input<inputs.composer.EnvironmentConfigWorkloadsConfigWebServer>;
-        /**
-         * Configuration for resources used by Airflow workers.
-         */
         worker?: pulumi.Input<inputs.composer.EnvironmentConfigWorkloadsConfigWorker>;
     }
 
     export interface EnvironmentConfigWorkloadsConfigScheduler {
-        /**
-         * The number of schedulers.
-         */
         count?: pulumi.Input<number>;
-        /**
-         * CPU request and limit for a single Airflow worker replica.
-         */
         cpu?: pulumi.Input<number>;
-        /**
-         * Memory (GB) request and limit for a single Airflow worker replica.
-         */
         memoryGb?: pulumi.Input<number>;
-        /**
-         * Storage (GB) request and limit for Airflow web server.
-         */
         storageGb?: pulumi.Input<number>;
     }
 
     export interface EnvironmentConfigWorkloadsConfigWebServer {
-        /**
-         * CPU request and limit for a single Airflow worker replica.
-         */
         cpu?: pulumi.Input<number>;
-        /**
-         * Memory (GB) request and limit for a single Airflow worker replica.
-         */
         memoryGb?: pulumi.Input<number>;
-        /**
-         * Storage (GB) request and limit for Airflow web server.
-         */
         storageGb?: pulumi.Input<number>;
     }
 
     export interface EnvironmentConfigWorkloadsConfigWorker {
-        /**
-         * CPU request and limit for a single Airflow worker replica.
-         */
         cpu?: pulumi.Input<number>;
-        /**
-         * Maximum number of workers for autoscaling.
-         */
         maxCount?: pulumi.Input<number>;
-        /**
-         * Memory (GB) request and limit for a single Airflow worker replica.
-         */
         memoryGb?: pulumi.Input<number>;
-        /**
-         * Minimum number of workers for autoscaling.
-         */
         minCount?: pulumi.Input<number>;
-        /**
-         * Storage (GB) request and limit for Airflow web server.
-         */
         storageGb?: pulumi.Input<number>;
     }
 
@@ -9145,7 +8839,7 @@ export namespace compute {
          */
         maxUnavailablePercent?: pulumi.Input<number>;
         /**
-         * , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+         * ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
          */
         minReadySec?: pulumi.Input<number>;
         /**
@@ -11257,7 +10951,7 @@ export namespace compute {
          */
         maxUnavailablePercent?: pulumi.Input<number>;
         /**
-         * , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+         * ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
          */
         minReadySec?: pulumi.Input<number>;
         /**
@@ -15469,10 +15163,16 @@ export namespace container {
 
     export interface ClusterDnsConfig {
         /**
-         * Which in-cluster DNS provider shoul
+         * Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
          */
         clusterDns?: pulumi.Input<string>;
+        /**
+         * The suffix used for all cluster service records.
+         */
         clusterDnsDomain?: pulumi.Input<string>;
+        /**
+         * The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
+         */
         clusterDnsScope?: pulumi.Input<string>;
     }
 
@@ -15554,19 +15254,9 @@ export namespace container {
         /**
          * Whether client certificate authorization is enabled for this cluster.  For example:
          */
-        clientCertificateConfig?: pulumi.Input<inputs.container.ClusterMasterAuthClientCertificateConfig>;
+        clientCertificateConfig: pulumi.Input<inputs.container.ClusterMasterAuthClientCertificateConfig>;
         clientKey?: pulumi.Input<string>;
         clusterCaCertificate?: pulumi.Input<string>;
-        /**
-         * The password to use for HTTP basic authentication when accessing
-         * the Kubernetes master endpoint. This has been deprecated as of GKE 1.19.
-         */
-        password?: pulumi.Input<string>;
-        /**
-         * The username to use for HTTP basic authentication when accessing
-         * the Kubernetes master endpoint. If not present basic auth will be disabled. This has been deprecated as of GKE 1.19.
-         */
-        username?: pulumi.Input<string>;
     }
 
     export interface ClusterMasterAuthClientCertificateConfig {
@@ -15826,18 +15516,7 @@ export namespace container {
          * * GCE_METADATA: Expose all Compute Engine metadata to pods.
          * * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
          */
-        mode?: pulumi.Input<string>;
-        /**
-         * How to expose the node metadata to the workload running on the node. This is deprecated in favor of `mode`
-         * Accepted values are:
-         * * UNSPECIFIED: Not Set
-         * * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
-         * * EXPOSE: Expose all VM metadata to pods.
-         * * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
-         *
-         * @deprecated Deprecated in favor of mode.
-         */
-        nodeMetadata?: pulumi.Input<string>;
+        mode: pulumi.Input<string>;
     }
 
     export interface ClusterNodePool {
@@ -15852,6 +15531,7 @@ export namespace container {
          */
         initialNodeCount?: pulumi.Input<number>;
         instanceGroupUrls?: pulumi.Input<pulumi.Input<string>[]>;
+        managedInstanceGroupUrls?: pulumi.Input<pulumi.Input<string>[]>;
         management?: pulumi.Input<inputs.container.ClusterNodePoolManagement>;
         maxPodsPerNode?: pulumi.Input<number>;
         /**
@@ -16124,18 +15804,7 @@ export namespace container {
          * * GCE_METADATA: Expose all Compute Engine metadata to pods.
          * * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
          */
-        mode?: pulumi.Input<string>;
-        /**
-         * How to expose the node metadata to the workload running on the node. This is deprecated in favor of `mode`
-         * Accepted values are:
-         * * UNSPECIFIED: Not Set
-         * * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
-         * * EXPOSE: Expose all VM metadata to pods.
-         * * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
-         *
-         * @deprecated Deprecated in favor of mode.
-         */
-        nodeMetadata?: pulumi.Input<string>;
+        mode: pulumi.Input<string>;
     }
 
     export interface ClusterNodePoolUpgradeSettings {
@@ -16269,12 +15938,6 @@ export namespace container {
 
     export interface ClusterWorkloadIdentityConfig {
         /**
-         * - Currently, the only supported identity namespace is the project's default.
-         *
-         * @deprecated This field will be removed in a future major release as it has been deprecated in the API. Use `workload_pool` instead.
-         */
-        identityNamespace?: pulumi.Input<string>;
-        /**
          * The workload pool to attach all Kubernetes service accounts to. Currently, the only supported identity namespace is the project of the cluster.
          */
         workloadPool?: pulumi.Input<string>;
@@ -16369,11 +16032,7 @@ export namespace container {
     }
 
     export interface NodePoolNodeConfigWorkloadMetadataConfig {
-        mode?: pulumi.Input<string>;
-        /**
-         * @deprecated Deprecated in favor of mode.
-         */
-        nodeMetadata?: pulumi.Input<string>;
+        mode: pulumi.Input<string>;
     }
 
     export interface NodePoolUpgradeSettings {
@@ -21834,9 +21493,7 @@ export namespace kms {
          */
         algorithm: pulumi.Input<string>;
         /**
-         * The protection level to use when creating a version based on this template.
-         * Default value is `SOFTWARE`.
-         * Possible values are `SOFTWARE` and `HSM`.
+         * The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL". Defaults to "SOFTWARE".
          */
         protectionLevel?: pulumi.Input<string>;
     }
@@ -26122,15 +25779,6 @@ export namespace sql {
          */
         activationPolicy?: pulumi.Input<string>;
         /**
-         * This property is only applicable to First Generation instances.
-         * First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-         * for information on how to upgrade to Second Generation instances.
-         * A list of Google App Engine (GAE) project names that are allowed to access this instance.
-         *
-         * @deprecated This property is only applicable to First Generation instances, and First Generation instances are now deprecated.
-         */
-        authorizedGaeApplications?: pulumi.Input<pulumi.Input<string>[]>;
-        /**
          * The availability type of the Cloud SQL
          * instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For MySQL
          * instances, ensure that `settings.backup_configuration.enabled` and
@@ -26142,19 +25790,9 @@ export namespace sql {
          * The name of server instance collation.
          */
         collation?: pulumi.Input<string>;
-        /**
-         * This property is only applicable to First Generation instances.
-         * First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-         * for information on how to upgrade to Second Generation instances.
-         * Specific to read instances, indicates
-         * when crash-safe replication flags are enabled.
-         *
-         * @deprecated This property is only applicable to First Generation instances, and First Generation instances are now deprecated.
-         */
-        crashSafeReplication?: pulumi.Input<boolean>;
         databaseFlags?: pulumi.Input<pulumi.Input<inputs.sql.DatabaseInstanceSettingsDatabaseFlag>[]>;
         /**
-         * Configuration to increase storage size automatically.  Note that future `pulumi apply` calls will attempt to resize the disk to the value specified in `diskSize` - if this is set, do not set `diskSize`.
+         * Configuration to increase storage size automatically.  Note that future apply calls will attempt to resize the disk to the value specified in `diskSize` - if this is set, do not set `diskSize`.
          */
         diskAutoresize?: pulumi.Input<boolean>;
         diskAutoresizeLimit?: pulumi.Input<number>;
@@ -26174,15 +25812,6 @@ export namespace sql {
          * Pricing plan for this instance, can only be `PER_USE`.
          */
         pricingPlan?: pulumi.Input<string>;
-        /**
-         * This property is only applicable to First Generation instances.
-         * First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-         * for information on how to upgrade to Second Generation instances.
-         * Replication type for this instance, can be one of `ASYNCHRONOUS` or `SYNCHRONOUS`.
-         *
-         * @deprecated This property is only applicable to First Generation instances, and First Generation instances are now deprecated.
-         */
-        replicationType?: pulumi.Input<string>;
         /**
          * The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
          * for more details and supported versions. Postgres supports only shared-core machine types,

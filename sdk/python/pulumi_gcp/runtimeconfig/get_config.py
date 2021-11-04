@@ -74,23 +74,7 @@ def get_config(name: Optional[str] = None,
                project: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConfigResult:
     """
-    To get more information about RuntimeConfigs, see:
-
-    !> This datasource has been deprecated in the google (GA) provider, and will only be available in the google-beta provider in a future release.
-
-    * [API documentation](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/v1beta1/projects.configs)
-    * How-to Guides
-        * [Runtime Configurator Fundamentals](https://cloud.google.com/deployment-manager/runtime-configurator/)
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    run_service = gcp.runtimeconfig.get_config(name="my-service")
-    ```
-
+    Use this data source to access information about an existing resource.
 
     :param str name: The name of the Runtime Configurator configuration.
     :param str project: The project in which the resource belongs. If it
@@ -117,23 +101,7 @@ def get_config_output(name: Optional[pulumi.Input[str]] = None,
                       project: Optional[pulumi.Input[Optional[str]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConfigResult]:
     """
-    To get more information about RuntimeConfigs, see:
-
-    !> This datasource has been deprecated in the google (GA) provider, and will only be available in the google-beta provider in a future release.
-
-    * [API documentation](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/v1beta1/projects.configs)
-    * How-to Guides
-        * [Runtime Configurator Fundamentals](https://cloud.google.com/deployment-manager/runtime-configurator/)
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    run_service = gcp.runtimeconfig.get_config(name="my-service")
-    ```
-
+    Use this data source to access information about an existing resource.
 
     :param str name: The name of the Runtime Configurator configuration.
     :param str project: The project in which the resource belongs. If it

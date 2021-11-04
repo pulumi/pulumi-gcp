@@ -140,27 +140,6 @@ class Config(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Manages a RuntimeConfig resource in Google Cloud.
-
-        !> This resource has been deprecated in the google (GA) provider, and will only be available in the google-beta provider in a future release.
-
-        To get more information about RuntimeConfigs, see:
-
-        * [API documentation](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/v1beta1/projects.configs)
-        * How-to Guides
-            * [Runtime Configurator Fundamentals](https://cloud.google.com/deployment-manager/runtime-configurator/)
-
-        ## Example Usage
-
-        Example creating a RuntimeConfig resource.
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_runtime_config = gcp.runtimeconfig.Config("my-runtime-config", description="Runtime configuration values for my service")
-        ```
-
         ## Import
 
         Runtime Configs can be imported using the `name` or full config name, e.g.
@@ -190,27 +169,6 @@ class Config(pulumi.CustomResource):
                  args: Optional[ConfigArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a RuntimeConfig resource in Google Cloud.
-
-        !> This resource has been deprecated in the google (GA) provider, and will only be available in the google-beta provider in a future release.
-
-        To get more information about RuntimeConfigs, see:
-
-        * [API documentation](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/v1beta1/projects.configs)
-        * How-to Guides
-            * [Runtime Configurator Fundamentals](https://cloud.google.com/deployment-manager/runtime-configurator/)
-
-        ## Example Usage
-
-        Example creating a RuntimeConfig resource.
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_runtime_config = gcp.runtimeconfig.Config("my-runtime-config", description="Runtime configuration values for my service")
-        ```
-
         ## Import
 
         Runtime Configs can be imported using the `name` or full config name, e.g.

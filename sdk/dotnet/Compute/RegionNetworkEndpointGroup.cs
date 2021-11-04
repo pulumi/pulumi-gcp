@@ -31,6 +31,7 @@ namespace Pulumi.Gcp.Compute
     ///     {
     ///         var bucket = new Gcp.Storage.Bucket("bucket", new Gcp.Storage.BucketArgs
     ///         {
+    ///             Location = "US",
     ///         });
     ///         var archive = new Gcp.Storage.BucketObject("archive", new Gcp.Storage.BucketObjectArgs
     ///         {
@@ -123,6 +124,7 @@ namespace Pulumi.Gcp.Compute
     ///     {
     ///         var appengineNegBucket = new Gcp.Storage.Bucket("appengineNegBucket", new Gcp.Storage.BucketArgs
     ///         {
+    ///             Location = "US",
     ///         });
     ///         var appengineNegBucketObject = new Gcp.Storage.BucketObject("appengineNegBucketObject", new Gcp.Storage.BucketObjectArgs
     ///         {

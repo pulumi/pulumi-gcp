@@ -42,11 +42,6 @@ namespace Pulumi.Gcp.Container
         ///             Location = "us-central1-b",
         ///             NodeVersion = central1b.Apply(central1b =&gt; central1b.LatestNodeVersion),
         ///             InitialNodeCount = 1,
-        ///             MasterAuth = new Gcp.Container.Inputs.ClusterMasterAuthArgs
-        ///             {
-        ///                 Username = "mr.yoda",
-        ///                 Password = "adoy.rm",
-        ///             },
         ///         });
         ///         this.StableChannelVersion = central1b.Apply(central1b =&gt; central1b.ReleaseChannelDefaultVersion?.STABLE);
         ///     }

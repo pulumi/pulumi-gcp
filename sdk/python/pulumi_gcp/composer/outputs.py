@@ -103,32 +103,6 @@ class EnvironmentConfig(dict):
                  web_server_config: Optional['outputs.EnvironmentConfigWebServerConfig'] = None,
                  web_server_network_access_control: Optional['outputs.EnvironmentConfigWebServerNetworkAccessControl'] = None,
                  workloads_config: Optional['outputs.EnvironmentConfigWorkloadsConfig'] = None):
-        """
-        :param 'EnvironmentConfigDatabaseConfigArgs' database_config: The configuration settings for Cloud SQL instance used internally
-               by Apache Airflow software. This field is supported for Cloud
-               Composer environments in versions composer-1.*.*-airflow-*.*.*. Structure is documented below.
-        :param 'EnvironmentConfigEncryptionConfigArgs' encryption_config: The encryption options for the Cloud Composer environment and its
-               dependencies. This field is supported for Cloud Composer environments in
-               versions composer-1.*.*-airflow-*.*.*. Structure is documented below.
-        :param 'EnvironmentConfigMaintenanceWindowArgs' maintenance_window: The configuration settings for Cloud Composer maintenance window. Structure is documented below.
-        :param 'EnvironmentConfigNodeConfigArgs' node_config: The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
-        :param int node_count: The number of nodes in the Kubernetes Engine cluster that
-               will be used to run this environment. This field is
-               supported for Cloud Composer environments in versions
-               composer-1.*.*-airflow-*.*.*.
-        :param 'EnvironmentConfigPrivateEnvironmentConfigArgs' private_environment_config: The configuration used for the Private IP Cloud Composer environment. Structure is documented below.
-        :param 'EnvironmentConfigSoftwareConfigArgs' software_config: The configuration settings for software inside the environment.  Structure is documented below.
-        :param 'EnvironmentConfigWebServerConfigArgs' web_server_config: The configuration settings for the Airflow web server App Engine instance.
-               This field is supported for Cloud Composer environments in versions
-               composer-1.*.*-airflow-*.*.*. Structure is documented below.
-        :param 'EnvironmentConfigWebServerNetworkAccessControlArgs' web_server_network_access_control: The network-level access control policy for the Airflow web server.
-               If unspecified, no network-level access restrictions will be applied.
-               This field is supported for Cloud Composer environments in versions
-               composer-1.*.*-airflow-*.*.*.
-        :param 'EnvironmentConfigWorkloadsConfigArgs' workloads_config: The Kubernetes workloads configuration for GKE cluster associated with the
-               Cloud Composer environment. Supported for Cloud Composer environments in
-               versions composer-2.*.*-airflow-*.*.* and newer.
-        """
         if airflow_uri is not None:
             pulumi.set(__self__, "airflow_uri", airflow_uri)
         if dag_gcs_prefix is not None:
@@ -171,21 +145,11 @@ class EnvironmentConfig(dict):
     @property
     @pulumi.getter(name="databaseConfig")
     def database_config(self) -> Optional['outputs.EnvironmentConfigDatabaseConfig']:
-        """
-        The configuration settings for Cloud SQL instance used internally
-        by Apache Airflow software. This field is supported for Cloud
-        Composer environments in versions composer-1.*.*-airflow-*.*.*. Structure is documented below.
-        """
         return pulumi.get(self, "database_config")
 
     @property
     @pulumi.getter(name="encryptionConfig")
     def encryption_config(self) -> Optional['outputs.EnvironmentConfigEncryptionConfig']:
-        """
-        The encryption options for the Cloud Composer environment and its
-        dependencies. This field is supported for Cloud Composer environments in
-        versions composer-1.*.*-airflow-*.*.*. Structure is documented below.
-        """
         return pulumi.get(self, "encryption_config")
 
     @property
@@ -201,75 +165,41 @@ class EnvironmentConfig(dict):
     @property
     @pulumi.getter(name="maintenanceWindow")
     def maintenance_window(self) -> Optional['outputs.EnvironmentConfigMaintenanceWindow']:
-        """
-        The configuration settings for Cloud Composer maintenance window. Structure is documented below.
-        """
         return pulumi.get(self, "maintenance_window")
 
     @property
     @pulumi.getter(name="nodeConfig")
     def node_config(self) -> Optional['outputs.EnvironmentConfigNodeConfig']:
-        """
-        The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
-        """
         return pulumi.get(self, "node_config")
 
     @property
     @pulumi.getter(name="nodeCount")
     def node_count(self) -> Optional[int]:
-        """
-        The number of nodes in the Kubernetes Engine cluster that
-        will be used to run this environment. This field is
-        supported for Cloud Composer environments in versions
-        composer-1.*.*-airflow-*.*.*.
-        """
         return pulumi.get(self, "node_count")
 
     @property
     @pulumi.getter(name="privateEnvironmentConfig")
     def private_environment_config(self) -> Optional['outputs.EnvironmentConfigPrivateEnvironmentConfig']:
-        """
-        The configuration used for the Private IP Cloud Composer environment. Structure is documented below.
-        """
         return pulumi.get(self, "private_environment_config")
 
     @property
     @pulumi.getter(name="softwareConfig")
     def software_config(self) -> Optional['outputs.EnvironmentConfigSoftwareConfig']:
-        """
-        The configuration settings for software inside the environment.  Structure is documented below.
-        """
         return pulumi.get(self, "software_config")
 
     @property
     @pulumi.getter(name="webServerConfig")
     def web_server_config(self) -> Optional['outputs.EnvironmentConfigWebServerConfig']:
-        """
-        The configuration settings for the Airflow web server App Engine instance.
-        This field is supported for Cloud Composer environments in versions
-        composer-1.*.*-airflow-*.*.*. Structure is documented below.
-        """
         return pulumi.get(self, "web_server_config")
 
     @property
     @pulumi.getter(name="webServerNetworkAccessControl")
     def web_server_network_access_control(self) -> Optional['outputs.EnvironmentConfigWebServerNetworkAccessControl']:
-        """
-        The network-level access control policy for the Airflow web server.
-        If unspecified, no network-level access restrictions will be applied.
-        This field is supported for Cloud Composer environments in versions
-        composer-1.*.*-airflow-*.*.*.
-        """
         return pulumi.get(self, "web_server_network_access_control")
 
     @property
     @pulumi.getter(name="workloadsConfig")
     def workloads_config(self) -> Optional['outputs.EnvironmentConfigWorkloadsConfig']:
-        """
-        The Kubernetes workloads configuration for GKE cluster associated with the
-        Cloud Composer environment. Supported for Cloud Composer environments in
-        versions composer-2.*.*-airflow-*.*.* and newer.
-        """
         return pulumi.get(self, "workloads_config")
 
 
@@ -294,23 +224,11 @@ class EnvironmentConfigDatabaseConfig(dict):
 
     def __init__(__self__, *,
                  machine_type: str):
-        """
-        :param str machine_type: Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2,
-               composer-n1-webserver-4 or composer-n1-webserver-8.
-               Value custom is returned only in response, if Airflow web server parameters were
-               manually changed to a non-standard values.
-        """
         pulumi.set(__self__, "machine_type", machine_type)
 
     @property
     @pulumi.getter(name="machineType")
     def machine_type(self) -> str:
-        """
-        Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2,
-        composer-n1-webserver-4 or composer-n1-webserver-8.
-        Value custom is returned only in response, if Airflow web server parameters were
-        manually changed to a non-standard values.
-        """
         return pulumi.get(self, "machine_type")
 
 
@@ -335,21 +253,11 @@ class EnvironmentConfigEncryptionConfig(dict):
 
     def __init__(__self__, *,
                  kms_key_name: str):
-        """
-        :param str kms_key_name: Customer-managed Encryption Key available through Google's Key Management Service. It must
-               be the fully qualified resource name,
-               i.e. projects/project-id/locations/location/keyRings/keyring/cryptoKeys/key. Cannot be updated.
-        """
         pulumi.set(__self__, "kms_key_name", kms_key_name)
 
     @property
     @pulumi.getter(name="kmsKeyName")
     def kms_key_name(self) -> str:
-        """
-        Customer-managed Encryption Key available through Google's Key Management Service. It must
-        be the fully qualified resource name,
-        i.e. projects/project-id/locations/location/keyRings/keyring/cryptoKeys/key. Cannot be updated.
-        """
         return pulumi.get(self, "kms_key_name")
 
 
@@ -378,14 +286,6 @@ class EnvironmentConfigMaintenanceWindow(dict):
                  end_time: str,
                  recurrence: str,
                  start_time: str):
-        """
-        :param str end_time: Maintenance window end time. It is used only to calculate the duration of the maintenance window.
-               The value for end-time must be in the future, relative to 'start_time'.
-        :param str recurrence: Maintenance window recurrence. Format is a subset of RFC-5545 (https://tools.ietf.org/html/rfc5545) 'RRULE'.
-               The only allowed values for 'FREQ' field are 'FREQ=DAILY' and 'FREQ=WEEKLY;BYDAY=...'.
-               Example values: 'FREQ=WEEKLY;BYDAY=TU,WE', 'FREQ=DAILY'.
-        :param str start_time: Start time of the first recurrence of the maintenance window.
-        """
         pulumi.set(__self__, "end_time", end_time)
         pulumi.set(__self__, "recurrence", recurrence)
         pulumi.set(__self__, "start_time", start_time)
@@ -393,28 +293,16 @@ class EnvironmentConfigMaintenanceWindow(dict):
     @property
     @pulumi.getter(name="endTime")
     def end_time(self) -> str:
-        """
-        Maintenance window end time. It is used only to calculate the duration of the maintenance window.
-        The value for end-time must be in the future, relative to 'start_time'.
-        """
         return pulumi.get(self, "end_time")
 
     @property
     @pulumi.getter
     def recurrence(self) -> str:
-        """
-        Maintenance window recurrence. Format is a subset of RFC-5545 (https://tools.ietf.org/html/rfc5545) 'RRULE'.
-        The only allowed values for 'FREQ' field are 'FREQ=DAILY' and 'FREQ=WEEKLY;BYDAY=...'.
-        Example values: 'FREQ=WEEKLY;BYDAY=TU,WE', 'FREQ=DAILY'.
-        """
         return pulumi.get(self, "recurrence")
 
     @property
     @pulumi.getter(name="startTime")
     def start_time(self) -> str:
-        """
-        Start time of the first recurrence of the maintenance window.
-        """
         return pulumi.get(self, "start_time")
 
 
@@ -461,56 +349,6 @@ class EnvironmentConfigNodeConfig(dict):
                  subnetwork: Optional[str] = None,
                  tags: Optional[Sequence[str]] = None,
                  zone: Optional[str] = None):
-        """
-        :param int disk_size_gb: The disk size in GB used for node VMs. Minimum size is 20GB.
-               If unspecified, defaults to 100GB. Cannot be updated. This field is supported
-               for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-        :param bool enable_ip_masq_agent: Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines
-               nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for
-               all destination addresses, except between pods traffic.
-               See the [documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent).
-        :param 'EnvironmentConfigNodeConfigIpAllocationPolicyArgs' ip_allocation_policy: Configuration for controlling how IPs are allocated in the GKE cluster.
-               Structure is documented below.
-               Cannot be updated.
-        :param str machine_type: Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2,
-               composer-n1-webserver-4 or composer-n1-webserver-8.
-               Value custom is returned only in response, if Airflow web server parameters were
-               manually changed to a non-standard values.
-        :param int max_pods_per_node: The maximum pods per node in the GKE cluster allocated during environment
-               creation. Lowering this value reduces IP address consumption by the Cloud
-               Composer Kubernetes cluster. This value can only be set if the environment is VPC-Native.
-               The range of possible values is 8-110, and the default is 32.
-               Cannot be updated. This field is supported for Cloud Composer environments
-               in versions composer-1.*.*-airflow-*.*.*.
-        :param str network: The Compute Engine network to be used for machine
-               communications, specified as a self-link, relative resource name
-               (e.g. "projects/{project}/global/networks/{network}"), by name.
-        :param Sequence[str] oauth_scopes: The set of Google API scopes to be made available on all node
-               VMs. Cannot be updated. If empty, defaults to
-               `["https://www.googleapis.com/auth/cloud-platform"]`. This field is
-               supported for Cloud Composer environments in versions
-               composer-1.*.*-airflow-*.*.*.
-        :param str service_account: The Google Cloud Platform Service Account to be used by the
-               node VMs. If a service account is not specified, the "default"
-               Compute Engine service account is used. Cannot be updated. If given,
-               note that the service account must have `roles/composer.worker`
-               for any GCP resources created under the Cloud Composer Environment.
-        :param str subnetwork: The Compute Engine subnetwork to be used for machine
-               communications, , specified as a self-link, relative resource name (e.g.
-               "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided,
-               network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
-        :param Sequence[str] tags: The list of instance tags applied to all node VMs. Tags are
-               used to identify valid sources or targets for network
-               firewalls. Each tag within the list must comply with RFC1035.
-               Cannot be updated. This field is supported for Cloud Composer
-               environments in versions composer-1.*.*-airflow-*.*.*.
-        :param str zone: The Compute Engine zone in which to deploy the VMs running the
-               Apache Airflow software, specified as the zone name or
-               relative resource name (e.g. "projects/{project}/zones/{zone}"). Must
-               belong to the enclosing environment's project and region. This field is
-               supported for Cloud Composer environments in versions
-               composer-1.*.*-airflow-*.*.*.
-        """
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if enable_ip_masq_agent is not None:
@@ -537,126 +375,56 @@ class EnvironmentConfigNodeConfig(dict):
     @property
     @pulumi.getter(name="diskSizeGb")
     def disk_size_gb(self) -> Optional[int]:
-        """
-        The disk size in GB used for node VMs. Minimum size is 20GB.
-        If unspecified, defaults to 100GB. Cannot be updated. This field is supported
-        for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-        """
         return pulumi.get(self, "disk_size_gb")
 
     @property
     @pulumi.getter(name="enableIpMasqAgent")
     def enable_ip_masq_agent(self) -> Optional[bool]:
-        """
-        Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines
-        nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for
-        all destination addresses, except between pods traffic.
-        See the [documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent).
-        """
         return pulumi.get(self, "enable_ip_masq_agent")
 
     @property
     @pulumi.getter(name="ipAllocationPolicy")
     def ip_allocation_policy(self) -> Optional['outputs.EnvironmentConfigNodeConfigIpAllocationPolicy']:
-        """
-        Configuration for controlling how IPs are allocated in the GKE cluster.
-        Structure is documented below.
-        Cannot be updated.
-        """
         return pulumi.get(self, "ip_allocation_policy")
 
     @property
     @pulumi.getter(name="machineType")
     def machine_type(self) -> Optional[str]:
-        """
-        Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2,
-        composer-n1-webserver-4 or composer-n1-webserver-8.
-        Value custom is returned only in response, if Airflow web server parameters were
-        manually changed to a non-standard values.
-        """
         return pulumi.get(self, "machine_type")
 
     @property
     @pulumi.getter(name="maxPodsPerNode")
     def max_pods_per_node(self) -> Optional[int]:
-        """
-        The maximum pods per node in the GKE cluster allocated during environment
-        creation. Lowering this value reduces IP address consumption by the Cloud
-        Composer Kubernetes cluster. This value can only be set if the environment is VPC-Native.
-        The range of possible values is 8-110, and the default is 32.
-        Cannot be updated. This field is supported for Cloud Composer environments
-        in versions composer-1.*.*-airflow-*.*.*.
-        """
         return pulumi.get(self, "max_pods_per_node")
 
     @property
     @pulumi.getter
     def network(self) -> Optional[str]:
-        """
-        The Compute Engine network to be used for machine
-        communications, specified as a self-link, relative resource name
-        (e.g. "projects/{project}/global/networks/{network}"), by name.
-        """
         return pulumi.get(self, "network")
 
     @property
     @pulumi.getter(name="oauthScopes")
     def oauth_scopes(self) -> Optional[Sequence[str]]:
-        """
-        The set of Google API scopes to be made available on all node
-        VMs. Cannot be updated. If empty, defaults to
-        `["https://www.googleapis.com/auth/cloud-platform"]`. This field is
-        supported for Cloud Composer environments in versions
-        composer-1.*.*-airflow-*.*.*.
-        """
         return pulumi.get(self, "oauth_scopes")
 
     @property
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> Optional[str]:
-        """
-        The Google Cloud Platform Service Account to be used by the
-        node VMs. If a service account is not specified, the "default"
-        Compute Engine service account is used. Cannot be updated. If given,
-        note that the service account must have `roles/composer.worker`
-        for any GCP resources created under the Cloud Composer Environment.
-        """
         return pulumi.get(self, "service_account")
 
     @property
     @pulumi.getter
     def subnetwork(self) -> Optional[str]:
-        """
-        The Compute Engine subnetwork to be used for machine
-        communications, , specified as a self-link, relative resource name (e.g.
-        "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided,
-        network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
-        """
         return pulumi.get(self, "subnetwork")
 
     @property
     @pulumi.getter
     def tags(self) -> Optional[Sequence[str]]:
-        """
-        The list of instance tags applied to all node VMs. Tags are
-        used to identify valid sources or targets for network
-        firewalls. Each tag within the list must comply with RFC1035.
-        Cannot be updated. This field is supported for Cloud Composer
-        environments in versions composer-1.*.*-airflow-*.*.*.
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
     def zone(self) -> Optional[str]:
-        """
-        The Compute Engine zone in which to deploy the VMs running the
-        Apache Airflow software, specified as the zone name or
-        relative resource name (e.g. "projects/{project}/zones/{zone}"). Must
-        belong to the enclosing environment's project and region. This field is
-        supported for Cloud Composer environments in versions
-        composer-1.*.*-airflow-*.*.*.
-        """
         return pulumi.get(self, "zone")
 
 
@@ -665,9 +433,7 @@ class EnvironmentConfigNodeConfigIpAllocationPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "useIpAliases":
-            suggest = "use_ip_aliases"
-        elif key == "clusterIpv4CidrBlock":
+        if key == "clusterIpv4CidrBlock":
             suggest = "cluster_ipv4_cidr_block"
         elif key == "clusterSecondaryRangeName":
             suggest = "cluster_secondary_range_name"
@@ -675,6 +441,8 @@ class EnvironmentConfigNodeConfigIpAllocationPolicy(dict):
             suggest = "services_ipv4_cidr_block"
         elif key == "servicesSecondaryRangeName":
             suggest = "services_secondary_range_name"
+        elif key == "useIpAliases":
+            suggest = "use_ip_aliases"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in EnvironmentConfigNodeConfigIpAllocationPolicy. Access the value via the '{suggest}' property getter instead.")
@@ -688,43 +456,11 @@ class EnvironmentConfigNodeConfigIpAllocationPolicy(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 use_ip_aliases: bool,
                  cluster_ipv4_cidr_block: Optional[str] = None,
                  cluster_secondary_range_name: Optional[str] = None,
                  services_ipv4_cidr_block: Optional[str] = None,
-                 services_secondary_range_name: Optional[str] = None):
-        """
-        :param bool use_ip_aliases: Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created.
-               Defaults to true if the `ip_allocation_policy` block is present in config.
-               This field is only supported for Cloud Composer environments in versions
-               composer-1.*.*-airflow-*.*.*. Environments in newer versions always use
-               VPC-native GKE clusters.
-        :param str cluster_ipv4_cidr_block: The IP address range used to allocate IP addresses to pods in the cluster.
-               For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*,
-               this field is applicable only when `use_ip_aliases` is true.
-               Set to blank to have GKE choose a range with the default size.
-               Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask.
-               Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks
-               (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use.
-               Specify either `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both.
-        :param str cluster_secondary_range_name: The name of the cluster's secondary range used to allocate IP addresses to pods.
-               Specify either `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both.
-               For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*,
-               this field is applicable only when `use_ip_aliases` is true.
-        :param str services_ipv4_cidr_block: The IP address range used to allocate IP addresses in this cluster.
-               For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*,
-               this field is applicable only when `use_ip_aliases` is true.
-               Set to blank to have GKE choose a range with the default size.
-               Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask.
-               Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks
-               (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use.
-               Specify either `services_secondary_range_name` or `services_ipv4_cidr_block` but not both.
-        :param str services_secondary_range_name: The name of the services' secondary range used to allocate IP addresses to the cluster.
-               Specify either `services_secondary_range_name` or `services_ipv4_cidr_block` but not both.
-               For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*,
-               this field is applicable only when `use_ip_aliases` is true.
-        """
-        pulumi.set(__self__, "use_ip_aliases", use_ip_aliases)
+                 services_secondary_range_name: Optional[str] = None,
+                 use_ip_aliases: Optional[bool] = None):
         if cluster_ipv4_cidr_block is not None:
             pulumi.set(__self__, "cluster_ipv4_cidr_block", cluster_ipv4_cidr_block)
         if cluster_secondary_range_name is not None:
@@ -733,70 +469,33 @@ class EnvironmentConfigNodeConfigIpAllocationPolicy(dict):
             pulumi.set(__self__, "services_ipv4_cidr_block", services_ipv4_cidr_block)
         if services_secondary_range_name is not None:
             pulumi.set(__self__, "services_secondary_range_name", services_secondary_range_name)
-
-    @property
-    @pulumi.getter(name="useIpAliases")
-    def use_ip_aliases(self) -> bool:
-        """
-        Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created.
-        Defaults to true if the `ip_allocation_policy` block is present in config.
-        This field is only supported for Cloud Composer environments in versions
-        composer-1.*.*-airflow-*.*.*. Environments in newer versions always use
-        VPC-native GKE clusters.
-        """
-        return pulumi.get(self, "use_ip_aliases")
+        if use_ip_aliases is not None:
+            pulumi.set(__self__, "use_ip_aliases", use_ip_aliases)
 
     @property
     @pulumi.getter(name="clusterIpv4CidrBlock")
     def cluster_ipv4_cidr_block(self) -> Optional[str]:
-        """
-        The IP address range used to allocate IP addresses to pods in the cluster.
-        For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*,
-        this field is applicable only when `use_ip_aliases` is true.
-        Set to blank to have GKE choose a range with the default size.
-        Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask.
-        Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks
-        (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use.
-        Specify either `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both.
-        """
         return pulumi.get(self, "cluster_ipv4_cidr_block")
 
     @property
     @pulumi.getter(name="clusterSecondaryRangeName")
     def cluster_secondary_range_name(self) -> Optional[str]:
-        """
-        The name of the cluster's secondary range used to allocate IP addresses to pods.
-        Specify either `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both.
-        For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*,
-        this field is applicable only when `use_ip_aliases` is true.
-        """
         return pulumi.get(self, "cluster_secondary_range_name")
 
     @property
     @pulumi.getter(name="servicesIpv4CidrBlock")
     def services_ipv4_cidr_block(self) -> Optional[str]:
-        """
-        The IP address range used to allocate IP addresses in this cluster.
-        For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*,
-        this field is applicable only when `use_ip_aliases` is true.
-        Set to blank to have GKE choose a range with the default size.
-        Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask.
-        Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks
-        (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use.
-        Specify either `services_secondary_range_name` or `services_ipv4_cidr_block` but not both.
-        """
         return pulumi.get(self, "services_ipv4_cidr_block")
 
     @property
     @pulumi.getter(name="servicesSecondaryRangeName")
     def services_secondary_range_name(self) -> Optional[str]:
-        """
-        The name of the services' secondary range used to allocate IP addresses to the cluster.
-        Specify either `services_secondary_range_name` or `services_ipv4_cidr_block` but not both.
-        For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*,
-        this field is applicable only when `use_ip_aliases` is true.
-        """
         return pulumi.get(self, "services_secondary_range_name")
+
+    @property
+    @pulumi.getter(name="useIpAliases")
+    def use_ip_aliases(self) -> Optional[bool]:
+        return pulumi.get(self, "use_ip_aliases")
 
 
 @pulumi.output_type
@@ -835,22 +534,6 @@ class EnvironmentConfigPrivateEnvironmentConfig(dict):
                  enable_privately_used_public_ips: Optional[bool] = None,
                  master_ipv4_cidr_block: Optional[str] = None,
                  web_server_ipv4_cidr_block: Optional[str] = None):
-        """
-        :param str cloud_sql_ipv4_cidr_block: The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `web_server_ipv4_cidr_block`
-        :param bool enable_private_endpoint: -
-               If true, access to the public endpoint of the GKE cluster is denied.
-               If this field is set to true, `ip_allocation_policy.use_ip_aliases` must
-               be set to true for Cloud Composer environments in versions
-               composer-1.*.*-airflow-*.*.*.
-        :param bool enable_privately_used_public_ips: When enabled, IPs from public (non-RFC1918) ranges can be used for
-               `ip_allocation_policy.cluster_ipv4_cidr_block` and `ip_allocation_policy.service_ipv4_cidr_block`.
-        :param str master_ipv4_cidr_block: The IP range in CIDR notation to use for the hosted master network. This range is used
-               for assigning internal IP addresses to the cluster master or set of masters and to the
-               internal load balancer virtual IP. This range must not overlap with any other ranges
-               in use within the cluster's network.
-               If left blank, the default value of is used. See [documentation](https://cloud.google.com/composer/docs/how-to/managing/configuring-private-ip#defaults) for default values per region.
-        :param str web_server_ipv4_cidr_block: The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-        """
         if cloud_composer_network_ipv4_cidr_block is not None:
             pulumi.set(__self__, "cloud_composer_network_ipv4_cidr_block", cloud_composer_network_ipv4_cidr_block)
         if cloud_sql_ipv4_cidr_block is not None:
@@ -872,50 +555,26 @@ class EnvironmentConfigPrivateEnvironmentConfig(dict):
     @property
     @pulumi.getter(name="cloudSqlIpv4CidrBlock")
     def cloud_sql_ipv4_cidr_block(self) -> Optional[str]:
-        """
-        The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `web_server_ipv4_cidr_block`
-        """
         return pulumi.get(self, "cloud_sql_ipv4_cidr_block")
 
     @property
     @pulumi.getter(name="enablePrivateEndpoint")
     def enable_private_endpoint(self) -> Optional[bool]:
-        """
-        -
-        If true, access to the public endpoint of the GKE cluster is denied.
-        If this field is set to true, `ip_allocation_policy.use_ip_aliases` must
-        be set to true for Cloud Composer environments in versions
-        composer-1.*.*-airflow-*.*.*.
-        """
         return pulumi.get(self, "enable_private_endpoint")
 
     @property
     @pulumi.getter(name="enablePrivatelyUsedPublicIps")
     def enable_privately_used_public_ips(self) -> Optional[bool]:
-        """
-        When enabled, IPs from public (non-RFC1918) ranges can be used for
-        `ip_allocation_policy.cluster_ipv4_cidr_block` and `ip_allocation_policy.service_ipv4_cidr_block`.
-        """
         return pulumi.get(self, "enable_privately_used_public_ips")
 
     @property
     @pulumi.getter(name="masterIpv4CidrBlock")
     def master_ipv4_cidr_block(self) -> Optional[str]:
-        """
-        The IP range in CIDR notation to use for the hosted master network. This range is used
-        for assigning internal IP addresses to the cluster master or set of masters and to the
-        internal load balancer virtual IP. This range must not overlap with any other ranges
-        in use within the cluster's network.
-        If left blank, the default value of is used. See [documentation](https://cloud.google.com/composer/docs/how-to/managing/configuring-private-ip#defaults) for default values per region.
-        """
         return pulumi.get(self, "master_ipv4_cidr_block")
 
     @property
     @pulumi.getter(name="webServerIpv4CidrBlock")
     def web_server_ipv4_cidr_block(self) -> Optional[str]:
-        """
-        The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-        """
         return pulumi.get(self, "web_server_ipv4_cidr_block")
 
 
@@ -955,38 +614,6 @@ class EnvironmentConfigSoftwareConfig(dict):
                  pypi_packages: Optional[Mapping[str, str]] = None,
                  python_version: Optional[str] = None,
                  scheduler_count: Optional[int] = None):
-        """
-        :param Mapping[str, str] airflow_config_overrides: -
-               (Optional) Apache Airflow configuration properties to override. Property keys contain the section and property names,
-               separated by a hyphen, for example "core-dags_are_paused_at_creation".
-        :param Mapping[str, str] env_variables: Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes.
-               Environment variable names must match the regular expression `[a-zA-Z_][a-zA-Z0-9_]*`.
-               They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression
-               `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the following reserved names:
-               ```python
-               import pulumi
-               ```
-        :param str image_version: -
-               The version of the software running in the environment. This encapsulates both the version of Cloud Composer
-               functionality and the version of Apache Airflow. It must match the regular expression
-               `composer-[0-9]+\.[0-9]+(\.[0-9]+)?-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`.
-               The Cloud Composer portion of the version is a semantic version.
-               The portion of the image version following 'airflow-' is an official Apache Airflow repository release name.
-               See [documentation](https://cloud.google.com/composer/docs/reference/rest/v1beta1/projects.locations.environments#softwareconfig)
-               for allowed release names.
-        :param Mapping[str, str] pypi_packages: Custom Python Package Index (PyPI) packages to be installed
-               in the environment. Keys refer to the lowercase package name (e.g. "numpy"). Values are the lowercase extras and
-               version specifier (e.g. "==1.12.0", "[devel,gcp_api]", "[devel]>=1.8.2, <1.9.2"). To specify a package without
-               pinning it to a version specifier, use the empty string as the value.
-        :param str python_version: -
-               The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes.
-               Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be
-               updated. This field is supported for Cloud Composer environments in versions
-               composer-1.*.*-airflow-*.*.*. Environments in newer versions always use
-               Python major version 3.
-        :param int scheduler_count: -
-               The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.`
-        """
         if airflow_config_overrides is not None:
             pulumi.set(__self__, "airflow_config_overrides", airflow_config_overrides)
         if env_variables is not None:
@@ -1003,73 +630,31 @@ class EnvironmentConfigSoftwareConfig(dict):
     @property
     @pulumi.getter(name="airflowConfigOverrides")
     def airflow_config_overrides(self) -> Optional[Mapping[str, str]]:
-        """
-        -
-        (Optional) Apache Airflow configuration properties to override. Property keys contain the section and property names,
-        separated by a hyphen, for example "core-dags_are_paused_at_creation".
-        """
         return pulumi.get(self, "airflow_config_overrides")
 
     @property
     @pulumi.getter(name="envVariables")
     def env_variables(self) -> Optional[Mapping[str, str]]:
-        """
-        Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes.
-        Environment variable names must match the regular expression `[a-zA-Z_][a-zA-Z0-9_]*`.
-        They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression
-        `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the following reserved names:
-        ```python
-        import pulumi
-        ```
-        """
         return pulumi.get(self, "env_variables")
 
     @property
     @pulumi.getter(name="imageVersion")
     def image_version(self) -> Optional[str]:
-        """
-        -
-        The version of the software running in the environment. This encapsulates both the version of Cloud Composer
-        functionality and the version of Apache Airflow. It must match the regular expression
-        `composer-[0-9]+\.[0-9]+(\.[0-9]+)?-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`.
-        The Cloud Composer portion of the version is a semantic version.
-        The portion of the image version following 'airflow-' is an official Apache Airflow repository release name.
-        See [documentation](https://cloud.google.com/composer/docs/reference/rest/v1beta1/projects.locations.environments#softwareconfig)
-        for allowed release names.
-        """
         return pulumi.get(self, "image_version")
 
     @property
     @pulumi.getter(name="pypiPackages")
     def pypi_packages(self) -> Optional[Mapping[str, str]]:
-        """
-        Custom Python Package Index (PyPI) packages to be installed
-        in the environment. Keys refer to the lowercase package name (e.g. "numpy"). Values are the lowercase extras and
-        version specifier (e.g. "==1.12.0", "[devel,gcp_api]", "[devel]>=1.8.2, <1.9.2"). To specify a package without
-        pinning it to a version specifier, use the empty string as the value.
-        """
         return pulumi.get(self, "pypi_packages")
 
     @property
     @pulumi.getter(name="pythonVersion")
     def python_version(self) -> Optional[str]:
-        """
-        -
-        The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes.
-        Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be
-        updated. This field is supported for Cloud Composer environments in versions
-        composer-1.*.*-airflow-*.*.*. Environments in newer versions always use
-        Python major version 3.
-        """
         return pulumi.get(self, "python_version")
 
     @property
     @pulumi.getter(name="schedulerCount")
     def scheduler_count(self) -> Optional[int]:
-        """
-        -
-        The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.`
-        """
         return pulumi.get(self, "scheduler_count")
 
 
@@ -1094,23 +679,11 @@ class EnvironmentConfigWebServerConfig(dict):
 
     def __init__(__self__, *,
                  machine_type: str):
-        """
-        :param str machine_type: Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2,
-               composer-n1-webserver-4 or composer-n1-webserver-8.
-               Value custom is returned only in response, if Airflow web server parameters were
-               manually changed to a non-standard values.
-        """
         pulumi.set(__self__, "machine_type", machine_type)
 
     @property
     @pulumi.getter(name="machineType")
     def machine_type(self) -> str:
-        """
-        Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2,
-        composer-n1-webserver-4 or composer-n1-webserver-8.
-        Value custom is returned only in response, if Airflow web server parameters were
-        manually changed to a non-standard values.
-        """
         return pulumi.get(self, "machine_type")
 
 
@@ -1135,20 +708,12 @@ class EnvironmentConfigWebServerNetworkAccessControl(dict):
 
     def __init__(__self__, *,
                  allowed_ip_ranges: Optional[Sequence['outputs.EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange']] = None):
-        """
-        :param Sequence['EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs'] allowed_ip_ranges: -
-               A collection of allowed IP ranges with descriptions. Structure is documented below.
-        """
         if allowed_ip_ranges is not None:
             pulumi.set(__self__, "allowed_ip_ranges", allowed_ip_ranges)
 
     @property
     @pulumi.getter(name="allowedIpRanges")
     def allowed_ip_ranges(self) -> Optional[Sequence['outputs.EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange']]:
-        """
-        -
-        A collection of allowed IP ranges with descriptions. Structure is documented below.
-        """
         return pulumi.get(self, "allowed_ip_ranges")
 
 
@@ -1157,13 +722,6 @@ class EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange(dict):
     def __init__(__self__, *,
                  value: str,
                  description: Optional[str] = None):
-        """
-        :param str value: IP address or range, defined using CIDR notation, of requests that this rule applies to.
-               Examples: `192.168.1.1` or `192.168.0.0/16` or `2001:db8::/32` or `2001:0db8:0000:0042:0000:8a2e:0370:7334`.
-               IP range prefixes should be properly truncated. For example,
-               `1.2.3.4/24` should be truncated to `1.2.3.0/24`. Similarly, for IPv6, `2001:db8::1/32` should be truncated to `2001:db8::/32`.
-        :param str description: A description of this ip range.
-        """
         pulumi.set(__self__, "value", value)
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -1171,20 +729,11 @@ class EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange(dict):
     @property
     @pulumi.getter
     def value(self) -> str:
-        """
-        IP address or range, defined using CIDR notation, of requests that this rule applies to.
-        Examples: `192.168.1.1` or `192.168.0.0/16` or `2001:db8::/32` or `2001:0db8:0000:0042:0000:8a2e:0370:7334`.
-        IP range prefixes should be properly truncated. For example,
-        `1.2.3.4/24` should be truncated to `1.2.3.0/24`. Similarly, for IPv6, `2001:db8::1/32` should be truncated to `2001:db8::/32`.
-        """
         return pulumi.get(self, "value")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
-        """
-        A description of this ip range.
-        """
         return pulumi.get(self, "description")
 
 
@@ -1211,11 +760,6 @@ class EnvironmentConfigWorkloadsConfig(dict):
                  scheduler: Optional['outputs.EnvironmentConfigWorkloadsConfigScheduler'] = None,
                  web_server: Optional['outputs.EnvironmentConfigWorkloadsConfigWebServer'] = None,
                  worker: Optional['outputs.EnvironmentConfigWorkloadsConfigWorker'] = None):
-        """
-        :param 'EnvironmentConfigWorkloadsConfigSchedulerArgs' scheduler: Configuration for resources used by Airflow schedulers.
-        :param 'EnvironmentConfigWorkloadsConfigWebServerArgs' web_server: Configuration for resources used by Airflow web server.
-        :param 'EnvironmentConfigWorkloadsConfigWorkerArgs' worker: Configuration for resources used by Airflow workers.
-        """
         if scheduler is not None:
             pulumi.set(__self__, "scheduler", scheduler)
         if web_server is not None:
@@ -1226,25 +770,16 @@ class EnvironmentConfigWorkloadsConfig(dict):
     @property
     @pulumi.getter
     def scheduler(self) -> Optional['outputs.EnvironmentConfigWorkloadsConfigScheduler']:
-        """
-        Configuration for resources used by Airflow schedulers.
-        """
         return pulumi.get(self, "scheduler")
 
     @property
     @pulumi.getter(name="webServer")
     def web_server(self) -> Optional['outputs.EnvironmentConfigWorkloadsConfigWebServer']:
-        """
-        Configuration for resources used by Airflow web server.
-        """
         return pulumi.get(self, "web_server")
 
     @property
     @pulumi.getter
     def worker(self) -> Optional['outputs.EnvironmentConfigWorkloadsConfigWorker']:
-        """
-        Configuration for resources used by Airflow workers.
-        """
         return pulumi.get(self, "worker")
 
 
@@ -1274,12 +809,6 @@ class EnvironmentConfigWorkloadsConfigScheduler(dict):
                  cpu: Optional[float] = None,
                  memory_gb: Optional[float] = None,
                  storage_gb: Optional[float] = None):
-        """
-        :param int count: The number of schedulers.
-        :param float cpu: CPU request and limit for a single Airflow worker replica.
-        :param float memory_gb: Memory (GB) request and limit for a single Airflow worker replica.
-        :param float storage_gb: Storage (GB) request and limit for Airflow web server.
-        """
         if count is not None:
             pulumi.set(__self__, "count", count)
         if cpu is not None:
@@ -1292,33 +821,21 @@ class EnvironmentConfigWorkloadsConfigScheduler(dict):
     @property
     @pulumi.getter
     def count(self) -> Optional[int]:
-        """
-        The number of schedulers.
-        """
         return pulumi.get(self, "count")
 
     @property
     @pulumi.getter
     def cpu(self) -> Optional[float]:
-        """
-        CPU request and limit for a single Airflow worker replica.
-        """
         return pulumi.get(self, "cpu")
 
     @property
     @pulumi.getter(name="memoryGb")
     def memory_gb(self) -> Optional[float]:
-        """
-        Memory (GB) request and limit for a single Airflow worker replica.
-        """
         return pulumi.get(self, "memory_gb")
 
     @property
     @pulumi.getter(name="storageGb")
     def storage_gb(self) -> Optional[float]:
-        """
-        Storage (GB) request and limit for Airflow web server.
-        """
         return pulumi.get(self, "storage_gb")
 
 
@@ -1347,11 +864,6 @@ class EnvironmentConfigWorkloadsConfigWebServer(dict):
                  cpu: Optional[float] = None,
                  memory_gb: Optional[float] = None,
                  storage_gb: Optional[float] = None):
-        """
-        :param float cpu: CPU request and limit for a single Airflow worker replica.
-        :param float memory_gb: Memory (GB) request and limit for a single Airflow worker replica.
-        :param float storage_gb: Storage (GB) request and limit for Airflow web server.
-        """
         if cpu is not None:
             pulumi.set(__self__, "cpu", cpu)
         if memory_gb is not None:
@@ -1362,25 +874,16 @@ class EnvironmentConfigWorkloadsConfigWebServer(dict):
     @property
     @pulumi.getter
     def cpu(self) -> Optional[float]:
-        """
-        CPU request and limit for a single Airflow worker replica.
-        """
         return pulumi.get(self, "cpu")
 
     @property
     @pulumi.getter(name="memoryGb")
     def memory_gb(self) -> Optional[float]:
-        """
-        Memory (GB) request and limit for a single Airflow worker replica.
-        """
         return pulumi.get(self, "memory_gb")
 
     @property
     @pulumi.getter(name="storageGb")
     def storage_gb(self) -> Optional[float]:
-        """
-        Storage (GB) request and limit for Airflow web server.
-        """
         return pulumi.get(self, "storage_gb")
 
 
@@ -1415,13 +918,6 @@ class EnvironmentConfigWorkloadsConfigWorker(dict):
                  memory_gb: Optional[float] = None,
                  min_count: Optional[int] = None,
                  storage_gb: Optional[float] = None):
-        """
-        :param float cpu: CPU request and limit for a single Airflow worker replica.
-        :param int max_count: Maximum number of workers for autoscaling.
-        :param float memory_gb: Memory (GB) request and limit for a single Airflow worker replica.
-        :param int min_count: Minimum number of workers for autoscaling.
-        :param float storage_gb: Storage (GB) request and limit for Airflow web server.
-        """
         if cpu is not None:
             pulumi.set(__self__, "cpu", cpu)
         if max_count is not None:
@@ -1436,41 +932,26 @@ class EnvironmentConfigWorkloadsConfigWorker(dict):
     @property
     @pulumi.getter
     def cpu(self) -> Optional[float]:
-        """
-        CPU request and limit for a single Airflow worker replica.
-        """
         return pulumi.get(self, "cpu")
 
     @property
     @pulumi.getter(name="maxCount")
     def max_count(self) -> Optional[int]:
-        """
-        Maximum number of workers for autoscaling.
-        """
         return pulumi.get(self, "max_count")
 
     @property
     @pulumi.getter(name="memoryGb")
     def memory_gb(self) -> Optional[float]:
-        """
-        Memory (GB) request and limit for a single Airflow worker replica.
-        """
         return pulumi.get(self, "memory_gb")
 
     @property
     @pulumi.getter(name="minCount")
     def min_count(self) -> Optional[int]:
-        """
-        Minimum number of workers for autoscaling.
-        """
         return pulumi.get(self, "min_count")
 
     @property
     @pulumi.getter(name="storageGb")
     def storage_gb(self) -> Optional[float]:
-        """
-        Storage (GB) request and limit for Airflow web server.
-        """
         return pulumi.get(self, "storage_gb")
 
 

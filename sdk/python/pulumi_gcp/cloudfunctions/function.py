@@ -787,7 +787,7 @@ class Function(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        bucket = gcp.storage.Bucket("bucket")
+        bucket = gcp.storage.Bucket("bucket", location="US")
         archive = gcp.storage.BucketObject("archive",
             bucket=bucket.name,
             source=pulumi.FileAsset("./path/to/zip/file/which/contains/code"))
@@ -813,7 +813,7 @@ class Function(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        bucket = gcp.storage.Bucket("bucket")
+        bucket = gcp.storage.Bucket("bucket", location="US")
         archive = gcp.storage.BucketObject("archive",
             bucket=bucket.name,
             source=pulumi.FileAsset("./path/to/zip/file/which/contains/code"))
@@ -906,7 +906,7 @@ class Function(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        bucket = gcp.storage.Bucket("bucket")
+        bucket = gcp.storage.Bucket("bucket", location="US")
         archive = gcp.storage.BucketObject("archive",
             bucket=bucket.name,
             source=pulumi.FileAsset("./path/to/zip/file/which/contains/code"))
@@ -932,7 +932,7 @@ class Function(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        bucket = gcp.storage.Bucket("bucket")
+        bucket = gcp.storage.Bucket("bucket", location="US")
         archive = gcp.storage.BucketObject("archive",
             bucket=bucket.name,
             source=pulumi.FileAsset("./path/to/zip/file/which/contains/code"))

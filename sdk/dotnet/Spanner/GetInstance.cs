@@ -50,28 +50,11 @@ namespace Pulumi.Gcp.Spanner
         [Input("displayName")]
         public string? DisplayName { get; set; }
 
-        [Input("forceDestroy")]
-        public bool? ForceDestroy { get; set; }
-
-        [Input("labels")]
-        private Dictionary<string, string>? _labels;
-        public Dictionary<string, string> Labels
-        {
-            get => _labels ?? (_labels = new Dictionary<string, string>());
-            set => _labels = value;
-        }
-
         /// <summary>
         /// The name of the spanner instance.
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
-
-        [Input("numNodes")]
-        public int? NumNodes { get; set; }
-
-        [Input("processingUnits")]
-        public int? ProcessingUnits { get; set; }
 
         /// <summary>
         /// The project in which the resource belongs. If it
@@ -91,12 +74,12 @@ namespace Pulumi.Gcp.Spanner
     {
         public readonly string? Config;
         public readonly string? DisplayName;
-        public readonly bool? ForceDestroy;
+        public readonly bool ForceDestroy;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        public readonly ImmutableDictionary<string, string>? Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
         public readonly int NumNodes;
         public readonly int ProcessingUnits;
@@ -109,11 +92,11 @@ namespace Pulumi.Gcp.Spanner
 
             string? displayName,
 
-            bool? forceDestroy,
+            bool forceDestroy,
 
             string id,
 
-            ImmutableDictionary<string, string>? labels,
+            ImmutableDictionary<string, string> labels,
 
             string name,
 

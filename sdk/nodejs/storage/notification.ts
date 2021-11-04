@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  *     members: [gcsAccount.then(gcsAccount => `serviceAccount:${gcsAccount.emailAddress}`)],
  * });
  * // End enabling notifications
- * const bucket = new gcp.storage.Bucket("bucket", {});
+ * const bucket = new gcp.storage.Bucket("bucket", {location: "US"});
  * const notification = new gcp.storage.Notification("notification", {
  *     bucket: bucket.name,
  *     payloadFormat: "JSON_API_V1",

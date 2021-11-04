@@ -111,12 +111,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const project = gcp.organizations.getProject({});
  * const cloudbuildServiceAccount = new gcp.serviceaccount.Account("cloudbuildServiceAccount", {accountId: "my-service-account"});
  * const actAs = new gcp.projects.IAMMember("actAs", {
+ *     project: project.then(project => project.projectId),
  *     role: "roles/iam.serviceAccountUser",
  *     member: pulumi.interpolate`serviceAccount:${cloudbuildServiceAccount.email}`,
  * });
  * const logsWriter = new gcp.projects.IAMMember("logsWriter", {
+ *     project: project.then(project => project.projectId),
  *     role: "roles/logging.logWriter",
  *     member: pulumi.interpolate`serviceAccount:${cloudbuildServiceAccount.email}`,
  * });

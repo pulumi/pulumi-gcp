@@ -248,14 +248,6 @@ Object.defineProperty(exports, "composerCustomEndpoint", {
     enumerable: true,
 });
 
-export declare const computeBetaCustomEndpoint: string | undefined;
-Object.defineProperty(exports, "computeBetaCustomEndpoint", {
-    get() {
-        return __config.get("computeBetaCustomEndpoint");
-    },
-    enumerable: true,
-});
-
 export declare const computeCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "computeCustomEndpoint", {
     get() {
@@ -268,14 +260,6 @@ export declare const containerAnalysisCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "containerAnalysisCustomEndpoint", {
     get() {
         return __config.get("containerAnalysisCustomEndpoint");
-    },
-    enumerable: true,
-});
-
-export declare const containerBetaCustomEndpoint: string | undefined;
-Object.defineProperty(exports, "containerBetaCustomEndpoint", {
-    get() {
-        return __config.get("containerBetaCustomEndpoint");
     },
     enumerable: true,
 });
@@ -324,14 +308,6 @@ export declare const dataflowCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "dataflowCustomEndpoint", {
     get() {
         return __config.get("dataflowCustomEndpoint");
-    },
-    enumerable: true,
-});
-
-export declare const dataprocBetaCustomEndpoint: string | undefined;
-Object.defineProperty(exports, "dataprocBetaCustomEndpoint", {
-    get() {
-        return __config.get("dataprocBetaCustomEndpoint");
     },
     enumerable: true,
 });

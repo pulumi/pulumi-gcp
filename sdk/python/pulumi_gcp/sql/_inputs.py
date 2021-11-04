@@ -437,11 +437,9 @@ class DatabaseInstanceSettingsArgs:
     def __init__(__self__, *,
                  tier: pulumi.Input[str],
                  activation_policy: Optional[pulumi.Input[str]] = None,
-                 authorized_gae_applications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  availability_type: Optional[pulumi.Input[str]] = None,
                  backup_configuration: Optional[pulumi.Input['DatabaseInstanceSettingsBackupConfigurationArgs']] = None,
                  collation: Optional[pulumi.Input[str]] = None,
-                 crash_safe_replication: Optional[pulumi.Input[bool]] = None,
                  database_flags: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsDatabaseFlagArgs']]]] = None,
                  disk_autoresize: Optional[pulumi.Input[bool]] = None,
                  disk_autoresize_limit: Optional[pulumi.Input[int]] = None,
@@ -452,7 +450,6 @@ class DatabaseInstanceSettingsArgs:
                  location_preference: Optional[pulumi.Input['DatabaseInstanceSettingsLocationPreferenceArgs']] = None,
                  maintenance_window: Optional[pulumi.Input['DatabaseInstanceSettingsMaintenanceWindowArgs']] = None,
                  pricing_plan: Optional[pulumi.Input[str]] = None,
-                 replication_type: Optional[pulumi.Input[str]] = None,
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  version: Optional[pulumi.Input[int]] = None):
         """
@@ -461,49 +458,26 @@ class DatabaseInstanceSettingsArgs:
                and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
         :param pulumi.Input[str] activation_policy: This specifies when the instance should be
                active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_gae_applications: This property is only applicable to First Generation instances.
-               First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-               for information on how to upgrade to Second Generation instances.
-               A list of Google App Engine (GAE) project names that are allowed to access this instance.
         :param pulumi.Input[str] availability_type: The availability type of the Cloud SQL
                instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For MySQL
                instances, ensure that `settings.backup_configuration.enabled` and
                `settings.backup_configuration.binary_log_enabled` are both set to `true`.
         :param pulumi.Input[str] collation: The name of server instance collation.
-        :param pulumi.Input[bool] crash_safe_replication: This property is only applicable to First Generation instances.
-               First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-               for information on how to upgrade to Second Generation instances.
-               Specific to read instances, indicates
-               when crash-safe replication flags are enabled.
-        :param pulumi.Input[bool] disk_autoresize: Configuration to increase storage size automatically.  Note that future `pulumi apply` calls will attempt to resize the disk to the value specified in `disk_size` - if this is set, do not set `disk_size`.
+        :param pulumi.Input[bool] disk_autoresize: Configuration to increase storage size automatically.  Note that future apply calls will attempt to resize the disk to the value specified in `disk_size` - if this is set, do not set `disk_size`.
         :param pulumi.Input[int] disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased.
         :param pulumi.Input[str] disk_type: The type of data disk: PD_SSD or PD_HDD.
         :param pulumi.Input[str] pricing_plan: Pricing plan for this instance, can only be `PER_USE`.
-        :param pulumi.Input[str] replication_type: This property is only applicable to First Generation instances.
-               First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-               for information on how to upgrade to Second Generation instances.
-               Replication type for this instance, can be one of `ASYNCHRONOUS` or `SYNCHRONOUS`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: A set of key/value user label pairs to assign to the instance.
         """
         pulumi.set(__self__, "tier", tier)
         if activation_policy is not None:
             pulumi.set(__self__, "activation_policy", activation_policy)
-        if authorized_gae_applications is not None:
-            warnings.warn("""This property is only applicable to First Generation instances, and First Generation instances are now deprecated.""", DeprecationWarning)
-            pulumi.log.warn("""authorized_gae_applications is deprecated: This property is only applicable to First Generation instances, and First Generation instances are now deprecated.""")
-        if authorized_gae_applications is not None:
-            pulumi.set(__self__, "authorized_gae_applications", authorized_gae_applications)
         if availability_type is not None:
             pulumi.set(__self__, "availability_type", availability_type)
         if backup_configuration is not None:
             pulumi.set(__self__, "backup_configuration", backup_configuration)
         if collation is not None:
             pulumi.set(__self__, "collation", collation)
-        if crash_safe_replication is not None:
-            warnings.warn("""This property is only applicable to First Generation instances, and First Generation instances are now deprecated.""", DeprecationWarning)
-            pulumi.log.warn("""crash_safe_replication is deprecated: This property is only applicable to First Generation instances, and First Generation instances are now deprecated.""")
-        if crash_safe_replication is not None:
-            pulumi.set(__self__, "crash_safe_replication", crash_safe_replication)
         if database_flags is not None:
             pulumi.set(__self__, "database_flags", database_flags)
         if disk_autoresize is not None:
@@ -524,11 +498,6 @@ class DatabaseInstanceSettingsArgs:
             pulumi.set(__self__, "maintenance_window", maintenance_window)
         if pricing_plan is not None:
             pulumi.set(__self__, "pricing_plan", pricing_plan)
-        if replication_type is not None:
-            warnings.warn("""This property is only applicable to First Generation instances, and First Generation instances are now deprecated.""", DeprecationWarning)
-            pulumi.log.warn("""replication_type is deprecated: This property is only applicable to First Generation instances, and First Generation instances are now deprecated.""")
-        if replication_type is not None:
-            pulumi.set(__self__, "replication_type", replication_type)
         if user_labels is not None:
             pulumi.set(__self__, "user_labels", user_labels)
         if version is not None:
@@ -560,21 +529,6 @@ class DatabaseInstanceSettingsArgs:
     @activation_policy.setter
     def activation_policy(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "activation_policy", value)
-
-    @property
-    @pulumi.getter(name="authorizedGaeApplications")
-    def authorized_gae_applications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        This property is only applicable to First Generation instances.
-        First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-        for information on how to upgrade to Second Generation instances.
-        A list of Google App Engine (GAE) project names that are allowed to access this instance.
-        """
-        return pulumi.get(self, "authorized_gae_applications")
-
-    @authorized_gae_applications.setter
-    def authorized_gae_applications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "authorized_gae_applications", value)
 
     @property
     @pulumi.getter(name="availabilityType")
@@ -613,22 +567,6 @@ class DatabaseInstanceSettingsArgs:
         pulumi.set(self, "collation", value)
 
     @property
-    @pulumi.getter(name="crashSafeReplication")
-    def crash_safe_replication(self) -> Optional[pulumi.Input[bool]]:
-        """
-        This property is only applicable to First Generation instances.
-        First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-        for information on how to upgrade to Second Generation instances.
-        Specific to read instances, indicates
-        when crash-safe replication flags are enabled.
-        """
-        return pulumi.get(self, "crash_safe_replication")
-
-    @crash_safe_replication.setter
-    def crash_safe_replication(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "crash_safe_replication", value)
-
-    @property
     @pulumi.getter(name="databaseFlags")
     def database_flags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsDatabaseFlagArgs']]]]:
         return pulumi.get(self, "database_flags")
@@ -641,7 +579,7 @@ class DatabaseInstanceSettingsArgs:
     @pulumi.getter(name="diskAutoresize")
     def disk_autoresize(self) -> Optional[pulumi.Input[bool]]:
         """
-        Configuration to increase storage size automatically.  Note that future `pulumi apply` calls will attempt to resize the disk to the value specified in `disk_size` - if this is set, do not set `disk_size`.
+        Configuration to increase storage size automatically.  Note that future apply calls will attempt to resize the disk to the value specified in `disk_size` - if this is set, do not set `disk_size`.
         """
         return pulumi.get(self, "disk_autoresize")
 
@@ -729,21 +667,6 @@ class DatabaseInstanceSettingsArgs:
     @pricing_plan.setter
     def pricing_plan(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "pricing_plan", value)
-
-    @property
-    @pulumi.getter(name="replicationType")
-    def replication_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        This property is only applicable to First Generation instances.
-        First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-        for information on how to upgrade to Second Generation instances.
-        Replication type for this instance, can be one of `ASYNCHRONOUS` or `SYNCHRONOUS`.
-        """
-        return pulumi.get(self, "replication_type")
-
-    @replication_type.setter
-    def replication_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "replication_type", value)
 
     @property
     @pulumi.getter(name="userLabels")

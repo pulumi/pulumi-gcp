@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const bucket = new gcp.storage.Bucket("bucket", {});
+ * const bucket = new gcp.storage.Bucket("bucket", {location: "US"});
  * const archive = new gcp.storage.BucketObject("archive", {
  *     bucket: bucket.name,
  *     source: new pulumi.asset.FileAsset("./path/to/zip/file/which/contains/code"),
@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const bucket = new gcp.storage.Bucket("bucket", {});
+ * const bucket = new gcp.storage.Bucket("bucket", {location: "US"});
  * const archive = new gcp.storage.BucketObject("archive", {
  *     bucket: bucket.name,
  *     source: new pulumi.asset.FileAsset("./path/to/zip/file/which/contains/code"),

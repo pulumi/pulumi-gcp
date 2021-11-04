@@ -26,15 +26,17 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/cloudfunctions"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/compute"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/storage"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudfunctions"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		bucket, err := storage.NewBucket(ctx, "bucket", nil)
+// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+// 			Location: pulumi.String("US"),
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -78,8 +80,8 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/cloudrun"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudrun"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -128,15 +130,17 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/appengine"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/compute"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/storage"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/appengine"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		appengineNegBucket, err := storage.NewBucket(ctx, "appengineNegBucket", nil)
+// 		appengineNegBucket, err := storage.NewBucket(ctx, "appengineNegBucket", &storage.BucketArgs{
+// 			Location: pulumi.String("US"),
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

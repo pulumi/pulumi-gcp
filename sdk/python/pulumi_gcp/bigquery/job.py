@@ -547,7 +547,9 @@ class Job(pulumi.CustomResource):
           }
         ]
         \"\"\")
-        dest = gcp.storage.Bucket("dest", force_destroy=True)
+        dest = gcp.storage.Bucket("dest",
+            location="US",
+            force_destroy=True)
         job = gcp.bigquery.Job("job",
             job_id="job_extract",
             extract=gcp.bigquery.JobExtractArgs(
@@ -762,7 +764,9 @@ class Job(pulumi.CustomResource):
           }
         ]
         \"\"\")
-        dest = gcp.storage.Bucket("dest", force_destroy=True)
+        dest = gcp.storage.Bucket("dest",
+            location="US",
+            force_destroy=True)
         job = gcp.bigquery.Job("job",
             job_id="job_extract",
             extract=gcp.bigquery.JobExtractArgs(

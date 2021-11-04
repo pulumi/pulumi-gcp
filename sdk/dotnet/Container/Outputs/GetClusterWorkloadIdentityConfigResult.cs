@@ -13,16 +13,11 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterWorkloadIdentityConfigResult
     {
-        public readonly string IdentityNamespace;
         public readonly string WorkloadPool;
 
         [OutputConstructor]
-        private GetClusterWorkloadIdentityConfigResult(
-            string identityNamespace,
-
-            string workloadPool)
+        private GetClusterWorkloadIdentityConfigResult(string workloadPool)
         {
-            IdentityNamespace = identityNamespace;
             WorkloadPool = workloadPool;
         }
     }

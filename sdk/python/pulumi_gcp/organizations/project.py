@@ -656,7 +656,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="folderId")
-    def folder_id(self) -> pulumi.Output[str]:
+    def folder_id(self) -> pulumi.Output[Optional[str]]:
         """
         The numeric ID of the folder this project should be
         created under. Only one of `org_id` or `folder_id` may be
@@ -692,7 +692,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> pulumi.Output[str]:
+    def org_id(self) -> pulumi.Output[Optional[str]]:
         """
         The numeric ID of the organization this project belongs to.
         Changing this forces a new project to be created.  Only one of

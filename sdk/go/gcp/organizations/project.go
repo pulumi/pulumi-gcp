@@ -35,7 +35,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -59,7 +59,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -110,7 +110,7 @@ type Project struct {
 	// specified. If the `folderId` is specified, then the project is
 	// created under the specified folder. Changing this forces the
 	// project to be migrated to the newly specified folder.
-	FolderId pulumi.StringOutput `pulumi:"folderId"`
+	FolderId pulumi.StringPtrOutput `pulumi:"folderId"`
 	// A set of key/value label pairs to assign to the project.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The display name of the project.
@@ -123,7 +123,7 @@ type Project struct {
 	// specified then the project is created at the top level. Changing
 	// this forces the project to be migrated to the newly specified
 	// organization.
-	OrgId pulumi.StringOutput `pulumi:"orgId"`
+	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
 	// The project ID. Changing this forces a new project to be created.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// If true, the resource can be deleted

@@ -34,6 +34,7 @@ namespace Pulumi.Gcp.AppEngine
     ///     {
     ///         var bucket = new Gcp.Storage.Bucket("bucket", new Gcp.Storage.BucketArgs
     ///         {
+    ///             Location = "US",
     ///         });
     ///         var @object = new Gcp.Storage.BucketObject("object", new Gcp.Storage.BucketObjectArgs
     ///         {
@@ -169,7 +170,7 @@ namespace Pulumi.Gcp.AppEngine
         /// Structure is documented below.
         /// </summary>
         [Output("entrypoint")]
-        public Output<Outputs.StandardAppVersionEntrypoint?> Entrypoint { get; private set; } = null!;
+        public Output<Outputs.StandardAppVersionEntrypoint> Entrypoint { get; private set; } = null!;
 
         /// <summary>
         /// Environment variables available to the application.
@@ -349,8 +350,8 @@ namespace Pulumi.Gcp.AppEngine
         /// The entrypoint for the application.
         /// Structure is documented below.
         /// </summary>
-        [Input("entrypoint")]
-        public Input<Inputs.StandardAppVersionEntrypointArgs>? Entrypoint { get; set; }
+        [Input("entrypoint", required: true)]
+        public Input<Inputs.StandardAppVersionEntrypointArgs> Entrypoint { get; set; } = null!;
 
         [Input("envVariables")]
         private InputMap<string>? _envVariables;

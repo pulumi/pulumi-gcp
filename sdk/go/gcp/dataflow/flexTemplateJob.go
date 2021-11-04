@@ -22,7 +22,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/dataflow"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataflow"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //

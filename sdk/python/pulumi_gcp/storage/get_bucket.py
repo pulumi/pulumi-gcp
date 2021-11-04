@@ -21,10 +21,7 @@ class GetBucketResult:
     """
     A collection of values returned by getBucket.
     """
-    def __init__(__self__, bucket_policy_only=None, cors=None, default_event_based_hold=None, encryptions=None, force_destroy=None, id=None, labels=None, lifecycle_rules=None, location=None, loggings=None, name=None, project=None, requester_pays=None, retention_policies=None, self_link=None, storage_class=None, uniform_bucket_level_access=None, url=None, versionings=None, websites=None):
-        if bucket_policy_only and not isinstance(bucket_policy_only, bool):
-            raise TypeError("Expected argument 'bucket_policy_only' to be a bool")
-        pulumi.set(__self__, "bucket_policy_only", bucket_policy_only)
+    def __init__(__self__, cors=None, default_event_based_hold=None, encryptions=None, force_destroy=None, id=None, labels=None, lifecycle_rules=None, location=None, loggings=None, name=None, project=None, requester_pays=None, retention_policies=None, self_link=None, storage_class=None, uniform_bucket_level_access=None, url=None, versionings=None, websites=None):
         if cors and not isinstance(cors, list):
             raise TypeError("Expected argument 'cors' to be a list")
         pulumi.set(__self__, "cors", cors)
@@ -82,11 +79,6 @@ class GetBucketResult:
         if websites and not isinstance(websites, list):
             raise TypeError("Expected argument 'websites' to be a list")
         pulumi.set(__self__, "websites", websites)
-
-    @property
-    @pulumi.getter(name="bucketPolicyOnly")
-    def bucket_policy_only(self) -> bool:
-        return pulumi.get(self, "bucket_policy_only")
 
     @property
     @pulumi.getter
@@ -193,7 +185,6 @@ class AwaitableGetBucketResult(GetBucketResult):
         if False:
             yield self
         return GetBucketResult(
-            bucket_policy_only=self.bucket_policy_only,
             cors=self.cors,
             default_event_based_hold=self.default_event_based_hold,
             encryptions=self.encryptions,
@@ -244,7 +235,6 @@ def get_bucket(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:storage/getBucket:getBucket', __args__, opts=opts, typ=GetBucketResult).value
 
     return AwaitableGetBucketResult(
-        bucket_policy_only=__ret__.bucket_policy_only,
         cors=__ret__.cors,
         default_event_based_hold=__ret__.default_event_based_hold,
         encryptions=__ret__.encryptions,

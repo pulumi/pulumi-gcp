@@ -135,10 +135,12 @@ def get_project_service_account(project: Optional[str] = None,
         crypto_key_id="your-crypto-key-id",
         role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
         members=[f"serviceAccount:{gcs_account.email_address}"])
-    bucket = gcp.storage.Bucket("bucket", encryption=gcp.storage.BucketEncryptionArgs(
-        default_kms_key_name="your-crypto-key-id",
-    ),
-    opts=pulumi.ResourceOptions(depends_on=[binding]))
+    bucket = gcp.storage.Bucket("bucket",
+        location="US",
+        encryption=gcp.storage.BucketEncryptionArgs(
+            default_kms_key_name="your-crypto-key-id",
+        ),
+        opts=pulumi.ResourceOptions(depends_on=[binding]))
     ```
 
 
@@ -224,10 +226,12 @@ def get_project_service_account_output(project: Optional[pulumi.Input[Optional[s
         crypto_key_id="your-crypto-key-id",
         role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
         members=[f"serviceAccount:{gcs_account.email_address}"])
-    bucket = gcp.storage.Bucket("bucket", encryption=gcp.storage.BucketEncryptionArgs(
-        default_kms_key_name="your-crypto-key-id",
-    ),
-    opts=pulumi.ResourceOptions(depends_on=[binding]))
+    bucket = gcp.storage.Bucket("bucket",
+        location="US",
+        encryption=gcp.storage.BucketEncryptionArgs(
+            default_kms_key_name="your-crypto-key-id",
+        ),
+        opts=pulumi.ResourceOptions(depends_on=[binding]))
     ```
 
 

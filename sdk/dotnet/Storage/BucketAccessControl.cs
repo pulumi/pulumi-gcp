@@ -46,6 +46,7 @@ namespace Pulumi.Gcp.Storage
     ///     {
     ///         var bucket = new Gcp.Storage.Bucket("bucket", new Gcp.Storage.BucketArgs
     ///         {
+    ///             Location = "US",
     ///         });
     ///         var publicRule = new Gcp.Storage.BucketAccessControl("publicRule", new Gcp.Storage.BucketAccessControlArgs
     ///         {

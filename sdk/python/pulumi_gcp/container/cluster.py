@@ -111,7 +111,7 @@ class ClusterArgs:
                When enabled, identities in the system, including service accounts, nodes, and controllers,
                will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
                Defaults to `false`
-        :param pulumi.Input[bool] enable_shielded_nodes: Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
+        :param pulumi.Input[bool] enable_shielded_nodes: Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
         :param pulumi.Input[bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
         :param pulumi.Input[int] initial_node_count: The number of nodes to create in this
@@ -140,9 +140,9 @@ class ClusterArgs:
         :param pulumi.Input['ClusterMasterAuthArgs'] master_auth: The authentication information for accessing the
                Kubernetes master. Some values in this block are only returned by the API if
                your service account has permission to get credentials for your GKE cluster. If
-               you see an unexpected diff removing a username/password or unsetting your client
-               cert, ensure you have the `container.clusters.getCredentials` permission.
-               Structure is documented below. This has been deprecated as of GKE 1.19.
+               you see an unexpected diff unsetting your client cert, ensure you have the
+               `container.clusters.getCredentials` permission.
+               Structure is documented below.
         :param pulumi.Input['ClusterMasterAuthorizedNetworksConfigArgs'] master_authorized_networks_config: The desired
                configuration options for master authorized networks. Omit the
                nested `cidr_blocks` attribute to disallow external access (except
@@ -286,9 +286,6 @@ class ClusterArgs:
             pulumi.set(__self__, "logging_service", logging_service)
         if maintenance_policy is not None:
             pulumi.set(__self__, "maintenance_policy", maintenance_policy)
-        if master_auth is not None:
-            warnings.warn("""Basic authentication was removed for GKE cluster versions >= 1.19.""", DeprecationWarning)
-            pulumi.log.warn("""master_auth is deprecated: Basic authentication was removed for GKE cluster versions >= 1.19.""")
         if master_auth is not None:
             pulumi.set(__self__, "master_auth", master_auth)
         if master_authorized_networks_config is not None:
@@ -585,7 +582,7 @@ class ClusterArgs:
     @pulumi.getter(name="enableShieldedNodes")
     def enable_shielded_nodes(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
+        Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
         """
         return pulumi.get(self, "enable_shielded_nodes")
 
@@ -702,9 +699,9 @@ class ClusterArgs:
         The authentication information for accessing the
         Kubernetes master. Some values in this block are only returned by the API if
         your service account has permission to get credentials for your GKE cluster. If
-        you see an unexpected diff removing a username/password or unsetting your client
-        cert, ensure you have the `container.clusters.getCredentials` permission.
-        Structure is documented below. This has been deprecated as of GKE 1.19.
+        you see an unexpected diff unsetting your client cert, ensure you have the
+        `container.clusters.getCredentials` permission.
+        Structure is documented below.
         """
         return pulumi.get(self, "master_auth")
 
@@ -1092,7 +1089,6 @@ class _ClusterState:
                  enable_tpu: Optional[pulumi.Input[bool]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
                  initial_node_count: Optional[pulumi.Input[int]] = None,
-                 instance_group_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ip_allocation_policy: Optional[pulumi.Input['ClusterIpAllocationPolicyArgs']] = None,
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -1174,7 +1170,7 @@ class _ClusterState:
                When enabled, identities in the system, including service accounts, nodes, and controllers,
                will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
                Defaults to `false`
-        :param pulumi.Input[bool] enable_shielded_nodes: Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
+        :param pulumi.Input[bool] enable_shielded_nodes: Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
         :param pulumi.Input[bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
         :param pulumi.Input[str] endpoint: The IP address of this cluster's Kubernetes master.
@@ -1184,7 +1180,6 @@ class _ClusterState:
                `container.NodePool` objects with no default node pool, you'll need to
                set this to a value of at least `1`, alongside setting
                `remove_default_node_pool` to `true`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_group_urls: List of instance group URLs which have been assigned to the cluster.
         :param pulumi.Input['ClusterIpAllocationPolicyArgs'] ip_allocation_policy: Configuration of cluster IP allocation for
                VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
                making the cluster VPC-native instead of routes-based. Structure is documented
@@ -1206,16 +1201,17 @@ class _ClusterState:
         :param pulumi.Input['ClusterMasterAuthArgs'] master_auth: The authentication information for accessing the
                Kubernetes master. Some values in this block are only returned by the API if
                your service account has permission to get credentials for your GKE cluster. If
-               you see an unexpected diff removing a username/password or unsetting your client
-               cert, ensure you have the `container.clusters.getCredentials` permission.
-               Structure is documented below. This has been deprecated as of GKE 1.19.
+               you see an unexpected diff unsetting your client cert, ensure you have the
+               `container.clusters.getCredentials` permission.
+               Structure is documented below.
         :param pulumi.Input['ClusterMasterAuthorizedNetworksConfigArgs'] master_authorized_networks_config: The desired
                configuration options for master authorized networks. Omit the
                nested `cidr_blocks` attribute to disallow external access (except
                the cluster node IPs, which GKE automatically whitelists).
                Structure is documented below.
-        :param pulumi.Input[str] master_version: The current version of the master in the cluster. This may be different than the min_master_version set in the config if
-               the master has been updated by GKE.
+        :param pulumi.Input[str] master_version: The current version of the master in the cluster. This may
+               be different than the `min_master_version` set in the config if the master
+               has been updated by GKE.
         :param pulumi.Input[str] min_master_version: The minimum version of the master. GKE
                will auto-update the master to new versions, so this does not guarantee the
                current master version--use the read-only `master_version` field to obtain that.
@@ -1294,12 +1290,16 @@ class _ClusterState:
         :param pulumi.Input['ClusterResourceUsageExportConfigArgs'] resource_usage_export_config: Configuration for the
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
-        :param pulumi.Input[str] self_link: Server-defined URL for the resource.
-        :param pulumi.Input[str] services_ipv4_cidr: The IP address range of the Kubernetes services in this cluster, in CIDR notation (e.g. 1.2.3.4/29). Service addresses
-               are typically put in the last /16 from the container CIDR.
+        :param pulumi.Input[str] self_link: The server-defined URL for the resource.
+        :param pulumi.Input[str] services_ipv4_cidr: The IP address range of the Kubernetes services in this
+               cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+               notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
+               `/16` from the container CIDR.
         :param pulumi.Input[str] subnetwork: The name or self_link of the Google Compute Engine
                subnetwork in which the cluster's instances are launched.
-        :param pulumi.Input[str] tpu_ipv4_cidr_block: The IP address range of the Cloud TPUs in this cluster, in CIDR notation (e.g. 1.2.3.4/29).
+        :param pulumi.Input[str] tpu_ipv4_cidr_block: The IP address range of the Cloud TPUs in this cluster, in
+               [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+               notation (e.g. `1.2.3.4/29`).
         :param pulumi.Input['ClusterVerticalPodAutoscalingArgs'] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
         :param pulumi.Input['ClusterWorkloadIdentityConfigArgs'] workload_identity_config: Workload Identity allows Kubernetes service accounts to act as a user-managed
@@ -1350,11 +1350,6 @@ class _ClusterState:
             pulumi.set(__self__, "endpoint", endpoint)
         if initial_node_count is not None:
             pulumi.set(__self__, "initial_node_count", initial_node_count)
-        if instance_group_urls is not None:
-            warnings.warn("""Please use node_pool.instance_group_urls instead.""", DeprecationWarning)
-            pulumi.log.warn("""instance_group_urls is deprecated: Please use node_pool.instance_group_urls instead.""")
-        if instance_group_urls is not None:
-            pulumi.set(__self__, "instance_group_urls", instance_group_urls)
         if ip_allocation_policy is not None:
             pulumi.set(__self__, "ip_allocation_policy", ip_allocation_policy)
         if label_fingerprint is not None:
@@ -1367,9 +1362,6 @@ class _ClusterState:
             pulumi.set(__self__, "logging_service", logging_service)
         if maintenance_policy is not None:
             pulumi.set(__self__, "maintenance_policy", maintenance_policy)
-        if master_auth is not None:
-            warnings.warn("""Basic authentication was removed for GKE cluster versions >= 1.19.""", DeprecationWarning)
-            pulumi.log.warn("""master_auth is deprecated: Basic authentication was removed for GKE cluster versions >= 1.19.""")
         if master_auth is not None:
             pulumi.set(__self__, "master_auth", master_auth)
         if master_authorized_networks_config is not None:
@@ -1676,7 +1668,7 @@ class _ClusterState:
     @pulumi.getter(name="enableShieldedNodes")
     def enable_shielded_nodes(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
+        Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
         """
         return pulumi.get(self, "enable_shielded_nodes")
 
@@ -1725,18 +1717,6 @@ class _ClusterState:
     @initial_node_count.setter
     def initial_node_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "initial_node_count", value)
-
-    @property
-    @pulumi.getter(name="instanceGroupUrls")
-    def instance_group_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of instance group URLs which have been assigned to the cluster.
-        """
-        return pulumi.get(self, "instance_group_urls")
-
-    @instance_group_urls.setter
-    def instance_group_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "instance_group_urls", value)
 
     @property
     @pulumi.getter(name="ipAllocationPolicy")
@@ -1829,9 +1809,9 @@ class _ClusterState:
         The authentication information for accessing the
         Kubernetes master. Some values in this block are only returned by the API if
         your service account has permission to get credentials for your GKE cluster. If
-        you see an unexpected diff removing a username/password or unsetting your client
-        cert, ensure you have the `container.clusters.getCredentials` permission.
-        Structure is documented below. This has been deprecated as of GKE 1.19.
+        you see an unexpected diff unsetting your client cert, ensure you have the
+        `container.clusters.getCredentials` permission.
+        Structure is documented below.
         """
         return pulumi.get(self, "master_auth")
 
@@ -1859,8 +1839,9 @@ class _ClusterState:
     @pulumi.getter(name="masterVersion")
     def master_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The current version of the master in the cluster. This may be different than the min_master_version set in the config if
-        the master has been updated by GKE.
+        The current version of the master in the cluster. This may
+        be different than the `min_master_version` set in the config if the master
+        has been updated by GKE.
         """
         return pulumi.get(self, "master_version")
 
@@ -2179,7 +2160,7 @@ class _ClusterState:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> Optional[pulumi.Input[str]]:
         """
-        Server-defined URL for the resource.
+        The server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -2191,8 +2172,10 @@ class _ClusterState:
     @pulumi.getter(name="servicesIpv4Cidr")
     def services_ipv4_cidr(self) -> Optional[pulumi.Input[str]]:
         """
-        The IP address range of the Kubernetes services in this cluster, in CIDR notation (e.g. 1.2.3.4/29). Service addresses
-        are typically put in the last /16 from the container CIDR.
+        The IP address range of the Kubernetes services in this
+        cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+        notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
+        `/16` from the container CIDR.
         """
         return pulumi.get(self, "services_ipv4_cidr")
 
@@ -2217,7 +2200,9 @@ class _ClusterState:
     @pulumi.getter(name="tpuIpv4CidrBlock")
     def tpu_ipv4_cidr_block(self) -> Optional[pulumi.Input[str]]:
         """
-        The IP address range of the Cloud TPUs in this cluster, in CIDR notation (e.g. 1.2.3.4/29).
+        The IP address range of the Cloud TPUs in this cluster, in
+        [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+        notation (e.g. `1.2.3.4/29`).
         """
         return pulumi.get(self, "tpu_ipv4_cidr_block")
 
@@ -2362,6 +2347,24 @@ class Cluster(pulumi.CustomResource):
             location="us-central1-a")
         ```
 
+        ## Import
+
+        GKE clusters can be imported using the `project` , `location`, and `name`. If the project is omitted, the default provider value will be used. Examples
+
+        ```sh
+         $ pulumi import gcp:container/cluster:Cluster mycluster projects/my-gcp-project/locations/us-east1-a/clusters/my-cluster
+        ```
+
+        ```sh
+         $ pulumi import gcp:container/cluster:Cluster mycluster my-gcp-project/us-east1-a/my-cluster
+        ```
+
+        ```sh
+         $ pulumi import gcp:container/cluster:Cluster mycluster us-east1-a/my-cluster
+        ```
+
+         For example, the following fields will show diffs if set in config- `min_master_version` - `remove_default_node_pool`
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ClusterAddonsConfigArgs']] addons_config: The configuration for addons supported by GKE.
@@ -2407,7 +2410,7 @@ class Cluster(pulumi.CustomResource):
                When enabled, identities in the system, including service accounts, nodes, and controllers,
                will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
                Defaults to `false`
-        :param pulumi.Input[bool] enable_shielded_nodes: Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
+        :param pulumi.Input[bool] enable_shielded_nodes: Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
         :param pulumi.Input[bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
         :param pulumi.Input[int] initial_node_count: The number of nodes to create in this
@@ -2436,9 +2439,9 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClusterMasterAuthArgs']] master_auth: The authentication information for accessing the
                Kubernetes master. Some values in this block are only returned by the API if
                your service account has permission to get credentials for your GKE cluster. If
-               you see an unexpected diff removing a username/password or unsetting your client
-               cert, ensure you have the `container.clusters.getCredentials` permission.
-               Structure is documented below. This has been deprecated as of GKE 1.19.
+               you see an unexpected diff unsetting your client cert, ensure you have the
+               `container.clusters.getCredentials` permission.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterMasterAuthorizedNetworksConfigArgs']] master_authorized_networks_config: The desired
                configuration options for master authorized networks. Omit the
                nested `cidr_blocks` attribute to disallow external access (except
@@ -2588,6 +2591,24 @@ class Cluster(pulumi.CustomResource):
             location="us-central1-a")
         ```
 
+        ## Import
+
+        GKE clusters can be imported using the `project` , `location`, and `name`. If the project is omitted, the default provider value will be used. Examples
+
+        ```sh
+         $ pulumi import gcp:container/cluster:Cluster mycluster projects/my-gcp-project/locations/us-east1-a/clusters/my-cluster
+        ```
+
+        ```sh
+         $ pulumi import gcp:container/cluster:Cluster mycluster my-gcp-project/us-east1-a/my-cluster
+        ```
+
+        ```sh
+         $ pulumi import gcp:container/cluster:Cluster mycluster us-east1-a/my-cluster
+        ```
+
+         For example, the following fields will show diffs if set in config- `min_master_version` - `remove_default_node_pool`
+
         :param str resource_name: The name of the resource.
         :param ClusterArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -2692,9 +2713,6 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["logging_config"] = logging_config
             __props__.__dict__["logging_service"] = logging_service
             __props__.__dict__["maintenance_policy"] = maintenance_policy
-            if master_auth is not None and not opts.urn:
-                warnings.warn("""Basic authentication was removed for GKE cluster versions >= 1.19.""", DeprecationWarning)
-                pulumi.log.warn("""master_auth is deprecated: Basic authentication was removed for GKE cluster versions >= 1.19.""")
             __props__.__dict__["master_auth"] = master_auth
             __props__.__dict__["master_authorized_networks_config"] = master_authorized_networks_config
             __props__.__dict__["min_master_version"] = min_master_version
@@ -2721,7 +2739,6 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["vertical_pod_autoscaling"] = vertical_pod_autoscaling
             __props__.__dict__["workload_identity_config"] = workload_identity_config
             __props__.__dict__["endpoint"] = None
-            __props__.__dict__["instance_group_urls"] = None
             __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["master_version"] = None
             __props__.__dict__["operation"] = None
@@ -2760,7 +2777,6 @@ class Cluster(pulumi.CustomResource):
             enable_tpu: Optional[pulumi.Input[bool]] = None,
             endpoint: Optional[pulumi.Input[str]] = None,
             initial_node_count: Optional[pulumi.Input[int]] = None,
-            instance_group_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             ip_allocation_policy: Optional[pulumi.Input[pulumi.InputType['ClusterIpAllocationPolicyArgs']]] = None,
             label_fingerprint: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
@@ -2847,7 +2863,7 @@ class Cluster(pulumi.CustomResource):
                When enabled, identities in the system, including service accounts, nodes, and controllers,
                will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
                Defaults to `false`
-        :param pulumi.Input[bool] enable_shielded_nodes: Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
+        :param pulumi.Input[bool] enable_shielded_nodes: Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
         :param pulumi.Input[bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
         :param pulumi.Input[str] endpoint: The IP address of this cluster's Kubernetes master.
@@ -2857,7 +2873,6 @@ class Cluster(pulumi.CustomResource):
                `container.NodePool` objects with no default node pool, you'll need to
                set this to a value of at least `1`, alongside setting
                `remove_default_node_pool` to `true`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_group_urls: List of instance group URLs which have been assigned to the cluster.
         :param pulumi.Input[pulumi.InputType['ClusterIpAllocationPolicyArgs']] ip_allocation_policy: Configuration of cluster IP allocation for
                VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
                making the cluster VPC-native instead of routes-based. Structure is documented
@@ -2879,16 +2894,17 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClusterMasterAuthArgs']] master_auth: The authentication information for accessing the
                Kubernetes master. Some values in this block are only returned by the API if
                your service account has permission to get credentials for your GKE cluster. If
-               you see an unexpected diff removing a username/password or unsetting your client
-               cert, ensure you have the `container.clusters.getCredentials` permission.
-               Structure is documented below. This has been deprecated as of GKE 1.19.
+               you see an unexpected diff unsetting your client cert, ensure you have the
+               `container.clusters.getCredentials` permission.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterMasterAuthorizedNetworksConfigArgs']] master_authorized_networks_config: The desired
                configuration options for master authorized networks. Omit the
                nested `cidr_blocks` attribute to disallow external access (except
                the cluster node IPs, which GKE automatically whitelists).
                Structure is documented below.
-        :param pulumi.Input[str] master_version: The current version of the master in the cluster. This may be different than the min_master_version set in the config if
-               the master has been updated by GKE.
+        :param pulumi.Input[str] master_version: The current version of the master in the cluster. This may
+               be different than the `min_master_version` set in the config if the master
+               has been updated by GKE.
         :param pulumi.Input[str] min_master_version: The minimum version of the master. GKE
                will auto-update the master to new versions, so this does not guarantee the
                current master version--use the read-only `master_version` field to obtain that.
@@ -2967,12 +2983,16 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClusterResourceUsageExportConfigArgs']] resource_usage_export_config: Configuration for the
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
-        :param pulumi.Input[str] self_link: Server-defined URL for the resource.
-        :param pulumi.Input[str] services_ipv4_cidr: The IP address range of the Kubernetes services in this cluster, in CIDR notation (e.g. 1.2.3.4/29). Service addresses
-               are typically put in the last /16 from the container CIDR.
+        :param pulumi.Input[str] self_link: The server-defined URL for the resource.
+        :param pulumi.Input[str] services_ipv4_cidr: The IP address range of the Kubernetes services in this
+               cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+               notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
+               `/16` from the container CIDR.
         :param pulumi.Input[str] subnetwork: The name or self_link of the Google Compute Engine
                subnetwork in which the cluster's instances are launched.
-        :param pulumi.Input[str] tpu_ipv4_cidr_block: The IP address range of the Cloud TPUs in this cluster, in CIDR notation (e.g. 1.2.3.4/29).
+        :param pulumi.Input[str] tpu_ipv4_cidr_block: The IP address range of the Cloud TPUs in this cluster, in
+               [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+               notation (e.g. `1.2.3.4/29`).
         :param pulumi.Input[pulumi.InputType['ClusterVerticalPodAutoscalingArgs']] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterWorkloadIdentityConfigArgs']] workload_identity_config: Workload Identity allows Kubernetes service accounts to act as a user-managed
@@ -3005,7 +3025,6 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["enable_tpu"] = enable_tpu
         __props__.__dict__["endpoint"] = endpoint
         __props__.__dict__["initial_node_count"] = initial_node_count
-        __props__.__dict__["instance_group_urls"] = instance_group_urls
         __props__.__dict__["ip_allocation_policy"] = ip_allocation_policy
         __props__.__dict__["label_fingerprint"] = label_fingerprint
         __props__.__dict__["location"] = location
@@ -3215,9 +3234,9 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableShieldedNodes")
-    def enable_shielded_nodes(self) -> pulumi.Output[bool]:
+    def enable_shielded_nodes(self) -> pulumi.Output[Optional[bool]]:
         """
-        Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
+        Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
         """
         return pulumi.get(self, "enable_shielded_nodes")
 
@@ -3250,14 +3269,6 @@ class Cluster(pulumi.CustomResource):
         `remove_default_node_pool` to `true`.
         """
         return pulumi.get(self, "initial_node_count")
-
-    @property
-    @pulumi.getter(name="instanceGroupUrls")
-    def instance_group_urls(self) -> pulumi.Output[Sequence[str]]:
-        """
-        List of instance group URLs which have been assigned to the cluster.
-        """
-        return pulumi.get(self, "instance_group_urls")
 
     @property
     @pulumi.getter(name="ipAllocationPolicy")
@@ -3326,9 +3337,9 @@ class Cluster(pulumi.CustomResource):
         The authentication information for accessing the
         Kubernetes master. Some values in this block are only returned by the API if
         your service account has permission to get credentials for your GKE cluster. If
-        you see an unexpected diff removing a username/password or unsetting your client
-        cert, ensure you have the `container.clusters.getCredentials` permission.
-        Structure is documented below. This has been deprecated as of GKE 1.19.
+        you see an unexpected diff unsetting your client cert, ensure you have the
+        `container.clusters.getCredentials` permission.
+        Structure is documented below.
         """
         return pulumi.get(self, "master_auth")
 
@@ -3348,8 +3359,9 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="masterVersion")
     def master_version(self) -> pulumi.Output[str]:
         """
-        The current version of the master in the cluster. This may be different than the min_master_version set in the config if
-        the master has been updated by GKE.
+        The current version of the master in the cluster. This may
+        be different than the `min_master_version` set in the config if the master
+        has been updated by GKE.
         """
         return pulumi.get(self, "master_version")
 
@@ -3580,7 +3592,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="selfLink")
     def self_link(self) -> pulumi.Output[str]:
         """
-        Server-defined URL for the resource.
+        The server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -3588,8 +3600,10 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="servicesIpv4Cidr")
     def services_ipv4_cidr(self) -> pulumi.Output[str]:
         """
-        The IP address range of the Kubernetes services in this cluster, in CIDR notation (e.g. 1.2.3.4/29). Service addresses
-        are typically put in the last /16 from the container CIDR.
+        The IP address range of the Kubernetes services in this
+        cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+        notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
+        `/16` from the container CIDR.
         """
         return pulumi.get(self, "services_ipv4_cidr")
 
@@ -3606,7 +3620,9 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="tpuIpv4CidrBlock")
     def tpu_ipv4_cidr_block(self) -> pulumi.Output[str]:
         """
-        The IP address range of the Cloud TPUs in this cluster, in CIDR notation (e.g. 1.2.3.4/29).
+        The IP address range of the Cloud TPUs in this cluster, in
+        [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+        notation (e.g. `1.2.3.4/29`).
         """
         return pulumi.get(self, "tpu_ipv4_cidr_block")
 

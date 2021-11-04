@@ -39,6 +39,7 @@ namespace Pulumi.Gcp.Storage
     ///         {
     ///             StorageClass = "NEARLINE",
     ///             Project = @var.Project,
+    ///             Location = "US",
     ///         });
     ///         var s3_backup_bucketBucketIAMMember = new Gcp.Storage.BucketIAMMember("s3-backup-bucketBucketIAMMember", new Gcp.Storage.BucketIAMMemberArgs
     ///         {

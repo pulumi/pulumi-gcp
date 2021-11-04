@@ -109,6 +109,12 @@ namespace Pulumi.Gcp.Container
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
+        /// List of instance group URLs which have been assigned to this node pool.
+        /// </summary>
+        [Output("managedInstanceGroupUrls")]
+        public Output<ImmutableArray<string>> ManagedInstanceGroupUrls { get; private set; } = null!;
+
+        /// <summary>
         /// Node management configuration, wherein auto-repair and
         /// auto-upgrade is configured. Structure is documented below.
         /// </summary>
@@ -417,6 +423,18 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        [Input("managedInstanceGroupUrls")]
+        private InputList<string>? _managedInstanceGroupUrls;
+
+        /// <summary>
+        /// List of instance group URLs which have been assigned to this node pool.
+        /// </summary>
+        public InputList<string> ManagedInstanceGroupUrls
+        {
+            get => _managedInstanceGroupUrls ?? (_managedInstanceGroupUrls = new InputList<string>());
+            set => _managedInstanceGroupUrls = value;
+        }
 
         /// <summary>
         /// Node management configuration, wherein auto-repair and

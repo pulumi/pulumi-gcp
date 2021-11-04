@@ -10,170 +10,49 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Composer
 {
     /// <summary>
-    /// An environment for running orchestration tasks.
+    /// ## Import
     /// 
-    /// Environments run Apache Airflow software on Google infrastructure.
+    /// Environment can be imported using any of these accepted formats
     /// 
-    /// To get more information about Environments, see:
-    /// 
-    /// * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments)
-    /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/composer/docs)
-    ///     * [Configuring Shared VPC for Composer Environments](https://cloud.google.com/composer/docs/how-to/managing/configuring-shared-vpc)
-    /// * [Apache Airflow Documentation](http://airflow.apache.org/)
-    /// 
-    /// &gt; **Warning:** We **STRONGLY** recommend you read the [GCP guides](https://cloud.google.com/composer/docs/how-to)
-    ///   as the Environment resource requires a long deployment process and involves several layers of GCP infrastructure,
-    ///   including a Kubernetes Engine cluster, Cloud Storage, and Compute networking resources. Due to limitations of the API,
-    ///   This provider will not be able to automatically find or manage many of these underlying resources. In particular:
-    ///   * It can take up to one hour to create or update an environment resource. In addition, GCP may only detect some
-    ///     errors in configuration when they are used (e.g. ~40-50 minutes into the creation process), and is prone to limited
-    ///     error reporting. If you encounter confusing or uninformative errors, please verify your configuration is valid
-    ///     against GCP Cloud Composer before filing bugs against this provider provider.
-    ///   * **Environments create Google Cloud Storage buckets that do not get cleaned up automatically** on environment
-    ///     deletion. [More about Composer's use of Cloud Storage](https://cloud.google.com/composer/docs/concepts/cloud-storage).
-    ///   * Please review the [known issues](https://cloud.google.com/composer/docs/known-issues) for Composer if you are having problems.
-    /// 
-    /// ## Example Usage
-    /// ### Basic Usage
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var test = new Gcp.Composer.Environment("test", new Gcp.Composer.EnvironmentArgs
-    ///         {
-    ///             Region = "us-central1",
-    ///         });
-    ///     }
-    /// 
-    /// }
+    /// ```sh
+    ///  $ pulumi import gcp:composer/environment:Environment default projects/{{project}}/locations/{{region}}/environments/{{name}}
     /// ```
-    /// ### With GKE and Compute Resource Dependencies
     /// 
-    /// **NOTE** To use custom service accounts, you need to give at least `role/composer.worker` to the service account being used by the GKE Nodes on the Composer project.
-    /// You may need to assign additional roles depending on what the Airflow DAGs will be running.
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var testNetwork = new Gcp.Compute.Network("testNetwork", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///             AutoCreateSubnetworks = false,
-    ///         });
-    ///         var testSubnetwork = new Gcp.Compute.Subnetwork("testSubnetwork", new Gcp.Compute.SubnetworkArgs
-    ///         {
-    ///             IpCidrRange = "10.2.0.0/16",
-    ///             Region = "us-central1",
-    ///             Network = testNetwork.Id,
-    ///         });
-    ///         var testAccount = new Gcp.ServiceAccount.Account("testAccount", new Gcp.ServiceAccount.AccountArgs
-    ///         {
-    ///             AccountId = "composer-env-account",
-    ///             DisplayName = "Test Service Account for Composer Environment",
-    ///         });
-    ///         var testEnvironment = new Gcp.Composer.Environment("testEnvironment", new Gcp.Composer.EnvironmentArgs
-    ///         {
-    ///             Region = "us-central1",
-    ///             Config = new Gcp.Composer.Inputs.EnvironmentConfigArgs
-    ///             {
-    ///                 NodeCount = 4,
-    ///                 NodeConfig = new Gcp.Composer.Inputs.EnvironmentConfigNodeConfigArgs
-    ///                 {
-    ///                     Zone = "us-central1-a",
-    ///                     MachineType = "e2-medium",
-    ///                     Network = testNetwork.Id,
-    ///                     Subnetwork = testSubnetwork.Id,
-    ///                     ServiceAccount = testAccount.Name,
-    ///                 },
-    ///             },
-    ///         });
-    ///         var composer_worker = new Gcp.Projects.IAMMember("composer-worker", new Gcp.Projects.IAMMemberArgs
-    ///         {
-    ///             Role = "roles/composer.worker",
-    ///             Member = testAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
-    ///         });
-    ///     }
-    /// 
-    /// }
+    /// ```sh
+    ///  $ pulumi import gcp:composer/environment:Environment default {{project}}/{{region}}/{{name}}
     /// ```
-    /// ### With Software (Airflow) Config
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var test = new Gcp.Composer.Environment("test", new Gcp.Composer.EnvironmentArgs
-    ///         {
-    ///             Config = new Gcp.Composer.Inputs.EnvironmentConfigArgs
-    ///             {
-    ///                 SoftwareConfig = new Gcp.Composer.Inputs.EnvironmentConfigSoftwareConfigArgs
-    ///                 {
-    ///                     AirflowConfigOverrides = 
-    ///                     {
-    ///                         { "core-loadExample", "True" },
-    ///                     },
-    ///                     EnvVariables = 
-    ///                     {
-    ///                         { "FOO", "bar" },
-    ///                     },
-    ///                     PypiPackages = 
-    ///                     {
-    ///                         { "numpy", "" },
-    ///                         { "scipy", "==1.1.0" },
-    ///                     },
-    ///                 },
-    ///             },
-    ///             Region = "us-central1",
-    ///         });
-    ///     }
-    /// 
-    /// }
+    /// ```sh
+    ///  $ pulumi import gcp:composer/environment:Environment default {{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:composer/environment:Environment")]
     public partial class Environment : Pulumi.CustomResource
     {
         /// <summary>
-        /// Configuration parameters for this environment  Structure is documented below.
+        /// Configuration parameters for this environment.
         /// </summary>
         [Output("config")]
         public Output<Outputs.EnvironmentConfig> Config { get; private set; } = null!;
 
         /// <summary>
-        /// User-defined labels for this environment. The labels map can contain
-        /// no more than 64 entries. Entries of the labels map are UTF8 strings
-        /// that comply with the following restrictions:
-        /// Label keys must be between 1 and 63 characters long and must conform
-        /// to the following regular expression: `a-z?`.
-        /// Label values must be between 0 and 63 characters long and must
-        /// conform to the regular expression `(a-z?)?`.
-        /// No more than 64 labels can be associated with a given environment.
-        /// Both keys and values must be &lt;= 128 bytes in size.
+        /// User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
+        /// are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
+        /// must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
+        /// characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
+        /// associated with a given environment. Both keys and values must be &lt;= 128 bytes in size.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the environment
+        /// Name of the environment.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
+        /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -231,7 +110,7 @@ namespace Pulumi.Gcp.Composer
     public sealed class EnvironmentArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Configuration parameters for this environment  Structure is documented below.
+        /// Configuration parameters for this environment.
         /// </summary>
         [Input("config")]
         public Input<Inputs.EnvironmentConfigArgs>? Config { get; set; }
@@ -240,15 +119,11 @@ namespace Pulumi.Gcp.Composer
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// User-defined labels for this environment. The labels map can contain
-        /// no more than 64 entries. Entries of the labels map are UTF8 strings
-        /// that comply with the following restrictions:
-        /// Label keys must be between 1 and 63 characters long and must conform
-        /// to the following regular expression: `a-z?`.
-        /// Label values must be between 0 and 63 characters long and must
-        /// conform to the regular expression `(a-z?)?`.
-        /// No more than 64 labels can be associated with a given environment.
-        /// Both keys and values must be &lt;= 128 bytes in size.
+        /// User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
+        /// are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
+        /// must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
+        /// characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
+        /// associated with a given environment. Both keys and values must be &lt;= 128 bytes in size.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -257,14 +132,13 @@ namespace Pulumi.Gcp.Composer
         }
 
         /// <summary>
-        /// Name of the environment
+        /// Name of the environment.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
+        /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -283,7 +157,7 @@ namespace Pulumi.Gcp.Composer
     public sealed class EnvironmentState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Configuration parameters for this environment  Structure is documented below.
+        /// Configuration parameters for this environment.
         /// </summary>
         [Input("config")]
         public Input<Inputs.EnvironmentConfigGetArgs>? Config { get; set; }
@@ -292,15 +166,11 @@ namespace Pulumi.Gcp.Composer
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// User-defined labels for this environment. The labels map can contain
-        /// no more than 64 entries. Entries of the labels map are UTF8 strings
-        /// that comply with the following restrictions:
-        /// Label keys must be between 1 and 63 characters long and must conform
-        /// to the following regular expression: `a-z?`.
-        /// Label values must be between 0 and 63 characters long and must
-        /// conform to the regular expression `(a-z?)?`.
-        /// No more than 64 labels can be associated with a given environment.
-        /// Both keys and values must be &lt;= 128 bytes in size.
+        /// User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
+        /// are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
+        /// must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
+        /// characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
+        /// associated with a given environment. Both keys and values must be &lt;= 128 bytes in size.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -309,14 +179,13 @@ namespace Pulumi.Gcp.Composer
         }
 
         /// <summary>
-        /// Name of the environment
+        /// Name of the environment.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
+        /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

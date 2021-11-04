@@ -31,18 +31,12 @@ namespace Pulumi.Gcp.Container
         ///             Name = "my-cluster",
         ///             Location = "us-east1-a",
         ///         }));
-        ///         this.ClusterUsername = myCluster.Apply(myCluster =&gt; myCluster.MasterAuths?[0]?.Username);
-        ///         this.ClusterPassword = myCluster.Apply(myCluster =&gt; myCluster.MasterAuths?[0]?.Password);
         ///         this.Endpoint = myCluster.Apply(myCluster =&gt; myCluster.Endpoint);
-        ///         this.InstanceGroupUrls = myCluster.Apply(myCluster =&gt; myCluster.InstanceGroupUrls);
+        ///         this.InstanceGroupUrls = myCluster.Apply(myCluster =&gt; myCluster.NodePools?[0]?.InstanceGroupUrls);
         ///         this.NodeConfig = myCluster.Apply(myCluster =&gt; myCluster.NodeConfigs);
         ///         this.NodePools = myCluster.Apply(myCluster =&gt; myCluster.NodePools);
         ///     }
         /// 
-        ///     [Output("clusterUsername")]
-        ///     public Output&lt;string&gt; ClusterUsername { get; set; }
-        ///     [Output("clusterPassword")]
-        ///     public Output&lt;string&gt; ClusterPassword { get; set; }
         ///     [Output("endpoint")]
         ///     public Output&lt;string&gt; Endpoint { get; set; }
         ///     [Output("instanceGroupUrls")]
@@ -119,7 +113,6 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         public readonly string Id;
         public readonly int InitialNodeCount;
-        public readonly ImmutableArray<string> InstanceGroupUrls;
         public readonly ImmutableArray<Outputs.GetClusterIpAllocationPolicyResult> IpAllocationPolicies;
         public readonly string LabelFingerprint;
         public readonly string? Location;
@@ -204,8 +197,6 @@ namespace Pulumi.Gcp.Container
             string id,
 
             int initialNodeCount,
-
-            ImmutableArray<string> instanceGroupUrls,
 
             ImmutableArray<Outputs.GetClusterIpAllocationPolicyResult> ipAllocationPolicies,
 
@@ -302,7 +293,6 @@ namespace Pulumi.Gcp.Container
             Endpoint = endpoint;
             Id = id;
             InitialNodeCount = initialNodeCount;
-            InstanceGroupUrls = instanceGroupUrls;
             IpAllocationPolicies = ipAllocationPolicies;
             LabelFingerprint = labelFingerprint;
             Location = location;

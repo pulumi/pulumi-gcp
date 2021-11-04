@@ -30,7 +30,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/notebooks"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/notebooks"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -57,7 +57,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/notebooks"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/notebooks"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -87,7 +87,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/notebooks"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/notebooks"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -119,8 +119,8 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/compute"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/notebooks"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/notebooks"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -161,10 +161,6 @@ import (
 // 			Subnet:           pulumi.String(mySubnetwork.Id),
 // 			Labels: pulumi.StringMap{
 // 				"k": pulumi.String("val"),
-// 			},
-// 			NicType: pulumi.String("VIRTIO_NET"),
-// 			ReservationAffinity: &notebooks.InstanceReservationAffinityArgs{
-// 				ConsumeReservationType: pulumi.String("NO_RESERVATION"),
 // 			},
 // 		})
 // 		if err != nil {

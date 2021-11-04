@@ -26,7 +26,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/dataloss"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataloss"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -56,7 +56,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/dataloss"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataloss"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -90,14 +90,15 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/dataloss"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/storage"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataloss"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+// 			Location:     pulumi.String("US"),
 // 			ForceDestroy: pulumi.Bool(true),
 // 		})
 // 		if err != nil {

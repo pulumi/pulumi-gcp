@@ -13,17 +13,8 @@ namespace Pulumi.Gcp.Composer.Outputs
     [OutputType]
     public sealed class EnvironmentConfigWorkloadsConfig
     {
-        /// <summary>
-        /// Configuration for resources used by Airflow schedulers.
-        /// </summary>
         public readonly Outputs.EnvironmentConfigWorkloadsConfigScheduler? Scheduler;
-        /// <summary>
-        /// Configuration for resources used by Airflow web server.
-        /// </summary>
         public readonly Outputs.EnvironmentConfigWorkloadsConfigWebServer? WebServer;
-        /// <summary>
-        /// Configuration for resources used by Airflow workers.
-        /// </summary>
         public readonly Outputs.EnvironmentConfigWorkloadsConfigWorker? Worker;
 
         [OutputConstructor]

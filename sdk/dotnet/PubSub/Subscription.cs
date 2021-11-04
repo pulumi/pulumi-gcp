@@ -255,12 +255,6 @@ namespace Pulumi.Gcp.PubSub
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Path of the subscription in the format projects/{project}/subscriptions/{name}
-        /// </summary>
-        [Output("path")]
-        public Output<string> Path { get; private set; } = null!;
-
-        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -580,12 +574,6 @@ namespace Pulumi.Gcp.PubSub
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// Path of the subscription in the format projects/{project}/subscriptions/{name}
-        /// </summary>
-        [Input("path")]
-        public Input<string>? Path { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

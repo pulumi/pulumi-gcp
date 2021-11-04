@@ -24,7 +24,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/kms"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -70,8 +70,6 @@ type GetKMSKeyRingResult struct {
 	Location string  `pulumi:"location"`
 	Name     string  `pulumi:"name"`
 	Project  *string `pulumi:"project"`
-	// The self link of the created KeyRing. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}`.
-	SelfLink string `pulumi:"selfLink"`
 }
 
 func GetKMSKeyRingOutput(ctx *pulumi.Context, args GetKMSKeyRingOutputArgs, opts ...pulumi.InvokeOption) GetKMSKeyRingResultOutput {
@@ -130,11 +128,6 @@ func (o GetKMSKeyRingResultOutput) Name() pulumi.StringOutput {
 
 func (o GetKMSKeyRingResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKMSKeyRingResult) *string { return v.Project }).(pulumi.StringPtrOutput)
-}
-
-// The self link of the created KeyRing. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}`.
-func (o GetKMSKeyRingResultOutput) SelfLink() pulumi.StringOutput {
-	return o.ApplyT(func(v GetKMSKeyRingResult) string { return v.SelfLink }).(pulumi.StringOutput)
 }
 
 func init() {

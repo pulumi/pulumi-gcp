@@ -105,17 +105,11 @@ namespace Pulumi.Gcp
         [Output("composerCustomEndpoint")]
         public Output<string?> ComposerCustomEndpoint { get; private set; } = null!;
 
-        [Output("computeBetaCustomEndpoint")]
-        public Output<string?> ComputeBetaCustomEndpoint { get; private set; } = null!;
-
         [Output("computeCustomEndpoint")]
         public Output<string?> ComputeCustomEndpoint { get; private set; } = null!;
 
         [Output("containerAnalysisCustomEndpoint")]
         public Output<string?> ContainerAnalysisCustomEndpoint { get; private set; } = null!;
-
-        [Output("containerBetaCustomEndpoint")]
-        public Output<string?> ContainerBetaCustomEndpoint { get; private set; } = null!;
 
         [Output("containerCustomEndpoint")]
         public Output<string?> ContainerCustomEndpoint { get; private set; } = null!;
@@ -134,9 +128,6 @@ namespace Pulumi.Gcp
 
         [Output("dataflowCustomEndpoint")]
         public Output<string?> DataflowCustomEndpoint { get; private set; } = null!;
-
-        [Output("dataprocBetaCustomEndpoint")]
-        public Output<string?> DataprocBetaCustomEndpoint { get; private set; } = null!;
 
         [Output("dataprocCustomEndpoint")]
         public Output<string?> DataprocCustomEndpoint { get; private set; } = null!;
@@ -448,17 +439,11 @@ namespace Pulumi.Gcp
         [Input("composerCustomEndpoint")]
         public Input<string>? ComposerCustomEndpoint { get; set; }
 
-        [Input("computeBetaCustomEndpoint")]
-        public Input<string>? ComputeBetaCustomEndpoint { get; set; }
-
         [Input("computeCustomEndpoint")]
         public Input<string>? ComputeCustomEndpoint { get; set; }
 
         [Input("containerAnalysisCustomEndpoint")]
         public Input<string>? ContainerAnalysisCustomEndpoint { get; set; }
-
-        [Input("containerBetaCustomEndpoint")]
-        public Input<string>? ContainerBetaCustomEndpoint { get; set; }
 
         [Input("containerCustomEndpoint")]
         public Input<string>? ContainerCustomEndpoint { get; set; }
@@ -477,9 +462,6 @@ namespace Pulumi.Gcp
 
         [Input("dataflowCustomEndpoint")]
         public Input<string>? DataflowCustomEndpoint { get; set; }
-
-        [Input("dataprocBetaCustomEndpoint")]
-        public Input<string>? DataprocBetaCustomEndpoint { get; set; }
 
         [Input("dataprocCustomEndpoint")]
         public Input<string>? DataprocCustomEndpoint { get; set; }

@@ -210,12 +210,6 @@ export class Subscription extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Path of the subscription in the format projects/{project}/subscriptions/{name}
-     *
-     * @deprecated Deprecated in favor of id, which contains an identical value. This field will be removed in the next major release of the provider.
-     */
-    public /*out*/ readonly path!: pulumi.Output<string>;
-    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -267,7 +261,6 @@ export class Subscription extends pulumi.CustomResource {
             inputs["labels"] = state ? state.labels : undefined;
             inputs["messageRetentionDuration"] = state ? state.messageRetentionDuration : undefined;
             inputs["name"] = state ? state.name : undefined;
-            inputs["path"] = state ? state.path : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["pushConfig"] = state ? state.pushConfig : undefined;
             inputs["retainAckedMessages"] = state ? state.retainAckedMessages : undefined;
@@ -291,7 +284,6 @@ export class Subscription extends pulumi.CustomResource {
             inputs["retainAckedMessages"] = args ? args.retainAckedMessages : undefined;
             inputs["retryPolicy"] = args ? args.retryPolicy : undefined;
             inputs["topic"] = args ? args.topic : undefined;
-            inputs["path"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -376,12 +368,6 @@ export interface SubscriptionState {
      * Name of the subscription.
      */
     name?: pulumi.Input<string>;
-    /**
-     * Path of the subscription in the format projects/{project}/subscriptions/{name}
-     *
-     * @deprecated Deprecated in favor of id, which contains an identical value. This field will be removed in the next major release of the provider.
-     */
-    path?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

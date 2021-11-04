@@ -39,8 +39,8 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/projects"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -77,8 +77,8 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/projects"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -120,7 +120,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/projects"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -147,7 +147,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/projects"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -179,7 +179,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/projects"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -204,7 +204,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/projects"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -234,7 +234,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/projects"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -305,9 +305,8 @@ type IAMAuditConfig struct {
 	AuditLogConfigs IAMAuditConfigAuditLogConfigArrayOutput `pulumi:"auditLogConfigs"`
 	// (Computed) The etag of the project's IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-	// Required for `projects.IAMPolicy` - you must explicitly set the project, and it
-	// will not be inferred from the provider.
+	// The project id of the target project. This is not
+	// inferred from the provider.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_project\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
 	Service pulumi.StringOutput `pulumi:"service"`
@@ -322,6 +321,9 @@ func NewIAMAuditConfig(ctx *pulumi.Context,
 
 	if args.AuditLogConfigs == nil {
 		return nil, errors.New("invalid value for required argument 'AuditLogConfigs'")
+	}
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	if args.Service == nil {
 		return nil, errors.New("invalid value for required argument 'Service'")
@@ -352,9 +354,8 @@ type iamauditConfigState struct {
 	AuditLogConfigs []IAMAuditConfigAuditLogConfig `pulumi:"auditLogConfigs"`
 	// (Computed) The etag of the project's IAM policy.
 	Etag *string `pulumi:"etag"`
-	// The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-	// Required for `projects.IAMPolicy` - you must explicitly set the project, and it
-	// will not be inferred from the provider.
+	// The project id of the target project. This is not
+	// inferred from the provider.
 	Project *string `pulumi:"project"`
 	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_project\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
 	Service *string `pulumi:"service"`
@@ -365,9 +366,8 @@ type IAMAuditConfigState struct {
 	AuditLogConfigs IAMAuditConfigAuditLogConfigArrayInput
 	// (Computed) The etag of the project's IAM policy.
 	Etag pulumi.StringPtrInput
-	// The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-	// Required for `projects.IAMPolicy` - you must explicitly set the project, and it
-	// will not be inferred from the provider.
+	// The project id of the target project. This is not
+	// inferred from the provider.
 	Project pulumi.StringPtrInput
 	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_project\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
 	Service pulumi.StringPtrInput
@@ -380,10 +380,9 @@ func (IAMAuditConfigState) ElementType() reflect.Type {
 type iamauditConfigArgs struct {
 	// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
 	AuditLogConfigs []IAMAuditConfigAuditLogConfig `pulumi:"auditLogConfigs"`
-	// The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-	// Required for `projects.IAMPolicy` - you must explicitly set the project, and it
-	// will not be inferred from the provider.
-	Project *string `pulumi:"project"`
+	// The project id of the target project. This is not
+	// inferred from the provider.
+	Project string `pulumi:"project"`
 	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_project\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
 	Service string `pulumi:"service"`
 }
@@ -392,10 +391,9 @@ type iamauditConfigArgs struct {
 type IAMAuditConfigArgs struct {
 	// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
 	AuditLogConfigs IAMAuditConfigAuditLogConfigArrayInput
-	// The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-	// Required for `projects.IAMPolicy` - you must explicitly set the project, and it
-	// will not be inferred from the provider.
-	Project pulumi.StringPtrInput
+	// The project id of the target project. This is not
+	// inferred from the provider.
+	Project pulumi.StringInput
 	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_project\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
 	Service pulumi.StringInput
 }

@@ -64,7 +64,7 @@ class GetInstanceResult:
 
     @property
     @pulumi.getter(name="forceDestroy")
-    def force_destroy(self) -> Optional[bool]:
+    def force_destroy(self) -> bool:
         return pulumi.get(self, "force_destroy")
 
     @property
@@ -77,7 +77,7 @@ class GetInstanceResult:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> Mapping[str, str]:
         return pulumi.get(self, "labels")
 
     @property
@@ -126,11 +126,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
 
 def get_instance(config: Optional[str] = None,
                  display_name: Optional[str] = None,
-                 force_destroy: Optional[bool] = None,
-                 labels: Optional[Mapping[str, str]] = None,
                  name: Optional[str] = None,
-                 num_nodes: Optional[int] = None,
-                 processing_units: Optional[int] = None,
                  project: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceResult:
     """
@@ -153,11 +149,7 @@ def get_instance(config: Optional[str] = None,
     __args__ = dict()
     __args__['config'] = config
     __args__['displayName'] = display_name
-    __args__['forceDestroy'] = force_destroy
-    __args__['labels'] = labels
     __args__['name'] = name
-    __args__['numNodes'] = num_nodes
-    __args__['processingUnits'] = processing_units
     __args__['project'] = project
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -181,11 +173,7 @@ def get_instance(config: Optional[str] = None,
 @_utilities.lift_output_func(get_instance)
 def get_instance_output(config: Optional[pulumi.Input[Optional[str]]] = None,
                         display_name: Optional[pulumi.Input[Optional[str]]] = None,
-                        force_destroy: Optional[pulumi.Input[Optional[bool]]] = None,
-                        labels: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                         name: Optional[pulumi.Input[str]] = None,
-                        num_nodes: Optional[pulumi.Input[Optional[int]]] = None,
-                        processing_units: Optional[pulumi.Input[Optional[int]]] = None,
                         project: Optional[pulumi.Input[Optional[str]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceResult]:
     """

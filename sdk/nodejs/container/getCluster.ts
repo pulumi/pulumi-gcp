@@ -18,10 +18,8 @@ import * as utilities from "../utilities";
  *     name: "my-cluster",
  *     location: "us-east1-a",
  * });
- * export const clusterUsername = myCluster.then(myCluster => myCluster.masterAuths?[0]?.username);
- * export const clusterPassword = myCluster.then(myCluster => myCluster.masterAuths?[0]?.password);
  * export const endpoint = myCluster.then(myCluster => myCluster.endpoint);
- * export const instanceGroupUrls = myCluster.then(myCluster => myCluster.instanceGroupUrls);
+ * export const instanceGroupUrls = myCluster.then(myCluster => myCluster.nodePools?[0]?.instanceGroupUrls);
  * export const nodeConfig = myCluster.then(myCluster => myCluster.nodeConfigs);
  * export const nodePools = myCluster.then(myCluster => myCluster.nodePools);
  * ```
@@ -92,7 +90,6 @@ export interface GetClusterResult {
      */
     readonly id: string;
     readonly initialNodeCount: number;
-    readonly instanceGroupUrls: string[];
     readonly ipAllocationPolicies: outputs.container.GetClusterIpAllocationPolicy[];
     readonly labelFingerprint: string;
     readonly location?: string;

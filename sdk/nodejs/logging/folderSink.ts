@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const log_bucket = new gcp.storage.Bucket("log-bucket", {});
+ * const log_bucket = new gcp.storage.Bucket("log-bucket", {location: "US"});
  * const my_folder = new gcp.organizations.Folder("my-folder", {
  *     displayName: "My folder",
  *     parent: "organizations/123456",
@@ -29,6 +29,7 @@ import * as utilities from "../utilities";
  *     filter: "resource.type = gce_instance AND severity >= WARNING",
  * });
  * const log_writer = new gcp.projects.IAMBinding("log-writer", {
+ *     project: "your-project-id",
  *     role: "roles/storage.objectCreator",
  *     members: [my_sink.writerIdentity],
  * });

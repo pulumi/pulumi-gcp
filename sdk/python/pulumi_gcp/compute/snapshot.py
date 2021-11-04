@@ -203,7 +203,6 @@ class _SnapshotState:
                  snapshot_id: Optional[pulumi.Input[int]] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_disk_encryption_key: Optional[pulumi.Input['SnapshotSourceDiskEncryptionKeyArgs']] = None,
-                 source_disk_link: Optional[pulumi.Input[str]] = None,
                  storage_bytes: Optional[pulumi.Input[int]] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
@@ -267,11 +266,6 @@ class _SnapshotState:
             pulumi.set(__self__, "source_disk", source_disk)
         if source_disk_encryption_key is not None:
             pulumi.set(__self__, "source_disk_encryption_key", source_disk_encryption_key)
-        if source_disk_link is not None:
-            warnings.warn("""Deprecated in favor of source_disk, which contains a compatible value. This field will be removed in the next major release of the provider.""", DeprecationWarning)
-            pulumi.log.warn("""source_disk_link is deprecated: Deprecated in favor of source_disk, which contains a compatible value. This field will be removed in the next major release of the provider.""")
-        if source_disk_link is not None:
-            pulumi.set(__self__, "source_disk_link", source_disk_link)
         if storage_bytes is not None:
             pulumi.set(__self__, "storage_bytes", storage_bytes)
         if storage_locations is not None:
@@ -448,15 +442,6 @@ class _SnapshotState:
     @source_disk_encryption_key.setter
     def source_disk_encryption_key(self, value: Optional[pulumi.Input['SnapshotSourceDiskEncryptionKeyArgs']]):
         pulumi.set(self, "source_disk_encryption_key", value)
-
-    @property
-    @pulumi.getter(name="sourceDiskLink")
-    def source_disk_link(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "source_disk_link")
-
-    @source_disk_link.setter
-    def source_disk_link(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "source_disk_link", value)
 
     @property
     @pulumi.getter(name="storageBytes")
@@ -718,7 +703,6 @@ class Snapshot(pulumi.CustomResource):
             __props__.__dict__["licenses"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["snapshot_id"] = None
-            __props__.__dict__["source_disk_link"] = None
             __props__.__dict__["storage_bytes"] = None
         super(Snapshot, __self__).__init__(
             'gcp:compute/snapshot:Snapshot',
@@ -743,7 +727,6 @@ class Snapshot(pulumi.CustomResource):
             snapshot_id: Optional[pulumi.Input[int]] = None,
             source_disk: Optional[pulumi.Input[str]] = None,
             source_disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['SnapshotSourceDiskEncryptionKeyArgs']]] = None,
-            source_disk_link: Optional[pulumi.Input[str]] = None,
             storage_bytes: Optional[pulumi.Input[int]] = None,
             storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'Snapshot':
@@ -803,7 +786,6 @@ class Snapshot(pulumi.CustomResource):
         __props__.__dict__["snapshot_id"] = snapshot_id
         __props__.__dict__["source_disk"] = source_disk
         __props__.__dict__["source_disk_encryption_key"] = source_disk_encryption_key
-        __props__.__dict__["source_disk_link"] = source_disk_link
         __props__.__dict__["storage_bytes"] = storage_bytes
         __props__.__dict__["storage_locations"] = storage_locations
         __props__.__dict__["zone"] = zone
@@ -926,11 +908,6 @@ class Snapshot(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "source_disk_encryption_key")
-
-    @property
-    @pulumi.getter(name="sourceDiskLink")
-    def source_disk_link(self) -> pulumi.Output[str]:
-        return pulumi.get(self, "source_disk_link")
 
     @property
     @pulumi.getter(name="storageBytes")

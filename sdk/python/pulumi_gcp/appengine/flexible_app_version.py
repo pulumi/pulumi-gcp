@@ -1099,7 +1099,9 @@ class FlexibleAppVersion(pulumi.CustomResource):
             project=service.project,
             role="roles/compute.networkUser",
             member=my_project.number.apply(lambda number: f"serviceAccount:service-{number}@gae-api-prod.google.com.iam.gserviceaccount.com"))
-        bucket = gcp.storage.Bucket("bucket", project=my_project.project_id)
+        bucket = gcp.storage.Bucket("bucket",
+            project=my_project.project_id,
+            location="US")
         object = gcp.storage.BucketObject("object",
             bucket=bucket.name,
             source=pulumi.FileAsset("./test-fixtures/appengine/hello-world.zip"))
@@ -1257,7 +1259,9 @@ class FlexibleAppVersion(pulumi.CustomResource):
             project=service.project,
             role="roles/compute.networkUser",
             member=my_project.number.apply(lambda number: f"serviceAccount:service-{number}@gae-api-prod.google.com.iam.gserviceaccount.com"))
-        bucket = gcp.storage.Bucket("bucket", project=my_project.project_id)
+        bucket = gcp.storage.Bucket("bucket",
+            project=my_project.project_id,
+            location="US")
         object = gcp.storage.BucketObject("object",
             bucket=bucket.name,
             source=pulumi.FileAsset("./test-fixtures/appengine/hello-world.zip"))

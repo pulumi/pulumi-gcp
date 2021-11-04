@@ -22,14 +22,15 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/networkservices"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/storage"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkservices"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		dest, err := storage.NewBucket(ctx, "dest", &storage.BucketArgs{
+// 			Location:     pulumi.String("US"),
 // 			ForceDestroy: pulumi.Bool(true),
 // 		})
 // 		if err != nil {
@@ -104,14 +105,15 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/networkservices"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/storage"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkservices"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		dest, err := storage.NewBucket(ctx, "dest", &storage.BucketArgs{
+// 			Location:     pulumi.String("US"),
 // 			ForceDestroy: pulumi.Bool(true),
 // 		})
 // 		if err != nil {

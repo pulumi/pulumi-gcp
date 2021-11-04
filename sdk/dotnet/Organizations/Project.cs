@@ -111,7 +111,7 @@ namespace Pulumi.Gcp.Organizations
         /// project to be migrated to the newly specified folder.
         /// </summary>
         [Output("folderId")]
-        public Output<string> FolderId { get; private set; } = null!;
+        public Output<string?> FolderId { get; private set; } = null!;
 
         /// <summary>
         /// A set of key/value label pairs to assign to the project.
@@ -140,7 +140,7 @@ namespace Pulumi.Gcp.Organizations
         /// organization.
         /// </summary>
         [Output("orgId")]
-        public Output<string> OrgId { get; private set; } = null!;
+        public Output<string?> OrgId { get; private set; } = null!;
 
         /// <summary>
         /// The project ID. Changing this forces a new project to be created.

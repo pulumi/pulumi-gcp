@@ -16,12 +16,12 @@ __all__ = ['StandardAppVersionArgs', 'StandardAppVersion']
 class StandardAppVersionArgs:
     def __init__(__self__, *,
                  deployment: pulumi.Input['StandardAppVersionDeploymentArgs'],
+                 entrypoint: pulumi.Input['StandardAppVersionEntrypointArgs'],
                  runtime: pulumi.Input[str],
                  service: pulumi.Input[str],
                  automatic_scaling: Optional[pulumi.Input['StandardAppVersionAutomaticScalingArgs']] = None,
                  basic_scaling: Optional[pulumi.Input['StandardAppVersionBasicScalingArgs']] = None,
                  delete_service_on_destroy: Optional[pulumi.Input[bool]] = None,
-                 entrypoint: Optional[pulumi.Input['StandardAppVersionEntrypointArgs']] = None,
                  env_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  handlers: Optional[pulumi.Input[Sequence[pulumi.Input['StandardAppVersionHandlerArgs']]]] = None,
                  inbound_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -38,6 +38,8 @@ class StandardAppVersionArgs:
         The set of arguments for constructing a StandardAppVersion resource.
         :param pulumi.Input['StandardAppVersionDeploymentArgs'] deployment: Code and application artifacts that make up this version.
                Structure is documented below.
+        :param pulumi.Input['StandardAppVersionEntrypointArgs'] entrypoint: The entrypoint for the application.
+               Structure is documented below.
         :param pulumi.Input[str] runtime: Desired runtime. Example python27.
         :param pulumi.Input[str] service: AppEngine service resource
         :param pulumi.Input['StandardAppVersionAutomaticScalingArgs'] automatic_scaling: Automatic scaling is based on request rate, response latencies, and other application metrics.
@@ -45,8 +47,6 @@ class StandardAppVersionArgs:
         :param pulumi.Input['StandardAppVersionBasicScalingArgs'] basic_scaling: Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
                Structure is documented below.
         :param pulumi.Input[bool] delete_service_on_destroy: If set to `true`, the service will be deleted if it is the last version.
-        :param pulumi.Input['StandardAppVersionEntrypointArgs'] entrypoint: The entrypoint for the application.
-               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] env_variables: Environment variables available to the application.
         :param pulumi.Input[Sequence[pulumi.Input['StandardAppVersionHandlerArgs']]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests.
                The first matching URL handles the request and other request handlers are not attempted.
@@ -72,6 +72,7 @@ class StandardAppVersionArgs:
                Structure is documented below.
         """
         pulumi.set(__self__, "deployment", deployment)
+        pulumi.set(__self__, "entrypoint", entrypoint)
         pulumi.set(__self__, "runtime", runtime)
         pulumi.set(__self__, "service", service)
         if automatic_scaling is not None:
@@ -80,8 +81,6 @@ class StandardAppVersionArgs:
             pulumi.set(__self__, "basic_scaling", basic_scaling)
         if delete_service_on_destroy is not None:
             pulumi.set(__self__, "delete_service_on_destroy", delete_service_on_destroy)
-        if entrypoint is not None:
-            pulumi.set(__self__, "entrypoint", entrypoint)
         if env_variables is not None:
             pulumi.set(__self__, "env_variables", env_variables)
         if handlers is not None:
@@ -119,6 +118,19 @@ class StandardAppVersionArgs:
     @deployment.setter
     def deployment(self, value: pulumi.Input['StandardAppVersionDeploymentArgs']):
         pulumi.set(self, "deployment", value)
+
+    @property
+    @pulumi.getter
+    def entrypoint(self) -> pulumi.Input['StandardAppVersionEntrypointArgs']:
+        """
+        The entrypoint for the application.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "entrypoint")
+
+    @entrypoint.setter
+    def entrypoint(self, value: pulumi.Input['StandardAppVersionEntrypointArgs']):
+        pulumi.set(self, "entrypoint", value)
 
     @property
     @pulumi.getter
@@ -181,19 +193,6 @@ class StandardAppVersionArgs:
     @delete_service_on_destroy.setter
     def delete_service_on_destroy(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "delete_service_on_destroy", value)
-
-    @property
-    @pulumi.getter
-    def entrypoint(self) -> Optional[pulumi.Input['StandardAppVersionEntrypointArgs']]:
-        """
-        The entrypoint for the application.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "entrypoint")
-
-    @entrypoint.setter
-    def entrypoint(self, value: Optional[pulumi.Input['StandardAppVersionEntrypointArgs']]):
-        pulumi.set(self, "entrypoint", value)
 
     @property
     @pulumi.getter(name="envVariables")
@@ -753,7 +752,7 @@ class StandardAppVersion(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        bucket = gcp.storage.Bucket("bucket")
+        bucket = gcp.storage.Bucket("bucket", location="US")
         object = gcp.storage.BucketObject("object",
             bucket=bucket.name,
             source=pulumi.FileAsset("./test-fixtures/appengine/hello-world.zip"))
@@ -885,7 +884,7 @@ class StandardAppVersion(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        bucket = gcp.storage.Bucket("bucket")
+        bucket = gcp.storage.Bucket("bucket", location="US")
         object = gcp.storage.BucketObject("object",
             bucket=bucket.name,
             source=pulumi.FileAsset("./test-fixtures/appengine/hello-world.zip"))
@@ -1007,6 +1006,8 @@ class StandardAppVersion(pulumi.CustomResource):
             if deployment is None and not opts.urn:
                 raise TypeError("Missing required property 'deployment'")
             __props__.__dict__["deployment"] = deployment
+            if entrypoint is None and not opts.urn:
+                raise TypeError("Missing required property 'entrypoint'")
             __props__.__dict__["entrypoint"] = entrypoint
             __props__.__dict__["env_variables"] = env_variables
             __props__.__dict__["handlers"] = handlers
@@ -1163,7 +1164,7 @@ class StandardAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def entrypoint(self) -> pulumi.Output[Optional['outputs.StandardAppVersionEntrypoint']]:
+    def entrypoint(self) -> pulumi.Output['outputs.StandardAppVersionEntrypoint']:
         """
         The entrypoint for the application.
         Structure is documented below.

@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * });
  * const myCryptoKey = myKeyRing.then(myKeyRing => gcp.kms.getKMSCryptoKey({
  *     name: "my-crypto-key",
- *     keyRing: myKeyRing.selfLink,
+ *     keyRing: myKeyRing.id,
  * }));
  * ```
  */
@@ -49,7 +49,7 @@ export function getKMSCryptoKey(args: GetKMSCryptoKeyArgs, opts?: pulumi.InvokeO
  */
 export interface GetKMSCryptoKeyArgs {
     /**
-     * The `selfLink` of the Google Cloud Platform KeyRing to which the key belongs.
+     * The `id` of the Google Cloud Platform KeyRing to which the key belongs.
      */
     keyRing: string;
     /**
@@ -82,10 +82,6 @@ export interface GetKMSCryptoKeyResult {
      * of a decimal number with up to 9 fractional digits, followed by the letter s (seconds).
      */
     readonly rotationPeriod: string;
-    /**
-     * The self link of the created CryptoKey. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}/cryptoKeys/{cryptoKeyName}`.
-     */
-    readonly selfLink: string;
     readonly skipInitialVersionCreation: boolean;
     readonly versionTemplates: outputs.kms.GetKMSCryptoKeyVersionTemplate[];
 }
@@ -99,7 +95,7 @@ export function getKMSCryptoKeyOutput(args: GetKMSCryptoKeyOutputArgs, opts?: pu
  */
 export interface GetKMSCryptoKeyOutputArgs {
     /**
-     * The `selfLink` of the Google Cloud Platform KeyRing to which the key belongs.
+     * The `id` of the Google Cloud Platform KeyRing to which the key belongs.
      */
     keyRing: pulumi.Input<string>;
     /**

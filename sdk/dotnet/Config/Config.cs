@@ -242,13 +242,6 @@ namespace Pulumi.Gcp
             set => _composerCustomEndpoint.Set(value);
         }
 
-        private static readonly __Value<string?> _computeBetaCustomEndpoint = new __Value<string?>(() => __config.Get("computeBetaCustomEndpoint"));
-        public static string? ComputeBetaCustomEndpoint
-        {
-            get => _computeBetaCustomEndpoint.Get();
-            set => _computeBetaCustomEndpoint.Set(value);
-        }
-
         private static readonly __Value<string?> _computeCustomEndpoint = new __Value<string?>(() => __config.Get("computeCustomEndpoint"));
         public static string? ComputeCustomEndpoint
         {
@@ -261,13 +254,6 @@ namespace Pulumi.Gcp
         {
             get => _containerAnalysisCustomEndpoint.Get();
             set => _containerAnalysisCustomEndpoint.Set(value);
-        }
-
-        private static readonly __Value<string?> _containerBetaCustomEndpoint = new __Value<string?>(() => __config.Get("containerBetaCustomEndpoint"));
-        public static string? ContainerBetaCustomEndpoint
-        {
-            get => _containerBetaCustomEndpoint.Get();
-            set => _containerBetaCustomEndpoint.Set(value);
         }
 
         private static readonly __Value<string?> _containerCustomEndpoint = new __Value<string?>(() => __config.Get("containerCustomEndpoint"));
@@ -310,13 +296,6 @@ namespace Pulumi.Gcp
         {
             get => _dataflowCustomEndpoint.Get();
             set => _dataflowCustomEndpoint.Set(value);
-        }
-
-        private static readonly __Value<string?> _dataprocBetaCustomEndpoint = new __Value<string?>(() => __config.Get("dataprocBetaCustomEndpoint"));
-        public static string? DataprocBetaCustomEndpoint
-        {
-            get => _dataprocBetaCustomEndpoint.Get();
-            set => _dataprocBetaCustomEndpoint.Set(value);
         }
 
         private static readonly __Value<string?> _dataprocCustomEndpoint = new __Value<string?>(() => __config.Get("dataprocCustomEndpoint"));

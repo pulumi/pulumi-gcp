@@ -7825,7 +7825,7 @@ class InstanceGroupManagerUpdatePolicy(dict):
         :param int max_surge_percent: , The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with `max_surge_fixed`.
         :param int max_unavailable_fixed: , The maximum number of instances that can be unavailable during the update process. Conflicts with `max_unavailable_percent`. If neither is set, defaults to 1
         :param int max_unavailable_percent: , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `max_unavailable_fixed`.
-        :param int min_ready_sec: , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+        :param int min_ready_sec: ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
         :param str replacement_method: , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
                - - -
         """
@@ -7896,7 +7896,7 @@ class InstanceGroupManagerUpdatePolicy(dict):
     @pulumi.getter(name="minReadySec")
     def min_ready_sec(self) -> Optional[int]:
         """
-        , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+        ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
         """
         return pulumi.get(self, "min_ready_sec")
 
@@ -14681,7 +14681,7 @@ class RegionInstanceGroupManagerUpdatePolicy(dict):
         :param int max_surge_percent: , The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with `max_surge_fixed`. Percent value is only allowed for regional managed instance groups with size at least 10.
         :param int max_unavailable_fixed: , The maximum number of instances that can be unavailable during the update process. Conflicts with `max_unavailable_percent`. It has to be either 0 or at least equal to the number of zones. If fixed values are used, at least one of `max_unavailable_fixed` or `max_surge_fixed` must be greater than 0.
         :param int max_unavailable_percent: , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `max_unavailable_fixed`. Percent value is only allowed for regional managed instance groups with size at least 10.
-        :param int min_ready_sec: , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+        :param int min_ready_sec: ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
         :param str replacement_method: , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
                - - -
         """
@@ -14762,7 +14762,7 @@ class RegionInstanceGroupManagerUpdatePolicy(dict):
     @pulumi.getter(name="minReadySec")
     def min_ready_sec(self) -> Optional[int]:
         """
-        , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+        ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
         """
         return pulumi.get(self, "min_ready_sec")
 

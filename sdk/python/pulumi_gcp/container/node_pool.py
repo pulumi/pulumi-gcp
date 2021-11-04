@@ -323,6 +323,7 @@ class _NodePoolState:
                  initial_node_count: Optional[pulumi.Input[int]] = None,
                  instance_group_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 managed_instance_group_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  management: Optional[pulumi.Input['NodePoolManagementArgs']] = None,
                  max_pods_per_node: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -349,6 +350,7 @@ class _NodePoolState:
                ignore subsqeuent changes to this field.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_group_urls: The resource URLs of the managed instance groups associated with this node pool.
         :param pulumi.Input[str] location: The location (region or zone) of the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] managed_instance_group_urls: List of instance group URLs which have been assigned to this node pool.
         :param pulumi.Input['NodePoolManagementArgs'] management: Node management configuration, wherein auto-repair and
                auto-upgrade is configured. Structure is documented below.
         :param pulumi.Input[int] max_pods_per_node: The maximum number of pods per node in this node pool.
@@ -392,6 +394,8 @@ class _NodePoolState:
             pulumi.set(__self__, "instance_group_urls", instance_group_urls)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if managed_instance_group_urls is not None:
+            pulumi.set(__self__, "managed_instance_group_urls", managed_instance_group_urls)
         if management is not None:
             pulumi.set(__self__, "management", management)
         if max_pods_per_node is not None:
@@ -483,6 +487,18 @@ class _NodePoolState:
     @location.setter
     def location(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="managedInstanceGroupUrls")
+    def managed_instance_group_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of instance group URLs which have been assigned to this node pool.
+        """
+        return pulumi.get(self, "managed_instance_group_urls")
+
+    @managed_instance_group_urls.setter
+    def managed_instance_group_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "managed_instance_group_urls", value)
 
     @property
     @pulumi.getter
@@ -864,6 +880,7 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["upgrade_settings"] = upgrade_settings
             __props__.__dict__["version"] = version
             __props__.__dict__["instance_group_urls"] = None
+            __props__.__dict__["managed_instance_group_urls"] = None
             __props__.__dict__["operation"] = None
         super(NodePool, __self__).__init__(
             'gcp:container/nodePool:NodePool',
@@ -880,6 +897,7 @@ class NodePool(pulumi.CustomResource):
             initial_node_count: Optional[pulumi.Input[int]] = None,
             instance_group_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
+            managed_instance_group_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             management: Optional[pulumi.Input[pulumi.InputType['NodePoolManagementArgs']]] = None,
             max_pods_per_node: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -911,6 +929,7 @@ class NodePool(pulumi.CustomResource):
                ignore subsqeuent changes to this field.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_group_urls: The resource URLs of the managed instance groups associated with this node pool.
         :param pulumi.Input[str] location: The location (region or zone) of the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] managed_instance_group_urls: List of instance group URLs which have been assigned to this node pool.
         :param pulumi.Input[pulumi.InputType['NodePoolManagementArgs']] management: Node management configuration, wherein auto-repair and
                auto-upgrade is configured. Structure is documented below.
         :param pulumi.Input[int] max_pods_per_node: The maximum number of pods per node in this node pool.
@@ -953,6 +972,7 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["initial_node_count"] = initial_node_count
         __props__.__dict__["instance_group_urls"] = instance_group_urls
         __props__.__dict__["location"] = location
+        __props__.__dict__["managed_instance_group_urls"] = managed_instance_group_urls
         __props__.__dict__["management"] = management
         __props__.__dict__["max_pods_per_node"] = max_pods_per_node
         __props__.__dict__["name"] = name
@@ -1013,6 +1033,14 @@ class NodePool(pulumi.CustomResource):
         The location (region or zone) of the cluster.
         """
         return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="managedInstanceGroupUrls")
+    def managed_instance_group_urls(self) -> pulumi.Output[Sequence[str]]:
+        """
+        List of instance group URLs which have been assigned to this node pool.
+        """
+        return pulumi.get(self, "managed_instance_group_urls")
 
     @property
     @pulumi.getter

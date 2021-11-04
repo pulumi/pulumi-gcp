@@ -29,8 +29,8 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/compute"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/container"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -64,8 +64,8 @@ import (
 // 			return err
 // 		}
 // 		_, err = compute.NewInstanceGroupNamedPort(ctx, "myPort", &compute.InstanceGroupNamedPortArgs{
-// 			Group: myCluster.InstanceGroupUrls.ApplyT(func(instanceGroupUrls []string) (string, error) {
-// 				return instanceGroupUrls[0], nil
+// 			Group: myCluster.NodePools.ApplyT(func(nodePools []container.ClusterNodePool) (string, error) {
+// 				return nodePools[0].InstanceGroupUrls[0], nil
 // 			}).(pulumi.StringOutput),
 // 			Zone: pulumi.String("us-central1-a"),
 // 			Port: pulumi.Int(8080),
@@ -74,8 +74,8 @@ import (
 // 			return err
 // 		}
 // 		_, err = compute.NewInstanceGroupNamedPort(ctx, "myPorts", &compute.InstanceGroupNamedPortArgs{
-// 			Group: myCluster.InstanceGroupUrls.ApplyT(func(instanceGroupUrls []string) (string, error) {
-// 				return instanceGroupUrls[0], nil
+// 			Group: myCluster.NodePools.ApplyT(func(nodePools []container.ClusterNodePool) (string, error) {
+// 				return nodePools[0].InstanceGroupUrls[0], nil
 // 			}).(pulumi.StringOutput),
 // 			Zone: pulumi.String("us-central1-a"),
 // 			Port: pulumi.Int(4443),

@@ -22,8 +22,8 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/compute"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/serviceAccount"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -153,16 +153,15 @@ type Instance struct {
 	// The unique fingerprint of the metadata.
 	MetadataFingerprint pulumi.StringOutput `pulumi:"metadataFingerprint"`
 	// An alternative to using the
-	// startup-script metadata key, except this one forces the instance to be
-	// recreated (thus re-running the script) if it is changed. This replaces the
-	// startup-script metadata key on the created instance and thus the two
-	// mechanisms are not allowed to be used simultaneously.  Users are free to use
-	// either mechanism - the only distinction is that this separate attribute
-	// will cause a recreate on modification.  On import, `metadataStartupScript`
-	// will be set, but `metadata.startup-script` will not - if you choose to use the
-	// other mechanism, you will see a diff immediately after import, which will cause a
-	// destroy/recreate operation.  You may want to modify your state file manually
-	// using `pulumi stack` commands, depending on your use case.
+	// startup-script metadata key, except this one forces the instance to be recreated
+	// (thus re-running the script) if it is changed. This replaces the startup-script
+	// metadata key on the created instance and thus the two mechanisms are not
+	// allowed to be used simultaneously.  Users are free to use either mechanism - the
+	// only distinction is that this separate attribute will cause a recreate on
+	// modification.  On import, `metadataStartupScript` will not be set - if you
+	// choose to specify it you will see a diff immediately after import causing a
+	// destroy/recreate operation. If importing an instance and specifying this value
+	// is desired, you will need to modify your state file.
 	MetadataStartupScript pulumi.StringPtrOutput `pulumi:"metadataStartupScript"`
 	// Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
@@ -303,16 +302,15 @@ type instanceState struct {
 	// The unique fingerprint of the metadata.
 	MetadataFingerprint *string `pulumi:"metadataFingerprint"`
 	// An alternative to using the
-	// startup-script metadata key, except this one forces the instance to be
-	// recreated (thus re-running the script) if it is changed. This replaces the
-	// startup-script metadata key on the created instance and thus the two
-	// mechanisms are not allowed to be used simultaneously.  Users are free to use
-	// either mechanism - the only distinction is that this separate attribute
-	// will cause a recreate on modification.  On import, `metadataStartupScript`
-	// will be set, but `metadata.startup-script` will not - if you choose to use the
-	// other mechanism, you will see a diff immediately after import, which will cause a
-	// destroy/recreate operation.  You may want to modify your state file manually
-	// using `pulumi stack` commands, depending on your use case.
+	// startup-script metadata key, except this one forces the instance to be recreated
+	// (thus re-running the script) if it is changed. This replaces the startup-script
+	// metadata key on the created instance and thus the two mechanisms are not
+	// allowed to be used simultaneously.  Users are free to use either mechanism - the
+	// only distinction is that this separate attribute will cause a recreate on
+	// modification.  On import, `metadataStartupScript` will not be set - if you
+	// choose to specify it you will see a diff immediately after import causing a
+	// destroy/recreate operation. If importing an instance and specifying this value
+	// is desired, you will need to modify your state file.
 	MetadataStartupScript *string `pulumi:"metadataStartupScript"`
 	// Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
@@ -416,16 +414,15 @@ type InstanceState struct {
 	// The unique fingerprint of the metadata.
 	MetadataFingerprint pulumi.StringPtrInput
 	// An alternative to using the
-	// startup-script metadata key, except this one forces the instance to be
-	// recreated (thus re-running the script) if it is changed. This replaces the
-	// startup-script metadata key on the created instance and thus the two
-	// mechanisms are not allowed to be used simultaneously.  Users are free to use
-	// either mechanism - the only distinction is that this separate attribute
-	// will cause a recreate on modification.  On import, `metadataStartupScript`
-	// will be set, but `metadata.startup-script` will not - if you choose to use the
-	// other mechanism, you will see a diff immediately after import, which will cause a
-	// destroy/recreate operation.  You may want to modify your state file manually
-	// using `pulumi stack` commands, depending on your use case.
+	// startup-script metadata key, except this one forces the instance to be recreated
+	// (thus re-running the script) if it is changed. This replaces the startup-script
+	// metadata key on the created instance and thus the two mechanisms are not
+	// allowed to be used simultaneously.  Users are free to use either mechanism - the
+	// only distinction is that this separate attribute will cause a recreate on
+	// modification.  On import, `metadataStartupScript` will not be set - if you
+	// choose to specify it you will see a diff immediately after import causing a
+	// destroy/recreate operation. If importing an instance and specifying this value
+	// is desired, you will need to modify your state file.
 	MetadataStartupScript pulumi.StringPtrInput
 	// Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
@@ -523,16 +520,15 @@ type instanceArgs struct {
 	// Add them to your config in order to keep them attached to your instance.
 	Metadata map[string]string `pulumi:"metadata"`
 	// An alternative to using the
-	// startup-script metadata key, except this one forces the instance to be
-	// recreated (thus re-running the script) if it is changed. This replaces the
-	// startup-script metadata key on the created instance and thus the two
-	// mechanisms are not allowed to be used simultaneously.  Users are free to use
-	// either mechanism - the only distinction is that this separate attribute
-	// will cause a recreate on modification.  On import, `metadataStartupScript`
-	// will be set, but `metadata.startup-script` will not - if you choose to use the
-	// other mechanism, you will see a diff immediately after import, which will cause a
-	// destroy/recreate operation.  You may want to modify your state file manually
-	// using `pulumi stack` commands, depending on your use case.
+	// startup-script metadata key, except this one forces the instance to be recreated
+	// (thus re-running the script) if it is changed. This replaces the startup-script
+	// metadata key on the created instance and thus the two mechanisms are not
+	// allowed to be used simultaneously.  Users are free to use either mechanism - the
+	// only distinction is that this separate attribute will cause a recreate on
+	// modification.  On import, `metadataStartupScript` will not be set - if you
+	// choose to specify it you will see a diff immediately after import causing a
+	// destroy/recreate operation. If importing an instance and specifying this value
+	// is desired, you will need to modify your state file.
 	MetadataStartupScript *string `pulumi:"metadataStartupScript"`
 	// Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
@@ -623,16 +619,15 @@ type InstanceArgs struct {
 	// Add them to your config in order to keep them attached to your instance.
 	Metadata pulumi.StringMapInput
 	// An alternative to using the
-	// startup-script metadata key, except this one forces the instance to be
-	// recreated (thus re-running the script) if it is changed. This replaces the
-	// startup-script metadata key on the created instance and thus the two
-	// mechanisms are not allowed to be used simultaneously.  Users are free to use
-	// either mechanism - the only distinction is that this separate attribute
-	// will cause a recreate on modification.  On import, `metadataStartupScript`
-	// will be set, but `metadata.startup-script` will not - if you choose to use the
-	// other mechanism, you will see a diff immediately after import, which will cause a
-	// destroy/recreate operation.  You may want to modify your state file manually
-	// using `pulumi stack` commands, depending on your use case.
+	// startup-script metadata key, except this one forces the instance to be recreated
+	// (thus re-running the script) if it is changed. This replaces the startup-script
+	// metadata key on the created instance and thus the two mechanisms are not
+	// allowed to be used simultaneously.  Users are free to use either mechanism - the
+	// only distinction is that this separate attribute will cause a recreate on
+	// modification.  On import, `metadataStartupScript` will not be set - if you
+	// choose to specify it you will see a diff immediately after import causing a
+	// destroy/recreate operation. If importing an instance and specifying this value
+	// is desired, you will need to modify your state file.
 	MetadataStartupScript pulumi.StringPtrInput
 	// Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).

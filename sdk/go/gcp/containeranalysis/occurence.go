@@ -30,9 +30,9 @@ import (
 // 	"encoding/base64"
 // 	"io/ioutil"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/binaryauthorization"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/containeranalysis"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/kms"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/binaryauthorization"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/containeranalysis"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -65,13 +65,13 @@ import (
 // 		}
 // 		crypto_key, err := kms.GetKMSCryptoKey(ctx, &kms.GetKMSCryptoKeyArgs{
 // 			Name:    "my-key",
-// 			KeyRing: keyring.SelfLink,
+// 			KeyRing: keyring.Id,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		version, err := kms.GetKMSCryptoKeyVersion(ctx, &kms.GetKMSCryptoKeyVersionArgs{
-// 			CryptoKey: crypto_key.SelfLink,
+// 			CryptoKey: crypto_key.Id,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

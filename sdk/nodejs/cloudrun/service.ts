@@ -60,6 +60,7 @@ import * as utilities from "../utilities";
  *
  * const instance = new gcp.sql.DatabaseInstance("instance", {
  *     region: "us-east1",
+ *     databaseVersion: "MYSQL_5_7",
  *     settings: {
  *         tier: "db-f1-micro",
  *     },

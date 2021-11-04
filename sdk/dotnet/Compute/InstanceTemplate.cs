@@ -223,7 +223,7 @@ namespace Pulumi.Gcp.Compute
         /// Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
         /// </summary>
         [Output("advancedMachineFeatures")]
-        public Output<Outputs.InstanceTemplateAdvancedMachineFeatures> AdvancedMachineFeatures { get; private set; } = null!;
+        public Output<Outputs.InstanceTemplateAdvancedMachineFeatures?> AdvancedMachineFeatures { get; private set; } = null!;
 
         /// <summary>
         /// Whether to allow sending and receiving of
@@ -254,7 +254,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-        /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field. Note: This attribute is currently in beta and will be removed from the google provider. Please use the google-beta provider to continue using this attribute.
+        /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
         /// </summary>
         [Output("enableDisplay")]
         public Output<bool?> EnableDisplay { get; private set; } = null!;
@@ -497,7 +497,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-        /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field. Note: This attribute is currently in beta and will be removed from the google provider. Please use the google-beta provider to continue using this attribute.
+        /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
         /// </summary>
         [Input("enableDisplay")]
         public Input<bool>? EnableDisplay { get; set; }
@@ -713,7 +713,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-        /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field. Note: This attribute is currently in beta and will be removed from the google provider. Please use the google-beta provider to continue using this attribute.
+        /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
         /// </summary>
         [Input("enableDisplay")]
         public Input<bool>? EnableDisplay { get; set; }

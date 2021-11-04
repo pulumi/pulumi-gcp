@@ -146,6 +146,7 @@ export class CallbackFunction extends pulumi.ComponentResource {
 
         this.bucket = args.bucket || new storage.Bucket(bucketName, {
             project: args.project,
+            location: args.location || "US", // The default of "US" here is what it previously defaulted to
         }, parentOpts);
 
         this.bucketObject = new storage.BucketObject(`${name}`, {
@@ -319,6 +320,10 @@ export interface CallbackFunctionArgs {
      * A set of key/value label pairs to assign to the function.
      */
     labels?: pulumi.Input<{ [key: string]: any }>;
+    /**
+     * Location of the function. If it is not provided, the provider location is used.
+     */
+    location?: pulumi.Input<string>;
     /**
      * Project of the function. If it is not provided, the provider project is used.
      */

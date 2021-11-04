@@ -81,12 +81,6 @@ namespace Pulumi.Gcp.Kms
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
-        /// <summary>
-        /// The self link of the created KeyRing in the format projects/{project}/locations/{location}/keyRings/{name}.
-        /// </summary>
-        [Output("selfLink")]
-        public Output<string> SelfLink { get; private set; } = null!;
-
 
         /// <summary>
         /// Create a KeyRing resource with the given unique name, arguments, and options.
@@ -179,12 +173,6 @@ namespace Pulumi.Gcp.Kms
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
-
-        /// <summary>
-        /// The self link of the created KeyRing in the format projects/{project}/locations/{location}/keyRings/{name}.
-        /// </summary>
-        [Input("selfLink")]
-        public Input<string>? SelfLink { get; set; }
 
         public KeyRingState()
         {

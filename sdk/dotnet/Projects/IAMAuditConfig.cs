@@ -295,9 +295,8 @@ namespace Pulumi.Gcp.Projects
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// The project ID. If not specified for `gcp.projects.IAMBinding`, `gcp.projects.IAMMember`, or `gcp.projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-        /// Required for `gcp.projects.IAMPolicy` - you must explicitly set the project, and it
-        /// will not be inferred from the provider.
+        /// The project id of the target project. This is not
+        /// inferred from the provider.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -367,12 +366,11 @@ namespace Pulumi.Gcp.Projects
         }
 
         /// <summary>
-        /// The project ID. If not specified for `gcp.projects.IAMBinding`, `gcp.projects.IAMMember`, or `gcp.projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-        /// Required for `gcp.projects.IAMPolicy` - you must explicitly set the project, and it
-        /// will not be inferred from the provider.
+        /// The project id of the target project. This is not
+        /// inferred from the provider.
         /// </summary>
-        [Input("project")]
-        public Input<string>? Project { get; set; }
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_project\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
@@ -406,9 +404,8 @@ namespace Pulumi.Gcp.Projects
         public Input<string>? Etag { get; set; }
 
         /// <summary>
-        /// The project ID. If not specified for `gcp.projects.IAMBinding`, `gcp.projects.IAMMember`, or `gcp.projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-        /// Required for `gcp.projects.IAMPolicy` - you must explicitly set the project, and it
-        /// will not be inferred from the provider.
+        /// The project id of the target project. This is not
+        /// inferred from the provider.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

@@ -20,9 +20,8 @@ class IAMPolicyArgs:
         :param pulumi.Input[str] policy_data: The `organizations.get_iam_policy` data source that represents
                the IAM policy that will be applied to the project. The policy will be
                merged with any existing policy applied to the project.
-        :param pulumi.Input[str] project: The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-               Required for `projects.IAMPolicy` - you must explicitly set the project, and it
-               will not be inferred from the provider.
+        :param pulumi.Input[str] project: The project id of the target project. This is not
+               inferred from the provider.
         """
         pulumi.set(__self__, "policy_data", policy_data)
         pulumi.set(__self__, "project", project)
@@ -45,9 +44,8 @@ class IAMPolicyArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         """
-        The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-        Required for `projects.IAMPolicy` - you must explicitly set the project, and it
-        will not be inferred from the provider.
+        The project id of the target project. This is not
+        inferred from the provider.
         """
         return pulumi.get(self, "project")
 
@@ -68,9 +66,8 @@ class _IAMPolicyState:
         :param pulumi.Input[str] policy_data: The `organizations.get_iam_policy` data source that represents
                the IAM policy that will be applied to the project. The policy will be
                merged with any existing policy applied to the project.
-        :param pulumi.Input[str] project: The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-               Required for `projects.IAMPolicy` - you must explicitly set the project, and it
-               will not be inferred from the provider.
+        :param pulumi.Input[str] project: The project id of the target project. This is not
+               inferred from the provider.
         """
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
@@ -109,9 +106,8 @@ class _IAMPolicyState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-        Required for `projects.IAMPolicy` - you must explicitly set the project, and it
-        will not be inferred from the provider.
+        The project id of the target project. This is not
+        inferred from the provider.
         """
         return pulumi.get(self, "project")
 
@@ -305,9 +301,8 @@ class IAMPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] policy_data: The `organizations.get_iam_policy` data source that represents
                the IAM policy that will be applied to the project. The policy will be
                merged with any existing policy applied to the project.
-        :param pulumi.Input[str] project: The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-               Required for `projects.IAMPolicy` - you must explicitly set the project, and it
-               will not be inferred from the provider.
+        :param pulumi.Input[str] project: The project id of the target project. This is not
+               inferred from the provider.
         """
         ...
     @overload
@@ -547,9 +542,8 @@ class IAMPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] policy_data: The `organizations.get_iam_policy` data source that represents
                the IAM policy that will be applied to the project. The policy will be
                merged with any existing policy applied to the project.
-        :param pulumi.Input[str] project: The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-               Required for `projects.IAMPolicy` - you must explicitly set the project, and it
-               will not be inferred from the provider.
+        :param pulumi.Input[str] project: The project id of the target project. This is not
+               inferred from the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -582,9 +576,8 @@ class IAMPolicy(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-        Required for `projects.IAMPolicy` - you must explicitly set the project, and it
-        will not be inferred from the provider.
+        The project id of the target project. This is not
+        inferred from the provider.
         """
         return pulumi.get(self, "project")
 

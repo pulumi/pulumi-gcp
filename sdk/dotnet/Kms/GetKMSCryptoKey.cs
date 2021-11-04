@@ -40,7 +40,7 @@ namespace Pulumi.Gcp.Kms
         ///         var myCryptoKey = myKeyRing.Apply(myKeyRing =&gt; Output.Create(Gcp.Kms.GetKMSCryptoKey.InvokeAsync(new Gcp.Kms.GetKMSCryptoKeyArgs
         ///         {
         ///             Name = "my-crypto-key",
-        ///             KeyRing = myKeyRing.SelfLink,
+        ///             KeyRing = myKeyRing.Id,
         ///         })));
         ///     }
         /// 
@@ -57,7 +57,7 @@ namespace Pulumi.Gcp.Kms
     public sealed class GetKMSCryptoKeyArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The `self_link` of the Google Cloud Platform KeyRing to which the key belongs.
+        /// The `id` of the Google Cloud Platform KeyRing to which the key belongs.
         /// </summary>
         [Input("keyRing", required: true)]
         public string KeyRing { get; set; } = null!;
@@ -97,10 +97,6 @@ namespace Pulumi.Gcp.Kms
         /// of a decimal number with up to 9 fractional digits, followed by the letter s (seconds).
         /// </summary>
         public readonly string RotationPeriod;
-        /// <summary>
-        /// The self link of the created CryptoKey. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}/cryptoKeys/{cryptoKeyName}`.
-        /// </summary>
-        public readonly string SelfLink;
         public readonly bool SkipInitialVersionCreation;
         public readonly ImmutableArray<Outputs.GetKMSCryptoKeyVersionTemplateResult> VersionTemplates;
 
@@ -122,8 +118,6 @@ namespace Pulumi.Gcp.Kms
 
             string rotationPeriod,
 
-            string selfLink,
-
             bool skipInitialVersionCreation,
 
             ImmutableArray<Outputs.GetKMSCryptoKeyVersionTemplateResult> versionTemplates)
@@ -136,7 +130,6 @@ namespace Pulumi.Gcp.Kms
             Name = name;
             Purpose = purpose;
             RotationPeriod = rotationPeriod;
-            SelfLink = selfLink;
             SkipInitialVersionCreation = skipInitialVersionCreation;
             VersionTemplates = versionTemplates;
         }

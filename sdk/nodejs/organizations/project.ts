@@ -109,7 +109,7 @@ export class Project extends pulumi.CustomResource {
      * created under the specified folder. Changing this forces the
      * project to be migrated to the newly specified folder.
      */
-    public readonly folderId!: pulumi.Output<string>;
+    public readonly folderId!: pulumi.Output<string | undefined>;
     /**
      * A set of key/value label pairs to assign to the project.
      */
@@ -130,7 +130,7 @@ export class Project extends pulumi.CustomResource {
      * this forces the project to be migrated to the newly specified
      * organization.
      */
-    public readonly orgId!: pulumi.Output<string>;
+    public readonly orgId!: pulumi.Output<string | undefined>;
     /**
      * The project ID. Changing this forces a new project to be created.
      */

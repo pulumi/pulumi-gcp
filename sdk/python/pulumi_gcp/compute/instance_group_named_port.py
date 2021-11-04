@@ -237,11 +237,11 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
                 services_ipv4_cidr_block="/22",
             ))
         my_port = gcp.compute.InstanceGroupNamedPort("myPort",
-            group=my_cluster.instance_group_urls[0],
+            group=my_cluster.node_pools[0].instance_group_urls[0],
             zone="us-central1-a",
             port=8080)
         my_ports = gcp.compute.InstanceGroupNamedPort("myPorts",
-            group=my_cluster.instance_group_urls[0],
+            group=my_cluster.node_pools[0].instance_group_urls[0],
             zone="us-central1-a",
             port=4443)
         ```
@@ -316,11 +316,11 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
                 services_ipv4_cidr_block="/22",
             ))
         my_port = gcp.compute.InstanceGroupNamedPort("myPort",
-            group=my_cluster.instance_group_urls[0],
+            group=my_cluster.node_pools[0].instance_group_urls[0],
             zone="us-central1-a",
             port=8080)
         my_ports = gcp.compute.InstanceGroupNamedPort("myPorts",
-            group=my_cluster.instance_group_urls[0],
+            group=my_cluster.node_pools[0].instance_group_urls[0],
             zone="us-central1-a",
             port=4443)
         ```

@@ -69,13 +69,9 @@ cloudTasksCustomEndpoint: Optional[str]
 
 composerCustomEndpoint: Optional[str]
 
-computeBetaCustomEndpoint: Optional[str]
-
 computeCustomEndpoint: Optional[str]
 
 containerAnalysisCustomEndpoint: Optional[str]
-
-containerBetaCustomEndpoint: Optional[str]
 
 containerCustomEndpoint: Optional[str]
 
@@ -88,8 +84,6 @@ dataFusionCustomEndpoint: Optional[str]
 dataLossPreventionCustomEndpoint: Optional[str]
 
 dataflowCustomEndpoint: Optional[str]
-
-dataprocBetaCustomEndpoint: Optional[str]
 
 dataprocCustomEndpoint: Optional[str]
 

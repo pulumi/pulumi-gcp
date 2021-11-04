@@ -46,17 +46,14 @@ type Provider struct {
 	CloudSchedulerCustomEndpoint       pulumi.StringPtrOutput `pulumi:"cloudSchedulerCustomEndpoint"`
 	CloudTasksCustomEndpoint           pulumi.StringPtrOutput `pulumi:"cloudTasksCustomEndpoint"`
 	ComposerCustomEndpoint             pulumi.StringPtrOutput `pulumi:"composerCustomEndpoint"`
-	ComputeBetaCustomEndpoint          pulumi.StringPtrOutput `pulumi:"computeBetaCustomEndpoint"`
 	ComputeCustomEndpoint              pulumi.StringPtrOutput `pulumi:"computeCustomEndpoint"`
 	ContainerAnalysisCustomEndpoint    pulumi.StringPtrOutput `pulumi:"containerAnalysisCustomEndpoint"`
-	ContainerBetaCustomEndpoint        pulumi.StringPtrOutput `pulumi:"containerBetaCustomEndpoint"`
 	ContainerCustomEndpoint            pulumi.StringPtrOutput `pulumi:"containerCustomEndpoint"`
 	Credentials                        pulumi.StringPtrOutput `pulumi:"credentials"`
 	DataCatalogCustomEndpoint          pulumi.StringPtrOutput `pulumi:"dataCatalogCustomEndpoint"`
 	DataFusionCustomEndpoint           pulumi.StringPtrOutput `pulumi:"dataFusionCustomEndpoint"`
 	DataLossPreventionCustomEndpoint   pulumi.StringPtrOutput `pulumi:"dataLossPreventionCustomEndpoint"`
 	DataflowCustomEndpoint             pulumi.StringPtrOutput `pulumi:"dataflowCustomEndpoint"`
-	DataprocBetaCustomEndpoint         pulumi.StringPtrOutput `pulumi:"dataprocBetaCustomEndpoint"`
 	DataprocCustomEndpoint             pulumi.StringPtrOutput `pulumi:"dataprocCustomEndpoint"`
 	DataprocMetastoreCustomEndpoint    pulumi.StringPtrOutput `pulumi:"dataprocMetastoreCustomEndpoint"`
 	DatastoreCustomEndpoint            pulumi.StringPtrOutput `pulumi:"datastoreCustomEndpoint"`
@@ -178,17 +175,14 @@ type providerArgs struct {
 	CloudSchedulerCustomEndpoint       *string           `pulumi:"cloudSchedulerCustomEndpoint"`
 	CloudTasksCustomEndpoint           *string           `pulumi:"cloudTasksCustomEndpoint"`
 	ComposerCustomEndpoint             *string           `pulumi:"composerCustomEndpoint"`
-	ComputeBetaCustomEndpoint          *string           `pulumi:"computeBetaCustomEndpoint"`
 	ComputeCustomEndpoint              *string           `pulumi:"computeCustomEndpoint"`
 	ContainerAnalysisCustomEndpoint    *string           `pulumi:"containerAnalysisCustomEndpoint"`
-	ContainerBetaCustomEndpoint        *string           `pulumi:"containerBetaCustomEndpoint"`
 	ContainerCustomEndpoint            *string           `pulumi:"containerCustomEndpoint"`
 	Credentials                        *string           `pulumi:"credentials"`
 	DataCatalogCustomEndpoint          *string           `pulumi:"dataCatalogCustomEndpoint"`
 	DataFusionCustomEndpoint           *string           `pulumi:"dataFusionCustomEndpoint"`
 	DataLossPreventionCustomEndpoint   *string           `pulumi:"dataLossPreventionCustomEndpoint"`
 	DataflowCustomEndpoint             *string           `pulumi:"dataflowCustomEndpoint"`
-	DataprocBetaCustomEndpoint         *string           `pulumi:"dataprocBetaCustomEndpoint"`
 	DataprocCustomEndpoint             *string           `pulumi:"dataprocCustomEndpoint"`
 	DataprocMetastoreCustomEndpoint    *string           `pulumi:"dataprocMetastoreCustomEndpoint"`
 	DatastoreCustomEndpoint            *string           `pulumi:"datastoreCustomEndpoint"`
@@ -291,17 +285,14 @@ type ProviderArgs struct {
 	CloudSchedulerCustomEndpoint       pulumi.StringPtrInput
 	CloudTasksCustomEndpoint           pulumi.StringPtrInput
 	ComposerCustomEndpoint             pulumi.StringPtrInput
-	ComputeBetaCustomEndpoint          pulumi.StringPtrInput
 	ComputeCustomEndpoint              pulumi.StringPtrInput
 	ContainerAnalysisCustomEndpoint    pulumi.StringPtrInput
-	ContainerBetaCustomEndpoint        pulumi.StringPtrInput
 	ContainerCustomEndpoint            pulumi.StringPtrInput
 	Credentials                        pulumi.StringPtrInput
 	DataCatalogCustomEndpoint          pulumi.StringPtrInput
 	DataFusionCustomEndpoint           pulumi.StringPtrInput
 	DataLossPreventionCustomEndpoint   pulumi.StringPtrInput
 	DataflowCustomEndpoint             pulumi.StringPtrInput
-	DataprocBetaCustomEndpoint         pulumi.StringPtrInput
 	DataprocCustomEndpoint             pulumi.StringPtrInput
 	DataprocMetastoreCustomEndpoint    pulumi.StringPtrInput
 	DatastoreCustomEndpoint            pulumi.StringPtrInput

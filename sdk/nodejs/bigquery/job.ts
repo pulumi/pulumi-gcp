@@ -165,7 +165,10 @@ import * as utilities from "../utilities";
  * ]
  * `,
  * });
- * const dest = new gcp.storage.Bucket("dest", {forceDestroy: true});
+ * const dest = new gcp.storage.Bucket("dest", {
+ *     location: "US",
+ *     forceDestroy: true,
+ * });
  * const job = new gcp.bigquery.Job("job", {
  *     jobId: "job_extract",
  *     extract: {

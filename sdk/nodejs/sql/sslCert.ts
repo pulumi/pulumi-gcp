@@ -17,9 +17,12 @@ import * as utilities from "../utilities";
  * import * as random from "@pulumi/random";
  *
  * const dbNameSuffix = new random.RandomId("dbNameSuffix", {byteLength: 4});
- * const master = new gcp.sql.DatabaseInstance("master", {settings: {
- *     tier: "db-f1-micro",
- * }});
+ * const master = new gcp.sql.DatabaseInstance("master", {
+ *     databaseVersion: "MYSQL_5_7",
+ *     settings: {
+ *         tier: "db-f1-micro",
+ *     },
+ * });
  * const clientCert = new gcp.sql.SslCert("clientCert", {
  *     commonName: "client-name",
  *     instance: master.name,

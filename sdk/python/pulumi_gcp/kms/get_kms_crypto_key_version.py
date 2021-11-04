@@ -143,11 +143,11 @@ def get_kms_crypto_key_version(crypto_key: Optional[str] = None,
         location="us-central1")
     my_crypto_key = gcp.kms.get_kms_crypto_key(name="my-crypto-key",
         key_ring=my_key_ring.id)
-    my_crypto_key_version = gcp.kms.get_kms_crypto_key_version(crypto_key=data["google_kms_key"]["my_key"]["id"])
+    my_crypto_key_version = gcp.kms.get_kms_crypto_key_version(crypto_key=data["google_kms_crypto_key"]["my_key"]["id"])
     ```
 
 
-    :param str crypto_key: The `self_link` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the 
+    :param str crypto_key: The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the 
            `kms.CryptoKey` resource/datasource.
     :param int version: The version number for this CryptoKeyVersion. Defaults to `1`.
     """
@@ -193,11 +193,11 @@ def get_kms_crypto_key_version_output(crypto_key: Optional[pulumi.Input[str]] = 
         location="us-central1")
     my_crypto_key = gcp.kms.get_kms_crypto_key(name="my-crypto-key",
         key_ring=my_key_ring.id)
-    my_crypto_key_version = gcp.kms.get_kms_crypto_key_version(crypto_key=data["google_kms_key"]["my_key"]["id"])
+    my_crypto_key_version = gcp.kms.get_kms_crypto_key_version(crypto_key=data["google_kms_crypto_key"]["my_key"]["id"])
     ```
 
 
-    :param str crypto_key: The `self_link` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the 
+    :param str crypto_key: The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the 
            `kms.CryptoKey` resource/datasource.
     :param int version: The version number for this CryptoKeyVersion. Defaults to `1`.
     """

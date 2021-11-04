@@ -873,7 +873,9 @@ class ClusterDnsConfigArgs:
                  cluster_dns_domain: Optional[pulumi.Input[str]] = None,
                  cluster_dns_scope: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] cluster_dns: Which in-cluster DNS provider shoul
+        :param pulumi.Input[str] cluster_dns: Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
+        :param pulumi.Input[str] cluster_dns_domain: The suffix used for all cluster service records.
+        :param pulumi.Input[str] cluster_dns_scope: The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
         """
         if cluster_dns is not None:
             pulumi.set(__self__, "cluster_dns", cluster_dns)
@@ -886,7 +888,7 @@ class ClusterDnsConfigArgs:
     @pulumi.getter(name="clusterDns")
     def cluster_dns(self) -> Optional[pulumi.Input[str]]:
         """
-        Which in-cluster DNS provider shoul
+        Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
         """
         return pulumi.get(self, "cluster_dns")
 
@@ -897,6 +899,9 @@ class ClusterDnsConfigArgs:
     @property
     @pulumi.getter(name="clusterDnsDomain")
     def cluster_dns_domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        The suffix used for all cluster service records.
+        """
         return pulumi.get(self, "cluster_dns_domain")
 
     @cluster_dns_domain.setter
@@ -906,6 +911,9 @@ class ClusterDnsConfigArgs:
     @property
     @pulumi.getter(name="clusterDnsScope")
     def cluster_dns_scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
+        """
         return pulumi.get(self, "cluster_dns_scope")
 
     @cluster_dns_scope.setter
@@ -1198,31 +1206,32 @@ class ClusterMaintenancePolicyRecurringWindowArgs:
 @pulumi.input_type
 class ClusterMasterAuthArgs:
     def __init__(__self__, *,
+                 client_certificate_config: pulumi.Input['ClusterMasterAuthClientCertificateConfigArgs'],
                  client_certificate: Optional[pulumi.Input[str]] = None,
-                 client_certificate_config: Optional[pulumi.Input['ClusterMasterAuthClientCertificateConfigArgs']] = None,
                  client_key: Optional[pulumi.Input[str]] = None,
-                 cluster_ca_certificate: Optional[pulumi.Input[str]] = None,
-                 password: Optional[pulumi.Input[str]] = None,
-                 username: Optional[pulumi.Input[str]] = None):
+                 cluster_ca_certificate: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input['ClusterMasterAuthClientCertificateConfigArgs'] client_certificate_config: Whether client certificate authorization is enabled for this cluster.  For example:
-        :param pulumi.Input[str] password: The password to use for HTTP basic authentication when accessing
-               the Kubernetes master endpoint. This has been deprecated as of GKE 1.19.
-        :param pulumi.Input[str] username: The username to use for HTTP basic authentication when accessing
-               the Kubernetes master endpoint. If not present basic auth will be disabled. This has been deprecated as of GKE 1.19.
         """
+        pulumi.set(__self__, "client_certificate_config", client_certificate_config)
         if client_certificate is not None:
             pulumi.set(__self__, "client_certificate", client_certificate)
-        if client_certificate_config is not None:
-            pulumi.set(__self__, "client_certificate_config", client_certificate_config)
         if client_key is not None:
             pulumi.set(__self__, "client_key", client_key)
         if cluster_ca_certificate is not None:
             pulumi.set(__self__, "cluster_ca_certificate", cluster_ca_certificate)
-        if password is not None:
-            pulumi.set(__self__, "password", password)
-        if username is not None:
-            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="clientCertificateConfig")
+    def client_certificate_config(self) -> pulumi.Input['ClusterMasterAuthClientCertificateConfigArgs']:
+        """
+        Whether client certificate authorization is enabled for this cluster.  For example:
+        """
+        return pulumi.get(self, "client_certificate_config")
+
+    @client_certificate_config.setter
+    def client_certificate_config(self, value: pulumi.Input['ClusterMasterAuthClientCertificateConfigArgs']):
+        pulumi.set(self, "client_certificate_config", value)
 
     @property
     @pulumi.getter(name="clientCertificate")
@@ -1232,18 +1241,6 @@ class ClusterMasterAuthArgs:
     @client_certificate.setter
     def client_certificate(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "client_certificate", value)
-
-    @property
-    @pulumi.getter(name="clientCertificateConfig")
-    def client_certificate_config(self) -> Optional[pulumi.Input['ClusterMasterAuthClientCertificateConfigArgs']]:
-        """
-        Whether client certificate authorization is enabled for this cluster.  For example:
-        """
-        return pulumi.get(self, "client_certificate_config")
-
-    @client_certificate_config.setter
-    def client_certificate_config(self, value: Optional[pulumi.Input['ClusterMasterAuthClientCertificateConfigArgs']]):
-        pulumi.set(self, "client_certificate_config", value)
 
     @property
     @pulumi.getter(name="clientKey")
@@ -1262,32 +1259,6 @@ class ClusterMasterAuthArgs:
     @cluster_ca_certificate.setter
     def cluster_ca_certificate(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cluster_ca_certificate", value)
-
-    @property
-    @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[str]]:
-        """
-        The password to use for HTTP basic authentication when accessing
-        the Kubernetes master endpoint. This has been deprecated as of GKE 1.19.
-        """
-        return pulumi.get(self, "password")
-
-    @password.setter
-    def password(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "password", value)
-
-    @property
-    @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[str]]:
-        """
-        The username to use for HTTP basic authentication when accessing
-        the Kubernetes master endpoint. If not present basic auth will be disabled. This has been deprecated as of GKE 1.19.
-        """
-        return pulumi.get(self, "username")
-
-    @username.setter
-    def username(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "username", value)
 
 
 @pulumi.input_type
@@ -2127,32 +2098,19 @@ class ClusterNodeConfigTaintArgs:
 @pulumi.input_type
 class ClusterNodeConfigWorkloadMetadataConfigArgs:
     def __init__(__self__, *,
-                 mode: Optional[pulumi.Input[str]] = None,
-                 node_metadata: Optional[pulumi.Input[str]] = None):
+                 mode: pulumi.Input[str]):
         """
         :param pulumi.Input[str] mode: How to expose the node metadata to the workload running on the node.
                Accepted values are:
                * UNSPECIFIED: Not Set
                * GCE_METADATA: Expose all Compute Engine metadata to pods.
                * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
-        :param pulumi.Input[str] node_metadata: How to expose the node metadata to the workload running on the node. This is deprecated in favor of `mode`
-               Accepted values are:
-               * UNSPECIFIED: Not Set
-               * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
-               * EXPOSE: Expose all VM metadata to pods.
-               * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
         """
-        if mode is not None:
-            pulumi.set(__self__, "mode", mode)
-        if node_metadata is not None:
-            warnings.warn("""Deprecated in favor of mode.""", DeprecationWarning)
-            pulumi.log.warn("""node_metadata is deprecated: Deprecated in favor of mode.""")
-        if node_metadata is not None:
-            pulumi.set(__self__, "node_metadata", node_metadata)
+        pulumi.set(__self__, "mode", mode)
 
     @property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[str]]:
+    def mode(self) -> pulumi.Input[str]:
         """
         How to expose the node metadata to the workload running on the node.
         Accepted values are:
@@ -2163,25 +2121,8 @@ class ClusterNodeConfigWorkloadMetadataConfigArgs:
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[str]]):
+    def mode(self, value: pulumi.Input[str]):
         pulumi.set(self, "mode", value)
-
-    @property
-    @pulumi.getter(name="nodeMetadata")
-    def node_metadata(self) -> Optional[pulumi.Input[str]]:
-        """
-        How to expose the node metadata to the workload running on the node. This is deprecated in favor of `mode`
-        Accepted values are:
-        * UNSPECIFIED: Not Set
-        * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
-        * EXPOSE: Expose all VM metadata to pods.
-        * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
-        """
-        return pulumi.get(self, "node_metadata")
-
-    @node_metadata.setter
-    def node_metadata(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "node_metadata", value)
 
 
 @pulumi.input_type
@@ -2190,6 +2131,7 @@ class ClusterNodePoolArgs:
                  autoscaling: Optional[pulumi.Input['ClusterNodePoolAutoscalingArgs']] = None,
                  initial_node_count: Optional[pulumi.Input[int]] = None,
                  instance_group_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 managed_instance_group_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  management: Optional[pulumi.Input['ClusterNodePoolManagementArgs']] = None,
                  max_pods_per_node: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -2227,6 +2169,8 @@ class ClusterNodePoolArgs:
             pulumi.set(__self__, "initial_node_count", initial_node_count)
         if instance_group_urls is not None:
             pulumi.set(__self__, "instance_group_urls", instance_group_urls)
+        if managed_instance_group_urls is not None:
+            pulumi.set(__self__, "managed_instance_group_urls", managed_instance_group_urls)
         if management is not None:
             pulumi.set(__self__, "management", management)
         if max_pods_per_node is not None:
@@ -2282,6 +2226,15 @@ class ClusterNodePoolArgs:
     @instance_group_urls.setter
     def instance_group_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "instance_group_urls", value)
+
+    @property
+    @pulumi.getter(name="managedInstanceGroupUrls")
+    def managed_instance_group_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "managed_instance_group_urls")
+
+    @managed_instance_group_urls.setter
+    def managed_instance_group_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "managed_instance_group_urls", value)
 
     @property
     @pulumi.getter
@@ -3199,32 +3152,19 @@ class ClusterNodePoolNodeConfigTaintArgs:
 @pulumi.input_type
 class ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs:
     def __init__(__self__, *,
-                 mode: Optional[pulumi.Input[str]] = None,
-                 node_metadata: Optional[pulumi.Input[str]] = None):
+                 mode: pulumi.Input[str]):
         """
         :param pulumi.Input[str] mode: How to expose the node metadata to the workload running on the node.
                Accepted values are:
                * UNSPECIFIED: Not Set
                * GCE_METADATA: Expose all Compute Engine metadata to pods.
                * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
-        :param pulumi.Input[str] node_metadata: How to expose the node metadata to the workload running on the node. This is deprecated in favor of `mode`
-               Accepted values are:
-               * UNSPECIFIED: Not Set
-               * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
-               * EXPOSE: Expose all VM metadata to pods.
-               * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
         """
-        if mode is not None:
-            pulumi.set(__self__, "mode", mode)
-        if node_metadata is not None:
-            warnings.warn("""Deprecated in favor of mode.""", DeprecationWarning)
-            pulumi.log.warn("""node_metadata is deprecated: Deprecated in favor of mode.""")
-        if node_metadata is not None:
-            pulumi.set(__self__, "node_metadata", node_metadata)
+        pulumi.set(__self__, "mode", mode)
 
     @property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[str]]:
+    def mode(self) -> pulumi.Input[str]:
         """
         How to expose the node metadata to the workload running on the node.
         Accepted values are:
@@ -3235,25 +3175,8 @@ class ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs:
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[str]]):
+    def mode(self, value: pulumi.Input[str]):
         pulumi.set(self, "mode", value)
-
-    @property
-    @pulumi.getter(name="nodeMetadata")
-    def node_metadata(self) -> Optional[pulumi.Input[str]]:
-        """
-        How to expose the node metadata to the workload running on the node. This is deprecated in favor of `mode`
-        Accepted values are:
-        * UNSPECIFIED: Not Set
-        * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
-        * EXPOSE: Expose all VM metadata to pods.
-        * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
-        """
-        return pulumi.get(self, "node_metadata")
-
-    @node_metadata.setter
-    def node_metadata(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "node_metadata", value)
 
 
 @pulumi.input_type
@@ -3678,31 +3601,12 @@ class ClusterVerticalPodAutoscalingArgs:
 @pulumi.input_type
 class ClusterWorkloadIdentityConfigArgs:
     def __init__(__self__, *,
-                 identity_namespace: Optional[pulumi.Input[str]] = None,
                  workload_pool: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] identity_namespace: - Currently, the only supported identity namespace is the project's default.
         :param pulumi.Input[str] workload_pool: The workload pool to attach all Kubernetes service accounts to. Currently, the only supported identity namespace is the project of the cluster.
         """
-        if identity_namespace is not None:
-            warnings.warn("""This field will be removed in a future major release as it has been deprecated in the API. Use `workload_pool` instead.""", DeprecationWarning)
-            pulumi.log.warn("""identity_namespace is deprecated: This field will be removed in a future major release as it has been deprecated in the API. Use `workload_pool` instead.""")
-        if identity_namespace is not None:
-            pulumi.set(__self__, "identity_namespace", identity_namespace)
         if workload_pool is not None:
             pulumi.set(__self__, "workload_pool", workload_pool)
-
-    @property
-    @pulumi.getter(name="identityNamespace")
-    def identity_namespace(self) -> Optional[pulumi.Input[str]]:
-        """
-        - Currently, the only supported identity namespace is the project's default.
-        """
-        return pulumi.get(self, "identity_namespace")
-
-    @identity_namespace.setter
-    def identity_namespace(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "identity_namespace", value)
 
     @property
     @pulumi.getter(name="workloadPool")
@@ -4289,33 +4193,17 @@ class NodePoolNodeConfigTaintArgs:
 @pulumi.input_type
 class NodePoolNodeConfigWorkloadMetadataConfigArgs:
     def __init__(__self__, *,
-                 mode: Optional[pulumi.Input[str]] = None,
-                 node_metadata: Optional[pulumi.Input[str]] = None):
-        if mode is not None:
-            pulumi.set(__self__, "mode", mode)
-        if node_metadata is not None:
-            warnings.warn("""Deprecated in favor of mode.""", DeprecationWarning)
-            pulumi.log.warn("""node_metadata is deprecated: Deprecated in favor of mode.""")
-        if node_metadata is not None:
-            pulumi.set(__self__, "node_metadata", node_metadata)
+                 mode: pulumi.Input[str]):
+        pulumi.set(__self__, "mode", mode)
 
     @property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[str]]:
+    def mode(self) -> pulumi.Input[str]:
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[str]]):
+    def mode(self, value: pulumi.Input[str]):
         pulumi.set(self, "mode", value)
-
-    @property
-    @pulumi.getter(name="nodeMetadata")
-    def node_metadata(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "node_metadata")
-
-    @node_metadata.setter
-    def node_metadata(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "node_metadata", value)
 
 
 @pulumi.input_type

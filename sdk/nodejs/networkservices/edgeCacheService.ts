@@ -17,7 +17,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const dest = new gcp.storage.Bucket("dest", {forceDestroy: true});
+ * const dest = new gcp.storage.Bucket("dest", {
+ *     location: "US",
+ *     forceDestroy: true,
+ * });
  * const instanceEdgeCacheOrigin = new gcp.networkservices.EdgeCacheOrigin("instanceEdgeCacheOrigin", {
  *     originAddress: dest.url,
  *     description: "The default bucket for media edge test",
@@ -66,7 +69,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const dest = new gcp.storage.Bucket("dest", {forceDestroy: true});
+ * const dest = new gcp.storage.Bucket("dest", {
+ *     location: "US",
+ *     forceDestroy: true,
+ * });
  * const google = new gcp.networkservices.EdgeCacheOrigin("google", {
  *     originAddress: "google.com",
  *     description: "The default bucket for media edge test",

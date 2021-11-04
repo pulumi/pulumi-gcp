@@ -46,7 +46,10 @@ import * as utilities from "../utilities";
  *     role: "roles/compute.networkUser",
  *     member: pulumi.interpolate`serviceAccount:service-${myProject.number}@gae-api-prod.google.com.iam.gserviceaccount.com`,
  * });
- * const bucket = new gcp.storage.Bucket("bucket", {project: myProject.projectId});
+ * const bucket = new gcp.storage.Bucket("bucket", {
+ *     project: myProject.projectId,
+ *     location: "US",
+ * });
  * const object = new gcp.storage.BucketObject("object", {
  *     bucket: bucket.name,
  *     source: new pulumi.asset.FileAsset("./test-fixtures/appengine/hello-world.zip"),

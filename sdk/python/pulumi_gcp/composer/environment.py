@@ -22,19 +22,14 @@ class EnvironmentArgs:
                  region: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Environment resource.
-        :param pulumi.Input['EnvironmentConfigArgs'] config: Configuration parameters for this environment  Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for this environment. The labels map can contain
-               no more than 64 entries. Entries of the labels map are UTF8 strings
-               that comply with the following restrictions:
-               Label keys must be between 1 and 63 characters long and must conform
-               to the following regular expression: `a-z?`.
-               Label values must be between 0 and 63 characters long and must
-               conform to the regular expression `(a-z?)?`.
-               No more than 64 labels can be associated with a given environment.
-               Both keys and values must be <= 128 bytes in size.
-        :param pulumi.Input[str] name: Name of the environment
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
+        :param pulumi.Input['EnvironmentConfigArgs'] config: Configuration parameters for this environment.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
+               are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
+               must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
+               characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
+               associated with a given environment. Both keys and values must be <= 128 bytes in size.
+        :param pulumi.Input[str] name: Name of the environment.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The location or Compute Engine region for the environment.
         """
         if config is not None:
@@ -52,7 +47,7 @@ class EnvironmentArgs:
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input['EnvironmentConfigArgs']]:
         """
-        Configuration parameters for this environment  Structure is documented below.
+        Configuration parameters for this environment.
         """
         return pulumi.get(self, "config")
 
@@ -64,15 +59,11 @@ class EnvironmentArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        User-defined labels for this environment. The labels map can contain
-        no more than 64 entries. Entries of the labels map are UTF8 strings
-        that comply with the following restrictions:
-        Label keys must be between 1 and 63 characters long and must conform
-        to the following regular expression: `a-z?`.
-        Label values must be between 0 and 63 characters long and must
-        conform to the regular expression `(a-z?)?`.
-        No more than 64 labels can be associated with a given environment.
-        Both keys and values must be <= 128 bytes in size.
+        User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
+        are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
+        must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
+        characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
+        associated with a given environment. Both keys and values must be <= 128 bytes in size.
         """
         return pulumi.get(self, "labels")
 
@@ -84,7 +75,7 @@ class EnvironmentArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the environment
+        Name of the environment.
         """
         return pulumi.get(self, "name")
 
@@ -96,8 +87,7 @@ class EnvironmentArgs:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
+        The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -128,19 +118,14 @@ class _EnvironmentState:
                  region: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Environment resources.
-        :param pulumi.Input['EnvironmentConfigArgs'] config: Configuration parameters for this environment  Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for this environment. The labels map can contain
-               no more than 64 entries. Entries of the labels map are UTF8 strings
-               that comply with the following restrictions:
-               Label keys must be between 1 and 63 characters long and must conform
-               to the following regular expression: `a-z?`.
-               Label values must be between 0 and 63 characters long and must
-               conform to the regular expression `(a-z?)?`.
-               No more than 64 labels can be associated with a given environment.
-               Both keys and values must be <= 128 bytes in size.
-        :param pulumi.Input[str] name: Name of the environment
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
+        :param pulumi.Input['EnvironmentConfigArgs'] config: Configuration parameters for this environment.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
+               are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
+               must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
+               characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
+               associated with a given environment. Both keys and values must be <= 128 bytes in size.
+        :param pulumi.Input[str] name: Name of the environment.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The location or Compute Engine region for the environment.
         """
         if config is not None:
@@ -158,7 +143,7 @@ class _EnvironmentState:
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input['EnvironmentConfigArgs']]:
         """
-        Configuration parameters for this environment  Structure is documented below.
+        Configuration parameters for this environment.
         """
         return pulumi.get(self, "config")
 
@@ -170,15 +155,11 @@ class _EnvironmentState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        User-defined labels for this environment. The labels map can contain
-        no more than 64 entries. Entries of the labels map are UTF8 strings
-        that comply with the following restrictions:
-        Label keys must be between 1 and 63 characters long and must conform
-        to the following regular expression: `a-z?`.
-        Label values must be between 0 and 63 characters long and must
-        conform to the regular expression `(a-z?)?`.
-        No more than 64 labels can be associated with a given environment.
-        Both keys and values must be <= 128 bytes in size.
+        User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
+        are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
+        must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
+        characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
+        associated with a given environment. Both keys and values must be <= 128 bytes in size.
         """
         return pulumi.get(self, "labels")
 
@@ -190,7 +171,7 @@ class _EnvironmentState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the environment
+        Name of the environment.
         """
         return pulumi.get(self, "name")
 
@@ -202,8 +183,7 @@ class _EnvironmentState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
+        The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -236,109 +216,32 @@ class Environment(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        An environment for running orchestration tasks.
+        ## Import
 
-        Environments run Apache Airflow software on Google infrastructure.
+        Environment can be imported using any of these accepted formats
 
-        To get more information about Environments, see:
-
-        * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/composer/docs)
-            * [Configuring Shared VPC for Composer Environments](https://cloud.google.com/composer/docs/how-to/managing/configuring-shared-vpc)
-        * [Apache Airflow Documentation](http://airflow.apache.org/)
-
-        > **Warning:** We **STRONGLY** recommend you read the [GCP guides](https://cloud.google.com/composer/docs/how-to)
-          as the Environment resource requires a long deployment process and involves several layers of GCP infrastructure,
-          including a Kubernetes Engine cluster, Cloud Storage, and Compute networking resources. Due to limitations of the API,
-          This provider will not be able to automatically find or manage many of these underlying resources. In particular:
-          * It can take up to one hour to create or update an environment resource. In addition, GCP may only detect some
-            errors in configuration when they are used (e.g. ~40-50 minutes into the creation process), and is prone to limited
-            error reporting. If you encounter confusing or uninformative errors, please verify your configuration is valid
-            against GCP Cloud Composer before filing bugs against this provider provider.
-          * **Environments create Google Cloud Storage buckets that do not get cleaned up automatically** on environment
-            deletion. [More about Composer's use of Cloud Storage](https://cloud.google.com/composer/docs/concepts/cloud-storage).
-          * Please review the [known issues](https://cloud.google.com/composer/docs/known-issues) for Composer if you are having problems.
-
-        ## Example Usage
-        ### Basic Usage
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        test = gcp.composer.Environment("test", region="us-central1")
+        ```sh
+         $ pulumi import gcp:composer/environment:Environment default projects/{{project}}/locations/{{region}}/environments/{{name}}
         ```
-        ### With GKE and Compute Resource Dependencies
 
-        **NOTE** To use custom service accounts, you need to give at least `role/composer.worker` to the service account being used by the GKE Nodes on the Composer project.
-        You may need to assign additional roles depending on what the Airflow DAGs will be running.
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        test_network = gcp.compute.Network("testNetwork", auto_create_subnetworks=False)
-        test_subnetwork = gcp.compute.Subnetwork("testSubnetwork",
-            ip_cidr_range="10.2.0.0/16",
-            region="us-central1",
-            network=test_network.id)
-        test_account = gcp.service_account.Account("testAccount",
-            account_id="composer-env-account",
-            display_name="Test Service Account for Composer Environment")
-        test_environment = gcp.composer.Environment("testEnvironment",
-            region="us-central1",
-            config=gcp.composer.EnvironmentConfigArgs(
-                node_count=4,
-                node_config=gcp.composer.EnvironmentConfigNodeConfigArgs(
-                    zone="us-central1-a",
-                    machine_type="e2-medium",
-                    network=test_network.id,
-                    subnetwork=test_subnetwork.id,
-                    service_account=test_account.name,
-                ),
-            ))
-        composer_worker = gcp.projects.IAMMember("composer-worker",
-            role="roles/composer.worker",
-            member=test_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        ```sh
+         $ pulumi import gcp:composer/environment:Environment default {{project}}/{{region}}/{{name}}
         ```
-        ### With Software (Airflow) Config
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
 
-        test = gcp.composer.Environment("test",
-            config=gcp.composer.EnvironmentConfigArgs(
-                software_config=gcp.composer.EnvironmentConfigSoftwareConfigArgs(
-                    airflow_config_overrides={
-                        "core-loadExample": "True",
-                    },
-                    env_variables={
-                        "FOO": "bar",
-                    },
-                    pypi_packages={
-                        "numpy": "",
-                        "scipy": "==1.1.0",
-                    },
-                ),
-            ),
-            region="us-central1")
+        ```sh
+         $ pulumi import gcp:composer/environment:Environment default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['EnvironmentConfigArgs']] config: Configuration parameters for this environment  Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for this environment. The labels map can contain
-               no more than 64 entries. Entries of the labels map are UTF8 strings
-               that comply with the following restrictions:
-               Label keys must be between 1 and 63 characters long and must conform
-               to the following regular expression: `a-z?`.
-               Label values must be between 0 and 63 characters long and must
-               conform to the regular expression `(a-z?)?`.
-               No more than 64 labels can be associated with a given environment.
-               Both keys and values must be <= 128 bytes in size.
-        :param pulumi.Input[str] name: Name of the environment
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
+        :param pulumi.Input[pulumi.InputType['EnvironmentConfigArgs']] config: Configuration parameters for this environment.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
+               are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
+               must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
+               characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
+               associated with a given environment. Both keys and values must be <= 128 bytes in size.
+        :param pulumi.Input[str] name: Name of the environment.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The location or Compute Engine region for the environment.
         """
         ...
@@ -348,92 +251,20 @@ class Environment(pulumi.CustomResource):
                  args: Optional[EnvironmentArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        An environment for running orchestration tasks.
+        ## Import
 
-        Environments run Apache Airflow software on Google infrastructure.
+        Environment can be imported using any of these accepted formats
 
-        To get more information about Environments, see:
-
-        * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/composer/docs)
-            * [Configuring Shared VPC for Composer Environments](https://cloud.google.com/composer/docs/how-to/managing/configuring-shared-vpc)
-        * [Apache Airflow Documentation](http://airflow.apache.org/)
-
-        > **Warning:** We **STRONGLY** recommend you read the [GCP guides](https://cloud.google.com/composer/docs/how-to)
-          as the Environment resource requires a long deployment process and involves several layers of GCP infrastructure,
-          including a Kubernetes Engine cluster, Cloud Storage, and Compute networking resources. Due to limitations of the API,
-          This provider will not be able to automatically find or manage many of these underlying resources. In particular:
-          * It can take up to one hour to create or update an environment resource. In addition, GCP may only detect some
-            errors in configuration when they are used (e.g. ~40-50 minutes into the creation process), and is prone to limited
-            error reporting. If you encounter confusing or uninformative errors, please verify your configuration is valid
-            against GCP Cloud Composer before filing bugs against this provider provider.
-          * **Environments create Google Cloud Storage buckets that do not get cleaned up automatically** on environment
-            deletion. [More about Composer's use of Cloud Storage](https://cloud.google.com/composer/docs/concepts/cloud-storage).
-          * Please review the [known issues](https://cloud.google.com/composer/docs/known-issues) for Composer if you are having problems.
-
-        ## Example Usage
-        ### Basic Usage
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        test = gcp.composer.Environment("test", region="us-central1")
+        ```sh
+         $ pulumi import gcp:composer/environment:Environment default projects/{{project}}/locations/{{region}}/environments/{{name}}
         ```
-        ### With GKE and Compute Resource Dependencies
 
-        **NOTE** To use custom service accounts, you need to give at least `role/composer.worker` to the service account being used by the GKE Nodes on the Composer project.
-        You may need to assign additional roles depending on what the Airflow DAGs will be running.
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        test_network = gcp.compute.Network("testNetwork", auto_create_subnetworks=False)
-        test_subnetwork = gcp.compute.Subnetwork("testSubnetwork",
-            ip_cidr_range="10.2.0.0/16",
-            region="us-central1",
-            network=test_network.id)
-        test_account = gcp.service_account.Account("testAccount",
-            account_id="composer-env-account",
-            display_name="Test Service Account for Composer Environment")
-        test_environment = gcp.composer.Environment("testEnvironment",
-            region="us-central1",
-            config=gcp.composer.EnvironmentConfigArgs(
-                node_count=4,
-                node_config=gcp.composer.EnvironmentConfigNodeConfigArgs(
-                    zone="us-central1-a",
-                    machine_type="e2-medium",
-                    network=test_network.id,
-                    subnetwork=test_subnetwork.id,
-                    service_account=test_account.name,
-                ),
-            ))
-        composer_worker = gcp.projects.IAMMember("composer-worker",
-            role="roles/composer.worker",
-            member=test_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        ```sh
+         $ pulumi import gcp:composer/environment:Environment default {{project}}/{{region}}/{{name}}
         ```
-        ### With Software (Airflow) Config
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
 
-        test = gcp.composer.Environment("test",
-            config=gcp.composer.EnvironmentConfigArgs(
-                software_config=gcp.composer.EnvironmentConfigSoftwareConfigArgs(
-                    airflow_config_overrides={
-                        "core-loadExample": "True",
-                    },
-                    env_variables={
-                        "FOO": "bar",
-                    },
-                    pypi_packages={
-                        "numpy": "",
-                        "scipy": "==1.1.0",
-                    },
-                ),
-            ),
-            region="us-central1")
+        ```sh
+         $ pulumi import gcp:composer/environment:Environment default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -495,19 +326,14 @@ class Environment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['EnvironmentConfigArgs']] config: Configuration parameters for this environment  Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for this environment. The labels map can contain
-               no more than 64 entries. Entries of the labels map are UTF8 strings
-               that comply with the following restrictions:
-               Label keys must be between 1 and 63 characters long and must conform
-               to the following regular expression: `a-z?`.
-               Label values must be between 0 and 63 characters long and must
-               conform to the regular expression `(a-z?)?`.
-               No more than 64 labels can be associated with a given environment.
-               Both keys and values must be <= 128 bytes in size.
-        :param pulumi.Input[str] name: Name of the environment
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
+        :param pulumi.Input[pulumi.InputType['EnvironmentConfigArgs']] config: Configuration parameters for this environment.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
+               are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
+               must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
+               characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
+               associated with a given environment. Both keys and values must be <= 128 bytes in size.
+        :param pulumi.Input[str] name: Name of the environment.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The location or Compute Engine region for the environment.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -525,7 +351,7 @@ class Environment(pulumi.CustomResource):
     @pulumi.getter
     def config(self) -> pulumi.Output['outputs.EnvironmentConfig']:
         """
-        Configuration parameters for this environment  Structure is documented below.
+        Configuration parameters for this environment.
         """
         return pulumi.get(self, "config")
 
@@ -533,15 +359,11 @@ class Environment(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        User-defined labels for this environment. The labels map can contain
-        no more than 64 entries. Entries of the labels map are UTF8 strings
-        that comply with the following restrictions:
-        Label keys must be between 1 and 63 characters long and must conform
-        to the following regular expression: `a-z?`.
-        Label values must be between 0 and 63 characters long and must
-        conform to the regular expression `(a-z?)?`.
-        No more than 64 labels can be associated with a given environment.
-        Both keys and values must be <= 128 bytes in size.
+        User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
+        are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
+        must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
+        characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
+        associated with a given environment. Both keys and values must be <= 128 bytes in size.
         """
         return pulumi.get(self, "labels")
 
@@ -549,7 +371,7 @@ class Environment(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the environment
+        Name of the environment.
         """
         return pulumi.get(self, "name")
 
@@ -557,8 +379,7 @@ class Environment(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
+        The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 

@@ -14,11 +14,9 @@ namespace Pulumi.Gcp.Sql.Outputs
     public sealed class GetDatabaseInstanceSettingResult
     {
         public readonly string ActivationPolicy;
-        public readonly ImmutableArray<string> AuthorizedGaeApplications;
         public readonly string AvailabilityType;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingBackupConfigurationResult> BackupConfigurations;
         public readonly string Collation;
-        public readonly bool CrashSafeReplication;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingDatabaseFlagResult> DatabaseFlags;
         public readonly bool DiskAutoresize;
         public readonly int DiskAutoresizeLimit;
@@ -29,7 +27,6 @@ namespace Pulumi.Gcp.Sql.Outputs
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingLocationPreferenceResult> LocationPreferences;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingMaintenanceWindowResult> MaintenanceWindows;
         public readonly string PricingPlan;
-        public readonly string ReplicationType;
         public readonly string Tier;
         public readonly ImmutableDictionary<string, string> UserLabels;
         public readonly int Version;
@@ -38,15 +35,11 @@ namespace Pulumi.Gcp.Sql.Outputs
         private GetDatabaseInstanceSettingResult(
             string activationPolicy,
 
-            ImmutableArray<string> authorizedGaeApplications,
-
             string availabilityType,
 
             ImmutableArray<Outputs.GetDatabaseInstanceSettingBackupConfigurationResult> backupConfigurations,
 
             string collation,
-
-            bool crashSafeReplication,
 
             ImmutableArray<Outputs.GetDatabaseInstanceSettingDatabaseFlagResult> databaseFlags,
 
@@ -68,8 +61,6 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string pricingPlan,
 
-            string replicationType,
-
             string tier,
 
             ImmutableDictionary<string, string> userLabels,
@@ -77,11 +68,9 @@ namespace Pulumi.Gcp.Sql.Outputs
             int version)
         {
             ActivationPolicy = activationPolicy;
-            AuthorizedGaeApplications = authorizedGaeApplications;
             AvailabilityType = availabilityType;
             BackupConfigurations = backupConfigurations;
             Collation = collation;
-            CrashSafeReplication = crashSafeReplication;
             DatabaseFlags = databaseFlags;
             DiskAutoresize = diskAutoresize;
             DiskAutoresizeLimit = diskAutoresizeLimit;
@@ -92,7 +81,6 @@ namespace Pulumi.Gcp.Sql.Outputs
             LocationPreferences = locationPreferences;
             MaintenanceWindows = maintenanceWindows;
             PricingPlan = pricingPlan;
-            ReplicationType = replicationType;
             Tier = tier;
             UserLabels = userLabels;
             Version = version;

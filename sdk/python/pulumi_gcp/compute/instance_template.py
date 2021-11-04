@@ -51,7 +51,7 @@ class InstanceTemplateArgs:
         :param pulumi.Input['InstanceTemplateConfidentialInstanceConfigArgs'] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
         :param pulumi.Input[str] description: A brief description of this resource.
         :param pulumi.Input[bool] enable_display: ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-               **Note**: `allow_stopping_for_update` must be set to true in order to update this field. Note: This attribute is currently in beta and will be removed from the google provider. Please use the google-beta provider to continue using this attribute.
+               **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
         :param pulumi.Input[str] instance_description: A brief description to use for instances
                created from this template.
@@ -222,7 +222,7 @@ class InstanceTemplateArgs:
     def enable_display(self) -> Optional[pulumi.Input[bool]]:
         """
         ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-        **Note**: `allow_stopping_for_update` must be set to true in order to update this field. Note: This attribute is currently in beta and will be removed from the google provider. Please use the google-beta provider to continue using this attribute.
+        **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
         """
         return pulumi.get(self, "enable_display")
 
@@ -501,7 +501,7 @@ class _InstanceTemplateState:
                This can be specified multiple times for multiple disks. Structure is
                documented below.
         :param pulumi.Input[bool] enable_display: ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-               **Note**: `allow_stopping_for_update` must be set to true in order to update this field. Note: This attribute is currently in beta and will be removed from the google provider. Please use the google-beta provider to continue using this attribute.
+               **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
         :param pulumi.Input[str] instance_description: A brief description to use for instances
                created from this template.
@@ -672,7 +672,7 @@ class _InstanceTemplateState:
     def enable_display(self) -> Optional[pulumi.Input[bool]]:
         """
         ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-        **Note**: `allow_stopping_for_update` must be set to true in order to update this field. Note: This attribute is currently in beta and will be removed from the google provider. Please use the google-beta provider to continue using this attribute.
+        **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
         """
         return pulumi.get(self, "enable_display")
 
@@ -1138,7 +1138,7 @@ class InstanceTemplate(pulumi.CustomResource):
                This can be specified multiple times for multiple disks. Structure is
                documented below.
         :param pulumi.Input[bool] enable_display: ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-               **Note**: `allow_stopping_for_update` must be set to true in order to update this field. Note: This attribute is currently in beta and will be removed from the google provider. Please use the google-beta provider to continue using this attribute.
+               **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceTemplateGuestAcceleratorArgs']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
         :param pulumi.Input[str] instance_description: A brief description to use for instances
                created from this template.
@@ -1463,7 +1463,7 @@ class InstanceTemplate(pulumi.CustomResource):
                This can be specified multiple times for multiple disks. Structure is
                documented below.
         :param pulumi.Input[bool] enable_display: ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-               **Note**: `allow_stopping_for_update` must be set to true in order to update this field. Note: This attribute is currently in beta and will be removed from the google provider. Please use the google-beta provider to continue using this attribute.
+               **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceTemplateGuestAcceleratorArgs']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
         :param pulumi.Input[str] instance_description: A brief description to use for instances
                created from this template.
@@ -1546,7 +1546,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="advancedMachineFeatures")
-    def advanced_machine_features(self) -> pulumi.Output['outputs.InstanceTemplateAdvancedMachineFeatures']:
+    def advanced_machine_features(self) -> pulumi.Output[Optional['outputs.InstanceTemplateAdvancedMachineFeatures']]:
         """
         Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
         """
@@ -1592,7 +1592,7 @@ class InstanceTemplate(pulumi.CustomResource):
     def enable_display(self) -> pulumi.Output[Optional[bool]]:
         """
         ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-        **Note**: `allow_stopping_for_update` must be set to true in order to update this field. Note: This attribute is currently in beta and will be removed from the google provider. Please use the google-beta provider to continue using this attribute.
+        **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
         """
         return pulumi.get(self, "enable_display")
 

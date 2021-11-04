@@ -21,7 +21,7 @@ class GetKMSCryptoKeyResult:
     """
     A collection of values returned by getKMSCryptoKey.
     """
-    def __init__(__self__, destroy_scheduled_duration=None, id=None, import_only=None, key_ring=None, labels=None, name=None, purpose=None, rotation_period=None, self_link=None, skip_initial_version_creation=None, version_templates=None):
+    def __init__(__self__, destroy_scheduled_duration=None, id=None, import_only=None, key_ring=None, labels=None, name=None, purpose=None, rotation_period=None, skip_initial_version_creation=None, version_templates=None):
         if destroy_scheduled_duration and not isinstance(destroy_scheduled_duration, str):
             raise TypeError("Expected argument 'destroy_scheduled_duration' to be a str")
         pulumi.set(__self__, "destroy_scheduled_duration", destroy_scheduled_duration)
@@ -46,9 +46,6 @@ class GetKMSCryptoKeyResult:
         if rotation_period and not isinstance(rotation_period, str):
             raise TypeError("Expected argument 'rotation_period' to be a str")
         pulumi.set(__self__, "rotation_period", rotation_period)
-        if self_link and not isinstance(self_link, str):
-            raise TypeError("Expected argument 'self_link' to be a str")
-        pulumi.set(__self__, "self_link", self_link)
         if skip_initial_version_creation and not isinstance(skip_initial_version_creation, bool):
             raise TypeError("Expected argument 'skip_initial_version_creation' to be a bool")
         pulumi.set(__self__, "skip_initial_version_creation", skip_initial_version_creation)
@@ -108,14 +105,6 @@ class GetKMSCryptoKeyResult:
         return pulumi.get(self, "rotation_period")
 
     @property
-    @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
-        """
-        The self link of the created CryptoKey. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}/cryptoKeys/{cryptoKeyName}`.
-        """
-        return pulumi.get(self, "self_link")
-
-    @property
     @pulumi.getter(name="skipInitialVersionCreation")
     def skip_initial_version_creation(self) -> bool:
         return pulumi.get(self, "skip_initial_version_creation")
@@ -140,7 +129,6 @@ class AwaitableGetKMSCryptoKeyResult(GetKMSCryptoKeyResult):
             name=self.name,
             purpose=self.purpose,
             rotation_period=self.rotation_period,
-            self_link=self.self_link,
             skip_initial_version_creation=self.skip_initial_version_creation,
             version_templates=self.version_templates)
 
@@ -166,11 +154,11 @@ def get_kms_crypto_key(key_ring: Optional[str] = None,
     my_key_ring = gcp.kms.get_kms_key_ring(name="my-key-ring",
         location="us-central1")
     my_crypto_key = gcp.kms.get_kms_crypto_key(name="my-crypto-key",
-        key_ring=my_key_ring.self_link)
+        key_ring=my_key_ring.id)
     ```
 
 
-    :param str key_ring: The `self_link` of the Google Cloud Platform KeyRing to which the key belongs.
+    :param str key_ring: The `id` of the Google Cloud Platform KeyRing to which the key belongs.
     :param str name: The CryptoKey's name.
            A CryptoKey’s name belonging to the specified Google Cloud Platform KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
     """
@@ -192,7 +180,6 @@ def get_kms_crypto_key(key_ring: Optional[str] = None,
         name=__ret__.name,
         purpose=__ret__.purpose,
         rotation_period=__ret__.rotation_period,
-        self_link=__ret__.self_link,
         skip_initial_version_creation=__ret__.skip_initial_version_creation,
         version_templates=__ret__.version_templates)
 
@@ -219,11 +206,11 @@ def get_kms_crypto_key_output(key_ring: Optional[pulumi.Input[str]] = None,
     my_key_ring = gcp.kms.get_kms_key_ring(name="my-key-ring",
         location="us-central1")
     my_crypto_key = gcp.kms.get_kms_crypto_key(name="my-crypto-key",
-        key_ring=my_key_ring.self_link)
+        key_ring=my_key_ring.id)
     ```
 
 
-    :param str key_ring: The `self_link` of the Google Cloud Platform KeyRing to which the key belongs.
+    :param str key_ring: The `id` of the Google Cloud Platform KeyRing to which the key belongs.
     :param str name: The CryptoKey's name.
            A CryptoKey’s name belonging to the specified Google Cloud Platform KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
     """

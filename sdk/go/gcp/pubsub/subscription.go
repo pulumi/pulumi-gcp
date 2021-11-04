@@ -30,7 +30,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/pubsub"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -66,7 +66,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/pubsub"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -105,7 +105,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/pubsub"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -134,7 +134,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/pubsub"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -237,10 +237,6 @@ type Subscription struct {
 	MessageRetentionDuration pulumi.StringPtrOutput `pulumi:"messageRetentionDuration"`
 	// Name of the subscription.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Path of the subscription in the format projects/{project}/subscriptions/{name}
-	//
-	// Deprecated: Deprecated in favor of id, which contains an identical value. This field will be removed in the next major release of the provider.
-	Path pulumi.StringOutput `pulumi:"path"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -351,10 +347,6 @@ type subscriptionState struct {
 	MessageRetentionDuration *string `pulumi:"messageRetentionDuration"`
 	// Name of the subscription.
 	Name *string `pulumi:"name"`
-	// Path of the subscription in the format projects/{project}/subscriptions/{name}
-	//
-	// Deprecated: Deprecated in favor of id, which contains an identical value. This field will be removed in the next major release of the provider.
-	Path *string `pulumi:"path"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -434,10 +426,6 @@ type SubscriptionState struct {
 	MessageRetentionDuration pulumi.StringPtrInput
 	// Name of the subscription.
 	Name pulumi.StringPtrInput
-	// Path of the subscription in the format projects/{project}/subscriptions/{name}
-	//
-	// Deprecated: Deprecated in favor of id, which contains an identical value. This field will be removed in the next major release of the provider.
-	Path pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput

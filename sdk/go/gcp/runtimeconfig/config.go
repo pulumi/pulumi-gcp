@@ -10,41 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manages a RuntimeConfig resource in Google Cloud.
-//
-// !> This resource has been deprecated in the google (GA) provider, and will only be available in the google-beta provider in a future release.
-//
-// To get more information about RuntimeConfigs, see:
-//
-// * [API documentation](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/v1beta1/projects.configs)
-// * How-to Guides
-//     * [Runtime Configurator Fundamentals](https://cloud.google.com/deployment-manager/runtime-configurator/)
-//
-// ## Example Usage
-//
-// Example creating a RuntimeConfig resource.
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/runtimeconfig"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := runtimeconfig.NewConfig(ctx, "my_runtime_config", &runtimeconfig.ConfigArgs{
-// 			Description: pulumi.String("Runtime configuration values for my service"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
 // ## Import
 //
 // Runtime Configs can be imported using the `name` or full config name, e.g.

@@ -942,13 +942,6 @@ type DatabaseInstanceSettings struct {
 	// This specifies when the instance should be
 	// active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
 	ActivationPolicy *string `pulumi:"activationPolicy"`
-	// This property is only applicable to First Generation instances.
-	// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-	// for information on how to upgrade to Second Generation instances.
-	// A list of Google App Engine (GAE) project names that are allowed to access this instance.
-	//
-	// Deprecated: This property is only applicable to First Generation instances, and First Generation instances are now deprecated.
-	AuthorizedGaeApplications []string `pulumi:"authorizedGaeApplications"`
 	// The availability type of the Cloud SQL
 	// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For MySQL
 	// instances, ensure that `settings.backup_configuration.enabled` and
@@ -956,17 +949,9 @@ type DatabaseInstanceSettings struct {
 	AvailabilityType    *string                                      `pulumi:"availabilityType"`
 	BackupConfiguration *DatabaseInstanceSettingsBackupConfiguration `pulumi:"backupConfiguration"`
 	// The name of server instance collation.
-	Collation *string `pulumi:"collation"`
-	// This property is only applicable to First Generation instances.
-	// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-	// for information on how to upgrade to Second Generation instances.
-	// Specific to read instances, indicates
-	// when crash-safe replication flags are enabled.
-	//
-	// Deprecated: This property is only applicable to First Generation instances, and First Generation instances are now deprecated.
-	CrashSafeReplication *bool                                  `pulumi:"crashSafeReplication"`
-	DatabaseFlags        []DatabaseInstanceSettingsDatabaseFlag `pulumi:"databaseFlags"`
-	// Configuration to increase storage size automatically.  Note that future `pulumi apply` calls will attempt to resize the disk to the value specified in `diskSize` - if this is set, do not set `diskSize`.
+	Collation     *string                                `pulumi:"collation"`
+	DatabaseFlags []DatabaseInstanceSettingsDatabaseFlag `pulumi:"databaseFlags"`
+	// Configuration to increase storage size automatically.  Note that future apply calls will attempt to resize the disk to the value specified in `diskSize` - if this is set, do not set `diskSize`.
 	DiskAutoresize      *bool `pulumi:"diskAutoresize"`
 	DiskAutoresizeLimit *int  `pulumi:"diskAutoresizeLimit"`
 	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased.
@@ -979,13 +964,6 @@ type DatabaseInstanceSettings struct {
 	MaintenanceWindow  *DatabaseInstanceSettingsMaintenanceWindow  `pulumi:"maintenanceWindow"`
 	// Pricing plan for this instance, can only be `PER_USE`.
 	PricingPlan *string `pulumi:"pricingPlan"`
-	// This property is only applicable to First Generation instances.
-	// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-	// for information on how to upgrade to Second Generation instances.
-	// Replication type for this instance, can be one of `ASYNCHRONOUS` or `SYNCHRONOUS`.
-	//
-	// Deprecated: This property is only applicable to First Generation instances, and First Generation instances are now deprecated.
-	ReplicationType *string `pulumi:"replicationType"`
 	// The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
 	// for more details and supported versions. Postgres supports only shared-core machine types,
 	// and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
@@ -1010,13 +988,6 @@ type DatabaseInstanceSettingsArgs struct {
 	// This specifies when the instance should be
 	// active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
 	ActivationPolicy pulumi.StringPtrInput `pulumi:"activationPolicy"`
-	// This property is only applicable to First Generation instances.
-	// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-	// for information on how to upgrade to Second Generation instances.
-	// A list of Google App Engine (GAE) project names that are allowed to access this instance.
-	//
-	// Deprecated: This property is only applicable to First Generation instances, and First Generation instances are now deprecated.
-	AuthorizedGaeApplications pulumi.StringArrayInput `pulumi:"authorizedGaeApplications"`
 	// The availability type of the Cloud SQL
 	// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For MySQL
 	// instances, ensure that `settings.backup_configuration.enabled` and
@@ -1024,17 +995,9 @@ type DatabaseInstanceSettingsArgs struct {
 	AvailabilityType    pulumi.StringPtrInput                               `pulumi:"availabilityType"`
 	BackupConfiguration DatabaseInstanceSettingsBackupConfigurationPtrInput `pulumi:"backupConfiguration"`
 	// The name of server instance collation.
-	Collation pulumi.StringPtrInput `pulumi:"collation"`
-	// This property is only applicable to First Generation instances.
-	// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-	// for information on how to upgrade to Second Generation instances.
-	// Specific to read instances, indicates
-	// when crash-safe replication flags are enabled.
-	//
-	// Deprecated: This property is only applicable to First Generation instances, and First Generation instances are now deprecated.
-	CrashSafeReplication pulumi.BoolPtrInput                            `pulumi:"crashSafeReplication"`
-	DatabaseFlags        DatabaseInstanceSettingsDatabaseFlagArrayInput `pulumi:"databaseFlags"`
-	// Configuration to increase storage size automatically.  Note that future `pulumi apply` calls will attempt to resize the disk to the value specified in `diskSize` - if this is set, do not set `diskSize`.
+	Collation     pulumi.StringPtrInput                          `pulumi:"collation"`
+	DatabaseFlags DatabaseInstanceSettingsDatabaseFlagArrayInput `pulumi:"databaseFlags"`
+	// Configuration to increase storage size automatically.  Note that future apply calls will attempt to resize the disk to the value specified in `diskSize` - if this is set, do not set `diskSize`.
 	DiskAutoresize      pulumi.BoolPtrInput `pulumi:"diskAutoresize"`
 	DiskAutoresizeLimit pulumi.IntPtrInput  `pulumi:"diskAutoresizeLimit"`
 	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased.
@@ -1047,13 +1010,6 @@ type DatabaseInstanceSettingsArgs struct {
 	MaintenanceWindow  DatabaseInstanceSettingsMaintenanceWindowPtrInput  `pulumi:"maintenanceWindow"`
 	// Pricing plan for this instance, can only be `PER_USE`.
 	PricingPlan pulumi.StringPtrInput `pulumi:"pricingPlan"`
-	// This property is only applicable to First Generation instances.
-	// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-	// for information on how to upgrade to Second Generation instances.
-	// Replication type for this instance, can be one of `ASYNCHRONOUS` or `SYNCHRONOUS`.
-	//
-	// Deprecated: This property is only applicable to First Generation instances, and First Generation instances are now deprecated.
-	ReplicationType pulumi.StringPtrInput `pulumi:"replicationType"`
 	// The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
 	// for more details and supported versions. Postgres supports only shared-core machine types,
 	// and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
@@ -1146,16 +1102,6 @@ func (o DatabaseInstanceSettingsOutput) ActivationPolicy() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.ActivationPolicy }).(pulumi.StringPtrOutput)
 }
 
-// This property is only applicable to First Generation instances.
-// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-// for information on how to upgrade to Second Generation instances.
-// A list of Google App Engine (GAE) project names that are allowed to access this instance.
-//
-// Deprecated: This property is only applicable to First Generation instances, and First Generation instances are now deprecated.
-func (o DatabaseInstanceSettingsOutput) AuthorizedGaeApplications() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettings) []string { return v.AuthorizedGaeApplications }).(pulumi.StringArrayOutput)
-}
-
 // The availability type of the Cloud SQL
 // instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For MySQL
 // instances, ensure that `settings.backup_configuration.enabled` and
@@ -1175,22 +1121,11 @@ func (o DatabaseInstanceSettingsOutput) Collation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.Collation }).(pulumi.StringPtrOutput)
 }
 
-// This property is only applicable to First Generation instances.
-// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-// for information on how to upgrade to Second Generation instances.
-// Specific to read instances, indicates
-// when crash-safe replication flags are enabled.
-//
-// Deprecated: This property is only applicable to First Generation instances, and First Generation instances are now deprecated.
-func (o DatabaseInstanceSettingsOutput) CrashSafeReplication() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettings) *bool { return v.CrashSafeReplication }).(pulumi.BoolPtrOutput)
-}
-
 func (o DatabaseInstanceSettingsOutput) DatabaseFlags() DatabaseInstanceSettingsDatabaseFlagArrayOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) []DatabaseInstanceSettingsDatabaseFlag { return v.DatabaseFlags }).(DatabaseInstanceSettingsDatabaseFlagArrayOutput)
 }
 
-// Configuration to increase storage size automatically.  Note that future `pulumi apply` calls will attempt to resize the disk to the value specified in `diskSize` - if this is set, do not set `diskSize`.
+// Configuration to increase storage size automatically.  Note that future apply calls will attempt to resize the disk to the value specified in `diskSize` - if this is set, do not set `diskSize`.
 func (o DatabaseInstanceSettingsOutput) DiskAutoresize() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *bool { return v.DiskAutoresize }).(pulumi.BoolPtrOutput)
 }
@@ -1232,16 +1167,6 @@ func (o DatabaseInstanceSettingsOutput) MaintenanceWindow() DatabaseInstanceSett
 // Pricing plan for this instance, can only be `PER_USE`.
 func (o DatabaseInstanceSettingsOutput) PricingPlan() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.PricingPlan }).(pulumi.StringPtrOutput)
-}
-
-// This property is only applicable to First Generation instances.
-// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-// for information on how to upgrade to Second Generation instances.
-// Replication type for this instance, can be one of `ASYNCHRONOUS` or `SYNCHRONOUS`.
-//
-// Deprecated: This property is only applicable to First Generation instances, and First Generation instances are now deprecated.
-func (o DatabaseInstanceSettingsOutput) ReplicationType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.ReplicationType }).(pulumi.StringPtrOutput)
 }
 
 // The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
@@ -1295,21 +1220,6 @@ func (o DatabaseInstanceSettingsPtrOutput) ActivationPolicy() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// This property is only applicable to First Generation instances.
-// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-// for information on how to upgrade to Second Generation instances.
-// A list of Google App Engine (GAE) project names that are allowed to access this instance.
-//
-// Deprecated: This property is only applicable to First Generation instances, and First Generation instances are now deprecated.
-func (o DatabaseInstanceSettingsPtrOutput) AuthorizedGaeApplications() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *DatabaseInstanceSettings) []string {
-		if v == nil {
-			return nil
-		}
-		return v.AuthorizedGaeApplications
-	}).(pulumi.StringArrayOutput)
-}
-
 // The availability type of the Cloud SQL
 // instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For MySQL
 // instances, ensure that `settings.backup_configuration.enabled` and
@@ -1342,22 +1252,6 @@ func (o DatabaseInstanceSettingsPtrOutput) Collation() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// This property is only applicable to First Generation instances.
-// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-// for information on how to upgrade to Second Generation instances.
-// Specific to read instances, indicates
-// when crash-safe replication flags are enabled.
-//
-// Deprecated: This property is only applicable to First Generation instances, and First Generation instances are now deprecated.
-func (o DatabaseInstanceSettingsPtrOutput) CrashSafeReplication() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *DatabaseInstanceSettings) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.CrashSafeReplication
-	}).(pulumi.BoolPtrOutput)
-}
-
 func (o DatabaseInstanceSettingsPtrOutput) DatabaseFlags() DatabaseInstanceSettingsDatabaseFlagArrayOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettings) []DatabaseInstanceSettingsDatabaseFlag {
 		if v == nil {
@@ -1367,7 +1261,7 @@ func (o DatabaseInstanceSettingsPtrOutput) DatabaseFlags() DatabaseInstanceSetti
 	}).(DatabaseInstanceSettingsDatabaseFlagArrayOutput)
 }
 
-// Configuration to increase storage size automatically.  Note that future `pulumi apply` calls will attempt to resize the disk to the value specified in `diskSize` - if this is set, do not set `diskSize`.
+// Configuration to increase storage size automatically.  Note that future apply calls will attempt to resize the disk to the value specified in `diskSize` - if this is set, do not set `diskSize`.
 func (o DatabaseInstanceSettingsPtrOutput) DiskAutoresize() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettings) *bool {
 		if v == nil {
@@ -1449,21 +1343,6 @@ func (o DatabaseInstanceSettingsPtrOutput) PricingPlan() pulumi.StringPtrOutput 
 			return nil
 		}
 		return v.PricingPlan
-	}).(pulumi.StringPtrOutput)
-}
-
-// This property is only applicable to First Generation instances.
-// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-// for information on how to upgrade to Second Generation instances.
-// Replication type for this instance, can be one of `ASYNCHRONOUS` or `SYNCHRONOUS`.
-//
-// Deprecated: This property is only applicable to First Generation instances, and First Generation instances are now deprecated.
-func (o DatabaseInstanceSettingsPtrOutput) ReplicationType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DatabaseInstanceSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ReplicationType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3637,26 +3516,23 @@ func (o GetDatabaseInstanceServerCaCertArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetDatabaseInstanceSetting struct {
-	ActivationPolicy          string                                          `pulumi:"activationPolicy"`
-	AuthorizedGaeApplications []string                                        `pulumi:"authorizedGaeApplications"`
-	AvailabilityType          string                                          `pulumi:"availabilityType"`
-	BackupConfigurations      []GetDatabaseInstanceSettingBackupConfiguration `pulumi:"backupConfigurations"`
-	Collation                 string                                          `pulumi:"collation"`
-	CrashSafeReplication      bool                                            `pulumi:"crashSafeReplication"`
-	DatabaseFlags             []GetDatabaseInstanceSettingDatabaseFlag        `pulumi:"databaseFlags"`
-	DiskAutoresize            bool                                            `pulumi:"diskAutoresize"`
-	DiskAutoresizeLimit       int                                             `pulumi:"diskAutoresizeLimit"`
-	DiskSize                  int                                             `pulumi:"diskSize"`
-	DiskType                  string                                          `pulumi:"diskType"`
-	InsightsConfigs           []GetDatabaseInstanceSettingInsightsConfig      `pulumi:"insightsConfigs"`
-	IpConfigurations          []GetDatabaseInstanceSettingIpConfiguration     `pulumi:"ipConfigurations"`
-	LocationPreferences       []GetDatabaseInstanceSettingLocationPreference  `pulumi:"locationPreferences"`
-	MaintenanceWindows        []GetDatabaseInstanceSettingMaintenanceWindow   `pulumi:"maintenanceWindows"`
-	PricingPlan               string                                          `pulumi:"pricingPlan"`
-	ReplicationType           string                                          `pulumi:"replicationType"`
-	Tier                      string                                          `pulumi:"tier"`
-	UserLabels                map[string]string                               `pulumi:"userLabels"`
-	Version                   int                                             `pulumi:"version"`
+	ActivationPolicy     string                                          `pulumi:"activationPolicy"`
+	AvailabilityType     string                                          `pulumi:"availabilityType"`
+	BackupConfigurations []GetDatabaseInstanceSettingBackupConfiguration `pulumi:"backupConfigurations"`
+	Collation            string                                          `pulumi:"collation"`
+	DatabaseFlags        []GetDatabaseInstanceSettingDatabaseFlag        `pulumi:"databaseFlags"`
+	DiskAutoresize       bool                                            `pulumi:"diskAutoresize"`
+	DiskAutoresizeLimit  int                                             `pulumi:"diskAutoresizeLimit"`
+	DiskSize             int                                             `pulumi:"diskSize"`
+	DiskType             string                                          `pulumi:"diskType"`
+	InsightsConfigs      []GetDatabaseInstanceSettingInsightsConfig      `pulumi:"insightsConfigs"`
+	IpConfigurations     []GetDatabaseInstanceSettingIpConfiguration     `pulumi:"ipConfigurations"`
+	LocationPreferences  []GetDatabaseInstanceSettingLocationPreference  `pulumi:"locationPreferences"`
+	MaintenanceWindows   []GetDatabaseInstanceSettingMaintenanceWindow   `pulumi:"maintenanceWindows"`
+	PricingPlan          string                                          `pulumi:"pricingPlan"`
+	Tier                 string                                          `pulumi:"tier"`
+	UserLabels           map[string]string                               `pulumi:"userLabels"`
+	Version              int                                             `pulumi:"version"`
 }
 
 // GetDatabaseInstanceSettingInput is an input type that accepts GetDatabaseInstanceSettingArgs and GetDatabaseInstanceSettingOutput values.
@@ -3671,26 +3547,23 @@ type GetDatabaseInstanceSettingInput interface {
 }
 
 type GetDatabaseInstanceSettingArgs struct {
-	ActivationPolicy          pulumi.StringInput                                      `pulumi:"activationPolicy"`
-	AuthorizedGaeApplications pulumi.StringArrayInput                                 `pulumi:"authorizedGaeApplications"`
-	AvailabilityType          pulumi.StringInput                                      `pulumi:"availabilityType"`
-	BackupConfigurations      GetDatabaseInstanceSettingBackupConfigurationArrayInput `pulumi:"backupConfigurations"`
-	Collation                 pulumi.StringInput                                      `pulumi:"collation"`
-	CrashSafeReplication      pulumi.BoolInput                                        `pulumi:"crashSafeReplication"`
-	DatabaseFlags             GetDatabaseInstanceSettingDatabaseFlagArrayInput        `pulumi:"databaseFlags"`
-	DiskAutoresize            pulumi.BoolInput                                        `pulumi:"diskAutoresize"`
-	DiskAutoresizeLimit       pulumi.IntInput                                         `pulumi:"diskAutoresizeLimit"`
-	DiskSize                  pulumi.IntInput                                         `pulumi:"diskSize"`
-	DiskType                  pulumi.StringInput                                      `pulumi:"diskType"`
-	InsightsConfigs           GetDatabaseInstanceSettingInsightsConfigArrayInput      `pulumi:"insightsConfigs"`
-	IpConfigurations          GetDatabaseInstanceSettingIpConfigurationArrayInput     `pulumi:"ipConfigurations"`
-	LocationPreferences       GetDatabaseInstanceSettingLocationPreferenceArrayInput  `pulumi:"locationPreferences"`
-	MaintenanceWindows        GetDatabaseInstanceSettingMaintenanceWindowArrayInput   `pulumi:"maintenanceWindows"`
-	PricingPlan               pulumi.StringInput                                      `pulumi:"pricingPlan"`
-	ReplicationType           pulumi.StringInput                                      `pulumi:"replicationType"`
-	Tier                      pulumi.StringInput                                      `pulumi:"tier"`
-	UserLabels                pulumi.StringMapInput                                   `pulumi:"userLabels"`
-	Version                   pulumi.IntInput                                         `pulumi:"version"`
+	ActivationPolicy     pulumi.StringInput                                      `pulumi:"activationPolicy"`
+	AvailabilityType     pulumi.StringInput                                      `pulumi:"availabilityType"`
+	BackupConfigurations GetDatabaseInstanceSettingBackupConfigurationArrayInput `pulumi:"backupConfigurations"`
+	Collation            pulumi.StringInput                                      `pulumi:"collation"`
+	DatabaseFlags        GetDatabaseInstanceSettingDatabaseFlagArrayInput        `pulumi:"databaseFlags"`
+	DiskAutoresize       pulumi.BoolInput                                        `pulumi:"diskAutoresize"`
+	DiskAutoresizeLimit  pulumi.IntInput                                         `pulumi:"diskAutoresizeLimit"`
+	DiskSize             pulumi.IntInput                                         `pulumi:"diskSize"`
+	DiskType             pulumi.StringInput                                      `pulumi:"diskType"`
+	InsightsConfigs      GetDatabaseInstanceSettingInsightsConfigArrayInput      `pulumi:"insightsConfigs"`
+	IpConfigurations     GetDatabaseInstanceSettingIpConfigurationArrayInput     `pulumi:"ipConfigurations"`
+	LocationPreferences  GetDatabaseInstanceSettingLocationPreferenceArrayInput  `pulumi:"locationPreferences"`
+	MaintenanceWindows   GetDatabaseInstanceSettingMaintenanceWindowArrayInput   `pulumi:"maintenanceWindows"`
+	PricingPlan          pulumi.StringInput                                      `pulumi:"pricingPlan"`
+	Tier                 pulumi.StringInput                                      `pulumi:"tier"`
+	UserLabels           pulumi.StringMapInput                                   `pulumi:"userLabels"`
+	Version              pulumi.IntInput                                         `pulumi:"version"`
 }
 
 func (GetDatabaseInstanceSettingArgs) ElementType() reflect.Type {
@@ -3748,10 +3621,6 @@ func (o GetDatabaseInstanceSettingOutput) ActivationPolicy() pulumi.StringOutput
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.ActivationPolicy }).(pulumi.StringOutput)
 }
 
-func (o GetDatabaseInstanceSettingOutput) AuthorizedGaeApplications() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetDatabaseInstanceSetting) []string { return v.AuthorizedGaeApplications }).(pulumi.StringArrayOutput)
-}
-
 func (o GetDatabaseInstanceSettingOutput) AvailabilityType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.AvailabilityType }).(pulumi.StringOutput)
 }
@@ -3764,10 +3633,6 @@ func (o GetDatabaseInstanceSettingOutput) BackupConfigurations() GetDatabaseInst
 
 func (o GetDatabaseInstanceSettingOutput) Collation() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.Collation }).(pulumi.StringOutput)
-}
-
-func (o GetDatabaseInstanceSettingOutput) CrashSafeReplication() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetDatabaseInstanceSetting) bool { return v.CrashSafeReplication }).(pulumi.BoolOutput)
 }
 
 func (o GetDatabaseInstanceSettingOutput) DatabaseFlags() GetDatabaseInstanceSettingDatabaseFlagArrayOutput {
@@ -3816,10 +3681,6 @@ func (o GetDatabaseInstanceSettingOutput) MaintenanceWindows() GetDatabaseInstan
 
 func (o GetDatabaseInstanceSettingOutput) PricingPlan() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.PricingPlan }).(pulumi.StringOutput)
-}
-
-func (o GetDatabaseInstanceSettingOutput) ReplicationType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.ReplicationType }).(pulumi.StringOutput)
 }
 
 func (o GetDatabaseInstanceSettingOutput) Tier() pulumi.StringOutput {

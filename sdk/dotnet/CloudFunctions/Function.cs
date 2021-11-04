@@ -35,6 +35,7 @@ namespace Pulumi.Gcp.CloudFunctions
     ///     {
     ///         var bucket = new Gcp.Storage.Bucket("bucket", new Gcp.Storage.BucketArgs
     ///         {
+    ///             Location = "US",
     ///         });
     ///         var archive = new Gcp.Storage.BucketObject("archive", new Gcp.Storage.BucketObjectArgs
     ///         {
@@ -76,6 +77,7 @@ namespace Pulumi.Gcp.CloudFunctions
     ///     {
     ///         var bucket = new Gcp.Storage.Bucket("bucket", new Gcp.Storage.BucketArgs
     ///         {
+    ///             Location = "US",
     ///         });
     ///         var archive = new Gcp.Storage.BucketObject("archive", new Gcp.Storage.BucketObjectArgs
     ///         {

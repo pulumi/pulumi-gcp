@@ -56,13 +56,13 @@ namespace Pulumi.Gcp.Compute
     ///         });
     ///         var myPort = new Gcp.Compute.InstanceGroupNamedPort("myPort", new Gcp.Compute.InstanceGroupNamedPortArgs
     ///         {
-    ///             Group = myCluster.InstanceGroupUrls.Apply(instanceGroupUrls =&gt; instanceGroupUrls[0]),
+    ///             Group = myCluster.NodePools.Apply(nodePools =&gt; nodePools[0].InstanceGroupUrls?[0]),
     ///             Zone = "us-central1-a",
     ///             Port = 8080,
     ///         });
     ///         var myPorts = new Gcp.Compute.InstanceGroupNamedPort("myPorts", new Gcp.Compute.InstanceGroupNamedPortArgs
     ///         {
-    ///             Group = myCluster.InstanceGroupUrls.Apply(instanceGroupUrls =&gt; instanceGroupUrls[0]),
+    ///             Group = myCluster.NodePools.Apply(nodePools =&gt; nodePools[0].InstanceGroupUrls?[0]),
     ///             Zone = "us-central1-a",
     ///             Port = 4443,
     ///         });
