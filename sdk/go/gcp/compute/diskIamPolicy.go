@@ -447,6 +447,10 @@ func (o DiskIamPolicyMapOutput) MapIndex(k pulumi.StringInput) DiskIamPolicyOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskIamPolicyInput)(nil)).Elem(), &DiskIamPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskIamPolicyPtrInput)(nil)).Elem(), &DiskIamPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskIamPolicyArrayInput)(nil)).Elem(), DiskIamPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskIamPolicyMapInput)(nil)).Elem(), DiskIamPolicyMap{})
 	pulumi.RegisterOutputType(DiskIamPolicyOutput{})
 	pulumi.RegisterOutputType(DiskIamPolicyPtrOutput{})
 	pulumi.RegisterOutputType(DiskIamPolicyArrayOutput{})

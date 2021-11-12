@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Iam
 {
@@ -36,6 +37,32 @@ namespace Pulumi.Gcp.Iam
         /// </summary>
         public static Task<GetRuleResult> InvokeAsync(GetRuleArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRuleResult>("gcp:iam/getRule:getRule", args ?? new GetRuleArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get information about a Google IAM Role.
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var roleinfo = Output.Create(Gcp.Iam.GetRule.InvokeAsync(new Gcp.Iam.GetRuleArgs
+        ///         {
+        ///             Name = "roles/compute.viewer",
+        ///         }));
+        ///         this.TheRolePermissions = roleinfo.Apply(roleinfo =&gt; roleinfo.IncludedPermissions);
+        ///     }
+        /// 
+        ///     [Output("theRolePermissions")]
+        ///     public Output&lt;string&gt; TheRolePermissions { get; set; }
+        /// }
+        /// ```
+        /// </summary>
+        public static Output<GetRuleResult> Invoke(GetRuleInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRuleResult>("gcp:iam/getRule:getRule", args ?? new GetRuleInvokeArgs(), options.WithVersion());
     }
 
 
@@ -48,6 +75,19 @@ namespace Pulumi.Gcp.Iam
         public string Name { get; set; } = null!;
 
         public GetRuleArgs()
+        {
+        }
+    }
+
+    public sealed class GetRuleInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the Role to lookup in the form `roles/{ROLE_NAME}`, `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}` or `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetRuleInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Spanner
 {
@@ -39,6 +40,35 @@ namespace Pulumi.Gcp.Spanner
         /// </summary>
         public static Task<GetInstanceResult> InvokeAsync(GetInstanceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceResult>("gcp:spanner/getInstance:getInstance", args ?? new GetInstanceArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get a spanner instance from Google Cloud by its name.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Gcp.Spanner.GetInstance.InvokeAsync(new Gcp.Spanner.GetInstanceArgs
+        ///         {
+        ///             Name = "bar",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetInstanceResult> Invoke(GetInstanceInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstanceResult>("gcp:spanner/getInstance:getInstance", args ?? new GetInstanceInvokeArgs(), options.WithVersion());
     }
 
 
@@ -81,6 +111,49 @@ namespace Pulumi.Gcp.Spanner
         public string? Project { get; set; }
 
         public GetInstanceArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstanceInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("config")]
+        public Input<string>? Config { get; set; }
+
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
+
+        [Input("forceDestroy")]
+        public Input<bool>? ForceDestroy { get; set; }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
+
+        /// <summary>
+        /// The name of the spanner instance.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        [Input("numNodes")]
+        public Input<int>? NumNodes { get; set; }
+
+        [Input("processingUnits")]
+        public Input<int>? ProcessingUnits { get; set; }
+
+        /// <summary>
+        /// The project in which the resource belongs. If it
+        /// is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetInstanceInvokeArgs()
         {
         }
     }

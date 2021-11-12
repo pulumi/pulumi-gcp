@@ -377,6 +377,10 @@ func (o ConsumerQuotaOverrideMapOutput) MapIndex(k pulumi.StringInput) ConsumerQ
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsumerQuotaOverrideInput)(nil)).Elem(), &ConsumerQuotaOverride{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsumerQuotaOverridePtrInput)(nil)).Elem(), &ConsumerQuotaOverride{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsumerQuotaOverrideArrayInput)(nil)).Elem(), ConsumerQuotaOverrideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsumerQuotaOverrideMapInput)(nil)).Elem(), ConsumerQuotaOverrideMap{})
 	pulumi.RegisterOutputType(ConsumerQuotaOverrideOutput{})
 	pulumi.RegisterOutputType(ConsumerQuotaOverridePtrOutput{})
 	pulumi.RegisterOutputType(ConsumerQuotaOverrideArrayOutput{})

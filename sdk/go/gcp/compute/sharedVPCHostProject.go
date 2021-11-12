@@ -317,6 +317,10 @@ func (o SharedVPCHostProjectMapOutput) MapIndex(k pulumi.StringInput) SharedVPCH
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SharedVPCHostProjectInput)(nil)).Elem(), &SharedVPCHostProject{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SharedVPCHostProjectPtrInput)(nil)).Elem(), &SharedVPCHostProject{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SharedVPCHostProjectArrayInput)(nil)).Elem(), SharedVPCHostProjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SharedVPCHostProjectMapInput)(nil)).Elem(), SharedVPCHostProjectMap{})
 	pulumi.RegisterOutputType(SharedVPCHostProjectOutput{})
 	pulumi.RegisterOutputType(SharedVPCHostProjectPtrOutput{})
 	pulumi.RegisterOutputType(SharedVPCHostProjectArrayOutput{})

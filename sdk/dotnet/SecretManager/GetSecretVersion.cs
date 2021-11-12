@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.SecretManager
 {
@@ -39,6 +40,35 @@ namespace Pulumi.Gcp.SecretManager
         /// </summary>
         public static Task<GetSecretVersionResult> InvokeAsync(GetSecretVersionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSecretVersionResult>("gcp:secretmanager/getSecretVersion:getSecretVersion", args ?? new GetSecretVersionArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get a Secret Manager secret's version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var basic = Output.Create(Gcp.SecretManager.GetSecretVersion.InvokeAsync(new Gcp.SecretManager.GetSecretVersionArgs
+        ///         {
+        ///             Secret = "my-secret",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetSecretVersionResult> Invoke(GetSecretVersionInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSecretVersionResult>("gcp:secretmanager/getSecretVersion:getSecretVersion", args ?? new GetSecretVersionInvokeArgs(), options.WithVersion());
     }
 
 
@@ -65,6 +95,33 @@ namespace Pulumi.Gcp.SecretManager
         public string? Version { get; set; }
 
         public GetSecretVersionArgs()
+        {
+        }
+    }
+
+    public sealed class GetSecretVersionInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The project to get the secret version for. If it
+        /// is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The secret to get the secret version for.
+        /// </summary>
+        [Input("secret", required: true)]
+        public Input<string> Secret { get; set; } = null!;
+
+        /// <summary>
+        /// The version of the secret to get. If it
+        /// is not provided, the latest version is retrieved.
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
+        public GetSecretVersionInvokeArgs()
         {
         }
     }

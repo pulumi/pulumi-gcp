@@ -564,6 +564,10 @@ func (o ImageIamMemberMapOutput) MapIndex(k pulumi.StringInput) ImageIamMemberOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageIamMemberInput)(nil)).Elem(), &ImageIamMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageIamMemberPtrInput)(nil)).Elem(), &ImageIamMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageIamMemberArrayInput)(nil)).Elem(), ImageIamMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageIamMemberMapInput)(nil)).Elem(), ImageIamMemberMap{})
 	pulumi.RegisterOutputType(ImageIamMemberOutput{})
 	pulumi.RegisterOutputType(ImageIamMemberPtrOutput{})
 	pulumi.RegisterOutputType(ImageIamMemberArrayOutput{})

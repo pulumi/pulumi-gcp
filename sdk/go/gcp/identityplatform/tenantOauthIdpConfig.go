@@ -405,6 +405,10 @@ func (o TenantOauthIdpConfigMapOutput) MapIndex(k pulumi.StringInput) TenantOaut
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantOauthIdpConfigInput)(nil)).Elem(), &TenantOauthIdpConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantOauthIdpConfigPtrInput)(nil)).Elem(), &TenantOauthIdpConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantOauthIdpConfigArrayInput)(nil)).Elem(), TenantOauthIdpConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantOauthIdpConfigMapInput)(nil)).Elem(), TenantOauthIdpConfigMap{})
 	pulumi.RegisterOutputType(TenantOauthIdpConfigOutput{})
 	pulumi.RegisterOutputType(TenantOauthIdpConfigPtrOutput{})
 	pulumi.RegisterOutputType(TenantOauthIdpConfigArrayOutput{})

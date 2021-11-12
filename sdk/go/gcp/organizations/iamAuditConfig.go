@@ -338,6 +338,10 @@ func (o IamAuditConfigMapOutput) MapIndex(k pulumi.StringInput) IamAuditConfigOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*IamAuditConfigInput)(nil)).Elem(), &IamAuditConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamAuditConfigPtrInput)(nil)).Elem(), &IamAuditConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamAuditConfigArrayInput)(nil)).Elem(), IamAuditConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamAuditConfigMapInput)(nil)).Elem(), IamAuditConfigMap{})
 	pulumi.RegisterOutputType(IamAuditConfigOutput{})
 	pulumi.RegisterOutputType(IamAuditConfigPtrOutput{})
 	pulumi.RegisterOutputType(IamAuditConfigArrayOutput{})

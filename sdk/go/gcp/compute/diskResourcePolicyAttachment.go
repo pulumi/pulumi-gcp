@@ -386,6 +386,10 @@ func (o DiskResourcePolicyAttachmentMapOutput) MapIndex(k pulumi.StringInput) Di
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskResourcePolicyAttachmentInput)(nil)).Elem(), &DiskResourcePolicyAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskResourcePolicyAttachmentPtrInput)(nil)).Elem(), &DiskResourcePolicyAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskResourcePolicyAttachmentArrayInput)(nil)).Elem(), DiskResourcePolicyAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskResourcePolicyAttachmentMapInput)(nil)).Elem(), DiskResourcePolicyAttachmentMap{})
 	pulumi.RegisterOutputType(DiskResourcePolicyAttachmentOutput{})
 	pulumi.RegisterOutputType(DiskResourcePolicyAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(DiskResourcePolicyAttachmentArrayOutput{})

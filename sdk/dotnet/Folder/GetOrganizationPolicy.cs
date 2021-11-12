@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Folder
 {
@@ -45,6 +46,41 @@ namespace Pulumi.Gcp.Folder
         /// </summary>
         public static Task<GetOrganizationPolicyResult> InvokeAsync(GetOrganizationPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationPolicyResult>("gcp:folder/getOrganizationPolicy:getOrganizationPolicy", args ?? new GetOrganizationPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Allows management of Organization policies for a Google Folder. For more information see
+        /// [the official
+        /// documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var policy = Output.Create(Gcp.Folder.GetOrganizationPolicy.InvokeAsync(new Gcp.Folder.GetOrganizationPolicyArgs
+        ///         {
+        ///             Folder = "folders/folderid",
+        ///             Constraint = "constraints/compute.trustedImageProjects",
+        ///         }));
+        ///         this.Version = policy.Apply(policy =&gt; policy.Version);
+        ///     }
+        /// 
+        ///     [Output("version")]
+        ///     public Output&lt;string&gt; Version { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetOrganizationPolicyResult> Invoke(GetOrganizationPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetOrganizationPolicyResult>("gcp:folder/getOrganizationPolicy:getOrganizationPolicy", args ?? new GetOrganizationPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -63,6 +99,25 @@ namespace Pulumi.Gcp.Folder
         public string Folder { get; set; } = null!;
 
         public GetOrganizationPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetOrganizationPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+        /// </summary>
+        [Input("constraint", required: true)]
+        public Input<string> Constraint { get; set; } = null!;
+
+        /// <summary>
+        /// The resource name of the folder to set the policy for. Its format is folders/{folder_id}.
+        /// </summary>
+        [Input("folder", required: true)]
+        public Input<string> Folder { get; set; } = null!;
+
+        public GetOrganizationPolicyInvokeArgs()
         {
         }
     }

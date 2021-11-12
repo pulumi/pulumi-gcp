@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Sql
 {
@@ -19,6 +20,15 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         public static Task<GetCaCertsResult> InvokeAsync(GetCaCertsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCaCertsResult>("gcp:sql/getCaCerts:getCaCerts", args ?? new GetCaCertsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get all of the trusted Certificate Authorities (CAs) for the specified SQL database instance. For more information see the
+        /// [official documentation](https://cloud.google.com/sql/)
+        /// and
+        /// [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
+        /// </summary>
+        public static Output<GetCaCertsResult> Invoke(GetCaCertsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetCaCertsResult>("gcp:sql/getCaCerts:getCaCerts", args ?? new GetCaCertsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -37,6 +47,25 @@ namespace Pulumi.Gcp.Sql
         public string? Project { get; set; }
 
         public GetCaCertsArgs()
+        {
+        }
+    }
+
+    public sealed class GetCaCertsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name or self link of the instance.
+        /// </summary>
+        [Input("instance", required: true)]
+        public Input<string> Instance { get; set; } = null!;
+
+        /// <summary>
+        /// The ID of the project in which the resource belongs. If `project` is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetCaCertsInvokeArgs()
         {
         }
     }

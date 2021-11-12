@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Tpu
 {
@@ -61,6 +62,57 @@ namespace Pulumi.Gcp.Tpu
         /// </summary>
         public static Task<GetTensorflowVersionsResult> InvokeAsync(GetTensorflowVersionsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTensorflowVersionsResult>("gcp:tpu/getTensorflowVersions:getTensorflowVersions", args ?? new GetTensorflowVersionsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get TensorFlow versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v1/projects.locations.tensorflowVersions).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var available = Output.Create(Gcp.Tpu.GetTensorflowVersions.InvokeAsync());
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
+        /// {{% example %}}
+        /// ### Configure Basic TPU Node With Available Version
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var available = Output.Create(Gcp.Tpu.GetTensorflowVersions.InvokeAsync());
+        ///         var tpu = new Gcp.Tpu.Node("tpu", new Gcp.Tpu.NodeArgs
+        ///         {
+        ///             Zone = "us-central1-b",
+        ///             AcceleratorType = "v3-8",
+        ///             TensorflowVersion = available.Apply(available =&gt; available.Versions?[0]),
+        ///             CidrBlock = "10.2.0.0/29",
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetTensorflowVersionsResult> Invoke(GetTensorflowVersionsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTensorflowVersionsResult>("gcp:tpu/getTensorflowVersions:getTensorflowVersions", args ?? new GetTensorflowVersionsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -81,6 +133,27 @@ namespace Pulumi.Gcp.Tpu
         public string? Zone { get; set; }
 
         public GetTensorflowVersionsArgs()
+        {
+        }
+    }
+
+    public sealed class GetTensorflowVersionsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The project to list versions for. If it
+        /// is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The zone to list versions for. If it
+        /// is not provided, the provider zone is used.
+        /// </summary>
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
+
+        public GetTensorflowVersionsInvokeArgs()
         {
         }
     }

@@ -487,6 +487,10 @@ func (o BillingAccountSinkMapOutput) MapIndex(k pulumi.StringInput) BillingAccou
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BillingAccountSinkInput)(nil)).Elem(), &BillingAccountSink{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BillingAccountSinkPtrInput)(nil)).Elem(), &BillingAccountSink{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BillingAccountSinkArrayInput)(nil)).Elem(), BillingAccountSinkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BillingAccountSinkMapInput)(nil)).Elem(), BillingAccountSinkMap{})
 	pulumi.RegisterOutputType(BillingAccountSinkOutput{})
 	pulumi.RegisterOutputType(BillingAccountSinkPtrOutput{})
 	pulumi.RegisterOutputType(BillingAccountSinkArrayOutput{})

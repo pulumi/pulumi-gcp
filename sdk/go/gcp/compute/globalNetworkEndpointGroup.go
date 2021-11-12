@@ -437,6 +437,10 @@ func (o GlobalNetworkEndpointGroupMapOutput) MapIndex(k pulumi.StringInput) Glob
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalNetworkEndpointGroupInput)(nil)).Elem(), &GlobalNetworkEndpointGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalNetworkEndpointGroupPtrInput)(nil)).Elem(), &GlobalNetworkEndpointGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalNetworkEndpointGroupArrayInput)(nil)).Elem(), GlobalNetworkEndpointGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalNetworkEndpointGroupMapInput)(nil)).Elem(), GlobalNetworkEndpointGroupMap{})
 	pulumi.RegisterOutputType(GlobalNetworkEndpointGroupOutput{})
 	pulumi.RegisterOutputType(GlobalNetworkEndpointGroupPtrOutput{})
 	pulumi.RegisterOutputType(GlobalNetworkEndpointGroupArrayOutput{})

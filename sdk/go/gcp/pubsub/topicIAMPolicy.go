@@ -430,6 +430,10 @@ func (o TopicIAMPolicyMapOutput) MapIndex(k pulumi.StringInput) TopicIAMPolicyOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicIAMPolicyInput)(nil)).Elem(), &TopicIAMPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicIAMPolicyPtrInput)(nil)).Elem(), &TopicIAMPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicIAMPolicyArrayInput)(nil)).Elem(), TopicIAMPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicIAMPolicyMapInput)(nil)).Elem(), TopicIAMPolicyMap{})
 	pulumi.RegisterOutputType(TopicIAMPolicyOutput{})
 	pulumi.RegisterOutputType(TopicIAMPolicyPtrOutput{})
 	pulumi.RegisterOutputType(TopicIAMPolicyArrayOutput{})

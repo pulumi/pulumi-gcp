@@ -639,6 +639,10 @@ func (o InstanceGroupManagerMapOutput) MapIndex(k pulumi.StringInput) InstanceGr
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerInput)(nil)).Elem(), &InstanceGroupManager{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerPtrInput)(nil)).Elem(), &InstanceGroupManager{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerArrayInput)(nil)).Elem(), InstanceGroupManagerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerMapInput)(nil)).Elem(), InstanceGroupManagerMap{})
 	pulumi.RegisterOutputType(InstanceGroupManagerOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerPtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerArrayOutput{})

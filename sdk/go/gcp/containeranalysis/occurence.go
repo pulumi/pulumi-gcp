@@ -521,6 +521,10 @@ func (o OccurenceMapOutput) MapIndex(k pulumi.StringInput) OccurenceOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*OccurenceInput)(nil)).Elem(), &Occurence{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OccurencePtrInput)(nil)).Elem(), &Occurence{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OccurenceArrayInput)(nil)).Elem(), OccurenceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OccurenceMapInput)(nil)).Elem(), OccurenceMap{})
 	pulumi.RegisterOutputType(OccurenceOutput{})
 	pulumi.RegisterOutputType(OccurencePtrOutput{})
 	pulumi.RegisterOutputType(OccurenceArrayOutput{})

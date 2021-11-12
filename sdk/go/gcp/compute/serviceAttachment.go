@@ -687,6 +687,10 @@ func (o ServiceAttachmentMapOutput) MapIndex(k pulumi.StringInput) ServiceAttach
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAttachmentInput)(nil)).Elem(), &ServiceAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAttachmentPtrInput)(nil)).Elem(), &ServiceAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAttachmentArrayInput)(nil)).Elem(), ServiceAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAttachmentMapInput)(nil)).Elem(), ServiceAttachmentMap{})
 	pulumi.RegisterOutputType(ServiceAttachmentOutput{})
 	pulumi.RegisterOutputType(ServiceAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(ServiceAttachmentArrayOutput{})

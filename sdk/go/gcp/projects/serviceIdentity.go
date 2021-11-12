@@ -344,6 +344,10 @@ func (o ServiceIdentityMapOutput) MapIndex(k pulumi.StringInput) ServiceIdentity
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIdentityInput)(nil)).Elem(), &ServiceIdentity{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIdentityPtrInput)(nil)).Elem(), &ServiceIdentity{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIdentityArrayInput)(nil)).Elem(), ServiceIdentityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIdentityMapInput)(nil)).Elem(), ServiceIdentityMap{})
 	pulumi.RegisterOutputType(ServiceIdentityOutput{})
 	pulumi.RegisterOutputType(ServiceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIdentityArrayOutput{})

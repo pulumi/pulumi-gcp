@@ -407,6 +407,10 @@ func (o IAMCustomRoleMapOutput) MapIndex(k pulumi.StringInput) IAMCustomRoleOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*IAMCustomRoleInput)(nil)).Elem(), &IAMCustomRole{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IAMCustomRolePtrInput)(nil)).Elem(), &IAMCustomRole{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IAMCustomRoleArrayInput)(nil)).Elem(), IAMCustomRoleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IAMCustomRoleMapInput)(nil)).Elem(), IAMCustomRoleMap{})
 	pulumi.RegisterOutputType(IAMCustomRoleOutput{})
 	pulumi.RegisterOutputType(IAMCustomRolePtrOutput{})
 	pulumi.RegisterOutputType(IAMCustomRoleArrayOutput{})

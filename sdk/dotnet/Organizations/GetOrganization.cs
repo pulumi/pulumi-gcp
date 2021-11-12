@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Organizations
 {
@@ -38,6 +39,34 @@ namespace Pulumi.Gcp.Organizations
         /// </summary>
         public static Task<GetOrganizationResult> InvokeAsync(GetOrganizationArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationResult>("gcp:organizations/getOrganization:getOrganization", args ?? new GetOrganizationArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a Google Cloud Organization. Note that you must have the `roles/resourcemanager.organizationViewer` role (or equivalent permissions) at the organization level to use this datasource.
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var org = Output.Create(Gcp.Organizations.GetOrganization.InvokeAsync(new Gcp.Organizations.GetOrganizationArgs
+        ///         {
+        ///             Domain = "example.com",
+        ///         }));
+        ///         var sales = new Gcp.Organizations.Folder("sales", new Gcp.Organizations.FolderArgs
+        ///         {
+        ///             DisplayName = "Sales",
+        ///             Parent = org.Apply(org =&gt; org.Name),
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// </summary>
+        public static Output<GetOrganizationResult> Invoke(GetOrganizationInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetOrganizationResult>("gcp:organizations/getOrganization:getOrganization", args ?? new GetOrganizationInvokeArgs(), options.WithVersion());
     }
 
 
@@ -56,6 +85,25 @@ namespace Pulumi.Gcp.Organizations
         public string? Organization { get; set; }
 
         public GetOrganizationArgs()
+        {
+        }
+    }
+
+    public sealed class GetOrganizationInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The domain name of the Organization.
+        /// </summary>
+        [Input("domain")]
+        public Input<string>? Domain { get; set; }
+
+        /// <summary>
+        /// The Organization's numeric ID, including an optional `organizations/` prefix.
+        /// </summary>
+        [Input("organization")]
+        public Input<string>? Organization { get; set; }
+
+        public GetOrganizationInvokeArgs()
         {
         }
     }

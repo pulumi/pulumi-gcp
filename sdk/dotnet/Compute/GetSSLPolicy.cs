@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Compute
 {
@@ -40,6 +41,36 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Task<GetSSLPolicyResult> InvokeAsync(GetSSLPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSSLPolicyResult>("gcp:compute/getSSLPolicy:getSSLPolicy", args ?? new GetSSLPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets an SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.
+        ///     For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var my_ssl_policy = Output.Create(Gcp.Compute.GetSSLPolicy.InvokeAsync(new Gcp.Compute.GetSSLPolicyArgs
+        ///         {
+        ///             Name = "production-ssl-policy",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetSSLPolicyResult> Invoke(GetSSLPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSSLPolicyResult>("gcp:compute/getSSLPolicy:getSSLPolicy", args ?? new GetSSLPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -59,6 +90,26 @@ namespace Pulumi.Gcp.Compute
         public string? Project { get; set; }
 
         public GetSSLPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetSSLPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the SSL Policy.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The ID of the project in which the resource belongs. If it
+        /// is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetSSLPolicyInvokeArgs()
         {
         }
     }

@@ -450,6 +450,10 @@ func (o TaxonomyIamBindingMapOutput) MapIndex(k pulumi.StringInput) TaxonomyIamB
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TaxonomyIamBindingInput)(nil)).Elem(), &TaxonomyIamBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaxonomyIamBindingPtrInput)(nil)).Elem(), &TaxonomyIamBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaxonomyIamBindingArrayInput)(nil)).Elem(), TaxonomyIamBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaxonomyIamBindingMapInput)(nil)).Elem(), TaxonomyIamBindingMap{})
 	pulumi.RegisterOutputType(TaxonomyIamBindingOutput{})
 	pulumi.RegisterOutputType(TaxonomyIamBindingPtrOutput{})
 	pulumi.RegisterOutputType(TaxonomyIamBindingArrayOutput{})

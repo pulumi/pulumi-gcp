@@ -511,6 +511,10 @@ func (o ExternalVpnGatewayMapOutput) MapIndex(k pulumi.StringInput) ExternalVpnG
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalVpnGatewayInput)(nil)).Elem(), &ExternalVpnGateway{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalVpnGatewayPtrInput)(nil)).Elem(), &ExternalVpnGateway{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalVpnGatewayArrayInput)(nil)).Elem(), ExternalVpnGatewayArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalVpnGatewayMapInput)(nil)).Elem(), ExternalVpnGatewayMap{})
 	pulumi.RegisterOutputType(ExternalVpnGatewayOutput{})
 	pulumi.RegisterOutputType(ExternalVpnGatewayPtrOutput{})
 	pulumi.RegisterOutputType(ExternalVpnGatewayArrayOutput{})

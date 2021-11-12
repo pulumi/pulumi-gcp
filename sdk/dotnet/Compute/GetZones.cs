@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Compute
 {
@@ -17,6 +18,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("gcp:compute/getZones:getZones", args ?? new GetZonesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Provides access to available Google Compute zones in a region for a given project.
+        /// See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
+        /// </summary>
+        public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetZonesResult>("gcp:compute/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -42,6 +50,32 @@ namespace Pulumi.Gcp.Compute
         public string? Status { get; set; }
 
         public GetZonesArgs()
+        {
+        }
+    }
+
+    public sealed class GetZonesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Project from which to list available zones. Defaults to project declared in the provider.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Region from which to list available zones. Defaults to region declared in the provider.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// Allows to filter list of zones based on their current status. Status can be either `UP` or `DOWN`.
+        /// Defaults to no filtering (all available zones - both `UP` and `DOWN`).
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetZonesInvokeArgs()
         {
         }
     }

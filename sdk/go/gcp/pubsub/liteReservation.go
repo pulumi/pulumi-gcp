@@ -367,6 +367,10 @@ func (o LiteReservationMapOutput) MapIndex(k pulumi.StringInput) LiteReservation
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*LiteReservationInput)(nil)).Elem(), &LiteReservation{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LiteReservationPtrInput)(nil)).Elem(), &LiteReservation{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LiteReservationArrayInput)(nil)).Elem(), LiteReservationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LiteReservationMapInput)(nil)).Elem(), LiteReservationMap{})
 	pulumi.RegisterOutputType(LiteReservationOutput{})
 	pulumi.RegisterOutputType(LiteReservationPtrOutput{})
 	pulumi.RegisterOutputType(LiteReservationArrayOutput{})

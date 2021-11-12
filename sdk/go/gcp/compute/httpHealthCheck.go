@@ -504,6 +504,10 @@ func (o HttpHealthCheckMapOutput) MapIndex(k pulumi.StringInput) HttpHealthCheck
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpHealthCheckInput)(nil)).Elem(), &HttpHealthCheck{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpHealthCheckPtrInput)(nil)).Elem(), &HttpHealthCheck{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpHealthCheckArrayInput)(nil)).Elem(), HttpHealthCheckArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpHealthCheckMapInput)(nil)).Elem(), HttpHealthCheckMap{})
 	pulumi.RegisterOutputType(HttpHealthCheckOutput{})
 	pulumi.RegisterOutputType(HttpHealthCheckPtrOutput{})
 	pulumi.RegisterOutputType(HttpHealthCheckArrayOutput{})

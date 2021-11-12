@@ -420,6 +420,10 @@ func (o DefaultSupportedIdpConfigMapOutput) MapIndex(k pulumi.StringInput) Defau
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultSupportedIdpConfigInput)(nil)).Elem(), &DefaultSupportedIdpConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultSupportedIdpConfigPtrInput)(nil)).Elem(), &DefaultSupportedIdpConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultSupportedIdpConfigArrayInput)(nil)).Elem(), DefaultSupportedIdpConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultSupportedIdpConfigMapInput)(nil)).Elem(), DefaultSupportedIdpConfigMap{})
 	pulumi.RegisterOutputType(DefaultSupportedIdpConfigOutput{})
 	pulumi.RegisterOutputType(DefaultSupportedIdpConfigPtrOutput{})
 	pulumi.RegisterOutputType(DefaultSupportedIdpConfigArrayOutput{})

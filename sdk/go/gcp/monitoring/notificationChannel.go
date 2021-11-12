@@ -516,6 +516,10 @@ func (o NotificationChannelMapOutput) MapIndex(k pulumi.StringInput) Notificatio
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationChannelInput)(nil)).Elem(), &NotificationChannel{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationChannelPtrInput)(nil)).Elem(), &NotificationChannel{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationChannelArrayInput)(nil)).Elem(), NotificationChannelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationChannelMapInput)(nil)).Elem(), NotificationChannelMap{})
 	pulumi.RegisterOutputType(NotificationChannelOutput{})
 	pulumi.RegisterOutputType(NotificationChannelPtrOutput{})
 	pulumi.RegisterOutputType(NotificationChannelArrayOutput{})

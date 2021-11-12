@@ -310,6 +310,10 @@ func (o EnvGroupAttachmentMapOutput) MapIndex(k pulumi.StringInput) EnvGroupAtta
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvGroupAttachmentInput)(nil)).Elem(), &EnvGroupAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvGroupAttachmentPtrInput)(nil)).Elem(), &EnvGroupAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvGroupAttachmentArrayInput)(nil)).Elem(), EnvGroupAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvGroupAttachmentMapInput)(nil)).Elem(), EnvGroupAttachmentMap{})
 	pulumi.RegisterOutputType(EnvGroupAttachmentOutput{})
 	pulumi.RegisterOutputType(EnvGroupAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(EnvGroupAttachmentArrayOutput{})

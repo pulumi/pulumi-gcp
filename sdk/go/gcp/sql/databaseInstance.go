@@ -697,6 +697,10 @@ func (o DatabaseInstanceMapOutput) MapIndex(k pulumi.StringInput) DatabaseInstan
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceInput)(nil)).Elem(), &DatabaseInstance{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstancePtrInput)(nil)).Elem(), &DatabaseInstance{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceArrayInput)(nil)).Elem(), DatabaseInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceMapInput)(nil)).Elem(), DatabaseInstanceMap{})
 	pulumi.RegisterOutputType(DatabaseInstanceOutput{})
 	pulumi.RegisterOutputType(DatabaseInstancePtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceArrayOutput{})

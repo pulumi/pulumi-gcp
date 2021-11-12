@@ -497,6 +497,10 @@ func (o OrganizationSinkMapOutput) MapIndex(k pulumi.StringInput) OrganizationSi
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationSinkInput)(nil)).Elem(), &OrganizationSink{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationSinkPtrInput)(nil)).Elem(), &OrganizationSink{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationSinkArrayInput)(nil)).Elem(), OrganizationSinkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationSinkMapInput)(nil)).Elem(), OrganizationSinkMap{})
 	pulumi.RegisterOutputType(OrganizationSinkOutput{})
 	pulumi.RegisterOutputType(OrganizationSinkPtrOutput{})
 	pulumi.RegisterOutputType(OrganizationSinkArrayOutput{})

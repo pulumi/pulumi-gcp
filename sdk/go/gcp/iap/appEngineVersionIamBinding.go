@@ -602,6 +602,10 @@ func (o AppEngineVersionIamBindingMapOutput) MapIndex(k pulumi.StringInput) AppE
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineVersionIamBindingInput)(nil)).Elem(), &AppEngineVersionIamBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineVersionIamBindingPtrInput)(nil)).Elem(), &AppEngineVersionIamBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineVersionIamBindingArrayInput)(nil)).Elem(), AppEngineVersionIamBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineVersionIamBindingMapInput)(nil)).Elem(), AppEngineVersionIamBindingMap{})
 	pulumi.RegisterOutputType(AppEngineVersionIamBindingOutput{})
 	pulumi.RegisterOutputType(AppEngineVersionIamBindingPtrOutput{})
 	pulumi.RegisterOutputType(AppEngineVersionIamBindingArrayOutput{})

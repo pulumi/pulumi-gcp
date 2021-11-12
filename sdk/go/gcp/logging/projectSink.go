@@ -461,6 +461,10 @@ func (o ProjectSinkMapOutput) MapIndex(k pulumi.StringInput) ProjectSinkOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectSinkInput)(nil)).Elem(), &ProjectSink{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectSinkPtrInput)(nil)).Elem(), &ProjectSink{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectSinkArrayInput)(nil)).Elem(), ProjectSinkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectSinkMapInput)(nil)).Elem(), ProjectSinkMap{})
 	pulumi.RegisterOutputType(ProjectSinkOutput{})
 	pulumi.RegisterOutputType(ProjectSinkPtrOutput{})
 	pulumi.RegisterOutputType(ProjectSinkArrayOutput{})

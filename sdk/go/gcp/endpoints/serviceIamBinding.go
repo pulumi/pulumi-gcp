@@ -430,6 +430,10 @@ func (o ServiceIamBindingMapOutput) MapIndex(k pulumi.StringInput) ServiceIamBin
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIamBindingInput)(nil)).Elem(), &ServiceIamBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIamBindingPtrInput)(nil)).Elem(), &ServiceIamBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIamBindingArrayInput)(nil)).Elem(), ServiceIamBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIamBindingMapInput)(nil)).Elem(), ServiceIamBindingMap{})
 	pulumi.RegisterOutputType(ServiceIamBindingOutput{})
 	pulumi.RegisterOutputType(ServiceIamBindingPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIamBindingArrayOutput{})

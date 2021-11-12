@@ -575,6 +575,10 @@ func (o TunnelInstanceIAMMemberMapOutput) MapIndex(k pulumi.StringInput) TunnelI
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelInstanceIAMMemberInput)(nil)).Elem(), &TunnelInstanceIAMMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelInstanceIAMMemberPtrInput)(nil)).Elem(), &TunnelInstanceIAMMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelInstanceIAMMemberArrayInput)(nil)).Elem(), TunnelInstanceIAMMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelInstanceIAMMemberMapInput)(nil)).Elem(), TunnelInstanceIAMMemberMap{})
 	pulumi.RegisterOutputType(TunnelInstanceIAMMemberOutput{})
 	pulumi.RegisterOutputType(TunnelInstanceIAMMemberPtrOutput{})
 	pulumi.RegisterOutputType(TunnelInstanceIAMMemberArrayOutput{})

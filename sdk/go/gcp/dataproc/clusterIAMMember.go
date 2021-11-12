@@ -458,6 +458,10 @@ func (o ClusterIAMMemberMapOutput) MapIndex(k pulumi.StringInput) ClusterIAMMemb
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIAMMemberInput)(nil)).Elem(), &ClusterIAMMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIAMMemberPtrInput)(nil)).Elem(), &ClusterIAMMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIAMMemberArrayInput)(nil)).Elem(), ClusterIAMMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIAMMemberMapInput)(nil)).Elem(), ClusterIAMMemberMap{})
 	pulumi.RegisterOutputType(ClusterIAMMemberOutput{})
 	pulumi.RegisterOutputType(ClusterIAMMemberPtrOutput{})
 	pulumi.RegisterOutputType(ClusterIAMMemberArrayOutput{})

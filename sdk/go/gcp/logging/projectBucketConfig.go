@@ -396,6 +396,10 @@ func (o ProjectBucketConfigMapOutput) MapIndex(k pulumi.StringInput) ProjectBuck
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectBucketConfigInput)(nil)).Elem(), &ProjectBucketConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectBucketConfigPtrInput)(nil)).Elem(), &ProjectBucketConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectBucketConfigArrayInput)(nil)).Elem(), ProjectBucketConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectBucketConfigMapInput)(nil)).Elem(), ProjectBucketConfigMap{})
 	pulumi.RegisterOutputType(ProjectBucketConfigOutput{})
 	pulumi.RegisterOutputType(ProjectBucketConfigPtrOutput{})
 	pulumi.RegisterOutputType(ProjectBucketConfigArrayOutput{})

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Compute
 {
@@ -39,6 +40,35 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Task<GetNetworkResult> InvokeAsync(GetNetworkArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkResult>("gcp:compute/getNetwork:getNetwork", args ?? new GetNetworkArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get a network within GCE from its name.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var my_network = Output.Create(Gcp.Compute.GetNetwork.InvokeAsync(new Gcp.Compute.GetNetworkArgs
+        ///         {
+        ///             Name = "default-us-east1",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetNetworkResult> Invoke(GetNetworkInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetNetworkResult>("gcp:compute/getNetwork:getNetwork", args ?? new GetNetworkInvokeArgs(), options.WithVersion());
     }
 
 
@@ -58,6 +88,26 @@ namespace Pulumi.Gcp.Compute
         public string? Project { get; set; }
 
         public GetNetworkArgs()
+        {
+        }
+    }
+
+    public sealed class GetNetworkInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the network.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The ID of the project in which the resource belongs. If it
+        /// is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetNetworkInvokeArgs()
         {
         }
     }

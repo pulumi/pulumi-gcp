@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Organizations
 {
@@ -40,6 +41,36 @@ namespace Pulumi.Gcp.Organizations
         /// </summary>
         public static Task<GetBillingAccountResult> InvokeAsync(GetBillingAccountArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBillingAccountResult>("gcp:organizations/getBillingAccount:getBillingAccount", args ?? new GetBillingAccountArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get information about a Google Billing Account.
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var acct = Output.Create(Gcp.Organizations.GetBillingAccount.InvokeAsync(new Gcp.Organizations.GetBillingAccountArgs
+        ///         {
+        ///             DisplayName = "My Billing Account",
+        ///             Open = true,
+        ///         }));
+        ///         var myProject = new Gcp.Organizations.Project("myProject", new Gcp.Organizations.ProjectArgs
+        ///         {
+        ///             ProjectId = "your-project-id",
+        ///             OrgId = "1234567",
+        ///             BillingAccount = acct.Apply(acct =&gt; acct.Id),
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// </summary>
+        public static Output<GetBillingAccountResult> Invoke(GetBillingAccountInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetBillingAccountResult>("gcp:organizations/getBillingAccount:getBillingAccount", args ?? new GetBillingAccountInvokeArgs(), options.WithVersion());
     }
 
 
@@ -64,6 +95,31 @@ namespace Pulumi.Gcp.Organizations
         public bool? Open { get; set; }
 
         public GetBillingAccountArgs()
+        {
+        }
+    }
+
+    public sealed class GetBillingAccountInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the billing account in the form `{billing_account_id}` or `billingAccounts/{billing_account_id}`.
+        /// </summary>
+        [Input("billingAccount")]
+        public Input<string>? BillingAccount { get; set; }
+
+        /// <summary>
+        /// The display name of the billing account.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// `true` if the billing account is open, `false` if the billing account is closed.
+        /// </summary>
+        [Input("open")]
+        public Input<bool>? Open { get; set; }
+
+        public GetBillingAccountInvokeArgs()
         {
         }
     }

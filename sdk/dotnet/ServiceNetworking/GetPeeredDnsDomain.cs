@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.ServiceNetworking
 {
@@ -13,6 +14,9 @@ namespace Pulumi.Gcp.ServiceNetworking
     {
         public static Task<GetPeeredDnsDomainResult> InvokeAsync(GetPeeredDnsDomainArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPeeredDnsDomainResult>("gcp:servicenetworking/getPeeredDnsDomain:getPeeredDnsDomain", args ?? new GetPeeredDnsDomainArgs(), options.WithVersion());
+
+        public static Output<GetPeeredDnsDomainResult> Invoke(GetPeeredDnsDomainInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetPeeredDnsDomainResult>("gcp:servicenetworking/getPeeredDnsDomain:getPeeredDnsDomain", args ?? new GetPeeredDnsDomainInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +35,25 @@ namespace Pulumi.Gcp.ServiceNetworking
         public string Service { get; set; } = null!;
 
         public GetPeeredDnsDomainArgs()
+        {
+        }
+    }
+
+    public sealed class GetPeeredDnsDomainInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        [Input("network", required: true)]
+        public Input<string> Network { get; set; } = null!;
+
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
+
+        [Input("service", required: true)]
+        public Input<string> Service { get; set; } = null!;
+
+        public GetPeeredDnsDomainInvokeArgs()
         {
         }
     }

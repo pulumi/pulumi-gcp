@@ -365,6 +365,10 @@ func (o ContactMapOutput) MapIndex(k pulumi.StringInput) ContactOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ContactInput)(nil)).Elem(), &Contact{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContactPtrInput)(nil)).Elem(), &Contact{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContactArrayInput)(nil)).Elem(), ContactArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContactMapInput)(nil)).Elem(), ContactMap{})
 	pulumi.RegisterOutputType(ContactOutput{})
 	pulumi.RegisterOutputType(ContactPtrOutput{})
 	pulumi.RegisterOutputType(ContactArrayOutput{})

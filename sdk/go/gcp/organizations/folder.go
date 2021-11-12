@@ -371,6 +371,10 @@ func (o FolderMapOutput) MapIndex(k pulumi.StringInput) FolderOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderInput)(nil)).Elem(), &Folder{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderPtrInput)(nil)).Elem(), &Folder{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderArrayInput)(nil)).Elem(), FolderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderMapInput)(nil)).Elem(), FolderMap{})
 	pulumi.RegisterOutputType(FolderOutput{})
 	pulumi.RegisterOutputType(FolderPtrOutput{})
 	pulumi.RegisterOutputType(FolderArrayOutput{})

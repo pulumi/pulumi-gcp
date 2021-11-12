@@ -329,6 +329,10 @@ func (o FeatureMembershipMapOutput) MapIndex(k pulumi.StringInput) FeatureMember
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipInput)(nil)).Elem(), &FeatureMembership{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipPtrInput)(nil)).Elem(), &FeatureMembership{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipArrayInput)(nil)).Elem(), FeatureMembershipArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipMapInput)(nil)).Elem(), FeatureMembershipMap{})
 	pulumi.RegisterOutputType(FeatureMembershipOutput{})
 	pulumi.RegisterOutputType(FeatureMembershipPtrOutput{})
 	pulumi.RegisterOutputType(FeatureMembershipArrayOutput{})

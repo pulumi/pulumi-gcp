@@ -531,6 +531,10 @@ func (o SSLPolicyMapOutput) MapIndex(k pulumi.StringInput) SSLPolicyOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SSLPolicyInput)(nil)).Elem(), &SSLPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SSLPolicyPtrInput)(nil)).Elem(), &SSLPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SSLPolicyArrayInput)(nil)).Elem(), SSLPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SSLPolicyMapInput)(nil)).Elem(), SSLPolicyMap{})
 	pulumi.RegisterOutputType(SSLPolicyOutput{})
 	pulumi.RegisterOutputType(SSLPolicyPtrOutput{})
 	pulumi.RegisterOutputType(SSLPolicyArrayOutput{})

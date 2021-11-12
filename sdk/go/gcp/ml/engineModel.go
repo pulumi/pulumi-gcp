@@ -430,6 +430,10 @@ func (o EngineModelMapOutput) MapIndex(k pulumi.StringInput) EngineModelOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EngineModelInput)(nil)).Elem(), &EngineModel{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EngineModelPtrInput)(nil)).Elem(), &EngineModel{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EngineModelArrayInput)(nil)).Elem(), EngineModelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EngineModelMapInput)(nil)).Elem(), EngineModelMap{})
 	pulumi.RegisterOutputType(EngineModelOutput{})
 	pulumi.RegisterOutputType(EngineModelPtrOutput{})
 	pulumi.RegisterOutputType(EngineModelArrayOutput{})

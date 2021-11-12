@@ -451,6 +451,10 @@ func (o OrganizationFeedMapOutput) MapIndex(k pulumi.StringInput) OrganizationFe
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationFeedInput)(nil)).Elem(), &OrganizationFeed{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationFeedPtrInput)(nil)).Elem(), &OrganizationFeed{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationFeedArrayInput)(nil)).Elem(), OrganizationFeedArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationFeedMapInput)(nil)).Elem(), OrganizationFeedMap{})
 	pulumi.RegisterOutputType(OrganizationFeedOutput{})
 	pulumi.RegisterOutputType(OrganizationFeedPtrOutput{})
 	pulumi.RegisterOutputType(OrganizationFeedArrayOutput{})

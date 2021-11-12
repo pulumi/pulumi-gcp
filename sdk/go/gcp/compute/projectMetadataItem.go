@@ -329,6 +329,10 @@ func (o ProjectMetadataItemMapOutput) MapIndex(k pulumi.StringInput) ProjectMeta
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectMetadataItemInput)(nil)).Elem(), &ProjectMetadataItem{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectMetadataItemPtrInput)(nil)).Elem(), &ProjectMetadataItem{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectMetadataItemArrayInput)(nil)).Elem(), ProjectMetadataItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectMetadataItemMapInput)(nil)).Elem(), ProjectMetadataItemMap{})
 	pulumi.RegisterOutputType(ProjectMetadataItemOutput{})
 	pulumi.RegisterOutputType(ProjectMetadataItemPtrOutput{})
 	pulumi.RegisterOutputType(ProjectMetadataItemArrayOutput{})

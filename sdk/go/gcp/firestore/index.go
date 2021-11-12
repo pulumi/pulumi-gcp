@@ -420,6 +420,10 @@ func (o IndexMapOutput) MapIndex(k pulumi.StringInput) IndexOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*IndexInput)(nil)).Elem(), &Index{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IndexPtrInput)(nil)).Elem(), &Index{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IndexArrayInput)(nil)).Elem(), IndexArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IndexMapInput)(nil)).Elem(), IndexMap{})
 	pulumi.RegisterOutputType(IndexOutput{})
 	pulumi.RegisterOutputType(IndexPtrOutput{})
 	pulumi.RegisterOutputType(IndexArrayOutput{})

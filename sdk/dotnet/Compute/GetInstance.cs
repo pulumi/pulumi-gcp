@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Compute
 {
@@ -44,6 +45,40 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Task<GetInstanceResult> InvokeAsync(GetInstanceArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceResult>("gcp:compute/getInstance:getInstance", args ?? new GetInstanceArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a VM instance resource within GCE. For more information see
+        /// [the official documentation](https://cloud.google.com/compute/docs/instances)
+        /// and
+        /// [API](https://cloud.google.com/compute/docs/reference/latest/instances).
+        /// 
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var appserver = Output.Create(Gcp.Compute.GetInstance.InvokeAsync(new Gcp.Compute.GetInstanceArgs
+        ///         {
+        ///             Name = "primary-application-server",
+        ///             Zone = "us-central1-a",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetInstanceResult> Invoke(GetInstanceInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstanceResult>("gcp:compute/getInstance:getInstance", args ?? new GetInstanceInvokeArgs(), options.WithVersion());
     }
 
 
@@ -78,6 +113,41 @@ namespace Pulumi.Gcp.Compute
         public string? Zone { get; set; }
 
         public GetInstanceArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstanceInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the instance. One of `name` or `self_link` must be provided.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If `self_link` is provided, this value is ignored.  If neither `self_link`
+        /// nor `project` are provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The self link of the instance. One of `name` or `self_link` must be provided.
+        /// </summary>
+        [Input("selfLink")]
+        public Input<string>? SelfLink { get; set; }
+
+        /// <summary>
+        /// The zone of the instance. If `self_link` is provided, this
+        /// value is ignored.  If neither `self_link` nor `zone` are provided, the
+        /// provider zone is used.
+        /// </summary>
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
+
+        public GetInstanceInvokeArgs()
         {
         }
     }

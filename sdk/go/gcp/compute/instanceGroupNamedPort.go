@@ -414,6 +414,10 @@ func (o InstanceGroupNamedPortMapOutput) MapIndex(k pulumi.StringInput) Instance
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupNamedPortInput)(nil)).Elem(), &InstanceGroupNamedPort{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupNamedPortPtrInput)(nil)).Elem(), &InstanceGroupNamedPort{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupNamedPortArrayInput)(nil)).Elem(), InstanceGroupNamedPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupNamedPortMapInput)(nil)).Elem(), InstanceGroupNamedPortMap{})
 	pulumi.RegisterOutputType(InstanceGroupNamedPortOutput{})
 	pulumi.RegisterOutputType(InstanceGroupNamedPortPtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupNamedPortArrayOutput{})

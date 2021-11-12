@@ -443,6 +443,10 @@ func (o SecretIamBindingMapOutput) MapIndex(k pulumi.StringInput) SecretIamBindi
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretIamBindingInput)(nil)).Elem(), &SecretIamBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretIamBindingPtrInput)(nil)).Elem(), &SecretIamBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretIamBindingArrayInput)(nil)).Elem(), SecretIamBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretIamBindingMapInput)(nil)).Elem(), SecretIamBindingMap{})
 	pulumi.RegisterOutputType(SecretIamBindingOutput{})
 	pulumi.RegisterOutputType(SecretIamBindingPtrOutput{})
 	pulumi.RegisterOutputType(SecretIamBindingArrayOutput{})

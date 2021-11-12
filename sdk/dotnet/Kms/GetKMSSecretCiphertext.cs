@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Kms
 {
@@ -27,6 +28,23 @@ namespace Pulumi.Gcp.Kms
         /// </summary>
         public static Task<GetKMSSecretCiphertextResult> InvokeAsync(GetKMSSecretCiphertextArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKMSSecretCiphertextResult>("gcp:kms/getKMSSecretCiphertext:getKMSSecretCiphertext", args ?? new GetKMSSecretCiphertextArgs(), options.WithVersion());
+
+        /// <summary>
+        /// !&gt; **Warning:** This data source is deprecated. Use the `gcp.kms.SecretCiphertext` **resource** instead.
+        /// 
+        /// This data source allows you to encrypt data with Google Cloud KMS and use the
+        /// ciphertext within your resource definitions.
+        /// 
+        /// For more information see
+        /// [the official documentation](https://cloud.google.com/kms/docs/encrypt-decrypt).
+        /// 
+        /// &gt; **NOTE:** Using this data source will allow you to conceal secret data within your
+        /// resource definitions, but it does not take care of protecting that data in the
+        /// logging output, plan output, or state output.  Please take care to secure your secret
+        /// data outside of resource definitions.
+        /// </summary>
+        public static Output<GetKMSSecretCiphertextResult> Invoke(GetKMSSecretCiphertextInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetKMSSecretCiphertextResult>("gcp:kms/getKMSSecretCiphertext:getKMSSecretCiphertext", args ?? new GetKMSSecretCiphertextInvokeArgs(), options.WithVersion());
     }
 
 
@@ -47,6 +65,27 @@ namespace Pulumi.Gcp.Kms
         public string Plaintext { get; set; } = null!;
 
         public GetKMSSecretCiphertextArgs()
+        {
+        }
+    }
+
+    public sealed class GetKMSSecretCiphertextInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The id of the CryptoKey that will be used to
+        /// encrypt the provided plaintext. This is represented by the format
+        /// `{projectId}/{location}/{keyRingName}/{cryptoKeyName}`.
+        /// </summary>
+        [Input("cryptoKey", required: true)]
+        public Input<string> CryptoKey { get; set; } = null!;
+
+        /// <summary>
+        /// The plaintext to be encrypted
+        /// </summary>
+        [Input("plaintext", required: true)]
+        public Input<string> Plaintext { get; set; } = null!;
+
+        public GetKMSSecretCiphertextInvokeArgs()
         {
         }
     }

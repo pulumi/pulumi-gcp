@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Organizations
 {
@@ -40,6 +41,36 @@ namespace Pulumi.Gcp.Organizations
         /// </summary>
         public static Task<GetActiveFolderResult> InvokeAsync(GetActiveFolderArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetActiveFolderResult>("gcp:organizations/getActiveFolder:getActiveFolder", args ?? new GetActiveFolderArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get an active folder within GCP by `display_name` and `parent`.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var department1 = Output.Create(Gcp.Organizations.GetActiveFolder.InvokeAsync(new Gcp.Organizations.GetActiveFolderArgs
+        ///         {
+        ///             DisplayName = "Department 1",
+        ///             Parent = "organizations/1234567",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetActiveFolderResult> Invoke(GetActiveFolderInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetActiveFolderResult>("gcp:organizations/getActiveFolder:getActiveFolder", args ?? new GetActiveFolderInvokeArgs(), options.WithVersion());
     }
 
 
@@ -58,6 +89,25 @@ namespace Pulumi.Gcp.Organizations
         public string Parent { get; set; } = null!;
 
         public GetActiveFolderArgs()
+        {
+        }
+    }
+
+    public sealed class GetActiveFolderInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The folder's display name.
+        /// </summary>
+        [Input("displayName", required: true)]
+        public Input<string> DisplayName { get; set; } = null!;
+
+        /// <summary>
+        /// The resource name of the parent Folder or Organization.
+        /// </summary>
+        [Input("parent", required: true)]
+        public Input<string> Parent { get; set; } = null!;
+
+        public GetActiveFolderInvokeArgs()
         {
         }
     }

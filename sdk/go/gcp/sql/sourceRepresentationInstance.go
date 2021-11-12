@@ -386,6 +386,10 @@ func (o SourceRepresentationInstanceMapOutput) MapIndex(k pulumi.StringInput) So
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceRepresentationInstanceInput)(nil)).Elem(), &SourceRepresentationInstance{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceRepresentationInstancePtrInput)(nil)).Elem(), &SourceRepresentationInstance{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceRepresentationInstanceArrayInput)(nil)).Elem(), SourceRepresentationInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceRepresentationInstanceMapInput)(nil)).Elem(), SourceRepresentationInstanceMap{})
 	pulumi.RegisterOutputType(SourceRepresentationInstanceOutput{})
 	pulumi.RegisterOutputType(SourceRepresentationInstancePtrOutput{})
 	pulumi.RegisterOutputType(SourceRepresentationInstanceArrayOutput{})

@@ -574,6 +574,10 @@ func (o AppEngineVersionIamPolicyMapOutput) MapIndex(k pulumi.StringInput) AppEn
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineVersionIamPolicyInput)(nil)).Elem(), &AppEngineVersionIamPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineVersionIamPolicyPtrInput)(nil)).Elem(), &AppEngineVersionIamPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineVersionIamPolicyArrayInput)(nil)).Elem(), AppEngineVersionIamPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineVersionIamPolicyMapInput)(nil)).Elem(), AppEngineVersionIamPolicyMap{})
 	pulumi.RegisterOutputType(AppEngineVersionIamPolicyOutput{})
 	pulumi.RegisterOutputType(AppEngineVersionIamPolicyPtrOutput{})
 	pulumi.RegisterOutputType(AppEngineVersionIamPolicyArrayOutput{})

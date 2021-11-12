@@ -447,6 +447,10 @@ func (o DicomStoreIamBindingMapOutput) MapIndex(k pulumi.StringInput) DicomStore
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DicomStoreIamBindingInput)(nil)).Elem(), &DicomStoreIamBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DicomStoreIamBindingPtrInput)(nil)).Elem(), &DicomStoreIamBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DicomStoreIamBindingArrayInput)(nil)).Elem(), DicomStoreIamBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DicomStoreIamBindingMapInput)(nil)).Elem(), DicomStoreIamBindingMap{})
 	pulumi.RegisterOutputType(DicomStoreIamBindingOutput{})
 	pulumi.RegisterOutputType(DicomStoreIamBindingPtrOutput{})
 	pulumi.RegisterOutputType(DicomStoreIamBindingArrayOutput{})

@@ -440,6 +440,10 @@ func (o TenantDefaultSupportedIdpConfigMapOutput) MapIndex(k pulumi.StringInput)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantDefaultSupportedIdpConfigInput)(nil)).Elem(), &TenantDefaultSupportedIdpConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantDefaultSupportedIdpConfigPtrInput)(nil)).Elem(), &TenantDefaultSupportedIdpConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantDefaultSupportedIdpConfigArrayInput)(nil)).Elem(), TenantDefaultSupportedIdpConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantDefaultSupportedIdpConfigMapInput)(nil)).Elem(), TenantDefaultSupportedIdpConfigMap{})
 	pulumi.RegisterOutputType(TenantDefaultSupportedIdpConfigOutput{})
 	pulumi.RegisterOutputType(TenantDefaultSupportedIdpConfigPtrOutput{})
 	pulumi.RegisterOutputType(TenantDefaultSupportedIdpConfigArrayOutput{})

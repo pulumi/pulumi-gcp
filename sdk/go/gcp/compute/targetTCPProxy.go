@@ -457,6 +457,10 @@ func (o TargetTCPProxyMapOutput) MapIndex(k pulumi.StringInput) TargetTCPProxyOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetTCPProxyInput)(nil)).Elem(), &TargetTCPProxy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetTCPProxyPtrInput)(nil)).Elem(), &TargetTCPProxy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetTCPProxyArrayInput)(nil)).Elem(), TargetTCPProxyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetTCPProxyMapInput)(nil)).Elem(), TargetTCPProxyMap{})
 	pulumi.RegisterOutputType(TargetTCPProxyOutput{})
 	pulumi.RegisterOutputType(TargetTCPProxyPtrOutput{})
 	pulumi.RegisterOutputType(TargetTCPProxyArrayOutput{})

@@ -545,6 +545,10 @@ func (o WebIamMemberMapOutput) MapIndex(k pulumi.StringInput) WebIamMemberOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*WebIamMemberInput)(nil)).Elem(), &WebIamMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebIamMemberPtrInput)(nil)).Elem(), &WebIamMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebIamMemberArrayInput)(nil)).Elem(), WebIamMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebIamMemberMapInput)(nil)).Elem(), WebIamMemberMap{})
 	pulumi.RegisterOutputType(WebIamMemberOutput{})
 	pulumi.RegisterOutputType(WebIamMemberPtrOutput{})
 	pulumi.RegisterOutputType(WebIamMemberArrayOutput{})

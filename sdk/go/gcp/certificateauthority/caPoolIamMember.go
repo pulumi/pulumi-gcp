@@ -465,6 +465,10 @@ func (o CaPoolIamMemberMapOutput) MapIndex(k pulumi.StringInput) CaPoolIamMember
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolIamMemberInput)(nil)).Elem(), &CaPoolIamMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolIamMemberPtrInput)(nil)).Elem(), &CaPoolIamMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolIamMemberArrayInput)(nil)).Elem(), CaPoolIamMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolIamMemberMapInput)(nil)).Elem(), CaPoolIamMemberMap{})
 	pulumi.RegisterOutputType(CaPoolIamMemberOutput{})
 	pulumi.RegisterOutputType(CaPoolIamMemberPtrOutput{})
 	pulumi.RegisterOutputType(CaPoolIamMemberArrayOutput{})

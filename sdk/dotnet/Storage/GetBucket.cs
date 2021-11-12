@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Storage
 {
@@ -43,6 +44,39 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         public static Task<GetBucketResult> InvokeAsync(GetBucketArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBucketResult>("gcp:storage/getBucket:getBucket", args ?? new GetBucketArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets an existing bucket in Google Cloud Storage service (GCS).
+        /// See [the official documentation](https://cloud.google.com/storage/docs/key-terms#buckets)
+        /// and
+        /// [API](https://cloud.google.com/storage/docs/json_api/v1/buckets).
+        /// 
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var my_bucket = Output.Create(Gcp.Storage.GetBucket.InvokeAsync(new Gcp.Storage.GetBucketArgs
+        ///         {
+        ///             Name = "my-bucket",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetBucketResult> Invoke(GetBucketInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetBucketResult>("gcp:storage/getBucket:getBucket", args ?? new GetBucketInvokeArgs(), options.WithVersion());
     }
 
 
@@ -55,6 +89,19 @@ namespace Pulumi.Gcp.Storage
         public string Name { get; set; } = null!;
 
         public GetBucketArgs()
+        {
+        }
+    }
+
+    public sealed class GetBucketInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the bucket.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetBucketInvokeArgs()
         {
         }
     }

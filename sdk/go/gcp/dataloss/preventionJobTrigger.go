@@ -429,6 +429,10 @@ func (o PreventionJobTriggerMapOutput) MapIndex(k pulumi.StringInput) Prevention
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInput)(nil)).Elem(), &PreventionJobTrigger{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerPtrInput)(nil)).Elem(), &PreventionJobTrigger{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerArrayInput)(nil)).Elem(), PreventionJobTriggerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerMapInput)(nil)).Elem(), PreventionJobTriggerMap{})
 	pulumi.RegisterOutputType(PreventionJobTriggerOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerPtrOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerArrayOutput{})

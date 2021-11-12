@@ -1032,6 +1032,10 @@ func (o WorkloadIdentityPoolProviderMapOutput) MapIndex(k pulumi.StringInput) Wo
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolProviderInput)(nil)).Elem(), &WorkloadIdentityPoolProvider{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolProviderPtrInput)(nil)).Elem(), &WorkloadIdentityPoolProvider{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolProviderArrayInput)(nil)).Elem(), WorkloadIdentityPoolProviderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolProviderMapInput)(nil)).Elem(), WorkloadIdentityPoolProviderMap{})
 	pulumi.RegisterOutputType(WorkloadIdentityPoolProviderOutput{})
 	pulumi.RegisterOutputType(WorkloadIdentityPoolProviderPtrOutput{})
 	pulumi.RegisterOutputType(WorkloadIdentityPoolProviderArrayOutput{})

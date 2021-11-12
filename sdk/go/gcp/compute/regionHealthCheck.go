@@ -944,6 +944,10 @@ func (o RegionHealthCheckMapOutput) MapIndex(k pulumi.StringInput) RegionHealthC
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionHealthCheckInput)(nil)).Elem(), &RegionHealthCheck{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionHealthCheckPtrInput)(nil)).Elem(), &RegionHealthCheck{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionHealthCheckArrayInput)(nil)).Elem(), RegionHealthCheckArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionHealthCheckMapInput)(nil)).Elem(), RegionHealthCheckMap{})
 	pulumi.RegisterOutputType(RegionHealthCheckOutput{})
 	pulumi.RegisterOutputType(RegionHealthCheckPtrOutput{})
 	pulumi.RegisterOutputType(RegionHealthCheckArrayOutput{})

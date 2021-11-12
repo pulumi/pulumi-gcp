@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Compute
 {
@@ -48,6 +49,44 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Task<GetRegionSslCertificateResult> InvokeAsync(GetRegionSslCertificateArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegionSslCertificateResult>("gcp:compute/getRegionSslCertificate:getRegionSslCertificate", args ?? new GetRegionSslCertificateArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get info about a Region Google Compute SSL Certificate from its name.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var myCert = Output.Create(Gcp.Compute.GetRegionSslCertificate.InvokeAsync(new Gcp.Compute.GetRegionSslCertificateArgs
+        ///         {
+        ///             Name = "my-cert",
+        ///         }));
+        ///         this.Certificate = myCert.Apply(myCert =&gt; myCert.Certificate);
+        ///         this.CertificateId = myCert.Apply(myCert =&gt; myCert.CertificateId);
+        ///         this.SelfLink = myCert.Apply(myCert =&gt; myCert.SelfLink);
+        ///     }
+        /// 
+        ///     [Output("certificate")]
+        ///     public Output&lt;string&gt; Certificate { get; set; }
+        ///     [Output("certificateId")]
+        ///     public Output&lt;string&gt; CertificateId { get; set; }
+        ///     [Output("selfLink")]
+        ///     public Output&lt;string&gt; SelfLink { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetRegionSslCertificateResult> Invoke(GetRegionSslCertificateInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRegionSslCertificateResult>("gcp:compute/getRegionSslCertificate:getRegionSslCertificate", args ?? new GetRegionSslCertificateInvokeArgs(), options.WithVersion());
     }
 
 
@@ -74,6 +113,33 @@ namespace Pulumi.Gcp.Compute
         public string? Region { get; set; }
 
         public GetRegionSslCertificateArgs()
+        {
+        }
+    }
+
+    public sealed class GetRegionSslCertificateInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the certificate.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The project in which the resource belongs. If it
+        /// is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The region in which the resource belongs. If it
+        /// is not provided, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        public GetRegionSslCertificateInvokeArgs()
         {
         }
     }

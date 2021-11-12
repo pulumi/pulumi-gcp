@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Sql
 {
@@ -40,6 +41,36 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         public static Task<GetBackupRunResult> InvokeAsync(GetBackupRunArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBackupRunResult>("gcp:sql/getBackupRun:getBackupRun", args ?? new GetBackupRunArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get information about a Cloud SQL instance backup run.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var backup = Output.Create(Gcp.Sql.GetBackupRun.InvokeAsync(new Gcp.Sql.GetBackupRunArgs
+        ///         {
+        ///             Instance = google_sql_database_instance.Master.Name,
+        ///             MostRecent = true,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetBackupRunResult> Invoke(GetBackupRunInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetBackupRunResult>("gcp:sql/getBackupRun:getBackupRun", args ?? new GetBackupRunInvokeArgs(), options.WithVersion());
     }
 
 
@@ -66,6 +97,33 @@ namespace Pulumi.Gcp.Sql
         public bool? MostRecent { get; set; }
 
         public GetBackupRunArgs()
+        {
+        }
+    }
+
+    public sealed class GetBackupRunInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The identifier for this backup run. Unique only for a specific Cloud SQL instance.
+        /// If left empty and multiple backups exist for the instance, `most_recent` must be set to `true`.
+        /// </summary>
+        [Input("backupId")]
+        public Input<int>? BackupId { get; set; }
+
+        /// <summary>
+        /// The name of the instance the backup is taken from.
+        /// </summary>
+        [Input("instance", required: true)]
+        public Input<string> Instance { get; set; } = null!;
+
+        /// <summary>
+        /// Toggles use of the most recent backup run if multiple backups exist for a 
+        /// Cloud SQL instance.
+        /// </summary>
+        [Input("mostRecent")]
+        public Input<bool>? MostRecent { get; set; }
+
+        public GetBackupRunInvokeArgs()
         {
         }
     }

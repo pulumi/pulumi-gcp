@@ -545,6 +545,10 @@ func (o TunnelIamBindingMapOutput) MapIndex(k pulumi.StringInput) TunnelIamBindi
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelIamBindingInput)(nil)).Elem(), &TunnelIamBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelIamBindingPtrInput)(nil)).Elem(), &TunnelIamBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelIamBindingArrayInput)(nil)).Elem(), TunnelIamBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelIamBindingMapInput)(nil)).Elem(), TunnelIamBindingMap{})
 	pulumi.RegisterOutputType(TunnelIamBindingOutput{})
 	pulumi.RegisterOutputType(TunnelIamBindingPtrOutput{})
 	pulumi.RegisterOutputType(TunnelIamBindingArrayOutput{})

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Sql
 {
@@ -39,6 +40,35 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         public static Task<GetDatabaseInstanceResult> InvokeAsync(GetDatabaseInstanceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseInstanceResult>("gcp:sql/getDatabaseInstance:getDatabaseInstance", args ?? new GetDatabaseInstanceArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get information about a Cloud SQL instance.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var qa = Output.Create(Gcp.Sql.GetDatabaseInstance.InvokeAsync(new Gcp.Sql.GetDatabaseInstanceArgs
+        ///         {
+        ///             Name = "test-sql-instance",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetDatabaseInstanceResult> Invoke(GetDatabaseInstanceInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDatabaseInstanceResult>("gcp:sql/getDatabaseInstance:getDatabaseInstance", args ?? new GetDatabaseInstanceInvokeArgs(), options.WithVersion());
     }
 
 
@@ -57,6 +87,25 @@ namespace Pulumi.Gcp.Sql
         public string? Project { get; set; }
 
         public GetDatabaseInstanceArgs()
+        {
+        }
+    }
+
+    public sealed class GetDatabaseInstanceInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the instance.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetDatabaseInstanceInvokeArgs()
         {
         }
     }

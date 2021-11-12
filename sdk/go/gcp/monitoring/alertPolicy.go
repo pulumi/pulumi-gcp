@@ -565,6 +565,10 @@ func (o AlertPolicyMapOutput) MapIndex(k pulumi.StringInput) AlertPolicyOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyInput)(nil)).Elem(), &AlertPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyPtrInput)(nil)).Elem(), &AlertPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyArrayInput)(nil)).Elem(), AlertPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyMapInput)(nil)).Elem(), AlertPolicyMap{})
 	pulumi.RegisterOutputType(AlertPolicyOutput{})
 	pulumi.RegisterOutputType(AlertPolicyPtrOutput{})
 	pulumi.RegisterOutputType(AlertPolicyArrayOutput{})

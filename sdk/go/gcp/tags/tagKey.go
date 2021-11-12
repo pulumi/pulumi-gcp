@@ -368,6 +368,10 @@ func (o TagKeyMapOutput) MapIndex(k pulumi.StringInput) TagKeyOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TagKeyInput)(nil)).Elem(), &TagKey{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TagKeyPtrInput)(nil)).Elem(), &TagKey{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TagKeyArrayInput)(nil)).Elem(), TagKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TagKeyMapInput)(nil)).Elem(), TagKeyMap{})
 	pulumi.RegisterOutputType(TagKeyOutput{})
 	pulumi.RegisterOutputType(TagKeyPtrOutput{})
 	pulumi.RegisterOutputType(TagKeyArrayOutput{})

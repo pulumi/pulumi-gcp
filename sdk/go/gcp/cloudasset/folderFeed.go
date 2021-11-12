@@ -457,6 +457,10 @@ func (o FolderFeedMapOutput) MapIndex(k pulumi.StringInput) FolderFeedOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderFeedInput)(nil)).Elem(), &FolderFeed{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderFeedPtrInput)(nil)).Elem(), &FolderFeed{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderFeedArrayInput)(nil)).Elem(), FolderFeedArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderFeedMapInput)(nil)).Elem(), FolderFeedMap{})
 	pulumi.RegisterOutputType(FolderFeedOutput{})
 	pulumi.RegisterOutputType(FolderFeedPtrOutput{})
 	pulumi.RegisterOutputType(FolderFeedArrayOutput{})

@@ -517,6 +517,10 @@ func (o TunnelIamPolicyMapOutput) MapIndex(k pulumi.StringInput) TunnelIamPolicy
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelIamPolicyInput)(nil)).Elem(), &TunnelIamPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelIamPolicyPtrInput)(nil)).Elem(), &TunnelIamPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelIamPolicyArrayInput)(nil)).Elem(), TunnelIamPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelIamPolicyMapInput)(nil)).Elem(), TunnelIamPolicyMap{})
 	pulumi.RegisterOutputType(TunnelIamPolicyOutput{})
 	pulumi.RegisterOutputType(TunnelIamPolicyPtrOutput{})
 	pulumi.RegisterOutputType(TunnelIamPolicyArrayOutput{})

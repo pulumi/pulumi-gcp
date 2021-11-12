@@ -370,6 +370,10 @@ func (o FolderBucketConfigMapOutput) MapIndex(k pulumi.StringInput) FolderBucket
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderBucketConfigInput)(nil)).Elem(), &FolderBucketConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderBucketConfigPtrInput)(nil)).Elem(), &FolderBucketConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderBucketConfigArrayInput)(nil)).Elem(), FolderBucketConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderBucketConfigMapInput)(nil)).Elem(), FolderBucketConfigMap{})
 	pulumi.RegisterOutputType(FolderBucketConfigOutput{})
 	pulumi.RegisterOutputType(FolderBucketConfigPtrOutput{})
 	pulumi.RegisterOutputType(FolderBucketConfigArrayOutput{})

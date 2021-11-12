@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.GameServices
 {
@@ -41,6 +42,37 @@ namespace Pulumi.Gcp.GameServices
         /// </summary>
         public static Task<GetGameServerDeploymentRolloutResult> InvokeAsync(GetGameServerDeploymentRolloutArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGameServerDeploymentRolloutResult>("gcp:gameservices/getGameServerDeploymentRollout:getGameServerDeploymentRollout", args ?? new GetGameServerDeploymentRolloutArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get the rollout state. 
+        /// 
+        /// https://cloud.google.com/game-servers/docs/reference/rest/v1beta/GameServerDeploymentRollout
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var qa = Output.Create(Gcp.GameServices.GetGameServerDeploymentRollout.InvokeAsync(new Gcp.GameServices.GetGameServerDeploymentRolloutArgs
+        ///         {
+        ///             DeploymentId = "tf-test-deployment-s8sn12jt2c",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetGameServerDeploymentRolloutResult> Invoke(GetGameServerDeploymentRolloutInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetGameServerDeploymentRolloutResult>("gcp:gameservices/getGameServerDeploymentRollout:getGameServerDeploymentRollout", args ?? new GetGameServerDeploymentRolloutInvokeArgs(), options.WithVersion());
     }
 
 
@@ -53,6 +85,19 @@ namespace Pulumi.Gcp.GameServices
         public string DeploymentId { get; set; } = null!;
 
         public GetGameServerDeploymentRolloutArgs()
+        {
+        }
+    }
+
+    public sealed class GetGameServerDeploymentRolloutInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The deployment to get the rollout state from. Only 1 rollout must be associated with each deployment.
+        /// </summary>
+        [Input("deploymentId", required: true)]
+        public Input<string> DeploymentId { get; set; } = null!;
+
+        public GetGameServerDeploymentRolloutInvokeArgs()
         {
         }
     }

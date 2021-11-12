@@ -322,6 +322,10 @@ func (o ProjectDefaultNetworkTierMapOutput) MapIndex(k pulumi.StringInput) Proje
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectDefaultNetworkTierInput)(nil)).Elem(), &ProjectDefaultNetworkTier{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectDefaultNetworkTierPtrInput)(nil)).Elem(), &ProjectDefaultNetworkTier{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectDefaultNetworkTierArrayInput)(nil)).Elem(), ProjectDefaultNetworkTierArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectDefaultNetworkTierMapInput)(nil)).Elem(), ProjectDefaultNetworkTierMap{})
 	pulumi.RegisterOutputType(ProjectDefaultNetworkTierOutput{})
 	pulumi.RegisterOutputType(ProjectDefaultNetworkTierPtrOutput{})
 	pulumi.RegisterOutputType(ProjectDefaultNetworkTierArrayOutput{})

@@ -447,6 +447,10 @@ func (o FhirStoreIamMemberMapOutput) MapIndex(k pulumi.StringInput) FhirStoreIam
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreIamMemberInput)(nil)).Elem(), &FhirStoreIamMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreIamMemberPtrInput)(nil)).Elem(), &FhirStoreIamMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreIamMemberArrayInput)(nil)).Elem(), FhirStoreIamMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreIamMemberMapInput)(nil)).Elem(), FhirStoreIamMemberMap{})
 	pulumi.RegisterOutputType(FhirStoreIamMemberOutput{})
 	pulumi.RegisterOutputType(FhirStoreIamMemberPtrOutput{})
 	pulumi.RegisterOutputType(FhirStoreIamMemberArrayOutput{})

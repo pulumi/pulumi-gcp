@@ -435,6 +435,10 @@ func (o ClusterIAMPolicyMapOutput) MapIndex(k pulumi.StringInput) ClusterIAMPoli
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIAMPolicyInput)(nil)).Elem(), &ClusterIAMPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIAMPolicyPtrInput)(nil)).Elem(), &ClusterIAMPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIAMPolicyArrayInput)(nil)).Elem(), ClusterIAMPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIAMPolicyMapInput)(nil)).Elem(), ClusterIAMPolicyMap{})
 	pulumi.RegisterOutputType(ClusterIAMPolicyOutput{})
 	pulumi.RegisterOutputType(ClusterIAMPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ClusterIAMPolicyArrayOutput{})

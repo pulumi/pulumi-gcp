@@ -384,6 +384,10 @@ func (o KeyRingImportJobMapOutput) MapIndex(k pulumi.StringInput) KeyRingImportJ
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingImportJobInput)(nil)).Elem(), &KeyRingImportJob{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingImportJobPtrInput)(nil)).Elem(), &KeyRingImportJob{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingImportJobArrayInput)(nil)).Elem(), KeyRingImportJobArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingImportJobMapInput)(nil)).Elem(), KeyRingImportJobMap{})
 	pulumi.RegisterOutputType(KeyRingImportJobOutput{})
 	pulumi.RegisterOutputType(KeyRingImportJobPtrOutput{})
 	pulumi.RegisterOutputType(KeyRingImportJobArrayOutput{})

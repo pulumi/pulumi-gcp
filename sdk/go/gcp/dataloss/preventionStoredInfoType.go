@@ -493,6 +493,10 @@ func (o PreventionStoredInfoTypeMapOutput) MapIndex(k pulumi.StringInput) Preven
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionStoredInfoTypeInput)(nil)).Elem(), &PreventionStoredInfoType{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionStoredInfoTypePtrInput)(nil)).Elem(), &PreventionStoredInfoType{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionStoredInfoTypeArrayInput)(nil)).Elem(), PreventionStoredInfoTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionStoredInfoTypeMapInput)(nil)).Elem(), PreventionStoredInfoTypeMap{})
 	pulumi.RegisterOutputType(PreventionStoredInfoTypeOutput{})
 	pulumi.RegisterOutputType(PreventionStoredInfoTypePtrOutput{})
 	pulumi.RegisterOutputType(PreventionStoredInfoTypeArrayOutput{})

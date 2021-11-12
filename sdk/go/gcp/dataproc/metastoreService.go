@@ -471,6 +471,10 @@ func (o MetastoreServiceMapOutput) MapIndex(k pulumi.StringInput) MetastoreServi
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceInput)(nil)).Elem(), &MetastoreService{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServicePtrInput)(nil)).Elem(), &MetastoreService{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceArrayInput)(nil)).Elem(), MetastoreServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceMapInput)(nil)).Elem(), MetastoreServiceMap{})
 	pulumi.RegisterOutputType(MetastoreServiceOutput{})
 	pulumi.RegisterOutputType(MetastoreServicePtrOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceArrayOutput{})

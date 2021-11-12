@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Compute
 {
@@ -52,6 +53,48 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Task<GetImageResult> InvokeAsync(GetImageArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("gcp:compute/getImage:getImage", args ?? new GetImageArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a Google Compute Image. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images][pubimg], do not forget to specify the dedicated project. For more information see
+        /// [the official documentation](https://cloud.google.com/compute/docs/images) and its [API](https://cloud.google.com/compute/docs/reference/latest/images).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var myImage = Output.Create(Gcp.Compute.GetImage.InvokeAsync(new Gcp.Compute.GetImageArgs
+        ///         {
+        ///             Family = "debian-9",
+        ///             Project = "debian-cloud",
+        ///         }));
+        ///         // ...
+        ///         var @default = new Gcp.Compute.Instance("default", new Gcp.Compute.InstanceArgs
+        ///         {
+        ///             BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+        ///             {
+        ///                 InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+        ///                 {
+        ///                     Image = myImage.Apply(myImage =&gt; myImage.SelfLink),
+        ///                 },
+        ///             },
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetImageResult> Invoke(GetImageInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetImageResult>("gcp:compute/getImage:getImage", args ?? new GetImageInvokeArgs(), options.WithVersion());
     }
 
 
@@ -81,6 +124,36 @@ namespace Pulumi.Gcp.Compute
         public string? Project { get; set; }
 
         public GetImageArgs()
+        {
+        }
+    }
+
+    public sealed class GetImageInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The family name of the image.
+        /// </summary>
+        [Input("family")]
+        public Input<string>? Family { get; set; }
+
+        [Input("filter")]
+        public Input<string>? Filter { get; set; }
+
+        /// <summary>
+        /// The name of the image.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The project in which the resource belongs. If it is not
+        /// provided, the provider project is used. If you are using a
+        /// [public base image][pubimg], be sure to specify the correct Image Project.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetImageInvokeArgs()
         {
         }
     }

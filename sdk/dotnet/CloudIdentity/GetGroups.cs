@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.CloudIdentity
 {
@@ -41,6 +42,37 @@ namespace Pulumi.Gcp.CloudIdentity
         /// </summary>
         public static Task<GetGroupsResult> InvokeAsync(GetGroupsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("gcp:cloudidentity/getGroups:getGroups", args ?? new GetGroupsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get list of the Cloud Identity Groups under a customer or namespace.
+        /// 
+        /// https://cloud.google.com/identity/docs/concepts/overview#groups
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var groups = Output.Create(Gcp.CloudIdentity.GetGroups.InvokeAsync(new Gcp.CloudIdentity.GetGroupsArgs
+        ///         {
+        ///             Parent = "customers/A01b123xz",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetGroupsResult> Invoke(GetGroupsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetGroupsResult>("gcp:cloudidentity/getGroups:getGroups", args ?? new GetGroupsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -53,6 +85,19 @@ namespace Pulumi.Gcp.CloudIdentity
         public string Parent { get; set; } = null!;
 
         public GetGroupsArgs()
+        {
+        }
+    }
+
+    public sealed class GetGroupsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The parent resource under which to list all Groups. Must be of the form identitysources/{identity_source_id} for external- identity-mapped groups or customers/{customer_id} for Google Groups.
+        /// </summary>
+        [Input("parent", required: true)]
+        public Input<string> Parent { get; set; } = null!;
+
+        public GetGroupsInvokeArgs()
         {
         }
     }

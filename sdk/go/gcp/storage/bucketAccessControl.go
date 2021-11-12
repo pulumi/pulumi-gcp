@@ -435,6 +435,10 @@ func (o BucketAccessControlMapOutput) MapIndex(k pulumi.StringInput) BucketAcces
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketAccessControlInput)(nil)).Elem(), &BucketAccessControl{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketAccessControlPtrInput)(nil)).Elem(), &BucketAccessControl{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketAccessControlArrayInput)(nil)).Elem(), BucketAccessControlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketAccessControlMapInput)(nil)).Elem(), BucketAccessControlMap{})
 	pulumi.RegisterOutputType(BucketAccessControlOutput{})
 	pulumi.RegisterOutputType(BucketAccessControlPtrOutput{})
 	pulumi.RegisterOutputType(BucketAccessControlArrayOutput{})

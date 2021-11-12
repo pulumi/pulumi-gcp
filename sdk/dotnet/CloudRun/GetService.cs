@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.CloudRun
 {
@@ -42,6 +43,38 @@ namespace Pulumi.Gcp.CloudRun
         /// </summary>
         public static Task<GetServiceResult> InvokeAsync(GetServiceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("gcp:cloudrun/getService:getService", args ?? new GetServiceArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a Google Cloud Run Service. For more information see
+        /// the [official documentation](https://cloud.google.com/run/docs/)
+        /// and [API](https://cloud.google.com/run/docs/apis).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var run_service = Output.Create(Gcp.CloudRun.GetService.InvokeAsync(new Gcp.CloudRun.GetServiceArgs
+        ///         {
+        ///             Location = "us-central1",
+        ///             Name = "my-service",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetServiceResult>("gcp:cloudrun/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithVersion());
     }
 
 
@@ -67,6 +100,32 @@ namespace Pulumi.Gcp.CloudRun
         public string? Project { get; set; }
 
         public GetServiceArgs()
+        {
+        }
+    }
+
+    public sealed class GetServiceInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The location of the cloud run instance. eg us-central1
+        /// </summary>
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the Cloud Run Service.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The project in which the resource belongs. If it
+        /// is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetServiceInvokeArgs()
         {
         }
     }

@@ -477,6 +477,10 @@ func (o DatasetIamMemberMapOutput) MapIndex(k pulumi.StringInput) DatasetIamMemb
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetIamMemberInput)(nil)).Elem(), &DatasetIamMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetIamMemberPtrInput)(nil)).Elem(), &DatasetIamMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetIamMemberArrayInput)(nil)).Elem(), DatasetIamMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetIamMemberMapInput)(nil)).Elem(), DatasetIamMemberMap{})
 	pulumi.RegisterOutputType(DatasetIamMemberOutput{})
 	pulumi.RegisterOutputType(DatasetIamMemberPtrOutput{})
 	pulumi.RegisterOutputType(DatasetIamMemberArrayOutput{})

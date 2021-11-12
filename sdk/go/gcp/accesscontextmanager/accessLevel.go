@@ -425,6 +425,10 @@ func (o AccessLevelMapOutput) MapIndex(k pulumi.StringInput) AccessLevelOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelInput)(nil)).Elem(), &AccessLevel{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelPtrInput)(nil)).Elem(), &AccessLevel{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelArrayInput)(nil)).Elem(), AccessLevelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelMapInput)(nil)).Elem(), AccessLevelMap{})
 	pulumi.RegisterOutputType(AccessLevelOutput{})
 	pulumi.RegisterOutputType(AccessLevelPtrOutput{})
 	pulumi.RegisterOutputType(AccessLevelArrayOutput{})

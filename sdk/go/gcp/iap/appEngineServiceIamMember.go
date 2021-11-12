@@ -583,6 +583,10 @@ func (o AppEngineServiceIamMemberMapOutput) MapIndex(k pulumi.StringInput) AppEn
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineServiceIamMemberInput)(nil)).Elem(), &AppEngineServiceIamMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineServiceIamMemberPtrInput)(nil)).Elem(), &AppEngineServiceIamMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineServiceIamMemberArrayInput)(nil)).Elem(), AppEngineServiceIamMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineServiceIamMemberMapInput)(nil)).Elem(), AppEngineServiceIamMemberMap{})
 	pulumi.RegisterOutputType(AppEngineServiceIamMemberOutput{})
 	pulumi.RegisterOutputType(AppEngineServiceIamMemberPtrOutput{})
 	pulumi.RegisterOutputType(AppEngineServiceIamMemberArrayOutput{})

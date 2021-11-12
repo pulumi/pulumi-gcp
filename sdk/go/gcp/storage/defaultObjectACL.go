@@ -337,6 +337,10 @@ func (o DefaultObjectACLMapOutput) MapIndex(k pulumi.StringInput) DefaultObjectA
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultObjectACLInput)(nil)).Elem(), &DefaultObjectACL{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultObjectACLPtrInput)(nil)).Elem(), &DefaultObjectACL{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultObjectACLArrayInput)(nil)).Elem(), DefaultObjectACLArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultObjectACLMapInput)(nil)).Elem(), DefaultObjectACLMap{})
 	pulumi.RegisterOutputType(DefaultObjectACLOutput{})
 	pulumi.RegisterOutputType(DefaultObjectACLPtrOutput{})
 	pulumi.RegisterOutputType(DefaultObjectACLArrayOutput{})

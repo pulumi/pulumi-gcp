@@ -499,6 +499,10 @@ func (o GameServerConfigMapOutput) MapIndex(k pulumi.StringInput) GameServerConf
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GameServerConfigInput)(nil)).Elem(), &GameServerConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GameServerConfigPtrInput)(nil)).Elem(), &GameServerConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GameServerConfigArrayInput)(nil)).Elem(), GameServerConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GameServerConfigMapInput)(nil)).Elem(), GameServerConfigMap{})
 	pulumi.RegisterOutputType(GameServerConfigOutput{})
 	pulumi.RegisterOutputType(GameServerConfigPtrOutput{})
 	pulumi.RegisterOutputType(GameServerConfigArrayOutput{})

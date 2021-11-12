@@ -480,6 +480,10 @@ func (o ConnectorMapOutput) MapIndex(k pulumi.StringInput) ConnectorOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorInput)(nil)).Elem(), &Connector{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorPtrInput)(nil)).Elem(), &Connector{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorArrayInput)(nil)).Elem(), ConnectorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorMapInput)(nil)).Elem(), ConnectorMap{})
 	pulumi.RegisterOutputType(ConnectorOutput{})
 	pulumi.RegisterOutputType(ConnectorPtrOutput{})
 	pulumi.RegisterOutputType(ConnectorArrayOutput{})

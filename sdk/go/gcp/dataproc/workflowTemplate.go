@@ -466,6 +466,10 @@ func (o WorkflowTemplateMapOutput) MapIndex(k pulumi.StringInput) WorkflowTempla
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplateInput)(nil)).Elem(), &WorkflowTemplate{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePtrInput)(nil)).Elem(), &WorkflowTemplate{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplateArrayInput)(nil)).Elem(), WorkflowTemplateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplateMapInput)(nil)).Elem(), WorkflowTemplateMap{})
 	pulumi.RegisterOutputType(WorkflowTemplateOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplateArrayOutput{})

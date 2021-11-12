@@ -595,6 +595,10 @@ func (o SubnetworkIAMBindingMapOutput) MapIndex(k pulumi.StringInput) Subnetwork
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkIAMBindingInput)(nil)).Elem(), &SubnetworkIAMBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkIAMBindingPtrInput)(nil)).Elem(), &SubnetworkIAMBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkIAMBindingArrayInput)(nil)).Elem(), SubnetworkIAMBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkIAMBindingMapInput)(nil)).Elem(), SubnetworkIAMBindingMap{})
 	pulumi.RegisterOutputType(SubnetworkIAMBindingOutput{})
 	pulumi.RegisterOutputType(SubnetworkIAMBindingPtrOutput{})
 	pulumi.RegisterOutputType(SubnetworkIAMBindingArrayOutput{})

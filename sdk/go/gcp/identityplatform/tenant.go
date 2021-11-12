@@ -375,6 +375,10 @@ func (o TenantMapOutput) MapIndex(k pulumi.StringInput) TenantOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantInput)(nil)).Elem(), &Tenant{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantPtrInput)(nil)).Elem(), &Tenant{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantArrayInput)(nil)).Elem(), TenantArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantMapInput)(nil)).Elem(), TenantMap{})
 	pulumi.RegisterOutputType(TenantOutput{})
 	pulumi.RegisterOutputType(TenantPtrOutput{})
 	pulumi.RegisterOutputType(TenantArrayOutput{})

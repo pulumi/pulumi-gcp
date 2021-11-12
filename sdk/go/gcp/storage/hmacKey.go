@@ -387,6 +387,10 @@ func (o HmacKeyMapOutput) MapIndex(k pulumi.StringInput) HmacKeyOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*HmacKeyInput)(nil)).Elem(), &HmacKey{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HmacKeyPtrInput)(nil)).Elem(), &HmacKey{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HmacKeyArrayInput)(nil)).Elem(), HmacKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HmacKeyMapInput)(nil)).Elem(), HmacKeyMap{})
 	pulumi.RegisterOutputType(HmacKeyOutput{})
 	pulumi.RegisterOutputType(HmacKeyPtrOutput{})
 	pulumi.RegisterOutputType(HmacKeyArrayOutput{})

@@ -517,6 +517,10 @@ func (o WebTypeComputeIamPolicyMapOutput) MapIndex(k pulumi.StringInput) WebType
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*WebTypeComputeIamPolicyInput)(nil)).Elem(), &WebTypeComputeIamPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebTypeComputeIamPolicyPtrInput)(nil)).Elem(), &WebTypeComputeIamPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebTypeComputeIamPolicyArrayInput)(nil)).Elem(), WebTypeComputeIamPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebTypeComputeIamPolicyMapInput)(nil)).Elem(), WebTypeComputeIamPolicyMap{})
 	pulumi.RegisterOutputType(WebTypeComputeIamPolicyOutput{})
 	pulumi.RegisterOutputType(WebTypeComputeIamPolicyPtrOutput{})
 	pulumi.RegisterOutputType(WebTypeComputeIamPolicyArrayOutput{})

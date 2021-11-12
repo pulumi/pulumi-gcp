@@ -435,6 +435,10 @@ func (o PerInstanceConfigMapOutput) MapIndex(k pulumi.StringInput) PerInstanceCo
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*PerInstanceConfigInput)(nil)).Elem(), &PerInstanceConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PerInstanceConfigPtrInput)(nil)).Elem(), &PerInstanceConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PerInstanceConfigArrayInput)(nil)).Elem(), PerInstanceConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PerInstanceConfigMapInput)(nil)).Elem(), PerInstanceConfigMap{})
 	pulumi.RegisterOutputType(PerInstanceConfigOutput{})
 	pulumi.RegisterOutputType(PerInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(PerInstanceConfigArrayOutput{})

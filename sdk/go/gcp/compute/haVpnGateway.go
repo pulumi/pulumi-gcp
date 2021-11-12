@@ -732,6 +732,10 @@ func (o HaVpnGatewayMapOutput) MapIndex(k pulumi.StringInput) HaVpnGatewayOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*HaVpnGatewayInput)(nil)).Elem(), &HaVpnGateway{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HaVpnGatewayPtrInput)(nil)).Elem(), &HaVpnGateway{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HaVpnGatewayArrayInput)(nil)).Elem(), HaVpnGatewayArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HaVpnGatewayMapInput)(nil)).Elem(), HaVpnGatewayMap{})
 	pulumi.RegisterOutputType(HaVpnGatewayOutput{})
 	pulumi.RegisterOutputType(HaVpnGatewayPtrOutput{})
 	pulumi.RegisterOutputType(HaVpnGatewayArrayOutput{})

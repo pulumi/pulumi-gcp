@@ -494,6 +494,10 @@ func (o TargetHttpProxyMapOutput) MapIndex(k pulumi.StringInput) TargetHttpProxy
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetHttpProxyInput)(nil)).Elem(), &TargetHttpProxy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetHttpProxyPtrInput)(nil)).Elem(), &TargetHttpProxy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetHttpProxyArrayInput)(nil)).Elem(), TargetHttpProxyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetHttpProxyMapInput)(nil)).Elem(), TargetHttpProxyMap{})
 	pulumi.RegisterOutputType(TargetHttpProxyOutput{})
 	pulumi.RegisterOutputType(TargetHttpProxyPtrOutput{})
 	pulumi.RegisterOutputType(TargetHttpProxyArrayOutput{})

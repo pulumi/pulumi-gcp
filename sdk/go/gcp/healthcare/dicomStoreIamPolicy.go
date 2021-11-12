@@ -429,6 +429,10 @@ func (o DicomStoreIamPolicyMapOutput) MapIndex(k pulumi.StringInput) DicomStoreI
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DicomStoreIamPolicyInput)(nil)).Elem(), &DicomStoreIamPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DicomStoreIamPolicyPtrInput)(nil)).Elem(), &DicomStoreIamPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DicomStoreIamPolicyArrayInput)(nil)).Elem(), DicomStoreIamPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DicomStoreIamPolicyMapInput)(nil)).Elem(), DicomStoreIamPolicyMap{})
 	pulumi.RegisterOutputType(DicomStoreIamPolicyOutput{})
 	pulumi.RegisterOutputType(DicomStoreIamPolicyPtrOutput{})
 	pulumi.RegisterOutputType(DicomStoreIamPolicyArrayOutput{})

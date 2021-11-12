@@ -440,6 +440,10 @@ func (o TenantInboundSamlConfigMapOutput) MapIndex(k pulumi.StringInput) TenantI
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantInboundSamlConfigInput)(nil)).Elem(), &TenantInboundSamlConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantInboundSamlConfigPtrInput)(nil)).Elem(), &TenantInboundSamlConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantInboundSamlConfigArrayInput)(nil)).Elem(), TenantInboundSamlConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantInboundSamlConfigMapInput)(nil)).Elem(), TenantInboundSamlConfigMap{})
 	pulumi.RegisterOutputType(TenantInboundSamlConfigOutput{})
 	pulumi.RegisterOutputType(TenantInboundSamlConfigPtrOutput{})
 	pulumi.RegisterOutputType(TenantInboundSamlConfigArrayOutput{})

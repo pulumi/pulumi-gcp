@@ -2,7 +2,8 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade to terraform-bridge 3.11.0
+* Upgrade to pulumi 3.17.0
 
 ---
 

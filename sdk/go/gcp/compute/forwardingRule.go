@@ -1817,6 +1817,10 @@ func (o ForwardingRuleMapOutput) MapIndex(k pulumi.StringInput) ForwardingRuleOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleInput)(nil)).Elem(), &ForwardingRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRulePtrInput)(nil)).Elem(), &ForwardingRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleArrayInput)(nil)).Elem(), ForwardingRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleMapInput)(nil)).Elem(), ForwardingRuleMap{})
 	pulumi.RegisterOutputType(ForwardingRuleOutput{})
 	pulumi.RegisterOutputType(ForwardingRulePtrOutput{})
 	pulumi.RegisterOutputType(ForwardingRuleArrayOutput{})

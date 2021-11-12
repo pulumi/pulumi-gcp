@@ -398,6 +398,10 @@ func (o RealmMapOutput) MapIndex(k pulumi.StringInput) RealmOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RealmInput)(nil)).Elem(), &Realm{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RealmPtrInput)(nil)).Elem(), &Realm{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RealmArrayInput)(nil)).Elem(), RealmArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RealmMapInput)(nil)).Elem(), RealmMap{})
 	pulumi.RegisterOutputType(RealmOutput{})
 	pulumi.RegisterOutputType(RealmPtrOutput{})
 	pulumi.RegisterOutputType(RealmArrayOutput{})

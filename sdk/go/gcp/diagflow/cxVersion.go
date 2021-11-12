@@ -390,6 +390,10 @@ func (o CxVersionMapOutput) MapIndex(k pulumi.StringInput) CxVersionOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CxVersionInput)(nil)).Elem(), &CxVersion{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxVersionPtrInput)(nil)).Elem(), &CxVersion{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxVersionArrayInput)(nil)).Elem(), CxVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxVersionMapInput)(nil)).Elem(), CxVersionMap{})
 	pulumi.RegisterOutputType(CxVersionOutput{})
 	pulumi.RegisterOutputType(CxVersionPtrOutput{})
 	pulumi.RegisterOutputType(CxVersionArrayOutput{})

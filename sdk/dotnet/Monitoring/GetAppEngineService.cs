@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Monitoring
 {
@@ -89,6 +90,85 @@ namespace Pulumi.Gcp.Monitoring
         /// </summary>
         public static Task<GetAppEngineServiceResult> InvokeAsync(GetAppEngineServiceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAppEngineServiceResult>("gcp:monitoring/getAppEngineService:getAppEngineService", args ?? new GetAppEngineServiceArgs(), options.WithVersion());
+
+        /// <summary>
+        /// A Monitoring Service is the root resource under which operational aspects of a
+        /// generic service are accessible. A service is some discrete, autonomous, and
+        /// network-accessible unit, designed to solve an individual concern
+        /// 
+        /// An App Engine monitoring service is automatically created by GCP to monitor
+        /// App Engine services.
+        /// 
+        /// 
+        /// To get more information about Service, see:
+        /// 
+        /// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
+        /// * How-to Guides
+        ///     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+        ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// ### Monitoring App Engine Service
+        /// 
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var bucket = new Gcp.Storage.Bucket("bucket", new Gcp.Storage.BucketArgs
+        ///         {
+        ///         });
+        ///         var @object = new Gcp.Storage.BucketObject("object", new Gcp.Storage.BucketObjectArgs
+        ///         {
+        ///             Bucket = bucket.Name,
+        ///             Source = new FileAsset("./test-fixtures/appengine/hello-world.zip"),
+        ///         });
+        ///         var myapp = new Gcp.AppEngine.StandardAppVersion("myapp", new Gcp.AppEngine.StandardAppVersionArgs
+        ///         {
+        ///             VersionId = "v1",
+        ///             Service = "myapp",
+        ///             Runtime = "nodejs10",
+        ///             Entrypoint = new Gcp.AppEngine.Inputs.StandardAppVersionEntrypointArgs
+        ///             {
+        ///                 Shell = "node ./app.js",
+        ///             },
+        ///             Deployment = new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentArgs
+        ///             {
+        ///                 Zip = new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentZipArgs
+        ///                 {
+        ///                     SourceUrl = Output.Tuple(bucket.Name, @object.Name).Apply(values =&gt;
+        ///                     {
+        ///                         var bucketName = values.Item1;
+        ///                         var objectName = values.Item2;
+        ///                         return $"https://storage.googleapis.com/{bucketName}/{objectName}";
+        ///                     }),
+        ///                 },
+        ///             },
+        ///             EnvVariables = 
+        ///             {
+        ///                 { "port", "8080" },
+        ///             },
+        ///             DeleteServiceOnDestroy = false,
+        ///         });
+        ///         var srv = myapp.Service.Apply(service =&gt; Gcp.Monitoring.GetAppEngineService.InvokeAsync(new Gcp.Monitoring.GetAppEngineServiceArgs
+        ///         {
+        ///             ModuleId = service,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetAppEngineServiceResult> Invoke(GetAppEngineServiceInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAppEngineServiceResult>("gcp:monitoring/getAppEngineService:getAppEngineService", args ?? new GetAppEngineServiceInvokeArgs(), options.WithVersion());
     }
 
 
@@ -109,6 +189,27 @@ namespace Pulumi.Gcp.Monitoring
         public string? Project { get; set; }
 
         public GetAppEngineServiceArgs()
+        {
+        }
+    }
+
+    public sealed class GetAppEngineServiceInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The ID of the App Engine module underlying this
+        /// service. Corresponds to the moduleId resource label in the [gae_app](https://cloud.google.com/monitoring/api/resources#tag_gae_app) monitored resource, or the service/module name.
+        /// </summary>
+        [Input("moduleId", required: true)]
+        public Input<string> ModuleId { get; set; } = null!;
+
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetAppEngineServiceInvokeArgs()
         {
         }
     }

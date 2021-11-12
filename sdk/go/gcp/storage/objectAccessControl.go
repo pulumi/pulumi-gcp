@@ -443,6 +443,10 @@ func (o ObjectAccessControlMapOutput) MapIndex(k pulumi.StringInput) ObjectAcces
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ObjectAccessControlInput)(nil)).Elem(), &ObjectAccessControl{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ObjectAccessControlPtrInput)(nil)).Elem(), &ObjectAccessControl{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ObjectAccessControlArrayInput)(nil)).Elem(), ObjectAccessControlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ObjectAccessControlMapInput)(nil)).Elem(), ObjectAccessControlMap{})
 	pulumi.RegisterOutputType(ObjectAccessControlOutput{})
 	pulumi.RegisterOutputType(ObjectAccessControlPtrOutput{})
 	pulumi.RegisterOutputType(ObjectAccessControlArrayOutput{})

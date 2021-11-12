@@ -515,6 +515,10 @@ func (o BucketIAMPolicyMapOutput) MapIndex(k pulumi.StringInput) BucketIAMPolicy
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketIAMPolicyInput)(nil)).Elem(), &BucketIAMPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketIAMPolicyPtrInput)(nil)).Elem(), &BucketIAMPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketIAMPolicyArrayInput)(nil)).Elem(), BucketIAMPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketIAMPolicyMapInput)(nil)).Elem(), BucketIAMPolicyMap{})
 	pulumi.RegisterOutputType(BucketIAMPolicyOutput{})
 	pulumi.RegisterOutputType(BucketIAMPolicyPtrOutput{})
 	pulumi.RegisterOutputType(BucketIAMPolicyArrayOutput{})

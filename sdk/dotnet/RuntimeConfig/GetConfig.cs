@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.RuntimeConfig
 {
@@ -46,6 +47,42 @@ namespace Pulumi.Gcp.RuntimeConfig
         /// </summary>
         public static Task<GetConfigResult> InvokeAsync(GetConfigArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetConfigResult>("gcp:runtimeconfig/getConfig:getConfig", args ?? new GetConfigArgs(), options.WithVersion());
+
+        /// <summary>
+        /// To get more information about RuntimeConfigs, see:
+        /// 
+        /// 
+        /// !&gt; This datasource has been deprecated in the google (GA) provider, and will only be available in the google-beta provider in a future release.
+        /// 
+        /// * [API documentation](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/v1beta1/projects.configs)
+        /// * How-to Guides
+        ///     * [Runtime Configurator Fundamentals](https://cloud.google.com/deployment-manager/runtime-configurator/)
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var run_service = Output.Create(Gcp.RuntimeConfig.GetConfig.InvokeAsync(new Gcp.RuntimeConfig.GetConfigArgs
+        ///         {
+        ///             Name = "my-service",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetConfigResult> Invoke(GetConfigInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetConfigResult>("gcp:runtimeconfig/getConfig:getConfig", args ?? new GetConfigInvokeArgs(), options.WithVersion());
     }
 
 
@@ -65,6 +102,26 @@ namespace Pulumi.Gcp.RuntimeConfig
         public string? Project { get; set; }
 
         public GetConfigArgs()
+        {
+        }
+    }
+
+    public sealed class GetConfigInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the Runtime Configurator configuration.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The project in which the resource belongs. If it
+        /// is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetConfigInvokeArgs()
         {
         }
     }

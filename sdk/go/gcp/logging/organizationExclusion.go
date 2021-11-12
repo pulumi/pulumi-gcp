@@ -363,6 +363,10 @@ func (o OrganizationExclusionMapOutput) MapIndex(k pulumi.StringInput) Organizat
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationExclusionInput)(nil)).Elem(), &OrganizationExclusion{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationExclusionPtrInput)(nil)).Elem(), &OrganizationExclusion{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationExclusionArrayInput)(nil)).Elem(), OrganizationExclusionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationExclusionMapInput)(nil)).Elem(), OrganizationExclusionMap{})
 	pulumi.RegisterOutputType(OrganizationExclusionOutput{})
 	pulumi.RegisterOutputType(OrganizationExclusionPtrOutput{})
 	pulumi.RegisterOutputType(OrganizationExclusionArrayOutput{})

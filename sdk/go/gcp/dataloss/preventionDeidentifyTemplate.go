@@ -469,6 +469,10 @@ func (o PreventionDeidentifyTemplateMapOutput) MapIndex(k pulumi.StringInput) Pr
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateInput)(nil)).Elem(), &PreventionDeidentifyTemplate{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplatePtrInput)(nil)).Elem(), &PreventionDeidentifyTemplate{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateArrayInput)(nil)).Elem(), PreventionDeidentifyTemplateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateMapInput)(nil)).Elem(), PreventionDeidentifyTemplateMap{})
 	pulumi.RegisterOutputType(PreventionDeidentifyTemplateOutput{})
 	pulumi.RegisterOutputType(PreventionDeidentifyTemplatePtrOutput{})
 	pulumi.RegisterOutputType(PreventionDeidentifyTemplateArrayOutput{})

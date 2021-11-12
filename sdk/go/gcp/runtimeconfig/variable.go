@@ -438,6 +438,10 @@ func (o VariableMapOutput) MapIndex(k pulumi.StringInput) VariableOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*VariableInput)(nil)).Elem(), &Variable{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VariablePtrInput)(nil)).Elem(), &Variable{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VariableArrayInput)(nil)).Elem(), VariableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VariableMapInput)(nil)).Elem(), VariableMap{})
 	pulumi.RegisterOutputType(VariableOutput{})
 	pulumi.RegisterOutputType(VariablePtrOutput{})
 	pulumi.RegisterOutputType(VariableArrayOutput{})

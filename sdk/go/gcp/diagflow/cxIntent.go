@@ -497,6 +497,10 @@ func (o CxIntentMapOutput) MapIndex(k pulumi.StringInput) CxIntentOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CxIntentInput)(nil)).Elem(), &CxIntent{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxIntentPtrInput)(nil)).Elem(), &CxIntent{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxIntentArrayInput)(nil)).Elem(), CxIntentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxIntentMapInput)(nil)).Elem(), CxIntentMap{})
 	pulumi.RegisterOutputType(CxIntentOutput{})
 	pulumi.RegisterOutputType(CxIntentPtrOutput{})
 	pulumi.RegisterOutputType(CxIntentArrayOutput{})

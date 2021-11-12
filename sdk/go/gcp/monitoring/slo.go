@@ -599,6 +599,10 @@ func (o SloMapOutput) MapIndex(k pulumi.StringInput) SloOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SloInput)(nil)).Elem(), &Slo{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SloPtrInput)(nil)).Elem(), &Slo{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SloArrayInput)(nil)).Elem(), SloArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SloMapInput)(nil)).Elem(), SloMap{})
 	pulumi.RegisterOutputType(SloOutput{})
 	pulumi.RegisterOutputType(SloPtrOutput{})
 	pulumi.RegisterOutputType(SloArrayOutput{})

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Compute
 {
@@ -39,6 +40,35 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Task<GetForwardingRuleResult> InvokeAsync(GetForwardingRuleArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetForwardingRuleResult>("gcp:compute/getForwardingRule:getForwardingRule", args ?? new GetForwardingRuleArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get a forwarding rule within GCE from its name.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var my_forwarding_rule = Output.Create(Gcp.Compute.GetForwardingRule.InvokeAsync(new Gcp.Compute.GetForwardingRuleArgs
+        ///         {
+        ///             Name = "forwarding-rule-us-east1",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetForwardingRuleResult> Invoke(GetForwardingRuleInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetForwardingRuleResult>("gcp:compute/getForwardingRule:getForwardingRule", args ?? new GetForwardingRuleInvokeArgs(), options.WithVersion());
     }
 
 
@@ -65,6 +95,33 @@ namespace Pulumi.Gcp.Compute
         public string? Region { get; set; }
 
         public GetForwardingRuleArgs()
+        {
+        }
+    }
+
+    public sealed class GetForwardingRuleInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the forwarding rule.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The project in which the resource belongs. If it
+        /// is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The region in which the resource belongs. If it
+        /// is not provided, the project region is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        public GetForwardingRuleInvokeArgs()
         {
         }
     }

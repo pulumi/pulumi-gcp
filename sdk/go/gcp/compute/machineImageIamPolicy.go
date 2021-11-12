@@ -536,6 +536,10 @@ func (o MachineImageIamPolicyMapOutput) MapIndex(k pulumi.StringInput) MachineIm
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*MachineImageIamPolicyInput)(nil)).Elem(), &MachineImageIamPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MachineImageIamPolicyPtrInput)(nil)).Elem(), &MachineImageIamPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MachineImageIamPolicyArrayInput)(nil)).Elem(), MachineImageIamPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MachineImageIamPolicyMapInput)(nil)).Elem(), MachineImageIamPolicyMap{})
 	pulumi.RegisterOutputType(MachineImageIamPolicyOutput{})
 	pulumi.RegisterOutputType(MachineImageIamPolicyPtrOutput{})
 	pulumi.RegisterOutputType(MachineImageIamPolicyArrayOutput{})

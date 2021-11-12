@@ -618,6 +618,10 @@ func (o DataTransferConfigMapOutput) MapIndex(k pulumi.StringInput) DataTransfer
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DataTransferConfigInput)(nil)).Elem(), &DataTransferConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataTransferConfigPtrInput)(nil)).Elem(), &DataTransferConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataTransferConfigArrayInput)(nil)).Elem(), DataTransferConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataTransferConfigMapInput)(nil)).Elem(), DataTransferConfigMap{})
 	pulumi.RegisterOutputType(DataTransferConfigOutput{})
 	pulumi.RegisterOutputType(DataTransferConfigPtrOutput{})
 	pulumi.RegisterOutputType(DataTransferConfigArrayOutput{})

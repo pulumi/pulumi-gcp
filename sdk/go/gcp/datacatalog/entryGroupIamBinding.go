@@ -450,6 +450,10 @@ func (o EntryGroupIamBindingMapOutput) MapIndex(k pulumi.StringInput) EntryGroup
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EntryGroupIamBindingInput)(nil)).Elem(), &EntryGroupIamBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntryGroupIamBindingPtrInput)(nil)).Elem(), &EntryGroupIamBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntryGroupIamBindingArrayInput)(nil)).Elem(), EntryGroupIamBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntryGroupIamBindingMapInput)(nil)).Elem(), EntryGroupIamBindingMap{})
 	pulumi.RegisterOutputType(EntryGroupIamBindingOutput{})
 	pulumi.RegisterOutputType(EntryGroupIamBindingPtrOutput{})
 	pulumi.RegisterOutputType(EntryGroupIamBindingArrayOutput{})

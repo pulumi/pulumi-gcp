@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Organizations
 {
@@ -84,6 +85,80 @@ namespace Pulumi.Gcp.Organizations
         /// </summary>
         public static Task<GetIAMPolicyResult> InvokeAsync(GetIAMPolicyArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetIAMPolicyResult>("gcp:organizations/getIAMPolicy:getIAMPolicy", args ?? new GetIAMPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Generates an IAM policy document that may be referenced by and applied to
+        /// other Google Cloud Platform IAM resources, such as the `gcp.projects.IAMPolicy` resource.
+        /// 
+        /// **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+        ///         {
+        ///             AuditConfigs = 
+        ///             {
+        ///                 new Gcp.Organizations.Inputs.GetIAMPolicyAuditConfigArgs
+        ///                 {
+        ///                     AuditLogConfigs = 
+        ///                     {
+        ///                         new Gcp.Organizations.Inputs.GetIAMPolicyAuditConfigAuditLogConfigArgs
+        ///                         {
+        ///                             ExemptedMembers = 
+        ///                             {
+        ///                                 "user:you@domain.com",
+        ///                             },
+        ///                             LogType = "DATA_READ",
+        ///                         },
+        ///                         new Gcp.Organizations.Inputs.GetIAMPolicyAuditConfigAuditLogConfigArgs
+        ///                         {
+        ///                             LogType = "DATA_WRITE",
+        ///                         },
+        ///                         new Gcp.Organizations.Inputs.GetIAMPolicyAuditConfigAuditLogConfigArgs
+        ///                         {
+        ///                             LogType = "ADMIN_READ",
+        ///                         },
+        ///                     },
+        ///                     Service = "cloudkms.googleapis.com",
+        ///                 },
+        ///             },
+        ///             Bindings = 
+        ///             {
+        ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+        ///                 {
+        ///                     Members = 
+        ///                     {
+        ///                         "serviceAccount:your-custom-sa@your-project.iam.gserviceaccount.com",
+        ///                     },
+        ///                     Role = "roles/compute.instanceAdmin",
+        ///                 },
+        ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+        ///                 {
+        ///                     Members = 
+        ///                     {
+        ///                         "user:alice@gmail.com",
+        ///                     },
+        ///                     Role = "roles/storage.objectViewer",
+        ///                 },
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// This data source is used to define IAM policies to apply to other resources.
+        /// Currently, defining a policy through a datasource and referencing that policy
+        /// from another resource is the only way to apply an IAM policy to a resource.
+        /// </summary>
+        public static Output<GetIAMPolicyResult> Invoke(GetIAMPolicyInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetIAMPolicyResult>("gcp:organizations/getIAMPolicy:getIAMPolicy", args ?? new GetIAMPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -116,6 +191,39 @@ namespace Pulumi.Gcp.Organizations
         }
 
         public GetIAMPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetIAMPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("auditConfigs")]
+        private InputList<Inputs.GetIAMPolicyAuditConfigInputArgs>? _auditConfigs;
+
+        /// <summary>
+        /// A nested configuration block that defines logging additional configuration for your project. This field is only supported on `gcp.projects.IAMPolicy`, `gcp.folder.IAMPolicy` and `gcp.organizations.IAMPolicy`.
+        /// </summary>
+        public InputList<Inputs.GetIAMPolicyAuditConfigInputArgs> AuditConfigs
+        {
+            get => _auditConfigs ?? (_auditConfigs = new InputList<Inputs.GetIAMPolicyAuditConfigInputArgs>());
+            set => _auditConfigs = value;
+        }
+
+        [Input("bindings")]
+        private InputList<Inputs.GetIAMPolicyBindingInputArgs>? _bindings;
+
+        /// <summary>
+        /// A nested configuration block (described below)
+        /// defining a binding to be included in the policy document. Multiple
+        /// `binding` arguments are supported.
+        /// </summary>
+        public InputList<Inputs.GetIAMPolicyBindingInputArgs> Bindings
+        {
+            get => _bindings ?? (_bindings = new InputList<Inputs.GetIAMPolicyBindingInputArgs>());
+            set => _bindings = value;
+        }
+
+        public GetIAMPolicyInvokeArgs()
         {
         }
     }

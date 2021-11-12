@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Compute
 {
@@ -18,6 +19,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Task<GetBackendServiceResult> InvokeAsync(GetBackendServiceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBackendServiceResult>("gcp:compute/getBackendService:getBackendService", args ?? new GetBackendServiceArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Provide access to a Backend Service's attribute. For more information
+        /// see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
+        /// and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
+        /// </summary>
+        public static Output<GetBackendServiceResult> Invoke(GetBackendServiceInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetBackendServiceResult>("gcp:compute/getBackendService:getBackendService", args ?? new GetBackendServiceInvokeArgs(), options.WithVersion());
     }
 
 
@@ -36,6 +45,25 @@ namespace Pulumi.Gcp.Compute
         public string? Project { get; set; }
 
         public GetBackendServiceArgs()
+        {
+        }
+    }
+
+    public sealed class GetBackendServiceInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the Backend Service.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The project in which the resource belongs. If it is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetBackendServiceInvokeArgs()
         {
         }
     }

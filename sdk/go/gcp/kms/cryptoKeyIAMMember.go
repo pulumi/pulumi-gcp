@@ -556,6 +556,10 @@ func (o CryptoKeyIAMMemberMapOutput) MapIndex(k pulumi.StringInput) CryptoKeyIAM
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIAMMemberInput)(nil)).Elem(), &CryptoKeyIAMMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIAMMemberPtrInput)(nil)).Elem(), &CryptoKeyIAMMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIAMMemberArrayInput)(nil)).Elem(), CryptoKeyIAMMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIAMMemberMapInput)(nil)).Elem(), CryptoKeyIAMMemberMap{})
 	pulumi.RegisterOutputType(CryptoKeyIAMMemberOutput{})
 	pulumi.RegisterOutputType(CryptoKeyIAMMemberPtrOutput{})
 	pulumi.RegisterOutputType(CryptoKeyIAMMemberArrayOutput{})

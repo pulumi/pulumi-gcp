@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Container
 {
@@ -44,6 +45,40 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         public static Task<GetRegistryImageResult> InvokeAsync(GetRegistryImageArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegistryImageResult>("gcp:container/getRegistryImage:getRegistryImage", args ?? new GetRegistryImageArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
+        /// 
+        /// The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var debian = Output.Create(Gcp.Container.GetRegistryImage.InvokeAsync(new Gcp.Container.GetRegistryImageArgs
+        ///         {
+        ///             Name = "debian",
+        ///         }));
+        ///         this.GcrLocation = debian.Apply(debian =&gt; debian.ImageUrl);
+        ///     }
+        /// 
+        ///     [Output("gcrLocation")]
+        ///     public Output&lt;string&gt; GcrLocation { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetRegistryImageResult> Invoke(GetRegistryImageInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRegistryImageResult>("gcp:container/getRegistryImage:getRegistryImage", args ?? new GetRegistryImageInvokeArgs(), options.WithVersion());
     }
 
 
@@ -65,6 +100,28 @@ namespace Pulumi.Gcp.Container
         public string? Tag { get; set; }
 
         public GetRegistryImageArgs()
+        {
+        }
+    }
+
+    public sealed class GetRegistryImageInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("digest")]
+        public Input<string>? Digest { get; set; }
+
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        [Input("tag")]
+        public Input<string>? Tag { get; set; }
+
+        public GetRegistryImageInvokeArgs()
         {
         }
     }

@@ -367,6 +367,10 @@ func (o SourceMapOutput) MapIndex(k pulumi.StringInput) SourceOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceInput)(nil)).Elem(), &Source{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SourcePtrInput)(nil)).Elem(), &Source{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceArrayInput)(nil)).Elem(), SourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceMapInput)(nil)).Elem(), SourceMap{})
 	pulumi.RegisterOutputType(SourceOutput{})
 	pulumi.RegisterOutputType(SourcePtrOutput{})
 	pulumi.RegisterOutputType(SourceArrayOutput{})

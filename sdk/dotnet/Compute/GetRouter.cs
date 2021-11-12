@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Compute
 {
@@ -40,6 +41,36 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Task<GetRouterResult> InvokeAsync(GetRouterArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRouterResult>("gcp:compute/getRouter:getRouter", args ?? new GetRouterArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get a router within GCE from its name and VPC.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var my_router = Output.Create(Gcp.Compute.GetRouter.InvokeAsync(new Gcp.Compute.GetRouterArgs
+        ///         {
+        ///             Name = "myrouter-us-east1",
+        ///             Network = "my-network",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetRouterResult> Invoke(GetRouterInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRouterResult>("gcp:compute/getRouter:getRouter", args ?? new GetRouterInvokeArgs(), options.WithVersion());
     }
 
 
@@ -72,6 +103,39 @@ namespace Pulumi.Gcp.Compute
         public string? Region { get; set; }
 
         public GetRouterArgs()
+        {
+        }
+    }
+
+    public sealed class GetRouterInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the router.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The VPC network on which this router lives.
+        /// </summary>
+        [Input("network", required: true)]
+        public Input<string> Network { get; set; } = null!;
+
+        /// <summary>
+        /// The ID of the project in which the resource
+        /// belongs. If it is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The region this router has been created in. If
+        /// unspecified, this defaults to the region configured in the provider.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        public GetRouterInvokeArgs()
         {
         }
     }

@@ -370,6 +370,10 @@ func (o BillingAccountBucketConfigMapOutput) MapIndex(k pulumi.StringInput) Bill
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BillingAccountBucketConfigInput)(nil)).Elem(), &BillingAccountBucketConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BillingAccountBucketConfigPtrInput)(nil)).Elem(), &BillingAccountBucketConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BillingAccountBucketConfigArrayInput)(nil)).Elem(), BillingAccountBucketConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BillingAccountBucketConfigMapInput)(nil)).Elem(), BillingAccountBucketConfigMap{})
 	pulumi.RegisterOutputType(BillingAccountBucketConfigOutput{})
 	pulumi.RegisterOutputType(BillingAccountBucketConfigPtrOutput{})
 	pulumi.RegisterOutputType(BillingAccountBucketConfigArrayOutput{})

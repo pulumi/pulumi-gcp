@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Firebase
 {
@@ -22,6 +23,18 @@ namespace Pulumi.Gcp.Firebase
         /// </summary>
         public static Task<GetWebAppConfigResult> InvokeAsync(GetWebAppConfigArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetWebAppConfigResult>("gcp:firebase/getWebAppConfig:getWebAppConfig", args ?? new GetWebAppConfigArgs(), options.WithVersion());
+
+        /// <summary>
+        /// A Google Cloud Firebase web application configuration
+        /// 
+        /// To get more information about WebApp, see:
+        /// 
+        /// * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps)
+        /// * How-to Guides
+        ///     * [Official Documentation](https://firebase.google.com/)
+        /// </summary>
+        public static Output<GetWebAppConfigResult> Invoke(GetWebAppConfigInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetWebAppConfigResult>("gcp:firebase/getWebAppConfig:getWebAppConfig", args ?? new GetWebAppConfigInvokeArgs(), options.WithVersion());
     }
 
 
@@ -41,6 +54,26 @@ namespace Pulumi.Gcp.Firebase
         public string WebAppId { get; set; } = null!;
 
         public GetWebAppConfigArgs()
+        {
+        }
+    }
+
+    public sealed class GetWebAppConfigInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The ID of the project in which the resource belongs. If it
+        /// is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// the id of the firebase web app
+        /// </summary>
+        [Input("webAppId", required: true)]
+        public Input<string> WebAppId { get; set; } = null!;
+
+        public GetWebAppConfigInvokeArgs()
         {
         }
     }

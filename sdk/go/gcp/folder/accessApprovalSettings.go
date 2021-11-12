@@ -391,6 +391,10 @@ func (o AccessApprovalSettingsMapOutput) MapIndex(k pulumi.StringInput) AccessAp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApprovalSettingsInput)(nil)).Elem(), &AccessApprovalSettings{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApprovalSettingsPtrInput)(nil)).Elem(), &AccessApprovalSettings{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApprovalSettingsArrayInput)(nil)).Elem(), AccessApprovalSettingsArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApprovalSettingsMapInput)(nil)).Elem(), AccessApprovalSettingsMap{})
 	pulumi.RegisterOutputType(AccessApprovalSettingsOutput{})
 	pulumi.RegisterOutputType(AccessApprovalSettingsPtrOutput{})
 	pulumi.RegisterOutputType(AccessApprovalSettingsArrayOutput{})

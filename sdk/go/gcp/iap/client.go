@@ -328,6 +328,10 @@ func (o ClientMapOutput) MapIndex(k pulumi.StringInput) ClientOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientInput)(nil)).Elem(), &Client{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientPtrInput)(nil)).Elem(), &Client{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientArrayInput)(nil)).Elem(), ClientArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientMapInput)(nil)).Elem(), ClientMap{})
 	pulumi.RegisterOutputType(ClientOutput{})
 	pulumi.RegisterOutputType(ClientPtrOutput{})
 	pulumi.RegisterOutputType(ClientArrayOutput{})

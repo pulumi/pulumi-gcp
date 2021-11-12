@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Organizations
 {
@@ -41,6 +42,37 @@ namespace Pulumi.Gcp.Organizations
         /// </summary>
         public static Task<GetProjectResult> InvokeAsync(GetProjectArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("gcp:organizations/getProject:getProject", args ?? new GetProjectArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get project details.
+        /// For more information see
+        /// [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var project = Output.Create(Gcp.Organizations.GetProject.InvokeAsync());
+        ///         this.ProjectNumber = project.Apply(project =&gt; project.Number);
+        ///     }
+        /// 
+        ///     [Output("projectNumber")]
+        ///     public Output&lt;string&gt; ProjectNumber { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetProjectResult> Invoke(GetProjectInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetProjectResult>("gcp:organizations/getProject:getProject", args ?? new GetProjectInvokeArgs(), options.WithVersion());
     }
 
 
@@ -53,6 +85,19 @@ namespace Pulumi.Gcp.Organizations
         public string? ProjectId { get; set; }
 
         public GetProjectArgs()
+        {
+        }
+    }
+
+    public sealed class GetProjectInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The project ID. If it is not provided, the provider project is used.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
+
+        public GetProjectInvokeArgs()
         {
         }
     }

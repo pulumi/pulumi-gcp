@@ -456,6 +456,10 @@ func (o ConsentStoreIamBindingMapOutput) MapIndex(k pulumi.StringInput) ConsentS
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsentStoreIamBindingInput)(nil)).Elem(), &ConsentStoreIamBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsentStoreIamBindingPtrInput)(nil)).Elem(), &ConsentStoreIamBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsentStoreIamBindingArrayInput)(nil)).Elem(), ConsentStoreIamBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsentStoreIamBindingMapInput)(nil)).Elem(), ConsentStoreIamBindingMap{})
 	pulumi.RegisterOutputType(ConsentStoreIamBindingOutput{})
 	pulumi.RegisterOutputType(ConsentStoreIamBindingPtrOutput{})
 	pulumi.RegisterOutputType(ConsentStoreIamBindingArrayOutput{})

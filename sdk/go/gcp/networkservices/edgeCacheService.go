@@ -763,6 +763,10 @@ func (o EdgeCacheServiceMapOutput) MapIndex(k pulumi.StringInput) EdgeCacheServi
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceInput)(nil)).Elem(), &EdgeCacheService{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServicePtrInput)(nil)).Elem(), &EdgeCacheService{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceArrayInput)(nil)).Elem(), EdgeCacheServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceMapInput)(nil)).Elem(), EdgeCacheServiceMap{})
 	pulumi.RegisterOutputType(EdgeCacheServiceOutput{})
 	pulumi.RegisterOutputType(EdgeCacheServicePtrOutput{})
 	pulumi.RegisterOutputType(EdgeCacheServiceArrayOutput{})

@@ -443,6 +443,10 @@ func (o SecretIamMemberMapOutput) MapIndex(k pulumi.StringInput) SecretIamMember
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretIamMemberInput)(nil)).Elem(), &SecretIamMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretIamMemberPtrInput)(nil)).Elem(), &SecretIamMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretIamMemberArrayInput)(nil)).Elem(), SecretIamMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretIamMemberMapInput)(nil)).Elem(), SecretIamMemberMap{})
 	pulumi.RegisterOutputType(SecretIamMemberOutput{})
 	pulumi.RegisterOutputType(SecretIamMemberPtrOutput{})
 	pulumi.RegisterOutputType(SecretIamMemberArrayOutput{})

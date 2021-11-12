@@ -730,6 +730,10 @@ func (o ManagedZoneMapOutput) MapIndex(k pulumi.StringInput) ManagedZoneOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZoneInput)(nil)).Elem(), &ManagedZone{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZonePtrInput)(nil)).Elem(), &ManagedZone{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZoneArrayInput)(nil)).Elem(), ManagedZoneArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZoneMapInput)(nil)).Elem(), ManagedZoneMap{})
 	pulumi.RegisterOutputType(ManagedZoneOutput{})
 	pulumi.RegisterOutputType(ManagedZonePtrOutput{})
 	pulumi.RegisterOutputType(ManagedZoneArrayOutput{})
