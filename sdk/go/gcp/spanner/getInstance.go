@@ -18,7 +18,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/spanner"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/spanner"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -45,14 +45,10 @@ func LookupInstance(ctx *pulumi.Context, args *LookupInstanceArgs, opts ...pulum
 
 // A collection of arguments for invoking getInstance.
 type LookupInstanceArgs struct {
-	Config       *string           `pulumi:"config"`
-	DisplayName  *string           `pulumi:"displayName"`
-	ForceDestroy *bool             `pulumi:"forceDestroy"`
-	Labels       map[string]string `pulumi:"labels"`
+	Config      *string `pulumi:"config"`
+	DisplayName *string `pulumi:"displayName"`
 	// The name of the spanner instance.
-	Name            string `pulumi:"name"`
-	NumNodes        *int   `pulumi:"numNodes"`
-	ProcessingUnits *int   `pulumi:"processingUnits"`
+	Name string `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -62,7 +58,7 @@ type LookupInstanceArgs struct {
 type LookupInstanceResult struct {
 	Config       *string `pulumi:"config"`
 	DisplayName  *string `pulumi:"displayName"`
-	ForceDestroy *bool   `pulumi:"forceDestroy"`
+	ForceDestroy bool    `pulumi:"forceDestroy"`
 	// The provider-assigned unique ID for this managed resource.
 	Id              string            `pulumi:"id"`
 	Labels          map[string]string `pulumi:"labels"`
@@ -84,14 +80,10 @@ func LookupInstanceOutput(ctx *pulumi.Context, args LookupInstanceOutputArgs, op
 
 // A collection of arguments for invoking getInstance.
 type LookupInstanceOutputArgs struct {
-	Config       pulumi.StringPtrInput `pulumi:"config"`
-	DisplayName  pulumi.StringPtrInput `pulumi:"displayName"`
-	ForceDestroy pulumi.BoolPtrInput   `pulumi:"forceDestroy"`
-	Labels       pulumi.StringMapInput `pulumi:"labels"`
+	Config      pulumi.StringPtrInput `pulumi:"config"`
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// The name of the spanner instance.
-	Name            pulumi.StringInput `pulumi:"name"`
-	NumNodes        pulumi.IntPtrInput `pulumi:"numNodes"`
-	ProcessingUnits pulumi.IntPtrInput `pulumi:"processingUnits"`
+	Name pulumi.StringInput `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput `pulumi:"project"`
@@ -124,8 +116,8 @@ func (o LookupInstanceResultOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInstanceResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-func (o LookupInstanceResultOutput) ForceDestroy() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LookupInstanceResult) *bool { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
+func (o LookupInstanceResultOutput) ForceDestroy() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupInstanceResult) bool { return v.ForceDestroy }).(pulumi.BoolOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

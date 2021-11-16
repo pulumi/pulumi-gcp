@@ -31,6 +31,7 @@ namespace Pulumi.Gcp.Sql
     ///         });
     ///         var master = new Gcp.Sql.DatabaseInstance("master", new Gcp.Sql.DatabaseInstanceArgs
     ///         {
+    ///             DatabaseVersion = "MYSQL_5_7",
     ///             Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
     ///             {
     ///                 Tier = "db-f1-micro",

@@ -39,8 +39,8 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/projects"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -77,8 +77,8 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/projects"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -120,7 +120,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/projects"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -147,7 +147,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/projects"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -179,7 +179,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/projects"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -204,7 +204,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/projects"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -234,7 +234,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/projects"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -307,9 +307,8 @@ type IAMBinding struct {
 	// (Computed) The etag of the project's IAM policy.
 	Etag    pulumi.StringOutput      `pulumi:"etag"`
 	Members pulumi.StringArrayOutput `pulumi:"members"`
-	// The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-	// Required for `projects.IAMPolicy` - you must explicitly set the project, and it
-	// will not be inferred from the provider.
+	// The project id of the target project. This is not
+	// inferred from the provider.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The role that should be applied. Only one
 	// `projects.IAMBinding` can be used per role. Note that custom roles must be of the format
@@ -326,6 +325,9 @@ func NewIAMBinding(ctx *pulumi.Context,
 
 	if args.Members == nil {
 		return nil, errors.New("invalid value for required argument 'Members'")
+	}
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	if args.Role == nil {
 		return nil, errors.New("invalid value for required argument 'Role'")
@@ -358,9 +360,8 @@ type iambindingState struct {
 	// (Computed) The etag of the project's IAM policy.
 	Etag    *string  `pulumi:"etag"`
 	Members []string `pulumi:"members"`
-	// The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-	// Required for `projects.IAMPolicy` - you must explicitly set the project, and it
-	// will not be inferred from the provider.
+	// The project id of the target project. This is not
+	// inferred from the provider.
 	Project *string `pulumi:"project"`
 	// The role that should be applied. Only one
 	// `projects.IAMBinding` can be used per role. Note that custom roles must be of the format
@@ -375,9 +376,8 @@ type IAMBindingState struct {
 	// (Computed) The etag of the project's IAM policy.
 	Etag    pulumi.StringPtrInput
 	Members pulumi.StringArrayInput
-	// The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-	// Required for `projects.IAMPolicy` - you must explicitly set the project, and it
-	// will not be inferred from the provider.
+	// The project id of the target project. This is not
+	// inferred from the provider.
 	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `projects.IAMBinding` can be used per role. Note that custom roles must be of the format
@@ -394,10 +394,9 @@ type iambindingArgs struct {
 	// Structure is documented below.
 	Condition *IAMBindingCondition `pulumi:"condition"`
 	Members   []string             `pulumi:"members"`
-	// The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-	// Required for `projects.IAMPolicy` - you must explicitly set the project, and it
-	// will not be inferred from the provider.
-	Project *string `pulumi:"project"`
+	// The project id of the target project. This is not
+	// inferred from the provider.
+	Project string `pulumi:"project"`
 	// The role that should be applied. Only one
 	// `projects.IAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -410,10 +409,9 @@ type IAMBindingArgs struct {
 	// Structure is documented below.
 	Condition IAMBindingConditionPtrInput
 	Members   pulumi.StringArrayInput
-	// The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-	// Required for `projects.IAMPolicy` - you must explicitly set the project, and it
-	// will not be inferred from the provider.
-	Project pulumi.StringPtrInput
+	// The project id of the target project. This is not
+	// inferred from the provider.
+	Project pulumi.StringInput
 	// The role that should be applied. Only one
 	// `projects.IAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.

@@ -24,6 +24,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly int? InitialNodeCount;
         public readonly ImmutableArray<string> InstanceGroupUrls;
+        public readonly ImmutableArray<string> ManagedInstanceGroupUrls;
         public readonly Outputs.ClusterNodePoolManagement? Management;
         public readonly int? MaxPodsPerNode;
         /// <summary>
@@ -64,6 +65,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             ImmutableArray<string> instanceGroupUrls,
 
+            ImmutableArray<string> managedInstanceGroupUrls,
+
             Outputs.ClusterNodePoolManagement? management,
 
             int? maxPodsPerNode,
@@ -87,6 +90,7 @@ namespace Pulumi.Gcp.Container.Outputs
             Autoscaling = autoscaling;
             InitialNodeCount = initialNodeCount;
             InstanceGroupUrls = instanceGroupUrls;
+            ManagedInstanceGroupUrls = managedInstanceGroupUrls;
             Management = management;
             MaxPodsPerNode = maxPodsPerNode;
             Name = name;

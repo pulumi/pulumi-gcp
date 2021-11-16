@@ -2,7 +2,8 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade to v4.0.0 of the Google Beta Terraform Provider
+  * **PLEASE NOTE:** There are a summary of the breaking changes to the underlying provider can be found [in the Terraform upgrade guide](https://registry.terraform.io/providers/hashicorp/google/latest/docs/guides/version_4_upgrade)
 
 ---
 

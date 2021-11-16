@@ -472,14 +472,10 @@ class DatabaseInstanceSettings(dict):
         suggest = None
         if key == "activationPolicy":
             suggest = "activation_policy"
-        elif key == "authorizedGaeApplications":
-            suggest = "authorized_gae_applications"
         elif key == "availabilityType":
             suggest = "availability_type"
         elif key == "backupConfiguration":
             suggest = "backup_configuration"
-        elif key == "crashSafeReplication":
-            suggest = "crash_safe_replication"
         elif key == "databaseFlags":
             suggest = "database_flags"
         elif key == "diskAutoresize":
@@ -500,8 +496,6 @@ class DatabaseInstanceSettings(dict):
             suggest = "maintenance_window"
         elif key == "pricingPlan":
             suggest = "pricing_plan"
-        elif key == "replicationType":
-            suggest = "replication_type"
         elif key == "userLabels":
             suggest = "user_labels"
 
@@ -519,11 +513,9 @@ class DatabaseInstanceSettings(dict):
     def __init__(__self__, *,
                  tier: str,
                  activation_policy: Optional[str] = None,
-                 authorized_gae_applications: Optional[Sequence[str]] = None,
                  availability_type: Optional[str] = None,
                  backup_configuration: Optional['outputs.DatabaseInstanceSettingsBackupConfiguration'] = None,
                  collation: Optional[str] = None,
-                 crash_safe_replication: Optional[bool] = None,
                  database_flags: Optional[Sequence['outputs.DatabaseInstanceSettingsDatabaseFlag']] = None,
                  disk_autoresize: Optional[bool] = None,
                  disk_autoresize_limit: Optional[int] = None,
@@ -534,7 +526,6 @@ class DatabaseInstanceSettings(dict):
                  location_preference: Optional['outputs.DatabaseInstanceSettingsLocationPreference'] = None,
                  maintenance_window: Optional['outputs.DatabaseInstanceSettingsMaintenanceWindow'] = None,
                  pricing_plan: Optional[str] = None,
-                 replication_type: Optional[str] = None,
                  user_labels: Optional[Mapping[str, str]] = None,
                  version: Optional[int] = None):
         """
@@ -543,43 +534,26 @@ class DatabaseInstanceSettings(dict):
                and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
         :param str activation_policy: This specifies when the instance should be
                active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
-        :param Sequence[str] authorized_gae_applications: This property is only applicable to First Generation instances.
-               First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-               for information on how to upgrade to Second Generation instances.
-               A list of Google App Engine (GAE) project names that are allowed to access this instance.
         :param str availability_type: The availability type of the Cloud SQL
                instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For MySQL
                instances, ensure that `settings.backup_configuration.enabled` and
                `settings.backup_configuration.binary_log_enabled` are both set to `true`.
         :param str collation: The name of server instance collation.
-        :param bool crash_safe_replication: This property is only applicable to First Generation instances.
-               First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-               for information on how to upgrade to Second Generation instances.
-               Specific to read instances, indicates
-               when crash-safe replication flags are enabled.
-        :param bool disk_autoresize: Configuration to increase storage size automatically.  Note that future `pulumi apply` calls will attempt to resize the disk to the value specified in `disk_size` - if this is set, do not set `disk_size`.
+        :param bool disk_autoresize: Configuration to increase storage size automatically.  Note that future apply calls will attempt to resize the disk to the value specified in `disk_size` - if this is set, do not set `disk_size`.
         :param int disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased.
         :param str disk_type: The type of data disk: PD_SSD or PD_HDD.
         :param str pricing_plan: Pricing plan for this instance, can only be `PER_USE`.
-        :param str replication_type: This property is only applicable to First Generation instances.
-               First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-               for information on how to upgrade to Second Generation instances.
-               Replication type for this instance, can be one of `ASYNCHRONOUS` or `SYNCHRONOUS`.
         :param Mapping[str, str] user_labels: A set of key/value user label pairs to assign to the instance.
         """
         pulumi.set(__self__, "tier", tier)
         if activation_policy is not None:
             pulumi.set(__self__, "activation_policy", activation_policy)
-        if authorized_gae_applications is not None:
-            pulumi.set(__self__, "authorized_gae_applications", authorized_gae_applications)
         if availability_type is not None:
             pulumi.set(__self__, "availability_type", availability_type)
         if backup_configuration is not None:
             pulumi.set(__self__, "backup_configuration", backup_configuration)
         if collation is not None:
             pulumi.set(__self__, "collation", collation)
-        if crash_safe_replication is not None:
-            pulumi.set(__self__, "crash_safe_replication", crash_safe_replication)
         if database_flags is not None:
             pulumi.set(__self__, "database_flags", database_flags)
         if disk_autoresize is not None:
@@ -600,8 +574,6 @@ class DatabaseInstanceSettings(dict):
             pulumi.set(__self__, "maintenance_window", maintenance_window)
         if pricing_plan is not None:
             pulumi.set(__self__, "pricing_plan", pricing_plan)
-        if replication_type is not None:
-            pulumi.set(__self__, "replication_type", replication_type)
         if user_labels is not None:
             pulumi.set(__self__, "user_labels", user_labels)
         if version is not None:
@@ -625,17 +597,6 @@ class DatabaseInstanceSettings(dict):
         active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
         """
         return pulumi.get(self, "activation_policy")
-
-    @property
-    @pulumi.getter(name="authorizedGaeApplications")
-    def authorized_gae_applications(self) -> Optional[Sequence[str]]:
-        """
-        This property is only applicable to First Generation instances.
-        First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-        for information on how to upgrade to Second Generation instances.
-        A list of Google App Engine (GAE) project names that are allowed to access this instance.
-        """
-        return pulumi.get(self, "authorized_gae_applications")
 
     @property
     @pulumi.getter(name="availabilityType")
@@ -662,18 +623,6 @@ class DatabaseInstanceSettings(dict):
         return pulumi.get(self, "collation")
 
     @property
-    @pulumi.getter(name="crashSafeReplication")
-    def crash_safe_replication(self) -> Optional[bool]:
-        """
-        This property is only applicable to First Generation instances.
-        First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-        for information on how to upgrade to Second Generation instances.
-        Specific to read instances, indicates
-        when crash-safe replication flags are enabled.
-        """
-        return pulumi.get(self, "crash_safe_replication")
-
-    @property
     @pulumi.getter(name="databaseFlags")
     def database_flags(self) -> Optional[Sequence['outputs.DatabaseInstanceSettingsDatabaseFlag']]:
         return pulumi.get(self, "database_flags")
@@ -682,7 +631,7 @@ class DatabaseInstanceSettings(dict):
     @pulumi.getter(name="diskAutoresize")
     def disk_autoresize(self) -> Optional[bool]:
         """
-        Configuration to increase storage size automatically.  Note that future `pulumi apply` calls will attempt to resize the disk to the value specified in `disk_size` - if this is set, do not set `disk_size`.
+        Configuration to increase storage size automatically.  Note that future apply calls will attempt to resize the disk to the value specified in `disk_size` - if this is set, do not set `disk_size`.
         """
         return pulumi.get(self, "disk_autoresize")
 
@@ -734,17 +683,6 @@ class DatabaseInstanceSettings(dict):
         Pricing plan for this instance, can only be `PER_USE`.
         """
         return pulumi.get(self, "pricing_plan")
-
-    @property
-    @pulumi.getter(name="replicationType")
-    def replication_type(self) -> Optional[str]:
-        """
-        This property is only applicable to First Generation instances.
-        First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-        for information on how to upgrade to Second Generation instances.
-        Replication type for this instance, can be one of `ASYNCHRONOUS` or `SYNCHRONOUS`.
-        """
-        return pulumi.get(self, "replication_type")
 
     @property
     @pulumi.getter(name="userLabels")
@@ -1574,11 +1512,9 @@ class GetDatabaseInstanceServerCaCertResult(dict):
 class GetDatabaseInstanceSettingResult(dict):
     def __init__(__self__, *,
                  activation_policy: str,
-                 authorized_gae_applications: Sequence[str],
                  availability_type: str,
                  backup_configurations: Sequence['outputs.GetDatabaseInstanceSettingBackupConfigurationResult'],
                  collation: str,
-                 crash_safe_replication: bool,
                  database_flags: Sequence['outputs.GetDatabaseInstanceSettingDatabaseFlagResult'],
                  disk_autoresize: bool,
                  disk_autoresize_limit: int,
@@ -1589,16 +1525,13 @@ class GetDatabaseInstanceSettingResult(dict):
                  location_preferences: Sequence['outputs.GetDatabaseInstanceSettingLocationPreferenceResult'],
                  maintenance_windows: Sequence['outputs.GetDatabaseInstanceSettingMaintenanceWindowResult'],
                  pricing_plan: str,
-                 replication_type: str,
                  tier: str,
                  user_labels: Mapping[str, str],
                  version: int):
         pulumi.set(__self__, "activation_policy", activation_policy)
-        pulumi.set(__self__, "authorized_gae_applications", authorized_gae_applications)
         pulumi.set(__self__, "availability_type", availability_type)
         pulumi.set(__self__, "backup_configurations", backup_configurations)
         pulumi.set(__self__, "collation", collation)
-        pulumi.set(__self__, "crash_safe_replication", crash_safe_replication)
         pulumi.set(__self__, "database_flags", database_flags)
         pulumi.set(__self__, "disk_autoresize", disk_autoresize)
         pulumi.set(__self__, "disk_autoresize_limit", disk_autoresize_limit)
@@ -1609,7 +1542,6 @@ class GetDatabaseInstanceSettingResult(dict):
         pulumi.set(__self__, "location_preferences", location_preferences)
         pulumi.set(__self__, "maintenance_windows", maintenance_windows)
         pulumi.set(__self__, "pricing_plan", pricing_plan)
-        pulumi.set(__self__, "replication_type", replication_type)
         pulumi.set(__self__, "tier", tier)
         pulumi.set(__self__, "user_labels", user_labels)
         pulumi.set(__self__, "version", version)
@@ -1618,11 +1550,6 @@ class GetDatabaseInstanceSettingResult(dict):
     @pulumi.getter(name="activationPolicy")
     def activation_policy(self) -> str:
         return pulumi.get(self, "activation_policy")
-
-    @property
-    @pulumi.getter(name="authorizedGaeApplications")
-    def authorized_gae_applications(self) -> Sequence[str]:
-        return pulumi.get(self, "authorized_gae_applications")
 
     @property
     @pulumi.getter(name="availabilityType")
@@ -1638,11 +1565,6 @@ class GetDatabaseInstanceSettingResult(dict):
     @pulumi.getter
     def collation(self) -> str:
         return pulumi.get(self, "collation")
-
-    @property
-    @pulumi.getter(name="crashSafeReplication")
-    def crash_safe_replication(self) -> bool:
-        return pulumi.get(self, "crash_safe_replication")
 
     @property
     @pulumi.getter(name="databaseFlags")
@@ -1693,11 +1615,6 @@ class GetDatabaseInstanceSettingResult(dict):
     @pulumi.getter(name="pricingPlan")
     def pricing_plan(self) -> str:
         return pulumi.get(self, "pricing_plan")
-
-    @property
-    @pulumi.getter(name="replicationType")
-    def replication_type(self) -> str:
-        return pulumi.get(self, "replication_type")
 
     @property
     @pulumi.getter

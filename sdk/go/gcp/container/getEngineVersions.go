@@ -24,7 +24,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/container"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -43,10 +43,6 @@ import (
 // 			Location:         pulumi.String("us-central1-b"),
 // 			NodeVersion:      pulumi.String(central1b.LatestNodeVersion),
 // 			InitialNodeCount: pulumi.Int(1),
-// 			MasterAuth: &container.ClusterMasterAuthArgs{
-// 				Username: pulumi.String("mr.yoda"),
-// 				Password: pulumi.String("adoy.rm"),
-// 			},
 // 		})
 // 		if err != nil {
 // 			return err

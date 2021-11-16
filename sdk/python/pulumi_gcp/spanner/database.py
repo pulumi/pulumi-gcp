@@ -295,7 +295,8 @@ class Database(pulumi.CustomResource):
 
         main = gcp.spanner.Instance("main",
             config="regional-europe-west1",
-            display_name="main-instance")
+            display_name="main-instance",
+            num_nodes=1)
         database = gcp.spanner.Database("database",
             instance=main.name,
             ddls=[
@@ -367,7 +368,8 @@ class Database(pulumi.CustomResource):
 
         main = gcp.spanner.Instance("main",
             config="regional-europe-west1",
-            display_name="main-instance")
+            display_name="main-instance",
+            num_nodes=1)
         database = gcp.spanner.Database("database",
             instance=main.name,
             ddls=[

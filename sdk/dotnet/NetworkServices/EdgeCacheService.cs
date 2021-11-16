@@ -27,6 +27,7 @@ namespace Pulumi.Gcp.NetworkServices
     ///     {
     ///         var dest = new Gcp.Storage.Bucket("dest", new Gcp.Storage.BucketArgs
     ///         {
+    ///             Location = "US",
     ///             ForceDestroy = true,
     ///         });
     ///         var instanceEdgeCacheOrigin = new Gcp.NetworkServices.EdgeCacheOrigin("instanceEdgeCacheOrigin", new Gcp.NetworkServices.EdgeCacheOriginArgs
@@ -116,6 +117,7 @@ namespace Pulumi.Gcp.NetworkServices
     ///     {
     ///         var dest = new Gcp.Storage.Bucket("dest", new Gcp.Storage.BucketArgs
     ///         {
+    ///             Location = "US",
     ///             ForceDestroy = true,
     ///         });
     ///         var google = new Gcp.NetworkServices.EdgeCacheOrigin("google", new Gcp.NetworkServices.EdgeCacheOriginArgs

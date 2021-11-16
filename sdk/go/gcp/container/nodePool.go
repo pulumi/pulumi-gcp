@@ -22,8 +22,8 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/container"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/serviceAccount"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -95,6 +95,8 @@ type NodePool struct {
 	InstanceGroupUrls pulumi.StringArrayOutput `pulumi:"instanceGroupUrls"`
 	// The location (region or zone) of the cluster.
 	Location pulumi.StringOutput `pulumi:"location"`
+	// List of instance group URLs which have been assigned to this node pool.
+	ManagedInstanceGroupUrls pulumi.StringArrayOutput `pulumi:"managedInstanceGroupUrls"`
 	// Node management configuration, wherein auto-repair and
 	// auto-upgrade is configured. Structure is documented below.
 	Management NodePoolManagementOutput `pulumi:"management"`
@@ -190,6 +192,8 @@ type nodePoolState struct {
 	InstanceGroupUrls []string `pulumi:"instanceGroupUrls"`
 	// The location (region or zone) of the cluster.
 	Location *string `pulumi:"location"`
+	// List of instance group URLs which have been assigned to this node pool.
+	ManagedInstanceGroupUrls []string `pulumi:"managedInstanceGroupUrls"`
 	// Node management configuration, wherein auto-repair and
 	// auto-upgrade is configured. Structure is documented below.
 	Management *NodePoolManagement `pulumi:"management"`
@@ -254,6 +258,8 @@ type NodePoolState struct {
 	InstanceGroupUrls pulumi.StringArrayInput
 	// The location (region or zone) of the cluster.
 	Location pulumi.StringPtrInput
+	// List of instance group URLs which have been assigned to this node pool.
+	ManagedInstanceGroupUrls pulumi.StringArrayInput
 	// Node management configuration, wherein auto-repair and
 	// auto-upgrade is configured. Structure is documented below.
 	Management NodePoolManagementPtrInput

@@ -393,7 +393,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        bucket = gcp.storage.Bucket("bucket")
+        bucket = gcp.storage.Bucket("bucket", location="US")
         archive = gcp.storage.BucketObject("archive",
             bucket=bucket.name,
             source=pulumi.FileAsset("path/to/index.zip"))
@@ -447,7 +447,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        appengine_neg_bucket = gcp.storage.Bucket("appengineNegBucket")
+        appengine_neg_bucket = gcp.storage.Bucket("appengineNegBucket", location="US")
         appengine_neg_bucket_object = gcp.storage.BucketObject("appengineNegBucketObject",
             bucket=appengine_neg_bucket.name,
             source=pulumi.FileAsset("./test-fixtures/appengine/hello-world.zip"))
@@ -568,7 +568,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        bucket = gcp.storage.Bucket("bucket")
+        bucket = gcp.storage.Bucket("bucket", location="US")
         archive = gcp.storage.BucketObject("archive",
             bucket=bucket.name,
             source=pulumi.FileAsset("path/to/index.zip"))
@@ -622,7 +622,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        appengine_neg_bucket = gcp.storage.Bucket("appengineNegBucket")
+        appengine_neg_bucket = gcp.storage.Bucket("appengineNegBucket", location="US")
         appengine_neg_bucket_object = gcp.storage.BucketObject("appengineNegBucketObject",
             bucket=appengine_neg_bucket.name,
             source=pulumi.FileAsset("./test-fixtures/appengine/hello-world.zip"))

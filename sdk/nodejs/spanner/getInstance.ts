@@ -29,11 +29,7 @@ export function getInstance(args: GetInstanceArgs, opts?: pulumi.InvokeOptions):
     return pulumi.runtime.invoke("gcp:spanner/getInstance:getInstance", {
         "config": args.config,
         "displayName": args.displayName,
-        "forceDestroy": args.forceDestroy,
-        "labels": args.labels,
         "name": args.name,
-        "numNodes": args.numNodes,
-        "processingUnits": args.processingUnits,
         "project": args.project,
     }, opts);
 }
@@ -44,14 +40,10 @@ export function getInstance(args: GetInstanceArgs, opts?: pulumi.InvokeOptions):
 export interface GetInstanceArgs {
     config?: string;
     displayName?: string;
-    forceDestroy?: boolean;
-    labels?: {[key: string]: string};
     /**
      * The name of the spanner instance.
      */
     name: string;
-    numNodes?: number;
-    processingUnits?: number;
     /**
      * The project in which the resource belongs. If it
      * is not provided, the provider project is used.
@@ -65,12 +57,12 @@ export interface GetInstanceArgs {
 export interface GetInstanceResult {
     readonly config?: string;
     readonly displayName?: string;
-    readonly forceDestroy?: boolean;
+    readonly forceDestroy: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    readonly labels?: {[key: string]: string};
+    readonly labels: {[key: string]: string};
     readonly name: string;
     readonly numNodes: number;
     readonly processingUnits: number;
@@ -88,14 +80,10 @@ export function getInstanceOutput(args: GetInstanceOutputArgs, opts?: pulumi.Inv
 export interface GetInstanceOutputArgs {
     config?: pulumi.Input<string>;
     displayName?: pulumi.Input<string>;
-    forceDestroy?: pulumi.Input<boolean>;
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the spanner instance.
      */
     name: pulumi.Input<string>;
-    numNodes?: pulumi.Input<number>;
-    processingUnits?: pulumi.Input<number>;
     /**
      * The project in which the resource belongs. If it
      * is not provided, the provider project is used.

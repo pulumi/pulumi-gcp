@@ -227,9 +227,8 @@ export class IAMMember extends pulumi.CustomResource {
     public /*out*/ readonly etag!: pulumi.Output<string>;
     public readonly member!: pulumi.Output<string>;
     /**
-     * The project ID. If not specified for `gcp.projects.IAMBinding`, `gcp.projects.IAMMember`, or `gcp.projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-     * Required for `gcp.projects.IAMPolicy` - you must explicitly set the project, and it
-     * will not be inferred from the provider.
+     * The project id of the target project. This is not
+     * inferred from the provider.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -262,6 +261,9 @@ export class IAMMember extends pulumi.CustomResource {
             if ((!args || args.member === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'member'");
             }
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
+            }
             if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
@@ -293,9 +295,8 @@ export interface IAMMemberState {
     etag?: pulumi.Input<string>;
     member?: pulumi.Input<string>;
     /**
-     * The project ID. If not specified for `gcp.projects.IAMBinding`, `gcp.projects.IAMMember`, or `gcp.projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-     * Required for `gcp.projects.IAMPolicy` - you must explicitly set the project, and it
-     * will not be inferred from the provider.
+     * The project id of the target project. This is not
+     * inferred from the provider.
      */
     project?: pulumi.Input<string>;
     /**
@@ -317,11 +318,10 @@ export interface IAMMemberArgs {
     condition?: pulumi.Input<inputs.projects.IAMMemberCondition>;
     member: pulumi.Input<string>;
     /**
-     * The project ID. If not specified for `gcp.projects.IAMBinding`, `gcp.projects.IAMMember`, or `gcp.projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-     * Required for `gcp.projects.IAMPolicy` - you must explicitly set the project, and it
-     * will not be inferred from the provider.
+     * The project id of the target project. This is not
+     * inferred from the provider.
      */
-    project?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.projects.IAMBinding` can be used per role. Note that custom roles must be of the format

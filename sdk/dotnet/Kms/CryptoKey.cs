@@ -145,12 +145,6 @@ namespace Pulumi.Gcp.Kms
         public Output<string?> RotationPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// The self link of the created KeyRing in the format projects/{project}/locations/{location}/keyRings/{name}.
-        /// </summary>
-        [Output("selfLink")]
-        public Output<string> SelfLink { get; private set; } = null!;
-
-        /// <summary>
         /// If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
         /// You must use the `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
         /// </summary>
@@ -344,12 +338,6 @@ namespace Pulumi.Gcp.Kms
         /// </summary>
         [Input("rotationPeriod")]
         public Input<string>? RotationPeriod { get; set; }
-
-        /// <summary>
-        /// The self link of the created KeyRing in the format projects/{project}/locations/{location}/keyRings/{name}.
-        /// </summary>
-        [Input("selfLink")]
-        public Input<string>? SelfLink { get; set; }
 
         /// <summary>
         /// If set to true, the request will create a CryptoKey without any CryptoKeyVersions.

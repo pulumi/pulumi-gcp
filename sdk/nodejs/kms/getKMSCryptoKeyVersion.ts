@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *     keyRing: myKeyRing.id,
  * }));
  * const myCryptoKeyVersion = gcp.kms.getKMSCryptoKeyVersion({
- *     cryptoKey: data.google_kms_key.my_key.id,
+ *     cryptoKey: data.google_kms_crypto_key.my_key.id,
  * });
  * ```
  */
@@ -51,7 +51,7 @@ export function getKMSCryptoKeyVersion(args: GetKMSCryptoKeyVersionArgs, opts?: 
  */
 export interface GetKMSCryptoKeyVersionArgs {
     /**
-     * The `selfLink` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the 
+     * The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the 
      * `gcp.kms.CryptoKey` resource/datasource.
      */
     cryptoKey: string;
@@ -102,7 +102,7 @@ export function getKMSCryptoKeyVersionOutput(args: GetKMSCryptoKeyVersionOutputA
  */
 export interface GetKMSCryptoKeyVersionOutputArgs {
     /**
-     * The `selfLink` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the 
+     * The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the 
      * `gcp.kms.CryptoKey` resource/datasource.
      */
     cryptoKey: pulumi.Input<string>;

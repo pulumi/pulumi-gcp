@@ -44,17 +44,14 @@ class ProviderArgs:
                  cloud_scheduler_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_tasks_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  composer_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 compute_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  compute_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  container_analysis_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 container_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  container_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  credentials: Optional[pulumi.Input[str]] = None,
                  data_catalog_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  data_fusion_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  data_loss_prevention_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 dataproc_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_metastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  datastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -186,14 +183,10 @@ class ProviderArgs:
             pulumi.set(__self__, "cloud_tasks_custom_endpoint", cloud_tasks_custom_endpoint)
         if composer_custom_endpoint is not None:
             pulumi.set(__self__, "composer_custom_endpoint", composer_custom_endpoint)
-        if compute_beta_custom_endpoint is not None:
-            pulumi.set(__self__, "compute_beta_custom_endpoint", compute_beta_custom_endpoint)
         if compute_custom_endpoint is not None:
             pulumi.set(__self__, "compute_custom_endpoint", compute_custom_endpoint)
         if container_analysis_custom_endpoint is not None:
             pulumi.set(__self__, "container_analysis_custom_endpoint", container_analysis_custom_endpoint)
-        if container_beta_custom_endpoint is not None:
-            pulumi.set(__self__, "container_beta_custom_endpoint", container_beta_custom_endpoint)
         if container_custom_endpoint is not None:
             pulumi.set(__self__, "container_custom_endpoint", container_custom_endpoint)
         if credentials is not None:
@@ -206,8 +199,6 @@ class ProviderArgs:
             pulumi.set(__self__, "data_loss_prevention_custom_endpoint", data_loss_prevention_custom_endpoint)
         if dataflow_custom_endpoint is not None:
             pulumi.set(__self__, "dataflow_custom_endpoint", dataflow_custom_endpoint)
-        if dataproc_beta_custom_endpoint is not None:
-            pulumi.set(__self__, "dataproc_beta_custom_endpoint", dataproc_beta_custom_endpoint)
         if dataproc_custom_endpoint is not None:
             pulumi.set(__self__, "dataproc_custom_endpoint", dataproc_custom_endpoint)
         if dataproc_metastore_custom_endpoint is not None:
@@ -622,15 +613,6 @@ class ProviderArgs:
         pulumi.set(self, "composer_custom_endpoint", value)
 
     @property
-    @pulumi.getter(name="computeBetaCustomEndpoint")
-    def compute_beta_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "compute_beta_custom_endpoint")
-
-    @compute_beta_custom_endpoint.setter
-    def compute_beta_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "compute_beta_custom_endpoint", value)
-
-    @property
     @pulumi.getter(name="computeCustomEndpoint")
     def compute_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "compute_custom_endpoint")
@@ -647,15 +629,6 @@ class ProviderArgs:
     @container_analysis_custom_endpoint.setter
     def container_analysis_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "container_analysis_custom_endpoint", value)
-
-    @property
-    @pulumi.getter(name="containerBetaCustomEndpoint")
-    def container_beta_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "container_beta_custom_endpoint")
-
-    @container_beta_custom_endpoint.setter
-    def container_beta_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "container_beta_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="containerCustomEndpoint")
@@ -710,15 +683,6 @@ class ProviderArgs:
     @dataflow_custom_endpoint.setter
     def dataflow_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "dataflow_custom_endpoint", value)
-
-    @property
-    @pulumi.getter(name="dataprocBetaCustomEndpoint")
-    def dataproc_beta_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "dataproc_beta_custom_endpoint")
-
-    @dataproc_beta_custom_endpoint.setter
-    def dataproc_beta_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "dataproc_beta_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="dataprocCustomEndpoint")
@@ -1368,17 +1332,14 @@ class Provider(pulumi.ProviderResource):
                  cloud_scheduler_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_tasks_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  composer_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 compute_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  compute_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  container_analysis_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 container_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  container_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  credentials: Optional[pulumi.Input[str]] = None,
                  data_catalog_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  data_fusion_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  data_loss_prevention_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 dataproc_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_metastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  datastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1514,17 +1475,14 @@ class Provider(pulumi.ProviderResource):
                  cloud_scheduler_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_tasks_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  composer_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 compute_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  compute_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  container_analysis_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 container_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  container_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  credentials: Optional[pulumi.Input[str]] = None,
                  data_catalog_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  data_fusion_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  data_loss_prevention_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 dataproc_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_metastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  datastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1635,17 +1593,14 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["cloud_scheduler_custom_endpoint"] = cloud_scheduler_custom_endpoint
             __props__.__dict__["cloud_tasks_custom_endpoint"] = cloud_tasks_custom_endpoint
             __props__.__dict__["composer_custom_endpoint"] = composer_custom_endpoint
-            __props__.__dict__["compute_beta_custom_endpoint"] = compute_beta_custom_endpoint
             __props__.__dict__["compute_custom_endpoint"] = compute_custom_endpoint
             __props__.__dict__["container_analysis_custom_endpoint"] = container_analysis_custom_endpoint
-            __props__.__dict__["container_beta_custom_endpoint"] = container_beta_custom_endpoint
             __props__.__dict__["container_custom_endpoint"] = container_custom_endpoint
             __props__.__dict__["credentials"] = credentials
             __props__.__dict__["data_catalog_custom_endpoint"] = data_catalog_custom_endpoint
             __props__.__dict__["data_fusion_custom_endpoint"] = data_fusion_custom_endpoint
             __props__.__dict__["data_loss_prevention_custom_endpoint"] = data_loss_prevention_custom_endpoint
             __props__.__dict__["dataflow_custom_endpoint"] = dataflow_custom_endpoint
-            __props__.__dict__["dataproc_beta_custom_endpoint"] = dataproc_beta_custom_endpoint
             __props__.__dict__["dataproc_custom_endpoint"] = dataproc_custom_endpoint
             __props__.__dict__["dataproc_metastore_custom_endpoint"] = dataproc_metastore_custom_endpoint
             __props__.__dict__["datastore_custom_endpoint"] = datastore_custom_endpoint
@@ -1872,11 +1827,6 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "composer_custom_endpoint")
 
     @property
-    @pulumi.getter(name="computeBetaCustomEndpoint")
-    def compute_beta_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
-        return pulumi.get(self, "compute_beta_custom_endpoint")
-
-    @property
     @pulumi.getter(name="computeCustomEndpoint")
     def compute_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "compute_custom_endpoint")
@@ -1885,11 +1835,6 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="containerAnalysisCustomEndpoint")
     def container_analysis_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "container_analysis_custom_endpoint")
-
-    @property
-    @pulumi.getter(name="containerBetaCustomEndpoint")
-    def container_beta_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
-        return pulumi.get(self, "container_beta_custom_endpoint")
 
     @property
     @pulumi.getter(name="containerCustomEndpoint")
@@ -1920,11 +1865,6 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="dataflowCustomEndpoint")
     def dataflow_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "dataflow_custom_endpoint")
-
-    @property
-    @pulumi.getter(name="dataprocBetaCustomEndpoint")
-    def dataproc_beta_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
-        return pulumi.get(self, "dataproc_beta_custom_endpoint")
 
     @property
     @pulumi.getter(name="dataprocCustomEndpoint")

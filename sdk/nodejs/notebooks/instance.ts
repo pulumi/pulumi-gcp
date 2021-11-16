@@ -104,10 +104,6 @@ import * as utilities from "../utilities";
  *     labels: {
  *         k: "val",
  *     },
- *     nicType: "VIRTIO_NET",
- *     reservationAffinity: {
- *         consumeReservationType: "NO_RESERVATION",
- *     },
  * });
  * ```
  *

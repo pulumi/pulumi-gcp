@@ -5,29 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Manages a RuntimeConfig resource in Google Cloud.
- *
- * !> This resource has been deprecated in the google (GA) provider, and will only be available in the google-beta provider in a future release.
- *
- * To get more information about RuntimeConfigs, see:
- *
- * * [API documentation](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/v1beta1/projects.configs)
- * * How-to Guides
- *     * [Runtime Configurator Fundamentals](https://cloud.google.com/deployment-manager/runtime-configurator/)
- *
- * ## Example Usage
- *
- * Example creating a RuntimeConfig resource.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const my_runtime_config = new gcp.runtimeconfig.Config("my-runtime-config", {
- *     description: "Runtime configuration values for my service",
- * });
- * ```
- *
  * ## Import
  *
  * Runtime Configs can be imported using the `name` or full config name, e.g.

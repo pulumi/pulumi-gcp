@@ -12,118 +12,46 @@ namespace Pulumi.Gcp.Composer.Inputs
 
     public sealed class EnvironmentConfigNodeConfigArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The disk size in GB used for node VMs. Minimum size is 20GB.
-        /// If unspecified, defaults to 100GB. Cannot be updated. This field is supported
-        /// for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-        /// </summary>
         [Input("diskSizeGb")]
         public Input<int>? DiskSizeGb { get; set; }
 
-        /// <summary>
-        /// Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines
-        /// nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for
-        /// all destination addresses, except between pods traffic.
-        /// See the [documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent).
-        /// </summary>
         [Input("enableIpMasqAgent")]
         public Input<bool>? EnableIpMasqAgent { get; set; }
 
-        /// <summary>
-        /// Configuration for controlling how IPs are allocated in the GKE cluster.
-        /// Structure is documented below.
-        /// Cannot be updated.
-        /// </summary>
         [Input("ipAllocationPolicy")]
         public Input<Inputs.EnvironmentConfigNodeConfigIpAllocationPolicyArgs>? IpAllocationPolicy { get; set; }
 
-        /// <summary>
-        /// Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2,
-        /// composer-n1-webserver-4 or composer-n1-webserver-8.
-        /// Value custom is returned only in response, if Airflow web server parameters were
-        /// manually changed to a non-standard values.
-        /// </summary>
         [Input("machineType")]
         public Input<string>? MachineType { get; set; }
 
-        /// <summary>
-        /// The maximum pods per node in the GKE cluster allocated during environment
-        /// creation. Lowering this value reduces IP address consumption by the Cloud
-        /// Composer Kubernetes cluster. This value can only be set if the environment is VPC-Native.
-        /// The range of possible values is 8-110, and the default is 32.
-        /// Cannot be updated. This field is supported for Cloud Composer environments
-        /// in versions composer-1.*.*-airflow-*.*.*.
-        /// </summary>
         [Input("maxPodsPerNode")]
         public Input<int>? MaxPodsPerNode { get; set; }
 
-        /// <summary>
-        /// The Compute Engine network to be used for machine
-        /// communications, specified as a self-link, relative resource name
-        /// (e.g. "projects/{project}/global/networks/{network}"), by name.
-        /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
 
         [Input("oauthScopes")]
         private InputList<string>? _oauthScopes;
-
-        /// <summary>
-        /// The set of Google API scopes to be made available on all node
-        /// VMs. Cannot be updated. If empty, defaults to
-        /// `["https://www.googleapis.com/auth/cloud-platform"]`. This field is
-        /// supported for Cloud Composer environments in versions
-        /// composer-1.*.*-airflow-*.*.*.
-        /// </summary>
         public InputList<string> OauthScopes
         {
             get => _oauthScopes ?? (_oauthScopes = new InputList<string>());
             set => _oauthScopes = value;
         }
 
-        /// <summary>
-        /// The Google Cloud Platform Service Account to be used by the
-        /// node VMs. If a service account is not specified, the "default"
-        /// Compute Engine service account is used. Cannot be updated. If given,
-        /// note that the service account must have `roles/composer.worker`
-        /// for any GCP resources created under the Cloud Composer Environment.
-        /// </summary>
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
 
-        /// <summary>
-        /// The Compute Engine subnetwork to be used for machine
-        /// communications, , specified as a self-link, relative resource name (e.g.
-        /// "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided,
-        /// network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
-        /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;
-
-        /// <summary>
-        /// The list of instance tags applied to all node VMs. Tags are
-        /// used to identify valid sources or targets for network
-        /// firewalls. Each tag within the list must comply with RFC1035.
-        /// Cannot be updated. This field is supported for Cloud Composer
-        /// environments in versions composer-1.*.*-airflow-*.*.*.
-        /// </summary>
         public InputList<string> Tags
         {
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The Compute Engine zone in which to deploy the VMs running the
-        /// Apache Airflow software, specified as the zone name or
-        /// relative resource name (e.g. "projects/{project}/zones/{zone}"). Must
-        /// belong to the enclosing environment's project and region. This field is
-        /// supported for Cloud Composer environments in versions
-        /// composer-1.*.*-airflow-*.*.*.
-        /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
 

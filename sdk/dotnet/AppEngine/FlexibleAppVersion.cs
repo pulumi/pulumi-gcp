@@ -61,6 +61,7 @@ namespace Pulumi.Gcp.AppEngine
     ///         var bucket = new Gcp.Storage.Bucket("bucket", new Gcp.Storage.BucketArgs
     ///         {
     ///             Project = myProject.ProjectId,
+    ///             Location = "US",
     ///         });
     ///         var @object = new Gcp.Storage.BucketObject("object", new Gcp.Storage.BucketObjectArgs
     ///         {

@@ -27,7 +27,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/cloudbuild"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudbuild"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -59,7 +59,7 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/cloudbuild"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudbuild"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -159,14 +159,19 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/cloudbuild"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/projects"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/serviceAccount"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudbuild"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		project, err := organizations.LookupProject(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
 // 		cloudbuildServiceAccount, err := serviceAccount.NewAccount(ctx, "cloudbuildServiceAccount", &serviceAccount.AccountArgs{
 // 			AccountId: pulumi.String("my-service-account"),
 // 		})
@@ -174,7 +179,8 @@ import (
 // 			return err
 // 		}
 // 		actAs, err := projects.NewIAMMember(ctx, "actAs", &projects.IAMMemberArgs{
-// 			Role: pulumi.String("roles/iam.serviceAccountUser"),
+// 			Project: pulumi.String(project.ProjectId),
+// 			Role:    pulumi.String("roles/iam.serviceAccountUser"),
 // 			Member: cloudbuildServiceAccount.Email.ApplyT(func(email string) (string, error) {
 // 				return fmt.Sprintf("%v%v", "serviceAccount:", email), nil
 // 			}).(pulumi.StringOutput),
@@ -183,7 +189,8 @@ import (
 // 			return err
 // 		}
 // 		logsWriter, err := projects.NewIAMMember(ctx, "logsWriter", &projects.IAMMemberArgs{
-// 			Role: pulumi.String("roles/logging.logWriter"),
+// 			Project: pulumi.String(project.ProjectId),
+// 			Role:    pulumi.String("roles/logging.logWriter"),
 // 			Member: cloudbuildServiceAccount.Email.ApplyT(func(email string) (string, error) {
 // 				return fmt.Sprintf("%v%v", "serviceAccount:", email), nil
 // 			}).(pulumi.StringOutput),

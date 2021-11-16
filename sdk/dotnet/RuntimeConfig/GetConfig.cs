@@ -11,39 +11,6 @@ namespace Pulumi.Gcp.RuntimeConfig
 {
     public static class GetConfig
     {
-        /// <summary>
-        /// To get more information about RuntimeConfigs, see:
-        /// 
-        /// 
-        /// !&gt; This datasource has been deprecated in the google (GA) provider, and will only be available in the google-beta provider in a future release.
-        /// 
-        /// * [API documentation](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/v1beta1/projects.configs)
-        /// * How-to Guides
-        ///     * [Runtime Configurator Fundamentals](https://cloud.google.com/deployment-manager/runtime-configurator/)
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var run_service = Output.Create(Gcp.RuntimeConfig.GetConfig.InvokeAsync(new Gcp.RuntimeConfig.GetConfigArgs
-        ///         {
-        ///             Name = "my-service",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetConfigResult> InvokeAsync(GetConfigArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetConfigResult>("gcp:runtimeconfig/getConfig:getConfig", args ?? new GetConfigArgs(), options.WithVersion());
     }

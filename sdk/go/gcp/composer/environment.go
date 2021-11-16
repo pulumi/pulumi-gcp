@@ -10,176 +10,35 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An environment for running orchestration tasks.
+// ## Import
 //
-// Environments run Apache Airflow software on Google infrastructure.
+// Environment can be imported using any of these accepted formats
 //
-// To get more information about Environments, see:
-//
-// * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments)
-// * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/composer/docs)
-//     * [Configuring Shared VPC for Composer Environments](https://cloud.google.com/composer/docs/how-to/managing/configuring-shared-vpc)
-// * [Apache Airflow Documentation](http://airflow.apache.org/)
-//
-// > **Warning:** We **STRONGLY** recommend you read the [GCP guides](https://cloud.google.com/composer/docs/how-to)
-//   as the Environment resource requires a long deployment process and involves several layers of GCP infrastructure,
-//   including a Kubernetes Engine cluster, Cloud Storage, and Compute networking resources. Due to limitations of the API,
-//   This provider will not be able to automatically find or manage many of these underlying resources. In particular:
-//   * It can take up to one hour to create or update an environment resource. In addition, GCP may only detect some
-//     errors in configuration when they are used (e.g. ~40-50 minutes into the creation process), and is prone to limited
-//     error reporting. If you encounter confusing or uninformative errors, please verify your configuration is valid
-//     against GCP Cloud Composer before filing bugs against this provider provider.
-//   * **Environments create Google Cloud Storage buckets that do not get cleaned up automatically** on environment
-//     deletion. [More about Composer's use of Cloud Storage](https://cloud.google.com/composer/docs/concepts/cloud-storage).
-//   * Please review the [known issues](https://cloud.google.com/composer/docs/known-issues) for Composer if you are having problems.
-//
-// ## Example Usage
-// ### Basic Usage
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/composer"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := composer.NewEnvironment(ctx, "test", &composer.EnvironmentArgs{
-// 			Region: pulumi.String("us-central1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+// ```sh
+//  $ pulumi import gcp:composer/environment:Environment default projects/{{project}}/locations/{{region}}/environments/{{name}}
 // ```
-// ### With GKE and Compute Resource Dependencies
 //
-// **NOTE** To use custom service accounts, you need to give at least `role/composer.worker` to the service account being used by the GKE Nodes on the Composer project.
-// You may need to assign additional roles depending on what the Airflow DAGs will be running.
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/composer"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/compute"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/projects"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/serviceAccount"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		testNetwork, err := compute.NewNetwork(ctx, "testNetwork", &compute.NetworkArgs{
-// 			AutoCreateSubnetworks: pulumi.Bool(false),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		testSubnetwork, err := compute.NewSubnetwork(ctx, "testSubnetwork", &compute.SubnetworkArgs{
-// 			IpCidrRange: pulumi.String("10.2.0.0/16"),
-// 			Region:      pulumi.String("us-central1"),
-// 			Network:     testNetwork.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		testAccount, err := serviceAccount.NewAccount(ctx, "testAccount", &serviceAccount.AccountArgs{
-// 			AccountId:   pulumi.String("composer-env-account"),
-// 			DisplayName: pulumi.String("Test Service Account for Composer Environment"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = composer.NewEnvironment(ctx, "testEnvironment", &composer.EnvironmentArgs{
-// 			Region: pulumi.String("us-central1"),
-// 			Config: &composer.EnvironmentConfigArgs{
-// 				NodeCount: pulumi.Int(4),
-// 				NodeConfig: &composer.EnvironmentConfigNodeConfigArgs{
-// 					Zone:           pulumi.String("us-central1-a"),
-// 					MachineType:    pulumi.String("e2-medium"),
-// 					Network:        testNetwork.ID(),
-// 					Subnetwork:     testSubnetwork.ID(),
-// 					ServiceAccount: testAccount.Name,
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = projects.NewIAMMember(ctx, "composer_worker", &projects.IAMMemberArgs{
-// 			Role: pulumi.String("roles/composer.worker"),
-// 			Member: testAccount.Email.ApplyT(func(email string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "serviceAccount:", email), nil
-// 			}).(pulumi.StringOutput),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+// ```sh
+//  $ pulumi import gcp:composer/environment:Environment default {{project}}/{{region}}/{{name}}
 // ```
-// ### With Software (Airflow) Config
-// ```go
-// package main
 //
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/composer"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := composer.NewEnvironment(ctx, "test", &composer.EnvironmentArgs{
-// 			Config: &composer.EnvironmentConfigArgs{
-// 				SoftwareConfig: &composer.EnvironmentConfigSoftwareConfigArgs{
-// 					AirflowConfigOverrides: pulumi.StringMap{
-// 						"core-loadExample": pulumi.String("True"),
-// 					},
-// 					EnvVariables: pulumi.StringMap{
-// 						"FOO": pulumi.String("bar"),
-// 					},
-// 					PypiPackages: pulumi.StringMap{
-// 						"numpy": pulumi.String(""),
-// 						"scipy": pulumi.String("==1.1.0"),
-// 					},
-// 				},
-// 			},
-// 			Region: pulumi.String("us-central1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+// ```sh
+//  $ pulumi import gcp:composer/environment:Environment default {{name}}
 // ```
 type Environment struct {
 	pulumi.CustomResourceState
 
-	// Configuration parameters for this environment  Structure is documented below.
+	// Configuration parameters for this environment.
 	Config EnvironmentConfigOutput `pulumi:"config"`
-	// User-defined labels for this environment. The labels map can contain
-	// no more than 64 entries. Entries of the labels map are UTF8 strings
-	// that comply with the following restrictions:
-	// Label keys must be between 1 and 63 characters long and must conform
-	// to the following regular expression: `a-z?`.
-	// Label values must be between 0 and 63 characters long and must
-	// conform to the regular expression `(a-z?)?`.
-	// No more than 64 labels can be associated with a given environment.
-	// Both keys and values must be <= 128 bytes in size.
+	// User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
+	// are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
+	// must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
+	// characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
+	// associated with a given environment. Both keys and values must be <= 128 bytes in size.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// Name of the environment
+	// Name of the environment.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The location or Compute Engine region for the environment.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
@@ -214,44 +73,34 @@ func GetEnvironment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Environment resources.
 type environmentState struct {
-	// Configuration parameters for this environment  Structure is documented below.
+	// Configuration parameters for this environment.
 	Config *EnvironmentConfig `pulumi:"config"`
-	// User-defined labels for this environment. The labels map can contain
-	// no more than 64 entries. Entries of the labels map are UTF8 strings
-	// that comply with the following restrictions:
-	// Label keys must be between 1 and 63 characters long and must conform
-	// to the following regular expression: `a-z?`.
-	// Label values must be between 0 and 63 characters long and must
-	// conform to the regular expression `(a-z?)?`.
-	// No more than 64 labels can be associated with a given environment.
-	// Both keys and values must be <= 128 bytes in size.
+	// User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
+	// are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
+	// must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
+	// characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
+	// associated with a given environment. Both keys and values must be <= 128 bytes in size.
 	Labels map[string]string `pulumi:"labels"`
-	// Name of the environment
+	// Name of the environment.
 	Name *string `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The location or Compute Engine region for the environment.
 	Region *string `pulumi:"region"`
 }
 
 type EnvironmentState struct {
-	// Configuration parameters for this environment  Structure is documented below.
+	// Configuration parameters for this environment.
 	Config EnvironmentConfigPtrInput
-	// User-defined labels for this environment. The labels map can contain
-	// no more than 64 entries. Entries of the labels map are UTF8 strings
-	// that comply with the following restrictions:
-	// Label keys must be between 1 and 63 characters long and must conform
-	// to the following regular expression: `a-z?`.
-	// Label values must be between 0 and 63 characters long and must
-	// conform to the regular expression `(a-z?)?`.
-	// No more than 64 labels can be associated with a given environment.
-	// Both keys and values must be <= 128 bytes in size.
+	// User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
+	// are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
+	// must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
+	// characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
+	// associated with a given environment. Both keys and values must be <= 128 bytes in size.
 	Labels pulumi.StringMapInput
-	// Name of the environment
+	// Name of the environment.
 	Name pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The location or Compute Engine region for the environment.
 	Region pulumi.StringPtrInput
@@ -262,22 +111,17 @@ func (EnvironmentState) ElementType() reflect.Type {
 }
 
 type environmentArgs struct {
-	// Configuration parameters for this environment  Structure is documented below.
+	// Configuration parameters for this environment.
 	Config *EnvironmentConfig `pulumi:"config"`
-	// User-defined labels for this environment. The labels map can contain
-	// no more than 64 entries. Entries of the labels map are UTF8 strings
-	// that comply with the following restrictions:
-	// Label keys must be between 1 and 63 characters long and must conform
-	// to the following regular expression: `a-z?`.
-	// Label values must be between 0 and 63 characters long and must
-	// conform to the regular expression `(a-z?)?`.
-	// No more than 64 labels can be associated with a given environment.
-	// Both keys and values must be <= 128 bytes in size.
+	// User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
+	// are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
+	// must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
+	// characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
+	// associated with a given environment. Both keys and values must be <= 128 bytes in size.
 	Labels map[string]string `pulumi:"labels"`
-	// Name of the environment
+	// Name of the environment.
 	Name *string `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The location or Compute Engine region for the environment.
 	Region *string `pulumi:"region"`
@@ -285,22 +129,17 @@ type environmentArgs struct {
 
 // The set of arguments for constructing a Environment resource.
 type EnvironmentArgs struct {
-	// Configuration parameters for this environment  Structure is documented below.
+	// Configuration parameters for this environment.
 	Config EnvironmentConfigPtrInput
-	// User-defined labels for this environment. The labels map can contain
-	// no more than 64 entries. Entries of the labels map are UTF8 strings
-	// that comply with the following restrictions:
-	// Label keys must be between 1 and 63 characters long and must conform
-	// to the following regular expression: `a-z?`.
-	// Label values must be between 0 and 63 characters long and must
-	// conform to the regular expression `(a-z?)?`.
-	// No more than 64 labels can be associated with a given environment.
-	// Both keys and values must be <= 128 bytes in size.
+	// User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
+	// are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
+	// must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
+	// characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
+	// associated with a given environment. Both keys and values must be <= 128 bytes in size.
 	Labels pulumi.StringMapInput
-	// Name of the environment
+	// Name of the environment.
 	Name pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The location or Compute Engine region for the environment.
 	Region pulumi.StringPtrInput

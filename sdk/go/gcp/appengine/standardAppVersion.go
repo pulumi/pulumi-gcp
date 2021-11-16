@@ -31,14 +31,16 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/appengine"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/storage"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/appengine"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		bucket, err := storage.NewBucket(ctx, "bucket", nil)
+// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+// 			Location: pulumi.String("US"),
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -149,7 +151,7 @@ type StandardAppVersion struct {
 	Deployment StandardAppVersionDeploymentOutput `pulumi:"deployment"`
 	// The entrypoint for the application.
 	// Structure is documented below.
-	Entrypoint StandardAppVersionEntrypointPtrOutput `pulumi:"entrypoint"`
+	Entrypoint StandardAppVersionEntrypointOutput `pulumi:"entrypoint"`
 	// Environment variables available to the application.
 	EnvVariables pulumi.StringMapOutput `pulumi:"envVariables"`
 	// An ordered list of URL-matching patterns that should be applied to incoming requests.
@@ -202,6 +204,9 @@ func NewStandardAppVersion(ctx *pulumi.Context,
 
 	if args.Deployment == nil {
 		return nil, errors.New("invalid value for required argument 'Deployment'")
+	}
+	if args.Entrypoint == nil {
+		return nil, errors.New("invalid value for required argument 'Entrypoint'")
 	}
 	if args.Runtime == nil {
 		return nil, errors.New("invalid value for required argument 'Runtime'")
@@ -364,7 +369,7 @@ type standardAppVersionArgs struct {
 	Deployment StandardAppVersionDeployment `pulumi:"deployment"`
 	// The entrypoint for the application.
 	// Structure is documented below.
-	Entrypoint *StandardAppVersionEntrypoint `pulumi:"entrypoint"`
+	Entrypoint StandardAppVersionEntrypoint `pulumi:"entrypoint"`
 	// Environment variables available to the application.
 	EnvVariables map[string]string `pulumi:"envVariables"`
 	// An ordered list of URL-matching patterns that should be applied to incoming requests.
@@ -421,7 +426,7 @@ type StandardAppVersionArgs struct {
 	Deployment StandardAppVersionDeploymentInput
 	// The entrypoint for the application.
 	// Structure is documented below.
-	Entrypoint StandardAppVersionEntrypointPtrInput
+	Entrypoint StandardAppVersionEntrypointInput
 	// Environment variables available to the application.
 	EnvVariables pulumi.StringMapInput
 	// An ordered list of URL-matching patterns that should be applied to incoming requests.

@@ -30,8 +30,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const topic = new gcp.pubsub.Topic("topic", {});
- * const bucket1 = new gcp.storage.Bucket("bucket1", {forceDestroy: true});
- * const bucket2 = new gcp.storage.Bucket("bucket2", {forceDestroy: true});
+ * const bucket1 = new gcp.storage.Bucket("bucket1", {
+ *     location: "US",
+ *     forceDestroy: true,
+ * });
+ * const bucket2 = new gcp.storage.Bucket("bucket2", {
+ *     location: "US",
+ *     forceDestroy: true,
+ * });
  * const pubsubStream = new gcp.dataflow.Job("pubsubStream", {
  *     templateGcsPath: "gs://my-bucket/templates/template_file",
  *     tempGcsLocation: "gs://my-bucket/tmp_dir",

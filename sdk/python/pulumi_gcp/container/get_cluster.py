@@ -21,7 +21,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, addons_configs=None, authenticator_groups_configs=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, cluster_telemetries=None, confidential_nodes=None, database_encryptions=None, datapath_provider=None, default_max_pods_per_node=None, default_snat_statuses=None, description=None, dns_configs=None, enable_autopilot=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_l4_ilb_subsetting=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, id=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_configs=None, logging_service=None, maintenance_policies=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, min_master_version=None, monitoring_configs=None, monitoring_service=None, name=None, network=None, network_policies=None, networking_mode=None, node_configs=None, node_locations=None, node_pools=None, node_version=None, notification_configs=None, operation=None, pod_security_policy_configs=None, private_cluster_configs=None, private_ipv6_google_access=None, project=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, self_link=None, services_ipv4_cidr=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscalings=None, workload_identity_configs=None):
+    def __init__(__self__, addons_configs=None, authenticator_groups_configs=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, cluster_telemetries=None, confidential_nodes=None, database_encryptions=None, datapath_provider=None, default_max_pods_per_node=None, default_snat_statuses=None, description=None, dns_configs=None, enable_autopilot=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_l4_ilb_subsetting=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, id=None, initial_node_count=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_configs=None, logging_service=None, maintenance_policies=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, min_master_version=None, monitoring_configs=None, monitoring_service=None, name=None, network=None, network_policies=None, networking_mode=None, node_configs=None, node_locations=None, node_pools=None, node_version=None, notification_configs=None, operation=None, pod_security_policy_configs=None, private_cluster_configs=None, private_ipv6_google_access=None, project=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, self_link=None, services_ipv4_cidr=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscalings=None, workload_identity_configs=None):
         if addons_configs and not isinstance(addons_configs, list):
             raise TypeError("Expected argument 'addons_configs' to be a list")
         pulumi.set(__self__, "addons_configs", addons_configs)
@@ -91,9 +91,6 @@ class GetClusterResult:
         if initial_node_count and not isinstance(initial_node_count, int):
             raise TypeError("Expected argument 'initial_node_count' to be a int")
         pulumi.set(__self__, "initial_node_count", initial_node_count)
-        if instance_group_urls and not isinstance(instance_group_urls, list):
-            raise TypeError("Expected argument 'instance_group_urls' to be a list")
-        pulumi.set(__self__, "instance_group_urls", instance_group_urls)
         if ip_allocation_policies and not isinstance(ip_allocation_policies, list):
             raise TypeError("Expected argument 'ip_allocation_policies' to be a list")
         pulumi.set(__self__, "ip_allocation_policies", ip_allocation_policies)
@@ -322,11 +319,6 @@ class GetClusterResult:
         return pulumi.get(self, "initial_node_count")
 
     @property
-    @pulumi.getter(name="instanceGroupUrls")
-    def instance_group_urls(self) -> Sequence[str]:
-        return pulumi.get(self, "instance_group_urls")
-
-    @property
     @pulumi.getter(name="ipAllocationPolicies")
     def ip_allocation_policies(self) -> Sequence['outputs.GetClusterIpAllocationPolicyResult']:
         return pulumi.get(self, "ip_allocation_policies")
@@ -536,7 +528,6 @@ class AwaitableGetClusterResult(GetClusterResult):
             endpoint=self.endpoint,
             id=self.id,
             initial_node_count=self.initial_node_count,
-            instance_group_urls=self.instance_group_urls,
             ip_allocation_policies=self.ip_allocation_policies,
             label_fingerprint=self.label_fingerprint,
             location=self.location,
@@ -590,10 +581,8 @@ def get_cluster(location: Optional[str] = None,
 
     my_cluster = gcp.container.get_cluster(name="my-cluster",
         location="us-east1-a")
-    pulumi.export("clusterUsername", my_cluster.master_auths[0].username)
-    pulumi.export("clusterPassword", my_cluster.master_auths[0].password)
     pulumi.export("endpoint", my_cluster.endpoint)
-    pulumi.export("instanceGroupUrls", my_cluster.instance_group_urls)
+    pulumi.export("instanceGroupUrls", my_cluster.node_pools[0].instance_group_urls)
     pulumi.export("nodeConfig", my_cluster.node_configs)
     pulumi.export("nodePools", my_cluster.node_pools)
     ```
@@ -640,7 +629,6 @@ def get_cluster(location: Optional[str] = None,
         endpoint=__ret__.endpoint,
         id=__ret__.id,
         initial_node_count=__ret__.initial_node_count,
-        instance_group_urls=__ret__.instance_group_urls,
         ip_allocation_policies=__ret__.ip_allocation_policies,
         label_fingerprint=__ret__.label_fingerprint,
         location=__ret__.location,
@@ -695,10 +683,8 @@ def get_cluster_output(location: Optional[pulumi.Input[Optional[str]]] = None,
 
     my_cluster = gcp.container.get_cluster(name="my-cluster",
         location="us-east1-a")
-    pulumi.export("clusterUsername", my_cluster.master_auths[0].username)
-    pulumi.export("clusterPassword", my_cluster.master_auths[0].password)
     pulumi.export("endpoint", my_cluster.endpoint)
-    pulumi.export("instanceGroupUrls", my_cluster.instance_group_urls)
+    pulumi.export("instanceGroupUrls", my_cluster.node_pools[0].instance_group_urls)
     pulumi.export("nodeConfig", my_cluster.node_configs)
     pulumi.export("nodePools", my_cluster.node_pools)
     ```

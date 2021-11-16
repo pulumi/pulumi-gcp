@@ -25,6 +25,7 @@ const computeNetwork = new gcp.compute.Network("network", {
 const computeFirewall = new gcp.compute.Firewall("firewall", {
     project: projectName,
     network: computeNetwork.selfLink,
+    sourceTags: ["foo"],
     allows: [
         {
             protocol: "icmp",

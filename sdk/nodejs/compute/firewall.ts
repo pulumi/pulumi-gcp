@@ -69,6 +69,7 @@ import * as utilities from "../utilities";
  *     description: "Creates firewall rule targeting tagged instances",
  *     network: "default",
  *     project: "my-project-name",
+ *     sourceTags: ["foo"],
  *     targetTags: ["web"],
  * });
  * ```
@@ -149,7 +150,8 @@ export class Firewall extends pulumi.CustomResource {
      * Direction of traffic to which this firewall applies; default is
      * INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
      * destinationRanges; For EGRESS traffic, it is NOT supported to specify
-     * sourceRanges OR sourceTags.
+     * `sourceRanges` OR `sourceTags`. For INGRESS traffic, one of `sourceRanges`,
+     * `sourceTags` or `sourceServiceAccounts` is required.
      * Possible values are `INGRESS` and `EGRESS`.
      */
     public readonly direction!: pulumi.Output<string>;
@@ -215,7 +217,7 @@ export class Firewall extends pulumi.CustomResource {
      * connection does not need to match both properties for the firewall to
      * apply. Only IPv4 is supported.
      */
-    public readonly sourceRanges!: pulumi.Output<string[]>;
+    public readonly sourceRanges!: pulumi.Output<string[] | undefined>;
     /**
      * If source service accounts are specified, the firewall will apply only
      * to traffic originating from an instance with a service account in this
@@ -359,7 +361,8 @@ export interface FirewallState {
      * Direction of traffic to which this firewall applies; default is
      * INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
      * destinationRanges; For EGRESS traffic, it is NOT supported to specify
-     * sourceRanges OR sourceTags.
+     * `sourceRanges` OR `sourceTags`. For INGRESS traffic, one of `sourceRanges`,
+     * `sourceTags` or `sourceServiceAccounts` is required.
      * Possible values are `INGRESS` and `EGRESS`.
      */
     direction?: pulumi.Input<string>;
@@ -502,7 +505,8 @@ export interface FirewallArgs {
      * Direction of traffic to which this firewall applies; default is
      * INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
      * destinationRanges; For EGRESS traffic, it is NOT supported to specify
-     * sourceRanges OR sourceTags.
+     * `sourceRanges` OR `sourceTags`. For INGRESS traffic, one of `sourceRanges`,
+     * `sourceTags` or `sourceServiceAccounts` is required.
      * Possible values are `INGRESS` and `EGRESS`.
      */
     direction?: pulumi.Input<string>;

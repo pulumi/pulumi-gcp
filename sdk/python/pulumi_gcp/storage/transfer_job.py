@@ -285,7 +285,8 @@ class TransferJob(pulumi.CustomResource):
         default = gcp.storage.get_transfer_project_servie_account(project=var["project"])
         s3_backup_bucket_bucket = gcp.storage.Bucket("s3-backup-bucketBucket",
             storage_class="NEARLINE",
-            project=var["project"])
+            project=var["project"],
+            location="US")
         s3_backup_bucket_bucket_iam_member = gcp.storage.BucketIAMMember("s3-backup-bucketBucketIAMMember",
             bucket=s3_backup_bucket_bucket.name,
             role="roles/storage.admin",
@@ -379,7 +380,8 @@ class TransferJob(pulumi.CustomResource):
         default = gcp.storage.get_transfer_project_servie_account(project=var["project"])
         s3_backup_bucket_bucket = gcp.storage.Bucket("s3-backup-bucketBucket",
             storage_class="NEARLINE",
-            project=var["project"])
+            project=var["project"],
+            location="US")
         s3_backup_bucket_bucket_iam_member = gcp.storage.BucketIAMMember("s3-backup-bucketBucketIAMMember",
             bucket=s3_backup_bucket_bucket.name,
             role="roles/storage.admin",

@@ -16,26 +16,24 @@ __all__ = ['IAMBindingArgs', 'IAMBinding']
 class IAMBindingArgs:
     def __init__(__self__, *,
                  members: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 project: pulumi.Input[str],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['IAMBindingConditionArgs']] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 condition: Optional[pulumi.Input['IAMBindingConditionArgs']] = None):
         """
         The set of arguments for constructing a IAMBinding resource.
+        :param pulumi.Input[str] project: The project id of the target project. This is not
+               inferred from the provider.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `projects.IAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input['IAMBindingConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
-        :param pulumi.Input[str] project: The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-               Required for `projects.IAMPolicy` - you must explicitly set the project, and it
-               will not be inferred from the provider.
         """
         pulumi.set(__self__, "members", members)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "role", role)
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
-        if project is not None:
-            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -45,6 +43,19 @@ class IAMBindingArgs:
     @members.setter
     def members(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "members", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        """
+        The project id of the target project. This is not
+        inferred from the provider.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -73,20 +84,6 @@ class IAMBindingArgs:
     def condition(self, value: Optional[pulumi.Input['IAMBindingConditionArgs']]):
         pulumi.set(self, "condition", value)
 
-    @property
-    @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-        Required for `projects.IAMPolicy` - you must explicitly set the project, and it
-        will not be inferred from the provider.
-        """
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project", value)
-
 
 @pulumi.input_type
 class _IAMBindingState:
@@ -101,9 +98,8 @@ class _IAMBindingState:
         :param pulumi.Input['IAMBindingConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the project's IAM policy.
-        :param pulumi.Input[str] project: The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-               Required for `projects.IAMPolicy` - you must explicitly set the project, and it
-               will not be inferred from the provider.
+        :param pulumi.Input[str] project: The project id of the target project. This is not
+               inferred from the provider.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `projects.IAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -157,9 +153,8 @@ class _IAMBindingState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-        Required for `projects.IAMPolicy` - you must explicitly set the project, and it
-        will not be inferred from the provider.
+        The project id of the target project. This is not
+        inferred from the provider.
         """
         return pulumi.get(self, "project")
 
@@ -368,9 +363,8 @@ class IAMBinding(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['IAMBindingConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
-        :param pulumi.Input[str] project: The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-               Required for `projects.IAMPolicy` - you must explicitly set the project, and it
-               will not be inferred from the provider.
+        :param pulumi.Input[str] project: The project id of the target project. This is not
+               inferred from the provider.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `projects.IAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -588,6 +582,8 @@ class IAMBinding(pulumi.CustomResource):
             if members is None and not opts.urn:
                 raise TypeError("Missing required property 'members'")
             __props__.__dict__["members"] = members
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
@@ -618,9 +614,8 @@ class IAMBinding(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['IAMBindingConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the project's IAM policy.
-        :param pulumi.Input[str] project: The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-               Required for `projects.IAMPolicy` - you must explicitly set the project, and it
-               will not be inferred from the provider.
+        :param pulumi.Input[str] project: The project id of the target project. This is not
+               inferred from the provider.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `projects.IAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -662,9 +657,8 @@ class IAMBinding(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-        Required for `projects.IAMPolicy` - you must explicitly set the project, and it
-        will not be inferred from the provider.
+        The project id of the target project. This is not
+        inferred from the provider.
         """
         return pulumi.get(self, "project")
 

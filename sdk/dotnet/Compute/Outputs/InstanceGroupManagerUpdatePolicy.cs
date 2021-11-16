@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly int? MaxUnavailablePercent;
         /// <summary>
-        /// , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+        /// ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
         /// </summary>
         public readonly int? MinReadySec;
         /// <summary>

@@ -338,7 +338,6 @@ class _SubscriptionState:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  message_retention_duration: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 path: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  push_config: Optional[pulumi.Input['SubscriptionPushConfigArgs']] = None,
                  retain_acked_messages: Optional[pulumi.Input[bool]] = None,
@@ -394,7 +393,6 @@ class _SubscriptionState:
                A duration in seconds with up to nine fractional digits, terminated
                by 's'. Example: `"600.5s"`.
         :param pulumi.Input[str] name: Name of the subscription.
-        :param pulumi.Input[str] path: Path of the subscription in the format projects/{project}/subscriptions/{name}
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['SubscriptionPushConfigArgs'] push_config: If push delivery is used with this subscription, this field is used to
@@ -427,11 +425,6 @@ class _SubscriptionState:
             pulumi.set(__self__, "message_retention_duration", message_retention_duration)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if path is not None:
-            warnings.warn("""Deprecated in favor of id, which contains an identical value. This field will be removed in the next major release of the provider.""", DeprecationWarning)
-            pulumi.log.warn("""path is deprecated: Deprecated in favor of id, which contains an identical value. This field will be removed in the next major release of the provider.""")
-        if path is not None:
-            pulumi.set(__self__, "path", path)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if push_config is not None:
@@ -578,18 +571,6 @@ class _SubscriptionState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[str]]:
-        """
-        Path of the subscription in the format projects/{project}/subscriptions/{name}
-        """
-        return pulumi.get(self, "path")
-
-    @path.setter
-    def path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "path", value)
 
     @property
     @pulumi.getter
@@ -1008,7 +989,6 @@ class Subscription(pulumi.CustomResource):
             if topic is None and not opts.urn:
                 raise TypeError("Missing required property 'topic'")
             __props__.__dict__["topic"] = topic
-            __props__.__dict__["path"] = None
         super(Subscription, __self__).__init__(
             'gcp:pubsub/subscription:Subscription',
             resource_name,
@@ -1027,7 +1007,6 @@ class Subscription(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             message_retention_duration: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            path: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             push_config: Optional[pulumi.Input[pulumi.InputType['SubscriptionPushConfigArgs']]] = None,
             retain_acked_messages: Optional[pulumi.Input[bool]] = None,
@@ -1088,7 +1067,6 @@ class Subscription(pulumi.CustomResource):
                A duration in seconds with up to nine fractional digits, terminated
                by 's'. Example: `"600.5s"`.
         :param pulumi.Input[str] name: Name of the subscription.
-        :param pulumi.Input[str] path: Path of the subscription in the format projects/{project}/subscriptions/{name}
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['SubscriptionPushConfigArgs']] push_config: If push delivery is used with this subscription, this field is used to
@@ -1117,7 +1095,6 @@ class Subscription(pulumi.CustomResource):
         __props__.__dict__["labels"] = labels
         __props__.__dict__["message_retention_duration"] = message_retention_duration
         __props__.__dict__["name"] = name
-        __props__.__dict__["path"] = path
         __props__.__dict__["project"] = project
         __props__.__dict__["push_config"] = push_config
         __props__.__dict__["retain_acked_messages"] = retain_acked_messages
@@ -1228,14 +1205,6 @@ class Subscription(pulumi.CustomResource):
         Name of the subscription.
         """
         return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter
-    def path(self) -> pulumi.Output[str]:
-        """
-        Path of the subscription in the format projects/{project}/subscriptions/{name}
-        """
-        return pulumi.get(self, "path")
 
     @property
     @pulumi.getter

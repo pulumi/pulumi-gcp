@@ -90,6 +90,7 @@ namespace Pulumi.Gcp.DataLoss
     ///     {
     ///         var bucket = new Gcp.Storage.Bucket("bucket", new Gcp.Storage.BucketArgs
     ///         {
+    ///             Location = "US",
     ///             ForceDestroy = true,
     ///         });
     ///         var @object = new Gcp.Storage.BucketObject("object", new Gcp.Storage.BucketObjectArgs

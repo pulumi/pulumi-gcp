@@ -12,21 +12,12 @@ namespace Pulumi.Gcp.Composer.Inputs
 
     public sealed class EnvironmentConfigWorkloadsConfigGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Configuration for resources used by Airflow schedulers.
-        /// </summary>
         [Input("scheduler")]
         public Input<Inputs.EnvironmentConfigWorkloadsConfigSchedulerGetArgs>? Scheduler { get; set; }
 
-        /// <summary>
-        /// Configuration for resources used by Airflow web server.
-        /// </summary>
         [Input("webServer")]
         public Input<Inputs.EnvironmentConfigWorkloadsConfigWebServerGetArgs>? WebServer { get; set; }
 
-        /// <summary>
-        /// Configuration for resources used by Airflow workers.
-        /// </summary>
         [Input("worker")]
         public Input<Inputs.EnvironmentConfigWorkloadsConfigWorkerGetArgs>? Worker { get; set; }
 

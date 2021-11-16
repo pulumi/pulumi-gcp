@@ -98,17 +98,11 @@ func GetCloudTasksCustomEndpoint(ctx *pulumi.Context) string {
 func GetComposerCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:composerCustomEndpoint")
 }
-func GetComputeBetaCustomEndpoint(ctx *pulumi.Context) string {
-	return config.Get(ctx, "gcp:computeBetaCustomEndpoint")
-}
 func GetComputeCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:computeCustomEndpoint")
 }
 func GetContainerAnalysisCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:containerAnalysisCustomEndpoint")
-}
-func GetContainerBetaCustomEndpoint(ctx *pulumi.Context) string {
-	return config.Get(ctx, "gcp:containerBetaCustomEndpoint")
 }
 func GetContainerCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:containerCustomEndpoint")
@@ -127,9 +121,6 @@ func GetDataLossPreventionCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetDataflowCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:dataflowCustomEndpoint")
-}
-func GetDataprocBetaCustomEndpoint(ctx *pulumi.Context) string {
-	return config.Get(ctx, "gcp:dataprocBetaCustomEndpoint")
 }
 func GetDataprocCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:dataprocCustomEndpoint")

@@ -226,9 +226,8 @@ export class IAMPolicy extends pulumi.CustomResource {
      */
     public readonly policyData!: pulumi.Output<string>;
     /**
-     * The project ID. If not specified for `gcp.projects.IAMBinding`, `gcp.projects.IAMMember`, or `gcp.projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-     * Required for `gcp.projects.IAMPolicy` - you must explicitly set the project, and it
-     * will not be inferred from the provider.
+     * The project id of the target project. This is not
+     * inferred from the provider.
      */
     public readonly project!: pulumi.Output<string>;
 
@@ -282,9 +281,8 @@ export interface IAMPolicyState {
      */
     policyData?: pulumi.Input<string>;
     /**
-     * The project ID. If not specified for `gcp.projects.IAMBinding`, `gcp.projects.IAMMember`, or `gcp.projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-     * Required for `gcp.projects.IAMPolicy` - you must explicitly set the project, and it
-     * will not be inferred from the provider.
+     * The project id of the target project. This is not
+     * inferred from the provider.
      */
     project?: pulumi.Input<string>;
 }
@@ -300,9 +298,8 @@ export interface IAMPolicyArgs {
      */
     policyData: pulumi.Input<string>;
     /**
-     * The project ID. If not specified for `gcp.projects.IAMBinding`, `gcp.projects.IAMMember`, or `gcp.projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-     * Required for `gcp.projects.IAMPolicy` - you must explicitly set the project, and it
-     * will not be inferred from the provider.
+     * The project id of the target project. This is not
+     * inferred from the provider.
      */
     project: pulumi.Input<string>;
 }

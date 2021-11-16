@@ -37,7 +37,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -79,7 +79,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -99,6 +99,9 @@ import (
 // 			Description: pulumi.String("Creates firewall rule targeting tagged instances"),
 // 			Network:     pulumi.String("default"),
 // 			Project:     pulumi.String("my-project-name"),
+// 			SourceTags: pulumi.StringArray{
+// 				pulumi.String("foo"),
+// 			},
 // 			TargetTags: pulumi.StringArray{
 // 				pulumi.String("web"),
 // 			},
@@ -150,7 +153,8 @@ type Firewall struct {
 	// Direction of traffic to which this firewall applies; default is
 	// INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
 	// destinationRanges; For EGRESS traffic, it is NOT supported to specify
-	// sourceRanges OR sourceTags.
+	// `sourceRanges` OR `sourceTags`. For INGRESS traffic, one of `sourceRanges`,
+	// `sourceTags` or `sourceServiceAccounts` is required.
 	// Possible values are `INGRESS` and `EGRESS`.
 	Direction pulumi.StringOutput `pulumi:"direction"`
 	// Denotes whether the firewall rule is disabled, i.e not applied to the
@@ -287,7 +291,8 @@ type firewallState struct {
 	// Direction of traffic to which this firewall applies; default is
 	// INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
 	// destinationRanges; For EGRESS traffic, it is NOT supported to specify
-	// sourceRanges OR sourceTags.
+	// `sourceRanges` OR `sourceTags`. For INGRESS traffic, one of `sourceRanges`,
+	// `sourceTags` or `sourceServiceAccounts` is required.
 	// Possible values are `INGRESS` and `EGRESS`.
 	Direction *string `pulumi:"direction"`
 	// Denotes whether the firewall rule is disabled, i.e not applied to the
@@ -393,7 +398,8 @@ type FirewallState struct {
 	// Direction of traffic to which this firewall applies; default is
 	// INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
 	// destinationRanges; For EGRESS traffic, it is NOT supported to specify
-	// sourceRanges OR sourceTags.
+	// `sourceRanges` OR `sourceTags`. For INGRESS traffic, one of `sourceRanges`,
+	// `sourceTags` or `sourceServiceAccounts` is required.
 	// Possible values are `INGRESS` and `EGRESS`.
 	Direction pulumi.StringPtrInput
 	// Denotes whether the firewall rule is disabled, i.e not applied to the
@@ -501,7 +507,8 @@ type firewallArgs struct {
 	// Direction of traffic to which this firewall applies; default is
 	// INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
 	// destinationRanges; For EGRESS traffic, it is NOT supported to specify
-	// sourceRanges OR sourceTags.
+	// `sourceRanges` OR `sourceTags`. For INGRESS traffic, one of `sourceRanges`,
+	// `sourceTags` or `sourceServiceAccounts` is required.
 	// Possible values are `INGRESS` and `EGRESS`.
 	Direction *string `pulumi:"direction"`
 	// Denotes whether the firewall rule is disabled, i.e not applied to the
@@ -604,7 +611,8 @@ type FirewallArgs struct {
 	// Direction of traffic to which this firewall applies; default is
 	// INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
 	// destinationRanges; For EGRESS traffic, it is NOT supported to specify
-	// sourceRanges OR sourceTags.
+	// `sourceRanges` OR `sourceTags`. For INGRESS traffic, one of `sourceRanges`,
+	// `sourceTags` or `sourceServiceAccounts` is required.
 	// Possible values are `INGRESS` and `EGRESS`.
 	Direction pulumi.StringPtrInput
 	// Denotes whether the firewall rule is disabled, i.e not applied to the

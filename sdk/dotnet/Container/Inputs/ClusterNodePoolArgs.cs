@@ -34,6 +34,14 @@ namespace Pulumi.Gcp.Container.Inputs
             set => _instanceGroupUrls = value;
         }
 
+        [Input("managedInstanceGroupUrls")]
+        private InputList<string>? _managedInstanceGroupUrls;
+        public InputList<string> ManagedInstanceGroupUrls
+        {
+            get => _managedInstanceGroupUrls ?? (_managedInstanceGroupUrls = new InputList<string>());
+            set => _managedInstanceGroupUrls = value;
+        }
+
         [Input("management")]
         public Input<Inputs.ClusterNodePoolManagementArgs>? Management { get; set; }
 

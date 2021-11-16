@@ -30,7 +30,7 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/storage"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -46,6 +46,7 @@ import (
 // 		_, err = storage.NewBucket(ctx, "s3_backup_bucketBucket", &storage.BucketArgs{
 // 			StorageClass: pulumi.String("NEARLINE"),
 // 			Project:      pulumi.Any(_var.Project),
+// 			Location:     pulumi.String("US"),
 // 		})
 // 		if err != nil {
 // 			return err

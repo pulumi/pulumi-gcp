@@ -195,7 +195,6 @@ class _CryptoKeyState:
                  name: Optional[pulumi.Input[str]] = None,
                  purpose: Optional[pulumi.Input[str]] = None,
                  rotation_period: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
                  skip_initial_version_creation: Optional[pulumi.Input[bool]] = None,
                  version_template: Optional[pulumi.Input['CryptoKeyVersionTemplateArgs']] = None):
         """
@@ -216,7 +215,6 @@ class _CryptoKeyState:
                The first rotation will take place after the specified period. The rotation period has
                the format of a decimal number with up to 9 fractional digits, followed by the
                letter `s` (seconds). It must be greater than a day (ie, 86400).
-        :param pulumi.Input[str] self_link: The self link of the created KeyRing in the format projects/{project}/locations/{location}/keyRings/{name}.
         :param pulumi.Input[bool] skip_initial_version_creation: If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
                You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
         :param pulumi.Input['CryptoKeyVersionTemplateArgs'] version_template: A template describing settings for new crypto key versions.
@@ -236,11 +234,6 @@ class _CryptoKeyState:
             pulumi.set(__self__, "purpose", purpose)
         if rotation_period is not None:
             pulumi.set(__self__, "rotation_period", rotation_period)
-        if self_link is not None:
-            warnings.warn("""Deprecated in favor of id, which contains an identical value. This field will be removed in the next major release of the provider.""", DeprecationWarning)
-            pulumi.log.warn("""self_link is deprecated: Deprecated in favor of id, which contains an identical value. This field will be removed in the next major release of the provider.""")
-        if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
         if skip_initial_version_creation is not None:
             pulumi.set(__self__, "skip_initial_version_creation", skip_initial_version_creation)
         if version_template is not None:
@@ -338,18 +331,6 @@ class _CryptoKeyState:
     @rotation_period.setter
     def rotation_period(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "rotation_period", value)
-
-    @property
-    @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[str]]:
-        """
-        The self link of the created KeyRing in the format projects/{project}/locations/{location}/keyRings/{name}.
-        """
-        return pulumi.get(self, "self_link")
-
-    @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "self_link", value)
 
     @property
     @pulumi.getter(name="skipInitialVersionCreation")
@@ -581,7 +562,6 @@ class CryptoKey(pulumi.CustomResource):
             __props__.__dict__["rotation_period"] = rotation_period
             __props__.__dict__["skip_initial_version_creation"] = skip_initial_version_creation
             __props__.__dict__["version_template"] = version_template
-            __props__.__dict__["self_link"] = None
         super(CryptoKey, __self__).__init__(
             'gcp:kms/cryptoKey:CryptoKey',
             resource_name,
@@ -599,7 +579,6 @@ class CryptoKey(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             purpose: Optional[pulumi.Input[str]] = None,
             rotation_period: Optional[pulumi.Input[str]] = None,
-            self_link: Optional[pulumi.Input[str]] = None,
             skip_initial_version_creation: Optional[pulumi.Input[bool]] = None,
             version_template: Optional[pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArgs']]] = None) -> 'CryptoKey':
         """
@@ -625,7 +604,6 @@ class CryptoKey(pulumi.CustomResource):
                The first rotation will take place after the specified period. The rotation period has
                the format of a decimal number with up to 9 fractional digits, followed by the
                letter `s` (seconds). It must be greater than a day (ie, 86400).
-        :param pulumi.Input[str] self_link: The self link of the created KeyRing in the format projects/{project}/locations/{location}/keyRings/{name}.
         :param pulumi.Input[bool] skip_initial_version_creation: If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
                You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
         :param pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArgs']] version_template: A template describing settings for new crypto key versions.
@@ -642,7 +620,6 @@ class CryptoKey(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["purpose"] = purpose
         __props__.__dict__["rotation_period"] = rotation_period
-        __props__.__dict__["self_link"] = self_link
         __props__.__dict__["skip_initial_version_creation"] = skip_initial_version_creation
         __props__.__dict__["version_template"] = version_template
         return CryptoKey(resource_name, opts=opts, __props__=__props__)
@@ -711,14 +688,6 @@ class CryptoKey(pulumi.CustomResource):
         letter `s` (seconds). It must be greater than a day (ie, 86400).
         """
         return pulumi.get(self, "rotation_period")
-
-    @property
-    @pulumi.getter(name="selfLink")
-    def self_link(self) -> pulumi.Output[str]:
-        """
-        The self link of the created KeyRing in the format projects/{project}/locations/{location}/keyRings/{name}.
-        """
-        return pulumi.get(self, "self_link")
 
     @property
     @pulumi.getter(name="skipInitialVersionCreation")

@@ -2947,10 +2947,12 @@ func (o ClusterDefaultSnatStatusPtrOutput) Disabled() pulumi.BoolPtrOutput {
 }
 
 type ClusterDnsConfig struct {
-	// Which in-cluster DNS provider shoul
-	ClusterDns       *string `pulumi:"clusterDns"`
+	// Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
+	ClusterDns *string `pulumi:"clusterDns"`
+	// The suffix used for all cluster service records.
 	ClusterDnsDomain *string `pulumi:"clusterDnsDomain"`
-	ClusterDnsScope  *string `pulumi:"clusterDnsScope"`
+	// The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
+	ClusterDnsScope *string `pulumi:"clusterDnsScope"`
 }
 
 // ClusterDnsConfigInput is an input type that accepts ClusterDnsConfigArgs and ClusterDnsConfigOutput values.
@@ -2965,10 +2967,12 @@ type ClusterDnsConfigInput interface {
 }
 
 type ClusterDnsConfigArgs struct {
-	// Which in-cluster DNS provider shoul
-	ClusterDns       pulumi.StringPtrInput `pulumi:"clusterDns"`
+	// Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
+	ClusterDns pulumi.StringPtrInput `pulumi:"clusterDns"`
+	// The suffix used for all cluster service records.
 	ClusterDnsDomain pulumi.StringPtrInput `pulumi:"clusterDnsDomain"`
-	ClusterDnsScope  pulumi.StringPtrInput `pulumi:"clusterDnsScope"`
+	// The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
+	ClusterDnsScope pulumi.StringPtrInput `pulumi:"clusterDnsScope"`
 }
 
 func (ClusterDnsConfigArgs) ElementType() reflect.Type {
@@ -3048,15 +3052,17 @@ func (o ClusterDnsConfigOutput) ToClusterDnsConfigPtrOutputWithContext(ctx conte
 	}).(ClusterDnsConfigPtrOutput)
 }
 
-// Which in-cluster DNS provider shoul
+// Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
 func (o ClusterDnsConfigOutput) ClusterDns() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterDnsConfig) *string { return v.ClusterDns }).(pulumi.StringPtrOutput)
 }
 
+// The suffix used for all cluster service records.
 func (o ClusterDnsConfigOutput) ClusterDnsDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterDnsConfig) *string { return v.ClusterDnsDomain }).(pulumi.StringPtrOutput)
 }
 
+// The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
 func (o ClusterDnsConfigOutput) ClusterDnsScope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterDnsConfig) *string { return v.ClusterDnsScope }).(pulumi.StringPtrOutput)
 }
@@ -3085,7 +3091,7 @@ func (o ClusterDnsConfigPtrOutput) Elem() ClusterDnsConfigOutput {
 	}).(ClusterDnsConfigOutput)
 }
 
-// Which in-cluster DNS provider shoul
+// Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
 func (o ClusterDnsConfigPtrOutput) ClusterDns() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterDnsConfig) *string {
 		if v == nil {
@@ -3095,6 +3101,7 @@ func (o ClusterDnsConfigPtrOutput) ClusterDns() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The suffix used for all cluster service records.
 func (o ClusterDnsConfigPtrOutput) ClusterDnsDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterDnsConfig) *string {
 		if v == nil {
@@ -3104,6 +3111,7 @@ func (o ClusterDnsConfigPtrOutput) ClusterDnsDomain() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
 func (o ClusterDnsConfigPtrOutput) ClusterDnsScope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterDnsConfig) *string {
 		if v == nil {
@@ -4103,15 +4111,9 @@ func (o ClusterMaintenancePolicyRecurringWindowPtrOutput) StartTime() pulumi.Str
 type ClusterMasterAuth struct {
 	ClientCertificate *string `pulumi:"clientCertificate"`
 	// Whether client certificate authorization is enabled for this cluster.  For example:
-	ClientCertificateConfig *ClusterMasterAuthClientCertificateConfig `pulumi:"clientCertificateConfig"`
-	ClientKey               *string                                   `pulumi:"clientKey"`
-	ClusterCaCertificate    *string                                   `pulumi:"clusterCaCertificate"`
-	// The password to use for HTTP basic authentication when accessing
-	// the Kubernetes master endpoint. This has been deprecated as of GKE 1.19.
-	Password *string `pulumi:"password"`
-	// The username to use for HTTP basic authentication when accessing
-	// the Kubernetes master endpoint. If not present basic auth will be disabled. This has been deprecated as of GKE 1.19.
-	Username *string `pulumi:"username"`
+	ClientCertificateConfig ClusterMasterAuthClientCertificateConfig `pulumi:"clientCertificateConfig"`
+	ClientKey               *string                                  `pulumi:"clientKey"`
+	ClusterCaCertificate    *string                                  `pulumi:"clusterCaCertificate"`
 }
 
 // ClusterMasterAuthInput is an input type that accepts ClusterMasterAuthArgs and ClusterMasterAuthOutput values.
@@ -4128,15 +4130,9 @@ type ClusterMasterAuthInput interface {
 type ClusterMasterAuthArgs struct {
 	ClientCertificate pulumi.StringPtrInput `pulumi:"clientCertificate"`
 	// Whether client certificate authorization is enabled for this cluster.  For example:
-	ClientCertificateConfig ClusterMasterAuthClientCertificateConfigPtrInput `pulumi:"clientCertificateConfig"`
-	ClientKey               pulumi.StringPtrInput                            `pulumi:"clientKey"`
-	ClusterCaCertificate    pulumi.StringPtrInput                            `pulumi:"clusterCaCertificate"`
-	// The password to use for HTTP basic authentication when accessing
-	// the Kubernetes master endpoint. This has been deprecated as of GKE 1.19.
-	Password pulumi.StringPtrInput `pulumi:"password"`
-	// The username to use for HTTP basic authentication when accessing
-	// the Kubernetes master endpoint. If not present basic auth will be disabled. This has been deprecated as of GKE 1.19.
-	Username pulumi.StringPtrInput `pulumi:"username"`
+	ClientCertificateConfig ClusterMasterAuthClientCertificateConfigInput `pulumi:"clientCertificateConfig"`
+	ClientKey               pulumi.StringPtrInput                         `pulumi:"clientKey"`
+	ClusterCaCertificate    pulumi.StringPtrInput                         `pulumi:"clusterCaCertificate"`
 }
 
 func (ClusterMasterAuthArgs) ElementType() reflect.Type {
@@ -4221,8 +4217,8 @@ func (o ClusterMasterAuthOutput) ClientCertificate() pulumi.StringPtrOutput {
 }
 
 // Whether client certificate authorization is enabled for this cluster.  For example:
-func (o ClusterMasterAuthOutput) ClientCertificateConfig() ClusterMasterAuthClientCertificateConfigPtrOutput {
-	return o.ApplyT(func(v ClusterMasterAuth) *ClusterMasterAuthClientCertificateConfig { return v.ClientCertificateConfig }).(ClusterMasterAuthClientCertificateConfigPtrOutput)
+func (o ClusterMasterAuthOutput) ClientCertificateConfig() ClusterMasterAuthClientCertificateConfigOutput {
+	return o.ApplyT(func(v ClusterMasterAuth) ClusterMasterAuthClientCertificateConfig { return v.ClientCertificateConfig }).(ClusterMasterAuthClientCertificateConfigOutput)
 }
 
 func (o ClusterMasterAuthOutput) ClientKey() pulumi.StringPtrOutput {
@@ -4231,18 +4227,6 @@ func (o ClusterMasterAuthOutput) ClientKey() pulumi.StringPtrOutput {
 
 func (o ClusterMasterAuthOutput) ClusterCaCertificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterMasterAuth) *string { return v.ClusterCaCertificate }).(pulumi.StringPtrOutput)
-}
-
-// The password to use for HTTP basic authentication when accessing
-// the Kubernetes master endpoint. This has been deprecated as of GKE 1.19.
-func (o ClusterMasterAuthOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterMasterAuth) *string { return v.Password }).(pulumi.StringPtrOutput)
-}
-
-// The username to use for HTTP basic authentication when accessing
-// the Kubernetes master endpoint. If not present basic auth will be disabled. This has been deprecated as of GKE 1.19.
-func (o ClusterMasterAuthOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterMasterAuth) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
 
 type ClusterMasterAuthPtrOutput struct{ *pulumi.OutputState }
@@ -4284,7 +4268,7 @@ func (o ClusterMasterAuthPtrOutput) ClientCertificateConfig() ClusterMasterAuthC
 		if v == nil {
 			return nil
 		}
-		return v.ClientCertificateConfig
+		return &v.ClientCertificateConfig
 	}).(ClusterMasterAuthClientCertificateConfigPtrOutput)
 }
 
@@ -4303,28 +4287,6 @@ func (o ClusterMasterAuthPtrOutput) ClusterCaCertificate() pulumi.StringPtrOutpu
 			return nil
 		}
 		return v.ClusterCaCertificate
-	}).(pulumi.StringPtrOutput)
-}
-
-// The password to use for HTTP basic authentication when accessing
-// the Kubernetes master endpoint. This has been deprecated as of GKE 1.19.
-func (o ClusterMasterAuthPtrOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClusterMasterAuth) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Password
-	}).(pulumi.StringPtrOutput)
-}
-
-// The username to use for HTTP basic authentication when accessing
-// the Kubernetes master endpoint. If not present basic auth will be disabled. This has been deprecated as of GKE 1.19.
-func (o ClusterMasterAuthPtrOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClusterMasterAuth) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Username
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6673,16 +6635,7 @@ type ClusterNodeConfigWorkloadMetadataConfig struct {
 	// * UNSPECIFIED: Not Set
 	// * GCE_METADATA: Expose all Compute Engine metadata to pods.
 	// * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
-	Mode *string `pulumi:"mode"`
-	// How to expose the node metadata to the workload running on the node. This is deprecated in favor of `mode`
-	// Accepted values are:
-	// * UNSPECIFIED: Not Set
-	// * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
-	// * EXPOSE: Expose all VM metadata to pods.
-	// * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
-	//
-	// Deprecated: Deprecated in favor of mode.
-	NodeMetadata *string `pulumi:"nodeMetadata"`
+	Mode string `pulumi:"mode"`
 }
 
 // ClusterNodeConfigWorkloadMetadataConfigInput is an input type that accepts ClusterNodeConfigWorkloadMetadataConfigArgs and ClusterNodeConfigWorkloadMetadataConfigOutput values.
@@ -6702,16 +6655,7 @@ type ClusterNodeConfigWorkloadMetadataConfigArgs struct {
 	// * UNSPECIFIED: Not Set
 	// * GCE_METADATA: Expose all Compute Engine metadata to pods.
 	// * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
-	Mode pulumi.StringPtrInput `pulumi:"mode"`
-	// How to expose the node metadata to the workload running on the node. This is deprecated in favor of `mode`
-	// Accepted values are:
-	// * UNSPECIFIED: Not Set
-	// * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
-	// * EXPOSE: Expose all VM metadata to pods.
-	// * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
-	//
-	// Deprecated: Deprecated in favor of mode.
-	NodeMetadata pulumi.StringPtrInput `pulumi:"nodeMetadata"`
+	Mode pulumi.StringInput `pulumi:"mode"`
 }
 
 func (ClusterNodeConfigWorkloadMetadataConfigArgs) ElementType() reflect.Type {
@@ -6796,20 +6740,8 @@ func (o ClusterNodeConfigWorkloadMetadataConfigOutput) ToClusterNodeConfigWorklo
 // * UNSPECIFIED: Not Set
 // * GCE_METADATA: Expose all Compute Engine metadata to pods.
 // * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
-func (o ClusterNodeConfigWorkloadMetadataConfigOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterNodeConfigWorkloadMetadataConfig) *string { return v.Mode }).(pulumi.StringPtrOutput)
-}
-
-// How to expose the node metadata to the workload running on the node. This is deprecated in favor of `mode`
-// Accepted values are:
-// * UNSPECIFIED: Not Set
-// * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
-// * EXPOSE: Expose all VM metadata to pods.
-// * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
-//
-// Deprecated: Deprecated in favor of mode.
-func (o ClusterNodeConfigWorkloadMetadataConfigOutput) NodeMetadata() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterNodeConfigWorkloadMetadataConfig) *string { return v.NodeMetadata }).(pulumi.StringPtrOutput)
+func (o ClusterNodeConfigWorkloadMetadataConfigOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodeConfigWorkloadMetadataConfig) string { return v.Mode }).(pulumi.StringOutput)
 }
 
 type ClusterNodeConfigWorkloadMetadataConfigPtrOutput struct{ *pulumi.OutputState }
@@ -6846,24 +6778,7 @@ func (o ClusterNodeConfigWorkloadMetadataConfigPtrOutput) Mode() pulumi.StringPt
 		if v == nil {
 			return nil
 		}
-		return v.Mode
-	}).(pulumi.StringPtrOutput)
-}
-
-// How to expose the node metadata to the workload running on the node. This is deprecated in favor of `mode`
-// Accepted values are:
-// * UNSPECIFIED: Not Set
-// * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
-// * EXPOSE: Expose all VM metadata to pods.
-// * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
-//
-// Deprecated: Deprecated in favor of mode.
-func (o ClusterNodeConfigWorkloadMetadataConfigPtrOutput) NodeMetadata() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClusterNodeConfigWorkloadMetadataConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NodeMetadata
+		return &v.Mode
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6875,10 +6790,11 @@ type ClusterNodePool struct {
 	// `container.NodePool` objects with no default node pool, you'll need to
 	// set this to a value of at least `1`, alongside setting
 	// `removeDefaultNodePool` to `true`.
-	InitialNodeCount  *int                       `pulumi:"initialNodeCount"`
-	InstanceGroupUrls []string                   `pulumi:"instanceGroupUrls"`
-	Management        *ClusterNodePoolManagement `pulumi:"management"`
-	MaxPodsPerNode    *int                       `pulumi:"maxPodsPerNode"`
+	InitialNodeCount         *int                       `pulumi:"initialNodeCount"`
+	InstanceGroupUrls        []string                   `pulumi:"instanceGroupUrls"`
+	ManagedInstanceGroupUrls []string                   `pulumi:"managedInstanceGroupUrls"`
+	Management               *ClusterNodePoolManagement `pulumi:"management"`
+	MaxPodsPerNode           *int                       `pulumi:"maxPodsPerNode"`
 	// The name of the cluster, unique within the project and
 	// location.
 	Name       *string `pulumi:"name"`
@@ -6921,10 +6837,11 @@ type ClusterNodePoolArgs struct {
 	// `container.NodePool` objects with no default node pool, you'll need to
 	// set this to a value of at least `1`, alongside setting
 	// `removeDefaultNodePool` to `true`.
-	InitialNodeCount  pulumi.IntPtrInput                `pulumi:"initialNodeCount"`
-	InstanceGroupUrls pulumi.StringArrayInput           `pulumi:"instanceGroupUrls"`
-	Management        ClusterNodePoolManagementPtrInput `pulumi:"management"`
-	MaxPodsPerNode    pulumi.IntPtrInput                `pulumi:"maxPodsPerNode"`
+	InitialNodeCount         pulumi.IntPtrInput                `pulumi:"initialNodeCount"`
+	InstanceGroupUrls        pulumi.StringArrayInput           `pulumi:"instanceGroupUrls"`
+	ManagedInstanceGroupUrls pulumi.StringArrayInput           `pulumi:"managedInstanceGroupUrls"`
+	Management               ClusterNodePoolManagementPtrInput `pulumi:"management"`
+	MaxPodsPerNode           pulumi.IntPtrInput                `pulumi:"maxPodsPerNode"`
 	// The name of the cluster, unique within the project and
 	// location.
 	Name       pulumi.StringPtrInput `pulumi:"name"`
@@ -7015,6 +6932,10 @@ func (o ClusterNodePoolOutput) InitialNodeCount() pulumi.IntPtrOutput {
 
 func (o ClusterNodePoolOutput) InstanceGroupUrls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterNodePool) []string { return v.InstanceGroupUrls }).(pulumi.StringArrayOutput)
+}
+
+func (o ClusterNodePoolOutput) ManagedInstanceGroupUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterNodePool) []string { return v.ManagedInstanceGroupUrls }).(pulumi.StringArrayOutput)
 }
 
 func (o ClusterNodePoolOutput) Management() ClusterNodePoolManagementPtrOutput {
@@ -9232,16 +9153,7 @@ type ClusterNodePoolNodeConfigWorkloadMetadataConfig struct {
 	// * UNSPECIFIED: Not Set
 	// * GCE_METADATA: Expose all Compute Engine metadata to pods.
 	// * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
-	Mode *string `pulumi:"mode"`
-	// How to expose the node metadata to the workload running on the node. This is deprecated in favor of `mode`
-	// Accepted values are:
-	// * UNSPECIFIED: Not Set
-	// * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
-	// * EXPOSE: Expose all VM metadata to pods.
-	// * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
-	//
-	// Deprecated: Deprecated in favor of mode.
-	NodeMetadata *string `pulumi:"nodeMetadata"`
+	Mode string `pulumi:"mode"`
 }
 
 // ClusterNodePoolNodeConfigWorkloadMetadataConfigInput is an input type that accepts ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs and ClusterNodePoolNodeConfigWorkloadMetadataConfigOutput values.
@@ -9261,16 +9173,7 @@ type ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs struct {
 	// * UNSPECIFIED: Not Set
 	// * GCE_METADATA: Expose all Compute Engine metadata to pods.
 	// * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
-	Mode pulumi.StringPtrInput `pulumi:"mode"`
-	// How to expose the node metadata to the workload running on the node. This is deprecated in favor of `mode`
-	// Accepted values are:
-	// * UNSPECIFIED: Not Set
-	// * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
-	// * EXPOSE: Expose all VM metadata to pods.
-	// * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
-	//
-	// Deprecated: Deprecated in favor of mode.
-	NodeMetadata pulumi.StringPtrInput `pulumi:"nodeMetadata"`
+	Mode pulumi.StringInput `pulumi:"mode"`
 }
 
 func (ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs) ElementType() reflect.Type {
@@ -9355,20 +9258,8 @@ func (o ClusterNodePoolNodeConfigWorkloadMetadataConfigOutput) ToClusterNodePool
 // * UNSPECIFIED: Not Set
 // * GCE_METADATA: Expose all Compute Engine metadata to pods.
 // * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
-func (o ClusterNodePoolNodeConfigWorkloadMetadataConfigOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterNodePoolNodeConfigWorkloadMetadataConfig) *string { return v.Mode }).(pulumi.StringPtrOutput)
-}
-
-// How to expose the node metadata to the workload running on the node. This is deprecated in favor of `mode`
-// Accepted values are:
-// * UNSPECIFIED: Not Set
-// * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
-// * EXPOSE: Expose all VM metadata to pods.
-// * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
-//
-// Deprecated: Deprecated in favor of mode.
-func (o ClusterNodePoolNodeConfigWorkloadMetadataConfigOutput) NodeMetadata() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterNodePoolNodeConfigWorkloadMetadataConfig) *string { return v.NodeMetadata }).(pulumi.StringPtrOutput)
+func (o ClusterNodePoolNodeConfigWorkloadMetadataConfigOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigWorkloadMetadataConfig) string { return v.Mode }).(pulumi.StringOutput)
 }
 
 type ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrOutput struct{ *pulumi.OutputState }
@@ -9405,24 +9296,7 @@ func (o ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrOutput) Mode() pulumi.
 		if v == nil {
 			return nil
 		}
-		return v.Mode
-	}).(pulumi.StringPtrOutput)
-}
-
-// How to expose the node metadata to the workload running on the node. This is deprecated in favor of `mode`
-// Accepted values are:
-// * UNSPECIFIED: Not Set
-// * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
-// * EXPOSE: Expose all VM metadata to pods.
-// * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
-//
-// Deprecated: Deprecated in favor of mode.
-func (o ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrOutput) NodeMetadata() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClusterNodePoolNodeConfigWorkloadMetadataConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NodeMetadata
+		return &v.Mode
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -11091,10 +10965,6 @@ func (o ClusterVerticalPodAutoscalingPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type ClusterWorkloadIdentityConfig struct {
-	// - Currently, the only supported identity namespace is the project's default.
-	//
-	// Deprecated: This field will be removed in a future major release as it has been deprecated in the API. Use `workload_pool` instead.
-	IdentityNamespace *string `pulumi:"identityNamespace"`
 	// The workload pool to attach all Kubernetes service accounts to. Currently, the only supported identity namespace is the project of the cluster.
 	WorkloadPool *string `pulumi:"workloadPool"`
 }
@@ -11111,10 +10981,6 @@ type ClusterWorkloadIdentityConfigInput interface {
 }
 
 type ClusterWorkloadIdentityConfigArgs struct {
-	// - Currently, the only supported identity namespace is the project's default.
-	//
-	// Deprecated: This field will be removed in a future major release as it has been deprecated in the API. Use `workload_pool` instead.
-	IdentityNamespace pulumi.StringPtrInput `pulumi:"identityNamespace"`
 	// The workload pool to attach all Kubernetes service accounts to. Currently, the only supported identity namespace is the project of the cluster.
 	WorkloadPool pulumi.StringPtrInput `pulumi:"workloadPool"`
 }
@@ -11196,13 +11062,6 @@ func (o ClusterWorkloadIdentityConfigOutput) ToClusterWorkloadIdentityConfigPtrO
 	}).(ClusterWorkloadIdentityConfigPtrOutput)
 }
 
-// - Currently, the only supported identity namespace is the project's default.
-//
-// Deprecated: This field will be removed in a future major release as it has been deprecated in the API. Use `workload_pool` instead.
-func (o ClusterWorkloadIdentityConfigOutput) IdentityNamespace() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterWorkloadIdentityConfig) *string { return v.IdentityNamespace }).(pulumi.StringPtrOutput)
-}
-
 // The workload pool to attach all Kubernetes service accounts to. Currently, the only supported identity namespace is the project of the cluster.
 func (o ClusterWorkloadIdentityConfigOutput) WorkloadPool() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterWorkloadIdentityConfig) *string { return v.WorkloadPool }).(pulumi.StringPtrOutput)
@@ -11230,18 +11089,6 @@ func (o ClusterWorkloadIdentityConfigPtrOutput) Elem() ClusterWorkloadIdentityCo
 		var ret ClusterWorkloadIdentityConfig
 		return ret
 	}).(ClusterWorkloadIdentityConfigOutput)
-}
-
-// - Currently, the only supported identity namespace is the project's default.
-//
-// Deprecated: This field will be removed in a future major release as it has been deprecated in the API. Use `workload_pool` instead.
-func (o ClusterWorkloadIdentityConfigPtrOutput) IdentityNamespace() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClusterWorkloadIdentityConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.IdentityNamespace
-	}).(pulumi.StringPtrOutput)
 }
 
 // The workload pool to attach all Kubernetes service accounts to. Currently, the only supported identity namespace is the project of the cluster.
@@ -13089,9 +12936,7 @@ func (o NodePoolNodeConfigTaintArrayOutput) Index(i pulumi.IntInput) NodePoolNod
 }
 
 type NodePoolNodeConfigWorkloadMetadataConfig struct {
-	Mode *string `pulumi:"mode"`
-	// Deprecated: Deprecated in favor of mode.
-	NodeMetadata *string `pulumi:"nodeMetadata"`
+	Mode string `pulumi:"mode"`
 }
 
 // NodePoolNodeConfigWorkloadMetadataConfigInput is an input type that accepts NodePoolNodeConfigWorkloadMetadataConfigArgs and NodePoolNodeConfigWorkloadMetadataConfigOutput values.
@@ -13106,9 +12951,7 @@ type NodePoolNodeConfigWorkloadMetadataConfigInput interface {
 }
 
 type NodePoolNodeConfigWorkloadMetadataConfigArgs struct {
-	Mode pulumi.StringPtrInput `pulumi:"mode"`
-	// Deprecated: Deprecated in favor of mode.
-	NodeMetadata pulumi.StringPtrInput `pulumi:"nodeMetadata"`
+	Mode pulumi.StringInput `pulumi:"mode"`
 }
 
 func (NodePoolNodeConfigWorkloadMetadataConfigArgs) ElementType() reflect.Type {
@@ -13188,13 +13031,8 @@ func (o NodePoolNodeConfigWorkloadMetadataConfigOutput) ToNodePoolNodeConfigWork
 	}).(NodePoolNodeConfigWorkloadMetadataConfigPtrOutput)
 }
 
-func (o NodePoolNodeConfigWorkloadMetadataConfigOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NodePoolNodeConfigWorkloadMetadataConfig) *string { return v.Mode }).(pulumi.StringPtrOutput)
-}
-
-// Deprecated: Deprecated in favor of mode.
-func (o NodePoolNodeConfigWorkloadMetadataConfigOutput) NodeMetadata() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NodePoolNodeConfigWorkloadMetadataConfig) *string { return v.NodeMetadata }).(pulumi.StringPtrOutput)
+func (o NodePoolNodeConfigWorkloadMetadataConfigOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigWorkloadMetadataConfig) string { return v.Mode }).(pulumi.StringOutput)
 }
 
 type NodePoolNodeConfigWorkloadMetadataConfigPtrOutput struct{ *pulumi.OutputState }
@@ -13226,17 +13064,7 @@ func (o NodePoolNodeConfigWorkloadMetadataConfigPtrOutput) Mode() pulumi.StringP
 		if v == nil {
 			return nil
 		}
-		return v.Mode
-	}).(pulumi.StringPtrOutput)
-}
-
-// Deprecated: Deprecated in favor of mode.
-func (o NodePoolNodeConfigWorkloadMetadataConfigPtrOutput) NodeMetadata() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NodePoolNodeConfigWorkloadMetadataConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NodeMetadata
+		return &v.Mode
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -15965,8 +15793,6 @@ type GetClusterMasterAuth struct {
 	ClientCertificateConfigs []GetClusterMasterAuthClientCertificateConfig `pulumi:"clientCertificateConfigs"`
 	ClientKey                string                                        `pulumi:"clientKey"`
 	ClusterCaCertificate     string                                        `pulumi:"clusterCaCertificate"`
-	Password                 string                                        `pulumi:"password"`
-	Username                 string                                        `pulumi:"username"`
 }
 
 // GetClusterMasterAuthInput is an input type that accepts GetClusterMasterAuthArgs and GetClusterMasterAuthOutput values.
@@ -15985,8 +15811,6 @@ type GetClusterMasterAuthArgs struct {
 	ClientCertificateConfigs GetClusterMasterAuthClientCertificateConfigArrayInput `pulumi:"clientCertificateConfigs"`
 	ClientKey                pulumi.StringInput                                    `pulumi:"clientKey"`
 	ClusterCaCertificate     pulumi.StringInput                                    `pulumi:"clusterCaCertificate"`
-	Password                 pulumi.StringInput                                    `pulumi:"password"`
-	Username                 pulumi.StringInput                                    `pulumi:"username"`
 }
 
 func (GetClusterMasterAuthArgs) ElementType() reflect.Type {
@@ -16056,14 +15880,6 @@ func (o GetClusterMasterAuthOutput) ClientKey() pulumi.StringOutput {
 
 func (o GetClusterMasterAuthOutput) ClusterCaCertificate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterMasterAuth) string { return v.ClusterCaCertificate }).(pulumi.StringOutput)
-}
-
-func (o GetClusterMasterAuthOutput) Password() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClusterMasterAuth) string { return v.Password }).(pulumi.StringOutput)
-}
-
-func (o GetClusterMasterAuthOutput) Username() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClusterMasterAuth) string { return v.Username }).(pulumi.StringOutput)
 }
 
 type GetClusterMasterAuthArrayOutput struct{ *pulumi.OutputState }
@@ -17491,8 +17307,7 @@ func (o GetClusterNodeConfigTaintArrayOutput) Index(i pulumi.IntInput) GetCluste
 }
 
 type GetClusterNodeConfigWorkloadMetadataConfig struct {
-	Mode         string `pulumi:"mode"`
-	NodeMetadata string `pulumi:"nodeMetadata"`
+	Mode string `pulumi:"mode"`
 }
 
 // GetClusterNodeConfigWorkloadMetadataConfigInput is an input type that accepts GetClusterNodeConfigWorkloadMetadataConfigArgs and GetClusterNodeConfigWorkloadMetadataConfigOutput values.
@@ -17507,8 +17322,7 @@ type GetClusterNodeConfigWorkloadMetadataConfigInput interface {
 }
 
 type GetClusterNodeConfigWorkloadMetadataConfigArgs struct {
-	Mode         pulumi.StringInput `pulumi:"mode"`
-	NodeMetadata pulumi.StringInput `pulumi:"nodeMetadata"`
+	Mode pulumi.StringInput `pulumi:"mode"`
 }
 
 func (GetClusterNodeConfigWorkloadMetadataConfigArgs) ElementType() reflect.Type {
@@ -17566,10 +17380,6 @@ func (o GetClusterNodeConfigWorkloadMetadataConfigOutput) Mode() pulumi.StringOu
 	return o.ApplyT(func(v GetClusterNodeConfigWorkloadMetadataConfig) string { return v.Mode }).(pulumi.StringOutput)
 }
 
-func (o GetClusterNodeConfigWorkloadMetadataConfigOutput) NodeMetadata() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClusterNodeConfigWorkloadMetadataConfig) string { return v.NodeMetadata }).(pulumi.StringOutput)
-}
-
 type GetClusterNodeConfigWorkloadMetadataConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterNodeConfigWorkloadMetadataConfigArrayOutput) ElementType() reflect.Type {
@@ -17591,11 +17401,12 @@ func (o GetClusterNodeConfigWorkloadMetadataConfigArrayOutput) Index(i pulumi.In
 }
 
 type GetClusterNodePool struct {
-	Autoscalings      []GetClusterNodePoolAutoscaling `pulumi:"autoscalings"`
-	InitialNodeCount  int                             `pulumi:"initialNodeCount"`
-	InstanceGroupUrls []string                        `pulumi:"instanceGroupUrls"`
-	Managements       []GetClusterNodePoolManagement  `pulumi:"managements"`
-	MaxPodsPerNode    int                             `pulumi:"maxPodsPerNode"`
+	Autoscalings             []GetClusterNodePoolAutoscaling `pulumi:"autoscalings"`
+	InitialNodeCount         int                             `pulumi:"initialNodeCount"`
+	InstanceGroupUrls        []string                        `pulumi:"instanceGroupUrls"`
+	ManagedInstanceGroupUrls []string                        `pulumi:"managedInstanceGroupUrls"`
+	Managements              []GetClusterNodePoolManagement  `pulumi:"managements"`
+	MaxPodsPerNode           int                             `pulumi:"maxPodsPerNode"`
 	// The name of the cluster.
 	Name            string                             `pulumi:"name"`
 	NamePrefix      string                             `pulumi:"namePrefix"`
@@ -17619,11 +17430,12 @@ type GetClusterNodePoolInput interface {
 }
 
 type GetClusterNodePoolArgs struct {
-	Autoscalings      GetClusterNodePoolAutoscalingArrayInput `pulumi:"autoscalings"`
-	InitialNodeCount  pulumi.IntInput                         `pulumi:"initialNodeCount"`
-	InstanceGroupUrls pulumi.StringArrayInput                 `pulumi:"instanceGroupUrls"`
-	Managements       GetClusterNodePoolManagementArrayInput  `pulumi:"managements"`
-	MaxPodsPerNode    pulumi.IntInput                         `pulumi:"maxPodsPerNode"`
+	Autoscalings             GetClusterNodePoolAutoscalingArrayInput `pulumi:"autoscalings"`
+	InitialNodeCount         pulumi.IntInput                         `pulumi:"initialNodeCount"`
+	InstanceGroupUrls        pulumi.StringArrayInput                 `pulumi:"instanceGroupUrls"`
+	ManagedInstanceGroupUrls pulumi.StringArrayInput                 `pulumi:"managedInstanceGroupUrls"`
+	Managements              GetClusterNodePoolManagementArrayInput  `pulumi:"managements"`
+	MaxPodsPerNode           pulumi.IntInput                         `pulumi:"maxPodsPerNode"`
 	// The name of the cluster.
 	Name            pulumi.StringInput                         `pulumi:"name"`
 	NamePrefix      pulumi.StringInput                         `pulumi:"namePrefix"`
@@ -17696,6 +17508,10 @@ func (o GetClusterNodePoolOutput) InitialNodeCount() pulumi.IntOutput {
 
 func (o GetClusterNodePoolOutput) InstanceGroupUrls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClusterNodePool) []string { return v.InstanceGroupUrls }).(pulumi.StringArrayOutput)
+}
+
+func (o GetClusterNodePoolOutput) ManagedInstanceGroupUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePool) []string { return v.ManagedInstanceGroupUrls }).(pulumi.StringArrayOutput)
 }
 
 func (o GetClusterNodePoolOutput) Managements() GetClusterNodePoolManagementArrayOutput {
@@ -18994,8 +18810,7 @@ func (o GetClusterNodePoolNodeConfigTaintArrayOutput) Index(i pulumi.IntInput) G
 }
 
 type GetClusterNodePoolNodeConfigWorkloadMetadataConfig struct {
-	Mode         string `pulumi:"mode"`
-	NodeMetadata string `pulumi:"nodeMetadata"`
+	Mode string `pulumi:"mode"`
 }
 
 // GetClusterNodePoolNodeConfigWorkloadMetadataConfigInput is an input type that accepts GetClusterNodePoolNodeConfigWorkloadMetadataConfigArgs and GetClusterNodePoolNodeConfigWorkloadMetadataConfigOutput values.
@@ -19010,8 +18825,7 @@ type GetClusterNodePoolNodeConfigWorkloadMetadataConfigInput interface {
 }
 
 type GetClusterNodePoolNodeConfigWorkloadMetadataConfigArgs struct {
-	Mode         pulumi.StringInput `pulumi:"mode"`
-	NodeMetadata pulumi.StringInput `pulumi:"nodeMetadata"`
+	Mode pulumi.StringInput `pulumi:"mode"`
 }
 
 func (GetClusterNodePoolNodeConfigWorkloadMetadataConfigArgs) ElementType() reflect.Type {
@@ -19067,10 +18881,6 @@ func (o GetClusterNodePoolNodeConfigWorkloadMetadataConfigOutput) ToGetClusterNo
 
 func (o GetClusterNodePoolNodeConfigWorkloadMetadataConfigOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfigWorkloadMetadataConfig) string { return v.Mode }).(pulumi.StringOutput)
-}
-
-func (o GetClusterNodePoolNodeConfigWorkloadMetadataConfigOutput) NodeMetadata() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClusterNodePoolNodeConfigWorkloadMetadataConfig) string { return v.NodeMetadata }).(pulumi.StringOutput)
 }
 
 type GetClusterNodePoolNodeConfigWorkloadMetadataConfigArrayOutput struct{ *pulumi.OutputState }
@@ -20098,8 +19908,7 @@ func (o GetClusterVerticalPodAutoscalingArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 type GetClusterWorkloadIdentityConfig struct {
-	IdentityNamespace string `pulumi:"identityNamespace"`
-	WorkloadPool      string `pulumi:"workloadPool"`
+	WorkloadPool string `pulumi:"workloadPool"`
 }
 
 // GetClusterWorkloadIdentityConfigInput is an input type that accepts GetClusterWorkloadIdentityConfigArgs and GetClusterWorkloadIdentityConfigOutput values.
@@ -20114,8 +19923,7 @@ type GetClusterWorkloadIdentityConfigInput interface {
 }
 
 type GetClusterWorkloadIdentityConfigArgs struct {
-	IdentityNamespace pulumi.StringInput `pulumi:"identityNamespace"`
-	WorkloadPool      pulumi.StringInput `pulumi:"workloadPool"`
+	WorkloadPool pulumi.StringInput `pulumi:"workloadPool"`
 }
 
 func (GetClusterWorkloadIdentityConfigArgs) ElementType() reflect.Type {
@@ -20167,10 +19975,6 @@ func (o GetClusterWorkloadIdentityConfigOutput) ToGetClusterWorkloadIdentityConf
 
 func (o GetClusterWorkloadIdentityConfigOutput) ToGetClusterWorkloadIdentityConfigOutputWithContext(ctx context.Context) GetClusterWorkloadIdentityConfigOutput {
 	return o
-}
-
-func (o GetClusterWorkloadIdentityConfigOutput) IdentityNamespace() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClusterWorkloadIdentityConfig) string { return v.IdentityNamespace }).(pulumi.StringOutput)
 }
 
 func (o GetClusterWorkloadIdentityConfigOutput) WorkloadPool() pulumi.StringOutput {

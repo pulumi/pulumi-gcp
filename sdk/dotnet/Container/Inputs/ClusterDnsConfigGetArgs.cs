@@ -13,14 +13,20 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterDnsConfigGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Which in-cluster DNS provider shoul
+        /// Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
         /// </summary>
         [Input("clusterDns")]
         public Input<string>? ClusterDns { get; set; }
 
+        /// <summary>
+        /// The suffix used for all cluster service records.
+        /// </summary>
         [Input("clusterDnsDomain")]
         public Input<string>? ClusterDnsDomain { get; set; }
 
+        /// <summary>
+        /// The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
+        /// </summary>
         [Input("clusterDnsScope")]
         public Input<string>? ClusterDnsScope { get; set; }
 

@@ -35,6 +35,7 @@ namespace Pulumi.Gcp.Spanner
     ///         {
     ///             Config = "regional-europe-west1",
     ///             DisplayName = "main-instance",
+    ///             NumNodes = 1,
     ///         });
     ///         var database = new Gcp.Spanner.Database("database", new Gcp.Spanner.DatabaseArgs
     ///         {

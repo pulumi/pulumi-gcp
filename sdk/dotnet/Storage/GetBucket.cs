@@ -63,7 +63,6 @@ namespace Pulumi.Gcp.Storage
     [OutputType]
     public sealed class GetBucketResult
     {
-        public readonly bool BucketPolicyOnly;
         public readonly ImmutableArray<Outputs.GetBucketCorResult> Cors;
         public readonly bool DefaultEventBasedHold;
         public readonly ImmutableArray<Outputs.GetBucketEncryptionResult> Encryptions;
@@ -89,8 +88,6 @@ namespace Pulumi.Gcp.Storage
 
         [OutputConstructor]
         private GetBucketResult(
-            bool bucketPolicyOnly,
-
             ImmutableArray<Outputs.GetBucketCorResult> cors,
 
             bool defaultEventBasedHold,
@@ -129,7 +126,6 @@ namespace Pulumi.Gcp.Storage
 
             ImmutableArray<Outputs.GetBucketWebsiteResult> websites)
         {
-            BucketPolicyOnly = bucketPolicyOnly;
             Cors = cors;
             DefaultEventBasedHold = defaultEventBasedHold;
             Encryptions = encryptions;

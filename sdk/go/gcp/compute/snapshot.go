@@ -40,7 +40,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -140,8 +140,6 @@ type Snapshot struct {
 	// key.
 	// Structure is documented below.
 	SourceDiskEncryptionKey SnapshotSourceDiskEncryptionKeyPtrOutput `pulumi:"sourceDiskEncryptionKey"`
-	// Deprecated: Deprecated in favor of source_disk, which contains a compatible value. This field will be removed in the next major release of the provider.
-	SourceDiskLink pulumi.StringOutput `pulumi:"sourceDiskLink"`
 	// A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
 	// creation/deletion.
 	StorageBytes pulumi.IntOutput `pulumi:"storageBytes"`
@@ -223,8 +221,6 @@ type snapshotState struct {
 	// key.
 	// Structure is documented below.
 	SourceDiskEncryptionKey *SnapshotSourceDiskEncryptionKey `pulumi:"sourceDiskEncryptionKey"`
-	// Deprecated: Deprecated in favor of source_disk, which contains a compatible value. This field will be removed in the next major release of the provider.
-	SourceDiskLink *string `pulumi:"sourceDiskLink"`
 	// A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
 	// creation/deletion.
 	StorageBytes *int `pulumi:"storageBytes"`
@@ -275,8 +271,6 @@ type SnapshotState struct {
 	// key.
 	// Structure is documented below.
 	SourceDiskEncryptionKey SnapshotSourceDiskEncryptionKeyPtrInput
-	// Deprecated: Deprecated in favor of source_disk, which contains a compatible value. This field will be removed in the next major release of the provider.
-	SourceDiskLink pulumi.StringPtrInput
 	// A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
 	// creation/deletion.
 	StorageBytes pulumi.IntPtrInput

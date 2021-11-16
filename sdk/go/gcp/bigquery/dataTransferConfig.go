@@ -32,9 +32,9 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/bigquery"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/projects"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -45,8 +45,9 @@ import (
 // 			return err
 // 		}
 // 		permissions, err := projects.NewIAMMember(ctx, "permissions", &projects.IAMMemberArgs{
-// 			Role:   pulumi.String("roles/iam.serviceAccountShortTermTokenMinter"),
-// 			Member: pulumi.String(fmt.Sprintf("%v%v%v", "serviceAccount:service-", project.Number, "@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com")),
+// 			Project: pulumi.String(project.ProjectId),
+// 			Role:    pulumi.String("roles/iam.serviceAccountShortTermTokenMinter"),
+// 			Member:  pulumi.String(fmt.Sprintf("%v%v%v", "serviceAccount:service-", project.Number, "@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com")),
 // 		})
 // 		if err != nil {
 // 			return err

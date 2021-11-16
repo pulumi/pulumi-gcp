@@ -129,12 +129,6 @@ export class CryptoKey extends pulumi.CustomResource {
      */
     public readonly rotationPeriod!: pulumi.Output<string | undefined>;
     /**
-     * The self link of the created KeyRing in the format projects/{project}/locations/{location}/keyRings/{name}.
-     *
-     * @deprecated Deprecated in favor of id, which contains an identical value. This field will be removed in the next major release of the provider.
-     */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
-    /**
      * If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
      * You must use the `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
      */
@@ -165,7 +159,6 @@ export class CryptoKey extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["purpose"] = state ? state.purpose : undefined;
             inputs["rotationPeriod"] = state ? state.rotationPeriod : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
             inputs["skipInitialVersionCreation"] = state ? state.skipInitialVersionCreation : undefined;
             inputs["versionTemplate"] = state ? state.versionTemplate : undefined;
         } else {
@@ -182,7 +175,6 @@ export class CryptoKey extends pulumi.CustomResource {
             inputs["rotationPeriod"] = args ? args.rotationPeriod : undefined;
             inputs["skipInitialVersionCreation"] = args ? args.skipInitialVersionCreation : undefined;
             inputs["versionTemplate"] = args ? args.versionTemplate : undefined;
-            inputs["selfLink"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -232,12 +224,6 @@ export interface CryptoKeyState {
      * letter `s` (seconds). It must be greater than a day (ie, 86400).
      */
     rotationPeriod?: pulumi.Input<string>;
-    /**
-     * The self link of the created KeyRing in the format projects/{project}/locations/{location}/keyRings/{name}.
-     *
-     * @deprecated Deprecated in favor of id, which contains an identical value. This field will be removed in the next major release of the provider.
-     */
-    selfLink?: pulumi.Input<string>;
     /**
      * If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
      * You must use the `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.

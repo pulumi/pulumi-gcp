@@ -805,11 +805,14 @@ class Trigger(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        project = gcp.organizations.get_project()
         cloudbuild_service_account = gcp.service_account.Account("cloudbuildServiceAccount", account_id="my-service-account")
         act_as = gcp.projects.IAMMember("actAs",
+            project=project.project_id,
             role="roles/iam.serviceAccountUser",
             member=cloudbuild_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
         logs_writer = gcp.projects.IAMMember("logsWriter",
+            project=project.project_id,
             role="roles/logging.logWriter",
             member=cloudbuild_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
         service_account_trigger = gcp.cloudbuild.Trigger("service-account-trigger",
@@ -1004,11 +1007,14 @@ class Trigger(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        project = gcp.organizations.get_project()
         cloudbuild_service_account = gcp.service_account.Account("cloudbuildServiceAccount", account_id="my-service-account")
         act_as = gcp.projects.IAMMember("actAs",
+            project=project.project_id,
             role="roles/iam.serviceAccountUser",
             member=cloudbuild_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
         logs_writer = gcp.projects.IAMMember("logsWriter",
+            project=project.project_id,
             role="roles/logging.logWriter",
             member=cloudbuild_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
         service_account_trigger = gcp.cloudbuild.Trigger("service-account-trigger",

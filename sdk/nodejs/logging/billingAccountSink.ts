@@ -21,13 +21,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const log_bucket = new gcp.storage.Bucket("log-bucket", {});
+ * const log_bucket = new gcp.storage.Bucket("log-bucket", {location: "US"});
  * const my_sink = new gcp.logging.BillingAccountSink("my-sink", {
  *     description: "some explanation on what this is",
  *     billingAccount: "ABCDEF-012345-GHIJKL",
  *     destination: pulumi.interpolate`storage.googleapis.com/${log_bucket.name}`,
  * });
  * const log_writer = new gcp.projects.IAMBinding("log-writer", {
+ *     project: "your-project-id",
  *     role: "roles/storage.objectCreator",
  *     members: [my_sink.writerIdentity],
  * });

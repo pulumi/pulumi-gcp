@@ -14,10 +14,16 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterDnsConfig
     {
         /// <summary>
-        /// Which in-cluster DNS provider shoul
+        /// Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
         /// </summary>
         public readonly string? ClusterDns;
+        /// <summary>
+        /// The suffix used for all cluster service records.
+        /// </summary>
         public readonly string? ClusterDnsDomain;
+        /// <summary>
+        /// The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
+        /// </summary>
         public readonly string? ClusterDnsScope;
 
         [OutputConstructor]

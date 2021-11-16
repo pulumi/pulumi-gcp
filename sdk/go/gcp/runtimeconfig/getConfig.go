@@ -10,36 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// To get more information about RuntimeConfigs, see:
-//
-// !> This datasource has been deprecated in the google (GA) provider, and will only be available in the google-beta provider in a future release.
-//
-// * [API documentation](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/v1beta1/projects.configs)
-// * How-to Guides
-//     * [Runtime Configurator Fundamentals](https://cloud.google.com/deployment-manager/runtime-configurator/)
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/runtimeconfig"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := runtimeconfig.LookupConfig(ctx, &runtimeconfig.LookupConfigArgs{
-// 			Name: "my-service",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupConfig(ctx *pulumi.Context, args *LookupConfigArgs, opts ...pulumi.InvokeOption) (*LookupConfigResult, error) {
 	var rv LookupConfigResult
 	err := ctx.Invoke("gcp:runtimeconfig/getConfig:getConfig", args, &rv, opts...)

@@ -13,11 +13,6 @@ namespace Pulumi.Gcp.Composer.Outputs
     [OutputType]
     public sealed class EnvironmentConfigEncryptionConfig
     {
-        /// <summary>
-        /// Customer-managed Encryption Key available through Google's Key Management Service. It must
-        /// be the fully qualified resource name,
-        /// i.e. projects/project-id/locations/location/keyRings/keyring/cryptoKeys/key. Cannot be updated.
-        /// </summary>
         public readonly string KmsKeyName;
 
         [OutputConstructor]

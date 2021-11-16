@@ -43,7 +43,7 @@ namespace Pulumi.Gcp.Kms
         ///         })));
         ///         var myCryptoKeyVersion = Output.Create(Gcp.Kms.GetKMSCryptoKeyVersion.InvokeAsync(new Gcp.Kms.GetKMSCryptoKeyVersionArgs
         ///         {
-        ///             CryptoKey = data.Google_kms_key.My_key.Id,
+        ///             CryptoKey = data.Google_kms_crypto_key.My_key.Id,
         ///         }));
         ///     }
         /// 
@@ -60,7 +60,7 @@ namespace Pulumi.Gcp.Kms
     public sealed class GetKMSCryptoKeyVersionArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The `self_link` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the 
+        /// The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the 
         /// `gcp.kms.CryptoKey` resource/datasource.
         /// </summary>
         [Input("cryptoKey", required: true)]

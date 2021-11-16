@@ -123,7 +123,7 @@ def get_app_engine_service(module_id: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    bucket = gcp.storage.Bucket("bucket")
+    bucket = gcp.storage.Bucket("bucket", location="US")
     object = gcp.storage.BucketObject("object",
         bucket=bucket.name,
         source=pulumi.FileAsset("./test-fixtures/appengine/hello-world.zip"))
@@ -197,7 +197,7 @@ def get_app_engine_service_output(module_id: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    bucket = gcp.storage.Bucket("bucket")
+    bucket = gcp.storage.Bucket("bucket", location="US")
     object = gcp.storage.BucketObject("object",
         bucket=bucket.name,
         source=pulumi.FileAsset("./test-fixtures/appengine/hello-world.zip"))

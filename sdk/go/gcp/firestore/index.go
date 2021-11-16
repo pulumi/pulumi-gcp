@@ -34,7 +34,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/firestore"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firestore"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //

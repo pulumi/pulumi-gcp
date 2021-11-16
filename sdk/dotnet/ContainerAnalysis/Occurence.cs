@@ -54,11 +54,11 @@ namespace Pulumi.Gcp.ContainerAnalysis
     ///         var crypto_key = keyring.Apply(keyring =&gt; Output.Create(Gcp.Kms.GetKMSCryptoKey.InvokeAsync(new Gcp.Kms.GetKMSCryptoKeyArgs
     ///         {
     ///             Name = "my-key",
-    ///             KeyRing = keyring.SelfLink,
+    ///             KeyRing = keyring.Id,
     ///         })));
     ///         var version = crypto_key.Apply(crypto_key =&gt; Output.Create(Gcp.Kms.GetKMSCryptoKeyVersion.InvokeAsync(new Gcp.Kms.GetKMSCryptoKeyVersionArgs
     ///         {
-    ///             CryptoKey = crypto_key.SelfLink,
+    ///             CryptoKey = crypto_key.Id,
     ///         })));
     ///         var attestor = new Gcp.BinaryAuthorization.Attestor("attestor", new Gcp.BinaryAuthorization.AttestorArgs
     ///         {

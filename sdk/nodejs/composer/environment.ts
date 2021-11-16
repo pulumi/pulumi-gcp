@@ -6,99 +6,20 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
- * An environment for running orchestration tasks.
+ * ## Import
  *
- * Environments run Apache Airflow software on Google infrastructure.
+ * Environment can be imported using any of these accepted formats
  *
- * To get more information about Environments, see:
- *
- * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments)
- * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/composer/docs)
- *     * [Configuring Shared VPC for Composer Environments](https://cloud.google.com/composer/docs/how-to/managing/configuring-shared-vpc)
- * * [Apache Airflow Documentation](http://airflow.apache.org/)
- *
- * > **Warning:** We **STRONGLY** recommend you read the [GCP guides](https://cloud.google.com/composer/docs/how-to)
- *   as the Environment resource requires a long deployment process and involves several layers of GCP infrastructure,
- *   including a Kubernetes Engine cluster, Cloud Storage, and Compute networking resources. Due to limitations of the API,
- *   This provider will not be able to automatically find or manage many of these underlying resources. In particular:
- *   * It can take up to one hour to create or update an environment resource. In addition, GCP may only detect some
- *     errors in configuration when they are used (e.g. ~40-50 minutes into the creation process), and is prone to limited
- *     error reporting. If you encounter confusing or uninformative errors, please verify your configuration is valid
- *     against GCP Cloud Composer before filing bugs against this provider provider.
- *   * **Environments create Google Cloud Storage buckets that do not get cleaned up automatically** on environment
- *     deletion. [More about Composer's use of Cloud Storage](https://cloud.google.com/composer/docs/concepts/cloud-storage).
- *   * Please review the [known issues](https://cloud.google.com/composer/docs/known-issues) for Composer if you are having problems.
- *
- * ## Example Usage
- * ### Basic Usage
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const test = new gcp.composer.Environment("test", {
- *     region: "us-central1",
- * });
+ * ```sh
+ *  $ pulumi import gcp:composer/environment:Environment default projects/{{project}}/locations/{{region}}/environments/{{name}}
  * ```
- * ### With GKE and Compute Resource Dependencies
  *
- * **NOTE** To use custom service accounts, you need to give at least `role/composer.worker` to the service account being used by the GKE Nodes on the Composer project.
- * You may need to assign additional roles depending on what the Airflow DAGs will be running.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const testNetwork = new gcp.compute.Network("testNetwork", {autoCreateSubnetworks: false});
- * const testSubnetwork = new gcp.compute.Subnetwork("testSubnetwork", {
- *     ipCidrRange: "10.2.0.0/16",
- *     region: "us-central1",
- *     network: testNetwork.id,
- * });
- * const testAccount = new gcp.serviceaccount.Account("testAccount", {
- *     accountId: "composer-env-account",
- *     displayName: "Test Service Account for Composer Environment",
- * });
- * const testEnvironment = new gcp.composer.Environment("testEnvironment", {
- *     region: "us-central1",
- *     config: {
- *         nodeCount: 4,
- *         nodeConfig: {
- *             zone: "us-central1-a",
- *             machineType: "e2-medium",
- *             network: testNetwork.id,
- *             subnetwork: testSubnetwork.id,
- *             serviceAccount: testAccount.name,
- *         },
- *     },
- * });
- * const composer_worker = new gcp.projects.IAMMember("composer-worker", {
- *     role: "roles/composer.worker",
- *     member: pulumi.interpolate`serviceAccount:${testAccount.email}`,
- * });
+ * ```sh
+ *  $ pulumi import gcp:composer/environment:Environment default {{project}}/{{region}}/{{name}}
  * ```
- * ### With Software (Airflow) Config
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
  *
- * const test = new gcp.composer.Environment("test", {
- *     config: {
- *         softwareConfig: {
- *             airflowConfigOverrides: {
- *                 "core-load_example": "True",
- *             },
- *             envVariables: {
- *                 FOO: "bar",
- *             },
- *             pypiPackages: {
- *                 numpy: "",
- *                 scipy: "==1.1.0",
- *             },
- *         },
- *     },
- *     region: "us-central1",
- * });
+ * ```sh
+ *  $ pulumi import gcp:composer/environment:Environment default {{name}}
  * ```
  */
 export class Environment extends pulumi.CustomResource {
@@ -130,28 +51,23 @@ export class Environment extends pulumi.CustomResource {
     }
 
     /**
-     * Configuration parameters for this environment  Structure is documented below.
+     * Configuration parameters for this environment.
      */
     public readonly config!: pulumi.Output<outputs.composer.EnvironmentConfig>;
     /**
-     * User-defined labels for this environment. The labels map can contain
-     * no more than 64 entries. Entries of the labels map are UTF8 strings
-     * that comply with the following restrictions:
-     * Label keys must be between 1 and 63 characters long and must conform
-     * to the following regular expression: `a-z?`.
-     * Label values must be between 0 and 63 characters long and must
-     * conform to the regular expression `(a-z?)?`.
-     * No more than 64 labels can be associated with a given environment.
-     * Both keys and values must be <= 128 bytes in size.
+     * User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
+     * are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
+     * must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
+     * characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
+     * associated with a given environment. Both keys and values must be <= 128 bytes in size.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Name of the environment
+     * Name of the environment.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -197,28 +113,23 @@ export class Environment extends pulumi.CustomResource {
  */
 export interface EnvironmentState {
     /**
-     * Configuration parameters for this environment  Structure is documented below.
+     * Configuration parameters for this environment.
      */
     config?: pulumi.Input<inputs.composer.EnvironmentConfig>;
     /**
-     * User-defined labels for this environment. The labels map can contain
-     * no more than 64 entries. Entries of the labels map are UTF8 strings
-     * that comply with the following restrictions:
-     * Label keys must be between 1 and 63 characters long and must conform
-     * to the following regular expression: `a-z?`.
-     * Label values must be between 0 and 63 characters long and must
-     * conform to the regular expression `(a-z?)?`.
-     * No more than 64 labels can be associated with a given environment.
-     * Both keys and values must be <= 128 bytes in size.
+     * User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
+     * are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
+     * must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
+     * characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
+     * associated with a given environment. Both keys and values must be <= 128 bytes in size.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Name of the environment
+     * Name of the environment.
      */
     name?: pulumi.Input<string>;
     /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**
@@ -232,28 +143,23 @@ export interface EnvironmentState {
  */
 export interface EnvironmentArgs {
     /**
-     * Configuration parameters for this environment  Structure is documented below.
+     * Configuration parameters for this environment.
      */
     config?: pulumi.Input<inputs.composer.EnvironmentConfig>;
     /**
-     * User-defined labels for this environment. The labels map can contain
-     * no more than 64 entries. Entries of the labels map are UTF8 strings
-     * that comply with the following restrictions:
-     * Label keys must be between 1 and 63 characters long and must conform
-     * to the following regular expression: `a-z?`.
-     * Label values must be between 0 and 63 characters long and must
-     * conform to the regular expression `(a-z?)?`.
-     * No more than 64 labels can be associated with a given environment.
-     * Both keys and values must be <= 128 bytes in size.
+     * User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
+     * are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
+     * must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
+     * characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
+     * associated with a given environment. Both keys and values must be <= 128 bytes in size.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Name of the environment
+     * Name of the environment.
      */
     name?: pulumi.Input<string>;
     /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**

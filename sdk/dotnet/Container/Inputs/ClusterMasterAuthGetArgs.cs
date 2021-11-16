@@ -18,28 +18,14 @@ namespace Pulumi.Gcp.Container.Inputs
         /// <summary>
         /// Whether client certificate authorization is enabled for this cluster.  For example:
         /// </summary>
-        [Input("clientCertificateConfig")]
-        public Input<Inputs.ClusterMasterAuthClientCertificateConfigGetArgs>? ClientCertificateConfig { get; set; }
+        [Input("clientCertificateConfig", required: true)]
+        public Input<Inputs.ClusterMasterAuthClientCertificateConfigGetArgs> ClientCertificateConfig { get; set; } = null!;
 
         [Input("clientKey")]
         public Input<string>? ClientKey { get; set; }
 
         [Input("clusterCaCertificate")]
         public Input<string>? ClusterCaCertificate { get; set; }
-
-        /// <summary>
-        /// The password to use for HTTP basic authentication when accessing
-        /// the Kubernetes master endpoint. This has been deprecated as of GKE 1.19.
-        /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
-
-        /// <summary>
-        /// The username to use for HTTP basic authentication when accessing
-        /// the Kubernetes master endpoint. If not present basic auth will be disabled. This has been deprecated as of GKE 1.19.
-        /// </summary>
-        [Input("username")]
-        public Input<string>? Username { get; set; }
 
         public ClusterMasterAuthGetArgs()
         {

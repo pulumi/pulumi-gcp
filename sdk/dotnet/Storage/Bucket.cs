@@ -124,12 +124,6 @@ namespace Pulumi.Gcp.Storage
     public partial class Bucket : Pulumi.CustomResource
     {
         /// <summary>
-        /// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket. This field will be removed in the next major release of the provider.
-        /// </summary>
-        [Output("bucketPolicyOnly")]
-        public Output<bool> BucketPolicyOnly { get; private set; } = null!;
-
-        /// <summary>
         /// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         /// </summary>
         [Output("cors")]
@@ -168,7 +162,7 @@ namespace Pulumi.Gcp.Storage
         /// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
         /// </summary>
         [Output("location")]
-        public Output<string?> Location { get; private set; } = null!;
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// The bucket's [Access &amp; Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
@@ -245,7 +239,7 @@ namespace Pulumi.Gcp.Storage
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Bucket(string name, BucketArgs? args = null, CustomResourceOptions? options = null)
+        public Bucket(string name, BucketArgs args, CustomResourceOptions? options = null)
             : base("gcp:storage/bucket:Bucket", name, args ?? new BucketArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -283,12 +277,6 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class BucketArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket. This field will be removed in the next major release of the provider.
-        /// </summary>
-        [Input("bucketPolicyOnly")]
-        public Input<bool>? BucketPolicyOnly { get; set; }
-
         [Input("cors")]
         private InputList<Inputs.BucketCorArgs>? _cors;
 
@@ -345,8 +333,8 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
         /// </summary>
-        [Input("location")]
-        public Input<string>? Location { get; set; }
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// The bucket's [Access &amp; Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
@@ -410,12 +398,6 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class BucketState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket. This field will be removed in the next major release of the provider.
-        /// </summary>
-        [Input("bucketPolicyOnly")]
-        public Input<bool>? BucketPolicyOnly { get; set; }
-
         [Input("cors")]
         private InputList<Inputs.BucketCorGetArgs>? _cors;
 

@@ -29,6 +29,7 @@ import * as utilities from "../utilities";
  * const s3_backup_bucketBucket = new gcp.storage.Bucket("s3-backup-bucketBucket", {
  *     storageClass: "NEARLINE",
  *     project: _var.project,
+ *     location: "US",
  * });
  * const s3_backup_bucketBucketIAMMember = new gcp.storage.BucketIAMMember("s3-backup-bucketBucketIAMMember", {
  *     bucket: s3_backup_bucketBucket.name,

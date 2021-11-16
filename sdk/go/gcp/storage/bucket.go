@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -28,7 +29,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/storage"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -74,7 +75,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/storage"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -120,10 +121,6 @@ import (
 type Bucket struct {
 	pulumi.CustomResourceState
 
-	// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket. This field will be removed in the next major release of the provider.
-	//
-	// Deprecated: Please use the uniform_bucket_level_access as this field has been renamed by Google.
-	BucketPolicyOnly pulumi.BoolOutput `pulumi:"bucketPolicyOnly"`
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	Cors                  BucketCorArrayOutput `pulumi:"cors"`
 	DefaultEventBasedHold pulumi.BoolPtrOutput `pulumi:"defaultEventBasedHold"`
@@ -138,7 +135,7 @@ type Bucket struct {
 	// The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	LifecycleRules BucketLifecycleRuleArrayOutput `pulumi:"lifecycleRules"`
 	// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
-	Location pulumi.StringPtrOutput `pulumi:"location"`
+	Location pulumi.StringOutput `pulumi:"location"`
 	// The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
 	Logging BucketLoggingPtrOutput `pulumi:"logging"`
 	// The name of the bucket.
@@ -168,9 +165,12 @@ type Bucket struct {
 func NewBucket(ctx *pulumi.Context,
 	name string, args *BucketArgs, opts ...pulumi.ResourceOption) (*Bucket, error) {
 	if args == nil {
-		args = &BucketArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
+	}
 	var resource Bucket
 	err := ctx.RegisterResource("gcp:storage/bucket:Bucket", name, args, &resource, opts...)
 	if err != nil {
@@ -193,10 +193,6 @@ func GetBucket(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Bucket resources.
 type bucketState struct {
-	// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket. This field will be removed in the next major release of the provider.
-	//
-	// Deprecated: Please use the uniform_bucket_level_access as this field has been renamed by Google.
-	BucketPolicyOnly *bool `pulumi:"bucketPolicyOnly"`
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	Cors                  []BucketCor `pulumi:"cors"`
 	DefaultEventBasedHold *bool       `pulumi:"defaultEventBasedHold"`
@@ -238,10 +234,6 @@ type bucketState struct {
 }
 
 type BucketState struct {
-	// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket. This field will be removed in the next major release of the provider.
-	//
-	// Deprecated: Please use the uniform_bucket_level_access as this field has been renamed by Google.
-	BucketPolicyOnly pulumi.BoolPtrInput
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	Cors                  BucketCorArrayInput
 	DefaultEventBasedHold pulumi.BoolPtrInput
@@ -287,10 +279,6 @@ func (BucketState) ElementType() reflect.Type {
 }
 
 type bucketArgs struct {
-	// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket. This field will be removed in the next major release of the provider.
-	//
-	// Deprecated: Please use the uniform_bucket_level_access as this field has been renamed by Google.
-	BucketPolicyOnly *bool `pulumi:"bucketPolicyOnly"`
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	Cors                  []BucketCor `pulumi:"cors"`
 	DefaultEventBasedHold *bool       `pulumi:"defaultEventBasedHold"`
@@ -305,7 +293,7 @@ type bucketArgs struct {
 	// The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	LifecycleRules []BucketLifecycleRule `pulumi:"lifecycleRules"`
 	// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
-	Location *string `pulumi:"location"`
+	Location string `pulumi:"location"`
 	// The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
 	Logging *BucketLogging `pulumi:"logging"`
 	// The name of the bucket.
@@ -329,10 +317,6 @@ type bucketArgs struct {
 
 // The set of arguments for constructing a Bucket resource.
 type BucketArgs struct {
-	// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket. This field will be removed in the next major release of the provider.
-	//
-	// Deprecated: Please use the uniform_bucket_level_access as this field has been renamed by Google.
-	BucketPolicyOnly pulumi.BoolPtrInput
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	Cors                  BucketCorArrayInput
 	DefaultEventBasedHold pulumi.BoolPtrInput
@@ -347,7 +331,7 @@ type BucketArgs struct {
 	// The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	LifecycleRules BucketLifecycleRuleArrayInput
 	// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
-	Location pulumi.StringPtrInput
+	Location pulumi.StringInput
 	// The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
 	Logging BucketLoggingPtrInput
 	// The name of the bucket.

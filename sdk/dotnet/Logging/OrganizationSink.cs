@@ -27,6 +27,7 @@ namespace Pulumi.Gcp.Logging
     ///     {
     ///         var log_bucket = new Gcp.Storage.Bucket("log-bucket", new Gcp.Storage.BucketArgs
     ///         {
+    ///             Location = "US",
     ///         });
     ///         var my_sink = new Gcp.Logging.OrganizationSink("my-sink", new Gcp.Logging.OrganizationSinkArgs
     ///         {
@@ -37,6 +38,7 @@ namespace Pulumi.Gcp.Logging
     ///         });
     ///         var log_writer = new Gcp.Projects.IAMMember("log-writer", new Gcp.Projects.IAMMemberArgs
     ///         {
+    ///             Project = "your-project-id",
     ///             Role = "roles/storage.objectCreator",
     ///             Member = my_sink.WriterIdentity,
     ///         });

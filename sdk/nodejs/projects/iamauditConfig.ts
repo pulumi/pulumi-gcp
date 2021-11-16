@@ -225,9 +225,8 @@ export class IAMAuditConfig extends pulumi.CustomResource {
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
-     * The project ID. If not specified for `gcp.projects.IAMBinding`, `gcp.projects.IAMMember`, or `gcp.projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-     * Required for `gcp.projects.IAMPolicy` - you must explicitly set the project, and it
-     * will not be inferred from the provider.
+     * The project id of the target project. This is not
+     * inferred from the provider.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -257,6 +256,9 @@ export class IAMAuditConfig extends pulumi.CustomResource {
             if ((!args || args.auditLogConfigs === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'auditLogConfigs'");
             }
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
+            }
             if ((!args || args.service === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
@@ -285,9 +287,8 @@ export interface IAMAuditConfigState {
      */
     etag?: pulumi.Input<string>;
     /**
-     * The project ID. If not specified for `gcp.projects.IAMBinding`, `gcp.projects.IAMMember`, or `gcp.projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-     * Required for `gcp.projects.IAMPolicy` - you must explicitly set the project, and it
-     * will not be inferred from the provider.
+     * The project id of the target project. This is not
+     * inferred from the provider.
      */
     project?: pulumi.Input<string>;
     /**
@@ -305,11 +306,10 @@ export interface IAMAuditConfigArgs {
      */
     auditLogConfigs: pulumi.Input<pulumi.Input<inputs.projects.IAMAuditConfigAuditLogConfig>[]>;
     /**
-     * The project ID. If not specified for `gcp.projects.IAMBinding`, `gcp.projects.IAMMember`, or `gcp.projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-     * Required for `gcp.projects.IAMPolicy` - you must explicitly set the project, and it
-     * will not be inferred from the provider.
+     * The project id of the target project. This is not
+     * inferred from the provider.
      */
-    project?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_project\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
      */

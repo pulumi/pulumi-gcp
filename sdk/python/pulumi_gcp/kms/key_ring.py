@@ -74,8 +74,7 @@ class _KeyRingState:
     def __init__(__self__, *,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering KeyRing resources.
         :param pulumi.Input[str] location: The location for the KeyRing.
@@ -83,7 +82,6 @@ class _KeyRingState:
         :param pulumi.Input[str] name: The resource name for the KeyRing.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] self_link: The self link of the created KeyRing in the format projects/{project}/locations/{location}/keyRings/{name}.
         """
         if location is not None:
             pulumi.set(__self__, "location", location)
@@ -91,11 +89,6 @@ class _KeyRingState:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
-        if self_link is not None:
-            warnings.warn("""Deprecated in favor of id, which contains an identical value. This field will be removed in the next major release of the provider.""", DeprecationWarning)
-            pulumi.log.warn("""self_link is deprecated: Deprecated in favor of id, which contains an identical value. This field will be removed in the next major release of the provider.""")
-        if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
 
     @property
     @pulumi.getter
@@ -134,18 +127,6 @@ class _KeyRingState:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[str]]:
-        """
-        The self link of the created KeyRing in the format projects/{project}/locations/{location}/keyRings/{name}.
-        """
-        return pulumi.get(self, "self_link")
-
-    @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "self_link", value)
 
 
 class KeyRing(pulumi.CustomResource):
@@ -284,7 +265,6 @@ class KeyRing(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
-            __props__.__dict__["self_link"] = None
         super(KeyRing, __self__).__init__(
             'gcp:kms/keyRing:KeyRing',
             resource_name,
@@ -297,8 +277,7 @@ class KeyRing(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            project: Optional[pulumi.Input[str]] = None,
-            self_link: Optional[pulumi.Input[str]] = None) -> 'KeyRing':
+            project: Optional[pulumi.Input[str]] = None) -> 'KeyRing':
         """
         Get an existing KeyRing resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -311,7 +290,6 @@ class KeyRing(pulumi.CustomResource):
         :param pulumi.Input[str] name: The resource name for the KeyRing.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] self_link: The self link of the created KeyRing in the format projects/{project}/locations/{location}/keyRings/{name}.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -320,7 +298,6 @@ class KeyRing(pulumi.CustomResource):
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
-        __props__.__dict__["self_link"] = self_link
         return KeyRing(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -348,12 +325,4 @@ class KeyRing(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
-
-    @property
-    @pulumi.getter(name="selfLink")
-    def self_link(self) -> pulumi.Output[str]:
-        """
-        The self link of the created KeyRing in the format projects/{project}/locations/{location}/keyRings/{name}.
-        """
-        return pulumi.get(self, "self_link")
 

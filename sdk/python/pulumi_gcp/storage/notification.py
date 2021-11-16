@@ -302,7 +302,7 @@ class Notification(pulumi.CustomResource):
             role="roles/pubsub.publisher",
             members=[f"serviceAccount:{gcs_account.email_address}"])
         # End enabling notifications
-        bucket = gcp.storage.Bucket("bucket")
+        bucket = gcp.storage.Bucket("bucket", location="US")
         notification = gcp.storage.Notification("notification",
             bucket=bucket.name,
             payload_format="JSON_API_V1",
@@ -375,7 +375,7 @@ class Notification(pulumi.CustomResource):
             role="roles/pubsub.publisher",
             members=[f"serviceAccount:{gcs_account.email_address}"])
         # End enabling notifications
-        bucket = gcp.storage.Bucket("bucket")
+        bucket = gcp.storage.Bucket("bucket", location="US")
         notification = gcp.storage.Notification("notification",
             bucket=bucket.name,
             payload_format="JSON_API_V1",

@@ -20,7 +20,7 @@ class GetKMSKeyRingResult:
     """
     A collection of values returned by getKMSKeyRing.
     """
-    def __init__(__self__, id=None, location=None, name=None, project=None, self_link=None):
+    def __init__(__self__, id=None, location=None, name=None, project=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -33,9 +33,6 @@ class GetKMSKeyRingResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
-        if self_link and not isinstance(self_link, str):
-            raise TypeError("Expected argument 'self_link' to be a str")
-        pulumi.set(__self__, "self_link", self_link)
 
     @property
     @pulumi.getter
@@ -60,14 +57,6 @@ class GetKMSKeyRingResult:
     def project(self) -> Optional[str]:
         return pulumi.get(self, "project")
 
-    @property
-    @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
-        """
-        The self link of the created KeyRing. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}`.
-        """
-        return pulumi.get(self, "self_link")
-
 
 class AwaitableGetKMSKeyRingResult(GetKMSKeyRingResult):
     # pylint: disable=using-constant-test
@@ -78,8 +67,7 @@ class AwaitableGetKMSKeyRingResult(GetKMSKeyRingResult):
             id=self.id,
             location=self.location,
             name=self.name,
-            project=self.project,
-            self_link=self.self_link)
+            project=self.project)
 
 
 def get_kms_key_ring(location: Optional[str] = None,
@@ -127,8 +115,7 @@ def get_kms_key_ring(location: Optional[str] = None,
         id=__ret__.id,
         location=__ret__.location,
         name=__ret__.name,
-        project=__ret__.project,
-        self_link=__ret__.self_link)
+        project=__ret__.project)
 
 
 @_utilities.lift_output_func(get_kms_key_ring)

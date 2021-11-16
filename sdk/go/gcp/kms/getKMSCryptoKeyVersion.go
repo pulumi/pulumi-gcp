@@ -23,7 +23,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/kms"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -44,7 +44,7 @@ import (
 // 			return err
 // 		}
 // 		_, err = kms.GetKMSCryptoKeyVersion(ctx, &kms.GetKMSCryptoKeyVersionArgs{
-// 			CryptoKey: data.Google_kms_key.My_key.Id,
+// 			CryptoKey: data.Google_kms_crypto_key.My_key.Id,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -64,7 +64,7 @@ func GetKMSCryptoKeyVersion(ctx *pulumi.Context, args *GetKMSCryptoKeyVersionArg
 
 // A collection of arguments for invoking getKMSCryptoKeyVersion.
 type GetKMSCryptoKeyVersionArgs struct {
-	// The `selfLink` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the
+	// The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the
 	// `kms.CryptoKey` resource/datasource.
 	CryptoKey string `pulumi:"cryptoKey"`
 	// The version number for this CryptoKeyVersion. Defaults to `1`.
@@ -100,7 +100,7 @@ func GetKMSCryptoKeyVersionOutput(ctx *pulumi.Context, args GetKMSCryptoKeyVersi
 
 // A collection of arguments for invoking getKMSCryptoKeyVersion.
 type GetKMSCryptoKeyVersionOutputArgs struct {
-	// The `selfLink` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the
+	// The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the
 	// `kms.CryptoKey` resource/datasource.
 	CryptoKey pulumi.StringInput `pulumi:"cryptoKey"`
 	// The version number for this CryptoKeyVersion. Defaults to `1`.

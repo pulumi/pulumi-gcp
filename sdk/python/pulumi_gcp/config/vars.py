@@ -136,20 +136,12 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('composerCustomEndpoint')
 
     @property
-    def compute_beta_custom_endpoint(self) -> Optional[str]:
-        return __config__.get('computeBetaCustomEndpoint')
-
-    @property
     def compute_custom_endpoint(self) -> Optional[str]:
         return __config__.get('computeCustomEndpoint')
 
     @property
     def container_analysis_custom_endpoint(self) -> Optional[str]:
         return __config__.get('containerAnalysisCustomEndpoint')
-
-    @property
-    def container_beta_custom_endpoint(self) -> Optional[str]:
-        return __config__.get('containerBetaCustomEndpoint')
 
     @property
     def container_custom_endpoint(self) -> Optional[str]:
@@ -174,10 +166,6 @@ class _ExportableConfig(types.ModuleType):
     @property
     def dataflow_custom_endpoint(self) -> Optional[str]:
         return __config__.get('dataflowCustomEndpoint')
-
-    @property
-    def dataproc_beta_custom_endpoint(self) -> Optional[str]:
-        return __config__.get('dataprocBetaCustomEndpoint')
 
     @property
     def dataproc_custom_endpoint(self) -> Optional[str]:

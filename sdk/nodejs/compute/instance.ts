@@ -191,16 +191,15 @@ export class Instance extends pulumi.CustomResource {
     public /*out*/ readonly metadataFingerprint!: pulumi.Output<string>;
     /**
      * An alternative to using the
-     * startup-script metadata key, except this one forces the instance to be
-     * recreated (thus re-running the script) if it is changed. This replaces the
-     * startup-script metadata key on the created instance and thus the two
-     * mechanisms are not allowed to be used simultaneously.  Users are free to use
-     * either mechanism - the only distinction is that this separate attribute
-     * will cause a recreate on modification.  On import, `metadataStartupScript`
-     * will be set, but `metadata.startup-script` will not - if you choose to use the
-     * other mechanism, you will see a diff immediately after import, which will cause a
-     * destroy/recreate operation.  You may want to modify your state file manually
-     * using `pulumi stack` commands, depending on your use case.
+     * startup-script metadata key, except this one forces the instance to be recreated
+     * (thus re-running the script) if it is changed. This replaces the startup-script
+     * metadata key on the created instance and thus the two mechanisms are not
+     * allowed to be used simultaneously.  Users are free to use either mechanism - the
+     * only distinction is that this separate attribute will cause a recreate on
+     * modification.  On import, `metadataStartupScript` will not be set - if you
+     * choose to specify it you will see a diff immediately after import causing a
+     * destroy/recreate operation. If importing an instance and specifying this value
+     * is desired, you will need to modify your state file.
      */
     public readonly metadataStartupScript!: pulumi.Output<string | undefined>;
     /**
@@ -482,16 +481,15 @@ export interface InstanceState {
     metadataFingerprint?: pulumi.Input<string>;
     /**
      * An alternative to using the
-     * startup-script metadata key, except this one forces the instance to be
-     * recreated (thus re-running the script) if it is changed. This replaces the
-     * startup-script metadata key on the created instance and thus the two
-     * mechanisms are not allowed to be used simultaneously.  Users are free to use
-     * either mechanism - the only distinction is that this separate attribute
-     * will cause a recreate on modification.  On import, `metadataStartupScript`
-     * will be set, but `metadata.startup-script` will not - if you choose to use the
-     * other mechanism, you will see a diff immediately after import, which will cause a
-     * destroy/recreate operation.  You may want to modify your state file manually
-     * using `pulumi stack` commands, depending on your use case.
+     * startup-script metadata key, except this one forces the instance to be recreated
+     * (thus re-running the script) if it is changed. This replaces the startup-script
+     * metadata key on the created instance and thus the two mechanisms are not
+     * allowed to be used simultaneously.  Users are free to use either mechanism - the
+     * only distinction is that this separate attribute will cause a recreate on
+     * modification.  On import, `metadataStartupScript` will not be set - if you
+     * choose to specify it you will see a diff immediately after import causing a
+     * destroy/recreate operation. If importing an instance and specifying this value
+     * is desired, you will need to modify your state file.
      */
     metadataStartupScript?: pulumi.Input<string>;
     /**
@@ -650,16 +648,15 @@ export interface InstanceArgs {
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * An alternative to using the
-     * startup-script metadata key, except this one forces the instance to be
-     * recreated (thus re-running the script) if it is changed. This replaces the
-     * startup-script metadata key on the created instance and thus the two
-     * mechanisms are not allowed to be used simultaneously.  Users are free to use
-     * either mechanism - the only distinction is that this separate attribute
-     * will cause a recreate on modification.  On import, `metadataStartupScript`
-     * will be set, but `metadata.startup-script` will not - if you choose to use the
-     * other mechanism, you will see a diff immediately after import, which will cause a
-     * destroy/recreate operation.  You may want to modify your state file manually
-     * using `pulumi stack` commands, depending on your use case.
+     * startup-script metadata key, except this one forces the instance to be recreated
+     * (thus re-running the script) if it is changed. This replaces the startup-script
+     * metadata key on the created instance and thus the two mechanisms are not
+     * allowed to be used simultaneously.  Users are free to use either mechanism - the
+     * only distinction is that this separate attribute will cause a recreate on
+     * modification.  On import, `metadataStartupScript` will not be set - if you
+     * choose to specify it you will see a diff immediately after import causing a
+     * destroy/recreate operation. If importing an instance and specifying this value
+     * is desired, you will need to modify your state file.
      */
     metadataStartupScript?: pulumi.Input<string>;
     /**

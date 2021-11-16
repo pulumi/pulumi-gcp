@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const bucket = new gcp.storage.Bucket("bucket", {});
+ * const bucket = new gcp.storage.Bucket("bucket", {location: "US"});
  * const object = new gcp.storage.BucketObject("object", {
  *     bucket: bucket.name,
  *     source: new pulumi.asset.FileAsset("./test-fixtures/appengine/hello-world.zip"),
@@ -148,7 +148,7 @@ export class StandardAppVersion extends pulumi.CustomResource {
      * The entrypoint for the application.
      * Structure is documented below.
      */
-    public readonly entrypoint!: pulumi.Output<outputs.appengine.StandardAppVersionEntrypoint | undefined>;
+    public readonly entrypoint!: pulumi.Output<outputs.appengine.StandardAppVersionEntrypoint>;
     /**
      * Environment variables available to the application.
      */
@@ -258,6 +258,9 @@ export class StandardAppVersion extends pulumi.CustomResource {
             const args = argsOrState as StandardAppVersionArgs | undefined;
             if ((!args || args.deployment === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'deployment'");
+            }
+            if ((!args || args.entrypoint === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'entrypoint'");
             }
             if ((!args || args.runtime === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'runtime'");
@@ -421,7 +424,7 @@ export interface StandardAppVersionArgs {
      * The entrypoint for the application.
      * Structure is documented below.
      */
-    entrypoint?: pulumi.Input<inputs.appengine.StandardAppVersionEntrypoint>;
+    entrypoint: pulumi.Input<inputs.appengine.StandardAppVersionEntrypoint>;
     /**
      * Environment variables available to the application.
      */

@@ -364,9 +364,7 @@ type CryptoKeyVersionTemplate struct {
 	// The algorithm to use when creating a version based on this template.
 	// See the [algorithm reference](https://cloud.google.com/kms/docs/reference/rest/v1/CryptoKeyVersionAlgorithm) for possible inputs.
 	Algorithm string `pulumi:"algorithm"`
-	// The protection level to use when creating a version based on this template.
-	// Default value is `SOFTWARE`.
-	// Possible values are `SOFTWARE` and `HSM`.
+	// The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL". Defaults to "SOFTWARE".
 	ProtectionLevel *string `pulumi:"protectionLevel"`
 }
 
@@ -385,9 +383,7 @@ type CryptoKeyVersionTemplateArgs struct {
 	// The algorithm to use when creating a version based on this template.
 	// See the [algorithm reference](https://cloud.google.com/kms/docs/reference/rest/v1/CryptoKeyVersionAlgorithm) for possible inputs.
 	Algorithm pulumi.StringInput `pulumi:"algorithm"`
-	// The protection level to use when creating a version based on this template.
-	// Default value is `SOFTWARE`.
-	// Possible values are `SOFTWARE` and `HSM`.
+	// The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL". Defaults to "SOFTWARE".
 	ProtectionLevel pulumi.StringPtrInput `pulumi:"protectionLevel"`
 }
 
@@ -474,9 +470,7 @@ func (o CryptoKeyVersionTemplateOutput) Algorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v CryptoKeyVersionTemplate) string { return v.Algorithm }).(pulumi.StringOutput)
 }
 
-// The protection level to use when creating a version based on this template.
-// Default value is `SOFTWARE`.
-// Possible values are `SOFTWARE` and `HSM`.
+// The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL". Defaults to "SOFTWARE".
 func (o CryptoKeyVersionTemplateOutput) ProtectionLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CryptoKeyVersionTemplate) *string { return v.ProtectionLevel }).(pulumi.StringPtrOutput)
 }
@@ -516,9 +510,7 @@ func (o CryptoKeyVersionTemplatePtrOutput) Algorithm() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The protection level to use when creating a version based on this template.
-// Default value is `SOFTWARE`.
-// Possible values are `SOFTWARE` and `HSM`.
+// The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL". Defaults to "SOFTWARE".
 func (o CryptoKeyVersionTemplatePtrOutput) ProtectionLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CryptoKeyVersionTemplate) *string {
 		if v == nil {

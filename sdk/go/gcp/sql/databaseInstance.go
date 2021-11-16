@@ -7,33 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/),
 // or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances).
-//
-// > **NOTE on `sql.DatabaseInstance`:** - First-generation instances have been
-// deprecated and should no longer be created, see [upgrade docs](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-// for more details.
-// To upgrade your First-generation instance, update your config that the instance has
-// * `settings.ip_configuration.ipv4_enabled=true`
-// * `settings.backup_configuration.enabled=true`
-// * `settings.backup_configuration.binary_log_enabled=true`.\
-//   Apply the config, then upgrade the instance in the console as described in the documentation.
-//   Once upgraded, update the following attributes in your config to the correct value according to
-//   the above documentation:
-// * `region`
-// * `databaseVersion` (if applicable)
-// * `tier`
-//   Remove any fields that are not applicable to Second-generation instances:
-// * `settings.crash_safe_replication`
-// * `settings.replication_type`
-// * `settings.authorized_gae_applications`
-//   And change values to appropriate values for Second-generation instances for:
-// * `activationPolicy` ("ON_DEMAND" is no longer an option)
-// * `pricingPlan` ("PER_USE" is now the only valid option)
-//   Change `settings.backup_configuration.enabled` attribute back to its desired value and apply as necessary.
 //
 // > **NOTE on `sql.DatabaseInstance`:** - Second-generation instances include a
 // default 'root'@'%' user with no password. This user will be deleted by the provider on
@@ -51,7 +30,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/sql"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sql"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -78,9 +57,9 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/compute"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/servicenetworking"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/sql"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sql"
 // 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
@@ -117,7 +96,8 @@ import (
 // 			return err
 // 		}
 // 		_, err = sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
-// 			Region: pulumi.String("us-central1"),
+// 			Region:          pulumi.String("us-central1"),
+// 			DatabaseVersion: pulumi.String("MYSQL_5_7"),
 // 			Settings: &sql.DatabaseInstanceSettingsArgs{
 // 				Tier: pulumi.String("db-f1-micro"),
 // 				IpConfiguration: &sql.DatabaseInstanceSettingsIpConfigurationArgs{
@@ -156,19 +136,23 @@ import (
 type DatabaseInstance struct {
 	pulumi.CustomResourceState
 
-	// Configuration for creating a new instance as a clone of another instance.
+	// The context needed to create this instance as a clone of another instance. When this field is set during
+	// resource creation, this provider will attempt to clone another instance as indicated in the context. The
+	// configuration is detailed below.
 	Clone DatabaseInstanceClonePtrOutput `pulumi:"clone"`
 	// The connection name of the instance to be used in
 	// connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
 	ConnectionName pulumi.StringOutput `pulumi:"connectionName"`
 	// The MySQL, PostgreSQL or
-	// SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
+	// SQL Server version to use. Supported values include `MYSQL_5_6`,
 	// `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
 	// `POSTGRES_12`, `POSTGRES_13`, `SQLSERVER_2017_STANDARD`,
 	// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
+	// `SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,
+	// `SQLSERVER_2019_WEB`.
 	// [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
 	// includes an up-to-date reference of supported versions.
-	DatabaseVersion pulumi.StringPtrOutput `pulumi:"databaseVersion"`
+	DatabaseVersion pulumi.StringOutput `pulumi:"databaseVersion"`
 	// Whether or not to allow he provider to destroy the instance. Unless this field is set to false
 	// in state, a `destroy` or `update` command that deletes the instance will fail.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
@@ -180,7 +164,7 @@ type DatabaseInstance struct {
 	// manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
 	// That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
 	// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
-	EncryptionKeyName pulumi.StringOutput `pulumi:"encryptionKeyName"`
+	EncryptionKeyName pulumi.StringPtrOutput `pulumi:"encryptionKeyName"`
 	// The first IPv4 address of any type assigned.
 	FirstIpAddress pulumi.StringOutput                  `pulumi:"firstIpAddress"`
 	IpAddresses    DatabaseInstanceIpAddressArrayOutput `pulumi:"ipAddresses"`
@@ -207,9 +191,8 @@ type DatabaseInstance struct {
 	// configuration is detailed below. Valid only for MySQL instances.
 	ReplicaConfiguration DatabaseInstanceReplicaConfigurationOutput `pulumi:"replicaConfiguration"`
 	// The context needed to restore the database to a backup run. This field will
-	// <<<<<<< HEAD
 	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
-	// **NOTE:** Restoring from a backup is an imperative action and not recommended via the provider. Adding or modifying this
+	// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
 	// block during resource creation/update will trigger the restore action after the resource is created/updated.
 	RestoreBackupContext DatabaseInstanceRestoreBackupContextPtrOutput `pulumi:"restoreBackupContext"`
 	// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
@@ -229,9 +212,12 @@ type DatabaseInstance struct {
 func NewDatabaseInstance(ctx *pulumi.Context,
 	name string, args *DatabaseInstanceArgs, opts ...pulumi.ResourceOption) (*DatabaseInstance, error) {
 	if args == nil {
-		args = &DatabaseInstanceArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.DatabaseVersion == nil {
+		return nil, errors.New("invalid value for required argument 'DatabaseVersion'")
+	}
 	var resource DatabaseInstance
 	err := ctx.RegisterResource("gcp:sql/databaseInstance:DatabaseInstance", name, args, &resource, opts...)
 	if err != nil {
@@ -254,16 +240,20 @@ func GetDatabaseInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DatabaseInstance resources.
 type databaseInstanceState struct {
-	// Configuration for creating a new instance as a clone of another instance.
+	// The context needed to create this instance as a clone of another instance. When this field is set during
+	// resource creation, this provider will attempt to clone another instance as indicated in the context. The
+	// configuration is detailed below.
 	Clone *DatabaseInstanceClone `pulumi:"clone"`
 	// The connection name of the instance to be used in
 	// connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
 	ConnectionName *string `pulumi:"connectionName"`
 	// The MySQL, PostgreSQL or
-	// SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
+	// SQL Server version to use. Supported values include `MYSQL_5_6`,
 	// `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
 	// `POSTGRES_12`, `POSTGRES_13`, `SQLSERVER_2017_STANDARD`,
 	// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
+	// `SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,
+	// `SQLSERVER_2019_WEB`.
 	// [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
 	// includes an up-to-date reference of supported versions.
 	DatabaseVersion *string `pulumi:"databaseVersion"`
@@ -305,9 +295,8 @@ type databaseInstanceState struct {
 	// configuration is detailed below. Valid only for MySQL instances.
 	ReplicaConfiguration *DatabaseInstanceReplicaConfiguration `pulumi:"replicaConfiguration"`
 	// The context needed to restore the database to a backup run. This field will
-	// <<<<<<< HEAD
 	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
-	// **NOTE:** Restoring from a backup is an imperative action and not recommended via the provider. Adding or modifying this
+	// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
 	// block during resource creation/update will trigger the restore action after the resource is created/updated.
 	RestoreBackupContext *DatabaseInstanceRestoreBackupContext `pulumi:"restoreBackupContext"`
 	// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
@@ -324,16 +313,20 @@ type databaseInstanceState struct {
 }
 
 type DatabaseInstanceState struct {
-	// Configuration for creating a new instance as a clone of another instance.
+	// The context needed to create this instance as a clone of another instance. When this field is set during
+	// resource creation, this provider will attempt to clone another instance as indicated in the context. The
+	// configuration is detailed below.
 	Clone DatabaseInstanceClonePtrInput
 	// The connection name of the instance to be used in
 	// connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
 	ConnectionName pulumi.StringPtrInput
 	// The MySQL, PostgreSQL or
-	// SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
+	// SQL Server version to use. Supported values include `MYSQL_5_6`,
 	// `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
 	// `POSTGRES_12`, `POSTGRES_13`, `SQLSERVER_2017_STANDARD`,
 	// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
+	// `SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,
+	// `SQLSERVER_2019_WEB`.
 	// [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
 	// includes an up-to-date reference of supported versions.
 	DatabaseVersion pulumi.StringPtrInput
@@ -375,9 +368,8 @@ type DatabaseInstanceState struct {
 	// configuration is detailed below. Valid only for MySQL instances.
 	ReplicaConfiguration DatabaseInstanceReplicaConfigurationPtrInput
 	// The context needed to restore the database to a backup run. This field will
-	// <<<<<<< HEAD
 	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
-	// **NOTE:** Restoring from a backup is an imperative action and not recommended via the provider. Adding or modifying this
+	// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
 	// block during resource creation/update will trigger the restore action after the resource is created/updated.
 	RestoreBackupContext DatabaseInstanceRestoreBackupContextPtrInput
 	// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
@@ -398,16 +390,20 @@ func (DatabaseInstanceState) ElementType() reflect.Type {
 }
 
 type databaseInstanceArgs struct {
-	// Configuration for creating a new instance as a clone of another instance.
+	// The context needed to create this instance as a clone of another instance. When this field is set during
+	// resource creation, this provider will attempt to clone another instance as indicated in the context. The
+	// configuration is detailed below.
 	Clone *DatabaseInstanceClone `pulumi:"clone"`
 	// The MySQL, PostgreSQL or
-	// SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
+	// SQL Server version to use. Supported values include `MYSQL_5_6`,
 	// `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
 	// `POSTGRES_12`, `POSTGRES_13`, `SQLSERVER_2017_STANDARD`,
 	// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
+	// `SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,
+	// `SQLSERVER_2019_WEB`.
 	// [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
 	// includes an up-to-date reference of supported versions.
-	DatabaseVersion *string `pulumi:"databaseVersion"`
+	DatabaseVersion string `pulumi:"databaseVersion"`
 	// Whether or not to allow he provider to destroy the instance. Unless this field is set to false
 	// in state, a `destroy` or `update` command that deletes the instance will fail.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
@@ -439,9 +435,8 @@ type databaseInstanceArgs struct {
 	// configuration is detailed below. Valid only for MySQL instances.
 	ReplicaConfiguration *DatabaseInstanceReplicaConfiguration `pulumi:"replicaConfiguration"`
 	// The context needed to restore the database to a backup run. This field will
-	// <<<<<<< HEAD
 	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
-	// **NOTE:** Restoring from a backup is an imperative action and not recommended via the provider. Adding or modifying this
+	// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
 	// block during resource creation/update will trigger the restore action after the resource is created/updated.
 	RestoreBackupContext *DatabaseInstanceRestoreBackupContext `pulumi:"restoreBackupContext"`
 	// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
@@ -453,16 +448,20 @@ type databaseInstanceArgs struct {
 
 // The set of arguments for constructing a DatabaseInstance resource.
 type DatabaseInstanceArgs struct {
-	// Configuration for creating a new instance as a clone of another instance.
+	// The context needed to create this instance as a clone of another instance. When this field is set during
+	// resource creation, this provider will attempt to clone another instance as indicated in the context. The
+	// configuration is detailed below.
 	Clone DatabaseInstanceClonePtrInput
 	// The MySQL, PostgreSQL or
-	// SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
+	// SQL Server version to use. Supported values include `MYSQL_5_6`,
 	// `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
 	// `POSTGRES_12`, `POSTGRES_13`, `SQLSERVER_2017_STANDARD`,
 	// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
+	// `SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,
+	// `SQLSERVER_2019_WEB`.
 	// [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
 	// includes an up-to-date reference of supported versions.
-	DatabaseVersion pulumi.StringPtrInput
+	DatabaseVersion pulumi.StringInput
 	// Whether or not to allow he provider to destroy the instance. Unless this field is set to false
 	// in state, a `destroy` or `update` command that deletes the instance will fail.
 	DeletionProtection pulumi.BoolPtrInput
@@ -494,9 +493,8 @@ type DatabaseInstanceArgs struct {
 	// configuration is detailed below. Valid only for MySQL instances.
 	ReplicaConfiguration DatabaseInstanceReplicaConfigurationPtrInput
 	// The context needed to restore the database to a backup run. This field will
-	// <<<<<<< HEAD
 	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
-	// **NOTE:** Restoring from a backup is an imperative action and not recommended via the provider. Adding or modifying this
+	// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
 	// block during resource creation/update will trigger the restore action after the resource is created/updated.
 	RestoreBackupContext DatabaseInstanceRestoreBackupContextPtrInput
 	// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.

@@ -340,8 +340,8 @@ class Occurence(pulumi.CustomResource):
         keyring = gcp.kms.get_kms_key_ring(name="my-key-ring",
             location="global")
         crypto_key = gcp.kms.get_kms_crypto_key(name="my-key",
-            key_ring=keyring.self_link)
-        version = gcp.kms.get_kms_crypto_key_version(crypto_key=crypto_key.self_link)
+            key_ring=keyring.id)
+        version = gcp.kms.get_kms_crypto_key_version(crypto_key=crypto_key.id)
         attestor = gcp.binaryauthorization.Attestor("attestor", attestation_authority_note=gcp.binaryauthorization.AttestorAttestationAuthorityNoteArgs(
             note_reference=note.name,
             public_keys=[gcp.binaryauthorization.AttestorAttestationAuthorityNotePublicKeyArgs(
@@ -433,8 +433,8 @@ class Occurence(pulumi.CustomResource):
         keyring = gcp.kms.get_kms_key_ring(name="my-key-ring",
             location="global")
         crypto_key = gcp.kms.get_kms_crypto_key(name="my-key",
-            key_ring=keyring.self_link)
-        version = gcp.kms.get_kms_crypto_key_version(crypto_key=crypto_key.self_link)
+            key_ring=keyring.id)
+        version = gcp.kms.get_kms_crypto_key_version(crypto_key=crypto_key.id)
         attestor = gcp.binaryauthorization.Attestor("attestor", attestation_authority_note=gcp.binaryauthorization.AttestorAttestationAuthorityNoteArgs(
             note_reference=note.name,
             public_keys=[gcp.binaryauthorization.AttestorAttestationAuthorityNotePublicKeyArgs(

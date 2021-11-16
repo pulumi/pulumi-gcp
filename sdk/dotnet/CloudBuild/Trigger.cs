@@ -175,17 +175,20 @@ namespace Pulumi.Gcp.CloudBuild
     /// {
     ///     public MyStack()
     ///     {
+    ///         var project = Output.Create(Gcp.Organizations.GetProject.InvokeAsync());
     ///         var cloudbuildServiceAccount = new Gcp.ServiceAccount.Account("cloudbuildServiceAccount", new Gcp.ServiceAccount.AccountArgs
     ///         {
     ///             AccountId = "my-service-account",
     ///         });
     ///         var actAs = new Gcp.Projects.IAMMember("actAs", new Gcp.Projects.IAMMemberArgs
     ///         {
+    ///             Project = project.Apply(project =&gt; project.ProjectId),
     ///             Role = "roles/iam.serviceAccountUser",
     ///             Member = cloudbuildServiceAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
     ///         });
     ///         var logsWriter = new Gcp.Projects.IAMMember("logsWriter", new Gcp.Projects.IAMMemberArgs
     ///         {
+    ///             Project = project.Apply(project =&gt; project.ProjectId),
     ///             Role = "roles/logging.logWriter",
     ///             Member = cloudbuildServiceAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
     ///         });

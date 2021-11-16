@@ -24,7 +24,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/kms"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -39,7 +39,7 @@ import (
 // 		}
 // 		_, err = kms.GetKMSCryptoKey(ctx, &kms.GetKMSCryptoKeyArgs{
 // 			Name:    "my-crypto-key",
-// 			KeyRing: myKeyRing.SelfLink,
+// 			KeyRing: myKeyRing.Id,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -59,7 +59,7 @@ func GetKMSCryptoKey(ctx *pulumi.Context, args *GetKMSCryptoKeyArgs, opts ...pul
 
 // A collection of arguments for invoking getKMSCryptoKey.
 type GetKMSCryptoKeyArgs struct {
-	// The `selfLink` of the Google Cloud Platform KeyRing to which the key belongs.
+	// The `id` of the Google Cloud Platform KeyRing to which the key belongs.
 	KeyRing string `pulumi:"keyRing"`
 	// The CryptoKey's name.
 	// A CryptoKey’s name belonging to the specified Google Cloud Platform KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
@@ -80,9 +80,7 @@ type GetKMSCryptoKeyResult struct {
 	// Every time this period passes, generate a new CryptoKeyVersion and set it as
 	// the primary. The first rotation will take place after the specified period. The rotation period has the format
 	// of a decimal number with up to 9 fractional digits, followed by the letter s (seconds).
-	RotationPeriod string `pulumi:"rotationPeriod"`
-	// The self link of the created CryptoKey. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}/cryptoKeys/{cryptoKeyName}`.
-	SelfLink                   string                           `pulumi:"selfLink"`
+	RotationPeriod             string                           `pulumi:"rotationPeriod"`
 	SkipInitialVersionCreation bool                             `pulumi:"skipInitialVersionCreation"`
 	VersionTemplates           []GetKMSCryptoKeyVersionTemplate `pulumi:"versionTemplates"`
 }
@@ -98,7 +96,7 @@ func GetKMSCryptoKeyOutput(ctx *pulumi.Context, args GetKMSCryptoKeyOutputArgs, 
 
 // A collection of arguments for invoking getKMSCryptoKey.
 type GetKMSCryptoKeyOutputArgs struct {
-	// The `selfLink` of the Google Cloud Platform KeyRing to which the key belongs.
+	// The `id` of the Google Cloud Platform KeyRing to which the key belongs.
 	KeyRing pulumi.StringInput `pulumi:"keyRing"`
 	// The CryptoKey's name.
 	// A CryptoKey’s name belonging to the specified Google Cloud Platform KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
@@ -159,11 +157,6 @@ func (o GetKMSCryptoKeyResultOutput) Purpose() pulumi.StringOutput {
 // of a decimal number with up to 9 fractional digits, followed by the letter s (seconds).
 func (o GetKMSCryptoKeyResultOutput) RotationPeriod() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKMSCryptoKeyResult) string { return v.RotationPeriod }).(pulumi.StringOutput)
-}
-
-// The self link of the created CryptoKey. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}/cryptoKeys/{cryptoKeyName}`.
-func (o GetKMSCryptoKeyResultOutput) SelfLink() pulumi.StringOutput {
-	return o.ApplyT(func(v GetKMSCryptoKeyResult) string { return v.SelfLink }).(pulumi.StringOutput)
 }
 
 func (o GetKMSCryptoKeyResultOutput) SkipInitialVersionCreation() pulumi.BoolOutput {

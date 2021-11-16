@@ -50,7 +50,8 @@ class FirewallArgs:
         :param pulumi.Input[str] direction: Direction of traffic to which this firewall applies; default is
                INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
                destinationRanges; For EGRESS traffic, it is NOT supported to specify
-               sourceRanges OR sourceTags.
+               `source_ranges` OR `source_tags`. For INGRESS traffic, one of `source_ranges`,
+               `source_tags` or `source_service_accounts` is required.
                Possible values are `INGRESS` and `EGRESS`.
         :param pulumi.Input[bool] disabled: Denotes whether the firewall rule is disabled, i.e not applied to the
                network it is associated with. When set to true, the firewall rule is
@@ -227,7 +228,8 @@ class FirewallArgs:
         Direction of traffic to which this firewall applies; default is
         INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
         destinationRanges; For EGRESS traffic, it is NOT supported to specify
-        sourceRanges OR sourceTags.
+        `source_ranges` OR `source_tags`. For INGRESS traffic, one of `source_ranges`,
+        `source_tags` or `source_service_accounts` is required.
         Possible values are `INGRESS` and `EGRESS`.
         """
         return pulumi.get(self, "direction")
@@ -460,7 +462,8 @@ class _FirewallState:
         :param pulumi.Input[str] direction: Direction of traffic to which this firewall applies; default is
                INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
                destinationRanges; For EGRESS traffic, it is NOT supported to specify
-               sourceRanges OR sourceTags.
+               `source_ranges` OR `source_tags`. For INGRESS traffic, one of `source_ranges`,
+               `source_tags` or `source_service_accounts` is required.
                Possible values are `INGRESS` and `EGRESS`.
         :param pulumi.Input[bool] disabled: Denotes whether the firewall rule is disabled, i.e not applied to the
                network it is associated with. When set to true, the firewall rule is
@@ -644,7 +647,8 @@ class _FirewallState:
         Direction of traffic to which this firewall applies; default is
         INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
         destinationRanges; For EGRESS traffic, it is NOT supported to specify
-        sourceRanges OR sourceTags.
+        `source_ranges` OR `source_tags`. For INGRESS traffic, one of `source_ranges`,
+        `source_tags` or `source_service_accounts` is required.
         Possible values are `INGRESS` and `EGRESS`.
         """
         return pulumi.get(self, "direction")
@@ -947,6 +951,7 @@ class Firewall(pulumi.CustomResource):
             description="Creates firewall rule targeting tagged instances",
             network="default",
             project="my-project-name",
+            source_tags=["foo"],
             target_tags=["web"])
         ```
 
@@ -983,7 +988,8 @@ class Firewall(pulumi.CustomResource):
         :param pulumi.Input[str] direction: Direction of traffic to which this firewall applies; default is
                INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
                destinationRanges; For EGRESS traffic, it is NOT supported to specify
-               sourceRanges OR sourceTags.
+               `source_ranges` OR `source_tags`. For INGRESS traffic, one of `source_ranges`,
+               `source_tags` or `source_service_accounts` is required.
                Possible values are `INGRESS` and `EGRESS`.
         :param pulumi.Input[bool] disabled: Denotes whether the firewall rule is disabled, i.e not applied to the
                network it is associated with. When set to true, the firewall rule is
@@ -1118,6 +1124,7 @@ class Firewall(pulumi.CustomResource):
             description="Creates firewall rule targeting tagged instances",
             network="default",
             project="my-project-name",
+            source_tags=["foo"],
             target_tags=["web"])
         ```
 
@@ -1257,7 +1264,8 @@ class Firewall(pulumi.CustomResource):
         :param pulumi.Input[str] direction: Direction of traffic to which this firewall applies; default is
                INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
                destinationRanges; For EGRESS traffic, it is NOT supported to specify
-               sourceRanges OR sourceTags.
+               `source_ranges` OR `source_tags`. For INGRESS traffic, one of `source_ranges`,
+               `source_tags` or `source_service_accounts` is required.
                Possible values are `INGRESS` and `EGRESS`.
         :param pulumi.Input[bool] disabled: Denotes whether the firewall rule is disabled, i.e not applied to the
                network it is associated with. When set to true, the firewall rule is
@@ -1404,7 +1412,8 @@ class Firewall(pulumi.CustomResource):
         Direction of traffic to which this firewall applies; default is
         INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
         destinationRanges; For EGRESS traffic, it is NOT supported to specify
-        sourceRanges OR sourceTags.
+        `source_ranges` OR `source_tags`. For INGRESS traffic, one of `source_ranges`,
+        `source_tags` or `source_service_accounts` is required.
         Possible values are `INGRESS` and `EGRESS`.
         """
         return pulumi.get(self, "direction")
@@ -1493,7 +1502,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceRanges")
-    def source_ranges(self) -> pulumi.Output[Sequence[str]]:
+    def source_ranges(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         If source ranges are specified, the firewall will apply only to
         traffic that has source IP address in these ranges. These ranges must

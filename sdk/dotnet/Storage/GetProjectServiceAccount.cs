@@ -97,6 +97,7 @@ namespace Pulumi.Gcp.Storage
         ///         });
         ///         var bucket = new Gcp.Storage.Bucket("bucket", new Gcp.Storage.BucketArgs
         ///         {
+        ///             Location = "US",
         ///             Encryption = new Gcp.Storage.Inputs.BucketEncryptionArgs
         ///             {
         ///                 DefaultKmsKeyName = "your-crypto-key-id",

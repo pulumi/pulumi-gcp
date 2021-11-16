@@ -14,7 +14,9 @@
 
 import * as gcp from "@pulumi/gcp";
 
-let bucket = new gcp.storage.Bucket("test");
+let bucket = new gcp.storage.Bucket("test", {
+    location: "US"
+});
 bucket.onObjectFinalized("Test-Finalized$", async (data, ctx) => {
     console.log("Object finalized");
     console.log("raw: " + JSON.stringify(data));

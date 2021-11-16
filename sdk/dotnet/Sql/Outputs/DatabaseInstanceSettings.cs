@@ -19,13 +19,6 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string? ActivationPolicy;
         /// <summary>
-        /// This property is only applicable to First Generation instances.
-        /// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-        /// for information on how to upgrade to Second Generation instances.
-        /// A list of Google App Engine (GAE) project names that are allowed to access this instance.
-        /// </summary>
-        public readonly ImmutableArray<string> AuthorizedGaeApplications;
-        /// <summary>
         /// The availability type of the Cloud SQL
         /// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For MySQL
         /// instances, ensure that `settings.backup_configuration.enabled` and
@@ -37,17 +30,9 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// The name of server instance collation.
         /// </summary>
         public readonly string? Collation;
-        /// <summary>
-        /// This property is only applicable to First Generation instances.
-        /// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-        /// for information on how to upgrade to Second Generation instances.
-        /// Specific to read instances, indicates
-        /// when crash-safe replication flags are enabled.
-        /// </summary>
-        public readonly bool? CrashSafeReplication;
         public readonly ImmutableArray<Outputs.DatabaseInstanceSettingsDatabaseFlag> DatabaseFlags;
         /// <summary>
-        /// Configuration to increase storage size automatically.  Note that future `pulumi apply` calls will attempt to resize the disk to the value specified in `disk_size` - if this is set, do not set `disk_size`.
+        /// Configuration to increase storage size automatically.  Note that future apply calls will attempt to resize the disk to the value specified in `disk_size` - if this is set, do not set `disk_size`.
         /// </summary>
         public readonly bool? DiskAutoresize;
         public readonly int? DiskAutoresizeLimit;
@@ -68,13 +53,6 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string? PricingPlan;
         /// <summary>
-        /// This property is only applicable to First Generation instances.
-        /// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-        /// for information on how to upgrade to Second Generation instances.
-        /// Replication type for this instance, can be one of `ASYNCHRONOUS` or `SYNCHRONOUS`.
-        /// </summary>
-        public readonly string? ReplicationType;
-        /// <summary>
         /// The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
         /// for more details and supported versions. Postgres supports only shared-core machine types,
         /// and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
@@ -90,15 +68,11 @@ namespace Pulumi.Gcp.Sql.Outputs
         private DatabaseInstanceSettings(
             string? activationPolicy,
 
-            ImmutableArray<string> authorizedGaeApplications,
-
             string? availabilityType,
 
             Outputs.DatabaseInstanceSettingsBackupConfiguration? backupConfiguration,
 
             string? collation,
-
-            bool? crashSafeReplication,
 
             ImmutableArray<Outputs.DatabaseInstanceSettingsDatabaseFlag> databaseFlags,
 
@@ -120,8 +94,6 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string? pricingPlan,
 
-            string? replicationType,
-
             string tier,
 
             ImmutableDictionary<string, string>? userLabels,
@@ -129,11 +101,9 @@ namespace Pulumi.Gcp.Sql.Outputs
             int? version)
         {
             ActivationPolicy = activationPolicy;
-            AuthorizedGaeApplications = authorizedGaeApplications;
             AvailabilityType = availabilityType;
             BackupConfiguration = backupConfiguration;
             Collation = collation;
-            CrashSafeReplication = crashSafeReplication;
             DatabaseFlags = databaseFlags;
             DiskAutoresize = diskAutoresize;
             DiskAutoresizeLimit = diskAutoresizeLimit;
@@ -144,7 +114,6 @@ namespace Pulumi.Gcp.Sql.Outputs
             LocationPreference = locationPreference;
             MaintenanceWindow = maintenanceWindow;
             PricingPlan = pricingPlan;
-            ReplicationType = replicationType;
             Tier = tier;
             UserLabels = userLabels;
             Version = version;

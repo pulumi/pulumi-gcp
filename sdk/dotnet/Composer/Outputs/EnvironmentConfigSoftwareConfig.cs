@@ -13,61 +13,11 @@ namespace Pulumi.Gcp.Composer.Outputs
     [OutputType]
     public sealed class EnvironmentConfigSoftwareConfig
     {
-        /// <summary>
-        /// -
-        /// (Optional) Apache Airflow configuration properties to override. Property keys contain the section and property names,
-        /// separated by a hyphen, for example "core-dags_are_paused_at_creation".
-        /// </summary>
         public readonly ImmutableDictionary<string, string>? AirflowConfigOverrides;
-        /// <summary>
-        /// Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes.
-        /// Environment variable names must match the regular expression `[a-zA-Z_][a-zA-Z0-9_]*`.
-        /// They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression
-        /// `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the following reserved names:
-        /// ```csharp
-        /// using Pulumi;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// </summary>
         public readonly ImmutableDictionary<string, string>? EnvVariables;
-        /// <summary>
-        /// -
-        /// The version of the software running in the environment. This encapsulates both the version of Cloud Composer
-        /// functionality and the version of Apache Airflow. It must match the regular expression
-        /// `composer-[0-9]+\.[0-9]+(\.[0-9]+)?-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`.
-        /// The Cloud Composer portion of the version is a semantic version.
-        /// The portion of the image version following 'airflow-' is an official Apache Airflow repository release name.
-        /// See [documentation](https://cloud.google.com/composer/docs/reference/rest/v1beta1/projects.locations.environments#softwareconfig)
-        /// for allowed release names.
-        /// </summary>
         public readonly string? ImageVersion;
-        /// <summary>
-        /// Custom Python Package Index (PyPI) packages to be installed
-        /// in the environment. Keys refer to the lowercase package name (e.g. "numpy"). Values are the lowercase extras and
-        /// version specifier (e.g. "==1.12.0", "[devel,gcp_api]", "[devel]&gt;=1.8.2, &lt;1.9.2"). To specify a package without
-        /// pinning it to a version specifier, use the empty string as the value.
-        /// </summary>
         public readonly ImmutableDictionary<string, string>? PypiPackages;
-        /// <summary>
-        /// -
-        /// The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes.
-        /// Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be
-        /// updated. This field is supported for Cloud Composer environments in versions
-        /// composer-1.*.*-airflow-*.*.*. Environments in newer versions always use
-        /// Python major version 3.
-        /// </summary>
         public readonly string? PythonVersion;
-        /// <summary>
-        /// -
-        /// The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.`
-        /// </summary>
         public readonly int? SchedulerCount;
 
         [OutputConstructor]

@@ -87,6 +87,7 @@ namespace Pulumi.Gcp.CloudRun
     ///         var instance = new Gcp.Sql.DatabaseInstance("instance", new Gcp.Sql.DatabaseInstanceArgs
     ///         {
     ///             Region = "us-east1",
+    ///             DatabaseVersion = "MYSQL_5_7",
     ///             Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
     ///             {
     ///                 Tier = "db-f1-micro",

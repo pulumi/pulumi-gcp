@@ -166,11 +166,7 @@ def get_engine_versions(location: Optional[str] = None,
     foo = gcp.container.Cluster("foo",
         location="us-central1-b",
         node_version=central1b.latest_node_version,
-        initial_node_count=1,
-        master_auth=gcp.container.ClusterMasterAuthArgs(
-            username="mr.yoda",
-            password="adoy.rm",
-        ))
+        initial_node_count=1)
     pulumi.export("stableChannelVersion", central1b.release_channel_default_version["STABLE"])
     ```
 
@@ -236,11 +232,7 @@ def get_engine_versions_output(location: Optional[pulumi.Input[Optional[str]]] =
     foo = gcp.container.Cluster("foo",
         location="us-central1-b",
         node_version=central1b.latest_node_version,
-        initial_node_count=1,
-        master_auth=gcp.container.ClusterMasterAuthArgs(
-            username="mr.yoda",
-            password="adoy.rm",
-        ))
+        initial_node_count=1)
     pulumi.export("stableChannelVersion", central1b.release_channel_default_version["STABLE"])
     ```
 

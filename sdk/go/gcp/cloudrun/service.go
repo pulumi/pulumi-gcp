@@ -42,7 +42,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/cloudrun"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudrun"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -79,15 +79,16 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/cloudrun"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/sql"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudrun"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sql"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		instance, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
-// 			Region: pulumi.String("us-east1"),
+// 			Region:          pulumi.String("us-east1"),
+// 			DatabaseVersion: pulumi.String("MYSQL_5_7"),
 // 			Settings: &sql.DatabaseInstanceSettingsArgs{
 // 				Tier: pulumi.String("db-f1-micro"),
 // 			},
@@ -129,8 +130,8 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/cloudrun"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudrun"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -183,7 +184,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/cloudrun"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudrun"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -236,7 +237,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/cloudrun"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudrun"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -282,9 +283,9 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/cloudrun"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/secretmanager"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudrun"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/secretmanager"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -373,9 +374,9 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/cloudrun"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/secretmanager"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudrun"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/secretmanager"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //

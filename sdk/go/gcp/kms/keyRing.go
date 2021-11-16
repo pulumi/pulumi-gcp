@@ -30,7 +30,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/kms"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -73,10 +73,6 @@ type KeyRing struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The self link of the created KeyRing in the format projects/{project}/locations/{location}/keyRings/{name}.
-	//
-	// Deprecated: Deprecated in favor of id, which contains an identical value. This field will be removed in the next major release of the provider.
-	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 }
 
 // NewKeyRing registers a new resource with the given unique name, arguments, and options.
@@ -119,10 +115,6 @@ type keyRingState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The self link of the created KeyRing in the format projects/{project}/locations/{location}/keyRings/{name}.
-	//
-	// Deprecated: Deprecated in favor of id, which contains an identical value. This field will be removed in the next major release of the provider.
-	SelfLink *string `pulumi:"selfLink"`
 }
 
 type KeyRingState struct {
@@ -134,10 +126,6 @@ type KeyRingState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The self link of the created KeyRing in the format projects/{project}/locations/{location}/keyRings/{name}.
-	//
-	// Deprecated: Deprecated in favor of id, which contains an identical value. This field will be removed in the next major release of the provider.
-	SelfLink pulumi.StringPtrInput
 }
 
 func (KeyRingState) ElementType() reflect.Type {

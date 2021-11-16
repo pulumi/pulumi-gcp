@@ -18,7 +18,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/container"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -32,10 +32,8 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		ctx.Export("clusterUsername", myCluster.MasterAuths[0].Username)
-// 		ctx.Export("clusterPassword", myCluster.MasterAuths[0].Password)
 // 		ctx.Export("endpoint", myCluster.Endpoint)
-// 		ctx.Export("instanceGroupUrls", myCluster.InstanceGroupUrls)
+// 		ctx.Export("instanceGroupUrls", myCluster.NodePools[0].InstanceGroupUrls)
 // 		ctx.Export("nodeConfig", myCluster.NodeConfigs)
 // 		ctx.Export("nodePools", myCluster.NodePools)
 // 		return nil
@@ -90,7 +88,6 @@ type LookupClusterResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id                              string                                     `pulumi:"id"`
 	InitialNodeCount                int                                        `pulumi:"initialNodeCount"`
-	InstanceGroupUrls               []string                                   `pulumi:"instanceGroupUrls"`
 	IpAllocationPolicies            []GetClusterIpAllocationPolicy             `pulumi:"ipAllocationPolicies"`
 	LabelFingerprint                string                                     `pulumi:"labelFingerprint"`
 	Location                        *string                                    `pulumi:"location"`
@@ -261,10 +258,6 @@ func (o LookupClusterResultOutput) Id() pulumi.StringOutput {
 
 func (o LookupClusterResultOutput) InitialNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupClusterResult) int { return v.InitialNodeCount }).(pulumi.IntOutput)
-}
-
-func (o LookupClusterResultOutput) InstanceGroupUrls() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupClusterResult) []string { return v.InstanceGroupUrls }).(pulumi.StringArrayOutput)
 }
 
 func (o LookupClusterResultOutput) IpAllocationPolicies() GetClusterIpAllocationPolicyArrayOutput {

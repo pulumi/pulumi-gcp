@@ -12,33 +12,18 @@ namespace Pulumi.Gcp.Composer.Inputs
 
     public sealed class EnvironmentConfigWorkloadsConfigWorkerArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// CPU request and limit for a single Airflow worker replica.
-        /// </summary>
         [Input("cpu")]
         public Input<double>? Cpu { get; set; }
 
-        /// <summary>
-        /// Maximum number of workers for autoscaling.
-        /// </summary>
         [Input("maxCount")]
         public Input<int>? MaxCount { get; set; }
 
-        /// <summary>
-        /// Memory (GB) request and limit for a single Airflow worker replica.
-        /// </summary>
         [Input("memoryGb")]
         public Input<double>? MemoryGb { get; set; }
 
-        /// <summary>
-        /// Minimum number of workers for autoscaling.
-        /// </summary>
         [Input("minCount")]
         public Input<int>? MinCount { get; set; }
 
-        /// <summary>
-        /// Storage (GB) request and limit for Airflow web server.
-        /// </summary>
         [Input("storageGb")]
         public Input<double>? StorageGb { get; set; }
 

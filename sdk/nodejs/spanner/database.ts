@@ -26,6 +26,7 @@ import * as utilities from "../utilities";
  * const main = new gcp.spanner.Instance("main", {
  *     config: "regional-europe-west1",
  *     displayName: "main-instance",
+ *     numNodes: 1,
  * });
  * const database = new gcp.spanner.Database("database", {
  *     instance: main.name,

@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const bucket = new gcp.storage.Bucket("bucket", {});
+ * const bucket = new gcp.storage.Bucket("bucket", {location: "US"});
  * const object = new gcp.storage.BucketObject("object", {
  *     bucket: bucket.name,
  *     source: new pulumi.asset.FileAsset("../static/img/header-logo.png"),

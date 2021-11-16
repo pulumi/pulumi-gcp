@@ -958,7 +958,9 @@ class ClusterDnsConfig(dict):
                  cluster_dns_domain: Optional[str] = None,
                  cluster_dns_scope: Optional[str] = None):
         """
-        :param str cluster_dns: Which in-cluster DNS provider shoul
+        :param str cluster_dns: Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
+        :param str cluster_dns_domain: The suffix used for all cluster service records.
+        :param str cluster_dns_scope: The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
         """
         if cluster_dns is not None:
             pulumi.set(__self__, "cluster_dns", cluster_dns)
@@ -971,18 +973,24 @@ class ClusterDnsConfig(dict):
     @pulumi.getter(name="clusterDns")
     def cluster_dns(self) -> Optional[str]:
         """
-        Which in-cluster DNS provider shoul
+        Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
         """
         return pulumi.get(self, "cluster_dns")
 
     @property
     @pulumi.getter(name="clusterDnsDomain")
     def cluster_dns_domain(self) -> Optional[str]:
+        """
+        The suffix used for all cluster service records.
+        """
         return pulumi.get(self, "cluster_dns_domain")
 
     @property
     @pulumi.getter(name="clusterDnsScope")
     def cluster_dns_scope(self) -> Optional[str]:
+        """
+        The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
+        """
         return pulumi.get(self, "cluster_dns_scope")
 
 
@@ -1327,10 +1335,10 @@ class ClusterMasterAuth(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "clientCertificate":
-            suggest = "client_certificate"
-        elif key == "clientCertificateConfig":
+        if key == "clientCertificateConfig":
             suggest = "client_certificate_config"
+        elif key == "clientCertificate":
+            suggest = "client_certificate"
         elif key == "clientKey":
             suggest = "client_key"
         elif key == "clusterCaCertificate":
@@ -1348,44 +1356,33 @@ class ClusterMasterAuth(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 client_certificate_config: 'outputs.ClusterMasterAuthClientCertificateConfig',
                  client_certificate: Optional[str] = None,
-                 client_certificate_config: Optional['outputs.ClusterMasterAuthClientCertificateConfig'] = None,
                  client_key: Optional[str] = None,
-                 cluster_ca_certificate: Optional[str] = None,
-                 password: Optional[str] = None,
-                 username: Optional[str] = None):
+                 cluster_ca_certificate: Optional[str] = None):
         """
         :param 'ClusterMasterAuthClientCertificateConfigArgs' client_certificate_config: Whether client certificate authorization is enabled for this cluster.  For example:
-        :param str password: The password to use for HTTP basic authentication when accessing
-               the Kubernetes master endpoint. This has been deprecated as of GKE 1.19.
-        :param str username: The username to use for HTTP basic authentication when accessing
-               the Kubernetes master endpoint. If not present basic auth will be disabled. This has been deprecated as of GKE 1.19.
         """
+        pulumi.set(__self__, "client_certificate_config", client_certificate_config)
         if client_certificate is not None:
             pulumi.set(__self__, "client_certificate", client_certificate)
-        if client_certificate_config is not None:
-            pulumi.set(__self__, "client_certificate_config", client_certificate_config)
         if client_key is not None:
             pulumi.set(__self__, "client_key", client_key)
         if cluster_ca_certificate is not None:
             pulumi.set(__self__, "cluster_ca_certificate", cluster_ca_certificate)
-        if password is not None:
-            pulumi.set(__self__, "password", password)
-        if username is not None:
-            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="clientCertificateConfig")
+    def client_certificate_config(self) -> 'outputs.ClusterMasterAuthClientCertificateConfig':
+        """
+        Whether client certificate authorization is enabled for this cluster.  For example:
+        """
+        return pulumi.get(self, "client_certificate_config")
 
     @property
     @pulumi.getter(name="clientCertificate")
     def client_certificate(self) -> Optional[str]:
         return pulumi.get(self, "client_certificate")
-
-    @property
-    @pulumi.getter(name="clientCertificateConfig")
-    def client_certificate_config(self) -> Optional['outputs.ClusterMasterAuthClientCertificateConfig']:
-        """
-        Whether client certificate authorization is enabled for this cluster.  For example:
-        """
-        return pulumi.get(self, "client_certificate_config")
 
     @property
     @pulumi.getter(name="clientKey")
@@ -1396,24 +1393,6 @@ class ClusterMasterAuth(dict):
     @pulumi.getter(name="clusterCaCertificate")
     def cluster_ca_certificate(self) -> Optional[str]:
         return pulumi.get(self, "cluster_ca_certificate")
-
-    @property
-    @pulumi.getter
-    def password(self) -> Optional[str]:
-        """
-        The password to use for HTTP basic authentication when accessing
-        the Kubernetes master endpoint. This has been deprecated as of GKE 1.19.
-        """
-        return pulumi.get(self, "password")
-
-    @property
-    @pulumi.getter
-    def username(self) -> Optional[str]:
-        """
-        The username to use for HTTP basic authentication when accessing
-        the Kubernetes master endpoint. If not present basic auth will be disabled. This has been deprecated as of GKE 1.19.
-        """
-        return pulumi.get(self, "username")
 
 
 @pulumi.output_type
@@ -2292,47 +2271,20 @@ class ClusterNodeConfigTaint(dict):
 
 @pulumi.output_type
 class ClusterNodeConfigWorkloadMetadataConfig(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "nodeMetadata":
-            suggest = "node_metadata"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigWorkloadMetadataConfig. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ClusterNodeConfigWorkloadMetadataConfig.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ClusterNodeConfigWorkloadMetadataConfig.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
-                 mode: Optional[str] = None,
-                 node_metadata: Optional[str] = None):
+                 mode: str):
         """
         :param str mode: How to expose the node metadata to the workload running on the node.
                Accepted values are:
                * UNSPECIFIED: Not Set
                * GCE_METADATA: Expose all Compute Engine metadata to pods.
                * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
-        :param str node_metadata: How to expose the node metadata to the workload running on the node. This is deprecated in favor of `mode`
-               Accepted values are:
-               * UNSPECIFIED: Not Set
-               * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
-               * EXPOSE: Expose all VM metadata to pods.
-               * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
         """
-        if mode is not None:
-            pulumi.set(__self__, "mode", mode)
-        if node_metadata is not None:
-            pulumi.set(__self__, "node_metadata", node_metadata)
+        pulumi.set(__self__, "mode", mode)
 
     @property
     @pulumi.getter
-    def mode(self) -> Optional[str]:
+    def mode(self) -> str:
         """
         How to expose the node metadata to the workload running on the node.
         Accepted values are:
@@ -2341,19 +2293,6 @@ class ClusterNodeConfigWorkloadMetadataConfig(dict):
         * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
         """
         return pulumi.get(self, "mode")
-
-    @property
-    @pulumi.getter(name="nodeMetadata")
-    def node_metadata(self) -> Optional[str]:
-        """
-        How to expose the node metadata to the workload running on the node. This is deprecated in favor of `mode`
-        Accepted values are:
-        * UNSPECIFIED: Not Set
-        * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
-        * EXPOSE: Expose all VM metadata to pods.
-        * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
-        """
-        return pulumi.get(self, "node_metadata")
 
 
 @pulumi.output_type
@@ -2365,6 +2304,8 @@ class ClusterNodePool(dict):
             suggest = "initial_node_count"
         elif key == "instanceGroupUrls":
             suggest = "instance_group_urls"
+        elif key == "managedInstanceGroupUrls":
+            suggest = "managed_instance_group_urls"
         elif key == "maxPodsPerNode":
             suggest = "max_pods_per_node"
         elif key == "namePrefix":
@@ -2395,6 +2336,7 @@ class ClusterNodePool(dict):
                  autoscaling: Optional['outputs.ClusterNodePoolAutoscaling'] = None,
                  initial_node_count: Optional[int] = None,
                  instance_group_urls: Optional[Sequence[str]] = None,
+                 managed_instance_group_urls: Optional[Sequence[str]] = None,
                  management: Optional['outputs.ClusterNodePoolManagement'] = None,
                  max_pods_per_node: Optional[int] = None,
                  name: Optional[str] = None,
@@ -2432,6 +2374,8 @@ class ClusterNodePool(dict):
             pulumi.set(__self__, "initial_node_count", initial_node_count)
         if instance_group_urls is not None:
             pulumi.set(__self__, "instance_group_urls", instance_group_urls)
+        if managed_instance_group_urls is not None:
+            pulumi.set(__self__, "managed_instance_group_urls", managed_instance_group_urls)
         if management is not None:
             pulumi.set(__self__, "management", management)
         if max_pods_per_node is not None:
@@ -2475,6 +2419,11 @@ class ClusterNodePool(dict):
     @pulumi.getter(name="instanceGroupUrls")
     def instance_group_urls(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "instance_group_urls")
+
+    @property
+    @pulumi.getter(name="managedInstanceGroupUrls")
+    def managed_instance_group_urls(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "managed_instance_group_urls")
 
     @property
     @pulumi.getter
@@ -3380,47 +3329,20 @@ class ClusterNodePoolNodeConfigTaint(dict):
 
 @pulumi.output_type
 class ClusterNodePoolNodeConfigWorkloadMetadataConfig(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "nodeMetadata":
-            suggest = "node_metadata"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigWorkloadMetadataConfig. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ClusterNodePoolNodeConfigWorkloadMetadataConfig.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ClusterNodePoolNodeConfigWorkloadMetadataConfig.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
-                 mode: Optional[str] = None,
-                 node_metadata: Optional[str] = None):
+                 mode: str):
         """
         :param str mode: How to expose the node metadata to the workload running on the node.
                Accepted values are:
                * UNSPECIFIED: Not Set
                * GCE_METADATA: Expose all Compute Engine metadata to pods.
                * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
-        :param str node_metadata: How to expose the node metadata to the workload running on the node. This is deprecated in favor of `mode`
-               Accepted values are:
-               * UNSPECIFIED: Not Set
-               * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
-               * EXPOSE: Expose all VM metadata to pods.
-               * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
         """
-        if mode is not None:
-            pulumi.set(__self__, "mode", mode)
-        if node_metadata is not None:
-            pulumi.set(__self__, "node_metadata", node_metadata)
+        pulumi.set(__self__, "mode", mode)
 
     @property
     @pulumi.getter
-    def mode(self) -> Optional[str]:
+    def mode(self) -> str:
         """
         How to expose the node metadata to the workload running on the node.
         Accepted values are:
@@ -3429,19 +3351,6 @@ class ClusterNodePoolNodeConfigWorkloadMetadataConfig(dict):
         * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
         """
         return pulumi.get(self, "mode")
-
-    @property
-    @pulumi.getter(name="nodeMetadata")
-    def node_metadata(self) -> Optional[str]:
-        """
-        How to expose the node metadata to the workload running on the node. This is deprecated in favor of `mode`
-        Accepted values are:
-        * UNSPECIFIED: Not Set
-        * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
-        * EXPOSE: Expose all VM metadata to pods.
-        * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
-        """
-        return pulumi.get(self, "node_metadata")
 
 
 @pulumi.output_type
@@ -3874,9 +3783,7 @@ class ClusterWorkloadIdentityConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "identityNamespace":
-            suggest = "identity_namespace"
-        elif key == "workloadPool":
+        if key == "workloadPool":
             suggest = "workload_pool"
 
         if suggest:
@@ -3891,24 +3798,12 @@ class ClusterWorkloadIdentityConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 identity_namespace: Optional[str] = None,
                  workload_pool: Optional[str] = None):
         """
-        :param str identity_namespace: - Currently, the only supported identity namespace is the project's default.
         :param str workload_pool: The workload pool to attach all Kubernetes service accounts to. Currently, the only supported identity namespace is the project of the cluster.
         """
-        if identity_namespace is not None:
-            pulumi.set(__self__, "identity_namespace", identity_namespace)
         if workload_pool is not None:
             pulumi.set(__self__, "workload_pool", workload_pool)
-
-    @property
-    @pulumi.getter(name="identityNamespace")
-    def identity_namespace(self) -> Optional[str]:
-        """
-        - Currently, the only supported identity namespace is the project's default.
-        """
-        return pulumi.get(self, "identity_namespace")
 
     @property
     @pulumi.getter(name="workloadPool")
@@ -4519,40 +4414,14 @@ class NodePoolNodeConfigTaint(dict):
 
 @pulumi.output_type
 class NodePoolNodeConfigWorkloadMetadataConfig(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "nodeMetadata":
-            suggest = "node_metadata"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigWorkloadMetadataConfig. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NodePoolNodeConfigWorkloadMetadataConfig.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NodePoolNodeConfigWorkloadMetadataConfig.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
-                 mode: Optional[str] = None,
-                 node_metadata: Optional[str] = None):
-        if mode is not None:
-            pulumi.set(__self__, "mode", mode)
-        if node_metadata is not None:
-            pulumi.set(__self__, "node_metadata", node_metadata)
+                 mode: str):
+        pulumi.set(__self__, "mode", mode)
 
     @property
     @pulumi.getter
-    def mode(self) -> Optional[str]:
+    def mode(self) -> str:
         return pulumi.get(self, "mode")
-
-    @property
-    @pulumi.getter(name="nodeMetadata")
-    def node_metadata(self) -> Optional[str]:
-        return pulumi.get(self, "node_metadata")
 
 
 @pulumi.output_type
@@ -5127,15 +4996,11 @@ class GetClusterMasterAuthResult(dict):
                  client_certificate: str,
                  client_certificate_configs: Sequence['outputs.GetClusterMasterAuthClientCertificateConfigResult'],
                  client_key: str,
-                 cluster_ca_certificate: str,
-                 password: str,
-                 username: str):
+                 cluster_ca_certificate: str):
         pulumi.set(__self__, "client_certificate", client_certificate)
         pulumi.set(__self__, "client_certificate_configs", client_certificate_configs)
         pulumi.set(__self__, "client_key", client_key)
         pulumi.set(__self__, "cluster_ca_certificate", cluster_ca_certificate)
-        pulumi.set(__self__, "password", password)
-        pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter(name="clientCertificate")
@@ -5156,16 +5021,6 @@ class GetClusterMasterAuthResult(dict):
     @pulumi.getter(name="clusterCaCertificate")
     def cluster_ca_certificate(self) -> str:
         return pulumi.get(self, "cluster_ca_certificate")
-
-    @property
-    @pulumi.getter
-    def password(self) -> str:
-        return pulumi.get(self, "password")
-
-    @property
-    @pulumi.getter
-    def username(self) -> str:
-        return pulumi.get(self, "username")
 
 
 @pulumi.output_type
@@ -5530,20 +5385,13 @@ class GetClusterNodeConfigTaintResult(dict):
 @pulumi.output_type
 class GetClusterNodeConfigWorkloadMetadataConfigResult(dict):
     def __init__(__self__, *,
-                 mode: str,
-                 node_metadata: str):
+                 mode: str):
         pulumi.set(__self__, "mode", mode)
-        pulumi.set(__self__, "node_metadata", node_metadata)
 
     @property
     @pulumi.getter
     def mode(self) -> str:
         return pulumi.get(self, "mode")
-
-    @property
-    @pulumi.getter(name="nodeMetadata")
-    def node_metadata(self) -> str:
-        return pulumi.get(self, "node_metadata")
 
 
 @pulumi.output_type
@@ -5552,6 +5400,7 @@ class GetClusterNodePoolResult(dict):
                  autoscalings: Sequence['outputs.GetClusterNodePoolAutoscalingResult'],
                  initial_node_count: int,
                  instance_group_urls: Sequence[str],
+                 managed_instance_group_urls: Sequence[str],
                  managements: Sequence['outputs.GetClusterNodePoolManagementResult'],
                  max_pods_per_node: int,
                  name: str,
@@ -5568,6 +5417,7 @@ class GetClusterNodePoolResult(dict):
         pulumi.set(__self__, "autoscalings", autoscalings)
         pulumi.set(__self__, "initial_node_count", initial_node_count)
         pulumi.set(__self__, "instance_group_urls", instance_group_urls)
+        pulumi.set(__self__, "managed_instance_group_urls", managed_instance_group_urls)
         pulumi.set(__self__, "managements", managements)
         pulumi.set(__self__, "max_pods_per_node", max_pods_per_node)
         pulumi.set(__self__, "name", name)
@@ -5593,6 +5443,11 @@ class GetClusterNodePoolResult(dict):
     @pulumi.getter(name="instanceGroupUrls")
     def instance_group_urls(self) -> Sequence[str]:
         return pulumi.get(self, "instance_group_urls")
+
+    @property
+    @pulumi.getter(name="managedInstanceGroupUrls")
+    def managed_instance_group_urls(self) -> Sequence[str]:
+        return pulumi.get(self, "managed_instance_group_urls")
 
     @property
     @pulumi.getter
@@ -6000,20 +5855,13 @@ class GetClusterNodePoolNodeConfigTaintResult(dict):
 @pulumi.output_type
 class GetClusterNodePoolNodeConfigWorkloadMetadataConfigResult(dict):
     def __init__(__self__, *,
-                 mode: str,
-                 node_metadata: str):
+                 mode: str):
         pulumi.set(__self__, "mode", mode)
-        pulumi.set(__self__, "node_metadata", node_metadata)
 
     @property
     @pulumi.getter
     def mode(self) -> str:
         return pulumi.get(self, "mode")
-
-    @property
-    @pulumi.getter(name="nodeMetadata")
-    def node_metadata(self) -> str:
-        return pulumi.get(self, "node_metadata")
 
 
 @pulumi.output_type
@@ -6209,15 +6057,8 @@ class GetClusterVerticalPodAutoscalingResult(dict):
 @pulumi.output_type
 class GetClusterWorkloadIdentityConfigResult(dict):
     def __init__(__self__, *,
-                 identity_namespace: str,
                  workload_pool: str):
-        pulumi.set(__self__, "identity_namespace", identity_namespace)
         pulumi.set(__self__, "workload_pool", workload_pool)
-
-    @property
-    @pulumi.getter(name="identityNamespace")
-    def identity_namespace(self) -> str:
-        return pulumi.get(self, "identity_namespace")
 
     @property
     @pulumi.getter(name="workloadPool")

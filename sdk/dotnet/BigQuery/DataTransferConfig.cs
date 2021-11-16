@@ -36,6 +36,7 @@ namespace Pulumi.Gcp.BigQuery
     ///         var project = Output.Create(Gcp.Organizations.GetProject.InvokeAsync());
     ///         var permissions = new Gcp.Projects.IAMMember("permissions", new Gcp.Projects.IAMMemberArgs
     ///         {
+    ///             Project = project.Apply(project =&gt; project.ProjectId),
     ///             Role = "roles/iam.serviceAccountShortTermTokenMinter",
     ///             Member = project.Apply(project =&gt; $"serviceAccount:service-{project.Number}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com"),
     ///         });

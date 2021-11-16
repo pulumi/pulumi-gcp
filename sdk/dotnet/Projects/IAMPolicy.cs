@@ -297,9 +297,8 @@ namespace Pulumi.Gcp.Projects
         public Output<string> PolicyData { get; private set; } = null!;
 
         /// <summary>
-        /// The project ID. If not specified for `gcp.projects.IAMBinding`, `gcp.projects.IAMMember`, or `gcp.projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-        /// Required for `gcp.projects.IAMPolicy` - you must explicitly set the project, and it
-        /// will not be inferred from the provider.
+        /// The project id of the target project. This is not
+        /// inferred from the provider.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -359,9 +358,8 @@ namespace Pulumi.Gcp.Projects
         public Input<string> PolicyData { get; set; } = null!;
 
         /// <summary>
-        /// The project ID. If not specified for `gcp.projects.IAMBinding`, `gcp.projects.IAMMember`, or `gcp.projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-        /// Required for `gcp.projects.IAMPolicy` - you must explicitly set the project, and it
-        /// will not be inferred from the provider.
+        /// The project id of the target project. This is not
+        /// inferred from the provider.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -388,9 +386,8 @@ namespace Pulumi.Gcp.Projects
         public Input<string>? PolicyData { get; set; }
 
         /// <summary>
-        /// The project ID. If not specified for `gcp.projects.IAMBinding`, `gcp.projects.IAMMember`, or `gcp.projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-        /// Required for `gcp.projects.IAMPolicy` - you must explicitly set the project, and it
-        /// will not be inferred from the provider.
+        /// The project id of the target project. This is not
+        /// inferred from the provider.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

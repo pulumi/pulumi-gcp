@@ -26,7 +26,7 @@ import (
 // 	"encoding/base64"
 // 	"io/ioutil"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/certificateauthority"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificateauthority"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -142,7 +142,7 @@ import (
 // import (
 // 	"io/ioutil"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/certificateauthority"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificateauthority"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -305,7 +305,7 @@ import (
 // import (
 // 	"io/ioutil"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/certificateauthority"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificateauthority"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -380,7 +380,7 @@ import (
 // 	"encoding/base64"
 // 	"io/ioutil"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/certificateauthority"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificateauthority"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //

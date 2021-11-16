@@ -88,10 +88,6 @@ namespace Pulumi.Gcp.Kms
         public readonly string Location;
         public readonly string Name;
         public readonly string? Project;
-        /// <summary>
-        /// The self link of the created KeyRing. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}`.
-        /// </summary>
-        public readonly string SelfLink;
 
         [OutputConstructor]
         private GetKMSKeyRingResult(
@@ -101,15 +97,12 @@ namespace Pulumi.Gcp.Kms
 
             string name,
 
-            string? project,
-
-            string selfLink)
+            string? project)
         {
             Id = id;
             Location = location;
             Name = name;
             Project = project;
-            SelfLink = selfLink;
         }
     }
 }

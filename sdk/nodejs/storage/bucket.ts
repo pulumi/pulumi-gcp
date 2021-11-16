@@ -111,12 +111,6 @@ export class Bucket extends pulumi.CustomResource {
     }
 
     /**
-     * Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket. This field will be removed in the next major release of the provider.
-     *
-     * @deprecated Please use the uniform_bucket_level_access as this field has been renamed by Google.
-     */
-    public readonly bucketPolicyOnly!: pulumi.Output<boolean>;
-    /**
      * The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
      */
     public readonly cors!: pulumi.Output<outputs.storage.BucketCor[] | undefined>;
@@ -142,7 +136,7 @@ export class Bucket extends pulumi.CustomResource {
     /**
      * The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
      */
@@ -196,13 +190,12 @@ export class Bucket extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: BucketArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: BucketArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BucketArgs | BucketState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BucketState | undefined;
-            inputs["bucketPolicyOnly"] = state ? state.bucketPolicyOnly : undefined;
             inputs["cors"] = state ? state.cors : undefined;
             inputs["defaultEventBasedHold"] = state ? state.defaultEventBasedHold : undefined;
             inputs["encryption"] = state ? state.encryption : undefined;
@@ -223,7 +216,9 @@ export class Bucket extends pulumi.CustomResource {
             inputs["website"] = state ? state.website : undefined;
         } else {
             const args = argsOrState as BucketArgs | undefined;
-            inputs["bucketPolicyOnly"] = args ? args.bucketPolicyOnly : undefined;
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
+            }
             inputs["cors"] = args ? args.cors : undefined;
             inputs["defaultEventBasedHold"] = args ? args.defaultEventBasedHold : undefined;
             inputs["encryption"] = args ? args.encryption : undefined;
@@ -254,12 +249,6 @@ export class Bucket extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Bucket resources.
  */
 export interface BucketState {
-    /**
-     * Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket. This field will be removed in the next major release of the provider.
-     *
-     * @deprecated Please use the uniform_bucket_level_access as this field has been renamed by Google.
-     */
-    bucketPolicyOnly?: pulumi.Input<boolean>;
     /**
      * The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
      */
@@ -339,12 +328,6 @@ export interface BucketState {
  */
 export interface BucketArgs {
     /**
-     * Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket. This field will be removed in the next major release of the provider.
-     *
-     * @deprecated Please use the uniform_bucket_level_access as this field has been renamed by Google.
-     */
-    bucketPolicyOnly?: pulumi.Input<boolean>;
-    /**
      * The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
      */
     cors?: pulumi.Input<pulumi.Input<inputs.storage.BucketCor>[]>;
@@ -370,7 +353,7 @@ export interface BucketArgs {
     /**
      * The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
      */
-    location?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
      */

@@ -34,10 +34,10 @@ import * as utilities from "../utilities";
  * });
  * const crypto-key = keyring.then(keyring => gcp.kms.getKMSCryptoKey({
  *     name: "my-key",
- *     keyRing: keyring.selfLink,
+ *     keyRing: keyring.id,
  * }));
  * const version = crypto_key.then(crypto_key => gcp.kms.getKMSCryptoKeyVersion({
- *     cryptoKey: crypto_key.selfLink,
+ *     cryptoKey: crypto_key.id,
  * }));
  * const attestor = new gcp.binaryauthorization.Attestor("attestor", {attestationAuthorityNote: {
  *     noteReference: note.name,
