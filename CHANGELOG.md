@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v4.0.0 of the Google Beta Terraform Provider
-  * **PLEASE NOTE:** There are a summary of the breaking changes to the underlying provider can be found [in the Terraform upgrade guide](https://registry.terraform.io/providers/hashicorp/google/latest/docs/guides/version_4_upgrade)
+_(none)_
 
 ---
+
+## 6.0.0 (2021-11-16)
+* Upgrade to v4.0.0 of the Google Beta Terraform Provider
+  * **PLEASE NOTE:** There are a summary of the breaking changes to the underlying provider can be found [in the Terraform upgrade guide](https://registry.terraform.io/providers/hashicorp/google/latest/docs/guides/version_4_upgrade)
 
 ## 5.26.0 (2021-11-01)
 * Upgrade to v3.90.0 of the Google Beta Terraform Provider
