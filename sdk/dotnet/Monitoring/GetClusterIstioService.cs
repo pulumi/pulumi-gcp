@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Monitoring
 {
@@ -57,6 +58,53 @@ namespace Pulumi.Gcp.Monitoring
         /// </summary>
         public static Task<GetClusterIstioServiceResult> InvokeAsync(GetClusterIstioServiceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClusterIstioServiceResult>("gcp:monitoring/getClusterIstioService:getClusterIstioService", args ?? new GetClusterIstioServiceArgs(), options.WithVersion());
+
+        /// <summary>
+        /// A Monitoring Service is the root resource under which operational aspects of a
+        /// generic service are accessible. A service is some discrete, autonomous, and
+        /// network-accessible unit, designed to solve an individual concern
+        /// 
+        /// An Cluster Istio monitoring service is automatically created by GCP to monitor
+        /// Cluster Istio services.
+        /// 
+        /// 
+        /// To get more information about Service, see:
+        /// 
+        /// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
+        /// * How-to Guides
+        ///     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+        ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// ### Monitoring Cluster Istio Service
+        /// 
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(Gcp.Monitoring.GetClusterIstioService.InvokeAsync(new Gcp.Monitoring.GetClusterIstioServiceArgs
+        ///         {
+        ///             ClusterName = "west",
+        ///             Location = "us-west2-a",
+        ///             ServiceName = "istio-policy",
+        ///             ServiceNamespace = "istio-system",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetClusterIstioServiceResult> Invoke(GetClusterIstioServiceInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetClusterIstioServiceResult>("gcp:monitoring/getClusterIstioService:getClusterIstioService", args ?? new GetClusterIstioServiceInvokeArgs(), options.WithVersion());
     }
 
 
@@ -98,6 +146,48 @@ namespace Pulumi.Gcp.Monitoring
         public string ServiceNamespace { get; set; } = null!;
 
         public GetClusterIstioServiceArgs()
+        {
+        }
+    }
+
+    public sealed class GetClusterIstioServiceInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the Kubernetes cluster in which this Istio service 
+        /// is defined. Corresponds to the clusterName resource label in k8s_cluster resources.
+        /// </summary>
+        [Input("clusterName", required: true)]
+        public Input<string> ClusterName { get; set; } = null!;
+
+        /// <summary>
+        /// The location of the Kubernetes cluster in which this Istio service 
+        /// is defined. Corresponds to the location resource label in k8s_cluster resources.
+        /// </summary>
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The name of the Istio service underlying this service.
+        /// Corresponds to the destination_service_name metric label in Istio metrics.
+        /// </summary>
+        [Input("serviceName", required: true)]
+        public Input<string> ServiceName { get; set; } = null!;
+
+        /// <summary>
+        /// The namespace of the Istio service underlying this service.
+        /// Corresponds to the destination_service_namespace metric label in Istio metrics.
+        /// </summary>
+        [Input("serviceNamespace", required: true)]
+        public Input<string> ServiceNamespace { get; set; } = null!;
+
+        public GetClusterIstioServiceInvokeArgs()
         {
         }
     }

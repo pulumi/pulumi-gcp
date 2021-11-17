@@ -460,6 +460,10 @@ func (o AppProfileMapOutput) MapIndex(k pulumi.StringInput) AppProfileOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AppProfileInput)(nil)).Elem(), &AppProfile{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppProfilePtrInput)(nil)).Elem(), &AppProfile{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppProfileArrayInput)(nil)).Elem(), AppProfileArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppProfileMapInput)(nil)).Elem(), AppProfileMap{})
 	pulumi.RegisterOutputType(AppProfileOutput{})
 	pulumi.RegisterOutputType(AppProfilePtrOutput{})
 	pulumi.RegisterOutputType(AppProfileArrayOutput{})

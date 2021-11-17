@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Dns
 {
@@ -54,6 +55,50 @@ namespace Pulumi.Gcp.Dns
         /// </summary>
         public static Task<GetKeysResult> InvokeAsync(GetKeysArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKeysResult>("gcp:dns/getKeys:getKeys", args ?? new GetKeysArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get the DNSKEY and DS records of DNSSEC-signed managed zones. For more information see the
+        /// [official documentation](https://cloud.google.com/dns/docs/dnskeys/)
+        /// and [API](https://cloud.google.com/dns/docs/reference/v1/dnsKeys).
+        /// 
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = new Gcp.Dns.ManagedZone("foo", new Gcp.Dns.ManagedZoneArgs
+        ///         {
+        ///             DnsName = "foo.bar.",
+        ///             DnssecConfig = new Gcp.Dns.Inputs.ManagedZoneDnssecConfigArgs
+        ///             {
+        ///                 State = "on",
+        ///                 NonExistence = "nsec3",
+        ///             },
+        ///         });
+        ///         var fooDnsKeys = foo.Id.Apply(id =&gt; Gcp.Dns.GetKeys.InvokeAsync(new Gcp.Dns.GetKeysArgs
+        ///         {
+        ///             ManagedZone = id,
+        ///         }));
+        ///         this.FooDnsDsRecord = fooDnsKeys.Apply(fooDnsKeys =&gt; fooDnsKeys.KeySigningKeys?[0]?.DsRecord);
+        ///     }
+        /// 
+        ///     [Output("fooDnsDsRecord")]
+        ///     public Output&lt;string&gt; FooDnsDsRecord { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetKeysResult> Invoke(GetKeysInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetKeysResult>("gcp:dns/getKeys:getKeys", args ?? new GetKeysInvokeArgs(), options.WithVersion());
     }
 
 
@@ -72,6 +117,25 @@ namespace Pulumi.Gcp.Dns
         public string? Project { get; set; }
 
         public GetKeysArgs()
+        {
+        }
+    }
+
+    public sealed class GetKeysInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name or id of the Cloud DNS managed zone.
+        /// </summary>
+        [Input("managedZone", required: true)]
+        public Input<string> ManagedZone { get; set; } = null!;
+
+        /// <summary>
+        /// The ID of the project in which the resource belongs. If `project` is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetKeysInvokeArgs()
         {
         }
     }

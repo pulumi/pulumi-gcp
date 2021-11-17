@@ -311,6 +311,10 @@ func (o EnvGroupMapOutput) MapIndex(k pulumi.StringInput) EnvGroupOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvGroupInput)(nil)).Elem(), &EnvGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvGroupPtrInput)(nil)).Elem(), &EnvGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvGroupArrayInput)(nil)).Elem(), EnvGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvGroupMapInput)(nil)).Elem(), EnvGroupMap{})
 	pulumi.RegisterOutputType(EnvGroupOutput{})
 	pulumi.RegisterOutputType(EnvGroupPtrOutput{})
 	pulumi.RegisterOutputType(EnvGroupArrayOutput{})

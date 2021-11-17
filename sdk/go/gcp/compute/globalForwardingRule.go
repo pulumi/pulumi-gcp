@@ -1324,6 +1324,10 @@ func (o GlobalForwardingRuleMapOutput) MapIndex(k pulumi.StringInput) GlobalForw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalForwardingRuleInput)(nil)).Elem(), &GlobalForwardingRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalForwardingRulePtrInput)(nil)).Elem(), &GlobalForwardingRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalForwardingRuleArrayInput)(nil)).Elem(), GlobalForwardingRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalForwardingRuleMapInput)(nil)).Elem(), GlobalForwardingRuleMap{})
 	pulumi.RegisterOutputType(GlobalForwardingRuleOutput{})
 	pulumi.RegisterOutputType(GlobalForwardingRulePtrOutput{})
 	pulumi.RegisterOutputType(GlobalForwardingRuleArrayOutput{})

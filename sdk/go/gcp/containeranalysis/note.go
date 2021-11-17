@@ -499,6 +499,10 @@ func (o NoteMapOutput) MapIndex(k pulumi.StringInput) NoteOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NoteInput)(nil)).Elem(), &Note{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotePtrInput)(nil)).Elem(), &Note{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NoteArrayInput)(nil)).Elem(), NoteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NoteMapInput)(nil)).Elem(), NoteMap{})
 	pulumi.RegisterOutputType(NoteOutput{})
 	pulumi.RegisterOutputType(NotePtrOutput{})
 	pulumi.RegisterOutputType(NoteArrayOutput{})

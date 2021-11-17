@@ -386,6 +386,10 @@ func (o ServiceNetworkSettingsMapOutput) MapIndex(k pulumi.StringInput) ServiceN
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceNetworkSettingsInput)(nil)).Elem(), &ServiceNetworkSettings{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceNetworkSettingsPtrInput)(nil)).Elem(), &ServiceNetworkSettings{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceNetworkSettingsArrayInput)(nil)).Elem(), ServiceNetworkSettingsArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceNetworkSettingsMapInput)(nil)).Elem(), ServiceNetworkSettingsMap{})
 	pulumi.RegisterOutputType(ServiceNetworkSettingsOutput{})
 	pulumi.RegisterOutputType(ServiceNetworkSettingsPtrOutput{})
 	pulumi.RegisterOutputType(ServiceNetworkSettingsArrayOutput{})

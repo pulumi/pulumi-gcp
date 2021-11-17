@@ -766,6 +766,10 @@ func (o VPNTunnelMapOutput) MapIndex(k pulumi.StringInput) VPNTunnelOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*VPNTunnelInput)(nil)).Elem(), &VPNTunnel{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VPNTunnelPtrInput)(nil)).Elem(), &VPNTunnel{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VPNTunnelArrayInput)(nil)).Elem(), VPNTunnelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VPNTunnelMapInput)(nil)).Elem(), VPNTunnelMap{})
 	pulumi.RegisterOutputType(VPNTunnelOutput{})
 	pulumi.RegisterOutputType(VPNTunnelPtrOutput{})
 	pulumi.RegisterOutputType(VPNTunnelArrayOutput{})

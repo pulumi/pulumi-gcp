@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.RuntimeConfig
 {
@@ -13,6 +14,9 @@ namespace Pulumi.Gcp.RuntimeConfig
     {
         public static Task<GetVariableResult> InvokeAsync(GetVariableArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVariableResult>("gcp:runtimeconfig/getVariable:getVariable", args ?? new GetVariableArgs(), options.WithVersion());
+
+        public static Output<GetVariableResult> Invoke(GetVariableInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetVariableResult>("gcp:runtimeconfig/getVariable:getVariable", args ?? new GetVariableInvokeArgs(), options.WithVersion());
     }
 
 
@@ -38,6 +42,32 @@ namespace Pulumi.Gcp.RuntimeConfig
         public string? Project { get; set; }
 
         public GetVariableArgs()
+        {
+        }
+    }
+
+    public sealed class GetVariableInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the Runtime Configurator configuration.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the RuntimeConfig resource containing this variable.
+        /// </summary>
+        [Input("parent", required: true)]
+        public Input<string> Parent { get; set; } = null!;
+
+        /// <summary>
+        /// The project in which the resource belongs. If it
+        /// is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetVariableInvokeArgs()
         {
         }
     }

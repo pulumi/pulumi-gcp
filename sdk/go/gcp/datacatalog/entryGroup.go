@@ -387,6 +387,10 @@ func (o EntryGroupMapOutput) MapIndex(k pulumi.StringInput) EntryGroupOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EntryGroupInput)(nil)).Elem(), &EntryGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntryGroupPtrInput)(nil)).Elem(), &EntryGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntryGroupArrayInput)(nil)).Elem(), EntryGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntryGroupMapInput)(nil)).Elem(), EntryGroupMap{})
 	pulumi.RegisterOutputType(EntryGroupOutput{})
 	pulumi.RegisterOutputType(EntryGroupPtrOutput{})
 	pulumi.RegisterOutputType(EntryGroupArrayOutput{})

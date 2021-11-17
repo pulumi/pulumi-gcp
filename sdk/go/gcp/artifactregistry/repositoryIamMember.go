@@ -466,6 +466,10 @@ func (o RepositoryIamMemberMapOutput) MapIndex(k pulumi.StringInput) RepositoryI
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryIamMemberInput)(nil)).Elem(), &RepositoryIamMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryIamMemberPtrInput)(nil)).Elem(), &RepositoryIamMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryIamMemberArrayInput)(nil)).Elem(), RepositoryIamMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryIamMemberMapInput)(nil)).Elem(), RepositoryIamMemberMap{})
 	pulumi.RegisterOutputType(RepositoryIamMemberOutput{})
 	pulumi.RegisterOutputType(RepositoryIamMemberPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryIamMemberArrayOutput{})

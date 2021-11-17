@@ -363,6 +363,10 @@ func (o SshPublicKeyMapOutput) MapIndex(k pulumi.StringInput) SshPublicKeyOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SshPublicKeyInput)(nil)).Elem(), &SshPublicKey{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SshPublicKeyPtrInput)(nil)).Elem(), &SshPublicKey{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SshPublicKeyArrayInput)(nil)).Elem(), SshPublicKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SshPublicKeyMapInput)(nil)).Elem(), SshPublicKeyMap{})
 	pulumi.RegisterOutputType(SshPublicKeyOutput{})
 	pulumi.RegisterOutputType(SshPublicKeyPtrOutput{})
 	pulumi.RegisterOutputType(SshPublicKeyArrayOutput{})

@@ -1314,6 +1314,10 @@ func (o URLMapMapOutput) MapIndex(k pulumi.StringInput) URLMapOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapInput)(nil)).Elem(), &URLMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPtrInput)(nil)).Elem(), &URLMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapArrayInput)(nil)).Elem(), URLMapArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapMapInput)(nil)).Elem(), URLMapMap{})
 	pulumi.RegisterOutputType(URLMapOutput{})
 	pulumi.RegisterOutputType(URLMapPtrOutput{})
 	pulumi.RegisterOutputType(URLMapArrayOutput{})

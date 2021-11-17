@@ -771,6 +771,10 @@ func (o AuthorityMapOutput) MapIndex(k pulumi.StringInput) AuthorityOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityInput)(nil)).Elem(), &Authority{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityPtrInput)(nil)).Elem(), &Authority{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityArrayInput)(nil)).Elem(), AuthorityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityMapInput)(nil)).Elem(), AuthorityMap{})
 	pulumi.RegisterOutputType(AuthorityOutput{})
 	pulumi.RegisterOutputType(AuthorityPtrOutput{})
 	pulumi.RegisterOutputType(AuthorityArrayOutput{})

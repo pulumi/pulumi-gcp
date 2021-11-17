@@ -415,6 +415,10 @@ func (o LienMapOutput) MapIndex(k pulumi.StringInput) LienOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*LienInput)(nil)).Elem(), &Lien{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LienPtrInput)(nil)).Elem(), &Lien{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LienArrayInput)(nil)).Elem(), LienArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LienMapInput)(nil)).Elem(), LienMap{})
 	pulumi.RegisterOutputType(LienOutput{})
 	pulumi.RegisterOutputType(LienPtrOutput{})
 	pulumi.RegisterOutputType(LienArrayOutput{})

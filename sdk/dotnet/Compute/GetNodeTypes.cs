@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Compute
 {
@@ -45,6 +46,41 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Task<GetNodeTypesResult> InvokeAsync(GetNodeTypesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNodeTypesResult>("gcp:compute/getNodeTypes:getNodeTypes", args ?? new GetNodeTypesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Provides available node types for Compute Engine sole-tenant nodes in a zone
+        /// for a given project. For more information, see [the official documentation](https://cloud.google.com/compute/docs/nodes/#types) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/nodeTypes).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var central1b = Output.Create(Gcp.Compute.GetNodeTypes.InvokeAsync(new Gcp.Compute.GetNodeTypesArgs
+        ///         {
+        ///             Zone = "us-central1-b",
+        ///         }));
+        ///         var tmpl = new Gcp.Compute.NodeTemplate("tmpl", new Gcp.Compute.NodeTemplateArgs
+        ///         {
+        ///             Region = "us-central1",
+        ///             NodeType = data.Google_compute_node_types.Types.Names[0],
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetNodeTypesResult> Invoke(GetNodeTypesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetNodeTypesResult>("gcp:compute/getNodeTypes:getNodeTypes", args ?? new GetNodeTypesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -66,6 +102,28 @@ namespace Pulumi.Gcp.Compute
         public string? Zone { get; set; }
 
         public GetNodeTypesArgs()
+        {
+        }
+    }
+
+    public sealed class GetNodeTypesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// ID of the project to list available node types for.
+        /// Should match the project the nodes of this type will be deployed to.
+        /// Defaults to the project that the provider is authenticated with.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The zone to list node types for. Should be in zone of intended node groups and region of referencing node template. If `zone` is not specified, the provider-level zone must be set and is used
+        /// instead.
+        /// </summary>
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
+
+        public GetNodeTypesInvokeArgs()
         {
         }
     }

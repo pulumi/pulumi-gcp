@@ -651,6 +651,10 @@ func (o RegionInstanceGroupManagerMapOutput) MapIndex(k pulumi.StringInput) Regi
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceGroupManagerInput)(nil)).Elem(), &RegionInstanceGroupManager{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceGroupManagerPtrInput)(nil)).Elem(), &RegionInstanceGroupManager{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceGroupManagerArrayInput)(nil)).Elem(), RegionInstanceGroupManagerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceGroupManagerMapInput)(nil)).Elem(), RegionInstanceGroupManagerMap{})
 	pulumi.RegisterOutputType(RegionInstanceGroupManagerOutput{})
 	pulumi.RegisterOutputType(RegionInstanceGroupManagerPtrOutput{})
 	pulumi.RegisterOutputType(RegionInstanceGroupManagerArrayOutput{})

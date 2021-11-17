@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Container
 {
@@ -41,6 +42,37 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         public static Task<GetRegistryRepositoryResult> InvokeAsync(GetRegistryRepositoryArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegistryRepositoryResult>("gcp:container/getRegistryRepository:getRegistryRepository", args ?? new GetRegistryRepositoryArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
+        /// 
+        /// The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Gcp.Container.GetRegistryRepository.InvokeAsync());
+        ///         this.GcrLocation = foo.Apply(foo =&gt; foo.RepositoryUrl);
+        ///     }
+        /// 
+        ///     [Output("gcrLocation")]
+        ///     public Output&lt;string&gt; GcrLocation { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetRegistryRepositoryResult> Invoke(GetRegistryRepositoryInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRegistryRepositoryResult>("gcp:container/getRegistryRepository:getRegistryRepository", args ?? new GetRegistryRepositoryInvokeArgs(), options.WithVersion());
     }
 
 
@@ -53,6 +85,19 @@ namespace Pulumi.Gcp.Container
         public string? Region { get; set; }
 
         public GetRegistryRepositoryArgs()
+        {
+        }
+    }
+
+    public sealed class GetRegistryRepositoryInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        public GetRegistryRepositoryInvokeArgs()
         {
         }
     }

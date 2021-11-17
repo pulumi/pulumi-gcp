@@ -435,6 +435,10 @@ func (o DefaultObjectAccessControlMapOutput) MapIndex(k pulumi.StringInput) Defa
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultObjectAccessControlInput)(nil)).Elem(), &DefaultObjectAccessControl{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultObjectAccessControlPtrInput)(nil)).Elem(), &DefaultObjectAccessControl{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultObjectAccessControlArrayInput)(nil)).Elem(), DefaultObjectAccessControlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultObjectAccessControlMapInput)(nil)).Elem(), DefaultObjectAccessControlMap{})
 	pulumi.RegisterOutputType(DefaultObjectAccessControlOutput{})
 	pulumi.RegisterOutputType(DefaultObjectAccessControlPtrOutput{})
 	pulumi.RegisterOutputType(DefaultObjectAccessControlArrayOutput{})

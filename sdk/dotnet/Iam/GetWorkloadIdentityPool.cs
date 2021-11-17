@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Iam
 {
@@ -39,6 +40,35 @@ namespace Pulumi.Gcp.Iam
         /// </summary>
         public static Task<GetWorkloadIdentityPoolResult> InvokeAsync(GetWorkloadIdentityPoolArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetWorkloadIdentityPoolResult>("gcp:iam/getWorkloadIdentityPool:getWorkloadIdentityPool", args ?? new GetWorkloadIdentityPoolArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get a IAM workload identity pool from Google Cloud by its id.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Gcp.Iam.GetWorkloadIdentityPool.InvokeAsync(new Gcp.Iam.GetWorkloadIdentityPoolArgs
+        ///         {
+        ///             WorkloadIdentityPoolId = "foo-pool",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetWorkloadIdentityPoolResult> Invoke(GetWorkloadIdentityPoolInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetWorkloadIdentityPoolResult>("gcp:iam/getWorkloadIdentityPool:getWorkloadIdentityPool", args ?? new GetWorkloadIdentityPoolInvokeArgs(), options.WithVersion());
     }
 
 
@@ -59,6 +89,27 @@ namespace Pulumi.Gcp.Iam
         public string WorkloadIdentityPoolId { get; set; } = null!;
 
         public GetWorkloadIdentityPoolArgs()
+        {
+        }
+    }
+
+    public sealed class GetWorkloadIdentityPoolInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The project in which the resource belongs. If it
+        /// is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The id of the pool which is the
+        /// final component of the resource name.
+        /// </summary>
+        [Input("workloadIdentityPoolId", required: true)]
+        public Input<string> WorkloadIdentityPoolId { get; set; } = null!;
+
+        public GetWorkloadIdentityPoolInvokeArgs()
         {
         }
     }

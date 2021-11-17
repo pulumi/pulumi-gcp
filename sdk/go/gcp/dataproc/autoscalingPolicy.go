@@ -419,6 +419,10 @@ func (o AutoscalingPolicyMapOutput) MapIndex(k pulumi.StringInput) AutoscalingPo
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyInput)(nil)).Elem(), &AutoscalingPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyPtrInput)(nil)).Elem(), &AutoscalingPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyArrayInput)(nil)).Elem(), AutoscalingPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyMapInput)(nil)).Elem(), AutoscalingPolicyMap{})
 	pulumi.RegisterOutputType(AutoscalingPolicyOutput{})
 	pulumi.RegisterOutputType(AutoscalingPolicyPtrOutput{})
 	pulumi.RegisterOutputType(AutoscalingPolicyArrayOutput{})

@@ -595,6 +595,10 @@ func (o AutoscalerMapOutput) MapIndex(k pulumi.StringInput) AutoscalerOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalerInput)(nil)).Elem(), &Autoscaler{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalerPtrInput)(nil)).Elem(), &Autoscaler{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalerArrayInput)(nil)).Elem(), AutoscalerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalerMapInput)(nil)).Elem(), AutoscalerMap{})
 	pulumi.RegisterOutputType(AutoscalerOutput{})
 	pulumi.RegisterOutputType(AutoscalerPtrOutput{})
 	pulumi.RegisterOutputType(AutoscalerArrayOutput{})

@@ -384,6 +384,10 @@ func (o DataStoreIndexMapOutput) MapIndex(k pulumi.StringInput) DataStoreIndexOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreIndexInput)(nil)).Elem(), &DataStoreIndex{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreIndexPtrInput)(nil)).Elem(), &DataStoreIndex{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreIndexArrayInput)(nil)).Elem(), DataStoreIndexArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreIndexMapInput)(nil)).Elem(), DataStoreIndexMap{})
 	pulumi.RegisterOutputType(DataStoreIndexOutput{})
 	pulumi.RegisterOutputType(DataStoreIndexPtrOutput{})
 	pulumi.RegisterOutputType(DataStoreIndexArrayOutput{})

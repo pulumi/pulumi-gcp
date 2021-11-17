@@ -417,6 +417,10 @@ func (o BackendServiceSignedUrlKeyMapOutput) MapIndex(k pulumi.StringInput) Back
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceSignedUrlKeyInput)(nil)).Elem(), &BackendServiceSignedUrlKey{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceSignedUrlKeyPtrInput)(nil)).Elem(), &BackendServiceSignedUrlKey{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceSignedUrlKeyArrayInput)(nil)).Elem(), BackendServiceSignedUrlKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceSignedUrlKeyMapInput)(nil)).Elem(), BackendServiceSignedUrlKeyMap{})
 	pulumi.RegisterOutputType(BackendServiceSignedUrlKeyOutput{})
 	pulumi.RegisterOutputType(BackendServiceSignedUrlKeyPtrOutput{})
 	pulumi.RegisterOutputType(BackendServiceSignedUrlKeyArrayOutput{})

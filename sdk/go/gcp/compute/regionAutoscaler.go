@@ -494,6 +494,10 @@ func (o RegionAutoscalerMapOutput) MapIndex(k pulumi.StringInput) RegionAutoscal
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionAutoscalerInput)(nil)).Elem(), &RegionAutoscaler{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionAutoscalerPtrInput)(nil)).Elem(), &RegionAutoscaler{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionAutoscalerArrayInput)(nil)).Elem(), RegionAutoscalerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionAutoscalerMapInput)(nil)).Elem(), RegionAutoscalerMap{})
 	pulumi.RegisterOutputType(RegionAutoscalerOutput{})
 	pulumi.RegisterOutputType(RegionAutoscalerPtrOutput{})
 	pulumi.RegisterOutputType(RegionAutoscalerArrayOutput{})

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Compute
 {
@@ -120,6 +121,116 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Task<GetInstanceSerialPortResult> InvokeAsync(GetInstanceSerialPortArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceSerialPortResult>("gcp:compute/getInstanceSerialPort:getInstanceSerialPort", args ?? new GetInstanceSerialPortArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get the serial port output from a Compute Instance. For more information see
+        /// the official [API](https://cloud.google.com/compute/docs/instances/viewing-serial-port-output) documentation.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var serial = Output.Create(Gcp.Compute.GetInstanceSerialPort.InvokeAsync(new Gcp.Compute.GetInstanceSerialPortArgs
+        ///         {
+        ///             Instance = "my-instance",
+        ///             Zone = "us-central1-a",
+        ///             Port = 1,
+        ///         }));
+        ///         this.SerialOut = serial.Apply(serial =&gt; serial.Contents);
+        ///     }
+        /// 
+        ///     [Output("serialOut")]
+        ///     public Output&lt;string&gt; SerialOut { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// Using the serial port output to generate a windows password, derived from the [official guide](https://cloud.google.com/compute/docs/instances/windows/automate-pw-generation):
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Text.Json;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var windows = new Gcp.Compute.Instance("windows", new Gcp.Compute.InstanceArgs
+        ///         {
+        ///             MachineType = "e2-medium",
+        ///             Zone = "us-central1-a",
+        ///             BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+        ///             {
+        ///                 InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+        ///                 {
+        ///                     Image = "windows-cloud/windows-2019",
+        ///                 },
+        ///             },
+        ///             NetworkInterfaces = 
+        ///             {
+        ///                 new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+        ///                 {
+        ///                     Network = "default",
+        ///                     AccessConfigs = 
+        ///                     {
+        ///                         ,
+        ///                     },
+        ///                 },
+        ///             },
+        ///             Metadata = 
+        ///             {
+        ///                 { "serial-port-logging-enable", "TRUE" },
+        ///                 { "windows-keys", JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+        ///                 {
+        ///                     { "email", "example.user@example.com" },
+        ///                     { "expireOn", "2020-04-14T01:37:19Z" },
+        ///                     { "exponent", "AQAB" },
+        ///                     { "modulus", "wgsquN4IBNPqIUnu+h/5Za1kujb2YRhX1vCQVQAkBwnWigcCqOBVfRa5JoZfx6KIvEXjWqa77jPvlsxM4WPqnDIM2qiK36up3SKkYwFjff6F2ni/ry8vrwXCX3sGZ1hbIHlK0O012HpA3ISeEswVZmX2X67naOvJXfY5v0hGPWqCADao+xVxrmxsZD4IWnKl1UaZzI5lhAzr8fw6utHwx1EZ/MSgsEki6tujcZfN+GUDRnmJGQSnPTXmsf7Q4DKreTZk49cuyB3prV91S0x3DYjCUpSXrkVy1Ha5XicGD/q+ystuFsJnrrhbNXJbpSjM6sjo/aduAkZJl4FmOt0R7Q==" },
+        ///                     { "userName", "example-user" },
+        ///                 }) },
+        ///             },
+        ///             ServiceAccount = new Gcp.Compute.Inputs.InstanceServiceAccountArgs
+        ///             {
+        ///                 Scopes = 
+        ///                 {
+        ///                     "userinfo-email",
+        ///                     "compute-ro",
+        ///                     "storage-ro",
+        ///                 },
+        ///             },
+        ///         });
+        ///         var serial = Output.Tuple(windows.Name, windows.Zone).Apply(values =&gt;
+        ///         {
+        ///             var name = values.Item1;
+        ///             var zone = values.Item2;
+        ///             return Gcp.Compute.GetInstanceSerialPort.InvokeAsync(new Gcp.Compute.GetInstanceSerialPortArgs
+        ///             {
+        ///                 Instance = name,
+        ///                 Zone = zone,
+        ///                 Port = 4,
+        ///             });
+        ///         });
+        ///         this.SerialOut = serial.Apply(serial =&gt; serial.Contents);
+        ///     }
+        /// 
+        ///     [Output("serialOut")]
+        ///     public Output&lt;string&gt; SerialOut { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetInstanceSerialPortResult> Invoke(GetInstanceSerialPortInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstanceSerialPortResult>("gcp:compute/getInstanceSerialPort:getInstanceSerialPort", args ?? new GetInstanceSerialPortInvokeArgs(), options.WithVersion());
     }
 
 
@@ -152,6 +263,39 @@ namespace Pulumi.Gcp.Compute
         public string? Zone { get; set; }
 
         public GetInstanceSerialPortArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstanceSerialPortInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the Compute Instance to read output from.
+        /// </summary>
+        [Input("instance", required: true)]
+        public Input<string> Instance { get; set; } = null!;
+
+        /// <summary>
+        /// The number of the serial port to read output from. Possible values are 1-4.
+        /// </summary>
+        [Input("port", required: true)]
+        public Input<int> Port { get; set; } = null!;
+
+        /// <summary>
+        /// The project in which the Compute Instance exists. If it
+        /// is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The zone in which the Compute Instance exists.
+        /// If it is not provided, the provider zone is used.
+        /// </summary>
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
+
+        public GetInstanceSerialPortInvokeArgs()
         {
         }
     }

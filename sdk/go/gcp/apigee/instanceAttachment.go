@@ -310,6 +310,10 @@ func (o InstanceAttachmentMapOutput) MapIndex(k pulumi.StringInput) InstanceAtta
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAttachmentInput)(nil)).Elem(), &InstanceAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAttachmentPtrInput)(nil)).Elem(), &InstanceAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAttachmentArrayInput)(nil)).Elem(), InstanceAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAttachmentMapInput)(nil)).Elem(), InstanceAttachmentMap{})
 	pulumi.RegisterOutputType(InstanceAttachmentOutput{})
 	pulumi.RegisterOutputType(InstanceAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(InstanceAttachmentArrayOutput{})

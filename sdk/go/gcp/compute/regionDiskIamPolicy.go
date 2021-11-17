@@ -432,6 +432,10 @@ func (o RegionDiskIamPolicyMapOutput) MapIndex(k pulumi.StringInput) RegionDiskI
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskIamPolicyInput)(nil)).Elem(), &RegionDiskIamPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskIamPolicyPtrInput)(nil)).Elem(), &RegionDiskIamPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskIamPolicyArrayInput)(nil)).Elem(), RegionDiskIamPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskIamPolicyMapInput)(nil)).Elem(), RegionDiskIamPolicyMap{})
 	pulumi.RegisterOutputType(RegionDiskIamPolicyOutput{})
 	pulumi.RegisterOutputType(RegionDiskIamPolicyPtrOutput{})
 	pulumi.RegisterOutputType(RegionDiskIamPolicyArrayOutput{})

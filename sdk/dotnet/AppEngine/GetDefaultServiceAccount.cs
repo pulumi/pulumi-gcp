@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.AppEngine
 {
@@ -39,6 +40,35 @@ namespace Pulumi.Gcp.AppEngine
         /// </summary>
         public static Task<GetDefaultServiceAccountResult> InvokeAsync(GetDefaultServiceAccountArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDefaultServiceAccountResult>("gcp:appengine/getDefaultServiceAccount:getDefaultServiceAccount", args ?? new GetDefaultServiceAccountArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to retrieve the default App Engine service account for the specified project.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(Gcp.AppEngine.GetDefaultServiceAccount.InvokeAsync());
+        ///         this.DefaultAccount = @default.Apply(@default =&gt; @default.Email);
+        ///     }
+        /// 
+        ///     [Output("defaultAccount")]
+        ///     public Output&lt;string&gt; DefaultAccount { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetDefaultServiceAccountResult> Invoke(GetDefaultServiceAccountInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDefaultServiceAccountResult>("gcp:appengine/getDefaultServiceAccount:getDefaultServiceAccount", args ?? new GetDefaultServiceAccountInvokeArgs(), options.WithVersion());
     }
 
 
@@ -51,6 +81,19 @@ namespace Pulumi.Gcp.AppEngine
         public string? Project { get; set; }
 
         public GetDefaultServiceAccountArgs()
+        {
+        }
+    }
+
+    public sealed class GetDefaultServiceAccountInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The project ID. If it is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetDefaultServiceAccountInvokeArgs()
         {
         }
     }

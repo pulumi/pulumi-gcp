@@ -427,6 +427,10 @@ func (o DatasetAccessMapOutput) MapIndex(k pulumi.StringInput) DatasetAccessOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessInput)(nil)).Elem(), &DatasetAccess{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessPtrInput)(nil)).Elem(), &DatasetAccess{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessArrayInput)(nil)).Elem(), DatasetAccessArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessMapInput)(nil)).Elem(), DatasetAccessMap{})
 	pulumi.RegisterOutputType(DatasetAccessOutput{})
 	pulumi.RegisterOutputType(DatasetAccessPtrOutput{})
 	pulumi.RegisterOutputType(DatasetAccessArrayOutput{})

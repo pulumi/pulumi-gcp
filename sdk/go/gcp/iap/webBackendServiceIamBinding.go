@@ -564,6 +564,10 @@ func (o WebBackendServiceIamBindingMapOutput) MapIndex(k pulumi.StringInput) Web
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*WebBackendServiceIamBindingInput)(nil)).Elem(), &WebBackendServiceIamBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebBackendServiceIamBindingPtrInput)(nil)).Elem(), &WebBackendServiceIamBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebBackendServiceIamBindingArrayInput)(nil)).Elem(), WebBackendServiceIamBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebBackendServiceIamBindingMapInput)(nil)).Elem(), WebBackendServiceIamBindingMap{})
 	pulumi.RegisterOutputType(WebBackendServiceIamBindingOutput{})
 	pulumi.RegisterOutputType(WebBackendServiceIamBindingPtrOutput{})
 	pulumi.RegisterOutputType(WebBackendServiceIamBindingArrayOutput{})

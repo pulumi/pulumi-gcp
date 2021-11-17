@@ -417,6 +417,10 @@ func (o LiteTopicMapOutput) MapIndex(k pulumi.StringInput) LiteTopicOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*LiteTopicInput)(nil)).Elem(), &LiteTopic{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LiteTopicPtrInput)(nil)).Elem(), &LiteTopic{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LiteTopicArrayInput)(nil)).Elem(), LiteTopicArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LiteTopicMapInput)(nil)).Elem(), LiteTopicMap{})
 	pulumi.RegisterOutputType(LiteTopicOutput{})
 	pulumi.RegisterOutputType(LiteTopicPtrOutput{})
 	pulumi.RegisterOutputType(LiteTopicArrayOutput{})

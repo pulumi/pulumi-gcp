@@ -408,6 +408,10 @@ func (o NetworkPeeringMapOutput) MapIndex(k pulumi.StringInput) NetworkPeeringOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPeeringInput)(nil)).Elem(), &NetworkPeering{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPeeringPtrInput)(nil)).Elem(), &NetworkPeering{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPeeringArrayInput)(nil)).Elem(), NetworkPeeringArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPeeringMapInput)(nil)).Elem(), NetworkPeeringMap{})
 	pulumi.RegisterOutputType(NetworkPeeringOutput{})
 	pulumi.RegisterOutputType(NetworkPeeringPtrOutput{})
 	pulumi.RegisterOutputType(NetworkPeeringArrayOutput{})

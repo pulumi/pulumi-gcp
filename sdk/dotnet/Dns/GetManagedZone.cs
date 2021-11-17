@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Dns
 {
@@ -48,6 +49,44 @@ namespace Pulumi.Gcp.Dns
         /// </summary>
         public static Task<GetManagedZoneResult> InvokeAsync(GetManagedZoneArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetManagedZoneResult>("gcp:dns/getManagedZone:getManagedZone", args ?? new GetManagedZoneArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Provides access to a zone's attributes within Google Cloud DNS.
+        /// For more information see
+        /// [the official documentation](https://cloud.google.com/dns/zones/)
+        /// and
+        /// [API](https://cloud.google.com/dns/api/v1/managedZones).
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var envDnsZone = Output.Create(Gcp.Dns.GetManagedZone.InvokeAsync(new Gcp.Dns.GetManagedZoneArgs
+        ///         {
+        ///             Name = "qa-zone",
+        ///         }));
+        ///         var dns = new Gcp.Dns.RecordSet("dns", new Gcp.Dns.RecordSetArgs
+        ///         {
+        ///             Name = envDnsZone.Apply(envDnsZone =&gt; $"my-address.{envDnsZone.DnsName}"),
+        ///             Type = "TXT",
+        ///             Ttl = 300,
+        ///             ManagedZone = envDnsZone.Apply(envDnsZone =&gt; envDnsZone.Name),
+        ///             Rrdatas = 
+        ///             {
+        ///                 "test",
+        ///             },
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// </summary>
+        public static Output<GetManagedZoneResult> Invoke(GetManagedZoneInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetManagedZoneResult>("gcp:dns/getManagedZone:getManagedZone", args ?? new GetManagedZoneInvokeArgs(), options.WithVersion());
     }
 
 
@@ -66,6 +105,25 @@ namespace Pulumi.Gcp.Dns
         public string? Project { get; set; }
 
         public GetManagedZoneArgs()
+        {
+        }
+    }
+
+    public sealed class GetManagedZoneInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// A unique name for the resource.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The ID of the project for the Google Cloud DNS zone.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetManagedZoneInvokeArgs()
         {
         }
     }

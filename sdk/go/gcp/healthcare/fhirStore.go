@@ -688,6 +688,10 @@ func (o FhirStoreMapOutput) MapIndex(k pulumi.StringInput) FhirStoreOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreInput)(nil)).Elem(), &FhirStore{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FhirStorePtrInput)(nil)).Elem(), &FhirStore{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreArrayInput)(nil)).Elem(), FhirStoreArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreMapInput)(nil)).Elem(), FhirStoreMap{})
 	pulumi.RegisterOutputType(FhirStoreOutput{})
 	pulumi.RegisterOutputType(FhirStorePtrOutput{})
 	pulumi.RegisterOutputType(FhirStoreArrayOutput{})

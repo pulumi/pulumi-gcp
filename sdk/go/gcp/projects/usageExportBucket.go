@@ -365,6 +365,10 @@ func (o UsageExportBucketMapOutput) MapIndex(k pulumi.StringInput) UsageExportBu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*UsageExportBucketInput)(nil)).Elem(), &UsageExportBucket{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UsageExportBucketPtrInput)(nil)).Elem(), &UsageExportBucket{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UsageExportBucketArrayInput)(nil)).Elem(), UsageExportBucketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UsageExportBucketMapInput)(nil)).Elem(), UsageExportBucketMap{})
 	pulumi.RegisterOutputType(UsageExportBucketOutput{})
 	pulumi.RegisterOutputType(UsageExportBucketPtrOutput{})
 	pulumi.RegisterOutputType(UsageExportBucketArrayOutput{})

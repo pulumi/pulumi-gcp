@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Kms
 {
@@ -25,6 +26,21 @@ namespace Pulumi.Gcp.Kms
         /// </summary>
         public static Task<GetKMSSecretResult> InvokeAsync(GetKMSSecretArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKMSSecretResult>("gcp:kms/getKMSSecret:getKMSSecret", args ?? new GetKMSSecretArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source allows you to use data encrypted with Google Cloud KMS
+        /// within your resource definitions.
+        /// 
+        /// For more information see
+        /// [the official documentation](https://cloud.google.com/kms/docs/encrypt-decrypt).
+        /// 
+        /// &gt; **NOTE:** Using this data provider will allow you to conceal secret data within your
+        /// resource definitions, but it does not take care of protecting that data in the
+        /// logging output, plan output, or state output.  Please take care to secure your secret
+        /// data outside of resource definitions.
+        /// </summary>
+        public static Output<GetKMSSecretResult> Invoke(GetKMSSecretInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetKMSSecretResult>("gcp:kms/getKMSSecret:getKMSSecret", args ?? new GetKMSSecretInvokeArgs(), options.WithVersion());
     }
 
 
@@ -51,6 +67,33 @@ namespace Pulumi.Gcp.Kms
         public string CryptoKey { get; set; } = null!;
 
         public GetKMSSecretArgs()
+        {
+        }
+    }
+
+    public sealed class GetKMSSecretInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The [additional authenticated data](https://cloud.google.com/kms/docs/additional-authenticated-data) used for integrity checks during encryption and decryption.
+        /// </summary>
+        [Input("additionalAuthenticatedData")]
+        public Input<string>? AdditionalAuthenticatedData { get; set; }
+
+        /// <summary>
+        /// The ciphertext to be decrypted, encoded in base64
+        /// </summary>
+        [Input("ciphertext", required: true)]
+        public Input<string> Ciphertext { get; set; } = null!;
+
+        /// <summary>
+        /// The id of the CryptoKey that will be used to
+        /// decrypt the provided ciphertext. This is represented by the format
+        /// `{projectId}/{location}/{keyRingName}/{cryptoKeyName}`.
+        /// </summary>
+        [Input("cryptoKey", required: true)]
+        public Input<string> CryptoKey { get; set; } = null!;
+
+        public GetKMSSecretInvokeArgs()
         {
         }
     }

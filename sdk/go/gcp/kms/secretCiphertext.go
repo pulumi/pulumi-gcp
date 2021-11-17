@@ -390,6 +390,10 @@ func (o SecretCiphertextMapOutput) MapIndex(k pulumi.StringInput) SecretCipherte
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretCiphertextInput)(nil)).Elem(), &SecretCiphertext{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretCiphertextPtrInput)(nil)).Elem(), &SecretCiphertext{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretCiphertextArrayInput)(nil)).Elem(), SecretCiphertextArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretCiphertextMapInput)(nil)).Elem(), SecretCiphertextMap{})
 	pulumi.RegisterOutputType(SecretCiphertextOutput{})
 	pulumi.RegisterOutputType(SecretCiphertextPtrOutput{})
 	pulumi.RegisterOutputType(SecretCiphertextArrayOutput{})

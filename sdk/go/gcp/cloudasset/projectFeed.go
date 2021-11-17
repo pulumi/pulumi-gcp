@@ -459,6 +459,10 @@ func (o ProjectFeedMapOutput) MapIndex(k pulumi.StringInput) ProjectFeedOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectFeedInput)(nil)).Elem(), &ProjectFeed{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectFeedPtrInput)(nil)).Elem(), &ProjectFeed{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectFeedArrayInput)(nil)).Elem(), ProjectFeedArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectFeedMapInput)(nil)).Elem(), ProjectFeedMap{})
 	pulumi.RegisterOutputType(ProjectFeedOutput{})
 	pulumi.RegisterOutputType(ProjectFeedPtrOutput{})
 	pulumi.RegisterOutputType(ProjectFeedArrayOutput{})

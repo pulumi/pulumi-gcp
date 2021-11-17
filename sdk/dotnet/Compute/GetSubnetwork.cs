@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Compute
 {
@@ -40,6 +41,36 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Task<GetSubnetworkResult> InvokeAsync(GetSubnetworkArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSubnetworkResult>("gcp:compute/getSubnetwork:getSubnetwork", args ?? new GetSubnetworkArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get a subnetwork within GCE from its name and region.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var my_subnetwork = Output.Create(Gcp.Compute.GetSubnetwork.InvokeAsync(new Gcp.Compute.GetSubnetworkArgs
+        ///         {
+        ///             Name = "default-us-east1",
+        ///             Region = "us-east1",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetSubnetworkResult> Invoke(GetSubnetworkInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSubnetworkResult>("gcp:compute/getSubnetwork:getSubnetwork", args ?? new GetSubnetworkInvokeArgs(), options.WithVersion());
     }
 
 
@@ -74,6 +105,41 @@ namespace Pulumi.Gcp.Compute
         public string? SelfLink { get; set; }
 
         public GetSubnetworkArgs()
+        {
+        }
+    }
+
+    public sealed class GetSubnetworkInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the subnetwork. One of `name` or `self_link`
+        /// must be specified.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The ID of the project in which the resource belongs. If it
+        /// is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The region this subnetwork has been created in. If
+        /// unspecified, this defaults to the region configured in the provider.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// The self link of the subnetwork. If `self_link` is
+        /// specified, `name`, `project`, and `region` are ignored.
+        /// </summary>
+        [Input("selfLink")]
+        public Input<string>? SelfLink { get; set; }
+
+        public GetSubnetworkInvokeArgs()
         {
         }
     }

@@ -471,6 +471,10 @@ func (o GatewayIamMemberMapOutput) MapIndex(k pulumi.StringInput) GatewayIamMemb
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayIamMemberInput)(nil)).Elem(), &GatewayIamMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayIamMemberPtrInput)(nil)).Elem(), &GatewayIamMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayIamMemberArrayInput)(nil)).Elem(), GatewayIamMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayIamMemberMapInput)(nil)).Elem(), GatewayIamMemberMap{})
 	pulumi.RegisterOutputType(GatewayIamMemberOutput{})
 	pulumi.RegisterOutputType(GatewayIamMemberPtrOutput{})
 	pulumi.RegisterOutputType(GatewayIamMemberArrayOutput{})

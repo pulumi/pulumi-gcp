@@ -432,6 +432,10 @@ func (o DomainTrustMapOutput) MapIndex(k pulumi.StringInput) DomainTrustOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainTrustInput)(nil)).Elem(), &DomainTrust{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainTrustPtrInput)(nil)).Elem(), &DomainTrust{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainTrustArrayInput)(nil)).Elem(), DomainTrustArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainTrustMapInput)(nil)).Elem(), DomainTrustMap{})
 	pulumi.RegisterOutputType(DomainTrustOutput{})
 	pulumi.RegisterOutputType(DomainTrustPtrOutput{})
 	pulumi.RegisterOutputType(DomainTrustArrayOutput{})

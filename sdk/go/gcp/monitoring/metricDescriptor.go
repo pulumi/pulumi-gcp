@@ -607,6 +607,10 @@ func (o MetricDescriptorMapOutput) MapIndex(k pulumi.StringInput) MetricDescript
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricDescriptorInput)(nil)).Elem(), &MetricDescriptor{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricDescriptorPtrInput)(nil)).Elem(), &MetricDescriptor{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricDescriptorArrayInput)(nil)).Elem(), MetricDescriptorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricDescriptorMapInput)(nil)).Elem(), MetricDescriptorMap{})
 	pulumi.RegisterOutputType(MetricDescriptorOutput{})
 	pulumi.RegisterOutputType(MetricDescriptorPtrOutput{})
 	pulumi.RegisterOutputType(MetricDescriptorArrayOutput{})

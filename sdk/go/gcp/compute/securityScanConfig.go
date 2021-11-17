@@ -483,6 +483,10 @@ func (o SecurityScanConfigMapOutput) MapIndex(k pulumi.StringInput) SecurityScan
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityScanConfigInput)(nil)).Elem(), &SecurityScanConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityScanConfigPtrInput)(nil)).Elem(), &SecurityScanConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityScanConfigArrayInput)(nil)).Elem(), SecurityScanConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityScanConfigMapInput)(nil)).Elem(), SecurityScanConfigMap{})
 	pulumi.RegisterOutputType(SecurityScanConfigOutput{})
 	pulumi.RegisterOutputType(SecurityScanConfigPtrOutput{})
 	pulumi.RegisterOutputType(SecurityScanConfigArrayOutput{})

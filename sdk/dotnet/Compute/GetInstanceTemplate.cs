@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Compute
 {
@@ -47,6 +48,43 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Task<GetInstanceTemplateResult> InvokeAsync(GetInstanceTemplateArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTemplateResult>("gcp:compute/getInstanceTemplate:getInstanceTemplate", args ?? new GetInstanceTemplateArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a VM instance template resource within GCE. For more information see
+        /// [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
+        /// and
+        /// [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var generic = Output.Create(Gcp.Compute.GetInstanceTemplate.InvokeAsync(new Gcp.Compute.GetInstanceTemplateArgs
+        ///         {
+        ///             Name = "generic-tpl-20200107",
+        ///         }));
+        ///         var generic_regex = Output.Create(Gcp.Compute.GetInstanceTemplate.InvokeAsync(new Gcp.Compute.GetInstanceTemplateArgs
+        ///         {
+        ///             Filter = "name != generic-tpl-20200107",
+        ///             MostRecent = true,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetInstanceTemplateResult> Invoke(GetInstanceTemplateInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstanceTemplateResult>("gcp:compute/getInstanceTemplate:getInstanceTemplate", args ?? new GetInstanceTemplateInvokeArgs(), options.WithVersion());
     }
 
 
@@ -80,6 +118,40 @@ namespace Pulumi.Gcp.Compute
         public string Project { get; set; } = null!;
 
         public GetInstanceTemplateArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstanceTemplateInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// A filter to retrieve the instance templates.
+        /// See [gcloud topic filters](https://cloud.google.com/sdk/gcloud/reference/topic/filters) for reference.
+        /// If multiple instance templates match, either adjust the filter or specify `most_recent`. One of `name` or `filter` must be provided.
+        /// </summary>
+        [Input("filter")]
+        public Input<string>? Filter { get; set; }
+
+        /// <summary>
+        /// If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name` or `filter` must be provided.
+        /// </summary>
+        [Input("mostRecent")]
+        public Input<bool>? MostRecent { get; set; }
+
+        /// <summary>
+        /// The name of the instance template. One of `name` or `filter` must be provided.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If `project` is not provided, the provider project is used.
+        /// </summary>
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
+
+        public GetInstanceTemplateInvokeArgs()
         {
         }
     }

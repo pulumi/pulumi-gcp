@@ -366,6 +366,10 @@ func (o RecordSetMapOutput) MapIndex(k pulumi.StringInput) RecordSetOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RecordSetInput)(nil)).Elem(), &RecordSet{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecordSetPtrInput)(nil)).Elem(), &RecordSet{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecordSetArrayInput)(nil)).Elem(), RecordSetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecordSetMapInput)(nil)).Elem(), RecordSetMap{})
 	pulumi.RegisterOutputType(RecordSetOutput{})
 	pulumi.RegisterOutputType(RecordSetPtrOutput{})
 	pulumi.RegisterOutputType(RecordSetArrayOutput{})

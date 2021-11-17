@@ -344,6 +344,10 @@ func (o WorkerPoolMapOutput) MapIndex(k pulumi.StringInput) WorkerPoolOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolInput)(nil)).Elem(), &WorkerPool{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolPtrInput)(nil)).Elem(), &WorkerPool{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolArrayInput)(nil)).Elem(), WorkerPoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolMapInput)(nil)).Elem(), WorkerPoolMap{})
 	pulumi.RegisterOutputType(WorkerPoolOutput{})
 	pulumi.RegisterOutputType(WorkerPoolPtrOutput{})
 	pulumi.RegisterOutputType(WorkerPoolArrayOutput{})

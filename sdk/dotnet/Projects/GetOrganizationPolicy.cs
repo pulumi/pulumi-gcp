@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Projects
 {
@@ -45,6 +46,41 @@ namespace Pulumi.Gcp.Projects
         /// </summary>
         public static Task<GetOrganizationPolicyResult> InvokeAsync(GetOrganizationPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationPolicyResult>("gcp:projects/getOrganizationPolicy:getOrganizationPolicy", args ?? new GetOrganizationPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Allows management of Organization policies for a Google Project. For more information see
+        /// [the official
+        /// documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var policy = Output.Create(Gcp.Projects.GetOrganizationPolicy.InvokeAsync(new Gcp.Projects.GetOrganizationPolicyArgs
+        ///         {
+        ///             Project = "project-id",
+        ///             Constraint = "constraints/serviceuser.services",
+        ///         }));
+        ///         this.Version = policy.Apply(policy =&gt; policy.Version);
+        ///     }
+        /// 
+        ///     [Output("version")]
+        ///     public Output&lt;string&gt; Version { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetOrganizationPolicyResult> Invoke(GetOrganizationPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetOrganizationPolicyResult>("gcp:projects/getOrganizationPolicy:getOrganizationPolicy", args ?? new GetOrganizationPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -63,6 +99,25 @@ namespace Pulumi.Gcp.Projects
         public string Project { get; set; } = null!;
 
         public GetOrganizationPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetOrganizationPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+        /// </summary>
+        [Input("constraint", required: true)]
+        public Input<string> Constraint { get; set; } = null!;
+
+        /// <summary>
+        /// The project ID.
+        /// </summary>
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
+
+        public GetOrganizationPolicyInvokeArgs()
         {
         }
     }

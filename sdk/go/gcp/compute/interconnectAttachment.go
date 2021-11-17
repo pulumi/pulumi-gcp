@@ -884,6 +884,10 @@ func (o InterconnectAttachmentMapOutput) MapIndex(k pulumi.StringInput) Intercon
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectAttachmentInput)(nil)).Elem(), &InterconnectAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectAttachmentPtrInput)(nil)).Elem(), &InterconnectAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectAttachmentArrayInput)(nil)).Elem(), InterconnectAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectAttachmentMapInput)(nil)).Elem(), InterconnectAttachmentMap{})
 	pulumi.RegisterOutputType(InterconnectAttachmentOutput{})
 	pulumi.RegisterOutputType(InterconnectAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(InterconnectAttachmentArrayOutput{})

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Storage
 {
@@ -39,6 +40,35 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         public static Task<GetTransferProjectServieAccountResult> InvokeAsync(GetTransferProjectServieAccountArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTransferProjectServieAccountResult>("gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount", args ?? new GetTransferProjectServieAccountArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to retrieve Storage Transfer service account for this project
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(Gcp.Storage.GetTransferProjectServieAccount.InvokeAsync());
+        ///         this.DefaultAccount = @default.Apply(@default =&gt; @default.Email);
+        ///     }
+        /// 
+        ///     [Output("defaultAccount")]
+        ///     public Output&lt;string&gt; DefaultAccount { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetTransferProjectServieAccountResult> Invoke(GetTransferProjectServieAccountInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTransferProjectServieAccountResult>("gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount", args ?? new GetTransferProjectServieAccountInvokeArgs(), options.WithVersion());
     }
 
 
@@ -51,6 +81,19 @@ namespace Pulumi.Gcp.Storage
         public string? Project { get; set; }
 
         public GetTransferProjectServieAccountArgs()
+        {
+        }
+    }
+
+    public sealed class GetTransferProjectServieAccountInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The project ID. If it is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetTransferProjectServieAccountInvokeArgs()
         {
         }
     }

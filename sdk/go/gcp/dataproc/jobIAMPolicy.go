@@ -430,6 +430,10 @@ func (o JobIAMPolicyMapOutput) MapIndex(k pulumi.StringInput) JobIAMPolicyOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*JobIAMPolicyInput)(nil)).Elem(), &JobIAMPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobIAMPolicyPtrInput)(nil)).Elem(), &JobIAMPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobIAMPolicyArrayInput)(nil)).Elem(), JobIAMPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobIAMPolicyMapInput)(nil)).Elem(), JobIAMPolicyMap{})
 	pulumi.RegisterOutputType(JobIAMPolicyOutput{})
 	pulumi.RegisterOutputType(JobIAMPolicyPtrOutput{})
 	pulumi.RegisterOutputType(JobIAMPolicyArrayOutput{})

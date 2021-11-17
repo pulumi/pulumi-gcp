@@ -457,6 +457,10 @@ func (o FlexTemplateJobMapOutput) MapIndex(k pulumi.StringInput) FlexTemplateJob
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FlexTemplateJobInput)(nil)).Elem(), &FlexTemplateJob{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FlexTemplateJobPtrInput)(nil)).Elem(), &FlexTemplateJob{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FlexTemplateJobArrayInput)(nil)).Elem(), FlexTemplateJobArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FlexTemplateJobMapInput)(nil)).Elem(), FlexTemplateJobMap{})
 	pulumi.RegisterOutputType(FlexTemplateJobOutput{})
 	pulumi.RegisterOutputType(FlexTemplateJobPtrOutput{})
 	pulumi.RegisterOutputType(FlexTemplateJobArrayOutput{})

@@ -331,6 +331,10 @@ func (o EngineSplitTrafficMapOutput) MapIndex(k pulumi.StringInput) EngineSplitT
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EngineSplitTrafficInput)(nil)).Elem(), &EngineSplitTraffic{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EngineSplitTrafficPtrInput)(nil)).Elem(), &EngineSplitTraffic{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EngineSplitTrafficArrayInput)(nil)).Elem(), EngineSplitTrafficArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EngineSplitTrafficMapInput)(nil)).Elem(), EngineSplitTrafficMap{})
 	pulumi.RegisterOutputType(EngineSplitTrafficOutput{})
 	pulumi.RegisterOutputType(EngineSplitTrafficPtrOutput{})
 	pulumi.RegisterOutputType(EngineSplitTrafficArrayOutput{})

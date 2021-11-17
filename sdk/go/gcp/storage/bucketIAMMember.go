@@ -543,6 +543,10 @@ func (o BucketIAMMemberMapOutput) MapIndex(k pulumi.StringInput) BucketIAMMember
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketIAMMemberInput)(nil)).Elem(), &BucketIAMMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketIAMMemberPtrInput)(nil)).Elem(), &BucketIAMMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketIAMMemberArrayInput)(nil)).Elem(), BucketIAMMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketIAMMemberMapInput)(nil)).Elem(), BucketIAMMemberMap{})
 	pulumi.RegisterOutputType(BucketIAMMemberOutput{})
 	pulumi.RegisterOutputType(BucketIAMMemberPtrOutput{})
 	pulumi.RegisterOutputType(BucketIAMMemberArrayOutput{})

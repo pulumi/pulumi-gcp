@@ -336,6 +336,10 @@ func (o AiFeatureStoreEntityTypeMapOutput) MapIndex(k pulumi.StringInput) AiFeat
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEntityTypeInput)(nil)).Elem(), &AiFeatureStoreEntityType{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEntityTypePtrInput)(nil)).Elem(), &AiFeatureStoreEntityType{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEntityTypeArrayInput)(nil)).Elem(), AiFeatureStoreEntityTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEntityTypeMapInput)(nil)).Elem(), AiFeatureStoreEntityTypeMap{})
 	pulumi.RegisterOutputType(AiFeatureStoreEntityTypeOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreEntityTypePtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreEntityTypeArrayOutput{})

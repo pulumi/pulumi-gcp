@@ -364,6 +364,10 @@ func (o ProjectExclusionMapOutput) MapIndex(k pulumi.StringInput) ProjectExclusi
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectExclusionInput)(nil)).Elem(), &ProjectExclusion{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectExclusionPtrInput)(nil)).Elem(), &ProjectExclusion{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectExclusionArrayInput)(nil)).Elem(), ProjectExclusionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectExclusionMapInput)(nil)).Elem(), ProjectExclusionMap{})
 	pulumi.RegisterOutputType(ProjectExclusionOutput{})
 	pulumi.RegisterOutputType(ProjectExclusionPtrOutput{})
 	pulumi.RegisterOutputType(ProjectExclusionArrayOutput{})

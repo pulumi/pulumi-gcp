@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Compute
 {
@@ -85,6 +86,81 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Task<GetNetblockIPRangesResult> InvokeAsync(GetNetblockIPRangesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNetblockIPRangesResult>("gcp:compute/getNetblockIPRanges:getNetblockIPRanges", args ?? new GetNetblockIPRangesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get the IP addresses from different special IP ranges on Google Cloud Platform.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// ### Cloud Ranges
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var netblock = Output.Create(Gcp.Compute.GetNetblockIPRanges.InvokeAsync());
+        ///         this.CidrBlocks = netblock.Apply(netblock =&gt; netblock.CidrBlocks);
+        ///         this.CidrBlocksIpv4 = netblock.Apply(netblock =&gt; netblock.CidrBlocksIpv4s);
+        ///         this.CidrBlocksIpv6 = netblock.Apply(netblock =&gt; netblock.CidrBlocksIpv6s);
+        ///     }
+        /// 
+        ///     [Output("cidrBlocks")]
+        ///     public Output&lt;string&gt; CidrBlocks { get; set; }
+        ///     [Output("cidrBlocksIpv4")]
+        ///     public Output&lt;string&gt; CidrBlocksIpv4 { get; set; }
+        ///     [Output("cidrBlocksIpv6")]
+        ///     public Output&lt;string&gt; CidrBlocksIpv6 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% example %}}
+        /// ### Allow Health Checks
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var legacy_hcs = Output.Create(Gcp.Compute.GetNetblockIPRanges.InvokeAsync(new Gcp.Compute.GetNetblockIPRangesArgs
+        ///         {
+        ///             RangeType = "legacy-health-checkers",
+        ///         }));
+        ///         var @default = new Gcp.Compute.Network("default", new Gcp.Compute.NetworkArgs
+        ///         {
+        ///         });
+        ///         var allow_hcs = new Gcp.Compute.Firewall("allow-hcs", new Gcp.Compute.FirewallArgs
+        ///         {
+        ///             Network = @default.Name,
+        ///             Allows = 
+        ///             {
+        ///                 new Gcp.Compute.Inputs.FirewallAllowArgs
+        ///                 {
+        ///                     Protocol = "tcp",
+        ///                     Ports = 
+        ///                     {
+        ///                         "80",
+        ///                     },
+        ///                 },
+        ///             },
+        ///             SourceRanges = legacy_hcs.Apply(legacy_hcs =&gt; legacy_hcs.CidrBlocksIpv4s),
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetNetblockIPRangesResult> Invoke(GetNetblockIPRangesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetNetblockIPRangesResult>("gcp:compute/getNetblockIPRanges:getNetblockIPRanges", args ?? new GetNetblockIPRangesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -97,6 +173,19 @@ namespace Pulumi.Gcp.Compute
         public string? RangeType { get; set; }
 
         public GetNetblockIPRangesArgs()
+        {
+        }
+    }
+
+    public sealed class GetNetblockIPRangesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The type of range for which to provide results.
+        /// </summary>
+        [Input("rangeType")]
+        public Input<string>? RangeType { get; set; }
+
+        public GetNetblockIPRangesInvokeArgs()
         {
         }
     }

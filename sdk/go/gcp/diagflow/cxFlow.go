@@ -541,6 +541,10 @@ func (o CxFlowMapOutput) MapIndex(k pulumi.StringInput) CxFlowOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowInput)(nil)).Elem(), &CxFlow{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowPtrInput)(nil)).Elem(), &CxFlow{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowArrayInput)(nil)).Elem(), CxFlowArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowMapInput)(nil)).Elem(), CxFlowMap{})
 	pulumi.RegisterOutputType(CxFlowOutput{})
 	pulumi.RegisterOutputType(CxFlowPtrOutput{})
 	pulumi.RegisterOutputType(CxFlowArrayOutput{})

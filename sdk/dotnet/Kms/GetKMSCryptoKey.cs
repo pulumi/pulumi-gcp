@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Kms
 {
@@ -51,6 +52,47 @@ namespace Pulumi.Gcp.Kms
         /// </summary>
         public static Task<GetKMSCryptoKeyResult> InvokeAsync(GetKMSCryptoKeyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKMSCryptoKeyResult>("gcp:kms/getKMSCryptoKey:getKMSCryptoKey", args ?? new GetKMSCryptoKeyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Provides access to a Google Cloud Platform KMS CryptoKey. For more information see
+        /// [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key)
+        /// and
+        /// [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys).
+        /// 
+        /// A CryptoKey is an interface to key material which can be used to encrypt and decrypt data. A CryptoKey belongs to a
+        /// Google Cloud KMS KeyRing.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var myKeyRing = Output.Create(Gcp.Kms.GetKMSKeyRing.InvokeAsync(new Gcp.Kms.GetKMSKeyRingArgs
+        ///         {
+        ///             Name = "my-key-ring",
+        ///             Location = "us-central1",
+        ///         }));
+        ///         var myCryptoKey = myKeyRing.Apply(myKeyRing =&gt; Output.Create(Gcp.Kms.GetKMSCryptoKey.InvokeAsync(new Gcp.Kms.GetKMSCryptoKeyArgs
+        ///         {
+        ///             Name = "my-crypto-key",
+        ///             KeyRing = myKeyRing.Id,
+        ///         })));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetKMSCryptoKeyResult> Invoke(GetKMSCryptoKeyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetKMSCryptoKeyResult>("gcp:kms/getKMSCryptoKey:getKMSCryptoKey", args ?? new GetKMSCryptoKeyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -70,6 +112,26 @@ namespace Pulumi.Gcp.Kms
         public string Name { get; set; } = null!;
 
         public GetKMSCryptoKeyArgs()
+        {
+        }
+    }
+
+    public sealed class GetKMSCryptoKeyInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The `id` of the Google Cloud Platform KeyRing to which the key belongs.
+        /// </summary>
+        [Input("keyRing", required: true)]
+        public Input<string> KeyRing { get; set; } = null!;
+
+        /// <summary>
+        /// The CryptoKey's name.
+        /// A CryptoKey’s name belonging to the specified Google Cloud Platform KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetKMSCryptoKeyInvokeArgs()
         {
         }
     }

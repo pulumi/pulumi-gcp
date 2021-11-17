@@ -318,6 +318,10 @@ func (o GcpUserAccessBindingMapOutput) MapIndex(k pulumi.StringInput) GcpUserAcc
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpUserAccessBindingInput)(nil)).Elem(), &GcpUserAccessBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpUserAccessBindingPtrInput)(nil)).Elem(), &GcpUserAccessBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpUserAccessBindingArrayInput)(nil)).Elem(), GcpUserAccessBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpUserAccessBindingMapInput)(nil)).Elem(), GcpUserAccessBindingMap{})
 	pulumi.RegisterOutputType(GcpUserAccessBindingOutput{})
 	pulumi.RegisterOutputType(GcpUserAccessBindingPtrOutput{})
 	pulumi.RegisterOutputType(GcpUserAccessBindingArrayOutput{})

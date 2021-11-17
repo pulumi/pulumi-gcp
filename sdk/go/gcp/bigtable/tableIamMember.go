@@ -458,6 +458,10 @@ func (o TableIamMemberMapOutput) MapIndex(k pulumi.StringInput) TableIamMemberOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TableIamMemberInput)(nil)).Elem(), &TableIamMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableIamMemberPtrInput)(nil)).Elem(), &TableIamMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableIamMemberArrayInput)(nil)).Elem(), TableIamMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableIamMemberMapInput)(nil)).Elem(), TableIamMemberMap{})
 	pulumi.RegisterOutputType(TableIamMemberOutput{})
 	pulumi.RegisterOutputType(TableIamMemberPtrOutput{})
 	pulumi.RegisterOutputType(TableIamMemberArrayOutput{})

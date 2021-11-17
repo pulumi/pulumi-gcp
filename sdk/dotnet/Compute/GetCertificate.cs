@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Compute
 {
@@ -48,6 +49,44 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Task<GetCertificateResult> InvokeAsync(GetCertificateArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCertificateResult>("gcp:compute/getCertificate:getCertificate", args ?? new GetCertificateArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get info about a Google Compute SSL Certificate from its name.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var myCert = Output.Create(Gcp.Compute.GetCertificate.InvokeAsync(new Gcp.Compute.GetCertificateArgs
+        ///         {
+        ///             Name = "my-cert",
+        ///         }));
+        ///         this.Certificate = myCert.Apply(myCert =&gt; myCert.Certificate);
+        ///         this.CertificateId = myCert.Apply(myCert =&gt; myCert.CertificateId);
+        ///         this.SelfLink = myCert.Apply(myCert =&gt; myCert.SelfLink);
+        ///     }
+        /// 
+        ///     [Output("certificate")]
+        ///     public Output&lt;string&gt; Certificate { get; set; }
+        ///     [Output("certificateId")]
+        ///     public Output&lt;string&gt; CertificateId { get; set; }
+        ///     [Output("selfLink")]
+        ///     public Output&lt;string&gt; SelfLink { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetCertificateResult> Invoke(GetCertificateInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetCertificateResult>("gcp:compute/getCertificate:getCertificate", args ?? new GetCertificateInvokeArgs(), options.WithVersion());
     }
 
 
@@ -67,6 +106,26 @@ namespace Pulumi.Gcp.Compute
         public string? Project { get; set; }
 
         public GetCertificateArgs()
+        {
+        }
+    }
+
+    public sealed class GetCertificateInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the certificate.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The project in which the resource belongs. If it
+        /// is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetCertificateInvokeArgs()
         {
         }
     }

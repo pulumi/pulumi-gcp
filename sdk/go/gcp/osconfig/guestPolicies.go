@@ -683,6 +683,10 @@ func (o GuestPoliciesMapOutput) MapIndex(k pulumi.StringInput) GuestPoliciesOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GuestPoliciesInput)(nil)).Elem(), &GuestPolicies{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuestPoliciesPtrInput)(nil)).Elem(), &GuestPolicies{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuestPoliciesArrayInput)(nil)).Elem(), GuestPoliciesArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuestPoliciesMapInput)(nil)).Elem(), GuestPoliciesMap{})
 	pulumi.RegisterOutputType(GuestPoliciesOutput{})
 	pulumi.RegisterOutputType(GuestPoliciesPtrOutput{})
 	pulumi.RegisterOutputType(GuestPoliciesArrayOutput{})

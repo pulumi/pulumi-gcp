@@ -543,6 +543,10 @@ func (o UptimeCheckConfigMapOutput) MapIndex(k pulumi.StringInput) UptimeCheckCo
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigInput)(nil)).Elem(), &UptimeCheckConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigPtrInput)(nil)).Elem(), &UptimeCheckConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigArrayInput)(nil)).Elem(), UptimeCheckConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigMapInput)(nil)).Elem(), UptimeCheckConfigMap{})
 	pulumi.RegisterOutputType(UptimeCheckConfigOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigPtrOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigArrayOutput{})

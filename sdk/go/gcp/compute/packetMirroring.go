@@ -557,6 +557,10 @@ func (o PacketMirroringMapOutput) MapIndex(k pulumi.StringInput) PacketMirroring
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringInput)(nil)).Elem(), &PacketMirroring{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringPtrInput)(nil)).Elem(), &PacketMirroring{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringArrayInput)(nil)).Elem(), PacketMirroringArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringMapInput)(nil)).Elem(), PacketMirroringMap{})
 	pulumi.RegisterOutputType(PacketMirroringOutput{})
 	pulumi.RegisterOutputType(PacketMirroringPtrOutput{})
 	pulumi.RegisterOutputType(PacketMirroringArrayOutput{})
