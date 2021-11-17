@@ -3,7 +3,7 @@
 [![NPM version](https://badge.fury.io/js/%40pulumi%2Fgcp.svg)](https://npmjs.com/package/@pulumi/gcp)
 [![NuGet version](https://badge.fury.io/nu/pulumi.gcp.svg)](https://badge.fury.io/nu/pulumi.gcp)
 [![Python version](https://badge.fury.io/py/pulumi-gcp.svg)](https://pypi.org/project/pulumi-gcp)
-[![PkgGoDev](https://pkg.go.dev/badge/github.com/pulumi/pulumi-gcp/sdk/v5/go)](https://pkg.go.dev/github.com/pulumi/pulumi-gcp/sdk/v5/go)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/pulumi/pulumi-gcp/sdk/v6/go)](https://pkg.go.dev/github.com/pulumi/pulumi-gcp/sdk/v6/go)
 [![License](https://img.shields.io/npm/l/%40pulumi%2Fpulumi.svg)](https://github.com/pulumi/pulumi-gcp/blob/master/LICENSE)
 
 # Google Cloud Platform Resource Provider
@@ -41,7 +41,7 @@ To use from Python, install using `pip`:
 
 To use from Go, use `go get` to grab the latest version of the library
 
-    $ go get github.com/pulumi/pulumi-gcp/sdk/v5
+    $ go get github.com/pulumi/pulumi-gcp/sdk/v6
 
 ### .NET 
 
