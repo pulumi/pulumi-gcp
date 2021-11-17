@@ -423,6 +423,10 @@ func (o GCPolicyMapOutput) MapIndex(k pulumi.StringInput) GCPolicyOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GCPolicyInput)(nil)).Elem(), &GCPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GCPolicyPtrInput)(nil)).Elem(), &GCPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GCPolicyArrayInput)(nil)).Elem(), GCPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GCPolicyMapInput)(nil)).Elem(), GCPolicyMap{})
 	pulumi.RegisterOutputType(GCPolicyOutput{})
 	pulumi.RegisterOutputType(GCPolicyPtrOutput{})
 	pulumi.RegisterOutputType(GCPolicyArrayOutput{})

@@ -503,6 +503,10 @@ func (o NodeTemplateMapOutput) MapIndex(k pulumi.StringInput) NodeTemplateOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeTemplateInput)(nil)).Elem(), &NodeTemplate{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeTemplatePtrInput)(nil)).Elem(), &NodeTemplate{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeTemplateArrayInput)(nil)).Elem(), NodeTemplateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeTemplateMapInput)(nil)).Elem(), NodeTemplateMap{})
 	pulumi.RegisterOutputType(NodeTemplateOutput{})
 	pulumi.RegisterOutputType(NodeTemplatePtrOutput{})
 	pulumi.RegisterOutputType(NodeTemplateArrayOutput{})

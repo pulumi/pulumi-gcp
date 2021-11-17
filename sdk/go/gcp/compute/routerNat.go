@@ -611,6 +611,10 @@ func (o RouterNatMapOutput) MapIndex(k pulumi.StringInput) RouterNatOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatInput)(nil)).Elem(), &RouterNat{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatPtrInput)(nil)).Elem(), &RouterNat{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatArrayInput)(nil)).Elem(), RouterNatArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatMapInput)(nil)).Elem(), RouterNatMap{})
 	pulumi.RegisterOutputType(RouterNatOutput{})
 	pulumi.RegisterOutputType(RouterNatPtrOutput{})
 	pulumi.RegisterOutputType(RouterNatArrayOutput{})

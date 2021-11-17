@@ -447,6 +447,10 @@ func (o FhirStoreIamBindingMapOutput) MapIndex(k pulumi.StringInput) FhirStoreIa
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreIamBindingInput)(nil)).Elem(), &FhirStoreIamBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreIamBindingPtrInput)(nil)).Elem(), &FhirStoreIamBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreIamBindingArrayInput)(nil)).Elem(), FhirStoreIamBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreIamBindingMapInput)(nil)).Elem(), FhirStoreIamBindingMap{})
 	pulumi.RegisterOutputType(FhirStoreIamBindingOutput{})
 	pulumi.RegisterOutputType(FhirStoreIamBindingPtrOutput{})
 	pulumi.RegisterOutputType(FhirStoreIamBindingArrayOutput{})

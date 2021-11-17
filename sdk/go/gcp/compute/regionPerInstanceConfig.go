@@ -436,6 +436,10 @@ func (o RegionPerInstanceConfigMapOutput) MapIndex(k pulumi.StringInput) RegionP
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionPerInstanceConfigInput)(nil)).Elem(), &RegionPerInstanceConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionPerInstanceConfigPtrInput)(nil)).Elem(), &RegionPerInstanceConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionPerInstanceConfigArrayInput)(nil)).Elem(), RegionPerInstanceConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionPerInstanceConfigMapInput)(nil)).Elem(), RegionPerInstanceConfigMap{})
 	pulumi.RegisterOutputType(RegionPerInstanceConfigOutput{})
 	pulumi.RegisterOutputType(RegionPerInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(RegionPerInstanceConfigArrayOutput{})

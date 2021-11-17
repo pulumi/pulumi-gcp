@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.CloudRun
 {
@@ -43,6 +44,39 @@ namespace Pulumi.Gcp.CloudRun
         /// </summary>
         public static Task<GetLocationsResult> InvokeAsync(GetLocationsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLocationsResult>("gcp:cloudrun/getLocations:getLocations", args ?? new GetLocationsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get Cloud Run locations available for a project. 
+        /// 
+        /// To get more information about Cloud Run, see:
+        /// 
+        /// * [API documentation](https://cloud.google.com/run/docs/reference/rest/v1/projects.locations)
+        /// * How-to Guides
+        ///     * [Official Documentation](https://cloud.google.com/run/docs/)
+        ///     
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var available = Output.Create(Gcp.CloudRun.GetLocations.InvokeAsync());
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetLocationsResult> Invoke(GetLocationsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetLocationsResult>("gcp:cloudrun/getLocations:getLocations", args ?? new GetLocationsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -56,6 +90,20 @@ namespace Pulumi.Gcp.CloudRun
         public string? Project { get; set; }
 
         public GetLocationsArgs()
+        {
+        }
+    }
+
+    public sealed class GetLocationsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The project to list versions for. If it
+        /// is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetLocationsInvokeArgs()
         {
         }
     }

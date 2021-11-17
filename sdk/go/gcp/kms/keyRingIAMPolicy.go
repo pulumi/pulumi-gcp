@@ -546,6 +546,10 @@ func (o KeyRingIAMPolicyMapOutput) MapIndex(k pulumi.StringInput) KeyRingIAMPoli
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingIAMPolicyInput)(nil)).Elem(), &KeyRingIAMPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingIAMPolicyPtrInput)(nil)).Elem(), &KeyRingIAMPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingIAMPolicyArrayInput)(nil)).Elem(), KeyRingIAMPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingIAMPolicyMapInput)(nil)).Elem(), KeyRingIAMPolicyMap{})
 	pulumi.RegisterOutputType(KeyRingIAMPolicyOutput{})
 	pulumi.RegisterOutputType(KeyRingIAMPolicyPtrOutput{})
 	pulumi.RegisterOutputType(KeyRingIAMPolicyArrayOutput{})

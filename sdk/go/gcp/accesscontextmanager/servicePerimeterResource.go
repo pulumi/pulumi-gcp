@@ -364,6 +364,10 @@ func (o ServicePerimeterResourceMapOutput) MapIndex(k pulumi.StringInput) Servic
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterResourceInput)(nil)).Elem(), &ServicePerimeterResource{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterResourcePtrInput)(nil)).Elem(), &ServicePerimeterResource{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterResourceArrayInput)(nil)).Elem(), ServicePerimeterResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterResourceMapInput)(nil)).Elem(), ServicePerimeterResourceMap{})
 	pulumi.RegisterOutputType(ServicePerimeterResourceOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterResourcePtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterResourceArrayOutput{})

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.CloudFunctions
 {
@@ -41,6 +42,37 @@ namespace Pulumi.Gcp.CloudFunctions
         /// </summary>
         public static Task<GetFunctionResult> InvokeAsync(GetFunctionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFunctionResult>("gcp:cloudfunctions/getFunction:getFunction", args ?? new GetFunctionArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a Google Cloud Function. For more information see
+        /// the [official documentation](https://cloud.google.com/functions/docs/)
+        /// and [API](https://cloud.google.com/functions/docs/apis).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var my_function = Output.Create(Gcp.CloudFunctions.GetFunction.InvokeAsync(new Gcp.CloudFunctions.GetFunctionArgs
+        ///         {
+        ///             Name = "function",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetFunctionResult> Invoke(GetFunctionInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetFunctionResult>("gcp:cloudfunctions/getFunction:getFunction", args ?? new GetFunctionInvokeArgs(), options.WithVersion());
     }
 
 
@@ -67,6 +99,33 @@ namespace Pulumi.Gcp.CloudFunctions
         public string? Region { get; set; }
 
         public GetFunctionArgs()
+        {
+        }
+    }
+
+    public sealed class GetFunctionInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of a Cloud Function.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The project in which the resource belongs. If it
+        /// is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The region in which the resource belongs. If it
+        /// is not provided, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        public GetFunctionInvokeArgs()
         {
         }
     }

@@ -315,6 +315,10 @@ func (o ProjectLocationMapOutput) MapIndex(k pulumi.StringInput) ProjectLocation
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectLocationInput)(nil)).Elem(), &ProjectLocation{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectLocationPtrInput)(nil)).Elem(), &ProjectLocation{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectLocationArrayInput)(nil)).Elem(), ProjectLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectLocationMapInput)(nil)).Elem(), ProjectLocationMap{})
 	pulumi.RegisterOutputType(ProjectLocationOutput{})
 	pulumi.RegisterOutputType(ProjectLocationPtrOutput{})
 	pulumi.RegisterOutputType(ProjectLocationArrayOutput{})

@@ -382,6 +382,10 @@ func (o OauthIdpConfigMapOutput) MapIndex(k pulumi.StringInput) OauthIdpConfigOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*OauthIdpConfigInput)(nil)).Elem(), &OauthIdpConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OauthIdpConfigPtrInput)(nil)).Elem(), &OauthIdpConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OauthIdpConfigArrayInput)(nil)).Elem(), OauthIdpConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OauthIdpConfigMapInput)(nil)).Elem(), OauthIdpConfigMap{})
 	pulumi.RegisterOutputType(OauthIdpConfigOutput{})
 	pulumi.RegisterOutputType(OauthIdpConfigPtrOutput{})
 	pulumi.RegisterOutputType(OauthIdpConfigArrayOutput{})

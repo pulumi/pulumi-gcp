@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Storage
 {
@@ -46,6 +47,42 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         public static Task<GetBucketObjectResult> InvokeAsync(GetBucketObjectArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBucketObjectResult>("gcp:storage/getBucketObject:getBucketObject", args ?? new GetBucketObjectArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets an existing object inside an existing bucket in Google Cloud Storage service (GCS).
+        /// See [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
+        /// and
+        /// [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
+        /// 
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Example picture stored within a folder.
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var picture = Output.Create(Gcp.Storage.GetBucketObject.InvokeAsync(new Gcp.Storage.GetBucketObjectArgs
+        ///         {
+        ///             Bucket = "image-store",
+        ///             Name = "folder/butterfly01.jpg",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetBucketObjectResult> Invoke(GetBucketObjectInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetBucketObjectResult>("gcp:storage/getBucketObject:getBucketObject", args ?? new GetBucketObjectInvokeArgs(), options.WithVersion());
     }
 
 
@@ -64,6 +101,25 @@ namespace Pulumi.Gcp.Storage
         public string? Name { get; set; }
 
         public GetBucketObjectArgs()
+        {
+        }
+    }
+
+    public sealed class GetBucketObjectInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the containing bucket.
+        /// </summary>
+        [Input("bucket")]
+        public Input<string>? Bucket { get; set; }
+
+        /// <summary>
+        /// The name of the object.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public GetBucketObjectInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Iam
 {
@@ -40,6 +41,36 @@ namespace Pulumi.Gcp.Iam
         /// </summary>
         public static Task<GetWorkloadIdentityPoolProviderResult> InvokeAsync(GetWorkloadIdentityPoolProviderArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetWorkloadIdentityPoolProviderResult>("gcp:iam/getWorkloadIdentityPoolProvider:getWorkloadIdentityPoolProvider", args ?? new GetWorkloadIdentityPoolProviderArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get a IAM workload identity provider from Google Cloud by its id.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Gcp.Iam.GetWorkloadIdentityPoolProvider.InvokeAsync(new Gcp.Iam.GetWorkloadIdentityPoolProviderArgs
+        ///         {
+        ///             WorkloadIdentityPoolId = "foo-pool",
+        ///             WorkloadIdentityPoolProviderId = "bar-provider",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetWorkloadIdentityPoolProviderResult> Invoke(GetWorkloadIdentityPoolProviderInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetWorkloadIdentityPoolProviderResult>("gcp:iam/getWorkloadIdentityPoolProvider:getWorkloadIdentityPoolProvider", args ?? new GetWorkloadIdentityPoolProviderInvokeArgs(), options.WithVersion());
     }
 
 
@@ -67,6 +98,34 @@ namespace Pulumi.Gcp.Iam
         public string WorkloadIdentityPoolProviderId { get; set; } = null!;
 
         public GetWorkloadIdentityPoolProviderArgs()
+        {
+        }
+    }
+
+    public sealed class GetWorkloadIdentityPoolProviderInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The project in which the resource belongs. If it
+        /// is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The id of the pool which is the
+        /// final component of the pool resource name.
+        /// </summary>
+        [Input("workloadIdentityPoolId", required: true)]
+        public Input<string> WorkloadIdentityPoolId { get; set; } = null!;
+
+        /// <summary>
+        /// The id of the provider which is the
+        /// final component of the resource name.
+        /// </summary>
+        [Input("workloadIdentityPoolProviderId", required: true)]
+        public Input<string> WorkloadIdentityPoolProviderId { get; set; } = null!;
+
+        public GetWorkloadIdentityPoolProviderInvokeArgs()
         {
         }
     }

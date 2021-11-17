@@ -542,6 +542,10 @@ func (o Hl7StoreMapOutput) MapIndex(k pulumi.StringInput) Hl7StoreOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*Hl7StoreInput)(nil)).Elem(), &Hl7Store{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Hl7StorePtrInput)(nil)).Elem(), &Hl7Store{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Hl7StoreArrayInput)(nil)).Elem(), Hl7StoreArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Hl7StoreMapInput)(nil)).Elem(), Hl7StoreMap{})
 	pulumi.RegisterOutputType(Hl7StoreOutput{})
 	pulumi.RegisterOutputType(Hl7StorePtrOutput{})
 	pulumi.RegisterOutputType(Hl7StoreArrayOutput{})

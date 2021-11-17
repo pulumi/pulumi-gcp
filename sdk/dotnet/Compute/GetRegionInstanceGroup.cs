@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Compute
 {
@@ -36,6 +37,32 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Task<GetRegionInstanceGroupResult> InvokeAsync(GetRegionInstanceGroupArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegionInstanceGroupResult>("gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup", args ?? new GetRegionInstanceGroupArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get a Compute Region Instance Group within GCE.
+        /// For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroups).
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @group = Output.Create(Gcp.Compute.GetRegionInstanceGroup.InvokeAsync(new Gcp.Compute.GetRegionInstanceGroupArgs
+        ///         {
+        ///             Name = "instance-group-name",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// The most common use of this datasource will be to fetch information about the instances inside regional managed instance groups, for instance:
+        /// </summary>
+        public static Output<GetRegionInstanceGroupResult> Invoke(GetRegionInstanceGroupInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRegionInstanceGroupResult>("gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup", args ?? new GetRegionInstanceGroupInvokeArgs(), options.WithVersion());
     }
 
 
@@ -70,6 +97,41 @@ namespace Pulumi.Gcp.Compute
         public string? SelfLink { get; set; }
 
         public GetRegionInstanceGroupArgs()
+        {
+        }
+    }
+
+    public sealed class GetRegionInstanceGroupInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the instance group.  One of `name` or `self_link` must be provided.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If `self_link` is provided, this value is ignored.  If neither `self_link`
+        /// nor `project` are provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The region in which the resource belongs.  If `self_link`
+        /// is provided, this value is ignored.  If neither `self_link` nor `region` are
+        /// provided, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// The link to the instance group.  One of `name` or `self_link` must be provided.
+        /// </summary>
+        [Input("selfLink")]
+        public Input<string>? SelfLink { get; set; }
+
+        public GetRegionInstanceGroupInvokeArgs()
         {
         }
     }

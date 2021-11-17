@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Composer
 {
@@ -47,6 +48,43 @@ namespace Pulumi.Gcp.Composer
         /// </summary>
         public static Task<GetImageVersionsResult> InvokeAsync(GetImageVersionsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetImageVersionsResult>("gcp:composer/getImageVersions:getImageVersions", args ?? new GetImageVersionsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Provides access to available Cloud Composer versions in a region for a given project.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var all = Output.Create(Gcp.Composer.GetImageVersions.InvokeAsync());
+        ///         var test = new Gcp.Composer.Environment("test", new Gcp.Composer.EnvironmentArgs
+        ///         {
+        ///             Region = "us-central1",
+        ///             Config = new Gcp.Composer.Inputs.EnvironmentConfigArgs
+        ///             {
+        ///                 SoftwareConfig = new Gcp.Composer.Inputs.EnvironmentConfigSoftwareConfigArgs
+        ///                 {
+        ///                     ImageVersion = all.Apply(all =&gt; all.ImageVersions?[0]?.ImageVersionId),
+        ///                 },
+        ///             },
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetImageVersionsResult> Invoke(GetImageVersionsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetImageVersionsResult>("gcp:composer/getImageVersions:getImageVersions", args ?? new GetImageVersionsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -67,6 +105,27 @@ namespace Pulumi.Gcp.Composer
         public string? Region { get; set; }
 
         public GetImageVersionsArgs()
+        {
+        }
+    }
+
+    public sealed class GetImageVersionsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The ID of the project to list versions in.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The location to list versions in.
+        /// If it is not provider, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        public GetImageVersionsInvokeArgs()
         {
         }
     }

@@ -1188,6 +1188,10 @@ func (o RegionBackendServiceMapOutput) MapIndex(k pulumi.StringInput) RegionBack
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionBackendServiceInput)(nil)).Elem(), &RegionBackendService{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionBackendServicePtrInput)(nil)).Elem(), &RegionBackendService{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionBackendServiceArrayInput)(nil)).Elem(), RegionBackendServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionBackendServiceMapInput)(nil)).Elem(), RegionBackendServiceMap{})
 	pulumi.RegisterOutputType(RegionBackendServiceOutput{})
 	pulumi.RegisterOutputType(RegionBackendServicePtrOutput{})
 	pulumi.RegisterOutputType(RegionBackendServiceArrayOutput{})

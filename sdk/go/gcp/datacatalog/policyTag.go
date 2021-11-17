@@ -455,6 +455,10 @@ func (o PolicyTagMapOutput) MapIndex(k pulumi.StringInput) PolicyTagOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyTagInput)(nil)).Elem(), &PolicyTag{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyTagPtrInput)(nil)).Elem(), &PolicyTag{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyTagArrayInput)(nil)).Elem(), PolicyTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyTagMapInput)(nil)).Elem(), PolicyTagMap{})
 	pulumi.RegisterOutputType(PolicyTagOutput{})
 	pulumi.RegisterOutputType(PolicyTagPtrOutput{})
 	pulumi.RegisterOutputType(PolicyTagArrayOutput{})

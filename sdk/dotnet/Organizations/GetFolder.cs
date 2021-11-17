@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Organizations
 {
@@ -44,6 +45,40 @@ namespace Pulumi.Gcp.Organizations
         /// </summary>
         public static Task<GetFolderResult> InvokeAsync(GetFolderArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFolderResult>("gcp:organizations/getFolder:getFolder", args ?? new GetFolderArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get information about a Google Cloud Folder.
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var myFolder1 = Output.Create(Gcp.Organizations.GetFolder.InvokeAsync(new Gcp.Organizations.GetFolderArgs
+        ///         {
+        ///             Folder = "folders/12345",
+        ///             LookupOrganization = true,
+        ///         }));
+        ///         var myFolder2 = Output.Create(Gcp.Organizations.GetFolder.InvokeAsync(new Gcp.Organizations.GetFolderArgs
+        ///         {
+        ///             Folder = "folders/23456",
+        ///         }));
+        ///         this.MyFolder1Organization = myFolder1.Apply(myFolder1 =&gt; myFolder1.Organization);
+        ///         this.MyFolder2Parent = myFolder2.Apply(myFolder2 =&gt; myFolder2.Parent);
+        ///     }
+        /// 
+        ///     [Output("myFolder1Organization")]
+        ///     public Output&lt;string&gt; MyFolder1Organization { get; set; }
+        ///     [Output("myFolder2Parent")]
+        ///     public Output&lt;string&gt; MyFolder2Parent { get; set; }
+        /// }
+        /// ```
+        /// </summary>
+        public static Output<GetFolderResult> Invoke(GetFolderInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetFolderResult>("gcp:organizations/getFolder:getFolder", args ?? new GetFolderInvokeArgs(), options.WithVersion());
     }
 
 
@@ -62,6 +97,25 @@ namespace Pulumi.Gcp.Organizations
         public bool? LookupOrganization { get; set; }
 
         public GetFolderArgs()
+        {
+        }
+    }
+
+    public sealed class GetFolderInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the Folder in the form `{folder_id}` or `folders/{folder_id}`.
+        /// </summary>
+        [Input("folder", required: true)]
+        public Input<string> Folder { get; set; } = null!;
+
+        /// <summary>
+        /// `true` to find the organization that the folder belongs, `false` to avoid the lookup. It searches up the tree. (defaults to `false`)
+        /// </summary>
+        [Input("lookupOrganization")]
+        public Input<bool>? LookupOrganization { get; set; }
+
+        public GetFolderInvokeArgs()
         {
         }
     }

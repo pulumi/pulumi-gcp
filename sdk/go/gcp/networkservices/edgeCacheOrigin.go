@@ -618,6 +618,10 @@ func (o EdgeCacheOriginMapOutput) MapIndex(k pulumi.StringInput) EdgeCacheOrigin
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheOriginInput)(nil)).Elem(), &EdgeCacheOrigin{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheOriginPtrInput)(nil)).Elem(), &EdgeCacheOrigin{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheOriginArrayInput)(nil)).Elem(), EdgeCacheOriginArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheOriginMapInput)(nil)).Elem(), EdgeCacheOriginMap{})
 	pulumi.RegisterOutputType(EdgeCacheOriginOutput{})
 	pulumi.RegisterOutputType(EdgeCacheOriginPtrOutput{})
 	pulumi.RegisterOutputType(EdgeCacheOriginArrayOutput{})

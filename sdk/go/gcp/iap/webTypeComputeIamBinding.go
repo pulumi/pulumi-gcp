@@ -545,6 +545,10 @@ func (o WebTypeComputeIamBindingMapOutput) MapIndex(k pulumi.StringInput) WebTyp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*WebTypeComputeIamBindingInput)(nil)).Elem(), &WebTypeComputeIamBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebTypeComputeIamBindingPtrInput)(nil)).Elem(), &WebTypeComputeIamBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebTypeComputeIamBindingArrayInput)(nil)).Elem(), WebTypeComputeIamBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebTypeComputeIamBindingMapInput)(nil)).Elem(), WebTypeComputeIamBindingMap{})
 	pulumi.RegisterOutputType(WebTypeComputeIamBindingOutput{})
 	pulumi.RegisterOutputType(WebTypeComputeIamBindingPtrOutput{})
 	pulumi.RegisterOutputType(WebTypeComputeIamBindingArrayOutput{})

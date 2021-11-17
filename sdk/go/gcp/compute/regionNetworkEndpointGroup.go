@@ -644,6 +644,10 @@ func (o RegionNetworkEndpointGroupMapOutput) MapIndex(k pulumi.StringInput) Regi
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkEndpointGroupInput)(nil)).Elem(), &RegionNetworkEndpointGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkEndpointGroupPtrInput)(nil)).Elem(), &RegionNetworkEndpointGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkEndpointGroupArrayInput)(nil)).Elem(), RegionNetworkEndpointGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkEndpointGroupMapInput)(nil)).Elem(), RegionNetworkEndpointGroupMap{})
 	pulumi.RegisterOutputType(RegionNetworkEndpointGroupOutput{})
 	pulumi.RegisterOutputType(RegionNetworkEndpointGroupPtrOutput{})
 	pulumi.RegisterOutputType(RegionNetworkEndpointGroupArrayOutput{})

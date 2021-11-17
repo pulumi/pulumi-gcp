@@ -352,6 +352,10 @@ func (o BrandMapOutput) MapIndex(k pulumi.StringInput) BrandOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BrandInput)(nil)).Elem(), &Brand{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BrandPtrInput)(nil)).Elem(), &Brand{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BrandArrayInput)(nil)).Elem(), BrandArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BrandMapInput)(nil)).Elem(), BrandMap{})
 	pulumi.RegisterOutputType(BrandOutput{})
 	pulumi.RegisterOutputType(BrandPtrOutput{})
 	pulumi.RegisterOutputType(BrandArrayOutput{})

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.BigQuery
 {
@@ -50,6 +51,46 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         public static Task<GetDefaultServiceAccountResult> InvokeAsync(GetDefaultServiceAccountArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDefaultServiceAccountResult>("gcp:bigquery/getDefaultServiceAccount:getDefaultServiceAccount", args ?? new GetDefaultServiceAccountArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get the email address of a project's unique BigQuery service account.
+        /// 
+        /// Each Google Cloud project has a unique service account used by BigQuery. When using
+        /// BigQuery with [customer-managed encryption keys](https://cloud.google.com/bigquery/docs/customer-managed-encryption),
+        /// this account needs to be granted the
+        /// `cloudkms.cryptoKeyEncrypterDecrypter` IAM role on the customer-managed Cloud KMS key used to protect the data.
+        /// 
+        /// For more information see
+        /// [the API reference](https://cloud.google.com/bigquery/docs/reference/rest/v2/projects/getServiceAccount).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var bqSa = Output.Create(Gcp.BigQuery.GetDefaultServiceAccount.InvokeAsync());
+        ///         var keySaUser = new Gcp.Kms.CryptoKeyIAMMember("keySaUser", new Gcp.Kms.CryptoKeyIAMMemberArgs
+        ///         {
+        ///             CryptoKeyId = google_kms_crypto_key.Key.Id,
+        ///             Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+        ///             Member = bqSa.Apply(bqSa =&gt; $"serviceAccount:{bqSa.Email}"),
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetDefaultServiceAccountResult> Invoke(GetDefaultServiceAccountInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDefaultServiceAccountResult>("gcp:bigquery/getDefaultServiceAccount:getDefaultServiceAccount", args ?? new GetDefaultServiceAccountInvokeArgs(), options.WithVersion());
     }
 
 
@@ -62,6 +103,19 @@ namespace Pulumi.Gcp.BigQuery
         public string? Project { get; set; }
 
         public GetDefaultServiceAccountArgs()
+        {
+        }
+    }
+
+    public sealed class GetDefaultServiceAccountInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The project the unique service account was created for. If it is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetDefaultServiceAccountInvokeArgs()
         {
         }
     }

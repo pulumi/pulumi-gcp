@@ -499,6 +499,10 @@ func (o CxAgentMapOutput) MapIndex(k pulumi.StringInput) CxAgentOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentInput)(nil)).Elem(), &CxAgent{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentPtrInput)(nil)).Elem(), &CxAgent{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentArrayInput)(nil)).Elem(), CxAgentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentMapInput)(nil)).Elem(), CxAgentMap{})
 	pulumi.RegisterOutputType(CxAgentOutput{})
 	pulumi.RegisterOutputType(CxAgentPtrOutput{})
 	pulumi.RegisterOutputType(CxAgentArrayOutput{})

@@ -473,6 +473,10 @@ func (o OrganizationPolicyMapOutput) MapIndex(k pulumi.StringInput) Organization
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationPolicyInput)(nil)).Elem(), &OrganizationPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationPolicyPtrInput)(nil)).Elem(), &OrganizationPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationPolicyArrayInput)(nil)).Elem(), OrganizationPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationPolicyMapInput)(nil)).Elem(), OrganizationPolicyMap{})
 	pulumi.RegisterOutputType(OrganizationPolicyOutput{})
 	pulumi.RegisterOutputType(OrganizationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(OrganizationPolicyArrayOutput{})

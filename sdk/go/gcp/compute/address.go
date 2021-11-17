@@ -755,6 +755,10 @@ func (o AddressMapOutput) MapIndex(k pulumi.StringInput) AddressOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressInput)(nil)).Elem(), &Address{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressPtrInput)(nil)).Elem(), &Address{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressArrayInput)(nil)).Elem(), AddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressMapInput)(nil)).Elem(), AddressMap{})
 	pulumi.RegisterOutputType(AddressOutput{})
 	pulumi.RegisterOutputType(AddressPtrOutput{})
 	pulumi.RegisterOutputType(AddressArrayOutput{})

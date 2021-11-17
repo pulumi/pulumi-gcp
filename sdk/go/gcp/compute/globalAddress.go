@@ -525,6 +525,10 @@ func (o GlobalAddressMapOutput) MapIndex(k pulumi.StringInput) GlobalAddressOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalAddressInput)(nil)).Elem(), &GlobalAddress{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalAddressPtrInput)(nil)).Elem(), &GlobalAddress{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalAddressArrayInput)(nil)).Elem(), GlobalAddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalAddressMapInput)(nil)).Elem(), GlobalAddressMap{})
 	pulumi.RegisterOutputType(GlobalAddressOutput{})
 	pulumi.RegisterOutputType(GlobalAddressPtrOutput{})
 	pulumi.RegisterOutputType(GlobalAddressArrayOutput{})

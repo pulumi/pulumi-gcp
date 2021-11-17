@@ -504,6 +504,10 @@ func (o TargetSSLProxyMapOutput) MapIndex(k pulumi.StringInput) TargetSSLProxyOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetSSLProxyInput)(nil)).Elem(), &TargetSSLProxy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetSSLProxyPtrInput)(nil)).Elem(), &TargetSSLProxy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetSSLProxyArrayInput)(nil)).Elem(), TargetSSLProxyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetSSLProxyMapInput)(nil)).Elem(), TargetSSLProxyMap{})
 	pulumi.RegisterOutputType(TargetSSLProxyOutput{})
 	pulumi.RegisterOutputType(TargetSSLProxyPtrOutput{})
 	pulumi.RegisterOutputType(TargetSSLProxyArrayOutput{})

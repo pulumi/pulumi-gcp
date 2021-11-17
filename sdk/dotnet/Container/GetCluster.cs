@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Container
 {
@@ -52,6 +53,48 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         public static Task<GetClusterResult> InvokeAsync(GetClusterArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClusterResult>("gcp:container/getCluster:getCluster", args ?? new GetClusterArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get info about a GKE cluster from its name and location.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var myCluster = Output.Create(Gcp.Container.GetCluster.InvokeAsync(new Gcp.Container.GetClusterArgs
+        ///         {
+        ///             Name = "my-cluster",
+        ///             Location = "us-east1-a",
+        ///         }));
+        ///         this.Endpoint = myCluster.Apply(myCluster =&gt; myCluster.Endpoint);
+        ///         this.InstanceGroupUrls = myCluster.Apply(myCluster =&gt; myCluster.NodePools?[0]?.InstanceGroupUrls);
+        ///         this.NodeConfig = myCluster.Apply(myCluster =&gt; myCluster.NodeConfigs);
+        ///         this.NodePools = myCluster.Apply(myCluster =&gt; myCluster.NodePools);
+        ///     }
+        /// 
+        ///     [Output("endpoint")]
+        ///     public Output&lt;string&gt; Endpoint { get; set; }
+        ///     [Output("instanceGroupUrls")]
+        ///     public Output&lt;string&gt; InstanceGroupUrls { get; set; }
+        ///     [Output("nodeConfig")]
+        ///     public Output&lt;string&gt; NodeConfig { get; set; }
+        ///     [Output("nodePools")]
+        ///     public Output&lt;string&gt; NodePools { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetClusterResult> Invoke(GetClusterInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetClusterResult>("gcp:container/getCluster:getCluster", args ?? new GetClusterInvokeArgs(), options.WithVersion());
     }
 
 
@@ -79,6 +122,34 @@ namespace Pulumi.Gcp.Container
         public string? Project { get; set; }
 
         public GetClusterArgs()
+        {
+        }
+    }
+
+    public sealed class GetClusterInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The location (zone or region) this cluster has been
+        /// created in. One of `location`, `region`, `zone`, or a provider-level `zone` must
+        /// be specified.
+        /// </summary>
+        [Input("location")]
+        public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// The name of the cluster.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The project in which the resource belongs. If it
+        /// is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetClusterInvokeArgs()
         {
         }
     }

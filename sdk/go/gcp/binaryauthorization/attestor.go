@@ -444,6 +444,10 @@ func (o AttestorMapOutput) MapIndex(k pulumi.StringInput) AttestorOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AttestorInput)(nil)).Elem(), &Attestor{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttestorPtrInput)(nil)).Elem(), &Attestor{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttestorArrayInput)(nil)).Elem(), AttestorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttestorMapInput)(nil)).Elem(), AttestorMap{})
 	pulumi.RegisterOutputType(AttestorOutput{})
 	pulumi.RegisterOutputType(AttestorPtrOutput{})
 	pulumi.RegisterOutputType(AttestorArrayOutput{})

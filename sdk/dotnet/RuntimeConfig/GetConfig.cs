@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.RuntimeConfig
 {
@@ -13,6 +14,9 @@ namespace Pulumi.Gcp.RuntimeConfig
     {
         public static Task<GetConfigResult> InvokeAsync(GetConfigArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetConfigResult>("gcp:runtimeconfig/getConfig:getConfig", args ?? new GetConfigArgs(), options.WithVersion());
+
+        public static Output<GetConfigResult> Invoke(GetConfigInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetConfigResult>("gcp:runtimeconfig/getConfig:getConfig", args ?? new GetConfigInvokeArgs(), options.WithVersion());
     }
 
 
@@ -32,6 +36,26 @@ namespace Pulumi.Gcp.RuntimeConfig
         public string? Project { get; set; }
 
         public GetConfigArgs()
+        {
+        }
+    }
+
+    public sealed class GetConfigInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the Runtime Configurator configuration.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The project in which the resource belongs. If it
+        /// is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetConfigInvokeArgs()
         {
         }
     }

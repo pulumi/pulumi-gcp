@@ -353,6 +353,10 @@ func (o PeeredDnsDomainMapOutput) MapIndex(k pulumi.StringInput) PeeredDnsDomain
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*PeeredDnsDomainInput)(nil)).Elem(), &PeeredDnsDomain{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PeeredDnsDomainPtrInput)(nil)).Elem(), &PeeredDnsDomain{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PeeredDnsDomainArrayInput)(nil)).Elem(), PeeredDnsDomainArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PeeredDnsDomainMapInput)(nil)).Elem(), PeeredDnsDomainMap{})
 	pulumi.RegisterOutputType(PeeredDnsDomainOutput{})
 	pulumi.RegisterOutputType(PeeredDnsDomainPtrOutput{})
 	pulumi.RegisterOutputType(PeeredDnsDomainArrayOutput{})

@@ -522,6 +522,10 @@ func (o CaPoolMapOutput) MapIndex(k pulumi.StringInput) CaPoolOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolInput)(nil)).Elem(), &CaPool{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolPtrInput)(nil)).Elem(), &CaPool{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolArrayInput)(nil)).Elem(), CaPoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolMapInput)(nil)).Elem(), CaPoolMap{})
 	pulumi.RegisterOutputType(CaPoolOutput{})
 	pulumi.RegisterOutputType(CaPoolPtrOutput{})
 	pulumi.RegisterOutputType(CaPoolArrayOutput{})

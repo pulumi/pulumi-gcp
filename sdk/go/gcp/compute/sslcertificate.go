@@ -552,6 +552,10 @@ func (o SSLCertificateMapOutput) MapIndex(k pulumi.StringInput) SSLCertificateOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SSLCertificateInput)(nil)).Elem(), &SSLCertificate{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SSLCertificatePtrInput)(nil)).Elem(), &SSLCertificate{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SSLCertificateArrayInput)(nil)).Elem(), SSLCertificateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SSLCertificateMapInput)(nil)).Elem(), SSLCertificateMap{})
 	pulumi.RegisterOutputType(SSLCertificateOutput{})
 	pulumi.RegisterOutputType(SSLCertificatePtrOutput{})
 	pulumi.RegisterOutputType(SSLCertificateArrayOutput{})

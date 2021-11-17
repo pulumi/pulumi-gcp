@@ -388,6 +388,10 @@ func (o GameServerClusterMapOutput) MapIndex(k pulumi.StringInput) GameServerClu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GameServerClusterInput)(nil)).Elem(), &GameServerCluster{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GameServerClusterPtrInput)(nil)).Elem(), &GameServerCluster{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GameServerClusterArrayInput)(nil)).Elem(), GameServerClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GameServerClusterMapInput)(nil)).Elem(), GameServerClusterMap{})
 	pulumi.RegisterOutputType(GameServerClusterOutput{})
 	pulumi.RegisterOutputType(GameServerClusterPtrOutput{})
 	pulumi.RegisterOutputType(GameServerClusterArrayOutput{})

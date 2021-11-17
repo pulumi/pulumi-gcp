@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Firebase
 {
@@ -16,6 +17,12 @@ namespace Pulumi.Gcp.Firebase
         /// </summary>
         public static Task<GetWebAppResult> InvokeAsync(GetWebAppArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetWebAppResult>("gcp:firebase/getWebApp:getWebApp", args ?? new GetWebAppArgs(), options.WithVersion());
+
+        /// <summary>
+        /// A Google Cloud Firebase web application instance
+        /// </summary>
+        public static Output<GetWebAppResult> Invoke(GetWebAppInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetWebAppResult>("gcp:firebase/getWebApp:getWebApp", args ?? new GetWebAppInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +35,19 @@ namespace Pulumi.Gcp.Firebase
         public string AppId { get; set; } = null!;
 
         public GetWebAppArgs()
+        {
+        }
+    }
+
+    public sealed class GetWebAppInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The app_ip of name of the Firebase webApp.
+        /// </summary>
+        [Input("appId", required: true)]
+        public Input<string> AppId { get; set; } = null!;
+
+        public GetWebAppInvokeArgs()
         {
         }
     }

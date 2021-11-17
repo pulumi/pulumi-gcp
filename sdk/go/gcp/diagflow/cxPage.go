@@ -599,6 +599,10 @@ func (o CxPageMapOutput) MapIndex(k pulumi.StringInput) CxPageOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageInput)(nil)).Elem(), &CxPage{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPagePtrInput)(nil)).Elem(), &CxPage{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageArrayInput)(nil)).Elem(), CxPageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageMapInput)(nil)).Elem(), CxPageMap{})
 	pulumi.RegisterOutputType(CxPageOutput{})
 	pulumi.RegisterOutputType(CxPagePtrOutput{})
 	pulumi.RegisterOutputType(CxPageArrayOutput{})

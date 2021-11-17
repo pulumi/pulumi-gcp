@@ -448,6 +448,10 @@ func (o InstanceIAMBindingMapOutput) MapIndex(k pulumi.StringInput) InstanceIAMB
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIAMBindingInput)(nil)).Elem(), &InstanceIAMBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIAMBindingPtrInput)(nil)).Elem(), &InstanceIAMBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIAMBindingArrayInput)(nil)).Elem(), InstanceIAMBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIAMBindingMapInput)(nil)).Elem(), InstanceIAMBindingMap{})
 	pulumi.RegisterOutputType(InstanceIAMBindingOutput{})
 	pulumi.RegisterOutputType(InstanceIAMBindingPtrOutput{})
 	pulumi.RegisterOutputType(InstanceIAMBindingArrayOutput{})

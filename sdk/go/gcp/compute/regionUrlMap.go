@@ -1019,6 +1019,10 @@ func (o RegionUrlMapMapOutput) MapIndex(k pulumi.StringInput) RegionUrlMapOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionUrlMapInput)(nil)).Elem(), &RegionUrlMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionUrlMapPtrInput)(nil)).Elem(), &RegionUrlMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionUrlMapArrayInput)(nil)).Elem(), RegionUrlMapArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionUrlMapMapInput)(nil)).Elem(), RegionUrlMapMap{})
 	pulumi.RegisterOutputType(RegionUrlMapOutput{})
 	pulumi.RegisterOutputType(RegionUrlMapPtrOutput{})
 	pulumi.RegisterOutputType(RegionUrlMapArrayOutput{})

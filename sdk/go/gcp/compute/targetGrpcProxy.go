@@ -591,6 +591,10 @@ func (o TargetGrpcProxyMapOutput) MapIndex(k pulumi.StringInput) TargetGrpcProxy
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetGrpcProxyInput)(nil)).Elem(), &TargetGrpcProxy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetGrpcProxyPtrInput)(nil)).Elem(), &TargetGrpcProxy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetGrpcProxyArrayInput)(nil)).Elem(), TargetGrpcProxyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetGrpcProxyMapInput)(nil)).Elem(), TargetGrpcProxyMap{})
 	pulumi.RegisterOutputType(TargetGrpcProxyOutput{})
 	pulumi.RegisterOutputType(TargetGrpcProxyPtrOutput{})
 	pulumi.RegisterOutputType(TargetGrpcProxyArrayOutput{})

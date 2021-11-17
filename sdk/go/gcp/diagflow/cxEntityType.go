@@ -519,6 +519,10 @@ func (o CxEntityTypeMapOutput) MapIndex(k pulumi.StringInput) CxEntityTypeOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CxEntityTypeInput)(nil)).Elem(), &CxEntityType{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxEntityTypePtrInput)(nil)).Elem(), &CxEntityType{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxEntityTypeArrayInput)(nil)).Elem(), CxEntityTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxEntityTypeMapInput)(nil)).Elem(), CxEntityTypeMap{})
 	pulumi.RegisterOutputType(CxEntityTypeOutput{})
 	pulumi.RegisterOutputType(CxEntityTypePtrOutput{})
 	pulumi.RegisterOutputType(CxEntityTypeArrayOutput{})

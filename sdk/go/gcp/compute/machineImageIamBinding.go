@@ -564,6 +564,10 @@ func (o MachineImageIamBindingMapOutput) MapIndex(k pulumi.StringInput) MachineI
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*MachineImageIamBindingInput)(nil)).Elem(), &MachineImageIamBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MachineImageIamBindingPtrInput)(nil)).Elem(), &MachineImageIamBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MachineImageIamBindingArrayInput)(nil)).Elem(), MachineImageIamBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MachineImageIamBindingMapInput)(nil)).Elem(), MachineImageIamBindingMap{})
 	pulumi.RegisterOutputType(MachineImageIamBindingOutput{})
 	pulumi.RegisterOutputType(MachineImageIamBindingPtrOutput{})
 	pulumi.RegisterOutputType(MachineImageIamBindingArrayOutput{})

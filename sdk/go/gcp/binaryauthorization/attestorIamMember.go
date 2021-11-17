@@ -448,6 +448,10 @@ func (o AttestorIamMemberMapOutput) MapIndex(k pulumi.StringInput) AttestorIamMe
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AttestorIamMemberInput)(nil)).Elem(), &AttestorIamMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttestorIamMemberPtrInput)(nil)).Elem(), &AttestorIamMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttestorIamMemberArrayInput)(nil)).Elem(), AttestorIamMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttestorIamMemberMapInput)(nil)).Elem(), AttestorIamMemberMap{})
 	pulumi.RegisterOutputType(AttestorIamMemberOutput{})
 	pulumi.RegisterOutputType(AttestorIamMemberPtrOutput{})
 	pulumi.RegisterOutputType(AttestorIamMemberArrayOutput{})

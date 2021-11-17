@@ -394,6 +394,10 @@ func (o EdgeCacheKeysetMapOutput) MapIndex(k pulumi.StringInput) EdgeCacheKeyset
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheKeysetInput)(nil)).Elem(), &EdgeCacheKeyset{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheKeysetPtrInput)(nil)).Elem(), &EdgeCacheKeyset{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheKeysetArrayInput)(nil)).Elem(), EdgeCacheKeysetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheKeysetMapInput)(nil)).Elem(), EdgeCacheKeysetMap{})
 	pulumi.RegisterOutputType(EdgeCacheKeysetOutput{})
 	pulumi.RegisterOutputType(EdgeCacheKeysetPtrOutput{})
 	pulumi.RegisterOutputType(EdgeCacheKeysetArrayOutput{})

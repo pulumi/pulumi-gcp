@@ -671,6 +671,10 @@ func (o InstanceFromMachineImageMapOutput) MapIndex(k pulumi.StringInput) Instan
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceFromMachineImageInput)(nil)).Elem(), &InstanceFromMachineImage{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceFromMachineImagePtrInput)(nil)).Elem(), &InstanceFromMachineImage{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceFromMachineImageArrayInput)(nil)).Elem(), InstanceFromMachineImageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceFromMachineImageMapInput)(nil)).Elem(), InstanceFromMachineImageMap{})
 	pulumi.RegisterOutputType(InstanceFromMachineImageOutput{})
 	pulumi.RegisterOutputType(InstanceFromMachineImagePtrOutput{})
 	pulumi.RegisterOutputType(InstanceFromMachineImageArrayOutput{})

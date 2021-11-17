@@ -631,6 +631,10 @@ func (o RouterPeerMapOutput) MapIndex(k pulumi.StringInput) RouterPeerOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterPeerInput)(nil)).Elem(), &RouterPeer{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterPeerPtrInput)(nil)).Elem(), &RouterPeer{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterPeerArrayInput)(nil)).Elem(), RouterPeerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterPeerMapInput)(nil)).Elem(), RouterPeerMap{})
 	pulumi.RegisterOutputType(RouterPeerOutput{})
 	pulumi.RegisterOutputType(RouterPeerPtrOutput{})
 	pulumi.RegisterOutputType(RouterPeerArrayOutput{})

@@ -719,6 +719,10 @@ func (o RegionDiskMapOutput) MapIndex(k pulumi.StringInput) RegionDiskOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskInput)(nil)).Elem(), &RegionDisk{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskPtrInput)(nil)).Elem(), &RegionDisk{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskArrayInput)(nil)).Elem(), RegionDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskMapInput)(nil)).Elem(), RegionDiskMap{})
 	pulumi.RegisterOutputType(RegionDiskOutput{})
 	pulumi.RegisterOutputType(RegionDiskPtrOutput{})
 	pulumi.RegisterOutputType(RegionDiskArrayOutput{})

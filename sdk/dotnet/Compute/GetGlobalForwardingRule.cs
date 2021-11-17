@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Compute
 {
@@ -39,6 +40,35 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Task<GetGlobalForwardingRuleResult> InvokeAsync(GetGlobalForwardingRuleArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGlobalForwardingRuleResult>("gcp:compute/getGlobalForwardingRule:getGlobalForwardingRule", args ?? new GetGlobalForwardingRuleArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get a global forwarding rule within GCE from its name.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var my_forwarding_rule = Output.Create(Gcp.Compute.GetGlobalForwardingRule.InvokeAsync(new Gcp.Compute.GetGlobalForwardingRuleArgs
+        ///         {
+        ///             Name = "forwarding-rule-global",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetGlobalForwardingRuleResult> Invoke(GetGlobalForwardingRuleInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetGlobalForwardingRuleResult>("gcp:compute/getGlobalForwardingRule:getGlobalForwardingRule", args ?? new GetGlobalForwardingRuleInvokeArgs(), options.WithVersion());
     }
 
 
@@ -58,6 +88,26 @@ namespace Pulumi.Gcp.Compute
         public string? Project { get; set; }
 
         public GetGlobalForwardingRuleArgs()
+        {
+        }
+    }
+
+    public sealed class GetGlobalForwardingRuleInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the global forwarding rule.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The project in which the resource belongs. If it
+        /// is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        public GetGlobalForwardingRuleInvokeArgs()
         {
         }
     }

@@ -481,6 +481,10 @@ func (o AccessLevelConditionMapOutput) MapIndex(k pulumi.StringInput) AccessLeve
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelConditionInput)(nil)).Elem(), &AccessLevelCondition{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelConditionPtrInput)(nil)).Elem(), &AccessLevelCondition{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelConditionArrayInput)(nil)).Elem(), AccessLevelConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelConditionMapInput)(nil)).Elem(), AccessLevelConditionMap{})
 	pulumi.RegisterOutputType(AccessLevelConditionOutput{})
 	pulumi.RegisterOutputType(AccessLevelConditionPtrOutput{})
 	pulumi.RegisterOutputType(AccessLevelConditionArrayOutput{})

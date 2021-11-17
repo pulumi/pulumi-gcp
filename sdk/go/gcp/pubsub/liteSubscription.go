@@ -401,6 +401,10 @@ func (o LiteSubscriptionMapOutput) MapIndex(k pulumi.StringInput) LiteSubscripti
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*LiteSubscriptionInput)(nil)).Elem(), &LiteSubscription{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LiteSubscriptionPtrInput)(nil)).Elem(), &LiteSubscription{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LiteSubscriptionArrayInput)(nil)).Elem(), LiteSubscriptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LiteSubscriptionMapInput)(nil)).Elem(), LiteSubscriptionMap{})
 	pulumi.RegisterOutputType(LiteSubscriptionOutput{})
 	pulumi.RegisterOutputType(LiteSubscriptionPtrOutput{})
 	pulumi.RegisterOutputType(LiteSubscriptionArrayOutput{})

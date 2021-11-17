@@ -330,6 +330,10 @@ func (o BillingAccountExclusionMapOutput) MapIndex(k pulumi.StringInput) Billing
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BillingAccountExclusionInput)(nil)).Elem(), &BillingAccountExclusion{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BillingAccountExclusionPtrInput)(nil)).Elem(), &BillingAccountExclusion{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BillingAccountExclusionArrayInput)(nil)).Elem(), BillingAccountExclusionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BillingAccountExclusionMapInput)(nil)).Elem(), BillingAccountExclusionMap{})
 	pulumi.RegisterOutputType(BillingAccountExclusionOutput{})
 	pulumi.RegisterOutputType(BillingAccountExclusionPtrOutput{})
 	pulumi.RegisterOutputType(BillingAccountExclusionArrayOutput{})

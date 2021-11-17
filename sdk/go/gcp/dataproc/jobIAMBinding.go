@@ -453,6 +453,10 @@ func (o JobIAMBindingMapOutput) MapIndex(k pulumi.StringInput) JobIAMBindingOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*JobIAMBindingInput)(nil)).Elem(), &JobIAMBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobIAMBindingPtrInput)(nil)).Elem(), &JobIAMBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobIAMBindingArrayInput)(nil)).Elem(), JobIAMBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobIAMBindingMapInput)(nil)).Elem(), JobIAMBindingMap{})
 	pulumi.RegisterOutputType(JobIAMBindingOutput{})
 	pulumi.RegisterOutputType(JobIAMBindingPtrOutput{})
 	pulumi.RegisterOutputType(JobIAMBindingArrayOutput{})

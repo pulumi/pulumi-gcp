@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Compute
 {
@@ -55,6 +56,51 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Task<GetAddressResult> InvokeAsync(GetAddressArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAddressResult>("gcp:compute/getAddress:getAddress", args ?? new GetAddressArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get the IP address from a static address. For more information see
+        /// the official [API](https://cloud.google.com/compute/docs/reference/latest/addresses/get) documentation.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var myAddress = Output.Create(Gcp.Compute.GetAddress.InvokeAsync(new Gcp.Compute.GetAddressArgs
+        ///         {
+        ///             Name = "foobar",
+        ///         }));
+        ///         var prod = new Gcp.Dns.ManagedZone("prod", new Gcp.Dns.ManagedZoneArgs
+        ///         {
+        ///             DnsName = "prod.mydomain.com.",
+        ///         });
+        ///         var frontend = new Gcp.Dns.RecordSet("frontend", new Gcp.Dns.RecordSetArgs
+        ///         {
+        ///             Name = prod.DnsName.Apply(dnsName =&gt; $"frontend.{dnsName}"),
+        ///             Type = "A",
+        ///             Ttl = 300,
+        ///             ManagedZone = prod.Name,
+        ///             Rrdatas = 
+        ///             {
+        ///                 myAddress.Apply(myAddress =&gt; myAddress.Address),
+        ///             },
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetAddressResult> Invoke(GetAddressInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAddressResult>("gcp:compute/getAddress:getAddress", args ?? new GetAddressInvokeArgs(), options.WithVersion());
     }
 
 
@@ -81,6 +127,33 @@ namespace Pulumi.Gcp.Compute
         public string? Region { get; set; }
 
         public GetAddressArgs()
+        {
+        }
+    }
+
+    public sealed class GetAddressInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// A unique name for the resource, required by GCE.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The project in which the resource belongs. If it
+        /// is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The Region in which the created address reside.
+        /// If it is not provided, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        public GetAddressInvokeArgs()
         {
         }
     }

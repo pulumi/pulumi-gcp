@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Monitoring
 {
@@ -14,6 +15,9 @@ namespace Pulumi.Gcp.Monitoring
     {
         public static Task<GetSecretVersionResult> InvokeAsync(GetSecretVersionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSecretVersionResult>("gcp:monitoring/getSecretVersion:getSecretVersion", args ?? new GetSecretVersionArgs(), options.WithVersion());
+
+        public static Output<GetSecretVersionResult> Invoke(GetSecretVersionInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSecretVersionResult>("gcp:monitoring/getSecretVersion:getSecretVersion", args ?? new GetSecretVersionInvokeArgs(), options.WithVersion());
     }
 
 
@@ -29,6 +33,22 @@ namespace Pulumi.Gcp.Monitoring
         public string? Version { get; set; }
 
         public GetSecretVersionArgs()
+        {
+        }
+    }
+
+    public sealed class GetSecretVersionInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        [Input("secret", required: true)]
+        public Input<string> Secret { get; set; } = null!;
+
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
+        public GetSecretVersionInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Compute
 {
@@ -17,6 +18,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Task<GetRegionsResult> InvokeAsync(GetRegionsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegionsResult>("gcp:compute/getRegions:getRegions", args ?? new GetRegionsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Provides access to available Google Compute regions for a given project.
+        /// See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
+        /// </summary>
+        public static Output<GetRegionsResult> Invoke(GetRegionsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRegionsResult>("gcp:compute/getRegions:getRegions", args ?? new GetRegionsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -36,6 +44,26 @@ namespace Pulumi.Gcp.Compute
         public string? Status { get; set; }
 
         public GetRegionsArgs()
+        {
+        }
+    }
+
+    public sealed class GetRegionsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Project from which to list available regions. Defaults to project declared in the provider.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Allows to filter list of regions based on their current status. Status can be either `UP` or `DOWN`.
+        /// Defaults to no filtering (all available regions - both `UP` and `DOWN`).
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetRegionsInvokeArgs()
         {
         }
     }

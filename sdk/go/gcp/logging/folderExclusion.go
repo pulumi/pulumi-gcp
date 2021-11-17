@@ -376,6 +376,10 @@ func (o FolderExclusionMapOutput) MapIndex(k pulumi.StringInput) FolderExclusion
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderExclusionInput)(nil)).Elem(), &FolderExclusion{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderExclusionPtrInput)(nil)).Elem(), &FolderExclusion{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderExclusionArrayInput)(nil)).Elem(), FolderExclusionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderExclusionMapInput)(nil)).Elem(), FolderExclusionMap{})
 	pulumi.RegisterOutputType(FolderExclusionOutput{})
 	pulumi.RegisterOutputType(FolderExclusionPtrOutput{})
 	pulumi.RegisterOutputType(FolderExclusionArrayOutput{})

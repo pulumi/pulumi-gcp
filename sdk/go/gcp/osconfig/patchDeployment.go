@@ -714,6 +714,10 @@ func (o PatchDeploymentMapOutput) MapIndex(k pulumi.StringInput) PatchDeployment
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*PatchDeploymentInput)(nil)).Elem(), &PatchDeployment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PatchDeploymentPtrInput)(nil)).Elem(), &PatchDeployment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PatchDeploymentArrayInput)(nil)).Elem(), PatchDeploymentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PatchDeploymentMapInput)(nil)).Elem(), PatchDeploymentMap{})
 	pulumi.RegisterOutputType(PatchDeploymentOutput{})
 	pulumi.RegisterOutputType(PatchDeploymentPtrOutput{})
 	pulumi.RegisterOutputType(PatchDeploymentArrayOutput{})

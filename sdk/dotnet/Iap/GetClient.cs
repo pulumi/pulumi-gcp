@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Iap
 {
@@ -44,6 +45,40 @@ namespace Pulumi.Gcp.Iap
         /// </summary>
         public static Task<GetClientResult> InvokeAsync(GetClientArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClientResult>("gcp:iap/getClient:getClient", args ?? new GetClientArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get info about a Google Cloud IAP Client.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var project = Output.Create(Gcp.Organizations.GetProject.InvokeAsync(new Gcp.Organizations.GetProjectArgs
+        ///         {
+        ///             ProjectId = "foobar",
+        ///         }));
+        ///         var projectClient = project.Apply(project =&gt; Output.Create(Gcp.Iap.GetClient.InvokeAsync(new Gcp.Iap.GetClientArgs
+        ///         {
+        ///             Brand = $"projects/{project.Number}/brands/[BRAND_NUMBER]",
+        ///             ClientId = FOO.Apps.Googleusercontent.Com,
+        ///         })));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetClientResult> Invoke(GetClientInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetClientResult>("gcp:iap/getClient:getClient", args ?? new GetClientInvokeArgs(), options.WithVersion());
     }
 
 
@@ -62,6 +97,25 @@ namespace Pulumi.Gcp.Iap
         public string ClientId { get; set; } = null!;
 
         public GetClientArgs()
+        {
+        }
+    }
+
+    public sealed class GetClientInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the brand.
+        /// </summary>
+        [Input("brand", required: true)]
+        public Input<string> Brand { get; set; } = null!;
+
+        /// <summary>
+        /// The client_id of the brand.
+        /// </summary>
+        [Input("clientId", required: true)]
+        public Input<string> ClientId { get; set; } = null!;
+
+        public GetClientInvokeArgs()
         {
         }
     }

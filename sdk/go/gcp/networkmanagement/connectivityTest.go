@@ -689,6 +689,10 @@ func (o ConnectivityTestMapOutput) MapIndex(k pulumi.StringInput) ConnectivityTe
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectivityTestInput)(nil)).Elem(), &ConnectivityTest{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectivityTestPtrInput)(nil)).Elem(), &ConnectivityTest{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectivityTestArrayInput)(nil)).Elem(), ConnectivityTestArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectivityTestMapInput)(nil)).Elem(), ConnectivityTestMap{})
 	pulumi.RegisterOutputType(ConnectivityTestOutput{})
 	pulumi.RegisterOutputType(ConnectivityTestPtrOutput{})
 	pulumi.RegisterOutputType(ConnectivityTestArrayOutput{})

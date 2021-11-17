@@ -373,6 +373,10 @@ func (o ApplicationUrlDispatchRulesMapOutput) MapIndex(k pulumi.StringInput) App
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationUrlDispatchRulesInput)(nil)).Elem(), &ApplicationUrlDispatchRules{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationUrlDispatchRulesPtrInput)(nil)).Elem(), &ApplicationUrlDispatchRules{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationUrlDispatchRulesArrayInput)(nil)).Elem(), ApplicationUrlDispatchRulesArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationUrlDispatchRulesMapInput)(nil)).Elem(), ApplicationUrlDispatchRulesMap{})
 	pulumi.RegisterOutputType(ApplicationUrlDispatchRulesOutput{})
 	pulumi.RegisterOutputType(ApplicationUrlDispatchRulesPtrOutput{})
 	pulumi.RegisterOutputType(ApplicationUrlDispatchRulesArrayOutput{})

@@ -447,6 +447,10 @@ func (o GameServerDeploymentRolloutMapOutput) MapIndex(k pulumi.StringInput) Gam
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GameServerDeploymentRolloutInput)(nil)).Elem(), &GameServerDeploymentRollout{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GameServerDeploymentRolloutPtrInput)(nil)).Elem(), &GameServerDeploymentRollout{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GameServerDeploymentRolloutArrayInput)(nil)).Elem(), GameServerDeploymentRolloutArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GameServerDeploymentRolloutMapInput)(nil)).Elem(), GameServerDeploymentRolloutMap{})
 	pulumi.RegisterOutputType(GameServerDeploymentRolloutOutput{})
 	pulumi.RegisterOutputType(GameServerDeploymentRolloutPtrOutput{})
 	pulumi.RegisterOutputType(GameServerDeploymentRolloutArrayOutput{})

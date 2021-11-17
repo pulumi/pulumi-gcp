@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Monitoring
 {
@@ -56,6 +57,52 @@ namespace Pulumi.Gcp.Monitoring
         /// </summary>
         public static Task<GetMeshIstioServiceResult> InvokeAsync(GetMeshIstioServiceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMeshIstioServiceResult>("gcp:monitoring/getMeshIstioService:getMeshIstioService", args ?? new GetMeshIstioServiceArgs(), options.WithVersion());
+
+        /// <summary>
+        /// A Monitoring Service is the root resource under which operational aspects of a
+        /// generic service are accessible. A service is some discrete, autonomous, and
+        /// network-accessible unit, designed to solve an individual concern
+        /// 
+        /// An Mesh Istio monitoring service is automatically created by GCP to monitor
+        /// Mesh Istio services.
+        /// 
+        /// 
+        /// To get more information about Service, see:
+        /// 
+        /// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
+        /// * How-to Guides
+        ///     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+        ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// ### Monitoring Mesh Istio Service
+        /// 
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(Gcp.Monitoring.GetMeshIstioService.InvokeAsync(new Gcp.Monitoring.GetMeshIstioServiceArgs
+        ///         {
+        ///             MeshUid = "proj-573164786102",
+        ///             ServiceName = "prometheus",
+        ///             ServiceNamespace = "istio-system",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetMeshIstioServiceResult> Invoke(GetMeshIstioServiceInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetMeshIstioServiceResult>("gcp:monitoring/getMeshIstioService:getMeshIstioService", args ?? new GetMeshIstioServiceInvokeArgs(), options.WithVersion());
     }
 
 
@@ -90,6 +137,41 @@ namespace Pulumi.Gcp.Monitoring
         public string ServiceNamespace { get; set; } = null!;
 
         public GetMeshIstioServiceArgs()
+        {
+        }
+    }
+
+    public sealed class GetMeshIstioServiceInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Identifier for the mesh in which this Istio service is defined.
+        /// Corresponds to the meshUid metric label in Istio metrics.
+        /// </summary>
+        [Input("meshUid", required: true)]
+        public Input<string> MeshUid { get; set; } = null!;
+
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The name of the Istio service underlying this service.
+        /// Corresponds to the destination_service_name metric label in Istio metrics.
+        /// </summary>
+        [Input("serviceName", required: true)]
+        public Input<string> ServiceName { get; set; } = null!;
+
+        /// <summary>
+        /// The namespace of the Istio service underlying this service.
+        /// Corresponds to the destination_service_namespace metric label in Istio metrics.
+        /// </summary>
+        [Input("serviceNamespace", required: true)]
+        public Input<string> ServiceNamespace { get; set; } = null!;
+
+        public GetMeshIstioServiceInvokeArgs()
         {
         }
     }

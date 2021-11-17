@@ -430,6 +430,10 @@ func (o TagKeyIamMemberMapOutput) MapIndex(k pulumi.StringInput) TagKeyIamMember
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TagKeyIamMemberInput)(nil)).Elem(), &TagKeyIamMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TagKeyIamMemberPtrInput)(nil)).Elem(), &TagKeyIamMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TagKeyIamMemberArrayInput)(nil)).Elem(), TagKeyIamMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TagKeyIamMemberMapInput)(nil)).Elem(), TagKeyIamMemberMap{})
 	pulumi.RegisterOutputType(TagKeyIamMemberOutput{})
 	pulumi.RegisterOutputType(TagKeyIamMemberPtrOutput{})
 	pulumi.RegisterOutputType(TagKeyIamMemberArrayOutput{})

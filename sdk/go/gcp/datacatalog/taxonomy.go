@@ -395,6 +395,10 @@ func (o TaxonomyMapOutput) MapIndex(k pulumi.StringInput) TaxonomyOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TaxonomyInput)(nil)).Elem(), &Taxonomy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaxonomyPtrInput)(nil)).Elem(), &Taxonomy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaxonomyArrayInput)(nil)).Elem(), TaxonomyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaxonomyMapInput)(nil)).Elem(), TaxonomyMap{})
 	pulumi.RegisterOutputType(TaxonomyOutput{})
 	pulumi.RegisterOutputType(TaxonomyPtrOutput{})
 	pulumi.RegisterOutputType(TaxonomyArrayOutput{})

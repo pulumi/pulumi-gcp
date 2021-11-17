@@ -598,6 +598,10 @@ func (o BucketIAMBindingMapOutput) MapIndex(k pulumi.StringInput) BucketIAMBindi
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketIAMBindingInput)(nil)).Elem(), &BucketIAMBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketIAMBindingPtrInput)(nil)).Elem(), &BucketIAMBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketIAMBindingArrayInput)(nil)).Elem(), BucketIAMBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketIAMBindingMapInput)(nil)).Elem(), BucketIAMBindingMap{})
 	pulumi.RegisterOutputType(BucketIAMBindingOutput{})
 	pulumi.RegisterOutputType(BucketIAMBindingPtrOutput{})
 	pulumi.RegisterOutputType(BucketIAMBindingArrayOutput{})

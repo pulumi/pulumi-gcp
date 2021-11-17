@@ -387,6 +387,10 @@ func (o FulfillmentMapOutput) MapIndex(k pulumi.StringInput) FulfillmentOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FulfillmentInput)(nil)).Elem(), &Fulfillment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FulfillmentPtrInput)(nil)).Elem(), &Fulfillment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FulfillmentArrayInput)(nil)).Elem(), FulfillmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FulfillmentMapInput)(nil)).Elem(), FulfillmentMap{})
 	pulumi.RegisterOutputType(FulfillmentOutput{})
 	pulumi.RegisterOutputType(FulfillmentPtrOutput{})
 	pulumi.RegisterOutputType(FulfillmentArrayOutput{})

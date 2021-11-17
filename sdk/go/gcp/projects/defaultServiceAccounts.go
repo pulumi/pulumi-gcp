@@ -376,6 +376,10 @@ func (o DefaultServiceAccountsMapOutput) MapIndex(k pulumi.StringInput) DefaultS
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultServiceAccountsInput)(nil)).Elem(), &DefaultServiceAccounts{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultServiceAccountsPtrInput)(nil)).Elem(), &DefaultServiceAccounts{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultServiceAccountsArrayInput)(nil)).Elem(), DefaultServiceAccountsArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultServiceAccountsMapInput)(nil)).Elem(), DefaultServiceAccountsMap{})
 	pulumi.RegisterOutputType(DefaultServiceAccountsOutput{})
 	pulumi.RegisterOutputType(DefaultServiceAccountsPtrOutput{})
 	pulumi.RegisterOutputType(DefaultServiceAccountsArrayOutput{})

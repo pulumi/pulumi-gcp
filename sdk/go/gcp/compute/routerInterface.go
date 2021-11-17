@@ -418,6 +418,10 @@ func (o RouterInterfaceMapOutput) MapIndex(k pulumi.StringInput) RouterInterface
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterInterfaceInput)(nil)).Elem(), &RouterInterface{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterInterfacePtrInput)(nil)).Elem(), &RouterInterface{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterInterfaceArrayInput)(nil)).Elem(), RouterInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterInterfaceMapInput)(nil)).Elem(), RouterInterfaceMap{})
 	pulumi.RegisterOutputType(RouterInterfaceOutput{})
 	pulumi.RegisterOutputType(RouterInterfacePtrOutput{})
 	pulumi.RegisterOutputType(RouterInterfaceArrayOutput{})

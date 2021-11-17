@@ -3,10 +3,10 @@ module github.com/pulumi/pulumi-gcp/provider/v6
 go 1.16
 
 require (
+	cloud.google.com/go/kms v1.0.0 // indirect
 	github.com/hashicorp/terraform-provider-google-beta v1.20.1-0.20210315160117-642085ce9b99
-	github.com/pulumi/pulumi-gcp/provider/v5 v5.0.0-20211101175825-5f66316f5b9b
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.9.0
-	github.com/pulumi/pulumi/sdk/v3 v3.14.1-0.20211007222624-789e39219452
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.11.0
+	github.com/pulumi/pulumi/sdk/v3 v3.17.0
 )
 
 replace (

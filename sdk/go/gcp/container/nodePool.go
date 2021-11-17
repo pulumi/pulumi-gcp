@@ -624,6 +624,10 @@ func (o NodePoolMapOutput) MapIndex(k pulumi.StringInput) NodePoolOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolInput)(nil)).Elem(), &NodePool{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolPtrInput)(nil)).Elem(), &NodePool{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolArrayInput)(nil)).Elem(), NodePoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolMapInput)(nil)).Elem(), NodePoolMap{})
 	pulumi.RegisterOutputType(NodePoolOutput{})
 	pulumi.RegisterOutputType(NodePoolPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolArrayOutput{})
