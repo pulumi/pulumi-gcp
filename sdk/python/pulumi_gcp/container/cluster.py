@@ -85,8 +85,7 @@ class ClusterArgs:
         :param pulumi.Input['ClusterClusterTelemetryArgs'] cluster_telemetry: Configuration for
                [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
                Structure is documented below.
-        :param pulumi.Input['ClusterConfidentialNodesArgs'] confidential_nodes: Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration
-               can't be changed (or added/removed) after cluster creation without deleting and recreating the entire cluster.
+        :param pulumi.Input['ClusterConfidentialNodesArgs'] confidential_nodes: Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
         :param pulumi.Input['ClusterDatabaseEncryptionArgs'] database_encryption: Structure is documented below.
         :param pulumi.Input[str] datapath_provider: The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
         :param pulumi.Input[int] default_max_pods_per_node: The default maximum number of pods
@@ -201,7 +200,8 @@ class ClusterArgs:
                `version_prefix` field to approximate fuzzy versions.
                To update nodes in other node pools, use the `version` attribute on the node pool.
         :param pulumi.Input['ClusterNotificationConfigArgs'] notification_config: Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
-        :param pulumi.Input['ClusterPodSecurityPolicyConfigArgs'] pod_security_policy_config: Configuration for the
+        :param pulumi.Input['ClusterPodSecurityPolicyConfigArgs'] pod_security_policy_config: ) Configuration for the
+               >>>>>>> v4.1.0
                [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
                Structure is documented below.
         :param pulumi.Input['ClusterPrivateClusterConfigArgs'] private_cluster_config: Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
@@ -413,8 +413,7 @@ class ClusterArgs:
     @pulumi.getter(name="confidentialNodes")
     def confidential_nodes(self) -> Optional[pulumi.Input['ClusterConfidentialNodesArgs']]:
         """
-        Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration
-        can't be changed (or added/removed) after cluster creation without deleting and recreating the entire cluster.
+        Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
         """
         return pulumi.get(self, "confidential_nodes")
 
@@ -914,7 +913,8 @@ class ClusterArgs:
     @pulumi.getter(name="podSecurityPolicyConfig")
     def pod_security_policy_config(self) -> Optional[pulumi.Input['ClusterPodSecurityPolicyConfigArgs']]:
         """
-        Configuration for the
+        ) Configuration for the
+        >>>>>>> v4.1.0
         [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
         Structure is documented below.
         """
@@ -1144,8 +1144,7 @@ class _ClusterState:
         :param pulumi.Input['ClusterClusterTelemetryArgs'] cluster_telemetry: Configuration for
                [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
                Structure is documented below.
-        :param pulumi.Input['ClusterConfidentialNodesArgs'] confidential_nodes: Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration
-               can't be changed (or added/removed) after cluster creation without deleting and recreating the entire cluster.
+        :param pulumi.Input['ClusterConfidentialNodesArgs'] confidential_nodes: Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
         :param pulumi.Input['ClusterDatabaseEncryptionArgs'] database_encryption: Structure is documented below.
         :param pulumi.Input[str] datapath_provider: The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
         :param pulumi.Input[int] default_max_pods_per_node: The default maximum number of pods
@@ -1265,7 +1264,8 @@ class _ClusterState:
                `version_prefix` field to approximate fuzzy versions.
                To update nodes in other node pools, use the `version` attribute on the node pool.
         :param pulumi.Input['ClusterNotificationConfigArgs'] notification_config: Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
-        :param pulumi.Input['ClusterPodSecurityPolicyConfigArgs'] pod_security_policy_config: Configuration for the
+        :param pulumi.Input['ClusterPodSecurityPolicyConfigArgs'] pod_security_policy_config: ) Configuration for the
+               >>>>>>> v4.1.0
                [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
                Structure is documented below.
         :param pulumi.Input['ClusterPrivateClusterConfigArgs'] private_cluster_config: Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
@@ -1499,8 +1499,7 @@ class _ClusterState:
     @pulumi.getter(name="confidentialNodes")
     def confidential_nodes(self) -> Optional[pulumi.Input['ClusterConfidentialNodesArgs']]:
         """
-        Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration
-        can't be changed (or added/removed) after cluster creation without deleting and recreating the entire cluster.
+        Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
         """
         return pulumi.get(self, "confidential_nodes")
 
@@ -2047,7 +2046,8 @@ class _ClusterState:
     @pulumi.getter(name="podSecurityPolicyConfig")
     def pod_security_policy_config(self) -> Optional[pulumi.Input['ClusterPodSecurityPolicyConfigArgs']]:
         """
-        Configuration for the
+        ) Configuration for the
+        >>>>>>> v4.1.0
         [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
         Structure is documented below.
         """
@@ -2384,8 +2384,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClusterClusterTelemetryArgs']] cluster_telemetry: Configuration for
                [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ClusterConfidentialNodesArgs']] confidential_nodes: Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration
-               can't be changed (or added/removed) after cluster creation without deleting and recreating the entire cluster.
+        :param pulumi.Input[pulumi.InputType['ClusterConfidentialNodesArgs']] confidential_nodes: Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
         :param pulumi.Input[pulumi.InputType['ClusterDatabaseEncryptionArgs']] database_encryption: Structure is documented below.
         :param pulumi.Input[str] datapath_provider: The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
         :param pulumi.Input[int] default_max_pods_per_node: The default maximum number of pods
@@ -2500,7 +2499,8 @@ class Cluster(pulumi.CustomResource):
                `version_prefix` field to approximate fuzzy versions.
                To update nodes in other node pools, use the `version` attribute on the node pool.
         :param pulumi.Input[pulumi.InputType['ClusterNotificationConfigArgs']] notification_config: Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ClusterPodSecurityPolicyConfigArgs']] pod_security_policy_config: Configuration for the
+        :param pulumi.Input[pulumi.InputType['ClusterPodSecurityPolicyConfigArgs']] pod_security_policy_config: ) Configuration for the
+               >>>>>>> v4.1.0
                [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterPrivateClusterConfigArgs']] private_cluster_config: Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
@@ -2837,8 +2837,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClusterClusterTelemetryArgs']] cluster_telemetry: Configuration for
                [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ClusterConfidentialNodesArgs']] confidential_nodes: Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration
-               can't be changed (or added/removed) after cluster creation without deleting and recreating the entire cluster.
+        :param pulumi.Input[pulumi.InputType['ClusterConfidentialNodesArgs']] confidential_nodes: Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
         :param pulumi.Input[pulumi.InputType['ClusterDatabaseEncryptionArgs']] database_encryption: Structure is documented below.
         :param pulumi.Input[str] datapath_provider: The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
         :param pulumi.Input[int] default_max_pods_per_node: The default maximum number of pods
@@ -2958,7 +2957,8 @@ class Cluster(pulumi.CustomResource):
                `version_prefix` field to approximate fuzzy versions.
                To update nodes in other node pools, use the `version` attribute on the node pool.
         :param pulumi.Input[pulumi.InputType['ClusterNotificationConfigArgs']] notification_config: Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ClusterPodSecurityPolicyConfigArgs']] pod_security_policy_config: Configuration for the
+        :param pulumi.Input[pulumi.InputType['ClusterPodSecurityPolicyConfigArgs']] pod_security_policy_config: ) Configuration for the
+               >>>>>>> v4.1.0
                [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterPrivateClusterConfigArgs']] private_cluster_config: Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
@@ -3119,8 +3119,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="confidentialNodes")
     def confidential_nodes(self) -> pulumi.Output['outputs.ClusterConfidentialNodes']:
         """
-        Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration
-        can't be changed (or added/removed) after cluster creation without deleting and recreating the entire cluster.
+        Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
         """
         return pulumi.get(self, "confidential_nodes")
 
@@ -3511,7 +3510,8 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="podSecurityPolicyConfig")
     def pod_security_policy_config(self) -> pulumi.Output[Optional['outputs.ClusterPodSecurityPolicyConfig']]:
         """
-        Configuration for the
+        ) Configuration for the
+        >>>>>>> v4.1.0
         [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
         Structure is documented below.
         """

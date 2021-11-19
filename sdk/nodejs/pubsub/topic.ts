@@ -28,6 +28,7 @@ import * as utilities from "../utilities";
  *     labels: {
  *         foo: "bar",
  *     },
+ *     messageRetentionDuration: "86600s",
  * });
  * ```
  * ### Pubsub Topic Cmek
@@ -141,6 +142,16 @@ export class Topic extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * Indicates the minimum duration to retain a message after it is published
+     * to the topic. If this field is set, messages published to the topic in
+     * the last messageRetentionDuration are always available to subscribers.
+     * For instance, it allows any attached subscription to seek to a timestamp
+     * that is up to messageRetentionDuration in the past. If this field is not
+     * set, message retention is controlled by settings on individual subscriptions.
+     * Cannot be more than 7 days or less than 10 minutes.
+     */
+    public readonly messageRetentionDuration!: pulumi.Output<string | undefined>;
+    /**
      * Policy constraining the set of Google Cloud Platform regions where
      * messages published to the topic may be stored. If not present, then no
      * constraints are in effect.
@@ -177,6 +188,7 @@ export class Topic extends pulumi.CustomResource {
             const state = argsOrState as TopicState | undefined;
             inputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
             inputs["labels"] = state ? state.labels : undefined;
+            inputs["messageRetentionDuration"] = state ? state.messageRetentionDuration : undefined;
             inputs["messageStoragePolicy"] = state ? state.messageStoragePolicy : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -185,6 +197,7 @@ export class Topic extends pulumi.CustomResource {
             const args = argsOrState as TopicArgs | undefined;
             inputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
             inputs["labels"] = args ? args.labels : undefined;
+            inputs["messageRetentionDuration"] = args ? args.messageRetentionDuration : undefined;
             inputs["messageStoragePolicy"] = args ? args.messageStoragePolicy : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -213,6 +226,16 @@ export interface TopicState {
      * A set of key/value label pairs to assign to this Topic.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Indicates the minimum duration to retain a message after it is published
+     * to the topic. If this field is set, messages published to the topic in
+     * the last messageRetentionDuration are always available to subscribers.
+     * For instance, it allows any attached subscription to seek to a timestamp
+     * that is up to messageRetentionDuration in the past. If this field is not
+     * set, message retention is controlled by settings on individual subscriptions.
+     * Cannot be more than 7 days or less than 10 minutes.
+     */
+    messageRetentionDuration?: pulumi.Input<string>;
     /**
      * Policy constraining the set of Google Cloud Platform regions where
      * messages published to the topic may be stored. If not present, then no
@@ -252,6 +275,16 @@ export interface TopicArgs {
      * A set of key/value label pairs to assign to this Topic.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Indicates the minimum duration to retain a message after it is published
+     * to the topic. If this field is set, messages published to the topic in
+     * the last messageRetentionDuration are always available to subscribers.
+     * For instance, it allows any attached subscription to seek to a timestamp
+     * that is up to messageRetentionDuration in the past. If this field is not
+     * set, message retention is controlled by settings on individual subscriptions.
+     * Cannot be more than 7 days or less than 10 minutes.
+     */
+    messageRetentionDuration?: pulumi.Input<string>;
     /**
      * Policy constraining the set of Google Cloud Platform regions where
      * messages published to the topic may be stored. If not present, then no

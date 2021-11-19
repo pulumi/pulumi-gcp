@@ -36,7 +36,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", &compute.NetworkArgs{
 // 			AutoCreateSubnetworks: pulumi.Bool(false),
-// 		}, pulumi.Provider(google))
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -44,11 +44,11 @@ import (
 // 			IpCidrRange: pulumi.String("10.0.1.0/24"),
 // 			Region:      pulumi.String("us-central1"),
 // 			Network:     defaultNetwork.ID(),
-// 		}, pulumi.Provider(google))
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
-// 		defaultGlobalAddress, err := compute.NewGlobalAddress(ctx, "defaultGlobalAddress", nil)
+// 		defaultGlobalAddress, err := compute.NewGlobalAddress(ctx, "defaultGlobalAddress", nil, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -58,7 +58,7 @@ import (
 // 			TcpHealthCheck: &compute.HealthCheckTcpHealthCheckArgs{
 // 				Port: pulumi.Int(80),
 // 			},
-// 		})
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -86,7 +86,7 @@ import (
 // 			Metadata: pulumi.AnyMap{
 // 				"startup-script": pulumi.Any(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "#! /bin/bash\n", "set -euo pipefail\n", "export DEBIAN_FRONTEND=noninteractive\n", "apt-get update\n", "apt-get install -y nginx-light jq\n", "NAME=", "$", "(curl -H \"Metadata-Flavor: Google\" \"http://metadata.google.internal/computeMetadata/v1/instance/hostname\")\n", "IP=", "$", "(curl -H \"Metadata-Flavor: Google\" \"http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip\")\n", "METADATA=", "$", "(curl -f -H \"Metadata-Flavor: Google\" \"http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True\" | jq 'del(.[\"startup-script\"])')\n", "cat <<EOF > /var/www/html/index.html\n", "<pre>\n", "Name: ", "$", "NAME\n", "IP: ", "$", "IP\n", "Metadata: ", "$", "METADATA\n", "</pre>\n", "EOF\n")),
 // 			},
-// 		}, pulumi.Provider(google))
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -106,7 +106,7 @@ import (
 // 			},
 // 			BaseInstanceName: pulumi.String("vm"),
 // 			TargetSize:       pulumi.Int(2),
-// 		}, pulumi.Provider(google))
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -126,13 +126,13 @@ import (
 // 					CapacityScaler: pulumi.Float64(1),
 // 				},
 // 			},
-// 		})
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
 // 		defaultTargetTCPProxy, err := compute.NewTargetTCPProxy(ctx, "defaultTargetTCPProxy", &compute.TargetTCPProxyArgs{
 // 			BackendService: defaultBackendService.ID(),
-// 		})
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -142,7 +142,7 @@ import (
 // 			PortRange:           pulumi.String("110"),
 // 			Target:              defaultTargetTCPProxy.ID(),
 // 			IpAddress:           defaultGlobalAddress.ID(),
-// 		}, pulumi.Provider(google))
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -161,7 +161,7 @@ import (
 // 			TargetTags: pulumi.StringArray{
 // 				pulumi.String("allow-health-check"),
 // 			},
-// 		}, pulumi.Provider(google))
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -185,7 +185,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", &compute.NetworkArgs{
 // 			AutoCreateSubnetworks: pulumi.Bool(false),
-// 		}, pulumi.Provider(google))
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -193,11 +193,11 @@ import (
 // 			IpCidrRange: pulumi.String("10.0.1.0/24"),
 // 			Region:      pulumi.String("us-central1"),
 // 			Network:     defaultNetwork.ID(),
-// 		}, pulumi.Provider(google))
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
-// 		defaultGlobalAddress, err := compute.NewGlobalAddress(ctx, "defaultGlobalAddress", nil)
+// 		defaultGlobalAddress, err := compute.NewGlobalAddress(ctx, "defaultGlobalAddress", nil, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -205,7 +205,7 @@ import (
 // 			HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
 // 				PortSpecification: pulumi.String("USE_SERVING_PORT"),
 // 			},
-// 		}, pulumi.Provider(google))
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -233,7 +233,7 @@ import (
 // 			Metadata: pulumi.AnyMap{
 // 				"startup-script": pulumi.Any(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "#! /bin/bash\n", "set -euo pipefail\n", "\n", "export DEBIAN_FRONTEND=noninteractive\n", "apt-get update\n", "apt-get install -y nginx-light jq\n", "\n", "NAME=", "$", "(curl -H \"Metadata-Flavor: Google\" \"http://metadata.google.internal/computeMetadata/v1/instance/hostname\")\n", "IP=", "$", "(curl -H \"Metadata-Flavor: Google\" \"http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip\")\n", "METADATA=", "$", "(curl -f -H \"Metadata-Flavor: Google\" \"http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True\" | jq 'del(.[\"startup-script\"])')\n", "\n", "cat <<EOF > /var/www/html/index.html\n", "<pre>\n", "Name: ", "$", "NAME\n", "IP: ", "$", "IP\n", "Metadata: ", "$", "METADATA\n", "</pre>\n", "EOF\n")),
 // 			},
-// 		}, pulumi.Provider(google))
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -253,7 +253,7 @@ import (
 // 			},
 // 			BaseInstanceName: pulumi.String("vm"),
 // 			TargetSize:       pulumi.Int(2),
-// 		}, pulumi.Provider(google))
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -285,13 +285,13 @@ import (
 // 		}
 // 		defaultURLMap, err := compute.NewURLMap(ctx, "defaultURLMap", &compute.URLMapArgs{
 // 			DefaultService: defaultBackendService.ID(),
-// 		}, pulumi.Provider(google))
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
 // 		defaultTargetHttpProxy, err := compute.NewTargetHttpProxy(ctx, "defaultTargetHttpProxy", &compute.TargetHttpProxyArgs{
 // 			UrlMap: defaultURLMap.ID(),
-// 		}, pulumi.Provider(google))
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -301,7 +301,7 @@ import (
 // 			PortRange:           pulumi.String("80"),
 // 			Target:              defaultTargetHttpProxy.ID(),
 // 			IpAddress:           defaultGlobalAddress.ID(),
-// 		}, pulumi.Provider(google))
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -320,7 +320,7 @@ import (
 // 			TargetTags: pulumi.StringArray{
 // 				pulumi.String("allow-health-check"),
 // 			},
-// 		}, pulumi.Provider(google))
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}

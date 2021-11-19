@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  *     zone: "us-central1-a",
  * });
  * const snapshot = new gcp.compute.Snapshot("snapshot", {
- *     sourceDisk: persistent.name,
+ *     sourceDisk: persistent.id,
  *     zone: "us-central1-a",
  *     labels: {
  *         my_label: "value",

@@ -17,6 +17,7 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly int? DiskSizeGb;
         public readonly string? DiskType;
         public readonly Outputs.NodePoolNodeConfigEphemeralStorageConfig? EphemeralStorageConfig;
+        public readonly Outputs.NodePoolNodeConfigGcfsConfig? GcfsConfig;
         public readonly ImmutableArray<Outputs.NodePoolNodeConfigGuestAccelerator> GuestAccelerators;
         public readonly string? ImageType;
         public readonly Outputs.NodePoolNodeConfigKubeletConfig? KubeletConfig;
@@ -44,6 +45,8 @@ namespace Pulumi.Gcp.Container.Outputs
             string? diskType,
 
             Outputs.NodePoolNodeConfigEphemeralStorageConfig? ephemeralStorageConfig,
+
+            Outputs.NodePoolNodeConfigGcfsConfig? gcfsConfig,
 
             ImmutableArray<Outputs.NodePoolNodeConfigGuestAccelerator> guestAccelerators,
 
@@ -83,6 +86,7 @@ namespace Pulumi.Gcp.Container.Outputs
             DiskSizeGb = diskSizeGb;
             DiskType = diskType;
             EphemeralStorageConfig = ephemeralStorageConfig;
+            GcfsConfig = gcfsConfig;
             GuestAccelerators = guestAccelerators;
             ImageType = imageType;
             KubeletConfig = kubeletConfig;

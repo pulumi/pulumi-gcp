@@ -49,6 +49,27 @@ import * as utilities from "../utilities";
  *     router: "my-router",
  * });
  * ```
+ * ### Router Peer Bfd
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const peer = new gcp.compute.RouterPeer("peer", {
+ *     advertisedRoutePriority: 100,
+ *     bfd: {
+ *         minReceiveInterval: 1000,
+ *         minTransmitInterval: 1000,
+ *         multiplier: 5,
+ *         sessionInitializationMode: "ACTIVE",
+ *     },
+ *     interface: "interface-1",
+ *     peerAsn: 65513,
+ *     peerIpAddress: "169.254.1.2",
+ *     region: "us-central1",
+ *     router: "my-router",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -129,6 +150,11 @@ export class RouterPeer extends pulumi.CustomResource {
      */
     public readonly advertisedRoutePriority!: pulumi.Output<number | undefined>;
     /**
+     * BFD configuration for the BGP peering.
+     * Structure is documented below.
+     */
+    public readonly bfd!: pulumi.Output<outputs.compute.RouterPeerBfd>;
+    /**
      * The status of the BGP peer connection. If set to false, any active session
      * with the peer is terminated and all associated routing information is removed.
      * If set to true, the peer connection can be established with routing information.
@@ -202,6 +228,7 @@ export class RouterPeer extends pulumi.CustomResource {
             inputs["advertisedGroups"] = state ? state.advertisedGroups : undefined;
             inputs["advertisedIpRanges"] = state ? state.advertisedIpRanges : undefined;
             inputs["advertisedRoutePriority"] = state ? state.advertisedRoutePriority : undefined;
+            inputs["bfd"] = state ? state.bfd : undefined;
             inputs["enable"] = state ? state.enable : undefined;
             inputs["interface"] = state ? state.interface : undefined;
             inputs["ipAddress"] = state ? state.ipAddress : undefined;
@@ -230,6 +257,7 @@ export class RouterPeer extends pulumi.CustomResource {
             inputs["advertisedGroups"] = args ? args.advertisedGroups : undefined;
             inputs["advertisedIpRanges"] = args ? args.advertisedIpRanges : undefined;
             inputs["advertisedRoutePriority"] = args ? args.advertisedRoutePriority : undefined;
+            inputs["bfd"] = args ? args.bfd : undefined;
             inputs["enable"] = args ? args.enable : undefined;
             inputs["interface"] = args ? args.interface : undefined;
             inputs["ipAddress"] = args ? args.ipAddress : undefined;
@@ -282,6 +310,11 @@ export interface RouterPeerState {
      * length, the routes with the lowest priority value win.
      */
     advertisedRoutePriority?: pulumi.Input<number>;
+    /**
+     * BFD configuration for the BGP peering.
+     * Structure is documented below.
+     */
+    bfd?: pulumi.Input<inputs.compute.RouterPeerBfd>;
     /**
      * The status of the BGP peer connection. If set to false, any active session
      * with the peer is terminated and all associated routing information is removed.
@@ -374,6 +407,11 @@ export interface RouterPeerArgs {
      * length, the routes with the lowest priority value win.
      */
     advertisedRoutePriority?: pulumi.Input<number>;
+    /**
+     * BFD configuration for the BGP peering.
+     * Structure is documented below.
+     */
+    bfd?: pulumi.Input<inputs.compute.RouterPeerBfd>;
     /**
      * The status of the BGP peer connection. If set to false, any active session
      * with the peer is terminated and all associated routing information is removed.

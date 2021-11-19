@@ -126,6 +126,7 @@ namespace Pulumi.Gcp.PubSub
         public readonly string Id;
         public readonly string KmsKeyName;
         public readonly ImmutableDictionary<string, string> Labels;
+        public readonly string MessageRetentionDuration;
         public readonly ImmutableArray<Outputs.GetTopicMessageStoragePolicyResult> MessageStoragePolicies;
         public readonly string Name;
         public readonly string? Project;
@@ -139,6 +140,8 @@ namespace Pulumi.Gcp.PubSub
 
             ImmutableDictionary<string, string> labels,
 
+            string messageRetentionDuration,
+
             ImmutableArray<Outputs.GetTopicMessageStoragePolicyResult> messageStoragePolicies,
 
             string name,
@@ -150,6 +153,7 @@ namespace Pulumi.Gcp.PubSub
             Id = id;
             KmsKeyName = kmsKeyName;
             Labels = labels;
+            MessageRetentionDuration = messageRetentionDuration;
             MessageStoragePolicies = messageStoragePolicies;
             Name = name;
             Project = project;

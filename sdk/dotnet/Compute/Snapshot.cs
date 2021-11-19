@@ -57,7 +57,7 @@ namespace Pulumi.Gcp.Compute
     ///         });
     ///         var snapshot = new Gcp.Compute.Snapshot("snapshot", new Gcp.Compute.SnapshotArgs
     ///         {
-    ///             SourceDisk = persistent.Name,
+    ///             SourceDisk = persistent.Id,
     ///             Zone = "us-central1-a",
     ///             Labels = 
     ///             {

@@ -78,6 +78,39 @@ import (
 // 	})
 // }
 // ```
+// ### Router Peer Bfd
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewRouterPeer(ctx, "peer", &compute.RouterPeerArgs{
+// 			AdvertisedRoutePriority: pulumi.Int(100),
+// 			Bfd: &compute.RouterPeerBfdArgs{
+// 				MinReceiveInterval:        pulumi.Int(1000),
+// 				MinTransmitInterval:       pulumi.Int(1000),
+// 				Multiplier:                pulumi.Int(5),
+// 				SessionInitializationMode: pulumi.String("ACTIVE"),
+// 			},
+// 			Interface:     pulumi.String("interface-1"),
+// 			PeerAsn:       pulumi.Int(65513),
+// 			PeerIpAddress: pulumi.String("169.254.1.2"),
+// 			Region:        pulumi.String("us-central1"),
+// 			Router:        pulumi.String("my-router"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //
@@ -123,6 +156,9 @@ type RouterPeer struct {
 	// Where there is more than one matching route of maximum
 	// length, the routes with the lowest priority value win.
 	AdvertisedRoutePriority pulumi.IntPtrOutput `pulumi:"advertisedRoutePriority"`
+	// BFD configuration for the BGP peering.
+	// Structure is documented below.
+	Bfd RouterPeerBfdOutput `pulumi:"bfd"`
 	// The status of the BGP peer connection. If set to false, any active session
 	// with the peer is terminated and all associated routing information is removed.
 	// If set to true, the peer connection can be established with routing information.
@@ -224,6 +260,9 @@ type routerPeerState struct {
 	// Where there is more than one matching route of maximum
 	// length, the routes with the lowest priority value win.
 	AdvertisedRoutePriority *int `pulumi:"advertisedRoutePriority"`
+	// BFD configuration for the BGP peering.
+	// Structure is documented below.
+	Bfd *RouterPeerBfd `pulumi:"bfd"`
 	// The status of the BGP peer connection. If set to false, any active session
 	// with the peer is terminated and all associated routing information is removed.
 	// If set to true, the peer connection can be established with routing information.
@@ -285,6 +324,9 @@ type RouterPeerState struct {
 	// Where there is more than one matching route of maximum
 	// length, the routes with the lowest priority value win.
 	AdvertisedRoutePriority pulumi.IntPtrInput
+	// BFD configuration for the BGP peering.
+	// Structure is documented below.
+	Bfd RouterPeerBfdPtrInput
 	// The status of the BGP peer connection. If set to false, any active session
 	// with the peer is terminated and all associated routing information is removed.
 	// If set to true, the peer connection can be established with routing information.
@@ -350,6 +392,9 @@ type routerPeerArgs struct {
 	// Where there is more than one matching route of maximum
 	// length, the routes with the lowest priority value win.
 	AdvertisedRoutePriority *int `pulumi:"advertisedRoutePriority"`
+	// BFD configuration for the BGP peering.
+	// Structure is documented below.
+	Bfd *RouterPeerBfd `pulumi:"bfd"`
 	// The status of the BGP peer connection. If set to false, any active session
 	// with the peer is terminated and all associated routing information is removed.
 	// If set to true, the peer connection can be established with routing information.
@@ -407,6 +452,9 @@ type RouterPeerArgs struct {
 	// Where there is more than one matching route of maximum
 	// length, the routes with the lowest priority value win.
 	AdvertisedRoutePriority pulumi.IntPtrInput
+	// BFD configuration for the BGP peering.
+	// Structure is documented below.
+	Bfd RouterPeerBfdPtrInput
 	// The status of the BGP peer connection. If set to false, any active session
 	// with the peer is terminated and all associated routing information is removed.
 	// If set to true, the peer connection can be established with routing information.

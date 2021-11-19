@@ -530,18 +530,15 @@ class Service(pulumi.CustomResource):
             secret_id="secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
                 automatic=True,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
             secret=secret.name,
-            secret_data="secret-data",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            secret_data="secret-data")
         secret_access = gcp.secretmanager.SecretIamMember("secret-access",
             secret_id=secret.id,
             role="roles/secretmanager.secretAccessor",
             member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[secret]))
+            opts=pulumi.ResourceOptions(depends_on=[secret]))
         default = gcp.cloudrun.Service("default",
             location="us-central1",
             template=gcp.cloudrun.ServiceTemplateArgs(
@@ -563,7 +560,6 @@ class Service(pulumi.CustomResource):
             metadata=gcp.cloudrun.ServiceMetadataArgs(
                 annotations={
                     "generated-by": "magic-modules",
-                    "run.googleapis.com/launch-stage": "BETA",
                 },
             ),
             traffics=[gcp.cloudrun.ServiceTrafficArgs(
@@ -571,8 +567,7 @@ class Service(pulumi.CustomResource):
                 latest_revision=True,
             )],
             autogenerate_revision_name=True,
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[secret_version_data]))
+            opts=pulumi.ResourceOptions(depends_on=[secret_version_data]))
         ```
         ### Cloud Run Service Secret Volumes
 
@@ -585,18 +580,15 @@ class Service(pulumi.CustomResource):
             secret_id="secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
                 automatic=True,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
             secret=secret.name,
-            secret_data="secret-data",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            secret_data="secret-data")
         secret_access = gcp.secretmanager.SecretIamMember("secret-access",
             secret_id=secret.id,
             role="roles/secretmanager.secretAccessor",
             member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[secret]))
+            opts=pulumi.ResourceOptions(depends_on=[secret]))
         default = gcp.cloudrun.Service("default",
             location="us-central1",
             template=gcp.cloudrun.ServiceTemplateArgs(
@@ -623,7 +615,6 @@ class Service(pulumi.CustomResource):
             metadata=gcp.cloudrun.ServiceMetadataArgs(
                 annotations={
                     "generated-by": "magic-modules",
-                    "run.googleapis.com/launch-stage": "BETA",
                 },
             ),
             traffics=[gcp.cloudrun.ServiceTrafficArgs(
@@ -631,8 +622,7 @@ class Service(pulumi.CustomResource):
                 latest_revision=True,
             )],
             autogenerate_revision_name=True,
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[secret_version_data]))
+            opts=pulumi.ResourceOptions(depends_on=[secret_version_data]))
         ```
 
         ## Import
@@ -863,18 +853,15 @@ class Service(pulumi.CustomResource):
             secret_id="secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
                 automatic=True,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
             secret=secret.name,
-            secret_data="secret-data",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            secret_data="secret-data")
         secret_access = gcp.secretmanager.SecretIamMember("secret-access",
             secret_id=secret.id,
             role="roles/secretmanager.secretAccessor",
             member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[secret]))
+            opts=pulumi.ResourceOptions(depends_on=[secret]))
         default = gcp.cloudrun.Service("default",
             location="us-central1",
             template=gcp.cloudrun.ServiceTemplateArgs(
@@ -896,7 +883,6 @@ class Service(pulumi.CustomResource):
             metadata=gcp.cloudrun.ServiceMetadataArgs(
                 annotations={
                     "generated-by": "magic-modules",
-                    "run.googleapis.com/launch-stage": "BETA",
                 },
             ),
             traffics=[gcp.cloudrun.ServiceTrafficArgs(
@@ -904,8 +890,7 @@ class Service(pulumi.CustomResource):
                 latest_revision=True,
             )],
             autogenerate_revision_name=True,
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[secret_version_data]))
+            opts=pulumi.ResourceOptions(depends_on=[secret_version_data]))
         ```
         ### Cloud Run Service Secret Volumes
 
@@ -918,18 +903,15 @@ class Service(pulumi.CustomResource):
             secret_id="secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
                 automatic=True,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
             secret=secret.name,
-            secret_data="secret-data",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            secret_data="secret-data")
         secret_access = gcp.secretmanager.SecretIamMember("secret-access",
             secret_id=secret.id,
             role="roles/secretmanager.secretAccessor",
             member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[secret]))
+            opts=pulumi.ResourceOptions(depends_on=[secret]))
         default = gcp.cloudrun.Service("default",
             location="us-central1",
             template=gcp.cloudrun.ServiceTemplateArgs(
@@ -956,7 +938,6 @@ class Service(pulumi.CustomResource):
             metadata=gcp.cloudrun.ServiceMetadataArgs(
                 annotations={
                     "generated-by": "magic-modules",
-                    "run.googleapis.com/launch-stage": "BETA",
                 },
             ),
             traffics=[gcp.cloudrun.ServiceTrafficArgs(
@@ -964,8 +945,7 @@ class Service(pulumi.CustomResource):
                 latest_revision=True,
             )],
             autogenerate_revision_name=True,
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[secret_version_data]))
+            opts=pulumi.ResourceOptions(depends_on=[secret_version_data]))
         ```
 
         ## Import

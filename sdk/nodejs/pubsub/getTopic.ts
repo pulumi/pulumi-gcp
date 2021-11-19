@@ -60,6 +60,7 @@ export interface GetTopicResult {
     readonly id: string;
     readonly kmsKeyName: string;
     readonly labels: {[key: string]: string};
+    readonly messageRetentionDuration: string;
     readonly messageStoragePolicies: outputs.pubsub.GetTopicMessageStoragePolicy[];
     readonly name: string;
     readonly project?: string;

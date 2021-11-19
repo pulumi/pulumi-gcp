@@ -4983,6 +4983,13 @@ type ClusterNodeConfig struct {
 	DiskType *string `pulumi:"diskType"`
 	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
 	EphemeralStorageConfig *ClusterNodeConfigEphemeralStorageConfig `pulumi:"ephemeralStorageConfig"`
+	// Parameters for the Google Container Filesystem (GCFS).
+	// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
+	// For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
+	// A `machineType` that has more than 16 GiB of memory is also recommended.
+	// GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
+	// Structure is documented below.
+	GcfsConfig *ClusterNodeConfigGcfsConfig `pulumi:"gcfsConfig"`
 	// List of the type and count of accelerator cards attached to the instance.
 	// Structure documented below.
 	GuestAccelerators []ClusterNodeConfigGuestAccelerator `pulumi:"guestAccelerators"`
@@ -5072,6 +5079,13 @@ type ClusterNodeConfigArgs struct {
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
 	EphemeralStorageConfig ClusterNodeConfigEphemeralStorageConfigPtrInput `pulumi:"ephemeralStorageConfig"`
+	// Parameters for the Google Container Filesystem (GCFS).
+	// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
+	// For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
+	// A `machineType` that has more than 16 GiB of memory is also recommended.
+	// GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
+	// Structure is documented below.
+	GcfsConfig ClusterNodeConfigGcfsConfigPtrInput `pulumi:"gcfsConfig"`
 	// List of the type and count of accelerator cards attached to the instance.
 	// Structure documented below.
 	GuestAccelerators ClusterNodeConfigGuestAcceleratorArrayInput `pulumi:"guestAccelerators"`
@@ -5236,6 +5250,16 @@ func (o ClusterNodeConfigOutput) DiskType() pulumi.StringPtrOutput {
 // Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
 func (o ClusterNodeConfigOutput) EphemeralStorageConfig() ClusterNodeConfigEphemeralStorageConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigEphemeralStorageConfig { return v.EphemeralStorageConfig }).(ClusterNodeConfigEphemeralStorageConfigPtrOutput)
+}
+
+// Parameters for the Google Container Filesystem (GCFS).
+// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
+// For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
+// A `machineType` that has more than 16 GiB of memory is also recommended.
+// GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
+// Structure is documented below.
+func (o ClusterNodeConfigOutput) GcfsConfig() ClusterNodeConfigGcfsConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigGcfsConfig { return v.GcfsConfig }).(ClusterNodeConfigGcfsConfigPtrOutput)
 }
 
 // List of the type and count of accelerator cards attached to the instance.
@@ -5418,6 +5442,21 @@ func (o ClusterNodeConfigPtrOutput) EphemeralStorageConfig() ClusterNodeConfigEp
 		}
 		return v.EphemeralStorageConfig
 	}).(ClusterNodeConfigEphemeralStorageConfigPtrOutput)
+}
+
+// Parameters for the Google Container Filesystem (GCFS).
+// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
+// For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
+// A `machineType` that has more than 16 GiB of memory is also recommended.
+// GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
+// Structure is documented below.
+func (o ClusterNodeConfigPtrOutput) GcfsConfig() ClusterNodeConfigGcfsConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigGcfsConfig {
+		if v == nil {
+			return nil
+		}
+		return v.GcfsConfig
+	}).(ClusterNodeConfigGcfsConfigPtrOutput)
 }
 
 // List of the type and count of accelerator cards attached to the instance.
@@ -5756,6 +5795,147 @@ func (o ClusterNodeConfigEphemeralStorageConfigPtrOutput) LocalSsdCount() pulumi
 		}
 		return &v.LocalSsdCount
 	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterNodeConfigGcfsConfig struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ClusterNodeConfigGcfsConfigInput is an input type that accepts ClusterNodeConfigGcfsConfigArgs and ClusterNodeConfigGcfsConfigOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigGcfsConfigInput` via:
+//
+//          ClusterNodeConfigGcfsConfigArgs{...}
+type ClusterNodeConfigGcfsConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigGcfsConfigOutput() ClusterNodeConfigGcfsConfigOutput
+	ToClusterNodeConfigGcfsConfigOutputWithContext(context.Context) ClusterNodeConfigGcfsConfigOutput
+}
+
+type ClusterNodeConfigGcfsConfigArgs struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ClusterNodeConfigGcfsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigGcfsConfig)(nil)).Elem()
+}
+
+func (i ClusterNodeConfigGcfsConfigArgs) ToClusterNodeConfigGcfsConfigOutput() ClusterNodeConfigGcfsConfigOutput {
+	return i.ToClusterNodeConfigGcfsConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigGcfsConfigArgs) ToClusterNodeConfigGcfsConfigOutputWithContext(ctx context.Context) ClusterNodeConfigGcfsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigGcfsConfigOutput)
+}
+
+func (i ClusterNodeConfigGcfsConfigArgs) ToClusterNodeConfigGcfsConfigPtrOutput() ClusterNodeConfigGcfsConfigPtrOutput {
+	return i.ToClusterNodeConfigGcfsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigGcfsConfigArgs) ToClusterNodeConfigGcfsConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigGcfsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigGcfsConfigOutput).ToClusterNodeConfigGcfsConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterNodeConfigGcfsConfigPtrInput is an input type that accepts ClusterNodeConfigGcfsConfigArgs, ClusterNodeConfigGcfsConfigPtr and ClusterNodeConfigGcfsConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigGcfsConfigPtrInput` via:
+//
+//          ClusterNodeConfigGcfsConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterNodeConfigGcfsConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigGcfsConfigPtrOutput() ClusterNodeConfigGcfsConfigPtrOutput
+	ToClusterNodeConfigGcfsConfigPtrOutputWithContext(context.Context) ClusterNodeConfigGcfsConfigPtrOutput
+}
+
+type clusterNodeConfigGcfsConfigPtrType ClusterNodeConfigGcfsConfigArgs
+
+func ClusterNodeConfigGcfsConfigPtr(v *ClusterNodeConfigGcfsConfigArgs) ClusterNodeConfigGcfsConfigPtrInput {
+	return (*clusterNodeConfigGcfsConfigPtrType)(v)
+}
+
+func (*clusterNodeConfigGcfsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeConfigGcfsConfig)(nil)).Elem()
+}
+
+func (i *clusterNodeConfigGcfsConfigPtrType) ToClusterNodeConfigGcfsConfigPtrOutput() ClusterNodeConfigGcfsConfigPtrOutput {
+	return i.ToClusterNodeConfigGcfsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodeConfigGcfsConfigPtrType) ToClusterNodeConfigGcfsConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigGcfsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigGcfsConfigPtrOutput)
+}
+
+type ClusterNodeConfigGcfsConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigGcfsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigGcfsConfig)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigGcfsConfigOutput) ToClusterNodeConfigGcfsConfigOutput() ClusterNodeConfigGcfsConfigOutput {
+	return o
+}
+
+func (o ClusterNodeConfigGcfsConfigOutput) ToClusterNodeConfigGcfsConfigOutputWithContext(ctx context.Context) ClusterNodeConfigGcfsConfigOutput {
+	return o
+}
+
+func (o ClusterNodeConfigGcfsConfigOutput) ToClusterNodeConfigGcfsConfigPtrOutput() ClusterNodeConfigGcfsConfigPtrOutput {
+	return o.ToClusterNodeConfigGcfsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodeConfigGcfsConfigOutput) ToClusterNodeConfigGcfsConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigGcfsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodeConfigGcfsConfig) *ClusterNodeConfigGcfsConfig {
+		return &v
+	}).(ClusterNodeConfigGcfsConfigPtrOutput)
+}
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+func (o ClusterNodeConfigGcfsConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterNodeConfigGcfsConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ClusterNodeConfigGcfsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigGcfsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeConfigGcfsConfig)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigGcfsConfigPtrOutput) ToClusterNodeConfigGcfsConfigPtrOutput() ClusterNodeConfigGcfsConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodeConfigGcfsConfigPtrOutput) ToClusterNodeConfigGcfsConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigGcfsConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodeConfigGcfsConfigPtrOutput) Elem() ClusterNodeConfigGcfsConfigOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigGcfsConfig) ClusterNodeConfigGcfsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodeConfigGcfsConfig
+		return ret
+	}).(ClusterNodeConfigGcfsConfigOutput)
+}
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+func (o ClusterNodeConfigGcfsConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigGcfsConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ClusterNodeConfigGuestAccelerator struct {
@@ -7493,6 +7673,13 @@ type ClusterNodePoolNodeConfig struct {
 	DiskType *string `pulumi:"diskType"`
 	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
 	EphemeralStorageConfig *ClusterNodePoolNodeConfigEphemeralStorageConfig `pulumi:"ephemeralStorageConfig"`
+	// Parameters for the Google Container Filesystem (GCFS).
+	// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
+	// For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
+	// A `machineType` that has more than 16 GiB of memory is also recommended.
+	// GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
+	// Structure is documented below.
+	GcfsConfig *ClusterNodePoolNodeConfigGcfsConfig `pulumi:"gcfsConfig"`
 	// List of the type and count of accelerator cards attached to the instance.
 	// Structure documented below.
 	GuestAccelerators []ClusterNodePoolNodeConfigGuestAccelerator `pulumi:"guestAccelerators"`
@@ -7582,6 +7769,13 @@ type ClusterNodePoolNodeConfigArgs struct {
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
 	EphemeralStorageConfig ClusterNodePoolNodeConfigEphemeralStorageConfigPtrInput `pulumi:"ephemeralStorageConfig"`
+	// Parameters for the Google Container Filesystem (GCFS).
+	// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
+	// For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
+	// A `machineType` that has more than 16 GiB of memory is also recommended.
+	// GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
+	// Structure is documented below.
+	GcfsConfig ClusterNodePoolNodeConfigGcfsConfigPtrInput `pulumi:"gcfsConfig"`
 	// List of the type and count of accelerator cards attached to the instance.
 	// Structure documented below.
 	GuestAccelerators ClusterNodePoolNodeConfigGuestAcceleratorArrayInput `pulumi:"guestAccelerators"`
@@ -7748,6 +7942,16 @@ func (o ClusterNodePoolNodeConfigOutput) EphemeralStorageConfig() ClusterNodePoo
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigEphemeralStorageConfig {
 		return v.EphemeralStorageConfig
 	}).(ClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput)
+}
+
+// Parameters for the Google Container Filesystem (GCFS).
+// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
+// For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
+// A `machineType` that has more than 16 GiB of memory is also recommended.
+// GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
+// Structure is documented below.
+func (o ClusterNodePoolNodeConfigOutput) GcfsConfig() ClusterNodePoolNodeConfigGcfsConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigGcfsConfig { return v.GcfsConfig }).(ClusterNodePoolNodeConfigGcfsConfigPtrOutput)
 }
 
 // List of the type and count of accelerator cards attached to the instance.
@@ -7936,6 +8140,21 @@ func (o ClusterNodePoolNodeConfigPtrOutput) EphemeralStorageConfig() ClusterNode
 		}
 		return v.EphemeralStorageConfig
 	}).(ClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput)
+}
+
+// Parameters for the Google Container Filesystem (GCFS).
+// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
+// For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
+// A `machineType` that has more than 16 GiB of memory is also recommended.
+// GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
+// Structure is documented below.
+func (o ClusterNodePoolNodeConfigPtrOutput) GcfsConfig() ClusterNodePoolNodeConfigGcfsConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigGcfsConfig {
+		if v == nil {
+			return nil
+		}
+		return v.GcfsConfig
+	}).(ClusterNodePoolNodeConfigGcfsConfigPtrOutput)
 }
 
 // List of the type and count of accelerator cards attached to the instance.
@@ -8274,6 +8493,147 @@ func (o ClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput) LocalSsdCount(
 		}
 		return &v.LocalSsdCount
 	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterNodePoolNodeConfigGcfsConfig struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ClusterNodePoolNodeConfigGcfsConfigInput is an input type that accepts ClusterNodePoolNodeConfigGcfsConfigArgs and ClusterNodePoolNodeConfigGcfsConfigOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigGcfsConfigInput` via:
+//
+//          ClusterNodePoolNodeConfigGcfsConfigArgs{...}
+type ClusterNodePoolNodeConfigGcfsConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigGcfsConfigOutput() ClusterNodePoolNodeConfigGcfsConfigOutput
+	ToClusterNodePoolNodeConfigGcfsConfigOutputWithContext(context.Context) ClusterNodePoolNodeConfigGcfsConfigOutput
+}
+
+type ClusterNodePoolNodeConfigGcfsConfigArgs struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ClusterNodePoolNodeConfigGcfsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigGcfsConfig)(nil)).Elem()
+}
+
+func (i ClusterNodePoolNodeConfigGcfsConfigArgs) ToClusterNodePoolNodeConfigGcfsConfigOutput() ClusterNodePoolNodeConfigGcfsConfigOutput {
+	return i.ToClusterNodePoolNodeConfigGcfsConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigGcfsConfigArgs) ToClusterNodePoolNodeConfigGcfsConfigOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigGcfsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigGcfsConfigOutput)
+}
+
+func (i ClusterNodePoolNodeConfigGcfsConfigArgs) ToClusterNodePoolNodeConfigGcfsConfigPtrOutput() ClusterNodePoolNodeConfigGcfsConfigPtrOutput {
+	return i.ToClusterNodePoolNodeConfigGcfsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigGcfsConfigArgs) ToClusterNodePoolNodeConfigGcfsConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigGcfsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigGcfsConfigOutput).ToClusterNodePoolNodeConfigGcfsConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterNodePoolNodeConfigGcfsConfigPtrInput is an input type that accepts ClusterNodePoolNodeConfigGcfsConfigArgs, ClusterNodePoolNodeConfigGcfsConfigPtr and ClusterNodePoolNodeConfigGcfsConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigGcfsConfigPtrInput` via:
+//
+//          ClusterNodePoolNodeConfigGcfsConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterNodePoolNodeConfigGcfsConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigGcfsConfigPtrOutput() ClusterNodePoolNodeConfigGcfsConfigPtrOutput
+	ToClusterNodePoolNodeConfigGcfsConfigPtrOutputWithContext(context.Context) ClusterNodePoolNodeConfigGcfsConfigPtrOutput
+}
+
+type clusterNodePoolNodeConfigGcfsConfigPtrType ClusterNodePoolNodeConfigGcfsConfigArgs
+
+func ClusterNodePoolNodeConfigGcfsConfigPtr(v *ClusterNodePoolNodeConfigGcfsConfigArgs) ClusterNodePoolNodeConfigGcfsConfigPtrInput {
+	return (*clusterNodePoolNodeConfigGcfsConfigPtrType)(v)
+}
+
+func (*clusterNodePoolNodeConfigGcfsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNodeConfigGcfsConfig)(nil)).Elem()
+}
+
+func (i *clusterNodePoolNodeConfigGcfsConfigPtrType) ToClusterNodePoolNodeConfigGcfsConfigPtrOutput() ClusterNodePoolNodeConfigGcfsConfigPtrOutput {
+	return i.ToClusterNodePoolNodeConfigGcfsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodePoolNodeConfigGcfsConfigPtrType) ToClusterNodePoolNodeConfigGcfsConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigGcfsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigGcfsConfigPtrOutput)
+}
+
+type ClusterNodePoolNodeConfigGcfsConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigGcfsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigGcfsConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigGcfsConfigOutput) ToClusterNodePoolNodeConfigGcfsConfigOutput() ClusterNodePoolNodeConfigGcfsConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigGcfsConfigOutput) ToClusterNodePoolNodeConfigGcfsConfigOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigGcfsConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigGcfsConfigOutput) ToClusterNodePoolNodeConfigGcfsConfigPtrOutput() ClusterNodePoolNodeConfigGcfsConfigPtrOutput {
+	return o.ToClusterNodePoolNodeConfigGcfsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodePoolNodeConfigGcfsConfigOutput) ToClusterNodePoolNodeConfigGcfsConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigGcfsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodePoolNodeConfigGcfsConfig) *ClusterNodePoolNodeConfigGcfsConfig {
+		return &v
+	}).(ClusterNodePoolNodeConfigGcfsConfigPtrOutput)
+}
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+func (o ClusterNodePoolNodeConfigGcfsConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigGcfsConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ClusterNodePoolNodeConfigGcfsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigGcfsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNodeConfigGcfsConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigGcfsConfigPtrOutput) ToClusterNodePoolNodeConfigGcfsConfigPtrOutput() ClusterNodePoolNodeConfigGcfsConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigGcfsConfigPtrOutput) ToClusterNodePoolNodeConfigGcfsConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigGcfsConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigGcfsConfigPtrOutput) Elem() ClusterNodePoolNodeConfigGcfsConfigOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigGcfsConfig) ClusterNodePoolNodeConfigGcfsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodePoolNodeConfigGcfsConfig
+		return ret
+	}).(ClusterNodePoolNodeConfigGcfsConfigOutput)
+}
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+func (o ClusterNodePoolNodeConfigGcfsConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigGcfsConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ClusterNodePoolNodeConfigGuestAccelerator struct {
@@ -11585,6 +11945,7 @@ type NodePoolNodeConfig struct {
 	DiskSizeGb             *int                                      `pulumi:"diskSizeGb"`
 	DiskType               *string                                   `pulumi:"diskType"`
 	EphemeralStorageConfig *NodePoolNodeConfigEphemeralStorageConfig `pulumi:"ephemeralStorageConfig"`
+	GcfsConfig             *NodePoolNodeConfigGcfsConfig             `pulumi:"gcfsConfig"`
 	GuestAccelerators      []NodePoolNodeConfigGuestAccelerator      `pulumi:"guestAccelerators"`
 	ImageType              *string                                   `pulumi:"imageType"`
 	KubeletConfig          *NodePoolNodeConfigKubeletConfig          `pulumi:"kubeletConfig"`
@@ -11620,6 +11981,7 @@ type NodePoolNodeConfigArgs struct {
 	DiskSizeGb             pulumi.IntPtrInput                               `pulumi:"diskSizeGb"`
 	DiskType               pulumi.StringPtrInput                            `pulumi:"diskType"`
 	EphemeralStorageConfig NodePoolNodeConfigEphemeralStorageConfigPtrInput `pulumi:"ephemeralStorageConfig"`
+	GcfsConfig             NodePoolNodeConfigGcfsConfigPtrInput             `pulumi:"gcfsConfig"`
 	GuestAccelerators      NodePoolNodeConfigGuestAcceleratorArrayInput     `pulumi:"guestAccelerators"`
 	ImageType              pulumi.StringPtrInput                            `pulumi:"imageType"`
 	KubeletConfig          NodePoolNodeConfigKubeletConfigPtrInput          `pulumi:"kubeletConfig"`
@@ -11730,6 +12092,10 @@ func (o NodePoolNodeConfigOutput) DiskType() pulumi.StringPtrOutput {
 
 func (o NodePoolNodeConfigOutput) EphemeralStorageConfig() NodePoolNodeConfigEphemeralStorageConfigPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigEphemeralStorageConfig { return v.EphemeralStorageConfig }).(NodePoolNodeConfigEphemeralStorageConfigPtrOutput)
+}
+
+func (o NodePoolNodeConfigOutput) GcfsConfig() NodePoolNodeConfigGcfsConfigPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigGcfsConfig { return v.GcfsConfig }).(NodePoolNodeConfigGcfsConfigPtrOutput)
 }
 
 func (o NodePoolNodeConfigOutput) GuestAccelerators() NodePoolNodeConfigGuestAcceleratorArrayOutput {
@@ -11858,6 +12224,15 @@ func (o NodePoolNodeConfigPtrOutput) EphemeralStorageConfig() NodePoolNodeConfig
 		}
 		return v.EphemeralStorageConfig
 	}).(NodePoolNodeConfigEphemeralStorageConfigPtrOutput)
+}
+
+func (o NodePoolNodeConfigPtrOutput) GcfsConfig() NodePoolNodeConfigGcfsConfigPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfig) *NodePoolNodeConfigGcfsConfig {
+		if v == nil {
+			return nil
+		}
+		return v.GcfsConfig
+	}).(NodePoolNodeConfigGcfsConfigPtrOutput)
 }
 
 func (o NodePoolNodeConfigPtrOutput) GuestAccelerators() NodePoolNodeConfigGuestAcceleratorArrayOutput {
@@ -12144,6 +12519,139 @@ func (o NodePoolNodeConfigEphemeralStorageConfigPtrOutput) LocalSsdCount() pulum
 		}
 		return &v.LocalSsdCount
 	}).(pulumi.IntPtrOutput)
+}
+
+type NodePoolNodeConfigGcfsConfig struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// NodePoolNodeConfigGcfsConfigInput is an input type that accepts NodePoolNodeConfigGcfsConfigArgs and NodePoolNodeConfigGcfsConfigOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigGcfsConfigInput` via:
+//
+//          NodePoolNodeConfigGcfsConfigArgs{...}
+type NodePoolNodeConfigGcfsConfigInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigGcfsConfigOutput() NodePoolNodeConfigGcfsConfigOutput
+	ToNodePoolNodeConfigGcfsConfigOutputWithContext(context.Context) NodePoolNodeConfigGcfsConfigOutput
+}
+
+type NodePoolNodeConfigGcfsConfigArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (NodePoolNodeConfigGcfsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigGcfsConfig)(nil)).Elem()
+}
+
+func (i NodePoolNodeConfigGcfsConfigArgs) ToNodePoolNodeConfigGcfsConfigOutput() NodePoolNodeConfigGcfsConfigOutput {
+	return i.ToNodePoolNodeConfigGcfsConfigOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigGcfsConfigArgs) ToNodePoolNodeConfigGcfsConfigOutputWithContext(ctx context.Context) NodePoolNodeConfigGcfsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigGcfsConfigOutput)
+}
+
+func (i NodePoolNodeConfigGcfsConfigArgs) ToNodePoolNodeConfigGcfsConfigPtrOutput() NodePoolNodeConfigGcfsConfigPtrOutput {
+	return i.ToNodePoolNodeConfigGcfsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigGcfsConfigArgs) ToNodePoolNodeConfigGcfsConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigGcfsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigGcfsConfigOutput).ToNodePoolNodeConfigGcfsConfigPtrOutputWithContext(ctx)
+}
+
+// NodePoolNodeConfigGcfsConfigPtrInput is an input type that accepts NodePoolNodeConfigGcfsConfigArgs, NodePoolNodeConfigGcfsConfigPtr and NodePoolNodeConfigGcfsConfigPtrOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigGcfsConfigPtrInput` via:
+//
+//          NodePoolNodeConfigGcfsConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type NodePoolNodeConfigGcfsConfigPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigGcfsConfigPtrOutput() NodePoolNodeConfigGcfsConfigPtrOutput
+	ToNodePoolNodeConfigGcfsConfigPtrOutputWithContext(context.Context) NodePoolNodeConfigGcfsConfigPtrOutput
+}
+
+type nodePoolNodeConfigGcfsConfigPtrType NodePoolNodeConfigGcfsConfigArgs
+
+func NodePoolNodeConfigGcfsConfigPtr(v *NodePoolNodeConfigGcfsConfigArgs) NodePoolNodeConfigGcfsConfigPtrInput {
+	return (*nodePoolNodeConfigGcfsConfigPtrType)(v)
+}
+
+func (*nodePoolNodeConfigGcfsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNodeConfigGcfsConfig)(nil)).Elem()
+}
+
+func (i *nodePoolNodeConfigGcfsConfigPtrType) ToNodePoolNodeConfigGcfsConfigPtrOutput() NodePoolNodeConfigGcfsConfigPtrOutput {
+	return i.ToNodePoolNodeConfigGcfsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolNodeConfigGcfsConfigPtrType) ToNodePoolNodeConfigGcfsConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigGcfsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigGcfsConfigPtrOutput)
+}
+
+type NodePoolNodeConfigGcfsConfigOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigGcfsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigGcfsConfig)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigGcfsConfigOutput) ToNodePoolNodeConfigGcfsConfigOutput() NodePoolNodeConfigGcfsConfigOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigGcfsConfigOutput) ToNodePoolNodeConfigGcfsConfigOutputWithContext(ctx context.Context) NodePoolNodeConfigGcfsConfigOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigGcfsConfigOutput) ToNodePoolNodeConfigGcfsConfigPtrOutput() NodePoolNodeConfigGcfsConfigPtrOutput {
+	return o.ToNodePoolNodeConfigGcfsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolNodeConfigGcfsConfigOutput) ToNodePoolNodeConfigGcfsConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigGcfsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolNodeConfigGcfsConfig) *NodePoolNodeConfigGcfsConfig {
+		return &v
+	}).(NodePoolNodeConfigGcfsConfigPtrOutput)
+}
+
+func (o NodePoolNodeConfigGcfsConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigGcfsConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type NodePoolNodeConfigGcfsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigGcfsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNodeConfigGcfsConfig)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigGcfsConfigPtrOutput) ToNodePoolNodeConfigGcfsConfigPtrOutput() NodePoolNodeConfigGcfsConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigGcfsConfigPtrOutput) ToNodePoolNodeConfigGcfsConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigGcfsConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigGcfsConfigPtrOutput) Elem() NodePoolNodeConfigGcfsConfigOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigGcfsConfig) NodePoolNodeConfigGcfsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolNodeConfigGcfsConfig
+		return ret
+	}).(NodePoolNodeConfigGcfsConfigOutput)
+}
+
+func (o NodePoolNodeConfigGcfsConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigGcfsConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type NodePoolNodeConfigGuestAccelerator struct {
@@ -16391,6 +16899,7 @@ type GetClusterNodeConfig struct {
 	DiskSizeGb              int                                          `pulumi:"diskSizeGb"`
 	DiskType                string                                       `pulumi:"diskType"`
 	EphemeralStorageConfigs []GetClusterNodeConfigEphemeralStorageConfig `pulumi:"ephemeralStorageConfigs"`
+	GcfsConfigs             []GetClusterNodeConfigGcfsConfig             `pulumi:"gcfsConfigs"`
 	GuestAccelerators       []GetClusterNodeConfigGuestAccelerator       `pulumi:"guestAccelerators"`
 	ImageType               string                                       `pulumi:"imageType"`
 	KubeletConfigs          []GetClusterNodeConfigKubeletConfig          `pulumi:"kubeletConfigs"`
@@ -16426,6 +16935,7 @@ type GetClusterNodeConfigArgs struct {
 	DiskSizeGb              pulumi.IntInput                                      `pulumi:"diskSizeGb"`
 	DiskType                pulumi.StringInput                                   `pulumi:"diskType"`
 	EphemeralStorageConfigs GetClusterNodeConfigEphemeralStorageConfigArrayInput `pulumi:"ephemeralStorageConfigs"`
+	GcfsConfigs             GetClusterNodeConfigGcfsConfigArrayInput             `pulumi:"gcfsConfigs"`
 	GuestAccelerators       GetClusterNodeConfigGuestAcceleratorArrayInput       `pulumi:"guestAccelerators"`
 	ImageType               pulumi.StringInput                                   `pulumi:"imageType"`
 	KubeletConfigs          GetClusterNodeConfigKubeletConfigArrayInput          `pulumi:"kubeletConfigs"`
@@ -16512,6 +17022,10 @@ func (o GetClusterNodeConfigOutput) EphemeralStorageConfigs() GetClusterNodeConf
 	return o.ApplyT(func(v GetClusterNodeConfig) []GetClusterNodeConfigEphemeralStorageConfig {
 		return v.EphemeralStorageConfigs
 	}).(GetClusterNodeConfigEphemeralStorageConfigArrayOutput)
+}
+
+func (o GetClusterNodeConfigOutput) GcfsConfigs() GetClusterNodeConfigGcfsConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfig) []GetClusterNodeConfigGcfsConfig { return v.GcfsConfigs }).(GetClusterNodeConfigGcfsConfigArrayOutput)
 }
 
 func (o GetClusterNodeConfigOutput) GuestAccelerators() GetClusterNodeConfigGuestAcceleratorArrayOutput {
@@ -16698,6 +17212,100 @@ func (o GetClusterNodeConfigEphemeralStorageConfigArrayOutput) Index(i pulumi.In
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigEphemeralStorageConfig {
 		return vs[0].([]GetClusterNodeConfigEphemeralStorageConfig)[vs[1].(int)]
 	}).(GetClusterNodeConfigEphemeralStorageConfigOutput)
+}
+
+type GetClusterNodeConfigGcfsConfig struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterNodeConfigGcfsConfigInput is an input type that accepts GetClusterNodeConfigGcfsConfigArgs and GetClusterNodeConfigGcfsConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigGcfsConfigInput` via:
+//
+//          GetClusterNodeConfigGcfsConfigArgs{...}
+type GetClusterNodeConfigGcfsConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigGcfsConfigOutput() GetClusterNodeConfigGcfsConfigOutput
+	ToGetClusterNodeConfigGcfsConfigOutputWithContext(context.Context) GetClusterNodeConfigGcfsConfigOutput
+}
+
+type GetClusterNodeConfigGcfsConfigArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterNodeConfigGcfsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigGcfsConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigGcfsConfigArgs) ToGetClusterNodeConfigGcfsConfigOutput() GetClusterNodeConfigGcfsConfigOutput {
+	return i.ToGetClusterNodeConfigGcfsConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigGcfsConfigArgs) ToGetClusterNodeConfigGcfsConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigGcfsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigGcfsConfigOutput)
+}
+
+// GetClusterNodeConfigGcfsConfigArrayInput is an input type that accepts GetClusterNodeConfigGcfsConfigArray and GetClusterNodeConfigGcfsConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigGcfsConfigArrayInput` via:
+//
+//          GetClusterNodeConfigGcfsConfigArray{ GetClusterNodeConfigGcfsConfigArgs{...} }
+type GetClusterNodeConfigGcfsConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigGcfsConfigArrayOutput() GetClusterNodeConfigGcfsConfigArrayOutput
+	ToGetClusterNodeConfigGcfsConfigArrayOutputWithContext(context.Context) GetClusterNodeConfigGcfsConfigArrayOutput
+}
+
+type GetClusterNodeConfigGcfsConfigArray []GetClusterNodeConfigGcfsConfigInput
+
+func (GetClusterNodeConfigGcfsConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigGcfsConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigGcfsConfigArray) ToGetClusterNodeConfigGcfsConfigArrayOutput() GetClusterNodeConfigGcfsConfigArrayOutput {
+	return i.ToGetClusterNodeConfigGcfsConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigGcfsConfigArray) ToGetClusterNodeConfigGcfsConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigGcfsConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigGcfsConfigArrayOutput)
+}
+
+type GetClusterNodeConfigGcfsConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigGcfsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigGcfsConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigGcfsConfigOutput) ToGetClusterNodeConfigGcfsConfigOutput() GetClusterNodeConfigGcfsConfigOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigGcfsConfigOutput) ToGetClusterNodeConfigGcfsConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigGcfsConfigOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigGcfsConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigGcfsConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterNodeConfigGcfsConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigGcfsConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigGcfsConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigGcfsConfigArrayOutput) ToGetClusterNodeConfigGcfsConfigArrayOutput() GetClusterNodeConfigGcfsConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigGcfsConfigArrayOutput) ToGetClusterNodeConfigGcfsConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigGcfsConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigGcfsConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigGcfsConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigGcfsConfig {
+		return vs[0].([]GetClusterNodeConfigGcfsConfig)[vs[1].(int)]
+	}).(GetClusterNodeConfigGcfsConfigOutput)
 }
 
 type GetClusterNodeConfigGuestAccelerator struct {
@@ -17886,6 +18494,7 @@ type GetClusterNodePoolNodeConfig struct {
 	DiskSizeGb              int                                                  `pulumi:"diskSizeGb"`
 	DiskType                string                                               `pulumi:"diskType"`
 	EphemeralStorageConfigs []GetClusterNodePoolNodeConfigEphemeralStorageConfig `pulumi:"ephemeralStorageConfigs"`
+	GcfsConfigs             []GetClusterNodePoolNodeConfigGcfsConfig             `pulumi:"gcfsConfigs"`
 	GuestAccelerators       []GetClusterNodePoolNodeConfigGuestAccelerator       `pulumi:"guestAccelerators"`
 	ImageType               string                                               `pulumi:"imageType"`
 	KubeletConfigs          []GetClusterNodePoolNodeConfigKubeletConfig          `pulumi:"kubeletConfigs"`
@@ -17921,6 +18530,7 @@ type GetClusterNodePoolNodeConfigArgs struct {
 	DiskSizeGb              pulumi.IntInput                                              `pulumi:"diskSizeGb"`
 	DiskType                pulumi.StringInput                                           `pulumi:"diskType"`
 	EphemeralStorageConfigs GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayInput `pulumi:"ephemeralStorageConfigs"`
+	GcfsConfigs             GetClusterNodePoolNodeConfigGcfsConfigArrayInput             `pulumi:"gcfsConfigs"`
 	GuestAccelerators       GetClusterNodePoolNodeConfigGuestAcceleratorArrayInput       `pulumi:"guestAccelerators"`
 	ImageType               pulumi.StringInput                                           `pulumi:"imageType"`
 	KubeletConfigs          GetClusterNodePoolNodeConfigKubeletConfigArrayInput          `pulumi:"kubeletConfigs"`
@@ -18007,6 +18617,10 @@ func (o GetClusterNodePoolNodeConfigOutput) EphemeralStorageConfigs() GetCluster
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigEphemeralStorageConfig {
 		return v.EphemeralStorageConfigs
 	}).(GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayOutput)
+}
+
+func (o GetClusterNodePoolNodeConfigOutput) GcfsConfigs() GetClusterNodePoolNodeConfigGcfsConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigGcfsConfig { return v.GcfsConfigs }).(GetClusterNodePoolNodeConfigGcfsConfigArrayOutput)
 }
 
 func (o GetClusterNodePoolNodeConfigOutput) GuestAccelerators() GetClusterNodePoolNodeConfigGuestAcceleratorArrayOutput {
@@ -18201,6 +18815,100 @@ func (o GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayOutput) Index(i p
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigEphemeralStorageConfig {
 		return vs[0].([]GetClusterNodePoolNodeConfigEphemeralStorageConfig)[vs[1].(int)]
 	}).(GetClusterNodePoolNodeConfigEphemeralStorageConfigOutput)
+}
+
+type GetClusterNodePoolNodeConfigGcfsConfig struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterNodePoolNodeConfigGcfsConfigInput is an input type that accepts GetClusterNodePoolNodeConfigGcfsConfigArgs and GetClusterNodePoolNodeConfigGcfsConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigGcfsConfigInput` via:
+//
+//          GetClusterNodePoolNodeConfigGcfsConfigArgs{...}
+type GetClusterNodePoolNodeConfigGcfsConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigGcfsConfigOutput() GetClusterNodePoolNodeConfigGcfsConfigOutput
+	ToGetClusterNodePoolNodeConfigGcfsConfigOutputWithContext(context.Context) GetClusterNodePoolNodeConfigGcfsConfigOutput
+}
+
+type GetClusterNodePoolNodeConfigGcfsConfigArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterNodePoolNodeConfigGcfsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigGcfsConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigGcfsConfigArgs) ToGetClusterNodePoolNodeConfigGcfsConfigOutput() GetClusterNodePoolNodeConfigGcfsConfigOutput {
+	return i.ToGetClusterNodePoolNodeConfigGcfsConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigGcfsConfigArgs) ToGetClusterNodePoolNodeConfigGcfsConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigGcfsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigGcfsConfigOutput)
+}
+
+// GetClusterNodePoolNodeConfigGcfsConfigArrayInput is an input type that accepts GetClusterNodePoolNodeConfigGcfsConfigArray and GetClusterNodePoolNodeConfigGcfsConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigGcfsConfigArrayInput` via:
+//
+//          GetClusterNodePoolNodeConfigGcfsConfigArray{ GetClusterNodePoolNodeConfigGcfsConfigArgs{...} }
+type GetClusterNodePoolNodeConfigGcfsConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigGcfsConfigArrayOutput() GetClusterNodePoolNodeConfigGcfsConfigArrayOutput
+	ToGetClusterNodePoolNodeConfigGcfsConfigArrayOutputWithContext(context.Context) GetClusterNodePoolNodeConfigGcfsConfigArrayOutput
+}
+
+type GetClusterNodePoolNodeConfigGcfsConfigArray []GetClusterNodePoolNodeConfigGcfsConfigInput
+
+func (GetClusterNodePoolNodeConfigGcfsConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigGcfsConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigGcfsConfigArray) ToGetClusterNodePoolNodeConfigGcfsConfigArrayOutput() GetClusterNodePoolNodeConfigGcfsConfigArrayOutput {
+	return i.ToGetClusterNodePoolNodeConfigGcfsConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigGcfsConfigArray) ToGetClusterNodePoolNodeConfigGcfsConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigGcfsConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigGcfsConfigArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigGcfsConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigGcfsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigGcfsConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigGcfsConfigOutput) ToGetClusterNodePoolNodeConfigGcfsConfigOutput() GetClusterNodePoolNodeConfigGcfsConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigGcfsConfigOutput) ToGetClusterNodePoolNodeConfigGcfsConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigGcfsConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigGcfsConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigGcfsConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterNodePoolNodeConfigGcfsConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigGcfsConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigGcfsConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigGcfsConfigArrayOutput) ToGetClusterNodePoolNodeConfigGcfsConfigArrayOutput() GetClusterNodePoolNodeConfigGcfsConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigGcfsConfigArrayOutput) ToGetClusterNodePoolNodeConfigGcfsConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigGcfsConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigGcfsConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigGcfsConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigGcfsConfig {
+		return vs[0].([]GetClusterNodePoolNodeConfigGcfsConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolNodeConfigGcfsConfigOutput)
 }
 
 type GetClusterNodePoolNodeConfigGuestAccelerator struct {
@@ -20068,6 +20776,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigPtrInput)(nil)).Elem(), ClusterNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigEphemeralStorageConfigInput)(nil)).Elem(), ClusterNodeConfigEphemeralStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigEphemeralStorageConfigPtrInput)(nil)).Elem(), ClusterNodeConfigEphemeralStorageConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigGcfsConfigInput)(nil)).Elem(), ClusterNodeConfigGcfsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigGcfsConfigPtrInput)(nil)).Elem(), ClusterNodeConfigGcfsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigGuestAcceleratorInput)(nil)).Elem(), ClusterNodeConfigGuestAcceleratorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigGuestAcceleratorArrayInput)(nil)).Elem(), ClusterNodeConfigGuestAcceleratorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigKubeletConfigInput)(nil)).Elem(), ClusterNodeConfigKubeletConfigArgs{})
@@ -20094,6 +20804,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigEphemeralStorageConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigEphemeralStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigEphemeralStorageConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigEphemeralStorageConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigGcfsConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigGcfsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigGcfsConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigGcfsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigGuestAcceleratorInput)(nil)).Elem(), ClusterNodePoolNodeConfigGuestAcceleratorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigGuestAcceleratorArrayInput)(nil)).Elem(), ClusterNodePoolNodeConfigGuestAcceleratorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigKubeletConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigKubeletConfigArgs{})
@@ -20140,6 +20852,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigEphemeralStorageConfigInput)(nil)).Elem(), NodePoolNodeConfigEphemeralStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigEphemeralStorageConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigEphemeralStorageConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigGcfsConfigInput)(nil)).Elem(), NodePoolNodeConfigGcfsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigGcfsConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigGcfsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigGuestAcceleratorInput)(nil)).Elem(), NodePoolNodeConfigGuestAcceleratorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigGuestAcceleratorArrayInput)(nil)).Elem(), NodePoolNodeConfigGuestAcceleratorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigKubeletConfigInput)(nil)).Elem(), NodePoolNodeConfigKubeletConfigArgs{})
@@ -20222,6 +20936,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigEphemeralStorageConfigInput)(nil)).Elem(), GetClusterNodeConfigEphemeralStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigEphemeralStorageConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigEphemeralStorageConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGcfsConfigInput)(nil)).Elem(), GetClusterNodeConfigGcfsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGcfsConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigGcfsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorInput)(nil)).Elem(), GetClusterNodeConfigGuestAcceleratorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorArrayInput)(nil)).Elem(), GetClusterNodeConfigGuestAcceleratorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigKubeletConfigInput)(nil)).Elem(), GetClusterNodeConfigKubeletConfigArgs{})
@@ -20248,6 +20964,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigEphemeralStorageConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigEphemeralStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigEphemeralStorageConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigGcfsConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigGcfsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigGcfsConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigGcfsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigGuestAcceleratorInput)(nil)).Elem(), GetClusterNodePoolNodeConfigGuestAcceleratorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigGuestAcceleratorArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigGuestAcceleratorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigKubeletConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigKubeletConfigArgs{})
@@ -20350,6 +21068,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigEphemeralStorageConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigEphemeralStorageConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigGcfsConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigGcfsConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigGuestAcceleratorOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigGuestAcceleratorArrayOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigKubeletConfigOutput{})
@@ -20376,6 +21096,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigEphemeralStorageConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigGcfsConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigGcfsConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigGuestAcceleratorOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigGuestAcceleratorArrayOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigKubeletConfigOutput{})
@@ -20422,6 +21144,8 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolNodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigEphemeralStorageConfigOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigEphemeralStorageConfigPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigGcfsConfigOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigGcfsConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigGuestAcceleratorOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigGuestAcceleratorArrayOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigKubeletConfigOutput{})
@@ -20504,6 +21228,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigEphemeralStorageConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigEphemeralStorageConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigGcfsConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigGcfsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigGuestAcceleratorOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigGuestAcceleratorArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigKubeletConfigOutput{})
@@ -20530,6 +21256,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigEphemeralStorageConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigGcfsConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigGcfsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigGuestAcceleratorOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigGuestAcceleratorArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigKubeletConfigOutput{})

@@ -194,21 +194,16 @@ import * as utilities from "../utilities";
  *     replication: {
  *         automatic: true,
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * const secret_version_data = new gcp.secretmanager.SecretVersion("secret-version-data", {
  *     secret: secret.name,
  *     secretData: "secret-data",
- * }, {
- *     provider: google_beta,
  * });
  * const secret_access = new gcp.secretmanager.SecretIamMember("secret-access", {
  *     secretId: secret.id,
  *     role: "roles/secretmanager.secretAccessor",
  *     member: project.then(project => `serviceAccount:${project.number}-compute@developer.gserviceaccount.com`),
  * }, {
- *     provider: google_beta,
  *     dependsOn: [secret],
  * });
  * const _default = new gcp.cloudrun.Service("default", {
@@ -232,7 +227,6 @@ import * as utilities from "../utilities";
  *     metadata: {
  *         annotations: {
  *             "generated-by": "magic-modules",
- *             "run.googleapis.com/launch-stage": "BETA",
  *         },
  *     },
  *     traffics: [{
@@ -241,7 +235,6 @@ import * as utilities from "../utilities";
  *     }],
  *     autogenerateRevisionName: true,
  * }, {
- *     provider: google_beta,
  *     dependsOn: [secret_version_data],
  * });
  * ```
@@ -257,21 +250,16 @@ import * as utilities from "../utilities";
  *     replication: {
  *         automatic: true,
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * const secret_version_data = new gcp.secretmanager.SecretVersion("secret-version-data", {
  *     secret: secret.name,
  *     secretData: "secret-data",
- * }, {
- *     provider: google_beta,
  * });
  * const secret_access = new gcp.secretmanager.SecretIamMember("secret-access", {
  *     secretId: secret.id,
  *     role: "roles/secretmanager.secretAccessor",
  *     member: project.then(project => `serviceAccount:${project.number}-compute@developer.gserviceaccount.com`),
  * }, {
- *     provider: google_beta,
  *     dependsOn: [secret],
  * });
  * const _default = new gcp.cloudrun.Service("default", {
@@ -300,7 +288,6 @@ import * as utilities from "../utilities";
  *     metadata: {
  *         annotations: {
  *             "generated-by": "magic-modules",
- *             "run.googleapis.com/launch-stage": "BETA",
  *         },
  *     },
  *     traffics: [{
@@ -309,7 +296,6 @@ import * as utilities from "../utilities";
  *     }],
  *     autogenerateRevisionName: true,
  * }, {
- *     provider: google_beta,
  *     dependsOn: [secret_version_data],
  * });
  * ```

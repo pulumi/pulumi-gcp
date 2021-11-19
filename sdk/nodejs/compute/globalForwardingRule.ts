@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * // External TCP proxy load balancer with managed instance group backend
  * // VPC
  * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {autoCreateSubnetworks: false}, {
- *     provider: google,
+ *     provider: google_beta,
  * });
  * // backend subnet
  * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
@@ -32,16 +32,20 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  *     network: defaultNetwork.id,
  * }, {
- *     provider: google,
+ *     provider: google_beta,
  * });
  * // reserved IP address
- * const defaultGlobalAddress = new gcp.compute.GlobalAddress("defaultGlobalAddress", {});
+ * const defaultGlobalAddress = new gcp.compute.GlobalAddress("defaultGlobalAddress", {}, {
+ *     provider: google_beta,
+ * });
  * const defaultHealthCheck = new gcp.compute.HealthCheck("defaultHealthCheck", {
  *     timeoutSec: 1,
  *     checkIntervalSec: 1,
  *     tcpHealthCheck: {
  *         port: "80",
  *     },
+ * }, {
+ *     provider: google_beta,
  * });
  * // instance template
  * const defaultInstanceTemplate = new gcp.compute.InstanceTemplate("defaultInstanceTemplate", {
@@ -76,7 +80,7 @@ import * as utilities from "../utilities";
  * `,
  *     },
  * }, {
- *     provider: google,
+ *     provider: google_beta,
  * });
  * // MIG
  * const defaultInstanceGroupManager = new gcp.compute.InstanceGroupManager("defaultInstanceGroupManager", {
@@ -92,7 +96,7 @@ import * as utilities from "../utilities";
  *     baseInstanceName: "vm",
  *     targetSize: 2,
  * }, {
- *     provider: google,
+ *     provider: google_beta,
  * });
  * // backend service
  * const defaultBackendService = new gcp.compute.BackendService("defaultBackendService", {
@@ -107,8 +111,12 @@ import * as utilities from "../utilities";
  *         maxUtilization: 1,
  *         capacityScaler: 1,
  *     }],
+ * }, {
+ *     provider: google_beta,
  * });
- * const defaultTargetTCPProxy = new gcp.compute.TargetTCPProxy("defaultTargetTCPProxy", {backendService: defaultBackendService.id});
+ * const defaultTargetTCPProxy = new gcp.compute.TargetTCPProxy("defaultTargetTCPProxy", {backendService: defaultBackendService.id}, {
+ *     provider: google_beta,
+ * });
  * // forwarding rule
  * const defaultGlobalForwardingRule = new gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule", {
  *     ipProtocol: "TCP",
@@ -117,7 +125,7 @@ import * as utilities from "../utilities";
  *     target: defaultTargetTCPProxy.id,
  *     ipAddress: defaultGlobalAddress.id,
  * }, {
- *     provider: google,
+ *     provider: google_beta,
  * });
  * // allow access from health check ranges
  * const defaultFirewall = new gcp.compute.Firewall("defaultFirewall", {
@@ -132,7 +140,7 @@ import * as utilities from "../utilities";
  *     }],
  *     targetTags: ["allow-health-check"],
  * }, {
- *     provider: google,
+ *     provider: google_beta,
  * });
  * ```
  * ### External Http Lb Mig Backend Custom Header
@@ -145,7 +153,7 @@ import * as utilities from "../utilities";
  * // and custom request and response headers
  * // VPC
  * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {autoCreateSubnetworks: false}, {
- *     provider: google,
+ *     provider: google_beta,
  * });
  * // backend subnet
  * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
@@ -153,15 +161,17 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  *     network: defaultNetwork.id,
  * }, {
- *     provider: google,
+ *     provider: google_beta,
  * });
  * // reserved IP address
- * const defaultGlobalAddress = new gcp.compute.GlobalAddress("defaultGlobalAddress", {});
+ * const defaultGlobalAddress = new gcp.compute.GlobalAddress("defaultGlobalAddress", {}, {
+ *     provider: google_beta,
+ * });
  * // health check
  * const defaultHealthCheck = new gcp.compute.HealthCheck("defaultHealthCheck", {httpHealthCheck: {
  *     portSpecification: "USE_SERVING_PORT",
  * }}, {
- *     provider: google,
+ *     provider: google_beta,
  * });
  * // instance template
  * const defaultInstanceTemplate = new gcp.compute.InstanceTemplate("defaultInstanceTemplate", {
@@ -199,7 +209,7 @@ import * as utilities from "../utilities";
  * `,
  *     },
  * }, {
- *     provider: google,
+ *     provider: google_beta,
  * });
  * // MIG
  * const defaultInstanceGroupManager = new gcp.compute.InstanceGroupManager("defaultInstanceGroupManager", {
@@ -215,7 +225,7 @@ import * as utilities from "../utilities";
  *     baseInstanceName: "vm",
  *     targetSize: 2,
  * }, {
- *     provider: google,
+ *     provider: google_beta,
  * });
  * // backend service with custom request and response headers
  * const defaultBackendService = new gcp.compute.BackendService("defaultBackendService", {
@@ -237,11 +247,11 @@ import * as utilities from "../utilities";
  * });
  * // url map
  * const defaultURLMap = new gcp.compute.URLMap("defaultURLMap", {defaultService: defaultBackendService.id}, {
- *     provider: google,
+ *     provider: google_beta,
  * });
  * // http proxy
  * const defaultTargetHttpProxy = new gcp.compute.TargetHttpProxy("defaultTargetHttpProxy", {urlMap: defaultURLMap.id}, {
- *     provider: google,
+ *     provider: google_beta,
  * });
  * // forwarding rule
  * const defaultGlobalForwardingRule = new gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule", {
@@ -251,7 +261,7 @@ import * as utilities from "../utilities";
  *     target: defaultTargetHttpProxy.id,
  *     ipAddress: defaultGlobalAddress.id,
  * }, {
- *     provider: google,
+ *     provider: google_beta,
  * });
  * // allow access from health check ranges
  * const defaultFirewall = new gcp.compute.Firewall("defaultFirewall", {
@@ -266,7 +276,7 @@ import * as utilities from "../utilities";
  *     }],
  *     targetTags: ["allow-health-check"],
  * }, {
- *     provider: google,
+ *     provider: google_beta,
  * });
  * ```
  * ### Global Forwarding Rule Http

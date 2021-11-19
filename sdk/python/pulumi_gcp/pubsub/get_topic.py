@@ -21,7 +21,7 @@ class GetTopicResult:
     """
     A collection of values returned by getTopic.
     """
-    def __init__(__self__, id=None, kms_key_name=None, labels=None, message_storage_policies=None, name=None, project=None, schema_settings=None):
+    def __init__(__self__, id=None, kms_key_name=None, labels=None, message_retention_duration=None, message_storage_policies=None, name=None, project=None, schema_settings=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -31,6 +31,9 @@ class GetTopicResult:
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
+        if message_retention_duration and not isinstance(message_retention_duration, str):
+            raise TypeError("Expected argument 'message_retention_duration' to be a str")
+        pulumi.set(__self__, "message_retention_duration", message_retention_duration)
         if message_storage_policies and not isinstance(message_storage_policies, list):
             raise TypeError("Expected argument 'message_storage_policies' to be a list")
         pulumi.set(__self__, "message_storage_policies", message_storage_policies)
@@ -63,6 +66,11 @@ class GetTopicResult:
         return pulumi.get(self, "labels")
 
     @property
+    @pulumi.getter(name="messageRetentionDuration")
+    def message_retention_duration(self) -> str:
+        return pulumi.get(self, "message_retention_duration")
+
+    @property
     @pulumi.getter(name="messageStoragePolicies")
     def message_storage_policies(self) -> Sequence['outputs.GetTopicMessageStoragePolicyResult']:
         return pulumi.get(self, "message_storage_policies")
@@ -92,6 +100,7 @@ class AwaitableGetTopicResult(GetTopicResult):
             id=self.id,
             kms_key_name=self.kms_key_name,
             labels=self.labels,
+            message_retention_duration=self.message_retention_duration,
             message_storage_policies=self.message_storage_policies,
             name=self.name,
             project=self.project,
@@ -133,6 +142,7 @@ def get_topic(name: Optional[str] = None,
         id=__ret__.id,
         kms_key_name=__ret__.kms_key_name,
         labels=__ret__.labels,
+        message_retention_duration=__ret__.message_retention_duration,
         message_storage_policies=__ret__.message_storage_policies,
         name=__ret__.name,
         project=__ret__.project,

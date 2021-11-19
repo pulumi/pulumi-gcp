@@ -24,6 +24,9 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("ephemeralStorageConfig")]
         public Input<Inputs.NodePoolNodeConfigEphemeralStorageConfigArgs>? EphemeralStorageConfig { get; set; }
 
+        [Input("gcfsConfig")]
+        public Input<Inputs.NodePoolNodeConfigGcfsConfigArgs>? GcfsConfig { get; set; }
+
         [Input("guestAccelerators")]
         private InputList<Inputs.NodePoolNodeConfigGuestAcceleratorArgs>? _guestAccelerators;
         public InputList<Inputs.NodePoolNodeConfigGuestAcceleratorArgs> GuestAccelerators
