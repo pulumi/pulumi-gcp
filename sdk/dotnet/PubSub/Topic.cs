@@ -38,6 +38,7 @@ namespace Pulumi.Gcp.PubSub
     ///             {
     ///                 { "foo", "bar" },
     ///             },
+    ///             MessageRetentionDuration = "86600s",
     ///         });
     ///     }
     /// 
@@ -177,6 +178,18 @@ namespace Pulumi.Gcp.PubSub
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates the minimum duration to retain a message after it is published
+        /// to the topic. If this field is set, messages published to the topic in
+        /// the last messageRetentionDuration are always available to subscribers.
+        /// For instance, it allows any attached subscription to seek to a timestamp
+        /// that is up to messageRetentionDuration in the past. If this field is not
+        /// set, message retention is controlled by settings on individual subscriptions.
+        /// Cannot be more than 7 days or less than 10 minutes.
+        /// </summary>
+        [Output("messageRetentionDuration")]
+        public Output<string?> MessageRetentionDuration { get; private set; } = null!;
+
+        /// <summary>
         /// Policy constraining the set of Google Cloud Platform regions where
         /// messages published to the topic may be stored. If not present, then no
         /// constraints are in effect.
@@ -274,6 +287,18 @@ namespace Pulumi.Gcp.PubSub
         }
 
         /// <summary>
+        /// Indicates the minimum duration to retain a message after it is published
+        /// to the topic. If this field is set, messages published to the topic in
+        /// the last messageRetentionDuration are always available to subscribers.
+        /// For instance, it allows any attached subscription to seek to a timestamp
+        /// that is up to messageRetentionDuration in the past. If this field is not
+        /// set, message retention is controlled by settings on individual subscriptions.
+        /// Cannot be more than 7 days or less than 10 minutes.
+        /// </summary>
+        [Input("messageRetentionDuration")]
+        public Input<string>? MessageRetentionDuration { get; set; }
+
+        /// <summary>
         /// Policy constraining the set of Google Cloud Platform regions where
         /// messages published to the topic may be stored. If not present, then no
         /// constraints are in effect.
@@ -330,6 +355,18 @@ namespace Pulumi.Gcp.PubSub
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
+
+        /// <summary>
+        /// Indicates the minimum duration to retain a message after it is published
+        /// to the topic. If this field is set, messages published to the topic in
+        /// the last messageRetentionDuration are always available to subscribers.
+        /// For instance, it allows any attached subscription to seek to a timestamp
+        /// that is up to messageRetentionDuration in the past. If this field is not
+        /// set, message retention is controlled by settings on individual subscriptions.
+        /// Cannot be more than 7 days or less than 10 minutes.
+        /// </summary>
+        [Input("messageRetentionDuration")]
+        public Input<string>? MessageRetentionDuration { get; set; }
 
         /// <summary>
         /// Policy constraining the set of Google Cloud Platform regions where

@@ -57,13 +57,14 @@ type LookupTopicArgs struct {
 // A collection of values returned by getTopic.
 type LookupTopicResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id                     string                         `pulumi:"id"`
-	KmsKeyName             string                         `pulumi:"kmsKeyName"`
-	Labels                 map[string]string              `pulumi:"labels"`
-	MessageStoragePolicies []GetTopicMessageStoragePolicy `pulumi:"messageStoragePolicies"`
-	Name                   string                         `pulumi:"name"`
-	Project                *string                        `pulumi:"project"`
-	SchemaSettings         []GetTopicSchemaSetting        `pulumi:"schemaSettings"`
+	Id                       string                         `pulumi:"id"`
+	KmsKeyName               string                         `pulumi:"kmsKeyName"`
+	Labels                   map[string]string              `pulumi:"labels"`
+	MessageRetentionDuration string                         `pulumi:"messageRetentionDuration"`
+	MessageStoragePolicies   []GetTopicMessageStoragePolicy `pulumi:"messageStoragePolicies"`
+	Name                     string                         `pulumi:"name"`
+	Project                  *string                        `pulumi:"project"`
+	SchemaSettings           []GetTopicSchemaSetting        `pulumi:"schemaSettings"`
 }
 
 func LookupTopicOutput(ctx *pulumi.Context, args LookupTopicOutputArgs, opts ...pulumi.InvokeOption) LookupTopicResultOutput {
@@ -114,6 +115,10 @@ func (o LookupTopicResultOutput) KmsKeyName() pulumi.StringOutput {
 
 func (o LookupTopicResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupTopicResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupTopicResultOutput) MessageRetentionDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTopicResult) string { return v.MessageRetentionDuration }).(pulumi.StringOutput)
 }
 
 func (o LookupTopicResultOutput) MessageStoragePolicies() GetTopicMessageStoragePolicyArrayOutput {

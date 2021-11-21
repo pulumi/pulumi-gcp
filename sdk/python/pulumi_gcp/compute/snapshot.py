@@ -534,7 +534,7 @@ class Snapshot(pulumi.CustomResource):
             type="pd-ssd",
             zone="us-central1-a")
         snapshot = gcp.compute.Snapshot("snapshot",
-            source_disk=persistent.name,
+            source_disk=persistent.id,
             zone="us-central1-a",
             labels={
                 "my_label": "value",
@@ -626,7 +626,7 @@ class Snapshot(pulumi.CustomResource):
             type="pd-ssd",
             zone="us-central1-a")
         snapshot = gcp.compute.Snapshot("snapshot",
-            source_disk=persistent.name,
+            source_disk=persistent.id,
             zone="us-central1-a",
             labels={
                 "my_label": "value",

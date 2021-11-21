@@ -79,6 +79,109 @@ namespace Pulumi.Gcp.VpcAccess
     /// 
     /// }
     /// ```
+    /// ### Cloudrun VPC Access Connector
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var vpcaccessApi = new Gcp.Projects.Service("vpcaccessApi", new Gcp.Projects.ServiceArgs
+    ///         {
+    ///             Service = "vpcaccess.googleapis.com",
+    ///             DisableOnDestroy = false,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         // VPC
+    ///         var @default = new Gcp.Compute.Network("default", new Gcp.Compute.NetworkArgs
+    ///         {
+    ///             AutoCreateSubnetworks = false,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         // VPC access connector
+    ///         var connector = new Gcp.VpcAccess.Connector("connector", new Gcp.VpcAccess.ConnectorArgs
+    ///         {
+    ///             Region = "us-west1",
+    ///             IpCidrRange = "10.8.0.0/28",
+    ///             Network = @default.Name,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///             DependsOn = 
+    ///             {
+    ///                 vpcaccessApi,
+    ///             },
+    ///         });
+    ///         // Cloud Router
+    ///         var router = new Gcp.Compute.Router("router", new Gcp.Compute.RouterArgs
+    ///         {
+    ///             Region = "us-west1",
+    ///             Network = @default.Id,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         // NAT configuration
+    ///         var routerNat = new Gcp.Compute.RouterNat("routerNat", new Gcp.Compute.RouterNatArgs
+    ///         {
+    ///             Region = "us-west1",
+    ///             Router = router.Name,
+    ///             SourceSubnetworkIpRangesToNat = "ALL_SUBNETWORKS_ALL_IP_RANGES",
+    ///             NatIpAllocateOption = "AUTO_ONLY",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         // Cloud Run service
+    ///         var gcrService = new Gcp.CloudRun.Service("gcrService", new Gcp.CloudRun.ServiceArgs
+    ///         {
+    ///             Location = "us-west1",
+    ///             Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
+    ///             {
+    ///                 Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
+    ///                 {
+    ///                     Containers = 
+    ///                     {
+    ///                         new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
+    ///                         {
+    ///                             Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                             Resources = new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerResourcesArgs
+    ///                             {
+    ///                                 Limits = 
+    ///                                 {
+    ///                                     { "cpu", "1000m" },
+    ///                                     { "memory", "512M" },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Metadata = new Gcp.CloudRun.Inputs.ServiceTemplateMetadataArgs
+    ///                 {
+    ///                     Annotations = 
+    ///                     {
+    ///                         { "autoscaling.knative.dev/maxScale", "5" },
+    ///                         { "run.googleapis.com/vpc-access-connector", connector.Name },
+    ///                         { "run.googleapis.com/vpc-access-egress", "all" },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             AutogenerateRevisionName = true,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 

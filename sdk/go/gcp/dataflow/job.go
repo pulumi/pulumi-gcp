@@ -126,6 +126,7 @@ type Job struct {
 	// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
 	// **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
 	// Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
+	// <<<<<<< HEAD
 	Labels pulumi.MapOutput `pulumi:"labels"`
 	// The machine type to use for the job.
 	MachineType pulumi.StringPtrOutput `pulumi:"machineType"`
@@ -147,13 +148,14 @@ type Job struct {
 	ServiceAccountEmail pulumi.StringPtrOutput `pulumi:"serviceAccountEmail"`
 	// The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
 	State pulumi.StringOutput `pulumi:"state"`
-	// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
+	// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`
 	Subnetwork pulumi.StringPtrOutput `pulumi:"subnetwork"`
 	// A writeable location on GCS for the Dataflow job to dump its temporary data.
 	TempGcsLocation pulumi.StringOutput `pulumi:"tempGcsLocation"`
 	// The GCS path to the Dataflow job template.
 	TemplateGcsPath pulumi.StringOutput `pulumi:"templateGcsPath"`
 	// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
+	// > > > > > > > v4.1.0
 	TransformNameMapping pulumi.MapOutput `pulumi:"transformNameMapping"`
 	// The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -210,6 +212,7 @@ type jobState struct {
 	// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
 	// **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
 	// Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
+	// <<<<<<< HEAD
 	Labels map[string]interface{} `pulumi:"labels"`
 	// The machine type to use for the job.
 	MachineType *string `pulumi:"machineType"`
@@ -231,13 +234,14 @@ type jobState struct {
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
 	// The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
 	State *string `pulumi:"state"`
-	// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
+	// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`
 	Subnetwork *string `pulumi:"subnetwork"`
 	// A writeable location on GCS for the Dataflow job to dump its temporary data.
 	TempGcsLocation *string `pulumi:"tempGcsLocation"`
 	// The GCS path to the Dataflow job template.
 	TemplateGcsPath *string `pulumi:"templateGcsPath"`
 	// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
+	// > > > > > > > v4.1.0
 	TransformNameMapping map[string]interface{} `pulumi:"transformNameMapping"`
 	// The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
 	Type *string `pulumi:"type"`
@@ -260,6 +264,7 @@ type JobState struct {
 	// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
 	// **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
 	// Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
+	// <<<<<<< HEAD
 	Labels pulumi.MapInput
 	// The machine type to use for the job.
 	MachineType pulumi.StringPtrInput
@@ -281,13 +286,14 @@ type JobState struct {
 	ServiceAccountEmail pulumi.StringPtrInput
 	// The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
 	State pulumi.StringPtrInput
-	// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
+	// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`
 	Subnetwork pulumi.StringPtrInput
 	// A writeable location on GCS for the Dataflow job to dump its temporary data.
 	TempGcsLocation pulumi.StringPtrInput
 	// The GCS path to the Dataflow job template.
 	TemplateGcsPath pulumi.StringPtrInput
 	// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
+	// > > > > > > > v4.1.0
 	TransformNameMapping pulumi.MapInput
 	// The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
 	Type pulumi.StringPtrInput
@@ -312,6 +318,7 @@ type jobArgs struct {
 	// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
 	// **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
 	// Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
+	// <<<<<<< HEAD
 	Labels map[string]interface{} `pulumi:"labels"`
 	// The machine type to use for the job.
 	MachineType *string `pulumi:"machineType"`
@@ -331,13 +338,14 @@ type jobArgs struct {
 	Region *string `pulumi:"region"`
 	// The Service Account email used to create the job.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
-	// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
+	// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`
 	Subnetwork *string `pulumi:"subnetwork"`
 	// A writeable location on GCS for the Dataflow job to dump its temporary data.
 	TempGcsLocation string `pulumi:"tempGcsLocation"`
 	// The GCS path to the Dataflow job template.
 	TemplateGcsPath string `pulumi:"templateGcsPath"`
 	// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
+	// > > > > > > > v4.1.0
 	TransformNameMapping map[string]interface{} `pulumi:"transformNameMapping"`
 	// The zone in which the created job should run. If it is not provided, the provider zone is used.
 	Zone *string `pulumi:"zone"`
@@ -357,6 +365,7 @@ type JobArgs struct {
 	// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
 	// **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
 	// Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
+	// <<<<<<< HEAD
 	Labels pulumi.MapInput
 	// The machine type to use for the job.
 	MachineType pulumi.StringPtrInput
@@ -376,13 +385,14 @@ type JobArgs struct {
 	Region pulumi.StringPtrInput
 	// The Service Account email used to create the job.
 	ServiceAccountEmail pulumi.StringPtrInput
-	// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
+	// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`
 	Subnetwork pulumi.StringPtrInput
 	// A writeable location on GCS for the Dataflow job to dump its temporary data.
 	TempGcsLocation pulumi.StringInput
 	// The GCS path to the Dataflow job template.
 	TemplateGcsPath pulumi.StringInput
 	// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
+	// > > > > > > > v4.1.0
 	TransformNameMapping pulumi.MapInput
 	// The zone in which the created job should run. If it is not provided, the provider zone is used.
 	Zone pulumi.StringPtrInput

@@ -303,17 +303,11 @@ namespace Pulumi.Gcp.CloudRun
     ///             {
     ///                 Automatic = true,
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var secret_version_data = new Gcp.SecretManager.SecretVersion("secret-version-data", new Gcp.SecretManager.SecretVersionArgs
     ///         {
     ///             Secret = secret.Name,
     ///             SecretData = "secret-data",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var secret_access = new Gcp.SecretManager.SecretIamMember("secret-access", new Gcp.SecretManager.SecretIamMemberArgs
     ///         {
@@ -322,7 +316,6 @@ namespace Pulumi.Gcp.CloudRun
     ///             Member = project.Apply(project =&gt; $"serviceAccount:{project.Number}-compute@developer.gserviceaccount.com"),
     ///         }, new CustomResourceOptions
     ///         {
-    ///             Provider = google_beta,
     ///             DependsOn = 
     ///             {
     ///                 secret,
@@ -364,7 +357,6 @@ namespace Pulumi.Gcp.CloudRun
     ///                 Annotations = 
     ///                 {
     ///                     { "generated-by", "magic-modules" },
-    ///                     { "run.googleapis.com/launch-stage", "BETA" },
     ///                 },
     ///             },
     ///             Traffics = 
@@ -378,7 +370,6 @@ namespace Pulumi.Gcp.CloudRun
     ///             AutogenerateRevisionName = true,
     ///         }, new CustomResourceOptions
     ///         {
-    ///             Provider = google_beta,
     ///             DependsOn = 
     ///             {
     ///                 secret_version_data,
@@ -406,17 +397,11 @@ namespace Pulumi.Gcp.CloudRun
     ///             {
     ///                 Automatic = true,
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var secret_version_data = new Gcp.SecretManager.SecretVersion("secret-version-data", new Gcp.SecretManager.SecretVersionArgs
     ///         {
     ///             Secret = secret.Name,
     ///             SecretData = "secret-data",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var secret_access = new Gcp.SecretManager.SecretIamMember("secret-access", new Gcp.SecretManager.SecretIamMemberArgs
     ///         {
@@ -425,7 +410,6 @@ namespace Pulumi.Gcp.CloudRun
     ///             Member = project.Apply(project =&gt; $"serviceAccount:{project.Number}-compute@developer.gserviceaccount.com"),
     ///         }, new CustomResourceOptions
     ///         {
-    ///             Provider = google_beta,
     ///             DependsOn = 
     ///             {
     ///                 secret,
@@ -479,7 +463,6 @@ namespace Pulumi.Gcp.CloudRun
     ///                 Annotations = 
     ///                 {
     ///                     { "generated-by", "magic-modules" },
-    ///                     { "run.googleapis.com/launch-stage", "BETA" },
     ///                 },
     ///             },
     ///             Traffics = 
@@ -493,7 +476,6 @@ namespace Pulumi.Gcp.CloudRun
     ///             AutogenerateRevisionName = true,
     ///         }, new CustomResourceOptions
     ///         {
-    ///             Provider = google_beta,
     ///             DependsOn = 
     ///             {
     ///                 secret_version_data,

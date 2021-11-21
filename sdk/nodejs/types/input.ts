@@ -12692,6 +12692,40 @@ export namespace compute {
         range: pulumi.Input<string>;
     }
 
+    export interface RouterPeerBfd {
+        /**
+         * The minimum interval, in milliseconds, between BFD control packets
+         * received from the peer router. The actual value is negotiated
+         * between the two routers and is equal to the greater of this value
+         * and the transmit interval of the other router. If set, this value
+         * must be between 1000 and 30000.
+         */
+        minReceiveInterval?: pulumi.Input<number>;
+        /**
+         * The minimum interval, in milliseconds, between BFD control packets
+         * transmitted to the peer router. The actual value is negotiated
+         * between the two routers and is equal to the greater of this value
+         * and the corresponding receive interval of the other router. If set,
+         * this value must be between 1000 and 30000.
+         */
+        minTransmitInterval?: pulumi.Input<number>;
+        /**
+         * The number of consecutive BFD packets that must be missed before
+         * BFD declares that a peer is unavailable. If set, the value must
+         * be a value between 5 and 16.
+         */
+        multiplier?: pulumi.Input<number>;
+        /**
+         * The BFD session initialization mode for this BGP peer.
+         * If set to `ACTIVE`, the Cloud Router will initiate the BFD session
+         * for this BGP peer. If set to `PASSIVE`, the Cloud Router will wait
+         * for the peer router to initiate the BFD session for this BGP peer.
+         * If set to `DISABLED`, BFD is disabled for this BGP peer.
+         * Possible values are `ACTIVE`, `DISABLED`, and `PASSIVE`.
+         */
+        sessionInitializationMode: pulumi.Input<string>;
+    }
+
     export interface SecurityPolicyAdaptiveProtectionConfig {
         /**
          * Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
@@ -15322,6 +15356,15 @@ export namespace container {
          */
         ephemeralStorageConfig?: pulumi.Input<inputs.container.ClusterNodeConfigEphemeralStorageConfig>;
         /**
+         * Parameters for the Google Container Filesystem (GCFS).
+         * If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
+         * For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
+         * A `machineType` that has more than 16 GiB of memory is also recommended.
+         * GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
+         * Structure is documented below.
+         */
+        gcfsConfig?: pulumi.Input<inputs.container.ClusterNodeConfigGcfsConfig>;
+        /**
          * List of the type and count of accelerator cards attached to the instance.
          * Structure documented below.
          */
@@ -15427,6 +15470,14 @@ export namespace container {
          * Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
          */
         localSsdCount: pulumi.Input<number>;
+    }
+
+    export interface ClusterNodeConfigGcfsConfig {
+        /**
+         * Enable the PodSecurityPolicy controller for this cluster.
+         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         */
+        enabled: pulumi.Input<boolean>;
     }
 
     export interface ClusterNodeConfigGuestAccelerator {
@@ -15610,6 +15661,15 @@ export namespace container {
          */
         ephemeralStorageConfig?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigEphemeralStorageConfig>;
         /**
+         * Parameters for the Google Container Filesystem (GCFS).
+         * If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
+         * For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
+         * A `machineType` that has more than 16 GiB of memory is also recommended.
+         * GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
+         * Structure is documented below.
+         */
+        gcfsConfig?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigGcfsConfig>;
+        /**
          * List of the type and count of accelerator cards attached to the instance.
          * Structure documented below.
          */
@@ -15715,6 +15775,14 @@ export namespace container {
          * Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
          */
         localSsdCount: pulumi.Input<number>;
+    }
+
+    export interface ClusterNodePoolNodeConfigGcfsConfig {
+        /**
+         * Enable the PodSecurityPolicy controller for this cluster.
+         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         */
+        enabled: pulumi.Input<boolean>;
     }
 
     export interface ClusterNodePoolNodeConfigGuestAccelerator {
@@ -15977,6 +16045,7 @@ export namespace container {
         diskSizeGb?: pulumi.Input<number>;
         diskType?: pulumi.Input<string>;
         ephemeralStorageConfig?: pulumi.Input<inputs.container.NodePoolNodeConfigEphemeralStorageConfig>;
+        gcfsConfig?: pulumi.Input<inputs.container.NodePoolNodeConfigGcfsConfig>;
         guestAccelerators?: pulumi.Input<pulumi.Input<inputs.container.NodePoolNodeConfigGuestAccelerator>[]>;
         imageType?: pulumi.Input<string>;
         kubeletConfig?: pulumi.Input<inputs.container.NodePoolNodeConfigKubeletConfig>;
@@ -15998,6 +16067,10 @@ export namespace container {
 
     export interface NodePoolNodeConfigEphemeralStorageConfig {
         localSsdCount: pulumi.Input<number>;
+    }
+
+    export interface NodePoolNodeConfigGcfsConfig {
+        enabled: pulumi.Input<boolean>;
     }
 
     export interface NodePoolNodeConfigGuestAccelerator {

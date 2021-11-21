@@ -174,8 +174,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly clusterTelemetry!: pulumi.Output<outputs.container.ClusterClusterTelemetry>;
     /**
-     * Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration
-     * can't be changed (or added/removed) after cluster creation without deleting and recreating the entire cluster.
+     * Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
      */
     public readonly confidentialNodes!: pulumi.Output<outputs.container.ClusterConfidentialNodes>;
     /**
@@ -410,7 +409,8 @@ export class Cluster extends pulumi.CustomResource {
     public readonly notificationConfig!: pulumi.Output<outputs.container.ClusterNotificationConfig>;
     public /*out*/ readonly operation!: pulumi.Output<string>;
     /**
-     * Configuration for the
+     * ) Configuration for the
+     * >>>>>>> v4.1.0
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
      * Structure is documented below.
      */
@@ -668,8 +668,7 @@ export interface ClusterState {
      */
     clusterTelemetry?: pulumi.Input<inputs.container.ClusterClusterTelemetry>;
     /**
-     * Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration
-     * can't be changed (or added/removed) after cluster creation without deleting and recreating the entire cluster.
+     * Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
      */
     confidentialNodes?: pulumi.Input<inputs.container.ClusterConfidentialNodes>;
     /**
@@ -904,7 +903,8 @@ export interface ClusterState {
     notificationConfig?: pulumi.Input<inputs.container.ClusterNotificationConfig>;
     operation?: pulumi.Input<string>;
     /**
-     * Configuration for the
+     * ) Configuration for the
+     * >>>>>>> v4.1.0
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
      * Structure is documented below.
      */
@@ -1024,8 +1024,7 @@ export interface ClusterArgs {
      */
     clusterTelemetry?: pulumi.Input<inputs.container.ClusterClusterTelemetry>;
     /**
-     * Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration
-     * can't be changed (or added/removed) after cluster creation without deleting and recreating the entire cluster.
+     * Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
      */
     confidentialNodes?: pulumi.Input<inputs.container.ClusterConfidentialNodes>;
     /**
@@ -1245,7 +1244,8 @@ export interface ClusterArgs {
      */
     notificationConfig?: pulumi.Input<inputs.container.ClusterNotificationConfig>;
     /**
-     * Configuration for the
+     * ) Configuration for the
+     * >>>>>>> v4.1.0
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
      * Structure is documented below.
      */

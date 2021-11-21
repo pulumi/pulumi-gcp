@@ -293,6 +293,7 @@ __all__ = [
     'RouterNatLogConfig',
     'RouterNatSubnetwork',
     'RouterPeerAdvertisedIpRange',
+    'RouterPeerBfd',
     'SecurityPolicyAdaptiveProtectionConfig',
     'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig',
     'SecurityPolicyRule',
@@ -20418,6 +20419,111 @@ class RouterPeerAdvertisedIpRange(dict):
         User-specified description for the IP range.
         """
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class RouterPeerBfd(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sessionInitializationMode":
+            suggest = "session_initialization_mode"
+        elif key == "minReceiveInterval":
+            suggest = "min_receive_interval"
+        elif key == "minTransmitInterval":
+            suggest = "min_transmit_interval"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RouterPeerBfd. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RouterPeerBfd.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RouterPeerBfd.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 session_initialization_mode: str,
+                 min_receive_interval: Optional[int] = None,
+                 min_transmit_interval: Optional[int] = None,
+                 multiplier: Optional[int] = None):
+        """
+        :param str session_initialization_mode: The BFD session initialization mode for this BGP peer.
+               If set to `ACTIVE`, the Cloud Router will initiate the BFD session
+               for this BGP peer. If set to `PASSIVE`, the Cloud Router will wait
+               for the peer router to initiate the BFD session for this BGP peer.
+               If set to `DISABLED`, BFD is disabled for this BGP peer.
+               Possible values are `ACTIVE`, `DISABLED`, and `PASSIVE`.
+        :param int min_receive_interval: The minimum interval, in milliseconds, between BFD control packets
+               received from the peer router. The actual value is negotiated
+               between the two routers and is equal to the greater of this value
+               and the transmit interval of the other router. If set, this value
+               must be between 1000 and 30000.
+        :param int min_transmit_interval: The minimum interval, in milliseconds, between BFD control packets
+               transmitted to the peer router. The actual value is negotiated
+               between the two routers and is equal to the greater of this value
+               and the corresponding receive interval of the other router. If set,
+               this value must be between 1000 and 30000.
+        :param int multiplier: The number of consecutive BFD packets that must be missed before
+               BFD declares that a peer is unavailable. If set, the value must
+               be a value between 5 and 16.
+        """
+        pulumi.set(__self__, "session_initialization_mode", session_initialization_mode)
+        if min_receive_interval is not None:
+            pulumi.set(__self__, "min_receive_interval", min_receive_interval)
+        if min_transmit_interval is not None:
+            pulumi.set(__self__, "min_transmit_interval", min_transmit_interval)
+        if multiplier is not None:
+            pulumi.set(__self__, "multiplier", multiplier)
+
+    @property
+    @pulumi.getter(name="sessionInitializationMode")
+    def session_initialization_mode(self) -> str:
+        """
+        The BFD session initialization mode for this BGP peer.
+        If set to `ACTIVE`, the Cloud Router will initiate the BFD session
+        for this BGP peer. If set to `PASSIVE`, the Cloud Router will wait
+        for the peer router to initiate the BFD session for this BGP peer.
+        If set to `DISABLED`, BFD is disabled for this BGP peer.
+        Possible values are `ACTIVE`, `DISABLED`, and `PASSIVE`.
+        """
+        return pulumi.get(self, "session_initialization_mode")
+
+    @property
+    @pulumi.getter(name="minReceiveInterval")
+    def min_receive_interval(self) -> Optional[int]:
+        """
+        The minimum interval, in milliseconds, between BFD control packets
+        received from the peer router. The actual value is negotiated
+        between the two routers and is equal to the greater of this value
+        and the transmit interval of the other router. If set, this value
+        must be between 1000 and 30000.
+        """
+        return pulumi.get(self, "min_receive_interval")
+
+    @property
+    @pulumi.getter(name="minTransmitInterval")
+    def min_transmit_interval(self) -> Optional[int]:
+        """
+        The minimum interval, in milliseconds, between BFD control packets
+        transmitted to the peer router. The actual value is negotiated
+        between the two routers and is equal to the greater of this value
+        and the corresponding receive interval of the other router. If set,
+        this value must be between 1000 and 30000.
+        """
+        return pulumi.get(self, "min_transmit_interval")
+
+    @property
+    @pulumi.getter
+    def multiplier(self) -> Optional[int]:
+        """
+        The number of consecutive BFD packets that must be missed before
+        BFD declares that a peer is unavailable. If set, the value must
+        be a value between 5 and 16.
+        """
+        return pulumi.get(self, "multiplier")
 
 
 @pulumi.output_type

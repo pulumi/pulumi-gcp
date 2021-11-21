@@ -131,6 +131,7 @@ namespace Pulumi.Gcp.Dataflow
         /// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
         /// **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
         /// Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
+        /// &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>?> Labels { get; private set; } = null!;
@@ -196,7 +197,7 @@ namespace Pulumi.Gcp.Dataflow
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
+        /// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`
         /// </summary>
         [Output("subnetwork")]
         public Output<string?> Subnetwork { get; private set; } = null!;
@@ -215,6 +216,7 @@ namespace Pulumi.Gcp.Dataflow
 
         /// <summary>
         /// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
+        /// &gt;&gt;&gt;&gt;&gt;&gt;&gt; v4.1.0
         /// </summary>
         [Output("transformNameMapping")]
         public Output<ImmutableDictionary<string, object>?> TransformNameMapping { get; private set; } = null!;
@@ -315,6 +317,7 @@ namespace Pulumi.Gcp.Dataflow
         /// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
         /// **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
         /// Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
+        /// &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
         /// </summary>
         public InputMap<object> Labels
         {
@@ -383,7 +386,7 @@ namespace Pulumi.Gcp.Dataflow
         public Input<string>? ServiceAccountEmail { get; set; }
 
         /// <summary>
-        /// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
+        /// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`
         /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }
@@ -405,6 +408,7 @@ namespace Pulumi.Gcp.Dataflow
 
         /// <summary>
         /// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
+        /// &gt;&gt;&gt;&gt;&gt;&gt;&gt; v4.1.0
         /// </summary>
         public InputMap<object> TransformNameMapping
         {
@@ -469,6 +473,7 @@ namespace Pulumi.Gcp.Dataflow
         /// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
         /// **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
         /// Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
+        /// &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
         /// </summary>
         public InputMap<object> Labels
         {
@@ -543,7 +548,7 @@ namespace Pulumi.Gcp.Dataflow
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
+        /// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`
         /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }
@@ -565,6 +570,7 @@ namespace Pulumi.Gcp.Dataflow
 
         /// <summary>
         /// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
+        /// &gt;&gt;&gt;&gt;&gt;&gt;&gt; v4.1.0
         /// </summary>
         public InputMap<object> TransformNameMapping
         {

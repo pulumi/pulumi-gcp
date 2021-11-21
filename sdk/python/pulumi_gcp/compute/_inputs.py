@@ -292,6 +292,7 @@ __all__ = [
     'RouterNatLogConfigArgs',
     'RouterNatSubnetworkArgs',
     'RouterPeerAdvertisedIpRangeArgs',
+    'RouterPeerBfdArgs',
     'SecurityPolicyAdaptiveProtectionConfigArgs',
     'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs',
     'SecurityPolicyRuleArgs',
@@ -20139,6 +20140,106 @@ class RouterPeerAdvertisedIpRangeArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class RouterPeerBfdArgs:
+    def __init__(__self__, *,
+                 session_initialization_mode: pulumi.Input[str],
+                 min_receive_interval: Optional[pulumi.Input[int]] = None,
+                 min_transmit_interval: Optional[pulumi.Input[int]] = None,
+                 multiplier: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] session_initialization_mode: The BFD session initialization mode for this BGP peer.
+               If set to `ACTIVE`, the Cloud Router will initiate the BFD session
+               for this BGP peer. If set to `PASSIVE`, the Cloud Router will wait
+               for the peer router to initiate the BFD session for this BGP peer.
+               If set to `DISABLED`, BFD is disabled for this BGP peer.
+               Possible values are `ACTIVE`, `DISABLED`, and `PASSIVE`.
+        :param pulumi.Input[int] min_receive_interval: The minimum interval, in milliseconds, between BFD control packets
+               received from the peer router. The actual value is negotiated
+               between the two routers and is equal to the greater of this value
+               and the transmit interval of the other router. If set, this value
+               must be between 1000 and 30000.
+        :param pulumi.Input[int] min_transmit_interval: The minimum interval, in milliseconds, between BFD control packets
+               transmitted to the peer router. The actual value is negotiated
+               between the two routers and is equal to the greater of this value
+               and the corresponding receive interval of the other router. If set,
+               this value must be between 1000 and 30000.
+        :param pulumi.Input[int] multiplier: The number of consecutive BFD packets that must be missed before
+               BFD declares that a peer is unavailable. If set, the value must
+               be a value between 5 and 16.
+        """
+        pulumi.set(__self__, "session_initialization_mode", session_initialization_mode)
+        if min_receive_interval is not None:
+            pulumi.set(__self__, "min_receive_interval", min_receive_interval)
+        if min_transmit_interval is not None:
+            pulumi.set(__self__, "min_transmit_interval", min_transmit_interval)
+        if multiplier is not None:
+            pulumi.set(__self__, "multiplier", multiplier)
+
+    @property
+    @pulumi.getter(name="sessionInitializationMode")
+    def session_initialization_mode(self) -> pulumi.Input[str]:
+        """
+        The BFD session initialization mode for this BGP peer.
+        If set to `ACTIVE`, the Cloud Router will initiate the BFD session
+        for this BGP peer. If set to `PASSIVE`, the Cloud Router will wait
+        for the peer router to initiate the BFD session for this BGP peer.
+        If set to `DISABLED`, BFD is disabled for this BGP peer.
+        Possible values are `ACTIVE`, `DISABLED`, and `PASSIVE`.
+        """
+        return pulumi.get(self, "session_initialization_mode")
+
+    @session_initialization_mode.setter
+    def session_initialization_mode(self, value: pulumi.Input[str]):
+        pulumi.set(self, "session_initialization_mode", value)
+
+    @property
+    @pulumi.getter(name="minReceiveInterval")
+    def min_receive_interval(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum interval, in milliseconds, between BFD control packets
+        received from the peer router. The actual value is negotiated
+        between the two routers and is equal to the greater of this value
+        and the transmit interval of the other router. If set, this value
+        must be between 1000 and 30000.
+        """
+        return pulumi.get(self, "min_receive_interval")
+
+    @min_receive_interval.setter
+    def min_receive_interval(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_receive_interval", value)
+
+    @property
+    @pulumi.getter(name="minTransmitInterval")
+    def min_transmit_interval(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum interval, in milliseconds, between BFD control packets
+        transmitted to the peer router. The actual value is negotiated
+        between the two routers and is equal to the greater of this value
+        and the corresponding receive interval of the other router. If set,
+        this value must be between 1000 and 30000.
+        """
+        return pulumi.get(self, "min_transmit_interval")
+
+    @min_transmit_interval.setter
+    def min_transmit_interval(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_transmit_interval", value)
+
+    @property
+    @pulumi.getter
+    def multiplier(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of consecutive BFD packets that must be missed before
+        BFD declares that a peer is unavailable. If set, the value must
+        be a value between 5 and 16.
+        """
+        return pulumi.get(self, "multiplier")
+
+    @multiplier.setter
+    def multiplier(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "multiplier", value)
 
 
 @pulumi.input_type

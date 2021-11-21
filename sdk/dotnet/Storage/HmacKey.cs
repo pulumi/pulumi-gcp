@@ -38,10 +38,12 @@ namespace Pulumi.Gcp.Storage
     /// {
     ///     public MyStack()
     ///     {
+    ///         // Create a new service account
     ///         var serviceAccount = new Gcp.ServiceAccount.Account("serviceAccount", new Gcp.ServiceAccount.AccountArgs
     ///         {
     ///             AccountId = "my-svc-acc",
     ///         });
+    ///         //Create the HMAC key for the associated service account 
     ///         var key = new Gcp.Storage.HmacKey("key", new Gcp.Storage.HmacKeyArgs
     ///         {
     ///             ServiceAccountEmail = serviceAccount.Email,

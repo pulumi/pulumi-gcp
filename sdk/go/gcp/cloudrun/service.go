@@ -300,14 +300,14 @@ import (
 // 			Replication: &secretmanager.SecretReplicationArgs{
 // 				Automatic: pulumi.Bool(true),
 // 			},
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = secretmanager.NewSecretVersion(ctx, "secret_version_data", &secretmanager.SecretVersionArgs{
 // 			Secret:     secret.Name,
 // 			SecretData: pulumi.String("secret-data"),
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -315,7 +315,7 @@ import (
 // 			SecretId: secret.ID(),
 // 			Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 // 			Member:   pulumi.String(fmt.Sprintf("%v%v%v", "serviceAccount:", project.Number, "-compute@developer.gserviceaccount.com")),
-// 		}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+// 		}, pulumi.DependsOn([]pulumi.Resource{
 // 			secret,
 // 		}))
 // 		if err != nil {
@@ -345,8 +345,7 @@ import (
 // 			},
 // 			Metadata: &cloudrun.ServiceMetadataArgs{
 // 				Annotations: pulumi.StringMap{
-// 					"generated-by":                    pulumi.String("magic-modules"),
-// 					"run.googleapis.com/launch-stage": pulumi.String("BETA"),
+// 					"generated-by": pulumi.String("magic-modules"),
 // 				},
 // 			},
 // 			Traffics: cloudrun.ServiceTrafficArray{
@@ -356,7 +355,7 @@ import (
 // 				},
 // 			},
 // 			AutogenerateRevisionName: pulumi.Bool(true),
-// 		}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+// 		}, pulumi.DependsOn([]pulumi.Resource{
 // 			secret_version_data,
 // 		}))
 // 		if err != nil {
@@ -391,14 +390,14 @@ import (
 // 			Replication: &secretmanager.SecretReplicationArgs{
 // 				Automatic: pulumi.Bool(true),
 // 			},
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = secretmanager.NewSecretVersion(ctx, "secret_version_data", &secretmanager.SecretVersionArgs{
 // 			Secret:     secret.Name,
 // 			SecretData: pulumi.String("secret-data"),
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -406,7 +405,7 @@ import (
 // 			SecretId: secret.ID(),
 // 			Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 // 			Member:   pulumi.String(fmt.Sprintf("%v%v%v", "serviceAccount:", project.Number, "-compute@developer.gserviceaccount.com")),
-// 		}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+// 		}, pulumi.DependsOn([]pulumi.Resource{
 // 			secret,
 // 		}))
 // 		if err != nil {
@@ -445,8 +444,7 @@ import (
 // 			},
 // 			Metadata: &cloudrun.ServiceMetadataArgs{
 // 				Annotations: pulumi.StringMap{
-// 					"generated-by":                    pulumi.String("magic-modules"),
-// 					"run.googleapis.com/launch-stage": pulumi.String("BETA"),
+// 					"generated-by": pulumi.String("magic-modules"),
 // 				},
 // 			},
 // 			Traffics: cloudrun.ServiceTrafficArray{
@@ -456,7 +454,7 @@ import (
 // 				},
 // 			},
 // 			AutogenerateRevisionName: pulumi.Bool(true),
-// 		}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+// 		}, pulumi.DependsOn([]pulumi.Resource{
 // 			secret_version_data,
 // 		}))
 // 		if err != nil {

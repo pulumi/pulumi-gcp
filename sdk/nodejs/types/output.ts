@@ -13938,6 +13938,40 @@ export namespace compute {
         range: string;
     }
 
+    export interface RouterPeerBfd {
+        /**
+         * The minimum interval, in milliseconds, between BFD control packets
+         * received from the peer router. The actual value is negotiated
+         * between the two routers and is equal to the greater of this value
+         * and the transmit interval of the other router. If set, this value
+         * must be between 1000 and 30000.
+         */
+        minReceiveInterval?: number;
+        /**
+         * The minimum interval, in milliseconds, between BFD control packets
+         * transmitted to the peer router. The actual value is negotiated
+         * between the two routers and is equal to the greater of this value
+         * and the corresponding receive interval of the other router. If set,
+         * this value must be between 1000 and 30000.
+         */
+        minTransmitInterval?: number;
+        /**
+         * The number of consecutive BFD packets that must be missed before
+         * BFD declares that a peer is unavailable. If set, the value must
+         * be a value between 5 and 16.
+         */
+        multiplier?: number;
+        /**
+         * The BFD session initialization mode for this BGP peer.
+         * If set to `ACTIVE`, the Cloud Router will initiate the BFD session
+         * for this BGP peer. If set to `PASSIVE`, the Cloud Router will wait
+         * for the peer router to initiate the BFD session for this BGP peer.
+         * If set to `DISABLED`, BFD is disabled for this BGP peer.
+         * Possible values are `ACTIVE`, `DISABLED`, and `PASSIVE`.
+         */
+        sessionInitializationMode: string;
+    }
+
     export interface SecurityPolicyAdaptiveProtectionConfig {
         /**
          * Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
@@ -16573,6 +16607,15 @@ export namespace container {
          */
         ephemeralStorageConfig?: outputs.container.ClusterNodeConfigEphemeralStorageConfig;
         /**
+         * Parameters for the Google Container Filesystem (GCFS).
+         * If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
+         * For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
+         * A `machineType` that has more than 16 GiB of memory is also recommended.
+         * GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
+         * Structure is documented below.
+         */
+        gcfsConfig?: outputs.container.ClusterNodeConfigGcfsConfig;
+        /**
          * List of the type and count of accelerator cards attached to the instance.
          * Structure documented below.
          */
@@ -16678,6 +16721,14 @@ export namespace container {
          * Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
          */
         localSsdCount: number;
+    }
+
+    export interface ClusterNodeConfigGcfsConfig {
+        /**
+         * Enable the PodSecurityPolicy controller for this cluster.
+         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         */
+        enabled: boolean;
     }
 
     export interface ClusterNodeConfigGuestAccelerator {
@@ -16861,6 +16912,15 @@ export namespace container {
          */
         ephemeralStorageConfig?: outputs.container.ClusterNodePoolNodeConfigEphemeralStorageConfig;
         /**
+         * Parameters for the Google Container Filesystem (GCFS).
+         * If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
+         * For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
+         * A `machineType` that has more than 16 GiB of memory is also recommended.
+         * GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
+         * Structure is documented below.
+         */
+        gcfsConfig?: outputs.container.ClusterNodePoolNodeConfigGcfsConfig;
+        /**
          * List of the type and count of accelerator cards attached to the instance.
          * Structure documented below.
          */
@@ -16966,6 +17026,14 @@ export namespace container {
          * Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
          */
         localSsdCount: number;
+    }
+
+    export interface ClusterNodePoolNodeConfigGcfsConfig {
+        /**
+         * Enable the PodSecurityPolicy controller for this cluster.
+         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         */
+        enabled: boolean;
     }
 
     export interface ClusterNodePoolNodeConfigGuestAccelerator {
@@ -17358,6 +17426,7 @@ export namespace container {
         diskSizeGb: number;
         diskType: string;
         ephemeralStorageConfigs: outputs.container.GetClusterNodeConfigEphemeralStorageConfig[];
+        gcfsConfigs: outputs.container.GetClusterNodeConfigGcfsConfig[];
         guestAccelerators: outputs.container.GetClusterNodeConfigGuestAccelerator[];
         imageType: string;
         kubeletConfigs: outputs.container.GetClusterNodeConfigKubeletConfig[];
@@ -17379,6 +17448,10 @@ export namespace container {
 
     export interface GetClusterNodeConfigEphemeralStorageConfig {
         localSsdCount: number;
+    }
+
+    export interface GetClusterNodeConfigGcfsConfig {
+        enabled: boolean;
     }
 
     export interface GetClusterNodeConfigGuestAccelerator {
@@ -17457,6 +17530,7 @@ export namespace container {
         diskSizeGb: number;
         diskType: string;
         ephemeralStorageConfigs: outputs.container.GetClusterNodePoolNodeConfigEphemeralStorageConfig[];
+        gcfsConfigs: outputs.container.GetClusterNodePoolNodeConfigGcfsConfig[];
         guestAccelerators: outputs.container.GetClusterNodePoolNodeConfigGuestAccelerator[];
         imageType: string;
         kubeletConfigs: outputs.container.GetClusterNodePoolNodeConfigKubeletConfig[];
@@ -17478,6 +17552,10 @@ export namespace container {
 
     export interface GetClusterNodePoolNodeConfigEphemeralStorageConfig {
         localSsdCount: number;
+    }
+
+    export interface GetClusterNodePoolNodeConfigGcfsConfig {
+        enabled: boolean;
     }
 
     export interface GetClusterNodePoolNodeConfigGuestAccelerator {
@@ -17603,6 +17681,7 @@ export namespace container {
         diskSizeGb: number;
         diskType: string;
         ephemeralStorageConfig?: outputs.container.NodePoolNodeConfigEphemeralStorageConfig;
+        gcfsConfig?: outputs.container.NodePoolNodeConfigGcfsConfig;
         guestAccelerators: outputs.container.NodePoolNodeConfigGuestAccelerator[];
         imageType: string;
         kubeletConfig?: outputs.container.NodePoolNodeConfigKubeletConfig;
@@ -17624,6 +17703,10 @@ export namespace container {
 
     export interface NodePoolNodeConfigEphemeralStorageConfig {
         localSsdCount: number;
+    }
+
+    export interface NodePoolNodeConfigGcfsConfig {
+        enabled: boolean;
     }
 
     export interface NodePoolNodeConfigGuestAccelerator {

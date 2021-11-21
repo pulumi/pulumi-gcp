@@ -38,6 +38,7 @@ import (
 // 			Labels: pulumi.StringMap{
 // 				"foo": pulumi.String("bar"),
 // 			},
+// 			MessageRetentionDuration: pulumi.String("86600s"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -168,6 +169,14 @@ type Topic struct {
 	KmsKeyName pulumi.StringPtrOutput `pulumi:"kmsKeyName"`
 	// A set of key/value label pairs to assign to this Topic.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// Indicates the minimum duration to retain a message after it is published
+	// to the topic. If this field is set, messages published to the topic in
+	// the last messageRetentionDuration are always available to subscribers.
+	// For instance, it allows any attached subscription to seek to a timestamp
+	// that is up to messageRetentionDuration in the past. If this field is not
+	// set, message retention is controlled by settings on individual subscriptions.
+	// Cannot be more than 7 days or less than 10 minutes.
+	MessageRetentionDuration pulumi.StringPtrOutput `pulumi:"messageRetentionDuration"`
 	// Policy constraining the set of Google Cloud Platform regions where
 	// messages published to the topic may be stored. If not present, then no
 	// constraints are in effect.
@@ -220,6 +229,14 @@ type topicState struct {
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// A set of key/value label pairs to assign to this Topic.
 	Labels map[string]string `pulumi:"labels"`
+	// Indicates the minimum duration to retain a message after it is published
+	// to the topic. If this field is set, messages published to the topic in
+	// the last messageRetentionDuration are always available to subscribers.
+	// For instance, it allows any attached subscription to seek to a timestamp
+	// that is up to messageRetentionDuration in the past. If this field is not
+	// set, message retention is controlled by settings on individual subscriptions.
+	// Cannot be more than 7 days or less than 10 minutes.
+	MessageRetentionDuration *string `pulumi:"messageRetentionDuration"`
 	// Policy constraining the set of Google Cloud Platform regions where
 	// messages published to the topic may be stored. If not present, then no
 	// constraints are in effect.
@@ -244,6 +261,14 @@ type TopicState struct {
 	KmsKeyName pulumi.StringPtrInput
 	// A set of key/value label pairs to assign to this Topic.
 	Labels pulumi.StringMapInput
+	// Indicates the minimum duration to retain a message after it is published
+	// to the topic. If this field is set, messages published to the topic in
+	// the last messageRetentionDuration are always available to subscribers.
+	// For instance, it allows any attached subscription to seek to a timestamp
+	// that is up to messageRetentionDuration in the past. If this field is not
+	// set, message retention is controlled by settings on individual subscriptions.
+	// Cannot be more than 7 days or less than 10 minutes.
+	MessageRetentionDuration pulumi.StringPtrInput
 	// Policy constraining the set of Google Cloud Platform regions where
 	// messages published to the topic may be stored. If not present, then no
 	// constraints are in effect.
@@ -272,6 +297,14 @@ type topicArgs struct {
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// A set of key/value label pairs to assign to this Topic.
 	Labels map[string]string `pulumi:"labels"`
+	// Indicates the minimum duration to retain a message after it is published
+	// to the topic. If this field is set, messages published to the topic in
+	// the last messageRetentionDuration are always available to subscribers.
+	// For instance, it allows any attached subscription to seek to a timestamp
+	// that is up to messageRetentionDuration in the past. If this field is not
+	// set, message retention is controlled by settings on individual subscriptions.
+	// Cannot be more than 7 days or less than 10 minutes.
+	MessageRetentionDuration *string `pulumi:"messageRetentionDuration"`
 	// Policy constraining the set of Google Cloud Platform regions where
 	// messages published to the topic may be stored. If not present, then no
 	// constraints are in effect.
@@ -297,6 +330,14 @@ type TopicArgs struct {
 	KmsKeyName pulumi.StringPtrInput
 	// A set of key/value label pairs to assign to this Topic.
 	Labels pulumi.StringMapInput
+	// Indicates the minimum duration to retain a message after it is published
+	// to the topic. If this field is set, messages published to the topic in
+	// the last messageRetentionDuration are always available to subscribers.
+	// For instance, it allows any attached subscription to seek to a timestamp
+	// that is up to messageRetentionDuration in the past. If this field is not
+	// set, message retention is controlled by settings on individual subscriptions.
+	// Cannot be more than 7 days or less than 10 minutes.
+	MessageRetentionDuration pulumi.StringPtrInput
 	// Policy constraining the set of Google Cloud Platform regions where
 	// messages published to the topic may be stored. If not present, then no
 	// constraints are in effect.

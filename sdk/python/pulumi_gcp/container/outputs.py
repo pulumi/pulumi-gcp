@@ -43,6 +43,7 @@ __all__ = [
     'ClusterNetworkPolicy',
     'ClusterNodeConfig',
     'ClusterNodeConfigEphemeralStorageConfig',
+    'ClusterNodeConfigGcfsConfig',
     'ClusterNodeConfigGuestAccelerator',
     'ClusterNodeConfigKubeletConfig',
     'ClusterNodeConfigLinuxNodeConfig',
@@ -56,6 +57,7 @@ __all__ = [
     'ClusterNodePoolNetworkConfig',
     'ClusterNodePoolNodeConfig',
     'ClusterNodePoolNodeConfigEphemeralStorageConfig',
+    'ClusterNodePoolNodeConfigGcfsConfig',
     'ClusterNodePoolNodeConfigGuestAccelerator',
     'ClusterNodePoolNodeConfigKubeletConfig',
     'ClusterNodePoolNodeConfigLinuxNodeConfig',
@@ -79,6 +81,7 @@ __all__ = [
     'NodePoolNetworkConfig',
     'NodePoolNodeConfig',
     'NodePoolNodeConfigEphemeralStorageConfig',
+    'NodePoolNodeConfigGcfsConfig',
     'NodePoolNodeConfigGuestAccelerator',
     'NodePoolNodeConfigKubeletConfig',
     'NodePoolNodeConfigLinuxNodeConfig',
@@ -120,6 +123,7 @@ __all__ = [
     'GetClusterNetworkPolicyResult',
     'GetClusterNodeConfigResult',
     'GetClusterNodeConfigEphemeralStorageConfigResult',
+    'GetClusterNodeConfigGcfsConfigResult',
     'GetClusterNodeConfigGuestAcceleratorResult',
     'GetClusterNodeConfigKubeletConfigResult',
     'GetClusterNodeConfigLinuxNodeConfigResult',
@@ -133,6 +137,7 @@ __all__ = [
     'GetClusterNodePoolNetworkConfigResult',
     'GetClusterNodePoolNodeConfigResult',
     'GetClusterNodePoolNodeConfigEphemeralStorageConfigResult',
+    'GetClusterNodePoolNodeConfigGcfsConfigResult',
     'GetClusterNodePoolNodeConfigGuestAcceleratorResult',
     'GetClusterNodePoolNodeConfigKubeletConfigResult',
     'GetClusterNodePoolNodeConfigLinuxNodeConfigResult',
@@ -1593,6 +1598,8 @@ class ClusterNodeConfig(dict):
             suggest = "disk_type"
         elif key == "ephemeralStorageConfig":
             suggest = "ephemeral_storage_config"
+        elif key == "gcfsConfig":
+            suggest = "gcfs_config"
         elif key == "guestAccelerators":
             suggest = "guest_accelerators"
         elif key == "imageType":
@@ -1634,6 +1641,7 @@ class ClusterNodeConfig(dict):
                  disk_size_gb: Optional[int] = None,
                  disk_type: Optional[str] = None,
                  ephemeral_storage_config: Optional['outputs.ClusterNodeConfigEphemeralStorageConfig'] = None,
+                 gcfs_config: Optional['outputs.ClusterNodeConfigGcfsConfig'] = None,
                  guest_accelerators: Optional[Sequence['outputs.ClusterNodeConfigGuestAccelerator']] = None,
                  image_type: Optional[str] = None,
                  kubelet_config: Optional['outputs.ClusterNodeConfigKubeletConfig'] = None,
@@ -1658,6 +1666,12 @@ class ClusterNodeConfig(dict):
         :param str disk_type: Type of the disk attached to each node
                (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
         :param 'ClusterNodeConfigEphemeralStorageConfigArgs' ephemeral_storage_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+        :param 'ClusterNodeConfigGcfsConfigArgs' gcfs_config: Parameters for the Google Container Filesystem (GCFS).
+               If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version` from GKE versions 1.19 or later to use it.
+               For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
+               A `machine_type` that has more than 16 GiB of memory is also recommended.
+               GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
+               Structure is documented below.
         :param Sequence['ClusterNodeConfigGuestAcceleratorArgs'] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
                Structure documented below.
         :param str image_type: The image type to use for this node. Note that changing the image type
@@ -1715,6 +1729,8 @@ class ClusterNodeConfig(dict):
             pulumi.set(__self__, "disk_type", disk_type)
         if ephemeral_storage_config is not None:
             pulumi.set(__self__, "ephemeral_storage_config", ephemeral_storage_config)
+        if gcfs_config is not None:
+            pulumi.set(__self__, "gcfs_config", gcfs_config)
         if guest_accelerators is not None:
             pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         if image_type is not None:
@@ -1783,6 +1799,19 @@ class ClusterNodeConfig(dict):
         Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
         """
         return pulumi.get(self, "ephemeral_storage_config")
+
+    @property
+    @pulumi.getter(name="gcfsConfig")
+    def gcfs_config(self) -> Optional['outputs.ClusterNodeConfigGcfsConfig']:
+        """
+        Parameters for the Google Container Filesystem (GCFS).
+        If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version` from GKE versions 1.19 or later to use it.
+        For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
+        A `machine_type` that has more than 16 GiB of memory is also recommended.
+        GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gcfs_config")
 
     @property
     @pulumi.getter(name="guestAccelerators")
@@ -1985,6 +2014,26 @@ class ClusterNodeConfigEphemeralStorageConfig(dict):
         Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
         """
         return pulumi.get(self, "local_ssd_count")
+
+
+@pulumi.output_type
+class ClusterNodeConfigGcfsConfig(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        :param bool enabled: Enable the PodSecurityPolicy controller for this cluster.
+               If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Enable the PodSecurityPolicy controller for this cluster.
+        If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -2651,6 +2700,8 @@ class ClusterNodePoolNodeConfig(dict):
             suggest = "disk_type"
         elif key == "ephemeralStorageConfig":
             suggest = "ephemeral_storage_config"
+        elif key == "gcfsConfig":
+            suggest = "gcfs_config"
         elif key == "guestAccelerators":
             suggest = "guest_accelerators"
         elif key == "imageType":
@@ -2692,6 +2743,7 @@ class ClusterNodePoolNodeConfig(dict):
                  disk_size_gb: Optional[int] = None,
                  disk_type: Optional[str] = None,
                  ephemeral_storage_config: Optional['outputs.ClusterNodePoolNodeConfigEphemeralStorageConfig'] = None,
+                 gcfs_config: Optional['outputs.ClusterNodePoolNodeConfigGcfsConfig'] = None,
                  guest_accelerators: Optional[Sequence['outputs.ClusterNodePoolNodeConfigGuestAccelerator']] = None,
                  image_type: Optional[str] = None,
                  kubelet_config: Optional['outputs.ClusterNodePoolNodeConfigKubeletConfig'] = None,
@@ -2716,6 +2768,12 @@ class ClusterNodePoolNodeConfig(dict):
         :param str disk_type: Type of the disk attached to each node
                (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
         :param 'ClusterNodePoolNodeConfigEphemeralStorageConfigArgs' ephemeral_storage_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+        :param 'ClusterNodePoolNodeConfigGcfsConfigArgs' gcfs_config: Parameters for the Google Container Filesystem (GCFS).
+               If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version` from GKE versions 1.19 or later to use it.
+               For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
+               A `machine_type` that has more than 16 GiB of memory is also recommended.
+               GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
+               Structure is documented below.
         :param Sequence['ClusterNodePoolNodeConfigGuestAcceleratorArgs'] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
                Structure documented below.
         :param str image_type: The image type to use for this node. Note that changing the image type
@@ -2773,6 +2831,8 @@ class ClusterNodePoolNodeConfig(dict):
             pulumi.set(__self__, "disk_type", disk_type)
         if ephemeral_storage_config is not None:
             pulumi.set(__self__, "ephemeral_storage_config", ephemeral_storage_config)
+        if gcfs_config is not None:
+            pulumi.set(__self__, "gcfs_config", gcfs_config)
         if guest_accelerators is not None:
             pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         if image_type is not None:
@@ -2841,6 +2901,19 @@ class ClusterNodePoolNodeConfig(dict):
         Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
         """
         return pulumi.get(self, "ephemeral_storage_config")
+
+    @property
+    @pulumi.getter(name="gcfsConfig")
+    def gcfs_config(self) -> Optional['outputs.ClusterNodePoolNodeConfigGcfsConfig']:
+        """
+        Parameters for the Google Container Filesystem (GCFS).
+        If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version` from GKE versions 1.19 or later to use it.
+        For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
+        A `machine_type` that has more than 16 GiB of memory is also recommended.
+        GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gcfs_config")
 
     @property
     @pulumi.getter(name="guestAccelerators")
@@ -3043,6 +3116,26 @@ class ClusterNodePoolNodeConfigEphemeralStorageConfig(dict):
         Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
         """
         return pulumi.get(self, "local_ssd_count")
+
+
+@pulumi.output_type
+class ClusterNodePoolNodeConfigGcfsConfig(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        :param bool enabled: Enable the PodSecurityPolicy controller for this cluster.
+               If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Enable the PodSecurityPolicy controller for this cluster.
+        If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -3976,6 +4069,8 @@ class NodePoolNodeConfig(dict):
             suggest = "disk_type"
         elif key == "ephemeralStorageConfig":
             suggest = "ephemeral_storage_config"
+        elif key == "gcfsConfig":
+            suggest = "gcfs_config"
         elif key == "guestAccelerators":
             suggest = "guest_accelerators"
         elif key == "imageType":
@@ -4017,6 +4112,7 @@ class NodePoolNodeConfig(dict):
                  disk_size_gb: Optional[int] = None,
                  disk_type: Optional[str] = None,
                  ephemeral_storage_config: Optional['outputs.NodePoolNodeConfigEphemeralStorageConfig'] = None,
+                 gcfs_config: Optional['outputs.NodePoolNodeConfigGcfsConfig'] = None,
                  guest_accelerators: Optional[Sequence['outputs.NodePoolNodeConfigGuestAccelerator']] = None,
                  image_type: Optional[str] = None,
                  kubelet_config: Optional['outputs.NodePoolNodeConfigKubeletConfig'] = None,
@@ -4042,6 +4138,8 @@ class NodePoolNodeConfig(dict):
             pulumi.set(__self__, "disk_type", disk_type)
         if ephemeral_storage_config is not None:
             pulumi.set(__self__, "ephemeral_storage_config", ephemeral_storage_config)
+        if gcfs_config is not None:
+            pulumi.set(__self__, "gcfs_config", gcfs_config)
         if guest_accelerators is not None:
             pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         if image_type is not None:
@@ -4096,6 +4194,11 @@ class NodePoolNodeConfig(dict):
     @pulumi.getter(name="ephemeralStorageConfig")
     def ephemeral_storage_config(self) -> Optional['outputs.NodePoolNodeConfigEphemeralStorageConfig']:
         return pulumi.get(self, "ephemeral_storage_config")
+
+    @property
+    @pulumi.getter(name="gcfsConfig")
+    def gcfs_config(self) -> Optional['outputs.NodePoolNodeConfigGcfsConfig']:
+        return pulumi.get(self, "gcfs_config")
 
     @property
     @pulumi.getter(name="guestAccelerators")
@@ -4210,6 +4313,18 @@ class NodePoolNodeConfigEphemeralStorageConfig(dict):
     @pulumi.getter(name="localSsdCount")
     def local_ssd_count(self) -> int:
         return pulumi.get(self, "local_ssd_count")
+
+
+@pulumi.output_type
+class NodePoolNodeConfigGcfsConfig(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -5104,6 +5219,7 @@ class GetClusterNodeConfigResult(dict):
                  disk_size_gb: int,
                  disk_type: str,
                  ephemeral_storage_configs: Sequence['outputs.GetClusterNodeConfigEphemeralStorageConfigResult'],
+                 gcfs_configs: Sequence['outputs.GetClusterNodeConfigGcfsConfigResult'],
                  guest_accelerators: Sequence['outputs.GetClusterNodeConfigGuestAcceleratorResult'],
                  image_type: str,
                  kubelet_configs: Sequence['outputs.GetClusterNodeConfigKubeletConfigResult'],
@@ -5125,6 +5241,7 @@ class GetClusterNodeConfigResult(dict):
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         pulumi.set(__self__, "disk_type", disk_type)
         pulumi.set(__self__, "ephemeral_storage_configs", ephemeral_storage_configs)
+        pulumi.set(__self__, "gcfs_configs", gcfs_configs)
         pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         pulumi.set(__self__, "image_type", image_type)
         pulumi.set(__self__, "kubelet_configs", kubelet_configs)
@@ -5162,6 +5279,11 @@ class GetClusterNodeConfigResult(dict):
     @pulumi.getter(name="ephemeralStorageConfigs")
     def ephemeral_storage_configs(self) -> Sequence['outputs.GetClusterNodeConfigEphemeralStorageConfigResult']:
         return pulumi.get(self, "ephemeral_storage_configs")
+
+    @property
+    @pulumi.getter(name="gcfsConfigs")
+    def gcfs_configs(self) -> Sequence['outputs.GetClusterNodeConfigGcfsConfigResult']:
+        return pulumi.get(self, "gcfs_configs")
 
     @property
     @pulumi.getter(name="guestAccelerators")
@@ -5259,6 +5381,18 @@ class GetClusterNodeConfigEphemeralStorageConfigResult(dict):
     @pulumi.getter(name="localSsdCount")
     def local_ssd_count(self) -> int:
         return pulumi.get(self, "local_ssd_count")
+
+
+@pulumi.output_type
+class GetClusterNodeConfigGcfsConfigResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -5574,6 +5708,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
                  disk_size_gb: int,
                  disk_type: str,
                  ephemeral_storage_configs: Sequence['outputs.GetClusterNodePoolNodeConfigEphemeralStorageConfigResult'],
+                 gcfs_configs: Sequence['outputs.GetClusterNodePoolNodeConfigGcfsConfigResult'],
                  guest_accelerators: Sequence['outputs.GetClusterNodePoolNodeConfigGuestAcceleratorResult'],
                  image_type: str,
                  kubelet_configs: Sequence['outputs.GetClusterNodePoolNodeConfigKubeletConfigResult'],
@@ -5595,6 +5730,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         pulumi.set(__self__, "disk_type", disk_type)
         pulumi.set(__self__, "ephemeral_storage_configs", ephemeral_storage_configs)
+        pulumi.set(__self__, "gcfs_configs", gcfs_configs)
         pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         pulumi.set(__self__, "image_type", image_type)
         pulumi.set(__self__, "kubelet_configs", kubelet_configs)
@@ -5632,6 +5768,11 @@ class GetClusterNodePoolNodeConfigResult(dict):
     @pulumi.getter(name="ephemeralStorageConfigs")
     def ephemeral_storage_configs(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigEphemeralStorageConfigResult']:
         return pulumi.get(self, "ephemeral_storage_configs")
+
+    @property
+    @pulumi.getter(name="gcfsConfigs")
+    def gcfs_configs(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigGcfsConfigResult']:
+        return pulumi.get(self, "gcfs_configs")
 
     @property
     @pulumi.getter(name="guestAccelerators")
@@ -5729,6 +5870,18 @@ class GetClusterNodePoolNodeConfigEphemeralStorageConfigResult(dict):
     @pulumi.getter(name="localSsdCount")
     def local_ssd_count(self) -> int:
         return pulumi.get(self, "local_ssd_count")
+
+
+@pulumi.output_type
+class GetClusterNodePoolNodeConfigGcfsConfigResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

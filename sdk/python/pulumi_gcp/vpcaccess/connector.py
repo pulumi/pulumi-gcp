@@ -481,6 +481,64 @@ class Connector(pulumi.CustomResource):
             machine_type="e2-standard-4",
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
+        ### Cloudrun VPC Access Connector
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        vpcaccess_api = gcp.projects.Service("vpcaccessApi",
+            service="vpcaccess.googleapis.com",
+            disable_on_destroy=False,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # VPC
+        default = gcp.compute.Network("default", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        # VPC access connector
+        connector = gcp.vpcaccess.Connector("connector",
+            region="us-west1",
+            ip_cidr_range="10.8.0.0/28",
+            network=default.name,
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[vpcaccess_api]))
+        # Cloud Router
+        router = gcp.compute.Router("router",
+            region="us-west1",
+            network=default.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # NAT configuration
+        router_nat = gcp.compute.RouterNat("routerNat",
+            region="us-west1",
+            router=router.name,
+            source_subnetwork_ip_ranges_to_nat="ALL_SUBNETWORKS_ALL_IP_RANGES",
+            nat_ip_allocate_option="AUTO_ONLY",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # Cloud Run service
+        gcr_service = gcp.cloudrun.Service("gcrService",
+            location="us-west1",
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                        resources=gcp.cloudrun.ServiceTemplateSpecContainerResourcesArgs(
+                            limits={
+                                "cpu": "1000m",
+                                "memory": "512M",
+                            },
+                        ),
+                    )],
+                ),
+                metadata=gcp.cloudrun.ServiceTemplateMetadataArgs(
+                    annotations={
+                        "autoscaling.knative.dev/maxScale": "5",
+                        "run.googleapis.com/vpc-access-connector": connector.name,
+                        "run.googleapis.com/vpc-access-egress": "all",
+                    },
+                ),
+            ),
+            autogenerate_revision_name=True,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -563,6 +621,64 @@ class Connector(pulumi.CustomResource):
                 name=custom_test_subnetwork.name,
             ),
             machine_type="e2-standard-4",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Cloudrun VPC Access Connector
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        vpcaccess_api = gcp.projects.Service("vpcaccessApi",
+            service="vpcaccess.googleapis.com",
+            disable_on_destroy=False,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # VPC
+        default = gcp.compute.Network("default", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        # VPC access connector
+        connector = gcp.vpcaccess.Connector("connector",
+            region="us-west1",
+            ip_cidr_range="10.8.0.0/28",
+            network=default.name,
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[vpcaccess_api]))
+        # Cloud Router
+        router = gcp.compute.Router("router",
+            region="us-west1",
+            network=default.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # NAT configuration
+        router_nat = gcp.compute.RouterNat("routerNat",
+            region="us-west1",
+            router=router.name,
+            source_subnetwork_ip_ranges_to_nat="ALL_SUBNETWORKS_ALL_IP_RANGES",
+            nat_ip_allocate_option="AUTO_ONLY",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # Cloud Run service
+        gcr_service = gcp.cloudrun.Service("gcrService",
+            location="us-west1",
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                        resources=gcp.cloudrun.ServiceTemplateSpecContainerResourcesArgs(
+                            limits={
+                                "cpu": "1000m",
+                                "memory": "512M",
+                            },
+                        ),
+                    )],
+                ),
+                metadata=gcp.cloudrun.ServiceTemplateMetadataArgs(
+                    annotations={
+                        "autoscaling.knative.dev/maxScale": "5",
+                        "run.googleapis.com/vpc-access-connector": connector.name,
+                        "run.googleapis.com/vpc-access-egress": "all",
+                    },
+                ),
+            ),
+            autogenerate_revision_name=True,
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 

@@ -145,8 +145,7 @@ type Cluster struct {
 	// [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
 	// Structure is documented below.
 	ClusterTelemetry ClusterClusterTelemetryOutput `pulumi:"clusterTelemetry"`
-	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration
-	// can't be changed (or added/removed) after cluster creation without deleting and recreating the entire cluster.
+	// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
 	ConfidentialNodes ClusterConfidentialNodesOutput `pulumi:"confidentialNodes"`
 	// Structure is documented below.
 	DatabaseEncryption ClusterDatabaseEncryptionOutput `pulumi:"databaseEncryption"`
@@ -305,7 +304,8 @@ type Cluster struct {
 	// Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
 	NotificationConfig ClusterNotificationConfigOutput `pulumi:"notificationConfig"`
 	Operation          pulumi.StringOutput             `pulumi:"operation"`
-	// Configuration for the
+	// ) Configuration for the
+	// > > > > > > > v4.1.0
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
 	PodSecurityPolicyConfig ClusterPodSecurityPolicyConfigPtrOutput `pulumi:"podSecurityPolicyConfig"`
@@ -412,8 +412,7 @@ type clusterState struct {
 	// [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
 	// Structure is documented below.
 	ClusterTelemetry *ClusterClusterTelemetry `pulumi:"clusterTelemetry"`
-	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration
-	// can't be changed (or added/removed) after cluster creation without deleting and recreating the entire cluster.
+	// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
 	ConfidentialNodes *ClusterConfidentialNodes `pulumi:"confidentialNodes"`
 	// Structure is documented below.
 	DatabaseEncryption *ClusterDatabaseEncryption `pulumi:"databaseEncryption"`
@@ -572,7 +571,8 @@ type clusterState struct {
 	// Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
 	NotificationConfig *ClusterNotificationConfig `pulumi:"notificationConfig"`
 	Operation          *string                    `pulumi:"operation"`
-	// Configuration for the
+	// ) Configuration for the
+	// > > > > > > > v4.1.0
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
 	PodSecurityPolicyConfig *ClusterPodSecurityPolicyConfig `pulumi:"podSecurityPolicyConfig"`
@@ -651,8 +651,7 @@ type ClusterState struct {
 	// [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
 	// Structure is documented below.
 	ClusterTelemetry ClusterClusterTelemetryPtrInput
-	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration
-	// can't be changed (or added/removed) after cluster creation without deleting and recreating the entire cluster.
+	// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
 	ConfidentialNodes ClusterConfidentialNodesPtrInput
 	// Structure is documented below.
 	DatabaseEncryption ClusterDatabaseEncryptionPtrInput
@@ -811,7 +810,8 @@ type ClusterState struct {
 	// Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
 	NotificationConfig ClusterNotificationConfigPtrInput
 	Operation          pulumi.StringPtrInput
-	// Configuration for the
+	// ) Configuration for the
+	// > > > > > > > v4.1.0
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
 	PodSecurityPolicyConfig ClusterPodSecurityPolicyConfigPtrInput
@@ -894,8 +894,7 @@ type clusterArgs struct {
 	// [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
 	// Structure is documented below.
 	ClusterTelemetry *ClusterClusterTelemetry `pulumi:"clusterTelemetry"`
-	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration
-	// can't be changed (or added/removed) after cluster creation without deleting and recreating the entire cluster.
+	// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
 	ConfidentialNodes *ClusterConfidentialNodes `pulumi:"confidentialNodes"`
 	// Structure is documented below.
 	DatabaseEncryption *ClusterDatabaseEncryption `pulumi:"databaseEncryption"`
@@ -1045,7 +1044,8 @@ type clusterArgs struct {
 	NodeVersion *string `pulumi:"nodeVersion"`
 	// Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
 	NotificationConfig *ClusterNotificationConfig `pulumi:"notificationConfig"`
-	// Configuration for the
+	// ) Configuration for the
+	// > > > > > > > v4.1.0
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
 	PodSecurityPolicyConfig *ClusterPodSecurityPolicyConfig `pulumi:"podSecurityPolicyConfig"`
@@ -1114,8 +1114,7 @@ type ClusterArgs struct {
 	// [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
 	// Structure is documented below.
 	ClusterTelemetry ClusterClusterTelemetryPtrInput
-	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration
-	// can't be changed (or added/removed) after cluster creation without deleting and recreating the entire cluster.
+	// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
 	ConfidentialNodes ClusterConfidentialNodesPtrInput
 	// Structure is documented below.
 	DatabaseEncryption ClusterDatabaseEncryptionPtrInput
@@ -1265,7 +1264,8 @@ type ClusterArgs struct {
 	NodeVersion pulumi.StringPtrInput
 	// Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
 	NotificationConfig ClusterNotificationConfigPtrInput
-	// Configuration for the
+	// ) Configuration for the
+	// > > > > > > > v4.1.0
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
 	PodSecurityPolicyConfig ClusterPodSecurityPolicyConfigPtrInput
