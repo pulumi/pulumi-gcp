@@ -221,11 +221,13 @@ github.com/prometheus/tsdb v0.7.1 h1:YZcsG11NqnK4czYLrWd9mpEuAJIHVQLwdrleYfszMAA
 github.com/prometheus/tsdb v0.7.1/go.mod h1:qhTCs0VvXwvX/y3TZrWD7rabWM+ijKTux40TwIPHuXU=
 github.com/pulumi/pulumi-gcp/sdk/v5 v5.7.0 h1:Mf9OX9lubaL1/jzuRZ5CGEkALdWPLW8c8ZOA0wGlY/w=
 github.com/pulumi/pulumi-gcp/sdk/v5 v5.7.0/go.mod h1:IsAf9XEar0Nwr0cNMpnlYJZlKqUgmDTx+ipa+cBEzyc=
+github.com/pulumi/pulumi-gcp/sdk/v6 v6.0.0/go.mod h1:Ooqj614MWtk4IA+2/tp6Dwl3o8pshUSU/YQN6v7og/E=
 github.com/pulumi/pulumi/sdk/v3 v3.3.1/go.mod h1:GBHyQ7awNQSRmiKp/p8kIKrGrMOZeA/k2czoM/GOqds=
 github.com/pulumi/pulumi/sdk/v3 v3.4.0 h1:9FTfaLXQ4B0w8rcCdtW10rbfHk6Uo5BHLnd5WK5yBh8=
 github.com/pulumi/pulumi/sdk/v3 v3.4.0/go.mod h1:GBHyQ7awNQSRmiKp/p8kIKrGrMOZeA/k2czoM/GOqds=
 github.com/pulumi/pulumi/sdk/v3 v3.11.0 h1:XljryA45etplc9WfmTm8/DKi5Evx94j0qQ7ovSWL/To=
 github.com/pulumi/pulumi/sdk/v3 v3.11.0/go.mod h1:bxxmONw/K6M4KHRKWTwP/u77JbqDFnt96p0nSsrsHnQ=
+github.com/pulumi/pulumi/sdk/v3 v3.14.0/go.mod h1:aT7YmFdR6/T7tp2tMIZ68WRD1Xyv5a6Y4BhsuaCNpW0=
 github.com/pulumi/pulumi/sdk/v3 v3.14.1-0.20211007222624-789e39219452 h1:ROybvuc1v+eqYOnP+BFN6WRGWpF4WbNWV0YT1vwpVHE=
 github.com/pulumi/pulumi/sdk/v3 v3.14.1-0.20211007222624-789e39219452/go.mod h1:aT7YmFdR6/T7tp2tMIZ68WRD1Xyv5a6Y4BhsuaCNpW0=
 github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af h1:gu+uRPtBe88sKxUCEXRoeCvVG90TJmwhiqRpvdhQFng=
