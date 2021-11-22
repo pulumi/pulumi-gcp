@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v4.1.0 of the Google Beta Terraform Provider
+_(none)_
 
 ---
+
+## 6.2.0 (2021-11-22)
+* Upgrade to v4.1.0 of the Google Beta Terraform Provider
 
 ## 6.1.0 (2021-11-17)
 * Upgrade to terraform-bridge 3.11.0
