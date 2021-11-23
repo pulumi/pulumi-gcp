@@ -25,8 +25,8 @@ builds:
   - windows
   - linux
   ldflags:
-  - -X github.com/pulumi/pulumi-gcp/provider/v6/pkg/version.Version={{.Tag}}
-  - -X github.com/hashicorp/terraform-provider-google-beta/version.ProviderVersion={{.Tag}}
+  - -X github.com/pulumi/pulumi-gcp/provider/v5/pkg/version.Version={{.Tag}}
+  - -X github.com/hashicorp/terraform-provider-google-beta/version.ProviderVersion=${VERSION}
   main: ./cmd/pulumi-resource-gcp/
 changelog:
   skip: true
