@@ -56,6 +56,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? NicType;
         /// <summary>
+        /// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+        /// </summary>
+        public readonly int? QueueCount;
+        /// <summary>
         /// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
         /// </summary>
         public readonly string? StackType;
@@ -89,6 +93,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? nicType,
 
+            int? queueCount,
+
             string? stackType,
 
             string? subnetwork,
@@ -103,6 +109,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             Network = network;
             NetworkIp = networkIp;
             NicType = nicType;
+            QueueCount = queueCount;
             StackType = stackType;
             Subnetwork = subnetwork;
             SubnetworkProject = subnetworkProject;

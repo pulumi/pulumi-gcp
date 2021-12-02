@@ -10,7 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Monitoring
 {
     /// <summary>
-    /// Beta only
+    /// Beta only: Monitored Project allows you to set a project as monitored by a _metrics scope_, which is a term for a project used to group the metrics of multiple projects, potentially across multiple organizations.  This enables you to view these groups in the Monitoring page of the cloud console.
+    /// 
+    /// For more information, see:
+    /// * [Understanding metrics scopes](https://cloud.google.com/monitoring/settings#concept-scope)
+    /// * [API notes](https://cloud.google.com/monitoring/settings/manage-api)
     /// ## Example Usage
     /// ### Basic_monitored_project
     /// A basic example of a monitoring monitored project
@@ -24,14 +28,14 @@ namespace Pulumi.Gcp.Monitoring
     ///     {
     ///         var primary = new Gcp.Monitoring.MonitoredProject("primary", new Gcp.Monitoring.MonitoredProjectArgs
     ///         {
-    ///             MetricsScope = "my-project-name",
+    ///             MetricsScope = "existing-metrics-scope-project",
     ///         }, new CustomResourceOptions
     ///         {
     ///             Provider = google_beta,
     ///         });
     ///         var basic = new Gcp.Organizations.Project("basic", new Gcp.Organizations.ProjectArgs
     ///         {
-    ///             ProjectId = "id",
+    ///             ProjectId = "my-monitored-project",
     ///             OrgId = "123456789",
     ///         }, new CustomResourceOptions
     ///         {

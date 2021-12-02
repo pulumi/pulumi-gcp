@@ -6117,6 +6117,7 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
                  network: Optional[pulumi.Input[str]] = None,
                  network_ip: Optional[pulumi.Input[str]] = None,
                  nic_type: Optional[pulumi.Input[str]] = None,
+                 queue_count: Optional[pulumi.Input[int]] = None,
                  stack_type: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  subnetwork_project: Optional[pulumi.Input[str]] = None):
@@ -6140,6 +6141,8 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
             pulumi.set(__self__, "network_ip", network_ip)
         if nic_type is not None:
             pulumi.set(__self__, "nic_type", nic_type)
+        if queue_count is not None:
+            pulumi.set(__self__, "queue_count", queue_count)
         if stack_type is not None:
             pulumi.set(__self__, "stack_type", stack_type)
         if subnetwork is not None:
@@ -6222,6 +6225,15 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
     @nic_type.setter
     def nic_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "nic_type", value)
+
+    @property
+    @pulumi.getter(name="queueCount")
+    def queue_count(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "queue_count")
+
+    @queue_count.setter
+    def queue_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "queue_count", value)
 
     @property
     @pulumi.getter(name="stackType")
@@ -6944,6 +6956,7 @@ class InstanceFromTemplateNetworkInterfaceArgs:
                  network: Optional[pulumi.Input[str]] = None,
                  network_ip: Optional[pulumi.Input[str]] = None,
                  nic_type: Optional[pulumi.Input[str]] = None,
+                 queue_count: Optional[pulumi.Input[int]] = None,
                  stack_type: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  subnetwork_project: Optional[pulumi.Input[str]] = None):
@@ -6967,6 +6980,8 @@ class InstanceFromTemplateNetworkInterfaceArgs:
             pulumi.set(__self__, "network_ip", network_ip)
         if nic_type is not None:
             pulumi.set(__self__, "nic_type", nic_type)
+        if queue_count is not None:
+            pulumi.set(__self__, "queue_count", queue_count)
         if stack_type is not None:
             pulumi.set(__self__, "stack_type", stack_type)
         if subnetwork is not None:
@@ -7049,6 +7064,15 @@ class InstanceFromTemplateNetworkInterfaceArgs:
     @nic_type.setter
     def nic_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "nic_type", value)
+
+    @property
+    @pulumi.getter(name="queueCount")
+    def queue_count(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "queue_count")
+
+    @queue_count.setter
+    def queue_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "queue_count", value)
 
     @property
     @pulumi.getter(name="stackType")
@@ -8131,6 +8155,7 @@ class InstanceNetworkInterfaceArgs:
                  network: Optional[pulumi.Input[str]] = None,
                  network_ip: Optional[pulumi.Input[str]] = None,
                  nic_type: Optional[pulumi.Input[str]] = None,
+                 queue_count: Optional[pulumi.Input[int]] = None,
                  stack_type: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  subnetwork_project: Optional[pulumi.Input[str]] = None):
@@ -8157,6 +8182,7 @@ class InstanceNetworkInterfaceArgs:
         :param pulumi.Input[str] network_ip: The private IP address to assign to the instance. If
                empty, the address will be automatically assigned.
         :param pulumi.Input[str] nic_type: The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
+        :param pulumi.Input[int] queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
         :param pulumi.Input[str] stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
         :param pulumi.Input[str] subnetwork: The name or self_link of the subnetwork to attach this
                interface to. Either `network` or `subnetwork` must be provided. If network isn't provided
@@ -8186,6 +8212,8 @@ class InstanceNetworkInterfaceArgs:
             pulumi.set(__self__, "network_ip", network_ip)
         if nic_type is not None:
             pulumi.set(__self__, "nic_type", nic_type)
+        if queue_count is not None:
+            pulumi.set(__self__, "queue_count", queue_count)
         if stack_type is not None:
             pulumi.set(__self__, "stack_type", stack_type)
         if subnetwork is not None:
@@ -8302,6 +8330,18 @@ class InstanceNetworkInterfaceArgs:
     @nic_type.setter
     def nic_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "nic_type", value)
+
+    @property
+    @pulumi.getter(name="queueCount")
+    def queue_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+        """
+        return pulumi.get(self, "queue_count")
+
+    @queue_count.setter
+    def queue_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "queue_count", value)
 
     @property
     @pulumi.getter(name="stackType")
@@ -9321,6 +9361,7 @@ class InstanceTemplateNetworkInterfaceArgs:
                  network: Optional[pulumi.Input[str]] = None,
                  network_ip: Optional[pulumi.Input[str]] = None,
                  nic_type: Optional[pulumi.Input[str]] = None,
+                 queue_count: Optional[pulumi.Input[int]] = None,
                  stack_type: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  subnetwork_project: Optional[pulumi.Input[str]] = None):
@@ -9345,6 +9386,7 @@ class InstanceTemplateNetworkInterfaceArgs:
         :param pulumi.Input[str] network_ip: The private IP address to assign to the instance. If
                empty, the address will be automatically assigned.
         :param pulumi.Input[str] nic_type: The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
+        :param pulumi.Input[int] queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
         :param pulumi.Input[str] stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
         :param pulumi.Input[str] subnetwork: the name of the subnetwork to attach this interface
                to. The subnetwork must exist in the same `region` this instance will be
@@ -9368,6 +9410,8 @@ class InstanceTemplateNetworkInterfaceArgs:
             pulumi.set(__self__, "network_ip", network_ip)
         if nic_type is not None:
             pulumi.set(__self__, "nic_type", nic_type)
+        if queue_count is not None:
+            pulumi.set(__self__, "queue_count", queue_count)
         if stack_type is not None:
             pulumi.set(__self__, "stack_type", stack_type)
         if subnetwork is not None:
@@ -9480,6 +9524,18 @@ class InstanceTemplateNetworkInterfaceArgs:
     @nic_type.setter
     def nic_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "nic_type", value)
+
+    @property
+    @pulumi.getter(name="queueCount")
+    def queue_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+        """
+        return pulumi.get(self, "queue_count")
+
+    @queue_count.setter
+    def queue_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "queue_count", value)
 
     @property
     @pulumi.getter(name="stackType")

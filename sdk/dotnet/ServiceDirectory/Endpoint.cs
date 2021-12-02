@@ -64,6 +64,64 @@ namespace Pulumi.Gcp.ServiceDirectory
     /// 
     /// }
     /// ```
+    /// ### Service Directory Endpoint With Network
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var project = Output.Create(Gcp.Organizations.GetProject.InvokeAsync());
+    ///         var exampleNetwork = new Gcp.Compute.Network("exampleNetwork", new Gcp.Compute.NetworkArgs
+    ///         {
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var exampleNamespace = new Gcp.ServiceDirectory.Namespace("exampleNamespace", new Gcp.ServiceDirectory.NamespaceArgs
+    ///         {
+    ///             NamespaceId = "example-namespace",
+    ///             Location = "us-central1",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var exampleService = new Gcp.ServiceDirectory.Service("exampleService", new Gcp.ServiceDirectory.ServiceArgs
+    ///         {
+    ///             ServiceId = "example-service",
+    ///             Namespace = exampleNamespace.Id,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var exampleEndpoint = new Gcp.ServiceDirectory.Endpoint("exampleEndpoint", new Gcp.ServiceDirectory.EndpointArgs
+    ///         {
+    ///             EndpointId = "example-endpoint",
+    ///             Service = exampleService.Id,
+    ///             Metadata = 
+    ///             {
+    ///                 { "stage", "prod" },
+    ///                 { "region", "us-central1" },
+    ///             },
+    ///             Network = Output.Tuple(project, exampleNetwork.Name).Apply(values =&gt;
+    ///             {
+    ///                 var project = values.Item1;
+    ///                 var name = values.Item2;
+    ///                 return $"projects/{project.Number}/locations/global/networks/{name}";
+    ///             }),
+    ///             Address = "1.2.3.4",
+    ///             Port = 5353,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -111,6 +169,12 @@ namespace Pulumi.Gcp.ServiceDirectory
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
+        /// </summary>
+        [Output("network")]
+        public Output<string?> Network { get; private set; } = null!;
 
         /// <summary>
         /// Port that the endpoint is running on, must be in the
@@ -200,6 +264,12 @@ namespace Pulumi.Gcp.ServiceDirectory
         }
 
         /// <summary>
+        /// The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
+        /// </summary>
+        [Input("network")]
+        public Input<string>? Network { get; set; }
+
+        /// <summary>
         /// Port that the endpoint is running on, must be in the
         /// range of [0, 65535]. If unspecified, the default is 0.
         /// </summary>
@@ -252,6 +322,12 @@ namespace Pulumi.Gcp.ServiceDirectory
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
+        /// </summary>
+        [Input("network")]
+        public Input<string>? Network { get; set; }
 
         /// <summary>
         /// Port that the endpoint is running on, must be in the

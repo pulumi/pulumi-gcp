@@ -63,6 +63,64 @@ import (
 // 	})
 // }
 // ```
+// ### Service Directory Endpoint With Network
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicedirectory"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		project, err := organizations.LookupProject(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleNetwork, err := compute.NewNetwork(ctx, "exampleNetwork", nil, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleNamespace, err := servicedirectory.NewNamespace(ctx, "exampleNamespace", &servicedirectory.NamespaceArgs{
+// 			NamespaceId: pulumi.String("example-namespace"),
+// 			Location:    pulumi.String("us-central1"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleService, err := servicedirectory.NewService(ctx, "exampleService", &servicedirectory.ServiceArgs{
+// 			ServiceId: pulumi.String("example-service"),
+// 			Namespace: exampleNamespace.ID(),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = servicedirectory.NewEndpoint(ctx, "exampleEndpoint", &servicedirectory.EndpointArgs{
+// 			EndpointId: pulumi.String("example-endpoint"),
+// 			Service:    exampleService.ID(),
+// 			Metadata: pulumi.StringMap{
+// 				"stage":  pulumi.String("prod"),
+// 				"region": pulumi.String("us-central1"),
+// 			},
+// 			Network: exampleNetwork.Name.ApplyT(func(name string) (string, error) {
+// 				return fmt.Sprintf("%v%v%v%v", "projects/", project.Number, "/locations/global/networks/", name), nil
+// 			}).(pulumi.StringOutput),
+// 			Address: pulumi.String("1.2.3.4"),
+// 			Port:    pulumi.Int(5353),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //
@@ -94,6 +152,8 @@ type Endpoint struct {
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
 	// The resource name for the endpoint in the format 'projects/*/locations/*/namespaces/*/services/*/endpoints/*'.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
+	Network pulumi.StringPtrOutput `pulumi:"network"`
 	// Port that the endpoint is running on, must be in the
 	// range of [0, 65535]. If unspecified, the default is 0.
 	Port pulumi.IntPtrOutput `pulumi:"port"`
@@ -148,6 +208,8 @@ type endpointState struct {
 	Metadata map[string]string `pulumi:"metadata"`
 	// The resource name for the endpoint in the format 'projects/*/locations/*/namespaces/*/services/*/endpoints/*'.
 	Name *string `pulumi:"name"`
+	// The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
+	Network *string `pulumi:"network"`
 	// Port that the endpoint is running on, must be in the
 	// range of [0, 65535]. If unspecified, the default is 0.
 	Port *int `pulumi:"port"`
@@ -168,6 +230,8 @@ type EndpointState struct {
 	Metadata pulumi.StringMapInput
 	// The resource name for the endpoint in the format 'projects/*/locations/*/namespaces/*/services/*/endpoints/*'.
 	Name pulumi.StringPtrInput
+	// The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
+	Network pulumi.StringPtrInput
 	// Port that the endpoint is running on, must be in the
 	// range of [0, 65535]. If unspecified, the default is 0.
 	Port pulumi.IntPtrInput
@@ -190,6 +254,8 @@ type endpointArgs struct {
 	// up to 512 characters, spread across all key-value pairs.
 	// Metadata that goes beyond any these limits will be rejected.
 	Metadata map[string]string `pulumi:"metadata"`
+	// The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
+	Network *string `pulumi:"network"`
 	// Port that the endpoint is running on, must be in the
 	// range of [0, 65535]. If unspecified, the default is 0.
 	Port *int `pulumi:"port"`
@@ -209,6 +275,8 @@ type EndpointArgs struct {
 	// up to 512 characters, spread across all key-value pairs.
 	// Metadata that goes beyond any these limits will be rejected.
 	Metadata pulumi.StringMapInput
+	// The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
+	Network pulumi.StringPtrInput
 	// Port that the endpoint is running on, must be in the
 	// range of [0, 65535]. If unspecified, the default is 0.
 	Port pulumi.IntPtrInput

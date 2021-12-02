@@ -1446,7 +1446,7 @@ class RegionHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="logConfig")
-    def log_config(self) -> pulumi.Output[Optional['outputs.RegionHealthCheckLogConfig']]:
+    def log_config(self) -> pulumi.Output['outputs.RegionHealthCheckLogConfig']:
         """
         Configure logging on this health check.
         Structure is documented below.

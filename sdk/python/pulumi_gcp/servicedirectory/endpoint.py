@@ -17,6 +17,7 @@ class EndpointArgs:
                  service: pulumi.Input[str],
                  address: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a Endpoint resource.
@@ -28,6 +29,7 @@ class EndpointArgs:
                by service clients. The entire metadata dictionary may contain
                up to 512 characters, spread across all key-value pairs.
                Metadata that goes beyond any these limits will be rejected.
+        :param pulumi.Input[str] network: The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
         :param pulumi.Input[int] port: Port that the endpoint is running on, must be in the
                range of [0, 65535]. If unspecified, the default is 0.
         """
@@ -37,6 +39,8 @@ class EndpointArgs:
             pulumi.set(__self__, "address", address)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
         if port is not None:
             pulumi.set(__self__, "port", port)
 
@@ -94,6 +98,18 @@ class EndpointArgs:
 
     @property
     @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
         """
         Port that the endpoint is running on, must be in the
@@ -113,6 +129,7 @@ class _EndpointState:
                  endpoint_id: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  service: Optional[pulumi.Input[str]] = None):
         """
@@ -125,6 +142,7 @@ class _EndpointState:
                up to 512 characters, spread across all key-value pairs.
                Metadata that goes beyond any these limits will be rejected.
         :param pulumi.Input[str] name: The resource name for the endpoint in the format 'projects/*/locations/*/namespaces/*/services/*/endpoints/*'.
+        :param pulumi.Input[str] network: The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
         :param pulumi.Input[int] port: Port that the endpoint is running on, must be in the
                range of [0, 65535]. If unspecified, the default is 0.
         :param pulumi.Input[str] service: The resource name of the service that this endpoint provides.
@@ -137,6 +155,8 @@ class _EndpointState:
             pulumi.set(__self__, "metadata", metadata)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if service is not None:
@@ -196,6 +216,18 @@ class _EndpointState:
 
     @property
     @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
         """
         Port that the endpoint is running on, must be in the
@@ -228,6 +260,7 @@ class Endpoint(pulumi.CustomResource):
                  address: Optional[pulumi.Input[str]] = None,
                  endpoint_id: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -266,6 +299,34 @@ class Endpoint(pulumi.CustomResource):
             port=5353,
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
+        ### Service Directory Endpoint With Network
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        example_network = gcp.compute.Network("exampleNetwork", opts=pulumi.ResourceOptions(provider=google_beta))
+        example_namespace = gcp.servicedirectory.Namespace("exampleNamespace",
+            namespace_id="example-namespace",
+            location="us-central1",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        example_service = gcp.servicedirectory.Service("exampleService",
+            service_id="example-service",
+            namespace=example_namespace.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        example_endpoint = gcp.servicedirectory.Endpoint("exampleEndpoint",
+            endpoint_id="example-endpoint",
+            service=example_service.id,
+            metadata={
+                "stage": "prod",
+                "region": "us-central1",
+            },
+            network=example_network.name.apply(lambda name: f"projects/{project.number}/locations/global/networks/{name}"),
+            address="1.2.3.4",
+            port=5353,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -292,6 +353,7 @@ class Endpoint(pulumi.CustomResource):
                by service clients. The entire metadata dictionary may contain
                up to 512 characters, spread across all key-value pairs.
                Metadata that goes beyond any these limits will be rejected.
+        :param pulumi.Input[str] network: The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
         :param pulumi.Input[int] port: Port that the endpoint is running on, must be in the
                range of [0, 65535]. If unspecified, the default is 0.
         :param pulumi.Input[str] service: The resource name of the service that this endpoint provides.
@@ -337,6 +399,34 @@ class Endpoint(pulumi.CustomResource):
             port=5353,
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
+        ### Service Directory Endpoint With Network
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        example_network = gcp.compute.Network("exampleNetwork", opts=pulumi.ResourceOptions(provider=google_beta))
+        example_namespace = gcp.servicedirectory.Namespace("exampleNamespace",
+            namespace_id="example-namespace",
+            location="us-central1",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        example_service = gcp.servicedirectory.Service("exampleService",
+            service_id="example-service",
+            namespace=example_namespace.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        example_endpoint = gcp.servicedirectory.Endpoint("exampleEndpoint",
+            endpoint_id="example-endpoint",
+            service=example_service.id,
+            metadata={
+                "stage": "prod",
+                "region": "us-central1",
+            },
+            network=example_network.name.apply(lambda name: f"projects/{project.number}/locations/global/networks/{name}"),
+            address="1.2.3.4",
+            port=5353,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -372,6 +462,7 @@ class Endpoint(pulumi.CustomResource):
                  address: Optional[pulumi.Input[str]] = None,
                  endpoint_id: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -391,6 +482,7 @@ class Endpoint(pulumi.CustomResource):
                 raise TypeError("Missing required property 'endpoint_id'")
             __props__.__dict__["endpoint_id"] = endpoint_id
             __props__.__dict__["metadata"] = metadata
+            __props__.__dict__["network"] = network
             __props__.__dict__["port"] = port
             if service is None and not opts.urn:
                 raise TypeError("Missing required property 'service'")
@@ -410,6 +502,7 @@ class Endpoint(pulumi.CustomResource):
             endpoint_id: Optional[pulumi.Input[str]] = None,
             metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            network: Optional[pulumi.Input[str]] = None,
             port: Optional[pulumi.Input[int]] = None,
             service: Optional[pulumi.Input[str]] = None) -> 'Endpoint':
         """
@@ -427,6 +520,7 @@ class Endpoint(pulumi.CustomResource):
                up to 512 characters, spread across all key-value pairs.
                Metadata that goes beyond any these limits will be rejected.
         :param pulumi.Input[str] name: The resource name for the endpoint in the format 'projects/*/locations/*/namespaces/*/services/*/endpoints/*'.
+        :param pulumi.Input[str] network: The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
         :param pulumi.Input[int] port: Port that the endpoint is running on, must be in the
                range of [0, 65535]. If unspecified, the default is 0.
         :param pulumi.Input[str] service: The resource name of the service that this endpoint provides.
@@ -439,6 +533,7 @@ class Endpoint(pulumi.CustomResource):
         __props__.__dict__["endpoint_id"] = endpoint_id
         __props__.__dict__["metadata"] = metadata
         __props__.__dict__["name"] = name
+        __props__.__dict__["network"] = network
         __props__.__dict__["port"] = port
         __props__.__dict__["service"] = service
         return Endpoint(resource_name, opts=opts, __props__=__props__)
@@ -478,6 +573,14 @@ class Endpoint(pulumi.CustomResource):
         The resource name for the endpoint in the format 'projects/*/locations/*/namespaces/*/services/*/endpoints/*'.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Output[Optional[str]]:
+        """
+        The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
+        """
+        return pulumi.get(self, "network")
 
     @property
     @pulumi.getter

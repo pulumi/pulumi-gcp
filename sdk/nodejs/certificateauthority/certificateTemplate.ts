@@ -6,6 +6,11 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
+ * Certificate Authority Service provides reusable and parameterized templates that you can use for common certificate issuance scenarios. A certificate template represents a relatively static and well-defined certificate issuance schema within an organization.  A certificate template can essentially become a full-fledged vertical certificate issuance framework.
+ *
+ * For more information, see:
+ * * [Understanding Certificate Templates](https://cloud.google.com/certificate-authority-service/docs/certificate-template)
+ * * [Common configurations and Certificate Profiles](https://cloud.google.com/certificate-authority-service/docs/certificate-profile)
  * ## Example Usage
  * ### Basic_certificate_template
  * An example of a basic privateca certificate template

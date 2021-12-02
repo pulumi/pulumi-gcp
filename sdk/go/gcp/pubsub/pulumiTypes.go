@@ -610,7 +610,9 @@ type LiteTopicRetentionConfig struct {
 	// dropped to make room for newer ones, regardless of the value of period.
 	PerPartitionBytes string `pulumi:"perPartitionBytes"`
 	// How long a published message is retained. If unset, messages will be retained as
-	// long as the bytes retained for each partition is below perPartitionBytes.
+	// long as the bytes retained for each partition is below perPartitionBytes. A
+	// duration in seconds with up to nine fractional digits, terminated by 's'.
+	// Example: "3.5s".
 	Period *string `pulumi:"period"`
 }
 
@@ -631,7 +633,9 @@ type LiteTopicRetentionConfigArgs struct {
 	// dropped to make room for newer ones, regardless of the value of period.
 	PerPartitionBytes pulumi.StringInput `pulumi:"perPartitionBytes"`
 	// How long a published message is retained. If unset, messages will be retained as
-	// long as the bytes retained for each partition is below perPartitionBytes.
+	// long as the bytes retained for each partition is below perPartitionBytes. A
+	// duration in seconds with up to nine fractional digits, terminated by 's'.
+	// Example: "3.5s".
 	Period pulumi.StringPtrInput `pulumi:"period"`
 }
 
@@ -720,7 +724,9 @@ func (o LiteTopicRetentionConfigOutput) PerPartitionBytes() pulumi.StringOutput 
 }
 
 // How long a published message is retained. If unset, messages will be retained as
-// long as the bytes retained for each partition is below perPartitionBytes.
+// long as the bytes retained for each partition is below perPartitionBytes. A
+// duration in seconds with up to nine fractional digits, terminated by 's'.
+// Example: "3.5s".
 func (o LiteTopicRetentionConfigOutput) Period() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LiteTopicRetentionConfig) *string { return v.Period }).(pulumi.StringPtrOutput)
 }
@@ -762,7 +768,9 @@ func (o LiteTopicRetentionConfigPtrOutput) PerPartitionBytes() pulumi.StringPtrO
 }
 
 // How long a published message is retained. If unset, messages will be retained as
-// long as the bytes retained for each partition is below perPartitionBytes.
+// long as the bytes retained for each partition is below perPartitionBytes. A
+// duration in seconds with up to nine fractional digits, terminated by 's'.
+// Example: "3.5s".
 func (o LiteTopicRetentionConfigPtrOutput) Period() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LiteTopicRetentionConfig) *string {
 		if v == nil {
