@@ -861,6 +861,7 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpResource(gcpCompute, "OrganizationSecurityPolicy"),
 			},
 			"google_compute_service_attachment": {Tok: gcpResource(gcpCompute, "ServiceAttachment")},
+			"google_compute_router_status":      {Tok: gcpResource(gcpCompute, "RouterStatus")},
 
 			// Container Analysis resources
 			"google_container_analysis_note": {

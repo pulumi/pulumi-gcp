@@ -210,7 +210,9 @@ class LiteTopicRetentionConfig(dict):
                in any of the topic's partitions grows beyond this value, older messages will be
                dropped to make room for newer ones, regardless of the value of period.
         :param str period: How long a published message is retained. If unset, messages will be retained as
-               long as the bytes retained for each partition is below perPartitionBytes.
+               long as the bytes retained for each partition is below perPartitionBytes. A
+               duration in seconds with up to nine fractional digits, terminated by 's'.
+               Example: "3.5s".
         """
         pulumi.set(__self__, "per_partition_bytes", per_partition_bytes)
         if period is not None:
@@ -231,7 +233,9 @@ class LiteTopicRetentionConfig(dict):
     def period(self) -> Optional[str]:
         """
         How long a published message is retained. If unset, messages will be retained as
-        long as the bytes retained for each partition is below perPartitionBytes.
+        long as the bytes retained for each partition is below perPartitionBytes. A
+        duration in seconds with up to nine fractional digits, terminated by 's'.
+        Example: "3.5s".
         """
         return pulumi.get(self, "period")
 

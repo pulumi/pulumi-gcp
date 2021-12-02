@@ -6,6 +6,12 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
+ * An organization policy gives you programmatic control over your organization's cloud resources.  Using Organization Policies, you will be able to configure constraints across your entire resource hierarchy.
+ *
+ * For more information, see:
+ * * [Understanding Org Policy concepts](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+ * * [The resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)
+ * * [All valid constraints](https://cloud.google.com/resource-manager/docs/organization-policy/org-policy-constraints)
  * ## Example Usage
  * ### Enforce_policy
  * A test of an enforce orgpolicy policy for a project
@@ -15,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * const basic = new gcp.organizations.Project("basic", {
  *     orgId: "123456789",
- *     projectId: "id-test",
+ *     projectId: "id",
  * });
  * const primary = new gcp.orgpolicy.Policy("primary", {
  *     parent: pulumi.interpolate`projects/${basic.name}`,
@@ -67,7 +73,7 @@ import * as utilities from "../utilities";
  *
  * const basic = new gcp.organizations.Project("basic", {
  *     orgId: "123456789",
- *     projectId: "id-test",
+ *     projectId: "id",
  * });
  * const primary = new gcp.orgpolicy.Policy("primary", {
  *     parent: pulumi.interpolate`projects/${basic.name}`,

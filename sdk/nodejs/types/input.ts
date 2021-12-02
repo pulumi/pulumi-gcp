@@ -8563,6 +8563,7 @@ export namespace compute {
         network?: pulumi.Input<string>;
         networkIp?: pulumi.Input<string>;
         nicType?: pulumi.Input<string>;
+        queueCount?: pulumi.Input<number>;
         stackType?: pulumi.Input<string>;
         subnetwork?: pulumi.Input<string>;
         subnetworkProject?: pulumi.Input<string>;
@@ -8683,6 +8684,7 @@ export namespace compute {
         network?: pulumi.Input<string>;
         networkIp?: pulumi.Input<string>;
         nicType?: pulumi.Input<string>;
+        queueCount?: pulumi.Input<number>;
         stackType?: pulumi.Input<string>;
         subnetwork?: pulumi.Input<string>;
         subnetworkProject?: pulumi.Input<string>;
@@ -8984,6 +8986,10 @@ export namespace compute {
          * The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
          */
         nicType?: pulumi.Input<string>;
+        /**
+         * The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+         */
+        queueCount?: pulumi.Input<number>;
         /**
          * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
          */
@@ -9336,6 +9342,10 @@ export namespace compute {
          * The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
          */
         nicType?: pulumi.Input<string>;
+        /**
+         * The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+         */
+        queueCount?: pulumi.Input<number>;
         /**
          * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
          */
@@ -25329,7 +25339,9 @@ export namespace pubsub {
         perPartitionBytes: pulumi.Input<string>;
         /**
          * How long a published message is retained. If unset, messages will be retained as
-         * long as the bytes retained for each partition is below perPartitionBytes.
+         * long as the bytes retained for each partition is below perPartitionBytes. A
+         * duration in seconds with up to nine fractional digits, terminated by 's'.
+         * Example: "3.5s".
          */
         period?: pulumi.Input<string>;
     }

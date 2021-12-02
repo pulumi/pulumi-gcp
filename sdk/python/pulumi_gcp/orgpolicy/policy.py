@@ -133,6 +133,12 @@ class Policy(pulumi.CustomResource):
                  spec: Optional[pulumi.Input[pulumi.InputType['PolicySpecArgs']]] = None,
                  __props__=None):
         """
+        An organization policy gives you programmatic control over your organization's cloud resources.  Using Organization Policies, you will be able to configure constraints across your entire resource hierarchy.
+
+        For more information, see:
+        * [Understanding Org Policy concepts](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+        * [The resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)
+        * [All valid constraints](https://cloud.google.com/resource-manager/docs/organization-policy/org-policy-constraints)
         ## Example Usage
         ### Enforce_policy
         A test of an enforce orgpolicy policy for a project
@@ -142,7 +148,7 @@ class Policy(pulumi.CustomResource):
 
         basic = gcp.organizations.Project("basic",
             org_id="123456789",
-            project_id="id-test")
+            project_id="id")
         primary = gcp.orgpolicy.Policy("primary",
             parent=basic.name.apply(lambda name: f"projects/{name}"),
             spec=gcp.orgpolicy.PolicySpecArgs(
@@ -189,7 +195,7 @@ class Policy(pulumi.CustomResource):
 
         basic = gcp.organizations.Project("basic",
             org_id="123456789",
-            project_id="id-test")
+            project_id="id")
         primary = gcp.orgpolicy.Policy("primary",
             parent=basic.name.apply(lambda name: f"projects/{name}"),
             spec=gcp.orgpolicy.PolicySpecArgs(
@@ -238,6 +244,12 @@ class Policy(pulumi.CustomResource):
                  args: PolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        An organization policy gives you programmatic control over your organization's cloud resources.  Using Organization Policies, you will be able to configure constraints across your entire resource hierarchy.
+
+        For more information, see:
+        * [Understanding Org Policy concepts](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+        * [The resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)
+        * [All valid constraints](https://cloud.google.com/resource-manager/docs/organization-policy/org-policy-constraints)
         ## Example Usage
         ### Enforce_policy
         A test of an enforce orgpolicy policy for a project
@@ -247,7 +259,7 @@ class Policy(pulumi.CustomResource):
 
         basic = gcp.organizations.Project("basic",
             org_id="123456789",
-            project_id="id-test")
+            project_id="id")
         primary = gcp.orgpolicy.Policy("primary",
             parent=basic.name.apply(lambda name: f"projects/{name}"),
             spec=gcp.orgpolicy.PolicySpecArgs(
@@ -294,7 +306,7 @@ class Policy(pulumi.CustomResource):
 
         basic = gcp.organizations.Project("basic",
             org_id="123456789",
-            project_id="id-test")
+            project_id="id")
         primary = gcp.orgpolicy.Policy("primary",
             parent=basic.name.apply(lambda name: f"projects/{name}"),
             spec=gcp.orgpolicy.PolicySpecArgs(

@@ -11,6 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// An organization policy gives you programmatic control over your organization's cloud resources.  Using Organization Policies, you will be able to configure constraints across your entire resource hierarchy.
+//
+// For more information, see:
+// * [Understanding Org Policy concepts](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+// * [The resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)
+// * [All valid constraints](https://cloud.google.com/resource-manager/docs/organization-policy/org-policy-constraints)
 // ## Example Usage
 // ### Enforce_policy
 // A test of an enforce orgpolicy policy for a project
@@ -29,7 +35,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		basic, err := organizations.NewProject(ctx, "basic", &organizations.ProjectArgs{
 // 			OrgId:     pulumi.String("123456789"),
-// 			ProjectId: pulumi.String("id-test"),
+// 			ProjectId: pulumi.String("id"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -133,7 +139,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		basic, err := organizations.NewProject(ctx, "basic", &organizations.ProjectArgs{
 // 			OrgId:     pulumi.String("123456789"),
-// 			ProjectId: pulumi.String("id-test"),
+// 			ProjectId: pulumi.String("id"),
 // 		})
 // 		if err != nil {
 // 			return err

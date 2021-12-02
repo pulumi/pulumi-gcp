@@ -55,6 +55,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("nicType")]
         public Input<string>? NicType { get; set; }
 
+        [Input("queueCount")]
+        public Input<int>? QueueCount { get; set; }
+
         [Input("stackType")]
         public Input<string>? StackType { get; set; }
 

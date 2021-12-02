@@ -45,6 +45,42 @@ import * as utilities from "../utilities";
  *     provider: google_beta,
  * });
  * ```
+ * ### Service Directory Endpoint With Network
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const exampleNetwork = new gcp.compute.Network("exampleNetwork", {}, {
+ *     provider: google_beta,
+ * });
+ * const exampleNamespace = new gcp.servicedirectory.Namespace("exampleNamespace", {
+ *     namespaceId: "example-namespace",
+ *     location: "us-central1",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const exampleService = new gcp.servicedirectory.Service("exampleService", {
+ *     serviceId: "example-service",
+ *     namespace: exampleNamespace.id,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const exampleEndpoint = new gcp.servicedirectory.Endpoint("exampleEndpoint", {
+ *     endpointId: "example-endpoint",
+ *     service: exampleService.id,
+ *     metadata: {
+ *         stage: "prod",
+ *         region: "us-central1",
+ *     },
+ *     network: pulumi.all([project, exampleNetwork.name]).apply(([project, name]) => `projects/${project.number}/locations/global/networks/${name}`),
+ *     address: "1.2.3.4",
+ *     port: 5353,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -111,6 +147,10 @@ export class Endpoint extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
+     * The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
+     */
+    public readonly network!: pulumi.Output<string | undefined>;
+    /**
      * Port that the endpoint is running on, must be in the
      * range of [0, 65535]. If unspecified, the default is 0.
      */
@@ -137,6 +177,7 @@ export class Endpoint extends pulumi.CustomResource {
             inputs["endpointId"] = state ? state.endpointId : undefined;
             inputs["metadata"] = state ? state.metadata : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["network"] = state ? state.network : undefined;
             inputs["port"] = state ? state.port : undefined;
             inputs["service"] = state ? state.service : undefined;
         } else {
@@ -150,6 +191,7 @@ export class Endpoint extends pulumi.CustomResource {
             inputs["address"] = args ? args.address : undefined;
             inputs["endpointId"] = args ? args.endpointId : undefined;
             inputs["metadata"] = args ? args.metadata : undefined;
+            inputs["network"] = args ? args.network : undefined;
             inputs["port"] = args ? args.port : undefined;
             inputs["service"] = args ? args.service : undefined;
             inputs["name"] = undefined /*out*/;
@@ -186,6 +228,10 @@ export interface EndpointState {
      */
     name?: pulumi.Input<string>;
     /**
+     * The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
+     */
+    network?: pulumi.Input<string>;
+    /**
      * Port that the endpoint is running on, must be in the
      * range of [0, 65535]. If unspecified, the default is 0.
      */
@@ -216,6 +262,10 @@ export interface EndpointArgs {
      * Metadata that goes beyond any these limits will be rejected.
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
+     */
+    network?: pulumi.Input<string>;
     /**
      * Port that the endpoint is running on, must be in the
      * range of [0, 65535]. If unspecified, the default is 0.

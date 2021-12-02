@@ -21,7 +21,9 @@ namespace Pulumi.Gcp.PubSub.Outputs
         public readonly string PerPartitionBytes;
         /// <summary>
         /// How long a published message is retained. If unset, messages will be retained as
-        /// long as the bytes retained for each partition is below perPartitionBytes.
+        /// long as the bytes retained for each partition is below perPartitionBytes. A
+        /// duration in seconds with up to nine fractional digits, terminated by 's'.
+        /// Example: "3.5s".
         /// </summary>
         public readonly string? Period;
 

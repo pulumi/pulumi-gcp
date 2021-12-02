@@ -11,7 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Beta only
+// Beta only: Monitored Project allows you to set a project as monitored by a _metrics scope_, which is a term for a project used to group the metrics of multiple projects, potentially across multiple organizations.  This enables you to view these groups in the Monitoring page of the cloud console.
+//
+// For more information, see:
+// * [Understanding metrics scopes](https://cloud.google.com/monitoring/settings#concept-scope)
+// * [API notes](https://cloud.google.com/monitoring/settings/manage-api)
 // ## Example Usage
 // ### Basic_monitored_project
 // A basic example of a monitoring monitored project
@@ -27,13 +31,13 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := monitoring.NewMonitoredProject(ctx, "primary", &monitoring.MonitoredProjectArgs{
-// 			MetricsScope: pulumi.String("my-project-name"),
+// 			MetricsScope: pulumi.String("existing-metrics-scope-project"),
 // 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = organizations.NewProject(ctx, "basic", &organizations.ProjectArgs{
-// 			ProjectId: pulumi.String("id"),
+// 			ProjectId: pulumi.String("my-monitored-project"),
 // 			OrgId:     pulumi.String("123456789"),
 // 		}, pulumi.Provider(google_beta))
 // 		if err != nil {

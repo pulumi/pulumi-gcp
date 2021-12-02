@@ -6,6 +6,8 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
+ * The Eventarc Trigger resource
+ *
  * ## Example Usage
  * ### Basic
  * ```typescript

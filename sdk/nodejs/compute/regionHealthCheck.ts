@@ -344,7 +344,7 @@ export class RegionHealthCheck extends pulumi.CustomResource {
      * Configure logging on this health check.
      * Structure is documented below.
      */
-    public readonly logConfig!: pulumi.Output<outputs.compute.RegionHealthCheckLogConfig | undefined>;
+    public readonly logConfig!: pulumi.Output<outputs.compute.RegionHealthCheckLogConfig>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with

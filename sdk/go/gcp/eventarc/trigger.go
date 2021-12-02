@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The Eventarc Trigger resource
+//
 // ## Example Usage
 // ### Basic
 // ```go

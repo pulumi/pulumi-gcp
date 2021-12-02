@@ -364,6 +364,8 @@ class Trigger(pulumi.CustomResource):
                  transports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerTransportArgs']]]]] = None,
                  __props__=None):
         """
+        The Eventarc Trigger resource
+
         ## Example Usage
         ### Basic
         ```python
@@ -440,6 +442,8 @@ class Trigger(pulumi.CustomResource):
                  args: TriggerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The Eventarc Trigger resource
+
         ## Example Usage
         ### Basic
         ```python

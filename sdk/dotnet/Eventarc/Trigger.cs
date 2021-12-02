@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Eventarc
 {
     /// <summary>
+    /// The Eventarc Trigger resource
+    /// 
     /// ## Example Usage
     /// ### Basic
     /// ```csharp

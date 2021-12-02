@@ -10,6 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OrgPolicy
 {
     /// <summary>
+    /// An organization policy gives you programmatic control over your organization's cloud resources.  Using Organization Policies, you will be able to configure constraints across your entire resource hierarchy.
+    /// 
+    /// For more information, see:
+    /// * [Understanding Org Policy concepts](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+    /// * [The resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)
+    /// * [All valid constraints](https://cloud.google.com/resource-manager/docs/organization-policy/org-policy-constraints)
     /// ## Example Usage
     /// ### Enforce_policy
     /// A test of an enforce orgpolicy policy for a project
@@ -24,7 +30,7 @@ namespace Pulumi.Gcp.OrgPolicy
     ///         var basic = new Gcp.Organizations.Project("basic", new Gcp.Organizations.ProjectArgs
     ///         {
     ///             OrgId = "123456789",
-    ///             ProjectId = "id-test",
+    ///             ProjectId = "id",
     ///         });
     ///         var primary = new Gcp.OrgPolicy.Policy("primary", new Gcp.OrgPolicy.PolicyArgs
     ///         {
@@ -113,7 +119,7 @@ namespace Pulumi.Gcp.OrgPolicy
     ///         var basic = new Gcp.Organizations.Project("basic", new Gcp.Organizations.ProjectArgs
     ///         {
     ///             OrgId = "123456789",
-    ///             ProjectId = "id-test",
+    ///             ProjectId = "id",
     ///         });
     ///         var primary = new Gcp.OrgPolicy.Policy("primary", new Gcp.OrgPolicy.PolicyArgs
     ///         {

@@ -37,6 +37,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string NetworkIp;
         public readonly string NicType;
+        public readonly int QueueCount;
         public readonly string StackType;
         /// <summary>
         /// The name or self_link of the subnetwork attached to this interface.
@@ -65,6 +66,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string nicType,
 
+            int queueCount,
+
             string stackType,
 
             string subnetwork,
@@ -79,6 +82,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             Network = network;
             NetworkIp = networkIp;
             NicType = nicType;
+            QueueCount = queueCount;
             StackType = stackType;
             Subnetwork = subnetwork;
             SubnetworkProject = subnetworkProject;
