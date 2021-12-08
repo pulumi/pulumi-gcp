@@ -50,7 +50,7 @@ import (
 // 		_, err = datacatalog.NewPolicyTagIamPolicy(ctx, "policy", &datacatalog.PolicyTagIamPolicyArgs{
 // 			PolicyTag:  pulumi.Any(google_data_catalog_policy_tag.Basic_policy_tag.Name),
 // 			PolicyData: pulumi.String(admin.PolicyData),
-// 		})
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -77,7 +77,7 @@ import (
 // 			Members: pulumi.StringArray{
 // 				pulumi.String("user:jane@example.com"),
 // 			},
-// 		})
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -102,7 +102,7 @@ import (
 // 			PolicyTag: pulumi.Any(google_data_catalog_policy_tag.Basic_policy_tag.Name),
 // 			Role:      pulumi.String("roles/viewer"),
 // 			Member:    pulumi.String("user:jane@example.com"),
-// 		})
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}

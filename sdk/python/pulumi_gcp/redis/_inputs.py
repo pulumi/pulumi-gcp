@@ -9,8 +9,44 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'InstanceNodeArgs',
     'InstanceServerCaCertArgs',
 ]
+
+@pulumi.input_type
+class InstanceNodeArgs:
+    def __init__(__self__, *,
+                 id: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] id: an identifier for the resource with format `projects/{{project}}/locations/{{region}}/instances/{{name}}`
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        an identifier for the resource with format `projects/{{project}}/locations/{{region}}/instances/{{name}}`
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
+
 
 @pulumi.input_type
 class InstanceServerCaCertArgs:

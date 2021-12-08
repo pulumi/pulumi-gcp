@@ -53,8 +53,8 @@ type Instance struct {
 	// The Apigee Organization associated with the Apigee instance,
 	// in the format `organizations/{{org_name}}`.
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
-	// The size of the CIDR block range that will be reserved by the instance.
-	// Possible values are `SLASH_16`, `SLASH_20`, and `SLASH_22`.
+	// The size of the CIDR block range that will be reserved by the instance. For valid values,
+	// see [CidrRange](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances#CidrRange) on the documentation.
 	PeeringCidrRange pulumi.StringPtrOutput `pulumi:"peeringCidrRange"`
 	// Output only. Port number of the exposed Apigee endpoint.
 	Port pulumi.StringOutput `pulumi:"port"`
@@ -113,8 +113,8 @@ type instanceState struct {
 	// The Apigee Organization associated with the Apigee instance,
 	// in the format `organizations/{{org_name}}`.
 	OrgId *string `pulumi:"orgId"`
-	// The size of the CIDR block range that will be reserved by the instance.
-	// Possible values are `SLASH_16`, `SLASH_20`, and `SLASH_22`.
+	// The size of the CIDR block range that will be reserved by the instance. For valid values,
+	// see [CidrRange](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances#CidrRange) on the documentation.
 	PeeringCidrRange *string `pulumi:"peeringCidrRange"`
 	// Output only. Port number of the exposed Apigee endpoint.
 	Port *string `pulumi:"port"`
@@ -139,8 +139,8 @@ type InstanceState struct {
 	// The Apigee Organization associated with the Apigee instance,
 	// in the format `organizations/{{org_name}}`.
 	OrgId pulumi.StringPtrInput
-	// The size of the CIDR block range that will be reserved by the instance.
-	// Possible values are `SLASH_16`, `SLASH_20`, and `SLASH_22`.
+	// The size of the CIDR block range that will be reserved by the instance. For valid values,
+	// see [CidrRange](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances#CidrRange) on the documentation.
 	PeeringCidrRange pulumi.StringPtrInput
 	// Output only. Port number of the exposed Apigee endpoint.
 	Port pulumi.StringPtrInput
@@ -167,8 +167,8 @@ type instanceArgs struct {
 	// The Apigee Organization associated with the Apigee instance,
 	// in the format `organizations/{{org_name}}`.
 	OrgId string `pulumi:"orgId"`
-	// The size of the CIDR block range that will be reserved by the instance.
-	// Possible values are `SLASH_16`, `SLASH_20`, and `SLASH_22`.
+	// The size of the CIDR block range that will be reserved by the instance. For valid values,
+	// see [CidrRange](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances#CidrRange) on the documentation.
 	PeeringCidrRange *string `pulumi:"peeringCidrRange"`
 }
 
@@ -190,8 +190,8 @@ type InstanceArgs struct {
 	// The Apigee Organization associated with the Apigee instance,
 	// in the format `organizations/{{org_name}}`.
 	OrgId pulumi.StringInput
-	// The size of the CIDR block range that will be reserved by the instance.
-	// Possible values are `SLASH_16`, `SLASH_20`, and `SLASH_22`.
+	// The size of the CIDR block range that will be reserved by the instance. For valid values,
+	// see [CidrRange](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances#CidrRange) on the documentation.
 	PeeringCidrRange pulumi.StringPtrInput
 }
 

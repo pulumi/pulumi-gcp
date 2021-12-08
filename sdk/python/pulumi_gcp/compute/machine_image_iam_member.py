@@ -244,7 +244,8 @@ class MachineImageIamMember(pulumi.CustomResource):
         policy = gcp.compute.MachineImageIamPolicy("policy",
             project=google_compute_machine_image["image"]["project"],
             machine_image=google_compute_machine_image["image"]["name"],
-            policy_data=admin.policy_data)
+            policy_data=admin.policy_data,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         With IAM Conditions:
@@ -265,7 +266,8 @@ class MachineImageIamMember(pulumi.CustomResource):
         policy = gcp.compute.MachineImageIamPolicy("policy",
             project=google_compute_machine_image["image"]["project"],
             machine_image=google_compute_machine_image["image"]["name"],
-            policy_data=admin.policy_data)
+            policy_data=admin.policy_data,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ## google\_compute\_machine\_image\_iam\_binding
 
@@ -277,7 +279,8 @@ class MachineImageIamMember(pulumi.CustomResource):
             project=google_compute_machine_image["image"]["project"],
             machine_image=google_compute_machine_image["image"]["name"],
             role="roles/compute.admin",
-            members=["user:jane@example.com"])
+            members=["user:jane@example.com"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         With IAM Conditions:
@@ -295,7 +298,8 @@ class MachineImageIamMember(pulumi.CustomResource):
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\"2020-01-01T00:00:00Z\")",
-            ))
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ## google\_compute\_machine\_image\_iam\_member
 
@@ -307,7 +311,8 @@ class MachineImageIamMember(pulumi.CustomResource):
             project=google_compute_machine_image["image"]["project"],
             machine_image=google_compute_machine_image["image"]["name"],
             role="roles/compute.admin",
-            member="user:jane@example.com")
+            member="user:jane@example.com",
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         With IAM Conditions:
@@ -325,7 +330,8 @@ class MachineImageIamMember(pulumi.CustomResource):
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\"2020-01-01T00:00:00Z\")",
-            ))
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import
@@ -393,7 +399,8 @@ class MachineImageIamMember(pulumi.CustomResource):
         policy = gcp.compute.MachineImageIamPolicy("policy",
             project=google_compute_machine_image["image"]["project"],
             machine_image=google_compute_machine_image["image"]["name"],
-            policy_data=admin.policy_data)
+            policy_data=admin.policy_data,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         With IAM Conditions:
@@ -414,7 +421,8 @@ class MachineImageIamMember(pulumi.CustomResource):
         policy = gcp.compute.MachineImageIamPolicy("policy",
             project=google_compute_machine_image["image"]["project"],
             machine_image=google_compute_machine_image["image"]["name"],
-            policy_data=admin.policy_data)
+            policy_data=admin.policy_data,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ## google\_compute\_machine\_image\_iam\_binding
 
@@ -426,7 +434,8 @@ class MachineImageIamMember(pulumi.CustomResource):
             project=google_compute_machine_image["image"]["project"],
             machine_image=google_compute_machine_image["image"]["name"],
             role="roles/compute.admin",
-            members=["user:jane@example.com"])
+            members=["user:jane@example.com"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         With IAM Conditions:
@@ -444,7 +453,8 @@ class MachineImageIamMember(pulumi.CustomResource):
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\"2020-01-01T00:00:00Z\")",
-            ))
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ## google\_compute\_machine\_image\_iam\_member
 
@@ -456,7 +466,8 @@ class MachineImageIamMember(pulumi.CustomResource):
             project=google_compute_machine_image["image"]["project"],
             machine_image=google_compute_machine_image["image"]["name"],
             role="roles/compute.admin",
-            member="user:jane@example.com")
+            member="user:jane@example.com",
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         With IAM Conditions:
@@ -474,7 +485,8 @@ class MachineImageIamMember(pulumi.CustomResource):
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\"2020-01-01T00:00:00Z\")",
-            ))
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import

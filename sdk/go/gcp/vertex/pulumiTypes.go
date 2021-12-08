@@ -591,6 +591,241 @@ func (o AiFeatureStoreOnlineServingConfigPtrOutput) FixedNodeCount() pulumi.IntP
 	}).(pulumi.IntPtrOutput)
 }
 
+type AiMetadataStoreEncryptionSpec struct {
+	// Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
+	// Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
+	KmsKeyName *string `pulumi:"kmsKeyName"`
+}
+
+// AiMetadataStoreEncryptionSpecInput is an input type that accepts AiMetadataStoreEncryptionSpecArgs and AiMetadataStoreEncryptionSpecOutput values.
+// You can construct a concrete instance of `AiMetadataStoreEncryptionSpecInput` via:
+//
+//          AiMetadataStoreEncryptionSpecArgs{...}
+type AiMetadataStoreEncryptionSpecInput interface {
+	pulumi.Input
+
+	ToAiMetadataStoreEncryptionSpecOutput() AiMetadataStoreEncryptionSpecOutput
+	ToAiMetadataStoreEncryptionSpecOutputWithContext(context.Context) AiMetadataStoreEncryptionSpecOutput
+}
+
+type AiMetadataStoreEncryptionSpecArgs struct {
+	// Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
+	// Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
+	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
+}
+
+func (AiMetadataStoreEncryptionSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiMetadataStoreEncryptionSpec)(nil)).Elem()
+}
+
+func (i AiMetadataStoreEncryptionSpecArgs) ToAiMetadataStoreEncryptionSpecOutput() AiMetadataStoreEncryptionSpecOutput {
+	return i.ToAiMetadataStoreEncryptionSpecOutputWithContext(context.Background())
+}
+
+func (i AiMetadataStoreEncryptionSpecArgs) ToAiMetadataStoreEncryptionSpecOutputWithContext(ctx context.Context) AiMetadataStoreEncryptionSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiMetadataStoreEncryptionSpecOutput)
+}
+
+func (i AiMetadataStoreEncryptionSpecArgs) ToAiMetadataStoreEncryptionSpecPtrOutput() AiMetadataStoreEncryptionSpecPtrOutput {
+	return i.ToAiMetadataStoreEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiMetadataStoreEncryptionSpecArgs) ToAiMetadataStoreEncryptionSpecPtrOutputWithContext(ctx context.Context) AiMetadataStoreEncryptionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiMetadataStoreEncryptionSpecOutput).ToAiMetadataStoreEncryptionSpecPtrOutputWithContext(ctx)
+}
+
+// AiMetadataStoreEncryptionSpecPtrInput is an input type that accepts AiMetadataStoreEncryptionSpecArgs, AiMetadataStoreEncryptionSpecPtr and AiMetadataStoreEncryptionSpecPtrOutput values.
+// You can construct a concrete instance of `AiMetadataStoreEncryptionSpecPtrInput` via:
+//
+//          AiMetadataStoreEncryptionSpecArgs{...}
+//
+//  or:
+//
+//          nil
+type AiMetadataStoreEncryptionSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiMetadataStoreEncryptionSpecPtrOutput() AiMetadataStoreEncryptionSpecPtrOutput
+	ToAiMetadataStoreEncryptionSpecPtrOutputWithContext(context.Context) AiMetadataStoreEncryptionSpecPtrOutput
+}
+
+type aiMetadataStoreEncryptionSpecPtrType AiMetadataStoreEncryptionSpecArgs
+
+func AiMetadataStoreEncryptionSpecPtr(v *AiMetadataStoreEncryptionSpecArgs) AiMetadataStoreEncryptionSpecPtrInput {
+	return (*aiMetadataStoreEncryptionSpecPtrType)(v)
+}
+
+func (*aiMetadataStoreEncryptionSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiMetadataStoreEncryptionSpec)(nil)).Elem()
+}
+
+func (i *aiMetadataStoreEncryptionSpecPtrType) ToAiMetadataStoreEncryptionSpecPtrOutput() AiMetadataStoreEncryptionSpecPtrOutput {
+	return i.ToAiMetadataStoreEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiMetadataStoreEncryptionSpecPtrType) ToAiMetadataStoreEncryptionSpecPtrOutputWithContext(ctx context.Context) AiMetadataStoreEncryptionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiMetadataStoreEncryptionSpecPtrOutput)
+}
+
+type AiMetadataStoreEncryptionSpecOutput struct{ *pulumi.OutputState }
+
+func (AiMetadataStoreEncryptionSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiMetadataStoreEncryptionSpec)(nil)).Elem()
+}
+
+func (o AiMetadataStoreEncryptionSpecOutput) ToAiMetadataStoreEncryptionSpecOutput() AiMetadataStoreEncryptionSpecOutput {
+	return o
+}
+
+func (o AiMetadataStoreEncryptionSpecOutput) ToAiMetadataStoreEncryptionSpecOutputWithContext(ctx context.Context) AiMetadataStoreEncryptionSpecOutput {
+	return o
+}
+
+func (o AiMetadataStoreEncryptionSpecOutput) ToAiMetadataStoreEncryptionSpecPtrOutput() AiMetadataStoreEncryptionSpecPtrOutput {
+	return o.ToAiMetadataStoreEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiMetadataStoreEncryptionSpecOutput) ToAiMetadataStoreEncryptionSpecPtrOutputWithContext(ctx context.Context) AiMetadataStoreEncryptionSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiMetadataStoreEncryptionSpec) *AiMetadataStoreEncryptionSpec {
+		return &v
+	}).(AiMetadataStoreEncryptionSpecPtrOutput)
+}
+
+// Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
+// Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
+func (o AiMetadataStoreEncryptionSpecOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiMetadataStoreEncryptionSpec) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
+}
+
+type AiMetadataStoreEncryptionSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiMetadataStoreEncryptionSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiMetadataStoreEncryptionSpec)(nil)).Elem()
+}
+
+func (o AiMetadataStoreEncryptionSpecPtrOutput) ToAiMetadataStoreEncryptionSpecPtrOutput() AiMetadataStoreEncryptionSpecPtrOutput {
+	return o
+}
+
+func (o AiMetadataStoreEncryptionSpecPtrOutput) ToAiMetadataStoreEncryptionSpecPtrOutputWithContext(ctx context.Context) AiMetadataStoreEncryptionSpecPtrOutput {
+	return o
+}
+
+func (o AiMetadataStoreEncryptionSpecPtrOutput) Elem() AiMetadataStoreEncryptionSpecOutput {
+	return o.ApplyT(func(v *AiMetadataStoreEncryptionSpec) AiMetadataStoreEncryptionSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiMetadataStoreEncryptionSpec
+		return ret
+	}).(AiMetadataStoreEncryptionSpecOutput)
+}
+
+// Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
+// Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
+func (o AiMetadataStoreEncryptionSpecPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiMetadataStoreEncryptionSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiMetadataStoreStateType struct {
+	DiskUtilizationBytes *string `pulumi:"diskUtilizationBytes"`
+}
+
+// AiMetadataStoreStateTypeInput is an input type that accepts AiMetadataStoreStateTypeArgs and AiMetadataStoreStateTypeOutput values.
+// You can construct a concrete instance of `AiMetadataStoreStateTypeInput` via:
+//
+//          AiMetadataStoreStateTypeArgs{...}
+type AiMetadataStoreStateTypeInput interface {
+	pulumi.Input
+
+	ToAiMetadataStoreStateTypeOutput() AiMetadataStoreStateTypeOutput
+	ToAiMetadataStoreStateTypeOutputWithContext(context.Context) AiMetadataStoreStateTypeOutput
+}
+
+type AiMetadataStoreStateTypeArgs struct {
+	DiskUtilizationBytes pulumi.StringPtrInput `pulumi:"diskUtilizationBytes"`
+}
+
+func (AiMetadataStoreStateTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiMetadataStoreStateType)(nil)).Elem()
+}
+
+func (i AiMetadataStoreStateTypeArgs) ToAiMetadataStoreStateTypeOutput() AiMetadataStoreStateTypeOutput {
+	return i.ToAiMetadataStoreStateTypeOutputWithContext(context.Background())
+}
+
+func (i AiMetadataStoreStateTypeArgs) ToAiMetadataStoreStateTypeOutputWithContext(ctx context.Context) AiMetadataStoreStateTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiMetadataStoreStateTypeOutput)
+}
+
+// AiMetadataStoreStateTypeArrayInput is an input type that accepts AiMetadataStoreStateTypeArray and AiMetadataStoreStateTypeArrayOutput values.
+// You can construct a concrete instance of `AiMetadataStoreStateTypeArrayInput` via:
+//
+//          AiMetadataStoreStateTypeArray{ AiMetadataStoreStateTypeArgs{...} }
+type AiMetadataStoreStateTypeArrayInput interface {
+	pulumi.Input
+
+	ToAiMetadataStoreStateTypeArrayOutput() AiMetadataStoreStateTypeArrayOutput
+	ToAiMetadataStoreStateTypeArrayOutputWithContext(context.Context) AiMetadataStoreStateTypeArrayOutput
+}
+
+type AiMetadataStoreStateTypeArray []AiMetadataStoreStateTypeInput
+
+func (AiMetadataStoreStateTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiMetadataStoreStateType)(nil)).Elem()
+}
+
+func (i AiMetadataStoreStateTypeArray) ToAiMetadataStoreStateTypeArrayOutput() AiMetadataStoreStateTypeArrayOutput {
+	return i.ToAiMetadataStoreStateTypeArrayOutputWithContext(context.Background())
+}
+
+func (i AiMetadataStoreStateTypeArray) ToAiMetadataStoreStateTypeArrayOutputWithContext(ctx context.Context) AiMetadataStoreStateTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiMetadataStoreStateTypeArrayOutput)
+}
+
+type AiMetadataStoreStateTypeOutput struct{ *pulumi.OutputState }
+
+func (AiMetadataStoreStateTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiMetadataStoreStateType)(nil)).Elem()
+}
+
+func (o AiMetadataStoreStateTypeOutput) ToAiMetadataStoreStateTypeOutput() AiMetadataStoreStateTypeOutput {
+	return o
+}
+
+func (o AiMetadataStoreStateTypeOutput) ToAiMetadataStoreStateTypeOutputWithContext(ctx context.Context) AiMetadataStoreStateTypeOutput {
+	return o
+}
+
+func (o AiMetadataStoreStateTypeOutput) DiskUtilizationBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiMetadataStoreStateType) *string { return v.DiskUtilizationBytes }).(pulumi.StringPtrOutput)
+}
+
+type AiMetadataStoreStateTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (AiMetadataStoreStateTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiMetadataStoreStateType)(nil)).Elem()
+}
+
+func (o AiMetadataStoreStateTypeArrayOutput) ToAiMetadataStoreStateTypeArrayOutput() AiMetadataStoreStateTypeArrayOutput {
+	return o
+}
+
+func (o AiMetadataStoreStateTypeArrayOutput) ToAiMetadataStoreStateTypeArrayOutputWithContext(ctx context.Context) AiMetadataStoreStateTypeArrayOutput {
+	return o
+}
+
+func (o AiMetadataStoreStateTypeArrayOutput) Index(i pulumi.IntInput) AiMetadataStoreStateTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiMetadataStoreStateType {
+		return vs[0].([]AiMetadataStoreStateType)[vs[1].(int)]
+	}).(AiMetadataStoreStateTypeOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiDatasetEncryptionSpecInput)(nil)).Elem(), AiDatasetEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiDatasetEncryptionSpecPtrInput)(nil)).Elem(), AiDatasetEncryptionSpecArgs{})
@@ -600,6 +835,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrInput)(nil)).Elem(), AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreOnlineServingConfigInput)(nil)).Elem(), AiFeatureStoreOnlineServingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreOnlineServingConfigPtrInput)(nil)).Elem(), AiFeatureStoreOnlineServingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiMetadataStoreEncryptionSpecInput)(nil)).Elem(), AiMetadataStoreEncryptionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiMetadataStoreEncryptionSpecPtrInput)(nil)).Elem(), AiMetadataStoreEncryptionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiMetadataStoreStateTypeInput)(nil)).Elem(), AiMetadataStoreStateTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiMetadataStoreStateTypeArrayInput)(nil)).Elem(), AiMetadataStoreStateTypeArray{})
 	pulumi.RegisterOutputType(AiDatasetEncryptionSpecOutput{})
 	pulumi.RegisterOutputType(AiDatasetEncryptionSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreEntityTypeMonitoringConfigOutput{})
@@ -608,4 +847,8 @@ func init() {
 	pulumi.RegisterOutputType(AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreOnlineServingConfigOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreOnlineServingConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiMetadataStoreEncryptionSpecOutput{})
+	pulumi.RegisterOutputType(AiMetadataStoreEncryptionSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiMetadataStoreStateTypeOutput{})
+	pulumi.RegisterOutputType(AiMetadataStoreStateTypeArrayOutput{})
 }

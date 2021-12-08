@@ -11,8 +11,8 @@ import (
 )
 
 type AuthorityAccessUrl struct {
-	CaCertificateAccessUrl *string `pulumi:"caCertificateAccessUrl"`
-	CrlAccessUrl           *string `pulumi:"crlAccessUrl"`
+	CaCertificateAccessUrl *string  `pulumi:"caCertificateAccessUrl"`
+	CrlAccessUrls          []string `pulumi:"crlAccessUrls"`
 }
 
 // AuthorityAccessUrlInput is an input type that accepts AuthorityAccessUrlArgs and AuthorityAccessUrlOutput values.
@@ -27,8 +27,8 @@ type AuthorityAccessUrlInput interface {
 }
 
 type AuthorityAccessUrlArgs struct {
-	CaCertificateAccessUrl pulumi.StringPtrInput `pulumi:"caCertificateAccessUrl"`
-	CrlAccessUrl           pulumi.StringPtrInput `pulumi:"crlAccessUrl"`
+	CaCertificateAccessUrl pulumi.StringPtrInput   `pulumi:"caCertificateAccessUrl"`
+	CrlAccessUrls          pulumi.StringArrayInput `pulumi:"crlAccessUrls"`
 }
 
 func (AuthorityAccessUrlArgs) ElementType() reflect.Type {
@@ -86,8 +86,8 @@ func (o AuthorityAccessUrlOutput) CaCertificateAccessUrl() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v AuthorityAccessUrl) *string { return v.CaCertificateAccessUrl }).(pulumi.StringPtrOutput)
 }
 
-func (o AuthorityAccessUrlOutput) CrlAccessUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AuthorityAccessUrl) *string { return v.CrlAccessUrl }).(pulumi.StringPtrOutput)
+func (o AuthorityAccessUrlOutput) CrlAccessUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AuthorityAccessUrl) []string { return v.CrlAccessUrls }).(pulumi.StringArrayOutput)
 }
 
 type AuthorityAccessUrlArrayOutput struct{ *pulumi.OutputState }

@@ -137,6 +137,12 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("minCpuPlatform")]
         public Input<string>? MinCpuPlatform { get; set; }
 
+        /// <summary>
+        /// Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on [sole tenant nodes](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes).
+        /// </summary>
+        [Input("nodeGroup")]
+        public Input<string>? NodeGroup { get; set; }
+
         [Input("oauthScopes")]
         private InputList<string>? _oauthScopes;
 
@@ -160,7 +166,8 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<bool>? Preemptible { get; set; }
 
         /// <summary>
-        /// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
+        /// ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
+        /// &gt;&gt;&gt;&gt;&gt;&gt;&gt; v4.3.0
         /// Structure is documented below.
         /// </summary>
         [Input("sandboxConfig")]
@@ -178,6 +185,14 @@ namespace Pulumi.Gcp.Container.Inputs
         /// </summary>
         [Input("shieldedInstanceConfig")]
         public Input<Inputs.ClusterNodeConfigShieldedInstanceConfigGetArgs>? ShieldedInstanceConfig { get; set; }
+
+        /// <summary>
+        /// ) A boolean 
+        /// that represents whether the underlying node VMs are spot. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
+        /// for more information. Defaults to false.
+        /// </summary>
+        [Input("spot")]
+        public Input<bool>? Spot { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;

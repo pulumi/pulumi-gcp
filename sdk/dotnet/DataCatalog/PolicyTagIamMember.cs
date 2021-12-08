@@ -48,6 +48,9 @@ namespace Pulumi.Gcp.DataCatalog
     ///         {
     ///             PolicyTag = google_data_catalog_policy_tag.Basic_policy_tag.Name,
     ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -72,6 +75,9 @@ namespace Pulumi.Gcp.DataCatalog
     ///             {
     ///                 "user:jane@example.com",
     ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -93,6 +99,9 @@ namespace Pulumi.Gcp.DataCatalog
     ///             PolicyTag = google_data_catalog_policy_tag.Basic_policy_tag.Name,
     ///             Role = "roles/viewer",
     ///             Member = "user:jane@example.com",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 

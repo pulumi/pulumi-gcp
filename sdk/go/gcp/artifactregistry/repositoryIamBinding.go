@@ -52,7 +52,7 @@ import (
 // 			Location:   pulumi.Any(google_artifact_registry_repository.My - repo.Location),
 // 			Repository: pulumi.Any(google_artifact_registry_repository.My - repo.Name),
 // 			PolicyData: pulumi.String(admin.PolicyData),
-// 		})
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -81,7 +81,7 @@ import (
 // 			Members: pulumi.StringArray{
 // 				pulumi.String("user:jane@example.com"),
 // 			},
-// 		})
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -108,7 +108,7 @@ import (
 // 			Repository: pulumi.Any(google_artifact_registry_repository.My - repo.Name),
 // 			Role:       pulumi.String("roles/viewer"),
 // 			Member:     pulumi.String("user:jane@example.com"),
-// 		})
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}

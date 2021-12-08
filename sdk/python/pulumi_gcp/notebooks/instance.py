@@ -116,7 +116,7 @@ class InstanceArgs:
                Structure is documented below.
         :param pulumi.Input[str] subnet: The name of the subnet that this instance is in.
                Format: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The Compute Engine tags to add to runtime.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The Compute Engine tags to add to instance.
         :param pulumi.Input[str] update_time: Instance update time.
         :param pulumi.Input['InstanceVmImageArgs'] vm_image: Use a Compute Engine VM image to start the notebook instance.
                Structure is documented below.
@@ -574,7 +574,7 @@ class InstanceArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The Compute Engine tags to add to runtime.
+        The Compute Engine tags to add to instance.
         """
         return pulumi.get(self, "tags")
 
@@ -716,7 +716,7 @@ class _InstanceState:
         :param pulumi.Input[str] state: The state of this instance.
         :param pulumi.Input[str] subnet: The name of the subnet that this instance is in.
                Format: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The Compute Engine tags to add to runtime.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The Compute Engine tags to add to instance.
         :param pulumi.Input[str] update_time: Instance update time.
         :param pulumi.Input['InstanceVmImageArgs'] vm_image: Use a Compute Engine VM image to start the notebook instance.
                Structure is documented below.
@@ -1204,7 +1204,7 @@ class _InstanceState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The Compute Engine tags to add to runtime.
+        The Compute Engine tags to add to instance.
         """
         return pulumi.get(self, "tags")
 
@@ -1455,7 +1455,7 @@ class Instance(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] subnet: The name of the subnet that this instance is in.
                Format: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The Compute Engine tags to add to runtime.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The Compute Engine tags to add to instance.
         :param pulumi.Input[str] update_time: Instance update time.
         :param pulumi.Input[pulumi.InputType['InstanceVmImageArgs']] vm_image: Use a Compute Engine VM image to start the notebook instance.
                Structure is documented below.
@@ -1793,7 +1793,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] state: The state of this instance.
         :param pulumi.Input[str] subnet: The name of the subnet that this instance is in.
                Format: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The Compute Engine tags to add to runtime.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The Compute Engine tags to add to instance.
         :param pulumi.Input[str] update_time: Instance update time.
         :param pulumi.Input[pulumi.InputType['InstanceVmImageArgs']] vm_image: Use a Compute Engine VM image to start the notebook instance.
                Structure is documented below.
@@ -2128,7 +2128,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        The Compute Engine tags to add to runtime.
+        The Compute Engine tags to add to instance.
         """
         return pulumi.get(self, "tags")
 

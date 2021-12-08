@@ -119,6 +119,7 @@ export * from "./router";
 export * from "./routerInterface";
 export * from "./routerNat";
 export * from "./routerPeer";
+export * from "./routerStatus";
 export * from "./securityPolicy";
 export * from "./securityScanConfig";
 export * from "./serviceAttachment";

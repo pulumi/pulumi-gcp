@@ -1556,6 +1556,2754 @@ func (o InstanceVmImagePtrOutput) Project() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type RuntimeAccessConfig struct {
+	// The type of access mode this instance. For valid values, see
+	// `https://cloud.google.com/vertex-ai/docs/workbench/reference/
+	// rest/v1/projects.locations.runtimes#RuntimeAccessType`.
+	AccessType *string `pulumi:"accessType"`
+	// -
+	// The proxy endpoint that is used to access the runtime.
+	ProxyUri *string `pulumi:"proxyUri"`
+	// The owner of this runtime after creation. Format: `alias@example.com`.
+	// Currently supports one owner only.
+	RuntimeOwner *string `pulumi:"runtimeOwner"`
+}
+
+// RuntimeAccessConfigInput is an input type that accepts RuntimeAccessConfigArgs and RuntimeAccessConfigOutput values.
+// You can construct a concrete instance of `RuntimeAccessConfigInput` via:
+//
+//          RuntimeAccessConfigArgs{...}
+type RuntimeAccessConfigInput interface {
+	pulumi.Input
+
+	ToRuntimeAccessConfigOutput() RuntimeAccessConfigOutput
+	ToRuntimeAccessConfigOutputWithContext(context.Context) RuntimeAccessConfigOutput
+}
+
+type RuntimeAccessConfigArgs struct {
+	// The type of access mode this instance. For valid values, see
+	// `https://cloud.google.com/vertex-ai/docs/workbench/reference/
+	// rest/v1/projects.locations.runtimes#RuntimeAccessType`.
+	AccessType pulumi.StringPtrInput `pulumi:"accessType"`
+	// -
+	// The proxy endpoint that is used to access the runtime.
+	ProxyUri pulumi.StringPtrInput `pulumi:"proxyUri"`
+	// The owner of this runtime after creation. Format: `alias@example.com`.
+	// Currently supports one owner only.
+	RuntimeOwner pulumi.StringPtrInput `pulumi:"runtimeOwner"`
+}
+
+func (RuntimeAccessConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeAccessConfig)(nil)).Elem()
+}
+
+func (i RuntimeAccessConfigArgs) ToRuntimeAccessConfigOutput() RuntimeAccessConfigOutput {
+	return i.ToRuntimeAccessConfigOutputWithContext(context.Background())
+}
+
+func (i RuntimeAccessConfigArgs) ToRuntimeAccessConfigOutputWithContext(ctx context.Context) RuntimeAccessConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeAccessConfigOutput)
+}
+
+func (i RuntimeAccessConfigArgs) ToRuntimeAccessConfigPtrOutput() RuntimeAccessConfigPtrOutput {
+	return i.ToRuntimeAccessConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RuntimeAccessConfigArgs) ToRuntimeAccessConfigPtrOutputWithContext(ctx context.Context) RuntimeAccessConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeAccessConfigOutput).ToRuntimeAccessConfigPtrOutputWithContext(ctx)
+}
+
+// RuntimeAccessConfigPtrInput is an input type that accepts RuntimeAccessConfigArgs, RuntimeAccessConfigPtr and RuntimeAccessConfigPtrOutput values.
+// You can construct a concrete instance of `RuntimeAccessConfigPtrInput` via:
+//
+//          RuntimeAccessConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type RuntimeAccessConfigPtrInput interface {
+	pulumi.Input
+
+	ToRuntimeAccessConfigPtrOutput() RuntimeAccessConfigPtrOutput
+	ToRuntimeAccessConfigPtrOutputWithContext(context.Context) RuntimeAccessConfigPtrOutput
+}
+
+type runtimeAccessConfigPtrType RuntimeAccessConfigArgs
+
+func RuntimeAccessConfigPtr(v *RuntimeAccessConfigArgs) RuntimeAccessConfigPtrInput {
+	return (*runtimeAccessConfigPtrType)(v)
+}
+
+func (*runtimeAccessConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeAccessConfig)(nil)).Elem()
+}
+
+func (i *runtimeAccessConfigPtrType) ToRuntimeAccessConfigPtrOutput() RuntimeAccessConfigPtrOutput {
+	return i.ToRuntimeAccessConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *runtimeAccessConfigPtrType) ToRuntimeAccessConfigPtrOutputWithContext(ctx context.Context) RuntimeAccessConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeAccessConfigPtrOutput)
+}
+
+type RuntimeAccessConfigOutput struct{ *pulumi.OutputState }
+
+func (RuntimeAccessConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeAccessConfig)(nil)).Elem()
+}
+
+func (o RuntimeAccessConfigOutput) ToRuntimeAccessConfigOutput() RuntimeAccessConfigOutput {
+	return o
+}
+
+func (o RuntimeAccessConfigOutput) ToRuntimeAccessConfigOutputWithContext(ctx context.Context) RuntimeAccessConfigOutput {
+	return o
+}
+
+func (o RuntimeAccessConfigOutput) ToRuntimeAccessConfigPtrOutput() RuntimeAccessConfigPtrOutput {
+	return o.ToRuntimeAccessConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RuntimeAccessConfigOutput) ToRuntimeAccessConfigPtrOutputWithContext(ctx context.Context) RuntimeAccessConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeAccessConfig) *RuntimeAccessConfig {
+		return &v
+	}).(RuntimeAccessConfigPtrOutput)
+}
+
+// The type of access mode this instance. For valid values, see
+// `https://cloud.google.com/vertex-ai/docs/workbench/reference/
+// rest/v1/projects.locations.runtimes#RuntimeAccessType`.
+func (o RuntimeAccessConfigOutput) AccessType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeAccessConfig) *string { return v.AccessType }).(pulumi.StringPtrOutput)
+}
+
+// -
+// The proxy endpoint that is used to access the runtime.
+func (o RuntimeAccessConfigOutput) ProxyUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeAccessConfig) *string { return v.ProxyUri }).(pulumi.StringPtrOutput)
+}
+
+// The owner of this runtime after creation. Format: `alias@example.com`.
+// Currently supports one owner only.
+func (o RuntimeAccessConfigOutput) RuntimeOwner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeAccessConfig) *string { return v.RuntimeOwner }).(pulumi.StringPtrOutput)
+}
+
+type RuntimeAccessConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RuntimeAccessConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeAccessConfig)(nil)).Elem()
+}
+
+func (o RuntimeAccessConfigPtrOutput) ToRuntimeAccessConfigPtrOutput() RuntimeAccessConfigPtrOutput {
+	return o
+}
+
+func (o RuntimeAccessConfigPtrOutput) ToRuntimeAccessConfigPtrOutputWithContext(ctx context.Context) RuntimeAccessConfigPtrOutput {
+	return o
+}
+
+func (o RuntimeAccessConfigPtrOutput) Elem() RuntimeAccessConfigOutput {
+	return o.ApplyT(func(v *RuntimeAccessConfig) RuntimeAccessConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RuntimeAccessConfig
+		return ret
+	}).(RuntimeAccessConfigOutput)
+}
+
+// The type of access mode this instance. For valid values, see
+// `https://cloud.google.com/vertex-ai/docs/workbench/reference/
+// rest/v1/projects.locations.runtimes#RuntimeAccessType`.
+func (o RuntimeAccessConfigPtrOutput) AccessType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeAccessConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessType
+	}).(pulumi.StringPtrOutput)
+}
+
+// -
+// The proxy endpoint that is used to access the runtime.
+func (o RuntimeAccessConfigPtrOutput) ProxyUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeAccessConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The owner of this runtime after creation. Format: `alias@example.com`.
+// Currently supports one owner only.
+func (o RuntimeAccessConfigPtrOutput) RuntimeOwner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeAccessConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RuntimeOwner
+	}).(pulumi.StringPtrOutput)
+}
+
+type RuntimeMetric struct {
+	SystemMetrics map[string]string `pulumi:"systemMetrics"`
+}
+
+// RuntimeMetricInput is an input type that accepts RuntimeMetricArgs and RuntimeMetricOutput values.
+// You can construct a concrete instance of `RuntimeMetricInput` via:
+//
+//          RuntimeMetricArgs{...}
+type RuntimeMetricInput interface {
+	pulumi.Input
+
+	ToRuntimeMetricOutput() RuntimeMetricOutput
+	ToRuntimeMetricOutputWithContext(context.Context) RuntimeMetricOutput
+}
+
+type RuntimeMetricArgs struct {
+	SystemMetrics pulumi.StringMapInput `pulumi:"systemMetrics"`
+}
+
+func (RuntimeMetricArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeMetric)(nil)).Elem()
+}
+
+func (i RuntimeMetricArgs) ToRuntimeMetricOutput() RuntimeMetricOutput {
+	return i.ToRuntimeMetricOutputWithContext(context.Background())
+}
+
+func (i RuntimeMetricArgs) ToRuntimeMetricOutputWithContext(ctx context.Context) RuntimeMetricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeMetricOutput)
+}
+
+// RuntimeMetricArrayInput is an input type that accepts RuntimeMetricArray and RuntimeMetricArrayOutput values.
+// You can construct a concrete instance of `RuntimeMetricArrayInput` via:
+//
+//          RuntimeMetricArray{ RuntimeMetricArgs{...} }
+type RuntimeMetricArrayInput interface {
+	pulumi.Input
+
+	ToRuntimeMetricArrayOutput() RuntimeMetricArrayOutput
+	ToRuntimeMetricArrayOutputWithContext(context.Context) RuntimeMetricArrayOutput
+}
+
+type RuntimeMetricArray []RuntimeMetricInput
+
+func (RuntimeMetricArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuntimeMetric)(nil)).Elem()
+}
+
+func (i RuntimeMetricArray) ToRuntimeMetricArrayOutput() RuntimeMetricArrayOutput {
+	return i.ToRuntimeMetricArrayOutputWithContext(context.Background())
+}
+
+func (i RuntimeMetricArray) ToRuntimeMetricArrayOutputWithContext(ctx context.Context) RuntimeMetricArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeMetricArrayOutput)
+}
+
+type RuntimeMetricOutput struct{ *pulumi.OutputState }
+
+func (RuntimeMetricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeMetric)(nil)).Elem()
+}
+
+func (o RuntimeMetricOutput) ToRuntimeMetricOutput() RuntimeMetricOutput {
+	return o
+}
+
+func (o RuntimeMetricOutput) ToRuntimeMetricOutputWithContext(ctx context.Context) RuntimeMetricOutput {
+	return o
+}
+
+func (o RuntimeMetricOutput) SystemMetrics() pulumi.StringMapOutput {
+	return o.ApplyT(func(v RuntimeMetric) map[string]string { return v.SystemMetrics }).(pulumi.StringMapOutput)
+}
+
+type RuntimeMetricArrayOutput struct{ *pulumi.OutputState }
+
+func (RuntimeMetricArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuntimeMetric)(nil)).Elem()
+}
+
+func (o RuntimeMetricArrayOutput) ToRuntimeMetricArrayOutput() RuntimeMetricArrayOutput {
+	return o
+}
+
+func (o RuntimeMetricArrayOutput) ToRuntimeMetricArrayOutputWithContext(ctx context.Context) RuntimeMetricArrayOutput {
+	return o
+}
+
+func (o RuntimeMetricArrayOutput) Index(i pulumi.IntInput) RuntimeMetricOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuntimeMetric {
+		return vs[0].([]RuntimeMetric)[vs[1].(int)]
+	}).(RuntimeMetricOutput)
+}
+
+type RuntimeSoftwareConfig struct {
+	// Specify a custom Cloud Storage path where the GPU driver is stored.
+	// If not specified, we'll automatically choose from official GPU drivers.
+	CustomGpuDriverPath *string `pulumi:"customGpuDriverPath"`
+	// Verifies core internal services are running. Default: True.
+	EnableHealthMonitoring *bool `pulumi:"enableHealthMonitoring"`
+	// Runtime will automatically shutdown after idle_shutdown_time.
+	// Default: True
+	IdleShutdown *bool `pulumi:"idleShutdown"`
+	// Time in minutes to wait before shuting down runtime.
+	// Default: 180 minutes
+	IdleShutdownTimeout *int `pulumi:"idleShutdownTimeout"`
+	// Install Nvidia Driver automatically.
+	InstallGpuDriver *bool `pulumi:"installGpuDriver"`
+	// Cron expression in UTC timezone for schedule instance auto upgrade.
+	// Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
+	NotebookUpgradeSchedule *string `pulumi:"notebookUpgradeSchedule"`
+	// Path to a Bash script that automatically runs after a notebook instance
+	// fully boots up. The path must be a URL or
+	// Cloud Storage path (gs://path-to-file/file-name).
+	PostStartupScript *string `pulumi:"postStartupScript"`
+}
+
+// RuntimeSoftwareConfigInput is an input type that accepts RuntimeSoftwareConfigArgs and RuntimeSoftwareConfigOutput values.
+// You can construct a concrete instance of `RuntimeSoftwareConfigInput` via:
+//
+//          RuntimeSoftwareConfigArgs{...}
+type RuntimeSoftwareConfigInput interface {
+	pulumi.Input
+
+	ToRuntimeSoftwareConfigOutput() RuntimeSoftwareConfigOutput
+	ToRuntimeSoftwareConfigOutputWithContext(context.Context) RuntimeSoftwareConfigOutput
+}
+
+type RuntimeSoftwareConfigArgs struct {
+	// Specify a custom Cloud Storage path where the GPU driver is stored.
+	// If not specified, we'll automatically choose from official GPU drivers.
+	CustomGpuDriverPath pulumi.StringPtrInput `pulumi:"customGpuDriverPath"`
+	// Verifies core internal services are running. Default: True.
+	EnableHealthMonitoring pulumi.BoolPtrInput `pulumi:"enableHealthMonitoring"`
+	// Runtime will automatically shutdown after idle_shutdown_time.
+	// Default: True
+	IdleShutdown pulumi.BoolPtrInput `pulumi:"idleShutdown"`
+	// Time in minutes to wait before shuting down runtime.
+	// Default: 180 minutes
+	IdleShutdownTimeout pulumi.IntPtrInput `pulumi:"idleShutdownTimeout"`
+	// Install Nvidia Driver automatically.
+	InstallGpuDriver pulumi.BoolPtrInput `pulumi:"installGpuDriver"`
+	// Cron expression in UTC timezone for schedule instance auto upgrade.
+	// Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
+	NotebookUpgradeSchedule pulumi.StringPtrInput `pulumi:"notebookUpgradeSchedule"`
+	// Path to a Bash script that automatically runs after a notebook instance
+	// fully boots up. The path must be a URL or
+	// Cloud Storage path (gs://path-to-file/file-name).
+	PostStartupScript pulumi.StringPtrInput `pulumi:"postStartupScript"`
+}
+
+func (RuntimeSoftwareConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeSoftwareConfig)(nil)).Elem()
+}
+
+func (i RuntimeSoftwareConfigArgs) ToRuntimeSoftwareConfigOutput() RuntimeSoftwareConfigOutput {
+	return i.ToRuntimeSoftwareConfigOutputWithContext(context.Background())
+}
+
+func (i RuntimeSoftwareConfigArgs) ToRuntimeSoftwareConfigOutputWithContext(ctx context.Context) RuntimeSoftwareConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeSoftwareConfigOutput)
+}
+
+func (i RuntimeSoftwareConfigArgs) ToRuntimeSoftwareConfigPtrOutput() RuntimeSoftwareConfigPtrOutput {
+	return i.ToRuntimeSoftwareConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RuntimeSoftwareConfigArgs) ToRuntimeSoftwareConfigPtrOutputWithContext(ctx context.Context) RuntimeSoftwareConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeSoftwareConfigOutput).ToRuntimeSoftwareConfigPtrOutputWithContext(ctx)
+}
+
+// RuntimeSoftwareConfigPtrInput is an input type that accepts RuntimeSoftwareConfigArgs, RuntimeSoftwareConfigPtr and RuntimeSoftwareConfigPtrOutput values.
+// You can construct a concrete instance of `RuntimeSoftwareConfigPtrInput` via:
+//
+//          RuntimeSoftwareConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type RuntimeSoftwareConfigPtrInput interface {
+	pulumi.Input
+
+	ToRuntimeSoftwareConfigPtrOutput() RuntimeSoftwareConfigPtrOutput
+	ToRuntimeSoftwareConfigPtrOutputWithContext(context.Context) RuntimeSoftwareConfigPtrOutput
+}
+
+type runtimeSoftwareConfigPtrType RuntimeSoftwareConfigArgs
+
+func RuntimeSoftwareConfigPtr(v *RuntimeSoftwareConfigArgs) RuntimeSoftwareConfigPtrInput {
+	return (*runtimeSoftwareConfigPtrType)(v)
+}
+
+func (*runtimeSoftwareConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeSoftwareConfig)(nil)).Elem()
+}
+
+func (i *runtimeSoftwareConfigPtrType) ToRuntimeSoftwareConfigPtrOutput() RuntimeSoftwareConfigPtrOutput {
+	return i.ToRuntimeSoftwareConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *runtimeSoftwareConfigPtrType) ToRuntimeSoftwareConfigPtrOutputWithContext(ctx context.Context) RuntimeSoftwareConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeSoftwareConfigPtrOutput)
+}
+
+type RuntimeSoftwareConfigOutput struct{ *pulumi.OutputState }
+
+func (RuntimeSoftwareConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeSoftwareConfig)(nil)).Elem()
+}
+
+func (o RuntimeSoftwareConfigOutput) ToRuntimeSoftwareConfigOutput() RuntimeSoftwareConfigOutput {
+	return o
+}
+
+func (o RuntimeSoftwareConfigOutput) ToRuntimeSoftwareConfigOutputWithContext(ctx context.Context) RuntimeSoftwareConfigOutput {
+	return o
+}
+
+func (o RuntimeSoftwareConfigOutput) ToRuntimeSoftwareConfigPtrOutput() RuntimeSoftwareConfigPtrOutput {
+	return o.ToRuntimeSoftwareConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RuntimeSoftwareConfigOutput) ToRuntimeSoftwareConfigPtrOutputWithContext(ctx context.Context) RuntimeSoftwareConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeSoftwareConfig) *RuntimeSoftwareConfig {
+		return &v
+	}).(RuntimeSoftwareConfigPtrOutput)
+}
+
+// Specify a custom Cloud Storage path where the GPU driver is stored.
+// If not specified, we'll automatically choose from official GPU drivers.
+func (o RuntimeSoftwareConfigOutput) CustomGpuDriverPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeSoftwareConfig) *string { return v.CustomGpuDriverPath }).(pulumi.StringPtrOutput)
+}
+
+// Verifies core internal services are running. Default: True.
+func (o RuntimeSoftwareConfigOutput) EnableHealthMonitoring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RuntimeSoftwareConfig) *bool { return v.EnableHealthMonitoring }).(pulumi.BoolPtrOutput)
+}
+
+// Runtime will automatically shutdown after idle_shutdown_time.
+// Default: True
+func (o RuntimeSoftwareConfigOutput) IdleShutdown() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RuntimeSoftwareConfig) *bool { return v.IdleShutdown }).(pulumi.BoolPtrOutput)
+}
+
+// Time in minutes to wait before shuting down runtime.
+// Default: 180 minutes
+func (o RuntimeSoftwareConfigOutput) IdleShutdownTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RuntimeSoftwareConfig) *int { return v.IdleShutdownTimeout }).(pulumi.IntPtrOutput)
+}
+
+// Install Nvidia Driver automatically.
+func (o RuntimeSoftwareConfigOutput) InstallGpuDriver() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RuntimeSoftwareConfig) *bool { return v.InstallGpuDriver }).(pulumi.BoolPtrOutput)
+}
+
+// Cron expression in UTC timezone for schedule instance auto upgrade.
+// Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
+func (o RuntimeSoftwareConfigOutput) NotebookUpgradeSchedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeSoftwareConfig) *string { return v.NotebookUpgradeSchedule }).(pulumi.StringPtrOutput)
+}
+
+// Path to a Bash script that automatically runs after a notebook instance
+// fully boots up. The path must be a URL or
+// Cloud Storage path (gs://path-to-file/file-name).
+func (o RuntimeSoftwareConfigOutput) PostStartupScript() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeSoftwareConfig) *string { return v.PostStartupScript }).(pulumi.StringPtrOutput)
+}
+
+type RuntimeSoftwareConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RuntimeSoftwareConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeSoftwareConfig)(nil)).Elem()
+}
+
+func (o RuntimeSoftwareConfigPtrOutput) ToRuntimeSoftwareConfigPtrOutput() RuntimeSoftwareConfigPtrOutput {
+	return o
+}
+
+func (o RuntimeSoftwareConfigPtrOutput) ToRuntimeSoftwareConfigPtrOutputWithContext(ctx context.Context) RuntimeSoftwareConfigPtrOutput {
+	return o
+}
+
+func (o RuntimeSoftwareConfigPtrOutput) Elem() RuntimeSoftwareConfigOutput {
+	return o.ApplyT(func(v *RuntimeSoftwareConfig) RuntimeSoftwareConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RuntimeSoftwareConfig
+		return ret
+	}).(RuntimeSoftwareConfigOutput)
+}
+
+// Specify a custom Cloud Storage path where the GPU driver is stored.
+// If not specified, we'll automatically choose from official GPU drivers.
+func (o RuntimeSoftwareConfigPtrOutput) CustomGpuDriverPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeSoftwareConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomGpuDriverPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Verifies core internal services are running. Default: True.
+func (o RuntimeSoftwareConfigPtrOutput) EnableHealthMonitoring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RuntimeSoftwareConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableHealthMonitoring
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Runtime will automatically shutdown after idle_shutdown_time.
+// Default: True
+func (o RuntimeSoftwareConfigPtrOutput) IdleShutdown() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RuntimeSoftwareConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IdleShutdown
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Time in minutes to wait before shuting down runtime.
+// Default: 180 minutes
+func (o RuntimeSoftwareConfigPtrOutput) IdleShutdownTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RuntimeSoftwareConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IdleShutdownTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// Install Nvidia Driver automatically.
+func (o RuntimeSoftwareConfigPtrOutput) InstallGpuDriver() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RuntimeSoftwareConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InstallGpuDriver
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Cron expression in UTC timezone for schedule instance auto upgrade.
+// Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
+func (o RuntimeSoftwareConfigPtrOutput) NotebookUpgradeSchedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeSoftwareConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NotebookUpgradeSchedule
+	}).(pulumi.StringPtrOutput)
+}
+
+// Path to a Bash script that automatically runs after a notebook instance
+// fully boots up. The path must be a URL or
+// Cloud Storage path (gs://path-to-file/file-name).
+func (o RuntimeSoftwareConfigPtrOutput) PostStartupScript() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeSoftwareConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PostStartupScript
+	}).(pulumi.StringPtrOutput)
+}
+
+type RuntimeVirtualMachine struct {
+	// -
+	// The unique identifier of the Managed Compute Engine instance.
+	InstanceId *string `pulumi:"instanceId"`
+	// -
+	// The user-friendly name of the Managed Compute Engine instance.
+	InstanceName *string `pulumi:"instanceName"`
+	// Virtual Machine configuration settings.
+	// Structure is documented below.
+	VirtualMachineConfig *RuntimeVirtualMachineVirtualMachineConfig `pulumi:"virtualMachineConfig"`
+}
+
+// RuntimeVirtualMachineInput is an input type that accepts RuntimeVirtualMachineArgs and RuntimeVirtualMachineOutput values.
+// You can construct a concrete instance of `RuntimeVirtualMachineInput` via:
+//
+//          RuntimeVirtualMachineArgs{...}
+type RuntimeVirtualMachineInput interface {
+	pulumi.Input
+
+	ToRuntimeVirtualMachineOutput() RuntimeVirtualMachineOutput
+	ToRuntimeVirtualMachineOutputWithContext(context.Context) RuntimeVirtualMachineOutput
+}
+
+type RuntimeVirtualMachineArgs struct {
+	// -
+	// The unique identifier of the Managed Compute Engine instance.
+	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
+	// -
+	// The user-friendly name of the Managed Compute Engine instance.
+	InstanceName pulumi.StringPtrInput `pulumi:"instanceName"`
+	// Virtual Machine configuration settings.
+	// Structure is documented below.
+	VirtualMachineConfig RuntimeVirtualMachineVirtualMachineConfigPtrInput `pulumi:"virtualMachineConfig"`
+}
+
+func (RuntimeVirtualMachineArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeVirtualMachine)(nil)).Elem()
+}
+
+func (i RuntimeVirtualMachineArgs) ToRuntimeVirtualMachineOutput() RuntimeVirtualMachineOutput {
+	return i.ToRuntimeVirtualMachineOutputWithContext(context.Background())
+}
+
+func (i RuntimeVirtualMachineArgs) ToRuntimeVirtualMachineOutputWithContext(ctx context.Context) RuntimeVirtualMachineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeVirtualMachineOutput)
+}
+
+func (i RuntimeVirtualMachineArgs) ToRuntimeVirtualMachinePtrOutput() RuntimeVirtualMachinePtrOutput {
+	return i.ToRuntimeVirtualMachinePtrOutputWithContext(context.Background())
+}
+
+func (i RuntimeVirtualMachineArgs) ToRuntimeVirtualMachinePtrOutputWithContext(ctx context.Context) RuntimeVirtualMachinePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeVirtualMachineOutput).ToRuntimeVirtualMachinePtrOutputWithContext(ctx)
+}
+
+// RuntimeVirtualMachinePtrInput is an input type that accepts RuntimeVirtualMachineArgs, RuntimeVirtualMachinePtr and RuntimeVirtualMachinePtrOutput values.
+// You can construct a concrete instance of `RuntimeVirtualMachinePtrInput` via:
+//
+//          RuntimeVirtualMachineArgs{...}
+//
+//  or:
+//
+//          nil
+type RuntimeVirtualMachinePtrInput interface {
+	pulumi.Input
+
+	ToRuntimeVirtualMachinePtrOutput() RuntimeVirtualMachinePtrOutput
+	ToRuntimeVirtualMachinePtrOutputWithContext(context.Context) RuntimeVirtualMachinePtrOutput
+}
+
+type runtimeVirtualMachinePtrType RuntimeVirtualMachineArgs
+
+func RuntimeVirtualMachinePtr(v *RuntimeVirtualMachineArgs) RuntimeVirtualMachinePtrInput {
+	return (*runtimeVirtualMachinePtrType)(v)
+}
+
+func (*runtimeVirtualMachinePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeVirtualMachine)(nil)).Elem()
+}
+
+func (i *runtimeVirtualMachinePtrType) ToRuntimeVirtualMachinePtrOutput() RuntimeVirtualMachinePtrOutput {
+	return i.ToRuntimeVirtualMachinePtrOutputWithContext(context.Background())
+}
+
+func (i *runtimeVirtualMachinePtrType) ToRuntimeVirtualMachinePtrOutputWithContext(ctx context.Context) RuntimeVirtualMachinePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeVirtualMachinePtrOutput)
+}
+
+type RuntimeVirtualMachineOutput struct{ *pulumi.OutputState }
+
+func (RuntimeVirtualMachineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeVirtualMachine)(nil)).Elem()
+}
+
+func (o RuntimeVirtualMachineOutput) ToRuntimeVirtualMachineOutput() RuntimeVirtualMachineOutput {
+	return o
+}
+
+func (o RuntimeVirtualMachineOutput) ToRuntimeVirtualMachineOutputWithContext(ctx context.Context) RuntimeVirtualMachineOutput {
+	return o
+}
+
+func (o RuntimeVirtualMachineOutput) ToRuntimeVirtualMachinePtrOutput() RuntimeVirtualMachinePtrOutput {
+	return o.ToRuntimeVirtualMachinePtrOutputWithContext(context.Background())
+}
+
+func (o RuntimeVirtualMachineOutput) ToRuntimeVirtualMachinePtrOutputWithContext(ctx context.Context) RuntimeVirtualMachinePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeVirtualMachine) *RuntimeVirtualMachine {
+		return &v
+	}).(RuntimeVirtualMachinePtrOutput)
+}
+
+// -
+// The unique identifier of the Managed Compute Engine instance.
+func (o RuntimeVirtualMachineOutput) InstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachine) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
+}
+
+// -
+// The user-friendly name of the Managed Compute Engine instance.
+func (o RuntimeVirtualMachineOutput) InstanceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachine) *string { return v.InstanceName }).(pulumi.StringPtrOutput)
+}
+
+// Virtual Machine configuration settings.
+// Structure is documented below.
+func (o RuntimeVirtualMachineOutput) VirtualMachineConfig() RuntimeVirtualMachineVirtualMachineConfigPtrOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachine) *RuntimeVirtualMachineVirtualMachineConfig {
+		return v.VirtualMachineConfig
+	}).(RuntimeVirtualMachineVirtualMachineConfigPtrOutput)
+}
+
+type RuntimeVirtualMachinePtrOutput struct{ *pulumi.OutputState }
+
+func (RuntimeVirtualMachinePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeVirtualMachine)(nil)).Elem()
+}
+
+func (o RuntimeVirtualMachinePtrOutput) ToRuntimeVirtualMachinePtrOutput() RuntimeVirtualMachinePtrOutput {
+	return o
+}
+
+func (o RuntimeVirtualMachinePtrOutput) ToRuntimeVirtualMachinePtrOutputWithContext(ctx context.Context) RuntimeVirtualMachinePtrOutput {
+	return o
+}
+
+func (o RuntimeVirtualMachinePtrOutput) Elem() RuntimeVirtualMachineOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachine) RuntimeVirtualMachine {
+		if v != nil {
+			return *v
+		}
+		var ret RuntimeVirtualMachine
+		return ret
+	}).(RuntimeVirtualMachineOutput)
+}
+
+// -
+// The unique identifier of the Managed Compute Engine instance.
+func (o RuntimeVirtualMachinePtrOutput) InstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachine) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// -
+// The user-friendly name of the Managed Compute Engine instance.
+func (o RuntimeVirtualMachinePtrOutput) InstanceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachine) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Virtual Machine configuration settings.
+// Structure is documented below.
+func (o RuntimeVirtualMachinePtrOutput) VirtualMachineConfig() RuntimeVirtualMachineVirtualMachineConfigPtrOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachine) *RuntimeVirtualMachineVirtualMachineConfig {
+		if v == nil {
+			return nil
+		}
+		return v.VirtualMachineConfig
+	}).(RuntimeVirtualMachineVirtualMachineConfigPtrOutput)
+}
+
+type RuntimeVirtualMachineVirtualMachineConfig struct {
+	// The Compute Engine accelerator configuration for this runtime.
+	// Structure is documented below.
+	AcceleratorConfig *RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig `pulumi:"acceleratorConfig"`
+	// Use a list of container images to start the notebook instance.
+	// Structure is documented below.
+	ContainerImages []RuntimeVirtualMachineVirtualMachineConfigContainerImage `pulumi:"containerImages"`
+	// Data disk option configuration settings.
+	// Structure is documented below.
+	DataDisk RuntimeVirtualMachineVirtualMachineConfigDataDisk `pulumi:"dataDisk"`
+	// Encryption settings for virtual machine data disk.
+	// Structure is documented below.
+	EncryptionConfig *RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig `pulumi:"encryptionConfig"`
+	// -
+	// The Compute Engine guest attributes. (see [Project and instance
+	// guest attributes](https://cloud.google.com/compute/docs/
+	// storing-retrieving-metadata#guest_attributes)).
+	GuestAttributes map[string]string `pulumi:"guestAttributes"`
+	// If true, runtime will only have internal IP addresses. By default,
+	// runtimes are not restricted to internal IP addresses, and will
+	// have ephemeral external IP addresses assigned to each vm. This
+	// `internalIpOnly` restriction can only be enabled for subnetwork
+	// enabled networks, and all dependencies must be configured to be
+	// accessible without external IP addresses.
+	InternalIpOnly *bool `pulumi:"internalIpOnly"`
+	// Labels to apply to this disk. These can be later modified
+	// by the disks.setLabels method. This field is only
+	// applicable for persistent disks.
+	Labels map[string]string `pulumi:"labels"`
+	// The Compute Engine machine type used for runtimes.
+	MachineType string `pulumi:"machineType"`
+	// The Compute Engine metadata entries to add to virtual machine.
+	// (see [Project and instance metadata](https://cloud.google.com
+	// /compute/docs/storing-retrieving-metadata#project_and_instance
+	// _metadata)).
+	Metadata map[string]string `pulumi:"metadata"`
+	// The Compute Engine network to be used for machine communications.
+	// Cannot be specified with subnetwork. If neither `network` nor
+	// `subnet` is specified, the "default" network of the project is
+	// used, if it exists. A full URL or partial URI. Examples:
+	// * `https://www.googleapis.com/compute/v1/projects/[projectId]/
+	//   regions/global/default`
+	// * `projects/[projectId]/regions/global/default`
+	//   Runtimes are managed resources inside Google Infrastructure.
+	//   Runtimes support the following network configurations:
+	// * Google Managed Network (Network & subnet are empty)
+	// * Consumer Project VPC (network & subnet are required). Requires
+	//   configuring Private Service Access.
+	// * Shared VPC (network & subnet are required). Requires
+	//   configuring Private Service Access.
+	Network *string `pulumi:"network"`
+	// The type of vNIC to be used on this interface. This may be gVNIC
+	// or VirtioNet.
+	// Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+	NicType *string `pulumi:"nicType"`
+	// Shielded VM Instance configuration settings.
+	// Structure is documented below.
+	ShieldedInstanceConfig *RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
+	// The Compute Engine subnetwork to be used for machine
+	// communications. Cannot be specified with network. A full URL or
+	// partial URI are valid. Examples:
+	// * `https://www.googleapis.com/compute/v1/projects/[projectId]/
+	//   regions/us-east1/subnetworks/sub0`
+	// * `projects/[projectId]/regions/us-east1/subnetworks/sub0`
+	Subnet *string `pulumi:"subnet"`
+	// The Compute Engine tags to add to runtime (see [Tagging instances]
+	// (https://cloud.google.com/compute/docs/
+	// label-or-tag-resources#tags)).
+	Tags []string `pulumi:"tags"`
+	// -
+	// The zone where the virtual machine is located.
+	Zone *string `pulumi:"zone"`
+}
+
+// RuntimeVirtualMachineVirtualMachineConfigInput is an input type that accepts RuntimeVirtualMachineVirtualMachineConfigArgs and RuntimeVirtualMachineVirtualMachineConfigOutput values.
+// You can construct a concrete instance of `RuntimeVirtualMachineVirtualMachineConfigInput` via:
+//
+//          RuntimeVirtualMachineVirtualMachineConfigArgs{...}
+type RuntimeVirtualMachineVirtualMachineConfigInput interface {
+	pulumi.Input
+
+	ToRuntimeVirtualMachineVirtualMachineConfigOutput() RuntimeVirtualMachineVirtualMachineConfigOutput
+	ToRuntimeVirtualMachineVirtualMachineConfigOutputWithContext(context.Context) RuntimeVirtualMachineVirtualMachineConfigOutput
+}
+
+type RuntimeVirtualMachineVirtualMachineConfigArgs struct {
+	// The Compute Engine accelerator configuration for this runtime.
+	// Structure is documented below.
+	AcceleratorConfig RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrInput `pulumi:"acceleratorConfig"`
+	// Use a list of container images to start the notebook instance.
+	// Structure is documented below.
+	ContainerImages RuntimeVirtualMachineVirtualMachineConfigContainerImageArrayInput `pulumi:"containerImages"`
+	// Data disk option configuration settings.
+	// Structure is documented below.
+	DataDisk RuntimeVirtualMachineVirtualMachineConfigDataDiskInput `pulumi:"dataDisk"`
+	// Encryption settings for virtual machine data disk.
+	// Structure is documented below.
+	EncryptionConfig RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrInput `pulumi:"encryptionConfig"`
+	// -
+	// The Compute Engine guest attributes. (see [Project and instance
+	// guest attributes](https://cloud.google.com/compute/docs/
+	// storing-retrieving-metadata#guest_attributes)).
+	GuestAttributes pulumi.StringMapInput `pulumi:"guestAttributes"`
+	// If true, runtime will only have internal IP addresses. By default,
+	// runtimes are not restricted to internal IP addresses, and will
+	// have ephemeral external IP addresses assigned to each vm. This
+	// `internalIpOnly` restriction can only be enabled for subnetwork
+	// enabled networks, and all dependencies must be configured to be
+	// accessible without external IP addresses.
+	InternalIpOnly pulumi.BoolPtrInput `pulumi:"internalIpOnly"`
+	// Labels to apply to this disk. These can be later modified
+	// by the disks.setLabels method. This field is only
+	// applicable for persistent disks.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// The Compute Engine machine type used for runtimes.
+	MachineType pulumi.StringInput `pulumi:"machineType"`
+	// The Compute Engine metadata entries to add to virtual machine.
+	// (see [Project and instance metadata](https://cloud.google.com
+	// /compute/docs/storing-retrieving-metadata#project_and_instance
+	// _metadata)).
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+	// The Compute Engine network to be used for machine communications.
+	// Cannot be specified with subnetwork. If neither `network` nor
+	// `subnet` is specified, the "default" network of the project is
+	// used, if it exists. A full URL or partial URI. Examples:
+	// * `https://www.googleapis.com/compute/v1/projects/[projectId]/
+	//   regions/global/default`
+	// * `projects/[projectId]/regions/global/default`
+	//   Runtimes are managed resources inside Google Infrastructure.
+	//   Runtimes support the following network configurations:
+	// * Google Managed Network (Network & subnet are empty)
+	// * Consumer Project VPC (network & subnet are required). Requires
+	//   configuring Private Service Access.
+	// * Shared VPC (network & subnet are required). Requires
+	//   configuring Private Service Access.
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// The type of vNIC to be used on this interface. This may be gVNIC
+	// or VirtioNet.
+	// Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+	NicType pulumi.StringPtrInput `pulumi:"nicType"`
+	// Shielded VM Instance configuration settings.
+	// Structure is documented below.
+	ShieldedInstanceConfig RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
+	// The Compute Engine subnetwork to be used for machine
+	// communications. Cannot be specified with network. A full URL or
+	// partial URI are valid. Examples:
+	// * `https://www.googleapis.com/compute/v1/projects/[projectId]/
+	//   regions/us-east1/subnetworks/sub0`
+	// * `projects/[projectId]/regions/us-east1/subnetworks/sub0`
+	Subnet pulumi.StringPtrInput `pulumi:"subnet"`
+	// The Compute Engine tags to add to runtime (see [Tagging instances]
+	// (https://cloud.google.com/compute/docs/
+	// label-or-tag-resources#tags)).
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// -
+	// The zone where the virtual machine is located.
+	Zone pulumi.StringPtrInput `pulumi:"zone"`
+}
+
+func (RuntimeVirtualMachineVirtualMachineConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeVirtualMachineVirtualMachineConfig)(nil)).Elem()
+}
+
+func (i RuntimeVirtualMachineVirtualMachineConfigArgs) ToRuntimeVirtualMachineVirtualMachineConfigOutput() RuntimeVirtualMachineVirtualMachineConfigOutput {
+	return i.ToRuntimeVirtualMachineVirtualMachineConfigOutputWithContext(context.Background())
+}
+
+func (i RuntimeVirtualMachineVirtualMachineConfigArgs) ToRuntimeVirtualMachineVirtualMachineConfigOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeVirtualMachineVirtualMachineConfigOutput)
+}
+
+func (i RuntimeVirtualMachineVirtualMachineConfigArgs) ToRuntimeVirtualMachineVirtualMachineConfigPtrOutput() RuntimeVirtualMachineVirtualMachineConfigPtrOutput {
+	return i.ToRuntimeVirtualMachineVirtualMachineConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RuntimeVirtualMachineVirtualMachineConfigArgs) ToRuntimeVirtualMachineVirtualMachineConfigPtrOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeVirtualMachineVirtualMachineConfigOutput).ToRuntimeVirtualMachineVirtualMachineConfigPtrOutputWithContext(ctx)
+}
+
+// RuntimeVirtualMachineVirtualMachineConfigPtrInput is an input type that accepts RuntimeVirtualMachineVirtualMachineConfigArgs, RuntimeVirtualMachineVirtualMachineConfigPtr and RuntimeVirtualMachineVirtualMachineConfigPtrOutput values.
+// You can construct a concrete instance of `RuntimeVirtualMachineVirtualMachineConfigPtrInput` via:
+//
+//          RuntimeVirtualMachineVirtualMachineConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type RuntimeVirtualMachineVirtualMachineConfigPtrInput interface {
+	pulumi.Input
+
+	ToRuntimeVirtualMachineVirtualMachineConfigPtrOutput() RuntimeVirtualMachineVirtualMachineConfigPtrOutput
+	ToRuntimeVirtualMachineVirtualMachineConfigPtrOutputWithContext(context.Context) RuntimeVirtualMachineVirtualMachineConfigPtrOutput
+}
+
+type runtimeVirtualMachineVirtualMachineConfigPtrType RuntimeVirtualMachineVirtualMachineConfigArgs
+
+func RuntimeVirtualMachineVirtualMachineConfigPtr(v *RuntimeVirtualMachineVirtualMachineConfigArgs) RuntimeVirtualMachineVirtualMachineConfigPtrInput {
+	return (*runtimeVirtualMachineVirtualMachineConfigPtrType)(v)
+}
+
+func (*runtimeVirtualMachineVirtualMachineConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeVirtualMachineVirtualMachineConfig)(nil)).Elem()
+}
+
+func (i *runtimeVirtualMachineVirtualMachineConfigPtrType) ToRuntimeVirtualMachineVirtualMachineConfigPtrOutput() RuntimeVirtualMachineVirtualMachineConfigPtrOutput {
+	return i.ToRuntimeVirtualMachineVirtualMachineConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *runtimeVirtualMachineVirtualMachineConfigPtrType) ToRuntimeVirtualMachineVirtualMachineConfigPtrOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeVirtualMachineVirtualMachineConfigPtrOutput)
+}
+
+type RuntimeVirtualMachineVirtualMachineConfigOutput struct{ *pulumi.OutputState }
+
+func (RuntimeVirtualMachineVirtualMachineConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeVirtualMachineVirtualMachineConfig)(nil)).Elem()
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigOutput) ToRuntimeVirtualMachineVirtualMachineConfigOutput() RuntimeVirtualMachineVirtualMachineConfigOutput {
+	return o
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigOutput) ToRuntimeVirtualMachineVirtualMachineConfigOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigOutput {
+	return o
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigOutput) ToRuntimeVirtualMachineVirtualMachineConfigPtrOutput() RuntimeVirtualMachineVirtualMachineConfigPtrOutput {
+	return o.ToRuntimeVirtualMachineVirtualMachineConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigOutput) ToRuntimeVirtualMachineVirtualMachineConfigPtrOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeVirtualMachineVirtualMachineConfig) *RuntimeVirtualMachineVirtualMachineConfig {
+		return &v
+	}).(RuntimeVirtualMachineVirtualMachineConfigPtrOutput)
+}
+
+// The Compute Engine accelerator configuration for this runtime.
+// Structure is documented below.
+func (o RuntimeVirtualMachineVirtualMachineConfigOutput) AcceleratorConfig() RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfig) *RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig {
+		return v.AcceleratorConfig
+	}).(RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutput)
+}
+
+// Use a list of container images to start the notebook instance.
+// Structure is documented below.
+func (o RuntimeVirtualMachineVirtualMachineConfigOutput) ContainerImages() RuntimeVirtualMachineVirtualMachineConfigContainerImageArrayOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfig) []RuntimeVirtualMachineVirtualMachineConfigContainerImage {
+		return v.ContainerImages
+	}).(RuntimeVirtualMachineVirtualMachineConfigContainerImageArrayOutput)
+}
+
+// Data disk option configuration settings.
+// Structure is documented below.
+func (o RuntimeVirtualMachineVirtualMachineConfigOutput) DataDisk() RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfig) RuntimeVirtualMachineVirtualMachineConfigDataDisk {
+		return v.DataDisk
+	}).(RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput)
+}
+
+// Encryption settings for virtual machine data disk.
+// Structure is documented below.
+func (o RuntimeVirtualMachineVirtualMachineConfigOutput) EncryptionConfig() RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfig) *RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig {
+		return v.EncryptionConfig
+	}).(RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput)
+}
+
+// -
+// The Compute Engine guest attributes. (see [Project and instance
+// guest attributes](https://cloud.google.com/compute/docs/
+// storing-retrieving-metadata#guest_attributes)).
+func (o RuntimeVirtualMachineVirtualMachineConfigOutput) GuestAttributes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfig) map[string]string { return v.GuestAttributes }).(pulumi.StringMapOutput)
+}
+
+// If true, runtime will only have internal IP addresses. By default,
+// runtimes are not restricted to internal IP addresses, and will
+// have ephemeral external IP addresses assigned to each vm. This
+// `internalIpOnly` restriction can only be enabled for subnetwork
+// enabled networks, and all dependencies must be configured to be
+// accessible without external IP addresses.
+func (o RuntimeVirtualMachineVirtualMachineConfigOutput) InternalIpOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfig) *bool { return v.InternalIpOnly }).(pulumi.BoolPtrOutput)
+}
+
+// Labels to apply to this disk. These can be later modified
+// by the disks.setLabels method. This field is only
+// applicable for persistent disks.
+func (o RuntimeVirtualMachineVirtualMachineConfigOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The Compute Engine machine type used for runtimes.
+func (o RuntimeVirtualMachineVirtualMachineConfigOutput) MachineType() pulumi.StringOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfig) string { return v.MachineType }).(pulumi.StringOutput)
+}
+
+// The Compute Engine metadata entries to add to virtual machine.
+// (see [Project and instance metadata](https://cloud.google.com
+// /compute/docs/storing-retrieving-metadata#project_and_instance
+// _metadata)).
+func (o RuntimeVirtualMachineVirtualMachineConfigOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfig) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+// The Compute Engine network to be used for machine communications.
+// Cannot be specified with subnetwork. If neither `network` nor
+// `subnet` is specified, the "default" network of the project is
+// used, if it exists. A full URL or partial URI. Examples:
+// * `https://www.googleapis.com/compute/v1/projects/[projectId]/
+//   regions/global/default`
+// * `projects/[projectId]/regions/global/default`
+//   Runtimes are managed resources inside Google Infrastructure.
+//   Runtimes support the following network configurations:
+// * Google Managed Network (Network & subnet are empty)
+// * Consumer Project VPC (network & subnet are required). Requires
+//   configuring Private Service Access.
+// * Shared VPC (network & subnet are required). Requires
+//   configuring Private Service Access.
+func (o RuntimeVirtualMachineVirtualMachineConfigOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// The type of vNIC to be used on this interface. This may be gVNIC
+// or VirtioNet.
+// Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+func (o RuntimeVirtualMachineVirtualMachineConfigOutput) NicType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfig) *string { return v.NicType }).(pulumi.StringPtrOutput)
+}
+
+// Shielded VM Instance configuration settings.
+// Structure is documented below.
+func (o RuntimeVirtualMachineVirtualMachineConfigOutput) ShieldedInstanceConfig() RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfig) *RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig {
+		return v.ShieldedInstanceConfig
+	}).(RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput)
+}
+
+// The Compute Engine subnetwork to be used for machine
+// communications. Cannot be specified with network. A full URL or
+// partial URI are valid. Examples:
+// * `https://www.googleapis.com/compute/v1/projects/[projectId]/
+//   regions/us-east1/subnetworks/sub0`
+// * `projects/[projectId]/regions/us-east1/subnetworks/sub0`
+func (o RuntimeVirtualMachineVirtualMachineConfigOutput) Subnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfig) *string { return v.Subnet }).(pulumi.StringPtrOutput)
+}
+
+// The Compute Engine tags to add to runtime (see [Tagging instances]
+// (https://cloud.google.com/compute/docs/
+// label-or-tag-resources#tags)).
+func (o RuntimeVirtualMachineVirtualMachineConfigOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// -
+// The zone where the virtual machine is located.
+func (o RuntimeVirtualMachineVirtualMachineConfigOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfig) *string { return v.Zone }).(pulumi.StringPtrOutput)
+}
+
+type RuntimeVirtualMachineVirtualMachineConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RuntimeVirtualMachineVirtualMachineConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeVirtualMachineVirtualMachineConfig)(nil)).Elem()
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) ToRuntimeVirtualMachineVirtualMachineConfigPtrOutput() RuntimeVirtualMachineVirtualMachineConfigPtrOutput {
+	return o
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) ToRuntimeVirtualMachineVirtualMachineConfigPtrOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigPtrOutput {
+	return o
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) Elem() RuntimeVirtualMachineVirtualMachineConfigOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfig) RuntimeVirtualMachineVirtualMachineConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RuntimeVirtualMachineVirtualMachineConfig
+		return ret
+	}).(RuntimeVirtualMachineVirtualMachineConfigOutput)
+}
+
+// The Compute Engine accelerator configuration for this runtime.
+// Structure is documented below.
+func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) AcceleratorConfig() RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfig) *RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AcceleratorConfig
+	}).(RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutput)
+}
+
+// Use a list of container images to start the notebook instance.
+// Structure is documented below.
+func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) ContainerImages() RuntimeVirtualMachineVirtualMachineConfigContainerImageArrayOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfig) []RuntimeVirtualMachineVirtualMachineConfigContainerImage {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerImages
+	}).(RuntimeVirtualMachineVirtualMachineConfigContainerImageArrayOutput)
+}
+
+// Data disk option configuration settings.
+// Structure is documented below.
+func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) DataDisk() RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfig) *RuntimeVirtualMachineVirtualMachineConfigDataDisk {
+		if v == nil {
+			return nil
+		}
+		return &v.DataDisk
+	}).(RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput)
+}
+
+// Encryption settings for virtual machine data disk.
+// Structure is documented below.
+func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) EncryptionConfig() RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfig) *RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptionConfig
+	}).(RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput)
+}
+
+// -
+// The Compute Engine guest attributes. (see [Project and instance
+// guest attributes](https://cloud.google.com/compute/docs/
+// storing-retrieving-metadata#guest_attributes)).
+func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) GuestAttributes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.GuestAttributes
+	}).(pulumi.StringMapOutput)
+}
+
+// If true, runtime will only have internal IP addresses. By default,
+// runtimes are not restricted to internal IP addresses, and will
+// have ephemeral external IP addresses assigned to each vm. This
+// `internalIpOnly` restriction can only be enabled for subnetwork
+// enabled networks, and all dependencies must be configured to be
+// accessible without external IP addresses.
+func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) InternalIpOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InternalIpOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Labels to apply to this disk. These can be later modified
+// by the disks.setLabels method. This field is only
+// applicable for persistent disks.
+func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+// The Compute Engine machine type used for runtimes.
+func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Compute Engine metadata entries to add to virtual machine.
+// (see [Project and instance metadata](https://cloud.google.com
+// /compute/docs/storing-retrieving-metadata#project_and_instance
+// _metadata)).
+func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(pulumi.StringMapOutput)
+}
+
+// The Compute Engine network to be used for machine communications.
+// Cannot be specified with subnetwork. If neither `network` nor
+// `subnet` is specified, the "default" network of the project is
+// used, if it exists. A full URL or partial URI. Examples:
+// * `https://www.googleapis.com/compute/v1/projects/[projectId]/
+//   regions/global/default`
+// * `projects/[projectId]/regions/global/default`
+//   Runtimes are managed resources inside Google Infrastructure.
+//   Runtimes support the following network configurations:
+// * Google Managed Network (Network & subnet are empty)
+// * Consumer Project VPC (network & subnet are required). Requires
+//   configuring Private Service Access.
+// * Shared VPC (network & subnet are required). Requires
+//   configuring Private Service Access.
+func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of vNIC to be used on this interface. This may be gVNIC
+// or VirtioNet.
+// Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) NicType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NicType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Shielded VM Instance configuration settings.
+// Structure is documented below.
+func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) ShieldedInstanceConfig() RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfig) *RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ShieldedInstanceConfig
+	}).(RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput)
+}
+
+// The Compute Engine subnetwork to be used for machine
+// communications. Cannot be specified with network. A full URL or
+// partial URI are valid. Examples:
+// * `https://www.googleapis.com/compute/v1/projects/[projectId]/
+//   regions/us-east1/subnetworks/sub0`
+// * `projects/[projectId]/regions/us-east1/subnetworks/sub0`
+func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) Subnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subnet
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Compute Engine tags to add to runtime (see [Tagging instances]
+// (https://cloud.google.com/compute/docs/
+// label-or-tag-resources#tags)).
+func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringArrayOutput)
+}
+
+// -
+// The zone where the virtual machine is located.
+func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Zone
+	}).(pulumi.StringPtrOutput)
+}
+
+type RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig struct {
+	// Count of cores of this accelerator.
+	CoreCount *int `pulumi:"coreCount"`
+	// Accelerator model. For valid values, see
+	// `https://cloud.google.com/vertex-ai/docs/workbench/reference/
+	// rest/v1/projects.locations.runtimes#AcceleratorType`
+	Type *string `pulumi:"type"`
+}
+
+// RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigInput is an input type that accepts RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs and RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigOutput values.
+// You can construct a concrete instance of `RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigInput` via:
+//
+//          RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs{...}
+type RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigInput interface {
+	pulumi.Input
+
+	ToRuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigOutput() RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigOutput
+	ToRuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigOutputWithContext(context.Context) RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigOutput
+}
+
+type RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs struct {
+	// Count of cores of this accelerator.
+	CoreCount pulumi.IntPtrInput `pulumi:"coreCount"`
+	// Accelerator model. For valid values, see
+	// `https://cloud.google.com/vertex-ai/docs/workbench/reference/
+	// rest/v1/projects.locations.runtimes#AcceleratorType`
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig)(nil)).Elem()
+}
+
+func (i RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs) ToRuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigOutput() RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigOutput {
+	return i.ToRuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigOutputWithContext(context.Background())
+}
+
+func (i RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs) ToRuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigOutput)
+}
+
+func (i RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs) ToRuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutput() RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutput {
+	return i.ToRuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs) ToRuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigOutput).ToRuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutputWithContext(ctx)
+}
+
+// RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrInput is an input type that accepts RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs, RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtr and RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutput values.
+// You can construct a concrete instance of `RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrInput` via:
+//
+//          RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrInput interface {
+	pulumi.Input
+
+	ToRuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutput() RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutput
+	ToRuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutputWithContext(context.Context) RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutput
+}
+
+type runtimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrType RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs
+
+func RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtr(v *RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs) RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrInput {
+	return (*runtimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrType)(v)
+}
+
+func (*runtimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig)(nil)).Elem()
+}
+
+func (i *runtimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrType) ToRuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutput() RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutput {
+	return i.ToRuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *runtimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrType) ToRuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutput)
+}
+
+type RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigOutput struct{ *pulumi.OutputState }
+
+func (RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig)(nil)).Elem()
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigOutput) ToRuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigOutput() RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigOutput {
+	return o
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigOutput) ToRuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigOutput {
+	return o
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigOutput) ToRuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutput() RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutput {
+	return o.ToRuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigOutput) ToRuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig) *RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig {
+		return &v
+	}).(RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutput)
+}
+
+// Count of cores of this accelerator.
+func (o RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigOutput) CoreCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig) *int { return v.CoreCount }).(pulumi.IntPtrOutput)
+}
+
+// Accelerator model. For valid values, see
+// `https://cloud.google.com/vertex-ai/docs/workbench/reference/
+// rest/v1/projects.locations.runtimes#AcceleratorType`
+func (o RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig)(nil)).Elem()
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutput) ToRuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutput() RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutput {
+	return o
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutput) ToRuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutput {
+	return o
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutput) Elem() RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig) RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig
+		return ret
+	}).(RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigOutput)
+}
+
+// Count of cores of this accelerator.
+func (o RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutput) CoreCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CoreCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Accelerator model. For valid values, see
+// `https://cloud.google.com/vertex-ai/docs/workbench/reference/
+// rest/v1/projects.locations.runtimes#AcceleratorType`
+func (o RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type RuntimeVirtualMachineVirtualMachineConfigContainerImage struct {
+	// The path to the container image repository.
+	// For example: gcr.io/{project_id}/{imageName}
+	Repository string `pulumi:"repository"`
+	// The tag of the container image. If not specified, this defaults to the latest tag.
+	Tag *string `pulumi:"tag"`
+}
+
+// RuntimeVirtualMachineVirtualMachineConfigContainerImageInput is an input type that accepts RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs and RuntimeVirtualMachineVirtualMachineConfigContainerImageOutput values.
+// You can construct a concrete instance of `RuntimeVirtualMachineVirtualMachineConfigContainerImageInput` via:
+//
+//          RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs{...}
+type RuntimeVirtualMachineVirtualMachineConfigContainerImageInput interface {
+	pulumi.Input
+
+	ToRuntimeVirtualMachineVirtualMachineConfigContainerImageOutput() RuntimeVirtualMachineVirtualMachineConfigContainerImageOutput
+	ToRuntimeVirtualMachineVirtualMachineConfigContainerImageOutputWithContext(context.Context) RuntimeVirtualMachineVirtualMachineConfigContainerImageOutput
+}
+
+type RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs struct {
+	// The path to the container image repository.
+	// For example: gcr.io/{project_id}/{imageName}
+	Repository pulumi.StringInput `pulumi:"repository"`
+	// The tag of the container image. If not specified, this defaults to the latest tag.
+	Tag pulumi.StringPtrInput `pulumi:"tag"`
+}
+
+func (RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeVirtualMachineVirtualMachineConfigContainerImage)(nil)).Elem()
+}
+
+func (i RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs) ToRuntimeVirtualMachineVirtualMachineConfigContainerImageOutput() RuntimeVirtualMachineVirtualMachineConfigContainerImageOutput {
+	return i.ToRuntimeVirtualMachineVirtualMachineConfigContainerImageOutputWithContext(context.Background())
+}
+
+func (i RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs) ToRuntimeVirtualMachineVirtualMachineConfigContainerImageOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigContainerImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeVirtualMachineVirtualMachineConfigContainerImageOutput)
+}
+
+// RuntimeVirtualMachineVirtualMachineConfigContainerImageArrayInput is an input type that accepts RuntimeVirtualMachineVirtualMachineConfigContainerImageArray and RuntimeVirtualMachineVirtualMachineConfigContainerImageArrayOutput values.
+// You can construct a concrete instance of `RuntimeVirtualMachineVirtualMachineConfigContainerImageArrayInput` via:
+//
+//          RuntimeVirtualMachineVirtualMachineConfigContainerImageArray{ RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs{...} }
+type RuntimeVirtualMachineVirtualMachineConfigContainerImageArrayInput interface {
+	pulumi.Input
+
+	ToRuntimeVirtualMachineVirtualMachineConfigContainerImageArrayOutput() RuntimeVirtualMachineVirtualMachineConfigContainerImageArrayOutput
+	ToRuntimeVirtualMachineVirtualMachineConfigContainerImageArrayOutputWithContext(context.Context) RuntimeVirtualMachineVirtualMachineConfigContainerImageArrayOutput
+}
+
+type RuntimeVirtualMachineVirtualMachineConfigContainerImageArray []RuntimeVirtualMachineVirtualMachineConfigContainerImageInput
+
+func (RuntimeVirtualMachineVirtualMachineConfigContainerImageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuntimeVirtualMachineVirtualMachineConfigContainerImage)(nil)).Elem()
+}
+
+func (i RuntimeVirtualMachineVirtualMachineConfigContainerImageArray) ToRuntimeVirtualMachineVirtualMachineConfigContainerImageArrayOutput() RuntimeVirtualMachineVirtualMachineConfigContainerImageArrayOutput {
+	return i.ToRuntimeVirtualMachineVirtualMachineConfigContainerImageArrayOutputWithContext(context.Background())
+}
+
+func (i RuntimeVirtualMachineVirtualMachineConfigContainerImageArray) ToRuntimeVirtualMachineVirtualMachineConfigContainerImageArrayOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigContainerImageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeVirtualMachineVirtualMachineConfigContainerImageArrayOutput)
+}
+
+type RuntimeVirtualMachineVirtualMachineConfigContainerImageOutput struct{ *pulumi.OutputState }
+
+func (RuntimeVirtualMachineVirtualMachineConfigContainerImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeVirtualMachineVirtualMachineConfigContainerImage)(nil)).Elem()
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigContainerImageOutput) ToRuntimeVirtualMachineVirtualMachineConfigContainerImageOutput() RuntimeVirtualMachineVirtualMachineConfigContainerImageOutput {
+	return o
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigContainerImageOutput) ToRuntimeVirtualMachineVirtualMachineConfigContainerImageOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigContainerImageOutput {
+	return o
+}
+
+// The path to the container image repository.
+// For example: gcr.io/{project_id}/{imageName}
+func (o RuntimeVirtualMachineVirtualMachineConfigContainerImageOutput) Repository() pulumi.StringOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfigContainerImage) string { return v.Repository }).(pulumi.StringOutput)
+}
+
+// The tag of the container image. If not specified, this defaults to the latest tag.
+func (o RuntimeVirtualMachineVirtualMachineConfigContainerImageOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfigContainerImage) *string { return v.Tag }).(pulumi.StringPtrOutput)
+}
+
+type RuntimeVirtualMachineVirtualMachineConfigContainerImageArrayOutput struct{ *pulumi.OutputState }
+
+func (RuntimeVirtualMachineVirtualMachineConfigContainerImageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuntimeVirtualMachineVirtualMachineConfigContainerImage)(nil)).Elem()
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigContainerImageArrayOutput) ToRuntimeVirtualMachineVirtualMachineConfigContainerImageArrayOutput() RuntimeVirtualMachineVirtualMachineConfigContainerImageArrayOutput {
+	return o
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigContainerImageArrayOutput) ToRuntimeVirtualMachineVirtualMachineConfigContainerImageArrayOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigContainerImageArrayOutput {
+	return o
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigContainerImageArrayOutput) Index(i pulumi.IntInput) RuntimeVirtualMachineVirtualMachineConfigContainerImageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuntimeVirtualMachineVirtualMachineConfigContainerImage {
+		return vs[0].([]RuntimeVirtualMachineVirtualMachineConfigContainerImage)[vs[1].(int)]
+	}).(RuntimeVirtualMachineVirtualMachineConfigContainerImageOutput)
+}
+
+type RuntimeVirtualMachineVirtualMachineConfigDataDisk struct {
+	// -
+	// Optional. Specifies whether the disk will be auto-deleted
+	// when the instance is deleted (but not when the disk is
+	// detached from the instance).
+	AutoDelete *bool `pulumi:"autoDelete"`
+	// -
+	// Optional. Indicates that this is a boot disk. The virtual
+	// machine will use the first partition of the disk for its
+	// root filesystem.
+	Boot *bool `pulumi:"boot"`
+	// -
+	// Optional. Specifies a unique device name of your choice
+	// that is reflected into the /dev/disk/by-id/google-* tree
+	// of a Linux operating system running within the instance.
+	// This name can be used to reference the device for mounting,
+	// resizing, and so on, from within the instance.
+	// If not specified, the server chooses a default device name
+	// to apply to this disk, in the form persistent-disk-x, where
+	// x is a number assigned by Google Compute Engine. This field
+	// is only applicable for persistent disks.
+	DeviceName *string `pulumi:"deviceName"`
+	// -
+	// Indicates a list of features to enable on the guest operating
+	// system. Applicable only for bootable images. To see a list of
+	// available features, read `https://cloud.google.com/compute/docs/
+	// images/create-delete-deprecate-private-images#guest-os-features`
+	// options. ``
+	GuestOsFeatures []string `pulumi:"guestOsFeatures"`
+	// -
+	// Output only. A zero-based index to this disk, where 0 is
+	// reserved for the boot disk. If you have many disks attached
+	// to an instance, each disk would have a unique index number.
+	Index *int `pulumi:"index"`
+	// Input only. Specifies the parameters for a new disk that will
+	// be created alongside the new instance. Use initialization
+	// parameters to create boot disks or local SSDs attached to the
+	// new instance. This property is mutually exclusive with the
+	// source property; you can only define one or the other, but not
+	// both.
+	// Structure is documented below.
+	InitializeParams *RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams `pulumi:"initializeParams"`
+	// "Specifies the disk interface to use for attaching this disk,
+	// which is either SCSI or NVME. The default is SCSI. Persistent
+	// disks must always use SCSI and the request will fail if you attempt
+	// to attach a persistent disk in any other format than SCSI. Local SSDs
+	// can use either NVME or SCSI. For performance characteristics of SCSI
+	// over NVMe, see Local SSD performance. Valid values: * NVME * SCSI".
+	Interface *string `pulumi:"interface"`
+	// -
+	// Type of the resource. Always compute#attachedDisk for attached
+	// disks.
+	Kind *string `pulumi:"kind"`
+	// -
+	// Output only. Any valid publicly visible licenses.
+	Licenses []string `pulumi:"licenses"`
+	// The mode in which to attach this disk, either READ_WRITE
+	// or READ_ONLY. If not specified, the default is to attach
+	// the disk in READ_WRITE mode.
+	Mode *string `pulumi:"mode"`
+	// Specifies a valid partial or full URL to an existing
+	// Persistent Disk resource.
+	Source *string `pulumi:"source"`
+	// Accelerator model. For valid values, see
+	// `https://cloud.google.com/vertex-ai/docs/workbench/reference/
+	// rest/v1/projects.locations.runtimes#AcceleratorType`
+	Type *string `pulumi:"type"`
+}
+
+// RuntimeVirtualMachineVirtualMachineConfigDataDiskInput is an input type that accepts RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs and RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput values.
+// You can construct a concrete instance of `RuntimeVirtualMachineVirtualMachineConfigDataDiskInput` via:
+//
+//          RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs{...}
+type RuntimeVirtualMachineVirtualMachineConfigDataDiskInput interface {
+	pulumi.Input
+
+	ToRuntimeVirtualMachineVirtualMachineConfigDataDiskOutput() RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput
+	ToRuntimeVirtualMachineVirtualMachineConfigDataDiskOutputWithContext(context.Context) RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput
+}
+
+type RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs struct {
+	// -
+	// Optional. Specifies whether the disk will be auto-deleted
+	// when the instance is deleted (but not when the disk is
+	// detached from the instance).
+	AutoDelete pulumi.BoolPtrInput `pulumi:"autoDelete"`
+	// -
+	// Optional. Indicates that this is a boot disk. The virtual
+	// machine will use the first partition of the disk for its
+	// root filesystem.
+	Boot pulumi.BoolPtrInput `pulumi:"boot"`
+	// -
+	// Optional. Specifies a unique device name of your choice
+	// that is reflected into the /dev/disk/by-id/google-* tree
+	// of a Linux operating system running within the instance.
+	// This name can be used to reference the device for mounting,
+	// resizing, and so on, from within the instance.
+	// If not specified, the server chooses a default device name
+	// to apply to this disk, in the form persistent-disk-x, where
+	// x is a number assigned by Google Compute Engine. This field
+	// is only applicable for persistent disks.
+	DeviceName pulumi.StringPtrInput `pulumi:"deviceName"`
+	// -
+	// Indicates a list of features to enable on the guest operating
+	// system. Applicable only for bootable images. To see a list of
+	// available features, read `https://cloud.google.com/compute/docs/
+	// images/create-delete-deprecate-private-images#guest-os-features`
+	// options. ``
+	GuestOsFeatures pulumi.StringArrayInput `pulumi:"guestOsFeatures"`
+	// -
+	// Output only. A zero-based index to this disk, where 0 is
+	// reserved for the boot disk. If you have many disks attached
+	// to an instance, each disk would have a unique index number.
+	Index pulumi.IntPtrInput `pulumi:"index"`
+	// Input only. Specifies the parameters for a new disk that will
+	// be created alongside the new instance. Use initialization
+	// parameters to create boot disks or local SSDs attached to the
+	// new instance. This property is mutually exclusive with the
+	// source property; you can only define one or the other, but not
+	// both.
+	// Structure is documented below.
+	InitializeParams RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrInput `pulumi:"initializeParams"`
+	// "Specifies the disk interface to use for attaching this disk,
+	// which is either SCSI or NVME. The default is SCSI. Persistent
+	// disks must always use SCSI and the request will fail if you attempt
+	// to attach a persistent disk in any other format than SCSI. Local SSDs
+	// can use either NVME or SCSI. For performance characteristics of SCSI
+	// over NVMe, see Local SSD performance. Valid values: * NVME * SCSI".
+	Interface pulumi.StringPtrInput `pulumi:"interface"`
+	// -
+	// Type of the resource. Always compute#attachedDisk for attached
+	// disks.
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	// -
+	// Output only. Any valid publicly visible licenses.
+	Licenses pulumi.StringArrayInput `pulumi:"licenses"`
+	// The mode in which to attach this disk, either READ_WRITE
+	// or READ_ONLY. If not specified, the default is to attach
+	// the disk in READ_WRITE mode.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// Specifies a valid partial or full URL to an existing
+	// Persistent Disk resource.
+	Source pulumi.StringPtrInput `pulumi:"source"`
+	// Accelerator model. For valid values, see
+	// `https://cloud.google.com/vertex-ai/docs/workbench/reference/
+	// rest/v1/projects.locations.runtimes#AcceleratorType`
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeVirtualMachineVirtualMachineConfigDataDisk)(nil)).Elem()
+}
+
+func (i RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs) ToRuntimeVirtualMachineVirtualMachineConfigDataDiskOutput() RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput {
+	return i.ToRuntimeVirtualMachineVirtualMachineConfigDataDiskOutputWithContext(context.Background())
+}
+
+func (i RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs) ToRuntimeVirtualMachineVirtualMachineConfigDataDiskOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput)
+}
+
+func (i RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs) ToRuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput() RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput {
+	return i.ToRuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutputWithContext(context.Background())
+}
+
+func (i RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs) ToRuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput).ToRuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutputWithContext(ctx)
+}
+
+// RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrInput is an input type that accepts RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs, RuntimeVirtualMachineVirtualMachineConfigDataDiskPtr and RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput values.
+// You can construct a concrete instance of `RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrInput` via:
+//
+//          RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs{...}
+//
+//  or:
+//
+//          nil
+type RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrInput interface {
+	pulumi.Input
+
+	ToRuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput() RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput
+	ToRuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutputWithContext(context.Context) RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput
+}
+
+type runtimeVirtualMachineVirtualMachineConfigDataDiskPtrType RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs
+
+func RuntimeVirtualMachineVirtualMachineConfigDataDiskPtr(v *RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs) RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrInput {
+	return (*runtimeVirtualMachineVirtualMachineConfigDataDiskPtrType)(v)
+}
+
+func (*runtimeVirtualMachineVirtualMachineConfigDataDiskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeVirtualMachineVirtualMachineConfigDataDisk)(nil)).Elem()
+}
+
+func (i *runtimeVirtualMachineVirtualMachineConfigDataDiskPtrType) ToRuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput() RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput {
+	return i.ToRuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutputWithContext(context.Background())
+}
+
+func (i *runtimeVirtualMachineVirtualMachineConfigDataDiskPtrType) ToRuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput)
+}
+
+type RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput struct{ *pulumi.OutputState }
+
+func (RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeVirtualMachineVirtualMachineConfigDataDisk)(nil)).Elem()
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput) ToRuntimeVirtualMachineVirtualMachineConfigDataDiskOutput() RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput {
+	return o
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput) ToRuntimeVirtualMachineVirtualMachineConfigDataDiskOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput {
+	return o
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput) ToRuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput() RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput {
+	return o.ToRuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutputWithContext(context.Background())
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput) ToRuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeVirtualMachineVirtualMachineConfigDataDisk) *RuntimeVirtualMachineVirtualMachineConfigDataDisk {
+		return &v
+	}).(RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput)
+}
+
+// -
+// Optional. Specifies whether the disk will be auto-deleted
+// when the instance is deleted (but not when the disk is
+// detached from the instance).
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput) AutoDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfigDataDisk) *bool { return v.AutoDelete }).(pulumi.BoolPtrOutput)
+}
+
+// -
+// Optional. Indicates that this is a boot disk. The virtual
+// machine will use the first partition of the disk for its
+// root filesystem.
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput) Boot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfigDataDisk) *bool { return v.Boot }).(pulumi.BoolPtrOutput)
+}
+
+// -
+// Optional. Specifies a unique device name of your choice
+// that is reflected into the /dev/disk/by-id/google-* tree
+// of a Linux operating system running within the instance.
+// This name can be used to reference the device for mounting,
+// resizing, and so on, from within the instance.
+// If not specified, the server chooses a default device name
+// to apply to this disk, in the form persistent-disk-x, where
+// x is a number assigned by Google Compute Engine. This field
+// is only applicable for persistent disks.
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput) DeviceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfigDataDisk) *string { return v.DeviceName }).(pulumi.StringPtrOutput)
+}
+
+// -
+// Indicates a list of features to enable on the guest operating
+// system. Applicable only for bootable images. To see a list of
+// available features, read `https://cloud.google.com/compute/docs/
+// images/create-delete-deprecate-private-images#guest-os-features`
+// options. ``
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput) GuestOsFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfigDataDisk) []string { return v.GuestOsFeatures }).(pulumi.StringArrayOutput)
+}
+
+// -
+// Output only. A zero-based index to this disk, where 0 is
+// reserved for the boot disk. If you have many disks attached
+// to an instance, each disk would have a unique index number.
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput) Index() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfigDataDisk) *int { return v.Index }).(pulumi.IntPtrOutput)
+}
+
+// Input only. Specifies the parameters for a new disk that will
+// be created alongside the new instance. Use initialization
+// parameters to create boot disks or local SSDs attached to the
+// new instance. This property is mutually exclusive with the
+// source property; you can only define one or the other, but not
+// both.
+// Structure is documented below.
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput) InitializeParams() RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfigDataDisk) *RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams {
+		return v.InitializeParams
+	}).(RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput)
+}
+
+// "Specifies the disk interface to use for attaching this disk,
+// which is either SCSI or NVME. The default is SCSI. Persistent
+// disks must always use SCSI and the request will fail if you attempt
+// to attach a persistent disk in any other format than SCSI. Local SSDs
+// can use either NVME or SCSI. For performance characteristics of SCSI
+// over NVMe, see Local SSD performance. Valid values: * NVME * SCSI".
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput) Interface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfigDataDisk) *string { return v.Interface }).(pulumi.StringPtrOutput)
+}
+
+// -
+// Type of the resource. Always compute#attachedDisk for attached
+// disks.
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfigDataDisk) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+// -
+// Output only. Any valid publicly visible licenses.
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput) Licenses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfigDataDisk) []string { return v.Licenses }).(pulumi.StringArrayOutput)
+}
+
+// The mode in which to attach this disk, either READ_WRITE
+// or READ_ONLY. If not specified, the default is to attach
+// the disk in READ_WRITE mode.
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfigDataDisk) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// Specifies a valid partial or full URL to an existing
+// Persistent Disk resource.
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfigDataDisk) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+// Accelerator model. For valid values, see
+// `https://cloud.google.com/vertex-ai/docs/workbench/reference/
+// rest/v1/projects.locations.runtimes#AcceleratorType`
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfigDataDisk) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput struct{ *pulumi.OutputState }
+
+func (RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeVirtualMachineVirtualMachineConfigDataDisk)(nil)).Elem()
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput) ToRuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput() RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput {
+	return o
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput) ToRuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput {
+	return o
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput) Elem() RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfigDataDisk) RuntimeVirtualMachineVirtualMachineConfigDataDisk {
+		if v != nil {
+			return *v
+		}
+		var ret RuntimeVirtualMachineVirtualMachineConfigDataDisk
+		return ret
+	}).(RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput)
+}
+
+// -
+// Optional. Specifies whether the disk will be auto-deleted
+// when the instance is deleted (but not when the disk is
+// detached from the instance).
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput) AutoDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfigDataDisk) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoDelete
+	}).(pulumi.BoolPtrOutput)
+}
+
+// -
+// Optional. Indicates that this is a boot disk. The virtual
+// machine will use the first partition of the disk for its
+// root filesystem.
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput) Boot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfigDataDisk) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Boot
+	}).(pulumi.BoolPtrOutput)
+}
+
+// -
+// Optional. Specifies a unique device name of your choice
+// that is reflected into the /dev/disk/by-id/google-* tree
+// of a Linux operating system running within the instance.
+// This name can be used to reference the device for mounting,
+// resizing, and so on, from within the instance.
+// If not specified, the server chooses a default device name
+// to apply to this disk, in the form persistent-disk-x, where
+// x is a number assigned by Google Compute Engine. This field
+// is only applicable for persistent disks.
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput) DeviceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfigDataDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeviceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// -
+// Indicates a list of features to enable on the guest operating
+// system. Applicable only for bootable images. To see a list of
+// available features, read `https://cloud.google.com/compute/docs/
+// images/create-delete-deprecate-private-images#guest-os-features`
+// options. ``
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput) GuestOsFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfigDataDisk) []string {
+		if v == nil {
+			return nil
+		}
+		return v.GuestOsFeatures
+	}).(pulumi.StringArrayOutput)
+}
+
+// -
+// Output only. A zero-based index to this disk, where 0 is
+// reserved for the boot disk. If you have many disks attached
+// to an instance, each disk would have a unique index number.
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput) Index() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfigDataDisk) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Index
+	}).(pulumi.IntPtrOutput)
+}
+
+// Input only. Specifies the parameters for a new disk that will
+// be created alongside the new instance. Use initialization
+// parameters to create boot disks or local SSDs attached to the
+// new instance. This property is mutually exclusive with the
+// source property; you can only define one or the other, but not
+// both.
+// Structure is documented below.
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput) InitializeParams() RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfigDataDisk) *RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams {
+		if v == nil {
+			return nil
+		}
+		return v.InitializeParams
+	}).(RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput)
+}
+
+// "Specifies the disk interface to use for attaching this disk,
+// which is either SCSI or NVME. The default is SCSI. Persistent
+// disks must always use SCSI and the request will fail if you attempt
+// to attach a persistent disk in any other format than SCSI. Local SSDs
+// can use either NVME or SCSI. For performance characteristics of SCSI
+// over NVMe, see Local SSD performance. Valid values: * NVME * SCSI".
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput) Interface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfigDataDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Interface
+	}).(pulumi.StringPtrOutput)
+}
+
+// -
+// Type of the resource. Always compute#attachedDisk for attached
+// disks.
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfigDataDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// -
+// Output only. Any valid publicly visible licenses.
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput) Licenses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfigDataDisk) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Licenses
+	}).(pulumi.StringArrayOutput)
+}
+
+// The mode in which to attach this disk, either READ_WRITE
+// or READ_ONLY. If not specified, the default is to attach
+// the disk in READ_WRITE mode.
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfigDataDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies a valid partial or full URL to an existing
+// Persistent Disk resource.
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfigDataDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Source
+	}).(pulumi.StringPtrOutput)
+}
+
+// Accelerator model. For valid values, see
+// `https://cloud.google.com/vertex-ai/docs/workbench/reference/
+// rest/v1/projects.locations.runtimes#AcceleratorType`
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfigDataDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams struct {
+	// Provide this property when creating the disk.
+	Description *string `pulumi:"description"`
+	// Specifies the disk name. If not specified, the default is
+	// to use the name of the instance. If the disk with the
+	// instance name exists already in the given zone/region, a
+	// new name will be automatically generated.
+	DiskName *string `pulumi:"diskName"`
+	// Specifies the size of the disk in base-2 GB. If not
+	// specified, the disk will be the same size as the image
+	// (usually 10GB). If specified, the size must be equal to
+	// or larger than 10GB. Default 100 GB.
+	DiskSizeGb *int `pulumi:"diskSizeGb"`
+	// The type of the boot disk attached to this runtime,
+	// defaults to standard persistent disk. For valid values,
+	// see `https://cloud.google.com/vertex-ai/docs/workbench/
+	// reference/rest/v1/projects.locations.runtimes#disktype`
+	DiskType *string `pulumi:"diskType"`
+	// Labels to apply to this disk. These can be later modified
+	// by the disks.setLabels method. This field is only
+	// applicable for persistent disks.
+	Labels map[string]string `pulumi:"labels"`
+}
+
+// RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsInput is an input type that accepts RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs and RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsOutput values.
+// You can construct a concrete instance of `RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsInput` via:
+//
+//          RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs{...}
+type RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsInput interface {
+	pulumi.Input
+
+	ToRuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsOutput() RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsOutput
+	ToRuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsOutputWithContext(context.Context) RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsOutput
+}
+
+type RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs struct {
+	// Provide this property when creating the disk.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Specifies the disk name. If not specified, the default is
+	// to use the name of the instance. If the disk with the
+	// instance name exists already in the given zone/region, a
+	// new name will be automatically generated.
+	DiskName pulumi.StringPtrInput `pulumi:"diskName"`
+	// Specifies the size of the disk in base-2 GB. If not
+	// specified, the disk will be the same size as the image
+	// (usually 10GB). If specified, the size must be equal to
+	// or larger than 10GB. Default 100 GB.
+	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
+	// The type of the boot disk attached to this runtime,
+	// defaults to standard persistent disk. For valid values,
+	// see `https://cloud.google.com/vertex-ai/docs/workbench/
+	// reference/rest/v1/projects.locations.runtimes#disktype`
+	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// Labels to apply to this disk. These can be later modified
+	// by the disks.setLabels method. This field is only
+	// applicable for persistent disks.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+}
+
+func (RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams)(nil)).Elem()
+}
+
+func (i RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs) ToRuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsOutput() RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsOutput {
+	return i.ToRuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsOutputWithContext(context.Background())
+}
+
+func (i RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs) ToRuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsOutput)
+}
+
+func (i RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs) ToRuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput() RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput {
+	return i.ToRuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutputWithContext(context.Background())
+}
+
+func (i RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs) ToRuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsOutput).ToRuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutputWithContext(ctx)
+}
+
+// RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrInput is an input type that accepts RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs, RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtr and RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput values.
+// You can construct a concrete instance of `RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrInput` via:
+//
+//          RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs{...}
+//
+//  or:
+//
+//          nil
+type RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrInput interface {
+	pulumi.Input
+
+	ToRuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput() RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput
+	ToRuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutputWithContext(context.Context) RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput
+}
+
+type runtimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrType RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs
+
+func RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtr(v *RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs) RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrInput {
+	return (*runtimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrType)(v)
+}
+
+func (*runtimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams)(nil)).Elem()
+}
+
+func (i *runtimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrType) ToRuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput() RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput {
+	return i.ToRuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *runtimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrType) ToRuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput)
+}
+
+type RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsOutput struct{ *pulumi.OutputState }
+
+func (RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams)(nil)).Elem()
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsOutput) ToRuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsOutput() RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsOutput {
+	return o
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsOutput) ToRuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsOutput {
+	return o
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsOutput) ToRuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput() RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput {
+	return o.ToRuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutputWithContext(context.Background())
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsOutput) ToRuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams) *RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams {
+		return &v
+	}).(RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput)
+}
+
+// Provide this property when creating the disk.
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams) *string {
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the disk name. If not specified, the default is
+// to use the name of the instance. If the disk with the
+// instance name exists already in the given zone/region, a
+// new name will be automatically generated.
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsOutput) DiskName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams) *string { return v.DiskName }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the size of the disk in base-2 GB. If not
+// specified, the disk will be the same size as the image
+// (usually 10GB). If specified, the size must be equal to
+// or larger than 10GB. Default 100 GB.
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsOutput) DiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
+}
+
+// The type of the boot disk attached to this runtime,
+// defaults to standard persistent disk. For valid values,
+// see `https://cloud.google.com/vertex-ai/docs/workbench/
+// reference/rest/v1/projects.locations.runtimes#disktype`
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+}
+
+// Labels to apply to this disk. These can be later modified
+// by the disks.setLabels method. This field is only
+// applicable for persistent disks.
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams) map[string]string {
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+type RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams)(nil)).Elem()
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput) ToRuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput() RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput {
+	return o
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput) ToRuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput {
+	return o
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput) Elem() RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams) RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams {
+		if v != nil {
+			return *v
+		}
+		var ret RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams
+		return ret
+	}).(RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsOutput)
+}
+
+// Provide this property when creating the disk.
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the disk name. If not specified, the default is
+// to use the name of the instance. If the disk with the
+// instance name exists already in the given zone/region, a
+// new name will be automatically generated.
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput) DiskName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiskName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the size of the disk in base-2 GB. If not
+// specified, the disk will be the same size as the image
+// (usually 10GB). If specified, the size must be equal to
+// or larger than 10GB. Default 100 GB.
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput) DiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// The type of the boot disk attached to this runtime,
+// defaults to standard persistent disk. For valid values,
+// see `https://cloud.google.com/vertex-ai/docs/workbench/
+// reference/rest/v1/projects.locations.runtimes#disktype`
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Labels to apply to this disk. These can be later modified
+// by the disks.setLabels method. This field is only
+// applicable for persistent disks.
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+type RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig struct {
+	// The Cloud KMS resource identifier of the customer-managed
+	// encryption key used to protect a resource, such as a disks.
+	// It has the following format:
+	// `projects/{PROJECT_ID}/locations/{REGION}/keyRings/
+	// {KEY_RING_NAME}/cryptoKeys/{KEY_NAME}`
+	KmsKey *string `pulumi:"kmsKey"`
+}
+
+// RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigInput is an input type that accepts RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs and RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigOutput values.
+// You can construct a concrete instance of `RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigInput` via:
+//
+//          RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs{...}
+type RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigInput interface {
+	pulumi.Input
+
+	ToRuntimeVirtualMachineVirtualMachineConfigEncryptionConfigOutput() RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigOutput
+	ToRuntimeVirtualMachineVirtualMachineConfigEncryptionConfigOutputWithContext(context.Context) RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigOutput
+}
+
+type RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs struct {
+	// The Cloud KMS resource identifier of the customer-managed
+	// encryption key used to protect a resource, such as a disks.
+	// It has the following format:
+	// `projects/{PROJECT_ID}/locations/{REGION}/keyRings/
+	// {KEY_RING_NAME}/cryptoKeys/{KEY_NAME}`
+	KmsKey pulumi.StringPtrInput `pulumi:"kmsKey"`
+}
+
+func (RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig)(nil)).Elem()
+}
+
+func (i RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs) ToRuntimeVirtualMachineVirtualMachineConfigEncryptionConfigOutput() RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigOutput {
+	return i.ToRuntimeVirtualMachineVirtualMachineConfigEncryptionConfigOutputWithContext(context.Background())
+}
+
+func (i RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs) ToRuntimeVirtualMachineVirtualMachineConfigEncryptionConfigOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigOutput)
+}
+
+func (i RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs) ToRuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput() RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput {
+	return i.ToRuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs) ToRuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigOutput).ToRuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutputWithContext(ctx)
+}
+
+// RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrInput is an input type that accepts RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs, RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtr and RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput values.
+// You can construct a concrete instance of `RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrInput` via:
+//
+//          RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrInput interface {
+	pulumi.Input
+
+	ToRuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput() RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput
+	ToRuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutputWithContext(context.Context) RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput
+}
+
+type runtimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrType RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs
+
+func RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtr(v *RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs) RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrInput {
+	return (*runtimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrType)(v)
+}
+
+func (*runtimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig)(nil)).Elem()
+}
+
+func (i *runtimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrType) ToRuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput() RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput {
+	return i.ToRuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *runtimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrType) ToRuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput)
+}
+
+type RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigOutput struct{ *pulumi.OutputState }
+
+func (RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig)(nil)).Elem()
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigOutput) ToRuntimeVirtualMachineVirtualMachineConfigEncryptionConfigOutput() RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigOutput {
+	return o
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigOutput) ToRuntimeVirtualMachineVirtualMachineConfigEncryptionConfigOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigOutput {
+	return o
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigOutput) ToRuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput() RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput {
+	return o.ToRuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigOutput) ToRuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig) *RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig {
+		return &v
+	}).(RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput)
+}
+
+// The Cloud KMS resource identifier of the customer-managed
+// encryption key used to protect a resource, such as a disks.
+// It has the following format:
+// `projects/{PROJECT_ID}/locations/{REGION}/keyRings/
+// {KEY_RING_NAME}/cryptoKeys/{KEY_NAME}`
+func (o RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigOutput) KmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig) *string { return v.KmsKey }).(pulumi.StringPtrOutput)
+}
+
+type RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig)(nil)).Elem()
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput) ToRuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput() RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput {
+	return o
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput) ToRuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput {
+	return o
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput) Elem() RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig) RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig
+		return ret
+	}).(RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigOutput)
+}
+
+// The Cloud KMS resource identifier of the customer-managed
+// encryption key used to protect a resource, such as a disks.
+// It has the following format:
+// `projects/{PROJECT_ID}/locations/{REGION}/keyRings/
+// {KEY_RING_NAME}/cryptoKeys/{KEY_NAME}`
+func (o RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput) KmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig struct {
+	// Defines whether the instance has integrity monitoring enabled.
+	// Enables monitoring and attestation of the boot integrity of
+	// the instance. The attestation is performed against the
+	// integrity policy baseline. This baseline is initially derived
+	// from the implicitly trusted boot image when the instance is
+	// created. Enabled by default.
+	EnableIntegrityMonitoring *bool `pulumi:"enableIntegrityMonitoring"`
+	// Defines whether the instance has Secure Boot enabled.Secure
+	// Boot helps ensure that the system only runs authentic software
+	// by verifying the digital signature of all boot components, and
+	// halting the boot process if signature verification fails.
+	// Disabled by default.
+	EnableSecureBoot *bool `pulumi:"enableSecureBoot"`
+	// Defines whether the instance has the vTPM enabled. Enabled by
+	// default.
+	EnableVtpm *bool `pulumi:"enableVtpm"`
+}
+
+// RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigInput is an input type that accepts RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs and RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigOutput values.
+// You can construct a concrete instance of `RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigInput` via:
+//
+//          RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs{...}
+type RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigInput interface {
+	pulumi.Input
+
+	ToRuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigOutput() RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigOutput
+	ToRuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigOutputWithContext(context.Context) RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigOutput
+}
+
+type RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs struct {
+	// Defines whether the instance has integrity monitoring enabled.
+	// Enables monitoring and attestation of the boot integrity of
+	// the instance. The attestation is performed against the
+	// integrity policy baseline. This baseline is initially derived
+	// from the implicitly trusted boot image when the instance is
+	// created. Enabled by default.
+	EnableIntegrityMonitoring pulumi.BoolPtrInput `pulumi:"enableIntegrityMonitoring"`
+	// Defines whether the instance has Secure Boot enabled.Secure
+	// Boot helps ensure that the system only runs authentic software
+	// by verifying the digital signature of all boot components, and
+	// halting the boot process if signature verification fails.
+	// Disabled by default.
+	EnableSecureBoot pulumi.BoolPtrInput `pulumi:"enableSecureBoot"`
+	// Defines whether the instance has the vTPM enabled. Enabled by
+	// default.
+	EnableVtpm pulumi.BoolPtrInput `pulumi:"enableVtpm"`
+}
+
+func (RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (i RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs) ToRuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigOutput() RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigOutput {
+	return i.ToRuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs) ToRuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigOutput)
+}
+
+func (i RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs) ToRuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput() RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput {
+	return i.ToRuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs) ToRuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigOutput).ToRuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutputWithContext(ctx)
+}
+
+// RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrInput is an input type that accepts RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs, RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtr and RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput values.
+// You can construct a concrete instance of `RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrInput` via:
+//
+//          RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToRuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput() RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput
+	ToRuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutputWithContext(context.Context) RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput
+}
+
+type runtimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrType RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs
+
+func RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtr(v *RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs) RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrInput {
+	return (*runtimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrType)(v)
+}
+
+func (*runtimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (i *runtimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrType) ToRuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput() RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput {
+	return i.ToRuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *runtimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrType) ToRuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput)
+}
+
+type RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigOutput) ToRuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigOutput() RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigOutput {
+	return o
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigOutput) ToRuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigOutput {
+	return o
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigOutput) ToRuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput() RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput {
+	return o.ToRuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigOutput) ToRuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig) *RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig {
+		return &v
+	}).(RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput)
+}
+
+// Defines whether the instance has integrity monitoring enabled.
+// Enables monitoring and attestation of the boot integrity of
+// the instance. The attestation is performed against the
+// integrity policy baseline. This baseline is initially derived
+// from the implicitly trusted boot image when the instance is
+// created. Enabled by default.
+func (o RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig) *bool {
+		return v.EnableIntegrityMonitoring
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Defines whether the instance has Secure Boot enabled.Secure
+// Boot helps ensure that the system only runs authentic software
+// by verifying the digital signature of all boot components, and
+// halting the boot process if signature verification fails.
+// Disabled by default.
+func (o RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig) *bool {
+		return v.EnableSecureBoot
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Defines whether the instance has the vTPM enabled. Enabled by
+// default.
+func (o RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigOutput) EnableVtpm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig) *bool { return v.EnableVtpm }).(pulumi.BoolPtrOutput)
+}
+
+type RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput) ToRuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput() RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput {
+	return o
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput) ToRuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput {
+	return o
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput) Elem() RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig) RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig
+		return ret
+	}).(RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigOutput)
+}
+
+// Defines whether the instance has integrity monitoring enabled.
+// Enables monitoring and attestation of the boot integrity of
+// the instance. The attestation is performed against the
+// integrity policy baseline. This baseline is initially derived
+// from the implicitly trusted boot image when the instance is
+// created. Enabled by default.
+func (o RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableIntegrityMonitoring
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Defines whether the instance has Secure Boot enabled.Secure
+// Boot helps ensure that the system only runs authentic software
+// by verifying the digital signature of all boot components, and
+// halting the boot process if signature verification fails.
+// Disabled by default.
+func (o RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableSecureBoot
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Defines whether the instance has the vTPM enabled. Enabled by
+// default.
+func (o RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput) EnableVtpm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableVtpm
+	}).(pulumi.BoolPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentContainerImageInput)(nil)).Elem(), EnvironmentContainerImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentContainerImagePtrInput)(nil)).Elem(), EnvironmentContainerImageArgs{})
@@ -1575,6 +4323,28 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceShieldedInstanceConfigPtrInput)(nil)).Elem(), InstanceShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceVmImageInput)(nil)).Elem(), InstanceVmImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceVmImagePtrInput)(nil)).Elem(), InstanceVmImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeAccessConfigInput)(nil)).Elem(), RuntimeAccessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeAccessConfigPtrInput)(nil)).Elem(), RuntimeAccessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeMetricInput)(nil)).Elem(), RuntimeMetricArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeMetricArrayInput)(nil)).Elem(), RuntimeMetricArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeSoftwareConfigInput)(nil)).Elem(), RuntimeSoftwareConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeSoftwareConfigPtrInput)(nil)).Elem(), RuntimeSoftwareConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeVirtualMachineInput)(nil)).Elem(), RuntimeVirtualMachineArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeVirtualMachinePtrInput)(nil)).Elem(), RuntimeVirtualMachineArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeVirtualMachineVirtualMachineConfigInput)(nil)).Elem(), RuntimeVirtualMachineVirtualMachineConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeVirtualMachineVirtualMachineConfigPtrInput)(nil)).Elem(), RuntimeVirtualMachineVirtualMachineConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigInput)(nil)).Elem(), RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrInput)(nil)).Elem(), RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeVirtualMachineVirtualMachineConfigContainerImageInput)(nil)).Elem(), RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeVirtualMachineVirtualMachineConfigContainerImageArrayInput)(nil)).Elem(), RuntimeVirtualMachineVirtualMachineConfigContainerImageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeVirtualMachineVirtualMachineConfigDataDiskInput)(nil)).Elem(), RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrInput)(nil)).Elem(), RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsInput)(nil)).Elem(), RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrInput)(nil)).Elem(), RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigInput)(nil)).Elem(), RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrInput)(nil)).Elem(), RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigInput)(nil)).Elem(), RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrInput)(nil)).Elem(), RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs{})
 	pulumi.RegisterOutputType(EnvironmentContainerImageOutput{})
 	pulumi.RegisterOutputType(EnvironmentContainerImagePtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentVmImageOutput{})
@@ -1593,4 +4363,26 @@ func init() {
 	pulumi.RegisterOutputType(InstanceShieldedInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceVmImageOutput{})
 	pulumi.RegisterOutputType(InstanceVmImagePtrOutput{})
+	pulumi.RegisterOutputType(RuntimeAccessConfigOutput{})
+	pulumi.RegisterOutputType(RuntimeAccessConfigPtrOutput{})
+	pulumi.RegisterOutputType(RuntimeMetricOutput{})
+	pulumi.RegisterOutputType(RuntimeMetricArrayOutput{})
+	pulumi.RegisterOutputType(RuntimeSoftwareConfigOutput{})
+	pulumi.RegisterOutputType(RuntimeSoftwareConfigPtrOutput{})
+	pulumi.RegisterOutputType(RuntimeVirtualMachineOutput{})
+	pulumi.RegisterOutputType(RuntimeVirtualMachinePtrOutput{})
+	pulumi.RegisterOutputType(RuntimeVirtualMachineVirtualMachineConfigOutput{})
+	pulumi.RegisterOutputType(RuntimeVirtualMachineVirtualMachineConfigPtrOutput{})
+	pulumi.RegisterOutputType(RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigOutput{})
+	pulumi.RegisterOutputType(RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutput{})
+	pulumi.RegisterOutputType(RuntimeVirtualMachineVirtualMachineConfigContainerImageOutput{})
+	pulumi.RegisterOutputType(RuntimeVirtualMachineVirtualMachineConfigContainerImageArrayOutput{})
+	pulumi.RegisterOutputType(RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput{})
+	pulumi.RegisterOutputType(RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput{})
+	pulumi.RegisterOutputType(RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsOutput{})
+	pulumi.RegisterOutputType(RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput{})
+	pulumi.RegisterOutputType(RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigOutput{})
+	pulumi.RegisterOutputType(RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput{})
+	pulumi.RegisterOutputType(RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigOutput{})
+	pulumi.RegisterOutputType(RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput{})
 }

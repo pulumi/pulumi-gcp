@@ -3764,7 +3764,7 @@ export namespace binaryauthorization {
 export namespace certificateauthority {
     export interface AuthorityAccessUrl {
         caCertificateAccessUrl: string;
-        crlAccessUrl: string;
+        crlAccessUrls: string[];
     }
 
     export interface AuthorityConfig {
@@ -13984,6 +13984,64 @@ export namespace compute {
         sessionInitializationMode: string;
     }
 
+    export interface RouterStatusBestRoute {
+        description: string;
+        destRange: string;
+        /**
+         * The name of the router.
+         */
+        name: string;
+        /**
+         * The network name or resource link to the parent
+         * network of this subnetwork.
+         */
+        network: string;
+        nextHopGateway: string;
+        nextHopIlb: string;
+        nextHopInstance: string;
+        nextHopInstanceZone: string;
+        nextHopIp: string;
+        nextHopNetwork: string;
+        nextHopVpnTunnel: string;
+        priority: number;
+        /**
+         * The ID of the project in which the resource
+         * belongs. If it is not provided, the provider project is used.
+         */
+        project: string;
+        selfLink: string;
+        tags: string[];
+    }
+
+    export interface RouterStatusBestRoutesForRouter {
+        description: string;
+        destRange: string;
+        /**
+         * The name of the router.
+         */
+        name: string;
+        /**
+         * The network name or resource link to the parent
+         * network of this subnetwork.
+         */
+        network: string;
+        nextHopGateway: string;
+        nextHopIlb: string;
+        nextHopInstance: string;
+        nextHopInstanceZone: string;
+        nextHopIp: string;
+        nextHopNetwork: string;
+        nextHopVpnTunnel: string;
+        priority: number;
+        /**
+         * The ID of the project in which the resource
+         * belongs. If it is not provided, the provider project is used.
+         */
+        project: string;
+        selfLink: string;
+        tags: string[];
+    }
+
     export interface SecurityPolicyAdaptiveProtectionConfig {
         /**
          * Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
@@ -16203,6 +16261,7 @@ export namespace compute {
          */
         service: string;
     }
+
 }
 
 export namespace config {
@@ -16680,6 +16739,10 @@ export namespace container {
          */
         minCpuPlatform?: string;
         /**
+         * Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on [sole tenant nodes](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes).
+         */
+        nodeGroup?: string;
+        /**
          * The set of Google API scopes to be made available
          * on all of the node VMs under the "default" service account.
          * Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
@@ -16692,7 +16755,8 @@ export namespace container {
          */
         preemptible?: boolean;
         /**
-         * [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+         * ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+         * >>>>>>> v4.3.0
          * Structure is documented below.
          */
         sandboxConfig?: outputs.container.ClusterNodeConfigSandboxConfig;
@@ -16705,6 +16769,12 @@ export namespace container {
          * Shielded Instance options. Structure is documented below.
          */
         shieldedInstanceConfig: outputs.container.ClusterNodeConfigShieldedInstanceConfig;
+        /**
+         * ) A boolean 
+         * that represents whether the underlying node VMs are spot. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
+         * for more information. Defaults to false.
+         */
+        spot?: boolean;
         /**
          * The list of instance tags applied to all nodes. Tags are used to identify
          * valid sources or targets for network firewalls.
@@ -16985,6 +17055,10 @@ export namespace container {
          */
         minCpuPlatform?: string;
         /**
+         * Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on [sole tenant nodes](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes).
+         */
+        nodeGroup?: string;
+        /**
          * The set of Google API scopes to be made available
          * on all of the node VMs under the "default" service account.
          * Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
@@ -16997,7 +17071,8 @@ export namespace container {
          */
         preemptible?: boolean;
         /**
-         * [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+         * ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+         * >>>>>>> v4.3.0
          * Structure is documented below.
          */
         sandboxConfig?: outputs.container.ClusterNodePoolNodeConfigSandboxConfig;
@@ -17010,6 +17085,12 @@ export namespace container {
          * Shielded Instance options. Structure is documented below.
          */
         shieldedInstanceConfig: outputs.container.ClusterNodePoolNodeConfigShieldedInstanceConfig;
+        /**
+         * ) A boolean 
+         * that represents whether the underlying node VMs are spot. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
+         * for more information. Defaults to false.
+         */
+        spot?: boolean;
         /**
          * The list of instance tags applied to all nodes. Tags are used to identify
          * valid sources or targets for network firewalls.
@@ -17448,11 +17529,13 @@ export namespace container {
         machineType: string;
         metadata: {[key: string]: string};
         minCpuPlatform: string;
+        nodeGroup: string;
         oauthScopes: string[];
         preemptible: boolean;
         sandboxConfigs: outputs.container.GetClusterNodeConfigSandboxConfig[];
         serviceAccount: string;
         shieldedInstanceConfigs: outputs.container.GetClusterNodeConfigShieldedInstanceConfig[];
+        spot: boolean;
         tags: string[];
         taints: outputs.container.GetClusterNodeConfigTaint[];
         workloadMetadataConfigs: outputs.container.GetClusterNodeConfigWorkloadMetadataConfig[];
@@ -17552,11 +17635,13 @@ export namespace container {
         machineType: string;
         metadata: {[key: string]: string};
         minCpuPlatform: string;
+        nodeGroup: string;
         oauthScopes: string[];
         preemptible: boolean;
         sandboxConfigs: outputs.container.GetClusterNodePoolNodeConfigSandboxConfig[];
         serviceAccount: string;
         shieldedInstanceConfigs: outputs.container.GetClusterNodePoolNodeConfigShieldedInstanceConfig[];
+        spot: boolean;
         tags: string[];
         taints: outputs.container.GetClusterNodePoolNodeConfigTaint[];
         workloadMetadataConfigs: outputs.container.GetClusterNodePoolNodeConfigWorkloadMetadataConfig[];
@@ -17703,11 +17788,13 @@ export namespace container {
         machineType: string;
         metadata: {[key: string]: string};
         minCpuPlatform?: string;
+        nodeGroup?: string;
         oauthScopes: string[];
         preemptible?: boolean;
         sandboxConfig?: outputs.container.NodePoolNodeConfigSandboxConfig;
         serviceAccount: string;
         shieldedInstanceConfig: outputs.container.NodePoolNodeConfigShieldedInstanceConfig;
+        spot?: boolean;
         tags?: string[];
         taints: outputs.container.NodePoolNodeConfigTaint[];
         workloadMetadataConfig: outputs.container.NodePoolNodeConfigWorkloadMetadataConfig;
@@ -25680,6 +25767,376 @@ export namespace notebooks {
         project: string;
     }
 
+    export interface RuntimeAccessConfig {
+        /**
+         * The type of access mode this instance. For valid values, see
+         * `https://cloud.google.com/vertex-ai/docs/workbench/reference/
+         * rest/v1/projects.locations.runtimes#RuntimeAccessType`.
+         */
+        accessType?: string;
+        /**
+         * -
+         * The proxy endpoint that is used to access the runtime.
+         */
+        proxyUri: string;
+        /**
+         * The owner of this runtime after creation. Format: `alias@example.com`.
+         * Currently supports one owner only.
+         */
+        runtimeOwner?: string;
+    }
+
+    export interface RuntimeMetric {
+        systemMetrics: {[key: string]: string};
+    }
+
+    export interface RuntimeSoftwareConfig {
+        /**
+         * Specify a custom Cloud Storage path where the GPU driver is stored.
+         * If not specified, we'll automatically choose from official GPU drivers.
+         */
+        customGpuDriverPath?: string;
+        /**
+         * Verifies core internal services are running. Default: True.
+         */
+        enableHealthMonitoring?: boolean;
+        /**
+         * Runtime will automatically shutdown after idle_shutdown_time.
+         * Default: True
+         */
+        idleShutdown?: boolean;
+        /**
+         * Time in minutes to wait before shuting down runtime.
+         * Default: 180 minutes
+         */
+        idleShutdownTimeout?: number;
+        /**
+         * Install Nvidia Driver automatically.
+         */
+        installGpuDriver?: boolean;
+        /**
+         * Cron expression in UTC timezone for schedule instance auto upgrade.
+         * Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
+         */
+        notebookUpgradeSchedule?: string;
+        /**
+         * Path to a Bash script that automatically runs after a notebook instance
+         * fully boots up. The path must be a URL or
+         * Cloud Storage path (gs://path-to-file/file-name).
+         */
+        postStartupScript?: string;
+    }
+
+    export interface RuntimeVirtualMachine {
+        /**
+         * -
+         * The unique identifier of the Managed Compute Engine instance.
+         */
+        instanceId: string;
+        /**
+         * -
+         * The user-friendly name of the Managed Compute Engine instance.
+         */
+        instanceName: string;
+        /**
+         * Virtual Machine configuration settings.
+         * Structure is documented below.
+         */
+        virtualMachineConfig?: outputs.notebooks.RuntimeVirtualMachineVirtualMachineConfig;
+    }
+
+    export interface RuntimeVirtualMachineVirtualMachineConfig {
+        /**
+         * The Compute Engine accelerator configuration for this runtime.
+         * Structure is documented below.
+         */
+        acceleratorConfig?: outputs.notebooks.RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig;
+        /**
+         * Use a list of container images to start the notebook instance.
+         * Structure is documented below.
+         */
+        containerImages?: outputs.notebooks.RuntimeVirtualMachineVirtualMachineConfigContainerImage[];
+        /**
+         * Data disk option configuration settings.
+         * Structure is documented below.
+         */
+        dataDisk: outputs.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDisk;
+        /**
+         * Encryption settings for virtual machine data disk.
+         * Structure is documented below.
+         */
+        encryptionConfig?: outputs.notebooks.RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig;
+        /**
+         * -
+         * The Compute Engine guest attributes. (see [Project and instance
+         * guest attributes](https://cloud.google.com/compute/docs/
+         * storing-retrieving-metadata#guest_attributes)).
+         */
+        guestAttributes: {[key: string]: string};
+        /**
+         * If true, runtime will only have internal IP addresses. By default,
+         * runtimes are not restricted to internal IP addresses, and will
+         * have ephemeral external IP addresses assigned to each vm. This
+         * `internalIpOnly` restriction can only be enabled for subnetwork
+         * enabled networks, and all dependencies must be configured to be
+         * accessible without external IP addresses.
+         */
+        internalIpOnly?: boolean;
+        /**
+         * Labels to apply to this disk. These can be later modified
+         * by the disks.setLabels method. This field is only
+         * applicable for persistent disks.
+         */
+        labels: {[key: string]: string};
+        /**
+         * The Compute Engine machine type used for runtimes.
+         */
+        machineType: string;
+        /**
+         * The Compute Engine metadata entries to add to virtual machine.
+         * (see [Project and instance metadata](https://cloud.google.com
+         * /compute/docs/storing-retrieving-metadata#project_and_instance
+         * _metadata)).
+         */
+        metadata: {[key: string]: string};
+        /**
+         * The Compute Engine network to be used for machine communications.
+         * Cannot be specified with subnetwork. If neither `network` nor
+         * `subnet` is specified, the "default" network of the project is
+         * used, if it exists. A full URL or partial URI. Examples:
+         * * `https://www.googleapis.com/compute/v1/projects/[projectId]/
+         * regions/global/default`
+         * * `projects/[projectId]/regions/global/default`
+         * Runtimes are managed resources inside Google Infrastructure.
+         * Runtimes support the following network configurations:
+         * * Google Managed Network (Network & subnet are empty)
+         * * Consumer Project VPC (network & subnet are required). Requires
+         * configuring Private Service Access.
+         * * Shared VPC (network & subnet are required). Requires
+         * configuring Private Service Access.
+         */
+        network?: string;
+        /**
+         * The type of vNIC to be used on this interface. This may be gVNIC
+         * or VirtioNet.
+         * Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+         */
+        nicType?: string;
+        /**
+         * Shielded VM Instance configuration settings.
+         * Structure is documented below.
+         */
+        shieldedInstanceConfig?: outputs.notebooks.RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig;
+        /**
+         * The Compute Engine subnetwork to be used for machine
+         * communications. Cannot be specified with network. A full URL or
+         * partial URI are valid. Examples:
+         * * `https://www.googleapis.com/compute/v1/projects/[projectId]/
+         * regions/us-east1/subnetworks/sub0`
+         * * `projects/[projectId]/regions/us-east1/subnetworks/sub0`
+         */
+        subnet?: string;
+        /**
+         * The Compute Engine tags to add to runtime (see [Tagging instances]
+         * (https://cloud.google.com/compute/docs/
+         * label-or-tag-resources#tags)).
+         */
+        tags: string[];
+        /**
+         * -
+         * The zone where the virtual machine is located.
+         */
+        zone: string;
+    }
+
+    export interface RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig {
+        /**
+         * Count of cores of this accelerator.
+         */
+        coreCount?: number;
+        /**
+         * Accelerator model. For valid values, see
+         * `https://cloud.google.com/vertex-ai/docs/workbench/reference/
+         * rest/v1/projects.locations.runtimes#AcceleratorType`
+         */
+        type?: string;
+    }
+
+    export interface RuntimeVirtualMachineVirtualMachineConfigContainerImage {
+        /**
+         * The path to the container image repository.
+         * For example: gcr.io/{project_id}/{imageName}
+         */
+        repository: string;
+        /**
+         * The tag of the container image. If not specified, this defaults to the latest tag.
+         */
+        tag?: string;
+    }
+
+    export interface RuntimeVirtualMachineVirtualMachineConfigDataDisk {
+        /**
+         * -
+         * Optional. Specifies whether the disk will be auto-deleted
+         * when the instance is deleted (but not when the disk is
+         * detached from the instance).
+         */
+        autoDelete: boolean;
+        /**
+         * -
+         * Optional. Indicates that this is a boot disk. The virtual
+         * machine will use the first partition of the disk for its
+         * root filesystem.
+         */
+        boot: boolean;
+        /**
+         * -
+         * Optional. Specifies a unique device name of your choice
+         * that is reflected into the /dev/disk/by-id/google-* tree
+         * of a Linux operating system running within the instance.
+         * This name can be used to reference the device for mounting,
+         * resizing, and so on, from within the instance.
+         * If not specified, the server chooses a default device name
+         * to apply to this disk, in the form persistent-disk-x, where
+         * x is a number assigned by Google Compute Engine. This field
+         * is only applicable for persistent disks.
+         */
+        deviceName: string;
+        /**
+         * -
+         * Indicates a list of features to enable on the guest operating
+         * system. Applicable only for bootable images. To see a list of
+         * available features, read `https://cloud.google.com/compute/docs/
+         * images/create-delete-deprecate-private-images#guest-os-features`
+         * options. ``
+         */
+        guestOsFeatures: string[];
+        /**
+         * -
+         * Output only. A zero-based index to this disk, where 0 is
+         * reserved for the boot disk. If you have many disks attached
+         * to an instance, each disk would have a unique index number.
+         */
+        index: number;
+        /**
+         * Input only. Specifies the parameters for a new disk that will
+         * be created alongside the new instance. Use initialization
+         * parameters to create boot disks or local SSDs attached to the
+         * new instance. This property is mutually exclusive with the
+         * source property; you can only define one or the other, but not
+         * both.
+         * Structure is documented below.
+         */
+        initializeParams?: outputs.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams;
+        /**
+         * "Specifies the disk interface to use for attaching this disk,
+         * which is either SCSI or NVME. The default is SCSI. Persistent
+         * disks must always use SCSI and the request will fail if you attempt
+         * to attach a persistent disk in any other format than SCSI. Local SSDs
+         * can use either NVME or SCSI. For performance characteristics of SCSI
+         * over NVMe, see Local SSD performance. Valid values: * NVME * SCSI".
+         */
+        interface?: string;
+        /**
+         * -
+         * Type of the resource. Always compute#attachedDisk for attached
+         * disks.
+         */
+        kind: string;
+        /**
+         * -
+         * Output only. Any valid publicly visible licenses.
+         */
+        licenses: string[];
+        /**
+         * The mode in which to attach this disk, either READ_WRITE
+         * or READ_ONLY. If not specified, the default is to attach
+         * the disk in READ_WRITE mode.
+         */
+        mode?: string;
+        /**
+         * Specifies a valid partial or full URL to an existing
+         * Persistent Disk resource.
+         */
+        source?: string;
+        /**
+         * Accelerator model. For valid values, see
+         * `https://cloud.google.com/vertex-ai/docs/workbench/reference/
+         * rest/v1/projects.locations.runtimes#AcceleratorType`
+         */
+        type?: string;
+    }
+
+    export interface RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams {
+        /**
+         * Provide this property when creating the disk.
+         */
+        description?: string;
+        /**
+         * Specifies the disk name. If not specified, the default is
+         * to use the name of the instance. If the disk with the
+         * instance name exists already in the given zone/region, a
+         * new name will be automatically generated.
+         */
+        diskName?: string;
+        /**
+         * Specifies the size of the disk in base-2 GB. If not
+         * specified, the disk will be the same size as the image
+         * (usually 10GB). If specified, the size must be equal to
+         * or larger than 10GB. Default 100 GB.
+         */
+        diskSizeGb?: number;
+        /**
+         * The type of the boot disk attached to this runtime,
+         * defaults to standard persistent disk. For valid values,
+         * see `https://cloud.google.com/vertex-ai/docs/workbench/
+         * reference/rest/v1/projects.locations.runtimes#disktype`
+         */
+        diskType?: string;
+        /**
+         * Labels to apply to this disk. These can be later modified
+         * by the disks.setLabels method. This field is only
+         * applicable for persistent disks.
+         */
+        labels: {[key: string]: string};
+    }
+
+    export interface RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig {
+        /**
+         * The Cloud KMS resource identifier of the customer-managed
+         * encryption key used to protect a resource, such as a disks.
+         * It has the following format:
+         * `projects/{PROJECT_ID}/locations/{REGION}/keyRings/
+         * {KEY_RING_NAME}/cryptoKeys/{KEY_NAME}`
+         */
+        kmsKey?: string;
+    }
+
+    export interface RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig {
+        /**
+         * Defines whether the instance has integrity monitoring enabled.
+         * Enables monitoring and attestation of the boot integrity of
+         * the instance. The attestation is performed against the
+         * integrity policy baseline. This baseline is initially derived
+         * from the implicitly trusted boot image when the instance is
+         * created. Enabled by default.
+         */
+        enableIntegrityMonitoring?: boolean;
+        /**
+         * Defines whether the instance has Secure Boot enabled.Secure
+         * Boot helps ensure that the system only runs authentic software
+         * by verifying the digital signature of all boot components, and
+         * halting the boot process if signature verification fails.
+         * Disabled by default.
+         */
+        enableSecureBoot?: boolean;
+        /**
+         * Defines whether the instance has the vTPM enabled. Enabled by
+         * default.
+         */
+        enableVtpm?: boolean;
+    }
+
 }
 
 export namespace organizations {
@@ -25704,6 +26161,41 @@ export namespace organizations {
          * Possible values are `BLOCK_ALL`.
          */
         enrollmentLevel?: string;
+    }
+
+    export interface GetFoldersFolder {
+        /**
+         * The timestamp of when the folder was created
+         */
+        createTime: string;
+        /**
+         * The timestamp of when the folder was requested to be deleted (if applicable)
+         */
+        deleteTime: string;
+        /**
+         * The display name of the folder
+         */
+        displayName: string;
+        /**
+         * Entity tag identifier of the folder
+         */
+        etag: string;
+        /**
+         * The id of the folder
+         */
+        name: string;
+        /**
+         * The parent id of the folder
+         */
+        parent: string;
+        /**
+         * The lifecycle state of the folder
+         */
+        state: string;
+        /**
+         * The timestamp of when the folder was last modified
+         */
+        updateTime: string;
     }
 
     export interface GetIAMPolicyAuditConfig {
@@ -27377,12 +27869,25 @@ export namespace pubsub {
 }
 
 export namespace redis {
+    export interface GetInstanceNode {
+        id: string;
+        zone: string;
+    }
+
     export interface GetInstanceServerCaCert {
         cert: string;
         createTime: string;
         expireTime: string;
         serialNumber: string;
         sha1Fingerprint: string;
+    }
+
+    export interface InstanceNode {
+        /**
+         * an identifier for the resource with format `projects/{{project}}/locations/{{region}}/instances/{{name}}`
+         */
+        id: string;
+        zone: string;
     }
 
     export interface InstanceServerCaCert {
@@ -28646,6 +29151,18 @@ export namespace vertex {
          * The number of nodes for each cluster. The number of nodes will not scale automatically but can be scaled manually by providing different values when updating.
          */
         fixedNodeCount: number;
+    }
+
+    export interface AiMetadataStoreEncryptionSpec {
+        /**
+         * Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
+         * Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
+         */
+        kmsKeyName?: string;
+    }
+
+    export interface AiMetadataStoreState {
+        diskUtilizationBytes: string;
     }
 
 }

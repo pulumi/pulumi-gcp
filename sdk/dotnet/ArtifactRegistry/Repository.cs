@@ -155,6 +155,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// - PYTHON ([Preview](https://cloud.google.com/products#product-launch-stages))
         /// - APT ([alpha](https://cloud.google.com/products#product-launch-stages))
         /// - YUM ([alpha](https://cloud.google.com/products#product-launch-stages))
+        /// - HELM ([alpha](https://cloud.google.com/products#product-launch-stages))
         /// </summary>
         [Output("format")]
         public Output<string> Format { get; private set; } = null!;
@@ -271,6 +272,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// - PYTHON ([Preview](https://cloud.google.com/products#product-launch-stages))
         /// - APT ([alpha](https://cloud.google.com/products#product-launch-stages))
         /// - YUM ([alpha](https://cloud.google.com/products#product-launch-stages))
+        /// - HELM ([alpha](https://cloud.google.com/products#product-launch-stages))
         /// </summary>
         [Input("format", required: true)]
         public Input<string> Format { get; set; } = null!;
@@ -348,6 +350,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// - PYTHON ([Preview](https://cloud.google.com/products#product-launch-stages))
         /// - APT ([alpha](https://cloud.google.com/products#product-launch-stages))
         /// - YUM ([alpha](https://cloud.google.com/products#product-launch-stages))
+        /// - HELM ([alpha](https://cloud.google.com/products#product-launch-stages))
         /// </summary>
         [Input("format")]
         public Input<string>? Format { get; set; }

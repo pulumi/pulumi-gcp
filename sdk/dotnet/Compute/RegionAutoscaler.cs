@@ -33,25 +33,15 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     public MyStack()
     ///     {
-    ///         var debian9 = Output.Create(Gcp.Compute.GetImage.InvokeAsync(new Gcp.Compute.GetImageArgs
-    ///         {
-    ///             Family = "debian-9",
-    ///             Project = "debian-cloud",
-    ///         }));
     ///         var foobarInstanceTemplate = new Gcp.Compute.InstanceTemplate("foobarInstanceTemplate", new Gcp.Compute.InstanceTemplateArgs
     ///         {
-    ///             MachineType = "e2-medium",
-    ///             CanIpForward = false,
-    ///             Tags = 
-    ///             {
-    ///                 "foo",
-    ///                 "bar",
-    ///             },
+    ///             MachineType = "e2-standard-4",
     ///             Disks = 
     ///             {
     ///                 new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
     ///                 {
-    ///                     SourceImage = debian9.Apply(debian9 =&gt; debian9.Id),
+    ///                     SourceImage = "debian-cloud/debian-9",
+    ///                     DiskSizeGb = 250,
     ///                 },
     ///             },
     ///             NetworkInterfaces = 
@@ -59,19 +49,26 @@ namespace Pulumi.Gcp.Compute
     ///                 new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
     ///                 {
     ///                     Network = "default",
+    ///                     AccessConfigs = 
+    ///                     {
+    ///                         new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceAccessConfigArgs
+    ///                         {
+    ///                             NetworkTier = "PREMIUM",
+    ///                         },
+    ///                     },
     ///                 },
-    ///             },
-    ///             Metadata = 
-    ///             {
-    ///                 { "foo", "bar" },
     ///             },
     ///             ServiceAccount = new Gcp.Compute.Inputs.InstanceTemplateServiceAccountArgs
     ///             {
     ///                 Scopes = 
     ///                 {
-    ///                     "userinfo-email",
-    ///                     "compute-ro",
-    ///                     "storage-ro",
+    ///                     "https://www.googleapis.com/auth/devstorage.read_only",
+    ///                     "https://www.googleapis.com/auth/logging.write",
+    ///                     "https://www.googleapis.com/auth/monitoring.write",
+    ///                     "https://www.googleapis.com/auth/pubsub",
+    ///                     "https://www.googleapis.com/auth/service.management.readonly",
+    ///                     "https://www.googleapis.com/auth/servicecontrol",
+    ///                     "https://www.googleapis.com/auth/trace.append",
     ///                 },
     ///             },
     ///         });
@@ -110,6 +107,11 @@ namespace Pulumi.Gcp.Compute
     ///                 },
     ///             },
     ///         });
+    ///         var debian9 = Output.Create(Gcp.Compute.GetImage.InvokeAsync(new Gcp.Compute.GetImageArgs
+    ///         {
+    ///             Family = "debian-9",
+    ///             Project = "debian-cloud",
+    ///         }));
     ///     }
     /// 
     /// }

@@ -256,7 +256,8 @@ class TaxonomyIamMember(pulumi.CustomResource):
         )])
         policy = gcp.datacatalog.TaxonomyIamPolicy("policy",
             taxonomy=google_data_catalog_taxonomy["basic_taxonomy"]["name"],
-            policy_data=admin.policy_data)
+            policy_data=admin.policy_data,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## google\_data\_catalog\_taxonomy\_iam\_binding
@@ -268,7 +269,8 @@ class TaxonomyIamMember(pulumi.CustomResource):
         binding = gcp.datacatalog.TaxonomyIamBinding("binding",
             taxonomy=google_data_catalog_taxonomy["basic_taxonomy"]["name"],
             role="roles/viewer",
-            members=["user:jane@example.com"])
+            members=["user:jane@example.com"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## google\_data\_catalog\_taxonomy\_iam\_member
@@ -280,7 +282,8 @@ class TaxonomyIamMember(pulumi.CustomResource):
         member = gcp.datacatalog.TaxonomyIamMember("member",
             taxonomy=google_data_catalog_taxonomy["basic_taxonomy"]["name"],
             role="roles/viewer",
-            member="user:jane@example.com")
+            member="user:jane@example.com",
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import
@@ -345,7 +348,8 @@ class TaxonomyIamMember(pulumi.CustomResource):
         )])
         policy = gcp.datacatalog.TaxonomyIamPolicy("policy",
             taxonomy=google_data_catalog_taxonomy["basic_taxonomy"]["name"],
-            policy_data=admin.policy_data)
+            policy_data=admin.policy_data,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## google\_data\_catalog\_taxonomy\_iam\_binding
@@ -357,7 +361,8 @@ class TaxonomyIamMember(pulumi.CustomResource):
         binding = gcp.datacatalog.TaxonomyIamBinding("binding",
             taxonomy=google_data_catalog_taxonomy["basic_taxonomy"]["name"],
             role="roles/viewer",
-            members=["user:jane@example.com"])
+            members=["user:jane@example.com"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## google\_data\_catalog\_taxonomy\_iam\_member
@@ -369,7 +374,8 @@ class TaxonomyIamMember(pulumi.CustomResource):
         member = gcp.datacatalog.TaxonomyIamMember("member",
             taxonomy=google_data_catalog_taxonomy["basic_taxonomy"]["name"],
             role="roles/viewer",
-            member="user:jane@example.com")
+            member="user:jane@example.com",
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import

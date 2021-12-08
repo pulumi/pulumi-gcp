@@ -138,7 +138,8 @@ class ServiceIamPolicy(pulumi.CustomResource):
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
-        policy = gcp.servicedirectory.ServiceIamPolicy("policy", policy_data=admin.policy_data)
+        policy = gcp.servicedirectory.ServiceIamPolicy("policy", policy_data=admin.policy_data,
+        opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## google\_service\_directory\_service\_iam\_binding
@@ -149,7 +150,8 @@ class ServiceIamPolicy(pulumi.CustomResource):
 
         binding = gcp.servicedirectory.ServiceIamBinding("binding",
             role="roles/viewer",
-            members=["user:jane@example.com"])
+            members=["user:jane@example.com"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## google\_service\_directory\_service\_iam\_member
@@ -160,7 +162,8 @@ class ServiceIamPolicy(pulumi.CustomResource):
 
         member = gcp.servicedirectory.ServiceIamMember("member",
             role="roles/viewer",
-            member="user:jane@example.com")
+            member="user:jane@example.com",
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import
@@ -220,7 +223,8 @@ class ServiceIamPolicy(pulumi.CustomResource):
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
-        policy = gcp.servicedirectory.ServiceIamPolicy("policy", policy_data=admin.policy_data)
+        policy = gcp.servicedirectory.ServiceIamPolicy("policy", policy_data=admin.policy_data,
+        opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## google\_service\_directory\_service\_iam\_binding
@@ -231,7 +235,8 @@ class ServiceIamPolicy(pulumi.CustomResource):
 
         binding = gcp.servicedirectory.ServiceIamBinding("binding",
             role="roles/viewer",
-            members=["user:jane@example.com"])
+            members=["user:jane@example.com"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## google\_service\_directory\_service\_iam\_member
@@ -242,7 +247,8 @@ class ServiceIamPolicy(pulumi.CustomResource):
 
         member = gcp.servicedirectory.ServiceIamMember("member",
             role="roles/viewer",
-            member="user:jane@example.com")
+            member="user:jane@example.com",
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import

@@ -15,8 +15,13 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         [Input("caCertificateAccessUrl")]
         public Input<string>? CaCertificateAccessUrl { get; set; }
 
-        [Input("crlAccessUrl")]
-        public Input<string>? CrlAccessUrl { get; set; }
+        [Input("crlAccessUrls")]
+        private InputList<string>? _crlAccessUrls;
+        public InputList<string> CrlAccessUrls
+        {
+            get => _crlAccessUrls ?? (_crlAccessUrls = new InputList<string>());
+            set => _crlAccessUrls = value;
+        }
 
         public AuthorityAccessUrlGetArgs()
         {

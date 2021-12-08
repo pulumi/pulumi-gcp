@@ -270,7 +270,8 @@ class RepositoryIamMember(pulumi.CustomResource):
             project=google_artifact_registry_repository["my-repo"]["project"],
             location=google_artifact_registry_repository["my-repo"]["location"],
             repository=google_artifact_registry_repository["my-repo"]["name"],
-            policy_data=admin.policy_data)
+            policy_data=admin.policy_data,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## google\_artifact\_registry\_repository\_iam\_binding
@@ -284,7 +285,8 @@ class RepositoryIamMember(pulumi.CustomResource):
             location=google_artifact_registry_repository["my-repo"]["location"],
             repository=google_artifact_registry_repository["my-repo"]["name"],
             role="roles/viewer",
-            members=["user:jane@example.com"])
+            members=["user:jane@example.com"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## google\_artifact\_registry\_repository\_iam\_member
@@ -298,7 +300,8 @@ class RepositoryIamMember(pulumi.CustomResource):
             location=google_artifact_registry_repository["my-repo"]["location"],
             repository=google_artifact_registry_repository["my-repo"]["name"],
             role="roles/viewer",
-            member="user:jane@example.com")
+            member="user:jane@example.com",
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import
@@ -367,7 +370,8 @@ class RepositoryIamMember(pulumi.CustomResource):
             project=google_artifact_registry_repository["my-repo"]["project"],
             location=google_artifact_registry_repository["my-repo"]["location"],
             repository=google_artifact_registry_repository["my-repo"]["name"],
-            policy_data=admin.policy_data)
+            policy_data=admin.policy_data,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## google\_artifact\_registry\_repository\_iam\_binding
@@ -381,7 +385,8 @@ class RepositoryIamMember(pulumi.CustomResource):
             location=google_artifact_registry_repository["my-repo"]["location"],
             repository=google_artifact_registry_repository["my-repo"]["name"],
             role="roles/viewer",
-            members=["user:jane@example.com"])
+            members=["user:jane@example.com"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## google\_artifact\_registry\_repository\_iam\_member
@@ -395,7 +400,8 @@ class RepositoryIamMember(pulumi.CustomResource):
             location=google_artifact_registry_repository["my-repo"]["location"],
             repository=google_artifact_registry_repository["my-repo"]["name"],
             role="roles/viewer",
-            member="user:jane@example.com")
+            member="user:jane@example.com",
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import

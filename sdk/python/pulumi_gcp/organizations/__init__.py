@@ -12,6 +12,7 @@ from .get_billing_account import *
 from .get_client_config import *
 from .get_client_open_id_user_info import *
 from .get_folder import *
+from .get_folders import *
 from .get_iam_policy import *
 from .get_organization import *
 from .get_project import *

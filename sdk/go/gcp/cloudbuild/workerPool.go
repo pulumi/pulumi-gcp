@@ -29,10 +29,15 @@ import (
 type WorkerPool struct {
 	pulumi.CustomResourceState
 
+	// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
+	// limitations.
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Output only. Time at which the request to create the `WorkerPool` was received.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Output only. Time at which the request to delete the `WorkerPool` was received.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
+	// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
+	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
 	// User-defined name of the `WorkerPool`.
@@ -43,6 +48,8 @@ type WorkerPool struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Output only. `WorkerPool` state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
 	State pulumi.StringOutput `pulumi:"state"`
+	// Output only. A unique identifier for the `WorkerPool`.
+	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Output only. Time at which the request to update the `WorkerPool` was received.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
@@ -81,10 +88,15 @@ func GetWorkerPool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkerPool resources.
 type workerPoolState struct {
+	// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
+	// limitations.
+	Annotations map[string]string `pulumi:"annotations"`
 	// Output only. Time at which the request to create the `WorkerPool` was received.
 	CreateTime *string `pulumi:"createTime"`
 	// Output only. Time at which the request to delete the `WorkerPool` was received.
 	DeleteTime *string `pulumi:"deleteTime"`
+	// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
+	DisplayName *string `pulumi:"displayName"`
 	// The location for the resource
 	Location *string `pulumi:"location"`
 	// User-defined name of the `WorkerPool`.
@@ -95,6 +107,8 @@ type workerPoolState struct {
 	Project *string `pulumi:"project"`
 	// Output only. `WorkerPool` state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
 	State *string `pulumi:"state"`
+	// Output only. A unique identifier for the `WorkerPool`.
+	Uid *string `pulumi:"uid"`
 	// Output only. Time at which the request to update the `WorkerPool` was received.
 	UpdateTime *string `pulumi:"updateTime"`
 	// Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
@@ -102,10 +116,15 @@ type workerPoolState struct {
 }
 
 type WorkerPoolState struct {
+	// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
+	// limitations.
+	Annotations pulumi.StringMapInput
 	// Output only. Time at which the request to create the `WorkerPool` was received.
 	CreateTime pulumi.StringPtrInput
 	// Output only. Time at which the request to delete the `WorkerPool` was received.
 	DeleteTime pulumi.StringPtrInput
+	// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
+	DisplayName pulumi.StringPtrInput
 	// The location for the resource
 	Location pulumi.StringPtrInput
 	// User-defined name of the `WorkerPool`.
@@ -116,6 +135,8 @@ type WorkerPoolState struct {
 	Project pulumi.StringPtrInput
 	// Output only. `WorkerPool` state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
 	State pulumi.StringPtrInput
+	// Output only. A unique identifier for the `WorkerPool`.
+	Uid pulumi.StringPtrInput
 	// Output only. Time at which the request to update the `WorkerPool` was received.
 	UpdateTime pulumi.StringPtrInput
 	// Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
@@ -127,6 +148,11 @@ func (WorkerPoolState) ElementType() reflect.Type {
 }
 
 type workerPoolArgs struct {
+	// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
+	// limitations.
+	Annotations map[string]string `pulumi:"annotations"`
+	// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
+	DisplayName *string `pulumi:"displayName"`
 	// The location for the resource
 	Location string `pulumi:"location"`
 	// User-defined name of the `WorkerPool`.
@@ -141,6 +167,11 @@ type workerPoolArgs struct {
 
 // The set of arguments for constructing a WorkerPool resource.
 type WorkerPoolArgs struct {
+	// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
+	// limitations.
+	Annotations pulumi.StringMapInput
+	// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
+	DisplayName pulumi.StringPtrInput
 	// The location for the resource
 	Location pulumi.StringInput
 	// User-defined name of the `WorkerPool`.

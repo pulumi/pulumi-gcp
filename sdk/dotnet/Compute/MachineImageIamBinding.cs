@@ -49,6 +49,9 @@ namespace Pulumi.Gcp.Compute
     ///             Project = google_compute_machine_image.Image.Project,
     ///             MachineImage = google_compute_machine_image.Image.Name,
     ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -90,6 +93,9 @@ namespace Pulumi.Gcp.Compute
     ///             Project = google_compute_machine_image.Image.Project,
     ///             MachineImage = google_compute_machine_image.Image.Name,
     ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -114,6 +120,9 @@ namespace Pulumi.Gcp.Compute
     ///             {
     ///                 "user:jane@example.com",
     ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -145,6 +154,9 @@ namespace Pulumi.Gcp.Compute
     ///                 Description = "Expiring at midnight of 2019-12-31",
     ///                 Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
     ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -166,6 +178,9 @@ namespace Pulumi.Gcp.Compute
     ///             MachineImage = google_compute_machine_image.Image.Name,
     ///             Role = "roles/compute.admin",
     ///             Member = "user:jane@example.com",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -194,6 +209,9 @@ namespace Pulumi.Gcp.Compute
     ///                 Description = "Expiring at midnight of 2019-12-31",
     ///                 Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
     ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 

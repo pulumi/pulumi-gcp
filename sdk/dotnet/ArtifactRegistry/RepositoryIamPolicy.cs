@@ -50,6 +50,9 @@ namespace Pulumi.Gcp.ArtifactRegistry
     ///             Location = google_artifact_registry_repository.My_repo.Location,
     ///             Repository = google_artifact_registry_repository.My_repo.Name,
     ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -76,6 +79,9 @@ namespace Pulumi.Gcp.ArtifactRegistry
     ///             {
     ///                 "user:jane@example.com",
     ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -99,6 +105,9 @@ namespace Pulumi.Gcp.ArtifactRegistry
     ///             Repository = google_artifact_registry_repository.My_repo.Name,
     ///             Role = "roles/viewer",
     ///             Member = "user:jane@example.com",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 

@@ -14,6 +14,8 @@ __all__ = [
     'AiFeatureStoreEntityTypeMonitoringConfig',
     'AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis',
     'AiFeatureStoreOnlineServingConfig',
+    'AiMetadataStoreEncryptionSpec',
+    'AiMetadataStoreState',
 ]
 
 @pulumi.output_type
@@ -175,5 +177,73 @@ class AiFeatureStoreOnlineServingConfig(dict):
         The number of nodes for each cluster. The number of nodes will not scale automatically but can be scaled manually by providing different values when updating.
         """
         return pulumi.get(self, "fixed_node_count")
+
+
+@pulumi.output_type
+class AiMetadataStoreEncryptionSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeyName":
+            suggest = "kms_key_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiMetadataStoreEncryptionSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiMetadataStoreEncryptionSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiMetadataStoreEncryptionSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_name: Optional[str] = None):
+        """
+        :param str kms_key_name: Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
+               Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
+        """
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[str]:
+        """
+        Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
+        Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+
+@pulumi.output_type
+class AiMetadataStoreState(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskUtilizationBytes":
+            suggest = "disk_utilization_bytes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiMetadataStoreState. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiMetadataStoreState.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiMetadataStoreState.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disk_utilization_bytes: Optional[str] = None):
+        if disk_utilization_bytes is not None:
+            pulumi.set(__self__, "disk_utilization_bytes", disk_utilization_bytes)
+
+    @property
+    @pulumi.getter(name="diskUtilizationBytes")
+    def disk_utilization_bytes(self) -> Optional[str]:
+        return pulumi.get(self, "disk_utilization_bytes")
 
 

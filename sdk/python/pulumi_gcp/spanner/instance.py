@@ -38,9 +38,9 @@ class InstanceArgs:
         :param pulumi.Input[str] name: A unique identifier for the instance, which cannot be changed after
                the instance is created. The name must be between 6 and 30 characters
                in length.
-        :param pulumi.Input[int] num_nodes: The number of nodes allocated to this instance. At most one of either node_count or processing_units can be present in
+        :param pulumi.Input[int] num_nodes: The number of nodes allocated to this instance. Exactly one of either node_count or processing_units must be present in
                terraform.
-        :param pulumi.Input[int] processing_units: The number of processing units allocated to this instance. At most one of processing_units or node_count can be present
+        :param pulumi.Input[int] processing_units: The number of processing units allocated to this instance. Exactly one of processing_units or node_count must be present
                in terraform.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -134,7 +134,7 @@ class InstanceArgs:
     @pulumi.getter(name="numNodes")
     def num_nodes(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of nodes allocated to this instance. At most one of either node_count or processing_units can be present in
+        The number of nodes allocated to this instance. Exactly one of either node_count or processing_units must be present in
         terraform.
         """
         return pulumi.get(self, "num_nodes")
@@ -147,7 +147,7 @@ class InstanceArgs:
     @pulumi.getter(name="processingUnits")
     def processing_units(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of processing units allocated to this instance. At most one of processing_units or node_count can be present
+        The number of processing units allocated to this instance. Exactly one of processing_units or node_count must be present
         in terraform.
         """
         return pulumi.get(self, "processing_units")
@@ -199,9 +199,9 @@ class _InstanceState:
         :param pulumi.Input[str] name: A unique identifier for the instance, which cannot be changed after
                the instance is created. The name must be between 6 and 30 characters
                in length.
-        :param pulumi.Input[int] num_nodes: The number of nodes allocated to this instance. At most one of either node_count or processing_units can be present in
+        :param pulumi.Input[int] num_nodes: The number of nodes allocated to this instance. Exactly one of either node_count or processing_units must be present in
                terraform.
-        :param pulumi.Input[int] processing_units: The number of processing units allocated to this instance. At most one of processing_units or node_count can be present
+        :param pulumi.Input[int] processing_units: The number of processing units allocated to this instance. Exactly one of processing_units or node_count must be present
                in terraform.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -300,7 +300,7 @@ class _InstanceState:
     @pulumi.getter(name="numNodes")
     def num_nodes(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of nodes allocated to this instance. At most one of either node_count or processing_units can be present in
+        The number of nodes allocated to this instance. Exactly one of either node_count or processing_units must be present in
         terraform.
         """
         return pulumi.get(self, "num_nodes")
@@ -313,7 +313,7 @@ class _InstanceState:
     @pulumi.getter(name="processingUnits")
     def processing_units(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of processing units allocated to this instance. At most one of processing_units or node_count can be present
+        The number of processing units allocated to this instance. Exactly one of processing_units or node_count must be present
         in terraform.
         """
         return pulumi.get(self, "processing_units")
@@ -449,9 +449,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] name: A unique identifier for the instance, which cannot be changed after
                the instance is created. The name must be between 6 and 30 characters
                in length.
-        :param pulumi.Input[int] num_nodes: The number of nodes allocated to this instance. At most one of either node_count or processing_units can be present in
+        :param pulumi.Input[int] num_nodes: The number of nodes allocated to this instance. Exactly one of either node_count or processing_units must be present in
                terraform.
-        :param pulumi.Input[int] processing_units: The number of processing units allocated to this instance. At most one of processing_units or node_count can be present
+        :param pulumi.Input[int] processing_units: The number of processing units allocated to this instance. Exactly one of processing_units or node_count must be present
                in terraform.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -621,9 +621,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] name: A unique identifier for the instance, which cannot be changed after
                the instance is created. The name must be between 6 and 30 characters
                in length.
-        :param pulumi.Input[int] num_nodes: The number of nodes allocated to this instance. At most one of either node_count or processing_units can be present in
+        :param pulumi.Input[int] num_nodes: The number of nodes allocated to this instance. Exactly one of either node_count or processing_units must be present in
                terraform.
-        :param pulumi.Input[int] processing_units: The number of processing units allocated to this instance. At most one of processing_units or node_count can be present
+        :param pulumi.Input[int] processing_units: The number of processing units allocated to this instance. Exactly one of processing_units or node_count must be present
                in terraform.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -698,7 +698,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="numNodes")
     def num_nodes(self) -> pulumi.Output[int]:
         """
-        The number of nodes allocated to this instance. At most one of either node_count or processing_units can be present in
+        The number of nodes allocated to this instance. Exactly one of either node_count or processing_units must be present in
         terraform.
         """
         return pulumi.get(self, "num_nodes")
@@ -707,7 +707,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="processingUnits")
     def processing_units(self) -> pulumi.Output[int]:
         """
-        The number of processing units allocated to this instance. At most one of processing_units or node_count can be present
+        The number of processing units allocated to this instance. Exactly one of processing_units or node_count must be present
         in terraform.
         """
         return pulumi.get(self, "processing_units")

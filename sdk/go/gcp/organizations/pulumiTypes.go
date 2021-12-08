@@ -1379,6 +1379,166 @@ func (o PolicyRestorePolicyPtrOutput) Default() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+type GetFoldersFolder struct {
+	// The timestamp of when the folder was created
+	CreateTime string `pulumi:"createTime"`
+	// The timestamp of when the folder was requested to be deleted (if applicable)
+	DeleteTime string `pulumi:"deleteTime"`
+	// The display name of the folder
+	DisplayName string `pulumi:"displayName"`
+	// Entity tag identifier of the folder
+	Etag string `pulumi:"etag"`
+	// The id of the folder
+	Name string `pulumi:"name"`
+	// The parent id of the folder
+	Parent string `pulumi:"parent"`
+	// The lifecycle state of the folder
+	State string `pulumi:"state"`
+	// The timestamp of when the folder was last modified
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// GetFoldersFolderInput is an input type that accepts GetFoldersFolderArgs and GetFoldersFolderOutput values.
+// You can construct a concrete instance of `GetFoldersFolderInput` via:
+//
+//          GetFoldersFolderArgs{...}
+type GetFoldersFolderInput interface {
+	pulumi.Input
+
+	ToGetFoldersFolderOutput() GetFoldersFolderOutput
+	ToGetFoldersFolderOutputWithContext(context.Context) GetFoldersFolderOutput
+}
+
+type GetFoldersFolderArgs struct {
+	// The timestamp of when the folder was created
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The timestamp of when the folder was requested to be deleted (if applicable)
+	DeleteTime pulumi.StringInput `pulumi:"deleteTime"`
+	// The display name of the folder
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Entity tag identifier of the folder
+	Etag pulumi.StringInput `pulumi:"etag"`
+	// The id of the folder
+	Name pulumi.StringInput `pulumi:"name"`
+	// The parent id of the folder
+	Parent pulumi.StringInput `pulumi:"parent"`
+	// The lifecycle state of the folder
+	State pulumi.StringInput `pulumi:"state"`
+	// The timestamp of when the folder was last modified
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+}
+
+func (GetFoldersFolderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFoldersFolder)(nil)).Elem()
+}
+
+func (i GetFoldersFolderArgs) ToGetFoldersFolderOutput() GetFoldersFolderOutput {
+	return i.ToGetFoldersFolderOutputWithContext(context.Background())
+}
+
+func (i GetFoldersFolderArgs) ToGetFoldersFolderOutputWithContext(ctx context.Context) GetFoldersFolderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFoldersFolderOutput)
+}
+
+// GetFoldersFolderArrayInput is an input type that accepts GetFoldersFolderArray and GetFoldersFolderArrayOutput values.
+// You can construct a concrete instance of `GetFoldersFolderArrayInput` via:
+//
+//          GetFoldersFolderArray{ GetFoldersFolderArgs{...} }
+type GetFoldersFolderArrayInput interface {
+	pulumi.Input
+
+	ToGetFoldersFolderArrayOutput() GetFoldersFolderArrayOutput
+	ToGetFoldersFolderArrayOutputWithContext(context.Context) GetFoldersFolderArrayOutput
+}
+
+type GetFoldersFolderArray []GetFoldersFolderInput
+
+func (GetFoldersFolderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFoldersFolder)(nil)).Elem()
+}
+
+func (i GetFoldersFolderArray) ToGetFoldersFolderArrayOutput() GetFoldersFolderArrayOutput {
+	return i.ToGetFoldersFolderArrayOutputWithContext(context.Background())
+}
+
+func (i GetFoldersFolderArray) ToGetFoldersFolderArrayOutputWithContext(ctx context.Context) GetFoldersFolderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFoldersFolderArrayOutput)
+}
+
+type GetFoldersFolderOutput struct{ *pulumi.OutputState }
+
+func (GetFoldersFolderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFoldersFolder)(nil)).Elem()
+}
+
+func (o GetFoldersFolderOutput) ToGetFoldersFolderOutput() GetFoldersFolderOutput {
+	return o
+}
+
+func (o GetFoldersFolderOutput) ToGetFoldersFolderOutputWithContext(ctx context.Context) GetFoldersFolderOutput {
+	return o
+}
+
+// The timestamp of when the folder was created
+func (o GetFoldersFolderOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFoldersFolder) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The timestamp of when the folder was requested to be deleted (if applicable)
+func (o GetFoldersFolderOutput) DeleteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFoldersFolder) string { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+// The display name of the folder
+func (o GetFoldersFolderOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFoldersFolder) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Entity tag identifier of the folder
+func (o GetFoldersFolderOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFoldersFolder) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The id of the folder
+func (o GetFoldersFolderOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFoldersFolder) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The parent id of the folder
+func (o GetFoldersFolderOutput) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFoldersFolder) string { return v.Parent }).(pulumi.StringOutput)
+}
+
+// The lifecycle state of the folder
+func (o GetFoldersFolderOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFoldersFolder) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The timestamp of when the folder was last modified
+func (o GetFoldersFolderOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFoldersFolder) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+type GetFoldersFolderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFoldersFolderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFoldersFolder)(nil)).Elem()
+}
+
+func (o GetFoldersFolderArrayOutput) ToGetFoldersFolderArrayOutput() GetFoldersFolderArrayOutput {
+	return o
+}
+
+func (o GetFoldersFolderArrayOutput) ToGetFoldersFolderArrayOutputWithContext(ctx context.Context) GetFoldersFolderArrayOutput {
+	return o
+}
+
+func (o GetFoldersFolderArrayOutput) Index(i pulumi.IntInput) GetFoldersFolderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFoldersFolder {
+		return vs[0].([]GetFoldersFolder)[vs[1].(int)]
+	}).(GetFoldersFolderOutput)
+}
+
 type GetIAMPolicyAuditConfig struct {
 	// A nested block that defines the operations you'd like to log.
 	AuditLogConfigs []GetIAMPolicyAuditConfigAuditLogConfig `pulumi:"auditLogConfigs"`
@@ -1927,6 +2087,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyListPolicyDenyPtrInput)(nil)).Elem(), PolicyListPolicyDenyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyRestorePolicyInput)(nil)).Elem(), PolicyRestorePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyRestorePolicyPtrInput)(nil)).Elem(), PolicyRestorePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFoldersFolderInput)(nil)).Elem(), GetFoldersFolderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFoldersFolderArrayInput)(nil)).Elem(), GetFoldersFolderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMPolicyAuditConfigInput)(nil)).Elem(), GetIAMPolicyAuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMPolicyAuditConfigArrayInput)(nil)).Elem(), GetIAMPolicyAuditConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMPolicyAuditConfigAuditLogConfigInput)(nil)).Elem(), GetIAMPolicyAuditConfigAuditLogConfigArgs{})
@@ -1953,6 +2115,8 @@ func init() {
 	pulumi.RegisterOutputType(PolicyListPolicyDenyPtrOutput{})
 	pulumi.RegisterOutputType(PolicyRestorePolicyOutput{})
 	pulumi.RegisterOutputType(PolicyRestorePolicyPtrOutput{})
+	pulumi.RegisterOutputType(GetFoldersFolderOutput{})
+	pulumi.RegisterOutputType(GetFoldersFolderArrayOutput{})
 	pulumi.RegisterOutputType(GetIAMPolicyAuditConfigOutput{})
 	pulumi.RegisterOutputType(GetIAMPolicyAuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetIAMPolicyAuditConfigAuditLogConfigOutput{})

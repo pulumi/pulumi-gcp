@@ -51,7 +51,7 @@ import (
 // 			Project:      pulumi.Any(google_compute_machine_image.Image.Project),
 // 			MachineImage: pulumi.Any(google_compute_machine_image.Image.Name),
 // 			PolicyData:   pulumi.String(admin.PolicyData),
-// 		})
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -95,7 +95,7 @@ import (
 // 			Project:      pulumi.Any(google_compute_machine_image.Image.Project),
 // 			MachineImage: pulumi.Any(google_compute_machine_image.Image.Name),
 // 			PolicyData:   pulumi.String(admin.PolicyData),
-// 		})
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -122,7 +122,7 @@ import (
 // 			Members: pulumi.StringArray{
 // 				pulumi.String("user:jane@example.com"),
 // 			},
-// 		})
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -155,7 +155,7 @@ import (
 // 				Description: pulumi.String("Expiring at midnight of 2019-12-31"),
 // 				Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
 // 			},
-// 		})
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -180,7 +180,7 @@ import (
 // 			MachineImage: pulumi.Any(google_compute_machine_image.Image.Name),
 // 			Role:         pulumi.String("roles/compute.admin"),
 // 			Member:       pulumi.String("user:jane@example.com"),
-// 		})
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -211,7 +211,7 @@ import (
 // 				Description: pulumi.String("Expiring at midnight of 2019-12-31"),
 // 				Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
 // 			},
-// 		})
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}

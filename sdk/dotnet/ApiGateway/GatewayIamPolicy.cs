@@ -50,6 +50,9 @@ namespace Pulumi.Gcp.ApiGateway
     ///             Region = google_api_gateway_gateway.Api_gw.Region,
     ///             Gateway = google_api_gateway_gateway.Api_gw.Gateway_id,
     ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -76,6 +79,9 @@ namespace Pulumi.Gcp.ApiGateway
     ///             {
     ///                 "user:jane@example.com",
     ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -99,6 +105,9 @@ namespace Pulumi.Gcp.ApiGateway
     ///             Gateway = google_api_gateway_gateway.Api_gw.Gateway_id,
     ///             Role = "roles/apigateway.viewer",
     ///             Member = "user:jane@example.com",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 

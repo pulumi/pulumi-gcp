@@ -94,11 +94,11 @@ __all__ = [
 class AuthorityAccessUrlArgs:
     def __init__(__self__, *,
                  ca_certificate_access_url: Optional[pulumi.Input[str]] = None,
-                 crl_access_url: Optional[pulumi.Input[str]] = None):
+                 crl_access_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         if ca_certificate_access_url is not None:
             pulumi.set(__self__, "ca_certificate_access_url", ca_certificate_access_url)
-        if crl_access_url is not None:
-            pulumi.set(__self__, "crl_access_url", crl_access_url)
+        if crl_access_urls is not None:
+            pulumi.set(__self__, "crl_access_urls", crl_access_urls)
 
     @property
     @pulumi.getter(name="caCertificateAccessUrl")
@@ -110,13 +110,13 @@ class AuthorityAccessUrlArgs:
         pulumi.set(self, "ca_certificate_access_url", value)
 
     @property
-    @pulumi.getter(name="crlAccessUrl")
-    def crl_access_url(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "crl_access_url")
+    @pulumi.getter(name="crlAccessUrls")
+    def crl_access_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "crl_access_urls")
 
-    @crl_access_url.setter
-    def crl_access_url(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "crl_access_url", value)
+    @crl_access_urls.setter
+    def crl_access_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "crl_access_urls", value)
 
 
 @pulumi.input_type

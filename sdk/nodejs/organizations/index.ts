@@ -12,6 +12,7 @@ export * from "./getBillingAccount";
 export * from "./getClientConfig";
 export * from "./getClientOpenIdUserInfo";
 export * from "./getFolder";
+export * from "./getFolders";
 export * from "./getIAMPolicy";
 export * from "./getOrganization";
 export * from "./getProject";

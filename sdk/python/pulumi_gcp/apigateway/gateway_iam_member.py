@@ -270,7 +270,8 @@ class GatewayIamMember(pulumi.CustomResource):
             project=google_api_gateway_gateway["api_gw"]["project"],
             region=google_api_gateway_gateway["api_gw"]["region"],
             gateway=google_api_gateway_gateway["api_gw"]["gateway_id"],
-            policy_data=admin.policy_data)
+            policy_data=admin.policy_data,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## google\_api\_gateway\_gateway\_iam\_binding
@@ -284,7 +285,8 @@ class GatewayIamMember(pulumi.CustomResource):
             region=google_api_gateway_gateway["api_gw"]["region"],
             gateway=google_api_gateway_gateway["api_gw"]["gateway_id"],
             role="roles/apigateway.viewer",
-            members=["user:jane@example.com"])
+            members=["user:jane@example.com"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## google\_api\_gateway\_gateway\_iam\_member
@@ -298,7 +300,8 @@ class GatewayIamMember(pulumi.CustomResource):
             region=google_api_gateway_gateway["api_gw"]["region"],
             gateway=google_api_gateway_gateway["api_gw"]["gateway_id"],
             role="roles/apigateway.viewer",
-            member="user:jane@example.com")
+            member="user:jane@example.com",
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import
@@ -368,7 +371,8 @@ class GatewayIamMember(pulumi.CustomResource):
             project=google_api_gateway_gateway["api_gw"]["project"],
             region=google_api_gateway_gateway["api_gw"]["region"],
             gateway=google_api_gateway_gateway["api_gw"]["gateway_id"],
-            policy_data=admin.policy_data)
+            policy_data=admin.policy_data,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## google\_api\_gateway\_gateway\_iam\_binding
@@ -382,7 +386,8 @@ class GatewayIamMember(pulumi.CustomResource):
             region=google_api_gateway_gateway["api_gw"]["region"],
             gateway=google_api_gateway_gateway["api_gw"]["gateway_id"],
             role="roles/apigateway.viewer",
-            members=["user:jane@example.com"])
+            members=["user:jane@example.com"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## google\_api\_gateway\_gateway\_iam\_member
@@ -396,7 +401,8 @@ class GatewayIamMember(pulumi.CustomResource):
             region=google_api_gateway_gateway["api_gw"]["region"],
             gateway=google_api_gateway_gateway["api_gw"]["gateway_id"],
             role="roles/apigateway.viewer",
-            member="user:jane@example.com")
+            member="user:jane@example.com",
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import

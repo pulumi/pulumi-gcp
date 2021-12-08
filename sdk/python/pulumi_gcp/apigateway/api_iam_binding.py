@@ -224,7 +224,8 @@ class ApiIamBinding(pulumi.CustomResource):
         policy = gcp.apigateway.ApiIamPolicy("policy",
             project=google_api_gateway_api["api"]["project"],
             api=google_api_gateway_api["api"]["api_id"],
-            policy_data=admin.policy_data)
+            policy_data=admin.policy_data,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## google\_api\_gateway\_api\_iam\_binding
@@ -237,7 +238,8 @@ class ApiIamBinding(pulumi.CustomResource):
             project=google_api_gateway_api["api"]["project"],
             api=google_api_gateway_api["api"]["api_id"],
             role="roles/apigateway.viewer",
-            members=["user:jane@example.com"])
+            members=["user:jane@example.com"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## google\_api\_gateway\_api\_iam\_member
@@ -250,7 +252,8 @@ class ApiIamBinding(pulumi.CustomResource):
             project=google_api_gateway_api["api"]["project"],
             api=google_api_gateway_api["api"]["api_id"],
             role="roles/apigateway.viewer",
-            member="user:jane@example.com")
+            member="user:jane@example.com",
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import
@@ -315,7 +318,8 @@ class ApiIamBinding(pulumi.CustomResource):
         policy = gcp.apigateway.ApiIamPolicy("policy",
             project=google_api_gateway_api["api"]["project"],
             api=google_api_gateway_api["api"]["api_id"],
-            policy_data=admin.policy_data)
+            policy_data=admin.policy_data,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## google\_api\_gateway\_api\_iam\_binding
@@ -328,7 +332,8 @@ class ApiIamBinding(pulumi.CustomResource):
             project=google_api_gateway_api["api"]["project"],
             api=google_api_gateway_api["api"]["api_id"],
             role="roles/apigateway.viewer",
-            members=["user:jane@example.com"])
+            members=["user:jane@example.com"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## google\_api\_gateway\_api\_iam\_member
@@ -341,7 +346,8 @@ class ApiIamBinding(pulumi.CustomResource):
             project=google_api_gateway_api["api"]["project"],
             api=google_api_gateway_api["api"]["api_id"],
             role="roles/apigateway.viewer",
-            member="user:jane@example.com")
+            member="user:jane@example.com",
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import

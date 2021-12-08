@@ -10,6 +10,109 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type InstanceNode struct {
+	// an identifier for the resource with format `projects/{{project}}/locations/{{region}}/instances/{{name}}`
+	Id   *string `pulumi:"id"`
+	Zone *string `pulumi:"zone"`
+}
+
+// InstanceNodeInput is an input type that accepts InstanceNodeArgs and InstanceNodeOutput values.
+// You can construct a concrete instance of `InstanceNodeInput` via:
+//
+//          InstanceNodeArgs{...}
+type InstanceNodeInput interface {
+	pulumi.Input
+
+	ToInstanceNodeOutput() InstanceNodeOutput
+	ToInstanceNodeOutputWithContext(context.Context) InstanceNodeOutput
+}
+
+type InstanceNodeArgs struct {
+	// an identifier for the resource with format `projects/{{project}}/locations/{{region}}/instances/{{name}}`
+	Id   pulumi.StringPtrInput `pulumi:"id"`
+	Zone pulumi.StringPtrInput `pulumi:"zone"`
+}
+
+func (InstanceNodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceNode)(nil)).Elem()
+}
+
+func (i InstanceNodeArgs) ToInstanceNodeOutput() InstanceNodeOutput {
+	return i.ToInstanceNodeOutputWithContext(context.Background())
+}
+
+func (i InstanceNodeArgs) ToInstanceNodeOutputWithContext(ctx context.Context) InstanceNodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNodeOutput)
+}
+
+// InstanceNodeArrayInput is an input type that accepts InstanceNodeArray and InstanceNodeArrayOutput values.
+// You can construct a concrete instance of `InstanceNodeArrayInput` via:
+//
+//          InstanceNodeArray{ InstanceNodeArgs{...} }
+type InstanceNodeArrayInput interface {
+	pulumi.Input
+
+	ToInstanceNodeArrayOutput() InstanceNodeArrayOutput
+	ToInstanceNodeArrayOutputWithContext(context.Context) InstanceNodeArrayOutput
+}
+
+type InstanceNodeArray []InstanceNodeInput
+
+func (InstanceNodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceNode)(nil)).Elem()
+}
+
+func (i InstanceNodeArray) ToInstanceNodeArrayOutput() InstanceNodeArrayOutput {
+	return i.ToInstanceNodeArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceNodeArray) ToInstanceNodeArrayOutputWithContext(ctx context.Context) InstanceNodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNodeArrayOutput)
+}
+
+type InstanceNodeOutput struct{ *pulumi.OutputState }
+
+func (InstanceNodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceNode)(nil)).Elem()
+}
+
+func (o InstanceNodeOutput) ToInstanceNodeOutput() InstanceNodeOutput {
+	return o
+}
+
+func (o InstanceNodeOutput) ToInstanceNodeOutputWithContext(ctx context.Context) InstanceNodeOutput {
+	return o
+}
+
+// an identifier for the resource with format `projects/{{project}}/locations/{{region}}/instances/{{name}}`
+func (o InstanceNodeOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceNode) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceNodeOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceNode) *string { return v.Zone }).(pulumi.StringPtrOutput)
+}
+
+type InstanceNodeArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceNodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceNode)(nil)).Elem()
+}
+
+func (o InstanceNodeArrayOutput) ToInstanceNodeArrayOutput() InstanceNodeArrayOutput {
+	return o
+}
+
+func (o InstanceNodeArrayOutput) ToInstanceNodeArrayOutputWithContext(ctx context.Context) InstanceNodeArrayOutput {
+	return o
+}
+
+func (o InstanceNodeArrayOutput) Index(i pulumi.IntInput) InstanceNodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceNode {
+		return vs[0].([]InstanceNode)[vs[1].(int)]
+	}).(InstanceNodeOutput)
+}
+
 type InstanceServerCaCert struct {
 	Cert            *string `pulumi:"cert"`
 	CreateTime      *string `pulumi:"createTime"`
@@ -126,6 +229,106 @@ func (o InstanceServerCaCertArrayOutput) Index(i pulumi.IntInput) InstanceServer
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceServerCaCert {
 		return vs[0].([]InstanceServerCaCert)[vs[1].(int)]
 	}).(InstanceServerCaCertOutput)
+}
+
+type GetInstanceNode struct {
+	Id   string `pulumi:"id"`
+	Zone string `pulumi:"zone"`
+}
+
+// GetInstanceNodeInput is an input type that accepts GetInstanceNodeArgs and GetInstanceNodeOutput values.
+// You can construct a concrete instance of `GetInstanceNodeInput` via:
+//
+//          GetInstanceNodeArgs{...}
+type GetInstanceNodeInput interface {
+	pulumi.Input
+
+	ToGetInstanceNodeOutput() GetInstanceNodeOutput
+	ToGetInstanceNodeOutputWithContext(context.Context) GetInstanceNodeOutput
+}
+
+type GetInstanceNodeArgs struct {
+	Id   pulumi.StringInput `pulumi:"id"`
+	Zone pulumi.StringInput `pulumi:"zone"`
+}
+
+func (GetInstanceNodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceNode)(nil)).Elem()
+}
+
+func (i GetInstanceNodeArgs) ToGetInstanceNodeOutput() GetInstanceNodeOutput {
+	return i.ToGetInstanceNodeOutputWithContext(context.Background())
+}
+
+func (i GetInstanceNodeArgs) ToGetInstanceNodeOutputWithContext(ctx context.Context) GetInstanceNodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceNodeOutput)
+}
+
+// GetInstanceNodeArrayInput is an input type that accepts GetInstanceNodeArray and GetInstanceNodeArrayOutput values.
+// You can construct a concrete instance of `GetInstanceNodeArrayInput` via:
+//
+//          GetInstanceNodeArray{ GetInstanceNodeArgs{...} }
+type GetInstanceNodeArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceNodeArrayOutput() GetInstanceNodeArrayOutput
+	ToGetInstanceNodeArrayOutputWithContext(context.Context) GetInstanceNodeArrayOutput
+}
+
+type GetInstanceNodeArray []GetInstanceNodeInput
+
+func (GetInstanceNodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceNode)(nil)).Elem()
+}
+
+func (i GetInstanceNodeArray) ToGetInstanceNodeArrayOutput() GetInstanceNodeArrayOutput {
+	return i.ToGetInstanceNodeArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceNodeArray) ToGetInstanceNodeArrayOutputWithContext(ctx context.Context) GetInstanceNodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceNodeArrayOutput)
+}
+
+type GetInstanceNodeOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceNodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceNode)(nil)).Elem()
+}
+
+func (o GetInstanceNodeOutput) ToGetInstanceNodeOutput() GetInstanceNodeOutput {
+	return o
+}
+
+func (o GetInstanceNodeOutput) ToGetInstanceNodeOutputWithContext(ctx context.Context) GetInstanceNodeOutput {
+	return o
+}
+
+func (o GetInstanceNodeOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNode) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceNodeOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNode) string { return v.Zone }).(pulumi.StringOutput)
+}
+
+type GetInstanceNodeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceNodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceNode)(nil)).Elem()
+}
+
+func (o GetInstanceNodeArrayOutput) ToGetInstanceNodeArrayOutput() GetInstanceNodeArrayOutput {
+	return o
+}
+
+func (o GetInstanceNodeArrayOutput) ToGetInstanceNodeArrayOutputWithContext(ctx context.Context) GetInstanceNodeArrayOutput {
+	return o
+}
+
+func (o GetInstanceNodeArrayOutput) Index(i pulumi.IntInput) GetInstanceNodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceNode {
+		return vs[0].([]GetInstanceNode)[vs[1].(int)]
+	}).(GetInstanceNodeOutput)
 }
 
 type GetInstanceServerCaCert struct {
@@ -247,12 +450,20 @@ func (o GetInstanceServerCaCertArrayOutput) Index(i pulumi.IntInput) GetInstance
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNodeInput)(nil)).Elem(), InstanceNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNodeArrayInput)(nil)).Elem(), InstanceNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceServerCaCertInput)(nil)).Elem(), InstanceServerCaCertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceServerCaCertArrayInput)(nil)).Elem(), InstanceServerCaCertArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNodeInput)(nil)).Elem(), GetInstanceNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNodeArrayInput)(nil)).Elem(), GetInstanceNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceServerCaCertInput)(nil)).Elem(), GetInstanceServerCaCertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceServerCaCertArrayInput)(nil)).Elem(), GetInstanceServerCaCertArray{})
+	pulumi.RegisterOutputType(InstanceNodeOutput{})
+	pulumi.RegisterOutputType(InstanceNodeArrayOutput{})
 	pulumi.RegisterOutputType(InstanceServerCaCertOutput{})
 	pulumi.RegisterOutputType(InstanceServerCaCertArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceNodeOutput{})
+	pulumi.RegisterOutputType(GetInstanceNodeArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceServerCaCertOutput{})
 	pulumi.RegisterOutputType(GetInstanceServerCaCertArrayOutput{})
 }

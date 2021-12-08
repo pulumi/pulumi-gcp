@@ -1614,6 +1614,8 @@ class ClusterNodeConfig(dict):
             suggest = "machine_type"
         elif key == "minCpuPlatform":
             suggest = "min_cpu_platform"
+        elif key == "nodeGroup":
+            suggest = "node_group"
         elif key == "oauthScopes":
             suggest = "oauth_scopes"
         elif key == "sandboxConfig":
@@ -1651,11 +1653,13 @@ class ClusterNodeConfig(dict):
                  machine_type: Optional[str] = None,
                  metadata: Optional[Mapping[str, str]] = None,
                  min_cpu_platform: Optional[str] = None,
+                 node_group: Optional[str] = None,
                  oauth_scopes: Optional[Sequence[str]] = None,
                  preemptible: Optional[bool] = None,
                  sandbox_config: Optional['outputs.ClusterNodeConfigSandboxConfig'] = None,
                  service_account: Optional[str] = None,
                  shielded_instance_config: Optional['outputs.ClusterNodeConfigShieldedInstanceConfig'] = None,
+                 spot: Optional[bool] = None,
                  tags: Optional[Sequence[str]] = None,
                  taints: Optional[Sequence['outputs.ClusterNodeConfigTaint']] = None,
                  workload_metadata_config: Optional['outputs.ClusterNodeConfigWorkloadMetadataConfig'] = None):
@@ -1697,17 +1701,22 @@ class ClusterNodeConfig(dict):
                values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
                [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
                for more information.
+        :param str node_group: Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on [sole tenant nodes](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes).
         :param Sequence[str] oauth_scopes: The set of Google API scopes to be made available
                on all of the node VMs under the "default" service account.
                Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
         :param bool preemptible: A boolean that represents whether or not the underlying node VMs
                are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
                for more information. Defaults to false.
-        :param 'ClusterNodeConfigSandboxConfigArgs' sandbox_config: [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
+        :param 'ClusterNodeConfigSandboxConfigArgs' sandbox_config: ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
+               >>>>>>> v4.3.0
                Structure is documented below.
         :param str service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
         :param 'ClusterNodeConfigShieldedInstanceConfigArgs' shielded_instance_config: Shielded Instance options. Structure is documented below.
+        :param bool spot: ) A boolean 
+               that represents whether the underlying node VMs are spot. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
+               for more information. Defaults to false.
         :param Sequence[str] tags: The list of instance tags applied to all nodes. Tags are used to identify
                valid sources or targets for network firewalls.
         :param Sequence['ClusterNodeConfigTaintArgs'] taints: A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
@@ -1749,6 +1758,8 @@ class ClusterNodeConfig(dict):
             pulumi.set(__self__, "metadata", metadata)
         if min_cpu_platform is not None:
             pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
+        if node_group is not None:
+            pulumi.set(__self__, "node_group", node_group)
         if oauth_scopes is not None:
             pulumi.set(__self__, "oauth_scopes", oauth_scopes)
         if preemptible is not None:
@@ -1759,6 +1770,8 @@ class ClusterNodeConfig(dict):
             pulumi.set(__self__, "service_account", service_account)
         if shielded_instance_config is not None:
             pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
+        if spot is not None:
+            pulumi.set(__self__, "spot", spot)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if taints is not None:
@@ -1902,6 +1915,14 @@ class ClusterNodeConfig(dict):
         return pulumi.get(self, "min_cpu_platform")
 
     @property
+    @pulumi.getter(name="nodeGroup")
+    def node_group(self) -> Optional[str]:
+        """
+        Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on [sole tenant nodes](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes).
+        """
+        return pulumi.get(self, "node_group")
+
+    @property
     @pulumi.getter(name="oauthScopes")
     def oauth_scopes(self) -> Optional[Sequence[str]]:
         """
@@ -1925,7 +1946,8 @@ class ClusterNodeConfig(dict):
     @pulumi.getter(name="sandboxConfig")
     def sandbox_config(self) -> Optional['outputs.ClusterNodeConfigSandboxConfig']:
         """
-        [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
+        ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
+        >>>>>>> v4.3.0
         Structure is documented below.
         """
         return pulumi.get(self, "sandbox_config")
@@ -1946,6 +1968,16 @@ class ClusterNodeConfig(dict):
         Shielded Instance options. Structure is documented below.
         """
         return pulumi.get(self, "shielded_instance_config")
+
+    @property
+    @pulumi.getter
+    def spot(self) -> Optional[bool]:
+        """
+        ) A boolean 
+        that represents whether the underlying node VMs are spot. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
+        for more information. Defaults to false.
+        """
+        return pulumi.get(self, "spot")
 
     @property
     @pulumi.getter
@@ -2716,6 +2748,8 @@ class ClusterNodePoolNodeConfig(dict):
             suggest = "machine_type"
         elif key == "minCpuPlatform":
             suggest = "min_cpu_platform"
+        elif key == "nodeGroup":
+            suggest = "node_group"
         elif key == "oauthScopes":
             suggest = "oauth_scopes"
         elif key == "sandboxConfig":
@@ -2753,11 +2787,13 @@ class ClusterNodePoolNodeConfig(dict):
                  machine_type: Optional[str] = None,
                  metadata: Optional[Mapping[str, str]] = None,
                  min_cpu_platform: Optional[str] = None,
+                 node_group: Optional[str] = None,
                  oauth_scopes: Optional[Sequence[str]] = None,
                  preemptible: Optional[bool] = None,
                  sandbox_config: Optional['outputs.ClusterNodePoolNodeConfigSandboxConfig'] = None,
                  service_account: Optional[str] = None,
                  shielded_instance_config: Optional['outputs.ClusterNodePoolNodeConfigShieldedInstanceConfig'] = None,
+                 spot: Optional[bool] = None,
                  tags: Optional[Sequence[str]] = None,
                  taints: Optional[Sequence['outputs.ClusterNodePoolNodeConfigTaint']] = None,
                  workload_metadata_config: Optional['outputs.ClusterNodePoolNodeConfigWorkloadMetadataConfig'] = None):
@@ -2799,17 +2835,22 @@ class ClusterNodePoolNodeConfig(dict):
                values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
                [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
                for more information.
+        :param str node_group: Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on [sole tenant nodes](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes).
         :param Sequence[str] oauth_scopes: The set of Google API scopes to be made available
                on all of the node VMs under the "default" service account.
                Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
         :param bool preemptible: A boolean that represents whether or not the underlying node VMs
                are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
                for more information. Defaults to false.
-        :param 'ClusterNodePoolNodeConfigSandboxConfigArgs' sandbox_config: [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
+        :param 'ClusterNodePoolNodeConfigSandboxConfigArgs' sandbox_config: ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
+               >>>>>>> v4.3.0
                Structure is documented below.
         :param str service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
         :param 'ClusterNodePoolNodeConfigShieldedInstanceConfigArgs' shielded_instance_config: Shielded Instance options. Structure is documented below.
+        :param bool spot: ) A boolean 
+               that represents whether the underlying node VMs are spot. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
+               for more information. Defaults to false.
         :param Sequence[str] tags: The list of instance tags applied to all nodes. Tags are used to identify
                valid sources or targets for network firewalls.
         :param Sequence['ClusterNodePoolNodeConfigTaintArgs'] taints: A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
@@ -2851,6 +2892,8 @@ class ClusterNodePoolNodeConfig(dict):
             pulumi.set(__self__, "metadata", metadata)
         if min_cpu_platform is not None:
             pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
+        if node_group is not None:
+            pulumi.set(__self__, "node_group", node_group)
         if oauth_scopes is not None:
             pulumi.set(__self__, "oauth_scopes", oauth_scopes)
         if preemptible is not None:
@@ -2861,6 +2904,8 @@ class ClusterNodePoolNodeConfig(dict):
             pulumi.set(__self__, "service_account", service_account)
         if shielded_instance_config is not None:
             pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
+        if spot is not None:
+            pulumi.set(__self__, "spot", spot)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if taints is not None:
@@ -3004,6 +3049,14 @@ class ClusterNodePoolNodeConfig(dict):
         return pulumi.get(self, "min_cpu_platform")
 
     @property
+    @pulumi.getter(name="nodeGroup")
+    def node_group(self) -> Optional[str]:
+        """
+        Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on [sole tenant nodes](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes).
+        """
+        return pulumi.get(self, "node_group")
+
+    @property
     @pulumi.getter(name="oauthScopes")
     def oauth_scopes(self) -> Optional[Sequence[str]]:
         """
@@ -3027,7 +3080,8 @@ class ClusterNodePoolNodeConfig(dict):
     @pulumi.getter(name="sandboxConfig")
     def sandbox_config(self) -> Optional['outputs.ClusterNodePoolNodeConfigSandboxConfig']:
         """
-        [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
+        ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
+        >>>>>>> v4.3.0
         Structure is documented below.
         """
         return pulumi.get(self, "sandbox_config")
@@ -3048,6 +3102,16 @@ class ClusterNodePoolNodeConfig(dict):
         Shielded Instance options. Structure is documented below.
         """
         return pulumi.get(self, "shielded_instance_config")
+
+    @property
+    @pulumi.getter
+    def spot(self) -> Optional[bool]:
+        """
+        ) A boolean 
+        that represents whether the underlying node VMs are spot. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
+        for more information. Defaults to false.
+        """
+        return pulumi.get(self, "spot")
 
     @property
     @pulumi.getter
@@ -4085,6 +4149,8 @@ class NodePoolNodeConfig(dict):
             suggest = "machine_type"
         elif key == "minCpuPlatform":
             suggest = "min_cpu_platform"
+        elif key == "nodeGroup":
+            suggest = "node_group"
         elif key == "oauthScopes":
             suggest = "oauth_scopes"
         elif key == "sandboxConfig":
@@ -4122,11 +4188,13 @@ class NodePoolNodeConfig(dict):
                  machine_type: Optional[str] = None,
                  metadata: Optional[Mapping[str, str]] = None,
                  min_cpu_platform: Optional[str] = None,
+                 node_group: Optional[str] = None,
                  oauth_scopes: Optional[Sequence[str]] = None,
                  preemptible: Optional[bool] = None,
                  sandbox_config: Optional['outputs.NodePoolNodeConfigSandboxConfig'] = None,
                  service_account: Optional[str] = None,
                  shielded_instance_config: Optional['outputs.NodePoolNodeConfigShieldedInstanceConfig'] = None,
+                 spot: Optional[bool] = None,
                  tags: Optional[Sequence[str]] = None,
                  taints: Optional[Sequence['outputs.NodePoolNodeConfigTaint']] = None,
                  workload_metadata_config: Optional['outputs.NodePoolNodeConfigWorkloadMetadataConfig'] = None):
@@ -4158,6 +4226,8 @@ class NodePoolNodeConfig(dict):
             pulumi.set(__self__, "metadata", metadata)
         if min_cpu_platform is not None:
             pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
+        if node_group is not None:
+            pulumi.set(__self__, "node_group", node_group)
         if oauth_scopes is not None:
             pulumi.set(__self__, "oauth_scopes", oauth_scopes)
         if preemptible is not None:
@@ -4168,6 +4238,8 @@ class NodePoolNodeConfig(dict):
             pulumi.set(__self__, "service_account", service_account)
         if shielded_instance_config is not None:
             pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
+        if spot is not None:
+            pulumi.set(__self__, "spot", spot)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if taints is not None:
@@ -4246,6 +4318,11 @@ class NodePoolNodeConfig(dict):
         return pulumi.get(self, "min_cpu_platform")
 
     @property
+    @pulumi.getter(name="nodeGroup")
+    def node_group(self) -> Optional[str]:
+        return pulumi.get(self, "node_group")
+
+    @property
     @pulumi.getter(name="oauthScopes")
     def oauth_scopes(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "oauth_scopes")
@@ -4269,6 +4346,11 @@ class NodePoolNodeConfig(dict):
     @pulumi.getter(name="shieldedInstanceConfig")
     def shielded_instance_config(self) -> Optional['outputs.NodePoolNodeConfigShieldedInstanceConfig']:
         return pulumi.get(self, "shielded_instance_config")
+
+    @property
+    @pulumi.getter
+    def spot(self) -> Optional[bool]:
+        return pulumi.get(self, "spot")
 
     @property
     @pulumi.getter
@@ -5229,11 +5311,13 @@ class GetClusterNodeConfigResult(dict):
                  machine_type: str,
                  metadata: Mapping[str, str],
                  min_cpu_platform: str,
+                 node_group: str,
                  oauth_scopes: Sequence[str],
                  preemptible: bool,
                  sandbox_configs: Sequence['outputs.GetClusterNodeConfigSandboxConfigResult'],
                  service_account: str,
                  shielded_instance_configs: Sequence['outputs.GetClusterNodeConfigShieldedInstanceConfigResult'],
+                 spot: bool,
                  tags: Sequence[str],
                  taints: Sequence['outputs.GetClusterNodeConfigTaintResult'],
                  workload_metadata_configs: Sequence['outputs.GetClusterNodeConfigWorkloadMetadataConfigResult']):
@@ -5251,11 +5335,13 @@ class GetClusterNodeConfigResult(dict):
         pulumi.set(__self__, "machine_type", machine_type)
         pulumi.set(__self__, "metadata", metadata)
         pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
+        pulumi.set(__self__, "node_group", node_group)
         pulumi.set(__self__, "oauth_scopes", oauth_scopes)
         pulumi.set(__self__, "preemptible", preemptible)
         pulumi.set(__self__, "sandbox_configs", sandbox_configs)
         pulumi.set(__self__, "service_account", service_account)
         pulumi.set(__self__, "shielded_instance_configs", shielded_instance_configs)
+        pulumi.set(__self__, "spot", spot)
         pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "taints", taints)
         pulumi.set(__self__, "workload_metadata_configs", workload_metadata_configs)
@@ -5331,6 +5417,11 @@ class GetClusterNodeConfigResult(dict):
         return pulumi.get(self, "min_cpu_platform")
 
     @property
+    @pulumi.getter(name="nodeGroup")
+    def node_group(self) -> str:
+        return pulumi.get(self, "node_group")
+
+    @property
     @pulumi.getter(name="oauthScopes")
     def oauth_scopes(self) -> Sequence[str]:
         return pulumi.get(self, "oauth_scopes")
@@ -5354,6 +5445,11 @@ class GetClusterNodeConfigResult(dict):
     @pulumi.getter(name="shieldedInstanceConfigs")
     def shielded_instance_configs(self) -> Sequence['outputs.GetClusterNodeConfigShieldedInstanceConfigResult']:
         return pulumi.get(self, "shielded_instance_configs")
+
+    @property
+    @pulumi.getter
+    def spot(self) -> bool:
+        return pulumi.get(self, "spot")
 
     @property
     @pulumi.getter
@@ -5718,11 +5814,13 @@ class GetClusterNodePoolNodeConfigResult(dict):
                  machine_type: str,
                  metadata: Mapping[str, str],
                  min_cpu_platform: str,
+                 node_group: str,
                  oauth_scopes: Sequence[str],
                  preemptible: bool,
                  sandbox_configs: Sequence['outputs.GetClusterNodePoolNodeConfigSandboxConfigResult'],
                  service_account: str,
                  shielded_instance_configs: Sequence['outputs.GetClusterNodePoolNodeConfigShieldedInstanceConfigResult'],
+                 spot: bool,
                  tags: Sequence[str],
                  taints: Sequence['outputs.GetClusterNodePoolNodeConfigTaintResult'],
                  workload_metadata_configs: Sequence['outputs.GetClusterNodePoolNodeConfigWorkloadMetadataConfigResult']):
@@ -5740,11 +5838,13 @@ class GetClusterNodePoolNodeConfigResult(dict):
         pulumi.set(__self__, "machine_type", machine_type)
         pulumi.set(__self__, "metadata", metadata)
         pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
+        pulumi.set(__self__, "node_group", node_group)
         pulumi.set(__self__, "oauth_scopes", oauth_scopes)
         pulumi.set(__self__, "preemptible", preemptible)
         pulumi.set(__self__, "sandbox_configs", sandbox_configs)
         pulumi.set(__self__, "service_account", service_account)
         pulumi.set(__self__, "shielded_instance_configs", shielded_instance_configs)
+        pulumi.set(__self__, "spot", spot)
         pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "taints", taints)
         pulumi.set(__self__, "workload_metadata_configs", workload_metadata_configs)
@@ -5820,6 +5920,11 @@ class GetClusterNodePoolNodeConfigResult(dict):
         return pulumi.get(self, "min_cpu_platform")
 
     @property
+    @pulumi.getter(name="nodeGroup")
+    def node_group(self) -> str:
+        return pulumi.get(self, "node_group")
+
+    @property
     @pulumi.getter(name="oauthScopes")
     def oauth_scopes(self) -> Sequence[str]:
         return pulumi.get(self, "oauth_scopes")
@@ -5843,6 +5948,11 @@ class GetClusterNodePoolNodeConfigResult(dict):
     @pulumi.getter(name="shieldedInstanceConfigs")
     def shielded_instance_configs(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigShieldedInstanceConfigResult']:
         return pulumi.get(self, "shielded_instance_configs")
+
+    @property
+    @pulumi.getter
+    def spot(self) -> bool:
+        return pulumi.get(self, "spot")
 
     @property
     @pulumi.getter

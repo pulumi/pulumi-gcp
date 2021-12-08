@@ -36,40 +36,33 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "debian-9"
-// 		opt1 := "debian-cloud"
-// 		debian9, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-// 			Family:  &opt0,
-// 			Project: &opt1,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
 // 		foobarInstanceTemplate, err := compute.NewInstanceTemplate(ctx, "foobarInstanceTemplate", &compute.InstanceTemplateArgs{
-// 			MachineType:  pulumi.String("e2-medium"),
-// 			CanIpForward: pulumi.Bool(false),
-// 			Tags: pulumi.StringArray{
-// 				pulumi.String("foo"),
-// 				pulumi.String("bar"),
-// 			},
+// 			MachineType: pulumi.String("e2-standard-4"),
 // 			Disks: compute.InstanceTemplateDiskArray{
 // 				&compute.InstanceTemplateDiskArgs{
-// 					SourceImage: pulumi.String(debian9.Id),
+// 					SourceImage: pulumi.String("debian-cloud/debian-9"),
+// 					DiskSizeGb:  pulumi.Int(250),
 // 				},
 // 			},
 // 			NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
 // 				&compute.InstanceTemplateNetworkInterfaceArgs{
 // 					Network: pulumi.String("default"),
+// 					AccessConfigs: compute.InstanceTemplateNetworkInterfaceAccessConfigArray{
+// 						&compute.InstanceTemplateNetworkInterfaceAccessConfigArgs{
+// 							NetworkTier: pulumi.String("PREMIUM"),
+// 						},
+// 					},
 // 				},
-// 			},
-// 			Metadata: pulumi.AnyMap{
-// 				"foo": pulumi.Any("bar"),
 // 			},
 // 			ServiceAccount: &compute.InstanceTemplateServiceAccountArgs{
 // 				Scopes: pulumi.StringArray{
-// 					pulumi.String("userinfo-email"),
-// 					pulumi.String("compute-ro"),
-// 					pulumi.String("storage-ro"),
+// 					pulumi.String("https://www.googleapis.com/auth/devstorage.read_only"),
+// 					pulumi.String("https://www.googleapis.com/auth/logging.write"),
+// 					pulumi.String("https://www.googleapis.com/auth/monitoring.write"),
+// 					pulumi.String("https://www.googleapis.com/auth/pubsub"),
+// 					pulumi.String("https://www.googleapis.com/auth/service.management.readonly"),
+// 					pulumi.String("https://www.googleapis.com/auth/servicecontrol"),
+// 					pulumi.String("https://www.googleapis.com/auth/trace.append"),
 // 				},
 // 			},
 // 		})
@@ -108,6 +101,15 @@ import (
 // 				},
 // 			},
 // 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt0 := "debian-9"
+// 		opt1 := "debian-cloud"
+// 		_, err = compute.LookupImage(ctx, &compute.LookupImageArgs{
+// 			Family:  &opt0,
+// 			Project: &opt1,
+// 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}

@@ -289,7 +289,7 @@ type Instance struct {
 	// The name of the subnet that this instance is in.
 	// Format: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}
 	Subnet pulumi.StringOutput `pulumi:"subnet"`
-	// The Compute Engine tags to add to runtime.
+	// The Compute Engine tags to add to instance.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Instance update time.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -433,7 +433,7 @@ type instanceState struct {
 	// The name of the subnet that this instance is in.
 	// Format: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}
 	Subnet *string `pulumi:"subnet"`
-	// The Compute Engine tags to add to runtime.
+	// The Compute Engine tags to add to instance.
 	Tags []string `pulumi:"tags"`
 	// Instance update time.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -543,7 +543,7 @@ type InstanceState struct {
 	// The name of the subnet that this instance is in.
 	// Format: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}
 	Subnet pulumi.StringPtrInput
-	// The Compute Engine tags to add to runtime.
+	// The Compute Engine tags to add to instance.
 	Tags pulumi.StringArrayInput
 	// Instance update time.
 	UpdateTime pulumi.StringPtrInput
@@ -653,7 +653,7 @@ type instanceArgs struct {
 	// The name of the subnet that this instance is in.
 	// Format: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}
 	Subnet *string `pulumi:"subnet"`
-	// The Compute Engine tags to add to runtime.
+	// The Compute Engine tags to add to instance.
 	Tags []string `pulumi:"tags"`
 	// Instance update time.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -760,7 +760,7 @@ type InstanceArgs struct {
 	// The name of the subnet that this instance is in.
 	// Format: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}
 	Subnet pulumi.StringPtrInput
-	// The Compute Engine tags to add to runtime.
+	// The Compute Engine tags to add to instance.
 	Tags pulumi.StringArrayInput
 	// Instance update time.
 	UpdateTime pulumi.StringPtrInput

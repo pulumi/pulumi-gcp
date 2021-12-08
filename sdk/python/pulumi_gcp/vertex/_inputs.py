@@ -13,6 +13,8 @@ __all__ = [
     'AiFeatureStoreEntityTypeMonitoringConfigArgs',
     'AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs',
     'AiFeatureStoreOnlineServingConfigArgs',
+    'AiMetadataStoreEncryptionSpecArgs',
+    'AiMetadataStoreStateArgs',
 ]
 
 @pulumi.input_type
@@ -126,5 +128,47 @@ class AiFeatureStoreOnlineServingConfigArgs:
     @fixed_node_count.setter
     def fixed_node_count(self, value: pulumi.Input[int]):
         pulumi.set(self, "fixed_node_count", value)
+
+
+@pulumi.input_type
+class AiMetadataStoreEncryptionSpecArgs:
+    def __init__(__self__, *,
+                 kms_key_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] kms_key_name: Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
+               Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
+        """
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
+        Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_name", value)
+
+
+@pulumi.input_type
+class AiMetadataStoreStateArgs:
+    def __init__(__self__, *,
+                 disk_utilization_bytes: Optional[pulumi.Input[str]] = None):
+        if disk_utilization_bytes is not None:
+            pulumi.set(__self__, "disk_utilization_bytes", disk_utilization_bytes)
+
+    @property
+    @pulumi.getter(name="diskUtilizationBytes")
+    def disk_utilization_bytes(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "disk_utilization_bytes")
+
+    @disk_utilization_bytes.setter
+    def disk_utilization_bytes(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_utilization_bytes", value)
 
 

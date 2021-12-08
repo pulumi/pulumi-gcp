@@ -152,6 +152,7 @@ type Repository struct {
 	// - PYTHON ([Preview](https://cloud.google.com/products#product-launch-stages))
 	// - APT ([alpha](https://cloud.google.com/products#product-launch-stages))
 	// - YUM ([alpha](https://cloud.google.com/products#product-launch-stages))
+	// - HELM ([alpha](https://cloud.google.com/products#product-launch-stages))
 	Format pulumi.StringOutput `pulumi:"format"`
 	// The Cloud KMS resource name of the customer managed encryption key that’s
 	// used to encrypt the contents of the Repository. Has the form:
@@ -225,6 +226,7 @@ type repositoryState struct {
 	// - PYTHON ([Preview](https://cloud.google.com/products#product-launch-stages))
 	// - APT ([alpha](https://cloud.google.com/products#product-launch-stages))
 	// - YUM ([alpha](https://cloud.google.com/products#product-launch-stages))
+	// - HELM ([alpha](https://cloud.google.com/products#product-launch-stages))
 	Format *string `pulumi:"format"`
 	// The Cloud KMS resource name of the customer managed encryption key that’s
 	// used to encrypt the contents of the Repository. Has the form:
@@ -264,6 +266,7 @@ type RepositoryState struct {
 	// - PYTHON ([Preview](https://cloud.google.com/products#product-launch-stages))
 	// - APT ([alpha](https://cloud.google.com/products#product-launch-stages))
 	// - YUM ([alpha](https://cloud.google.com/products#product-launch-stages))
+	// - HELM ([alpha](https://cloud.google.com/products#product-launch-stages))
 	Format pulumi.StringPtrInput
 	// The Cloud KMS resource name of the customer managed encryption key that’s
 	// used to encrypt the contents of the Repository. Has the form:
@@ -305,6 +308,7 @@ type repositoryArgs struct {
 	// - PYTHON ([Preview](https://cloud.google.com/products#product-launch-stages))
 	// - APT ([alpha](https://cloud.google.com/products#product-launch-stages))
 	// - YUM ([alpha](https://cloud.google.com/products#product-launch-stages))
+	// - HELM ([alpha](https://cloud.google.com/products#product-launch-stages))
 	Format string `pulumi:"format"`
 	// The Cloud KMS resource name of the customer managed encryption key that’s
 	// used to encrypt the contents of the Repository. Has the form:
@@ -339,6 +343,7 @@ type RepositoryArgs struct {
 	// - PYTHON ([Preview](https://cloud.google.com/products#product-launch-stages))
 	// - APT ([alpha](https://cloud.google.com/products#product-launch-stages))
 	// - YUM ([alpha](https://cloud.google.com/products#product-launch-stages))
+	// - HELM ([alpha](https://cloud.google.com/products#product-launch-stages))
 	Format pulumi.StringInput
 	// The Cloud KMS resource name of the customer managed encryption key that’s
 	// used to encrypt the contents of the Repository. Has the form:

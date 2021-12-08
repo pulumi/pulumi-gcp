@@ -30,6 +30,8 @@ import * as utilities from "../utilities";
  * const policy = new gcp.datacatalog.PolicyTagIamPolicy("policy", {
  *     policyTag: google_data_catalog_policy_tag.basic_policy_tag.name,
  *     policyData: admin.then(admin => admin.policyData),
+ * }, {
+ *     provider: google_beta,
  * });
  * ```
  *
@@ -43,6 +45,8 @@ import * as utilities from "../utilities";
  *     policyTag: google_data_catalog_policy_tag.basic_policy_tag.name,
  *     role: "roles/viewer",
  *     members: ["user:jane@example.com"],
+ * }, {
+ *     provider: google_beta,
  * });
  * ```
  *
@@ -56,6 +60,8 @@ import * as utilities from "../utilities";
  *     policyTag: google_data_catalog_policy_tag.basic_policy_tag.name,
  *     role: "roles/viewer",
  *     member: "user:jane@example.com",
+ * }, {
+ *     provider: google_beta,
  * });
  * ```
  *

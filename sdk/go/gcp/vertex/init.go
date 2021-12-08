@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AiFeatureStore{}
 	case "gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType":
 		r = &AiFeatureStoreEntityType{}
+	case "gcp:vertex/aiMetadataStore:AiMetadataStore":
+		r = &AiMetadataStore{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -53,6 +55,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"vertex/aiFeatureStoreEntityType",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"vertex/aiMetadataStore",
 		&module{version},
 	)
 }

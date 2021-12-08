@@ -78,12 +78,17 @@ export interface GetInstanceResult {
     readonly locationId: string;
     readonly memorySizeGb: number;
     readonly name: string;
+    readonly nodes: outputs.redis.GetInstanceNode[];
     readonly persistenceIamIdentity: string;
     readonly port: number;
     readonly project?: string;
+    readonly readEndpoint: string;
+    readonly readEndpointPort: number;
+    readonly readReplicasMode: string;
     readonly redisConfigs: {[key: string]: string};
     readonly redisVersion: string;
     readonly region?: string;
+    readonly replicaCount: number;
     readonly reservedIpRange: string;
     readonly serverCaCerts: outputs.redis.GetInstanceServerCaCert[];
     readonly tier: string;

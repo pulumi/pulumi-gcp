@@ -194,7 +194,8 @@ class PolicyTagIamBinding(pulumi.CustomResource):
         )])
         policy = gcp.datacatalog.PolicyTagIamPolicy("policy",
             policy_tag=google_data_catalog_policy_tag["basic_policy_tag"]["name"],
-            policy_data=admin.policy_data)
+            policy_data=admin.policy_data,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## google\_data\_catalog\_policy\_tag\_iam\_binding
@@ -206,7 +207,8 @@ class PolicyTagIamBinding(pulumi.CustomResource):
         binding = gcp.datacatalog.PolicyTagIamBinding("binding",
             policy_tag=google_data_catalog_policy_tag["basic_policy_tag"]["name"],
             role="roles/viewer",
-            members=["user:jane@example.com"])
+            members=["user:jane@example.com"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## google\_data\_catalog\_policy\_tag\_iam\_member
@@ -218,7 +220,8 @@ class PolicyTagIamBinding(pulumi.CustomResource):
         member = gcp.datacatalog.PolicyTagIamMember("member",
             policy_tag=google_data_catalog_policy_tag["basic_policy_tag"]["name"],
             role="roles/viewer",
-            member="user:jane@example.com")
+            member="user:jane@example.com",
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import
@@ -281,7 +284,8 @@ class PolicyTagIamBinding(pulumi.CustomResource):
         )])
         policy = gcp.datacatalog.PolicyTagIamPolicy("policy",
             policy_tag=google_data_catalog_policy_tag["basic_policy_tag"]["name"],
-            policy_data=admin.policy_data)
+            policy_data=admin.policy_data,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## google\_data\_catalog\_policy\_tag\_iam\_binding
@@ -293,7 +297,8 @@ class PolicyTagIamBinding(pulumi.CustomResource):
         binding = gcp.datacatalog.PolicyTagIamBinding("binding",
             policy_tag=google_data_catalog_policy_tag["basic_policy_tag"]["name"],
             role="roles/viewer",
-            members=["user:jane@example.com"])
+            members=["user:jane@example.com"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## google\_data\_catalog\_policy\_tag\_iam\_member
@@ -305,7 +310,8 @@ class PolicyTagIamBinding(pulumi.CustomResource):
         member = gcp.datacatalog.PolicyTagIamMember("member",
             policy_tag=google_data_catalog_policy_tag["basic_policy_tag"]["name"],
             role="roles/viewer",
-            member="user:jane@example.com")
+            member="user:jane@example.com",
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import

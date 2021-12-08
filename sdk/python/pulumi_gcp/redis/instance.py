@@ -25,9 +25,11 @@ class InstanceArgs:
                  location_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 read_replicas_mode: Optional[pulumi.Input[str]] = None,
                  redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  redis_version: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 replica_count: Optional[pulumi.Input[int]] = None,
                  reserved_ip_range: Optional[pulumi.Input[str]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
                  transit_encryption_mode: Optional[pulumi.Input[str]] = None):
@@ -57,6 +59,11 @@ class InstanceArgs:
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] read_replicas_mode: Optional. Read replica mode. Can only be specified when trying to create the instance. If not set, Memorystore Redis
+               backend will default to READ_REPLICAS_DISABLED. - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be
+               provided and the instance cannot scale up or down the number of replicas. - READ_REPLICAS_ENABLED: If enabled, read
+               endpoint will be provided and the instance can scale up and down the number of replicas. Default value:
+               "READ_REPLICAS_DISABLED" Possible values: ["READ_REPLICAS_DISABLED", "READ_REPLICAS_ENABLED"]
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Redis configuration parameters, according to http://redis.io/topics/config.
                Please check Memorystore documentation for the list of supported parameters:
                https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
@@ -64,6 +71,9 @@ class InstanceArgs:
                version will be used. Please check the API documentation linked
                at the top for the latest valid values.
         :param pulumi.Input[str] region: The name of the Redis region of the instance.
+        :param pulumi.Input[int] replica_count: Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and
+               defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default
+               is 1. The valid value for basic tier is 0 and the default is also 0.
         :param pulumi.Input[str] reserved_ip_range: The CIDR range of internal addresses that are reserved for this
                instance. If not provided, the service will choose an unused /29
                block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be
@@ -75,7 +85,7 @@ class InstanceArgs:
                Default value is `BASIC`.
                Possible values are `BASIC` and `STANDARD_HA`.
         :param pulumi.Input[str] transit_encryption_mode: The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
-               - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentcation
+               - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
                Default value is `DISABLED`.
                Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
         """
@@ -98,12 +108,16 @@ class InstanceArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if read_replicas_mode is not None:
+            pulumi.set(__self__, "read_replicas_mode", read_replicas_mode)
         if redis_configs is not None:
             pulumi.set(__self__, "redis_configs", redis_configs)
         if redis_version is not None:
             pulumi.set(__self__, "redis_version", redis_version)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if replica_count is not None:
+            pulumi.set(__self__, "replica_count", replica_count)
         if reserved_ip_range is not None:
             pulumi.set(__self__, "reserved_ip_range", reserved_ip_range)
         if tier is not None:
@@ -246,6 +260,22 @@ class InstanceArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="readReplicasMode")
+    def read_replicas_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Read replica mode. Can only be specified when trying to create the instance. If not set, Memorystore Redis
+        backend will default to READ_REPLICAS_DISABLED. - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be
+        provided and the instance cannot scale up or down the number of replicas. - READ_REPLICAS_ENABLED: If enabled, read
+        endpoint will be provided and the instance can scale up and down the number of replicas. Default value:
+        "READ_REPLICAS_DISABLED" Possible values: ["READ_REPLICAS_DISABLED", "READ_REPLICAS_ENABLED"]
+        """
+        return pulumi.get(self, "read_replicas_mode")
+
+    @read_replicas_mode.setter
+    def read_replicas_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "read_replicas_mode", value)
+
+    @property
     @pulumi.getter(name="redisConfigs")
     def redis_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -286,6 +316,20 @@ class InstanceArgs:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="replicaCount")
+    def replica_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and
+        defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default
+        is 1. The valid value for basic tier is 0 and the default is also 0.
+        """
+        return pulumi.get(self, "replica_count")
+
+    @replica_count.setter
+    def replica_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "replica_count", value)
+
+    @property
     @pulumi.getter(name="reservedIpRange")
     def reserved_ip_range(self) -> Optional[pulumi.Input[str]]:
         """
@@ -322,7 +366,7 @@ class InstanceArgs:
     def transit_encryption_mode(self) -> Optional[pulumi.Input[str]]:
         """
         The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
-        - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentcation
+        - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
         Default value is `DISABLED`.
         Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
         """
@@ -349,12 +393,17 @@ class _InstanceState:
                  location_id: Optional[pulumi.Input[str]] = None,
                  memory_size_gb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNodeArgs']]]] = None,
                  persistence_iam_identity: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 read_endpoint: Optional[pulumi.Input[str]] = None,
+                 read_endpoint_port: Optional[pulumi.Input[int]] = None,
+                 read_replicas_mode: Optional[pulumi.Input[str]] = None,
                  redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  redis_version: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 replica_count: Optional[pulumi.Input[int]] = None,
                  reserved_ip_range: Optional[pulumi.Input[str]] = None,
                  server_ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceServerCaCertArgs']]]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
@@ -389,12 +438,23 @@ class _InstanceState:
                be different from [locationId].
         :param pulumi.Input[int] memory_size_gb: Redis memory size in GiB.
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceNodeArgs']]] nodes: Output only. Info per node.
         :param pulumi.Input[str] persistence_iam_identity: Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
                "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
                operation.
         :param pulumi.Input[int] port: The port number of the exposed Redis endpoint.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] read_endpoint: Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy
+               replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write
+               requests must target 'host'.
+        :param pulumi.Input[int] read_endpoint_port: Output only. The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target
+               'port'.
+        :param pulumi.Input[str] read_replicas_mode: Optional. Read replica mode. Can only be specified when trying to create the instance. If not set, Memorystore Redis
+               backend will default to READ_REPLICAS_DISABLED. - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be
+               provided and the instance cannot scale up or down the number of replicas. - READ_REPLICAS_ENABLED: If enabled, read
+               endpoint will be provided and the instance can scale up and down the number of replicas. Default value:
+               "READ_REPLICAS_DISABLED" Possible values: ["READ_REPLICAS_DISABLED", "READ_REPLICAS_ENABLED"]
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Redis configuration parameters, according to http://redis.io/topics/config.
                Please check Memorystore documentation for the list of supported parameters:
                https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
@@ -402,6 +462,9 @@ class _InstanceState:
                version will be used. Please check the API documentation linked
                at the top for the latest valid values.
         :param pulumi.Input[str] region: The name of the Redis region of the instance.
+        :param pulumi.Input[int] replica_count: Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and
+               defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default
+               is 1. The valid value for basic tier is 0 and the default is also 0.
         :param pulumi.Input[str] reserved_ip_range: The CIDR range of internal addresses that are reserved for this
                instance. If not provided, the service will choose an unused /29
                block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be
@@ -414,7 +477,7 @@ class _InstanceState:
                Default value is `BASIC`.
                Possible values are `BASIC` and `STANDARD_HA`.
         :param pulumi.Input[str] transit_encryption_mode: The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
-               - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentcation
+               - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
                Default value is `DISABLED`.
                Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
         """
@@ -444,18 +507,28 @@ class _InstanceState:
             pulumi.set(__self__, "memory_size_gb", memory_size_gb)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if nodes is not None:
+            pulumi.set(__self__, "nodes", nodes)
         if persistence_iam_identity is not None:
             pulumi.set(__self__, "persistence_iam_identity", persistence_iam_identity)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if read_endpoint is not None:
+            pulumi.set(__self__, "read_endpoint", read_endpoint)
+        if read_endpoint_port is not None:
+            pulumi.set(__self__, "read_endpoint_port", read_endpoint_port)
+        if read_replicas_mode is not None:
+            pulumi.set(__self__, "read_replicas_mode", read_replicas_mode)
         if redis_configs is not None:
             pulumi.set(__self__, "redis_configs", redis_configs)
         if redis_version is not None:
             pulumi.set(__self__, "redis_version", redis_version)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if replica_count is not None:
+            pulumi.set(__self__, "replica_count", replica_count)
         if reserved_ip_range is not None:
             pulumi.set(__self__, "reserved_ip_range", reserved_ip_range)
         if server_ca_certs is not None:
@@ -637,6 +710,18 @@ class _InstanceState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter
+    def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNodeArgs']]]]:
+        """
+        Output only. Info per node.
+        """
+        return pulumi.get(self, "nodes")
+
+    @nodes.setter
+    def nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNodeArgs']]]]):
+        pulumi.set(self, "nodes", value)
+
+    @property
     @pulumi.getter(name="persistenceIamIdentity")
     def persistence_iam_identity(self) -> Optional[pulumi.Input[str]]:
         """
@@ -674,6 +759,49 @@ class _InstanceState:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="readEndpoint")
+    def read_endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy
+        replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write
+        requests must target 'host'.
+        """
+        return pulumi.get(self, "read_endpoint")
+
+    @read_endpoint.setter
+    def read_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "read_endpoint", value)
+
+    @property
+    @pulumi.getter(name="readEndpointPort")
+    def read_endpoint_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Output only. The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target
+        'port'.
+        """
+        return pulumi.get(self, "read_endpoint_port")
+
+    @read_endpoint_port.setter
+    def read_endpoint_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "read_endpoint_port", value)
+
+    @property
+    @pulumi.getter(name="readReplicasMode")
+    def read_replicas_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Read replica mode. Can only be specified when trying to create the instance. If not set, Memorystore Redis
+        backend will default to READ_REPLICAS_DISABLED. - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be
+        provided and the instance cannot scale up or down the number of replicas. - READ_REPLICAS_ENABLED: If enabled, read
+        endpoint will be provided and the instance can scale up and down the number of replicas. Default value:
+        "READ_REPLICAS_DISABLED" Possible values: ["READ_REPLICAS_DISABLED", "READ_REPLICAS_ENABLED"]
+        """
+        return pulumi.get(self, "read_replicas_mode")
+
+    @read_replicas_mode.setter
+    def read_replicas_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "read_replicas_mode", value)
 
     @property
     @pulumi.getter(name="redisConfigs")
@@ -714,6 +842,20 @@ class _InstanceState:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="replicaCount")
+    def replica_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and
+        defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default
+        is 1. The valid value for basic tier is 0 and the default is also 0.
+        """
+        return pulumi.get(self, "replica_count")
+
+    @replica_count.setter
+    def replica_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "replica_count", value)
 
     @property
     @pulumi.getter(name="reservedIpRange")
@@ -764,7 +906,7 @@ class _InstanceState:
     def transit_encryption_mode(self) -> Optional[pulumi.Input[str]]:
         """
         The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
-        - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentcation
+        - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
         Default value is `DISABLED`.
         Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
         """
@@ -790,9 +932,11 @@ class Instance(pulumi.CustomResource):
                  memory_size_gb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 read_replicas_mode: Optional[pulumi.Input[str]] = None,
                  redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  redis_version: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 replica_count: Optional[pulumi.Input[int]] = None,
                  reserved_ip_range: Optional[pulumi.Input[str]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
                  transit_encryption_mode: Optional[pulumi.Input[str]] = None,
@@ -863,6 +1007,30 @@ class Instance(pulumi.CustomResource):
             display_name="Test Instance",
             opts=pulumi.ResourceOptions(depends_on=[private_service_connection]))
         ```
+        ### Redis Instance Mrr
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        redis_network = gcp.compute.get_network(name="redis-test-network")
+        cache = gcp.redis.Instance("cache",
+            tier="STANDARD_HA",
+            memory_size_gb=5,
+            location_id="us-central1-a",
+            alternative_location_id="us-central1-f",
+            authorized_network=redis_network.id,
+            redis_version="REDIS_6_X",
+            display_name="Terraform Test Instance",
+            reserved_ip_range="192.168.0.0/28",
+            replica_count=5,
+            read_replicas_mode="READ_REPLICAS_ENABLED",
+            labels={
+                "my_key": "my_val",
+                "other_key": "other_val",
+            },
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -910,6 +1078,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] read_replicas_mode: Optional. Read replica mode. Can only be specified when trying to create the instance. If not set, Memorystore Redis
+               backend will default to READ_REPLICAS_DISABLED. - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be
+               provided and the instance cannot scale up or down the number of replicas. - READ_REPLICAS_ENABLED: If enabled, read
+               endpoint will be provided and the instance can scale up and down the number of replicas. Default value:
+               "READ_REPLICAS_DISABLED" Possible values: ["READ_REPLICAS_DISABLED", "READ_REPLICAS_ENABLED"]
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Redis configuration parameters, according to http://redis.io/topics/config.
                Please check Memorystore documentation for the list of supported parameters:
                https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
@@ -917,6 +1090,9 @@ class Instance(pulumi.CustomResource):
                version will be used. Please check the API documentation linked
                at the top for the latest valid values.
         :param pulumi.Input[str] region: The name of the Redis region of the instance.
+        :param pulumi.Input[int] replica_count: Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and
+               defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default
+               is 1. The valid value for basic tier is 0 and the default is also 0.
         :param pulumi.Input[str] reserved_ip_range: The CIDR range of internal addresses that are reserved for this
                instance. If not provided, the service will choose an unused /29
                block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be
@@ -928,7 +1104,7 @@ class Instance(pulumi.CustomResource):
                Default value is `BASIC`.
                Possible values are `BASIC` and `STANDARD_HA`.
         :param pulumi.Input[str] transit_encryption_mode: The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
-               - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentcation
+               - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
                Default value is `DISABLED`.
                Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
         """
@@ -1004,6 +1180,30 @@ class Instance(pulumi.CustomResource):
             display_name="Test Instance",
             opts=pulumi.ResourceOptions(depends_on=[private_service_connection]))
         ```
+        ### Redis Instance Mrr
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        redis_network = gcp.compute.get_network(name="redis-test-network")
+        cache = gcp.redis.Instance("cache",
+            tier="STANDARD_HA",
+            memory_size_gb=5,
+            location_id="us-central1-a",
+            alternative_location_id="us-central1-f",
+            authorized_network=redis_network.id,
+            redis_version="REDIS_6_X",
+            display_name="Terraform Test Instance",
+            reserved_ip_range="192.168.0.0/28",
+            replica_count=5,
+            read_replicas_mode="READ_REPLICAS_ENABLED",
+            labels={
+                "my_key": "my_val",
+                "other_key": "other_val",
+            },
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -1050,9 +1250,11 @@ class Instance(pulumi.CustomResource):
                  memory_size_gb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 read_replicas_mode: Optional[pulumi.Input[str]] = None,
                  redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  redis_version: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 replica_count: Optional[pulumi.Input[int]] = None,
                  reserved_ip_range: Optional[pulumi.Input[str]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
                  transit_encryption_mode: Optional[pulumi.Input[str]] = None,
@@ -1080,9 +1282,11 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["memory_size_gb"] = memory_size_gb
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            __props__.__dict__["read_replicas_mode"] = read_replicas_mode
             __props__.__dict__["redis_configs"] = redis_configs
             __props__.__dict__["redis_version"] = redis_version
             __props__.__dict__["region"] = region
+            __props__.__dict__["replica_count"] = replica_count
             __props__.__dict__["reserved_ip_range"] = reserved_ip_range
             __props__.__dict__["tier"] = tier
             __props__.__dict__["transit_encryption_mode"] = transit_encryption_mode
@@ -1090,8 +1294,11 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["current_location_id"] = None
             __props__.__dict__["host"] = None
+            __props__.__dict__["nodes"] = None
             __props__.__dict__["persistence_iam_identity"] = None
             __props__.__dict__["port"] = None
+            __props__.__dict__["read_endpoint"] = None
+            __props__.__dict__["read_endpoint_port"] = None
             __props__.__dict__["server_ca_certs"] = None
         super(Instance, __self__).__init__(
             'gcp:redis/instance:Instance',
@@ -1116,12 +1323,17 @@ class Instance(pulumi.CustomResource):
             location_id: Optional[pulumi.Input[str]] = None,
             memory_size_gb: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            nodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNodeArgs']]]]] = None,
             persistence_iam_identity: Optional[pulumi.Input[str]] = None,
             port: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            read_endpoint: Optional[pulumi.Input[str]] = None,
+            read_endpoint_port: Optional[pulumi.Input[int]] = None,
+            read_replicas_mode: Optional[pulumi.Input[str]] = None,
             redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             redis_version: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
+            replica_count: Optional[pulumi.Input[int]] = None,
             reserved_ip_range: Optional[pulumi.Input[str]] = None,
             server_ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceServerCaCertArgs']]]]] = None,
             tier: Optional[pulumi.Input[str]] = None,
@@ -1161,12 +1373,23 @@ class Instance(pulumi.CustomResource):
                be different from [locationId].
         :param pulumi.Input[int] memory_size_gb: Redis memory size in GiB.
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNodeArgs']]]] nodes: Output only. Info per node.
         :param pulumi.Input[str] persistence_iam_identity: Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
                "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
                operation.
         :param pulumi.Input[int] port: The port number of the exposed Redis endpoint.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] read_endpoint: Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy
+               replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write
+               requests must target 'host'.
+        :param pulumi.Input[int] read_endpoint_port: Output only. The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target
+               'port'.
+        :param pulumi.Input[str] read_replicas_mode: Optional. Read replica mode. Can only be specified when trying to create the instance. If not set, Memorystore Redis
+               backend will default to READ_REPLICAS_DISABLED. - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be
+               provided and the instance cannot scale up or down the number of replicas. - READ_REPLICAS_ENABLED: If enabled, read
+               endpoint will be provided and the instance can scale up and down the number of replicas. Default value:
+               "READ_REPLICAS_DISABLED" Possible values: ["READ_REPLICAS_DISABLED", "READ_REPLICAS_ENABLED"]
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Redis configuration parameters, according to http://redis.io/topics/config.
                Please check Memorystore documentation for the list of supported parameters:
                https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
@@ -1174,6 +1397,9 @@ class Instance(pulumi.CustomResource):
                version will be used. Please check the API documentation linked
                at the top for the latest valid values.
         :param pulumi.Input[str] region: The name of the Redis region of the instance.
+        :param pulumi.Input[int] replica_count: Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and
+               defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default
+               is 1. The valid value for basic tier is 0 and the default is also 0.
         :param pulumi.Input[str] reserved_ip_range: The CIDR range of internal addresses that are reserved for this
                instance. If not provided, the service will choose an unused /29
                block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be
@@ -1186,7 +1412,7 @@ class Instance(pulumi.CustomResource):
                Default value is `BASIC`.
                Possible values are `BASIC` and `STANDARD_HA`.
         :param pulumi.Input[str] transit_encryption_mode: The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
-               - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentcation
+               - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
                Default value is `DISABLED`.
                Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
         """
@@ -1207,12 +1433,17 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["location_id"] = location_id
         __props__.__dict__["memory_size_gb"] = memory_size_gb
         __props__.__dict__["name"] = name
+        __props__.__dict__["nodes"] = nodes
         __props__.__dict__["persistence_iam_identity"] = persistence_iam_identity
         __props__.__dict__["port"] = port
         __props__.__dict__["project"] = project
+        __props__.__dict__["read_endpoint"] = read_endpoint
+        __props__.__dict__["read_endpoint_port"] = read_endpoint_port
+        __props__.__dict__["read_replicas_mode"] = read_replicas_mode
         __props__.__dict__["redis_configs"] = redis_configs
         __props__.__dict__["redis_version"] = redis_version
         __props__.__dict__["region"] = region
+        __props__.__dict__["replica_count"] = replica_count
         __props__.__dict__["reserved_ip_range"] = reserved_ip_range
         __props__.__dict__["server_ca_certs"] = server_ca_certs
         __props__.__dict__["tier"] = tier
@@ -1339,6 +1570,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter
+    def nodes(self) -> pulumi.Output[Sequence['outputs.InstanceNode']]:
+        """
+        Output only. Info per node.
+        """
+        return pulumi.get(self, "nodes")
+
+    @property
     @pulumi.getter(name="persistenceIamIdentity")
     def persistence_iam_identity(self) -> pulumi.Output[str]:
         """
@@ -1364,6 +1603,37 @@ class Instance(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="readEndpoint")
+    def read_endpoint(self) -> pulumi.Output[str]:
+        """
+        Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy
+        replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write
+        requests must target 'host'.
+        """
+        return pulumi.get(self, "read_endpoint")
+
+    @property
+    @pulumi.getter(name="readEndpointPort")
+    def read_endpoint_port(self) -> pulumi.Output[int]:
+        """
+        Output only. The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target
+        'port'.
+        """
+        return pulumi.get(self, "read_endpoint_port")
+
+    @property
+    @pulumi.getter(name="readReplicasMode")
+    def read_replicas_mode(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. Read replica mode. Can only be specified when trying to create the instance. If not set, Memorystore Redis
+        backend will default to READ_REPLICAS_DISABLED. - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be
+        provided and the instance cannot scale up or down the number of replicas. - READ_REPLICAS_ENABLED: If enabled, read
+        endpoint will be provided and the instance can scale up and down the number of replicas. Default value:
+        "READ_REPLICAS_DISABLED" Possible values: ["READ_REPLICAS_DISABLED", "READ_REPLICAS_ENABLED"]
+        """
+        return pulumi.get(self, "read_replicas_mode")
 
     @property
     @pulumi.getter(name="redisConfigs")
@@ -1392,6 +1662,16 @@ class Instance(pulumi.CustomResource):
         The name of the Redis region of the instance.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="replicaCount")
+    def replica_count(self) -> pulumi.Output[int]:
+        """
+        Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and
+        defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default
+        is 1. The valid value for basic tier is 0 and the default is also 0.
+        """
+        return pulumi.get(self, "replica_count")
 
     @property
     @pulumi.getter(name="reservedIpRange")
@@ -1430,7 +1710,7 @@ class Instance(pulumi.CustomResource):
     def transit_encryption_mode(self) -> pulumi.Output[Optional[str]]:
         """
         The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
-        - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentcation
+        - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
         Default value is `DISABLED`.
         Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
         """

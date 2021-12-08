@@ -82,6 +82,34 @@ import * as utilities from "../utilities";
  *     dependsOn: [privateServiceConnection],
  * });
  * ```
+ * ### Redis Instance Mrr
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const redis-network = gcp.compute.getNetwork({
+ *     name: "redis-test-network",
+ * });
+ * const cache = new gcp.redis.Instance("cache", {
+ *     tier: "STANDARD_HA",
+ *     memorySizeGb: 5,
+ *     locationId: "us-central1-a",
+ *     alternativeLocationId: "us-central1-f",
+ *     authorizedNetwork: redis_network.then(redis_network => redis_network.id),
+ *     redisVersion: "REDIS_6_X",
+ *     displayName: "Terraform Test Instance",
+ *     reservedIpRange: "192.168.0.0/28",
+ *     replicaCount: 5,
+ *     readReplicasMode: "READ_REPLICAS_ENABLED",
+ *     labels: {
+ *         my_key: "my_val",
+ *         other_key: "other_val",
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -199,6 +227,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Output only. Info per node.
+     */
+    public /*out*/ readonly nodes!: pulumi.Output<outputs.redis.InstanceNode[]>;
+    /**
      * Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
      * "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
      * operation.
@@ -213,6 +245,25 @@ export class Instance extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy
+     * replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write
+     * requests must target 'host'.
+     */
+    public /*out*/ readonly readEndpoint!: pulumi.Output<string>;
+    /**
+     * Output only. The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target
+     * 'port'.
+     */
+    public /*out*/ readonly readEndpointPort!: pulumi.Output<number>;
+    /**
+     * Optional. Read replica mode. Can only be specified when trying to create the instance. If not set, Memorystore Redis
+     * backend will default to READ_REPLICAS_DISABLED. - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be
+     * provided and the instance cannot scale up or down the number of replicas. - READ_REPLICAS_ENABLED: If enabled, read
+     * endpoint will be provided and the instance can scale up and down the number of replicas. Default value:
+     * "READ_REPLICAS_DISABLED" Possible values: ["READ_REPLICAS_DISABLED", "READ_REPLICAS_ENABLED"]
+     */
+    public readonly readReplicasMode!: pulumi.Output<string | undefined>;
     /**
      * Redis configuration parameters, according to http://redis.io/topics/config.
      * Please check Memorystore documentation for the list of supported parameters:
@@ -229,6 +280,12 @@ export class Instance extends pulumi.CustomResource {
      * The name of the Redis region of the instance.
      */
     public readonly region!: pulumi.Output<string>;
+    /**
+     * Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and
+     * defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default
+     * is 1. The valid value for basic tier is 0 and the default is also 0.
+     */
+    public readonly replicaCount!: pulumi.Output<number>;
     /**
      * The CIDR range of internal addresses that are reserved for this
      * instance. If not provided, the service will choose an unused /29
@@ -251,7 +308,7 @@ export class Instance extends pulumi.CustomResource {
     public readonly tier!: pulumi.Output<string | undefined>;
     /**
      * The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
-     * - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentcation
+     * - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
      * Default value is `DISABLED`.
      * Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
      */
@@ -283,12 +340,17 @@ export class Instance extends pulumi.CustomResource {
             inputs["locationId"] = state ? state.locationId : undefined;
             inputs["memorySizeGb"] = state ? state.memorySizeGb : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["nodes"] = state ? state.nodes : undefined;
             inputs["persistenceIamIdentity"] = state ? state.persistenceIamIdentity : undefined;
             inputs["port"] = state ? state.port : undefined;
             inputs["project"] = state ? state.project : undefined;
+            inputs["readEndpoint"] = state ? state.readEndpoint : undefined;
+            inputs["readEndpointPort"] = state ? state.readEndpointPort : undefined;
+            inputs["readReplicasMode"] = state ? state.readReplicasMode : undefined;
             inputs["redisConfigs"] = state ? state.redisConfigs : undefined;
             inputs["redisVersion"] = state ? state.redisVersion : undefined;
             inputs["region"] = state ? state.region : undefined;
+            inputs["replicaCount"] = state ? state.replicaCount : undefined;
             inputs["reservedIpRange"] = state ? state.reservedIpRange : undefined;
             inputs["serverCaCerts"] = state ? state.serverCaCerts : undefined;
             inputs["tier"] = state ? state.tier : undefined;
@@ -308,9 +370,11 @@ export class Instance extends pulumi.CustomResource {
             inputs["memorySizeGb"] = args ? args.memorySizeGb : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["readReplicasMode"] = args ? args.readReplicasMode : undefined;
             inputs["redisConfigs"] = args ? args.redisConfigs : undefined;
             inputs["redisVersion"] = args ? args.redisVersion : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["replicaCount"] = args ? args.replicaCount : undefined;
             inputs["reservedIpRange"] = args ? args.reservedIpRange : undefined;
             inputs["tier"] = args ? args.tier : undefined;
             inputs["transitEncryptionMode"] = args ? args.transitEncryptionMode : undefined;
@@ -318,8 +382,11 @@ export class Instance extends pulumi.CustomResource {
             inputs["createTime"] = undefined /*out*/;
             inputs["currentLocationId"] = undefined /*out*/;
             inputs["host"] = undefined /*out*/;
+            inputs["nodes"] = undefined /*out*/;
             inputs["persistenceIamIdentity"] = undefined /*out*/;
             inputs["port"] = undefined /*out*/;
+            inputs["readEndpoint"] = undefined /*out*/;
+            inputs["readEndpointPort"] = undefined /*out*/;
             inputs["serverCaCerts"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -401,6 +468,10 @@ export interface InstanceState {
      */
     name?: pulumi.Input<string>;
     /**
+     * Output only. Info per node.
+     */
+    nodes?: pulumi.Input<pulumi.Input<inputs.redis.InstanceNode>[]>;
+    /**
      * Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
      * "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
      * operation.
@@ -415,6 +486,25 @@ export interface InstanceState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy
+     * replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write
+     * requests must target 'host'.
+     */
+    readEndpoint?: pulumi.Input<string>;
+    /**
+     * Output only. The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target
+     * 'port'.
+     */
+    readEndpointPort?: pulumi.Input<number>;
+    /**
+     * Optional. Read replica mode. Can only be specified when trying to create the instance. If not set, Memorystore Redis
+     * backend will default to READ_REPLICAS_DISABLED. - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be
+     * provided and the instance cannot scale up or down the number of replicas. - READ_REPLICAS_ENABLED: If enabled, read
+     * endpoint will be provided and the instance can scale up and down the number of replicas. Default value:
+     * "READ_REPLICAS_DISABLED" Possible values: ["READ_REPLICAS_DISABLED", "READ_REPLICAS_ENABLED"]
+     */
+    readReplicasMode?: pulumi.Input<string>;
     /**
      * Redis configuration parameters, according to http://redis.io/topics/config.
      * Please check Memorystore documentation for the list of supported parameters:
@@ -431,6 +521,12 @@ export interface InstanceState {
      * The name of the Redis region of the instance.
      */
     region?: pulumi.Input<string>;
+    /**
+     * Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and
+     * defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default
+     * is 1. The valid value for basic tier is 0 and the default is also 0.
+     */
+    replicaCount?: pulumi.Input<number>;
     /**
      * The CIDR range of internal addresses that are reserved for this
      * instance. If not provided, the service will choose an unused /29
@@ -453,7 +549,7 @@ export interface InstanceState {
     tier?: pulumi.Input<string>;
     /**
      * The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
-     * - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentcation
+     * - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
      * Default value is `DISABLED`.
      * Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
      */
@@ -519,6 +615,14 @@ export interface InstanceArgs {
      */
     project?: pulumi.Input<string>;
     /**
+     * Optional. Read replica mode. Can only be specified when trying to create the instance. If not set, Memorystore Redis
+     * backend will default to READ_REPLICAS_DISABLED. - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be
+     * provided and the instance cannot scale up or down the number of replicas. - READ_REPLICAS_ENABLED: If enabled, read
+     * endpoint will be provided and the instance can scale up and down the number of replicas. Default value:
+     * "READ_REPLICAS_DISABLED" Possible values: ["READ_REPLICAS_DISABLED", "READ_REPLICAS_ENABLED"]
+     */
+    readReplicasMode?: pulumi.Input<string>;
+    /**
      * Redis configuration parameters, according to http://redis.io/topics/config.
      * Please check Memorystore documentation for the list of supported parameters:
      * https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
@@ -534,6 +638,12 @@ export interface InstanceArgs {
      * The name of the Redis region of the instance.
      */
     region?: pulumi.Input<string>;
+    /**
+     * Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and
+     * defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default
+     * is 1. The valid value for basic tier is 0 and the default is also 0.
+     */
+    replicaCount?: pulumi.Input<number>;
     /**
      * The CIDR range of internal addresses that are reserved for this
      * instance. If not provided, the service will choose an unused /29
@@ -552,7 +662,7 @@ export interface InstanceArgs {
     tier?: pulumi.Input<string>;
     /**
      * The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
-     * - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentcation
+     * - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
      * Default value is `DISABLED`.
      * Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
      */

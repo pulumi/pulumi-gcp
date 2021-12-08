@@ -51,7 +51,7 @@ import (
 // 			Api:        pulumi.Any(google_api_gateway_api_config.Api_cfg.Api),
 // 			ApiConfig:  pulumi.Any(google_api_gateway_api_config.Api_cfg.Api_config_id),
 // 			PolicyData: pulumi.String(admin.PolicyData),
-// 		})
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -79,7 +79,7 @@ import (
 // 			Members: pulumi.StringArray{
 // 				pulumi.String("user:jane@example.com"),
 // 			},
-// 		})
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -105,7 +105,7 @@ import (
 // 			ApiConfig: pulumi.Any(google_api_gateway_api_config.Api_cfg.Api_config_id),
 // 			Role:      pulumi.String("roles/apigateway.viewer"),
 // 			Member:    pulumi.String("user:jane@example.com"),
-// 		})
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}

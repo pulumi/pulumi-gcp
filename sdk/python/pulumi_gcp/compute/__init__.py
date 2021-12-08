@@ -119,6 +119,7 @@ from .router import *
 from .router_interface import *
 from .router_nat import *
 from .router_peer import *
+from .router_status import *
 from .security_policy import *
 from .security_scan_config import *
 from .service_attachment import *

@@ -11,6 +11,7 @@ export * from "./instanceIamBinding";
 export * from "./instanceIamMember";
 export * from "./instanceIamPolicy";
 export * from "./location";
+export * from "./runtime";
 
 // Import resources to register:
 import { Environment } from "./environment";
@@ -19,6 +20,7 @@ import { InstanceIamBinding } from "./instanceIamBinding";
 import { InstanceIamMember } from "./instanceIamMember";
 import { InstanceIamPolicy } from "./instanceIamPolicy";
 import { Location } from "./location";
+import { Runtime } from "./runtime";
 
 const _module = {
     version: utilities.getVersion(),
@@ -36,6 +38,8 @@ const _module = {
                 return new InstanceIamPolicy(name, <any>undefined, { urn })
             case "gcp:notebooks/location:Location":
                 return new Location(name, <any>undefined, { urn })
+            case "gcp:notebooks/runtime:Runtime":
+                return new Runtime(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -47,3 +51,4 @@ pulumi.runtime.registerResourceModule("gcp", "notebooks/instanceIamBinding", _mo
 pulumi.runtime.registerResourceModule("gcp", "notebooks/instanceIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "notebooks/instanceIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "notebooks/location", _module)
+pulumi.runtime.registerResourceModule("gcp", "notebooks/runtime", _module)

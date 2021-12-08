@@ -47,6 +47,9 @@ namespace Pulumi.Gcp.ServiceDirectory
     ///         var policy = new Gcp.ServiceDirectory.NamespaceIamPolicy("policy", new Gcp.ServiceDirectory.NamespaceIamPolicyArgs
     ///         {
     ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -70,6 +73,9 @@ namespace Pulumi.Gcp.ServiceDirectory
     ///             {
     ///                 "user:jane@example.com",
     ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -90,6 +96,9 @@ namespace Pulumi.Gcp.ServiceDirectory
     ///         {
     ///             Role = "roles/viewer",
     ///             Member = "user:jane@example.com",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 

@@ -365,7 +365,7 @@ class Service(pulumi.CustomResource):
         and Route, reflecting their statuses and conditions as its own.
 
         See also:
-        https://github.com/knative/serving/blob/master/docs/spec/overview.md#service
+        https://github.com/knative/specs/blob/main/specs/serving/overview.md
 
         To get more information about Service, see:
 
@@ -688,7 +688,7 @@ class Service(pulumi.CustomResource):
         and Route, reflecting their statuses and conditions as its own.
 
         See also:
-        https://github.com/knative/serving/blob/master/docs/spec/overview.md#service
+        https://github.com/knative/specs/blob/main/specs/serving/overview.md
 
         To get more information about Service, see:
 

@@ -33,6 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &InstanceIamPolicy{}
 	case "gcp:notebooks/location:Location":
 		r = &Location{}
+	case "gcp:notebooks/runtime:Runtime":
+		r = &Runtime{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -74,6 +76,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"notebooks/location",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"notebooks/runtime",
 		&module{version},
 	)
 }

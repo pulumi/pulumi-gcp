@@ -3387,6 +3387,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "notebooks/runtime",
+  "fqn": "pulumi_gcp.notebooks",
+  "classes": {
+   "gcp:notebooks/runtime:Runtime": "Runtime"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "organizations/accessApprovalSettings",
   "fqn": "pulumi_gcp.organizations",
   "classes": {
@@ -4271,6 +4279,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.vertex",
   "classes": {
    "gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType": "AiFeatureStoreEntityType"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiMetadataStore",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiMetadataStore:AiMetadataStore": "AiMetadataStore"
   }
  },
  {

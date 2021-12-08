@@ -21,7 +21,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, alternative_location_id=None, auth_enabled=None, auth_string=None, authorized_network=None, connect_mode=None, create_time=None, current_location_id=None, display_name=None, host=None, id=None, labels=None, location_id=None, memory_size_gb=None, name=None, persistence_iam_identity=None, port=None, project=None, redis_configs=None, redis_version=None, region=None, reserved_ip_range=None, server_ca_certs=None, tier=None, transit_encryption_mode=None):
+    def __init__(__self__, alternative_location_id=None, auth_enabled=None, auth_string=None, authorized_network=None, connect_mode=None, create_time=None, current_location_id=None, display_name=None, host=None, id=None, labels=None, location_id=None, memory_size_gb=None, name=None, nodes=None, persistence_iam_identity=None, port=None, project=None, read_endpoint=None, read_endpoint_port=None, read_replicas_mode=None, redis_configs=None, redis_version=None, region=None, replica_count=None, reserved_ip_range=None, server_ca_certs=None, tier=None, transit_encryption_mode=None):
         if alternative_location_id and not isinstance(alternative_location_id, str):
             raise TypeError("Expected argument 'alternative_location_id' to be a str")
         pulumi.set(__self__, "alternative_location_id", alternative_location_id)
@@ -64,6 +64,9 @@ class GetInstanceResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if nodes and not isinstance(nodes, list):
+            raise TypeError("Expected argument 'nodes' to be a list")
+        pulumi.set(__self__, "nodes", nodes)
         if persistence_iam_identity and not isinstance(persistence_iam_identity, str):
             raise TypeError("Expected argument 'persistence_iam_identity' to be a str")
         pulumi.set(__self__, "persistence_iam_identity", persistence_iam_identity)
@@ -73,6 +76,15 @@ class GetInstanceResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if read_endpoint and not isinstance(read_endpoint, str):
+            raise TypeError("Expected argument 'read_endpoint' to be a str")
+        pulumi.set(__self__, "read_endpoint", read_endpoint)
+        if read_endpoint_port and not isinstance(read_endpoint_port, int):
+            raise TypeError("Expected argument 'read_endpoint_port' to be a int")
+        pulumi.set(__self__, "read_endpoint_port", read_endpoint_port)
+        if read_replicas_mode and not isinstance(read_replicas_mode, str):
+            raise TypeError("Expected argument 'read_replicas_mode' to be a str")
+        pulumi.set(__self__, "read_replicas_mode", read_replicas_mode)
         if redis_configs and not isinstance(redis_configs, dict):
             raise TypeError("Expected argument 'redis_configs' to be a dict")
         pulumi.set(__self__, "redis_configs", redis_configs)
@@ -82,6 +94,9 @@ class GetInstanceResult:
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
+        if replica_count and not isinstance(replica_count, int):
+            raise TypeError("Expected argument 'replica_count' to be a int")
+        pulumi.set(__self__, "replica_count", replica_count)
         if reserved_ip_range and not isinstance(reserved_ip_range, str):
             raise TypeError("Expected argument 'reserved_ip_range' to be a str")
         pulumi.set(__self__, "reserved_ip_range", reserved_ip_range)
@@ -169,6 +184,11 @@ class GetInstanceResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter
+    def nodes(self) -> Sequence['outputs.GetInstanceNodeResult']:
+        return pulumi.get(self, "nodes")
+
+    @property
     @pulumi.getter(name="persistenceIamIdentity")
     def persistence_iam_identity(self) -> str:
         return pulumi.get(self, "persistence_iam_identity")
@@ -184,6 +204,21 @@ class GetInstanceResult:
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="readEndpoint")
+    def read_endpoint(self) -> str:
+        return pulumi.get(self, "read_endpoint")
+
+    @property
+    @pulumi.getter(name="readEndpointPort")
+    def read_endpoint_port(self) -> int:
+        return pulumi.get(self, "read_endpoint_port")
+
+    @property
+    @pulumi.getter(name="readReplicasMode")
+    def read_replicas_mode(self) -> str:
+        return pulumi.get(self, "read_replicas_mode")
+
+    @property
     @pulumi.getter(name="redisConfigs")
     def redis_configs(self) -> Mapping[str, str]:
         return pulumi.get(self, "redis_configs")
@@ -197,6 +232,11 @@ class GetInstanceResult:
     @pulumi.getter
     def region(self) -> Optional[str]:
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="replicaCount")
+    def replica_count(self) -> int:
+        return pulumi.get(self, "replica_count")
 
     @property
     @pulumi.getter(name="reservedIpRange")
@@ -239,12 +279,17 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             location_id=self.location_id,
             memory_size_gb=self.memory_size_gb,
             name=self.name,
+            nodes=self.nodes,
             persistence_iam_identity=self.persistence_iam_identity,
             port=self.port,
             project=self.project,
+            read_endpoint=self.read_endpoint,
+            read_endpoint_port=self.read_endpoint_port,
+            read_replicas_mode=self.read_replicas_mode,
             redis_configs=self.redis_configs,
             redis_version=self.redis_version,
             region=self.region,
+            replica_count=self.replica_count,
             reserved_ip_range=self.reserved_ip_range,
             server_ca_certs=self.server_ca_certs,
             tier=self.tier,
@@ -302,12 +347,17 @@ def get_instance(name: Optional[str] = None,
         location_id=__ret__.location_id,
         memory_size_gb=__ret__.memory_size_gb,
         name=__ret__.name,
+        nodes=__ret__.nodes,
         persistence_iam_identity=__ret__.persistence_iam_identity,
         port=__ret__.port,
         project=__ret__.project,
+        read_endpoint=__ret__.read_endpoint,
+        read_endpoint_port=__ret__.read_endpoint_port,
+        read_replicas_mode=__ret__.read_replicas_mode,
         redis_configs=__ret__.redis_configs,
         redis_version=__ret__.redis_version,
         region=__ret__.region,
+        replica_count=__ret__.replica_count,
         reserved_ip_range=__ret__.reserved_ip_range,
         server_ca_certs=__ret__.server_ca_certs,
         tier=__ret__.tier,

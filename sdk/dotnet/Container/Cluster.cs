@@ -467,7 +467,6 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// ) Configuration for the
-        /// &gt;&gt;&gt;&gt;&gt;&gt;&gt; v4.1.0
         /// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
         /// Structure is documented below.
         /// </summary>
@@ -968,7 +967,6 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// ) Configuration for the
-        /// &gt;&gt;&gt;&gt;&gt;&gt;&gt; v4.1.0
         /// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
         /// Structure is documented below.
         /// </summary>
@@ -1436,7 +1434,6 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// ) Configuration for the
-        /// &gt;&gt;&gt;&gt;&gt;&gt;&gt; v4.1.0
         /// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
         /// Structure is documented below.
         /// </summary>

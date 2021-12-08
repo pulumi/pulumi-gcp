@@ -314,29 +314,27 @@ class RegionAutoscaler(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        debian9 = gcp.compute.get_image(family="debian-9",
-            project="debian-cloud")
         foobar_instance_template = gcp.compute.InstanceTemplate("foobarInstanceTemplate",
-            machine_type="e2-medium",
-            can_ip_forward=False,
-            tags=[
-                "foo",
-                "bar",
-            ],
+            machine_type="e2-standard-4",
             disks=[gcp.compute.InstanceTemplateDiskArgs(
-                source_image=debian9.id,
+                source_image="debian-cloud/debian-9",
+                disk_size_gb=250,
             )],
             network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
                 network="default",
+                access_configs=[gcp.compute.InstanceTemplateNetworkInterfaceAccessConfigArgs(
+                    network_tier="PREMIUM",
+                )],
             )],
-            metadata={
-                "foo": "bar",
-            },
             service_account=gcp.compute.InstanceTemplateServiceAccountArgs(
                 scopes=[
-                    "userinfo-email",
-                    "compute-ro",
-                    "storage-ro",
+                    "https://www.googleapis.com/auth/devstorage.read_only",
+                    "https://www.googleapis.com/auth/logging.write",
+                    "https://www.googleapis.com/auth/monitoring.write",
+                    "https://www.googleapis.com/auth/pubsub",
+                    "https://www.googleapis.com/auth/service.management.readonly",
+                    "https://www.googleapis.com/auth/servicecontrol",
+                    "https://www.googleapis.com/auth/trace.append",
                 ],
             ))
         foobar_target_pool = gcp.compute.TargetPool("foobarTargetPool")
@@ -359,6 +357,8 @@ class RegionAutoscaler(pulumi.CustomResource):
                     target=0.5,
                 ),
             ))
+        debian9 = gcp.compute.get_image(family="debian-9",
+            project="debian-cloud")
         ```
 
         ## Import
@@ -424,29 +424,27 @@ class RegionAutoscaler(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        debian9 = gcp.compute.get_image(family="debian-9",
-            project="debian-cloud")
         foobar_instance_template = gcp.compute.InstanceTemplate("foobarInstanceTemplate",
-            machine_type="e2-medium",
-            can_ip_forward=False,
-            tags=[
-                "foo",
-                "bar",
-            ],
+            machine_type="e2-standard-4",
             disks=[gcp.compute.InstanceTemplateDiskArgs(
-                source_image=debian9.id,
+                source_image="debian-cloud/debian-9",
+                disk_size_gb=250,
             )],
             network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
                 network="default",
+                access_configs=[gcp.compute.InstanceTemplateNetworkInterfaceAccessConfigArgs(
+                    network_tier="PREMIUM",
+                )],
             )],
-            metadata={
-                "foo": "bar",
-            },
             service_account=gcp.compute.InstanceTemplateServiceAccountArgs(
                 scopes=[
-                    "userinfo-email",
-                    "compute-ro",
-                    "storage-ro",
+                    "https://www.googleapis.com/auth/devstorage.read_only",
+                    "https://www.googleapis.com/auth/logging.write",
+                    "https://www.googleapis.com/auth/monitoring.write",
+                    "https://www.googleapis.com/auth/pubsub",
+                    "https://www.googleapis.com/auth/service.management.readonly",
+                    "https://www.googleapis.com/auth/servicecontrol",
+                    "https://www.googleapis.com/auth/trace.append",
                 ],
             ))
         foobar_target_pool = gcp.compute.TargetPool("foobarTargetPool")
@@ -469,6 +467,8 @@ class RegionAutoscaler(pulumi.CustomResource):
                     target=0.5,
                 ),
             ))
+        debian9 = gcp.compute.get_image(family="debian-9",
+            project="debian-cloud")
         ```
 
         ## Import
