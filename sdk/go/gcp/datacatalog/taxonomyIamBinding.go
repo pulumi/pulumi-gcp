@@ -50,7 +50,7 @@ import (
 // 		_, err = datacatalog.NewTaxonomyIamPolicy(ctx, "policy", &datacatalog.TaxonomyIamPolicyArgs{
 // 			Taxonomy:   pulumi.Any(google_data_catalog_taxonomy.Basic_taxonomy.Name),
 // 			PolicyData: pulumi.String(admin.PolicyData),
-// 		})
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -77,7 +77,7 @@ import (
 // 			Members: pulumi.StringArray{
 // 				pulumi.String("user:jane@example.com"),
 // 			},
-// 		})
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -102,7 +102,7 @@ import (
 // 			Taxonomy: pulumi.Any(google_data_catalog_taxonomy.Basic_taxonomy.Name),
 // 			Role:     pulumi.String("roles/viewer"),
 // 			Member:   pulumi.String("user:jane@example.com"),
-// 		})
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}

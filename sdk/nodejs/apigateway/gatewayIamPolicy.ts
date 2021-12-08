@@ -32,6 +32,8 @@ import * as utilities from "../utilities";
  *     region: google_api_gateway_gateway.api_gw.region,
  *     gateway: google_api_gateway_gateway.api_gw.gateway_id,
  *     policyData: admin.then(admin => admin.policyData),
+ * }, {
+ *     provider: google_beta,
  * });
  * ```
  *
@@ -47,6 +49,8 @@ import * as utilities from "../utilities";
  *     gateway: google_api_gateway_gateway.api_gw.gateway_id,
  *     role: "roles/apigateway.viewer",
  *     members: ["user:jane@example.com"],
+ * }, {
+ *     provider: google_beta,
  * });
  * ```
  *
@@ -62,6 +66,8 @@ import * as utilities from "../utilities";
  *     gateway: google_api_gateway_gateway.api_gw.gateway_id,
  *     role: "roles/apigateway.viewer",
  *     member: "user:jane@example.com",
+ * }, {
+ *     provider: google_beta,
  * });
  * ```
  *

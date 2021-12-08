@@ -27,11 +27,13 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly string? MachineType;
         public readonly ImmutableDictionary<string, string>? Metadata;
         public readonly string? MinCpuPlatform;
+        public readonly string? NodeGroup;
         public readonly ImmutableArray<string> OauthScopes;
         public readonly bool? Preemptible;
         public readonly Outputs.NodePoolNodeConfigSandboxConfig? SandboxConfig;
         public readonly string? ServiceAccount;
         public readonly Outputs.NodePoolNodeConfigShieldedInstanceConfig? ShieldedInstanceConfig;
+        public readonly bool? Spot;
         public readonly ImmutableArray<string> Tags;
         public readonly ImmutableArray<Outputs.NodePoolNodeConfigTaint> Taints;
         public readonly Outputs.NodePoolNodeConfigWorkloadMetadataConfig? WorkloadMetadataConfig;
@@ -66,6 +68,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string? minCpuPlatform,
 
+            string? nodeGroup,
+
             ImmutableArray<string> oauthScopes,
 
             bool? preemptible,
@@ -75,6 +79,8 @@ namespace Pulumi.Gcp.Container.Outputs
             string? serviceAccount,
 
             Outputs.NodePoolNodeConfigShieldedInstanceConfig? shieldedInstanceConfig,
+
+            bool? spot,
 
             ImmutableArray<string> tags,
 
@@ -96,11 +102,13 @@ namespace Pulumi.Gcp.Container.Outputs
             MachineType = machineType;
             Metadata = metadata;
             MinCpuPlatform = minCpuPlatform;
+            NodeGroup = nodeGroup;
             OauthScopes = oauthScopes;
             Preemptible = preemptible;
             SandboxConfig = sandboxConfig;
             ServiceAccount = serviceAccount;
             ShieldedInstanceConfig = shieldedInstanceConfig;
+            Spot = spot;
             Tags = tags;
             Taints = taints;
             WorkloadMetadataConfig = workloadMetadataConfig;

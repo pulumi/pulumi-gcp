@@ -32,6 +32,8 @@ import * as utilities from "../utilities";
  *     location: google_artifact_registry_repository["my-repo"].location,
  *     repository: google_artifact_registry_repository["my-repo"].name,
  *     policyData: admin.then(admin => admin.policyData),
+ * }, {
+ *     provider: google_beta,
  * });
  * ```
  *
@@ -47,6 +49,8 @@ import * as utilities from "../utilities";
  *     repository: google_artifact_registry_repository["my-repo"].name,
  *     role: "roles/viewer",
  *     members: ["user:jane@example.com"],
+ * }, {
+ *     provider: google_beta,
  * });
  * ```
  *
@@ -62,6 +66,8 @@ import * as utilities from "../utilities";
  *     repository: google_artifact_registry_repository["my-repo"].name,
  *     role: "roles/viewer",
  *     member: "user:jane@example.com",
+ * }, {
+ *     provider: google_beta,
  * });
  * ```
  *

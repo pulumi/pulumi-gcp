@@ -8,5 +8,6 @@ import typing
 from .ai_dataset import *
 from .ai_feature_store import *
 from .ai_feature_store_entity_type import *
+from .ai_metadata_store import *
 from ._inputs import *
 from . import outputs

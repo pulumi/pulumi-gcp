@@ -93,6 +93,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string? MinCpuPlatform;
         /// <summary>
+        /// Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on [sole tenant nodes](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes).
+        /// </summary>
+        public readonly string? NodeGroup;
+        /// <summary>
         /// The set of Google API scopes to be made available
         /// on all of the node VMs under the "default" service account.
         /// Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
@@ -105,7 +109,8 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly bool? Preemptible;
         /// <summary>
-        /// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
+        /// ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
+        /// &gt;&gt;&gt;&gt;&gt;&gt;&gt; v4.3.0
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ClusterNodeConfigSandboxConfig? SandboxConfig;
@@ -118,6 +123,12 @@ namespace Pulumi.Gcp.Container.Outputs
         /// Shielded Instance options. Structure is documented below.
         /// </summary>
         public readonly Outputs.ClusterNodeConfigShieldedInstanceConfig? ShieldedInstanceConfig;
+        /// <summary>
+        /// ) A boolean 
+        /// that represents whether the underlying node VMs are spot. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
+        /// for more information. Defaults to false.
+        /// </summary>
+        public readonly bool? Spot;
         /// <summary>
         /// The list of instance tags applied to all nodes. Tags are used to identify
         /// valid sources or targets for network firewalls.
@@ -170,6 +181,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string? minCpuPlatform,
 
+            string? nodeGroup,
+
             ImmutableArray<string> oauthScopes,
 
             bool? preemptible,
@@ -179,6 +192,8 @@ namespace Pulumi.Gcp.Container.Outputs
             string? serviceAccount,
 
             Outputs.ClusterNodeConfigShieldedInstanceConfig? shieldedInstanceConfig,
+
+            bool? spot,
 
             ImmutableArray<string> tags,
 
@@ -200,11 +215,13 @@ namespace Pulumi.Gcp.Container.Outputs
             MachineType = machineType;
             Metadata = metadata;
             MinCpuPlatform = minCpuPlatform;
+            NodeGroup = nodeGroup;
             OauthScopes = oauthScopes;
             Preemptible = preemptible;
             SandboxConfig = sandboxConfig;
             ServiceAccount = serviceAccount;
             ShieldedInstanceConfig = shieldedInstanceConfig;
+            Spot = spot;
             Tags = tags;
             Taints = taints;
             WorkloadMetadataConfig = workloadMetadataConfig;

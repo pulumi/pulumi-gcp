@@ -9,9 +9,38 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'InstanceNode',
     'InstanceServerCaCert',
+    'GetInstanceNodeResult',
     'GetInstanceServerCaCertResult',
 ]
+
+@pulumi.output_type
+class InstanceNode(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 zone: Optional[str] = None):
+        """
+        :param str id: an identifier for the resource with format `projects/{{project}}/locations/{{region}}/instances/{{name}}`
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        an identifier for the resource with format `projects/{{project}}/locations/{{region}}/instances/{{name}}`
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[str]:
+        return pulumi.get(self, "zone")
+
 
 @pulumi.output_type
 class InstanceServerCaCert(dict):
@@ -79,6 +108,25 @@ class InstanceServerCaCert(dict):
     @pulumi.getter(name="sha1Fingerprint")
     def sha1_fingerprint(self) -> Optional[str]:
         return pulumi.get(self, "sha1_fingerprint")
+
+
+@pulumi.output_type
+class GetInstanceNodeResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 zone: str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> str:
+        return pulumi.get(self, "zone")
 
 
 @pulumi.output_type

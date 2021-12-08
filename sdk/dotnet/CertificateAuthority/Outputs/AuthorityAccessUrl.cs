@@ -14,16 +14,16 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
     public sealed class AuthorityAccessUrl
     {
         public readonly string? CaCertificateAccessUrl;
-        public readonly string? CrlAccessUrl;
+        public readonly ImmutableArray<string> CrlAccessUrls;
 
         [OutputConstructor]
         private AuthorityAccessUrl(
             string? caCertificateAccessUrl,
 
-            string? crlAccessUrl)
+            ImmutableArray<string> crlAccessUrls)
         {
             CaCertificateAccessUrl = caCertificateAccessUrl;
-            CrlAccessUrl = crlAccessUrl;
+            CrlAccessUrls = crlAccessUrls;
         }
     }
 }

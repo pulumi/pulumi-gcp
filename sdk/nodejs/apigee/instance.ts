@@ -88,8 +88,8 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly orgId!: pulumi.Output<string>;
     /**
-     * The size of the CIDR block range that will be reserved by the instance.
-     * Possible values are `SLASH_16`, `SLASH_20`, and `SLASH_22`.
+     * The size of the CIDR block range that will be reserved by the instance. For valid values,
+     * see [CidrRange](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances#CidrRange) on the documentation.
      */
     public readonly peeringCidrRange!: pulumi.Output<string | undefined>;
     /**
@@ -181,8 +181,8 @@ export interface InstanceState {
      */
     orgId?: pulumi.Input<string>;
     /**
-     * The size of the CIDR block range that will be reserved by the instance.
-     * Possible values are `SLASH_16`, `SLASH_20`, and `SLASH_22`.
+     * The size of the CIDR block range that will be reserved by the instance. For valid values,
+     * see [CidrRange](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances#CidrRange) on the documentation.
      */
     peeringCidrRange?: pulumi.Input<string>;
     /**
@@ -224,8 +224,8 @@ export interface InstanceArgs {
      */
     orgId: pulumi.Input<string>;
     /**
-     * The size of the CIDR block range that will be reserved by the instance.
-     * Possible values are `SLASH_16`, `SLASH_20`, and `SLASH_22`.
+     * The size of the CIDR block range that will be reserved by the instance. For valid values,
+     * see [CidrRange](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances#CidrRange) on the documentation.
      */
     peeringCidrRange?: pulumi.Input<string>;
 }

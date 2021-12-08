@@ -51,6 +51,11 @@ export class WorkerPool extends pulumi.CustomResource {
     }
 
     /**
+     * User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
+     * limitations.
+     */
+    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * Output only. Time at which the request to create the `WorkerPool` was received.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -58,6 +63,10 @@ export class WorkerPool extends pulumi.CustomResource {
      * Output only. Time at which the request to delete the `WorkerPool` was received.
      */
     public /*out*/ readonly deleteTime!: pulumi.Output<string>;
+    /**
+     * A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
+     */
+    public readonly displayName!: pulumi.Output<string | undefined>;
     /**
      * The location for the resource
      */
@@ -78,6 +87,10 @@ export class WorkerPool extends pulumi.CustomResource {
      * Output only. `WorkerPool` state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * Output only. A unique identifier for the `WorkerPool`.
+     */
+    public /*out*/ readonly uid!: pulumi.Output<string>;
     /**
      * Output only. Time at which the request to update the `WorkerPool` was received.
      */
@@ -100,13 +113,16 @@ export class WorkerPool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkerPoolState | undefined;
+            inputs["annotations"] = state ? state.annotations : undefined;
             inputs["createTime"] = state ? state.createTime : undefined;
             inputs["deleteTime"] = state ? state.deleteTime : undefined;
+            inputs["displayName"] = state ? state.displayName : undefined;
             inputs["location"] = state ? state.location : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["networkConfig"] = state ? state.networkConfig : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["state"] = state ? state.state : undefined;
+            inputs["uid"] = state ? state.uid : undefined;
             inputs["updateTime"] = state ? state.updateTime : undefined;
             inputs["workerConfig"] = state ? state.workerConfig : undefined;
         } else {
@@ -114,6 +130,8 @@ export class WorkerPool extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
+            inputs["annotations"] = args ? args.annotations : undefined;
+            inputs["displayName"] = args ? args.displayName : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["networkConfig"] = args ? args.networkConfig : undefined;
@@ -122,6 +140,7 @@ export class WorkerPool extends pulumi.CustomResource {
             inputs["createTime"] = undefined /*out*/;
             inputs["deleteTime"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
+            inputs["uid"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -136,6 +155,11 @@ export class WorkerPool extends pulumi.CustomResource {
  */
 export interface WorkerPoolState {
     /**
+     * User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
+     * limitations.
+     */
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Output only. Time at which the request to create the `WorkerPool` was received.
      */
     createTime?: pulumi.Input<string>;
@@ -143,6 +167,10 @@ export interface WorkerPoolState {
      * Output only. Time at which the request to delete the `WorkerPool` was received.
      */
     deleteTime?: pulumi.Input<string>;
+    /**
+     * A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
+     */
+    displayName?: pulumi.Input<string>;
     /**
      * The location for the resource
      */
@@ -164,6 +192,10 @@ export interface WorkerPoolState {
      */
     state?: pulumi.Input<string>;
     /**
+     * Output only. A unique identifier for the `WorkerPool`.
+     */
+    uid?: pulumi.Input<string>;
+    /**
      * Output only. Time at which the request to update the `WorkerPool` was received.
      */
     updateTime?: pulumi.Input<string>;
@@ -177,6 +209,15 @@ export interface WorkerPoolState {
  * The set of arguments for constructing a WorkerPool resource.
  */
 export interface WorkerPoolArgs {
+    /**
+     * User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
+     * limitations.
+     */
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
+     */
+    displayName?: pulumi.Input<string>;
     /**
      * The location for the resource
      */

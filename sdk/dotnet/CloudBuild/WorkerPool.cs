@@ -30,6 +30,13 @@ namespace Pulumi.Gcp.CloudBuild
     public partial class WorkerPool : Pulumi.CustomResource
     {
         /// <summary>
+        /// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
+        /// limitations.
+        /// </summary>
+        [Output("annotations")]
+        public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
+
+        /// <summary>
         /// Output only. Time at which the request to create the `WorkerPool` was received.
         /// </summary>
         [Output("createTime")]
@@ -40,6 +47,12 @@ namespace Pulumi.Gcp.CloudBuild
         /// </summary>
         [Output("deleteTime")]
         public Output<string> DeleteTime { get; private set; } = null!;
+
+        /// <summary>
+        /// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
         /// The location for the resource
@@ -70,6 +83,12 @@ namespace Pulumi.Gcp.CloudBuild
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// Output only. A unique identifier for the `WorkerPool`.
+        /// </summary>
+        [Output("uid")]
+        public Output<string> Uid { get; private set; } = null!;
 
         /// <summary>
         /// Output only. Time at which the request to update the `WorkerPool` was received.
@@ -129,6 +148,25 @@ namespace Pulumi.Gcp.CloudBuild
 
     public sealed class WorkerPoolArgs : Pulumi.ResourceArgs
     {
+        [Input("annotations")]
+        private InputMap<string>? _annotations;
+
+        /// <summary>
+        /// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
+        /// limitations.
+        /// </summary>
+        public InputMap<string> Annotations
+        {
+            get => _annotations ?? (_annotations = new InputMap<string>());
+            set => _annotations = value;
+        }
+
+        /// <summary>
+        /// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
+
         /// <summary>
         /// The location for the resource
         /// </summary>
@@ -166,6 +204,19 @@ namespace Pulumi.Gcp.CloudBuild
 
     public sealed class WorkerPoolState : Pulumi.ResourceArgs
     {
+        [Input("annotations")]
+        private InputMap<string>? _annotations;
+
+        /// <summary>
+        /// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
+        /// limitations.
+        /// </summary>
+        public InputMap<string> Annotations
+        {
+            get => _annotations ?? (_annotations = new InputMap<string>());
+            set => _annotations = value;
+        }
+
         /// <summary>
         /// Output only. Time at which the request to create the `WorkerPool` was received.
         /// </summary>
@@ -177,6 +228,12 @@ namespace Pulumi.Gcp.CloudBuild
         /// </summary>
         [Input("deleteTime")]
         public Input<string>? DeleteTime { get; set; }
+
+        /// <summary>
+        /// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
 
         /// <summary>
         /// The location for the resource
@@ -207,6 +264,12 @@ namespace Pulumi.Gcp.CloudBuild
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        /// <summary>
+        /// Output only. A unique identifier for the `WorkerPool`.
+        /// </summary>
+        [Input("uid")]
+        public Input<string>? Uid { get; set; }
 
         /// <summary>
         /// Output only. Time at which the request to update the `WorkerPool` was received.

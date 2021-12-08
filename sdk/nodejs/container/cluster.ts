@@ -410,7 +410,6 @@ export class Cluster extends pulumi.CustomResource {
     public /*out*/ readonly operation!: pulumi.Output<string>;
     /**
      * ) Configuration for the
-     * >>>>>>> v4.1.0
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
      * Structure is documented below.
      */
@@ -904,7 +903,6 @@ export interface ClusterState {
     operation?: pulumi.Input<string>;
     /**
      * ) Configuration for the
-     * >>>>>>> v4.1.0
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
      * Structure is documented below.
      */
@@ -1245,7 +1243,6 @@ export interface ClusterArgs {
     notificationConfig?: pulumi.Input<inputs.container.ClusterNotificationConfig>;
     /**
      * ) Configuration for the
-     * >>>>>>> v4.1.0
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
      * Structure is documented below.
      */

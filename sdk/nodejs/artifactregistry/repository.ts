@@ -140,6 +140,7 @@ export class Repository extends pulumi.CustomResource {
      * - PYTHON ([Preview](https://cloud.google.com/products#product-launch-stages))
      * - APT ([alpha](https://cloud.google.com/products#product-launch-stages))
      * - YUM ([alpha](https://cloud.google.com/products#product-launch-stages))
+     * - HELM ([alpha](https://cloud.google.com/products#product-launch-stages))
      */
     public readonly format!: pulumi.Output<string>;
     /**
@@ -250,6 +251,7 @@ export interface RepositoryState {
      * - PYTHON ([Preview](https://cloud.google.com/products#product-launch-stages))
      * - APT ([alpha](https://cloud.google.com/products#product-launch-stages))
      * - YUM ([alpha](https://cloud.google.com/products#product-launch-stages))
+     * - HELM ([alpha](https://cloud.google.com/products#product-launch-stages))
      */
     format?: pulumi.Input<string>;
     /**
@@ -308,6 +310,7 @@ export interface RepositoryArgs {
      * - PYTHON ([Preview](https://cloud.google.com/products#product-launch-stages))
      * - APT ([alpha](https://cloud.google.com/products#product-launch-stages))
      * - YUM ([alpha](https://cloud.google.com/products#product-launch-stages))
+     * - HELM ([alpha](https://cloud.google.com/products#product-launch-stages))
      */
     format: pulumi.Input<string>;
     /**

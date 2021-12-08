@@ -122,6 +122,45 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// }
     /// ```
+    /// ### Redis Instance Mrr
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var redis_network = Output.Create(Gcp.Compute.GetNetwork.InvokeAsync(new Gcp.Compute.GetNetworkArgs
+    ///         {
+    ///             Name = "redis-test-network",
+    ///         }));
+    ///         var cache = new Gcp.Redis.Instance("cache", new Gcp.Redis.InstanceArgs
+    ///         {
+    ///             Tier = "STANDARD_HA",
+    ///             MemorySizeGb = 5,
+    ///             LocationId = "us-central1-a",
+    ///             AlternativeLocationId = "us-central1-f",
+    ///             AuthorizedNetwork = redis_network.Apply(redis_network =&gt; redis_network.Id),
+    ///             RedisVersion = "REDIS_6_X",
+    ///             DisplayName = "Terraform Test Instance",
+    ///             ReservedIpRange = "192.168.0.0/28",
+    ///             ReplicaCount = 5,
+    ///             ReadReplicasMode = "READ_REPLICAS_ENABLED",
+    ///             Labels = 
+    ///             {
+    ///                 { "my_key", "my_val" },
+    ///                 { "other_key", "other_val" },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -240,6 +279,12 @@ namespace Pulumi.Gcp.Redis
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Output only. Info per node.
+        /// </summary>
+        [Output("nodes")]
+        public Output<ImmutableArray<Outputs.InstanceNode>> Nodes { get; private set; } = null!;
+
+        /// <summary>
         /// Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
         /// "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
         /// operation.
@@ -259,6 +304,31 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy
+        /// replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write
+        /// requests must target 'host'.
+        /// </summary>
+        [Output("readEndpoint")]
+        public Output<string> ReadEndpoint { get; private set; } = null!;
+
+        /// <summary>
+        /// Output only. The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target
+        /// 'port'.
+        /// </summary>
+        [Output("readEndpointPort")]
+        public Output<int> ReadEndpointPort { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Read replica mode. Can only be specified when trying to create the instance. If not set, Memorystore Redis
+        /// backend will default to READ_REPLICAS_DISABLED. - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be
+        /// provided and the instance cannot scale up or down the number of replicas. - READ_REPLICAS_ENABLED: If enabled, read
+        /// endpoint will be provided and the instance can scale up and down the number of replicas. Default value:
+        /// "READ_REPLICAS_DISABLED" Possible values: ["READ_REPLICAS_DISABLED", "READ_REPLICAS_ENABLED"]
+        /// </summary>
+        [Output("readReplicasMode")]
+        public Output<string?> ReadReplicasMode { get; private set; } = null!;
 
         /// <summary>
         /// Redis configuration parameters, according to http://redis.io/topics/config.
@@ -281,6 +351,14 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and
+        /// defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default
+        /// is 1. The valid value for basic tier is 0 and the default is also 0.
+        /// </summary>
+        [Output("replicaCount")]
+        public Output<int> ReplicaCount { get; private set; } = null!;
 
         /// <summary>
         /// The CIDR range of internal addresses that are reserved for this
@@ -310,7 +388,7 @@ namespace Pulumi.Gcp.Redis
 
         /// <summary>
         /// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
-        /// - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentcation
+        /// - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
         /// Default value is `DISABLED`.
         /// Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
         /// </summary>
@@ -443,6 +521,16 @@ namespace Pulumi.Gcp.Redis
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Optional. Read replica mode. Can only be specified when trying to create the instance. If not set, Memorystore Redis
+        /// backend will default to READ_REPLICAS_DISABLED. - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be
+        /// provided and the instance cannot scale up or down the number of replicas. - READ_REPLICAS_ENABLED: If enabled, read
+        /// endpoint will be provided and the instance can scale up and down the number of replicas. Default value:
+        /// "READ_REPLICAS_DISABLED" Possible values: ["READ_REPLICAS_DISABLED", "READ_REPLICAS_ENABLED"]
+        /// </summary>
+        [Input("readReplicasMode")]
+        public Input<string>? ReadReplicasMode { get; set; }
+
         [Input("redisConfigs")]
         private InputMap<string>? _redisConfigs;
 
@@ -472,6 +560,14 @@ namespace Pulumi.Gcp.Redis
         public Input<string>? Region { get; set; }
 
         /// <summary>
+        /// Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and
+        /// defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default
+        /// is 1. The valid value for basic tier is 0 and the default is also 0.
+        /// </summary>
+        [Input("replicaCount")]
+        public Input<int>? ReplicaCount { get; set; }
+
+        /// <summary>
         /// The CIDR range of internal addresses that are reserved for this
         /// instance. If not provided, the service will choose an unused /29
         /// block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be
@@ -493,7 +589,7 @@ namespace Pulumi.Gcp.Redis
 
         /// <summary>
         /// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
-        /// - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentcation
+        /// - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
         /// Default value is `DISABLED`.
         /// Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
         /// </summary>
@@ -606,6 +702,18 @@ namespace Pulumi.Gcp.Redis
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("nodes")]
+        private InputList<Inputs.InstanceNodeGetArgs>? _nodes;
+
+        /// <summary>
+        /// Output only. Info per node.
+        /// </summary>
+        public InputList<Inputs.InstanceNodeGetArgs> Nodes
+        {
+            get => _nodes ?? (_nodes = new InputList<Inputs.InstanceNodeGetArgs>());
+            set => _nodes = value;
+        }
+
         /// <summary>
         /// Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
         /// "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
@@ -626,6 +734,31 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy
+        /// replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write
+        /// requests must target 'host'.
+        /// </summary>
+        [Input("readEndpoint")]
+        public Input<string>? ReadEndpoint { get; set; }
+
+        /// <summary>
+        /// Output only. The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target
+        /// 'port'.
+        /// </summary>
+        [Input("readEndpointPort")]
+        public Input<int>? ReadEndpointPort { get; set; }
+
+        /// <summary>
+        /// Optional. Read replica mode. Can only be specified when trying to create the instance. If not set, Memorystore Redis
+        /// backend will default to READ_REPLICAS_DISABLED. - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be
+        /// provided and the instance cannot scale up or down the number of replicas. - READ_REPLICAS_ENABLED: If enabled, read
+        /// endpoint will be provided and the instance can scale up and down the number of replicas. Default value:
+        /// "READ_REPLICAS_DISABLED" Possible values: ["READ_REPLICAS_DISABLED", "READ_REPLICAS_ENABLED"]
+        /// </summary>
+        [Input("readReplicasMode")]
+        public Input<string>? ReadReplicasMode { get; set; }
 
         [Input("redisConfigs")]
         private InputMap<string>? _redisConfigs;
@@ -654,6 +787,14 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and
+        /// defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default
+        /// is 1. The valid value for basic tier is 0 and the default is also 0.
+        /// </summary>
+        [Input("replicaCount")]
+        public Input<int>? ReplicaCount { get; set; }
 
         /// <summary>
         /// The CIDR range of internal addresses that are reserved for this
@@ -689,7 +830,7 @@ namespace Pulumi.Gcp.Redis
 
         /// <summary>
         /// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
-        /// - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentcation
+        /// - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
         /// Default value is `DISABLED`.
         /// Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
         /// </summary>

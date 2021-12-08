@@ -141,10 +141,10 @@ type Instance struct {
 	// the instance is created. The name must be between 6 and 30 characters
 	// in length.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The number of nodes allocated to this instance. At most one of either node_count or processing_units can be present in
+	// The number of nodes allocated to this instance. Exactly one of either node_count or processing_units must be present in
 	// terraform.
 	NumNodes pulumi.IntOutput `pulumi:"numNodes"`
-	// The number of processing units allocated to this instance. At most one of processing_units or node_count can be present
+	// The number of processing units allocated to this instance. Exactly one of processing_units or node_count must be present
 	// in terraform.
 	ProcessingUnits pulumi.IntOutput `pulumi:"processingUnits"`
 	// The ID of the project in which the resource belongs.
@@ -209,10 +209,10 @@ type instanceState struct {
 	// the instance is created. The name must be between 6 and 30 characters
 	// in length.
 	Name *string `pulumi:"name"`
-	// The number of nodes allocated to this instance. At most one of either node_count or processing_units can be present in
+	// The number of nodes allocated to this instance. Exactly one of either node_count or processing_units must be present in
 	// terraform.
 	NumNodes *int `pulumi:"numNodes"`
-	// The number of processing units allocated to this instance. At most one of processing_units or node_count can be present
+	// The number of processing units allocated to this instance. Exactly one of processing_units or node_count must be present
 	// in terraform.
 	ProcessingUnits *int `pulumi:"processingUnits"`
 	// The ID of the project in which the resource belongs.
@@ -243,10 +243,10 @@ type InstanceState struct {
 	// the instance is created. The name must be between 6 and 30 characters
 	// in length.
 	Name pulumi.StringPtrInput
-	// The number of nodes allocated to this instance. At most one of either node_count or processing_units can be present in
+	// The number of nodes allocated to this instance. Exactly one of either node_count or processing_units must be present in
 	// terraform.
 	NumNodes pulumi.IntPtrInput
-	// The number of processing units allocated to this instance. At most one of processing_units or node_count can be present
+	// The number of processing units allocated to this instance. Exactly one of processing_units or node_count must be present
 	// in terraform.
 	ProcessingUnits pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs.
@@ -281,10 +281,10 @@ type instanceArgs struct {
 	// the instance is created. The name must be between 6 and 30 characters
 	// in length.
 	Name *string `pulumi:"name"`
-	// The number of nodes allocated to this instance. At most one of either node_count or processing_units can be present in
+	// The number of nodes allocated to this instance. Exactly one of either node_count or processing_units must be present in
 	// terraform.
 	NumNodes *int `pulumi:"numNodes"`
-	// The number of processing units allocated to this instance. At most one of processing_units or node_count can be present
+	// The number of processing units allocated to this instance. Exactly one of processing_units or node_count must be present
 	// in terraform.
 	ProcessingUnits *int `pulumi:"processingUnits"`
 	// The ID of the project in which the resource belongs.
@@ -314,10 +314,10 @@ type InstanceArgs struct {
 	// the instance is created. The name must be between 6 and 30 characters
 	// in length.
 	Name pulumi.StringPtrInput
-	// The number of nodes allocated to this instance. At most one of either node_count or processing_units can be present in
+	// The number of nodes allocated to this instance. Exactly one of either node_count or processing_units must be present in
 	// terraform.
 	NumNodes pulumi.IntPtrInput
-	// The number of processing units allocated to this instance. At most one of processing_units or node_count can be present
+	// The number of processing units allocated to this instance. Exactly one of processing_units or node_count must be present
 	// in terraform.
 	ProcessingUnits pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs.

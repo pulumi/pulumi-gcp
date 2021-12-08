@@ -165,12 +165,17 @@ namespace Pulumi.Gcp.Redis
         public readonly string LocationId;
         public readonly int MemorySizeGb;
         public readonly string Name;
+        public readonly ImmutableArray<Outputs.GetInstanceNodeResult> Nodes;
         public readonly string PersistenceIamIdentity;
         public readonly int Port;
         public readonly string? Project;
+        public readonly string ReadEndpoint;
+        public readonly int ReadEndpointPort;
+        public readonly string ReadReplicasMode;
         public readonly ImmutableDictionary<string, string> RedisConfigs;
         public readonly string RedisVersion;
         public readonly string? Region;
+        public readonly int ReplicaCount;
         public readonly string ReservedIpRange;
         public readonly ImmutableArray<Outputs.GetInstanceServerCaCertResult> ServerCaCerts;
         public readonly string Tier;
@@ -206,17 +211,27 @@ namespace Pulumi.Gcp.Redis
 
             string name,
 
+            ImmutableArray<Outputs.GetInstanceNodeResult> nodes,
+
             string persistenceIamIdentity,
 
             int port,
 
             string? project,
 
+            string readEndpoint,
+
+            int readEndpointPort,
+
+            string readReplicasMode,
+
             ImmutableDictionary<string, string> redisConfigs,
 
             string redisVersion,
 
             string? region,
+
+            int replicaCount,
 
             string reservedIpRange,
 
@@ -240,12 +255,17 @@ namespace Pulumi.Gcp.Redis
             LocationId = locationId;
             MemorySizeGb = memorySizeGb;
             Name = name;
+            Nodes = nodes;
             PersistenceIamIdentity = persistenceIamIdentity;
             Port = port;
             Project = project;
+            ReadEndpoint = readEndpoint;
+            ReadEndpointPort = readEndpointPort;
+            ReadReplicasMode = readReplicasMode;
             RedisConfigs = redisConfigs;
             RedisVersion = redisVersion;
             Region = region;
+            ReplicaCount = replicaCount;
             ReservedIpRange = reservedIpRange;
             ServerCaCerts = serverCaCerts;
             Tier = tier;

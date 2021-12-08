@@ -140,6 +140,48 @@ import (
 // 	})
 // }
 // ```
+// ### Redis Instance Mrr
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/redis"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		redis_network, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
+// 			Name: "redis-test-network",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = redis.NewInstance(ctx, "cache", &redis.InstanceArgs{
+// 			Tier:                  pulumi.String("STANDARD_HA"),
+// 			MemorySizeGb:          pulumi.Int(5),
+// 			LocationId:            pulumi.String("us-central1-a"),
+// 			AlternativeLocationId: pulumi.String("us-central1-f"),
+// 			AuthorizedNetwork:     pulumi.String(redis_network.Id),
+// 			RedisVersion:          pulumi.String("REDIS_6_X"),
+// 			DisplayName:           pulumi.String("Terraform Test Instance"),
+// 			ReservedIpRange:       pulumi.String("192.168.0.0/28"),
+// 			ReplicaCount:          pulumi.Int(5),
+// 			ReadReplicasMode:      pulumi.String("READ_REPLICAS_ENABLED"),
+// 			Labels: pulumi.StringMap{
+// 				"my_key":    pulumi.String("my_val"),
+// 				"other_key": pulumi.String("other_val"),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //
@@ -204,6 +246,8 @@ type Instance struct {
 	MemorySizeGb pulumi.IntOutput `pulumi:"memorySizeGb"`
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Output only. Info per node.
+	Nodes InstanceNodeArrayOutput `pulumi:"nodes"`
 	// Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
 	// "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
 	// operation.
@@ -213,6 +257,19 @@ type Instance struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy
+	// replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write
+	// requests must target 'host'.
+	ReadEndpoint pulumi.StringOutput `pulumi:"readEndpoint"`
+	// Output only. The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target
+	// 'port'.
+	ReadEndpointPort pulumi.IntOutput `pulumi:"readEndpointPort"`
+	// Optional. Read replica mode. Can only be specified when trying to create the instance. If not set, Memorystore Redis
+	// backend will default to READ_REPLICAS_DISABLED. - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be
+	// provided and the instance cannot scale up or down the number of replicas. - READ_REPLICAS_ENABLED: If enabled, read
+	// endpoint will be provided and the instance can scale up and down the number of replicas. Default value:
+	// "READ_REPLICAS_DISABLED" Possible values: ["READ_REPLICAS_DISABLED", "READ_REPLICAS_ENABLED"]
+	ReadReplicasMode pulumi.StringPtrOutput `pulumi:"readReplicasMode"`
 	// Redis configuration parameters, according to http://redis.io/topics/config.
 	// Please check Memorystore documentation for the list of supported parameters:
 	// https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
@@ -223,6 +280,10 @@ type Instance struct {
 	RedisVersion pulumi.StringOutput `pulumi:"redisVersion"`
 	// The name of the Redis region of the instance.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and
+	// defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default
+	// is 1. The valid value for basic tier is 0 and the default is also 0.
+	ReplicaCount pulumi.IntOutput `pulumi:"replicaCount"`
 	// The CIDR range of internal addresses that are reserved for this
 	// instance. If not provided, the service will choose an unused /29
 	// block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be
@@ -238,7 +299,7 @@ type Instance struct {
 	//   Possible values are `BASIC` and `STANDARD_HA`.
 	Tier pulumi.StringPtrOutput `pulumi:"tier"`
 	// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
-	// - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentcation
+	// - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
 	//   Default value is `DISABLED`.
 	//   Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
 	TransitEncryptionMode pulumi.StringPtrOutput `pulumi:"transitEncryptionMode"`
@@ -317,6 +378,8 @@ type instanceState struct {
 	MemorySizeGb *int `pulumi:"memorySizeGb"`
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name *string `pulumi:"name"`
+	// Output only. Info per node.
+	Nodes []InstanceNode `pulumi:"nodes"`
 	// Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
 	// "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
 	// operation.
@@ -326,6 +389,19 @@ type instanceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy
+	// replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write
+	// requests must target 'host'.
+	ReadEndpoint *string `pulumi:"readEndpoint"`
+	// Output only. The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target
+	// 'port'.
+	ReadEndpointPort *int `pulumi:"readEndpointPort"`
+	// Optional. Read replica mode. Can only be specified when trying to create the instance. If not set, Memorystore Redis
+	// backend will default to READ_REPLICAS_DISABLED. - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be
+	// provided and the instance cannot scale up or down the number of replicas. - READ_REPLICAS_ENABLED: If enabled, read
+	// endpoint will be provided and the instance can scale up and down the number of replicas. Default value:
+	// "READ_REPLICAS_DISABLED" Possible values: ["READ_REPLICAS_DISABLED", "READ_REPLICAS_ENABLED"]
+	ReadReplicasMode *string `pulumi:"readReplicasMode"`
 	// Redis configuration parameters, according to http://redis.io/topics/config.
 	// Please check Memorystore documentation for the list of supported parameters:
 	// https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
@@ -336,6 +412,10 @@ type instanceState struct {
 	RedisVersion *string `pulumi:"redisVersion"`
 	// The name of the Redis region of the instance.
 	Region *string `pulumi:"region"`
+	// Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and
+	// defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default
+	// is 1. The valid value for basic tier is 0 and the default is also 0.
+	ReplicaCount *int `pulumi:"replicaCount"`
 	// The CIDR range of internal addresses that are reserved for this
 	// instance. If not provided, the service will choose an unused /29
 	// block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be
@@ -351,7 +431,7 @@ type instanceState struct {
 	//   Possible values are `BASIC` and `STANDARD_HA`.
 	Tier *string `pulumi:"tier"`
 	// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
-	// - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentcation
+	// - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
 	//   Default value is `DISABLED`.
 	//   Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
 	TransitEncryptionMode *string `pulumi:"transitEncryptionMode"`
@@ -399,6 +479,8 @@ type InstanceState struct {
 	MemorySizeGb pulumi.IntPtrInput
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name pulumi.StringPtrInput
+	// Output only. Info per node.
+	Nodes InstanceNodeArrayInput
 	// Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
 	// "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
 	// operation.
@@ -408,6 +490,19 @@ type InstanceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy
+	// replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write
+	// requests must target 'host'.
+	ReadEndpoint pulumi.StringPtrInput
+	// Output only. The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target
+	// 'port'.
+	ReadEndpointPort pulumi.IntPtrInput
+	// Optional. Read replica mode. Can only be specified when trying to create the instance. If not set, Memorystore Redis
+	// backend will default to READ_REPLICAS_DISABLED. - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be
+	// provided and the instance cannot scale up or down the number of replicas. - READ_REPLICAS_ENABLED: If enabled, read
+	// endpoint will be provided and the instance can scale up and down the number of replicas. Default value:
+	// "READ_REPLICAS_DISABLED" Possible values: ["READ_REPLICAS_DISABLED", "READ_REPLICAS_ENABLED"]
+	ReadReplicasMode pulumi.StringPtrInput
 	// Redis configuration parameters, according to http://redis.io/topics/config.
 	// Please check Memorystore documentation for the list of supported parameters:
 	// https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
@@ -418,6 +513,10 @@ type InstanceState struct {
 	RedisVersion pulumi.StringPtrInput
 	// The name of the Redis region of the instance.
 	Region pulumi.StringPtrInput
+	// Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and
+	// defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default
+	// is 1. The valid value for basic tier is 0 and the default is also 0.
+	ReplicaCount pulumi.IntPtrInput
 	// The CIDR range of internal addresses that are reserved for this
 	// instance. If not provided, the service will choose an unused /29
 	// block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be
@@ -433,7 +532,7 @@ type InstanceState struct {
 	//   Possible values are `BASIC` and `STANDARD_HA`.
 	Tier pulumi.StringPtrInput
 	// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
-	// - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentcation
+	// - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
 	//   Default value is `DISABLED`.
 	//   Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
 	TransitEncryptionMode pulumi.StringPtrInput
@@ -478,6 +577,12 @@ type instanceArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Optional. Read replica mode. Can only be specified when trying to create the instance. If not set, Memorystore Redis
+	// backend will default to READ_REPLICAS_DISABLED. - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be
+	// provided and the instance cannot scale up or down the number of replicas. - READ_REPLICAS_ENABLED: If enabled, read
+	// endpoint will be provided and the instance can scale up and down the number of replicas. Default value:
+	// "READ_REPLICAS_DISABLED" Possible values: ["READ_REPLICAS_DISABLED", "READ_REPLICAS_ENABLED"]
+	ReadReplicasMode *string `pulumi:"readReplicasMode"`
 	// Redis configuration parameters, according to http://redis.io/topics/config.
 	// Please check Memorystore documentation for the list of supported parameters:
 	// https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
@@ -488,6 +593,10 @@ type instanceArgs struct {
 	RedisVersion *string `pulumi:"redisVersion"`
 	// The name of the Redis region of the instance.
 	Region *string `pulumi:"region"`
+	// Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and
+	// defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default
+	// is 1. The valid value for basic tier is 0 and the default is also 0.
+	ReplicaCount *int `pulumi:"replicaCount"`
 	// The CIDR range of internal addresses that are reserved for this
 	// instance. If not provided, the service will choose an unused /29
 	// block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be
@@ -501,7 +610,7 @@ type instanceArgs struct {
 	//   Possible values are `BASIC` and `STANDARD_HA`.
 	Tier *string `pulumi:"tier"`
 	// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
-	// - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentcation
+	// - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
 	//   Default value is `DISABLED`.
 	//   Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
 	TransitEncryptionMode *string `pulumi:"transitEncryptionMode"`
@@ -543,6 +652,12 @@ type InstanceArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Optional. Read replica mode. Can only be specified when trying to create the instance. If not set, Memorystore Redis
+	// backend will default to READ_REPLICAS_DISABLED. - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be
+	// provided and the instance cannot scale up or down the number of replicas. - READ_REPLICAS_ENABLED: If enabled, read
+	// endpoint will be provided and the instance can scale up and down the number of replicas. Default value:
+	// "READ_REPLICAS_DISABLED" Possible values: ["READ_REPLICAS_DISABLED", "READ_REPLICAS_ENABLED"]
+	ReadReplicasMode pulumi.StringPtrInput
 	// Redis configuration parameters, according to http://redis.io/topics/config.
 	// Please check Memorystore documentation for the list of supported parameters:
 	// https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
@@ -553,6 +668,10 @@ type InstanceArgs struct {
 	RedisVersion pulumi.StringPtrInput
 	// The name of the Redis region of the instance.
 	Region pulumi.StringPtrInput
+	// Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and
+	// defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default
+	// is 1. The valid value for basic tier is 0 and the default is also 0.
+	ReplicaCount pulumi.IntPtrInput
 	// The CIDR range of internal addresses that are reserved for this
 	// instance. If not provided, the service will choose an unused /29
 	// block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be
@@ -566,7 +685,7 @@ type InstanceArgs struct {
 	//   Possible values are `BASIC` and `STANDARD_HA`.
 	Tier pulumi.StringPtrInput
 	// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
-	// - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentcation
+	// - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
 	//   Default value is `DISABLED`.
 	//   Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
 	TransitEncryptionMode pulumi.StringPtrInput

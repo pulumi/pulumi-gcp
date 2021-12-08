@@ -27,7 +27,9 @@ import * as utilities from "../utilities";
  *         members: ["user:jane@example.com"],
  *     }],
  * });
- * const policy = new gcp.servicedirectory.ServiceIamPolicy("policy", {policyData: admin.then(admin => admin.policyData)});
+ * const policy = new gcp.servicedirectory.ServiceIamPolicy("policy", {policyData: admin.then(admin => admin.policyData)}, {
+ *     provider: google_beta,
+ * });
  * ```
  *
  * ## google\_service\_directory\_service\_iam\_binding
@@ -39,6 +41,8 @@ import * as utilities from "../utilities";
  * const binding = new gcp.servicedirectory.ServiceIamBinding("binding", {
  *     role: "roles/viewer",
  *     members: ["user:jane@example.com"],
+ * }, {
+ *     provider: google_beta,
  * });
  * ```
  *
@@ -51,6 +55,8 @@ import * as utilities from "../utilities";
  * const member = new gcp.servicedirectory.ServiceIamMember("member", {
  *     role: "roles/viewer",
  *     member: "user:jane@example.com",
+ * }, {
+ *     provider: google_beta,
  * });
  * ```
  *

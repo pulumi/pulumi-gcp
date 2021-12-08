@@ -21,7 +21,7 @@ import (
 //
 // > **Note:** `bigtable.TableIamBinding` resources **can be** used in conjunction with `bigtable.TableIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_bigtable\_instance\_iam\_policy
+// ## google\_bigtable\_table\_iam\_policy
 //
 // ```go
 // package main
@@ -61,7 +61,7 @@ import (
 // }
 // ```
 //
-// ## google\_bigtable\_instance\_iam\_binding
+// ## google\_bigtable\_table\_iam\_binding
 //
 // ```go
 // package main
@@ -89,7 +89,7 @@ import (
 // }
 // ```
 //
-// ## google\_bigtable\_instance\_iam\_member
+// ## google\_bigtable\_table\_iam\_member
 //
 // ```go
 // package main
@@ -117,7 +117,7 @@ import (
 //
 // ## Import
 //
-// Instance IAM resources can be imported using the project, table name, role and/or member.
+// Table IAM resources can be imported using the project, table name, role and/or member.
 //
 // ```sh
 //  $ pulumi import gcp:bigtable/tableIamMember:TableIamMember editor "projects/{project}/tables/{table}"

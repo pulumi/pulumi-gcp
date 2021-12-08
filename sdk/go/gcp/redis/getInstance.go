@@ -75,12 +75,17 @@ type LookupInstanceResult struct {
 	LocationId             string                    `pulumi:"locationId"`
 	MemorySizeGb           int                       `pulumi:"memorySizeGb"`
 	Name                   string                    `pulumi:"name"`
+	Nodes                  []GetInstanceNode         `pulumi:"nodes"`
 	PersistenceIamIdentity string                    `pulumi:"persistenceIamIdentity"`
 	Port                   int                       `pulumi:"port"`
 	Project                *string                   `pulumi:"project"`
+	ReadEndpoint           string                    `pulumi:"readEndpoint"`
+	ReadEndpointPort       int                       `pulumi:"readEndpointPort"`
+	ReadReplicasMode       string                    `pulumi:"readReplicasMode"`
 	RedisConfigs           map[string]string         `pulumi:"redisConfigs"`
 	RedisVersion           string                    `pulumi:"redisVersion"`
 	Region                 *string                   `pulumi:"region"`
+	ReplicaCount           int                       `pulumi:"replicaCount"`
 	ReservedIpRange        string                    `pulumi:"reservedIpRange"`
 	ServerCaCerts          []GetInstanceServerCaCert `pulumi:"serverCaCerts"`
 	Tier                   string                    `pulumi:"tier"`
@@ -184,6 +189,10 @@ func (o LookupInstanceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o LookupInstanceResultOutput) Nodes() GetInstanceNodeArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceNode { return v.Nodes }).(GetInstanceNodeArrayOutput)
+}
+
 func (o LookupInstanceResultOutput) PersistenceIamIdentity() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.PersistenceIamIdentity }).(pulumi.StringOutput)
 }
@@ -196,6 +205,18 @@ func (o LookupInstanceResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInstanceResult) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
+func (o LookupInstanceResultOutput) ReadEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.ReadEndpoint }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) ReadEndpointPort() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupInstanceResult) int { return v.ReadEndpointPort }).(pulumi.IntOutput)
+}
+
+func (o LookupInstanceResultOutput) ReadReplicasMode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.ReadReplicasMode }).(pulumi.StringOutput)
+}
+
 func (o LookupInstanceResultOutput) RedisConfigs() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.RedisConfigs }).(pulumi.StringMapOutput)
 }
@@ -206,6 +227,10 @@ func (o LookupInstanceResultOutput) RedisVersion() pulumi.StringOutput {
 
 func (o LookupInstanceResultOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInstanceResult) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupInstanceResultOutput) ReplicaCount() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupInstanceResult) int { return v.ReplicaCount }).(pulumi.IntOutput)
 }
 
 func (o LookupInstanceResultOutput) ReservedIpRange() pulumi.StringOutput {

@@ -193,7 +193,8 @@ class NamespaceIamBinding(pulumi.CustomResource):
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
-        policy = gcp.servicedirectory.NamespaceIamPolicy("policy", policy_data=admin.policy_data)
+        policy = gcp.servicedirectory.NamespaceIamPolicy("policy", policy_data=admin.policy_data,
+        opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## google\_service\_directory\_namespace\_iam\_binding
@@ -204,7 +205,8 @@ class NamespaceIamBinding(pulumi.CustomResource):
 
         binding = gcp.servicedirectory.NamespaceIamBinding("binding",
             role="roles/viewer",
-            members=["user:jane@example.com"])
+            members=["user:jane@example.com"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## google\_service\_directory\_namespace\_iam\_member
@@ -215,7 +217,8 @@ class NamespaceIamBinding(pulumi.CustomResource):
 
         member = gcp.servicedirectory.NamespaceIamMember("member",
             role="roles/viewer",
-            member="user:jane@example.com")
+            member="user:jane@example.com",
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import
@@ -276,7 +279,8 @@ class NamespaceIamBinding(pulumi.CustomResource):
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
-        policy = gcp.servicedirectory.NamespaceIamPolicy("policy", policy_data=admin.policy_data)
+        policy = gcp.servicedirectory.NamespaceIamPolicy("policy", policy_data=admin.policy_data,
+        opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## google\_service\_directory\_namespace\_iam\_binding
@@ -287,7 +291,8 @@ class NamespaceIamBinding(pulumi.CustomResource):
 
         binding = gcp.servicedirectory.NamespaceIamBinding("binding",
             role="roles/viewer",
-            members=["user:jane@example.com"])
+            members=["user:jane@example.com"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## google\_service\_directory\_namespace\_iam\_member
@@ -298,7 +303,8 @@ class NamespaceIamBinding(pulumi.CustomResource):
 
         member = gcp.servicedirectory.NamespaceIamMember("member",
             role="roles/viewer",
-            member="user:jane@example.com")
+            member="user:jane@example.com",
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import

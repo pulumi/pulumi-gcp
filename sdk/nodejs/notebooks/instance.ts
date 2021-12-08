@@ -314,7 +314,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly subnet!: pulumi.Output<string>;
     /**
-     * The Compute Engine tags to add to runtime.
+     * The Compute Engine tags to add to instance.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
@@ -591,7 +591,7 @@ export interface InstanceState {
      */
     subnet?: pulumi.Input<string>;
     /**
-     * The Compute Engine tags to add to runtime.
+     * The Compute Engine tags to add to instance.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -764,7 +764,7 @@ export interface InstanceArgs {
      */
     subnet?: pulumi.Input<string>;
     /**
-     * The Compute Engine tags to add to runtime.
+     * The Compute Engine tags to add to instance.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**

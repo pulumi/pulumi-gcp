@@ -31,6 +31,8 @@ import * as utilities from "../utilities";
  *     api: google_api_gateway_api_config.api_cfg.api,
  *     apiConfig: google_api_gateway_api_config.api_cfg.api_config_id,
  *     policyData: admin.then(admin => admin.policyData),
+ * }, {
+ *     provider: google_beta,
  * });
  * ```
  *
@@ -45,6 +47,8 @@ import * as utilities from "../utilities";
  *     apiConfig: google_api_gateway_api_config.api_cfg.api_config_id,
  *     role: "roles/apigateway.viewer",
  *     members: ["user:jane@example.com"],
+ * }, {
+ *     provider: google_beta,
  * });
  * ```
  *
@@ -59,6 +63,8 @@ import * as utilities from "../utilities";
  *     apiConfig: google_api_gateway_api_config.api_cfg.api_config_id,
  *     role: "roles/apigateway.viewer",
  *     member: "user:jane@example.com",
+ * }, {
+ *     provider: google_beta,
  * });
  * ```
  *

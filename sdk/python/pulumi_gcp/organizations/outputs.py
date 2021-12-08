@@ -19,6 +19,7 @@ __all__ = [
     'PolicyListPolicyAllow',
     'PolicyListPolicyDeny',
     'PolicyRestorePolicy',
+    'GetFoldersFolderResult',
     'GetIAMPolicyAuditConfigResult',
     'GetIAMPolicyAuditConfigAuditLogConfigResult',
     'GetIAMPolicyBindingResult',
@@ -379,6 +380,101 @@ class PolicyRestorePolicy(dict):
         May only be set to true. If set, then the default Policy is restored.
         """
         return pulumi.get(self, "default")
+
+
+@pulumi.output_type
+class GetFoldersFolderResult(dict):
+    def __init__(__self__, *,
+                 create_time: str,
+                 delete_time: str,
+                 display_name: str,
+                 etag: str,
+                 name: str,
+                 parent: str,
+                 state: str,
+                 update_time: str):
+        """
+        :param str create_time: The timestamp of when the folder was created
+        :param str delete_time: The timestamp of when the folder was requested to be deleted (if applicable)
+        :param str display_name: The display name of the folder
+        :param str etag: Entity tag identifier of the folder
+        :param str name: The id of the folder
+        :param str parent: The parent id of the folder
+        :param str state: The lifecycle state of the folder
+        :param str update_time: The timestamp of when the folder was last modified
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "delete_time", delete_time)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "etag", etag)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "parent", parent)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The timestamp of when the folder was created
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deleteTime")
+    def delete_time(self) -> str:
+        """
+        The timestamp of when the folder was requested to be deleted (if applicable)
+        """
+        return pulumi.get(self, "delete_time")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        The display name of the folder
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> str:
+        """
+        Entity tag identifier of the folder
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The id of the folder
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def parent(self) -> str:
+        """
+        The parent id of the folder
+        """
+        return pulumi.get(self, "parent")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The lifecycle state of the folder
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        The timestamp of when the folder was last modified
+        """
+        return pulumi.get(self, "update_time")
 
 
 @pulumi.output_type

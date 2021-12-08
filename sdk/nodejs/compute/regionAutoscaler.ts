@@ -25,31 +25,27 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const debian9 = gcp.compute.getImage({
- *     family: "debian-9",
- *     project: "debian-cloud",
- * });
  * const foobarInstanceTemplate = new gcp.compute.InstanceTemplate("foobarInstanceTemplate", {
- *     machineType: "e2-medium",
- *     canIpForward: false,
- *     tags: [
- *         "foo",
- *         "bar",
- *     ],
+ *     machineType: "e2-standard-4",
  *     disks: [{
- *         sourceImage: debian9.then(debian9 => debian9.id),
+ *         sourceImage: "debian-cloud/debian-9",
+ *         diskSizeGb: 250,
  *     }],
  *     networkInterfaces: [{
  *         network: "default",
+ *         accessConfigs: [{
+ *             networkTier: "PREMIUM",
+ *         }],
  *     }],
- *     metadata: {
- *         foo: "bar",
- *     },
  *     serviceAccount: {
  *         scopes: [
- *             "userinfo-email",
- *             "compute-ro",
- *             "storage-ro",
+ *             "https://www.googleapis.com/auth/devstorage.read_only",
+ *             "https://www.googleapis.com/auth/logging.write",
+ *             "https://www.googleapis.com/auth/monitoring.write",
+ *             "https://www.googleapis.com/auth/pubsub",
+ *             "https://www.googleapis.com/auth/service.management.readonly",
+ *             "https://www.googleapis.com/auth/servicecontrol",
+ *             "https://www.googleapis.com/auth/trace.append",
  *         ],
  *     },
  * });
@@ -74,6 +70,10 @@ import * as utilities from "../utilities";
  *             target: 0.5,
  *         },
  *     },
+ * });
+ * const debian9 = gcp.compute.getImage({
+ *     family: "debian-9",
+ *     project: "debian-cloud",
  * });
  * ```
  *

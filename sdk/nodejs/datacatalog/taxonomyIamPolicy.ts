@@ -30,6 +30,8 @@ import * as utilities from "../utilities";
  * const policy = new gcp.datacatalog.TaxonomyIamPolicy("policy", {
  *     taxonomy: google_data_catalog_taxonomy.basic_taxonomy.name,
  *     policyData: admin.then(admin => admin.policyData),
+ * }, {
+ *     provider: google_beta,
  * });
  * ```
  *
@@ -43,6 +45,8 @@ import * as utilities from "../utilities";
  *     taxonomy: google_data_catalog_taxonomy.basic_taxonomy.name,
  *     role: "roles/viewer",
  *     members: ["user:jane@example.com"],
+ * }, {
+ *     provider: google_beta,
  * });
  * ```
  *
@@ -56,6 +60,8 @@ import * as utilities from "../utilities";
  *     taxonomy: google_data_catalog_taxonomy.basic_taxonomy.name,
  *     role: "roles/viewer",
  *     member: "user:jane@example.com",
+ * }, {
+ *     provider: google_beta,
  * });
  * ```
  *

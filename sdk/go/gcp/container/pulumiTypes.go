@@ -5024,6 +5024,8 @@ type ClusterNodeConfig struct {
 	// [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
 	// for more information.
 	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
+	// Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on [sole tenant nodes](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes).
+	NodeGroup *string `pulumi:"nodeGroup"`
 	// The set of Google API scopes to be made available
 	// on all of the node VMs under the "default" service account.
 	// Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
@@ -5032,7 +5034,8 @@ type ClusterNodeConfig struct {
 	// are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
 	// for more information. Defaults to false.
 	Preemptible *bool `pulumi:"preemptible"`
-	// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+	// ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+	// > > > > > > > v4.3.0
 	// Structure is documented below.
 	SandboxConfig *ClusterNodeConfigSandboxConfig `pulumi:"sandboxConfig"`
 	// The service account to be used by the Node VMs.
@@ -5040,6 +5043,10 @@ type ClusterNodeConfig struct {
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Shielded Instance options. Structure is documented below.
 	ShieldedInstanceConfig *ClusterNodeConfigShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
+	// ) A boolean
+	// that represents whether the underlying node VMs are spot. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
+	// for more information. Defaults to false.
+	Spot *bool `pulumi:"spot"`
 	// The list of instance tags applied to all nodes. Tags are used to identify
 	// valid sources or targets for network firewalls.
 	Tags []string `pulumi:"tags"`
@@ -5120,6 +5127,8 @@ type ClusterNodeConfigArgs struct {
 	// [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
 	// for more information.
 	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
+	// Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on [sole tenant nodes](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes).
+	NodeGroup pulumi.StringPtrInput `pulumi:"nodeGroup"`
 	// The set of Google API scopes to be made available
 	// on all of the node VMs under the "default" service account.
 	// Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
@@ -5128,7 +5137,8 @@ type ClusterNodeConfigArgs struct {
 	// are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
 	// for more information. Defaults to false.
 	Preemptible pulumi.BoolPtrInput `pulumi:"preemptible"`
-	// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+	// ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+	// > > > > > > > v4.3.0
 	// Structure is documented below.
 	SandboxConfig ClusterNodeConfigSandboxConfigPtrInput `pulumi:"sandboxConfig"`
 	// The service account to be used by the Node VMs.
@@ -5136,6 +5146,10 @@ type ClusterNodeConfigArgs struct {
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// Shielded Instance options. Structure is documented below.
 	ShieldedInstanceConfig ClusterNodeConfigShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
+	// ) A boolean
+	// that represents whether the underlying node VMs are spot. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
+	// for more information. Defaults to false.
+	Spot pulumi.BoolPtrInput `pulumi:"spot"`
 	// The list of instance tags applied to all nodes. Tags are used to identify
 	// valid sources or targets for network firewalls.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
@@ -5323,6 +5337,11 @@ func (o ClusterNodeConfigOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
 }
 
+// Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on [sole tenant nodes](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes).
+func (o ClusterNodeConfigOutput) NodeGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.NodeGroup }).(pulumi.StringPtrOutput)
+}
+
 // The set of Google API scopes to be made available
 // on all of the node VMs under the "default" service account.
 // Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
@@ -5337,7 +5356,8 @@ func (o ClusterNodeConfigOutput) Preemptible() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *bool { return v.Preemptible }).(pulumi.BoolPtrOutput)
 }
 
-// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+// ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+// > > > > > > > v4.3.0
 // Structure is documented below.
 func (o ClusterNodeConfigOutput) SandboxConfig() ClusterNodeConfigSandboxConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigSandboxConfig { return v.SandboxConfig }).(ClusterNodeConfigSandboxConfigPtrOutput)
@@ -5352,6 +5372,13 @@ func (o ClusterNodeConfigOutput) ServiceAccount() pulumi.StringPtrOutput {
 // Shielded Instance options. Structure is documented below.
 func (o ClusterNodeConfigOutput) ShieldedInstanceConfig() ClusterNodeConfigShieldedInstanceConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigShieldedInstanceConfig { return v.ShieldedInstanceConfig }).(ClusterNodeConfigShieldedInstanceConfigPtrOutput)
+}
+
+// ) A boolean
+// that represents whether the underlying node VMs are spot. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
+// for more information. Defaults to false.
+func (o ClusterNodeConfigOutput) Spot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfig) *bool { return v.Spot }).(pulumi.BoolPtrOutput)
 }
 
 // The list of instance tags applied to all nodes. Tags are used to identify
@@ -5565,6 +5592,16 @@ func (o ClusterNodeConfigPtrOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on [sole tenant nodes](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes).
+func (o ClusterNodeConfigPtrOutput) NodeGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NodeGroup
+	}).(pulumi.StringPtrOutput)
+}
+
 // The set of Google API scopes to be made available
 // on all of the node VMs under the "default" service account.
 // Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
@@ -5589,7 +5626,8 @@ func (o ClusterNodeConfigPtrOutput) Preemptible() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+// ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+// > > > > > > > v4.3.0
 // Structure is documented below.
 func (o ClusterNodeConfigPtrOutput) SandboxConfig() ClusterNodeConfigSandboxConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigSandboxConfig {
@@ -5619,6 +5657,18 @@ func (o ClusterNodeConfigPtrOutput) ShieldedInstanceConfig() ClusterNodeConfigSh
 		}
 		return v.ShieldedInstanceConfig
 	}).(ClusterNodeConfigShieldedInstanceConfigPtrOutput)
+}
+
+// ) A boolean
+// that represents whether the underlying node VMs are spot. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
+// for more information. Defaults to false.
+func (o ClusterNodeConfigPtrOutput) Spot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Spot
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The list of instance tags applied to all nodes. Tags are used to identify
@@ -7714,6 +7764,8 @@ type ClusterNodePoolNodeConfig struct {
 	// [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
 	// for more information.
 	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
+	// Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on [sole tenant nodes](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes).
+	NodeGroup *string `pulumi:"nodeGroup"`
 	// The set of Google API scopes to be made available
 	// on all of the node VMs under the "default" service account.
 	// Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
@@ -7722,7 +7774,8 @@ type ClusterNodePoolNodeConfig struct {
 	// are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
 	// for more information. Defaults to false.
 	Preemptible *bool `pulumi:"preemptible"`
-	// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+	// ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+	// > > > > > > > v4.3.0
 	// Structure is documented below.
 	SandboxConfig *ClusterNodePoolNodeConfigSandboxConfig `pulumi:"sandboxConfig"`
 	// The service account to be used by the Node VMs.
@@ -7730,6 +7783,10 @@ type ClusterNodePoolNodeConfig struct {
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Shielded Instance options. Structure is documented below.
 	ShieldedInstanceConfig *ClusterNodePoolNodeConfigShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
+	// ) A boolean
+	// that represents whether the underlying node VMs are spot. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
+	// for more information. Defaults to false.
+	Spot *bool `pulumi:"spot"`
 	// The list of instance tags applied to all nodes. Tags are used to identify
 	// valid sources or targets for network firewalls.
 	Tags []string `pulumi:"tags"`
@@ -7810,6 +7867,8 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
 	// for more information.
 	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
+	// Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on [sole tenant nodes](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes).
+	NodeGroup pulumi.StringPtrInput `pulumi:"nodeGroup"`
 	// The set of Google API scopes to be made available
 	// on all of the node VMs under the "default" service account.
 	// Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
@@ -7818,7 +7877,8 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
 	// for more information. Defaults to false.
 	Preemptible pulumi.BoolPtrInput `pulumi:"preemptible"`
-	// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+	// ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+	// > > > > > > > v4.3.0
 	// Structure is documented below.
 	SandboxConfig ClusterNodePoolNodeConfigSandboxConfigPtrInput `pulumi:"sandboxConfig"`
 	// The service account to be used by the Node VMs.
@@ -7826,6 +7886,10 @@ type ClusterNodePoolNodeConfigArgs struct {
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// Shielded Instance options. Structure is documented below.
 	ShieldedInstanceConfig ClusterNodePoolNodeConfigShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
+	// ) A boolean
+	// that represents whether the underlying node VMs are spot. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
+	// for more information. Defaults to false.
+	Spot pulumi.BoolPtrInput `pulumi:"spot"`
 	// The list of instance tags applied to all nodes. Tags are used to identify
 	// valid sources or targets for network firewalls.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
@@ -8017,6 +8081,11 @@ func (o ClusterNodePoolNodeConfigOutput) MinCpuPlatform() pulumi.StringPtrOutput
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
 }
 
+// Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on [sole tenant nodes](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes).
+func (o ClusterNodePoolNodeConfigOutput) NodeGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.NodeGroup }).(pulumi.StringPtrOutput)
+}
+
 // The set of Google API scopes to be made available
 // on all of the node VMs under the "default" service account.
 // Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
@@ -8031,7 +8100,8 @@ func (o ClusterNodePoolNodeConfigOutput) Preemptible() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *bool { return v.Preemptible }).(pulumi.BoolPtrOutput)
 }
 
-// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+// ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+// > > > > > > > v4.3.0
 // Structure is documented below.
 func (o ClusterNodePoolNodeConfigOutput) SandboxConfig() ClusterNodePoolNodeConfigSandboxConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigSandboxConfig { return v.SandboxConfig }).(ClusterNodePoolNodeConfigSandboxConfigPtrOutput)
@@ -8048,6 +8118,13 @@ func (o ClusterNodePoolNodeConfigOutput) ShieldedInstanceConfig() ClusterNodePoo
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigShieldedInstanceConfig {
 		return v.ShieldedInstanceConfig
 	}).(ClusterNodePoolNodeConfigShieldedInstanceConfigPtrOutput)
+}
+
+// ) A boolean
+// that represents whether the underlying node VMs are spot. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
+// for more information. Defaults to false.
+func (o ClusterNodePoolNodeConfigOutput) Spot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *bool { return v.Spot }).(pulumi.BoolPtrOutput)
 }
 
 // The list of instance tags applied to all nodes. Tags are used to identify
@@ -8263,6 +8340,16 @@ func (o ClusterNodePoolNodeConfigPtrOutput) MinCpuPlatform() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on [sole tenant nodes](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes).
+func (o ClusterNodePoolNodeConfigPtrOutput) NodeGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NodeGroup
+	}).(pulumi.StringPtrOutput)
+}
+
 // The set of Google API scopes to be made available
 // on all of the node VMs under the "default" service account.
 // Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
@@ -8287,7 +8374,8 @@ func (o ClusterNodePoolNodeConfigPtrOutput) Preemptible() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+// ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+// > > > > > > > v4.3.0
 // Structure is documented below.
 func (o ClusterNodePoolNodeConfigPtrOutput) SandboxConfig() ClusterNodePoolNodeConfigSandboxConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigSandboxConfig {
@@ -8317,6 +8405,18 @@ func (o ClusterNodePoolNodeConfigPtrOutput) ShieldedInstanceConfig() ClusterNode
 		}
 		return v.ShieldedInstanceConfig
 	}).(ClusterNodePoolNodeConfigShieldedInstanceConfigPtrOutput)
+}
+
+// ) A boolean
+// that represents whether the underlying node VMs are spot. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
+// for more information. Defaults to false.
+func (o ClusterNodePoolNodeConfigPtrOutput) Spot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Spot
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The list of instance tags applied to all nodes. Tags are used to identify
@@ -11955,11 +12055,13 @@ type NodePoolNodeConfig struct {
 	MachineType            *string                                   `pulumi:"machineType"`
 	Metadata               map[string]string                         `pulumi:"metadata"`
 	MinCpuPlatform         *string                                   `pulumi:"minCpuPlatform"`
+	NodeGroup              *string                                   `pulumi:"nodeGroup"`
 	OauthScopes            []string                                  `pulumi:"oauthScopes"`
 	Preemptible            *bool                                     `pulumi:"preemptible"`
 	SandboxConfig          *NodePoolNodeConfigSandboxConfig          `pulumi:"sandboxConfig"`
 	ServiceAccount         *string                                   `pulumi:"serviceAccount"`
 	ShieldedInstanceConfig *NodePoolNodeConfigShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
+	Spot                   *bool                                     `pulumi:"spot"`
 	Tags                   []string                                  `pulumi:"tags"`
 	Taints                 []NodePoolNodeConfigTaint                 `pulumi:"taints"`
 	WorkloadMetadataConfig *NodePoolNodeConfigWorkloadMetadataConfig `pulumi:"workloadMetadataConfig"`
@@ -11991,11 +12093,13 @@ type NodePoolNodeConfigArgs struct {
 	MachineType            pulumi.StringPtrInput                            `pulumi:"machineType"`
 	Metadata               pulumi.StringMapInput                            `pulumi:"metadata"`
 	MinCpuPlatform         pulumi.StringPtrInput                            `pulumi:"minCpuPlatform"`
+	NodeGroup              pulumi.StringPtrInput                            `pulumi:"nodeGroup"`
 	OauthScopes            pulumi.StringArrayInput                          `pulumi:"oauthScopes"`
 	Preemptible            pulumi.BoolPtrInput                              `pulumi:"preemptible"`
 	SandboxConfig          NodePoolNodeConfigSandboxConfigPtrInput          `pulumi:"sandboxConfig"`
 	ServiceAccount         pulumi.StringPtrInput                            `pulumi:"serviceAccount"`
 	ShieldedInstanceConfig NodePoolNodeConfigShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
+	Spot                   pulumi.BoolPtrInput                              `pulumi:"spot"`
 	Tags                   pulumi.StringArrayInput                          `pulumi:"tags"`
 	Taints                 NodePoolNodeConfigTaintArrayInput                `pulumi:"taints"`
 	WorkloadMetadataConfig NodePoolNodeConfigWorkloadMetadataConfigPtrInput `pulumi:"workloadMetadataConfig"`
@@ -12134,6 +12238,10 @@ func (o NodePoolNodeConfigOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfig) *string { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
 }
 
+func (o NodePoolNodeConfigOutput) NodeGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfig) *string { return v.NodeGroup }).(pulumi.StringPtrOutput)
+}
+
 func (o NodePoolNodeConfigOutput) OauthScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NodePoolNodeConfig) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
 }
@@ -12152,6 +12260,10 @@ func (o NodePoolNodeConfigOutput) ServiceAccount() pulumi.StringPtrOutput {
 
 func (o NodePoolNodeConfigOutput) ShieldedInstanceConfig() NodePoolNodeConfigShieldedInstanceConfigPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigShieldedInstanceConfig { return v.ShieldedInstanceConfig }).(NodePoolNodeConfigShieldedInstanceConfigPtrOutput)
+}
+
+func (o NodePoolNodeConfigOutput) Spot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfig) *bool { return v.Spot }).(pulumi.BoolPtrOutput)
 }
 
 func (o NodePoolNodeConfigOutput) Tags() pulumi.StringArrayOutput {
@@ -12316,6 +12428,15 @@ func (o NodePoolNodeConfigPtrOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o NodePoolNodeConfigPtrOutput) NodeGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NodeGroup
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o NodePoolNodeConfigPtrOutput) OauthScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NodePoolNodeConfig) []string {
 		if v == nil {
@@ -12359,6 +12480,15 @@ func (o NodePoolNodeConfigPtrOutput) ShieldedInstanceConfig() NodePoolNodeConfig
 		}
 		return v.ShieldedInstanceConfig
 	}).(NodePoolNodeConfigShieldedInstanceConfigPtrOutput)
+}
+
+func (o NodePoolNodeConfigPtrOutput) Spot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Spot
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o NodePoolNodeConfigPtrOutput) Tags() pulumi.StringArrayOutput {
@@ -16909,11 +17039,13 @@ type GetClusterNodeConfig struct {
 	MachineType             string                                       `pulumi:"machineType"`
 	Metadata                map[string]string                            `pulumi:"metadata"`
 	MinCpuPlatform          string                                       `pulumi:"minCpuPlatform"`
+	NodeGroup               string                                       `pulumi:"nodeGroup"`
 	OauthScopes             []string                                     `pulumi:"oauthScopes"`
 	Preemptible             bool                                         `pulumi:"preemptible"`
 	SandboxConfigs          []GetClusterNodeConfigSandboxConfig          `pulumi:"sandboxConfigs"`
 	ServiceAccount          string                                       `pulumi:"serviceAccount"`
 	ShieldedInstanceConfigs []GetClusterNodeConfigShieldedInstanceConfig `pulumi:"shieldedInstanceConfigs"`
+	Spot                    bool                                         `pulumi:"spot"`
 	Tags                    []string                                     `pulumi:"tags"`
 	Taints                  []GetClusterNodeConfigTaint                  `pulumi:"taints"`
 	WorkloadMetadataConfigs []GetClusterNodeConfigWorkloadMetadataConfig `pulumi:"workloadMetadataConfigs"`
@@ -16945,11 +17077,13 @@ type GetClusterNodeConfigArgs struct {
 	MachineType             pulumi.StringInput                                   `pulumi:"machineType"`
 	Metadata                pulumi.StringMapInput                                `pulumi:"metadata"`
 	MinCpuPlatform          pulumi.StringInput                                   `pulumi:"minCpuPlatform"`
+	NodeGroup               pulumi.StringInput                                   `pulumi:"nodeGroup"`
 	OauthScopes             pulumi.StringArrayInput                              `pulumi:"oauthScopes"`
 	Preemptible             pulumi.BoolInput                                     `pulumi:"preemptible"`
 	SandboxConfigs          GetClusterNodeConfigSandboxConfigArrayInput          `pulumi:"sandboxConfigs"`
 	ServiceAccount          pulumi.StringInput                                   `pulumi:"serviceAccount"`
 	ShieldedInstanceConfigs GetClusterNodeConfigShieldedInstanceConfigArrayInput `pulumi:"shieldedInstanceConfigs"`
+	Spot                    pulumi.BoolInput                                     `pulumi:"spot"`
 	Tags                    pulumi.StringArrayInput                              `pulumi:"tags"`
 	Taints                  GetClusterNodeConfigTaintArrayInput                  `pulumi:"taints"`
 	WorkloadMetadataConfigs GetClusterNodeConfigWorkloadMetadataConfigArrayInput `pulumi:"workloadMetadataConfigs"`
@@ -17064,6 +17198,10 @@ func (o GetClusterNodeConfigOutput) MinCpuPlatform() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodeConfig) string { return v.MinCpuPlatform }).(pulumi.StringOutput)
 }
 
+func (o GetClusterNodeConfigOutput) NodeGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfig) string { return v.NodeGroup }).(pulumi.StringOutput)
+}
+
 func (o GetClusterNodeConfigOutput) OauthScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClusterNodeConfig) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
 }
@@ -17084,6 +17222,10 @@ func (o GetClusterNodeConfigOutput) ShieldedInstanceConfigs() GetClusterNodeConf
 	return o.ApplyT(func(v GetClusterNodeConfig) []GetClusterNodeConfigShieldedInstanceConfig {
 		return v.ShieldedInstanceConfigs
 	}).(GetClusterNodeConfigShieldedInstanceConfigArrayOutput)
+}
+
+func (o GetClusterNodeConfigOutput) Spot() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodeConfig) bool { return v.Spot }).(pulumi.BoolOutput)
 }
 
 func (o GetClusterNodeConfigOutput) Tags() pulumi.StringArrayOutput {
@@ -18504,11 +18646,13 @@ type GetClusterNodePoolNodeConfig struct {
 	MachineType             string                                               `pulumi:"machineType"`
 	Metadata                map[string]string                                    `pulumi:"metadata"`
 	MinCpuPlatform          string                                               `pulumi:"minCpuPlatform"`
+	NodeGroup               string                                               `pulumi:"nodeGroup"`
 	OauthScopes             []string                                             `pulumi:"oauthScopes"`
 	Preemptible             bool                                                 `pulumi:"preemptible"`
 	SandboxConfigs          []GetClusterNodePoolNodeConfigSandboxConfig          `pulumi:"sandboxConfigs"`
 	ServiceAccount          string                                               `pulumi:"serviceAccount"`
 	ShieldedInstanceConfigs []GetClusterNodePoolNodeConfigShieldedInstanceConfig `pulumi:"shieldedInstanceConfigs"`
+	Spot                    bool                                                 `pulumi:"spot"`
 	Tags                    []string                                             `pulumi:"tags"`
 	Taints                  []GetClusterNodePoolNodeConfigTaint                  `pulumi:"taints"`
 	WorkloadMetadataConfigs []GetClusterNodePoolNodeConfigWorkloadMetadataConfig `pulumi:"workloadMetadataConfigs"`
@@ -18540,11 +18684,13 @@ type GetClusterNodePoolNodeConfigArgs struct {
 	MachineType             pulumi.StringInput                                           `pulumi:"machineType"`
 	Metadata                pulumi.StringMapInput                                        `pulumi:"metadata"`
 	MinCpuPlatform          pulumi.StringInput                                           `pulumi:"minCpuPlatform"`
+	NodeGroup               pulumi.StringInput                                           `pulumi:"nodeGroup"`
 	OauthScopes             pulumi.StringArrayInput                                      `pulumi:"oauthScopes"`
 	Preemptible             pulumi.BoolInput                                             `pulumi:"preemptible"`
 	SandboxConfigs          GetClusterNodePoolNodeConfigSandboxConfigArrayInput          `pulumi:"sandboxConfigs"`
 	ServiceAccount          pulumi.StringInput                                           `pulumi:"serviceAccount"`
 	ShieldedInstanceConfigs GetClusterNodePoolNodeConfigShieldedInstanceConfigArrayInput `pulumi:"shieldedInstanceConfigs"`
+	Spot                    pulumi.BoolInput                                             `pulumi:"spot"`
 	Tags                    pulumi.StringArrayInput                                      `pulumi:"tags"`
 	Taints                  GetClusterNodePoolNodeConfigTaintArrayInput                  `pulumi:"taints"`
 	WorkloadMetadataConfigs GetClusterNodePoolNodeConfigWorkloadMetadataConfigArrayInput `pulumi:"workloadMetadataConfigs"`
@@ -18665,6 +18811,10 @@ func (o GetClusterNodePoolNodeConfigOutput) MinCpuPlatform() pulumi.StringOutput
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) string { return v.MinCpuPlatform }).(pulumi.StringOutput)
 }
 
+func (o GetClusterNodePoolNodeConfigOutput) NodeGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) string { return v.NodeGroup }).(pulumi.StringOutput)
+}
+
 func (o GetClusterNodePoolNodeConfigOutput) OauthScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
 }
@@ -18687,6 +18837,10 @@ func (o GetClusterNodePoolNodeConfigOutput) ShieldedInstanceConfigs() GetCluster
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigShieldedInstanceConfig {
 		return v.ShieldedInstanceConfigs
 	}).(GetClusterNodePoolNodeConfigShieldedInstanceConfigArrayOutput)
+}
+
+func (o GetClusterNodePoolNodeConfigOutput) Spot() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) bool { return v.Spot }).(pulumi.BoolOutput)
 }
 
 func (o GetClusterNodePoolNodeConfigOutput) Tags() pulumi.StringArrayOutput {

@@ -27,11 +27,13 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly string MachineType;
         public readonly ImmutableDictionary<string, string> Metadata;
         public readonly string MinCpuPlatform;
+        public readonly string NodeGroup;
         public readonly ImmutableArray<string> OauthScopes;
         public readonly bool Preemptible;
         public readonly ImmutableArray<Outputs.GetClusterNodePoolNodeConfigSandboxConfigResult> SandboxConfigs;
         public readonly string ServiceAccount;
         public readonly ImmutableArray<Outputs.GetClusterNodePoolNodeConfigShieldedInstanceConfigResult> ShieldedInstanceConfigs;
+        public readonly bool Spot;
         public readonly ImmutableArray<string> Tags;
         public readonly ImmutableArray<Outputs.GetClusterNodePoolNodeConfigTaintResult> Taints;
         public readonly ImmutableArray<Outputs.GetClusterNodePoolNodeConfigWorkloadMetadataConfigResult> WorkloadMetadataConfigs;
@@ -66,6 +68,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string minCpuPlatform,
 
+            string nodeGroup,
+
             ImmutableArray<string> oauthScopes,
 
             bool preemptible,
@@ -75,6 +79,8 @@ namespace Pulumi.Gcp.Container.Outputs
             string serviceAccount,
 
             ImmutableArray<Outputs.GetClusterNodePoolNodeConfigShieldedInstanceConfigResult> shieldedInstanceConfigs,
+
+            bool spot,
 
             ImmutableArray<string> tags,
 
@@ -96,11 +102,13 @@ namespace Pulumi.Gcp.Container.Outputs
             MachineType = machineType;
             Metadata = metadata;
             MinCpuPlatform = minCpuPlatform;
+            NodeGroup = nodeGroup;
             OauthScopes = oauthScopes;
             Preemptible = preemptible;
             SandboxConfigs = sandboxConfigs;
             ServiceAccount = serviceAccount;
             ShieldedInstanceConfigs = shieldedInstanceConfigs;
+            Spot = spot;
             Tags = tags;
             Taints = taints;
             WorkloadMetadataConfigs = workloadMetadataConfigs;

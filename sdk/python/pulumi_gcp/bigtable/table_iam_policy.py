@@ -192,7 +192,7 @@ class TableIamPolicy(pulumi.CustomResource):
 
         > **Note:** `bigtable.TableIamBinding` resources **can be** used in conjunction with `bigtable.TableIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\_bigtable\_instance\_iam\_policy
+        ## google\_bigtable\_table\_iam\_policy
 
         ```python
         import pulumi
@@ -209,7 +209,7 @@ class TableIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\_bigtable\_instance\_iam\_binding
+        ## google\_bigtable\_table\_iam\_binding
 
         ```python
         import pulumi
@@ -222,7 +222,7 @@ class TableIamPolicy(pulumi.CustomResource):
             table="your-bigtable-table")
         ```
 
-        ## google\_bigtable\_instance\_iam\_member
+        ## google\_bigtable\_table\_iam\_member
 
         ```python
         import pulumi
@@ -237,7 +237,7 @@ class TableIamPolicy(pulumi.CustomResource):
 
         ## Import
 
-        Instance IAM resources can be imported using the project, table name, role and/or member.
+        Table IAM resources can be imported using the project, table name, role and/or member.
 
         ```sh
          $ pulumi import gcp:bigtable/tableIamPolicy:TableIamPolicy editor "projects/{project}/tables/{table}"
@@ -280,7 +280,7 @@ class TableIamPolicy(pulumi.CustomResource):
 
         > **Note:** `bigtable.TableIamBinding` resources **can be** used in conjunction with `bigtable.TableIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\_bigtable\_instance\_iam\_policy
+        ## google\_bigtable\_table\_iam\_policy
 
         ```python
         import pulumi
@@ -297,7 +297,7 @@ class TableIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        ## google\_bigtable\_instance\_iam\_binding
+        ## google\_bigtable\_table\_iam\_binding
 
         ```python
         import pulumi
@@ -310,7 +310,7 @@ class TableIamPolicy(pulumi.CustomResource):
             table="your-bigtable-table")
         ```
 
-        ## google\_bigtable\_instance\_iam\_member
+        ## google\_bigtable\_table\_iam\_member
 
         ```python
         import pulumi
@@ -325,7 +325,7 @@ class TableIamPolicy(pulumi.CustomResource):
 
         ## Import
 
-        Instance IAM resources can be imported using the project, table name, role and/or member.
+        Table IAM resources can be imported using the project, table name, role and/or member.
 
         ```sh
          $ pulumi import gcp:bigtable/tableIamPolicy:TableIamPolicy editor "projects/{project}/tables/{table}"

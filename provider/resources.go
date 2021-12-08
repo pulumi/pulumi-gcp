@@ -1230,6 +1230,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_vertex_ai_dataset":                 {Tok: gcpResource(gcpVertex, "AiDataset")},
 			"google_vertex_ai_featurestore_entitytype": {Tok: gcpResource(gcpVertex, "AiFeatureStoreEntityType")},
 			"google_vertex_ai_featurestore":            {Tok: gcpResource(gcpVertex, "AiFeatureStore")},
+			"google_vertex_ai_metadata_store":          {Tok: gcpResource(gcpVertex, "AiMetadataStore")},
 
 			// Key Management Service resources
 			"google_kms_key_ring": {
@@ -1853,6 +1854,7 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "notebooks_instance_iam.html.markdown",
 				},
 			},
+			"google_notebooks_runtime": {Tok: gcpResource(gcpNotebooks, "Runtime")},
 
 			// CloudIdentity
 			"google_cloud_identity_group_membership": {Tok: gcpResource(gcpCloudIdentity, "GroupMembership")},
@@ -2069,6 +2071,8 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "datasource_google_client_openid_userinfo.html.markdown",
 				},
 			},
+			"google_folders": {Tok: gcpDataSource(gcpOrganization, "getFolders")},
+
 			"google_cloudfunctions_function": {
 				Tok: gcpDataSource(gcpCloudFunctions, "getFunction"),
 				Docs: &tfbridge.DocInfo{
@@ -2151,6 +2155,8 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "datasource_google_compute_network_endpoint_group.html.markdown",
 				},
 			},
+			"google_compute_router_status": {Tok: gcpDataSource(gcpCompute, "RouterStatus")},
+
 			"google_composer_image_versions": {
 				Tok: gcpDataSource(gcpComposer, "getImageVersions"),
 				Docs: &tfbridge.DocInfo{

@@ -30,6 +30,7 @@ class RepositoryArgs:
                - PYTHON ([Preview](https://cloud.google.com/products#product-launch-stages))
                - APT ([alpha](https://cloud.google.com/products#product-launch-stages))
                - YUM ([alpha](https://cloud.google.com/products#product-launch-stages))
+               - HELM ([alpha](https://cloud.google.com/products#product-launch-stages))
         :param pulumi.Input[str] repository_id: The last part of the repository name, for example:
                "repo1"
         :param pulumi.Input[str] description: The user-provided description of the repository.
@@ -71,6 +72,7 @@ class RepositoryArgs:
         - PYTHON ([Preview](https://cloud.google.com/products#product-launch-stages))
         - APT ([alpha](https://cloud.google.com/products#product-launch-stages))
         - YUM ([alpha](https://cloud.google.com/products#product-launch-stages))
+        - HELM ([alpha](https://cloud.google.com/products#product-launch-stages))
         """
         return pulumi.get(self, "format")
 
@@ -185,6 +187,7 @@ class _RepositoryState:
                - PYTHON ([Preview](https://cloud.google.com/products#product-launch-stages))
                - APT ([alpha](https://cloud.google.com/products#product-launch-stages))
                - YUM ([alpha](https://cloud.google.com/products#product-launch-stages))
+               - HELM ([alpha](https://cloud.google.com/products#product-launch-stages))
         :param pulumi.Input[str] kms_key_name: The Cloud KMS resource name of the customer managed encryption key that’s
                used to encrypt the contents of the Repository. Has the form:
                `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
@@ -259,6 +262,7 @@ class _RepositoryState:
         - PYTHON ([Preview](https://cloud.google.com/products#product-launch-stages))
         - APT ([alpha](https://cloud.google.com/products#product-launch-stages))
         - YUM ([alpha](https://cloud.google.com/products#product-launch-stages))
+        - HELM ([alpha](https://cloud.google.com/products#product-launch-stages))
         """
         return pulumi.get(self, "format")
 
@@ -465,6 +469,7 @@ class Repository(pulumi.CustomResource):
                - PYTHON ([Preview](https://cloud.google.com/products#product-launch-stages))
                - APT ([alpha](https://cloud.google.com/products#product-launch-stages))
                - YUM ([alpha](https://cloud.google.com/products#product-launch-stages))
+               - HELM ([alpha](https://cloud.google.com/products#product-launch-stages))
         :param pulumi.Input[str] kms_key_name: The Cloud KMS resource name of the customer managed encryption key that’s
                used to encrypt the contents of the Repository. Has the form:
                `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
@@ -652,6 +657,7 @@ class Repository(pulumi.CustomResource):
                - PYTHON ([Preview](https://cloud.google.com/products#product-launch-stages))
                - APT ([alpha](https://cloud.google.com/products#product-launch-stages))
                - YUM ([alpha](https://cloud.google.com/products#product-launch-stages))
+               - HELM ([alpha](https://cloud.google.com/products#product-launch-stages))
         :param pulumi.Input[str] kms_key_name: The Cloud KMS resource name of the customer managed encryption key that’s
                used to encrypt the contents of the Repository. Has the form:
                `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
@@ -713,6 +719,7 @@ class Repository(pulumi.CustomResource):
         - PYTHON ([Preview](https://cloud.google.com/products#product-launch-stages))
         - APT ([alpha](https://cloud.google.com/products#product-launch-stages))
         - YUM ([alpha](https://cloud.google.com/products#product-launch-stages))
+        - HELM ([alpha](https://cloud.google.com/products#product-launch-stages))
         """
         return pulumi.get(self, "format")
 

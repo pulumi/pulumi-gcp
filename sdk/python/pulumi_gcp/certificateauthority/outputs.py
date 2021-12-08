@@ -98,8 +98,8 @@ class AuthorityAccessUrl(dict):
         suggest = None
         if key == "caCertificateAccessUrl":
             suggest = "ca_certificate_access_url"
-        elif key == "crlAccessUrl":
-            suggest = "crl_access_url"
+        elif key == "crlAccessUrls":
+            suggest = "crl_access_urls"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AuthorityAccessUrl. Access the value via the '{suggest}' property getter instead.")
@@ -114,11 +114,11 @@ class AuthorityAccessUrl(dict):
 
     def __init__(__self__, *,
                  ca_certificate_access_url: Optional[str] = None,
-                 crl_access_url: Optional[str] = None):
+                 crl_access_urls: Optional[Sequence[str]] = None):
         if ca_certificate_access_url is not None:
             pulumi.set(__self__, "ca_certificate_access_url", ca_certificate_access_url)
-        if crl_access_url is not None:
-            pulumi.set(__self__, "crl_access_url", crl_access_url)
+        if crl_access_urls is not None:
+            pulumi.set(__self__, "crl_access_urls", crl_access_urls)
 
     @property
     @pulumi.getter(name="caCertificateAccessUrl")
@@ -126,9 +126,9 @@ class AuthorityAccessUrl(dict):
         return pulumi.get(self, "ca_certificate_access_url")
 
     @property
-    @pulumi.getter(name="crlAccessUrl")
-    def crl_access_url(self) -> Optional[str]:
-        return pulumi.get(self, "crl_access_url")
+    @pulumi.getter(name="crlAccessUrls")
+    def crl_access_urls(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "crl_access_urls")
 
 
 @pulumi.output_type

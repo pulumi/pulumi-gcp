@@ -399,7 +399,7 @@ namespace Pulumi.Gcp.Notebooks
         public Output<string> Subnet { get; private set; } = null!;
 
         /// <summary>
-        /// The Compute Engine tags to add to runtime.
+        /// The Compute Engine tags to add to instance.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -703,7 +703,7 @@ namespace Pulumi.Gcp.Notebooks
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The Compute Engine tags to add to runtime.
+        /// The Compute Engine tags to add to instance.
         /// </summary>
         public InputList<string> Tags
         {
@@ -983,7 +983,7 @@ namespace Pulumi.Gcp.Notebooks
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The Compute Engine tags to add to runtime.
+        /// The Compute Engine tags to add to instance.
         /// </summary>
         public InputList<string> Tags
         {

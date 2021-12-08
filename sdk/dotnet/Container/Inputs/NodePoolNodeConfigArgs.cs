@@ -69,6 +69,9 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("minCpuPlatform")]
         public Input<string>? MinCpuPlatform { get; set; }
 
+        [Input("nodeGroup")]
+        public Input<string>? NodeGroup { get; set; }
+
         [Input("oauthScopes")]
         private InputList<string>? _oauthScopes;
         public InputList<string> OauthScopes
@@ -88,6 +91,9 @@ namespace Pulumi.Gcp.Container.Inputs
 
         [Input("shieldedInstanceConfig")]
         public Input<Inputs.NodePoolNodeConfigShieldedInstanceConfigArgs>? ShieldedInstanceConfig { get; set; }
+
+        [Input("spot")]
+        public Input<bool>? Spot { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;
