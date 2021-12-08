@@ -54,7 +54,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewNetwork(ctx, "custom_test", &compute.NetworkArgs{
+// 		custom_test, err := compute.NewNetwork(ctx, "custom_test", &compute.NetworkArgs{
 // 			AutoCreateSubnetworks: pulumi.Bool(false),
 // 		})
 // 		if err != nil {
@@ -90,7 +90,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewNetwork(ctx, "custom_test", &compute.NetworkArgs{
+// 		custom_test, err := compute.NewNetwork(ctx, "custom_test", &compute.NetworkArgs{
 // 			AutoCreateSubnetworks: pulumi.Bool(false),
 // 		})
 // 		if err != nil {
@@ -125,7 +125,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewNetwork(ctx, "custom_test", &compute.NetworkArgs{
+// 		custom_test, err := compute.NewNetwork(ctx, "custom_test", &compute.NetworkArgs{
 // 			AutoCreateSubnetworks: pulumi.Bool(false),
 // 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
@@ -157,7 +157,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewNetwork(ctx, "custom_test", &compute.NetworkArgs{
+// 		custom_test, err := compute.NewNetwork(ctx, "custom_test", &compute.NetworkArgs{
 // 			AutoCreateSubnetworks: pulumi.Bool(false),
 // 		})
 // 		if err != nil {
