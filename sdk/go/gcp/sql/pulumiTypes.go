@@ -2113,6 +2113,8 @@ func (o DatabaseInstanceSettingsInsightsConfigPtrOutput) RecordClientAddress() p
 }
 
 type DatabaseInstanceSettingsIpConfiguration struct {
+	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+	AllocatedIpRange   *string                                                    `pulumi:"allocatedIpRange"`
 	AuthorizedNetworks []DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork `pulumi:"authorizedNetworks"`
 	// Whether this Cloud SQL instance should be assigned
 	// a public IPV4 address. At least `ipv4Enabled` must be enabled or a
@@ -2140,6 +2142,8 @@ type DatabaseInstanceSettingsIpConfigurationInput interface {
 }
 
 type DatabaseInstanceSettingsIpConfigurationArgs struct {
+	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+	AllocatedIpRange   pulumi.StringPtrInput                                              `pulumi:"allocatedIpRange"`
 	AuthorizedNetworks DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayInput `pulumi:"authorizedNetworks"`
 	// Whether this Cloud SQL instance should be assigned
 	// a public IPV4 address. At least `ipv4Enabled` must be enabled or a
@@ -2232,6 +2236,11 @@ func (o DatabaseInstanceSettingsIpConfigurationOutput) ToDatabaseInstanceSetting
 	}).(DatabaseInstanceSettingsIpConfigurationPtrOutput)
 }
 
+// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+func (o DatabaseInstanceSettingsIpConfigurationOutput) AllocatedIpRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfiguration) *string { return v.AllocatedIpRange }).(pulumi.StringPtrOutput)
+}
+
 func (o DatabaseInstanceSettingsIpConfigurationOutput) AuthorizedNetworks() DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfiguration) []DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork {
 		return v.AuthorizedNetworks
@@ -2281,6 +2290,16 @@ func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) Elem() DatabaseInstanc
 		var ret DatabaseInstanceSettingsIpConfiguration
 		return ret
 	}).(DatabaseInstanceSettingsIpConfigurationOutput)
+}
+
+// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) AllocatedIpRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsIpConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AllocatedIpRange
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) AuthorizedNetworks() DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayOutput {
@@ -4167,6 +4186,7 @@ func (o GetDatabaseInstanceSettingInsightsConfigArrayOutput) Index(i pulumi.IntI
 }
 
 type GetDatabaseInstanceSettingIpConfiguration struct {
+	AllocatedIpRange   string                                                       `pulumi:"allocatedIpRange"`
 	AuthorizedNetworks []GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork `pulumi:"authorizedNetworks"`
 	Ipv4Enabled        bool                                                         `pulumi:"ipv4Enabled"`
 	PrivateNetwork     string                                                       `pulumi:"privateNetwork"`
@@ -4185,6 +4205,7 @@ type GetDatabaseInstanceSettingIpConfigurationInput interface {
 }
 
 type GetDatabaseInstanceSettingIpConfigurationArgs struct {
+	AllocatedIpRange   pulumi.StringInput                                                   `pulumi:"allocatedIpRange"`
 	AuthorizedNetworks GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArrayInput `pulumi:"authorizedNetworks"`
 	Ipv4Enabled        pulumi.BoolInput                                                     `pulumi:"ipv4Enabled"`
 	PrivateNetwork     pulumi.StringInput                                                   `pulumi:"privateNetwork"`
@@ -4240,6 +4261,10 @@ func (o GetDatabaseInstanceSettingIpConfigurationOutput) ToGetDatabaseInstanceSe
 
 func (o GetDatabaseInstanceSettingIpConfigurationOutput) ToGetDatabaseInstanceSettingIpConfigurationOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingIpConfigurationOutput {
 	return o
+}
+
+func (o GetDatabaseInstanceSettingIpConfigurationOutput) AllocatedIpRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfiguration) string { return v.AllocatedIpRange }).(pulumi.StringOutput)
 }
 
 func (o GetDatabaseInstanceSettingIpConfigurationOutput) AuthorizedNetworks() GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput {

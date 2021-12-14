@@ -234,12 +234,10 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The purpose of the resource. This field can be either PRIVATE
-     * or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to
+     * The purpose of the resource. A subnetwork with purpose set to
      * INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
-     * reserved for Internal HTTP(S) Load Balancing. If unspecified, the
-     * purpose defaults to PRIVATE.
-     * If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set `role`.
+     * reserved for Internal HTTP(S) Load Balancing.
+     * If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the `role` field.
      */
     public readonly purpose!: pulumi.Output<string>;
     /**
@@ -426,12 +424,10 @@ export interface SubnetworkState {
      */
     project?: pulumi.Input<string>;
     /**
-     * The purpose of the resource. This field can be either PRIVATE
-     * or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to
+     * The purpose of the resource. A subnetwork with purpose set to
      * INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
-     * reserved for Internal HTTP(S) Load Balancing. If unspecified, the
-     * purpose defaults to PRIVATE.
-     * If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set `role`.
+     * reserved for Internal HTTP(S) Load Balancing.
+     * If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the `role` field.
      */
     purpose?: pulumi.Input<string>;
     /**
@@ -528,12 +524,10 @@ export interface SubnetworkArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * The purpose of the resource. This field can be either PRIVATE
-     * or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to
+     * The purpose of the resource. A subnetwork with purpose set to
      * INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
-     * reserved for Internal HTTP(S) Load Balancing. If unspecified, the
-     * purpose defaults to PRIVATE.
-     * If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set `role`.
+     * reserved for Internal HTTP(S) Load Balancing.
+     * If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the `role` field.
      */
     purpose?: pulumi.Input<string>;
     /**

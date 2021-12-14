@@ -451,6 +451,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "apigee/environmentIamBinding",
+  "fqn": "pulumi_gcp.apigee",
+  "classes": {
+   "gcp:apigee/environmentIamBinding:EnvironmentIamBinding": "EnvironmentIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "apigee/environmentIamMember",
+  "fqn": "pulumi_gcp.apigee",
+  "classes": {
+   "gcp:apigee/environmentIamMember:EnvironmentIamMember": "EnvironmentIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "apigee/environmentIamPolicy",
+  "fqn": "pulumi_gcp.apigee",
+  "classes": {
+   "gcp:apigee/environmentIamPolicy:EnvironmentIamPolicy": "EnvironmentIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "apigee/instance",
   "fqn": "pulumi_gcp.apigee",
   "classes": {
@@ -3395,6 +3419,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "notebooks/runtimeIamBinding",
+  "fqn": "pulumi_gcp.notebooks",
+  "classes": {
+   "gcp:notebooks/runtimeIamBinding:RuntimeIamBinding": "RuntimeIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "notebooks/runtimeIamMember",
+  "fqn": "pulumi_gcp.notebooks",
+  "classes": {
+   "gcp:notebooks/runtimeIamMember:RuntimeIamMember": "RuntimeIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "notebooks/runtimeIamPolicy",
+  "fqn": "pulumi_gcp.notebooks",
+  "classes": {
+   "gcp:notebooks/runtimeIamPolicy:RuntimeIamPolicy": "RuntimeIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "organizations/accessApprovalSettings",
   "fqn": "pulumi_gcp.organizations",
   "classes": {
@@ -3479,6 +3527,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.osconfig",
   "classes": {
    "gcp:osconfig/guestPolicies:GuestPolicies": "GuestPolicies"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "osconfig/osPolicyAssignment",
+  "fqn": "pulumi_gcp.osconfig",
+  "classes": {
+   "gcp:osconfig/osPolicyAssignment:OsPolicyAssignment": "OsPolicyAssignment"
   }
  },
  {

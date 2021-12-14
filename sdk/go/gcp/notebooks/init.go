@@ -35,6 +35,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Location{}
 	case "gcp:notebooks/runtime:Runtime":
 		r = &Runtime{}
+	case "gcp:notebooks/runtimeIamBinding:RuntimeIamBinding":
+		r = &RuntimeIamBinding{}
+	case "gcp:notebooks/runtimeIamMember:RuntimeIamMember":
+		r = &RuntimeIamMember{}
+	case "gcp:notebooks/runtimeIamPolicy:RuntimeIamPolicy":
+		r = &RuntimeIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -81,6 +87,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"notebooks/runtime",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"notebooks/runtimeIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"notebooks/runtimeIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"notebooks/runtimeIamPolicy",
 		&module{version},
 	)
 }

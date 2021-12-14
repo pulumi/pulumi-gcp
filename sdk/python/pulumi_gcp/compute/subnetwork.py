@@ -60,12 +60,10 @@ class SubnetworkArgs:
         :param pulumi.Input[str] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] purpose: The purpose of the resource. This field can be either PRIVATE
-               or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to
+        :param pulumi.Input[str] purpose: The purpose of the resource. A subnetwork with purpose set to
                INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
-               reserved for Internal HTTP(S) Load Balancing. If unspecified, the
-               purpose defaults to PRIVATE.
-               If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set `role`.
+               reserved for Internal HTTP(S) Load Balancing.
+               If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the `role` field.
         :param pulumi.Input[str] region: The GCP region for this subnetwork.
         :param pulumi.Input[str] role: The role of subnetwork. Currently, this field is only used when
                purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE
@@ -241,12 +239,10 @@ class SubnetworkArgs:
     @pulumi.getter
     def purpose(self) -> Optional[pulumi.Input[str]]:
         """
-        The purpose of the resource. This field can be either PRIVATE
-        or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to
+        The purpose of the resource. A subnetwork with purpose set to
         INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
-        reserved for Internal HTTP(S) Load Balancing. If unspecified, the
-        purpose defaults to PRIVATE.
-        If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set `role`.
+        reserved for Internal HTTP(S) Load Balancing.
+        If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the `role` field.
         """
         return pulumi.get(self, "purpose")
 
@@ -373,12 +369,10 @@ class _SubnetworkState:
         :param pulumi.Input[str] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] purpose: The purpose of the resource. This field can be either PRIVATE
-               or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to
+        :param pulumi.Input[str] purpose: The purpose of the resource. A subnetwork with purpose set to
                INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
-               reserved for Internal HTTP(S) Load Balancing. If unspecified, the
-               purpose defaults to PRIVATE.
-               If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set `role`.
+               reserved for Internal HTTP(S) Load Balancing.
+               If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the `role` field.
         :param pulumi.Input[str] region: The GCP region for this subnetwork.
         :param pulumi.Input[str] role: The role of subnetwork. Currently, this field is only used when
                purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE
@@ -632,12 +626,10 @@ class _SubnetworkState:
     @pulumi.getter
     def purpose(self) -> Optional[pulumi.Input[str]]:
         """
-        The purpose of the resource. This field can be either PRIVATE
-        or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to
+        The purpose of the resource. A subnetwork with purpose set to
         INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
-        reserved for Internal HTTP(S) Load Balancing. If unspecified, the
-        purpose defaults to PRIVATE.
-        If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set `role`.
+        reserved for Internal HTTP(S) Load Balancing.
+        If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the `role` field.
         """
         return pulumi.get(self, "purpose")
 
@@ -884,12 +876,10 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[str] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] purpose: The purpose of the resource. This field can be either PRIVATE
-               or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to
+        :param pulumi.Input[str] purpose: The purpose of the resource. A subnetwork with purpose set to
                INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
-               reserved for Internal HTTP(S) Load Balancing. If unspecified, the
-               purpose defaults to PRIVATE.
-               If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set `role`.
+               reserved for Internal HTTP(S) Load Balancing.
+               If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the `role` field.
         :param pulumi.Input[str] region: The GCP region for this subnetwork.
         :param pulumi.Input[str] role: The role of subnetwork. Currently, this field is only used when
                purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE
@@ -1164,12 +1154,10 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[str] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] purpose: The purpose of the resource. This field can be either PRIVATE
-               or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to
+        :param pulumi.Input[str] purpose: The purpose of the resource. A subnetwork with purpose set to
                INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
-               reserved for Internal HTTP(S) Load Balancing. If unspecified, the
-               purpose defaults to PRIVATE.
-               If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set `role`.
+               reserved for Internal HTTP(S) Load Balancing.
+               If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the `role` field.
         :param pulumi.Input[str] region: The GCP region for this subnetwork.
         :param pulumi.Input[str] role: The role of subnetwork. Currently, this field is only used when
                purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE
@@ -1349,12 +1337,10 @@ class Subnetwork(pulumi.CustomResource):
     @pulumi.getter
     def purpose(self) -> pulumi.Output[str]:
         """
-        The purpose of the resource. This field can be either PRIVATE
-        or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to
+        The purpose of the resource. A subnetwork with purpose set to
         INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
-        reserved for Internal HTTP(S) Load Balancing. If unspecified, the
-        purpose defaults to PRIVATE.
-        If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set `role`.
+        reserved for Internal HTTP(S) Load Balancing.
+        If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the `role` field.
         """
         return pulumi.get(self, "purpose")
 

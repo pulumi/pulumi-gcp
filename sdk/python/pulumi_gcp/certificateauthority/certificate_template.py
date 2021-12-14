@@ -354,6 +354,9 @@ class CertificateTemplate(pulumi.CustomResource):
                     title="Sample expression",
                 ),
             ),
+            labels={
+                "label-two": "value-two",
+            },
             location="us-west1",
             passthrough_extensions=gcp.certificateauthority.CertificateTemplatePassthroughExtensionsArgs(
                 additional_extensions=[gcp.certificateauthority.CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs(
@@ -475,6 +478,9 @@ class CertificateTemplate(pulumi.CustomResource):
                     title="Sample expression",
                 ),
             ),
+            labels={
+                "label-two": "value-two",
+            },
             location="us-west1",
             passthrough_extensions=gcp.certificateauthority.CertificateTemplatePassthroughExtensionsArgs(
                 additional_extensions=[gcp.certificateauthority.CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs(

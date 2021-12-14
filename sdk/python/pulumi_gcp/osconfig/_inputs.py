@@ -38,6 +38,51 @@ __all__ = [
     'GuestPoliciesRecipeUpdateStepMsiInstallationArgs',
     'GuestPoliciesRecipeUpdateStepRpmInstallationArgs',
     'GuestPoliciesRecipeUpdateStepScriptRunArgs',
+    'OsPolicyAssignmentInstanceFilterArgs',
+    'OsPolicyAssignmentInstanceFilterExclusionLabelArgs',
+    'OsPolicyAssignmentInstanceFilterInclusionLabelArgs',
+    'OsPolicyAssignmentInstanceFilterInventoryArgs',
+    'OsPolicyAssignmentOsPolicyArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs',
+    'OsPolicyAssignmentRolloutArgs',
+    'OsPolicyAssignmentRolloutDisruptionBudgetArgs',
     'PatchDeploymentInstanceFilterArgs',
     'PatchDeploymentInstanceFilterGroupLabelArgs',
     'PatchDeploymentOneTimeScheduleArgs',
@@ -1997,6 +2042,2417 @@ class GuestPoliciesRecipeUpdateStepScriptRunArgs:
     @interpreter.setter
     def interpreter(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "interpreter", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentInstanceFilterArgs:
+    def __init__(__self__, *,
+                 all: Optional[pulumi.Input[bool]] = None,
+                 exclusion_labels: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterExclusionLabelArgs']]]] = None,
+                 inclusion_labels: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInclusionLabelArgs']]]] = None,
+                 inventories: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInventoryArgs']]]] = None):
+        """
+        :param pulumi.Input[bool] all: Target all VMs in the project. If true, no other criteria is permitted.
+        :param pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterExclusionLabelArgs']]] exclusion_labels: List of label sets used for VM exclusion. If the list has more than one label set, the VM is excluded if any of the label sets are applicable for the VM.
+        :param pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInclusionLabelArgs']]] inclusion_labels: List of label sets used for VM inclusion. If the list has more than one `LabelSet`, the VM is included if any of the label sets are applicable for the VM.
+        :param pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInventoryArgs']]] inventories: List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories.
+        """
+        if all is not None:
+            pulumi.set(__self__, "all", all)
+        if exclusion_labels is not None:
+            pulumi.set(__self__, "exclusion_labels", exclusion_labels)
+        if inclusion_labels is not None:
+            pulumi.set(__self__, "inclusion_labels", inclusion_labels)
+        if inventories is not None:
+            pulumi.set(__self__, "inventories", inventories)
+
+    @property
+    @pulumi.getter
+    def all(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Target all VMs in the project. If true, no other criteria is permitted.
+        """
+        return pulumi.get(self, "all")
+
+    @all.setter
+    def all(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "all", value)
+
+    @property
+    @pulumi.getter(name="exclusionLabels")
+    def exclusion_labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterExclusionLabelArgs']]]]:
+        """
+        List of label sets used for VM exclusion. If the list has more than one label set, the VM is excluded if any of the label sets are applicable for the VM.
+        """
+        return pulumi.get(self, "exclusion_labels")
+
+    @exclusion_labels.setter
+    def exclusion_labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterExclusionLabelArgs']]]]):
+        pulumi.set(self, "exclusion_labels", value)
+
+    @property
+    @pulumi.getter(name="inclusionLabels")
+    def inclusion_labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInclusionLabelArgs']]]]:
+        """
+        List of label sets used for VM inclusion. If the list has more than one `LabelSet`, the VM is included if any of the label sets are applicable for the VM.
+        """
+        return pulumi.get(self, "inclusion_labels")
+
+    @inclusion_labels.setter
+    def inclusion_labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInclusionLabelArgs']]]]):
+        pulumi.set(self, "inclusion_labels", value)
+
+    @property
+    @pulumi.getter
+    def inventories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInventoryArgs']]]]:
+        """
+        List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories.
+        """
+        return pulumi.get(self, "inventories")
+
+    @inventories.setter
+    def inventories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInventoryArgs']]]]):
+        pulumi.set(self, "inventories", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentInstanceFilterExclusionLabelArgs:
+    def __init__(__self__, *,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified in this map to be selected.
+        """
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified in this map to be selected.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentInstanceFilterInclusionLabelArgs:
+    def __init__(__self__, *,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified in this map to be selected.
+        """
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified in this map to be selected.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentInstanceFilterInventoryArgs:
+    def __init__(__self__, *,
+                 os_short_name: pulumi.Input[str],
+                 os_version: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] os_short_name: Required. The OS short name
+        :param pulumi.Input[str] os_version: The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions.
+        """
+        pulumi.set(__self__, "os_short_name", os_short_name)
+        if os_version is not None:
+            pulumi.set(__self__, "os_version", os_version)
+
+    @property
+    @pulumi.getter(name="osShortName")
+    def os_short_name(self) -> pulumi.Input[str]:
+        """
+        Required. The OS short name
+        """
+        return pulumi.get(self, "os_short_name")
+
+    @os_short_name.setter
+    def os_short_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "os_short_name", value)
+
+    @property
+    @pulumi.getter(name="osVersion")
+    def os_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions.
+        """
+        return pulumi.get(self, "os_version")
+
+    @os_version.setter
+    def os_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "os_version", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentOsPolicyArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 mode: pulumi.Input[str],
+                 resource_groups: pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupArgs']]],
+                 allow_no_resource_group_match: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] id: Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+        :param pulumi.Input[str] mode: Required. Policy mode Possible values: MODE_UNSPECIFIED, VALIDATION, ENFORCEMENT
+        :param pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupArgs']]] resource_groups: Required. List of resource groups for the policy. For a particular VM, resource groups are evaluated in the order specified and the first resource group that is applicable is selected and the rest are ignored. If none of the resource groups are applicable for a VM, the VM is considered to be non-compliant w.r.t this policy. This behavior can be toggled by the flag `allow_no_resource_group_match`
+        :param pulumi.Input[bool] allow_no_resource_group_match: This flag determines the OS policy compliance status when none of the resource groups within the policy are applicable for a VM. Set this value to `true` if the policy needs to be reported as compliant even if the policy has nothing to validate or enforce.
+        :param pulumi.Input[str] description: OS policy assignment description. Length of the description is limited to 1024 characters.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "resource_groups", resource_groups)
+        if allow_no_resource_group_match is not None:
+            pulumi.set(__self__, "allow_no_resource_group_match", allow_no_resource_group_match)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> pulumi.Input[str]:
+        """
+        Required. Policy mode Possible values: MODE_UNSPECIFIED, VALIDATION, ENFORCEMENT
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: pulumi.Input[str]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter(name="resourceGroups")
+    def resource_groups(self) -> pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupArgs']]]:
+        """
+        Required. List of resource groups for the policy. For a particular VM, resource groups are evaluated in the order specified and the first resource group that is applicable is selected and the rest are ignored. If none of the resource groups are applicable for a VM, the VM is considered to be non-compliant w.r.t this policy. This behavior can be toggled by the flag `allow_no_resource_group_match`
+        """
+        return pulumi.get(self, "resource_groups")
+
+    @resource_groups.setter
+    def resource_groups(self, value: pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupArgs']]]):
+        pulumi.set(self, "resource_groups", value)
+
+    @property
+    @pulumi.getter(name="allowNoResourceGroupMatch")
+    def allow_no_resource_group_match(self) -> Optional[pulumi.Input[bool]]:
+        """
+        This flag determines the OS policy compliance status when none of the resource groups within the policy are applicable for a VM. Set this value to `true` if the policy needs to be reported as compliant even if the policy has nothing to validate or enforce.
+        """
+        return pulumi.get(self, "allow_no_resource_group_match")
+
+    @allow_no_resource_group_match.setter
+    def allow_no_resource_group_match(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_no_resource_group_match", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        OS policy assignment description. Length of the description is limited to 1024 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentOsPolicyResourceGroupArgs:
+    def __init__(__self__, *,
+                 resources: pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceArgs']]],
+                 inventory_filters: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceArgs']]] resources: Required. List of resources configured for this resource group. The resources are executed in the exact order specified here.
+        :param pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs']]] inventory_filters: List of inventory filters for the resource group. The resources in this resource group are applied to the target VM if it satisfies at least one of the following inventory filters. For example, to apply this resource group to VMs running either `RHEL` or `CentOS` operating systems, specify 2 items for the list with following values: inventory_filters[0].os_short_name='rhel' and inventory_filters[1].os_short_name='centos' If the list is empty, this resource group will be applied to the target VM unconditionally.
+        """
+        pulumi.set(__self__, "resources", resources)
+        if inventory_filters is not None:
+            pulumi.set(__self__, "inventory_filters", inventory_filters)
+
+    @property
+    @pulumi.getter
+    def resources(self) -> pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceArgs']]]:
+        """
+        Required. List of resources configured for this resource group. The resources are executed in the exact order specified here.
+        """
+        return pulumi.get(self, "resources")
+
+    @resources.setter
+    def resources(self, value: pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceArgs']]]):
+        pulumi.set(self, "resources", value)
+
+    @property
+    @pulumi.getter(name="inventoryFilters")
+    def inventory_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs']]]]:
+        """
+        List of inventory filters for the resource group. The resources in this resource group are applied to the target VM if it satisfies at least one of the following inventory filters. For example, to apply this resource group to VMs running either `RHEL` or `CentOS` operating systems, specify 2 items for the list with following values: inventory_filters[0].os_short_name='rhel' and inventory_filters[1].os_short_name='centos' If the list is empty, this resource group will be applied to the target VM unconditionally.
+        """
+        return pulumi.get(self, "inventory_filters")
+
+    @inventory_filters.setter
+    def inventory_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs']]]]):
+        pulumi.set(self, "inventory_filters", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs:
+    def __init__(__self__, *,
+                 os_short_name: pulumi.Input[str],
+                 os_version: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] os_short_name: Required. The OS short name
+        :param pulumi.Input[str] os_version: The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions.
+        """
+        pulumi.set(__self__, "os_short_name", os_short_name)
+        if os_version is not None:
+            pulumi.set(__self__, "os_version", os_version)
+
+    @property
+    @pulumi.getter(name="osShortName")
+    def os_short_name(self) -> pulumi.Input[str]:
+        """
+        Required. The OS short name
+        """
+        return pulumi.get(self, "os_short_name")
+
+    @os_short_name.setter
+    def os_short_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "os_short_name", value)
+
+    @property
+    @pulumi.getter(name="osVersion")
+    def os_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions.
+        """
+        return pulumi.get(self, "os_version")
+
+    @os_version.setter
+    def os_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "os_version", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 exec_: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs']] = None,
+                 file: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs']] = None,
+                 pkg: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs']] = None,
+                 repository: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs']] = None):
+        """
+        :param pulumi.Input[str] id: Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs'] exec_: Exec resource
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs'] file: Required. A deb package.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs'] pkg: Package resource
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs'] repository: Package repository resource
+        """
+        pulumi.set(__self__, "id", id)
+        if exec_ is not None:
+            pulumi.set(__self__, "exec_", exec_)
+        if file is not None:
+            pulumi.set(__self__, "file", file)
+        if pkg is not None:
+            pulumi.set(__self__, "pkg", pkg)
+        if repository is not None:
+            pulumi.set(__self__, "repository", repository)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="exec")
+    def exec_(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs']]:
+        """
+        Exec resource
+        """
+        return pulumi.get(self, "exec_")
+
+    @exec_.setter
+    def exec_(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs']]):
+        pulumi.set(self, "exec_", value)
+
+    @property
+    @pulumi.getter
+    def file(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs']]:
+        """
+        Required. A deb package.
+        """
+        return pulumi.get(self, "file")
+
+    @file.setter
+    def file(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs']]):
+        pulumi.set(self, "file", value)
+
+    @property
+    @pulumi.getter
+    def pkg(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs']]:
+        """
+        Package resource
+        """
+        return pulumi.get(self, "pkg")
+
+    @pkg.setter
+    def pkg(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs']]):
+        pulumi.set(self, "pkg", value)
+
+    @property
+    @pulumi.getter
+    def repository(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs']]:
+        """
+        Package repository resource
+        """
+        return pulumi.get(self, "repository")
+
+    @repository.setter
+    def repository(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs']]):
+        pulumi.set(self, "repository", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs:
+    def __init__(__self__, *,
+                 validate: pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs'],
+                 enforce: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs']] = None):
+        """
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs'] validate: Required. What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs'] enforce: Required. What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate.
+        """
+        pulumi.set(__self__, "validate", validate)
+        if enforce is not None:
+            pulumi.set(__self__, "enforce", enforce)
+
+    @property
+    @pulumi.getter
+    def validate(self) -> pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs']:
+        """
+        Required. What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate.
+        """
+        return pulumi.get(self, "validate")
+
+    @validate.setter
+    def validate(self, value: pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs']):
+        pulumi.set(self, "validate", value)
+
+    @property
+    @pulumi.getter
+    def enforce(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs']]:
+        """
+        Required. What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate.
+        """
+        return pulumi.get(self, "enforce")
+
+    @enforce.setter
+    def enforce(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs']]):
+        pulumi.set(self, "enforce", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs:
+    def __init__(__self__, *,
+                 interpreter: pulumi.Input[str],
+                 args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 file: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs']] = None,
+                 output_file_path: Optional[pulumi.Input[str]] = None,
+                 script: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] interpreter: Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Optional arguments to pass to the source during execution.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs'] file: Required. A deb package.
+        :param pulumi.Input[str] output_file_path: Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
+        :param pulumi.Input[str] script: An inline script. The size of the script is limited to 1024 characters.
+        """
+        pulumi.set(__self__, "interpreter", interpreter)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if file is not None:
+            pulumi.set(__self__, "file", file)
+        if output_file_path is not None:
+            pulumi.set(__self__, "output_file_path", output_file_path)
+        if script is not None:
+            pulumi.set(__self__, "script", script)
+
+    @property
+    @pulumi.getter
+    def interpreter(self) -> pulumi.Input[str]:
+        """
+        Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
+        """
+        return pulumi.get(self, "interpreter")
+
+    @interpreter.setter
+    def interpreter(self, value: pulumi.Input[str]):
+        pulumi.set(self, "interpreter", value)
+
+    @property
+    @pulumi.getter
+    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional arguments to pass to the source during execution.
+        """
+        return pulumi.get(self, "args")
+
+    @args.setter
+    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "args", value)
+
+    @property
+    @pulumi.getter
+    def file(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs']]:
+        """
+        Required. A deb package.
+        """
+        return pulumi.get(self, "file")
+
+    @file.setter
+    def file(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs']]):
+        pulumi.set(self, "file", value)
+
+    @property
+    @pulumi.getter(name="outputFilePath")
+    def output_file_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
+        """
+        return pulumi.get(self, "output_file_path")
+
+    @output_file_path.setter
+    def output_file_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "output_file_path", value)
+
+    @property
+    @pulumi.getter
+    def script(self) -> Optional[pulumi.Input[str]]:
+        """
+        An inline script. The size of the script is limited to 1024 characters.
+        """
+        return pulumi.get(self, "script")
+
+    @script.setter
+    def script(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "script", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs:
+    def __init__(__self__, *,
+                 allow_insecure: Optional[pulumi.Input[bool]] = None,
+                 gcs: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs']] = None,
+                 local_path: Optional[pulumi.Input[str]] = None,
+                 remote: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs']] = None):
+        """
+        :param pulumi.Input[bool] allow_insecure: Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs'] gcs: A Cloud Storage object.
+        :param pulumi.Input[str] local_path: A local path within the VM to use.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs'] remote: A generic remote file.
+        """
+        if allow_insecure is not None:
+            pulumi.set(__self__, "allow_insecure", allow_insecure)
+        if gcs is not None:
+            pulumi.set(__self__, "gcs", gcs)
+        if local_path is not None:
+            pulumi.set(__self__, "local_path", local_path)
+        if remote is not None:
+            pulumi.set(__self__, "remote", remote)
+
+    @property
+    @pulumi.getter(name="allowInsecure")
+    def allow_insecure(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+        """
+        return pulumi.get(self, "allow_insecure")
+
+    @allow_insecure.setter
+    def allow_insecure(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_insecure", value)
+
+    @property
+    @pulumi.getter
+    def gcs(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs']]:
+        """
+        A Cloud Storage object.
+        """
+        return pulumi.get(self, "gcs")
+
+    @gcs.setter
+    def gcs(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs']]):
+        pulumi.set(self, "gcs", value)
+
+    @property
+    @pulumi.getter(name="localPath")
+    def local_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        A local path within the VM to use.
+        """
+        return pulumi.get(self, "local_path")
+
+    @local_path.setter
+    def local_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "local_path", value)
+
+    @property
+    @pulumi.getter
+    def remote(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs']]:
+        """
+        A generic remote file.
+        """
+        return pulumi.get(self, "remote")
+
+    @remote.setter
+    def remote(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs']]):
+        pulumi.set(self, "remote", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs:
+    def __init__(__self__, *,
+                 bucket: pulumi.Input[str],
+                 object: pulumi.Input[str],
+                 generation: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] bucket: Required. Bucket of the Cloud Storage object.
+        :param pulumi.Input[str] object: Required. Name of the Cloud Storage object.
+        :param pulumi.Input[int] generation: Generation number of the Cloud Storage object.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "object", object)
+        if generation is not None:
+            pulumi.set(__self__, "generation", generation)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> pulumi.Input[str]:
+        """
+        Required. Bucket of the Cloud Storage object.
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter
+    def object(self) -> pulumi.Input[str]:
+        """
+        Required. Name of the Cloud Storage object.
+        """
+        return pulumi.get(self, "object")
+
+    @object.setter
+    def object(self, value: pulumi.Input[str]):
+        pulumi.set(self, "object", value)
+
+    @property
+    @pulumi.getter
+    def generation(self) -> Optional[pulumi.Input[int]]:
+        """
+        Generation number of the Cloud Storage object.
+        """
+        return pulumi.get(self, "generation")
+
+    @generation.setter
+    def generation(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "generation", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs:
+    def __init__(__self__, *,
+                 uri: pulumi.Input[str],
+                 sha256_checksum: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] uri: Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+        :param pulumi.Input[str] sha256_checksum: SHA256 checksum of the remote file.
+        """
+        pulumi.set(__self__, "uri", uri)
+        if sha256_checksum is not None:
+            pulumi.set(__self__, "sha256_checksum", sha256_checksum)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> pulumi.Input[str]:
+        """
+        Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uri", value)
+
+    @property
+    @pulumi.getter(name="sha256Checksum")
+    def sha256_checksum(self) -> Optional[pulumi.Input[str]]:
+        """
+        SHA256 checksum of the remote file.
+        """
+        return pulumi.get(self, "sha256_checksum")
+
+    @sha256_checksum.setter
+    def sha256_checksum(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sha256_checksum", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs:
+    def __init__(__self__, *,
+                 interpreter: pulumi.Input[str],
+                 args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 file: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs']] = None,
+                 output_file_path: Optional[pulumi.Input[str]] = None,
+                 script: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] interpreter: Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Optional arguments to pass to the source during execution.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs'] file: Required. A deb package.
+        :param pulumi.Input[str] output_file_path: Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
+        :param pulumi.Input[str] script: An inline script. The size of the script is limited to 1024 characters.
+        """
+        pulumi.set(__self__, "interpreter", interpreter)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if file is not None:
+            pulumi.set(__self__, "file", file)
+        if output_file_path is not None:
+            pulumi.set(__self__, "output_file_path", output_file_path)
+        if script is not None:
+            pulumi.set(__self__, "script", script)
+
+    @property
+    @pulumi.getter
+    def interpreter(self) -> pulumi.Input[str]:
+        """
+        Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
+        """
+        return pulumi.get(self, "interpreter")
+
+    @interpreter.setter
+    def interpreter(self, value: pulumi.Input[str]):
+        pulumi.set(self, "interpreter", value)
+
+    @property
+    @pulumi.getter
+    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional arguments to pass to the source during execution.
+        """
+        return pulumi.get(self, "args")
+
+    @args.setter
+    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "args", value)
+
+    @property
+    @pulumi.getter
+    def file(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs']]:
+        """
+        Required. A deb package.
+        """
+        return pulumi.get(self, "file")
+
+    @file.setter
+    def file(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs']]):
+        pulumi.set(self, "file", value)
+
+    @property
+    @pulumi.getter(name="outputFilePath")
+    def output_file_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
+        """
+        return pulumi.get(self, "output_file_path")
+
+    @output_file_path.setter
+    def output_file_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "output_file_path", value)
+
+    @property
+    @pulumi.getter
+    def script(self) -> Optional[pulumi.Input[str]]:
+        """
+        An inline script. The size of the script is limited to 1024 characters.
+        """
+        return pulumi.get(self, "script")
+
+    @script.setter
+    def script(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "script", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs:
+    def __init__(__self__, *,
+                 allow_insecure: Optional[pulumi.Input[bool]] = None,
+                 gcs: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs']] = None,
+                 local_path: Optional[pulumi.Input[str]] = None,
+                 remote: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs']] = None):
+        """
+        :param pulumi.Input[bool] allow_insecure: Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs'] gcs: A Cloud Storage object.
+        :param pulumi.Input[str] local_path: A local path within the VM to use.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs'] remote: A generic remote file.
+        """
+        if allow_insecure is not None:
+            pulumi.set(__self__, "allow_insecure", allow_insecure)
+        if gcs is not None:
+            pulumi.set(__self__, "gcs", gcs)
+        if local_path is not None:
+            pulumi.set(__self__, "local_path", local_path)
+        if remote is not None:
+            pulumi.set(__self__, "remote", remote)
+
+    @property
+    @pulumi.getter(name="allowInsecure")
+    def allow_insecure(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+        """
+        return pulumi.get(self, "allow_insecure")
+
+    @allow_insecure.setter
+    def allow_insecure(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_insecure", value)
+
+    @property
+    @pulumi.getter
+    def gcs(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs']]:
+        """
+        A Cloud Storage object.
+        """
+        return pulumi.get(self, "gcs")
+
+    @gcs.setter
+    def gcs(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs']]):
+        pulumi.set(self, "gcs", value)
+
+    @property
+    @pulumi.getter(name="localPath")
+    def local_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        A local path within the VM to use.
+        """
+        return pulumi.get(self, "local_path")
+
+    @local_path.setter
+    def local_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "local_path", value)
+
+    @property
+    @pulumi.getter
+    def remote(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs']]:
+        """
+        A generic remote file.
+        """
+        return pulumi.get(self, "remote")
+
+    @remote.setter
+    def remote(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs']]):
+        pulumi.set(self, "remote", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs:
+    def __init__(__self__, *,
+                 bucket: pulumi.Input[str],
+                 object: pulumi.Input[str],
+                 generation: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] bucket: Required. Bucket of the Cloud Storage object.
+        :param pulumi.Input[str] object: Required. Name of the Cloud Storage object.
+        :param pulumi.Input[int] generation: Generation number of the Cloud Storage object.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "object", object)
+        if generation is not None:
+            pulumi.set(__self__, "generation", generation)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> pulumi.Input[str]:
+        """
+        Required. Bucket of the Cloud Storage object.
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter
+    def object(self) -> pulumi.Input[str]:
+        """
+        Required. Name of the Cloud Storage object.
+        """
+        return pulumi.get(self, "object")
+
+    @object.setter
+    def object(self, value: pulumi.Input[str]):
+        pulumi.set(self, "object", value)
+
+    @property
+    @pulumi.getter
+    def generation(self) -> Optional[pulumi.Input[int]]:
+        """
+        Generation number of the Cloud Storage object.
+        """
+        return pulumi.get(self, "generation")
+
+    @generation.setter
+    def generation(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "generation", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs:
+    def __init__(__self__, *,
+                 uri: pulumi.Input[str],
+                 sha256_checksum: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] uri: Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+        :param pulumi.Input[str] sha256_checksum: SHA256 checksum of the remote file.
+        """
+        pulumi.set(__self__, "uri", uri)
+        if sha256_checksum is not None:
+            pulumi.set(__self__, "sha256_checksum", sha256_checksum)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> pulumi.Input[str]:
+        """
+        Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uri", value)
+
+    @property
+    @pulumi.getter(name="sha256Checksum")
+    def sha256_checksum(self) -> Optional[pulumi.Input[str]]:
+        """
+        SHA256 checksum of the remote file.
+        """
+        return pulumi.get(self, "sha256_checksum")
+
+    @sha256_checksum.setter
+    def sha256_checksum(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sha256_checksum", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs:
+    def __init__(__self__, *,
+                 path: pulumi.Input[str],
+                 state: pulumi.Input[str],
+                 content: Optional[pulumi.Input[str]] = None,
+                 file: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs']] = None,
+                 permissions: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] path: Required. The absolute path of the file within the VM.
+        :param pulumi.Input[str] state: Required. Desired state of the file. Possible values: OS_POLICY_COMPLIANCE_STATE_UNSPECIFIED, COMPLIANT, NON_COMPLIANT, UNKNOWN, NO_OS_POLICIES_APPLICABLE
+        :param pulumi.Input[str] content: A a file with this content. The size of the content is limited to 1024 characters.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs'] file: Required. A deb package.
+        :param pulumi.Input[str] permissions: -
+               Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
+        """
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "state", state)
+        if content is not None:
+            pulumi.set(__self__, "content", content)
+        if file is not None:
+            pulumi.set(__self__, "file", file)
+        if permissions is not None:
+            pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def path(self) -> pulumi.Input[str]:
+        """
+        Required. The absolute path of the file within the VM.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: pulumi.Input[str]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Input[str]:
+        """
+        Required. Desired state of the file. Possible values: OS_POLICY_COMPLIANCE_STATE_UNSPECIFIED, COMPLIANT, NON_COMPLIANT, UNKNOWN, NO_OS_POLICIES_APPLICABLE
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: pulumi.Input[str]):
+        pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter
+    def content(self) -> Optional[pulumi.Input[str]]:
+        """
+        A a file with this content. The size of the content is limited to 1024 characters.
+        """
+        return pulumi.get(self, "content")
+
+    @content.setter
+    def content(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "content", value)
+
+    @property
+    @pulumi.getter
+    def file(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs']]:
+        """
+        Required. A deb package.
+        """
+        return pulumi.get(self, "file")
+
+    @file.setter
+    def file(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs']]):
+        pulumi.set(self, "file", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> Optional[pulumi.Input[str]]:
+        """
+        -
+        Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
+        """
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "permissions", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs:
+    def __init__(__self__, *,
+                 allow_insecure: Optional[pulumi.Input[bool]] = None,
+                 gcs: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs']] = None,
+                 local_path: Optional[pulumi.Input[str]] = None,
+                 remote: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs']] = None):
+        """
+        :param pulumi.Input[bool] allow_insecure: Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs'] gcs: A Cloud Storage object.
+        :param pulumi.Input[str] local_path: A local path within the VM to use.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs'] remote: A generic remote file.
+        """
+        if allow_insecure is not None:
+            pulumi.set(__self__, "allow_insecure", allow_insecure)
+        if gcs is not None:
+            pulumi.set(__self__, "gcs", gcs)
+        if local_path is not None:
+            pulumi.set(__self__, "local_path", local_path)
+        if remote is not None:
+            pulumi.set(__self__, "remote", remote)
+
+    @property
+    @pulumi.getter(name="allowInsecure")
+    def allow_insecure(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+        """
+        return pulumi.get(self, "allow_insecure")
+
+    @allow_insecure.setter
+    def allow_insecure(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_insecure", value)
+
+    @property
+    @pulumi.getter
+    def gcs(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs']]:
+        """
+        A Cloud Storage object.
+        """
+        return pulumi.get(self, "gcs")
+
+    @gcs.setter
+    def gcs(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs']]):
+        pulumi.set(self, "gcs", value)
+
+    @property
+    @pulumi.getter(name="localPath")
+    def local_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        A local path within the VM to use.
+        """
+        return pulumi.get(self, "local_path")
+
+    @local_path.setter
+    def local_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "local_path", value)
+
+    @property
+    @pulumi.getter
+    def remote(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs']]:
+        """
+        A generic remote file.
+        """
+        return pulumi.get(self, "remote")
+
+    @remote.setter
+    def remote(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs']]):
+        pulumi.set(self, "remote", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs:
+    def __init__(__self__, *,
+                 bucket: pulumi.Input[str],
+                 object: pulumi.Input[str],
+                 generation: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] bucket: Required. Bucket of the Cloud Storage object.
+        :param pulumi.Input[str] object: Required. Name of the Cloud Storage object.
+        :param pulumi.Input[int] generation: Generation number of the Cloud Storage object.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "object", object)
+        if generation is not None:
+            pulumi.set(__self__, "generation", generation)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> pulumi.Input[str]:
+        """
+        Required. Bucket of the Cloud Storage object.
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter
+    def object(self) -> pulumi.Input[str]:
+        """
+        Required. Name of the Cloud Storage object.
+        """
+        return pulumi.get(self, "object")
+
+    @object.setter
+    def object(self, value: pulumi.Input[str]):
+        pulumi.set(self, "object", value)
+
+    @property
+    @pulumi.getter
+    def generation(self) -> Optional[pulumi.Input[int]]:
+        """
+        Generation number of the Cloud Storage object.
+        """
+        return pulumi.get(self, "generation")
+
+    @generation.setter
+    def generation(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "generation", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs:
+    def __init__(__self__, *,
+                 uri: pulumi.Input[str],
+                 sha256_checksum: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] uri: Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+        :param pulumi.Input[str] sha256_checksum: SHA256 checksum of the remote file.
+        """
+        pulumi.set(__self__, "uri", uri)
+        if sha256_checksum is not None:
+            pulumi.set(__self__, "sha256_checksum", sha256_checksum)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> pulumi.Input[str]:
+        """
+        Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uri", value)
+
+    @property
+    @pulumi.getter(name="sha256Checksum")
+    def sha256_checksum(self) -> Optional[pulumi.Input[str]]:
+        """
+        SHA256 checksum of the remote file.
+        """
+        return pulumi.get(self, "sha256_checksum")
+
+    @sha256_checksum.setter
+    def sha256_checksum(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sha256_checksum", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs:
+    def __init__(__self__, *,
+                 desired_state: pulumi.Input[str],
+                 apt: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs']] = None,
+                 deb: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs']] = None,
+                 googet: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs']] = None,
+                 msi: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs']] = None,
+                 rpm: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs']] = None,
+                 yum: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs']] = None,
+                 zypper: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs']] = None):
+        """
+        :param pulumi.Input[str] desired_state: Required. The desired state the agent should maintain for this package. Possible values: DESIRED_STATE_UNSPECIFIED, INSTALLED, REMOVED
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs'] apt: An Apt Repository.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs'] deb: A deb package file.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs'] googet: A package managed by GooGet.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs'] msi: An MSI package.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs'] rpm: An rpm package file.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs'] yum: A Yum Repository.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs'] zypper: A Zypper Repository.
+        """
+        pulumi.set(__self__, "desired_state", desired_state)
+        if apt is not None:
+            pulumi.set(__self__, "apt", apt)
+        if deb is not None:
+            pulumi.set(__self__, "deb", deb)
+        if googet is not None:
+            pulumi.set(__self__, "googet", googet)
+        if msi is not None:
+            pulumi.set(__self__, "msi", msi)
+        if rpm is not None:
+            pulumi.set(__self__, "rpm", rpm)
+        if yum is not None:
+            pulumi.set(__self__, "yum", yum)
+        if zypper is not None:
+            pulumi.set(__self__, "zypper", zypper)
+
+    @property
+    @pulumi.getter(name="desiredState")
+    def desired_state(self) -> pulumi.Input[str]:
+        """
+        Required. The desired state the agent should maintain for this package. Possible values: DESIRED_STATE_UNSPECIFIED, INSTALLED, REMOVED
+        """
+        return pulumi.get(self, "desired_state")
+
+    @desired_state.setter
+    def desired_state(self, value: pulumi.Input[str]):
+        pulumi.set(self, "desired_state", value)
+
+    @property
+    @pulumi.getter
+    def apt(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs']]:
+        """
+        An Apt Repository.
+        """
+        return pulumi.get(self, "apt")
+
+    @apt.setter
+    def apt(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs']]):
+        pulumi.set(self, "apt", value)
+
+    @property
+    @pulumi.getter
+    def deb(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs']]:
+        """
+        A deb package file.
+        """
+        return pulumi.get(self, "deb")
+
+    @deb.setter
+    def deb(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs']]):
+        pulumi.set(self, "deb", value)
+
+    @property
+    @pulumi.getter
+    def googet(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs']]:
+        """
+        A package managed by GooGet.
+        """
+        return pulumi.get(self, "googet")
+
+    @googet.setter
+    def googet(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs']]):
+        pulumi.set(self, "googet", value)
+
+    @property
+    @pulumi.getter
+    def msi(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs']]:
+        """
+        An MSI package.
+        """
+        return pulumi.get(self, "msi")
+
+    @msi.setter
+    def msi(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs']]):
+        pulumi.set(self, "msi", value)
+
+    @property
+    @pulumi.getter
+    def rpm(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs']]:
+        """
+        An rpm package file.
+        """
+        return pulumi.get(self, "rpm")
+
+    @rpm.setter
+    def rpm(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs']]):
+        pulumi.set(self, "rpm", value)
+
+    @property
+    @pulumi.getter
+    def yum(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs']]:
+        """
+        A Yum Repository.
+        """
+        return pulumi.get(self, "yum")
+
+    @yum.setter
+    def yum(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs']]):
+        pulumi.set(self, "yum", value)
+
+    @property
+    @pulumi.getter
+    def zypper(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs']]:
+        """
+        A Zypper Repository.
+        """
+        return pulumi.get(self, "zypper")
+
+    @zypper.setter
+    def zypper(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs']]):
+        pulumi.set(self, "zypper", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: Required. The name of the repository.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Required. The name of the repository.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs:
+    def __init__(__self__, *,
+                 source: pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs'],
+                 pull_deps: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs'] source: Required. A deb package.
+        :param pulumi.Input[bool] pull_deps: Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
+        """
+        pulumi.set(__self__, "source", source)
+        if pull_deps is not None:
+            pulumi.set(__self__, "pull_deps", pull_deps)
+
+    @property
+    @pulumi.getter
+    def source(self) -> pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs']:
+        """
+        Required. A deb package.
+        """
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs']):
+        pulumi.set(self, "source", value)
+
+    @property
+    @pulumi.getter(name="pullDeps")
+    def pull_deps(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
+        """
+        return pulumi.get(self, "pull_deps")
+
+    @pull_deps.setter
+    def pull_deps(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "pull_deps", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs:
+    def __init__(__self__, *,
+                 allow_insecure: Optional[pulumi.Input[bool]] = None,
+                 gcs: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs']] = None,
+                 local_path: Optional[pulumi.Input[str]] = None,
+                 remote: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs']] = None):
+        """
+        :param pulumi.Input[bool] allow_insecure: Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs'] gcs: A Cloud Storage object.
+        :param pulumi.Input[str] local_path: A local path within the VM to use.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs'] remote: A generic remote file.
+        """
+        if allow_insecure is not None:
+            pulumi.set(__self__, "allow_insecure", allow_insecure)
+        if gcs is not None:
+            pulumi.set(__self__, "gcs", gcs)
+        if local_path is not None:
+            pulumi.set(__self__, "local_path", local_path)
+        if remote is not None:
+            pulumi.set(__self__, "remote", remote)
+
+    @property
+    @pulumi.getter(name="allowInsecure")
+    def allow_insecure(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+        """
+        return pulumi.get(self, "allow_insecure")
+
+    @allow_insecure.setter
+    def allow_insecure(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_insecure", value)
+
+    @property
+    @pulumi.getter
+    def gcs(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs']]:
+        """
+        A Cloud Storage object.
+        """
+        return pulumi.get(self, "gcs")
+
+    @gcs.setter
+    def gcs(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs']]):
+        pulumi.set(self, "gcs", value)
+
+    @property
+    @pulumi.getter(name="localPath")
+    def local_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        A local path within the VM to use.
+        """
+        return pulumi.get(self, "local_path")
+
+    @local_path.setter
+    def local_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "local_path", value)
+
+    @property
+    @pulumi.getter
+    def remote(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs']]:
+        """
+        A generic remote file.
+        """
+        return pulumi.get(self, "remote")
+
+    @remote.setter
+    def remote(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs']]):
+        pulumi.set(self, "remote", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs:
+    def __init__(__self__, *,
+                 bucket: pulumi.Input[str],
+                 object: pulumi.Input[str],
+                 generation: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] bucket: Required. Bucket of the Cloud Storage object.
+        :param pulumi.Input[str] object: Required. Name of the Cloud Storage object.
+        :param pulumi.Input[int] generation: Generation number of the Cloud Storage object.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "object", object)
+        if generation is not None:
+            pulumi.set(__self__, "generation", generation)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> pulumi.Input[str]:
+        """
+        Required. Bucket of the Cloud Storage object.
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter
+    def object(self) -> pulumi.Input[str]:
+        """
+        Required. Name of the Cloud Storage object.
+        """
+        return pulumi.get(self, "object")
+
+    @object.setter
+    def object(self, value: pulumi.Input[str]):
+        pulumi.set(self, "object", value)
+
+    @property
+    @pulumi.getter
+    def generation(self) -> Optional[pulumi.Input[int]]:
+        """
+        Generation number of the Cloud Storage object.
+        """
+        return pulumi.get(self, "generation")
+
+    @generation.setter
+    def generation(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "generation", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs:
+    def __init__(__self__, *,
+                 uri: pulumi.Input[str],
+                 sha256_checksum: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] uri: Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+        :param pulumi.Input[str] sha256_checksum: SHA256 checksum of the remote file.
+        """
+        pulumi.set(__self__, "uri", uri)
+        if sha256_checksum is not None:
+            pulumi.set(__self__, "sha256_checksum", sha256_checksum)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> pulumi.Input[str]:
+        """
+        Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uri", value)
+
+    @property
+    @pulumi.getter(name="sha256Checksum")
+    def sha256_checksum(self) -> Optional[pulumi.Input[str]]:
+        """
+        SHA256 checksum of the remote file.
+        """
+        return pulumi.get(self, "sha256_checksum")
+
+    @sha256_checksum.setter
+    def sha256_checksum(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sha256_checksum", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: Required. The name of the repository.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Required. The name of the repository.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs:
+    def __init__(__self__, *,
+                 source: pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs'],
+                 properties: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs'] source: Required. A deb package.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] properties: Additional properties to use during installation. This should be in the format of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`.
+        """
+        pulumi.set(__self__, "source", source)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+
+    @property
+    @pulumi.getter
+    def source(self) -> pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs']:
+        """
+        Required. A deb package.
+        """
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs']):
+        pulumi.set(self, "source", value)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Additional properties to use during installation. This should be in the format of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "properties", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs:
+    def __init__(__self__, *,
+                 allow_insecure: Optional[pulumi.Input[bool]] = None,
+                 gcs: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs']] = None,
+                 local_path: Optional[pulumi.Input[str]] = None,
+                 remote: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs']] = None):
+        """
+        :param pulumi.Input[bool] allow_insecure: Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs'] gcs: A Cloud Storage object.
+        :param pulumi.Input[str] local_path: A local path within the VM to use.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs'] remote: A generic remote file.
+        """
+        if allow_insecure is not None:
+            pulumi.set(__self__, "allow_insecure", allow_insecure)
+        if gcs is not None:
+            pulumi.set(__self__, "gcs", gcs)
+        if local_path is not None:
+            pulumi.set(__self__, "local_path", local_path)
+        if remote is not None:
+            pulumi.set(__self__, "remote", remote)
+
+    @property
+    @pulumi.getter(name="allowInsecure")
+    def allow_insecure(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+        """
+        return pulumi.get(self, "allow_insecure")
+
+    @allow_insecure.setter
+    def allow_insecure(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_insecure", value)
+
+    @property
+    @pulumi.getter
+    def gcs(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs']]:
+        """
+        A Cloud Storage object.
+        """
+        return pulumi.get(self, "gcs")
+
+    @gcs.setter
+    def gcs(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs']]):
+        pulumi.set(self, "gcs", value)
+
+    @property
+    @pulumi.getter(name="localPath")
+    def local_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        A local path within the VM to use.
+        """
+        return pulumi.get(self, "local_path")
+
+    @local_path.setter
+    def local_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "local_path", value)
+
+    @property
+    @pulumi.getter
+    def remote(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs']]:
+        """
+        A generic remote file.
+        """
+        return pulumi.get(self, "remote")
+
+    @remote.setter
+    def remote(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs']]):
+        pulumi.set(self, "remote", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs:
+    def __init__(__self__, *,
+                 bucket: pulumi.Input[str],
+                 object: pulumi.Input[str],
+                 generation: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] bucket: Required. Bucket of the Cloud Storage object.
+        :param pulumi.Input[str] object: Required. Name of the Cloud Storage object.
+        :param pulumi.Input[int] generation: Generation number of the Cloud Storage object.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "object", object)
+        if generation is not None:
+            pulumi.set(__self__, "generation", generation)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> pulumi.Input[str]:
+        """
+        Required. Bucket of the Cloud Storage object.
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter
+    def object(self) -> pulumi.Input[str]:
+        """
+        Required. Name of the Cloud Storage object.
+        """
+        return pulumi.get(self, "object")
+
+    @object.setter
+    def object(self, value: pulumi.Input[str]):
+        pulumi.set(self, "object", value)
+
+    @property
+    @pulumi.getter
+    def generation(self) -> Optional[pulumi.Input[int]]:
+        """
+        Generation number of the Cloud Storage object.
+        """
+        return pulumi.get(self, "generation")
+
+    @generation.setter
+    def generation(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "generation", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs:
+    def __init__(__self__, *,
+                 uri: pulumi.Input[str],
+                 sha256_checksum: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] uri: Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+        :param pulumi.Input[str] sha256_checksum: SHA256 checksum of the remote file.
+        """
+        pulumi.set(__self__, "uri", uri)
+        if sha256_checksum is not None:
+            pulumi.set(__self__, "sha256_checksum", sha256_checksum)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> pulumi.Input[str]:
+        """
+        Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uri", value)
+
+    @property
+    @pulumi.getter(name="sha256Checksum")
+    def sha256_checksum(self) -> Optional[pulumi.Input[str]]:
+        """
+        SHA256 checksum of the remote file.
+        """
+        return pulumi.get(self, "sha256_checksum")
+
+    @sha256_checksum.setter
+    def sha256_checksum(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sha256_checksum", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs:
+    def __init__(__self__, *,
+                 source: pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs'],
+                 pull_deps: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs'] source: Required. A deb package.
+        :param pulumi.Input[bool] pull_deps: Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
+        """
+        pulumi.set(__self__, "source", source)
+        if pull_deps is not None:
+            pulumi.set(__self__, "pull_deps", pull_deps)
+
+    @property
+    @pulumi.getter
+    def source(self) -> pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs']:
+        """
+        Required. A deb package.
+        """
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs']):
+        pulumi.set(self, "source", value)
+
+    @property
+    @pulumi.getter(name="pullDeps")
+    def pull_deps(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
+        """
+        return pulumi.get(self, "pull_deps")
+
+    @pull_deps.setter
+    def pull_deps(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "pull_deps", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs:
+    def __init__(__self__, *,
+                 allow_insecure: Optional[pulumi.Input[bool]] = None,
+                 gcs: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs']] = None,
+                 local_path: Optional[pulumi.Input[str]] = None,
+                 remote: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs']] = None):
+        """
+        :param pulumi.Input[bool] allow_insecure: Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs'] gcs: A Cloud Storage object.
+        :param pulumi.Input[str] local_path: A local path within the VM to use.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs'] remote: A generic remote file.
+        """
+        if allow_insecure is not None:
+            pulumi.set(__self__, "allow_insecure", allow_insecure)
+        if gcs is not None:
+            pulumi.set(__self__, "gcs", gcs)
+        if local_path is not None:
+            pulumi.set(__self__, "local_path", local_path)
+        if remote is not None:
+            pulumi.set(__self__, "remote", remote)
+
+    @property
+    @pulumi.getter(name="allowInsecure")
+    def allow_insecure(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+        """
+        return pulumi.get(self, "allow_insecure")
+
+    @allow_insecure.setter
+    def allow_insecure(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_insecure", value)
+
+    @property
+    @pulumi.getter
+    def gcs(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs']]:
+        """
+        A Cloud Storage object.
+        """
+        return pulumi.get(self, "gcs")
+
+    @gcs.setter
+    def gcs(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs']]):
+        pulumi.set(self, "gcs", value)
+
+    @property
+    @pulumi.getter(name="localPath")
+    def local_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        A local path within the VM to use.
+        """
+        return pulumi.get(self, "local_path")
+
+    @local_path.setter
+    def local_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "local_path", value)
+
+    @property
+    @pulumi.getter
+    def remote(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs']]:
+        """
+        A generic remote file.
+        """
+        return pulumi.get(self, "remote")
+
+    @remote.setter
+    def remote(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs']]):
+        pulumi.set(self, "remote", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs:
+    def __init__(__self__, *,
+                 bucket: pulumi.Input[str],
+                 object: pulumi.Input[str],
+                 generation: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] bucket: Required. Bucket of the Cloud Storage object.
+        :param pulumi.Input[str] object: Required. Name of the Cloud Storage object.
+        :param pulumi.Input[int] generation: Generation number of the Cloud Storage object.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "object", object)
+        if generation is not None:
+            pulumi.set(__self__, "generation", generation)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> pulumi.Input[str]:
+        """
+        Required. Bucket of the Cloud Storage object.
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter
+    def object(self) -> pulumi.Input[str]:
+        """
+        Required. Name of the Cloud Storage object.
+        """
+        return pulumi.get(self, "object")
+
+    @object.setter
+    def object(self, value: pulumi.Input[str]):
+        pulumi.set(self, "object", value)
+
+    @property
+    @pulumi.getter
+    def generation(self) -> Optional[pulumi.Input[int]]:
+        """
+        Generation number of the Cloud Storage object.
+        """
+        return pulumi.get(self, "generation")
+
+    @generation.setter
+    def generation(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "generation", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs:
+    def __init__(__self__, *,
+                 uri: pulumi.Input[str],
+                 sha256_checksum: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] uri: Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+        :param pulumi.Input[str] sha256_checksum: SHA256 checksum of the remote file.
+        """
+        pulumi.set(__self__, "uri", uri)
+        if sha256_checksum is not None:
+            pulumi.set(__self__, "sha256_checksum", sha256_checksum)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> pulumi.Input[str]:
+        """
+        Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uri", value)
+
+    @property
+    @pulumi.getter(name="sha256Checksum")
+    def sha256_checksum(self) -> Optional[pulumi.Input[str]]:
+        """
+        SHA256 checksum of the remote file.
+        """
+        return pulumi.get(self, "sha256_checksum")
+
+    @sha256_checksum.setter
+    def sha256_checksum(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sha256_checksum", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: Required. The name of the repository.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Required. The name of the repository.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: Required. The name of the repository.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Required. The name of the repository.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs:
+    def __init__(__self__, *,
+                 apt: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs']] = None,
+                 goo: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs']] = None,
+                 yum: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs']] = None,
+                 zypper: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs']] = None):
+        """
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs'] apt: An Apt Repository.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs'] goo: A Goo Repository.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs'] yum: A Yum Repository.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs'] zypper: A Zypper Repository.
+        """
+        if apt is not None:
+            pulumi.set(__self__, "apt", apt)
+        if goo is not None:
+            pulumi.set(__self__, "goo", goo)
+        if yum is not None:
+            pulumi.set(__self__, "yum", yum)
+        if zypper is not None:
+            pulumi.set(__self__, "zypper", zypper)
+
+    @property
+    @pulumi.getter
+    def apt(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs']]:
+        """
+        An Apt Repository.
+        """
+        return pulumi.get(self, "apt")
+
+    @apt.setter
+    def apt(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs']]):
+        pulumi.set(self, "apt", value)
+
+    @property
+    @pulumi.getter
+    def goo(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs']]:
+        """
+        A Goo Repository.
+        """
+        return pulumi.get(self, "goo")
+
+    @goo.setter
+    def goo(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs']]):
+        pulumi.set(self, "goo", value)
+
+    @property
+    @pulumi.getter
+    def yum(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs']]:
+        """
+        A Yum Repository.
+        """
+        return pulumi.get(self, "yum")
+
+    @yum.setter
+    def yum(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs']]):
+        pulumi.set(self, "yum", value)
+
+    @property
+    @pulumi.getter
+    def zypper(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs']]:
+        """
+        A Zypper Repository.
+        """
+        return pulumi.get(self, "zypper")
+
+    @zypper.setter
+    def zypper(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs']]):
+        pulumi.set(self, "zypper", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs:
+    def __init__(__self__, *,
+                 archive_type: pulumi.Input[str],
+                 components: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 distribution: pulumi.Input[str],
+                 uri: pulumi.Input[str],
+                 gpg_key: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] archive_type: Required. Type of archive files in this repository. Possible values: ARCHIVE_TYPE_UNSPECIFIED, DEB, DEB_SRC
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] components: Required. List of components for this repository. Must contain at least one item.
+        :param pulumi.Input[str] distribution: Required. Distribution of this repository.
+        :param pulumi.Input[str] uri: Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+        :param pulumi.Input[str] gpg_key: URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
+        """
+        pulumi.set(__self__, "archive_type", archive_type)
+        pulumi.set(__self__, "components", components)
+        pulumi.set(__self__, "distribution", distribution)
+        pulumi.set(__self__, "uri", uri)
+        if gpg_key is not None:
+            pulumi.set(__self__, "gpg_key", gpg_key)
+
+    @property
+    @pulumi.getter(name="archiveType")
+    def archive_type(self) -> pulumi.Input[str]:
+        """
+        Required. Type of archive files in this repository. Possible values: ARCHIVE_TYPE_UNSPECIFIED, DEB, DEB_SRC
+        """
+        return pulumi.get(self, "archive_type")
+
+    @archive_type.setter
+    def archive_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "archive_type", value)
+
+    @property
+    @pulumi.getter
+    def components(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Required. List of components for this repository. Must contain at least one item.
+        """
+        return pulumi.get(self, "components")
+
+    @components.setter
+    def components(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "components", value)
+
+    @property
+    @pulumi.getter
+    def distribution(self) -> pulumi.Input[str]:
+        """
+        Required. Distribution of this repository.
+        """
+        return pulumi.get(self, "distribution")
+
+    @distribution.setter
+    def distribution(self, value: pulumi.Input[str]):
+        pulumi.set(self, "distribution", value)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> pulumi.Input[str]:
+        """
+        Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uri", value)
+
+    @property
+    @pulumi.getter(name="gpgKey")
+    def gpg_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
+        """
+        return pulumi.get(self, "gpg_key")
+
+    @gpg_key.setter
+    def gpg_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gpg_key", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 url: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: Required. The name of the repository.
+        :param pulumi.Input[str] url: Required. The url of the repository.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Required. The name of the repository.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> pulumi.Input[str]:
+        """
+        Required. The url of the repository.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "url", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs:
+    def __init__(__self__, *,
+                 base_url: pulumi.Input[str],
+                 id: pulumi.Input[str],
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 gpg_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] base_url: Required. The location of the repository directory.
+        :param pulumi.Input[str] id: Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+        :param pulumi.Input[str] display_name: The display name of the repository.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] gpg_keys: URIs of GPG keys.
+        """
+        pulumi.set(__self__, "base_url", base_url)
+        pulumi.set(__self__, "id", id)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if gpg_keys is not None:
+            pulumi.set(__self__, "gpg_keys", gpg_keys)
+
+    @property
+    @pulumi.getter(name="baseUrl")
+    def base_url(self) -> pulumi.Input[str]:
+        """
+        Required. The location of the repository directory.
+        """
+        return pulumi.get(self, "base_url")
+
+    @base_url.setter
+    def base_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "base_url", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The display name of the repository.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="gpgKeys")
+    def gpg_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        URIs of GPG keys.
+        """
+        return pulumi.get(self, "gpg_keys")
+
+    @gpg_keys.setter
+    def gpg_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "gpg_keys", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs:
+    def __init__(__self__, *,
+                 base_url: pulumi.Input[str],
+                 id: pulumi.Input[str],
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 gpg_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] base_url: Required. The location of the repository directory.
+        :param pulumi.Input[str] id: Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+        :param pulumi.Input[str] display_name: The display name of the repository.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] gpg_keys: URIs of GPG keys.
+        """
+        pulumi.set(__self__, "base_url", base_url)
+        pulumi.set(__self__, "id", id)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if gpg_keys is not None:
+            pulumi.set(__self__, "gpg_keys", gpg_keys)
+
+    @property
+    @pulumi.getter(name="baseUrl")
+    def base_url(self) -> pulumi.Input[str]:
+        """
+        Required. The location of the repository directory.
+        """
+        return pulumi.get(self, "base_url")
+
+    @base_url.setter
+    def base_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "base_url", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The display name of the repository.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="gpgKeys")
+    def gpg_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        URIs of GPG keys.
+        """
+        return pulumi.get(self, "gpg_keys")
+
+    @gpg_keys.setter
+    def gpg_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "gpg_keys", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentRolloutArgs:
+    def __init__(__self__, *,
+                 disruption_budget: pulumi.Input['OsPolicyAssignmentRolloutDisruptionBudgetArgs'],
+                 min_wait_duration: pulumi.Input[str]):
+        """
+        :param pulumi.Input['OsPolicyAssignmentRolloutDisruptionBudgetArgs'] disruption_budget: Required. The maximum number (or percentage) of VMs per zone to disrupt at any given moment.
+        :param pulumi.Input[str] min_wait_duration: Required. This determines the minimum duration of time to wait after the configuration changes are applied through the current rollout. A VM continues to count towards the `disruption_budget` at least until this duration of time has passed after configuration changes are applied.
+        """
+        pulumi.set(__self__, "disruption_budget", disruption_budget)
+        pulumi.set(__self__, "min_wait_duration", min_wait_duration)
+
+    @property
+    @pulumi.getter(name="disruptionBudget")
+    def disruption_budget(self) -> pulumi.Input['OsPolicyAssignmentRolloutDisruptionBudgetArgs']:
+        """
+        Required. The maximum number (or percentage) of VMs per zone to disrupt at any given moment.
+        """
+        return pulumi.get(self, "disruption_budget")
+
+    @disruption_budget.setter
+    def disruption_budget(self, value: pulumi.Input['OsPolicyAssignmentRolloutDisruptionBudgetArgs']):
+        pulumi.set(self, "disruption_budget", value)
+
+    @property
+    @pulumi.getter(name="minWaitDuration")
+    def min_wait_duration(self) -> pulumi.Input[str]:
+        """
+        Required. This determines the minimum duration of time to wait after the configuration changes are applied through the current rollout. A VM continues to count towards the `disruption_budget` at least until this duration of time has passed after configuration changes are applied.
+        """
+        return pulumi.get(self, "min_wait_duration")
+
+    @min_wait_duration.setter
+    def min_wait_duration(self, value: pulumi.Input[str]):
+        pulumi.set(self, "min_wait_duration", value)
+
+
+@pulumi.input_type
+class OsPolicyAssignmentRolloutDisruptionBudgetArgs:
+    def __init__(__self__, *,
+                 fixed: Optional[pulumi.Input[int]] = None,
+                 percent: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] fixed: Specifies a fixed value.
+        :param pulumi.Input[int] percent: Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+        """
+        if fixed is not None:
+            pulumi.set(__self__, "fixed", fixed)
+        if percent is not None:
+            pulumi.set(__self__, "percent", percent)
+
+    @property
+    @pulumi.getter
+    def fixed(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies a fixed value.
+        """
+        return pulumi.get(self, "fixed")
+
+    @fixed.setter
+    def fixed(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "fixed", value)
+
+    @property
+    @pulumi.getter
+    def percent(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+        """
+        return pulumi.get(self, "percent")
+
+    @percent.setter
+    def percent(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "percent", value)
 
 
 @pulumi.input_type

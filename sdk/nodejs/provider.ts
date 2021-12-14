@@ -101,6 +101,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly project!: pulumi.Output<string | undefined>;
     public readonly pubsubCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly pubsubLiteCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly recaptchaEnterpriseCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly redisCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly region!: pulumi.Output<string | undefined>;
     public readonly requestReason!: pulumi.Output<string | undefined>;
@@ -217,6 +218,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["project"] = (args ? args.project : undefined) ?? utilities.getEnv("GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT");
             inputs["pubsubCustomEndpoint"] = args ? args.pubsubCustomEndpoint : undefined;
             inputs["pubsubLiteCustomEndpoint"] = args ? args.pubsubLiteCustomEndpoint : undefined;
+            inputs["recaptchaEnterpriseCustomEndpoint"] = args ? args.recaptchaEnterpriseCustomEndpoint : undefined;
             inputs["redisCustomEndpoint"] = args ? args.redisCustomEndpoint : undefined;
             inputs["region"] = (args ? args.region : undefined) ?? utilities.getEnv("GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION");
             inputs["requestReason"] = args ? args.requestReason : undefined;
@@ -335,6 +337,7 @@ export interface ProviderArgs {
     project?: pulumi.Input<string>;
     pubsubCustomEndpoint?: pulumi.Input<string>;
     pubsubLiteCustomEndpoint?: pulumi.Input<string>;
+    recaptchaEnterpriseCustomEndpoint?: pulumi.Input<string>;
     redisCustomEndpoint?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
     requestReason?: pulumi.Input<string>;

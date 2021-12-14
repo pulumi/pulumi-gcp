@@ -8,6 +8,9 @@ import * as utilities from "../utilities";
 export * from "./envGroup";
 export * from "./envGroupAttachment";
 export * from "./environment";
+export * from "./environmentIamBinding";
+export * from "./environmentIamMember";
+export * from "./environmentIamPolicy";
 export * from "./instance";
 export * from "./instanceAttachment";
 export * from "./organization";
@@ -16,6 +19,9 @@ export * from "./organization";
 import { EnvGroup } from "./envGroup";
 import { EnvGroupAttachment } from "./envGroupAttachment";
 import { Environment } from "./environment";
+import { EnvironmentIamBinding } from "./environmentIamBinding";
+import { EnvironmentIamMember } from "./environmentIamMember";
+import { EnvironmentIamPolicy } from "./environmentIamPolicy";
 import { Instance } from "./instance";
 import { InstanceAttachment } from "./instanceAttachment";
 import { Organization } from "./organization";
@@ -30,6 +36,12 @@ const _module = {
                 return new EnvGroupAttachment(name, <any>undefined, { urn })
             case "gcp:apigee/environment:Environment":
                 return new Environment(name, <any>undefined, { urn })
+            case "gcp:apigee/environmentIamBinding:EnvironmentIamBinding":
+                return new EnvironmentIamBinding(name, <any>undefined, { urn })
+            case "gcp:apigee/environmentIamMember:EnvironmentIamMember":
+                return new EnvironmentIamMember(name, <any>undefined, { urn })
+            case "gcp:apigee/environmentIamPolicy:EnvironmentIamPolicy":
+                return new EnvironmentIamPolicy(name, <any>undefined, { urn })
             case "gcp:apigee/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
             case "gcp:apigee/instanceAttachment:InstanceAttachment":
@@ -44,6 +56,9 @@ const _module = {
 pulumi.runtime.registerResourceModule("gcp", "apigee/envGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/envGroupAttachment", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/environment", _module)
+pulumi.runtime.registerResourceModule("gcp", "apigee/environmentIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "apigee/environmentIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "apigee/environmentIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/instance", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/instanceAttachment", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/organization", _module)

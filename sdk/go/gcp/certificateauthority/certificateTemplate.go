@@ -41,6 +41,9 @@ import (
 // 					Title:       pulumi.String("Sample expression"),
 // 				},
 // 			},
+// 			Labels: pulumi.StringMap{
+// 				"label-two": pulumi.String("value-two"),
+// 			},
 // 			Location: pulumi.String("us-west1"),
 // 			PassthroughExtensions: &certificateauthority.CertificateTemplatePassthroughExtensionsArgs{
 // 				AdditionalExtensions: certificateauthority.CertificateTemplatePassthroughExtensionsAdditionalExtensionArray{

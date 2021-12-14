@@ -120,6 +120,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///                 {
     ///                     CaOptions = new Gcp.CertificateAuthority.Inputs.CertificateConfigX509ConfigCaOptionsArgs
     ///                     {
+    ///                         NonCa = true,
     ///                         IsCa = false,
     ///                     },
     ///                     KeyUsage = new Gcp.CertificateAuthority.Inputs.CertificateConfigX509ConfigKeyUsageArgs
@@ -486,6 +487,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///                 {
     ///                     CaOptions = new Gcp.CertificateAuthority.Inputs.CertificateConfigX509ConfigCaOptionsArgs
     ///                     {
+    ///                         NonCa = true,
     ///                         IsCa = false,
     ///                     },
     ///                     KeyUsage = new Gcp.CertificateAuthority.Inputs.CertificateConfigX509ConfigKeyUsageArgs

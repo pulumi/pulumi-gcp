@@ -5048,6 +5048,7566 @@ func (o GuestPoliciesRecipeUpdateStepScriptRunPtrOutput) Script() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+type OsPolicyAssignmentInstanceFilter struct {
+	// Target all VMs in the project. If true, no other criteria is permitted.
+	All *bool `pulumi:"all"`
+	// List of label sets used for VM exclusion. If the list has more than one label set, the VM is excluded if any of the label sets are applicable for the VM.
+	ExclusionLabels []OsPolicyAssignmentInstanceFilterExclusionLabel `pulumi:"exclusionLabels"`
+	// List of label sets used for VM inclusion. If the list has more than one `LabelSet`, the VM is included if any of the label sets are applicable for the VM.
+	InclusionLabels []OsPolicyAssignmentInstanceFilterInclusionLabel `pulumi:"inclusionLabels"`
+	// List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories.
+	Inventories []OsPolicyAssignmentInstanceFilterInventory `pulumi:"inventories"`
+}
+
+// OsPolicyAssignmentInstanceFilterInput is an input type that accepts OsPolicyAssignmentInstanceFilterArgs and OsPolicyAssignmentInstanceFilterOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentInstanceFilterInput` via:
+//
+//          OsPolicyAssignmentInstanceFilterArgs{...}
+type OsPolicyAssignmentInstanceFilterInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentInstanceFilterOutput() OsPolicyAssignmentInstanceFilterOutput
+	ToOsPolicyAssignmentInstanceFilterOutputWithContext(context.Context) OsPolicyAssignmentInstanceFilterOutput
+}
+
+type OsPolicyAssignmentInstanceFilterArgs struct {
+	// Target all VMs in the project. If true, no other criteria is permitted.
+	All pulumi.BoolPtrInput `pulumi:"all"`
+	// List of label sets used for VM exclusion. If the list has more than one label set, the VM is excluded if any of the label sets are applicable for the VM.
+	ExclusionLabels OsPolicyAssignmentInstanceFilterExclusionLabelArrayInput `pulumi:"exclusionLabels"`
+	// List of label sets used for VM inclusion. If the list has more than one `LabelSet`, the VM is included if any of the label sets are applicable for the VM.
+	InclusionLabels OsPolicyAssignmentInstanceFilterInclusionLabelArrayInput `pulumi:"inclusionLabels"`
+	// List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories.
+	Inventories OsPolicyAssignmentInstanceFilterInventoryArrayInput `pulumi:"inventories"`
+}
+
+func (OsPolicyAssignmentInstanceFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentInstanceFilter)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentInstanceFilterArgs) ToOsPolicyAssignmentInstanceFilterOutput() OsPolicyAssignmentInstanceFilterOutput {
+	return i.ToOsPolicyAssignmentInstanceFilterOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentInstanceFilterArgs) ToOsPolicyAssignmentInstanceFilterOutputWithContext(ctx context.Context) OsPolicyAssignmentInstanceFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentInstanceFilterOutput)
+}
+
+func (i OsPolicyAssignmentInstanceFilterArgs) ToOsPolicyAssignmentInstanceFilterPtrOutput() OsPolicyAssignmentInstanceFilterPtrOutput {
+	return i.ToOsPolicyAssignmentInstanceFilterPtrOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentInstanceFilterArgs) ToOsPolicyAssignmentInstanceFilterPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentInstanceFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentInstanceFilterOutput).ToOsPolicyAssignmentInstanceFilterPtrOutputWithContext(ctx)
+}
+
+// OsPolicyAssignmentInstanceFilterPtrInput is an input type that accepts OsPolicyAssignmentInstanceFilterArgs, OsPolicyAssignmentInstanceFilterPtr and OsPolicyAssignmentInstanceFilterPtrOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentInstanceFilterPtrInput` via:
+//
+//          OsPolicyAssignmentInstanceFilterArgs{...}
+//
+//  or:
+//
+//          nil
+type OsPolicyAssignmentInstanceFilterPtrInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentInstanceFilterPtrOutput() OsPolicyAssignmentInstanceFilterPtrOutput
+	ToOsPolicyAssignmentInstanceFilterPtrOutputWithContext(context.Context) OsPolicyAssignmentInstanceFilterPtrOutput
+}
+
+type osPolicyAssignmentInstanceFilterPtrType OsPolicyAssignmentInstanceFilterArgs
+
+func OsPolicyAssignmentInstanceFilterPtr(v *OsPolicyAssignmentInstanceFilterArgs) OsPolicyAssignmentInstanceFilterPtrInput {
+	return (*osPolicyAssignmentInstanceFilterPtrType)(v)
+}
+
+func (*osPolicyAssignmentInstanceFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentInstanceFilter)(nil)).Elem()
+}
+
+func (i *osPolicyAssignmentInstanceFilterPtrType) ToOsPolicyAssignmentInstanceFilterPtrOutput() OsPolicyAssignmentInstanceFilterPtrOutput {
+	return i.ToOsPolicyAssignmentInstanceFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *osPolicyAssignmentInstanceFilterPtrType) ToOsPolicyAssignmentInstanceFilterPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentInstanceFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentInstanceFilterPtrOutput)
+}
+
+type OsPolicyAssignmentInstanceFilterOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentInstanceFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentInstanceFilter)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentInstanceFilterOutput) ToOsPolicyAssignmentInstanceFilterOutput() OsPolicyAssignmentInstanceFilterOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentInstanceFilterOutput) ToOsPolicyAssignmentInstanceFilterOutputWithContext(ctx context.Context) OsPolicyAssignmentInstanceFilterOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentInstanceFilterOutput) ToOsPolicyAssignmentInstanceFilterPtrOutput() OsPolicyAssignmentInstanceFilterPtrOutput {
+	return o.ToOsPolicyAssignmentInstanceFilterPtrOutputWithContext(context.Background())
+}
+
+func (o OsPolicyAssignmentInstanceFilterOutput) ToOsPolicyAssignmentInstanceFilterPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentInstanceFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentInstanceFilter) *OsPolicyAssignmentInstanceFilter {
+		return &v
+	}).(OsPolicyAssignmentInstanceFilterPtrOutput)
+}
+
+// Target all VMs in the project. If true, no other criteria is permitted.
+func (o OsPolicyAssignmentInstanceFilterOutput) All() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentInstanceFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
+}
+
+// List of label sets used for VM exclusion. If the list has more than one label set, the VM is excluded if any of the label sets are applicable for the VM.
+func (o OsPolicyAssignmentInstanceFilterOutput) ExclusionLabels() OsPolicyAssignmentInstanceFilterExclusionLabelArrayOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentInstanceFilter) []OsPolicyAssignmentInstanceFilterExclusionLabel {
+		return v.ExclusionLabels
+	}).(OsPolicyAssignmentInstanceFilterExclusionLabelArrayOutput)
+}
+
+// List of label sets used for VM inclusion. If the list has more than one `LabelSet`, the VM is included if any of the label sets are applicable for the VM.
+func (o OsPolicyAssignmentInstanceFilterOutput) InclusionLabels() OsPolicyAssignmentInstanceFilterInclusionLabelArrayOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentInstanceFilter) []OsPolicyAssignmentInstanceFilterInclusionLabel {
+		return v.InclusionLabels
+	}).(OsPolicyAssignmentInstanceFilterInclusionLabelArrayOutput)
+}
+
+// List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories.
+func (o OsPolicyAssignmentInstanceFilterOutput) Inventories() OsPolicyAssignmentInstanceFilterInventoryArrayOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentInstanceFilter) []OsPolicyAssignmentInstanceFilterInventory {
+		return v.Inventories
+	}).(OsPolicyAssignmentInstanceFilterInventoryArrayOutput)
+}
+
+type OsPolicyAssignmentInstanceFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentInstanceFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentInstanceFilter)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentInstanceFilterPtrOutput) ToOsPolicyAssignmentInstanceFilterPtrOutput() OsPolicyAssignmentInstanceFilterPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentInstanceFilterPtrOutput) ToOsPolicyAssignmentInstanceFilterPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentInstanceFilterPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentInstanceFilterPtrOutput) Elem() OsPolicyAssignmentInstanceFilterOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentInstanceFilter) OsPolicyAssignmentInstanceFilter {
+		if v != nil {
+			return *v
+		}
+		var ret OsPolicyAssignmentInstanceFilter
+		return ret
+	}).(OsPolicyAssignmentInstanceFilterOutput)
+}
+
+// Target all VMs in the project. If true, no other criteria is permitted.
+func (o OsPolicyAssignmentInstanceFilterPtrOutput) All() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentInstanceFilter) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.All
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of label sets used for VM exclusion. If the list has more than one label set, the VM is excluded if any of the label sets are applicable for the VM.
+func (o OsPolicyAssignmentInstanceFilterPtrOutput) ExclusionLabels() OsPolicyAssignmentInstanceFilterExclusionLabelArrayOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentInstanceFilter) []OsPolicyAssignmentInstanceFilterExclusionLabel {
+		if v == nil {
+			return nil
+		}
+		return v.ExclusionLabels
+	}).(OsPolicyAssignmentInstanceFilterExclusionLabelArrayOutput)
+}
+
+// List of label sets used for VM inclusion. If the list has more than one `LabelSet`, the VM is included if any of the label sets are applicable for the VM.
+func (o OsPolicyAssignmentInstanceFilterPtrOutput) InclusionLabels() OsPolicyAssignmentInstanceFilterInclusionLabelArrayOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentInstanceFilter) []OsPolicyAssignmentInstanceFilterInclusionLabel {
+		if v == nil {
+			return nil
+		}
+		return v.InclusionLabels
+	}).(OsPolicyAssignmentInstanceFilterInclusionLabelArrayOutput)
+}
+
+// List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories.
+func (o OsPolicyAssignmentInstanceFilterPtrOutput) Inventories() OsPolicyAssignmentInstanceFilterInventoryArrayOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentInstanceFilter) []OsPolicyAssignmentInstanceFilterInventory {
+		if v == nil {
+			return nil
+		}
+		return v.Inventories
+	}).(OsPolicyAssignmentInstanceFilterInventoryArrayOutput)
+}
+
+type OsPolicyAssignmentInstanceFilterExclusionLabel struct {
+	// Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified in this map to be selected.
+	Labels map[string]string `pulumi:"labels"`
+}
+
+// OsPolicyAssignmentInstanceFilterExclusionLabelInput is an input type that accepts OsPolicyAssignmentInstanceFilterExclusionLabelArgs and OsPolicyAssignmentInstanceFilterExclusionLabelOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentInstanceFilterExclusionLabelInput` via:
+//
+//          OsPolicyAssignmentInstanceFilterExclusionLabelArgs{...}
+type OsPolicyAssignmentInstanceFilterExclusionLabelInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentInstanceFilterExclusionLabelOutput() OsPolicyAssignmentInstanceFilterExclusionLabelOutput
+	ToOsPolicyAssignmentInstanceFilterExclusionLabelOutputWithContext(context.Context) OsPolicyAssignmentInstanceFilterExclusionLabelOutput
+}
+
+type OsPolicyAssignmentInstanceFilterExclusionLabelArgs struct {
+	// Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified in this map to be selected.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+}
+
+func (OsPolicyAssignmentInstanceFilterExclusionLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentInstanceFilterExclusionLabel)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentInstanceFilterExclusionLabelArgs) ToOsPolicyAssignmentInstanceFilterExclusionLabelOutput() OsPolicyAssignmentInstanceFilterExclusionLabelOutput {
+	return i.ToOsPolicyAssignmentInstanceFilterExclusionLabelOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentInstanceFilterExclusionLabelArgs) ToOsPolicyAssignmentInstanceFilterExclusionLabelOutputWithContext(ctx context.Context) OsPolicyAssignmentInstanceFilterExclusionLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentInstanceFilterExclusionLabelOutput)
+}
+
+// OsPolicyAssignmentInstanceFilterExclusionLabelArrayInput is an input type that accepts OsPolicyAssignmentInstanceFilterExclusionLabelArray and OsPolicyAssignmentInstanceFilterExclusionLabelArrayOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentInstanceFilterExclusionLabelArrayInput` via:
+//
+//          OsPolicyAssignmentInstanceFilterExclusionLabelArray{ OsPolicyAssignmentInstanceFilterExclusionLabelArgs{...} }
+type OsPolicyAssignmentInstanceFilterExclusionLabelArrayInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentInstanceFilterExclusionLabelArrayOutput() OsPolicyAssignmentInstanceFilterExclusionLabelArrayOutput
+	ToOsPolicyAssignmentInstanceFilterExclusionLabelArrayOutputWithContext(context.Context) OsPolicyAssignmentInstanceFilterExclusionLabelArrayOutput
+}
+
+type OsPolicyAssignmentInstanceFilterExclusionLabelArray []OsPolicyAssignmentInstanceFilterExclusionLabelInput
+
+func (OsPolicyAssignmentInstanceFilterExclusionLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OsPolicyAssignmentInstanceFilterExclusionLabel)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentInstanceFilterExclusionLabelArray) ToOsPolicyAssignmentInstanceFilterExclusionLabelArrayOutput() OsPolicyAssignmentInstanceFilterExclusionLabelArrayOutput {
+	return i.ToOsPolicyAssignmentInstanceFilterExclusionLabelArrayOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentInstanceFilterExclusionLabelArray) ToOsPolicyAssignmentInstanceFilterExclusionLabelArrayOutputWithContext(ctx context.Context) OsPolicyAssignmentInstanceFilterExclusionLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentInstanceFilterExclusionLabelArrayOutput)
+}
+
+type OsPolicyAssignmentInstanceFilterExclusionLabelOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentInstanceFilterExclusionLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentInstanceFilterExclusionLabel)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentInstanceFilterExclusionLabelOutput) ToOsPolicyAssignmentInstanceFilterExclusionLabelOutput() OsPolicyAssignmentInstanceFilterExclusionLabelOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentInstanceFilterExclusionLabelOutput) ToOsPolicyAssignmentInstanceFilterExclusionLabelOutputWithContext(ctx context.Context) OsPolicyAssignmentInstanceFilterExclusionLabelOutput {
+	return o
+}
+
+// Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified in this map to be selected.
+func (o OsPolicyAssignmentInstanceFilterExclusionLabelOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentInstanceFilterExclusionLabel) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+type OsPolicyAssignmentInstanceFilterExclusionLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentInstanceFilterExclusionLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OsPolicyAssignmentInstanceFilterExclusionLabel)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentInstanceFilterExclusionLabelArrayOutput) ToOsPolicyAssignmentInstanceFilterExclusionLabelArrayOutput() OsPolicyAssignmentInstanceFilterExclusionLabelArrayOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentInstanceFilterExclusionLabelArrayOutput) ToOsPolicyAssignmentInstanceFilterExclusionLabelArrayOutputWithContext(ctx context.Context) OsPolicyAssignmentInstanceFilterExclusionLabelArrayOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentInstanceFilterExclusionLabelArrayOutput) Index(i pulumi.IntInput) OsPolicyAssignmentInstanceFilterExclusionLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OsPolicyAssignmentInstanceFilterExclusionLabel {
+		return vs[0].([]OsPolicyAssignmentInstanceFilterExclusionLabel)[vs[1].(int)]
+	}).(OsPolicyAssignmentInstanceFilterExclusionLabelOutput)
+}
+
+type OsPolicyAssignmentInstanceFilterInclusionLabel struct {
+	// Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified in this map to be selected.
+	Labels map[string]string `pulumi:"labels"`
+}
+
+// OsPolicyAssignmentInstanceFilterInclusionLabelInput is an input type that accepts OsPolicyAssignmentInstanceFilterInclusionLabelArgs and OsPolicyAssignmentInstanceFilterInclusionLabelOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentInstanceFilterInclusionLabelInput` via:
+//
+//          OsPolicyAssignmentInstanceFilterInclusionLabelArgs{...}
+type OsPolicyAssignmentInstanceFilterInclusionLabelInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentInstanceFilterInclusionLabelOutput() OsPolicyAssignmentInstanceFilterInclusionLabelOutput
+	ToOsPolicyAssignmentInstanceFilterInclusionLabelOutputWithContext(context.Context) OsPolicyAssignmentInstanceFilterInclusionLabelOutput
+}
+
+type OsPolicyAssignmentInstanceFilterInclusionLabelArgs struct {
+	// Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified in this map to be selected.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+}
+
+func (OsPolicyAssignmentInstanceFilterInclusionLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentInstanceFilterInclusionLabel)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentInstanceFilterInclusionLabelArgs) ToOsPolicyAssignmentInstanceFilterInclusionLabelOutput() OsPolicyAssignmentInstanceFilterInclusionLabelOutput {
+	return i.ToOsPolicyAssignmentInstanceFilterInclusionLabelOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentInstanceFilterInclusionLabelArgs) ToOsPolicyAssignmentInstanceFilterInclusionLabelOutputWithContext(ctx context.Context) OsPolicyAssignmentInstanceFilterInclusionLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentInstanceFilterInclusionLabelOutput)
+}
+
+// OsPolicyAssignmentInstanceFilterInclusionLabelArrayInput is an input type that accepts OsPolicyAssignmentInstanceFilterInclusionLabelArray and OsPolicyAssignmentInstanceFilterInclusionLabelArrayOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentInstanceFilterInclusionLabelArrayInput` via:
+//
+//          OsPolicyAssignmentInstanceFilterInclusionLabelArray{ OsPolicyAssignmentInstanceFilterInclusionLabelArgs{...} }
+type OsPolicyAssignmentInstanceFilterInclusionLabelArrayInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentInstanceFilterInclusionLabelArrayOutput() OsPolicyAssignmentInstanceFilterInclusionLabelArrayOutput
+	ToOsPolicyAssignmentInstanceFilterInclusionLabelArrayOutputWithContext(context.Context) OsPolicyAssignmentInstanceFilterInclusionLabelArrayOutput
+}
+
+type OsPolicyAssignmentInstanceFilterInclusionLabelArray []OsPolicyAssignmentInstanceFilterInclusionLabelInput
+
+func (OsPolicyAssignmentInstanceFilterInclusionLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OsPolicyAssignmentInstanceFilterInclusionLabel)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentInstanceFilterInclusionLabelArray) ToOsPolicyAssignmentInstanceFilterInclusionLabelArrayOutput() OsPolicyAssignmentInstanceFilterInclusionLabelArrayOutput {
+	return i.ToOsPolicyAssignmentInstanceFilterInclusionLabelArrayOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentInstanceFilterInclusionLabelArray) ToOsPolicyAssignmentInstanceFilterInclusionLabelArrayOutputWithContext(ctx context.Context) OsPolicyAssignmentInstanceFilterInclusionLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentInstanceFilterInclusionLabelArrayOutput)
+}
+
+type OsPolicyAssignmentInstanceFilterInclusionLabelOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentInstanceFilterInclusionLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentInstanceFilterInclusionLabel)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentInstanceFilterInclusionLabelOutput) ToOsPolicyAssignmentInstanceFilterInclusionLabelOutput() OsPolicyAssignmentInstanceFilterInclusionLabelOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentInstanceFilterInclusionLabelOutput) ToOsPolicyAssignmentInstanceFilterInclusionLabelOutputWithContext(ctx context.Context) OsPolicyAssignmentInstanceFilterInclusionLabelOutput {
+	return o
+}
+
+// Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified in this map to be selected.
+func (o OsPolicyAssignmentInstanceFilterInclusionLabelOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentInstanceFilterInclusionLabel) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+type OsPolicyAssignmentInstanceFilterInclusionLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentInstanceFilterInclusionLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OsPolicyAssignmentInstanceFilterInclusionLabel)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentInstanceFilterInclusionLabelArrayOutput) ToOsPolicyAssignmentInstanceFilterInclusionLabelArrayOutput() OsPolicyAssignmentInstanceFilterInclusionLabelArrayOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentInstanceFilterInclusionLabelArrayOutput) ToOsPolicyAssignmentInstanceFilterInclusionLabelArrayOutputWithContext(ctx context.Context) OsPolicyAssignmentInstanceFilterInclusionLabelArrayOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentInstanceFilterInclusionLabelArrayOutput) Index(i pulumi.IntInput) OsPolicyAssignmentInstanceFilterInclusionLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OsPolicyAssignmentInstanceFilterInclusionLabel {
+		return vs[0].([]OsPolicyAssignmentInstanceFilterInclusionLabel)[vs[1].(int)]
+	}).(OsPolicyAssignmentInstanceFilterInclusionLabelOutput)
+}
+
+type OsPolicyAssignmentInstanceFilterInventory struct {
+	// Required. The OS short name
+	OsShortName string `pulumi:"osShortName"`
+	// The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions.
+	OsVersion *string `pulumi:"osVersion"`
+}
+
+// OsPolicyAssignmentInstanceFilterInventoryInput is an input type that accepts OsPolicyAssignmentInstanceFilterInventoryArgs and OsPolicyAssignmentInstanceFilterInventoryOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentInstanceFilterInventoryInput` via:
+//
+//          OsPolicyAssignmentInstanceFilterInventoryArgs{...}
+type OsPolicyAssignmentInstanceFilterInventoryInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentInstanceFilterInventoryOutput() OsPolicyAssignmentInstanceFilterInventoryOutput
+	ToOsPolicyAssignmentInstanceFilterInventoryOutputWithContext(context.Context) OsPolicyAssignmentInstanceFilterInventoryOutput
+}
+
+type OsPolicyAssignmentInstanceFilterInventoryArgs struct {
+	// Required. The OS short name
+	OsShortName pulumi.StringInput `pulumi:"osShortName"`
+	// The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions.
+	OsVersion pulumi.StringPtrInput `pulumi:"osVersion"`
+}
+
+func (OsPolicyAssignmentInstanceFilterInventoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentInstanceFilterInventory)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentInstanceFilterInventoryArgs) ToOsPolicyAssignmentInstanceFilterInventoryOutput() OsPolicyAssignmentInstanceFilterInventoryOutput {
+	return i.ToOsPolicyAssignmentInstanceFilterInventoryOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentInstanceFilterInventoryArgs) ToOsPolicyAssignmentInstanceFilterInventoryOutputWithContext(ctx context.Context) OsPolicyAssignmentInstanceFilterInventoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentInstanceFilterInventoryOutput)
+}
+
+// OsPolicyAssignmentInstanceFilterInventoryArrayInput is an input type that accepts OsPolicyAssignmentInstanceFilterInventoryArray and OsPolicyAssignmentInstanceFilterInventoryArrayOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentInstanceFilterInventoryArrayInput` via:
+//
+//          OsPolicyAssignmentInstanceFilterInventoryArray{ OsPolicyAssignmentInstanceFilterInventoryArgs{...} }
+type OsPolicyAssignmentInstanceFilterInventoryArrayInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentInstanceFilterInventoryArrayOutput() OsPolicyAssignmentInstanceFilterInventoryArrayOutput
+	ToOsPolicyAssignmentInstanceFilterInventoryArrayOutputWithContext(context.Context) OsPolicyAssignmentInstanceFilterInventoryArrayOutput
+}
+
+type OsPolicyAssignmentInstanceFilterInventoryArray []OsPolicyAssignmentInstanceFilterInventoryInput
+
+func (OsPolicyAssignmentInstanceFilterInventoryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OsPolicyAssignmentInstanceFilterInventory)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentInstanceFilterInventoryArray) ToOsPolicyAssignmentInstanceFilterInventoryArrayOutput() OsPolicyAssignmentInstanceFilterInventoryArrayOutput {
+	return i.ToOsPolicyAssignmentInstanceFilterInventoryArrayOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentInstanceFilterInventoryArray) ToOsPolicyAssignmentInstanceFilterInventoryArrayOutputWithContext(ctx context.Context) OsPolicyAssignmentInstanceFilterInventoryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentInstanceFilterInventoryArrayOutput)
+}
+
+type OsPolicyAssignmentInstanceFilterInventoryOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentInstanceFilterInventoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentInstanceFilterInventory)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentInstanceFilterInventoryOutput) ToOsPolicyAssignmentInstanceFilterInventoryOutput() OsPolicyAssignmentInstanceFilterInventoryOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentInstanceFilterInventoryOutput) ToOsPolicyAssignmentInstanceFilterInventoryOutputWithContext(ctx context.Context) OsPolicyAssignmentInstanceFilterInventoryOutput {
+	return o
+}
+
+// Required. The OS short name
+func (o OsPolicyAssignmentInstanceFilterInventoryOutput) OsShortName() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentInstanceFilterInventory) string { return v.OsShortName }).(pulumi.StringOutput)
+}
+
+// The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions.
+func (o OsPolicyAssignmentInstanceFilterInventoryOutput) OsVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentInstanceFilterInventory) *string { return v.OsVersion }).(pulumi.StringPtrOutput)
+}
+
+type OsPolicyAssignmentInstanceFilterInventoryArrayOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentInstanceFilterInventoryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OsPolicyAssignmentInstanceFilterInventory)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentInstanceFilterInventoryArrayOutput) ToOsPolicyAssignmentInstanceFilterInventoryArrayOutput() OsPolicyAssignmentInstanceFilterInventoryArrayOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentInstanceFilterInventoryArrayOutput) ToOsPolicyAssignmentInstanceFilterInventoryArrayOutputWithContext(ctx context.Context) OsPolicyAssignmentInstanceFilterInventoryArrayOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentInstanceFilterInventoryArrayOutput) Index(i pulumi.IntInput) OsPolicyAssignmentInstanceFilterInventoryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OsPolicyAssignmentInstanceFilterInventory {
+		return vs[0].([]OsPolicyAssignmentInstanceFilterInventory)[vs[1].(int)]
+	}).(OsPolicyAssignmentInstanceFilterInventoryOutput)
+}
+
+type OsPolicyAssignmentOsPolicy struct {
+	// This flag determines the OS policy compliance status when none of the resource groups within the policy are applicable for a VM. Set this value to `true` if the policy needs to be reported as compliant even if the policy has nothing to validate or enforce.
+	AllowNoResourceGroupMatch *bool `pulumi:"allowNoResourceGroupMatch"`
+	// OS policy assignment description. Length of the description is limited to 1024 characters.
+	Description *string `pulumi:"description"`
+	// Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+	Id string `pulumi:"id"`
+	// Required. Policy mode Possible values: MODE_UNSPECIFIED, VALIDATION, ENFORCEMENT
+	Mode string `pulumi:"mode"`
+	// Required. List of resource groups for the policy. For a particular VM, resource groups are evaluated in the order specified and the first resource group that is applicable is selected and the rest are ignored. If none of the resource groups are applicable for a VM, the VM is considered to be non-compliant w.r.t this policy. This behavior can be toggled by the flag `allowNoResourceGroupMatch`
+	ResourceGroups []OsPolicyAssignmentOsPolicyResourceGroup `pulumi:"resourceGroups"`
+}
+
+// OsPolicyAssignmentOsPolicyInput is an input type that accepts OsPolicyAssignmentOsPolicyArgs and OsPolicyAssignmentOsPolicyOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyInput` via:
+//
+//          OsPolicyAssignmentOsPolicyArgs{...}
+type OsPolicyAssignmentOsPolicyInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyOutput() OsPolicyAssignmentOsPolicyOutput
+	ToOsPolicyAssignmentOsPolicyOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyOutput
+}
+
+type OsPolicyAssignmentOsPolicyArgs struct {
+	// This flag determines the OS policy compliance status when none of the resource groups within the policy are applicable for a VM. Set this value to `true` if the policy needs to be reported as compliant even if the policy has nothing to validate or enforce.
+	AllowNoResourceGroupMatch pulumi.BoolPtrInput `pulumi:"allowNoResourceGroupMatch"`
+	// OS policy assignment description. Length of the description is limited to 1024 characters.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Required. Policy mode Possible values: MODE_UNSPECIFIED, VALIDATION, ENFORCEMENT
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// Required. List of resource groups for the policy. For a particular VM, resource groups are evaluated in the order specified and the first resource group that is applicable is selected and the rest are ignored. If none of the resource groups are applicable for a VM, the VM is considered to be non-compliant w.r.t this policy. This behavior can be toggled by the flag `allowNoResourceGroupMatch`
+	ResourceGroups OsPolicyAssignmentOsPolicyResourceGroupArrayInput `pulumi:"resourceGroups"`
+}
+
+func (OsPolicyAssignmentOsPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicy)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyArgs) ToOsPolicyAssignmentOsPolicyOutput() OsPolicyAssignmentOsPolicyOutput {
+	return i.ToOsPolicyAssignmentOsPolicyOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyArgs) ToOsPolicyAssignmentOsPolicyOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyOutput)
+}
+
+// OsPolicyAssignmentOsPolicyArrayInput is an input type that accepts OsPolicyAssignmentOsPolicyArray and OsPolicyAssignmentOsPolicyArrayOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyArrayInput` via:
+//
+//          OsPolicyAssignmentOsPolicyArray{ OsPolicyAssignmentOsPolicyArgs{...} }
+type OsPolicyAssignmentOsPolicyArrayInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyArrayOutput() OsPolicyAssignmentOsPolicyArrayOutput
+	ToOsPolicyAssignmentOsPolicyArrayOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyArrayOutput
+}
+
+type OsPolicyAssignmentOsPolicyArray []OsPolicyAssignmentOsPolicyInput
+
+func (OsPolicyAssignmentOsPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OsPolicyAssignmentOsPolicy)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyArray) ToOsPolicyAssignmentOsPolicyArrayOutput() OsPolicyAssignmentOsPolicyArrayOutput {
+	return i.ToOsPolicyAssignmentOsPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyArray) ToOsPolicyAssignmentOsPolicyArrayOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyArrayOutput)
+}
+
+type OsPolicyAssignmentOsPolicyOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicy)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyOutput) ToOsPolicyAssignmentOsPolicyOutput() OsPolicyAssignmentOsPolicyOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyOutput) ToOsPolicyAssignmentOsPolicyOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyOutput {
+	return o
+}
+
+// This flag determines the OS policy compliance status when none of the resource groups within the policy are applicable for a VM. Set this value to `true` if the policy needs to be reported as compliant even if the policy has nothing to validate or enforce.
+func (o OsPolicyAssignmentOsPolicyOutput) AllowNoResourceGroupMatch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicy) *bool { return v.AllowNoResourceGroupMatch }).(pulumi.BoolPtrOutput)
+}
+
+// OS policy assignment description. Length of the description is limited to 1024 characters.
+func (o OsPolicyAssignmentOsPolicyOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicy) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+func (o OsPolicyAssignmentOsPolicyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicy) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Required. Policy mode Possible values: MODE_UNSPECIFIED, VALIDATION, ENFORCEMENT
+func (o OsPolicyAssignmentOsPolicyOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicy) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// Required. List of resource groups for the policy. For a particular VM, resource groups are evaluated in the order specified and the first resource group that is applicable is selected and the rest are ignored. If none of the resource groups are applicable for a VM, the VM is considered to be non-compliant w.r.t this policy. This behavior can be toggled by the flag `allowNoResourceGroupMatch`
+func (o OsPolicyAssignmentOsPolicyOutput) ResourceGroups() OsPolicyAssignmentOsPolicyResourceGroupArrayOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicy) []OsPolicyAssignmentOsPolicyResourceGroup { return v.ResourceGroups }).(OsPolicyAssignmentOsPolicyResourceGroupArrayOutput)
+}
+
+type OsPolicyAssignmentOsPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OsPolicyAssignmentOsPolicy)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyArrayOutput) ToOsPolicyAssignmentOsPolicyArrayOutput() OsPolicyAssignmentOsPolicyArrayOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyArrayOutput) ToOsPolicyAssignmentOsPolicyArrayOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyArrayOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyArrayOutput) Index(i pulumi.IntInput) OsPolicyAssignmentOsPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OsPolicyAssignmentOsPolicy {
+		return vs[0].([]OsPolicyAssignmentOsPolicy)[vs[1].(int)]
+	}).(OsPolicyAssignmentOsPolicyOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroup struct {
+	// List of inventory filters for the resource group. The resources in this resource group are applied to the target VM if it satisfies at least one of the following inventory filters. For example, to apply this resource group to VMs running either `RHEL` or `CentOS` operating systems, specify 2 items for the list with following values: inventory_filters[0].os_short_name='rhel' and inventory_filters[1].os_short_name='centos' If the list is empty, this resource group will be applied to the target VM unconditionally.
+	InventoryFilters []OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter `pulumi:"inventoryFilters"`
+	// Required. List of resources configured for this resource group. The resources are executed in the exact order specified here.
+	Resources []OsPolicyAssignmentOsPolicyResourceGroupResource `pulumi:"resources"`
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupArgs and OsPolicyAssignmentOsPolicyResourceGroupOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupArgs{...}
+type OsPolicyAssignmentOsPolicyResourceGroupInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupOutput() OsPolicyAssignmentOsPolicyResourceGroupOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupArgs struct {
+	// List of inventory filters for the resource group. The resources in this resource group are applied to the target VM if it satisfies at least one of the following inventory filters. For example, to apply this resource group to VMs running either `RHEL` or `CentOS` operating systems, specify 2 items for the list with following values: inventory_filters[0].os_short_name='rhel' and inventory_filters[1].os_short_name='centos' If the list is empty, this resource group will be applied to the target VM unconditionally.
+	InventoryFilters OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayInput `pulumi:"inventoryFilters"`
+	// Required. List of resources configured for this resource group. The resources are executed in the exact order specified here.
+	Resources OsPolicyAssignmentOsPolicyResourceGroupResourceArrayInput `pulumi:"resources"`
+}
+
+func (OsPolicyAssignmentOsPolicyResourceGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroup)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupArgs) ToOsPolicyAssignmentOsPolicyResourceGroupOutput() OsPolicyAssignmentOsPolicyResourceGroupOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupArgs) ToOsPolicyAssignmentOsPolicyResourceGroupOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupOutput)
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupArrayInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupArray and OsPolicyAssignmentOsPolicyResourceGroupArrayOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupArrayInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupArray{ OsPolicyAssignmentOsPolicyResourceGroupArgs{...} }
+type OsPolicyAssignmentOsPolicyResourceGroupArrayInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupArrayOutput() OsPolicyAssignmentOsPolicyResourceGroupArrayOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupArrayOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupArrayOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupArray []OsPolicyAssignmentOsPolicyResourceGroupInput
+
+func (OsPolicyAssignmentOsPolicyResourceGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OsPolicyAssignmentOsPolicyResourceGroup)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupArray) ToOsPolicyAssignmentOsPolicyResourceGroupArrayOutput() OsPolicyAssignmentOsPolicyResourceGroupArrayOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupArrayOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupArray) ToOsPolicyAssignmentOsPolicyResourceGroupArrayOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupArrayOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroup)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupOutput) ToOsPolicyAssignmentOsPolicyResourceGroupOutput() OsPolicyAssignmentOsPolicyResourceGroupOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupOutput) ToOsPolicyAssignmentOsPolicyResourceGroupOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupOutput {
+	return o
+}
+
+// List of inventory filters for the resource group. The resources in this resource group are applied to the target VM if it satisfies at least one of the following inventory filters. For example, to apply this resource group to VMs running either `RHEL` or `CentOS` operating systems, specify 2 items for the list with following values: inventory_filters[0].os_short_name='rhel' and inventory_filters[1].os_short_name='centos' If the list is empty, this resource group will be applied to the target VM unconditionally.
+func (o OsPolicyAssignmentOsPolicyResourceGroupOutput) InventoryFilters() OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroup) []OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter {
+		return v.InventoryFilters
+	}).(OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayOutput)
+}
+
+// Required. List of resources configured for this resource group. The resources are executed in the exact order specified here.
+func (o OsPolicyAssignmentOsPolicyResourceGroupOutput) Resources() OsPolicyAssignmentOsPolicyResourceGroupResourceArrayOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroup) []OsPolicyAssignmentOsPolicyResourceGroupResource {
+		return v.Resources
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceArrayOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OsPolicyAssignmentOsPolicyResourceGroup)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupArrayOutput) ToOsPolicyAssignmentOsPolicyResourceGroupArrayOutput() OsPolicyAssignmentOsPolicyResourceGroupArrayOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupArrayOutput) ToOsPolicyAssignmentOsPolicyResourceGroupArrayOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupArrayOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupArrayOutput) Index(i pulumi.IntInput) OsPolicyAssignmentOsPolicyResourceGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OsPolicyAssignmentOsPolicyResourceGroup {
+		return vs[0].([]OsPolicyAssignmentOsPolicyResourceGroup)[vs[1].(int)]
+	}).(OsPolicyAssignmentOsPolicyResourceGroupOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter struct {
+	// Required. The OS short name
+	OsShortName string `pulumi:"osShortName"`
+	// The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions.
+	OsVersion *string `pulumi:"osVersion"`
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs and OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs{...}
+type OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupInventoryFilterOutput() OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupInventoryFilterOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs struct {
+	// Required. The OS short name
+	OsShortName pulumi.StringInput `pulumi:"osShortName"`
+	// The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions.
+	OsVersion pulumi.StringPtrInput `pulumi:"osVersion"`
+}
+
+func (OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs) ToOsPolicyAssignmentOsPolicyResourceGroupInventoryFilterOutput() OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupInventoryFilterOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs) ToOsPolicyAssignmentOsPolicyResourceGroupInventoryFilterOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterOutput)
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArray and OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArray{ OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs{...} }
+type OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayOutput() OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArray []OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterInput
+
+func (OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArray) ToOsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayOutput() OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArray) ToOsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterOutput) ToOsPolicyAssignmentOsPolicyResourceGroupInventoryFilterOutput() OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterOutput) ToOsPolicyAssignmentOsPolicyResourceGroupInventoryFilterOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterOutput {
+	return o
+}
+
+// Required. The OS short name
+func (o OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterOutput) OsShortName() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter) string { return v.OsShortName }).(pulumi.StringOutput)
+}
+
+// The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions.
+func (o OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterOutput) OsVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter) *string { return v.OsVersion }).(pulumi.StringPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayOutput) ToOsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayOutput() OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayOutput) ToOsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayOutput) Index(i pulumi.IntInput) OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter {
+		return vs[0].([]OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter)[vs[1].(int)]
+	}).(OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResource struct {
+	// Exec resource
+	Exec *OsPolicyAssignmentOsPolicyResourceGroupResourceExec `pulumi:"exec"`
+	// Required. A deb package.
+	File *OsPolicyAssignmentOsPolicyResourceGroupResourceFile `pulumi:"file"`
+	// Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+	Id string `pulumi:"id"`
+	// Package resource
+	Pkg *OsPolicyAssignmentOsPolicyResourceGroupResourcePkg `pulumi:"pkg"`
+	// Package repository resource
+	Repository *OsPolicyAssignmentOsPolicyResourceGroupResourceRepository `pulumi:"repository"`
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourceInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourceArgs and OsPolicyAssignmentOsPolicyResourceGroupResourceOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourceInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourceArgs{...}
+type OsPolicyAssignmentOsPolicyResourceGroupResourceInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceArgs struct {
+	// Exec resource
+	Exec OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrInput `pulumi:"exec"`
+	// Required. A deb package.
+	File OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrInput `pulumi:"file"`
+	// Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Package resource
+	Pkg OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrInput `pulumi:"pkg"`
+	// Package repository resource
+	Repository OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrInput `pulumi:"repository"`
+}
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResource)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceOutput)
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourceArrayInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourceArray and OsPolicyAssignmentOsPolicyResourceGroupResourceArrayOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourceArrayInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourceArray{ OsPolicyAssignmentOsPolicyResourceGroupResourceArgs{...} }
+type OsPolicyAssignmentOsPolicyResourceGroupResourceArrayInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceArrayOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceArrayOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceArrayOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceArrayOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceArray []OsPolicyAssignmentOsPolicyResourceGroupResourceInput
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OsPolicyAssignmentOsPolicyResourceGroupResource)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceArray) ToOsPolicyAssignmentOsPolicyResourceGroupResourceArrayOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceArrayOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceArrayOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceArray) ToOsPolicyAssignmentOsPolicyResourceGroupResourceArrayOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceArrayOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResource)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceOutput {
+	return o
+}
+
+// Exec resource
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceOutput) Exec() OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResource) *OsPolicyAssignmentOsPolicyResourceGroupResourceExec {
+		return v.Exec
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput)
+}
+
+// Required. A deb package.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceOutput) File() OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResource) *OsPolicyAssignmentOsPolicyResourceGroupResourceFile {
+		return v.File
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput)
+}
+
+// Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResource) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Package resource
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceOutput) Pkg() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResource) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkg {
+		return v.Pkg
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput)
+}
+
+// Package repository resource
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceOutput) Repository() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResource) *OsPolicyAssignmentOsPolicyResourceGroupResourceRepository {
+		return v.Repository
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OsPolicyAssignmentOsPolicyResourceGroupResource)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceArrayOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceArrayOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceArrayOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceArrayOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceArrayOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceArrayOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceArrayOutput) Index(i pulumi.IntInput) OsPolicyAssignmentOsPolicyResourceGroupResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OsPolicyAssignmentOsPolicyResourceGroupResource {
+		return vs[0].([]OsPolicyAssignmentOsPolicyResourceGroupResource)[vs[1].(int)]
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExec struct {
+	// Required. What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate.
+	Enforce *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce `pulumi:"enforce"`
+	// Required. What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate.
+	Validate OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate `pulumi:"validate"`
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourceExecInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs and OsPolicyAssignmentOsPolicyResourceGroupResourceExecOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourceExecInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs{...}
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs struct {
+	// Required. What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate.
+	Enforce OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrInput `pulumi:"enforce"`
+	// Required. What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate.
+	Validate OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateInput `pulumi:"validate"`
+}
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceExec)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecOutput)
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecOutput).ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutputWithContext(ctx)
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs, OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtr and OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs{...}
+//
+//  or:
+//
+//          nil
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput
+}
+
+type osPolicyAssignmentOsPolicyResourceGroupResourceExecPtrType OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs
+
+func OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtr(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs) OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrInput {
+	return (*osPolicyAssignmentOsPolicyResourceGroupResourceExecPtrType)(v)
+}
+
+func (*osPolicyAssignmentOsPolicyResourceGroupResourceExecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourceExec)(nil)).Elem()
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourceExecPtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutputWithContext(context.Background())
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourceExecPtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceExecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceExec)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput {
+	return o.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutputWithContext(context.Background())
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourceExec) *OsPolicyAssignmentOsPolicyResourceGroupResourceExec {
+		return &v
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput)
+}
+
+// Required. What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecOutput) Enforce() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExec) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce {
+		return v.Enforce
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput)
+}
+
+// Required. What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecOutput) Validate() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExec) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate {
+		return v.Validate
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourceExec)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourceExecOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExec) OsPolicyAssignmentOsPolicyResourceGroupResourceExec {
+		if v != nil {
+			return *v
+		}
+		var ret OsPolicyAssignmentOsPolicyResourceGroupResourceExec
+		return ret
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecOutput)
+}
+
+// Required. What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput) Enforce() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExec) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce {
+		if v == nil {
+			return nil
+		}
+		return v.Enforce
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput)
+}
+
+// Required. What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput) Validate() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExec) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate {
+		if v == nil {
+			return nil
+		}
+		return &v.Validate
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce struct {
+	// Optional arguments to pass to the source during execution.
+	Args []string `pulumi:"args"`
+	// Required. A deb package.
+	File *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile `pulumi:"file"`
+	// Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
+	Interpreter string `pulumi:"interpreter"`
+	// Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
+	OutputFilePath *string `pulumi:"outputFilePath"`
+	// An inline script. The size of the script is limited to 1024 characters.
+	Script *string `pulumi:"script"`
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs and OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs{...}
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs struct {
+	// Optional arguments to pass to the source during execution.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Required. A deb package.
+	File OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrInput `pulumi:"file"`
+	// Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
+	Interpreter pulumi.StringInput `pulumi:"interpreter"`
+	// Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
+	OutputFilePath pulumi.StringPtrInput `pulumi:"outputFilePath"`
+	// An inline script. The size of the script is limited to 1024 characters.
+	Script pulumi.StringPtrInput `pulumi:"script"`
+}
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput)
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput).ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutputWithContext(ctx)
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs, OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtr and OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs{...}
+//
+//  or:
+//
+//          nil
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput
+}
+
+type osPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrType OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs
+
+func OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtr(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrInput {
+	return (*osPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrType)(v)
+}
+
+func (*osPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce)(nil)).Elem()
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutputWithContext(context.Background())
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput {
+	return o.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutputWithContext(context.Background())
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce {
+		return &v
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput)
+}
+
+// Optional arguments to pass to the source during execution.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Required. A deb package.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput) File() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile {
+		return v.File
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput)
+}
+
+// Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput) Interpreter() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce) string { return v.Interpreter }).(pulumi.StringOutput)
+}
+
+// Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput) OutputFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce) *string { return v.OutputFilePath }).(pulumi.StringPtrOutput)
+}
+
+// An inline script. The size of the script is limited to 1024 characters.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput) Script() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce) *string { return v.Script }).(pulumi.StringPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce {
+		if v != nil {
+			return *v
+		}
+		var ret OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce
+		return ret
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput)
+}
+
+// Optional arguments to pass to the source during execution.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// Required. A deb package.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput) File() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile {
+		if v == nil {
+			return nil
+		}
+		return v.File
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput)
+}
+
+// Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput) Interpreter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Interpreter
+	}).(pulumi.StringPtrOutput)
+}
+
+// Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput) OutputFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputFilePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// An inline script. The size of the script is limited to 1024 characters.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput) Script() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Script
+	}).(pulumi.StringPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile struct {
+	// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+	AllowInsecure *bool `pulumi:"allowInsecure"`
+	// A Cloud Storage object.
+	Gcs *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs `pulumi:"gcs"`
+	// A local path within the VM to use.
+	LocalPath *string `pulumi:"localPath"`
+	// A generic remote file.
+	Remote *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote `pulumi:"remote"`
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs and OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs{...}
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs struct {
+	// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+	AllowInsecure pulumi.BoolPtrInput `pulumi:"allowInsecure"`
+	// A Cloud Storage object.
+	Gcs OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrInput `pulumi:"gcs"`
+	// A local path within the VM to use.
+	LocalPath pulumi.StringPtrInput `pulumi:"localPath"`
+	// A generic remote file.
+	Remote OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrInput `pulumi:"remote"`
+}
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutput)
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutput).ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutputWithContext(ctx)
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs, OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtr and OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs{...}
+//
+//  or:
+//
+//          nil
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput
+}
+
+type osPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrType OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs
+
+func OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtr(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrInput {
+	return (*osPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrType)(v)
+}
+
+func (*osPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile)(nil)).Elem()
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutputWithContext(context.Background())
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput {
+	return o.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutputWithContext(context.Background())
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile {
+		return &v
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput)
+}
+
+// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutput) AllowInsecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile) *bool { return v.AllowInsecure }).(pulumi.BoolPtrOutput)
+}
+
+// A Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutput) Gcs() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs {
+		return v.Gcs
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput)
+}
+
+// A local path within the VM to use.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutput) LocalPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile) *string { return v.LocalPath }).(pulumi.StringPtrOutput)
+}
+
+// A generic remote file.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutput) Remote() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote {
+		return v.Remote
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile {
+		if v != nil {
+			return *v
+		}
+		var ret OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile
+		return ret
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutput)
+}
+
+// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput) AllowInsecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowInsecure
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput) Gcs() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs {
+		if v == nil {
+			return nil
+		}
+		return v.Gcs
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput)
+}
+
+// A local path within the VM to use.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput) LocalPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// A generic remote file.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput) Remote() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote {
+		if v == nil {
+			return nil
+		}
+		return v.Remote
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs struct {
+	// Required. Bucket of the Cloud Storage object.
+	Bucket string `pulumi:"bucket"`
+	// Generation number of the Cloud Storage object.
+	Generation *int `pulumi:"generation"`
+	// Required. Name of the Cloud Storage object.
+	Object string `pulumi:"object"`
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs and OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs{...}
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs struct {
+	// Required. Bucket of the Cloud Storage object.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// Generation number of the Cloud Storage object.
+	Generation pulumi.IntPtrInput `pulumi:"generation"`
+	// Required. Name of the Cloud Storage object.
+	Object pulumi.StringInput `pulumi:"object"`
+}
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsOutput)
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsOutput).ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutputWithContext(ctx)
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs, OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtr and OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs{...}
+//
+//  or:
+//
+//          nil
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput
+}
+
+type osPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrType OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs
+
+func OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtr(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrInput {
+	return (*osPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrType)(v)
+}
+
+func (*osPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs)(nil)).Elem()
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutputWithContext(context.Background())
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput {
+	return o.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutputWithContext(context.Background())
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs {
+		return &v
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput)
+}
+
+// Required. Bucket of the Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// Generation number of the Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsOutput) Generation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs) *int { return v.Generation }).(pulumi.IntPtrOutput)
+}
+
+// Required. Name of the Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsOutput) Object() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs) string { return v.Object }).(pulumi.StringOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs {
+		if v != nil {
+			return *v
+		}
+		var ret OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs
+		return ret
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsOutput)
+}
+
+// Required. Bucket of the Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// Generation number of the Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput) Generation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Generation
+	}).(pulumi.IntPtrOutput)
+}
+
+// Required. Name of the Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput) Object() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Object
+	}).(pulumi.StringPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote struct {
+	// SHA256 checksum of the remote file.
+	Sha256Checksum *string `pulumi:"sha256Checksum"`
+	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+	Uri string `pulumi:"uri"`
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs and OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs{...}
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs struct {
+	// SHA256 checksum of the remote file.
+	Sha256Checksum pulumi.StringPtrInput `pulumi:"sha256Checksum"`
+	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput)
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput).ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutputWithContext(ctx)
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs, OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtr and OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs{...}
+//
+//  or:
+//
+//          nil
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput
+}
+
+type osPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrType OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs
+
+func OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtr(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrInput {
+	return (*osPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrType)(v)
+}
+
+func (*osPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote)(nil)).Elem()
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutputWithContext(context.Background())
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput {
+	return o.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutputWithContext(context.Background())
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote {
+		return &v
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput)
+}
+
+// SHA256 checksum of the remote file.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput) Sha256Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote) *string {
+		return v.Sha256Checksum
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote) OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote {
+		if v != nil {
+			return *v
+		}
+		var ret OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote
+		return ret
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput)
+}
+
+// SHA256 checksum of the remote file.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput) Sha256Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sha256Checksum
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate struct {
+	// Optional arguments to pass to the source during execution.
+	Args []string `pulumi:"args"`
+	// Required. A deb package.
+	File *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile `pulumi:"file"`
+	// Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
+	Interpreter string `pulumi:"interpreter"`
+	// Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
+	OutputFilePath *string `pulumi:"outputFilePath"`
+	// An inline script. The size of the script is limited to 1024 characters.
+	Script *string `pulumi:"script"`
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs and OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs{...}
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs struct {
+	// Optional arguments to pass to the source during execution.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Required. A deb package.
+	File OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrInput `pulumi:"file"`
+	// Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
+	Interpreter pulumi.StringInput `pulumi:"interpreter"`
+	// Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
+	OutputFilePath pulumi.StringPtrInput `pulumi:"outputFilePath"`
+	// An inline script. The size of the script is limited to 1024 characters.
+	Script pulumi.StringPtrInput `pulumi:"script"`
+}
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput)
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput).ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutputWithContext(ctx)
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs, OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtr and OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs{...}
+//
+//  or:
+//
+//          nil
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput
+}
+
+type osPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrType OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs
+
+func OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtr(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrInput {
+	return (*osPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrType)(v)
+}
+
+func (*osPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate)(nil)).Elem()
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutputWithContext(context.Background())
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput {
+	return o.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutputWithContext(context.Background())
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate {
+		return &v
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput)
+}
+
+// Optional arguments to pass to the source during execution.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Required. A deb package.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput) File() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile {
+		return v.File
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput)
+}
+
+// Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput) Interpreter() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate) string { return v.Interpreter }).(pulumi.StringOutput)
+}
+
+// Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput) OutputFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate) *string { return v.OutputFilePath }).(pulumi.StringPtrOutput)
+}
+
+// An inline script. The size of the script is limited to 1024 characters.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput) Script() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate) *string { return v.Script }).(pulumi.StringPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate {
+		if v != nil {
+			return *v
+		}
+		var ret OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate
+		return ret
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput)
+}
+
+// Optional arguments to pass to the source during execution.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// Required. A deb package.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput) File() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile {
+		if v == nil {
+			return nil
+		}
+		return v.File
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput)
+}
+
+// Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput) Interpreter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Interpreter
+	}).(pulumi.StringPtrOutput)
+}
+
+// Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput) OutputFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputFilePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// An inline script. The size of the script is limited to 1024 characters.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput) Script() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Script
+	}).(pulumi.StringPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile struct {
+	// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+	AllowInsecure *bool `pulumi:"allowInsecure"`
+	// A Cloud Storage object.
+	Gcs *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs `pulumi:"gcs"`
+	// A local path within the VM to use.
+	LocalPath *string `pulumi:"localPath"`
+	// A generic remote file.
+	Remote *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote `pulumi:"remote"`
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs and OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs{...}
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs struct {
+	// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+	AllowInsecure pulumi.BoolPtrInput `pulumi:"allowInsecure"`
+	// A Cloud Storage object.
+	Gcs OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrInput `pulumi:"gcs"`
+	// A local path within the VM to use.
+	LocalPath pulumi.StringPtrInput `pulumi:"localPath"`
+	// A generic remote file.
+	Remote OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrInput `pulumi:"remote"`
+}
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutput)
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutput).ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutputWithContext(ctx)
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs, OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtr and OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs{...}
+//
+//  or:
+//
+//          nil
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput
+}
+
+type osPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrType OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs
+
+func OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtr(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrInput {
+	return (*osPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrType)(v)
+}
+
+func (*osPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile)(nil)).Elem()
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutputWithContext(context.Background())
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput {
+	return o.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutputWithContext(context.Background())
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile {
+		return &v
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput)
+}
+
+// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutput) AllowInsecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile) *bool { return v.AllowInsecure }).(pulumi.BoolPtrOutput)
+}
+
+// A Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutput) Gcs() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs {
+		return v.Gcs
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput)
+}
+
+// A local path within the VM to use.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutput) LocalPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile) *string { return v.LocalPath }).(pulumi.StringPtrOutput)
+}
+
+// A generic remote file.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutput) Remote() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote {
+		return v.Remote
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile {
+		if v != nil {
+			return *v
+		}
+		var ret OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile
+		return ret
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutput)
+}
+
+// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput) AllowInsecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowInsecure
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput) Gcs() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs {
+		if v == nil {
+			return nil
+		}
+		return v.Gcs
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput)
+}
+
+// A local path within the VM to use.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput) LocalPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// A generic remote file.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput) Remote() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote {
+		if v == nil {
+			return nil
+		}
+		return v.Remote
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs struct {
+	// Required. Bucket of the Cloud Storage object.
+	Bucket string `pulumi:"bucket"`
+	// Generation number of the Cloud Storage object.
+	Generation *int `pulumi:"generation"`
+	// Required. Name of the Cloud Storage object.
+	Object string `pulumi:"object"`
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs and OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs{...}
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs struct {
+	// Required. Bucket of the Cloud Storage object.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// Generation number of the Cloud Storage object.
+	Generation pulumi.IntPtrInput `pulumi:"generation"`
+	// Required. Name of the Cloud Storage object.
+	Object pulumi.StringInput `pulumi:"object"`
+}
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsOutput)
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsOutput).ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutputWithContext(ctx)
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs, OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtr and OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs{...}
+//
+//  or:
+//
+//          nil
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput
+}
+
+type osPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrType OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs
+
+func OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtr(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrInput {
+	return (*osPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrType)(v)
+}
+
+func (*osPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs)(nil)).Elem()
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutputWithContext(context.Background())
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput {
+	return o.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutputWithContext(context.Background())
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs {
+		return &v
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput)
+}
+
+// Required. Bucket of the Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// Generation number of the Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsOutput) Generation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs) *int { return v.Generation }).(pulumi.IntPtrOutput)
+}
+
+// Required. Name of the Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsOutput) Object() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs) string { return v.Object }).(pulumi.StringOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs {
+		if v != nil {
+			return *v
+		}
+		var ret OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs
+		return ret
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsOutput)
+}
+
+// Required. Bucket of the Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// Generation number of the Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput) Generation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Generation
+	}).(pulumi.IntPtrOutput)
+}
+
+// Required. Name of the Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput) Object() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Object
+	}).(pulumi.StringPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote struct {
+	// SHA256 checksum of the remote file.
+	Sha256Checksum *string `pulumi:"sha256Checksum"`
+	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+	Uri string `pulumi:"uri"`
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs and OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs{...}
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs struct {
+	// SHA256 checksum of the remote file.
+	Sha256Checksum pulumi.StringPtrInput `pulumi:"sha256Checksum"`
+	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteOutput)
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteOutput).ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutputWithContext(ctx)
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs, OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtr and OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs{...}
+//
+//  or:
+//
+//          nil
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput
+}
+
+type osPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrType OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs
+
+func OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtr(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrInput {
+	return (*osPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrType)(v)
+}
+
+func (*osPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote)(nil)).Elem()
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutputWithContext(context.Background())
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput {
+	return o.ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutputWithContext(context.Background())
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote {
+		return &v
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput)
+}
+
+// SHA256 checksum of the remote file.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteOutput) Sha256Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote) *string {
+		return v.Sha256Checksum
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote {
+		if v != nil {
+			return *v
+		}
+		var ret OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote
+		return ret
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteOutput)
+}
+
+// SHA256 checksum of the remote file.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput) Sha256Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sha256Checksum
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceFile struct {
+	// A a file with this content. The size of the content is limited to 1024 characters.
+	Content *string `pulumi:"content"`
+	// Required. A deb package.
+	File *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile `pulumi:"file"`
+	// Required. The absolute path of the file within the VM.
+	Path string `pulumi:"path"`
+	// -
+	// Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
+	Permissions *string `pulumi:"permissions"`
+	// Required. Desired state of the file. Possible values: OS_POLICY_COMPLIANCE_STATE_UNSPECIFIED, COMPLIANT, NON_COMPLIANT, UNKNOWN, NO_OS_POLICIES_APPLICABLE
+	State string `pulumi:"state"`
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourceFileInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs and OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourceFileInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs{...}
+type OsPolicyAssignmentOsPolicyResourceGroupResourceFileInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs struct {
+	// A a file with this content. The size of the content is limited to 1024 characters.
+	Content pulumi.StringPtrInput `pulumi:"content"`
+	// Required. A deb package.
+	File OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrInput `pulumi:"file"`
+	// Required. The absolute path of the file within the VM.
+	Path pulumi.StringInput `pulumi:"path"`
+	// -
+	// Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
+	Permissions pulumi.StringPtrInput `pulumi:"permissions"`
+	// Required. Desired state of the file. Possible values: OS_POLICY_COMPLIANCE_STATE_UNSPECIFIED, COMPLIANT, NON_COMPLIANT, UNKNOWN, NO_OS_POLICIES_APPLICABLE
+	State pulumi.StringInput `pulumi:"state"`
+}
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceFile)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput)
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput).ToOsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutputWithContext(ctx)
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs, OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtr and OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs{...}
+//
+//  or:
+//
+//          nil
+type OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput
+}
+
+type osPolicyAssignmentOsPolicyResourceGroupResourceFilePtrType OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs
+
+func OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtr(v *OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs) OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrInput {
+	return (*osPolicyAssignmentOsPolicyResourceGroupResourceFilePtrType)(v)
+}
+
+func (*osPolicyAssignmentOsPolicyResourceGroupResourceFilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourceFile)(nil)).Elem()
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourceFilePtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutputWithContext(context.Background())
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourceFilePtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceFile)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput {
+	return o.ToOsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutputWithContext(context.Background())
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourceFile) *OsPolicyAssignmentOsPolicyResourceGroupResourceFile {
+		return &v
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput)
+}
+
+// A a file with this content. The size of the content is limited to 1024 characters.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceFile) *string { return v.Content }).(pulumi.StringPtrOutput)
+}
+
+// Required. A deb package.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput) File() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceFile) *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile {
+		return v.File
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput)
+}
+
+// Required. The absolute path of the file within the VM.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceFile) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// -
+// Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput) Permissions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceFile) *string { return v.Permissions }).(pulumi.StringPtrOutput)
+}
+
+// Required. Desired state of the file. Possible values: OS_POLICY_COMPLIANCE_STATE_UNSPECIFIED, COMPLIANT, NON_COMPLIANT, UNKNOWN, NO_OS_POLICIES_APPLICABLE
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceFile) string { return v.State }).(pulumi.StringOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourceFile)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceFile) OsPolicyAssignmentOsPolicyResourceGroupResourceFile {
+		if v != nil {
+			return *v
+		}
+		var ret OsPolicyAssignmentOsPolicyResourceGroupResourceFile
+		return ret
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput)
+}
+
+// A a file with this content. The size of the content is limited to 1024 characters.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceFile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Content
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. A deb package.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput) File() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceFile) *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile {
+		if v == nil {
+			return nil
+		}
+		return v.File
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput)
+}
+
+// Required. The absolute path of the file within the VM.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceFile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// -
+// Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput) Permissions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceFile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Permissions
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. Desired state of the file. Possible values: OS_POLICY_COMPLIANCE_STATE_UNSPECIFIED, COMPLIANT, NON_COMPLIANT, UNKNOWN, NO_OS_POLICIES_APPLICABLE
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceFile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile struct {
+	// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+	AllowInsecure *bool `pulumi:"allowInsecure"`
+	// A Cloud Storage object.
+	Gcs *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs `pulumi:"gcs"`
+	// A local path within the VM to use.
+	LocalPath *string `pulumi:"localPath"`
+	// A generic remote file.
+	Remote *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote `pulumi:"remote"`
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs and OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs{...}
+type OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs struct {
+	// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+	AllowInsecure pulumi.BoolPtrInput `pulumi:"allowInsecure"`
+	// A Cloud Storage object.
+	Gcs OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrInput `pulumi:"gcs"`
+	// A local path within the VM to use.
+	LocalPath pulumi.StringPtrInput `pulumi:"localPath"`
+	// A generic remote file.
+	Remote OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrInput `pulumi:"remote"`
+}
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutput)
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutput).ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutputWithContext(ctx)
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs, OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtr and OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs{...}
+//
+//  or:
+//
+//          nil
+type OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput
+}
+
+type osPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrType OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs
+
+func OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtr(v *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs) OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrInput {
+	return (*osPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrType)(v)
+}
+
+func (*osPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile)(nil)).Elem()
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutputWithContext(context.Background())
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput {
+	return o.ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutputWithContext(context.Background())
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile) *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile {
+		return &v
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput)
+}
+
+// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutput) AllowInsecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile) *bool { return v.AllowInsecure }).(pulumi.BoolPtrOutput)
+}
+
+// A Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutput) Gcs() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile) *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs {
+		return v.Gcs
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput)
+}
+
+// A local path within the VM to use.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutput) LocalPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile) *string { return v.LocalPath }).(pulumi.StringPtrOutput)
+}
+
+// A generic remote file.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutput) Remote() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile) *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote {
+		return v.Remote
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile) OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile {
+		if v != nil {
+			return *v
+		}
+		var ret OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile
+		return ret
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutput)
+}
+
+// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput) AllowInsecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowInsecure
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput) Gcs() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile) *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs {
+		if v == nil {
+			return nil
+		}
+		return v.Gcs
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput)
+}
+
+// A local path within the VM to use.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput) LocalPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// A generic remote file.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput) Remote() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile) *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote {
+		if v == nil {
+			return nil
+		}
+		return v.Remote
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs struct {
+	// Required. Bucket of the Cloud Storage object.
+	Bucket string `pulumi:"bucket"`
+	// Generation number of the Cloud Storage object.
+	Generation *int `pulumi:"generation"`
+	// Required. Name of the Cloud Storage object.
+	Object string `pulumi:"object"`
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs and OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs{...}
+type OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs struct {
+	// Required. Bucket of the Cloud Storage object.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// Generation number of the Cloud Storage object.
+	Generation pulumi.IntPtrInput `pulumi:"generation"`
+	// Required. Name of the Cloud Storage object.
+	Object pulumi.StringInput `pulumi:"object"`
+}
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsOutput)
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsOutput).ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutputWithContext(ctx)
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs, OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtr and OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs{...}
+//
+//  or:
+//
+//          nil
+type OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput
+}
+
+type osPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrType OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs
+
+func OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtr(v *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs) OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrInput {
+	return (*osPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrType)(v)
+}
+
+func (*osPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs)(nil)).Elem()
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutputWithContext(context.Background())
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput {
+	return o.ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutputWithContext(context.Background())
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs) *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs {
+		return &v
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput)
+}
+
+// Required. Bucket of the Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// Generation number of the Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsOutput) Generation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs) *int { return v.Generation }).(pulumi.IntPtrOutput)
+}
+
+// Required. Name of the Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsOutput) Object() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs) string { return v.Object }).(pulumi.StringOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs) OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs {
+		if v != nil {
+			return *v
+		}
+		var ret OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs
+		return ret
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsOutput)
+}
+
+// Required. Bucket of the Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// Generation number of the Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput) Generation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Generation
+	}).(pulumi.IntPtrOutput)
+}
+
+// Required. Name of the Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput) Object() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Object
+	}).(pulumi.StringPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote struct {
+	// SHA256 checksum of the remote file.
+	Sha256Checksum *string `pulumi:"sha256Checksum"`
+	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+	Uri string `pulumi:"uri"`
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs and OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs{...}
+type OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs struct {
+	// SHA256 checksum of the remote file.
+	Sha256Checksum pulumi.StringPtrInput `pulumi:"sha256Checksum"`
+	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteOutput)
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteOutput).ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutputWithContext(ctx)
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs, OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtr and OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs{...}
+//
+//  or:
+//
+//          nil
+type OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput
+}
+
+type osPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrType OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs
+
+func OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtr(v *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs) OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrInput {
+	return (*osPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrType)(v)
+}
+
+func (*osPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote)(nil)).Elem()
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutputWithContext(context.Background())
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput {
+	return o.ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutputWithContext(context.Background())
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote) *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote {
+		return &v
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput)
+}
+
+// SHA256 checksum of the remote file.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteOutput) Sha256Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote) *string { return v.Sha256Checksum }).(pulumi.StringPtrOutput)
+}
+
+// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote) OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote {
+		if v != nil {
+			return *v
+		}
+		var ret OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote
+		return ret
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteOutput)
+}
+
+// SHA256 checksum of the remote file.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput) Sha256Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sha256Checksum
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkg struct {
+	// An Apt Repository.
+	Apt *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt `pulumi:"apt"`
+	// A deb package file.
+	Deb *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb `pulumi:"deb"`
+	// Required. The desired state the agent should maintain for this package. Possible values: DESIRED_STATE_UNSPECIFIED, INSTALLED, REMOVED
+	DesiredState string `pulumi:"desiredState"`
+	// A package managed by GooGet.
+	Googet *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget `pulumi:"googet"`
+	// An MSI package.
+	Msi *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi `pulumi:"msi"`
+	// An rpm package file.
+	Rpm *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm `pulumi:"rpm"`
+	// A Yum Repository.
+	Yum *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum `pulumi:"yum"`
+	// A Zypper Repository.
+	Zypper *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper `pulumi:"zypper"`
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourcePkgInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs and OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourcePkgInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs{...}
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs struct {
+	// An Apt Repository.
+	Apt OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrInput `pulumi:"apt"`
+	// A deb package file.
+	Deb OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrInput `pulumi:"deb"`
+	// Required. The desired state the agent should maintain for this package. Possible values: DESIRED_STATE_UNSPECIFIED, INSTALLED, REMOVED
+	DesiredState pulumi.StringInput `pulumi:"desiredState"`
+	// A package managed by GooGet.
+	Googet OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrInput `pulumi:"googet"`
+	// An MSI package.
+	Msi OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrInput `pulumi:"msi"`
+	// An rpm package file.
+	Rpm OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrInput `pulumi:"rpm"`
+	// A Yum Repository.
+	Yum OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrInput `pulumi:"yum"`
+	// A Zypper Repository.
+	Zypper OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrInput `pulumi:"zypper"`
+}
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkg)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput)
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput).ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutputWithContext(ctx)
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs, OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtr and OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs{...}
+//
+//  or:
+//
+//          nil
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput
+}
+
+type osPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrType OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs
+
+func OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtr(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrInput {
+	return (*osPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrType)(v)
+}
+
+func (*osPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourcePkg)(nil)).Elem()
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutputWithContext(context.Background())
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkg)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput {
+	return o.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutputWithContext(context.Background())
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkg {
+		return &v
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput)
+}
+
+// An Apt Repository.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput) Apt() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt {
+		return v.Apt
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput)
+}
+
+// A deb package file.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput) Deb() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb {
+		return v.Deb
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput)
+}
+
+// Required. The desired state the agent should maintain for this package. Possible values: DESIRED_STATE_UNSPECIFIED, INSTALLED, REMOVED
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput) DesiredState() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) string { return v.DesiredState }).(pulumi.StringOutput)
+}
+
+// A package managed by GooGet.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput) Googet() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget {
+		return v.Googet
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput)
+}
+
+// An MSI package.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput) Msi() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi {
+		return v.Msi
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput)
+}
+
+// An rpm package file.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput) Rpm() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm {
+		return v.Rpm
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput)
+}
+
+// A Yum Repository.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput) Yum() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum {
+		return v.Yum
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput)
+}
+
+// A Zypper Repository.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput) Zypper() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper {
+		return v.Zypper
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourcePkg)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) OsPolicyAssignmentOsPolicyResourceGroupResourcePkg {
+		if v != nil {
+			return *v
+		}
+		var ret OsPolicyAssignmentOsPolicyResourceGroupResourcePkg
+		return ret
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput)
+}
+
+// An Apt Repository.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput) Apt() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt {
+		if v == nil {
+			return nil
+		}
+		return v.Apt
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput)
+}
+
+// A deb package file.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput) Deb() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb {
+		if v == nil {
+			return nil
+		}
+		return v.Deb
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput)
+}
+
+// Required. The desired state the agent should maintain for this package. Possible values: DESIRED_STATE_UNSPECIFIED, INSTALLED, REMOVED
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput) DesiredState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DesiredState
+	}).(pulumi.StringPtrOutput)
+}
+
+// A package managed by GooGet.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput) Googet() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget {
+		if v == nil {
+			return nil
+		}
+		return v.Googet
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput)
+}
+
+// An MSI package.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput) Msi() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi {
+		if v == nil {
+			return nil
+		}
+		return v.Msi
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput)
+}
+
+// An rpm package file.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput) Rpm() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm {
+		if v == nil {
+			return nil
+		}
+		return v.Rpm
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput)
+}
+
+// A Yum Repository.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput) Yum() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum {
+		if v == nil {
+			return nil
+		}
+		return v.Yum
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput)
+}
+
+// A Zypper Repository.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput) Zypper() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper {
+		if v == nil {
+			return nil
+		}
+		return v.Zypper
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt struct {
+	// Required. The name of the repository.
+	Name string `pulumi:"name"`
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs and OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs{...}
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs struct {
+	// Required. The name of the repository.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptOutput)
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptOutput).ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutputWithContext(ctx)
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs, OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtr and OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs{...}
+//
+//  or:
+//
+//          nil
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput
+}
+
+type osPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrType OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs
+
+func OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtr(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrInput {
+	return (*osPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrType)(v)
+}
+
+func (*osPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt)(nil)).Elem()
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutputWithContext(context.Background())
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput {
+	return o.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutputWithContext(context.Background())
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt {
+		return &v
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput)
+}
+
+// Required. The name of the repository.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt {
+		if v != nil {
+			return *v
+		}
+		var ret OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt
+		return ret
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptOutput)
+}
+
+// Required. The name of the repository.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb struct {
+	// Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
+	PullDeps *bool `pulumi:"pullDeps"`
+	// Required. A deb package.
+	Source OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource `pulumi:"source"`
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs and OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs{...}
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs struct {
+	// Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
+	PullDeps pulumi.BoolPtrInput `pulumi:"pullDeps"`
+	// Required. A deb package.
+	Source OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceInput `pulumi:"source"`
+}
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutput)
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutput).ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutputWithContext(ctx)
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs, OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtr and OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs{...}
+//
+//  or:
+//
+//          nil
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput
+}
+
+type osPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrType OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs
+
+func OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtr(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrInput {
+	return (*osPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrType)(v)
+}
+
+func (*osPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb)(nil)).Elem()
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutputWithContext(context.Background())
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput {
+	return o.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutputWithContext(context.Background())
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb {
+		return &v
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput)
+}
+
+// Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutput) PullDeps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb) *bool { return v.PullDeps }).(pulumi.BoolPtrOutput)
+}
+
+// Required. A deb package.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutput) Source() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource {
+		return v.Source
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb {
+		if v != nil {
+			return *v
+		}
+		var ret OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb
+		return ret
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutput)
+}
+
+// Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput) PullDeps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PullDeps
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Required. A deb package.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput) Source() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource {
+		if v == nil {
+			return nil
+		}
+		return &v.Source
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource struct {
+	// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+	AllowInsecure *bool `pulumi:"allowInsecure"`
+	// A Cloud Storage object.
+	Gcs *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs `pulumi:"gcs"`
+	// A local path within the VM to use.
+	LocalPath *string `pulumi:"localPath"`
+	// A generic remote file.
+	Remote *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote `pulumi:"remote"`
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs and OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs{...}
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs struct {
+	// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+	AllowInsecure pulumi.BoolPtrInput `pulumi:"allowInsecure"`
+	// A Cloud Storage object.
+	Gcs OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrInput `pulumi:"gcs"`
+	// A local path within the VM to use.
+	LocalPath pulumi.StringPtrInput `pulumi:"localPath"`
+	// A generic remote file.
+	Remote OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrInput `pulumi:"remote"`
+}
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput)
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput).ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutputWithContext(ctx)
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs, OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtr and OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs{...}
+//
+//  or:
+//
+//          nil
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput
+}
+
+type osPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrType OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs
+
+func OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtr(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrInput {
+	return (*osPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrType)(v)
+}
+
+func (*osPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource)(nil)).Elem()
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput {
+	return o.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutputWithContext(context.Background())
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource {
+		return &v
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput)
+}
+
+// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput) AllowInsecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource) *bool { return v.AllowInsecure }).(pulumi.BoolPtrOutput)
+}
+
+// A Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput) Gcs() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs {
+		return v.Gcs
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput)
+}
+
+// A local path within the VM to use.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput) LocalPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource) *string { return v.LocalPath }).(pulumi.StringPtrOutput)
+}
+
+// A generic remote file.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput) Remote() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote {
+		return v.Remote
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource {
+		if v != nil {
+			return *v
+		}
+		var ret OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource
+		return ret
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput)
+}
+
+// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput) AllowInsecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowInsecure
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput) Gcs() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs {
+		if v == nil {
+			return nil
+		}
+		return v.Gcs
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput)
+}
+
+// A local path within the VM to use.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput) LocalPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// A generic remote file.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput) Remote() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote {
+		if v == nil {
+			return nil
+		}
+		return v.Remote
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs struct {
+	// Required. Bucket of the Cloud Storage object.
+	Bucket string `pulumi:"bucket"`
+	// Generation number of the Cloud Storage object.
+	Generation *int `pulumi:"generation"`
+	// Required. Name of the Cloud Storage object.
+	Object string `pulumi:"object"`
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs and OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs{...}
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs struct {
+	// Required. Bucket of the Cloud Storage object.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// Generation number of the Cloud Storage object.
+	Generation pulumi.IntPtrInput `pulumi:"generation"`
+	// Required. Name of the Cloud Storage object.
+	Object pulumi.StringInput `pulumi:"object"`
+}
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsOutput)
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsOutput).ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutputWithContext(ctx)
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs, OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtr and OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs{...}
+//
+//  or:
+//
+//          nil
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput
+}
+
+type osPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrType OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs
+
+func OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtr(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrInput {
+	return (*osPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrType)(v)
+}
+
+func (*osPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs)(nil)).Elem()
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutputWithContext(context.Background())
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput {
+	return o.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutputWithContext(context.Background())
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs {
+		return &v
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput)
+}
+
+// Required. Bucket of the Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// Generation number of the Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsOutput) Generation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs) *int { return v.Generation }).(pulumi.IntPtrOutput)
+}
+
+// Required. Name of the Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsOutput) Object() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs) string { return v.Object }).(pulumi.StringOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs {
+		if v != nil {
+			return *v
+		}
+		var ret OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs
+		return ret
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsOutput)
+}
+
+// Required. Bucket of the Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// Generation number of the Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput) Generation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Generation
+	}).(pulumi.IntPtrOutput)
+}
+
+// Required. Name of the Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput) Object() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Object
+	}).(pulumi.StringPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote struct {
+	// SHA256 checksum of the remote file.
+	Sha256Checksum *string `pulumi:"sha256Checksum"`
+	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+	Uri string `pulumi:"uri"`
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs and OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs{...}
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs struct {
+	// SHA256 checksum of the remote file.
+	Sha256Checksum pulumi.StringPtrInput `pulumi:"sha256Checksum"`
+	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput)
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput).ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutputWithContext(ctx)
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs, OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtr and OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs{...}
+//
+//  or:
+//
+//          nil
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput
+}
+
+type osPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrType OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs
+
+func OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtr(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrInput {
+	return (*osPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrType)(v)
+}
+
+func (*osPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote)(nil)).Elem()
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutputWithContext(context.Background())
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput {
+	return o.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutputWithContext(context.Background())
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote {
+		return &v
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput)
+}
+
+// SHA256 checksum of the remote file.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput) Sha256Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote) *string {
+		return v.Sha256Checksum
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote {
+		if v != nil {
+			return *v
+		}
+		var ret OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote
+		return ret
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput)
+}
+
+// SHA256 checksum of the remote file.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput) Sha256Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sha256Checksum
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget struct {
+	// Required. The name of the repository.
+	Name string `pulumi:"name"`
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs and OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs{...}
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs struct {
+	// Required. The name of the repository.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetOutput)
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetOutput).ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutputWithContext(ctx)
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs, OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtr and OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs{...}
+//
+//  or:
+//
+//          nil
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput
+}
+
+type osPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrType OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs
+
+func OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtr(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrInput {
+	return (*osPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrType)(v)
+}
+
+func (*osPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget)(nil)).Elem()
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutputWithContext(context.Background())
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput {
+	return o.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutputWithContext(context.Background())
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget {
+		return &v
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput)
+}
+
+// Required. The name of the repository.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget {
+		if v != nil {
+			return *v
+		}
+		var ret OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget
+		return ret
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetOutput)
+}
+
+// Required. The name of the repository.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi struct {
+	// Additional properties to use during installation. This should be in the format of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`.
+	Properties []string `pulumi:"properties"`
+	// Required. A deb package.
+	Source OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource `pulumi:"source"`
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs and OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs{...}
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs struct {
+	// Additional properties to use during installation. This should be in the format of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`.
+	Properties pulumi.StringArrayInput `pulumi:"properties"`
+	// Required. A deb package.
+	Source OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceInput `pulumi:"source"`
+}
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutput)
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutput).ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutputWithContext(ctx)
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs, OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtr and OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs{...}
+//
+//  or:
+//
+//          nil
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput
+}
+
+type osPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrType OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs
+
+func OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtr(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrInput {
+	return (*osPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrType)(v)
+}
+
+func (*osPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi)(nil)).Elem()
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutputWithContext(context.Background())
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput {
+	return o.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutputWithContext(context.Background())
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi {
+		return &v
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput)
+}
+
+// Additional properties to use during installation. This should be in the format of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutput) Properties() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi) []string { return v.Properties }).(pulumi.StringArrayOutput)
+}
+
+// Required. A deb package.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutput) Source() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource {
+		return v.Source
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi {
+		if v != nil {
+			return *v
+		}
+		var ret OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi
+		return ret
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutput)
+}
+
+// Additional properties to use during installation. This should be in the format of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput) Properties() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringArrayOutput)
+}
+
+// Required. A deb package.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput) Source() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource {
+		if v == nil {
+			return nil
+		}
+		return &v.Source
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource struct {
+	// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+	AllowInsecure *bool `pulumi:"allowInsecure"`
+	// A Cloud Storage object.
+	Gcs *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs `pulumi:"gcs"`
+	// A local path within the VM to use.
+	LocalPath *string `pulumi:"localPath"`
+	// A generic remote file.
+	Remote *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote `pulumi:"remote"`
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs and OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs{...}
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs struct {
+	// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+	AllowInsecure pulumi.BoolPtrInput `pulumi:"allowInsecure"`
+	// A Cloud Storage object.
+	Gcs OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrInput `pulumi:"gcs"`
+	// A local path within the VM to use.
+	LocalPath pulumi.StringPtrInput `pulumi:"localPath"`
+	// A generic remote file.
+	Remote OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrInput `pulumi:"remote"`
+}
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput)
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput).ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutputWithContext(ctx)
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs, OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtr and OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs{...}
+//
+//  or:
+//
+//          nil
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput
+}
+
+type osPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrType OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs
+
+func OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtr(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrInput {
+	return (*osPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrType)(v)
+}
+
+func (*osPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource)(nil)).Elem()
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput {
+	return o.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutputWithContext(context.Background())
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource {
+		return &v
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput)
+}
+
+// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput) AllowInsecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource) *bool { return v.AllowInsecure }).(pulumi.BoolPtrOutput)
+}
+
+// A Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput) Gcs() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs {
+		return v.Gcs
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput)
+}
+
+// A local path within the VM to use.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput) LocalPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource) *string { return v.LocalPath }).(pulumi.StringPtrOutput)
+}
+
+// A generic remote file.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput) Remote() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote {
+		return v.Remote
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource {
+		if v != nil {
+			return *v
+		}
+		var ret OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource
+		return ret
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput)
+}
+
+// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput) AllowInsecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowInsecure
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput) Gcs() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs {
+		if v == nil {
+			return nil
+		}
+		return v.Gcs
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput)
+}
+
+// A local path within the VM to use.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput) LocalPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// A generic remote file.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput) Remote() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote {
+		if v == nil {
+			return nil
+		}
+		return v.Remote
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs struct {
+	// Required. Bucket of the Cloud Storage object.
+	Bucket string `pulumi:"bucket"`
+	// Generation number of the Cloud Storage object.
+	Generation *int `pulumi:"generation"`
+	// Required. Name of the Cloud Storage object.
+	Object string `pulumi:"object"`
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs and OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs{...}
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs struct {
+	// Required. Bucket of the Cloud Storage object.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// Generation number of the Cloud Storage object.
+	Generation pulumi.IntPtrInput `pulumi:"generation"`
+	// Required. Name of the Cloud Storage object.
+	Object pulumi.StringInput `pulumi:"object"`
+}
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput)
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput).ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutputWithContext(ctx)
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs, OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtr and OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs{...}
+//
+//  or:
+//
+//          nil
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput
+}
+
+type osPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrType OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs
+
+func OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtr(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrInput {
+	return (*osPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrType)(v)
+}
+
+func (*osPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs)(nil)).Elem()
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutputWithContext(context.Background())
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput {
+	return o.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutputWithContext(context.Background())
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs {
+		return &v
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput)
+}
+
+// Required. Bucket of the Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// Generation number of the Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput) Generation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs) *int { return v.Generation }).(pulumi.IntPtrOutput)
+}
+
+// Required. Name of the Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput) Object() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs) string { return v.Object }).(pulumi.StringOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs {
+		if v != nil {
+			return *v
+		}
+		var ret OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs
+		return ret
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput)
+}
+
+// Required. Bucket of the Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// Generation number of the Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput) Generation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Generation
+	}).(pulumi.IntPtrOutput)
+}
+
+// Required. Name of the Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput) Object() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Object
+	}).(pulumi.StringPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote struct {
+	// SHA256 checksum of the remote file.
+	Sha256Checksum *string `pulumi:"sha256Checksum"`
+	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+	Uri string `pulumi:"uri"`
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs and OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs{...}
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs struct {
+	// SHA256 checksum of the remote file.
+	Sha256Checksum pulumi.StringPtrInput `pulumi:"sha256Checksum"`
+	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput)
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput).ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutputWithContext(ctx)
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs, OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtr and OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs{...}
+//
+//  or:
+//
+//          nil
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput
+}
+
+type osPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrType OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs
+
+func OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtr(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrInput {
+	return (*osPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrType)(v)
+}
+
+func (*osPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote)(nil)).Elem()
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutputWithContext(context.Background())
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput {
+	return o.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutputWithContext(context.Background())
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote {
+		return &v
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput)
+}
+
+// SHA256 checksum of the remote file.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput) Sha256Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote) *string {
+		return v.Sha256Checksum
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote {
+		if v != nil {
+			return *v
+		}
+		var ret OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote
+		return ret
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput)
+}
+
+// SHA256 checksum of the remote file.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput) Sha256Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sha256Checksum
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm struct {
+	// Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
+	PullDeps *bool `pulumi:"pullDeps"`
+	// Required. A deb package.
+	Source OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource `pulumi:"source"`
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs and OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs{...}
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs struct {
+	// Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
+	PullDeps pulumi.BoolPtrInput `pulumi:"pullDeps"`
+	// Required. A deb package.
+	Source OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceInput `pulumi:"source"`
+}
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmOutput)
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmOutput).ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutputWithContext(ctx)
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs, OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtr and OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs{...}
+//
+//  or:
+//
+//          nil
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput
+}
+
+type osPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrType OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs
+
+func OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtr(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrInput {
+	return (*osPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrType)(v)
+}
+
+func (*osPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm)(nil)).Elem()
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutputWithContext(context.Background())
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput {
+	return o.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutputWithContext(context.Background())
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm {
+		return &v
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput)
+}
+
+// Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmOutput) PullDeps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm) *bool { return v.PullDeps }).(pulumi.BoolPtrOutput)
+}
+
+// Required. A deb package.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmOutput) Source() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource {
+		return v.Source
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm {
+		if v != nil {
+			return *v
+		}
+		var ret OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm
+		return ret
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmOutput)
+}
+
+// Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput) PullDeps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PullDeps
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Required. A deb package.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput) Source() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource {
+		if v == nil {
+			return nil
+		}
+		return &v.Source
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource struct {
+	// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+	AllowInsecure *bool `pulumi:"allowInsecure"`
+	// A Cloud Storage object.
+	Gcs *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs `pulumi:"gcs"`
+	// A local path within the VM to use.
+	LocalPath *string `pulumi:"localPath"`
+	// A generic remote file.
+	Remote *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote `pulumi:"remote"`
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs and OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs{...}
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs struct {
+	// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+	AllowInsecure pulumi.BoolPtrInput `pulumi:"allowInsecure"`
+	// A Cloud Storage object.
+	Gcs OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrInput `pulumi:"gcs"`
+	// A local path within the VM to use.
+	LocalPath pulumi.StringPtrInput `pulumi:"localPath"`
+	// A generic remote file.
+	Remote OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrInput `pulumi:"remote"`
+}
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput)
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput).ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutputWithContext(ctx)
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs, OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtr and OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs{...}
+//
+//  or:
+//
+//          nil
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput
+}
+
+type osPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrType OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs
+
+func OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtr(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrInput {
+	return (*osPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrType)(v)
+}
+
+func (*osPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource)(nil)).Elem()
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput {
+	return o.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutputWithContext(context.Background())
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource {
+		return &v
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput)
+}
+
+// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput) AllowInsecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource) *bool { return v.AllowInsecure }).(pulumi.BoolPtrOutput)
+}
+
+// A Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput) Gcs() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs {
+		return v.Gcs
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput)
+}
+
+// A local path within the VM to use.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput) LocalPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource) *string { return v.LocalPath }).(pulumi.StringPtrOutput)
+}
+
+// A generic remote file.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput) Remote() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote {
+		return v.Remote
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource {
+		if v != nil {
+			return *v
+		}
+		var ret OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource
+		return ret
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput)
+}
+
+// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput) AllowInsecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowInsecure
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput) Gcs() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs {
+		if v == nil {
+			return nil
+		}
+		return v.Gcs
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput)
+}
+
+// A local path within the VM to use.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput) LocalPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// A generic remote file.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput) Remote() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote {
+		if v == nil {
+			return nil
+		}
+		return v.Remote
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs struct {
+	// Required. Bucket of the Cloud Storage object.
+	Bucket string `pulumi:"bucket"`
+	// Generation number of the Cloud Storage object.
+	Generation *int `pulumi:"generation"`
+	// Required. Name of the Cloud Storage object.
+	Object string `pulumi:"object"`
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs and OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs{...}
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs struct {
+	// Required. Bucket of the Cloud Storage object.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// Generation number of the Cloud Storage object.
+	Generation pulumi.IntPtrInput `pulumi:"generation"`
+	// Required. Name of the Cloud Storage object.
+	Object pulumi.StringInput `pulumi:"object"`
+}
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput)
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput).ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutputWithContext(ctx)
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs, OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtr and OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs{...}
+//
+//  or:
+//
+//          nil
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput
+}
+
+type osPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrType OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs
+
+func OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtr(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrInput {
+	return (*osPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrType)(v)
+}
+
+func (*osPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs)(nil)).Elem()
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutputWithContext(context.Background())
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput {
+	return o.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutputWithContext(context.Background())
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs {
+		return &v
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput)
+}
+
+// Required. Bucket of the Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// Generation number of the Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput) Generation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs) *int { return v.Generation }).(pulumi.IntPtrOutput)
+}
+
+// Required. Name of the Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput) Object() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs) string { return v.Object }).(pulumi.StringOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs {
+		if v != nil {
+			return *v
+		}
+		var ret OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs
+		return ret
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput)
+}
+
+// Required. Bucket of the Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// Generation number of the Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput) Generation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Generation
+	}).(pulumi.IntPtrOutput)
+}
+
+// Required. Name of the Cloud Storage object.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput) Object() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Object
+	}).(pulumi.StringPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote struct {
+	// SHA256 checksum of the remote file.
+	Sha256Checksum *string `pulumi:"sha256Checksum"`
+	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+	Uri string `pulumi:"uri"`
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs and OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs{...}
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs struct {
+	// SHA256 checksum of the remote file.
+	Sha256Checksum pulumi.StringPtrInput `pulumi:"sha256Checksum"`
+	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput)
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput).ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutputWithContext(ctx)
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs, OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtr and OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs{...}
+//
+//  or:
+//
+//          nil
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput
+}
+
+type osPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrType OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs
+
+func OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtr(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrInput {
+	return (*osPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrType)(v)
+}
+
+func (*osPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote)(nil)).Elem()
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutputWithContext(context.Background())
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput {
+	return o.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutputWithContext(context.Background())
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote {
+		return &v
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput)
+}
+
+// SHA256 checksum of the remote file.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput) Sha256Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote) *string {
+		return v.Sha256Checksum
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote {
+		if v != nil {
+			return *v
+		}
+		var ret OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote
+		return ret
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput)
+}
+
+// SHA256 checksum of the remote file.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput) Sha256Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sha256Checksum
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum struct {
+	// Required. The name of the repository.
+	Name string `pulumi:"name"`
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs and OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs{...}
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs struct {
+	// Required. The name of the repository.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumOutput)
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumOutput).ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutputWithContext(ctx)
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs, OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtr and OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs{...}
+//
+//  or:
+//
+//          nil
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput
+}
+
+type osPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrType OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs
+
+func OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtr(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrInput {
+	return (*osPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrType)(v)
+}
+
+func (*osPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum)(nil)).Elem()
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutputWithContext(context.Background())
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput {
+	return o.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutputWithContext(context.Background())
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum {
+		return &v
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput)
+}
+
+// Required. The name of the repository.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum {
+		if v != nil {
+			return *v
+		}
+		var ret OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum
+		return ret
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumOutput)
+}
+
+// Required. The name of the repository.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper struct {
+	// Required. The name of the repository.
+	Name string `pulumi:"name"`
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs and OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs{...}
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs struct {
+	// Required. The name of the repository.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperOutput)
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperOutput).ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutputWithContext(ctx)
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs, OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtr and OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs{...}
+//
+//  or:
+//
+//          nil
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput
+}
+
+type osPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrType OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs
+
+func OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtr(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrInput {
+	return (*osPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrType)(v)
+}
+
+func (*osPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper)(nil)).Elem()
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutputWithContext(context.Background())
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput {
+	return o.ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutputWithContext(context.Background())
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper {
+		return &v
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput)
+}
+
+// Required. The name of the repository.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper {
+		if v != nil {
+			return *v
+		}
+		var ret OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper
+		return ret
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperOutput)
+}
+
+// Required. The name of the repository.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceRepository struct {
+	// An Apt Repository.
+	Apt *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt `pulumi:"apt"`
+	// A Goo Repository.
+	Goo *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo `pulumi:"goo"`
+	// A Yum Repository.
+	Yum *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum `pulumi:"yum"`
+	// A Zypper Repository.
+	Zypper *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper `pulumi:"zypper"`
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs and OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs{...}
+type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs struct {
+	// An Apt Repository.
+	Apt OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrInput `pulumi:"apt"`
+	// A Goo Repository.
+	Goo OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrInput `pulumi:"goo"`
+	// A Yum Repository.
+	Yum OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrInput `pulumi:"yum"`
+	// A Zypper Repository.
+	Zypper OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrInput `pulumi:"zypper"`
+}
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceRepository)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutput)
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutput).ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutputWithContext(ctx)
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs, OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtr and OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs{...}
+//
+//  or:
+//
+//          nil
+type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput
+}
+
+type osPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrType OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs
+
+func OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtr(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrInput {
+	return (*osPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrType)(v)
+}
+
+func (*osPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourceRepository)(nil)).Elem()
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceRepository)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput {
+	return o.ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourceRepository) *OsPolicyAssignmentOsPolicyResourceGroupResourceRepository {
+		return &v
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput)
+}
+
+// An Apt Repository.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutput) Apt() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepository) *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt {
+		return v.Apt
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput)
+}
+
+// A Goo Repository.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutput) Goo() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepository) *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo {
+		return v.Goo
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput)
+}
+
+// A Yum Repository.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutput) Yum() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepository) *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum {
+		return v.Yum
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput)
+}
+
+// A Zypper Repository.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutput) Zypper() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepository) *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper {
+		return v.Zypper
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourceRepository)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepository) OsPolicyAssignmentOsPolicyResourceGroupResourceRepository {
+		if v != nil {
+			return *v
+		}
+		var ret OsPolicyAssignmentOsPolicyResourceGroupResourceRepository
+		return ret
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutput)
+}
+
+// An Apt Repository.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput) Apt() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepository) *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt {
+		if v == nil {
+			return nil
+		}
+		return v.Apt
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput)
+}
+
+// A Goo Repository.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput) Goo() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepository) *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo {
+		if v == nil {
+			return nil
+		}
+		return v.Goo
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput)
+}
+
+// A Yum Repository.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput) Yum() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepository) *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum {
+		if v == nil {
+			return nil
+		}
+		return v.Yum
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput)
+}
+
+// A Zypper Repository.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput) Zypper() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepository) *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper {
+		if v == nil {
+			return nil
+		}
+		return v.Zypper
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt struct {
+	// Required. Type of archive files in this repository. Possible values: ARCHIVE_TYPE_UNSPECIFIED, DEB, DEB_SRC
+	ArchiveType string `pulumi:"archiveType"`
+	// Required. List of components for this repository. Must contain at least one item.
+	Components []string `pulumi:"components"`
+	// Required. Distribution of this repository.
+	Distribution string `pulumi:"distribution"`
+	// URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
+	GpgKey *string `pulumi:"gpgKey"`
+	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+	Uri string `pulumi:"uri"`
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs and OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs{...}
+type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs struct {
+	// Required. Type of archive files in this repository. Possible values: ARCHIVE_TYPE_UNSPECIFIED, DEB, DEB_SRC
+	ArchiveType pulumi.StringInput `pulumi:"archiveType"`
+	// Required. List of components for this repository. Must contain at least one item.
+	Components pulumi.StringArrayInput `pulumi:"components"`
+	// Required. Distribution of this repository.
+	Distribution pulumi.StringInput `pulumi:"distribution"`
+	// URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
+	GpgKey pulumi.StringPtrInput `pulumi:"gpgKey"`
+	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput)
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput).ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutputWithContext(ctx)
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs, OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtr and OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs{...}
+//
+//  or:
+//
+//          nil
+type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput
+}
+
+type osPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrType OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs
+
+func OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtr(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrInput {
+	return (*osPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrType)(v)
+}
+
+func (*osPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt)(nil)).Elem()
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutputWithContext(context.Background())
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput {
+	return o.ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutputWithContext(context.Background())
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt) *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt {
+		return &v
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput)
+}
+
+// Required. Type of archive files in this repository. Possible values: ARCHIVE_TYPE_UNSPECIFIED, DEB, DEB_SRC
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput) ArchiveType() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt) string { return v.ArchiveType }).(pulumi.StringOutput)
+}
+
+// Required. List of components for this repository. Must contain at least one item.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput) Components() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt) []string { return v.Components }).(pulumi.StringArrayOutput)
+}
+
+// Required. Distribution of this repository.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput) Distribution() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt) string { return v.Distribution }).(pulumi.StringOutput)
+}
+
+// URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput) GpgKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt) *string { return v.GpgKey }).(pulumi.StringPtrOutput)
+}
+
+// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt {
+		if v != nil {
+			return *v
+		}
+		var ret OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt
+		return ret
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput)
+}
+
+// Required. Type of archive files in this repository. Possible values: ARCHIVE_TYPE_UNSPECIFIED, DEB, DEB_SRC
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput) ArchiveType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ArchiveType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. List of components for this repository. Must contain at least one item.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput) Components() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Components
+	}).(pulumi.StringArrayOutput)
+}
+
+// Required. Distribution of this repository.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput) Distribution() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Distribution
+	}).(pulumi.StringPtrOutput)
+}
+
+// URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput) GpgKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GpgKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo struct {
+	// Required. The name of the repository.
+	Name string `pulumi:"name"`
+	// Required. The url of the repository.
+	Url string `pulumi:"url"`
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs and OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs{...}
+type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs struct {
+	// Required. The name of the repository.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Required. The url of the repository.
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooOutput)
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooOutput).ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutputWithContext(ctx)
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs, OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtr and OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs{...}
+//
+//  or:
+//
+//          nil
+type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput
+}
+
+type osPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrType OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs
+
+func OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtr(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrInput {
+	return (*osPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrType)(v)
+}
+
+func (*osPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo)(nil)).Elem()
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutputWithContext(context.Background())
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput {
+	return o.ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutputWithContext(context.Background())
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo) *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo {
+		return &v
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput)
+}
+
+// Required. The name of the repository.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Required. The url of the repository.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo {
+		if v != nil {
+			return *v
+		}
+		var ret OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo
+		return ret
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooOutput)
+}
+
+// Required. The name of the repository.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. The url of the repository.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum struct {
+	// Required. The location of the repository directory.
+	BaseUrl string `pulumi:"baseUrl"`
+	// The display name of the repository.
+	DisplayName *string `pulumi:"displayName"`
+	// URIs of GPG keys.
+	GpgKeys []string `pulumi:"gpgKeys"`
+	// Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+	Id string `pulumi:"id"`
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs and OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs{...}
+type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs struct {
+	// Required. The location of the repository directory.
+	BaseUrl pulumi.StringInput `pulumi:"baseUrl"`
+	// The display name of the repository.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// URIs of GPG keys.
+	GpgKeys pulumi.StringArrayInput `pulumi:"gpgKeys"`
+	// Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutput)
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutput).ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutputWithContext(ctx)
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs, OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtr and OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs{...}
+//
+//  or:
+//
+//          nil
+type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput
+}
+
+type osPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrType OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs
+
+func OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtr(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrInput {
+	return (*osPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrType)(v)
+}
+
+func (*osPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum)(nil)).Elem()
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutputWithContext(context.Background())
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput {
+	return o.ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutputWithContext(context.Background())
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum) *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum {
+		return &v
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput)
+}
+
+// Required. The location of the repository directory.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutput) BaseUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum) string { return v.BaseUrl }).(pulumi.StringOutput)
+}
+
+// The display name of the repository.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// URIs of GPG keys.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutput) GpgKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum) []string { return v.GpgKeys }).(pulumi.StringArrayOutput)
+}
+
+// Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum {
+		if v != nil {
+			return *v
+		}
+		var ret OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum
+		return ret
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutput)
+}
+
+// Required. The location of the repository directory.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput) BaseUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BaseUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The display name of the repository.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// URIs of GPG keys.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput) GpgKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum) []string {
+		if v == nil {
+			return nil
+		}
+		return v.GpgKeys
+	}).(pulumi.StringArrayOutput)
+}
+
+// Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper struct {
+	// Required. The location of the repository directory.
+	BaseUrl string `pulumi:"baseUrl"`
+	// The display name of the repository.
+	DisplayName *string `pulumi:"displayName"`
+	// URIs of GPG keys.
+	GpgKeys []string `pulumi:"gpgKeys"`
+	// Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+	Id string `pulumi:"id"`
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs and OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs{...}
+type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutput
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs struct {
+	// Required. The location of the repository directory.
+	BaseUrl pulumi.StringInput `pulumi:"baseUrl"`
+	// The display name of the repository.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// URIs of GPG keys.
+	GpgKeys pulumi.StringArrayInput `pulumi:"gpgKeys"`
+	// Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutput)
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutput).ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutputWithContext(ctx)
+}
+
+// OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrInput is an input type that accepts OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs, OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtr and OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrInput` via:
+//
+//          OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs{...}
+//
+//  or:
+//
+//          nil
+type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput
+	ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutputWithContext(context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput
+}
+
+type osPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrType OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs
+
+func OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtr(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrInput {
+	return (*osPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrType)(v)
+}
+
+func (*osPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper)(nil)).Elem()
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput {
+	return i.ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutputWithContext(context.Background())
+}
+
+func (i *osPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrType) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput {
+	return o.ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutputWithContext(context.Background())
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper) *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper {
+		return &v
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput)
+}
+
+// Required. The location of the repository directory.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutput) BaseUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper) string { return v.BaseUrl }).(pulumi.StringOutput)
+}
+
+// The display name of the repository.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// URIs of GPG keys.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutput) GpgKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper) []string { return v.GpgKeys }).(pulumi.StringArrayOutput)
+}
+
+// Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput) ToOsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput) Elem() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper) OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper {
+		if v != nil {
+			return *v
+		}
+		var ret OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper
+		return ret
+	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutput)
+}
+
+// Required. The location of the repository directory.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput) BaseUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BaseUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The display name of the repository.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// URIs of GPG keys.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput) GpgKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper) []string {
+		if v == nil {
+			return nil
+		}
+		return v.GpgKeys
+	}).(pulumi.StringArrayOutput)
+}
+
+// Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+type OsPolicyAssignmentRollout struct {
+	// Required. The maximum number (or percentage) of VMs per zone to disrupt at any given moment.
+	DisruptionBudget OsPolicyAssignmentRolloutDisruptionBudget `pulumi:"disruptionBudget"`
+	// Required. This determines the minimum duration of time to wait after the configuration changes are applied through the current rollout. A VM continues to count towards the `disruptionBudget` at least until this duration of time has passed after configuration changes are applied.
+	MinWaitDuration string `pulumi:"minWaitDuration"`
+}
+
+// OsPolicyAssignmentRolloutInput is an input type that accepts OsPolicyAssignmentRolloutArgs and OsPolicyAssignmentRolloutOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentRolloutInput` via:
+//
+//          OsPolicyAssignmentRolloutArgs{...}
+type OsPolicyAssignmentRolloutInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentRolloutOutput() OsPolicyAssignmentRolloutOutput
+	ToOsPolicyAssignmentRolloutOutputWithContext(context.Context) OsPolicyAssignmentRolloutOutput
+}
+
+type OsPolicyAssignmentRolloutArgs struct {
+	// Required. The maximum number (or percentage) of VMs per zone to disrupt at any given moment.
+	DisruptionBudget OsPolicyAssignmentRolloutDisruptionBudgetInput `pulumi:"disruptionBudget"`
+	// Required. This determines the minimum duration of time to wait after the configuration changes are applied through the current rollout. A VM continues to count towards the `disruptionBudget` at least until this duration of time has passed after configuration changes are applied.
+	MinWaitDuration pulumi.StringInput `pulumi:"minWaitDuration"`
+}
+
+func (OsPolicyAssignmentRolloutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentRollout)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentRolloutArgs) ToOsPolicyAssignmentRolloutOutput() OsPolicyAssignmentRolloutOutput {
+	return i.ToOsPolicyAssignmentRolloutOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentRolloutArgs) ToOsPolicyAssignmentRolloutOutputWithContext(ctx context.Context) OsPolicyAssignmentRolloutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentRolloutOutput)
+}
+
+func (i OsPolicyAssignmentRolloutArgs) ToOsPolicyAssignmentRolloutPtrOutput() OsPolicyAssignmentRolloutPtrOutput {
+	return i.ToOsPolicyAssignmentRolloutPtrOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentRolloutArgs) ToOsPolicyAssignmentRolloutPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentRolloutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentRolloutOutput).ToOsPolicyAssignmentRolloutPtrOutputWithContext(ctx)
+}
+
+// OsPolicyAssignmentRolloutPtrInput is an input type that accepts OsPolicyAssignmentRolloutArgs, OsPolicyAssignmentRolloutPtr and OsPolicyAssignmentRolloutPtrOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentRolloutPtrInput` via:
+//
+//          OsPolicyAssignmentRolloutArgs{...}
+//
+//  or:
+//
+//          nil
+type OsPolicyAssignmentRolloutPtrInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentRolloutPtrOutput() OsPolicyAssignmentRolloutPtrOutput
+	ToOsPolicyAssignmentRolloutPtrOutputWithContext(context.Context) OsPolicyAssignmentRolloutPtrOutput
+}
+
+type osPolicyAssignmentRolloutPtrType OsPolicyAssignmentRolloutArgs
+
+func OsPolicyAssignmentRolloutPtr(v *OsPolicyAssignmentRolloutArgs) OsPolicyAssignmentRolloutPtrInput {
+	return (*osPolicyAssignmentRolloutPtrType)(v)
+}
+
+func (*osPolicyAssignmentRolloutPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentRollout)(nil)).Elem()
+}
+
+func (i *osPolicyAssignmentRolloutPtrType) ToOsPolicyAssignmentRolloutPtrOutput() OsPolicyAssignmentRolloutPtrOutput {
+	return i.ToOsPolicyAssignmentRolloutPtrOutputWithContext(context.Background())
+}
+
+func (i *osPolicyAssignmentRolloutPtrType) ToOsPolicyAssignmentRolloutPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentRolloutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentRolloutPtrOutput)
+}
+
+type OsPolicyAssignmentRolloutOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentRolloutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentRollout)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentRolloutOutput) ToOsPolicyAssignmentRolloutOutput() OsPolicyAssignmentRolloutOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentRolloutOutput) ToOsPolicyAssignmentRolloutOutputWithContext(ctx context.Context) OsPolicyAssignmentRolloutOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentRolloutOutput) ToOsPolicyAssignmentRolloutPtrOutput() OsPolicyAssignmentRolloutPtrOutput {
+	return o.ToOsPolicyAssignmentRolloutPtrOutputWithContext(context.Background())
+}
+
+func (o OsPolicyAssignmentRolloutOutput) ToOsPolicyAssignmentRolloutPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentRolloutPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentRollout) *OsPolicyAssignmentRollout {
+		return &v
+	}).(OsPolicyAssignmentRolloutPtrOutput)
+}
+
+// Required. The maximum number (or percentage) of VMs per zone to disrupt at any given moment.
+func (o OsPolicyAssignmentRolloutOutput) DisruptionBudget() OsPolicyAssignmentRolloutDisruptionBudgetOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentRollout) OsPolicyAssignmentRolloutDisruptionBudget { return v.DisruptionBudget }).(OsPolicyAssignmentRolloutDisruptionBudgetOutput)
+}
+
+// Required. This determines the minimum duration of time to wait after the configuration changes are applied through the current rollout. A VM continues to count towards the `disruptionBudget` at least until this duration of time has passed after configuration changes are applied.
+func (o OsPolicyAssignmentRolloutOutput) MinWaitDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentRollout) string { return v.MinWaitDuration }).(pulumi.StringOutput)
+}
+
+type OsPolicyAssignmentRolloutPtrOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentRolloutPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentRollout)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentRolloutPtrOutput) ToOsPolicyAssignmentRolloutPtrOutput() OsPolicyAssignmentRolloutPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentRolloutPtrOutput) ToOsPolicyAssignmentRolloutPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentRolloutPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentRolloutPtrOutput) Elem() OsPolicyAssignmentRolloutOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentRollout) OsPolicyAssignmentRollout {
+		if v != nil {
+			return *v
+		}
+		var ret OsPolicyAssignmentRollout
+		return ret
+	}).(OsPolicyAssignmentRolloutOutput)
+}
+
+// Required. The maximum number (or percentage) of VMs per zone to disrupt at any given moment.
+func (o OsPolicyAssignmentRolloutPtrOutput) DisruptionBudget() OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentRollout) *OsPolicyAssignmentRolloutDisruptionBudget {
+		if v == nil {
+			return nil
+		}
+		return &v.DisruptionBudget
+	}).(OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput)
+}
+
+// Required. This determines the minimum duration of time to wait after the configuration changes are applied through the current rollout. A VM continues to count towards the `disruptionBudget` at least until this duration of time has passed after configuration changes are applied.
+func (o OsPolicyAssignmentRolloutPtrOutput) MinWaitDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentRollout) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MinWaitDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+type OsPolicyAssignmentRolloutDisruptionBudget struct {
+	// Specifies a fixed value.
+	Fixed *int `pulumi:"fixed"`
+	// Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+	Percent *int `pulumi:"percent"`
+}
+
+// OsPolicyAssignmentRolloutDisruptionBudgetInput is an input type that accepts OsPolicyAssignmentRolloutDisruptionBudgetArgs and OsPolicyAssignmentRolloutDisruptionBudgetOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentRolloutDisruptionBudgetInput` via:
+//
+//          OsPolicyAssignmentRolloutDisruptionBudgetArgs{...}
+type OsPolicyAssignmentRolloutDisruptionBudgetInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentRolloutDisruptionBudgetOutput() OsPolicyAssignmentRolloutDisruptionBudgetOutput
+	ToOsPolicyAssignmentRolloutDisruptionBudgetOutputWithContext(context.Context) OsPolicyAssignmentRolloutDisruptionBudgetOutput
+}
+
+type OsPolicyAssignmentRolloutDisruptionBudgetArgs struct {
+	// Specifies a fixed value.
+	Fixed pulumi.IntPtrInput `pulumi:"fixed"`
+	// Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+	Percent pulumi.IntPtrInput `pulumi:"percent"`
+}
+
+func (OsPolicyAssignmentRolloutDisruptionBudgetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentRolloutDisruptionBudget)(nil)).Elem()
+}
+
+func (i OsPolicyAssignmentRolloutDisruptionBudgetArgs) ToOsPolicyAssignmentRolloutDisruptionBudgetOutput() OsPolicyAssignmentRolloutDisruptionBudgetOutput {
+	return i.ToOsPolicyAssignmentRolloutDisruptionBudgetOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentRolloutDisruptionBudgetArgs) ToOsPolicyAssignmentRolloutDisruptionBudgetOutputWithContext(ctx context.Context) OsPolicyAssignmentRolloutDisruptionBudgetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentRolloutDisruptionBudgetOutput)
+}
+
+func (i OsPolicyAssignmentRolloutDisruptionBudgetArgs) ToOsPolicyAssignmentRolloutDisruptionBudgetPtrOutput() OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput {
+	return i.ToOsPolicyAssignmentRolloutDisruptionBudgetPtrOutputWithContext(context.Background())
+}
+
+func (i OsPolicyAssignmentRolloutDisruptionBudgetArgs) ToOsPolicyAssignmentRolloutDisruptionBudgetPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentRolloutDisruptionBudgetOutput).ToOsPolicyAssignmentRolloutDisruptionBudgetPtrOutputWithContext(ctx)
+}
+
+// OsPolicyAssignmentRolloutDisruptionBudgetPtrInput is an input type that accepts OsPolicyAssignmentRolloutDisruptionBudgetArgs, OsPolicyAssignmentRolloutDisruptionBudgetPtr and OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput values.
+// You can construct a concrete instance of `OsPolicyAssignmentRolloutDisruptionBudgetPtrInput` via:
+//
+//          OsPolicyAssignmentRolloutDisruptionBudgetArgs{...}
+//
+//  or:
+//
+//          nil
+type OsPolicyAssignmentRolloutDisruptionBudgetPtrInput interface {
+	pulumi.Input
+
+	ToOsPolicyAssignmentRolloutDisruptionBudgetPtrOutput() OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput
+	ToOsPolicyAssignmentRolloutDisruptionBudgetPtrOutputWithContext(context.Context) OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput
+}
+
+type osPolicyAssignmentRolloutDisruptionBudgetPtrType OsPolicyAssignmentRolloutDisruptionBudgetArgs
+
+func OsPolicyAssignmentRolloutDisruptionBudgetPtr(v *OsPolicyAssignmentRolloutDisruptionBudgetArgs) OsPolicyAssignmentRolloutDisruptionBudgetPtrInput {
+	return (*osPolicyAssignmentRolloutDisruptionBudgetPtrType)(v)
+}
+
+func (*osPolicyAssignmentRolloutDisruptionBudgetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentRolloutDisruptionBudget)(nil)).Elem()
+}
+
+func (i *osPolicyAssignmentRolloutDisruptionBudgetPtrType) ToOsPolicyAssignmentRolloutDisruptionBudgetPtrOutput() OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput {
+	return i.ToOsPolicyAssignmentRolloutDisruptionBudgetPtrOutputWithContext(context.Background())
+}
+
+func (i *osPolicyAssignmentRolloutDisruptionBudgetPtrType) ToOsPolicyAssignmentRolloutDisruptionBudgetPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput)
+}
+
+type OsPolicyAssignmentRolloutDisruptionBudgetOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentRolloutDisruptionBudgetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPolicyAssignmentRolloutDisruptionBudget)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentRolloutDisruptionBudgetOutput) ToOsPolicyAssignmentRolloutDisruptionBudgetOutput() OsPolicyAssignmentRolloutDisruptionBudgetOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentRolloutDisruptionBudgetOutput) ToOsPolicyAssignmentRolloutDisruptionBudgetOutputWithContext(ctx context.Context) OsPolicyAssignmentRolloutDisruptionBudgetOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentRolloutDisruptionBudgetOutput) ToOsPolicyAssignmentRolloutDisruptionBudgetPtrOutput() OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput {
+	return o.ToOsPolicyAssignmentRolloutDisruptionBudgetPtrOutputWithContext(context.Background())
+}
+
+func (o OsPolicyAssignmentRolloutDisruptionBudgetOutput) ToOsPolicyAssignmentRolloutDisruptionBudgetPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentRolloutDisruptionBudget) *OsPolicyAssignmentRolloutDisruptionBudget {
+		return &v
+	}).(OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput)
+}
+
+// Specifies a fixed value.
+func (o OsPolicyAssignmentRolloutDisruptionBudgetOutput) Fixed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentRolloutDisruptionBudget) *int { return v.Fixed }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+func (o OsPolicyAssignmentRolloutDisruptionBudgetOutput) Percent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OsPolicyAssignmentRolloutDisruptionBudget) *int { return v.Percent }).(pulumi.IntPtrOutput)
+}
+
+type OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput struct{ *pulumi.OutputState }
+
+func (OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPolicyAssignmentRolloutDisruptionBudget)(nil)).Elem()
+}
+
+func (o OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput) ToOsPolicyAssignmentRolloutDisruptionBudgetPtrOutput() OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput) ToOsPolicyAssignmentRolloutDisruptionBudgetPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput {
+	return o
+}
+
+func (o OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput) Elem() OsPolicyAssignmentRolloutDisruptionBudgetOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentRolloutDisruptionBudget) OsPolicyAssignmentRolloutDisruptionBudget {
+		if v != nil {
+			return *v
+		}
+		var ret OsPolicyAssignmentRolloutDisruptionBudget
+		return ret
+	}).(OsPolicyAssignmentRolloutDisruptionBudgetOutput)
+}
+
+// Specifies a fixed value.
+func (o OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput) Fixed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentRolloutDisruptionBudget) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Fixed
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+func (o OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput) Percent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OsPolicyAssignmentRolloutDisruptionBudget) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Percent
+	}).(pulumi.IntPtrOutput)
+}
+
 type PatchDeploymentInstanceFilter struct {
 	// Target all VM instances in the project. If true, no other criteria is permitted.
 	All *bool `pulumi:"all"`
@@ -10172,6 +17732,96 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GuestPoliciesRecipeUpdateStepRpmInstallationPtrInput)(nil)).Elem(), GuestPoliciesRecipeUpdateStepRpmInstallationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GuestPoliciesRecipeUpdateStepScriptRunInput)(nil)).Elem(), GuestPoliciesRecipeUpdateStepScriptRunArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GuestPoliciesRecipeUpdateStepScriptRunPtrInput)(nil)).Elem(), GuestPoliciesRecipeUpdateStepScriptRunArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentInstanceFilterInput)(nil)).Elem(), OsPolicyAssignmentInstanceFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentInstanceFilterPtrInput)(nil)).Elem(), OsPolicyAssignmentInstanceFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentInstanceFilterExclusionLabelInput)(nil)).Elem(), OsPolicyAssignmentInstanceFilterExclusionLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentInstanceFilterExclusionLabelArrayInput)(nil)).Elem(), OsPolicyAssignmentInstanceFilterExclusionLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentInstanceFilterInclusionLabelInput)(nil)).Elem(), OsPolicyAssignmentInstanceFilterInclusionLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentInstanceFilterInclusionLabelArrayInput)(nil)).Elem(), OsPolicyAssignmentInstanceFilterInclusionLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentInstanceFilterInventoryInput)(nil)).Elem(), OsPolicyAssignmentInstanceFilterInventoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentInstanceFilterInventoryArrayInput)(nil)).Elem(), OsPolicyAssignmentInstanceFilterInventoryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyArrayInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupArrayInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceArrayInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceExecInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceFileInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentRolloutInput)(nil)).Elem(), OsPolicyAssignmentRolloutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentRolloutPtrInput)(nil)).Elem(), OsPolicyAssignmentRolloutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentRolloutDisruptionBudgetInput)(nil)).Elem(), OsPolicyAssignmentRolloutDisruptionBudgetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentRolloutDisruptionBudgetPtrInput)(nil)).Elem(), OsPolicyAssignmentRolloutDisruptionBudgetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PatchDeploymentInstanceFilterInput)(nil)).Elem(), PatchDeploymentInstanceFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PatchDeploymentInstanceFilterPtrInput)(nil)).Elem(), PatchDeploymentInstanceFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PatchDeploymentInstanceFilterGroupLabelInput)(nil)).Elem(), PatchDeploymentInstanceFilterGroupLabelArgs{})
@@ -10284,6 +17934,96 @@ func init() {
 	pulumi.RegisterOutputType(GuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput{})
 	pulumi.RegisterOutputType(GuestPoliciesRecipeUpdateStepScriptRunOutput{})
 	pulumi.RegisterOutputType(GuestPoliciesRecipeUpdateStepScriptRunPtrOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentInstanceFilterOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentInstanceFilterPtrOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentInstanceFilterExclusionLabelOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentInstanceFilterExclusionLabelArrayOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentInstanceFilterInclusionLabelOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentInstanceFilterInclusionLabelArrayOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentInstanceFilterInventoryOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentInstanceFilterInventoryArrayOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyArrayOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupArrayOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourceOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourceArrayOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourceExecOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentRolloutOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentRolloutPtrOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentRolloutDisruptionBudgetOutput{})
+	pulumi.RegisterOutputType(OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput{})
 	pulumi.RegisterOutputType(PatchDeploymentInstanceFilterOutput{})
 	pulumi.RegisterOutputType(PatchDeploymentInstanceFilterPtrOutput{})
 	pulumi.RegisterOutputType(PatchDeploymentInstanceFilterGroupLabelOutput{})

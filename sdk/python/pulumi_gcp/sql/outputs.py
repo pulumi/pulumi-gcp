@@ -987,7 +987,9 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "authorizedNetworks":
+        if key == "allocatedIpRange":
+            suggest = "allocated_ip_range"
+        elif key == "authorizedNetworks":
             suggest = "authorized_networks"
         elif key == "ipv4Enabled":
             suggest = "ipv4_enabled"
@@ -1008,11 +1010,13 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 allocated_ip_range: Optional[str] = None,
                  authorized_networks: Optional[Sequence['outputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork']] = None,
                  ipv4_enabled: Optional[bool] = None,
                  private_network: Optional[str] = None,
                  require_ssl: Optional[bool] = None):
         """
+        :param str allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
         :param bool ipv4_enabled: Whether this Cloud SQL instance should be assigned
                a public IPV4 address. At least `ipv4_enabled` must be enabled or a
                `private_network` must be configured.
@@ -1023,6 +1027,8 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
                This setting can be updated, but it cannot be removed after it is set.
         :param bool require_ssl: Whether SSL connections over IP are enforced or not.
         """
+        if allocated_ip_range is not None:
+            pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
         if authorized_networks is not None:
             pulumi.set(__self__, "authorized_networks", authorized_networks)
         if ipv4_enabled is not None:
@@ -1031,6 +1037,14 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
             pulumi.set(__self__, "private_network", private_network)
         if require_ssl is not None:
             pulumi.set(__self__, "require_ssl", require_ssl)
+
+    @property
+    @pulumi.getter(name="allocatedIpRange")
+    def allocated_ip_range(self) -> Optional[str]:
+        """
+        The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+        """
+        return pulumi.get(self, "allocated_ip_range")
 
     @property
     @pulumi.getter(name="authorizedNetworks")
@@ -1766,14 +1780,21 @@ class GetDatabaseInstanceSettingInsightsConfigResult(dict):
 @pulumi.output_type
 class GetDatabaseInstanceSettingIpConfigurationResult(dict):
     def __init__(__self__, *,
+                 allocated_ip_range: str,
                  authorized_networks: Sequence['outputs.GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkResult'],
                  ipv4_enabled: bool,
                  private_network: str,
                  require_ssl: bool):
+        pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
         pulumi.set(__self__, "authorized_networks", authorized_networks)
         pulumi.set(__self__, "ipv4_enabled", ipv4_enabled)
         pulumi.set(__self__, "private_network", private_network)
         pulumi.set(__self__, "require_ssl", require_ssl)
+
+    @property
+    @pulumi.getter(name="allocatedIpRange")
+    def allocated_ip_range(self) -> str:
+        return pulumi.get(self, "allocated_ip_range")
 
     @property
     @pulumi.getter(name="authorizedNetworks")

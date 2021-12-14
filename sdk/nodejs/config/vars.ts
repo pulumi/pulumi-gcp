@@ -632,6 +632,14 @@ Object.defineProperty(exports, "pubsubLiteCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const recaptchaEnterpriseCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "recaptchaEnterpriseCustomEndpoint", {
+    get() {
+        return __config.get("recaptchaEnterpriseCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const redisCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "redisCustomEndpoint", {
     get() {

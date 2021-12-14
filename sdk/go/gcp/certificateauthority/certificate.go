@@ -109,7 +109,8 @@ import (
 // 				},
 // 				X509Config: &certificateauthority.CertificateConfigX509ConfigArgs{
 // 					CaOptions: &certificateauthority.CertificateConfigX509ConfigCaOptionsArgs{
-// 						IsCa: pulumi.Bool(false),
+// 						NonCa: pulumi.Bool(true),
+// 						IsCa:  pulumi.Bool(false),
 // 					},
 // 					KeyUsage: &certificateauthority.CertificateConfigX509ConfigKeyUsageArgs{
 // 						BaseKeyUsage: &certificateauthority.CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs{
@@ -453,7 +454,8 @@ import (
 // 				},
 // 				X509Config: &certificateauthority.CertificateConfigX509ConfigArgs{
 // 					CaOptions: &certificateauthority.CertificateConfigX509ConfigCaOptionsArgs{
-// 						IsCa: pulumi.Bool(false),
+// 						NonCa: pulumi.Bool(true),
+// 						IsCa:  pulumi.Bool(false),
 // 					},
 // 					KeyUsage: &certificateauthority.CertificateConfigX509ConfigKeyUsageArgs{
 // 						BaseKeyUsage: &certificateauthority.CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs{

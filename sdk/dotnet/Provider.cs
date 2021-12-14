@@ -243,6 +243,9 @@ namespace Pulumi.Gcp
         [Output("pubsubLiteCustomEndpoint")]
         public Output<string?> PubsubLiteCustomEndpoint { get; private set; } = null!;
 
+        [Output("recaptchaEnterpriseCustomEndpoint")]
+        public Output<string?> RecaptchaEnterpriseCustomEndpoint { get; private set; } = null!;
+
         [Output("redisCustomEndpoint")]
         public Output<string?> RedisCustomEndpoint { get; private set; } = null!;
 
@@ -587,6 +590,9 @@ namespace Pulumi.Gcp
 
         [Input("pubsubLiteCustomEndpoint")]
         public Input<string>? PubsubLiteCustomEndpoint { get; set; }
+
+        [Input("recaptchaEnterpriseCustomEndpoint")]
+        public Input<string>? RecaptchaEnterpriseCustomEndpoint { get; set; }
 
         [Input("redisCustomEndpoint")]
         public Input<string>? RedisCustomEndpoint { get; set; }

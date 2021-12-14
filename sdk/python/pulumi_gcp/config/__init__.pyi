@@ -165,6 +165,8 @@ pubsubCustomEndpoint: Optional[str]
 
 pubsubLiteCustomEndpoint: Optional[str]
 
+recaptchaEnterpriseCustomEndpoint: Optional[str]
+
 redisCustomEndpoint: Optional[str]
 
 region: Optional[str]

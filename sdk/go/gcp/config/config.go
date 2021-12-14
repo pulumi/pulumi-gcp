@@ -246,6 +246,9 @@ func GetPubsubCustomEndpoint(ctx *pulumi.Context) string {
 func GetPubsubLiteCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:pubsubLiteCustomEndpoint")
 }
+func GetRecaptchaEnterpriseCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:recaptchaEnterpriseCustomEndpoint")
+}
 func GetRedisCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:redisCustomEndpoint")
 }

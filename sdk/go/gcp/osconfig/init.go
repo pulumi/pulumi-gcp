@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:osconfig/guestPolicies:GuestPolicies":
 		r = &GuestPolicies{}
+	case "gcp:osconfig/osPolicyAssignment:OsPolicyAssignment":
+		r = &OsPolicyAssignment{}
 	case "gcp:osconfig/patchDeployment:PatchDeployment":
 		r = &PatchDeployment{}
 	default:
@@ -41,6 +43,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"osconfig/guestPolicies",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"osconfig/osPolicyAssignment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
