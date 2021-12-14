@@ -387,7 +387,7 @@ class PacketMirroring(pulumi.CustomResource):
 
         To get more information about PacketMirroring, see:
 
-        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/packetMirroring)
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/packetMirrorings)
         * How-to Guides
             * [Using Packet Mirroring](https://cloud.google.com/vpc/docs/using-packet-mirroring#creating)
 
@@ -509,7 +509,7 @@ class PacketMirroring(pulumi.CustomResource):
 
         To get more information about PacketMirroring, see:
 
-        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/packetMirroring)
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/packetMirrorings)
         * How-to Guides
             * [Using Packet Mirroring](https://cloud.google.com/vpc/docs/using-packet-mirroring#creating)
 

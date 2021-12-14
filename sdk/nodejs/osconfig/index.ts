@@ -6,10 +6,12 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./guestPolicies";
+export * from "./osPolicyAssignment";
 export * from "./patchDeployment";
 
 // Import resources to register:
 import { GuestPolicies } from "./guestPolicies";
+import { OsPolicyAssignment } from "./osPolicyAssignment";
 import { PatchDeployment } from "./patchDeployment";
 
 const _module = {
@@ -18,6 +20,8 @@ const _module = {
         switch (type) {
             case "gcp:osconfig/guestPolicies:GuestPolicies":
                 return new GuestPolicies(name, <any>undefined, { urn })
+            case "gcp:osconfig/osPolicyAssignment:OsPolicyAssignment":
+                return new OsPolicyAssignment(name, <any>undefined, { urn })
             case "gcp:osconfig/patchDeployment:PatchDeployment":
                 return new PatchDeployment(name, <any>undefined, { urn })
             default:
@@ -26,4 +30,5 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "osconfig/guestPolicies", _module)
+pulumi.runtime.registerResourceModule("gcp", "osconfig/osPolicyAssignment", _module)
 pulumi.runtime.registerResourceModule("gcp", "osconfig/patchDeployment", _module)

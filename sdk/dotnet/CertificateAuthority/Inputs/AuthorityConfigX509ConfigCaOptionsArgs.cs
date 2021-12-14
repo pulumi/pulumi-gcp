@@ -13,19 +13,32 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
     public sealed class AuthorityConfigX509ConfigCaOptionsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Refers to the "CA" X.509 extension, which is a boolean value. When this value is missing,
-        /// the extension will be omitted from the CA certificate.
+        /// When true, the "CA" in Basic Constraints extension will be set to true.
         /// </summary>
         [Input("isCa", required: true)]
         public Input<bool> IsCa { get; set; } = null!;
 
         /// <summary>
-        /// Refers to the path length restriction X.509 extension. For a CA certificate, this value describes the depth of
-        /// subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. If this
-        /// value is missing, the max path length will be omitted from the CA certificate.
+        /// Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
+        /// subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
         /// </summary>
         [Input("maxIssuerPathLength")]
         public Input<int>? MaxIssuerPathLength { get; set; }
+
+        /// <summary>
+        /// When true, the "CA" in Basic Constraints extension will be set to false.
+        /// If both `is_ca` and `non_ca` are unset, the extension will be omitted from the CA certificate.
+        /// </summary>
+        [Input("nonCa")]
+        public Input<bool>? NonCa { get; set; }
+
+        /// <summary>
+        /// When true, the "path length constraint" in Basic Constraints extension will be set to 0.
+        /// if both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
+        /// the max path length will be omitted from the CA certificate.
+        /// </summary>
+        [Input("zeroMaxIssuerPathLength")]
+        public Input<bool>? ZeroMaxIssuerPathLength { get; set; }
 
         public AuthorityConfigX509ConfigCaOptionsArgs()
         {

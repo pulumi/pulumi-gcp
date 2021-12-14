@@ -290,12 +290,10 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The purpose of the resource. This field can be either PRIVATE
-        /// or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to
+        /// The purpose of the resource. A subnetwork with purpose set to
         /// INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
-        /// reserved for Internal HTTP(S) Load Balancing. If unspecified, the
-        /// purpose defaults to PRIVATE.
-        /// If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set `role`.
+        /// reserved for Internal HTTP(S) Load Balancing.
+        /// If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the `role` field.
         /// </summary>
         [Output("purpose")]
         public Output<string> Purpose { get; private set; } = null!;
@@ -462,12 +460,10 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The purpose of the resource. This field can be either PRIVATE
-        /// or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to
+        /// The purpose of the resource. A subnetwork with purpose set to
         /// INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
-        /// reserved for Internal HTTP(S) Load Balancing. If unspecified, the
-        /// purpose defaults to PRIVATE.
-        /// If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set `role`.
+        /// reserved for Internal HTTP(S) Load Balancing.
+        /// If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the `role` field.
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }
@@ -625,12 +621,10 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The purpose of the resource. This field can be either PRIVATE
-        /// or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to
+        /// The purpose of the resource. A subnetwork with purpose set to
         /// INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
-        /// reserved for Internal HTTP(S) Load Balancing. If unspecified, the
-        /// purpose defaults to PRIVATE.
-        /// If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set `role`.
+        /// reserved for Internal HTTP(S) Load Balancing.
+        /// If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the `role` field.
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }

@@ -19,6 +19,8 @@ __all__ = [
     'InstanceShieldedInstanceConfigArgs',
     'InstanceVmImageArgs',
     'RuntimeAccessConfigArgs',
+    'RuntimeIamBindingConditionArgs',
+    'RuntimeIamMemberConditionArgs',
     'RuntimeMetricArgs',
     'RuntimeSoftwareConfigArgs',
     'RuntimeVirtualMachineArgs',
@@ -526,6 +528,84 @@ class RuntimeAccessConfigArgs:
     @runtime_owner.setter
     def runtime_owner(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "runtime_owner", value)
+
+
+@pulumi.input_type
+class RuntimeIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class RuntimeIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
 
 @pulumi.input_type

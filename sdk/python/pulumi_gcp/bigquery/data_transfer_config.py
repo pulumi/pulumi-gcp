@@ -67,7 +67,7 @@ class DataTransferConfigArgs:
                Credentials may not be specified in both locations and will cause an error. Changing from one location
                to a different credential configuration in the config will require an apply to update state.
                Structure is documented below.
-        :param pulumi.Input[str] service_account_name: Optional service account name. If this field is set, transfer config will
+        :param pulumi.Input[str] service_account_name: Service account email. If this field is set, transfer config will
                be created with this service account credentials. It requires that
                requesting user calling this API has permissions to act as this service account.
         """
@@ -280,7 +280,7 @@ class DataTransferConfigArgs:
     @pulumi.getter(name="serviceAccountName")
     def service_account_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional service account name. If this field is set, transfer config will
+        Service account email. If this field is set, transfer config will
         be created with this service account credentials. It requires that
         requesting user calling this API has permissions to act as this service account.
         """
@@ -350,7 +350,7 @@ class _DataTransferConfigState:
                Credentials may not be specified in both locations and will cause an error. Changing from one location
                to a different credential configuration in the config will require an apply to update state.
                Structure is documented below.
-        :param pulumi.Input[str] service_account_name: Optional service account name. If this field is set, transfer config will
+        :param pulumi.Input[str] service_account_name: Service account email. If this field is set, transfer config will
                be created with this service account credentials. It requires that
                requesting user calling this API has permissions to act as this service account.
         """
@@ -582,7 +582,7 @@ class _DataTransferConfigState:
     @pulumi.getter(name="serviceAccountName")
     def service_account_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional service account name. If this field is set, transfer config will
+        Service account email. If this field is set, transfer config will
         be created with this service account credentials. It requires that
         requesting user calling this API has permissions to act as this service account.
         """
@@ -704,7 +704,7 @@ class DataTransferConfig(pulumi.CustomResource):
                Credentials may not be specified in both locations and will cause an error. Changing from one location
                to a different credential configuration in the config will require an apply to update state.
                Structure is documented below.
-        :param pulumi.Input[str] service_account_name: Optional service account name. If this field is set, transfer config will
+        :param pulumi.Input[str] service_account_name: Service account email. If this field is set, transfer config will
                be created with this service account credentials. It requires that
                requesting user calling this API has permissions to act as this service account.
         """
@@ -900,7 +900,7 @@ class DataTransferConfig(pulumi.CustomResource):
                Credentials may not be specified in both locations and will cause an error. Changing from one location
                to a different credential configuration in the config will require an apply to update state.
                Structure is documented below.
-        :param pulumi.Input[str] service_account_name: Optional service account name. If this field is set, transfer config will
+        :param pulumi.Input[str] service_account_name: Service account email. If this field is set, transfer config will
                be created with this service account credentials. It requires that
                requesting user calling this API has permissions to act as this service account.
         """
@@ -1066,7 +1066,7 @@ class DataTransferConfig(pulumi.CustomResource):
     @pulumi.getter(name="serviceAccountName")
     def service_account_name(self) -> pulumi.Output[Optional[str]]:
         """
-        Optional service account name. If this field is set, transfer config will
+        Service account email. If this field is set, transfer config will
         be created with this service account credentials. It requires that
         requesting user calling this API has permissions to act as this service account.
         """

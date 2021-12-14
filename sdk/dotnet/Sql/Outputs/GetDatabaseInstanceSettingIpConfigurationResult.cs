@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.Sql.Outputs
     [OutputType]
     public sealed class GetDatabaseInstanceSettingIpConfigurationResult
     {
+        public readonly string AllocatedIpRange;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkResult> AuthorizedNetworks;
         public readonly bool Ipv4Enabled;
         public readonly string PrivateNetwork;
@@ -20,6 +21,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
         [OutputConstructor]
         private GetDatabaseInstanceSettingIpConfigurationResult(
+            string allocatedIpRange,
+
             ImmutableArray<Outputs.GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkResult> authorizedNetworks,
 
             bool ipv4Enabled,
@@ -28,6 +31,7 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             bool requireSsl)
         {
+            AllocatedIpRange = allocatedIpRange;
             AuthorizedNetworks = authorizedNetworks;
             Ipv4Enabled = ipv4Enabled;
             PrivateNetwork = privateNetwork;

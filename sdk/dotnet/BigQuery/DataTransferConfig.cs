@@ -199,7 +199,7 @@ namespace Pulumi.Gcp.BigQuery
         public Output<Outputs.DataTransferConfigSensitiveParams?> SensitiveParams { get; private set; } = null!;
 
         /// <summary>
-        /// Optional service account name. If this field is set, transfer config will
+        /// Service account email. If this field is set, transfer config will
         /// be created with this service account credentials. It requires that
         /// requesting user calling this API has permissions to act as this service account.
         /// </summary>
@@ -360,7 +360,7 @@ namespace Pulumi.Gcp.BigQuery
         public Input<Inputs.DataTransferConfigSensitiveParamsArgs>? SensitiveParams { get; set; }
 
         /// <summary>
-        /// Optional service account name. If this field is set, transfer config will
+        /// Service account email. If this field is set, transfer config will
         /// be created with this service account credentials. It requires that
         /// requesting user calling this API has permissions to act as this service account.
         /// </summary>
@@ -490,7 +490,7 @@ namespace Pulumi.Gcp.BigQuery
         public Input<Inputs.DataTransferConfigSensitiveParamsGetArgs>? SensitiveParams { get; set; }
 
         /// <summary>
-        /// Optional service account name. If this field is set, transfer config will
+        /// Service account email. If this field is set, transfer config will
         /// be created with this service account credentials. It requires that
         /// requesting user calling this API has permissions to act as this service account.
         /// </summary>

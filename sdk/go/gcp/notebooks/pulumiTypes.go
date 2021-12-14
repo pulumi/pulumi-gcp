@@ -1747,6 +1747,332 @@ func (o RuntimeAccessConfigPtrOutput) RuntimeOwner() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type RuntimeIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// RuntimeIamBindingConditionInput is an input type that accepts RuntimeIamBindingConditionArgs and RuntimeIamBindingConditionOutput values.
+// You can construct a concrete instance of `RuntimeIamBindingConditionInput` via:
+//
+//          RuntimeIamBindingConditionArgs{...}
+type RuntimeIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToRuntimeIamBindingConditionOutput() RuntimeIamBindingConditionOutput
+	ToRuntimeIamBindingConditionOutputWithContext(context.Context) RuntimeIamBindingConditionOutput
+}
+
+type RuntimeIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (RuntimeIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeIamBindingCondition)(nil)).Elem()
+}
+
+func (i RuntimeIamBindingConditionArgs) ToRuntimeIamBindingConditionOutput() RuntimeIamBindingConditionOutput {
+	return i.ToRuntimeIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i RuntimeIamBindingConditionArgs) ToRuntimeIamBindingConditionOutputWithContext(ctx context.Context) RuntimeIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeIamBindingConditionOutput)
+}
+
+func (i RuntimeIamBindingConditionArgs) ToRuntimeIamBindingConditionPtrOutput() RuntimeIamBindingConditionPtrOutput {
+	return i.ToRuntimeIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i RuntimeIamBindingConditionArgs) ToRuntimeIamBindingConditionPtrOutputWithContext(ctx context.Context) RuntimeIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeIamBindingConditionOutput).ToRuntimeIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// RuntimeIamBindingConditionPtrInput is an input type that accepts RuntimeIamBindingConditionArgs, RuntimeIamBindingConditionPtr and RuntimeIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `RuntimeIamBindingConditionPtrInput` via:
+//
+//          RuntimeIamBindingConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type RuntimeIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToRuntimeIamBindingConditionPtrOutput() RuntimeIamBindingConditionPtrOutput
+	ToRuntimeIamBindingConditionPtrOutputWithContext(context.Context) RuntimeIamBindingConditionPtrOutput
+}
+
+type runtimeIamBindingConditionPtrType RuntimeIamBindingConditionArgs
+
+func RuntimeIamBindingConditionPtr(v *RuntimeIamBindingConditionArgs) RuntimeIamBindingConditionPtrInput {
+	return (*runtimeIamBindingConditionPtrType)(v)
+}
+
+func (*runtimeIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeIamBindingCondition)(nil)).Elem()
+}
+
+func (i *runtimeIamBindingConditionPtrType) ToRuntimeIamBindingConditionPtrOutput() RuntimeIamBindingConditionPtrOutput {
+	return i.ToRuntimeIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *runtimeIamBindingConditionPtrType) ToRuntimeIamBindingConditionPtrOutputWithContext(ctx context.Context) RuntimeIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeIamBindingConditionPtrOutput)
+}
+
+type RuntimeIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (RuntimeIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeIamBindingCondition)(nil)).Elem()
+}
+
+func (o RuntimeIamBindingConditionOutput) ToRuntimeIamBindingConditionOutput() RuntimeIamBindingConditionOutput {
+	return o
+}
+
+func (o RuntimeIamBindingConditionOutput) ToRuntimeIamBindingConditionOutputWithContext(ctx context.Context) RuntimeIamBindingConditionOutput {
+	return o
+}
+
+func (o RuntimeIamBindingConditionOutput) ToRuntimeIamBindingConditionPtrOutput() RuntimeIamBindingConditionPtrOutput {
+	return o.ToRuntimeIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o RuntimeIamBindingConditionOutput) ToRuntimeIamBindingConditionPtrOutputWithContext(ctx context.Context) RuntimeIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeIamBindingCondition) *RuntimeIamBindingCondition {
+		return &v
+	}).(RuntimeIamBindingConditionPtrOutput)
+}
+
+func (o RuntimeIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o RuntimeIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v RuntimeIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o RuntimeIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v RuntimeIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type RuntimeIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (RuntimeIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeIamBindingCondition)(nil)).Elem()
+}
+
+func (o RuntimeIamBindingConditionPtrOutput) ToRuntimeIamBindingConditionPtrOutput() RuntimeIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o RuntimeIamBindingConditionPtrOutput) ToRuntimeIamBindingConditionPtrOutputWithContext(ctx context.Context) RuntimeIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o RuntimeIamBindingConditionPtrOutput) Elem() RuntimeIamBindingConditionOutput {
+	return o.ApplyT(func(v *RuntimeIamBindingCondition) RuntimeIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret RuntimeIamBindingCondition
+		return ret
+	}).(RuntimeIamBindingConditionOutput)
+}
+
+func (o RuntimeIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RuntimeIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RuntimeIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type RuntimeIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// RuntimeIamMemberConditionInput is an input type that accepts RuntimeIamMemberConditionArgs and RuntimeIamMemberConditionOutput values.
+// You can construct a concrete instance of `RuntimeIamMemberConditionInput` via:
+//
+//          RuntimeIamMemberConditionArgs{...}
+type RuntimeIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToRuntimeIamMemberConditionOutput() RuntimeIamMemberConditionOutput
+	ToRuntimeIamMemberConditionOutputWithContext(context.Context) RuntimeIamMemberConditionOutput
+}
+
+type RuntimeIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (RuntimeIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeIamMemberCondition)(nil)).Elem()
+}
+
+func (i RuntimeIamMemberConditionArgs) ToRuntimeIamMemberConditionOutput() RuntimeIamMemberConditionOutput {
+	return i.ToRuntimeIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i RuntimeIamMemberConditionArgs) ToRuntimeIamMemberConditionOutputWithContext(ctx context.Context) RuntimeIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeIamMemberConditionOutput)
+}
+
+func (i RuntimeIamMemberConditionArgs) ToRuntimeIamMemberConditionPtrOutput() RuntimeIamMemberConditionPtrOutput {
+	return i.ToRuntimeIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i RuntimeIamMemberConditionArgs) ToRuntimeIamMemberConditionPtrOutputWithContext(ctx context.Context) RuntimeIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeIamMemberConditionOutput).ToRuntimeIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// RuntimeIamMemberConditionPtrInput is an input type that accepts RuntimeIamMemberConditionArgs, RuntimeIamMemberConditionPtr and RuntimeIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `RuntimeIamMemberConditionPtrInput` via:
+//
+//          RuntimeIamMemberConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type RuntimeIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToRuntimeIamMemberConditionPtrOutput() RuntimeIamMemberConditionPtrOutput
+	ToRuntimeIamMemberConditionPtrOutputWithContext(context.Context) RuntimeIamMemberConditionPtrOutput
+}
+
+type runtimeIamMemberConditionPtrType RuntimeIamMemberConditionArgs
+
+func RuntimeIamMemberConditionPtr(v *RuntimeIamMemberConditionArgs) RuntimeIamMemberConditionPtrInput {
+	return (*runtimeIamMemberConditionPtrType)(v)
+}
+
+func (*runtimeIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeIamMemberCondition)(nil)).Elem()
+}
+
+func (i *runtimeIamMemberConditionPtrType) ToRuntimeIamMemberConditionPtrOutput() RuntimeIamMemberConditionPtrOutput {
+	return i.ToRuntimeIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *runtimeIamMemberConditionPtrType) ToRuntimeIamMemberConditionPtrOutputWithContext(ctx context.Context) RuntimeIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeIamMemberConditionPtrOutput)
+}
+
+type RuntimeIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (RuntimeIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeIamMemberCondition)(nil)).Elem()
+}
+
+func (o RuntimeIamMemberConditionOutput) ToRuntimeIamMemberConditionOutput() RuntimeIamMemberConditionOutput {
+	return o
+}
+
+func (o RuntimeIamMemberConditionOutput) ToRuntimeIamMemberConditionOutputWithContext(ctx context.Context) RuntimeIamMemberConditionOutput {
+	return o
+}
+
+func (o RuntimeIamMemberConditionOutput) ToRuntimeIamMemberConditionPtrOutput() RuntimeIamMemberConditionPtrOutput {
+	return o.ToRuntimeIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o RuntimeIamMemberConditionOutput) ToRuntimeIamMemberConditionPtrOutputWithContext(ctx context.Context) RuntimeIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeIamMemberCondition) *RuntimeIamMemberCondition {
+		return &v
+	}).(RuntimeIamMemberConditionPtrOutput)
+}
+
+func (o RuntimeIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o RuntimeIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v RuntimeIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o RuntimeIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v RuntimeIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type RuntimeIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (RuntimeIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeIamMemberCondition)(nil)).Elem()
+}
+
+func (o RuntimeIamMemberConditionPtrOutput) ToRuntimeIamMemberConditionPtrOutput() RuntimeIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o RuntimeIamMemberConditionPtrOutput) ToRuntimeIamMemberConditionPtrOutputWithContext(ctx context.Context) RuntimeIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o RuntimeIamMemberConditionPtrOutput) Elem() RuntimeIamMemberConditionOutput {
+	return o.ApplyT(func(v *RuntimeIamMemberCondition) RuntimeIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret RuntimeIamMemberCondition
+		return ret
+	}).(RuntimeIamMemberConditionOutput)
+}
+
+func (o RuntimeIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RuntimeIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RuntimeIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type RuntimeMetric struct {
 	SystemMetrics map[string]string `pulumi:"systemMetrics"`
 }
@@ -4325,6 +4651,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceVmImagePtrInput)(nil)).Elem(), InstanceVmImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeAccessConfigInput)(nil)).Elem(), RuntimeAccessConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeAccessConfigPtrInput)(nil)).Elem(), RuntimeAccessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeIamBindingConditionInput)(nil)).Elem(), RuntimeIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeIamBindingConditionPtrInput)(nil)).Elem(), RuntimeIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeIamMemberConditionInput)(nil)).Elem(), RuntimeIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeIamMemberConditionPtrInput)(nil)).Elem(), RuntimeIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeMetricInput)(nil)).Elem(), RuntimeMetricArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeMetricArrayInput)(nil)).Elem(), RuntimeMetricArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeSoftwareConfigInput)(nil)).Elem(), RuntimeSoftwareConfigArgs{})
@@ -4365,6 +4695,10 @@ func init() {
 	pulumi.RegisterOutputType(InstanceVmImagePtrOutput{})
 	pulumi.RegisterOutputType(RuntimeAccessConfigOutput{})
 	pulumi.RegisterOutputType(RuntimeAccessConfigPtrOutput{})
+	pulumi.RegisterOutputType(RuntimeIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(RuntimeIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(RuntimeIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(RuntimeIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(RuntimeMetricOutput{})
 	pulumi.RegisterOutputType(RuntimeMetricArrayOutput{})
 	pulumi.RegisterOutputType(RuntimeSoftwareConfigOutput{})

@@ -583,24 +583,32 @@ class AuthorityConfigX509ConfigAdditionalExtensionObjectIdArgs:
 class AuthorityConfigX509ConfigCaOptionsArgs:
     def __init__(__self__, *,
                  is_ca: pulumi.Input[bool],
-                 max_issuer_path_length: Optional[pulumi.Input[int]] = None):
+                 max_issuer_path_length: Optional[pulumi.Input[int]] = None,
+                 non_ca: Optional[pulumi.Input[bool]] = None,
+                 zero_max_issuer_path_length: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[bool] is_ca: Refers to the "CA" X.509 extension, which is a boolean value. When this value is missing,
-               the extension will be omitted from the CA certificate.
-        :param pulumi.Input[int] max_issuer_path_length: Refers to the path length restriction X.509 extension. For a CA certificate, this value describes the depth of
-               subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. If this
-               value is missing, the max path length will be omitted from the CA certificate.
+        :param pulumi.Input[bool] is_ca: When true, the "CA" in Basic Constraints extension will be set to true.
+        :param pulumi.Input[int] max_issuer_path_length: Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
+               subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
+        :param pulumi.Input[bool] non_ca: When true, the "CA" in Basic Constraints extension will be set to false.
+               If both `is_ca` and `non_ca` are unset, the extension will be omitted from the CA certificate.
+        :param pulumi.Input[bool] zero_max_issuer_path_length: When true, the "path length constraint" in Basic Constraints extension will be set to 0.
+               if both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
+               the max path length will be omitted from the CA certificate.
         """
         pulumi.set(__self__, "is_ca", is_ca)
         if max_issuer_path_length is not None:
             pulumi.set(__self__, "max_issuer_path_length", max_issuer_path_length)
+        if non_ca is not None:
+            pulumi.set(__self__, "non_ca", non_ca)
+        if zero_max_issuer_path_length is not None:
+            pulumi.set(__self__, "zero_max_issuer_path_length", zero_max_issuer_path_length)
 
     @property
     @pulumi.getter(name="isCa")
     def is_ca(self) -> pulumi.Input[bool]:
         """
-        Refers to the "CA" X.509 extension, which is a boolean value. When this value is missing,
-        the extension will be omitted from the CA certificate.
+        When true, the "CA" in Basic Constraints extension will be set to true.
         """
         return pulumi.get(self, "is_ca")
 
@@ -612,15 +620,41 @@ class AuthorityConfigX509ConfigCaOptionsArgs:
     @pulumi.getter(name="maxIssuerPathLength")
     def max_issuer_path_length(self) -> Optional[pulumi.Input[int]]:
         """
-        Refers to the path length restriction X.509 extension. For a CA certificate, this value describes the depth of
-        subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. If this
-        value is missing, the max path length will be omitted from the CA certificate.
+        Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
+        subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
         """
         return pulumi.get(self, "max_issuer_path_length")
 
     @max_issuer_path_length.setter
     def max_issuer_path_length(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_issuer_path_length", value)
+
+    @property
+    @pulumi.getter(name="nonCa")
+    def non_ca(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true, the "CA" in Basic Constraints extension will be set to false.
+        If both `is_ca` and `non_ca` are unset, the extension will be omitted from the CA certificate.
+        """
+        return pulumi.get(self, "non_ca")
+
+    @non_ca.setter
+    def non_ca(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "non_ca", value)
+
+    @property
+    @pulumi.getter(name="zeroMaxIssuerPathLength")
+    def zero_max_issuer_path_length(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true, the "path length constraint" in Basic Constraints extension will be set to 0.
+        if both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
+        the max path length will be omitted from the CA certificate.
+        """
+        return pulumi.get(self, "zero_max_issuer_path_length")
+
+    @zero_max_issuer_path_length.setter
+    def zero_max_issuer_path_length(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "zero_max_issuer_path_length", value)
 
 
 @pulumi.input_type
@@ -1534,25 +1568,33 @@ class CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectIdArgs:
 class CaPoolIssuancePolicyBaselineValuesCaOptionsArgs:
     def __init__(__self__, *,
                  is_ca: Optional[pulumi.Input[bool]] = None,
-                 max_issuer_path_length: Optional[pulumi.Input[int]] = None):
+                 max_issuer_path_length: Optional[pulumi.Input[int]] = None,
+                 non_ca: Optional[pulumi.Input[bool]] = None,
+                 zero_max_issuer_path_length: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[bool] is_ca: Refers to the "CA" X.509 extension, which is a boolean value. When this value is missing,
-               the extension will be omitted from the CA certificate.
-        :param pulumi.Input[int] max_issuer_path_length: Refers to the path length restriction X.509 extension. For a CA certificate, this value describes the depth of
-               subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. If this
-               value is missing, the max path length will be omitted from the CA certificate.
+        :param pulumi.Input[bool] is_ca: When true, the "CA" in Basic Constraints extension will be set to true.
+        :param pulumi.Input[int] max_issuer_path_length: Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
+               subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
+        :param pulumi.Input[bool] non_ca: When true, the "CA" in Basic Constraints extension will be set to false.
+               If both `is_ca` and `non_ca` are unset, the extension will be omitted from the CA certificate.
+        :param pulumi.Input[bool] zero_max_issuer_path_length: When true, the "path length constraint" in Basic Constraints extension will be set to 0.
+               if both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
+               the max path length will be omitted from the CA certificate.
         """
         if is_ca is not None:
             pulumi.set(__self__, "is_ca", is_ca)
         if max_issuer_path_length is not None:
             pulumi.set(__self__, "max_issuer_path_length", max_issuer_path_length)
+        if non_ca is not None:
+            pulumi.set(__self__, "non_ca", non_ca)
+        if zero_max_issuer_path_length is not None:
+            pulumi.set(__self__, "zero_max_issuer_path_length", zero_max_issuer_path_length)
 
     @property
     @pulumi.getter(name="isCa")
     def is_ca(self) -> Optional[pulumi.Input[bool]]:
         """
-        Refers to the "CA" X.509 extension, which is a boolean value. When this value is missing,
-        the extension will be omitted from the CA certificate.
+        When true, the "CA" in Basic Constraints extension will be set to true.
         """
         return pulumi.get(self, "is_ca")
 
@@ -1564,15 +1606,41 @@ class CaPoolIssuancePolicyBaselineValuesCaOptionsArgs:
     @pulumi.getter(name="maxIssuerPathLength")
     def max_issuer_path_length(self) -> Optional[pulumi.Input[int]]:
         """
-        Refers to the path length restriction X.509 extension. For a CA certificate, this value describes the depth of
-        subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. If this
-        value is missing, the max path length will be omitted from the CA certificate.
+        Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
+        subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
         """
         return pulumi.get(self, "max_issuer_path_length")
 
     @max_issuer_path_length.setter
     def max_issuer_path_length(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_issuer_path_length", value)
+
+    @property
+    @pulumi.getter(name="nonCa")
+    def non_ca(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true, the "CA" in Basic Constraints extension will be set to false.
+        If both `is_ca` and `non_ca` are unset, the extension will be omitted from the CA certificate.
+        """
+        return pulumi.get(self, "non_ca")
+
+    @non_ca.setter
+    def non_ca(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "non_ca", value)
+
+    @property
+    @pulumi.getter(name="zeroMaxIssuerPathLength")
+    def zero_max_issuer_path_length(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true, the "path length constraint" in Basic Constraints extension will be set to 0.
+        if both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
+        the max path length will be omitted from the CA certificate.
+        """
+        return pulumi.get(self, "zero_max_issuer_path_length")
+
+    @zero_max_issuer_path_length.setter
+    def zero_max_issuer_path_length(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "zero_max_issuer_path_length", value)
 
 
 @pulumi.input_type
@@ -3625,25 +3693,33 @@ class CertificateConfigX509ConfigAdditionalExtensionObjectIdArgs:
 class CertificateConfigX509ConfigCaOptionsArgs:
     def __init__(__self__, *,
                  is_ca: Optional[pulumi.Input[bool]] = None,
-                 max_issuer_path_length: Optional[pulumi.Input[int]] = None):
+                 max_issuer_path_length: Optional[pulumi.Input[int]] = None,
+                 non_ca: Optional[pulumi.Input[bool]] = None,
+                 zero_max_issuer_path_length: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[bool] is_ca: Refers to the "CA" X.509 extension, which is a boolean value. When this value is missing,
-               the extension will be omitted from the CA certificate.
-        :param pulumi.Input[int] max_issuer_path_length: Refers to the path length restriction X.509 extension. For a CA certificate, this value describes the depth of
-               subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. If this
-               value is missing, the max path length will be omitted from the CA certificate.
+        :param pulumi.Input[bool] is_ca: When true, the "CA" in Basic Constraints extension will be set to true.
+        :param pulumi.Input[int] max_issuer_path_length: Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
+               subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
+        :param pulumi.Input[bool] non_ca: When true, the "CA" in Basic Constraints extension will be set to false.
+               If both `is_ca` and `non_ca` are unset, the extension will be omitted from the CA certificate.
+        :param pulumi.Input[bool] zero_max_issuer_path_length: When true, the "path length constraint" in Basic Constraints extension will be set to 0.
+               if both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
+               the max path length will be omitted from the CA certificate.
         """
         if is_ca is not None:
             pulumi.set(__self__, "is_ca", is_ca)
         if max_issuer_path_length is not None:
             pulumi.set(__self__, "max_issuer_path_length", max_issuer_path_length)
+        if non_ca is not None:
+            pulumi.set(__self__, "non_ca", non_ca)
+        if zero_max_issuer_path_length is not None:
+            pulumi.set(__self__, "zero_max_issuer_path_length", zero_max_issuer_path_length)
 
     @property
     @pulumi.getter(name="isCa")
     def is_ca(self) -> Optional[pulumi.Input[bool]]:
         """
-        Refers to the "CA" X.509 extension, which is a boolean value. When this value is missing,
-        the extension will be omitted from the CA certificate.
+        When true, the "CA" in Basic Constraints extension will be set to true.
         """
         return pulumi.get(self, "is_ca")
 
@@ -3655,15 +3731,41 @@ class CertificateConfigX509ConfigCaOptionsArgs:
     @pulumi.getter(name="maxIssuerPathLength")
     def max_issuer_path_length(self) -> Optional[pulumi.Input[int]]:
         """
-        Refers to the path length restriction X.509 extension. For a CA certificate, this value describes the depth of
-        subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. If this
-        value is missing, the max path length will be omitted from the CA certificate.
+        Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
+        subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
         """
         return pulumi.get(self, "max_issuer_path_length")
 
     @max_issuer_path_length.setter
     def max_issuer_path_length(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_issuer_path_length", value)
+
+    @property
+    @pulumi.getter(name="nonCa")
+    def non_ca(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true, the "CA" in Basic Constraints extension will be set to false.
+        If both `is_ca` and `non_ca` are unset, the extension will be omitted from the CA certificate.
+        """
+        return pulumi.get(self, "non_ca")
+
+    @non_ca.setter
+    def non_ca(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "non_ca", value)
+
+    @property
+    @pulumi.getter(name="zeroMaxIssuerPathLength")
+    def zero_max_issuer_path_length(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true, the "path length constraint" in Basic Constraints extension will be set to 0.
+        if both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
+        the max path length will be omitted from the CA certificate.
+        """
+        return pulumi.get(self, "zero_max_issuer_path_length")
+
+    @zero_max_issuer_path_length.setter
+    def zero_max_issuer_path_length(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "zero_max_issuer_path_length", value)
 
 
 @pulumi.input_type

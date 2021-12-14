@@ -1535,6 +1535,21 @@ export namespace apigateway {
 
 }
 
+export namespace apigee {
+    export interface EnvironmentIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface EnvironmentIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+}
+
 export namespace appengine {
     export interface ApplicationFeatureSettings {
         /**
@@ -3901,16 +3916,25 @@ export namespace certificateauthority {
 
     export interface AuthorityConfigX509ConfigCaOptions {
         /**
-         * Refers to the "CA" X.509 extension, which is a boolean value. When this value is missing,
-         * the extension will be omitted from the CA certificate.
+         * When true, the "CA" in Basic Constraints extension will be set to true.
          */
         isCa: boolean;
         /**
-         * Refers to the path length restriction X.509 extension. For a CA certificate, this value describes the depth of
-         * subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. If this
-         * value is missing, the max path length will be omitted from the CA certificate.
+         * Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
+         * subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
          */
         maxIssuerPathLength?: number;
+        /**
+         * When true, the "CA" in Basic Constraints extension will be set to false.
+         * If both `isCa` and `nonCa` are unset, the extension will be omitted from the CA certificate.
+         */
+        nonCa?: boolean;
+        /**
+         * When true, the "path length constraint" in Basic Constraints extension will be set to 0.
+         * if both `maxIssuerPathLength` and `zeroMaxIssuerPathLength` are unset,
+         * the max path length will be omitted from the CA certificate.
+         */
+        zeroMaxIssuerPathLength?: boolean;
     }
 
     export interface AuthorityConfigX509ConfigKeyUsage {
@@ -4169,16 +4193,25 @@ export namespace certificateauthority {
 
     export interface CaPoolIssuancePolicyBaselineValuesCaOptions {
         /**
-         * Refers to the "CA" X.509 extension, which is a boolean value. When this value is missing,
-         * the extension will be omitted from the CA certificate.
+         * When true, the "CA" in Basic Constraints extension will be set to true.
          */
         isCa?: boolean;
         /**
-         * Refers to the path length restriction X.509 extension. For a CA certificate, this value describes the depth of
-         * subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. If this
-         * value is missing, the max path length will be omitted from the CA certificate.
+         * Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
+         * subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
          */
         maxIssuerPathLength?: number;
+        /**
+         * When true, the "CA" in Basic Constraints extension will be set to false.
+         * If both `isCa` and `nonCa` are unset, the extension will be omitted from the CA certificate.
+         */
+        nonCa?: boolean;
+        /**
+         * When true, the "path length constraint" in Basic Constraints extension will be set to 0.
+         * if both `maxIssuerPathLength` and `zeroMaxIssuerPathLength` are unset,
+         * the max path length will be omitted from the CA certificate.
+         */
+        zeroMaxIssuerPathLength?: boolean;
     }
 
     export interface CaPoolIssuancePolicyBaselineValuesKeyUsage {
@@ -4728,16 +4761,25 @@ export namespace certificateauthority {
 
     export interface CertificateConfigX509ConfigCaOptions {
         /**
-         * Refers to the "CA" X.509 extension, which is a boolean value. When this value is missing,
-         * the extension will be omitted from the CA certificate.
+         * When true, the "CA" in Basic Constraints extension will be set to true.
          */
         isCa?: boolean;
         /**
-         * Refers to the path length restriction X.509 extension. For a CA certificate, this value describes the depth of
-         * subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. If this
-         * value is missing, the max path length will be omitted from the CA certificate.
+         * Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
+         * subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
          */
         maxIssuerPathLength?: number;
+        /**
+         * When true, the "CA" in Basic Constraints extension will be set to false.
+         * If both `isCa` and `nonCa` are unset, the extension will be omitted from the CA certificate.
+         */
+        nonCa?: boolean;
+        /**
+         * When true, the "path length constraint" in Basic Constraints extension will be set to 0.
+         * if both `maxIssuerPathLength` and `zeroMaxIssuerPathLength` are unset,
+         * the max path length will be omitted from the CA certificate.
+         */
+        zeroMaxIssuerPathLength?: boolean;
     }
 
     export interface CertificateConfigX509ConfigKeyUsage {
@@ -25786,6 +25828,18 @@ export namespace notebooks {
         runtimeOwner?: string;
     }
 
+    export interface RuntimeIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface RuntimeIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
     export interface RuntimeMetric {
         systemMetrics: {[key: string]: string};
     }
@@ -26995,6 +27049,678 @@ export namespace osconfig {
          * The shell script to be executed.
          */
         script: string;
+    }
+
+    export interface OsPolicyAssignmentInstanceFilter {
+        /**
+         * Target all VMs in the project. If true, no other criteria is permitted.
+         */
+        all?: boolean;
+        /**
+         * List of label sets used for VM exclusion. If the list has more than one label set, the VM is excluded if any of the label sets are applicable for the VM.
+         */
+        exclusionLabels?: outputs.osconfig.OsPolicyAssignmentInstanceFilterExclusionLabel[];
+        /**
+         * List of label sets used for VM inclusion. If the list has more than one `LabelSet`, the VM is included if any of the label sets are applicable for the VM.
+         */
+        inclusionLabels?: outputs.osconfig.OsPolicyAssignmentInstanceFilterInclusionLabel[];
+        /**
+         * List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories.
+         */
+        inventories?: outputs.osconfig.OsPolicyAssignmentInstanceFilterInventory[];
+    }
+
+    export interface OsPolicyAssignmentInstanceFilterExclusionLabel {
+        /**
+         * Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified in this map to be selected.
+         */
+        labels?: {[key: string]: string};
+    }
+
+    export interface OsPolicyAssignmentInstanceFilterInclusionLabel {
+        /**
+         * Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified in this map to be selected.
+         */
+        labels?: {[key: string]: string};
+    }
+
+    export interface OsPolicyAssignmentInstanceFilterInventory {
+        /**
+         * Required. The OS short name
+         */
+        osShortName: string;
+        /**
+         * The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions.
+         */
+        osVersion?: string;
+    }
+
+    export interface OsPolicyAssignmentOsPolicy {
+        /**
+         * This flag determines the OS policy compliance status when none of the resource groups within the policy are applicable for a VM. Set this value to `true` if the policy needs to be reported as compliant even if the policy has nothing to validate or enforce.
+         */
+        allowNoResourceGroupMatch?: boolean;
+        /**
+         * OS policy assignment description. Length of the description is limited to 1024 characters.
+         */
+        description?: string;
+        /**
+         * Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+         */
+        id: string;
+        /**
+         * Required. Policy mode Possible values: MODE_UNSPECIFIED, VALIDATION, ENFORCEMENT
+         */
+        mode: string;
+        /**
+         * Required. List of resource groups for the policy. For a particular VM, resource groups are evaluated in the order specified and the first resource group that is applicable is selected and the rest are ignored. If none of the resource groups are applicable for a VM, the VM is considered to be non-compliant w.r.t this policy. This behavior can be toggled by the flag `allowNoResourceGroupMatch`
+         */
+        resourceGroups: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroup[];
+    }
+
+    export interface OsPolicyAssignmentOsPolicyResourceGroup {
+        /**
+         * List of inventory filters for the resource group. The resources in this resource group are applied to the target VM if it satisfies at least one of the following inventory filters. For example, to apply this resource group to VMs running either `RHEL` or `CentOS` operating systems, specify 2 items for the list with following values: inventory_filters[0].os_short_name='rhel' and inventory_filters[1].os_short_name='centos' If the list is empty, this resource group will be applied to the target VM unconditionally.
+         */
+        inventoryFilters?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter[];
+        /**
+         * Required. List of resources configured for this resource group. The resources are executed in the exact order specified here.
+         */
+        resources: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResource[];
+    }
+
+    export interface OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter {
+        /**
+         * Required. The OS short name
+         */
+        osShortName: string;
+        /**
+         * The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions.
+         */
+        osVersion?: string;
+    }
+
+    export interface OsPolicyAssignmentOsPolicyResourceGroupResource {
+        /**
+         * Exec resource
+         */
+        exec?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExec;
+        /**
+         * Required. A deb package.
+         */
+        file?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceFile;
+        /**
+         * Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+         */
+        id: string;
+        /**
+         * Package resource
+         */
+        pkg?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkg;
+        /**
+         * Package repository resource
+         */
+        repository?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepository;
+    }
+
+    export interface OsPolicyAssignmentOsPolicyResourceGroupResourceExec {
+        /**
+         * Required. What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate.
+         */
+        enforce?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce;
+        /**
+         * Required. What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate.
+         */
+        validate: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate;
+    }
+
+    export interface OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce {
+        /**
+         * Optional arguments to pass to the source during execution.
+         */
+        args?: string[];
+        /**
+         * Required. A deb package.
+         */
+        file?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile;
+        /**
+         * Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
+         */
+        interpreter: string;
+        /**
+         * Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
+         */
+        outputFilePath?: string;
+        /**
+         * An inline script. The size of the script is limited to 1024 characters.
+         */
+        script?: string;
+    }
+
+    export interface OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile {
+        /**
+         * Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+         */
+        allowInsecure?: boolean;
+        /**
+         * A Cloud Storage object.
+         */
+        gcs?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs;
+        /**
+         * A local path within the VM to use.
+         */
+        localPath?: string;
+        /**
+         * A generic remote file.
+         */
+        remote?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote;
+    }
+
+    export interface OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs {
+        /**
+         * Required. Bucket of the Cloud Storage object.
+         */
+        bucket: string;
+        /**
+         * Generation number of the Cloud Storage object.
+         */
+        generation?: number;
+        /**
+         * Required. Name of the Cloud Storage object.
+         */
+        object: string;
+    }
+
+    export interface OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote {
+        /**
+         * SHA256 checksum of the remote file.
+         */
+        sha256Checksum?: string;
+        /**
+         * Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+         */
+        uri: string;
+    }
+
+    export interface OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate {
+        /**
+         * Optional arguments to pass to the source during execution.
+         */
+        args?: string[];
+        /**
+         * Required. A deb package.
+         */
+        file?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile;
+        /**
+         * Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
+         */
+        interpreter: string;
+        /**
+         * Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
+         */
+        outputFilePath?: string;
+        /**
+         * An inline script. The size of the script is limited to 1024 characters.
+         */
+        script?: string;
+    }
+
+    export interface OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile {
+        /**
+         * Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+         */
+        allowInsecure?: boolean;
+        /**
+         * A Cloud Storage object.
+         */
+        gcs?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs;
+        /**
+         * A local path within the VM to use.
+         */
+        localPath?: string;
+        /**
+         * A generic remote file.
+         */
+        remote?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote;
+    }
+
+    export interface OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs {
+        /**
+         * Required. Bucket of the Cloud Storage object.
+         */
+        bucket: string;
+        /**
+         * Generation number of the Cloud Storage object.
+         */
+        generation?: number;
+        /**
+         * Required. Name of the Cloud Storage object.
+         */
+        object: string;
+    }
+
+    export interface OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote {
+        /**
+         * SHA256 checksum of the remote file.
+         */
+        sha256Checksum?: string;
+        /**
+         * Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+         */
+        uri: string;
+    }
+
+    export interface OsPolicyAssignmentOsPolicyResourceGroupResourceFile {
+        /**
+         * A a file with this content. The size of the content is limited to 1024 characters.
+         */
+        content?: string;
+        /**
+         * Required. A deb package.
+         */
+        file?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile;
+        /**
+         * Required. The absolute path of the file within the VM.
+         */
+        path: string;
+        /**
+         * -
+         * Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
+         */
+        permissions: string;
+        /**
+         * Required. Desired state of the file. Possible values: OS_POLICY_COMPLIANCE_STATE_UNSPECIFIED, COMPLIANT, NON_COMPLIANT, UNKNOWN, NO_OS_POLICIES_APPLICABLE
+         */
+        state: string;
+    }
+
+    export interface OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile {
+        /**
+         * Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+         */
+        allowInsecure?: boolean;
+        /**
+         * A Cloud Storage object.
+         */
+        gcs?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs;
+        /**
+         * A local path within the VM to use.
+         */
+        localPath?: string;
+        /**
+         * A generic remote file.
+         */
+        remote?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote;
+    }
+
+    export interface OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs {
+        /**
+         * Required. Bucket of the Cloud Storage object.
+         */
+        bucket: string;
+        /**
+         * Generation number of the Cloud Storage object.
+         */
+        generation?: number;
+        /**
+         * Required. Name of the Cloud Storage object.
+         */
+        object: string;
+    }
+
+    export interface OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote {
+        /**
+         * SHA256 checksum of the remote file.
+         */
+        sha256Checksum?: string;
+        /**
+         * Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+         */
+        uri: string;
+    }
+
+    export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkg {
+        /**
+         * An Apt Repository.
+         */
+        apt?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt;
+        /**
+         * A deb package file.
+         */
+        deb?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb;
+        /**
+         * Required. The desired state the agent should maintain for this package. Possible values: DESIRED_STATE_UNSPECIFIED, INSTALLED, REMOVED
+         */
+        desiredState: string;
+        /**
+         * A package managed by GooGet.
+         */
+        googet?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget;
+        /**
+         * An MSI package.
+         */
+        msi?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi;
+        /**
+         * An rpm package file.
+         */
+        rpm?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm;
+        /**
+         * A Yum Repository.
+         */
+        yum?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum;
+        /**
+         * A Zypper Repository.
+         */
+        zypper?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper;
+    }
+
+    export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt {
+        /**
+         * Required. The name of the repository.
+         */
+        name: string;
+    }
+
+    export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb {
+        /**
+         * Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
+         */
+        pullDeps?: boolean;
+        /**
+         * Required. A deb package.
+         */
+        source: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource;
+    }
+
+    export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource {
+        /**
+         * Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+         */
+        allowInsecure?: boolean;
+        /**
+         * A Cloud Storage object.
+         */
+        gcs?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs;
+        /**
+         * A local path within the VM to use.
+         */
+        localPath?: string;
+        /**
+         * A generic remote file.
+         */
+        remote?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote;
+    }
+
+    export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs {
+        /**
+         * Required. Bucket of the Cloud Storage object.
+         */
+        bucket: string;
+        /**
+         * Generation number of the Cloud Storage object.
+         */
+        generation?: number;
+        /**
+         * Required. Name of the Cloud Storage object.
+         */
+        object: string;
+    }
+
+    export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote {
+        /**
+         * SHA256 checksum of the remote file.
+         */
+        sha256Checksum?: string;
+        /**
+         * Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+         */
+        uri: string;
+    }
+
+    export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget {
+        /**
+         * Required. The name of the repository.
+         */
+        name: string;
+    }
+
+    export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi {
+        /**
+         * Additional properties to use during installation. This should be in the format of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`.
+         */
+        properties?: string[];
+        /**
+         * Required. A deb package.
+         */
+        source: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource;
+    }
+
+    export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource {
+        /**
+         * Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+         */
+        allowInsecure?: boolean;
+        /**
+         * A Cloud Storage object.
+         */
+        gcs?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs;
+        /**
+         * A local path within the VM to use.
+         */
+        localPath?: string;
+        /**
+         * A generic remote file.
+         */
+        remote?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote;
+    }
+
+    export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs {
+        /**
+         * Required. Bucket of the Cloud Storage object.
+         */
+        bucket: string;
+        /**
+         * Generation number of the Cloud Storage object.
+         */
+        generation?: number;
+        /**
+         * Required. Name of the Cloud Storage object.
+         */
+        object: string;
+    }
+
+    export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote {
+        /**
+         * SHA256 checksum of the remote file.
+         */
+        sha256Checksum?: string;
+        /**
+         * Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+         */
+        uri: string;
+    }
+
+    export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm {
+        /**
+         * Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
+         */
+        pullDeps?: boolean;
+        /**
+         * Required. A deb package.
+         */
+        source: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource;
+    }
+
+    export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource {
+        /**
+         * Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+         */
+        allowInsecure?: boolean;
+        /**
+         * A Cloud Storage object.
+         */
+        gcs?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs;
+        /**
+         * A local path within the VM to use.
+         */
+        localPath?: string;
+        /**
+         * A generic remote file.
+         */
+        remote?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote;
+    }
+
+    export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs {
+        /**
+         * Required. Bucket of the Cloud Storage object.
+         */
+        bucket: string;
+        /**
+         * Generation number of the Cloud Storage object.
+         */
+        generation?: number;
+        /**
+         * Required. Name of the Cloud Storage object.
+         */
+        object: string;
+    }
+
+    export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote {
+        /**
+         * SHA256 checksum of the remote file.
+         */
+        sha256Checksum?: string;
+        /**
+         * Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+         */
+        uri: string;
+    }
+
+    export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum {
+        /**
+         * Required. The name of the repository.
+         */
+        name: string;
+    }
+
+    export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper {
+        /**
+         * Required. The name of the repository.
+         */
+        name: string;
+    }
+
+    export interface OsPolicyAssignmentOsPolicyResourceGroupResourceRepository {
+        /**
+         * An Apt Repository.
+         */
+        apt?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt;
+        /**
+         * A Goo Repository.
+         */
+        goo?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo;
+        /**
+         * A Yum Repository.
+         */
+        yum?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum;
+        /**
+         * A Zypper Repository.
+         */
+        zypper?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper;
+    }
+
+    export interface OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt {
+        /**
+         * Required. Type of archive files in this repository. Possible values: ARCHIVE_TYPE_UNSPECIFIED, DEB, DEB_SRC
+         */
+        archiveType: string;
+        /**
+         * Required. List of components for this repository. Must contain at least one item.
+         */
+        components: string[];
+        /**
+         * Required. Distribution of this repository.
+         */
+        distribution: string;
+        /**
+         * URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
+         */
+        gpgKey?: string;
+        /**
+         * Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+         */
+        uri: string;
+    }
+
+    export interface OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo {
+        /**
+         * Required. The name of the repository.
+         */
+        name: string;
+        /**
+         * Required. The url of the repository.
+         */
+        url: string;
+    }
+
+    export interface OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum {
+        /**
+         * Required. The location of the repository directory.
+         */
+        baseUrl: string;
+        /**
+         * The display name of the repository.
+         */
+        displayName?: string;
+        /**
+         * URIs of GPG keys.
+         */
+        gpgKeys?: string[];
+        /**
+         * Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+         */
+        id: string;
+    }
+
+    export interface OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper {
+        /**
+         * Required. The location of the repository directory.
+         */
+        baseUrl: string;
+        /**
+         * The display name of the repository.
+         */
+        displayName?: string;
+        /**
+         * URIs of GPG keys.
+         */
+        gpgKeys?: string[];
+        /**
+         * Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+         */
+        id: string;
+    }
+
+    export interface OsPolicyAssignmentRollout {
+        /**
+         * Required. The maximum number (or percentage) of VMs per zone to disrupt at any given moment.
+         */
+        disruptionBudget: outputs.osconfig.OsPolicyAssignmentRolloutDisruptionBudget;
+        /**
+         * Required. This determines the minimum duration of time to wait after the configuration changes are applied through the current rollout. A VM continues to count towards the `disruptionBudget` at least until this duration of time has passed after configuration changes are applied.
+         */
+        minWaitDuration: string;
+    }
+
+    export interface OsPolicyAssignmentRolloutDisruptionBudget {
+        /**
+         * Specifies a fixed value.
+         */
+        fixed?: number;
+        /**
+         * Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+         */
+        percent?: number;
     }
 
     export interface PatchDeploymentInstanceFilter {
@@ -28413,6 +29139,10 @@ export namespace sql {
     }
 
     export interface DatabaseInstanceSettingsIpConfiguration {
+        /**
+         * The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+         */
+        allocatedIpRange?: string;
         authorizedNetworks?: outputs.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork[];
         /**
          * Whether this Cloud SQL instance should be assigned
@@ -28597,6 +29327,7 @@ export namespace sql {
     }
 
     export interface GetDatabaseInstanceSettingIpConfiguration {
+        allocatedIpRange: string;
         authorizedNetworks: outputs.sql.GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork[];
         ipv4Enabled: boolean;
         privateNetwork: string;

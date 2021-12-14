@@ -148,7 +148,7 @@ type DataTransferConfig struct {
 	// to a different credential configuration in the config will require an apply to update state.
 	// Structure is documented below.
 	SensitiveParams DataTransferConfigSensitiveParamsPtrOutput `pulumi:"sensitiveParams"`
-	// Optional service account name. If this field is set, transfer config will
+	// Service account email. If this field is set, transfer config will
 	// be created with this service account credentials. It requires that
 	// requesting user calling this API has permissions to act as this service account.
 	ServiceAccountName pulumi.StringPtrOutput `pulumi:"serviceAccountName"`
@@ -245,7 +245,7 @@ type dataTransferConfigState struct {
 	// to a different credential configuration in the config will require an apply to update state.
 	// Structure is documented below.
 	SensitiveParams *DataTransferConfigSensitiveParams `pulumi:"sensitiveParams"`
-	// Optional service account name. If this field is set, transfer config will
+	// Service account email. If this field is set, transfer config will
 	// be created with this service account credentials. It requires that
 	// requesting user calling this API has permissions to act as this service account.
 	ServiceAccountName *string `pulumi:"serviceAccountName"`
@@ -305,7 +305,7 @@ type DataTransferConfigState struct {
 	// to a different credential configuration in the config will require an apply to update state.
 	// Structure is documented below.
 	SensitiveParams DataTransferConfigSensitiveParamsPtrInput
-	// Optional service account name. If this field is set, transfer config will
+	// Service account email. If this field is set, transfer config will
 	// be created with this service account credentials. It requires that
 	// requesting user calling this API has permissions to act as this service account.
 	ServiceAccountName pulumi.StringPtrInput
@@ -365,7 +365,7 @@ type dataTransferConfigArgs struct {
 	// to a different credential configuration in the config will require an apply to update state.
 	// Structure is documented below.
 	SensitiveParams *DataTransferConfigSensitiveParams `pulumi:"sensitiveParams"`
-	// Optional service account name. If this field is set, transfer config will
+	// Service account email. If this field is set, transfer config will
 	// be created with this service account credentials. It requires that
 	// requesting user calling this API has permissions to act as this service account.
 	ServiceAccountName *string `pulumi:"serviceAccountName"`
@@ -422,7 +422,7 @@ type DataTransferConfigArgs struct {
 	// to a different credential configuration in the config will require an apply to update state.
 	// Structure is documented below.
 	SensitiveParams DataTransferConfigSensitiveParamsPtrInput
-	// Optional service account name. If this field is set, transfer config will
+	// Service account email. If this field is set, transfer config will
 	// be created with this service account credentials. It requires that
 	// requesting user calling this API has permissions to act as this service account.
 	ServiceAccountName pulumi.StringPtrInput

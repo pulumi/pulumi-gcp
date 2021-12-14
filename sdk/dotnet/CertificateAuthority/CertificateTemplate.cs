@@ -41,6 +41,10 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///                     Title = "Sample expression",
     ///                 },
     ///             },
+    ///             Labels = 
+    ///             {
+    ///                 { "label-two", "value-two" },
+    ///             },
     ///             Location = "us-west1",
     ///             PassthroughExtensions = new Gcp.CertificateAuthority.Inputs.CertificateTemplatePassthroughExtensionsArgs
     ///             {

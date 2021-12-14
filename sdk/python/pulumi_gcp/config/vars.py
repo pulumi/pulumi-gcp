@@ -328,6 +328,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('pubsubLiteCustomEndpoint')
 
     @property
+    def recaptcha_enterprise_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('recaptchaEnterpriseCustomEndpoint')
+
+    @property
     def redis_custom_endpoint(self) -> Optional[str]:
         return __config__.get('redisCustomEndpoint')
 

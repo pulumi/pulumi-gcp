@@ -92,6 +92,7 @@ type Provider struct {
 	Project                            pulumi.StringPtrOutput `pulumi:"project"`
 	PubsubCustomEndpoint               pulumi.StringPtrOutput `pulumi:"pubsubCustomEndpoint"`
 	PubsubLiteCustomEndpoint           pulumi.StringPtrOutput `pulumi:"pubsubLiteCustomEndpoint"`
+	RecaptchaEnterpriseCustomEndpoint  pulumi.StringPtrOutput `pulumi:"recaptchaEnterpriseCustomEndpoint"`
 	RedisCustomEndpoint                pulumi.StringPtrOutput `pulumi:"redisCustomEndpoint"`
 	Region                             pulumi.StringPtrOutput `pulumi:"region"`
 	RequestReason                      pulumi.StringPtrOutput `pulumi:"requestReason"`
@@ -223,6 +224,7 @@ type providerArgs struct {
 	Project                            *string           `pulumi:"project"`
 	PubsubCustomEndpoint               *string           `pulumi:"pubsubCustomEndpoint"`
 	PubsubLiteCustomEndpoint           *string           `pulumi:"pubsubLiteCustomEndpoint"`
+	RecaptchaEnterpriseCustomEndpoint  *string           `pulumi:"recaptchaEnterpriseCustomEndpoint"`
 	RedisCustomEndpoint                *string           `pulumi:"redisCustomEndpoint"`
 	Region                             *string           `pulumi:"region"`
 	RequestReason                      *string           `pulumi:"requestReason"`
@@ -333,6 +335,7 @@ type ProviderArgs struct {
 	Project                            pulumi.StringPtrInput
 	PubsubCustomEndpoint               pulumi.StringPtrInput
 	PubsubLiteCustomEndpoint           pulumi.StringPtrInput
+	RecaptchaEnterpriseCustomEndpoint  pulumi.StringPtrInput
 	RedisCustomEndpoint                pulumi.StringPtrInput
 	Region                             pulumi.StringPtrInput
 	RequestReason                      pulumi.StringPtrInput

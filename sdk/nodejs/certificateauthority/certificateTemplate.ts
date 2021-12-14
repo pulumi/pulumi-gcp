@@ -30,6 +30,9 @@ import * as utilities from "../utilities";
  *             title: "Sample expression",
  *         },
  *     },
+ *     labels: {
+ *         "label-two": "value-two",
+ *     },
  *     location: "us-west1",
  *     passthroughExtensions: {
  *         additionalExtensions: [{

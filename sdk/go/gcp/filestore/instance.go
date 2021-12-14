@@ -39,6 +39,7 @@ import (
 // 				CapacityGb: pulumi.Int(2660),
 // 				Name:       pulumi.String("share1"),
 // 			},
+// 			Location: pulumi.String("us-central1-b"),
 // 			Networks: filestore.InstanceNetworkArray{
 // 				&filestore.InstanceNetworkArgs{
 // 					Modes: pulumi.StringArray{
@@ -48,7 +49,6 @@ import (
 // 				},
 // 			},
 // 			Tier: pulumi.String("PREMIUM"),
-// 			Zone: pulumi.String("us-central1-b"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -70,8 +70,8 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := filestore.NewInstance(ctx, "instance", &filestore.InstanceArgs{
-// 			Zone: pulumi.String("us-central1-b"),
-// 			Tier: pulumi.String("BASIC_SSD"),
+// 			Location: pulumi.String("us-central1-b"),
+// 			Tier:     pulumi.String("BASIC_SSD"),
 // 			FileShares: &filestore.InstanceFileSharesArgs{
 // 				CapacityGb: pulumi.Int(2660),
 // 				Name:       pulumi.String("share1"),
@@ -117,19 +117,15 @@ import (
 // Instance can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:filestore/instance:Instance default projects/{{project}}/locations/{{zone}}/instances/{{name}}
+//  $ pulumi import gcp:filestore/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{name}}
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:filestore/instance:Instance default {{project}}/{{zone}}/{{name}}
+//  $ pulumi import gcp:filestore/instance:Instance default {{project}}/{{location}}/{{name}}
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:filestore/instance:Instance default {{zone}}/{{name}}
-// ```
-//
-// ```sh
-//  $ pulumi import gcp:filestore/instance:Instance default {{name}}
+//  $ pulumi import gcp:filestore/instance:Instance default {{location}}/{{name}}
 // ```
 type Instance struct {
 	pulumi.CustomResourceState
@@ -146,6 +142,8 @@ type Instance struct {
 	FileShares InstanceFileSharesOutput `pulumi:"fileShares"`
 	// Resource labels to represent user-provided metadata.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
+	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the fileshare (16 characters or less)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// VPC networks to which the instance is connected. For this version,
@@ -156,9 +154,13 @@ type Instance struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The service tier of the instance.
-	// Possible values are `TIER_UNSPECIFIED`, `STANDARD`, `PREMIUM`, `BASIC_HDD`, `BASIC_SSD`, and `HIGH_SCALE_SSD`.
+	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE (beta only)
 	Tier pulumi.StringOutput `pulumi:"tier"`
+	// -
+	// (Optional, Deprecated)
 	// The name of the Filestore zone of the instance.
+	//
+	// Deprecated: Deprecated in favor of location.
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
@@ -177,9 +179,6 @@ func NewInstance(ctx *pulumi.Context,
 	}
 	if args.Tier == nil {
 		return nil, errors.New("invalid value for required argument 'Tier'")
-	}
-	if args.Zone == nil {
-		return nil, errors.New("invalid value for required argument 'Zone'")
 	}
 	var resource Instance
 	err := ctx.RegisterResource("gcp:filestore/instance:Instance", name, args, &resource, opts...)
@@ -215,6 +214,8 @@ type instanceState struct {
 	FileShares *InstanceFileShares `pulumi:"fileShares"`
 	// Resource labels to represent user-provided metadata.
 	Labels map[string]string `pulumi:"labels"`
+	// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
+	Location *string `pulumi:"location"`
 	// The name of the fileshare (16 characters or less)
 	Name *string `pulumi:"name"`
 	// VPC networks to which the instance is connected. For this version,
@@ -225,9 +226,13 @@ type instanceState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The service tier of the instance.
-	// Possible values are `TIER_UNSPECIFIED`, `STANDARD`, `PREMIUM`, `BASIC_HDD`, `BASIC_SSD`, and `HIGH_SCALE_SSD`.
+	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE (beta only)
 	Tier *string `pulumi:"tier"`
+	// -
+	// (Optional, Deprecated)
 	// The name of the Filestore zone of the instance.
+	//
+	// Deprecated: Deprecated in favor of location.
 	Zone *string `pulumi:"zone"`
 }
 
@@ -244,6 +249,8 @@ type InstanceState struct {
 	FileShares InstanceFileSharesPtrInput
 	// Resource labels to represent user-provided metadata.
 	Labels pulumi.StringMapInput
+	// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
+	Location pulumi.StringPtrInput
 	// The name of the fileshare (16 characters or less)
 	Name pulumi.StringPtrInput
 	// VPC networks to which the instance is connected. For this version,
@@ -254,9 +261,13 @@ type InstanceState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The service tier of the instance.
-	// Possible values are `TIER_UNSPECIFIED`, `STANDARD`, `PREMIUM`, `BASIC_HDD`, `BASIC_SSD`, and `HIGH_SCALE_SSD`.
+	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE (beta only)
 	Tier pulumi.StringPtrInput
+	// -
+	// (Optional, Deprecated)
 	// The name of the Filestore zone of the instance.
+	//
+	// Deprecated: Deprecated in favor of location.
 	Zone pulumi.StringPtrInput
 }
 
@@ -273,6 +284,8 @@ type instanceArgs struct {
 	FileShares InstanceFileShares `pulumi:"fileShares"`
 	// Resource labels to represent user-provided metadata.
 	Labels map[string]string `pulumi:"labels"`
+	// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
+	Location *string `pulumi:"location"`
 	// The name of the fileshare (16 characters or less)
 	Name *string `pulumi:"name"`
 	// VPC networks to which the instance is connected. For this version,
@@ -283,10 +296,14 @@ type instanceArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The service tier of the instance.
-	// Possible values are `TIER_UNSPECIFIED`, `STANDARD`, `PREMIUM`, `BASIC_HDD`, `BASIC_SSD`, and `HIGH_SCALE_SSD`.
+	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE (beta only)
 	Tier string `pulumi:"tier"`
+	// -
+	// (Optional, Deprecated)
 	// The name of the Filestore zone of the instance.
-	Zone string `pulumi:"zone"`
+	//
+	// Deprecated: Deprecated in favor of location.
+	Zone *string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a Instance resource.
@@ -299,6 +316,8 @@ type InstanceArgs struct {
 	FileShares InstanceFileSharesInput
 	// Resource labels to represent user-provided metadata.
 	Labels pulumi.StringMapInput
+	// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
+	Location pulumi.StringPtrInput
 	// The name of the fileshare (16 characters or less)
 	Name pulumi.StringPtrInput
 	// VPC networks to which the instance is connected. For this version,
@@ -309,10 +328,14 @@ type InstanceArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The service tier of the instance.
-	// Possible values are `TIER_UNSPECIFIED`, `STANDARD`, `PREMIUM`, `BASIC_HDD`, `BASIC_SSD`, and `HIGH_SCALE_SSD`.
+	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE (beta only)
 	Tier pulumi.StringInput
+	// -
+	// (Optional, Deprecated)
 	// The name of the Filestore zone of the instance.
-	Zone pulumi.StringInput
+	//
+	// Deprecated: Deprecated in favor of location.
+	Zone pulumi.StringPtrInput
 }
 
 func (InstanceArgs) ElementType() reflect.Type {

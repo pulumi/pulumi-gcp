@@ -28,12 +28,12 @@ import * as utilities from "../utilities";
  *         capacityGb: 2660,
  *         name: "share1",
  *     },
+ *     location: "us-central1-b",
  *     networks: [{
  *         modes: ["MODE_IPV4"],
  *         network: "default",
  *     }],
  *     tier: "PREMIUM",
- *     zone: "us-central1-b",
  * });
  * ```
  * ### Filestore Instance Full
@@ -43,7 +43,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const instance = new gcp.filestore.Instance("instance", {
- *     zone: "us-central1-b",
+ *     location: "us-central1-b",
  *     tier: "BASIC_SSD",
  *     fileShares: {
  *         capacityGb: 2660,
@@ -78,19 +78,15 @@ import * as utilities from "../utilities";
  * Instance can be imported using any of these accepted formats
  *
  * ```sh
- *  $ pulumi import gcp:filestore/instance:Instance default projects/{{project}}/locations/{{zone}}/instances/{{name}}
+ *  $ pulumi import gcp:filestore/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:filestore/instance:Instance default {{project}}/{{zone}}/{{name}}
+ *  $ pulumi import gcp:filestore/instance:Instance default {{project}}/{{location}}/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:filestore/instance:Instance default {{zone}}/{{name}}
- * ```
- *
- * ```sh
- *  $ pulumi import gcp:filestore/instance:Instance default {{name}}
+ *  $ pulumi import gcp:filestore/instance:Instance default {{location}}/{{name}}
  * ```
  */
 export class Instance extends pulumi.CustomResource {
@@ -144,6 +140,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
+     */
+    public readonly location!: pulumi.Output<string>;
+    /**
      * The name of the fileshare (16 characters or less)
      */
     public readonly name!: pulumi.Output<string>;
@@ -160,11 +160,15 @@ export class Instance extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * The service tier of the instance.
-     * Possible values are `TIER_UNSPECIFIED`, `STANDARD`, `PREMIUM`, `BASIC_HDD`, `BASIC_SSD`, and `HIGH_SCALE_SSD`.
+     * Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE (beta only)
      */
     public readonly tier!: pulumi.Output<string>;
     /**
+     * -
+     * (Optional, Deprecated)
      * The name of the Filestore zone of the instance.
+     *
+     * @deprecated Deprecated in favor of location.
      */
     public readonly zone!: pulumi.Output<string>;
 
@@ -186,6 +190,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["etag"] = state ? state.etag : undefined;
             inputs["fileShares"] = state ? state.fileShares : undefined;
             inputs["labels"] = state ? state.labels : undefined;
+            inputs["location"] = state ? state.location : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["networks"] = state ? state.networks : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -202,12 +207,10 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.tier === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tier'");
             }
-            if ((!args || args.zone === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'zone'");
-            }
             inputs["description"] = args ? args.description : undefined;
             inputs["fileShares"] = args ? args.fileShares : undefined;
             inputs["labels"] = args ? args.labels : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["networks"] = args ? args.networks : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -250,6 +253,10 @@ export interface InstanceState {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
+     */
+    location?: pulumi.Input<string>;
+    /**
      * The name of the fileshare (16 characters or less)
      */
     name?: pulumi.Input<string>;
@@ -266,11 +273,15 @@ export interface InstanceState {
     project?: pulumi.Input<string>;
     /**
      * The service tier of the instance.
-     * Possible values are `TIER_UNSPECIFIED`, `STANDARD`, `PREMIUM`, `BASIC_HDD`, `BASIC_SSD`, and `HIGH_SCALE_SSD`.
+     * Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE (beta only)
      */
     tier?: pulumi.Input<string>;
     /**
+     * -
+     * (Optional, Deprecated)
      * The name of the Filestore zone of the instance.
+     *
+     * @deprecated Deprecated in favor of location.
      */
     zone?: pulumi.Input<string>;
 }
@@ -294,6 +305,10 @@ export interface InstanceArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
+     */
+    location?: pulumi.Input<string>;
+    /**
      * The name of the fileshare (16 characters or less)
      */
     name?: pulumi.Input<string>;
@@ -310,11 +325,15 @@ export interface InstanceArgs {
     project?: pulumi.Input<string>;
     /**
      * The service tier of the instance.
-     * Possible values are `TIER_UNSPECIFIED`, `STANDARD`, `PREMIUM`, `BASIC_HDD`, `BASIC_SSD`, and `HIGH_SCALE_SSD`.
+     * Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE (beta only)
      */
     tier: pulumi.Input<string>;
     /**
+     * -
+     * (Optional, Deprecated)
      * The name of the Filestore zone of the instance.
+     *
+     * @deprecated Deprecated in favor of location.
      */
-    zone: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }

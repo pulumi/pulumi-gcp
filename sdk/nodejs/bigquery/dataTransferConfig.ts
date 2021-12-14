@@ -173,7 +173,7 @@ export class DataTransferConfig extends pulumi.CustomResource {
      */
     public readonly sensitiveParams!: pulumi.Output<outputs.bigquery.DataTransferConfigSensitiveParams | undefined>;
     /**
-     * Optional service account name. If this field is set, transfer config will
+     * Service account email. If this field is set, transfer config will
      * be created with this service account credentials. It requires that
      * requesting user calling this API has permissions to act as this service account.
      */
@@ -327,7 +327,7 @@ export interface DataTransferConfigState {
      */
     sensitiveParams?: pulumi.Input<inputs.bigquery.DataTransferConfigSensitiveParams>;
     /**
-     * Optional service account name. If this field is set, transfer config will
+     * Service account email. If this field is set, transfer config will
      * be created with this service account credentials. It requires that
      * requesting user calling this API has permissions to act as this service account.
      */
@@ -414,7 +414,7 @@ export interface DataTransferConfigArgs {
      */
     sensitiveParams?: pulumi.Input<inputs.bigquery.DataTransferConfigSensitiveParams>;
     /**
-     * Optional service account name. If this field is set, transfer config will
+     * Service account email. If this field is set, transfer config will
      * be created with this service account credentials. It requires that
      * requesting user calling this API has permissions to act as this service account.
      */

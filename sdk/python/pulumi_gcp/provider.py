@@ -92,6 +92,7 @@ class ProviderArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  pubsub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  pubsub_lite_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 recaptcha_enterprise_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  redis_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_reason: Optional[pulumi.Input[str]] = None,
@@ -281,6 +282,8 @@ class ProviderArgs:
             pulumi.set(__self__, "pubsub_custom_endpoint", pubsub_custom_endpoint)
         if pubsub_lite_custom_endpoint is not None:
             pulumi.set(__self__, "pubsub_lite_custom_endpoint", pubsub_lite_custom_endpoint)
+        if recaptcha_enterprise_custom_endpoint is not None:
+            pulumi.set(__self__, "recaptcha_enterprise_custom_endpoint", recaptcha_enterprise_custom_endpoint)
         if redis_custom_endpoint is not None:
             pulumi.set(__self__, "redis_custom_endpoint", redis_custom_endpoint)
         if region is None:
@@ -1045,6 +1048,15 @@ class ProviderArgs:
         pulumi.set(self, "pubsub_lite_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="recaptchaEnterpriseCustomEndpoint")
+    def recaptcha_enterprise_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "recaptcha_enterprise_custom_endpoint")
+
+    @recaptcha_enterprise_custom_endpoint.setter
+    def recaptcha_enterprise_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "recaptcha_enterprise_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="redisCustomEndpoint")
     def redis_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "redis_custom_endpoint")
@@ -1380,6 +1392,7 @@ class Provider(pulumi.ProviderResource):
                  project: Optional[pulumi.Input[str]] = None,
                  pubsub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  pubsub_lite_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 recaptcha_enterprise_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  redis_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_reason: Optional[pulumi.Input[str]] = None,
@@ -1523,6 +1536,7 @@ class Provider(pulumi.ProviderResource):
                  project: Optional[pulumi.Input[str]] = None,
                  pubsub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  pubsub_lite_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 recaptcha_enterprise_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  redis_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_reason: Optional[pulumi.Input[str]] = None,
@@ -1643,6 +1657,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["pubsub_custom_endpoint"] = pubsub_custom_endpoint
             __props__.__dict__["pubsub_lite_custom_endpoint"] = pubsub_lite_custom_endpoint
+            __props__.__dict__["recaptcha_enterprise_custom_endpoint"] = recaptcha_enterprise_custom_endpoint
             __props__.__dict__["redis_custom_endpoint"] = redis_custom_endpoint
             if region is None:
                 region = _utilities.get_env('GOOGLE_REGION', 'GCLOUD_REGION', 'CLOUDSDK_COMPUTE_REGION')
@@ -2055,6 +2070,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="pubsubLiteCustomEndpoint")
     def pubsub_lite_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "pubsub_lite_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="recaptchaEnterpriseCustomEndpoint")
+    def recaptcha_enterprise_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "recaptcha_enterprise_custom_endpoint")
 
     @property
     @pulumi.getter(name="redisCustomEndpoint")

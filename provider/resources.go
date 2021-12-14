@@ -1661,8 +1661,9 @@ func Provider() tfbridge.ProviderInfo {
 			"google_org_policy_policy": {Tok: gcpResource(gcpOrgPolicy, "Policy")},
 
 			// OS Config
-			"google_os_config_patch_deployment": {Tok: gcpResource(gcpOsConfig, "PatchDeployment")},
-			"google_os_config_guest_policies":   {Tok: gcpResource(gcpOsConfig, "GuestPolicies")},
+			"google_os_config_patch_deployment":     {Tok: gcpResource(gcpOsConfig, "PatchDeployment")},
+			"google_os_config_guest_policies":       {Tok: gcpResource(gcpOsConfig, "GuestPolicies")},
+			"google_os_config_os_policy_assignment": {Tok: gcpResource(gcpOsConfig, "OsPolicyAssignment")},
 
 			// Service Directory
 			"google_service_directory_endpoint":  {Tok: gcpResource(gcpServiceDirectory, "Endpoint")},
@@ -1855,6 +1856,24 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"google_notebooks_runtime": {Tok: gcpResource(gcpNotebooks, "Runtime")},
+			"google_notebooks_runtime_iam_binding": {
+				Tok: gcpResource(gcpNotebooks, "RuntimeIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "notebooks_runtime_iam.html.markdown",
+				},
+			},
+			"google_notebooks_runtime_iam_member": {
+				Tok: gcpResource(gcpNotebooks, "RuntimeIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "notebooks_runtime_iam.html.markdown",
+				},
+			},
+			"google_notebooks_runtime_iam_policy": {
+				Tok: gcpResource(gcpNotebooks, "RuntimeIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "notebooks_runtime_iam.html.markdown",
+				},
+			},
 
 			// CloudIdentity
 			"google_cloud_identity_group_membership": {Tok: gcpResource(gcpCloudIdentity, "GroupMembership")},
@@ -1897,6 +1916,24 @@ func Provider() tfbridge.ProviderInfo {
 			"google_apigee_environment":         {Tok: gcpResource(gcpApigee, "Environment")},
 			"google_apigee_instance_attachment": {Tok: gcpResource(gcpApigee, "InstanceAttachment")},
 			"google_apigee_envgroup_attachment": {Tok: gcpResource(gcpApigee, "EnvGroupAttachment")},
+			"google_apigee_environment_iam_binding": {
+				Tok: gcpResource(gcpApigee, "EnvironmentIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "apigee_environment_iam.html.markdown",
+				},
+			},
+			"google_apigee_environment_iam_member": {
+				Tok: gcpResource(gcpApigee, "EnvironmentIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "apigee_environment_iam.html.markdown",
+				},
+			},
+			"google_apigee_environment_iam_policy": {
+				Tok: gcpResource(gcpApigee, "EnvironmentIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "apigee_environment_iam.html.markdown",
+				},
+			},
 
 			// API Gateway
 			"google_api_gateway_api_config_iam_binding": {

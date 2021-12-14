@@ -38,6 +38,7 @@ namespace Pulumi.Gcp.Filestore
     ///                 CapacityGb = 2660,
     ///                 Name = "share1",
     ///             },
+    ///             Location = "us-central1-b",
     ///             Networks = 
     ///             {
     ///                 new Gcp.Filestore.Inputs.InstanceNetworkArgs
@@ -50,7 +51,6 @@ namespace Pulumi.Gcp.Filestore
     ///                 },
     ///             },
     ///             Tier = "PREMIUM",
-    ///             Zone = "us-central1-b",
     ///         });
     ///     }
     /// 
@@ -68,7 +68,7 @@ namespace Pulumi.Gcp.Filestore
     ///     {
     ///         var instance = new Gcp.Filestore.Instance("instance", new Gcp.Filestore.InstanceArgs
     ///         {
-    ///             Zone = "us-central1-b",
+    ///             Location = "us-central1-b",
     ///             Tier = "BASIC_SSD",
     ///             FileShares = new Gcp.Filestore.Inputs.InstanceFileSharesArgs
     ///             {
@@ -124,19 +124,15 @@ namespace Pulumi.Gcp.Filestore
     /// Instance can be imported using any of these accepted formats
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:filestore/instance:Instance default projects/{{project}}/locations/{{zone}}/instances/{{name}}
+    ///  $ pulumi import gcp:filestore/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:filestore/instance:Instance default {{project}}/{{zone}}/{{name}}
+    ///  $ pulumi import gcp:filestore/instance:Instance default {{project}}/{{location}}/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:filestore/instance:Instance default {{zone}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:filestore/instance:Instance default {{name}}
+    ///  $ pulumi import gcp:filestore/instance:Instance default {{location}}/{{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:filestore/instance:Instance")]
@@ -175,6 +171,12 @@ namespace Pulumi.Gcp.Filestore
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
+        /// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
+        /// </summary>
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the fileshare (16 characters or less)
         /// </summary>
         [Output("name")]
@@ -197,12 +199,14 @@ namespace Pulumi.Gcp.Filestore
 
         /// <summary>
         /// The service tier of the instance.
-        /// Possible values are `TIER_UNSPECIFIED`, `STANDARD`, `PREMIUM`, `BASIC_HDD`, `BASIC_SSD`, and `HIGH_SCALE_SSD`.
+        /// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE (beta only)
         /// </summary>
         [Output("tier")]
         public Output<string> Tier { get; private set; } = null!;
 
         /// <summary>
+        /// -
+        /// (Optional, Deprecated)
         /// The name of the Filestore zone of the instance.
         /// </summary>
         [Output("zone")]
@@ -281,6 +285,12 @@ namespace Pulumi.Gcp.Filestore
         }
 
         /// <summary>
+        /// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
+        /// </summary>
+        [Input("location")]
+        public Input<string>? Location { get; set; }
+
+        /// <summary>
         /// The name of the fileshare (16 characters or less)
         /// </summary>
         [Input("name")]
@@ -309,16 +319,18 @@ namespace Pulumi.Gcp.Filestore
 
         /// <summary>
         /// The service tier of the instance.
-        /// Possible values are `TIER_UNSPECIFIED`, `STANDARD`, `PREMIUM`, `BASIC_HDD`, `BASIC_SSD`, and `HIGH_SCALE_SSD`.
+        /// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE (beta only)
         /// </summary>
         [Input("tier", required: true)]
         public Input<string> Tier { get; set; } = null!;
 
         /// <summary>
+        /// -
+        /// (Optional, Deprecated)
         /// The name of the Filestore zone of the instance.
         /// </summary>
-        [Input("zone", required: true)]
-        public Input<string> Zone { get; set; } = null!;
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
 
         public InstanceArgs()
         {
@@ -366,6 +378,12 @@ namespace Pulumi.Gcp.Filestore
         }
 
         /// <summary>
+        /// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
+        /// </summary>
+        [Input("location")]
+        public Input<string>? Location { get; set; }
+
+        /// <summary>
         /// The name of the fileshare (16 characters or less)
         /// </summary>
         [Input("name")]
@@ -394,12 +412,14 @@ namespace Pulumi.Gcp.Filestore
 
         /// <summary>
         /// The service tier of the instance.
-        /// Possible values are `TIER_UNSPECIFIED`, `STANDARD`, `PREMIUM`, `BASIC_HDD`, `BASIC_SSD`, and `HIGH_SCALE_SSD`.
+        /// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE (beta only)
         /// </summary>
         [Input("tier")]
         public Input<string>? Tier { get; set; }
 
         /// <summary>
+        /// -
+        /// (Optional, Deprecated)
         /// The name of the Filestore zone of the instance.
         /// </summary>
         [Input("zone")]

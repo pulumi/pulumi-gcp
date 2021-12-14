@@ -250,12 +250,10 @@ type Subnetwork struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The purpose of the resource. This field can be either PRIVATE
-	// or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to
+	// The purpose of the resource. A subnetwork with purpose set to
 	// INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
-	// reserved for Internal HTTP(S) Load Balancing. If unspecified, the
-	// purpose defaults to PRIVATE.
-	// If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set `role`.
+	// reserved for Internal HTTP(S) Load Balancing.
+	// If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the `role` field.
 	Purpose pulumi.StringOutput `pulumi:"purpose"`
 	// The GCP region for this subnetwork.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -365,12 +363,10 @@ type subnetworkState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The purpose of the resource. This field can be either PRIVATE
-	// or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to
+	// The purpose of the resource. A subnetwork with purpose set to
 	// INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
-	// reserved for Internal HTTP(S) Load Balancing. If unspecified, the
-	// purpose defaults to PRIVATE.
-	// If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set `role`.
+	// reserved for Internal HTTP(S) Load Balancing.
+	// If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the `role` field.
 	Purpose *string `pulumi:"purpose"`
 	// The GCP region for this subnetwork.
 	Region *string `pulumi:"region"`
@@ -446,12 +442,10 @@ type SubnetworkState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The purpose of the resource. This field can be either PRIVATE
-	// or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to
+	// The purpose of the resource. A subnetwork with purpose set to
 	// INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
-	// reserved for Internal HTTP(S) Load Balancing. If unspecified, the
-	// purpose defaults to PRIVATE.
-	// If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set `role`.
+	// reserved for Internal HTTP(S) Load Balancing.
+	// If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the `role` field.
 	Purpose pulumi.StringPtrInput
 	// The GCP region for this subnetwork.
 	Region pulumi.StringPtrInput
@@ -519,12 +513,10 @@ type subnetworkArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The purpose of the resource. This field can be either PRIVATE
-	// or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to
+	// The purpose of the resource. A subnetwork with purpose set to
 	// INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
-	// reserved for Internal HTTP(S) Load Balancing. If unspecified, the
-	// purpose defaults to PRIVATE.
-	// If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set `role`.
+	// reserved for Internal HTTP(S) Load Balancing.
+	// If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the `role` field.
 	Purpose *string `pulumi:"purpose"`
 	// The GCP region for this subnetwork.
 	Region *string `pulumi:"region"`
@@ -587,12 +579,10 @@ type SubnetworkArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The purpose of the resource. This field can be either PRIVATE
-	// or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to
+	// The purpose of the resource. A subnetwork with purpose set to
 	// INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
-	// reserved for Internal HTTP(S) Load Balancing. If unspecified, the
-	// purpose defaults to PRIVATE.
-	// If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set `role`.
+	// reserved for Internal HTTP(S) Load Balancing.
+	// If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the `role` field.
 	Purpose pulumi.StringPtrInput
 	// The GCP region for this subnetwork.
 	Region pulumi.StringPtrInput

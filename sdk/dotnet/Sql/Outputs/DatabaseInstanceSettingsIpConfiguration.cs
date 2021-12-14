@@ -13,6 +13,10 @@ namespace Pulumi.Gcp.Sql.Outputs
     [OutputType]
     public sealed class DatabaseInstanceSettingsIpConfiguration
     {
+        /// <summary>
+        /// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+        /// </summary>
+        public readonly string? AllocatedIpRange;
         public readonly ImmutableArray<Outputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork> AuthorizedNetworks;
         /// <summary>
         /// Whether this Cloud SQL instance should be assigned
@@ -35,6 +39,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
         [OutputConstructor]
         private DatabaseInstanceSettingsIpConfiguration(
+            string? allocatedIpRange,
+
             ImmutableArray<Outputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork> authorizedNetworks,
 
             bool? ipv4Enabled,
@@ -43,6 +49,7 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             bool? requireSsl)
         {
+            AllocatedIpRange = allocatedIpRange;
             AuthorizedNetworks = authorizedNetworks;
             Ipv4Enabled = ipv4Enabled;
             PrivateNetwork = privateNetwork;

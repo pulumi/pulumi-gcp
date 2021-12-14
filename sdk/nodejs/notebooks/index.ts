@@ -12,6 +12,9 @@ export * from "./instanceIamMember";
 export * from "./instanceIamPolicy";
 export * from "./location";
 export * from "./runtime";
+export * from "./runtimeIamBinding";
+export * from "./runtimeIamMember";
+export * from "./runtimeIamPolicy";
 
 // Import resources to register:
 import { Environment } from "./environment";
@@ -21,6 +24,9 @@ import { InstanceIamMember } from "./instanceIamMember";
 import { InstanceIamPolicy } from "./instanceIamPolicy";
 import { Location } from "./location";
 import { Runtime } from "./runtime";
+import { RuntimeIamBinding } from "./runtimeIamBinding";
+import { RuntimeIamMember } from "./runtimeIamMember";
+import { RuntimeIamPolicy } from "./runtimeIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
@@ -40,6 +46,12 @@ const _module = {
                 return new Location(name, <any>undefined, { urn })
             case "gcp:notebooks/runtime:Runtime":
                 return new Runtime(name, <any>undefined, { urn })
+            case "gcp:notebooks/runtimeIamBinding:RuntimeIamBinding":
+                return new RuntimeIamBinding(name, <any>undefined, { urn })
+            case "gcp:notebooks/runtimeIamMember:RuntimeIamMember":
+                return new RuntimeIamMember(name, <any>undefined, { urn })
+            case "gcp:notebooks/runtimeIamPolicy:RuntimeIamPolicy":
+                return new RuntimeIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -52,3 +64,6 @@ pulumi.runtime.registerResourceModule("gcp", "notebooks/instanceIamMember", _mod
 pulumi.runtime.registerResourceModule("gcp", "notebooks/instanceIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "notebooks/location", _module)
 pulumi.runtime.registerResourceModule("gcp", "notebooks/runtime", _module)
+pulumi.runtime.registerResourceModule("gcp", "notebooks/runtimeIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "notebooks/runtimeIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "notebooks/runtimeIamPolicy", _module)

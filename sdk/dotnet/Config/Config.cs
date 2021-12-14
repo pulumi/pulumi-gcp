@@ -578,6 +578,13 @@ namespace Pulumi.Gcp
             set => _pubsubLiteCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _recaptchaEnterpriseCustomEndpoint = new __Value<string?>(() => __config.Get("recaptchaEnterpriseCustomEndpoint"));
+        public static string? RecaptchaEnterpriseCustomEndpoint
+        {
+            get => _recaptchaEnterpriseCustomEndpoint.Get();
+            set => _recaptchaEnterpriseCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _redisCustomEndpoint = new __Value<string?>(() => __config.Get("redisCustomEndpoint"));
         public static string? RedisCustomEndpoint
         {
