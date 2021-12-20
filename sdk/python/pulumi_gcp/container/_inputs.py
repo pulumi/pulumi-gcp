@@ -9,6 +9,43 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'AwsClusterAuthorizationArgs',
+    'AwsClusterAuthorizationAdminUserArgs',
+    'AwsClusterControlPlaneArgs',
+    'AwsClusterControlPlaneAwsServicesAuthenticationArgs',
+    'AwsClusterControlPlaneConfigEncryptionArgs',
+    'AwsClusterControlPlaneDatabaseEncryptionArgs',
+    'AwsClusterControlPlaneMainVolumeArgs',
+    'AwsClusterControlPlaneProxyConfigArgs',
+    'AwsClusterControlPlaneRootVolumeArgs',
+    'AwsClusterControlPlaneSshConfigArgs',
+    'AwsClusterFleetArgs',
+    'AwsClusterNetworkingArgs',
+    'AwsClusterWorkloadIdentityConfigArgs',
+    'AwsNodePoolAutoscalingArgs',
+    'AwsNodePoolConfigArgs',
+    'AwsNodePoolConfigConfigEncryptionArgs',
+    'AwsNodePoolConfigRootVolumeArgs',
+    'AwsNodePoolConfigSshConfigArgs',
+    'AwsNodePoolConfigTaintArgs',
+    'AwsNodePoolMaxPodsConstraintArgs',
+    'AzureClusterAuthorizationArgs',
+    'AzureClusterAuthorizationAdminUserArgs',
+    'AzureClusterControlPlaneArgs',
+    'AzureClusterControlPlaneDatabaseEncryptionArgs',
+    'AzureClusterControlPlaneMainVolumeArgs',
+    'AzureClusterControlPlaneProxyConfigArgs',
+    'AzureClusterControlPlaneReplicaPlacementArgs',
+    'AzureClusterControlPlaneRootVolumeArgs',
+    'AzureClusterControlPlaneSshConfigArgs',
+    'AzureClusterFleetArgs',
+    'AzureClusterNetworkingArgs',
+    'AzureClusterWorkloadIdentityConfigArgs',
+    'AzureNodePoolAutoscalingArgs',
+    'AzureNodePoolConfigArgs',
+    'AzureNodePoolConfigRootVolumeArgs',
+    'AzureNodePoolConfigSshConfigArgs',
+    'AzureNodePoolMaxPodsConstraintArgs',
     'ClusterAddonsConfigArgs',
     'ClusterAddonsConfigCloudrunConfigArgs',
     'ClusterAddonsConfigConfigConnectorConfigArgs',
@@ -90,6 +127,1731 @@ __all__ = [
     'NodePoolNodeConfigWorkloadMetadataConfigArgs',
     'NodePoolUpgradeSettingsArgs',
 ]
+
+@pulumi.input_type
+class AwsClusterAuthorizationArgs:
+    def __init__(__self__, *,
+                 admin_users: pulumi.Input[Sequence[pulumi.Input['AwsClusterAuthorizationAdminUserArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['AwsClusterAuthorizationAdminUserArgs']]] admin_users: Required. Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        """
+        pulumi.set(__self__, "admin_users", admin_users)
+
+    @property
+    @pulumi.getter(name="adminUsers")
+    def admin_users(self) -> pulumi.Input[Sequence[pulumi.Input['AwsClusterAuthorizationAdminUserArgs']]]:
+        """
+        Required. Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        """
+        return pulumi.get(self, "admin_users")
+
+    @admin_users.setter
+    def admin_users(self, value: pulumi.Input[Sequence[pulumi.Input['AwsClusterAuthorizationAdminUserArgs']]]):
+        pulumi.set(self, "admin_users", value)
+
+
+@pulumi.input_type
+class AwsClusterAuthorizationAdminUserArgs:
+    def __init__(__self__, *,
+                 username: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] username: Required. The name of the user, e.g. `my-gcp-id@gmail.com`.
+        """
+        pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def username(self) -> pulumi.Input[str]:
+        """
+        Required. The name of the user, e.g. `my-gcp-id@gmail.com`.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: pulumi.Input[str]):
+        pulumi.set(self, "username", value)
+
+
+@pulumi.input_type
+class AwsClusterControlPlaneArgs:
+    def __init__(__self__, *,
+                 aws_services_authentication: pulumi.Input['AwsClusterControlPlaneAwsServicesAuthenticationArgs'],
+                 config_encryption: pulumi.Input['AwsClusterControlPlaneConfigEncryptionArgs'],
+                 database_encryption: pulumi.Input['AwsClusterControlPlaneDatabaseEncryptionArgs'],
+                 iam_instance_profile: pulumi.Input[str],
+                 subnet_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 version: pulumi.Input[str],
+                 instance_type: Optional[pulumi.Input[str]] = None,
+                 main_volume: Optional[pulumi.Input['AwsClusterControlPlaneMainVolumeArgs']] = None,
+                 proxy_config: Optional[pulumi.Input['AwsClusterControlPlaneProxyConfigArgs']] = None,
+                 root_volume: Optional[pulumi.Input['AwsClusterControlPlaneRootVolumeArgs']] = None,
+                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ssh_config: Optional[pulumi.Input['AwsClusterControlPlaneSshConfigArgs']] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input['AwsClusterControlPlaneAwsServicesAuthenticationArgs'] aws_services_authentication: Required. Authentication configuration for management of AWS resources.
+        :param pulumi.Input['AwsClusterControlPlaneConfigEncryptionArgs'] config_encryption: Required. The ARN of the AWS KMS key used to encrypt cluster configuration.
+        :param pulumi.Input['AwsClusterControlPlaneDatabaseEncryptionArgs'] database_encryption: Required. The ARN of the AWS KMS key used to encrypt cluster secrets.
+        :param pulumi.Input[str] iam_instance_profile: Required. The name of the AWS IAM instance pofile to assign to each control plane replica.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: Required. The list of subnets where control plane replicas will run. A replica will be provisioned on each subnet and up to three values can be provided. Each subnet must be in a different AWS Availability Zone (AZ).
+        :param pulumi.Input[str] version: Required. The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling .
+        :param pulumi.Input[str] instance_type: Optional. The AWS instance type. When unspecified, it defaults to `t3.medium`.
+        :param pulumi.Input['AwsClusterControlPlaneMainVolumeArgs'] main_volume: Optional. Configuration related to the main volume provisioned for each control plane replica. The main volume is in charge of storing all of the cluster's etcd state. Volumes will be provisioned in the availability zone associated with the corresponding subnet. When unspecified, it defaults to 8 GiB with the GP2 volume type.
+        :param pulumi.Input['AwsClusterControlPlaneProxyConfigArgs'] proxy_config: Proxy configuration for outbound HTTP(S) traffic.
+        :param pulumi.Input['AwsClusterControlPlaneRootVolumeArgs'] root_volume: Optional. Configuration related to the root volume provisioned for each control plane replica. Volumes will be provisioned in the availability zone associated with the corresponding subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Optional. The IDs of additional security groups to add to control plane replicas. The Anthos Multi-Cloud API will automatically create and manage security groups with the minimum rules needed for a functioning cluster.
+        :param pulumi.Input['AwsClusterControlPlaneSshConfigArgs'] ssh_config: Optional. SSH configuration for how to access the underlying control plane machines.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Optional. A set of AWS resource tags to propagate to all underlying managed AWS resources. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
+        """
+        pulumi.set(__self__, "aws_services_authentication", aws_services_authentication)
+        pulumi.set(__self__, "config_encryption", config_encryption)
+        pulumi.set(__self__, "database_encryption", database_encryption)
+        pulumi.set(__self__, "iam_instance_profile", iam_instance_profile)
+        pulumi.set(__self__, "subnet_ids", subnet_ids)
+        pulumi.set(__self__, "version", version)
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
+        if main_volume is not None:
+            pulumi.set(__self__, "main_volume", main_volume)
+        if proxy_config is not None:
+            pulumi.set(__self__, "proxy_config", proxy_config)
+        if root_volume is not None:
+            pulumi.set(__self__, "root_volume", root_volume)
+        if security_group_ids is not None:
+            pulumi.set(__self__, "security_group_ids", security_group_ids)
+        if ssh_config is not None:
+            pulumi.set(__self__, "ssh_config", ssh_config)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="awsServicesAuthentication")
+    def aws_services_authentication(self) -> pulumi.Input['AwsClusterControlPlaneAwsServicesAuthenticationArgs']:
+        """
+        Required. Authentication configuration for management of AWS resources.
+        """
+        return pulumi.get(self, "aws_services_authentication")
+
+    @aws_services_authentication.setter
+    def aws_services_authentication(self, value: pulumi.Input['AwsClusterControlPlaneAwsServicesAuthenticationArgs']):
+        pulumi.set(self, "aws_services_authentication", value)
+
+    @property
+    @pulumi.getter(name="configEncryption")
+    def config_encryption(self) -> pulumi.Input['AwsClusterControlPlaneConfigEncryptionArgs']:
+        """
+        Required. The ARN of the AWS KMS key used to encrypt cluster configuration.
+        """
+        return pulumi.get(self, "config_encryption")
+
+    @config_encryption.setter
+    def config_encryption(self, value: pulumi.Input['AwsClusterControlPlaneConfigEncryptionArgs']):
+        pulumi.set(self, "config_encryption", value)
+
+    @property
+    @pulumi.getter(name="databaseEncryption")
+    def database_encryption(self) -> pulumi.Input['AwsClusterControlPlaneDatabaseEncryptionArgs']:
+        """
+        Required. The ARN of the AWS KMS key used to encrypt cluster secrets.
+        """
+        return pulumi.get(self, "database_encryption")
+
+    @database_encryption.setter
+    def database_encryption(self, value: pulumi.Input['AwsClusterControlPlaneDatabaseEncryptionArgs']):
+        pulumi.set(self, "database_encryption", value)
+
+    @property
+    @pulumi.getter(name="iamInstanceProfile")
+    def iam_instance_profile(self) -> pulumi.Input[str]:
+        """
+        Required. The name of the AWS IAM instance pofile to assign to each control plane replica.
+        """
+        return pulumi.get(self, "iam_instance_profile")
+
+    @iam_instance_profile.setter
+    def iam_instance_profile(self, value: pulumi.Input[str]):
+        pulumi.set(self, "iam_instance_profile", value)
+
+    @property
+    @pulumi.getter(name="subnetIds")
+    def subnet_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Required. The list of subnets where control plane replicas will run. A replica will be provisioned on each subnet and up to three values can be provided. Each subnet must be in a different AWS Availability Zone (AZ).
+        """
+        return pulumi.get(self, "subnet_ids")
+
+    @subnet_ids.setter
+    def subnet_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "subnet_ids", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> pulumi.Input[str]:
+        """
+        Required. The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling .
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "version", value)
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The AWS instance type. When unspecified, it defaults to `t3.medium`.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @instance_type.setter
+    def instance_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_type", value)
+
+    @property
+    @pulumi.getter(name="mainVolume")
+    def main_volume(self) -> Optional[pulumi.Input['AwsClusterControlPlaneMainVolumeArgs']]:
+        """
+        Optional. Configuration related to the main volume provisioned for each control plane replica. The main volume is in charge of storing all of the cluster's etcd state. Volumes will be provisioned in the availability zone associated with the corresponding subnet. When unspecified, it defaults to 8 GiB with the GP2 volume type.
+        """
+        return pulumi.get(self, "main_volume")
+
+    @main_volume.setter
+    def main_volume(self, value: Optional[pulumi.Input['AwsClusterControlPlaneMainVolumeArgs']]):
+        pulumi.set(self, "main_volume", value)
+
+    @property
+    @pulumi.getter(name="proxyConfig")
+    def proxy_config(self) -> Optional[pulumi.Input['AwsClusterControlPlaneProxyConfigArgs']]:
+        """
+        Proxy configuration for outbound HTTP(S) traffic.
+        """
+        return pulumi.get(self, "proxy_config")
+
+    @proxy_config.setter
+    def proxy_config(self, value: Optional[pulumi.Input['AwsClusterControlPlaneProxyConfigArgs']]):
+        pulumi.set(self, "proxy_config", value)
+
+    @property
+    @pulumi.getter(name="rootVolume")
+    def root_volume(self) -> Optional[pulumi.Input['AwsClusterControlPlaneRootVolumeArgs']]:
+        """
+        Optional. Configuration related to the root volume provisioned for each control plane replica. Volumes will be provisioned in the availability zone associated with the corresponding subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
+        """
+        return pulumi.get(self, "root_volume")
+
+    @root_volume.setter
+    def root_volume(self, value: Optional[pulumi.Input['AwsClusterControlPlaneRootVolumeArgs']]):
+        pulumi.set(self, "root_volume", value)
+
+    @property
+    @pulumi.getter(name="securityGroupIds")
+    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. The IDs of additional security groups to add to control plane replicas. The Anthos Multi-Cloud API will automatically create and manage security groups with the minimum rules needed for a functioning cluster.
+        """
+        return pulumi.get(self, "security_group_ids")
+
+    @security_group_ids.setter
+    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "security_group_ids", value)
+
+    @property
+    @pulumi.getter(name="sshConfig")
+    def ssh_config(self) -> Optional[pulumi.Input['AwsClusterControlPlaneSshConfigArgs']]:
+        """
+        Optional. SSH configuration for how to access the underlying control plane machines.
+        """
+        return pulumi.get(self, "ssh_config")
+
+    @ssh_config.setter
+    def ssh_config(self, value: Optional[pulumi.Input['AwsClusterControlPlaneSshConfigArgs']]):
+        pulumi.set(self, "ssh_config", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. A set of AWS resource tags to propagate to all underlying managed AWS resources. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+
+@pulumi.input_type
+class AwsClusterControlPlaneAwsServicesAuthenticationArgs:
+    def __init__(__self__, *,
+                 role_arn: pulumi.Input[str],
+                 role_session_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] role_arn: Required. The Amazon Resource Name (ARN) of the role that the Anthos Multi-Cloud API will assume when managing AWS resources on your account.
+        :param pulumi.Input[str] role_session_name: Optional. An identifier for the assumed role session. When unspecified, it defaults to `multicloud-service-agent`.
+        """
+        pulumi.set(__self__, "role_arn", role_arn)
+        if role_session_name is not None:
+            pulumi.set(__self__, "role_session_name", role_session_name)
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> pulumi.Input[str]:
+        """
+        Required. The Amazon Resource Name (ARN) of the role that the Anthos Multi-Cloud API will assume when managing AWS resources on your account.
+        """
+        return pulumi.get(self, "role_arn")
+
+    @role_arn.setter
+    def role_arn(self, value: pulumi.Input[str]):
+        pulumi.set(self, "role_arn", value)
+
+    @property
+    @pulumi.getter(name="roleSessionName")
+    def role_session_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. An identifier for the assumed role session. When unspecified, it defaults to `multicloud-service-agent`.
+        """
+        return pulumi.get(self, "role_session_name")
+
+    @role_session_name.setter
+    def role_session_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role_session_name", value)
+
+
+@pulumi.input_type
+class AwsClusterControlPlaneConfigEncryptionArgs:
+    def __init__(__self__, *,
+                 kms_key_arn: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] kms_key_arn: Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+        """
+        pulumi.set(__self__, "kms_key_arn", kms_key_arn)
+
+    @property
+    @pulumi.getter(name="kmsKeyArn")
+    def kms_key_arn(self) -> pulumi.Input[str]:
+        """
+        Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+        """
+        return pulumi.get(self, "kms_key_arn")
+
+    @kms_key_arn.setter
+    def kms_key_arn(self, value: pulumi.Input[str]):
+        pulumi.set(self, "kms_key_arn", value)
+
+
+@pulumi.input_type
+class AwsClusterControlPlaneDatabaseEncryptionArgs:
+    def __init__(__self__, *,
+                 kms_key_arn: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] kms_key_arn: Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+        """
+        pulumi.set(__self__, "kms_key_arn", kms_key_arn)
+
+    @property
+    @pulumi.getter(name="kmsKeyArn")
+    def kms_key_arn(self) -> pulumi.Input[str]:
+        """
+        Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+        """
+        return pulumi.get(self, "kms_key_arn")
+
+    @kms_key_arn.setter
+    def kms_key_arn(self, value: pulumi.Input[str]):
+        pulumi.set(self, "kms_key_arn", value)
+
+
+@pulumi.input_type
+class AwsClusterControlPlaneMainVolumeArgs:
+    def __init__(__self__, *,
+                 iops: Optional[pulumi.Input[int]] = None,
+                 kms_key_arn: Optional[pulumi.Input[str]] = None,
+                 size_gib: Optional[pulumi.Input[int]] = None,
+                 volume_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] iops: Optional. The number of I/O operations per second (IOPS) to provision for GP3 volume.
+        :param pulumi.Input[str] kms_key_arn: Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+        :param pulumi.Input[int] size_gib: Optional. The size of the volume, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+        :param pulumi.Input[str] volume_type: Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
+        """
+        if iops is not None:
+            pulumi.set(__self__, "iops", iops)
+        if kms_key_arn is not None:
+            pulumi.set(__self__, "kms_key_arn", kms_key_arn)
+        if size_gib is not None:
+            pulumi.set(__self__, "size_gib", size_gib)
+        if volume_type is not None:
+            pulumi.set(__self__, "volume_type", volume_type)
+
+    @property
+    @pulumi.getter
+    def iops(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The number of I/O operations per second (IOPS) to provision for GP3 volume.
+        """
+        return pulumi.get(self, "iops")
+
+    @iops.setter
+    def iops(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "iops", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyArn")
+    def kms_key_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+        """
+        return pulumi.get(self, "kms_key_arn")
+
+    @kms_key_arn.setter
+    def kms_key_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_arn", value)
+
+    @property
+    @pulumi.getter(name="sizeGib")
+    def size_gib(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The size of the volume, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+        """
+        return pulumi.get(self, "size_gib")
+
+    @size_gib.setter
+    def size_gib(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "size_gib", value)
+
+    @property
+    @pulumi.getter(name="volumeType")
+    def volume_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
+        """
+        return pulumi.get(self, "volume_type")
+
+    @volume_type.setter
+    def volume_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "volume_type", value)
+
+
+@pulumi.input_type
+class AwsClusterControlPlaneProxyConfigArgs:
+    def __init__(__self__, *,
+                 secret_arn: pulumi.Input[str],
+                 secret_version: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] secret_arn: The ARN of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
+        :param pulumi.Input[str] secret_version: The version string of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
+        """
+        pulumi.set(__self__, "secret_arn", secret_arn)
+        pulumi.set(__self__, "secret_version", secret_version)
+
+    @property
+    @pulumi.getter(name="secretArn")
+    def secret_arn(self) -> pulumi.Input[str]:
+        """
+        The ARN of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
+        """
+        return pulumi.get(self, "secret_arn")
+
+    @secret_arn.setter
+    def secret_arn(self, value: pulumi.Input[str]):
+        pulumi.set(self, "secret_arn", value)
+
+    @property
+    @pulumi.getter(name="secretVersion")
+    def secret_version(self) -> pulumi.Input[str]:
+        """
+        The version string of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
+        """
+        return pulumi.get(self, "secret_version")
+
+    @secret_version.setter
+    def secret_version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "secret_version", value)
+
+
+@pulumi.input_type
+class AwsClusterControlPlaneRootVolumeArgs:
+    def __init__(__self__, *,
+                 iops: Optional[pulumi.Input[int]] = None,
+                 kms_key_arn: Optional[pulumi.Input[str]] = None,
+                 size_gib: Optional[pulumi.Input[int]] = None,
+                 volume_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] iops: Optional. The number of I/O operations per second (IOPS) to provision for GP3 volume.
+        :param pulumi.Input[str] kms_key_arn: Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+        :param pulumi.Input[int] size_gib: Optional. The size of the volume, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+        :param pulumi.Input[str] volume_type: Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
+        """
+        if iops is not None:
+            pulumi.set(__self__, "iops", iops)
+        if kms_key_arn is not None:
+            pulumi.set(__self__, "kms_key_arn", kms_key_arn)
+        if size_gib is not None:
+            pulumi.set(__self__, "size_gib", size_gib)
+        if volume_type is not None:
+            pulumi.set(__self__, "volume_type", volume_type)
+
+    @property
+    @pulumi.getter
+    def iops(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The number of I/O operations per second (IOPS) to provision for GP3 volume.
+        """
+        return pulumi.get(self, "iops")
+
+    @iops.setter
+    def iops(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "iops", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyArn")
+    def kms_key_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+        """
+        return pulumi.get(self, "kms_key_arn")
+
+    @kms_key_arn.setter
+    def kms_key_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_arn", value)
+
+    @property
+    @pulumi.getter(name="sizeGib")
+    def size_gib(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The size of the volume, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+        """
+        return pulumi.get(self, "size_gib")
+
+    @size_gib.setter
+    def size_gib(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "size_gib", value)
+
+    @property
+    @pulumi.getter(name="volumeType")
+    def volume_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
+        """
+        return pulumi.get(self, "volume_type")
+
+    @volume_type.setter
+    def volume_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "volume_type", value)
+
+
+@pulumi.input_type
+class AwsClusterControlPlaneSshConfigArgs:
+    def __init__(__self__, *,
+                 ec2_key_pair: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] ec2_key_pair: Required. The name of the EC2 key pair used to login into cluster machines.
+        """
+        pulumi.set(__self__, "ec2_key_pair", ec2_key_pair)
+
+    @property
+    @pulumi.getter(name="ec2KeyPair")
+    def ec2_key_pair(self) -> pulumi.Input[str]:
+        """
+        Required. The name of the EC2 key pair used to login into cluster machines.
+        """
+        return pulumi.get(self, "ec2_key_pair")
+
+    @ec2_key_pair.setter
+    def ec2_key_pair(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ec2_key_pair", value)
+
+
+@pulumi.input_type
+class AwsClusterFleetArgs:
+    def __init__(__self__, *,
+                 membership: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] membership: -
+               The name of the managed Hub Membership resource associated to this cluster. Membership names are formatted as projects/<project-number>/locations/global/membership/<cluster-id>.
+        :param pulumi.Input[str] project: The project for the resource
+        """
+        if membership is not None:
+            pulumi.set(__self__, "membership", membership)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter
+    def membership(self) -> Optional[pulumi.Input[str]]:
+        """
+        -
+        The name of the managed Hub Membership resource associated to this cluster. Membership names are formatted as projects/<project-number>/locations/global/membership/<cluster-id>.
+        """
+        return pulumi.get(self, "membership")
+
+    @membership.setter
+    def membership(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "membership", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project for the resource
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+
+@pulumi.input_type
+class AwsClusterNetworkingArgs:
+    def __init__(__self__, *,
+                 pod_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 service_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 vpc_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_address_cidr_blocks: Required. All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_address_cidr_blocks: Required. All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+        :param pulumi.Input[str] vpc_id: Required. The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
+        """
+        pulumi.set(__self__, "pod_address_cidr_blocks", pod_address_cidr_blocks)
+        pulumi.set(__self__, "service_address_cidr_blocks", service_address_cidr_blocks)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter(name="podAddressCidrBlocks")
+    def pod_address_cidr_blocks(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Required. All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+        """
+        return pulumi.get(self, "pod_address_cidr_blocks")
+
+    @pod_address_cidr_blocks.setter
+    def pod_address_cidr_blocks(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "pod_address_cidr_blocks", value)
+
+    @property
+    @pulumi.getter(name="serviceAddressCidrBlocks")
+    def service_address_cidr_blocks(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Required. All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+        """
+        return pulumi.get(self, "service_address_cidr_blocks")
+
+    @service_address_cidr_blocks.setter
+    def service_address_cidr_blocks(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "service_address_cidr_blocks", value)
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> pulumi.Input[str]:
+        """
+        Required. The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "vpc_id", value)
+
+
+@pulumi.input_type
+class AwsClusterWorkloadIdentityConfigArgs:
+    def __init__(__self__, *,
+                 identity_provider: Optional[pulumi.Input[str]] = None,
+                 issuer_uri: Optional[pulumi.Input[str]] = None,
+                 workload_pool: Optional[pulumi.Input[str]] = None):
+        if identity_provider is not None:
+            pulumi.set(__self__, "identity_provider", identity_provider)
+        if issuer_uri is not None:
+            pulumi.set(__self__, "issuer_uri", issuer_uri)
+        if workload_pool is not None:
+            pulumi.set(__self__, "workload_pool", workload_pool)
+
+    @property
+    @pulumi.getter(name="identityProvider")
+    def identity_provider(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "identity_provider")
+
+    @identity_provider.setter
+    def identity_provider(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "identity_provider", value)
+
+    @property
+    @pulumi.getter(name="issuerUri")
+    def issuer_uri(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "issuer_uri")
+
+    @issuer_uri.setter
+    def issuer_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "issuer_uri", value)
+
+    @property
+    @pulumi.getter(name="workloadPool")
+    def workload_pool(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "workload_pool")
+
+    @workload_pool.setter
+    def workload_pool(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "workload_pool", value)
+
+
+@pulumi.input_type
+class AwsNodePoolAutoscalingArgs:
+    def __init__(__self__, *,
+                 max_node_count: pulumi.Input[int],
+                 min_node_count: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] max_node_count: Required. Maximum number of nodes in the NodePool. Must be >= min_node_count.
+        :param pulumi.Input[int] min_node_count: Required. Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
+        """
+        pulumi.set(__self__, "max_node_count", max_node_count)
+        pulumi.set(__self__, "min_node_count", min_node_count)
+
+    @property
+    @pulumi.getter(name="maxNodeCount")
+    def max_node_count(self) -> pulumi.Input[int]:
+        """
+        Required. Maximum number of nodes in the NodePool. Must be >= min_node_count.
+        """
+        return pulumi.get(self, "max_node_count")
+
+    @max_node_count.setter
+    def max_node_count(self, value: pulumi.Input[int]):
+        pulumi.set(self, "max_node_count", value)
+
+    @property
+    @pulumi.getter(name="minNodeCount")
+    def min_node_count(self) -> pulumi.Input[int]:
+        """
+        Required. Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
+        """
+        return pulumi.get(self, "min_node_count")
+
+    @min_node_count.setter
+    def min_node_count(self, value: pulumi.Input[int]):
+        pulumi.set(self, "min_node_count", value)
+
+
+@pulumi.input_type
+class AwsNodePoolConfigArgs:
+    def __init__(__self__, *,
+                 config_encryption: pulumi.Input['AwsNodePoolConfigConfigEncryptionArgs'],
+                 iam_instance_profile: pulumi.Input[str],
+                 instance_type: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 root_volume: Optional[pulumi.Input['AwsNodePoolConfigRootVolumeArgs']] = None,
+                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ssh_config: Optional[pulumi.Input['AwsNodePoolConfigSshConfigArgs']] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['AwsNodePoolConfigTaintArgs']]]] = None):
+        """
+        :param pulumi.Input['AwsNodePoolConfigConfigEncryptionArgs'] config_encryption: Required. The ARN of the AWS KMS key used to encrypt node pool configuration.
+        :param pulumi.Input[str] iam_instance_profile: Required. The name of the AWS IAM role assigned to nodes in the pool.
+        :param pulumi.Input[str] instance_type: Optional. The AWS instance type. When unspecified, it defaults to `t3.medium`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        :param pulumi.Input['AwsNodePoolConfigRootVolumeArgs'] root_volume: Optional. Template for the root volume provisioned for node pool nodes. Volumes will be provisioned in the availability zone assigned to the node pool subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Optional. The IDs of additional security groups to add to nodes in this pool. The manager will automatically create security groups with minimum rules needed for a functioning cluster.
+        :param pulumi.Input['AwsNodePoolConfigSshConfigArgs'] ssh_config: Optional. The SSH configuration.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Optional. Key/value metadata to assign to each underlying AWS resource. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
+        :param pulumi.Input[Sequence[pulumi.Input['AwsNodePoolConfigTaintArgs']]] taints: Optional. The initial taints assigned to nodes of this node pool.
+        """
+        pulumi.set(__self__, "config_encryption", config_encryption)
+        pulumi.set(__self__, "iam_instance_profile", iam_instance_profile)
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if root_volume is not None:
+            pulumi.set(__self__, "root_volume", root_volume)
+        if security_group_ids is not None:
+            pulumi.set(__self__, "security_group_ids", security_group_ids)
+        if ssh_config is not None:
+            pulumi.set(__self__, "ssh_config", ssh_config)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if taints is not None:
+            pulumi.set(__self__, "taints", taints)
+
+    @property
+    @pulumi.getter(name="configEncryption")
+    def config_encryption(self) -> pulumi.Input['AwsNodePoolConfigConfigEncryptionArgs']:
+        """
+        Required. The ARN of the AWS KMS key used to encrypt node pool configuration.
+        """
+        return pulumi.get(self, "config_encryption")
+
+    @config_encryption.setter
+    def config_encryption(self, value: pulumi.Input['AwsNodePoolConfigConfigEncryptionArgs']):
+        pulumi.set(self, "config_encryption", value)
+
+    @property
+    @pulumi.getter(name="iamInstanceProfile")
+    def iam_instance_profile(self) -> pulumi.Input[str]:
+        """
+        Required. The name of the AWS IAM role assigned to nodes in the pool.
+        """
+        return pulumi.get(self, "iam_instance_profile")
+
+    @iam_instance_profile.setter
+    def iam_instance_profile(self, value: pulumi.Input[str]):
+        pulumi.set(self, "iam_instance_profile", value)
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The AWS instance type. When unspecified, it defaults to `t3.medium`.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @instance_type.setter
+    def instance_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_type", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="rootVolume")
+    def root_volume(self) -> Optional[pulumi.Input['AwsNodePoolConfigRootVolumeArgs']]:
+        """
+        Optional. Template for the root volume provisioned for node pool nodes. Volumes will be provisioned in the availability zone assigned to the node pool subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
+        """
+        return pulumi.get(self, "root_volume")
+
+    @root_volume.setter
+    def root_volume(self, value: Optional[pulumi.Input['AwsNodePoolConfigRootVolumeArgs']]):
+        pulumi.set(self, "root_volume", value)
+
+    @property
+    @pulumi.getter(name="securityGroupIds")
+    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. The IDs of additional security groups to add to nodes in this pool. The manager will automatically create security groups with minimum rules needed for a functioning cluster.
+        """
+        return pulumi.get(self, "security_group_ids")
+
+    @security_group_ids.setter
+    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "security_group_ids", value)
+
+    @property
+    @pulumi.getter(name="sshConfig")
+    def ssh_config(self) -> Optional[pulumi.Input['AwsNodePoolConfigSshConfigArgs']]:
+        """
+        Optional. The SSH configuration.
+        """
+        return pulumi.get(self, "ssh_config")
+
+    @ssh_config.setter
+    def ssh_config(self, value: Optional[pulumi.Input['AwsNodePoolConfigSshConfigArgs']]):
+        pulumi.set(self, "ssh_config", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. Key/value metadata to assign to each underlying AWS resource. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
+    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AwsNodePoolConfigTaintArgs']]]]:
+        """
+        Optional. The initial taints assigned to nodes of this node pool.
+        """
+        return pulumi.get(self, "taints")
+
+    @taints.setter
+    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AwsNodePoolConfigTaintArgs']]]]):
+        pulumi.set(self, "taints", value)
+
+
+@pulumi.input_type
+class AwsNodePoolConfigConfigEncryptionArgs:
+    def __init__(__self__, *,
+                 kms_key_arn: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] kms_key_arn: Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+        """
+        pulumi.set(__self__, "kms_key_arn", kms_key_arn)
+
+    @property
+    @pulumi.getter(name="kmsKeyArn")
+    def kms_key_arn(self) -> pulumi.Input[str]:
+        """
+        Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+        """
+        return pulumi.get(self, "kms_key_arn")
+
+    @kms_key_arn.setter
+    def kms_key_arn(self, value: pulumi.Input[str]):
+        pulumi.set(self, "kms_key_arn", value)
+
+
+@pulumi.input_type
+class AwsNodePoolConfigRootVolumeArgs:
+    def __init__(__self__, *,
+                 iops: Optional[pulumi.Input[int]] = None,
+                 kms_key_arn: Optional[pulumi.Input[str]] = None,
+                 size_gib: Optional[pulumi.Input[int]] = None,
+                 volume_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] iops: Optional. The number of I/O operations per second (IOPS) to provision for GP3 volume.
+        :param pulumi.Input[str] kms_key_arn: Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+        :param pulumi.Input[int] size_gib: Optional. The size of the volume, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+        :param pulumi.Input[str] volume_type: Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
+        """
+        if iops is not None:
+            pulumi.set(__self__, "iops", iops)
+        if kms_key_arn is not None:
+            pulumi.set(__self__, "kms_key_arn", kms_key_arn)
+        if size_gib is not None:
+            pulumi.set(__self__, "size_gib", size_gib)
+        if volume_type is not None:
+            pulumi.set(__self__, "volume_type", volume_type)
+
+    @property
+    @pulumi.getter
+    def iops(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The number of I/O operations per second (IOPS) to provision for GP3 volume.
+        """
+        return pulumi.get(self, "iops")
+
+    @iops.setter
+    def iops(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "iops", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyArn")
+    def kms_key_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+        """
+        return pulumi.get(self, "kms_key_arn")
+
+    @kms_key_arn.setter
+    def kms_key_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_arn", value)
+
+    @property
+    @pulumi.getter(name="sizeGib")
+    def size_gib(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The size of the volume, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+        """
+        return pulumi.get(self, "size_gib")
+
+    @size_gib.setter
+    def size_gib(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "size_gib", value)
+
+    @property
+    @pulumi.getter(name="volumeType")
+    def volume_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
+        """
+        return pulumi.get(self, "volume_type")
+
+    @volume_type.setter
+    def volume_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "volume_type", value)
+
+
+@pulumi.input_type
+class AwsNodePoolConfigSshConfigArgs:
+    def __init__(__self__, *,
+                 ec2_key_pair: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] ec2_key_pair: Required. The name of the EC2 key pair used to login into cluster machines.
+        """
+        pulumi.set(__self__, "ec2_key_pair", ec2_key_pair)
+
+    @property
+    @pulumi.getter(name="ec2KeyPair")
+    def ec2_key_pair(self) -> pulumi.Input[str]:
+        """
+        Required. The name of the EC2 key pair used to login into cluster machines.
+        """
+        return pulumi.get(self, "ec2_key_pair")
+
+    @ec2_key_pair.setter
+    def ec2_key_pair(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ec2_key_pair", value)
+
+
+@pulumi.input_type
+class AwsNodePoolConfigTaintArgs:
+    def __init__(__self__, *,
+                 effect: pulumi.Input[str],
+                 key: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] effect: Required. The taint effect. Possible values: EFFECT_UNSPECIFIED, NO_SCHEDULE, PREFER_NO_SCHEDULE, NO_EXECUTE
+        :param pulumi.Input[str] key: Required. Key for the taint.
+        :param pulumi.Input[str] value: Required. Value for the taint.
+        """
+        pulumi.set(__self__, "effect", effect)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> pulumi.Input[str]:
+        """
+        Required. The taint effect. Possible values: EFFECT_UNSPECIFIED, NO_SCHEDULE, PREFER_NO_SCHEDULE, NO_EXECUTE
+        """
+        return pulumi.get(self, "effect")
+
+    @effect.setter
+    def effect(self, value: pulumi.Input[str]):
+        pulumi.set(self, "effect", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        """
+        Required. Key for the taint.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        Required. Value for the taint.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class AwsNodePoolMaxPodsConstraintArgs:
+    def __init__(__self__, *,
+                 max_pods_per_node: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] max_pods_per_node: Required. The maximum number of pods to schedule on a single node.
+        """
+        pulumi.set(__self__, "max_pods_per_node", max_pods_per_node)
+
+    @property
+    @pulumi.getter(name="maxPodsPerNode")
+    def max_pods_per_node(self) -> pulumi.Input[int]:
+        """
+        Required. The maximum number of pods to schedule on a single node.
+        """
+        return pulumi.get(self, "max_pods_per_node")
+
+    @max_pods_per_node.setter
+    def max_pods_per_node(self, value: pulumi.Input[int]):
+        pulumi.set(self, "max_pods_per_node", value)
+
+
+@pulumi.input_type
+class AzureClusterAuthorizationArgs:
+    def __init__(__self__, *,
+                 admin_users: pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminUserArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminUserArgs']]] admin_users: Required. Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        """
+        pulumi.set(__self__, "admin_users", admin_users)
+
+    @property
+    @pulumi.getter(name="adminUsers")
+    def admin_users(self) -> pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminUserArgs']]]:
+        """
+        Required. Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        """
+        return pulumi.get(self, "admin_users")
+
+    @admin_users.setter
+    def admin_users(self, value: pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminUserArgs']]]):
+        pulumi.set(self, "admin_users", value)
+
+
+@pulumi.input_type
+class AzureClusterAuthorizationAdminUserArgs:
+    def __init__(__self__, *,
+                 username: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] username: Required. The name of the user, e.g. `my-gcp-id@gmail.com`.
+        """
+        pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def username(self) -> pulumi.Input[str]:
+        """
+        Required. The name of the user, e.g. `my-gcp-id@gmail.com`.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: pulumi.Input[str]):
+        pulumi.set(self, "username", value)
+
+
+@pulumi.input_type
+class AzureClusterControlPlaneArgs:
+    def __init__(__self__, *,
+                 ssh_config: pulumi.Input['AzureClusterControlPlaneSshConfigArgs'],
+                 subnet_id: pulumi.Input[str],
+                 version: pulumi.Input[str],
+                 database_encryption: Optional[pulumi.Input['AzureClusterControlPlaneDatabaseEncryptionArgs']] = None,
+                 main_volume: Optional[pulumi.Input['AzureClusterControlPlaneMainVolumeArgs']] = None,
+                 proxy_config: Optional[pulumi.Input['AzureClusterControlPlaneProxyConfigArgs']] = None,
+                 replica_placements: Optional[pulumi.Input[Sequence[pulumi.Input['AzureClusterControlPlaneReplicaPlacementArgs']]]] = None,
+                 root_volume: Optional[pulumi.Input['AzureClusterControlPlaneRootVolumeArgs']] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 vm_size: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input['AzureClusterControlPlaneSshConfigArgs'] ssh_config: Required. SSH configuration for how to access the underlying control plane machines.
+        :param pulumi.Input[str] subnet_id: For a given replica, the ARM ID of the subnet where the control plane VM is deployed. Make sure it's a subnet under the virtual network in the cluster configuration.
+        :param pulumi.Input[str] version: Required. The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAzureServerConfig.
+        :param pulumi.Input['AzureClusterControlPlaneDatabaseEncryptionArgs'] database_encryption: Optional. Configuration related to application-layer secrets encryption.
+        :param pulumi.Input['AzureClusterControlPlaneMainVolumeArgs'] main_volume: Optional. Configuration related to the main volume provisioned for each control plane replica. The main volume is in charge of storing all of the cluster's etcd state. When unspecified, it defaults to a 8-GiB Azure Disk.
+        :param pulumi.Input['AzureClusterControlPlaneProxyConfigArgs'] proxy_config: Proxy configuration for outbound HTTP(S) traffic.
+        :param pulumi.Input[Sequence[pulumi.Input['AzureClusterControlPlaneReplicaPlacementArgs']]] replica_placements: Configuration for where to place the control plane replicas. Up to three replica placement instances can be specified. If replica_placements is set, the replica placement instances will be applied to the three control plane replicas as evenly as possible.
+        :param pulumi.Input['AzureClusterControlPlaneRootVolumeArgs'] root_volume: Optional. Configuration related to the root volume provisioned for each control plane replica. When unspecified, it defaults to 32-GiB Azure Disk.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Optional. A set of tags to apply to all underlying control plane Azure resources.
+        :param pulumi.Input[str] vm_size: Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions. When unspecified, it defaults to `Standard_DS2_v2`.
+        """
+        pulumi.set(__self__, "ssh_config", ssh_config)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        pulumi.set(__self__, "version", version)
+        if database_encryption is not None:
+            pulumi.set(__self__, "database_encryption", database_encryption)
+        if main_volume is not None:
+            pulumi.set(__self__, "main_volume", main_volume)
+        if proxy_config is not None:
+            pulumi.set(__self__, "proxy_config", proxy_config)
+        if replica_placements is not None:
+            pulumi.set(__self__, "replica_placements", replica_placements)
+        if root_volume is not None:
+            pulumi.set(__self__, "root_volume", root_volume)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if vm_size is not None:
+            pulumi.set(__self__, "vm_size", vm_size)
+
+    @property
+    @pulumi.getter(name="sshConfig")
+    def ssh_config(self) -> pulumi.Input['AzureClusterControlPlaneSshConfigArgs']:
+        """
+        Required. SSH configuration for how to access the underlying control plane machines.
+        """
+        return pulumi.get(self, "ssh_config")
+
+    @ssh_config.setter
+    def ssh_config(self, value: pulumi.Input['AzureClusterControlPlaneSshConfigArgs']):
+        pulumi.set(self, "ssh_config", value)
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> pulumi.Input[str]:
+        """
+        For a given replica, the ARM ID of the subnet where the control plane VM is deployed. Make sure it's a subnet under the virtual network in the cluster configuration.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @subnet_id.setter
+    def subnet_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "subnet_id", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> pulumi.Input[str]:
+        """
+        Required. The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAzureServerConfig.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "version", value)
+
+    @property
+    @pulumi.getter(name="databaseEncryption")
+    def database_encryption(self) -> Optional[pulumi.Input['AzureClusterControlPlaneDatabaseEncryptionArgs']]:
+        """
+        Optional. Configuration related to application-layer secrets encryption.
+        """
+        return pulumi.get(self, "database_encryption")
+
+    @database_encryption.setter
+    def database_encryption(self, value: Optional[pulumi.Input['AzureClusterControlPlaneDatabaseEncryptionArgs']]):
+        pulumi.set(self, "database_encryption", value)
+
+    @property
+    @pulumi.getter(name="mainVolume")
+    def main_volume(self) -> Optional[pulumi.Input['AzureClusterControlPlaneMainVolumeArgs']]:
+        """
+        Optional. Configuration related to the main volume provisioned for each control plane replica. The main volume is in charge of storing all of the cluster's etcd state. When unspecified, it defaults to a 8-GiB Azure Disk.
+        """
+        return pulumi.get(self, "main_volume")
+
+    @main_volume.setter
+    def main_volume(self, value: Optional[pulumi.Input['AzureClusterControlPlaneMainVolumeArgs']]):
+        pulumi.set(self, "main_volume", value)
+
+    @property
+    @pulumi.getter(name="proxyConfig")
+    def proxy_config(self) -> Optional[pulumi.Input['AzureClusterControlPlaneProxyConfigArgs']]:
+        """
+        Proxy configuration for outbound HTTP(S) traffic.
+        """
+        return pulumi.get(self, "proxy_config")
+
+    @proxy_config.setter
+    def proxy_config(self, value: Optional[pulumi.Input['AzureClusterControlPlaneProxyConfigArgs']]):
+        pulumi.set(self, "proxy_config", value)
+
+    @property
+    @pulumi.getter(name="replicaPlacements")
+    def replica_placements(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AzureClusterControlPlaneReplicaPlacementArgs']]]]:
+        """
+        Configuration for where to place the control plane replicas. Up to three replica placement instances can be specified. If replica_placements is set, the replica placement instances will be applied to the three control plane replicas as evenly as possible.
+        """
+        return pulumi.get(self, "replica_placements")
+
+    @replica_placements.setter
+    def replica_placements(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AzureClusterControlPlaneReplicaPlacementArgs']]]]):
+        pulumi.set(self, "replica_placements", value)
+
+    @property
+    @pulumi.getter(name="rootVolume")
+    def root_volume(self) -> Optional[pulumi.Input['AzureClusterControlPlaneRootVolumeArgs']]:
+        """
+        Optional. Configuration related to the root volume provisioned for each control plane replica. When unspecified, it defaults to 32-GiB Azure Disk.
+        """
+        return pulumi.get(self, "root_volume")
+
+    @root_volume.setter
+    def root_volume(self, value: Optional[pulumi.Input['AzureClusterControlPlaneRootVolumeArgs']]):
+        pulumi.set(self, "root_volume", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. A set of tags to apply to all underlying control plane Azure resources.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="vmSize")
+    def vm_size(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions. When unspecified, it defaults to `Standard_DS2_v2`.
+        """
+        return pulumi.get(self, "vm_size")
+
+    @vm_size.setter
+    def vm_size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vm_size", value)
+
+
+@pulumi.input_type
+class AzureClusterControlPlaneDatabaseEncryptionArgs:
+    def __init__(__self__, *,
+                 key_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] key_id: The ARM ID of the Azure Key Vault key to encrypt / decrypt data. For example: `/subscriptions/<subscription-id>/resourceGroups/<resource-group-id>/providers/Microsoft.KeyVault/vaults/<key-vault-id>/keys/<key-name>` Encryption will always take the latest version of the key and hence specific version is not supported.
+        """
+        pulumi.set(__self__, "key_id", key_id)
+
+    @property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> pulumi.Input[str]:
+        """
+        The ARM ID of the Azure Key Vault key to encrypt / decrypt data. For example: `/subscriptions/<subscription-id>/resourceGroups/<resource-group-id>/providers/Microsoft.KeyVault/vaults/<key-vault-id>/keys/<key-name>` Encryption will always take the latest version of the key and hence specific version is not supported.
+        """
+        return pulumi.get(self, "key_id")
+
+    @key_id.setter
+    def key_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key_id", value)
+
+
+@pulumi.input_type
+class AzureClusterControlPlaneMainVolumeArgs:
+    def __init__(__self__, *,
+                 size_gib: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] size_gib: Optional. The size of the disk, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+        """
+        if size_gib is not None:
+            pulumi.set(__self__, "size_gib", size_gib)
+
+    @property
+    @pulumi.getter(name="sizeGib")
+    def size_gib(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The size of the disk, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+        """
+        return pulumi.get(self, "size_gib")
+
+    @size_gib.setter
+    def size_gib(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "size_gib", value)
+
+
+@pulumi.input_type
+class AzureClusterControlPlaneProxyConfigArgs:
+    def __init__(__self__, *,
+                 resource_group_id: pulumi.Input[str],
+                 secret_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] resource_group_id: The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>`
+        :param pulumi.Input[str] secret_id: The URL the of the proxy setting secret with its version. Secret ids are formatted as `https:<key-vault-name>.vault.azure.net/secrets/<secret-name>/<secret-version>`.
+        """
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "secret_id", secret_id)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Input[str]:
+        """
+        The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>`
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="secretId")
+    def secret_id(self) -> pulumi.Input[str]:
+        """
+        The URL the of the proxy setting secret with its version. Secret ids are formatted as `https:<key-vault-name>.vault.azure.net/secrets/<secret-name>/<secret-version>`.
+        """
+        return pulumi.get(self, "secret_id")
+
+    @secret_id.setter
+    def secret_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "secret_id", value)
+
+
+@pulumi.input_type
+class AzureClusterControlPlaneReplicaPlacementArgs:
+    def __init__(__self__, *,
+                 azure_availability_zone: pulumi.Input[str],
+                 subnet_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] azure_availability_zone: For a given replica, the Azure availability zone where to provision the control plane VM and the ETCD disk.
+        :param pulumi.Input[str] subnet_id: For a given replica, the ARM ID of the subnet where the control plane VM is deployed. Make sure it's a subnet under the virtual network in the cluster configuration.
+        """
+        pulumi.set(__self__, "azure_availability_zone", azure_availability_zone)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+
+    @property
+    @pulumi.getter(name="azureAvailabilityZone")
+    def azure_availability_zone(self) -> pulumi.Input[str]:
+        """
+        For a given replica, the Azure availability zone where to provision the control plane VM and the ETCD disk.
+        """
+        return pulumi.get(self, "azure_availability_zone")
+
+    @azure_availability_zone.setter
+    def azure_availability_zone(self, value: pulumi.Input[str]):
+        pulumi.set(self, "azure_availability_zone", value)
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> pulumi.Input[str]:
+        """
+        For a given replica, the ARM ID of the subnet where the control plane VM is deployed. Make sure it's a subnet under the virtual network in the cluster configuration.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @subnet_id.setter
+    def subnet_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "subnet_id", value)
+
+
+@pulumi.input_type
+class AzureClusterControlPlaneRootVolumeArgs:
+    def __init__(__self__, *,
+                 size_gib: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] size_gib: Optional. The size of the disk, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+        """
+        if size_gib is not None:
+            pulumi.set(__self__, "size_gib", size_gib)
+
+    @property
+    @pulumi.getter(name="sizeGib")
+    def size_gib(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The size of the disk, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+        """
+        return pulumi.get(self, "size_gib")
+
+    @size_gib.setter
+    def size_gib(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "size_gib", value)
+
+
+@pulumi.input_type
+class AzureClusterControlPlaneSshConfigArgs:
+    def __init__(__self__, *,
+                 authorized_key: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] authorized_key: Required. The SSH public key data for VMs managed by Anthos. This accepts the authorized_keys file format used in OpenSSH according to the sshd(8) manual page.
+        """
+        pulumi.set(__self__, "authorized_key", authorized_key)
+
+    @property
+    @pulumi.getter(name="authorizedKey")
+    def authorized_key(self) -> pulumi.Input[str]:
+        """
+        Required. The SSH public key data for VMs managed by Anthos. This accepts the authorized_keys file format used in OpenSSH according to the sshd(8) manual page.
+        """
+        return pulumi.get(self, "authorized_key")
+
+    @authorized_key.setter
+    def authorized_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "authorized_key", value)
+
+
+@pulumi.input_type
+class AzureClusterFleetArgs:
+    def __init__(__self__, *,
+                 membership: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] membership: -
+               The name of the managed Hub Membership resource associated to this cluster. Membership names are formatted as projects/<project-number>/locations/global/membership/<cluster-id>.
+        :param pulumi.Input[str] project: The project for the resource
+        """
+        if membership is not None:
+            pulumi.set(__self__, "membership", membership)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter
+    def membership(self) -> Optional[pulumi.Input[str]]:
+        """
+        -
+        The name of the managed Hub Membership resource associated to this cluster. Membership names are formatted as projects/<project-number>/locations/global/membership/<cluster-id>.
+        """
+        return pulumi.get(self, "membership")
+
+    @membership.setter
+    def membership(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "membership", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project for the resource
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+
+@pulumi.input_type
+class AzureClusterNetworkingArgs:
+    def __init__(__self__, *,
+                 pod_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 service_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 virtual_network_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_address_cidr_blocks: Required. The IP address range of the pods in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All pods in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_address_cidr_blocks: Required. The IP address range for services in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All services in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creating a cluster.
+        :param pulumi.Input[str] virtual_network_id: Required. The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*/resourceGroups/*/providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
+        """
+        pulumi.set(__self__, "pod_address_cidr_blocks", pod_address_cidr_blocks)
+        pulumi.set(__self__, "service_address_cidr_blocks", service_address_cidr_blocks)
+        pulumi.set(__self__, "virtual_network_id", virtual_network_id)
+
+    @property
+    @pulumi.getter(name="podAddressCidrBlocks")
+    def pod_address_cidr_blocks(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Required. The IP address range of the pods in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All pods in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+        """
+        return pulumi.get(self, "pod_address_cidr_blocks")
+
+    @pod_address_cidr_blocks.setter
+    def pod_address_cidr_blocks(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "pod_address_cidr_blocks", value)
+
+    @property
+    @pulumi.getter(name="serviceAddressCidrBlocks")
+    def service_address_cidr_blocks(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Required. The IP address range for services in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All services in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creating a cluster.
+        """
+        return pulumi.get(self, "service_address_cidr_blocks")
+
+    @service_address_cidr_blocks.setter
+    def service_address_cidr_blocks(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "service_address_cidr_blocks", value)
+
+    @property
+    @pulumi.getter(name="virtualNetworkId")
+    def virtual_network_id(self) -> pulumi.Input[str]:
+        """
+        Required. The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*/resourceGroups/*/providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
+        """
+        return pulumi.get(self, "virtual_network_id")
+
+    @virtual_network_id.setter
+    def virtual_network_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "virtual_network_id", value)
+
+
+@pulumi.input_type
+class AzureClusterWorkloadIdentityConfigArgs:
+    def __init__(__self__, *,
+                 identity_provider: Optional[pulumi.Input[str]] = None,
+                 issuer_uri: Optional[pulumi.Input[str]] = None,
+                 workload_pool: Optional[pulumi.Input[str]] = None):
+        if identity_provider is not None:
+            pulumi.set(__self__, "identity_provider", identity_provider)
+        if issuer_uri is not None:
+            pulumi.set(__self__, "issuer_uri", issuer_uri)
+        if workload_pool is not None:
+            pulumi.set(__self__, "workload_pool", workload_pool)
+
+    @property
+    @pulumi.getter(name="identityProvider")
+    def identity_provider(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "identity_provider")
+
+    @identity_provider.setter
+    def identity_provider(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "identity_provider", value)
+
+    @property
+    @pulumi.getter(name="issuerUri")
+    def issuer_uri(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "issuer_uri")
+
+    @issuer_uri.setter
+    def issuer_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "issuer_uri", value)
+
+    @property
+    @pulumi.getter(name="workloadPool")
+    def workload_pool(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "workload_pool")
+
+    @workload_pool.setter
+    def workload_pool(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "workload_pool", value)
+
+
+@pulumi.input_type
+class AzureNodePoolAutoscalingArgs:
+    def __init__(__self__, *,
+                 max_node_count: pulumi.Input[int],
+                 min_node_count: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] max_node_count: Required. Maximum number of nodes in the node pool. Must be >= min_node_count.
+        :param pulumi.Input[int] min_node_count: Required. Minimum number of nodes in the node pool. Must be >= 1 and <= max_node_count.
+        """
+        pulumi.set(__self__, "max_node_count", max_node_count)
+        pulumi.set(__self__, "min_node_count", min_node_count)
+
+    @property
+    @pulumi.getter(name="maxNodeCount")
+    def max_node_count(self) -> pulumi.Input[int]:
+        """
+        Required. Maximum number of nodes in the node pool. Must be >= min_node_count.
+        """
+        return pulumi.get(self, "max_node_count")
+
+    @max_node_count.setter
+    def max_node_count(self, value: pulumi.Input[int]):
+        pulumi.set(self, "max_node_count", value)
+
+    @property
+    @pulumi.getter(name="minNodeCount")
+    def min_node_count(self) -> pulumi.Input[int]:
+        """
+        Required. Minimum number of nodes in the node pool. Must be >= 1 and <= max_node_count.
+        """
+        return pulumi.get(self, "min_node_count")
+
+    @min_node_count.setter
+    def min_node_count(self, value: pulumi.Input[int]):
+        pulumi.set(self, "min_node_count", value)
+
+
+@pulumi.input_type
+class AzureNodePoolConfigArgs:
+    def __init__(__self__, *,
+                 ssh_config: pulumi.Input['AzureNodePoolConfigSshConfigArgs'],
+                 root_volume: Optional[pulumi.Input['AzureNodePoolConfigRootVolumeArgs']] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 vm_size: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input['AzureNodePoolConfigSshConfigArgs'] ssh_config: Required. SSH configuration for how to access the node pool machines.
+        :param pulumi.Input['AzureNodePoolConfigRootVolumeArgs'] root_volume: Optional. Configuration related to the root volume provisioned for each node pool machine. When unspecified, it defaults to a 32-GiB Azure Disk.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Optional. A set of tags to apply to all underlying Azure resources for this node pool. This currently only includes Virtual Machine Scale Sets. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
+        :param pulumi.Input[str] vm_size: Optional. The Azure VM size name. Example: `Standard_DS2_v2`. See (/anthos/clusters/docs/azure/reference/supported-vms) for options. When unspecified, it defaults to `Standard_DS2_v2`.
+        """
+        pulumi.set(__self__, "ssh_config", ssh_config)
+        if root_volume is not None:
+            pulumi.set(__self__, "root_volume", root_volume)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if vm_size is not None:
+            pulumi.set(__self__, "vm_size", vm_size)
+
+    @property
+    @pulumi.getter(name="sshConfig")
+    def ssh_config(self) -> pulumi.Input['AzureNodePoolConfigSshConfigArgs']:
+        """
+        Required. SSH configuration for how to access the node pool machines.
+        """
+        return pulumi.get(self, "ssh_config")
+
+    @ssh_config.setter
+    def ssh_config(self, value: pulumi.Input['AzureNodePoolConfigSshConfigArgs']):
+        pulumi.set(self, "ssh_config", value)
+
+    @property
+    @pulumi.getter(name="rootVolume")
+    def root_volume(self) -> Optional[pulumi.Input['AzureNodePoolConfigRootVolumeArgs']]:
+        """
+        Optional. Configuration related to the root volume provisioned for each node pool machine. When unspecified, it defaults to a 32-GiB Azure Disk.
+        """
+        return pulumi.get(self, "root_volume")
+
+    @root_volume.setter
+    def root_volume(self, value: Optional[pulumi.Input['AzureNodePoolConfigRootVolumeArgs']]):
+        pulumi.set(self, "root_volume", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. A set of tags to apply to all underlying Azure resources for this node pool. This currently only includes Virtual Machine Scale Sets. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="vmSize")
+    def vm_size(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The Azure VM size name. Example: `Standard_DS2_v2`. See (/anthos/clusters/docs/azure/reference/supported-vms) for options. When unspecified, it defaults to `Standard_DS2_v2`.
+        """
+        return pulumi.get(self, "vm_size")
+
+    @vm_size.setter
+    def vm_size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vm_size", value)
+
+
+@pulumi.input_type
+class AzureNodePoolConfigRootVolumeArgs:
+    def __init__(__self__, *,
+                 size_gib: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] size_gib: Optional. The size of the disk, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+        """
+        if size_gib is not None:
+            pulumi.set(__self__, "size_gib", size_gib)
+
+    @property
+    @pulumi.getter(name="sizeGib")
+    def size_gib(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The size of the disk, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+        """
+        return pulumi.get(self, "size_gib")
+
+    @size_gib.setter
+    def size_gib(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "size_gib", value)
+
+
+@pulumi.input_type
+class AzureNodePoolConfigSshConfigArgs:
+    def __init__(__self__, *,
+                 authorized_key: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] authorized_key: Required. The SSH public key data for VMs managed by Anthos. This accepts the authorized_keys file format used in OpenSSH according to the sshd(8) manual page.
+        """
+        pulumi.set(__self__, "authorized_key", authorized_key)
+
+    @property
+    @pulumi.getter(name="authorizedKey")
+    def authorized_key(self) -> pulumi.Input[str]:
+        """
+        Required. The SSH public key data for VMs managed by Anthos. This accepts the authorized_keys file format used in OpenSSH according to the sshd(8) manual page.
+        """
+        return pulumi.get(self, "authorized_key")
+
+    @authorized_key.setter
+    def authorized_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "authorized_key", value)
+
+
+@pulumi.input_type
+class AzureNodePoolMaxPodsConstraintArgs:
+    def __init__(__self__, *,
+                 max_pods_per_node: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] max_pods_per_node: Required. The maximum number of pods to schedule on a single node.
+        """
+        pulumi.set(__self__, "max_pods_per_node", max_pods_per_node)
+
+    @property
+    @pulumi.getter(name="maxPodsPerNode")
+    def max_pods_per_node(self) -> pulumi.Input[int]:
+        """
+        Required. The maximum number of pods to schedule on a single node.
+        """
+        return pulumi.get(self, "max_pods_per_node")
+
+    @max_pods_per_node.setter
+    def max_pods_per_node(self, value: pulumi.Input[int]):
+        pulumi.set(self, "max_pods_per_node", value)
+
 
 @pulumi.input_type
 class ClusterAddonsConfigArgs:

@@ -410,7 +410,7 @@ type RegionBackendService struct {
 	// will be used for. A backend service created for one type of load
 	// balancing cannot be used with the other(s).
 	// Default value is `INTERNAL`.
-	// Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
+	// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrOutput `pulumi:"loadBalancingScheme"`
 	// The load balancing algorithm used within the scope of the locality.
 	// The possible values are -
@@ -452,7 +452,7 @@ type RegionBackendService struct {
 	OutlierDetection RegionBackendServiceOutlierDetectionPtrOutput `pulumi:"outlierDetection"`
 	// A named port on a backend instance group representing the port for
 	// communication to the backend VMs in that group. Required when the
-	// loadBalancingScheme is EXTERNAL, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
+	// loadBalancingScheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
 	// and the backends are instance groups. The named port must be defined on each
 	// backend instance group. This parameter has no meaning if the backends are NEGs. API sets a
 	// default of "http" if not given.
@@ -562,7 +562,7 @@ type regionBackendServiceState struct {
 	// will be used for. A backend service created for one type of load
 	// balancing cannot be used with the other(s).
 	// Default value is `INTERNAL`.
-	// Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
+	// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// The load balancing algorithm used within the scope of the locality.
 	// The possible values are -
@@ -604,7 +604,7 @@ type regionBackendServiceState struct {
 	OutlierDetection *RegionBackendServiceOutlierDetection `pulumi:"outlierDetection"`
 	// A named port on a backend instance group representing the port for
 	// communication to the backend VMs in that group. Required when the
-	// loadBalancingScheme is EXTERNAL, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
+	// loadBalancingScheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
 	// and the backends are instance groups. The named port must be defined on each
 	// backend instance group. This parameter has no meaning if the backends are NEGs. API sets a
 	// default of "http" if not given.
@@ -686,7 +686,7 @@ type RegionBackendServiceState struct {
 	// will be used for. A backend service created for one type of load
 	// balancing cannot be used with the other(s).
 	// Default value is `INTERNAL`.
-	// Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
+	// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// The load balancing algorithm used within the scope of the locality.
 	// The possible values are -
@@ -728,7 +728,7 @@ type RegionBackendServiceState struct {
 	OutlierDetection RegionBackendServiceOutlierDetectionPtrInput
 	// A named port on a backend instance group representing the port for
 	// communication to the backend VMs in that group. Required when the
-	// loadBalancingScheme is EXTERNAL, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
+	// loadBalancingScheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
 	// and the backends are instance groups. The named port must be defined on each
 	// backend instance group. This parameter has no meaning if the backends are NEGs. API sets a
 	// default of "http" if not given.
@@ -810,7 +810,7 @@ type regionBackendServiceArgs struct {
 	// will be used for. A backend service created for one type of load
 	// balancing cannot be used with the other(s).
 	// Default value is `INTERNAL`.
-	// Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
+	// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// The load balancing algorithm used within the scope of the locality.
 	// The possible values are -
@@ -852,7 +852,7 @@ type regionBackendServiceArgs struct {
 	OutlierDetection *RegionBackendServiceOutlierDetection `pulumi:"outlierDetection"`
 	// A named port on a backend instance group representing the port for
 	// communication to the backend VMs in that group. Required when the
-	// loadBalancingScheme is EXTERNAL, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
+	// loadBalancingScheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
 	// and the backends are instance groups. The named port must be defined on each
 	// backend instance group. This parameter has no meaning if the backends are NEGs. API sets a
 	// default of "http" if not given.
@@ -929,7 +929,7 @@ type RegionBackendServiceArgs struct {
 	// will be used for. A backend service created for one type of load
 	// balancing cannot be used with the other(s).
 	// Default value is `INTERNAL`.
-	// Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
+	// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// The load balancing algorithm used within the scope of the locality.
 	// The possible values are -
@@ -971,7 +971,7 @@ type RegionBackendServiceArgs struct {
 	OutlierDetection RegionBackendServiceOutlierDetectionPtrInput
 	// A named port on a backend instance group representing the port for
 	// communication to the backend VMs in that group. Required when the
-	// loadBalancingScheme is EXTERNAL, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
+	// loadBalancingScheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
 	// and the backends are instance groups. The named port must be defined on each
 	// backend instance group. This parameter has no meaning if the backends are NEGs. API sets a
 	// default of "http" if not given.

@@ -151,6 +151,10 @@ export class Bucket extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * Prevents public access to a bucket.
+     */
+    public readonly publicAccessPrevention!: pulumi.Output<string>;
+    /**
      * Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
      */
     public readonly requesterPays!: pulumi.Output<boolean | undefined>;
@@ -206,6 +210,7 @@ export class Bucket extends pulumi.CustomResource {
             inputs["logging"] = state ? state.logging : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
+            inputs["publicAccessPrevention"] = state ? state.publicAccessPrevention : undefined;
             inputs["requesterPays"] = state ? state.requesterPays : undefined;
             inputs["retentionPolicy"] = state ? state.retentionPolicy : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
@@ -229,6 +234,7 @@ export class Bucket extends pulumi.CustomResource {
             inputs["logging"] = args ? args.logging : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["publicAccessPrevention"] = args ? args.publicAccessPrevention : undefined;
             inputs["requesterPays"] = args ? args.requesterPays : undefined;
             inputs["retentionPolicy"] = args ? args.retentionPolicy : undefined;
             inputs["storageClass"] = args ? args.storageClass : undefined;
@@ -289,6 +295,10 @@ export interface BucketState {
      * is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Prevents public access to a bucket.
+     */
+    publicAccessPrevention?: pulumi.Input<string>;
     /**
      * Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
      */
@@ -367,6 +377,10 @@ export interface BucketArgs {
      * is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Prevents public access to a bucket.
+     */
+    publicAccessPrevention?: pulumi.Input<string>;
     /**
      * Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
      */

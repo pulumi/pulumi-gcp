@@ -57,6 +57,8 @@ export class Provider extends pulumi.ProviderResource {
     public readonly composerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly computeCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly containerAnalysisCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly containerAwsCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly containerAzureCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly containerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly credentials!: pulumi.Output<string | undefined>;
     public readonly dataCatalogCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -172,6 +174,8 @@ export class Provider extends pulumi.ProviderResource {
             inputs["composerCustomEndpoint"] = args ? args.composerCustomEndpoint : undefined;
             inputs["computeCustomEndpoint"] = args ? args.computeCustomEndpoint : undefined;
             inputs["containerAnalysisCustomEndpoint"] = args ? args.containerAnalysisCustomEndpoint : undefined;
+            inputs["containerAwsCustomEndpoint"] = args ? args.containerAwsCustomEndpoint : undefined;
+            inputs["containerAzureCustomEndpoint"] = args ? args.containerAzureCustomEndpoint : undefined;
             inputs["containerCustomEndpoint"] = args ? args.containerCustomEndpoint : undefined;
             inputs["credentials"] = args ? args.credentials : undefined;
             inputs["dataCatalogCustomEndpoint"] = args ? args.dataCatalogCustomEndpoint : undefined;
@@ -291,6 +295,8 @@ export interface ProviderArgs {
     composerCustomEndpoint?: pulumi.Input<string>;
     computeCustomEndpoint?: pulumi.Input<string>;
     containerAnalysisCustomEndpoint?: pulumi.Input<string>;
+    containerAwsCustomEndpoint?: pulumi.Input<string>;
+    containerAzureCustomEndpoint?: pulumi.Input<string>;
     containerCustomEndpoint?: pulumi.Input<string>;
     credentials?: pulumi.Input<string>;
     dataCatalogCustomEndpoint?: pulumi.Input<string>;

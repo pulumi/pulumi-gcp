@@ -1250,6 +1250,7 @@ func (o EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput) UseIpAliases() p
 }
 
 type EnvironmentConfigPrivateEnvironmentConfig struct {
+	CloudComposerConnectionSubnetwork *string `pulumi:"cloudComposerConnectionSubnetwork"`
 	CloudComposerNetworkIpv4CidrBlock *string `pulumi:"cloudComposerNetworkIpv4CidrBlock"`
 	CloudSqlIpv4CidrBlock             *string `pulumi:"cloudSqlIpv4CidrBlock"`
 	EnablePrivateEndpoint             *bool   `pulumi:"enablePrivateEndpoint"`
@@ -1270,6 +1271,7 @@ type EnvironmentConfigPrivateEnvironmentConfigInput interface {
 }
 
 type EnvironmentConfigPrivateEnvironmentConfigArgs struct {
+	CloudComposerConnectionSubnetwork pulumi.StringPtrInput `pulumi:"cloudComposerConnectionSubnetwork"`
 	CloudComposerNetworkIpv4CidrBlock pulumi.StringPtrInput `pulumi:"cloudComposerNetworkIpv4CidrBlock"`
 	CloudSqlIpv4CidrBlock             pulumi.StringPtrInput `pulumi:"cloudSqlIpv4CidrBlock"`
 	EnablePrivateEndpoint             pulumi.BoolPtrInput   `pulumi:"enablePrivateEndpoint"`
@@ -1355,6 +1357,10 @@ func (o EnvironmentConfigPrivateEnvironmentConfigOutput) ToEnvironmentConfigPriv
 	}).(EnvironmentConfigPrivateEnvironmentConfigPtrOutput)
 }
 
+func (o EnvironmentConfigPrivateEnvironmentConfigOutput) CloudComposerConnectionSubnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfigPrivateEnvironmentConfig) *string { return v.CloudComposerConnectionSubnetwork }).(pulumi.StringPtrOutput)
+}
+
 func (o EnvironmentConfigPrivateEnvironmentConfigOutput) CloudComposerNetworkIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigPrivateEnvironmentConfig) *string { return v.CloudComposerNetworkIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
@@ -1401,6 +1407,15 @@ func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) Elem() EnvironmentCo
 		var ret EnvironmentConfigPrivateEnvironmentConfig
 		return ret
 	}).(EnvironmentConfigPrivateEnvironmentConfigOutput)
+}
+
+func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) CloudComposerConnectionSubnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfigPrivateEnvironmentConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudComposerConnectionSubnetwork
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) CloudComposerNetworkIpv4CidrBlock() pulumi.StringPtrOutput {
@@ -3479,6 +3494,7 @@ func (o GetEnvironmentConfigNodeConfigIpAllocationPolicyArrayOutput) Index(i pul
 }
 
 type GetEnvironmentConfigPrivateEnvironmentConfig struct {
+	CloudComposerConnectionSubnetwork string `pulumi:"cloudComposerConnectionSubnetwork"`
 	CloudComposerNetworkIpv4CidrBlock string `pulumi:"cloudComposerNetworkIpv4CidrBlock"`
 	CloudSqlIpv4CidrBlock             string `pulumi:"cloudSqlIpv4CidrBlock"`
 	EnablePrivateEndpoint             bool   `pulumi:"enablePrivateEndpoint"`
@@ -3499,6 +3515,7 @@ type GetEnvironmentConfigPrivateEnvironmentConfigInput interface {
 }
 
 type GetEnvironmentConfigPrivateEnvironmentConfigArgs struct {
+	CloudComposerConnectionSubnetwork pulumi.StringInput `pulumi:"cloudComposerConnectionSubnetwork"`
 	CloudComposerNetworkIpv4CidrBlock pulumi.StringInput `pulumi:"cloudComposerNetworkIpv4CidrBlock"`
 	CloudSqlIpv4CidrBlock             pulumi.StringInput `pulumi:"cloudSqlIpv4CidrBlock"`
 	EnablePrivateEndpoint             pulumi.BoolInput   `pulumi:"enablePrivateEndpoint"`
@@ -3556,6 +3573,12 @@ func (o GetEnvironmentConfigPrivateEnvironmentConfigOutput) ToGetEnvironmentConf
 
 func (o GetEnvironmentConfigPrivateEnvironmentConfigOutput) ToGetEnvironmentConfigPrivateEnvironmentConfigOutputWithContext(ctx context.Context) GetEnvironmentConfigPrivateEnvironmentConfigOutput {
 	return o
+}
+
+func (o GetEnvironmentConfigPrivateEnvironmentConfigOutput) CloudComposerConnectionSubnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigPrivateEnvironmentConfig) string {
+		return v.CloudComposerConnectionSubnetwork
+	}).(pulumi.StringOutput)
 }
 
 func (o GetEnvironmentConfigPrivateEnvironmentConfigOutput) CloudComposerNetworkIpv4CidrBlock() pulumi.StringOutput {

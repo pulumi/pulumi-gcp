@@ -5209,6 +5209,11 @@ export namespace cloudbuild {
          */
         artifacts?: pulumi.Input<inputs.cloudbuild.TriggerBuildArtifacts>;
         /**
+         * Secrets and secret environment variables.
+         * Structure is documented below.
+         */
+        availableSecrets?: pulumi.Input<inputs.cloudbuild.TriggerBuildAvailableSecrets>;
+        /**
          * A list of images to be pushed upon the successful completion of all build steps.
          * The images will be pushed using the builder service account's credentials.
          * The digests of the pushed images will be stored in the Build resource's results field.
@@ -5316,6 +5321,28 @@ export namespace cloudbuild {
          * nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
          */
         startTime?: pulumi.Input<string>;
+    }
+
+    export interface TriggerBuildAvailableSecrets {
+        /**
+         * Pairs a secret environment variable with a SecretVersion in Secret Manager.
+         * Structure is documented below.
+         */
+        secretManagers: pulumi.Input<pulumi.Input<inputs.cloudbuild.TriggerBuildAvailableSecretsSecretManager>[]>;
+    }
+
+    export interface TriggerBuildAvailableSecretsSecretManager {
+        /**
+         * A list of global environment variable definitions that will exist for all build steps
+         * in this build. If a variable is defined in both globally and in a build step,
+         * the variable will use the build step value.
+         * The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+         */
+        env: pulumi.Input<string>;
+        /**
+         * Resource name of the SecretVersion. In format: projects/*&#47;secrets/*&#47;versions/*
+         */
+        versionName: pulumi.Input<string>;
     }
 
     export interface TriggerBuildOptions {
@@ -5755,6 +5782,7 @@ export namespace cloudbuild {
          */
         noExternalIp?: pulumi.Input<boolean>;
     }
+
 }
 
 export namespace cloudfunctions {
@@ -6790,6 +6818,7 @@ export namespace composer {
     }
 
     export interface EnvironmentConfigPrivateEnvironmentConfig {
+        cloudComposerConnectionSubnetwork?: pulumi.Input<string>;
         cloudComposerNetworkIpv4CidrBlock?: pulumi.Input<string>;
         cloudSqlIpv4CidrBlock?: pulumi.Input<string>;
         enablePrivateEndpoint?: pulumi.Input<boolean>;
@@ -15002,6 +15031,485 @@ export namespace config {
 }
 
 export namespace container {
+    export interface AwsClusterAuthorization {
+        /**
+         * Required. Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+         */
+        adminUsers: pulumi.Input<pulumi.Input<inputs.container.AwsClusterAuthorizationAdminUser>[]>;
+    }
+
+    export interface AwsClusterAuthorizationAdminUser {
+        /**
+         * Required. The name of the user, e.g. `my-gcp-id@gmail.com`.
+         */
+        username: pulumi.Input<string>;
+    }
+
+    export interface AwsClusterControlPlane {
+        /**
+         * Required. Authentication configuration for management of AWS resources.
+         */
+        awsServicesAuthentication: pulumi.Input<inputs.container.AwsClusterControlPlaneAwsServicesAuthentication>;
+        /**
+         * Required. The ARN of the AWS KMS key used to encrypt cluster configuration.
+         */
+        configEncryption: pulumi.Input<inputs.container.AwsClusterControlPlaneConfigEncryption>;
+        /**
+         * Required. The ARN of the AWS KMS key used to encrypt cluster secrets.
+         */
+        databaseEncryption: pulumi.Input<inputs.container.AwsClusterControlPlaneDatabaseEncryption>;
+        /**
+         * Required. The name of the AWS IAM instance pofile to assign to each control plane replica.
+         */
+        iamInstanceProfile: pulumi.Input<string>;
+        /**
+         * Optional. The AWS instance type. When unspecified, it defaults to `t3.medium`.
+         */
+        instanceType?: pulumi.Input<string>;
+        /**
+         * Optional. Configuration related to the main volume provisioned for each control plane replica. The main volume is in charge of storing all of the cluster's etcd state. Volumes will be provisioned in the availability zone associated with the corresponding subnet. When unspecified, it defaults to 8 GiB with the GP2 volume type.
+         */
+        mainVolume?: pulumi.Input<inputs.container.AwsClusterControlPlaneMainVolume>;
+        /**
+         * Proxy configuration for outbound HTTP(S) traffic.
+         */
+        proxyConfig?: pulumi.Input<inputs.container.AwsClusterControlPlaneProxyConfig>;
+        /**
+         * Optional. Configuration related to the root volume provisioned for each control plane replica. Volumes will be provisioned in the availability zone associated with the corresponding subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
+         */
+        rootVolume?: pulumi.Input<inputs.container.AwsClusterControlPlaneRootVolume>;
+        /**
+         * Optional. The IDs of additional security groups to add to control plane replicas. The Anthos Multi-Cloud API will automatically create and manage security groups with the minimum rules needed for a functioning cluster.
+         */
+        securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Optional. SSH configuration for how to access the underlying control plane machines.
+         */
+        sshConfig?: pulumi.Input<inputs.container.AwsClusterControlPlaneSshConfig>;
+        /**
+         * Required. The list of subnets where control plane replicas will run. A replica will be provisioned on each subnet and up to three values can be provided. Each subnet must be in a different AWS Availability Zone (AZ).
+         */
+        subnetIds: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Optional. A set of AWS resource tags to propagate to all underlying managed AWS resources. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
+         */
+        tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Required. The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling .
+         */
+        version: pulumi.Input<string>;
+    }
+
+    export interface AwsClusterControlPlaneAwsServicesAuthentication {
+        /**
+         * Required. The Amazon Resource Name (ARN) of the role that the Anthos Multi-Cloud API will assume when managing AWS resources on your account.
+         */
+        roleArn: pulumi.Input<string>;
+        /**
+         * Optional. An identifier for the assumed role session. When unspecified, it defaults to `multicloud-service-agent`.
+         */
+        roleSessionName?: pulumi.Input<string>;
+    }
+
+    export interface AwsClusterControlPlaneConfigEncryption {
+        /**
+         * Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+         */
+        kmsKeyArn: pulumi.Input<string>;
+    }
+
+    export interface AwsClusterControlPlaneDatabaseEncryption {
+        /**
+         * Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+         */
+        kmsKeyArn: pulumi.Input<string>;
+    }
+
+    export interface AwsClusterControlPlaneMainVolume {
+        /**
+         * Optional. The number of I/O operations per second (IOPS) to provision for GP3 volume.
+         */
+        iops?: pulumi.Input<number>;
+        /**
+         * Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+         */
+        kmsKeyArn?: pulumi.Input<string>;
+        /**
+         * Optional. The size of the volume, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+         */
+        sizeGib?: pulumi.Input<number>;
+        /**
+         * Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
+         */
+        volumeType?: pulumi.Input<string>;
+    }
+
+    export interface AwsClusterControlPlaneProxyConfig {
+        /**
+         * The ARN of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
+         */
+        secretArn: pulumi.Input<string>;
+        /**
+         * The version string of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
+         */
+        secretVersion: pulumi.Input<string>;
+    }
+
+    export interface AwsClusterControlPlaneRootVolume {
+        /**
+         * Optional. The number of I/O operations per second (IOPS) to provision for GP3 volume.
+         */
+        iops?: pulumi.Input<number>;
+        /**
+         * Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+         */
+        kmsKeyArn?: pulumi.Input<string>;
+        /**
+         * Optional. The size of the volume, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+         */
+        sizeGib?: pulumi.Input<number>;
+        /**
+         * Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
+         */
+        volumeType?: pulumi.Input<string>;
+    }
+
+    export interface AwsClusterControlPlaneSshConfig {
+        /**
+         * Required. The name of the EC2 key pair used to login into cluster machines.
+         */
+        ec2KeyPair: pulumi.Input<string>;
+    }
+
+    export interface AwsClusterFleet {
+        /**
+         * -
+         * The name of the managed Hub Membership resource associated to this cluster. Membership names are formatted as projects/<project-number>/locations/global/membership/<cluster-id>.
+         */
+        membership?: pulumi.Input<string>;
+        /**
+         * The project for the resource
+         */
+        project?: pulumi.Input<string>;
+    }
+
+    export interface AwsClusterNetworking {
+        /**
+         * Required. All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+         */
+        podAddressCidrBlocks: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Required. All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+         */
+        serviceAddressCidrBlocks: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Required. The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
+         */
+        vpcId: pulumi.Input<string>;
+    }
+
+    export interface AwsClusterWorkloadIdentityConfig {
+        identityProvider?: pulumi.Input<string>;
+        issuerUri?: pulumi.Input<string>;
+        workloadPool?: pulumi.Input<string>;
+    }
+
+    export interface AwsNodePoolAutoscaling {
+        /**
+         * Required. Maximum number of nodes in the NodePool. Must be >= min_node_count.
+         */
+        maxNodeCount: pulumi.Input<number>;
+        /**
+         * Required. Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
+         */
+        minNodeCount: pulumi.Input<number>;
+    }
+
+    export interface AwsNodePoolConfig {
+        /**
+         * Required. The ARN of the AWS KMS key used to encrypt node pool configuration.
+         */
+        configEncryption: pulumi.Input<inputs.container.AwsNodePoolConfigConfigEncryption>;
+        /**
+         * Required. The name of the AWS IAM role assigned to nodes in the pool.
+         */
+        iamInstanceProfile: pulumi.Input<string>;
+        /**
+         * Optional. The AWS instance type. When unspecified, it defaults to `t3.medium`.
+         */
+        instanceType?: pulumi.Input<string>;
+        /**
+         * Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+         */
+        labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Optional. Template for the root volume provisioned for node pool nodes. Volumes will be provisioned in the availability zone assigned to the node pool subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
+         */
+        rootVolume?: pulumi.Input<inputs.container.AwsNodePoolConfigRootVolume>;
+        /**
+         * Optional. The IDs of additional security groups to add to nodes in this pool. The manager will automatically create security groups with minimum rules needed for a functioning cluster.
+         */
+        securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Optional. The SSH configuration.
+         */
+        sshConfig?: pulumi.Input<inputs.container.AwsNodePoolConfigSshConfig>;
+        /**
+         * Optional. Key/value metadata to assign to each underlying AWS resource. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
+         */
+        tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Optional. The initial taints assigned to nodes of this node pool.
+         */
+        taints?: pulumi.Input<pulumi.Input<inputs.container.AwsNodePoolConfigTaint>[]>;
+    }
+
+    export interface AwsNodePoolConfigConfigEncryption {
+        /**
+         * Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+         */
+        kmsKeyArn: pulumi.Input<string>;
+    }
+
+    export interface AwsNodePoolConfigRootVolume {
+        /**
+         * Optional. The number of I/O operations per second (IOPS) to provision for GP3 volume.
+         */
+        iops?: pulumi.Input<number>;
+        /**
+         * Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+         */
+        kmsKeyArn?: pulumi.Input<string>;
+        /**
+         * Optional. The size of the volume, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+         */
+        sizeGib?: pulumi.Input<number>;
+        /**
+         * Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
+         */
+        volumeType?: pulumi.Input<string>;
+    }
+
+    export interface AwsNodePoolConfigSshConfig {
+        /**
+         * Required. The name of the EC2 key pair used to login into cluster machines.
+         */
+        ec2KeyPair: pulumi.Input<string>;
+    }
+
+    export interface AwsNodePoolConfigTaint {
+        /**
+         * Required. The taint effect. Possible values: EFFECT_UNSPECIFIED, NO_SCHEDULE, PREFER_NO_SCHEDULE, NO_EXECUTE
+         */
+        effect: pulumi.Input<string>;
+        /**
+         * Required. Key for the taint.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * Required. Value for the taint.
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface AwsNodePoolMaxPodsConstraint {
+        /**
+         * Required. The maximum number of pods to schedule on a single node.
+         */
+        maxPodsPerNode: pulumi.Input<number>;
+    }
+
+    export interface AzureClusterAuthorization {
+        /**
+         * Required. Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+         */
+        adminUsers: pulumi.Input<pulumi.Input<inputs.container.AzureClusterAuthorizationAdminUser>[]>;
+    }
+
+    export interface AzureClusterAuthorizationAdminUser {
+        /**
+         * Required. The name of the user, e.g. `my-gcp-id@gmail.com`.
+         */
+        username: pulumi.Input<string>;
+    }
+
+    export interface AzureClusterControlPlane {
+        /**
+         * Optional. Configuration related to application-layer secrets encryption.
+         */
+        databaseEncryption?: pulumi.Input<inputs.container.AzureClusterControlPlaneDatabaseEncryption>;
+        /**
+         * Optional. Configuration related to the main volume provisioned for each control plane replica. The main volume is in charge of storing all of the cluster's etcd state. When unspecified, it defaults to a 8-GiB Azure Disk.
+         */
+        mainVolume?: pulumi.Input<inputs.container.AzureClusterControlPlaneMainVolume>;
+        /**
+         * Proxy configuration for outbound HTTP(S) traffic.
+         */
+        proxyConfig?: pulumi.Input<inputs.container.AzureClusterControlPlaneProxyConfig>;
+        /**
+         * Configuration for where to place the control plane replicas. Up to three replica placement instances can be specified. If replicaPlacements is set, the replica placement instances will be applied to the three control plane replicas as evenly as possible.
+         */
+        replicaPlacements?: pulumi.Input<pulumi.Input<inputs.container.AzureClusterControlPlaneReplicaPlacement>[]>;
+        /**
+         * Optional. Configuration related to the root volume provisioned for each control plane replica. When unspecified, it defaults to 32-GiB Azure Disk.
+         */
+        rootVolume?: pulumi.Input<inputs.container.AzureClusterControlPlaneRootVolume>;
+        /**
+         * Required. SSH configuration for how to access the underlying control plane machines.
+         */
+        sshConfig: pulumi.Input<inputs.container.AzureClusterControlPlaneSshConfig>;
+        /**
+         * For a given replica, the ARM ID of the subnet where the control plane VM is deployed. Make sure it's a subnet under the virtual network in the cluster configuration.
+         */
+        subnetId: pulumi.Input<string>;
+        /**
+         * Optional. A set of tags to apply to all underlying control plane Azure resources.
+         */
+        tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Required. The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAzureServerConfig.
+         */
+        version: pulumi.Input<string>;
+        /**
+         * Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions. When unspecified, it defaults to `Standard_DS2_v2`.
+         */
+        vmSize?: pulumi.Input<string>;
+    }
+
+    export interface AzureClusterControlPlaneDatabaseEncryption {
+        /**
+         * The ARM ID of the Azure Key Vault key to encrypt / decrypt data. For example: `/subscriptions/<subscription-id>/resourceGroups/<resource-group-id>/providers/Microsoft.KeyVault/vaults/<key-vault-id>/keys/<key-name>` Encryption will always take the latest version of the key and hence specific version is not supported.
+         */
+        keyId: pulumi.Input<string>;
+    }
+
+    export interface AzureClusterControlPlaneMainVolume {
+        /**
+         * Optional. The size of the disk, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+         */
+        sizeGib?: pulumi.Input<number>;
+    }
+
+    export interface AzureClusterControlPlaneProxyConfig {
+        /**
+         * The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>`
+         */
+        resourceGroupId: pulumi.Input<string>;
+        /**
+         * The URL the of the proxy setting secret with its version. Secret ids are formatted as `https:<key-vault-name>.vault.azure.net/secrets/<secret-name>/<secret-version>`.
+         */
+        secretId: pulumi.Input<string>;
+    }
+
+    export interface AzureClusterControlPlaneReplicaPlacement {
+        /**
+         * For a given replica, the Azure availability zone where to provision the control plane VM and the ETCD disk.
+         */
+        azureAvailabilityZone: pulumi.Input<string>;
+        /**
+         * For a given replica, the ARM ID of the subnet where the control plane VM is deployed. Make sure it's a subnet under the virtual network in the cluster configuration.
+         */
+        subnetId: pulumi.Input<string>;
+    }
+
+    export interface AzureClusterControlPlaneRootVolume {
+        /**
+         * Optional. The size of the disk, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+         */
+        sizeGib?: pulumi.Input<number>;
+    }
+
+    export interface AzureClusterControlPlaneSshConfig {
+        /**
+         * Required. The SSH public key data for VMs managed by Anthos. This accepts the authorizedKeys file format used in OpenSSH according to the sshd(8) manual page.
+         */
+        authorizedKey: pulumi.Input<string>;
+    }
+
+    export interface AzureClusterFleet {
+        /**
+         * -
+         * The name of the managed Hub Membership resource associated to this cluster. Membership names are formatted as projects/<project-number>/locations/global/membership/<cluster-id>.
+         */
+        membership?: pulumi.Input<string>;
+        /**
+         * The project for the resource
+         */
+        project?: pulumi.Input<string>;
+    }
+
+    export interface AzureClusterNetworking {
+        /**
+         * Required. The IP address range of the pods in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All pods in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+         */
+        podAddressCidrBlocks: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Required. The IP address range for services in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All services in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creating a cluster.
+         */
+        serviceAddressCidrBlocks: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Required. The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*&#47;resourceGroups/*&#47;providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
+         */
+        virtualNetworkId: pulumi.Input<string>;
+    }
+
+    export interface AzureClusterWorkloadIdentityConfig {
+        identityProvider?: pulumi.Input<string>;
+        issuerUri?: pulumi.Input<string>;
+        workloadPool?: pulumi.Input<string>;
+    }
+
+    export interface AzureNodePoolAutoscaling {
+        /**
+         * Required. Maximum number of nodes in the node pool. Must be >= min_node_count.
+         */
+        maxNodeCount: pulumi.Input<number>;
+        /**
+         * Required. Minimum number of nodes in the node pool. Must be >= 1 and <= max_node_count.
+         */
+        minNodeCount: pulumi.Input<number>;
+    }
+
+    export interface AzureNodePoolConfig {
+        /**
+         * Optional. Configuration related to the root volume provisioned for each node pool machine. When unspecified, it defaults to a 32-GiB Azure Disk.
+         */
+        rootVolume?: pulumi.Input<inputs.container.AzureNodePoolConfigRootVolume>;
+        /**
+         * Required. SSH configuration for how to access the node pool machines.
+         */
+        sshConfig: pulumi.Input<inputs.container.AzureNodePoolConfigSshConfig>;
+        /**
+         * Optional. A set of tags to apply to all underlying Azure resources for this node pool. This currently only includes Virtual Machine Scale Sets. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
+         */
+        tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Optional. The Azure VM size name. Example: `Standard_DS2_v2`. See (/anthos/clusters/docs/azure/reference/supported-vms) for options. When unspecified, it defaults to `Standard_DS2_v2`.
+         */
+        vmSize?: pulumi.Input<string>;
+    }
+
+    export interface AzureNodePoolConfigRootVolume {
+        /**
+         * Optional. The size of the disk, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+         */
+        sizeGib?: pulumi.Input<number>;
+    }
+
+    export interface AzureNodePoolConfigSshConfig {
+        /**
+         * Required. The SSH public key data for VMs managed by Anthos. This accepts the authorizedKeys file format used in OpenSSH according to the sshd(8) manual page.
+         */
+        authorizedKey: pulumi.Input<string>;
+    }
+
+    export interface AzureNodePoolMaxPodsConstraint {
+        /**
+         * Required. The maximum number of pods to schedule on a single node.
+         */
+        maxPodsPerNode: pulumi.Input<number>;
+    }
+
     export interface ClusterAddonsConfig {
         /**
          * . Structure is documented below.
@@ -16197,7 +16705,6 @@ export namespace container {
          */
         maxUnavailable: pulumi.Input<number>;
     }
-
 }
 
 export namespace containeranalysis {

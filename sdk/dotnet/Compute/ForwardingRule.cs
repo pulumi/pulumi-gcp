@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.Compute
     ///     public MyStack()
     ///     {
     ///         // Internal HTTP load balancer with a managed instance group backend
-    ///         // VPC
+    ///         // VPC network
     ///         var ilbNetwork = new Gcp.Compute.Network("ilbNetwork", new Gcp.Compute.NetworkArgs
     ///         {
     ///             AutoCreateSubnetworks = false,
@@ -52,7 +52,7 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             Provider = google_beta,
     ///         });
-    ///         // backed subnet
+    ///         // backend subnet
     ///         var ilbSubnet = new Gcp.Compute.Subnetwork("ilbSubnet", new Gcp.Compute.SubnetworkArgs
     ///         {
     ///             IpCidrRange = "10.0.1.0/24",
@@ -171,7 +171,7 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             Provider = google_beta,
     ///         });
-    ///         // url map
+    ///         // URL map
     ///         var defaultRegionUrlMap = new Gcp.Compute.RegionUrlMap("defaultRegionUrlMap", new Gcp.Compute.RegionUrlMapArgs
     ///         {
     ///             Region = "europe-west1",
@@ -180,7 +180,7 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             Provider = google_beta,
     ///         });
-    ///         // http proxy
+    ///         // HTTP target proxy
     ///         var defaultRegionTargetHttpProxy = new Gcp.Compute.RegionTargetHttpProxy("defaultRegionTargetHttpProxy", new Gcp.Compute.RegionTargetHttpProxyArgs
     ///         {
     ///             Region = "europe-west1",
@@ -1066,6 +1066,313 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// }
     /// ```
+    /// ### Forwarding Rule Regional Http Xlb
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var debianImage = Output.Create(Gcp.Compute.GetImage.InvokeAsync(new Gcp.Compute.GetImageArgs
+    ///         {
+    ///             Family = "debian-9",
+    ///             Project = "debian-cloud",
+    ///         }));
+    ///         var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new Gcp.Compute.NetworkArgs
+    ///         {
+    ///             AutoCreateSubnetworks = false,
+    ///             RoutingMode = "REGIONAL",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var defaultSubnetwork = new Gcp.Compute.Subnetwork("defaultSubnetwork", new Gcp.Compute.SubnetworkArgs
+    ///         {
+    ///             IpCidrRange = "10.1.2.0/24",
+    ///             Region = "us-central1",
+    ///             Network = defaultNetwork.Id,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var instanceTemplate = new Gcp.Compute.InstanceTemplate("instanceTemplate", new Gcp.Compute.InstanceTemplateArgs
+    ///         {
+    ///             MachineType = "e2-medium",
+    ///             NetworkInterfaces = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
+    ///                 {
+    ///                     Network = defaultNetwork.Id,
+    ///                     Subnetwork = defaultSubnetwork.Id,
+    ///                 },
+    ///             },
+    ///             Disks = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+    ///                 {
+    ///                     SourceImage = debianImage.Apply(debianImage =&gt; debianImage.SelfLink),
+    ///                     AutoDelete = true,
+    ///                     Boot = true,
+    ///                 },
+    ///             },
+    ///             Tags = 
+    ///             {
+    ///                 "allow-ssh",
+    ///                 "load-balanced-backend",
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var rigm = new Gcp.Compute.RegionInstanceGroupManager("rigm", new Gcp.Compute.RegionInstanceGroupManagerArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             Versions = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.RegionInstanceGroupManagerVersionArgs
+    ///                 {
+    ///                     InstanceTemplate = instanceTemplate.Id,
+    ///                     Name = "primary",
+    ///                 },
+    ///             },
+    ///             BaseInstanceName = "internal-glb",
+    ///             TargetSize = 1,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var fw1 = new Gcp.Compute.Firewall("fw1", new Gcp.Compute.FirewallArgs
+    ///         {
+    ///             Network = defaultNetwork.Id,
+    ///             SourceRanges = 
+    ///             {
+    ///                 "10.1.2.0/24",
+    ///             },
+    ///             Allows = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///                 {
+    ///                     Protocol = "tcp",
+    ///                 },
+    ///                 new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///                 {
+    ///                     Protocol = "udp",
+    ///                 },
+    ///                 new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///                 {
+    ///                     Protocol = "icmp",
+    ///                 },
+    ///             },
+    ///             Direction = "INGRESS",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var fw2 = new Gcp.Compute.Firewall("fw2", new Gcp.Compute.FirewallArgs
+    ///         {
+    ///             Network = defaultNetwork.Id,
+    ///             SourceRanges = 
+    ///             {
+    ///                 "0.0.0.0/0",
+    ///             },
+    ///             Allows = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///                 {
+    ///                     Protocol = "tcp",
+    ///                     Ports = 
+    ///                     {
+    ///                         "22",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             TargetTags = 
+    ///             {
+    ///                 "allow-ssh",
+    ///             },
+    ///             Direction = "INGRESS",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///             DependsOn = 
+    ///             {
+    ///                 fw1,
+    ///             },
+    ///         });
+    ///         var fw3 = new Gcp.Compute.Firewall("fw3", new Gcp.Compute.FirewallArgs
+    ///         {
+    ///             Network = defaultNetwork.Id,
+    ///             SourceRanges = 
+    ///             {
+    ///                 "130.211.0.0/22",
+    ///                 "35.191.0.0/16",
+    ///             },
+    ///             Allows = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///                 {
+    ///                     Protocol = "tcp",
+    ///                 },
+    ///             },
+    ///             TargetTags = 
+    ///             {
+    ///                 "load-balanced-backend",
+    ///             },
+    ///             Direction = "INGRESS",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///             DependsOn = 
+    ///             {
+    ///                 fw2,
+    ///             },
+    ///         });
+    ///         var fw4 = new Gcp.Compute.Firewall("fw4", new Gcp.Compute.FirewallArgs
+    ///         {
+    ///             Network = defaultNetwork.Id,
+    ///             SourceRanges = 
+    ///             {
+    ///                 "10.129.0.0/26",
+    ///             },
+    ///             TargetTags = 
+    ///             {
+    ///                 "load-balanced-backend",
+    ///             },
+    ///             Allows = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///                 {
+    ///                     Protocol = "tcp",
+    ///                     Ports = 
+    ///                     {
+    ///                         "80",
+    ///                     },
+    ///                 },
+    ///                 new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///                 {
+    ///                     Protocol = "tcp",
+    ///                     Ports = 
+    ///                     {
+    ///                         "443",
+    ///                     },
+    ///                 },
+    ///                 new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///                 {
+    ///                     Protocol = "tcp",
+    ///                     Ports = 
+    ///                     {
+    ///                         "8000",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Direction = "INGRESS",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///             DependsOn = 
+    ///             {
+    ///                 fw3,
+    ///             },
+    ///         });
+    ///         var defaultRegionHealthCheck = new Gcp.Compute.RegionHealthCheck("defaultRegionHealthCheck", new Gcp.Compute.RegionHealthCheckArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             HttpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckHttpHealthCheckArgs
+    ///             {
+    ///                 PortSpecification = "USE_SERVING_PORT",
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///             DependsOn = 
+    ///             {
+    ///                 fw4,
+    ///             },
+    ///         });
+    ///         var defaultRegionBackendService = new Gcp.Compute.RegionBackendService("defaultRegionBackendService", new Gcp.Compute.RegionBackendServiceArgs
+    ///         {
+    ///             LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///             Backends = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.RegionBackendServiceBackendArgs
+    ///                 {
+    ///                     Group = rigm.InstanceGroup,
+    ///                     BalancingMode = "UTILIZATION",
+    ///                     CapacityScaler = 1,
+    ///                 },
+    ///             },
+    ///             Region = "us-central1",
+    ///             Protocol = "HTTP",
+    ///             TimeoutSec = 10,
+    ///             HealthChecks = 
+    ///             {
+    ///                 defaultRegionHealthCheck.Id,
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var defaultRegionUrlMap = new Gcp.Compute.RegionUrlMap("defaultRegionUrlMap", new Gcp.Compute.RegionUrlMapArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             DefaultService = defaultRegionBackendService.Id,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var defaultRegionTargetHttpProxy = new Gcp.Compute.RegionTargetHttpProxy("defaultRegionTargetHttpProxy", new Gcp.Compute.RegionTargetHttpProxyArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             UrlMap = defaultRegionUrlMap.Id,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var defaultAddress = new Gcp.Compute.Address("defaultAddress", new Gcp.Compute.AddressArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             NetworkTier = "STANDARD",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var proxy = new Gcp.Compute.Subnetwork("proxy", new Gcp.Compute.SubnetworkArgs
+    ///         {
+    ///             IpCidrRange = "10.129.0.0/26",
+    ///             Region = "us-central1",
+    ///             Network = defaultNetwork.Id,
+    ///             Purpose = "REGIONAL_MANAGED_PROXY",
+    ///             Role = "ACTIVE",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         // Forwarding rule for Regional External Load Balancing
+    ///         var defaultForwardingRule = new Gcp.Compute.ForwardingRule("defaultForwardingRule", new Gcp.Compute.ForwardingRuleArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             IpProtocol = "TCP",
+    ///             LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///             PortRange = "80",
+    ///             Target = defaultRegionTargetHttpProxy.Id,
+    ///             Network = defaultNetwork.Id,
+    ///             IpAddress = defaultAddress.Id,
+    ///             NetworkTier = "STANDARD",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///             DependsOn = 
+    ///             {
+    ///                 proxy,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -1181,14 +1488,15 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// This signifies what the ForwardingRule will be used for and can be
-        /// EXTERNAL, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
+        /// EXTERNAL, EXTERNAL_MANAGED, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
         /// Cloud VPN gateways, protocol forwarding to VMs from an external IP address,
         /// and HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP load balancers.
         /// INTERNAL is used for protocol forwarding to VMs from an internal IP address,
         /// and internal TCP/UDP load balancers.
+        /// EXTERNAL_MANAGED is used for regional external HTTP(S) load balancers.
         /// INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
         /// Default value is `EXTERNAL`.
-        /// Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
+        /// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
         /// </summary>
         [Output("loadBalancingScheme")]
         public Output<string?> LoadBalancingScheme { get; private set; } = null!;
@@ -1449,14 +1757,15 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// This signifies what the ForwardingRule will be used for and can be
-        /// EXTERNAL, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
+        /// EXTERNAL, EXTERNAL_MANAGED, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
         /// Cloud VPN gateways, protocol forwarding to VMs from an external IP address,
         /// and HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP load balancers.
         /// INTERNAL is used for protocol forwarding to VMs from an internal IP address,
         /// and internal TCP/UDP load balancers.
+        /// EXTERNAL_MANAGED is used for regional external HTTP(S) load balancers.
         /// INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
         /// Default value is `EXTERNAL`.
-        /// Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
+        /// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
         /// </summary>
         [Input("loadBalancingScheme")]
         public Input<string>? LoadBalancingScheme { get; set; }
@@ -1683,14 +1992,15 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// This signifies what the ForwardingRule will be used for and can be
-        /// EXTERNAL, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
+        /// EXTERNAL, EXTERNAL_MANAGED, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
         /// Cloud VPN gateways, protocol forwarding to VMs from an external IP address,
         /// and HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP load balancers.
         /// INTERNAL is used for protocol forwarding to VMs from an internal IP address,
         /// and internal TCP/UDP load balancers.
+        /// EXTERNAL_MANAGED is used for regional external HTTP(S) load balancers.
         /// INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
         /// Default value is `EXTERNAL`.
-        /// Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
+        /// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
         /// </summary>
         [Input("loadBalancingScheme")]
         public Input<string>? LoadBalancingScheme { get; set; }

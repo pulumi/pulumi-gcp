@@ -97,6 +97,11 @@ type Routine struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
+	// If absent, the return table type is inferred from definitionBody at query time in each query
+	// that references this routine. If present, then the columns in the evaluated table result will
+	// be cast to match the column types specificed in return table type, at query time.
+	ReturnTableType pulumi.StringPtrOutput `pulumi:"returnTableType"`
 	// A JSON schema for the return type. Optional if language = "SQL"; required otherwise.
 	// If absent, the return type is inferred from definitionBody at query time in each query
 	// that references this routine. If present, then the evaluated result will be cast to
@@ -110,7 +115,7 @@ type Routine struct {
 	// The ID of the the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
 	RoutineId pulumi.StringOutput `pulumi:"routineId"`
 	// The type of routine.
-	// Possible values are `SCALAR_FUNCTION` and `PROCEDURE`.
+	// Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
 	RoutineType pulumi.StringPtrOutput `pulumi:"routineType"`
 }
 
@@ -178,6 +183,11 @@ type routineState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
+	// If absent, the return table type is inferred from definitionBody at query time in each query
+	// that references this routine. If present, then the columns in the evaluated table result will
+	// be cast to match the column types specificed in return table type, at query time.
+	ReturnTableType *string `pulumi:"returnTableType"`
 	// A JSON schema for the return type. Optional if language = "SQL"; required otherwise.
 	// If absent, the return type is inferred from definitionBody at query time in each query
 	// that references this routine. If present, then the evaluated result will be cast to
@@ -191,7 +201,7 @@ type routineState struct {
 	// The ID of the the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
 	RoutineId *string `pulumi:"routineId"`
 	// The type of routine.
-	// Possible values are `SCALAR_FUNCTION` and `PROCEDURE`.
+	// Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
 	RoutineType *string `pulumi:"routineType"`
 }
 
@@ -222,6 +232,11 @@ type RoutineState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
+	// If absent, the return table type is inferred from definitionBody at query time in each query
+	// that references this routine. If present, then the columns in the evaluated table result will
+	// be cast to match the column types specificed in return table type, at query time.
+	ReturnTableType pulumi.StringPtrInput
 	// A JSON schema for the return type. Optional if language = "SQL"; required otherwise.
 	// If absent, the return type is inferred from definitionBody at query time in each query
 	// that references this routine. If present, then the evaluated result will be cast to
@@ -235,7 +250,7 @@ type RoutineState struct {
 	// The ID of the the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
 	RoutineId pulumi.StringPtrInput
 	// The type of routine.
-	// Possible values are `SCALAR_FUNCTION` and `PROCEDURE`.
+	// Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
 	RoutineType pulumi.StringPtrInput
 }
 
@@ -266,6 +281,11 @@ type routineArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
+	// If absent, the return table type is inferred from definitionBody at query time in each query
+	// that references this routine. If present, then the columns in the evaluated table result will
+	// be cast to match the column types specificed in return table type, at query time.
+	ReturnTableType *string `pulumi:"returnTableType"`
 	// A JSON schema for the return type. Optional if language = "SQL"; required otherwise.
 	// If absent, the return type is inferred from definitionBody at query time in each query
 	// that references this routine. If present, then the evaluated result will be cast to
@@ -279,7 +299,7 @@ type routineArgs struct {
 	// The ID of the the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
 	RoutineId string `pulumi:"routineId"`
 	// The type of routine.
-	// Possible values are `SCALAR_FUNCTION` and `PROCEDURE`.
+	// Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
 	RoutineType *string `pulumi:"routineType"`
 }
 
@@ -307,6 +327,11 @@ type RoutineArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
+	// If absent, the return table type is inferred from definitionBody at query time in each query
+	// that references this routine. If present, then the columns in the evaluated table result will
+	// be cast to match the column types specificed in return table type, at query time.
+	ReturnTableType pulumi.StringPtrInput
 	// A JSON schema for the return type. Optional if language = "SQL"; required otherwise.
 	// If absent, the return type is inferred from definitionBody at query time in each query
 	// that references this routine. If present, then the evaluated result will be cast to
@@ -320,7 +345,7 @@ type RoutineArgs struct {
 	// The ID of the the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
 	RoutineId pulumi.StringInput
 	// The type of routine.
-	// Possible values are `SCALAR_FUNCTION` and `PROCEDURE`.
+	// Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
 	RoutineType pulumi.StringPtrInput
 }
 

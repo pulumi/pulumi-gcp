@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * // Internal HTTP load balancer with a managed instance group backend
- * // VPC
+ * // VPC network
  * const ilbNetwork = new gcp.compute.Network("ilbNetwork", {autoCreateSubnetworks: false}, {
  *     provider: google_beta,
  * });
@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  * }, {
  *     provider: google_beta,
  * });
- * // backed subnet
+ * // backend subnet
  * const ilbSubnet = new gcp.compute.Subnetwork("ilbSubnet", {
  *     ipCidrRange: "10.0.1.0/24",
  *     region: "europe-west1",
@@ -119,14 +119,14 @@ import * as utilities from "../utilities";
  * }, {
  *     provider: google_beta,
  * });
- * // url map
+ * // URL map
  * const defaultRegionUrlMap = new gcp.compute.RegionUrlMap("defaultRegionUrlMap", {
  *     region: "europe-west1",
  *     defaultService: defaultRegionBackendService.id,
  * }, {
  *     provider: google_beta,
  * });
- * // http proxy
+ * // HTTP target proxy
  * const defaultRegionTargetHttpProxy = new gcp.compute.RegionTargetHttpProxy("defaultRegionTargetHttpProxy", {
  *     region: "europe-west1",
  *     urlMap: defaultRegionUrlMap.id,
@@ -688,6 +688,192 @@ import * as utilities from "../utilities";
  *     dependsOn: [proxy],
  * });
  * ```
+ * ### Forwarding Rule Regional Http Xlb
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const debianImage = gcp.compute.getImage({
+ *     family: "debian-9",
+ *     project: "debian-cloud",
+ * });
+ * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {
+ *     autoCreateSubnetworks: false,
+ *     routingMode: "REGIONAL",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
+ *     ipCidrRange: "10.1.2.0/24",
+ *     region: "us-central1",
+ *     network: defaultNetwork.id,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const instanceTemplate = new gcp.compute.InstanceTemplate("instanceTemplate", {
+ *     machineType: "e2-medium",
+ *     networkInterfaces: [{
+ *         network: defaultNetwork.id,
+ *         subnetwork: defaultSubnetwork.id,
+ *     }],
+ *     disks: [{
+ *         sourceImage: debianImage.then(debianImage => debianImage.selfLink),
+ *         autoDelete: true,
+ *         boot: true,
+ *     }],
+ *     tags: [
+ *         "allow-ssh",
+ *         "load-balanced-backend",
+ *     ],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const rigm = new gcp.compute.RegionInstanceGroupManager("rigm", {
+ *     region: "us-central1",
+ *     versions: [{
+ *         instanceTemplate: instanceTemplate.id,
+ *         name: "primary",
+ *     }],
+ *     baseInstanceName: "internal-glb",
+ *     targetSize: 1,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const fw1 = new gcp.compute.Firewall("fw1", {
+ *     network: defaultNetwork.id,
+ *     sourceRanges: ["10.1.2.0/24"],
+ *     allows: [
+ *         {
+ *             protocol: "tcp",
+ *         },
+ *         {
+ *             protocol: "udp",
+ *         },
+ *         {
+ *             protocol: "icmp",
+ *         },
+ *     ],
+ *     direction: "INGRESS",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const fw2 = new gcp.compute.Firewall("fw2", {
+ *     network: defaultNetwork.id,
+ *     sourceRanges: ["0.0.0.0/0"],
+ *     allows: [{
+ *         protocol: "tcp",
+ *         ports: ["22"],
+ *     }],
+ *     targetTags: ["allow-ssh"],
+ *     direction: "INGRESS",
+ * }, {
+ *     provider: google_beta,
+ *     dependsOn: [fw1],
+ * });
+ * const fw3 = new gcp.compute.Firewall("fw3", {
+ *     network: defaultNetwork.id,
+ *     sourceRanges: [
+ *         "130.211.0.0/22",
+ *         "35.191.0.0/16",
+ *     ],
+ *     allows: [{
+ *         protocol: "tcp",
+ *     }],
+ *     targetTags: ["load-balanced-backend"],
+ *     direction: "INGRESS",
+ * }, {
+ *     provider: google_beta,
+ *     dependsOn: [fw2],
+ * });
+ * const fw4 = new gcp.compute.Firewall("fw4", {
+ *     network: defaultNetwork.id,
+ *     sourceRanges: ["10.129.0.0/26"],
+ *     targetTags: ["load-balanced-backend"],
+ *     allows: [
+ *         {
+ *             protocol: "tcp",
+ *             ports: ["80"],
+ *         },
+ *         {
+ *             protocol: "tcp",
+ *             ports: ["443"],
+ *         },
+ *         {
+ *             protocol: "tcp",
+ *             ports: ["8000"],
+ *         },
+ *     ],
+ *     direction: "INGRESS",
+ * }, {
+ *     provider: google_beta,
+ *     dependsOn: [fw3],
+ * });
+ * const defaultRegionHealthCheck = new gcp.compute.RegionHealthCheck("defaultRegionHealthCheck", {
+ *     region: "us-central1",
+ *     httpHealthCheck: {
+ *         portSpecification: "USE_SERVING_PORT",
+ *     },
+ * }, {
+ *     provider: google_beta,
+ *     dependsOn: [fw4],
+ * });
+ * const defaultRegionBackendService = new gcp.compute.RegionBackendService("defaultRegionBackendService", {
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ *     backends: [{
+ *         group: rigm.instanceGroup,
+ *         balancingMode: "UTILIZATION",
+ *         capacityScaler: 1,
+ *     }],
+ *     region: "us-central1",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     healthChecks: [defaultRegionHealthCheck.id],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultRegionUrlMap = new gcp.compute.RegionUrlMap("defaultRegionUrlMap", {
+ *     region: "us-central1",
+ *     defaultService: defaultRegionBackendService.id,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultRegionTargetHttpProxy = new gcp.compute.RegionTargetHttpProxy("defaultRegionTargetHttpProxy", {
+ *     region: "us-central1",
+ *     urlMap: defaultRegionUrlMap.id,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultAddress = new gcp.compute.Address("defaultAddress", {
+ *     region: "us-central1",
+ *     networkTier: "STANDARD",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const proxy = new gcp.compute.Subnetwork("proxy", {
+ *     ipCidrRange: "10.129.0.0/26",
+ *     region: "us-central1",
+ *     network: defaultNetwork.id,
+ *     purpose: "REGIONAL_MANAGED_PROXY",
+ *     role: "ACTIVE",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * // Forwarding rule for Regional External Load Balancing
+ * const defaultForwardingRule = new gcp.compute.ForwardingRule("defaultForwardingRule", {
+ *     region: "us-central1",
+ *     ipProtocol: "TCP",
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ *     portRange: "80",
+ *     target: defaultRegionTargetHttpProxy.id,
+ *     network: defaultNetwork.id,
+ *     ipAddress: defaultAddress.id,
+ *     networkTier: "STANDARD",
+ * }, {
+ *     provider: google_beta,
+ *     dependsOn: [proxy],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -808,14 +994,15 @@ export class ForwardingRule extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * This signifies what the ForwardingRule will be used for and can be
-     * EXTERNAL, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
+     * EXTERNAL, EXTERNAL_MANAGED, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
      * Cloud VPN gateways, protocol forwarding to VMs from an external IP address,
      * and HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP load balancers.
      * INTERNAL is used for protocol forwarding to VMs from an internal IP address,
      * and internal TCP/UDP load balancers.
+     * EXTERNAL_MANAGED is used for regional external HTTP(S) load balancers.
      * INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
      * Default value is `EXTERNAL`.
-     * Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
+     * Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
      */
     public readonly loadBalancingScheme!: pulumi.Output<string | undefined>;
     /**
@@ -1064,14 +1251,15 @@ export interface ForwardingRuleState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * This signifies what the ForwardingRule will be used for and can be
-     * EXTERNAL, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
+     * EXTERNAL, EXTERNAL_MANAGED, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
      * Cloud VPN gateways, protocol forwarding to VMs from an external IP address,
      * and HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP load balancers.
      * INTERNAL is used for protocol forwarding to VMs from an internal IP address,
      * and internal TCP/UDP load balancers.
+     * EXTERNAL_MANAGED is used for regional external HTTP(S) load balancers.
      * INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
      * Default value is `EXTERNAL`.
-     * Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
+     * Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
      */
     loadBalancingScheme?: pulumi.Input<string>;
     /**
@@ -1244,14 +1432,15 @@ export interface ForwardingRuleArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * This signifies what the ForwardingRule will be used for and can be
-     * EXTERNAL, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
+     * EXTERNAL, EXTERNAL_MANAGED, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
      * Cloud VPN gateways, protocol forwarding to VMs from an external IP address,
      * and HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP load balancers.
      * INTERNAL is used for protocol forwarding to VMs from an internal IP address,
      * and internal TCP/UDP load balancers.
+     * EXTERNAL_MANAGED is used for regional external HTTP(S) load balancers.
      * INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
      * Default value is `EXTERNAL`.
-     * Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
+     * Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
      */
     loadBalancingScheme?: pulumi.Input<string>;
     /**

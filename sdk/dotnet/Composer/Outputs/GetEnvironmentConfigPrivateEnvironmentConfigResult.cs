@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.Composer.Outputs
     [OutputType]
     public sealed class GetEnvironmentConfigPrivateEnvironmentConfigResult
     {
+        public readonly string CloudComposerConnectionSubnetwork;
         public readonly string CloudComposerNetworkIpv4CidrBlock;
         public readonly string CloudSqlIpv4CidrBlock;
         public readonly bool EnablePrivateEndpoint;
@@ -22,6 +23,8 @@ namespace Pulumi.Gcp.Composer.Outputs
 
         [OutputConstructor]
         private GetEnvironmentConfigPrivateEnvironmentConfigResult(
+            string cloudComposerConnectionSubnetwork,
+
             string cloudComposerNetworkIpv4CidrBlock,
 
             string cloudSqlIpv4CidrBlock,
@@ -34,6 +37,7 @@ namespace Pulumi.Gcp.Composer.Outputs
 
             string webServerIpv4CidrBlock)
         {
+            CloudComposerConnectionSubnetwork = cloudComposerConnectionSubnetwork;
             CloudComposerNetworkIpv4CidrBlock = cloudComposerNetworkIpv4CidrBlock;
             CloudSqlIpv4CidrBlock = cloudSqlIpv4CidrBlock;
             EnablePrivateEndpoint = enablePrivateEndpoint;

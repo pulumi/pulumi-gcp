@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Compute
     /// and
     /// [API](https://cloud.google.com/compute/docs/reference/latest/networks).
     /// 
-    /// &gt; Both network must create a peering with each other for the peering
+    /// &gt; Both networks must create a peering with each other for the peering
     /// to be functional.
     /// 
     /// &gt; Subnets IP ranges across peered VPC networks cannot overlap.
@@ -40,13 +40,13 @@ namespace Pulumi.Gcp.Compute
     ///         });
     ///         var peering1 = new Gcp.Compute.NetworkPeering("peering1", new Gcp.Compute.NetworkPeeringArgs
     ///         {
-    ///             Network = @default.Id,
-    ///             PeerNetwork = other.Id,
+    ///             Network = @default.SelfLink,
+    ///             PeerNetwork = other.SelfLink,
     ///         });
     ///         var peering2 = new Gcp.Compute.NetworkPeering("peering2", new Gcp.Compute.NetworkPeeringArgs
     ///         {
-    ///             Network = other.Id,
-    ///             PeerNetwork = @default.Id,
+    ///             Network = other.SelfLink,
+    ///             PeerNetwork = @default.SelfLink,
     ///         });
     ///     }
     /// 

@@ -24,6 +24,7 @@ class RoutineArgs:
                  imported_libraries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  language: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 return_table_type: Optional[pulumi.Input[str]] = None,
                  return_type: Optional[pulumi.Input[str]] = None,
                  routine_type: Optional[pulumi.Input[str]] = None):
         """
@@ -43,6 +44,10 @@ class RoutineArgs:
                Possible values are `SQL` and `JAVASCRIPT`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] return_table_type: Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
+               If absent, the return table type is inferred from definitionBody at query time in each query
+               that references this routine. If present, then the columns in the evaluated table result will
+               be cast to match the column types specificed in return table type, at query time.
         :param pulumi.Input[str] return_type: A JSON schema for the return type. Optional if language = "SQL"; required otherwise.
                If absent, the return type is inferred from definitionBody at query time in each query
                that references this routine. If present, then the evaluated result will be cast to
@@ -53,7 +58,7 @@ class RoutineArgs:
                cannot suppress the recurring diff this causes. As a workaround, we recommend using
                the schema as returned by the API.
         :param pulumi.Input[str] routine_type: The type of routine.
-               Possible values are `SCALAR_FUNCTION` and `PROCEDURE`.
+               Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "definition_body", definition_body)
@@ -70,6 +75,8 @@ class RoutineArgs:
             pulumi.set(__self__, "language", language)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if return_table_type is not None:
+            pulumi.set(__self__, "return_table_type", return_table_type)
         if return_type is not None:
             pulumi.set(__self__, "return_type", return_type)
         if routine_type is not None:
@@ -190,6 +197,21 @@ class RoutineArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="returnTableType")
+    def return_table_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
+        If absent, the return table type is inferred from definitionBody at query time in each query
+        that references this routine. If present, then the columns in the evaluated table result will
+        be cast to match the column types specificed in return table type, at query time.
+        """
+        return pulumi.get(self, "return_table_type")
+
+    @return_table_type.setter
+    def return_table_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "return_table_type", value)
+
+    @property
     @pulumi.getter(name="returnType")
     def return_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -214,7 +236,7 @@ class RoutineArgs:
     def routine_type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of routine.
-        Possible values are `SCALAR_FUNCTION` and `PROCEDURE`.
+        Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
         """
         return pulumi.get(self, "routine_type")
 
@@ -236,6 +258,7 @@ class _RoutineState:
                  language: Optional[pulumi.Input[str]] = None,
                  last_modified_time: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 return_table_type: Optional[pulumi.Input[str]] = None,
                  return_type: Optional[pulumi.Input[str]] = None,
                  routine_id: Optional[pulumi.Input[str]] = None,
                  routine_type: Optional[pulumi.Input[str]] = None):
@@ -257,6 +280,10 @@ class _RoutineState:
         :param pulumi.Input[int] last_modified_time: The time when this routine was modified, in milliseconds since the epoch.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] return_table_type: Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
+               If absent, the return table type is inferred from definitionBody at query time in each query
+               that references this routine. If present, then the columns in the evaluated table result will
+               be cast to match the column types specificed in return table type, at query time.
         :param pulumi.Input[str] return_type: A JSON schema for the return type. Optional if language = "SQL"; required otherwise.
                If absent, the return type is inferred from definitionBody at query time in each query
                that references this routine. If present, then the evaluated result will be cast to
@@ -268,7 +295,7 @@ class _RoutineState:
                the schema as returned by the API.
         :param pulumi.Input[str] routine_id: The ID of the the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
         :param pulumi.Input[str] routine_type: The type of routine.
-               Possible values are `SCALAR_FUNCTION` and `PROCEDURE`.
+               Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
         """
         if arguments is not None:
             pulumi.set(__self__, "arguments", arguments)
@@ -290,6 +317,8 @@ class _RoutineState:
             pulumi.set(__self__, "last_modified_time", last_modified_time)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if return_table_type is not None:
+            pulumi.set(__self__, "return_table_type", return_table_type)
         if return_type is not None:
             pulumi.set(__self__, "return_type", return_type)
         if routine_id is not None:
@@ -424,6 +453,21 @@ class _RoutineState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="returnTableType")
+    def return_table_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
+        If absent, the return table type is inferred from definitionBody at query time in each query
+        that references this routine. If present, then the columns in the evaluated table result will
+        be cast to match the column types specificed in return table type, at query time.
+        """
+        return pulumi.get(self, "return_table_type")
+
+    @return_table_type.setter
+    def return_table_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "return_table_type", value)
+
+    @property
     @pulumi.getter(name="returnType")
     def return_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -460,7 +504,7 @@ class _RoutineState:
     def routine_type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of routine.
-        Possible values are `SCALAR_FUNCTION` and `PROCEDURE`.
+        Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
         """
         return pulumi.get(self, "routine_type")
 
@@ -482,6 +526,7 @@ class Routine(pulumi.CustomResource):
                  imported_libraries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  language: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 return_table_type: Optional[pulumi.Input[str]] = None,
                  return_type: Optional[pulumi.Input[str]] = None,
                  routine_id: Optional[pulumi.Input[str]] = None,
                  routine_type: Optional[pulumi.Input[str]] = None,
@@ -543,6 +588,10 @@ class Routine(pulumi.CustomResource):
                Possible values are `SQL` and `JAVASCRIPT`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] return_table_type: Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
+               If absent, the return table type is inferred from definitionBody at query time in each query
+               that references this routine. If present, then the columns in the evaluated table result will
+               be cast to match the column types specificed in return table type, at query time.
         :param pulumi.Input[str] return_type: A JSON schema for the return type. Optional if language = "SQL"; required otherwise.
                If absent, the return type is inferred from definitionBody at query time in each query
                that references this routine. If present, then the evaluated result will be cast to
@@ -554,7 +603,7 @@ class Routine(pulumi.CustomResource):
                the schema as returned by the API.
         :param pulumi.Input[str] routine_id: The ID of the the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
         :param pulumi.Input[str] routine_type: The type of routine.
-               Possible values are `SCALAR_FUNCTION` and `PROCEDURE`.
+               Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
         """
         ...
     @overload
@@ -626,6 +675,7 @@ class Routine(pulumi.CustomResource):
                  imported_libraries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  language: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 return_table_type: Optional[pulumi.Input[str]] = None,
                  return_type: Optional[pulumi.Input[str]] = None,
                  routine_id: Optional[pulumi.Input[str]] = None,
                  routine_type: Optional[pulumi.Input[str]] = None,
@@ -653,6 +703,7 @@ class Routine(pulumi.CustomResource):
             __props__.__dict__["imported_libraries"] = imported_libraries
             __props__.__dict__["language"] = language
             __props__.__dict__["project"] = project
+            __props__.__dict__["return_table_type"] = return_table_type
             __props__.__dict__["return_type"] = return_type
             if routine_id is None and not opts.urn:
                 raise TypeError("Missing required property 'routine_id'")
@@ -680,6 +731,7 @@ class Routine(pulumi.CustomResource):
             language: Optional[pulumi.Input[str]] = None,
             last_modified_time: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            return_table_type: Optional[pulumi.Input[str]] = None,
             return_type: Optional[pulumi.Input[str]] = None,
             routine_id: Optional[pulumi.Input[str]] = None,
             routine_type: Optional[pulumi.Input[str]] = None) -> 'Routine':
@@ -706,6 +758,10 @@ class Routine(pulumi.CustomResource):
         :param pulumi.Input[int] last_modified_time: The time when this routine was modified, in milliseconds since the epoch.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] return_table_type: Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
+               If absent, the return table type is inferred from definitionBody at query time in each query
+               that references this routine. If present, then the columns in the evaluated table result will
+               be cast to match the column types specificed in return table type, at query time.
         :param pulumi.Input[str] return_type: A JSON schema for the return type. Optional if language = "SQL"; required otherwise.
                If absent, the return type is inferred from definitionBody at query time in each query
                that references this routine. If present, then the evaluated result will be cast to
@@ -717,7 +773,7 @@ class Routine(pulumi.CustomResource):
                the schema as returned by the API.
         :param pulumi.Input[str] routine_id: The ID of the the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
         :param pulumi.Input[str] routine_type: The type of routine.
-               Possible values are `SCALAR_FUNCTION` and `PROCEDURE`.
+               Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -733,6 +789,7 @@ class Routine(pulumi.CustomResource):
         __props__.__dict__["language"] = language
         __props__.__dict__["last_modified_time"] = last_modified_time
         __props__.__dict__["project"] = project
+        __props__.__dict__["return_table_type"] = return_table_type
         __props__.__dict__["return_type"] = return_type
         __props__.__dict__["routine_id"] = routine_id
         __props__.__dict__["routine_type"] = routine_type
@@ -825,6 +882,17 @@ class Routine(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="returnTableType")
+    def return_table_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
+        If absent, the return table type is inferred from definitionBody at query time in each query
+        that references this routine. If present, then the columns in the evaluated table result will
+        be cast to match the column types specificed in return table type, at query time.
+        """
+        return pulumi.get(self, "return_table_type")
+
+    @property
     @pulumi.getter(name="returnType")
     def return_type(self) -> pulumi.Output[Optional[str]]:
         """
@@ -853,7 +921,7 @@ class Routine(pulumi.CustomResource):
     def routine_type(self) -> pulumi.Output[Optional[str]]:
         """
         The type of routine.
-        Possible values are `SCALAR_FUNCTION` and `PROCEDURE`.
+        Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
         """
         return pulumi.get(self, "routine_type")
 

@@ -193,6 +193,12 @@ namespace Pulumi.Gcp.CloudFunctions
         public Output<int?> MaxInstances { get; private set; } = null!;
 
         /// <summary>
+        /// The limit on the minimum number of function instances that may coexist at a given time.
+        /// </summary>
+        [Output("minInstances")]
+        public Output<int?> MinInstances { get; private set; } = null!;
+
+        /// <summary>
         /// A user-defined name of the function. Function names must be unique globally.
         /// </summary>
         [Output("name")]
@@ -391,6 +397,12 @@ namespace Pulumi.Gcp.CloudFunctions
         public Input<int>? MaxInstances { get; set; }
 
         /// <summary>
+        /// The limit on the minimum number of function instances that may coexist at a given time.
+        /// </summary>
+        [Input("minInstances")]
+        public Input<int>? MinInstances { get; set; }
+
+        /// <summary>
         /// A user-defined name of the function. Function names must be unique globally.
         /// </summary>
         [Input("name")]
@@ -548,6 +560,12 @@ namespace Pulumi.Gcp.CloudFunctions
         /// </summary>
         [Input("maxInstances")]
         public Input<int>? MaxInstances { get; set; }
+
+        /// <summary>
+        /// The limit on the minimum number of function instances that may coexist at a given time.
+        /// </summary>
+        [Input("minInstances")]
+        public Input<int>? MinInstances { get; set; }
 
         /// <summary>
         /// A user-defined name of the function. Function names must be unique globally.

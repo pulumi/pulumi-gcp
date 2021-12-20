@@ -5,7 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export * from "./awsCluster";
+export * from "./awsNodePool";
+export * from "./azureClient";
+export * from "./azureCluster";
+export * from "./azureNodePool";
 export * from "./cluster";
+export * from "./getAwsVersions";
+export * from "./getAzureVersions";
 export * from "./getCluster";
 export * from "./getEngineVersions";
 export * from "./getRegistryImage";
@@ -14,6 +21,11 @@ export * from "./nodePool";
 export * from "./registry";
 
 // Import resources to register:
+import { AwsCluster } from "./awsCluster";
+import { AwsNodePool } from "./awsNodePool";
+import { AzureClient } from "./azureClient";
+import { AzureCluster } from "./azureCluster";
+import { AzureNodePool } from "./azureNodePool";
 import { Cluster } from "./cluster";
 import { NodePool } from "./nodePool";
 import { Registry } from "./registry";
@@ -22,6 +34,16 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:container/awsCluster:AwsCluster":
+                return new AwsCluster(name, <any>undefined, { urn })
+            case "gcp:container/awsNodePool:AwsNodePool":
+                return new AwsNodePool(name, <any>undefined, { urn })
+            case "gcp:container/azureClient:AzureClient":
+                return new AzureClient(name, <any>undefined, { urn })
+            case "gcp:container/azureCluster:AzureCluster":
+                return new AzureCluster(name, <any>undefined, { urn })
+            case "gcp:container/azureNodePool:AzureNodePool":
+                return new AzureNodePool(name, <any>undefined, { urn })
             case "gcp:container/cluster:Cluster":
                 return new Cluster(name, <any>undefined, { urn })
             case "gcp:container/nodePool:NodePool":
@@ -33,6 +55,11 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "container/awsCluster", _module)
+pulumi.runtime.registerResourceModule("gcp", "container/awsNodePool", _module)
+pulumi.runtime.registerResourceModule("gcp", "container/azureClient", _module)
+pulumi.runtime.registerResourceModule("gcp", "container/azureCluster", _module)
+pulumi.runtime.registerResourceModule("gcp", "container/azureNodePool", _module)
 pulumi.runtime.registerResourceModule("gcp", "container/cluster", _module)
 pulumi.runtime.registerResourceModule("gcp", "container/nodePool", _module)
 pulumi.runtime.registerResourceModule("gcp", "container/registry", _module)

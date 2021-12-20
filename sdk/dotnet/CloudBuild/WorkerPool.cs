@@ -10,6 +10,106 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudBuild
 {
     /// <summary>
+    /// Definition of custom Cloud Build WorkerPools for running jobs with custom configuration and custom networking.
+    /// 
+    /// &gt; This resource is not currently public, and requires allow-listing of projects prior to use.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var pool = new Gcp.CloudBuild.WorkerPool("pool", new Gcp.CloudBuild.WorkerPoolArgs
+    ///         {
+    ///             Location = "europe-west1",
+    ///             WorkerConfig = new Gcp.CloudBuild.Inputs.WorkerPoolWorkerConfigArgs
+    ///             {
+    ///                 DiskSizeGb = 100,
+    ///                 MachineType = "e2-standard-4",
+    ///                 NoExternalIp = false,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Network Config
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var servicenetworking = new Gcp.Projects.Service("servicenetworking", new Gcp.Projects.ServiceArgs
+    ///         {
+    ///             Service = "servicenetworking.googleapis.com",
+    ///             DisableOnDestroy = false,
+    ///         });
+    ///         var network = new Gcp.Compute.Network("network", new Gcp.Compute.NetworkArgs
+    ///         {
+    ///             AutoCreateSubnetworks = false,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 servicenetworking,
+    ///             },
+    ///         });
+    ///         var workerRange = new Gcp.Compute.GlobalAddress("workerRange", new Gcp.Compute.GlobalAddressArgs
+    ///         {
+    ///             Purpose = "VPC_PEERING",
+    ///             AddressType = "INTERNAL",
+    ///             PrefixLength = 16,
+    ///             Network = network.Id,
+    ///         });
+    ///         var workerPoolConn = new Gcp.ServiceNetworking.Connection("workerPoolConn", new Gcp.ServiceNetworking.ConnectionArgs
+    ///         {
+    ///             Network = network.Id,
+    ///             Service = "servicenetworking.googleapis.com",
+    ///             ReservedPeeringRanges = 
+    ///             {
+    ///                 workerRange.Name,
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 servicenetworking,
+    ///             },
+    ///         });
+    ///         var pool = new Gcp.CloudBuild.WorkerPool("pool", new Gcp.CloudBuild.WorkerPoolArgs
+    ///         {
+    ///             Location = "europe-west1",
+    ///             WorkerConfig = new Gcp.CloudBuild.Inputs.WorkerPoolWorkerConfigArgs
+    ///             {
+    ///                 DiskSizeGb = 100,
+    ///                 MachineType = "e2-standard-4",
+    ///                 NoExternalIp = false,
+    ///             },
+    ///             NetworkConfig = new Gcp.CloudBuild.Inputs.WorkerPoolNetworkConfigArgs
+    ///             {
+    ///                 PeeredNetwork = network.Id,
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 workerPoolConn,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// WorkerPool can be imported using any of these accepted formats

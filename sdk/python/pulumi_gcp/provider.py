@@ -46,6 +46,8 @@ class ProviderArgs:
                  composer_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  compute_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  container_analysis_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 container_aws_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 container_azure_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  container_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  credentials: Optional[pulumi.Input[str]] = None,
                  data_catalog_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -188,6 +190,10 @@ class ProviderArgs:
             pulumi.set(__self__, "compute_custom_endpoint", compute_custom_endpoint)
         if container_analysis_custom_endpoint is not None:
             pulumi.set(__self__, "container_analysis_custom_endpoint", container_analysis_custom_endpoint)
+        if container_aws_custom_endpoint is not None:
+            pulumi.set(__self__, "container_aws_custom_endpoint", container_aws_custom_endpoint)
+        if container_azure_custom_endpoint is not None:
+            pulumi.set(__self__, "container_azure_custom_endpoint", container_azure_custom_endpoint)
         if container_custom_endpoint is not None:
             pulumi.set(__self__, "container_custom_endpoint", container_custom_endpoint)
         if credentials is not None:
@@ -632,6 +638,24 @@ class ProviderArgs:
     @container_analysis_custom_endpoint.setter
     def container_analysis_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "container_analysis_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="containerAwsCustomEndpoint")
+    def container_aws_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "container_aws_custom_endpoint")
+
+    @container_aws_custom_endpoint.setter
+    def container_aws_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "container_aws_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="containerAzureCustomEndpoint")
+    def container_azure_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "container_azure_custom_endpoint")
+
+    @container_azure_custom_endpoint.setter
+    def container_azure_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "container_azure_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="containerCustomEndpoint")
@@ -1346,6 +1370,8 @@ class Provider(pulumi.ProviderResource):
                  composer_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  compute_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  container_analysis_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 container_aws_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 container_azure_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  container_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  credentials: Optional[pulumi.Input[str]] = None,
                  data_catalog_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1490,6 +1516,8 @@ class Provider(pulumi.ProviderResource):
                  composer_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  compute_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  container_analysis_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 container_aws_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 container_azure_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  container_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  credentials: Optional[pulumi.Input[str]] = None,
                  data_catalog_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1609,6 +1637,8 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["composer_custom_endpoint"] = composer_custom_endpoint
             __props__.__dict__["compute_custom_endpoint"] = compute_custom_endpoint
             __props__.__dict__["container_analysis_custom_endpoint"] = container_analysis_custom_endpoint
+            __props__.__dict__["container_aws_custom_endpoint"] = container_aws_custom_endpoint
+            __props__.__dict__["container_azure_custom_endpoint"] = container_azure_custom_endpoint
             __props__.__dict__["container_custom_endpoint"] = container_custom_endpoint
             __props__.__dict__["credentials"] = credentials
             __props__.__dict__["data_catalog_custom_endpoint"] = data_catalog_custom_endpoint
@@ -1850,6 +1880,16 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="containerAnalysisCustomEndpoint")
     def container_analysis_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "container_analysis_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="containerAwsCustomEndpoint")
+    def container_aws_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "container_aws_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="containerAzureCustomEndpoint")
+    def container_azure_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "container_azure_custom_endpoint")
 
     @property
     @pulumi.getter(name="containerCustomEndpoint")

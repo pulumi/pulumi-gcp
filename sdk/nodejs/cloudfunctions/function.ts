@@ -166,6 +166,10 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly maxInstances!: pulumi.Output<number | undefined>;
     /**
+     * The limit on the minimum number of function instances that may coexist at a given time.
+     */
+    public readonly minInstances!: pulumi.Output<number | undefined>;
+    /**
      * A user-defined name of the function. Function names must be unique globally.
      */
     public readonly name!: pulumi.Output<string>;
@@ -239,6 +243,7 @@ export class Function extends pulumi.CustomResource {
             inputs["ingressSettings"] = state ? state.ingressSettings : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["maxInstances"] = state ? state.maxInstances : undefined;
+            inputs["minInstances"] = state ? state.minInstances : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["region"] = state ? state.region : undefined;
@@ -266,6 +271,7 @@ export class Function extends pulumi.CustomResource {
             inputs["ingressSettings"] = args ? args.ingressSettings : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["maxInstances"] = args ? args.maxInstances : undefined;
+            inputs["minInstances"] = args ? args.minInstances : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
@@ -330,6 +336,10 @@ export interface FunctionState {
      * The limit on the maximum number of function instances that may coexist at a given time.
      */
     maxInstances?: pulumi.Input<number>;
+    /**
+     * The limit on the minimum number of function instances that may coexist at a given time.
+     */
+    minInstances?: pulumi.Input<number>;
     /**
      * A user-defined name of the function. Function names must be unique globally.
      */
@@ -426,6 +436,10 @@ export interface FunctionArgs {
      * The limit on the maximum number of function instances that may coexist at a given time.
      */
     maxInstances?: pulumi.Input<number>;
+    /**
+     * The limit on the minimum number of function instances that may coexist at a given time.
+     */
+    minInstances?: pulumi.Input<number>;
     /**
      * A user-defined name of the function. Function names must be unique globally.
      */

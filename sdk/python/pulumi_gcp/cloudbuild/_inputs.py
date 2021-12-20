@@ -13,6 +13,8 @@ __all__ = [
     'TriggerBuildArtifactsArgs',
     'TriggerBuildArtifactsObjectsArgs',
     'TriggerBuildArtifactsObjectsTimingArgs',
+    'TriggerBuildAvailableSecretsArgs',
+    'TriggerBuildAvailableSecretsSecretManagerArgs',
     'TriggerBuildOptionsArgs',
     'TriggerBuildOptionsVolumeArgs',
     'TriggerBuildSecretArgs',
@@ -36,6 +38,7 @@ class TriggerBuildArgs:
     def __init__(__self__, *,
                  steps: pulumi.Input[Sequence[pulumi.Input['TriggerBuildStepArgs']]],
                  artifacts: Optional[pulumi.Input['TriggerBuildArtifactsArgs']] = None,
+                 available_secrets: Optional[pulumi.Input['TriggerBuildAvailableSecretsArgs']] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  logs_bucket: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input['TriggerBuildOptionsArgs']] = None,
@@ -49,6 +52,8 @@ class TriggerBuildArgs:
         :param pulumi.Input[Sequence[pulumi.Input['TriggerBuildStepArgs']]] steps: The operations to be performed on the workspace.
                Structure is documented below.
         :param pulumi.Input['TriggerBuildArtifactsArgs'] artifacts: Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
+               Structure is documented below.
+        :param pulumi.Input['TriggerBuildAvailableSecretsArgs'] available_secrets: Secrets and secret environment variables.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] images: A list of images to be pushed upon the successful completion of all build steps.
                The images will be pushed using the builder service account's credentials.
@@ -77,6 +82,8 @@ class TriggerBuildArgs:
         pulumi.set(__self__, "steps", steps)
         if artifacts is not None:
             pulumi.set(__self__, "artifacts", artifacts)
+        if available_secrets is not None:
+            pulumi.set(__self__, "available_secrets", available_secrets)
         if images is not None:
             pulumi.set(__self__, "images", images)
         if logs_bucket is not None:
@@ -121,6 +128,19 @@ class TriggerBuildArgs:
     @artifacts.setter
     def artifacts(self, value: Optional[pulumi.Input['TriggerBuildArtifactsArgs']]):
         pulumi.set(self, "artifacts", value)
+
+    @property
+    @pulumi.getter(name="availableSecrets")
+    def available_secrets(self) -> Optional[pulumi.Input['TriggerBuildAvailableSecretsArgs']]:
+        """
+        Secrets and secret environment variables.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "available_secrets")
+
+    @available_secrets.setter
+    def available_secrets(self, value: Optional[pulumi.Input['TriggerBuildAvailableSecretsArgs']]):
+        pulumi.set(self, "available_secrets", value)
 
     @property
     @pulumi.getter
@@ -408,6 +428,73 @@ class TriggerBuildArtifactsObjectsTimingArgs:
     @start_time.setter
     def start_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "start_time", value)
+
+
+@pulumi.input_type
+class TriggerBuildAvailableSecretsArgs:
+    def __init__(__self__, *,
+                 secret_managers: pulumi.Input[Sequence[pulumi.Input['TriggerBuildAvailableSecretsSecretManagerArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['TriggerBuildAvailableSecretsSecretManagerArgs']]] secret_managers: Pairs a secret environment variable with a SecretVersion in Secret Manager.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "secret_managers", secret_managers)
+
+    @property
+    @pulumi.getter(name="secretManagers")
+    def secret_managers(self) -> pulumi.Input[Sequence[pulumi.Input['TriggerBuildAvailableSecretsSecretManagerArgs']]]:
+        """
+        Pairs a secret environment variable with a SecretVersion in Secret Manager.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "secret_managers")
+
+    @secret_managers.setter
+    def secret_managers(self, value: pulumi.Input[Sequence[pulumi.Input['TriggerBuildAvailableSecretsSecretManagerArgs']]]):
+        pulumi.set(self, "secret_managers", value)
+
+
+@pulumi.input_type
+class TriggerBuildAvailableSecretsSecretManagerArgs:
+    def __init__(__self__, *,
+                 env: pulumi.Input[str],
+                 version_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] env: A list of global environment variable definitions that will exist for all build steps
+               in this build. If a variable is defined in both globally and in a build step,
+               the variable will use the build step value.
+               The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+        :param pulumi.Input[str] version_name: Resource name of the SecretVersion. In format: projects/*/secrets/*/versions/*
+        """
+        pulumi.set(__self__, "env", env)
+        pulumi.set(__self__, "version_name", version_name)
+
+    @property
+    @pulumi.getter
+    def env(self) -> pulumi.Input[str]:
+        """
+        A list of global environment variable definitions that will exist for all build steps
+        in this build. If a variable is defined in both globally and in a build step,
+        the variable will use the build step value.
+        The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+        """
+        return pulumi.get(self, "env")
+
+    @env.setter
+    def env(self, value: pulumi.Input[str]):
+        pulumi.set(self, "env", value)
+
+    @property
+    @pulumi.getter(name="versionName")
+    def version_name(self) -> pulumi.Input[str]:
+        """
+        Resource name of the SecretVersion. In format: projects/*/secrets/*/versions/*
+        """
+        return pulumi.get(self, "version_name")
+
+    @version_name.setter
+    def version_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "version_name", value)
 
 
 @pulumi.input_type

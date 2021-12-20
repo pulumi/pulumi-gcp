@@ -170,6 +170,8 @@ type Function struct {
 	Labels pulumi.MapOutput `pulumi:"labels"`
 	// The limit on the maximum number of function instances that may coexist at a given time.
 	MaxInstances pulumi.IntPtrOutput `pulumi:"maxInstances"`
+	// The limit on the minimum number of function instances that may coexist at a given time.
+	MinInstances pulumi.IntPtrOutput `pulumi:"minInstances"`
 	// A user-defined name of the function. Function names must be unique globally.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Project of the function. If it is not provided, the provider project is used.
@@ -250,6 +252,8 @@ type functionState struct {
 	Labels map[string]interface{} `pulumi:"labels"`
 	// The limit on the maximum number of function instances that may coexist at a given time.
 	MaxInstances *int `pulumi:"maxInstances"`
+	// The limit on the minimum number of function instances that may coexist at a given time.
+	MinInstances *int `pulumi:"minInstances"`
 	// A user-defined name of the function. Function names must be unique globally.
 	Name *string `pulumi:"name"`
 	// Project of the function. If it is not provided, the provider project is used.
@@ -299,6 +303,8 @@ type FunctionState struct {
 	Labels pulumi.MapInput
 	// The limit on the maximum number of function instances that may coexist at a given time.
 	MaxInstances pulumi.IntPtrInput
+	// The limit on the minimum number of function instances that may coexist at a given time.
+	MinInstances pulumi.IntPtrInput
 	// A user-defined name of the function. Function names must be unique globally.
 	Name pulumi.StringPtrInput
 	// Project of the function. If it is not provided, the provider project is used.
@@ -352,6 +358,8 @@ type functionArgs struct {
 	Labels map[string]interface{} `pulumi:"labels"`
 	// The limit on the maximum number of function instances that may coexist at a given time.
 	MaxInstances *int `pulumi:"maxInstances"`
+	// The limit on the minimum number of function instances that may coexist at a given time.
+	MinInstances *int `pulumi:"minInstances"`
 	// A user-defined name of the function. Function names must be unique globally.
 	Name *string `pulumi:"name"`
 	// Project of the function. If it is not provided, the provider project is used.
@@ -402,6 +410,8 @@ type FunctionArgs struct {
 	Labels pulumi.MapInput
 	// The limit on the maximum number of function instances that may coexist at a given time.
 	MaxInstances pulumi.IntPtrInput
+	// The limit on the minimum number of function instances that may coexist at a given time.
+	MinInstances pulumi.IntPtrInput
 	// A user-defined name of the function. Function names must be unique globally.
 	Name pulumi.StringPtrInput
 	// Project of the function. If it is not provided, the provider project is used.

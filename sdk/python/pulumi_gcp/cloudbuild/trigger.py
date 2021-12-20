@@ -745,6 +745,12 @@ class Trigger(pulumi.CustomResource):
                         paths=["path"],
                     ),
                 ),
+                available_secrets=gcp.cloudbuild.TriggerBuildAvailableSecretsArgs(
+                    secret_manager=[{
+                        "env": "MY_SECRET",
+                        "versionName": "projects/myProject/secrets/mySecret/versions/latest",
+                    }],
+                ),
                 logs_bucket="gs://mybucket/logs",
                 options=gcp.cloudbuild.TriggerBuildOptionsArgs(
                     disk_size_gb=100,
@@ -783,6 +789,7 @@ class Trigger(pulumi.CustomResource):
                         "localfile.zip",
                     ],
                     name="gcr.io/cloud-builders/gsutil",
+                    secret_env=["MY_SECRET"],
                     timeout="120s",
                 )],
                 substitutions={
@@ -947,6 +954,12 @@ class Trigger(pulumi.CustomResource):
                         paths=["path"],
                     ),
                 ),
+                available_secrets=gcp.cloudbuild.TriggerBuildAvailableSecretsArgs(
+                    secret_manager=[{
+                        "env": "MY_SECRET",
+                        "versionName": "projects/myProject/secrets/mySecret/versions/latest",
+                    }],
+                ),
                 logs_bucket="gs://mybucket/logs",
                 options=gcp.cloudbuild.TriggerBuildOptionsArgs(
                     disk_size_gb=100,
@@ -985,6 +998,7 @@ class Trigger(pulumi.CustomResource):
                         "localfile.zip",
                     ],
                     name="gcr.io/cloud-builders/gsutil",
+                    secret_env=["MY_SECRET"],
                     timeout="120s",
                 )],
                 substitutions={

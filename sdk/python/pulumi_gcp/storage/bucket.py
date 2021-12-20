@@ -25,6 +25,7 @@ class BucketArgs:
                  logging: Optional[pulumi.Input['BucketLoggingArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 public_access_prevention: Optional[pulumi.Input[str]] = None,
                  requester_pays: Optional[pulumi.Input[bool]] = None,
                  retention_policy: Optional[pulumi.Input['BucketRetentionPolicyArgs']] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
@@ -45,6 +46,7 @@ class BucketArgs:
         :param pulumi.Input[str] name: The name of the bucket.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input[str] public_access_prevention: Prevents public access to a bucket.
         :param pulumi.Input[bool] requester_pays: Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
         :param pulumi.Input['BucketRetentionPolicyArgs'] retention_policy: Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
         :param pulumi.Input[str] storage_class: The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
@@ -71,6 +73,8 @@ class BucketArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if public_access_prevention is not None:
+            pulumi.set(__self__, "public_access_prevention", public_access_prevention)
         if requester_pays is not None:
             pulumi.set(__self__, "requester_pays", requester_pays)
         if retention_policy is not None:
@@ -205,6 +209,18 @@ class BucketArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="publicAccessPrevention")
+    def public_access_prevention(self) -> Optional[pulumi.Input[str]]:
+        """
+        Prevents public access to a bucket.
+        """
+        return pulumi.get(self, "public_access_prevention")
+
+    @public_access_prevention.setter
+    def public_access_prevention(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "public_access_prevention", value)
+
+    @property
     @pulumi.getter(name="requesterPays")
     def requester_pays(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -290,6 +306,7 @@ class _BucketState:
                  logging: Optional[pulumi.Input['BucketLoggingArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 public_access_prevention: Optional[pulumi.Input[str]] = None,
                  requester_pays: Optional[pulumi.Input[bool]] = None,
                  retention_policy: Optional[pulumi.Input['BucketRetentionPolicyArgs']] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -312,6 +329,7 @@ class _BucketState:
         :param pulumi.Input[str] name: The name of the bucket.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input[str] public_access_prevention: Prevents public access to a bucket.
         :param pulumi.Input[bool] requester_pays: Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
         :param pulumi.Input['BucketRetentionPolicyArgs'] retention_policy: Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -341,6 +359,8 @@ class _BucketState:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if public_access_prevention is not None:
+            pulumi.set(__self__, "public_access_prevention", public_access_prevention)
         if requester_pays is not None:
             pulumi.set(__self__, "requester_pays", requester_pays)
         if retention_policy is not None:
@@ -479,6 +499,18 @@ class _BucketState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="publicAccessPrevention")
+    def public_access_prevention(self) -> Optional[pulumi.Input[str]]:
+        """
+        Prevents public access to a bucket.
+        """
+        return pulumi.get(self, "public_access_prevention")
+
+    @public_access_prevention.setter
+    def public_access_prevention(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "public_access_prevention", value)
+
+    @property
     @pulumi.getter(name="requesterPays")
     def requester_pays(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -590,6 +622,7 @@ class Bucket(pulumi.CustomResource):
                  logging: Optional[pulumi.Input[pulumi.InputType['BucketLoggingArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 public_access_prevention: Optional[pulumi.Input[str]] = None,
                  requester_pays: Optional[pulumi.Input[bool]] = None,
                  retention_policy: Optional[pulumi.Input[pulumi.InputType['BucketRetentionPolicyArgs']]] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
@@ -686,6 +719,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the bucket.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input[str] public_access_prevention: Prevents public access to a bucket.
         :param pulumi.Input[bool] requester_pays: Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
         :param pulumi.Input[pulumi.InputType['BucketRetentionPolicyArgs']] retention_policy: Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
         :param pulumi.Input[str] storage_class: The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
@@ -799,6 +833,7 @@ class Bucket(pulumi.CustomResource):
                  logging: Optional[pulumi.Input[pulumi.InputType['BucketLoggingArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 public_access_prevention: Optional[pulumi.Input[str]] = None,
                  requester_pays: Optional[pulumi.Input[bool]] = None,
                  retention_policy: Optional[pulumi.Input[pulumi.InputType['BucketRetentionPolicyArgs']]] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
@@ -829,6 +864,7 @@ class Bucket(pulumi.CustomResource):
             __props__.__dict__["logging"] = logging
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            __props__.__dict__["public_access_prevention"] = public_access_prevention
             __props__.__dict__["requester_pays"] = requester_pays
             __props__.__dict__["retention_policy"] = retention_policy
             __props__.__dict__["storage_class"] = storage_class
@@ -857,6 +893,7 @@ class Bucket(pulumi.CustomResource):
             logging: Optional[pulumi.Input[pulumi.InputType['BucketLoggingArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            public_access_prevention: Optional[pulumi.Input[str]] = None,
             requester_pays: Optional[pulumi.Input[bool]] = None,
             retention_policy: Optional[pulumi.Input[pulumi.InputType['BucketRetentionPolicyArgs']]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
@@ -884,6 +921,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the bucket.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input[str] public_access_prevention: Prevents public access to a bucket.
         :param pulumi.Input[bool] requester_pays: Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
         :param pulumi.Input[pulumi.InputType['BucketRetentionPolicyArgs']] retention_policy: Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -907,6 +945,7 @@ class Bucket(pulumi.CustomResource):
         __props__.__dict__["logging"] = logging
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["public_access_prevention"] = public_access_prevention
         __props__.__dict__["requester_pays"] = requester_pays
         __props__.__dict__["retention_policy"] = retention_policy
         __props__.__dict__["self_link"] = self_link
@@ -996,6 +1035,14 @@ class Bucket(pulumi.CustomResource):
         is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="publicAccessPrevention")
+    def public_access_prevention(self) -> pulumi.Output[str]:
+        """
+        Prevents public access to a bucket.
+        """
+        return pulumi.get(self, "public_access_prevention")
 
     @property
     @pulumi.getter(name="requesterPays")

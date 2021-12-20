@@ -503,7 +503,9 @@ class EnvironmentConfigPrivateEnvironmentConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "cloudComposerNetworkIpv4CidrBlock":
+        if key == "cloudComposerConnectionSubnetwork":
+            suggest = "cloud_composer_connection_subnetwork"
+        elif key == "cloudComposerNetworkIpv4CidrBlock":
             suggest = "cloud_composer_network_ipv4_cidr_block"
         elif key == "cloudSqlIpv4CidrBlock":
             suggest = "cloud_sql_ipv4_cidr_block"
@@ -528,12 +530,15 @@ class EnvironmentConfigPrivateEnvironmentConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 cloud_composer_connection_subnetwork: Optional[str] = None,
                  cloud_composer_network_ipv4_cidr_block: Optional[str] = None,
                  cloud_sql_ipv4_cidr_block: Optional[str] = None,
                  enable_private_endpoint: Optional[bool] = None,
                  enable_privately_used_public_ips: Optional[bool] = None,
                  master_ipv4_cidr_block: Optional[str] = None,
                  web_server_ipv4_cidr_block: Optional[str] = None):
+        if cloud_composer_connection_subnetwork is not None:
+            pulumi.set(__self__, "cloud_composer_connection_subnetwork", cloud_composer_connection_subnetwork)
         if cloud_composer_network_ipv4_cidr_block is not None:
             pulumi.set(__self__, "cloud_composer_network_ipv4_cidr_block", cloud_composer_network_ipv4_cidr_block)
         if cloud_sql_ipv4_cidr_block is not None:
@@ -546,6 +551,11 @@ class EnvironmentConfigPrivateEnvironmentConfig(dict):
             pulumi.set(__self__, "master_ipv4_cidr_block", master_ipv4_cidr_block)
         if web_server_ipv4_cidr_block is not None:
             pulumi.set(__self__, "web_server_ipv4_cidr_block", web_server_ipv4_cidr_block)
+
+    @property
+    @pulumi.getter(name="cloudComposerConnectionSubnetwork")
+    def cloud_composer_connection_subnetwork(self) -> Optional[str]:
+        return pulumi.get(self, "cloud_composer_connection_subnetwork")
 
     @property
     @pulumi.getter(name="cloudComposerNetworkIpv4CidrBlock")
@@ -1233,18 +1243,25 @@ class GetEnvironmentConfigNodeConfigIpAllocationPolicyResult(dict):
 @pulumi.output_type
 class GetEnvironmentConfigPrivateEnvironmentConfigResult(dict):
     def __init__(__self__, *,
+                 cloud_composer_connection_subnetwork: str,
                  cloud_composer_network_ipv4_cidr_block: str,
                  cloud_sql_ipv4_cidr_block: str,
                  enable_private_endpoint: bool,
                  enable_privately_used_public_ips: bool,
                  master_ipv4_cidr_block: str,
                  web_server_ipv4_cidr_block: str):
+        pulumi.set(__self__, "cloud_composer_connection_subnetwork", cloud_composer_connection_subnetwork)
         pulumi.set(__self__, "cloud_composer_network_ipv4_cidr_block", cloud_composer_network_ipv4_cidr_block)
         pulumi.set(__self__, "cloud_sql_ipv4_cidr_block", cloud_sql_ipv4_cidr_block)
         pulumi.set(__self__, "enable_private_endpoint", enable_private_endpoint)
         pulumi.set(__self__, "enable_privately_used_public_ips", enable_privately_used_public_ips)
         pulumi.set(__self__, "master_ipv4_cidr_block", master_ipv4_cidr_block)
         pulumi.set(__self__, "web_server_ipv4_cidr_block", web_server_ipv4_cidr_block)
+
+    @property
+    @pulumi.getter(name="cloudComposerConnectionSubnetwork")
+    def cloud_composer_connection_subnetwork(self) -> str:
+        return pulumi.get(self, "cloud_composer_connection_subnetwork")
 
     @property
     @pulumi.getter(name="cloudComposerNetworkIpv4CidrBlock")

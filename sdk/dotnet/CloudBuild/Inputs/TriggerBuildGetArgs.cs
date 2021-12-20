@@ -19,6 +19,13 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         [Input("artifacts")]
         public Input<Inputs.TriggerBuildArtifactsGetArgs>? Artifacts { get; set; }
 
+        /// <summary>
+        /// Secrets and secret environment variables.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("availableSecrets")]
+        public Input<Inputs.TriggerBuildAvailableSecretsGetArgs>? AvailableSecrets { get; set; }
+
         [Input("images")]
         private InputList<string>? _images;
 

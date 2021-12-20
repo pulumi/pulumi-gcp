@@ -455,7 +455,7 @@ namespace Pulumi.Gcp.Compute
         /// will be used for. A backend service created for one type of load
         /// balancing cannot be used with the other(s).
         /// Default value is `INTERNAL`.
-        /// Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
+        /// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
         /// </summary>
         [Output("loadBalancingScheme")]
         public Output<string?> LoadBalancingScheme { get; private set; } = null!;
@@ -521,7 +521,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// A named port on a backend instance group representing the port for
         /// communication to the backend VMs in that group. Required when the
-        /// loadBalancingScheme is EXTERNAL, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
+        /// loadBalancingScheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
         /// and the backends are instance groups. The named port must be defined on each
         /// backend instance group. This parameter has no meaning if the backends are NEGs. API sets a
         /// default of "http" if not given.
@@ -720,7 +720,7 @@ namespace Pulumi.Gcp.Compute
         /// will be used for. A backend service created for one type of load
         /// balancing cannot be used with the other(s).
         /// Default value is `INTERNAL`.
-        /// Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
+        /// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
         /// </summary>
         [Input("loadBalancingScheme")]
         public Input<string>? LoadBalancingScheme { get; set; }
@@ -786,7 +786,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// A named port on a backend instance group representing the port for
         /// communication to the backend VMs in that group. Required when the
-        /// loadBalancingScheme is EXTERNAL, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
+        /// loadBalancingScheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
         /// and the backends are instance groups. The named port must be defined on each
         /// backend instance group. This parameter has no meaning if the backends are NEGs. API sets a
         /// default of "http" if not given.
@@ -952,7 +952,7 @@ namespace Pulumi.Gcp.Compute
         /// will be used for. A backend service created for one type of load
         /// balancing cannot be used with the other(s).
         /// Default value is `INTERNAL`.
-        /// Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
+        /// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
         /// </summary>
         [Input("loadBalancingScheme")]
         public Input<string>? LoadBalancingScheme { get; set; }
@@ -1018,7 +1018,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// A named port on a backend instance group representing the port for
         /// communication to the backend VMs in that group. Required when the
-        /// loadBalancingScheme is EXTERNAL, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
+        /// loadBalancingScheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
         /// and the backends are instance groups. The named port must be defined on each
         /// backend instance group. This parameter has no meaning if the backends are NEGs. API sets a
         /// default of "http" if not given.

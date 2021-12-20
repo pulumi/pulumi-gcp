@@ -73,6 +73,10 @@ computeCustomEndpoint: Optional[str]
 
 containerAnalysisCustomEndpoint: Optional[str]
 
+containerAwsCustomEndpoint: Optional[str]
+
+containerAzureCustomEndpoint: Optional[str]
+
 containerCustomEndpoint: Optional[str]
 
 credentials: Optional[str]

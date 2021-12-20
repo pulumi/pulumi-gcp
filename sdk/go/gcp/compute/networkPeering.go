@@ -16,7 +16,7 @@ import (
 // and
 // [API](https://cloud.google.com/compute/docs/reference/latest/networks).
 //
-// > Both network must create a peering with each other for the peering
+// > Both networks must create a peering with each other for the peering
 // to be functional.
 //
 // > Subnets IP ranges across peered VPC networks cannot overlap.
@@ -46,15 +46,15 @@ import (
 // 			return err
 // 		}
 // 		_, err = compute.NewNetworkPeering(ctx, "peering1", &compute.NetworkPeeringArgs{
-// 			Network:     _default.ID(),
-// 			PeerNetwork: other.ID(),
+// 			Network:     _default.SelfLink,
+// 			PeerNetwork: other.SelfLink,
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = compute.NewNetworkPeering(ctx, "peering2", &compute.NetworkPeeringArgs{
-// 			Network:     other.ID(),
-// 			PeerNetwork: _default.ID(),
+// 			Network:     other.SelfLink,
+// 			PeerNetwork: _default.SelfLink,
 // 		})
 // 		if err != nil {
 // 			return err

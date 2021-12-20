@@ -876,9 +876,14 @@ func Provider() tfbridge.ProviderInfo {
 			},
 
 			// Container/Kubernetes resources
-			"google_container_cluster":   {Tok: gcpResource(gcpKubernetes, "Cluster")},
-			"google_container_node_pool": {Tok: gcpResource(gcpKubernetes, "NodePool")},
-			"google_container_registry":  {Tok: gcpResource(gcpKubernetes, "Registry")},
+			"google_container_cluster":         {Tok: gcpResource(gcpKubernetes, "Cluster")},
+			"google_container_node_pool":       {Tok: gcpResource(gcpKubernetes, "NodePool")},
+			"google_container_registry":        {Tok: gcpResource(gcpKubernetes, "Registry")},
+			"google_container_aws_cluster":     {Tok: gcpResource(gcpKubernetes, "AwsCluster")},
+			"google_container_aws_node_pool":   {Tok: gcpResource(gcpKubernetes, "AwsNodePool")},
+			"google_container_azure_client":    {Tok: gcpResource(gcpKubernetes, "AzureClient")},
+			"google_container_azure_cluster":   {Tok: gcpResource(gcpKubernetes, "AzureCluster")},
+			"google_container_azure_node_pool": {Tok: gcpResource(gcpKubernetes, "AzureNodePool")},
 
 			// Data Flow resources
 			"google_dataflow_job":               {Tok: gcpResource(gcpDataFlow, "Job")},
@@ -2315,6 +2320,18 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpDataSource(gcpKubernetes, "getRegistryImage"),
 				Docs: &tfbridge.DocInfo{
 					Source: "google_container_registry_repository.html.markdown",
+				},
+			},
+			"google_container_aws_versions": {
+				Tok: gcpDataSource(gcpKubernetes, "getAwsVersions"),
+				Docs: &tfbridge.DocInfo{
+					Source: "container_aws_versions.html.markdown",
+				},
+			},
+			"google_container_azure_versions": {
+				Tok: gcpDataSource(gcpKubernetes, "getAzureVersions"),
+				Docs: &tfbridge.DocInfo{
+					Source: "container_azure_versions.html.markdown",
 				},
 			},
 			"google_dns_managed_zone": {

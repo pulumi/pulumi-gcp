@@ -143,6 +143,8 @@ type Bucket struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Prevents public access to a bucket.
+	PublicAccessPrevention pulumi.StringOutput `pulumi:"publicAccessPrevention"`
 	// Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
 	RequesterPays pulumi.BoolPtrOutput `pulumi:"requesterPays"`
 	// Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
@@ -215,6 +217,8 @@ type bucketState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Prevents public access to a bucket.
+	PublicAccessPrevention *string `pulumi:"publicAccessPrevention"`
 	// Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
 	RequesterPays *bool `pulumi:"requesterPays"`
 	// Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
@@ -256,6 +260,8 @@ type BucketState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Prevents public access to a bucket.
+	PublicAccessPrevention pulumi.StringPtrInput
 	// Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
 	RequesterPays pulumi.BoolPtrInput
 	// Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
@@ -301,6 +307,8 @@ type bucketArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Prevents public access to a bucket.
+	PublicAccessPrevention *string `pulumi:"publicAccessPrevention"`
 	// Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
 	RequesterPays *bool `pulumi:"requesterPays"`
 	// Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
@@ -339,6 +347,8 @@ type BucketArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Prevents public access to a bucket.
+	PublicAccessPrevention pulumi.StringPtrInput
 	// Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
 	RequesterPays pulumi.BoolPtrInput
 	// Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.

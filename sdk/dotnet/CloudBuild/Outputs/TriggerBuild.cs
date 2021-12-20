@@ -19,6 +19,11 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         /// </summary>
         public readonly Outputs.TriggerBuildArtifacts? Artifacts;
         /// <summary>
+        /// Secrets and secret environment variables.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.TriggerBuildAvailableSecrets? AvailableSecrets;
+        /// <summary>
         /// A list of images to be pushed upon the successful completion of all build steps.
         /// The images will be pushed using the builder service account's credentials.
         /// The digests of the pushed images will be stored in the Build resource's results field.
@@ -78,6 +83,8 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         private TriggerBuild(
             Outputs.TriggerBuildArtifacts? artifacts,
 
+            Outputs.TriggerBuildAvailableSecrets? availableSecrets,
+
             ImmutableArray<string> images,
 
             string? logsBucket,
@@ -99,6 +106,7 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
             string? timeout)
         {
             Artifacts = artifacts;
+            AvailableSecrets = availableSecrets;
             Images = images;
             LogsBucket = logsBucket;
             Options = options;

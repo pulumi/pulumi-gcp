@@ -21,7 +21,7 @@ class GetBucketResult:
     """
     A collection of values returned by getBucket.
     """
-    def __init__(__self__, cors=None, default_event_based_hold=None, encryptions=None, force_destroy=None, id=None, labels=None, lifecycle_rules=None, location=None, loggings=None, name=None, project=None, requester_pays=None, retention_policies=None, self_link=None, storage_class=None, uniform_bucket_level_access=None, url=None, versionings=None, websites=None):
+    def __init__(__self__, cors=None, default_event_based_hold=None, encryptions=None, force_destroy=None, id=None, labels=None, lifecycle_rules=None, location=None, loggings=None, name=None, project=None, public_access_prevention=None, requester_pays=None, retention_policies=None, self_link=None, storage_class=None, uniform_bucket_level_access=None, url=None, versionings=None, websites=None):
         if cors and not isinstance(cors, list):
             raise TypeError("Expected argument 'cors' to be a list")
         pulumi.set(__self__, "cors", cors)
@@ -55,6 +55,9 @@ class GetBucketResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if public_access_prevention and not isinstance(public_access_prevention, str):
+            raise TypeError("Expected argument 'public_access_prevention' to be a str")
+        pulumi.set(__self__, "public_access_prevention", public_access_prevention)
         if requester_pays and not isinstance(requester_pays, bool):
             raise TypeError("Expected argument 'requester_pays' to be a bool")
         pulumi.set(__self__, "requester_pays", requester_pays)
@@ -139,6 +142,11 @@ class GetBucketResult:
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="publicAccessPrevention")
+    def public_access_prevention(self) -> str:
+        return pulumi.get(self, "public_access_prevention")
+
+    @property
     @pulumi.getter(name="requesterPays")
     def requester_pays(self) -> bool:
         return pulumi.get(self, "requester_pays")
@@ -196,6 +204,7 @@ class AwaitableGetBucketResult(GetBucketResult):
             loggings=self.loggings,
             name=self.name,
             project=self.project,
+            public_access_prevention=self.public_access_prevention,
             requester_pays=self.requester_pays,
             retention_policies=self.retention_policies,
             self_link=self.self_link,
@@ -246,6 +255,7 @@ def get_bucket(name: Optional[str] = None,
         loggings=__ret__.loggings,
         name=__ret__.name,
         project=__ret__.project,
+        public_access_prevention=__ret__.public_access_prevention,
         requester_pays=__ret__.requester_pays,
         retention_policies=__ret__.retention_policies,
         self_link=__ret__.self_link,

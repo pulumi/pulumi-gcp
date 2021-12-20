@@ -144,6 +144,14 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('containerAnalysisCustomEndpoint')
 
     @property
+    def container_aws_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('containerAwsCustomEndpoint')
+
+    @property
+    def container_azure_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('containerAzureCustomEndpoint')
+
+    @property
     def container_custom_endpoint(self) -> Optional[str]:
         return __config__.get('containerCustomEndpoint')
 
