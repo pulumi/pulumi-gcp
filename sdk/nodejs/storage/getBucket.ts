@@ -63,6 +63,7 @@ export interface GetBucketResult {
     readonly loggings: outputs.storage.GetBucketLogging[];
     readonly name: string;
     readonly project: string;
+    readonly publicAccessPrevention: string;
     readonly requesterPays: boolean;
     readonly retentionPolicies: outputs.storage.GetBucketRetentionPolicy[];
     readonly selfLink: string;

@@ -79,6 +79,7 @@ type LookupFunctionResult struct {
 	Labels map[string]interface{} `pulumi:"labels"`
 	// The limit on the maximum number of function instances that may coexist at a given time.
 	MaxInstances int `pulumi:"maxInstances"`
+	MinInstances int `pulumi:"minInstances"`
 	// The name of the Cloud Function.
 	Name    string  `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -194,6 +195,10 @@ func (o LookupFunctionResultOutput) Labels() pulumi.MapOutput {
 // The limit on the maximum number of function instances that may coexist at a given time.
 func (o LookupFunctionResultOutput) MaxInstances() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupFunctionResult) int { return v.MaxInstances }).(pulumi.IntOutput)
+}
+
+func (o LookupFunctionResultOutput) MinInstances() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupFunctionResult) int { return v.MinInstances }).(pulumi.IntOutput)
 }
 
 // The name of the Cloud Function.

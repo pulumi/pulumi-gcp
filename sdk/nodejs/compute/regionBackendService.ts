@@ -366,7 +366,7 @@ export class RegionBackendService extends pulumi.CustomResource {
      * will be used for. A backend service created for one type of load
      * balancing cannot be used with the other(s).
      * Default value is `INTERNAL`.
-     * Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
+     * Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
      */
     public readonly loadBalancingScheme!: pulumi.Output<string | undefined>;
     /**
@@ -420,7 +420,7 @@ export class RegionBackendService extends pulumi.CustomResource {
     /**
      * A named port on a backend instance group representing the port for
      * communication to the backend VMs in that group. Required when the
-     * loadBalancingScheme is EXTERNAL, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
+     * loadBalancingScheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
      * and the backends are instance groups. The named port must be defined on each
      * backend instance group. This parameter has no meaning if the backends are NEGs. API sets a
      * default of "http" if not given.
@@ -619,7 +619,7 @@ export interface RegionBackendServiceState {
      * will be used for. A backend service created for one type of load
      * balancing cannot be used with the other(s).
      * Default value is `INTERNAL`.
-     * Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
+     * Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
      */
     loadBalancingScheme?: pulumi.Input<string>;
     /**
@@ -673,7 +673,7 @@ export interface RegionBackendServiceState {
     /**
      * A named port on a backend instance group representing the port for
      * communication to the backend VMs in that group. Required when the
-     * loadBalancingScheme is EXTERNAL, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
+     * loadBalancingScheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
      * and the backends are instance groups. The named port must be defined on each
      * backend instance group. This parameter has no meaning if the backends are NEGs. API sets a
      * default of "http" if not given.
@@ -790,7 +790,7 @@ export interface RegionBackendServiceArgs {
      * will be used for. A backend service created for one type of load
      * balancing cannot be used with the other(s).
      * Default value is `INTERNAL`.
-     * Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
+     * Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
      */
     loadBalancingScheme?: pulumi.Input<string>;
     /**
@@ -844,7 +844,7 @@ export interface RegionBackendServiceArgs {
     /**
      * A named port on a backend instance group representing the port for
      * communication to the backend VMs in that group. Required when the
-     * loadBalancingScheme is EXTERNAL, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
+     * loadBalancingScheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
      * and the backends are instance groups. The named port must be defined on each
      * backend instance group. This parameter has no meaning if the backends are NEGs. API sets a
      * default of "http" if not given.

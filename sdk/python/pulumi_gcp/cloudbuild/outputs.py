@@ -14,6 +14,8 @@ __all__ = [
     'TriggerBuildArtifacts',
     'TriggerBuildArtifactsObjects',
     'TriggerBuildArtifactsObjectsTiming',
+    'TriggerBuildAvailableSecrets',
+    'TriggerBuildAvailableSecretsSecretManager',
     'TriggerBuildOptions',
     'TriggerBuildOptionsVolume',
     'TriggerBuildSecret',
@@ -37,7 +39,9 @@ class TriggerBuild(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "logsBucket":
+        if key == "availableSecrets":
+            suggest = "available_secrets"
+        elif key == "logsBucket":
             suggest = "logs_bucket"
         elif key == "queueTtl":
             suggest = "queue_ttl"
@@ -56,6 +60,7 @@ class TriggerBuild(dict):
     def __init__(__self__, *,
                  steps: Sequence['outputs.TriggerBuildStep'],
                  artifacts: Optional['outputs.TriggerBuildArtifacts'] = None,
+                 available_secrets: Optional['outputs.TriggerBuildAvailableSecrets'] = None,
                  images: Optional[Sequence[str]] = None,
                  logs_bucket: Optional[str] = None,
                  options: Optional['outputs.TriggerBuildOptions'] = None,
@@ -69,6 +74,8 @@ class TriggerBuild(dict):
         :param Sequence['TriggerBuildStepArgs'] steps: The operations to be performed on the workspace.
                Structure is documented below.
         :param 'TriggerBuildArtifactsArgs' artifacts: Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
+               Structure is documented below.
+        :param 'TriggerBuildAvailableSecretsArgs' available_secrets: Secrets and secret environment variables.
                Structure is documented below.
         :param Sequence[str] images: A list of images to be pushed upon the successful completion of all build steps.
                The images will be pushed using the builder service account's credentials.
@@ -97,6 +104,8 @@ class TriggerBuild(dict):
         pulumi.set(__self__, "steps", steps)
         if artifacts is not None:
             pulumi.set(__self__, "artifacts", artifacts)
+        if available_secrets is not None:
+            pulumi.set(__self__, "available_secrets", available_secrets)
         if images is not None:
             pulumi.set(__self__, "images", images)
         if logs_bucket is not None:
@@ -133,6 +142,15 @@ class TriggerBuild(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "artifacts")
+
+    @property
+    @pulumi.getter(name="availableSecrets")
+    def available_secrets(self) -> Optional['outputs.TriggerBuildAvailableSecrets']:
+        """
+        Secrets and secret environment variables.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "available_secrets")
 
     @property
     @pulumi.getter
@@ -375,6 +393,95 @@ class TriggerBuildArtifactsObjectsTiming(dict):
         nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class TriggerBuildAvailableSecrets(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secretManagers":
+            suggest = "secret_managers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TriggerBuildAvailableSecrets. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TriggerBuildAvailableSecrets.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TriggerBuildAvailableSecrets.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 secret_managers: Sequence['outputs.TriggerBuildAvailableSecretsSecretManager']):
+        """
+        :param Sequence['TriggerBuildAvailableSecretsSecretManagerArgs'] secret_managers: Pairs a secret environment variable with a SecretVersion in Secret Manager.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "secret_managers", secret_managers)
+
+    @property
+    @pulumi.getter(name="secretManagers")
+    def secret_managers(self) -> Sequence['outputs.TriggerBuildAvailableSecretsSecretManager']:
+        """
+        Pairs a secret environment variable with a SecretVersion in Secret Manager.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "secret_managers")
+
+
+@pulumi.output_type
+class TriggerBuildAvailableSecretsSecretManager(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "versionName":
+            suggest = "version_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TriggerBuildAvailableSecretsSecretManager. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TriggerBuildAvailableSecretsSecretManager.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TriggerBuildAvailableSecretsSecretManager.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 env: str,
+                 version_name: str):
+        """
+        :param str env: A list of global environment variable definitions that will exist for all build steps
+               in this build. If a variable is defined in both globally and in a build step,
+               the variable will use the build step value.
+               The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+        :param str version_name: Resource name of the SecretVersion. In format: projects/*/secrets/*/versions/*
+        """
+        pulumi.set(__self__, "env", env)
+        pulumi.set(__self__, "version_name", version_name)
+
+    @property
+    @pulumi.getter
+    def env(self) -> str:
+        """
+        A list of global environment variable definitions that will exist for all build steps
+        in this build. If a variable is defined in both globally and in a build step,
+        the variable will use the build step value.
+        The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+        """
+        return pulumi.get(self, "env")
+
+    @property
+    @pulumi.getter(name="versionName")
+    def version_name(self) -> str:
+        """
+        Resource name of the SecretVersion. In format: projects/*/secrets/*/versions/*
+        """
+        return pulumi.get(self, "version_name")
 
 
 @pulumi.output_type

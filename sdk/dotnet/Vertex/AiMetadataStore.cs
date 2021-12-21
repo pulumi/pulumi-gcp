@@ -47,7 +47,7 @@ namespace Pulumi.Gcp.Vertex
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Customer-managed encryption key spec for a Dataset. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
+        /// Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
         /// Structure is documented below.
         /// </summary>
         [Output("encryptionSpec")]
@@ -138,7 +138,7 @@ namespace Pulumi.Gcp.Vertex
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Customer-managed encryption key spec for a Dataset. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
+        /// Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
         /// Structure is documented below.
         /// </summary>
         [Input("encryptionSpec")]
@@ -184,7 +184,7 @@ namespace Pulumi.Gcp.Vertex
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Customer-managed encryption key spec for a Dataset. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
+        /// Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
         /// Structure is documented below.
         /// </summary>
         [Input("encryptionSpec")]

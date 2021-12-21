@@ -10,6 +10,5882 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type AwsClusterAuthorization struct {
+	// Required. Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+	AdminUsers []AwsClusterAuthorizationAdminUser `pulumi:"adminUsers"`
+}
+
+// AwsClusterAuthorizationInput is an input type that accepts AwsClusterAuthorizationArgs and AwsClusterAuthorizationOutput values.
+// You can construct a concrete instance of `AwsClusterAuthorizationInput` via:
+//
+//          AwsClusterAuthorizationArgs{...}
+type AwsClusterAuthorizationInput interface {
+	pulumi.Input
+
+	ToAwsClusterAuthorizationOutput() AwsClusterAuthorizationOutput
+	ToAwsClusterAuthorizationOutputWithContext(context.Context) AwsClusterAuthorizationOutput
+}
+
+type AwsClusterAuthorizationArgs struct {
+	// Required. Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+	AdminUsers AwsClusterAuthorizationAdminUserArrayInput `pulumi:"adminUsers"`
+}
+
+func (AwsClusterAuthorizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsClusterAuthorization)(nil)).Elem()
+}
+
+func (i AwsClusterAuthorizationArgs) ToAwsClusterAuthorizationOutput() AwsClusterAuthorizationOutput {
+	return i.ToAwsClusterAuthorizationOutputWithContext(context.Background())
+}
+
+func (i AwsClusterAuthorizationArgs) ToAwsClusterAuthorizationOutputWithContext(ctx context.Context) AwsClusterAuthorizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterAuthorizationOutput)
+}
+
+func (i AwsClusterAuthorizationArgs) ToAwsClusterAuthorizationPtrOutput() AwsClusterAuthorizationPtrOutput {
+	return i.ToAwsClusterAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (i AwsClusterAuthorizationArgs) ToAwsClusterAuthorizationPtrOutputWithContext(ctx context.Context) AwsClusterAuthorizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterAuthorizationOutput).ToAwsClusterAuthorizationPtrOutputWithContext(ctx)
+}
+
+// AwsClusterAuthorizationPtrInput is an input type that accepts AwsClusterAuthorizationArgs, AwsClusterAuthorizationPtr and AwsClusterAuthorizationPtrOutput values.
+// You can construct a concrete instance of `AwsClusterAuthorizationPtrInput` via:
+//
+//          AwsClusterAuthorizationArgs{...}
+//
+//  or:
+//
+//          nil
+type AwsClusterAuthorizationPtrInput interface {
+	pulumi.Input
+
+	ToAwsClusterAuthorizationPtrOutput() AwsClusterAuthorizationPtrOutput
+	ToAwsClusterAuthorizationPtrOutputWithContext(context.Context) AwsClusterAuthorizationPtrOutput
+}
+
+type awsClusterAuthorizationPtrType AwsClusterAuthorizationArgs
+
+func AwsClusterAuthorizationPtr(v *AwsClusterAuthorizationArgs) AwsClusterAuthorizationPtrInput {
+	return (*awsClusterAuthorizationPtrType)(v)
+}
+
+func (*awsClusterAuthorizationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsClusterAuthorization)(nil)).Elem()
+}
+
+func (i *awsClusterAuthorizationPtrType) ToAwsClusterAuthorizationPtrOutput() AwsClusterAuthorizationPtrOutput {
+	return i.ToAwsClusterAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (i *awsClusterAuthorizationPtrType) ToAwsClusterAuthorizationPtrOutputWithContext(ctx context.Context) AwsClusterAuthorizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterAuthorizationPtrOutput)
+}
+
+type AwsClusterAuthorizationOutput struct{ *pulumi.OutputState }
+
+func (AwsClusterAuthorizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsClusterAuthorization)(nil)).Elem()
+}
+
+func (o AwsClusterAuthorizationOutput) ToAwsClusterAuthorizationOutput() AwsClusterAuthorizationOutput {
+	return o
+}
+
+func (o AwsClusterAuthorizationOutput) ToAwsClusterAuthorizationOutputWithContext(ctx context.Context) AwsClusterAuthorizationOutput {
+	return o
+}
+
+func (o AwsClusterAuthorizationOutput) ToAwsClusterAuthorizationPtrOutput() AwsClusterAuthorizationPtrOutput {
+	return o.ToAwsClusterAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (o AwsClusterAuthorizationOutput) ToAwsClusterAuthorizationPtrOutputWithContext(ctx context.Context) AwsClusterAuthorizationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsClusterAuthorization) *AwsClusterAuthorization {
+		return &v
+	}).(AwsClusterAuthorizationPtrOutput)
+}
+
+// Required. Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+func (o AwsClusterAuthorizationOutput) AdminUsers() AwsClusterAuthorizationAdminUserArrayOutput {
+	return o.ApplyT(func(v AwsClusterAuthorization) []AwsClusterAuthorizationAdminUser { return v.AdminUsers }).(AwsClusterAuthorizationAdminUserArrayOutput)
+}
+
+type AwsClusterAuthorizationPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsClusterAuthorizationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsClusterAuthorization)(nil)).Elem()
+}
+
+func (o AwsClusterAuthorizationPtrOutput) ToAwsClusterAuthorizationPtrOutput() AwsClusterAuthorizationPtrOutput {
+	return o
+}
+
+func (o AwsClusterAuthorizationPtrOutput) ToAwsClusterAuthorizationPtrOutputWithContext(ctx context.Context) AwsClusterAuthorizationPtrOutput {
+	return o
+}
+
+func (o AwsClusterAuthorizationPtrOutput) Elem() AwsClusterAuthorizationOutput {
+	return o.ApplyT(func(v *AwsClusterAuthorization) AwsClusterAuthorization {
+		if v != nil {
+			return *v
+		}
+		var ret AwsClusterAuthorization
+		return ret
+	}).(AwsClusterAuthorizationOutput)
+}
+
+// Required. Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+func (o AwsClusterAuthorizationPtrOutput) AdminUsers() AwsClusterAuthorizationAdminUserArrayOutput {
+	return o.ApplyT(func(v *AwsClusterAuthorization) []AwsClusterAuthorizationAdminUser {
+		if v == nil {
+			return nil
+		}
+		return v.AdminUsers
+	}).(AwsClusterAuthorizationAdminUserArrayOutput)
+}
+
+type AwsClusterAuthorizationAdminUser struct {
+	// Required. The name of the user, e.g. `my-gcp-id@gmail.com`.
+	Username string `pulumi:"username"`
+}
+
+// AwsClusterAuthorizationAdminUserInput is an input type that accepts AwsClusterAuthorizationAdminUserArgs and AwsClusterAuthorizationAdminUserOutput values.
+// You can construct a concrete instance of `AwsClusterAuthorizationAdminUserInput` via:
+//
+//          AwsClusterAuthorizationAdminUserArgs{...}
+type AwsClusterAuthorizationAdminUserInput interface {
+	pulumi.Input
+
+	ToAwsClusterAuthorizationAdminUserOutput() AwsClusterAuthorizationAdminUserOutput
+	ToAwsClusterAuthorizationAdminUserOutputWithContext(context.Context) AwsClusterAuthorizationAdminUserOutput
+}
+
+type AwsClusterAuthorizationAdminUserArgs struct {
+	// Required. The name of the user, e.g. `my-gcp-id@gmail.com`.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (AwsClusterAuthorizationAdminUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsClusterAuthorizationAdminUser)(nil)).Elem()
+}
+
+func (i AwsClusterAuthorizationAdminUserArgs) ToAwsClusterAuthorizationAdminUserOutput() AwsClusterAuthorizationAdminUserOutput {
+	return i.ToAwsClusterAuthorizationAdminUserOutputWithContext(context.Background())
+}
+
+func (i AwsClusterAuthorizationAdminUserArgs) ToAwsClusterAuthorizationAdminUserOutputWithContext(ctx context.Context) AwsClusterAuthorizationAdminUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterAuthorizationAdminUserOutput)
+}
+
+// AwsClusterAuthorizationAdminUserArrayInput is an input type that accepts AwsClusterAuthorizationAdminUserArray and AwsClusterAuthorizationAdminUserArrayOutput values.
+// You can construct a concrete instance of `AwsClusterAuthorizationAdminUserArrayInput` via:
+//
+//          AwsClusterAuthorizationAdminUserArray{ AwsClusterAuthorizationAdminUserArgs{...} }
+type AwsClusterAuthorizationAdminUserArrayInput interface {
+	pulumi.Input
+
+	ToAwsClusterAuthorizationAdminUserArrayOutput() AwsClusterAuthorizationAdminUserArrayOutput
+	ToAwsClusterAuthorizationAdminUserArrayOutputWithContext(context.Context) AwsClusterAuthorizationAdminUserArrayOutput
+}
+
+type AwsClusterAuthorizationAdminUserArray []AwsClusterAuthorizationAdminUserInput
+
+func (AwsClusterAuthorizationAdminUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AwsClusterAuthorizationAdminUser)(nil)).Elem()
+}
+
+func (i AwsClusterAuthorizationAdminUserArray) ToAwsClusterAuthorizationAdminUserArrayOutput() AwsClusterAuthorizationAdminUserArrayOutput {
+	return i.ToAwsClusterAuthorizationAdminUserArrayOutputWithContext(context.Background())
+}
+
+func (i AwsClusterAuthorizationAdminUserArray) ToAwsClusterAuthorizationAdminUserArrayOutputWithContext(ctx context.Context) AwsClusterAuthorizationAdminUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterAuthorizationAdminUserArrayOutput)
+}
+
+type AwsClusterAuthorizationAdminUserOutput struct{ *pulumi.OutputState }
+
+func (AwsClusterAuthorizationAdminUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsClusterAuthorizationAdminUser)(nil)).Elem()
+}
+
+func (o AwsClusterAuthorizationAdminUserOutput) ToAwsClusterAuthorizationAdminUserOutput() AwsClusterAuthorizationAdminUserOutput {
+	return o
+}
+
+func (o AwsClusterAuthorizationAdminUserOutput) ToAwsClusterAuthorizationAdminUserOutputWithContext(ctx context.Context) AwsClusterAuthorizationAdminUserOutput {
+	return o
+}
+
+// Required. The name of the user, e.g. `my-gcp-id@gmail.com`.
+func (o AwsClusterAuthorizationAdminUserOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsClusterAuthorizationAdminUser) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type AwsClusterAuthorizationAdminUserArrayOutput struct{ *pulumi.OutputState }
+
+func (AwsClusterAuthorizationAdminUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AwsClusterAuthorizationAdminUser)(nil)).Elem()
+}
+
+func (o AwsClusterAuthorizationAdminUserArrayOutput) ToAwsClusterAuthorizationAdminUserArrayOutput() AwsClusterAuthorizationAdminUserArrayOutput {
+	return o
+}
+
+func (o AwsClusterAuthorizationAdminUserArrayOutput) ToAwsClusterAuthorizationAdminUserArrayOutputWithContext(ctx context.Context) AwsClusterAuthorizationAdminUserArrayOutput {
+	return o
+}
+
+func (o AwsClusterAuthorizationAdminUserArrayOutput) Index(i pulumi.IntInput) AwsClusterAuthorizationAdminUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AwsClusterAuthorizationAdminUser {
+		return vs[0].([]AwsClusterAuthorizationAdminUser)[vs[1].(int)]
+	}).(AwsClusterAuthorizationAdminUserOutput)
+}
+
+type AwsClusterControlPlane struct {
+	// Required. Authentication configuration for management of AWS resources.
+	AwsServicesAuthentication AwsClusterControlPlaneAwsServicesAuthentication `pulumi:"awsServicesAuthentication"`
+	// Required. The ARN of the AWS KMS key used to encrypt cluster configuration.
+	ConfigEncryption AwsClusterControlPlaneConfigEncryption `pulumi:"configEncryption"`
+	// Required. The ARN of the AWS KMS key used to encrypt cluster secrets.
+	DatabaseEncryption AwsClusterControlPlaneDatabaseEncryption `pulumi:"databaseEncryption"`
+	// Required. The name of the AWS IAM instance pofile to assign to each control plane replica.
+	IamInstanceProfile string `pulumi:"iamInstanceProfile"`
+	// Optional. The AWS instance type. When unspecified, it defaults to `t3.medium`.
+	InstanceType *string `pulumi:"instanceType"`
+	// Optional. Configuration related to the main volume provisioned for each control plane replica. The main volume is in charge of storing all of the cluster's etcd state. Volumes will be provisioned in the availability zone associated with the corresponding subnet. When unspecified, it defaults to 8 GiB with the GP2 volume type.
+	MainVolume *AwsClusterControlPlaneMainVolume `pulumi:"mainVolume"`
+	// Proxy configuration for outbound HTTP(S) traffic.
+	ProxyConfig *AwsClusterControlPlaneProxyConfig `pulumi:"proxyConfig"`
+	// Optional. Configuration related to the root volume provisioned for each control plane replica. Volumes will be provisioned in the availability zone associated with the corresponding subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
+	RootVolume *AwsClusterControlPlaneRootVolume `pulumi:"rootVolume"`
+	// Optional. The IDs of additional security groups to add to control plane replicas. The Anthos Multi-Cloud API will automatically create and manage security groups with the minimum rules needed for a functioning cluster.
+	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// Optional. SSH configuration for how to access the underlying control plane machines.
+	SshConfig *AwsClusterControlPlaneSshConfig `pulumi:"sshConfig"`
+	// Required. The list of subnets where control plane replicas will run. A replica will be provisioned on each subnet and up to three values can be provided. Each subnet must be in a different AWS Availability Zone (AZ).
+	SubnetIds []string `pulumi:"subnetIds"`
+	// Optional. A set of AWS resource tags to propagate to all underlying managed AWS resources. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
+	Tags map[string]string `pulumi:"tags"`
+	// Required. The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling .
+	Version string `pulumi:"version"`
+}
+
+// AwsClusterControlPlaneInput is an input type that accepts AwsClusterControlPlaneArgs and AwsClusterControlPlaneOutput values.
+// You can construct a concrete instance of `AwsClusterControlPlaneInput` via:
+//
+//          AwsClusterControlPlaneArgs{...}
+type AwsClusterControlPlaneInput interface {
+	pulumi.Input
+
+	ToAwsClusterControlPlaneOutput() AwsClusterControlPlaneOutput
+	ToAwsClusterControlPlaneOutputWithContext(context.Context) AwsClusterControlPlaneOutput
+}
+
+type AwsClusterControlPlaneArgs struct {
+	// Required. Authentication configuration for management of AWS resources.
+	AwsServicesAuthentication AwsClusterControlPlaneAwsServicesAuthenticationInput `pulumi:"awsServicesAuthentication"`
+	// Required. The ARN of the AWS KMS key used to encrypt cluster configuration.
+	ConfigEncryption AwsClusterControlPlaneConfigEncryptionInput `pulumi:"configEncryption"`
+	// Required. The ARN of the AWS KMS key used to encrypt cluster secrets.
+	DatabaseEncryption AwsClusterControlPlaneDatabaseEncryptionInput `pulumi:"databaseEncryption"`
+	// Required. The name of the AWS IAM instance pofile to assign to each control plane replica.
+	IamInstanceProfile pulumi.StringInput `pulumi:"iamInstanceProfile"`
+	// Optional. The AWS instance type. When unspecified, it defaults to `t3.medium`.
+	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
+	// Optional. Configuration related to the main volume provisioned for each control plane replica. The main volume is in charge of storing all of the cluster's etcd state. Volumes will be provisioned in the availability zone associated with the corresponding subnet. When unspecified, it defaults to 8 GiB with the GP2 volume type.
+	MainVolume AwsClusterControlPlaneMainVolumePtrInput `pulumi:"mainVolume"`
+	// Proxy configuration for outbound HTTP(S) traffic.
+	ProxyConfig AwsClusterControlPlaneProxyConfigPtrInput `pulumi:"proxyConfig"`
+	// Optional. Configuration related to the root volume provisioned for each control plane replica. Volumes will be provisioned in the availability zone associated with the corresponding subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
+	RootVolume AwsClusterControlPlaneRootVolumePtrInput `pulumi:"rootVolume"`
+	// Optional. The IDs of additional security groups to add to control plane replicas. The Anthos Multi-Cloud API will automatically create and manage security groups with the minimum rules needed for a functioning cluster.
+	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
+	// Optional. SSH configuration for how to access the underlying control plane machines.
+	SshConfig AwsClusterControlPlaneSshConfigPtrInput `pulumi:"sshConfig"`
+	// Required. The list of subnets where control plane replicas will run. A replica will be provisioned on each subnet and up to three values can be provided. Each subnet must be in a different AWS Availability Zone (AZ).
+	SubnetIds pulumi.StringArrayInput `pulumi:"subnetIds"`
+	// Optional. A set of AWS resource tags to propagate to all underlying managed AWS resources. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Required. The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling .
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (AwsClusterControlPlaneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsClusterControlPlane)(nil)).Elem()
+}
+
+func (i AwsClusterControlPlaneArgs) ToAwsClusterControlPlaneOutput() AwsClusterControlPlaneOutput {
+	return i.ToAwsClusterControlPlaneOutputWithContext(context.Background())
+}
+
+func (i AwsClusterControlPlaneArgs) ToAwsClusterControlPlaneOutputWithContext(ctx context.Context) AwsClusterControlPlaneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterControlPlaneOutput)
+}
+
+func (i AwsClusterControlPlaneArgs) ToAwsClusterControlPlanePtrOutput() AwsClusterControlPlanePtrOutput {
+	return i.ToAwsClusterControlPlanePtrOutputWithContext(context.Background())
+}
+
+func (i AwsClusterControlPlaneArgs) ToAwsClusterControlPlanePtrOutputWithContext(ctx context.Context) AwsClusterControlPlanePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterControlPlaneOutput).ToAwsClusterControlPlanePtrOutputWithContext(ctx)
+}
+
+// AwsClusterControlPlanePtrInput is an input type that accepts AwsClusterControlPlaneArgs, AwsClusterControlPlanePtr and AwsClusterControlPlanePtrOutput values.
+// You can construct a concrete instance of `AwsClusterControlPlanePtrInput` via:
+//
+//          AwsClusterControlPlaneArgs{...}
+//
+//  or:
+//
+//          nil
+type AwsClusterControlPlanePtrInput interface {
+	pulumi.Input
+
+	ToAwsClusterControlPlanePtrOutput() AwsClusterControlPlanePtrOutput
+	ToAwsClusterControlPlanePtrOutputWithContext(context.Context) AwsClusterControlPlanePtrOutput
+}
+
+type awsClusterControlPlanePtrType AwsClusterControlPlaneArgs
+
+func AwsClusterControlPlanePtr(v *AwsClusterControlPlaneArgs) AwsClusterControlPlanePtrInput {
+	return (*awsClusterControlPlanePtrType)(v)
+}
+
+func (*awsClusterControlPlanePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsClusterControlPlane)(nil)).Elem()
+}
+
+func (i *awsClusterControlPlanePtrType) ToAwsClusterControlPlanePtrOutput() AwsClusterControlPlanePtrOutput {
+	return i.ToAwsClusterControlPlanePtrOutputWithContext(context.Background())
+}
+
+func (i *awsClusterControlPlanePtrType) ToAwsClusterControlPlanePtrOutputWithContext(ctx context.Context) AwsClusterControlPlanePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterControlPlanePtrOutput)
+}
+
+type AwsClusterControlPlaneOutput struct{ *pulumi.OutputState }
+
+func (AwsClusterControlPlaneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsClusterControlPlane)(nil)).Elem()
+}
+
+func (o AwsClusterControlPlaneOutput) ToAwsClusterControlPlaneOutput() AwsClusterControlPlaneOutput {
+	return o
+}
+
+func (o AwsClusterControlPlaneOutput) ToAwsClusterControlPlaneOutputWithContext(ctx context.Context) AwsClusterControlPlaneOutput {
+	return o
+}
+
+func (o AwsClusterControlPlaneOutput) ToAwsClusterControlPlanePtrOutput() AwsClusterControlPlanePtrOutput {
+	return o.ToAwsClusterControlPlanePtrOutputWithContext(context.Background())
+}
+
+func (o AwsClusterControlPlaneOutput) ToAwsClusterControlPlanePtrOutputWithContext(ctx context.Context) AwsClusterControlPlanePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsClusterControlPlane) *AwsClusterControlPlane {
+		return &v
+	}).(AwsClusterControlPlanePtrOutput)
+}
+
+// Required. Authentication configuration for management of AWS resources.
+func (o AwsClusterControlPlaneOutput) AwsServicesAuthentication() AwsClusterControlPlaneAwsServicesAuthenticationOutput {
+	return o.ApplyT(func(v AwsClusterControlPlane) AwsClusterControlPlaneAwsServicesAuthentication {
+		return v.AwsServicesAuthentication
+	}).(AwsClusterControlPlaneAwsServicesAuthenticationOutput)
+}
+
+// Required. The ARN of the AWS KMS key used to encrypt cluster configuration.
+func (o AwsClusterControlPlaneOutput) ConfigEncryption() AwsClusterControlPlaneConfigEncryptionOutput {
+	return o.ApplyT(func(v AwsClusterControlPlane) AwsClusterControlPlaneConfigEncryption { return v.ConfigEncryption }).(AwsClusterControlPlaneConfigEncryptionOutput)
+}
+
+// Required. The ARN of the AWS KMS key used to encrypt cluster secrets.
+func (o AwsClusterControlPlaneOutput) DatabaseEncryption() AwsClusterControlPlaneDatabaseEncryptionOutput {
+	return o.ApplyT(func(v AwsClusterControlPlane) AwsClusterControlPlaneDatabaseEncryption { return v.DatabaseEncryption }).(AwsClusterControlPlaneDatabaseEncryptionOutput)
+}
+
+// Required. The name of the AWS IAM instance pofile to assign to each control plane replica.
+func (o AwsClusterControlPlaneOutput) IamInstanceProfile() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsClusterControlPlane) string { return v.IamInstanceProfile }).(pulumi.StringOutput)
+}
+
+// Optional. The AWS instance type. When unspecified, it defaults to `t3.medium`.
+func (o AwsClusterControlPlaneOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsClusterControlPlane) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Configuration related to the main volume provisioned for each control plane replica. The main volume is in charge of storing all of the cluster's etcd state. Volumes will be provisioned in the availability zone associated with the corresponding subnet. When unspecified, it defaults to 8 GiB with the GP2 volume type.
+func (o AwsClusterControlPlaneOutput) MainVolume() AwsClusterControlPlaneMainVolumePtrOutput {
+	return o.ApplyT(func(v AwsClusterControlPlane) *AwsClusterControlPlaneMainVolume { return v.MainVolume }).(AwsClusterControlPlaneMainVolumePtrOutput)
+}
+
+// Proxy configuration for outbound HTTP(S) traffic.
+func (o AwsClusterControlPlaneOutput) ProxyConfig() AwsClusterControlPlaneProxyConfigPtrOutput {
+	return o.ApplyT(func(v AwsClusterControlPlane) *AwsClusterControlPlaneProxyConfig { return v.ProxyConfig }).(AwsClusterControlPlaneProxyConfigPtrOutput)
+}
+
+// Optional. Configuration related to the root volume provisioned for each control plane replica. Volumes will be provisioned in the availability zone associated with the corresponding subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
+func (o AwsClusterControlPlaneOutput) RootVolume() AwsClusterControlPlaneRootVolumePtrOutput {
+	return o.ApplyT(func(v AwsClusterControlPlane) *AwsClusterControlPlaneRootVolume { return v.RootVolume }).(AwsClusterControlPlaneRootVolumePtrOutput)
+}
+
+// Optional. The IDs of additional security groups to add to control plane replicas. The Anthos Multi-Cloud API will automatically create and manage security groups with the minimum rules needed for a functioning cluster.
+func (o AwsClusterControlPlaneOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsClusterControlPlane) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// Optional. SSH configuration for how to access the underlying control plane machines.
+func (o AwsClusterControlPlaneOutput) SshConfig() AwsClusterControlPlaneSshConfigPtrOutput {
+	return o.ApplyT(func(v AwsClusterControlPlane) *AwsClusterControlPlaneSshConfig { return v.SshConfig }).(AwsClusterControlPlaneSshConfigPtrOutput)
+}
+
+// Required. The list of subnets where control plane replicas will run. A replica will be provisioned on each subnet and up to three values can be provided. Each subnet must be in a different AWS Availability Zone (AZ).
+func (o AwsClusterControlPlaneOutput) SubnetIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsClusterControlPlane) []string { return v.SubnetIds }).(pulumi.StringArrayOutput)
+}
+
+// Optional. A set of AWS resource tags to propagate to all underlying managed AWS resources. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
+func (o AwsClusterControlPlaneOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AwsClusterControlPlane) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Required. The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling .
+func (o AwsClusterControlPlaneOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsClusterControlPlane) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type AwsClusterControlPlanePtrOutput struct{ *pulumi.OutputState }
+
+func (AwsClusterControlPlanePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsClusterControlPlane)(nil)).Elem()
+}
+
+func (o AwsClusterControlPlanePtrOutput) ToAwsClusterControlPlanePtrOutput() AwsClusterControlPlanePtrOutput {
+	return o
+}
+
+func (o AwsClusterControlPlanePtrOutput) ToAwsClusterControlPlanePtrOutputWithContext(ctx context.Context) AwsClusterControlPlanePtrOutput {
+	return o
+}
+
+func (o AwsClusterControlPlanePtrOutput) Elem() AwsClusterControlPlaneOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlane) AwsClusterControlPlane {
+		if v != nil {
+			return *v
+		}
+		var ret AwsClusterControlPlane
+		return ret
+	}).(AwsClusterControlPlaneOutput)
+}
+
+// Required. Authentication configuration for management of AWS resources.
+func (o AwsClusterControlPlanePtrOutput) AwsServicesAuthentication() AwsClusterControlPlaneAwsServicesAuthenticationPtrOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlane) *AwsClusterControlPlaneAwsServicesAuthentication {
+		if v == nil {
+			return nil
+		}
+		return &v.AwsServicesAuthentication
+	}).(AwsClusterControlPlaneAwsServicesAuthenticationPtrOutput)
+}
+
+// Required. The ARN of the AWS KMS key used to encrypt cluster configuration.
+func (o AwsClusterControlPlanePtrOutput) ConfigEncryption() AwsClusterControlPlaneConfigEncryptionPtrOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlane) *AwsClusterControlPlaneConfigEncryption {
+		if v == nil {
+			return nil
+		}
+		return &v.ConfigEncryption
+	}).(AwsClusterControlPlaneConfigEncryptionPtrOutput)
+}
+
+// Required. The ARN of the AWS KMS key used to encrypt cluster secrets.
+func (o AwsClusterControlPlanePtrOutput) DatabaseEncryption() AwsClusterControlPlaneDatabaseEncryptionPtrOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlane) *AwsClusterControlPlaneDatabaseEncryption {
+		if v == nil {
+			return nil
+		}
+		return &v.DatabaseEncryption
+	}).(AwsClusterControlPlaneDatabaseEncryptionPtrOutput)
+}
+
+// Required. The name of the AWS IAM instance pofile to assign to each control plane replica.
+func (o AwsClusterControlPlanePtrOutput) IamInstanceProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlane) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IamInstanceProfile
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The AWS instance type. When unspecified, it defaults to `t3.medium`.
+func (o AwsClusterControlPlanePtrOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlane) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Configuration related to the main volume provisioned for each control plane replica. The main volume is in charge of storing all of the cluster's etcd state. Volumes will be provisioned in the availability zone associated with the corresponding subnet. When unspecified, it defaults to 8 GiB with the GP2 volume type.
+func (o AwsClusterControlPlanePtrOutput) MainVolume() AwsClusterControlPlaneMainVolumePtrOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlane) *AwsClusterControlPlaneMainVolume {
+		if v == nil {
+			return nil
+		}
+		return v.MainVolume
+	}).(AwsClusterControlPlaneMainVolumePtrOutput)
+}
+
+// Proxy configuration for outbound HTTP(S) traffic.
+func (o AwsClusterControlPlanePtrOutput) ProxyConfig() AwsClusterControlPlaneProxyConfigPtrOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlane) *AwsClusterControlPlaneProxyConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyConfig
+	}).(AwsClusterControlPlaneProxyConfigPtrOutput)
+}
+
+// Optional. Configuration related to the root volume provisioned for each control plane replica. Volumes will be provisioned in the availability zone associated with the corresponding subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
+func (o AwsClusterControlPlanePtrOutput) RootVolume() AwsClusterControlPlaneRootVolumePtrOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlane) *AwsClusterControlPlaneRootVolume {
+		if v == nil {
+			return nil
+		}
+		return v.RootVolume
+	}).(AwsClusterControlPlaneRootVolumePtrOutput)
+}
+
+// Optional. The IDs of additional security groups to add to control plane replicas. The Anthos Multi-Cloud API will automatically create and manage security groups with the minimum rules needed for a functioning cluster.
+func (o AwsClusterControlPlanePtrOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlane) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityGroupIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. SSH configuration for how to access the underlying control plane machines.
+func (o AwsClusterControlPlanePtrOutput) SshConfig() AwsClusterControlPlaneSshConfigPtrOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlane) *AwsClusterControlPlaneSshConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SshConfig
+	}).(AwsClusterControlPlaneSshConfigPtrOutput)
+}
+
+// Required. The list of subnets where control plane replicas will run. A replica will be provisioned on each subnet and up to three values can be provided. Each subnet must be in a different AWS Availability Zone (AZ).
+func (o AwsClusterControlPlanePtrOutput) SubnetIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlane) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SubnetIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. A set of AWS resource tags to propagate to all underlying managed AWS resources. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
+func (o AwsClusterControlPlanePtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlane) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Required. The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling .
+func (o AwsClusterControlPlanePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlane) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type AwsClusterControlPlaneAwsServicesAuthentication struct {
+	// Required. The Amazon Resource Name (ARN) of the role that the Anthos Multi-Cloud API will assume when managing AWS resources on your account.
+	RoleArn string `pulumi:"roleArn"`
+	// Optional. An identifier for the assumed role session. When unspecified, it defaults to `multicloud-service-agent`.
+	RoleSessionName *string `pulumi:"roleSessionName"`
+}
+
+// AwsClusterControlPlaneAwsServicesAuthenticationInput is an input type that accepts AwsClusterControlPlaneAwsServicesAuthenticationArgs and AwsClusterControlPlaneAwsServicesAuthenticationOutput values.
+// You can construct a concrete instance of `AwsClusterControlPlaneAwsServicesAuthenticationInput` via:
+//
+//          AwsClusterControlPlaneAwsServicesAuthenticationArgs{...}
+type AwsClusterControlPlaneAwsServicesAuthenticationInput interface {
+	pulumi.Input
+
+	ToAwsClusterControlPlaneAwsServicesAuthenticationOutput() AwsClusterControlPlaneAwsServicesAuthenticationOutput
+	ToAwsClusterControlPlaneAwsServicesAuthenticationOutputWithContext(context.Context) AwsClusterControlPlaneAwsServicesAuthenticationOutput
+}
+
+type AwsClusterControlPlaneAwsServicesAuthenticationArgs struct {
+	// Required. The Amazon Resource Name (ARN) of the role that the Anthos Multi-Cloud API will assume when managing AWS resources on your account.
+	RoleArn pulumi.StringInput `pulumi:"roleArn"`
+	// Optional. An identifier for the assumed role session. When unspecified, it defaults to `multicloud-service-agent`.
+	RoleSessionName pulumi.StringPtrInput `pulumi:"roleSessionName"`
+}
+
+func (AwsClusterControlPlaneAwsServicesAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsClusterControlPlaneAwsServicesAuthentication)(nil)).Elem()
+}
+
+func (i AwsClusterControlPlaneAwsServicesAuthenticationArgs) ToAwsClusterControlPlaneAwsServicesAuthenticationOutput() AwsClusterControlPlaneAwsServicesAuthenticationOutput {
+	return i.ToAwsClusterControlPlaneAwsServicesAuthenticationOutputWithContext(context.Background())
+}
+
+func (i AwsClusterControlPlaneAwsServicesAuthenticationArgs) ToAwsClusterControlPlaneAwsServicesAuthenticationOutputWithContext(ctx context.Context) AwsClusterControlPlaneAwsServicesAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterControlPlaneAwsServicesAuthenticationOutput)
+}
+
+func (i AwsClusterControlPlaneAwsServicesAuthenticationArgs) ToAwsClusterControlPlaneAwsServicesAuthenticationPtrOutput() AwsClusterControlPlaneAwsServicesAuthenticationPtrOutput {
+	return i.ToAwsClusterControlPlaneAwsServicesAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i AwsClusterControlPlaneAwsServicesAuthenticationArgs) ToAwsClusterControlPlaneAwsServicesAuthenticationPtrOutputWithContext(ctx context.Context) AwsClusterControlPlaneAwsServicesAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterControlPlaneAwsServicesAuthenticationOutput).ToAwsClusterControlPlaneAwsServicesAuthenticationPtrOutputWithContext(ctx)
+}
+
+// AwsClusterControlPlaneAwsServicesAuthenticationPtrInput is an input type that accepts AwsClusterControlPlaneAwsServicesAuthenticationArgs, AwsClusterControlPlaneAwsServicesAuthenticationPtr and AwsClusterControlPlaneAwsServicesAuthenticationPtrOutput values.
+// You can construct a concrete instance of `AwsClusterControlPlaneAwsServicesAuthenticationPtrInput` via:
+//
+//          AwsClusterControlPlaneAwsServicesAuthenticationArgs{...}
+//
+//  or:
+//
+//          nil
+type AwsClusterControlPlaneAwsServicesAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToAwsClusterControlPlaneAwsServicesAuthenticationPtrOutput() AwsClusterControlPlaneAwsServicesAuthenticationPtrOutput
+	ToAwsClusterControlPlaneAwsServicesAuthenticationPtrOutputWithContext(context.Context) AwsClusterControlPlaneAwsServicesAuthenticationPtrOutput
+}
+
+type awsClusterControlPlaneAwsServicesAuthenticationPtrType AwsClusterControlPlaneAwsServicesAuthenticationArgs
+
+func AwsClusterControlPlaneAwsServicesAuthenticationPtr(v *AwsClusterControlPlaneAwsServicesAuthenticationArgs) AwsClusterControlPlaneAwsServicesAuthenticationPtrInput {
+	return (*awsClusterControlPlaneAwsServicesAuthenticationPtrType)(v)
+}
+
+func (*awsClusterControlPlaneAwsServicesAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsClusterControlPlaneAwsServicesAuthentication)(nil)).Elem()
+}
+
+func (i *awsClusterControlPlaneAwsServicesAuthenticationPtrType) ToAwsClusterControlPlaneAwsServicesAuthenticationPtrOutput() AwsClusterControlPlaneAwsServicesAuthenticationPtrOutput {
+	return i.ToAwsClusterControlPlaneAwsServicesAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *awsClusterControlPlaneAwsServicesAuthenticationPtrType) ToAwsClusterControlPlaneAwsServicesAuthenticationPtrOutputWithContext(ctx context.Context) AwsClusterControlPlaneAwsServicesAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterControlPlaneAwsServicesAuthenticationPtrOutput)
+}
+
+type AwsClusterControlPlaneAwsServicesAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (AwsClusterControlPlaneAwsServicesAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsClusterControlPlaneAwsServicesAuthentication)(nil)).Elem()
+}
+
+func (o AwsClusterControlPlaneAwsServicesAuthenticationOutput) ToAwsClusterControlPlaneAwsServicesAuthenticationOutput() AwsClusterControlPlaneAwsServicesAuthenticationOutput {
+	return o
+}
+
+func (o AwsClusterControlPlaneAwsServicesAuthenticationOutput) ToAwsClusterControlPlaneAwsServicesAuthenticationOutputWithContext(ctx context.Context) AwsClusterControlPlaneAwsServicesAuthenticationOutput {
+	return o
+}
+
+func (o AwsClusterControlPlaneAwsServicesAuthenticationOutput) ToAwsClusterControlPlaneAwsServicesAuthenticationPtrOutput() AwsClusterControlPlaneAwsServicesAuthenticationPtrOutput {
+	return o.ToAwsClusterControlPlaneAwsServicesAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o AwsClusterControlPlaneAwsServicesAuthenticationOutput) ToAwsClusterControlPlaneAwsServicesAuthenticationPtrOutputWithContext(ctx context.Context) AwsClusterControlPlaneAwsServicesAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsClusterControlPlaneAwsServicesAuthentication) *AwsClusterControlPlaneAwsServicesAuthentication {
+		return &v
+	}).(AwsClusterControlPlaneAwsServicesAuthenticationPtrOutput)
+}
+
+// Required. The Amazon Resource Name (ARN) of the role that the Anthos Multi-Cloud API will assume when managing AWS resources on your account.
+func (o AwsClusterControlPlaneAwsServicesAuthenticationOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsClusterControlPlaneAwsServicesAuthentication) string { return v.RoleArn }).(pulumi.StringOutput)
+}
+
+// Optional. An identifier for the assumed role session. When unspecified, it defaults to `multicloud-service-agent`.
+func (o AwsClusterControlPlaneAwsServicesAuthenticationOutput) RoleSessionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsClusterControlPlaneAwsServicesAuthentication) *string { return v.RoleSessionName }).(pulumi.StringPtrOutput)
+}
+
+type AwsClusterControlPlaneAwsServicesAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsClusterControlPlaneAwsServicesAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsClusterControlPlaneAwsServicesAuthentication)(nil)).Elem()
+}
+
+func (o AwsClusterControlPlaneAwsServicesAuthenticationPtrOutput) ToAwsClusterControlPlaneAwsServicesAuthenticationPtrOutput() AwsClusterControlPlaneAwsServicesAuthenticationPtrOutput {
+	return o
+}
+
+func (o AwsClusterControlPlaneAwsServicesAuthenticationPtrOutput) ToAwsClusterControlPlaneAwsServicesAuthenticationPtrOutputWithContext(ctx context.Context) AwsClusterControlPlaneAwsServicesAuthenticationPtrOutput {
+	return o
+}
+
+func (o AwsClusterControlPlaneAwsServicesAuthenticationPtrOutput) Elem() AwsClusterControlPlaneAwsServicesAuthenticationOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlaneAwsServicesAuthentication) AwsClusterControlPlaneAwsServicesAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret AwsClusterControlPlaneAwsServicesAuthentication
+		return ret
+	}).(AwsClusterControlPlaneAwsServicesAuthenticationOutput)
+}
+
+// Required. The Amazon Resource Name (ARN) of the role that the Anthos Multi-Cloud API will assume when managing AWS resources on your account.
+func (o AwsClusterControlPlaneAwsServicesAuthenticationPtrOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlaneAwsServicesAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. An identifier for the assumed role session. When unspecified, it defaults to `multicloud-service-agent`.
+func (o AwsClusterControlPlaneAwsServicesAuthenticationPtrOutput) RoleSessionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlaneAwsServicesAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoleSessionName
+	}).(pulumi.StringPtrOutput)
+}
+
+type AwsClusterControlPlaneConfigEncryption struct {
+	// Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+	KmsKeyArn string `pulumi:"kmsKeyArn"`
+}
+
+// AwsClusterControlPlaneConfigEncryptionInput is an input type that accepts AwsClusterControlPlaneConfigEncryptionArgs and AwsClusterControlPlaneConfigEncryptionOutput values.
+// You can construct a concrete instance of `AwsClusterControlPlaneConfigEncryptionInput` via:
+//
+//          AwsClusterControlPlaneConfigEncryptionArgs{...}
+type AwsClusterControlPlaneConfigEncryptionInput interface {
+	pulumi.Input
+
+	ToAwsClusterControlPlaneConfigEncryptionOutput() AwsClusterControlPlaneConfigEncryptionOutput
+	ToAwsClusterControlPlaneConfigEncryptionOutputWithContext(context.Context) AwsClusterControlPlaneConfigEncryptionOutput
+}
+
+type AwsClusterControlPlaneConfigEncryptionArgs struct {
+	// Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+	KmsKeyArn pulumi.StringInput `pulumi:"kmsKeyArn"`
+}
+
+func (AwsClusterControlPlaneConfigEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsClusterControlPlaneConfigEncryption)(nil)).Elem()
+}
+
+func (i AwsClusterControlPlaneConfigEncryptionArgs) ToAwsClusterControlPlaneConfigEncryptionOutput() AwsClusterControlPlaneConfigEncryptionOutput {
+	return i.ToAwsClusterControlPlaneConfigEncryptionOutputWithContext(context.Background())
+}
+
+func (i AwsClusterControlPlaneConfigEncryptionArgs) ToAwsClusterControlPlaneConfigEncryptionOutputWithContext(ctx context.Context) AwsClusterControlPlaneConfigEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterControlPlaneConfigEncryptionOutput)
+}
+
+func (i AwsClusterControlPlaneConfigEncryptionArgs) ToAwsClusterControlPlaneConfigEncryptionPtrOutput() AwsClusterControlPlaneConfigEncryptionPtrOutput {
+	return i.ToAwsClusterControlPlaneConfigEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i AwsClusterControlPlaneConfigEncryptionArgs) ToAwsClusterControlPlaneConfigEncryptionPtrOutputWithContext(ctx context.Context) AwsClusterControlPlaneConfigEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterControlPlaneConfigEncryptionOutput).ToAwsClusterControlPlaneConfigEncryptionPtrOutputWithContext(ctx)
+}
+
+// AwsClusterControlPlaneConfigEncryptionPtrInput is an input type that accepts AwsClusterControlPlaneConfigEncryptionArgs, AwsClusterControlPlaneConfigEncryptionPtr and AwsClusterControlPlaneConfigEncryptionPtrOutput values.
+// You can construct a concrete instance of `AwsClusterControlPlaneConfigEncryptionPtrInput` via:
+//
+//          AwsClusterControlPlaneConfigEncryptionArgs{...}
+//
+//  or:
+//
+//          nil
+type AwsClusterControlPlaneConfigEncryptionPtrInput interface {
+	pulumi.Input
+
+	ToAwsClusterControlPlaneConfigEncryptionPtrOutput() AwsClusterControlPlaneConfigEncryptionPtrOutput
+	ToAwsClusterControlPlaneConfigEncryptionPtrOutputWithContext(context.Context) AwsClusterControlPlaneConfigEncryptionPtrOutput
+}
+
+type awsClusterControlPlaneConfigEncryptionPtrType AwsClusterControlPlaneConfigEncryptionArgs
+
+func AwsClusterControlPlaneConfigEncryptionPtr(v *AwsClusterControlPlaneConfigEncryptionArgs) AwsClusterControlPlaneConfigEncryptionPtrInput {
+	return (*awsClusterControlPlaneConfigEncryptionPtrType)(v)
+}
+
+func (*awsClusterControlPlaneConfigEncryptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsClusterControlPlaneConfigEncryption)(nil)).Elem()
+}
+
+func (i *awsClusterControlPlaneConfigEncryptionPtrType) ToAwsClusterControlPlaneConfigEncryptionPtrOutput() AwsClusterControlPlaneConfigEncryptionPtrOutput {
+	return i.ToAwsClusterControlPlaneConfigEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i *awsClusterControlPlaneConfigEncryptionPtrType) ToAwsClusterControlPlaneConfigEncryptionPtrOutputWithContext(ctx context.Context) AwsClusterControlPlaneConfigEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterControlPlaneConfigEncryptionPtrOutput)
+}
+
+type AwsClusterControlPlaneConfigEncryptionOutput struct{ *pulumi.OutputState }
+
+func (AwsClusterControlPlaneConfigEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsClusterControlPlaneConfigEncryption)(nil)).Elem()
+}
+
+func (o AwsClusterControlPlaneConfigEncryptionOutput) ToAwsClusterControlPlaneConfigEncryptionOutput() AwsClusterControlPlaneConfigEncryptionOutput {
+	return o
+}
+
+func (o AwsClusterControlPlaneConfigEncryptionOutput) ToAwsClusterControlPlaneConfigEncryptionOutputWithContext(ctx context.Context) AwsClusterControlPlaneConfigEncryptionOutput {
+	return o
+}
+
+func (o AwsClusterControlPlaneConfigEncryptionOutput) ToAwsClusterControlPlaneConfigEncryptionPtrOutput() AwsClusterControlPlaneConfigEncryptionPtrOutput {
+	return o.ToAwsClusterControlPlaneConfigEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (o AwsClusterControlPlaneConfigEncryptionOutput) ToAwsClusterControlPlaneConfigEncryptionPtrOutputWithContext(ctx context.Context) AwsClusterControlPlaneConfigEncryptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsClusterControlPlaneConfigEncryption) *AwsClusterControlPlaneConfigEncryption {
+		return &v
+	}).(AwsClusterControlPlaneConfigEncryptionPtrOutput)
+}
+
+// Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+func (o AwsClusterControlPlaneConfigEncryptionOutput) KmsKeyArn() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsClusterControlPlaneConfigEncryption) string { return v.KmsKeyArn }).(pulumi.StringOutput)
+}
+
+type AwsClusterControlPlaneConfigEncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsClusterControlPlaneConfigEncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsClusterControlPlaneConfigEncryption)(nil)).Elem()
+}
+
+func (o AwsClusterControlPlaneConfigEncryptionPtrOutput) ToAwsClusterControlPlaneConfigEncryptionPtrOutput() AwsClusterControlPlaneConfigEncryptionPtrOutput {
+	return o
+}
+
+func (o AwsClusterControlPlaneConfigEncryptionPtrOutput) ToAwsClusterControlPlaneConfigEncryptionPtrOutputWithContext(ctx context.Context) AwsClusterControlPlaneConfigEncryptionPtrOutput {
+	return o
+}
+
+func (o AwsClusterControlPlaneConfigEncryptionPtrOutput) Elem() AwsClusterControlPlaneConfigEncryptionOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlaneConfigEncryption) AwsClusterControlPlaneConfigEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret AwsClusterControlPlaneConfigEncryption
+		return ret
+	}).(AwsClusterControlPlaneConfigEncryptionOutput)
+}
+
+// Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+func (o AwsClusterControlPlaneConfigEncryptionPtrOutput) KmsKeyArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlaneConfigEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyArn
+	}).(pulumi.StringPtrOutput)
+}
+
+type AwsClusterControlPlaneDatabaseEncryption struct {
+	// Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+	KmsKeyArn string `pulumi:"kmsKeyArn"`
+}
+
+// AwsClusterControlPlaneDatabaseEncryptionInput is an input type that accepts AwsClusterControlPlaneDatabaseEncryptionArgs and AwsClusterControlPlaneDatabaseEncryptionOutput values.
+// You can construct a concrete instance of `AwsClusterControlPlaneDatabaseEncryptionInput` via:
+//
+//          AwsClusterControlPlaneDatabaseEncryptionArgs{...}
+type AwsClusterControlPlaneDatabaseEncryptionInput interface {
+	pulumi.Input
+
+	ToAwsClusterControlPlaneDatabaseEncryptionOutput() AwsClusterControlPlaneDatabaseEncryptionOutput
+	ToAwsClusterControlPlaneDatabaseEncryptionOutputWithContext(context.Context) AwsClusterControlPlaneDatabaseEncryptionOutput
+}
+
+type AwsClusterControlPlaneDatabaseEncryptionArgs struct {
+	// Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+	KmsKeyArn pulumi.StringInput `pulumi:"kmsKeyArn"`
+}
+
+func (AwsClusterControlPlaneDatabaseEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsClusterControlPlaneDatabaseEncryption)(nil)).Elem()
+}
+
+func (i AwsClusterControlPlaneDatabaseEncryptionArgs) ToAwsClusterControlPlaneDatabaseEncryptionOutput() AwsClusterControlPlaneDatabaseEncryptionOutput {
+	return i.ToAwsClusterControlPlaneDatabaseEncryptionOutputWithContext(context.Background())
+}
+
+func (i AwsClusterControlPlaneDatabaseEncryptionArgs) ToAwsClusterControlPlaneDatabaseEncryptionOutputWithContext(ctx context.Context) AwsClusterControlPlaneDatabaseEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterControlPlaneDatabaseEncryptionOutput)
+}
+
+func (i AwsClusterControlPlaneDatabaseEncryptionArgs) ToAwsClusterControlPlaneDatabaseEncryptionPtrOutput() AwsClusterControlPlaneDatabaseEncryptionPtrOutput {
+	return i.ToAwsClusterControlPlaneDatabaseEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i AwsClusterControlPlaneDatabaseEncryptionArgs) ToAwsClusterControlPlaneDatabaseEncryptionPtrOutputWithContext(ctx context.Context) AwsClusterControlPlaneDatabaseEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterControlPlaneDatabaseEncryptionOutput).ToAwsClusterControlPlaneDatabaseEncryptionPtrOutputWithContext(ctx)
+}
+
+// AwsClusterControlPlaneDatabaseEncryptionPtrInput is an input type that accepts AwsClusterControlPlaneDatabaseEncryptionArgs, AwsClusterControlPlaneDatabaseEncryptionPtr and AwsClusterControlPlaneDatabaseEncryptionPtrOutput values.
+// You can construct a concrete instance of `AwsClusterControlPlaneDatabaseEncryptionPtrInput` via:
+//
+//          AwsClusterControlPlaneDatabaseEncryptionArgs{...}
+//
+//  or:
+//
+//          nil
+type AwsClusterControlPlaneDatabaseEncryptionPtrInput interface {
+	pulumi.Input
+
+	ToAwsClusterControlPlaneDatabaseEncryptionPtrOutput() AwsClusterControlPlaneDatabaseEncryptionPtrOutput
+	ToAwsClusterControlPlaneDatabaseEncryptionPtrOutputWithContext(context.Context) AwsClusterControlPlaneDatabaseEncryptionPtrOutput
+}
+
+type awsClusterControlPlaneDatabaseEncryptionPtrType AwsClusterControlPlaneDatabaseEncryptionArgs
+
+func AwsClusterControlPlaneDatabaseEncryptionPtr(v *AwsClusterControlPlaneDatabaseEncryptionArgs) AwsClusterControlPlaneDatabaseEncryptionPtrInput {
+	return (*awsClusterControlPlaneDatabaseEncryptionPtrType)(v)
+}
+
+func (*awsClusterControlPlaneDatabaseEncryptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsClusterControlPlaneDatabaseEncryption)(nil)).Elem()
+}
+
+func (i *awsClusterControlPlaneDatabaseEncryptionPtrType) ToAwsClusterControlPlaneDatabaseEncryptionPtrOutput() AwsClusterControlPlaneDatabaseEncryptionPtrOutput {
+	return i.ToAwsClusterControlPlaneDatabaseEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i *awsClusterControlPlaneDatabaseEncryptionPtrType) ToAwsClusterControlPlaneDatabaseEncryptionPtrOutputWithContext(ctx context.Context) AwsClusterControlPlaneDatabaseEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterControlPlaneDatabaseEncryptionPtrOutput)
+}
+
+type AwsClusterControlPlaneDatabaseEncryptionOutput struct{ *pulumi.OutputState }
+
+func (AwsClusterControlPlaneDatabaseEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsClusterControlPlaneDatabaseEncryption)(nil)).Elem()
+}
+
+func (o AwsClusterControlPlaneDatabaseEncryptionOutput) ToAwsClusterControlPlaneDatabaseEncryptionOutput() AwsClusterControlPlaneDatabaseEncryptionOutput {
+	return o
+}
+
+func (o AwsClusterControlPlaneDatabaseEncryptionOutput) ToAwsClusterControlPlaneDatabaseEncryptionOutputWithContext(ctx context.Context) AwsClusterControlPlaneDatabaseEncryptionOutput {
+	return o
+}
+
+func (o AwsClusterControlPlaneDatabaseEncryptionOutput) ToAwsClusterControlPlaneDatabaseEncryptionPtrOutput() AwsClusterControlPlaneDatabaseEncryptionPtrOutput {
+	return o.ToAwsClusterControlPlaneDatabaseEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (o AwsClusterControlPlaneDatabaseEncryptionOutput) ToAwsClusterControlPlaneDatabaseEncryptionPtrOutputWithContext(ctx context.Context) AwsClusterControlPlaneDatabaseEncryptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsClusterControlPlaneDatabaseEncryption) *AwsClusterControlPlaneDatabaseEncryption {
+		return &v
+	}).(AwsClusterControlPlaneDatabaseEncryptionPtrOutput)
+}
+
+// Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+func (o AwsClusterControlPlaneDatabaseEncryptionOutput) KmsKeyArn() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsClusterControlPlaneDatabaseEncryption) string { return v.KmsKeyArn }).(pulumi.StringOutput)
+}
+
+type AwsClusterControlPlaneDatabaseEncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsClusterControlPlaneDatabaseEncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsClusterControlPlaneDatabaseEncryption)(nil)).Elem()
+}
+
+func (o AwsClusterControlPlaneDatabaseEncryptionPtrOutput) ToAwsClusterControlPlaneDatabaseEncryptionPtrOutput() AwsClusterControlPlaneDatabaseEncryptionPtrOutput {
+	return o
+}
+
+func (o AwsClusterControlPlaneDatabaseEncryptionPtrOutput) ToAwsClusterControlPlaneDatabaseEncryptionPtrOutputWithContext(ctx context.Context) AwsClusterControlPlaneDatabaseEncryptionPtrOutput {
+	return o
+}
+
+func (o AwsClusterControlPlaneDatabaseEncryptionPtrOutput) Elem() AwsClusterControlPlaneDatabaseEncryptionOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlaneDatabaseEncryption) AwsClusterControlPlaneDatabaseEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret AwsClusterControlPlaneDatabaseEncryption
+		return ret
+	}).(AwsClusterControlPlaneDatabaseEncryptionOutput)
+}
+
+// Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+func (o AwsClusterControlPlaneDatabaseEncryptionPtrOutput) KmsKeyArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlaneDatabaseEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyArn
+	}).(pulumi.StringPtrOutput)
+}
+
+type AwsClusterControlPlaneMainVolume struct {
+	// Optional. The number of I/O operations per second (IOPS) to provision for GP3 volume.
+	Iops *int `pulumi:"iops"`
+	// Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+	KmsKeyArn *string `pulumi:"kmsKeyArn"`
+	// Optional. The size of the volume, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+	SizeGib *int `pulumi:"sizeGib"`
+	// Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
+	VolumeType *string `pulumi:"volumeType"`
+}
+
+// AwsClusterControlPlaneMainVolumeInput is an input type that accepts AwsClusterControlPlaneMainVolumeArgs and AwsClusterControlPlaneMainVolumeOutput values.
+// You can construct a concrete instance of `AwsClusterControlPlaneMainVolumeInput` via:
+//
+//          AwsClusterControlPlaneMainVolumeArgs{...}
+type AwsClusterControlPlaneMainVolumeInput interface {
+	pulumi.Input
+
+	ToAwsClusterControlPlaneMainVolumeOutput() AwsClusterControlPlaneMainVolumeOutput
+	ToAwsClusterControlPlaneMainVolumeOutputWithContext(context.Context) AwsClusterControlPlaneMainVolumeOutput
+}
+
+type AwsClusterControlPlaneMainVolumeArgs struct {
+	// Optional. The number of I/O operations per second (IOPS) to provision for GP3 volume.
+	Iops pulumi.IntPtrInput `pulumi:"iops"`
+	// Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+	KmsKeyArn pulumi.StringPtrInput `pulumi:"kmsKeyArn"`
+	// Optional. The size of the volume, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+	SizeGib pulumi.IntPtrInput `pulumi:"sizeGib"`
+	// Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
+	VolumeType pulumi.StringPtrInput `pulumi:"volumeType"`
+}
+
+func (AwsClusterControlPlaneMainVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsClusterControlPlaneMainVolume)(nil)).Elem()
+}
+
+func (i AwsClusterControlPlaneMainVolumeArgs) ToAwsClusterControlPlaneMainVolumeOutput() AwsClusterControlPlaneMainVolumeOutput {
+	return i.ToAwsClusterControlPlaneMainVolumeOutputWithContext(context.Background())
+}
+
+func (i AwsClusterControlPlaneMainVolumeArgs) ToAwsClusterControlPlaneMainVolumeOutputWithContext(ctx context.Context) AwsClusterControlPlaneMainVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterControlPlaneMainVolumeOutput)
+}
+
+func (i AwsClusterControlPlaneMainVolumeArgs) ToAwsClusterControlPlaneMainVolumePtrOutput() AwsClusterControlPlaneMainVolumePtrOutput {
+	return i.ToAwsClusterControlPlaneMainVolumePtrOutputWithContext(context.Background())
+}
+
+func (i AwsClusterControlPlaneMainVolumeArgs) ToAwsClusterControlPlaneMainVolumePtrOutputWithContext(ctx context.Context) AwsClusterControlPlaneMainVolumePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterControlPlaneMainVolumeOutput).ToAwsClusterControlPlaneMainVolumePtrOutputWithContext(ctx)
+}
+
+// AwsClusterControlPlaneMainVolumePtrInput is an input type that accepts AwsClusterControlPlaneMainVolumeArgs, AwsClusterControlPlaneMainVolumePtr and AwsClusterControlPlaneMainVolumePtrOutput values.
+// You can construct a concrete instance of `AwsClusterControlPlaneMainVolumePtrInput` via:
+//
+//          AwsClusterControlPlaneMainVolumeArgs{...}
+//
+//  or:
+//
+//          nil
+type AwsClusterControlPlaneMainVolumePtrInput interface {
+	pulumi.Input
+
+	ToAwsClusterControlPlaneMainVolumePtrOutput() AwsClusterControlPlaneMainVolumePtrOutput
+	ToAwsClusterControlPlaneMainVolumePtrOutputWithContext(context.Context) AwsClusterControlPlaneMainVolumePtrOutput
+}
+
+type awsClusterControlPlaneMainVolumePtrType AwsClusterControlPlaneMainVolumeArgs
+
+func AwsClusterControlPlaneMainVolumePtr(v *AwsClusterControlPlaneMainVolumeArgs) AwsClusterControlPlaneMainVolumePtrInput {
+	return (*awsClusterControlPlaneMainVolumePtrType)(v)
+}
+
+func (*awsClusterControlPlaneMainVolumePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsClusterControlPlaneMainVolume)(nil)).Elem()
+}
+
+func (i *awsClusterControlPlaneMainVolumePtrType) ToAwsClusterControlPlaneMainVolumePtrOutput() AwsClusterControlPlaneMainVolumePtrOutput {
+	return i.ToAwsClusterControlPlaneMainVolumePtrOutputWithContext(context.Background())
+}
+
+func (i *awsClusterControlPlaneMainVolumePtrType) ToAwsClusterControlPlaneMainVolumePtrOutputWithContext(ctx context.Context) AwsClusterControlPlaneMainVolumePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterControlPlaneMainVolumePtrOutput)
+}
+
+type AwsClusterControlPlaneMainVolumeOutput struct{ *pulumi.OutputState }
+
+func (AwsClusterControlPlaneMainVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsClusterControlPlaneMainVolume)(nil)).Elem()
+}
+
+func (o AwsClusterControlPlaneMainVolumeOutput) ToAwsClusterControlPlaneMainVolumeOutput() AwsClusterControlPlaneMainVolumeOutput {
+	return o
+}
+
+func (o AwsClusterControlPlaneMainVolumeOutput) ToAwsClusterControlPlaneMainVolumeOutputWithContext(ctx context.Context) AwsClusterControlPlaneMainVolumeOutput {
+	return o
+}
+
+func (o AwsClusterControlPlaneMainVolumeOutput) ToAwsClusterControlPlaneMainVolumePtrOutput() AwsClusterControlPlaneMainVolumePtrOutput {
+	return o.ToAwsClusterControlPlaneMainVolumePtrOutputWithContext(context.Background())
+}
+
+func (o AwsClusterControlPlaneMainVolumeOutput) ToAwsClusterControlPlaneMainVolumePtrOutputWithContext(ctx context.Context) AwsClusterControlPlaneMainVolumePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsClusterControlPlaneMainVolume) *AwsClusterControlPlaneMainVolume {
+		return &v
+	}).(AwsClusterControlPlaneMainVolumePtrOutput)
+}
+
+// Optional. The number of I/O operations per second (IOPS) to provision for GP3 volume.
+func (o AwsClusterControlPlaneMainVolumeOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AwsClusterControlPlaneMainVolume) *int { return v.Iops }).(pulumi.IntPtrOutput)
+}
+
+// Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+func (o AwsClusterControlPlaneMainVolumeOutput) KmsKeyArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsClusterControlPlaneMainVolume) *string { return v.KmsKeyArn }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The size of the volume, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+func (o AwsClusterControlPlaneMainVolumeOutput) SizeGib() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AwsClusterControlPlaneMainVolume) *int { return v.SizeGib }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
+func (o AwsClusterControlPlaneMainVolumeOutput) VolumeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsClusterControlPlaneMainVolume) *string { return v.VolumeType }).(pulumi.StringPtrOutput)
+}
+
+type AwsClusterControlPlaneMainVolumePtrOutput struct{ *pulumi.OutputState }
+
+func (AwsClusterControlPlaneMainVolumePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsClusterControlPlaneMainVolume)(nil)).Elem()
+}
+
+func (o AwsClusterControlPlaneMainVolumePtrOutput) ToAwsClusterControlPlaneMainVolumePtrOutput() AwsClusterControlPlaneMainVolumePtrOutput {
+	return o
+}
+
+func (o AwsClusterControlPlaneMainVolumePtrOutput) ToAwsClusterControlPlaneMainVolumePtrOutputWithContext(ctx context.Context) AwsClusterControlPlaneMainVolumePtrOutput {
+	return o
+}
+
+func (o AwsClusterControlPlaneMainVolumePtrOutput) Elem() AwsClusterControlPlaneMainVolumeOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlaneMainVolume) AwsClusterControlPlaneMainVolume {
+		if v != nil {
+			return *v
+		}
+		var ret AwsClusterControlPlaneMainVolume
+		return ret
+	}).(AwsClusterControlPlaneMainVolumeOutput)
+}
+
+// Optional. The number of I/O operations per second (IOPS) to provision for GP3 volume.
+func (o AwsClusterControlPlaneMainVolumePtrOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlaneMainVolume) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Iops
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+func (o AwsClusterControlPlaneMainVolumePtrOutput) KmsKeyArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlaneMainVolume) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The size of the volume, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+func (o AwsClusterControlPlaneMainVolumePtrOutput) SizeGib() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlaneMainVolume) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SizeGib
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
+func (o AwsClusterControlPlaneMainVolumePtrOutput) VolumeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlaneMainVolume) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VolumeType
+	}).(pulumi.StringPtrOutput)
+}
+
+type AwsClusterControlPlaneProxyConfig struct {
+	// The ARN of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
+	SecretArn string `pulumi:"secretArn"`
+	// The version string of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
+	SecretVersion string `pulumi:"secretVersion"`
+}
+
+// AwsClusterControlPlaneProxyConfigInput is an input type that accepts AwsClusterControlPlaneProxyConfigArgs and AwsClusterControlPlaneProxyConfigOutput values.
+// You can construct a concrete instance of `AwsClusterControlPlaneProxyConfigInput` via:
+//
+//          AwsClusterControlPlaneProxyConfigArgs{...}
+type AwsClusterControlPlaneProxyConfigInput interface {
+	pulumi.Input
+
+	ToAwsClusterControlPlaneProxyConfigOutput() AwsClusterControlPlaneProxyConfigOutput
+	ToAwsClusterControlPlaneProxyConfigOutputWithContext(context.Context) AwsClusterControlPlaneProxyConfigOutput
+}
+
+type AwsClusterControlPlaneProxyConfigArgs struct {
+	// The ARN of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
+	SecretArn pulumi.StringInput `pulumi:"secretArn"`
+	// The version string of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
+	SecretVersion pulumi.StringInput `pulumi:"secretVersion"`
+}
+
+func (AwsClusterControlPlaneProxyConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsClusterControlPlaneProxyConfig)(nil)).Elem()
+}
+
+func (i AwsClusterControlPlaneProxyConfigArgs) ToAwsClusterControlPlaneProxyConfigOutput() AwsClusterControlPlaneProxyConfigOutput {
+	return i.ToAwsClusterControlPlaneProxyConfigOutputWithContext(context.Background())
+}
+
+func (i AwsClusterControlPlaneProxyConfigArgs) ToAwsClusterControlPlaneProxyConfigOutputWithContext(ctx context.Context) AwsClusterControlPlaneProxyConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterControlPlaneProxyConfigOutput)
+}
+
+func (i AwsClusterControlPlaneProxyConfigArgs) ToAwsClusterControlPlaneProxyConfigPtrOutput() AwsClusterControlPlaneProxyConfigPtrOutput {
+	return i.ToAwsClusterControlPlaneProxyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AwsClusterControlPlaneProxyConfigArgs) ToAwsClusterControlPlaneProxyConfigPtrOutputWithContext(ctx context.Context) AwsClusterControlPlaneProxyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterControlPlaneProxyConfigOutput).ToAwsClusterControlPlaneProxyConfigPtrOutputWithContext(ctx)
+}
+
+// AwsClusterControlPlaneProxyConfigPtrInput is an input type that accepts AwsClusterControlPlaneProxyConfigArgs, AwsClusterControlPlaneProxyConfigPtr and AwsClusterControlPlaneProxyConfigPtrOutput values.
+// You can construct a concrete instance of `AwsClusterControlPlaneProxyConfigPtrInput` via:
+//
+//          AwsClusterControlPlaneProxyConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type AwsClusterControlPlaneProxyConfigPtrInput interface {
+	pulumi.Input
+
+	ToAwsClusterControlPlaneProxyConfigPtrOutput() AwsClusterControlPlaneProxyConfigPtrOutput
+	ToAwsClusterControlPlaneProxyConfigPtrOutputWithContext(context.Context) AwsClusterControlPlaneProxyConfigPtrOutput
+}
+
+type awsClusterControlPlaneProxyConfigPtrType AwsClusterControlPlaneProxyConfigArgs
+
+func AwsClusterControlPlaneProxyConfigPtr(v *AwsClusterControlPlaneProxyConfigArgs) AwsClusterControlPlaneProxyConfigPtrInput {
+	return (*awsClusterControlPlaneProxyConfigPtrType)(v)
+}
+
+func (*awsClusterControlPlaneProxyConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsClusterControlPlaneProxyConfig)(nil)).Elem()
+}
+
+func (i *awsClusterControlPlaneProxyConfigPtrType) ToAwsClusterControlPlaneProxyConfigPtrOutput() AwsClusterControlPlaneProxyConfigPtrOutput {
+	return i.ToAwsClusterControlPlaneProxyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *awsClusterControlPlaneProxyConfigPtrType) ToAwsClusterControlPlaneProxyConfigPtrOutputWithContext(ctx context.Context) AwsClusterControlPlaneProxyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterControlPlaneProxyConfigPtrOutput)
+}
+
+type AwsClusterControlPlaneProxyConfigOutput struct{ *pulumi.OutputState }
+
+func (AwsClusterControlPlaneProxyConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsClusterControlPlaneProxyConfig)(nil)).Elem()
+}
+
+func (o AwsClusterControlPlaneProxyConfigOutput) ToAwsClusterControlPlaneProxyConfigOutput() AwsClusterControlPlaneProxyConfigOutput {
+	return o
+}
+
+func (o AwsClusterControlPlaneProxyConfigOutput) ToAwsClusterControlPlaneProxyConfigOutputWithContext(ctx context.Context) AwsClusterControlPlaneProxyConfigOutput {
+	return o
+}
+
+func (o AwsClusterControlPlaneProxyConfigOutput) ToAwsClusterControlPlaneProxyConfigPtrOutput() AwsClusterControlPlaneProxyConfigPtrOutput {
+	return o.ToAwsClusterControlPlaneProxyConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AwsClusterControlPlaneProxyConfigOutput) ToAwsClusterControlPlaneProxyConfigPtrOutputWithContext(ctx context.Context) AwsClusterControlPlaneProxyConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsClusterControlPlaneProxyConfig) *AwsClusterControlPlaneProxyConfig {
+		return &v
+	}).(AwsClusterControlPlaneProxyConfigPtrOutput)
+}
+
+// The ARN of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
+func (o AwsClusterControlPlaneProxyConfigOutput) SecretArn() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsClusterControlPlaneProxyConfig) string { return v.SecretArn }).(pulumi.StringOutput)
+}
+
+// The version string of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
+func (o AwsClusterControlPlaneProxyConfigOutput) SecretVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsClusterControlPlaneProxyConfig) string { return v.SecretVersion }).(pulumi.StringOutput)
+}
+
+type AwsClusterControlPlaneProxyConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsClusterControlPlaneProxyConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsClusterControlPlaneProxyConfig)(nil)).Elem()
+}
+
+func (o AwsClusterControlPlaneProxyConfigPtrOutput) ToAwsClusterControlPlaneProxyConfigPtrOutput() AwsClusterControlPlaneProxyConfigPtrOutput {
+	return o
+}
+
+func (o AwsClusterControlPlaneProxyConfigPtrOutput) ToAwsClusterControlPlaneProxyConfigPtrOutputWithContext(ctx context.Context) AwsClusterControlPlaneProxyConfigPtrOutput {
+	return o
+}
+
+func (o AwsClusterControlPlaneProxyConfigPtrOutput) Elem() AwsClusterControlPlaneProxyConfigOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlaneProxyConfig) AwsClusterControlPlaneProxyConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AwsClusterControlPlaneProxyConfig
+		return ret
+	}).(AwsClusterControlPlaneProxyConfigOutput)
+}
+
+// The ARN of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
+func (o AwsClusterControlPlaneProxyConfigPtrOutput) SecretArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlaneProxyConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// The version string of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
+func (o AwsClusterControlPlaneProxyConfigPtrOutput) SecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlaneProxyConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+type AwsClusterControlPlaneRootVolume struct {
+	// Optional. The number of I/O operations per second (IOPS) to provision for GP3 volume.
+	Iops *int `pulumi:"iops"`
+	// Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+	KmsKeyArn *string `pulumi:"kmsKeyArn"`
+	// Optional. The size of the volume, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+	SizeGib *int `pulumi:"sizeGib"`
+	// Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
+	VolumeType *string `pulumi:"volumeType"`
+}
+
+// AwsClusterControlPlaneRootVolumeInput is an input type that accepts AwsClusterControlPlaneRootVolumeArgs and AwsClusterControlPlaneRootVolumeOutput values.
+// You can construct a concrete instance of `AwsClusterControlPlaneRootVolumeInput` via:
+//
+//          AwsClusterControlPlaneRootVolumeArgs{...}
+type AwsClusterControlPlaneRootVolumeInput interface {
+	pulumi.Input
+
+	ToAwsClusterControlPlaneRootVolumeOutput() AwsClusterControlPlaneRootVolumeOutput
+	ToAwsClusterControlPlaneRootVolumeOutputWithContext(context.Context) AwsClusterControlPlaneRootVolumeOutput
+}
+
+type AwsClusterControlPlaneRootVolumeArgs struct {
+	// Optional. The number of I/O operations per second (IOPS) to provision for GP3 volume.
+	Iops pulumi.IntPtrInput `pulumi:"iops"`
+	// Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+	KmsKeyArn pulumi.StringPtrInput `pulumi:"kmsKeyArn"`
+	// Optional. The size of the volume, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+	SizeGib pulumi.IntPtrInput `pulumi:"sizeGib"`
+	// Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
+	VolumeType pulumi.StringPtrInput `pulumi:"volumeType"`
+}
+
+func (AwsClusterControlPlaneRootVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsClusterControlPlaneRootVolume)(nil)).Elem()
+}
+
+func (i AwsClusterControlPlaneRootVolumeArgs) ToAwsClusterControlPlaneRootVolumeOutput() AwsClusterControlPlaneRootVolumeOutput {
+	return i.ToAwsClusterControlPlaneRootVolumeOutputWithContext(context.Background())
+}
+
+func (i AwsClusterControlPlaneRootVolumeArgs) ToAwsClusterControlPlaneRootVolumeOutputWithContext(ctx context.Context) AwsClusterControlPlaneRootVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterControlPlaneRootVolumeOutput)
+}
+
+func (i AwsClusterControlPlaneRootVolumeArgs) ToAwsClusterControlPlaneRootVolumePtrOutput() AwsClusterControlPlaneRootVolumePtrOutput {
+	return i.ToAwsClusterControlPlaneRootVolumePtrOutputWithContext(context.Background())
+}
+
+func (i AwsClusterControlPlaneRootVolumeArgs) ToAwsClusterControlPlaneRootVolumePtrOutputWithContext(ctx context.Context) AwsClusterControlPlaneRootVolumePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterControlPlaneRootVolumeOutput).ToAwsClusterControlPlaneRootVolumePtrOutputWithContext(ctx)
+}
+
+// AwsClusterControlPlaneRootVolumePtrInput is an input type that accepts AwsClusterControlPlaneRootVolumeArgs, AwsClusterControlPlaneRootVolumePtr and AwsClusterControlPlaneRootVolumePtrOutput values.
+// You can construct a concrete instance of `AwsClusterControlPlaneRootVolumePtrInput` via:
+//
+//          AwsClusterControlPlaneRootVolumeArgs{...}
+//
+//  or:
+//
+//          nil
+type AwsClusterControlPlaneRootVolumePtrInput interface {
+	pulumi.Input
+
+	ToAwsClusterControlPlaneRootVolumePtrOutput() AwsClusterControlPlaneRootVolumePtrOutput
+	ToAwsClusterControlPlaneRootVolumePtrOutputWithContext(context.Context) AwsClusterControlPlaneRootVolumePtrOutput
+}
+
+type awsClusterControlPlaneRootVolumePtrType AwsClusterControlPlaneRootVolumeArgs
+
+func AwsClusterControlPlaneRootVolumePtr(v *AwsClusterControlPlaneRootVolumeArgs) AwsClusterControlPlaneRootVolumePtrInput {
+	return (*awsClusterControlPlaneRootVolumePtrType)(v)
+}
+
+func (*awsClusterControlPlaneRootVolumePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsClusterControlPlaneRootVolume)(nil)).Elem()
+}
+
+func (i *awsClusterControlPlaneRootVolumePtrType) ToAwsClusterControlPlaneRootVolumePtrOutput() AwsClusterControlPlaneRootVolumePtrOutput {
+	return i.ToAwsClusterControlPlaneRootVolumePtrOutputWithContext(context.Background())
+}
+
+func (i *awsClusterControlPlaneRootVolumePtrType) ToAwsClusterControlPlaneRootVolumePtrOutputWithContext(ctx context.Context) AwsClusterControlPlaneRootVolumePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterControlPlaneRootVolumePtrOutput)
+}
+
+type AwsClusterControlPlaneRootVolumeOutput struct{ *pulumi.OutputState }
+
+func (AwsClusterControlPlaneRootVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsClusterControlPlaneRootVolume)(nil)).Elem()
+}
+
+func (o AwsClusterControlPlaneRootVolumeOutput) ToAwsClusterControlPlaneRootVolumeOutput() AwsClusterControlPlaneRootVolumeOutput {
+	return o
+}
+
+func (o AwsClusterControlPlaneRootVolumeOutput) ToAwsClusterControlPlaneRootVolumeOutputWithContext(ctx context.Context) AwsClusterControlPlaneRootVolumeOutput {
+	return o
+}
+
+func (o AwsClusterControlPlaneRootVolumeOutput) ToAwsClusterControlPlaneRootVolumePtrOutput() AwsClusterControlPlaneRootVolumePtrOutput {
+	return o.ToAwsClusterControlPlaneRootVolumePtrOutputWithContext(context.Background())
+}
+
+func (o AwsClusterControlPlaneRootVolumeOutput) ToAwsClusterControlPlaneRootVolumePtrOutputWithContext(ctx context.Context) AwsClusterControlPlaneRootVolumePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsClusterControlPlaneRootVolume) *AwsClusterControlPlaneRootVolume {
+		return &v
+	}).(AwsClusterControlPlaneRootVolumePtrOutput)
+}
+
+// Optional. The number of I/O operations per second (IOPS) to provision for GP3 volume.
+func (o AwsClusterControlPlaneRootVolumeOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AwsClusterControlPlaneRootVolume) *int { return v.Iops }).(pulumi.IntPtrOutput)
+}
+
+// Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+func (o AwsClusterControlPlaneRootVolumeOutput) KmsKeyArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsClusterControlPlaneRootVolume) *string { return v.KmsKeyArn }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The size of the volume, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+func (o AwsClusterControlPlaneRootVolumeOutput) SizeGib() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AwsClusterControlPlaneRootVolume) *int { return v.SizeGib }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
+func (o AwsClusterControlPlaneRootVolumeOutput) VolumeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsClusterControlPlaneRootVolume) *string { return v.VolumeType }).(pulumi.StringPtrOutput)
+}
+
+type AwsClusterControlPlaneRootVolumePtrOutput struct{ *pulumi.OutputState }
+
+func (AwsClusterControlPlaneRootVolumePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsClusterControlPlaneRootVolume)(nil)).Elem()
+}
+
+func (o AwsClusterControlPlaneRootVolumePtrOutput) ToAwsClusterControlPlaneRootVolumePtrOutput() AwsClusterControlPlaneRootVolumePtrOutput {
+	return o
+}
+
+func (o AwsClusterControlPlaneRootVolumePtrOutput) ToAwsClusterControlPlaneRootVolumePtrOutputWithContext(ctx context.Context) AwsClusterControlPlaneRootVolumePtrOutput {
+	return o
+}
+
+func (o AwsClusterControlPlaneRootVolumePtrOutput) Elem() AwsClusterControlPlaneRootVolumeOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlaneRootVolume) AwsClusterControlPlaneRootVolume {
+		if v != nil {
+			return *v
+		}
+		var ret AwsClusterControlPlaneRootVolume
+		return ret
+	}).(AwsClusterControlPlaneRootVolumeOutput)
+}
+
+// Optional. The number of I/O operations per second (IOPS) to provision for GP3 volume.
+func (o AwsClusterControlPlaneRootVolumePtrOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlaneRootVolume) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Iops
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+func (o AwsClusterControlPlaneRootVolumePtrOutput) KmsKeyArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlaneRootVolume) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The size of the volume, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+func (o AwsClusterControlPlaneRootVolumePtrOutput) SizeGib() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlaneRootVolume) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SizeGib
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
+func (o AwsClusterControlPlaneRootVolumePtrOutput) VolumeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlaneRootVolume) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VolumeType
+	}).(pulumi.StringPtrOutput)
+}
+
+type AwsClusterControlPlaneSshConfig struct {
+	// Required. The name of the EC2 key pair used to login into cluster machines.
+	Ec2KeyPair string `pulumi:"ec2KeyPair"`
+}
+
+// AwsClusterControlPlaneSshConfigInput is an input type that accepts AwsClusterControlPlaneSshConfigArgs and AwsClusterControlPlaneSshConfigOutput values.
+// You can construct a concrete instance of `AwsClusterControlPlaneSshConfigInput` via:
+//
+//          AwsClusterControlPlaneSshConfigArgs{...}
+type AwsClusterControlPlaneSshConfigInput interface {
+	pulumi.Input
+
+	ToAwsClusterControlPlaneSshConfigOutput() AwsClusterControlPlaneSshConfigOutput
+	ToAwsClusterControlPlaneSshConfigOutputWithContext(context.Context) AwsClusterControlPlaneSshConfigOutput
+}
+
+type AwsClusterControlPlaneSshConfigArgs struct {
+	// Required. The name of the EC2 key pair used to login into cluster machines.
+	Ec2KeyPair pulumi.StringInput `pulumi:"ec2KeyPair"`
+}
+
+func (AwsClusterControlPlaneSshConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsClusterControlPlaneSshConfig)(nil)).Elem()
+}
+
+func (i AwsClusterControlPlaneSshConfigArgs) ToAwsClusterControlPlaneSshConfigOutput() AwsClusterControlPlaneSshConfigOutput {
+	return i.ToAwsClusterControlPlaneSshConfigOutputWithContext(context.Background())
+}
+
+func (i AwsClusterControlPlaneSshConfigArgs) ToAwsClusterControlPlaneSshConfigOutputWithContext(ctx context.Context) AwsClusterControlPlaneSshConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterControlPlaneSshConfigOutput)
+}
+
+func (i AwsClusterControlPlaneSshConfigArgs) ToAwsClusterControlPlaneSshConfigPtrOutput() AwsClusterControlPlaneSshConfigPtrOutput {
+	return i.ToAwsClusterControlPlaneSshConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AwsClusterControlPlaneSshConfigArgs) ToAwsClusterControlPlaneSshConfigPtrOutputWithContext(ctx context.Context) AwsClusterControlPlaneSshConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterControlPlaneSshConfigOutput).ToAwsClusterControlPlaneSshConfigPtrOutputWithContext(ctx)
+}
+
+// AwsClusterControlPlaneSshConfigPtrInput is an input type that accepts AwsClusterControlPlaneSshConfigArgs, AwsClusterControlPlaneSshConfigPtr and AwsClusterControlPlaneSshConfigPtrOutput values.
+// You can construct a concrete instance of `AwsClusterControlPlaneSshConfigPtrInput` via:
+//
+//          AwsClusterControlPlaneSshConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type AwsClusterControlPlaneSshConfigPtrInput interface {
+	pulumi.Input
+
+	ToAwsClusterControlPlaneSshConfigPtrOutput() AwsClusterControlPlaneSshConfigPtrOutput
+	ToAwsClusterControlPlaneSshConfigPtrOutputWithContext(context.Context) AwsClusterControlPlaneSshConfigPtrOutput
+}
+
+type awsClusterControlPlaneSshConfigPtrType AwsClusterControlPlaneSshConfigArgs
+
+func AwsClusterControlPlaneSshConfigPtr(v *AwsClusterControlPlaneSshConfigArgs) AwsClusterControlPlaneSshConfigPtrInput {
+	return (*awsClusterControlPlaneSshConfigPtrType)(v)
+}
+
+func (*awsClusterControlPlaneSshConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsClusterControlPlaneSshConfig)(nil)).Elem()
+}
+
+func (i *awsClusterControlPlaneSshConfigPtrType) ToAwsClusterControlPlaneSshConfigPtrOutput() AwsClusterControlPlaneSshConfigPtrOutput {
+	return i.ToAwsClusterControlPlaneSshConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *awsClusterControlPlaneSshConfigPtrType) ToAwsClusterControlPlaneSshConfigPtrOutputWithContext(ctx context.Context) AwsClusterControlPlaneSshConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterControlPlaneSshConfigPtrOutput)
+}
+
+type AwsClusterControlPlaneSshConfigOutput struct{ *pulumi.OutputState }
+
+func (AwsClusterControlPlaneSshConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsClusterControlPlaneSshConfig)(nil)).Elem()
+}
+
+func (o AwsClusterControlPlaneSshConfigOutput) ToAwsClusterControlPlaneSshConfigOutput() AwsClusterControlPlaneSshConfigOutput {
+	return o
+}
+
+func (o AwsClusterControlPlaneSshConfigOutput) ToAwsClusterControlPlaneSshConfigOutputWithContext(ctx context.Context) AwsClusterControlPlaneSshConfigOutput {
+	return o
+}
+
+func (o AwsClusterControlPlaneSshConfigOutput) ToAwsClusterControlPlaneSshConfigPtrOutput() AwsClusterControlPlaneSshConfigPtrOutput {
+	return o.ToAwsClusterControlPlaneSshConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AwsClusterControlPlaneSshConfigOutput) ToAwsClusterControlPlaneSshConfigPtrOutputWithContext(ctx context.Context) AwsClusterControlPlaneSshConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsClusterControlPlaneSshConfig) *AwsClusterControlPlaneSshConfig {
+		return &v
+	}).(AwsClusterControlPlaneSshConfigPtrOutput)
+}
+
+// Required. The name of the EC2 key pair used to login into cluster machines.
+func (o AwsClusterControlPlaneSshConfigOutput) Ec2KeyPair() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsClusterControlPlaneSshConfig) string { return v.Ec2KeyPair }).(pulumi.StringOutput)
+}
+
+type AwsClusterControlPlaneSshConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsClusterControlPlaneSshConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsClusterControlPlaneSshConfig)(nil)).Elem()
+}
+
+func (o AwsClusterControlPlaneSshConfigPtrOutput) ToAwsClusterControlPlaneSshConfigPtrOutput() AwsClusterControlPlaneSshConfigPtrOutput {
+	return o
+}
+
+func (o AwsClusterControlPlaneSshConfigPtrOutput) ToAwsClusterControlPlaneSshConfigPtrOutputWithContext(ctx context.Context) AwsClusterControlPlaneSshConfigPtrOutput {
+	return o
+}
+
+func (o AwsClusterControlPlaneSshConfigPtrOutput) Elem() AwsClusterControlPlaneSshConfigOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlaneSshConfig) AwsClusterControlPlaneSshConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AwsClusterControlPlaneSshConfig
+		return ret
+	}).(AwsClusterControlPlaneSshConfigOutput)
+}
+
+// Required. The name of the EC2 key pair used to login into cluster machines.
+func (o AwsClusterControlPlaneSshConfigPtrOutput) Ec2KeyPair() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlaneSshConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Ec2KeyPair
+	}).(pulumi.StringPtrOutput)
+}
+
+type AwsClusterFleet struct {
+	// -
+	// The name of the managed Hub Membership resource associated to this cluster. Membership names are formatted as projects/<project-number>/locations/global/membership/<cluster-id>.
+	Membership *string `pulumi:"membership"`
+	// The project for the resource
+	Project *string `pulumi:"project"`
+}
+
+// AwsClusterFleetInput is an input type that accepts AwsClusterFleetArgs and AwsClusterFleetOutput values.
+// You can construct a concrete instance of `AwsClusterFleetInput` via:
+//
+//          AwsClusterFleetArgs{...}
+type AwsClusterFleetInput interface {
+	pulumi.Input
+
+	ToAwsClusterFleetOutput() AwsClusterFleetOutput
+	ToAwsClusterFleetOutputWithContext(context.Context) AwsClusterFleetOutput
+}
+
+type AwsClusterFleetArgs struct {
+	// -
+	// The name of the managed Hub Membership resource associated to this cluster. Membership names are formatted as projects/<project-number>/locations/global/membership/<cluster-id>.
+	Membership pulumi.StringPtrInput `pulumi:"membership"`
+	// The project for the resource
+	Project pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (AwsClusterFleetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsClusterFleet)(nil)).Elem()
+}
+
+func (i AwsClusterFleetArgs) ToAwsClusterFleetOutput() AwsClusterFleetOutput {
+	return i.ToAwsClusterFleetOutputWithContext(context.Background())
+}
+
+func (i AwsClusterFleetArgs) ToAwsClusterFleetOutputWithContext(ctx context.Context) AwsClusterFleetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterFleetOutput)
+}
+
+func (i AwsClusterFleetArgs) ToAwsClusterFleetPtrOutput() AwsClusterFleetPtrOutput {
+	return i.ToAwsClusterFleetPtrOutputWithContext(context.Background())
+}
+
+func (i AwsClusterFleetArgs) ToAwsClusterFleetPtrOutputWithContext(ctx context.Context) AwsClusterFleetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterFleetOutput).ToAwsClusterFleetPtrOutputWithContext(ctx)
+}
+
+// AwsClusterFleetPtrInput is an input type that accepts AwsClusterFleetArgs, AwsClusterFleetPtr and AwsClusterFleetPtrOutput values.
+// You can construct a concrete instance of `AwsClusterFleetPtrInput` via:
+//
+//          AwsClusterFleetArgs{...}
+//
+//  or:
+//
+//          nil
+type AwsClusterFleetPtrInput interface {
+	pulumi.Input
+
+	ToAwsClusterFleetPtrOutput() AwsClusterFleetPtrOutput
+	ToAwsClusterFleetPtrOutputWithContext(context.Context) AwsClusterFleetPtrOutput
+}
+
+type awsClusterFleetPtrType AwsClusterFleetArgs
+
+func AwsClusterFleetPtr(v *AwsClusterFleetArgs) AwsClusterFleetPtrInput {
+	return (*awsClusterFleetPtrType)(v)
+}
+
+func (*awsClusterFleetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsClusterFleet)(nil)).Elem()
+}
+
+func (i *awsClusterFleetPtrType) ToAwsClusterFleetPtrOutput() AwsClusterFleetPtrOutput {
+	return i.ToAwsClusterFleetPtrOutputWithContext(context.Background())
+}
+
+func (i *awsClusterFleetPtrType) ToAwsClusterFleetPtrOutputWithContext(ctx context.Context) AwsClusterFleetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterFleetPtrOutput)
+}
+
+type AwsClusterFleetOutput struct{ *pulumi.OutputState }
+
+func (AwsClusterFleetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsClusterFleet)(nil)).Elem()
+}
+
+func (o AwsClusterFleetOutput) ToAwsClusterFleetOutput() AwsClusterFleetOutput {
+	return o
+}
+
+func (o AwsClusterFleetOutput) ToAwsClusterFleetOutputWithContext(ctx context.Context) AwsClusterFleetOutput {
+	return o
+}
+
+func (o AwsClusterFleetOutput) ToAwsClusterFleetPtrOutput() AwsClusterFleetPtrOutput {
+	return o.ToAwsClusterFleetPtrOutputWithContext(context.Background())
+}
+
+func (o AwsClusterFleetOutput) ToAwsClusterFleetPtrOutputWithContext(ctx context.Context) AwsClusterFleetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsClusterFleet) *AwsClusterFleet {
+		return &v
+	}).(AwsClusterFleetPtrOutput)
+}
+
+// -
+// The name of the managed Hub Membership resource associated to this cluster. Membership names are formatted as projects/<project-number>/locations/global/membership/<cluster-id>.
+func (o AwsClusterFleetOutput) Membership() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsClusterFleet) *string { return v.Membership }).(pulumi.StringPtrOutput)
+}
+
+// The project for the resource
+func (o AwsClusterFleetOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsClusterFleet) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+type AwsClusterFleetPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsClusterFleetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsClusterFleet)(nil)).Elem()
+}
+
+func (o AwsClusterFleetPtrOutput) ToAwsClusterFleetPtrOutput() AwsClusterFleetPtrOutput {
+	return o
+}
+
+func (o AwsClusterFleetPtrOutput) ToAwsClusterFleetPtrOutputWithContext(ctx context.Context) AwsClusterFleetPtrOutput {
+	return o
+}
+
+func (o AwsClusterFleetPtrOutput) Elem() AwsClusterFleetOutput {
+	return o.ApplyT(func(v *AwsClusterFleet) AwsClusterFleet {
+		if v != nil {
+			return *v
+		}
+		var ret AwsClusterFleet
+		return ret
+	}).(AwsClusterFleetOutput)
+}
+
+// -
+// The name of the managed Hub Membership resource associated to this cluster. Membership names are formatted as projects/<project-number>/locations/global/membership/<cluster-id>.
+func (o AwsClusterFleetPtrOutput) Membership() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsClusterFleet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Membership
+	}).(pulumi.StringPtrOutput)
+}
+
+// The project for the resource
+func (o AwsClusterFleetPtrOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsClusterFleet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Project
+	}).(pulumi.StringPtrOutput)
+}
+
+type AwsClusterNetworking struct {
+	// Required. All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+	PodAddressCidrBlocks []string `pulumi:"podAddressCidrBlocks"`
+	// Required. All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+	ServiceAddressCidrBlocks []string `pulumi:"serviceAddressCidrBlocks"`
+	// Required. The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
+	VpcId string `pulumi:"vpcId"`
+}
+
+// AwsClusterNetworkingInput is an input type that accepts AwsClusterNetworkingArgs and AwsClusterNetworkingOutput values.
+// You can construct a concrete instance of `AwsClusterNetworkingInput` via:
+//
+//          AwsClusterNetworkingArgs{...}
+type AwsClusterNetworkingInput interface {
+	pulumi.Input
+
+	ToAwsClusterNetworkingOutput() AwsClusterNetworkingOutput
+	ToAwsClusterNetworkingOutputWithContext(context.Context) AwsClusterNetworkingOutput
+}
+
+type AwsClusterNetworkingArgs struct {
+	// Required. All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+	PodAddressCidrBlocks pulumi.StringArrayInput `pulumi:"podAddressCidrBlocks"`
+	// Required. All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+	ServiceAddressCidrBlocks pulumi.StringArrayInput `pulumi:"serviceAddressCidrBlocks"`
+	// Required. The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+}
+
+func (AwsClusterNetworkingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsClusterNetworking)(nil)).Elem()
+}
+
+func (i AwsClusterNetworkingArgs) ToAwsClusterNetworkingOutput() AwsClusterNetworkingOutput {
+	return i.ToAwsClusterNetworkingOutputWithContext(context.Background())
+}
+
+func (i AwsClusterNetworkingArgs) ToAwsClusterNetworkingOutputWithContext(ctx context.Context) AwsClusterNetworkingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterNetworkingOutput)
+}
+
+func (i AwsClusterNetworkingArgs) ToAwsClusterNetworkingPtrOutput() AwsClusterNetworkingPtrOutput {
+	return i.ToAwsClusterNetworkingPtrOutputWithContext(context.Background())
+}
+
+func (i AwsClusterNetworkingArgs) ToAwsClusterNetworkingPtrOutputWithContext(ctx context.Context) AwsClusterNetworkingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterNetworkingOutput).ToAwsClusterNetworkingPtrOutputWithContext(ctx)
+}
+
+// AwsClusterNetworkingPtrInput is an input type that accepts AwsClusterNetworkingArgs, AwsClusterNetworkingPtr and AwsClusterNetworkingPtrOutput values.
+// You can construct a concrete instance of `AwsClusterNetworkingPtrInput` via:
+//
+//          AwsClusterNetworkingArgs{...}
+//
+//  or:
+//
+//          nil
+type AwsClusterNetworkingPtrInput interface {
+	pulumi.Input
+
+	ToAwsClusterNetworkingPtrOutput() AwsClusterNetworkingPtrOutput
+	ToAwsClusterNetworkingPtrOutputWithContext(context.Context) AwsClusterNetworkingPtrOutput
+}
+
+type awsClusterNetworkingPtrType AwsClusterNetworkingArgs
+
+func AwsClusterNetworkingPtr(v *AwsClusterNetworkingArgs) AwsClusterNetworkingPtrInput {
+	return (*awsClusterNetworkingPtrType)(v)
+}
+
+func (*awsClusterNetworkingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsClusterNetworking)(nil)).Elem()
+}
+
+func (i *awsClusterNetworkingPtrType) ToAwsClusterNetworkingPtrOutput() AwsClusterNetworkingPtrOutput {
+	return i.ToAwsClusterNetworkingPtrOutputWithContext(context.Background())
+}
+
+func (i *awsClusterNetworkingPtrType) ToAwsClusterNetworkingPtrOutputWithContext(ctx context.Context) AwsClusterNetworkingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterNetworkingPtrOutput)
+}
+
+type AwsClusterNetworkingOutput struct{ *pulumi.OutputState }
+
+func (AwsClusterNetworkingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsClusterNetworking)(nil)).Elem()
+}
+
+func (o AwsClusterNetworkingOutput) ToAwsClusterNetworkingOutput() AwsClusterNetworkingOutput {
+	return o
+}
+
+func (o AwsClusterNetworkingOutput) ToAwsClusterNetworkingOutputWithContext(ctx context.Context) AwsClusterNetworkingOutput {
+	return o
+}
+
+func (o AwsClusterNetworkingOutput) ToAwsClusterNetworkingPtrOutput() AwsClusterNetworkingPtrOutput {
+	return o.ToAwsClusterNetworkingPtrOutputWithContext(context.Background())
+}
+
+func (o AwsClusterNetworkingOutput) ToAwsClusterNetworkingPtrOutputWithContext(ctx context.Context) AwsClusterNetworkingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsClusterNetworking) *AwsClusterNetworking {
+		return &v
+	}).(AwsClusterNetworkingPtrOutput)
+}
+
+// Required. All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+func (o AwsClusterNetworkingOutput) PodAddressCidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsClusterNetworking) []string { return v.PodAddressCidrBlocks }).(pulumi.StringArrayOutput)
+}
+
+// Required. All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+func (o AwsClusterNetworkingOutput) ServiceAddressCidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsClusterNetworking) []string { return v.ServiceAddressCidrBlocks }).(pulumi.StringArrayOutput)
+}
+
+// Required. The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
+func (o AwsClusterNetworkingOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsClusterNetworking) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+type AwsClusterNetworkingPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsClusterNetworkingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsClusterNetworking)(nil)).Elem()
+}
+
+func (o AwsClusterNetworkingPtrOutput) ToAwsClusterNetworkingPtrOutput() AwsClusterNetworkingPtrOutput {
+	return o
+}
+
+func (o AwsClusterNetworkingPtrOutput) ToAwsClusterNetworkingPtrOutputWithContext(ctx context.Context) AwsClusterNetworkingPtrOutput {
+	return o
+}
+
+func (o AwsClusterNetworkingPtrOutput) Elem() AwsClusterNetworkingOutput {
+	return o.ApplyT(func(v *AwsClusterNetworking) AwsClusterNetworking {
+		if v != nil {
+			return *v
+		}
+		var ret AwsClusterNetworking
+		return ret
+	}).(AwsClusterNetworkingOutput)
+}
+
+// Required. All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+func (o AwsClusterNetworkingPtrOutput) PodAddressCidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AwsClusterNetworking) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PodAddressCidrBlocks
+	}).(pulumi.StringArrayOutput)
+}
+
+// Required. All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+func (o AwsClusterNetworkingPtrOutput) ServiceAddressCidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AwsClusterNetworking) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAddressCidrBlocks
+	}).(pulumi.StringArrayOutput)
+}
+
+// Required. The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
+func (o AwsClusterNetworkingPtrOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsClusterNetworking) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VpcId
+	}).(pulumi.StringPtrOutput)
+}
+
+type AwsClusterWorkloadIdentityConfig struct {
+	IdentityProvider *string `pulumi:"identityProvider"`
+	IssuerUri        *string `pulumi:"issuerUri"`
+	WorkloadPool     *string `pulumi:"workloadPool"`
+}
+
+// AwsClusterWorkloadIdentityConfigInput is an input type that accepts AwsClusterWorkloadIdentityConfigArgs and AwsClusterWorkloadIdentityConfigOutput values.
+// You can construct a concrete instance of `AwsClusterWorkloadIdentityConfigInput` via:
+//
+//          AwsClusterWorkloadIdentityConfigArgs{...}
+type AwsClusterWorkloadIdentityConfigInput interface {
+	pulumi.Input
+
+	ToAwsClusterWorkloadIdentityConfigOutput() AwsClusterWorkloadIdentityConfigOutput
+	ToAwsClusterWorkloadIdentityConfigOutputWithContext(context.Context) AwsClusterWorkloadIdentityConfigOutput
+}
+
+type AwsClusterWorkloadIdentityConfigArgs struct {
+	IdentityProvider pulumi.StringPtrInput `pulumi:"identityProvider"`
+	IssuerUri        pulumi.StringPtrInput `pulumi:"issuerUri"`
+	WorkloadPool     pulumi.StringPtrInput `pulumi:"workloadPool"`
+}
+
+func (AwsClusterWorkloadIdentityConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsClusterWorkloadIdentityConfig)(nil)).Elem()
+}
+
+func (i AwsClusterWorkloadIdentityConfigArgs) ToAwsClusterWorkloadIdentityConfigOutput() AwsClusterWorkloadIdentityConfigOutput {
+	return i.ToAwsClusterWorkloadIdentityConfigOutputWithContext(context.Background())
+}
+
+func (i AwsClusterWorkloadIdentityConfigArgs) ToAwsClusterWorkloadIdentityConfigOutputWithContext(ctx context.Context) AwsClusterWorkloadIdentityConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterWorkloadIdentityConfigOutput)
+}
+
+// AwsClusterWorkloadIdentityConfigArrayInput is an input type that accepts AwsClusterWorkloadIdentityConfigArray and AwsClusterWorkloadIdentityConfigArrayOutput values.
+// You can construct a concrete instance of `AwsClusterWorkloadIdentityConfigArrayInput` via:
+//
+//          AwsClusterWorkloadIdentityConfigArray{ AwsClusterWorkloadIdentityConfigArgs{...} }
+type AwsClusterWorkloadIdentityConfigArrayInput interface {
+	pulumi.Input
+
+	ToAwsClusterWorkloadIdentityConfigArrayOutput() AwsClusterWorkloadIdentityConfigArrayOutput
+	ToAwsClusterWorkloadIdentityConfigArrayOutputWithContext(context.Context) AwsClusterWorkloadIdentityConfigArrayOutput
+}
+
+type AwsClusterWorkloadIdentityConfigArray []AwsClusterWorkloadIdentityConfigInput
+
+func (AwsClusterWorkloadIdentityConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AwsClusterWorkloadIdentityConfig)(nil)).Elem()
+}
+
+func (i AwsClusterWorkloadIdentityConfigArray) ToAwsClusterWorkloadIdentityConfigArrayOutput() AwsClusterWorkloadIdentityConfigArrayOutput {
+	return i.ToAwsClusterWorkloadIdentityConfigArrayOutputWithContext(context.Background())
+}
+
+func (i AwsClusterWorkloadIdentityConfigArray) ToAwsClusterWorkloadIdentityConfigArrayOutputWithContext(ctx context.Context) AwsClusterWorkloadIdentityConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterWorkloadIdentityConfigArrayOutput)
+}
+
+type AwsClusterWorkloadIdentityConfigOutput struct{ *pulumi.OutputState }
+
+func (AwsClusterWorkloadIdentityConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsClusterWorkloadIdentityConfig)(nil)).Elem()
+}
+
+func (o AwsClusterWorkloadIdentityConfigOutput) ToAwsClusterWorkloadIdentityConfigOutput() AwsClusterWorkloadIdentityConfigOutput {
+	return o
+}
+
+func (o AwsClusterWorkloadIdentityConfigOutput) ToAwsClusterWorkloadIdentityConfigOutputWithContext(ctx context.Context) AwsClusterWorkloadIdentityConfigOutput {
+	return o
+}
+
+func (o AwsClusterWorkloadIdentityConfigOutput) IdentityProvider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsClusterWorkloadIdentityConfig) *string { return v.IdentityProvider }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsClusterWorkloadIdentityConfigOutput) IssuerUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsClusterWorkloadIdentityConfig) *string { return v.IssuerUri }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsClusterWorkloadIdentityConfigOutput) WorkloadPool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsClusterWorkloadIdentityConfig) *string { return v.WorkloadPool }).(pulumi.StringPtrOutput)
+}
+
+type AwsClusterWorkloadIdentityConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (AwsClusterWorkloadIdentityConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AwsClusterWorkloadIdentityConfig)(nil)).Elem()
+}
+
+func (o AwsClusterWorkloadIdentityConfigArrayOutput) ToAwsClusterWorkloadIdentityConfigArrayOutput() AwsClusterWorkloadIdentityConfigArrayOutput {
+	return o
+}
+
+func (o AwsClusterWorkloadIdentityConfigArrayOutput) ToAwsClusterWorkloadIdentityConfigArrayOutputWithContext(ctx context.Context) AwsClusterWorkloadIdentityConfigArrayOutput {
+	return o
+}
+
+func (o AwsClusterWorkloadIdentityConfigArrayOutput) Index(i pulumi.IntInput) AwsClusterWorkloadIdentityConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AwsClusterWorkloadIdentityConfig {
+		return vs[0].([]AwsClusterWorkloadIdentityConfig)[vs[1].(int)]
+	}).(AwsClusterWorkloadIdentityConfigOutput)
+}
+
+type AwsNodePoolAutoscaling struct {
+	// Required. Maximum number of nodes in the NodePool. Must be >= min_node_count.
+	MaxNodeCount int `pulumi:"maxNodeCount"`
+	// Required. Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
+	MinNodeCount int `pulumi:"minNodeCount"`
+}
+
+// AwsNodePoolAutoscalingInput is an input type that accepts AwsNodePoolAutoscalingArgs and AwsNodePoolAutoscalingOutput values.
+// You can construct a concrete instance of `AwsNodePoolAutoscalingInput` via:
+//
+//          AwsNodePoolAutoscalingArgs{...}
+type AwsNodePoolAutoscalingInput interface {
+	pulumi.Input
+
+	ToAwsNodePoolAutoscalingOutput() AwsNodePoolAutoscalingOutput
+	ToAwsNodePoolAutoscalingOutputWithContext(context.Context) AwsNodePoolAutoscalingOutput
+}
+
+type AwsNodePoolAutoscalingArgs struct {
+	// Required. Maximum number of nodes in the NodePool. Must be >= min_node_count.
+	MaxNodeCount pulumi.IntInput `pulumi:"maxNodeCount"`
+	// Required. Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
+	MinNodeCount pulumi.IntInput `pulumi:"minNodeCount"`
+}
+
+func (AwsNodePoolAutoscalingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsNodePoolAutoscaling)(nil)).Elem()
+}
+
+func (i AwsNodePoolAutoscalingArgs) ToAwsNodePoolAutoscalingOutput() AwsNodePoolAutoscalingOutput {
+	return i.ToAwsNodePoolAutoscalingOutputWithContext(context.Background())
+}
+
+func (i AwsNodePoolAutoscalingArgs) ToAwsNodePoolAutoscalingOutputWithContext(ctx context.Context) AwsNodePoolAutoscalingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolAutoscalingOutput)
+}
+
+func (i AwsNodePoolAutoscalingArgs) ToAwsNodePoolAutoscalingPtrOutput() AwsNodePoolAutoscalingPtrOutput {
+	return i.ToAwsNodePoolAutoscalingPtrOutputWithContext(context.Background())
+}
+
+func (i AwsNodePoolAutoscalingArgs) ToAwsNodePoolAutoscalingPtrOutputWithContext(ctx context.Context) AwsNodePoolAutoscalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolAutoscalingOutput).ToAwsNodePoolAutoscalingPtrOutputWithContext(ctx)
+}
+
+// AwsNodePoolAutoscalingPtrInput is an input type that accepts AwsNodePoolAutoscalingArgs, AwsNodePoolAutoscalingPtr and AwsNodePoolAutoscalingPtrOutput values.
+// You can construct a concrete instance of `AwsNodePoolAutoscalingPtrInput` via:
+//
+//          AwsNodePoolAutoscalingArgs{...}
+//
+//  or:
+//
+//          nil
+type AwsNodePoolAutoscalingPtrInput interface {
+	pulumi.Input
+
+	ToAwsNodePoolAutoscalingPtrOutput() AwsNodePoolAutoscalingPtrOutput
+	ToAwsNodePoolAutoscalingPtrOutputWithContext(context.Context) AwsNodePoolAutoscalingPtrOutput
+}
+
+type awsNodePoolAutoscalingPtrType AwsNodePoolAutoscalingArgs
+
+func AwsNodePoolAutoscalingPtr(v *AwsNodePoolAutoscalingArgs) AwsNodePoolAutoscalingPtrInput {
+	return (*awsNodePoolAutoscalingPtrType)(v)
+}
+
+func (*awsNodePoolAutoscalingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsNodePoolAutoscaling)(nil)).Elem()
+}
+
+func (i *awsNodePoolAutoscalingPtrType) ToAwsNodePoolAutoscalingPtrOutput() AwsNodePoolAutoscalingPtrOutput {
+	return i.ToAwsNodePoolAutoscalingPtrOutputWithContext(context.Background())
+}
+
+func (i *awsNodePoolAutoscalingPtrType) ToAwsNodePoolAutoscalingPtrOutputWithContext(ctx context.Context) AwsNodePoolAutoscalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolAutoscalingPtrOutput)
+}
+
+type AwsNodePoolAutoscalingOutput struct{ *pulumi.OutputState }
+
+func (AwsNodePoolAutoscalingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsNodePoolAutoscaling)(nil)).Elem()
+}
+
+func (o AwsNodePoolAutoscalingOutput) ToAwsNodePoolAutoscalingOutput() AwsNodePoolAutoscalingOutput {
+	return o
+}
+
+func (o AwsNodePoolAutoscalingOutput) ToAwsNodePoolAutoscalingOutputWithContext(ctx context.Context) AwsNodePoolAutoscalingOutput {
+	return o
+}
+
+func (o AwsNodePoolAutoscalingOutput) ToAwsNodePoolAutoscalingPtrOutput() AwsNodePoolAutoscalingPtrOutput {
+	return o.ToAwsNodePoolAutoscalingPtrOutputWithContext(context.Background())
+}
+
+func (o AwsNodePoolAutoscalingOutput) ToAwsNodePoolAutoscalingPtrOutputWithContext(ctx context.Context) AwsNodePoolAutoscalingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsNodePoolAutoscaling) *AwsNodePoolAutoscaling {
+		return &v
+	}).(AwsNodePoolAutoscalingPtrOutput)
+}
+
+// Required. Maximum number of nodes in the NodePool. Must be >= min_node_count.
+func (o AwsNodePoolAutoscalingOutput) MaxNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v AwsNodePoolAutoscaling) int { return v.MaxNodeCount }).(pulumi.IntOutput)
+}
+
+// Required. Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
+func (o AwsNodePoolAutoscalingOutput) MinNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v AwsNodePoolAutoscaling) int { return v.MinNodeCount }).(pulumi.IntOutput)
+}
+
+type AwsNodePoolAutoscalingPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsNodePoolAutoscalingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsNodePoolAutoscaling)(nil)).Elem()
+}
+
+func (o AwsNodePoolAutoscalingPtrOutput) ToAwsNodePoolAutoscalingPtrOutput() AwsNodePoolAutoscalingPtrOutput {
+	return o
+}
+
+func (o AwsNodePoolAutoscalingPtrOutput) ToAwsNodePoolAutoscalingPtrOutputWithContext(ctx context.Context) AwsNodePoolAutoscalingPtrOutput {
+	return o
+}
+
+func (o AwsNodePoolAutoscalingPtrOutput) Elem() AwsNodePoolAutoscalingOutput {
+	return o.ApplyT(func(v *AwsNodePoolAutoscaling) AwsNodePoolAutoscaling {
+		if v != nil {
+			return *v
+		}
+		var ret AwsNodePoolAutoscaling
+		return ret
+	}).(AwsNodePoolAutoscalingOutput)
+}
+
+// Required. Maximum number of nodes in the NodePool. Must be >= min_node_count.
+func (o AwsNodePoolAutoscalingPtrOutput) MaxNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AwsNodePoolAutoscaling) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Required. Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
+func (o AwsNodePoolAutoscalingPtrOutput) MinNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AwsNodePoolAutoscaling) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MinNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type AwsNodePoolConfig struct {
+	// Required. The ARN of the AWS KMS key used to encrypt node pool configuration.
+	ConfigEncryption AwsNodePoolConfigConfigEncryption `pulumi:"configEncryption"`
+	// Required. The name of the AWS IAM role assigned to nodes in the pool.
+	IamInstanceProfile string `pulumi:"iamInstanceProfile"`
+	// Optional. The AWS instance type. When unspecified, it defaults to `t3.medium`.
+	InstanceType *string `pulumi:"instanceType"`
+	// Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	Labels map[string]string `pulumi:"labels"`
+	// Optional. Template for the root volume provisioned for node pool nodes. Volumes will be provisioned in the availability zone assigned to the node pool subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
+	RootVolume *AwsNodePoolConfigRootVolume `pulumi:"rootVolume"`
+	// Optional. The IDs of additional security groups to add to nodes in this pool. The manager will automatically create security groups with minimum rules needed for a functioning cluster.
+	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// Optional. The SSH configuration.
+	SshConfig *AwsNodePoolConfigSshConfig `pulumi:"sshConfig"`
+	// Optional. Key/value metadata to assign to each underlying AWS resource. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
+	Tags map[string]string `pulumi:"tags"`
+	// Optional. The initial taints assigned to nodes of this node pool.
+	Taints []AwsNodePoolConfigTaint `pulumi:"taints"`
+}
+
+// AwsNodePoolConfigInput is an input type that accepts AwsNodePoolConfigArgs and AwsNodePoolConfigOutput values.
+// You can construct a concrete instance of `AwsNodePoolConfigInput` via:
+//
+//          AwsNodePoolConfigArgs{...}
+type AwsNodePoolConfigInput interface {
+	pulumi.Input
+
+	ToAwsNodePoolConfigOutput() AwsNodePoolConfigOutput
+	ToAwsNodePoolConfigOutputWithContext(context.Context) AwsNodePoolConfigOutput
+}
+
+type AwsNodePoolConfigArgs struct {
+	// Required. The ARN of the AWS KMS key used to encrypt node pool configuration.
+	ConfigEncryption AwsNodePoolConfigConfigEncryptionInput `pulumi:"configEncryption"`
+	// Required. The name of the AWS IAM role assigned to nodes in the pool.
+	IamInstanceProfile pulumi.StringInput `pulumi:"iamInstanceProfile"`
+	// Optional. The AWS instance type. When unspecified, it defaults to `t3.medium`.
+	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
+	// Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Optional. Template for the root volume provisioned for node pool nodes. Volumes will be provisioned in the availability zone assigned to the node pool subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
+	RootVolume AwsNodePoolConfigRootVolumePtrInput `pulumi:"rootVolume"`
+	// Optional. The IDs of additional security groups to add to nodes in this pool. The manager will automatically create security groups with minimum rules needed for a functioning cluster.
+	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
+	// Optional. The SSH configuration.
+	SshConfig AwsNodePoolConfigSshConfigPtrInput `pulumi:"sshConfig"`
+	// Optional. Key/value metadata to assign to each underlying AWS resource. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Optional. The initial taints assigned to nodes of this node pool.
+	Taints AwsNodePoolConfigTaintArrayInput `pulumi:"taints"`
+}
+
+func (AwsNodePoolConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsNodePoolConfig)(nil)).Elem()
+}
+
+func (i AwsNodePoolConfigArgs) ToAwsNodePoolConfigOutput() AwsNodePoolConfigOutput {
+	return i.ToAwsNodePoolConfigOutputWithContext(context.Background())
+}
+
+func (i AwsNodePoolConfigArgs) ToAwsNodePoolConfigOutputWithContext(ctx context.Context) AwsNodePoolConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolConfigOutput)
+}
+
+func (i AwsNodePoolConfigArgs) ToAwsNodePoolConfigPtrOutput() AwsNodePoolConfigPtrOutput {
+	return i.ToAwsNodePoolConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AwsNodePoolConfigArgs) ToAwsNodePoolConfigPtrOutputWithContext(ctx context.Context) AwsNodePoolConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolConfigOutput).ToAwsNodePoolConfigPtrOutputWithContext(ctx)
+}
+
+// AwsNodePoolConfigPtrInput is an input type that accepts AwsNodePoolConfigArgs, AwsNodePoolConfigPtr and AwsNodePoolConfigPtrOutput values.
+// You can construct a concrete instance of `AwsNodePoolConfigPtrInput` via:
+//
+//          AwsNodePoolConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type AwsNodePoolConfigPtrInput interface {
+	pulumi.Input
+
+	ToAwsNodePoolConfigPtrOutput() AwsNodePoolConfigPtrOutput
+	ToAwsNodePoolConfigPtrOutputWithContext(context.Context) AwsNodePoolConfigPtrOutput
+}
+
+type awsNodePoolConfigPtrType AwsNodePoolConfigArgs
+
+func AwsNodePoolConfigPtr(v *AwsNodePoolConfigArgs) AwsNodePoolConfigPtrInput {
+	return (*awsNodePoolConfigPtrType)(v)
+}
+
+func (*awsNodePoolConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsNodePoolConfig)(nil)).Elem()
+}
+
+func (i *awsNodePoolConfigPtrType) ToAwsNodePoolConfigPtrOutput() AwsNodePoolConfigPtrOutput {
+	return i.ToAwsNodePoolConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *awsNodePoolConfigPtrType) ToAwsNodePoolConfigPtrOutputWithContext(ctx context.Context) AwsNodePoolConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolConfigPtrOutput)
+}
+
+type AwsNodePoolConfigOutput struct{ *pulumi.OutputState }
+
+func (AwsNodePoolConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsNodePoolConfig)(nil)).Elem()
+}
+
+func (o AwsNodePoolConfigOutput) ToAwsNodePoolConfigOutput() AwsNodePoolConfigOutput {
+	return o
+}
+
+func (o AwsNodePoolConfigOutput) ToAwsNodePoolConfigOutputWithContext(ctx context.Context) AwsNodePoolConfigOutput {
+	return o
+}
+
+func (o AwsNodePoolConfigOutput) ToAwsNodePoolConfigPtrOutput() AwsNodePoolConfigPtrOutput {
+	return o.ToAwsNodePoolConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AwsNodePoolConfigOutput) ToAwsNodePoolConfigPtrOutputWithContext(ctx context.Context) AwsNodePoolConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsNodePoolConfig) *AwsNodePoolConfig {
+		return &v
+	}).(AwsNodePoolConfigPtrOutput)
+}
+
+// Required. The ARN of the AWS KMS key used to encrypt node pool configuration.
+func (o AwsNodePoolConfigOutput) ConfigEncryption() AwsNodePoolConfigConfigEncryptionOutput {
+	return o.ApplyT(func(v AwsNodePoolConfig) AwsNodePoolConfigConfigEncryption { return v.ConfigEncryption }).(AwsNodePoolConfigConfigEncryptionOutput)
+}
+
+// Required. The name of the AWS IAM role assigned to nodes in the pool.
+func (o AwsNodePoolConfigOutput) IamInstanceProfile() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsNodePoolConfig) string { return v.IamInstanceProfile }).(pulumi.StringOutput)
+}
+
+// Optional. The AWS instance type. When unspecified, it defaults to `t3.medium`.
+func (o AwsNodePoolConfigOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsNodePoolConfig) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+func (o AwsNodePoolConfigOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AwsNodePoolConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Optional. Template for the root volume provisioned for node pool nodes. Volumes will be provisioned in the availability zone assigned to the node pool subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
+func (o AwsNodePoolConfigOutput) RootVolume() AwsNodePoolConfigRootVolumePtrOutput {
+	return o.ApplyT(func(v AwsNodePoolConfig) *AwsNodePoolConfigRootVolume { return v.RootVolume }).(AwsNodePoolConfigRootVolumePtrOutput)
+}
+
+// Optional. The IDs of additional security groups to add to nodes in this pool. The manager will automatically create security groups with minimum rules needed for a functioning cluster.
+func (o AwsNodePoolConfigOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsNodePoolConfig) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The SSH configuration.
+func (o AwsNodePoolConfigOutput) SshConfig() AwsNodePoolConfigSshConfigPtrOutput {
+	return o.ApplyT(func(v AwsNodePoolConfig) *AwsNodePoolConfigSshConfig { return v.SshConfig }).(AwsNodePoolConfigSshConfigPtrOutput)
+}
+
+// Optional. Key/value metadata to assign to each underlying AWS resource. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
+func (o AwsNodePoolConfigOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AwsNodePoolConfig) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Optional. The initial taints assigned to nodes of this node pool.
+func (o AwsNodePoolConfigOutput) Taints() AwsNodePoolConfigTaintArrayOutput {
+	return o.ApplyT(func(v AwsNodePoolConfig) []AwsNodePoolConfigTaint { return v.Taints }).(AwsNodePoolConfigTaintArrayOutput)
+}
+
+type AwsNodePoolConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsNodePoolConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsNodePoolConfig)(nil)).Elem()
+}
+
+func (o AwsNodePoolConfigPtrOutput) ToAwsNodePoolConfigPtrOutput() AwsNodePoolConfigPtrOutput {
+	return o
+}
+
+func (o AwsNodePoolConfigPtrOutput) ToAwsNodePoolConfigPtrOutputWithContext(ctx context.Context) AwsNodePoolConfigPtrOutput {
+	return o
+}
+
+func (o AwsNodePoolConfigPtrOutput) Elem() AwsNodePoolConfigOutput {
+	return o.ApplyT(func(v *AwsNodePoolConfig) AwsNodePoolConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AwsNodePoolConfig
+		return ret
+	}).(AwsNodePoolConfigOutput)
+}
+
+// Required. The ARN of the AWS KMS key used to encrypt node pool configuration.
+func (o AwsNodePoolConfigPtrOutput) ConfigEncryption() AwsNodePoolConfigConfigEncryptionPtrOutput {
+	return o.ApplyT(func(v *AwsNodePoolConfig) *AwsNodePoolConfigConfigEncryption {
+		if v == nil {
+			return nil
+		}
+		return &v.ConfigEncryption
+	}).(AwsNodePoolConfigConfigEncryptionPtrOutput)
+}
+
+// Required. The name of the AWS IAM role assigned to nodes in the pool.
+func (o AwsNodePoolConfigPtrOutput) IamInstanceProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsNodePoolConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IamInstanceProfile
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The AWS instance type. When unspecified, it defaults to `t3.medium`.
+func (o AwsNodePoolConfigPtrOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsNodePoolConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+func (o AwsNodePoolConfigPtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AwsNodePoolConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+// Optional. Template for the root volume provisioned for node pool nodes. Volumes will be provisioned in the availability zone assigned to the node pool subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
+func (o AwsNodePoolConfigPtrOutput) RootVolume() AwsNodePoolConfigRootVolumePtrOutput {
+	return o.ApplyT(func(v *AwsNodePoolConfig) *AwsNodePoolConfigRootVolume {
+		if v == nil {
+			return nil
+		}
+		return v.RootVolume
+	}).(AwsNodePoolConfigRootVolumePtrOutput)
+}
+
+// Optional. The IDs of additional security groups to add to nodes in this pool. The manager will automatically create security groups with minimum rules needed for a functioning cluster.
+func (o AwsNodePoolConfigPtrOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AwsNodePoolConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityGroupIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The SSH configuration.
+func (o AwsNodePoolConfigPtrOutput) SshConfig() AwsNodePoolConfigSshConfigPtrOutput {
+	return o.ApplyT(func(v *AwsNodePoolConfig) *AwsNodePoolConfigSshConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SshConfig
+	}).(AwsNodePoolConfigSshConfigPtrOutput)
+}
+
+// Optional. Key/value metadata to assign to each underlying AWS resource. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
+func (o AwsNodePoolConfigPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AwsNodePoolConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Optional. The initial taints assigned to nodes of this node pool.
+func (o AwsNodePoolConfigPtrOutput) Taints() AwsNodePoolConfigTaintArrayOutput {
+	return o.ApplyT(func(v *AwsNodePoolConfig) []AwsNodePoolConfigTaint {
+		if v == nil {
+			return nil
+		}
+		return v.Taints
+	}).(AwsNodePoolConfigTaintArrayOutput)
+}
+
+type AwsNodePoolConfigConfigEncryption struct {
+	// Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+	KmsKeyArn string `pulumi:"kmsKeyArn"`
+}
+
+// AwsNodePoolConfigConfigEncryptionInput is an input type that accepts AwsNodePoolConfigConfigEncryptionArgs and AwsNodePoolConfigConfigEncryptionOutput values.
+// You can construct a concrete instance of `AwsNodePoolConfigConfigEncryptionInput` via:
+//
+//          AwsNodePoolConfigConfigEncryptionArgs{...}
+type AwsNodePoolConfigConfigEncryptionInput interface {
+	pulumi.Input
+
+	ToAwsNodePoolConfigConfigEncryptionOutput() AwsNodePoolConfigConfigEncryptionOutput
+	ToAwsNodePoolConfigConfigEncryptionOutputWithContext(context.Context) AwsNodePoolConfigConfigEncryptionOutput
+}
+
+type AwsNodePoolConfigConfigEncryptionArgs struct {
+	// Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+	KmsKeyArn pulumi.StringInput `pulumi:"kmsKeyArn"`
+}
+
+func (AwsNodePoolConfigConfigEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsNodePoolConfigConfigEncryption)(nil)).Elem()
+}
+
+func (i AwsNodePoolConfigConfigEncryptionArgs) ToAwsNodePoolConfigConfigEncryptionOutput() AwsNodePoolConfigConfigEncryptionOutput {
+	return i.ToAwsNodePoolConfigConfigEncryptionOutputWithContext(context.Background())
+}
+
+func (i AwsNodePoolConfigConfigEncryptionArgs) ToAwsNodePoolConfigConfigEncryptionOutputWithContext(ctx context.Context) AwsNodePoolConfigConfigEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolConfigConfigEncryptionOutput)
+}
+
+func (i AwsNodePoolConfigConfigEncryptionArgs) ToAwsNodePoolConfigConfigEncryptionPtrOutput() AwsNodePoolConfigConfigEncryptionPtrOutput {
+	return i.ToAwsNodePoolConfigConfigEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i AwsNodePoolConfigConfigEncryptionArgs) ToAwsNodePoolConfigConfigEncryptionPtrOutputWithContext(ctx context.Context) AwsNodePoolConfigConfigEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolConfigConfigEncryptionOutput).ToAwsNodePoolConfigConfigEncryptionPtrOutputWithContext(ctx)
+}
+
+// AwsNodePoolConfigConfigEncryptionPtrInput is an input type that accepts AwsNodePoolConfigConfigEncryptionArgs, AwsNodePoolConfigConfigEncryptionPtr and AwsNodePoolConfigConfigEncryptionPtrOutput values.
+// You can construct a concrete instance of `AwsNodePoolConfigConfigEncryptionPtrInput` via:
+//
+//          AwsNodePoolConfigConfigEncryptionArgs{...}
+//
+//  or:
+//
+//          nil
+type AwsNodePoolConfigConfigEncryptionPtrInput interface {
+	pulumi.Input
+
+	ToAwsNodePoolConfigConfigEncryptionPtrOutput() AwsNodePoolConfigConfigEncryptionPtrOutput
+	ToAwsNodePoolConfigConfigEncryptionPtrOutputWithContext(context.Context) AwsNodePoolConfigConfigEncryptionPtrOutput
+}
+
+type awsNodePoolConfigConfigEncryptionPtrType AwsNodePoolConfigConfigEncryptionArgs
+
+func AwsNodePoolConfigConfigEncryptionPtr(v *AwsNodePoolConfigConfigEncryptionArgs) AwsNodePoolConfigConfigEncryptionPtrInput {
+	return (*awsNodePoolConfigConfigEncryptionPtrType)(v)
+}
+
+func (*awsNodePoolConfigConfigEncryptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsNodePoolConfigConfigEncryption)(nil)).Elem()
+}
+
+func (i *awsNodePoolConfigConfigEncryptionPtrType) ToAwsNodePoolConfigConfigEncryptionPtrOutput() AwsNodePoolConfigConfigEncryptionPtrOutput {
+	return i.ToAwsNodePoolConfigConfigEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i *awsNodePoolConfigConfigEncryptionPtrType) ToAwsNodePoolConfigConfigEncryptionPtrOutputWithContext(ctx context.Context) AwsNodePoolConfigConfigEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolConfigConfigEncryptionPtrOutput)
+}
+
+type AwsNodePoolConfigConfigEncryptionOutput struct{ *pulumi.OutputState }
+
+func (AwsNodePoolConfigConfigEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsNodePoolConfigConfigEncryption)(nil)).Elem()
+}
+
+func (o AwsNodePoolConfigConfigEncryptionOutput) ToAwsNodePoolConfigConfigEncryptionOutput() AwsNodePoolConfigConfigEncryptionOutput {
+	return o
+}
+
+func (o AwsNodePoolConfigConfigEncryptionOutput) ToAwsNodePoolConfigConfigEncryptionOutputWithContext(ctx context.Context) AwsNodePoolConfigConfigEncryptionOutput {
+	return o
+}
+
+func (o AwsNodePoolConfigConfigEncryptionOutput) ToAwsNodePoolConfigConfigEncryptionPtrOutput() AwsNodePoolConfigConfigEncryptionPtrOutput {
+	return o.ToAwsNodePoolConfigConfigEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (o AwsNodePoolConfigConfigEncryptionOutput) ToAwsNodePoolConfigConfigEncryptionPtrOutputWithContext(ctx context.Context) AwsNodePoolConfigConfigEncryptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsNodePoolConfigConfigEncryption) *AwsNodePoolConfigConfigEncryption {
+		return &v
+	}).(AwsNodePoolConfigConfigEncryptionPtrOutput)
+}
+
+// Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+func (o AwsNodePoolConfigConfigEncryptionOutput) KmsKeyArn() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsNodePoolConfigConfigEncryption) string { return v.KmsKeyArn }).(pulumi.StringOutput)
+}
+
+type AwsNodePoolConfigConfigEncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsNodePoolConfigConfigEncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsNodePoolConfigConfigEncryption)(nil)).Elem()
+}
+
+func (o AwsNodePoolConfigConfigEncryptionPtrOutput) ToAwsNodePoolConfigConfigEncryptionPtrOutput() AwsNodePoolConfigConfigEncryptionPtrOutput {
+	return o
+}
+
+func (o AwsNodePoolConfigConfigEncryptionPtrOutput) ToAwsNodePoolConfigConfigEncryptionPtrOutputWithContext(ctx context.Context) AwsNodePoolConfigConfigEncryptionPtrOutput {
+	return o
+}
+
+func (o AwsNodePoolConfigConfigEncryptionPtrOutput) Elem() AwsNodePoolConfigConfigEncryptionOutput {
+	return o.ApplyT(func(v *AwsNodePoolConfigConfigEncryption) AwsNodePoolConfigConfigEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret AwsNodePoolConfigConfigEncryption
+		return ret
+	}).(AwsNodePoolConfigConfigEncryptionOutput)
+}
+
+// Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+func (o AwsNodePoolConfigConfigEncryptionPtrOutput) KmsKeyArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsNodePoolConfigConfigEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyArn
+	}).(pulumi.StringPtrOutput)
+}
+
+type AwsNodePoolConfigRootVolume struct {
+	// Optional. The number of I/O operations per second (IOPS) to provision for GP3 volume.
+	Iops *int `pulumi:"iops"`
+	// Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+	KmsKeyArn *string `pulumi:"kmsKeyArn"`
+	// Optional. The size of the volume, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+	SizeGib *int `pulumi:"sizeGib"`
+	// Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
+	VolumeType *string `pulumi:"volumeType"`
+}
+
+// AwsNodePoolConfigRootVolumeInput is an input type that accepts AwsNodePoolConfigRootVolumeArgs and AwsNodePoolConfigRootVolumeOutput values.
+// You can construct a concrete instance of `AwsNodePoolConfigRootVolumeInput` via:
+//
+//          AwsNodePoolConfigRootVolumeArgs{...}
+type AwsNodePoolConfigRootVolumeInput interface {
+	pulumi.Input
+
+	ToAwsNodePoolConfigRootVolumeOutput() AwsNodePoolConfigRootVolumeOutput
+	ToAwsNodePoolConfigRootVolumeOutputWithContext(context.Context) AwsNodePoolConfigRootVolumeOutput
+}
+
+type AwsNodePoolConfigRootVolumeArgs struct {
+	// Optional. The number of I/O operations per second (IOPS) to provision for GP3 volume.
+	Iops pulumi.IntPtrInput `pulumi:"iops"`
+	// Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+	KmsKeyArn pulumi.StringPtrInput `pulumi:"kmsKeyArn"`
+	// Optional. The size of the volume, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+	SizeGib pulumi.IntPtrInput `pulumi:"sizeGib"`
+	// Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
+	VolumeType pulumi.StringPtrInput `pulumi:"volumeType"`
+}
+
+func (AwsNodePoolConfigRootVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsNodePoolConfigRootVolume)(nil)).Elem()
+}
+
+func (i AwsNodePoolConfigRootVolumeArgs) ToAwsNodePoolConfigRootVolumeOutput() AwsNodePoolConfigRootVolumeOutput {
+	return i.ToAwsNodePoolConfigRootVolumeOutputWithContext(context.Background())
+}
+
+func (i AwsNodePoolConfigRootVolumeArgs) ToAwsNodePoolConfigRootVolumeOutputWithContext(ctx context.Context) AwsNodePoolConfigRootVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolConfigRootVolumeOutput)
+}
+
+func (i AwsNodePoolConfigRootVolumeArgs) ToAwsNodePoolConfigRootVolumePtrOutput() AwsNodePoolConfigRootVolumePtrOutput {
+	return i.ToAwsNodePoolConfigRootVolumePtrOutputWithContext(context.Background())
+}
+
+func (i AwsNodePoolConfigRootVolumeArgs) ToAwsNodePoolConfigRootVolumePtrOutputWithContext(ctx context.Context) AwsNodePoolConfigRootVolumePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolConfigRootVolumeOutput).ToAwsNodePoolConfigRootVolumePtrOutputWithContext(ctx)
+}
+
+// AwsNodePoolConfigRootVolumePtrInput is an input type that accepts AwsNodePoolConfigRootVolumeArgs, AwsNodePoolConfigRootVolumePtr and AwsNodePoolConfigRootVolumePtrOutput values.
+// You can construct a concrete instance of `AwsNodePoolConfigRootVolumePtrInput` via:
+//
+//          AwsNodePoolConfigRootVolumeArgs{...}
+//
+//  or:
+//
+//          nil
+type AwsNodePoolConfigRootVolumePtrInput interface {
+	pulumi.Input
+
+	ToAwsNodePoolConfigRootVolumePtrOutput() AwsNodePoolConfigRootVolumePtrOutput
+	ToAwsNodePoolConfigRootVolumePtrOutputWithContext(context.Context) AwsNodePoolConfigRootVolumePtrOutput
+}
+
+type awsNodePoolConfigRootVolumePtrType AwsNodePoolConfigRootVolumeArgs
+
+func AwsNodePoolConfigRootVolumePtr(v *AwsNodePoolConfigRootVolumeArgs) AwsNodePoolConfigRootVolumePtrInput {
+	return (*awsNodePoolConfigRootVolumePtrType)(v)
+}
+
+func (*awsNodePoolConfigRootVolumePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsNodePoolConfigRootVolume)(nil)).Elem()
+}
+
+func (i *awsNodePoolConfigRootVolumePtrType) ToAwsNodePoolConfigRootVolumePtrOutput() AwsNodePoolConfigRootVolumePtrOutput {
+	return i.ToAwsNodePoolConfigRootVolumePtrOutputWithContext(context.Background())
+}
+
+func (i *awsNodePoolConfigRootVolumePtrType) ToAwsNodePoolConfigRootVolumePtrOutputWithContext(ctx context.Context) AwsNodePoolConfigRootVolumePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolConfigRootVolumePtrOutput)
+}
+
+type AwsNodePoolConfigRootVolumeOutput struct{ *pulumi.OutputState }
+
+func (AwsNodePoolConfigRootVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsNodePoolConfigRootVolume)(nil)).Elem()
+}
+
+func (o AwsNodePoolConfigRootVolumeOutput) ToAwsNodePoolConfigRootVolumeOutput() AwsNodePoolConfigRootVolumeOutput {
+	return o
+}
+
+func (o AwsNodePoolConfigRootVolumeOutput) ToAwsNodePoolConfigRootVolumeOutputWithContext(ctx context.Context) AwsNodePoolConfigRootVolumeOutput {
+	return o
+}
+
+func (o AwsNodePoolConfigRootVolumeOutput) ToAwsNodePoolConfigRootVolumePtrOutput() AwsNodePoolConfigRootVolumePtrOutput {
+	return o.ToAwsNodePoolConfigRootVolumePtrOutputWithContext(context.Background())
+}
+
+func (o AwsNodePoolConfigRootVolumeOutput) ToAwsNodePoolConfigRootVolumePtrOutputWithContext(ctx context.Context) AwsNodePoolConfigRootVolumePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsNodePoolConfigRootVolume) *AwsNodePoolConfigRootVolume {
+		return &v
+	}).(AwsNodePoolConfigRootVolumePtrOutput)
+}
+
+// Optional. The number of I/O operations per second (IOPS) to provision for GP3 volume.
+func (o AwsNodePoolConfigRootVolumeOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AwsNodePoolConfigRootVolume) *int { return v.Iops }).(pulumi.IntPtrOutput)
+}
+
+// Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+func (o AwsNodePoolConfigRootVolumeOutput) KmsKeyArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsNodePoolConfigRootVolume) *string { return v.KmsKeyArn }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The size of the volume, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+func (o AwsNodePoolConfigRootVolumeOutput) SizeGib() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AwsNodePoolConfigRootVolume) *int { return v.SizeGib }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
+func (o AwsNodePoolConfigRootVolumeOutput) VolumeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsNodePoolConfigRootVolume) *string { return v.VolumeType }).(pulumi.StringPtrOutput)
+}
+
+type AwsNodePoolConfigRootVolumePtrOutput struct{ *pulumi.OutputState }
+
+func (AwsNodePoolConfigRootVolumePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsNodePoolConfigRootVolume)(nil)).Elem()
+}
+
+func (o AwsNodePoolConfigRootVolumePtrOutput) ToAwsNodePoolConfigRootVolumePtrOutput() AwsNodePoolConfigRootVolumePtrOutput {
+	return o
+}
+
+func (o AwsNodePoolConfigRootVolumePtrOutput) ToAwsNodePoolConfigRootVolumePtrOutputWithContext(ctx context.Context) AwsNodePoolConfigRootVolumePtrOutput {
+	return o
+}
+
+func (o AwsNodePoolConfigRootVolumePtrOutput) Elem() AwsNodePoolConfigRootVolumeOutput {
+	return o.ApplyT(func(v *AwsNodePoolConfigRootVolume) AwsNodePoolConfigRootVolume {
+		if v != nil {
+			return *v
+		}
+		var ret AwsNodePoolConfigRootVolume
+		return ret
+	}).(AwsNodePoolConfigRootVolumeOutput)
+}
+
+// Optional. The number of I/O operations per second (IOPS) to provision for GP3 volume.
+func (o AwsNodePoolConfigRootVolumePtrOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AwsNodePoolConfigRootVolume) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Iops
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+func (o AwsNodePoolConfigRootVolumePtrOutput) KmsKeyArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsNodePoolConfigRootVolume) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The size of the volume, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+func (o AwsNodePoolConfigRootVolumePtrOutput) SizeGib() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AwsNodePoolConfigRootVolume) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SizeGib
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
+func (o AwsNodePoolConfigRootVolumePtrOutput) VolumeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsNodePoolConfigRootVolume) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VolumeType
+	}).(pulumi.StringPtrOutput)
+}
+
+type AwsNodePoolConfigSshConfig struct {
+	// Required. The name of the EC2 key pair used to login into cluster machines.
+	Ec2KeyPair string `pulumi:"ec2KeyPair"`
+}
+
+// AwsNodePoolConfigSshConfigInput is an input type that accepts AwsNodePoolConfigSshConfigArgs and AwsNodePoolConfigSshConfigOutput values.
+// You can construct a concrete instance of `AwsNodePoolConfigSshConfigInput` via:
+//
+//          AwsNodePoolConfigSshConfigArgs{...}
+type AwsNodePoolConfigSshConfigInput interface {
+	pulumi.Input
+
+	ToAwsNodePoolConfigSshConfigOutput() AwsNodePoolConfigSshConfigOutput
+	ToAwsNodePoolConfigSshConfigOutputWithContext(context.Context) AwsNodePoolConfigSshConfigOutput
+}
+
+type AwsNodePoolConfigSshConfigArgs struct {
+	// Required. The name of the EC2 key pair used to login into cluster machines.
+	Ec2KeyPair pulumi.StringInput `pulumi:"ec2KeyPair"`
+}
+
+func (AwsNodePoolConfigSshConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsNodePoolConfigSshConfig)(nil)).Elem()
+}
+
+func (i AwsNodePoolConfigSshConfigArgs) ToAwsNodePoolConfigSshConfigOutput() AwsNodePoolConfigSshConfigOutput {
+	return i.ToAwsNodePoolConfigSshConfigOutputWithContext(context.Background())
+}
+
+func (i AwsNodePoolConfigSshConfigArgs) ToAwsNodePoolConfigSshConfigOutputWithContext(ctx context.Context) AwsNodePoolConfigSshConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolConfigSshConfigOutput)
+}
+
+func (i AwsNodePoolConfigSshConfigArgs) ToAwsNodePoolConfigSshConfigPtrOutput() AwsNodePoolConfigSshConfigPtrOutput {
+	return i.ToAwsNodePoolConfigSshConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AwsNodePoolConfigSshConfigArgs) ToAwsNodePoolConfigSshConfigPtrOutputWithContext(ctx context.Context) AwsNodePoolConfigSshConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolConfigSshConfigOutput).ToAwsNodePoolConfigSshConfigPtrOutputWithContext(ctx)
+}
+
+// AwsNodePoolConfigSshConfigPtrInput is an input type that accepts AwsNodePoolConfigSshConfigArgs, AwsNodePoolConfigSshConfigPtr and AwsNodePoolConfigSshConfigPtrOutput values.
+// You can construct a concrete instance of `AwsNodePoolConfigSshConfigPtrInput` via:
+//
+//          AwsNodePoolConfigSshConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type AwsNodePoolConfigSshConfigPtrInput interface {
+	pulumi.Input
+
+	ToAwsNodePoolConfigSshConfigPtrOutput() AwsNodePoolConfigSshConfigPtrOutput
+	ToAwsNodePoolConfigSshConfigPtrOutputWithContext(context.Context) AwsNodePoolConfigSshConfigPtrOutput
+}
+
+type awsNodePoolConfigSshConfigPtrType AwsNodePoolConfigSshConfigArgs
+
+func AwsNodePoolConfigSshConfigPtr(v *AwsNodePoolConfigSshConfigArgs) AwsNodePoolConfigSshConfigPtrInput {
+	return (*awsNodePoolConfigSshConfigPtrType)(v)
+}
+
+func (*awsNodePoolConfigSshConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsNodePoolConfigSshConfig)(nil)).Elem()
+}
+
+func (i *awsNodePoolConfigSshConfigPtrType) ToAwsNodePoolConfigSshConfigPtrOutput() AwsNodePoolConfigSshConfigPtrOutput {
+	return i.ToAwsNodePoolConfigSshConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *awsNodePoolConfigSshConfigPtrType) ToAwsNodePoolConfigSshConfigPtrOutputWithContext(ctx context.Context) AwsNodePoolConfigSshConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolConfigSshConfigPtrOutput)
+}
+
+type AwsNodePoolConfigSshConfigOutput struct{ *pulumi.OutputState }
+
+func (AwsNodePoolConfigSshConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsNodePoolConfigSshConfig)(nil)).Elem()
+}
+
+func (o AwsNodePoolConfigSshConfigOutput) ToAwsNodePoolConfigSshConfigOutput() AwsNodePoolConfigSshConfigOutput {
+	return o
+}
+
+func (o AwsNodePoolConfigSshConfigOutput) ToAwsNodePoolConfigSshConfigOutputWithContext(ctx context.Context) AwsNodePoolConfigSshConfigOutput {
+	return o
+}
+
+func (o AwsNodePoolConfigSshConfigOutput) ToAwsNodePoolConfigSshConfigPtrOutput() AwsNodePoolConfigSshConfigPtrOutput {
+	return o.ToAwsNodePoolConfigSshConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AwsNodePoolConfigSshConfigOutput) ToAwsNodePoolConfigSshConfigPtrOutputWithContext(ctx context.Context) AwsNodePoolConfigSshConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsNodePoolConfigSshConfig) *AwsNodePoolConfigSshConfig {
+		return &v
+	}).(AwsNodePoolConfigSshConfigPtrOutput)
+}
+
+// Required. The name of the EC2 key pair used to login into cluster machines.
+func (o AwsNodePoolConfigSshConfigOutput) Ec2KeyPair() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsNodePoolConfigSshConfig) string { return v.Ec2KeyPair }).(pulumi.StringOutput)
+}
+
+type AwsNodePoolConfigSshConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsNodePoolConfigSshConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsNodePoolConfigSshConfig)(nil)).Elem()
+}
+
+func (o AwsNodePoolConfigSshConfigPtrOutput) ToAwsNodePoolConfigSshConfigPtrOutput() AwsNodePoolConfigSshConfigPtrOutput {
+	return o
+}
+
+func (o AwsNodePoolConfigSshConfigPtrOutput) ToAwsNodePoolConfigSshConfigPtrOutputWithContext(ctx context.Context) AwsNodePoolConfigSshConfigPtrOutput {
+	return o
+}
+
+func (o AwsNodePoolConfigSshConfigPtrOutput) Elem() AwsNodePoolConfigSshConfigOutput {
+	return o.ApplyT(func(v *AwsNodePoolConfigSshConfig) AwsNodePoolConfigSshConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AwsNodePoolConfigSshConfig
+		return ret
+	}).(AwsNodePoolConfigSshConfigOutput)
+}
+
+// Required. The name of the EC2 key pair used to login into cluster machines.
+func (o AwsNodePoolConfigSshConfigPtrOutput) Ec2KeyPair() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsNodePoolConfigSshConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Ec2KeyPair
+	}).(pulumi.StringPtrOutput)
+}
+
+type AwsNodePoolConfigTaint struct {
+	// Required. The taint effect. Possible values: EFFECT_UNSPECIFIED, NO_SCHEDULE, PREFER_NO_SCHEDULE, NO_EXECUTE
+	Effect string `pulumi:"effect"`
+	// Required. Key for the taint.
+	Key string `pulumi:"key"`
+	// Required. Value for the taint.
+	Value string `pulumi:"value"`
+}
+
+// AwsNodePoolConfigTaintInput is an input type that accepts AwsNodePoolConfigTaintArgs and AwsNodePoolConfigTaintOutput values.
+// You can construct a concrete instance of `AwsNodePoolConfigTaintInput` via:
+//
+//          AwsNodePoolConfigTaintArgs{...}
+type AwsNodePoolConfigTaintInput interface {
+	pulumi.Input
+
+	ToAwsNodePoolConfigTaintOutput() AwsNodePoolConfigTaintOutput
+	ToAwsNodePoolConfigTaintOutputWithContext(context.Context) AwsNodePoolConfigTaintOutput
+}
+
+type AwsNodePoolConfigTaintArgs struct {
+	// Required. The taint effect. Possible values: EFFECT_UNSPECIFIED, NO_SCHEDULE, PREFER_NO_SCHEDULE, NO_EXECUTE
+	Effect pulumi.StringInput `pulumi:"effect"`
+	// Required. Key for the taint.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Required. Value for the taint.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (AwsNodePoolConfigTaintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsNodePoolConfigTaint)(nil)).Elem()
+}
+
+func (i AwsNodePoolConfigTaintArgs) ToAwsNodePoolConfigTaintOutput() AwsNodePoolConfigTaintOutput {
+	return i.ToAwsNodePoolConfigTaintOutputWithContext(context.Background())
+}
+
+func (i AwsNodePoolConfigTaintArgs) ToAwsNodePoolConfigTaintOutputWithContext(ctx context.Context) AwsNodePoolConfigTaintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolConfigTaintOutput)
+}
+
+// AwsNodePoolConfigTaintArrayInput is an input type that accepts AwsNodePoolConfigTaintArray and AwsNodePoolConfigTaintArrayOutput values.
+// You can construct a concrete instance of `AwsNodePoolConfigTaintArrayInput` via:
+//
+//          AwsNodePoolConfigTaintArray{ AwsNodePoolConfigTaintArgs{...} }
+type AwsNodePoolConfigTaintArrayInput interface {
+	pulumi.Input
+
+	ToAwsNodePoolConfigTaintArrayOutput() AwsNodePoolConfigTaintArrayOutput
+	ToAwsNodePoolConfigTaintArrayOutputWithContext(context.Context) AwsNodePoolConfigTaintArrayOutput
+}
+
+type AwsNodePoolConfigTaintArray []AwsNodePoolConfigTaintInput
+
+func (AwsNodePoolConfigTaintArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AwsNodePoolConfigTaint)(nil)).Elem()
+}
+
+func (i AwsNodePoolConfigTaintArray) ToAwsNodePoolConfigTaintArrayOutput() AwsNodePoolConfigTaintArrayOutput {
+	return i.ToAwsNodePoolConfigTaintArrayOutputWithContext(context.Background())
+}
+
+func (i AwsNodePoolConfigTaintArray) ToAwsNodePoolConfigTaintArrayOutputWithContext(ctx context.Context) AwsNodePoolConfigTaintArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolConfigTaintArrayOutput)
+}
+
+type AwsNodePoolConfigTaintOutput struct{ *pulumi.OutputState }
+
+func (AwsNodePoolConfigTaintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsNodePoolConfigTaint)(nil)).Elem()
+}
+
+func (o AwsNodePoolConfigTaintOutput) ToAwsNodePoolConfigTaintOutput() AwsNodePoolConfigTaintOutput {
+	return o
+}
+
+func (o AwsNodePoolConfigTaintOutput) ToAwsNodePoolConfigTaintOutputWithContext(ctx context.Context) AwsNodePoolConfigTaintOutput {
+	return o
+}
+
+// Required. The taint effect. Possible values: EFFECT_UNSPECIFIED, NO_SCHEDULE, PREFER_NO_SCHEDULE, NO_EXECUTE
+func (o AwsNodePoolConfigTaintOutput) Effect() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsNodePoolConfigTaint) string { return v.Effect }).(pulumi.StringOutput)
+}
+
+// Required. Key for the taint.
+func (o AwsNodePoolConfigTaintOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsNodePoolConfigTaint) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Required. Value for the taint.
+func (o AwsNodePoolConfigTaintOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsNodePoolConfigTaint) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type AwsNodePoolConfigTaintArrayOutput struct{ *pulumi.OutputState }
+
+func (AwsNodePoolConfigTaintArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AwsNodePoolConfigTaint)(nil)).Elem()
+}
+
+func (o AwsNodePoolConfigTaintArrayOutput) ToAwsNodePoolConfigTaintArrayOutput() AwsNodePoolConfigTaintArrayOutput {
+	return o
+}
+
+func (o AwsNodePoolConfigTaintArrayOutput) ToAwsNodePoolConfigTaintArrayOutputWithContext(ctx context.Context) AwsNodePoolConfigTaintArrayOutput {
+	return o
+}
+
+func (o AwsNodePoolConfigTaintArrayOutput) Index(i pulumi.IntInput) AwsNodePoolConfigTaintOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AwsNodePoolConfigTaint {
+		return vs[0].([]AwsNodePoolConfigTaint)[vs[1].(int)]
+	}).(AwsNodePoolConfigTaintOutput)
+}
+
+type AwsNodePoolMaxPodsConstraint struct {
+	// Required. The maximum number of pods to schedule on a single node.
+	MaxPodsPerNode int `pulumi:"maxPodsPerNode"`
+}
+
+// AwsNodePoolMaxPodsConstraintInput is an input type that accepts AwsNodePoolMaxPodsConstraintArgs and AwsNodePoolMaxPodsConstraintOutput values.
+// You can construct a concrete instance of `AwsNodePoolMaxPodsConstraintInput` via:
+//
+//          AwsNodePoolMaxPodsConstraintArgs{...}
+type AwsNodePoolMaxPodsConstraintInput interface {
+	pulumi.Input
+
+	ToAwsNodePoolMaxPodsConstraintOutput() AwsNodePoolMaxPodsConstraintOutput
+	ToAwsNodePoolMaxPodsConstraintOutputWithContext(context.Context) AwsNodePoolMaxPodsConstraintOutput
+}
+
+type AwsNodePoolMaxPodsConstraintArgs struct {
+	// Required. The maximum number of pods to schedule on a single node.
+	MaxPodsPerNode pulumi.IntInput `pulumi:"maxPodsPerNode"`
+}
+
+func (AwsNodePoolMaxPodsConstraintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsNodePoolMaxPodsConstraint)(nil)).Elem()
+}
+
+func (i AwsNodePoolMaxPodsConstraintArgs) ToAwsNodePoolMaxPodsConstraintOutput() AwsNodePoolMaxPodsConstraintOutput {
+	return i.ToAwsNodePoolMaxPodsConstraintOutputWithContext(context.Background())
+}
+
+func (i AwsNodePoolMaxPodsConstraintArgs) ToAwsNodePoolMaxPodsConstraintOutputWithContext(ctx context.Context) AwsNodePoolMaxPodsConstraintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolMaxPodsConstraintOutput)
+}
+
+func (i AwsNodePoolMaxPodsConstraintArgs) ToAwsNodePoolMaxPodsConstraintPtrOutput() AwsNodePoolMaxPodsConstraintPtrOutput {
+	return i.ToAwsNodePoolMaxPodsConstraintPtrOutputWithContext(context.Background())
+}
+
+func (i AwsNodePoolMaxPodsConstraintArgs) ToAwsNodePoolMaxPodsConstraintPtrOutputWithContext(ctx context.Context) AwsNodePoolMaxPodsConstraintPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolMaxPodsConstraintOutput).ToAwsNodePoolMaxPodsConstraintPtrOutputWithContext(ctx)
+}
+
+// AwsNodePoolMaxPodsConstraintPtrInput is an input type that accepts AwsNodePoolMaxPodsConstraintArgs, AwsNodePoolMaxPodsConstraintPtr and AwsNodePoolMaxPodsConstraintPtrOutput values.
+// You can construct a concrete instance of `AwsNodePoolMaxPodsConstraintPtrInput` via:
+//
+//          AwsNodePoolMaxPodsConstraintArgs{...}
+//
+//  or:
+//
+//          nil
+type AwsNodePoolMaxPodsConstraintPtrInput interface {
+	pulumi.Input
+
+	ToAwsNodePoolMaxPodsConstraintPtrOutput() AwsNodePoolMaxPodsConstraintPtrOutput
+	ToAwsNodePoolMaxPodsConstraintPtrOutputWithContext(context.Context) AwsNodePoolMaxPodsConstraintPtrOutput
+}
+
+type awsNodePoolMaxPodsConstraintPtrType AwsNodePoolMaxPodsConstraintArgs
+
+func AwsNodePoolMaxPodsConstraintPtr(v *AwsNodePoolMaxPodsConstraintArgs) AwsNodePoolMaxPodsConstraintPtrInput {
+	return (*awsNodePoolMaxPodsConstraintPtrType)(v)
+}
+
+func (*awsNodePoolMaxPodsConstraintPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsNodePoolMaxPodsConstraint)(nil)).Elem()
+}
+
+func (i *awsNodePoolMaxPodsConstraintPtrType) ToAwsNodePoolMaxPodsConstraintPtrOutput() AwsNodePoolMaxPodsConstraintPtrOutput {
+	return i.ToAwsNodePoolMaxPodsConstraintPtrOutputWithContext(context.Background())
+}
+
+func (i *awsNodePoolMaxPodsConstraintPtrType) ToAwsNodePoolMaxPodsConstraintPtrOutputWithContext(ctx context.Context) AwsNodePoolMaxPodsConstraintPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolMaxPodsConstraintPtrOutput)
+}
+
+type AwsNodePoolMaxPodsConstraintOutput struct{ *pulumi.OutputState }
+
+func (AwsNodePoolMaxPodsConstraintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsNodePoolMaxPodsConstraint)(nil)).Elem()
+}
+
+func (o AwsNodePoolMaxPodsConstraintOutput) ToAwsNodePoolMaxPodsConstraintOutput() AwsNodePoolMaxPodsConstraintOutput {
+	return o
+}
+
+func (o AwsNodePoolMaxPodsConstraintOutput) ToAwsNodePoolMaxPodsConstraintOutputWithContext(ctx context.Context) AwsNodePoolMaxPodsConstraintOutput {
+	return o
+}
+
+func (o AwsNodePoolMaxPodsConstraintOutput) ToAwsNodePoolMaxPodsConstraintPtrOutput() AwsNodePoolMaxPodsConstraintPtrOutput {
+	return o.ToAwsNodePoolMaxPodsConstraintPtrOutputWithContext(context.Background())
+}
+
+func (o AwsNodePoolMaxPodsConstraintOutput) ToAwsNodePoolMaxPodsConstraintPtrOutputWithContext(ctx context.Context) AwsNodePoolMaxPodsConstraintPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsNodePoolMaxPodsConstraint) *AwsNodePoolMaxPodsConstraint {
+		return &v
+	}).(AwsNodePoolMaxPodsConstraintPtrOutput)
+}
+
+// Required. The maximum number of pods to schedule on a single node.
+func (o AwsNodePoolMaxPodsConstraintOutput) MaxPodsPerNode() pulumi.IntOutput {
+	return o.ApplyT(func(v AwsNodePoolMaxPodsConstraint) int { return v.MaxPodsPerNode }).(pulumi.IntOutput)
+}
+
+type AwsNodePoolMaxPodsConstraintPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsNodePoolMaxPodsConstraintPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsNodePoolMaxPodsConstraint)(nil)).Elem()
+}
+
+func (o AwsNodePoolMaxPodsConstraintPtrOutput) ToAwsNodePoolMaxPodsConstraintPtrOutput() AwsNodePoolMaxPodsConstraintPtrOutput {
+	return o
+}
+
+func (o AwsNodePoolMaxPodsConstraintPtrOutput) ToAwsNodePoolMaxPodsConstraintPtrOutputWithContext(ctx context.Context) AwsNodePoolMaxPodsConstraintPtrOutput {
+	return o
+}
+
+func (o AwsNodePoolMaxPodsConstraintPtrOutput) Elem() AwsNodePoolMaxPodsConstraintOutput {
+	return o.ApplyT(func(v *AwsNodePoolMaxPodsConstraint) AwsNodePoolMaxPodsConstraint {
+		if v != nil {
+			return *v
+		}
+		var ret AwsNodePoolMaxPodsConstraint
+		return ret
+	}).(AwsNodePoolMaxPodsConstraintOutput)
+}
+
+// Required. The maximum number of pods to schedule on a single node.
+func (o AwsNodePoolMaxPodsConstraintPtrOutput) MaxPodsPerNode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AwsNodePoolMaxPodsConstraint) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxPodsPerNode
+	}).(pulumi.IntPtrOutput)
+}
+
+type AzureClusterAuthorization struct {
+	// Required. Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+	AdminUsers []AzureClusterAuthorizationAdminUser `pulumi:"adminUsers"`
+}
+
+// AzureClusterAuthorizationInput is an input type that accepts AzureClusterAuthorizationArgs and AzureClusterAuthorizationOutput values.
+// You can construct a concrete instance of `AzureClusterAuthorizationInput` via:
+//
+//          AzureClusterAuthorizationArgs{...}
+type AzureClusterAuthorizationInput interface {
+	pulumi.Input
+
+	ToAzureClusterAuthorizationOutput() AzureClusterAuthorizationOutput
+	ToAzureClusterAuthorizationOutputWithContext(context.Context) AzureClusterAuthorizationOutput
+}
+
+type AzureClusterAuthorizationArgs struct {
+	// Required. Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+	AdminUsers AzureClusterAuthorizationAdminUserArrayInput `pulumi:"adminUsers"`
+}
+
+func (AzureClusterAuthorizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureClusterAuthorization)(nil)).Elem()
+}
+
+func (i AzureClusterAuthorizationArgs) ToAzureClusterAuthorizationOutput() AzureClusterAuthorizationOutput {
+	return i.ToAzureClusterAuthorizationOutputWithContext(context.Background())
+}
+
+func (i AzureClusterAuthorizationArgs) ToAzureClusterAuthorizationOutputWithContext(ctx context.Context) AzureClusterAuthorizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterAuthorizationOutput)
+}
+
+func (i AzureClusterAuthorizationArgs) ToAzureClusterAuthorizationPtrOutput() AzureClusterAuthorizationPtrOutput {
+	return i.ToAzureClusterAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (i AzureClusterAuthorizationArgs) ToAzureClusterAuthorizationPtrOutputWithContext(ctx context.Context) AzureClusterAuthorizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterAuthorizationOutput).ToAzureClusterAuthorizationPtrOutputWithContext(ctx)
+}
+
+// AzureClusterAuthorizationPtrInput is an input type that accepts AzureClusterAuthorizationArgs, AzureClusterAuthorizationPtr and AzureClusterAuthorizationPtrOutput values.
+// You can construct a concrete instance of `AzureClusterAuthorizationPtrInput` via:
+//
+//          AzureClusterAuthorizationArgs{...}
+//
+//  or:
+//
+//          nil
+type AzureClusterAuthorizationPtrInput interface {
+	pulumi.Input
+
+	ToAzureClusterAuthorizationPtrOutput() AzureClusterAuthorizationPtrOutput
+	ToAzureClusterAuthorizationPtrOutputWithContext(context.Context) AzureClusterAuthorizationPtrOutput
+}
+
+type azureClusterAuthorizationPtrType AzureClusterAuthorizationArgs
+
+func AzureClusterAuthorizationPtr(v *AzureClusterAuthorizationArgs) AzureClusterAuthorizationPtrInput {
+	return (*azureClusterAuthorizationPtrType)(v)
+}
+
+func (*azureClusterAuthorizationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureClusterAuthorization)(nil)).Elem()
+}
+
+func (i *azureClusterAuthorizationPtrType) ToAzureClusterAuthorizationPtrOutput() AzureClusterAuthorizationPtrOutput {
+	return i.ToAzureClusterAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (i *azureClusterAuthorizationPtrType) ToAzureClusterAuthorizationPtrOutputWithContext(ctx context.Context) AzureClusterAuthorizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterAuthorizationPtrOutput)
+}
+
+type AzureClusterAuthorizationOutput struct{ *pulumi.OutputState }
+
+func (AzureClusterAuthorizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureClusterAuthorization)(nil)).Elem()
+}
+
+func (o AzureClusterAuthorizationOutput) ToAzureClusterAuthorizationOutput() AzureClusterAuthorizationOutput {
+	return o
+}
+
+func (o AzureClusterAuthorizationOutput) ToAzureClusterAuthorizationOutputWithContext(ctx context.Context) AzureClusterAuthorizationOutput {
+	return o
+}
+
+func (o AzureClusterAuthorizationOutput) ToAzureClusterAuthorizationPtrOutput() AzureClusterAuthorizationPtrOutput {
+	return o.ToAzureClusterAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (o AzureClusterAuthorizationOutput) ToAzureClusterAuthorizationPtrOutputWithContext(ctx context.Context) AzureClusterAuthorizationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureClusterAuthorization) *AzureClusterAuthorization {
+		return &v
+	}).(AzureClusterAuthorizationPtrOutput)
+}
+
+// Required. Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+func (o AzureClusterAuthorizationOutput) AdminUsers() AzureClusterAuthorizationAdminUserArrayOutput {
+	return o.ApplyT(func(v AzureClusterAuthorization) []AzureClusterAuthorizationAdminUser { return v.AdminUsers }).(AzureClusterAuthorizationAdminUserArrayOutput)
+}
+
+type AzureClusterAuthorizationPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureClusterAuthorizationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureClusterAuthorization)(nil)).Elem()
+}
+
+func (o AzureClusterAuthorizationPtrOutput) ToAzureClusterAuthorizationPtrOutput() AzureClusterAuthorizationPtrOutput {
+	return o
+}
+
+func (o AzureClusterAuthorizationPtrOutput) ToAzureClusterAuthorizationPtrOutputWithContext(ctx context.Context) AzureClusterAuthorizationPtrOutput {
+	return o
+}
+
+func (o AzureClusterAuthorizationPtrOutput) Elem() AzureClusterAuthorizationOutput {
+	return o.ApplyT(func(v *AzureClusterAuthorization) AzureClusterAuthorization {
+		if v != nil {
+			return *v
+		}
+		var ret AzureClusterAuthorization
+		return ret
+	}).(AzureClusterAuthorizationOutput)
+}
+
+// Required. Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+func (o AzureClusterAuthorizationPtrOutput) AdminUsers() AzureClusterAuthorizationAdminUserArrayOutput {
+	return o.ApplyT(func(v *AzureClusterAuthorization) []AzureClusterAuthorizationAdminUser {
+		if v == nil {
+			return nil
+		}
+		return v.AdminUsers
+	}).(AzureClusterAuthorizationAdminUserArrayOutput)
+}
+
+type AzureClusterAuthorizationAdminUser struct {
+	// Required. The name of the user, e.g. `my-gcp-id@gmail.com`.
+	Username string `pulumi:"username"`
+}
+
+// AzureClusterAuthorizationAdminUserInput is an input type that accepts AzureClusterAuthorizationAdminUserArgs and AzureClusterAuthorizationAdminUserOutput values.
+// You can construct a concrete instance of `AzureClusterAuthorizationAdminUserInput` via:
+//
+//          AzureClusterAuthorizationAdminUserArgs{...}
+type AzureClusterAuthorizationAdminUserInput interface {
+	pulumi.Input
+
+	ToAzureClusterAuthorizationAdminUserOutput() AzureClusterAuthorizationAdminUserOutput
+	ToAzureClusterAuthorizationAdminUserOutputWithContext(context.Context) AzureClusterAuthorizationAdminUserOutput
+}
+
+type AzureClusterAuthorizationAdminUserArgs struct {
+	// Required. The name of the user, e.g. `my-gcp-id@gmail.com`.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (AzureClusterAuthorizationAdminUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureClusterAuthorizationAdminUser)(nil)).Elem()
+}
+
+func (i AzureClusterAuthorizationAdminUserArgs) ToAzureClusterAuthorizationAdminUserOutput() AzureClusterAuthorizationAdminUserOutput {
+	return i.ToAzureClusterAuthorizationAdminUserOutputWithContext(context.Background())
+}
+
+func (i AzureClusterAuthorizationAdminUserArgs) ToAzureClusterAuthorizationAdminUserOutputWithContext(ctx context.Context) AzureClusterAuthorizationAdminUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterAuthorizationAdminUserOutput)
+}
+
+// AzureClusterAuthorizationAdminUserArrayInput is an input type that accepts AzureClusterAuthorizationAdminUserArray and AzureClusterAuthorizationAdminUserArrayOutput values.
+// You can construct a concrete instance of `AzureClusterAuthorizationAdminUserArrayInput` via:
+//
+//          AzureClusterAuthorizationAdminUserArray{ AzureClusterAuthorizationAdminUserArgs{...} }
+type AzureClusterAuthorizationAdminUserArrayInput interface {
+	pulumi.Input
+
+	ToAzureClusterAuthorizationAdminUserArrayOutput() AzureClusterAuthorizationAdminUserArrayOutput
+	ToAzureClusterAuthorizationAdminUserArrayOutputWithContext(context.Context) AzureClusterAuthorizationAdminUserArrayOutput
+}
+
+type AzureClusterAuthorizationAdminUserArray []AzureClusterAuthorizationAdminUserInput
+
+func (AzureClusterAuthorizationAdminUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AzureClusterAuthorizationAdminUser)(nil)).Elem()
+}
+
+func (i AzureClusterAuthorizationAdminUserArray) ToAzureClusterAuthorizationAdminUserArrayOutput() AzureClusterAuthorizationAdminUserArrayOutput {
+	return i.ToAzureClusterAuthorizationAdminUserArrayOutputWithContext(context.Background())
+}
+
+func (i AzureClusterAuthorizationAdminUserArray) ToAzureClusterAuthorizationAdminUserArrayOutputWithContext(ctx context.Context) AzureClusterAuthorizationAdminUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterAuthorizationAdminUserArrayOutput)
+}
+
+type AzureClusterAuthorizationAdminUserOutput struct{ *pulumi.OutputState }
+
+func (AzureClusterAuthorizationAdminUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureClusterAuthorizationAdminUser)(nil)).Elem()
+}
+
+func (o AzureClusterAuthorizationAdminUserOutput) ToAzureClusterAuthorizationAdminUserOutput() AzureClusterAuthorizationAdminUserOutput {
+	return o
+}
+
+func (o AzureClusterAuthorizationAdminUserOutput) ToAzureClusterAuthorizationAdminUserOutputWithContext(ctx context.Context) AzureClusterAuthorizationAdminUserOutput {
+	return o
+}
+
+// Required. The name of the user, e.g. `my-gcp-id@gmail.com`.
+func (o AzureClusterAuthorizationAdminUserOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureClusterAuthorizationAdminUser) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type AzureClusterAuthorizationAdminUserArrayOutput struct{ *pulumi.OutputState }
+
+func (AzureClusterAuthorizationAdminUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AzureClusterAuthorizationAdminUser)(nil)).Elem()
+}
+
+func (o AzureClusterAuthorizationAdminUserArrayOutput) ToAzureClusterAuthorizationAdminUserArrayOutput() AzureClusterAuthorizationAdminUserArrayOutput {
+	return o
+}
+
+func (o AzureClusterAuthorizationAdminUserArrayOutput) ToAzureClusterAuthorizationAdminUserArrayOutputWithContext(ctx context.Context) AzureClusterAuthorizationAdminUserArrayOutput {
+	return o
+}
+
+func (o AzureClusterAuthorizationAdminUserArrayOutput) Index(i pulumi.IntInput) AzureClusterAuthorizationAdminUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AzureClusterAuthorizationAdminUser {
+		return vs[0].([]AzureClusterAuthorizationAdminUser)[vs[1].(int)]
+	}).(AzureClusterAuthorizationAdminUserOutput)
+}
+
+type AzureClusterControlPlane struct {
+	// Optional. Configuration related to application-layer secrets encryption.
+	DatabaseEncryption *AzureClusterControlPlaneDatabaseEncryption `pulumi:"databaseEncryption"`
+	// Optional. Configuration related to the main volume provisioned for each control plane replica. The main volume is in charge of storing all of the cluster's etcd state. When unspecified, it defaults to a 8-GiB Azure Disk.
+	MainVolume *AzureClusterControlPlaneMainVolume `pulumi:"mainVolume"`
+	// Proxy configuration for outbound HTTP(S) traffic.
+	ProxyConfig *AzureClusterControlPlaneProxyConfig `pulumi:"proxyConfig"`
+	// Configuration for where to place the control plane replicas. Up to three replica placement instances can be specified. If replicaPlacements is set, the replica placement instances will be applied to the three control plane replicas as evenly as possible.
+	ReplicaPlacements []AzureClusterControlPlaneReplicaPlacement `pulumi:"replicaPlacements"`
+	// Optional. Configuration related to the root volume provisioned for each control plane replica. When unspecified, it defaults to 32-GiB Azure Disk.
+	RootVolume *AzureClusterControlPlaneRootVolume `pulumi:"rootVolume"`
+	// Required. SSH configuration for how to access the underlying control plane machines.
+	SshConfig AzureClusterControlPlaneSshConfig `pulumi:"sshConfig"`
+	// For a given replica, the ARM ID of the subnet where the control plane VM is deployed. Make sure it's a subnet under the virtual network in the cluster configuration.
+	SubnetId string `pulumi:"subnetId"`
+	// Optional. A set of tags to apply to all underlying control plane Azure resources.
+	Tags map[string]string `pulumi:"tags"`
+	// Required. The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAzureServerConfig.
+	Version string `pulumi:"version"`
+	// Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions. When unspecified, it defaults to `Standard_DS2_v2`.
+	VmSize *string `pulumi:"vmSize"`
+}
+
+// AzureClusterControlPlaneInput is an input type that accepts AzureClusterControlPlaneArgs and AzureClusterControlPlaneOutput values.
+// You can construct a concrete instance of `AzureClusterControlPlaneInput` via:
+//
+//          AzureClusterControlPlaneArgs{...}
+type AzureClusterControlPlaneInput interface {
+	pulumi.Input
+
+	ToAzureClusterControlPlaneOutput() AzureClusterControlPlaneOutput
+	ToAzureClusterControlPlaneOutputWithContext(context.Context) AzureClusterControlPlaneOutput
+}
+
+type AzureClusterControlPlaneArgs struct {
+	// Optional. Configuration related to application-layer secrets encryption.
+	DatabaseEncryption AzureClusterControlPlaneDatabaseEncryptionPtrInput `pulumi:"databaseEncryption"`
+	// Optional. Configuration related to the main volume provisioned for each control plane replica. The main volume is in charge of storing all of the cluster's etcd state. When unspecified, it defaults to a 8-GiB Azure Disk.
+	MainVolume AzureClusterControlPlaneMainVolumePtrInput `pulumi:"mainVolume"`
+	// Proxy configuration for outbound HTTP(S) traffic.
+	ProxyConfig AzureClusterControlPlaneProxyConfigPtrInput `pulumi:"proxyConfig"`
+	// Configuration for where to place the control plane replicas. Up to three replica placement instances can be specified. If replicaPlacements is set, the replica placement instances will be applied to the three control plane replicas as evenly as possible.
+	ReplicaPlacements AzureClusterControlPlaneReplicaPlacementArrayInput `pulumi:"replicaPlacements"`
+	// Optional. Configuration related to the root volume provisioned for each control plane replica. When unspecified, it defaults to 32-GiB Azure Disk.
+	RootVolume AzureClusterControlPlaneRootVolumePtrInput `pulumi:"rootVolume"`
+	// Required. SSH configuration for how to access the underlying control plane machines.
+	SshConfig AzureClusterControlPlaneSshConfigInput `pulumi:"sshConfig"`
+	// For a given replica, the ARM ID of the subnet where the control plane VM is deployed. Make sure it's a subnet under the virtual network in the cluster configuration.
+	SubnetId pulumi.StringInput `pulumi:"subnetId"`
+	// Optional. A set of tags to apply to all underlying control plane Azure resources.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Required. The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAzureServerConfig.
+	Version pulumi.StringInput `pulumi:"version"`
+	// Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions. When unspecified, it defaults to `Standard_DS2_v2`.
+	VmSize pulumi.StringPtrInput `pulumi:"vmSize"`
+}
+
+func (AzureClusterControlPlaneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureClusterControlPlane)(nil)).Elem()
+}
+
+func (i AzureClusterControlPlaneArgs) ToAzureClusterControlPlaneOutput() AzureClusterControlPlaneOutput {
+	return i.ToAzureClusterControlPlaneOutputWithContext(context.Background())
+}
+
+func (i AzureClusterControlPlaneArgs) ToAzureClusterControlPlaneOutputWithContext(ctx context.Context) AzureClusterControlPlaneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterControlPlaneOutput)
+}
+
+func (i AzureClusterControlPlaneArgs) ToAzureClusterControlPlanePtrOutput() AzureClusterControlPlanePtrOutput {
+	return i.ToAzureClusterControlPlanePtrOutputWithContext(context.Background())
+}
+
+func (i AzureClusterControlPlaneArgs) ToAzureClusterControlPlanePtrOutputWithContext(ctx context.Context) AzureClusterControlPlanePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterControlPlaneOutput).ToAzureClusterControlPlanePtrOutputWithContext(ctx)
+}
+
+// AzureClusterControlPlanePtrInput is an input type that accepts AzureClusterControlPlaneArgs, AzureClusterControlPlanePtr and AzureClusterControlPlanePtrOutput values.
+// You can construct a concrete instance of `AzureClusterControlPlanePtrInput` via:
+//
+//          AzureClusterControlPlaneArgs{...}
+//
+//  or:
+//
+//          nil
+type AzureClusterControlPlanePtrInput interface {
+	pulumi.Input
+
+	ToAzureClusterControlPlanePtrOutput() AzureClusterControlPlanePtrOutput
+	ToAzureClusterControlPlanePtrOutputWithContext(context.Context) AzureClusterControlPlanePtrOutput
+}
+
+type azureClusterControlPlanePtrType AzureClusterControlPlaneArgs
+
+func AzureClusterControlPlanePtr(v *AzureClusterControlPlaneArgs) AzureClusterControlPlanePtrInput {
+	return (*azureClusterControlPlanePtrType)(v)
+}
+
+func (*azureClusterControlPlanePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureClusterControlPlane)(nil)).Elem()
+}
+
+func (i *azureClusterControlPlanePtrType) ToAzureClusterControlPlanePtrOutput() AzureClusterControlPlanePtrOutput {
+	return i.ToAzureClusterControlPlanePtrOutputWithContext(context.Background())
+}
+
+func (i *azureClusterControlPlanePtrType) ToAzureClusterControlPlanePtrOutputWithContext(ctx context.Context) AzureClusterControlPlanePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterControlPlanePtrOutput)
+}
+
+type AzureClusterControlPlaneOutput struct{ *pulumi.OutputState }
+
+func (AzureClusterControlPlaneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureClusterControlPlane)(nil)).Elem()
+}
+
+func (o AzureClusterControlPlaneOutput) ToAzureClusterControlPlaneOutput() AzureClusterControlPlaneOutput {
+	return o
+}
+
+func (o AzureClusterControlPlaneOutput) ToAzureClusterControlPlaneOutputWithContext(ctx context.Context) AzureClusterControlPlaneOutput {
+	return o
+}
+
+func (o AzureClusterControlPlaneOutput) ToAzureClusterControlPlanePtrOutput() AzureClusterControlPlanePtrOutput {
+	return o.ToAzureClusterControlPlanePtrOutputWithContext(context.Background())
+}
+
+func (o AzureClusterControlPlaneOutput) ToAzureClusterControlPlanePtrOutputWithContext(ctx context.Context) AzureClusterControlPlanePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureClusterControlPlane) *AzureClusterControlPlane {
+		return &v
+	}).(AzureClusterControlPlanePtrOutput)
+}
+
+// Optional. Configuration related to application-layer secrets encryption.
+func (o AzureClusterControlPlaneOutput) DatabaseEncryption() AzureClusterControlPlaneDatabaseEncryptionPtrOutput {
+	return o.ApplyT(func(v AzureClusterControlPlane) *AzureClusterControlPlaneDatabaseEncryption {
+		return v.DatabaseEncryption
+	}).(AzureClusterControlPlaneDatabaseEncryptionPtrOutput)
+}
+
+// Optional. Configuration related to the main volume provisioned for each control plane replica. The main volume is in charge of storing all of the cluster's etcd state. When unspecified, it defaults to a 8-GiB Azure Disk.
+func (o AzureClusterControlPlaneOutput) MainVolume() AzureClusterControlPlaneMainVolumePtrOutput {
+	return o.ApplyT(func(v AzureClusterControlPlane) *AzureClusterControlPlaneMainVolume { return v.MainVolume }).(AzureClusterControlPlaneMainVolumePtrOutput)
+}
+
+// Proxy configuration for outbound HTTP(S) traffic.
+func (o AzureClusterControlPlaneOutput) ProxyConfig() AzureClusterControlPlaneProxyConfigPtrOutput {
+	return o.ApplyT(func(v AzureClusterControlPlane) *AzureClusterControlPlaneProxyConfig { return v.ProxyConfig }).(AzureClusterControlPlaneProxyConfigPtrOutput)
+}
+
+// Configuration for where to place the control plane replicas. Up to three replica placement instances can be specified. If replicaPlacements is set, the replica placement instances will be applied to the three control plane replicas as evenly as possible.
+func (o AzureClusterControlPlaneOutput) ReplicaPlacements() AzureClusterControlPlaneReplicaPlacementArrayOutput {
+	return o.ApplyT(func(v AzureClusterControlPlane) []AzureClusterControlPlaneReplicaPlacement {
+		return v.ReplicaPlacements
+	}).(AzureClusterControlPlaneReplicaPlacementArrayOutput)
+}
+
+// Optional. Configuration related to the root volume provisioned for each control plane replica. When unspecified, it defaults to 32-GiB Azure Disk.
+func (o AzureClusterControlPlaneOutput) RootVolume() AzureClusterControlPlaneRootVolumePtrOutput {
+	return o.ApplyT(func(v AzureClusterControlPlane) *AzureClusterControlPlaneRootVolume { return v.RootVolume }).(AzureClusterControlPlaneRootVolumePtrOutput)
+}
+
+// Required. SSH configuration for how to access the underlying control plane machines.
+func (o AzureClusterControlPlaneOutput) SshConfig() AzureClusterControlPlaneSshConfigOutput {
+	return o.ApplyT(func(v AzureClusterControlPlane) AzureClusterControlPlaneSshConfig { return v.SshConfig }).(AzureClusterControlPlaneSshConfigOutput)
+}
+
+// For a given replica, the ARM ID of the subnet where the control plane VM is deployed. Make sure it's a subnet under the virtual network in the cluster configuration.
+func (o AzureClusterControlPlaneOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureClusterControlPlane) string { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+// Optional. A set of tags to apply to all underlying control plane Azure resources.
+func (o AzureClusterControlPlaneOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AzureClusterControlPlane) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Required. The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAzureServerConfig.
+func (o AzureClusterControlPlaneOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureClusterControlPlane) string { return v.Version }).(pulumi.StringOutput)
+}
+
+// Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions. When unspecified, it defaults to `Standard_DS2_v2`.
+func (o AzureClusterControlPlaneOutput) VmSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureClusterControlPlane) *string { return v.VmSize }).(pulumi.StringPtrOutput)
+}
+
+type AzureClusterControlPlanePtrOutput struct{ *pulumi.OutputState }
+
+func (AzureClusterControlPlanePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureClusterControlPlane)(nil)).Elem()
+}
+
+func (o AzureClusterControlPlanePtrOutput) ToAzureClusterControlPlanePtrOutput() AzureClusterControlPlanePtrOutput {
+	return o
+}
+
+func (o AzureClusterControlPlanePtrOutput) ToAzureClusterControlPlanePtrOutputWithContext(ctx context.Context) AzureClusterControlPlanePtrOutput {
+	return o
+}
+
+func (o AzureClusterControlPlanePtrOutput) Elem() AzureClusterControlPlaneOutput {
+	return o.ApplyT(func(v *AzureClusterControlPlane) AzureClusterControlPlane {
+		if v != nil {
+			return *v
+		}
+		var ret AzureClusterControlPlane
+		return ret
+	}).(AzureClusterControlPlaneOutput)
+}
+
+// Optional. Configuration related to application-layer secrets encryption.
+func (o AzureClusterControlPlanePtrOutput) DatabaseEncryption() AzureClusterControlPlaneDatabaseEncryptionPtrOutput {
+	return o.ApplyT(func(v *AzureClusterControlPlane) *AzureClusterControlPlaneDatabaseEncryption {
+		if v == nil {
+			return nil
+		}
+		return v.DatabaseEncryption
+	}).(AzureClusterControlPlaneDatabaseEncryptionPtrOutput)
+}
+
+// Optional. Configuration related to the main volume provisioned for each control plane replica. The main volume is in charge of storing all of the cluster's etcd state. When unspecified, it defaults to a 8-GiB Azure Disk.
+func (o AzureClusterControlPlanePtrOutput) MainVolume() AzureClusterControlPlaneMainVolumePtrOutput {
+	return o.ApplyT(func(v *AzureClusterControlPlane) *AzureClusterControlPlaneMainVolume {
+		if v == nil {
+			return nil
+		}
+		return v.MainVolume
+	}).(AzureClusterControlPlaneMainVolumePtrOutput)
+}
+
+// Proxy configuration for outbound HTTP(S) traffic.
+func (o AzureClusterControlPlanePtrOutput) ProxyConfig() AzureClusterControlPlaneProxyConfigPtrOutput {
+	return o.ApplyT(func(v *AzureClusterControlPlane) *AzureClusterControlPlaneProxyConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyConfig
+	}).(AzureClusterControlPlaneProxyConfigPtrOutput)
+}
+
+// Configuration for where to place the control plane replicas. Up to three replica placement instances can be specified. If replicaPlacements is set, the replica placement instances will be applied to the three control plane replicas as evenly as possible.
+func (o AzureClusterControlPlanePtrOutput) ReplicaPlacements() AzureClusterControlPlaneReplicaPlacementArrayOutput {
+	return o.ApplyT(func(v *AzureClusterControlPlane) []AzureClusterControlPlaneReplicaPlacement {
+		if v == nil {
+			return nil
+		}
+		return v.ReplicaPlacements
+	}).(AzureClusterControlPlaneReplicaPlacementArrayOutput)
+}
+
+// Optional. Configuration related to the root volume provisioned for each control plane replica. When unspecified, it defaults to 32-GiB Azure Disk.
+func (o AzureClusterControlPlanePtrOutput) RootVolume() AzureClusterControlPlaneRootVolumePtrOutput {
+	return o.ApplyT(func(v *AzureClusterControlPlane) *AzureClusterControlPlaneRootVolume {
+		if v == nil {
+			return nil
+		}
+		return v.RootVolume
+	}).(AzureClusterControlPlaneRootVolumePtrOutput)
+}
+
+// Required. SSH configuration for how to access the underlying control plane machines.
+func (o AzureClusterControlPlanePtrOutput) SshConfig() AzureClusterControlPlaneSshConfigPtrOutput {
+	return o.ApplyT(func(v *AzureClusterControlPlane) *AzureClusterControlPlaneSshConfig {
+		if v == nil {
+			return nil
+		}
+		return &v.SshConfig
+	}).(AzureClusterControlPlaneSshConfigPtrOutput)
+}
+
+// For a given replica, the ARM ID of the subnet where the control plane VM is deployed. Make sure it's a subnet under the virtual network in the cluster configuration.
+func (o AzureClusterControlPlanePtrOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureClusterControlPlane) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SubnetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. A set of tags to apply to all underlying control plane Azure resources.
+func (o AzureClusterControlPlanePtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AzureClusterControlPlane) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Required. The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAzureServerConfig.
+func (o AzureClusterControlPlanePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureClusterControlPlane) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions. When unspecified, it defaults to `Standard_DS2_v2`.
+func (o AzureClusterControlPlanePtrOutput) VmSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureClusterControlPlane) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VmSize
+	}).(pulumi.StringPtrOutput)
+}
+
+type AzureClusterControlPlaneDatabaseEncryption struct {
+	// The ARM ID of the Azure Key Vault key to encrypt / decrypt data. For example: `/subscriptions/<subscription-id>/resourceGroups/<resource-group-id>/providers/Microsoft.KeyVault/vaults/<key-vault-id>/keys/<key-name>` Encryption will always take the latest version of the key and hence specific version is not supported.
+	KeyId string `pulumi:"keyId"`
+}
+
+// AzureClusterControlPlaneDatabaseEncryptionInput is an input type that accepts AzureClusterControlPlaneDatabaseEncryptionArgs and AzureClusterControlPlaneDatabaseEncryptionOutput values.
+// You can construct a concrete instance of `AzureClusterControlPlaneDatabaseEncryptionInput` via:
+//
+//          AzureClusterControlPlaneDatabaseEncryptionArgs{...}
+type AzureClusterControlPlaneDatabaseEncryptionInput interface {
+	pulumi.Input
+
+	ToAzureClusterControlPlaneDatabaseEncryptionOutput() AzureClusterControlPlaneDatabaseEncryptionOutput
+	ToAzureClusterControlPlaneDatabaseEncryptionOutputWithContext(context.Context) AzureClusterControlPlaneDatabaseEncryptionOutput
+}
+
+type AzureClusterControlPlaneDatabaseEncryptionArgs struct {
+	// The ARM ID of the Azure Key Vault key to encrypt / decrypt data. For example: `/subscriptions/<subscription-id>/resourceGroups/<resource-group-id>/providers/Microsoft.KeyVault/vaults/<key-vault-id>/keys/<key-name>` Encryption will always take the latest version of the key and hence specific version is not supported.
+	KeyId pulumi.StringInput `pulumi:"keyId"`
+}
+
+func (AzureClusterControlPlaneDatabaseEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureClusterControlPlaneDatabaseEncryption)(nil)).Elem()
+}
+
+func (i AzureClusterControlPlaneDatabaseEncryptionArgs) ToAzureClusterControlPlaneDatabaseEncryptionOutput() AzureClusterControlPlaneDatabaseEncryptionOutput {
+	return i.ToAzureClusterControlPlaneDatabaseEncryptionOutputWithContext(context.Background())
+}
+
+func (i AzureClusterControlPlaneDatabaseEncryptionArgs) ToAzureClusterControlPlaneDatabaseEncryptionOutputWithContext(ctx context.Context) AzureClusterControlPlaneDatabaseEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterControlPlaneDatabaseEncryptionOutput)
+}
+
+func (i AzureClusterControlPlaneDatabaseEncryptionArgs) ToAzureClusterControlPlaneDatabaseEncryptionPtrOutput() AzureClusterControlPlaneDatabaseEncryptionPtrOutput {
+	return i.ToAzureClusterControlPlaneDatabaseEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i AzureClusterControlPlaneDatabaseEncryptionArgs) ToAzureClusterControlPlaneDatabaseEncryptionPtrOutputWithContext(ctx context.Context) AzureClusterControlPlaneDatabaseEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterControlPlaneDatabaseEncryptionOutput).ToAzureClusterControlPlaneDatabaseEncryptionPtrOutputWithContext(ctx)
+}
+
+// AzureClusterControlPlaneDatabaseEncryptionPtrInput is an input type that accepts AzureClusterControlPlaneDatabaseEncryptionArgs, AzureClusterControlPlaneDatabaseEncryptionPtr and AzureClusterControlPlaneDatabaseEncryptionPtrOutput values.
+// You can construct a concrete instance of `AzureClusterControlPlaneDatabaseEncryptionPtrInput` via:
+//
+//          AzureClusterControlPlaneDatabaseEncryptionArgs{...}
+//
+//  or:
+//
+//          nil
+type AzureClusterControlPlaneDatabaseEncryptionPtrInput interface {
+	pulumi.Input
+
+	ToAzureClusterControlPlaneDatabaseEncryptionPtrOutput() AzureClusterControlPlaneDatabaseEncryptionPtrOutput
+	ToAzureClusterControlPlaneDatabaseEncryptionPtrOutputWithContext(context.Context) AzureClusterControlPlaneDatabaseEncryptionPtrOutput
+}
+
+type azureClusterControlPlaneDatabaseEncryptionPtrType AzureClusterControlPlaneDatabaseEncryptionArgs
+
+func AzureClusterControlPlaneDatabaseEncryptionPtr(v *AzureClusterControlPlaneDatabaseEncryptionArgs) AzureClusterControlPlaneDatabaseEncryptionPtrInput {
+	return (*azureClusterControlPlaneDatabaseEncryptionPtrType)(v)
+}
+
+func (*azureClusterControlPlaneDatabaseEncryptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureClusterControlPlaneDatabaseEncryption)(nil)).Elem()
+}
+
+func (i *azureClusterControlPlaneDatabaseEncryptionPtrType) ToAzureClusterControlPlaneDatabaseEncryptionPtrOutput() AzureClusterControlPlaneDatabaseEncryptionPtrOutput {
+	return i.ToAzureClusterControlPlaneDatabaseEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i *azureClusterControlPlaneDatabaseEncryptionPtrType) ToAzureClusterControlPlaneDatabaseEncryptionPtrOutputWithContext(ctx context.Context) AzureClusterControlPlaneDatabaseEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterControlPlaneDatabaseEncryptionPtrOutput)
+}
+
+type AzureClusterControlPlaneDatabaseEncryptionOutput struct{ *pulumi.OutputState }
+
+func (AzureClusterControlPlaneDatabaseEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureClusterControlPlaneDatabaseEncryption)(nil)).Elem()
+}
+
+func (o AzureClusterControlPlaneDatabaseEncryptionOutput) ToAzureClusterControlPlaneDatabaseEncryptionOutput() AzureClusterControlPlaneDatabaseEncryptionOutput {
+	return o
+}
+
+func (o AzureClusterControlPlaneDatabaseEncryptionOutput) ToAzureClusterControlPlaneDatabaseEncryptionOutputWithContext(ctx context.Context) AzureClusterControlPlaneDatabaseEncryptionOutput {
+	return o
+}
+
+func (o AzureClusterControlPlaneDatabaseEncryptionOutput) ToAzureClusterControlPlaneDatabaseEncryptionPtrOutput() AzureClusterControlPlaneDatabaseEncryptionPtrOutput {
+	return o.ToAzureClusterControlPlaneDatabaseEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (o AzureClusterControlPlaneDatabaseEncryptionOutput) ToAzureClusterControlPlaneDatabaseEncryptionPtrOutputWithContext(ctx context.Context) AzureClusterControlPlaneDatabaseEncryptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureClusterControlPlaneDatabaseEncryption) *AzureClusterControlPlaneDatabaseEncryption {
+		return &v
+	}).(AzureClusterControlPlaneDatabaseEncryptionPtrOutput)
+}
+
+// The ARM ID of the Azure Key Vault key to encrypt / decrypt data. For example: `/subscriptions/<subscription-id>/resourceGroups/<resource-group-id>/providers/Microsoft.KeyVault/vaults/<key-vault-id>/keys/<key-name>` Encryption will always take the latest version of the key and hence specific version is not supported.
+func (o AzureClusterControlPlaneDatabaseEncryptionOutput) KeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureClusterControlPlaneDatabaseEncryption) string { return v.KeyId }).(pulumi.StringOutput)
+}
+
+type AzureClusterControlPlaneDatabaseEncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureClusterControlPlaneDatabaseEncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureClusterControlPlaneDatabaseEncryption)(nil)).Elem()
+}
+
+func (o AzureClusterControlPlaneDatabaseEncryptionPtrOutput) ToAzureClusterControlPlaneDatabaseEncryptionPtrOutput() AzureClusterControlPlaneDatabaseEncryptionPtrOutput {
+	return o
+}
+
+func (o AzureClusterControlPlaneDatabaseEncryptionPtrOutput) ToAzureClusterControlPlaneDatabaseEncryptionPtrOutputWithContext(ctx context.Context) AzureClusterControlPlaneDatabaseEncryptionPtrOutput {
+	return o
+}
+
+func (o AzureClusterControlPlaneDatabaseEncryptionPtrOutput) Elem() AzureClusterControlPlaneDatabaseEncryptionOutput {
+	return o.ApplyT(func(v *AzureClusterControlPlaneDatabaseEncryption) AzureClusterControlPlaneDatabaseEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret AzureClusterControlPlaneDatabaseEncryption
+		return ret
+	}).(AzureClusterControlPlaneDatabaseEncryptionOutput)
+}
+
+// The ARM ID of the Azure Key Vault key to encrypt / decrypt data. For example: `/subscriptions/<subscription-id>/resourceGroups/<resource-group-id>/providers/Microsoft.KeyVault/vaults/<key-vault-id>/keys/<key-name>` Encryption will always take the latest version of the key and hence specific version is not supported.
+func (o AzureClusterControlPlaneDatabaseEncryptionPtrOutput) KeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureClusterControlPlaneDatabaseEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+type AzureClusterControlPlaneMainVolume struct {
+	// Optional. The size of the disk, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+	SizeGib *int `pulumi:"sizeGib"`
+}
+
+// AzureClusterControlPlaneMainVolumeInput is an input type that accepts AzureClusterControlPlaneMainVolumeArgs and AzureClusterControlPlaneMainVolumeOutput values.
+// You can construct a concrete instance of `AzureClusterControlPlaneMainVolumeInput` via:
+//
+//          AzureClusterControlPlaneMainVolumeArgs{...}
+type AzureClusterControlPlaneMainVolumeInput interface {
+	pulumi.Input
+
+	ToAzureClusterControlPlaneMainVolumeOutput() AzureClusterControlPlaneMainVolumeOutput
+	ToAzureClusterControlPlaneMainVolumeOutputWithContext(context.Context) AzureClusterControlPlaneMainVolumeOutput
+}
+
+type AzureClusterControlPlaneMainVolumeArgs struct {
+	// Optional. The size of the disk, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+	SizeGib pulumi.IntPtrInput `pulumi:"sizeGib"`
+}
+
+func (AzureClusterControlPlaneMainVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureClusterControlPlaneMainVolume)(nil)).Elem()
+}
+
+func (i AzureClusterControlPlaneMainVolumeArgs) ToAzureClusterControlPlaneMainVolumeOutput() AzureClusterControlPlaneMainVolumeOutput {
+	return i.ToAzureClusterControlPlaneMainVolumeOutputWithContext(context.Background())
+}
+
+func (i AzureClusterControlPlaneMainVolumeArgs) ToAzureClusterControlPlaneMainVolumeOutputWithContext(ctx context.Context) AzureClusterControlPlaneMainVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterControlPlaneMainVolumeOutput)
+}
+
+func (i AzureClusterControlPlaneMainVolumeArgs) ToAzureClusterControlPlaneMainVolumePtrOutput() AzureClusterControlPlaneMainVolumePtrOutput {
+	return i.ToAzureClusterControlPlaneMainVolumePtrOutputWithContext(context.Background())
+}
+
+func (i AzureClusterControlPlaneMainVolumeArgs) ToAzureClusterControlPlaneMainVolumePtrOutputWithContext(ctx context.Context) AzureClusterControlPlaneMainVolumePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterControlPlaneMainVolumeOutput).ToAzureClusterControlPlaneMainVolumePtrOutputWithContext(ctx)
+}
+
+// AzureClusterControlPlaneMainVolumePtrInput is an input type that accepts AzureClusterControlPlaneMainVolumeArgs, AzureClusterControlPlaneMainVolumePtr and AzureClusterControlPlaneMainVolumePtrOutput values.
+// You can construct a concrete instance of `AzureClusterControlPlaneMainVolumePtrInput` via:
+//
+//          AzureClusterControlPlaneMainVolumeArgs{...}
+//
+//  or:
+//
+//          nil
+type AzureClusterControlPlaneMainVolumePtrInput interface {
+	pulumi.Input
+
+	ToAzureClusterControlPlaneMainVolumePtrOutput() AzureClusterControlPlaneMainVolumePtrOutput
+	ToAzureClusterControlPlaneMainVolumePtrOutputWithContext(context.Context) AzureClusterControlPlaneMainVolumePtrOutput
+}
+
+type azureClusterControlPlaneMainVolumePtrType AzureClusterControlPlaneMainVolumeArgs
+
+func AzureClusterControlPlaneMainVolumePtr(v *AzureClusterControlPlaneMainVolumeArgs) AzureClusterControlPlaneMainVolumePtrInput {
+	return (*azureClusterControlPlaneMainVolumePtrType)(v)
+}
+
+func (*azureClusterControlPlaneMainVolumePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureClusterControlPlaneMainVolume)(nil)).Elem()
+}
+
+func (i *azureClusterControlPlaneMainVolumePtrType) ToAzureClusterControlPlaneMainVolumePtrOutput() AzureClusterControlPlaneMainVolumePtrOutput {
+	return i.ToAzureClusterControlPlaneMainVolumePtrOutputWithContext(context.Background())
+}
+
+func (i *azureClusterControlPlaneMainVolumePtrType) ToAzureClusterControlPlaneMainVolumePtrOutputWithContext(ctx context.Context) AzureClusterControlPlaneMainVolumePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterControlPlaneMainVolumePtrOutput)
+}
+
+type AzureClusterControlPlaneMainVolumeOutput struct{ *pulumi.OutputState }
+
+func (AzureClusterControlPlaneMainVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureClusterControlPlaneMainVolume)(nil)).Elem()
+}
+
+func (o AzureClusterControlPlaneMainVolumeOutput) ToAzureClusterControlPlaneMainVolumeOutput() AzureClusterControlPlaneMainVolumeOutput {
+	return o
+}
+
+func (o AzureClusterControlPlaneMainVolumeOutput) ToAzureClusterControlPlaneMainVolumeOutputWithContext(ctx context.Context) AzureClusterControlPlaneMainVolumeOutput {
+	return o
+}
+
+func (o AzureClusterControlPlaneMainVolumeOutput) ToAzureClusterControlPlaneMainVolumePtrOutput() AzureClusterControlPlaneMainVolumePtrOutput {
+	return o.ToAzureClusterControlPlaneMainVolumePtrOutputWithContext(context.Background())
+}
+
+func (o AzureClusterControlPlaneMainVolumeOutput) ToAzureClusterControlPlaneMainVolumePtrOutputWithContext(ctx context.Context) AzureClusterControlPlaneMainVolumePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureClusterControlPlaneMainVolume) *AzureClusterControlPlaneMainVolume {
+		return &v
+	}).(AzureClusterControlPlaneMainVolumePtrOutput)
+}
+
+// Optional. The size of the disk, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+func (o AzureClusterControlPlaneMainVolumeOutput) SizeGib() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AzureClusterControlPlaneMainVolume) *int { return v.SizeGib }).(pulumi.IntPtrOutput)
+}
+
+type AzureClusterControlPlaneMainVolumePtrOutput struct{ *pulumi.OutputState }
+
+func (AzureClusterControlPlaneMainVolumePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureClusterControlPlaneMainVolume)(nil)).Elem()
+}
+
+func (o AzureClusterControlPlaneMainVolumePtrOutput) ToAzureClusterControlPlaneMainVolumePtrOutput() AzureClusterControlPlaneMainVolumePtrOutput {
+	return o
+}
+
+func (o AzureClusterControlPlaneMainVolumePtrOutput) ToAzureClusterControlPlaneMainVolumePtrOutputWithContext(ctx context.Context) AzureClusterControlPlaneMainVolumePtrOutput {
+	return o
+}
+
+func (o AzureClusterControlPlaneMainVolumePtrOutput) Elem() AzureClusterControlPlaneMainVolumeOutput {
+	return o.ApplyT(func(v *AzureClusterControlPlaneMainVolume) AzureClusterControlPlaneMainVolume {
+		if v != nil {
+			return *v
+		}
+		var ret AzureClusterControlPlaneMainVolume
+		return ret
+	}).(AzureClusterControlPlaneMainVolumeOutput)
+}
+
+// Optional. The size of the disk, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+func (o AzureClusterControlPlaneMainVolumePtrOutput) SizeGib() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AzureClusterControlPlaneMainVolume) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SizeGib
+	}).(pulumi.IntPtrOutput)
+}
+
+type AzureClusterControlPlaneProxyConfig struct {
+	// The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>`
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// The URL the of the proxy setting secret with its version. Secret ids are formatted as `https:<key-vault-name>.vault.azure.net/secrets/<secret-name>/<secret-version>`.
+	SecretId string `pulumi:"secretId"`
+}
+
+// AzureClusterControlPlaneProxyConfigInput is an input type that accepts AzureClusterControlPlaneProxyConfigArgs and AzureClusterControlPlaneProxyConfigOutput values.
+// You can construct a concrete instance of `AzureClusterControlPlaneProxyConfigInput` via:
+//
+//          AzureClusterControlPlaneProxyConfigArgs{...}
+type AzureClusterControlPlaneProxyConfigInput interface {
+	pulumi.Input
+
+	ToAzureClusterControlPlaneProxyConfigOutput() AzureClusterControlPlaneProxyConfigOutput
+	ToAzureClusterControlPlaneProxyConfigOutputWithContext(context.Context) AzureClusterControlPlaneProxyConfigOutput
+}
+
+type AzureClusterControlPlaneProxyConfigArgs struct {
+	// The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>`
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// The URL the of the proxy setting secret with its version. Secret ids are formatted as `https:<key-vault-name>.vault.azure.net/secrets/<secret-name>/<secret-version>`.
+	SecretId pulumi.StringInput `pulumi:"secretId"`
+}
+
+func (AzureClusterControlPlaneProxyConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureClusterControlPlaneProxyConfig)(nil)).Elem()
+}
+
+func (i AzureClusterControlPlaneProxyConfigArgs) ToAzureClusterControlPlaneProxyConfigOutput() AzureClusterControlPlaneProxyConfigOutput {
+	return i.ToAzureClusterControlPlaneProxyConfigOutputWithContext(context.Background())
+}
+
+func (i AzureClusterControlPlaneProxyConfigArgs) ToAzureClusterControlPlaneProxyConfigOutputWithContext(ctx context.Context) AzureClusterControlPlaneProxyConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterControlPlaneProxyConfigOutput)
+}
+
+func (i AzureClusterControlPlaneProxyConfigArgs) ToAzureClusterControlPlaneProxyConfigPtrOutput() AzureClusterControlPlaneProxyConfigPtrOutput {
+	return i.ToAzureClusterControlPlaneProxyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AzureClusterControlPlaneProxyConfigArgs) ToAzureClusterControlPlaneProxyConfigPtrOutputWithContext(ctx context.Context) AzureClusterControlPlaneProxyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterControlPlaneProxyConfigOutput).ToAzureClusterControlPlaneProxyConfigPtrOutputWithContext(ctx)
+}
+
+// AzureClusterControlPlaneProxyConfigPtrInput is an input type that accepts AzureClusterControlPlaneProxyConfigArgs, AzureClusterControlPlaneProxyConfigPtr and AzureClusterControlPlaneProxyConfigPtrOutput values.
+// You can construct a concrete instance of `AzureClusterControlPlaneProxyConfigPtrInput` via:
+//
+//          AzureClusterControlPlaneProxyConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type AzureClusterControlPlaneProxyConfigPtrInput interface {
+	pulumi.Input
+
+	ToAzureClusterControlPlaneProxyConfigPtrOutput() AzureClusterControlPlaneProxyConfigPtrOutput
+	ToAzureClusterControlPlaneProxyConfigPtrOutputWithContext(context.Context) AzureClusterControlPlaneProxyConfigPtrOutput
+}
+
+type azureClusterControlPlaneProxyConfigPtrType AzureClusterControlPlaneProxyConfigArgs
+
+func AzureClusterControlPlaneProxyConfigPtr(v *AzureClusterControlPlaneProxyConfigArgs) AzureClusterControlPlaneProxyConfigPtrInput {
+	return (*azureClusterControlPlaneProxyConfigPtrType)(v)
+}
+
+func (*azureClusterControlPlaneProxyConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureClusterControlPlaneProxyConfig)(nil)).Elem()
+}
+
+func (i *azureClusterControlPlaneProxyConfigPtrType) ToAzureClusterControlPlaneProxyConfigPtrOutput() AzureClusterControlPlaneProxyConfigPtrOutput {
+	return i.ToAzureClusterControlPlaneProxyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *azureClusterControlPlaneProxyConfigPtrType) ToAzureClusterControlPlaneProxyConfigPtrOutputWithContext(ctx context.Context) AzureClusterControlPlaneProxyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterControlPlaneProxyConfigPtrOutput)
+}
+
+type AzureClusterControlPlaneProxyConfigOutput struct{ *pulumi.OutputState }
+
+func (AzureClusterControlPlaneProxyConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureClusterControlPlaneProxyConfig)(nil)).Elem()
+}
+
+func (o AzureClusterControlPlaneProxyConfigOutput) ToAzureClusterControlPlaneProxyConfigOutput() AzureClusterControlPlaneProxyConfigOutput {
+	return o
+}
+
+func (o AzureClusterControlPlaneProxyConfigOutput) ToAzureClusterControlPlaneProxyConfigOutputWithContext(ctx context.Context) AzureClusterControlPlaneProxyConfigOutput {
+	return o
+}
+
+func (o AzureClusterControlPlaneProxyConfigOutput) ToAzureClusterControlPlaneProxyConfigPtrOutput() AzureClusterControlPlaneProxyConfigPtrOutput {
+	return o.ToAzureClusterControlPlaneProxyConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AzureClusterControlPlaneProxyConfigOutput) ToAzureClusterControlPlaneProxyConfigPtrOutputWithContext(ctx context.Context) AzureClusterControlPlaneProxyConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureClusterControlPlaneProxyConfig) *AzureClusterControlPlaneProxyConfig {
+		return &v
+	}).(AzureClusterControlPlaneProxyConfigPtrOutput)
+}
+
+// The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>`
+func (o AzureClusterControlPlaneProxyConfigOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureClusterControlPlaneProxyConfig) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The URL the of the proxy setting secret with its version. Secret ids are formatted as `https:<key-vault-name>.vault.azure.net/secrets/<secret-name>/<secret-version>`.
+func (o AzureClusterControlPlaneProxyConfigOutput) SecretId() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureClusterControlPlaneProxyConfig) string { return v.SecretId }).(pulumi.StringOutput)
+}
+
+type AzureClusterControlPlaneProxyConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureClusterControlPlaneProxyConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureClusterControlPlaneProxyConfig)(nil)).Elem()
+}
+
+func (o AzureClusterControlPlaneProxyConfigPtrOutput) ToAzureClusterControlPlaneProxyConfigPtrOutput() AzureClusterControlPlaneProxyConfigPtrOutput {
+	return o
+}
+
+func (o AzureClusterControlPlaneProxyConfigPtrOutput) ToAzureClusterControlPlaneProxyConfigPtrOutputWithContext(ctx context.Context) AzureClusterControlPlaneProxyConfigPtrOutput {
+	return o
+}
+
+func (o AzureClusterControlPlaneProxyConfigPtrOutput) Elem() AzureClusterControlPlaneProxyConfigOutput {
+	return o.ApplyT(func(v *AzureClusterControlPlaneProxyConfig) AzureClusterControlPlaneProxyConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AzureClusterControlPlaneProxyConfig
+		return ret
+	}).(AzureClusterControlPlaneProxyConfigOutput)
+}
+
+// The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>`
+func (o AzureClusterControlPlaneProxyConfigPtrOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureClusterControlPlaneProxyConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceGroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URL the of the proxy setting secret with its version. Secret ids are formatted as `https:<key-vault-name>.vault.azure.net/secrets/<secret-name>/<secret-version>`.
+func (o AzureClusterControlPlaneProxyConfigPtrOutput) SecretId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureClusterControlPlaneProxyConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretId
+	}).(pulumi.StringPtrOutput)
+}
+
+type AzureClusterControlPlaneReplicaPlacement struct {
+	// For a given replica, the Azure availability zone where to provision the control plane VM and the ETCD disk.
+	AzureAvailabilityZone string `pulumi:"azureAvailabilityZone"`
+	// For a given replica, the ARM ID of the subnet where the control plane VM is deployed. Make sure it's a subnet under the virtual network in the cluster configuration.
+	SubnetId string `pulumi:"subnetId"`
+}
+
+// AzureClusterControlPlaneReplicaPlacementInput is an input type that accepts AzureClusterControlPlaneReplicaPlacementArgs and AzureClusterControlPlaneReplicaPlacementOutput values.
+// You can construct a concrete instance of `AzureClusterControlPlaneReplicaPlacementInput` via:
+//
+//          AzureClusterControlPlaneReplicaPlacementArgs{...}
+type AzureClusterControlPlaneReplicaPlacementInput interface {
+	pulumi.Input
+
+	ToAzureClusterControlPlaneReplicaPlacementOutput() AzureClusterControlPlaneReplicaPlacementOutput
+	ToAzureClusterControlPlaneReplicaPlacementOutputWithContext(context.Context) AzureClusterControlPlaneReplicaPlacementOutput
+}
+
+type AzureClusterControlPlaneReplicaPlacementArgs struct {
+	// For a given replica, the Azure availability zone where to provision the control plane VM and the ETCD disk.
+	AzureAvailabilityZone pulumi.StringInput `pulumi:"azureAvailabilityZone"`
+	// For a given replica, the ARM ID of the subnet where the control plane VM is deployed. Make sure it's a subnet under the virtual network in the cluster configuration.
+	SubnetId pulumi.StringInput `pulumi:"subnetId"`
+}
+
+func (AzureClusterControlPlaneReplicaPlacementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureClusterControlPlaneReplicaPlacement)(nil)).Elem()
+}
+
+func (i AzureClusterControlPlaneReplicaPlacementArgs) ToAzureClusterControlPlaneReplicaPlacementOutput() AzureClusterControlPlaneReplicaPlacementOutput {
+	return i.ToAzureClusterControlPlaneReplicaPlacementOutputWithContext(context.Background())
+}
+
+func (i AzureClusterControlPlaneReplicaPlacementArgs) ToAzureClusterControlPlaneReplicaPlacementOutputWithContext(ctx context.Context) AzureClusterControlPlaneReplicaPlacementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterControlPlaneReplicaPlacementOutput)
+}
+
+// AzureClusterControlPlaneReplicaPlacementArrayInput is an input type that accepts AzureClusterControlPlaneReplicaPlacementArray and AzureClusterControlPlaneReplicaPlacementArrayOutput values.
+// You can construct a concrete instance of `AzureClusterControlPlaneReplicaPlacementArrayInput` via:
+//
+//          AzureClusterControlPlaneReplicaPlacementArray{ AzureClusterControlPlaneReplicaPlacementArgs{...} }
+type AzureClusterControlPlaneReplicaPlacementArrayInput interface {
+	pulumi.Input
+
+	ToAzureClusterControlPlaneReplicaPlacementArrayOutput() AzureClusterControlPlaneReplicaPlacementArrayOutput
+	ToAzureClusterControlPlaneReplicaPlacementArrayOutputWithContext(context.Context) AzureClusterControlPlaneReplicaPlacementArrayOutput
+}
+
+type AzureClusterControlPlaneReplicaPlacementArray []AzureClusterControlPlaneReplicaPlacementInput
+
+func (AzureClusterControlPlaneReplicaPlacementArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AzureClusterControlPlaneReplicaPlacement)(nil)).Elem()
+}
+
+func (i AzureClusterControlPlaneReplicaPlacementArray) ToAzureClusterControlPlaneReplicaPlacementArrayOutput() AzureClusterControlPlaneReplicaPlacementArrayOutput {
+	return i.ToAzureClusterControlPlaneReplicaPlacementArrayOutputWithContext(context.Background())
+}
+
+func (i AzureClusterControlPlaneReplicaPlacementArray) ToAzureClusterControlPlaneReplicaPlacementArrayOutputWithContext(ctx context.Context) AzureClusterControlPlaneReplicaPlacementArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterControlPlaneReplicaPlacementArrayOutput)
+}
+
+type AzureClusterControlPlaneReplicaPlacementOutput struct{ *pulumi.OutputState }
+
+func (AzureClusterControlPlaneReplicaPlacementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureClusterControlPlaneReplicaPlacement)(nil)).Elem()
+}
+
+func (o AzureClusterControlPlaneReplicaPlacementOutput) ToAzureClusterControlPlaneReplicaPlacementOutput() AzureClusterControlPlaneReplicaPlacementOutput {
+	return o
+}
+
+func (o AzureClusterControlPlaneReplicaPlacementOutput) ToAzureClusterControlPlaneReplicaPlacementOutputWithContext(ctx context.Context) AzureClusterControlPlaneReplicaPlacementOutput {
+	return o
+}
+
+// For a given replica, the Azure availability zone where to provision the control plane VM and the ETCD disk.
+func (o AzureClusterControlPlaneReplicaPlacementOutput) AzureAvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureClusterControlPlaneReplicaPlacement) string { return v.AzureAvailabilityZone }).(pulumi.StringOutput)
+}
+
+// For a given replica, the ARM ID of the subnet where the control plane VM is deployed. Make sure it's a subnet under the virtual network in the cluster configuration.
+func (o AzureClusterControlPlaneReplicaPlacementOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureClusterControlPlaneReplicaPlacement) string { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+type AzureClusterControlPlaneReplicaPlacementArrayOutput struct{ *pulumi.OutputState }
+
+func (AzureClusterControlPlaneReplicaPlacementArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AzureClusterControlPlaneReplicaPlacement)(nil)).Elem()
+}
+
+func (o AzureClusterControlPlaneReplicaPlacementArrayOutput) ToAzureClusterControlPlaneReplicaPlacementArrayOutput() AzureClusterControlPlaneReplicaPlacementArrayOutput {
+	return o
+}
+
+func (o AzureClusterControlPlaneReplicaPlacementArrayOutput) ToAzureClusterControlPlaneReplicaPlacementArrayOutputWithContext(ctx context.Context) AzureClusterControlPlaneReplicaPlacementArrayOutput {
+	return o
+}
+
+func (o AzureClusterControlPlaneReplicaPlacementArrayOutput) Index(i pulumi.IntInput) AzureClusterControlPlaneReplicaPlacementOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AzureClusterControlPlaneReplicaPlacement {
+		return vs[0].([]AzureClusterControlPlaneReplicaPlacement)[vs[1].(int)]
+	}).(AzureClusterControlPlaneReplicaPlacementOutput)
+}
+
+type AzureClusterControlPlaneRootVolume struct {
+	// Optional. The size of the disk, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+	SizeGib *int `pulumi:"sizeGib"`
+}
+
+// AzureClusterControlPlaneRootVolumeInput is an input type that accepts AzureClusterControlPlaneRootVolumeArgs and AzureClusterControlPlaneRootVolumeOutput values.
+// You can construct a concrete instance of `AzureClusterControlPlaneRootVolumeInput` via:
+//
+//          AzureClusterControlPlaneRootVolumeArgs{...}
+type AzureClusterControlPlaneRootVolumeInput interface {
+	pulumi.Input
+
+	ToAzureClusterControlPlaneRootVolumeOutput() AzureClusterControlPlaneRootVolumeOutput
+	ToAzureClusterControlPlaneRootVolumeOutputWithContext(context.Context) AzureClusterControlPlaneRootVolumeOutput
+}
+
+type AzureClusterControlPlaneRootVolumeArgs struct {
+	// Optional. The size of the disk, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+	SizeGib pulumi.IntPtrInput `pulumi:"sizeGib"`
+}
+
+func (AzureClusterControlPlaneRootVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureClusterControlPlaneRootVolume)(nil)).Elem()
+}
+
+func (i AzureClusterControlPlaneRootVolumeArgs) ToAzureClusterControlPlaneRootVolumeOutput() AzureClusterControlPlaneRootVolumeOutput {
+	return i.ToAzureClusterControlPlaneRootVolumeOutputWithContext(context.Background())
+}
+
+func (i AzureClusterControlPlaneRootVolumeArgs) ToAzureClusterControlPlaneRootVolumeOutputWithContext(ctx context.Context) AzureClusterControlPlaneRootVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterControlPlaneRootVolumeOutput)
+}
+
+func (i AzureClusterControlPlaneRootVolumeArgs) ToAzureClusterControlPlaneRootVolumePtrOutput() AzureClusterControlPlaneRootVolumePtrOutput {
+	return i.ToAzureClusterControlPlaneRootVolumePtrOutputWithContext(context.Background())
+}
+
+func (i AzureClusterControlPlaneRootVolumeArgs) ToAzureClusterControlPlaneRootVolumePtrOutputWithContext(ctx context.Context) AzureClusterControlPlaneRootVolumePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterControlPlaneRootVolumeOutput).ToAzureClusterControlPlaneRootVolumePtrOutputWithContext(ctx)
+}
+
+// AzureClusterControlPlaneRootVolumePtrInput is an input type that accepts AzureClusterControlPlaneRootVolumeArgs, AzureClusterControlPlaneRootVolumePtr and AzureClusterControlPlaneRootVolumePtrOutput values.
+// You can construct a concrete instance of `AzureClusterControlPlaneRootVolumePtrInput` via:
+//
+//          AzureClusterControlPlaneRootVolumeArgs{...}
+//
+//  or:
+//
+//          nil
+type AzureClusterControlPlaneRootVolumePtrInput interface {
+	pulumi.Input
+
+	ToAzureClusterControlPlaneRootVolumePtrOutput() AzureClusterControlPlaneRootVolumePtrOutput
+	ToAzureClusterControlPlaneRootVolumePtrOutputWithContext(context.Context) AzureClusterControlPlaneRootVolumePtrOutput
+}
+
+type azureClusterControlPlaneRootVolumePtrType AzureClusterControlPlaneRootVolumeArgs
+
+func AzureClusterControlPlaneRootVolumePtr(v *AzureClusterControlPlaneRootVolumeArgs) AzureClusterControlPlaneRootVolumePtrInput {
+	return (*azureClusterControlPlaneRootVolumePtrType)(v)
+}
+
+func (*azureClusterControlPlaneRootVolumePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureClusterControlPlaneRootVolume)(nil)).Elem()
+}
+
+func (i *azureClusterControlPlaneRootVolumePtrType) ToAzureClusterControlPlaneRootVolumePtrOutput() AzureClusterControlPlaneRootVolumePtrOutput {
+	return i.ToAzureClusterControlPlaneRootVolumePtrOutputWithContext(context.Background())
+}
+
+func (i *azureClusterControlPlaneRootVolumePtrType) ToAzureClusterControlPlaneRootVolumePtrOutputWithContext(ctx context.Context) AzureClusterControlPlaneRootVolumePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterControlPlaneRootVolumePtrOutput)
+}
+
+type AzureClusterControlPlaneRootVolumeOutput struct{ *pulumi.OutputState }
+
+func (AzureClusterControlPlaneRootVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureClusterControlPlaneRootVolume)(nil)).Elem()
+}
+
+func (o AzureClusterControlPlaneRootVolumeOutput) ToAzureClusterControlPlaneRootVolumeOutput() AzureClusterControlPlaneRootVolumeOutput {
+	return o
+}
+
+func (o AzureClusterControlPlaneRootVolumeOutput) ToAzureClusterControlPlaneRootVolumeOutputWithContext(ctx context.Context) AzureClusterControlPlaneRootVolumeOutput {
+	return o
+}
+
+func (o AzureClusterControlPlaneRootVolumeOutput) ToAzureClusterControlPlaneRootVolumePtrOutput() AzureClusterControlPlaneRootVolumePtrOutput {
+	return o.ToAzureClusterControlPlaneRootVolumePtrOutputWithContext(context.Background())
+}
+
+func (o AzureClusterControlPlaneRootVolumeOutput) ToAzureClusterControlPlaneRootVolumePtrOutputWithContext(ctx context.Context) AzureClusterControlPlaneRootVolumePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureClusterControlPlaneRootVolume) *AzureClusterControlPlaneRootVolume {
+		return &v
+	}).(AzureClusterControlPlaneRootVolumePtrOutput)
+}
+
+// Optional. The size of the disk, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+func (o AzureClusterControlPlaneRootVolumeOutput) SizeGib() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AzureClusterControlPlaneRootVolume) *int { return v.SizeGib }).(pulumi.IntPtrOutput)
+}
+
+type AzureClusterControlPlaneRootVolumePtrOutput struct{ *pulumi.OutputState }
+
+func (AzureClusterControlPlaneRootVolumePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureClusterControlPlaneRootVolume)(nil)).Elem()
+}
+
+func (o AzureClusterControlPlaneRootVolumePtrOutput) ToAzureClusterControlPlaneRootVolumePtrOutput() AzureClusterControlPlaneRootVolumePtrOutput {
+	return o
+}
+
+func (o AzureClusterControlPlaneRootVolumePtrOutput) ToAzureClusterControlPlaneRootVolumePtrOutputWithContext(ctx context.Context) AzureClusterControlPlaneRootVolumePtrOutput {
+	return o
+}
+
+func (o AzureClusterControlPlaneRootVolumePtrOutput) Elem() AzureClusterControlPlaneRootVolumeOutput {
+	return o.ApplyT(func(v *AzureClusterControlPlaneRootVolume) AzureClusterControlPlaneRootVolume {
+		if v != nil {
+			return *v
+		}
+		var ret AzureClusterControlPlaneRootVolume
+		return ret
+	}).(AzureClusterControlPlaneRootVolumeOutput)
+}
+
+// Optional. The size of the disk, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+func (o AzureClusterControlPlaneRootVolumePtrOutput) SizeGib() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AzureClusterControlPlaneRootVolume) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SizeGib
+	}).(pulumi.IntPtrOutput)
+}
+
+type AzureClusterControlPlaneSshConfig struct {
+	// Required. The SSH public key data for VMs managed by Anthos. This accepts the authorizedKeys file format used in OpenSSH according to the sshd(8) manual page.
+	AuthorizedKey string `pulumi:"authorizedKey"`
+}
+
+// AzureClusterControlPlaneSshConfigInput is an input type that accepts AzureClusterControlPlaneSshConfigArgs and AzureClusterControlPlaneSshConfigOutput values.
+// You can construct a concrete instance of `AzureClusterControlPlaneSshConfigInput` via:
+//
+//          AzureClusterControlPlaneSshConfigArgs{...}
+type AzureClusterControlPlaneSshConfigInput interface {
+	pulumi.Input
+
+	ToAzureClusterControlPlaneSshConfigOutput() AzureClusterControlPlaneSshConfigOutput
+	ToAzureClusterControlPlaneSshConfigOutputWithContext(context.Context) AzureClusterControlPlaneSshConfigOutput
+}
+
+type AzureClusterControlPlaneSshConfigArgs struct {
+	// Required. The SSH public key data for VMs managed by Anthos. This accepts the authorizedKeys file format used in OpenSSH according to the sshd(8) manual page.
+	AuthorizedKey pulumi.StringInput `pulumi:"authorizedKey"`
+}
+
+func (AzureClusterControlPlaneSshConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureClusterControlPlaneSshConfig)(nil)).Elem()
+}
+
+func (i AzureClusterControlPlaneSshConfigArgs) ToAzureClusterControlPlaneSshConfigOutput() AzureClusterControlPlaneSshConfigOutput {
+	return i.ToAzureClusterControlPlaneSshConfigOutputWithContext(context.Background())
+}
+
+func (i AzureClusterControlPlaneSshConfigArgs) ToAzureClusterControlPlaneSshConfigOutputWithContext(ctx context.Context) AzureClusterControlPlaneSshConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterControlPlaneSshConfigOutput)
+}
+
+func (i AzureClusterControlPlaneSshConfigArgs) ToAzureClusterControlPlaneSshConfigPtrOutput() AzureClusterControlPlaneSshConfigPtrOutput {
+	return i.ToAzureClusterControlPlaneSshConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AzureClusterControlPlaneSshConfigArgs) ToAzureClusterControlPlaneSshConfigPtrOutputWithContext(ctx context.Context) AzureClusterControlPlaneSshConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterControlPlaneSshConfigOutput).ToAzureClusterControlPlaneSshConfigPtrOutputWithContext(ctx)
+}
+
+// AzureClusterControlPlaneSshConfigPtrInput is an input type that accepts AzureClusterControlPlaneSshConfigArgs, AzureClusterControlPlaneSshConfigPtr and AzureClusterControlPlaneSshConfigPtrOutput values.
+// You can construct a concrete instance of `AzureClusterControlPlaneSshConfigPtrInput` via:
+//
+//          AzureClusterControlPlaneSshConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type AzureClusterControlPlaneSshConfigPtrInput interface {
+	pulumi.Input
+
+	ToAzureClusterControlPlaneSshConfigPtrOutput() AzureClusterControlPlaneSshConfigPtrOutput
+	ToAzureClusterControlPlaneSshConfigPtrOutputWithContext(context.Context) AzureClusterControlPlaneSshConfigPtrOutput
+}
+
+type azureClusterControlPlaneSshConfigPtrType AzureClusterControlPlaneSshConfigArgs
+
+func AzureClusterControlPlaneSshConfigPtr(v *AzureClusterControlPlaneSshConfigArgs) AzureClusterControlPlaneSshConfigPtrInput {
+	return (*azureClusterControlPlaneSshConfigPtrType)(v)
+}
+
+func (*azureClusterControlPlaneSshConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureClusterControlPlaneSshConfig)(nil)).Elem()
+}
+
+func (i *azureClusterControlPlaneSshConfigPtrType) ToAzureClusterControlPlaneSshConfigPtrOutput() AzureClusterControlPlaneSshConfigPtrOutput {
+	return i.ToAzureClusterControlPlaneSshConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *azureClusterControlPlaneSshConfigPtrType) ToAzureClusterControlPlaneSshConfigPtrOutputWithContext(ctx context.Context) AzureClusterControlPlaneSshConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterControlPlaneSshConfigPtrOutput)
+}
+
+type AzureClusterControlPlaneSshConfigOutput struct{ *pulumi.OutputState }
+
+func (AzureClusterControlPlaneSshConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureClusterControlPlaneSshConfig)(nil)).Elem()
+}
+
+func (o AzureClusterControlPlaneSshConfigOutput) ToAzureClusterControlPlaneSshConfigOutput() AzureClusterControlPlaneSshConfigOutput {
+	return o
+}
+
+func (o AzureClusterControlPlaneSshConfigOutput) ToAzureClusterControlPlaneSshConfigOutputWithContext(ctx context.Context) AzureClusterControlPlaneSshConfigOutput {
+	return o
+}
+
+func (o AzureClusterControlPlaneSshConfigOutput) ToAzureClusterControlPlaneSshConfigPtrOutput() AzureClusterControlPlaneSshConfigPtrOutput {
+	return o.ToAzureClusterControlPlaneSshConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AzureClusterControlPlaneSshConfigOutput) ToAzureClusterControlPlaneSshConfigPtrOutputWithContext(ctx context.Context) AzureClusterControlPlaneSshConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureClusterControlPlaneSshConfig) *AzureClusterControlPlaneSshConfig {
+		return &v
+	}).(AzureClusterControlPlaneSshConfigPtrOutput)
+}
+
+// Required. The SSH public key data for VMs managed by Anthos. This accepts the authorizedKeys file format used in OpenSSH according to the sshd(8) manual page.
+func (o AzureClusterControlPlaneSshConfigOutput) AuthorizedKey() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureClusterControlPlaneSshConfig) string { return v.AuthorizedKey }).(pulumi.StringOutput)
+}
+
+type AzureClusterControlPlaneSshConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureClusterControlPlaneSshConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureClusterControlPlaneSshConfig)(nil)).Elem()
+}
+
+func (o AzureClusterControlPlaneSshConfigPtrOutput) ToAzureClusterControlPlaneSshConfigPtrOutput() AzureClusterControlPlaneSshConfigPtrOutput {
+	return o
+}
+
+func (o AzureClusterControlPlaneSshConfigPtrOutput) ToAzureClusterControlPlaneSshConfigPtrOutputWithContext(ctx context.Context) AzureClusterControlPlaneSshConfigPtrOutput {
+	return o
+}
+
+func (o AzureClusterControlPlaneSshConfigPtrOutput) Elem() AzureClusterControlPlaneSshConfigOutput {
+	return o.ApplyT(func(v *AzureClusterControlPlaneSshConfig) AzureClusterControlPlaneSshConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AzureClusterControlPlaneSshConfig
+		return ret
+	}).(AzureClusterControlPlaneSshConfigOutput)
+}
+
+// Required. The SSH public key data for VMs managed by Anthos. This accepts the authorizedKeys file format used in OpenSSH according to the sshd(8) manual page.
+func (o AzureClusterControlPlaneSshConfigPtrOutput) AuthorizedKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureClusterControlPlaneSshConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthorizedKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type AzureClusterFleet struct {
+	// -
+	// The name of the managed Hub Membership resource associated to this cluster. Membership names are formatted as projects/<project-number>/locations/global/membership/<cluster-id>.
+	Membership *string `pulumi:"membership"`
+	// The project for the resource
+	Project *string `pulumi:"project"`
+}
+
+// AzureClusterFleetInput is an input type that accepts AzureClusterFleetArgs and AzureClusterFleetOutput values.
+// You can construct a concrete instance of `AzureClusterFleetInput` via:
+//
+//          AzureClusterFleetArgs{...}
+type AzureClusterFleetInput interface {
+	pulumi.Input
+
+	ToAzureClusterFleetOutput() AzureClusterFleetOutput
+	ToAzureClusterFleetOutputWithContext(context.Context) AzureClusterFleetOutput
+}
+
+type AzureClusterFleetArgs struct {
+	// -
+	// The name of the managed Hub Membership resource associated to this cluster. Membership names are formatted as projects/<project-number>/locations/global/membership/<cluster-id>.
+	Membership pulumi.StringPtrInput `pulumi:"membership"`
+	// The project for the resource
+	Project pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (AzureClusterFleetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureClusterFleet)(nil)).Elem()
+}
+
+func (i AzureClusterFleetArgs) ToAzureClusterFleetOutput() AzureClusterFleetOutput {
+	return i.ToAzureClusterFleetOutputWithContext(context.Background())
+}
+
+func (i AzureClusterFleetArgs) ToAzureClusterFleetOutputWithContext(ctx context.Context) AzureClusterFleetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterFleetOutput)
+}
+
+func (i AzureClusterFleetArgs) ToAzureClusterFleetPtrOutput() AzureClusterFleetPtrOutput {
+	return i.ToAzureClusterFleetPtrOutputWithContext(context.Background())
+}
+
+func (i AzureClusterFleetArgs) ToAzureClusterFleetPtrOutputWithContext(ctx context.Context) AzureClusterFleetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterFleetOutput).ToAzureClusterFleetPtrOutputWithContext(ctx)
+}
+
+// AzureClusterFleetPtrInput is an input type that accepts AzureClusterFleetArgs, AzureClusterFleetPtr and AzureClusterFleetPtrOutput values.
+// You can construct a concrete instance of `AzureClusterFleetPtrInput` via:
+//
+//          AzureClusterFleetArgs{...}
+//
+//  or:
+//
+//          nil
+type AzureClusterFleetPtrInput interface {
+	pulumi.Input
+
+	ToAzureClusterFleetPtrOutput() AzureClusterFleetPtrOutput
+	ToAzureClusterFleetPtrOutputWithContext(context.Context) AzureClusterFleetPtrOutput
+}
+
+type azureClusterFleetPtrType AzureClusterFleetArgs
+
+func AzureClusterFleetPtr(v *AzureClusterFleetArgs) AzureClusterFleetPtrInput {
+	return (*azureClusterFleetPtrType)(v)
+}
+
+func (*azureClusterFleetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureClusterFleet)(nil)).Elem()
+}
+
+func (i *azureClusterFleetPtrType) ToAzureClusterFleetPtrOutput() AzureClusterFleetPtrOutput {
+	return i.ToAzureClusterFleetPtrOutputWithContext(context.Background())
+}
+
+func (i *azureClusterFleetPtrType) ToAzureClusterFleetPtrOutputWithContext(ctx context.Context) AzureClusterFleetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterFleetPtrOutput)
+}
+
+type AzureClusterFleetOutput struct{ *pulumi.OutputState }
+
+func (AzureClusterFleetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureClusterFleet)(nil)).Elem()
+}
+
+func (o AzureClusterFleetOutput) ToAzureClusterFleetOutput() AzureClusterFleetOutput {
+	return o
+}
+
+func (o AzureClusterFleetOutput) ToAzureClusterFleetOutputWithContext(ctx context.Context) AzureClusterFleetOutput {
+	return o
+}
+
+func (o AzureClusterFleetOutput) ToAzureClusterFleetPtrOutput() AzureClusterFleetPtrOutput {
+	return o.ToAzureClusterFleetPtrOutputWithContext(context.Background())
+}
+
+func (o AzureClusterFleetOutput) ToAzureClusterFleetPtrOutputWithContext(ctx context.Context) AzureClusterFleetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureClusterFleet) *AzureClusterFleet {
+		return &v
+	}).(AzureClusterFleetPtrOutput)
+}
+
+// -
+// The name of the managed Hub Membership resource associated to this cluster. Membership names are formatted as projects/<project-number>/locations/global/membership/<cluster-id>.
+func (o AzureClusterFleetOutput) Membership() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureClusterFleet) *string { return v.Membership }).(pulumi.StringPtrOutput)
+}
+
+// The project for the resource
+func (o AzureClusterFleetOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureClusterFleet) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+type AzureClusterFleetPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureClusterFleetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureClusterFleet)(nil)).Elem()
+}
+
+func (o AzureClusterFleetPtrOutput) ToAzureClusterFleetPtrOutput() AzureClusterFleetPtrOutput {
+	return o
+}
+
+func (o AzureClusterFleetPtrOutput) ToAzureClusterFleetPtrOutputWithContext(ctx context.Context) AzureClusterFleetPtrOutput {
+	return o
+}
+
+func (o AzureClusterFleetPtrOutput) Elem() AzureClusterFleetOutput {
+	return o.ApplyT(func(v *AzureClusterFleet) AzureClusterFleet {
+		if v != nil {
+			return *v
+		}
+		var ret AzureClusterFleet
+		return ret
+	}).(AzureClusterFleetOutput)
+}
+
+// -
+// The name of the managed Hub Membership resource associated to this cluster. Membership names are formatted as projects/<project-number>/locations/global/membership/<cluster-id>.
+func (o AzureClusterFleetPtrOutput) Membership() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureClusterFleet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Membership
+	}).(pulumi.StringPtrOutput)
+}
+
+// The project for the resource
+func (o AzureClusterFleetPtrOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureClusterFleet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Project
+	}).(pulumi.StringPtrOutput)
+}
+
+type AzureClusterNetworking struct {
+	// Required. The IP address range of the pods in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All pods in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+	PodAddressCidrBlocks []string `pulumi:"podAddressCidrBlocks"`
+	// Required. The IP address range for services in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All services in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creating a cluster.
+	ServiceAddressCidrBlocks []string `pulumi:"serviceAddressCidrBlocks"`
+	// Required. The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*/resourceGroups/*/providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
+	VirtualNetworkId string `pulumi:"virtualNetworkId"`
+}
+
+// AzureClusterNetworkingInput is an input type that accepts AzureClusterNetworkingArgs and AzureClusterNetworkingOutput values.
+// You can construct a concrete instance of `AzureClusterNetworkingInput` via:
+//
+//          AzureClusterNetworkingArgs{...}
+type AzureClusterNetworkingInput interface {
+	pulumi.Input
+
+	ToAzureClusterNetworkingOutput() AzureClusterNetworkingOutput
+	ToAzureClusterNetworkingOutputWithContext(context.Context) AzureClusterNetworkingOutput
+}
+
+type AzureClusterNetworkingArgs struct {
+	// Required. The IP address range of the pods in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All pods in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+	PodAddressCidrBlocks pulumi.StringArrayInput `pulumi:"podAddressCidrBlocks"`
+	// Required. The IP address range for services in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All services in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creating a cluster.
+	ServiceAddressCidrBlocks pulumi.StringArrayInput `pulumi:"serviceAddressCidrBlocks"`
+	// Required. The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*/resourceGroups/*/providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
+	VirtualNetworkId pulumi.StringInput `pulumi:"virtualNetworkId"`
+}
+
+func (AzureClusterNetworkingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureClusterNetworking)(nil)).Elem()
+}
+
+func (i AzureClusterNetworkingArgs) ToAzureClusterNetworkingOutput() AzureClusterNetworkingOutput {
+	return i.ToAzureClusterNetworkingOutputWithContext(context.Background())
+}
+
+func (i AzureClusterNetworkingArgs) ToAzureClusterNetworkingOutputWithContext(ctx context.Context) AzureClusterNetworkingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterNetworkingOutput)
+}
+
+func (i AzureClusterNetworkingArgs) ToAzureClusterNetworkingPtrOutput() AzureClusterNetworkingPtrOutput {
+	return i.ToAzureClusterNetworkingPtrOutputWithContext(context.Background())
+}
+
+func (i AzureClusterNetworkingArgs) ToAzureClusterNetworkingPtrOutputWithContext(ctx context.Context) AzureClusterNetworkingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterNetworkingOutput).ToAzureClusterNetworkingPtrOutputWithContext(ctx)
+}
+
+// AzureClusterNetworkingPtrInput is an input type that accepts AzureClusterNetworkingArgs, AzureClusterNetworkingPtr and AzureClusterNetworkingPtrOutput values.
+// You can construct a concrete instance of `AzureClusterNetworkingPtrInput` via:
+//
+//          AzureClusterNetworkingArgs{...}
+//
+//  or:
+//
+//          nil
+type AzureClusterNetworkingPtrInput interface {
+	pulumi.Input
+
+	ToAzureClusterNetworkingPtrOutput() AzureClusterNetworkingPtrOutput
+	ToAzureClusterNetworkingPtrOutputWithContext(context.Context) AzureClusterNetworkingPtrOutput
+}
+
+type azureClusterNetworkingPtrType AzureClusterNetworkingArgs
+
+func AzureClusterNetworkingPtr(v *AzureClusterNetworkingArgs) AzureClusterNetworkingPtrInput {
+	return (*azureClusterNetworkingPtrType)(v)
+}
+
+func (*azureClusterNetworkingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureClusterNetworking)(nil)).Elem()
+}
+
+func (i *azureClusterNetworkingPtrType) ToAzureClusterNetworkingPtrOutput() AzureClusterNetworkingPtrOutput {
+	return i.ToAzureClusterNetworkingPtrOutputWithContext(context.Background())
+}
+
+func (i *azureClusterNetworkingPtrType) ToAzureClusterNetworkingPtrOutputWithContext(ctx context.Context) AzureClusterNetworkingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterNetworkingPtrOutput)
+}
+
+type AzureClusterNetworkingOutput struct{ *pulumi.OutputState }
+
+func (AzureClusterNetworkingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureClusterNetworking)(nil)).Elem()
+}
+
+func (o AzureClusterNetworkingOutput) ToAzureClusterNetworkingOutput() AzureClusterNetworkingOutput {
+	return o
+}
+
+func (o AzureClusterNetworkingOutput) ToAzureClusterNetworkingOutputWithContext(ctx context.Context) AzureClusterNetworkingOutput {
+	return o
+}
+
+func (o AzureClusterNetworkingOutput) ToAzureClusterNetworkingPtrOutput() AzureClusterNetworkingPtrOutput {
+	return o.ToAzureClusterNetworkingPtrOutputWithContext(context.Background())
+}
+
+func (o AzureClusterNetworkingOutput) ToAzureClusterNetworkingPtrOutputWithContext(ctx context.Context) AzureClusterNetworkingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureClusterNetworking) *AzureClusterNetworking {
+		return &v
+	}).(AzureClusterNetworkingPtrOutput)
+}
+
+// Required. The IP address range of the pods in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All pods in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+func (o AzureClusterNetworkingOutput) PodAddressCidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AzureClusterNetworking) []string { return v.PodAddressCidrBlocks }).(pulumi.StringArrayOutput)
+}
+
+// Required. The IP address range for services in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All services in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creating a cluster.
+func (o AzureClusterNetworkingOutput) ServiceAddressCidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AzureClusterNetworking) []string { return v.ServiceAddressCidrBlocks }).(pulumi.StringArrayOutput)
+}
+
+// Required. The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*/resourceGroups/*/providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
+func (o AzureClusterNetworkingOutput) VirtualNetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureClusterNetworking) string { return v.VirtualNetworkId }).(pulumi.StringOutput)
+}
+
+type AzureClusterNetworkingPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureClusterNetworkingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureClusterNetworking)(nil)).Elem()
+}
+
+func (o AzureClusterNetworkingPtrOutput) ToAzureClusterNetworkingPtrOutput() AzureClusterNetworkingPtrOutput {
+	return o
+}
+
+func (o AzureClusterNetworkingPtrOutput) ToAzureClusterNetworkingPtrOutputWithContext(ctx context.Context) AzureClusterNetworkingPtrOutput {
+	return o
+}
+
+func (o AzureClusterNetworkingPtrOutput) Elem() AzureClusterNetworkingOutput {
+	return o.ApplyT(func(v *AzureClusterNetworking) AzureClusterNetworking {
+		if v != nil {
+			return *v
+		}
+		var ret AzureClusterNetworking
+		return ret
+	}).(AzureClusterNetworkingOutput)
+}
+
+// Required. The IP address range of the pods in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All pods in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+func (o AzureClusterNetworkingPtrOutput) PodAddressCidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AzureClusterNetworking) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PodAddressCidrBlocks
+	}).(pulumi.StringArrayOutput)
+}
+
+// Required. The IP address range for services in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All services in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creating a cluster.
+func (o AzureClusterNetworkingPtrOutput) ServiceAddressCidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AzureClusterNetworking) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAddressCidrBlocks
+	}).(pulumi.StringArrayOutput)
+}
+
+// Required. The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*/resourceGroups/*/providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
+func (o AzureClusterNetworkingPtrOutput) VirtualNetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureClusterNetworking) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VirtualNetworkId
+	}).(pulumi.StringPtrOutput)
+}
+
+type AzureClusterWorkloadIdentityConfig struct {
+	IdentityProvider *string `pulumi:"identityProvider"`
+	IssuerUri        *string `pulumi:"issuerUri"`
+	WorkloadPool     *string `pulumi:"workloadPool"`
+}
+
+// AzureClusterWorkloadIdentityConfigInput is an input type that accepts AzureClusterWorkloadIdentityConfigArgs and AzureClusterWorkloadIdentityConfigOutput values.
+// You can construct a concrete instance of `AzureClusterWorkloadIdentityConfigInput` via:
+//
+//          AzureClusterWorkloadIdentityConfigArgs{...}
+type AzureClusterWorkloadIdentityConfigInput interface {
+	pulumi.Input
+
+	ToAzureClusterWorkloadIdentityConfigOutput() AzureClusterWorkloadIdentityConfigOutput
+	ToAzureClusterWorkloadIdentityConfigOutputWithContext(context.Context) AzureClusterWorkloadIdentityConfigOutput
+}
+
+type AzureClusterWorkloadIdentityConfigArgs struct {
+	IdentityProvider pulumi.StringPtrInput `pulumi:"identityProvider"`
+	IssuerUri        pulumi.StringPtrInput `pulumi:"issuerUri"`
+	WorkloadPool     pulumi.StringPtrInput `pulumi:"workloadPool"`
+}
+
+func (AzureClusterWorkloadIdentityConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureClusterWorkloadIdentityConfig)(nil)).Elem()
+}
+
+func (i AzureClusterWorkloadIdentityConfigArgs) ToAzureClusterWorkloadIdentityConfigOutput() AzureClusterWorkloadIdentityConfigOutput {
+	return i.ToAzureClusterWorkloadIdentityConfigOutputWithContext(context.Background())
+}
+
+func (i AzureClusterWorkloadIdentityConfigArgs) ToAzureClusterWorkloadIdentityConfigOutputWithContext(ctx context.Context) AzureClusterWorkloadIdentityConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterWorkloadIdentityConfigOutput)
+}
+
+// AzureClusterWorkloadIdentityConfigArrayInput is an input type that accepts AzureClusterWorkloadIdentityConfigArray and AzureClusterWorkloadIdentityConfigArrayOutput values.
+// You can construct a concrete instance of `AzureClusterWorkloadIdentityConfigArrayInput` via:
+//
+//          AzureClusterWorkloadIdentityConfigArray{ AzureClusterWorkloadIdentityConfigArgs{...} }
+type AzureClusterWorkloadIdentityConfigArrayInput interface {
+	pulumi.Input
+
+	ToAzureClusterWorkloadIdentityConfigArrayOutput() AzureClusterWorkloadIdentityConfigArrayOutput
+	ToAzureClusterWorkloadIdentityConfigArrayOutputWithContext(context.Context) AzureClusterWorkloadIdentityConfigArrayOutput
+}
+
+type AzureClusterWorkloadIdentityConfigArray []AzureClusterWorkloadIdentityConfigInput
+
+func (AzureClusterWorkloadIdentityConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AzureClusterWorkloadIdentityConfig)(nil)).Elem()
+}
+
+func (i AzureClusterWorkloadIdentityConfigArray) ToAzureClusterWorkloadIdentityConfigArrayOutput() AzureClusterWorkloadIdentityConfigArrayOutput {
+	return i.ToAzureClusterWorkloadIdentityConfigArrayOutputWithContext(context.Background())
+}
+
+func (i AzureClusterWorkloadIdentityConfigArray) ToAzureClusterWorkloadIdentityConfigArrayOutputWithContext(ctx context.Context) AzureClusterWorkloadIdentityConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterWorkloadIdentityConfigArrayOutput)
+}
+
+type AzureClusterWorkloadIdentityConfigOutput struct{ *pulumi.OutputState }
+
+func (AzureClusterWorkloadIdentityConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureClusterWorkloadIdentityConfig)(nil)).Elem()
+}
+
+func (o AzureClusterWorkloadIdentityConfigOutput) ToAzureClusterWorkloadIdentityConfigOutput() AzureClusterWorkloadIdentityConfigOutput {
+	return o
+}
+
+func (o AzureClusterWorkloadIdentityConfigOutput) ToAzureClusterWorkloadIdentityConfigOutputWithContext(ctx context.Context) AzureClusterWorkloadIdentityConfigOutput {
+	return o
+}
+
+func (o AzureClusterWorkloadIdentityConfigOutput) IdentityProvider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureClusterWorkloadIdentityConfig) *string { return v.IdentityProvider }).(pulumi.StringPtrOutput)
+}
+
+func (o AzureClusterWorkloadIdentityConfigOutput) IssuerUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureClusterWorkloadIdentityConfig) *string { return v.IssuerUri }).(pulumi.StringPtrOutput)
+}
+
+func (o AzureClusterWorkloadIdentityConfigOutput) WorkloadPool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureClusterWorkloadIdentityConfig) *string { return v.WorkloadPool }).(pulumi.StringPtrOutput)
+}
+
+type AzureClusterWorkloadIdentityConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (AzureClusterWorkloadIdentityConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AzureClusterWorkloadIdentityConfig)(nil)).Elem()
+}
+
+func (o AzureClusterWorkloadIdentityConfigArrayOutput) ToAzureClusterWorkloadIdentityConfigArrayOutput() AzureClusterWorkloadIdentityConfigArrayOutput {
+	return o
+}
+
+func (o AzureClusterWorkloadIdentityConfigArrayOutput) ToAzureClusterWorkloadIdentityConfigArrayOutputWithContext(ctx context.Context) AzureClusterWorkloadIdentityConfigArrayOutput {
+	return o
+}
+
+func (o AzureClusterWorkloadIdentityConfigArrayOutput) Index(i pulumi.IntInput) AzureClusterWorkloadIdentityConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AzureClusterWorkloadIdentityConfig {
+		return vs[0].([]AzureClusterWorkloadIdentityConfig)[vs[1].(int)]
+	}).(AzureClusterWorkloadIdentityConfigOutput)
+}
+
+type AzureNodePoolAutoscaling struct {
+	// Required. Maximum number of nodes in the node pool. Must be >= min_node_count.
+	MaxNodeCount int `pulumi:"maxNodeCount"`
+	// Required. Minimum number of nodes in the node pool. Must be >= 1 and <= max_node_count.
+	MinNodeCount int `pulumi:"minNodeCount"`
+}
+
+// AzureNodePoolAutoscalingInput is an input type that accepts AzureNodePoolAutoscalingArgs and AzureNodePoolAutoscalingOutput values.
+// You can construct a concrete instance of `AzureNodePoolAutoscalingInput` via:
+//
+//          AzureNodePoolAutoscalingArgs{...}
+type AzureNodePoolAutoscalingInput interface {
+	pulumi.Input
+
+	ToAzureNodePoolAutoscalingOutput() AzureNodePoolAutoscalingOutput
+	ToAzureNodePoolAutoscalingOutputWithContext(context.Context) AzureNodePoolAutoscalingOutput
+}
+
+type AzureNodePoolAutoscalingArgs struct {
+	// Required. Maximum number of nodes in the node pool. Must be >= min_node_count.
+	MaxNodeCount pulumi.IntInput `pulumi:"maxNodeCount"`
+	// Required. Minimum number of nodes in the node pool. Must be >= 1 and <= max_node_count.
+	MinNodeCount pulumi.IntInput `pulumi:"minNodeCount"`
+}
+
+func (AzureNodePoolAutoscalingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureNodePoolAutoscaling)(nil)).Elem()
+}
+
+func (i AzureNodePoolAutoscalingArgs) ToAzureNodePoolAutoscalingOutput() AzureNodePoolAutoscalingOutput {
+	return i.ToAzureNodePoolAutoscalingOutputWithContext(context.Background())
+}
+
+func (i AzureNodePoolAutoscalingArgs) ToAzureNodePoolAutoscalingOutputWithContext(ctx context.Context) AzureNodePoolAutoscalingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureNodePoolAutoscalingOutput)
+}
+
+func (i AzureNodePoolAutoscalingArgs) ToAzureNodePoolAutoscalingPtrOutput() AzureNodePoolAutoscalingPtrOutput {
+	return i.ToAzureNodePoolAutoscalingPtrOutputWithContext(context.Background())
+}
+
+func (i AzureNodePoolAutoscalingArgs) ToAzureNodePoolAutoscalingPtrOutputWithContext(ctx context.Context) AzureNodePoolAutoscalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureNodePoolAutoscalingOutput).ToAzureNodePoolAutoscalingPtrOutputWithContext(ctx)
+}
+
+// AzureNodePoolAutoscalingPtrInput is an input type that accepts AzureNodePoolAutoscalingArgs, AzureNodePoolAutoscalingPtr and AzureNodePoolAutoscalingPtrOutput values.
+// You can construct a concrete instance of `AzureNodePoolAutoscalingPtrInput` via:
+//
+//          AzureNodePoolAutoscalingArgs{...}
+//
+//  or:
+//
+//          nil
+type AzureNodePoolAutoscalingPtrInput interface {
+	pulumi.Input
+
+	ToAzureNodePoolAutoscalingPtrOutput() AzureNodePoolAutoscalingPtrOutput
+	ToAzureNodePoolAutoscalingPtrOutputWithContext(context.Context) AzureNodePoolAutoscalingPtrOutput
+}
+
+type azureNodePoolAutoscalingPtrType AzureNodePoolAutoscalingArgs
+
+func AzureNodePoolAutoscalingPtr(v *AzureNodePoolAutoscalingArgs) AzureNodePoolAutoscalingPtrInput {
+	return (*azureNodePoolAutoscalingPtrType)(v)
+}
+
+func (*azureNodePoolAutoscalingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureNodePoolAutoscaling)(nil)).Elem()
+}
+
+func (i *azureNodePoolAutoscalingPtrType) ToAzureNodePoolAutoscalingPtrOutput() AzureNodePoolAutoscalingPtrOutput {
+	return i.ToAzureNodePoolAutoscalingPtrOutputWithContext(context.Background())
+}
+
+func (i *azureNodePoolAutoscalingPtrType) ToAzureNodePoolAutoscalingPtrOutputWithContext(ctx context.Context) AzureNodePoolAutoscalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureNodePoolAutoscalingPtrOutput)
+}
+
+type AzureNodePoolAutoscalingOutput struct{ *pulumi.OutputState }
+
+func (AzureNodePoolAutoscalingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureNodePoolAutoscaling)(nil)).Elem()
+}
+
+func (o AzureNodePoolAutoscalingOutput) ToAzureNodePoolAutoscalingOutput() AzureNodePoolAutoscalingOutput {
+	return o
+}
+
+func (o AzureNodePoolAutoscalingOutput) ToAzureNodePoolAutoscalingOutputWithContext(ctx context.Context) AzureNodePoolAutoscalingOutput {
+	return o
+}
+
+func (o AzureNodePoolAutoscalingOutput) ToAzureNodePoolAutoscalingPtrOutput() AzureNodePoolAutoscalingPtrOutput {
+	return o.ToAzureNodePoolAutoscalingPtrOutputWithContext(context.Background())
+}
+
+func (o AzureNodePoolAutoscalingOutput) ToAzureNodePoolAutoscalingPtrOutputWithContext(ctx context.Context) AzureNodePoolAutoscalingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureNodePoolAutoscaling) *AzureNodePoolAutoscaling {
+		return &v
+	}).(AzureNodePoolAutoscalingPtrOutput)
+}
+
+// Required. Maximum number of nodes in the node pool. Must be >= min_node_count.
+func (o AzureNodePoolAutoscalingOutput) MaxNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v AzureNodePoolAutoscaling) int { return v.MaxNodeCount }).(pulumi.IntOutput)
+}
+
+// Required. Minimum number of nodes in the node pool. Must be >= 1 and <= max_node_count.
+func (o AzureNodePoolAutoscalingOutput) MinNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v AzureNodePoolAutoscaling) int { return v.MinNodeCount }).(pulumi.IntOutput)
+}
+
+type AzureNodePoolAutoscalingPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureNodePoolAutoscalingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureNodePoolAutoscaling)(nil)).Elem()
+}
+
+func (o AzureNodePoolAutoscalingPtrOutput) ToAzureNodePoolAutoscalingPtrOutput() AzureNodePoolAutoscalingPtrOutput {
+	return o
+}
+
+func (o AzureNodePoolAutoscalingPtrOutput) ToAzureNodePoolAutoscalingPtrOutputWithContext(ctx context.Context) AzureNodePoolAutoscalingPtrOutput {
+	return o
+}
+
+func (o AzureNodePoolAutoscalingPtrOutput) Elem() AzureNodePoolAutoscalingOutput {
+	return o.ApplyT(func(v *AzureNodePoolAutoscaling) AzureNodePoolAutoscaling {
+		if v != nil {
+			return *v
+		}
+		var ret AzureNodePoolAutoscaling
+		return ret
+	}).(AzureNodePoolAutoscalingOutput)
+}
+
+// Required. Maximum number of nodes in the node pool. Must be >= min_node_count.
+func (o AzureNodePoolAutoscalingPtrOutput) MaxNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AzureNodePoolAutoscaling) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Required. Minimum number of nodes in the node pool. Must be >= 1 and <= max_node_count.
+func (o AzureNodePoolAutoscalingPtrOutput) MinNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AzureNodePoolAutoscaling) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MinNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type AzureNodePoolConfig struct {
+	// Optional. Configuration related to the root volume provisioned for each node pool machine. When unspecified, it defaults to a 32-GiB Azure Disk.
+	RootVolume *AzureNodePoolConfigRootVolume `pulumi:"rootVolume"`
+	// Required. SSH configuration for how to access the node pool machines.
+	SshConfig AzureNodePoolConfigSshConfig `pulumi:"sshConfig"`
+	// Optional. A set of tags to apply to all underlying Azure resources for this node pool. This currently only includes Virtual Machine Scale Sets. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
+	Tags map[string]string `pulumi:"tags"`
+	// Optional. The Azure VM size name. Example: `Standard_DS2_v2`. See (/anthos/clusters/docs/azure/reference/supported-vms) for options. When unspecified, it defaults to `Standard_DS2_v2`.
+	VmSize *string `pulumi:"vmSize"`
+}
+
+// AzureNodePoolConfigInput is an input type that accepts AzureNodePoolConfigArgs and AzureNodePoolConfigOutput values.
+// You can construct a concrete instance of `AzureNodePoolConfigInput` via:
+//
+//          AzureNodePoolConfigArgs{...}
+type AzureNodePoolConfigInput interface {
+	pulumi.Input
+
+	ToAzureNodePoolConfigOutput() AzureNodePoolConfigOutput
+	ToAzureNodePoolConfigOutputWithContext(context.Context) AzureNodePoolConfigOutput
+}
+
+type AzureNodePoolConfigArgs struct {
+	// Optional. Configuration related to the root volume provisioned for each node pool machine. When unspecified, it defaults to a 32-GiB Azure Disk.
+	RootVolume AzureNodePoolConfigRootVolumePtrInput `pulumi:"rootVolume"`
+	// Required. SSH configuration for how to access the node pool machines.
+	SshConfig AzureNodePoolConfigSshConfigInput `pulumi:"sshConfig"`
+	// Optional. A set of tags to apply to all underlying Azure resources for this node pool. This currently only includes Virtual Machine Scale Sets. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Optional. The Azure VM size name. Example: `Standard_DS2_v2`. See (/anthos/clusters/docs/azure/reference/supported-vms) for options. When unspecified, it defaults to `Standard_DS2_v2`.
+	VmSize pulumi.StringPtrInput `pulumi:"vmSize"`
+}
+
+func (AzureNodePoolConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureNodePoolConfig)(nil)).Elem()
+}
+
+func (i AzureNodePoolConfigArgs) ToAzureNodePoolConfigOutput() AzureNodePoolConfigOutput {
+	return i.ToAzureNodePoolConfigOutputWithContext(context.Background())
+}
+
+func (i AzureNodePoolConfigArgs) ToAzureNodePoolConfigOutputWithContext(ctx context.Context) AzureNodePoolConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureNodePoolConfigOutput)
+}
+
+func (i AzureNodePoolConfigArgs) ToAzureNodePoolConfigPtrOutput() AzureNodePoolConfigPtrOutput {
+	return i.ToAzureNodePoolConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AzureNodePoolConfigArgs) ToAzureNodePoolConfigPtrOutputWithContext(ctx context.Context) AzureNodePoolConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureNodePoolConfigOutput).ToAzureNodePoolConfigPtrOutputWithContext(ctx)
+}
+
+// AzureNodePoolConfigPtrInput is an input type that accepts AzureNodePoolConfigArgs, AzureNodePoolConfigPtr and AzureNodePoolConfigPtrOutput values.
+// You can construct a concrete instance of `AzureNodePoolConfigPtrInput` via:
+//
+//          AzureNodePoolConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type AzureNodePoolConfigPtrInput interface {
+	pulumi.Input
+
+	ToAzureNodePoolConfigPtrOutput() AzureNodePoolConfigPtrOutput
+	ToAzureNodePoolConfigPtrOutputWithContext(context.Context) AzureNodePoolConfigPtrOutput
+}
+
+type azureNodePoolConfigPtrType AzureNodePoolConfigArgs
+
+func AzureNodePoolConfigPtr(v *AzureNodePoolConfigArgs) AzureNodePoolConfigPtrInput {
+	return (*azureNodePoolConfigPtrType)(v)
+}
+
+func (*azureNodePoolConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureNodePoolConfig)(nil)).Elem()
+}
+
+func (i *azureNodePoolConfigPtrType) ToAzureNodePoolConfigPtrOutput() AzureNodePoolConfigPtrOutput {
+	return i.ToAzureNodePoolConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *azureNodePoolConfigPtrType) ToAzureNodePoolConfigPtrOutputWithContext(ctx context.Context) AzureNodePoolConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureNodePoolConfigPtrOutput)
+}
+
+type AzureNodePoolConfigOutput struct{ *pulumi.OutputState }
+
+func (AzureNodePoolConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureNodePoolConfig)(nil)).Elem()
+}
+
+func (o AzureNodePoolConfigOutput) ToAzureNodePoolConfigOutput() AzureNodePoolConfigOutput {
+	return o
+}
+
+func (o AzureNodePoolConfigOutput) ToAzureNodePoolConfigOutputWithContext(ctx context.Context) AzureNodePoolConfigOutput {
+	return o
+}
+
+func (o AzureNodePoolConfigOutput) ToAzureNodePoolConfigPtrOutput() AzureNodePoolConfigPtrOutput {
+	return o.ToAzureNodePoolConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AzureNodePoolConfigOutput) ToAzureNodePoolConfigPtrOutputWithContext(ctx context.Context) AzureNodePoolConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureNodePoolConfig) *AzureNodePoolConfig {
+		return &v
+	}).(AzureNodePoolConfigPtrOutput)
+}
+
+// Optional. Configuration related to the root volume provisioned for each node pool machine. When unspecified, it defaults to a 32-GiB Azure Disk.
+func (o AzureNodePoolConfigOutput) RootVolume() AzureNodePoolConfigRootVolumePtrOutput {
+	return o.ApplyT(func(v AzureNodePoolConfig) *AzureNodePoolConfigRootVolume { return v.RootVolume }).(AzureNodePoolConfigRootVolumePtrOutput)
+}
+
+// Required. SSH configuration for how to access the node pool machines.
+func (o AzureNodePoolConfigOutput) SshConfig() AzureNodePoolConfigSshConfigOutput {
+	return o.ApplyT(func(v AzureNodePoolConfig) AzureNodePoolConfigSshConfig { return v.SshConfig }).(AzureNodePoolConfigSshConfigOutput)
+}
+
+// Optional. A set of tags to apply to all underlying Azure resources for this node pool. This currently only includes Virtual Machine Scale Sets. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
+func (o AzureNodePoolConfigOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AzureNodePoolConfig) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Optional. The Azure VM size name. Example: `Standard_DS2_v2`. See (/anthos/clusters/docs/azure/reference/supported-vms) for options. When unspecified, it defaults to `Standard_DS2_v2`.
+func (o AzureNodePoolConfigOutput) VmSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureNodePoolConfig) *string { return v.VmSize }).(pulumi.StringPtrOutput)
+}
+
+type AzureNodePoolConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureNodePoolConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureNodePoolConfig)(nil)).Elem()
+}
+
+func (o AzureNodePoolConfigPtrOutput) ToAzureNodePoolConfigPtrOutput() AzureNodePoolConfigPtrOutput {
+	return o
+}
+
+func (o AzureNodePoolConfigPtrOutput) ToAzureNodePoolConfigPtrOutputWithContext(ctx context.Context) AzureNodePoolConfigPtrOutput {
+	return o
+}
+
+func (o AzureNodePoolConfigPtrOutput) Elem() AzureNodePoolConfigOutput {
+	return o.ApplyT(func(v *AzureNodePoolConfig) AzureNodePoolConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AzureNodePoolConfig
+		return ret
+	}).(AzureNodePoolConfigOutput)
+}
+
+// Optional. Configuration related to the root volume provisioned for each node pool machine. When unspecified, it defaults to a 32-GiB Azure Disk.
+func (o AzureNodePoolConfigPtrOutput) RootVolume() AzureNodePoolConfigRootVolumePtrOutput {
+	return o.ApplyT(func(v *AzureNodePoolConfig) *AzureNodePoolConfigRootVolume {
+		if v == nil {
+			return nil
+		}
+		return v.RootVolume
+	}).(AzureNodePoolConfigRootVolumePtrOutput)
+}
+
+// Required. SSH configuration for how to access the node pool machines.
+func (o AzureNodePoolConfigPtrOutput) SshConfig() AzureNodePoolConfigSshConfigPtrOutput {
+	return o.ApplyT(func(v *AzureNodePoolConfig) *AzureNodePoolConfigSshConfig {
+		if v == nil {
+			return nil
+		}
+		return &v.SshConfig
+	}).(AzureNodePoolConfigSshConfigPtrOutput)
+}
+
+// Optional. A set of tags to apply to all underlying Azure resources for this node pool. This currently only includes Virtual Machine Scale Sets. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
+func (o AzureNodePoolConfigPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AzureNodePoolConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Optional. The Azure VM size name. Example: `Standard_DS2_v2`. See (/anthos/clusters/docs/azure/reference/supported-vms) for options. When unspecified, it defaults to `Standard_DS2_v2`.
+func (o AzureNodePoolConfigPtrOutput) VmSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureNodePoolConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VmSize
+	}).(pulumi.StringPtrOutput)
+}
+
+type AzureNodePoolConfigRootVolume struct {
+	// Optional. The size of the disk, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+	SizeGib *int `pulumi:"sizeGib"`
+}
+
+// AzureNodePoolConfigRootVolumeInput is an input type that accepts AzureNodePoolConfigRootVolumeArgs and AzureNodePoolConfigRootVolumeOutput values.
+// You can construct a concrete instance of `AzureNodePoolConfigRootVolumeInput` via:
+//
+//          AzureNodePoolConfigRootVolumeArgs{...}
+type AzureNodePoolConfigRootVolumeInput interface {
+	pulumi.Input
+
+	ToAzureNodePoolConfigRootVolumeOutput() AzureNodePoolConfigRootVolumeOutput
+	ToAzureNodePoolConfigRootVolumeOutputWithContext(context.Context) AzureNodePoolConfigRootVolumeOutput
+}
+
+type AzureNodePoolConfigRootVolumeArgs struct {
+	// Optional. The size of the disk, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+	SizeGib pulumi.IntPtrInput `pulumi:"sizeGib"`
+}
+
+func (AzureNodePoolConfigRootVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureNodePoolConfigRootVolume)(nil)).Elem()
+}
+
+func (i AzureNodePoolConfigRootVolumeArgs) ToAzureNodePoolConfigRootVolumeOutput() AzureNodePoolConfigRootVolumeOutput {
+	return i.ToAzureNodePoolConfigRootVolumeOutputWithContext(context.Background())
+}
+
+func (i AzureNodePoolConfigRootVolumeArgs) ToAzureNodePoolConfigRootVolumeOutputWithContext(ctx context.Context) AzureNodePoolConfigRootVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureNodePoolConfigRootVolumeOutput)
+}
+
+func (i AzureNodePoolConfigRootVolumeArgs) ToAzureNodePoolConfigRootVolumePtrOutput() AzureNodePoolConfigRootVolumePtrOutput {
+	return i.ToAzureNodePoolConfigRootVolumePtrOutputWithContext(context.Background())
+}
+
+func (i AzureNodePoolConfigRootVolumeArgs) ToAzureNodePoolConfigRootVolumePtrOutputWithContext(ctx context.Context) AzureNodePoolConfigRootVolumePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureNodePoolConfigRootVolumeOutput).ToAzureNodePoolConfigRootVolumePtrOutputWithContext(ctx)
+}
+
+// AzureNodePoolConfigRootVolumePtrInput is an input type that accepts AzureNodePoolConfigRootVolumeArgs, AzureNodePoolConfigRootVolumePtr and AzureNodePoolConfigRootVolumePtrOutput values.
+// You can construct a concrete instance of `AzureNodePoolConfigRootVolumePtrInput` via:
+//
+//          AzureNodePoolConfigRootVolumeArgs{...}
+//
+//  or:
+//
+//          nil
+type AzureNodePoolConfigRootVolumePtrInput interface {
+	pulumi.Input
+
+	ToAzureNodePoolConfigRootVolumePtrOutput() AzureNodePoolConfigRootVolumePtrOutput
+	ToAzureNodePoolConfigRootVolumePtrOutputWithContext(context.Context) AzureNodePoolConfigRootVolumePtrOutput
+}
+
+type azureNodePoolConfigRootVolumePtrType AzureNodePoolConfigRootVolumeArgs
+
+func AzureNodePoolConfigRootVolumePtr(v *AzureNodePoolConfigRootVolumeArgs) AzureNodePoolConfigRootVolumePtrInput {
+	return (*azureNodePoolConfigRootVolumePtrType)(v)
+}
+
+func (*azureNodePoolConfigRootVolumePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureNodePoolConfigRootVolume)(nil)).Elem()
+}
+
+func (i *azureNodePoolConfigRootVolumePtrType) ToAzureNodePoolConfigRootVolumePtrOutput() AzureNodePoolConfigRootVolumePtrOutput {
+	return i.ToAzureNodePoolConfigRootVolumePtrOutputWithContext(context.Background())
+}
+
+func (i *azureNodePoolConfigRootVolumePtrType) ToAzureNodePoolConfigRootVolumePtrOutputWithContext(ctx context.Context) AzureNodePoolConfigRootVolumePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureNodePoolConfigRootVolumePtrOutput)
+}
+
+type AzureNodePoolConfigRootVolumeOutput struct{ *pulumi.OutputState }
+
+func (AzureNodePoolConfigRootVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureNodePoolConfigRootVolume)(nil)).Elem()
+}
+
+func (o AzureNodePoolConfigRootVolumeOutput) ToAzureNodePoolConfigRootVolumeOutput() AzureNodePoolConfigRootVolumeOutput {
+	return o
+}
+
+func (o AzureNodePoolConfigRootVolumeOutput) ToAzureNodePoolConfigRootVolumeOutputWithContext(ctx context.Context) AzureNodePoolConfigRootVolumeOutput {
+	return o
+}
+
+func (o AzureNodePoolConfigRootVolumeOutput) ToAzureNodePoolConfigRootVolumePtrOutput() AzureNodePoolConfigRootVolumePtrOutput {
+	return o.ToAzureNodePoolConfigRootVolumePtrOutputWithContext(context.Background())
+}
+
+func (o AzureNodePoolConfigRootVolumeOutput) ToAzureNodePoolConfigRootVolumePtrOutputWithContext(ctx context.Context) AzureNodePoolConfigRootVolumePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureNodePoolConfigRootVolume) *AzureNodePoolConfigRootVolume {
+		return &v
+	}).(AzureNodePoolConfigRootVolumePtrOutput)
+}
+
+// Optional. The size of the disk, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+func (o AzureNodePoolConfigRootVolumeOutput) SizeGib() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AzureNodePoolConfigRootVolume) *int { return v.SizeGib }).(pulumi.IntPtrOutput)
+}
+
+type AzureNodePoolConfigRootVolumePtrOutput struct{ *pulumi.OutputState }
+
+func (AzureNodePoolConfigRootVolumePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureNodePoolConfigRootVolume)(nil)).Elem()
+}
+
+func (o AzureNodePoolConfigRootVolumePtrOutput) ToAzureNodePoolConfigRootVolumePtrOutput() AzureNodePoolConfigRootVolumePtrOutput {
+	return o
+}
+
+func (o AzureNodePoolConfigRootVolumePtrOutput) ToAzureNodePoolConfigRootVolumePtrOutputWithContext(ctx context.Context) AzureNodePoolConfigRootVolumePtrOutput {
+	return o
+}
+
+func (o AzureNodePoolConfigRootVolumePtrOutput) Elem() AzureNodePoolConfigRootVolumeOutput {
+	return o.ApplyT(func(v *AzureNodePoolConfigRootVolume) AzureNodePoolConfigRootVolume {
+		if v != nil {
+			return *v
+		}
+		var ret AzureNodePoolConfigRootVolume
+		return ret
+	}).(AzureNodePoolConfigRootVolumeOutput)
+}
+
+// Optional. The size of the disk, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+func (o AzureNodePoolConfigRootVolumePtrOutput) SizeGib() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AzureNodePoolConfigRootVolume) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SizeGib
+	}).(pulumi.IntPtrOutput)
+}
+
+type AzureNodePoolConfigSshConfig struct {
+	// Required. The SSH public key data for VMs managed by Anthos. This accepts the authorizedKeys file format used in OpenSSH according to the sshd(8) manual page.
+	AuthorizedKey string `pulumi:"authorizedKey"`
+}
+
+// AzureNodePoolConfigSshConfigInput is an input type that accepts AzureNodePoolConfigSshConfigArgs and AzureNodePoolConfigSshConfigOutput values.
+// You can construct a concrete instance of `AzureNodePoolConfigSshConfigInput` via:
+//
+//          AzureNodePoolConfigSshConfigArgs{...}
+type AzureNodePoolConfigSshConfigInput interface {
+	pulumi.Input
+
+	ToAzureNodePoolConfigSshConfigOutput() AzureNodePoolConfigSshConfigOutput
+	ToAzureNodePoolConfigSshConfigOutputWithContext(context.Context) AzureNodePoolConfigSshConfigOutput
+}
+
+type AzureNodePoolConfigSshConfigArgs struct {
+	// Required. The SSH public key data for VMs managed by Anthos. This accepts the authorizedKeys file format used in OpenSSH according to the sshd(8) manual page.
+	AuthorizedKey pulumi.StringInput `pulumi:"authorizedKey"`
+}
+
+func (AzureNodePoolConfigSshConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureNodePoolConfigSshConfig)(nil)).Elem()
+}
+
+func (i AzureNodePoolConfigSshConfigArgs) ToAzureNodePoolConfigSshConfigOutput() AzureNodePoolConfigSshConfigOutput {
+	return i.ToAzureNodePoolConfigSshConfigOutputWithContext(context.Background())
+}
+
+func (i AzureNodePoolConfigSshConfigArgs) ToAzureNodePoolConfigSshConfigOutputWithContext(ctx context.Context) AzureNodePoolConfigSshConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureNodePoolConfigSshConfigOutput)
+}
+
+func (i AzureNodePoolConfigSshConfigArgs) ToAzureNodePoolConfigSshConfigPtrOutput() AzureNodePoolConfigSshConfigPtrOutput {
+	return i.ToAzureNodePoolConfigSshConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AzureNodePoolConfigSshConfigArgs) ToAzureNodePoolConfigSshConfigPtrOutputWithContext(ctx context.Context) AzureNodePoolConfigSshConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureNodePoolConfigSshConfigOutput).ToAzureNodePoolConfigSshConfigPtrOutputWithContext(ctx)
+}
+
+// AzureNodePoolConfigSshConfigPtrInput is an input type that accepts AzureNodePoolConfigSshConfigArgs, AzureNodePoolConfigSshConfigPtr and AzureNodePoolConfigSshConfigPtrOutput values.
+// You can construct a concrete instance of `AzureNodePoolConfigSshConfigPtrInput` via:
+//
+//          AzureNodePoolConfigSshConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type AzureNodePoolConfigSshConfigPtrInput interface {
+	pulumi.Input
+
+	ToAzureNodePoolConfigSshConfigPtrOutput() AzureNodePoolConfigSshConfigPtrOutput
+	ToAzureNodePoolConfigSshConfigPtrOutputWithContext(context.Context) AzureNodePoolConfigSshConfigPtrOutput
+}
+
+type azureNodePoolConfigSshConfigPtrType AzureNodePoolConfigSshConfigArgs
+
+func AzureNodePoolConfigSshConfigPtr(v *AzureNodePoolConfigSshConfigArgs) AzureNodePoolConfigSshConfigPtrInput {
+	return (*azureNodePoolConfigSshConfigPtrType)(v)
+}
+
+func (*azureNodePoolConfigSshConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureNodePoolConfigSshConfig)(nil)).Elem()
+}
+
+func (i *azureNodePoolConfigSshConfigPtrType) ToAzureNodePoolConfigSshConfigPtrOutput() AzureNodePoolConfigSshConfigPtrOutput {
+	return i.ToAzureNodePoolConfigSshConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *azureNodePoolConfigSshConfigPtrType) ToAzureNodePoolConfigSshConfigPtrOutputWithContext(ctx context.Context) AzureNodePoolConfigSshConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureNodePoolConfigSshConfigPtrOutput)
+}
+
+type AzureNodePoolConfigSshConfigOutput struct{ *pulumi.OutputState }
+
+func (AzureNodePoolConfigSshConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureNodePoolConfigSshConfig)(nil)).Elem()
+}
+
+func (o AzureNodePoolConfigSshConfigOutput) ToAzureNodePoolConfigSshConfigOutput() AzureNodePoolConfigSshConfigOutput {
+	return o
+}
+
+func (o AzureNodePoolConfigSshConfigOutput) ToAzureNodePoolConfigSshConfigOutputWithContext(ctx context.Context) AzureNodePoolConfigSshConfigOutput {
+	return o
+}
+
+func (o AzureNodePoolConfigSshConfigOutput) ToAzureNodePoolConfigSshConfigPtrOutput() AzureNodePoolConfigSshConfigPtrOutput {
+	return o.ToAzureNodePoolConfigSshConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AzureNodePoolConfigSshConfigOutput) ToAzureNodePoolConfigSshConfigPtrOutputWithContext(ctx context.Context) AzureNodePoolConfigSshConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureNodePoolConfigSshConfig) *AzureNodePoolConfigSshConfig {
+		return &v
+	}).(AzureNodePoolConfigSshConfigPtrOutput)
+}
+
+// Required. The SSH public key data for VMs managed by Anthos. This accepts the authorizedKeys file format used in OpenSSH according to the sshd(8) manual page.
+func (o AzureNodePoolConfigSshConfigOutput) AuthorizedKey() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureNodePoolConfigSshConfig) string { return v.AuthorizedKey }).(pulumi.StringOutput)
+}
+
+type AzureNodePoolConfigSshConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureNodePoolConfigSshConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureNodePoolConfigSshConfig)(nil)).Elem()
+}
+
+func (o AzureNodePoolConfigSshConfigPtrOutput) ToAzureNodePoolConfigSshConfigPtrOutput() AzureNodePoolConfigSshConfigPtrOutput {
+	return o
+}
+
+func (o AzureNodePoolConfigSshConfigPtrOutput) ToAzureNodePoolConfigSshConfigPtrOutputWithContext(ctx context.Context) AzureNodePoolConfigSshConfigPtrOutput {
+	return o
+}
+
+func (o AzureNodePoolConfigSshConfigPtrOutput) Elem() AzureNodePoolConfigSshConfigOutput {
+	return o.ApplyT(func(v *AzureNodePoolConfigSshConfig) AzureNodePoolConfigSshConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AzureNodePoolConfigSshConfig
+		return ret
+	}).(AzureNodePoolConfigSshConfigOutput)
+}
+
+// Required. The SSH public key data for VMs managed by Anthos. This accepts the authorizedKeys file format used in OpenSSH according to the sshd(8) manual page.
+func (o AzureNodePoolConfigSshConfigPtrOutput) AuthorizedKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureNodePoolConfigSshConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthorizedKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type AzureNodePoolMaxPodsConstraint struct {
+	// Required. The maximum number of pods to schedule on a single node.
+	MaxPodsPerNode int `pulumi:"maxPodsPerNode"`
+}
+
+// AzureNodePoolMaxPodsConstraintInput is an input type that accepts AzureNodePoolMaxPodsConstraintArgs and AzureNodePoolMaxPodsConstraintOutput values.
+// You can construct a concrete instance of `AzureNodePoolMaxPodsConstraintInput` via:
+//
+//          AzureNodePoolMaxPodsConstraintArgs{...}
+type AzureNodePoolMaxPodsConstraintInput interface {
+	pulumi.Input
+
+	ToAzureNodePoolMaxPodsConstraintOutput() AzureNodePoolMaxPodsConstraintOutput
+	ToAzureNodePoolMaxPodsConstraintOutputWithContext(context.Context) AzureNodePoolMaxPodsConstraintOutput
+}
+
+type AzureNodePoolMaxPodsConstraintArgs struct {
+	// Required. The maximum number of pods to schedule on a single node.
+	MaxPodsPerNode pulumi.IntInput `pulumi:"maxPodsPerNode"`
+}
+
+func (AzureNodePoolMaxPodsConstraintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureNodePoolMaxPodsConstraint)(nil)).Elem()
+}
+
+func (i AzureNodePoolMaxPodsConstraintArgs) ToAzureNodePoolMaxPodsConstraintOutput() AzureNodePoolMaxPodsConstraintOutput {
+	return i.ToAzureNodePoolMaxPodsConstraintOutputWithContext(context.Background())
+}
+
+func (i AzureNodePoolMaxPodsConstraintArgs) ToAzureNodePoolMaxPodsConstraintOutputWithContext(ctx context.Context) AzureNodePoolMaxPodsConstraintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureNodePoolMaxPodsConstraintOutput)
+}
+
+func (i AzureNodePoolMaxPodsConstraintArgs) ToAzureNodePoolMaxPodsConstraintPtrOutput() AzureNodePoolMaxPodsConstraintPtrOutput {
+	return i.ToAzureNodePoolMaxPodsConstraintPtrOutputWithContext(context.Background())
+}
+
+func (i AzureNodePoolMaxPodsConstraintArgs) ToAzureNodePoolMaxPodsConstraintPtrOutputWithContext(ctx context.Context) AzureNodePoolMaxPodsConstraintPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureNodePoolMaxPodsConstraintOutput).ToAzureNodePoolMaxPodsConstraintPtrOutputWithContext(ctx)
+}
+
+// AzureNodePoolMaxPodsConstraintPtrInput is an input type that accepts AzureNodePoolMaxPodsConstraintArgs, AzureNodePoolMaxPodsConstraintPtr and AzureNodePoolMaxPodsConstraintPtrOutput values.
+// You can construct a concrete instance of `AzureNodePoolMaxPodsConstraintPtrInput` via:
+//
+//          AzureNodePoolMaxPodsConstraintArgs{...}
+//
+//  or:
+//
+//          nil
+type AzureNodePoolMaxPodsConstraintPtrInput interface {
+	pulumi.Input
+
+	ToAzureNodePoolMaxPodsConstraintPtrOutput() AzureNodePoolMaxPodsConstraintPtrOutput
+	ToAzureNodePoolMaxPodsConstraintPtrOutputWithContext(context.Context) AzureNodePoolMaxPodsConstraintPtrOutput
+}
+
+type azureNodePoolMaxPodsConstraintPtrType AzureNodePoolMaxPodsConstraintArgs
+
+func AzureNodePoolMaxPodsConstraintPtr(v *AzureNodePoolMaxPodsConstraintArgs) AzureNodePoolMaxPodsConstraintPtrInput {
+	return (*azureNodePoolMaxPodsConstraintPtrType)(v)
+}
+
+func (*azureNodePoolMaxPodsConstraintPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureNodePoolMaxPodsConstraint)(nil)).Elem()
+}
+
+func (i *azureNodePoolMaxPodsConstraintPtrType) ToAzureNodePoolMaxPodsConstraintPtrOutput() AzureNodePoolMaxPodsConstraintPtrOutput {
+	return i.ToAzureNodePoolMaxPodsConstraintPtrOutputWithContext(context.Background())
+}
+
+func (i *azureNodePoolMaxPodsConstraintPtrType) ToAzureNodePoolMaxPodsConstraintPtrOutputWithContext(ctx context.Context) AzureNodePoolMaxPodsConstraintPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureNodePoolMaxPodsConstraintPtrOutput)
+}
+
+type AzureNodePoolMaxPodsConstraintOutput struct{ *pulumi.OutputState }
+
+func (AzureNodePoolMaxPodsConstraintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureNodePoolMaxPodsConstraint)(nil)).Elem()
+}
+
+func (o AzureNodePoolMaxPodsConstraintOutput) ToAzureNodePoolMaxPodsConstraintOutput() AzureNodePoolMaxPodsConstraintOutput {
+	return o
+}
+
+func (o AzureNodePoolMaxPodsConstraintOutput) ToAzureNodePoolMaxPodsConstraintOutputWithContext(ctx context.Context) AzureNodePoolMaxPodsConstraintOutput {
+	return o
+}
+
+func (o AzureNodePoolMaxPodsConstraintOutput) ToAzureNodePoolMaxPodsConstraintPtrOutput() AzureNodePoolMaxPodsConstraintPtrOutput {
+	return o.ToAzureNodePoolMaxPodsConstraintPtrOutputWithContext(context.Background())
+}
+
+func (o AzureNodePoolMaxPodsConstraintOutput) ToAzureNodePoolMaxPodsConstraintPtrOutputWithContext(ctx context.Context) AzureNodePoolMaxPodsConstraintPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureNodePoolMaxPodsConstraint) *AzureNodePoolMaxPodsConstraint {
+		return &v
+	}).(AzureNodePoolMaxPodsConstraintPtrOutput)
+}
+
+// Required. The maximum number of pods to schedule on a single node.
+func (o AzureNodePoolMaxPodsConstraintOutput) MaxPodsPerNode() pulumi.IntOutput {
+	return o.ApplyT(func(v AzureNodePoolMaxPodsConstraint) int { return v.MaxPodsPerNode }).(pulumi.IntOutput)
+}
+
+type AzureNodePoolMaxPodsConstraintPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureNodePoolMaxPodsConstraintPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureNodePoolMaxPodsConstraint)(nil)).Elem()
+}
+
+func (o AzureNodePoolMaxPodsConstraintPtrOutput) ToAzureNodePoolMaxPodsConstraintPtrOutput() AzureNodePoolMaxPodsConstraintPtrOutput {
+	return o
+}
+
+func (o AzureNodePoolMaxPodsConstraintPtrOutput) ToAzureNodePoolMaxPodsConstraintPtrOutputWithContext(ctx context.Context) AzureNodePoolMaxPodsConstraintPtrOutput {
+	return o
+}
+
+func (o AzureNodePoolMaxPodsConstraintPtrOutput) Elem() AzureNodePoolMaxPodsConstraintOutput {
+	return o.ApplyT(func(v *AzureNodePoolMaxPodsConstraint) AzureNodePoolMaxPodsConstraint {
+		if v != nil {
+			return *v
+		}
+		var ret AzureNodePoolMaxPodsConstraint
+		return ret
+	}).(AzureNodePoolMaxPodsConstraintOutput)
+}
+
+// Required. The maximum number of pods to schedule on a single node.
+func (o AzureNodePoolMaxPodsConstraintPtrOutput) MaxPodsPerNode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AzureNodePoolMaxPodsConstraint) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxPodsPerNode
+	}).(pulumi.IntPtrOutput)
+}
+
 type ClusterAddonsConfig struct {
 	// . Structure is documented below.
 	CloudrunConfig *ClusterAddonsConfigCloudrunConfig `pulumi:"cloudrunConfig"`
@@ -20864,6 +26740,80 @@ func (o GetClusterWorkloadIdentityConfigArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterAuthorizationInput)(nil)).Elem(), AwsClusterAuthorizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterAuthorizationPtrInput)(nil)).Elem(), AwsClusterAuthorizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterAuthorizationAdminUserInput)(nil)).Elem(), AwsClusterAuthorizationAdminUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterAuthorizationAdminUserArrayInput)(nil)).Elem(), AwsClusterAuthorizationAdminUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterControlPlaneInput)(nil)).Elem(), AwsClusterControlPlaneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterControlPlanePtrInput)(nil)).Elem(), AwsClusterControlPlaneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterControlPlaneAwsServicesAuthenticationInput)(nil)).Elem(), AwsClusterControlPlaneAwsServicesAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterControlPlaneAwsServicesAuthenticationPtrInput)(nil)).Elem(), AwsClusterControlPlaneAwsServicesAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterControlPlaneConfigEncryptionInput)(nil)).Elem(), AwsClusterControlPlaneConfigEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterControlPlaneConfigEncryptionPtrInput)(nil)).Elem(), AwsClusterControlPlaneConfigEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterControlPlaneDatabaseEncryptionInput)(nil)).Elem(), AwsClusterControlPlaneDatabaseEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterControlPlaneDatabaseEncryptionPtrInput)(nil)).Elem(), AwsClusterControlPlaneDatabaseEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterControlPlaneMainVolumeInput)(nil)).Elem(), AwsClusterControlPlaneMainVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterControlPlaneMainVolumePtrInput)(nil)).Elem(), AwsClusterControlPlaneMainVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterControlPlaneProxyConfigInput)(nil)).Elem(), AwsClusterControlPlaneProxyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterControlPlaneProxyConfigPtrInput)(nil)).Elem(), AwsClusterControlPlaneProxyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterControlPlaneRootVolumeInput)(nil)).Elem(), AwsClusterControlPlaneRootVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterControlPlaneRootVolumePtrInput)(nil)).Elem(), AwsClusterControlPlaneRootVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterControlPlaneSshConfigInput)(nil)).Elem(), AwsClusterControlPlaneSshConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterControlPlaneSshConfigPtrInput)(nil)).Elem(), AwsClusterControlPlaneSshConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterFleetInput)(nil)).Elem(), AwsClusterFleetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterFleetPtrInput)(nil)).Elem(), AwsClusterFleetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterNetworkingInput)(nil)).Elem(), AwsClusterNetworkingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterNetworkingPtrInput)(nil)).Elem(), AwsClusterNetworkingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterWorkloadIdentityConfigInput)(nil)).Elem(), AwsClusterWorkloadIdentityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterWorkloadIdentityConfigArrayInput)(nil)).Elem(), AwsClusterWorkloadIdentityConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolAutoscalingInput)(nil)).Elem(), AwsNodePoolAutoscalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolAutoscalingPtrInput)(nil)).Elem(), AwsNodePoolAutoscalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigInput)(nil)).Elem(), AwsNodePoolConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigPtrInput)(nil)).Elem(), AwsNodePoolConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigConfigEncryptionInput)(nil)).Elem(), AwsNodePoolConfigConfigEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigConfigEncryptionPtrInput)(nil)).Elem(), AwsNodePoolConfigConfigEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigRootVolumeInput)(nil)).Elem(), AwsNodePoolConfigRootVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigRootVolumePtrInput)(nil)).Elem(), AwsNodePoolConfigRootVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigSshConfigInput)(nil)).Elem(), AwsNodePoolConfigSshConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigSshConfigPtrInput)(nil)).Elem(), AwsNodePoolConfigSshConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigTaintInput)(nil)).Elem(), AwsNodePoolConfigTaintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigTaintArrayInput)(nil)).Elem(), AwsNodePoolConfigTaintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolMaxPodsConstraintInput)(nil)).Elem(), AwsNodePoolMaxPodsConstraintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolMaxPodsConstraintPtrInput)(nil)).Elem(), AwsNodePoolMaxPodsConstraintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterAuthorizationInput)(nil)).Elem(), AzureClusterAuthorizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterAuthorizationPtrInput)(nil)).Elem(), AzureClusterAuthorizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterAuthorizationAdminUserInput)(nil)).Elem(), AzureClusterAuthorizationAdminUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterAuthorizationAdminUserArrayInput)(nil)).Elem(), AzureClusterAuthorizationAdminUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterControlPlaneInput)(nil)).Elem(), AzureClusterControlPlaneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterControlPlanePtrInput)(nil)).Elem(), AzureClusterControlPlaneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterControlPlaneDatabaseEncryptionInput)(nil)).Elem(), AzureClusterControlPlaneDatabaseEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterControlPlaneDatabaseEncryptionPtrInput)(nil)).Elem(), AzureClusterControlPlaneDatabaseEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterControlPlaneMainVolumeInput)(nil)).Elem(), AzureClusterControlPlaneMainVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterControlPlaneMainVolumePtrInput)(nil)).Elem(), AzureClusterControlPlaneMainVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterControlPlaneProxyConfigInput)(nil)).Elem(), AzureClusterControlPlaneProxyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterControlPlaneProxyConfigPtrInput)(nil)).Elem(), AzureClusterControlPlaneProxyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterControlPlaneReplicaPlacementInput)(nil)).Elem(), AzureClusterControlPlaneReplicaPlacementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterControlPlaneReplicaPlacementArrayInput)(nil)).Elem(), AzureClusterControlPlaneReplicaPlacementArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterControlPlaneRootVolumeInput)(nil)).Elem(), AzureClusterControlPlaneRootVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterControlPlaneRootVolumePtrInput)(nil)).Elem(), AzureClusterControlPlaneRootVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterControlPlaneSshConfigInput)(nil)).Elem(), AzureClusterControlPlaneSshConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterControlPlaneSshConfigPtrInput)(nil)).Elem(), AzureClusterControlPlaneSshConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterFleetInput)(nil)).Elem(), AzureClusterFleetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterFleetPtrInput)(nil)).Elem(), AzureClusterFleetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterNetworkingInput)(nil)).Elem(), AzureClusterNetworkingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterNetworkingPtrInput)(nil)).Elem(), AzureClusterNetworkingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterWorkloadIdentityConfigInput)(nil)).Elem(), AzureClusterWorkloadIdentityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterWorkloadIdentityConfigArrayInput)(nil)).Elem(), AzureClusterWorkloadIdentityConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureNodePoolAutoscalingInput)(nil)).Elem(), AzureNodePoolAutoscalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureNodePoolAutoscalingPtrInput)(nil)).Elem(), AzureNodePoolAutoscalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureNodePoolConfigInput)(nil)).Elem(), AzureNodePoolConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureNodePoolConfigPtrInput)(nil)).Elem(), AzureNodePoolConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureNodePoolConfigRootVolumeInput)(nil)).Elem(), AzureNodePoolConfigRootVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureNodePoolConfigRootVolumePtrInput)(nil)).Elem(), AzureNodePoolConfigRootVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureNodePoolConfigSshConfigInput)(nil)).Elem(), AzureNodePoolConfigSshConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureNodePoolConfigSshConfigPtrInput)(nil)).Elem(), AzureNodePoolConfigSshConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureNodePoolMaxPodsConstraintInput)(nil)).Elem(), AzureNodePoolMaxPodsConstraintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureNodePoolMaxPodsConstraintPtrInput)(nil)).Elem(), AzureNodePoolMaxPodsConstraintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigInput)(nil)).Elem(), ClusterAddonsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigPtrInput)(nil)).Elem(), ClusterAddonsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigCloudrunConfigInput)(nil)).Elem(), ClusterAddonsConfigCloudrunConfigArgs{})
@@ -21156,6 +27106,80 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterVerticalPodAutoscalingArrayInput)(nil)).Elem(), GetClusterVerticalPodAutoscalingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterWorkloadIdentityConfigInput)(nil)).Elem(), GetClusterWorkloadIdentityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterWorkloadIdentityConfigArrayInput)(nil)).Elem(), GetClusterWorkloadIdentityConfigArray{})
+	pulumi.RegisterOutputType(AwsClusterAuthorizationOutput{})
+	pulumi.RegisterOutputType(AwsClusterAuthorizationPtrOutput{})
+	pulumi.RegisterOutputType(AwsClusterAuthorizationAdminUserOutput{})
+	pulumi.RegisterOutputType(AwsClusterAuthorizationAdminUserArrayOutput{})
+	pulumi.RegisterOutputType(AwsClusterControlPlaneOutput{})
+	pulumi.RegisterOutputType(AwsClusterControlPlanePtrOutput{})
+	pulumi.RegisterOutputType(AwsClusterControlPlaneAwsServicesAuthenticationOutput{})
+	pulumi.RegisterOutputType(AwsClusterControlPlaneAwsServicesAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(AwsClusterControlPlaneConfigEncryptionOutput{})
+	pulumi.RegisterOutputType(AwsClusterControlPlaneConfigEncryptionPtrOutput{})
+	pulumi.RegisterOutputType(AwsClusterControlPlaneDatabaseEncryptionOutput{})
+	pulumi.RegisterOutputType(AwsClusterControlPlaneDatabaseEncryptionPtrOutput{})
+	pulumi.RegisterOutputType(AwsClusterControlPlaneMainVolumeOutput{})
+	pulumi.RegisterOutputType(AwsClusterControlPlaneMainVolumePtrOutput{})
+	pulumi.RegisterOutputType(AwsClusterControlPlaneProxyConfigOutput{})
+	pulumi.RegisterOutputType(AwsClusterControlPlaneProxyConfigPtrOutput{})
+	pulumi.RegisterOutputType(AwsClusterControlPlaneRootVolumeOutput{})
+	pulumi.RegisterOutputType(AwsClusterControlPlaneRootVolumePtrOutput{})
+	pulumi.RegisterOutputType(AwsClusterControlPlaneSshConfigOutput{})
+	pulumi.RegisterOutputType(AwsClusterControlPlaneSshConfigPtrOutput{})
+	pulumi.RegisterOutputType(AwsClusterFleetOutput{})
+	pulumi.RegisterOutputType(AwsClusterFleetPtrOutput{})
+	pulumi.RegisterOutputType(AwsClusterNetworkingOutput{})
+	pulumi.RegisterOutputType(AwsClusterNetworkingPtrOutput{})
+	pulumi.RegisterOutputType(AwsClusterWorkloadIdentityConfigOutput{})
+	pulumi.RegisterOutputType(AwsClusterWorkloadIdentityConfigArrayOutput{})
+	pulumi.RegisterOutputType(AwsNodePoolAutoscalingOutput{})
+	pulumi.RegisterOutputType(AwsNodePoolAutoscalingPtrOutput{})
+	pulumi.RegisterOutputType(AwsNodePoolConfigOutput{})
+	pulumi.RegisterOutputType(AwsNodePoolConfigPtrOutput{})
+	pulumi.RegisterOutputType(AwsNodePoolConfigConfigEncryptionOutput{})
+	pulumi.RegisterOutputType(AwsNodePoolConfigConfigEncryptionPtrOutput{})
+	pulumi.RegisterOutputType(AwsNodePoolConfigRootVolumeOutput{})
+	pulumi.RegisterOutputType(AwsNodePoolConfigRootVolumePtrOutput{})
+	pulumi.RegisterOutputType(AwsNodePoolConfigSshConfigOutput{})
+	pulumi.RegisterOutputType(AwsNodePoolConfigSshConfigPtrOutput{})
+	pulumi.RegisterOutputType(AwsNodePoolConfigTaintOutput{})
+	pulumi.RegisterOutputType(AwsNodePoolConfigTaintArrayOutput{})
+	pulumi.RegisterOutputType(AwsNodePoolMaxPodsConstraintOutput{})
+	pulumi.RegisterOutputType(AwsNodePoolMaxPodsConstraintPtrOutput{})
+	pulumi.RegisterOutputType(AzureClusterAuthorizationOutput{})
+	pulumi.RegisterOutputType(AzureClusterAuthorizationPtrOutput{})
+	pulumi.RegisterOutputType(AzureClusterAuthorizationAdminUserOutput{})
+	pulumi.RegisterOutputType(AzureClusterAuthorizationAdminUserArrayOutput{})
+	pulumi.RegisterOutputType(AzureClusterControlPlaneOutput{})
+	pulumi.RegisterOutputType(AzureClusterControlPlanePtrOutput{})
+	pulumi.RegisterOutputType(AzureClusterControlPlaneDatabaseEncryptionOutput{})
+	pulumi.RegisterOutputType(AzureClusterControlPlaneDatabaseEncryptionPtrOutput{})
+	pulumi.RegisterOutputType(AzureClusterControlPlaneMainVolumeOutput{})
+	pulumi.RegisterOutputType(AzureClusterControlPlaneMainVolumePtrOutput{})
+	pulumi.RegisterOutputType(AzureClusterControlPlaneProxyConfigOutput{})
+	pulumi.RegisterOutputType(AzureClusterControlPlaneProxyConfigPtrOutput{})
+	pulumi.RegisterOutputType(AzureClusterControlPlaneReplicaPlacementOutput{})
+	pulumi.RegisterOutputType(AzureClusterControlPlaneReplicaPlacementArrayOutput{})
+	pulumi.RegisterOutputType(AzureClusterControlPlaneRootVolumeOutput{})
+	pulumi.RegisterOutputType(AzureClusterControlPlaneRootVolumePtrOutput{})
+	pulumi.RegisterOutputType(AzureClusterControlPlaneSshConfigOutput{})
+	pulumi.RegisterOutputType(AzureClusterControlPlaneSshConfigPtrOutput{})
+	pulumi.RegisterOutputType(AzureClusterFleetOutput{})
+	pulumi.RegisterOutputType(AzureClusterFleetPtrOutput{})
+	pulumi.RegisterOutputType(AzureClusterNetworkingOutput{})
+	pulumi.RegisterOutputType(AzureClusterNetworkingPtrOutput{})
+	pulumi.RegisterOutputType(AzureClusterWorkloadIdentityConfigOutput{})
+	pulumi.RegisterOutputType(AzureClusterWorkloadIdentityConfigArrayOutput{})
+	pulumi.RegisterOutputType(AzureNodePoolAutoscalingOutput{})
+	pulumi.RegisterOutputType(AzureNodePoolAutoscalingPtrOutput{})
+	pulumi.RegisterOutputType(AzureNodePoolConfigOutput{})
+	pulumi.RegisterOutputType(AzureNodePoolConfigPtrOutput{})
+	pulumi.RegisterOutputType(AzureNodePoolConfigRootVolumeOutput{})
+	pulumi.RegisterOutputType(AzureNodePoolConfigRootVolumePtrOutput{})
+	pulumi.RegisterOutputType(AzureNodePoolConfigSshConfigOutput{})
+	pulumi.RegisterOutputType(AzureNodePoolConfigSshConfigPtrOutput{})
+	pulumi.RegisterOutputType(AzureNodePoolMaxPodsConstraintOutput{})
+	pulumi.RegisterOutputType(AzureNodePoolMaxPodsConstraintPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigCloudrunConfigOutput{})

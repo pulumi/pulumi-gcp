@@ -37,7 +37,7 @@ type AiMetadataStore struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Description of the MetadataStore.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Customer-managed encryption key spec for a Dataset. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
+	// Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
 	// Structure is documented below.
 	EncryptionSpec AiMetadataStoreEncryptionSpecPtrOutput `pulumi:"encryptionSpec"`
 	// The name of the MetadataStore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
@@ -88,7 +88,7 @@ type aiMetadataStoreState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Description of the MetadataStore.
 	Description *string `pulumi:"description"`
-	// Customer-managed encryption key spec for a Dataset. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
+	// Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
 	// Structure is documented below.
 	EncryptionSpec *AiMetadataStoreEncryptionSpec `pulumi:"encryptionSpec"`
 	// The name of the MetadataStore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
@@ -111,7 +111,7 @@ type AiMetadataStoreState struct {
 	CreateTime pulumi.StringPtrInput
 	// Description of the MetadataStore.
 	Description pulumi.StringPtrInput
-	// Customer-managed encryption key spec for a Dataset. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
+	// Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
 	// Structure is documented below.
 	EncryptionSpec AiMetadataStoreEncryptionSpecPtrInput
 	// The name of the MetadataStore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
@@ -135,7 +135,7 @@ func (AiMetadataStoreState) ElementType() reflect.Type {
 type aiMetadataStoreArgs struct {
 	// Description of the MetadataStore.
 	Description *string `pulumi:"description"`
-	// Customer-managed encryption key spec for a Dataset. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
+	// Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
 	// Structure is documented below.
 	EncryptionSpec *AiMetadataStoreEncryptionSpec `pulumi:"encryptionSpec"`
 	// The name of the MetadataStore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
@@ -151,7 +151,7 @@ type aiMetadataStoreArgs struct {
 type AiMetadataStoreArgs struct {
 	// Description of the MetadataStore.
 	Description pulumi.StringPtrInput
-	// Customer-managed encryption key spec for a Dataset. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
+	// Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
 	// Structure is documented below.
 	EncryptionSpec AiMetadataStoreEncryptionSpecPtrInput
 	// The name of the MetadataStore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.

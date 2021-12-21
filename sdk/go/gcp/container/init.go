@@ -21,6 +21,16 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:container/awsCluster:AwsCluster":
+		r = &AwsCluster{}
+	case "gcp:container/awsNodePool:AwsNodePool":
+		r = &AwsNodePool{}
+	case "gcp:container/azureClient:AzureClient":
+		r = &AzureClient{}
+	case "gcp:container/azureCluster:AzureCluster":
+		r = &AzureCluster{}
+	case "gcp:container/azureNodePool:AzureNodePool":
+		r = &AzureNodePool{}
 	case "gcp:container/cluster:Cluster":
 		r = &Cluster{}
 	case "gcp:container/nodePool:NodePool":
@@ -40,6 +50,31 @@ func init() {
 	if err != nil {
 		fmt.Printf("failed to determine package version. defaulting to v1: %v\n", err)
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"container/awsCluster",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"container/awsNodePool",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"container/azureClient",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"container/azureCluster",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"container/azureNodePool",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"container/cluster",

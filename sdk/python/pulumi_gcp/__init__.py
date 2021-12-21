@@ -1931,6 +1931,46 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "container/awsCluster",
+  "fqn": "pulumi_gcp.container",
+  "classes": {
+   "gcp:container/awsCluster:AwsCluster": "AwsCluster"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "container/awsNodePool",
+  "fqn": "pulumi_gcp.container",
+  "classes": {
+   "gcp:container/awsNodePool:AwsNodePool": "AwsNodePool"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "container/azureClient",
+  "fqn": "pulumi_gcp.container",
+  "classes": {
+   "gcp:container/azureClient:AzureClient": "AzureClient"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "container/azureCluster",
+  "fqn": "pulumi_gcp.container",
+  "classes": {
+   "gcp:container/azureCluster:AzureCluster": "AzureCluster"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "container/azureNodePool",
+  "fqn": "pulumi_gcp.container",
+  "classes": {
+   "gcp:container/azureNodePool:AzureNodePool": "AzureNodePool"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "container/cluster",
   "fqn": "pulumi_gcp.container",
   "classes": {

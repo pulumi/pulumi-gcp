@@ -111,6 +111,12 @@ namespace Pulumi.Gcp
         [Output("containerAnalysisCustomEndpoint")]
         public Output<string?> ContainerAnalysisCustomEndpoint { get; private set; } = null!;
 
+        [Output("containerAwsCustomEndpoint")]
+        public Output<string?> ContainerAwsCustomEndpoint { get; private set; } = null!;
+
+        [Output("containerAzureCustomEndpoint")]
+        public Output<string?> ContainerAzureCustomEndpoint { get; private set; } = null!;
+
         [Output("containerCustomEndpoint")]
         public Output<string?> ContainerCustomEndpoint { get; private set; } = null!;
 
@@ -447,6 +453,12 @@ namespace Pulumi.Gcp
 
         [Input("containerAnalysisCustomEndpoint")]
         public Input<string>? ContainerAnalysisCustomEndpoint { get; set; }
+
+        [Input("containerAwsCustomEndpoint")]
+        public Input<string>? ContainerAwsCustomEndpoint { get; set; }
+
+        [Input("containerAzureCustomEndpoint")]
+        public Input<string>? ContainerAzureCustomEndpoint { get; set; }
 
         [Input("containerCustomEndpoint")]
         public Input<string>? ContainerCustomEndpoint { get; set; }

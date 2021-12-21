@@ -184,6 +184,12 @@ namespace Pulumi.Gcp.Storage
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Prevents public access to a bucket.
+        /// </summary>
+        [Output("publicAccessPrevention")]
+        public Output<string> PublicAccessPrevention { get; private set; } = null!;
+
+        /// <summary>
         /// Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
         /// </summary>
         [Output("requesterPays")]
@@ -356,6 +362,12 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// Prevents public access to a bucket.
+        /// </summary>
+        [Input("publicAccessPrevention")]
+        public Input<string>? PublicAccessPrevention { get; set; }
+
+        /// <summary>
         /// Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
         /// </summary>
         [Input("requesterPays")]
@@ -475,6 +487,12 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Prevents public access to a bucket.
+        /// </summary>
+        [Input("publicAccessPrevention")]
+        public Input<string>? PublicAccessPrevention { get; set; }
 
         /// <summary>
         /// Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.

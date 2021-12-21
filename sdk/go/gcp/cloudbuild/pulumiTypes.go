@@ -14,6 +14,9 @@ type TriggerBuild struct {
 	// Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
 	// Structure is documented below.
 	Artifacts *TriggerBuildArtifacts `pulumi:"artifacts"`
+	// Secrets and secret environment variables.
+	// Structure is documented below.
+	AvailableSecrets *TriggerBuildAvailableSecrets `pulumi:"availableSecrets"`
 	// A list of images to be pushed upon the successful completion of all build steps.
 	// The images will be pushed using the builder service account's credentials.
 	// The digests of the pushed images will be stored in the Build resource's results field.
@@ -66,6 +69,9 @@ type TriggerBuildArgs struct {
 	// Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
 	// Structure is documented below.
 	Artifacts TriggerBuildArtifactsPtrInput `pulumi:"artifacts"`
+	// Secrets and secret environment variables.
+	// Structure is documented below.
+	AvailableSecrets TriggerBuildAvailableSecretsPtrInput `pulumi:"availableSecrets"`
 	// A list of images to be pushed upon the successful completion of all build steps.
 	// The images will be pushed using the builder service account's credentials.
 	// The digests of the pushed images will be stored in the Build resource's results field.
@@ -186,6 +192,12 @@ func (o TriggerBuildOutput) Artifacts() TriggerBuildArtifactsPtrOutput {
 	return o.ApplyT(func(v TriggerBuild) *TriggerBuildArtifacts { return v.Artifacts }).(TriggerBuildArtifactsPtrOutput)
 }
 
+// Secrets and secret environment variables.
+// Structure is documented below.
+func (o TriggerBuildOutput) AvailableSecrets() TriggerBuildAvailableSecretsPtrOutput {
+	return o.ApplyT(func(v TriggerBuild) *TriggerBuildAvailableSecrets { return v.AvailableSecrets }).(TriggerBuildAvailableSecretsPtrOutput)
+}
+
 // A list of images to be pushed upon the successful completion of all build steps.
 // The images will be pushed using the builder service account's credentials.
 // The digests of the pushed images will be stored in the Build resource's results field.
@@ -284,6 +296,17 @@ func (o TriggerBuildPtrOutput) Artifacts() TriggerBuildArtifactsPtrOutput {
 		}
 		return v.Artifacts
 	}).(TriggerBuildArtifactsPtrOutput)
+}
+
+// Secrets and secret environment variables.
+// Structure is documented below.
+func (o TriggerBuildPtrOutput) AvailableSecrets() TriggerBuildAvailableSecretsPtrOutput {
+	return o.ApplyT(func(v *TriggerBuild) *TriggerBuildAvailableSecrets {
+		if v == nil {
+			return nil
+		}
+		return v.AvailableSecrets
+	}).(TriggerBuildAvailableSecretsPtrOutput)
 }
 
 // A list of images to be pushed upon the successful completion of all build steps.
@@ -896,6 +919,264 @@ func (o TriggerBuildArtifactsObjectsTimingArrayOutput) Index(i pulumi.IntInput) 
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TriggerBuildArtifactsObjectsTiming {
 		return vs[0].([]TriggerBuildArtifactsObjectsTiming)[vs[1].(int)]
 	}).(TriggerBuildArtifactsObjectsTimingOutput)
+}
+
+type TriggerBuildAvailableSecrets struct {
+	// Pairs a secret environment variable with a SecretVersion in Secret Manager.
+	// Structure is documented below.
+	SecretManagers []TriggerBuildAvailableSecretsSecretManager `pulumi:"secretManagers"`
+}
+
+// TriggerBuildAvailableSecretsInput is an input type that accepts TriggerBuildAvailableSecretsArgs and TriggerBuildAvailableSecretsOutput values.
+// You can construct a concrete instance of `TriggerBuildAvailableSecretsInput` via:
+//
+//          TriggerBuildAvailableSecretsArgs{...}
+type TriggerBuildAvailableSecretsInput interface {
+	pulumi.Input
+
+	ToTriggerBuildAvailableSecretsOutput() TriggerBuildAvailableSecretsOutput
+	ToTriggerBuildAvailableSecretsOutputWithContext(context.Context) TriggerBuildAvailableSecretsOutput
+}
+
+type TriggerBuildAvailableSecretsArgs struct {
+	// Pairs a secret environment variable with a SecretVersion in Secret Manager.
+	// Structure is documented below.
+	SecretManagers TriggerBuildAvailableSecretsSecretManagerArrayInput `pulumi:"secretManagers"`
+}
+
+func (TriggerBuildAvailableSecretsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerBuildAvailableSecrets)(nil)).Elem()
+}
+
+func (i TriggerBuildAvailableSecretsArgs) ToTriggerBuildAvailableSecretsOutput() TriggerBuildAvailableSecretsOutput {
+	return i.ToTriggerBuildAvailableSecretsOutputWithContext(context.Background())
+}
+
+func (i TriggerBuildAvailableSecretsArgs) ToTriggerBuildAvailableSecretsOutputWithContext(ctx context.Context) TriggerBuildAvailableSecretsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildAvailableSecretsOutput)
+}
+
+func (i TriggerBuildAvailableSecretsArgs) ToTriggerBuildAvailableSecretsPtrOutput() TriggerBuildAvailableSecretsPtrOutput {
+	return i.ToTriggerBuildAvailableSecretsPtrOutputWithContext(context.Background())
+}
+
+func (i TriggerBuildAvailableSecretsArgs) ToTriggerBuildAvailableSecretsPtrOutputWithContext(ctx context.Context) TriggerBuildAvailableSecretsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildAvailableSecretsOutput).ToTriggerBuildAvailableSecretsPtrOutputWithContext(ctx)
+}
+
+// TriggerBuildAvailableSecretsPtrInput is an input type that accepts TriggerBuildAvailableSecretsArgs, TriggerBuildAvailableSecretsPtr and TriggerBuildAvailableSecretsPtrOutput values.
+// You can construct a concrete instance of `TriggerBuildAvailableSecretsPtrInput` via:
+//
+//          TriggerBuildAvailableSecretsArgs{...}
+//
+//  or:
+//
+//          nil
+type TriggerBuildAvailableSecretsPtrInput interface {
+	pulumi.Input
+
+	ToTriggerBuildAvailableSecretsPtrOutput() TriggerBuildAvailableSecretsPtrOutput
+	ToTriggerBuildAvailableSecretsPtrOutputWithContext(context.Context) TriggerBuildAvailableSecretsPtrOutput
+}
+
+type triggerBuildAvailableSecretsPtrType TriggerBuildAvailableSecretsArgs
+
+func TriggerBuildAvailableSecretsPtr(v *TriggerBuildAvailableSecretsArgs) TriggerBuildAvailableSecretsPtrInput {
+	return (*triggerBuildAvailableSecretsPtrType)(v)
+}
+
+func (*triggerBuildAvailableSecretsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerBuildAvailableSecrets)(nil)).Elem()
+}
+
+func (i *triggerBuildAvailableSecretsPtrType) ToTriggerBuildAvailableSecretsPtrOutput() TriggerBuildAvailableSecretsPtrOutput {
+	return i.ToTriggerBuildAvailableSecretsPtrOutputWithContext(context.Background())
+}
+
+func (i *triggerBuildAvailableSecretsPtrType) ToTriggerBuildAvailableSecretsPtrOutputWithContext(ctx context.Context) TriggerBuildAvailableSecretsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildAvailableSecretsPtrOutput)
+}
+
+type TriggerBuildAvailableSecretsOutput struct{ *pulumi.OutputState }
+
+func (TriggerBuildAvailableSecretsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerBuildAvailableSecrets)(nil)).Elem()
+}
+
+func (o TriggerBuildAvailableSecretsOutput) ToTriggerBuildAvailableSecretsOutput() TriggerBuildAvailableSecretsOutput {
+	return o
+}
+
+func (o TriggerBuildAvailableSecretsOutput) ToTriggerBuildAvailableSecretsOutputWithContext(ctx context.Context) TriggerBuildAvailableSecretsOutput {
+	return o
+}
+
+func (o TriggerBuildAvailableSecretsOutput) ToTriggerBuildAvailableSecretsPtrOutput() TriggerBuildAvailableSecretsPtrOutput {
+	return o.ToTriggerBuildAvailableSecretsPtrOutputWithContext(context.Background())
+}
+
+func (o TriggerBuildAvailableSecretsOutput) ToTriggerBuildAvailableSecretsPtrOutputWithContext(ctx context.Context) TriggerBuildAvailableSecretsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerBuildAvailableSecrets) *TriggerBuildAvailableSecrets {
+		return &v
+	}).(TriggerBuildAvailableSecretsPtrOutput)
+}
+
+// Pairs a secret environment variable with a SecretVersion in Secret Manager.
+// Structure is documented below.
+func (o TriggerBuildAvailableSecretsOutput) SecretManagers() TriggerBuildAvailableSecretsSecretManagerArrayOutput {
+	return o.ApplyT(func(v TriggerBuildAvailableSecrets) []TriggerBuildAvailableSecretsSecretManager {
+		return v.SecretManagers
+	}).(TriggerBuildAvailableSecretsSecretManagerArrayOutput)
+}
+
+type TriggerBuildAvailableSecretsPtrOutput struct{ *pulumi.OutputState }
+
+func (TriggerBuildAvailableSecretsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerBuildAvailableSecrets)(nil)).Elem()
+}
+
+func (o TriggerBuildAvailableSecretsPtrOutput) ToTriggerBuildAvailableSecretsPtrOutput() TriggerBuildAvailableSecretsPtrOutput {
+	return o
+}
+
+func (o TriggerBuildAvailableSecretsPtrOutput) ToTriggerBuildAvailableSecretsPtrOutputWithContext(ctx context.Context) TriggerBuildAvailableSecretsPtrOutput {
+	return o
+}
+
+func (o TriggerBuildAvailableSecretsPtrOutput) Elem() TriggerBuildAvailableSecretsOutput {
+	return o.ApplyT(func(v *TriggerBuildAvailableSecrets) TriggerBuildAvailableSecrets {
+		if v != nil {
+			return *v
+		}
+		var ret TriggerBuildAvailableSecrets
+		return ret
+	}).(TriggerBuildAvailableSecretsOutput)
+}
+
+// Pairs a secret environment variable with a SecretVersion in Secret Manager.
+// Structure is documented below.
+func (o TriggerBuildAvailableSecretsPtrOutput) SecretManagers() TriggerBuildAvailableSecretsSecretManagerArrayOutput {
+	return o.ApplyT(func(v *TriggerBuildAvailableSecrets) []TriggerBuildAvailableSecretsSecretManager {
+		if v == nil {
+			return nil
+		}
+		return v.SecretManagers
+	}).(TriggerBuildAvailableSecretsSecretManagerArrayOutput)
+}
+
+type TriggerBuildAvailableSecretsSecretManager struct {
+	// A list of global environment variable definitions that will exist for all build steps
+	// in this build. If a variable is defined in both globally and in a build step,
+	// the variable will use the build step value.
+	// The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+	Env string `pulumi:"env"`
+	// Resource name of the SecretVersion. In format: projects/*/secrets/*/versions/*
+	VersionName string `pulumi:"versionName"`
+}
+
+// TriggerBuildAvailableSecretsSecretManagerInput is an input type that accepts TriggerBuildAvailableSecretsSecretManagerArgs and TriggerBuildAvailableSecretsSecretManagerOutput values.
+// You can construct a concrete instance of `TriggerBuildAvailableSecretsSecretManagerInput` via:
+//
+//          TriggerBuildAvailableSecretsSecretManagerArgs{...}
+type TriggerBuildAvailableSecretsSecretManagerInput interface {
+	pulumi.Input
+
+	ToTriggerBuildAvailableSecretsSecretManagerOutput() TriggerBuildAvailableSecretsSecretManagerOutput
+	ToTriggerBuildAvailableSecretsSecretManagerOutputWithContext(context.Context) TriggerBuildAvailableSecretsSecretManagerOutput
+}
+
+type TriggerBuildAvailableSecretsSecretManagerArgs struct {
+	// A list of global environment variable definitions that will exist for all build steps
+	// in this build. If a variable is defined in both globally and in a build step,
+	// the variable will use the build step value.
+	// The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+	Env pulumi.StringInput `pulumi:"env"`
+	// Resource name of the SecretVersion. In format: projects/*/secrets/*/versions/*
+	VersionName pulumi.StringInput `pulumi:"versionName"`
+}
+
+func (TriggerBuildAvailableSecretsSecretManagerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerBuildAvailableSecretsSecretManager)(nil)).Elem()
+}
+
+func (i TriggerBuildAvailableSecretsSecretManagerArgs) ToTriggerBuildAvailableSecretsSecretManagerOutput() TriggerBuildAvailableSecretsSecretManagerOutput {
+	return i.ToTriggerBuildAvailableSecretsSecretManagerOutputWithContext(context.Background())
+}
+
+func (i TriggerBuildAvailableSecretsSecretManagerArgs) ToTriggerBuildAvailableSecretsSecretManagerOutputWithContext(ctx context.Context) TriggerBuildAvailableSecretsSecretManagerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildAvailableSecretsSecretManagerOutput)
+}
+
+// TriggerBuildAvailableSecretsSecretManagerArrayInput is an input type that accepts TriggerBuildAvailableSecretsSecretManagerArray and TriggerBuildAvailableSecretsSecretManagerArrayOutput values.
+// You can construct a concrete instance of `TriggerBuildAvailableSecretsSecretManagerArrayInput` via:
+//
+//          TriggerBuildAvailableSecretsSecretManagerArray{ TriggerBuildAvailableSecretsSecretManagerArgs{...} }
+type TriggerBuildAvailableSecretsSecretManagerArrayInput interface {
+	pulumi.Input
+
+	ToTriggerBuildAvailableSecretsSecretManagerArrayOutput() TriggerBuildAvailableSecretsSecretManagerArrayOutput
+	ToTriggerBuildAvailableSecretsSecretManagerArrayOutputWithContext(context.Context) TriggerBuildAvailableSecretsSecretManagerArrayOutput
+}
+
+type TriggerBuildAvailableSecretsSecretManagerArray []TriggerBuildAvailableSecretsSecretManagerInput
+
+func (TriggerBuildAvailableSecretsSecretManagerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TriggerBuildAvailableSecretsSecretManager)(nil)).Elem()
+}
+
+func (i TriggerBuildAvailableSecretsSecretManagerArray) ToTriggerBuildAvailableSecretsSecretManagerArrayOutput() TriggerBuildAvailableSecretsSecretManagerArrayOutput {
+	return i.ToTriggerBuildAvailableSecretsSecretManagerArrayOutputWithContext(context.Background())
+}
+
+func (i TriggerBuildAvailableSecretsSecretManagerArray) ToTriggerBuildAvailableSecretsSecretManagerArrayOutputWithContext(ctx context.Context) TriggerBuildAvailableSecretsSecretManagerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildAvailableSecretsSecretManagerArrayOutput)
+}
+
+type TriggerBuildAvailableSecretsSecretManagerOutput struct{ *pulumi.OutputState }
+
+func (TriggerBuildAvailableSecretsSecretManagerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerBuildAvailableSecretsSecretManager)(nil)).Elem()
+}
+
+func (o TriggerBuildAvailableSecretsSecretManagerOutput) ToTriggerBuildAvailableSecretsSecretManagerOutput() TriggerBuildAvailableSecretsSecretManagerOutput {
+	return o
+}
+
+func (o TriggerBuildAvailableSecretsSecretManagerOutput) ToTriggerBuildAvailableSecretsSecretManagerOutputWithContext(ctx context.Context) TriggerBuildAvailableSecretsSecretManagerOutput {
+	return o
+}
+
+// A list of global environment variable definitions that will exist for all build steps
+// in this build. If a variable is defined in both globally and in a build step,
+// the variable will use the build step value.
+// The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+func (o TriggerBuildAvailableSecretsSecretManagerOutput) Env() pulumi.StringOutput {
+	return o.ApplyT(func(v TriggerBuildAvailableSecretsSecretManager) string { return v.Env }).(pulumi.StringOutput)
+}
+
+// Resource name of the SecretVersion. In format: projects/*/secrets/*/versions/*
+func (o TriggerBuildAvailableSecretsSecretManagerOutput) VersionName() pulumi.StringOutput {
+	return o.ApplyT(func(v TriggerBuildAvailableSecretsSecretManager) string { return v.VersionName }).(pulumi.StringOutput)
+}
+
+type TriggerBuildAvailableSecretsSecretManagerArrayOutput struct{ *pulumi.OutputState }
+
+func (TriggerBuildAvailableSecretsSecretManagerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TriggerBuildAvailableSecretsSecretManager)(nil)).Elem()
+}
+
+func (o TriggerBuildAvailableSecretsSecretManagerArrayOutput) ToTriggerBuildAvailableSecretsSecretManagerArrayOutput() TriggerBuildAvailableSecretsSecretManagerArrayOutput {
+	return o
+}
+
+func (o TriggerBuildAvailableSecretsSecretManagerArrayOutput) ToTriggerBuildAvailableSecretsSecretManagerArrayOutputWithContext(ctx context.Context) TriggerBuildAvailableSecretsSecretManagerArrayOutput {
+	return o
+}
+
+func (o TriggerBuildAvailableSecretsSecretManagerArrayOutput) Index(i pulumi.IntInput) TriggerBuildAvailableSecretsSecretManagerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TriggerBuildAvailableSecretsSecretManager {
+		return vs[0].([]TriggerBuildAvailableSecretsSecretManager)[vs[1].(int)]
+	}).(TriggerBuildAvailableSecretsSecretManagerOutput)
 }
 
 type TriggerBuildOptions struct {
@@ -4225,6 +4506,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBuildArtifactsObjectsPtrInput)(nil)).Elem(), TriggerBuildArtifactsObjectsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBuildArtifactsObjectsTimingInput)(nil)).Elem(), TriggerBuildArtifactsObjectsTimingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBuildArtifactsObjectsTimingArrayInput)(nil)).Elem(), TriggerBuildArtifactsObjectsTimingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBuildAvailableSecretsInput)(nil)).Elem(), TriggerBuildAvailableSecretsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBuildAvailableSecretsPtrInput)(nil)).Elem(), TriggerBuildAvailableSecretsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBuildAvailableSecretsSecretManagerInput)(nil)).Elem(), TriggerBuildAvailableSecretsSecretManagerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBuildAvailableSecretsSecretManagerArrayInput)(nil)).Elem(), TriggerBuildAvailableSecretsSecretManagerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBuildOptionsInput)(nil)).Elem(), TriggerBuildOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBuildOptionsPtrInput)(nil)).Elem(), TriggerBuildOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBuildOptionsVolumeInput)(nil)).Elem(), TriggerBuildOptionsVolumeArgs{})
@@ -4265,6 +4550,10 @@ func init() {
 	pulumi.RegisterOutputType(TriggerBuildArtifactsObjectsPtrOutput{})
 	pulumi.RegisterOutputType(TriggerBuildArtifactsObjectsTimingOutput{})
 	pulumi.RegisterOutputType(TriggerBuildArtifactsObjectsTimingArrayOutput{})
+	pulumi.RegisterOutputType(TriggerBuildAvailableSecretsOutput{})
+	pulumi.RegisterOutputType(TriggerBuildAvailableSecretsPtrOutput{})
+	pulumi.RegisterOutputType(TriggerBuildAvailableSecretsSecretManagerOutput{})
+	pulumi.RegisterOutputType(TriggerBuildAvailableSecretsSecretManagerArrayOutput{})
 	pulumi.RegisterOutputType(TriggerBuildOptionsOutput{})
 	pulumi.RegisterOutputType(TriggerBuildOptionsPtrOutput{})
 	pulumi.RegisterOutputType(TriggerBuildOptionsVolumeOutput{})

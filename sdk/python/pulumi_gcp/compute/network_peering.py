@@ -305,7 +305,7 @@ class NetworkPeering(pulumi.CustomResource):
         and
         [API](https://cloud.google.com/compute/docs/reference/latest/networks).
 
-        > Both network must create a peering with each other for the peering
+        > Both networks must create a peering with each other for the peering
         to be functional.
 
         > Subnets IP ranges across peered VPC networks cannot overlap.
@@ -319,11 +319,11 @@ class NetworkPeering(pulumi.CustomResource):
         default = gcp.compute.Network("default", auto_create_subnetworks=False)
         other = gcp.compute.Network("other", auto_create_subnetworks=False)
         peering1 = gcp.compute.NetworkPeering("peering1",
-            network=default.id,
-            peer_network=other.id)
+            network=default.self_link,
+            peer_network=other.self_link)
         peering2 = gcp.compute.NetworkPeering("peering2",
-            network=other.id,
-            peer_network=default.id)
+            network=other.self_link,
+            peer_network=default.self_link)
         ```
 
         ## Import
@@ -357,7 +357,7 @@ class NetworkPeering(pulumi.CustomResource):
         and
         [API](https://cloud.google.com/compute/docs/reference/latest/networks).
 
-        > Both network must create a peering with each other for the peering
+        > Both networks must create a peering with each other for the peering
         to be functional.
 
         > Subnets IP ranges across peered VPC networks cannot overlap.
@@ -371,11 +371,11 @@ class NetworkPeering(pulumi.CustomResource):
         default = gcp.compute.Network("default", auto_create_subnetworks=False)
         other = gcp.compute.Network("other", auto_create_subnetworks=False)
         peering1 = gcp.compute.NetworkPeering("peering1",
-            network=default.id,
-            peer_network=other.id)
+            network=default.self_link,
+            peer_network=other.self_link)
         peering2 = gcp.compute.NetworkPeering("peering2",
-            network=other.id,
-            peer_network=default.id)
+            network=other.self_link,
+            peer_network=default.self_link)
         ```
 
         ## Import

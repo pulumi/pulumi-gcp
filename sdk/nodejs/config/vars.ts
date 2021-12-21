@@ -264,6 +264,22 @@ Object.defineProperty(exports, "containerAnalysisCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const containerAwsCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "containerAwsCustomEndpoint", {
+    get() {
+        return __config.get("containerAwsCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const containerAzureCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "containerAzureCustomEndpoint", {
+    get() {
+        return __config.get("containerAzureCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const containerCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "containerCustomEndpoint", {
     get() {

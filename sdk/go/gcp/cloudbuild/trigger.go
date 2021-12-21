@@ -78,6 +78,14 @@ import (
 // 						},
 // 					},
 // 				},
+// 				AvailableSecrets: &cloudbuild.TriggerBuildAvailableSecretsArgs{
+// 					SecretManager: []map[string]interface{}{
+// 						map[string]interface{}{
+// 							"env":         "MY_SECRET",
+// 							"versionName": "projects/myProject/secrets/mySecret/versions/latest",
+// 						},
+// 					},
+// 				},
 // 				LogsBucket: pulumi.String("gs://mybucket/logs"),
 // 				Options: &cloudbuild.TriggerBuildOptionsArgs{
 // 					DiskSizeGb:           pulumi.Int(100),
@@ -126,7 +134,10 @@ import (
 // 							pulumi.String("gs://mybucket/remotefile.zip"),
 // 							pulumi.String("localfile.zip"),
 // 						},
-// 						Name:    pulumi.String("gcr.io/cloud-builders/gsutil"),
+// 						Name: pulumi.String("gcr.io/cloud-builders/gsutil"),
+// 						SecretEnv: []string{
+// 							"MY_SECRET",
+// 						},
 // 						Timeout: pulumi.String("120s"),
 // 					},
 // 				},

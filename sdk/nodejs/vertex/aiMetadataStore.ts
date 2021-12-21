@@ -64,7 +64,7 @@ export class AiMetadataStore extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Customer-managed encryption key spec for a Dataset. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
+     * Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
      * Structure is documented below.
      */
     public readonly encryptionSpec!: pulumi.Output<outputs.vertex.AiMetadataStoreEncryptionSpec | undefined>;
@@ -144,7 +144,7 @@ export interface AiMetadataStoreState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Customer-managed encryption key spec for a Dataset. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
+     * Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
      * Structure is documented below.
      */
     encryptionSpec?: pulumi.Input<inputs.vertex.AiMetadataStoreEncryptionSpec>;
@@ -181,7 +181,7 @@ export interface AiMetadataStoreArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Customer-managed encryption key spec for a Dataset. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
+     * Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
      * Structure is documented below.
      */
     encryptionSpec?: pulumi.Input<inputs.vertex.AiMetadataStoreEncryptionSpec>;

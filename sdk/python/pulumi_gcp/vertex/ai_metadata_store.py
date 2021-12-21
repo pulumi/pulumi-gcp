@@ -23,7 +23,7 @@ class AiMetadataStoreArgs:
         """
         The set of arguments for constructing a AiMetadataStore resource.
         :param pulumi.Input[str] description: Description of the MetadataStore.
-        :param pulumi.Input['AiMetadataStoreEncryptionSpecArgs'] encryption_spec: Customer-managed encryption key spec for a Dataset. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
+        :param pulumi.Input['AiMetadataStoreEncryptionSpecArgs'] encryption_spec: Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the MetadataStore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -57,7 +57,7 @@ class AiMetadataStoreArgs:
     @pulumi.getter(name="encryptionSpec")
     def encryption_spec(self) -> Optional[pulumi.Input['AiMetadataStoreEncryptionSpecArgs']]:
         """
-        Customer-managed encryption key spec for a Dataset. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
+        Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
         Structure is documented below.
         """
         return pulumi.get(self, "encryption_spec")
@@ -120,7 +120,7 @@ class _AiMetadataStoreState:
         :param pulumi.Input[str] create_time: The timestamp of when the MetadataStore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
                nine fractional digits.
         :param pulumi.Input[str] description: Description of the MetadataStore.
-        :param pulumi.Input['AiMetadataStoreEncryptionSpecArgs'] encryption_spec: Customer-managed encryption key spec for a Dataset. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
+        :param pulumi.Input['AiMetadataStoreEncryptionSpecArgs'] encryption_spec: Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the MetadataStore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -176,7 +176,7 @@ class _AiMetadataStoreState:
     @pulumi.getter(name="encryptionSpec")
     def encryption_spec(self) -> Optional[pulumi.Input['AiMetadataStoreEncryptionSpecArgs']]:
         """
-        Customer-managed encryption key spec for a Dataset. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
+        Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
         Structure is documented below.
         """
         return pulumi.get(self, "encryption_spec")
@@ -283,7 +283,7 @@ class AiMetadataStore(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the MetadataStore.
-        :param pulumi.Input[pulumi.InputType['AiMetadataStoreEncryptionSpecArgs']] encryption_spec: Customer-managed encryption key spec for a Dataset. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
+        :param pulumi.Input[pulumi.InputType['AiMetadataStoreEncryptionSpecArgs']] encryption_spec: Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the MetadataStore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -385,7 +385,7 @@ class AiMetadataStore(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: The timestamp of when the MetadataStore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
                nine fractional digits.
         :param pulumi.Input[str] description: Description of the MetadataStore.
-        :param pulumi.Input[pulumi.InputType['AiMetadataStoreEncryptionSpecArgs']] encryption_spec: Customer-managed encryption key spec for a Dataset. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
+        :param pulumi.Input[pulumi.InputType['AiMetadataStoreEncryptionSpecArgs']] encryption_spec: Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the MetadataStore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -430,7 +430,7 @@ class AiMetadataStore(pulumi.CustomResource):
     @pulumi.getter(name="encryptionSpec")
     def encryption_spec(self) -> pulumi.Output[Optional['outputs.AiMetadataStoreEncryptionSpec']]:
         """
-        Customer-managed encryption key spec for a Dataset. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
+        Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
         Structure is documented below.
         """
         return pulumi.get(self, "encryption_spec")

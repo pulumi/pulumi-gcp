@@ -132,6 +132,15 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
+        /// If absent, the return table type is inferred from definitionBody at query time in each query
+        /// that references this routine. If present, then the columns in the evaluated table result will
+        /// be cast to match the column types specificed in return table type, at query time.
+        /// </summary>
+        [Output("returnTableType")]
+        public Output<string?> ReturnTableType { get; private set; } = null!;
+
+        /// <summary>
         /// A JSON schema for the return type. Optional if language = "SQL"; required otherwise.
         /// If absent, the return type is inferred from definitionBody at query time in each query
         /// that references this routine. If present, then the evaluated result will be cast to
@@ -153,7 +162,7 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// The type of routine.
-        /// Possible values are `SCALAR_FUNCTION` and `PROCEDURE`.
+        /// Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
         /// </summary>
         [Output("routineType")]
         public Output<string?> RoutineType { get; private set; } = null!;
@@ -271,6 +280,15 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
+        /// If absent, the return table type is inferred from definitionBody at query time in each query
+        /// that references this routine. If present, then the columns in the evaluated table result will
+        /// be cast to match the column types specificed in return table type, at query time.
+        /// </summary>
+        [Input("returnTableType")]
+        public Input<string>? ReturnTableType { get; set; }
+
+        /// <summary>
         /// A JSON schema for the return type. Optional if language = "SQL"; required otherwise.
         /// If absent, the return type is inferred from definitionBody at query time in each query
         /// that references this routine. If present, then the evaluated result will be cast to
@@ -292,7 +310,7 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// The type of routine.
-        /// Possible values are `SCALAR_FUNCTION` and `PROCEDURE`.
+        /// Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
         /// </summary>
         [Input("routineType")]
         public Input<string>? RoutineType { get; set; }
@@ -383,6 +401,15 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
+        /// If absent, the return table type is inferred from definitionBody at query time in each query
+        /// that references this routine. If present, then the columns in the evaluated table result will
+        /// be cast to match the column types specificed in return table type, at query time.
+        /// </summary>
+        [Input("returnTableType")]
+        public Input<string>? ReturnTableType { get; set; }
+
+        /// <summary>
         /// A JSON schema for the return type. Optional if language = "SQL"; required otherwise.
         /// If absent, the return type is inferred from definitionBody at query time in each query
         /// that references this routine. If present, then the evaluated result will be cast to
@@ -404,7 +431,7 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// The type of routine.
-        /// Possible values are `SCALAR_FUNCTION` and `PROCEDURE`.
+        /// Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
         /// </summary>
         [Input("routineType")]
         public Input<string>? RoutineType { get; set; }

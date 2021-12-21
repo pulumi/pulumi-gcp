@@ -78,6 +78,17 @@ namespace Pulumi.Gcp.CloudBuild
     ///                         },
     ///                     },
     ///                 },
+    ///                 AvailableSecrets = new Gcp.CloudBuild.Inputs.TriggerBuildAvailableSecretsArgs
+    ///                 {
+    ///                     SecretManager = 
+    ///                     {
+    ///                         
+    ///                         {
+    ///                             { "env", "MY_SECRET" },
+    ///                             { "versionName", "projects/myProject/secrets/mySecret/versions/latest" },
+    ///                         },
+    ///                     },
+    ///                 },
     ///                 LogsBucket = "gs://mybucket/logs",
     ///                 Options = new Gcp.CloudBuild.Inputs.TriggerBuildOptionsArgs
     ///                 {
@@ -141,6 +152,10 @@ namespace Pulumi.Gcp.CloudBuild
     ///                             "localfile.zip",
     ///                         },
     ///                         Name = "gcr.io/cloud-builders/gsutil",
+    ///                         SecretEnv = 
+    ///                         {
+    ///                             "MY_SECRET",
+    ///                         },
     ///                         Timeout = "120s",
     ///                     },
     ///                 },

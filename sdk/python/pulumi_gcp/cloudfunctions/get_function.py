@@ -21,7 +21,7 @@ class GetFunctionResult:
     """
     A collection of values returned by getFunction.
     """
-    def __init__(__self__, available_memory_mb=None, build_environment_variables=None, description=None, entry_point=None, environment_variables=None, event_triggers=None, https_trigger_url=None, id=None, ingress_settings=None, labels=None, max_instances=None, name=None, project=None, region=None, runtime=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repositories=None, timeout=None, trigger_http=None, vpc_connector=None, vpc_connector_egress_settings=None):
+    def __init__(__self__, available_memory_mb=None, build_environment_variables=None, description=None, entry_point=None, environment_variables=None, event_triggers=None, https_trigger_url=None, id=None, ingress_settings=None, labels=None, max_instances=None, min_instances=None, name=None, project=None, region=None, runtime=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repositories=None, timeout=None, trigger_http=None, vpc_connector=None, vpc_connector_egress_settings=None):
         if available_memory_mb and not isinstance(available_memory_mb, int):
             raise TypeError("Expected argument 'available_memory_mb' to be a int")
         pulumi.set(__self__, "available_memory_mb", available_memory_mb)
@@ -55,6 +55,9 @@ class GetFunctionResult:
         if max_instances and not isinstance(max_instances, int):
             raise TypeError("Expected argument 'max_instances' to be a int")
         pulumi.set(__self__, "max_instances", max_instances)
+        if min_instances and not isinstance(min_instances, int):
+            raise TypeError("Expected argument 'min_instances' to be a int")
+        pulumi.set(__self__, "min_instances", min_instances)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -175,6 +178,11 @@ class GetFunctionResult:
         return pulumi.get(self, "max_instances")
 
     @property
+    @pulumi.getter(name="minInstances")
+    def min_instances(self) -> int:
+        return pulumi.get(self, "min_instances")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -282,6 +290,7 @@ class AwaitableGetFunctionResult(GetFunctionResult):
             ingress_settings=self.ingress_settings,
             labels=self.labels,
             max_instances=self.max_instances,
+            min_instances=self.min_instances,
             name=self.name,
             project=self.project,
             region=self.region,
@@ -343,6 +352,7 @@ def get_function(name: Optional[str] = None,
         ingress_settings=__ret__.ingress_settings,
         labels=__ret__.labels,
         max_instances=__ret__.max_instances,
+        min_instances=__ret__.min_instances,
         name=__ret__.name,
         project=__ret__.project,
         region=__ret__.region,

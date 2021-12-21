@@ -66,6 +66,7 @@ type LookupBucketResult struct {
 	Loggings                 []GetBucketLogging         `pulumi:"loggings"`
 	Name                     string                     `pulumi:"name"`
 	Project                  string                     `pulumi:"project"`
+	PublicAccessPrevention   string                     `pulumi:"publicAccessPrevention"`
 	RequesterPays            bool                       `pulumi:"requesterPays"`
 	RetentionPolicies        []GetBucketRetentionPolicy `pulumi:"retentionPolicies"`
 	SelfLink                 string                     `pulumi:"selfLink"`
@@ -153,6 +154,10 @@ func (o LookupBucketResultOutput) Name() pulumi.StringOutput {
 
 func (o LookupBucketResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBucketResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o LookupBucketResultOutput) PublicAccessPrevention() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBucketResult) string { return v.PublicAccessPrevention }).(pulumi.StringOutput)
 }
 
 func (o LookupBucketResultOutput) RequesterPays() pulumi.BoolOutput {

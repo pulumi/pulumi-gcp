@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  * and
  * [API](https://cloud.google.com/compute/docs/reference/latest/networks).
  *
- * > Both network must create a peering with each other for the peering
+ * > Both networks must create a peering with each other for the peering
  * to be functional.
  *
  * > Subnets IP ranges across peered VPC networks cannot overlap.
@@ -24,12 +24,12 @@ import * as utilities from "../utilities";
  * const _default = new gcp.compute.Network("default", {autoCreateSubnetworks: "false"});
  * const other = new gcp.compute.Network("other", {autoCreateSubnetworks: "false"});
  * const peering1 = new gcp.compute.NetworkPeering("peering1", {
- *     network: _default.id,
- *     peerNetwork: other.id,
+ *     network: _default.selfLink,
+ *     peerNetwork: other.selfLink,
  * });
  * const peering2 = new gcp.compute.NetworkPeering("peering2", {
- *     network: other.id,
- *     peerNetwork: _default.id,
+ *     network: other.selfLink,
+ *     peerNetwork: _default.selfLink,
  * });
  * ```
  *

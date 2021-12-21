@@ -256,6 +256,20 @@ namespace Pulumi.Gcp
             set => _containerAnalysisCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _containerAwsCustomEndpoint = new __Value<string?>(() => __config.Get("containerAwsCustomEndpoint"));
+        public static string? ContainerAwsCustomEndpoint
+        {
+            get => _containerAwsCustomEndpoint.Get();
+            set => _containerAwsCustomEndpoint.Set(value);
+        }
+
+        private static readonly __Value<string?> _containerAzureCustomEndpoint = new __Value<string?>(() => __config.Get("containerAzureCustomEndpoint"));
+        public static string? ContainerAzureCustomEndpoint
+        {
+            get => _containerAzureCustomEndpoint.Get();
+            set => _containerAzureCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _containerCustomEndpoint = new __Value<string?>(() => __config.Get("containerCustomEndpoint"));
         public static string? ContainerCustomEndpoint
         {

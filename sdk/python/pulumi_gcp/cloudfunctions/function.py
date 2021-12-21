@@ -26,6 +26,7 @@ class FunctionArgs:
                  ingress_settings: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  max_instances: Optional[pulumi.Input[int]] = None,
+                 min_instances: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -51,6 +52,7 @@ class FunctionArgs:
         :param pulumi.Input[str] ingress_settings: String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
         :param pulumi.Input[Mapping[str, Any]] labels: A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
         :param pulumi.Input[int] max_instances: The limit on the maximum number of function instances that may coexist at a given time.
+        :param pulumi.Input[int] min_instances: The limit on the minimum number of function instances that may coexist at a given time.
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must be unique globally.
         :param pulumi.Input[str] project: Project of the function. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region of function. If it is not provided, the provider region is used.
@@ -85,6 +87,8 @@ class FunctionArgs:
             pulumi.set(__self__, "labels", labels)
         if max_instances is not None:
             pulumi.set(__self__, "max_instances", max_instances)
+        if min_instances is not None:
+            pulumi.set(__self__, "min_instances", min_instances)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -242,6 +246,18 @@ class FunctionArgs:
         pulumi.set(self, "max_instances", value)
 
     @property
+    @pulumi.getter(name="minInstances")
+    def min_instances(self) -> Optional[pulumi.Input[int]]:
+        """
+        The limit on the minimum number of function instances that may coexist at a given time.
+        """
+        return pulumi.get(self, "min_instances")
+
+    @min_instances.setter
+    def min_instances(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_instances", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -388,6 +404,7 @@ class _FunctionState:
                  ingress_settings: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  max_instances: Optional[pulumi.Input[int]] = None,
+                 min_instances: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -412,6 +429,7 @@ class _FunctionState:
         :param pulumi.Input[str] ingress_settings: String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
         :param pulumi.Input[Mapping[str, Any]] labels: A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
         :param pulumi.Input[int] max_instances: The limit on the maximum number of function instances that may coexist at a given time.
+        :param pulumi.Input[int] min_instances: The limit on the minimum number of function instances that may coexist at a given time.
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must be unique globally.
         :param pulumi.Input[str] project: Project of the function. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region of function. If it is not provided, the provider region is used.
@@ -447,6 +465,8 @@ class _FunctionState:
             pulumi.set(__self__, "labels", labels)
         if max_instances is not None:
             pulumi.set(__self__, "max_instances", max_instances)
+        if min_instances is not None:
+            pulumi.set(__self__, "min_instances", min_instances)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -591,6 +611,18 @@ class _FunctionState:
     @max_instances.setter
     def max_instances(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_instances", value)
+
+    @property
+    @pulumi.getter(name="minInstances")
+    def min_instances(self) -> Optional[pulumi.Input[int]]:
+        """
+        The limit on the minimum number of function instances that may coexist at a given time.
+        """
+        return pulumi.get(self, "min_instances")
+
+    @min_instances.setter
+    def min_instances(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_instances", value)
 
     @property
     @pulumi.getter
@@ -754,6 +786,7 @@ class Function(pulumi.CustomResource):
                  ingress_settings: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  max_instances: Optional[pulumi.Input[int]] = None,
+                 min_instances: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -865,6 +898,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] ingress_settings: String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
         :param pulumi.Input[Mapping[str, Any]] labels: A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
         :param pulumi.Input[int] max_instances: The limit on the maximum number of function instances that may coexist at a given time.
+        :param pulumi.Input[int] min_instances: The limit on the minimum number of function instances that may coexist at a given time.
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must be unique globally.
         :param pulumi.Input[str] project: Project of the function. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region of function. If it is not provided, the provider region is used.
@@ -997,6 +1031,7 @@ class Function(pulumi.CustomResource):
                  ingress_settings: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  max_instances: Optional[pulumi.Input[int]] = None,
+                 min_instances: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -1031,6 +1066,7 @@ class Function(pulumi.CustomResource):
             __props__.__dict__["ingress_settings"] = ingress_settings
             __props__.__dict__["labels"] = labels
             __props__.__dict__["max_instances"] = max_instances
+            __props__.__dict__["min_instances"] = min_instances
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
@@ -1065,6 +1101,7 @@ class Function(pulumi.CustomResource):
             ingress_settings: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             max_instances: Optional[pulumi.Input[int]] = None,
+            min_instances: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
@@ -1094,6 +1131,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] ingress_settings: String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
         :param pulumi.Input[Mapping[str, Any]] labels: A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
         :param pulumi.Input[int] max_instances: The limit on the maximum number of function instances that may coexist at a given time.
+        :param pulumi.Input[int] min_instances: The limit on the minimum number of function instances that may coexist at a given time.
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must be unique globally.
         :param pulumi.Input[str] project: Project of the function. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region of function. If it is not provided, the provider region is used.
@@ -1123,6 +1161,7 @@ class Function(pulumi.CustomResource):
         __props__.__dict__["ingress_settings"] = ingress_settings
         __props__.__dict__["labels"] = labels
         __props__.__dict__["max_instances"] = max_instances
+        __props__.__dict__["min_instances"] = min_instances
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["region"] = region
@@ -1216,6 +1255,14 @@ class Function(pulumi.CustomResource):
         The limit on the maximum number of function instances that may coexist at a given time.
         """
         return pulumi.get(self, "max_instances")
+
+    @property
+    @pulumi.getter(name="minInstances")
+    def min_instances(self) -> pulumi.Output[Optional[int]]:
+        """
+        The limit on the minimum number of function instances that may coexist at a given time.
+        """
+        return pulumi.get(self, "min_instances")
 
     @property
     @pulumi.getter

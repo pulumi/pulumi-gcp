@@ -124,6 +124,7 @@ namespace Pulumi.Gcp.Storage
         public readonly ImmutableArray<Outputs.GetBucketLoggingResult> Loggings;
         public readonly string Name;
         public readonly string Project;
+        public readonly string PublicAccessPrevention;
         public readonly bool RequesterPays;
         public readonly ImmutableArray<Outputs.GetBucketRetentionPolicyResult> RetentionPolicies;
         public readonly string SelfLink;
@@ -157,6 +158,8 @@ namespace Pulumi.Gcp.Storage
 
             string project,
 
+            string publicAccessPrevention,
+
             bool requesterPays,
 
             ImmutableArray<Outputs.GetBucketRetentionPolicyResult> retentionPolicies,
@@ -184,6 +187,7 @@ namespace Pulumi.Gcp.Storage
             Loggings = loggings;
             Name = name;
             Project = project;
+            PublicAccessPrevention = publicAccessPrevention;
             RequesterPays = requesterPays;
             RetentionPolicies = retentionPolicies;
             SelfLink = selfLink;

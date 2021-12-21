@@ -98,6 +98,7 @@ export interface GetFunctionResult {
      * The limit on the maximum number of function instances that may coexist at a given time.
      */
     readonly maxInstances: number;
+    readonly minInstances: number;
     /**
      * The name of the Cloud Function.
      */

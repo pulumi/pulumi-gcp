@@ -50,6 +50,12 @@ import * as utilities from "../utilities";
  *                 paths: ["path"],
  *             },
  *         },
+ *         availableSecrets: {
+ *             secretManagers: [{
+ *                 env: "MY_SECRET",
+ *                 versionName: "projects/myProject/secrets/mySecret/versions/latest",
+ *             }],
+ *         },
  *         logsBucket: "gs://mybucket/logs",
  *         options: {
  *             diskSizeGb: 100,
@@ -88,6 +94,7 @@ import * as utilities from "../utilities";
  *                 "localfile.zip",
  *             ],
  *             name: "gcr.io/cloud-builders/gsutil",
+ *             secretEnvs: ["MY_SECRET"],
  *             timeout: "120s",
  *         }],
  *         substitutions: {

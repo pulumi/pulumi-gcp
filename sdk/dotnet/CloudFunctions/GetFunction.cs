@@ -172,6 +172,7 @@ namespace Pulumi.Gcp.CloudFunctions
         /// The limit on the maximum number of function instances that may coexist at a given time.
         /// </summary>
         public readonly int MaxInstances;
+        public readonly int MinInstances;
         /// <summary>
         /// The name of the Cloud Function.
         /// </summary>
@@ -239,6 +240,8 @@ namespace Pulumi.Gcp.CloudFunctions
 
             int maxInstances,
 
+            int minInstances,
+
             string name,
 
             string? project,
@@ -274,6 +277,7 @@ namespace Pulumi.Gcp.CloudFunctions
             IngressSettings = ingressSettings;
             Labels = labels;
             MaxInstances = maxInstances;
+            MinInstances = minInstances;
             Name = name;
             Project = project;
             Region = region;

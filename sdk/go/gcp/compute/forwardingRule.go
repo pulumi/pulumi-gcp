@@ -894,6 +894,259 @@ import (
 // 	})
 // }
 // ```
+// ### Forwarding Rule Regional Http Xlb
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "debian-9"
+// 		opt1 := "debian-cloud"
+// 		debianImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+// 			Family:  &opt0,
+// 			Project: &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", &compute.NetworkArgs{
+// 			AutoCreateSubnetworks: pulumi.Bool(false),
+// 			RoutingMode:           pulumi.String("REGIONAL"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultSubnetwork, err := compute.NewSubnetwork(ctx, "defaultSubnetwork", &compute.SubnetworkArgs{
+// 			IpCidrRange: pulumi.String("10.1.2.0/24"),
+// 			Region:      pulumi.String("us-central1"),
+// 			Network:     defaultNetwork.ID(),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		instanceTemplate, err := compute.NewInstanceTemplate(ctx, "instanceTemplate", &compute.InstanceTemplateArgs{
+// 			MachineType: pulumi.String("e2-medium"),
+// 			NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
+// 				&compute.InstanceTemplateNetworkInterfaceArgs{
+// 					Network:    defaultNetwork.ID(),
+// 					Subnetwork: defaultSubnetwork.ID(),
+// 				},
+// 			},
+// 			Disks: compute.InstanceTemplateDiskArray{
+// 				&compute.InstanceTemplateDiskArgs{
+// 					SourceImage: pulumi.String(debianImage.SelfLink),
+// 					AutoDelete:  pulumi.Bool(true),
+// 					Boot:        pulumi.Bool(true),
+// 				},
+// 			},
+// 			Tags: pulumi.StringArray{
+// 				pulumi.String("allow-ssh"),
+// 				pulumi.String("load-balanced-backend"),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		rigm, err := compute.NewRegionInstanceGroupManager(ctx, "rigm", &compute.RegionInstanceGroupManagerArgs{
+// 			Region: pulumi.String("us-central1"),
+// 			Versions: compute.RegionInstanceGroupManagerVersionArray{
+// 				&compute.RegionInstanceGroupManagerVersionArgs{
+// 					InstanceTemplate: instanceTemplate.ID(),
+// 					Name:             pulumi.String("primary"),
+// 				},
+// 			},
+// 			BaseInstanceName: pulumi.String("internal-glb"),
+// 			TargetSize:       pulumi.Int(1),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		fw1, err := compute.NewFirewall(ctx, "fw1", &compute.FirewallArgs{
+// 			Network: defaultNetwork.ID(),
+// 			SourceRanges: pulumi.StringArray{
+// 				pulumi.String("10.1.2.0/24"),
+// 			},
+// 			Allows: compute.FirewallAllowArray{
+// 				&compute.FirewallAllowArgs{
+// 					Protocol: pulumi.String("tcp"),
+// 				},
+// 				&compute.FirewallAllowArgs{
+// 					Protocol: pulumi.String("udp"),
+// 				},
+// 				&compute.FirewallAllowArgs{
+// 					Protocol: pulumi.String("icmp"),
+// 				},
+// 			},
+// 			Direction: pulumi.String("INGRESS"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		fw2, err := compute.NewFirewall(ctx, "fw2", &compute.FirewallArgs{
+// 			Network: defaultNetwork.ID(),
+// 			SourceRanges: pulumi.StringArray{
+// 				pulumi.String("0.0.0.0/0"),
+// 			},
+// 			Allows: compute.FirewallAllowArray{
+// 				&compute.FirewallAllowArgs{
+// 					Protocol: pulumi.String("tcp"),
+// 					Ports: pulumi.StringArray{
+// 						pulumi.String("22"),
+// 					},
+// 				},
+// 			},
+// 			TargetTags: pulumi.StringArray{
+// 				pulumi.String("allow-ssh"),
+// 			},
+// 			Direction: pulumi.String("INGRESS"),
+// 		}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+// 			fw1,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		fw3, err := compute.NewFirewall(ctx, "fw3", &compute.FirewallArgs{
+// 			Network: defaultNetwork.ID(),
+// 			SourceRanges: pulumi.StringArray{
+// 				pulumi.String("130.211.0.0/22"),
+// 				pulumi.String("35.191.0.0/16"),
+// 			},
+// 			Allows: compute.FirewallAllowArray{
+// 				&compute.FirewallAllowArgs{
+// 					Protocol: pulumi.String("tcp"),
+// 				},
+// 			},
+// 			TargetTags: pulumi.StringArray{
+// 				pulumi.String("load-balanced-backend"),
+// 			},
+// 			Direction: pulumi.String("INGRESS"),
+// 		}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+// 			fw2,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		fw4, err := compute.NewFirewall(ctx, "fw4", &compute.FirewallArgs{
+// 			Network: defaultNetwork.ID(),
+// 			SourceRanges: pulumi.StringArray{
+// 				pulumi.String("10.129.0.0/26"),
+// 			},
+// 			TargetTags: pulumi.StringArray{
+// 				pulumi.String("load-balanced-backend"),
+// 			},
+// 			Allows: compute.FirewallAllowArray{
+// 				&compute.FirewallAllowArgs{
+// 					Protocol: pulumi.String("tcp"),
+// 					Ports: pulumi.StringArray{
+// 						pulumi.String("80"),
+// 					},
+// 				},
+// 				&compute.FirewallAllowArgs{
+// 					Protocol: pulumi.String("tcp"),
+// 					Ports: pulumi.StringArray{
+// 						pulumi.String("443"),
+// 					},
+// 				},
+// 				&compute.FirewallAllowArgs{
+// 					Protocol: pulumi.String("tcp"),
+// 					Ports: pulumi.StringArray{
+// 						pulumi.String("8000"),
+// 					},
+// 				},
+// 			},
+// 			Direction: pulumi.String("INGRESS"),
+// 		}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+// 			fw3,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultRegionHealthCheck, err := compute.NewRegionHealthCheck(ctx, "defaultRegionHealthCheck", &compute.RegionHealthCheckArgs{
+// 			Region: pulumi.String("us-central1"),
+// 			HttpHealthCheck: &compute.RegionHealthCheckHttpHealthCheckArgs{
+// 				PortSpecification: pulumi.String("USE_SERVING_PORT"),
+// 			},
+// 		}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+// 			fw4,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultRegionBackendService, err := compute.NewRegionBackendService(ctx, "defaultRegionBackendService", &compute.RegionBackendServiceArgs{
+// 			LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+// 			Backends: compute.RegionBackendServiceBackendArray{
+// 				&compute.RegionBackendServiceBackendArgs{
+// 					Group:          rigm.InstanceGroup,
+// 					BalancingMode:  pulumi.String("UTILIZATION"),
+// 					CapacityScaler: pulumi.Float64(1),
+// 				},
+// 			},
+// 			Region:     pulumi.String("us-central1"),
+// 			Protocol:   pulumi.String("HTTP"),
+// 			TimeoutSec: pulumi.Int(10),
+// 			HealthChecks: pulumi.String{
+// 				defaultRegionHealthCheck.ID(),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultRegionUrlMap, err := compute.NewRegionUrlMap(ctx, "defaultRegionUrlMap", &compute.RegionUrlMapArgs{
+// 			Region:         pulumi.String("us-central1"),
+// 			DefaultService: defaultRegionBackendService.ID(),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultRegionTargetHttpProxy, err := compute.NewRegionTargetHttpProxy(ctx, "defaultRegionTargetHttpProxy", &compute.RegionTargetHttpProxyArgs{
+// 			Region: pulumi.String("us-central1"),
+// 			UrlMap: defaultRegionUrlMap.ID(),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultAddress, err := compute.NewAddress(ctx, "defaultAddress", &compute.AddressArgs{
+// 			Region:      pulumi.String("us-central1"),
+// 			NetworkTier: pulumi.String("STANDARD"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		proxy, err := compute.NewSubnetwork(ctx, "proxy", &compute.SubnetworkArgs{
+// 			IpCidrRange: pulumi.String("10.129.0.0/26"),
+// 			Region:      pulumi.String("us-central1"),
+// 			Network:     defaultNetwork.ID(),
+// 			Purpose:     pulumi.String("REGIONAL_MANAGED_PROXY"),
+// 			Role:        pulumi.String("ACTIVE"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewForwardingRule(ctx, "defaultForwardingRule", &compute.ForwardingRuleArgs{
+// 			Region:              pulumi.String("us-central1"),
+// 			IpProtocol:          pulumi.String("TCP"),
+// 			LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+// 			PortRange:           pulumi.String("80"),
+// 			Target:              defaultRegionTargetHttpProxy.ID(),
+// 			Network:             defaultNetwork.ID(),
+// 			IpAddress:           defaultAddress.ID(),
+// 			NetworkTier:         pulumi.String("STANDARD"),
+// 		}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+// 			proxy,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //
@@ -967,14 +1220,15 @@ type ForwardingRule struct {
 	// Labels to apply to this forwarding rule.  A list of key->value pairs.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// This signifies what the ForwardingRule will be used for and can be
-	// EXTERNAL, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
+	// EXTERNAL, EXTERNAL_MANAGED, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
 	// Cloud VPN gateways, protocol forwarding to VMs from an external IP address,
 	// and HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP load balancers.
 	// INTERNAL is used for protocol forwarding to VMs from an internal IP address,
 	// and internal TCP/UDP load balancers.
+	// EXTERNAL_MANAGED is used for regional external HTTP(S) load balancers.
 	// INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
 	// Default value is `EXTERNAL`.
-	// Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
+	// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrOutput `pulumi:"loadBalancingScheme"`
 	// Name of the resource; provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -1134,14 +1388,15 @@ type forwardingRuleState struct {
 	// Labels to apply to this forwarding rule.  A list of key->value pairs.
 	Labels map[string]string `pulumi:"labels"`
 	// This signifies what the ForwardingRule will be used for and can be
-	// EXTERNAL, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
+	// EXTERNAL, EXTERNAL_MANAGED, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
 	// Cloud VPN gateways, protocol forwarding to VMs from an external IP address,
 	// and HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP load balancers.
 	// INTERNAL is used for protocol forwarding to VMs from an internal IP address,
 	// and internal TCP/UDP load balancers.
+	// EXTERNAL_MANAGED is used for regional external HTTP(S) load balancers.
 	// INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
 	// Default value is `EXTERNAL`.
-	// Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
+	// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// Name of the resource; provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -1273,14 +1528,15 @@ type ForwardingRuleState struct {
 	// Labels to apply to this forwarding rule.  A list of key->value pairs.
 	Labels pulumi.StringMapInput
 	// This signifies what the ForwardingRule will be used for and can be
-	// EXTERNAL, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
+	// EXTERNAL, EXTERNAL_MANAGED, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
 	// Cloud VPN gateways, protocol forwarding to VMs from an external IP address,
 	// and HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP load balancers.
 	// INTERNAL is used for protocol forwarding to VMs from an internal IP address,
 	// and internal TCP/UDP load balancers.
+	// EXTERNAL_MANAGED is used for regional external HTTP(S) load balancers.
 	// INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
 	// Default value is `EXTERNAL`.
-	// Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
+	// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// Name of the resource; provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -1412,14 +1668,15 @@ type forwardingRuleArgs struct {
 	// Labels to apply to this forwarding rule.  A list of key->value pairs.
 	Labels map[string]string `pulumi:"labels"`
 	// This signifies what the ForwardingRule will be used for and can be
-	// EXTERNAL, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
+	// EXTERNAL, EXTERNAL_MANAGED, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
 	// Cloud VPN gateways, protocol forwarding to VMs from an external IP address,
 	// and HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP load balancers.
 	// INTERNAL is used for protocol forwarding to VMs from an internal IP address,
 	// and internal TCP/UDP load balancers.
+	// EXTERNAL_MANAGED is used for regional external HTTP(S) load balancers.
 	// INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
 	// Default value is `EXTERNAL`.
-	// Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
+	// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// Name of the resource; provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -1543,14 +1800,15 @@ type ForwardingRuleArgs struct {
 	// Labels to apply to this forwarding rule.  A list of key->value pairs.
 	Labels pulumi.StringMapInput
 	// This signifies what the ForwardingRule will be used for and can be
-	// EXTERNAL, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
+	// EXTERNAL, EXTERNAL_MANAGED, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
 	// Cloud VPN gateways, protocol forwarding to VMs from an external IP address,
 	// and HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP load balancers.
 	// INTERNAL is used for protocol forwarding to VMs from an internal IP address,
 	// and internal TCP/UDP load balancers.
+	// EXTERNAL_MANAGED is used for regional external HTTP(S) load balancers.
 	// INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
 	// Default value is `EXTERNAL`.
-	// Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
+	// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// Name of the resource; provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with

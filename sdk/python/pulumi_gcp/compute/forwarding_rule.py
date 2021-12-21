@@ -72,14 +72,15 @@ class ForwardingRuleArgs:
                loadBalancingScheme set to INTERNAL.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this forwarding rule.  A list of key->value pairs.
         :param pulumi.Input[str] load_balancing_scheme: This signifies what the ForwardingRule will be used for and can be
-               EXTERNAL, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
+               EXTERNAL, EXTERNAL_MANAGED, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
                Cloud VPN gateways, protocol forwarding to VMs from an external IP address,
                and HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP load balancers.
                INTERNAL is used for protocol forwarding to VMs from an internal IP address,
                and internal TCP/UDP load balancers.
+               EXTERNAL_MANAGED is used for regional external HTTP(S) load balancers.
                INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
                Default value is `EXTERNAL`.
-               Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
+               Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -312,14 +313,15 @@ class ForwardingRuleArgs:
     def load_balancing_scheme(self) -> Optional[pulumi.Input[str]]:
         """
         This signifies what the ForwardingRule will be used for and can be
-        EXTERNAL, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
+        EXTERNAL, EXTERNAL_MANAGED, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
         Cloud VPN gateways, protocol forwarding to VMs from an external IP address,
         and HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP load balancers.
         INTERNAL is used for protocol forwarding to VMs from an internal IP address,
         and internal TCP/UDP load balancers.
+        EXTERNAL_MANAGED is used for regional external HTTP(S) load balancers.
         INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
         Default value is `EXTERNAL`.
-        Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
+        Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
         """
         return pulumi.get(self, "load_balancing_scheme")
 
@@ -568,14 +570,15 @@ class _ForwardingRuleState:
         :param pulumi.Input[str] label_fingerprint: Used internally during label updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this forwarding rule.  A list of key->value pairs.
         :param pulumi.Input[str] load_balancing_scheme: This signifies what the ForwardingRule will be used for and can be
-               EXTERNAL, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
+               EXTERNAL, EXTERNAL_MANAGED, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
                Cloud VPN gateways, protocol forwarding to VMs from an external IP address,
                and HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP load balancers.
                INTERNAL is used for protocol forwarding to VMs from an internal IP address,
                and internal TCP/UDP load balancers.
+               EXTERNAL_MANAGED is used for regional external HTTP(S) load balancers.
                INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
                Default value is `EXTERNAL`.
-               Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
+               Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -843,14 +846,15 @@ class _ForwardingRuleState:
     def load_balancing_scheme(self) -> Optional[pulumi.Input[str]]:
         """
         This signifies what the ForwardingRule will be used for and can be
-        EXTERNAL, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
+        EXTERNAL, EXTERNAL_MANAGED, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
         Cloud VPN gateways, protocol forwarding to VMs from an external IP address,
         and HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP load balancers.
         INTERNAL is used for protocol forwarding to VMs from an internal IP address,
         and internal TCP/UDP load balancers.
+        EXTERNAL_MANAGED is used for regional external HTTP(S) load balancers.
         INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
         Default value is `EXTERNAL`.
-        Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
+        Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
         """
         return pulumi.get(self, "load_balancing_scheme")
 
@@ -1100,7 +1104,7 @@ class ForwardingRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         # Internal HTTP load balancer with a managed instance group backend
-        # VPC
+        # VPC network
         ilb_network = gcp.compute.Network("ilbNetwork", auto_create_subnetworks=False,
         opts=pulumi.ResourceOptions(provider=google_beta))
         # proxy-only subnet
@@ -1111,7 +1115,7 @@ class ForwardingRule(pulumi.CustomResource):
             role="ACTIVE",
             network=ilb_network.id,
             opts=pulumi.ResourceOptions(provider=google_beta))
-        # backed subnet
+        # backend subnet
         ilb_subnet = gcp.compute.Subnetwork("ilbSubnet",
             ip_cidr_range="10.0.1.0/24",
             region="europe-west1",
@@ -1183,12 +1187,12 @@ class ForwardingRule(pulumi.CustomResource):
                 capacity_scaler=1,
             )],
             opts=pulumi.ResourceOptions(provider=google_beta))
-        # url map
+        # URL map
         default_region_url_map = gcp.compute.RegionUrlMap("defaultRegionUrlMap",
             region="europe-west1",
             default_service=default_region_backend_service.id,
             opts=pulumi.ResourceOptions(provider=google_beta))
-        # http proxy
+        # HTTP target proxy
         default_region_target_http_proxy = gcp.compute.RegionTargetHttpProxy("defaultRegionTargetHttpProxy",
             region="europe-west1",
             url_map=default_region_url_map.id,
@@ -1668,6 +1672,160 @@ class ForwardingRule(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(provider=google_beta,
                 depends_on=[proxy]))
         ```
+        ### Forwarding Rule Regional Http Xlb
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        debian_image = gcp.compute.get_image(family="debian-9",
+            project="debian-cloud")
+        default_network = gcp.compute.Network("defaultNetwork",
+            auto_create_subnetworks=False,
+            routing_mode="REGIONAL",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+            ip_cidr_range="10.1.2.0/24",
+            region="us-central1",
+            network=default_network.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        instance_template = gcp.compute.InstanceTemplate("instanceTemplate",
+            machine_type="e2-medium",
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                network=default_network.id,
+                subnetwork=default_subnetwork.id,
+            )],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image=debian_image.self_link,
+                auto_delete=True,
+                boot=True,
+            )],
+            tags=[
+                "allow-ssh",
+                "load-balanced-backend",
+            ],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        rigm = gcp.compute.RegionInstanceGroupManager("rigm",
+            region="us-central1",
+            versions=[gcp.compute.RegionInstanceGroupManagerVersionArgs(
+                instance_template=instance_template.id,
+                name="primary",
+            )],
+            base_instance_name="internal-glb",
+            target_size=1,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        fw1 = gcp.compute.Firewall("fw1",
+            network=default_network.id,
+            source_ranges=["10.1.2.0/24"],
+            allows=[
+                gcp.compute.FirewallAllowArgs(
+                    protocol="tcp",
+                ),
+                gcp.compute.FirewallAllowArgs(
+                    protocol="udp",
+                ),
+                gcp.compute.FirewallAllowArgs(
+                    protocol="icmp",
+                ),
+            ],
+            direction="INGRESS",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        fw2 = gcp.compute.Firewall("fw2",
+            network=default_network.id,
+            source_ranges=["0.0.0.0/0"],
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+                ports=["22"],
+            )],
+            target_tags=["allow-ssh"],
+            direction="INGRESS",
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[fw1]))
+        fw3 = gcp.compute.Firewall("fw3",
+            network=default_network.id,
+            source_ranges=[
+                "130.211.0.0/22",
+                "35.191.0.0/16",
+            ],
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+            )],
+            target_tags=["load-balanced-backend"],
+            direction="INGRESS",
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[fw2]))
+        fw4 = gcp.compute.Firewall("fw4",
+            network=default_network.id,
+            source_ranges=["10.129.0.0/26"],
+            target_tags=["load-balanced-backend"],
+            allows=[
+                gcp.compute.FirewallAllowArgs(
+                    protocol="tcp",
+                    ports=["80"],
+                ),
+                gcp.compute.FirewallAllowArgs(
+                    protocol="tcp",
+                    ports=["443"],
+                ),
+                gcp.compute.FirewallAllowArgs(
+                    protocol="tcp",
+                    ports=["8000"],
+                ),
+            ],
+            direction="INGRESS",
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[fw3]))
+        default_region_health_check = gcp.compute.RegionHealthCheck("defaultRegionHealthCheck",
+            region="us-central1",
+            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
+                port_specification="USE_SERVING_PORT",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[fw4]))
+        default_region_backend_service = gcp.compute.RegionBackendService("defaultRegionBackendService",
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            backends=[gcp.compute.RegionBackendServiceBackendArgs(
+                group=rigm.instance_group,
+                balancing_mode="UTILIZATION",
+                capacity_scaler=1,
+            )],
+            region="us-central1",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=[default_region_health_check.id],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_region_url_map = gcp.compute.RegionUrlMap("defaultRegionUrlMap",
+            region="us-central1",
+            default_service=default_region_backend_service.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_region_target_http_proxy = gcp.compute.RegionTargetHttpProxy("defaultRegionTargetHttpProxy",
+            region="us-central1",
+            url_map=default_region_url_map.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_address = gcp.compute.Address("defaultAddress",
+            region="us-central1",
+            network_tier="STANDARD",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        proxy = gcp.compute.Subnetwork("proxy",
+            ip_cidr_range="10.129.0.0/26",
+            region="us-central1",
+            network=default_network.id,
+            purpose="REGIONAL_MANAGED_PROXY",
+            role="ACTIVE",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # Forwarding rule for Regional External Load Balancing
+        default_forwarding_rule = gcp.compute.ForwardingRule("defaultForwardingRule",
+            region="us-central1",
+            ip_protocol="TCP",
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            port_range="80",
+            target=default_region_target_http_proxy.id,
+            network=default_network.id,
+            ip_address=default_address.id,
+            network_tier="STANDARD",
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[proxy]))
+        ```
 
         ## Import
 
@@ -1729,14 +1887,15 @@ class ForwardingRule(pulumi.CustomResource):
                loadBalancingScheme set to INTERNAL.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this forwarding rule.  A list of key->value pairs.
         :param pulumi.Input[str] load_balancing_scheme: This signifies what the ForwardingRule will be used for and can be
-               EXTERNAL, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
+               EXTERNAL, EXTERNAL_MANAGED, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
                Cloud VPN gateways, protocol forwarding to VMs from an external IP address,
                and HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP load balancers.
                INTERNAL is used for protocol forwarding to VMs from an internal IP address,
                and internal TCP/UDP load balancers.
+               EXTERNAL_MANAGED is used for regional external HTTP(S) load balancers.
                INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
                Default value is `EXTERNAL`.
-               Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
+               Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -1825,7 +1984,7 @@ class ForwardingRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         # Internal HTTP load balancer with a managed instance group backend
-        # VPC
+        # VPC network
         ilb_network = gcp.compute.Network("ilbNetwork", auto_create_subnetworks=False,
         opts=pulumi.ResourceOptions(provider=google_beta))
         # proxy-only subnet
@@ -1836,7 +1995,7 @@ class ForwardingRule(pulumi.CustomResource):
             role="ACTIVE",
             network=ilb_network.id,
             opts=pulumi.ResourceOptions(provider=google_beta))
-        # backed subnet
+        # backend subnet
         ilb_subnet = gcp.compute.Subnetwork("ilbSubnet",
             ip_cidr_range="10.0.1.0/24",
             region="europe-west1",
@@ -1908,12 +2067,12 @@ class ForwardingRule(pulumi.CustomResource):
                 capacity_scaler=1,
             )],
             opts=pulumi.ResourceOptions(provider=google_beta))
-        # url map
+        # URL map
         default_region_url_map = gcp.compute.RegionUrlMap("defaultRegionUrlMap",
             region="europe-west1",
             default_service=default_region_backend_service.id,
             opts=pulumi.ResourceOptions(provider=google_beta))
-        # http proxy
+        # HTTP target proxy
         default_region_target_http_proxy = gcp.compute.RegionTargetHttpProxy("defaultRegionTargetHttpProxy",
             region="europe-west1",
             url_map=default_region_url_map.id,
@@ -2390,6 +2549,160 @@ class ForwardingRule(pulumi.CustomResource):
             network=default_network.id,
             subnetwork=default_subnetwork.id,
             network_tier="PREMIUM",
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[proxy]))
+        ```
+        ### Forwarding Rule Regional Http Xlb
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        debian_image = gcp.compute.get_image(family="debian-9",
+            project="debian-cloud")
+        default_network = gcp.compute.Network("defaultNetwork",
+            auto_create_subnetworks=False,
+            routing_mode="REGIONAL",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+            ip_cidr_range="10.1.2.0/24",
+            region="us-central1",
+            network=default_network.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        instance_template = gcp.compute.InstanceTemplate("instanceTemplate",
+            machine_type="e2-medium",
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                network=default_network.id,
+                subnetwork=default_subnetwork.id,
+            )],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image=debian_image.self_link,
+                auto_delete=True,
+                boot=True,
+            )],
+            tags=[
+                "allow-ssh",
+                "load-balanced-backend",
+            ],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        rigm = gcp.compute.RegionInstanceGroupManager("rigm",
+            region="us-central1",
+            versions=[gcp.compute.RegionInstanceGroupManagerVersionArgs(
+                instance_template=instance_template.id,
+                name="primary",
+            )],
+            base_instance_name="internal-glb",
+            target_size=1,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        fw1 = gcp.compute.Firewall("fw1",
+            network=default_network.id,
+            source_ranges=["10.1.2.0/24"],
+            allows=[
+                gcp.compute.FirewallAllowArgs(
+                    protocol="tcp",
+                ),
+                gcp.compute.FirewallAllowArgs(
+                    protocol="udp",
+                ),
+                gcp.compute.FirewallAllowArgs(
+                    protocol="icmp",
+                ),
+            ],
+            direction="INGRESS",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        fw2 = gcp.compute.Firewall("fw2",
+            network=default_network.id,
+            source_ranges=["0.0.0.0/0"],
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+                ports=["22"],
+            )],
+            target_tags=["allow-ssh"],
+            direction="INGRESS",
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[fw1]))
+        fw3 = gcp.compute.Firewall("fw3",
+            network=default_network.id,
+            source_ranges=[
+                "130.211.0.0/22",
+                "35.191.0.0/16",
+            ],
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+            )],
+            target_tags=["load-balanced-backend"],
+            direction="INGRESS",
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[fw2]))
+        fw4 = gcp.compute.Firewall("fw4",
+            network=default_network.id,
+            source_ranges=["10.129.0.0/26"],
+            target_tags=["load-balanced-backend"],
+            allows=[
+                gcp.compute.FirewallAllowArgs(
+                    protocol="tcp",
+                    ports=["80"],
+                ),
+                gcp.compute.FirewallAllowArgs(
+                    protocol="tcp",
+                    ports=["443"],
+                ),
+                gcp.compute.FirewallAllowArgs(
+                    protocol="tcp",
+                    ports=["8000"],
+                ),
+            ],
+            direction="INGRESS",
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[fw3]))
+        default_region_health_check = gcp.compute.RegionHealthCheck("defaultRegionHealthCheck",
+            region="us-central1",
+            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
+                port_specification="USE_SERVING_PORT",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[fw4]))
+        default_region_backend_service = gcp.compute.RegionBackendService("defaultRegionBackendService",
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            backends=[gcp.compute.RegionBackendServiceBackendArgs(
+                group=rigm.instance_group,
+                balancing_mode="UTILIZATION",
+                capacity_scaler=1,
+            )],
+            region="us-central1",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=[default_region_health_check.id],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_region_url_map = gcp.compute.RegionUrlMap("defaultRegionUrlMap",
+            region="us-central1",
+            default_service=default_region_backend_service.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_region_target_http_proxy = gcp.compute.RegionTargetHttpProxy("defaultRegionTargetHttpProxy",
+            region="us-central1",
+            url_map=default_region_url_map.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_address = gcp.compute.Address("defaultAddress",
+            region="us-central1",
+            network_tier="STANDARD",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        proxy = gcp.compute.Subnetwork("proxy",
+            ip_cidr_range="10.129.0.0/26",
+            region="us-central1",
+            network=default_network.id,
+            purpose="REGIONAL_MANAGED_PROXY",
+            role="ACTIVE",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # Forwarding rule for Regional External Load Balancing
+        default_forwarding_rule = gcp.compute.ForwardingRule("defaultForwardingRule",
+            region="us-central1",
+            ip_protocol="TCP",
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            port_range="80",
+            target=default_region_target_http_proxy.id,
+            network=default_network.id,
+            ip_address=default_address.id,
+            network_tier="STANDARD",
             opts=pulumi.ResourceOptions(provider=google_beta,
                 depends_on=[proxy]))
         ```
@@ -2563,14 +2876,15 @@ class ForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[str] label_fingerprint: Used internally during label updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this forwarding rule.  A list of key->value pairs.
         :param pulumi.Input[str] load_balancing_scheme: This signifies what the ForwardingRule will be used for and can be
-               EXTERNAL, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
+               EXTERNAL, EXTERNAL_MANAGED, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
                Cloud VPN gateways, protocol forwarding to VMs from an external IP address,
                and HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP load balancers.
                INTERNAL is used for protocol forwarding to VMs from an internal IP address,
                and internal TCP/UDP load balancers.
+               EXTERNAL_MANAGED is used for regional external HTTP(S) load balancers.
                INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
                Default value is `EXTERNAL`.
-               Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
+               Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -2780,14 +3094,15 @@ class ForwardingRule(pulumi.CustomResource):
     def load_balancing_scheme(self) -> pulumi.Output[Optional[str]]:
         """
         This signifies what the ForwardingRule will be used for and can be
-        EXTERNAL, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
+        EXTERNAL, EXTERNAL_MANAGED, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
         Cloud VPN gateways, protocol forwarding to VMs from an external IP address,
         and HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP load balancers.
         INTERNAL is used for protocol forwarding to VMs from an internal IP address,
         and internal TCP/UDP load balancers.
+        EXTERNAL_MANAGED is used for regional external HTTP(S) load balancers.
         INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
         Default value is `EXTERNAL`.
-        Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
+        Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
         """
         return pulumi.get(self, "load_balancing_scheme")
 

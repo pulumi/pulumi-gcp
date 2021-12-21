@@ -122,6 +122,13 @@ export class Routine extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
+     * If absent, the return table type is inferred from definitionBody at query time in each query
+     * that references this routine. If present, then the columns in the evaluated table result will
+     * be cast to match the column types specificed in return table type, at query time.
+     */
+    public readonly returnTableType!: pulumi.Output<string | undefined>;
+    /**
      * A JSON schema for the return type. Optional if language = "SQL"; required otherwise.
      * If absent, the return type is inferred from definitionBody at query time in each query
      * that references this routine. If present, then the evaluated result will be cast to
@@ -139,7 +146,7 @@ export class Routine extends pulumi.CustomResource {
     public readonly routineId!: pulumi.Output<string>;
     /**
      * The type of routine.
-     * Possible values are `SCALAR_FUNCTION` and `PROCEDURE`.
+     * Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
      */
     public readonly routineType!: pulumi.Output<string | undefined>;
 
@@ -166,6 +173,7 @@ export class Routine extends pulumi.CustomResource {
             inputs["language"] = state ? state.language : undefined;
             inputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
             inputs["project"] = state ? state.project : undefined;
+            inputs["returnTableType"] = state ? state.returnTableType : undefined;
             inputs["returnType"] = state ? state.returnType : undefined;
             inputs["routineId"] = state ? state.routineId : undefined;
             inputs["routineType"] = state ? state.routineType : undefined;
@@ -188,6 +196,7 @@ export class Routine extends pulumi.CustomResource {
             inputs["importedLibraries"] = args ? args.importedLibraries : undefined;
             inputs["language"] = args ? args.language : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["returnTableType"] = args ? args.returnTableType : undefined;
             inputs["returnType"] = args ? args.returnType : undefined;
             inputs["routineId"] = args ? args.routineId : undefined;
             inputs["routineType"] = args ? args.routineType : undefined;
@@ -252,6 +261,13 @@ export interface RoutineState {
      */
     project?: pulumi.Input<string>;
     /**
+     * Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
+     * If absent, the return table type is inferred from definitionBody at query time in each query
+     * that references this routine. If present, then the columns in the evaluated table result will
+     * be cast to match the column types specificed in return table type, at query time.
+     */
+    returnTableType?: pulumi.Input<string>;
+    /**
      * A JSON schema for the return type. Optional if language = "SQL"; required otherwise.
      * If absent, the return type is inferred from definitionBody at query time in each query
      * that references this routine. If present, then the evaluated result will be cast to
@@ -269,7 +285,7 @@ export interface RoutineState {
     routineId?: pulumi.Input<string>;
     /**
      * The type of routine.
-     * Possible values are `SCALAR_FUNCTION` and `PROCEDURE`.
+     * Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
      */
     routineType?: pulumi.Input<string>;
 }
@@ -317,6 +333,13 @@ export interface RoutineArgs {
      */
     project?: pulumi.Input<string>;
     /**
+     * Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
+     * If absent, the return table type is inferred from definitionBody at query time in each query
+     * that references this routine. If present, then the columns in the evaluated table result will
+     * be cast to match the column types specificed in return table type, at query time.
+     */
+    returnTableType?: pulumi.Input<string>;
+    /**
      * A JSON schema for the return type. Optional if language = "SQL"; required otherwise.
      * If absent, the return type is inferred from definitionBody at query time in each query
      * that references this routine. If present, then the evaluated result will be cast to
@@ -334,7 +357,7 @@ export interface RoutineArgs {
     routineId: pulumi.Input<string>;
     /**
      * The type of routine.
-     * Possible values are `SCALAR_FUNCTION` and `PROCEDURE`.
+     * Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
      */
     routineType?: pulumi.Input<string>;
 }

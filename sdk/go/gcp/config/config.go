@@ -104,6 +104,12 @@ func GetComputeCustomEndpoint(ctx *pulumi.Context) string {
 func GetContainerAnalysisCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:containerAnalysisCustomEndpoint")
 }
+func GetContainerAwsCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:containerAwsCustomEndpoint")
+}
+func GetContainerAzureCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:containerAzureCustomEndpoint")
+}
 func GetContainerCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:containerCustomEndpoint")
 }

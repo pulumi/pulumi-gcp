@@ -48,6 +48,8 @@ type Provider struct {
 	ComposerCustomEndpoint             pulumi.StringPtrOutput `pulumi:"composerCustomEndpoint"`
 	ComputeCustomEndpoint              pulumi.StringPtrOutput `pulumi:"computeCustomEndpoint"`
 	ContainerAnalysisCustomEndpoint    pulumi.StringPtrOutput `pulumi:"containerAnalysisCustomEndpoint"`
+	ContainerAwsCustomEndpoint         pulumi.StringPtrOutput `pulumi:"containerAwsCustomEndpoint"`
+	ContainerAzureCustomEndpoint       pulumi.StringPtrOutput `pulumi:"containerAzureCustomEndpoint"`
 	ContainerCustomEndpoint            pulumi.StringPtrOutput `pulumi:"containerCustomEndpoint"`
 	Credentials                        pulumi.StringPtrOutput `pulumi:"credentials"`
 	DataCatalogCustomEndpoint          pulumi.StringPtrOutput `pulumi:"dataCatalogCustomEndpoint"`
@@ -178,6 +180,8 @@ type providerArgs struct {
 	ComposerCustomEndpoint             *string           `pulumi:"composerCustomEndpoint"`
 	ComputeCustomEndpoint              *string           `pulumi:"computeCustomEndpoint"`
 	ContainerAnalysisCustomEndpoint    *string           `pulumi:"containerAnalysisCustomEndpoint"`
+	ContainerAwsCustomEndpoint         *string           `pulumi:"containerAwsCustomEndpoint"`
+	ContainerAzureCustomEndpoint       *string           `pulumi:"containerAzureCustomEndpoint"`
 	ContainerCustomEndpoint            *string           `pulumi:"containerCustomEndpoint"`
 	Credentials                        *string           `pulumi:"credentials"`
 	DataCatalogCustomEndpoint          *string           `pulumi:"dataCatalogCustomEndpoint"`
@@ -289,6 +293,8 @@ type ProviderArgs struct {
 	ComposerCustomEndpoint             pulumi.StringPtrInput
 	ComputeCustomEndpoint              pulumi.StringPtrInput
 	ContainerAnalysisCustomEndpoint    pulumi.StringPtrInput
+	ContainerAwsCustomEndpoint         pulumi.StringPtrInput
+	ContainerAzureCustomEndpoint       pulumi.StringPtrInput
 	ContainerCustomEndpoint            pulumi.StringPtrInput
 	Credentials                        pulumi.StringPtrInput
 	DataCatalogCustomEndpoint          pulumi.StringPtrInput

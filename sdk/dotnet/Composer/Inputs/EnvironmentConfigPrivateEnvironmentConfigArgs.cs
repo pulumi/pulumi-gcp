@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Composer.Inputs
 
     public sealed class EnvironmentConfigPrivateEnvironmentConfigArgs : Pulumi.ResourceArgs
     {
+        [Input("cloudComposerConnectionSubnetwork")]
+        public Input<string>? CloudComposerConnectionSubnetwork { get; set; }
+
         [Input("cloudComposerNetworkIpv4CidrBlock")]
         public Input<string>? CloudComposerNetworkIpv4CidrBlock { get; set; }
 
