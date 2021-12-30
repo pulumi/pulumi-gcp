@@ -173,36 +173,36 @@ export class RegionTargetHttpProxy extends pulumi.CustomResource {
      */
     constructor(name: string, args: RegionTargetHttpProxyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RegionTargetHttpProxyArgs | RegionTargetHttpProxyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegionTargetHttpProxyState | undefined;
-            inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["proxyId"] = state ? state.proxyId : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
-            inputs["urlMap"] = state ? state.urlMap : undefined;
+            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["proxyId"] = state ? state.proxyId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["urlMap"] = state ? state.urlMap : undefined;
         } else {
             const args = argsOrState as RegionTargetHttpProxyArgs | undefined;
             if ((!args || args.urlMap === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'urlMap'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["urlMap"] = args ? args.urlMap : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["proxyId"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["urlMap"] = args ? args.urlMap : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["proxyId"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(RegionTargetHttpProxy.__pulumiType, name, inputs, opts);
+        super(RegionTargetHttpProxy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

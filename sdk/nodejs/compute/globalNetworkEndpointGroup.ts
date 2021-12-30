@@ -130,32 +130,32 @@ export class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args: GlobalNetworkEndpointGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GlobalNetworkEndpointGroupArgs | GlobalNetworkEndpointGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GlobalNetworkEndpointGroupState | undefined;
-            inputs["defaultPort"] = state ? state.defaultPort : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["networkEndpointType"] = state ? state.networkEndpointType : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["defaultPort"] = state ? state.defaultPort : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networkEndpointType"] = state ? state.networkEndpointType : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
         } else {
             const args = argsOrState as GlobalNetworkEndpointGroupArgs | undefined;
             if ((!args || args.networkEndpointType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'networkEndpointType'");
             }
-            inputs["defaultPort"] = args ? args.defaultPort : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["networkEndpointType"] = args ? args.networkEndpointType : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["defaultPort"] = args ? args.defaultPort : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networkEndpointType"] = args ? args.networkEndpointType : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["selfLink"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(GlobalNetworkEndpointGroup.__pulumiType, name, inputs, opts);
+        super(GlobalNetworkEndpointGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

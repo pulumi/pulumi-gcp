@@ -78,26 +78,26 @@ export class EnvGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args: EnvGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EnvGroupArgs | EnvGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EnvGroupState | undefined;
-            inputs["hostnames"] = state ? state.hostnames : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["orgId"] = state ? state.orgId : undefined;
+            resourceInputs["hostnames"] = state ? state.hostnames : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["orgId"] = state ? state.orgId : undefined;
         } else {
             const args = argsOrState as EnvGroupArgs | undefined;
             if ((!args || args.orgId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            inputs["hostnames"] = args ? args.hostnames : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["orgId"] = args ? args.orgId : undefined;
+            resourceInputs["hostnames"] = args ? args.hostnames : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["orgId"] = args ? args.orgId : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(EnvGroup.__pulumiType, name, inputs, opts);
+        super(EnvGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

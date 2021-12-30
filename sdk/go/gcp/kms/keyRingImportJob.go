@@ -205,7 +205,7 @@ type KeyRingImportJobInput interface {
 }
 
 func (*KeyRingImportJob) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyRingImportJob)(nil))
+	return reflect.TypeOf((**KeyRingImportJob)(nil)).Elem()
 }
 
 func (i *KeyRingImportJob) ToKeyRingImportJobOutput() KeyRingImportJobOutput {
@@ -214,35 +214,6 @@ func (i *KeyRingImportJob) ToKeyRingImportJobOutput() KeyRingImportJobOutput {
 
 func (i *KeyRingImportJob) ToKeyRingImportJobOutputWithContext(ctx context.Context) KeyRingImportJobOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KeyRingImportJobOutput)
-}
-
-func (i *KeyRingImportJob) ToKeyRingImportJobPtrOutput() KeyRingImportJobPtrOutput {
-	return i.ToKeyRingImportJobPtrOutputWithContext(context.Background())
-}
-
-func (i *KeyRingImportJob) ToKeyRingImportJobPtrOutputWithContext(ctx context.Context) KeyRingImportJobPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyRingImportJobPtrOutput)
-}
-
-type KeyRingImportJobPtrInput interface {
-	pulumi.Input
-
-	ToKeyRingImportJobPtrOutput() KeyRingImportJobPtrOutput
-	ToKeyRingImportJobPtrOutputWithContext(ctx context.Context) KeyRingImportJobPtrOutput
-}
-
-type keyRingImportJobPtrType KeyRingImportJobArgs
-
-func (*keyRingImportJobPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeyRingImportJob)(nil))
-}
-
-func (i *keyRingImportJobPtrType) ToKeyRingImportJobPtrOutput() KeyRingImportJobPtrOutput {
-	return i.ToKeyRingImportJobPtrOutputWithContext(context.Background())
-}
-
-func (i *keyRingImportJobPtrType) ToKeyRingImportJobPtrOutputWithContext(ctx context.Context) KeyRingImportJobPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyRingImportJobPtrOutput)
 }
 
 // KeyRingImportJobArrayInput is an input type that accepts KeyRingImportJobArray and KeyRingImportJobArrayOutput values.
@@ -298,7 +269,7 @@ func (i KeyRingImportJobMap) ToKeyRingImportJobMapOutputWithContext(ctx context.
 type KeyRingImportJobOutput struct{ *pulumi.OutputState }
 
 func (KeyRingImportJobOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyRingImportJob)(nil))
+	return reflect.TypeOf((**KeyRingImportJob)(nil)).Elem()
 }
 
 func (o KeyRingImportJobOutput) ToKeyRingImportJobOutput() KeyRingImportJobOutput {
@@ -309,44 +280,10 @@ func (o KeyRingImportJobOutput) ToKeyRingImportJobOutputWithContext(ctx context.
 	return o
 }
 
-func (o KeyRingImportJobOutput) ToKeyRingImportJobPtrOutput() KeyRingImportJobPtrOutput {
-	return o.ToKeyRingImportJobPtrOutputWithContext(context.Background())
-}
-
-func (o KeyRingImportJobOutput) ToKeyRingImportJobPtrOutputWithContext(ctx context.Context) KeyRingImportJobPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyRingImportJob) *KeyRingImportJob {
-		return &v
-	}).(KeyRingImportJobPtrOutput)
-}
-
-type KeyRingImportJobPtrOutput struct{ *pulumi.OutputState }
-
-func (KeyRingImportJobPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeyRingImportJob)(nil))
-}
-
-func (o KeyRingImportJobPtrOutput) ToKeyRingImportJobPtrOutput() KeyRingImportJobPtrOutput {
-	return o
-}
-
-func (o KeyRingImportJobPtrOutput) ToKeyRingImportJobPtrOutputWithContext(ctx context.Context) KeyRingImportJobPtrOutput {
-	return o
-}
-
-func (o KeyRingImportJobPtrOutput) Elem() KeyRingImportJobOutput {
-	return o.ApplyT(func(v *KeyRingImportJob) KeyRingImportJob {
-		if v != nil {
-			return *v
-		}
-		var ret KeyRingImportJob
-		return ret
-	}).(KeyRingImportJobOutput)
-}
-
 type KeyRingImportJobArrayOutput struct{ *pulumi.OutputState }
 
 func (KeyRingImportJobArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]KeyRingImportJob)(nil))
+	return reflect.TypeOf((*[]*KeyRingImportJob)(nil)).Elem()
 }
 
 func (o KeyRingImportJobArrayOutput) ToKeyRingImportJobArrayOutput() KeyRingImportJobArrayOutput {
@@ -358,15 +295,15 @@ func (o KeyRingImportJobArrayOutput) ToKeyRingImportJobArrayOutputWithContext(ct
 }
 
 func (o KeyRingImportJobArrayOutput) Index(i pulumi.IntInput) KeyRingImportJobOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KeyRingImportJob {
-		return vs[0].([]KeyRingImportJob)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KeyRingImportJob {
+		return vs[0].([]*KeyRingImportJob)[vs[1].(int)]
 	}).(KeyRingImportJobOutput)
 }
 
 type KeyRingImportJobMapOutput struct{ *pulumi.OutputState }
 
 func (KeyRingImportJobMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]KeyRingImportJob)(nil))
+	return reflect.TypeOf((*map[string]*KeyRingImportJob)(nil)).Elem()
 }
 
 func (o KeyRingImportJobMapOutput) ToKeyRingImportJobMapOutput() KeyRingImportJobMapOutput {
@@ -378,18 +315,16 @@ func (o KeyRingImportJobMapOutput) ToKeyRingImportJobMapOutputWithContext(ctx co
 }
 
 func (o KeyRingImportJobMapOutput) MapIndex(k pulumi.StringInput) KeyRingImportJobOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) KeyRingImportJob {
-		return vs[0].(map[string]KeyRingImportJob)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *KeyRingImportJob {
+		return vs[0].(map[string]*KeyRingImportJob)[vs[1].(string)]
 	}).(KeyRingImportJobOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingImportJobInput)(nil)).Elem(), &KeyRingImportJob{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingImportJobPtrInput)(nil)).Elem(), &KeyRingImportJob{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingImportJobArrayInput)(nil)).Elem(), KeyRingImportJobArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingImportJobMapInput)(nil)).Elem(), KeyRingImportJobMap{})
 	pulumi.RegisterOutputType(KeyRingImportJobOutput{})
-	pulumi.RegisterOutputType(KeyRingImportJobPtrOutput{})
 	pulumi.RegisterOutputType(KeyRingImportJobArrayOutput{})
 	pulumi.RegisterOutputType(KeyRingImportJobMapOutput{})
 }

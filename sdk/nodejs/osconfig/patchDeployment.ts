@@ -320,23 +320,23 @@ export class PatchDeployment extends pulumi.CustomResource {
      */
     constructor(name: string, args: PatchDeploymentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PatchDeploymentArgs | PatchDeploymentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PatchDeploymentState | undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["duration"] = state ? state.duration : undefined;
-            inputs["instanceFilter"] = state ? state.instanceFilter : undefined;
-            inputs["lastExecuteTime"] = state ? state.lastExecuteTime : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["oneTimeSchedule"] = state ? state.oneTimeSchedule : undefined;
-            inputs["patchConfig"] = state ? state.patchConfig : undefined;
-            inputs["patchDeploymentId"] = state ? state.patchDeploymentId : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["recurringSchedule"] = state ? state.recurringSchedule : undefined;
-            inputs["rollout"] = state ? state.rollout : undefined;
-            inputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["duration"] = state ? state.duration : undefined;
+            resourceInputs["instanceFilter"] = state ? state.instanceFilter : undefined;
+            resourceInputs["lastExecuteTime"] = state ? state.lastExecuteTime : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["oneTimeSchedule"] = state ? state.oneTimeSchedule : undefined;
+            resourceInputs["patchConfig"] = state ? state.patchConfig : undefined;
+            resourceInputs["patchDeploymentId"] = state ? state.patchDeploymentId : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["recurringSchedule"] = state ? state.recurringSchedule : undefined;
+            resourceInputs["rollout"] = state ? state.rollout : undefined;
+            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as PatchDeploymentArgs | undefined;
             if ((!args || args.instanceFilter === undefined) && !opts.urn) {
@@ -345,24 +345,24 @@ export class PatchDeployment extends pulumi.CustomResource {
             if ((!args || args.patchDeploymentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'patchDeploymentId'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["duration"] = args ? args.duration : undefined;
-            inputs["instanceFilter"] = args ? args.instanceFilter : undefined;
-            inputs["oneTimeSchedule"] = args ? args.oneTimeSchedule : undefined;
-            inputs["patchConfig"] = args ? args.patchConfig : undefined;
-            inputs["patchDeploymentId"] = args ? args.patchDeploymentId : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["recurringSchedule"] = args ? args.recurringSchedule : undefined;
-            inputs["rollout"] = args ? args.rollout : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["lastExecuteTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["duration"] = args ? args.duration : undefined;
+            resourceInputs["instanceFilter"] = args ? args.instanceFilter : undefined;
+            resourceInputs["oneTimeSchedule"] = args ? args.oneTimeSchedule : undefined;
+            resourceInputs["patchConfig"] = args ? args.patchConfig : undefined;
+            resourceInputs["patchDeploymentId"] = args ? args.patchDeploymentId : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["recurringSchedule"] = args ? args.recurringSchedule : undefined;
+            resourceInputs["rollout"] = args ? args.rollout : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["lastExecuteTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(PatchDeployment.__pulumiType, name, inputs, opts);
+        super(PatchDeployment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

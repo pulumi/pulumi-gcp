@@ -240,17 +240,17 @@ export class Budget extends pulumi.CustomResource {
      */
     constructor(name: string, args: BudgetArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BudgetArgs | BudgetState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BudgetState | undefined;
-            inputs["allUpdatesRule"] = state ? state.allUpdatesRule : undefined;
-            inputs["amount"] = state ? state.amount : undefined;
-            inputs["billingAccount"] = state ? state.billingAccount : undefined;
-            inputs["budgetFilter"] = state ? state.budgetFilter : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["thresholdRules"] = state ? state.thresholdRules : undefined;
+            resourceInputs["allUpdatesRule"] = state ? state.allUpdatesRule : undefined;
+            resourceInputs["amount"] = state ? state.amount : undefined;
+            resourceInputs["billingAccount"] = state ? state.billingAccount : undefined;
+            resourceInputs["budgetFilter"] = state ? state.budgetFilter : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["thresholdRules"] = state ? state.thresholdRules : undefined;
         } else {
             const args = argsOrState as BudgetArgs | undefined;
             if ((!args || args.amount === undefined) && !opts.urn) {
@@ -262,18 +262,18 @@ export class Budget extends pulumi.CustomResource {
             if ((!args || args.thresholdRules === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'thresholdRules'");
             }
-            inputs["allUpdatesRule"] = args ? args.allUpdatesRule : undefined;
-            inputs["amount"] = args ? args.amount : undefined;
-            inputs["billingAccount"] = args ? args.billingAccount : undefined;
-            inputs["budgetFilter"] = args ? args.budgetFilter : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["thresholdRules"] = args ? args.thresholdRules : undefined;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["allUpdatesRule"] = args ? args.allUpdatesRule : undefined;
+            resourceInputs["amount"] = args ? args.amount : undefined;
+            resourceInputs["billingAccount"] = args ? args.billingAccount : undefined;
+            resourceInputs["budgetFilter"] = args ? args.budgetFilter : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["thresholdRules"] = args ? args.thresholdRules : undefined;
+            resourceInputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Budget.__pulumiType, name, inputs, opts);
+        super(Budget.__pulumiType, name, resourceInputs, opts);
     }
 }
 

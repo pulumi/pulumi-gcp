@@ -280,7 +280,7 @@ type ProjectFeedInput interface {
 }
 
 func (*ProjectFeed) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectFeed)(nil))
+	return reflect.TypeOf((**ProjectFeed)(nil)).Elem()
 }
 
 func (i *ProjectFeed) ToProjectFeedOutput() ProjectFeedOutput {
@@ -289,35 +289,6 @@ func (i *ProjectFeed) ToProjectFeedOutput() ProjectFeedOutput {
 
 func (i *ProjectFeed) ToProjectFeedOutputWithContext(ctx context.Context) ProjectFeedOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectFeedOutput)
-}
-
-func (i *ProjectFeed) ToProjectFeedPtrOutput() ProjectFeedPtrOutput {
-	return i.ToProjectFeedPtrOutputWithContext(context.Background())
-}
-
-func (i *ProjectFeed) ToProjectFeedPtrOutputWithContext(ctx context.Context) ProjectFeedPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectFeedPtrOutput)
-}
-
-type ProjectFeedPtrInput interface {
-	pulumi.Input
-
-	ToProjectFeedPtrOutput() ProjectFeedPtrOutput
-	ToProjectFeedPtrOutputWithContext(ctx context.Context) ProjectFeedPtrOutput
-}
-
-type projectFeedPtrType ProjectFeedArgs
-
-func (*projectFeedPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProjectFeed)(nil))
-}
-
-func (i *projectFeedPtrType) ToProjectFeedPtrOutput() ProjectFeedPtrOutput {
-	return i.ToProjectFeedPtrOutputWithContext(context.Background())
-}
-
-func (i *projectFeedPtrType) ToProjectFeedPtrOutputWithContext(ctx context.Context) ProjectFeedPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectFeedPtrOutput)
 }
 
 // ProjectFeedArrayInput is an input type that accepts ProjectFeedArray and ProjectFeedArrayOutput values.
@@ -373,7 +344,7 @@ func (i ProjectFeedMap) ToProjectFeedMapOutputWithContext(ctx context.Context) P
 type ProjectFeedOutput struct{ *pulumi.OutputState }
 
 func (ProjectFeedOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectFeed)(nil))
+	return reflect.TypeOf((**ProjectFeed)(nil)).Elem()
 }
 
 func (o ProjectFeedOutput) ToProjectFeedOutput() ProjectFeedOutput {
@@ -384,44 +355,10 @@ func (o ProjectFeedOutput) ToProjectFeedOutputWithContext(ctx context.Context) P
 	return o
 }
 
-func (o ProjectFeedOutput) ToProjectFeedPtrOutput() ProjectFeedPtrOutput {
-	return o.ToProjectFeedPtrOutputWithContext(context.Background())
-}
-
-func (o ProjectFeedOutput) ToProjectFeedPtrOutputWithContext(ctx context.Context) ProjectFeedPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectFeed) *ProjectFeed {
-		return &v
-	}).(ProjectFeedPtrOutput)
-}
-
-type ProjectFeedPtrOutput struct{ *pulumi.OutputState }
-
-func (ProjectFeedPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProjectFeed)(nil))
-}
-
-func (o ProjectFeedPtrOutput) ToProjectFeedPtrOutput() ProjectFeedPtrOutput {
-	return o
-}
-
-func (o ProjectFeedPtrOutput) ToProjectFeedPtrOutputWithContext(ctx context.Context) ProjectFeedPtrOutput {
-	return o
-}
-
-func (o ProjectFeedPtrOutput) Elem() ProjectFeedOutput {
-	return o.ApplyT(func(v *ProjectFeed) ProjectFeed {
-		if v != nil {
-			return *v
-		}
-		var ret ProjectFeed
-		return ret
-	}).(ProjectFeedOutput)
-}
-
 type ProjectFeedArrayOutput struct{ *pulumi.OutputState }
 
 func (ProjectFeedArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ProjectFeed)(nil))
+	return reflect.TypeOf((*[]*ProjectFeed)(nil)).Elem()
 }
 
 func (o ProjectFeedArrayOutput) ToProjectFeedArrayOutput() ProjectFeedArrayOutput {
@@ -433,15 +370,15 @@ func (o ProjectFeedArrayOutput) ToProjectFeedArrayOutputWithContext(ctx context.
 }
 
 func (o ProjectFeedArrayOutput) Index(i pulumi.IntInput) ProjectFeedOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectFeed {
-		return vs[0].([]ProjectFeed)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectFeed {
+		return vs[0].([]*ProjectFeed)[vs[1].(int)]
 	}).(ProjectFeedOutput)
 }
 
 type ProjectFeedMapOutput struct{ *pulumi.OutputState }
 
 func (ProjectFeedMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ProjectFeed)(nil))
+	return reflect.TypeOf((*map[string]*ProjectFeed)(nil)).Elem()
 }
 
 func (o ProjectFeedMapOutput) ToProjectFeedMapOutput() ProjectFeedMapOutput {
@@ -453,18 +390,16 @@ func (o ProjectFeedMapOutput) ToProjectFeedMapOutputWithContext(ctx context.Cont
 }
 
 func (o ProjectFeedMapOutput) MapIndex(k pulumi.StringInput) ProjectFeedOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ProjectFeed {
-		return vs[0].(map[string]ProjectFeed)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ProjectFeed {
+		return vs[0].(map[string]*ProjectFeed)[vs[1].(string)]
 	}).(ProjectFeedOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectFeedInput)(nil)).Elem(), &ProjectFeed{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ProjectFeedPtrInput)(nil)).Elem(), &ProjectFeed{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectFeedArrayInput)(nil)).Elem(), ProjectFeedArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectFeedMapInput)(nil)).Elem(), ProjectFeedMap{})
 	pulumi.RegisterOutputType(ProjectFeedOutput{})
-	pulumi.RegisterOutputType(ProjectFeedPtrOutput{})
 	pulumi.RegisterOutputType(ProjectFeedArrayOutput{})
 	pulumi.RegisterOutputType(ProjectFeedMapOutput{})
 }

@@ -160,16 +160,16 @@ export class DatasetIamBinding extends pulumi.CustomResource {
      */
     constructor(name: string, args: DatasetIamBindingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DatasetIamBindingArgs | DatasetIamBindingState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatasetIamBindingState | undefined;
-            inputs["condition"] = state ? state.condition : undefined;
-            inputs["datasetId"] = state ? state.datasetId : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["members"] = state ? state.members : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["role"] = state ? state.role : undefined;
+            resourceInputs["condition"] = state ? state.condition : undefined;
+            resourceInputs["datasetId"] = state ? state.datasetId : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["members"] = state ? state.members : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["role"] = state ? state.role : undefined;
         } else {
             const args = argsOrState as DatasetIamBindingArgs | undefined;
             if ((!args || args.datasetId === undefined) && !opts.urn) {
@@ -181,17 +181,17 @@ export class DatasetIamBinding extends pulumi.CustomResource {
             if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            inputs["condition"] = args ? args.condition : undefined;
-            inputs["datasetId"] = args ? args.datasetId : undefined;
-            inputs["members"] = args ? args.members : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["role"] = args ? args.role : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["condition"] = args ? args.condition : undefined;
+            resourceInputs["datasetId"] = args ? args.datasetId : undefined;
+            resourceInputs["members"] = args ? args.members : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(DatasetIamBinding.__pulumiType, name, inputs, opts);
+        super(DatasetIamBinding.__pulumiType, name, resourceInputs, opts);
     }
 }
 

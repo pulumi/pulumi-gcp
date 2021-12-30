@@ -143,14 +143,14 @@ export class EngineSplitTraffic extends pulumi.CustomResource {
      */
     constructor(name: string, args: EngineSplitTrafficArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EngineSplitTrafficArgs | EngineSplitTrafficState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EngineSplitTrafficState | undefined;
-            inputs["migrateTraffic"] = state ? state.migrateTraffic : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["service"] = state ? state.service : undefined;
-            inputs["split"] = state ? state.split : undefined;
+            resourceInputs["migrateTraffic"] = state ? state.migrateTraffic : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["service"] = state ? state.service : undefined;
+            resourceInputs["split"] = state ? state.split : undefined;
         } else {
             const args = argsOrState as EngineSplitTrafficArgs | undefined;
             if ((!args || args.service === undefined) && !opts.urn) {
@@ -159,15 +159,15 @@ export class EngineSplitTraffic extends pulumi.CustomResource {
             if ((!args || args.split === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'split'");
             }
-            inputs["migrateTraffic"] = args ? args.migrateTraffic : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["service"] = args ? args.service : undefined;
-            inputs["split"] = args ? args.split : undefined;
+            resourceInputs["migrateTraffic"] = args ? args.migrateTraffic : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["service"] = args ? args.service : undefined;
+            resourceInputs["split"] = args ? args.split : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(EngineSplitTraffic.__pulumiType, name, inputs, opts);
+        super(EngineSplitTraffic.__pulumiType, name, resourceInputs, opts);
     }
 }
 

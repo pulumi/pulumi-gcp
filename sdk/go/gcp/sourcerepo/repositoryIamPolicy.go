@@ -246,7 +246,7 @@ type RepositoryIamPolicyInput interface {
 }
 
 func (*RepositoryIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*RepositoryIamPolicy)(nil))
+	return reflect.TypeOf((**RepositoryIamPolicy)(nil)).Elem()
 }
 
 func (i *RepositoryIamPolicy) ToRepositoryIamPolicyOutput() RepositoryIamPolicyOutput {
@@ -255,35 +255,6 @@ func (i *RepositoryIamPolicy) ToRepositoryIamPolicyOutput() RepositoryIamPolicyO
 
 func (i *RepositoryIamPolicy) ToRepositoryIamPolicyOutputWithContext(ctx context.Context) RepositoryIamPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamPolicyOutput)
-}
-
-func (i *RepositoryIamPolicy) ToRepositoryIamPolicyPtrOutput() RepositoryIamPolicyPtrOutput {
-	return i.ToRepositoryIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *RepositoryIamPolicy) ToRepositoryIamPolicyPtrOutputWithContext(ctx context.Context) RepositoryIamPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamPolicyPtrOutput)
-}
-
-type RepositoryIamPolicyPtrInput interface {
-	pulumi.Input
-
-	ToRepositoryIamPolicyPtrOutput() RepositoryIamPolicyPtrOutput
-	ToRepositoryIamPolicyPtrOutputWithContext(ctx context.Context) RepositoryIamPolicyPtrOutput
-}
-
-type repositoryIamPolicyPtrType RepositoryIamPolicyArgs
-
-func (*repositoryIamPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RepositoryIamPolicy)(nil))
-}
-
-func (i *repositoryIamPolicyPtrType) ToRepositoryIamPolicyPtrOutput() RepositoryIamPolicyPtrOutput {
-	return i.ToRepositoryIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *repositoryIamPolicyPtrType) ToRepositoryIamPolicyPtrOutputWithContext(ctx context.Context) RepositoryIamPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamPolicyPtrOutput)
 }
 
 // RepositoryIamPolicyArrayInput is an input type that accepts RepositoryIamPolicyArray and RepositoryIamPolicyArrayOutput values.
@@ -339,7 +310,7 @@ func (i RepositoryIamPolicyMap) ToRepositoryIamPolicyMapOutputWithContext(ctx co
 type RepositoryIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (RepositoryIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RepositoryIamPolicy)(nil))
+	return reflect.TypeOf((**RepositoryIamPolicy)(nil)).Elem()
 }
 
 func (o RepositoryIamPolicyOutput) ToRepositoryIamPolicyOutput() RepositoryIamPolicyOutput {
@@ -350,44 +321,10 @@ func (o RepositoryIamPolicyOutput) ToRepositoryIamPolicyOutputWithContext(ctx co
 	return o
 }
 
-func (o RepositoryIamPolicyOutput) ToRepositoryIamPolicyPtrOutput() RepositoryIamPolicyPtrOutput {
-	return o.ToRepositoryIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o RepositoryIamPolicyOutput) ToRepositoryIamPolicyPtrOutputWithContext(ctx context.Context) RepositoryIamPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryIamPolicy) *RepositoryIamPolicy {
-		return &v
-	}).(RepositoryIamPolicyPtrOutput)
-}
-
-type RepositoryIamPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (RepositoryIamPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RepositoryIamPolicy)(nil))
-}
-
-func (o RepositoryIamPolicyPtrOutput) ToRepositoryIamPolicyPtrOutput() RepositoryIamPolicyPtrOutput {
-	return o
-}
-
-func (o RepositoryIamPolicyPtrOutput) ToRepositoryIamPolicyPtrOutputWithContext(ctx context.Context) RepositoryIamPolicyPtrOutput {
-	return o
-}
-
-func (o RepositoryIamPolicyPtrOutput) Elem() RepositoryIamPolicyOutput {
-	return o.ApplyT(func(v *RepositoryIamPolicy) RepositoryIamPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret RepositoryIamPolicy
-		return ret
-	}).(RepositoryIamPolicyOutput)
-}
-
 type RepositoryIamPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (RepositoryIamPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RepositoryIamPolicy)(nil))
+	return reflect.TypeOf((*[]*RepositoryIamPolicy)(nil)).Elem()
 }
 
 func (o RepositoryIamPolicyArrayOutput) ToRepositoryIamPolicyArrayOutput() RepositoryIamPolicyArrayOutput {
@@ -399,15 +336,15 @@ func (o RepositoryIamPolicyArrayOutput) ToRepositoryIamPolicyArrayOutputWithCont
 }
 
 func (o RepositoryIamPolicyArrayOutput) Index(i pulumi.IntInput) RepositoryIamPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RepositoryIamPolicy {
-		return vs[0].([]RepositoryIamPolicy)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RepositoryIamPolicy {
+		return vs[0].([]*RepositoryIamPolicy)[vs[1].(int)]
 	}).(RepositoryIamPolicyOutput)
 }
 
 type RepositoryIamPolicyMapOutput struct{ *pulumi.OutputState }
 
 func (RepositoryIamPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]RepositoryIamPolicy)(nil))
+	return reflect.TypeOf((*map[string]*RepositoryIamPolicy)(nil)).Elem()
 }
 
 func (o RepositoryIamPolicyMapOutput) ToRepositoryIamPolicyMapOutput() RepositoryIamPolicyMapOutput {
@@ -419,18 +356,16 @@ func (o RepositoryIamPolicyMapOutput) ToRepositoryIamPolicyMapOutputWithContext(
 }
 
 func (o RepositoryIamPolicyMapOutput) MapIndex(k pulumi.StringInput) RepositoryIamPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RepositoryIamPolicy {
-		return vs[0].(map[string]RepositoryIamPolicy)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *RepositoryIamPolicy {
+		return vs[0].(map[string]*RepositoryIamPolicy)[vs[1].(string)]
 	}).(RepositoryIamPolicyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryIamPolicyInput)(nil)).Elem(), &RepositoryIamPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryIamPolicyPtrInput)(nil)).Elem(), &RepositoryIamPolicy{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryIamPolicyArrayInput)(nil)).Elem(), RepositoryIamPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryIamPolicyMapInput)(nil)).Elem(), RepositoryIamPolicyMap{})
 	pulumi.RegisterOutputType(RepositoryIamPolicyOutput{})
-	pulumi.RegisterOutputType(RepositoryIamPolicyPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryIamPolicyArrayOutput{})
 	pulumi.RegisterOutputType(RepositoryIamPolicyMapOutput{})
 }

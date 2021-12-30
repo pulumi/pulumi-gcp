@@ -516,7 +516,7 @@ type DatabaseInstanceInput interface {
 }
 
 func (*DatabaseInstance) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseInstance)(nil))
+	return reflect.TypeOf((**DatabaseInstance)(nil)).Elem()
 }
 
 func (i *DatabaseInstance) ToDatabaseInstanceOutput() DatabaseInstanceOutput {
@@ -525,35 +525,6 @@ func (i *DatabaseInstance) ToDatabaseInstanceOutput() DatabaseInstanceOutput {
 
 func (i *DatabaseInstance) ToDatabaseInstanceOutputWithContext(ctx context.Context) DatabaseInstanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceOutput)
-}
-
-func (i *DatabaseInstance) ToDatabaseInstancePtrOutput() DatabaseInstancePtrOutput {
-	return i.ToDatabaseInstancePtrOutputWithContext(context.Background())
-}
-
-func (i *DatabaseInstance) ToDatabaseInstancePtrOutputWithContext(ctx context.Context) DatabaseInstancePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstancePtrOutput)
-}
-
-type DatabaseInstancePtrInput interface {
-	pulumi.Input
-
-	ToDatabaseInstancePtrOutput() DatabaseInstancePtrOutput
-	ToDatabaseInstancePtrOutputWithContext(ctx context.Context) DatabaseInstancePtrOutput
-}
-
-type databaseInstancePtrType DatabaseInstanceArgs
-
-func (*databaseInstancePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatabaseInstance)(nil))
-}
-
-func (i *databaseInstancePtrType) ToDatabaseInstancePtrOutput() DatabaseInstancePtrOutput {
-	return i.ToDatabaseInstancePtrOutputWithContext(context.Background())
-}
-
-func (i *databaseInstancePtrType) ToDatabaseInstancePtrOutputWithContext(ctx context.Context) DatabaseInstancePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstancePtrOutput)
 }
 
 // DatabaseInstanceArrayInput is an input type that accepts DatabaseInstanceArray and DatabaseInstanceArrayOutput values.
@@ -609,7 +580,7 @@ func (i DatabaseInstanceMap) ToDatabaseInstanceMapOutputWithContext(ctx context.
 type DatabaseInstanceOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseInstance)(nil))
+	return reflect.TypeOf((**DatabaseInstance)(nil)).Elem()
 }
 
 func (o DatabaseInstanceOutput) ToDatabaseInstanceOutput() DatabaseInstanceOutput {
@@ -620,44 +591,10 @@ func (o DatabaseInstanceOutput) ToDatabaseInstanceOutputWithContext(ctx context.
 	return o
 }
 
-func (o DatabaseInstanceOutput) ToDatabaseInstancePtrOutput() DatabaseInstancePtrOutput {
-	return o.ToDatabaseInstancePtrOutputWithContext(context.Background())
-}
-
-func (o DatabaseInstanceOutput) ToDatabaseInstancePtrOutputWithContext(ctx context.Context) DatabaseInstancePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseInstance) *DatabaseInstance {
-		return &v
-	}).(DatabaseInstancePtrOutput)
-}
-
-type DatabaseInstancePtrOutput struct{ *pulumi.OutputState }
-
-func (DatabaseInstancePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatabaseInstance)(nil))
-}
-
-func (o DatabaseInstancePtrOutput) ToDatabaseInstancePtrOutput() DatabaseInstancePtrOutput {
-	return o
-}
-
-func (o DatabaseInstancePtrOutput) ToDatabaseInstancePtrOutputWithContext(ctx context.Context) DatabaseInstancePtrOutput {
-	return o
-}
-
-func (o DatabaseInstancePtrOutput) Elem() DatabaseInstanceOutput {
-	return o.ApplyT(func(v *DatabaseInstance) DatabaseInstance {
-		if v != nil {
-			return *v
-		}
-		var ret DatabaseInstance
-		return ret
-	}).(DatabaseInstanceOutput)
-}
-
 type DatabaseInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DatabaseInstance)(nil))
+	return reflect.TypeOf((*[]*DatabaseInstance)(nil)).Elem()
 }
 
 func (o DatabaseInstanceArrayOutput) ToDatabaseInstanceArrayOutput() DatabaseInstanceArrayOutput {
@@ -669,15 +606,15 @@ func (o DatabaseInstanceArrayOutput) ToDatabaseInstanceArrayOutputWithContext(ct
 }
 
 func (o DatabaseInstanceArrayOutput) Index(i pulumi.IntInput) DatabaseInstanceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseInstance {
-		return vs[0].([]DatabaseInstance)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DatabaseInstance {
+		return vs[0].([]*DatabaseInstance)[vs[1].(int)]
 	}).(DatabaseInstanceOutput)
 }
 
 type DatabaseInstanceMapOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DatabaseInstance)(nil))
+	return reflect.TypeOf((*map[string]*DatabaseInstance)(nil)).Elem()
 }
 
 func (o DatabaseInstanceMapOutput) ToDatabaseInstanceMapOutput() DatabaseInstanceMapOutput {
@@ -689,18 +626,16 @@ func (o DatabaseInstanceMapOutput) ToDatabaseInstanceMapOutputWithContext(ctx co
 }
 
 func (o DatabaseInstanceMapOutput) MapIndex(k pulumi.StringInput) DatabaseInstanceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DatabaseInstance {
-		return vs[0].(map[string]DatabaseInstance)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DatabaseInstance {
+		return vs[0].(map[string]*DatabaseInstance)[vs[1].(string)]
 	}).(DatabaseInstanceOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceInput)(nil)).Elem(), &DatabaseInstance{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstancePtrInput)(nil)).Elem(), &DatabaseInstance{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceArrayInput)(nil)).Elem(), DatabaseInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceMapInput)(nil)).Elem(), DatabaseInstanceMap{})
 	pulumi.RegisterOutputType(DatabaseInstanceOutput{})
-	pulumi.RegisterOutputType(DatabaseInstancePtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceMapOutput{})
 }

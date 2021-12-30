@@ -33,7 +33,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewProjectMetadata(ctx, "_default", &compute.ProjectMetadataArgs{
+// 		_, err := compute.NewProjectMetadata(ctx, "default", &compute.ProjectMetadataArgs{
 // 			Metadata: pulumi.StringMap{
 // 				"13":   pulumi.String("42"),
 // 				"fizz": pulumi.String("buzz"),
@@ -171,7 +171,7 @@ type ProjectMetadataInput interface {
 }
 
 func (*ProjectMetadata) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectMetadata)(nil))
+	return reflect.TypeOf((**ProjectMetadata)(nil)).Elem()
 }
 
 func (i *ProjectMetadata) ToProjectMetadataOutput() ProjectMetadataOutput {
@@ -180,35 +180,6 @@ func (i *ProjectMetadata) ToProjectMetadataOutput() ProjectMetadataOutput {
 
 func (i *ProjectMetadata) ToProjectMetadataOutputWithContext(ctx context.Context) ProjectMetadataOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectMetadataOutput)
-}
-
-func (i *ProjectMetadata) ToProjectMetadataPtrOutput() ProjectMetadataPtrOutput {
-	return i.ToProjectMetadataPtrOutputWithContext(context.Background())
-}
-
-func (i *ProjectMetadata) ToProjectMetadataPtrOutputWithContext(ctx context.Context) ProjectMetadataPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectMetadataPtrOutput)
-}
-
-type ProjectMetadataPtrInput interface {
-	pulumi.Input
-
-	ToProjectMetadataPtrOutput() ProjectMetadataPtrOutput
-	ToProjectMetadataPtrOutputWithContext(ctx context.Context) ProjectMetadataPtrOutput
-}
-
-type projectMetadataPtrType ProjectMetadataArgs
-
-func (*projectMetadataPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProjectMetadata)(nil))
-}
-
-func (i *projectMetadataPtrType) ToProjectMetadataPtrOutput() ProjectMetadataPtrOutput {
-	return i.ToProjectMetadataPtrOutputWithContext(context.Background())
-}
-
-func (i *projectMetadataPtrType) ToProjectMetadataPtrOutputWithContext(ctx context.Context) ProjectMetadataPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectMetadataPtrOutput)
 }
 
 // ProjectMetadataArrayInput is an input type that accepts ProjectMetadataArray and ProjectMetadataArrayOutput values.
@@ -264,7 +235,7 @@ func (i ProjectMetadataMap) ToProjectMetadataMapOutputWithContext(ctx context.Co
 type ProjectMetadataOutput struct{ *pulumi.OutputState }
 
 func (ProjectMetadataOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectMetadata)(nil))
+	return reflect.TypeOf((**ProjectMetadata)(nil)).Elem()
 }
 
 func (o ProjectMetadataOutput) ToProjectMetadataOutput() ProjectMetadataOutput {
@@ -275,44 +246,10 @@ func (o ProjectMetadataOutput) ToProjectMetadataOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o ProjectMetadataOutput) ToProjectMetadataPtrOutput() ProjectMetadataPtrOutput {
-	return o.ToProjectMetadataPtrOutputWithContext(context.Background())
-}
-
-func (o ProjectMetadataOutput) ToProjectMetadataPtrOutputWithContext(ctx context.Context) ProjectMetadataPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectMetadata) *ProjectMetadata {
-		return &v
-	}).(ProjectMetadataPtrOutput)
-}
-
-type ProjectMetadataPtrOutput struct{ *pulumi.OutputState }
-
-func (ProjectMetadataPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProjectMetadata)(nil))
-}
-
-func (o ProjectMetadataPtrOutput) ToProjectMetadataPtrOutput() ProjectMetadataPtrOutput {
-	return o
-}
-
-func (o ProjectMetadataPtrOutput) ToProjectMetadataPtrOutputWithContext(ctx context.Context) ProjectMetadataPtrOutput {
-	return o
-}
-
-func (o ProjectMetadataPtrOutput) Elem() ProjectMetadataOutput {
-	return o.ApplyT(func(v *ProjectMetadata) ProjectMetadata {
-		if v != nil {
-			return *v
-		}
-		var ret ProjectMetadata
-		return ret
-	}).(ProjectMetadataOutput)
-}
-
 type ProjectMetadataArrayOutput struct{ *pulumi.OutputState }
 
 func (ProjectMetadataArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ProjectMetadata)(nil))
+	return reflect.TypeOf((*[]*ProjectMetadata)(nil)).Elem()
 }
 
 func (o ProjectMetadataArrayOutput) ToProjectMetadataArrayOutput() ProjectMetadataArrayOutput {
@@ -324,15 +261,15 @@ func (o ProjectMetadataArrayOutput) ToProjectMetadataArrayOutputWithContext(ctx 
 }
 
 func (o ProjectMetadataArrayOutput) Index(i pulumi.IntInput) ProjectMetadataOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectMetadata {
-		return vs[0].([]ProjectMetadata)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectMetadata {
+		return vs[0].([]*ProjectMetadata)[vs[1].(int)]
 	}).(ProjectMetadataOutput)
 }
 
 type ProjectMetadataMapOutput struct{ *pulumi.OutputState }
 
 func (ProjectMetadataMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ProjectMetadata)(nil))
+	return reflect.TypeOf((*map[string]*ProjectMetadata)(nil)).Elem()
 }
 
 func (o ProjectMetadataMapOutput) ToProjectMetadataMapOutput() ProjectMetadataMapOutput {
@@ -344,18 +281,16 @@ func (o ProjectMetadataMapOutput) ToProjectMetadataMapOutputWithContext(ctx cont
 }
 
 func (o ProjectMetadataMapOutput) MapIndex(k pulumi.StringInput) ProjectMetadataOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ProjectMetadata {
-		return vs[0].(map[string]ProjectMetadata)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ProjectMetadata {
+		return vs[0].(map[string]*ProjectMetadata)[vs[1].(string)]
 	}).(ProjectMetadataOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectMetadataInput)(nil)).Elem(), &ProjectMetadata{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ProjectMetadataPtrInput)(nil)).Elem(), &ProjectMetadata{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectMetadataArrayInput)(nil)).Elem(), ProjectMetadataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectMetadataMapInput)(nil)).Elem(), ProjectMetadataMap{})
 	pulumi.RegisterOutputType(ProjectMetadataOutput{})
-	pulumi.RegisterOutputType(ProjectMetadataPtrOutput{})
 	pulumi.RegisterOutputType(ProjectMetadataArrayOutput{})
 	pulumi.RegisterOutputType(ProjectMetadataMapOutput{})
 }

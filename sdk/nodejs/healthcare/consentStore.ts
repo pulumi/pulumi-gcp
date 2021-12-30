@@ -135,30 +135,30 @@ export class ConsentStore extends pulumi.CustomResource {
      */
     constructor(name: string, args: ConsentStoreArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ConsentStoreArgs | ConsentStoreState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConsentStoreState | undefined;
-            inputs["dataset"] = state ? state.dataset : undefined;
-            inputs["defaultConsentTtl"] = state ? state.defaultConsentTtl : undefined;
-            inputs["enableConsentCreateOnUpdate"] = state ? state.enableConsentCreateOnUpdate : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
+            resourceInputs["dataset"] = state ? state.dataset : undefined;
+            resourceInputs["defaultConsentTtl"] = state ? state.defaultConsentTtl : undefined;
+            resourceInputs["enableConsentCreateOnUpdate"] = state ? state.enableConsentCreateOnUpdate : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as ConsentStoreArgs | undefined;
             if ((!args || args.dataset === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dataset'");
             }
-            inputs["dataset"] = args ? args.dataset : undefined;
-            inputs["defaultConsentTtl"] = args ? args.defaultConsentTtl : undefined;
-            inputs["enableConsentCreateOnUpdate"] = args ? args.enableConsentCreateOnUpdate : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
+            resourceInputs["dataset"] = args ? args.dataset : undefined;
+            resourceInputs["defaultConsentTtl"] = args ? args.defaultConsentTtl : undefined;
+            resourceInputs["enableConsentCreateOnUpdate"] = args ? args.enableConsentCreateOnUpdate : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ConsentStore.__pulumiType, name, inputs, opts);
+        super(ConsentStore.__pulumiType, name, resourceInputs, opts);
     }
 }
 

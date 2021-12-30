@@ -114,20 +114,20 @@ export class FirewallPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: FirewallPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FirewallPolicyArgs | FirewallPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FirewallPolicyState | undefined;
-            inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["fingerprint"] = state ? state.fingerprint : undefined;
-            inputs["firewallPolicyId"] = state ? state.firewallPolicyId : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["parent"] = state ? state.parent : undefined;
-            inputs["ruleTupleCount"] = state ? state.ruleTupleCount : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
-            inputs["selfLinkWithId"] = state ? state.selfLinkWithId : undefined;
-            inputs["shortName"] = state ? state.shortName : undefined;
+            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
+            resourceInputs["firewallPolicyId"] = state ? state.firewallPolicyId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["parent"] = state ? state.parent : undefined;
+            resourceInputs["ruleTupleCount"] = state ? state.ruleTupleCount : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["selfLinkWithId"] = state ? state.selfLinkWithId : undefined;
+            resourceInputs["shortName"] = state ? state.shortName : undefined;
         } else {
             const args = argsOrState as FirewallPolicyArgs | undefined;
             if ((!args || args.parent === undefined) && !opts.urn) {
@@ -136,21 +136,21 @@ export class FirewallPolicy extends pulumi.CustomResource {
             if ((!args || args.shortName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'shortName'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
-            inputs["shortName"] = args ? args.shortName : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["fingerprint"] = undefined /*out*/;
-            inputs["firewallPolicyId"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["ruleTupleCount"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["selfLinkWithId"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["shortName"] = args ? args.shortName : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["firewallPolicyId"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["ruleTupleCount"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["selfLinkWithId"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(FirewallPolicy.__pulumiType, name, inputs, opts);
+        super(FirewallPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

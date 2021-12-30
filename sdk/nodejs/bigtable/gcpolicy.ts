@@ -127,17 +127,17 @@ export class GCPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: GCPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GCPolicyArgs | GCPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GCPolicyState | undefined;
-            inputs["columnFamily"] = state ? state.columnFamily : undefined;
-            inputs["instanceName"] = state ? state.instanceName : undefined;
-            inputs["maxAge"] = state ? state.maxAge : undefined;
-            inputs["maxVersions"] = state ? state.maxVersions : undefined;
-            inputs["mode"] = state ? state.mode : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["table"] = state ? state.table : undefined;
+            resourceInputs["columnFamily"] = state ? state.columnFamily : undefined;
+            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
+            resourceInputs["maxAge"] = state ? state.maxAge : undefined;
+            resourceInputs["maxVersions"] = state ? state.maxVersions : undefined;
+            resourceInputs["mode"] = state ? state.mode : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["table"] = state ? state.table : undefined;
         } else {
             const args = argsOrState as GCPolicyArgs | undefined;
             if ((!args || args.columnFamily === undefined) && !opts.urn) {
@@ -149,18 +149,18 @@ export class GCPolicy extends pulumi.CustomResource {
             if ((!args || args.table === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'table'");
             }
-            inputs["columnFamily"] = args ? args.columnFamily : undefined;
-            inputs["instanceName"] = args ? args.instanceName : undefined;
-            inputs["maxAge"] = args ? args.maxAge : undefined;
-            inputs["maxVersions"] = args ? args.maxVersions : undefined;
-            inputs["mode"] = args ? args.mode : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["table"] = args ? args.table : undefined;
+            resourceInputs["columnFamily"] = args ? args.columnFamily : undefined;
+            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
+            resourceInputs["maxAge"] = args ? args.maxAge : undefined;
+            resourceInputs["maxVersions"] = args ? args.maxVersions : undefined;
+            resourceInputs["mode"] = args ? args.mode : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["table"] = args ? args.table : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(GCPolicy.__pulumiType, name, inputs, opts);
+        super(GCPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

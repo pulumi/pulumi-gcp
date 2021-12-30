@@ -111,19 +111,19 @@ export class KeyRingImportJob extends pulumi.CustomResource {
      */
     constructor(name: string, args: KeyRingImportJobArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: KeyRingImportJobArgs | KeyRingImportJobState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KeyRingImportJobState | undefined;
-            inputs["attestations"] = state ? state.attestations : undefined;
-            inputs["expireTime"] = state ? state.expireTime : undefined;
-            inputs["importJobId"] = state ? state.importJobId : undefined;
-            inputs["importMethod"] = state ? state.importMethod : undefined;
-            inputs["keyRing"] = state ? state.keyRing : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["protectionLevel"] = state ? state.protectionLevel : undefined;
-            inputs["publicKeys"] = state ? state.publicKeys : undefined;
-            inputs["state"] = state ? state.state : undefined;
+            resourceInputs["attestations"] = state ? state.attestations : undefined;
+            resourceInputs["expireTime"] = state ? state.expireTime : undefined;
+            resourceInputs["importJobId"] = state ? state.importJobId : undefined;
+            resourceInputs["importMethod"] = state ? state.importMethod : undefined;
+            resourceInputs["keyRing"] = state ? state.keyRing : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["protectionLevel"] = state ? state.protectionLevel : undefined;
+            resourceInputs["publicKeys"] = state ? state.publicKeys : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
         } else {
             const args = argsOrState as KeyRingImportJobArgs | undefined;
             if ((!args || args.importJobId === undefined) && !opts.urn) {
@@ -138,20 +138,20 @@ export class KeyRingImportJob extends pulumi.CustomResource {
             if ((!args || args.protectionLevel === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'protectionLevel'");
             }
-            inputs["importJobId"] = args ? args.importJobId : undefined;
-            inputs["importMethod"] = args ? args.importMethod : undefined;
-            inputs["keyRing"] = args ? args.keyRing : undefined;
-            inputs["protectionLevel"] = args ? args.protectionLevel : undefined;
-            inputs["attestations"] = undefined /*out*/;
-            inputs["expireTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["publicKeys"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["importJobId"] = args ? args.importJobId : undefined;
+            resourceInputs["importMethod"] = args ? args.importMethod : undefined;
+            resourceInputs["keyRing"] = args ? args.keyRing : undefined;
+            resourceInputs["protectionLevel"] = args ? args.protectionLevel : undefined;
+            resourceInputs["attestations"] = undefined /*out*/;
+            resourceInputs["expireTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["publicKeys"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(KeyRingImportJob.__pulumiType, name, inputs, opts);
+        super(KeyRingImportJob.__pulumiType, name, resourceInputs, opts);
     }
 }
 

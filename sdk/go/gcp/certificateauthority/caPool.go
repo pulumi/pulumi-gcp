@@ -28,7 +28,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := certificateauthority.NewCaPool(ctx, "_default", &certificateauthority.CaPoolArgs{
+// 		_, err := certificateauthority.NewCaPool(ctx, "default", &certificateauthority.CaPoolArgs{
 // 			Labels: pulumi.StringMap{
 // 				"foo": pulumi.String("bar"),
 // 			},
@@ -58,7 +58,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := certificateauthority.NewCaPool(ctx, "_default", &certificateauthority.CaPoolArgs{
+// 		_, err := certificateauthority.NewCaPool(ctx, "default", &certificateauthority.CaPoolArgs{
 // 			IssuancePolicy: &certificateauthority.CaPoolIssuancePolicyArgs{
 // 				AllowedIssuanceModes: &certificateauthority.CaPoolIssuancePolicyAllowedIssuanceModesArgs{
 // 					AllowConfigBasedIssuance: pulumi.Bool(true),
@@ -343,7 +343,7 @@ type CaPoolInput interface {
 }
 
 func (*CaPool) ElementType() reflect.Type {
-	return reflect.TypeOf((*CaPool)(nil))
+	return reflect.TypeOf((**CaPool)(nil)).Elem()
 }
 
 func (i *CaPool) ToCaPoolOutput() CaPoolOutput {
@@ -352,35 +352,6 @@ func (i *CaPool) ToCaPoolOutput() CaPoolOutput {
 
 func (i *CaPool) ToCaPoolOutputWithContext(ctx context.Context) CaPoolOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CaPoolOutput)
-}
-
-func (i *CaPool) ToCaPoolPtrOutput() CaPoolPtrOutput {
-	return i.ToCaPoolPtrOutputWithContext(context.Background())
-}
-
-func (i *CaPool) ToCaPoolPtrOutputWithContext(ctx context.Context) CaPoolPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CaPoolPtrOutput)
-}
-
-type CaPoolPtrInput interface {
-	pulumi.Input
-
-	ToCaPoolPtrOutput() CaPoolPtrOutput
-	ToCaPoolPtrOutputWithContext(ctx context.Context) CaPoolPtrOutput
-}
-
-type caPoolPtrType CaPoolArgs
-
-func (*caPoolPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CaPool)(nil))
-}
-
-func (i *caPoolPtrType) ToCaPoolPtrOutput() CaPoolPtrOutput {
-	return i.ToCaPoolPtrOutputWithContext(context.Background())
-}
-
-func (i *caPoolPtrType) ToCaPoolPtrOutputWithContext(ctx context.Context) CaPoolPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CaPoolPtrOutput)
 }
 
 // CaPoolArrayInput is an input type that accepts CaPoolArray and CaPoolArrayOutput values.
@@ -436,7 +407,7 @@ func (i CaPoolMap) ToCaPoolMapOutputWithContext(ctx context.Context) CaPoolMapOu
 type CaPoolOutput struct{ *pulumi.OutputState }
 
 func (CaPoolOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CaPool)(nil))
+	return reflect.TypeOf((**CaPool)(nil)).Elem()
 }
 
 func (o CaPoolOutput) ToCaPoolOutput() CaPoolOutput {
@@ -447,44 +418,10 @@ func (o CaPoolOutput) ToCaPoolOutputWithContext(ctx context.Context) CaPoolOutpu
 	return o
 }
 
-func (o CaPoolOutput) ToCaPoolPtrOutput() CaPoolPtrOutput {
-	return o.ToCaPoolPtrOutputWithContext(context.Background())
-}
-
-func (o CaPoolOutput) ToCaPoolPtrOutputWithContext(ctx context.Context) CaPoolPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CaPool) *CaPool {
-		return &v
-	}).(CaPoolPtrOutput)
-}
-
-type CaPoolPtrOutput struct{ *pulumi.OutputState }
-
-func (CaPoolPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CaPool)(nil))
-}
-
-func (o CaPoolPtrOutput) ToCaPoolPtrOutput() CaPoolPtrOutput {
-	return o
-}
-
-func (o CaPoolPtrOutput) ToCaPoolPtrOutputWithContext(ctx context.Context) CaPoolPtrOutput {
-	return o
-}
-
-func (o CaPoolPtrOutput) Elem() CaPoolOutput {
-	return o.ApplyT(func(v *CaPool) CaPool {
-		if v != nil {
-			return *v
-		}
-		var ret CaPool
-		return ret
-	}).(CaPoolOutput)
-}
-
 type CaPoolArrayOutput struct{ *pulumi.OutputState }
 
 func (CaPoolArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CaPool)(nil))
+	return reflect.TypeOf((*[]*CaPool)(nil)).Elem()
 }
 
 func (o CaPoolArrayOutput) ToCaPoolArrayOutput() CaPoolArrayOutput {
@@ -496,15 +433,15 @@ func (o CaPoolArrayOutput) ToCaPoolArrayOutputWithContext(ctx context.Context) C
 }
 
 func (o CaPoolArrayOutput) Index(i pulumi.IntInput) CaPoolOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CaPool {
-		return vs[0].([]CaPool)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CaPool {
+		return vs[0].([]*CaPool)[vs[1].(int)]
 	}).(CaPoolOutput)
 }
 
 type CaPoolMapOutput struct{ *pulumi.OutputState }
 
 func (CaPoolMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]CaPool)(nil))
+	return reflect.TypeOf((*map[string]*CaPool)(nil)).Elem()
 }
 
 func (o CaPoolMapOutput) ToCaPoolMapOutput() CaPoolMapOutput {
@@ -516,18 +453,16 @@ func (o CaPoolMapOutput) ToCaPoolMapOutputWithContext(ctx context.Context) CaPoo
 }
 
 func (o CaPoolMapOutput) MapIndex(k pulumi.StringInput) CaPoolOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CaPool {
-		return vs[0].(map[string]CaPool)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *CaPool {
+		return vs[0].(map[string]*CaPool)[vs[1].(string)]
 	}).(CaPoolOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolInput)(nil)).Elem(), &CaPool{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolPtrInput)(nil)).Elem(), &CaPool{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolArrayInput)(nil)).Elem(), CaPoolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolMapInput)(nil)).Elem(), CaPoolMap{})
 	pulumi.RegisterOutputType(CaPoolOutput{})
-	pulumi.RegisterOutputType(CaPoolPtrOutput{})
 	pulumi.RegisterOutputType(CaPoolArrayOutput{})
 	pulumi.RegisterOutputType(CaPoolMapOutput{})
 }

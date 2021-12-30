@@ -362,7 +362,7 @@ type CxFlowInput interface {
 }
 
 func (*CxFlow) ElementType() reflect.Type {
-	return reflect.TypeOf((*CxFlow)(nil))
+	return reflect.TypeOf((**CxFlow)(nil)).Elem()
 }
 
 func (i *CxFlow) ToCxFlowOutput() CxFlowOutput {
@@ -371,35 +371,6 @@ func (i *CxFlow) ToCxFlowOutput() CxFlowOutput {
 
 func (i *CxFlow) ToCxFlowOutputWithContext(ctx context.Context) CxFlowOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowOutput)
-}
-
-func (i *CxFlow) ToCxFlowPtrOutput() CxFlowPtrOutput {
-	return i.ToCxFlowPtrOutputWithContext(context.Background())
-}
-
-func (i *CxFlow) ToCxFlowPtrOutputWithContext(ctx context.Context) CxFlowPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CxFlowPtrOutput)
-}
-
-type CxFlowPtrInput interface {
-	pulumi.Input
-
-	ToCxFlowPtrOutput() CxFlowPtrOutput
-	ToCxFlowPtrOutputWithContext(ctx context.Context) CxFlowPtrOutput
-}
-
-type cxFlowPtrType CxFlowArgs
-
-func (*cxFlowPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CxFlow)(nil))
-}
-
-func (i *cxFlowPtrType) ToCxFlowPtrOutput() CxFlowPtrOutput {
-	return i.ToCxFlowPtrOutputWithContext(context.Background())
-}
-
-func (i *cxFlowPtrType) ToCxFlowPtrOutputWithContext(ctx context.Context) CxFlowPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CxFlowPtrOutput)
 }
 
 // CxFlowArrayInput is an input type that accepts CxFlowArray and CxFlowArrayOutput values.
@@ -455,7 +426,7 @@ func (i CxFlowMap) ToCxFlowMapOutputWithContext(ctx context.Context) CxFlowMapOu
 type CxFlowOutput struct{ *pulumi.OutputState }
 
 func (CxFlowOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CxFlow)(nil))
+	return reflect.TypeOf((**CxFlow)(nil)).Elem()
 }
 
 func (o CxFlowOutput) ToCxFlowOutput() CxFlowOutput {
@@ -466,44 +437,10 @@ func (o CxFlowOutput) ToCxFlowOutputWithContext(ctx context.Context) CxFlowOutpu
 	return o
 }
 
-func (o CxFlowOutput) ToCxFlowPtrOutput() CxFlowPtrOutput {
-	return o.ToCxFlowPtrOutputWithContext(context.Background())
-}
-
-func (o CxFlowOutput) ToCxFlowPtrOutputWithContext(ctx context.Context) CxFlowPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlow) *CxFlow {
-		return &v
-	}).(CxFlowPtrOutput)
-}
-
-type CxFlowPtrOutput struct{ *pulumi.OutputState }
-
-func (CxFlowPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CxFlow)(nil))
-}
-
-func (o CxFlowPtrOutput) ToCxFlowPtrOutput() CxFlowPtrOutput {
-	return o
-}
-
-func (o CxFlowPtrOutput) ToCxFlowPtrOutputWithContext(ctx context.Context) CxFlowPtrOutput {
-	return o
-}
-
-func (o CxFlowPtrOutput) Elem() CxFlowOutput {
-	return o.ApplyT(func(v *CxFlow) CxFlow {
-		if v != nil {
-			return *v
-		}
-		var ret CxFlow
-		return ret
-	}).(CxFlowOutput)
-}
-
 type CxFlowArrayOutput struct{ *pulumi.OutputState }
 
 func (CxFlowArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CxFlow)(nil))
+	return reflect.TypeOf((*[]*CxFlow)(nil)).Elem()
 }
 
 func (o CxFlowArrayOutput) ToCxFlowArrayOutput() CxFlowArrayOutput {
@@ -515,15 +452,15 @@ func (o CxFlowArrayOutput) ToCxFlowArrayOutputWithContext(ctx context.Context) C
 }
 
 func (o CxFlowArrayOutput) Index(i pulumi.IntInput) CxFlowOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxFlow {
-		return vs[0].([]CxFlow)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CxFlow {
+		return vs[0].([]*CxFlow)[vs[1].(int)]
 	}).(CxFlowOutput)
 }
 
 type CxFlowMapOutput struct{ *pulumi.OutputState }
 
 func (CxFlowMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]CxFlow)(nil))
+	return reflect.TypeOf((*map[string]*CxFlow)(nil)).Elem()
 }
 
 func (o CxFlowMapOutput) ToCxFlowMapOutput() CxFlowMapOutput {
@@ -535,18 +472,16 @@ func (o CxFlowMapOutput) ToCxFlowMapOutputWithContext(ctx context.Context) CxFlo
 }
 
 func (o CxFlowMapOutput) MapIndex(k pulumi.StringInput) CxFlowOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CxFlow {
-		return vs[0].(map[string]CxFlow)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *CxFlow {
+		return vs[0].(map[string]*CxFlow)[vs[1].(string)]
 	}).(CxFlowOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowInput)(nil)).Elem(), &CxFlow{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowPtrInput)(nil)).Elem(), &CxFlow{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowArrayInput)(nil)).Elem(), CxFlowArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowMapInput)(nil)).Elem(), CxFlowMap{})
 	pulumi.RegisterOutputType(CxFlowOutput{})
-	pulumi.RegisterOutputType(CxFlowPtrOutput{})
 	pulumi.RegisterOutputType(CxFlowArrayOutput{})
 	pulumi.RegisterOutputType(CxFlowMapOutput{})
 }

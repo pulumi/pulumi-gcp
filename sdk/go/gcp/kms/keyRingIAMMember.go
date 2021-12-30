@@ -395,7 +395,7 @@ type KeyRingIAMMemberInput interface {
 }
 
 func (*KeyRingIAMMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyRingIAMMember)(nil))
+	return reflect.TypeOf((**KeyRingIAMMember)(nil)).Elem()
 }
 
 func (i *KeyRingIAMMember) ToKeyRingIAMMemberOutput() KeyRingIAMMemberOutput {
@@ -404,35 +404,6 @@ func (i *KeyRingIAMMember) ToKeyRingIAMMemberOutput() KeyRingIAMMemberOutput {
 
 func (i *KeyRingIAMMember) ToKeyRingIAMMemberOutputWithContext(ctx context.Context) KeyRingIAMMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIAMMemberOutput)
-}
-
-func (i *KeyRingIAMMember) ToKeyRingIAMMemberPtrOutput() KeyRingIAMMemberPtrOutput {
-	return i.ToKeyRingIAMMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *KeyRingIAMMember) ToKeyRingIAMMemberPtrOutputWithContext(ctx context.Context) KeyRingIAMMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIAMMemberPtrOutput)
-}
-
-type KeyRingIAMMemberPtrInput interface {
-	pulumi.Input
-
-	ToKeyRingIAMMemberPtrOutput() KeyRingIAMMemberPtrOutput
-	ToKeyRingIAMMemberPtrOutputWithContext(ctx context.Context) KeyRingIAMMemberPtrOutput
-}
-
-type keyRingIAMMemberPtrType KeyRingIAMMemberArgs
-
-func (*keyRingIAMMemberPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeyRingIAMMember)(nil))
-}
-
-func (i *keyRingIAMMemberPtrType) ToKeyRingIAMMemberPtrOutput() KeyRingIAMMemberPtrOutput {
-	return i.ToKeyRingIAMMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *keyRingIAMMemberPtrType) ToKeyRingIAMMemberPtrOutputWithContext(ctx context.Context) KeyRingIAMMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIAMMemberPtrOutput)
 }
 
 // KeyRingIAMMemberArrayInput is an input type that accepts KeyRingIAMMemberArray and KeyRingIAMMemberArrayOutput values.
@@ -488,7 +459,7 @@ func (i KeyRingIAMMemberMap) ToKeyRingIAMMemberMapOutputWithContext(ctx context.
 type KeyRingIAMMemberOutput struct{ *pulumi.OutputState }
 
 func (KeyRingIAMMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyRingIAMMember)(nil))
+	return reflect.TypeOf((**KeyRingIAMMember)(nil)).Elem()
 }
 
 func (o KeyRingIAMMemberOutput) ToKeyRingIAMMemberOutput() KeyRingIAMMemberOutput {
@@ -499,44 +470,10 @@ func (o KeyRingIAMMemberOutput) ToKeyRingIAMMemberOutputWithContext(ctx context.
 	return o
 }
 
-func (o KeyRingIAMMemberOutput) ToKeyRingIAMMemberPtrOutput() KeyRingIAMMemberPtrOutput {
-	return o.ToKeyRingIAMMemberPtrOutputWithContext(context.Background())
-}
-
-func (o KeyRingIAMMemberOutput) ToKeyRingIAMMemberPtrOutputWithContext(ctx context.Context) KeyRingIAMMemberPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyRingIAMMember) *KeyRingIAMMember {
-		return &v
-	}).(KeyRingIAMMemberPtrOutput)
-}
-
-type KeyRingIAMMemberPtrOutput struct{ *pulumi.OutputState }
-
-func (KeyRingIAMMemberPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeyRingIAMMember)(nil))
-}
-
-func (o KeyRingIAMMemberPtrOutput) ToKeyRingIAMMemberPtrOutput() KeyRingIAMMemberPtrOutput {
-	return o
-}
-
-func (o KeyRingIAMMemberPtrOutput) ToKeyRingIAMMemberPtrOutputWithContext(ctx context.Context) KeyRingIAMMemberPtrOutput {
-	return o
-}
-
-func (o KeyRingIAMMemberPtrOutput) Elem() KeyRingIAMMemberOutput {
-	return o.ApplyT(func(v *KeyRingIAMMember) KeyRingIAMMember {
-		if v != nil {
-			return *v
-		}
-		var ret KeyRingIAMMember
-		return ret
-	}).(KeyRingIAMMemberOutput)
-}
-
 type KeyRingIAMMemberArrayOutput struct{ *pulumi.OutputState }
 
 func (KeyRingIAMMemberArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]KeyRingIAMMember)(nil))
+	return reflect.TypeOf((*[]*KeyRingIAMMember)(nil)).Elem()
 }
 
 func (o KeyRingIAMMemberArrayOutput) ToKeyRingIAMMemberArrayOutput() KeyRingIAMMemberArrayOutput {
@@ -548,15 +485,15 @@ func (o KeyRingIAMMemberArrayOutput) ToKeyRingIAMMemberArrayOutputWithContext(ct
 }
 
 func (o KeyRingIAMMemberArrayOutput) Index(i pulumi.IntInput) KeyRingIAMMemberOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KeyRingIAMMember {
-		return vs[0].([]KeyRingIAMMember)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KeyRingIAMMember {
+		return vs[0].([]*KeyRingIAMMember)[vs[1].(int)]
 	}).(KeyRingIAMMemberOutput)
 }
 
 type KeyRingIAMMemberMapOutput struct{ *pulumi.OutputState }
 
 func (KeyRingIAMMemberMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]KeyRingIAMMember)(nil))
+	return reflect.TypeOf((*map[string]*KeyRingIAMMember)(nil)).Elem()
 }
 
 func (o KeyRingIAMMemberMapOutput) ToKeyRingIAMMemberMapOutput() KeyRingIAMMemberMapOutput {
@@ -568,18 +505,16 @@ func (o KeyRingIAMMemberMapOutput) ToKeyRingIAMMemberMapOutputWithContext(ctx co
 }
 
 func (o KeyRingIAMMemberMapOutput) MapIndex(k pulumi.StringInput) KeyRingIAMMemberOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) KeyRingIAMMember {
-		return vs[0].(map[string]KeyRingIAMMember)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *KeyRingIAMMember {
+		return vs[0].(map[string]*KeyRingIAMMember)[vs[1].(string)]
 	}).(KeyRingIAMMemberOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingIAMMemberInput)(nil)).Elem(), &KeyRingIAMMember{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingIAMMemberPtrInput)(nil)).Elem(), &KeyRingIAMMember{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingIAMMemberArrayInput)(nil)).Elem(), KeyRingIAMMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingIAMMemberMapInput)(nil)).Elem(), KeyRingIAMMemberMap{})
 	pulumi.RegisterOutputType(KeyRingIAMMemberOutput{})
-	pulumi.RegisterOutputType(KeyRingIAMMemberPtrOutput{})
 	pulumi.RegisterOutputType(KeyRingIAMMemberArrayOutput{})
 	pulumi.RegisterOutputType(KeyRingIAMMemberMapOutput{})
 }

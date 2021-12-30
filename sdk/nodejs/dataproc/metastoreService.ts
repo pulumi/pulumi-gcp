@@ -151,48 +151,48 @@ export class MetastoreService extends pulumi.CustomResource {
      */
     constructor(name: string, args: MetastoreServiceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MetastoreServiceArgs | MetastoreServiceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MetastoreServiceState | undefined;
-            inputs["artifactGcsUri"] = state ? state.artifactGcsUri : undefined;
-            inputs["endpointUri"] = state ? state.endpointUri : undefined;
-            inputs["hiveMetastoreConfig"] = state ? state.hiveMetastoreConfig : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["maintenanceWindow"] = state ? state.maintenanceWindow : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["network"] = state ? state.network : undefined;
-            inputs["port"] = state ? state.port : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["serviceId"] = state ? state.serviceId : undefined;
-            inputs["state"] = state ? state.state : undefined;
-            inputs["stateMessage"] = state ? state.stateMessage : undefined;
-            inputs["tier"] = state ? state.tier : undefined;
+            resourceInputs["artifactGcsUri"] = state ? state.artifactGcsUri : undefined;
+            resourceInputs["endpointUri"] = state ? state.endpointUri : undefined;
+            resourceInputs["hiveMetastoreConfig"] = state ? state.hiveMetastoreConfig : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["maintenanceWindow"] = state ? state.maintenanceWindow : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["network"] = state ? state.network : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["serviceId"] = state ? state.serviceId : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["stateMessage"] = state ? state.stateMessage : undefined;
+            resourceInputs["tier"] = state ? state.tier : undefined;
         } else {
             const args = argsOrState as MetastoreServiceArgs | undefined;
             if ((!args || args.serviceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceId'");
             }
-            inputs["hiveMetastoreConfig"] = args ? args.hiveMetastoreConfig : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
-            inputs["network"] = args ? args.network : undefined;
-            inputs["port"] = args ? args.port : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["serviceId"] = args ? args.serviceId : undefined;
-            inputs["tier"] = args ? args.tier : undefined;
-            inputs["artifactGcsUri"] = undefined /*out*/;
-            inputs["endpointUri"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["stateMessage"] = undefined /*out*/;
+            resourceInputs["hiveMetastoreConfig"] = args ? args.hiveMetastoreConfig : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
+            resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["port"] = args ? args.port : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["serviceId"] = args ? args.serviceId : undefined;
+            resourceInputs["tier"] = args ? args.tier : undefined;
+            resourceInputs["artifactGcsUri"] = undefined /*out*/;
+            resourceInputs["endpointUri"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["stateMessage"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(MetastoreService.__pulumiType, name, inputs, opts);
+        super(MetastoreService.__pulumiType, name, resourceInputs, opts);
     }
 }
 

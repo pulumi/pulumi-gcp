@@ -79,47 +79,6 @@ func (i NotificationConfigStreamingConfigArgs) ToNotificationConfigStreamingConf
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationConfigStreamingConfigOutput)
 }
 
-func (i NotificationConfigStreamingConfigArgs) ToNotificationConfigStreamingConfigPtrOutput() NotificationConfigStreamingConfigPtrOutput {
-	return i.ToNotificationConfigStreamingConfigPtrOutputWithContext(context.Background())
-}
-
-func (i NotificationConfigStreamingConfigArgs) ToNotificationConfigStreamingConfigPtrOutputWithContext(ctx context.Context) NotificationConfigStreamingConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NotificationConfigStreamingConfigOutput).ToNotificationConfigStreamingConfigPtrOutputWithContext(ctx)
-}
-
-// NotificationConfigStreamingConfigPtrInput is an input type that accepts NotificationConfigStreamingConfigArgs, NotificationConfigStreamingConfigPtr and NotificationConfigStreamingConfigPtrOutput values.
-// You can construct a concrete instance of `NotificationConfigStreamingConfigPtrInput` via:
-//
-//          NotificationConfigStreamingConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type NotificationConfigStreamingConfigPtrInput interface {
-	pulumi.Input
-
-	ToNotificationConfigStreamingConfigPtrOutput() NotificationConfigStreamingConfigPtrOutput
-	ToNotificationConfigStreamingConfigPtrOutputWithContext(context.Context) NotificationConfigStreamingConfigPtrOutput
-}
-
-type notificationConfigStreamingConfigPtrType NotificationConfigStreamingConfigArgs
-
-func NotificationConfigStreamingConfigPtr(v *NotificationConfigStreamingConfigArgs) NotificationConfigStreamingConfigPtrInput {
-	return (*notificationConfigStreamingConfigPtrType)(v)
-}
-
-func (*notificationConfigStreamingConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NotificationConfigStreamingConfig)(nil)).Elem()
-}
-
-func (i *notificationConfigStreamingConfigPtrType) ToNotificationConfigStreamingConfigPtrOutput() NotificationConfigStreamingConfigPtrOutput {
-	return i.ToNotificationConfigStreamingConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *notificationConfigStreamingConfigPtrType) ToNotificationConfigStreamingConfigPtrOutputWithContext(ctx context.Context) NotificationConfigStreamingConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NotificationConfigStreamingConfigPtrOutput)
-}
-
 type NotificationConfigStreamingConfigOutput struct{ *pulumi.OutputState }
 
 func (NotificationConfigStreamingConfigOutput) ElementType() reflect.Type {
@@ -132,16 +91,6 @@ func (o NotificationConfigStreamingConfigOutput) ToNotificationConfigStreamingCo
 
 func (o NotificationConfigStreamingConfigOutput) ToNotificationConfigStreamingConfigOutputWithContext(ctx context.Context) NotificationConfigStreamingConfigOutput {
 	return o
-}
-
-func (o NotificationConfigStreamingConfigOutput) ToNotificationConfigStreamingConfigPtrOutput() NotificationConfigStreamingConfigPtrOutput {
-	return o.ToNotificationConfigStreamingConfigPtrOutputWithContext(context.Background())
-}
-
-func (o NotificationConfigStreamingConfigOutput) ToNotificationConfigStreamingConfigPtrOutputWithContext(ctx context.Context) NotificationConfigStreamingConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotificationConfigStreamingConfig) *NotificationConfigStreamingConfig {
-		return &v
-	}).(NotificationConfigStreamingConfigPtrOutput)
 }
 
 // Expression that defines the filter to apply across create/update
@@ -167,61 +116,7 @@ func (o NotificationConfigStreamingConfigOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v NotificationConfigStreamingConfig) string { return v.Filter }).(pulumi.StringOutput)
 }
 
-type NotificationConfigStreamingConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (NotificationConfigStreamingConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NotificationConfigStreamingConfig)(nil)).Elem()
-}
-
-func (o NotificationConfigStreamingConfigPtrOutput) ToNotificationConfigStreamingConfigPtrOutput() NotificationConfigStreamingConfigPtrOutput {
-	return o
-}
-
-func (o NotificationConfigStreamingConfigPtrOutput) ToNotificationConfigStreamingConfigPtrOutputWithContext(ctx context.Context) NotificationConfigStreamingConfigPtrOutput {
-	return o
-}
-
-func (o NotificationConfigStreamingConfigPtrOutput) Elem() NotificationConfigStreamingConfigOutput {
-	return o.ApplyT(func(v *NotificationConfigStreamingConfig) NotificationConfigStreamingConfig {
-		if v != nil {
-			return *v
-		}
-		var ret NotificationConfigStreamingConfig
-		return ret
-	}).(NotificationConfigStreamingConfigOutput)
-}
-
-// Expression that defines the filter to apply across create/update
-// events of assets or findings as specified by the event type. The
-// expression is a list of zero or more restrictions combined via
-// logical operators AND and OR. Parentheses are supported, and OR
-// has higher precedence than AND.
-// Restrictions have the form <field> <operator> <value> and may have
-// a - character in front of them to indicate negation. The fields
-// map to those defined in the corresponding resource.
-// The supported operators are:
-// * = for all value types.
-// * > , <, >=, <= for integer values.
-// * :, meaning substring matching, for strings.
-//   The supported value types are:
-// * string literals in quotes.
-// * integer literals without quotes.
-// * boolean literals true and false without quotes.
-//   See
-//   [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
-//   for information on how to write a filter.
-func (o NotificationConfigStreamingConfigPtrOutput) Filter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NotificationConfigStreamingConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Filter
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigStreamingConfigInput)(nil)).Elem(), NotificationConfigStreamingConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigStreamingConfigPtrInput)(nil)).Elem(), NotificationConfigStreamingConfigArgs{})
 	pulumi.RegisterOutputType(NotificationConfigStreamingConfigOutput{})
-	pulumi.RegisterOutputType(NotificationConfigStreamingConfigPtrOutput{})
 }

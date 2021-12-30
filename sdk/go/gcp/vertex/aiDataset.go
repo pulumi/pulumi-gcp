@@ -210,7 +210,7 @@ type AiDatasetInput interface {
 }
 
 func (*AiDataset) ElementType() reflect.Type {
-	return reflect.TypeOf((*AiDataset)(nil))
+	return reflect.TypeOf((**AiDataset)(nil)).Elem()
 }
 
 func (i *AiDataset) ToAiDatasetOutput() AiDatasetOutput {
@@ -219,35 +219,6 @@ func (i *AiDataset) ToAiDatasetOutput() AiDatasetOutput {
 
 func (i *AiDataset) ToAiDatasetOutputWithContext(ctx context.Context) AiDatasetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AiDatasetOutput)
-}
-
-func (i *AiDataset) ToAiDatasetPtrOutput() AiDatasetPtrOutput {
-	return i.ToAiDatasetPtrOutputWithContext(context.Background())
-}
-
-func (i *AiDataset) ToAiDatasetPtrOutputWithContext(ctx context.Context) AiDatasetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AiDatasetPtrOutput)
-}
-
-type AiDatasetPtrInput interface {
-	pulumi.Input
-
-	ToAiDatasetPtrOutput() AiDatasetPtrOutput
-	ToAiDatasetPtrOutputWithContext(ctx context.Context) AiDatasetPtrOutput
-}
-
-type aiDatasetPtrType AiDatasetArgs
-
-func (*aiDatasetPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AiDataset)(nil))
-}
-
-func (i *aiDatasetPtrType) ToAiDatasetPtrOutput() AiDatasetPtrOutput {
-	return i.ToAiDatasetPtrOutputWithContext(context.Background())
-}
-
-func (i *aiDatasetPtrType) ToAiDatasetPtrOutputWithContext(ctx context.Context) AiDatasetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AiDatasetPtrOutput)
 }
 
 // AiDatasetArrayInput is an input type that accepts AiDatasetArray and AiDatasetArrayOutput values.
@@ -303,7 +274,7 @@ func (i AiDatasetMap) ToAiDatasetMapOutputWithContext(ctx context.Context) AiDat
 type AiDatasetOutput struct{ *pulumi.OutputState }
 
 func (AiDatasetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AiDataset)(nil))
+	return reflect.TypeOf((**AiDataset)(nil)).Elem()
 }
 
 func (o AiDatasetOutput) ToAiDatasetOutput() AiDatasetOutput {
@@ -314,44 +285,10 @@ func (o AiDatasetOutput) ToAiDatasetOutputWithContext(ctx context.Context) AiDat
 	return o
 }
 
-func (o AiDatasetOutput) ToAiDatasetPtrOutput() AiDatasetPtrOutput {
-	return o.ToAiDatasetPtrOutputWithContext(context.Background())
-}
-
-func (o AiDatasetOutput) ToAiDatasetPtrOutputWithContext(ctx context.Context) AiDatasetPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiDataset) *AiDataset {
-		return &v
-	}).(AiDatasetPtrOutput)
-}
-
-type AiDatasetPtrOutput struct{ *pulumi.OutputState }
-
-func (AiDatasetPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AiDataset)(nil))
-}
-
-func (o AiDatasetPtrOutput) ToAiDatasetPtrOutput() AiDatasetPtrOutput {
-	return o
-}
-
-func (o AiDatasetPtrOutput) ToAiDatasetPtrOutputWithContext(ctx context.Context) AiDatasetPtrOutput {
-	return o
-}
-
-func (o AiDatasetPtrOutput) Elem() AiDatasetOutput {
-	return o.ApplyT(func(v *AiDataset) AiDataset {
-		if v != nil {
-			return *v
-		}
-		var ret AiDataset
-		return ret
-	}).(AiDatasetOutput)
-}
-
 type AiDatasetArrayOutput struct{ *pulumi.OutputState }
 
 func (AiDatasetArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AiDataset)(nil))
+	return reflect.TypeOf((*[]*AiDataset)(nil)).Elem()
 }
 
 func (o AiDatasetArrayOutput) ToAiDatasetArrayOutput() AiDatasetArrayOutput {
@@ -363,15 +300,15 @@ func (o AiDatasetArrayOutput) ToAiDatasetArrayOutputWithContext(ctx context.Cont
 }
 
 func (o AiDatasetArrayOutput) Index(i pulumi.IntInput) AiDatasetOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiDataset {
-		return vs[0].([]AiDataset)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AiDataset {
+		return vs[0].([]*AiDataset)[vs[1].(int)]
 	}).(AiDatasetOutput)
 }
 
 type AiDatasetMapOutput struct{ *pulumi.OutputState }
 
 func (AiDatasetMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AiDataset)(nil))
+	return reflect.TypeOf((*map[string]*AiDataset)(nil)).Elem()
 }
 
 func (o AiDatasetMapOutput) ToAiDatasetMapOutput() AiDatasetMapOutput {
@@ -383,18 +320,16 @@ func (o AiDatasetMapOutput) ToAiDatasetMapOutputWithContext(ctx context.Context)
 }
 
 func (o AiDatasetMapOutput) MapIndex(k pulumi.StringInput) AiDatasetOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AiDataset {
-		return vs[0].(map[string]AiDataset)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AiDataset {
+		return vs[0].(map[string]*AiDataset)[vs[1].(string)]
 	}).(AiDatasetOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiDatasetInput)(nil)).Elem(), &AiDataset{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AiDatasetPtrInput)(nil)).Elem(), &AiDataset{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiDatasetArrayInput)(nil)).Elem(), AiDatasetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiDatasetMapInput)(nil)).Elem(), AiDatasetMap{})
 	pulumi.RegisterOutputType(AiDatasetOutput{})
-	pulumi.RegisterOutputType(AiDatasetPtrOutput{})
 	pulumi.RegisterOutputType(AiDatasetArrayOutput{})
 	pulumi.RegisterOutputType(AiDatasetMapOutput{})
 }

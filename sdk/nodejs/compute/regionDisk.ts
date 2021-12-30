@@ -239,60 +239,60 @@ export class RegionDisk extends pulumi.CustomResource {
      */
     constructor(name: string, args: RegionDiskArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RegionDiskArgs | RegionDiskState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegionDiskState | undefined;
-            inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["diskEncryptionKey"] = state ? state.diskEncryptionKey : undefined;
-            inputs["interface"] = state ? state.interface : undefined;
-            inputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["lastAttachTimestamp"] = state ? state.lastAttachTimestamp : undefined;
-            inputs["lastDetachTimestamp"] = state ? state.lastDetachTimestamp : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["physicalBlockSizeBytes"] = state ? state.physicalBlockSizeBytes : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["replicaZones"] = state ? state.replicaZones : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
-            inputs["size"] = state ? state.size : undefined;
-            inputs["snapshot"] = state ? state.snapshot : undefined;
-            inputs["sourceSnapshotEncryptionKey"] = state ? state.sourceSnapshotEncryptionKey : undefined;
-            inputs["sourceSnapshotId"] = state ? state.sourceSnapshotId : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["users"] = state ? state.users : undefined;
+            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["diskEncryptionKey"] = state ? state.diskEncryptionKey : undefined;
+            resourceInputs["interface"] = state ? state.interface : undefined;
+            resourceInputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["lastAttachTimestamp"] = state ? state.lastAttachTimestamp : undefined;
+            resourceInputs["lastDetachTimestamp"] = state ? state.lastDetachTimestamp : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["physicalBlockSizeBytes"] = state ? state.physicalBlockSizeBytes : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["replicaZones"] = state ? state.replicaZones : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["size"] = state ? state.size : undefined;
+            resourceInputs["snapshot"] = state ? state.snapshot : undefined;
+            resourceInputs["sourceSnapshotEncryptionKey"] = state ? state.sourceSnapshotEncryptionKey : undefined;
+            resourceInputs["sourceSnapshotId"] = state ? state.sourceSnapshotId : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["users"] = state ? state.users : undefined;
         } else {
             const args = argsOrState as RegionDiskArgs | undefined;
             if ((!args || args.replicaZones === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'replicaZones'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["diskEncryptionKey"] = args ? args.diskEncryptionKey : undefined;
-            inputs["interface"] = args ? args.interface : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["physicalBlockSizeBytes"] = args ? args.physicalBlockSizeBytes : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["replicaZones"] = args ? args.replicaZones : undefined;
-            inputs["size"] = args ? args.size : undefined;
-            inputs["snapshot"] = args ? args.snapshot : undefined;
-            inputs["sourceSnapshotEncryptionKey"] = args ? args.sourceSnapshotEncryptionKey : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["labelFingerprint"] = undefined /*out*/;
-            inputs["lastAttachTimestamp"] = undefined /*out*/;
-            inputs["lastDetachTimestamp"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["sourceSnapshotId"] = undefined /*out*/;
-            inputs["users"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["diskEncryptionKey"] = args ? args.diskEncryptionKey : undefined;
+            resourceInputs["interface"] = args ? args.interface : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["physicalBlockSizeBytes"] = args ? args.physicalBlockSizeBytes : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["replicaZones"] = args ? args.replicaZones : undefined;
+            resourceInputs["size"] = args ? args.size : undefined;
+            resourceInputs["snapshot"] = args ? args.snapshot : undefined;
+            resourceInputs["sourceSnapshotEncryptionKey"] = args ? args.sourceSnapshotEncryptionKey : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["labelFingerprint"] = undefined /*out*/;
+            resourceInputs["lastAttachTimestamp"] = undefined /*out*/;
+            resourceInputs["lastDetachTimestamp"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["sourceSnapshotId"] = undefined /*out*/;
+            resourceInputs["users"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(RegionDisk.__pulumiType, name, inputs, opts);
+        super(RegionDisk.__pulumiType, name, resourceInputs, opts);
     }
 }
 

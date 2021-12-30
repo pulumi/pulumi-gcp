@@ -136,18 +136,18 @@ export class Gateway extends pulumi.CustomResource {
      */
     constructor(name: string, args: GatewayArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GatewayArgs | GatewayState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GatewayState | undefined;
-            inputs["apiConfig"] = state ? state.apiConfig : undefined;
-            inputs["defaultHostname"] = state ? state.defaultHostname : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["gatewayId"] = state ? state.gatewayId : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["region"] = state ? state.region : undefined;
+            resourceInputs["apiConfig"] = state ? state.apiConfig : undefined;
+            resourceInputs["defaultHostname"] = state ? state.defaultHostname : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["gatewayId"] = state ? state.gatewayId : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as GatewayArgs | undefined;
             if ((!args || args.apiConfig === undefined) && !opts.urn) {
@@ -156,19 +156,19 @@ export class Gateway extends pulumi.CustomResource {
             if ((!args || args.gatewayId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'gatewayId'");
             }
-            inputs["apiConfig"] = args ? args.apiConfig : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["gatewayId"] = args ? args.gatewayId : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["defaultHostname"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["apiConfig"] = args ? args.apiConfig : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["gatewayId"] = args ? args.gatewayId : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["defaultHostname"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Gateway.__pulumiType, name, inputs, opts);
+        super(Gateway.__pulumiType, name, resourceInputs, opts);
     }
 }
 

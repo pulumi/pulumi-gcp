@@ -215,39 +215,39 @@ export class Job extends pulumi.CustomResource {
      */
     constructor(name: string, args?: JobArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: JobArgs | JobState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as JobState | undefined;
-            inputs["appEngineHttpTarget"] = state ? state.appEngineHttpTarget : undefined;
-            inputs["attemptDeadline"] = state ? state.attemptDeadline : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["httpTarget"] = state ? state.httpTarget : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["pubsubTarget"] = state ? state.pubsubTarget : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["retryConfig"] = state ? state.retryConfig : undefined;
-            inputs["schedule"] = state ? state.schedule : undefined;
-            inputs["timeZone"] = state ? state.timeZone : undefined;
+            resourceInputs["appEngineHttpTarget"] = state ? state.appEngineHttpTarget : undefined;
+            resourceInputs["attemptDeadline"] = state ? state.attemptDeadline : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["httpTarget"] = state ? state.httpTarget : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pubsubTarget"] = state ? state.pubsubTarget : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["retryConfig"] = state ? state.retryConfig : undefined;
+            resourceInputs["schedule"] = state ? state.schedule : undefined;
+            resourceInputs["timeZone"] = state ? state.timeZone : undefined;
         } else {
             const args = argsOrState as JobArgs | undefined;
-            inputs["appEngineHttpTarget"] = args ? args.appEngineHttpTarget : undefined;
-            inputs["attemptDeadline"] = args ? args.attemptDeadline : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["httpTarget"] = args ? args.httpTarget : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["pubsubTarget"] = args ? args.pubsubTarget : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["retryConfig"] = args ? args.retryConfig : undefined;
-            inputs["schedule"] = args ? args.schedule : undefined;
-            inputs["timeZone"] = args ? args.timeZone : undefined;
+            resourceInputs["appEngineHttpTarget"] = args ? args.appEngineHttpTarget : undefined;
+            resourceInputs["attemptDeadline"] = args ? args.attemptDeadline : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["httpTarget"] = args ? args.httpTarget : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["pubsubTarget"] = args ? args.pubsubTarget : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["retryConfig"] = args ? args.retryConfig : undefined;
+            resourceInputs["schedule"] = args ? args.schedule : undefined;
+            resourceInputs["timeZone"] = args ? args.timeZone : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Job.__pulumiType, name, inputs, opts);
+        super(Job.__pulumiType, name, resourceInputs, opts);
     }
 }
 

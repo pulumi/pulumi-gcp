@@ -113,31 +113,31 @@ export class SecurityPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args?: SecurityPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SecurityPolicyArgs | SecurityPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecurityPolicyState | undefined;
-            inputs["adaptiveProtectionConfig"] = state ? state.adaptiveProtectionConfig : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["fingerprint"] = state ? state.fingerprint : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["rules"] = state ? state.rules : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["adaptiveProtectionConfig"] = state ? state.adaptiveProtectionConfig : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["rules"] = state ? state.rules : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
         } else {
             const args = argsOrState as SecurityPolicyArgs | undefined;
-            inputs["adaptiveProtectionConfig"] = args ? args.adaptiveProtectionConfig : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["rules"] = args ? args.rules : undefined;
-            inputs["fingerprint"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["adaptiveProtectionConfig"] = args ? args.adaptiveProtectionConfig : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["rules"] = args ? args.rules : undefined;
+            resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(SecurityPolicy.__pulumiType, name, inputs, opts);
+        super(SecurityPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

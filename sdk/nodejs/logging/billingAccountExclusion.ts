@@ -74,15 +74,15 @@ export class BillingAccountExclusion extends pulumi.CustomResource {
      */
     constructor(name: string, args: BillingAccountExclusionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BillingAccountExclusionArgs | BillingAccountExclusionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BillingAccountExclusionState | undefined;
-            inputs["billingAccount"] = state ? state.billingAccount : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["disabled"] = state ? state.disabled : undefined;
-            inputs["filter"] = state ? state.filter : undefined;
-            inputs["name"] = state ? state.name : undefined;
+            resourceInputs["billingAccount"] = state ? state.billingAccount : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["disabled"] = state ? state.disabled : undefined;
+            resourceInputs["filter"] = state ? state.filter : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as BillingAccountExclusionArgs | undefined;
             if ((!args || args.billingAccount === undefined) && !opts.urn) {
@@ -91,16 +91,16 @@ export class BillingAccountExclusion extends pulumi.CustomResource {
             if ((!args || args.filter === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'filter'");
             }
-            inputs["billingAccount"] = args ? args.billingAccount : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["disabled"] = args ? args.disabled : undefined;
-            inputs["filter"] = args ? args.filter : undefined;
-            inputs["name"] = args ? args.name : undefined;
+            resourceInputs["billingAccount"] = args ? args.billingAccount : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["disabled"] = args ? args.disabled : undefined;
+            resourceInputs["filter"] = args ? args.filter : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(BillingAccountExclusion.__pulumiType, name, inputs, opts);
+        super(BillingAccountExclusion.__pulumiType, name, resourceInputs, opts);
     }
 }
 

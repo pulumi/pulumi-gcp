@@ -394,7 +394,7 @@ type IamBindingInput interface {
 }
 
 func (*IamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*IamBinding)(nil))
+	return reflect.TypeOf((**IamBinding)(nil)).Elem()
 }
 
 func (i *IamBinding) ToIamBindingOutput() IamBindingOutput {
@@ -403,35 +403,6 @@ func (i *IamBinding) ToIamBindingOutput() IamBindingOutput {
 
 func (i *IamBinding) ToIamBindingOutputWithContext(ctx context.Context) IamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IamBindingOutput)
-}
-
-func (i *IamBinding) ToIamBindingPtrOutput() IamBindingPtrOutput {
-	return i.ToIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *IamBinding) ToIamBindingPtrOutputWithContext(ctx context.Context) IamBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IamBindingPtrOutput)
-}
-
-type IamBindingPtrInput interface {
-	pulumi.Input
-
-	ToIamBindingPtrOutput() IamBindingPtrOutput
-	ToIamBindingPtrOutputWithContext(ctx context.Context) IamBindingPtrOutput
-}
-
-type iamBindingPtrType IamBindingArgs
-
-func (*iamBindingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**IamBinding)(nil))
-}
-
-func (i *iamBindingPtrType) ToIamBindingPtrOutput() IamBindingPtrOutput {
-	return i.ToIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *iamBindingPtrType) ToIamBindingPtrOutputWithContext(ctx context.Context) IamBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IamBindingPtrOutput)
 }
 
 // IamBindingArrayInput is an input type that accepts IamBindingArray and IamBindingArrayOutput values.
@@ -487,7 +458,7 @@ func (i IamBindingMap) ToIamBindingMapOutputWithContext(ctx context.Context) Iam
 type IamBindingOutput struct{ *pulumi.OutputState }
 
 func (IamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IamBinding)(nil))
+	return reflect.TypeOf((**IamBinding)(nil)).Elem()
 }
 
 func (o IamBindingOutput) ToIamBindingOutput() IamBindingOutput {
@@ -498,44 +469,10 @@ func (o IamBindingOutput) ToIamBindingOutputWithContext(ctx context.Context) Iam
 	return o
 }
 
-func (o IamBindingOutput) ToIamBindingPtrOutput() IamBindingPtrOutput {
-	return o.ToIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (o IamBindingOutput) ToIamBindingPtrOutputWithContext(ctx context.Context) IamBindingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v IamBinding) *IamBinding {
-		return &v
-	}).(IamBindingPtrOutput)
-}
-
-type IamBindingPtrOutput struct{ *pulumi.OutputState }
-
-func (IamBindingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IamBinding)(nil))
-}
-
-func (o IamBindingPtrOutput) ToIamBindingPtrOutput() IamBindingPtrOutput {
-	return o
-}
-
-func (o IamBindingPtrOutput) ToIamBindingPtrOutputWithContext(ctx context.Context) IamBindingPtrOutput {
-	return o
-}
-
-func (o IamBindingPtrOutput) Elem() IamBindingOutput {
-	return o.ApplyT(func(v *IamBinding) IamBinding {
-		if v != nil {
-			return *v
-		}
-		var ret IamBinding
-		return ret
-	}).(IamBindingOutput)
-}
-
 type IamBindingArrayOutput struct{ *pulumi.OutputState }
 
 func (IamBindingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]IamBinding)(nil))
+	return reflect.TypeOf((*[]*IamBinding)(nil)).Elem()
 }
 
 func (o IamBindingArrayOutput) ToIamBindingArrayOutput() IamBindingArrayOutput {
@@ -547,15 +484,15 @@ func (o IamBindingArrayOutput) ToIamBindingArrayOutputWithContext(ctx context.Co
 }
 
 func (o IamBindingArrayOutput) Index(i pulumi.IntInput) IamBindingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IamBinding {
-		return vs[0].([]IamBinding)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IamBinding {
+		return vs[0].([]*IamBinding)[vs[1].(int)]
 	}).(IamBindingOutput)
 }
 
 type IamBindingMapOutput struct{ *pulumi.OutputState }
 
 func (IamBindingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]IamBinding)(nil))
+	return reflect.TypeOf((*map[string]*IamBinding)(nil)).Elem()
 }
 
 func (o IamBindingMapOutput) ToIamBindingMapOutput() IamBindingMapOutput {
@@ -567,18 +504,16 @@ func (o IamBindingMapOutput) ToIamBindingMapOutputWithContext(ctx context.Contex
 }
 
 func (o IamBindingMapOutput) MapIndex(k pulumi.StringInput) IamBindingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) IamBinding {
-		return vs[0].(map[string]IamBinding)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *IamBinding {
+		return vs[0].(map[string]*IamBinding)[vs[1].(string)]
 	}).(IamBindingOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IamBindingInput)(nil)).Elem(), &IamBinding{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IamBindingPtrInput)(nil)).Elem(), &IamBinding{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IamBindingArrayInput)(nil)).Elem(), IamBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IamBindingMapInput)(nil)).Elem(), IamBindingMap{})
 	pulumi.RegisterOutputType(IamBindingOutput{})
-	pulumi.RegisterOutputType(IamBindingPtrOutput{})
 	pulumi.RegisterOutputType(IamBindingArrayOutput{})
 	pulumi.RegisterOutputType(IamBindingMapOutput{})
 }

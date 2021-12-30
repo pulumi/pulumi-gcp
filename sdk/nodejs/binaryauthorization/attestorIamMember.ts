@@ -146,16 +146,16 @@ export class AttestorIamMember extends pulumi.CustomResource {
      */
     constructor(name: string, args: AttestorIamMemberArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AttestorIamMemberArgs | AttestorIamMemberState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AttestorIamMemberState | undefined;
-            inputs["attestor"] = state ? state.attestor : undefined;
-            inputs["condition"] = state ? state.condition : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["member"] = state ? state.member : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["role"] = state ? state.role : undefined;
+            resourceInputs["attestor"] = state ? state.attestor : undefined;
+            resourceInputs["condition"] = state ? state.condition : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["member"] = state ? state.member : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["role"] = state ? state.role : undefined;
         } else {
             const args = argsOrState as AttestorIamMemberArgs | undefined;
             if ((!args || args.attestor === undefined) && !opts.urn) {
@@ -167,17 +167,17 @@ export class AttestorIamMember extends pulumi.CustomResource {
             if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            inputs["attestor"] = args ? args.attestor : undefined;
-            inputs["condition"] = args ? args.condition : undefined;
-            inputs["member"] = args ? args.member : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["role"] = args ? args.role : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["attestor"] = args ? args.attestor : undefined;
+            resourceInputs["condition"] = args ? args.condition : undefined;
+            resourceInputs["member"] = args ? args.member : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(AttestorIamMember.__pulumiType, name, inputs, opts);
+        super(AttestorIamMember.__pulumiType, name, resourceInputs, opts);
     }
 }
 

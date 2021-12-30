@@ -207,7 +207,7 @@ type ServiceNetworkSettingsInput interface {
 }
 
 func (*ServiceNetworkSettings) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceNetworkSettings)(nil))
+	return reflect.TypeOf((**ServiceNetworkSettings)(nil)).Elem()
 }
 
 func (i *ServiceNetworkSettings) ToServiceNetworkSettingsOutput() ServiceNetworkSettingsOutput {
@@ -216,35 +216,6 @@ func (i *ServiceNetworkSettings) ToServiceNetworkSettingsOutput() ServiceNetwork
 
 func (i *ServiceNetworkSettings) ToServiceNetworkSettingsOutputWithContext(ctx context.Context) ServiceNetworkSettingsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceNetworkSettingsOutput)
-}
-
-func (i *ServiceNetworkSettings) ToServiceNetworkSettingsPtrOutput() ServiceNetworkSettingsPtrOutput {
-	return i.ToServiceNetworkSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i *ServiceNetworkSettings) ToServiceNetworkSettingsPtrOutputWithContext(ctx context.Context) ServiceNetworkSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceNetworkSettingsPtrOutput)
-}
-
-type ServiceNetworkSettingsPtrInput interface {
-	pulumi.Input
-
-	ToServiceNetworkSettingsPtrOutput() ServiceNetworkSettingsPtrOutput
-	ToServiceNetworkSettingsPtrOutputWithContext(ctx context.Context) ServiceNetworkSettingsPtrOutput
-}
-
-type serviceNetworkSettingsPtrType ServiceNetworkSettingsArgs
-
-func (*serviceNetworkSettingsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServiceNetworkSettings)(nil))
-}
-
-func (i *serviceNetworkSettingsPtrType) ToServiceNetworkSettingsPtrOutput() ServiceNetworkSettingsPtrOutput {
-	return i.ToServiceNetworkSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i *serviceNetworkSettingsPtrType) ToServiceNetworkSettingsPtrOutputWithContext(ctx context.Context) ServiceNetworkSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceNetworkSettingsPtrOutput)
 }
 
 // ServiceNetworkSettingsArrayInput is an input type that accepts ServiceNetworkSettingsArray and ServiceNetworkSettingsArrayOutput values.
@@ -300,7 +271,7 @@ func (i ServiceNetworkSettingsMap) ToServiceNetworkSettingsMapOutputWithContext(
 type ServiceNetworkSettingsOutput struct{ *pulumi.OutputState }
 
 func (ServiceNetworkSettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceNetworkSettings)(nil))
+	return reflect.TypeOf((**ServiceNetworkSettings)(nil)).Elem()
 }
 
 func (o ServiceNetworkSettingsOutput) ToServiceNetworkSettingsOutput() ServiceNetworkSettingsOutput {
@@ -311,44 +282,10 @@ func (o ServiceNetworkSettingsOutput) ToServiceNetworkSettingsOutputWithContext(
 	return o
 }
 
-func (o ServiceNetworkSettingsOutput) ToServiceNetworkSettingsPtrOutput() ServiceNetworkSettingsPtrOutput {
-	return o.ToServiceNetworkSettingsPtrOutputWithContext(context.Background())
-}
-
-func (o ServiceNetworkSettingsOutput) ToServiceNetworkSettingsPtrOutputWithContext(ctx context.Context) ServiceNetworkSettingsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceNetworkSettings) *ServiceNetworkSettings {
-		return &v
-	}).(ServiceNetworkSettingsPtrOutput)
-}
-
-type ServiceNetworkSettingsPtrOutput struct{ *pulumi.OutputState }
-
-func (ServiceNetworkSettingsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServiceNetworkSettings)(nil))
-}
-
-func (o ServiceNetworkSettingsPtrOutput) ToServiceNetworkSettingsPtrOutput() ServiceNetworkSettingsPtrOutput {
-	return o
-}
-
-func (o ServiceNetworkSettingsPtrOutput) ToServiceNetworkSettingsPtrOutputWithContext(ctx context.Context) ServiceNetworkSettingsPtrOutput {
-	return o
-}
-
-func (o ServiceNetworkSettingsPtrOutput) Elem() ServiceNetworkSettingsOutput {
-	return o.ApplyT(func(v *ServiceNetworkSettings) ServiceNetworkSettings {
-		if v != nil {
-			return *v
-		}
-		var ret ServiceNetworkSettings
-		return ret
-	}).(ServiceNetworkSettingsOutput)
-}
-
 type ServiceNetworkSettingsArrayOutput struct{ *pulumi.OutputState }
 
 func (ServiceNetworkSettingsArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServiceNetworkSettings)(nil))
+	return reflect.TypeOf((*[]*ServiceNetworkSettings)(nil)).Elem()
 }
 
 func (o ServiceNetworkSettingsArrayOutput) ToServiceNetworkSettingsArrayOutput() ServiceNetworkSettingsArrayOutput {
@@ -360,15 +297,15 @@ func (o ServiceNetworkSettingsArrayOutput) ToServiceNetworkSettingsArrayOutputWi
 }
 
 func (o ServiceNetworkSettingsArrayOutput) Index(i pulumi.IntInput) ServiceNetworkSettingsOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceNetworkSettings {
-		return vs[0].([]ServiceNetworkSettings)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServiceNetworkSettings {
+		return vs[0].([]*ServiceNetworkSettings)[vs[1].(int)]
 	}).(ServiceNetworkSettingsOutput)
 }
 
 type ServiceNetworkSettingsMapOutput struct{ *pulumi.OutputState }
 
 func (ServiceNetworkSettingsMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ServiceNetworkSettings)(nil))
+	return reflect.TypeOf((*map[string]*ServiceNetworkSettings)(nil)).Elem()
 }
 
 func (o ServiceNetworkSettingsMapOutput) ToServiceNetworkSettingsMapOutput() ServiceNetworkSettingsMapOutput {
@@ -380,18 +317,16 @@ func (o ServiceNetworkSettingsMapOutput) ToServiceNetworkSettingsMapOutputWithCo
 }
 
 func (o ServiceNetworkSettingsMapOutput) MapIndex(k pulumi.StringInput) ServiceNetworkSettingsOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ServiceNetworkSettings {
-		return vs[0].(map[string]ServiceNetworkSettings)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ServiceNetworkSettings {
+		return vs[0].(map[string]*ServiceNetworkSettings)[vs[1].(string)]
 	}).(ServiceNetworkSettingsOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceNetworkSettingsInput)(nil)).Elem(), &ServiceNetworkSettings{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServiceNetworkSettingsPtrInput)(nil)).Elem(), &ServiceNetworkSettings{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceNetworkSettingsArrayInput)(nil)).Elem(), ServiceNetworkSettingsArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceNetworkSettingsMapInput)(nil)).Elem(), ServiceNetworkSettingsMap{})
 	pulumi.RegisterOutputType(ServiceNetworkSettingsOutput{})
-	pulumi.RegisterOutputType(ServiceNetworkSettingsPtrOutput{})
 	pulumi.RegisterOutputType(ServiceNetworkSettingsArrayOutput{})
 	pulumi.RegisterOutputType(ServiceNetworkSettingsMapOutput{})
 }

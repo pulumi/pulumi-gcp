@@ -251,47 +251,6 @@ func (i FolderFeedFeedOutputConfigArgs) ToFolderFeedFeedOutputConfigOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(FolderFeedFeedOutputConfigOutput)
 }
 
-func (i FolderFeedFeedOutputConfigArgs) ToFolderFeedFeedOutputConfigPtrOutput() FolderFeedFeedOutputConfigPtrOutput {
-	return i.ToFolderFeedFeedOutputConfigPtrOutputWithContext(context.Background())
-}
-
-func (i FolderFeedFeedOutputConfigArgs) ToFolderFeedFeedOutputConfigPtrOutputWithContext(ctx context.Context) FolderFeedFeedOutputConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FolderFeedFeedOutputConfigOutput).ToFolderFeedFeedOutputConfigPtrOutputWithContext(ctx)
-}
-
-// FolderFeedFeedOutputConfigPtrInput is an input type that accepts FolderFeedFeedOutputConfigArgs, FolderFeedFeedOutputConfigPtr and FolderFeedFeedOutputConfigPtrOutput values.
-// You can construct a concrete instance of `FolderFeedFeedOutputConfigPtrInput` via:
-//
-//          FolderFeedFeedOutputConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type FolderFeedFeedOutputConfigPtrInput interface {
-	pulumi.Input
-
-	ToFolderFeedFeedOutputConfigPtrOutput() FolderFeedFeedOutputConfigPtrOutput
-	ToFolderFeedFeedOutputConfigPtrOutputWithContext(context.Context) FolderFeedFeedOutputConfigPtrOutput
-}
-
-type folderFeedFeedOutputConfigPtrType FolderFeedFeedOutputConfigArgs
-
-func FolderFeedFeedOutputConfigPtr(v *FolderFeedFeedOutputConfigArgs) FolderFeedFeedOutputConfigPtrInput {
-	return (*folderFeedFeedOutputConfigPtrType)(v)
-}
-
-func (*folderFeedFeedOutputConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FolderFeedFeedOutputConfig)(nil)).Elem()
-}
-
-func (i *folderFeedFeedOutputConfigPtrType) ToFolderFeedFeedOutputConfigPtrOutput() FolderFeedFeedOutputConfigPtrOutput {
-	return i.ToFolderFeedFeedOutputConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *folderFeedFeedOutputConfigPtrType) ToFolderFeedFeedOutputConfigPtrOutputWithContext(ctx context.Context) FolderFeedFeedOutputConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FolderFeedFeedOutputConfigPtrOutput)
-}
-
 type FolderFeedFeedOutputConfigOutput struct{ *pulumi.OutputState }
 
 func (FolderFeedFeedOutputConfigOutput) ElementType() reflect.Type {
@@ -306,57 +265,12 @@ func (o FolderFeedFeedOutputConfigOutput) ToFolderFeedFeedOutputConfigOutputWith
 	return o
 }
 
-func (o FolderFeedFeedOutputConfigOutput) ToFolderFeedFeedOutputConfigPtrOutput() FolderFeedFeedOutputConfigPtrOutput {
-	return o.ToFolderFeedFeedOutputConfigPtrOutputWithContext(context.Background())
-}
-
-func (o FolderFeedFeedOutputConfigOutput) ToFolderFeedFeedOutputConfigPtrOutputWithContext(ctx context.Context) FolderFeedFeedOutputConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FolderFeedFeedOutputConfig) *FolderFeedFeedOutputConfig {
-		return &v
-	}).(FolderFeedFeedOutputConfigPtrOutput)
-}
-
 // Destination on Cloud Pubsub.
 // Structure is documented below.
 func (o FolderFeedFeedOutputConfigOutput) PubsubDestination() FolderFeedFeedOutputConfigPubsubDestinationOutput {
 	return o.ApplyT(func(v FolderFeedFeedOutputConfig) FolderFeedFeedOutputConfigPubsubDestination {
 		return v.PubsubDestination
 	}).(FolderFeedFeedOutputConfigPubsubDestinationOutput)
-}
-
-type FolderFeedFeedOutputConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (FolderFeedFeedOutputConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FolderFeedFeedOutputConfig)(nil)).Elem()
-}
-
-func (o FolderFeedFeedOutputConfigPtrOutput) ToFolderFeedFeedOutputConfigPtrOutput() FolderFeedFeedOutputConfigPtrOutput {
-	return o
-}
-
-func (o FolderFeedFeedOutputConfigPtrOutput) ToFolderFeedFeedOutputConfigPtrOutputWithContext(ctx context.Context) FolderFeedFeedOutputConfigPtrOutput {
-	return o
-}
-
-func (o FolderFeedFeedOutputConfigPtrOutput) Elem() FolderFeedFeedOutputConfigOutput {
-	return o.ApplyT(func(v *FolderFeedFeedOutputConfig) FolderFeedFeedOutputConfig {
-		if v != nil {
-			return *v
-		}
-		var ret FolderFeedFeedOutputConfig
-		return ret
-	}).(FolderFeedFeedOutputConfigOutput)
-}
-
-// Destination on Cloud Pubsub.
-// Structure is documented below.
-func (o FolderFeedFeedOutputConfigPtrOutput) PubsubDestination() FolderFeedFeedOutputConfigPubsubDestinationPtrOutput {
-	return o.ApplyT(func(v *FolderFeedFeedOutputConfig) *FolderFeedFeedOutputConfigPubsubDestination {
-		if v == nil {
-			return nil
-		}
-		return &v.PubsubDestination
-	}).(FolderFeedFeedOutputConfigPubsubDestinationPtrOutput)
 }
 
 type FolderFeedFeedOutputConfigPubsubDestination struct {
@@ -392,47 +306,6 @@ func (i FolderFeedFeedOutputConfigPubsubDestinationArgs) ToFolderFeedFeedOutputC
 	return pulumi.ToOutputWithContext(ctx, i).(FolderFeedFeedOutputConfigPubsubDestinationOutput)
 }
 
-func (i FolderFeedFeedOutputConfigPubsubDestinationArgs) ToFolderFeedFeedOutputConfigPubsubDestinationPtrOutput() FolderFeedFeedOutputConfigPubsubDestinationPtrOutput {
-	return i.ToFolderFeedFeedOutputConfigPubsubDestinationPtrOutputWithContext(context.Background())
-}
-
-func (i FolderFeedFeedOutputConfigPubsubDestinationArgs) ToFolderFeedFeedOutputConfigPubsubDestinationPtrOutputWithContext(ctx context.Context) FolderFeedFeedOutputConfigPubsubDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FolderFeedFeedOutputConfigPubsubDestinationOutput).ToFolderFeedFeedOutputConfigPubsubDestinationPtrOutputWithContext(ctx)
-}
-
-// FolderFeedFeedOutputConfigPubsubDestinationPtrInput is an input type that accepts FolderFeedFeedOutputConfigPubsubDestinationArgs, FolderFeedFeedOutputConfigPubsubDestinationPtr and FolderFeedFeedOutputConfigPubsubDestinationPtrOutput values.
-// You can construct a concrete instance of `FolderFeedFeedOutputConfigPubsubDestinationPtrInput` via:
-//
-//          FolderFeedFeedOutputConfigPubsubDestinationArgs{...}
-//
-//  or:
-//
-//          nil
-type FolderFeedFeedOutputConfigPubsubDestinationPtrInput interface {
-	pulumi.Input
-
-	ToFolderFeedFeedOutputConfigPubsubDestinationPtrOutput() FolderFeedFeedOutputConfigPubsubDestinationPtrOutput
-	ToFolderFeedFeedOutputConfigPubsubDestinationPtrOutputWithContext(context.Context) FolderFeedFeedOutputConfigPubsubDestinationPtrOutput
-}
-
-type folderFeedFeedOutputConfigPubsubDestinationPtrType FolderFeedFeedOutputConfigPubsubDestinationArgs
-
-func FolderFeedFeedOutputConfigPubsubDestinationPtr(v *FolderFeedFeedOutputConfigPubsubDestinationArgs) FolderFeedFeedOutputConfigPubsubDestinationPtrInput {
-	return (*folderFeedFeedOutputConfigPubsubDestinationPtrType)(v)
-}
-
-func (*folderFeedFeedOutputConfigPubsubDestinationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FolderFeedFeedOutputConfigPubsubDestination)(nil)).Elem()
-}
-
-func (i *folderFeedFeedOutputConfigPubsubDestinationPtrType) ToFolderFeedFeedOutputConfigPubsubDestinationPtrOutput() FolderFeedFeedOutputConfigPubsubDestinationPtrOutput {
-	return i.ToFolderFeedFeedOutputConfigPubsubDestinationPtrOutputWithContext(context.Background())
-}
-
-func (i *folderFeedFeedOutputConfigPubsubDestinationPtrType) ToFolderFeedFeedOutputConfigPubsubDestinationPtrOutputWithContext(ctx context.Context) FolderFeedFeedOutputConfigPubsubDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FolderFeedFeedOutputConfigPubsubDestinationPtrOutput)
-}
-
 type FolderFeedFeedOutputConfigPubsubDestinationOutput struct{ *pulumi.OutputState }
 
 func (FolderFeedFeedOutputConfigPubsubDestinationOutput) ElementType() reflect.Type {
@@ -447,53 +320,9 @@ func (o FolderFeedFeedOutputConfigPubsubDestinationOutput) ToFolderFeedFeedOutpu
 	return o
 }
 
-func (o FolderFeedFeedOutputConfigPubsubDestinationOutput) ToFolderFeedFeedOutputConfigPubsubDestinationPtrOutput() FolderFeedFeedOutputConfigPubsubDestinationPtrOutput {
-	return o.ToFolderFeedFeedOutputConfigPubsubDestinationPtrOutputWithContext(context.Background())
-}
-
-func (o FolderFeedFeedOutputConfigPubsubDestinationOutput) ToFolderFeedFeedOutputConfigPubsubDestinationPtrOutputWithContext(ctx context.Context) FolderFeedFeedOutputConfigPubsubDestinationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FolderFeedFeedOutputConfigPubsubDestination) *FolderFeedFeedOutputConfigPubsubDestination {
-		return &v
-	}).(FolderFeedFeedOutputConfigPubsubDestinationPtrOutput)
-}
-
 // Destination on Cloud Pubsub topic.
 func (o FolderFeedFeedOutputConfigPubsubDestinationOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v FolderFeedFeedOutputConfigPubsubDestination) string { return v.Topic }).(pulumi.StringOutput)
-}
-
-type FolderFeedFeedOutputConfigPubsubDestinationPtrOutput struct{ *pulumi.OutputState }
-
-func (FolderFeedFeedOutputConfigPubsubDestinationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FolderFeedFeedOutputConfigPubsubDestination)(nil)).Elem()
-}
-
-func (o FolderFeedFeedOutputConfigPubsubDestinationPtrOutput) ToFolderFeedFeedOutputConfigPubsubDestinationPtrOutput() FolderFeedFeedOutputConfigPubsubDestinationPtrOutput {
-	return o
-}
-
-func (o FolderFeedFeedOutputConfigPubsubDestinationPtrOutput) ToFolderFeedFeedOutputConfigPubsubDestinationPtrOutputWithContext(ctx context.Context) FolderFeedFeedOutputConfigPubsubDestinationPtrOutput {
-	return o
-}
-
-func (o FolderFeedFeedOutputConfigPubsubDestinationPtrOutput) Elem() FolderFeedFeedOutputConfigPubsubDestinationOutput {
-	return o.ApplyT(func(v *FolderFeedFeedOutputConfigPubsubDestination) FolderFeedFeedOutputConfigPubsubDestination {
-		if v != nil {
-			return *v
-		}
-		var ret FolderFeedFeedOutputConfigPubsubDestination
-		return ret
-	}).(FolderFeedFeedOutputConfigPubsubDestinationOutput)
-}
-
-// Destination on Cloud Pubsub topic.
-func (o FolderFeedFeedOutputConfigPubsubDestinationPtrOutput) Topic() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FolderFeedFeedOutputConfigPubsubDestination) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Topic
-	}).(pulumi.StringPtrOutput)
 }
 
 type OrganizationFeedCondition struct {
@@ -737,47 +566,6 @@ func (i OrganizationFeedFeedOutputConfigArgs) ToOrganizationFeedFeedOutputConfig
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationFeedFeedOutputConfigOutput)
 }
 
-func (i OrganizationFeedFeedOutputConfigArgs) ToOrganizationFeedFeedOutputConfigPtrOutput() OrganizationFeedFeedOutputConfigPtrOutput {
-	return i.ToOrganizationFeedFeedOutputConfigPtrOutputWithContext(context.Background())
-}
-
-func (i OrganizationFeedFeedOutputConfigArgs) ToOrganizationFeedFeedOutputConfigPtrOutputWithContext(ctx context.Context) OrganizationFeedFeedOutputConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OrganizationFeedFeedOutputConfigOutput).ToOrganizationFeedFeedOutputConfigPtrOutputWithContext(ctx)
-}
-
-// OrganizationFeedFeedOutputConfigPtrInput is an input type that accepts OrganizationFeedFeedOutputConfigArgs, OrganizationFeedFeedOutputConfigPtr and OrganizationFeedFeedOutputConfigPtrOutput values.
-// You can construct a concrete instance of `OrganizationFeedFeedOutputConfigPtrInput` via:
-//
-//          OrganizationFeedFeedOutputConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type OrganizationFeedFeedOutputConfigPtrInput interface {
-	pulumi.Input
-
-	ToOrganizationFeedFeedOutputConfigPtrOutput() OrganizationFeedFeedOutputConfigPtrOutput
-	ToOrganizationFeedFeedOutputConfigPtrOutputWithContext(context.Context) OrganizationFeedFeedOutputConfigPtrOutput
-}
-
-type organizationFeedFeedOutputConfigPtrType OrganizationFeedFeedOutputConfigArgs
-
-func OrganizationFeedFeedOutputConfigPtr(v *OrganizationFeedFeedOutputConfigArgs) OrganizationFeedFeedOutputConfigPtrInput {
-	return (*organizationFeedFeedOutputConfigPtrType)(v)
-}
-
-func (*organizationFeedFeedOutputConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OrganizationFeedFeedOutputConfig)(nil)).Elem()
-}
-
-func (i *organizationFeedFeedOutputConfigPtrType) ToOrganizationFeedFeedOutputConfigPtrOutput() OrganizationFeedFeedOutputConfigPtrOutput {
-	return i.ToOrganizationFeedFeedOutputConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *organizationFeedFeedOutputConfigPtrType) ToOrganizationFeedFeedOutputConfigPtrOutputWithContext(ctx context.Context) OrganizationFeedFeedOutputConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OrganizationFeedFeedOutputConfigPtrOutput)
-}
-
 type OrganizationFeedFeedOutputConfigOutput struct{ *pulumi.OutputState }
 
 func (OrganizationFeedFeedOutputConfigOutput) ElementType() reflect.Type {
@@ -792,57 +580,12 @@ func (o OrganizationFeedFeedOutputConfigOutput) ToOrganizationFeedFeedOutputConf
 	return o
 }
 
-func (o OrganizationFeedFeedOutputConfigOutput) ToOrganizationFeedFeedOutputConfigPtrOutput() OrganizationFeedFeedOutputConfigPtrOutput {
-	return o.ToOrganizationFeedFeedOutputConfigPtrOutputWithContext(context.Background())
-}
-
-func (o OrganizationFeedFeedOutputConfigOutput) ToOrganizationFeedFeedOutputConfigPtrOutputWithContext(ctx context.Context) OrganizationFeedFeedOutputConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationFeedFeedOutputConfig) *OrganizationFeedFeedOutputConfig {
-		return &v
-	}).(OrganizationFeedFeedOutputConfigPtrOutput)
-}
-
 // Destination on Cloud Pubsub.
 // Structure is documented below.
 func (o OrganizationFeedFeedOutputConfigOutput) PubsubDestination() OrganizationFeedFeedOutputConfigPubsubDestinationOutput {
 	return o.ApplyT(func(v OrganizationFeedFeedOutputConfig) OrganizationFeedFeedOutputConfigPubsubDestination {
 		return v.PubsubDestination
 	}).(OrganizationFeedFeedOutputConfigPubsubDestinationOutput)
-}
-
-type OrganizationFeedFeedOutputConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (OrganizationFeedFeedOutputConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OrganizationFeedFeedOutputConfig)(nil)).Elem()
-}
-
-func (o OrganizationFeedFeedOutputConfigPtrOutput) ToOrganizationFeedFeedOutputConfigPtrOutput() OrganizationFeedFeedOutputConfigPtrOutput {
-	return o
-}
-
-func (o OrganizationFeedFeedOutputConfigPtrOutput) ToOrganizationFeedFeedOutputConfigPtrOutputWithContext(ctx context.Context) OrganizationFeedFeedOutputConfigPtrOutput {
-	return o
-}
-
-func (o OrganizationFeedFeedOutputConfigPtrOutput) Elem() OrganizationFeedFeedOutputConfigOutput {
-	return o.ApplyT(func(v *OrganizationFeedFeedOutputConfig) OrganizationFeedFeedOutputConfig {
-		if v != nil {
-			return *v
-		}
-		var ret OrganizationFeedFeedOutputConfig
-		return ret
-	}).(OrganizationFeedFeedOutputConfigOutput)
-}
-
-// Destination on Cloud Pubsub.
-// Structure is documented below.
-func (o OrganizationFeedFeedOutputConfigPtrOutput) PubsubDestination() OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput {
-	return o.ApplyT(func(v *OrganizationFeedFeedOutputConfig) *OrganizationFeedFeedOutputConfigPubsubDestination {
-		if v == nil {
-			return nil
-		}
-		return &v.PubsubDestination
-	}).(OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput)
 }
 
 type OrganizationFeedFeedOutputConfigPubsubDestination struct {
@@ -878,47 +621,6 @@ func (i OrganizationFeedFeedOutputConfigPubsubDestinationArgs) ToOrganizationFee
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationFeedFeedOutputConfigPubsubDestinationOutput)
 }
 
-func (i OrganizationFeedFeedOutputConfigPubsubDestinationArgs) ToOrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput() OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput {
-	return i.ToOrganizationFeedFeedOutputConfigPubsubDestinationPtrOutputWithContext(context.Background())
-}
-
-func (i OrganizationFeedFeedOutputConfigPubsubDestinationArgs) ToOrganizationFeedFeedOutputConfigPubsubDestinationPtrOutputWithContext(ctx context.Context) OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OrganizationFeedFeedOutputConfigPubsubDestinationOutput).ToOrganizationFeedFeedOutputConfigPubsubDestinationPtrOutputWithContext(ctx)
-}
-
-// OrganizationFeedFeedOutputConfigPubsubDestinationPtrInput is an input type that accepts OrganizationFeedFeedOutputConfigPubsubDestinationArgs, OrganizationFeedFeedOutputConfigPubsubDestinationPtr and OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput values.
-// You can construct a concrete instance of `OrganizationFeedFeedOutputConfigPubsubDestinationPtrInput` via:
-//
-//          OrganizationFeedFeedOutputConfigPubsubDestinationArgs{...}
-//
-//  or:
-//
-//          nil
-type OrganizationFeedFeedOutputConfigPubsubDestinationPtrInput interface {
-	pulumi.Input
-
-	ToOrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput() OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput
-	ToOrganizationFeedFeedOutputConfigPubsubDestinationPtrOutputWithContext(context.Context) OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput
-}
-
-type organizationFeedFeedOutputConfigPubsubDestinationPtrType OrganizationFeedFeedOutputConfigPubsubDestinationArgs
-
-func OrganizationFeedFeedOutputConfigPubsubDestinationPtr(v *OrganizationFeedFeedOutputConfigPubsubDestinationArgs) OrganizationFeedFeedOutputConfigPubsubDestinationPtrInput {
-	return (*organizationFeedFeedOutputConfigPubsubDestinationPtrType)(v)
-}
-
-func (*organizationFeedFeedOutputConfigPubsubDestinationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OrganizationFeedFeedOutputConfigPubsubDestination)(nil)).Elem()
-}
-
-func (i *organizationFeedFeedOutputConfigPubsubDestinationPtrType) ToOrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput() OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput {
-	return i.ToOrganizationFeedFeedOutputConfigPubsubDestinationPtrOutputWithContext(context.Background())
-}
-
-func (i *organizationFeedFeedOutputConfigPubsubDestinationPtrType) ToOrganizationFeedFeedOutputConfigPubsubDestinationPtrOutputWithContext(ctx context.Context) OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput)
-}
-
 type OrganizationFeedFeedOutputConfigPubsubDestinationOutput struct{ *pulumi.OutputState }
 
 func (OrganizationFeedFeedOutputConfigPubsubDestinationOutput) ElementType() reflect.Type {
@@ -933,53 +635,9 @@ func (o OrganizationFeedFeedOutputConfigPubsubDestinationOutput) ToOrganizationF
 	return o
 }
 
-func (o OrganizationFeedFeedOutputConfigPubsubDestinationOutput) ToOrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput() OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput {
-	return o.ToOrganizationFeedFeedOutputConfigPubsubDestinationPtrOutputWithContext(context.Background())
-}
-
-func (o OrganizationFeedFeedOutputConfigPubsubDestinationOutput) ToOrganizationFeedFeedOutputConfigPubsubDestinationPtrOutputWithContext(ctx context.Context) OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationFeedFeedOutputConfigPubsubDestination) *OrganizationFeedFeedOutputConfigPubsubDestination {
-		return &v
-	}).(OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput)
-}
-
 // Destination on Cloud Pubsub topic.
 func (o OrganizationFeedFeedOutputConfigPubsubDestinationOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v OrganizationFeedFeedOutputConfigPubsubDestination) string { return v.Topic }).(pulumi.StringOutput)
-}
-
-type OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput struct{ *pulumi.OutputState }
-
-func (OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OrganizationFeedFeedOutputConfigPubsubDestination)(nil)).Elem()
-}
-
-func (o OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput) ToOrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput() OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput {
-	return o
-}
-
-func (o OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput) ToOrganizationFeedFeedOutputConfigPubsubDestinationPtrOutputWithContext(ctx context.Context) OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput {
-	return o
-}
-
-func (o OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput) Elem() OrganizationFeedFeedOutputConfigPubsubDestinationOutput {
-	return o.ApplyT(func(v *OrganizationFeedFeedOutputConfigPubsubDestination) OrganizationFeedFeedOutputConfigPubsubDestination {
-		if v != nil {
-			return *v
-		}
-		var ret OrganizationFeedFeedOutputConfigPubsubDestination
-		return ret
-	}).(OrganizationFeedFeedOutputConfigPubsubDestinationOutput)
-}
-
-// Destination on Cloud Pubsub topic.
-func (o OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput) Topic() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OrganizationFeedFeedOutputConfigPubsubDestination) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Topic
-	}).(pulumi.StringPtrOutput)
 }
 
 type ProjectFeedCondition struct {
@@ -1223,47 +881,6 @@ func (i ProjectFeedFeedOutputConfigArgs) ToProjectFeedFeedOutputConfigOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectFeedFeedOutputConfigOutput)
 }
 
-func (i ProjectFeedFeedOutputConfigArgs) ToProjectFeedFeedOutputConfigPtrOutput() ProjectFeedFeedOutputConfigPtrOutput {
-	return i.ToProjectFeedFeedOutputConfigPtrOutputWithContext(context.Background())
-}
-
-func (i ProjectFeedFeedOutputConfigArgs) ToProjectFeedFeedOutputConfigPtrOutputWithContext(ctx context.Context) ProjectFeedFeedOutputConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectFeedFeedOutputConfigOutput).ToProjectFeedFeedOutputConfigPtrOutputWithContext(ctx)
-}
-
-// ProjectFeedFeedOutputConfigPtrInput is an input type that accepts ProjectFeedFeedOutputConfigArgs, ProjectFeedFeedOutputConfigPtr and ProjectFeedFeedOutputConfigPtrOutput values.
-// You can construct a concrete instance of `ProjectFeedFeedOutputConfigPtrInput` via:
-//
-//          ProjectFeedFeedOutputConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type ProjectFeedFeedOutputConfigPtrInput interface {
-	pulumi.Input
-
-	ToProjectFeedFeedOutputConfigPtrOutput() ProjectFeedFeedOutputConfigPtrOutput
-	ToProjectFeedFeedOutputConfigPtrOutputWithContext(context.Context) ProjectFeedFeedOutputConfigPtrOutput
-}
-
-type projectFeedFeedOutputConfigPtrType ProjectFeedFeedOutputConfigArgs
-
-func ProjectFeedFeedOutputConfigPtr(v *ProjectFeedFeedOutputConfigArgs) ProjectFeedFeedOutputConfigPtrInput {
-	return (*projectFeedFeedOutputConfigPtrType)(v)
-}
-
-func (*projectFeedFeedOutputConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProjectFeedFeedOutputConfig)(nil)).Elem()
-}
-
-func (i *projectFeedFeedOutputConfigPtrType) ToProjectFeedFeedOutputConfigPtrOutput() ProjectFeedFeedOutputConfigPtrOutput {
-	return i.ToProjectFeedFeedOutputConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *projectFeedFeedOutputConfigPtrType) ToProjectFeedFeedOutputConfigPtrOutputWithContext(ctx context.Context) ProjectFeedFeedOutputConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectFeedFeedOutputConfigPtrOutput)
-}
-
 type ProjectFeedFeedOutputConfigOutput struct{ *pulumi.OutputState }
 
 func (ProjectFeedFeedOutputConfigOutput) ElementType() reflect.Type {
@@ -1278,57 +895,12 @@ func (o ProjectFeedFeedOutputConfigOutput) ToProjectFeedFeedOutputConfigOutputWi
 	return o
 }
 
-func (o ProjectFeedFeedOutputConfigOutput) ToProjectFeedFeedOutputConfigPtrOutput() ProjectFeedFeedOutputConfigPtrOutput {
-	return o.ToProjectFeedFeedOutputConfigPtrOutputWithContext(context.Background())
-}
-
-func (o ProjectFeedFeedOutputConfigOutput) ToProjectFeedFeedOutputConfigPtrOutputWithContext(ctx context.Context) ProjectFeedFeedOutputConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectFeedFeedOutputConfig) *ProjectFeedFeedOutputConfig {
-		return &v
-	}).(ProjectFeedFeedOutputConfigPtrOutput)
-}
-
 // Destination on Cloud Pubsub.
 // Structure is documented below.
 func (o ProjectFeedFeedOutputConfigOutput) PubsubDestination() ProjectFeedFeedOutputConfigPubsubDestinationOutput {
 	return o.ApplyT(func(v ProjectFeedFeedOutputConfig) ProjectFeedFeedOutputConfigPubsubDestination {
 		return v.PubsubDestination
 	}).(ProjectFeedFeedOutputConfigPubsubDestinationOutput)
-}
-
-type ProjectFeedFeedOutputConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (ProjectFeedFeedOutputConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProjectFeedFeedOutputConfig)(nil)).Elem()
-}
-
-func (o ProjectFeedFeedOutputConfigPtrOutput) ToProjectFeedFeedOutputConfigPtrOutput() ProjectFeedFeedOutputConfigPtrOutput {
-	return o
-}
-
-func (o ProjectFeedFeedOutputConfigPtrOutput) ToProjectFeedFeedOutputConfigPtrOutputWithContext(ctx context.Context) ProjectFeedFeedOutputConfigPtrOutput {
-	return o
-}
-
-func (o ProjectFeedFeedOutputConfigPtrOutput) Elem() ProjectFeedFeedOutputConfigOutput {
-	return o.ApplyT(func(v *ProjectFeedFeedOutputConfig) ProjectFeedFeedOutputConfig {
-		if v != nil {
-			return *v
-		}
-		var ret ProjectFeedFeedOutputConfig
-		return ret
-	}).(ProjectFeedFeedOutputConfigOutput)
-}
-
-// Destination on Cloud Pubsub.
-// Structure is documented below.
-func (o ProjectFeedFeedOutputConfigPtrOutput) PubsubDestination() ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput {
-	return o.ApplyT(func(v *ProjectFeedFeedOutputConfig) *ProjectFeedFeedOutputConfigPubsubDestination {
-		if v == nil {
-			return nil
-		}
-		return &v.PubsubDestination
-	}).(ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput)
 }
 
 type ProjectFeedFeedOutputConfigPubsubDestination struct {
@@ -1364,47 +936,6 @@ func (i ProjectFeedFeedOutputConfigPubsubDestinationArgs) ToProjectFeedFeedOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectFeedFeedOutputConfigPubsubDestinationOutput)
 }
 
-func (i ProjectFeedFeedOutputConfigPubsubDestinationArgs) ToProjectFeedFeedOutputConfigPubsubDestinationPtrOutput() ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput {
-	return i.ToProjectFeedFeedOutputConfigPubsubDestinationPtrOutputWithContext(context.Background())
-}
-
-func (i ProjectFeedFeedOutputConfigPubsubDestinationArgs) ToProjectFeedFeedOutputConfigPubsubDestinationPtrOutputWithContext(ctx context.Context) ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectFeedFeedOutputConfigPubsubDestinationOutput).ToProjectFeedFeedOutputConfigPubsubDestinationPtrOutputWithContext(ctx)
-}
-
-// ProjectFeedFeedOutputConfigPubsubDestinationPtrInput is an input type that accepts ProjectFeedFeedOutputConfigPubsubDestinationArgs, ProjectFeedFeedOutputConfigPubsubDestinationPtr and ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput values.
-// You can construct a concrete instance of `ProjectFeedFeedOutputConfigPubsubDestinationPtrInput` via:
-//
-//          ProjectFeedFeedOutputConfigPubsubDestinationArgs{...}
-//
-//  or:
-//
-//          nil
-type ProjectFeedFeedOutputConfigPubsubDestinationPtrInput interface {
-	pulumi.Input
-
-	ToProjectFeedFeedOutputConfigPubsubDestinationPtrOutput() ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput
-	ToProjectFeedFeedOutputConfigPubsubDestinationPtrOutputWithContext(context.Context) ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput
-}
-
-type projectFeedFeedOutputConfigPubsubDestinationPtrType ProjectFeedFeedOutputConfigPubsubDestinationArgs
-
-func ProjectFeedFeedOutputConfigPubsubDestinationPtr(v *ProjectFeedFeedOutputConfigPubsubDestinationArgs) ProjectFeedFeedOutputConfigPubsubDestinationPtrInput {
-	return (*projectFeedFeedOutputConfigPubsubDestinationPtrType)(v)
-}
-
-func (*projectFeedFeedOutputConfigPubsubDestinationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProjectFeedFeedOutputConfigPubsubDestination)(nil)).Elem()
-}
-
-func (i *projectFeedFeedOutputConfigPubsubDestinationPtrType) ToProjectFeedFeedOutputConfigPubsubDestinationPtrOutput() ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput {
-	return i.ToProjectFeedFeedOutputConfigPubsubDestinationPtrOutputWithContext(context.Background())
-}
-
-func (i *projectFeedFeedOutputConfigPubsubDestinationPtrType) ToProjectFeedFeedOutputConfigPubsubDestinationPtrOutputWithContext(ctx context.Context) ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput)
-}
-
 type ProjectFeedFeedOutputConfigPubsubDestinationOutput struct{ *pulumi.OutputState }
 
 func (ProjectFeedFeedOutputConfigPubsubDestinationOutput) ElementType() reflect.Type {
@@ -1419,90 +950,34 @@ func (o ProjectFeedFeedOutputConfigPubsubDestinationOutput) ToProjectFeedFeedOut
 	return o
 }
 
-func (o ProjectFeedFeedOutputConfigPubsubDestinationOutput) ToProjectFeedFeedOutputConfigPubsubDestinationPtrOutput() ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput {
-	return o.ToProjectFeedFeedOutputConfigPubsubDestinationPtrOutputWithContext(context.Background())
-}
-
-func (o ProjectFeedFeedOutputConfigPubsubDestinationOutput) ToProjectFeedFeedOutputConfigPubsubDestinationPtrOutputWithContext(ctx context.Context) ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectFeedFeedOutputConfigPubsubDestination) *ProjectFeedFeedOutputConfigPubsubDestination {
-		return &v
-	}).(ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput)
-}
-
 // Destination on Cloud Pubsub topic.
 func (o ProjectFeedFeedOutputConfigPubsubDestinationOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v ProjectFeedFeedOutputConfigPubsubDestination) string { return v.Topic }).(pulumi.StringOutput)
-}
-
-type ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput struct{ *pulumi.OutputState }
-
-func (ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProjectFeedFeedOutputConfigPubsubDestination)(nil)).Elem()
-}
-
-func (o ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput) ToProjectFeedFeedOutputConfigPubsubDestinationPtrOutput() ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput {
-	return o
-}
-
-func (o ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput) ToProjectFeedFeedOutputConfigPubsubDestinationPtrOutputWithContext(ctx context.Context) ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput {
-	return o
-}
-
-func (o ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput) Elem() ProjectFeedFeedOutputConfigPubsubDestinationOutput {
-	return o.ApplyT(func(v *ProjectFeedFeedOutputConfigPubsubDestination) ProjectFeedFeedOutputConfigPubsubDestination {
-		if v != nil {
-			return *v
-		}
-		var ret ProjectFeedFeedOutputConfigPubsubDestination
-		return ret
-	}).(ProjectFeedFeedOutputConfigPubsubDestinationOutput)
-}
-
-// Destination on Cloud Pubsub topic.
-func (o ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput) Topic() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProjectFeedFeedOutputConfigPubsubDestination) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Topic
-	}).(pulumi.StringPtrOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FolderFeedConditionInput)(nil)).Elem(), FolderFeedConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FolderFeedConditionPtrInput)(nil)).Elem(), FolderFeedConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FolderFeedFeedOutputConfigInput)(nil)).Elem(), FolderFeedFeedOutputConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FolderFeedFeedOutputConfigPtrInput)(nil)).Elem(), FolderFeedFeedOutputConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FolderFeedFeedOutputConfigPubsubDestinationInput)(nil)).Elem(), FolderFeedFeedOutputConfigPubsubDestinationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FolderFeedFeedOutputConfigPubsubDestinationPtrInput)(nil)).Elem(), FolderFeedFeedOutputConfigPubsubDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationFeedConditionInput)(nil)).Elem(), OrganizationFeedConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationFeedConditionPtrInput)(nil)).Elem(), OrganizationFeedConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationFeedFeedOutputConfigInput)(nil)).Elem(), OrganizationFeedFeedOutputConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationFeedFeedOutputConfigPtrInput)(nil)).Elem(), OrganizationFeedFeedOutputConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationFeedFeedOutputConfigPubsubDestinationInput)(nil)).Elem(), OrganizationFeedFeedOutputConfigPubsubDestinationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationFeedFeedOutputConfigPubsubDestinationPtrInput)(nil)).Elem(), OrganizationFeedFeedOutputConfigPubsubDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectFeedConditionInput)(nil)).Elem(), ProjectFeedConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectFeedConditionPtrInput)(nil)).Elem(), ProjectFeedConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectFeedFeedOutputConfigInput)(nil)).Elem(), ProjectFeedFeedOutputConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ProjectFeedFeedOutputConfigPtrInput)(nil)).Elem(), ProjectFeedFeedOutputConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectFeedFeedOutputConfigPubsubDestinationInput)(nil)).Elem(), ProjectFeedFeedOutputConfigPubsubDestinationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ProjectFeedFeedOutputConfigPubsubDestinationPtrInput)(nil)).Elem(), ProjectFeedFeedOutputConfigPubsubDestinationArgs{})
 	pulumi.RegisterOutputType(FolderFeedConditionOutput{})
 	pulumi.RegisterOutputType(FolderFeedConditionPtrOutput{})
 	pulumi.RegisterOutputType(FolderFeedFeedOutputConfigOutput{})
-	pulumi.RegisterOutputType(FolderFeedFeedOutputConfigPtrOutput{})
 	pulumi.RegisterOutputType(FolderFeedFeedOutputConfigPubsubDestinationOutput{})
-	pulumi.RegisterOutputType(FolderFeedFeedOutputConfigPubsubDestinationPtrOutput{})
 	pulumi.RegisterOutputType(OrganizationFeedConditionOutput{})
 	pulumi.RegisterOutputType(OrganizationFeedConditionPtrOutput{})
 	pulumi.RegisterOutputType(OrganizationFeedFeedOutputConfigOutput{})
-	pulumi.RegisterOutputType(OrganizationFeedFeedOutputConfigPtrOutput{})
 	pulumi.RegisterOutputType(OrganizationFeedFeedOutputConfigPubsubDestinationOutput{})
-	pulumi.RegisterOutputType(OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput{})
 	pulumi.RegisterOutputType(ProjectFeedConditionOutput{})
 	pulumi.RegisterOutputType(ProjectFeedConditionPtrOutput{})
 	pulumi.RegisterOutputType(ProjectFeedFeedOutputConfigOutput{})
-	pulumi.RegisterOutputType(ProjectFeedFeedOutputConfigPtrOutput{})
 	pulumi.RegisterOutputType(ProjectFeedFeedOutputConfigPubsubDestinationOutput{})
-	pulumi.RegisterOutputType(ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput{})
 }

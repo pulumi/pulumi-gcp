@@ -121,36 +121,36 @@ export class PerInstanceConfig extends pulumi.CustomResource {
      */
     constructor(name: string, args: PerInstanceConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PerInstanceConfigArgs | PerInstanceConfigState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PerInstanceConfigState | undefined;
-            inputs["instanceGroupManager"] = state ? state.instanceGroupManager : undefined;
-            inputs["minimalAction"] = state ? state.minimalAction : undefined;
-            inputs["mostDisruptiveAllowedAction"] = state ? state.mostDisruptiveAllowedAction : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["preservedState"] = state ? state.preservedState : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["removeInstanceStateOnDestroy"] = state ? state.removeInstanceStateOnDestroy : undefined;
-            inputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["instanceGroupManager"] = state ? state.instanceGroupManager : undefined;
+            resourceInputs["minimalAction"] = state ? state.minimalAction : undefined;
+            resourceInputs["mostDisruptiveAllowedAction"] = state ? state.mostDisruptiveAllowedAction : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["preservedState"] = state ? state.preservedState : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["removeInstanceStateOnDestroy"] = state ? state.removeInstanceStateOnDestroy : undefined;
+            resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as PerInstanceConfigArgs | undefined;
             if ((!args || args.instanceGroupManager === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceGroupManager'");
             }
-            inputs["instanceGroupManager"] = args ? args.instanceGroupManager : undefined;
-            inputs["minimalAction"] = args ? args.minimalAction : undefined;
-            inputs["mostDisruptiveAllowedAction"] = args ? args.mostDisruptiveAllowedAction : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["preservedState"] = args ? args.preservedState : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["removeInstanceStateOnDestroy"] = args ? args.removeInstanceStateOnDestroy : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["instanceGroupManager"] = args ? args.instanceGroupManager : undefined;
+            resourceInputs["minimalAction"] = args ? args.minimalAction : undefined;
+            resourceInputs["mostDisruptiveAllowedAction"] = args ? args.mostDisruptiveAllowedAction : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["preservedState"] = args ? args.preservedState : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["removeInstanceStateOnDestroy"] = args ? args.removeInstanceStateOnDestroy : undefined;
+            resourceInputs["zone"] = args ? args.zone : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(PerInstanceConfig.__pulumiType, name, inputs, opts);
+        super(PerInstanceConfig.__pulumiType, name, resourceInputs, opts);
     }
 }
 

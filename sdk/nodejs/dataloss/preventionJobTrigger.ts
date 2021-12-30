@@ -140,18 +140,18 @@ export class PreventionJobTrigger extends pulumi.CustomResource {
      */
     constructor(name: string, args: PreventionJobTriggerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PreventionJobTriggerArgs | PreventionJobTriggerState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PreventionJobTriggerState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["inspectJob"] = state ? state.inspectJob : undefined;
-            inputs["lastRunTime"] = state ? state.lastRunTime : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["parent"] = state ? state.parent : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["triggers"] = state ? state.triggers : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["inspectJob"] = state ? state.inspectJob : undefined;
+            resourceInputs["lastRunTime"] = state ? state.lastRunTime : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["parent"] = state ? state.parent : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["triggers"] = state ? state.triggers : undefined;
         } else {
             const args = argsOrState as PreventionJobTriggerArgs | undefined;
             if ((!args || args.parent === undefined) && !opts.urn) {
@@ -160,19 +160,19 @@ export class PreventionJobTrigger extends pulumi.CustomResource {
             if ((!args || args.triggers === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'triggers'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["inspectJob"] = args ? args.inspectJob : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["triggers"] = args ? args.triggers : undefined;
-            inputs["lastRunTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["inspectJob"] = args ? args.inspectJob : undefined;
+            resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["triggers"] = args ? args.triggers : undefined;
+            resourceInputs["lastRunTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(PreventionJobTrigger.__pulumiType, name, inputs, opts);
+        super(PreventionJobTrigger.__pulumiType, name, resourceInputs, opts);
     }
 }
 

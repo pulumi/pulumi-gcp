@@ -142,15 +142,15 @@ export class TableIamPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: TableIamPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TableIamPolicyArgs | TableIamPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TableIamPolicyState | undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["instance"] = state ? state.instance : undefined;
-            inputs["policyData"] = state ? state.policyData : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["table"] = state ? state.table : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["instance"] = state ? state.instance : undefined;
+            resourceInputs["policyData"] = state ? state.policyData : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["table"] = state ? state.table : undefined;
         } else {
             const args = argsOrState as TableIamPolicyArgs | undefined;
             if ((!args || args.instance === undefined) && !opts.urn) {
@@ -162,16 +162,16 @@ export class TableIamPolicy extends pulumi.CustomResource {
             if ((!args || args.table === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'table'");
             }
-            inputs["instance"] = args ? args.instance : undefined;
-            inputs["policyData"] = args ? args.policyData : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["table"] = args ? args.table : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["instance"] = args ? args.instance : undefined;
+            resourceInputs["policyData"] = args ? args.policyData : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["table"] = args ? args.table : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(TableIamPolicy.__pulumiType, name, inputs, opts);
+        super(TableIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

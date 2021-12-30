@@ -146,17 +146,17 @@ export class ClusterIAMBinding extends pulumi.CustomResource {
      */
     constructor(name: string, args: ClusterIAMBindingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ClusterIAMBindingArgs | ClusterIAMBindingState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterIAMBindingState | undefined;
-            inputs["cluster"] = state ? state.cluster : undefined;
-            inputs["condition"] = state ? state.condition : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["members"] = state ? state.members : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["role"] = state ? state.role : undefined;
+            resourceInputs["cluster"] = state ? state.cluster : undefined;
+            resourceInputs["condition"] = state ? state.condition : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["members"] = state ? state.members : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["role"] = state ? state.role : undefined;
         } else {
             const args = argsOrState as ClusterIAMBindingArgs | undefined;
             if ((!args || args.cluster === undefined) && !opts.urn) {
@@ -168,18 +168,18 @@ export class ClusterIAMBinding extends pulumi.CustomResource {
             if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            inputs["cluster"] = args ? args.cluster : undefined;
-            inputs["condition"] = args ? args.condition : undefined;
-            inputs["members"] = args ? args.members : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["role"] = args ? args.role : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["cluster"] = args ? args.cluster : undefined;
+            resourceInputs["condition"] = args ? args.condition : undefined;
+            resourceInputs["members"] = args ? args.members : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ClusterIAMBinding.__pulumiType, name, inputs, opts);
+        super(ClusterIAMBinding.__pulumiType, name, resourceInputs, opts);
     }
 }
 

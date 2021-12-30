@@ -132,7 +132,7 @@ type EnvGroupInput interface {
 }
 
 func (*EnvGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnvGroup)(nil))
+	return reflect.TypeOf((**EnvGroup)(nil)).Elem()
 }
 
 func (i *EnvGroup) ToEnvGroupOutput() EnvGroupOutput {
@@ -141,35 +141,6 @@ func (i *EnvGroup) ToEnvGroupOutput() EnvGroupOutput {
 
 func (i *EnvGroup) ToEnvGroupOutputWithContext(ctx context.Context) EnvGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnvGroupOutput)
-}
-
-func (i *EnvGroup) ToEnvGroupPtrOutput() EnvGroupPtrOutput {
-	return i.ToEnvGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *EnvGroup) ToEnvGroupPtrOutputWithContext(ctx context.Context) EnvGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnvGroupPtrOutput)
-}
-
-type EnvGroupPtrInput interface {
-	pulumi.Input
-
-	ToEnvGroupPtrOutput() EnvGroupPtrOutput
-	ToEnvGroupPtrOutputWithContext(ctx context.Context) EnvGroupPtrOutput
-}
-
-type envGroupPtrType EnvGroupArgs
-
-func (*envGroupPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EnvGroup)(nil))
-}
-
-func (i *envGroupPtrType) ToEnvGroupPtrOutput() EnvGroupPtrOutput {
-	return i.ToEnvGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *envGroupPtrType) ToEnvGroupPtrOutputWithContext(ctx context.Context) EnvGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnvGroupPtrOutput)
 }
 
 // EnvGroupArrayInput is an input type that accepts EnvGroupArray and EnvGroupArrayOutput values.
@@ -225,7 +196,7 @@ func (i EnvGroupMap) ToEnvGroupMapOutputWithContext(ctx context.Context) EnvGrou
 type EnvGroupOutput struct{ *pulumi.OutputState }
 
 func (EnvGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnvGroup)(nil))
+	return reflect.TypeOf((**EnvGroup)(nil)).Elem()
 }
 
 func (o EnvGroupOutput) ToEnvGroupOutput() EnvGroupOutput {
@@ -236,44 +207,10 @@ func (o EnvGroupOutput) ToEnvGroupOutputWithContext(ctx context.Context) EnvGrou
 	return o
 }
 
-func (o EnvGroupOutput) ToEnvGroupPtrOutput() EnvGroupPtrOutput {
-	return o.ToEnvGroupPtrOutputWithContext(context.Background())
-}
-
-func (o EnvGroupOutput) ToEnvGroupPtrOutputWithContext(ctx context.Context) EnvGroupPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvGroup) *EnvGroup {
-		return &v
-	}).(EnvGroupPtrOutput)
-}
-
-type EnvGroupPtrOutput struct{ *pulumi.OutputState }
-
-func (EnvGroupPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EnvGroup)(nil))
-}
-
-func (o EnvGroupPtrOutput) ToEnvGroupPtrOutput() EnvGroupPtrOutput {
-	return o
-}
-
-func (o EnvGroupPtrOutput) ToEnvGroupPtrOutputWithContext(ctx context.Context) EnvGroupPtrOutput {
-	return o
-}
-
-func (o EnvGroupPtrOutput) Elem() EnvGroupOutput {
-	return o.ApplyT(func(v *EnvGroup) EnvGroup {
-		if v != nil {
-			return *v
-		}
-		var ret EnvGroup
-		return ret
-	}).(EnvGroupOutput)
-}
-
 type EnvGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (EnvGroupArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EnvGroup)(nil))
+	return reflect.TypeOf((*[]*EnvGroup)(nil)).Elem()
 }
 
 func (o EnvGroupArrayOutput) ToEnvGroupArrayOutput() EnvGroupArrayOutput {
@@ -285,15 +222,15 @@ func (o EnvGroupArrayOutput) ToEnvGroupArrayOutputWithContext(ctx context.Contex
 }
 
 func (o EnvGroupArrayOutput) Index(i pulumi.IntInput) EnvGroupOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnvGroup {
-		return vs[0].([]EnvGroup)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EnvGroup {
+		return vs[0].([]*EnvGroup)[vs[1].(int)]
 	}).(EnvGroupOutput)
 }
 
 type EnvGroupMapOutput struct{ *pulumi.OutputState }
 
 func (EnvGroupMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]EnvGroup)(nil))
+	return reflect.TypeOf((*map[string]*EnvGroup)(nil)).Elem()
 }
 
 func (o EnvGroupMapOutput) ToEnvGroupMapOutput() EnvGroupMapOutput {
@@ -305,18 +242,16 @@ func (o EnvGroupMapOutput) ToEnvGroupMapOutputWithContext(ctx context.Context) E
 }
 
 func (o EnvGroupMapOutput) MapIndex(k pulumi.StringInput) EnvGroupOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) EnvGroup {
-		return vs[0].(map[string]EnvGroup)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *EnvGroup {
+		return vs[0].(map[string]*EnvGroup)[vs[1].(string)]
 	}).(EnvGroupOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvGroupInput)(nil)).Elem(), &EnvGroup{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EnvGroupPtrInput)(nil)).Elem(), &EnvGroup{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvGroupArrayInput)(nil)).Elem(), EnvGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvGroupMapInput)(nil)).Elem(), EnvGroupMap{})
 	pulumi.RegisterOutputType(EnvGroupOutput{})
-	pulumi.RegisterOutputType(EnvGroupPtrOutput{})
 	pulumi.RegisterOutputType(EnvGroupArrayOutput{})
 	pulumi.RegisterOutputType(EnvGroupMapOutput{})
 }

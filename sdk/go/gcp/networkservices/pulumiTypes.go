@@ -514,47 +514,6 @@ func (i EdgeCacheServiceRoutingArgs) ToEdgeCacheServiceRoutingOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingOutput)
 }
 
-func (i EdgeCacheServiceRoutingArgs) ToEdgeCacheServiceRoutingPtrOutput() EdgeCacheServiceRoutingPtrOutput {
-	return i.ToEdgeCacheServiceRoutingPtrOutputWithContext(context.Background())
-}
-
-func (i EdgeCacheServiceRoutingArgs) ToEdgeCacheServiceRoutingPtrOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingOutput).ToEdgeCacheServiceRoutingPtrOutputWithContext(ctx)
-}
-
-// EdgeCacheServiceRoutingPtrInput is an input type that accepts EdgeCacheServiceRoutingArgs, EdgeCacheServiceRoutingPtr and EdgeCacheServiceRoutingPtrOutput values.
-// You can construct a concrete instance of `EdgeCacheServiceRoutingPtrInput` via:
-//
-//          EdgeCacheServiceRoutingArgs{...}
-//
-//  or:
-//
-//          nil
-type EdgeCacheServiceRoutingPtrInput interface {
-	pulumi.Input
-
-	ToEdgeCacheServiceRoutingPtrOutput() EdgeCacheServiceRoutingPtrOutput
-	ToEdgeCacheServiceRoutingPtrOutputWithContext(context.Context) EdgeCacheServiceRoutingPtrOutput
-}
-
-type edgeCacheServiceRoutingPtrType EdgeCacheServiceRoutingArgs
-
-func EdgeCacheServiceRoutingPtr(v *EdgeCacheServiceRoutingArgs) EdgeCacheServiceRoutingPtrInput {
-	return (*edgeCacheServiceRoutingPtrType)(v)
-}
-
-func (*edgeCacheServiceRoutingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EdgeCacheServiceRouting)(nil)).Elem()
-}
-
-func (i *edgeCacheServiceRoutingPtrType) ToEdgeCacheServiceRoutingPtrOutput() EdgeCacheServiceRoutingPtrOutput {
-	return i.ToEdgeCacheServiceRoutingPtrOutputWithContext(context.Background())
-}
-
-func (i *edgeCacheServiceRoutingPtrType) ToEdgeCacheServiceRoutingPtrOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPtrOutput)
-}
-
 type EdgeCacheServiceRoutingOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheServiceRoutingOutput) ElementType() reflect.Type {
@@ -569,16 +528,6 @@ func (o EdgeCacheServiceRoutingOutput) ToEdgeCacheServiceRoutingOutputWithContex
 	return o
 }
 
-func (o EdgeCacheServiceRoutingOutput) ToEdgeCacheServiceRoutingPtrOutput() EdgeCacheServiceRoutingPtrOutput {
-	return o.ToEdgeCacheServiceRoutingPtrOutputWithContext(context.Background())
-}
-
-func (o EdgeCacheServiceRoutingOutput) ToEdgeCacheServiceRoutingPtrOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCacheServiceRouting) *EdgeCacheServiceRouting {
-		return &v
-	}).(EdgeCacheServiceRoutingPtrOutput)
-}
-
 // The list of hostRules to match against. These rules define which hostnames the EdgeCacheService will match against, and which route configurations apply.
 // Structure is documented below.
 func (o EdgeCacheServiceRoutingOutput) HostRules() EdgeCacheServiceRoutingHostRuleArrayOutput {
@@ -588,51 +537,6 @@ func (o EdgeCacheServiceRoutingOutput) HostRules() EdgeCacheServiceRoutingHostRu
 // The name of the pathMatcher associated with this hostRule.
 func (o EdgeCacheServiceRoutingOutput) PathMatchers() EdgeCacheServiceRoutingPathMatcherArrayOutput {
 	return o.ApplyT(func(v EdgeCacheServiceRouting) []EdgeCacheServiceRoutingPathMatcher { return v.PathMatchers }).(EdgeCacheServiceRoutingPathMatcherArrayOutput)
-}
-
-type EdgeCacheServiceRoutingPtrOutput struct{ *pulumi.OutputState }
-
-func (EdgeCacheServiceRoutingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EdgeCacheServiceRouting)(nil)).Elem()
-}
-
-func (o EdgeCacheServiceRoutingPtrOutput) ToEdgeCacheServiceRoutingPtrOutput() EdgeCacheServiceRoutingPtrOutput {
-	return o
-}
-
-func (o EdgeCacheServiceRoutingPtrOutput) ToEdgeCacheServiceRoutingPtrOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPtrOutput {
-	return o
-}
-
-func (o EdgeCacheServiceRoutingPtrOutput) Elem() EdgeCacheServiceRoutingOutput {
-	return o.ApplyT(func(v *EdgeCacheServiceRouting) EdgeCacheServiceRouting {
-		if v != nil {
-			return *v
-		}
-		var ret EdgeCacheServiceRouting
-		return ret
-	}).(EdgeCacheServiceRoutingOutput)
-}
-
-// The list of hostRules to match against. These rules define which hostnames the EdgeCacheService will match against, and which route configurations apply.
-// Structure is documented below.
-func (o EdgeCacheServiceRoutingPtrOutput) HostRules() EdgeCacheServiceRoutingHostRuleArrayOutput {
-	return o.ApplyT(func(v *EdgeCacheServiceRouting) []EdgeCacheServiceRoutingHostRule {
-		if v == nil {
-			return nil
-		}
-		return v.HostRules
-	}).(EdgeCacheServiceRoutingHostRuleArrayOutput)
-}
-
-// The name of the pathMatcher associated with this hostRule.
-func (o EdgeCacheServiceRoutingPtrOutput) PathMatchers() EdgeCacheServiceRoutingPathMatcherArrayOutput {
-	return o.ApplyT(func(v *EdgeCacheServiceRouting) []EdgeCacheServiceRoutingPathMatcher {
-		if v == nil {
-			return nil
-		}
-		return v.PathMatchers
-	}).(EdgeCacheServiceRoutingPathMatcherArrayOutput)
 }
 
 type EdgeCacheServiceRoutingHostRule struct {
@@ -3883,7 +3787,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceLogConfigInput)(nil)).Elem(), EdgeCacheServiceLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceLogConfigPtrInput)(nil)).Elem(), EdgeCacheServiceLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceRoutingInput)(nil)).Elem(), EdgeCacheServiceRoutingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceRoutingPtrInput)(nil)).Elem(), EdgeCacheServiceRoutingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceRoutingHostRuleInput)(nil)).Elem(), EdgeCacheServiceRoutingHostRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceRoutingHostRuleArrayInput)(nil)).Elem(), EdgeCacheServiceRoutingHostRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceRoutingPathMatcherInput)(nil)).Elem(), EdgeCacheServiceRoutingPathMatcherArgs{})
@@ -3925,7 +3828,6 @@ func init() {
 	pulumi.RegisterOutputType(EdgeCacheServiceLogConfigOutput{})
 	pulumi.RegisterOutputType(EdgeCacheServiceLogConfigPtrOutput{})
 	pulumi.RegisterOutputType(EdgeCacheServiceRoutingOutput{})
-	pulumi.RegisterOutputType(EdgeCacheServiceRoutingPtrOutput{})
 	pulumi.RegisterOutputType(EdgeCacheServiceRoutingHostRuleOutput{})
 	pulumi.RegisterOutputType(EdgeCacheServiceRoutingHostRuleArrayOutput{})
 	pulumi.RegisterOutputType(EdgeCacheServiceRoutingPathMatcherOutput{})

@@ -95,16 +95,16 @@ export class PeeredDnsDomain extends pulumi.CustomResource {
      */
     constructor(name: string, args: PeeredDnsDomainArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PeeredDnsDomainArgs | PeeredDnsDomainState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PeeredDnsDomainState | undefined;
-            inputs["dnsSuffix"] = state ? state.dnsSuffix : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["network"] = state ? state.network : undefined;
-            inputs["parent"] = state ? state.parent : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["service"] = state ? state.service : undefined;
+            resourceInputs["dnsSuffix"] = state ? state.dnsSuffix : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["network"] = state ? state.network : undefined;
+            resourceInputs["parent"] = state ? state.parent : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["service"] = state ? state.service : undefined;
         } else {
             const args = argsOrState as PeeredDnsDomainArgs | undefined;
             if ((!args || args.dnsSuffix === undefined) && !opts.urn) {
@@ -113,17 +113,17 @@ export class PeeredDnsDomain extends pulumi.CustomResource {
             if ((!args || args.network === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
-            inputs["dnsSuffix"] = args ? args.dnsSuffix : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["network"] = args ? args.network : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["service"] = args ? args.service : undefined;
-            inputs["parent"] = undefined /*out*/;
+            resourceInputs["dnsSuffix"] = args ? args.dnsSuffix : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["service"] = args ? args.service : undefined;
+            resourceInputs["parent"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(PeeredDnsDomain.__pulumiType, name, inputs, opts);
+        super(PeeredDnsDomain.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -191,13 +191,13 @@ export class BucketIAMPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: BucketIAMPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BucketIAMPolicyArgs | BucketIAMPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BucketIAMPolicyState | undefined;
-            inputs["bucket"] = state ? state.bucket : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["policyData"] = state ? state.policyData : undefined;
+            resourceInputs["bucket"] = state ? state.bucket : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["policyData"] = state ? state.policyData : undefined;
         } else {
             const args = argsOrState as BucketIAMPolicyArgs | undefined;
             if ((!args || args.bucket === undefined) && !opts.urn) {
@@ -206,14 +206,14 @@ export class BucketIAMPolicy extends pulumi.CustomResource {
             if ((!args || args.policyData === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
-            inputs["bucket"] = args ? args.bucket : undefined;
-            inputs["policyData"] = args ? args.policyData : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["bucket"] = args ? args.bucket : undefined;
+            resourceInputs["policyData"] = args ? args.policyData : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(BucketIAMPolicy.__pulumiType, name, inputs, opts);
+        super(BucketIAMPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

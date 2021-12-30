@@ -112,38 +112,38 @@ export class Service extends pulumi.CustomResource {
      */
     constructor(name: string, args: ServiceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServiceArgs | ServiceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceState | undefined;
-            inputs["apis"] = state ? state.apis : undefined;
-            inputs["configId"] = state ? state.configId : undefined;
-            inputs["dnsAddress"] = state ? state.dnsAddress : undefined;
-            inputs["endpoints"] = state ? state.endpoints : undefined;
-            inputs["grpcConfig"] = state ? state.grpcConfig : undefined;
-            inputs["openapiConfig"] = state ? state.openapiConfig : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["protocOutputBase64"] = state ? state.protocOutputBase64 : undefined;
-            inputs["serviceName"] = state ? state.serviceName : undefined;
+            resourceInputs["apis"] = state ? state.apis : undefined;
+            resourceInputs["configId"] = state ? state.configId : undefined;
+            resourceInputs["dnsAddress"] = state ? state.dnsAddress : undefined;
+            resourceInputs["endpoints"] = state ? state.endpoints : undefined;
+            resourceInputs["grpcConfig"] = state ? state.grpcConfig : undefined;
+            resourceInputs["openapiConfig"] = state ? state.openapiConfig : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["protocOutputBase64"] = state ? state.protocOutputBase64 : undefined;
+            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
         } else {
             const args = argsOrState as ServiceArgs | undefined;
             if ((!args || args.serviceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            inputs["grpcConfig"] = args ? args.grpcConfig : undefined;
-            inputs["openapiConfig"] = args ? args.openapiConfig : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["protocOutputBase64"] = args ? args.protocOutputBase64 : undefined;
-            inputs["serviceName"] = args ? args.serviceName : undefined;
-            inputs["apis"] = undefined /*out*/;
-            inputs["configId"] = undefined /*out*/;
-            inputs["dnsAddress"] = undefined /*out*/;
-            inputs["endpoints"] = undefined /*out*/;
+            resourceInputs["grpcConfig"] = args ? args.grpcConfig : undefined;
+            resourceInputs["openapiConfig"] = args ? args.openapiConfig : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["protocOutputBase64"] = args ? args.protocOutputBase64 : undefined;
+            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["apis"] = undefined /*out*/;
+            resourceInputs["configId"] = undefined /*out*/;
+            resourceInputs["dnsAddress"] = undefined /*out*/;
+            resourceInputs["endpoints"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Service.__pulumiType, name, inputs, opts);
+        super(Service.__pulumiType, name, resourceInputs, opts);
     }
 }
 

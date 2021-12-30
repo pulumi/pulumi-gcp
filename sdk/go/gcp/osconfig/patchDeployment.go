@@ -535,7 +535,7 @@ type PatchDeploymentInput interface {
 }
 
 func (*PatchDeployment) ElementType() reflect.Type {
-	return reflect.TypeOf((*PatchDeployment)(nil))
+	return reflect.TypeOf((**PatchDeployment)(nil)).Elem()
 }
 
 func (i *PatchDeployment) ToPatchDeploymentOutput() PatchDeploymentOutput {
@@ -544,35 +544,6 @@ func (i *PatchDeployment) ToPatchDeploymentOutput() PatchDeploymentOutput {
 
 func (i *PatchDeployment) ToPatchDeploymentOutputWithContext(ctx context.Context) PatchDeploymentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentOutput)
-}
-
-func (i *PatchDeployment) ToPatchDeploymentPtrOutput() PatchDeploymentPtrOutput {
-	return i.ToPatchDeploymentPtrOutputWithContext(context.Background())
-}
-
-func (i *PatchDeployment) ToPatchDeploymentPtrOutputWithContext(ctx context.Context) PatchDeploymentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentPtrOutput)
-}
-
-type PatchDeploymentPtrInput interface {
-	pulumi.Input
-
-	ToPatchDeploymentPtrOutput() PatchDeploymentPtrOutput
-	ToPatchDeploymentPtrOutputWithContext(ctx context.Context) PatchDeploymentPtrOutput
-}
-
-type patchDeploymentPtrType PatchDeploymentArgs
-
-func (*patchDeploymentPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PatchDeployment)(nil))
-}
-
-func (i *patchDeploymentPtrType) ToPatchDeploymentPtrOutput() PatchDeploymentPtrOutput {
-	return i.ToPatchDeploymentPtrOutputWithContext(context.Background())
-}
-
-func (i *patchDeploymentPtrType) ToPatchDeploymentPtrOutputWithContext(ctx context.Context) PatchDeploymentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentPtrOutput)
 }
 
 // PatchDeploymentArrayInput is an input type that accepts PatchDeploymentArray and PatchDeploymentArrayOutput values.
@@ -628,7 +599,7 @@ func (i PatchDeploymentMap) ToPatchDeploymentMapOutputWithContext(ctx context.Co
 type PatchDeploymentOutput struct{ *pulumi.OutputState }
 
 func (PatchDeploymentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PatchDeployment)(nil))
+	return reflect.TypeOf((**PatchDeployment)(nil)).Elem()
 }
 
 func (o PatchDeploymentOutput) ToPatchDeploymentOutput() PatchDeploymentOutput {
@@ -639,44 +610,10 @@ func (o PatchDeploymentOutput) ToPatchDeploymentOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o PatchDeploymentOutput) ToPatchDeploymentPtrOutput() PatchDeploymentPtrOutput {
-	return o.ToPatchDeploymentPtrOutputWithContext(context.Background())
-}
-
-func (o PatchDeploymentOutput) ToPatchDeploymentPtrOutputWithContext(ctx context.Context) PatchDeploymentPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeployment) *PatchDeployment {
-		return &v
-	}).(PatchDeploymentPtrOutput)
-}
-
-type PatchDeploymentPtrOutput struct{ *pulumi.OutputState }
-
-func (PatchDeploymentPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PatchDeployment)(nil))
-}
-
-func (o PatchDeploymentPtrOutput) ToPatchDeploymentPtrOutput() PatchDeploymentPtrOutput {
-	return o
-}
-
-func (o PatchDeploymentPtrOutput) ToPatchDeploymentPtrOutputWithContext(ctx context.Context) PatchDeploymentPtrOutput {
-	return o
-}
-
-func (o PatchDeploymentPtrOutput) Elem() PatchDeploymentOutput {
-	return o.ApplyT(func(v *PatchDeployment) PatchDeployment {
-		if v != nil {
-			return *v
-		}
-		var ret PatchDeployment
-		return ret
-	}).(PatchDeploymentOutput)
-}
-
 type PatchDeploymentArrayOutput struct{ *pulumi.OutputState }
 
 func (PatchDeploymentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PatchDeployment)(nil))
+	return reflect.TypeOf((*[]*PatchDeployment)(nil)).Elem()
 }
 
 func (o PatchDeploymentArrayOutput) ToPatchDeploymentArrayOutput() PatchDeploymentArrayOutput {
@@ -688,15 +625,15 @@ func (o PatchDeploymentArrayOutput) ToPatchDeploymentArrayOutputWithContext(ctx 
 }
 
 func (o PatchDeploymentArrayOutput) Index(i pulumi.IntInput) PatchDeploymentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PatchDeployment {
-		return vs[0].([]PatchDeployment)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PatchDeployment {
+		return vs[0].([]*PatchDeployment)[vs[1].(int)]
 	}).(PatchDeploymentOutput)
 }
 
 type PatchDeploymentMapOutput struct{ *pulumi.OutputState }
 
 func (PatchDeploymentMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]PatchDeployment)(nil))
+	return reflect.TypeOf((*map[string]*PatchDeployment)(nil)).Elem()
 }
 
 func (o PatchDeploymentMapOutput) ToPatchDeploymentMapOutput() PatchDeploymentMapOutput {
@@ -708,18 +645,16 @@ func (o PatchDeploymentMapOutput) ToPatchDeploymentMapOutputWithContext(ctx cont
 }
 
 func (o PatchDeploymentMapOutput) MapIndex(k pulumi.StringInput) PatchDeploymentOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) PatchDeployment {
-		return vs[0].(map[string]PatchDeployment)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *PatchDeployment {
+		return vs[0].(map[string]*PatchDeployment)[vs[1].(string)]
 	}).(PatchDeploymentOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PatchDeploymentInput)(nil)).Elem(), &PatchDeployment{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PatchDeploymentPtrInput)(nil)).Elem(), &PatchDeployment{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PatchDeploymentArrayInput)(nil)).Elem(), PatchDeploymentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PatchDeploymentMapInput)(nil)).Elem(), PatchDeploymentMap{})
 	pulumi.RegisterOutputType(PatchDeploymentOutput{})
-	pulumi.RegisterOutputType(PatchDeploymentPtrOutput{})
 	pulumi.RegisterOutputType(PatchDeploymentArrayOutput{})
 	pulumi.RegisterOutputType(PatchDeploymentMapOutput{})
 }

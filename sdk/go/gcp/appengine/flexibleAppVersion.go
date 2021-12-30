@@ -634,7 +634,7 @@ type FlexibleAppVersionInput interface {
 }
 
 func (*FlexibleAppVersion) ElementType() reflect.Type {
-	return reflect.TypeOf((*FlexibleAppVersion)(nil))
+	return reflect.TypeOf((**FlexibleAppVersion)(nil)).Elem()
 }
 
 func (i *FlexibleAppVersion) ToFlexibleAppVersionOutput() FlexibleAppVersionOutput {
@@ -643,35 +643,6 @@ func (i *FlexibleAppVersion) ToFlexibleAppVersionOutput() FlexibleAppVersionOutp
 
 func (i *FlexibleAppVersion) ToFlexibleAppVersionOutputWithContext(ctx context.Context) FlexibleAppVersionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionOutput)
-}
-
-func (i *FlexibleAppVersion) ToFlexibleAppVersionPtrOutput() FlexibleAppVersionPtrOutput {
-	return i.ToFlexibleAppVersionPtrOutputWithContext(context.Background())
-}
-
-func (i *FlexibleAppVersion) ToFlexibleAppVersionPtrOutputWithContext(ctx context.Context) FlexibleAppVersionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionPtrOutput)
-}
-
-type FlexibleAppVersionPtrInput interface {
-	pulumi.Input
-
-	ToFlexibleAppVersionPtrOutput() FlexibleAppVersionPtrOutput
-	ToFlexibleAppVersionPtrOutputWithContext(ctx context.Context) FlexibleAppVersionPtrOutput
-}
-
-type flexibleAppVersionPtrType FlexibleAppVersionArgs
-
-func (*flexibleAppVersionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FlexibleAppVersion)(nil))
-}
-
-func (i *flexibleAppVersionPtrType) ToFlexibleAppVersionPtrOutput() FlexibleAppVersionPtrOutput {
-	return i.ToFlexibleAppVersionPtrOutputWithContext(context.Background())
-}
-
-func (i *flexibleAppVersionPtrType) ToFlexibleAppVersionPtrOutputWithContext(ctx context.Context) FlexibleAppVersionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionPtrOutput)
 }
 
 // FlexibleAppVersionArrayInput is an input type that accepts FlexibleAppVersionArray and FlexibleAppVersionArrayOutput values.
@@ -727,7 +698,7 @@ func (i FlexibleAppVersionMap) ToFlexibleAppVersionMapOutputWithContext(ctx cont
 type FlexibleAppVersionOutput struct{ *pulumi.OutputState }
 
 func (FlexibleAppVersionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FlexibleAppVersion)(nil))
+	return reflect.TypeOf((**FlexibleAppVersion)(nil)).Elem()
 }
 
 func (o FlexibleAppVersionOutput) ToFlexibleAppVersionOutput() FlexibleAppVersionOutput {
@@ -738,44 +709,10 @@ func (o FlexibleAppVersionOutput) ToFlexibleAppVersionOutputWithContext(ctx cont
 	return o
 }
 
-func (o FlexibleAppVersionOutput) ToFlexibleAppVersionPtrOutput() FlexibleAppVersionPtrOutput {
-	return o.ToFlexibleAppVersionPtrOutputWithContext(context.Background())
-}
-
-func (o FlexibleAppVersionOutput) ToFlexibleAppVersionPtrOutputWithContext(ctx context.Context) FlexibleAppVersionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexibleAppVersion) *FlexibleAppVersion {
-		return &v
-	}).(FlexibleAppVersionPtrOutput)
-}
-
-type FlexibleAppVersionPtrOutput struct{ *pulumi.OutputState }
-
-func (FlexibleAppVersionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FlexibleAppVersion)(nil))
-}
-
-func (o FlexibleAppVersionPtrOutput) ToFlexibleAppVersionPtrOutput() FlexibleAppVersionPtrOutput {
-	return o
-}
-
-func (o FlexibleAppVersionPtrOutput) ToFlexibleAppVersionPtrOutputWithContext(ctx context.Context) FlexibleAppVersionPtrOutput {
-	return o
-}
-
-func (o FlexibleAppVersionPtrOutput) Elem() FlexibleAppVersionOutput {
-	return o.ApplyT(func(v *FlexibleAppVersion) FlexibleAppVersion {
-		if v != nil {
-			return *v
-		}
-		var ret FlexibleAppVersion
-		return ret
-	}).(FlexibleAppVersionOutput)
-}
-
 type FlexibleAppVersionArrayOutput struct{ *pulumi.OutputState }
 
 func (FlexibleAppVersionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FlexibleAppVersion)(nil))
+	return reflect.TypeOf((*[]*FlexibleAppVersion)(nil)).Elem()
 }
 
 func (o FlexibleAppVersionArrayOutput) ToFlexibleAppVersionArrayOutput() FlexibleAppVersionArrayOutput {
@@ -787,15 +724,15 @@ func (o FlexibleAppVersionArrayOutput) ToFlexibleAppVersionArrayOutputWithContex
 }
 
 func (o FlexibleAppVersionArrayOutput) Index(i pulumi.IntInput) FlexibleAppVersionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FlexibleAppVersion {
-		return vs[0].([]FlexibleAppVersion)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FlexibleAppVersion {
+		return vs[0].([]*FlexibleAppVersion)[vs[1].(int)]
 	}).(FlexibleAppVersionOutput)
 }
 
 type FlexibleAppVersionMapOutput struct{ *pulumi.OutputState }
 
 func (FlexibleAppVersionMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]FlexibleAppVersion)(nil))
+	return reflect.TypeOf((*map[string]*FlexibleAppVersion)(nil)).Elem()
 }
 
 func (o FlexibleAppVersionMapOutput) ToFlexibleAppVersionMapOutput() FlexibleAppVersionMapOutput {
@@ -807,18 +744,16 @@ func (o FlexibleAppVersionMapOutput) ToFlexibleAppVersionMapOutputWithContext(ct
 }
 
 func (o FlexibleAppVersionMapOutput) MapIndex(k pulumi.StringInput) FlexibleAppVersionOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) FlexibleAppVersion {
-		return vs[0].(map[string]FlexibleAppVersion)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *FlexibleAppVersion {
+		return vs[0].(map[string]*FlexibleAppVersion)[vs[1].(string)]
 	}).(FlexibleAppVersionOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FlexibleAppVersionInput)(nil)).Elem(), &FlexibleAppVersion{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FlexibleAppVersionPtrInput)(nil)).Elem(), &FlexibleAppVersion{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlexibleAppVersionArrayInput)(nil)).Elem(), FlexibleAppVersionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlexibleAppVersionMapInput)(nil)).Elem(), FlexibleAppVersionMap{})
 	pulumi.RegisterOutputType(FlexibleAppVersionOutput{})
-	pulumi.RegisterOutputType(FlexibleAppVersionPtrOutput{})
 	pulumi.RegisterOutputType(FlexibleAppVersionArrayOutput{})
 	pulumi.RegisterOutputType(FlexibleAppVersionMapOutput{})
 }

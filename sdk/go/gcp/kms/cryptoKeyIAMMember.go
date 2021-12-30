@@ -377,7 +377,7 @@ type CryptoKeyIAMMemberInput interface {
 }
 
 func (*CryptoKeyIAMMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*CryptoKeyIAMMember)(nil))
+	return reflect.TypeOf((**CryptoKeyIAMMember)(nil)).Elem()
 }
 
 func (i *CryptoKeyIAMMember) ToCryptoKeyIAMMemberOutput() CryptoKeyIAMMemberOutput {
@@ -386,35 +386,6 @@ func (i *CryptoKeyIAMMember) ToCryptoKeyIAMMemberOutput() CryptoKeyIAMMemberOutp
 
 func (i *CryptoKeyIAMMember) ToCryptoKeyIAMMemberOutputWithContext(ctx context.Context) CryptoKeyIAMMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMMemberOutput)
-}
-
-func (i *CryptoKeyIAMMember) ToCryptoKeyIAMMemberPtrOutput() CryptoKeyIAMMemberPtrOutput {
-	return i.ToCryptoKeyIAMMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *CryptoKeyIAMMember) ToCryptoKeyIAMMemberPtrOutputWithContext(ctx context.Context) CryptoKeyIAMMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMMemberPtrOutput)
-}
-
-type CryptoKeyIAMMemberPtrInput interface {
-	pulumi.Input
-
-	ToCryptoKeyIAMMemberPtrOutput() CryptoKeyIAMMemberPtrOutput
-	ToCryptoKeyIAMMemberPtrOutputWithContext(ctx context.Context) CryptoKeyIAMMemberPtrOutput
-}
-
-type cryptoKeyIAMMemberPtrType CryptoKeyIAMMemberArgs
-
-func (*cryptoKeyIAMMemberPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CryptoKeyIAMMember)(nil))
-}
-
-func (i *cryptoKeyIAMMemberPtrType) ToCryptoKeyIAMMemberPtrOutput() CryptoKeyIAMMemberPtrOutput {
-	return i.ToCryptoKeyIAMMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *cryptoKeyIAMMemberPtrType) ToCryptoKeyIAMMemberPtrOutputWithContext(ctx context.Context) CryptoKeyIAMMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMMemberPtrOutput)
 }
 
 // CryptoKeyIAMMemberArrayInput is an input type that accepts CryptoKeyIAMMemberArray and CryptoKeyIAMMemberArrayOutput values.
@@ -470,7 +441,7 @@ func (i CryptoKeyIAMMemberMap) ToCryptoKeyIAMMemberMapOutputWithContext(ctx cont
 type CryptoKeyIAMMemberOutput struct{ *pulumi.OutputState }
 
 func (CryptoKeyIAMMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CryptoKeyIAMMember)(nil))
+	return reflect.TypeOf((**CryptoKeyIAMMember)(nil)).Elem()
 }
 
 func (o CryptoKeyIAMMemberOutput) ToCryptoKeyIAMMemberOutput() CryptoKeyIAMMemberOutput {
@@ -481,44 +452,10 @@ func (o CryptoKeyIAMMemberOutput) ToCryptoKeyIAMMemberOutputWithContext(ctx cont
 	return o
 }
 
-func (o CryptoKeyIAMMemberOutput) ToCryptoKeyIAMMemberPtrOutput() CryptoKeyIAMMemberPtrOutput {
-	return o.ToCryptoKeyIAMMemberPtrOutputWithContext(context.Background())
-}
-
-func (o CryptoKeyIAMMemberOutput) ToCryptoKeyIAMMemberPtrOutputWithContext(ctx context.Context) CryptoKeyIAMMemberPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CryptoKeyIAMMember) *CryptoKeyIAMMember {
-		return &v
-	}).(CryptoKeyIAMMemberPtrOutput)
-}
-
-type CryptoKeyIAMMemberPtrOutput struct{ *pulumi.OutputState }
-
-func (CryptoKeyIAMMemberPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CryptoKeyIAMMember)(nil))
-}
-
-func (o CryptoKeyIAMMemberPtrOutput) ToCryptoKeyIAMMemberPtrOutput() CryptoKeyIAMMemberPtrOutput {
-	return o
-}
-
-func (o CryptoKeyIAMMemberPtrOutput) ToCryptoKeyIAMMemberPtrOutputWithContext(ctx context.Context) CryptoKeyIAMMemberPtrOutput {
-	return o
-}
-
-func (o CryptoKeyIAMMemberPtrOutput) Elem() CryptoKeyIAMMemberOutput {
-	return o.ApplyT(func(v *CryptoKeyIAMMember) CryptoKeyIAMMember {
-		if v != nil {
-			return *v
-		}
-		var ret CryptoKeyIAMMember
-		return ret
-	}).(CryptoKeyIAMMemberOutput)
-}
-
 type CryptoKeyIAMMemberArrayOutput struct{ *pulumi.OutputState }
 
 func (CryptoKeyIAMMemberArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CryptoKeyIAMMember)(nil))
+	return reflect.TypeOf((*[]*CryptoKeyIAMMember)(nil)).Elem()
 }
 
 func (o CryptoKeyIAMMemberArrayOutput) ToCryptoKeyIAMMemberArrayOutput() CryptoKeyIAMMemberArrayOutput {
@@ -530,15 +467,15 @@ func (o CryptoKeyIAMMemberArrayOutput) ToCryptoKeyIAMMemberArrayOutputWithContex
 }
 
 func (o CryptoKeyIAMMemberArrayOutput) Index(i pulumi.IntInput) CryptoKeyIAMMemberOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CryptoKeyIAMMember {
-		return vs[0].([]CryptoKeyIAMMember)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CryptoKeyIAMMember {
+		return vs[0].([]*CryptoKeyIAMMember)[vs[1].(int)]
 	}).(CryptoKeyIAMMemberOutput)
 }
 
 type CryptoKeyIAMMemberMapOutput struct{ *pulumi.OutputState }
 
 func (CryptoKeyIAMMemberMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]CryptoKeyIAMMember)(nil))
+	return reflect.TypeOf((*map[string]*CryptoKeyIAMMember)(nil)).Elem()
 }
 
 func (o CryptoKeyIAMMemberMapOutput) ToCryptoKeyIAMMemberMapOutput() CryptoKeyIAMMemberMapOutput {
@@ -550,18 +487,16 @@ func (o CryptoKeyIAMMemberMapOutput) ToCryptoKeyIAMMemberMapOutputWithContext(ct
 }
 
 func (o CryptoKeyIAMMemberMapOutput) MapIndex(k pulumi.StringInput) CryptoKeyIAMMemberOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CryptoKeyIAMMember {
-		return vs[0].(map[string]CryptoKeyIAMMember)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *CryptoKeyIAMMember {
+		return vs[0].(map[string]*CryptoKeyIAMMember)[vs[1].(string)]
 	}).(CryptoKeyIAMMemberOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIAMMemberInput)(nil)).Elem(), &CryptoKeyIAMMember{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIAMMemberPtrInput)(nil)).Elem(), &CryptoKeyIAMMember{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIAMMemberArrayInput)(nil)).Elem(), CryptoKeyIAMMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIAMMemberMapInput)(nil)).Elem(), CryptoKeyIAMMemberMap{})
 	pulumi.RegisterOutputType(CryptoKeyIAMMemberOutput{})
-	pulumi.RegisterOutputType(CryptoKeyIAMMemberPtrOutput{})
 	pulumi.RegisterOutputType(CryptoKeyIAMMemberArrayOutput{})
 	pulumi.RegisterOutputType(CryptoKeyIAMMemberMapOutput{})
 }

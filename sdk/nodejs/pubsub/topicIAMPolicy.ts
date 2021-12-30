@@ -142,14 +142,14 @@ export class TopicIAMPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: TopicIAMPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TopicIAMPolicyArgs | TopicIAMPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TopicIAMPolicyState | undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["policyData"] = state ? state.policyData : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["topic"] = state ? state.topic : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["policyData"] = state ? state.policyData : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["topic"] = state ? state.topic : undefined;
         } else {
             const args = argsOrState as TopicIAMPolicyArgs | undefined;
             if ((!args || args.policyData === undefined) && !opts.urn) {
@@ -158,15 +158,15 @@ export class TopicIAMPolicy extends pulumi.CustomResource {
             if ((!args || args.topic === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'topic'");
             }
-            inputs["policyData"] = args ? args.policyData : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["topic"] = args ? args.topic : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["policyData"] = args ? args.policyData : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["topic"] = args ? args.topic : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(TopicIAMPolicy.__pulumiType, name, inputs, opts);
+        super(TopicIAMPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

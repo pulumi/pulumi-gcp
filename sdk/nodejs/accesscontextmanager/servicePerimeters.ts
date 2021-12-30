@@ -127,24 +127,24 @@ export class ServicePerimeters extends pulumi.CustomResource {
      */
     constructor(name: string, args: ServicePerimetersArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServicePerimetersArgs | ServicePerimetersState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServicePerimetersState | undefined;
-            inputs["parent"] = state ? state.parent : undefined;
-            inputs["servicePerimeters"] = state ? state.servicePerimeters : undefined;
+            resourceInputs["parent"] = state ? state.parent : undefined;
+            resourceInputs["servicePerimeters"] = state ? state.servicePerimeters : undefined;
         } else {
             const args = argsOrState as ServicePerimetersArgs | undefined;
             if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            inputs["parent"] = args ? args.parent : undefined;
-            inputs["servicePerimeters"] = args ? args.servicePerimeters : undefined;
+            resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["servicePerimeters"] = args ? args.servicePerimeters : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ServicePerimeters.__pulumiType, name, inputs, opts);
+        super(ServicePerimeters.__pulumiType, name, resourceInputs, opts);
     }
 }
 

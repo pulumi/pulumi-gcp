@@ -36,6 +36,10 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
+// 		_ = serviceAccount.GetAccountKeyOutput(ctx, serviceaccount.GetAccountKeyOutputArgs{
+// 			Name:          mykeyKey.Name,
+// 			PublicKeyType: pulumi.String("TYPE_X509_PEM_FILE"),
+// 		}, nil)
 // 		return nil
 // 	})
 // }

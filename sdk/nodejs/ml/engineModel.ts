@@ -136,33 +136,33 @@ export class EngineModel extends pulumi.CustomResource {
      */
     constructor(name: string, args?: EngineModelArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EngineModelArgs | EngineModelState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EngineModelState | undefined;
-            inputs["defaultVersion"] = state ? state.defaultVersion : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["onlinePredictionConsoleLogging"] = state ? state.onlinePredictionConsoleLogging : undefined;
-            inputs["onlinePredictionLogging"] = state ? state.onlinePredictionLogging : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["regions"] = state ? state.regions : undefined;
+            resourceInputs["defaultVersion"] = state ? state.defaultVersion : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["onlinePredictionConsoleLogging"] = state ? state.onlinePredictionConsoleLogging : undefined;
+            resourceInputs["onlinePredictionLogging"] = state ? state.onlinePredictionLogging : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["regions"] = state ? state.regions : undefined;
         } else {
             const args = argsOrState as EngineModelArgs | undefined;
-            inputs["defaultVersion"] = args ? args.defaultVersion : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["onlinePredictionConsoleLogging"] = args ? args.onlinePredictionConsoleLogging : undefined;
-            inputs["onlinePredictionLogging"] = args ? args.onlinePredictionLogging : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["regions"] = args ? args.regions : undefined;
+            resourceInputs["defaultVersion"] = args ? args.defaultVersion : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["onlinePredictionConsoleLogging"] = args ? args.onlinePredictionConsoleLogging : undefined;
+            resourceInputs["onlinePredictionLogging"] = args ? args.onlinePredictionLogging : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["regions"] = args ? args.regions : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(EngineModel.__pulumiType, name, inputs, opts);
+        super(EngineModel.__pulumiType, name, resourceInputs, opts);
     }
 }
 

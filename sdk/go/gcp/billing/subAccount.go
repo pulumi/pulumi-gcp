@@ -175,7 +175,7 @@ type SubAccountInput interface {
 }
 
 func (*SubAccount) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubAccount)(nil))
+	return reflect.TypeOf((**SubAccount)(nil)).Elem()
 }
 
 func (i *SubAccount) ToSubAccountOutput() SubAccountOutput {
@@ -184,35 +184,6 @@ func (i *SubAccount) ToSubAccountOutput() SubAccountOutput {
 
 func (i *SubAccount) ToSubAccountOutputWithContext(ctx context.Context) SubAccountOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SubAccountOutput)
-}
-
-func (i *SubAccount) ToSubAccountPtrOutput() SubAccountPtrOutput {
-	return i.ToSubAccountPtrOutputWithContext(context.Background())
-}
-
-func (i *SubAccount) ToSubAccountPtrOutputWithContext(ctx context.Context) SubAccountPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubAccountPtrOutput)
-}
-
-type SubAccountPtrInput interface {
-	pulumi.Input
-
-	ToSubAccountPtrOutput() SubAccountPtrOutput
-	ToSubAccountPtrOutputWithContext(ctx context.Context) SubAccountPtrOutput
-}
-
-type subAccountPtrType SubAccountArgs
-
-func (*subAccountPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SubAccount)(nil))
-}
-
-func (i *subAccountPtrType) ToSubAccountPtrOutput() SubAccountPtrOutput {
-	return i.ToSubAccountPtrOutputWithContext(context.Background())
-}
-
-func (i *subAccountPtrType) ToSubAccountPtrOutputWithContext(ctx context.Context) SubAccountPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubAccountPtrOutput)
 }
 
 // SubAccountArrayInput is an input type that accepts SubAccountArray and SubAccountArrayOutput values.
@@ -268,7 +239,7 @@ func (i SubAccountMap) ToSubAccountMapOutputWithContext(ctx context.Context) Sub
 type SubAccountOutput struct{ *pulumi.OutputState }
 
 func (SubAccountOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubAccount)(nil))
+	return reflect.TypeOf((**SubAccount)(nil)).Elem()
 }
 
 func (o SubAccountOutput) ToSubAccountOutput() SubAccountOutput {
@@ -279,44 +250,10 @@ func (o SubAccountOutput) ToSubAccountOutputWithContext(ctx context.Context) Sub
 	return o
 }
 
-func (o SubAccountOutput) ToSubAccountPtrOutput() SubAccountPtrOutput {
-	return o.ToSubAccountPtrOutputWithContext(context.Background())
-}
-
-func (o SubAccountOutput) ToSubAccountPtrOutputWithContext(ctx context.Context) SubAccountPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubAccount) *SubAccount {
-		return &v
-	}).(SubAccountPtrOutput)
-}
-
-type SubAccountPtrOutput struct{ *pulumi.OutputState }
-
-func (SubAccountPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SubAccount)(nil))
-}
-
-func (o SubAccountPtrOutput) ToSubAccountPtrOutput() SubAccountPtrOutput {
-	return o
-}
-
-func (o SubAccountPtrOutput) ToSubAccountPtrOutputWithContext(ctx context.Context) SubAccountPtrOutput {
-	return o
-}
-
-func (o SubAccountPtrOutput) Elem() SubAccountOutput {
-	return o.ApplyT(func(v *SubAccount) SubAccount {
-		if v != nil {
-			return *v
-		}
-		var ret SubAccount
-		return ret
-	}).(SubAccountOutput)
-}
-
 type SubAccountArrayOutput struct{ *pulumi.OutputState }
 
 func (SubAccountArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SubAccount)(nil))
+	return reflect.TypeOf((*[]*SubAccount)(nil)).Elem()
 }
 
 func (o SubAccountArrayOutput) ToSubAccountArrayOutput() SubAccountArrayOutput {
@@ -328,15 +265,15 @@ func (o SubAccountArrayOutput) ToSubAccountArrayOutputWithContext(ctx context.Co
 }
 
 func (o SubAccountArrayOutput) Index(i pulumi.IntInput) SubAccountOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubAccount {
-		return vs[0].([]SubAccount)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SubAccount {
+		return vs[0].([]*SubAccount)[vs[1].(int)]
 	}).(SubAccountOutput)
 }
 
 type SubAccountMapOutput struct{ *pulumi.OutputState }
 
 func (SubAccountMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]SubAccount)(nil))
+	return reflect.TypeOf((*map[string]*SubAccount)(nil)).Elem()
 }
 
 func (o SubAccountMapOutput) ToSubAccountMapOutput() SubAccountMapOutput {
@@ -348,18 +285,16 @@ func (o SubAccountMapOutput) ToSubAccountMapOutputWithContext(ctx context.Contex
 }
 
 func (o SubAccountMapOutput) MapIndex(k pulumi.StringInput) SubAccountOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SubAccount {
-		return vs[0].(map[string]SubAccount)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *SubAccount {
+		return vs[0].(map[string]*SubAccount)[vs[1].(string)]
 	}).(SubAccountOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SubAccountInput)(nil)).Elem(), &SubAccount{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SubAccountPtrInput)(nil)).Elem(), &SubAccount{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubAccountArrayInput)(nil)).Elem(), SubAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubAccountMapInput)(nil)).Elem(), SubAccountMap{})
 	pulumi.RegisterOutputType(SubAccountOutput{})
-	pulumi.RegisterOutputType(SubAccountPtrOutput{})
 	pulumi.RegisterOutputType(SubAccountArrayOutput{})
 	pulumi.RegisterOutputType(SubAccountMapOutput{})
 }

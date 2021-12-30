@@ -81,13 +81,13 @@ export class ProjectMetadataItem extends pulumi.CustomResource {
      */
     constructor(name: string, args: ProjectMetadataItemArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectMetadataItemArgs | ProjectMetadataItemState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectMetadataItemState | undefined;
-            inputs["key"] = state ? state.key : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["value"] = state ? state.value : undefined;
+            resourceInputs["key"] = state ? state.key : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as ProjectMetadataItemArgs | undefined;
             if ((!args || args.key === undefined) && !opts.urn) {
@@ -96,14 +96,14 @@ export class ProjectMetadataItem extends pulumi.CustomResource {
             if ((!args || args.value === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            inputs["key"] = args ? args.key : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["value"] = args ? args.value : undefined;
+            resourceInputs["key"] = args ? args.key : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["value"] = args ? args.value : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ProjectMetadataItem.__pulumiType, name, inputs, opts);
+        super(ProjectMetadataItem.__pulumiType, name, resourceInputs, opts);
     }
 }
 

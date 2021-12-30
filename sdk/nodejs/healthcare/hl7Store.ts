@@ -249,34 +249,34 @@ export class Hl7Store extends pulumi.CustomResource {
      */
     constructor(name: string, args: Hl7StoreArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: Hl7StoreArgs | Hl7StoreState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as Hl7StoreState | undefined;
-            inputs["dataset"] = state ? state.dataset : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["notificationConfig"] = state ? state.notificationConfig : undefined;
-            inputs["notificationConfigs"] = state ? state.notificationConfigs : undefined;
-            inputs["parserConfig"] = state ? state.parserConfig : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["dataset"] = state ? state.dataset : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["notificationConfig"] = state ? state.notificationConfig : undefined;
+            resourceInputs["notificationConfigs"] = state ? state.notificationConfigs : undefined;
+            resourceInputs["parserConfig"] = state ? state.parserConfig : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
         } else {
             const args = argsOrState as Hl7StoreArgs | undefined;
             if ((!args || args.dataset === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dataset'");
             }
-            inputs["dataset"] = args ? args.dataset : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["notificationConfig"] = args ? args.notificationConfig : undefined;
-            inputs["notificationConfigs"] = args ? args.notificationConfigs : undefined;
-            inputs["parserConfig"] = args ? args.parserConfig : undefined;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["dataset"] = args ? args.dataset : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["notificationConfig"] = args ? args.notificationConfig : undefined;
+            resourceInputs["notificationConfigs"] = args ? args.notificationConfigs : undefined;
+            resourceInputs["parserConfig"] = args ? args.parserConfig : undefined;
+            resourceInputs["selfLink"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Hl7Store.__pulumiType, name, inputs, opts);
+        super(Hl7Store.__pulumiType, name, resourceInputs, opts);
     }
 }
 

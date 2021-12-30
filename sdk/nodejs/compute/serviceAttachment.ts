@@ -264,23 +264,23 @@ export class ServiceAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: ServiceAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServiceAttachmentArgs | ServiceAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceAttachmentState | undefined;
-            inputs["connectedEndpoints"] = state ? state.connectedEndpoints : undefined;
-            inputs["connectionPreference"] = state ? state.connectionPreference : undefined;
-            inputs["consumerAcceptLists"] = state ? state.consumerAcceptLists : undefined;
-            inputs["consumerRejectLists"] = state ? state.consumerRejectLists : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["enableProxyProtocol"] = state ? state.enableProxyProtocol : undefined;
-            inputs["fingerprint"] = state ? state.fingerprint : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["natSubnets"] = state ? state.natSubnets : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
-            inputs["targetService"] = state ? state.targetService : undefined;
+            resourceInputs["connectedEndpoints"] = state ? state.connectedEndpoints : undefined;
+            resourceInputs["connectionPreference"] = state ? state.connectionPreference : undefined;
+            resourceInputs["consumerAcceptLists"] = state ? state.consumerAcceptLists : undefined;
+            resourceInputs["consumerRejectLists"] = state ? state.consumerRejectLists : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enableProxyProtocol"] = state ? state.enableProxyProtocol : undefined;
+            resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["natSubnets"] = state ? state.natSubnets : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["targetService"] = state ? state.targetService : undefined;
         } else {
             const args = argsOrState as ServiceAttachmentArgs | undefined;
             if ((!args || args.connectionPreference === undefined) && !opts.urn) {
@@ -295,24 +295,24 @@ export class ServiceAttachment extends pulumi.CustomResource {
             if ((!args || args.targetService === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'targetService'");
             }
-            inputs["connectionPreference"] = args ? args.connectionPreference : undefined;
-            inputs["consumerAcceptLists"] = args ? args.consumerAcceptLists : undefined;
-            inputs["consumerRejectLists"] = args ? args.consumerRejectLists : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["enableProxyProtocol"] = args ? args.enableProxyProtocol : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["natSubnets"] = args ? args.natSubnets : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["targetService"] = args ? args.targetService : undefined;
-            inputs["connectedEndpoints"] = undefined /*out*/;
-            inputs["fingerprint"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["connectionPreference"] = args ? args.connectionPreference : undefined;
+            resourceInputs["consumerAcceptLists"] = args ? args.consumerAcceptLists : undefined;
+            resourceInputs["consumerRejectLists"] = args ? args.consumerRejectLists : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enableProxyProtocol"] = args ? args.enableProxyProtocol : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["natSubnets"] = args ? args.natSubnets : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["targetService"] = args ? args.targetService : undefined;
+            resourceInputs["connectedEndpoints"] = undefined /*out*/;
+            resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ServiceAttachment.__pulumiType, name, inputs, opts);
+        super(ServiceAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

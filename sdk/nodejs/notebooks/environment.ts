@@ -124,38 +124,38 @@ export class Environment extends pulumi.CustomResource {
      */
     constructor(name: string, args: EnvironmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EnvironmentArgs | EnvironmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EnvironmentState | undefined;
-            inputs["containerImage"] = state ? state.containerImage : undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["postStartupScript"] = state ? state.postStartupScript : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["vmImage"] = state ? state.vmImage : undefined;
+            resourceInputs["containerImage"] = state ? state.containerImage : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["postStartupScript"] = state ? state.postStartupScript : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["vmImage"] = state ? state.vmImage : undefined;
         } else {
             const args = argsOrState as EnvironmentArgs | undefined;
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            inputs["containerImage"] = args ? args.containerImage : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["postStartupScript"] = args ? args.postStartupScript : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["vmImage"] = args ? args.vmImage : undefined;
-            inputs["createTime"] = undefined /*out*/;
+            resourceInputs["containerImage"] = args ? args.containerImage : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["postStartupScript"] = args ? args.postStartupScript : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["vmImage"] = args ? args.vmImage : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Environment.__pulumiType, name, inputs, opts);
+        super(Environment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

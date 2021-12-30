@@ -220,25 +220,25 @@ export class RouterPeer extends pulumi.CustomResource {
      */
     constructor(name: string, args: RouterPeerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RouterPeerArgs | RouterPeerState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouterPeerState | undefined;
-            inputs["advertiseMode"] = state ? state.advertiseMode : undefined;
-            inputs["advertisedGroups"] = state ? state.advertisedGroups : undefined;
-            inputs["advertisedIpRanges"] = state ? state.advertisedIpRanges : undefined;
-            inputs["advertisedRoutePriority"] = state ? state.advertisedRoutePriority : undefined;
-            inputs["bfd"] = state ? state.bfd : undefined;
-            inputs["enable"] = state ? state.enable : undefined;
-            inputs["interface"] = state ? state.interface : undefined;
-            inputs["ipAddress"] = state ? state.ipAddress : undefined;
-            inputs["managementType"] = state ? state.managementType : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["peerAsn"] = state ? state.peerAsn : undefined;
-            inputs["peerIpAddress"] = state ? state.peerIpAddress : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["router"] = state ? state.router : undefined;
+            resourceInputs["advertiseMode"] = state ? state.advertiseMode : undefined;
+            resourceInputs["advertisedGroups"] = state ? state.advertisedGroups : undefined;
+            resourceInputs["advertisedIpRanges"] = state ? state.advertisedIpRanges : undefined;
+            resourceInputs["advertisedRoutePriority"] = state ? state.advertisedRoutePriority : undefined;
+            resourceInputs["bfd"] = state ? state.bfd : undefined;
+            resourceInputs["enable"] = state ? state.enable : undefined;
+            resourceInputs["interface"] = state ? state.interface : undefined;
+            resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
+            resourceInputs["managementType"] = state ? state.managementType : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["peerAsn"] = state ? state.peerAsn : undefined;
+            resourceInputs["peerIpAddress"] = state ? state.peerIpAddress : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["router"] = state ? state.router : undefined;
         } else {
             const args = argsOrState as RouterPeerArgs | undefined;
             if ((!args || args.interface === undefined) && !opts.urn) {
@@ -253,26 +253,26 @@ export class RouterPeer extends pulumi.CustomResource {
             if ((!args || args.router === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'router'");
             }
-            inputs["advertiseMode"] = args ? args.advertiseMode : undefined;
-            inputs["advertisedGroups"] = args ? args.advertisedGroups : undefined;
-            inputs["advertisedIpRanges"] = args ? args.advertisedIpRanges : undefined;
-            inputs["advertisedRoutePriority"] = args ? args.advertisedRoutePriority : undefined;
-            inputs["bfd"] = args ? args.bfd : undefined;
-            inputs["enable"] = args ? args.enable : undefined;
-            inputs["interface"] = args ? args.interface : undefined;
-            inputs["ipAddress"] = args ? args.ipAddress : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["peerAsn"] = args ? args.peerAsn : undefined;
-            inputs["peerIpAddress"] = args ? args.peerIpAddress : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["router"] = args ? args.router : undefined;
-            inputs["managementType"] = undefined /*out*/;
+            resourceInputs["advertiseMode"] = args ? args.advertiseMode : undefined;
+            resourceInputs["advertisedGroups"] = args ? args.advertisedGroups : undefined;
+            resourceInputs["advertisedIpRanges"] = args ? args.advertisedIpRanges : undefined;
+            resourceInputs["advertisedRoutePriority"] = args ? args.advertisedRoutePriority : undefined;
+            resourceInputs["bfd"] = args ? args.bfd : undefined;
+            resourceInputs["enable"] = args ? args.enable : undefined;
+            resourceInputs["interface"] = args ? args.interface : undefined;
+            resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["peerAsn"] = args ? args.peerAsn : undefined;
+            resourceInputs["peerIpAddress"] = args ? args.peerIpAddress : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["router"] = args ? args.router : undefined;
+            resourceInputs["managementType"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(RouterPeer.__pulumiType, name, inputs, opts);
+        super(RouterPeer.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -282,7 +282,7 @@ type ProjectSinkInput interface {
 }
 
 func (*ProjectSink) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectSink)(nil))
+	return reflect.TypeOf((**ProjectSink)(nil)).Elem()
 }
 
 func (i *ProjectSink) ToProjectSinkOutput() ProjectSinkOutput {
@@ -291,35 +291,6 @@ func (i *ProjectSink) ToProjectSinkOutput() ProjectSinkOutput {
 
 func (i *ProjectSink) ToProjectSinkOutputWithContext(ctx context.Context) ProjectSinkOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectSinkOutput)
-}
-
-func (i *ProjectSink) ToProjectSinkPtrOutput() ProjectSinkPtrOutput {
-	return i.ToProjectSinkPtrOutputWithContext(context.Background())
-}
-
-func (i *ProjectSink) ToProjectSinkPtrOutputWithContext(ctx context.Context) ProjectSinkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectSinkPtrOutput)
-}
-
-type ProjectSinkPtrInput interface {
-	pulumi.Input
-
-	ToProjectSinkPtrOutput() ProjectSinkPtrOutput
-	ToProjectSinkPtrOutputWithContext(ctx context.Context) ProjectSinkPtrOutput
-}
-
-type projectSinkPtrType ProjectSinkArgs
-
-func (*projectSinkPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProjectSink)(nil))
-}
-
-func (i *projectSinkPtrType) ToProjectSinkPtrOutput() ProjectSinkPtrOutput {
-	return i.ToProjectSinkPtrOutputWithContext(context.Background())
-}
-
-func (i *projectSinkPtrType) ToProjectSinkPtrOutputWithContext(ctx context.Context) ProjectSinkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectSinkPtrOutput)
 }
 
 // ProjectSinkArrayInput is an input type that accepts ProjectSinkArray and ProjectSinkArrayOutput values.
@@ -375,7 +346,7 @@ func (i ProjectSinkMap) ToProjectSinkMapOutputWithContext(ctx context.Context) P
 type ProjectSinkOutput struct{ *pulumi.OutputState }
 
 func (ProjectSinkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectSink)(nil))
+	return reflect.TypeOf((**ProjectSink)(nil)).Elem()
 }
 
 func (o ProjectSinkOutput) ToProjectSinkOutput() ProjectSinkOutput {
@@ -386,44 +357,10 @@ func (o ProjectSinkOutput) ToProjectSinkOutputWithContext(ctx context.Context) P
 	return o
 }
 
-func (o ProjectSinkOutput) ToProjectSinkPtrOutput() ProjectSinkPtrOutput {
-	return o.ToProjectSinkPtrOutputWithContext(context.Background())
-}
-
-func (o ProjectSinkOutput) ToProjectSinkPtrOutputWithContext(ctx context.Context) ProjectSinkPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectSink) *ProjectSink {
-		return &v
-	}).(ProjectSinkPtrOutput)
-}
-
-type ProjectSinkPtrOutput struct{ *pulumi.OutputState }
-
-func (ProjectSinkPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProjectSink)(nil))
-}
-
-func (o ProjectSinkPtrOutput) ToProjectSinkPtrOutput() ProjectSinkPtrOutput {
-	return o
-}
-
-func (o ProjectSinkPtrOutput) ToProjectSinkPtrOutputWithContext(ctx context.Context) ProjectSinkPtrOutput {
-	return o
-}
-
-func (o ProjectSinkPtrOutput) Elem() ProjectSinkOutput {
-	return o.ApplyT(func(v *ProjectSink) ProjectSink {
-		if v != nil {
-			return *v
-		}
-		var ret ProjectSink
-		return ret
-	}).(ProjectSinkOutput)
-}
-
 type ProjectSinkArrayOutput struct{ *pulumi.OutputState }
 
 func (ProjectSinkArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ProjectSink)(nil))
+	return reflect.TypeOf((*[]*ProjectSink)(nil)).Elem()
 }
 
 func (o ProjectSinkArrayOutput) ToProjectSinkArrayOutput() ProjectSinkArrayOutput {
@@ -435,15 +372,15 @@ func (o ProjectSinkArrayOutput) ToProjectSinkArrayOutputWithContext(ctx context.
 }
 
 func (o ProjectSinkArrayOutput) Index(i pulumi.IntInput) ProjectSinkOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectSink {
-		return vs[0].([]ProjectSink)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectSink {
+		return vs[0].([]*ProjectSink)[vs[1].(int)]
 	}).(ProjectSinkOutput)
 }
 
 type ProjectSinkMapOutput struct{ *pulumi.OutputState }
 
 func (ProjectSinkMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ProjectSink)(nil))
+	return reflect.TypeOf((*map[string]*ProjectSink)(nil)).Elem()
 }
 
 func (o ProjectSinkMapOutput) ToProjectSinkMapOutput() ProjectSinkMapOutput {
@@ -455,18 +392,16 @@ func (o ProjectSinkMapOutput) ToProjectSinkMapOutputWithContext(ctx context.Cont
 }
 
 func (o ProjectSinkMapOutput) MapIndex(k pulumi.StringInput) ProjectSinkOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ProjectSink {
-		return vs[0].(map[string]ProjectSink)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ProjectSink {
+		return vs[0].(map[string]*ProjectSink)[vs[1].(string)]
 	}).(ProjectSinkOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectSinkInput)(nil)).Elem(), &ProjectSink{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ProjectSinkPtrInput)(nil)).Elem(), &ProjectSink{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectSinkArrayInput)(nil)).Elem(), ProjectSinkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectSinkMapInput)(nil)).Elem(), ProjectSinkMap{})
 	pulumi.RegisterOutputType(ProjectSinkOutput{})
-	pulumi.RegisterOutputType(ProjectSinkPtrOutput{})
 	pulumi.RegisterOutputType(ProjectSinkArrayOutput{})
 	pulumi.RegisterOutputType(ProjectSinkMapOutput{})
 }

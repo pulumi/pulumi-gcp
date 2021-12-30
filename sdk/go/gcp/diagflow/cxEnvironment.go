@@ -225,7 +225,7 @@ type CxEnvironmentInput interface {
 }
 
 func (*CxEnvironment) ElementType() reflect.Type {
-	return reflect.TypeOf((*CxEnvironment)(nil))
+	return reflect.TypeOf((**CxEnvironment)(nil)).Elem()
 }
 
 func (i *CxEnvironment) ToCxEnvironmentOutput() CxEnvironmentOutput {
@@ -234,35 +234,6 @@ func (i *CxEnvironment) ToCxEnvironmentOutput() CxEnvironmentOutput {
 
 func (i *CxEnvironment) ToCxEnvironmentOutputWithContext(ctx context.Context) CxEnvironmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CxEnvironmentOutput)
-}
-
-func (i *CxEnvironment) ToCxEnvironmentPtrOutput() CxEnvironmentPtrOutput {
-	return i.ToCxEnvironmentPtrOutputWithContext(context.Background())
-}
-
-func (i *CxEnvironment) ToCxEnvironmentPtrOutputWithContext(ctx context.Context) CxEnvironmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CxEnvironmentPtrOutput)
-}
-
-type CxEnvironmentPtrInput interface {
-	pulumi.Input
-
-	ToCxEnvironmentPtrOutput() CxEnvironmentPtrOutput
-	ToCxEnvironmentPtrOutputWithContext(ctx context.Context) CxEnvironmentPtrOutput
-}
-
-type cxEnvironmentPtrType CxEnvironmentArgs
-
-func (*cxEnvironmentPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CxEnvironment)(nil))
-}
-
-func (i *cxEnvironmentPtrType) ToCxEnvironmentPtrOutput() CxEnvironmentPtrOutput {
-	return i.ToCxEnvironmentPtrOutputWithContext(context.Background())
-}
-
-func (i *cxEnvironmentPtrType) ToCxEnvironmentPtrOutputWithContext(ctx context.Context) CxEnvironmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CxEnvironmentPtrOutput)
 }
 
 // CxEnvironmentArrayInput is an input type that accepts CxEnvironmentArray and CxEnvironmentArrayOutput values.
@@ -318,7 +289,7 @@ func (i CxEnvironmentMap) ToCxEnvironmentMapOutputWithContext(ctx context.Contex
 type CxEnvironmentOutput struct{ *pulumi.OutputState }
 
 func (CxEnvironmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CxEnvironment)(nil))
+	return reflect.TypeOf((**CxEnvironment)(nil)).Elem()
 }
 
 func (o CxEnvironmentOutput) ToCxEnvironmentOutput() CxEnvironmentOutput {
@@ -329,44 +300,10 @@ func (o CxEnvironmentOutput) ToCxEnvironmentOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o CxEnvironmentOutput) ToCxEnvironmentPtrOutput() CxEnvironmentPtrOutput {
-	return o.ToCxEnvironmentPtrOutputWithContext(context.Background())
-}
-
-func (o CxEnvironmentOutput) ToCxEnvironmentPtrOutputWithContext(ctx context.Context) CxEnvironmentPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxEnvironment) *CxEnvironment {
-		return &v
-	}).(CxEnvironmentPtrOutput)
-}
-
-type CxEnvironmentPtrOutput struct{ *pulumi.OutputState }
-
-func (CxEnvironmentPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CxEnvironment)(nil))
-}
-
-func (o CxEnvironmentPtrOutput) ToCxEnvironmentPtrOutput() CxEnvironmentPtrOutput {
-	return o
-}
-
-func (o CxEnvironmentPtrOutput) ToCxEnvironmentPtrOutputWithContext(ctx context.Context) CxEnvironmentPtrOutput {
-	return o
-}
-
-func (o CxEnvironmentPtrOutput) Elem() CxEnvironmentOutput {
-	return o.ApplyT(func(v *CxEnvironment) CxEnvironment {
-		if v != nil {
-			return *v
-		}
-		var ret CxEnvironment
-		return ret
-	}).(CxEnvironmentOutput)
-}
-
 type CxEnvironmentArrayOutput struct{ *pulumi.OutputState }
 
 func (CxEnvironmentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CxEnvironment)(nil))
+	return reflect.TypeOf((*[]*CxEnvironment)(nil)).Elem()
 }
 
 func (o CxEnvironmentArrayOutput) ToCxEnvironmentArrayOutput() CxEnvironmentArrayOutput {
@@ -378,15 +315,15 @@ func (o CxEnvironmentArrayOutput) ToCxEnvironmentArrayOutputWithContext(ctx cont
 }
 
 func (o CxEnvironmentArrayOutput) Index(i pulumi.IntInput) CxEnvironmentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxEnvironment {
-		return vs[0].([]CxEnvironment)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CxEnvironment {
+		return vs[0].([]*CxEnvironment)[vs[1].(int)]
 	}).(CxEnvironmentOutput)
 }
 
 type CxEnvironmentMapOutput struct{ *pulumi.OutputState }
 
 func (CxEnvironmentMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]CxEnvironment)(nil))
+	return reflect.TypeOf((*map[string]*CxEnvironment)(nil)).Elem()
 }
 
 func (o CxEnvironmentMapOutput) ToCxEnvironmentMapOutput() CxEnvironmentMapOutput {
@@ -398,18 +335,16 @@ func (o CxEnvironmentMapOutput) ToCxEnvironmentMapOutputWithContext(ctx context.
 }
 
 func (o CxEnvironmentMapOutput) MapIndex(k pulumi.StringInput) CxEnvironmentOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CxEnvironment {
-		return vs[0].(map[string]CxEnvironment)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *CxEnvironment {
+		return vs[0].(map[string]*CxEnvironment)[vs[1].(string)]
 	}).(CxEnvironmentOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CxEnvironmentInput)(nil)).Elem(), &CxEnvironment{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CxEnvironmentPtrInput)(nil)).Elem(), &CxEnvironment{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxEnvironmentArrayInput)(nil)).Elem(), CxEnvironmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxEnvironmentMapInput)(nil)).Elem(), CxEnvironmentMap{})
 	pulumi.RegisterOutputType(CxEnvironmentOutput{})
-	pulumi.RegisterOutputType(CxEnvironmentPtrOutput{})
 	pulumi.RegisterOutputType(CxEnvironmentArrayOutput{})
 	pulumi.RegisterOutputType(CxEnvironmentMapOutput{})
 }

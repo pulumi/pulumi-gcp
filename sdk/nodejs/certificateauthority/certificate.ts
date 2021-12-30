@@ -479,26 +479,26 @@ export class Certificate extends pulumi.CustomResource {
      */
     constructor(name: string, args: CertificateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CertificateArgs | CertificateState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CertificateState | undefined;
-            inputs["certificateAuthority"] = state ? state.certificateAuthority : undefined;
-            inputs["certificateDescriptions"] = state ? state.certificateDescriptions : undefined;
-            inputs["certificateTemplate"] = state ? state.certificateTemplate : undefined;
-            inputs["config"] = state ? state.config : undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["lifetime"] = state ? state.lifetime : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["pemCertificate"] = state ? state.pemCertificate : undefined;
-            inputs["pemCertificates"] = state ? state.pemCertificates : undefined;
-            inputs["pemCsr"] = state ? state.pemCsr : undefined;
-            inputs["pool"] = state ? state.pool : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["revocationDetails"] = state ? state.revocationDetails : undefined;
-            inputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["certificateAuthority"] = state ? state.certificateAuthority : undefined;
+            resourceInputs["certificateDescriptions"] = state ? state.certificateDescriptions : undefined;
+            resourceInputs["certificateTemplate"] = state ? state.certificateTemplate : undefined;
+            resourceInputs["config"] = state ? state.config : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["lifetime"] = state ? state.lifetime : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["pemCertificate"] = state ? state.pemCertificate : undefined;
+            resourceInputs["pemCertificates"] = state ? state.pemCertificates : undefined;
+            resourceInputs["pemCsr"] = state ? state.pemCsr : undefined;
+            resourceInputs["pool"] = state ? state.pool : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["revocationDetails"] = state ? state.revocationDetails : undefined;
+            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as CertificateArgs | undefined;
             if ((!args || args.location === undefined) && !opts.urn) {
@@ -507,27 +507,27 @@ export class Certificate extends pulumi.CustomResource {
             if ((!args || args.pool === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'pool'");
             }
-            inputs["certificateAuthority"] = args ? args.certificateAuthority : undefined;
-            inputs["certificateTemplate"] = args ? args.certificateTemplate : undefined;
-            inputs["config"] = args ? args.config : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["lifetime"] = args ? args.lifetime : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["pemCsr"] = args ? args.pemCsr : undefined;
-            inputs["pool"] = args ? args.pool : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["certificateDescriptions"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["pemCertificate"] = undefined /*out*/;
-            inputs["pemCertificates"] = undefined /*out*/;
-            inputs["revocationDetails"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["certificateAuthority"] = args ? args.certificateAuthority : undefined;
+            resourceInputs["certificateTemplate"] = args ? args.certificateTemplate : undefined;
+            resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["lifetime"] = args ? args.lifetime : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["pemCsr"] = args ? args.pemCsr : undefined;
+            resourceInputs["pool"] = args ? args.pool : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["certificateDescriptions"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["pemCertificate"] = undefined /*out*/;
+            resourceInputs["pemCertificates"] = undefined /*out*/;
+            resourceInputs["revocationDetails"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Certificate.__pulumiType, name, inputs, opts);
+        super(Certificate.__pulumiType, name, resourceInputs, opts);
     }
 }
 

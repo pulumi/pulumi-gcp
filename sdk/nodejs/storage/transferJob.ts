@@ -167,19 +167,19 @@ export class TransferJob extends pulumi.CustomResource {
      */
     constructor(name: string, args: TransferJobArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TransferJobArgs | TransferJobState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TransferJobState | undefined;
-            inputs["creationTime"] = state ? state.creationTime : undefined;
-            inputs["deletionTime"] = state ? state.deletionTime : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["lastModificationTime"] = state ? state.lastModificationTime : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["schedule"] = state ? state.schedule : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["transferSpec"] = state ? state.transferSpec : undefined;
+            resourceInputs["creationTime"] = state ? state.creationTime : undefined;
+            resourceInputs["deletionTime"] = state ? state.deletionTime : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["lastModificationTime"] = state ? state.lastModificationTime : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["schedule"] = state ? state.schedule : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["transferSpec"] = state ? state.transferSpec : undefined;
         } else {
             const args = argsOrState as TransferJobArgs | undefined;
             if ((!args || args.description === undefined) && !opts.urn) {
@@ -191,20 +191,20 @@ export class TransferJob extends pulumi.CustomResource {
             if ((!args || args.transferSpec === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'transferSpec'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["schedule"] = args ? args.schedule : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["transferSpec"] = args ? args.transferSpec : undefined;
-            inputs["creationTime"] = undefined /*out*/;
-            inputs["deletionTime"] = undefined /*out*/;
-            inputs["lastModificationTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["schedule"] = args ? args.schedule : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["transferSpec"] = args ? args.transferSpec : undefined;
+            resourceInputs["creationTime"] = undefined /*out*/;
+            resourceInputs["deletionTime"] = undefined /*out*/;
+            resourceInputs["lastModificationTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(TransferJob.__pulumiType, name, inputs, opts);
+        super(TransferJob.__pulumiType, name, resourceInputs, opts);
     }
 }
 

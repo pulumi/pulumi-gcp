@@ -164,19 +164,19 @@ export class Instance extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            inputs["config"] = state ? state.config : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["forceDestroy"] = state ? state.forceDestroy : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["numNodes"] = state ? state.numNodes : undefined;
-            inputs["processingUnits"] = state ? state.processingUnits : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["state"] = state ? state.state : undefined;
+            resourceInputs["config"] = state ? state.config : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["numNodes"] = state ? state.numNodes : undefined;
+            resourceInputs["processingUnits"] = state ? state.processingUnits : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
             if ((!args || args.config === undefined) && !opts.urn) {
@@ -185,20 +185,20 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            inputs["config"] = args ? args.config : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["forceDestroy"] = args ? args.forceDestroy : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["numNodes"] = args ? args.numNodes : undefined;
-            inputs["processingUnits"] = args ? args.processingUnits : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["numNodes"] = args ? args.numNodes : undefined;
+            resourceInputs["processingUnits"] = args ? args.processingUnits : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Instance.__pulumiType, name, inputs, opts);
+        super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

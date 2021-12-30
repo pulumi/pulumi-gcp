@@ -376,7 +376,7 @@ type AppEngineServiceIamPolicyInput interface {
 }
 
 func (*AppEngineServiceIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppEngineServiceIamPolicy)(nil))
+	return reflect.TypeOf((**AppEngineServiceIamPolicy)(nil)).Elem()
 }
 
 func (i *AppEngineServiceIamPolicy) ToAppEngineServiceIamPolicyOutput() AppEngineServiceIamPolicyOutput {
@@ -385,35 +385,6 @@ func (i *AppEngineServiceIamPolicy) ToAppEngineServiceIamPolicyOutput() AppEngin
 
 func (i *AppEngineServiceIamPolicy) ToAppEngineServiceIamPolicyOutputWithContext(ctx context.Context) AppEngineServiceIamPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineServiceIamPolicyOutput)
-}
-
-func (i *AppEngineServiceIamPolicy) ToAppEngineServiceIamPolicyPtrOutput() AppEngineServiceIamPolicyPtrOutput {
-	return i.ToAppEngineServiceIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *AppEngineServiceIamPolicy) ToAppEngineServiceIamPolicyPtrOutputWithContext(ctx context.Context) AppEngineServiceIamPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppEngineServiceIamPolicyPtrOutput)
-}
-
-type AppEngineServiceIamPolicyPtrInput interface {
-	pulumi.Input
-
-	ToAppEngineServiceIamPolicyPtrOutput() AppEngineServiceIamPolicyPtrOutput
-	ToAppEngineServiceIamPolicyPtrOutputWithContext(ctx context.Context) AppEngineServiceIamPolicyPtrOutput
-}
-
-type appEngineServiceIamPolicyPtrType AppEngineServiceIamPolicyArgs
-
-func (*appEngineServiceIamPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppEngineServiceIamPolicy)(nil))
-}
-
-func (i *appEngineServiceIamPolicyPtrType) ToAppEngineServiceIamPolicyPtrOutput() AppEngineServiceIamPolicyPtrOutput {
-	return i.ToAppEngineServiceIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *appEngineServiceIamPolicyPtrType) ToAppEngineServiceIamPolicyPtrOutputWithContext(ctx context.Context) AppEngineServiceIamPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppEngineServiceIamPolicyPtrOutput)
 }
 
 // AppEngineServiceIamPolicyArrayInput is an input type that accepts AppEngineServiceIamPolicyArray and AppEngineServiceIamPolicyArrayOutput values.
@@ -469,7 +440,7 @@ func (i AppEngineServiceIamPolicyMap) ToAppEngineServiceIamPolicyMapOutputWithCo
 type AppEngineServiceIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (AppEngineServiceIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppEngineServiceIamPolicy)(nil))
+	return reflect.TypeOf((**AppEngineServiceIamPolicy)(nil)).Elem()
 }
 
 func (o AppEngineServiceIamPolicyOutput) ToAppEngineServiceIamPolicyOutput() AppEngineServiceIamPolicyOutput {
@@ -480,44 +451,10 @@ func (o AppEngineServiceIamPolicyOutput) ToAppEngineServiceIamPolicyOutputWithCo
 	return o
 }
 
-func (o AppEngineServiceIamPolicyOutput) ToAppEngineServiceIamPolicyPtrOutput() AppEngineServiceIamPolicyPtrOutput {
-	return o.ToAppEngineServiceIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o AppEngineServiceIamPolicyOutput) ToAppEngineServiceIamPolicyPtrOutputWithContext(ctx context.Context) AppEngineServiceIamPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEngineServiceIamPolicy) *AppEngineServiceIamPolicy {
-		return &v
-	}).(AppEngineServiceIamPolicyPtrOutput)
-}
-
-type AppEngineServiceIamPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (AppEngineServiceIamPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppEngineServiceIamPolicy)(nil))
-}
-
-func (o AppEngineServiceIamPolicyPtrOutput) ToAppEngineServiceIamPolicyPtrOutput() AppEngineServiceIamPolicyPtrOutput {
-	return o
-}
-
-func (o AppEngineServiceIamPolicyPtrOutput) ToAppEngineServiceIamPolicyPtrOutputWithContext(ctx context.Context) AppEngineServiceIamPolicyPtrOutput {
-	return o
-}
-
-func (o AppEngineServiceIamPolicyPtrOutput) Elem() AppEngineServiceIamPolicyOutput {
-	return o.ApplyT(func(v *AppEngineServiceIamPolicy) AppEngineServiceIamPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret AppEngineServiceIamPolicy
-		return ret
-	}).(AppEngineServiceIamPolicyOutput)
-}
-
 type AppEngineServiceIamPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (AppEngineServiceIamPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AppEngineServiceIamPolicy)(nil))
+	return reflect.TypeOf((*[]*AppEngineServiceIamPolicy)(nil)).Elem()
 }
 
 func (o AppEngineServiceIamPolicyArrayOutput) ToAppEngineServiceIamPolicyArrayOutput() AppEngineServiceIamPolicyArrayOutput {
@@ -529,15 +466,15 @@ func (o AppEngineServiceIamPolicyArrayOutput) ToAppEngineServiceIamPolicyArrayOu
 }
 
 func (o AppEngineServiceIamPolicyArrayOutput) Index(i pulumi.IntInput) AppEngineServiceIamPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppEngineServiceIamPolicy {
-		return vs[0].([]AppEngineServiceIamPolicy)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AppEngineServiceIamPolicy {
+		return vs[0].([]*AppEngineServiceIamPolicy)[vs[1].(int)]
 	}).(AppEngineServiceIamPolicyOutput)
 }
 
 type AppEngineServiceIamPolicyMapOutput struct{ *pulumi.OutputState }
 
 func (AppEngineServiceIamPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AppEngineServiceIamPolicy)(nil))
+	return reflect.TypeOf((*map[string]*AppEngineServiceIamPolicy)(nil)).Elem()
 }
 
 func (o AppEngineServiceIamPolicyMapOutput) ToAppEngineServiceIamPolicyMapOutput() AppEngineServiceIamPolicyMapOutput {
@@ -549,18 +486,16 @@ func (o AppEngineServiceIamPolicyMapOutput) ToAppEngineServiceIamPolicyMapOutput
 }
 
 func (o AppEngineServiceIamPolicyMapOutput) MapIndex(k pulumi.StringInput) AppEngineServiceIamPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AppEngineServiceIamPolicy {
-		return vs[0].(map[string]AppEngineServiceIamPolicy)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AppEngineServiceIamPolicy {
+		return vs[0].(map[string]*AppEngineServiceIamPolicy)[vs[1].(string)]
 	}).(AppEngineServiceIamPolicyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineServiceIamPolicyInput)(nil)).Elem(), &AppEngineServiceIamPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineServiceIamPolicyPtrInput)(nil)).Elem(), &AppEngineServiceIamPolicy{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineServiceIamPolicyArrayInput)(nil)).Elem(), AppEngineServiceIamPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineServiceIamPolicyMapInput)(nil)).Elem(), AppEngineServiceIamPolicyMap{})
 	pulumi.RegisterOutputType(AppEngineServiceIamPolicyOutput{})
-	pulumi.RegisterOutputType(AppEngineServiceIamPolicyPtrOutput{})
 	pulumi.RegisterOutputType(AppEngineServiceIamPolicyArrayOutput{})
 	pulumi.RegisterOutputType(AppEngineServiceIamPolicyMapOutput{})
 }

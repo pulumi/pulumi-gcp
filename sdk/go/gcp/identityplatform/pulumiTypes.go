@@ -57,47 +57,6 @@ func (i InboundSamlConfigIdpConfigArgs) ToInboundSamlConfigIdpConfigOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(InboundSamlConfigIdpConfigOutput)
 }
 
-func (i InboundSamlConfigIdpConfigArgs) ToInboundSamlConfigIdpConfigPtrOutput() InboundSamlConfigIdpConfigPtrOutput {
-	return i.ToInboundSamlConfigIdpConfigPtrOutputWithContext(context.Background())
-}
-
-func (i InboundSamlConfigIdpConfigArgs) ToInboundSamlConfigIdpConfigPtrOutputWithContext(ctx context.Context) InboundSamlConfigIdpConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InboundSamlConfigIdpConfigOutput).ToInboundSamlConfigIdpConfigPtrOutputWithContext(ctx)
-}
-
-// InboundSamlConfigIdpConfigPtrInput is an input type that accepts InboundSamlConfigIdpConfigArgs, InboundSamlConfigIdpConfigPtr and InboundSamlConfigIdpConfigPtrOutput values.
-// You can construct a concrete instance of `InboundSamlConfigIdpConfigPtrInput` via:
-//
-//          InboundSamlConfigIdpConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type InboundSamlConfigIdpConfigPtrInput interface {
-	pulumi.Input
-
-	ToInboundSamlConfigIdpConfigPtrOutput() InboundSamlConfigIdpConfigPtrOutput
-	ToInboundSamlConfigIdpConfigPtrOutputWithContext(context.Context) InboundSamlConfigIdpConfigPtrOutput
-}
-
-type inboundSamlConfigIdpConfigPtrType InboundSamlConfigIdpConfigArgs
-
-func InboundSamlConfigIdpConfigPtr(v *InboundSamlConfigIdpConfigArgs) InboundSamlConfigIdpConfigPtrInput {
-	return (*inboundSamlConfigIdpConfigPtrType)(v)
-}
-
-func (*inboundSamlConfigIdpConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**InboundSamlConfigIdpConfig)(nil)).Elem()
-}
-
-func (i *inboundSamlConfigIdpConfigPtrType) ToInboundSamlConfigIdpConfigPtrOutput() InboundSamlConfigIdpConfigPtrOutput {
-	return i.ToInboundSamlConfigIdpConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *inboundSamlConfigIdpConfigPtrType) ToInboundSamlConfigIdpConfigPtrOutputWithContext(ctx context.Context) InboundSamlConfigIdpConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InboundSamlConfigIdpConfigPtrOutput)
-}
-
 type InboundSamlConfigIdpConfigOutput struct{ *pulumi.OutputState }
 
 func (InboundSamlConfigIdpConfigOutput) ElementType() reflect.Type {
@@ -110,16 +69,6 @@ func (o InboundSamlConfigIdpConfigOutput) ToInboundSamlConfigIdpConfigOutput() I
 
 func (o InboundSamlConfigIdpConfigOutput) ToInboundSamlConfigIdpConfigOutputWithContext(ctx context.Context) InboundSamlConfigIdpConfigOutput {
 	return o
-}
-
-func (o InboundSamlConfigIdpConfigOutput) ToInboundSamlConfigIdpConfigPtrOutput() InboundSamlConfigIdpConfigPtrOutput {
-	return o.ToInboundSamlConfigIdpConfigPtrOutputWithContext(context.Background())
-}
-
-func (o InboundSamlConfigIdpConfigOutput) ToInboundSamlConfigIdpConfigPtrOutputWithContext(ctx context.Context) InboundSamlConfigIdpConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v InboundSamlConfigIdpConfig) *InboundSamlConfigIdpConfig {
-		return &v
-	}).(InboundSamlConfigIdpConfigPtrOutput)
 }
 
 // The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
@@ -143,71 +92,6 @@ func (o InboundSamlConfigIdpConfigOutput) SignRequest() pulumi.BoolPtrOutput {
 // URL to send Authentication request to.
 func (o InboundSamlConfigIdpConfigOutput) SsoUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v InboundSamlConfigIdpConfig) string { return v.SsoUrl }).(pulumi.StringOutput)
-}
-
-type InboundSamlConfigIdpConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (InboundSamlConfigIdpConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InboundSamlConfigIdpConfig)(nil)).Elem()
-}
-
-func (o InboundSamlConfigIdpConfigPtrOutput) ToInboundSamlConfigIdpConfigPtrOutput() InboundSamlConfigIdpConfigPtrOutput {
-	return o
-}
-
-func (o InboundSamlConfigIdpConfigPtrOutput) ToInboundSamlConfigIdpConfigPtrOutputWithContext(ctx context.Context) InboundSamlConfigIdpConfigPtrOutput {
-	return o
-}
-
-func (o InboundSamlConfigIdpConfigPtrOutput) Elem() InboundSamlConfigIdpConfigOutput {
-	return o.ApplyT(func(v *InboundSamlConfigIdpConfig) InboundSamlConfigIdpConfig {
-		if v != nil {
-			return *v
-		}
-		var ret InboundSamlConfigIdpConfig
-		return ret
-	}).(InboundSamlConfigIdpConfigOutput)
-}
-
-// The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
-// Structure is documented below.
-func (o InboundSamlConfigIdpConfigPtrOutput) IdpCertificates() InboundSamlConfigIdpConfigIdpCertificateArrayOutput {
-	return o.ApplyT(func(v *InboundSamlConfigIdpConfig) []InboundSamlConfigIdpConfigIdpCertificate {
-		if v == nil {
-			return nil
-		}
-		return v.IdpCertificates
-	}).(InboundSamlConfigIdpConfigIdpCertificateArrayOutput)
-}
-
-// Unique identifier for all SAML entities
-func (o InboundSamlConfigIdpConfigPtrOutput) IdpEntityId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InboundSamlConfigIdpConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.IdpEntityId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Indicates if outbounding SAMLRequest should be signed.
-func (o InboundSamlConfigIdpConfigPtrOutput) SignRequest() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *InboundSamlConfigIdpConfig) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.SignRequest
-	}).(pulumi.BoolPtrOutput)
-}
-
-// URL to send Authentication request to.
-func (o InboundSamlConfigIdpConfigPtrOutput) SsoUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InboundSamlConfigIdpConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SsoUrl
-	}).(pulumi.StringPtrOutput)
 }
 
 type InboundSamlConfigIdpConfigIdpCertificate struct {
@@ -355,47 +239,6 @@ func (i InboundSamlConfigSpConfigArgs) ToInboundSamlConfigSpConfigOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(InboundSamlConfigSpConfigOutput)
 }
 
-func (i InboundSamlConfigSpConfigArgs) ToInboundSamlConfigSpConfigPtrOutput() InboundSamlConfigSpConfigPtrOutput {
-	return i.ToInboundSamlConfigSpConfigPtrOutputWithContext(context.Background())
-}
-
-func (i InboundSamlConfigSpConfigArgs) ToInboundSamlConfigSpConfigPtrOutputWithContext(ctx context.Context) InboundSamlConfigSpConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InboundSamlConfigSpConfigOutput).ToInboundSamlConfigSpConfigPtrOutputWithContext(ctx)
-}
-
-// InboundSamlConfigSpConfigPtrInput is an input type that accepts InboundSamlConfigSpConfigArgs, InboundSamlConfigSpConfigPtr and InboundSamlConfigSpConfigPtrOutput values.
-// You can construct a concrete instance of `InboundSamlConfigSpConfigPtrInput` via:
-//
-//          InboundSamlConfigSpConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type InboundSamlConfigSpConfigPtrInput interface {
-	pulumi.Input
-
-	ToInboundSamlConfigSpConfigPtrOutput() InboundSamlConfigSpConfigPtrOutput
-	ToInboundSamlConfigSpConfigPtrOutputWithContext(context.Context) InboundSamlConfigSpConfigPtrOutput
-}
-
-type inboundSamlConfigSpConfigPtrType InboundSamlConfigSpConfigArgs
-
-func InboundSamlConfigSpConfigPtr(v *InboundSamlConfigSpConfigArgs) InboundSamlConfigSpConfigPtrInput {
-	return (*inboundSamlConfigSpConfigPtrType)(v)
-}
-
-func (*inboundSamlConfigSpConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**InboundSamlConfigSpConfig)(nil)).Elem()
-}
-
-func (i *inboundSamlConfigSpConfigPtrType) ToInboundSamlConfigSpConfigPtrOutput() InboundSamlConfigSpConfigPtrOutput {
-	return i.ToInboundSamlConfigSpConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *inboundSamlConfigSpConfigPtrType) ToInboundSamlConfigSpConfigPtrOutputWithContext(ctx context.Context) InboundSamlConfigSpConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InboundSamlConfigSpConfigPtrOutput)
-}
-
 type InboundSamlConfigSpConfigOutput struct{ *pulumi.OutputState }
 
 func (InboundSamlConfigSpConfigOutput) ElementType() reflect.Type {
@@ -408,16 +251,6 @@ func (o InboundSamlConfigSpConfigOutput) ToInboundSamlConfigSpConfigOutput() Inb
 
 func (o InboundSamlConfigSpConfigOutput) ToInboundSamlConfigSpConfigOutputWithContext(ctx context.Context) InboundSamlConfigSpConfigOutput {
 	return o
-}
-
-func (o InboundSamlConfigSpConfigOutput) ToInboundSamlConfigSpConfigPtrOutput() InboundSamlConfigSpConfigPtrOutput {
-	return o.ToInboundSamlConfigSpConfigPtrOutputWithContext(context.Background())
-}
-
-func (o InboundSamlConfigSpConfigOutput) ToInboundSamlConfigSpConfigPtrOutputWithContext(ctx context.Context) InboundSamlConfigSpConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v InboundSamlConfigSpConfig) *InboundSamlConfigSpConfig {
-		return &v
-	}).(InboundSamlConfigSpConfigPtrOutput)
 }
 
 // Callback URI where responses from IDP are handled. Must start with `https://`.
@@ -435,62 +268,6 @@ func (o InboundSamlConfigSpConfigOutput) SpCertificates() InboundSamlConfigSpCon
 // Unique identifier for all SAML entities.
 func (o InboundSamlConfigSpConfigOutput) SpEntityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InboundSamlConfigSpConfig) *string { return v.SpEntityId }).(pulumi.StringPtrOutput)
-}
-
-type InboundSamlConfigSpConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (InboundSamlConfigSpConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InboundSamlConfigSpConfig)(nil)).Elem()
-}
-
-func (o InboundSamlConfigSpConfigPtrOutput) ToInboundSamlConfigSpConfigPtrOutput() InboundSamlConfigSpConfigPtrOutput {
-	return o
-}
-
-func (o InboundSamlConfigSpConfigPtrOutput) ToInboundSamlConfigSpConfigPtrOutputWithContext(ctx context.Context) InboundSamlConfigSpConfigPtrOutput {
-	return o
-}
-
-func (o InboundSamlConfigSpConfigPtrOutput) Elem() InboundSamlConfigSpConfigOutput {
-	return o.ApplyT(func(v *InboundSamlConfigSpConfig) InboundSamlConfigSpConfig {
-		if v != nil {
-			return *v
-		}
-		var ret InboundSamlConfigSpConfig
-		return ret
-	}).(InboundSamlConfigSpConfigOutput)
-}
-
-// Callback URI where responses from IDP are handled. Must start with `https://`.
-func (o InboundSamlConfigSpConfigPtrOutput) CallbackUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InboundSamlConfigSpConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CallbackUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// -
-// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
-// Structure is documented below.
-func (o InboundSamlConfigSpConfigPtrOutput) SpCertificates() InboundSamlConfigSpConfigSpCertificateArrayOutput {
-	return o.ApplyT(func(v *InboundSamlConfigSpConfig) []InboundSamlConfigSpConfigSpCertificate {
-		if v == nil {
-			return nil
-		}
-		return v.SpCertificates
-	}).(InboundSamlConfigSpConfigSpCertificateArrayOutput)
-}
-
-// Unique identifier for all SAML entities.
-func (o InboundSamlConfigSpConfigPtrOutput) SpEntityId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InboundSamlConfigSpConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SpEntityId
-	}).(pulumi.StringPtrOutput)
 }
 
 type InboundSamlConfigSpConfigSpCertificate struct {
@@ -640,47 +417,6 @@ func (i TenantInboundSamlConfigIdpConfigArgs) ToTenantInboundSamlConfigIdpConfig
 	return pulumi.ToOutputWithContext(ctx, i).(TenantInboundSamlConfigIdpConfigOutput)
 }
 
-func (i TenantInboundSamlConfigIdpConfigArgs) ToTenantInboundSamlConfigIdpConfigPtrOutput() TenantInboundSamlConfigIdpConfigPtrOutput {
-	return i.ToTenantInboundSamlConfigIdpConfigPtrOutputWithContext(context.Background())
-}
-
-func (i TenantInboundSamlConfigIdpConfigArgs) ToTenantInboundSamlConfigIdpConfigPtrOutputWithContext(ctx context.Context) TenantInboundSamlConfigIdpConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TenantInboundSamlConfigIdpConfigOutput).ToTenantInboundSamlConfigIdpConfigPtrOutputWithContext(ctx)
-}
-
-// TenantInboundSamlConfigIdpConfigPtrInput is an input type that accepts TenantInboundSamlConfigIdpConfigArgs, TenantInboundSamlConfigIdpConfigPtr and TenantInboundSamlConfigIdpConfigPtrOutput values.
-// You can construct a concrete instance of `TenantInboundSamlConfigIdpConfigPtrInput` via:
-//
-//          TenantInboundSamlConfigIdpConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type TenantInboundSamlConfigIdpConfigPtrInput interface {
-	pulumi.Input
-
-	ToTenantInboundSamlConfigIdpConfigPtrOutput() TenantInboundSamlConfigIdpConfigPtrOutput
-	ToTenantInboundSamlConfigIdpConfigPtrOutputWithContext(context.Context) TenantInboundSamlConfigIdpConfigPtrOutput
-}
-
-type tenantInboundSamlConfigIdpConfigPtrType TenantInboundSamlConfigIdpConfigArgs
-
-func TenantInboundSamlConfigIdpConfigPtr(v *TenantInboundSamlConfigIdpConfigArgs) TenantInboundSamlConfigIdpConfigPtrInput {
-	return (*tenantInboundSamlConfigIdpConfigPtrType)(v)
-}
-
-func (*tenantInboundSamlConfigIdpConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TenantInboundSamlConfigIdpConfig)(nil)).Elem()
-}
-
-func (i *tenantInboundSamlConfigIdpConfigPtrType) ToTenantInboundSamlConfigIdpConfigPtrOutput() TenantInboundSamlConfigIdpConfigPtrOutput {
-	return i.ToTenantInboundSamlConfigIdpConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *tenantInboundSamlConfigIdpConfigPtrType) ToTenantInboundSamlConfigIdpConfigPtrOutputWithContext(ctx context.Context) TenantInboundSamlConfigIdpConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TenantInboundSamlConfigIdpConfigPtrOutput)
-}
-
 type TenantInboundSamlConfigIdpConfigOutput struct{ *pulumi.OutputState }
 
 func (TenantInboundSamlConfigIdpConfigOutput) ElementType() reflect.Type {
@@ -693,16 +429,6 @@ func (o TenantInboundSamlConfigIdpConfigOutput) ToTenantInboundSamlConfigIdpConf
 
 func (o TenantInboundSamlConfigIdpConfigOutput) ToTenantInboundSamlConfigIdpConfigOutputWithContext(ctx context.Context) TenantInboundSamlConfigIdpConfigOutput {
 	return o
-}
-
-func (o TenantInboundSamlConfigIdpConfigOutput) ToTenantInboundSamlConfigIdpConfigPtrOutput() TenantInboundSamlConfigIdpConfigPtrOutput {
-	return o.ToTenantInboundSamlConfigIdpConfigPtrOutputWithContext(context.Background())
-}
-
-func (o TenantInboundSamlConfigIdpConfigOutput) ToTenantInboundSamlConfigIdpConfigPtrOutputWithContext(ctx context.Context) TenantInboundSamlConfigIdpConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TenantInboundSamlConfigIdpConfig) *TenantInboundSamlConfigIdpConfig {
-		return &v
-	}).(TenantInboundSamlConfigIdpConfigPtrOutput)
 }
 
 // The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
@@ -726,71 +452,6 @@ func (o TenantInboundSamlConfigIdpConfigOutput) SignRequest() pulumi.BoolPtrOutp
 // URL to send Authentication request to.
 func (o TenantInboundSamlConfigIdpConfigOutput) SsoUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v TenantInboundSamlConfigIdpConfig) string { return v.SsoUrl }).(pulumi.StringOutput)
-}
-
-type TenantInboundSamlConfigIdpConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (TenantInboundSamlConfigIdpConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TenantInboundSamlConfigIdpConfig)(nil)).Elem()
-}
-
-func (o TenantInboundSamlConfigIdpConfigPtrOutput) ToTenantInboundSamlConfigIdpConfigPtrOutput() TenantInboundSamlConfigIdpConfigPtrOutput {
-	return o
-}
-
-func (o TenantInboundSamlConfigIdpConfigPtrOutput) ToTenantInboundSamlConfigIdpConfigPtrOutputWithContext(ctx context.Context) TenantInboundSamlConfigIdpConfigPtrOutput {
-	return o
-}
-
-func (o TenantInboundSamlConfigIdpConfigPtrOutput) Elem() TenantInboundSamlConfigIdpConfigOutput {
-	return o.ApplyT(func(v *TenantInboundSamlConfigIdpConfig) TenantInboundSamlConfigIdpConfig {
-		if v != nil {
-			return *v
-		}
-		var ret TenantInboundSamlConfigIdpConfig
-		return ret
-	}).(TenantInboundSamlConfigIdpConfigOutput)
-}
-
-// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
-// Structure is documented below.
-func (o TenantInboundSamlConfigIdpConfigPtrOutput) IdpCertificates() TenantInboundSamlConfigIdpConfigIdpCertificateArrayOutput {
-	return o.ApplyT(func(v *TenantInboundSamlConfigIdpConfig) []TenantInboundSamlConfigIdpConfigIdpCertificate {
-		if v == nil {
-			return nil
-		}
-		return v.IdpCertificates
-	}).(TenantInboundSamlConfigIdpConfigIdpCertificateArrayOutput)
-}
-
-// Unique identifier for all SAML entities
-func (o TenantInboundSamlConfigIdpConfigPtrOutput) IdpEntityId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TenantInboundSamlConfigIdpConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.IdpEntityId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Indicates if outbounding SAMLRequest should be signed.
-func (o TenantInboundSamlConfigIdpConfigPtrOutput) SignRequest() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *TenantInboundSamlConfigIdpConfig) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.SignRequest
-	}).(pulumi.BoolPtrOutput)
-}
-
-// URL to send Authentication request to.
-func (o TenantInboundSamlConfigIdpConfigPtrOutput) SsoUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TenantInboundSamlConfigIdpConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SsoUrl
-	}).(pulumi.StringPtrOutput)
 }
 
 type TenantInboundSamlConfigIdpConfigIdpCertificate struct {
@@ -938,47 +599,6 @@ func (i TenantInboundSamlConfigSpConfigArgs) ToTenantInboundSamlConfigSpConfigOu
 	return pulumi.ToOutputWithContext(ctx, i).(TenantInboundSamlConfigSpConfigOutput)
 }
 
-func (i TenantInboundSamlConfigSpConfigArgs) ToTenantInboundSamlConfigSpConfigPtrOutput() TenantInboundSamlConfigSpConfigPtrOutput {
-	return i.ToTenantInboundSamlConfigSpConfigPtrOutputWithContext(context.Background())
-}
-
-func (i TenantInboundSamlConfigSpConfigArgs) ToTenantInboundSamlConfigSpConfigPtrOutputWithContext(ctx context.Context) TenantInboundSamlConfigSpConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TenantInboundSamlConfigSpConfigOutput).ToTenantInboundSamlConfigSpConfigPtrOutputWithContext(ctx)
-}
-
-// TenantInboundSamlConfigSpConfigPtrInput is an input type that accepts TenantInboundSamlConfigSpConfigArgs, TenantInboundSamlConfigSpConfigPtr and TenantInboundSamlConfigSpConfigPtrOutput values.
-// You can construct a concrete instance of `TenantInboundSamlConfigSpConfigPtrInput` via:
-//
-//          TenantInboundSamlConfigSpConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type TenantInboundSamlConfigSpConfigPtrInput interface {
-	pulumi.Input
-
-	ToTenantInboundSamlConfigSpConfigPtrOutput() TenantInboundSamlConfigSpConfigPtrOutput
-	ToTenantInboundSamlConfigSpConfigPtrOutputWithContext(context.Context) TenantInboundSamlConfigSpConfigPtrOutput
-}
-
-type tenantInboundSamlConfigSpConfigPtrType TenantInboundSamlConfigSpConfigArgs
-
-func TenantInboundSamlConfigSpConfigPtr(v *TenantInboundSamlConfigSpConfigArgs) TenantInboundSamlConfigSpConfigPtrInput {
-	return (*tenantInboundSamlConfigSpConfigPtrType)(v)
-}
-
-func (*tenantInboundSamlConfigSpConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TenantInboundSamlConfigSpConfig)(nil)).Elem()
-}
-
-func (i *tenantInboundSamlConfigSpConfigPtrType) ToTenantInboundSamlConfigSpConfigPtrOutput() TenantInboundSamlConfigSpConfigPtrOutput {
-	return i.ToTenantInboundSamlConfigSpConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *tenantInboundSamlConfigSpConfigPtrType) ToTenantInboundSamlConfigSpConfigPtrOutputWithContext(ctx context.Context) TenantInboundSamlConfigSpConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TenantInboundSamlConfigSpConfigPtrOutput)
-}
-
 type TenantInboundSamlConfigSpConfigOutput struct{ *pulumi.OutputState }
 
 func (TenantInboundSamlConfigSpConfigOutput) ElementType() reflect.Type {
@@ -991,16 +611,6 @@ func (o TenantInboundSamlConfigSpConfigOutput) ToTenantInboundSamlConfigSpConfig
 
 func (o TenantInboundSamlConfigSpConfigOutput) ToTenantInboundSamlConfigSpConfigOutputWithContext(ctx context.Context) TenantInboundSamlConfigSpConfigOutput {
 	return o
-}
-
-func (o TenantInboundSamlConfigSpConfigOutput) ToTenantInboundSamlConfigSpConfigPtrOutput() TenantInboundSamlConfigSpConfigPtrOutput {
-	return o.ToTenantInboundSamlConfigSpConfigPtrOutputWithContext(context.Background())
-}
-
-func (o TenantInboundSamlConfigSpConfigOutput) ToTenantInboundSamlConfigSpConfigPtrOutputWithContext(ctx context.Context) TenantInboundSamlConfigSpConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TenantInboundSamlConfigSpConfig) *TenantInboundSamlConfigSpConfig {
-		return &v
-	}).(TenantInboundSamlConfigSpConfigPtrOutput)
 }
 
 // Callback URI where responses from IDP are handled. Must start with `https://`.
@@ -1020,62 +630,6 @@ func (o TenantInboundSamlConfigSpConfigOutput) SpCertificates() TenantInboundSam
 // Unique identifier for all SAML entities.
 func (o TenantInboundSamlConfigSpConfigOutput) SpEntityId() pulumi.StringOutput {
 	return o.ApplyT(func(v TenantInboundSamlConfigSpConfig) string { return v.SpEntityId }).(pulumi.StringOutput)
-}
-
-type TenantInboundSamlConfigSpConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (TenantInboundSamlConfigSpConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TenantInboundSamlConfigSpConfig)(nil)).Elem()
-}
-
-func (o TenantInboundSamlConfigSpConfigPtrOutput) ToTenantInboundSamlConfigSpConfigPtrOutput() TenantInboundSamlConfigSpConfigPtrOutput {
-	return o
-}
-
-func (o TenantInboundSamlConfigSpConfigPtrOutput) ToTenantInboundSamlConfigSpConfigPtrOutputWithContext(ctx context.Context) TenantInboundSamlConfigSpConfigPtrOutput {
-	return o
-}
-
-func (o TenantInboundSamlConfigSpConfigPtrOutput) Elem() TenantInboundSamlConfigSpConfigOutput {
-	return o.ApplyT(func(v *TenantInboundSamlConfigSpConfig) TenantInboundSamlConfigSpConfig {
-		if v != nil {
-			return *v
-		}
-		var ret TenantInboundSamlConfigSpConfig
-		return ret
-	}).(TenantInboundSamlConfigSpConfigOutput)
-}
-
-// Callback URI where responses from IDP are handled. Must start with `https://`.
-func (o TenantInboundSamlConfigSpConfigPtrOutput) CallbackUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TenantInboundSamlConfigSpConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CallbackUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// -
-// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
-// Structure is documented below.
-func (o TenantInboundSamlConfigSpConfigPtrOutput) SpCertificates() TenantInboundSamlConfigSpConfigSpCertificateArrayOutput {
-	return o.ApplyT(func(v *TenantInboundSamlConfigSpConfig) []TenantInboundSamlConfigSpConfigSpCertificate {
-		if v == nil {
-			return nil
-		}
-		return v.SpCertificates
-	}).(TenantInboundSamlConfigSpConfigSpCertificateArrayOutput)
-}
-
-// Unique identifier for all SAML entities.
-func (o TenantInboundSamlConfigSpConfigPtrOutput) SpEntityId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TenantInboundSamlConfigSpConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SpEntityId
-	}).(pulumi.StringPtrOutput)
 }
 
 type TenantInboundSamlConfigSpConfigSpCertificate struct {
@@ -1180,35 +734,27 @@ func (o TenantInboundSamlConfigSpConfigSpCertificateArrayOutput) Index(i pulumi.
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InboundSamlConfigIdpConfigInput)(nil)).Elem(), InboundSamlConfigIdpConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InboundSamlConfigIdpConfigPtrInput)(nil)).Elem(), InboundSamlConfigIdpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InboundSamlConfigIdpConfigIdpCertificateInput)(nil)).Elem(), InboundSamlConfigIdpConfigIdpCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InboundSamlConfigIdpConfigIdpCertificateArrayInput)(nil)).Elem(), InboundSamlConfigIdpConfigIdpCertificateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InboundSamlConfigSpConfigInput)(nil)).Elem(), InboundSamlConfigSpConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InboundSamlConfigSpConfigPtrInput)(nil)).Elem(), InboundSamlConfigSpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InboundSamlConfigSpConfigSpCertificateInput)(nil)).Elem(), InboundSamlConfigSpConfigSpCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InboundSamlConfigSpConfigSpCertificateArrayInput)(nil)).Elem(), InboundSamlConfigSpConfigSpCertificateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantInboundSamlConfigIdpConfigInput)(nil)).Elem(), TenantInboundSamlConfigIdpConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TenantInboundSamlConfigIdpConfigPtrInput)(nil)).Elem(), TenantInboundSamlConfigIdpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantInboundSamlConfigIdpConfigIdpCertificateInput)(nil)).Elem(), TenantInboundSamlConfigIdpConfigIdpCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantInboundSamlConfigIdpConfigIdpCertificateArrayInput)(nil)).Elem(), TenantInboundSamlConfigIdpConfigIdpCertificateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantInboundSamlConfigSpConfigInput)(nil)).Elem(), TenantInboundSamlConfigSpConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TenantInboundSamlConfigSpConfigPtrInput)(nil)).Elem(), TenantInboundSamlConfigSpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantInboundSamlConfigSpConfigSpCertificateInput)(nil)).Elem(), TenantInboundSamlConfigSpConfigSpCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantInboundSamlConfigSpConfigSpCertificateArrayInput)(nil)).Elem(), TenantInboundSamlConfigSpConfigSpCertificateArray{})
 	pulumi.RegisterOutputType(InboundSamlConfigIdpConfigOutput{})
-	pulumi.RegisterOutputType(InboundSamlConfigIdpConfigPtrOutput{})
 	pulumi.RegisterOutputType(InboundSamlConfigIdpConfigIdpCertificateOutput{})
 	pulumi.RegisterOutputType(InboundSamlConfigIdpConfigIdpCertificateArrayOutput{})
 	pulumi.RegisterOutputType(InboundSamlConfigSpConfigOutput{})
-	pulumi.RegisterOutputType(InboundSamlConfigSpConfigPtrOutput{})
 	pulumi.RegisterOutputType(InboundSamlConfigSpConfigSpCertificateOutput{})
 	pulumi.RegisterOutputType(InboundSamlConfigSpConfigSpCertificateArrayOutput{})
 	pulumi.RegisterOutputType(TenantInboundSamlConfigIdpConfigOutput{})
-	pulumi.RegisterOutputType(TenantInboundSamlConfigIdpConfigPtrOutput{})
 	pulumi.RegisterOutputType(TenantInboundSamlConfigIdpConfigIdpCertificateOutput{})
 	pulumi.RegisterOutputType(TenantInboundSamlConfigIdpConfigIdpCertificateArrayOutput{})
 	pulumi.RegisterOutputType(TenantInboundSamlConfigSpConfigOutput{})
-	pulumi.RegisterOutputType(TenantInboundSamlConfigSpConfigPtrOutput{})
 	pulumi.RegisterOutputType(TenantInboundSamlConfigSpConfigSpCertificateOutput{})
 	pulumi.RegisterOutputType(TenantInboundSamlConfigSpConfigSpCertificateArrayOutput{})
 }

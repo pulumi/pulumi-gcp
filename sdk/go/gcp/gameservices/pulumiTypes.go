@@ -53,47 +53,6 @@ func (i GameServerClusterConnectionInfoArgs) ToGameServerClusterConnectionInfoOu
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerClusterConnectionInfoOutput)
 }
 
-func (i GameServerClusterConnectionInfoArgs) ToGameServerClusterConnectionInfoPtrOutput() GameServerClusterConnectionInfoPtrOutput {
-	return i.ToGameServerClusterConnectionInfoPtrOutputWithContext(context.Background())
-}
-
-func (i GameServerClusterConnectionInfoArgs) ToGameServerClusterConnectionInfoPtrOutputWithContext(ctx context.Context) GameServerClusterConnectionInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GameServerClusterConnectionInfoOutput).ToGameServerClusterConnectionInfoPtrOutputWithContext(ctx)
-}
-
-// GameServerClusterConnectionInfoPtrInput is an input type that accepts GameServerClusterConnectionInfoArgs, GameServerClusterConnectionInfoPtr and GameServerClusterConnectionInfoPtrOutput values.
-// You can construct a concrete instance of `GameServerClusterConnectionInfoPtrInput` via:
-//
-//          GameServerClusterConnectionInfoArgs{...}
-//
-//  or:
-//
-//          nil
-type GameServerClusterConnectionInfoPtrInput interface {
-	pulumi.Input
-
-	ToGameServerClusterConnectionInfoPtrOutput() GameServerClusterConnectionInfoPtrOutput
-	ToGameServerClusterConnectionInfoPtrOutputWithContext(context.Context) GameServerClusterConnectionInfoPtrOutput
-}
-
-type gameServerClusterConnectionInfoPtrType GameServerClusterConnectionInfoArgs
-
-func GameServerClusterConnectionInfoPtr(v *GameServerClusterConnectionInfoArgs) GameServerClusterConnectionInfoPtrInput {
-	return (*gameServerClusterConnectionInfoPtrType)(v)
-}
-
-func (*gameServerClusterConnectionInfoPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GameServerClusterConnectionInfo)(nil)).Elem()
-}
-
-func (i *gameServerClusterConnectionInfoPtrType) ToGameServerClusterConnectionInfoPtrOutput() GameServerClusterConnectionInfoPtrOutput {
-	return i.ToGameServerClusterConnectionInfoPtrOutputWithContext(context.Background())
-}
-
-func (i *gameServerClusterConnectionInfoPtrType) ToGameServerClusterConnectionInfoPtrOutputWithContext(ctx context.Context) GameServerClusterConnectionInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GameServerClusterConnectionInfoPtrOutput)
-}
-
 type GameServerClusterConnectionInfoOutput struct{ *pulumi.OutputState }
 
 func (GameServerClusterConnectionInfoOutput) ElementType() reflect.Type {
@@ -106,16 +65,6 @@ func (o GameServerClusterConnectionInfoOutput) ToGameServerClusterConnectionInfo
 
 func (o GameServerClusterConnectionInfoOutput) ToGameServerClusterConnectionInfoOutputWithContext(ctx context.Context) GameServerClusterConnectionInfoOutput {
 	return o
-}
-
-func (o GameServerClusterConnectionInfoOutput) ToGameServerClusterConnectionInfoPtrOutput() GameServerClusterConnectionInfoPtrOutput {
-	return o.ToGameServerClusterConnectionInfoPtrOutputWithContext(context.Background())
-}
-
-func (o GameServerClusterConnectionInfoOutput) ToGameServerClusterConnectionInfoPtrOutputWithContext(ctx context.Context) GameServerClusterConnectionInfoPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GameServerClusterConnectionInfo) *GameServerClusterConnectionInfo {
-		return &v
-	}).(GameServerClusterConnectionInfoPtrOutput)
 }
 
 // Reference of the GKE cluster where the game servers are installed.
@@ -131,53 +80,6 @@ func (o GameServerClusterConnectionInfoOutput) GkeClusterReference() GameServerC
 // during creation.
 func (o GameServerClusterConnectionInfoOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v GameServerClusterConnectionInfo) string { return v.Namespace }).(pulumi.StringOutput)
-}
-
-type GameServerClusterConnectionInfoPtrOutput struct{ *pulumi.OutputState }
-
-func (GameServerClusterConnectionInfoPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GameServerClusterConnectionInfo)(nil)).Elem()
-}
-
-func (o GameServerClusterConnectionInfoPtrOutput) ToGameServerClusterConnectionInfoPtrOutput() GameServerClusterConnectionInfoPtrOutput {
-	return o
-}
-
-func (o GameServerClusterConnectionInfoPtrOutput) ToGameServerClusterConnectionInfoPtrOutputWithContext(ctx context.Context) GameServerClusterConnectionInfoPtrOutput {
-	return o
-}
-
-func (o GameServerClusterConnectionInfoPtrOutput) Elem() GameServerClusterConnectionInfoOutput {
-	return o.ApplyT(func(v *GameServerClusterConnectionInfo) GameServerClusterConnectionInfo {
-		if v != nil {
-			return *v
-		}
-		var ret GameServerClusterConnectionInfo
-		return ret
-	}).(GameServerClusterConnectionInfoOutput)
-}
-
-// Reference of the GKE cluster where the game servers are installed.
-// Structure is documented below.
-func (o GameServerClusterConnectionInfoPtrOutput) GkeClusterReference() GameServerClusterConnectionInfoGkeClusterReferencePtrOutput {
-	return o.ApplyT(func(v *GameServerClusterConnectionInfo) *GameServerClusterConnectionInfoGkeClusterReference {
-		if v == nil {
-			return nil
-		}
-		return &v.GkeClusterReference
-	}).(GameServerClusterConnectionInfoGkeClusterReferencePtrOutput)
-}
-
-// Namespace designated on the game server cluster where the game server
-// instances will be created. The namespace existence will be validated
-// during creation.
-func (o GameServerClusterConnectionInfoPtrOutput) Namespace() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GameServerClusterConnectionInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Namespace
-	}).(pulumi.StringPtrOutput)
 }
 
 type GameServerClusterConnectionInfoGkeClusterReference struct {
@@ -227,47 +129,6 @@ func (i GameServerClusterConnectionInfoGkeClusterReferenceArgs) ToGameServerClus
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerClusterConnectionInfoGkeClusterReferenceOutput)
 }
 
-func (i GameServerClusterConnectionInfoGkeClusterReferenceArgs) ToGameServerClusterConnectionInfoGkeClusterReferencePtrOutput() GameServerClusterConnectionInfoGkeClusterReferencePtrOutput {
-	return i.ToGameServerClusterConnectionInfoGkeClusterReferencePtrOutputWithContext(context.Background())
-}
-
-func (i GameServerClusterConnectionInfoGkeClusterReferenceArgs) ToGameServerClusterConnectionInfoGkeClusterReferencePtrOutputWithContext(ctx context.Context) GameServerClusterConnectionInfoGkeClusterReferencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GameServerClusterConnectionInfoGkeClusterReferenceOutput).ToGameServerClusterConnectionInfoGkeClusterReferencePtrOutputWithContext(ctx)
-}
-
-// GameServerClusterConnectionInfoGkeClusterReferencePtrInput is an input type that accepts GameServerClusterConnectionInfoGkeClusterReferenceArgs, GameServerClusterConnectionInfoGkeClusterReferencePtr and GameServerClusterConnectionInfoGkeClusterReferencePtrOutput values.
-// You can construct a concrete instance of `GameServerClusterConnectionInfoGkeClusterReferencePtrInput` via:
-//
-//          GameServerClusterConnectionInfoGkeClusterReferenceArgs{...}
-//
-//  or:
-//
-//          nil
-type GameServerClusterConnectionInfoGkeClusterReferencePtrInput interface {
-	pulumi.Input
-
-	ToGameServerClusterConnectionInfoGkeClusterReferencePtrOutput() GameServerClusterConnectionInfoGkeClusterReferencePtrOutput
-	ToGameServerClusterConnectionInfoGkeClusterReferencePtrOutputWithContext(context.Context) GameServerClusterConnectionInfoGkeClusterReferencePtrOutput
-}
-
-type gameServerClusterConnectionInfoGkeClusterReferencePtrType GameServerClusterConnectionInfoGkeClusterReferenceArgs
-
-func GameServerClusterConnectionInfoGkeClusterReferencePtr(v *GameServerClusterConnectionInfoGkeClusterReferenceArgs) GameServerClusterConnectionInfoGkeClusterReferencePtrInput {
-	return (*gameServerClusterConnectionInfoGkeClusterReferencePtrType)(v)
-}
-
-func (*gameServerClusterConnectionInfoGkeClusterReferencePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GameServerClusterConnectionInfoGkeClusterReference)(nil)).Elem()
-}
-
-func (i *gameServerClusterConnectionInfoGkeClusterReferencePtrType) ToGameServerClusterConnectionInfoGkeClusterReferencePtrOutput() GameServerClusterConnectionInfoGkeClusterReferencePtrOutput {
-	return i.ToGameServerClusterConnectionInfoGkeClusterReferencePtrOutputWithContext(context.Background())
-}
-
-func (i *gameServerClusterConnectionInfoGkeClusterReferencePtrType) ToGameServerClusterConnectionInfoGkeClusterReferencePtrOutputWithContext(ctx context.Context) GameServerClusterConnectionInfoGkeClusterReferencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GameServerClusterConnectionInfoGkeClusterReferencePtrOutput)
-}
-
 type GameServerClusterConnectionInfoGkeClusterReferenceOutput struct{ *pulumi.OutputState }
 
 func (GameServerClusterConnectionInfoGkeClusterReferenceOutput) ElementType() reflect.Type {
@@ -282,16 +143,6 @@ func (o GameServerClusterConnectionInfoGkeClusterReferenceOutput) ToGameServerCl
 	return o
 }
 
-func (o GameServerClusterConnectionInfoGkeClusterReferenceOutput) ToGameServerClusterConnectionInfoGkeClusterReferencePtrOutput() GameServerClusterConnectionInfoGkeClusterReferencePtrOutput {
-	return o.ToGameServerClusterConnectionInfoGkeClusterReferencePtrOutputWithContext(context.Background())
-}
-
-func (o GameServerClusterConnectionInfoGkeClusterReferenceOutput) ToGameServerClusterConnectionInfoGkeClusterReferencePtrOutputWithContext(ctx context.Context) GameServerClusterConnectionInfoGkeClusterReferencePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GameServerClusterConnectionInfoGkeClusterReference) *GameServerClusterConnectionInfoGkeClusterReference {
-		return &v
-	}).(GameServerClusterConnectionInfoGkeClusterReferencePtrOutput)
-}
-
 // The full or partial name of a GKE cluster, using one of the following
 // forms:
 // * `projects/{project_id}/locations/{location}/clusters/{cluster_id}`
@@ -302,47 +153,6 @@ func (o GameServerClusterConnectionInfoGkeClusterReferenceOutput) ToGameServerCl
 //   GKE cluster.
 func (o GameServerClusterConnectionInfoGkeClusterReferenceOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v GameServerClusterConnectionInfoGkeClusterReference) string { return v.Cluster }).(pulumi.StringOutput)
-}
-
-type GameServerClusterConnectionInfoGkeClusterReferencePtrOutput struct{ *pulumi.OutputState }
-
-func (GameServerClusterConnectionInfoGkeClusterReferencePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GameServerClusterConnectionInfoGkeClusterReference)(nil)).Elem()
-}
-
-func (o GameServerClusterConnectionInfoGkeClusterReferencePtrOutput) ToGameServerClusterConnectionInfoGkeClusterReferencePtrOutput() GameServerClusterConnectionInfoGkeClusterReferencePtrOutput {
-	return o
-}
-
-func (o GameServerClusterConnectionInfoGkeClusterReferencePtrOutput) ToGameServerClusterConnectionInfoGkeClusterReferencePtrOutputWithContext(ctx context.Context) GameServerClusterConnectionInfoGkeClusterReferencePtrOutput {
-	return o
-}
-
-func (o GameServerClusterConnectionInfoGkeClusterReferencePtrOutput) Elem() GameServerClusterConnectionInfoGkeClusterReferenceOutput {
-	return o.ApplyT(func(v *GameServerClusterConnectionInfoGkeClusterReference) GameServerClusterConnectionInfoGkeClusterReference {
-		if v != nil {
-			return *v
-		}
-		var ret GameServerClusterConnectionInfoGkeClusterReference
-		return ret
-	}).(GameServerClusterConnectionInfoGkeClusterReferenceOutput)
-}
-
-// The full or partial name of a GKE cluster, using one of the following
-// forms:
-// * `projects/{project_id}/locations/{location}/clusters/{cluster_id}`
-// * `locations/{location}/clusters/{cluster_id}`
-// * `{cluster_id}`
-//   If project and location are not specified, the project and location of the
-//   GameServerCluster resource are used to generate the full name of the
-//   GKE cluster.
-func (o GameServerClusterConnectionInfoGkeClusterReferencePtrOutput) Cluster() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GameServerClusterConnectionInfoGkeClusterReference) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Cluster
-	}).(pulumi.StringPtrOutput)
 }
 
 type GameServerConfigFleetConfig struct {
@@ -1296,9 +1106,7 @@ func (o GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArra
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GameServerClusterConnectionInfoInput)(nil)).Elem(), GameServerClusterConnectionInfoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GameServerClusterConnectionInfoPtrInput)(nil)).Elem(), GameServerClusterConnectionInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GameServerClusterConnectionInfoGkeClusterReferenceInput)(nil)).Elem(), GameServerClusterConnectionInfoGkeClusterReferenceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GameServerClusterConnectionInfoGkeClusterReferencePtrInput)(nil)).Elem(), GameServerClusterConnectionInfoGkeClusterReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GameServerConfigFleetConfigInput)(nil)).Elem(), GameServerConfigFleetConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GameServerConfigFleetConfigArrayInput)(nil)).Elem(), GameServerConfigFleetConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GameServerConfigScalingConfigInput)(nil)).Elem(), GameServerConfigScalingConfigArgs{})
@@ -1316,9 +1124,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorInput)(nil)).Elem(), GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayInput)(nil)).Elem(), GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArray{})
 	pulumi.RegisterOutputType(GameServerClusterConnectionInfoOutput{})
-	pulumi.RegisterOutputType(GameServerClusterConnectionInfoPtrOutput{})
 	pulumi.RegisterOutputType(GameServerClusterConnectionInfoGkeClusterReferenceOutput{})
-	pulumi.RegisterOutputType(GameServerClusterConnectionInfoGkeClusterReferencePtrOutput{})
 	pulumi.RegisterOutputType(GameServerConfigFleetConfigOutput{})
 	pulumi.RegisterOutputType(GameServerConfigFleetConfigArrayOutput{})
 	pulumi.RegisterOutputType(GameServerConfigScalingConfigOutput{})

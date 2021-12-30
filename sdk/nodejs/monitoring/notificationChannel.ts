@@ -168,40 +168,40 @@ export class NotificationChannel extends pulumi.CustomResource {
      */
     constructor(name: string, args: NotificationChannelArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NotificationChannelArgs | NotificationChannelState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NotificationChannelState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["sensitiveLabels"] = state ? state.sensitiveLabels : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["userLabels"] = state ? state.userLabels : undefined;
-            inputs["verificationStatus"] = state ? state.verificationStatus : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["sensitiveLabels"] = state ? state.sensitiveLabels : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["userLabels"] = state ? state.userLabels : undefined;
+            resourceInputs["verificationStatus"] = state ? state.verificationStatus : undefined;
         } else {
             const args = argsOrState as NotificationChannelArgs | undefined;
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["sensitiveLabels"] = args ? args.sensitiveLabels : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["userLabels"] = args ? args.userLabels : undefined;
-            inputs["name"] = undefined /*out*/;
-            inputs["verificationStatus"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["sensitiveLabels"] = args ? args.sensitiveLabels : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["userLabels"] = args ? args.userLabels : undefined;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["verificationStatus"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(NotificationChannel.__pulumiType, name, inputs, opts);
+        super(NotificationChannel.__pulumiType, name, resourceInputs, opts);
     }
 }
 

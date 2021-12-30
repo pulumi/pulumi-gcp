@@ -134,13 +134,13 @@ export class TagValueIamPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: TagValueIamPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TagValueIamPolicyArgs | TagValueIamPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TagValueIamPolicyState | undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["policyData"] = state ? state.policyData : undefined;
-            inputs["tagValue"] = state ? state.tagValue : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["policyData"] = state ? state.policyData : undefined;
+            resourceInputs["tagValue"] = state ? state.tagValue : undefined;
         } else {
             const args = argsOrState as TagValueIamPolicyArgs | undefined;
             if ((!args || args.policyData === undefined) && !opts.urn) {
@@ -149,14 +149,14 @@ export class TagValueIamPolicy extends pulumi.CustomResource {
             if ((!args || args.tagValue === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tagValue'");
             }
-            inputs["policyData"] = args ? args.policyData : undefined;
-            inputs["tagValue"] = args ? args.tagValue : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["policyData"] = args ? args.policyData : undefined;
+            resourceInputs["tagValue"] = args ? args.tagValue : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(TagValueIamPolicy.__pulumiType, name, inputs, opts);
+        super(TagValueIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

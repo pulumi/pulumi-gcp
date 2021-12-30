@@ -187,40 +187,40 @@ export class Organization extends pulumi.CustomResource {
      */
     constructor(name: string, args: OrganizationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OrganizationArgs | OrganizationState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrganizationState | undefined;
-            inputs["analyticsRegion"] = state ? state.analyticsRegion : undefined;
-            inputs["authorizedNetwork"] = state ? state.authorizedNetwork : undefined;
-            inputs["caCertificate"] = state ? state.caCertificate : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["projectId"] = state ? state.projectId : undefined;
-            inputs["runtimeDatabaseEncryptionKeyName"] = state ? state.runtimeDatabaseEncryptionKeyName : undefined;
-            inputs["runtimeType"] = state ? state.runtimeType : undefined;
-            inputs["subscriptionType"] = state ? state.subscriptionType : undefined;
+            resourceInputs["analyticsRegion"] = state ? state.analyticsRegion : undefined;
+            resourceInputs["authorizedNetwork"] = state ? state.authorizedNetwork : undefined;
+            resourceInputs["caCertificate"] = state ? state.caCertificate : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["runtimeDatabaseEncryptionKeyName"] = state ? state.runtimeDatabaseEncryptionKeyName : undefined;
+            resourceInputs["runtimeType"] = state ? state.runtimeType : undefined;
+            resourceInputs["subscriptionType"] = state ? state.subscriptionType : undefined;
         } else {
             const args = argsOrState as OrganizationArgs | undefined;
             if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            inputs["analyticsRegion"] = args ? args.analyticsRegion : undefined;
-            inputs["authorizedNetwork"] = args ? args.authorizedNetwork : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
-            inputs["runtimeDatabaseEncryptionKeyName"] = args ? args.runtimeDatabaseEncryptionKeyName : undefined;
-            inputs["runtimeType"] = args ? args.runtimeType : undefined;
-            inputs["caCertificate"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["subscriptionType"] = undefined /*out*/;
+            resourceInputs["analyticsRegion"] = args ? args.analyticsRegion : undefined;
+            resourceInputs["authorizedNetwork"] = args ? args.authorizedNetwork : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["runtimeDatabaseEncryptionKeyName"] = args ? args.runtimeDatabaseEncryptionKeyName : undefined;
+            resourceInputs["runtimeType"] = args ? args.runtimeType : undefined;
+            resourceInputs["caCertificate"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["subscriptionType"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Organization.__pulumiType, name, inputs, opts);
+        super(Organization.__pulumiType, name, resourceInputs, opts);
     }
 }
 

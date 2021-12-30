@@ -386,7 +386,7 @@ type AlertPolicyInput interface {
 }
 
 func (*AlertPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*AlertPolicy)(nil))
+	return reflect.TypeOf((**AlertPolicy)(nil)).Elem()
 }
 
 func (i *AlertPolicy) ToAlertPolicyOutput() AlertPolicyOutput {
@@ -395,35 +395,6 @@ func (i *AlertPolicy) ToAlertPolicyOutput() AlertPolicyOutput {
 
 func (i *AlertPolicy) ToAlertPolicyOutputWithContext(ctx context.Context) AlertPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyOutput)
-}
-
-func (i *AlertPolicy) ToAlertPolicyPtrOutput() AlertPolicyPtrOutput {
-	return i.ToAlertPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *AlertPolicy) ToAlertPolicyPtrOutputWithContext(ctx context.Context) AlertPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyPtrOutput)
-}
-
-type AlertPolicyPtrInput interface {
-	pulumi.Input
-
-	ToAlertPolicyPtrOutput() AlertPolicyPtrOutput
-	ToAlertPolicyPtrOutputWithContext(ctx context.Context) AlertPolicyPtrOutput
-}
-
-type alertPolicyPtrType AlertPolicyArgs
-
-func (*alertPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AlertPolicy)(nil))
-}
-
-func (i *alertPolicyPtrType) ToAlertPolicyPtrOutput() AlertPolicyPtrOutput {
-	return i.ToAlertPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *alertPolicyPtrType) ToAlertPolicyPtrOutputWithContext(ctx context.Context) AlertPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyPtrOutput)
 }
 
 // AlertPolicyArrayInput is an input type that accepts AlertPolicyArray and AlertPolicyArrayOutput values.
@@ -479,7 +450,7 @@ func (i AlertPolicyMap) ToAlertPolicyMapOutputWithContext(ctx context.Context) A
 type AlertPolicyOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AlertPolicy)(nil))
+	return reflect.TypeOf((**AlertPolicy)(nil)).Elem()
 }
 
 func (o AlertPolicyOutput) ToAlertPolicyOutput() AlertPolicyOutput {
@@ -490,44 +461,10 @@ func (o AlertPolicyOutput) ToAlertPolicyOutputWithContext(ctx context.Context) A
 	return o
 }
 
-func (o AlertPolicyOutput) ToAlertPolicyPtrOutput() AlertPolicyPtrOutput {
-	return o.ToAlertPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o AlertPolicyOutput) ToAlertPolicyPtrOutputWithContext(ctx context.Context) AlertPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertPolicy) *AlertPolicy {
-		return &v
-	}).(AlertPolicyPtrOutput)
-}
-
-type AlertPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (AlertPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AlertPolicy)(nil))
-}
-
-func (o AlertPolicyPtrOutput) ToAlertPolicyPtrOutput() AlertPolicyPtrOutput {
-	return o
-}
-
-func (o AlertPolicyPtrOutput) ToAlertPolicyPtrOutputWithContext(ctx context.Context) AlertPolicyPtrOutput {
-	return o
-}
-
-func (o AlertPolicyPtrOutput) Elem() AlertPolicyOutput {
-	return o.ApplyT(func(v *AlertPolicy) AlertPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret AlertPolicy
-		return ret
-	}).(AlertPolicyOutput)
-}
-
 type AlertPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AlertPolicy)(nil))
+	return reflect.TypeOf((*[]*AlertPolicy)(nil)).Elem()
 }
 
 func (o AlertPolicyArrayOutput) ToAlertPolicyArrayOutput() AlertPolicyArrayOutput {
@@ -539,15 +476,15 @@ func (o AlertPolicyArrayOutput) ToAlertPolicyArrayOutputWithContext(ctx context.
 }
 
 func (o AlertPolicyArrayOutput) Index(i pulumi.IntInput) AlertPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertPolicy {
-		return vs[0].([]AlertPolicy)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AlertPolicy {
+		return vs[0].([]*AlertPolicy)[vs[1].(int)]
 	}).(AlertPolicyOutput)
 }
 
 type AlertPolicyMapOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AlertPolicy)(nil))
+	return reflect.TypeOf((*map[string]*AlertPolicy)(nil)).Elem()
 }
 
 func (o AlertPolicyMapOutput) ToAlertPolicyMapOutput() AlertPolicyMapOutput {
@@ -559,18 +496,16 @@ func (o AlertPolicyMapOutput) ToAlertPolicyMapOutputWithContext(ctx context.Cont
 }
 
 func (o AlertPolicyMapOutput) MapIndex(k pulumi.StringInput) AlertPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AlertPolicy {
-		return vs[0].(map[string]AlertPolicy)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AlertPolicy {
+		return vs[0].(map[string]*AlertPolicy)[vs[1].(string)]
 	}).(AlertPolicyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyInput)(nil)).Elem(), &AlertPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyPtrInput)(nil)).Elem(), &AlertPolicy{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyArrayInput)(nil)).Elem(), AlertPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyMapInput)(nil)).Elem(), AlertPolicyMap{})
 	pulumi.RegisterOutputType(AlertPolicyOutput{})
-	pulumi.RegisterOutputType(AlertPolicyPtrOutput{})
 	pulumi.RegisterOutputType(AlertPolicyArrayOutput{})
 	pulumi.RegisterOutputType(AlertPolicyMapOutput{})
 }

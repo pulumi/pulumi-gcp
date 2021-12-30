@@ -222,16 +222,16 @@ export class AppEngineVersionIamPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: AppEngineVersionIamPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AppEngineVersionIamPolicyArgs | AppEngineVersionIamPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AppEngineVersionIamPolicyState | undefined;
-            inputs["appId"] = state ? state.appId : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["policyData"] = state ? state.policyData : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["service"] = state ? state.service : undefined;
-            inputs["versionId"] = state ? state.versionId : undefined;
+            resourceInputs["appId"] = state ? state.appId : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["policyData"] = state ? state.policyData : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["service"] = state ? state.service : undefined;
+            resourceInputs["versionId"] = state ? state.versionId : undefined;
         } else {
             const args = argsOrState as AppEngineVersionIamPolicyArgs | undefined;
             if ((!args || args.appId === undefined) && !opts.urn) {
@@ -246,17 +246,17 @@ export class AppEngineVersionIamPolicy extends pulumi.CustomResource {
             if ((!args || args.versionId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'versionId'");
             }
-            inputs["appId"] = args ? args.appId : undefined;
-            inputs["policyData"] = args ? args.policyData : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["service"] = args ? args.service : undefined;
-            inputs["versionId"] = args ? args.versionId : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["appId"] = args ? args.appId : undefined;
+            resourceInputs["policyData"] = args ? args.policyData : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["service"] = args ? args.service : undefined;
+            resourceInputs["versionId"] = args ? args.versionId : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(AppEngineVersionIamPolicy.__pulumiType, name, inputs, opts);
+        super(AppEngineVersionIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -32,13 +32,13 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := storage.NewBucket(ctx, "log_bucket", &storage.BucketArgs{
+// 		_, err := storage.NewBucket(ctx, "log-bucket", &storage.BucketArgs{
 // 			Location: pulumi.String("US"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = logging.NewOrganizationSink(ctx, "my_sink", &logging.OrganizationSinkArgs{
+// 		_, err = logging.NewOrganizationSink(ctx, "my-sink", &logging.OrganizationSinkArgs{
 // 			Description: pulumi.String("some explanation on what this is"),
 // 			OrgId:       pulumi.String("123456789"),
 // 			Destination: log_bucket.Name.ApplyT(func(name string) (string, error) {
@@ -49,7 +49,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = projects.NewIAMMember(ctx, "log_writer", &projects.IAMMemberArgs{
+// 		_, err = projects.NewIAMMember(ctx, "log-writer", &projects.IAMMemberArgs{
 // 			Project: pulumi.String("your-project-id"),
 // 			Role:    pulumi.String("roles/storage.objectCreator"),
 // 			Member:  my_sink.WriterIdentity,
@@ -321,7 +321,7 @@ type OrganizationSinkInput interface {
 }
 
 func (*OrganizationSink) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationSink)(nil))
+	return reflect.TypeOf((**OrganizationSink)(nil)).Elem()
 }
 
 func (i *OrganizationSink) ToOrganizationSinkOutput() OrganizationSinkOutput {
@@ -330,35 +330,6 @@ func (i *OrganizationSink) ToOrganizationSinkOutput() OrganizationSinkOutput {
 
 func (i *OrganizationSink) ToOrganizationSinkOutputWithContext(ctx context.Context) OrganizationSinkOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSinkOutput)
-}
-
-func (i *OrganizationSink) ToOrganizationSinkPtrOutput() OrganizationSinkPtrOutput {
-	return i.ToOrganizationSinkPtrOutputWithContext(context.Background())
-}
-
-func (i *OrganizationSink) ToOrganizationSinkPtrOutputWithContext(ctx context.Context) OrganizationSinkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSinkPtrOutput)
-}
-
-type OrganizationSinkPtrInput interface {
-	pulumi.Input
-
-	ToOrganizationSinkPtrOutput() OrganizationSinkPtrOutput
-	ToOrganizationSinkPtrOutputWithContext(ctx context.Context) OrganizationSinkPtrOutput
-}
-
-type organizationSinkPtrType OrganizationSinkArgs
-
-func (*organizationSinkPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OrganizationSink)(nil))
-}
-
-func (i *organizationSinkPtrType) ToOrganizationSinkPtrOutput() OrganizationSinkPtrOutput {
-	return i.ToOrganizationSinkPtrOutputWithContext(context.Background())
-}
-
-func (i *organizationSinkPtrType) ToOrganizationSinkPtrOutputWithContext(ctx context.Context) OrganizationSinkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSinkPtrOutput)
 }
 
 // OrganizationSinkArrayInput is an input type that accepts OrganizationSinkArray and OrganizationSinkArrayOutput values.
@@ -414,7 +385,7 @@ func (i OrganizationSinkMap) ToOrganizationSinkMapOutputWithContext(ctx context.
 type OrganizationSinkOutput struct{ *pulumi.OutputState }
 
 func (OrganizationSinkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationSink)(nil))
+	return reflect.TypeOf((**OrganizationSink)(nil)).Elem()
 }
 
 func (o OrganizationSinkOutput) ToOrganizationSinkOutput() OrganizationSinkOutput {
@@ -425,44 +396,10 @@ func (o OrganizationSinkOutput) ToOrganizationSinkOutputWithContext(ctx context.
 	return o
 }
 
-func (o OrganizationSinkOutput) ToOrganizationSinkPtrOutput() OrganizationSinkPtrOutput {
-	return o.ToOrganizationSinkPtrOutputWithContext(context.Background())
-}
-
-func (o OrganizationSinkOutput) ToOrganizationSinkPtrOutputWithContext(ctx context.Context) OrganizationSinkPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationSink) *OrganizationSink {
-		return &v
-	}).(OrganizationSinkPtrOutput)
-}
-
-type OrganizationSinkPtrOutput struct{ *pulumi.OutputState }
-
-func (OrganizationSinkPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OrganizationSink)(nil))
-}
-
-func (o OrganizationSinkPtrOutput) ToOrganizationSinkPtrOutput() OrganizationSinkPtrOutput {
-	return o
-}
-
-func (o OrganizationSinkPtrOutput) ToOrganizationSinkPtrOutputWithContext(ctx context.Context) OrganizationSinkPtrOutput {
-	return o
-}
-
-func (o OrganizationSinkPtrOutput) Elem() OrganizationSinkOutput {
-	return o.ApplyT(func(v *OrganizationSink) OrganizationSink {
-		if v != nil {
-			return *v
-		}
-		var ret OrganizationSink
-		return ret
-	}).(OrganizationSinkOutput)
-}
-
 type OrganizationSinkArrayOutput struct{ *pulumi.OutputState }
 
 func (OrganizationSinkArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OrganizationSink)(nil))
+	return reflect.TypeOf((*[]*OrganizationSink)(nil)).Elem()
 }
 
 func (o OrganizationSinkArrayOutput) ToOrganizationSinkArrayOutput() OrganizationSinkArrayOutput {
@@ -474,15 +411,15 @@ func (o OrganizationSinkArrayOutput) ToOrganizationSinkArrayOutputWithContext(ct
 }
 
 func (o OrganizationSinkArrayOutput) Index(i pulumi.IntInput) OrganizationSinkOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OrganizationSink {
-		return vs[0].([]OrganizationSink)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OrganizationSink {
+		return vs[0].([]*OrganizationSink)[vs[1].(int)]
 	}).(OrganizationSinkOutput)
 }
 
 type OrganizationSinkMapOutput struct{ *pulumi.OutputState }
 
 func (OrganizationSinkMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]OrganizationSink)(nil))
+	return reflect.TypeOf((*map[string]*OrganizationSink)(nil)).Elem()
 }
 
 func (o OrganizationSinkMapOutput) ToOrganizationSinkMapOutput() OrganizationSinkMapOutput {
@@ -494,18 +431,16 @@ func (o OrganizationSinkMapOutput) ToOrganizationSinkMapOutputWithContext(ctx co
 }
 
 func (o OrganizationSinkMapOutput) MapIndex(k pulumi.StringInput) OrganizationSinkOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) OrganizationSink {
-		return vs[0].(map[string]OrganizationSink)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *OrganizationSink {
+		return vs[0].(map[string]*OrganizationSink)[vs[1].(string)]
 	}).(OrganizationSinkOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationSinkInput)(nil)).Elem(), &OrganizationSink{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationSinkPtrInput)(nil)).Elem(), &OrganizationSink{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationSinkArrayInput)(nil)).Elem(), OrganizationSinkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationSinkMapInput)(nil)).Elem(), OrganizationSinkMap{})
 	pulumi.RegisterOutputType(OrganizationSinkOutput{})
-	pulumi.RegisterOutputType(OrganizationSinkPtrOutput{})
 	pulumi.RegisterOutputType(OrganizationSinkArrayOutput{})
 	pulumi.RegisterOutputType(OrganizationSinkMapOutput{})
 }

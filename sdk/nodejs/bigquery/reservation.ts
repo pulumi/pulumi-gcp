@@ -108,30 +108,30 @@ export class Reservation extends pulumi.CustomResource {
      */
     constructor(name: string, args: ReservationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ReservationArgs | ReservationState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ReservationState | undefined;
-            inputs["ignoreIdleSlots"] = state ? state.ignoreIdleSlots : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["slotCapacity"] = state ? state.slotCapacity : undefined;
+            resourceInputs["ignoreIdleSlots"] = state ? state.ignoreIdleSlots : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["slotCapacity"] = state ? state.slotCapacity : undefined;
         } else {
             const args = argsOrState as ReservationArgs | undefined;
             if ((!args || args.slotCapacity === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'slotCapacity'");
             }
-            inputs["ignoreIdleSlots"] = args ? args.ignoreIdleSlots : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["slotCapacity"] = args ? args.slotCapacity : undefined;
+            resourceInputs["ignoreIdleSlots"] = args ? args.ignoreIdleSlots : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["slotCapacity"] = args ? args.slotCapacity : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Reservation.__pulumiType, name, inputs, opts);
+        super(Reservation.__pulumiType, name, resourceInputs, opts);
     }
 }
 

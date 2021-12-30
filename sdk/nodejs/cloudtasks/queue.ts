@@ -148,34 +148,34 @@ export class Queue extends pulumi.CustomResource {
      */
     constructor(name: string, args: QueueArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: QueueArgs | QueueState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QueueState | undefined;
-            inputs["appEngineRoutingOverride"] = state ? state.appEngineRoutingOverride : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["rateLimits"] = state ? state.rateLimits : undefined;
-            inputs["retryConfig"] = state ? state.retryConfig : undefined;
-            inputs["stackdriverLoggingConfig"] = state ? state.stackdriverLoggingConfig : undefined;
+            resourceInputs["appEngineRoutingOverride"] = state ? state.appEngineRoutingOverride : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["rateLimits"] = state ? state.rateLimits : undefined;
+            resourceInputs["retryConfig"] = state ? state.retryConfig : undefined;
+            resourceInputs["stackdriverLoggingConfig"] = state ? state.stackdriverLoggingConfig : undefined;
         } else {
             const args = argsOrState as QueueArgs | undefined;
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            inputs["appEngineRoutingOverride"] = args ? args.appEngineRoutingOverride : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["rateLimits"] = args ? args.rateLimits : undefined;
-            inputs["retryConfig"] = args ? args.retryConfig : undefined;
-            inputs["stackdriverLoggingConfig"] = args ? args.stackdriverLoggingConfig : undefined;
+            resourceInputs["appEngineRoutingOverride"] = args ? args.appEngineRoutingOverride : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["rateLimits"] = args ? args.rateLimits : undefined;
+            resourceInputs["retryConfig"] = args ? args.retryConfig : undefined;
+            resourceInputs["stackdriverLoggingConfig"] = args ? args.stackdriverLoggingConfig : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Queue.__pulumiType, name, inputs, opts);
+        super(Queue.__pulumiType, name, resourceInputs, opts);
     }
 }
 

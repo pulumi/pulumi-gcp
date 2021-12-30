@@ -31,7 +31,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewHttpHealthCheck(ctx, "_default", &compute.HttpHealthCheckArgs{
+// 		_, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
 // 			RequestPath:      pulumi.String("/"),
 // 			CheckIntervalSec: pulumi.Int(1),
 // 			TimeoutSec:       pulumi.Int(1),
@@ -137,7 +137,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewHealthCheck(ctx, "_default", &compute.HealthCheckArgs{
+// 		_, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
 // 			HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
 // 				Port: pulumi.Int(80),
 // 			},
@@ -265,7 +265,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewHealthCheck(ctx, "_default", &compute.HealthCheckArgs{
+// 		_, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
 // 			HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
 // 				Port: pulumi.Int(80),
 // 			},
@@ -350,7 +350,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewHealthCheck(ctx, "_default", &compute.HealthCheckArgs{
+// 		_, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
 // 			HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
 // 				Port: pulumi.Int(80),
 // 			},
@@ -505,7 +505,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewHealthCheck(ctx, "_default", &compute.HealthCheckArgs{
+// 		_, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
 // 			HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
 // 				Port: pulumi.Int(80),
 // 			},
@@ -645,7 +645,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = compute.NewBackendService(ctx, "service_a", &compute.BackendServiceArgs{
+// 		_, err = compute.NewBackendService(ctx, "service-a", &compute.BackendServiceArgs{
 // 			PortName:   pulumi.String("http"),
 // 			Protocol:   pulumi.String("HTTP"),
 // 			TimeoutSec: pulumi.Int(10),
@@ -656,7 +656,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = compute.NewBackendService(ctx, "service_b", &compute.BackendServiceArgs{
+// 		_, err = compute.NewBackendService(ctx, "service-b", &compute.BackendServiceArgs{
 // 			PortName:   pulumi.String("http"),
 // 			Protocol:   pulumi.String("HTTP"),
 // 			TimeoutSec: pulumi.Int(10),
@@ -757,7 +757,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = compute.NewBackendService(ctx, "service_a", &compute.BackendServiceArgs{
+// 		_, err = compute.NewBackendService(ctx, "service-a", &compute.BackendServiceArgs{
 // 			PortName:   pulumi.String("http"),
 // 			Protocol:   pulumi.String("HTTP"),
 // 			TimeoutSec: pulumi.Int(10),
@@ -768,7 +768,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = compute.NewBackendService(ctx, "service_b", &compute.BackendServiceArgs{
+// 		_, err = compute.NewBackendService(ctx, "service-b", &compute.BackendServiceArgs{
 // 			PortName:   pulumi.String("http"),
 // 			Protocol:   pulumi.String("HTTP"),
 // 			TimeoutSec: pulumi.Int(10),
@@ -1135,7 +1135,7 @@ type URLMapInput interface {
 }
 
 func (*URLMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*URLMap)(nil))
+	return reflect.TypeOf((**URLMap)(nil)).Elem()
 }
 
 func (i *URLMap) ToURLMapOutput() URLMapOutput {
@@ -1144,35 +1144,6 @@ func (i *URLMap) ToURLMapOutput() URLMapOutput {
 
 func (i *URLMap) ToURLMapOutputWithContext(ctx context.Context) URLMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(URLMapOutput)
-}
-
-func (i *URLMap) ToURLMapPtrOutput() URLMapPtrOutput {
-	return i.ToURLMapPtrOutputWithContext(context.Background())
-}
-
-func (i *URLMap) ToURLMapPtrOutputWithContext(ctx context.Context) URLMapPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(URLMapPtrOutput)
-}
-
-type URLMapPtrInput interface {
-	pulumi.Input
-
-	ToURLMapPtrOutput() URLMapPtrOutput
-	ToURLMapPtrOutputWithContext(ctx context.Context) URLMapPtrOutput
-}
-
-type urlmapPtrType URLMapArgs
-
-func (*urlmapPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**URLMap)(nil))
-}
-
-func (i *urlmapPtrType) ToURLMapPtrOutput() URLMapPtrOutput {
-	return i.ToURLMapPtrOutputWithContext(context.Background())
-}
-
-func (i *urlmapPtrType) ToURLMapPtrOutputWithContext(ctx context.Context) URLMapPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(URLMapPtrOutput)
 }
 
 // URLMapArrayInput is an input type that accepts URLMapArray and URLMapArrayOutput values.
@@ -1228,7 +1199,7 @@ func (i URLMapMap) ToURLMapMapOutputWithContext(ctx context.Context) URLMapMapOu
 type URLMapOutput struct{ *pulumi.OutputState }
 
 func (URLMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*URLMap)(nil))
+	return reflect.TypeOf((**URLMap)(nil)).Elem()
 }
 
 func (o URLMapOutput) ToURLMapOutput() URLMapOutput {
@@ -1239,44 +1210,10 @@ func (o URLMapOutput) ToURLMapOutputWithContext(ctx context.Context) URLMapOutpu
 	return o
 }
 
-func (o URLMapOutput) ToURLMapPtrOutput() URLMapPtrOutput {
-	return o.ToURLMapPtrOutputWithContext(context.Background())
-}
-
-func (o URLMapOutput) ToURLMapPtrOutputWithContext(ctx context.Context) URLMapPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMap) *URLMap {
-		return &v
-	}).(URLMapPtrOutput)
-}
-
-type URLMapPtrOutput struct{ *pulumi.OutputState }
-
-func (URLMapPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**URLMap)(nil))
-}
-
-func (o URLMapPtrOutput) ToURLMapPtrOutput() URLMapPtrOutput {
-	return o
-}
-
-func (o URLMapPtrOutput) ToURLMapPtrOutputWithContext(ctx context.Context) URLMapPtrOutput {
-	return o
-}
-
-func (o URLMapPtrOutput) Elem() URLMapOutput {
-	return o.ApplyT(func(v *URLMap) URLMap {
-		if v != nil {
-			return *v
-		}
-		var ret URLMap
-		return ret
-	}).(URLMapOutput)
-}
-
 type URLMapArrayOutput struct{ *pulumi.OutputState }
 
 func (URLMapArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]URLMap)(nil))
+	return reflect.TypeOf((*[]*URLMap)(nil)).Elem()
 }
 
 func (o URLMapArrayOutput) ToURLMapArrayOutput() URLMapArrayOutput {
@@ -1288,15 +1225,15 @@ func (o URLMapArrayOutput) ToURLMapArrayOutputWithContext(ctx context.Context) U
 }
 
 func (o URLMapArrayOutput) Index(i pulumi.IntInput) URLMapOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) URLMap {
-		return vs[0].([]URLMap)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *URLMap {
+		return vs[0].([]*URLMap)[vs[1].(int)]
 	}).(URLMapOutput)
 }
 
 type URLMapMapOutput struct{ *pulumi.OutputState }
 
 func (URLMapMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]URLMap)(nil))
+	return reflect.TypeOf((*map[string]*URLMap)(nil)).Elem()
 }
 
 func (o URLMapMapOutput) ToURLMapMapOutput() URLMapMapOutput {
@@ -1308,18 +1245,16 @@ func (o URLMapMapOutput) ToURLMapMapOutputWithContext(ctx context.Context) URLMa
 }
 
 func (o URLMapMapOutput) MapIndex(k pulumi.StringInput) URLMapOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) URLMap {
-		return vs[0].(map[string]URLMap)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *URLMap {
+		return vs[0].(map[string]*URLMap)[vs[1].(string)]
 	}).(URLMapOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapInput)(nil)).Elem(), &URLMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPtrInput)(nil)).Elem(), &URLMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapArrayInput)(nil)).Elem(), URLMapArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapMapInput)(nil)).Elem(), URLMapMap{})
 	pulumi.RegisterOutputType(URLMapOutput{})
-	pulumi.RegisterOutputType(URLMapPtrOutput{})
 	pulumi.RegisterOutputType(URLMapArrayOutput{})
 	pulumi.RegisterOutputType(URLMapMapOutput{})
 }

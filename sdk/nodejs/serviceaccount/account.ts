@@ -118,36 +118,36 @@ export class Account extends pulumi.CustomResource {
      */
     constructor(name: string, args: AccountArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccountArgs | AccountState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountState | undefined;
-            inputs["accountId"] = state ? state.accountId : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["disabled"] = state ? state.disabled : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["email"] = state ? state.email : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["uniqueId"] = state ? state.uniqueId : undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["disabled"] = state ? state.disabled : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["email"] = state ? state.email : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["uniqueId"] = state ? state.uniqueId : undefined;
         } else {
             const args = argsOrState as AccountArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            inputs["accountId"] = args ? args.accountId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["disabled"] = args ? args.disabled : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["email"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["uniqueId"] = undefined /*out*/;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["disabled"] = args ? args.disabled : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["email"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["uniqueId"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Account.__pulumiType, name, inputs, opts);
+        super(Account.__pulumiType, name, resourceInputs, opts);
     }
 }
 

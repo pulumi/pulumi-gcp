@@ -131,50 +131,50 @@ export class Dataset extends pulumi.CustomResource {
      */
     constructor(name: string, args: DatasetArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DatasetArgs | DatasetState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatasetState | undefined;
-            inputs["accesses"] = state ? state.accesses : undefined;
-            inputs["creationTime"] = state ? state.creationTime : undefined;
-            inputs["datasetId"] = state ? state.datasetId : undefined;
-            inputs["defaultEncryptionConfiguration"] = state ? state.defaultEncryptionConfiguration : undefined;
-            inputs["defaultPartitionExpirationMs"] = state ? state.defaultPartitionExpirationMs : undefined;
-            inputs["defaultTableExpirationMs"] = state ? state.defaultTableExpirationMs : undefined;
-            inputs["deleteContentsOnDestroy"] = state ? state.deleteContentsOnDestroy : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["friendlyName"] = state ? state.friendlyName : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["accesses"] = state ? state.accesses : undefined;
+            resourceInputs["creationTime"] = state ? state.creationTime : undefined;
+            resourceInputs["datasetId"] = state ? state.datasetId : undefined;
+            resourceInputs["defaultEncryptionConfiguration"] = state ? state.defaultEncryptionConfiguration : undefined;
+            resourceInputs["defaultPartitionExpirationMs"] = state ? state.defaultPartitionExpirationMs : undefined;
+            resourceInputs["defaultTableExpirationMs"] = state ? state.defaultTableExpirationMs : undefined;
+            resourceInputs["deleteContentsOnDestroy"] = state ? state.deleteContentsOnDestroy : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["friendlyName"] = state ? state.friendlyName : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
         } else {
             const args = argsOrState as DatasetArgs | undefined;
             if ((!args || args.datasetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datasetId'");
             }
-            inputs["accesses"] = args ? args.accesses : undefined;
-            inputs["datasetId"] = args ? args.datasetId : undefined;
-            inputs["defaultEncryptionConfiguration"] = args ? args.defaultEncryptionConfiguration : undefined;
-            inputs["defaultPartitionExpirationMs"] = args ? args.defaultPartitionExpirationMs : undefined;
-            inputs["defaultTableExpirationMs"] = args ? args.defaultTableExpirationMs : undefined;
-            inputs["deleteContentsOnDestroy"] = args ? args.deleteContentsOnDestroy : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["friendlyName"] = args ? args.friendlyName : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["creationTime"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["lastModifiedTime"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["accesses"] = args ? args.accesses : undefined;
+            resourceInputs["datasetId"] = args ? args.datasetId : undefined;
+            resourceInputs["defaultEncryptionConfiguration"] = args ? args.defaultEncryptionConfiguration : undefined;
+            resourceInputs["defaultPartitionExpirationMs"] = args ? args.defaultPartitionExpirationMs : undefined;
+            resourceInputs["defaultTableExpirationMs"] = args ? args.defaultTableExpirationMs : undefined;
+            resourceInputs["deleteContentsOnDestroy"] = args ? args.deleteContentsOnDestroy : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["friendlyName"] = args ? args.friendlyName : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["creationTime"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["lastModifiedTime"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Dataset.__pulumiType, name, inputs, opts);
+        super(Dataset.__pulumiType, name, resourceInputs, opts);
     }
 }
 

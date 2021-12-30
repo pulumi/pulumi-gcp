@@ -109,15 +109,15 @@ export class GlobalNetworkEndpoint extends pulumi.CustomResource {
      */
     constructor(name: string, args: GlobalNetworkEndpointArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GlobalNetworkEndpointArgs | GlobalNetworkEndpointState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GlobalNetworkEndpointState | undefined;
-            inputs["fqdn"] = state ? state.fqdn : undefined;
-            inputs["globalNetworkEndpointGroup"] = state ? state.globalNetworkEndpointGroup : undefined;
-            inputs["ipAddress"] = state ? state.ipAddress : undefined;
-            inputs["port"] = state ? state.port : undefined;
-            inputs["project"] = state ? state.project : undefined;
+            resourceInputs["fqdn"] = state ? state.fqdn : undefined;
+            resourceInputs["globalNetworkEndpointGroup"] = state ? state.globalNetworkEndpointGroup : undefined;
+            resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as GlobalNetworkEndpointArgs | undefined;
             if ((!args || args.globalNetworkEndpointGroup === undefined) && !opts.urn) {
@@ -126,16 +126,16 @@ export class GlobalNetworkEndpoint extends pulumi.CustomResource {
             if ((!args || args.port === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'port'");
             }
-            inputs["fqdn"] = args ? args.fqdn : undefined;
-            inputs["globalNetworkEndpointGroup"] = args ? args.globalNetworkEndpointGroup : undefined;
-            inputs["ipAddress"] = args ? args.ipAddress : undefined;
-            inputs["port"] = args ? args.port : undefined;
-            inputs["project"] = args ? args.project : undefined;
+            resourceInputs["fqdn"] = args ? args.fqdn : undefined;
+            resourceInputs["globalNetworkEndpointGroup"] = args ? args.globalNetworkEndpointGroup : undefined;
+            resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
+            resourceInputs["port"] = args ? args.port : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(GlobalNetworkEndpoint.__pulumiType, name, inputs, opts);
+        super(GlobalNetworkEndpoint.__pulumiType, name, resourceInputs, opts);
     }
 }
 

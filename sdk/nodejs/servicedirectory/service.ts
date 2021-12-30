@@ -112,14 +112,14 @@ export class Service extends pulumi.CustomResource {
      */
     constructor(name: string, args: ServiceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServiceArgs | ServiceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceState | undefined;
-            inputs["metadata"] = state ? state.metadata : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["namespace"] = state ? state.namespace : undefined;
-            inputs["serviceId"] = state ? state.serviceId : undefined;
+            resourceInputs["metadata"] = state ? state.metadata : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["namespace"] = state ? state.namespace : undefined;
+            resourceInputs["serviceId"] = state ? state.serviceId : undefined;
         } else {
             const args = argsOrState as ServiceArgs | undefined;
             if ((!args || args.namespace === undefined) && !opts.urn) {
@@ -128,15 +128,15 @@ export class Service extends pulumi.CustomResource {
             if ((!args || args.serviceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceId'");
             }
-            inputs["metadata"] = args ? args.metadata : undefined;
-            inputs["namespace"] = args ? args.namespace : undefined;
-            inputs["serviceId"] = args ? args.serviceId : undefined;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["metadata"] = args ? args.metadata : undefined;
+            resourceInputs["namespace"] = args ? args.namespace : undefined;
+            resourceInputs["serviceId"] = args ? args.serviceId : undefined;
+            resourceInputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Service.__pulumiType, name, inputs, opts);
+        super(Service.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -159,7 +159,7 @@ type IamAuditConfigInput interface {
 }
 
 func (*IamAuditConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((*IamAuditConfig)(nil))
+	return reflect.TypeOf((**IamAuditConfig)(nil)).Elem()
 }
 
 func (i *IamAuditConfig) ToIamAuditConfigOutput() IamAuditConfigOutput {
@@ -168,35 +168,6 @@ func (i *IamAuditConfig) ToIamAuditConfigOutput() IamAuditConfigOutput {
 
 func (i *IamAuditConfig) ToIamAuditConfigOutputWithContext(ctx context.Context) IamAuditConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IamAuditConfigOutput)
-}
-
-func (i *IamAuditConfig) ToIamAuditConfigPtrOutput() IamAuditConfigPtrOutput {
-	return i.ToIamAuditConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *IamAuditConfig) ToIamAuditConfigPtrOutputWithContext(ctx context.Context) IamAuditConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IamAuditConfigPtrOutput)
-}
-
-type IamAuditConfigPtrInput interface {
-	pulumi.Input
-
-	ToIamAuditConfigPtrOutput() IamAuditConfigPtrOutput
-	ToIamAuditConfigPtrOutputWithContext(ctx context.Context) IamAuditConfigPtrOutput
-}
-
-type iamAuditConfigPtrType IamAuditConfigArgs
-
-func (*iamAuditConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**IamAuditConfig)(nil))
-}
-
-func (i *iamAuditConfigPtrType) ToIamAuditConfigPtrOutput() IamAuditConfigPtrOutput {
-	return i.ToIamAuditConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *iamAuditConfigPtrType) ToIamAuditConfigPtrOutputWithContext(ctx context.Context) IamAuditConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IamAuditConfigPtrOutput)
 }
 
 // IamAuditConfigArrayInput is an input type that accepts IamAuditConfigArray and IamAuditConfigArrayOutput values.
@@ -252,7 +223,7 @@ func (i IamAuditConfigMap) ToIamAuditConfigMapOutputWithContext(ctx context.Cont
 type IamAuditConfigOutput struct{ *pulumi.OutputState }
 
 func (IamAuditConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IamAuditConfig)(nil))
+	return reflect.TypeOf((**IamAuditConfig)(nil)).Elem()
 }
 
 func (o IamAuditConfigOutput) ToIamAuditConfigOutput() IamAuditConfigOutput {
@@ -263,44 +234,10 @@ func (o IamAuditConfigOutput) ToIamAuditConfigOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o IamAuditConfigOutput) ToIamAuditConfigPtrOutput() IamAuditConfigPtrOutput {
-	return o.ToIamAuditConfigPtrOutputWithContext(context.Background())
-}
-
-func (o IamAuditConfigOutput) ToIamAuditConfigPtrOutputWithContext(ctx context.Context) IamAuditConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v IamAuditConfig) *IamAuditConfig {
-		return &v
-	}).(IamAuditConfigPtrOutput)
-}
-
-type IamAuditConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (IamAuditConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IamAuditConfig)(nil))
-}
-
-func (o IamAuditConfigPtrOutput) ToIamAuditConfigPtrOutput() IamAuditConfigPtrOutput {
-	return o
-}
-
-func (o IamAuditConfigPtrOutput) ToIamAuditConfigPtrOutputWithContext(ctx context.Context) IamAuditConfigPtrOutput {
-	return o
-}
-
-func (o IamAuditConfigPtrOutput) Elem() IamAuditConfigOutput {
-	return o.ApplyT(func(v *IamAuditConfig) IamAuditConfig {
-		if v != nil {
-			return *v
-		}
-		var ret IamAuditConfig
-		return ret
-	}).(IamAuditConfigOutput)
-}
-
 type IamAuditConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (IamAuditConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]IamAuditConfig)(nil))
+	return reflect.TypeOf((*[]*IamAuditConfig)(nil)).Elem()
 }
 
 func (o IamAuditConfigArrayOutput) ToIamAuditConfigArrayOutput() IamAuditConfigArrayOutput {
@@ -312,15 +249,15 @@ func (o IamAuditConfigArrayOutput) ToIamAuditConfigArrayOutputWithContext(ctx co
 }
 
 func (o IamAuditConfigArrayOutput) Index(i pulumi.IntInput) IamAuditConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IamAuditConfig {
-		return vs[0].([]IamAuditConfig)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IamAuditConfig {
+		return vs[0].([]*IamAuditConfig)[vs[1].(int)]
 	}).(IamAuditConfigOutput)
 }
 
 type IamAuditConfigMapOutput struct{ *pulumi.OutputState }
 
 func (IamAuditConfigMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]IamAuditConfig)(nil))
+	return reflect.TypeOf((*map[string]*IamAuditConfig)(nil)).Elem()
 }
 
 func (o IamAuditConfigMapOutput) ToIamAuditConfigMapOutput() IamAuditConfigMapOutput {
@@ -332,18 +269,16 @@ func (o IamAuditConfigMapOutput) ToIamAuditConfigMapOutputWithContext(ctx contex
 }
 
 func (o IamAuditConfigMapOutput) MapIndex(k pulumi.StringInput) IamAuditConfigOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) IamAuditConfig {
-		return vs[0].(map[string]IamAuditConfig)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *IamAuditConfig {
+		return vs[0].(map[string]*IamAuditConfig)[vs[1].(string)]
 	}).(IamAuditConfigOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IamAuditConfigInput)(nil)).Elem(), &IamAuditConfig{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IamAuditConfigPtrInput)(nil)).Elem(), &IamAuditConfig{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IamAuditConfigArrayInput)(nil)).Elem(), IamAuditConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IamAuditConfigMapInput)(nil)).Elem(), IamAuditConfigMap{})
 	pulumi.RegisterOutputType(IamAuditConfigOutput{})
-	pulumi.RegisterOutputType(IamAuditConfigPtrOutput{})
 	pulumi.RegisterOutputType(IamAuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(IamAuditConfigMapOutput{})
 }

@@ -84,24 +84,24 @@ export class ProjectLocation extends pulumi.CustomResource {
      */
     constructor(name: string, args: ProjectLocationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectLocationArgs | ProjectLocationState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectLocationState | undefined;
-            inputs["locationId"] = state ? state.locationId : undefined;
-            inputs["project"] = state ? state.project : undefined;
+            resourceInputs["locationId"] = state ? state.locationId : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as ProjectLocationArgs | undefined;
             if ((!args || args.locationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'locationId'");
             }
-            inputs["locationId"] = args ? args.locationId : undefined;
-            inputs["project"] = args ? args.project : undefined;
+            resourceInputs["locationId"] = args ? args.locationId : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ProjectLocation.__pulumiType, name, inputs, opts);
+        super(ProjectLocation.__pulumiType, name, resourceInputs, opts);
     }
 }
 

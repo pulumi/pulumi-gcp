@@ -244,7 +244,7 @@ type GCPolicyInput interface {
 }
 
 func (*GCPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*GCPolicy)(nil))
+	return reflect.TypeOf((**GCPolicy)(nil)).Elem()
 }
 
 func (i *GCPolicy) ToGCPolicyOutput() GCPolicyOutput {
@@ -253,35 +253,6 @@ func (i *GCPolicy) ToGCPolicyOutput() GCPolicyOutput {
 
 func (i *GCPolicy) ToGCPolicyOutputWithContext(ctx context.Context) GCPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GCPolicyOutput)
-}
-
-func (i *GCPolicy) ToGCPolicyPtrOutput() GCPolicyPtrOutput {
-	return i.ToGCPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *GCPolicy) ToGCPolicyPtrOutputWithContext(ctx context.Context) GCPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GCPolicyPtrOutput)
-}
-
-type GCPolicyPtrInput interface {
-	pulumi.Input
-
-	ToGCPolicyPtrOutput() GCPolicyPtrOutput
-	ToGCPolicyPtrOutputWithContext(ctx context.Context) GCPolicyPtrOutput
-}
-
-type gcpolicyPtrType GCPolicyArgs
-
-func (*gcpolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GCPolicy)(nil))
-}
-
-func (i *gcpolicyPtrType) ToGCPolicyPtrOutput() GCPolicyPtrOutput {
-	return i.ToGCPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *gcpolicyPtrType) ToGCPolicyPtrOutputWithContext(ctx context.Context) GCPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GCPolicyPtrOutput)
 }
 
 // GCPolicyArrayInput is an input type that accepts GCPolicyArray and GCPolicyArrayOutput values.
@@ -337,7 +308,7 @@ func (i GCPolicyMap) ToGCPolicyMapOutputWithContext(ctx context.Context) GCPolic
 type GCPolicyOutput struct{ *pulumi.OutputState }
 
 func (GCPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GCPolicy)(nil))
+	return reflect.TypeOf((**GCPolicy)(nil)).Elem()
 }
 
 func (o GCPolicyOutput) ToGCPolicyOutput() GCPolicyOutput {
@@ -348,44 +319,10 @@ func (o GCPolicyOutput) ToGCPolicyOutputWithContext(ctx context.Context) GCPolic
 	return o
 }
 
-func (o GCPolicyOutput) ToGCPolicyPtrOutput() GCPolicyPtrOutput {
-	return o.ToGCPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o GCPolicyOutput) ToGCPolicyPtrOutputWithContext(ctx context.Context) GCPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GCPolicy) *GCPolicy {
-		return &v
-	}).(GCPolicyPtrOutput)
-}
-
-type GCPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (GCPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GCPolicy)(nil))
-}
-
-func (o GCPolicyPtrOutput) ToGCPolicyPtrOutput() GCPolicyPtrOutput {
-	return o
-}
-
-func (o GCPolicyPtrOutput) ToGCPolicyPtrOutputWithContext(ctx context.Context) GCPolicyPtrOutput {
-	return o
-}
-
-func (o GCPolicyPtrOutput) Elem() GCPolicyOutput {
-	return o.ApplyT(func(v *GCPolicy) GCPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret GCPolicy
-		return ret
-	}).(GCPolicyOutput)
-}
-
 type GCPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (GCPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GCPolicy)(nil))
+	return reflect.TypeOf((*[]*GCPolicy)(nil)).Elem()
 }
 
 func (o GCPolicyArrayOutput) ToGCPolicyArrayOutput() GCPolicyArrayOutput {
@@ -397,15 +334,15 @@ func (o GCPolicyArrayOutput) ToGCPolicyArrayOutputWithContext(ctx context.Contex
 }
 
 func (o GCPolicyArrayOutput) Index(i pulumi.IntInput) GCPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GCPolicy {
-		return vs[0].([]GCPolicy)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GCPolicy {
+		return vs[0].([]*GCPolicy)[vs[1].(int)]
 	}).(GCPolicyOutput)
 }
 
 type GCPolicyMapOutput struct{ *pulumi.OutputState }
 
 func (GCPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GCPolicy)(nil))
+	return reflect.TypeOf((*map[string]*GCPolicy)(nil)).Elem()
 }
 
 func (o GCPolicyMapOutput) ToGCPolicyMapOutput() GCPolicyMapOutput {
@@ -417,18 +354,16 @@ func (o GCPolicyMapOutput) ToGCPolicyMapOutputWithContext(ctx context.Context) G
 }
 
 func (o GCPolicyMapOutput) MapIndex(k pulumi.StringInput) GCPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GCPolicy {
-		return vs[0].(map[string]GCPolicy)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *GCPolicy {
+		return vs[0].(map[string]*GCPolicy)[vs[1].(string)]
 	}).(GCPolicyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GCPolicyInput)(nil)).Elem(), &GCPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GCPolicyPtrInput)(nil)).Elem(), &GCPolicy{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GCPolicyArrayInput)(nil)).Elem(), GCPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GCPolicyMapInput)(nil)).Elem(), GCPolicyMap{})
 	pulumi.RegisterOutputType(GCPolicyOutput{})
-	pulumi.RegisterOutputType(GCPolicyPtrOutput{})
 	pulumi.RegisterOutputType(GCPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GCPolicyMapOutput{})
 }

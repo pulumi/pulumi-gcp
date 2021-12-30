@@ -385,7 +385,7 @@ type WebTypeAppEngingIamMemberInput interface {
 }
 
 func (*WebTypeAppEngingIamMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebTypeAppEngingIamMember)(nil))
+	return reflect.TypeOf((**WebTypeAppEngingIamMember)(nil)).Elem()
 }
 
 func (i *WebTypeAppEngingIamMember) ToWebTypeAppEngingIamMemberOutput() WebTypeAppEngingIamMemberOutput {
@@ -394,35 +394,6 @@ func (i *WebTypeAppEngingIamMember) ToWebTypeAppEngingIamMemberOutput() WebTypeA
 
 func (i *WebTypeAppEngingIamMember) ToWebTypeAppEngingIamMemberOutputWithContext(ctx context.Context) WebTypeAppEngingIamMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebTypeAppEngingIamMemberOutput)
-}
-
-func (i *WebTypeAppEngingIamMember) ToWebTypeAppEngingIamMemberPtrOutput() WebTypeAppEngingIamMemberPtrOutput {
-	return i.ToWebTypeAppEngingIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *WebTypeAppEngingIamMember) ToWebTypeAppEngingIamMemberPtrOutputWithContext(ctx context.Context) WebTypeAppEngingIamMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WebTypeAppEngingIamMemberPtrOutput)
-}
-
-type WebTypeAppEngingIamMemberPtrInput interface {
-	pulumi.Input
-
-	ToWebTypeAppEngingIamMemberPtrOutput() WebTypeAppEngingIamMemberPtrOutput
-	ToWebTypeAppEngingIamMemberPtrOutputWithContext(ctx context.Context) WebTypeAppEngingIamMemberPtrOutput
-}
-
-type webTypeAppEngingIamMemberPtrType WebTypeAppEngingIamMemberArgs
-
-func (*webTypeAppEngingIamMemberPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WebTypeAppEngingIamMember)(nil))
-}
-
-func (i *webTypeAppEngingIamMemberPtrType) ToWebTypeAppEngingIamMemberPtrOutput() WebTypeAppEngingIamMemberPtrOutput {
-	return i.ToWebTypeAppEngingIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *webTypeAppEngingIamMemberPtrType) ToWebTypeAppEngingIamMemberPtrOutputWithContext(ctx context.Context) WebTypeAppEngingIamMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WebTypeAppEngingIamMemberPtrOutput)
 }
 
 // WebTypeAppEngingIamMemberArrayInput is an input type that accepts WebTypeAppEngingIamMemberArray and WebTypeAppEngingIamMemberArrayOutput values.
@@ -478,7 +449,7 @@ func (i WebTypeAppEngingIamMemberMap) ToWebTypeAppEngingIamMemberMapOutputWithCo
 type WebTypeAppEngingIamMemberOutput struct{ *pulumi.OutputState }
 
 func (WebTypeAppEngingIamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebTypeAppEngingIamMember)(nil))
+	return reflect.TypeOf((**WebTypeAppEngingIamMember)(nil)).Elem()
 }
 
 func (o WebTypeAppEngingIamMemberOutput) ToWebTypeAppEngingIamMemberOutput() WebTypeAppEngingIamMemberOutput {
@@ -489,44 +460,10 @@ func (o WebTypeAppEngingIamMemberOutput) ToWebTypeAppEngingIamMemberOutputWithCo
 	return o
 }
 
-func (o WebTypeAppEngingIamMemberOutput) ToWebTypeAppEngingIamMemberPtrOutput() WebTypeAppEngingIamMemberPtrOutput {
-	return o.ToWebTypeAppEngingIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (o WebTypeAppEngingIamMemberOutput) ToWebTypeAppEngingIamMemberPtrOutputWithContext(ctx context.Context) WebTypeAppEngingIamMemberPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebTypeAppEngingIamMember) *WebTypeAppEngingIamMember {
-		return &v
-	}).(WebTypeAppEngingIamMemberPtrOutput)
-}
-
-type WebTypeAppEngingIamMemberPtrOutput struct{ *pulumi.OutputState }
-
-func (WebTypeAppEngingIamMemberPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WebTypeAppEngingIamMember)(nil))
-}
-
-func (o WebTypeAppEngingIamMemberPtrOutput) ToWebTypeAppEngingIamMemberPtrOutput() WebTypeAppEngingIamMemberPtrOutput {
-	return o
-}
-
-func (o WebTypeAppEngingIamMemberPtrOutput) ToWebTypeAppEngingIamMemberPtrOutputWithContext(ctx context.Context) WebTypeAppEngingIamMemberPtrOutput {
-	return o
-}
-
-func (o WebTypeAppEngingIamMemberPtrOutput) Elem() WebTypeAppEngingIamMemberOutput {
-	return o.ApplyT(func(v *WebTypeAppEngingIamMember) WebTypeAppEngingIamMember {
-		if v != nil {
-			return *v
-		}
-		var ret WebTypeAppEngingIamMember
-		return ret
-	}).(WebTypeAppEngingIamMemberOutput)
-}
-
 type WebTypeAppEngingIamMemberArrayOutput struct{ *pulumi.OutputState }
 
 func (WebTypeAppEngingIamMemberArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]WebTypeAppEngingIamMember)(nil))
+	return reflect.TypeOf((*[]*WebTypeAppEngingIamMember)(nil)).Elem()
 }
 
 func (o WebTypeAppEngingIamMemberArrayOutput) ToWebTypeAppEngingIamMemberArrayOutput() WebTypeAppEngingIamMemberArrayOutput {
@@ -538,15 +475,15 @@ func (o WebTypeAppEngingIamMemberArrayOutput) ToWebTypeAppEngingIamMemberArrayOu
 }
 
 func (o WebTypeAppEngingIamMemberArrayOutput) Index(i pulumi.IntInput) WebTypeAppEngingIamMemberOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WebTypeAppEngingIamMember {
-		return vs[0].([]WebTypeAppEngingIamMember)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WebTypeAppEngingIamMember {
+		return vs[0].([]*WebTypeAppEngingIamMember)[vs[1].(int)]
 	}).(WebTypeAppEngingIamMemberOutput)
 }
 
 type WebTypeAppEngingIamMemberMapOutput struct{ *pulumi.OutputState }
 
 func (WebTypeAppEngingIamMemberMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]WebTypeAppEngingIamMember)(nil))
+	return reflect.TypeOf((*map[string]*WebTypeAppEngingIamMember)(nil)).Elem()
 }
 
 func (o WebTypeAppEngingIamMemberMapOutput) ToWebTypeAppEngingIamMemberMapOutput() WebTypeAppEngingIamMemberMapOutput {
@@ -558,18 +495,16 @@ func (o WebTypeAppEngingIamMemberMapOutput) ToWebTypeAppEngingIamMemberMapOutput
 }
 
 func (o WebTypeAppEngingIamMemberMapOutput) MapIndex(k pulumi.StringInput) WebTypeAppEngingIamMemberOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) WebTypeAppEngingIamMember {
-		return vs[0].(map[string]WebTypeAppEngingIamMember)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *WebTypeAppEngingIamMember {
+		return vs[0].(map[string]*WebTypeAppEngingIamMember)[vs[1].(string)]
 	}).(WebTypeAppEngingIamMemberOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WebTypeAppEngingIamMemberInput)(nil)).Elem(), &WebTypeAppEngingIamMember{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WebTypeAppEngingIamMemberPtrInput)(nil)).Elem(), &WebTypeAppEngingIamMember{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebTypeAppEngingIamMemberArrayInput)(nil)).Elem(), WebTypeAppEngingIamMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebTypeAppEngingIamMemberMapInput)(nil)).Elem(), WebTypeAppEngingIamMemberMap{})
 	pulumi.RegisterOutputType(WebTypeAppEngingIamMemberOutput{})
-	pulumi.RegisterOutputType(WebTypeAppEngingIamMemberPtrOutput{})
 	pulumi.RegisterOutputType(WebTypeAppEngingIamMemberArrayOutput{})
 	pulumi.RegisterOutputType(WebTypeAppEngingIamMemberMapOutput{})
 }

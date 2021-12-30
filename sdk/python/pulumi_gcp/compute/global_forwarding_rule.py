@@ -735,6 +735,142 @@ class GlobalForwardingRule(pulumi.CustomResource):
         https://cloud.google.com/compute/docs/load-balancing/http/
 
         ## Example Usage
+        ### External Ssl Proxy Lb Mig Backend Custom Header
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_tls as tls
+
+        # External SSL proxy load balancer with managed instance group backend
+        # VPC
+        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google))
+        # backend subnet
+        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+            ip_cidr_range="10.0.1.0/24",
+            region="us-central1",
+            network=default_network.id,
+            opts=pulumi.ResourceOptions(provider=google))
+        # reserved IP address
+        default_global_address = gcp.compute.GlobalAddress("defaultGlobalAddress")
+        # Self-signed regional SSL certificate for testing
+        default_private_key = tls.PrivateKey("defaultPrivateKey",
+            algorithm="RSA",
+            rsa_bits=2048)
+        default_self_signed_cert = tls.SelfSignedCert("defaultSelfSignedCert",
+            key_algorithm=default_private_key.algorithm,
+            private_key_pem=default_private_key.private_key_pem,
+            validity_period_hours=12,
+            early_renewal_hours=3,
+            allowed_uses=[
+                "key_encipherment",
+                "digital_signature",
+                "server_auth",
+            ],
+            dns_names=["example.com"],
+            subjects=[tls.SelfSignedCertSubjectArgs(
+                common_name="example.com",
+                organization="ACME Examples, Inc",
+            )])
+        default_ssl_certificate = gcp.compute.SSLCertificate("defaultSSLCertificate",
+            private_key=default_private_key.private_key_pem,
+            certificate=default_self_signed_cert.cert_pem)
+        default_health_check = gcp.compute.HealthCheck("defaultHealthCheck",
+            timeout_sec=1,
+            check_interval_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=443,
+            ))
+        # instance template
+        default_instance_template = gcp.compute.InstanceTemplate("defaultInstanceTemplate",
+            machine_type="e2-small",
+            tags=["allow-health-check"],
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                network=default_network.id,
+                subnetwork=default_subnetwork.id,
+                access_configs=[gcp.compute.InstanceTemplateNetworkInterfaceAccessConfigArgs()],
+            )],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image="debian-cloud/debian-10",
+                auto_delete=True,
+                boot=True,
+            )],
+            metadata={
+                "startup-script": \"\"\"#! /bin/bash
+        set -euo pipefail
+        export DEBIAN_FRONTEND=noninteractive
+        sudo apt-get update
+        sudo apt-get install  -y apache2 jq
+        sudo a2ensite default-ssl
+        sudo a2enmod ssl
+        sudo service apache2 restart
+        NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
+        IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
+        METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
+        cat <<EOF > /var/www/html/index.html
+        <h1>SSL Load Balancer</h1>
+        <pre>
+        Name: $NAME
+        IP: $IP
+        Metadata: $METADATA
+        </pre>
+        EOF
+        \"\"\",
+            },
+            opts=pulumi.ResourceOptions(provider=google))
+        # MIG
+        default_instance_group_manager = gcp.compute.InstanceGroupManager("defaultInstanceGroupManager",
+            zone="us-central1-c",
+            named_ports=[gcp.compute.InstanceGroupManagerNamedPortArgs(
+                name="tcp",
+                port=443,
+            )],
+            versions=[gcp.compute.InstanceGroupManagerVersionArgs(
+                instance_template=default_instance_template.id,
+                name="primary",
+            )],
+            base_instance_name="vm",
+            target_size=2,
+            opts=pulumi.ResourceOptions(provider=google))
+        # backend service
+        default_backend_service = gcp.compute.BackendService("defaultBackendService",
+            protocol="SSL",
+            port_name="tcp",
+            load_balancing_scheme="EXTERNAL",
+            timeout_sec=10,
+            health_checks=[default_health_check.id],
+            backends=[gcp.compute.BackendServiceBackendArgs(
+                group=default_instance_group_manager.instance_group,
+                balancing_mode="UTILIZATION",
+                max_utilization=1,
+                capacity_scaler=1,
+            )])
+        default_target_ssl_proxy = gcp.compute.TargetSSLProxy("defaultTargetSSLProxy",
+            backend_service=default_backend_service.id,
+            ssl_certificates=[default_ssl_certificate.id])
+        # forwarding rule
+        default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule",
+            ip_protocol="TCP",
+            load_balancing_scheme="EXTERNAL",
+            port_range="443",
+            target=default_target_ssl_proxy.id,
+            ip_address=default_global_address.id,
+            opts=pulumi.ResourceOptions(provider=google))
+        # allow access from health check ranges
+        default_firewall = gcp.compute.Firewall("defaultFirewall",
+            direction="INGRESS",
+            network=default_network.id,
+            source_ranges=[
+                "130.211.0.0/22",
+                "35.191.0.0/16",
+            ],
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+            )],
+            target_tags=["allow-health-check"],
+            opts=pulumi.ResourceOptions(provider=google))
+        ```
         ### External Tcp Proxy Lb Mig Backend Custom Header
 
         ```python
@@ -1228,6 +1364,142 @@ class GlobalForwardingRule(pulumi.CustomResource):
         https://cloud.google.com/compute/docs/load-balancing/http/
 
         ## Example Usage
+        ### External Ssl Proxy Lb Mig Backend Custom Header
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_tls as tls
+
+        # External SSL proxy load balancer with managed instance group backend
+        # VPC
+        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google))
+        # backend subnet
+        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+            ip_cidr_range="10.0.1.0/24",
+            region="us-central1",
+            network=default_network.id,
+            opts=pulumi.ResourceOptions(provider=google))
+        # reserved IP address
+        default_global_address = gcp.compute.GlobalAddress("defaultGlobalAddress")
+        # Self-signed regional SSL certificate for testing
+        default_private_key = tls.PrivateKey("defaultPrivateKey",
+            algorithm="RSA",
+            rsa_bits=2048)
+        default_self_signed_cert = tls.SelfSignedCert("defaultSelfSignedCert",
+            key_algorithm=default_private_key.algorithm,
+            private_key_pem=default_private_key.private_key_pem,
+            validity_period_hours=12,
+            early_renewal_hours=3,
+            allowed_uses=[
+                "key_encipherment",
+                "digital_signature",
+                "server_auth",
+            ],
+            dns_names=["example.com"],
+            subjects=[tls.SelfSignedCertSubjectArgs(
+                common_name="example.com",
+                organization="ACME Examples, Inc",
+            )])
+        default_ssl_certificate = gcp.compute.SSLCertificate("defaultSSLCertificate",
+            private_key=default_private_key.private_key_pem,
+            certificate=default_self_signed_cert.cert_pem)
+        default_health_check = gcp.compute.HealthCheck("defaultHealthCheck",
+            timeout_sec=1,
+            check_interval_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=443,
+            ))
+        # instance template
+        default_instance_template = gcp.compute.InstanceTemplate("defaultInstanceTemplate",
+            machine_type="e2-small",
+            tags=["allow-health-check"],
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                network=default_network.id,
+                subnetwork=default_subnetwork.id,
+                access_configs=[gcp.compute.InstanceTemplateNetworkInterfaceAccessConfigArgs()],
+            )],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image="debian-cloud/debian-10",
+                auto_delete=True,
+                boot=True,
+            )],
+            metadata={
+                "startup-script": \"\"\"#! /bin/bash
+        set -euo pipefail
+        export DEBIAN_FRONTEND=noninteractive
+        sudo apt-get update
+        sudo apt-get install  -y apache2 jq
+        sudo a2ensite default-ssl
+        sudo a2enmod ssl
+        sudo service apache2 restart
+        NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
+        IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
+        METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
+        cat <<EOF > /var/www/html/index.html
+        <h1>SSL Load Balancer</h1>
+        <pre>
+        Name: $NAME
+        IP: $IP
+        Metadata: $METADATA
+        </pre>
+        EOF
+        \"\"\",
+            },
+            opts=pulumi.ResourceOptions(provider=google))
+        # MIG
+        default_instance_group_manager = gcp.compute.InstanceGroupManager("defaultInstanceGroupManager",
+            zone="us-central1-c",
+            named_ports=[gcp.compute.InstanceGroupManagerNamedPortArgs(
+                name="tcp",
+                port=443,
+            )],
+            versions=[gcp.compute.InstanceGroupManagerVersionArgs(
+                instance_template=default_instance_template.id,
+                name="primary",
+            )],
+            base_instance_name="vm",
+            target_size=2,
+            opts=pulumi.ResourceOptions(provider=google))
+        # backend service
+        default_backend_service = gcp.compute.BackendService("defaultBackendService",
+            protocol="SSL",
+            port_name="tcp",
+            load_balancing_scheme="EXTERNAL",
+            timeout_sec=10,
+            health_checks=[default_health_check.id],
+            backends=[gcp.compute.BackendServiceBackendArgs(
+                group=default_instance_group_manager.instance_group,
+                balancing_mode="UTILIZATION",
+                max_utilization=1,
+                capacity_scaler=1,
+            )])
+        default_target_ssl_proxy = gcp.compute.TargetSSLProxy("defaultTargetSSLProxy",
+            backend_service=default_backend_service.id,
+            ssl_certificates=[default_ssl_certificate.id])
+        # forwarding rule
+        default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule",
+            ip_protocol="TCP",
+            load_balancing_scheme="EXTERNAL",
+            port_range="443",
+            target=default_target_ssl_proxy.id,
+            ip_address=default_global_address.id,
+            opts=pulumi.ResourceOptions(provider=google))
+        # allow access from health check ranges
+        default_firewall = gcp.compute.Firewall("defaultFirewall",
+            direction="INGRESS",
+            network=default_network.id,
+            source_ranges=[
+                "130.211.0.0/22",
+                "35.191.0.0/16",
+            ],
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+            )],
+            target_tags=["allow-health-check"],
+            opts=pulumi.ResourceOptions(provider=google))
+        ```
         ### External Tcp Proxy Lb Mig Backend Custom Header
 
         ```python

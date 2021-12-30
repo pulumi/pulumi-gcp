@@ -122,31 +122,31 @@ export class Instance extends pulumi.CustomResource {
      */
     constructor(name: string, args?: InstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            inputs["clusters"] = state ? state.clusters : undefined;
-            inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["instanceType"] = state ? state.instanceType : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
+            resourceInputs["clusters"] = state ? state.clusters : undefined;
+            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            inputs["clusters"] = args ? args.clusters : undefined;
-            inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["instanceType"] = args ? args.instanceType : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
+            resourceInputs["clusters"] = args ? args.clusters : undefined;
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Instance.__pulumiType, name, inputs, opts);
+        super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

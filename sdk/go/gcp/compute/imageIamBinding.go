@@ -385,7 +385,7 @@ type ImageIamBindingInput interface {
 }
 
 func (*ImageIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageIamBinding)(nil))
+	return reflect.TypeOf((**ImageIamBinding)(nil)).Elem()
 }
 
 func (i *ImageIamBinding) ToImageIamBindingOutput() ImageIamBindingOutput {
@@ -394,35 +394,6 @@ func (i *ImageIamBinding) ToImageIamBindingOutput() ImageIamBindingOutput {
 
 func (i *ImageIamBinding) ToImageIamBindingOutputWithContext(ctx context.Context) ImageIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ImageIamBindingOutput)
-}
-
-func (i *ImageIamBinding) ToImageIamBindingPtrOutput() ImageIamBindingPtrOutput {
-	return i.ToImageIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *ImageIamBinding) ToImageIamBindingPtrOutputWithContext(ctx context.Context) ImageIamBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageIamBindingPtrOutput)
-}
-
-type ImageIamBindingPtrInput interface {
-	pulumi.Input
-
-	ToImageIamBindingPtrOutput() ImageIamBindingPtrOutput
-	ToImageIamBindingPtrOutputWithContext(ctx context.Context) ImageIamBindingPtrOutput
-}
-
-type imageIamBindingPtrType ImageIamBindingArgs
-
-func (*imageIamBindingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ImageIamBinding)(nil))
-}
-
-func (i *imageIamBindingPtrType) ToImageIamBindingPtrOutput() ImageIamBindingPtrOutput {
-	return i.ToImageIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *imageIamBindingPtrType) ToImageIamBindingPtrOutputWithContext(ctx context.Context) ImageIamBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageIamBindingPtrOutput)
 }
 
 // ImageIamBindingArrayInput is an input type that accepts ImageIamBindingArray and ImageIamBindingArrayOutput values.
@@ -478,7 +449,7 @@ func (i ImageIamBindingMap) ToImageIamBindingMapOutputWithContext(ctx context.Co
 type ImageIamBindingOutput struct{ *pulumi.OutputState }
 
 func (ImageIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageIamBinding)(nil))
+	return reflect.TypeOf((**ImageIamBinding)(nil)).Elem()
 }
 
 func (o ImageIamBindingOutput) ToImageIamBindingOutput() ImageIamBindingOutput {
@@ -489,44 +460,10 @@ func (o ImageIamBindingOutput) ToImageIamBindingOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o ImageIamBindingOutput) ToImageIamBindingPtrOutput() ImageIamBindingPtrOutput {
-	return o.ToImageIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (o ImageIamBindingOutput) ToImageIamBindingPtrOutputWithContext(ctx context.Context) ImageIamBindingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImageIamBinding) *ImageIamBinding {
-		return &v
-	}).(ImageIamBindingPtrOutput)
-}
-
-type ImageIamBindingPtrOutput struct{ *pulumi.OutputState }
-
-func (ImageIamBindingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ImageIamBinding)(nil))
-}
-
-func (o ImageIamBindingPtrOutput) ToImageIamBindingPtrOutput() ImageIamBindingPtrOutput {
-	return o
-}
-
-func (o ImageIamBindingPtrOutput) ToImageIamBindingPtrOutputWithContext(ctx context.Context) ImageIamBindingPtrOutput {
-	return o
-}
-
-func (o ImageIamBindingPtrOutput) Elem() ImageIamBindingOutput {
-	return o.ApplyT(func(v *ImageIamBinding) ImageIamBinding {
-		if v != nil {
-			return *v
-		}
-		var ret ImageIamBinding
-		return ret
-	}).(ImageIamBindingOutput)
-}
-
 type ImageIamBindingArrayOutput struct{ *pulumi.OutputState }
 
 func (ImageIamBindingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ImageIamBinding)(nil))
+	return reflect.TypeOf((*[]*ImageIamBinding)(nil)).Elem()
 }
 
 func (o ImageIamBindingArrayOutput) ToImageIamBindingArrayOutput() ImageIamBindingArrayOutput {
@@ -538,15 +475,15 @@ func (o ImageIamBindingArrayOutput) ToImageIamBindingArrayOutputWithContext(ctx 
 }
 
 func (o ImageIamBindingArrayOutput) Index(i pulumi.IntInput) ImageIamBindingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImageIamBinding {
-		return vs[0].([]ImageIamBinding)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ImageIamBinding {
+		return vs[0].([]*ImageIamBinding)[vs[1].(int)]
 	}).(ImageIamBindingOutput)
 }
 
 type ImageIamBindingMapOutput struct{ *pulumi.OutputState }
 
 func (ImageIamBindingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ImageIamBinding)(nil))
+	return reflect.TypeOf((*map[string]*ImageIamBinding)(nil)).Elem()
 }
 
 func (o ImageIamBindingMapOutput) ToImageIamBindingMapOutput() ImageIamBindingMapOutput {
@@ -558,18 +495,16 @@ func (o ImageIamBindingMapOutput) ToImageIamBindingMapOutputWithContext(ctx cont
 }
 
 func (o ImageIamBindingMapOutput) MapIndex(k pulumi.StringInput) ImageIamBindingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ImageIamBinding {
-		return vs[0].(map[string]ImageIamBinding)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ImageIamBinding {
+		return vs[0].(map[string]*ImageIamBinding)[vs[1].(string)]
 	}).(ImageIamBindingOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageIamBindingInput)(nil)).Elem(), &ImageIamBinding{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ImageIamBindingPtrInput)(nil)).Elem(), &ImageIamBinding{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageIamBindingArrayInput)(nil)).Elem(), ImageIamBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageIamBindingMapInput)(nil)).Elem(), ImageIamBindingMap{})
 	pulumi.RegisterOutputType(ImageIamBindingOutput{})
-	pulumi.RegisterOutputType(ImageIamBindingPtrOutput{})
 	pulumi.RegisterOutputType(ImageIamBindingArrayOutput{})
 	pulumi.RegisterOutputType(ImageIamBindingMapOutput{})
 }

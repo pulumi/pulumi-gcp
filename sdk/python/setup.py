@@ -45,7 +45,7 @@ setup(name='pulumi_gcp',
       cmdclass={
           'install': InstallPluginCommand,
       },
-      keywords='pulumi gcp',
+      keywords='pulumi gcp category/cloud',
       url='https://pulumi.io',
       project_urls={
           'Repository': 'https://github.com/pulumi/pulumi-gcp'
@@ -55,6 +55,7 @@ setup(name='pulumi_gcp',
       package_data={
           'pulumi_gcp': [
               'py.typed',
+              'pulumi-plugin.json',
           ]
       },
       install_requires=[

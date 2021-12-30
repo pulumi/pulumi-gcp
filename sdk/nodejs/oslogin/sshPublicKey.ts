@@ -98,15 +98,15 @@ export class SshPublicKey extends pulumi.CustomResource {
      */
     constructor(name: string, args: SshPublicKeyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SshPublicKeyArgs | SshPublicKeyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SshPublicKeyState | undefined;
-            inputs["expirationTimeUsec"] = state ? state.expirationTimeUsec : undefined;
-            inputs["fingerprint"] = state ? state.fingerprint : undefined;
-            inputs["key"] = state ? state.key : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["user"] = state ? state.user : undefined;
+            resourceInputs["expirationTimeUsec"] = state ? state.expirationTimeUsec : undefined;
+            resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
+            resourceInputs["key"] = state ? state.key : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["user"] = state ? state.user : undefined;
         } else {
             const args = argsOrState as SshPublicKeyArgs | undefined;
             if ((!args || args.key === undefined) && !opts.urn) {
@@ -115,16 +115,16 @@ export class SshPublicKey extends pulumi.CustomResource {
             if ((!args || args.user === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'user'");
             }
-            inputs["expirationTimeUsec"] = args ? args.expirationTimeUsec : undefined;
-            inputs["key"] = args ? args.key : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["user"] = args ? args.user : undefined;
-            inputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["expirationTimeUsec"] = args ? args.expirationTimeUsec : undefined;
+            resourceInputs["key"] = args ? args.key : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["user"] = args ? args.user : undefined;
+            resourceInputs["fingerprint"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(SshPublicKey.__pulumiType, name, inputs, opts);
+        super(SshPublicKey.__pulumiType, name, resourceInputs, opts);
     }
 }
 

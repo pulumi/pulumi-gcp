@@ -152,20 +152,20 @@ export class TargetSSLProxy extends pulumi.CustomResource {
      */
     constructor(name: string, args: TargetSSLProxyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TargetSSLProxyArgs | TargetSSLProxyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TargetSSLProxyState | undefined;
-            inputs["backendService"] = state ? state.backendService : undefined;
-            inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["proxyHeader"] = state ? state.proxyHeader : undefined;
-            inputs["proxyId"] = state ? state.proxyId : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
-            inputs["sslCertificates"] = state ? state.sslCertificates : undefined;
-            inputs["sslPolicy"] = state ? state.sslPolicy : undefined;
+            resourceInputs["backendService"] = state ? state.backendService : undefined;
+            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["proxyHeader"] = state ? state.proxyHeader : undefined;
+            resourceInputs["proxyId"] = state ? state.proxyId : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["sslCertificates"] = state ? state.sslCertificates : undefined;
+            resourceInputs["sslPolicy"] = state ? state.sslPolicy : undefined;
         } else {
             const args = argsOrState as TargetSSLProxyArgs | undefined;
             if ((!args || args.backendService === undefined) && !opts.urn) {
@@ -174,21 +174,21 @@ export class TargetSSLProxy extends pulumi.CustomResource {
             if ((!args || args.sslCertificates === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sslCertificates'");
             }
-            inputs["backendService"] = args ? args.backendService : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["proxyHeader"] = args ? args.proxyHeader : undefined;
-            inputs["sslCertificates"] = args ? args.sslCertificates : undefined;
-            inputs["sslPolicy"] = args ? args.sslPolicy : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["proxyId"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["backendService"] = args ? args.backendService : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["proxyHeader"] = args ? args.proxyHeader : undefined;
+            resourceInputs["sslCertificates"] = args ? args.sslCertificates : undefined;
+            resourceInputs["sslPolicy"] = args ? args.sslPolicy : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["proxyId"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(TargetSSLProxy.__pulumiType, name, inputs, opts);
+        super(TargetSSLProxy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

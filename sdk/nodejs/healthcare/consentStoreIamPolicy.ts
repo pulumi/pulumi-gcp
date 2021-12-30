@@ -143,14 +143,14 @@ export class ConsentStoreIamPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: ConsentStoreIamPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ConsentStoreIamPolicyArgs | ConsentStoreIamPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConsentStoreIamPolicyState | undefined;
-            inputs["consentStoreId"] = state ? state.consentStoreId : undefined;
-            inputs["dataset"] = state ? state.dataset : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["policyData"] = state ? state.policyData : undefined;
+            resourceInputs["consentStoreId"] = state ? state.consentStoreId : undefined;
+            resourceInputs["dataset"] = state ? state.dataset : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["policyData"] = state ? state.policyData : undefined;
         } else {
             const args = argsOrState as ConsentStoreIamPolicyArgs | undefined;
             if ((!args || args.consentStoreId === undefined) && !opts.urn) {
@@ -162,15 +162,15 @@ export class ConsentStoreIamPolicy extends pulumi.CustomResource {
             if ((!args || args.policyData === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
-            inputs["consentStoreId"] = args ? args.consentStoreId : undefined;
-            inputs["dataset"] = args ? args.dataset : undefined;
-            inputs["policyData"] = args ? args.policyData : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["consentStoreId"] = args ? args.consentStoreId : undefined;
+            resourceInputs["dataset"] = args ? args.dataset : undefined;
+            resourceInputs["policyData"] = args ? args.policyData : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ConsentStoreIamPolicy.__pulumiType, name, inputs, opts);
+        super(ConsentStoreIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

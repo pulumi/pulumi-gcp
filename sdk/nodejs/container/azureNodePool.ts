@@ -209,27 +209,27 @@ export class AzureNodePool extends pulumi.CustomResource {
      */
     constructor(name: string, args: AzureNodePoolArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AzureNodePoolArgs | AzureNodePoolState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AzureNodePoolState | undefined;
-            inputs["annotations"] = state ? state.annotations : undefined;
-            inputs["autoscaling"] = state ? state.autoscaling : undefined;
-            inputs["azureAvailabilityZone"] = state ? state.azureAvailabilityZone : undefined;
-            inputs["cluster"] = state ? state.cluster : undefined;
-            inputs["config"] = state ? state.config : undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["maxPodsConstraint"] = state ? state.maxPodsConstraint : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["reconciling"] = state ? state.reconciling : undefined;
-            inputs["state"] = state ? state.state : undefined;
-            inputs["subnetId"] = state ? state.subnetId : undefined;
-            inputs["uid"] = state ? state.uid : undefined;
-            inputs["updateTime"] = state ? state.updateTime : undefined;
-            inputs["version"] = state ? state.version : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["autoscaling"] = state ? state.autoscaling : undefined;
+            resourceInputs["azureAvailabilityZone"] = state ? state.azureAvailabilityZone : undefined;
+            resourceInputs["cluster"] = state ? state.cluster : undefined;
+            resourceInputs["config"] = state ? state.config : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["maxPodsConstraint"] = state ? state.maxPodsConstraint : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["reconciling"] = state ? state.reconciling : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
+            resourceInputs["uid"] = state ? state.uid : undefined;
+            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as AzureNodePoolArgs | undefined;
             if ((!args || args.autoscaling === undefined) && !opts.urn) {
@@ -253,28 +253,28 @@ export class AzureNodePool extends pulumi.CustomResource {
             if ((!args || args.version === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'version'");
             }
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["autoscaling"] = args ? args.autoscaling : undefined;
-            inputs["azureAvailabilityZone"] = args ? args.azureAvailabilityZone : undefined;
-            inputs["cluster"] = args ? args.cluster : undefined;
-            inputs["config"] = args ? args.config : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["maxPodsConstraint"] = args ? args.maxPodsConstraint : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["subnetId"] = args ? args.subnetId : undefined;
-            inputs["version"] = args ? args.version : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["reconciling"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["uid"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["autoscaling"] = args ? args.autoscaling : undefined;
+            resourceInputs["azureAvailabilityZone"] = args ? args.azureAvailabilityZone : undefined;
+            resourceInputs["cluster"] = args ? args.cluster : undefined;
+            resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["maxPodsConstraint"] = args ? args.maxPodsConstraint : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["subnetId"] = args ? args.subnetId : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["reconciling"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["uid"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(AzureNodePool.__pulumiType, name, inputs, opts);
+        super(AzureNodePool.__pulumiType, name, resourceInputs, opts);
     }
 }
 

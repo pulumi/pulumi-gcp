@@ -100,15 +100,15 @@ export class FolderExclusion extends pulumi.CustomResource {
      */
     constructor(name: string, args: FolderExclusionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FolderExclusionArgs | FolderExclusionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FolderExclusionState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["disabled"] = state ? state.disabled : undefined;
-            inputs["filter"] = state ? state.filter : undefined;
-            inputs["folder"] = state ? state.folder : undefined;
-            inputs["name"] = state ? state.name : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["disabled"] = state ? state.disabled : undefined;
+            resourceInputs["filter"] = state ? state.filter : undefined;
+            resourceInputs["folder"] = state ? state.folder : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as FolderExclusionArgs | undefined;
             if ((!args || args.filter === undefined) && !opts.urn) {
@@ -117,16 +117,16 @@ export class FolderExclusion extends pulumi.CustomResource {
             if ((!args || args.folder === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'folder'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["disabled"] = args ? args.disabled : undefined;
-            inputs["filter"] = args ? args.filter : undefined;
-            inputs["folder"] = args ? args.folder : undefined;
-            inputs["name"] = args ? args.name : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["disabled"] = args ? args.disabled : undefined;
+            resourceInputs["filter"] = args ? args.filter : undefined;
+            resourceInputs["folder"] = args ? args.folder : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(FolderExclusion.__pulumiType, name, inputs, opts);
+        super(FolderExclusion.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -318,7 +318,7 @@ type CxIntentInput interface {
 }
 
 func (*CxIntent) ElementType() reflect.Type {
-	return reflect.TypeOf((*CxIntent)(nil))
+	return reflect.TypeOf((**CxIntent)(nil)).Elem()
 }
 
 func (i *CxIntent) ToCxIntentOutput() CxIntentOutput {
@@ -327,35 +327,6 @@ func (i *CxIntent) ToCxIntentOutput() CxIntentOutput {
 
 func (i *CxIntent) ToCxIntentOutputWithContext(ctx context.Context) CxIntentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CxIntentOutput)
-}
-
-func (i *CxIntent) ToCxIntentPtrOutput() CxIntentPtrOutput {
-	return i.ToCxIntentPtrOutputWithContext(context.Background())
-}
-
-func (i *CxIntent) ToCxIntentPtrOutputWithContext(ctx context.Context) CxIntentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CxIntentPtrOutput)
-}
-
-type CxIntentPtrInput interface {
-	pulumi.Input
-
-	ToCxIntentPtrOutput() CxIntentPtrOutput
-	ToCxIntentPtrOutputWithContext(ctx context.Context) CxIntentPtrOutput
-}
-
-type cxIntentPtrType CxIntentArgs
-
-func (*cxIntentPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CxIntent)(nil))
-}
-
-func (i *cxIntentPtrType) ToCxIntentPtrOutput() CxIntentPtrOutput {
-	return i.ToCxIntentPtrOutputWithContext(context.Background())
-}
-
-func (i *cxIntentPtrType) ToCxIntentPtrOutputWithContext(ctx context.Context) CxIntentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CxIntentPtrOutput)
 }
 
 // CxIntentArrayInput is an input type that accepts CxIntentArray and CxIntentArrayOutput values.
@@ -411,7 +382,7 @@ func (i CxIntentMap) ToCxIntentMapOutputWithContext(ctx context.Context) CxInten
 type CxIntentOutput struct{ *pulumi.OutputState }
 
 func (CxIntentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CxIntent)(nil))
+	return reflect.TypeOf((**CxIntent)(nil)).Elem()
 }
 
 func (o CxIntentOutput) ToCxIntentOutput() CxIntentOutput {
@@ -422,44 +393,10 @@ func (o CxIntentOutput) ToCxIntentOutputWithContext(ctx context.Context) CxInten
 	return o
 }
 
-func (o CxIntentOutput) ToCxIntentPtrOutput() CxIntentPtrOutput {
-	return o.ToCxIntentPtrOutputWithContext(context.Background())
-}
-
-func (o CxIntentOutput) ToCxIntentPtrOutputWithContext(ctx context.Context) CxIntentPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxIntent) *CxIntent {
-		return &v
-	}).(CxIntentPtrOutput)
-}
-
-type CxIntentPtrOutput struct{ *pulumi.OutputState }
-
-func (CxIntentPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CxIntent)(nil))
-}
-
-func (o CxIntentPtrOutput) ToCxIntentPtrOutput() CxIntentPtrOutput {
-	return o
-}
-
-func (o CxIntentPtrOutput) ToCxIntentPtrOutputWithContext(ctx context.Context) CxIntentPtrOutput {
-	return o
-}
-
-func (o CxIntentPtrOutput) Elem() CxIntentOutput {
-	return o.ApplyT(func(v *CxIntent) CxIntent {
-		if v != nil {
-			return *v
-		}
-		var ret CxIntent
-		return ret
-	}).(CxIntentOutput)
-}
-
 type CxIntentArrayOutput struct{ *pulumi.OutputState }
 
 func (CxIntentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CxIntent)(nil))
+	return reflect.TypeOf((*[]*CxIntent)(nil)).Elem()
 }
 
 func (o CxIntentArrayOutput) ToCxIntentArrayOutput() CxIntentArrayOutput {
@@ -471,15 +408,15 @@ func (o CxIntentArrayOutput) ToCxIntentArrayOutputWithContext(ctx context.Contex
 }
 
 func (o CxIntentArrayOutput) Index(i pulumi.IntInput) CxIntentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxIntent {
-		return vs[0].([]CxIntent)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CxIntent {
+		return vs[0].([]*CxIntent)[vs[1].(int)]
 	}).(CxIntentOutput)
 }
 
 type CxIntentMapOutput struct{ *pulumi.OutputState }
 
 func (CxIntentMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]CxIntent)(nil))
+	return reflect.TypeOf((*map[string]*CxIntent)(nil)).Elem()
 }
 
 func (o CxIntentMapOutput) ToCxIntentMapOutput() CxIntentMapOutput {
@@ -491,18 +428,16 @@ func (o CxIntentMapOutput) ToCxIntentMapOutputWithContext(ctx context.Context) C
 }
 
 func (o CxIntentMapOutput) MapIndex(k pulumi.StringInput) CxIntentOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CxIntent {
-		return vs[0].(map[string]CxIntent)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *CxIntent {
+		return vs[0].(map[string]*CxIntent)[vs[1].(string)]
 	}).(CxIntentOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CxIntentInput)(nil)).Elem(), &CxIntent{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CxIntentPtrInput)(nil)).Elem(), &CxIntent{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxIntentArrayInput)(nil)).Elem(), CxIntentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxIntentMapInput)(nil)).Elem(), CxIntentMap{})
 	pulumi.RegisterOutputType(CxIntentOutput{})
-	pulumi.RegisterOutputType(CxIntentPtrOutput{})
 	pulumi.RegisterOutputType(CxIntentArrayOutput{})
 	pulumi.RegisterOutputType(CxIntentMapOutput{})
 }

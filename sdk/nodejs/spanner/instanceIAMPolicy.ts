@@ -142,14 +142,14 @@ export class InstanceIAMPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstanceIAMPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceIAMPolicyArgs | InstanceIAMPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceIAMPolicyState | undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["instance"] = state ? state.instance : undefined;
-            inputs["policyData"] = state ? state.policyData : undefined;
-            inputs["project"] = state ? state.project : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["instance"] = state ? state.instance : undefined;
+            resourceInputs["policyData"] = state ? state.policyData : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as InstanceIAMPolicyArgs | undefined;
             if ((!args || args.instance === undefined) && !opts.urn) {
@@ -158,15 +158,15 @@ export class InstanceIAMPolicy extends pulumi.CustomResource {
             if ((!args || args.policyData === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
-            inputs["instance"] = args ? args.instance : undefined;
-            inputs["policyData"] = args ? args.policyData : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["instance"] = args ? args.instance : undefined;
+            resourceInputs["policyData"] = args ? args.policyData : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(InstanceIAMPolicy.__pulumiType, name, inputs, opts);
+        super(InstanceIAMPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

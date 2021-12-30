@@ -1319,47 +1319,6 @@ func (i MetricMetricDescriptorArgs) ToMetricMetricDescriptorOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(MetricMetricDescriptorOutput)
 }
 
-func (i MetricMetricDescriptorArgs) ToMetricMetricDescriptorPtrOutput() MetricMetricDescriptorPtrOutput {
-	return i.ToMetricMetricDescriptorPtrOutputWithContext(context.Background())
-}
-
-func (i MetricMetricDescriptorArgs) ToMetricMetricDescriptorPtrOutputWithContext(ctx context.Context) MetricMetricDescriptorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MetricMetricDescriptorOutput).ToMetricMetricDescriptorPtrOutputWithContext(ctx)
-}
-
-// MetricMetricDescriptorPtrInput is an input type that accepts MetricMetricDescriptorArgs, MetricMetricDescriptorPtr and MetricMetricDescriptorPtrOutput values.
-// You can construct a concrete instance of `MetricMetricDescriptorPtrInput` via:
-//
-//          MetricMetricDescriptorArgs{...}
-//
-//  or:
-//
-//          nil
-type MetricMetricDescriptorPtrInput interface {
-	pulumi.Input
-
-	ToMetricMetricDescriptorPtrOutput() MetricMetricDescriptorPtrOutput
-	ToMetricMetricDescriptorPtrOutputWithContext(context.Context) MetricMetricDescriptorPtrOutput
-}
-
-type metricMetricDescriptorPtrType MetricMetricDescriptorArgs
-
-func MetricMetricDescriptorPtr(v *MetricMetricDescriptorArgs) MetricMetricDescriptorPtrInput {
-	return (*metricMetricDescriptorPtrType)(v)
-}
-
-func (*metricMetricDescriptorPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MetricMetricDescriptor)(nil)).Elem()
-}
-
-func (i *metricMetricDescriptorPtrType) ToMetricMetricDescriptorPtrOutput() MetricMetricDescriptorPtrOutput {
-	return i.ToMetricMetricDescriptorPtrOutputWithContext(context.Background())
-}
-
-func (i *metricMetricDescriptorPtrType) ToMetricMetricDescriptorPtrOutputWithContext(ctx context.Context) MetricMetricDescriptorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MetricMetricDescriptorPtrOutput)
-}
-
 type MetricMetricDescriptorOutput struct{ *pulumi.OutputState }
 
 func (MetricMetricDescriptorOutput) ElementType() reflect.Type {
@@ -1372,16 +1331,6 @@ func (o MetricMetricDescriptorOutput) ToMetricMetricDescriptorOutput() MetricMet
 
 func (o MetricMetricDescriptorOutput) ToMetricMetricDescriptorOutputWithContext(ctx context.Context) MetricMetricDescriptorOutput {
 	return o
-}
-
-func (o MetricMetricDescriptorOutput) ToMetricMetricDescriptorPtrOutput() MetricMetricDescriptorPtrOutput {
-	return o.ToMetricMetricDescriptorPtrOutputWithContext(context.Background())
-}
-
-func (o MetricMetricDescriptorOutput) ToMetricMetricDescriptorPtrOutputWithContext(ctx context.Context) MetricMetricDescriptorPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricMetricDescriptor) *MetricMetricDescriptor {
-		return &v
-	}).(MetricMetricDescriptorPtrOutput)
 }
 
 // A concise name for the metric, which can be displayed in user interfaces. Use sentence case
@@ -1420,93 +1369,6 @@ func (o MetricMetricDescriptorOutput) Unit() pulumi.StringPtrOutput {
 // Possible values are `BOOL`, `INT64`, and `STRING`.
 func (o MetricMetricDescriptorOutput) ValueType() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricMetricDescriptor) string { return v.ValueType }).(pulumi.StringOutput)
-}
-
-type MetricMetricDescriptorPtrOutput struct{ *pulumi.OutputState }
-
-func (MetricMetricDescriptorPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MetricMetricDescriptor)(nil)).Elem()
-}
-
-func (o MetricMetricDescriptorPtrOutput) ToMetricMetricDescriptorPtrOutput() MetricMetricDescriptorPtrOutput {
-	return o
-}
-
-func (o MetricMetricDescriptorPtrOutput) ToMetricMetricDescriptorPtrOutputWithContext(ctx context.Context) MetricMetricDescriptorPtrOutput {
-	return o
-}
-
-func (o MetricMetricDescriptorPtrOutput) Elem() MetricMetricDescriptorOutput {
-	return o.ApplyT(func(v *MetricMetricDescriptor) MetricMetricDescriptor {
-		if v != nil {
-			return *v
-		}
-		var ret MetricMetricDescriptor
-		return ret
-	}).(MetricMetricDescriptorOutput)
-}
-
-// A concise name for the metric, which can be displayed in user interfaces. Use sentence case
-// without an ending period, for example "Request count". This field is optional but it is
-// recommended to be set for any metrics associated with user-visible concepts, such as Quota.
-func (o MetricMetricDescriptorPtrOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MetricMetricDescriptor) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DisplayName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The set of labels that can be used to describe a specific instance of this metric type. For
-// example, the appengine.googleapis.com/http/server/response_latencies metric type has a label
-// for the HTTP response code, response_code, so you can look at latencies for successful responses
-// or just for responses that failed.
-// Structure is documented below.
-func (o MetricMetricDescriptorPtrOutput) Labels() MetricMetricDescriptorLabelArrayOutput {
-	return o.ApplyT(func(v *MetricMetricDescriptor) []MetricMetricDescriptorLabel {
-		if v == nil {
-			return nil
-		}
-		return v.Labels
-	}).(MetricMetricDescriptorLabelArrayOutput)
-}
-
-// Whether the metric records instantaneous values, changes to a value, etc.
-// Some combinations of metricKind and valueType might not be supported.
-// For counter metrics, set this to DELTA.
-// Possible values are `DELTA`, `GAUGE`, and `CUMULATIVE`.
-func (o MetricMetricDescriptorPtrOutput) MetricKind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MetricMetricDescriptor) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MetricKind
-	}).(pulumi.StringPtrOutput)
-}
-
-// The unit in which the metric value is reported. It is only applicable if the valueType is
-// `INT64`, `DOUBLE`, or `DISTRIBUTION`. The supported units are a subset of
-// [The Unified Code for Units of Measure](http://unitsofmeasure.org/ucum.html) standard
-func (o MetricMetricDescriptorPtrOutput) Unit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MetricMetricDescriptor) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Unit
-	}).(pulumi.StringPtrOutput)
-}
-
-// The type of data that can be assigned to the label.
-// Default value is `STRING`.
-// Possible values are `BOOL`, `INT64`, and `STRING`.
-func (o MetricMetricDescriptorPtrOutput) ValueType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MetricMetricDescriptor) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ValueType
-	}).(pulumi.StringPtrOutput)
 }
 
 type MetricMetricDescriptorLabel struct {
@@ -2203,7 +2065,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricBucketOptionsLinearBucketsInput)(nil)).Elem(), MetricBucketOptionsLinearBucketsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricBucketOptionsLinearBucketsPtrInput)(nil)).Elem(), MetricBucketOptionsLinearBucketsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricMetricDescriptorInput)(nil)).Elem(), MetricMetricDescriptorArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MetricMetricDescriptorPtrInput)(nil)).Elem(), MetricMetricDescriptorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricMetricDescriptorLabelInput)(nil)).Elem(), MetricMetricDescriptorLabelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricMetricDescriptorLabelArrayInput)(nil)).Elem(), MetricMetricDescriptorLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationSinkBigqueryOptionsInput)(nil)).Elem(), OrganizationSinkBigqueryOptionsArgs{})
@@ -2231,7 +2092,6 @@ func init() {
 	pulumi.RegisterOutputType(MetricBucketOptionsLinearBucketsOutput{})
 	pulumi.RegisterOutputType(MetricBucketOptionsLinearBucketsPtrOutput{})
 	pulumi.RegisterOutputType(MetricMetricDescriptorOutput{})
-	pulumi.RegisterOutputType(MetricMetricDescriptorPtrOutput{})
 	pulumi.RegisterOutputType(MetricMetricDescriptorLabelOutput{})
 	pulumi.RegisterOutputType(MetricMetricDescriptorLabelArrayOutput{})
 	pulumi.RegisterOutputType(OrganizationSinkBigqueryOptionsOutput{})

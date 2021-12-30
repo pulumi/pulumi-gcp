@@ -83,47 +83,6 @@ func (i GuestPoliciesAssignmentArgs) ToGuestPoliciesAssignmentOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesAssignmentOutput)
 }
 
-func (i GuestPoliciesAssignmentArgs) ToGuestPoliciesAssignmentPtrOutput() GuestPoliciesAssignmentPtrOutput {
-	return i.ToGuestPoliciesAssignmentPtrOutputWithContext(context.Background())
-}
-
-func (i GuestPoliciesAssignmentArgs) ToGuestPoliciesAssignmentPtrOutputWithContext(ctx context.Context) GuestPoliciesAssignmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesAssignmentOutput).ToGuestPoliciesAssignmentPtrOutputWithContext(ctx)
-}
-
-// GuestPoliciesAssignmentPtrInput is an input type that accepts GuestPoliciesAssignmentArgs, GuestPoliciesAssignmentPtr and GuestPoliciesAssignmentPtrOutput values.
-// You can construct a concrete instance of `GuestPoliciesAssignmentPtrInput` via:
-//
-//          GuestPoliciesAssignmentArgs{...}
-//
-//  or:
-//
-//          nil
-type GuestPoliciesAssignmentPtrInput interface {
-	pulumi.Input
-
-	ToGuestPoliciesAssignmentPtrOutput() GuestPoliciesAssignmentPtrOutput
-	ToGuestPoliciesAssignmentPtrOutputWithContext(context.Context) GuestPoliciesAssignmentPtrOutput
-}
-
-type guestPoliciesAssignmentPtrType GuestPoliciesAssignmentArgs
-
-func GuestPoliciesAssignmentPtr(v *GuestPoliciesAssignmentArgs) GuestPoliciesAssignmentPtrInput {
-	return (*guestPoliciesAssignmentPtrType)(v)
-}
-
-func (*guestPoliciesAssignmentPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GuestPoliciesAssignment)(nil)).Elem()
-}
-
-func (i *guestPoliciesAssignmentPtrType) ToGuestPoliciesAssignmentPtrOutput() GuestPoliciesAssignmentPtrOutput {
-	return i.ToGuestPoliciesAssignmentPtrOutputWithContext(context.Background())
-}
-
-func (i *guestPoliciesAssignmentPtrType) ToGuestPoliciesAssignmentPtrOutputWithContext(ctx context.Context) GuestPoliciesAssignmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesAssignmentPtrOutput)
-}
-
 type GuestPoliciesAssignmentOutput struct{ *pulumi.OutputState }
 
 func (GuestPoliciesAssignmentOutput) ElementType() reflect.Type {
@@ -136,16 +95,6 @@ func (o GuestPoliciesAssignmentOutput) ToGuestPoliciesAssignmentOutput() GuestPo
 
 func (o GuestPoliciesAssignmentOutput) ToGuestPoliciesAssignmentOutputWithContext(ctx context.Context) GuestPoliciesAssignmentOutput {
 	return o
-}
-
-func (o GuestPoliciesAssignmentOutput) ToGuestPoliciesAssignmentPtrOutput() GuestPoliciesAssignmentPtrOutput {
-	return o.ToGuestPoliciesAssignmentPtrOutputWithContext(context.Background())
-}
-
-func (o GuestPoliciesAssignmentOutput) ToGuestPoliciesAssignmentPtrOutputWithContext(ctx context.Context) GuestPoliciesAssignmentPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestPoliciesAssignment) *GuestPoliciesAssignment {
-		return &v
-	}).(GuestPoliciesAssignmentPtrOutput)
 }
 
 // Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups,
@@ -183,92 +132,6 @@ func (o GuestPoliciesAssignmentOutput) OsTypes() GuestPoliciesAssignmentOsTypeAr
 // Zonal targeting is uncommon and is supported to facilitate the management of changes by zone.
 func (o GuestPoliciesAssignmentOutput) Zones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GuestPoliciesAssignment) []string { return v.Zones }).(pulumi.StringArrayOutput)
-}
-
-type GuestPoliciesAssignmentPtrOutput struct{ *pulumi.OutputState }
-
-func (GuestPoliciesAssignmentPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GuestPoliciesAssignment)(nil)).Elem()
-}
-
-func (o GuestPoliciesAssignmentPtrOutput) ToGuestPoliciesAssignmentPtrOutput() GuestPoliciesAssignmentPtrOutput {
-	return o
-}
-
-func (o GuestPoliciesAssignmentPtrOutput) ToGuestPoliciesAssignmentPtrOutputWithContext(ctx context.Context) GuestPoliciesAssignmentPtrOutput {
-	return o
-}
-
-func (o GuestPoliciesAssignmentPtrOutput) Elem() GuestPoliciesAssignmentOutput {
-	return o.ApplyT(func(v *GuestPoliciesAssignment) GuestPoliciesAssignment {
-		if v != nil {
-			return *v
-		}
-		var ret GuestPoliciesAssignment
-		return ret
-	}).(GuestPoliciesAssignmentOutput)
-}
-
-// Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups,
-// for example "env=prod or env=staging".
-// Structure is documented below.
-func (o GuestPoliciesAssignmentPtrOutput) GroupLabels() GuestPoliciesAssignmentGroupLabelArrayOutput {
-	return o.ApplyT(func(v *GuestPoliciesAssignment) []GuestPoliciesAssignmentGroupLabel {
-		if v == nil {
-			return nil
-		}
-		return v.GroupLabels
-	}).(GuestPoliciesAssignmentGroupLabelArrayOutput)
-}
-
-// Targets VM instances whose name starts with one of these prefixes.
-// Like labels, this is another way to group VM instances when targeting configs,
-// for example prefix="prod-".
-// Only supported for project-level policies.
-func (o GuestPoliciesAssignmentPtrOutput) InstanceNamePrefixes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GuestPoliciesAssignment) []string {
-		if v == nil {
-			return nil
-		}
-		return v.InstanceNamePrefixes
-	}).(pulumi.StringArrayOutput)
-}
-
-// Targets any of the instances specified. Instances are specified by their URI in the form
-// zones/[ZONE]/instances/[INSTANCE_NAME].
-// Instance targeting is uncommon and is supported to facilitate the management of changes
-// by the instance or to target specific VM instances for development and testing.
-// Only supported for project-level policies and must reference instances within this project.
-func (o GuestPoliciesAssignmentPtrOutput) Instances() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GuestPoliciesAssignment) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Instances
-	}).(pulumi.StringArrayOutput)
-}
-
-// Targets VM instances matching at least one of the following OS types.
-// VM instances must match all supplied criteria for a given OsType to be included.
-// Structure is documented below.
-func (o GuestPoliciesAssignmentPtrOutput) OsTypes() GuestPoliciesAssignmentOsTypeArrayOutput {
-	return o.ApplyT(func(v *GuestPoliciesAssignment) []GuestPoliciesAssignmentOsType {
-		if v == nil {
-			return nil
-		}
-		return v.OsTypes
-	}).(GuestPoliciesAssignmentOsTypeArrayOutput)
-}
-
-// Targets instances in any of these zones. Leave empty to target instances in any zone.
-// Zonal targeting is uncommon and is supported to facilitate the management of changes by zone.
-func (o GuestPoliciesAssignmentPtrOutput) Zones() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GuestPoliciesAssignment) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Zones
-	}).(pulumi.StringArrayOutput)
 }
 
 type GuestPoliciesAssignmentGroupLabel struct {
@@ -5093,47 +4956,6 @@ func (i OsPolicyAssignmentInstanceFilterArgs) ToOsPolicyAssignmentInstanceFilter
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentInstanceFilterOutput)
 }
 
-func (i OsPolicyAssignmentInstanceFilterArgs) ToOsPolicyAssignmentInstanceFilterPtrOutput() OsPolicyAssignmentInstanceFilterPtrOutput {
-	return i.ToOsPolicyAssignmentInstanceFilterPtrOutputWithContext(context.Background())
-}
-
-func (i OsPolicyAssignmentInstanceFilterArgs) ToOsPolicyAssignmentInstanceFilterPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentInstanceFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentInstanceFilterOutput).ToOsPolicyAssignmentInstanceFilterPtrOutputWithContext(ctx)
-}
-
-// OsPolicyAssignmentInstanceFilterPtrInput is an input type that accepts OsPolicyAssignmentInstanceFilterArgs, OsPolicyAssignmentInstanceFilterPtr and OsPolicyAssignmentInstanceFilterPtrOutput values.
-// You can construct a concrete instance of `OsPolicyAssignmentInstanceFilterPtrInput` via:
-//
-//          OsPolicyAssignmentInstanceFilterArgs{...}
-//
-//  or:
-//
-//          nil
-type OsPolicyAssignmentInstanceFilterPtrInput interface {
-	pulumi.Input
-
-	ToOsPolicyAssignmentInstanceFilterPtrOutput() OsPolicyAssignmentInstanceFilterPtrOutput
-	ToOsPolicyAssignmentInstanceFilterPtrOutputWithContext(context.Context) OsPolicyAssignmentInstanceFilterPtrOutput
-}
-
-type osPolicyAssignmentInstanceFilterPtrType OsPolicyAssignmentInstanceFilterArgs
-
-func OsPolicyAssignmentInstanceFilterPtr(v *OsPolicyAssignmentInstanceFilterArgs) OsPolicyAssignmentInstanceFilterPtrInput {
-	return (*osPolicyAssignmentInstanceFilterPtrType)(v)
-}
-
-func (*osPolicyAssignmentInstanceFilterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OsPolicyAssignmentInstanceFilter)(nil)).Elem()
-}
-
-func (i *osPolicyAssignmentInstanceFilterPtrType) ToOsPolicyAssignmentInstanceFilterPtrOutput() OsPolicyAssignmentInstanceFilterPtrOutput {
-	return i.ToOsPolicyAssignmentInstanceFilterPtrOutputWithContext(context.Background())
-}
-
-func (i *osPolicyAssignmentInstanceFilterPtrType) ToOsPolicyAssignmentInstanceFilterPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentInstanceFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentInstanceFilterPtrOutput)
-}
-
 type OsPolicyAssignmentInstanceFilterOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentInstanceFilterOutput) ElementType() reflect.Type {
@@ -5146,16 +4968,6 @@ func (o OsPolicyAssignmentInstanceFilterOutput) ToOsPolicyAssignmentInstanceFilt
 
 func (o OsPolicyAssignmentInstanceFilterOutput) ToOsPolicyAssignmentInstanceFilterOutputWithContext(ctx context.Context) OsPolicyAssignmentInstanceFilterOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentInstanceFilterOutput) ToOsPolicyAssignmentInstanceFilterPtrOutput() OsPolicyAssignmentInstanceFilterPtrOutput {
-	return o.ToOsPolicyAssignmentInstanceFilterPtrOutputWithContext(context.Background())
-}
-
-func (o OsPolicyAssignmentInstanceFilterOutput) ToOsPolicyAssignmentInstanceFilterPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentInstanceFilterPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentInstanceFilter) *OsPolicyAssignmentInstanceFilter {
-		return &v
-	}).(OsPolicyAssignmentInstanceFilterPtrOutput)
 }
 
 // Target all VMs in the project. If true, no other criteria is permitted.
@@ -5180,70 +4992,6 @@ func (o OsPolicyAssignmentInstanceFilterOutput) InclusionLabels() OsPolicyAssign
 // List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories.
 func (o OsPolicyAssignmentInstanceFilterOutput) Inventories() OsPolicyAssignmentInstanceFilterInventoryArrayOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentInstanceFilter) []OsPolicyAssignmentInstanceFilterInventory {
-		return v.Inventories
-	}).(OsPolicyAssignmentInstanceFilterInventoryArrayOutput)
-}
-
-type OsPolicyAssignmentInstanceFilterPtrOutput struct{ *pulumi.OutputState }
-
-func (OsPolicyAssignmentInstanceFilterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OsPolicyAssignmentInstanceFilter)(nil)).Elem()
-}
-
-func (o OsPolicyAssignmentInstanceFilterPtrOutput) ToOsPolicyAssignmentInstanceFilterPtrOutput() OsPolicyAssignmentInstanceFilterPtrOutput {
-	return o
-}
-
-func (o OsPolicyAssignmentInstanceFilterPtrOutput) ToOsPolicyAssignmentInstanceFilterPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentInstanceFilterPtrOutput {
-	return o
-}
-
-func (o OsPolicyAssignmentInstanceFilterPtrOutput) Elem() OsPolicyAssignmentInstanceFilterOutput {
-	return o.ApplyT(func(v *OsPolicyAssignmentInstanceFilter) OsPolicyAssignmentInstanceFilter {
-		if v != nil {
-			return *v
-		}
-		var ret OsPolicyAssignmentInstanceFilter
-		return ret
-	}).(OsPolicyAssignmentInstanceFilterOutput)
-}
-
-// Target all VMs in the project. If true, no other criteria is permitted.
-func (o OsPolicyAssignmentInstanceFilterPtrOutput) All() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *OsPolicyAssignmentInstanceFilter) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.All
-	}).(pulumi.BoolPtrOutput)
-}
-
-// List of label sets used for VM exclusion. If the list has more than one label set, the VM is excluded if any of the label sets are applicable for the VM.
-func (o OsPolicyAssignmentInstanceFilterPtrOutput) ExclusionLabels() OsPolicyAssignmentInstanceFilterExclusionLabelArrayOutput {
-	return o.ApplyT(func(v *OsPolicyAssignmentInstanceFilter) []OsPolicyAssignmentInstanceFilterExclusionLabel {
-		if v == nil {
-			return nil
-		}
-		return v.ExclusionLabels
-	}).(OsPolicyAssignmentInstanceFilterExclusionLabelArrayOutput)
-}
-
-// List of label sets used for VM inclusion. If the list has more than one `LabelSet`, the VM is included if any of the label sets are applicable for the VM.
-func (o OsPolicyAssignmentInstanceFilterPtrOutput) InclusionLabels() OsPolicyAssignmentInstanceFilterInclusionLabelArrayOutput {
-	return o.ApplyT(func(v *OsPolicyAssignmentInstanceFilter) []OsPolicyAssignmentInstanceFilterInclusionLabel {
-		if v == nil {
-			return nil
-		}
-		return v.InclusionLabels
-	}).(OsPolicyAssignmentInstanceFilterInclusionLabelArrayOutput)
-}
-
-// List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories.
-func (o OsPolicyAssignmentInstanceFilterPtrOutput) Inventories() OsPolicyAssignmentInstanceFilterInventoryArrayOutput {
-	return o.ApplyT(func(v *OsPolicyAssignmentInstanceFilter) []OsPolicyAssignmentInstanceFilterInventory {
-		if v == nil {
-			return nil
-		}
 		return v.Inventories
 	}).(OsPolicyAssignmentInstanceFilterInventoryArrayOutput)
 }
@@ -12333,47 +12081,6 @@ func (i OsPolicyAssignmentRolloutArgs) ToOsPolicyAssignmentRolloutOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentRolloutOutput)
 }
 
-func (i OsPolicyAssignmentRolloutArgs) ToOsPolicyAssignmentRolloutPtrOutput() OsPolicyAssignmentRolloutPtrOutput {
-	return i.ToOsPolicyAssignmentRolloutPtrOutputWithContext(context.Background())
-}
-
-func (i OsPolicyAssignmentRolloutArgs) ToOsPolicyAssignmentRolloutPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentRolloutPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentRolloutOutput).ToOsPolicyAssignmentRolloutPtrOutputWithContext(ctx)
-}
-
-// OsPolicyAssignmentRolloutPtrInput is an input type that accepts OsPolicyAssignmentRolloutArgs, OsPolicyAssignmentRolloutPtr and OsPolicyAssignmentRolloutPtrOutput values.
-// You can construct a concrete instance of `OsPolicyAssignmentRolloutPtrInput` via:
-//
-//          OsPolicyAssignmentRolloutArgs{...}
-//
-//  or:
-//
-//          nil
-type OsPolicyAssignmentRolloutPtrInput interface {
-	pulumi.Input
-
-	ToOsPolicyAssignmentRolloutPtrOutput() OsPolicyAssignmentRolloutPtrOutput
-	ToOsPolicyAssignmentRolloutPtrOutputWithContext(context.Context) OsPolicyAssignmentRolloutPtrOutput
-}
-
-type osPolicyAssignmentRolloutPtrType OsPolicyAssignmentRolloutArgs
-
-func OsPolicyAssignmentRolloutPtr(v *OsPolicyAssignmentRolloutArgs) OsPolicyAssignmentRolloutPtrInput {
-	return (*osPolicyAssignmentRolloutPtrType)(v)
-}
-
-func (*osPolicyAssignmentRolloutPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OsPolicyAssignmentRollout)(nil)).Elem()
-}
-
-func (i *osPolicyAssignmentRolloutPtrType) ToOsPolicyAssignmentRolloutPtrOutput() OsPolicyAssignmentRolloutPtrOutput {
-	return i.ToOsPolicyAssignmentRolloutPtrOutputWithContext(context.Background())
-}
-
-func (i *osPolicyAssignmentRolloutPtrType) ToOsPolicyAssignmentRolloutPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentRolloutPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentRolloutPtrOutput)
-}
-
 type OsPolicyAssignmentRolloutOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentRolloutOutput) ElementType() reflect.Type {
@@ -12388,16 +12095,6 @@ func (o OsPolicyAssignmentRolloutOutput) ToOsPolicyAssignmentRolloutOutputWithCo
 	return o
 }
 
-func (o OsPolicyAssignmentRolloutOutput) ToOsPolicyAssignmentRolloutPtrOutput() OsPolicyAssignmentRolloutPtrOutput {
-	return o.ToOsPolicyAssignmentRolloutPtrOutputWithContext(context.Background())
-}
-
-func (o OsPolicyAssignmentRolloutOutput) ToOsPolicyAssignmentRolloutPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentRolloutPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentRollout) *OsPolicyAssignmentRollout {
-		return &v
-	}).(OsPolicyAssignmentRolloutPtrOutput)
-}
-
 // Required. The maximum number (or percentage) of VMs per zone to disrupt at any given moment.
 func (o OsPolicyAssignmentRolloutOutput) DisruptionBudget() OsPolicyAssignmentRolloutDisruptionBudgetOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentRollout) OsPolicyAssignmentRolloutDisruptionBudget { return v.DisruptionBudget }).(OsPolicyAssignmentRolloutDisruptionBudgetOutput)
@@ -12406,50 +12103,6 @@ func (o OsPolicyAssignmentRolloutOutput) DisruptionBudget() OsPolicyAssignmentRo
 // Required. This determines the minimum duration of time to wait after the configuration changes are applied through the current rollout. A VM continues to count towards the `disruptionBudget` at least until this duration of time has passed after configuration changes are applied.
 func (o OsPolicyAssignmentRolloutOutput) MinWaitDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentRollout) string { return v.MinWaitDuration }).(pulumi.StringOutput)
-}
-
-type OsPolicyAssignmentRolloutPtrOutput struct{ *pulumi.OutputState }
-
-func (OsPolicyAssignmentRolloutPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OsPolicyAssignmentRollout)(nil)).Elem()
-}
-
-func (o OsPolicyAssignmentRolloutPtrOutput) ToOsPolicyAssignmentRolloutPtrOutput() OsPolicyAssignmentRolloutPtrOutput {
-	return o
-}
-
-func (o OsPolicyAssignmentRolloutPtrOutput) ToOsPolicyAssignmentRolloutPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentRolloutPtrOutput {
-	return o
-}
-
-func (o OsPolicyAssignmentRolloutPtrOutput) Elem() OsPolicyAssignmentRolloutOutput {
-	return o.ApplyT(func(v *OsPolicyAssignmentRollout) OsPolicyAssignmentRollout {
-		if v != nil {
-			return *v
-		}
-		var ret OsPolicyAssignmentRollout
-		return ret
-	}).(OsPolicyAssignmentRolloutOutput)
-}
-
-// Required. The maximum number (or percentage) of VMs per zone to disrupt at any given moment.
-func (o OsPolicyAssignmentRolloutPtrOutput) DisruptionBudget() OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput {
-	return o.ApplyT(func(v *OsPolicyAssignmentRollout) *OsPolicyAssignmentRolloutDisruptionBudget {
-		if v == nil {
-			return nil
-		}
-		return &v.DisruptionBudget
-	}).(OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput)
-}
-
-// Required. This determines the minimum duration of time to wait after the configuration changes are applied through the current rollout. A VM continues to count towards the `disruptionBudget` at least until this duration of time has passed after configuration changes are applied.
-func (o OsPolicyAssignmentRolloutPtrOutput) MinWaitDuration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OsPolicyAssignmentRollout) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MinWaitDuration
-	}).(pulumi.StringPtrOutput)
 }
 
 type OsPolicyAssignmentRolloutDisruptionBudget struct {
@@ -12489,47 +12142,6 @@ func (i OsPolicyAssignmentRolloutDisruptionBudgetArgs) ToOsPolicyAssignmentRollo
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentRolloutDisruptionBudgetOutput)
 }
 
-func (i OsPolicyAssignmentRolloutDisruptionBudgetArgs) ToOsPolicyAssignmentRolloutDisruptionBudgetPtrOutput() OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput {
-	return i.ToOsPolicyAssignmentRolloutDisruptionBudgetPtrOutputWithContext(context.Background())
-}
-
-func (i OsPolicyAssignmentRolloutDisruptionBudgetArgs) ToOsPolicyAssignmentRolloutDisruptionBudgetPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentRolloutDisruptionBudgetOutput).ToOsPolicyAssignmentRolloutDisruptionBudgetPtrOutputWithContext(ctx)
-}
-
-// OsPolicyAssignmentRolloutDisruptionBudgetPtrInput is an input type that accepts OsPolicyAssignmentRolloutDisruptionBudgetArgs, OsPolicyAssignmentRolloutDisruptionBudgetPtr and OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput values.
-// You can construct a concrete instance of `OsPolicyAssignmentRolloutDisruptionBudgetPtrInput` via:
-//
-//          OsPolicyAssignmentRolloutDisruptionBudgetArgs{...}
-//
-//  or:
-//
-//          nil
-type OsPolicyAssignmentRolloutDisruptionBudgetPtrInput interface {
-	pulumi.Input
-
-	ToOsPolicyAssignmentRolloutDisruptionBudgetPtrOutput() OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput
-	ToOsPolicyAssignmentRolloutDisruptionBudgetPtrOutputWithContext(context.Context) OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput
-}
-
-type osPolicyAssignmentRolloutDisruptionBudgetPtrType OsPolicyAssignmentRolloutDisruptionBudgetArgs
-
-func OsPolicyAssignmentRolloutDisruptionBudgetPtr(v *OsPolicyAssignmentRolloutDisruptionBudgetArgs) OsPolicyAssignmentRolloutDisruptionBudgetPtrInput {
-	return (*osPolicyAssignmentRolloutDisruptionBudgetPtrType)(v)
-}
-
-func (*osPolicyAssignmentRolloutDisruptionBudgetPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OsPolicyAssignmentRolloutDisruptionBudget)(nil)).Elem()
-}
-
-func (i *osPolicyAssignmentRolloutDisruptionBudgetPtrType) ToOsPolicyAssignmentRolloutDisruptionBudgetPtrOutput() OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput {
-	return i.ToOsPolicyAssignmentRolloutDisruptionBudgetPtrOutputWithContext(context.Background())
-}
-
-func (i *osPolicyAssignmentRolloutDisruptionBudgetPtrType) ToOsPolicyAssignmentRolloutDisruptionBudgetPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput)
-}
-
 type OsPolicyAssignmentRolloutDisruptionBudgetOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentRolloutDisruptionBudgetOutput) ElementType() reflect.Type {
@@ -12544,16 +12156,6 @@ func (o OsPolicyAssignmentRolloutDisruptionBudgetOutput) ToOsPolicyAssignmentRol
 	return o
 }
 
-func (o OsPolicyAssignmentRolloutDisruptionBudgetOutput) ToOsPolicyAssignmentRolloutDisruptionBudgetPtrOutput() OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput {
-	return o.ToOsPolicyAssignmentRolloutDisruptionBudgetPtrOutputWithContext(context.Background())
-}
-
-func (o OsPolicyAssignmentRolloutDisruptionBudgetOutput) ToOsPolicyAssignmentRolloutDisruptionBudgetPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignmentRolloutDisruptionBudget) *OsPolicyAssignmentRolloutDisruptionBudget {
-		return &v
-	}).(OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput)
-}
-
 // Specifies a fixed value.
 func (o OsPolicyAssignmentRolloutDisruptionBudgetOutput) Fixed() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentRolloutDisruptionBudget) *int { return v.Fixed }).(pulumi.IntPtrOutput)
@@ -12562,50 +12164,6 @@ func (o OsPolicyAssignmentRolloutDisruptionBudgetOutput) Fixed() pulumi.IntPtrOu
 // Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
 func (o OsPolicyAssignmentRolloutDisruptionBudgetOutput) Percent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentRolloutDisruptionBudget) *int { return v.Percent }).(pulumi.IntPtrOutput)
-}
-
-type OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput struct{ *pulumi.OutputState }
-
-func (OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OsPolicyAssignmentRolloutDisruptionBudget)(nil)).Elem()
-}
-
-func (o OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput) ToOsPolicyAssignmentRolloutDisruptionBudgetPtrOutput() OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput {
-	return o
-}
-
-func (o OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput) ToOsPolicyAssignmentRolloutDisruptionBudgetPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput {
-	return o
-}
-
-func (o OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput) Elem() OsPolicyAssignmentRolloutDisruptionBudgetOutput {
-	return o.ApplyT(func(v *OsPolicyAssignmentRolloutDisruptionBudget) OsPolicyAssignmentRolloutDisruptionBudget {
-		if v != nil {
-			return *v
-		}
-		var ret OsPolicyAssignmentRolloutDisruptionBudget
-		return ret
-	}).(OsPolicyAssignmentRolloutDisruptionBudgetOutput)
-}
-
-// Specifies a fixed value.
-func (o OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput) Fixed() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *OsPolicyAssignmentRolloutDisruptionBudget) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Fixed
-	}).(pulumi.IntPtrOutput)
-}
-
-// Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
-func (o OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput) Percent() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *OsPolicyAssignmentRolloutDisruptionBudget) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Percent
-	}).(pulumi.IntPtrOutput)
 }
 
 type PatchDeploymentInstanceFilter struct {
@@ -12665,47 +12223,6 @@ func (i PatchDeploymentInstanceFilterArgs) ToPatchDeploymentInstanceFilterOutput
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentInstanceFilterOutput)
 }
 
-func (i PatchDeploymentInstanceFilterArgs) ToPatchDeploymentInstanceFilterPtrOutput() PatchDeploymentInstanceFilterPtrOutput {
-	return i.ToPatchDeploymentInstanceFilterPtrOutputWithContext(context.Background())
-}
-
-func (i PatchDeploymentInstanceFilterArgs) ToPatchDeploymentInstanceFilterPtrOutputWithContext(ctx context.Context) PatchDeploymentInstanceFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentInstanceFilterOutput).ToPatchDeploymentInstanceFilterPtrOutputWithContext(ctx)
-}
-
-// PatchDeploymentInstanceFilterPtrInput is an input type that accepts PatchDeploymentInstanceFilterArgs, PatchDeploymentInstanceFilterPtr and PatchDeploymentInstanceFilterPtrOutput values.
-// You can construct a concrete instance of `PatchDeploymentInstanceFilterPtrInput` via:
-//
-//          PatchDeploymentInstanceFilterArgs{...}
-//
-//  or:
-//
-//          nil
-type PatchDeploymentInstanceFilterPtrInput interface {
-	pulumi.Input
-
-	ToPatchDeploymentInstanceFilterPtrOutput() PatchDeploymentInstanceFilterPtrOutput
-	ToPatchDeploymentInstanceFilterPtrOutputWithContext(context.Context) PatchDeploymentInstanceFilterPtrOutput
-}
-
-type patchDeploymentInstanceFilterPtrType PatchDeploymentInstanceFilterArgs
-
-func PatchDeploymentInstanceFilterPtr(v *PatchDeploymentInstanceFilterArgs) PatchDeploymentInstanceFilterPtrInput {
-	return (*patchDeploymentInstanceFilterPtrType)(v)
-}
-
-func (*patchDeploymentInstanceFilterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PatchDeploymentInstanceFilter)(nil)).Elem()
-}
-
-func (i *patchDeploymentInstanceFilterPtrType) ToPatchDeploymentInstanceFilterPtrOutput() PatchDeploymentInstanceFilterPtrOutput {
-	return i.ToPatchDeploymentInstanceFilterPtrOutputWithContext(context.Background())
-}
-
-func (i *patchDeploymentInstanceFilterPtrType) ToPatchDeploymentInstanceFilterPtrOutputWithContext(ctx context.Context) PatchDeploymentInstanceFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentInstanceFilterPtrOutput)
-}
-
 type PatchDeploymentInstanceFilterOutput struct{ *pulumi.OutputState }
 
 func (PatchDeploymentInstanceFilterOutput) ElementType() reflect.Type {
@@ -12718,16 +12235,6 @@ func (o PatchDeploymentInstanceFilterOutput) ToPatchDeploymentInstanceFilterOutp
 
 func (o PatchDeploymentInstanceFilterOutput) ToPatchDeploymentInstanceFilterOutputWithContext(ctx context.Context) PatchDeploymentInstanceFilterOutput {
 	return o
-}
-
-func (o PatchDeploymentInstanceFilterOutput) ToPatchDeploymentInstanceFilterPtrOutput() PatchDeploymentInstanceFilterPtrOutput {
-	return o.ToPatchDeploymentInstanceFilterPtrOutputWithContext(context.Background())
-}
-
-func (o PatchDeploymentInstanceFilterOutput) ToPatchDeploymentInstanceFilterPtrOutputWithContext(ctx context.Context) PatchDeploymentInstanceFilterPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchDeploymentInstanceFilter) *PatchDeploymentInstanceFilter {
-		return &v
-	}).(PatchDeploymentInstanceFilterPtrOutput)
 }
 
 // Target all VM instances in the project. If true, no other criteria is permitted.
@@ -12757,84 +12264,6 @@ func (o PatchDeploymentInstanceFilterOutput) Instances() pulumi.StringArrayOutpu
 // Targets VM instances in ANY of these zones. Leave empty to target VM instances in any zone.
 func (o PatchDeploymentInstanceFilterOutput) Zones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PatchDeploymentInstanceFilter) []string { return v.Zones }).(pulumi.StringArrayOutput)
-}
-
-type PatchDeploymentInstanceFilterPtrOutput struct{ *pulumi.OutputState }
-
-func (PatchDeploymentInstanceFilterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PatchDeploymentInstanceFilter)(nil)).Elem()
-}
-
-func (o PatchDeploymentInstanceFilterPtrOutput) ToPatchDeploymentInstanceFilterPtrOutput() PatchDeploymentInstanceFilterPtrOutput {
-	return o
-}
-
-func (o PatchDeploymentInstanceFilterPtrOutput) ToPatchDeploymentInstanceFilterPtrOutputWithContext(ctx context.Context) PatchDeploymentInstanceFilterPtrOutput {
-	return o
-}
-
-func (o PatchDeploymentInstanceFilterPtrOutput) Elem() PatchDeploymentInstanceFilterOutput {
-	return o.ApplyT(func(v *PatchDeploymentInstanceFilter) PatchDeploymentInstanceFilter {
-		if v != nil {
-			return *v
-		}
-		var ret PatchDeploymentInstanceFilter
-		return ret
-	}).(PatchDeploymentInstanceFilterOutput)
-}
-
-// Target all VM instances in the project. If true, no other criteria is permitted.
-func (o PatchDeploymentInstanceFilterPtrOutput) All() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PatchDeploymentInstanceFilter) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.All
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM instances.
-// Structure is documented below.
-func (o PatchDeploymentInstanceFilterPtrOutput) GroupLabels() PatchDeploymentInstanceFilterGroupLabelArrayOutput {
-	return o.ApplyT(func(v *PatchDeploymentInstanceFilter) []PatchDeploymentInstanceFilterGroupLabel {
-		if v == nil {
-			return nil
-		}
-		return v.GroupLabels
-	}).(PatchDeploymentInstanceFilterGroupLabelArrayOutput)
-}
-
-// Targets VMs whose name starts with one of these prefixes. Similar to labels, this is another way to group
-// VMs when targeting configs, for example prefix="prod-".
-func (o PatchDeploymentInstanceFilterPtrOutput) InstanceNamePrefixes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *PatchDeploymentInstanceFilter) []string {
-		if v == nil {
-			return nil
-		}
-		return v.InstanceNamePrefixes
-	}).(pulumi.StringArrayOutput)
-}
-
-// Targets any of the VM instances specified. Instances are specified by their URI in the `form zones/{{zone}}/instances/{{instance_name}}`,
-// `projects/{{project_id}}/zones/{{zone}}/instances/{{instance_name}}`, or
-// `https://www.googleapis.com/compute/v1/projects/{{project_id}}/zones/{{zone}}/instances/{{instance_name}}`
-func (o PatchDeploymentInstanceFilterPtrOutput) Instances() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *PatchDeploymentInstanceFilter) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Instances
-	}).(pulumi.StringArrayOutput)
-}
-
-// Targets VM instances in ANY of these zones. Leave empty to target VM instances in any zone.
-func (o PatchDeploymentInstanceFilterPtrOutput) Zones() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *PatchDeploymentInstanceFilter) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Zones
-	}).(pulumi.StringArrayOutput)
 }
 
 type PatchDeploymentInstanceFilterGroupLabel struct {
@@ -17675,7 +17104,6 @@ func (o PatchDeploymentRolloutDisruptionBudgetPtrOutput) Percentage() pulumi.Int
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GuestPoliciesAssignmentInput)(nil)).Elem(), GuestPoliciesAssignmentArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GuestPoliciesAssignmentPtrInput)(nil)).Elem(), GuestPoliciesAssignmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GuestPoliciesAssignmentGroupLabelInput)(nil)).Elem(), GuestPoliciesAssignmentGroupLabelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GuestPoliciesAssignmentGroupLabelArrayInput)(nil)).Elem(), GuestPoliciesAssignmentGroupLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GuestPoliciesAssignmentOsTypeInput)(nil)).Elem(), GuestPoliciesAssignmentOsTypeArgs{})
@@ -17733,7 +17161,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GuestPoliciesRecipeUpdateStepScriptRunInput)(nil)).Elem(), GuestPoliciesRecipeUpdateStepScriptRunArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GuestPoliciesRecipeUpdateStepScriptRunPtrInput)(nil)).Elem(), GuestPoliciesRecipeUpdateStepScriptRunArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentInstanceFilterInput)(nil)).Elem(), OsPolicyAssignmentInstanceFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentInstanceFilterPtrInput)(nil)).Elem(), OsPolicyAssignmentInstanceFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentInstanceFilterExclusionLabelInput)(nil)).Elem(), OsPolicyAssignmentInstanceFilterExclusionLabelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentInstanceFilterExclusionLabelArrayInput)(nil)).Elem(), OsPolicyAssignmentInstanceFilterExclusionLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentInstanceFilterInclusionLabelInput)(nil)).Elem(), OsPolicyAssignmentInstanceFilterInclusionLabelArgs{})
@@ -17819,11 +17246,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrInput)(nil)).Elem(), OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentRolloutInput)(nil)).Elem(), OsPolicyAssignmentRolloutArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentRolloutPtrInput)(nil)).Elem(), OsPolicyAssignmentRolloutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentRolloutDisruptionBudgetInput)(nil)).Elem(), OsPolicyAssignmentRolloutDisruptionBudgetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentRolloutDisruptionBudgetPtrInput)(nil)).Elem(), OsPolicyAssignmentRolloutDisruptionBudgetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PatchDeploymentInstanceFilterInput)(nil)).Elem(), PatchDeploymentInstanceFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PatchDeploymentInstanceFilterPtrInput)(nil)).Elem(), PatchDeploymentInstanceFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PatchDeploymentInstanceFilterGroupLabelInput)(nil)).Elem(), PatchDeploymentInstanceFilterGroupLabelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PatchDeploymentInstanceFilterGroupLabelArrayInput)(nil)).Elem(), PatchDeploymentInstanceFilterGroupLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PatchDeploymentOneTimeScheduleInput)(nil)).Elem(), PatchDeploymentOneTimeScheduleArgs{})
@@ -17877,7 +17301,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PatchDeploymentRolloutDisruptionBudgetInput)(nil)).Elem(), PatchDeploymentRolloutDisruptionBudgetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PatchDeploymentRolloutDisruptionBudgetPtrInput)(nil)).Elem(), PatchDeploymentRolloutDisruptionBudgetArgs{})
 	pulumi.RegisterOutputType(GuestPoliciesAssignmentOutput{})
-	pulumi.RegisterOutputType(GuestPoliciesAssignmentPtrOutput{})
 	pulumi.RegisterOutputType(GuestPoliciesAssignmentGroupLabelOutput{})
 	pulumi.RegisterOutputType(GuestPoliciesAssignmentGroupLabelArrayOutput{})
 	pulumi.RegisterOutputType(GuestPoliciesAssignmentOsTypeOutput{})
@@ -17935,7 +17358,6 @@ func init() {
 	pulumi.RegisterOutputType(GuestPoliciesRecipeUpdateStepScriptRunOutput{})
 	pulumi.RegisterOutputType(GuestPoliciesRecipeUpdateStepScriptRunPtrOutput{})
 	pulumi.RegisterOutputType(OsPolicyAssignmentInstanceFilterOutput{})
-	pulumi.RegisterOutputType(OsPolicyAssignmentInstanceFilterPtrOutput{})
 	pulumi.RegisterOutputType(OsPolicyAssignmentInstanceFilterExclusionLabelOutput{})
 	pulumi.RegisterOutputType(OsPolicyAssignmentInstanceFilterExclusionLabelArrayOutput{})
 	pulumi.RegisterOutputType(OsPolicyAssignmentInstanceFilterInclusionLabelOutput{})
@@ -18021,11 +17443,8 @@ func init() {
 	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutput{})
 	pulumi.RegisterOutputType(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput{})
 	pulumi.RegisterOutputType(OsPolicyAssignmentRolloutOutput{})
-	pulumi.RegisterOutputType(OsPolicyAssignmentRolloutPtrOutput{})
 	pulumi.RegisterOutputType(OsPolicyAssignmentRolloutDisruptionBudgetOutput{})
-	pulumi.RegisterOutputType(OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput{})
 	pulumi.RegisterOutputType(PatchDeploymentInstanceFilterOutput{})
-	pulumi.RegisterOutputType(PatchDeploymentInstanceFilterPtrOutput{})
 	pulumi.RegisterOutputType(PatchDeploymentInstanceFilterGroupLabelOutput{})
 	pulumi.RegisterOutputType(PatchDeploymentInstanceFilterGroupLabelArrayOutput{})
 	pulumi.RegisterOutputType(PatchDeploymentOneTimeScheduleOutput{})

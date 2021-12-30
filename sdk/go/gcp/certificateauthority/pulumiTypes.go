@@ -151,47 +151,6 @@ func (i AuthorityConfigArgs) ToAuthorityConfigOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorityConfigOutput)
 }
 
-func (i AuthorityConfigArgs) ToAuthorityConfigPtrOutput() AuthorityConfigPtrOutput {
-	return i.ToAuthorityConfigPtrOutputWithContext(context.Background())
-}
-
-func (i AuthorityConfigArgs) ToAuthorityConfigPtrOutputWithContext(ctx context.Context) AuthorityConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthorityConfigOutput).ToAuthorityConfigPtrOutputWithContext(ctx)
-}
-
-// AuthorityConfigPtrInput is an input type that accepts AuthorityConfigArgs, AuthorityConfigPtr and AuthorityConfigPtrOutput values.
-// You can construct a concrete instance of `AuthorityConfigPtrInput` via:
-//
-//          AuthorityConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type AuthorityConfigPtrInput interface {
-	pulumi.Input
-
-	ToAuthorityConfigPtrOutput() AuthorityConfigPtrOutput
-	ToAuthorityConfigPtrOutputWithContext(context.Context) AuthorityConfigPtrOutput
-}
-
-type authorityConfigPtrType AuthorityConfigArgs
-
-func AuthorityConfigPtr(v *AuthorityConfigArgs) AuthorityConfigPtrInput {
-	return (*authorityConfigPtrType)(v)
-}
-
-func (*authorityConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuthorityConfig)(nil)).Elem()
-}
-
-func (i *authorityConfigPtrType) ToAuthorityConfigPtrOutput() AuthorityConfigPtrOutput {
-	return i.ToAuthorityConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *authorityConfigPtrType) ToAuthorityConfigPtrOutputWithContext(ctx context.Context) AuthorityConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthorityConfigPtrOutput)
-}
-
 type AuthorityConfigOutput struct{ *pulumi.OutputState }
 
 func (AuthorityConfigOutput) ElementType() reflect.Type {
@@ -206,16 +165,6 @@ func (o AuthorityConfigOutput) ToAuthorityConfigOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o AuthorityConfigOutput) ToAuthorityConfigPtrOutput() AuthorityConfigPtrOutput {
-	return o.ToAuthorityConfigPtrOutputWithContext(context.Background())
-}
-
-func (o AuthorityConfigOutput) ToAuthorityConfigPtrOutputWithContext(ctx context.Context) AuthorityConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthorityConfig) *AuthorityConfig {
-		return &v
-	}).(AuthorityConfigPtrOutput)
-}
-
 // Specifies some of the values in a certificate that are related to the subject.
 // Structure is documented below.
 func (o AuthorityConfigOutput) SubjectConfig() AuthorityConfigSubjectConfigOutput {
@@ -226,52 +175,6 @@ func (o AuthorityConfigOutput) SubjectConfig() AuthorityConfigSubjectConfigOutpu
 // Structure is documented below.
 func (o AuthorityConfigOutput) X509Config() AuthorityConfigX509ConfigOutput {
 	return o.ApplyT(func(v AuthorityConfig) AuthorityConfigX509Config { return v.X509Config }).(AuthorityConfigX509ConfigOutput)
-}
-
-type AuthorityConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (AuthorityConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuthorityConfig)(nil)).Elem()
-}
-
-func (o AuthorityConfigPtrOutput) ToAuthorityConfigPtrOutput() AuthorityConfigPtrOutput {
-	return o
-}
-
-func (o AuthorityConfigPtrOutput) ToAuthorityConfigPtrOutputWithContext(ctx context.Context) AuthorityConfigPtrOutput {
-	return o
-}
-
-func (o AuthorityConfigPtrOutput) Elem() AuthorityConfigOutput {
-	return o.ApplyT(func(v *AuthorityConfig) AuthorityConfig {
-		if v != nil {
-			return *v
-		}
-		var ret AuthorityConfig
-		return ret
-	}).(AuthorityConfigOutput)
-}
-
-// Specifies some of the values in a certificate that are related to the subject.
-// Structure is documented below.
-func (o AuthorityConfigPtrOutput) SubjectConfig() AuthorityConfigSubjectConfigPtrOutput {
-	return o.ApplyT(func(v *AuthorityConfig) *AuthorityConfigSubjectConfig {
-		if v == nil {
-			return nil
-		}
-		return &v.SubjectConfig
-	}).(AuthorityConfigSubjectConfigPtrOutput)
-}
-
-// Describes how some of the technical X.509 fields in a certificate should be populated.
-// Structure is documented below.
-func (o AuthorityConfigPtrOutput) X509Config() AuthorityConfigX509ConfigPtrOutput {
-	return o.ApplyT(func(v *AuthorityConfig) *AuthorityConfigX509Config {
-		if v == nil {
-			return nil
-		}
-		return &v.X509Config
-	}).(AuthorityConfigX509ConfigPtrOutput)
 }
 
 type AuthorityConfigSubjectConfig struct {
@@ -315,47 +218,6 @@ func (i AuthorityConfigSubjectConfigArgs) ToAuthorityConfigSubjectConfigOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorityConfigSubjectConfigOutput)
 }
 
-func (i AuthorityConfigSubjectConfigArgs) ToAuthorityConfigSubjectConfigPtrOutput() AuthorityConfigSubjectConfigPtrOutput {
-	return i.ToAuthorityConfigSubjectConfigPtrOutputWithContext(context.Background())
-}
-
-func (i AuthorityConfigSubjectConfigArgs) ToAuthorityConfigSubjectConfigPtrOutputWithContext(ctx context.Context) AuthorityConfigSubjectConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthorityConfigSubjectConfigOutput).ToAuthorityConfigSubjectConfigPtrOutputWithContext(ctx)
-}
-
-// AuthorityConfigSubjectConfigPtrInput is an input type that accepts AuthorityConfigSubjectConfigArgs, AuthorityConfigSubjectConfigPtr and AuthorityConfigSubjectConfigPtrOutput values.
-// You can construct a concrete instance of `AuthorityConfigSubjectConfigPtrInput` via:
-//
-//          AuthorityConfigSubjectConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type AuthorityConfigSubjectConfigPtrInput interface {
-	pulumi.Input
-
-	ToAuthorityConfigSubjectConfigPtrOutput() AuthorityConfigSubjectConfigPtrOutput
-	ToAuthorityConfigSubjectConfigPtrOutputWithContext(context.Context) AuthorityConfigSubjectConfigPtrOutput
-}
-
-type authorityConfigSubjectConfigPtrType AuthorityConfigSubjectConfigArgs
-
-func AuthorityConfigSubjectConfigPtr(v *AuthorityConfigSubjectConfigArgs) AuthorityConfigSubjectConfigPtrInput {
-	return (*authorityConfigSubjectConfigPtrType)(v)
-}
-
-func (*authorityConfigSubjectConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuthorityConfigSubjectConfig)(nil)).Elem()
-}
-
-func (i *authorityConfigSubjectConfigPtrType) ToAuthorityConfigSubjectConfigPtrOutput() AuthorityConfigSubjectConfigPtrOutput {
-	return i.ToAuthorityConfigSubjectConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *authorityConfigSubjectConfigPtrType) ToAuthorityConfigSubjectConfigPtrOutputWithContext(ctx context.Context) AuthorityConfigSubjectConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthorityConfigSubjectConfigPtrOutput)
-}
-
 type AuthorityConfigSubjectConfigOutput struct{ *pulumi.OutputState }
 
 func (AuthorityConfigSubjectConfigOutput) ElementType() reflect.Type {
@@ -370,16 +232,6 @@ func (o AuthorityConfigSubjectConfigOutput) ToAuthorityConfigSubjectConfigOutput
 	return o
 }
 
-func (o AuthorityConfigSubjectConfigOutput) ToAuthorityConfigSubjectConfigPtrOutput() AuthorityConfigSubjectConfigPtrOutput {
-	return o.ToAuthorityConfigSubjectConfigPtrOutputWithContext(context.Background())
-}
-
-func (o AuthorityConfigSubjectConfigOutput) ToAuthorityConfigSubjectConfigPtrOutputWithContext(ctx context.Context) AuthorityConfigSubjectConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthorityConfigSubjectConfig) *AuthorityConfigSubjectConfig {
-		return &v
-	}).(AuthorityConfigSubjectConfigPtrOutput)
-}
-
 // Contains distinguished name fields such as the location and organization.
 // Structure is documented below.
 func (o AuthorityConfigSubjectConfigOutput) Subject() AuthorityConfigSubjectConfigSubjectOutput {
@@ -390,52 +242,6 @@ func (o AuthorityConfigSubjectConfigOutput) Subject() AuthorityConfigSubjectConf
 // Structure is documented below.
 func (o AuthorityConfigSubjectConfigOutput) SubjectAltName() AuthorityConfigSubjectConfigSubjectAltNamePtrOutput {
 	return o.ApplyT(func(v AuthorityConfigSubjectConfig) *AuthorityConfigSubjectConfigSubjectAltName {
-		return v.SubjectAltName
-	}).(AuthorityConfigSubjectConfigSubjectAltNamePtrOutput)
-}
-
-type AuthorityConfigSubjectConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (AuthorityConfigSubjectConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuthorityConfigSubjectConfig)(nil)).Elem()
-}
-
-func (o AuthorityConfigSubjectConfigPtrOutput) ToAuthorityConfigSubjectConfigPtrOutput() AuthorityConfigSubjectConfigPtrOutput {
-	return o
-}
-
-func (o AuthorityConfigSubjectConfigPtrOutput) ToAuthorityConfigSubjectConfigPtrOutputWithContext(ctx context.Context) AuthorityConfigSubjectConfigPtrOutput {
-	return o
-}
-
-func (o AuthorityConfigSubjectConfigPtrOutput) Elem() AuthorityConfigSubjectConfigOutput {
-	return o.ApplyT(func(v *AuthorityConfigSubjectConfig) AuthorityConfigSubjectConfig {
-		if v != nil {
-			return *v
-		}
-		var ret AuthorityConfigSubjectConfig
-		return ret
-	}).(AuthorityConfigSubjectConfigOutput)
-}
-
-// Contains distinguished name fields such as the location and organization.
-// Structure is documented below.
-func (o AuthorityConfigSubjectConfigPtrOutput) Subject() AuthorityConfigSubjectConfigSubjectPtrOutput {
-	return o.ApplyT(func(v *AuthorityConfigSubjectConfig) *AuthorityConfigSubjectConfigSubject {
-		if v == nil {
-			return nil
-		}
-		return &v.Subject
-	}).(AuthorityConfigSubjectConfigSubjectPtrOutput)
-}
-
-// The subject alternative name fields.
-// Structure is documented below.
-func (o AuthorityConfigSubjectConfigPtrOutput) SubjectAltName() AuthorityConfigSubjectConfigSubjectAltNamePtrOutput {
-	return o.ApplyT(func(v *AuthorityConfigSubjectConfig) *AuthorityConfigSubjectConfigSubjectAltName {
-		if v == nil {
-			return nil
-		}
 		return v.SubjectAltName
 	}).(AuthorityConfigSubjectConfigSubjectAltNamePtrOutput)
 }
@@ -501,47 +307,6 @@ func (i AuthorityConfigSubjectConfigSubjectArgs) ToAuthorityConfigSubjectConfigS
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorityConfigSubjectConfigSubjectOutput)
 }
 
-func (i AuthorityConfigSubjectConfigSubjectArgs) ToAuthorityConfigSubjectConfigSubjectPtrOutput() AuthorityConfigSubjectConfigSubjectPtrOutput {
-	return i.ToAuthorityConfigSubjectConfigSubjectPtrOutputWithContext(context.Background())
-}
-
-func (i AuthorityConfigSubjectConfigSubjectArgs) ToAuthorityConfigSubjectConfigSubjectPtrOutputWithContext(ctx context.Context) AuthorityConfigSubjectConfigSubjectPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthorityConfigSubjectConfigSubjectOutput).ToAuthorityConfigSubjectConfigSubjectPtrOutputWithContext(ctx)
-}
-
-// AuthorityConfigSubjectConfigSubjectPtrInput is an input type that accepts AuthorityConfigSubjectConfigSubjectArgs, AuthorityConfigSubjectConfigSubjectPtr and AuthorityConfigSubjectConfigSubjectPtrOutput values.
-// You can construct a concrete instance of `AuthorityConfigSubjectConfigSubjectPtrInput` via:
-//
-//          AuthorityConfigSubjectConfigSubjectArgs{...}
-//
-//  or:
-//
-//          nil
-type AuthorityConfigSubjectConfigSubjectPtrInput interface {
-	pulumi.Input
-
-	ToAuthorityConfigSubjectConfigSubjectPtrOutput() AuthorityConfigSubjectConfigSubjectPtrOutput
-	ToAuthorityConfigSubjectConfigSubjectPtrOutputWithContext(context.Context) AuthorityConfigSubjectConfigSubjectPtrOutput
-}
-
-type authorityConfigSubjectConfigSubjectPtrType AuthorityConfigSubjectConfigSubjectArgs
-
-func AuthorityConfigSubjectConfigSubjectPtr(v *AuthorityConfigSubjectConfigSubjectArgs) AuthorityConfigSubjectConfigSubjectPtrInput {
-	return (*authorityConfigSubjectConfigSubjectPtrType)(v)
-}
-
-func (*authorityConfigSubjectConfigSubjectPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuthorityConfigSubjectConfigSubject)(nil)).Elem()
-}
-
-func (i *authorityConfigSubjectConfigSubjectPtrType) ToAuthorityConfigSubjectConfigSubjectPtrOutput() AuthorityConfigSubjectConfigSubjectPtrOutput {
-	return i.ToAuthorityConfigSubjectConfigSubjectPtrOutputWithContext(context.Background())
-}
-
-func (i *authorityConfigSubjectConfigSubjectPtrType) ToAuthorityConfigSubjectConfigSubjectPtrOutputWithContext(ctx context.Context) AuthorityConfigSubjectConfigSubjectPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthorityConfigSubjectConfigSubjectPtrOutput)
-}
-
 type AuthorityConfigSubjectConfigSubjectOutput struct{ *pulumi.OutputState }
 
 func (AuthorityConfigSubjectConfigSubjectOutput) ElementType() reflect.Type {
@@ -554,16 +319,6 @@ func (o AuthorityConfigSubjectConfigSubjectOutput) ToAuthorityConfigSubjectConfi
 
 func (o AuthorityConfigSubjectConfigSubjectOutput) ToAuthorityConfigSubjectConfigSubjectOutputWithContext(ctx context.Context) AuthorityConfigSubjectConfigSubjectOutput {
 	return o
-}
-
-func (o AuthorityConfigSubjectConfigSubjectOutput) ToAuthorityConfigSubjectConfigSubjectPtrOutput() AuthorityConfigSubjectConfigSubjectPtrOutput {
-	return o.ToAuthorityConfigSubjectConfigSubjectPtrOutputWithContext(context.Background())
-}
-
-func (o AuthorityConfigSubjectConfigSubjectOutput) ToAuthorityConfigSubjectConfigSubjectPtrOutputWithContext(ctx context.Context) AuthorityConfigSubjectConfigSubjectPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthorityConfigSubjectConfigSubject) *AuthorityConfigSubjectConfigSubject {
-		return &v
-	}).(AuthorityConfigSubjectConfigSubjectPtrOutput)
 }
 
 // The common name of the distinguished name.
@@ -604,110 +359,6 @@ func (o AuthorityConfigSubjectConfigSubjectOutput) Province() pulumi.StringPtrOu
 // The street address of the subject.
 func (o AuthorityConfigSubjectConfigSubjectOutput) StreetAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AuthorityConfigSubjectConfigSubject) *string { return v.StreetAddress }).(pulumi.StringPtrOutput)
-}
-
-type AuthorityConfigSubjectConfigSubjectPtrOutput struct{ *pulumi.OutputState }
-
-func (AuthorityConfigSubjectConfigSubjectPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuthorityConfigSubjectConfigSubject)(nil)).Elem()
-}
-
-func (o AuthorityConfigSubjectConfigSubjectPtrOutput) ToAuthorityConfigSubjectConfigSubjectPtrOutput() AuthorityConfigSubjectConfigSubjectPtrOutput {
-	return o
-}
-
-func (o AuthorityConfigSubjectConfigSubjectPtrOutput) ToAuthorityConfigSubjectConfigSubjectPtrOutputWithContext(ctx context.Context) AuthorityConfigSubjectConfigSubjectPtrOutput {
-	return o
-}
-
-func (o AuthorityConfigSubjectConfigSubjectPtrOutput) Elem() AuthorityConfigSubjectConfigSubjectOutput {
-	return o.ApplyT(func(v *AuthorityConfigSubjectConfigSubject) AuthorityConfigSubjectConfigSubject {
-		if v != nil {
-			return *v
-		}
-		var ret AuthorityConfigSubjectConfigSubject
-		return ret
-	}).(AuthorityConfigSubjectConfigSubjectOutput)
-}
-
-// The common name of the distinguished name.
-func (o AuthorityConfigSubjectConfigSubjectPtrOutput) CommonName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AuthorityConfigSubjectConfigSubject) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CommonName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The country code of the subject.
-func (o AuthorityConfigSubjectConfigSubjectPtrOutput) CountryCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AuthorityConfigSubjectConfigSubject) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CountryCode
-	}).(pulumi.StringPtrOutput)
-}
-
-// The locality or city of the subject.
-func (o AuthorityConfigSubjectConfigSubjectPtrOutput) Locality() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AuthorityConfigSubjectConfigSubject) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Locality
-	}).(pulumi.StringPtrOutput)
-}
-
-// The organization of the subject.
-func (o AuthorityConfigSubjectConfigSubjectPtrOutput) Organization() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AuthorityConfigSubjectConfigSubject) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Organization
-	}).(pulumi.StringPtrOutput)
-}
-
-// The organizational unit of the subject.
-func (o AuthorityConfigSubjectConfigSubjectPtrOutput) OrganizationalUnit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AuthorityConfigSubjectConfigSubject) *string {
-		if v == nil {
-			return nil
-		}
-		return v.OrganizationalUnit
-	}).(pulumi.StringPtrOutput)
-}
-
-// The postal code of the subject.
-func (o AuthorityConfigSubjectConfigSubjectPtrOutput) PostalCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AuthorityConfigSubjectConfigSubject) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PostalCode
-	}).(pulumi.StringPtrOutput)
-}
-
-// The province, territory, or regional state of the subject.
-func (o AuthorityConfigSubjectConfigSubjectPtrOutput) Province() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AuthorityConfigSubjectConfigSubject) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Province
-	}).(pulumi.StringPtrOutput)
-}
-
-// The street address of the subject.
-func (o AuthorityConfigSubjectConfigSubjectPtrOutput) StreetAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AuthorityConfigSubjectConfigSubject) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StreetAddress
-	}).(pulumi.StringPtrOutput)
 }
 
 type AuthorityConfigSubjectConfigSubjectAltName struct {
@@ -963,47 +614,6 @@ func (i AuthorityConfigX509ConfigArgs) ToAuthorityConfigX509ConfigOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorityConfigX509ConfigOutput)
 }
 
-func (i AuthorityConfigX509ConfigArgs) ToAuthorityConfigX509ConfigPtrOutput() AuthorityConfigX509ConfigPtrOutput {
-	return i.ToAuthorityConfigX509ConfigPtrOutputWithContext(context.Background())
-}
-
-func (i AuthorityConfigX509ConfigArgs) ToAuthorityConfigX509ConfigPtrOutputWithContext(ctx context.Context) AuthorityConfigX509ConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthorityConfigX509ConfigOutput).ToAuthorityConfigX509ConfigPtrOutputWithContext(ctx)
-}
-
-// AuthorityConfigX509ConfigPtrInput is an input type that accepts AuthorityConfigX509ConfigArgs, AuthorityConfigX509ConfigPtr and AuthorityConfigX509ConfigPtrOutput values.
-// You can construct a concrete instance of `AuthorityConfigX509ConfigPtrInput` via:
-//
-//          AuthorityConfigX509ConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type AuthorityConfigX509ConfigPtrInput interface {
-	pulumi.Input
-
-	ToAuthorityConfigX509ConfigPtrOutput() AuthorityConfigX509ConfigPtrOutput
-	ToAuthorityConfigX509ConfigPtrOutputWithContext(context.Context) AuthorityConfigX509ConfigPtrOutput
-}
-
-type authorityConfigX509ConfigPtrType AuthorityConfigX509ConfigArgs
-
-func AuthorityConfigX509ConfigPtr(v *AuthorityConfigX509ConfigArgs) AuthorityConfigX509ConfigPtrInput {
-	return (*authorityConfigX509ConfigPtrType)(v)
-}
-
-func (*authorityConfigX509ConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuthorityConfigX509Config)(nil)).Elem()
-}
-
-func (i *authorityConfigX509ConfigPtrType) ToAuthorityConfigX509ConfigPtrOutput() AuthorityConfigX509ConfigPtrOutput {
-	return i.ToAuthorityConfigX509ConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *authorityConfigX509ConfigPtrType) ToAuthorityConfigX509ConfigPtrOutputWithContext(ctx context.Context) AuthorityConfigX509ConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthorityConfigX509ConfigPtrOutput)
-}
-
 type AuthorityConfigX509ConfigOutput struct{ *pulumi.OutputState }
 
 func (AuthorityConfigX509ConfigOutput) ElementType() reflect.Type {
@@ -1016,16 +626,6 @@ func (o AuthorityConfigX509ConfigOutput) ToAuthorityConfigX509ConfigOutput() Aut
 
 func (o AuthorityConfigX509ConfigOutput) ToAuthorityConfigX509ConfigOutputWithContext(ctx context.Context) AuthorityConfigX509ConfigOutput {
 	return o
-}
-
-func (o AuthorityConfigX509ConfigOutput) ToAuthorityConfigX509ConfigPtrOutput() AuthorityConfigX509ConfigPtrOutput {
-	return o.ToAuthorityConfigX509ConfigPtrOutputWithContext(context.Background())
-}
-
-func (o AuthorityConfigX509ConfigOutput) ToAuthorityConfigX509ConfigPtrOutputWithContext(ctx context.Context) AuthorityConfigX509ConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthorityConfigX509Config) *AuthorityConfigX509Config {
-		return &v
-	}).(AuthorityConfigX509ConfigPtrOutput)
 }
 
 // Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
@@ -1058,85 +658,6 @@ func (o AuthorityConfigX509ConfigOutput) KeyUsage() AuthorityConfigX509ConfigKey
 // Structure is documented below.
 func (o AuthorityConfigX509ConfigOutput) PolicyIds() AuthorityConfigX509ConfigPolicyIdArrayOutput {
 	return o.ApplyT(func(v AuthorityConfigX509Config) []AuthorityConfigX509ConfigPolicyId { return v.PolicyIds }).(AuthorityConfigX509ConfigPolicyIdArrayOutput)
-}
-
-type AuthorityConfigX509ConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (AuthorityConfigX509ConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuthorityConfigX509Config)(nil)).Elem()
-}
-
-func (o AuthorityConfigX509ConfigPtrOutput) ToAuthorityConfigX509ConfigPtrOutput() AuthorityConfigX509ConfigPtrOutput {
-	return o
-}
-
-func (o AuthorityConfigX509ConfigPtrOutput) ToAuthorityConfigX509ConfigPtrOutputWithContext(ctx context.Context) AuthorityConfigX509ConfigPtrOutput {
-	return o
-}
-
-func (o AuthorityConfigX509ConfigPtrOutput) Elem() AuthorityConfigX509ConfigOutput {
-	return o.ApplyT(func(v *AuthorityConfigX509Config) AuthorityConfigX509Config {
-		if v != nil {
-			return *v
-		}
-		var ret AuthorityConfigX509Config
-		return ret
-	}).(AuthorityConfigX509ConfigOutput)
-}
-
-// Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
-// Structure is documented below.
-func (o AuthorityConfigX509ConfigPtrOutput) AdditionalExtensions() AuthorityConfigX509ConfigAdditionalExtensionArrayOutput {
-	return o.ApplyT(func(v *AuthorityConfigX509Config) []AuthorityConfigX509ConfigAdditionalExtension {
-		if v == nil {
-			return nil
-		}
-		return v.AdditionalExtensions
-	}).(AuthorityConfigX509ConfigAdditionalExtensionArrayOutput)
-}
-
-// Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
-// "Authority Information Access" extension in the certificate.
-func (o AuthorityConfigX509ConfigPtrOutput) AiaOcspServers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *AuthorityConfigX509Config) []string {
-		if v == nil {
-			return nil
-		}
-		return v.AiaOcspServers
-	}).(pulumi.StringArrayOutput)
-}
-
-// Describes values that are relevant in a CA certificate.
-// Structure is documented below.
-func (o AuthorityConfigX509ConfigPtrOutput) CaOptions() AuthorityConfigX509ConfigCaOptionsPtrOutput {
-	return o.ApplyT(func(v *AuthorityConfigX509Config) *AuthorityConfigX509ConfigCaOptions {
-		if v == nil {
-			return nil
-		}
-		return &v.CaOptions
-	}).(AuthorityConfigX509ConfigCaOptionsPtrOutput)
-}
-
-// Indicates the intended use for keys that correspond to a certificate.
-// Structure is documented below.
-func (o AuthorityConfigX509ConfigPtrOutput) KeyUsage() AuthorityConfigX509ConfigKeyUsagePtrOutput {
-	return o.ApplyT(func(v *AuthorityConfigX509Config) *AuthorityConfigX509ConfigKeyUsage {
-		if v == nil {
-			return nil
-		}
-		return &v.KeyUsage
-	}).(AuthorityConfigX509ConfigKeyUsagePtrOutput)
-}
-
-// Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
-// Structure is documented below.
-func (o AuthorityConfigX509ConfigPtrOutput) PolicyIds() AuthorityConfigX509ConfigPolicyIdArrayOutput {
-	return o.ApplyT(func(v *AuthorityConfigX509Config) []AuthorityConfigX509ConfigPolicyId {
-		if v == nil {
-			return nil
-		}
-		return v.PolicyIds
-	}).(AuthorityConfigX509ConfigPolicyIdArrayOutput)
 }
 
 type AuthorityConfigX509ConfigAdditionalExtension struct {
@@ -1367,47 +888,6 @@ func (i AuthorityConfigX509ConfigCaOptionsArgs) ToAuthorityConfigX509ConfigCaOpt
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorityConfigX509ConfigCaOptionsOutput)
 }
 
-func (i AuthorityConfigX509ConfigCaOptionsArgs) ToAuthorityConfigX509ConfigCaOptionsPtrOutput() AuthorityConfigX509ConfigCaOptionsPtrOutput {
-	return i.ToAuthorityConfigX509ConfigCaOptionsPtrOutputWithContext(context.Background())
-}
-
-func (i AuthorityConfigX509ConfigCaOptionsArgs) ToAuthorityConfigX509ConfigCaOptionsPtrOutputWithContext(ctx context.Context) AuthorityConfigX509ConfigCaOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthorityConfigX509ConfigCaOptionsOutput).ToAuthorityConfigX509ConfigCaOptionsPtrOutputWithContext(ctx)
-}
-
-// AuthorityConfigX509ConfigCaOptionsPtrInput is an input type that accepts AuthorityConfigX509ConfigCaOptionsArgs, AuthorityConfigX509ConfigCaOptionsPtr and AuthorityConfigX509ConfigCaOptionsPtrOutput values.
-// You can construct a concrete instance of `AuthorityConfigX509ConfigCaOptionsPtrInput` via:
-//
-//          AuthorityConfigX509ConfigCaOptionsArgs{...}
-//
-//  or:
-//
-//          nil
-type AuthorityConfigX509ConfigCaOptionsPtrInput interface {
-	pulumi.Input
-
-	ToAuthorityConfigX509ConfigCaOptionsPtrOutput() AuthorityConfigX509ConfigCaOptionsPtrOutput
-	ToAuthorityConfigX509ConfigCaOptionsPtrOutputWithContext(context.Context) AuthorityConfigX509ConfigCaOptionsPtrOutput
-}
-
-type authorityConfigX509ConfigCaOptionsPtrType AuthorityConfigX509ConfigCaOptionsArgs
-
-func AuthorityConfigX509ConfigCaOptionsPtr(v *AuthorityConfigX509ConfigCaOptionsArgs) AuthorityConfigX509ConfigCaOptionsPtrInput {
-	return (*authorityConfigX509ConfigCaOptionsPtrType)(v)
-}
-
-func (*authorityConfigX509ConfigCaOptionsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuthorityConfigX509ConfigCaOptions)(nil)).Elem()
-}
-
-func (i *authorityConfigX509ConfigCaOptionsPtrType) ToAuthorityConfigX509ConfigCaOptionsPtrOutput() AuthorityConfigX509ConfigCaOptionsPtrOutput {
-	return i.ToAuthorityConfigX509ConfigCaOptionsPtrOutputWithContext(context.Background())
-}
-
-func (i *authorityConfigX509ConfigCaOptionsPtrType) ToAuthorityConfigX509ConfigCaOptionsPtrOutputWithContext(ctx context.Context) AuthorityConfigX509ConfigCaOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthorityConfigX509ConfigCaOptionsPtrOutput)
-}
-
 type AuthorityConfigX509ConfigCaOptionsOutput struct{ *pulumi.OutputState }
 
 func (AuthorityConfigX509ConfigCaOptionsOutput) ElementType() reflect.Type {
@@ -1420,16 +900,6 @@ func (o AuthorityConfigX509ConfigCaOptionsOutput) ToAuthorityConfigX509ConfigCaO
 
 func (o AuthorityConfigX509ConfigCaOptionsOutput) ToAuthorityConfigX509ConfigCaOptionsOutputWithContext(ctx context.Context) AuthorityConfigX509ConfigCaOptionsOutput {
 	return o
-}
-
-func (o AuthorityConfigX509ConfigCaOptionsOutput) ToAuthorityConfigX509ConfigCaOptionsPtrOutput() AuthorityConfigX509ConfigCaOptionsPtrOutput {
-	return o.ToAuthorityConfigX509ConfigCaOptionsPtrOutputWithContext(context.Background())
-}
-
-func (o AuthorityConfigX509ConfigCaOptionsOutput) ToAuthorityConfigX509ConfigCaOptionsPtrOutputWithContext(ctx context.Context) AuthorityConfigX509ConfigCaOptionsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthorityConfigX509ConfigCaOptions) *AuthorityConfigX509ConfigCaOptions {
-		return &v
-	}).(AuthorityConfigX509ConfigCaOptionsPtrOutput)
 }
 
 // When true, the "CA" in Basic Constraints extension will be set to true.
@@ -1454,74 +924,6 @@ func (o AuthorityConfigX509ConfigCaOptionsOutput) NonCa() pulumi.BoolPtrOutput {
 // the max path length will be omitted from the CA certificate.
 func (o AuthorityConfigX509ConfigCaOptionsOutput) ZeroMaxIssuerPathLength() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AuthorityConfigX509ConfigCaOptions) *bool { return v.ZeroMaxIssuerPathLength }).(pulumi.BoolPtrOutput)
-}
-
-type AuthorityConfigX509ConfigCaOptionsPtrOutput struct{ *pulumi.OutputState }
-
-func (AuthorityConfigX509ConfigCaOptionsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuthorityConfigX509ConfigCaOptions)(nil)).Elem()
-}
-
-func (o AuthorityConfigX509ConfigCaOptionsPtrOutput) ToAuthorityConfigX509ConfigCaOptionsPtrOutput() AuthorityConfigX509ConfigCaOptionsPtrOutput {
-	return o
-}
-
-func (o AuthorityConfigX509ConfigCaOptionsPtrOutput) ToAuthorityConfigX509ConfigCaOptionsPtrOutputWithContext(ctx context.Context) AuthorityConfigX509ConfigCaOptionsPtrOutput {
-	return o
-}
-
-func (o AuthorityConfigX509ConfigCaOptionsPtrOutput) Elem() AuthorityConfigX509ConfigCaOptionsOutput {
-	return o.ApplyT(func(v *AuthorityConfigX509ConfigCaOptions) AuthorityConfigX509ConfigCaOptions {
-		if v != nil {
-			return *v
-		}
-		var ret AuthorityConfigX509ConfigCaOptions
-		return ret
-	}).(AuthorityConfigX509ConfigCaOptionsOutput)
-}
-
-// When true, the "CA" in Basic Constraints extension will be set to true.
-func (o AuthorityConfigX509ConfigCaOptionsPtrOutput) IsCa() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AuthorityConfigX509ConfigCaOptions) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.IsCa
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
-// subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
-func (o AuthorityConfigX509ConfigCaOptionsPtrOutput) MaxIssuerPathLength() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *AuthorityConfigX509ConfigCaOptions) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MaxIssuerPathLength
-	}).(pulumi.IntPtrOutput)
-}
-
-// When true, the "CA" in Basic Constraints extension will be set to false.
-// If both `isCa` and `nonCa` are unset, the extension will be omitted from the CA certificate.
-func (o AuthorityConfigX509ConfigCaOptionsPtrOutput) NonCa() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AuthorityConfigX509ConfigCaOptions) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.NonCa
-	}).(pulumi.BoolPtrOutput)
-}
-
-// When true, the "path length constraint" in Basic Constraints extension will be set to 0.
-// if both `maxIssuerPathLength` and `zeroMaxIssuerPathLength` are unset,
-// the max path length will be omitted from the CA certificate.
-func (o AuthorityConfigX509ConfigCaOptionsPtrOutput) ZeroMaxIssuerPathLength() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AuthorityConfigX509ConfigCaOptions) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.ZeroMaxIssuerPathLength
-	}).(pulumi.BoolPtrOutput)
 }
 
 type AuthorityConfigX509ConfigKeyUsage struct {
@@ -1571,47 +973,6 @@ func (i AuthorityConfigX509ConfigKeyUsageArgs) ToAuthorityConfigX509ConfigKeyUsa
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorityConfigX509ConfigKeyUsageOutput)
 }
 
-func (i AuthorityConfigX509ConfigKeyUsageArgs) ToAuthorityConfigX509ConfigKeyUsagePtrOutput() AuthorityConfigX509ConfigKeyUsagePtrOutput {
-	return i.ToAuthorityConfigX509ConfigKeyUsagePtrOutputWithContext(context.Background())
-}
-
-func (i AuthorityConfigX509ConfigKeyUsageArgs) ToAuthorityConfigX509ConfigKeyUsagePtrOutputWithContext(ctx context.Context) AuthorityConfigX509ConfigKeyUsagePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthorityConfigX509ConfigKeyUsageOutput).ToAuthorityConfigX509ConfigKeyUsagePtrOutputWithContext(ctx)
-}
-
-// AuthorityConfigX509ConfigKeyUsagePtrInput is an input type that accepts AuthorityConfigX509ConfigKeyUsageArgs, AuthorityConfigX509ConfigKeyUsagePtr and AuthorityConfigX509ConfigKeyUsagePtrOutput values.
-// You can construct a concrete instance of `AuthorityConfigX509ConfigKeyUsagePtrInput` via:
-//
-//          AuthorityConfigX509ConfigKeyUsageArgs{...}
-//
-//  or:
-//
-//          nil
-type AuthorityConfigX509ConfigKeyUsagePtrInput interface {
-	pulumi.Input
-
-	ToAuthorityConfigX509ConfigKeyUsagePtrOutput() AuthorityConfigX509ConfigKeyUsagePtrOutput
-	ToAuthorityConfigX509ConfigKeyUsagePtrOutputWithContext(context.Context) AuthorityConfigX509ConfigKeyUsagePtrOutput
-}
-
-type authorityConfigX509ConfigKeyUsagePtrType AuthorityConfigX509ConfigKeyUsageArgs
-
-func AuthorityConfigX509ConfigKeyUsagePtr(v *AuthorityConfigX509ConfigKeyUsageArgs) AuthorityConfigX509ConfigKeyUsagePtrInput {
-	return (*authorityConfigX509ConfigKeyUsagePtrType)(v)
-}
-
-func (*authorityConfigX509ConfigKeyUsagePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuthorityConfigX509ConfigKeyUsage)(nil)).Elem()
-}
-
-func (i *authorityConfigX509ConfigKeyUsagePtrType) ToAuthorityConfigX509ConfigKeyUsagePtrOutput() AuthorityConfigX509ConfigKeyUsagePtrOutput {
-	return i.ToAuthorityConfigX509ConfigKeyUsagePtrOutputWithContext(context.Background())
-}
-
-func (i *authorityConfigX509ConfigKeyUsagePtrType) ToAuthorityConfigX509ConfigKeyUsagePtrOutputWithContext(ctx context.Context) AuthorityConfigX509ConfigKeyUsagePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthorityConfigX509ConfigKeyUsagePtrOutput)
-}
-
 type AuthorityConfigX509ConfigKeyUsageOutput struct{ *pulumi.OutputState }
 
 func (AuthorityConfigX509ConfigKeyUsageOutput) ElementType() reflect.Type {
@@ -1624,16 +985,6 @@ func (o AuthorityConfigX509ConfigKeyUsageOutput) ToAuthorityConfigX509ConfigKeyU
 
 func (o AuthorityConfigX509ConfigKeyUsageOutput) ToAuthorityConfigX509ConfigKeyUsageOutputWithContext(ctx context.Context) AuthorityConfigX509ConfigKeyUsageOutput {
 	return o
-}
-
-func (o AuthorityConfigX509ConfigKeyUsageOutput) ToAuthorityConfigX509ConfigKeyUsagePtrOutput() AuthorityConfigX509ConfigKeyUsagePtrOutput {
-	return o.ToAuthorityConfigX509ConfigKeyUsagePtrOutputWithContext(context.Background())
-}
-
-func (o AuthorityConfigX509ConfigKeyUsageOutput) ToAuthorityConfigX509ConfigKeyUsagePtrOutputWithContext(ctx context.Context) AuthorityConfigX509ConfigKeyUsagePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthorityConfigX509ConfigKeyUsage) *AuthorityConfigX509ConfigKeyUsage {
-		return &v
-	}).(AuthorityConfigX509ConfigKeyUsagePtrOutput)
 }
 
 // Describes high-level ways in which a key may be used.
@@ -1656,63 +1007,6 @@ func (o AuthorityConfigX509ConfigKeyUsageOutput) ExtendedKeyUsage() AuthorityCon
 // Structure is documented below.
 func (o AuthorityConfigX509ConfigKeyUsageOutput) UnknownExtendedKeyUsages() AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayOutput {
 	return o.ApplyT(func(v AuthorityConfigX509ConfigKeyUsage) []AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage {
-		return v.UnknownExtendedKeyUsages
-	}).(AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayOutput)
-}
-
-type AuthorityConfigX509ConfigKeyUsagePtrOutput struct{ *pulumi.OutputState }
-
-func (AuthorityConfigX509ConfigKeyUsagePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuthorityConfigX509ConfigKeyUsage)(nil)).Elem()
-}
-
-func (o AuthorityConfigX509ConfigKeyUsagePtrOutput) ToAuthorityConfigX509ConfigKeyUsagePtrOutput() AuthorityConfigX509ConfigKeyUsagePtrOutput {
-	return o
-}
-
-func (o AuthorityConfigX509ConfigKeyUsagePtrOutput) ToAuthorityConfigX509ConfigKeyUsagePtrOutputWithContext(ctx context.Context) AuthorityConfigX509ConfigKeyUsagePtrOutput {
-	return o
-}
-
-func (o AuthorityConfigX509ConfigKeyUsagePtrOutput) Elem() AuthorityConfigX509ConfigKeyUsageOutput {
-	return o.ApplyT(func(v *AuthorityConfigX509ConfigKeyUsage) AuthorityConfigX509ConfigKeyUsage {
-		if v != nil {
-			return *v
-		}
-		var ret AuthorityConfigX509ConfigKeyUsage
-		return ret
-	}).(AuthorityConfigX509ConfigKeyUsageOutput)
-}
-
-// Describes high-level ways in which a key may be used.
-// Structure is documented below.
-func (o AuthorityConfigX509ConfigKeyUsagePtrOutput) BaseKeyUsage() AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput {
-	return o.ApplyT(func(v *AuthorityConfigX509ConfigKeyUsage) *AuthorityConfigX509ConfigKeyUsageBaseKeyUsage {
-		if v == nil {
-			return nil
-		}
-		return &v.BaseKeyUsage
-	}).(AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput)
-}
-
-// Describes high-level ways in which a key may be used.
-// Structure is documented below.
-func (o AuthorityConfigX509ConfigKeyUsagePtrOutput) ExtendedKeyUsage() AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput {
-	return o.ApplyT(func(v *AuthorityConfigX509ConfigKeyUsage) *AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage {
-		if v == nil {
-			return nil
-		}
-		return &v.ExtendedKeyUsage
-	}).(AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput)
-}
-
-// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-// Structure is documented below.
-func (o AuthorityConfigX509ConfigKeyUsagePtrOutput) UnknownExtendedKeyUsages() AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayOutput {
-	return o.ApplyT(func(v *AuthorityConfigX509ConfigKeyUsage) []AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage {
-		if v == nil {
-			return nil
-		}
 		return v.UnknownExtendedKeyUsages
 	}).(AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayOutput)
 }
@@ -1782,47 +1076,6 @@ func (i AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs) ToAuthorityConfigX509
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput)
 }
 
-func (i AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs) ToAuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput() AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput {
-	return i.ToAuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutputWithContext(context.Background())
-}
-
-func (i AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs) ToAuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutputWithContext(ctx context.Context) AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput).ToAuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutputWithContext(ctx)
-}
-
-// AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrInput is an input type that accepts AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs, AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtr and AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput values.
-// You can construct a concrete instance of `AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrInput` via:
-//
-//          AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs{...}
-//
-//  or:
-//
-//          nil
-type AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrInput interface {
-	pulumi.Input
-
-	ToAuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput() AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput
-	ToAuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutputWithContext(context.Context) AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput
-}
-
-type authorityConfigX509ConfigKeyUsageBaseKeyUsagePtrType AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs
-
-func AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtr(v *AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs) AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrInput {
-	return (*authorityConfigX509ConfigKeyUsageBaseKeyUsagePtrType)(v)
-}
-
-func (*authorityConfigX509ConfigKeyUsageBaseKeyUsagePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuthorityConfigX509ConfigKeyUsageBaseKeyUsage)(nil)).Elem()
-}
-
-func (i *authorityConfigX509ConfigKeyUsageBaseKeyUsagePtrType) ToAuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput() AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput {
-	return i.ToAuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutputWithContext(context.Background())
-}
-
-func (i *authorityConfigX509ConfigKeyUsageBaseKeyUsagePtrType) ToAuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutputWithContext(ctx context.Context) AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput)
-}
-
 type AuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput struct{ *pulumi.OutputState }
 
 func (AuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput) ElementType() reflect.Type {
@@ -1835,16 +1088,6 @@ func (o AuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput) ToAuthorityConfigX5
 
 func (o AuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput) ToAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutputWithContext(ctx context.Context) AuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput {
 	return o
-}
-
-func (o AuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput) ToAuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput() AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput {
-	return o.ToAuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutputWithContext(context.Background())
-}
-
-func (o AuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput) ToAuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutputWithContext(ctx context.Context) AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthorityConfigX509ConfigKeyUsageBaseKeyUsage) *AuthorityConfigX509ConfigKeyUsageBaseKeyUsage {
-		return &v
-	}).(AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput)
 }
 
 // The key may be used to sign certificates.
@@ -1890,120 +1133,6 @@ func (o AuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput) KeyAgreement() pulu
 // The key may be used to encipher other keys.
 func (o AuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput) KeyEncipherment() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AuthorityConfigX509ConfigKeyUsageBaseKeyUsage) *bool { return v.KeyEncipherment }).(pulumi.BoolPtrOutput)
-}
-
-type AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput struct{ *pulumi.OutputState }
-
-func (AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuthorityConfigX509ConfigKeyUsageBaseKeyUsage)(nil)).Elem()
-}
-
-func (o AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput) ToAuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput() AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput {
-	return o
-}
-
-func (o AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput) ToAuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutputWithContext(ctx context.Context) AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput {
-	return o
-}
-
-func (o AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput) Elem() AuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput {
-	return o.ApplyT(func(v *AuthorityConfigX509ConfigKeyUsageBaseKeyUsage) AuthorityConfigX509ConfigKeyUsageBaseKeyUsage {
-		if v != nil {
-			return *v
-		}
-		var ret AuthorityConfigX509ConfigKeyUsageBaseKeyUsage
-		return ret
-	}).(AuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput)
-}
-
-// The key may be used to sign certificates.
-func (o AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput) CertSign() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AuthorityConfigX509ConfigKeyUsageBaseKeyUsage) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.CertSign
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
-func (o AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput) ContentCommitment() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AuthorityConfigX509ConfigKeyUsageBaseKeyUsage) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.ContentCommitment
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The key may be used sign certificate revocation lists.
-func (o AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput) CrlSign() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AuthorityConfigX509ConfigKeyUsageBaseKeyUsage) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.CrlSign
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The key may be used to encipher data.
-func (o AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput) DataEncipherment() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AuthorityConfigX509ConfigKeyUsageBaseKeyUsage) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.DataEncipherment
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The key may be used to decipher only.
-func (o AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput) DecipherOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AuthorityConfigX509ConfigKeyUsageBaseKeyUsage) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.DecipherOnly
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The key may be used for digital signatures.
-func (o AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput) DigitalSignature() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AuthorityConfigX509ConfigKeyUsageBaseKeyUsage) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.DigitalSignature
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The key may be used to encipher only.
-func (o AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput) EncipherOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AuthorityConfigX509ConfigKeyUsageBaseKeyUsage) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EncipherOnly
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The key may be used in a key agreement protocol.
-func (o AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput) KeyAgreement() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AuthorityConfigX509ConfigKeyUsageBaseKeyUsage) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.KeyAgreement
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The key may be used to encipher other keys.
-func (o AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput) KeyEncipherment() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AuthorityConfigX509ConfigKeyUsageBaseKeyUsage) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.KeyEncipherment
-	}).(pulumi.BoolPtrOutput)
 }
 
 type AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage struct {
@@ -2059,47 +1188,6 @@ func (i AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs) ToAuthorityConfig
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput)
 }
 
-func (i AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs) ToAuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput() AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput {
-	return i.ToAuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutputWithContext(context.Background())
-}
-
-func (i AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs) ToAuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutputWithContext(ctx context.Context) AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput).ToAuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutputWithContext(ctx)
-}
-
-// AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrInput is an input type that accepts AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs, AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtr and AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput values.
-// You can construct a concrete instance of `AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrInput` via:
-//
-//          AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs{...}
-//
-//  or:
-//
-//          nil
-type AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrInput interface {
-	pulumi.Input
-
-	ToAuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput() AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput
-	ToAuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutputWithContext(context.Context) AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput
-}
-
-type authorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrType AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs
-
-func AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtr(v *AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs) AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrInput {
-	return (*authorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrType)(v)
-}
-
-func (*authorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage)(nil)).Elem()
-}
-
-func (i *authorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrType) ToAuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput() AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput {
-	return i.ToAuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutputWithContext(context.Background())
-}
-
-func (i *authorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrType) ToAuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutputWithContext(ctx context.Context) AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput)
-}
-
 type AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput struct{ *pulumi.OutputState }
 
 func (AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput) ElementType() reflect.Type {
@@ -2112,16 +1200,6 @@ func (o AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput) ToAuthorityConf
 
 func (o AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput) ToAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutputWithContext(ctx context.Context) AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput {
 	return o
-}
-
-func (o AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput) ToAuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput() AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput {
-	return o.ToAuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutputWithContext(context.Background())
-}
-
-func (o AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput) ToAuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutputWithContext(ctx context.Context) AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage) *AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage {
-		return &v
-	}).(AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput)
 }
 
 // Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
@@ -2152,90 +1230,6 @@ func (o AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput) ServerAuth() pu
 // Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
 func (o AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput) TimeStamping() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage) *bool { return v.TimeStamping }).(pulumi.BoolPtrOutput)
-}
-
-type AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput struct{ *pulumi.OutputState }
-
-func (AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage)(nil)).Elem()
-}
-
-func (o AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput) ToAuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput() AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput {
-	return o
-}
-
-func (o AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput) ToAuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutputWithContext(ctx context.Context) AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput {
-	return o
-}
-
-func (o AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput) Elem() AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput {
-	return o.ApplyT(func(v *AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage) AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage {
-		if v != nil {
-			return *v
-		}
-		var ret AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage
-		return ret
-	}).(AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput)
-}
-
-// Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
-func (o AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput) ClientAuth() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.ClientAuth
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
-func (o AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput) CodeSigning() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.CodeSigning
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
-func (o AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput) EmailProtection() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EmailProtection
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
-func (o AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput) OcspSigning() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.OcspSigning
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
-func (o AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput) ServerAuth() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.ServerAuth
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
-func (o AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput) TimeStamping() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.TimeStamping
-	}).(pulumi.BoolPtrOutput)
 }
 
 type AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage struct {
@@ -2475,47 +1469,6 @@ func (i AuthorityKeySpecArgs) ToAuthorityKeySpecOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorityKeySpecOutput)
 }
 
-func (i AuthorityKeySpecArgs) ToAuthorityKeySpecPtrOutput() AuthorityKeySpecPtrOutput {
-	return i.ToAuthorityKeySpecPtrOutputWithContext(context.Background())
-}
-
-func (i AuthorityKeySpecArgs) ToAuthorityKeySpecPtrOutputWithContext(ctx context.Context) AuthorityKeySpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthorityKeySpecOutput).ToAuthorityKeySpecPtrOutputWithContext(ctx)
-}
-
-// AuthorityKeySpecPtrInput is an input type that accepts AuthorityKeySpecArgs, AuthorityKeySpecPtr and AuthorityKeySpecPtrOutput values.
-// You can construct a concrete instance of `AuthorityKeySpecPtrInput` via:
-//
-//          AuthorityKeySpecArgs{...}
-//
-//  or:
-//
-//          nil
-type AuthorityKeySpecPtrInput interface {
-	pulumi.Input
-
-	ToAuthorityKeySpecPtrOutput() AuthorityKeySpecPtrOutput
-	ToAuthorityKeySpecPtrOutputWithContext(context.Context) AuthorityKeySpecPtrOutput
-}
-
-type authorityKeySpecPtrType AuthorityKeySpecArgs
-
-func AuthorityKeySpecPtr(v *AuthorityKeySpecArgs) AuthorityKeySpecPtrInput {
-	return (*authorityKeySpecPtrType)(v)
-}
-
-func (*authorityKeySpecPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuthorityKeySpec)(nil)).Elem()
-}
-
-func (i *authorityKeySpecPtrType) ToAuthorityKeySpecPtrOutput() AuthorityKeySpecPtrOutput {
-	return i.ToAuthorityKeySpecPtrOutputWithContext(context.Background())
-}
-
-func (i *authorityKeySpecPtrType) ToAuthorityKeySpecPtrOutputWithContext(ctx context.Context) AuthorityKeySpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthorityKeySpecPtrOutput)
-}
-
 type AuthorityKeySpecOutput struct{ *pulumi.OutputState }
 
 func (AuthorityKeySpecOutput) ElementType() reflect.Type {
@@ -2530,16 +1483,6 @@ func (o AuthorityKeySpecOutput) ToAuthorityKeySpecOutputWithContext(ctx context.
 	return o
 }
 
-func (o AuthorityKeySpecOutput) ToAuthorityKeySpecPtrOutput() AuthorityKeySpecPtrOutput {
-	return o.ToAuthorityKeySpecPtrOutputWithContext(context.Background())
-}
-
-func (o AuthorityKeySpecOutput) ToAuthorityKeySpecPtrOutputWithContext(ctx context.Context) AuthorityKeySpecPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthorityKeySpec) *AuthorityKeySpec {
-		return &v
-	}).(AuthorityKeySpecPtrOutput)
-}
-
 // The algorithm to use for creating a managed Cloud KMS key for a for a simplified
 // experience. All managed keys will be have their ProtectionLevel as HSM.
 // Possible values are `SIGN_HASH_ALGORITHM_UNSPECIFIED`, `RSA_PSS_2048_SHA256`, `RSA_PSS_3072_SHA256`, `RSA_PSS_4096_SHA256`, `RSA_PKCS1_2048_SHA256`, `RSA_PKCS1_3072_SHA256`, `RSA_PKCS1_4096_SHA256`, `EC_P256_SHA256`, and `EC_P384_SHA384`.
@@ -2551,53 +1494,6 @@ func (o AuthorityKeySpecOutput) Algorithm() pulumi.StringPtrOutput {
 // `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
 func (o AuthorityKeySpecOutput) CloudKmsKeyVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AuthorityKeySpec) *string { return v.CloudKmsKeyVersion }).(pulumi.StringPtrOutput)
-}
-
-type AuthorityKeySpecPtrOutput struct{ *pulumi.OutputState }
-
-func (AuthorityKeySpecPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuthorityKeySpec)(nil)).Elem()
-}
-
-func (o AuthorityKeySpecPtrOutput) ToAuthorityKeySpecPtrOutput() AuthorityKeySpecPtrOutput {
-	return o
-}
-
-func (o AuthorityKeySpecPtrOutput) ToAuthorityKeySpecPtrOutputWithContext(ctx context.Context) AuthorityKeySpecPtrOutput {
-	return o
-}
-
-func (o AuthorityKeySpecPtrOutput) Elem() AuthorityKeySpecOutput {
-	return o.ApplyT(func(v *AuthorityKeySpec) AuthorityKeySpec {
-		if v != nil {
-			return *v
-		}
-		var ret AuthorityKeySpec
-		return ret
-	}).(AuthorityKeySpecOutput)
-}
-
-// The algorithm to use for creating a managed Cloud KMS key for a for a simplified
-// experience. All managed keys will be have their ProtectionLevel as HSM.
-// Possible values are `SIGN_HASH_ALGORITHM_UNSPECIFIED`, `RSA_PSS_2048_SHA256`, `RSA_PSS_3072_SHA256`, `RSA_PSS_4096_SHA256`, `RSA_PKCS1_2048_SHA256`, `RSA_PKCS1_3072_SHA256`, `RSA_PKCS1_4096_SHA256`, `EC_P256_SHA256`, and `EC_P384_SHA384`.
-func (o AuthorityKeySpecPtrOutput) Algorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AuthorityKeySpec) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Algorithm
-	}).(pulumi.StringPtrOutput)
-}
-
-// The resource name for an existing Cloud KMS CryptoKeyVersion in the format
-// `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
-func (o AuthorityKeySpecPtrOutput) CloudKmsKeyVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AuthorityKeySpec) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CloudKmsKeyVersion
-	}).(pulumi.StringPtrOutput)
 }
 
 type CaPoolIamBindingCondition struct {
@@ -12612,32 +11508,23 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityAccessUrlInput)(nil)).Elem(), AuthorityAccessUrlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityAccessUrlArrayInput)(nil)).Elem(), AuthorityAccessUrlArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigInput)(nil)).Elem(), AuthorityConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigPtrInput)(nil)).Elem(), AuthorityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigSubjectConfigInput)(nil)).Elem(), AuthorityConfigSubjectConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigSubjectConfigPtrInput)(nil)).Elem(), AuthorityConfigSubjectConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigSubjectConfigSubjectInput)(nil)).Elem(), AuthorityConfigSubjectConfigSubjectArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigSubjectConfigSubjectPtrInput)(nil)).Elem(), AuthorityConfigSubjectConfigSubjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigSubjectConfigSubjectAltNameInput)(nil)).Elem(), AuthorityConfigSubjectConfigSubjectAltNameArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigSubjectConfigSubjectAltNamePtrInput)(nil)).Elem(), AuthorityConfigSubjectConfigSubjectAltNameArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigX509ConfigInput)(nil)).Elem(), AuthorityConfigX509ConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigX509ConfigPtrInput)(nil)).Elem(), AuthorityConfigX509ConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigX509ConfigAdditionalExtensionInput)(nil)).Elem(), AuthorityConfigX509ConfigAdditionalExtensionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigX509ConfigAdditionalExtensionArrayInput)(nil)).Elem(), AuthorityConfigX509ConfigAdditionalExtensionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigX509ConfigAdditionalExtensionObjectIdInput)(nil)).Elem(), AuthorityConfigX509ConfigAdditionalExtensionObjectIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigX509ConfigCaOptionsInput)(nil)).Elem(), AuthorityConfigX509ConfigCaOptionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigX509ConfigCaOptionsPtrInput)(nil)).Elem(), AuthorityConfigX509ConfigCaOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigX509ConfigKeyUsageInput)(nil)).Elem(), AuthorityConfigX509ConfigKeyUsageArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigX509ConfigKeyUsagePtrInput)(nil)).Elem(), AuthorityConfigX509ConfigKeyUsageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigX509ConfigKeyUsageBaseKeyUsageInput)(nil)).Elem(), AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrInput)(nil)).Elem(), AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageInput)(nil)).Elem(), AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrInput)(nil)).Elem(), AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageInput)(nil)).Elem(), AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayInput)(nil)).Elem(), AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigX509ConfigPolicyIdInput)(nil)).Elem(), AuthorityConfigX509ConfigPolicyIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigX509ConfigPolicyIdArrayInput)(nil)).Elem(), AuthorityConfigX509ConfigPolicyIdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityKeySpecInput)(nil)).Elem(), AuthorityKeySpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityKeySpecPtrInput)(nil)).Elem(), AuthorityKeySpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolIamBindingConditionInput)(nil)).Elem(), CaPoolIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolIamBindingConditionPtrInput)(nil)).Elem(), CaPoolIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolIamMemberConditionInput)(nil)).Elem(), CaPoolIamMemberConditionArgs{})
@@ -12766,32 +11653,23 @@ func init() {
 	pulumi.RegisterOutputType(AuthorityAccessUrlOutput{})
 	pulumi.RegisterOutputType(AuthorityAccessUrlArrayOutput{})
 	pulumi.RegisterOutputType(AuthorityConfigOutput{})
-	pulumi.RegisterOutputType(AuthorityConfigPtrOutput{})
 	pulumi.RegisterOutputType(AuthorityConfigSubjectConfigOutput{})
-	pulumi.RegisterOutputType(AuthorityConfigSubjectConfigPtrOutput{})
 	pulumi.RegisterOutputType(AuthorityConfigSubjectConfigSubjectOutput{})
-	pulumi.RegisterOutputType(AuthorityConfigSubjectConfigSubjectPtrOutput{})
 	pulumi.RegisterOutputType(AuthorityConfigSubjectConfigSubjectAltNameOutput{})
 	pulumi.RegisterOutputType(AuthorityConfigSubjectConfigSubjectAltNamePtrOutput{})
 	pulumi.RegisterOutputType(AuthorityConfigX509ConfigOutput{})
-	pulumi.RegisterOutputType(AuthorityConfigX509ConfigPtrOutput{})
 	pulumi.RegisterOutputType(AuthorityConfigX509ConfigAdditionalExtensionOutput{})
 	pulumi.RegisterOutputType(AuthorityConfigX509ConfigAdditionalExtensionArrayOutput{})
 	pulumi.RegisterOutputType(AuthorityConfigX509ConfigAdditionalExtensionObjectIdOutput{})
 	pulumi.RegisterOutputType(AuthorityConfigX509ConfigCaOptionsOutput{})
-	pulumi.RegisterOutputType(AuthorityConfigX509ConfigCaOptionsPtrOutput{})
 	pulumi.RegisterOutputType(AuthorityConfigX509ConfigKeyUsageOutput{})
-	pulumi.RegisterOutputType(AuthorityConfigX509ConfigKeyUsagePtrOutput{})
 	pulumi.RegisterOutputType(AuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput{})
-	pulumi.RegisterOutputType(AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput{})
 	pulumi.RegisterOutputType(AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput{})
-	pulumi.RegisterOutputType(AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput{})
 	pulumi.RegisterOutputType(AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageOutput{})
 	pulumi.RegisterOutputType(AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayOutput{})
 	pulumi.RegisterOutputType(AuthorityConfigX509ConfigPolicyIdOutput{})
 	pulumi.RegisterOutputType(AuthorityConfigX509ConfigPolicyIdArrayOutput{})
 	pulumi.RegisterOutputType(AuthorityKeySpecOutput{})
-	pulumi.RegisterOutputType(AuthorityKeySpecPtrOutput{})
 	pulumi.RegisterOutputType(CaPoolIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(CaPoolIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(CaPoolIamMemberConditionOutput{})

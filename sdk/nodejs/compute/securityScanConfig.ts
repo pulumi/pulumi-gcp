@@ -145,21 +145,21 @@ export class SecurityScanConfig extends pulumi.CustomResource {
      */
     constructor(name: string, args: SecurityScanConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SecurityScanConfigArgs | SecurityScanConfigState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecurityScanConfigState | undefined;
-            inputs["authentication"] = state ? state.authentication : undefined;
-            inputs["blacklistPatterns"] = state ? state.blacklistPatterns : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["exportToSecurityCommandCenter"] = state ? state.exportToSecurityCommandCenter : undefined;
-            inputs["maxQps"] = state ? state.maxQps : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["schedule"] = state ? state.schedule : undefined;
-            inputs["startingUrls"] = state ? state.startingUrls : undefined;
-            inputs["targetPlatforms"] = state ? state.targetPlatforms : undefined;
-            inputs["userAgent"] = state ? state.userAgent : undefined;
+            resourceInputs["authentication"] = state ? state.authentication : undefined;
+            resourceInputs["blacklistPatterns"] = state ? state.blacklistPatterns : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["exportToSecurityCommandCenter"] = state ? state.exportToSecurityCommandCenter : undefined;
+            resourceInputs["maxQps"] = state ? state.maxQps : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["schedule"] = state ? state.schedule : undefined;
+            resourceInputs["startingUrls"] = state ? state.startingUrls : undefined;
+            resourceInputs["targetPlatforms"] = state ? state.targetPlatforms : undefined;
+            resourceInputs["userAgent"] = state ? state.userAgent : undefined;
         } else {
             const args = argsOrState as SecurityScanConfigArgs | undefined;
             if ((!args || args.displayName === undefined) && !opts.urn) {
@@ -168,22 +168,22 @@ export class SecurityScanConfig extends pulumi.CustomResource {
             if ((!args || args.startingUrls === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'startingUrls'");
             }
-            inputs["authentication"] = args ? args.authentication : undefined;
-            inputs["blacklistPatterns"] = args ? args.blacklistPatterns : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["exportToSecurityCommandCenter"] = args ? args.exportToSecurityCommandCenter : undefined;
-            inputs["maxQps"] = args ? args.maxQps : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["schedule"] = args ? args.schedule : undefined;
-            inputs["startingUrls"] = args ? args.startingUrls : undefined;
-            inputs["targetPlatforms"] = args ? args.targetPlatforms : undefined;
-            inputs["userAgent"] = args ? args.userAgent : undefined;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["authentication"] = args ? args.authentication : undefined;
+            resourceInputs["blacklistPatterns"] = args ? args.blacklistPatterns : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["exportToSecurityCommandCenter"] = args ? args.exportToSecurityCommandCenter : undefined;
+            resourceInputs["maxQps"] = args ? args.maxQps : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["schedule"] = args ? args.schedule : undefined;
+            resourceInputs["startingUrls"] = args ? args.startingUrls : undefined;
+            resourceInputs["targetPlatforms"] = args ? args.targetPlatforms : undefined;
+            resourceInputs["userAgent"] = args ? args.userAgent : undefined;
+            resourceInputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(SecurityScanConfig.__pulumiType, name, inputs, opts);
+        super(SecurityScanConfig.__pulumiType, name, resourceInputs, opts);
     }
 }
 

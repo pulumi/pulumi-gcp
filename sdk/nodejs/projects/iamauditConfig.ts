@@ -243,14 +243,14 @@ export class IAMAuditConfig extends pulumi.CustomResource {
      */
     constructor(name: string, args: IAMAuditConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IAMAuditConfigArgs | IAMAuditConfigState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IAMAuditConfigState | undefined;
-            inputs["auditLogConfigs"] = state ? state.auditLogConfigs : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["service"] = state ? state.service : undefined;
+            resourceInputs["auditLogConfigs"] = state ? state.auditLogConfigs : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["service"] = state ? state.service : undefined;
         } else {
             const args = argsOrState as IAMAuditConfigArgs | undefined;
             if ((!args || args.auditLogConfigs === undefined) && !opts.urn) {
@@ -262,15 +262,15 @@ export class IAMAuditConfig extends pulumi.CustomResource {
             if ((!args || args.service === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
-            inputs["auditLogConfigs"] = args ? args.auditLogConfigs : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["service"] = args ? args.service : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["auditLogConfigs"] = args ? args.auditLogConfigs : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["service"] = args ? args.service : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(IAMAuditConfig.__pulumiType, name, inputs, opts);
+        super(IAMAuditConfig.__pulumiType, name, resourceInputs, opts);
     }
 }
 

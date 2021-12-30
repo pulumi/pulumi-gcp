@@ -148,20 +148,20 @@ export class Secret extends pulumi.CustomResource {
      */
     constructor(name: string, args: SecretArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SecretArgs | SecretState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecretState | undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["expireTime"] = state ? state.expireTime : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["replication"] = state ? state.replication : undefined;
-            inputs["rotation"] = state ? state.rotation : undefined;
-            inputs["secretId"] = state ? state.secretId : undefined;
-            inputs["topics"] = state ? state.topics : undefined;
-            inputs["ttl"] = state ? state.ttl : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["expireTime"] = state ? state.expireTime : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["replication"] = state ? state.replication : undefined;
+            resourceInputs["rotation"] = state ? state.rotation : undefined;
+            resourceInputs["secretId"] = state ? state.secretId : undefined;
+            resourceInputs["topics"] = state ? state.topics : undefined;
+            resourceInputs["ttl"] = state ? state.ttl : undefined;
         } else {
             const args = argsOrState as SecretArgs | undefined;
             if ((!args || args.replication === undefined) && !opts.urn) {
@@ -170,21 +170,21 @@ export class Secret extends pulumi.CustomResource {
             if ((!args || args.secretId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'secretId'");
             }
-            inputs["expireTime"] = args ? args.expireTime : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["replication"] = args ? args.replication : undefined;
-            inputs["rotation"] = args ? args.rotation : undefined;
-            inputs["secretId"] = args ? args.secretId : undefined;
-            inputs["topics"] = args ? args.topics : undefined;
-            inputs["ttl"] = args ? args.ttl : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["expireTime"] = args ? args.expireTime : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["replication"] = args ? args.replication : undefined;
+            resourceInputs["rotation"] = args ? args.rotation : undefined;
+            resourceInputs["secretId"] = args ? args.secretId : undefined;
+            resourceInputs["topics"] = args ? args.topics : undefined;
+            resourceInputs["ttl"] = args ? args.ttl : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Secret.__pulumiType, name, inputs, opts);
+        super(Secret.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -191,7 +191,7 @@ type BillingAccountBucketConfigInput interface {
 }
 
 func (*BillingAccountBucketConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((*BillingAccountBucketConfig)(nil))
+	return reflect.TypeOf((**BillingAccountBucketConfig)(nil)).Elem()
 }
 
 func (i *BillingAccountBucketConfig) ToBillingAccountBucketConfigOutput() BillingAccountBucketConfigOutput {
@@ -200,35 +200,6 @@ func (i *BillingAccountBucketConfig) ToBillingAccountBucketConfigOutput() Billin
 
 func (i *BillingAccountBucketConfig) ToBillingAccountBucketConfigOutputWithContext(ctx context.Context) BillingAccountBucketConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountBucketConfigOutput)
-}
-
-func (i *BillingAccountBucketConfig) ToBillingAccountBucketConfigPtrOutput() BillingAccountBucketConfigPtrOutput {
-	return i.ToBillingAccountBucketConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *BillingAccountBucketConfig) ToBillingAccountBucketConfigPtrOutputWithContext(ctx context.Context) BillingAccountBucketConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountBucketConfigPtrOutput)
-}
-
-type BillingAccountBucketConfigPtrInput interface {
-	pulumi.Input
-
-	ToBillingAccountBucketConfigPtrOutput() BillingAccountBucketConfigPtrOutput
-	ToBillingAccountBucketConfigPtrOutputWithContext(ctx context.Context) BillingAccountBucketConfigPtrOutput
-}
-
-type billingAccountBucketConfigPtrType BillingAccountBucketConfigArgs
-
-func (*billingAccountBucketConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BillingAccountBucketConfig)(nil))
-}
-
-func (i *billingAccountBucketConfigPtrType) ToBillingAccountBucketConfigPtrOutput() BillingAccountBucketConfigPtrOutput {
-	return i.ToBillingAccountBucketConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *billingAccountBucketConfigPtrType) ToBillingAccountBucketConfigPtrOutputWithContext(ctx context.Context) BillingAccountBucketConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountBucketConfigPtrOutput)
 }
 
 // BillingAccountBucketConfigArrayInput is an input type that accepts BillingAccountBucketConfigArray and BillingAccountBucketConfigArrayOutput values.
@@ -284,7 +255,7 @@ func (i BillingAccountBucketConfigMap) ToBillingAccountBucketConfigMapOutputWith
 type BillingAccountBucketConfigOutput struct{ *pulumi.OutputState }
 
 func (BillingAccountBucketConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BillingAccountBucketConfig)(nil))
+	return reflect.TypeOf((**BillingAccountBucketConfig)(nil)).Elem()
 }
 
 func (o BillingAccountBucketConfigOutput) ToBillingAccountBucketConfigOutput() BillingAccountBucketConfigOutput {
@@ -295,44 +266,10 @@ func (o BillingAccountBucketConfigOutput) ToBillingAccountBucketConfigOutputWith
 	return o
 }
 
-func (o BillingAccountBucketConfigOutput) ToBillingAccountBucketConfigPtrOutput() BillingAccountBucketConfigPtrOutput {
-	return o.ToBillingAccountBucketConfigPtrOutputWithContext(context.Background())
-}
-
-func (o BillingAccountBucketConfigOutput) ToBillingAccountBucketConfigPtrOutputWithContext(ctx context.Context) BillingAccountBucketConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BillingAccountBucketConfig) *BillingAccountBucketConfig {
-		return &v
-	}).(BillingAccountBucketConfigPtrOutput)
-}
-
-type BillingAccountBucketConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (BillingAccountBucketConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BillingAccountBucketConfig)(nil))
-}
-
-func (o BillingAccountBucketConfigPtrOutput) ToBillingAccountBucketConfigPtrOutput() BillingAccountBucketConfigPtrOutput {
-	return o
-}
-
-func (o BillingAccountBucketConfigPtrOutput) ToBillingAccountBucketConfigPtrOutputWithContext(ctx context.Context) BillingAccountBucketConfigPtrOutput {
-	return o
-}
-
-func (o BillingAccountBucketConfigPtrOutput) Elem() BillingAccountBucketConfigOutput {
-	return o.ApplyT(func(v *BillingAccountBucketConfig) BillingAccountBucketConfig {
-		if v != nil {
-			return *v
-		}
-		var ret BillingAccountBucketConfig
-		return ret
-	}).(BillingAccountBucketConfigOutput)
-}
-
 type BillingAccountBucketConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (BillingAccountBucketConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BillingAccountBucketConfig)(nil))
+	return reflect.TypeOf((*[]*BillingAccountBucketConfig)(nil)).Elem()
 }
 
 func (o BillingAccountBucketConfigArrayOutput) ToBillingAccountBucketConfigArrayOutput() BillingAccountBucketConfigArrayOutput {
@@ -344,15 +281,15 @@ func (o BillingAccountBucketConfigArrayOutput) ToBillingAccountBucketConfigArray
 }
 
 func (o BillingAccountBucketConfigArrayOutput) Index(i pulumi.IntInput) BillingAccountBucketConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BillingAccountBucketConfig {
-		return vs[0].([]BillingAccountBucketConfig)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BillingAccountBucketConfig {
+		return vs[0].([]*BillingAccountBucketConfig)[vs[1].(int)]
 	}).(BillingAccountBucketConfigOutput)
 }
 
 type BillingAccountBucketConfigMapOutput struct{ *pulumi.OutputState }
 
 func (BillingAccountBucketConfigMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]BillingAccountBucketConfig)(nil))
+	return reflect.TypeOf((*map[string]*BillingAccountBucketConfig)(nil)).Elem()
 }
 
 func (o BillingAccountBucketConfigMapOutput) ToBillingAccountBucketConfigMapOutput() BillingAccountBucketConfigMapOutput {
@@ -364,18 +301,16 @@ func (o BillingAccountBucketConfigMapOutput) ToBillingAccountBucketConfigMapOutp
 }
 
 func (o BillingAccountBucketConfigMapOutput) MapIndex(k pulumi.StringInput) BillingAccountBucketConfigOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BillingAccountBucketConfig {
-		return vs[0].(map[string]BillingAccountBucketConfig)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *BillingAccountBucketConfig {
+		return vs[0].(map[string]*BillingAccountBucketConfig)[vs[1].(string)]
 	}).(BillingAccountBucketConfigOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BillingAccountBucketConfigInput)(nil)).Elem(), &BillingAccountBucketConfig{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BillingAccountBucketConfigPtrInput)(nil)).Elem(), &BillingAccountBucketConfig{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BillingAccountBucketConfigArrayInput)(nil)).Elem(), BillingAccountBucketConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BillingAccountBucketConfigMapInput)(nil)).Elem(), BillingAccountBucketConfigMap{})
 	pulumi.RegisterOutputType(BillingAccountBucketConfigOutput{})
-	pulumi.RegisterOutputType(BillingAccountBucketConfigPtrOutput{})
 	pulumi.RegisterOutputType(BillingAccountBucketConfigArrayOutput{})
 	pulumi.RegisterOutputType(BillingAccountBucketConfigMapOutput{})
 }

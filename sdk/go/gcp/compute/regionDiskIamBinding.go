@@ -271,7 +271,7 @@ type RegionDiskIamBindingInput interface {
 }
 
 func (*RegionDiskIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionDiskIamBinding)(nil))
+	return reflect.TypeOf((**RegionDiskIamBinding)(nil)).Elem()
 }
 
 func (i *RegionDiskIamBinding) ToRegionDiskIamBindingOutput() RegionDiskIamBindingOutput {
@@ -280,35 +280,6 @@ func (i *RegionDiskIamBinding) ToRegionDiskIamBindingOutput() RegionDiskIamBindi
 
 func (i *RegionDiskIamBinding) ToRegionDiskIamBindingOutputWithContext(ctx context.Context) RegionDiskIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskIamBindingOutput)
-}
-
-func (i *RegionDiskIamBinding) ToRegionDiskIamBindingPtrOutput() RegionDiskIamBindingPtrOutput {
-	return i.ToRegionDiskIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *RegionDiskIamBinding) ToRegionDiskIamBindingPtrOutputWithContext(ctx context.Context) RegionDiskIamBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskIamBindingPtrOutput)
-}
-
-type RegionDiskIamBindingPtrInput interface {
-	pulumi.Input
-
-	ToRegionDiskIamBindingPtrOutput() RegionDiskIamBindingPtrOutput
-	ToRegionDiskIamBindingPtrOutputWithContext(ctx context.Context) RegionDiskIamBindingPtrOutput
-}
-
-type regionDiskIamBindingPtrType RegionDiskIamBindingArgs
-
-func (*regionDiskIamBindingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegionDiskIamBinding)(nil))
-}
-
-func (i *regionDiskIamBindingPtrType) ToRegionDiskIamBindingPtrOutput() RegionDiskIamBindingPtrOutput {
-	return i.ToRegionDiskIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *regionDiskIamBindingPtrType) ToRegionDiskIamBindingPtrOutputWithContext(ctx context.Context) RegionDiskIamBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskIamBindingPtrOutput)
 }
 
 // RegionDiskIamBindingArrayInput is an input type that accepts RegionDiskIamBindingArray and RegionDiskIamBindingArrayOutput values.
@@ -364,7 +335,7 @@ func (i RegionDiskIamBindingMap) ToRegionDiskIamBindingMapOutputWithContext(ctx 
 type RegionDiskIamBindingOutput struct{ *pulumi.OutputState }
 
 func (RegionDiskIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionDiskIamBinding)(nil))
+	return reflect.TypeOf((**RegionDiskIamBinding)(nil)).Elem()
 }
 
 func (o RegionDiskIamBindingOutput) ToRegionDiskIamBindingOutput() RegionDiskIamBindingOutput {
@@ -375,44 +346,10 @@ func (o RegionDiskIamBindingOutput) ToRegionDiskIamBindingOutputWithContext(ctx 
 	return o
 }
 
-func (o RegionDiskIamBindingOutput) ToRegionDiskIamBindingPtrOutput() RegionDiskIamBindingPtrOutput {
-	return o.ToRegionDiskIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (o RegionDiskIamBindingOutput) ToRegionDiskIamBindingPtrOutputWithContext(ctx context.Context) RegionDiskIamBindingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionDiskIamBinding) *RegionDiskIamBinding {
-		return &v
-	}).(RegionDiskIamBindingPtrOutput)
-}
-
-type RegionDiskIamBindingPtrOutput struct{ *pulumi.OutputState }
-
-func (RegionDiskIamBindingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegionDiskIamBinding)(nil))
-}
-
-func (o RegionDiskIamBindingPtrOutput) ToRegionDiskIamBindingPtrOutput() RegionDiskIamBindingPtrOutput {
-	return o
-}
-
-func (o RegionDiskIamBindingPtrOutput) ToRegionDiskIamBindingPtrOutputWithContext(ctx context.Context) RegionDiskIamBindingPtrOutput {
-	return o
-}
-
-func (o RegionDiskIamBindingPtrOutput) Elem() RegionDiskIamBindingOutput {
-	return o.ApplyT(func(v *RegionDiskIamBinding) RegionDiskIamBinding {
-		if v != nil {
-			return *v
-		}
-		var ret RegionDiskIamBinding
-		return ret
-	}).(RegionDiskIamBindingOutput)
-}
-
 type RegionDiskIamBindingArrayOutput struct{ *pulumi.OutputState }
 
 func (RegionDiskIamBindingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RegionDiskIamBinding)(nil))
+	return reflect.TypeOf((*[]*RegionDiskIamBinding)(nil)).Elem()
 }
 
 func (o RegionDiskIamBindingArrayOutput) ToRegionDiskIamBindingArrayOutput() RegionDiskIamBindingArrayOutput {
@@ -424,15 +361,15 @@ func (o RegionDiskIamBindingArrayOutput) ToRegionDiskIamBindingArrayOutputWithCo
 }
 
 func (o RegionDiskIamBindingArrayOutput) Index(i pulumi.IntInput) RegionDiskIamBindingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionDiskIamBinding {
-		return vs[0].([]RegionDiskIamBinding)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RegionDiskIamBinding {
+		return vs[0].([]*RegionDiskIamBinding)[vs[1].(int)]
 	}).(RegionDiskIamBindingOutput)
 }
 
 type RegionDiskIamBindingMapOutput struct{ *pulumi.OutputState }
 
 func (RegionDiskIamBindingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]RegionDiskIamBinding)(nil))
+	return reflect.TypeOf((*map[string]*RegionDiskIamBinding)(nil)).Elem()
 }
 
 func (o RegionDiskIamBindingMapOutput) ToRegionDiskIamBindingMapOutput() RegionDiskIamBindingMapOutput {
@@ -444,18 +381,16 @@ func (o RegionDiskIamBindingMapOutput) ToRegionDiskIamBindingMapOutputWithContex
 }
 
 func (o RegionDiskIamBindingMapOutput) MapIndex(k pulumi.StringInput) RegionDiskIamBindingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RegionDiskIamBinding {
-		return vs[0].(map[string]RegionDiskIamBinding)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *RegionDiskIamBinding {
+		return vs[0].(map[string]*RegionDiskIamBinding)[vs[1].(string)]
 	}).(RegionDiskIamBindingOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskIamBindingInput)(nil)).Elem(), &RegionDiskIamBinding{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskIamBindingPtrInput)(nil)).Elem(), &RegionDiskIamBinding{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskIamBindingArrayInput)(nil)).Elem(), RegionDiskIamBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskIamBindingMapInput)(nil)).Elem(), RegionDiskIamBindingMap{})
 	pulumi.RegisterOutputType(RegionDiskIamBindingOutput{})
-	pulumi.RegisterOutputType(RegionDiskIamBindingPtrOutput{})
 	pulumi.RegisterOutputType(RegionDiskIamBindingArrayOutput{})
 	pulumi.RegisterOutputType(RegionDiskIamBindingMapOutput{})
 }

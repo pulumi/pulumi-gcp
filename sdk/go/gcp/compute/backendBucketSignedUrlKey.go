@@ -195,7 +195,7 @@ type BackendBucketSignedUrlKeyInput interface {
 }
 
 func (*BackendBucketSignedUrlKey) ElementType() reflect.Type {
-	return reflect.TypeOf((*BackendBucketSignedUrlKey)(nil))
+	return reflect.TypeOf((**BackendBucketSignedUrlKey)(nil)).Elem()
 }
 
 func (i *BackendBucketSignedUrlKey) ToBackendBucketSignedUrlKeyOutput() BackendBucketSignedUrlKeyOutput {
@@ -204,35 +204,6 @@ func (i *BackendBucketSignedUrlKey) ToBackendBucketSignedUrlKeyOutput() BackendB
 
 func (i *BackendBucketSignedUrlKey) ToBackendBucketSignedUrlKeyOutputWithContext(ctx context.Context) BackendBucketSignedUrlKeyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BackendBucketSignedUrlKeyOutput)
-}
-
-func (i *BackendBucketSignedUrlKey) ToBackendBucketSignedUrlKeyPtrOutput() BackendBucketSignedUrlKeyPtrOutput {
-	return i.ToBackendBucketSignedUrlKeyPtrOutputWithContext(context.Background())
-}
-
-func (i *BackendBucketSignedUrlKey) ToBackendBucketSignedUrlKeyPtrOutputWithContext(ctx context.Context) BackendBucketSignedUrlKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BackendBucketSignedUrlKeyPtrOutput)
-}
-
-type BackendBucketSignedUrlKeyPtrInput interface {
-	pulumi.Input
-
-	ToBackendBucketSignedUrlKeyPtrOutput() BackendBucketSignedUrlKeyPtrOutput
-	ToBackendBucketSignedUrlKeyPtrOutputWithContext(ctx context.Context) BackendBucketSignedUrlKeyPtrOutput
-}
-
-type backendBucketSignedUrlKeyPtrType BackendBucketSignedUrlKeyArgs
-
-func (*backendBucketSignedUrlKeyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BackendBucketSignedUrlKey)(nil))
-}
-
-func (i *backendBucketSignedUrlKeyPtrType) ToBackendBucketSignedUrlKeyPtrOutput() BackendBucketSignedUrlKeyPtrOutput {
-	return i.ToBackendBucketSignedUrlKeyPtrOutputWithContext(context.Background())
-}
-
-func (i *backendBucketSignedUrlKeyPtrType) ToBackendBucketSignedUrlKeyPtrOutputWithContext(ctx context.Context) BackendBucketSignedUrlKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BackendBucketSignedUrlKeyPtrOutput)
 }
 
 // BackendBucketSignedUrlKeyArrayInput is an input type that accepts BackendBucketSignedUrlKeyArray and BackendBucketSignedUrlKeyArrayOutput values.
@@ -288,7 +259,7 @@ func (i BackendBucketSignedUrlKeyMap) ToBackendBucketSignedUrlKeyMapOutputWithCo
 type BackendBucketSignedUrlKeyOutput struct{ *pulumi.OutputState }
 
 func (BackendBucketSignedUrlKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BackendBucketSignedUrlKey)(nil))
+	return reflect.TypeOf((**BackendBucketSignedUrlKey)(nil)).Elem()
 }
 
 func (o BackendBucketSignedUrlKeyOutput) ToBackendBucketSignedUrlKeyOutput() BackendBucketSignedUrlKeyOutput {
@@ -299,44 +270,10 @@ func (o BackendBucketSignedUrlKeyOutput) ToBackendBucketSignedUrlKeyOutputWithCo
 	return o
 }
 
-func (o BackendBucketSignedUrlKeyOutput) ToBackendBucketSignedUrlKeyPtrOutput() BackendBucketSignedUrlKeyPtrOutput {
-	return o.ToBackendBucketSignedUrlKeyPtrOutputWithContext(context.Background())
-}
-
-func (o BackendBucketSignedUrlKeyOutput) ToBackendBucketSignedUrlKeyPtrOutputWithContext(ctx context.Context) BackendBucketSignedUrlKeyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackendBucketSignedUrlKey) *BackendBucketSignedUrlKey {
-		return &v
-	}).(BackendBucketSignedUrlKeyPtrOutput)
-}
-
-type BackendBucketSignedUrlKeyPtrOutput struct{ *pulumi.OutputState }
-
-func (BackendBucketSignedUrlKeyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BackendBucketSignedUrlKey)(nil))
-}
-
-func (o BackendBucketSignedUrlKeyPtrOutput) ToBackendBucketSignedUrlKeyPtrOutput() BackendBucketSignedUrlKeyPtrOutput {
-	return o
-}
-
-func (o BackendBucketSignedUrlKeyPtrOutput) ToBackendBucketSignedUrlKeyPtrOutputWithContext(ctx context.Context) BackendBucketSignedUrlKeyPtrOutput {
-	return o
-}
-
-func (o BackendBucketSignedUrlKeyPtrOutput) Elem() BackendBucketSignedUrlKeyOutput {
-	return o.ApplyT(func(v *BackendBucketSignedUrlKey) BackendBucketSignedUrlKey {
-		if v != nil {
-			return *v
-		}
-		var ret BackendBucketSignedUrlKey
-		return ret
-	}).(BackendBucketSignedUrlKeyOutput)
-}
-
 type BackendBucketSignedUrlKeyArrayOutput struct{ *pulumi.OutputState }
 
 func (BackendBucketSignedUrlKeyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BackendBucketSignedUrlKey)(nil))
+	return reflect.TypeOf((*[]*BackendBucketSignedUrlKey)(nil)).Elem()
 }
 
 func (o BackendBucketSignedUrlKeyArrayOutput) ToBackendBucketSignedUrlKeyArrayOutput() BackendBucketSignedUrlKeyArrayOutput {
@@ -348,15 +285,15 @@ func (o BackendBucketSignedUrlKeyArrayOutput) ToBackendBucketSignedUrlKeyArrayOu
 }
 
 func (o BackendBucketSignedUrlKeyArrayOutput) Index(i pulumi.IntInput) BackendBucketSignedUrlKeyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BackendBucketSignedUrlKey {
-		return vs[0].([]BackendBucketSignedUrlKey)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BackendBucketSignedUrlKey {
+		return vs[0].([]*BackendBucketSignedUrlKey)[vs[1].(int)]
 	}).(BackendBucketSignedUrlKeyOutput)
 }
 
 type BackendBucketSignedUrlKeyMapOutput struct{ *pulumi.OutputState }
 
 func (BackendBucketSignedUrlKeyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]BackendBucketSignedUrlKey)(nil))
+	return reflect.TypeOf((*map[string]*BackendBucketSignedUrlKey)(nil)).Elem()
 }
 
 func (o BackendBucketSignedUrlKeyMapOutput) ToBackendBucketSignedUrlKeyMapOutput() BackendBucketSignedUrlKeyMapOutput {
@@ -368,18 +305,16 @@ func (o BackendBucketSignedUrlKeyMapOutput) ToBackendBucketSignedUrlKeyMapOutput
 }
 
 func (o BackendBucketSignedUrlKeyMapOutput) MapIndex(k pulumi.StringInput) BackendBucketSignedUrlKeyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BackendBucketSignedUrlKey {
-		return vs[0].(map[string]BackendBucketSignedUrlKey)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *BackendBucketSignedUrlKey {
+		return vs[0].(map[string]*BackendBucketSignedUrlKey)[vs[1].(string)]
 	}).(BackendBucketSignedUrlKeyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendBucketSignedUrlKeyInput)(nil)).Elem(), &BackendBucketSignedUrlKey{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BackendBucketSignedUrlKeyPtrInput)(nil)).Elem(), &BackendBucketSignedUrlKey{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendBucketSignedUrlKeyArrayInput)(nil)).Elem(), BackendBucketSignedUrlKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendBucketSignedUrlKeyMapInput)(nil)).Elem(), BackendBucketSignedUrlKeyMap{})
 	pulumi.RegisterOutputType(BackendBucketSignedUrlKeyOutput{})
-	pulumi.RegisterOutputType(BackendBucketSignedUrlKeyPtrOutput{})
 	pulumi.RegisterOutputType(BackendBucketSignedUrlKeyArrayOutput{})
 	pulumi.RegisterOutputType(BackendBucketSignedUrlKeyMapOutput{})
 }

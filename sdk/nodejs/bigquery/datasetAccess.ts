@@ -103,40 +103,40 @@ export class DatasetAccess extends pulumi.CustomResource {
      */
     constructor(name: string, args: DatasetAccessArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DatasetAccessArgs | DatasetAccessState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatasetAccessState | undefined;
-            inputs["apiUpdatedMember"] = state ? state.apiUpdatedMember : undefined;
-            inputs["datasetId"] = state ? state.datasetId : undefined;
-            inputs["domain"] = state ? state.domain : undefined;
-            inputs["groupByEmail"] = state ? state.groupByEmail : undefined;
-            inputs["iamMember"] = state ? state.iamMember : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["role"] = state ? state.role : undefined;
-            inputs["specialGroup"] = state ? state.specialGroup : undefined;
-            inputs["userByEmail"] = state ? state.userByEmail : undefined;
-            inputs["view"] = state ? state.view : undefined;
+            resourceInputs["apiUpdatedMember"] = state ? state.apiUpdatedMember : undefined;
+            resourceInputs["datasetId"] = state ? state.datasetId : undefined;
+            resourceInputs["domain"] = state ? state.domain : undefined;
+            resourceInputs["groupByEmail"] = state ? state.groupByEmail : undefined;
+            resourceInputs["iamMember"] = state ? state.iamMember : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["specialGroup"] = state ? state.specialGroup : undefined;
+            resourceInputs["userByEmail"] = state ? state.userByEmail : undefined;
+            resourceInputs["view"] = state ? state.view : undefined;
         } else {
             const args = argsOrState as DatasetAccessArgs | undefined;
             if ((!args || args.datasetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datasetId'");
             }
-            inputs["datasetId"] = args ? args.datasetId : undefined;
-            inputs["domain"] = args ? args.domain : undefined;
-            inputs["groupByEmail"] = args ? args.groupByEmail : undefined;
-            inputs["iamMember"] = args ? args.iamMember : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["role"] = args ? args.role : undefined;
-            inputs["specialGroup"] = args ? args.specialGroup : undefined;
-            inputs["userByEmail"] = args ? args.userByEmail : undefined;
-            inputs["view"] = args ? args.view : undefined;
-            inputs["apiUpdatedMember"] = undefined /*out*/;
+            resourceInputs["datasetId"] = args ? args.datasetId : undefined;
+            resourceInputs["domain"] = args ? args.domain : undefined;
+            resourceInputs["groupByEmail"] = args ? args.groupByEmail : undefined;
+            resourceInputs["iamMember"] = args ? args.iamMember : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["specialGroup"] = args ? args.specialGroup : undefined;
+            resourceInputs["userByEmail"] = args ? args.userByEmail : undefined;
+            resourceInputs["view"] = args ? args.view : undefined;
+            resourceInputs["apiUpdatedMember"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(DatasetAccess.__pulumiType, name, inputs, opts);
+        super(DatasetAccess.__pulumiType, name, resourceInputs, opts);
     }
 }
 

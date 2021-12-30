@@ -163,39 +163,39 @@ export class NodeTemplate extends pulumi.CustomResource {
      */
     constructor(name: string, args?: NodeTemplateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NodeTemplateArgs | NodeTemplateState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NodeTemplateState | undefined;
-            inputs["cpuOvercommitType"] = state ? state.cpuOvercommitType : undefined;
-            inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["nodeAffinityLabels"] = state ? state.nodeAffinityLabels : undefined;
-            inputs["nodeType"] = state ? state.nodeType : undefined;
-            inputs["nodeTypeFlexibility"] = state ? state.nodeTypeFlexibility : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
-            inputs["serverBinding"] = state ? state.serverBinding : undefined;
+            resourceInputs["cpuOvercommitType"] = state ? state.cpuOvercommitType : undefined;
+            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["nodeAffinityLabels"] = state ? state.nodeAffinityLabels : undefined;
+            resourceInputs["nodeType"] = state ? state.nodeType : undefined;
+            resourceInputs["nodeTypeFlexibility"] = state ? state.nodeTypeFlexibility : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["serverBinding"] = state ? state.serverBinding : undefined;
         } else {
             const args = argsOrState as NodeTemplateArgs | undefined;
-            inputs["cpuOvercommitType"] = args ? args.cpuOvercommitType : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["nodeAffinityLabels"] = args ? args.nodeAffinityLabels : undefined;
-            inputs["nodeType"] = args ? args.nodeType : undefined;
-            inputs["nodeTypeFlexibility"] = args ? args.nodeTypeFlexibility : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["serverBinding"] = args ? args.serverBinding : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["cpuOvercommitType"] = args ? args.cpuOvercommitType : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["nodeAffinityLabels"] = args ? args.nodeAffinityLabels : undefined;
+            resourceInputs["nodeType"] = args ? args.nodeType : undefined;
+            resourceInputs["nodeTypeFlexibility"] = args ? args.nodeTypeFlexibility : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["serverBinding"] = args ? args.serverBinding : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(NodeTemplate.__pulumiType, name, inputs, opts);
+        super(NodeTemplate.__pulumiType, name, resourceInputs, opts);
     }
 }
 

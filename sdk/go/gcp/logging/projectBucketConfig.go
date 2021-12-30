@@ -30,7 +30,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := organizations.NewProject(ctx, "_default", &organizations.ProjectArgs{
+// 		_, err := organizations.NewProject(ctx, "default", &organizations.ProjectArgs{
 // 			ProjectId: pulumi.String("your-project-id"),
 // 			OrgId:     pulumi.String("123456789"),
 // 		})
@@ -217,7 +217,7 @@ type ProjectBucketConfigInput interface {
 }
 
 func (*ProjectBucketConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectBucketConfig)(nil))
+	return reflect.TypeOf((**ProjectBucketConfig)(nil)).Elem()
 }
 
 func (i *ProjectBucketConfig) ToProjectBucketConfigOutput() ProjectBucketConfigOutput {
@@ -226,35 +226,6 @@ func (i *ProjectBucketConfig) ToProjectBucketConfigOutput() ProjectBucketConfigO
 
 func (i *ProjectBucketConfig) ToProjectBucketConfigOutputWithContext(ctx context.Context) ProjectBucketConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectBucketConfigOutput)
-}
-
-func (i *ProjectBucketConfig) ToProjectBucketConfigPtrOutput() ProjectBucketConfigPtrOutput {
-	return i.ToProjectBucketConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *ProjectBucketConfig) ToProjectBucketConfigPtrOutputWithContext(ctx context.Context) ProjectBucketConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectBucketConfigPtrOutput)
-}
-
-type ProjectBucketConfigPtrInput interface {
-	pulumi.Input
-
-	ToProjectBucketConfigPtrOutput() ProjectBucketConfigPtrOutput
-	ToProjectBucketConfigPtrOutputWithContext(ctx context.Context) ProjectBucketConfigPtrOutput
-}
-
-type projectBucketConfigPtrType ProjectBucketConfigArgs
-
-func (*projectBucketConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProjectBucketConfig)(nil))
-}
-
-func (i *projectBucketConfigPtrType) ToProjectBucketConfigPtrOutput() ProjectBucketConfigPtrOutput {
-	return i.ToProjectBucketConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *projectBucketConfigPtrType) ToProjectBucketConfigPtrOutputWithContext(ctx context.Context) ProjectBucketConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectBucketConfigPtrOutput)
 }
 
 // ProjectBucketConfigArrayInput is an input type that accepts ProjectBucketConfigArray and ProjectBucketConfigArrayOutput values.
@@ -310,7 +281,7 @@ func (i ProjectBucketConfigMap) ToProjectBucketConfigMapOutputWithContext(ctx co
 type ProjectBucketConfigOutput struct{ *pulumi.OutputState }
 
 func (ProjectBucketConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectBucketConfig)(nil))
+	return reflect.TypeOf((**ProjectBucketConfig)(nil)).Elem()
 }
 
 func (o ProjectBucketConfigOutput) ToProjectBucketConfigOutput() ProjectBucketConfigOutput {
@@ -321,44 +292,10 @@ func (o ProjectBucketConfigOutput) ToProjectBucketConfigOutputWithContext(ctx co
 	return o
 }
 
-func (o ProjectBucketConfigOutput) ToProjectBucketConfigPtrOutput() ProjectBucketConfigPtrOutput {
-	return o.ToProjectBucketConfigPtrOutputWithContext(context.Background())
-}
-
-func (o ProjectBucketConfigOutput) ToProjectBucketConfigPtrOutputWithContext(ctx context.Context) ProjectBucketConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectBucketConfig) *ProjectBucketConfig {
-		return &v
-	}).(ProjectBucketConfigPtrOutput)
-}
-
-type ProjectBucketConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (ProjectBucketConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProjectBucketConfig)(nil))
-}
-
-func (o ProjectBucketConfigPtrOutput) ToProjectBucketConfigPtrOutput() ProjectBucketConfigPtrOutput {
-	return o
-}
-
-func (o ProjectBucketConfigPtrOutput) ToProjectBucketConfigPtrOutputWithContext(ctx context.Context) ProjectBucketConfigPtrOutput {
-	return o
-}
-
-func (o ProjectBucketConfigPtrOutput) Elem() ProjectBucketConfigOutput {
-	return o.ApplyT(func(v *ProjectBucketConfig) ProjectBucketConfig {
-		if v != nil {
-			return *v
-		}
-		var ret ProjectBucketConfig
-		return ret
-	}).(ProjectBucketConfigOutput)
-}
-
 type ProjectBucketConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (ProjectBucketConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ProjectBucketConfig)(nil))
+	return reflect.TypeOf((*[]*ProjectBucketConfig)(nil)).Elem()
 }
 
 func (o ProjectBucketConfigArrayOutput) ToProjectBucketConfigArrayOutput() ProjectBucketConfigArrayOutput {
@@ -370,15 +307,15 @@ func (o ProjectBucketConfigArrayOutput) ToProjectBucketConfigArrayOutputWithCont
 }
 
 func (o ProjectBucketConfigArrayOutput) Index(i pulumi.IntInput) ProjectBucketConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectBucketConfig {
-		return vs[0].([]ProjectBucketConfig)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectBucketConfig {
+		return vs[0].([]*ProjectBucketConfig)[vs[1].(int)]
 	}).(ProjectBucketConfigOutput)
 }
 
 type ProjectBucketConfigMapOutput struct{ *pulumi.OutputState }
 
 func (ProjectBucketConfigMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ProjectBucketConfig)(nil))
+	return reflect.TypeOf((*map[string]*ProjectBucketConfig)(nil)).Elem()
 }
 
 func (o ProjectBucketConfigMapOutput) ToProjectBucketConfigMapOutput() ProjectBucketConfigMapOutput {
@@ -390,18 +327,16 @@ func (o ProjectBucketConfigMapOutput) ToProjectBucketConfigMapOutputWithContext(
 }
 
 func (o ProjectBucketConfigMapOutput) MapIndex(k pulumi.StringInput) ProjectBucketConfigOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ProjectBucketConfig {
-		return vs[0].(map[string]ProjectBucketConfig)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ProjectBucketConfig {
+		return vs[0].(map[string]*ProjectBucketConfig)[vs[1].(string)]
 	}).(ProjectBucketConfigOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectBucketConfigInput)(nil)).Elem(), &ProjectBucketConfig{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ProjectBucketConfigPtrInput)(nil)).Elem(), &ProjectBucketConfig{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectBucketConfigArrayInput)(nil)).Elem(), ProjectBucketConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectBucketConfigMapInput)(nil)).Elem(), ProjectBucketConfigMap{})
 	pulumi.RegisterOutputType(ProjectBucketConfigOutput{})
-	pulumi.RegisterOutputType(ProjectBucketConfigPtrOutput{})
 	pulumi.RegisterOutputType(ProjectBucketConfigArrayOutput{})
 	pulumi.RegisterOutputType(ProjectBucketConfigMapOutput{})
 }

@@ -132,18 +132,18 @@ export class GameServerCluster extends pulumi.CustomResource {
      */
     constructor(name: string, args: GameServerClusterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GameServerClusterArgs | GameServerClusterState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GameServerClusterState | undefined;
-            inputs["clusterId"] = state ? state.clusterId : undefined;
-            inputs["connectionInfo"] = state ? state.connectionInfo : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["realmId"] = state ? state.realmId : undefined;
+            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
+            resourceInputs["connectionInfo"] = state ? state.connectionInfo : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["realmId"] = state ? state.realmId : undefined;
         } else {
             const args = argsOrState as GameServerClusterArgs | undefined;
             if ((!args || args.clusterId === undefined) && !opts.urn) {
@@ -155,19 +155,19 @@ export class GameServerCluster extends pulumi.CustomResource {
             if ((!args || args.realmId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'realmId'");
             }
-            inputs["clusterId"] = args ? args.clusterId : undefined;
-            inputs["connectionInfo"] = args ? args.connectionInfo : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["realmId"] = args ? args.realmId : undefined;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["connectionInfo"] = args ? args.connectionInfo : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["realmId"] = args ? args.realmId : undefined;
+            resourceInputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(GameServerCluster.__pulumiType, name, inputs, opts);
+        super(GameServerCluster.__pulumiType, name, resourceInputs, opts);
     }
 }
 

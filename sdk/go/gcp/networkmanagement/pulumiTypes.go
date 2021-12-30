@@ -79,47 +79,6 @@ func (i ConnectivityTestDestinationArgs) ToConnectivityTestDestinationOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectivityTestDestinationOutput)
 }
 
-func (i ConnectivityTestDestinationArgs) ToConnectivityTestDestinationPtrOutput() ConnectivityTestDestinationPtrOutput {
-	return i.ToConnectivityTestDestinationPtrOutputWithContext(context.Background())
-}
-
-func (i ConnectivityTestDestinationArgs) ToConnectivityTestDestinationPtrOutputWithContext(ctx context.Context) ConnectivityTestDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectivityTestDestinationOutput).ToConnectivityTestDestinationPtrOutputWithContext(ctx)
-}
-
-// ConnectivityTestDestinationPtrInput is an input type that accepts ConnectivityTestDestinationArgs, ConnectivityTestDestinationPtr and ConnectivityTestDestinationPtrOutput values.
-// You can construct a concrete instance of `ConnectivityTestDestinationPtrInput` via:
-//
-//          ConnectivityTestDestinationArgs{...}
-//
-//  or:
-//
-//          nil
-type ConnectivityTestDestinationPtrInput interface {
-	pulumi.Input
-
-	ToConnectivityTestDestinationPtrOutput() ConnectivityTestDestinationPtrOutput
-	ToConnectivityTestDestinationPtrOutputWithContext(context.Context) ConnectivityTestDestinationPtrOutput
-}
-
-type connectivityTestDestinationPtrType ConnectivityTestDestinationArgs
-
-func ConnectivityTestDestinationPtr(v *ConnectivityTestDestinationArgs) ConnectivityTestDestinationPtrInput {
-	return (*connectivityTestDestinationPtrType)(v)
-}
-
-func (*connectivityTestDestinationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConnectivityTestDestination)(nil)).Elem()
-}
-
-func (i *connectivityTestDestinationPtrType) ToConnectivityTestDestinationPtrOutput() ConnectivityTestDestinationPtrOutput {
-	return i.ToConnectivityTestDestinationPtrOutputWithContext(context.Background())
-}
-
-func (i *connectivityTestDestinationPtrType) ToConnectivityTestDestinationPtrOutputWithContext(ctx context.Context) ConnectivityTestDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectivityTestDestinationPtrOutput)
-}
-
 type ConnectivityTestDestinationOutput struct{ *pulumi.OutputState }
 
 func (ConnectivityTestDestinationOutput) ElementType() reflect.Type {
@@ -132,16 +91,6 @@ func (o ConnectivityTestDestinationOutput) ToConnectivityTestDestinationOutput()
 
 func (o ConnectivityTestDestinationOutput) ToConnectivityTestDestinationOutputWithContext(ctx context.Context) ConnectivityTestDestinationOutput {
 	return o
-}
-
-func (o ConnectivityTestDestinationOutput) ToConnectivityTestDestinationPtrOutput() ConnectivityTestDestinationPtrOutput {
-	return o.ToConnectivityTestDestinationPtrOutputWithContext(context.Background())
-}
-
-func (o ConnectivityTestDestinationOutput) ToConnectivityTestDestinationPtrOutputWithContext(ctx context.Context) ConnectivityTestDestinationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectivityTestDestination) *ConnectivityTestDestination {
-		return &v
-	}).(ConnectivityTestDestinationPtrOutput)
 }
 
 // A Compute Engine instance URI.
@@ -177,90 +126,6 @@ func (o ConnectivityTestDestinationOutput) Port() pulumi.IntPtrOutput {
 //    project.
 func (o ConnectivityTestDestinationOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectivityTestDestination) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
-}
-
-type ConnectivityTestDestinationPtrOutput struct{ *pulumi.OutputState }
-
-func (ConnectivityTestDestinationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConnectivityTestDestination)(nil)).Elem()
-}
-
-func (o ConnectivityTestDestinationPtrOutput) ToConnectivityTestDestinationPtrOutput() ConnectivityTestDestinationPtrOutput {
-	return o
-}
-
-func (o ConnectivityTestDestinationPtrOutput) ToConnectivityTestDestinationPtrOutputWithContext(ctx context.Context) ConnectivityTestDestinationPtrOutput {
-	return o
-}
-
-func (o ConnectivityTestDestinationPtrOutput) Elem() ConnectivityTestDestinationOutput {
-	return o.ApplyT(func(v *ConnectivityTestDestination) ConnectivityTestDestination {
-		if v != nil {
-			return *v
-		}
-		var ret ConnectivityTestDestination
-		return ret
-	}).(ConnectivityTestDestinationOutput)
-}
-
-// A Compute Engine instance URI.
-func (o ConnectivityTestDestinationPtrOutput) Instance() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectivityTestDestination) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Instance
-	}).(pulumi.StringPtrOutput)
-}
-
-// The IP address of the endpoint, which can be an external or
-// internal IP. An IPv6 address is only allowed when the test's
-// destination is a global load balancer VIP.
-func (o ConnectivityTestDestinationPtrOutput) IpAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectivityTestDestination) *string {
-		if v == nil {
-			return nil
-		}
-		return v.IpAddress
-	}).(pulumi.StringPtrOutput)
-}
-
-// A Compute Engine network URI.
-func (o ConnectivityTestDestinationPtrOutput) Network() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectivityTestDestination) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Network
-	}).(pulumi.StringPtrOutput)
-}
-
-// The IP protocol port of the endpoint. Only applicable when
-// protocol is TCP or UDP.
-func (o ConnectivityTestDestinationPtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ConnectivityTestDestination) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Port
-	}).(pulumi.IntPtrOutput)
-}
-
-// Project ID where the endpoint is located. The Project ID can be
-// derived from the URI if you provide a VM instance or network URI.
-// The following are two cases where you must provide the project ID:
-// 1. Only the IP address is specified, and the IP address is within
-//    a GCP project. 2. When you are using Shared VPC and the IP address
-//    that you provide is from the service project. In this case, the
-//    network that the IP address resides in is defined in the host
-//    project.
-func (o ConnectivityTestDestinationPtrOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectivityTestDestination) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ProjectId
-	}).(pulumi.StringPtrOutput)
 }
 
 type ConnectivityTestSource struct {
@@ -338,47 +203,6 @@ func (i ConnectivityTestSourceArgs) ToConnectivityTestSourceOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectivityTestSourceOutput)
 }
 
-func (i ConnectivityTestSourceArgs) ToConnectivityTestSourcePtrOutput() ConnectivityTestSourcePtrOutput {
-	return i.ToConnectivityTestSourcePtrOutputWithContext(context.Background())
-}
-
-func (i ConnectivityTestSourceArgs) ToConnectivityTestSourcePtrOutputWithContext(ctx context.Context) ConnectivityTestSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectivityTestSourceOutput).ToConnectivityTestSourcePtrOutputWithContext(ctx)
-}
-
-// ConnectivityTestSourcePtrInput is an input type that accepts ConnectivityTestSourceArgs, ConnectivityTestSourcePtr and ConnectivityTestSourcePtrOutput values.
-// You can construct a concrete instance of `ConnectivityTestSourcePtrInput` via:
-//
-//          ConnectivityTestSourceArgs{...}
-//
-//  or:
-//
-//          nil
-type ConnectivityTestSourcePtrInput interface {
-	pulumi.Input
-
-	ToConnectivityTestSourcePtrOutput() ConnectivityTestSourcePtrOutput
-	ToConnectivityTestSourcePtrOutputWithContext(context.Context) ConnectivityTestSourcePtrOutput
-}
-
-type connectivityTestSourcePtrType ConnectivityTestSourceArgs
-
-func ConnectivityTestSourcePtr(v *ConnectivityTestSourceArgs) ConnectivityTestSourcePtrInput {
-	return (*connectivityTestSourcePtrType)(v)
-}
-
-func (*connectivityTestSourcePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConnectivityTestSource)(nil)).Elem()
-}
-
-func (i *connectivityTestSourcePtrType) ToConnectivityTestSourcePtrOutput() ConnectivityTestSourcePtrOutput {
-	return i.ToConnectivityTestSourcePtrOutputWithContext(context.Background())
-}
-
-func (i *connectivityTestSourcePtrType) ToConnectivityTestSourcePtrOutputWithContext(ctx context.Context) ConnectivityTestSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectivityTestSourcePtrOutput)
-}
-
 type ConnectivityTestSourceOutput struct{ *pulumi.OutputState }
 
 func (ConnectivityTestSourceOutput) ElementType() reflect.Type {
@@ -391,16 +215,6 @@ func (o ConnectivityTestSourceOutput) ToConnectivityTestSourceOutput() Connectiv
 
 func (o ConnectivityTestSourceOutput) ToConnectivityTestSourceOutputWithContext(ctx context.Context) ConnectivityTestSourceOutput {
 	return o
-}
-
-func (o ConnectivityTestSourceOutput) ToConnectivityTestSourcePtrOutput() ConnectivityTestSourcePtrOutput {
-	return o.ToConnectivityTestSourcePtrOutputWithContext(context.Background())
-}
-
-func (o ConnectivityTestSourceOutput) ToConnectivityTestSourcePtrOutputWithContext(ctx context.Context) ConnectivityTestSourcePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectivityTestSource) *ConnectivityTestSource {
-		return &v
-	}).(ConnectivityTestSourcePtrOutput)
 }
 
 // A Compute Engine instance URI.
@@ -444,108 +258,9 @@ func (o ConnectivityTestSourceOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectivityTestSource) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-type ConnectivityTestSourcePtrOutput struct{ *pulumi.OutputState }
-
-func (ConnectivityTestSourcePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConnectivityTestSource)(nil)).Elem()
-}
-
-func (o ConnectivityTestSourcePtrOutput) ToConnectivityTestSourcePtrOutput() ConnectivityTestSourcePtrOutput {
-	return o
-}
-
-func (o ConnectivityTestSourcePtrOutput) ToConnectivityTestSourcePtrOutputWithContext(ctx context.Context) ConnectivityTestSourcePtrOutput {
-	return o
-}
-
-func (o ConnectivityTestSourcePtrOutput) Elem() ConnectivityTestSourceOutput {
-	return o.ApplyT(func(v *ConnectivityTestSource) ConnectivityTestSource {
-		if v != nil {
-			return *v
-		}
-		var ret ConnectivityTestSource
-		return ret
-	}).(ConnectivityTestSourceOutput)
-}
-
-// A Compute Engine instance URI.
-func (o ConnectivityTestSourcePtrOutput) Instance() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectivityTestSource) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Instance
-	}).(pulumi.StringPtrOutput)
-}
-
-// The IP address of the endpoint, which can be an external or
-// internal IP. An IPv6 address is only allowed when the test's
-// destination is a global load balancer VIP.
-func (o ConnectivityTestSourcePtrOutput) IpAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectivityTestSource) *string {
-		if v == nil {
-			return nil
-		}
-		return v.IpAddress
-	}).(pulumi.StringPtrOutput)
-}
-
-// A Compute Engine network URI.
-func (o ConnectivityTestSourcePtrOutput) Network() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectivityTestSource) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Network
-	}).(pulumi.StringPtrOutput)
-}
-
-// Type of the network where the endpoint is located.
-// Possible values are `GCP_NETWORK` and `NON_GCP_NETWORK`.
-func (o ConnectivityTestSourcePtrOutput) NetworkType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectivityTestSource) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NetworkType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The IP protocol port of the endpoint. Only applicable when
-// protocol is TCP or UDP.
-func (o ConnectivityTestSourcePtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ConnectivityTestSource) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Port
-	}).(pulumi.IntPtrOutput)
-}
-
-// Project ID where the endpoint is located. The Project ID can be
-// derived from the URI if you provide a VM instance or network URI.
-// The following are two cases where you must provide the project ID:
-// 1. Only the IP address is specified, and the IP address is within
-//    a GCP project. 2. When you are using Shared VPC and the IP address
-//    that you provide is from the service project. In this case, the
-//    network that the IP address resides in is defined in the host
-//    project.
-func (o ConnectivityTestSourcePtrOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectivityTestSource) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ProjectId
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectivityTestDestinationInput)(nil)).Elem(), ConnectivityTestDestinationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectivityTestDestinationPtrInput)(nil)).Elem(), ConnectivityTestDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectivityTestSourceInput)(nil)).Elem(), ConnectivityTestSourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectivityTestSourcePtrInput)(nil)).Elem(), ConnectivityTestSourceArgs{})
 	pulumi.RegisterOutputType(ConnectivityTestDestinationOutput{})
-	pulumi.RegisterOutputType(ConnectivityTestDestinationPtrOutput{})
 	pulumi.RegisterOutputType(ConnectivityTestSourceOutput{})
-	pulumi.RegisterOutputType(ConnectivityTestSourcePtrOutput{})
 }

@@ -45,47 +45,6 @@ func (i PreventionDeidentifyTemplateDeidentifyConfigArgs) ToPreventionDeidentify
 	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigOutput)
 }
 
-func (i PreventionDeidentifyTemplateDeidentifyConfigArgs) ToPreventionDeidentifyTemplateDeidentifyConfigPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigPtrOutput {
-	return i.ToPreventionDeidentifyTemplateDeidentifyConfigPtrOutputWithContext(context.Background())
-}
-
-func (i PreventionDeidentifyTemplateDeidentifyConfigArgs) ToPreventionDeidentifyTemplateDeidentifyConfigPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigOutput).ToPreventionDeidentifyTemplateDeidentifyConfigPtrOutputWithContext(ctx)
-}
-
-// PreventionDeidentifyTemplateDeidentifyConfigPtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigArgs, PreventionDeidentifyTemplateDeidentifyConfigPtr and PreventionDeidentifyTemplateDeidentifyConfigPtrOutput values.
-// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigPtrInput` via:
-//
-//          PreventionDeidentifyTemplateDeidentifyConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type PreventionDeidentifyTemplateDeidentifyConfigPtrInput interface {
-	pulumi.Input
-
-	ToPreventionDeidentifyTemplateDeidentifyConfigPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigPtrOutput
-	ToPreventionDeidentifyTemplateDeidentifyConfigPtrOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigPtrOutput
-}
-
-type preventionDeidentifyTemplateDeidentifyConfigPtrType PreventionDeidentifyTemplateDeidentifyConfigArgs
-
-func PreventionDeidentifyTemplateDeidentifyConfigPtr(v *PreventionDeidentifyTemplateDeidentifyConfigArgs) PreventionDeidentifyTemplateDeidentifyConfigPtrInput {
-	return (*preventionDeidentifyTemplateDeidentifyConfigPtrType)(v)
-}
-
-func (*preventionDeidentifyTemplateDeidentifyConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfig)(nil)).Elem()
-}
-
-func (i *preventionDeidentifyTemplateDeidentifyConfigPtrType) ToPreventionDeidentifyTemplateDeidentifyConfigPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigPtrOutput {
-	return i.ToPreventionDeidentifyTemplateDeidentifyConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *preventionDeidentifyTemplateDeidentifyConfigPtrType) ToPreventionDeidentifyTemplateDeidentifyConfigPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigPtrOutput)
-}
-
 type PreventionDeidentifyTemplateDeidentifyConfigOutput struct{ *pulumi.OutputState }
 
 func (PreventionDeidentifyTemplateDeidentifyConfigOutput) ElementType() reflect.Type {
@@ -100,57 +59,12 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigOutput) ToPreventionDeidenti
 	return o
 }
 
-func (o PreventionDeidentifyTemplateDeidentifyConfigOutput) ToPreventionDeidentifyTemplateDeidentifyConfigPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigPtrOutput {
-	return o.ToPreventionDeidentifyTemplateDeidentifyConfigPtrOutputWithContext(context.Background())
-}
-
-func (o PreventionDeidentifyTemplateDeidentifyConfigOutput) ToPreventionDeidentifyTemplateDeidentifyConfigPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionDeidentifyTemplateDeidentifyConfig) *PreventionDeidentifyTemplateDeidentifyConfig {
-		return &v
-	}).(PreventionDeidentifyTemplateDeidentifyConfigPtrOutput)
-}
-
 // Specifies free-text based transformations to be applied to the dataset.
 // Structure is documented below.
 func (o PreventionDeidentifyTemplateDeidentifyConfigOutput) InfoTypeTransformations() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfig) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations {
 		return v.InfoTypeTransformations
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutput)
-}
-
-type PreventionDeidentifyTemplateDeidentifyConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (PreventionDeidentifyTemplateDeidentifyConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfig)(nil)).Elem()
-}
-
-func (o PreventionDeidentifyTemplateDeidentifyConfigPtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigPtrOutput {
-	return o
-}
-
-func (o PreventionDeidentifyTemplateDeidentifyConfigPtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigPtrOutput {
-	return o
-}
-
-func (o PreventionDeidentifyTemplateDeidentifyConfigPtrOutput) Elem() PreventionDeidentifyTemplateDeidentifyConfigOutput {
-	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfig) PreventionDeidentifyTemplateDeidentifyConfig {
-		if v != nil {
-			return *v
-		}
-		var ret PreventionDeidentifyTemplateDeidentifyConfig
-		return ret
-	}).(PreventionDeidentifyTemplateDeidentifyConfigOutput)
-}
-
-// Specifies free-text based transformations to be applied to the dataset.
-// Structure is documented below.
-func (o PreventionDeidentifyTemplateDeidentifyConfigPtrOutput) InfoTypeTransformations() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput {
-	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfig) *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations {
-		if v == nil {
-			return nil
-		}
-		return &v.InfoTypeTransformations
-	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput)
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations struct {
@@ -188,47 +102,6 @@ func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs)
 	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutput)
 }
 
-func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput {
-	return i.ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutputWithContext(context.Background())
-}
-
-func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutput).ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutputWithContext(ctx)
-}
-
-// PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs, PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtr and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput values.
-// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrInput` via:
-//
-//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs{...}
-//
-//  or:
-//
-//          nil
-type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrInput interface {
-	pulumi.Input
-
-	ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput
-	ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput
-}
-
-type preventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrType PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs
-
-func PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtr(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrInput {
-	return (*preventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrType)(v)
-}
-
-func (*preventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations)(nil)).Elem()
-}
-
-func (i *preventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrType) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput {
-	return i.ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutputWithContext(context.Background())
-}
-
-func (i *preventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrType) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput)
-}
-
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutput struct{ *pulumi.OutputState }
 
 func (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutput) ElementType() reflect.Type {
@@ -243,55 +116,10 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutpu
 	return o
 }
 
-func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput {
-	return o.ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutputWithContext(context.Background())
-}
-
-func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations) *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations {
-		return &v
-	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput)
-}
-
 // Transformation for each infoType. Cannot specify more than one for a given infoType.
 // Structure is documented below.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutput) Transformations() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrayOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations) []PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation {
-		return v.Transformations
-	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrayOutput)
-}
-
-type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput struct{ *pulumi.OutputState }
-
-func (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations)(nil)).Elem()
-}
-
-func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput {
-	return o
-}
-
-func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput {
-	return o
-}
-
-func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput) Elem() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutput {
-	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations {
-		if v != nil {
-			return *v
-		}
-		var ret PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations
-		return ret
-	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutput)
-}
-
-// Transformation for each infoType. Cannot specify more than one for a given infoType.
-// Structure is documented below.
-func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput) Transformations() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrayOutput {
-	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations) []PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation {
-		if v == nil {
-			return nil
-		}
 		return v.Transformations
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrayOutput)
 }
@@ -12380,9 +12208,7 @@ func (o PreventionStoredInfoTypeRegexPtrOutput) Pattern() pulumi.StringPtrOutput
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigPtrInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrayInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs{})
@@ -12532,9 +12358,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionStoredInfoTypeRegexInput)(nil)).Elem(), PreventionStoredInfoTypeRegexArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionStoredInfoTypeRegexPtrInput)(nil)).Elem(), PreventionStoredInfoTypeRegexArgs{})
 	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigOutput{})
-	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigPtrOutput{})
 	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutput{})
-	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput{})
 	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationOutput{})
 	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrayOutput{})
 	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeOutput{})

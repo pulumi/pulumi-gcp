@@ -268,7 +268,7 @@ type Hl7StoreIamBindingInput interface {
 }
 
 func (*Hl7StoreIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*Hl7StoreIamBinding)(nil))
+	return reflect.TypeOf((**Hl7StoreIamBinding)(nil)).Elem()
 }
 
 func (i *Hl7StoreIamBinding) ToHl7StoreIamBindingOutput() Hl7StoreIamBindingOutput {
@@ -277,35 +277,6 @@ func (i *Hl7StoreIamBinding) ToHl7StoreIamBindingOutput() Hl7StoreIamBindingOutp
 
 func (i *Hl7StoreIamBinding) ToHl7StoreIamBindingOutputWithContext(ctx context.Context) Hl7StoreIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreIamBindingOutput)
-}
-
-func (i *Hl7StoreIamBinding) ToHl7StoreIamBindingPtrOutput() Hl7StoreIamBindingPtrOutput {
-	return i.ToHl7StoreIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *Hl7StoreIamBinding) ToHl7StoreIamBindingPtrOutputWithContext(ctx context.Context) Hl7StoreIamBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreIamBindingPtrOutput)
-}
-
-type Hl7StoreIamBindingPtrInput interface {
-	pulumi.Input
-
-	ToHl7StoreIamBindingPtrOutput() Hl7StoreIamBindingPtrOutput
-	ToHl7StoreIamBindingPtrOutputWithContext(ctx context.Context) Hl7StoreIamBindingPtrOutput
-}
-
-type hl7StoreIamBindingPtrType Hl7StoreIamBindingArgs
-
-func (*hl7StoreIamBindingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Hl7StoreIamBinding)(nil))
-}
-
-func (i *hl7StoreIamBindingPtrType) ToHl7StoreIamBindingPtrOutput() Hl7StoreIamBindingPtrOutput {
-	return i.ToHl7StoreIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *hl7StoreIamBindingPtrType) ToHl7StoreIamBindingPtrOutputWithContext(ctx context.Context) Hl7StoreIamBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreIamBindingPtrOutput)
 }
 
 // Hl7StoreIamBindingArrayInput is an input type that accepts Hl7StoreIamBindingArray and Hl7StoreIamBindingArrayOutput values.
@@ -361,7 +332,7 @@ func (i Hl7StoreIamBindingMap) ToHl7StoreIamBindingMapOutputWithContext(ctx cont
 type Hl7StoreIamBindingOutput struct{ *pulumi.OutputState }
 
 func (Hl7StoreIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Hl7StoreIamBinding)(nil))
+	return reflect.TypeOf((**Hl7StoreIamBinding)(nil)).Elem()
 }
 
 func (o Hl7StoreIamBindingOutput) ToHl7StoreIamBindingOutput() Hl7StoreIamBindingOutput {
@@ -372,44 +343,10 @@ func (o Hl7StoreIamBindingOutput) ToHl7StoreIamBindingOutputWithContext(ctx cont
 	return o
 }
 
-func (o Hl7StoreIamBindingOutput) ToHl7StoreIamBindingPtrOutput() Hl7StoreIamBindingPtrOutput {
-	return o.ToHl7StoreIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (o Hl7StoreIamBindingOutput) ToHl7StoreIamBindingPtrOutputWithContext(ctx context.Context) Hl7StoreIamBindingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Hl7StoreIamBinding) *Hl7StoreIamBinding {
-		return &v
-	}).(Hl7StoreIamBindingPtrOutput)
-}
-
-type Hl7StoreIamBindingPtrOutput struct{ *pulumi.OutputState }
-
-func (Hl7StoreIamBindingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Hl7StoreIamBinding)(nil))
-}
-
-func (o Hl7StoreIamBindingPtrOutput) ToHl7StoreIamBindingPtrOutput() Hl7StoreIamBindingPtrOutput {
-	return o
-}
-
-func (o Hl7StoreIamBindingPtrOutput) ToHl7StoreIamBindingPtrOutputWithContext(ctx context.Context) Hl7StoreIamBindingPtrOutput {
-	return o
-}
-
-func (o Hl7StoreIamBindingPtrOutput) Elem() Hl7StoreIamBindingOutput {
-	return o.ApplyT(func(v *Hl7StoreIamBinding) Hl7StoreIamBinding {
-		if v != nil {
-			return *v
-		}
-		var ret Hl7StoreIamBinding
-		return ret
-	}).(Hl7StoreIamBindingOutput)
-}
-
 type Hl7StoreIamBindingArrayOutput struct{ *pulumi.OutputState }
 
 func (Hl7StoreIamBindingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Hl7StoreIamBinding)(nil))
+	return reflect.TypeOf((*[]*Hl7StoreIamBinding)(nil)).Elem()
 }
 
 func (o Hl7StoreIamBindingArrayOutput) ToHl7StoreIamBindingArrayOutput() Hl7StoreIamBindingArrayOutput {
@@ -421,15 +358,15 @@ func (o Hl7StoreIamBindingArrayOutput) ToHl7StoreIamBindingArrayOutputWithContex
 }
 
 func (o Hl7StoreIamBindingArrayOutput) Index(i pulumi.IntInput) Hl7StoreIamBindingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Hl7StoreIamBinding {
-		return vs[0].([]Hl7StoreIamBinding)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Hl7StoreIamBinding {
+		return vs[0].([]*Hl7StoreIamBinding)[vs[1].(int)]
 	}).(Hl7StoreIamBindingOutput)
 }
 
 type Hl7StoreIamBindingMapOutput struct{ *pulumi.OutputState }
 
 func (Hl7StoreIamBindingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Hl7StoreIamBinding)(nil))
+	return reflect.TypeOf((*map[string]*Hl7StoreIamBinding)(nil)).Elem()
 }
 
 func (o Hl7StoreIamBindingMapOutput) ToHl7StoreIamBindingMapOutput() Hl7StoreIamBindingMapOutput {
@@ -441,18 +378,16 @@ func (o Hl7StoreIamBindingMapOutput) ToHl7StoreIamBindingMapOutputWithContext(ct
 }
 
 func (o Hl7StoreIamBindingMapOutput) MapIndex(k pulumi.StringInput) Hl7StoreIamBindingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Hl7StoreIamBinding {
-		return vs[0].(map[string]Hl7StoreIamBinding)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Hl7StoreIamBinding {
+		return vs[0].(map[string]*Hl7StoreIamBinding)[vs[1].(string)]
 	}).(Hl7StoreIamBindingOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*Hl7StoreIamBindingInput)(nil)).Elem(), &Hl7StoreIamBinding{})
-	pulumi.RegisterInputType(reflect.TypeOf((*Hl7StoreIamBindingPtrInput)(nil)).Elem(), &Hl7StoreIamBinding{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Hl7StoreIamBindingArrayInput)(nil)).Elem(), Hl7StoreIamBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Hl7StoreIamBindingMapInput)(nil)).Elem(), Hl7StoreIamBindingMap{})
 	pulumi.RegisterOutputType(Hl7StoreIamBindingOutput{})
-	pulumi.RegisterOutputType(Hl7StoreIamBindingPtrOutput{})
 	pulumi.RegisterOutputType(Hl7StoreIamBindingArrayOutput{})
 	pulumi.RegisterOutputType(Hl7StoreIamBindingMapOutput{})
 }

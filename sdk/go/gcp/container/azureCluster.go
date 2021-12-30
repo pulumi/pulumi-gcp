@@ -366,7 +366,7 @@ type AzureClusterInput interface {
 }
 
 func (*AzureCluster) ElementType() reflect.Type {
-	return reflect.TypeOf((*AzureCluster)(nil))
+	return reflect.TypeOf((**AzureCluster)(nil)).Elem()
 }
 
 func (i *AzureCluster) ToAzureClusterOutput() AzureClusterOutput {
@@ -375,35 +375,6 @@ func (i *AzureCluster) ToAzureClusterOutput() AzureClusterOutput {
 
 func (i *AzureCluster) ToAzureClusterOutputWithContext(ctx context.Context) AzureClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterOutput)
-}
-
-func (i *AzureCluster) ToAzureClusterPtrOutput() AzureClusterPtrOutput {
-	return i.ToAzureClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *AzureCluster) ToAzureClusterPtrOutputWithContext(ctx context.Context) AzureClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterPtrOutput)
-}
-
-type AzureClusterPtrInput interface {
-	pulumi.Input
-
-	ToAzureClusterPtrOutput() AzureClusterPtrOutput
-	ToAzureClusterPtrOutputWithContext(ctx context.Context) AzureClusterPtrOutput
-}
-
-type azureClusterPtrType AzureClusterArgs
-
-func (*azureClusterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AzureCluster)(nil))
-}
-
-func (i *azureClusterPtrType) ToAzureClusterPtrOutput() AzureClusterPtrOutput {
-	return i.ToAzureClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *azureClusterPtrType) ToAzureClusterPtrOutputWithContext(ctx context.Context) AzureClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterPtrOutput)
 }
 
 // AzureClusterArrayInput is an input type that accepts AzureClusterArray and AzureClusterArrayOutput values.
@@ -459,7 +430,7 @@ func (i AzureClusterMap) ToAzureClusterMapOutputWithContext(ctx context.Context)
 type AzureClusterOutput struct{ *pulumi.OutputState }
 
 func (AzureClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AzureCluster)(nil))
+	return reflect.TypeOf((**AzureCluster)(nil)).Elem()
 }
 
 func (o AzureClusterOutput) ToAzureClusterOutput() AzureClusterOutput {
@@ -470,44 +441,10 @@ func (o AzureClusterOutput) ToAzureClusterOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o AzureClusterOutput) ToAzureClusterPtrOutput() AzureClusterPtrOutput {
-	return o.ToAzureClusterPtrOutputWithContext(context.Background())
-}
-
-func (o AzureClusterOutput) ToAzureClusterPtrOutputWithContext(ctx context.Context) AzureClusterPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureCluster) *AzureCluster {
-		return &v
-	}).(AzureClusterPtrOutput)
-}
-
-type AzureClusterPtrOutput struct{ *pulumi.OutputState }
-
-func (AzureClusterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AzureCluster)(nil))
-}
-
-func (o AzureClusterPtrOutput) ToAzureClusterPtrOutput() AzureClusterPtrOutput {
-	return o
-}
-
-func (o AzureClusterPtrOutput) ToAzureClusterPtrOutputWithContext(ctx context.Context) AzureClusterPtrOutput {
-	return o
-}
-
-func (o AzureClusterPtrOutput) Elem() AzureClusterOutput {
-	return o.ApplyT(func(v *AzureCluster) AzureCluster {
-		if v != nil {
-			return *v
-		}
-		var ret AzureCluster
-		return ret
-	}).(AzureClusterOutput)
-}
-
 type AzureClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (AzureClusterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AzureCluster)(nil))
+	return reflect.TypeOf((*[]*AzureCluster)(nil)).Elem()
 }
 
 func (o AzureClusterArrayOutput) ToAzureClusterArrayOutput() AzureClusterArrayOutput {
@@ -519,15 +456,15 @@ func (o AzureClusterArrayOutput) ToAzureClusterArrayOutputWithContext(ctx contex
 }
 
 func (o AzureClusterArrayOutput) Index(i pulumi.IntInput) AzureClusterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AzureCluster {
-		return vs[0].([]AzureCluster)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AzureCluster {
+		return vs[0].([]*AzureCluster)[vs[1].(int)]
 	}).(AzureClusterOutput)
 }
 
 type AzureClusterMapOutput struct{ *pulumi.OutputState }
 
 func (AzureClusterMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AzureCluster)(nil))
+	return reflect.TypeOf((*map[string]*AzureCluster)(nil)).Elem()
 }
 
 func (o AzureClusterMapOutput) ToAzureClusterMapOutput() AzureClusterMapOutput {
@@ -539,18 +476,16 @@ func (o AzureClusterMapOutput) ToAzureClusterMapOutputWithContext(ctx context.Co
 }
 
 func (o AzureClusterMapOutput) MapIndex(k pulumi.StringInput) AzureClusterOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AzureCluster {
-		return vs[0].(map[string]AzureCluster)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AzureCluster {
+		return vs[0].(map[string]*AzureCluster)[vs[1].(string)]
 	}).(AzureClusterOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterInput)(nil)).Elem(), &AzureCluster{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterPtrInput)(nil)).Elem(), &AzureCluster{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterArrayInput)(nil)).Elem(), AzureClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterMapInput)(nil)).Elem(), AzureClusterMap{})
 	pulumi.RegisterOutputType(AzureClusterOutput{})
-	pulumi.RegisterOutputType(AzureClusterPtrOutput{})
 	pulumi.RegisterOutputType(AzureClusterArrayOutput{})
 	pulumi.RegisterOutputType(AzureClusterMapOutput{})
 }

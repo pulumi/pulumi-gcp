@@ -169,18 +169,18 @@ export class OrganizationPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: OrganizationPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OrganizationPolicyArgs | OrganizationPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrganizationPolicyState | undefined;
-            inputs["booleanPolicy"] = state ? state.booleanPolicy : undefined;
-            inputs["constraint"] = state ? state.constraint : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["listPolicy"] = state ? state.listPolicy : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["restorePolicy"] = state ? state.restorePolicy : undefined;
-            inputs["updateTime"] = state ? state.updateTime : undefined;
-            inputs["version"] = state ? state.version : undefined;
+            resourceInputs["booleanPolicy"] = state ? state.booleanPolicy : undefined;
+            resourceInputs["constraint"] = state ? state.constraint : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["listPolicy"] = state ? state.listPolicy : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["restorePolicy"] = state ? state.restorePolicy : undefined;
+            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as OrganizationPolicyArgs | undefined;
             if ((!args || args.constraint === undefined) && !opts.urn) {
@@ -189,19 +189,19 @@ export class OrganizationPolicy extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["booleanPolicy"] = args ? args.booleanPolicy : undefined;
-            inputs["constraint"] = args ? args.constraint : undefined;
-            inputs["listPolicy"] = args ? args.listPolicy : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["restorePolicy"] = args ? args.restorePolicy : undefined;
-            inputs["version"] = args ? args.version : undefined;
-            inputs["etag"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["booleanPolicy"] = args ? args.booleanPolicy : undefined;
+            resourceInputs["constraint"] = args ? args.constraint : undefined;
+            resourceInputs["listPolicy"] = args ? args.listPolicy : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["restorePolicy"] = args ? args.restorePolicy : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(OrganizationPolicy.__pulumiType, name, inputs, opts);
+        super(OrganizationPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

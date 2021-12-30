@@ -188,38 +188,38 @@ export class CxFlow extends pulumi.CustomResource {
      */
     constructor(name: string, args: CxFlowArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CxFlowArgs | CxFlowState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CxFlowState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["eventHandlers"] = state ? state.eventHandlers : undefined;
-            inputs["languageCode"] = state ? state.languageCode : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["nluSettings"] = state ? state.nluSettings : undefined;
-            inputs["parent"] = state ? state.parent : undefined;
-            inputs["transitionRouteGroups"] = state ? state.transitionRouteGroups : undefined;
-            inputs["transitionRoutes"] = state ? state.transitionRoutes : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["eventHandlers"] = state ? state.eventHandlers : undefined;
+            resourceInputs["languageCode"] = state ? state.languageCode : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["nluSettings"] = state ? state.nluSettings : undefined;
+            resourceInputs["parent"] = state ? state.parent : undefined;
+            resourceInputs["transitionRouteGroups"] = state ? state.transitionRouteGroups : undefined;
+            resourceInputs["transitionRoutes"] = state ? state.transitionRoutes : undefined;
         } else {
             const args = argsOrState as CxFlowArgs | undefined;
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["eventHandlers"] = args ? args.eventHandlers : undefined;
-            inputs["languageCode"] = args ? args.languageCode : undefined;
-            inputs["nluSettings"] = args ? args.nluSettings : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
-            inputs["transitionRouteGroups"] = args ? args.transitionRouteGroups : undefined;
-            inputs["transitionRoutes"] = args ? args.transitionRoutes : undefined;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["eventHandlers"] = args ? args.eventHandlers : undefined;
+            resourceInputs["languageCode"] = args ? args.languageCode : undefined;
+            resourceInputs["nluSettings"] = args ? args.nluSettings : undefined;
+            resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["transitionRouteGroups"] = args ? args.transitionRouteGroups : undefined;
+            resourceInputs["transitionRoutes"] = args ? args.transitionRoutes : undefined;
+            resourceInputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(CxFlow.__pulumiType, name, inputs, opts);
+        super(CxFlow.__pulumiType, name, resourceInputs, opts);
     }
 }
 

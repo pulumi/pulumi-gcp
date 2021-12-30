@@ -176,7 +176,7 @@ type VariableInput interface {
 }
 
 func (*Variable) ElementType() reflect.Type {
-	return reflect.TypeOf((*Variable)(nil))
+	return reflect.TypeOf((**Variable)(nil)).Elem()
 }
 
 func (i *Variable) ToVariableOutput() VariableOutput {
@@ -185,35 +185,6 @@ func (i *Variable) ToVariableOutput() VariableOutput {
 
 func (i *Variable) ToVariableOutputWithContext(ctx context.Context) VariableOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VariableOutput)
-}
-
-func (i *Variable) ToVariablePtrOutput() VariablePtrOutput {
-	return i.ToVariablePtrOutputWithContext(context.Background())
-}
-
-func (i *Variable) ToVariablePtrOutputWithContext(ctx context.Context) VariablePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VariablePtrOutput)
-}
-
-type VariablePtrInput interface {
-	pulumi.Input
-
-	ToVariablePtrOutput() VariablePtrOutput
-	ToVariablePtrOutputWithContext(ctx context.Context) VariablePtrOutput
-}
-
-type variablePtrType VariableArgs
-
-func (*variablePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Variable)(nil))
-}
-
-func (i *variablePtrType) ToVariablePtrOutput() VariablePtrOutput {
-	return i.ToVariablePtrOutputWithContext(context.Background())
-}
-
-func (i *variablePtrType) ToVariablePtrOutputWithContext(ctx context.Context) VariablePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VariablePtrOutput)
 }
 
 // VariableArrayInput is an input type that accepts VariableArray and VariableArrayOutput values.
@@ -269,7 +240,7 @@ func (i VariableMap) ToVariableMapOutputWithContext(ctx context.Context) Variabl
 type VariableOutput struct{ *pulumi.OutputState }
 
 func (VariableOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Variable)(nil))
+	return reflect.TypeOf((**Variable)(nil)).Elem()
 }
 
 func (o VariableOutput) ToVariableOutput() VariableOutput {
@@ -280,44 +251,10 @@ func (o VariableOutput) ToVariableOutputWithContext(ctx context.Context) Variabl
 	return o
 }
 
-func (o VariableOutput) ToVariablePtrOutput() VariablePtrOutput {
-	return o.ToVariablePtrOutputWithContext(context.Background())
-}
-
-func (o VariableOutput) ToVariablePtrOutputWithContext(ctx context.Context) VariablePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Variable) *Variable {
-		return &v
-	}).(VariablePtrOutput)
-}
-
-type VariablePtrOutput struct{ *pulumi.OutputState }
-
-func (VariablePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Variable)(nil))
-}
-
-func (o VariablePtrOutput) ToVariablePtrOutput() VariablePtrOutput {
-	return o
-}
-
-func (o VariablePtrOutput) ToVariablePtrOutputWithContext(ctx context.Context) VariablePtrOutput {
-	return o
-}
-
-func (o VariablePtrOutput) Elem() VariableOutput {
-	return o.ApplyT(func(v *Variable) Variable {
-		if v != nil {
-			return *v
-		}
-		var ret Variable
-		return ret
-	}).(VariableOutput)
-}
-
 type VariableArrayOutput struct{ *pulumi.OutputState }
 
 func (VariableArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Variable)(nil))
+	return reflect.TypeOf((*[]*Variable)(nil)).Elem()
 }
 
 func (o VariableArrayOutput) ToVariableArrayOutput() VariableArrayOutput {
@@ -329,15 +266,15 @@ func (o VariableArrayOutput) ToVariableArrayOutputWithContext(ctx context.Contex
 }
 
 func (o VariableArrayOutput) Index(i pulumi.IntInput) VariableOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Variable {
-		return vs[0].([]Variable)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Variable {
+		return vs[0].([]*Variable)[vs[1].(int)]
 	}).(VariableOutput)
 }
 
 type VariableMapOutput struct{ *pulumi.OutputState }
 
 func (VariableMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Variable)(nil))
+	return reflect.TypeOf((*map[string]*Variable)(nil)).Elem()
 }
 
 func (o VariableMapOutput) ToVariableMapOutput() VariableMapOutput {
@@ -349,18 +286,16 @@ func (o VariableMapOutput) ToVariableMapOutputWithContext(ctx context.Context) V
 }
 
 func (o VariableMapOutput) MapIndex(k pulumi.StringInput) VariableOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Variable {
-		return vs[0].(map[string]Variable)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Variable {
+		return vs[0].(map[string]*Variable)[vs[1].(string)]
 	}).(VariableOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VariableInput)(nil)).Elem(), &Variable{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VariablePtrInput)(nil)).Elem(), &Variable{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VariableArrayInput)(nil)).Elem(), VariableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VariableMapInput)(nil)).Elem(), VariableMap{})
 	pulumi.RegisterOutputType(VariableOutput{})
-	pulumi.RegisterOutputType(VariablePtrOutput{})
 	pulumi.RegisterOutputType(VariableArrayOutput{})
 	pulumi.RegisterOutputType(VariableMapOutput{})
 }

@@ -134,38 +134,38 @@ export class BackendBucket extends pulumi.CustomResource {
      */
     constructor(name: string, args: BackendBucketArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BackendBucketArgs | BackendBucketState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BackendBucketState | undefined;
-            inputs["bucketName"] = state ? state.bucketName : undefined;
-            inputs["cdnPolicy"] = state ? state.cdnPolicy : undefined;
-            inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            inputs["customResponseHeaders"] = state ? state.customResponseHeaders : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["enableCdn"] = state ? state.enableCdn : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["bucketName"] = state ? state.bucketName : undefined;
+            resourceInputs["cdnPolicy"] = state ? state.cdnPolicy : undefined;
+            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
+            resourceInputs["customResponseHeaders"] = state ? state.customResponseHeaders : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enableCdn"] = state ? state.enableCdn : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
         } else {
             const args = argsOrState as BackendBucketArgs | undefined;
             if ((!args || args.bucketName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bucketName'");
             }
-            inputs["bucketName"] = args ? args.bucketName : undefined;
-            inputs["cdnPolicy"] = args ? args.cdnPolicy : undefined;
-            inputs["customResponseHeaders"] = args ? args.customResponseHeaders : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["enableCdn"] = args ? args.enableCdn : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["bucketName"] = args ? args.bucketName : undefined;
+            resourceInputs["cdnPolicy"] = args ? args.cdnPolicy : undefined;
+            resourceInputs["customResponseHeaders"] = args ? args.customResponseHeaders : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enableCdn"] = args ? args.enableCdn : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(BackendBucket.__pulumiType, name, inputs, opts);
+        super(BackendBucket.__pulumiType, name, resourceInputs, opts);
     }
 }
 

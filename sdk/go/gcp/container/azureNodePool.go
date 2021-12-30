@@ -373,7 +373,7 @@ type AzureNodePoolInput interface {
 }
 
 func (*AzureNodePool) ElementType() reflect.Type {
-	return reflect.TypeOf((*AzureNodePool)(nil))
+	return reflect.TypeOf((**AzureNodePool)(nil)).Elem()
 }
 
 func (i *AzureNodePool) ToAzureNodePoolOutput() AzureNodePoolOutput {
@@ -382,35 +382,6 @@ func (i *AzureNodePool) ToAzureNodePoolOutput() AzureNodePoolOutput {
 
 func (i *AzureNodePool) ToAzureNodePoolOutputWithContext(ctx context.Context) AzureNodePoolOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AzureNodePoolOutput)
-}
-
-func (i *AzureNodePool) ToAzureNodePoolPtrOutput() AzureNodePoolPtrOutput {
-	return i.ToAzureNodePoolPtrOutputWithContext(context.Background())
-}
-
-func (i *AzureNodePool) ToAzureNodePoolPtrOutputWithContext(ctx context.Context) AzureNodePoolPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AzureNodePoolPtrOutput)
-}
-
-type AzureNodePoolPtrInput interface {
-	pulumi.Input
-
-	ToAzureNodePoolPtrOutput() AzureNodePoolPtrOutput
-	ToAzureNodePoolPtrOutputWithContext(ctx context.Context) AzureNodePoolPtrOutput
-}
-
-type azureNodePoolPtrType AzureNodePoolArgs
-
-func (*azureNodePoolPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AzureNodePool)(nil))
-}
-
-func (i *azureNodePoolPtrType) ToAzureNodePoolPtrOutput() AzureNodePoolPtrOutput {
-	return i.ToAzureNodePoolPtrOutputWithContext(context.Background())
-}
-
-func (i *azureNodePoolPtrType) ToAzureNodePoolPtrOutputWithContext(ctx context.Context) AzureNodePoolPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AzureNodePoolPtrOutput)
 }
 
 // AzureNodePoolArrayInput is an input type that accepts AzureNodePoolArray and AzureNodePoolArrayOutput values.
@@ -466,7 +437,7 @@ func (i AzureNodePoolMap) ToAzureNodePoolMapOutputWithContext(ctx context.Contex
 type AzureNodePoolOutput struct{ *pulumi.OutputState }
 
 func (AzureNodePoolOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AzureNodePool)(nil))
+	return reflect.TypeOf((**AzureNodePool)(nil)).Elem()
 }
 
 func (o AzureNodePoolOutput) ToAzureNodePoolOutput() AzureNodePoolOutput {
@@ -477,44 +448,10 @@ func (o AzureNodePoolOutput) ToAzureNodePoolOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o AzureNodePoolOutput) ToAzureNodePoolPtrOutput() AzureNodePoolPtrOutput {
-	return o.ToAzureNodePoolPtrOutputWithContext(context.Background())
-}
-
-func (o AzureNodePoolOutput) ToAzureNodePoolPtrOutputWithContext(ctx context.Context) AzureNodePoolPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureNodePool) *AzureNodePool {
-		return &v
-	}).(AzureNodePoolPtrOutput)
-}
-
-type AzureNodePoolPtrOutput struct{ *pulumi.OutputState }
-
-func (AzureNodePoolPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AzureNodePool)(nil))
-}
-
-func (o AzureNodePoolPtrOutput) ToAzureNodePoolPtrOutput() AzureNodePoolPtrOutput {
-	return o
-}
-
-func (o AzureNodePoolPtrOutput) ToAzureNodePoolPtrOutputWithContext(ctx context.Context) AzureNodePoolPtrOutput {
-	return o
-}
-
-func (o AzureNodePoolPtrOutput) Elem() AzureNodePoolOutput {
-	return o.ApplyT(func(v *AzureNodePool) AzureNodePool {
-		if v != nil {
-			return *v
-		}
-		var ret AzureNodePool
-		return ret
-	}).(AzureNodePoolOutput)
-}
-
 type AzureNodePoolArrayOutput struct{ *pulumi.OutputState }
 
 func (AzureNodePoolArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AzureNodePool)(nil))
+	return reflect.TypeOf((*[]*AzureNodePool)(nil)).Elem()
 }
 
 func (o AzureNodePoolArrayOutput) ToAzureNodePoolArrayOutput() AzureNodePoolArrayOutput {
@@ -526,15 +463,15 @@ func (o AzureNodePoolArrayOutput) ToAzureNodePoolArrayOutputWithContext(ctx cont
 }
 
 func (o AzureNodePoolArrayOutput) Index(i pulumi.IntInput) AzureNodePoolOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AzureNodePool {
-		return vs[0].([]AzureNodePool)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AzureNodePool {
+		return vs[0].([]*AzureNodePool)[vs[1].(int)]
 	}).(AzureNodePoolOutput)
 }
 
 type AzureNodePoolMapOutput struct{ *pulumi.OutputState }
 
 func (AzureNodePoolMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AzureNodePool)(nil))
+	return reflect.TypeOf((*map[string]*AzureNodePool)(nil)).Elem()
 }
 
 func (o AzureNodePoolMapOutput) ToAzureNodePoolMapOutput() AzureNodePoolMapOutput {
@@ -546,18 +483,16 @@ func (o AzureNodePoolMapOutput) ToAzureNodePoolMapOutputWithContext(ctx context.
 }
 
 func (o AzureNodePoolMapOutput) MapIndex(k pulumi.StringInput) AzureNodePoolOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AzureNodePool {
-		return vs[0].(map[string]AzureNodePool)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AzureNodePool {
+		return vs[0].(map[string]*AzureNodePool)[vs[1].(string)]
 	}).(AzureNodePoolOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AzureNodePoolInput)(nil)).Elem(), &AzureNodePool{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AzureNodePoolPtrInput)(nil)).Elem(), &AzureNodePool{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AzureNodePoolArrayInput)(nil)).Elem(), AzureNodePoolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AzureNodePoolMapInput)(nil)).Elem(), AzureNodePoolMap{})
 	pulumi.RegisterOutputType(AzureNodePoolOutput{})
-	pulumi.RegisterOutputType(AzureNodePoolPtrOutput{})
 	pulumi.RegisterOutputType(AzureNodePoolArrayOutput{})
 	pulumi.RegisterOutputType(AzureNodePoolMapOutput{})
 }

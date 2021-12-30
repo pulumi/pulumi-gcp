@@ -196,35 +196,35 @@ export class InstanceGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args?: InstanceGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceGroupArgs | InstanceGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceGroupState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["instances"] = state ? state.instances : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["namedPorts"] = state ? state.namedPorts : undefined;
-            inputs["network"] = state ? state.network : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
-            inputs["size"] = state ? state.size : undefined;
-            inputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["instances"] = state ? state.instances : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["namedPorts"] = state ? state.namedPorts : undefined;
+            resourceInputs["network"] = state ? state.network : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["size"] = state ? state.size : undefined;
+            resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as InstanceGroupArgs | undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["instances"] = args ? args.instances : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["namedPorts"] = args ? args.namedPorts : undefined;
-            inputs["network"] = args ? args.network : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["size"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["instances"] = args ? args.instances : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["namedPorts"] = args ? args.namedPorts : undefined;
+            resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["size"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(InstanceGroup.__pulumiType, name, inputs, opts);
+        super(InstanceGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

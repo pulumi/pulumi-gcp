@@ -277,68 +277,68 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: InterconnectAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InterconnectAttachmentArgs | InterconnectAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InterconnectAttachmentState | undefined;
-            inputs["adminEnabled"] = state ? state.adminEnabled : undefined;
-            inputs["bandwidth"] = state ? state.bandwidth : undefined;
-            inputs["candidateSubnets"] = state ? state.candidateSubnets : undefined;
-            inputs["cloudRouterIpAddress"] = state ? state.cloudRouterIpAddress : undefined;
-            inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            inputs["customerRouterIpAddress"] = state ? state.customerRouterIpAddress : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["edgeAvailabilityDomain"] = state ? state.edgeAvailabilityDomain : undefined;
-            inputs["encryption"] = state ? state.encryption : undefined;
-            inputs["googleReferenceId"] = state ? state.googleReferenceId : undefined;
-            inputs["interconnect"] = state ? state.interconnect : undefined;
-            inputs["ipsecInternalAddresses"] = state ? state.ipsecInternalAddresses : undefined;
-            inputs["mtu"] = state ? state.mtu : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["pairingKey"] = state ? state.pairingKey : undefined;
-            inputs["partnerAsn"] = state ? state.partnerAsn : undefined;
-            inputs["privateInterconnectInfos"] = state ? state.privateInterconnectInfos : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["router"] = state ? state.router : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
-            inputs["state"] = state ? state.state : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["vlanTag8021q"] = state ? state.vlanTag8021q : undefined;
+            resourceInputs["adminEnabled"] = state ? state.adminEnabled : undefined;
+            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
+            resourceInputs["candidateSubnets"] = state ? state.candidateSubnets : undefined;
+            resourceInputs["cloudRouterIpAddress"] = state ? state.cloudRouterIpAddress : undefined;
+            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
+            resourceInputs["customerRouterIpAddress"] = state ? state.customerRouterIpAddress : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["edgeAvailabilityDomain"] = state ? state.edgeAvailabilityDomain : undefined;
+            resourceInputs["encryption"] = state ? state.encryption : undefined;
+            resourceInputs["googleReferenceId"] = state ? state.googleReferenceId : undefined;
+            resourceInputs["interconnect"] = state ? state.interconnect : undefined;
+            resourceInputs["ipsecInternalAddresses"] = state ? state.ipsecInternalAddresses : undefined;
+            resourceInputs["mtu"] = state ? state.mtu : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["pairingKey"] = state ? state.pairingKey : undefined;
+            resourceInputs["partnerAsn"] = state ? state.partnerAsn : undefined;
+            resourceInputs["privateInterconnectInfos"] = state ? state.privateInterconnectInfos : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["router"] = state ? state.router : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["vlanTag8021q"] = state ? state.vlanTag8021q : undefined;
         } else {
             const args = argsOrState as InterconnectAttachmentArgs | undefined;
             if ((!args || args.router === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'router'");
             }
-            inputs["adminEnabled"] = args ? args.adminEnabled : undefined;
-            inputs["bandwidth"] = args ? args.bandwidth : undefined;
-            inputs["candidateSubnets"] = args ? args.candidateSubnets : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["edgeAvailabilityDomain"] = args ? args.edgeAvailabilityDomain : undefined;
-            inputs["encryption"] = args ? args.encryption : undefined;
-            inputs["interconnect"] = args ? args.interconnect : undefined;
-            inputs["ipsecInternalAddresses"] = args ? args.ipsecInternalAddresses : undefined;
-            inputs["mtu"] = args ? args.mtu : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["router"] = args ? args.router : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["vlanTag8021q"] = args ? args.vlanTag8021q : undefined;
-            inputs["cloudRouterIpAddress"] = undefined /*out*/;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["customerRouterIpAddress"] = undefined /*out*/;
-            inputs["googleReferenceId"] = undefined /*out*/;
-            inputs["pairingKey"] = undefined /*out*/;
-            inputs["partnerAsn"] = undefined /*out*/;
-            inputs["privateInterconnectInfos"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["adminEnabled"] = args ? args.adminEnabled : undefined;
+            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
+            resourceInputs["candidateSubnets"] = args ? args.candidateSubnets : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["edgeAvailabilityDomain"] = args ? args.edgeAvailabilityDomain : undefined;
+            resourceInputs["encryption"] = args ? args.encryption : undefined;
+            resourceInputs["interconnect"] = args ? args.interconnect : undefined;
+            resourceInputs["ipsecInternalAddresses"] = args ? args.ipsecInternalAddresses : undefined;
+            resourceInputs["mtu"] = args ? args.mtu : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["router"] = args ? args.router : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["vlanTag8021q"] = args ? args.vlanTag8021q : undefined;
+            resourceInputs["cloudRouterIpAddress"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["customerRouterIpAddress"] = undefined /*out*/;
+            resourceInputs["googleReferenceId"] = undefined /*out*/;
+            resourceInputs["pairingKey"] = undefined /*out*/;
+            resourceInputs["partnerAsn"] = undefined /*out*/;
+            resourceInputs["privateInterconnectInfos"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(InterconnectAttachment.__pulumiType, name, inputs, opts);
+        super(InterconnectAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -268,7 +268,7 @@ type GameServerDeploymentRolloutInput interface {
 }
 
 func (*GameServerDeploymentRollout) ElementType() reflect.Type {
-	return reflect.TypeOf((*GameServerDeploymentRollout)(nil))
+	return reflect.TypeOf((**GameServerDeploymentRollout)(nil)).Elem()
 }
 
 func (i *GameServerDeploymentRollout) ToGameServerDeploymentRolloutOutput() GameServerDeploymentRolloutOutput {
@@ -277,35 +277,6 @@ func (i *GameServerDeploymentRollout) ToGameServerDeploymentRolloutOutput() Game
 
 func (i *GameServerDeploymentRollout) ToGameServerDeploymentRolloutOutputWithContext(ctx context.Context) GameServerDeploymentRolloutOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerDeploymentRolloutOutput)
-}
-
-func (i *GameServerDeploymentRollout) ToGameServerDeploymentRolloutPtrOutput() GameServerDeploymentRolloutPtrOutput {
-	return i.ToGameServerDeploymentRolloutPtrOutputWithContext(context.Background())
-}
-
-func (i *GameServerDeploymentRollout) ToGameServerDeploymentRolloutPtrOutputWithContext(ctx context.Context) GameServerDeploymentRolloutPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GameServerDeploymentRolloutPtrOutput)
-}
-
-type GameServerDeploymentRolloutPtrInput interface {
-	pulumi.Input
-
-	ToGameServerDeploymentRolloutPtrOutput() GameServerDeploymentRolloutPtrOutput
-	ToGameServerDeploymentRolloutPtrOutputWithContext(ctx context.Context) GameServerDeploymentRolloutPtrOutput
-}
-
-type gameServerDeploymentRolloutPtrType GameServerDeploymentRolloutArgs
-
-func (*gameServerDeploymentRolloutPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GameServerDeploymentRollout)(nil))
-}
-
-func (i *gameServerDeploymentRolloutPtrType) ToGameServerDeploymentRolloutPtrOutput() GameServerDeploymentRolloutPtrOutput {
-	return i.ToGameServerDeploymentRolloutPtrOutputWithContext(context.Background())
-}
-
-func (i *gameServerDeploymentRolloutPtrType) ToGameServerDeploymentRolloutPtrOutputWithContext(ctx context.Context) GameServerDeploymentRolloutPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GameServerDeploymentRolloutPtrOutput)
 }
 
 // GameServerDeploymentRolloutArrayInput is an input type that accepts GameServerDeploymentRolloutArray and GameServerDeploymentRolloutArrayOutput values.
@@ -361,7 +332,7 @@ func (i GameServerDeploymentRolloutMap) ToGameServerDeploymentRolloutMapOutputWi
 type GameServerDeploymentRolloutOutput struct{ *pulumi.OutputState }
 
 func (GameServerDeploymentRolloutOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GameServerDeploymentRollout)(nil))
+	return reflect.TypeOf((**GameServerDeploymentRollout)(nil)).Elem()
 }
 
 func (o GameServerDeploymentRolloutOutput) ToGameServerDeploymentRolloutOutput() GameServerDeploymentRolloutOutput {
@@ -372,44 +343,10 @@ func (o GameServerDeploymentRolloutOutput) ToGameServerDeploymentRolloutOutputWi
 	return o
 }
 
-func (o GameServerDeploymentRolloutOutput) ToGameServerDeploymentRolloutPtrOutput() GameServerDeploymentRolloutPtrOutput {
-	return o.ToGameServerDeploymentRolloutPtrOutputWithContext(context.Background())
-}
-
-func (o GameServerDeploymentRolloutOutput) ToGameServerDeploymentRolloutPtrOutputWithContext(ctx context.Context) GameServerDeploymentRolloutPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GameServerDeploymentRollout) *GameServerDeploymentRollout {
-		return &v
-	}).(GameServerDeploymentRolloutPtrOutput)
-}
-
-type GameServerDeploymentRolloutPtrOutput struct{ *pulumi.OutputState }
-
-func (GameServerDeploymentRolloutPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GameServerDeploymentRollout)(nil))
-}
-
-func (o GameServerDeploymentRolloutPtrOutput) ToGameServerDeploymentRolloutPtrOutput() GameServerDeploymentRolloutPtrOutput {
-	return o
-}
-
-func (o GameServerDeploymentRolloutPtrOutput) ToGameServerDeploymentRolloutPtrOutputWithContext(ctx context.Context) GameServerDeploymentRolloutPtrOutput {
-	return o
-}
-
-func (o GameServerDeploymentRolloutPtrOutput) Elem() GameServerDeploymentRolloutOutput {
-	return o.ApplyT(func(v *GameServerDeploymentRollout) GameServerDeploymentRollout {
-		if v != nil {
-			return *v
-		}
-		var ret GameServerDeploymentRollout
-		return ret
-	}).(GameServerDeploymentRolloutOutput)
-}
-
 type GameServerDeploymentRolloutArrayOutput struct{ *pulumi.OutputState }
 
 func (GameServerDeploymentRolloutArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GameServerDeploymentRollout)(nil))
+	return reflect.TypeOf((*[]*GameServerDeploymentRollout)(nil)).Elem()
 }
 
 func (o GameServerDeploymentRolloutArrayOutput) ToGameServerDeploymentRolloutArrayOutput() GameServerDeploymentRolloutArrayOutput {
@@ -421,15 +358,15 @@ func (o GameServerDeploymentRolloutArrayOutput) ToGameServerDeploymentRolloutArr
 }
 
 func (o GameServerDeploymentRolloutArrayOutput) Index(i pulumi.IntInput) GameServerDeploymentRolloutOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GameServerDeploymentRollout {
-		return vs[0].([]GameServerDeploymentRollout)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GameServerDeploymentRollout {
+		return vs[0].([]*GameServerDeploymentRollout)[vs[1].(int)]
 	}).(GameServerDeploymentRolloutOutput)
 }
 
 type GameServerDeploymentRolloutMapOutput struct{ *pulumi.OutputState }
 
 func (GameServerDeploymentRolloutMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GameServerDeploymentRollout)(nil))
+	return reflect.TypeOf((*map[string]*GameServerDeploymentRollout)(nil)).Elem()
 }
 
 func (o GameServerDeploymentRolloutMapOutput) ToGameServerDeploymentRolloutMapOutput() GameServerDeploymentRolloutMapOutput {
@@ -441,18 +378,16 @@ func (o GameServerDeploymentRolloutMapOutput) ToGameServerDeploymentRolloutMapOu
 }
 
 func (o GameServerDeploymentRolloutMapOutput) MapIndex(k pulumi.StringInput) GameServerDeploymentRolloutOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GameServerDeploymentRollout {
-		return vs[0].(map[string]GameServerDeploymentRollout)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *GameServerDeploymentRollout {
+		return vs[0].(map[string]*GameServerDeploymentRollout)[vs[1].(string)]
 	}).(GameServerDeploymentRolloutOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GameServerDeploymentRolloutInput)(nil)).Elem(), &GameServerDeploymentRollout{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GameServerDeploymentRolloutPtrInput)(nil)).Elem(), &GameServerDeploymentRollout{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GameServerDeploymentRolloutArrayInput)(nil)).Elem(), GameServerDeploymentRolloutArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GameServerDeploymentRolloutMapInput)(nil)).Elem(), GameServerDeploymentRolloutMap{})
 	pulumi.RegisterOutputType(GameServerDeploymentRolloutOutput{})
-	pulumi.RegisterOutputType(GameServerDeploymentRolloutPtrOutput{})
 	pulumi.RegisterOutputType(GameServerDeploymentRolloutArrayOutput{})
 	pulumi.RegisterOutputType(GameServerDeploymentRolloutMapOutput{})
 }

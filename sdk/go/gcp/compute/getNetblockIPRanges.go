@@ -55,11 +55,11 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = compute.NewNetwork(ctx, "_default", nil)
+// 		_, err = compute.NewNetwork(ctx, "default", nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = compute.NewFirewall(ctx, "allow_hcs", &compute.FirewallArgs{
+// 		_, err = compute.NewFirewall(ctx, "allow-hcs", &compute.FirewallArgs{
 // 			Network: _default.Name,
 // 			Allows: compute.FirewallAllowArray{
 // 				&compute.FirewallAllowArgs{

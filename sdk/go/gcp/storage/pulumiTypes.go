@@ -1922,47 +1922,6 @@ func (i TransferJobScheduleArgs) ToTransferJobScheduleOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(TransferJobScheduleOutput)
 }
 
-func (i TransferJobScheduleArgs) ToTransferJobSchedulePtrOutput() TransferJobSchedulePtrOutput {
-	return i.ToTransferJobSchedulePtrOutputWithContext(context.Background())
-}
-
-func (i TransferJobScheduleArgs) ToTransferJobSchedulePtrOutputWithContext(ctx context.Context) TransferJobSchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TransferJobScheduleOutput).ToTransferJobSchedulePtrOutputWithContext(ctx)
-}
-
-// TransferJobSchedulePtrInput is an input type that accepts TransferJobScheduleArgs, TransferJobSchedulePtr and TransferJobSchedulePtrOutput values.
-// You can construct a concrete instance of `TransferJobSchedulePtrInput` via:
-//
-//          TransferJobScheduleArgs{...}
-//
-//  or:
-//
-//          nil
-type TransferJobSchedulePtrInput interface {
-	pulumi.Input
-
-	ToTransferJobSchedulePtrOutput() TransferJobSchedulePtrOutput
-	ToTransferJobSchedulePtrOutputWithContext(context.Context) TransferJobSchedulePtrOutput
-}
-
-type transferJobSchedulePtrType TransferJobScheduleArgs
-
-func TransferJobSchedulePtr(v *TransferJobScheduleArgs) TransferJobSchedulePtrInput {
-	return (*transferJobSchedulePtrType)(v)
-}
-
-func (*transferJobSchedulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TransferJobSchedule)(nil)).Elem()
-}
-
-func (i *transferJobSchedulePtrType) ToTransferJobSchedulePtrOutput() TransferJobSchedulePtrOutput {
-	return i.ToTransferJobSchedulePtrOutputWithContext(context.Background())
-}
-
-func (i *transferJobSchedulePtrType) ToTransferJobSchedulePtrOutputWithContext(ctx context.Context) TransferJobSchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TransferJobSchedulePtrOutput)
-}
-
 type TransferJobScheduleOutput struct{ *pulumi.OutputState }
 
 func (TransferJobScheduleOutput) ElementType() reflect.Type {
@@ -1975,16 +1934,6 @@ func (o TransferJobScheduleOutput) ToTransferJobScheduleOutput() TransferJobSche
 
 func (o TransferJobScheduleOutput) ToTransferJobScheduleOutputWithContext(ctx context.Context) TransferJobScheduleOutput {
 	return o
-}
-
-func (o TransferJobScheduleOutput) ToTransferJobSchedulePtrOutput() TransferJobSchedulePtrOutput {
-	return o.ToTransferJobSchedulePtrOutputWithContext(context.Background())
-}
-
-func (o TransferJobScheduleOutput) ToTransferJobSchedulePtrOutputWithContext(ctx context.Context) TransferJobSchedulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferJobSchedule) *TransferJobSchedule {
-		return &v
-	}).(TransferJobSchedulePtrOutput)
 }
 
 // The last day the recurring transfer will be run. If `scheduleEndDate` is the same as `scheduleStartDate`, the transfer will be executed only once. Structure documented below.
@@ -2000,60 +1949,6 @@ func (o TransferJobScheduleOutput) ScheduleStartDate() TransferJobScheduleSchedu
 // The time in UTC at which the transfer will be scheduled to start in a day. Transfers may start later than this time. If not specified, recurring and one-time transfers that are scheduled to run today will run immediately; recurring transfers that are scheduled to run on a future date will start at approximately midnight UTC on that date. Note that when configuring a transfer with the Cloud Platform Console, the transfer's start time in a day is specified in your local timezone. Structure documented below.
 func (o TransferJobScheduleOutput) StartTimeOfDay() TransferJobScheduleStartTimeOfDayPtrOutput {
 	return o.ApplyT(func(v TransferJobSchedule) *TransferJobScheduleStartTimeOfDay { return v.StartTimeOfDay }).(TransferJobScheduleStartTimeOfDayPtrOutput)
-}
-
-type TransferJobSchedulePtrOutput struct{ *pulumi.OutputState }
-
-func (TransferJobSchedulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TransferJobSchedule)(nil)).Elem()
-}
-
-func (o TransferJobSchedulePtrOutput) ToTransferJobSchedulePtrOutput() TransferJobSchedulePtrOutput {
-	return o
-}
-
-func (o TransferJobSchedulePtrOutput) ToTransferJobSchedulePtrOutputWithContext(ctx context.Context) TransferJobSchedulePtrOutput {
-	return o
-}
-
-func (o TransferJobSchedulePtrOutput) Elem() TransferJobScheduleOutput {
-	return o.ApplyT(func(v *TransferJobSchedule) TransferJobSchedule {
-		if v != nil {
-			return *v
-		}
-		var ret TransferJobSchedule
-		return ret
-	}).(TransferJobScheduleOutput)
-}
-
-// The last day the recurring transfer will be run. If `scheduleEndDate` is the same as `scheduleStartDate`, the transfer will be executed only once. Structure documented below.
-func (o TransferJobSchedulePtrOutput) ScheduleEndDate() TransferJobScheduleScheduleEndDatePtrOutput {
-	return o.ApplyT(func(v *TransferJobSchedule) *TransferJobScheduleScheduleEndDate {
-		if v == nil {
-			return nil
-		}
-		return v.ScheduleEndDate
-	}).(TransferJobScheduleScheduleEndDatePtrOutput)
-}
-
-// The first day the recurring transfer is scheduled to run. If `scheduleStartDate` is in the past, the transfer will run for the first time on the following day. Structure documented below.
-func (o TransferJobSchedulePtrOutput) ScheduleStartDate() TransferJobScheduleScheduleStartDatePtrOutput {
-	return o.ApplyT(func(v *TransferJobSchedule) *TransferJobScheduleScheduleStartDate {
-		if v == nil {
-			return nil
-		}
-		return &v.ScheduleStartDate
-	}).(TransferJobScheduleScheduleStartDatePtrOutput)
-}
-
-// The time in UTC at which the transfer will be scheduled to start in a day. Transfers may start later than this time. If not specified, recurring and one-time transfers that are scheduled to run today will run immediately; recurring transfers that are scheduled to run on a future date will start at approximately midnight UTC on that date. Note that when configuring a transfer with the Cloud Platform Console, the transfer's start time in a day is specified in your local timezone. Structure documented below.
-func (o TransferJobSchedulePtrOutput) StartTimeOfDay() TransferJobScheduleStartTimeOfDayPtrOutput {
-	return o.ApplyT(func(v *TransferJobSchedule) *TransferJobScheduleStartTimeOfDay {
-		if v == nil {
-			return nil
-		}
-		return v.StartTimeOfDay
-	}).(TransferJobScheduleStartTimeOfDayPtrOutput)
 }
 
 type TransferJobScheduleScheduleEndDate struct {
@@ -2272,47 +2167,6 @@ func (i TransferJobScheduleScheduleStartDateArgs) ToTransferJobScheduleScheduleS
 	return pulumi.ToOutputWithContext(ctx, i).(TransferJobScheduleScheduleStartDateOutput)
 }
 
-func (i TransferJobScheduleScheduleStartDateArgs) ToTransferJobScheduleScheduleStartDatePtrOutput() TransferJobScheduleScheduleStartDatePtrOutput {
-	return i.ToTransferJobScheduleScheduleStartDatePtrOutputWithContext(context.Background())
-}
-
-func (i TransferJobScheduleScheduleStartDateArgs) ToTransferJobScheduleScheduleStartDatePtrOutputWithContext(ctx context.Context) TransferJobScheduleScheduleStartDatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TransferJobScheduleScheduleStartDateOutput).ToTransferJobScheduleScheduleStartDatePtrOutputWithContext(ctx)
-}
-
-// TransferJobScheduleScheduleStartDatePtrInput is an input type that accepts TransferJobScheduleScheduleStartDateArgs, TransferJobScheduleScheduleStartDatePtr and TransferJobScheduleScheduleStartDatePtrOutput values.
-// You can construct a concrete instance of `TransferJobScheduleScheduleStartDatePtrInput` via:
-//
-//          TransferJobScheduleScheduleStartDateArgs{...}
-//
-//  or:
-//
-//          nil
-type TransferJobScheduleScheduleStartDatePtrInput interface {
-	pulumi.Input
-
-	ToTransferJobScheduleScheduleStartDatePtrOutput() TransferJobScheduleScheduleStartDatePtrOutput
-	ToTransferJobScheduleScheduleStartDatePtrOutputWithContext(context.Context) TransferJobScheduleScheduleStartDatePtrOutput
-}
-
-type transferJobScheduleScheduleStartDatePtrType TransferJobScheduleScheduleStartDateArgs
-
-func TransferJobScheduleScheduleStartDatePtr(v *TransferJobScheduleScheduleStartDateArgs) TransferJobScheduleScheduleStartDatePtrInput {
-	return (*transferJobScheduleScheduleStartDatePtrType)(v)
-}
-
-func (*transferJobScheduleScheduleStartDatePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TransferJobScheduleScheduleStartDate)(nil)).Elem()
-}
-
-func (i *transferJobScheduleScheduleStartDatePtrType) ToTransferJobScheduleScheduleStartDatePtrOutput() TransferJobScheduleScheduleStartDatePtrOutput {
-	return i.ToTransferJobScheduleScheduleStartDatePtrOutputWithContext(context.Background())
-}
-
-func (i *transferJobScheduleScheduleStartDatePtrType) ToTransferJobScheduleScheduleStartDatePtrOutputWithContext(ctx context.Context) TransferJobScheduleScheduleStartDatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TransferJobScheduleScheduleStartDatePtrOutput)
-}
-
 type TransferJobScheduleScheduleStartDateOutput struct{ *pulumi.OutputState }
 
 func (TransferJobScheduleScheduleStartDateOutput) ElementType() reflect.Type {
@@ -2325,16 +2179,6 @@ func (o TransferJobScheduleScheduleStartDateOutput) ToTransferJobScheduleSchedul
 
 func (o TransferJobScheduleScheduleStartDateOutput) ToTransferJobScheduleScheduleStartDateOutputWithContext(ctx context.Context) TransferJobScheduleScheduleStartDateOutput {
 	return o
-}
-
-func (o TransferJobScheduleScheduleStartDateOutput) ToTransferJobScheduleScheduleStartDatePtrOutput() TransferJobScheduleScheduleStartDatePtrOutput {
-	return o.ToTransferJobScheduleScheduleStartDatePtrOutputWithContext(context.Background())
-}
-
-func (o TransferJobScheduleScheduleStartDateOutput) ToTransferJobScheduleScheduleStartDatePtrOutputWithContext(ctx context.Context) TransferJobScheduleScheduleStartDatePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferJobScheduleScheduleStartDate) *TransferJobScheduleScheduleStartDate {
-		return &v
-	}).(TransferJobScheduleScheduleStartDatePtrOutput)
 }
 
 // Day of month. Must be from 1 to 31 and valid for the year and month.
@@ -2350,60 +2194,6 @@ func (o TransferJobScheduleScheduleStartDateOutput) Month() pulumi.IntOutput {
 // Year of date. Must be from 1 to 9999.
 func (o TransferJobScheduleScheduleStartDateOutput) Year() pulumi.IntOutput {
 	return o.ApplyT(func(v TransferJobScheduleScheduleStartDate) int { return v.Year }).(pulumi.IntOutput)
-}
-
-type TransferJobScheduleScheduleStartDatePtrOutput struct{ *pulumi.OutputState }
-
-func (TransferJobScheduleScheduleStartDatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TransferJobScheduleScheduleStartDate)(nil)).Elem()
-}
-
-func (o TransferJobScheduleScheduleStartDatePtrOutput) ToTransferJobScheduleScheduleStartDatePtrOutput() TransferJobScheduleScheduleStartDatePtrOutput {
-	return o
-}
-
-func (o TransferJobScheduleScheduleStartDatePtrOutput) ToTransferJobScheduleScheduleStartDatePtrOutputWithContext(ctx context.Context) TransferJobScheduleScheduleStartDatePtrOutput {
-	return o
-}
-
-func (o TransferJobScheduleScheduleStartDatePtrOutput) Elem() TransferJobScheduleScheduleStartDateOutput {
-	return o.ApplyT(func(v *TransferJobScheduleScheduleStartDate) TransferJobScheduleScheduleStartDate {
-		if v != nil {
-			return *v
-		}
-		var ret TransferJobScheduleScheduleStartDate
-		return ret
-	}).(TransferJobScheduleScheduleStartDateOutput)
-}
-
-// Day of month. Must be from 1 to 31 and valid for the year and month.
-func (o TransferJobScheduleScheduleStartDatePtrOutput) Day() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *TransferJobScheduleScheduleStartDate) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Day
-	}).(pulumi.IntPtrOutput)
-}
-
-// Month of year. Must be from 1 to 12.
-func (o TransferJobScheduleScheduleStartDatePtrOutput) Month() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *TransferJobScheduleScheduleStartDate) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Month
-	}).(pulumi.IntPtrOutput)
-}
-
-// Year of date. Must be from 1 to 9999.
-func (o TransferJobScheduleScheduleStartDatePtrOutput) Year() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *TransferJobScheduleScheduleStartDate) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Year
-	}).(pulumi.IntPtrOutput)
 }
 
 type TransferJobScheduleStartTimeOfDay struct {
@@ -2657,47 +2447,6 @@ func (i TransferJobTransferSpecArgs) ToTransferJobTransferSpecOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecOutput)
 }
 
-func (i TransferJobTransferSpecArgs) ToTransferJobTransferSpecPtrOutput() TransferJobTransferSpecPtrOutput {
-	return i.ToTransferJobTransferSpecPtrOutputWithContext(context.Background())
-}
-
-func (i TransferJobTransferSpecArgs) ToTransferJobTransferSpecPtrOutputWithContext(ctx context.Context) TransferJobTransferSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecOutput).ToTransferJobTransferSpecPtrOutputWithContext(ctx)
-}
-
-// TransferJobTransferSpecPtrInput is an input type that accepts TransferJobTransferSpecArgs, TransferJobTransferSpecPtr and TransferJobTransferSpecPtrOutput values.
-// You can construct a concrete instance of `TransferJobTransferSpecPtrInput` via:
-//
-//          TransferJobTransferSpecArgs{...}
-//
-//  or:
-//
-//          nil
-type TransferJobTransferSpecPtrInput interface {
-	pulumi.Input
-
-	ToTransferJobTransferSpecPtrOutput() TransferJobTransferSpecPtrOutput
-	ToTransferJobTransferSpecPtrOutputWithContext(context.Context) TransferJobTransferSpecPtrOutput
-}
-
-type transferJobTransferSpecPtrType TransferJobTransferSpecArgs
-
-func TransferJobTransferSpecPtr(v *TransferJobTransferSpecArgs) TransferJobTransferSpecPtrInput {
-	return (*transferJobTransferSpecPtrType)(v)
-}
-
-func (*transferJobTransferSpecPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TransferJobTransferSpec)(nil)).Elem()
-}
-
-func (i *transferJobTransferSpecPtrType) ToTransferJobTransferSpecPtrOutput() TransferJobTransferSpecPtrOutput {
-	return i.ToTransferJobTransferSpecPtrOutputWithContext(context.Background())
-}
-
-func (i *transferJobTransferSpecPtrType) ToTransferJobTransferSpecPtrOutputWithContext(ctx context.Context) TransferJobTransferSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecPtrOutput)
-}
-
 type TransferJobTransferSpecOutput struct{ *pulumi.OutputState }
 
 func (TransferJobTransferSpecOutput) ElementType() reflect.Type {
@@ -2710,16 +2459,6 @@ func (o TransferJobTransferSpecOutput) ToTransferJobTransferSpecOutput() Transfe
 
 func (o TransferJobTransferSpecOutput) ToTransferJobTransferSpecOutputWithContext(ctx context.Context) TransferJobTransferSpecOutput {
 	return o
-}
-
-func (o TransferJobTransferSpecOutput) ToTransferJobTransferSpecPtrOutput() TransferJobTransferSpecPtrOutput {
-	return o.ToTransferJobTransferSpecPtrOutputWithContext(context.Background())
-}
-
-func (o TransferJobTransferSpecOutput) ToTransferJobTransferSpecPtrOutputWithContext(ctx context.Context) TransferJobTransferSpecPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferJobTransferSpec) *TransferJobTransferSpec {
-		return &v
-	}).(TransferJobTransferSpecPtrOutput)
 }
 
 // An AWS S3 data source. Structure documented below.
@@ -2757,100 +2496,6 @@ func (o TransferJobTransferSpecOutput) ObjectConditions() TransferJobTransferSpe
 // Characteristics of how to treat files from datasource and sink during job. If the option `deleteObjectsUniqueInSink` is true, object conditions based on objects' `lastModificationTime` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
 func (o TransferJobTransferSpecOutput) TransferOptions() TransferJobTransferSpecTransferOptionsPtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecTransferOptions { return v.TransferOptions }).(TransferJobTransferSpecTransferOptionsPtrOutput)
-}
-
-type TransferJobTransferSpecPtrOutput struct{ *pulumi.OutputState }
-
-func (TransferJobTransferSpecPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TransferJobTransferSpec)(nil)).Elem()
-}
-
-func (o TransferJobTransferSpecPtrOutput) ToTransferJobTransferSpecPtrOutput() TransferJobTransferSpecPtrOutput {
-	return o
-}
-
-func (o TransferJobTransferSpecPtrOutput) ToTransferJobTransferSpecPtrOutputWithContext(ctx context.Context) TransferJobTransferSpecPtrOutput {
-	return o
-}
-
-func (o TransferJobTransferSpecPtrOutput) Elem() TransferJobTransferSpecOutput {
-	return o.ApplyT(func(v *TransferJobTransferSpec) TransferJobTransferSpec {
-		if v != nil {
-			return *v
-		}
-		var ret TransferJobTransferSpec
-		return ret
-	}).(TransferJobTransferSpecOutput)
-}
-
-// An AWS S3 data source. Structure documented below.
-func (o TransferJobTransferSpecPtrOutput) AwsS3DataSource() TransferJobTransferSpecAwsS3DataSourcePtrOutput {
-	return o.ApplyT(func(v *TransferJobTransferSpec) *TransferJobTransferSpecAwsS3DataSource {
-		if v == nil {
-			return nil
-		}
-		return v.AwsS3DataSource
-	}).(TransferJobTransferSpecAwsS3DataSourcePtrOutput)
-}
-
-// An Azure Blob Storage data source. Structure documented below.
-func (o TransferJobTransferSpecPtrOutput) AzureBlobStorageDataSource() TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput {
-	return o.ApplyT(func(v *TransferJobTransferSpec) *TransferJobTransferSpecAzureBlobStorageDataSource {
-		if v == nil {
-			return nil
-		}
-		return v.AzureBlobStorageDataSource
-	}).(TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput)
-}
-
-// A Google Cloud Storage data sink. Structure documented below.
-func (o TransferJobTransferSpecPtrOutput) GcsDataSink() TransferJobTransferSpecGcsDataSinkPtrOutput {
-	return o.ApplyT(func(v *TransferJobTransferSpec) *TransferJobTransferSpecGcsDataSink {
-		if v == nil {
-			return nil
-		}
-		return v.GcsDataSink
-	}).(TransferJobTransferSpecGcsDataSinkPtrOutput)
-}
-
-// A Google Cloud Storage data source. Structure documented below.
-func (o TransferJobTransferSpecPtrOutput) GcsDataSource() TransferJobTransferSpecGcsDataSourcePtrOutput {
-	return o.ApplyT(func(v *TransferJobTransferSpec) *TransferJobTransferSpecGcsDataSource {
-		if v == nil {
-			return nil
-		}
-		return v.GcsDataSource
-	}).(TransferJobTransferSpecGcsDataSourcePtrOutput)
-}
-
-// A HTTP URL data source. Structure documented below.
-func (o TransferJobTransferSpecPtrOutput) HttpDataSource() TransferJobTransferSpecHttpDataSourcePtrOutput {
-	return o.ApplyT(func(v *TransferJobTransferSpec) *TransferJobTransferSpecHttpDataSource {
-		if v == nil {
-			return nil
-		}
-		return v.HttpDataSource
-	}).(TransferJobTransferSpecHttpDataSourcePtrOutput)
-}
-
-// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `lastModificationTime` do not exclude objects in a data sink. Structure documented below.
-func (o TransferJobTransferSpecPtrOutput) ObjectConditions() TransferJobTransferSpecObjectConditionsPtrOutput {
-	return o.ApplyT(func(v *TransferJobTransferSpec) *TransferJobTransferSpecObjectConditions {
-		if v == nil {
-			return nil
-		}
-		return v.ObjectConditions
-	}).(TransferJobTransferSpecObjectConditionsPtrOutput)
-}
-
-// Characteristics of how to treat files from datasource and sink during job. If the option `deleteObjectsUniqueInSink` is true, object conditions based on objects' `lastModificationTime` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
-func (o TransferJobTransferSpecPtrOutput) TransferOptions() TransferJobTransferSpecTransferOptionsPtrOutput {
-	return o.ApplyT(func(v *TransferJobTransferSpec) *TransferJobTransferSpecTransferOptions {
-		if v == nil {
-			return nil
-		}
-		return v.TransferOptions
-	}).(TransferJobTransferSpecTransferOptionsPtrOutput)
 }
 
 type TransferJobTransferSpecAwsS3DataSource struct {
@@ -5492,15 +5137,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectAccessControlProjectTeamInput)(nil)).Elem(), ObjectAccessControlProjectTeamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectAccessControlProjectTeamArrayInput)(nil)).Elem(), ObjectAccessControlProjectTeamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobScheduleInput)(nil)).Elem(), TransferJobScheduleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobSchedulePtrInput)(nil)).Elem(), TransferJobScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobScheduleScheduleEndDateInput)(nil)).Elem(), TransferJobScheduleScheduleEndDateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobScheduleScheduleEndDatePtrInput)(nil)).Elem(), TransferJobScheduleScheduleEndDateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobScheduleScheduleStartDateInput)(nil)).Elem(), TransferJobScheduleScheduleStartDateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobScheduleScheduleStartDatePtrInput)(nil)).Elem(), TransferJobScheduleScheduleStartDateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobScheduleStartTimeOfDayInput)(nil)).Elem(), TransferJobScheduleStartTimeOfDayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobScheduleStartTimeOfDayPtrInput)(nil)).Elem(), TransferJobScheduleStartTimeOfDayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecInput)(nil)).Elem(), TransferJobTransferSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecPtrInput)(nil)).Elem(), TransferJobTransferSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecAwsS3DataSourceInput)(nil)).Elem(), TransferJobTransferSpecAwsS3DataSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecAwsS3DataSourcePtrInput)(nil)).Elem(), TransferJobTransferSpecAwsS3DataSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyInput)(nil)).Elem(), TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs{})
@@ -5568,15 +5210,12 @@ func init() {
 	pulumi.RegisterOutputType(ObjectAccessControlProjectTeamOutput{})
 	pulumi.RegisterOutputType(ObjectAccessControlProjectTeamArrayOutput{})
 	pulumi.RegisterOutputType(TransferJobScheduleOutput{})
-	pulumi.RegisterOutputType(TransferJobSchedulePtrOutput{})
 	pulumi.RegisterOutputType(TransferJobScheduleScheduleEndDateOutput{})
 	pulumi.RegisterOutputType(TransferJobScheduleScheduleEndDatePtrOutput{})
 	pulumi.RegisterOutputType(TransferJobScheduleScheduleStartDateOutput{})
-	pulumi.RegisterOutputType(TransferJobScheduleScheduleStartDatePtrOutput{})
 	pulumi.RegisterOutputType(TransferJobScheduleStartTimeOfDayOutput{})
 	pulumi.RegisterOutputType(TransferJobScheduleStartTimeOfDayPtrOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecOutput{})
-	pulumi.RegisterOutputType(TransferJobTransferSpecPtrOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecAwsS3DataSourceOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecAwsS3DataSourcePtrOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput{})

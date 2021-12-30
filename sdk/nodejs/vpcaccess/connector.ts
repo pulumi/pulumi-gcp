@@ -234,43 +234,43 @@ export class Connector extends pulumi.CustomResource {
      */
     constructor(name: string, args?: ConnectorArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ConnectorArgs | ConnectorState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectorState | undefined;
-            inputs["ipCidrRange"] = state ? state.ipCidrRange : undefined;
-            inputs["machineType"] = state ? state.machineType : undefined;
-            inputs["maxInstances"] = state ? state.maxInstances : undefined;
-            inputs["maxThroughput"] = state ? state.maxThroughput : undefined;
-            inputs["minInstances"] = state ? state.minInstances : undefined;
-            inputs["minThroughput"] = state ? state.minThroughput : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["network"] = state ? state.network : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
-            inputs["state"] = state ? state.state : undefined;
-            inputs["subnet"] = state ? state.subnet : undefined;
+            resourceInputs["ipCidrRange"] = state ? state.ipCidrRange : undefined;
+            resourceInputs["machineType"] = state ? state.machineType : undefined;
+            resourceInputs["maxInstances"] = state ? state.maxInstances : undefined;
+            resourceInputs["maxThroughput"] = state ? state.maxThroughput : undefined;
+            resourceInputs["minInstances"] = state ? state.minInstances : undefined;
+            resourceInputs["minThroughput"] = state ? state.minThroughput : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["network"] = state ? state.network : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["subnet"] = state ? state.subnet : undefined;
         } else {
             const args = argsOrState as ConnectorArgs | undefined;
-            inputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
-            inputs["machineType"] = args ? args.machineType : undefined;
-            inputs["maxInstances"] = args ? args.maxInstances : undefined;
-            inputs["maxThroughput"] = args ? args.maxThroughput : undefined;
-            inputs["minInstances"] = args ? args.minInstances : undefined;
-            inputs["minThroughput"] = args ? args.minThroughput : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["network"] = args ? args.network : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["subnet"] = args ? args.subnet : undefined;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
+            resourceInputs["machineType"] = args ? args.machineType : undefined;
+            resourceInputs["maxInstances"] = args ? args.maxInstances : undefined;
+            resourceInputs["maxThroughput"] = args ? args.maxThroughput : undefined;
+            resourceInputs["minInstances"] = args ? args.minInstances : undefined;
+            resourceInputs["minThroughput"] = args ? args.minThroughput : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["subnet"] = args ? args.subnet : undefined;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Connector.__pulumiType, name, inputs, opts);
+        super(Connector.__pulumiType, name, resourceInputs, opts);
     }
 }
 

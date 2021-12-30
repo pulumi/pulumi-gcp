@@ -44,7 +44,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = healthcare.NewFhirStore(ctx, "_default", &healthcare.FhirStoreArgs{
+// 		_, err = healthcare.NewFhirStore(ctx, "default", &healthcare.FhirStoreArgs{
 // 			Dataset:                     dataset.ID(),
 // 			Version:                     pulumi.String("R4"),
 // 			EnableUpdateCreate:          pulumi.Bool(false),
@@ -97,7 +97,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = healthcare.NewFhirStore(ctx, "_default", &healthcare.FhirStoreArgs{
+// 		_, err = healthcare.NewFhirStore(ctx, "default", &healthcare.FhirStoreArgs{
 // 			Dataset:                     dataset.ID(),
 // 			Version:                     pulumi.String("R4"),
 // 			EnableUpdateCreate:          pulumi.Bool(false),
@@ -509,7 +509,7 @@ type FhirStoreInput interface {
 }
 
 func (*FhirStore) ElementType() reflect.Type {
-	return reflect.TypeOf((*FhirStore)(nil))
+	return reflect.TypeOf((**FhirStore)(nil)).Elem()
 }
 
 func (i *FhirStore) ToFhirStoreOutput() FhirStoreOutput {
@@ -518,35 +518,6 @@ func (i *FhirStore) ToFhirStoreOutput() FhirStoreOutput {
 
 func (i *FhirStore) ToFhirStoreOutputWithContext(ctx context.Context) FhirStoreOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreOutput)
-}
-
-func (i *FhirStore) ToFhirStorePtrOutput() FhirStorePtrOutput {
-	return i.ToFhirStorePtrOutputWithContext(context.Background())
-}
-
-func (i *FhirStore) ToFhirStorePtrOutputWithContext(ctx context.Context) FhirStorePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FhirStorePtrOutput)
-}
-
-type FhirStorePtrInput interface {
-	pulumi.Input
-
-	ToFhirStorePtrOutput() FhirStorePtrOutput
-	ToFhirStorePtrOutputWithContext(ctx context.Context) FhirStorePtrOutput
-}
-
-type fhirStorePtrType FhirStoreArgs
-
-func (*fhirStorePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FhirStore)(nil))
-}
-
-func (i *fhirStorePtrType) ToFhirStorePtrOutput() FhirStorePtrOutput {
-	return i.ToFhirStorePtrOutputWithContext(context.Background())
-}
-
-func (i *fhirStorePtrType) ToFhirStorePtrOutputWithContext(ctx context.Context) FhirStorePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FhirStorePtrOutput)
 }
 
 // FhirStoreArrayInput is an input type that accepts FhirStoreArray and FhirStoreArrayOutput values.
@@ -602,7 +573,7 @@ func (i FhirStoreMap) ToFhirStoreMapOutputWithContext(ctx context.Context) FhirS
 type FhirStoreOutput struct{ *pulumi.OutputState }
 
 func (FhirStoreOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FhirStore)(nil))
+	return reflect.TypeOf((**FhirStore)(nil)).Elem()
 }
 
 func (o FhirStoreOutput) ToFhirStoreOutput() FhirStoreOutput {
@@ -613,44 +584,10 @@ func (o FhirStoreOutput) ToFhirStoreOutputWithContext(ctx context.Context) FhirS
 	return o
 }
 
-func (o FhirStoreOutput) ToFhirStorePtrOutput() FhirStorePtrOutput {
-	return o.ToFhirStorePtrOutputWithContext(context.Background())
-}
-
-func (o FhirStoreOutput) ToFhirStorePtrOutputWithContext(ctx context.Context) FhirStorePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FhirStore) *FhirStore {
-		return &v
-	}).(FhirStorePtrOutput)
-}
-
-type FhirStorePtrOutput struct{ *pulumi.OutputState }
-
-func (FhirStorePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FhirStore)(nil))
-}
-
-func (o FhirStorePtrOutput) ToFhirStorePtrOutput() FhirStorePtrOutput {
-	return o
-}
-
-func (o FhirStorePtrOutput) ToFhirStorePtrOutputWithContext(ctx context.Context) FhirStorePtrOutput {
-	return o
-}
-
-func (o FhirStorePtrOutput) Elem() FhirStoreOutput {
-	return o.ApplyT(func(v *FhirStore) FhirStore {
-		if v != nil {
-			return *v
-		}
-		var ret FhirStore
-		return ret
-	}).(FhirStoreOutput)
-}
-
 type FhirStoreArrayOutput struct{ *pulumi.OutputState }
 
 func (FhirStoreArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FhirStore)(nil))
+	return reflect.TypeOf((*[]*FhirStore)(nil)).Elem()
 }
 
 func (o FhirStoreArrayOutput) ToFhirStoreArrayOutput() FhirStoreArrayOutput {
@@ -662,15 +599,15 @@ func (o FhirStoreArrayOutput) ToFhirStoreArrayOutputWithContext(ctx context.Cont
 }
 
 func (o FhirStoreArrayOutput) Index(i pulumi.IntInput) FhirStoreOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FhirStore {
-		return vs[0].([]FhirStore)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FhirStore {
+		return vs[0].([]*FhirStore)[vs[1].(int)]
 	}).(FhirStoreOutput)
 }
 
 type FhirStoreMapOutput struct{ *pulumi.OutputState }
 
 func (FhirStoreMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]FhirStore)(nil))
+	return reflect.TypeOf((*map[string]*FhirStore)(nil)).Elem()
 }
 
 func (o FhirStoreMapOutput) ToFhirStoreMapOutput() FhirStoreMapOutput {
@@ -682,18 +619,16 @@ func (o FhirStoreMapOutput) ToFhirStoreMapOutputWithContext(ctx context.Context)
 }
 
 func (o FhirStoreMapOutput) MapIndex(k pulumi.StringInput) FhirStoreOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) FhirStore {
-		return vs[0].(map[string]FhirStore)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *FhirStore {
+		return vs[0].(map[string]*FhirStore)[vs[1].(string)]
 	}).(FhirStoreOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreInput)(nil)).Elem(), &FhirStore{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FhirStorePtrInput)(nil)).Elem(), &FhirStore{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreArrayInput)(nil)).Elem(), FhirStoreArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreMapInput)(nil)).Elem(), FhirStoreMap{})
 	pulumi.RegisterOutputType(FhirStoreOutput{})
-	pulumi.RegisterOutputType(FhirStorePtrOutput{})
 	pulumi.RegisterOutputType(FhirStoreArrayOutput{})
 	pulumi.RegisterOutputType(FhirStoreMapOutput{})
 }

@@ -101,15 +101,15 @@ export class Contact extends pulumi.CustomResource {
      */
     constructor(name: string, args: ContactArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ContactArgs | ContactState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ContactState | undefined;
-            inputs["email"] = state ? state.email : undefined;
-            inputs["languageTag"] = state ? state.languageTag : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["notificationCategorySubscriptions"] = state ? state.notificationCategorySubscriptions : undefined;
-            inputs["parent"] = state ? state.parent : undefined;
+            resourceInputs["email"] = state ? state.email : undefined;
+            resourceInputs["languageTag"] = state ? state.languageTag : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["notificationCategorySubscriptions"] = state ? state.notificationCategorySubscriptions : undefined;
+            resourceInputs["parent"] = state ? state.parent : undefined;
         } else {
             const args = argsOrState as ContactArgs | undefined;
             if ((!args || args.email === undefined) && !opts.urn) {
@@ -124,16 +124,16 @@ export class Contact extends pulumi.CustomResource {
             if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            inputs["email"] = args ? args.email : undefined;
-            inputs["languageTag"] = args ? args.languageTag : undefined;
-            inputs["notificationCategorySubscriptions"] = args ? args.notificationCategorySubscriptions : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["email"] = args ? args.email : undefined;
+            resourceInputs["languageTag"] = args ? args.languageTag : undefined;
+            resourceInputs["notificationCategorySubscriptions"] = args ? args.notificationCategorySubscriptions : undefined;
+            resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Contact.__pulumiType, name, inputs, opts);
+        super(Contact.__pulumiType, name, resourceInputs, opts);
     }
 }
 

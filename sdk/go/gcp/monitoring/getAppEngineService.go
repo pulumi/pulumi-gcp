@@ -78,6 +78,9 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
+// 		_ = monitoring.GetAppEngineServiceOutput(ctx, monitoring.GetAppEngineServiceOutputArgs{
+// 			ModuleId: myapp.Service,
+// 		}, nil)
 // 		return nil
 // 	})
 // }

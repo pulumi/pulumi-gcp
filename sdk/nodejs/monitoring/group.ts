@@ -122,16 +122,16 @@ export class Group extends pulumi.CustomResource {
      */
     constructor(name: string, args: GroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GroupArgs | GroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupState | undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["filter"] = state ? state.filter : undefined;
-            inputs["isCluster"] = state ? state.isCluster : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["parentName"] = state ? state.parentName : undefined;
-            inputs["project"] = state ? state.project : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["filter"] = state ? state.filter : undefined;
+            resourceInputs["isCluster"] = state ? state.isCluster : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["parentName"] = state ? state.parentName : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as GroupArgs | undefined;
             if ((!args || args.displayName === undefined) && !opts.urn) {
@@ -140,17 +140,17 @@ export class Group extends pulumi.CustomResource {
             if ((!args || args.filter === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'filter'");
             }
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["filter"] = args ? args.filter : undefined;
-            inputs["isCluster"] = args ? args.isCluster : undefined;
-            inputs["parentName"] = args ? args.parentName : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["filter"] = args ? args.filter : undefined;
+            resourceInputs["isCluster"] = args ? args.isCluster : undefined;
+            resourceInputs["parentName"] = args ? args.parentName : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Group.__pulumiType, name, inputs, opts);
+        super(Group.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -122,20 +122,20 @@ export class FolderFeed extends pulumi.CustomResource {
      */
     constructor(name: string, args: FolderFeedArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FolderFeedArgs | FolderFeedState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FolderFeedState | undefined;
-            inputs["assetNames"] = state ? state.assetNames : undefined;
-            inputs["assetTypes"] = state ? state.assetTypes : undefined;
-            inputs["billingProject"] = state ? state.billingProject : undefined;
-            inputs["condition"] = state ? state.condition : undefined;
-            inputs["contentType"] = state ? state.contentType : undefined;
-            inputs["feedId"] = state ? state.feedId : undefined;
-            inputs["feedOutputConfig"] = state ? state.feedOutputConfig : undefined;
-            inputs["folder"] = state ? state.folder : undefined;
-            inputs["folderId"] = state ? state.folderId : undefined;
-            inputs["name"] = state ? state.name : undefined;
+            resourceInputs["assetNames"] = state ? state.assetNames : undefined;
+            resourceInputs["assetTypes"] = state ? state.assetTypes : undefined;
+            resourceInputs["billingProject"] = state ? state.billingProject : undefined;
+            resourceInputs["condition"] = state ? state.condition : undefined;
+            resourceInputs["contentType"] = state ? state.contentType : undefined;
+            resourceInputs["feedId"] = state ? state.feedId : undefined;
+            resourceInputs["feedOutputConfig"] = state ? state.feedOutputConfig : undefined;
+            resourceInputs["folder"] = state ? state.folder : undefined;
+            resourceInputs["folderId"] = state ? state.folderId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as FolderFeedArgs | undefined;
             if ((!args || args.billingProject === undefined) && !opts.urn) {
@@ -150,21 +150,21 @@ export class FolderFeed extends pulumi.CustomResource {
             if ((!args || args.folder === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'folder'");
             }
-            inputs["assetNames"] = args ? args.assetNames : undefined;
-            inputs["assetTypes"] = args ? args.assetTypes : undefined;
-            inputs["billingProject"] = args ? args.billingProject : undefined;
-            inputs["condition"] = args ? args.condition : undefined;
-            inputs["contentType"] = args ? args.contentType : undefined;
-            inputs["feedId"] = args ? args.feedId : undefined;
-            inputs["feedOutputConfig"] = args ? args.feedOutputConfig : undefined;
-            inputs["folder"] = args ? args.folder : undefined;
-            inputs["folderId"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["assetNames"] = args ? args.assetNames : undefined;
+            resourceInputs["assetTypes"] = args ? args.assetTypes : undefined;
+            resourceInputs["billingProject"] = args ? args.billingProject : undefined;
+            resourceInputs["condition"] = args ? args.condition : undefined;
+            resourceInputs["contentType"] = args ? args.contentType : undefined;
+            resourceInputs["feedId"] = args ? args.feedId : undefined;
+            resourceInputs["feedOutputConfig"] = args ? args.feedOutputConfig : undefined;
+            resourceInputs["folder"] = args ? args.folder : undefined;
+            resourceInputs["folderId"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(FolderFeed.__pulumiType, name, inputs, opts);
+        super(FolderFeed.__pulumiType, name, resourceInputs, opts);
     }
 }
 

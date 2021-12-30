@@ -233,7 +233,7 @@ class Attestor(pulumi.CustomResource):
             version_template=gcp.kms.CryptoKeyVersionTemplateArgs(
                 algorithm="RSA_SIGN_PKCS1_4096_SHA512",
             ))
-        version = crypto_key.id.apply(lambda id: gcp.kms.get_kms_crypto_key_version(crypto_key=id))
+        version = gcp.kms.get_kms_crypto_key_version_output(crypto_key=crypto_key.id)
         note = gcp.containeranalysis.Note("note", attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
             hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
                 human_readable_name="Attestor Note",
@@ -339,7 +339,7 @@ class Attestor(pulumi.CustomResource):
             version_template=gcp.kms.CryptoKeyVersionTemplateArgs(
                 algorithm="RSA_SIGN_PKCS1_4096_SHA512",
             ))
-        version = crypto_key.id.apply(lambda id: gcp.kms.get_kms_crypto_key_version(crypto_key=id))
+        version = gcp.kms.get_kms_crypto_key_version_output(crypto_key=crypto_key.id)
         note = gcp.containeranalysis.Note("note", attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
             hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
                 human_readable_name="Attestor Note",

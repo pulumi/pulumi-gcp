@@ -315,7 +315,7 @@ type PreventionStoredInfoTypeInput interface {
 }
 
 func (*PreventionStoredInfoType) ElementType() reflect.Type {
-	return reflect.TypeOf((*PreventionStoredInfoType)(nil))
+	return reflect.TypeOf((**PreventionStoredInfoType)(nil)).Elem()
 }
 
 func (i *PreventionStoredInfoType) ToPreventionStoredInfoTypeOutput() PreventionStoredInfoTypeOutput {
@@ -324,35 +324,6 @@ func (i *PreventionStoredInfoType) ToPreventionStoredInfoTypeOutput() Prevention
 
 func (i *PreventionStoredInfoType) ToPreventionStoredInfoTypeOutputWithContext(ctx context.Context) PreventionStoredInfoTypeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PreventionStoredInfoTypeOutput)
-}
-
-func (i *PreventionStoredInfoType) ToPreventionStoredInfoTypePtrOutput() PreventionStoredInfoTypePtrOutput {
-	return i.ToPreventionStoredInfoTypePtrOutputWithContext(context.Background())
-}
-
-func (i *PreventionStoredInfoType) ToPreventionStoredInfoTypePtrOutputWithContext(ctx context.Context) PreventionStoredInfoTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PreventionStoredInfoTypePtrOutput)
-}
-
-type PreventionStoredInfoTypePtrInput interface {
-	pulumi.Input
-
-	ToPreventionStoredInfoTypePtrOutput() PreventionStoredInfoTypePtrOutput
-	ToPreventionStoredInfoTypePtrOutputWithContext(ctx context.Context) PreventionStoredInfoTypePtrOutput
-}
-
-type preventionStoredInfoTypePtrType PreventionStoredInfoTypeArgs
-
-func (*preventionStoredInfoTypePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PreventionStoredInfoType)(nil))
-}
-
-func (i *preventionStoredInfoTypePtrType) ToPreventionStoredInfoTypePtrOutput() PreventionStoredInfoTypePtrOutput {
-	return i.ToPreventionStoredInfoTypePtrOutputWithContext(context.Background())
-}
-
-func (i *preventionStoredInfoTypePtrType) ToPreventionStoredInfoTypePtrOutputWithContext(ctx context.Context) PreventionStoredInfoTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PreventionStoredInfoTypePtrOutput)
 }
 
 // PreventionStoredInfoTypeArrayInput is an input type that accepts PreventionStoredInfoTypeArray and PreventionStoredInfoTypeArrayOutput values.
@@ -408,7 +379,7 @@ func (i PreventionStoredInfoTypeMap) ToPreventionStoredInfoTypeMapOutputWithCont
 type PreventionStoredInfoTypeOutput struct{ *pulumi.OutputState }
 
 func (PreventionStoredInfoTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PreventionStoredInfoType)(nil))
+	return reflect.TypeOf((**PreventionStoredInfoType)(nil)).Elem()
 }
 
 func (o PreventionStoredInfoTypeOutput) ToPreventionStoredInfoTypeOutput() PreventionStoredInfoTypeOutput {
@@ -419,44 +390,10 @@ func (o PreventionStoredInfoTypeOutput) ToPreventionStoredInfoTypeOutputWithCont
 	return o
 }
 
-func (o PreventionStoredInfoTypeOutput) ToPreventionStoredInfoTypePtrOutput() PreventionStoredInfoTypePtrOutput {
-	return o.ToPreventionStoredInfoTypePtrOutputWithContext(context.Background())
-}
-
-func (o PreventionStoredInfoTypeOutput) ToPreventionStoredInfoTypePtrOutputWithContext(ctx context.Context) PreventionStoredInfoTypePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionStoredInfoType) *PreventionStoredInfoType {
-		return &v
-	}).(PreventionStoredInfoTypePtrOutput)
-}
-
-type PreventionStoredInfoTypePtrOutput struct{ *pulumi.OutputState }
-
-func (PreventionStoredInfoTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PreventionStoredInfoType)(nil))
-}
-
-func (o PreventionStoredInfoTypePtrOutput) ToPreventionStoredInfoTypePtrOutput() PreventionStoredInfoTypePtrOutput {
-	return o
-}
-
-func (o PreventionStoredInfoTypePtrOutput) ToPreventionStoredInfoTypePtrOutputWithContext(ctx context.Context) PreventionStoredInfoTypePtrOutput {
-	return o
-}
-
-func (o PreventionStoredInfoTypePtrOutput) Elem() PreventionStoredInfoTypeOutput {
-	return o.ApplyT(func(v *PreventionStoredInfoType) PreventionStoredInfoType {
-		if v != nil {
-			return *v
-		}
-		var ret PreventionStoredInfoType
-		return ret
-	}).(PreventionStoredInfoTypeOutput)
-}
-
 type PreventionStoredInfoTypeArrayOutput struct{ *pulumi.OutputState }
 
 func (PreventionStoredInfoTypeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PreventionStoredInfoType)(nil))
+	return reflect.TypeOf((*[]*PreventionStoredInfoType)(nil)).Elem()
 }
 
 func (o PreventionStoredInfoTypeArrayOutput) ToPreventionStoredInfoTypeArrayOutput() PreventionStoredInfoTypeArrayOutput {
@@ -468,15 +405,15 @@ func (o PreventionStoredInfoTypeArrayOutput) ToPreventionStoredInfoTypeArrayOutp
 }
 
 func (o PreventionStoredInfoTypeArrayOutput) Index(i pulumi.IntInput) PreventionStoredInfoTypeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PreventionStoredInfoType {
-		return vs[0].([]PreventionStoredInfoType)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PreventionStoredInfoType {
+		return vs[0].([]*PreventionStoredInfoType)[vs[1].(int)]
 	}).(PreventionStoredInfoTypeOutput)
 }
 
 type PreventionStoredInfoTypeMapOutput struct{ *pulumi.OutputState }
 
 func (PreventionStoredInfoTypeMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]PreventionStoredInfoType)(nil))
+	return reflect.TypeOf((*map[string]*PreventionStoredInfoType)(nil)).Elem()
 }
 
 func (o PreventionStoredInfoTypeMapOutput) ToPreventionStoredInfoTypeMapOutput() PreventionStoredInfoTypeMapOutput {
@@ -488,18 +425,16 @@ func (o PreventionStoredInfoTypeMapOutput) ToPreventionStoredInfoTypeMapOutputWi
 }
 
 func (o PreventionStoredInfoTypeMapOutput) MapIndex(k pulumi.StringInput) PreventionStoredInfoTypeOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) PreventionStoredInfoType {
-		return vs[0].(map[string]PreventionStoredInfoType)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *PreventionStoredInfoType {
+		return vs[0].(map[string]*PreventionStoredInfoType)[vs[1].(string)]
 	}).(PreventionStoredInfoTypeOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionStoredInfoTypeInput)(nil)).Elem(), &PreventionStoredInfoType{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PreventionStoredInfoTypePtrInput)(nil)).Elem(), &PreventionStoredInfoType{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionStoredInfoTypeArrayInput)(nil)).Elem(), PreventionStoredInfoTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionStoredInfoTypeMapInput)(nil)).Elem(), PreventionStoredInfoTypeMap{})
 	pulumi.RegisterOutputType(PreventionStoredInfoTypeOutput{})
-	pulumi.RegisterOutputType(PreventionStoredInfoTypePtrOutput{})
 	pulumi.RegisterOutputType(PreventionStoredInfoTypeArrayOutput{})
 	pulumi.RegisterOutputType(PreventionStoredInfoTypeMapOutput{})
 }

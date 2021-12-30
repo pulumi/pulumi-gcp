@@ -246,7 +246,7 @@ type SecretIamPolicyInput interface {
 }
 
 func (*SecretIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecretIamPolicy)(nil))
+	return reflect.TypeOf((**SecretIamPolicy)(nil)).Elem()
 }
 
 func (i *SecretIamPolicy) ToSecretIamPolicyOutput() SecretIamPolicyOutput {
@@ -255,35 +255,6 @@ func (i *SecretIamPolicy) ToSecretIamPolicyOutput() SecretIamPolicyOutput {
 
 func (i *SecretIamPolicy) ToSecretIamPolicyOutputWithContext(ctx context.Context) SecretIamPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecretIamPolicyOutput)
-}
-
-func (i *SecretIamPolicy) ToSecretIamPolicyPtrOutput() SecretIamPolicyPtrOutput {
-	return i.ToSecretIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *SecretIamPolicy) ToSecretIamPolicyPtrOutputWithContext(ctx context.Context) SecretIamPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecretIamPolicyPtrOutput)
-}
-
-type SecretIamPolicyPtrInput interface {
-	pulumi.Input
-
-	ToSecretIamPolicyPtrOutput() SecretIamPolicyPtrOutput
-	ToSecretIamPolicyPtrOutputWithContext(ctx context.Context) SecretIamPolicyPtrOutput
-}
-
-type secretIamPolicyPtrType SecretIamPolicyArgs
-
-func (*secretIamPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecretIamPolicy)(nil))
-}
-
-func (i *secretIamPolicyPtrType) ToSecretIamPolicyPtrOutput() SecretIamPolicyPtrOutput {
-	return i.ToSecretIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *secretIamPolicyPtrType) ToSecretIamPolicyPtrOutputWithContext(ctx context.Context) SecretIamPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecretIamPolicyPtrOutput)
 }
 
 // SecretIamPolicyArrayInput is an input type that accepts SecretIamPolicyArray and SecretIamPolicyArrayOutput values.
@@ -339,7 +310,7 @@ func (i SecretIamPolicyMap) ToSecretIamPolicyMapOutputWithContext(ctx context.Co
 type SecretIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (SecretIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecretIamPolicy)(nil))
+	return reflect.TypeOf((**SecretIamPolicy)(nil)).Elem()
 }
 
 func (o SecretIamPolicyOutput) ToSecretIamPolicyOutput() SecretIamPolicyOutput {
@@ -350,44 +321,10 @@ func (o SecretIamPolicyOutput) ToSecretIamPolicyOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o SecretIamPolicyOutput) ToSecretIamPolicyPtrOutput() SecretIamPolicyPtrOutput {
-	return o.ToSecretIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o SecretIamPolicyOutput) ToSecretIamPolicyPtrOutputWithContext(ctx context.Context) SecretIamPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretIamPolicy) *SecretIamPolicy {
-		return &v
-	}).(SecretIamPolicyPtrOutput)
-}
-
-type SecretIamPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (SecretIamPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecretIamPolicy)(nil))
-}
-
-func (o SecretIamPolicyPtrOutput) ToSecretIamPolicyPtrOutput() SecretIamPolicyPtrOutput {
-	return o
-}
-
-func (o SecretIamPolicyPtrOutput) ToSecretIamPolicyPtrOutputWithContext(ctx context.Context) SecretIamPolicyPtrOutput {
-	return o
-}
-
-func (o SecretIamPolicyPtrOutput) Elem() SecretIamPolicyOutput {
-	return o.ApplyT(func(v *SecretIamPolicy) SecretIamPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret SecretIamPolicy
-		return ret
-	}).(SecretIamPolicyOutput)
-}
-
 type SecretIamPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (SecretIamPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecretIamPolicy)(nil))
+	return reflect.TypeOf((*[]*SecretIamPolicy)(nil)).Elem()
 }
 
 func (o SecretIamPolicyArrayOutput) ToSecretIamPolicyArrayOutput() SecretIamPolicyArrayOutput {
@@ -399,15 +336,15 @@ func (o SecretIamPolicyArrayOutput) ToSecretIamPolicyArrayOutputWithContext(ctx 
 }
 
 func (o SecretIamPolicyArrayOutput) Index(i pulumi.IntInput) SecretIamPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecretIamPolicy {
-		return vs[0].([]SecretIamPolicy)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SecretIamPolicy {
+		return vs[0].([]*SecretIamPolicy)[vs[1].(int)]
 	}).(SecretIamPolicyOutput)
 }
 
 type SecretIamPolicyMapOutput struct{ *pulumi.OutputState }
 
 func (SecretIamPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]SecretIamPolicy)(nil))
+	return reflect.TypeOf((*map[string]*SecretIamPolicy)(nil)).Elem()
 }
 
 func (o SecretIamPolicyMapOutput) ToSecretIamPolicyMapOutput() SecretIamPolicyMapOutput {
@@ -419,18 +356,16 @@ func (o SecretIamPolicyMapOutput) ToSecretIamPolicyMapOutputWithContext(ctx cont
 }
 
 func (o SecretIamPolicyMapOutput) MapIndex(k pulumi.StringInput) SecretIamPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SecretIamPolicy {
-		return vs[0].(map[string]SecretIamPolicy)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *SecretIamPolicy {
+		return vs[0].(map[string]*SecretIamPolicy)[vs[1].(string)]
 	}).(SecretIamPolicyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretIamPolicyInput)(nil)).Elem(), &SecretIamPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecretIamPolicyPtrInput)(nil)).Elem(), &SecretIamPolicy{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretIamPolicyArrayInput)(nil)).Elem(), SecretIamPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretIamPolicyMapInput)(nil)).Elem(), SecretIamPolicyMap{})
 	pulumi.RegisterOutputType(SecretIamPolicyOutput{})
-	pulumi.RegisterOutputType(SecretIamPolicyPtrOutput{})
 	pulumi.RegisterOutputType(SecretIamPolicyArrayOutput{})
 	pulumi.RegisterOutputType(SecretIamPolicyMapOutput{})
 }

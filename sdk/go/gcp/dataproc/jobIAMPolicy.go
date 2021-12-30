@@ -251,7 +251,7 @@ type JobIAMPolicyInput interface {
 }
 
 func (*JobIAMPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobIAMPolicy)(nil))
+	return reflect.TypeOf((**JobIAMPolicy)(nil)).Elem()
 }
 
 func (i *JobIAMPolicy) ToJobIAMPolicyOutput() JobIAMPolicyOutput {
@@ -260,35 +260,6 @@ func (i *JobIAMPolicy) ToJobIAMPolicyOutput() JobIAMPolicyOutput {
 
 func (i *JobIAMPolicy) ToJobIAMPolicyOutputWithContext(ctx context.Context) JobIAMPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(JobIAMPolicyOutput)
-}
-
-func (i *JobIAMPolicy) ToJobIAMPolicyPtrOutput() JobIAMPolicyPtrOutput {
-	return i.ToJobIAMPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *JobIAMPolicy) ToJobIAMPolicyPtrOutputWithContext(ctx context.Context) JobIAMPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobIAMPolicyPtrOutput)
-}
-
-type JobIAMPolicyPtrInput interface {
-	pulumi.Input
-
-	ToJobIAMPolicyPtrOutput() JobIAMPolicyPtrOutput
-	ToJobIAMPolicyPtrOutputWithContext(ctx context.Context) JobIAMPolicyPtrOutput
-}
-
-type jobIAMPolicyPtrType JobIAMPolicyArgs
-
-func (*jobIAMPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobIAMPolicy)(nil))
-}
-
-func (i *jobIAMPolicyPtrType) ToJobIAMPolicyPtrOutput() JobIAMPolicyPtrOutput {
-	return i.ToJobIAMPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *jobIAMPolicyPtrType) ToJobIAMPolicyPtrOutputWithContext(ctx context.Context) JobIAMPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobIAMPolicyPtrOutput)
 }
 
 // JobIAMPolicyArrayInput is an input type that accepts JobIAMPolicyArray and JobIAMPolicyArrayOutput values.
@@ -344,7 +315,7 @@ func (i JobIAMPolicyMap) ToJobIAMPolicyMapOutputWithContext(ctx context.Context)
 type JobIAMPolicyOutput struct{ *pulumi.OutputState }
 
 func (JobIAMPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobIAMPolicy)(nil))
+	return reflect.TypeOf((**JobIAMPolicy)(nil)).Elem()
 }
 
 func (o JobIAMPolicyOutput) ToJobIAMPolicyOutput() JobIAMPolicyOutput {
@@ -355,44 +326,10 @@ func (o JobIAMPolicyOutput) ToJobIAMPolicyOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o JobIAMPolicyOutput) ToJobIAMPolicyPtrOutput() JobIAMPolicyPtrOutput {
-	return o.ToJobIAMPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o JobIAMPolicyOutput) ToJobIAMPolicyPtrOutputWithContext(ctx context.Context) JobIAMPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobIAMPolicy) *JobIAMPolicy {
-		return &v
-	}).(JobIAMPolicyPtrOutput)
-}
-
-type JobIAMPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (JobIAMPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobIAMPolicy)(nil))
-}
-
-func (o JobIAMPolicyPtrOutput) ToJobIAMPolicyPtrOutput() JobIAMPolicyPtrOutput {
-	return o
-}
-
-func (o JobIAMPolicyPtrOutput) ToJobIAMPolicyPtrOutputWithContext(ctx context.Context) JobIAMPolicyPtrOutput {
-	return o
-}
-
-func (o JobIAMPolicyPtrOutput) Elem() JobIAMPolicyOutput {
-	return o.ApplyT(func(v *JobIAMPolicy) JobIAMPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret JobIAMPolicy
-		return ret
-	}).(JobIAMPolicyOutput)
-}
-
 type JobIAMPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (JobIAMPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]JobIAMPolicy)(nil))
+	return reflect.TypeOf((*[]*JobIAMPolicy)(nil)).Elem()
 }
 
 func (o JobIAMPolicyArrayOutput) ToJobIAMPolicyArrayOutput() JobIAMPolicyArrayOutput {
@@ -404,15 +341,15 @@ func (o JobIAMPolicyArrayOutput) ToJobIAMPolicyArrayOutputWithContext(ctx contex
 }
 
 func (o JobIAMPolicyArrayOutput) Index(i pulumi.IntInput) JobIAMPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobIAMPolicy {
-		return vs[0].([]JobIAMPolicy)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *JobIAMPolicy {
+		return vs[0].([]*JobIAMPolicy)[vs[1].(int)]
 	}).(JobIAMPolicyOutput)
 }
 
 type JobIAMPolicyMapOutput struct{ *pulumi.OutputState }
 
 func (JobIAMPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]JobIAMPolicy)(nil))
+	return reflect.TypeOf((*map[string]*JobIAMPolicy)(nil)).Elem()
 }
 
 func (o JobIAMPolicyMapOutput) ToJobIAMPolicyMapOutput() JobIAMPolicyMapOutput {
@@ -424,18 +361,16 @@ func (o JobIAMPolicyMapOutput) ToJobIAMPolicyMapOutputWithContext(ctx context.Co
 }
 
 func (o JobIAMPolicyMapOutput) MapIndex(k pulumi.StringInput) JobIAMPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) JobIAMPolicy {
-		return vs[0].(map[string]JobIAMPolicy)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *JobIAMPolicy {
+		return vs[0].(map[string]*JobIAMPolicy)[vs[1].(string)]
 	}).(JobIAMPolicyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobIAMPolicyInput)(nil)).Elem(), &JobIAMPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobIAMPolicyPtrInput)(nil)).Elem(), &JobIAMPolicy{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobIAMPolicyArrayInput)(nil)).Elem(), JobIAMPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobIAMPolicyMapInput)(nil)).Elem(), JobIAMPolicyMap{})
 	pulumi.RegisterOutputType(JobIAMPolicyOutput{})
-	pulumi.RegisterOutputType(JobIAMPolicyPtrOutput{})
 	pulumi.RegisterOutputType(JobIAMPolicyArrayOutput{})
 	pulumi.RegisterOutputType(JobIAMPolicyMapOutput{})
 }

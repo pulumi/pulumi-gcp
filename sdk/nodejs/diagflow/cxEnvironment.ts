@@ -133,16 +133,16 @@ export class CxEnvironment extends pulumi.CustomResource {
      */
     constructor(name: string, args: CxEnvironmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CxEnvironmentArgs | CxEnvironmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CxEnvironmentState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["parent"] = state ? state.parent : undefined;
-            inputs["updateTime"] = state ? state.updateTime : undefined;
-            inputs["versionConfigs"] = state ? state.versionConfigs : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["parent"] = state ? state.parent : undefined;
+            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["versionConfigs"] = state ? state.versionConfigs : undefined;
         } else {
             const args = argsOrState as CxEnvironmentArgs | undefined;
             if ((!args || args.displayName === undefined) && !opts.urn) {
@@ -151,17 +151,17 @@ export class CxEnvironment extends pulumi.CustomResource {
             if ((!args || args.versionConfigs === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'versionConfigs'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
-            inputs["versionConfigs"] = args ? args.versionConfigs : undefined;
-            inputs["name"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["versionConfigs"] = args ? args.versionConfigs : undefined;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(CxEnvironment.__pulumiType, name, inputs, opts);
+        super(CxEnvironment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

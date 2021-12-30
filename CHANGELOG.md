@@ -2,7 +2,8 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade to v3.15.0 of the pulumi-terraform-bridge.
+* Upgrade to pulumi v3.21.0
 
 ---
 

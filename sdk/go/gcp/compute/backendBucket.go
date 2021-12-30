@@ -265,7 +265,7 @@ type BackendBucketInput interface {
 }
 
 func (*BackendBucket) ElementType() reflect.Type {
-	return reflect.TypeOf((*BackendBucket)(nil))
+	return reflect.TypeOf((**BackendBucket)(nil)).Elem()
 }
 
 func (i *BackendBucket) ToBackendBucketOutput() BackendBucketOutput {
@@ -274,35 +274,6 @@ func (i *BackendBucket) ToBackendBucketOutput() BackendBucketOutput {
 
 func (i *BackendBucket) ToBackendBucketOutputWithContext(ctx context.Context) BackendBucketOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BackendBucketOutput)
-}
-
-func (i *BackendBucket) ToBackendBucketPtrOutput() BackendBucketPtrOutput {
-	return i.ToBackendBucketPtrOutputWithContext(context.Background())
-}
-
-func (i *BackendBucket) ToBackendBucketPtrOutputWithContext(ctx context.Context) BackendBucketPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BackendBucketPtrOutput)
-}
-
-type BackendBucketPtrInput interface {
-	pulumi.Input
-
-	ToBackendBucketPtrOutput() BackendBucketPtrOutput
-	ToBackendBucketPtrOutputWithContext(ctx context.Context) BackendBucketPtrOutput
-}
-
-type backendBucketPtrType BackendBucketArgs
-
-func (*backendBucketPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BackendBucket)(nil))
-}
-
-func (i *backendBucketPtrType) ToBackendBucketPtrOutput() BackendBucketPtrOutput {
-	return i.ToBackendBucketPtrOutputWithContext(context.Background())
-}
-
-func (i *backendBucketPtrType) ToBackendBucketPtrOutputWithContext(ctx context.Context) BackendBucketPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BackendBucketPtrOutput)
 }
 
 // BackendBucketArrayInput is an input type that accepts BackendBucketArray and BackendBucketArrayOutput values.
@@ -358,7 +329,7 @@ func (i BackendBucketMap) ToBackendBucketMapOutputWithContext(ctx context.Contex
 type BackendBucketOutput struct{ *pulumi.OutputState }
 
 func (BackendBucketOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BackendBucket)(nil))
+	return reflect.TypeOf((**BackendBucket)(nil)).Elem()
 }
 
 func (o BackendBucketOutput) ToBackendBucketOutput() BackendBucketOutput {
@@ -369,44 +340,10 @@ func (o BackendBucketOutput) ToBackendBucketOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o BackendBucketOutput) ToBackendBucketPtrOutput() BackendBucketPtrOutput {
-	return o.ToBackendBucketPtrOutputWithContext(context.Background())
-}
-
-func (o BackendBucketOutput) ToBackendBucketPtrOutputWithContext(ctx context.Context) BackendBucketPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackendBucket) *BackendBucket {
-		return &v
-	}).(BackendBucketPtrOutput)
-}
-
-type BackendBucketPtrOutput struct{ *pulumi.OutputState }
-
-func (BackendBucketPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BackendBucket)(nil))
-}
-
-func (o BackendBucketPtrOutput) ToBackendBucketPtrOutput() BackendBucketPtrOutput {
-	return o
-}
-
-func (o BackendBucketPtrOutput) ToBackendBucketPtrOutputWithContext(ctx context.Context) BackendBucketPtrOutput {
-	return o
-}
-
-func (o BackendBucketPtrOutput) Elem() BackendBucketOutput {
-	return o.ApplyT(func(v *BackendBucket) BackendBucket {
-		if v != nil {
-			return *v
-		}
-		var ret BackendBucket
-		return ret
-	}).(BackendBucketOutput)
-}
-
 type BackendBucketArrayOutput struct{ *pulumi.OutputState }
 
 func (BackendBucketArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BackendBucket)(nil))
+	return reflect.TypeOf((*[]*BackendBucket)(nil)).Elem()
 }
 
 func (o BackendBucketArrayOutput) ToBackendBucketArrayOutput() BackendBucketArrayOutput {
@@ -418,15 +355,15 @@ func (o BackendBucketArrayOutput) ToBackendBucketArrayOutputWithContext(ctx cont
 }
 
 func (o BackendBucketArrayOutput) Index(i pulumi.IntInput) BackendBucketOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BackendBucket {
-		return vs[0].([]BackendBucket)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BackendBucket {
+		return vs[0].([]*BackendBucket)[vs[1].(int)]
 	}).(BackendBucketOutput)
 }
 
 type BackendBucketMapOutput struct{ *pulumi.OutputState }
 
 func (BackendBucketMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]BackendBucket)(nil))
+	return reflect.TypeOf((*map[string]*BackendBucket)(nil)).Elem()
 }
 
 func (o BackendBucketMapOutput) ToBackendBucketMapOutput() BackendBucketMapOutput {
@@ -438,18 +375,16 @@ func (o BackendBucketMapOutput) ToBackendBucketMapOutputWithContext(ctx context.
 }
 
 func (o BackendBucketMapOutput) MapIndex(k pulumi.StringInput) BackendBucketOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BackendBucket {
-		return vs[0].(map[string]BackendBucket)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *BackendBucket {
+		return vs[0].(map[string]*BackendBucket)[vs[1].(string)]
 	}).(BackendBucketOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendBucketInput)(nil)).Elem(), &BackendBucket{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BackendBucketPtrInput)(nil)).Elem(), &BackendBucket{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendBucketArrayInput)(nil)).Elem(), BackendBucketArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendBucketMapInput)(nil)).Elem(), BackendBucketMap{})
 	pulumi.RegisterOutputType(BackendBucketOutput{})
-	pulumi.RegisterOutputType(BackendBucketPtrOutput{})
 	pulumi.RegisterOutputType(BackendBucketArrayOutput{})
 	pulumi.RegisterOutputType(BackendBucketMapOutput{})
 }

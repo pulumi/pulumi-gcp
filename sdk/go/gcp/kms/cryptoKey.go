@@ -46,7 +46,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = kms.NewCryptoKey(ctx, "example_key", &kms.CryptoKeyArgs{
+// 		_, err = kms.NewCryptoKey(ctx, "example-key", &kms.CryptoKeyArgs{
 // 			KeyRing:        keyring.ID(),
 // 			RotationPeriod: pulumi.String("100000s"),
 // 		})
@@ -75,7 +75,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = kms.NewCryptoKey(ctx, "example_asymmetric_sign_key", &kms.CryptoKeyArgs{
+// 		_, err = kms.NewCryptoKey(ctx, "example-asymmetric-sign-key", &kms.CryptoKeyArgs{
 // 			KeyRing: keyring.ID(),
 // 			Purpose: pulumi.String("ASYMMETRIC_SIGN"),
 // 			VersionTemplate: &kms.CryptoKeyVersionTemplateArgs{
@@ -311,7 +311,7 @@ type CryptoKeyInput interface {
 }
 
 func (*CryptoKey) ElementType() reflect.Type {
-	return reflect.TypeOf((*CryptoKey)(nil))
+	return reflect.TypeOf((**CryptoKey)(nil)).Elem()
 }
 
 func (i *CryptoKey) ToCryptoKeyOutput() CryptoKeyOutput {
@@ -320,35 +320,6 @@ func (i *CryptoKey) ToCryptoKeyOutput() CryptoKeyOutput {
 
 func (i *CryptoKey) ToCryptoKeyOutputWithContext(ctx context.Context) CryptoKeyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyOutput)
-}
-
-func (i *CryptoKey) ToCryptoKeyPtrOutput() CryptoKeyPtrOutput {
-	return i.ToCryptoKeyPtrOutputWithContext(context.Background())
-}
-
-func (i *CryptoKey) ToCryptoKeyPtrOutputWithContext(ctx context.Context) CryptoKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyPtrOutput)
-}
-
-type CryptoKeyPtrInput interface {
-	pulumi.Input
-
-	ToCryptoKeyPtrOutput() CryptoKeyPtrOutput
-	ToCryptoKeyPtrOutputWithContext(ctx context.Context) CryptoKeyPtrOutput
-}
-
-type cryptoKeyPtrType CryptoKeyArgs
-
-func (*cryptoKeyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CryptoKey)(nil))
-}
-
-func (i *cryptoKeyPtrType) ToCryptoKeyPtrOutput() CryptoKeyPtrOutput {
-	return i.ToCryptoKeyPtrOutputWithContext(context.Background())
-}
-
-func (i *cryptoKeyPtrType) ToCryptoKeyPtrOutputWithContext(ctx context.Context) CryptoKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyPtrOutput)
 }
 
 // CryptoKeyArrayInput is an input type that accepts CryptoKeyArray and CryptoKeyArrayOutput values.
@@ -404,7 +375,7 @@ func (i CryptoKeyMap) ToCryptoKeyMapOutputWithContext(ctx context.Context) Crypt
 type CryptoKeyOutput struct{ *pulumi.OutputState }
 
 func (CryptoKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CryptoKey)(nil))
+	return reflect.TypeOf((**CryptoKey)(nil)).Elem()
 }
 
 func (o CryptoKeyOutput) ToCryptoKeyOutput() CryptoKeyOutput {
@@ -415,44 +386,10 @@ func (o CryptoKeyOutput) ToCryptoKeyOutputWithContext(ctx context.Context) Crypt
 	return o
 }
 
-func (o CryptoKeyOutput) ToCryptoKeyPtrOutput() CryptoKeyPtrOutput {
-	return o.ToCryptoKeyPtrOutputWithContext(context.Background())
-}
-
-func (o CryptoKeyOutput) ToCryptoKeyPtrOutputWithContext(ctx context.Context) CryptoKeyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CryptoKey) *CryptoKey {
-		return &v
-	}).(CryptoKeyPtrOutput)
-}
-
-type CryptoKeyPtrOutput struct{ *pulumi.OutputState }
-
-func (CryptoKeyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CryptoKey)(nil))
-}
-
-func (o CryptoKeyPtrOutput) ToCryptoKeyPtrOutput() CryptoKeyPtrOutput {
-	return o
-}
-
-func (o CryptoKeyPtrOutput) ToCryptoKeyPtrOutputWithContext(ctx context.Context) CryptoKeyPtrOutput {
-	return o
-}
-
-func (o CryptoKeyPtrOutput) Elem() CryptoKeyOutput {
-	return o.ApplyT(func(v *CryptoKey) CryptoKey {
-		if v != nil {
-			return *v
-		}
-		var ret CryptoKey
-		return ret
-	}).(CryptoKeyOutput)
-}
-
 type CryptoKeyArrayOutput struct{ *pulumi.OutputState }
 
 func (CryptoKeyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CryptoKey)(nil))
+	return reflect.TypeOf((*[]*CryptoKey)(nil)).Elem()
 }
 
 func (o CryptoKeyArrayOutput) ToCryptoKeyArrayOutput() CryptoKeyArrayOutput {
@@ -464,15 +401,15 @@ func (o CryptoKeyArrayOutput) ToCryptoKeyArrayOutputWithContext(ctx context.Cont
 }
 
 func (o CryptoKeyArrayOutput) Index(i pulumi.IntInput) CryptoKeyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CryptoKey {
-		return vs[0].([]CryptoKey)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CryptoKey {
+		return vs[0].([]*CryptoKey)[vs[1].(int)]
 	}).(CryptoKeyOutput)
 }
 
 type CryptoKeyMapOutput struct{ *pulumi.OutputState }
 
 func (CryptoKeyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]CryptoKey)(nil))
+	return reflect.TypeOf((*map[string]*CryptoKey)(nil)).Elem()
 }
 
 func (o CryptoKeyMapOutput) ToCryptoKeyMapOutput() CryptoKeyMapOutput {
@@ -484,18 +421,16 @@ func (o CryptoKeyMapOutput) ToCryptoKeyMapOutputWithContext(ctx context.Context)
 }
 
 func (o CryptoKeyMapOutput) MapIndex(k pulumi.StringInput) CryptoKeyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CryptoKey {
-		return vs[0].(map[string]CryptoKey)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *CryptoKey {
+		return vs[0].(map[string]*CryptoKey)[vs[1].(string)]
 	}).(CryptoKeyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyInput)(nil)).Elem(), &CryptoKey{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyPtrInput)(nil)).Elem(), &CryptoKey{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyArrayInput)(nil)).Elem(), CryptoKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyMapInput)(nil)).Elem(), CryptoKeyMap{})
 	pulumi.RegisterOutputType(CryptoKeyOutput{})
-	pulumi.RegisterOutputType(CryptoKeyPtrOutput{})
 	pulumi.RegisterOutputType(CryptoKeyArrayOutput{})
 	pulumi.RegisterOutputType(CryptoKeyMapOutput{})
 }

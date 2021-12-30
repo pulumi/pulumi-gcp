@@ -140,22 +140,22 @@ export class FirewallPolicyRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: FirewallPolicyRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FirewallPolicyRuleArgs | FirewallPolicyRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FirewallPolicyRuleState | undefined;
-            inputs["action"] = state ? state.action : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["direction"] = state ? state.direction : undefined;
-            inputs["disabled"] = state ? state.disabled : undefined;
-            inputs["enableLogging"] = state ? state.enableLogging : undefined;
-            inputs["firewallPolicy"] = state ? state.firewallPolicy : undefined;
-            inputs["kind"] = state ? state.kind : undefined;
-            inputs["match"] = state ? state.match : undefined;
-            inputs["priority"] = state ? state.priority : undefined;
-            inputs["ruleTupleCount"] = state ? state.ruleTupleCount : undefined;
-            inputs["targetResources"] = state ? state.targetResources : undefined;
-            inputs["targetServiceAccounts"] = state ? state.targetServiceAccounts : undefined;
+            resourceInputs["action"] = state ? state.action : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["direction"] = state ? state.direction : undefined;
+            resourceInputs["disabled"] = state ? state.disabled : undefined;
+            resourceInputs["enableLogging"] = state ? state.enableLogging : undefined;
+            resourceInputs["firewallPolicy"] = state ? state.firewallPolicy : undefined;
+            resourceInputs["kind"] = state ? state.kind : undefined;
+            resourceInputs["match"] = state ? state.match : undefined;
+            resourceInputs["priority"] = state ? state.priority : undefined;
+            resourceInputs["ruleTupleCount"] = state ? state.ruleTupleCount : undefined;
+            resourceInputs["targetResources"] = state ? state.targetResources : undefined;
+            resourceInputs["targetServiceAccounts"] = state ? state.targetServiceAccounts : undefined;
         } else {
             const args = argsOrState as FirewallPolicyRuleArgs | undefined;
             if ((!args || args.action === undefined) && !opts.urn) {
@@ -173,23 +173,23 @@ export class FirewallPolicyRule extends pulumi.CustomResource {
             if ((!args || args.priority === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'priority'");
             }
-            inputs["action"] = args ? args.action : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["direction"] = args ? args.direction : undefined;
-            inputs["disabled"] = args ? args.disabled : undefined;
-            inputs["enableLogging"] = args ? args.enableLogging : undefined;
-            inputs["firewallPolicy"] = args ? args.firewallPolicy : undefined;
-            inputs["match"] = args ? args.match : undefined;
-            inputs["priority"] = args ? args.priority : undefined;
-            inputs["targetResources"] = args ? args.targetResources : undefined;
-            inputs["targetServiceAccounts"] = args ? args.targetServiceAccounts : undefined;
-            inputs["kind"] = undefined /*out*/;
-            inputs["ruleTupleCount"] = undefined /*out*/;
+            resourceInputs["action"] = args ? args.action : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["direction"] = args ? args.direction : undefined;
+            resourceInputs["disabled"] = args ? args.disabled : undefined;
+            resourceInputs["enableLogging"] = args ? args.enableLogging : undefined;
+            resourceInputs["firewallPolicy"] = args ? args.firewallPolicy : undefined;
+            resourceInputs["match"] = args ? args.match : undefined;
+            resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["targetResources"] = args ? args.targetResources : undefined;
+            resourceInputs["targetServiceAccounts"] = args ? args.targetServiceAccounts : undefined;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["ruleTupleCount"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(FirewallPolicyRule.__pulumiType, name, inputs, opts);
+        super(FirewallPolicyRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

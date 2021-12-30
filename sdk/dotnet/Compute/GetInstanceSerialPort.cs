@@ -102,7 +102,7 @@ namespace Pulumi.Gcp.Compute
         ///         {
         ///             var name = values.Item1;
         ///             var zone = values.Item2;
-        ///             return Gcp.Compute.GetInstanceSerialPort.InvokeAsync(new Gcp.Compute.GetInstanceSerialPortArgs
+        ///             return Gcp.Compute.GetInstanceSerialPort.Invoke(new Gcp.Compute.GetInstanceSerialPortInvokeArgs
         ///             {
         ///                 Instance = name,
         ///                 Zone = zone,
@@ -212,7 +212,7 @@ namespace Pulumi.Gcp.Compute
         ///         {
         ///             var name = values.Item1;
         ///             var zone = values.Item2;
-        ///             return Gcp.Compute.GetInstanceSerialPort.InvokeAsync(new Gcp.Compute.GetInstanceSerialPortArgs
+        ///             return Gcp.Compute.GetInstanceSerialPort.Invoke(new Gcp.Compute.GetInstanceSerialPortInvokeArgs
         ///             {
         ///                 Instance = name,
         ///                 Zone = zone,

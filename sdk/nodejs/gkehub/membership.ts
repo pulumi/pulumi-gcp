@@ -141,34 +141,34 @@ export class Membership extends pulumi.CustomResource {
      */
     constructor(name: string, args: MembershipArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MembershipArgs | MembershipState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MembershipState | undefined;
-            inputs["authority"] = state ? state.authority : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["endpoint"] = state ? state.endpoint : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["membershipId"] = state ? state.membershipId : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
+            resourceInputs["authority"] = state ? state.authority : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["endpoint"] = state ? state.endpoint : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["membershipId"] = state ? state.membershipId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as MembershipArgs | undefined;
             if ((!args || args.membershipId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'membershipId'");
             }
-            inputs["authority"] = args ? args.authority : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["endpoint"] = args ? args.endpoint : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["membershipId"] = args ? args.membershipId : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["authority"] = args ? args.authority : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["endpoint"] = args ? args.endpoint : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["membershipId"] = args ? args.membershipId : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Membership.__pulumiType, name, inputs, opts);
+        super(Membership.__pulumiType, name, resourceInputs, opts);
     }
 }
 

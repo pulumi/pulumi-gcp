@@ -416,7 +416,7 @@ type AutoscalerInput interface {
 }
 
 func (*Autoscaler) ElementType() reflect.Type {
-	return reflect.TypeOf((*Autoscaler)(nil))
+	return reflect.TypeOf((**Autoscaler)(nil)).Elem()
 }
 
 func (i *Autoscaler) ToAutoscalerOutput() AutoscalerOutput {
@@ -425,35 +425,6 @@ func (i *Autoscaler) ToAutoscalerOutput() AutoscalerOutput {
 
 func (i *Autoscaler) ToAutoscalerOutputWithContext(ctx context.Context) AutoscalerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalerOutput)
-}
-
-func (i *Autoscaler) ToAutoscalerPtrOutput() AutoscalerPtrOutput {
-	return i.ToAutoscalerPtrOutputWithContext(context.Background())
-}
-
-func (i *Autoscaler) ToAutoscalerPtrOutputWithContext(ctx context.Context) AutoscalerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AutoscalerPtrOutput)
-}
-
-type AutoscalerPtrInput interface {
-	pulumi.Input
-
-	ToAutoscalerPtrOutput() AutoscalerPtrOutput
-	ToAutoscalerPtrOutputWithContext(ctx context.Context) AutoscalerPtrOutput
-}
-
-type autoscalerPtrType AutoscalerArgs
-
-func (*autoscalerPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Autoscaler)(nil))
-}
-
-func (i *autoscalerPtrType) ToAutoscalerPtrOutput() AutoscalerPtrOutput {
-	return i.ToAutoscalerPtrOutputWithContext(context.Background())
-}
-
-func (i *autoscalerPtrType) ToAutoscalerPtrOutputWithContext(ctx context.Context) AutoscalerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AutoscalerPtrOutput)
 }
 
 // AutoscalerArrayInput is an input type that accepts AutoscalerArray and AutoscalerArrayOutput values.
@@ -509,7 +480,7 @@ func (i AutoscalerMap) ToAutoscalerMapOutputWithContext(ctx context.Context) Aut
 type AutoscalerOutput struct{ *pulumi.OutputState }
 
 func (AutoscalerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Autoscaler)(nil))
+	return reflect.TypeOf((**Autoscaler)(nil)).Elem()
 }
 
 func (o AutoscalerOutput) ToAutoscalerOutput() AutoscalerOutput {
@@ -520,44 +491,10 @@ func (o AutoscalerOutput) ToAutoscalerOutputWithContext(ctx context.Context) Aut
 	return o
 }
 
-func (o AutoscalerOutput) ToAutoscalerPtrOutput() AutoscalerPtrOutput {
-	return o.ToAutoscalerPtrOutputWithContext(context.Background())
-}
-
-func (o AutoscalerOutput) ToAutoscalerPtrOutputWithContext(ctx context.Context) AutoscalerPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Autoscaler) *Autoscaler {
-		return &v
-	}).(AutoscalerPtrOutput)
-}
-
-type AutoscalerPtrOutput struct{ *pulumi.OutputState }
-
-func (AutoscalerPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Autoscaler)(nil))
-}
-
-func (o AutoscalerPtrOutput) ToAutoscalerPtrOutput() AutoscalerPtrOutput {
-	return o
-}
-
-func (o AutoscalerPtrOutput) ToAutoscalerPtrOutputWithContext(ctx context.Context) AutoscalerPtrOutput {
-	return o
-}
-
-func (o AutoscalerPtrOutput) Elem() AutoscalerOutput {
-	return o.ApplyT(func(v *Autoscaler) Autoscaler {
-		if v != nil {
-			return *v
-		}
-		var ret Autoscaler
-		return ret
-	}).(AutoscalerOutput)
-}
-
 type AutoscalerArrayOutput struct{ *pulumi.OutputState }
 
 func (AutoscalerArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Autoscaler)(nil))
+	return reflect.TypeOf((*[]*Autoscaler)(nil)).Elem()
 }
 
 func (o AutoscalerArrayOutput) ToAutoscalerArrayOutput() AutoscalerArrayOutput {
@@ -569,15 +506,15 @@ func (o AutoscalerArrayOutput) ToAutoscalerArrayOutputWithContext(ctx context.Co
 }
 
 func (o AutoscalerArrayOutput) Index(i pulumi.IntInput) AutoscalerOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Autoscaler {
-		return vs[0].([]Autoscaler)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Autoscaler {
+		return vs[0].([]*Autoscaler)[vs[1].(int)]
 	}).(AutoscalerOutput)
 }
 
 type AutoscalerMapOutput struct{ *pulumi.OutputState }
 
 func (AutoscalerMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Autoscaler)(nil))
+	return reflect.TypeOf((*map[string]*Autoscaler)(nil)).Elem()
 }
 
 func (o AutoscalerMapOutput) ToAutoscalerMapOutput() AutoscalerMapOutput {
@@ -589,18 +526,16 @@ func (o AutoscalerMapOutput) ToAutoscalerMapOutputWithContext(ctx context.Contex
 }
 
 func (o AutoscalerMapOutput) MapIndex(k pulumi.StringInput) AutoscalerOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Autoscaler {
-		return vs[0].(map[string]Autoscaler)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Autoscaler {
+		return vs[0].(map[string]*Autoscaler)[vs[1].(string)]
 	}).(AutoscalerOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalerInput)(nil)).Elem(), &Autoscaler{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalerPtrInput)(nil)).Elem(), &Autoscaler{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalerArrayInput)(nil)).Elem(), AutoscalerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalerMapInput)(nil)).Elem(), AutoscalerMap{})
 	pulumi.RegisterOutputType(AutoscalerOutput{})
-	pulumi.RegisterOutputType(AutoscalerPtrOutput{})
 	pulumi.RegisterOutputType(AutoscalerArrayOutput{})
 	pulumi.RegisterOutputType(AutoscalerMapOutput{})
 }

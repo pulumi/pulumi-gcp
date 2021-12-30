@@ -38,7 +38,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = healthcare.NewConsentStore(ctx, "my_consent", &healthcare.ConsentStoreArgs{
+// 		_, err = healthcare.NewConsentStore(ctx, "my-consent", &healthcare.ConsentStoreArgs{
 // 			Dataset: dataset.ID(),
 // 		})
 // 		if err != nil {
@@ -66,7 +66,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = healthcare.NewConsentStore(ctx, "my_consent", &healthcare.ConsentStoreArgs{
+// 		_, err = healthcare.NewConsentStore(ctx, "my-consent", &healthcare.ConsentStoreArgs{
 // 			Dataset:                     dataset.ID(),
 // 			EnableConsentCreateOnUpdate: pulumi.Bool(true),
 // 			DefaultConsentTtl:           pulumi.String("90000s"),
@@ -102,20 +102,20 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = healthcare.NewConsentStore(ctx, "my_consent", &healthcare.ConsentStoreArgs{
+// 		_, err = healthcare.NewConsentStore(ctx, "my-consent", &healthcare.ConsentStoreArgs{
 // 			Dataset: dataset.ID(),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = serviceAccount.NewAccount(ctx, "test_account", &serviceAccount.AccountArgs{
+// 		_, err = serviceAccount.NewAccount(ctx, "test-account", &serviceAccount.AccountArgs{
 // 			AccountId:   pulumi.String("my-account"),
 // 			DisplayName: pulumi.String("Test Service Account"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = healthcare.NewConsentStoreIamMember(ctx, "test_iam", &healthcare.ConsentStoreIamMemberArgs{
+// 		_, err = healthcare.NewConsentStoreIamMember(ctx, "test-iam", &healthcare.ConsentStoreIamMemberArgs{
 // 			Dataset:        dataset.ID(),
 // 			ConsentStoreId: my_consent.Name,
 // 			Role:           pulumi.String("roles/editor"),
@@ -303,7 +303,7 @@ type ConsentStoreInput interface {
 }
 
 func (*ConsentStore) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConsentStore)(nil))
+	return reflect.TypeOf((**ConsentStore)(nil)).Elem()
 }
 
 func (i *ConsentStore) ToConsentStoreOutput() ConsentStoreOutput {
@@ -312,35 +312,6 @@ func (i *ConsentStore) ToConsentStoreOutput() ConsentStoreOutput {
 
 func (i *ConsentStore) ToConsentStoreOutputWithContext(ctx context.Context) ConsentStoreOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConsentStoreOutput)
-}
-
-func (i *ConsentStore) ToConsentStorePtrOutput() ConsentStorePtrOutput {
-	return i.ToConsentStorePtrOutputWithContext(context.Background())
-}
-
-func (i *ConsentStore) ToConsentStorePtrOutputWithContext(ctx context.Context) ConsentStorePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConsentStorePtrOutput)
-}
-
-type ConsentStorePtrInput interface {
-	pulumi.Input
-
-	ToConsentStorePtrOutput() ConsentStorePtrOutput
-	ToConsentStorePtrOutputWithContext(ctx context.Context) ConsentStorePtrOutput
-}
-
-type consentStorePtrType ConsentStoreArgs
-
-func (*consentStorePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConsentStore)(nil))
-}
-
-func (i *consentStorePtrType) ToConsentStorePtrOutput() ConsentStorePtrOutput {
-	return i.ToConsentStorePtrOutputWithContext(context.Background())
-}
-
-func (i *consentStorePtrType) ToConsentStorePtrOutputWithContext(ctx context.Context) ConsentStorePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConsentStorePtrOutput)
 }
 
 // ConsentStoreArrayInput is an input type that accepts ConsentStoreArray and ConsentStoreArrayOutput values.
@@ -396,7 +367,7 @@ func (i ConsentStoreMap) ToConsentStoreMapOutputWithContext(ctx context.Context)
 type ConsentStoreOutput struct{ *pulumi.OutputState }
 
 func (ConsentStoreOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConsentStore)(nil))
+	return reflect.TypeOf((**ConsentStore)(nil)).Elem()
 }
 
 func (o ConsentStoreOutput) ToConsentStoreOutput() ConsentStoreOutput {
@@ -407,44 +378,10 @@ func (o ConsentStoreOutput) ToConsentStoreOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o ConsentStoreOutput) ToConsentStorePtrOutput() ConsentStorePtrOutput {
-	return o.ToConsentStorePtrOutputWithContext(context.Background())
-}
-
-func (o ConsentStoreOutput) ToConsentStorePtrOutputWithContext(ctx context.Context) ConsentStorePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConsentStore) *ConsentStore {
-		return &v
-	}).(ConsentStorePtrOutput)
-}
-
-type ConsentStorePtrOutput struct{ *pulumi.OutputState }
-
-func (ConsentStorePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConsentStore)(nil))
-}
-
-func (o ConsentStorePtrOutput) ToConsentStorePtrOutput() ConsentStorePtrOutput {
-	return o
-}
-
-func (o ConsentStorePtrOutput) ToConsentStorePtrOutputWithContext(ctx context.Context) ConsentStorePtrOutput {
-	return o
-}
-
-func (o ConsentStorePtrOutput) Elem() ConsentStoreOutput {
-	return o.ApplyT(func(v *ConsentStore) ConsentStore {
-		if v != nil {
-			return *v
-		}
-		var ret ConsentStore
-		return ret
-	}).(ConsentStoreOutput)
-}
-
 type ConsentStoreArrayOutput struct{ *pulumi.OutputState }
 
 func (ConsentStoreArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConsentStore)(nil))
+	return reflect.TypeOf((*[]*ConsentStore)(nil)).Elem()
 }
 
 func (o ConsentStoreArrayOutput) ToConsentStoreArrayOutput() ConsentStoreArrayOutput {
@@ -456,15 +393,15 @@ func (o ConsentStoreArrayOutput) ToConsentStoreArrayOutputWithContext(ctx contex
 }
 
 func (o ConsentStoreArrayOutput) Index(i pulumi.IntInput) ConsentStoreOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConsentStore {
-		return vs[0].([]ConsentStore)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConsentStore {
+		return vs[0].([]*ConsentStore)[vs[1].(int)]
 	}).(ConsentStoreOutput)
 }
 
 type ConsentStoreMapOutput struct{ *pulumi.OutputState }
 
 func (ConsentStoreMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ConsentStore)(nil))
+	return reflect.TypeOf((*map[string]*ConsentStore)(nil)).Elem()
 }
 
 func (o ConsentStoreMapOutput) ToConsentStoreMapOutput() ConsentStoreMapOutput {
@@ -476,18 +413,16 @@ func (o ConsentStoreMapOutput) ToConsentStoreMapOutputWithContext(ctx context.Co
 }
 
 func (o ConsentStoreMapOutput) MapIndex(k pulumi.StringInput) ConsentStoreOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ConsentStore {
-		return vs[0].(map[string]ConsentStore)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ConsentStore {
+		return vs[0].(map[string]*ConsentStore)[vs[1].(string)]
 	}).(ConsentStoreOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConsentStoreInput)(nil)).Elem(), &ConsentStore{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConsentStorePtrInput)(nil)).Elem(), &ConsentStore{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConsentStoreArrayInput)(nil)).Elem(), ConsentStoreArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConsentStoreMapInput)(nil)).Elem(), ConsentStoreMap{})
 	pulumi.RegisterOutputType(ConsentStoreOutput{})
-	pulumi.RegisterOutputType(ConsentStorePtrOutput{})
 	pulumi.RegisterOutputType(ConsentStoreArrayOutput{})
 	pulumi.RegisterOutputType(ConsentStoreMapOutput{})
 }

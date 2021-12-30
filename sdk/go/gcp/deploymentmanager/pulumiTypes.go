@@ -161,47 +161,6 @@ func (i DeploymentTargetArgs) ToDeploymentTargetOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(DeploymentTargetOutput)
 }
 
-func (i DeploymentTargetArgs) ToDeploymentTargetPtrOutput() DeploymentTargetPtrOutput {
-	return i.ToDeploymentTargetPtrOutputWithContext(context.Background())
-}
-
-func (i DeploymentTargetArgs) ToDeploymentTargetPtrOutputWithContext(ctx context.Context) DeploymentTargetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentTargetOutput).ToDeploymentTargetPtrOutputWithContext(ctx)
-}
-
-// DeploymentTargetPtrInput is an input type that accepts DeploymentTargetArgs, DeploymentTargetPtr and DeploymentTargetPtrOutput values.
-// You can construct a concrete instance of `DeploymentTargetPtrInput` via:
-//
-//          DeploymentTargetArgs{...}
-//
-//  or:
-//
-//          nil
-type DeploymentTargetPtrInput interface {
-	pulumi.Input
-
-	ToDeploymentTargetPtrOutput() DeploymentTargetPtrOutput
-	ToDeploymentTargetPtrOutputWithContext(context.Context) DeploymentTargetPtrOutput
-}
-
-type deploymentTargetPtrType DeploymentTargetArgs
-
-func DeploymentTargetPtr(v *DeploymentTargetArgs) DeploymentTargetPtrInput {
-	return (*deploymentTargetPtrType)(v)
-}
-
-func (*deploymentTargetPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DeploymentTarget)(nil)).Elem()
-}
-
-func (i *deploymentTargetPtrType) ToDeploymentTargetPtrOutput() DeploymentTargetPtrOutput {
-	return i.ToDeploymentTargetPtrOutputWithContext(context.Background())
-}
-
-func (i *deploymentTargetPtrType) ToDeploymentTargetPtrOutputWithContext(ctx context.Context) DeploymentTargetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentTargetPtrOutput)
-}
-
 type DeploymentTargetOutput struct{ *pulumi.OutputState }
 
 func (DeploymentTargetOutput) ElementType() reflect.Type {
@@ -216,16 +175,6 @@ func (o DeploymentTargetOutput) ToDeploymentTargetOutputWithContext(ctx context.
 	return o
 }
 
-func (o DeploymentTargetOutput) ToDeploymentTargetPtrOutput() DeploymentTargetPtrOutput {
-	return o.ToDeploymentTargetPtrOutputWithContext(context.Background())
-}
-
-func (o DeploymentTargetOutput) ToDeploymentTargetPtrOutputWithContext(ctx context.Context) DeploymentTargetPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentTarget) *DeploymentTarget {
-		return &v
-	}).(DeploymentTargetPtrOutput)
-}
-
 // The root configuration file to use for this deployment.
 // Structure is documented below.
 func (o DeploymentTargetOutput) Config() DeploymentTargetConfigOutput {
@@ -238,54 +187,6 @@ func (o DeploymentTargetOutput) Config() DeploymentTargetConfigOutput {
 // Structure is documented below.
 func (o DeploymentTargetOutput) Imports() DeploymentTargetImportArrayOutput {
 	return o.ApplyT(func(v DeploymentTarget) []DeploymentTargetImport { return v.Imports }).(DeploymentTargetImportArrayOutput)
-}
-
-type DeploymentTargetPtrOutput struct{ *pulumi.OutputState }
-
-func (DeploymentTargetPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DeploymentTarget)(nil)).Elem()
-}
-
-func (o DeploymentTargetPtrOutput) ToDeploymentTargetPtrOutput() DeploymentTargetPtrOutput {
-	return o
-}
-
-func (o DeploymentTargetPtrOutput) ToDeploymentTargetPtrOutputWithContext(ctx context.Context) DeploymentTargetPtrOutput {
-	return o
-}
-
-func (o DeploymentTargetPtrOutput) Elem() DeploymentTargetOutput {
-	return o.ApplyT(func(v *DeploymentTarget) DeploymentTarget {
-		if v != nil {
-			return *v
-		}
-		var ret DeploymentTarget
-		return ret
-	}).(DeploymentTargetOutput)
-}
-
-// The root configuration file to use for this deployment.
-// Structure is documented below.
-func (o DeploymentTargetPtrOutput) Config() DeploymentTargetConfigPtrOutput {
-	return o.ApplyT(func(v *DeploymentTarget) *DeploymentTargetConfig {
-		if v == nil {
-			return nil
-		}
-		return &v.Config
-	}).(DeploymentTargetConfigPtrOutput)
-}
-
-// Specifies import files for this configuration. This can be
-// used to import templates or other files. For example, you might
-// import a text file in order to use the file in a template.
-// Structure is documented below.
-func (o DeploymentTargetPtrOutput) Imports() DeploymentTargetImportArrayOutput {
-	return o.ApplyT(func(v *DeploymentTarget) []DeploymentTargetImport {
-		if v == nil {
-			return nil
-		}
-		return v.Imports
-	}).(DeploymentTargetImportArrayOutput)
 }
 
 type DeploymentTargetConfig struct {
@@ -321,47 +222,6 @@ func (i DeploymentTargetConfigArgs) ToDeploymentTargetConfigOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(DeploymentTargetConfigOutput)
 }
 
-func (i DeploymentTargetConfigArgs) ToDeploymentTargetConfigPtrOutput() DeploymentTargetConfigPtrOutput {
-	return i.ToDeploymentTargetConfigPtrOutputWithContext(context.Background())
-}
-
-func (i DeploymentTargetConfigArgs) ToDeploymentTargetConfigPtrOutputWithContext(ctx context.Context) DeploymentTargetConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentTargetConfigOutput).ToDeploymentTargetConfigPtrOutputWithContext(ctx)
-}
-
-// DeploymentTargetConfigPtrInput is an input type that accepts DeploymentTargetConfigArgs, DeploymentTargetConfigPtr and DeploymentTargetConfigPtrOutput values.
-// You can construct a concrete instance of `DeploymentTargetConfigPtrInput` via:
-//
-//          DeploymentTargetConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type DeploymentTargetConfigPtrInput interface {
-	pulumi.Input
-
-	ToDeploymentTargetConfigPtrOutput() DeploymentTargetConfigPtrOutput
-	ToDeploymentTargetConfigPtrOutputWithContext(context.Context) DeploymentTargetConfigPtrOutput
-}
-
-type deploymentTargetConfigPtrType DeploymentTargetConfigArgs
-
-func DeploymentTargetConfigPtr(v *DeploymentTargetConfigArgs) DeploymentTargetConfigPtrInput {
-	return (*deploymentTargetConfigPtrType)(v)
-}
-
-func (*deploymentTargetConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DeploymentTargetConfig)(nil)).Elem()
-}
-
-func (i *deploymentTargetConfigPtrType) ToDeploymentTargetConfigPtrOutput() DeploymentTargetConfigPtrOutput {
-	return i.ToDeploymentTargetConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *deploymentTargetConfigPtrType) ToDeploymentTargetConfigPtrOutputWithContext(ctx context.Context) DeploymentTargetConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentTargetConfigPtrOutput)
-}
-
 type DeploymentTargetConfigOutput struct{ *pulumi.OutputState }
 
 func (DeploymentTargetConfigOutput) ElementType() reflect.Type {
@@ -376,53 +236,9 @@ func (o DeploymentTargetConfigOutput) ToDeploymentTargetConfigOutputWithContext(
 	return o
 }
 
-func (o DeploymentTargetConfigOutput) ToDeploymentTargetConfigPtrOutput() DeploymentTargetConfigPtrOutput {
-	return o.ToDeploymentTargetConfigPtrOutputWithContext(context.Background())
-}
-
-func (o DeploymentTargetConfigOutput) ToDeploymentTargetConfigPtrOutputWithContext(ctx context.Context) DeploymentTargetConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentTargetConfig) *DeploymentTargetConfig {
-		return &v
-	}).(DeploymentTargetConfigPtrOutput)
-}
-
 // The full contents of the template that you want to import.
 func (o DeploymentTargetConfigOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v DeploymentTargetConfig) string { return v.Content }).(pulumi.StringOutput)
-}
-
-type DeploymentTargetConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (DeploymentTargetConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DeploymentTargetConfig)(nil)).Elem()
-}
-
-func (o DeploymentTargetConfigPtrOutput) ToDeploymentTargetConfigPtrOutput() DeploymentTargetConfigPtrOutput {
-	return o
-}
-
-func (o DeploymentTargetConfigPtrOutput) ToDeploymentTargetConfigPtrOutputWithContext(ctx context.Context) DeploymentTargetConfigPtrOutput {
-	return o
-}
-
-func (o DeploymentTargetConfigPtrOutput) Elem() DeploymentTargetConfigOutput {
-	return o.ApplyT(func(v *DeploymentTargetConfig) DeploymentTargetConfig {
-		if v != nil {
-			return *v
-		}
-		var ret DeploymentTargetConfig
-		return ret
-	}).(DeploymentTargetConfigOutput)
-}
-
-// The full contents of the template that you want to import.
-func (o DeploymentTargetConfigPtrOutput) Content() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeploymentTargetConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Content
-	}).(pulumi.StringPtrOutput)
 }
 
 type DeploymentTargetImport struct {
@@ -538,17 +354,13 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentLabelInput)(nil)).Elem(), DeploymentLabelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentLabelArrayInput)(nil)).Elem(), DeploymentLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentTargetInput)(nil)).Elem(), DeploymentTargetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentTargetPtrInput)(nil)).Elem(), DeploymentTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentTargetConfigInput)(nil)).Elem(), DeploymentTargetConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentTargetConfigPtrInput)(nil)).Elem(), DeploymentTargetConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentTargetImportInput)(nil)).Elem(), DeploymentTargetImportArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentTargetImportArrayInput)(nil)).Elem(), DeploymentTargetImportArray{})
 	pulumi.RegisterOutputType(DeploymentLabelOutput{})
 	pulumi.RegisterOutputType(DeploymentLabelArrayOutput{})
 	pulumi.RegisterOutputType(DeploymentTargetOutput{})
-	pulumi.RegisterOutputType(DeploymentTargetPtrOutput{})
 	pulumi.RegisterOutputType(DeploymentTargetConfigOutput{})
-	pulumi.RegisterOutputType(DeploymentTargetConfigPtrOutput{})
 	pulumi.RegisterOutputType(DeploymentTargetImportOutput{})
 	pulumi.RegisterOutputType(DeploymentTargetImportArrayOutput{})
 }

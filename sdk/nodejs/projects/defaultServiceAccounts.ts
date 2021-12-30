@@ -106,14 +106,14 @@ export class DefaultServiceAccounts extends pulumi.CustomResource {
      */
     constructor(name: string, args: DefaultServiceAccountsArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DefaultServiceAccountsArgs | DefaultServiceAccountsState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DefaultServiceAccountsState | undefined;
-            inputs["action"] = state ? state.action : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["restorePolicy"] = state ? state.restorePolicy : undefined;
-            inputs["serviceAccounts"] = state ? state.serviceAccounts : undefined;
+            resourceInputs["action"] = state ? state.action : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["restorePolicy"] = state ? state.restorePolicy : undefined;
+            resourceInputs["serviceAccounts"] = state ? state.serviceAccounts : undefined;
         } else {
             const args = argsOrState as DefaultServiceAccountsArgs | undefined;
             if ((!args || args.action === undefined) && !opts.urn) {
@@ -122,15 +122,15 @@ export class DefaultServiceAccounts extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["action"] = args ? args.action : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["restorePolicy"] = args ? args.restorePolicy : undefined;
-            inputs["serviceAccounts"] = undefined /*out*/;
+            resourceInputs["action"] = args ? args.action : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["restorePolicy"] = args ? args.restorePolicy : undefined;
+            resourceInputs["serviceAccounts"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(DefaultServiceAccounts.__pulumiType, name, inputs, opts);
+        super(DefaultServiceAccounts.__pulumiType, name, resourceInputs, opts);
     }
 }
 

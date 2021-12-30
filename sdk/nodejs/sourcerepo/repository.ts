@@ -115,27 +115,27 @@ export class Repository extends pulumi.CustomResource {
      */
     constructor(name: string, args?: RepositoryArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RepositoryArgs | RepositoryState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RepositoryState | undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["pubsubConfigs"] = state ? state.pubsubConfigs : undefined;
-            inputs["size"] = state ? state.size : undefined;
-            inputs["url"] = state ? state.url : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pubsubConfigs"] = state ? state.pubsubConfigs : undefined;
+            resourceInputs["size"] = state ? state.size : undefined;
+            resourceInputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as RepositoryArgs | undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["pubsubConfigs"] = args ? args.pubsubConfigs : undefined;
-            inputs["size"] = undefined /*out*/;
-            inputs["url"] = undefined /*out*/;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["pubsubConfigs"] = args ? args.pubsubConfigs : undefined;
+            resourceInputs["size"] = undefined /*out*/;
+            resourceInputs["url"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Repository.__pulumiType, name, inputs, opts);
+        super(Repository.__pulumiType, name, resourceInputs, opts);
     }
 }
 

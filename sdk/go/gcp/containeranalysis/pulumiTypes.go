@@ -59,47 +59,6 @@ func (i NoteAttestationAuthorityArgs) ToNoteAttestationAuthorityOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(NoteAttestationAuthorityOutput)
 }
 
-func (i NoteAttestationAuthorityArgs) ToNoteAttestationAuthorityPtrOutput() NoteAttestationAuthorityPtrOutput {
-	return i.ToNoteAttestationAuthorityPtrOutputWithContext(context.Background())
-}
-
-func (i NoteAttestationAuthorityArgs) ToNoteAttestationAuthorityPtrOutputWithContext(ctx context.Context) NoteAttestationAuthorityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NoteAttestationAuthorityOutput).ToNoteAttestationAuthorityPtrOutputWithContext(ctx)
-}
-
-// NoteAttestationAuthorityPtrInput is an input type that accepts NoteAttestationAuthorityArgs, NoteAttestationAuthorityPtr and NoteAttestationAuthorityPtrOutput values.
-// You can construct a concrete instance of `NoteAttestationAuthorityPtrInput` via:
-//
-//          NoteAttestationAuthorityArgs{...}
-//
-//  or:
-//
-//          nil
-type NoteAttestationAuthorityPtrInput interface {
-	pulumi.Input
-
-	ToNoteAttestationAuthorityPtrOutput() NoteAttestationAuthorityPtrOutput
-	ToNoteAttestationAuthorityPtrOutputWithContext(context.Context) NoteAttestationAuthorityPtrOutput
-}
-
-type noteAttestationAuthorityPtrType NoteAttestationAuthorityArgs
-
-func NoteAttestationAuthorityPtr(v *NoteAttestationAuthorityArgs) NoteAttestationAuthorityPtrInput {
-	return (*noteAttestationAuthorityPtrType)(v)
-}
-
-func (*noteAttestationAuthorityPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NoteAttestationAuthority)(nil)).Elem()
-}
-
-func (i *noteAttestationAuthorityPtrType) ToNoteAttestationAuthorityPtrOutput() NoteAttestationAuthorityPtrOutput {
-	return i.ToNoteAttestationAuthorityPtrOutputWithContext(context.Background())
-}
-
-func (i *noteAttestationAuthorityPtrType) ToNoteAttestationAuthorityPtrOutputWithContext(ctx context.Context) NoteAttestationAuthorityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NoteAttestationAuthorityPtrOutput)
-}
-
 type NoteAttestationAuthorityOutput struct{ *pulumi.OutputState }
 
 func (NoteAttestationAuthorityOutput) ElementType() reflect.Type {
@@ -114,16 +73,6 @@ func (o NoteAttestationAuthorityOutput) ToNoteAttestationAuthorityOutputWithCont
 	return o
 }
 
-func (o NoteAttestationAuthorityOutput) ToNoteAttestationAuthorityPtrOutput() NoteAttestationAuthorityPtrOutput {
-	return o.ToNoteAttestationAuthorityPtrOutputWithContext(context.Background())
-}
-
-func (o NoteAttestationAuthorityOutput) ToNoteAttestationAuthorityPtrOutputWithContext(ctx context.Context) NoteAttestationAuthorityPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NoteAttestationAuthority) *NoteAttestationAuthority {
-		return &v
-	}).(NoteAttestationAuthorityPtrOutput)
-}
-
 // This submessage provides human-readable hints about the purpose of
 // the AttestationAuthority. Because the name of a Note acts as its
 // resource reference, it is important to disambiguate the canonical
@@ -135,48 +84,6 @@ func (o NoteAttestationAuthorityOutput) ToNoteAttestationAuthorityPtrOutputWithC
 // Structure is documented below.
 func (o NoteAttestationAuthorityOutput) Hint() NoteAttestationAuthorityHintOutput {
 	return o.ApplyT(func(v NoteAttestationAuthority) NoteAttestationAuthorityHint { return v.Hint }).(NoteAttestationAuthorityHintOutput)
-}
-
-type NoteAttestationAuthorityPtrOutput struct{ *pulumi.OutputState }
-
-func (NoteAttestationAuthorityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NoteAttestationAuthority)(nil)).Elem()
-}
-
-func (o NoteAttestationAuthorityPtrOutput) ToNoteAttestationAuthorityPtrOutput() NoteAttestationAuthorityPtrOutput {
-	return o
-}
-
-func (o NoteAttestationAuthorityPtrOutput) ToNoteAttestationAuthorityPtrOutputWithContext(ctx context.Context) NoteAttestationAuthorityPtrOutput {
-	return o
-}
-
-func (o NoteAttestationAuthorityPtrOutput) Elem() NoteAttestationAuthorityOutput {
-	return o.ApplyT(func(v *NoteAttestationAuthority) NoteAttestationAuthority {
-		if v != nil {
-			return *v
-		}
-		var ret NoteAttestationAuthority
-		return ret
-	}).(NoteAttestationAuthorityOutput)
-}
-
-// This submessage provides human-readable hints about the purpose of
-// the AttestationAuthority. Because the name of a Note acts as its
-// resource reference, it is important to disambiguate the canonical
-// name of the Note (which might be a UUID for security purposes)
-// from "readable" names more suitable for debug output. Note that
-// these hints should NOT be used to look up AttestationAuthorities
-// in security sensitive contexts, such as when looking up
-// Attestations to verify.
-// Structure is documented below.
-func (o NoteAttestationAuthorityPtrOutput) Hint() NoteAttestationAuthorityHintPtrOutput {
-	return o.ApplyT(func(v *NoteAttestationAuthority) *NoteAttestationAuthorityHint {
-		if v == nil {
-			return nil
-		}
-		return &v.Hint
-	}).(NoteAttestationAuthorityHintPtrOutput)
 }
 
 type NoteAttestationAuthorityHint struct {
@@ -214,47 +121,6 @@ func (i NoteAttestationAuthorityHintArgs) ToNoteAttestationAuthorityHintOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(NoteAttestationAuthorityHintOutput)
 }
 
-func (i NoteAttestationAuthorityHintArgs) ToNoteAttestationAuthorityHintPtrOutput() NoteAttestationAuthorityHintPtrOutput {
-	return i.ToNoteAttestationAuthorityHintPtrOutputWithContext(context.Background())
-}
-
-func (i NoteAttestationAuthorityHintArgs) ToNoteAttestationAuthorityHintPtrOutputWithContext(ctx context.Context) NoteAttestationAuthorityHintPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NoteAttestationAuthorityHintOutput).ToNoteAttestationAuthorityHintPtrOutputWithContext(ctx)
-}
-
-// NoteAttestationAuthorityHintPtrInput is an input type that accepts NoteAttestationAuthorityHintArgs, NoteAttestationAuthorityHintPtr and NoteAttestationAuthorityHintPtrOutput values.
-// You can construct a concrete instance of `NoteAttestationAuthorityHintPtrInput` via:
-//
-//          NoteAttestationAuthorityHintArgs{...}
-//
-//  or:
-//
-//          nil
-type NoteAttestationAuthorityHintPtrInput interface {
-	pulumi.Input
-
-	ToNoteAttestationAuthorityHintPtrOutput() NoteAttestationAuthorityHintPtrOutput
-	ToNoteAttestationAuthorityHintPtrOutputWithContext(context.Context) NoteAttestationAuthorityHintPtrOutput
-}
-
-type noteAttestationAuthorityHintPtrType NoteAttestationAuthorityHintArgs
-
-func NoteAttestationAuthorityHintPtr(v *NoteAttestationAuthorityHintArgs) NoteAttestationAuthorityHintPtrInput {
-	return (*noteAttestationAuthorityHintPtrType)(v)
-}
-
-func (*noteAttestationAuthorityHintPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NoteAttestationAuthorityHint)(nil)).Elem()
-}
-
-func (i *noteAttestationAuthorityHintPtrType) ToNoteAttestationAuthorityHintPtrOutput() NoteAttestationAuthorityHintPtrOutput {
-	return i.ToNoteAttestationAuthorityHintPtrOutputWithContext(context.Background())
-}
-
-func (i *noteAttestationAuthorityHintPtrType) ToNoteAttestationAuthorityHintPtrOutputWithContext(ctx context.Context) NoteAttestationAuthorityHintPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NoteAttestationAuthorityHintPtrOutput)
-}
-
 type NoteAttestationAuthorityHintOutput struct{ *pulumi.OutputState }
 
 func (NoteAttestationAuthorityHintOutput) ElementType() reflect.Type {
@@ -269,55 +135,10 @@ func (o NoteAttestationAuthorityHintOutput) ToNoteAttestationAuthorityHintOutput
 	return o
 }
 
-func (o NoteAttestationAuthorityHintOutput) ToNoteAttestationAuthorityHintPtrOutput() NoteAttestationAuthorityHintPtrOutput {
-	return o.ToNoteAttestationAuthorityHintPtrOutputWithContext(context.Background())
-}
-
-func (o NoteAttestationAuthorityHintOutput) ToNoteAttestationAuthorityHintPtrOutputWithContext(ctx context.Context) NoteAttestationAuthorityHintPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NoteAttestationAuthorityHint) *NoteAttestationAuthorityHint {
-		return &v
-	}).(NoteAttestationAuthorityHintPtrOutput)
-}
-
 // The human readable name of this Attestation Authority, for
 // example "qa".
 func (o NoteAttestationAuthorityHintOutput) HumanReadableName() pulumi.StringOutput {
 	return o.ApplyT(func(v NoteAttestationAuthorityHint) string { return v.HumanReadableName }).(pulumi.StringOutput)
-}
-
-type NoteAttestationAuthorityHintPtrOutput struct{ *pulumi.OutputState }
-
-func (NoteAttestationAuthorityHintPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NoteAttestationAuthorityHint)(nil)).Elem()
-}
-
-func (o NoteAttestationAuthorityHintPtrOutput) ToNoteAttestationAuthorityHintPtrOutput() NoteAttestationAuthorityHintPtrOutput {
-	return o
-}
-
-func (o NoteAttestationAuthorityHintPtrOutput) ToNoteAttestationAuthorityHintPtrOutputWithContext(ctx context.Context) NoteAttestationAuthorityHintPtrOutput {
-	return o
-}
-
-func (o NoteAttestationAuthorityHintPtrOutput) Elem() NoteAttestationAuthorityHintOutput {
-	return o.ApplyT(func(v *NoteAttestationAuthorityHint) NoteAttestationAuthorityHint {
-		if v != nil {
-			return *v
-		}
-		var ret NoteAttestationAuthorityHint
-		return ret
-	}).(NoteAttestationAuthorityHintOutput)
-}
-
-// The human readable name of this Attestation Authority, for
-// example "qa".
-func (o NoteAttestationAuthorityHintPtrOutput) HumanReadableName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NoteAttestationAuthorityHint) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.HumanReadableName
-	}).(pulumi.StringPtrOutput)
 }
 
 type NoteRelatedUrl struct {
@@ -475,47 +296,6 @@ func (i OccurenceAttestationArgs) ToOccurenceAttestationOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(OccurenceAttestationOutput)
 }
 
-func (i OccurenceAttestationArgs) ToOccurenceAttestationPtrOutput() OccurenceAttestationPtrOutput {
-	return i.ToOccurenceAttestationPtrOutputWithContext(context.Background())
-}
-
-func (i OccurenceAttestationArgs) ToOccurenceAttestationPtrOutputWithContext(ctx context.Context) OccurenceAttestationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OccurenceAttestationOutput).ToOccurenceAttestationPtrOutputWithContext(ctx)
-}
-
-// OccurenceAttestationPtrInput is an input type that accepts OccurenceAttestationArgs, OccurenceAttestationPtr and OccurenceAttestationPtrOutput values.
-// You can construct a concrete instance of `OccurenceAttestationPtrInput` via:
-//
-//          OccurenceAttestationArgs{...}
-//
-//  or:
-//
-//          nil
-type OccurenceAttestationPtrInput interface {
-	pulumi.Input
-
-	ToOccurenceAttestationPtrOutput() OccurenceAttestationPtrOutput
-	ToOccurenceAttestationPtrOutputWithContext(context.Context) OccurenceAttestationPtrOutput
-}
-
-type occurenceAttestationPtrType OccurenceAttestationArgs
-
-func OccurenceAttestationPtr(v *OccurenceAttestationArgs) OccurenceAttestationPtrInput {
-	return (*occurenceAttestationPtrType)(v)
-}
-
-func (*occurenceAttestationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OccurenceAttestation)(nil)).Elem()
-}
-
-func (i *occurenceAttestationPtrType) ToOccurenceAttestationPtrOutput() OccurenceAttestationPtrOutput {
-	return i.ToOccurenceAttestationPtrOutputWithContext(context.Background())
-}
-
-func (i *occurenceAttestationPtrType) ToOccurenceAttestationPtrOutputWithContext(ctx context.Context) OccurenceAttestationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OccurenceAttestationPtrOutput)
-}
-
 type OccurenceAttestationOutput struct{ *pulumi.OutputState }
 
 func (OccurenceAttestationOutput) ElementType() reflect.Type {
@@ -528,16 +308,6 @@ func (o OccurenceAttestationOutput) ToOccurenceAttestationOutput() OccurenceAtte
 
 func (o OccurenceAttestationOutput) ToOccurenceAttestationOutputWithContext(ctx context.Context) OccurenceAttestationOutput {
 	return o
-}
-
-func (o OccurenceAttestationOutput) ToOccurenceAttestationPtrOutput() OccurenceAttestationPtrOutput {
-	return o.ToOccurenceAttestationPtrOutputWithContext(context.Background())
-}
-
-func (o OccurenceAttestationOutput) ToOccurenceAttestationPtrOutputWithContext(ctx context.Context) OccurenceAttestationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OccurenceAttestation) *OccurenceAttestation {
-		return &v
-	}).(OccurenceAttestationPtrOutput)
 }
 
 // The serialized payload that is verified by one or
@@ -554,56 +324,6 @@ func (o OccurenceAttestationOutput) SerializedPayload() pulumi.StringOutput {
 // Structure is documented below.
 func (o OccurenceAttestationOutput) Signatures() OccurenceAttestationSignatureArrayOutput {
 	return o.ApplyT(func(v OccurenceAttestation) []OccurenceAttestationSignature { return v.Signatures }).(OccurenceAttestationSignatureArrayOutput)
-}
-
-type OccurenceAttestationPtrOutput struct{ *pulumi.OutputState }
-
-func (OccurenceAttestationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OccurenceAttestation)(nil)).Elem()
-}
-
-func (o OccurenceAttestationPtrOutput) ToOccurenceAttestationPtrOutput() OccurenceAttestationPtrOutput {
-	return o
-}
-
-func (o OccurenceAttestationPtrOutput) ToOccurenceAttestationPtrOutputWithContext(ctx context.Context) OccurenceAttestationPtrOutput {
-	return o
-}
-
-func (o OccurenceAttestationPtrOutput) Elem() OccurenceAttestationOutput {
-	return o.ApplyT(func(v *OccurenceAttestation) OccurenceAttestation {
-		if v != nil {
-			return *v
-		}
-		var ret OccurenceAttestation
-		return ret
-	}).(OccurenceAttestationOutput)
-}
-
-// The serialized payload that is verified by one or
-// more signatures. A base64-encoded string.
-func (o OccurenceAttestationPtrOutput) SerializedPayload() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OccurenceAttestation) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SerializedPayload
-	}).(pulumi.StringPtrOutput)
-}
-
-// One or more signatures over serializedPayload.
-// Verifier implementations should consider this attestation
-// message verified if at least one signature verifies
-// serializedPayload. See Signature in common.proto for more
-// details on signature structure and verification.
-// Structure is documented below.
-func (o OccurenceAttestationPtrOutput) Signatures() OccurenceAttestationSignatureArrayOutput {
-	return o.ApplyT(func(v *OccurenceAttestation) []OccurenceAttestationSignature {
-		if v == nil {
-			return nil
-		}
-		return v.Signatures
-	}).(OccurenceAttestationSignatureArrayOutput)
 }
 
 type OccurenceAttestationSignature struct {
@@ -759,23 +479,17 @@ func (o OccurenceAttestationSignatureArrayOutput) Index(i pulumi.IntInput) Occur
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NoteAttestationAuthorityInput)(nil)).Elem(), NoteAttestationAuthorityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NoteAttestationAuthorityPtrInput)(nil)).Elem(), NoteAttestationAuthorityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NoteAttestationAuthorityHintInput)(nil)).Elem(), NoteAttestationAuthorityHintArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NoteAttestationAuthorityHintPtrInput)(nil)).Elem(), NoteAttestationAuthorityHintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NoteRelatedUrlInput)(nil)).Elem(), NoteRelatedUrlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NoteRelatedUrlArrayInput)(nil)).Elem(), NoteRelatedUrlArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OccurenceAttestationInput)(nil)).Elem(), OccurenceAttestationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OccurenceAttestationPtrInput)(nil)).Elem(), OccurenceAttestationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OccurenceAttestationSignatureInput)(nil)).Elem(), OccurenceAttestationSignatureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OccurenceAttestationSignatureArrayInput)(nil)).Elem(), OccurenceAttestationSignatureArray{})
 	pulumi.RegisterOutputType(NoteAttestationAuthorityOutput{})
-	pulumi.RegisterOutputType(NoteAttestationAuthorityPtrOutput{})
 	pulumi.RegisterOutputType(NoteAttestationAuthorityHintOutput{})
-	pulumi.RegisterOutputType(NoteAttestationAuthorityHintPtrOutput{})
 	pulumi.RegisterOutputType(NoteRelatedUrlOutput{})
 	pulumi.RegisterOutputType(NoteRelatedUrlArrayOutput{})
 	pulumi.RegisterOutputType(OccurenceAttestationOutput{})
-	pulumi.RegisterOutputType(OccurenceAttestationPtrOutput{})
 	pulumi.RegisterOutputType(OccurenceAttestationSignatureOutput{})
 	pulumi.RegisterOutputType(OccurenceAttestationSignatureArrayOutput{})
 }

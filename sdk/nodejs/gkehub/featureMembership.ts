@@ -80,15 +80,15 @@ export class FeatureMembership extends pulumi.CustomResource {
      */
     constructor(name: string, args: FeatureMembershipArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FeatureMembershipArgs | FeatureMembershipState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FeatureMembershipState | undefined;
-            inputs["configmanagement"] = state ? state.configmanagement : undefined;
-            inputs["feature"] = state ? state.feature : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["membership"] = state ? state.membership : undefined;
-            inputs["project"] = state ? state.project : undefined;
+            resourceInputs["configmanagement"] = state ? state.configmanagement : undefined;
+            resourceInputs["feature"] = state ? state.feature : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["membership"] = state ? state.membership : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as FeatureMembershipArgs | undefined;
             if ((!args || args.configmanagement === undefined) && !opts.urn) {
@@ -103,16 +103,16 @@ export class FeatureMembership extends pulumi.CustomResource {
             if ((!args || args.membership === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'membership'");
             }
-            inputs["configmanagement"] = args ? args.configmanagement : undefined;
-            inputs["feature"] = args ? args.feature : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["membership"] = args ? args.membership : undefined;
-            inputs["project"] = args ? args.project : undefined;
+            resourceInputs["configmanagement"] = args ? args.configmanagement : undefined;
+            resourceInputs["feature"] = args ? args.feature : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["membership"] = args ? args.membership : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(FeatureMembership.__pulumiType, name, inputs, opts);
+        super(FeatureMembership.__pulumiType, name, resourceInputs, opts);
     }
 }
 

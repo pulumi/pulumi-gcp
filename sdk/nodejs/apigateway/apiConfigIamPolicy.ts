@@ -150,15 +150,15 @@ export class ApiConfigIamPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: ApiConfigIamPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ApiConfigIamPolicyArgs | ApiConfigIamPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApiConfigIamPolicyState | undefined;
-            inputs["api"] = state ? state.api : undefined;
-            inputs["apiConfig"] = state ? state.apiConfig : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["policyData"] = state ? state.policyData : undefined;
-            inputs["project"] = state ? state.project : undefined;
+            resourceInputs["api"] = state ? state.api : undefined;
+            resourceInputs["apiConfig"] = state ? state.apiConfig : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["policyData"] = state ? state.policyData : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as ApiConfigIamPolicyArgs | undefined;
             if ((!args || args.api === undefined) && !opts.urn) {
@@ -170,16 +170,16 @@ export class ApiConfigIamPolicy extends pulumi.CustomResource {
             if ((!args || args.policyData === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
-            inputs["api"] = args ? args.api : undefined;
-            inputs["apiConfig"] = args ? args.apiConfig : undefined;
-            inputs["policyData"] = args ? args.policyData : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["api"] = args ? args.api : undefined;
+            resourceInputs["apiConfig"] = args ? args.apiConfig : undefined;
+            resourceInputs["policyData"] = args ? args.policyData : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ApiConfigIamPolicy.__pulumiType, name, inputs, opts);
+        super(ApiConfigIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -209,7 +209,7 @@ type GameServerClusterInput interface {
 }
 
 func (*GameServerCluster) ElementType() reflect.Type {
-	return reflect.TypeOf((*GameServerCluster)(nil))
+	return reflect.TypeOf((**GameServerCluster)(nil)).Elem()
 }
 
 func (i *GameServerCluster) ToGameServerClusterOutput() GameServerClusterOutput {
@@ -218,35 +218,6 @@ func (i *GameServerCluster) ToGameServerClusterOutput() GameServerClusterOutput 
 
 func (i *GameServerCluster) ToGameServerClusterOutputWithContext(ctx context.Context) GameServerClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerClusterOutput)
-}
-
-func (i *GameServerCluster) ToGameServerClusterPtrOutput() GameServerClusterPtrOutput {
-	return i.ToGameServerClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *GameServerCluster) ToGameServerClusterPtrOutputWithContext(ctx context.Context) GameServerClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GameServerClusterPtrOutput)
-}
-
-type GameServerClusterPtrInput interface {
-	pulumi.Input
-
-	ToGameServerClusterPtrOutput() GameServerClusterPtrOutput
-	ToGameServerClusterPtrOutputWithContext(ctx context.Context) GameServerClusterPtrOutput
-}
-
-type gameServerClusterPtrType GameServerClusterArgs
-
-func (*gameServerClusterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GameServerCluster)(nil))
-}
-
-func (i *gameServerClusterPtrType) ToGameServerClusterPtrOutput() GameServerClusterPtrOutput {
-	return i.ToGameServerClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *gameServerClusterPtrType) ToGameServerClusterPtrOutputWithContext(ctx context.Context) GameServerClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GameServerClusterPtrOutput)
 }
 
 // GameServerClusterArrayInput is an input type that accepts GameServerClusterArray and GameServerClusterArrayOutput values.
@@ -302,7 +273,7 @@ func (i GameServerClusterMap) ToGameServerClusterMapOutputWithContext(ctx contex
 type GameServerClusterOutput struct{ *pulumi.OutputState }
 
 func (GameServerClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GameServerCluster)(nil))
+	return reflect.TypeOf((**GameServerCluster)(nil)).Elem()
 }
 
 func (o GameServerClusterOutput) ToGameServerClusterOutput() GameServerClusterOutput {
@@ -313,44 +284,10 @@ func (o GameServerClusterOutput) ToGameServerClusterOutputWithContext(ctx contex
 	return o
 }
 
-func (o GameServerClusterOutput) ToGameServerClusterPtrOutput() GameServerClusterPtrOutput {
-	return o.ToGameServerClusterPtrOutputWithContext(context.Background())
-}
-
-func (o GameServerClusterOutput) ToGameServerClusterPtrOutputWithContext(ctx context.Context) GameServerClusterPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GameServerCluster) *GameServerCluster {
-		return &v
-	}).(GameServerClusterPtrOutput)
-}
-
-type GameServerClusterPtrOutput struct{ *pulumi.OutputState }
-
-func (GameServerClusterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GameServerCluster)(nil))
-}
-
-func (o GameServerClusterPtrOutput) ToGameServerClusterPtrOutput() GameServerClusterPtrOutput {
-	return o
-}
-
-func (o GameServerClusterPtrOutput) ToGameServerClusterPtrOutputWithContext(ctx context.Context) GameServerClusterPtrOutput {
-	return o
-}
-
-func (o GameServerClusterPtrOutput) Elem() GameServerClusterOutput {
-	return o.ApplyT(func(v *GameServerCluster) GameServerCluster {
-		if v != nil {
-			return *v
-		}
-		var ret GameServerCluster
-		return ret
-	}).(GameServerClusterOutput)
-}
-
 type GameServerClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (GameServerClusterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GameServerCluster)(nil))
+	return reflect.TypeOf((*[]*GameServerCluster)(nil)).Elem()
 }
 
 func (o GameServerClusterArrayOutput) ToGameServerClusterArrayOutput() GameServerClusterArrayOutput {
@@ -362,15 +299,15 @@ func (o GameServerClusterArrayOutput) ToGameServerClusterArrayOutputWithContext(
 }
 
 func (o GameServerClusterArrayOutput) Index(i pulumi.IntInput) GameServerClusterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GameServerCluster {
-		return vs[0].([]GameServerCluster)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GameServerCluster {
+		return vs[0].([]*GameServerCluster)[vs[1].(int)]
 	}).(GameServerClusterOutput)
 }
 
 type GameServerClusterMapOutput struct{ *pulumi.OutputState }
 
 func (GameServerClusterMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GameServerCluster)(nil))
+	return reflect.TypeOf((*map[string]*GameServerCluster)(nil)).Elem()
 }
 
 func (o GameServerClusterMapOutput) ToGameServerClusterMapOutput() GameServerClusterMapOutput {
@@ -382,18 +319,16 @@ func (o GameServerClusterMapOutput) ToGameServerClusterMapOutputWithContext(ctx 
 }
 
 func (o GameServerClusterMapOutput) MapIndex(k pulumi.StringInput) GameServerClusterOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GameServerCluster {
-		return vs[0].(map[string]GameServerCluster)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *GameServerCluster {
+		return vs[0].(map[string]*GameServerCluster)[vs[1].(string)]
 	}).(GameServerClusterOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GameServerClusterInput)(nil)).Elem(), &GameServerCluster{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GameServerClusterPtrInput)(nil)).Elem(), &GameServerCluster{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GameServerClusterArrayInput)(nil)).Elem(), GameServerClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GameServerClusterMapInput)(nil)).Elem(), GameServerClusterMap{})
 	pulumi.RegisterOutputType(GameServerClusterOutput{})
-	pulumi.RegisterOutputType(GameServerClusterPtrOutput{})
 	pulumi.RegisterOutputType(GameServerClusterArrayOutput{})
 	pulumi.RegisterOutputType(GameServerClusterMapOutput{})
 }

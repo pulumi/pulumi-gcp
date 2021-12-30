@@ -62,9 +62,9 @@ import * as utilities from "../utilities";
  *         algorithm: "RSA_SIGN_PKCS1_4096_SHA512",
  *     },
  * });
- * const version = crypto_key.id.apply(id => gcp.kms.getKMSCryptoKeyVersion({
- *     cryptoKey: id,
- * }));
+ * const version = gcp.kms.getKMSCryptoKeyVersionOutput({
+ *     cryptoKey: crypto_key.id,
+ * });
  * const note = new gcp.containeranalysis.Note("note", {attestationAuthority: {
  *     hint: {
  *         humanReadableName: "Attestor Note",
@@ -155,28 +155,28 @@ export class Attestor extends pulumi.CustomResource {
      */
     constructor(name: string, args: AttestorArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AttestorArgs | AttestorState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AttestorState | undefined;
-            inputs["attestationAuthorityNote"] = state ? state.attestationAuthorityNote : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
+            resourceInputs["attestationAuthorityNote"] = state ? state.attestationAuthorityNote : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as AttestorArgs | undefined;
             if ((!args || args.attestationAuthorityNote === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'attestationAuthorityNote'");
             }
-            inputs["attestationAuthorityNote"] = args ? args.attestationAuthorityNote : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
+            resourceInputs["attestationAuthorityNote"] = args ? args.attestationAuthorityNote : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Attestor.__pulumiType, name, inputs, opts);
+        super(Attestor.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -108,16 +108,16 @@ export class SourceRepresentationInstance extends pulumi.CustomResource {
      */
     constructor(name: string, args: SourceRepresentationInstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SourceRepresentationInstanceArgs | SourceRepresentationInstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SourceRepresentationInstanceState | undefined;
-            inputs["databaseVersion"] = state ? state.databaseVersion : undefined;
-            inputs["host"] = state ? state.host : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["port"] = state ? state.port : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["region"] = state ? state.region : undefined;
+            resourceInputs["databaseVersion"] = state ? state.databaseVersion : undefined;
+            resourceInputs["host"] = state ? state.host : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as SourceRepresentationInstanceArgs | undefined;
             if ((!args || args.databaseVersion === undefined) && !opts.urn) {
@@ -126,17 +126,17 @@ export class SourceRepresentationInstance extends pulumi.CustomResource {
             if ((!args || args.host === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'host'");
             }
-            inputs["databaseVersion"] = args ? args.databaseVersion : undefined;
-            inputs["host"] = args ? args.host : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["port"] = args ? args.port : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
+            resourceInputs["databaseVersion"] = args ? args.databaseVersion : undefined;
+            resourceInputs["host"] = args ? args.host : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["port"] = args ? args.port : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(SourceRepresentationInstance.__pulumiType, name, inputs, opts);
+        super(SourceRepresentationInstance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

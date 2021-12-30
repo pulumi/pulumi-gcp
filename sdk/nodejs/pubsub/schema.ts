@@ -139,25 +139,25 @@ export class Schema extends pulumi.CustomResource {
      */
     constructor(name: string, args?: SchemaArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SchemaArgs | SchemaState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SchemaState | undefined;
-            inputs["definition"] = state ? state.definition : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["type"] = state ? state.type : undefined;
+            resourceInputs["definition"] = state ? state.definition : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as SchemaArgs | undefined;
-            inputs["definition"] = args ? args.definition : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["type"] = args ? args.type : undefined;
+            resourceInputs["definition"] = args ? args.definition : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Schema.__pulumiType, name, inputs, opts);
+        super(Schema.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -113,20 +113,20 @@ export class OrganizationSecurityPolicyRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: OrganizationSecurityPolicyRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OrganizationSecurityPolicyRuleArgs | OrganizationSecurityPolicyRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrganizationSecurityPolicyRuleState | undefined;
-            inputs["action"] = state ? state.action : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["direction"] = state ? state.direction : undefined;
-            inputs["enableLogging"] = state ? state.enableLogging : undefined;
-            inputs["match"] = state ? state.match : undefined;
-            inputs["policyId"] = state ? state.policyId : undefined;
-            inputs["preview"] = state ? state.preview : undefined;
-            inputs["priority"] = state ? state.priority : undefined;
-            inputs["targetResources"] = state ? state.targetResources : undefined;
-            inputs["targetServiceAccounts"] = state ? state.targetServiceAccounts : undefined;
+            resourceInputs["action"] = state ? state.action : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["direction"] = state ? state.direction : undefined;
+            resourceInputs["enableLogging"] = state ? state.enableLogging : undefined;
+            resourceInputs["match"] = state ? state.match : undefined;
+            resourceInputs["policyId"] = state ? state.policyId : undefined;
+            resourceInputs["preview"] = state ? state.preview : undefined;
+            resourceInputs["priority"] = state ? state.priority : undefined;
+            resourceInputs["targetResources"] = state ? state.targetResources : undefined;
+            resourceInputs["targetServiceAccounts"] = state ? state.targetServiceAccounts : undefined;
         } else {
             const args = argsOrState as OrganizationSecurityPolicyRuleArgs | undefined;
             if ((!args || args.action === undefined) && !opts.urn) {
@@ -141,21 +141,21 @@ export class OrganizationSecurityPolicyRule extends pulumi.CustomResource {
             if ((!args || args.priority === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'priority'");
             }
-            inputs["action"] = args ? args.action : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["direction"] = args ? args.direction : undefined;
-            inputs["enableLogging"] = args ? args.enableLogging : undefined;
-            inputs["match"] = args ? args.match : undefined;
-            inputs["policyId"] = args ? args.policyId : undefined;
-            inputs["preview"] = args ? args.preview : undefined;
-            inputs["priority"] = args ? args.priority : undefined;
-            inputs["targetResources"] = args ? args.targetResources : undefined;
-            inputs["targetServiceAccounts"] = args ? args.targetServiceAccounts : undefined;
+            resourceInputs["action"] = args ? args.action : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["direction"] = args ? args.direction : undefined;
+            resourceInputs["enableLogging"] = args ? args.enableLogging : undefined;
+            resourceInputs["match"] = args ? args.match : undefined;
+            resourceInputs["policyId"] = args ? args.policyId : undefined;
+            resourceInputs["preview"] = args ? args.preview : undefined;
+            resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["targetResources"] = args ? args.targetResources : undefined;
+            resourceInputs["targetServiceAccounts"] = args ? args.targetServiceAccounts : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(OrganizationSecurityPolicyRule.__pulumiType, name, inputs, opts);
+        super(OrganizationSecurityPolicyRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

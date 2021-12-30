@@ -166,23 +166,23 @@ export class Agent extends pulumi.CustomResource {
      */
     constructor(name: string, args: AgentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AgentArgs | AgentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AgentState | undefined;
-            inputs["apiVersion"] = state ? state.apiVersion : undefined;
-            inputs["avatarUri"] = state ? state.avatarUri : undefined;
-            inputs["avatarUriBackend"] = state ? state.avatarUriBackend : undefined;
-            inputs["classificationThreshold"] = state ? state.classificationThreshold : undefined;
-            inputs["defaultLanguageCode"] = state ? state.defaultLanguageCode : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["enableLogging"] = state ? state.enableLogging : undefined;
-            inputs["matchMode"] = state ? state.matchMode : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["supportedLanguageCodes"] = state ? state.supportedLanguageCodes : undefined;
-            inputs["tier"] = state ? state.tier : undefined;
-            inputs["timeZone"] = state ? state.timeZone : undefined;
+            resourceInputs["apiVersion"] = state ? state.apiVersion : undefined;
+            resourceInputs["avatarUri"] = state ? state.avatarUri : undefined;
+            resourceInputs["avatarUriBackend"] = state ? state.avatarUriBackend : undefined;
+            resourceInputs["classificationThreshold"] = state ? state.classificationThreshold : undefined;
+            resourceInputs["defaultLanguageCode"] = state ? state.defaultLanguageCode : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["enableLogging"] = state ? state.enableLogging : undefined;
+            resourceInputs["matchMode"] = state ? state.matchMode : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["supportedLanguageCodes"] = state ? state.supportedLanguageCodes : undefined;
+            resourceInputs["tier"] = state ? state.tier : undefined;
+            resourceInputs["timeZone"] = state ? state.timeZone : undefined;
         } else {
             const args = argsOrState as AgentArgs | undefined;
             if ((!args || args.defaultLanguageCode === undefined) && !opts.urn) {
@@ -194,24 +194,24 @@ export class Agent extends pulumi.CustomResource {
             if ((!args || args.timeZone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'timeZone'");
             }
-            inputs["apiVersion"] = args ? args.apiVersion : undefined;
-            inputs["avatarUri"] = args ? args.avatarUri : undefined;
-            inputs["classificationThreshold"] = args ? args.classificationThreshold : undefined;
-            inputs["defaultLanguageCode"] = args ? args.defaultLanguageCode : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["enableLogging"] = args ? args.enableLogging : undefined;
-            inputs["matchMode"] = args ? args.matchMode : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["supportedLanguageCodes"] = args ? args.supportedLanguageCodes : undefined;
-            inputs["tier"] = args ? args.tier : undefined;
-            inputs["timeZone"] = args ? args.timeZone : undefined;
-            inputs["avatarUriBackend"] = undefined /*out*/;
+            resourceInputs["apiVersion"] = args ? args.apiVersion : undefined;
+            resourceInputs["avatarUri"] = args ? args.avatarUri : undefined;
+            resourceInputs["classificationThreshold"] = args ? args.classificationThreshold : undefined;
+            resourceInputs["defaultLanguageCode"] = args ? args.defaultLanguageCode : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["enableLogging"] = args ? args.enableLogging : undefined;
+            resourceInputs["matchMode"] = args ? args.matchMode : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["supportedLanguageCodes"] = args ? args.supportedLanguageCodes : undefined;
+            resourceInputs["tier"] = args ? args.tier : undefined;
+            resourceInputs["timeZone"] = args ? args.timeZone : undefined;
+            resourceInputs["avatarUriBackend"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Agent.__pulumiType, name, inputs, opts);
+        super(Agent.__pulumiType, name, resourceInputs, opts);
     }
 }
 

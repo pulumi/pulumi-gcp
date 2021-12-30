@@ -124,18 +124,18 @@ export class DomainTrust extends pulumi.CustomResource {
      */
     constructor(name: string, args: DomainTrustArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DomainTrustArgs | DomainTrustState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainTrustState | undefined;
-            inputs["domain"] = state ? state.domain : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["selectiveAuthentication"] = state ? state.selectiveAuthentication : undefined;
-            inputs["targetDnsIpAddresses"] = state ? state.targetDnsIpAddresses : undefined;
-            inputs["targetDomainName"] = state ? state.targetDomainName : undefined;
-            inputs["trustDirection"] = state ? state.trustDirection : undefined;
-            inputs["trustHandshakeSecret"] = state ? state.trustHandshakeSecret : undefined;
-            inputs["trustType"] = state ? state.trustType : undefined;
+            resourceInputs["domain"] = state ? state.domain : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["selectiveAuthentication"] = state ? state.selectiveAuthentication : undefined;
+            resourceInputs["targetDnsIpAddresses"] = state ? state.targetDnsIpAddresses : undefined;
+            resourceInputs["targetDomainName"] = state ? state.targetDomainName : undefined;
+            resourceInputs["trustDirection"] = state ? state.trustDirection : undefined;
+            resourceInputs["trustHandshakeSecret"] = state ? state.trustHandshakeSecret : undefined;
+            resourceInputs["trustType"] = state ? state.trustType : undefined;
         } else {
             const args = argsOrState as DomainTrustArgs | undefined;
             if ((!args || args.domain === undefined) && !opts.urn) {
@@ -156,19 +156,19 @@ export class DomainTrust extends pulumi.CustomResource {
             if ((!args || args.trustType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'trustType'");
             }
-            inputs["domain"] = args ? args.domain : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["selectiveAuthentication"] = args ? args.selectiveAuthentication : undefined;
-            inputs["targetDnsIpAddresses"] = args ? args.targetDnsIpAddresses : undefined;
-            inputs["targetDomainName"] = args ? args.targetDomainName : undefined;
-            inputs["trustDirection"] = args ? args.trustDirection : undefined;
-            inputs["trustHandshakeSecret"] = args ? args.trustHandshakeSecret : undefined;
-            inputs["trustType"] = args ? args.trustType : undefined;
+            resourceInputs["domain"] = args ? args.domain : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["selectiveAuthentication"] = args ? args.selectiveAuthentication : undefined;
+            resourceInputs["targetDnsIpAddresses"] = args ? args.targetDnsIpAddresses : undefined;
+            resourceInputs["targetDomainName"] = args ? args.targetDomainName : undefined;
+            resourceInputs["trustDirection"] = args ? args.trustDirection : undefined;
+            resourceInputs["trustHandshakeSecret"] = args ? args.trustHandshakeSecret : undefined;
+            resourceInputs["trustType"] = args ? args.trustType : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(DomainTrust.__pulumiType, name, inputs, opts);
+        super(DomainTrust.__pulumiType, name, resourceInputs, opts);
     }
 }
 

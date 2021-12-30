@@ -94,16 +94,16 @@ export class OrganizationSecurityPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: OrganizationSecurityPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OrganizationSecurityPolicyArgs | OrganizationSecurityPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrganizationSecurityPolicyState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["fingerprint"] = state ? state.fingerprint : undefined;
-            inputs["parent"] = state ? state.parent : undefined;
-            inputs["policyId"] = state ? state.policyId : undefined;
-            inputs["type"] = state ? state.type : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
+            resourceInputs["parent"] = state ? state.parent : undefined;
+            resourceInputs["policyId"] = state ? state.policyId : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as OrganizationSecurityPolicyArgs | undefined;
             if ((!args || args.displayName === undefined) && !opts.urn) {
@@ -112,17 +112,17 @@ export class OrganizationSecurityPolicy extends pulumi.CustomResource {
             if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["fingerprint"] = undefined /*out*/;
-            inputs["policyId"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["policyId"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(OrganizationSecurityPolicy.__pulumiType, name, inputs, opts);
+        super(OrganizationSecurityPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

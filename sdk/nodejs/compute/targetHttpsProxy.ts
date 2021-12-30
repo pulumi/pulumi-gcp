@@ -176,21 +176,21 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
      */
     constructor(name: string, args: TargetHttpsProxyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TargetHttpsProxyArgs | TargetHttpsProxyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TargetHttpsProxyState | undefined;
-            inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["proxyBind"] = state ? state.proxyBind : undefined;
-            inputs["proxyId"] = state ? state.proxyId : undefined;
-            inputs["quicOverride"] = state ? state.quicOverride : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
-            inputs["sslCertificates"] = state ? state.sslCertificates : undefined;
-            inputs["sslPolicy"] = state ? state.sslPolicy : undefined;
-            inputs["urlMap"] = state ? state.urlMap : undefined;
+            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["proxyBind"] = state ? state.proxyBind : undefined;
+            resourceInputs["proxyId"] = state ? state.proxyId : undefined;
+            resourceInputs["quicOverride"] = state ? state.quicOverride : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["sslCertificates"] = state ? state.sslCertificates : undefined;
+            resourceInputs["sslPolicy"] = state ? state.sslPolicy : undefined;
+            resourceInputs["urlMap"] = state ? state.urlMap : undefined;
         } else {
             const args = argsOrState as TargetHttpsProxyArgs | undefined;
             if ((!args || args.sslCertificates === undefined) && !opts.urn) {
@@ -199,22 +199,22 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
             if ((!args || args.urlMap === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'urlMap'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["proxyBind"] = args ? args.proxyBind : undefined;
-            inputs["quicOverride"] = args ? args.quicOverride : undefined;
-            inputs["sslCertificates"] = args ? args.sslCertificates : undefined;
-            inputs["sslPolicy"] = args ? args.sslPolicy : undefined;
-            inputs["urlMap"] = args ? args.urlMap : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["proxyId"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["proxyBind"] = args ? args.proxyBind : undefined;
+            resourceInputs["quicOverride"] = args ? args.quicOverride : undefined;
+            resourceInputs["sslCertificates"] = args ? args.sslCertificates : undefined;
+            resourceInputs["sslPolicy"] = args ? args.sslPolicy : undefined;
+            resourceInputs["urlMap"] = args ? args.urlMap : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["proxyId"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(TargetHttpsProxy.__pulumiType, name, inputs, opts);
+        super(TargetHttpsProxy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

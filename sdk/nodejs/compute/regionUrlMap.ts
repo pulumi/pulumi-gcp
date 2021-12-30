@@ -486,43 +486,43 @@ export class RegionUrlMap extends pulumi.CustomResource {
      */
     constructor(name: string, args?: RegionUrlMapArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RegionUrlMapArgs | RegionUrlMapState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegionUrlMapState | undefined;
-            inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            inputs["defaultService"] = state ? state.defaultService : undefined;
-            inputs["defaultUrlRedirect"] = state ? state.defaultUrlRedirect : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["fingerprint"] = state ? state.fingerprint : undefined;
-            inputs["hostRules"] = state ? state.hostRules : undefined;
-            inputs["mapId"] = state ? state.mapId : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["pathMatchers"] = state ? state.pathMatchers : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
-            inputs["tests"] = state ? state.tests : undefined;
+            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
+            resourceInputs["defaultService"] = state ? state.defaultService : undefined;
+            resourceInputs["defaultUrlRedirect"] = state ? state.defaultUrlRedirect : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
+            resourceInputs["hostRules"] = state ? state.hostRules : undefined;
+            resourceInputs["mapId"] = state ? state.mapId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["pathMatchers"] = state ? state.pathMatchers : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["tests"] = state ? state.tests : undefined;
         } else {
             const args = argsOrState as RegionUrlMapArgs | undefined;
-            inputs["defaultService"] = args ? args.defaultService : undefined;
-            inputs["defaultUrlRedirect"] = args ? args.defaultUrlRedirect : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["hostRules"] = args ? args.hostRules : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["pathMatchers"] = args ? args.pathMatchers : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["tests"] = args ? args.tests : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["fingerprint"] = undefined /*out*/;
-            inputs["mapId"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["defaultService"] = args ? args.defaultService : undefined;
+            resourceInputs["defaultUrlRedirect"] = args ? args.defaultUrlRedirect : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["hostRules"] = args ? args.hostRules : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["pathMatchers"] = args ? args.pathMatchers : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["tests"] = args ? args.tests : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["mapId"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(RegionUrlMap.__pulumiType, name, inputs, opts);
+        super(RegionUrlMap.__pulumiType, name, resourceInputs, opts);
     }
 }
 

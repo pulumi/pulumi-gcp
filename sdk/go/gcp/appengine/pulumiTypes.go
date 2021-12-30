@@ -951,47 +951,6 @@ func (i EngineSplitTrafficSplitArgs) ToEngineSplitTrafficSplitOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(EngineSplitTrafficSplitOutput)
 }
 
-func (i EngineSplitTrafficSplitArgs) ToEngineSplitTrafficSplitPtrOutput() EngineSplitTrafficSplitPtrOutput {
-	return i.ToEngineSplitTrafficSplitPtrOutputWithContext(context.Background())
-}
-
-func (i EngineSplitTrafficSplitArgs) ToEngineSplitTrafficSplitPtrOutputWithContext(ctx context.Context) EngineSplitTrafficSplitPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EngineSplitTrafficSplitOutput).ToEngineSplitTrafficSplitPtrOutputWithContext(ctx)
-}
-
-// EngineSplitTrafficSplitPtrInput is an input type that accepts EngineSplitTrafficSplitArgs, EngineSplitTrafficSplitPtr and EngineSplitTrafficSplitPtrOutput values.
-// You can construct a concrete instance of `EngineSplitTrafficSplitPtrInput` via:
-//
-//          EngineSplitTrafficSplitArgs{...}
-//
-//  or:
-//
-//          nil
-type EngineSplitTrafficSplitPtrInput interface {
-	pulumi.Input
-
-	ToEngineSplitTrafficSplitPtrOutput() EngineSplitTrafficSplitPtrOutput
-	ToEngineSplitTrafficSplitPtrOutputWithContext(context.Context) EngineSplitTrafficSplitPtrOutput
-}
-
-type engineSplitTrafficSplitPtrType EngineSplitTrafficSplitArgs
-
-func EngineSplitTrafficSplitPtr(v *EngineSplitTrafficSplitArgs) EngineSplitTrafficSplitPtrInput {
-	return (*engineSplitTrafficSplitPtrType)(v)
-}
-
-func (*engineSplitTrafficSplitPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EngineSplitTrafficSplit)(nil)).Elem()
-}
-
-func (i *engineSplitTrafficSplitPtrType) ToEngineSplitTrafficSplitPtrOutput() EngineSplitTrafficSplitPtrOutput {
-	return i.ToEngineSplitTrafficSplitPtrOutputWithContext(context.Background())
-}
-
-func (i *engineSplitTrafficSplitPtrType) ToEngineSplitTrafficSplitPtrOutputWithContext(ctx context.Context) EngineSplitTrafficSplitPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EngineSplitTrafficSplitPtrOutput)
-}
-
 type EngineSplitTrafficSplitOutput struct{ *pulumi.OutputState }
 
 func (EngineSplitTrafficSplitOutput) ElementType() reflect.Type {
@@ -1006,16 +965,6 @@ func (o EngineSplitTrafficSplitOutput) ToEngineSplitTrafficSplitOutputWithContex
 	return o
 }
 
-func (o EngineSplitTrafficSplitOutput) ToEngineSplitTrafficSplitPtrOutput() EngineSplitTrafficSplitPtrOutput {
-	return o.ToEngineSplitTrafficSplitPtrOutputWithContext(context.Background())
-}
-
-func (o EngineSplitTrafficSplitOutput) ToEngineSplitTrafficSplitPtrOutputWithContext(ctx context.Context) EngineSplitTrafficSplitPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EngineSplitTrafficSplit) *EngineSplitTrafficSplit {
-		return &v
-	}).(EngineSplitTrafficSplitPtrOutput)
-}
-
 // Mapping from version IDs within the service to fractional (0.000, 1] allocations of traffic for that version. Each version can be specified only once, but some versions in the service may not have any traffic allocation. Services that have traffic allocated cannot be deleted until either the service is deleted or their traffic allocation is removed. Allocations must sum to 1. Up to two decimal place precision is supported for IP-based splits and up to three decimal places is supported for cookie-based splits.
 func (o EngineSplitTrafficSplitOutput) Allocations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v EngineSplitTrafficSplit) map[string]string { return v.Allocations }).(pulumi.StringMapOutput)
@@ -1025,51 +974,6 @@ func (o EngineSplitTrafficSplitOutput) Allocations() pulumi.StringMapOutput {
 // Possible values are `UNSPECIFIED`, `COOKIE`, `IP`, and `RANDOM`.
 func (o EngineSplitTrafficSplitOutput) ShardBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EngineSplitTrafficSplit) *string { return v.ShardBy }).(pulumi.StringPtrOutput)
-}
-
-type EngineSplitTrafficSplitPtrOutput struct{ *pulumi.OutputState }
-
-func (EngineSplitTrafficSplitPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EngineSplitTrafficSplit)(nil)).Elem()
-}
-
-func (o EngineSplitTrafficSplitPtrOutput) ToEngineSplitTrafficSplitPtrOutput() EngineSplitTrafficSplitPtrOutput {
-	return o
-}
-
-func (o EngineSplitTrafficSplitPtrOutput) ToEngineSplitTrafficSplitPtrOutputWithContext(ctx context.Context) EngineSplitTrafficSplitPtrOutput {
-	return o
-}
-
-func (o EngineSplitTrafficSplitPtrOutput) Elem() EngineSplitTrafficSplitOutput {
-	return o.ApplyT(func(v *EngineSplitTrafficSplit) EngineSplitTrafficSplit {
-		if v != nil {
-			return *v
-		}
-		var ret EngineSplitTrafficSplit
-		return ret
-	}).(EngineSplitTrafficSplitOutput)
-}
-
-// Mapping from version IDs within the service to fractional (0.000, 1] allocations of traffic for that version. Each version can be specified only once, but some versions in the service may not have any traffic allocation. Services that have traffic allocated cannot be deleted until either the service is deleted or their traffic allocation is removed. Allocations must sum to 1. Up to two decimal place precision is supported for IP-based splits and up to three decimal places is supported for cookie-based splits.
-func (o EngineSplitTrafficSplitPtrOutput) Allocations() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *EngineSplitTrafficSplit) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Allocations
-	}).(pulumi.StringMapOutput)
-}
-
-// Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.
-// Possible values are `UNSPECIFIED`, `COOKIE`, `IP`, and `RANDOM`.
-func (o EngineSplitTrafficSplitPtrOutput) ShardBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EngineSplitTrafficSplit) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ShardBy
-	}).(pulumi.StringPtrOutput)
 }
 
 type FlexibleAppVersionApiConfig struct {
@@ -4195,47 +4099,6 @@ func (i FlexibleAppVersionLivenessCheckArgs) ToFlexibleAppVersionLivenessCheckOu
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionLivenessCheckOutput)
 }
 
-func (i FlexibleAppVersionLivenessCheckArgs) ToFlexibleAppVersionLivenessCheckPtrOutput() FlexibleAppVersionLivenessCheckPtrOutput {
-	return i.ToFlexibleAppVersionLivenessCheckPtrOutputWithContext(context.Background())
-}
-
-func (i FlexibleAppVersionLivenessCheckArgs) ToFlexibleAppVersionLivenessCheckPtrOutputWithContext(ctx context.Context) FlexibleAppVersionLivenessCheckPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionLivenessCheckOutput).ToFlexibleAppVersionLivenessCheckPtrOutputWithContext(ctx)
-}
-
-// FlexibleAppVersionLivenessCheckPtrInput is an input type that accepts FlexibleAppVersionLivenessCheckArgs, FlexibleAppVersionLivenessCheckPtr and FlexibleAppVersionLivenessCheckPtrOutput values.
-// You can construct a concrete instance of `FlexibleAppVersionLivenessCheckPtrInput` via:
-//
-//          FlexibleAppVersionLivenessCheckArgs{...}
-//
-//  or:
-//
-//          nil
-type FlexibleAppVersionLivenessCheckPtrInput interface {
-	pulumi.Input
-
-	ToFlexibleAppVersionLivenessCheckPtrOutput() FlexibleAppVersionLivenessCheckPtrOutput
-	ToFlexibleAppVersionLivenessCheckPtrOutputWithContext(context.Context) FlexibleAppVersionLivenessCheckPtrOutput
-}
-
-type flexibleAppVersionLivenessCheckPtrType FlexibleAppVersionLivenessCheckArgs
-
-func FlexibleAppVersionLivenessCheckPtr(v *FlexibleAppVersionLivenessCheckArgs) FlexibleAppVersionLivenessCheckPtrInput {
-	return (*flexibleAppVersionLivenessCheckPtrType)(v)
-}
-
-func (*flexibleAppVersionLivenessCheckPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FlexibleAppVersionLivenessCheck)(nil)).Elem()
-}
-
-func (i *flexibleAppVersionLivenessCheckPtrType) ToFlexibleAppVersionLivenessCheckPtrOutput() FlexibleAppVersionLivenessCheckPtrOutput {
-	return i.ToFlexibleAppVersionLivenessCheckPtrOutputWithContext(context.Background())
-}
-
-func (i *flexibleAppVersionLivenessCheckPtrType) ToFlexibleAppVersionLivenessCheckPtrOutputWithContext(ctx context.Context) FlexibleAppVersionLivenessCheckPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionLivenessCheckPtrOutput)
-}
-
 type FlexibleAppVersionLivenessCheckOutput struct{ *pulumi.OutputState }
 
 func (FlexibleAppVersionLivenessCheckOutput) ElementType() reflect.Type {
@@ -4248,16 +4111,6 @@ func (o FlexibleAppVersionLivenessCheckOutput) ToFlexibleAppVersionLivenessCheck
 
 func (o FlexibleAppVersionLivenessCheckOutput) ToFlexibleAppVersionLivenessCheckOutputWithContext(ctx context.Context) FlexibleAppVersionLivenessCheckOutput {
 	return o
-}
-
-func (o FlexibleAppVersionLivenessCheckOutput) ToFlexibleAppVersionLivenessCheckPtrOutput() FlexibleAppVersionLivenessCheckPtrOutput {
-	return o.ToFlexibleAppVersionLivenessCheckPtrOutputWithContext(context.Background())
-}
-
-func (o FlexibleAppVersionLivenessCheckOutput) ToFlexibleAppVersionLivenessCheckPtrOutputWithContext(ctx context.Context) FlexibleAppVersionLivenessCheckPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexibleAppVersionLivenessCheck) *FlexibleAppVersionLivenessCheck {
-		return &v
-	}).(FlexibleAppVersionLivenessCheckPtrOutput)
 }
 
 // Interval between health checks.
@@ -4294,101 +4147,6 @@ func (o FlexibleAppVersionLivenessCheckOutput) SuccessThreshold() pulumi.Float64
 // Time before the check is considered failed. Default: "4s"
 func (o FlexibleAppVersionLivenessCheckOutput) Timeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionLivenessCheck) *string { return v.Timeout }).(pulumi.StringPtrOutput)
-}
-
-type FlexibleAppVersionLivenessCheckPtrOutput struct{ *pulumi.OutputState }
-
-func (FlexibleAppVersionLivenessCheckPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FlexibleAppVersionLivenessCheck)(nil)).Elem()
-}
-
-func (o FlexibleAppVersionLivenessCheckPtrOutput) ToFlexibleAppVersionLivenessCheckPtrOutput() FlexibleAppVersionLivenessCheckPtrOutput {
-	return o
-}
-
-func (o FlexibleAppVersionLivenessCheckPtrOutput) ToFlexibleAppVersionLivenessCheckPtrOutputWithContext(ctx context.Context) FlexibleAppVersionLivenessCheckPtrOutput {
-	return o
-}
-
-func (o FlexibleAppVersionLivenessCheckPtrOutput) Elem() FlexibleAppVersionLivenessCheckOutput {
-	return o.ApplyT(func(v *FlexibleAppVersionLivenessCheck) FlexibleAppVersionLivenessCheck {
-		if v != nil {
-			return *v
-		}
-		var ret FlexibleAppVersionLivenessCheck
-		return ret
-	}).(FlexibleAppVersionLivenessCheckOutput)
-}
-
-// Interval between health checks.
-func (o FlexibleAppVersionLivenessCheckPtrOutput) CheckInterval() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlexibleAppVersionLivenessCheck) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CheckInterval
-	}).(pulumi.StringPtrOutput)
-}
-
-// Number of consecutive failed checks required before considering the VM unhealthy. Default: 4.
-func (o FlexibleAppVersionLivenessCheckPtrOutput) FailureThreshold() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *FlexibleAppVersionLivenessCheck) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.FailureThreshold
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
-func (o FlexibleAppVersionLivenessCheckPtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlexibleAppVersionLivenessCheck) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Host
-	}).(pulumi.StringPtrOutput)
-}
-
-// The initial delay before starting to execute the checks. Default: "300s"
-func (o FlexibleAppVersionLivenessCheckPtrOutput) InitialDelay() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlexibleAppVersionLivenessCheck) *string {
-		if v == nil {
-			return nil
-		}
-		return v.InitialDelay
-	}).(pulumi.StringPtrOutput)
-}
-
-// Path to the static files matched by the URL pattern, from the application root directory.
-// The path can refer to text matched in groupings in the URL pattern.
-func (o FlexibleAppVersionLivenessCheckPtrOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlexibleAppVersionLivenessCheck) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Path
-	}).(pulumi.StringPtrOutput)
-}
-
-// Number of consecutive successful checks required before considering the VM healthy. Default: 2.
-func (o FlexibleAppVersionLivenessCheckPtrOutput) SuccessThreshold() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *FlexibleAppVersionLivenessCheck) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.SuccessThreshold
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Time before the check is considered failed. Default: "4s"
-func (o FlexibleAppVersionLivenessCheckPtrOutput) Timeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlexibleAppVersionLivenessCheck) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Timeout
-	}).(pulumi.StringPtrOutput)
 }
 
 type FlexibleAppVersionManualScaling struct {
@@ -4826,47 +4584,6 @@ func (i FlexibleAppVersionReadinessCheckArgs) ToFlexibleAppVersionReadinessCheck
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionReadinessCheckOutput)
 }
 
-func (i FlexibleAppVersionReadinessCheckArgs) ToFlexibleAppVersionReadinessCheckPtrOutput() FlexibleAppVersionReadinessCheckPtrOutput {
-	return i.ToFlexibleAppVersionReadinessCheckPtrOutputWithContext(context.Background())
-}
-
-func (i FlexibleAppVersionReadinessCheckArgs) ToFlexibleAppVersionReadinessCheckPtrOutputWithContext(ctx context.Context) FlexibleAppVersionReadinessCheckPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionReadinessCheckOutput).ToFlexibleAppVersionReadinessCheckPtrOutputWithContext(ctx)
-}
-
-// FlexibleAppVersionReadinessCheckPtrInput is an input type that accepts FlexibleAppVersionReadinessCheckArgs, FlexibleAppVersionReadinessCheckPtr and FlexibleAppVersionReadinessCheckPtrOutput values.
-// You can construct a concrete instance of `FlexibleAppVersionReadinessCheckPtrInput` via:
-//
-//          FlexibleAppVersionReadinessCheckArgs{...}
-//
-//  or:
-//
-//          nil
-type FlexibleAppVersionReadinessCheckPtrInput interface {
-	pulumi.Input
-
-	ToFlexibleAppVersionReadinessCheckPtrOutput() FlexibleAppVersionReadinessCheckPtrOutput
-	ToFlexibleAppVersionReadinessCheckPtrOutputWithContext(context.Context) FlexibleAppVersionReadinessCheckPtrOutput
-}
-
-type flexibleAppVersionReadinessCheckPtrType FlexibleAppVersionReadinessCheckArgs
-
-func FlexibleAppVersionReadinessCheckPtr(v *FlexibleAppVersionReadinessCheckArgs) FlexibleAppVersionReadinessCheckPtrInput {
-	return (*flexibleAppVersionReadinessCheckPtrType)(v)
-}
-
-func (*flexibleAppVersionReadinessCheckPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FlexibleAppVersionReadinessCheck)(nil)).Elem()
-}
-
-func (i *flexibleAppVersionReadinessCheckPtrType) ToFlexibleAppVersionReadinessCheckPtrOutput() FlexibleAppVersionReadinessCheckPtrOutput {
-	return i.ToFlexibleAppVersionReadinessCheckPtrOutputWithContext(context.Background())
-}
-
-func (i *flexibleAppVersionReadinessCheckPtrType) ToFlexibleAppVersionReadinessCheckPtrOutputWithContext(ctx context.Context) FlexibleAppVersionReadinessCheckPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionReadinessCheckPtrOutput)
-}
-
 type FlexibleAppVersionReadinessCheckOutput struct{ *pulumi.OutputState }
 
 func (FlexibleAppVersionReadinessCheckOutput) ElementType() reflect.Type {
@@ -4879,16 +4596,6 @@ func (o FlexibleAppVersionReadinessCheckOutput) ToFlexibleAppVersionReadinessChe
 
 func (o FlexibleAppVersionReadinessCheckOutput) ToFlexibleAppVersionReadinessCheckOutputWithContext(ctx context.Context) FlexibleAppVersionReadinessCheckOutput {
 	return o
-}
-
-func (o FlexibleAppVersionReadinessCheckOutput) ToFlexibleAppVersionReadinessCheckPtrOutput() FlexibleAppVersionReadinessCheckPtrOutput {
-	return o.ToFlexibleAppVersionReadinessCheckPtrOutputWithContext(context.Background())
-}
-
-func (o FlexibleAppVersionReadinessCheckOutput) ToFlexibleAppVersionReadinessCheckPtrOutputWithContext(ctx context.Context) FlexibleAppVersionReadinessCheckPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexibleAppVersionReadinessCheck) *FlexibleAppVersionReadinessCheck {
-		return &v
-	}).(FlexibleAppVersionReadinessCheckPtrOutput)
 }
 
 // A maximum time limit on application initialization, measured from moment the application successfully
@@ -4926,102 +4633,6 @@ func (o FlexibleAppVersionReadinessCheckOutput) SuccessThreshold() pulumi.Float6
 // Time before the check is considered failed. Default: "4s"
 func (o FlexibleAppVersionReadinessCheckOutput) Timeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionReadinessCheck) *string { return v.Timeout }).(pulumi.StringPtrOutput)
-}
-
-type FlexibleAppVersionReadinessCheckPtrOutput struct{ *pulumi.OutputState }
-
-func (FlexibleAppVersionReadinessCheckPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FlexibleAppVersionReadinessCheck)(nil)).Elem()
-}
-
-func (o FlexibleAppVersionReadinessCheckPtrOutput) ToFlexibleAppVersionReadinessCheckPtrOutput() FlexibleAppVersionReadinessCheckPtrOutput {
-	return o
-}
-
-func (o FlexibleAppVersionReadinessCheckPtrOutput) ToFlexibleAppVersionReadinessCheckPtrOutputWithContext(ctx context.Context) FlexibleAppVersionReadinessCheckPtrOutput {
-	return o
-}
-
-func (o FlexibleAppVersionReadinessCheckPtrOutput) Elem() FlexibleAppVersionReadinessCheckOutput {
-	return o.ApplyT(func(v *FlexibleAppVersionReadinessCheck) FlexibleAppVersionReadinessCheck {
-		if v != nil {
-			return *v
-		}
-		var ret FlexibleAppVersionReadinessCheck
-		return ret
-	}).(FlexibleAppVersionReadinessCheckOutput)
-}
-
-// A maximum time limit on application initialization, measured from moment the application successfully
-// replies to a healthcheck until it is ready to serve traffic. Default: "300s"
-func (o FlexibleAppVersionReadinessCheckPtrOutput) AppStartTimeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlexibleAppVersionReadinessCheck) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AppStartTimeout
-	}).(pulumi.StringPtrOutput)
-}
-
-// Interval between health checks.
-func (o FlexibleAppVersionReadinessCheckPtrOutput) CheckInterval() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlexibleAppVersionReadinessCheck) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CheckInterval
-	}).(pulumi.StringPtrOutput)
-}
-
-// Number of consecutive failed checks required before considering the VM unhealthy. Default: 4.
-func (o FlexibleAppVersionReadinessCheckPtrOutput) FailureThreshold() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *FlexibleAppVersionReadinessCheck) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.FailureThreshold
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
-func (o FlexibleAppVersionReadinessCheckPtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlexibleAppVersionReadinessCheck) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Host
-	}).(pulumi.StringPtrOutput)
-}
-
-// Path to the static files matched by the URL pattern, from the application root directory.
-// The path can refer to text matched in groupings in the URL pattern.
-func (o FlexibleAppVersionReadinessCheckPtrOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlexibleAppVersionReadinessCheck) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Path
-	}).(pulumi.StringPtrOutput)
-}
-
-// Number of consecutive successful checks required before considering the VM healthy. Default: 2.
-func (o FlexibleAppVersionReadinessCheckPtrOutput) SuccessThreshold() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *FlexibleAppVersionReadinessCheck) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.SuccessThreshold
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Time before the check is considered failed. Default: "4s"
-func (o FlexibleAppVersionReadinessCheckPtrOutput) Timeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlexibleAppVersionReadinessCheck) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Timeout
-	}).(pulumi.StringPtrOutput)
 }
 
 type FlexibleAppVersionResources struct {
@@ -5511,47 +5122,6 @@ func (i ServiceNetworkSettingsNetworkSettingsArgs) ToServiceNetworkSettingsNetwo
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceNetworkSettingsNetworkSettingsOutput)
 }
 
-func (i ServiceNetworkSettingsNetworkSettingsArgs) ToServiceNetworkSettingsNetworkSettingsPtrOutput() ServiceNetworkSettingsNetworkSettingsPtrOutput {
-	return i.ToServiceNetworkSettingsNetworkSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i ServiceNetworkSettingsNetworkSettingsArgs) ToServiceNetworkSettingsNetworkSettingsPtrOutputWithContext(ctx context.Context) ServiceNetworkSettingsNetworkSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceNetworkSettingsNetworkSettingsOutput).ToServiceNetworkSettingsNetworkSettingsPtrOutputWithContext(ctx)
-}
-
-// ServiceNetworkSettingsNetworkSettingsPtrInput is an input type that accepts ServiceNetworkSettingsNetworkSettingsArgs, ServiceNetworkSettingsNetworkSettingsPtr and ServiceNetworkSettingsNetworkSettingsPtrOutput values.
-// You can construct a concrete instance of `ServiceNetworkSettingsNetworkSettingsPtrInput` via:
-//
-//          ServiceNetworkSettingsNetworkSettingsArgs{...}
-//
-//  or:
-//
-//          nil
-type ServiceNetworkSettingsNetworkSettingsPtrInput interface {
-	pulumi.Input
-
-	ToServiceNetworkSettingsNetworkSettingsPtrOutput() ServiceNetworkSettingsNetworkSettingsPtrOutput
-	ToServiceNetworkSettingsNetworkSettingsPtrOutputWithContext(context.Context) ServiceNetworkSettingsNetworkSettingsPtrOutput
-}
-
-type serviceNetworkSettingsNetworkSettingsPtrType ServiceNetworkSettingsNetworkSettingsArgs
-
-func ServiceNetworkSettingsNetworkSettingsPtr(v *ServiceNetworkSettingsNetworkSettingsArgs) ServiceNetworkSettingsNetworkSettingsPtrInput {
-	return (*serviceNetworkSettingsNetworkSettingsPtrType)(v)
-}
-
-func (*serviceNetworkSettingsNetworkSettingsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServiceNetworkSettingsNetworkSettings)(nil)).Elem()
-}
-
-func (i *serviceNetworkSettingsNetworkSettingsPtrType) ToServiceNetworkSettingsNetworkSettingsPtrOutput() ServiceNetworkSettingsNetworkSettingsPtrOutput {
-	return i.ToServiceNetworkSettingsNetworkSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i *serviceNetworkSettingsNetworkSettingsPtrType) ToServiceNetworkSettingsNetworkSettingsPtrOutputWithContext(ctx context.Context) ServiceNetworkSettingsNetworkSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceNetworkSettingsNetworkSettingsPtrOutput)
-}
-
 type ServiceNetworkSettingsNetworkSettingsOutput struct{ *pulumi.OutputState }
 
 func (ServiceNetworkSettingsNetworkSettingsOutput) ElementType() reflect.Type {
@@ -5566,57 +5136,11 @@ func (o ServiceNetworkSettingsNetworkSettingsOutput) ToServiceNetworkSettingsNet
 	return o
 }
 
-func (o ServiceNetworkSettingsNetworkSettingsOutput) ToServiceNetworkSettingsNetworkSettingsPtrOutput() ServiceNetworkSettingsNetworkSettingsPtrOutput {
-	return o.ToServiceNetworkSettingsNetworkSettingsPtrOutputWithContext(context.Background())
-}
-
-func (o ServiceNetworkSettingsNetworkSettingsOutput) ToServiceNetworkSettingsNetworkSettingsPtrOutputWithContext(ctx context.Context) ServiceNetworkSettingsNetworkSettingsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceNetworkSettingsNetworkSettings) *ServiceNetworkSettingsNetworkSettings {
-		return &v
-	}).(ServiceNetworkSettingsNetworkSettingsPtrOutput)
-}
-
 // The ingress settings for version or service.
 // Default value is `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`.
 // Possible values are `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, and `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
 func (o ServiceNetworkSettingsNetworkSettingsOutput) IngressTrafficAllowed() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceNetworkSettingsNetworkSettings) *string { return v.IngressTrafficAllowed }).(pulumi.StringPtrOutput)
-}
-
-type ServiceNetworkSettingsNetworkSettingsPtrOutput struct{ *pulumi.OutputState }
-
-func (ServiceNetworkSettingsNetworkSettingsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServiceNetworkSettingsNetworkSettings)(nil)).Elem()
-}
-
-func (o ServiceNetworkSettingsNetworkSettingsPtrOutput) ToServiceNetworkSettingsNetworkSettingsPtrOutput() ServiceNetworkSettingsNetworkSettingsPtrOutput {
-	return o
-}
-
-func (o ServiceNetworkSettingsNetworkSettingsPtrOutput) ToServiceNetworkSettingsNetworkSettingsPtrOutputWithContext(ctx context.Context) ServiceNetworkSettingsNetworkSettingsPtrOutput {
-	return o
-}
-
-func (o ServiceNetworkSettingsNetworkSettingsPtrOutput) Elem() ServiceNetworkSettingsNetworkSettingsOutput {
-	return o.ApplyT(func(v *ServiceNetworkSettingsNetworkSettings) ServiceNetworkSettingsNetworkSettings {
-		if v != nil {
-			return *v
-		}
-		var ret ServiceNetworkSettingsNetworkSettings
-		return ret
-	}).(ServiceNetworkSettingsNetworkSettingsOutput)
-}
-
-// The ingress settings for version or service.
-// Default value is `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`.
-// Possible values are `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, and `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
-func (o ServiceNetworkSettingsNetworkSettingsPtrOutput) IngressTrafficAllowed() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServiceNetworkSettingsNetworkSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.IngressTrafficAllowed
-	}).(pulumi.StringPtrOutput)
 }
 
 type StandardAppVersionAutomaticScaling struct {
@@ -6270,47 +5794,6 @@ func (i StandardAppVersionDeploymentArgs) ToStandardAppVersionDeploymentOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionDeploymentOutput)
 }
 
-func (i StandardAppVersionDeploymentArgs) ToStandardAppVersionDeploymentPtrOutput() StandardAppVersionDeploymentPtrOutput {
-	return i.ToStandardAppVersionDeploymentPtrOutputWithContext(context.Background())
-}
-
-func (i StandardAppVersionDeploymentArgs) ToStandardAppVersionDeploymentPtrOutputWithContext(ctx context.Context) StandardAppVersionDeploymentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionDeploymentOutput).ToStandardAppVersionDeploymentPtrOutputWithContext(ctx)
-}
-
-// StandardAppVersionDeploymentPtrInput is an input type that accepts StandardAppVersionDeploymentArgs, StandardAppVersionDeploymentPtr and StandardAppVersionDeploymentPtrOutput values.
-// You can construct a concrete instance of `StandardAppVersionDeploymentPtrInput` via:
-//
-//          StandardAppVersionDeploymentArgs{...}
-//
-//  or:
-//
-//          nil
-type StandardAppVersionDeploymentPtrInput interface {
-	pulumi.Input
-
-	ToStandardAppVersionDeploymentPtrOutput() StandardAppVersionDeploymentPtrOutput
-	ToStandardAppVersionDeploymentPtrOutputWithContext(context.Context) StandardAppVersionDeploymentPtrOutput
-}
-
-type standardAppVersionDeploymentPtrType StandardAppVersionDeploymentArgs
-
-func StandardAppVersionDeploymentPtr(v *StandardAppVersionDeploymentArgs) StandardAppVersionDeploymentPtrInput {
-	return (*standardAppVersionDeploymentPtrType)(v)
-}
-
-func (*standardAppVersionDeploymentPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StandardAppVersionDeployment)(nil)).Elem()
-}
-
-func (i *standardAppVersionDeploymentPtrType) ToStandardAppVersionDeploymentPtrOutput() StandardAppVersionDeploymentPtrOutput {
-	return i.ToStandardAppVersionDeploymentPtrOutputWithContext(context.Background())
-}
-
-func (i *standardAppVersionDeploymentPtrType) ToStandardAppVersionDeploymentPtrOutputWithContext(ctx context.Context) StandardAppVersionDeploymentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionDeploymentPtrOutput)
-}
-
 type StandardAppVersionDeploymentOutput struct{ *pulumi.OutputState }
 
 func (StandardAppVersionDeploymentOutput) ElementType() reflect.Type {
@@ -6325,16 +5808,6 @@ func (o StandardAppVersionDeploymentOutput) ToStandardAppVersionDeploymentOutput
 	return o
 }
 
-func (o StandardAppVersionDeploymentOutput) ToStandardAppVersionDeploymentPtrOutput() StandardAppVersionDeploymentPtrOutput {
-	return o.ToStandardAppVersionDeploymentPtrOutputWithContext(context.Background())
-}
-
-func (o StandardAppVersionDeploymentOutput) ToStandardAppVersionDeploymentPtrOutputWithContext(ctx context.Context) StandardAppVersionDeploymentPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StandardAppVersionDeployment) *StandardAppVersionDeployment {
-		return &v
-	}).(StandardAppVersionDeploymentPtrOutput)
-}
-
 // Manifest of the files stored in Google Cloud Storage that are included as part of this version.
 // All files must be readable using the credentials supplied with this call.
 // Structure is documented below.
@@ -6346,53 +5819,6 @@ func (o StandardAppVersionDeploymentOutput) Files() StandardAppVersionDeployment
 // Structure is documented below.
 func (o StandardAppVersionDeploymentOutput) Zip() StandardAppVersionDeploymentZipPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionDeployment) *StandardAppVersionDeploymentZip { return v.Zip }).(StandardAppVersionDeploymentZipPtrOutput)
-}
-
-type StandardAppVersionDeploymentPtrOutput struct{ *pulumi.OutputState }
-
-func (StandardAppVersionDeploymentPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StandardAppVersionDeployment)(nil)).Elem()
-}
-
-func (o StandardAppVersionDeploymentPtrOutput) ToStandardAppVersionDeploymentPtrOutput() StandardAppVersionDeploymentPtrOutput {
-	return o
-}
-
-func (o StandardAppVersionDeploymentPtrOutput) ToStandardAppVersionDeploymentPtrOutputWithContext(ctx context.Context) StandardAppVersionDeploymentPtrOutput {
-	return o
-}
-
-func (o StandardAppVersionDeploymentPtrOutput) Elem() StandardAppVersionDeploymentOutput {
-	return o.ApplyT(func(v *StandardAppVersionDeployment) StandardAppVersionDeployment {
-		if v != nil {
-			return *v
-		}
-		var ret StandardAppVersionDeployment
-		return ret
-	}).(StandardAppVersionDeploymentOutput)
-}
-
-// Manifest of the files stored in Google Cloud Storage that are included as part of this version.
-// All files must be readable using the credentials supplied with this call.
-// Structure is documented below.
-func (o StandardAppVersionDeploymentPtrOutput) Files() StandardAppVersionDeploymentFileArrayOutput {
-	return o.ApplyT(func(v *StandardAppVersionDeployment) []StandardAppVersionDeploymentFile {
-		if v == nil {
-			return nil
-		}
-		return v.Files
-	}).(StandardAppVersionDeploymentFileArrayOutput)
-}
-
-// Zip File
-// Structure is documented below.
-func (o StandardAppVersionDeploymentPtrOutput) Zip() StandardAppVersionDeploymentZipPtrOutput {
-	return o.ApplyT(func(v *StandardAppVersionDeployment) *StandardAppVersionDeploymentZip {
-		if v == nil {
-			return nil
-		}
-		return v.Zip
-	}).(StandardAppVersionDeploymentZipPtrOutput)
 }
 
 type StandardAppVersionDeploymentFile struct {
@@ -6699,47 +6125,6 @@ func (i StandardAppVersionEntrypointArgs) ToStandardAppVersionEntrypointOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionEntrypointOutput)
 }
 
-func (i StandardAppVersionEntrypointArgs) ToStandardAppVersionEntrypointPtrOutput() StandardAppVersionEntrypointPtrOutput {
-	return i.ToStandardAppVersionEntrypointPtrOutputWithContext(context.Background())
-}
-
-func (i StandardAppVersionEntrypointArgs) ToStandardAppVersionEntrypointPtrOutputWithContext(ctx context.Context) StandardAppVersionEntrypointPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionEntrypointOutput).ToStandardAppVersionEntrypointPtrOutputWithContext(ctx)
-}
-
-// StandardAppVersionEntrypointPtrInput is an input type that accepts StandardAppVersionEntrypointArgs, StandardAppVersionEntrypointPtr and StandardAppVersionEntrypointPtrOutput values.
-// You can construct a concrete instance of `StandardAppVersionEntrypointPtrInput` via:
-//
-//          StandardAppVersionEntrypointArgs{...}
-//
-//  or:
-//
-//          nil
-type StandardAppVersionEntrypointPtrInput interface {
-	pulumi.Input
-
-	ToStandardAppVersionEntrypointPtrOutput() StandardAppVersionEntrypointPtrOutput
-	ToStandardAppVersionEntrypointPtrOutputWithContext(context.Context) StandardAppVersionEntrypointPtrOutput
-}
-
-type standardAppVersionEntrypointPtrType StandardAppVersionEntrypointArgs
-
-func StandardAppVersionEntrypointPtr(v *StandardAppVersionEntrypointArgs) StandardAppVersionEntrypointPtrInput {
-	return (*standardAppVersionEntrypointPtrType)(v)
-}
-
-func (*standardAppVersionEntrypointPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StandardAppVersionEntrypoint)(nil)).Elem()
-}
-
-func (i *standardAppVersionEntrypointPtrType) ToStandardAppVersionEntrypointPtrOutput() StandardAppVersionEntrypointPtrOutput {
-	return i.ToStandardAppVersionEntrypointPtrOutputWithContext(context.Background())
-}
-
-func (i *standardAppVersionEntrypointPtrType) ToStandardAppVersionEntrypointPtrOutputWithContext(ctx context.Context) StandardAppVersionEntrypointPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionEntrypointPtrOutput)
-}
-
 type StandardAppVersionEntrypointOutput struct{ *pulumi.OutputState }
 
 func (StandardAppVersionEntrypointOutput) ElementType() reflect.Type {
@@ -6754,53 +6139,9 @@ func (o StandardAppVersionEntrypointOutput) ToStandardAppVersionEntrypointOutput
 	return o
 }
 
-func (o StandardAppVersionEntrypointOutput) ToStandardAppVersionEntrypointPtrOutput() StandardAppVersionEntrypointPtrOutput {
-	return o.ToStandardAppVersionEntrypointPtrOutputWithContext(context.Background())
-}
-
-func (o StandardAppVersionEntrypointOutput) ToStandardAppVersionEntrypointPtrOutputWithContext(ctx context.Context) StandardAppVersionEntrypointPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StandardAppVersionEntrypoint) *StandardAppVersionEntrypoint {
-		return &v
-	}).(StandardAppVersionEntrypointPtrOutput)
-}
-
 // The format should be a shell command that can be fed to bash -c.
 func (o StandardAppVersionEntrypointOutput) Shell() pulumi.StringOutput {
 	return o.ApplyT(func(v StandardAppVersionEntrypoint) string { return v.Shell }).(pulumi.StringOutput)
-}
-
-type StandardAppVersionEntrypointPtrOutput struct{ *pulumi.OutputState }
-
-func (StandardAppVersionEntrypointPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StandardAppVersionEntrypoint)(nil)).Elem()
-}
-
-func (o StandardAppVersionEntrypointPtrOutput) ToStandardAppVersionEntrypointPtrOutput() StandardAppVersionEntrypointPtrOutput {
-	return o
-}
-
-func (o StandardAppVersionEntrypointPtrOutput) ToStandardAppVersionEntrypointPtrOutputWithContext(ctx context.Context) StandardAppVersionEntrypointPtrOutput {
-	return o
-}
-
-func (o StandardAppVersionEntrypointPtrOutput) Elem() StandardAppVersionEntrypointOutput {
-	return o.ApplyT(func(v *StandardAppVersionEntrypoint) StandardAppVersionEntrypoint {
-		if v != nil {
-			return *v
-		}
-		var ret StandardAppVersionEntrypoint
-		return ret
-	}).(StandardAppVersionEntrypointOutput)
-}
-
-// The format should be a shell command that can be fed to bash -c.
-func (o StandardAppVersionEntrypointPtrOutput) Shell() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StandardAppVersionEntrypoint) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Shell
-	}).(pulumi.StringPtrOutput)
 }
 
 type StandardAppVersionHandler struct {
@@ -7788,7 +7129,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainMappingSslSettingsInput)(nil)).Elem(), DomainMappingSslSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainMappingSslSettingsPtrInput)(nil)).Elem(), DomainMappingSslSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EngineSplitTrafficSplitInput)(nil)).Elem(), EngineSplitTrafficSplitArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EngineSplitTrafficSplitPtrInput)(nil)).Elem(), EngineSplitTrafficSplitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlexibleAppVersionApiConfigInput)(nil)).Elem(), FlexibleAppVersionApiConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlexibleAppVersionApiConfigPtrInput)(nil)).Elem(), FlexibleAppVersionApiConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlexibleAppVersionAutomaticScalingInput)(nil)).Elem(), FlexibleAppVersionAutomaticScalingArgs{})
@@ -7822,13 +7162,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FlexibleAppVersionHandlerStaticFilesInput)(nil)).Elem(), FlexibleAppVersionHandlerStaticFilesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlexibleAppVersionHandlerStaticFilesPtrInput)(nil)).Elem(), FlexibleAppVersionHandlerStaticFilesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlexibleAppVersionLivenessCheckInput)(nil)).Elem(), FlexibleAppVersionLivenessCheckArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FlexibleAppVersionLivenessCheckPtrInput)(nil)).Elem(), FlexibleAppVersionLivenessCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlexibleAppVersionManualScalingInput)(nil)).Elem(), FlexibleAppVersionManualScalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlexibleAppVersionManualScalingPtrInput)(nil)).Elem(), FlexibleAppVersionManualScalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlexibleAppVersionNetworkInput)(nil)).Elem(), FlexibleAppVersionNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlexibleAppVersionNetworkPtrInput)(nil)).Elem(), FlexibleAppVersionNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlexibleAppVersionReadinessCheckInput)(nil)).Elem(), FlexibleAppVersionReadinessCheckArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FlexibleAppVersionReadinessCheckPtrInput)(nil)).Elem(), FlexibleAppVersionReadinessCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlexibleAppVersionResourcesInput)(nil)).Elem(), FlexibleAppVersionResourcesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlexibleAppVersionResourcesPtrInput)(nil)).Elem(), FlexibleAppVersionResourcesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlexibleAppVersionResourcesVolumeInput)(nil)).Elem(), FlexibleAppVersionResourcesVolumeArgs{})
@@ -7836,7 +7174,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FlexibleAppVersionVpcAccessConnectorInput)(nil)).Elem(), FlexibleAppVersionVpcAccessConnectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlexibleAppVersionVpcAccessConnectorPtrInput)(nil)).Elem(), FlexibleAppVersionVpcAccessConnectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceNetworkSettingsNetworkSettingsInput)(nil)).Elem(), ServiceNetworkSettingsNetworkSettingsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServiceNetworkSettingsNetworkSettingsPtrInput)(nil)).Elem(), ServiceNetworkSettingsNetworkSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardAppVersionAutomaticScalingInput)(nil)).Elem(), StandardAppVersionAutomaticScalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardAppVersionAutomaticScalingPtrInput)(nil)).Elem(), StandardAppVersionAutomaticScalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardAppVersionAutomaticScalingStandardSchedulerSettingsInput)(nil)).Elem(), StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs{})
@@ -7844,13 +7181,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardAppVersionBasicScalingInput)(nil)).Elem(), StandardAppVersionBasicScalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardAppVersionBasicScalingPtrInput)(nil)).Elem(), StandardAppVersionBasicScalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardAppVersionDeploymentInput)(nil)).Elem(), StandardAppVersionDeploymentArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StandardAppVersionDeploymentPtrInput)(nil)).Elem(), StandardAppVersionDeploymentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardAppVersionDeploymentFileInput)(nil)).Elem(), StandardAppVersionDeploymentFileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardAppVersionDeploymentFileArrayInput)(nil)).Elem(), StandardAppVersionDeploymentFileArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardAppVersionDeploymentZipInput)(nil)).Elem(), StandardAppVersionDeploymentZipArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardAppVersionDeploymentZipPtrInput)(nil)).Elem(), StandardAppVersionDeploymentZipArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardAppVersionEntrypointInput)(nil)).Elem(), StandardAppVersionEntrypointArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StandardAppVersionEntrypointPtrInput)(nil)).Elem(), StandardAppVersionEntrypointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardAppVersionHandlerInput)(nil)).Elem(), StandardAppVersionHandlerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardAppVersionHandlerArrayInput)(nil)).Elem(), StandardAppVersionHandlerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardAppVersionHandlerScriptInput)(nil)).Elem(), StandardAppVersionHandlerScriptArgs{})
@@ -7876,7 +7211,6 @@ func init() {
 	pulumi.RegisterOutputType(DomainMappingSslSettingsOutput{})
 	pulumi.RegisterOutputType(DomainMappingSslSettingsPtrOutput{})
 	pulumi.RegisterOutputType(EngineSplitTrafficSplitOutput{})
-	pulumi.RegisterOutputType(EngineSplitTrafficSplitPtrOutput{})
 	pulumi.RegisterOutputType(FlexibleAppVersionApiConfigOutput{})
 	pulumi.RegisterOutputType(FlexibleAppVersionApiConfigPtrOutput{})
 	pulumi.RegisterOutputType(FlexibleAppVersionAutomaticScalingOutput{})
@@ -7910,13 +7244,11 @@ func init() {
 	pulumi.RegisterOutputType(FlexibleAppVersionHandlerStaticFilesOutput{})
 	pulumi.RegisterOutputType(FlexibleAppVersionHandlerStaticFilesPtrOutput{})
 	pulumi.RegisterOutputType(FlexibleAppVersionLivenessCheckOutput{})
-	pulumi.RegisterOutputType(FlexibleAppVersionLivenessCheckPtrOutput{})
 	pulumi.RegisterOutputType(FlexibleAppVersionManualScalingOutput{})
 	pulumi.RegisterOutputType(FlexibleAppVersionManualScalingPtrOutput{})
 	pulumi.RegisterOutputType(FlexibleAppVersionNetworkOutput{})
 	pulumi.RegisterOutputType(FlexibleAppVersionNetworkPtrOutput{})
 	pulumi.RegisterOutputType(FlexibleAppVersionReadinessCheckOutput{})
-	pulumi.RegisterOutputType(FlexibleAppVersionReadinessCheckPtrOutput{})
 	pulumi.RegisterOutputType(FlexibleAppVersionResourcesOutput{})
 	pulumi.RegisterOutputType(FlexibleAppVersionResourcesPtrOutput{})
 	pulumi.RegisterOutputType(FlexibleAppVersionResourcesVolumeOutput{})
@@ -7924,7 +7256,6 @@ func init() {
 	pulumi.RegisterOutputType(FlexibleAppVersionVpcAccessConnectorOutput{})
 	pulumi.RegisterOutputType(FlexibleAppVersionVpcAccessConnectorPtrOutput{})
 	pulumi.RegisterOutputType(ServiceNetworkSettingsNetworkSettingsOutput{})
-	pulumi.RegisterOutputType(ServiceNetworkSettingsNetworkSettingsPtrOutput{})
 	pulumi.RegisterOutputType(StandardAppVersionAutomaticScalingOutput{})
 	pulumi.RegisterOutputType(StandardAppVersionAutomaticScalingPtrOutput{})
 	pulumi.RegisterOutputType(StandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput{})
@@ -7932,13 +7263,11 @@ func init() {
 	pulumi.RegisterOutputType(StandardAppVersionBasicScalingOutput{})
 	pulumi.RegisterOutputType(StandardAppVersionBasicScalingPtrOutput{})
 	pulumi.RegisterOutputType(StandardAppVersionDeploymentOutput{})
-	pulumi.RegisterOutputType(StandardAppVersionDeploymentPtrOutput{})
 	pulumi.RegisterOutputType(StandardAppVersionDeploymentFileOutput{})
 	pulumi.RegisterOutputType(StandardAppVersionDeploymentFileArrayOutput{})
 	pulumi.RegisterOutputType(StandardAppVersionDeploymentZipOutput{})
 	pulumi.RegisterOutputType(StandardAppVersionDeploymentZipPtrOutput{})
 	pulumi.RegisterOutputType(StandardAppVersionEntrypointOutput{})
-	pulumi.RegisterOutputType(StandardAppVersionEntrypointPtrOutput{})
 	pulumi.RegisterOutputType(StandardAppVersionHandlerOutput{})
 	pulumi.RegisterOutputType(StandardAppVersionHandlerArrayOutput{})
 	pulumi.RegisterOutputType(StandardAppVersionHandlerScriptOutput{})

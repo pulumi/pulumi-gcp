@@ -32,7 +32,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gameservices.NewRealm(ctx, "_default", &gameservices.RealmArgs{
+// 		_, err := gameservices.NewRealm(ctx, "default", &gameservices.RealmArgs{
 // 			Description: pulumi.String("one of the nine"),
 // 			Location:    pulumi.String("global"),
 // 			RealmId:     pulumi.String("tf-test-realm"),
@@ -219,7 +219,7 @@ type RealmInput interface {
 }
 
 func (*Realm) ElementType() reflect.Type {
-	return reflect.TypeOf((*Realm)(nil))
+	return reflect.TypeOf((**Realm)(nil)).Elem()
 }
 
 func (i *Realm) ToRealmOutput() RealmOutput {
@@ -228,35 +228,6 @@ func (i *Realm) ToRealmOutput() RealmOutput {
 
 func (i *Realm) ToRealmOutputWithContext(ctx context.Context) RealmOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RealmOutput)
-}
-
-func (i *Realm) ToRealmPtrOutput() RealmPtrOutput {
-	return i.ToRealmPtrOutputWithContext(context.Background())
-}
-
-func (i *Realm) ToRealmPtrOutputWithContext(ctx context.Context) RealmPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RealmPtrOutput)
-}
-
-type RealmPtrInput interface {
-	pulumi.Input
-
-	ToRealmPtrOutput() RealmPtrOutput
-	ToRealmPtrOutputWithContext(ctx context.Context) RealmPtrOutput
-}
-
-type realmPtrType RealmArgs
-
-func (*realmPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Realm)(nil))
-}
-
-func (i *realmPtrType) ToRealmPtrOutput() RealmPtrOutput {
-	return i.ToRealmPtrOutputWithContext(context.Background())
-}
-
-func (i *realmPtrType) ToRealmPtrOutputWithContext(ctx context.Context) RealmPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RealmPtrOutput)
 }
 
 // RealmArrayInput is an input type that accepts RealmArray and RealmArrayOutput values.
@@ -312,7 +283,7 @@ func (i RealmMap) ToRealmMapOutputWithContext(ctx context.Context) RealmMapOutpu
 type RealmOutput struct{ *pulumi.OutputState }
 
 func (RealmOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Realm)(nil))
+	return reflect.TypeOf((**Realm)(nil)).Elem()
 }
 
 func (o RealmOutput) ToRealmOutput() RealmOutput {
@@ -323,44 +294,10 @@ func (o RealmOutput) ToRealmOutputWithContext(ctx context.Context) RealmOutput {
 	return o
 }
 
-func (o RealmOutput) ToRealmPtrOutput() RealmPtrOutput {
-	return o.ToRealmPtrOutputWithContext(context.Background())
-}
-
-func (o RealmOutput) ToRealmPtrOutputWithContext(ctx context.Context) RealmPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Realm) *Realm {
-		return &v
-	}).(RealmPtrOutput)
-}
-
-type RealmPtrOutput struct{ *pulumi.OutputState }
-
-func (RealmPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Realm)(nil))
-}
-
-func (o RealmPtrOutput) ToRealmPtrOutput() RealmPtrOutput {
-	return o
-}
-
-func (o RealmPtrOutput) ToRealmPtrOutputWithContext(ctx context.Context) RealmPtrOutput {
-	return o
-}
-
-func (o RealmPtrOutput) Elem() RealmOutput {
-	return o.ApplyT(func(v *Realm) Realm {
-		if v != nil {
-			return *v
-		}
-		var ret Realm
-		return ret
-	}).(RealmOutput)
-}
-
 type RealmArrayOutput struct{ *pulumi.OutputState }
 
 func (RealmArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Realm)(nil))
+	return reflect.TypeOf((*[]*Realm)(nil)).Elem()
 }
 
 func (o RealmArrayOutput) ToRealmArrayOutput() RealmArrayOutput {
@@ -372,15 +309,15 @@ func (o RealmArrayOutput) ToRealmArrayOutputWithContext(ctx context.Context) Rea
 }
 
 func (o RealmArrayOutput) Index(i pulumi.IntInput) RealmOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Realm {
-		return vs[0].([]Realm)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Realm {
+		return vs[0].([]*Realm)[vs[1].(int)]
 	}).(RealmOutput)
 }
 
 type RealmMapOutput struct{ *pulumi.OutputState }
 
 func (RealmMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Realm)(nil))
+	return reflect.TypeOf((*map[string]*Realm)(nil)).Elem()
 }
 
 func (o RealmMapOutput) ToRealmMapOutput() RealmMapOutput {
@@ -392,18 +329,16 @@ func (o RealmMapOutput) ToRealmMapOutputWithContext(ctx context.Context) RealmMa
 }
 
 func (o RealmMapOutput) MapIndex(k pulumi.StringInput) RealmOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Realm {
-		return vs[0].(map[string]Realm)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Realm {
+		return vs[0].(map[string]*Realm)[vs[1].(string)]
 	}).(RealmOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RealmInput)(nil)).Elem(), &Realm{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RealmPtrInput)(nil)).Elem(), &Realm{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RealmArrayInput)(nil)).Elem(), RealmArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RealmMapInput)(nil)).Elem(), RealmMap{})
 	pulumi.RegisterOutputType(RealmOutput{})
-	pulumi.RegisterOutputType(RealmPtrOutput{})
 	pulumi.RegisterOutputType(RealmArrayOutput{})
 	pulumi.RegisterOutputType(RealmMapOutput{})
 }

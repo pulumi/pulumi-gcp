@@ -266,7 +266,7 @@ type ObjectAccessControlInput interface {
 }
 
 func (*ObjectAccessControl) ElementType() reflect.Type {
-	return reflect.TypeOf((*ObjectAccessControl)(nil))
+	return reflect.TypeOf((**ObjectAccessControl)(nil)).Elem()
 }
 
 func (i *ObjectAccessControl) ToObjectAccessControlOutput() ObjectAccessControlOutput {
@@ -275,35 +275,6 @@ func (i *ObjectAccessControl) ToObjectAccessControlOutput() ObjectAccessControlO
 
 func (i *ObjectAccessControl) ToObjectAccessControlOutputWithContext(ctx context.Context) ObjectAccessControlOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectAccessControlOutput)
-}
-
-func (i *ObjectAccessControl) ToObjectAccessControlPtrOutput() ObjectAccessControlPtrOutput {
-	return i.ToObjectAccessControlPtrOutputWithContext(context.Background())
-}
-
-func (i *ObjectAccessControl) ToObjectAccessControlPtrOutputWithContext(ctx context.Context) ObjectAccessControlPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ObjectAccessControlPtrOutput)
-}
-
-type ObjectAccessControlPtrInput interface {
-	pulumi.Input
-
-	ToObjectAccessControlPtrOutput() ObjectAccessControlPtrOutput
-	ToObjectAccessControlPtrOutputWithContext(ctx context.Context) ObjectAccessControlPtrOutput
-}
-
-type objectAccessControlPtrType ObjectAccessControlArgs
-
-func (*objectAccessControlPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ObjectAccessControl)(nil))
-}
-
-func (i *objectAccessControlPtrType) ToObjectAccessControlPtrOutput() ObjectAccessControlPtrOutput {
-	return i.ToObjectAccessControlPtrOutputWithContext(context.Background())
-}
-
-func (i *objectAccessControlPtrType) ToObjectAccessControlPtrOutputWithContext(ctx context.Context) ObjectAccessControlPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ObjectAccessControlPtrOutput)
 }
 
 // ObjectAccessControlArrayInput is an input type that accepts ObjectAccessControlArray and ObjectAccessControlArrayOutput values.
@@ -359,7 +330,7 @@ func (i ObjectAccessControlMap) ToObjectAccessControlMapOutputWithContext(ctx co
 type ObjectAccessControlOutput struct{ *pulumi.OutputState }
 
 func (ObjectAccessControlOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ObjectAccessControl)(nil))
+	return reflect.TypeOf((**ObjectAccessControl)(nil)).Elem()
 }
 
 func (o ObjectAccessControlOutput) ToObjectAccessControlOutput() ObjectAccessControlOutput {
@@ -370,44 +341,10 @@ func (o ObjectAccessControlOutput) ToObjectAccessControlOutputWithContext(ctx co
 	return o
 }
 
-func (o ObjectAccessControlOutput) ToObjectAccessControlPtrOutput() ObjectAccessControlPtrOutput {
-	return o.ToObjectAccessControlPtrOutputWithContext(context.Background())
-}
-
-func (o ObjectAccessControlOutput) ToObjectAccessControlPtrOutputWithContext(ctx context.Context) ObjectAccessControlPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ObjectAccessControl) *ObjectAccessControl {
-		return &v
-	}).(ObjectAccessControlPtrOutput)
-}
-
-type ObjectAccessControlPtrOutput struct{ *pulumi.OutputState }
-
-func (ObjectAccessControlPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ObjectAccessControl)(nil))
-}
-
-func (o ObjectAccessControlPtrOutput) ToObjectAccessControlPtrOutput() ObjectAccessControlPtrOutput {
-	return o
-}
-
-func (o ObjectAccessControlPtrOutput) ToObjectAccessControlPtrOutputWithContext(ctx context.Context) ObjectAccessControlPtrOutput {
-	return o
-}
-
-func (o ObjectAccessControlPtrOutput) Elem() ObjectAccessControlOutput {
-	return o.ApplyT(func(v *ObjectAccessControl) ObjectAccessControl {
-		if v != nil {
-			return *v
-		}
-		var ret ObjectAccessControl
-		return ret
-	}).(ObjectAccessControlOutput)
-}
-
 type ObjectAccessControlArrayOutput struct{ *pulumi.OutputState }
 
 func (ObjectAccessControlArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ObjectAccessControl)(nil))
+	return reflect.TypeOf((*[]*ObjectAccessControl)(nil)).Elem()
 }
 
 func (o ObjectAccessControlArrayOutput) ToObjectAccessControlArrayOutput() ObjectAccessControlArrayOutput {
@@ -419,15 +356,15 @@ func (o ObjectAccessControlArrayOutput) ToObjectAccessControlArrayOutputWithCont
 }
 
 func (o ObjectAccessControlArrayOutput) Index(i pulumi.IntInput) ObjectAccessControlOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ObjectAccessControl {
-		return vs[0].([]ObjectAccessControl)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ObjectAccessControl {
+		return vs[0].([]*ObjectAccessControl)[vs[1].(int)]
 	}).(ObjectAccessControlOutput)
 }
 
 type ObjectAccessControlMapOutput struct{ *pulumi.OutputState }
 
 func (ObjectAccessControlMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ObjectAccessControl)(nil))
+	return reflect.TypeOf((*map[string]*ObjectAccessControl)(nil)).Elem()
 }
 
 func (o ObjectAccessControlMapOutput) ToObjectAccessControlMapOutput() ObjectAccessControlMapOutput {
@@ -439,18 +376,16 @@ func (o ObjectAccessControlMapOutput) ToObjectAccessControlMapOutputWithContext(
 }
 
 func (o ObjectAccessControlMapOutput) MapIndex(k pulumi.StringInput) ObjectAccessControlOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ObjectAccessControl {
-		return vs[0].(map[string]ObjectAccessControl)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ObjectAccessControl {
+		return vs[0].(map[string]*ObjectAccessControl)[vs[1].(string)]
 	}).(ObjectAccessControlOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectAccessControlInput)(nil)).Elem(), &ObjectAccessControl{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ObjectAccessControlPtrInput)(nil)).Elem(), &ObjectAccessControl{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectAccessControlArrayInput)(nil)).Elem(), ObjectAccessControlArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectAccessControlMapInput)(nil)).Elem(), ObjectAccessControlMap{})
 	pulumi.RegisterOutputType(ObjectAccessControlOutput{})
-	pulumi.RegisterOutputType(ObjectAccessControlPtrOutput{})
 	pulumi.RegisterOutputType(ObjectAccessControlArrayOutput{})
 	pulumi.RegisterOutputType(ObjectAccessControlMapOutput{})
 }

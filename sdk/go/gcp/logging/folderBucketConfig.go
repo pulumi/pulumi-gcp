@@ -30,7 +30,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := organizations.NewFolder(ctx, "_default", &organizations.FolderArgs{
+// 		_, err := organizations.NewFolder(ctx, "default", &organizations.FolderArgs{
 // 			DisplayName: pulumi.String("some-folder-name"),
 // 			Parent:      pulumi.String("organizations/123456789"),
 // 		})
@@ -191,7 +191,7 @@ type FolderBucketConfigInput interface {
 }
 
 func (*FolderBucketConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((*FolderBucketConfig)(nil))
+	return reflect.TypeOf((**FolderBucketConfig)(nil)).Elem()
 }
 
 func (i *FolderBucketConfig) ToFolderBucketConfigOutput() FolderBucketConfigOutput {
@@ -200,35 +200,6 @@ func (i *FolderBucketConfig) ToFolderBucketConfigOutput() FolderBucketConfigOutp
 
 func (i *FolderBucketConfig) ToFolderBucketConfigOutputWithContext(ctx context.Context) FolderBucketConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FolderBucketConfigOutput)
-}
-
-func (i *FolderBucketConfig) ToFolderBucketConfigPtrOutput() FolderBucketConfigPtrOutput {
-	return i.ToFolderBucketConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *FolderBucketConfig) ToFolderBucketConfigPtrOutputWithContext(ctx context.Context) FolderBucketConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FolderBucketConfigPtrOutput)
-}
-
-type FolderBucketConfigPtrInput interface {
-	pulumi.Input
-
-	ToFolderBucketConfigPtrOutput() FolderBucketConfigPtrOutput
-	ToFolderBucketConfigPtrOutputWithContext(ctx context.Context) FolderBucketConfigPtrOutput
-}
-
-type folderBucketConfigPtrType FolderBucketConfigArgs
-
-func (*folderBucketConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FolderBucketConfig)(nil))
-}
-
-func (i *folderBucketConfigPtrType) ToFolderBucketConfigPtrOutput() FolderBucketConfigPtrOutput {
-	return i.ToFolderBucketConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *folderBucketConfigPtrType) ToFolderBucketConfigPtrOutputWithContext(ctx context.Context) FolderBucketConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FolderBucketConfigPtrOutput)
 }
 
 // FolderBucketConfigArrayInput is an input type that accepts FolderBucketConfigArray and FolderBucketConfigArrayOutput values.
@@ -284,7 +255,7 @@ func (i FolderBucketConfigMap) ToFolderBucketConfigMapOutputWithContext(ctx cont
 type FolderBucketConfigOutput struct{ *pulumi.OutputState }
 
 func (FolderBucketConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FolderBucketConfig)(nil))
+	return reflect.TypeOf((**FolderBucketConfig)(nil)).Elem()
 }
 
 func (o FolderBucketConfigOutput) ToFolderBucketConfigOutput() FolderBucketConfigOutput {
@@ -295,44 +266,10 @@ func (o FolderBucketConfigOutput) ToFolderBucketConfigOutputWithContext(ctx cont
 	return o
 }
 
-func (o FolderBucketConfigOutput) ToFolderBucketConfigPtrOutput() FolderBucketConfigPtrOutput {
-	return o.ToFolderBucketConfigPtrOutputWithContext(context.Background())
-}
-
-func (o FolderBucketConfigOutput) ToFolderBucketConfigPtrOutputWithContext(ctx context.Context) FolderBucketConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FolderBucketConfig) *FolderBucketConfig {
-		return &v
-	}).(FolderBucketConfigPtrOutput)
-}
-
-type FolderBucketConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (FolderBucketConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FolderBucketConfig)(nil))
-}
-
-func (o FolderBucketConfigPtrOutput) ToFolderBucketConfigPtrOutput() FolderBucketConfigPtrOutput {
-	return o
-}
-
-func (o FolderBucketConfigPtrOutput) ToFolderBucketConfigPtrOutputWithContext(ctx context.Context) FolderBucketConfigPtrOutput {
-	return o
-}
-
-func (o FolderBucketConfigPtrOutput) Elem() FolderBucketConfigOutput {
-	return o.ApplyT(func(v *FolderBucketConfig) FolderBucketConfig {
-		if v != nil {
-			return *v
-		}
-		var ret FolderBucketConfig
-		return ret
-	}).(FolderBucketConfigOutput)
-}
-
 type FolderBucketConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (FolderBucketConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FolderBucketConfig)(nil))
+	return reflect.TypeOf((*[]*FolderBucketConfig)(nil)).Elem()
 }
 
 func (o FolderBucketConfigArrayOutput) ToFolderBucketConfigArrayOutput() FolderBucketConfigArrayOutput {
@@ -344,15 +281,15 @@ func (o FolderBucketConfigArrayOutput) ToFolderBucketConfigArrayOutputWithContex
 }
 
 func (o FolderBucketConfigArrayOutput) Index(i pulumi.IntInput) FolderBucketConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FolderBucketConfig {
-		return vs[0].([]FolderBucketConfig)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FolderBucketConfig {
+		return vs[0].([]*FolderBucketConfig)[vs[1].(int)]
 	}).(FolderBucketConfigOutput)
 }
 
 type FolderBucketConfigMapOutput struct{ *pulumi.OutputState }
 
 func (FolderBucketConfigMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]FolderBucketConfig)(nil))
+	return reflect.TypeOf((*map[string]*FolderBucketConfig)(nil)).Elem()
 }
 
 func (o FolderBucketConfigMapOutput) ToFolderBucketConfigMapOutput() FolderBucketConfigMapOutput {
@@ -364,18 +301,16 @@ func (o FolderBucketConfigMapOutput) ToFolderBucketConfigMapOutputWithContext(ct
 }
 
 func (o FolderBucketConfigMapOutput) MapIndex(k pulumi.StringInput) FolderBucketConfigOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) FolderBucketConfig {
-		return vs[0].(map[string]FolderBucketConfig)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *FolderBucketConfig {
+		return vs[0].(map[string]*FolderBucketConfig)[vs[1].(string)]
 	}).(FolderBucketConfigOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FolderBucketConfigInput)(nil)).Elem(), &FolderBucketConfig{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FolderBucketConfigPtrInput)(nil)).Elem(), &FolderBucketConfig{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FolderBucketConfigArrayInput)(nil)).Elem(), FolderBucketConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FolderBucketConfigMapInput)(nil)).Elem(), FolderBucketConfigMap{})
 	pulumi.RegisterOutputType(FolderBucketConfigOutput{})
-	pulumi.RegisterOutputType(FolderBucketConfigPtrOutput{})
 	pulumi.RegisterOutputType(FolderBucketConfigArrayOutput{})
 	pulumi.RegisterOutputType(FolderBucketConfigMapOutput{})
 }

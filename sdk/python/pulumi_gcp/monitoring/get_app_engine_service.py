@@ -143,7 +143,7 @@ def get_app_engine_service(module_id: Optional[str] = None,
             "port": "8080",
         },
         delete_service_on_destroy=False)
-    srv = myapp.service.apply(lambda service: gcp.monitoring.get_app_engine_service(module_id=service))
+    srv = gcp.monitoring.get_app_engine_service_output(module_id=myapp.service)
     ```
 
 
@@ -217,7 +217,7 @@ def get_app_engine_service_output(module_id: Optional[pulumi.Input[str]] = None,
             "port": "8080",
         },
         delete_service_on_destroy=False)
-    srv = myapp.service.apply(lambda service: gcp.monitoring.get_app_engine_service(module_id=service))
+    srv = gcp.monitoring.get_app_engine_service_output(module_id=myapp.service)
     ```
 
 

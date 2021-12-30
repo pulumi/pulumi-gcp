@@ -120,28 +120,28 @@ export class DiskResourcePolicyAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: DiskResourcePolicyAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DiskResourcePolicyAttachmentArgs | DiskResourcePolicyAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DiskResourcePolicyAttachmentState | undefined;
-            inputs["disk"] = state ? state.disk : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["disk"] = state ? state.disk : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as DiskResourcePolicyAttachmentArgs | undefined;
             if ((!args || args.disk === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'disk'");
             }
-            inputs["disk"] = args ? args.disk : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["disk"] = args ? args.disk : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["zone"] = args ? args.zone : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(DiskResourcePolicyAttachment.__pulumiType, name, inputs, opts);
+        super(DiskResourcePolicyAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

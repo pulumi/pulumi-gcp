@@ -214,14 +214,14 @@ export class MachineImageIamPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: MachineImageIamPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MachineImageIamPolicyArgs | MachineImageIamPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MachineImageIamPolicyState | undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["machineImage"] = state ? state.machineImage : undefined;
-            inputs["policyData"] = state ? state.policyData : undefined;
-            inputs["project"] = state ? state.project : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["machineImage"] = state ? state.machineImage : undefined;
+            resourceInputs["policyData"] = state ? state.policyData : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as MachineImageIamPolicyArgs | undefined;
             if ((!args || args.machineImage === undefined) && !opts.urn) {
@@ -230,15 +230,15 @@ export class MachineImageIamPolicy extends pulumi.CustomResource {
             if ((!args || args.policyData === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
-            inputs["machineImage"] = args ? args.machineImage : undefined;
-            inputs["policyData"] = args ? args.policyData : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["machineImage"] = args ? args.machineImage : undefined;
+            resourceInputs["policyData"] = args ? args.policyData : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(MachineImageIamPolicy.__pulumiType, name, inputs, opts);
+        super(MachineImageIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

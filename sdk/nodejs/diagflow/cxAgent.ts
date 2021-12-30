@@ -160,24 +160,24 @@ export class CxAgent extends pulumi.CustomResource {
      */
     constructor(name: string, args: CxAgentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CxAgentArgs | CxAgentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CxAgentState | undefined;
-            inputs["avatarUri"] = state ? state.avatarUri : undefined;
-            inputs["defaultLanguageCode"] = state ? state.defaultLanguageCode : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["enableSpellCorrection"] = state ? state.enableSpellCorrection : undefined;
-            inputs["enableStackdriverLogging"] = state ? state.enableStackdriverLogging : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["securitySettings"] = state ? state.securitySettings : undefined;
-            inputs["speechToTextSettings"] = state ? state.speechToTextSettings : undefined;
-            inputs["startFlow"] = state ? state.startFlow : undefined;
-            inputs["supportedLanguageCodes"] = state ? state.supportedLanguageCodes : undefined;
-            inputs["timeZone"] = state ? state.timeZone : undefined;
+            resourceInputs["avatarUri"] = state ? state.avatarUri : undefined;
+            resourceInputs["defaultLanguageCode"] = state ? state.defaultLanguageCode : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["enableSpellCorrection"] = state ? state.enableSpellCorrection : undefined;
+            resourceInputs["enableStackdriverLogging"] = state ? state.enableStackdriverLogging : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["securitySettings"] = state ? state.securitySettings : undefined;
+            resourceInputs["speechToTextSettings"] = state ? state.speechToTextSettings : undefined;
+            resourceInputs["startFlow"] = state ? state.startFlow : undefined;
+            resourceInputs["supportedLanguageCodes"] = state ? state.supportedLanguageCodes : undefined;
+            resourceInputs["timeZone"] = state ? state.timeZone : undefined;
         } else {
             const args = argsOrState as CxAgentArgs | undefined;
             if ((!args || args.defaultLanguageCode === undefined) && !opts.urn) {
@@ -192,25 +192,25 @@ export class CxAgent extends pulumi.CustomResource {
             if ((!args || args.timeZone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'timeZone'");
             }
-            inputs["avatarUri"] = args ? args.avatarUri : undefined;
-            inputs["defaultLanguageCode"] = args ? args.defaultLanguageCode : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["enableSpellCorrection"] = args ? args.enableSpellCorrection : undefined;
-            inputs["enableStackdriverLogging"] = args ? args.enableStackdriverLogging : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["securitySettings"] = args ? args.securitySettings : undefined;
-            inputs["speechToTextSettings"] = args ? args.speechToTextSettings : undefined;
-            inputs["supportedLanguageCodes"] = args ? args.supportedLanguageCodes : undefined;
-            inputs["timeZone"] = args ? args.timeZone : undefined;
-            inputs["name"] = undefined /*out*/;
-            inputs["startFlow"] = undefined /*out*/;
+            resourceInputs["avatarUri"] = args ? args.avatarUri : undefined;
+            resourceInputs["defaultLanguageCode"] = args ? args.defaultLanguageCode : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["enableSpellCorrection"] = args ? args.enableSpellCorrection : undefined;
+            resourceInputs["enableStackdriverLogging"] = args ? args.enableStackdriverLogging : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["securitySettings"] = args ? args.securitySettings : undefined;
+            resourceInputs["speechToTextSettings"] = args ? args.speechToTextSettings : undefined;
+            resourceInputs["supportedLanguageCodes"] = args ? args.supportedLanguageCodes : undefined;
+            resourceInputs["timeZone"] = args ? args.timeZone : undefined;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["startFlow"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(CxAgent.__pulumiType, name, inputs, opts);
+        super(CxAgent.__pulumiType, name, resourceInputs, opts);
     }
 }
 

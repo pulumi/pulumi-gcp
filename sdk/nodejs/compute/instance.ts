@@ -288,46 +288,46 @@ export class Instance extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            inputs["advancedMachineFeatures"] = state ? state.advancedMachineFeatures : undefined;
-            inputs["allowStoppingForUpdate"] = state ? state.allowStoppingForUpdate : undefined;
-            inputs["attachedDisks"] = state ? state.attachedDisks : undefined;
-            inputs["bootDisk"] = state ? state.bootDisk : undefined;
-            inputs["canIpForward"] = state ? state.canIpForward : undefined;
-            inputs["confidentialInstanceConfig"] = state ? state.confidentialInstanceConfig : undefined;
-            inputs["cpuPlatform"] = state ? state.cpuPlatform : undefined;
-            inputs["currentStatus"] = state ? state.currentStatus : undefined;
-            inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["desiredStatus"] = state ? state.desiredStatus : undefined;
-            inputs["enableDisplay"] = state ? state.enableDisplay : undefined;
-            inputs["guestAccelerators"] = state ? state.guestAccelerators : undefined;
-            inputs["hostname"] = state ? state.hostname : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["machineType"] = state ? state.machineType : undefined;
-            inputs["metadata"] = state ? state.metadata : undefined;
-            inputs["metadataFingerprint"] = state ? state.metadataFingerprint : undefined;
-            inputs["metadataStartupScript"] = state ? state.metadataStartupScript : undefined;
-            inputs["minCpuPlatform"] = state ? state.minCpuPlatform : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
-            inputs["networkPerformanceConfig"] = state ? state.networkPerformanceConfig : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["reservationAffinity"] = state ? state.reservationAffinity : undefined;
-            inputs["resourcePolicies"] = state ? state.resourcePolicies : undefined;
-            inputs["scheduling"] = state ? state.scheduling : undefined;
-            inputs["scratchDisks"] = state ? state.scratchDisks : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
-            inputs["serviceAccount"] = state ? state.serviceAccount : undefined;
-            inputs["shieldedInstanceConfig"] = state ? state.shieldedInstanceConfig : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["tagsFingerprint"] = state ? state.tagsFingerprint : undefined;
-            inputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["advancedMachineFeatures"] = state ? state.advancedMachineFeatures : undefined;
+            resourceInputs["allowStoppingForUpdate"] = state ? state.allowStoppingForUpdate : undefined;
+            resourceInputs["attachedDisks"] = state ? state.attachedDisks : undefined;
+            resourceInputs["bootDisk"] = state ? state.bootDisk : undefined;
+            resourceInputs["canIpForward"] = state ? state.canIpForward : undefined;
+            resourceInputs["confidentialInstanceConfig"] = state ? state.confidentialInstanceConfig : undefined;
+            resourceInputs["cpuPlatform"] = state ? state.cpuPlatform : undefined;
+            resourceInputs["currentStatus"] = state ? state.currentStatus : undefined;
+            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["desiredStatus"] = state ? state.desiredStatus : undefined;
+            resourceInputs["enableDisplay"] = state ? state.enableDisplay : undefined;
+            resourceInputs["guestAccelerators"] = state ? state.guestAccelerators : undefined;
+            resourceInputs["hostname"] = state ? state.hostname : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["machineType"] = state ? state.machineType : undefined;
+            resourceInputs["metadata"] = state ? state.metadata : undefined;
+            resourceInputs["metadataFingerprint"] = state ? state.metadataFingerprint : undefined;
+            resourceInputs["metadataStartupScript"] = state ? state.metadataStartupScript : undefined;
+            resourceInputs["minCpuPlatform"] = state ? state.minCpuPlatform : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
+            resourceInputs["networkPerformanceConfig"] = state ? state.networkPerformanceConfig : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["reservationAffinity"] = state ? state.reservationAffinity : undefined;
+            resourceInputs["resourcePolicies"] = state ? state.resourcePolicies : undefined;
+            resourceInputs["scheduling"] = state ? state.scheduling : undefined;
+            resourceInputs["scratchDisks"] = state ? state.scratchDisks : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
+            resourceInputs["shieldedInstanceConfig"] = state ? state.shieldedInstanceConfig : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["tagsFingerprint"] = state ? state.tagsFingerprint : undefined;
+            resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
             if ((!args || args.bootDisk === undefined) && !opts.urn) {
@@ -339,47 +339,47 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.networkInterfaces === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'networkInterfaces'");
             }
-            inputs["advancedMachineFeatures"] = args ? args.advancedMachineFeatures : undefined;
-            inputs["allowStoppingForUpdate"] = args ? args.allowStoppingForUpdate : undefined;
-            inputs["attachedDisks"] = args ? args.attachedDisks : undefined;
-            inputs["bootDisk"] = args ? args.bootDisk : undefined;
-            inputs["canIpForward"] = args ? args.canIpForward : undefined;
-            inputs["confidentialInstanceConfig"] = args ? args.confidentialInstanceConfig : undefined;
-            inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["desiredStatus"] = args ? args.desiredStatus : undefined;
-            inputs["enableDisplay"] = args ? args.enableDisplay : undefined;
-            inputs["guestAccelerators"] = args ? args.guestAccelerators : undefined;
-            inputs["hostname"] = args ? args.hostname : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["machineType"] = args ? args.machineType : undefined;
-            inputs["metadata"] = args ? args.metadata : undefined;
-            inputs["metadataStartupScript"] = args ? args.metadataStartupScript : undefined;
-            inputs["minCpuPlatform"] = args ? args.minCpuPlatform : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
-            inputs["networkPerformanceConfig"] = args ? args.networkPerformanceConfig : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["reservationAffinity"] = args ? args.reservationAffinity : undefined;
-            inputs["resourcePolicies"] = args ? args.resourcePolicies : undefined;
-            inputs["scheduling"] = args ? args.scheduling : undefined;
-            inputs["scratchDisks"] = args ? args.scratchDisks : undefined;
-            inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
-            inputs["shieldedInstanceConfig"] = args ? args.shieldedInstanceConfig : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
-            inputs["cpuPlatform"] = undefined /*out*/;
-            inputs["currentStatus"] = undefined /*out*/;
-            inputs["instanceId"] = undefined /*out*/;
-            inputs["labelFingerprint"] = undefined /*out*/;
-            inputs["metadataFingerprint"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["tagsFingerprint"] = undefined /*out*/;
+            resourceInputs["advancedMachineFeatures"] = args ? args.advancedMachineFeatures : undefined;
+            resourceInputs["allowStoppingForUpdate"] = args ? args.allowStoppingForUpdate : undefined;
+            resourceInputs["attachedDisks"] = args ? args.attachedDisks : undefined;
+            resourceInputs["bootDisk"] = args ? args.bootDisk : undefined;
+            resourceInputs["canIpForward"] = args ? args.canIpForward : undefined;
+            resourceInputs["confidentialInstanceConfig"] = args ? args.confidentialInstanceConfig : undefined;
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["desiredStatus"] = args ? args.desiredStatus : undefined;
+            resourceInputs["enableDisplay"] = args ? args.enableDisplay : undefined;
+            resourceInputs["guestAccelerators"] = args ? args.guestAccelerators : undefined;
+            resourceInputs["hostname"] = args ? args.hostname : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["machineType"] = args ? args.machineType : undefined;
+            resourceInputs["metadata"] = args ? args.metadata : undefined;
+            resourceInputs["metadataStartupScript"] = args ? args.metadataStartupScript : undefined;
+            resourceInputs["minCpuPlatform"] = args ? args.minCpuPlatform : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
+            resourceInputs["networkPerformanceConfig"] = args ? args.networkPerformanceConfig : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["reservationAffinity"] = args ? args.reservationAffinity : undefined;
+            resourceInputs["resourcePolicies"] = args ? args.resourcePolicies : undefined;
+            resourceInputs["scheduling"] = args ? args.scheduling : undefined;
+            resourceInputs["scratchDisks"] = args ? args.scratchDisks : undefined;
+            resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
+            resourceInputs["shieldedInstanceConfig"] = args ? args.shieldedInstanceConfig : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["cpuPlatform"] = undefined /*out*/;
+            resourceInputs["currentStatus"] = undefined /*out*/;
+            resourceInputs["instanceId"] = undefined /*out*/;
+            resourceInputs["labelFingerprint"] = undefined /*out*/;
+            resourceInputs["metadataFingerprint"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["tagsFingerprint"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Instance.__pulumiType, name, inputs, opts);
+        super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

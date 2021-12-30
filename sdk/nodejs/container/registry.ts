@@ -92,23 +92,23 @@ export class Registry extends pulumi.CustomResource {
      */
     constructor(name: string, args?: RegistryArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RegistryArgs | RegistryState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegistryState | undefined;
-            inputs["bucketSelfLink"] = state ? state.bucketSelfLink : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["project"] = state ? state.project : undefined;
+            resourceInputs["bucketSelfLink"] = state ? state.bucketSelfLink : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as RegistryArgs | undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["bucketSelfLink"] = undefined /*out*/;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["bucketSelfLink"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Registry.__pulumiType, name, inputs, opts);
+        super(Registry.__pulumiType, name, resourceInputs, opts);
     }
 }
 

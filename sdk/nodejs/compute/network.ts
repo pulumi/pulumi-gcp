@@ -144,35 +144,35 @@ export class Network extends pulumi.CustomResource {
      */
     constructor(name: string, args?: NetworkArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NetworkArgs | NetworkState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkState | undefined;
-            inputs["autoCreateSubnetworks"] = state ? state.autoCreateSubnetworks : undefined;
-            inputs["deleteDefaultRoutesOnCreate"] = state ? state.deleteDefaultRoutesOnCreate : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["gatewayIpv4"] = state ? state.gatewayIpv4 : undefined;
-            inputs["mtu"] = state ? state.mtu : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["routingMode"] = state ? state.routingMode : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["autoCreateSubnetworks"] = state ? state.autoCreateSubnetworks : undefined;
+            resourceInputs["deleteDefaultRoutesOnCreate"] = state ? state.deleteDefaultRoutesOnCreate : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["gatewayIpv4"] = state ? state.gatewayIpv4 : undefined;
+            resourceInputs["mtu"] = state ? state.mtu : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["routingMode"] = state ? state.routingMode : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
         } else {
             const args = argsOrState as NetworkArgs | undefined;
-            inputs["autoCreateSubnetworks"] = args ? args.autoCreateSubnetworks : undefined;
-            inputs["deleteDefaultRoutesOnCreate"] = args ? args.deleteDefaultRoutesOnCreate : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["mtu"] = args ? args.mtu : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["routingMode"] = args ? args.routingMode : undefined;
-            inputs["gatewayIpv4"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["autoCreateSubnetworks"] = args ? args.autoCreateSubnetworks : undefined;
+            resourceInputs["deleteDefaultRoutesOnCreate"] = args ? args.deleteDefaultRoutesOnCreate : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["mtu"] = args ? args.mtu : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["routingMode"] = args ? args.routingMode : undefined;
+            resourceInputs["gatewayIpv4"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Network.__pulumiType, name, inputs, opts);
+        super(Network.__pulumiType, name, resourceInputs, opts);
     }
 }
 

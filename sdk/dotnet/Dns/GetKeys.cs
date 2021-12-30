@@ -39,10 +39,10 @@ namespace Pulumi.Gcp.Dns
         ///                 NonExistence = "nsec3",
         ///             },
         ///         });
-        ///         var fooDnsKeys = foo.Id.Apply(id =&gt; Gcp.Dns.GetKeys.InvokeAsync(new Gcp.Dns.GetKeysArgs
+        ///         var fooDnsKeys = Gcp.Dns.GetKeys.Invoke(new Gcp.Dns.GetKeysInvokeArgs
         ///         {
-        ///             ManagedZone = id,
-        ///         }));
+        ///             ManagedZone = foo.Id,
+        ///         });
         ///         this.FooDnsDsRecord = fooDnsKeys.Apply(fooDnsKeys =&gt; fooDnsKeys.KeySigningKeys?[0]?.DsRecord);
         ///     }
         /// 
@@ -83,10 +83,10 @@ namespace Pulumi.Gcp.Dns
         ///                 NonExistence = "nsec3",
         ///             },
         ///         });
-        ///         var fooDnsKeys = foo.Id.Apply(id =&gt; Gcp.Dns.GetKeys.InvokeAsync(new Gcp.Dns.GetKeysArgs
+        ///         var fooDnsKeys = Gcp.Dns.GetKeys.Invoke(new Gcp.Dns.GetKeysInvokeArgs
         ///         {
-        ///             ManagedZone = id,
-        ///         }));
+        ///             ManagedZone = foo.Id,
+        ///         });
         ///         this.FooDnsDsRecord = fooDnsKeys.Apply(fooDnsKeys =&gt; fooDnsKeys.KeySigningKeys?[0]?.DsRecord);
         ///     }
         /// 

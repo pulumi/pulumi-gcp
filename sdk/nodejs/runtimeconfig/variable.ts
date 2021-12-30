@@ -86,32 +86,32 @@ export class Variable extends pulumi.CustomResource {
      */
     constructor(name: string, args: VariableArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VariableArgs | VariableState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VariableState | undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["parent"] = state ? state.parent : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["text"] = state ? state.text : undefined;
-            inputs["updateTime"] = state ? state.updateTime : undefined;
-            inputs["value"] = state ? state.value : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["parent"] = state ? state.parent : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["text"] = state ? state.text : undefined;
+            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as VariableArgs | undefined;
             if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            inputs["name"] = args ? args.name : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["text"] = args ? args.text : undefined;
-            inputs["value"] = args ? args.value : undefined;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["text"] = args ? args.text : undefined;
+            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Variable.__pulumiType, name, inputs, opts);
+        super(Variable.__pulumiType, name, resourceInputs, opts);
     }
 }
 

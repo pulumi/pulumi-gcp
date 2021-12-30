@@ -188,25 +188,25 @@ export class DataTransferConfig extends pulumi.CustomResource {
      */
     constructor(name: string, args: DataTransferConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DataTransferConfigArgs | DataTransferConfigState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DataTransferConfigState | undefined;
-            inputs["dataRefreshWindowDays"] = state ? state.dataRefreshWindowDays : undefined;
-            inputs["dataSourceId"] = state ? state.dataSourceId : undefined;
-            inputs["destinationDatasetId"] = state ? state.destinationDatasetId : undefined;
-            inputs["disabled"] = state ? state.disabled : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["emailPreferences"] = state ? state.emailPreferences : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["notificationPubsubTopic"] = state ? state.notificationPubsubTopic : undefined;
-            inputs["params"] = state ? state.params : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["schedule"] = state ? state.schedule : undefined;
-            inputs["scheduleOptions"] = state ? state.scheduleOptions : undefined;
-            inputs["sensitiveParams"] = state ? state.sensitiveParams : undefined;
-            inputs["serviceAccountName"] = state ? state.serviceAccountName : undefined;
+            resourceInputs["dataRefreshWindowDays"] = state ? state.dataRefreshWindowDays : undefined;
+            resourceInputs["dataSourceId"] = state ? state.dataSourceId : undefined;
+            resourceInputs["destinationDatasetId"] = state ? state.destinationDatasetId : undefined;
+            resourceInputs["disabled"] = state ? state.disabled : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["emailPreferences"] = state ? state.emailPreferences : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["notificationPubsubTopic"] = state ? state.notificationPubsubTopic : undefined;
+            resourceInputs["params"] = state ? state.params : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["schedule"] = state ? state.schedule : undefined;
+            resourceInputs["scheduleOptions"] = state ? state.scheduleOptions : undefined;
+            resourceInputs["sensitiveParams"] = state ? state.sensitiveParams : undefined;
+            resourceInputs["serviceAccountName"] = state ? state.serviceAccountName : undefined;
         } else {
             const args = argsOrState as DataTransferConfigArgs | undefined;
             if ((!args || args.dataSourceId === undefined) && !opts.urn) {
@@ -218,26 +218,26 @@ export class DataTransferConfig extends pulumi.CustomResource {
             if ((!args || args.params === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'params'");
             }
-            inputs["dataRefreshWindowDays"] = args ? args.dataRefreshWindowDays : undefined;
-            inputs["dataSourceId"] = args ? args.dataSourceId : undefined;
-            inputs["destinationDatasetId"] = args ? args.destinationDatasetId : undefined;
-            inputs["disabled"] = args ? args.disabled : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["emailPreferences"] = args ? args.emailPreferences : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["notificationPubsubTopic"] = args ? args.notificationPubsubTopic : undefined;
-            inputs["params"] = args ? args.params : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["schedule"] = args ? args.schedule : undefined;
-            inputs["scheduleOptions"] = args ? args.scheduleOptions : undefined;
-            inputs["sensitiveParams"] = args ? args.sensitiveParams : undefined;
-            inputs["serviceAccountName"] = args ? args.serviceAccountName : undefined;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["dataRefreshWindowDays"] = args ? args.dataRefreshWindowDays : undefined;
+            resourceInputs["dataSourceId"] = args ? args.dataSourceId : undefined;
+            resourceInputs["destinationDatasetId"] = args ? args.destinationDatasetId : undefined;
+            resourceInputs["disabled"] = args ? args.disabled : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["emailPreferences"] = args ? args.emailPreferences : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["notificationPubsubTopic"] = args ? args.notificationPubsubTopic : undefined;
+            resourceInputs["params"] = args ? args.params : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["schedule"] = args ? args.schedule : undefined;
+            resourceInputs["scheduleOptions"] = args ? args.scheduleOptions : undefined;
+            resourceInputs["sensitiveParams"] = args ? args.sensitiveParams : undefined;
+            resourceInputs["serviceAccountName"] = args ? args.serviceAccountName : undefined;
+            resourceInputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(DataTransferConfig.__pulumiType, name, inputs, opts);
+        super(DataTransferConfig.__pulumiType, name, resourceInputs, opts);
     }
 }
 

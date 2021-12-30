@@ -56,7 +56,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = serviceAccount.NewIAMPolicy(ctx, "admin_account_iam", &serviceAccount.IAMPolicyArgs{
+// 		_, err = serviceAccount.NewIAMPolicy(ctx, "admin-account-iam", &serviceAccount.IAMPolicyArgs{
 // 			ServiceAccountId: sa.Name,
 // 			PolicyData:       pulumi.String(admin.PolicyData),
 // 		})
@@ -87,7 +87,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = serviceAccount.NewIAMBinding(ctx, "admin_account_iam", &serviceAccount.IAMBindingArgs{
+// 		_, err = serviceAccount.NewIAMBinding(ctx, "admin-account-iam", &serviceAccount.IAMBindingArgs{
 // 			ServiceAccountId: sa.Name,
 // 			Role:             pulumi.String("roles/iam.serviceAccountUser"),
 // 			Members: pulumi.StringArray{
@@ -121,7 +121,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = serviceAccount.NewIAMBinding(ctx, "admin_account_iam", &serviceAccount.IAMBindingArgs{
+// 		_, err = serviceAccount.NewIAMBinding(ctx, "admin-account-iam", &serviceAccount.IAMBindingArgs{
 // 			Condition: &serviceaccount.IAMBindingConditionArgs{
 // 				Description: pulumi.String("Expiring at midnight of 2019-12-31"),
 // 				Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
@@ -167,7 +167,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = serviceAccount.NewIAMMember(ctx, "admin_account_iam", &serviceAccount.IAMMemberArgs{
+// 		_, err = serviceAccount.NewIAMMember(ctx, "admin-account-iam", &serviceAccount.IAMMemberArgs{
 // 			ServiceAccountId: sa.Name,
 // 			Role:             pulumi.String("roles/iam.serviceAccountUser"),
 // 			Member:           pulumi.String("user:jane@example.com"),
@@ -175,7 +175,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = serviceAccount.NewIAMMember(ctx, "gce_default_account_iam", &serviceAccount.IAMMemberArgs{
+// 		_, err = serviceAccount.NewIAMMember(ctx, "gce-default-account-iam", &serviceAccount.IAMMemberArgs{
 // 			ServiceAccountId: pulumi.String(_default.Name),
 // 			Role:             pulumi.String("roles/iam.serviceAccountUser"),
 // 			Member: sa.Email.ApplyT(func(email string) (string, error) {
@@ -209,7 +209,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = serviceAccount.NewIAMMember(ctx, "admin_account_iam", &serviceAccount.IAMMemberArgs{
+// 		_, err = serviceAccount.NewIAMMember(ctx, "admin-account-iam", &serviceAccount.IAMMemberArgs{
 // 			Condition: &serviceaccount.IAMMemberConditionArgs{
 // 				Description: pulumi.String("Expiring at midnight of 2019-12-31"),
 // 				Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
@@ -379,7 +379,7 @@ type IAMMemberInput interface {
 }
 
 func (*IAMMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*IAMMember)(nil))
+	return reflect.TypeOf((**IAMMember)(nil)).Elem()
 }
 
 func (i *IAMMember) ToIAMMemberOutput() IAMMemberOutput {
@@ -388,35 +388,6 @@ func (i *IAMMember) ToIAMMemberOutput() IAMMemberOutput {
 
 func (i *IAMMember) ToIAMMemberOutputWithContext(ctx context.Context) IAMMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IAMMemberOutput)
-}
-
-func (i *IAMMember) ToIAMMemberPtrOutput() IAMMemberPtrOutput {
-	return i.ToIAMMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *IAMMember) ToIAMMemberPtrOutputWithContext(ctx context.Context) IAMMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMMemberPtrOutput)
-}
-
-type IAMMemberPtrInput interface {
-	pulumi.Input
-
-	ToIAMMemberPtrOutput() IAMMemberPtrOutput
-	ToIAMMemberPtrOutputWithContext(ctx context.Context) IAMMemberPtrOutput
-}
-
-type iammemberPtrType IAMMemberArgs
-
-func (*iammemberPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**IAMMember)(nil))
-}
-
-func (i *iammemberPtrType) ToIAMMemberPtrOutput() IAMMemberPtrOutput {
-	return i.ToIAMMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *iammemberPtrType) ToIAMMemberPtrOutputWithContext(ctx context.Context) IAMMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMMemberPtrOutput)
 }
 
 // IAMMemberArrayInput is an input type that accepts IAMMemberArray and IAMMemberArrayOutput values.
@@ -472,7 +443,7 @@ func (i IAMMemberMap) ToIAMMemberMapOutputWithContext(ctx context.Context) IAMMe
 type IAMMemberOutput struct{ *pulumi.OutputState }
 
 func (IAMMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IAMMember)(nil))
+	return reflect.TypeOf((**IAMMember)(nil)).Elem()
 }
 
 func (o IAMMemberOutput) ToIAMMemberOutput() IAMMemberOutput {
@@ -483,44 +454,10 @@ func (o IAMMemberOutput) ToIAMMemberOutputWithContext(ctx context.Context) IAMMe
 	return o
 }
 
-func (o IAMMemberOutput) ToIAMMemberPtrOutput() IAMMemberPtrOutput {
-	return o.ToIAMMemberPtrOutputWithContext(context.Background())
-}
-
-func (o IAMMemberOutput) ToIAMMemberPtrOutputWithContext(ctx context.Context) IAMMemberPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v IAMMember) *IAMMember {
-		return &v
-	}).(IAMMemberPtrOutput)
-}
-
-type IAMMemberPtrOutput struct{ *pulumi.OutputState }
-
-func (IAMMemberPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IAMMember)(nil))
-}
-
-func (o IAMMemberPtrOutput) ToIAMMemberPtrOutput() IAMMemberPtrOutput {
-	return o
-}
-
-func (o IAMMemberPtrOutput) ToIAMMemberPtrOutputWithContext(ctx context.Context) IAMMemberPtrOutput {
-	return o
-}
-
-func (o IAMMemberPtrOutput) Elem() IAMMemberOutput {
-	return o.ApplyT(func(v *IAMMember) IAMMember {
-		if v != nil {
-			return *v
-		}
-		var ret IAMMember
-		return ret
-	}).(IAMMemberOutput)
-}
-
 type IAMMemberArrayOutput struct{ *pulumi.OutputState }
 
 func (IAMMemberArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]IAMMember)(nil))
+	return reflect.TypeOf((*[]*IAMMember)(nil)).Elem()
 }
 
 func (o IAMMemberArrayOutput) ToIAMMemberArrayOutput() IAMMemberArrayOutput {
@@ -532,15 +469,15 @@ func (o IAMMemberArrayOutput) ToIAMMemberArrayOutputWithContext(ctx context.Cont
 }
 
 func (o IAMMemberArrayOutput) Index(i pulumi.IntInput) IAMMemberOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IAMMember {
-		return vs[0].([]IAMMember)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IAMMember {
+		return vs[0].([]*IAMMember)[vs[1].(int)]
 	}).(IAMMemberOutput)
 }
 
 type IAMMemberMapOutput struct{ *pulumi.OutputState }
 
 func (IAMMemberMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]IAMMember)(nil))
+	return reflect.TypeOf((*map[string]*IAMMember)(nil)).Elem()
 }
 
 func (o IAMMemberMapOutput) ToIAMMemberMapOutput() IAMMemberMapOutput {
@@ -552,18 +489,16 @@ func (o IAMMemberMapOutput) ToIAMMemberMapOutputWithContext(ctx context.Context)
 }
 
 func (o IAMMemberMapOutput) MapIndex(k pulumi.StringInput) IAMMemberOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) IAMMember {
-		return vs[0].(map[string]IAMMember)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *IAMMember {
+		return vs[0].(map[string]*IAMMember)[vs[1].(string)]
 	}).(IAMMemberOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IAMMemberInput)(nil)).Elem(), &IAMMember{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IAMMemberPtrInput)(nil)).Elem(), &IAMMember{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IAMMemberArrayInput)(nil)).Elem(), IAMMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IAMMemberMapInput)(nil)).Elem(), IAMMemberMap{})
 	pulumi.RegisterOutputType(IAMMemberOutput{})
-	pulumi.RegisterOutputType(IAMMemberPtrOutput{})
 	pulumi.RegisterOutputType(IAMMemberArrayOutput{})
 	pulumi.RegisterOutputType(IAMMemberMapOutput{})
 }

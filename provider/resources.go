@@ -156,9 +156,10 @@ func Provider() tfbridge.ProviderInfo {
 		ResourcePrefix: "google",
 		GitHubOrg:      "hashicorp",
 		Description:    "A Pulumi package for creating and managing Google Cloud Platform resources.",
-		Keywords:       []string{"pulumi", "gcp"},
+		Keywords:       []string{"pulumi", "gcp", "category/cloud"},
 		License:        "Apache-2.0",
 		Homepage:       "https://pulumi.io",
+		Publisher:      "Pulumi",
 		Repository:     "https://github.com/pulumi/pulumi-gcp",
 		Config: map[string]*tfbridge.SchemaInfo{
 			"project": {

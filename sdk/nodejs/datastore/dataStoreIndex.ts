@@ -120,30 +120,30 @@ export class DataStoreIndex extends pulumi.CustomResource {
      */
     constructor(name: string, args: DataStoreIndexArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DataStoreIndexArgs | DataStoreIndexState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DataStoreIndexState | undefined;
-            inputs["ancestor"] = state ? state.ancestor : undefined;
-            inputs["indexId"] = state ? state.indexId : undefined;
-            inputs["kind"] = state ? state.kind : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["properties"] = state ? state.properties : undefined;
+            resourceInputs["ancestor"] = state ? state.ancestor : undefined;
+            resourceInputs["indexId"] = state ? state.indexId : undefined;
+            resourceInputs["kind"] = state ? state.kind : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["properties"] = state ? state.properties : undefined;
         } else {
             const args = argsOrState as DataStoreIndexArgs | undefined;
             if ((!args || args.kind === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'kind'");
             }
-            inputs["ancestor"] = args ? args.ancestor : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["properties"] = args ? args.properties : undefined;
-            inputs["indexId"] = undefined /*out*/;
+            resourceInputs["ancestor"] = args ? args.ancestor : undefined;
+            resourceInputs["kind"] = args ? args.kind : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["properties"] = args ? args.properties : undefined;
+            resourceInputs["indexId"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(DataStoreIndex.__pulumiType, name, inputs, opts);
+        super(DataStoreIndex.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -150,17 +150,17 @@ export class TaxonomyIamMember extends pulumi.CustomResource {
      */
     constructor(name: string, args: TaxonomyIamMemberArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TaxonomyIamMemberArgs | TaxonomyIamMemberState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TaxonomyIamMemberState | undefined;
-            inputs["condition"] = state ? state.condition : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["member"] = state ? state.member : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["role"] = state ? state.role : undefined;
-            inputs["taxonomy"] = state ? state.taxonomy : undefined;
+            resourceInputs["condition"] = state ? state.condition : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["member"] = state ? state.member : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["taxonomy"] = state ? state.taxonomy : undefined;
         } else {
             const args = argsOrState as TaxonomyIamMemberArgs | undefined;
             if ((!args || args.member === undefined) && !opts.urn) {
@@ -172,18 +172,18 @@ export class TaxonomyIamMember extends pulumi.CustomResource {
             if ((!args || args.taxonomy === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'taxonomy'");
             }
-            inputs["condition"] = args ? args.condition : undefined;
-            inputs["member"] = args ? args.member : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["role"] = args ? args.role : undefined;
-            inputs["taxonomy"] = args ? args.taxonomy : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["condition"] = args ? args.condition : undefined;
+            resourceInputs["member"] = args ? args.member : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["taxonomy"] = args ? args.taxonomy : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(TaxonomyIamMember.__pulumiType, name, inputs, opts);
+        super(TaxonomyIamMember.__pulumiType, name, resourceInputs, opts);
     }
 }
 

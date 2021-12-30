@@ -158,38 +158,38 @@ export class Router extends pulumi.CustomResource {
      */
     constructor(name: string, args: RouterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RouterArgs | RouterState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouterState | undefined;
-            inputs["bgp"] = state ? state.bgp : undefined;
-            inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["encryptedInterconnectRouter"] = state ? state.encryptedInterconnectRouter : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["network"] = state ? state.network : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["bgp"] = state ? state.bgp : undefined;
+            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["encryptedInterconnectRouter"] = state ? state.encryptedInterconnectRouter : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["network"] = state ? state.network : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
         } else {
             const args = argsOrState as RouterArgs | undefined;
             if ((!args || args.network === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
-            inputs["bgp"] = args ? args.bgp : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["encryptedInterconnectRouter"] = args ? args.encryptedInterconnectRouter : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["network"] = args ? args.network : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["bgp"] = args ? args.bgp : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["encryptedInterconnectRouter"] = args ? args.encryptedInterconnectRouter : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Router.__pulumiType, name, inputs, opts);
+        super(Router.__pulumiType, name, resourceInputs, opts);
     }
 }
 

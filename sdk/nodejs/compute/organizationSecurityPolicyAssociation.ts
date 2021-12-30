@@ -77,14 +77,14 @@ export class OrganizationSecurityPolicyAssociation extends pulumi.CustomResource
      */
     constructor(name: string, args: OrganizationSecurityPolicyAssociationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OrganizationSecurityPolicyAssociationArgs | OrganizationSecurityPolicyAssociationState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrganizationSecurityPolicyAssociationState | undefined;
-            inputs["attachmentId"] = state ? state.attachmentId : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["policyId"] = state ? state.policyId : undefined;
+            resourceInputs["attachmentId"] = state ? state.attachmentId : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["policyId"] = state ? state.policyId : undefined;
         } else {
             const args = argsOrState as OrganizationSecurityPolicyAssociationArgs | undefined;
             if ((!args || args.attachmentId === undefined) && !opts.urn) {
@@ -93,15 +93,15 @@ export class OrganizationSecurityPolicyAssociation extends pulumi.CustomResource
             if ((!args || args.policyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyId'");
             }
-            inputs["attachmentId"] = args ? args.attachmentId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["policyId"] = args ? args.policyId : undefined;
-            inputs["displayName"] = undefined /*out*/;
+            resourceInputs["attachmentId"] = args ? args.attachmentId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["policyId"] = args ? args.policyId : undefined;
+            resourceInputs["displayName"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(OrganizationSecurityPolicyAssociation.__pulumiType, name, inputs, opts);
+        super(OrganizationSecurityPolicyAssociation.__pulumiType, name, resourceInputs, opts);
     }
 }
 

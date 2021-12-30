@@ -29,7 +29,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := networkservices.NewEdgeCacheKeyset(ctx, "_default", &networkservices.EdgeCacheKeysetArgs{
+// 		_, err := networkservices.NewEdgeCacheKeyset(ctx, "default", &networkservices.EdgeCacheKeysetArgs{
 // 			Description: pulumi.String("The default keyset"),
 // 			PublicKeys: networkservices.EdgeCacheKeysetPublicKeyArray{
 // 				&networkservices.EdgeCacheKeysetPublicKeyArgs{
@@ -215,7 +215,7 @@ type EdgeCacheKeysetInput interface {
 }
 
 func (*EdgeCacheKeyset) ElementType() reflect.Type {
-	return reflect.TypeOf((*EdgeCacheKeyset)(nil))
+	return reflect.TypeOf((**EdgeCacheKeyset)(nil)).Elem()
 }
 
 func (i *EdgeCacheKeyset) ToEdgeCacheKeysetOutput() EdgeCacheKeysetOutput {
@@ -224,35 +224,6 @@ func (i *EdgeCacheKeyset) ToEdgeCacheKeysetOutput() EdgeCacheKeysetOutput {
 
 func (i *EdgeCacheKeyset) ToEdgeCacheKeysetOutputWithContext(ctx context.Context) EdgeCacheKeysetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheKeysetOutput)
-}
-
-func (i *EdgeCacheKeyset) ToEdgeCacheKeysetPtrOutput() EdgeCacheKeysetPtrOutput {
-	return i.ToEdgeCacheKeysetPtrOutputWithContext(context.Background())
-}
-
-func (i *EdgeCacheKeyset) ToEdgeCacheKeysetPtrOutputWithContext(ctx context.Context) EdgeCacheKeysetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheKeysetPtrOutput)
-}
-
-type EdgeCacheKeysetPtrInput interface {
-	pulumi.Input
-
-	ToEdgeCacheKeysetPtrOutput() EdgeCacheKeysetPtrOutput
-	ToEdgeCacheKeysetPtrOutputWithContext(ctx context.Context) EdgeCacheKeysetPtrOutput
-}
-
-type edgeCacheKeysetPtrType EdgeCacheKeysetArgs
-
-func (*edgeCacheKeysetPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EdgeCacheKeyset)(nil))
-}
-
-func (i *edgeCacheKeysetPtrType) ToEdgeCacheKeysetPtrOutput() EdgeCacheKeysetPtrOutput {
-	return i.ToEdgeCacheKeysetPtrOutputWithContext(context.Background())
-}
-
-func (i *edgeCacheKeysetPtrType) ToEdgeCacheKeysetPtrOutputWithContext(ctx context.Context) EdgeCacheKeysetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheKeysetPtrOutput)
 }
 
 // EdgeCacheKeysetArrayInput is an input type that accepts EdgeCacheKeysetArray and EdgeCacheKeysetArrayOutput values.
@@ -308,7 +279,7 @@ func (i EdgeCacheKeysetMap) ToEdgeCacheKeysetMapOutputWithContext(ctx context.Co
 type EdgeCacheKeysetOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheKeysetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EdgeCacheKeyset)(nil))
+	return reflect.TypeOf((**EdgeCacheKeyset)(nil)).Elem()
 }
 
 func (o EdgeCacheKeysetOutput) ToEdgeCacheKeysetOutput() EdgeCacheKeysetOutput {
@@ -319,44 +290,10 @@ func (o EdgeCacheKeysetOutput) ToEdgeCacheKeysetOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o EdgeCacheKeysetOutput) ToEdgeCacheKeysetPtrOutput() EdgeCacheKeysetPtrOutput {
-	return o.ToEdgeCacheKeysetPtrOutputWithContext(context.Background())
-}
-
-func (o EdgeCacheKeysetOutput) ToEdgeCacheKeysetPtrOutputWithContext(ctx context.Context) EdgeCacheKeysetPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCacheKeyset) *EdgeCacheKeyset {
-		return &v
-	}).(EdgeCacheKeysetPtrOutput)
-}
-
-type EdgeCacheKeysetPtrOutput struct{ *pulumi.OutputState }
-
-func (EdgeCacheKeysetPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EdgeCacheKeyset)(nil))
-}
-
-func (o EdgeCacheKeysetPtrOutput) ToEdgeCacheKeysetPtrOutput() EdgeCacheKeysetPtrOutput {
-	return o
-}
-
-func (o EdgeCacheKeysetPtrOutput) ToEdgeCacheKeysetPtrOutputWithContext(ctx context.Context) EdgeCacheKeysetPtrOutput {
-	return o
-}
-
-func (o EdgeCacheKeysetPtrOutput) Elem() EdgeCacheKeysetOutput {
-	return o.ApplyT(func(v *EdgeCacheKeyset) EdgeCacheKeyset {
-		if v != nil {
-			return *v
-		}
-		var ret EdgeCacheKeyset
-		return ret
-	}).(EdgeCacheKeysetOutput)
-}
-
 type EdgeCacheKeysetArrayOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheKeysetArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EdgeCacheKeyset)(nil))
+	return reflect.TypeOf((*[]*EdgeCacheKeyset)(nil)).Elem()
 }
 
 func (o EdgeCacheKeysetArrayOutput) ToEdgeCacheKeysetArrayOutput() EdgeCacheKeysetArrayOutput {
@@ -368,15 +305,15 @@ func (o EdgeCacheKeysetArrayOutput) ToEdgeCacheKeysetArrayOutputWithContext(ctx 
 }
 
 func (o EdgeCacheKeysetArrayOutput) Index(i pulumi.IntInput) EdgeCacheKeysetOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EdgeCacheKeyset {
-		return vs[0].([]EdgeCacheKeyset)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EdgeCacheKeyset {
+		return vs[0].([]*EdgeCacheKeyset)[vs[1].(int)]
 	}).(EdgeCacheKeysetOutput)
 }
 
 type EdgeCacheKeysetMapOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheKeysetMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]EdgeCacheKeyset)(nil))
+	return reflect.TypeOf((*map[string]*EdgeCacheKeyset)(nil)).Elem()
 }
 
 func (o EdgeCacheKeysetMapOutput) ToEdgeCacheKeysetMapOutput() EdgeCacheKeysetMapOutput {
@@ -388,18 +325,16 @@ func (o EdgeCacheKeysetMapOutput) ToEdgeCacheKeysetMapOutputWithContext(ctx cont
 }
 
 func (o EdgeCacheKeysetMapOutput) MapIndex(k pulumi.StringInput) EdgeCacheKeysetOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) EdgeCacheKeyset {
-		return vs[0].(map[string]EdgeCacheKeyset)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *EdgeCacheKeyset {
+		return vs[0].(map[string]*EdgeCacheKeyset)[vs[1].(string)]
 	}).(EdgeCacheKeysetOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheKeysetInput)(nil)).Elem(), &EdgeCacheKeyset{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheKeysetPtrInput)(nil)).Elem(), &EdgeCacheKeyset{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheKeysetArrayInput)(nil)).Elem(), EdgeCacheKeysetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheKeysetMapInput)(nil)).Elem(), EdgeCacheKeysetMap{})
 	pulumi.RegisterOutputType(EdgeCacheKeysetOutput{})
-	pulumi.RegisterOutputType(EdgeCacheKeysetPtrOutput{})
 	pulumi.RegisterOutputType(EdgeCacheKeysetArrayOutput{})
 	pulumi.RegisterOutputType(EdgeCacheKeysetMapOutput{})
 }

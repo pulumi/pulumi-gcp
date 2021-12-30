@@ -219,47 +219,6 @@ func (i ConnectionCloudSqlArgs) ToConnectionCloudSqlOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionCloudSqlOutput)
 }
 
-func (i ConnectionCloudSqlArgs) ToConnectionCloudSqlPtrOutput() ConnectionCloudSqlPtrOutput {
-	return i.ToConnectionCloudSqlPtrOutputWithContext(context.Background())
-}
-
-func (i ConnectionCloudSqlArgs) ToConnectionCloudSqlPtrOutputWithContext(ctx context.Context) ConnectionCloudSqlPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionCloudSqlOutput).ToConnectionCloudSqlPtrOutputWithContext(ctx)
-}
-
-// ConnectionCloudSqlPtrInput is an input type that accepts ConnectionCloudSqlArgs, ConnectionCloudSqlPtr and ConnectionCloudSqlPtrOutput values.
-// You can construct a concrete instance of `ConnectionCloudSqlPtrInput` via:
-//
-//          ConnectionCloudSqlArgs{...}
-//
-//  or:
-//
-//          nil
-type ConnectionCloudSqlPtrInput interface {
-	pulumi.Input
-
-	ToConnectionCloudSqlPtrOutput() ConnectionCloudSqlPtrOutput
-	ToConnectionCloudSqlPtrOutputWithContext(context.Context) ConnectionCloudSqlPtrOutput
-}
-
-type connectionCloudSqlPtrType ConnectionCloudSqlArgs
-
-func ConnectionCloudSqlPtr(v *ConnectionCloudSqlArgs) ConnectionCloudSqlPtrInput {
-	return (*connectionCloudSqlPtrType)(v)
-}
-
-func (*connectionCloudSqlPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConnectionCloudSql)(nil)).Elem()
-}
-
-func (i *connectionCloudSqlPtrType) ToConnectionCloudSqlPtrOutput() ConnectionCloudSqlPtrOutput {
-	return i.ToConnectionCloudSqlPtrOutputWithContext(context.Background())
-}
-
-func (i *connectionCloudSqlPtrType) ToConnectionCloudSqlPtrOutputWithContext(ctx context.Context) ConnectionCloudSqlPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionCloudSqlPtrOutput)
-}
-
 type ConnectionCloudSqlOutput struct{ *pulumi.OutputState }
 
 func (ConnectionCloudSqlOutput) ElementType() reflect.Type {
@@ -272,16 +231,6 @@ func (o ConnectionCloudSqlOutput) ToConnectionCloudSqlOutput() ConnectionCloudSq
 
 func (o ConnectionCloudSqlOutput) ToConnectionCloudSqlOutputWithContext(ctx context.Context) ConnectionCloudSqlOutput {
 	return o
-}
-
-func (o ConnectionCloudSqlOutput) ToConnectionCloudSqlPtrOutput() ConnectionCloudSqlPtrOutput {
-	return o.ToConnectionCloudSqlPtrOutputWithContext(context.Background())
-}
-
-func (o ConnectionCloudSqlOutput) ToConnectionCloudSqlPtrOutputWithContext(ctx context.Context) ConnectionCloudSqlPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionCloudSql) *ConnectionCloudSql {
-		return &v
-	}).(ConnectionCloudSqlPtrOutput)
 }
 
 // Cloud SQL properties.
@@ -304,72 +253,6 @@ func (o ConnectionCloudSqlOutput) InstanceId() pulumi.StringOutput {
 // Possible values are `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, and `MYSQL`.
 func (o ConnectionCloudSqlOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionCloudSql) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type ConnectionCloudSqlPtrOutput struct{ *pulumi.OutputState }
-
-func (ConnectionCloudSqlPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConnectionCloudSql)(nil)).Elem()
-}
-
-func (o ConnectionCloudSqlPtrOutput) ToConnectionCloudSqlPtrOutput() ConnectionCloudSqlPtrOutput {
-	return o
-}
-
-func (o ConnectionCloudSqlPtrOutput) ToConnectionCloudSqlPtrOutputWithContext(ctx context.Context) ConnectionCloudSqlPtrOutput {
-	return o
-}
-
-func (o ConnectionCloudSqlPtrOutput) Elem() ConnectionCloudSqlOutput {
-	return o.ApplyT(func(v *ConnectionCloudSql) ConnectionCloudSql {
-		if v != nil {
-			return *v
-		}
-		var ret ConnectionCloudSql
-		return ret
-	}).(ConnectionCloudSqlOutput)
-}
-
-// Cloud SQL properties.
-// Structure is documented below.
-func (o ConnectionCloudSqlPtrOutput) Credential() ConnectionCloudSqlCredentialPtrOutput {
-	return o.ApplyT(func(v *ConnectionCloudSql) *ConnectionCloudSqlCredential {
-		if v == nil {
-			return nil
-		}
-		return &v.Credential
-	}).(ConnectionCloudSqlCredentialPtrOutput)
-}
-
-// Database name.
-func (o ConnectionCloudSqlPtrOutput) Database() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectionCloudSql) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Database
-	}).(pulumi.StringPtrOutput)
-}
-
-// Cloud SQL instance ID in the form project:location:instance.
-func (o ConnectionCloudSqlPtrOutput) InstanceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectionCloudSql) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.InstanceId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Type of the Cloud SQL database.
-// Possible values are `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, and `MYSQL`.
-func (o ConnectionCloudSqlPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectionCloudSql) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
 }
 
 type ConnectionCloudSqlCredential struct {
@@ -411,47 +294,6 @@ func (i ConnectionCloudSqlCredentialArgs) ToConnectionCloudSqlCredentialOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionCloudSqlCredentialOutput)
 }
 
-func (i ConnectionCloudSqlCredentialArgs) ToConnectionCloudSqlCredentialPtrOutput() ConnectionCloudSqlCredentialPtrOutput {
-	return i.ToConnectionCloudSqlCredentialPtrOutputWithContext(context.Background())
-}
-
-func (i ConnectionCloudSqlCredentialArgs) ToConnectionCloudSqlCredentialPtrOutputWithContext(ctx context.Context) ConnectionCloudSqlCredentialPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionCloudSqlCredentialOutput).ToConnectionCloudSqlCredentialPtrOutputWithContext(ctx)
-}
-
-// ConnectionCloudSqlCredentialPtrInput is an input type that accepts ConnectionCloudSqlCredentialArgs, ConnectionCloudSqlCredentialPtr and ConnectionCloudSqlCredentialPtrOutput values.
-// You can construct a concrete instance of `ConnectionCloudSqlCredentialPtrInput` via:
-//
-//          ConnectionCloudSqlCredentialArgs{...}
-//
-//  or:
-//
-//          nil
-type ConnectionCloudSqlCredentialPtrInput interface {
-	pulumi.Input
-
-	ToConnectionCloudSqlCredentialPtrOutput() ConnectionCloudSqlCredentialPtrOutput
-	ToConnectionCloudSqlCredentialPtrOutputWithContext(context.Context) ConnectionCloudSqlCredentialPtrOutput
-}
-
-type connectionCloudSqlCredentialPtrType ConnectionCloudSqlCredentialArgs
-
-func ConnectionCloudSqlCredentialPtr(v *ConnectionCloudSqlCredentialArgs) ConnectionCloudSqlCredentialPtrInput {
-	return (*connectionCloudSqlCredentialPtrType)(v)
-}
-
-func (*connectionCloudSqlCredentialPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConnectionCloudSqlCredential)(nil)).Elem()
-}
-
-func (i *connectionCloudSqlCredentialPtrType) ToConnectionCloudSqlCredentialPtrOutput() ConnectionCloudSqlCredentialPtrOutput {
-	return i.ToConnectionCloudSqlCredentialPtrOutputWithContext(context.Background())
-}
-
-func (i *connectionCloudSqlCredentialPtrType) ToConnectionCloudSqlCredentialPtrOutputWithContext(ctx context.Context) ConnectionCloudSqlCredentialPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionCloudSqlCredentialPtrOutput)
-}
-
 type ConnectionCloudSqlCredentialOutput struct{ *pulumi.OutputState }
 
 func (ConnectionCloudSqlCredentialOutput) ElementType() reflect.Type {
@@ -466,16 +308,6 @@ func (o ConnectionCloudSqlCredentialOutput) ToConnectionCloudSqlCredentialOutput
 	return o
 }
 
-func (o ConnectionCloudSqlCredentialOutput) ToConnectionCloudSqlCredentialPtrOutput() ConnectionCloudSqlCredentialPtrOutput {
-	return o.ToConnectionCloudSqlCredentialPtrOutputWithContext(context.Background())
-}
-
-func (o ConnectionCloudSqlCredentialOutput) ToConnectionCloudSqlCredentialPtrOutputWithContext(ctx context.Context) ConnectionCloudSqlCredentialPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionCloudSqlCredential) *ConnectionCloudSqlCredential {
-		return &v
-	}).(ConnectionCloudSqlCredentialPtrOutput)
-}
-
 // Password for database.
 // **Note**: This property is sensitive and will not be displayed in the plan.
 func (o ConnectionCloudSqlCredentialOutput) Password() pulumi.StringOutput {
@@ -485,51 +317,6 @@ func (o ConnectionCloudSqlCredentialOutput) Password() pulumi.StringOutput {
 // Username for database.
 func (o ConnectionCloudSqlCredentialOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionCloudSqlCredential) string { return v.Username }).(pulumi.StringOutput)
-}
-
-type ConnectionCloudSqlCredentialPtrOutput struct{ *pulumi.OutputState }
-
-func (ConnectionCloudSqlCredentialPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConnectionCloudSqlCredential)(nil)).Elem()
-}
-
-func (o ConnectionCloudSqlCredentialPtrOutput) ToConnectionCloudSqlCredentialPtrOutput() ConnectionCloudSqlCredentialPtrOutput {
-	return o
-}
-
-func (o ConnectionCloudSqlCredentialPtrOutput) ToConnectionCloudSqlCredentialPtrOutputWithContext(ctx context.Context) ConnectionCloudSqlCredentialPtrOutput {
-	return o
-}
-
-func (o ConnectionCloudSqlCredentialPtrOutput) Elem() ConnectionCloudSqlCredentialOutput {
-	return o.ApplyT(func(v *ConnectionCloudSqlCredential) ConnectionCloudSqlCredential {
-		if v != nil {
-			return *v
-		}
-		var ret ConnectionCloudSqlCredential
-		return ret
-	}).(ConnectionCloudSqlCredentialOutput)
-}
-
-// Password for database.
-// **Note**: This property is sensitive and will not be displayed in the plan.
-func (o ConnectionCloudSqlCredentialPtrOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectionCloudSqlCredential) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Password
-	}).(pulumi.StringPtrOutput)
-}
-
-// Username for database.
-func (o ConnectionCloudSqlCredentialPtrOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectionCloudSqlCredential) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Username
-	}).(pulumi.StringPtrOutput)
 }
 
 type DataTransferConfigEmailPreferences struct {
@@ -8851,9 +8638,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppProfileSingleClusterRoutingInput)(nil)).Elem(), AppProfileSingleClusterRoutingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppProfileSingleClusterRoutingPtrInput)(nil)).Elem(), AppProfileSingleClusterRoutingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionCloudSqlInput)(nil)).Elem(), ConnectionCloudSqlArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionCloudSqlPtrInput)(nil)).Elem(), ConnectionCloudSqlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionCloudSqlCredentialInput)(nil)).Elem(), ConnectionCloudSqlCredentialArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionCloudSqlCredentialPtrInput)(nil)).Elem(), ConnectionCloudSqlCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataTransferConfigEmailPreferencesInput)(nil)).Elem(), DataTransferConfigEmailPreferencesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataTransferConfigEmailPreferencesPtrInput)(nil)).Elem(), DataTransferConfigEmailPreferencesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataTransferConfigScheduleOptionsInput)(nil)).Elem(), DataTransferConfigScheduleOptionsArgs{})
@@ -8939,9 +8724,7 @@ func init() {
 	pulumi.RegisterOutputType(AppProfileSingleClusterRoutingOutput{})
 	pulumi.RegisterOutputType(AppProfileSingleClusterRoutingPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionCloudSqlOutput{})
-	pulumi.RegisterOutputType(ConnectionCloudSqlPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionCloudSqlCredentialOutput{})
-	pulumi.RegisterOutputType(ConnectionCloudSqlCredentialPtrOutput{})
 	pulumi.RegisterOutputType(DataTransferConfigEmailPreferencesOutput{})
 	pulumi.RegisterOutputType(DataTransferConfigEmailPreferencesPtrOutput{})
 	pulumi.RegisterOutputType(DataTransferConfigScheduleOptionsOutput{})

@@ -285,7 +285,7 @@ type DatabaseIAMMemberInput interface {
 }
 
 func (*DatabaseIAMMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseIAMMember)(nil))
+	return reflect.TypeOf((**DatabaseIAMMember)(nil)).Elem()
 }
 
 func (i *DatabaseIAMMember) ToDatabaseIAMMemberOutput() DatabaseIAMMemberOutput {
@@ -294,35 +294,6 @@ func (i *DatabaseIAMMember) ToDatabaseIAMMemberOutput() DatabaseIAMMemberOutput 
 
 func (i *DatabaseIAMMember) ToDatabaseIAMMemberOutputWithContext(ctx context.Context) DatabaseIAMMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMMemberOutput)
-}
-
-func (i *DatabaseIAMMember) ToDatabaseIAMMemberPtrOutput() DatabaseIAMMemberPtrOutput {
-	return i.ToDatabaseIAMMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *DatabaseIAMMember) ToDatabaseIAMMemberPtrOutputWithContext(ctx context.Context) DatabaseIAMMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMMemberPtrOutput)
-}
-
-type DatabaseIAMMemberPtrInput interface {
-	pulumi.Input
-
-	ToDatabaseIAMMemberPtrOutput() DatabaseIAMMemberPtrOutput
-	ToDatabaseIAMMemberPtrOutputWithContext(ctx context.Context) DatabaseIAMMemberPtrOutput
-}
-
-type databaseIAMMemberPtrType DatabaseIAMMemberArgs
-
-func (*databaseIAMMemberPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatabaseIAMMember)(nil))
-}
-
-func (i *databaseIAMMemberPtrType) ToDatabaseIAMMemberPtrOutput() DatabaseIAMMemberPtrOutput {
-	return i.ToDatabaseIAMMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *databaseIAMMemberPtrType) ToDatabaseIAMMemberPtrOutputWithContext(ctx context.Context) DatabaseIAMMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMMemberPtrOutput)
 }
 
 // DatabaseIAMMemberArrayInput is an input type that accepts DatabaseIAMMemberArray and DatabaseIAMMemberArrayOutput values.
@@ -378,7 +349,7 @@ func (i DatabaseIAMMemberMap) ToDatabaseIAMMemberMapOutputWithContext(ctx contex
 type DatabaseIAMMemberOutput struct{ *pulumi.OutputState }
 
 func (DatabaseIAMMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseIAMMember)(nil))
+	return reflect.TypeOf((**DatabaseIAMMember)(nil)).Elem()
 }
 
 func (o DatabaseIAMMemberOutput) ToDatabaseIAMMemberOutput() DatabaseIAMMemberOutput {
@@ -389,44 +360,10 @@ func (o DatabaseIAMMemberOutput) ToDatabaseIAMMemberOutputWithContext(ctx contex
 	return o
 }
 
-func (o DatabaseIAMMemberOutput) ToDatabaseIAMMemberPtrOutput() DatabaseIAMMemberPtrOutput {
-	return o.ToDatabaseIAMMemberPtrOutputWithContext(context.Background())
-}
-
-func (o DatabaseIAMMemberOutput) ToDatabaseIAMMemberPtrOutputWithContext(ctx context.Context) DatabaseIAMMemberPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseIAMMember) *DatabaseIAMMember {
-		return &v
-	}).(DatabaseIAMMemberPtrOutput)
-}
-
-type DatabaseIAMMemberPtrOutput struct{ *pulumi.OutputState }
-
-func (DatabaseIAMMemberPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatabaseIAMMember)(nil))
-}
-
-func (o DatabaseIAMMemberPtrOutput) ToDatabaseIAMMemberPtrOutput() DatabaseIAMMemberPtrOutput {
-	return o
-}
-
-func (o DatabaseIAMMemberPtrOutput) ToDatabaseIAMMemberPtrOutputWithContext(ctx context.Context) DatabaseIAMMemberPtrOutput {
-	return o
-}
-
-func (o DatabaseIAMMemberPtrOutput) Elem() DatabaseIAMMemberOutput {
-	return o.ApplyT(func(v *DatabaseIAMMember) DatabaseIAMMember {
-		if v != nil {
-			return *v
-		}
-		var ret DatabaseIAMMember
-		return ret
-	}).(DatabaseIAMMemberOutput)
-}
-
 type DatabaseIAMMemberArrayOutput struct{ *pulumi.OutputState }
 
 func (DatabaseIAMMemberArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DatabaseIAMMember)(nil))
+	return reflect.TypeOf((*[]*DatabaseIAMMember)(nil)).Elem()
 }
 
 func (o DatabaseIAMMemberArrayOutput) ToDatabaseIAMMemberArrayOutput() DatabaseIAMMemberArrayOutput {
@@ -438,15 +375,15 @@ func (o DatabaseIAMMemberArrayOutput) ToDatabaseIAMMemberArrayOutputWithContext(
 }
 
 func (o DatabaseIAMMemberArrayOutput) Index(i pulumi.IntInput) DatabaseIAMMemberOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseIAMMember {
-		return vs[0].([]DatabaseIAMMember)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DatabaseIAMMember {
+		return vs[0].([]*DatabaseIAMMember)[vs[1].(int)]
 	}).(DatabaseIAMMemberOutput)
 }
 
 type DatabaseIAMMemberMapOutput struct{ *pulumi.OutputState }
 
 func (DatabaseIAMMemberMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DatabaseIAMMember)(nil))
+	return reflect.TypeOf((*map[string]*DatabaseIAMMember)(nil)).Elem()
 }
 
 func (o DatabaseIAMMemberMapOutput) ToDatabaseIAMMemberMapOutput() DatabaseIAMMemberMapOutput {
@@ -458,18 +395,16 @@ func (o DatabaseIAMMemberMapOutput) ToDatabaseIAMMemberMapOutputWithContext(ctx 
 }
 
 func (o DatabaseIAMMemberMapOutput) MapIndex(k pulumi.StringInput) DatabaseIAMMemberOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DatabaseIAMMember {
-		return vs[0].(map[string]DatabaseIAMMember)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DatabaseIAMMember {
+		return vs[0].(map[string]*DatabaseIAMMember)[vs[1].(string)]
 	}).(DatabaseIAMMemberOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseIAMMemberInput)(nil)).Elem(), &DatabaseIAMMember{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseIAMMemberPtrInput)(nil)).Elem(), &DatabaseIAMMember{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseIAMMemberArrayInput)(nil)).Elem(), DatabaseIAMMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseIAMMemberMapInput)(nil)).Elem(), DatabaseIAMMemberMap{})
 	pulumi.RegisterOutputType(DatabaseIAMMemberOutput{})
-	pulumi.RegisterOutputType(DatabaseIAMMemberPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseIAMMemberArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseIAMMemberMapOutput{})
 }

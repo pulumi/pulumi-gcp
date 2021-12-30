@@ -325,47 +325,6 @@ func (i InstanceNodeConfigArgs) ToInstanceNodeConfigOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceNodeConfigOutput)
 }
 
-func (i InstanceNodeConfigArgs) ToInstanceNodeConfigPtrOutput() InstanceNodeConfigPtrOutput {
-	return i.ToInstanceNodeConfigPtrOutputWithContext(context.Background())
-}
-
-func (i InstanceNodeConfigArgs) ToInstanceNodeConfigPtrOutputWithContext(ctx context.Context) InstanceNodeConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceNodeConfigOutput).ToInstanceNodeConfigPtrOutputWithContext(ctx)
-}
-
-// InstanceNodeConfigPtrInput is an input type that accepts InstanceNodeConfigArgs, InstanceNodeConfigPtr and InstanceNodeConfigPtrOutput values.
-// You can construct a concrete instance of `InstanceNodeConfigPtrInput` via:
-//
-//          InstanceNodeConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type InstanceNodeConfigPtrInput interface {
-	pulumi.Input
-
-	ToInstanceNodeConfigPtrOutput() InstanceNodeConfigPtrOutput
-	ToInstanceNodeConfigPtrOutputWithContext(context.Context) InstanceNodeConfigPtrOutput
-}
-
-type instanceNodeConfigPtrType InstanceNodeConfigArgs
-
-func InstanceNodeConfigPtr(v *InstanceNodeConfigArgs) InstanceNodeConfigPtrInput {
-	return (*instanceNodeConfigPtrType)(v)
-}
-
-func (*instanceNodeConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceNodeConfig)(nil)).Elem()
-}
-
-func (i *instanceNodeConfigPtrType) ToInstanceNodeConfigPtrOutput() InstanceNodeConfigPtrOutput {
-	return i.ToInstanceNodeConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *instanceNodeConfigPtrType) ToInstanceNodeConfigPtrOutputWithContext(ctx context.Context) InstanceNodeConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceNodeConfigPtrOutput)
-}
-
 type InstanceNodeConfigOutput struct{ *pulumi.OutputState }
 
 func (InstanceNodeConfigOutput) ElementType() reflect.Type {
@@ -380,16 +339,6 @@ func (o InstanceNodeConfigOutput) ToInstanceNodeConfigOutputWithContext(ctx cont
 	return o
 }
 
-func (o InstanceNodeConfigOutput) ToInstanceNodeConfigPtrOutput() InstanceNodeConfigPtrOutput {
-	return o.ToInstanceNodeConfigPtrOutputWithContext(context.Background())
-}
-
-func (o InstanceNodeConfigOutput) ToInstanceNodeConfigPtrOutputWithContext(ctx context.Context) InstanceNodeConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceNodeConfig) *InstanceNodeConfig {
-		return &v
-	}).(InstanceNodeConfigPtrOutput)
-}
-
 // Number of CPUs per node.
 func (o InstanceNodeConfigOutput) CpuCount() pulumi.IntOutput {
 	return o.ApplyT(func(v InstanceNodeConfig) int { return v.CpuCount }).(pulumi.IntOutput)
@@ -400,61 +349,15 @@ func (o InstanceNodeConfigOutput) MemorySizeMb() pulumi.IntOutput {
 	return o.ApplyT(func(v InstanceNodeConfig) int { return v.MemorySizeMb }).(pulumi.IntOutput)
 }
 
-type InstanceNodeConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (InstanceNodeConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceNodeConfig)(nil)).Elem()
-}
-
-func (o InstanceNodeConfigPtrOutput) ToInstanceNodeConfigPtrOutput() InstanceNodeConfigPtrOutput {
-	return o
-}
-
-func (o InstanceNodeConfigPtrOutput) ToInstanceNodeConfigPtrOutputWithContext(ctx context.Context) InstanceNodeConfigPtrOutput {
-	return o
-}
-
-func (o InstanceNodeConfigPtrOutput) Elem() InstanceNodeConfigOutput {
-	return o.ApplyT(func(v *InstanceNodeConfig) InstanceNodeConfig {
-		if v != nil {
-			return *v
-		}
-		var ret InstanceNodeConfig
-		return ret
-	}).(InstanceNodeConfigOutput)
-}
-
-// Number of CPUs per node.
-func (o InstanceNodeConfigPtrOutput) CpuCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *InstanceNodeConfig) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.CpuCount
-	}).(pulumi.IntPtrOutput)
-}
-
-// Memory size in Mebibytes for each memcache node.
-func (o InstanceNodeConfigPtrOutput) MemorySizeMb() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *InstanceNodeConfig) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.MemorySizeMb
-	}).(pulumi.IntPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMemcacheNodeInput)(nil)).Elem(), InstanceMemcacheNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMemcacheNodeArrayInput)(nil)).Elem(), InstanceMemcacheNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMemcacheParametersInput)(nil)).Elem(), InstanceMemcacheParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMemcacheParametersPtrInput)(nil)).Elem(), InstanceMemcacheParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNodeConfigInput)(nil)).Elem(), InstanceNodeConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNodeConfigPtrInput)(nil)).Elem(), InstanceNodeConfigArgs{})
 	pulumi.RegisterOutputType(InstanceMemcacheNodeOutput{})
 	pulumi.RegisterOutputType(InstanceMemcacheNodeArrayOutput{})
 	pulumi.RegisterOutputType(InstanceMemcacheParametersOutput{})
 	pulumi.RegisterOutputType(InstanceMemcacheParametersPtrOutput{})
 	pulumi.RegisterOutputType(InstanceNodeConfigOutput{})
-	pulumi.RegisterOutputType(InstanceNodeConfigPtrOutput{})
 }

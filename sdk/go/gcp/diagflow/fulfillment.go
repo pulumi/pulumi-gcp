@@ -208,7 +208,7 @@ type FulfillmentInput interface {
 }
 
 func (*Fulfillment) ElementType() reflect.Type {
-	return reflect.TypeOf((*Fulfillment)(nil))
+	return reflect.TypeOf((**Fulfillment)(nil)).Elem()
 }
 
 func (i *Fulfillment) ToFulfillmentOutput() FulfillmentOutput {
@@ -217,35 +217,6 @@ func (i *Fulfillment) ToFulfillmentOutput() FulfillmentOutput {
 
 func (i *Fulfillment) ToFulfillmentOutputWithContext(ctx context.Context) FulfillmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FulfillmentOutput)
-}
-
-func (i *Fulfillment) ToFulfillmentPtrOutput() FulfillmentPtrOutput {
-	return i.ToFulfillmentPtrOutputWithContext(context.Background())
-}
-
-func (i *Fulfillment) ToFulfillmentPtrOutputWithContext(ctx context.Context) FulfillmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FulfillmentPtrOutput)
-}
-
-type FulfillmentPtrInput interface {
-	pulumi.Input
-
-	ToFulfillmentPtrOutput() FulfillmentPtrOutput
-	ToFulfillmentPtrOutputWithContext(ctx context.Context) FulfillmentPtrOutput
-}
-
-type fulfillmentPtrType FulfillmentArgs
-
-func (*fulfillmentPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Fulfillment)(nil))
-}
-
-func (i *fulfillmentPtrType) ToFulfillmentPtrOutput() FulfillmentPtrOutput {
-	return i.ToFulfillmentPtrOutputWithContext(context.Background())
-}
-
-func (i *fulfillmentPtrType) ToFulfillmentPtrOutputWithContext(ctx context.Context) FulfillmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FulfillmentPtrOutput)
 }
 
 // FulfillmentArrayInput is an input type that accepts FulfillmentArray and FulfillmentArrayOutput values.
@@ -301,7 +272,7 @@ func (i FulfillmentMap) ToFulfillmentMapOutputWithContext(ctx context.Context) F
 type FulfillmentOutput struct{ *pulumi.OutputState }
 
 func (FulfillmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Fulfillment)(nil))
+	return reflect.TypeOf((**Fulfillment)(nil)).Elem()
 }
 
 func (o FulfillmentOutput) ToFulfillmentOutput() FulfillmentOutput {
@@ -312,44 +283,10 @@ func (o FulfillmentOutput) ToFulfillmentOutputWithContext(ctx context.Context) F
 	return o
 }
 
-func (o FulfillmentOutput) ToFulfillmentPtrOutput() FulfillmentPtrOutput {
-	return o.ToFulfillmentPtrOutputWithContext(context.Background())
-}
-
-func (o FulfillmentOutput) ToFulfillmentPtrOutputWithContext(ctx context.Context) FulfillmentPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Fulfillment) *Fulfillment {
-		return &v
-	}).(FulfillmentPtrOutput)
-}
-
-type FulfillmentPtrOutput struct{ *pulumi.OutputState }
-
-func (FulfillmentPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Fulfillment)(nil))
-}
-
-func (o FulfillmentPtrOutput) ToFulfillmentPtrOutput() FulfillmentPtrOutput {
-	return o
-}
-
-func (o FulfillmentPtrOutput) ToFulfillmentPtrOutputWithContext(ctx context.Context) FulfillmentPtrOutput {
-	return o
-}
-
-func (o FulfillmentPtrOutput) Elem() FulfillmentOutput {
-	return o.ApplyT(func(v *Fulfillment) Fulfillment {
-		if v != nil {
-			return *v
-		}
-		var ret Fulfillment
-		return ret
-	}).(FulfillmentOutput)
-}
-
 type FulfillmentArrayOutput struct{ *pulumi.OutputState }
 
 func (FulfillmentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Fulfillment)(nil))
+	return reflect.TypeOf((*[]*Fulfillment)(nil)).Elem()
 }
 
 func (o FulfillmentArrayOutput) ToFulfillmentArrayOutput() FulfillmentArrayOutput {
@@ -361,15 +298,15 @@ func (o FulfillmentArrayOutput) ToFulfillmentArrayOutputWithContext(ctx context.
 }
 
 func (o FulfillmentArrayOutput) Index(i pulumi.IntInput) FulfillmentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Fulfillment {
-		return vs[0].([]Fulfillment)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Fulfillment {
+		return vs[0].([]*Fulfillment)[vs[1].(int)]
 	}).(FulfillmentOutput)
 }
 
 type FulfillmentMapOutput struct{ *pulumi.OutputState }
 
 func (FulfillmentMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Fulfillment)(nil))
+	return reflect.TypeOf((*map[string]*Fulfillment)(nil)).Elem()
 }
 
 func (o FulfillmentMapOutput) ToFulfillmentMapOutput() FulfillmentMapOutput {
@@ -381,18 +318,16 @@ func (o FulfillmentMapOutput) ToFulfillmentMapOutputWithContext(ctx context.Cont
 }
 
 func (o FulfillmentMapOutput) MapIndex(k pulumi.StringInput) FulfillmentOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Fulfillment {
-		return vs[0].(map[string]Fulfillment)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Fulfillment {
+		return vs[0].(map[string]*Fulfillment)[vs[1].(string)]
 	}).(FulfillmentOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FulfillmentInput)(nil)).Elem(), &Fulfillment{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FulfillmentPtrInput)(nil)).Elem(), &Fulfillment{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FulfillmentArrayInput)(nil)).Elem(), FulfillmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FulfillmentMapInput)(nil)).Elem(), FulfillmentMap{})
 	pulumi.RegisterOutputType(FulfillmentOutput{})
-	pulumi.RegisterOutputType(FulfillmentPtrOutput{})
 	pulumi.RegisterOutputType(FulfillmentArrayOutput{})
 	pulumi.RegisterOutputType(FulfillmentMapOutput{})
 }

@@ -34,7 +34,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ml.NewEngineModel(ctx, "_default", &ml.EngineModelArgs{
+// 		_, err := ml.NewEngineModel(ctx, "default", &ml.EngineModelArgs{
 // 			Description: pulumi.String("My model"),
 // 			Regions:     pulumi.String("us-central1"),
 // 		})
@@ -57,7 +57,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ml.NewEngineModel(ctx, "_default", &ml.EngineModelArgs{
+// 		_, err := ml.NewEngineModel(ctx, "default", &ml.EngineModelArgs{
 // 			Description: pulumi.String("My model"),
 // 			Labels: pulumi.StringMap{
 // 				"my_model": pulumi.String("foo"),
@@ -251,7 +251,7 @@ type EngineModelInput interface {
 }
 
 func (*EngineModel) ElementType() reflect.Type {
-	return reflect.TypeOf((*EngineModel)(nil))
+	return reflect.TypeOf((**EngineModel)(nil)).Elem()
 }
 
 func (i *EngineModel) ToEngineModelOutput() EngineModelOutput {
@@ -260,35 +260,6 @@ func (i *EngineModel) ToEngineModelOutput() EngineModelOutput {
 
 func (i *EngineModel) ToEngineModelOutputWithContext(ctx context.Context) EngineModelOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EngineModelOutput)
-}
-
-func (i *EngineModel) ToEngineModelPtrOutput() EngineModelPtrOutput {
-	return i.ToEngineModelPtrOutputWithContext(context.Background())
-}
-
-func (i *EngineModel) ToEngineModelPtrOutputWithContext(ctx context.Context) EngineModelPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EngineModelPtrOutput)
-}
-
-type EngineModelPtrInput interface {
-	pulumi.Input
-
-	ToEngineModelPtrOutput() EngineModelPtrOutput
-	ToEngineModelPtrOutputWithContext(ctx context.Context) EngineModelPtrOutput
-}
-
-type engineModelPtrType EngineModelArgs
-
-func (*engineModelPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EngineModel)(nil))
-}
-
-func (i *engineModelPtrType) ToEngineModelPtrOutput() EngineModelPtrOutput {
-	return i.ToEngineModelPtrOutputWithContext(context.Background())
-}
-
-func (i *engineModelPtrType) ToEngineModelPtrOutputWithContext(ctx context.Context) EngineModelPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EngineModelPtrOutput)
 }
 
 // EngineModelArrayInput is an input type that accepts EngineModelArray and EngineModelArrayOutput values.
@@ -344,7 +315,7 @@ func (i EngineModelMap) ToEngineModelMapOutputWithContext(ctx context.Context) E
 type EngineModelOutput struct{ *pulumi.OutputState }
 
 func (EngineModelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EngineModel)(nil))
+	return reflect.TypeOf((**EngineModel)(nil)).Elem()
 }
 
 func (o EngineModelOutput) ToEngineModelOutput() EngineModelOutput {
@@ -355,44 +326,10 @@ func (o EngineModelOutput) ToEngineModelOutputWithContext(ctx context.Context) E
 	return o
 }
 
-func (o EngineModelOutput) ToEngineModelPtrOutput() EngineModelPtrOutput {
-	return o.ToEngineModelPtrOutputWithContext(context.Background())
-}
-
-func (o EngineModelOutput) ToEngineModelPtrOutputWithContext(ctx context.Context) EngineModelPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EngineModel) *EngineModel {
-		return &v
-	}).(EngineModelPtrOutput)
-}
-
-type EngineModelPtrOutput struct{ *pulumi.OutputState }
-
-func (EngineModelPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EngineModel)(nil))
-}
-
-func (o EngineModelPtrOutput) ToEngineModelPtrOutput() EngineModelPtrOutput {
-	return o
-}
-
-func (o EngineModelPtrOutput) ToEngineModelPtrOutputWithContext(ctx context.Context) EngineModelPtrOutput {
-	return o
-}
-
-func (o EngineModelPtrOutput) Elem() EngineModelOutput {
-	return o.ApplyT(func(v *EngineModel) EngineModel {
-		if v != nil {
-			return *v
-		}
-		var ret EngineModel
-		return ret
-	}).(EngineModelOutput)
-}
-
 type EngineModelArrayOutput struct{ *pulumi.OutputState }
 
 func (EngineModelArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EngineModel)(nil))
+	return reflect.TypeOf((*[]*EngineModel)(nil)).Elem()
 }
 
 func (o EngineModelArrayOutput) ToEngineModelArrayOutput() EngineModelArrayOutput {
@@ -404,15 +341,15 @@ func (o EngineModelArrayOutput) ToEngineModelArrayOutputWithContext(ctx context.
 }
 
 func (o EngineModelArrayOutput) Index(i pulumi.IntInput) EngineModelOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EngineModel {
-		return vs[0].([]EngineModel)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EngineModel {
+		return vs[0].([]*EngineModel)[vs[1].(int)]
 	}).(EngineModelOutput)
 }
 
 type EngineModelMapOutput struct{ *pulumi.OutputState }
 
 func (EngineModelMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]EngineModel)(nil))
+	return reflect.TypeOf((*map[string]*EngineModel)(nil)).Elem()
 }
 
 func (o EngineModelMapOutput) ToEngineModelMapOutput() EngineModelMapOutput {
@@ -424,18 +361,16 @@ func (o EngineModelMapOutput) ToEngineModelMapOutputWithContext(ctx context.Cont
 }
 
 func (o EngineModelMapOutput) MapIndex(k pulumi.StringInput) EngineModelOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) EngineModel {
-		return vs[0].(map[string]EngineModel)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *EngineModel {
+		return vs[0].(map[string]*EngineModel)[vs[1].(string)]
 	}).(EngineModelOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EngineModelInput)(nil)).Elem(), &EngineModel{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EngineModelPtrInput)(nil)).Elem(), &EngineModel{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EngineModelArrayInput)(nil)).Elem(), EngineModelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EngineModelMapInput)(nil)).Elem(), EngineModelMap{})
 	pulumi.RegisterOutputType(EngineModelOutput{})
-	pulumi.RegisterOutputType(EngineModelPtrOutput{})
 	pulumi.RegisterOutputType(EngineModelArrayOutput{})
 	pulumi.RegisterOutputType(EngineModelMapOutput{})
 }

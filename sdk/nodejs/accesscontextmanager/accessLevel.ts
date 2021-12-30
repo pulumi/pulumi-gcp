@@ -129,16 +129,16 @@ export class AccessLevel extends pulumi.CustomResource {
      */
     constructor(name: string, args: AccessLevelArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccessLevelArgs | AccessLevelState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessLevelState | undefined;
-            inputs["basic"] = state ? state.basic : undefined;
-            inputs["custom"] = state ? state.custom : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["parent"] = state ? state.parent : undefined;
-            inputs["title"] = state ? state.title : undefined;
+            resourceInputs["basic"] = state ? state.basic : undefined;
+            resourceInputs["custom"] = state ? state.custom : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["parent"] = state ? state.parent : undefined;
+            resourceInputs["title"] = state ? state.title : undefined;
         } else {
             const args = argsOrState as AccessLevelArgs | undefined;
             if ((!args || args.parent === undefined) && !opts.urn) {
@@ -147,17 +147,17 @@ export class AccessLevel extends pulumi.CustomResource {
             if ((!args || args.title === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'title'");
             }
-            inputs["basic"] = args ? args.basic : undefined;
-            inputs["custom"] = args ? args.custom : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
-            inputs["title"] = args ? args.title : undefined;
+            resourceInputs["basic"] = args ? args.basic : undefined;
+            resourceInputs["custom"] = args ? args.custom : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["title"] = args ? args.title : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(AccessLevel.__pulumiType, name, inputs, opts);
+        super(AccessLevel.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -188,7 +188,7 @@ type LiteReservationInput interface {
 }
 
 func (*LiteReservation) ElementType() reflect.Type {
-	return reflect.TypeOf((*LiteReservation)(nil))
+	return reflect.TypeOf((**LiteReservation)(nil)).Elem()
 }
 
 func (i *LiteReservation) ToLiteReservationOutput() LiteReservationOutput {
@@ -197,35 +197,6 @@ func (i *LiteReservation) ToLiteReservationOutput() LiteReservationOutput {
 
 func (i *LiteReservation) ToLiteReservationOutputWithContext(ctx context.Context) LiteReservationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LiteReservationOutput)
-}
-
-func (i *LiteReservation) ToLiteReservationPtrOutput() LiteReservationPtrOutput {
-	return i.ToLiteReservationPtrOutputWithContext(context.Background())
-}
-
-func (i *LiteReservation) ToLiteReservationPtrOutputWithContext(ctx context.Context) LiteReservationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LiteReservationPtrOutput)
-}
-
-type LiteReservationPtrInput interface {
-	pulumi.Input
-
-	ToLiteReservationPtrOutput() LiteReservationPtrOutput
-	ToLiteReservationPtrOutputWithContext(ctx context.Context) LiteReservationPtrOutput
-}
-
-type liteReservationPtrType LiteReservationArgs
-
-func (*liteReservationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**LiteReservation)(nil))
-}
-
-func (i *liteReservationPtrType) ToLiteReservationPtrOutput() LiteReservationPtrOutput {
-	return i.ToLiteReservationPtrOutputWithContext(context.Background())
-}
-
-func (i *liteReservationPtrType) ToLiteReservationPtrOutputWithContext(ctx context.Context) LiteReservationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LiteReservationPtrOutput)
 }
 
 // LiteReservationArrayInput is an input type that accepts LiteReservationArray and LiteReservationArrayOutput values.
@@ -281,7 +252,7 @@ func (i LiteReservationMap) ToLiteReservationMapOutputWithContext(ctx context.Co
 type LiteReservationOutput struct{ *pulumi.OutputState }
 
 func (LiteReservationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LiteReservation)(nil))
+	return reflect.TypeOf((**LiteReservation)(nil)).Elem()
 }
 
 func (o LiteReservationOutput) ToLiteReservationOutput() LiteReservationOutput {
@@ -292,44 +263,10 @@ func (o LiteReservationOutput) ToLiteReservationOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o LiteReservationOutput) ToLiteReservationPtrOutput() LiteReservationPtrOutput {
-	return o.ToLiteReservationPtrOutputWithContext(context.Background())
-}
-
-func (o LiteReservationOutput) ToLiteReservationPtrOutputWithContext(ctx context.Context) LiteReservationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v LiteReservation) *LiteReservation {
-		return &v
-	}).(LiteReservationPtrOutput)
-}
-
-type LiteReservationPtrOutput struct{ *pulumi.OutputState }
-
-func (LiteReservationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LiteReservation)(nil))
-}
-
-func (o LiteReservationPtrOutput) ToLiteReservationPtrOutput() LiteReservationPtrOutput {
-	return o
-}
-
-func (o LiteReservationPtrOutput) ToLiteReservationPtrOutputWithContext(ctx context.Context) LiteReservationPtrOutput {
-	return o
-}
-
-func (o LiteReservationPtrOutput) Elem() LiteReservationOutput {
-	return o.ApplyT(func(v *LiteReservation) LiteReservation {
-		if v != nil {
-			return *v
-		}
-		var ret LiteReservation
-		return ret
-	}).(LiteReservationOutput)
-}
-
 type LiteReservationArrayOutput struct{ *pulumi.OutputState }
 
 func (LiteReservationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LiteReservation)(nil))
+	return reflect.TypeOf((*[]*LiteReservation)(nil)).Elem()
 }
 
 func (o LiteReservationArrayOutput) ToLiteReservationArrayOutput() LiteReservationArrayOutput {
@@ -341,15 +278,15 @@ func (o LiteReservationArrayOutput) ToLiteReservationArrayOutputWithContext(ctx 
 }
 
 func (o LiteReservationArrayOutput) Index(i pulumi.IntInput) LiteReservationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LiteReservation {
-		return vs[0].([]LiteReservation)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *LiteReservation {
+		return vs[0].([]*LiteReservation)[vs[1].(int)]
 	}).(LiteReservationOutput)
 }
 
 type LiteReservationMapOutput struct{ *pulumi.OutputState }
 
 func (LiteReservationMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]LiteReservation)(nil))
+	return reflect.TypeOf((*map[string]*LiteReservation)(nil)).Elem()
 }
 
 func (o LiteReservationMapOutput) ToLiteReservationMapOutput() LiteReservationMapOutput {
@@ -361,18 +298,16 @@ func (o LiteReservationMapOutput) ToLiteReservationMapOutputWithContext(ctx cont
 }
 
 func (o LiteReservationMapOutput) MapIndex(k pulumi.StringInput) LiteReservationOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) LiteReservation {
-		return vs[0].(map[string]LiteReservation)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *LiteReservation {
+		return vs[0].(map[string]*LiteReservation)[vs[1].(string)]
 	}).(LiteReservationOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LiteReservationInput)(nil)).Elem(), &LiteReservation{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LiteReservationPtrInput)(nil)).Elem(), &LiteReservation{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LiteReservationArrayInput)(nil)).Elem(), LiteReservationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LiteReservationMapInput)(nil)).Elem(), LiteReservationMap{})
 	pulumi.RegisterOutputType(LiteReservationOutput{})
-	pulumi.RegisterOutputType(LiteReservationPtrOutput{})
 	pulumi.RegisterOutputType(LiteReservationArrayOutput{})
 	pulumi.RegisterOutputType(LiteReservationMapOutput{})
 }

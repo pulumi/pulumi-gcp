@@ -15,6 +15,159 @@ import * as utilities from "../utilities";
  * https://cloud.google.com/compute/docs/load-balancing/http/
  *
  * ## Example Usage
+ * ### External Ssl Proxy Lb Mig Backend Custom Header
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as tls from "@pulumi/tls";
+ *
+ * // External SSL proxy load balancer with managed instance group backend
+ * // VPC
+ * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {autoCreateSubnetworks: false}, {
+ *     provider: google,
+ * });
+ * // backend subnet
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
+ *     ipCidrRange: "10.0.1.0/24",
+ *     region: "us-central1",
+ *     network: defaultNetwork.id,
+ * }, {
+ *     provider: google,
+ * });
+ * // reserved IP address
+ * const defaultGlobalAddress = new gcp.compute.GlobalAddress("defaultGlobalAddress", {});
+ * // Self-signed regional SSL certificate for testing
+ * const defaultPrivateKey = new tls.PrivateKey("defaultPrivateKey", {
+ *     algorithm: "RSA",
+ *     rsaBits: 2048,
+ * });
+ * const defaultSelfSignedCert = new tls.SelfSignedCert("defaultSelfSignedCert", {
+ *     keyAlgorithm: defaultPrivateKey.algorithm,
+ *     privateKeyPem: defaultPrivateKey.privateKeyPem,
+ *     validityPeriodHours: 12,
+ *     earlyRenewalHours: 3,
+ *     allowedUses: [
+ *         "key_encipherment",
+ *         "digital_signature",
+ *         "server_auth",
+ *     ],
+ *     dnsNames: ["example.com"],
+ *     subjects: [{
+ *         commonName: "example.com",
+ *         organization: "ACME Examples, Inc",
+ *     }],
+ * });
+ * const defaultSSLCertificate = new gcp.compute.SSLCertificate("defaultSSLCertificate", {
+ *     privateKey: defaultPrivateKey.privateKeyPem,
+ *     certificate: defaultSelfSignedCert.certPem,
+ * });
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("defaultHealthCheck", {
+ *     timeoutSec: 1,
+ *     checkIntervalSec: 1,
+ *     tcpHealthCheck: {
+ *         port: "443",
+ *     },
+ * });
+ * // instance template
+ * const defaultInstanceTemplate = new gcp.compute.InstanceTemplate("defaultInstanceTemplate", {
+ *     machineType: "e2-small",
+ *     tags: ["allow-health-check"],
+ *     networkInterfaces: [{
+ *         network: defaultNetwork.id,
+ *         subnetwork: defaultSubnetwork.id,
+ *         accessConfigs: [{}],
+ *     }],
+ *     disks: [{
+ *         sourceImage: "debian-cloud/debian-10",
+ *         autoDelete: true,
+ *         boot: true,
+ *     }],
+ *     metadata: {
+ *         "startup-script": `#! /bin/bash
+ * set -euo pipefail
+ * export DEBIAN_FRONTEND=noninteractive
+ * sudo apt-get update
+ * sudo apt-get install  -y apache2 jq
+ * sudo a2ensite default-ssl
+ * sudo a2enmod ssl
+ * sudo service apache2 restart
+ * NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
+ * IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
+ * METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
+ * cat <<EOF > /var/www/html/index.html
+ * <h1>SSL Load Balancer</h1>
+ * <pre>
+ * Name: $NAME
+ * IP: $IP
+ * Metadata: $METADATA
+ * </pre>
+ * EOF
+ * `,
+ *     },
+ * }, {
+ *     provider: google,
+ * });
+ * // MIG
+ * const defaultInstanceGroupManager = new gcp.compute.InstanceGroupManager("defaultInstanceGroupManager", {
+ *     zone: "us-central1-c",
+ *     namedPorts: [{
+ *         name: "tcp",
+ *         port: 443,
+ *     }],
+ *     versions: [{
+ *         instanceTemplate: defaultInstanceTemplate.id,
+ *         name: "primary",
+ *     }],
+ *     baseInstanceName: "vm",
+ *     targetSize: 2,
+ * }, {
+ *     provider: google,
+ * });
+ * // backend service
+ * const defaultBackendService = new gcp.compute.BackendService("defaultBackendService", {
+ *     protocol: "SSL",
+ *     portName: "tcp",
+ *     loadBalancingScheme: "EXTERNAL",
+ *     timeoutSec: 10,
+ *     healthChecks: [defaultHealthCheck.id],
+ *     backends: [{
+ *         group: defaultInstanceGroupManager.instanceGroup,
+ *         balancingMode: "UTILIZATION",
+ *         maxUtilization: 1,
+ *         capacityScaler: 1,
+ *     }],
+ * });
+ * const defaultTargetSSLProxy = new gcp.compute.TargetSSLProxy("defaultTargetSSLProxy", {
+ *     backendService: defaultBackendService.id,
+ *     sslCertificates: [defaultSSLCertificate.id],
+ * });
+ * // forwarding rule
+ * const defaultGlobalForwardingRule = new gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule", {
+ *     ipProtocol: "TCP",
+ *     loadBalancingScheme: "EXTERNAL",
+ *     portRange: "443",
+ *     target: defaultTargetSSLProxy.id,
+ *     ipAddress: defaultGlobalAddress.id,
+ * }, {
+ *     provider: google,
+ * });
+ * // allow access from health check ranges
+ * const defaultFirewall = new gcp.compute.Firewall("defaultFirewall", {
+ *     direction: "INGRESS",
+ *     network: defaultNetwork.id,
+ *     sourceRanges: [
+ *         "130.211.0.0/22",
+ *         "35.191.0.0/16",
+ *     ],
+ *     allows: [{
+ *         protocol: "tcp",
+ *     }],
+ *     targetTags: ["allow-health-check"],
+ * }, {
+ *     provider: google,
+ * });
+ * ```
  * ### External Tcp Proxy Lb Mig Backend Custom Header
  *
  * ```typescript
@@ -636,48 +789,48 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: GlobalForwardingRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GlobalForwardingRuleArgs | GlobalForwardingRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GlobalForwardingRuleState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["ipAddress"] = state ? state.ipAddress : undefined;
-            inputs["ipProtocol"] = state ? state.ipProtocol : undefined;
-            inputs["ipVersion"] = state ? state.ipVersion : undefined;
-            inputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["loadBalancingScheme"] = state ? state.loadBalancingScheme : undefined;
-            inputs["metadataFilters"] = state ? state.metadataFilters : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["network"] = state ? state.network : undefined;
-            inputs["portRange"] = state ? state.portRange : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
-            inputs["target"] = state ? state.target : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
+            resourceInputs["ipProtocol"] = state ? state.ipProtocol : undefined;
+            resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
+            resourceInputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["loadBalancingScheme"] = state ? state.loadBalancingScheme : undefined;
+            resourceInputs["metadataFilters"] = state ? state.metadataFilters : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["network"] = state ? state.network : undefined;
+            resourceInputs["portRange"] = state ? state.portRange : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["target"] = state ? state.target : undefined;
         } else {
             const args = argsOrState as GlobalForwardingRuleArgs | undefined;
             if ((!args || args.target === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'target'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["ipAddress"] = args ? args.ipAddress : undefined;
-            inputs["ipProtocol"] = args ? args.ipProtocol : undefined;
-            inputs["ipVersion"] = args ? args.ipVersion : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["loadBalancingScheme"] = args ? args.loadBalancingScheme : undefined;
-            inputs["metadataFilters"] = args ? args.metadataFilters : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["network"] = args ? args.network : undefined;
-            inputs["portRange"] = args ? args.portRange : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["target"] = args ? args.target : undefined;
-            inputs["labelFingerprint"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
+            resourceInputs["ipProtocol"] = args ? args.ipProtocol : undefined;
+            resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["loadBalancingScheme"] = args ? args.loadBalancingScheme : undefined;
+            resourceInputs["metadataFilters"] = args ? args.metadataFilters : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["portRange"] = args ? args.portRange : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["target"] = args ? args.target : undefined;
+            resourceInputs["labelFingerprint"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(GlobalForwardingRule.__pulumiType, name, inputs, opts);
+        super(GlobalForwardingRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -78,10 +78,10 @@ namespace Pulumi.Gcp.Monitoring
         ///             },
         ///             DeleteServiceOnDestroy = false,
         ///         });
-        ///         var srv = myapp.Service.Apply(service =&gt; Gcp.Monitoring.GetAppEngineService.InvokeAsync(new Gcp.Monitoring.GetAppEngineServiceArgs
+        ///         var srv = Gcp.Monitoring.GetAppEngineService.Invoke(new Gcp.Monitoring.GetAppEngineServiceInvokeArgs
         ///         {
-        ///             ModuleId = service,
-        ///         }));
+        ///             ModuleId = myapp.Service,
+        ///         });
         ///     }
         /// 
         /// }
@@ -158,10 +158,10 @@ namespace Pulumi.Gcp.Monitoring
         ///             },
         ///             DeleteServiceOnDestroy = false,
         ///         });
-        ///         var srv = myapp.Service.Apply(service =&gt; Gcp.Monitoring.GetAppEngineService.InvokeAsync(new Gcp.Monitoring.GetAppEngineServiceArgs
+        ///         var srv = Gcp.Monitoring.GetAppEngineService.Invoke(new Gcp.Monitoring.GetAppEngineServiceInvokeArgs
         ///         {
-        ///             ModuleId = service,
-        ///         }));
+        ///             ModuleId = myapp.Service,
+        ///         });
         ///     }
         /// 
         /// }

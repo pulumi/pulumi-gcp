@@ -321,20 +321,20 @@ export class ServicePerimeter extends pulumi.CustomResource {
      */
     constructor(name: string, args: ServicePerimeterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServicePerimeterArgs | ServicePerimeterState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServicePerimeterState | undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["parent"] = state ? state.parent : undefined;
-            inputs["perimeterType"] = state ? state.perimeterType : undefined;
-            inputs["spec"] = state ? state.spec : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["title"] = state ? state.title : undefined;
-            inputs["updateTime"] = state ? state.updateTime : undefined;
-            inputs["useExplicitDryRunSpec"] = state ? state.useExplicitDryRunSpec : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["parent"] = state ? state.parent : undefined;
+            resourceInputs["perimeterType"] = state ? state.perimeterType : undefined;
+            resourceInputs["spec"] = state ? state.spec : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["title"] = state ? state.title : undefined;
+            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["useExplicitDryRunSpec"] = state ? state.useExplicitDryRunSpec : undefined;
         } else {
             const args = argsOrState as ServicePerimeterArgs | undefined;
             if ((!args || args.parent === undefined) && !opts.urn) {
@@ -343,21 +343,21 @@ export class ServicePerimeter extends pulumi.CustomResource {
             if ((!args || args.title === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'title'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
-            inputs["perimeterType"] = args ? args.perimeterType : undefined;
-            inputs["spec"] = args ? args.spec : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["title"] = args ? args.title : undefined;
-            inputs["useExplicitDryRunSpec"] = args ? args.useExplicitDryRunSpec : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["perimeterType"] = args ? args.perimeterType : undefined;
+            resourceInputs["spec"] = args ? args.spec : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["title"] = args ? args.title : undefined;
+            resourceInputs["useExplicitDryRunSpec"] = args ? args.useExplicitDryRunSpec : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ServicePerimeter.__pulumiType, name, inputs, opts);
+        super(ServicePerimeter.__pulumiType, name, resourceInputs, opts);
     }
 }
 

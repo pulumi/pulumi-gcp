@@ -375,47 +375,6 @@ func (i SecretReplicationArgs) ToSecretReplicationOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(SecretReplicationOutput)
 }
 
-func (i SecretReplicationArgs) ToSecretReplicationPtrOutput() SecretReplicationPtrOutput {
-	return i.ToSecretReplicationPtrOutputWithContext(context.Background())
-}
-
-func (i SecretReplicationArgs) ToSecretReplicationPtrOutputWithContext(ctx context.Context) SecretReplicationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecretReplicationOutput).ToSecretReplicationPtrOutputWithContext(ctx)
-}
-
-// SecretReplicationPtrInput is an input type that accepts SecretReplicationArgs, SecretReplicationPtr and SecretReplicationPtrOutput values.
-// You can construct a concrete instance of `SecretReplicationPtrInput` via:
-//
-//          SecretReplicationArgs{...}
-//
-//  or:
-//
-//          nil
-type SecretReplicationPtrInput interface {
-	pulumi.Input
-
-	ToSecretReplicationPtrOutput() SecretReplicationPtrOutput
-	ToSecretReplicationPtrOutputWithContext(context.Context) SecretReplicationPtrOutput
-}
-
-type secretReplicationPtrType SecretReplicationArgs
-
-func SecretReplicationPtr(v *SecretReplicationArgs) SecretReplicationPtrInput {
-	return (*secretReplicationPtrType)(v)
-}
-
-func (*secretReplicationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecretReplication)(nil)).Elem()
-}
-
-func (i *secretReplicationPtrType) ToSecretReplicationPtrOutput() SecretReplicationPtrOutput {
-	return i.ToSecretReplicationPtrOutputWithContext(context.Background())
-}
-
-func (i *secretReplicationPtrType) ToSecretReplicationPtrOutputWithContext(ctx context.Context) SecretReplicationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecretReplicationPtrOutput)
-}
-
 type SecretReplicationOutput struct{ *pulumi.OutputState }
 
 func (SecretReplicationOutput) ElementType() reflect.Type {
@@ -430,16 +389,6 @@ func (o SecretReplicationOutput) ToSecretReplicationOutputWithContext(ctx contex
 	return o
 }
 
-func (o SecretReplicationOutput) ToSecretReplicationPtrOutput() SecretReplicationPtrOutput {
-	return o.ToSecretReplicationPtrOutputWithContext(context.Background())
-}
-
-func (o SecretReplicationOutput) ToSecretReplicationPtrOutputWithContext(ctx context.Context) SecretReplicationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretReplication) *SecretReplication {
-		return &v
-	}).(SecretReplicationPtrOutput)
-}
-
 // The Secret will automatically be replicated without any restrictions.
 func (o SecretReplicationOutput) Automatic() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SecretReplication) *bool { return v.Automatic }).(pulumi.BoolPtrOutput)
@@ -449,51 +398,6 @@ func (o SecretReplicationOutput) Automatic() pulumi.BoolPtrOutput {
 // Structure is documented below.
 func (o SecretReplicationOutput) UserManaged() SecretReplicationUserManagedPtrOutput {
 	return o.ApplyT(func(v SecretReplication) *SecretReplicationUserManaged { return v.UserManaged }).(SecretReplicationUserManagedPtrOutput)
-}
-
-type SecretReplicationPtrOutput struct{ *pulumi.OutputState }
-
-func (SecretReplicationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecretReplication)(nil)).Elem()
-}
-
-func (o SecretReplicationPtrOutput) ToSecretReplicationPtrOutput() SecretReplicationPtrOutput {
-	return o
-}
-
-func (o SecretReplicationPtrOutput) ToSecretReplicationPtrOutputWithContext(ctx context.Context) SecretReplicationPtrOutput {
-	return o
-}
-
-func (o SecretReplicationPtrOutput) Elem() SecretReplicationOutput {
-	return o.ApplyT(func(v *SecretReplication) SecretReplication {
-		if v != nil {
-			return *v
-		}
-		var ret SecretReplication
-		return ret
-	}).(SecretReplicationOutput)
-}
-
-// The Secret will automatically be replicated without any restrictions.
-func (o SecretReplicationPtrOutput) Automatic() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SecretReplication) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Automatic
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The Secret will automatically be replicated without any restrictions.
-// Structure is documented below.
-func (o SecretReplicationPtrOutput) UserManaged() SecretReplicationUserManagedPtrOutput {
-	return o.ApplyT(func(v *SecretReplication) *SecretReplicationUserManaged {
-		if v == nil {
-			return nil
-		}
-		return v.UserManaged
-	}).(SecretReplicationUserManagedPtrOutput)
 }
 
 type SecretReplicationUserManaged struct {
@@ -1739,7 +1643,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretIamMemberConditionInput)(nil)).Elem(), SecretIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretIamMemberConditionPtrInput)(nil)).Elem(), SecretIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretReplicationInput)(nil)).Elem(), SecretReplicationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecretReplicationPtrInput)(nil)).Elem(), SecretReplicationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretReplicationUserManagedInput)(nil)).Elem(), SecretReplicationUserManagedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretReplicationUserManagedPtrInput)(nil)).Elem(), SecretReplicationUserManagedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretReplicationUserManagedReplicaInput)(nil)).Elem(), SecretReplicationUserManagedReplicaArgs{})
@@ -1767,7 +1670,6 @@ func init() {
 	pulumi.RegisterOutputType(SecretIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(SecretIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(SecretReplicationOutput{})
-	pulumi.RegisterOutputType(SecretReplicationPtrOutput{})
 	pulumi.RegisterOutputType(SecretReplicationUserManagedOutput{})
 	pulumi.RegisterOutputType(SecretReplicationUserManagedPtrOutput{})
 	pulumi.RegisterOutputType(SecretReplicationUserManagedReplicaOutput{})

@@ -6971,47 +6971,6 @@ func (i JobPlacementArgs) ToJobPlacementOutputWithContext(ctx context.Context) J
 	return pulumi.ToOutputWithContext(ctx, i).(JobPlacementOutput)
 }
 
-func (i JobPlacementArgs) ToJobPlacementPtrOutput() JobPlacementPtrOutput {
-	return i.ToJobPlacementPtrOutputWithContext(context.Background())
-}
-
-func (i JobPlacementArgs) ToJobPlacementPtrOutputWithContext(ctx context.Context) JobPlacementPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobPlacementOutput).ToJobPlacementPtrOutputWithContext(ctx)
-}
-
-// JobPlacementPtrInput is an input type that accepts JobPlacementArgs, JobPlacementPtr and JobPlacementPtrOutput values.
-// You can construct a concrete instance of `JobPlacementPtrInput` via:
-//
-//          JobPlacementArgs{...}
-//
-//  or:
-//
-//          nil
-type JobPlacementPtrInput interface {
-	pulumi.Input
-
-	ToJobPlacementPtrOutput() JobPlacementPtrOutput
-	ToJobPlacementPtrOutputWithContext(context.Context) JobPlacementPtrOutput
-}
-
-type jobPlacementPtrType JobPlacementArgs
-
-func JobPlacementPtr(v *JobPlacementArgs) JobPlacementPtrInput {
-	return (*jobPlacementPtrType)(v)
-}
-
-func (*jobPlacementPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobPlacement)(nil)).Elem()
-}
-
-func (i *jobPlacementPtrType) ToJobPlacementPtrOutput() JobPlacementPtrOutput {
-	return i.ToJobPlacementPtrOutputWithContext(context.Background())
-}
-
-func (i *jobPlacementPtrType) ToJobPlacementPtrOutputWithContext(ctx context.Context) JobPlacementPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobPlacementPtrOutput)
-}
-
 type JobPlacementOutput struct{ *pulumi.OutputState }
 
 func (JobPlacementOutput) ElementType() reflect.Type {
@@ -7026,64 +6985,12 @@ func (o JobPlacementOutput) ToJobPlacementOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o JobPlacementOutput) ToJobPlacementPtrOutput() JobPlacementPtrOutput {
-	return o.ToJobPlacementPtrOutputWithContext(context.Background())
-}
-
-func (o JobPlacementOutput) ToJobPlacementPtrOutputWithContext(ctx context.Context) JobPlacementPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobPlacement) *JobPlacement {
-		return &v
-	}).(JobPlacementPtrOutput)
-}
-
 func (o JobPlacementOutput) ClusterName() pulumi.StringOutput {
 	return o.ApplyT(func(v JobPlacement) string { return v.ClusterName }).(pulumi.StringOutput)
 }
 
 func (o JobPlacementOutput) ClusterUuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobPlacement) *string { return v.ClusterUuid }).(pulumi.StringPtrOutput)
-}
-
-type JobPlacementPtrOutput struct{ *pulumi.OutputState }
-
-func (JobPlacementPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobPlacement)(nil)).Elem()
-}
-
-func (o JobPlacementPtrOutput) ToJobPlacementPtrOutput() JobPlacementPtrOutput {
-	return o
-}
-
-func (o JobPlacementPtrOutput) ToJobPlacementPtrOutputWithContext(ctx context.Context) JobPlacementPtrOutput {
-	return o
-}
-
-func (o JobPlacementPtrOutput) Elem() JobPlacementOutput {
-	return o.ApplyT(func(v *JobPlacement) JobPlacement {
-		if v != nil {
-			return *v
-		}
-		var ret JobPlacement
-		return ret
-	}).(JobPlacementOutput)
-}
-
-func (o JobPlacementPtrOutput) ClusterName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobPlacement) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ClusterName
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o JobPlacementPtrOutput) ClusterUuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobPlacement) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ClusterUuid
-	}).(pulumi.StringPtrOutput)
 }
 
 type JobPysparkConfig struct {
@@ -13783,47 +13690,6 @@ func (i WorkflowTemplatePlacementArgs) ToWorkflowTemplatePlacementOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementOutput)
 }
 
-func (i WorkflowTemplatePlacementArgs) ToWorkflowTemplatePlacementPtrOutput() WorkflowTemplatePlacementPtrOutput {
-	return i.ToWorkflowTemplatePlacementPtrOutputWithContext(context.Background())
-}
-
-func (i WorkflowTemplatePlacementArgs) ToWorkflowTemplatePlacementPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementOutput).ToWorkflowTemplatePlacementPtrOutputWithContext(ctx)
-}
-
-// WorkflowTemplatePlacementPtrInput is an input type that accepts WorkflowTemplatePlacementArgs, WorkflowTemplatePlacementPtr and WorkflowTemplatePlacementPtrOutput values.
-// You can construct a concrete instance of `WorkflowTemplatePlacementPtrInput` via:
-//
-//          WorkflowTemplatePlacementArgs{...}
-//
-//  or:
-//
-//          nil
-type WorkflowTemplatePlacementPtrInput interface {
-	pulumi.Input
-
-	ToWorkflowTemplatePlacementPtrOutput() WorkflowTemplatePlacementPtrOutput
-	ToWorkflowTemplatePlacementPtrOutputWithContext(context.Context) WorkflowTemplatePlacementPtrOutput
-}
-
-type workflowTemplatePlacementPtrType WorkflowTemplatePlacementArgs
-
-func WorkflowTemplatePlacementPtr(v *WorkflowTemplatePlacementArgs) WorkflowTemplatePlacementPtrInput {
-	return (*workflowTemplatePlacementPtrType)(v)
-}
-
-func (*workflowTemplatePlacementPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkflowTemplatePlacement)(nil)).Elem()
-}
-
-func (i *workflowTemplatePlacementPtrType) ToWorkflowTemplatePlacementPtrOutput() WorkflowTemplatePlacementPtrOutput {
-	return i.ToWorkflowTemplatePlacementPtrOutputWithContext(context.Background())
-}
-
-func (i *workflowTemplatePlacementPtrType) ToWorkflowTemplatePlacementPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementPtrOutput)
-}
-
 type WorkflowTemplatePlacementOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplatePlacementOutput) ElementType() reflect.Type {
@@ -13838,16 +13704,6 @@ func (o WorkflowTemplatePlacementOutput) ToWorkflowTemplatePlacementOutputWithCo
 	return o
 }
 
-func (o WorkflowTemplatePlacementOutput) ToWorkflowTemplatePlacementPtrOutput() WorkflowTemplatePlacementPtrOutput {
-	return o.ToWorkflowTemplatePlacementPtrOutputWithContext(context.Background())
-}
-
-func (o WorkflowTemplatePlacementOutput) ToWorkflowTemplatePlacementPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacement) *WorkflowTemplatePlacement {
-		return &v
-	}).(WorkflowTemplatePlacementPtrOutput)
-}
-
 // Optional. A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
 func (o WorkflowTemplatePlacementOutput) ClusterSelector() WorkflowTemplatePlacementClusterSelectorPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacement) *WorkflowTemplatePlacementClusterSelector { return v.ClusterSelector }).(WorkflowTemplatePlacementClusterSelectorPtrOutput)
@@ -13856,50 +13712,6 @@ func (o WorkflowTemplatePlacementOutput) ClusterSelector() WorkflowTemplatePlace
 // A cluster that is managed by the workflow.
 func (o WorkflowTemplatePlacementOutput) ManagedCluster() WorkflowTemplatePlacementManagedClusterPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacement) *WorkflowTemplatePlacementManagedCluster { return v.ManagedCluster }).(WorkflowTemplatePlacementManagedClusterPtrOutput)
-}
-
-type WorkflowTemplatePlacementPtrOutput struct{ *pulumi.OutputState }
-
-func (WorkflowTemplatePlacementPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkflowTemplatePlacement)(nil)).Elem()
-}
-
-func (o WorkflowTemplatePlacementPtrOutput) ToWorkflowTemplatePlacementPtrOutput() WorkflowTemplatePlacementPtrOutput {
-	return o
-}
-
-func (o WorkflowTemplatePlacementPtrOutput) ToWorkflowTemplatePlacementPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementPtrOutput {
-	return o
-}
-
-func (o WorkflowTemplatePlacementPtrOutput) Elem() WorkflowTemplatePlacementOutput {
-	return o.ApplyT(func(v *WorkflowTemplatePlacement) WorkflowTemplatePlacement {
-		if v != nil {
-			return *v
-		}
-		var ret WorkflowTemplatePlacement
-		return ret
-	}).(WorkflowTemplatePlacementOutput)
-}
-
-// Optional. A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
-func (o WorkflowTemplatePlacementPtrOutput) ClusterSelector() WorkflowTemplatePlacementClusterSelectorPtrOutput {
-	return o.ApplyT(func(v *WorkflowTemplatePlacement) *WorkflowTemplatePlacementClusterSelector {
-		if v == nil {
-			return nil
-		}
-		return v.ClusterSelector
-	}).(WorkflowTemplatePlacementClusterSelectorPtrOutput)
-}
-
-// A cluster that is managed by the workflow.
-func (o WorkflowTemplatePlacementPtrOutput) ManagedCluster() WorkflowTemplatePlacementManagedClusterPtrOutput {
-	return o.ApplyT(func(v *WorkflowTemplatePlacement) *WorkflowTemplatePlacementManagedCluster {
-		if v == nil {
-			return nil
-		}
-		return v.ManagedCluster
-	}).(WorkflowTemplatePlacementManagedClusterPtrOutput)
 }
 
 type WorkflowTemplatePlacementClusterSelector struct {
@@ -19495,7 +19307,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobPigConfigLoggingConfigInput)(nil)).Elem(), JobPigConfigLoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobPigConfigLoggingConfigPtrInput)(nil)).Elem(), JobPigConfigLoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobPlacementInput)(nil)).Elem(), JobPlacementArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobPlacementPtrInput)(nil)).Elem(), JobPlacementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobPysparkConfigInput)(nil)).Elem(), JobPysparkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobPysparkConfigPtrInput)(nil)).Elem(), JobPysparkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobPysparkConfigLoggingConfigInput)(nil)).Elem(), JobPysparkConfigLoggingConfigArgs{})
@@ -19573,7 +19384,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplateParameterValidationValuesInput)(nil)).Elem(), WorkflowTemplateParameterValidationValuesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplateParameterValidationValuesPtrInput)(nil)).Elem(), WorkflowTemplateParameterValidationValuesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementInput)(nil)).Elem(), WorkflowTemplatePlacementArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementPtrInput)(nil)).Elem(), WorkflowTemplatePlacementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementClusterSelectorInput)(nil)).Elem(), WorkflowTemplatePlacementClusterSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementClusterSelectorPtrInput)(nil)).Elem(), WorkflowTemplatePlacementClusterSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterArgs{})
@@ -19699,7 +19509,6 @@ func init() {
 	pulumi.RegisterOutputType(JobPigConfigLoggingConfigOutput{})
 	pulumi.RegisterOutputType(JobPigConfigLoggingConfigPtrOutput{})
 	pulumi.RegisterOutputType(JobPlacementOutput{})
-	pulumi.RegisterOutputType(JobPlacementPtrOutput{})
 	pulumi.RegisterOutputType(JobPysparkConfigOutput{})
 	pulumi.RegisterOutputType(JobPysparkConfigPtrOutput{})
 	pulumi.RegisterOutputType(JobPysparkConfigLoggingConfigOutput{})
@@ -19777,7 +19586,6 @@ func init() {
 	pulumi.RegisterOutputType(WorkflowTemplateParameterValidationValuesOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplateParameterValidationValuesPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementOutput{})
-	pulumi.RegisterOutputType(WorkflowTemplatePlacementPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementClusterSelectorOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementClusterSelectorPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterOutput{})

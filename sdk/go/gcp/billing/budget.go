@@ -454,7 +454,7 @@ type BudgetInput interface {
 }
 
 func (*Budget) ElementType() reflect.Type {
-	return reflect.TypeOf((*Budget)(nil))
+	return reflect.TypeOf((**Budget)(nil)).Elem()
 }
 
 func (i *Budget) ToBudgetOutput() BudgetOutput {
@@ -463,35 +463,6 @@ func (i *Budget) ToBudgetOutput() BudgetOutput {
 
 func (i *Budget) ToBudgetOutputWithContext(ctx context.Context) BudgetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetOutput)
-}
-
-func (i *Budget) ToBudgetPtrOutput() BudgetPtrOutput {
-	return i.ToBudgetPtrOutputWithContext(context.Background())
-}
-
-func (i *Budget) ToBudgetPtrOutputWithContext(ctx context.Context) BudgetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BudgetPtrOutput)
-}
-
-type BudgetPtrInput interface {
-	pulumi.Input
-
-	ToBudgetPtrOutput() BudgetPtrOutput
-	ToBudgetPtrOutputWithContext(ctx context.Context) BudgetPtrOutput
-}
-
-type budgetPtrType BudgetArgs
-
-func (*budgetPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Budget)(nil))
-}
-
-func (i *budgetPtrType) ToBudgetPtrOutput() BudgetPtrOutput {
-	return i.ToBudgetPtrOutputWithContext(context.Background())
-}
-
-func (i *budgetPtrType) ToBudgetPtrOutputWithContext(ctx context.Context) BudgetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BudgetPtrOutput)
 }
 
 // BudgetArrayInput is an input type that accepts BudgetArray and BudgetArrayOutput values.
@@ -547,7 +518,7 @@ func (i BudgetMap) ToBudgetMapOutputWithContext(ctx context.Context) BudgetMapOu
 type BudgetOutput struct{ *pulumi.OutputState }
 
 func (BudgetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Budget)(nil))
+	return reflect.TypeOf((**Budget)(nil)).Elem()
 }
 
 func (o BudgetOutput) ToBudgetOutput() BudgetOutput {
@@ -558,44 +529,10 @@ func (o BudgetOutput) ToBudgetOutputWithContext(ctx context.Context) BudgetOutpu
 	return o
 }
 
-func (o BudgetOutput) ToBudgetPtrOutput() BudgetPtrOutput {
-	return o.ToBudgetPtrOutputWithContext(context.Background())
-}
-
-func (o BudgetOutput) ToBudgetPtrOutputWithContext(ctx context.Context) BudgetPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Budget) *Budget {
-		return &v
-	}).(BudgetPtrOutput)
-}
-
-type BudgetPtrOutput struct{ *pulumi.OutputState }
-
-func (BudgetPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Budget)(nil))
-}
-
-func (o BudgetPtrOutput) ToBudgetPtrOutput() BudgetPtrOutput {
-	return o
-}
-
-func (o BudgetPtrOutput) ToBudgetPtrOutputWithContext(ctx context.Context) BudgetPtrOutput {
-	return o
-}
-
-func (o BudgetPtrOutput) Elem() BudgetOutput {
-	return o.ApplyT(func(v *Budget) Budget {
-		if v != nil {
-			return *v
-		}
-		var ret Budget
-		return ret
-	}).(BudgetOutput)
-}
-
 type BudgetArrayOutput struct{ *pulumi.OutputState }
 
 func (BudgetArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Budget)(nil))
+	return reflect.TypeOf((*[]*Budget)(nil)).Elem()
 }
 
 func (o BudgetArrayOutput) ToBudgetArrayOutput() BudgetArrayOutput {
@@ -607,15 +544,15 @@ func (o BudgetArrayOutput) ToBudgetArrayOutputWithContext(ctx context.Context) B
 }
 
 func (o BudgetArrayOutput) Index(i pulumi.IntInput) BudgetOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Budget {
-		return vs[0].([]Budget)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Budget {
+		return vs[0].([]*Budget)[vs[1].(int)]
 	}).(BudgetOutput)
 }
 
 type BudgetMapOutput struct{ *pulumi.OutputState }
 
 func (BudgetMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Budget)(nil))
+	return reflect.TypeOf((*map[string]*Budget)(nil)).Elem()
 }
 
 func (o BudgetMapOutput) ToBudgetMapOutput() BudgetMapOutput {
@@ -627,18 +564,16 @@ func (o BudgetMapOutput) ToBudgetMapOutputWithContext(ctx context.Context) Budge
 }
 
 func (o BudgetMapOutput) MapIndex(k pulumi.StringInput) BudgetOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Budget {
-		return vs[0].(map[string]Budget)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Budget {
+		return vs[0].(map[string]*Budget)[vs[1].(string)]
 	}).(BudgetOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BudgetInput)(nil)).Elem(), &Budget{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BudgetPtrInput)(nil)).Elem(), &Budget{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BudgetArrayInput)(nil)).Elem(), BudgetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BudgetMapInput)(nil)).Elem(), BudgetMap{})
 	pulumi.RegisterOutputType(BudgetOutput{})
-	pulumi.RegisterOutputType(BudgetPtrOutput{})
 	pulumi.RegisterOutputType(BudgetArrayOutput{})
 	pulumi.RegisterOutputType(BudgetMapOutput{})
 }

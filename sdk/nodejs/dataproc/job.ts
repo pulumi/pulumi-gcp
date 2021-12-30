@@ -167,52 +167,52 @@ export class Job extends pulumi.CustomResource {
      */
     constructor(name: string, args: JobArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: JobArgs | JobState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as JobState | undefined;
-            inputs["driverControlsFilesUri"] = state ? state.driverControlsFilesUri : undefined;
-            inputs["driverOutputResourceUri"] = state ? state.driverOutputResourceUri : undefined;
-            inputs["forceDelete"] = state ? state.forceDelete : undefined;
-            inputs["hadoopConfig"] = state ? state.hadoopConfig : undefined;
-            inputs["hiveConfig"] = state ? state.hiveConfig : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["pigConfig"] = state ? state.pigConfig : undefined;
-            inputs["placement"] = state ? state.placement : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["pysparkConfig"] = state ? state.pysparkConfig : undefined;
-            inputs["reference"] = state ? state.reference : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["scheduling"] = state ? state.scheduling : undefined;
-            inputs["sparkConfig"] = state ? state.sparkConfig : undefined;
-            inputs["sparksqlConfig"] = state ? state.sparksqlConfig : undefined;
-            inputs["statuses"] = state ? state.statuses : undefined;
+            resourceInputs["driverControlsFilesUri"] = state ? state.driverControlsFilesUri : undefined;
+            resourceInputs["driverOutputResourceUri"] = state ? state.driverOutputResourceUri : undefined;
+            resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
+            resourceInputs["hadoopConfig"] = state ? state.hadoopConfig : undefined;
+            resourceInputs["hiveConfig"] = state ? state.hiveConfig : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["pigConfig"] = state ? state.pigConfig : undefined;
+            resourceInputs["placement"] = state ? state.placement : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pysparkConfig"] = state ? state.pysparkConfig : undefined;
+            resourceInputs["reference"] = state ? state.reference : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["scheduling"] = state ? state.scheduling : undefined;
+            resourceInputs["sparkConfig"] = state ? state.sparkConfig : undefined;
+            resourceInputs["sparksqlConfig"] = state ? state.sparksqlConfig : undefined;
+            resourceInputs["statuses"] = state ? state.statuses : undefined;
         } else {
             const args = argsOrState as JobArgs | undefined;
             if ((!args || args.placement === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'placement'");
             }
-            inputs["forceDelete"] = args ? args.forceDelete : undefined;
-            inputs["hadoopConfig"] = args ? args.hadoopConfig : undefined;
-            inputs["hiveConfig"] = args ? args.hiveConfig : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["pigConfig"] = args ? args.pigConfig : undefined;
-            inputs["placement"] = args ? args.placement : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["pysparkConfig"] = args ? args.pysparkConfig : undefined;
-            inputs["reference"] = args ? args.reference : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["scheduling"] = args ? args.scheduling : undefined;
-            inputs["sparkConfig"] = args ? args.sparkConfig : undefined;
-            inputs["sparksqlConfig"] = args ? args.sparksqlConfig : undefined;
-            inputs["driverControlsFilesUri"] = undefined /*out*/;
-            inputs["driverOutputResourceUri"] = undefined /*out*/;
-            inputs["statuses"] = undefined /*out*/;
+            resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
+            resourceInputs["hadoopConfig"] = args ? args.hadoopConfig : undefined;
+            resourceInputs["hiveConfig"] = args ? args.hiveConfig : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["pigConfig"] = args ? args.pigConfig : undefined;
+            resourceInputs["placement"] = args ? args.placement : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["pysparkConfig"] = args ? args.pysparkConfig : undefined;
+            resourceInputs["reference"] = args ? args.reference : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["scheduling"] = args ? args.scheduling : undefined;
+            resourceInputs["sparkConfig"] = args ? args.sparkConfig : undefined;
+            resourceInputs["sparksqlConfig"] = args ? args.sparksqlConfig : undefined;
+            resourceInputs["driverControlsFilesUri"] = undefined /*out*/;
+            resourceInputs["driverOutputResourceUri"] = undefined /*out*/;
+            resourceInputs["statuses"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Job.__pulumiType, name, inputs, opts);
+        super(Job.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -92,28 +92,28 @@ export class BucketACL extends pulumi.CustomResource {
      */
     constructor(name: string, args: BucketACLArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BucketACLArgs | BucketACLState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BucketACLState | undefined;
-            inputs["bucket"] = state ? state.bucket : undefined;
-            inputs["defaultAcl"] = state ? state.defaultAcl : undefined;
-            inputs["predefinedAcl"] = state ? state.predefinedAcl : undefined;
-            inputs["roleEntities"] = state ? state.roleEntities : undefined;
+            resourceInputs["bucket"] = state ? state.bucket : undefined;
+            resourceInputs["defaultAcl"] = state ? state.defaultAcl : undefined;
+            resourceInputs["predefinedAcl"] = state ? state.predefinedAcl : undefined;
+            resourceInputs["roleEntities"] = state ? state.roleEntities : undefined;
         } else {
             const args = argsOrState as BucketACLArgs | undefined;
             if ((!args || args.bucket === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            inputs["bucket"] = args ? args.bucket : undefined;
-            inputs["defaultAcl"] = args ? args.defaultAcl : undefined;
-            inputs["predefinedAcl"] = args ? args.predefinedAcl : undefined;
-            inputs["roleEntities"] = args ? args.roleEntities : undefined;
+            resourceInputs["bucket"] = args ? args.bucket : undefined;
+            resourceInputs["defaultAcl"] = args ? args.defaultAcl : undefined;
+            resourceInputs["predefinedAcl"] = args ? args.predefinedAcl : undefined;
+            resourceInputs["roleEntities"] = args ? args.roleEntities : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(BucketACL.__pulumiType, name, inputs, opts);
+        super(BucketACL.__pulumiType, name, resourceInputs, opts);
     }
 }
 

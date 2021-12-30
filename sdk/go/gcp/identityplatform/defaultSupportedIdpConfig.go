@@ -241,7 +241,7 @@ type DefaultSupportedIdpConfigInput interface {
 }
 
 func (*DefaultSupportedIdpConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefaultSupportedIdpConfig)(nil))
+	return reflect.TypeOf((**DefaultSupportedIdpConfig)(nil)).Elem()
 }
 
 func (i *DefaultSupportedIdpConfig) ToDefaultSupportedIdpConfigOutput() DefaultSupportedIdpConfigOutput {
@@ -250,35 +250,6 @@ func (i *DefaultSupportedIdpConfig) ToDefaultSupportedIdpConfigOutput() DefaultS
 
 func (i *DefaultSupportedIdpConfig) ToDefaultSupportedIdpConfigOutputWithContext(ctx context.Context) DefaultSupportedIdpConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultSupportedIdpConfigOutput)
-}
-
-func (i *DefaultSupportedIdpConfig) ToDefaultSupportedIdpConfigPtrOutput() DefaultSupportedIdpConfigPtrOutput {
-	return i.ToDefaultSupportedIdpConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *DefaultSupportedIdpConfig) ToDefaultSupportedIdpConfigPtrOutputWithContext(ctx context.Context) DefaultSupportedIdpConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefaultSupportedIdpConfigPtrOutput)
-}
-
-type DefaultSupportedIdpConfigPtrInput interface {
-	pulumi.Input
-
-	ToDefaultSupportedIdpConfigPtrOutput() DefaultSupportedIdpConfigPtrOutput
-	ToDefaultSupportedIdpConfigPtrOutputWithContext(ctx context.Context) DefaultSupportedIdpConfigPtrOutput
-}
-
-type defaultSupportedIdpConfigPtrType DefaultSupportedIdpConfigArgs
-
-func (*defaultSupportedIdpConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefaultSupportedIdpConfig)(nil))
-}
-
-func (i *defaultSupportedIdpConfigPtrType) ToDefaultSupportedIdpConfigPtrOutput() DefaultSupportedIdpConfigPtrOutput {
-	return i.ToDefaultSupportedIdpConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *defaultSupportedIdpConfigPtrType) ToDefaultSupportedIdpConfigPtrOutputWithContext(ctx context.Context) DefaultSupportedIdpConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefaultSupportedIdpConfigPtrOutput)
 }
 
 // DefaultSupportedIdpConfigArrayInput is an input type that accepts DefaultSupportedIdpConfigArray and DefaultSupportedIdpConfigArrayOutput values.
@@ -334,7 +305,7 @@ func (i DefaultSupportedIdpConfigMap) ToDefaultSupportedIdpConfigMapOutputWithCo
 type DefaultSupportedIdpConfigOutput struct{ *pulumi.OutputState }
 
 func (DefaultSupportedIdpConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefaultSupportedIdpConfig)(nil))
+	return reflect.TypeOf((**DefaultSupportedIdpConfig)(nil)).Elem()
 }
 
 func (o DefaultSupportedIdpConfigOutput) ToDefaultSupportedIdpConfigOutput() DefaultSupportedIdpConfigOutput {
@@ -345,44 +316,10 @@ func (o DefaultSupportedIdpConfigOutput) ToDefaultSupportedIdpConfigOutputWithCo
 	return o
 }
 
-func (o DefaultSupportedIdpConfigOutput) ToDefaultSupportedIdpConfigPtrOutput() DefaultSupportedIdpConfigPtrOutput {
-	return o.ToDefaultSupportedIdpConfigPtrOutputWithContext(context.Background())
-}
-
-func (o DefaultSupportedIdpConfigOutput) ToDefaultSupportedIdpConfigPtrOutputWithContext(ctx context.Context) DefaultSupportedIdpConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefaultSupportedIdpConfig) *DefaultSupportedIdpConfig {
-		return &v
-	}).(DefaultSupportedIdpConfigPtrOutput)
-}
-
-type DefaultSupportedIdpConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (DefaultSupportedIdpConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefaultSupportedIdpConfig)(nil))
-}
-
-func (o DefaultSupportedIdpConfigPtrOutput) ToDefaultSupportedIdpConfigPtrOutput() DefaultSupportedIdpConfigPtrOutput {
-	return o
-}
-
-func (o DefaultSupportedIdpConfigPtrOutput) ToDefaultSupportedIdpConfigPtrOutputWithContext(ctx context.Context) DefaultSupportedIdpConfigPtrOutput {
-	return o
-}
-
-func (o DefaultSupportedIdpConfigPtrOutput) Elem() DefaultSupportedIdpConfigOutput {
-	return o.ApplyT(func(v *DefaultSupportedIdpConfig) DefaultSupportedIdpConfig {
-		if v != nil {
-			return *v
-		}
-		var ret DefaultSupportedIdpConfig
-		return ret
-	}).(DefaultSupportedIdpConfigOutput)
-}
-
 type DefaultSupportedIdpConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (DefaultSupportedIdpConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DefaultSupportedIdpConfig)(nil))
+	return reflect.TypeOf((*[]*DefaultSupportedIdpConfig)(nil)).Elem()
 }
 
 func (o DefaultSupportedIdpConfigArrayOutput) ToDefaultSupportedIdpConfigArrayOutput() DefaultSupportedIdpConfigArrayOutput {
@@ -394,15 +331,15 @@ func (o DefaultSupportedIdpConfigArrayOutput) ToDefaultSupportedIdpConfigArrayOu
 }
 
 func (o DefaultSupportedIdpConfigArrayOutput) Index(i pulumi.IntInput) DefaultSupportedIdpConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DefaultSupportedIdpConfig {
-		return vs[0].([]DefaultSupportedIdpConfig)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DefaultSupportedIdpConfig {
+		return vs[0].([]*DefaultSupportedIdpConfig)[vs[1].(int)]
 	}).(DefaultSupportedIdpConfigOutput)
 }
 
 type DefaultSupportedIdpConfigMapOutput struct{ *pulumi.OutputState }
 
 func (DefaultSupportedIdpConfigMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DefaultSupportedIdpConfig)(nil))
+	return reflect.TypeOf((*map[string]*DefaultSupportedIdpConfig)(nil)).Elem()
 }
 
 func (o DefaultSupportedIdpConfigMapOutput) ToDefaultSupportedIdpConfigMapOutput() DefaultSupportedIdpConfigMapOutput {
@@ -414,18 +351,16 @@ func (o DefaultSupportedIdpConfigMapOutput) ToDefaultSupportedIdpConfigMapOutput
 }
 
 func (o DefaultSupportedIdpConfigMapOutput) MapIndex(k pulumi.StringInput) DefaultSupportedIdpConfigOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DefaultSupportedIdpConfig {
-		return vs[0].(map[string]DefaultSupportedIdpConfig)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DefaultSupportedIdpConfig {
+		return vs[0].(map[string]*DefaultSupportedIdpConfig)[vs[1].(string)]
 	}).(DefaultSupportedIdpConfigOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultSupportedIdpConfigInput)(nil)).Elem(), &DefaultSupportedIdpConfig{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DefaultSupportedIdpConfigPtrInput)(nil)).Elem(), &DefaultSupportedIdpConfig{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultSupportedIdpConfigArrayInput)(nil)).Elem(), DefaultSupportedIdpConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultSupportedIdpConfigMapInput)(nil)).Elem(), DefaultSupportedIdpConfigMap{})
 	pulumi.RegisterOutputType(DefaultSupportedIdpConfigOutput{})
-	pulumi.RegisterOutputType(DefaultSupportedIdpConfigPtrOutput{})
 	pulumi.RegisterOutputType(DefaultSupportedIdpConfigArrayOutput{})
 	pulumi.RegisterOutputType(DefaultSupportedIdpConfigMapOutput{})
 }

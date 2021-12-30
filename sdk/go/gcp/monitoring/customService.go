@@ -180,7 +180,7 @@ type CustomServiceInput interface {
 }
 
 func (*CustomService) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomService)(nil))
+	return reflect.TypeOf((**CustomService)(nil)).Elem()
 }
 
 func (i *CustomService) ToCustomServiceOutput() CustomServiceOutput {
@@ -189,35 +189,6 @@ func (i *CustomService) ToCustomServiceOutput() CustomServiceOutput {
 
 func (i *CustomService) ToCustomServiceOutputWithContext(ctx context.Context) CustomServiceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomServiceOutput)
-}
-
-func (i *CustomService) ToCustomServicePtrOutput() CustomServicePtrOutput {
-	return i.ToCustomServicePtrOutputWithContext(context.Background())
-}
-
-func (i *CustomService) ToCustomServicePtrOutputWithContext(ctx context.Context) CustomServicePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CustomServicePtrOutput)
-}
-
-type CustomServicePtrInput interface {
-	pulumi.Input
-
-	ToCustomServicePtrOutput() CustomServicePtrOutput
-	ToCustomServicePtrOutputWithContext(ctx context.Context) CustomServicePtrOutput
-}
-
-type customServicePtrType CustomServiceArgs
-
-func (*customServicePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CustomService)(nil))
-}
-
-func (i *customServicePtrType) ToCustomServicePtrOutput() CustomServicePtrOutput {
-	return i.ToCustomServicePtrOutputWithContext(context.Background())
-}
-
-func (i *customServicePtrType) ToCustomServicePtrOutputWithContext(ctx context.Context) CustomServicePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CustomServicePtrOutput)
 }
 
 // CustomServiceArrayInput is an input type that accepts CustomServiceArray and CustomServiceArrayOutput values.
@@ -273,7 +244,7 @@ func (i CustomServiceMap) ToCustomServiceMapOutputWithContext(ctx context.Contex
 type CustomServiceOutput struct{ *pulumi.OutputState }
 
 func (CustomServiceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomService)(nil))
+	return reflect.TypeOf((**CustomService)(nil)).Elem()
 }
 
 func (o CustomServiceOutput) ToCustomServiceOutput() CustomServiceOutput {
@@ -284,44 +255,10 @@ func (o CustomServiceOutput) ToCustomServiceOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o CustomServiceOutput) ToCustomServicePtrOutput() CustomServicePtrOutput {
-	return o.ToCustomServicePtrOutputWithContext(context.Background())
-}
-
-func (o CustomServiceOutput) ToCustomServicePtrOutputWithContext(ctx context.Context) CustomServicePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomService) *CustomService {
-		return &v
-	}).(CustomServicePtrOutput)
-}
-
-type CustomServicePtrOutput struct{ *pulumi.OutputState }
-
-func (CustomServicePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CustomService)(nil))
-}
-
-func (o CustomServicePtrOutput) ToCustomServicePtrOutput() CustomServicePtrOutput {
-	return o
-}
-
-func (o CustomServicePtrOutput) ToCustomServicePtrOutputWithContext(ctx context.Context) CustomServicePtrOutput {
-	return o
-}
-
-func (o CustomServicePtrOutput) Elem() CustomServiceOutput {
-	return o.ApplyT(func(v *CustomService) CustomService {
-		if v != nil {
-			return *v
-		}
-		var ret CustomService
-		return ret
-	}).(CustomServiceOutput)
-}
-
 type CustomServiceArrayOutput struct{ *pulumi.OutputState }
 
 func (CustomServiceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CustomService)(nil))
+	return reflect.TypeOf((*[]*CustomService)(nil)).Elem()
 }
 
 func (o CustomServiceArrayOutput) ToCustomServiceArrayOutput() CustomServiceArrayOutput {
@@ -333,15 +270,15 @@ func (o CustomServiceArrayOutput) ToCustomServiceArrayOutputWithContext(ctx cont
 }
 
 func (o CustomServiceArrayOutput) Index(i pulumi.IntInput) CustomServiceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomService {
-		return vs[0].([]CustomService)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CustomService {
+		return vs[0].([]*CustomService)[vs[1].(int)]
 	}).(CustomServiceOutput)
 }
 
 type CustomServiceMapOutput struct{ *pulumi.OutputState }
 
 func (CustomServiceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]CustomService)(nil))
+	return reflect.TypeOf((*map[string]*CustomService)(nil)).Elem()
 }
 
 func (o CustomServiceMapOutput) ToCustomServiceMapOutput() CustomServiceMapOutput {
@@ -353,18 +290,16 @@ func (o CustomServiceMapOutput) ToCustomServiceMapOutputWithContext(ctx context.
 }
 
 func (o CustomServiceMapOutput) MapIndex(k pulumi.StringInput) CustomServiceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CustomService {
-		return vs[0].(map[string]CustomService)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *CustomService {
+		return vs[0].(map[string]*CustomService)[vs[1].(string)]
 	}).(CustomServiceOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomServiceInput)(nil)).Elem(), &CustomService{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CustomServicePtrInput)(nil)).Elem(), &CustomService{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomServiceArrayInput)(nil)).Elem(), CustomServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomServiceMapInput)(nil)).Elem(), CustomServiceMap{})
 	pulumi.RegisterOutputType(CustomServiceOutput{})
-	pulumi.RegisterOutputType(CustomServicePtrOutput{})
 	pulumi.RegisterOutputType(CustomServiceArrayOutput{})
 	pulumi.RegisterOutputType(CustomServiceMapOutput{})
 }

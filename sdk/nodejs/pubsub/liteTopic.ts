@@ -134,31 +134,31 @@ export class LiteTopic extends pulumi.CustomResource {
      */
     constructor(name: string, args?: LiteTopicArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LiteTopicArgs | LiteTopicState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LiteTopicState | undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["partitionConfig"] = state ? state.partitionConfig : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["reservationConfig"] = state ? state.reservationConfig : undefined;
-            inputs["retentionConfig"] = state ? state.retentionConfig : undefined;
-            inputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["partitionConfig"] = state ? state.partitionConfig : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["reservationConfig"] = state ? state.reservationConfig : undefined;
+            resourceInputs["retentionConfig"] = state ? state.retentionConfig : undefined;
+            resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as LiteTopicArgs | undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["partitionConfig"] = args ? args.partitionConfig : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["reservationConfig"] = args ? args.reservationConfig : undefined;
-            inputs["retentionConfig"] = args ? args.retentionConfig : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["partitionConfig"] = args ? args.partitionConfig : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["reservationConfig"] = args ? args.reservationConfig : undefined;
+            resourceInputs["retentionConfig"] = args ? args.retentionConfig : undefined;
+            resourceInputs["zone"] = args ? args.zone : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(LiteTopic.__pulumiType, name, inputs, opts);
+        super(LiteTopic.__pulumiType, name, resourceInputs, opts);
     }
 }
 

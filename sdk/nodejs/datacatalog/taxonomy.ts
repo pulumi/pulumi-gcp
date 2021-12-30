@@ -108,32 +108,32 @@ export class Taxonomy extends pulumi.CustomResource {
      */
     constructor(name: string, args: TaxonomyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TaxonomyArgs | TaxonomyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TaxonomyState | undefined;
-            inputs["activatedPolicyTypes"] = state ? state.activatedPolicyTypes : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["region"] = state ? state.region : undefined;
+            resourceInputs["activatedPolicyTypes"] = state ? state.activatedPolicyTypes : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as TaxonomyArgs | undefined;
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            inputs["activatedPolicyTypes"] = args ? args.activatedPolicyTypes : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["activatedPolicyTypes"] = args ? args.activatedPolicyTypes : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Taxonomy.__pulumiType, name, inputs, opts);
+        super(Taxonomy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

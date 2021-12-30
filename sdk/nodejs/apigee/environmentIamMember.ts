@@ -142,16 +142,16 @@ export class EnvironmentIamMember extends pulumi.CustomResource {
      */
     constructor(name: string, args: EnvironmentIamMemberArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EnvironmentIamMemberArgs | EnvironmentIamMemberState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EnvironmentIamMemberState | undefined;
-            inputs["condition"] = state ? state.condition : undefined;
-            inputs["envId"] = state ? state.envId : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["member"] = state ? state.member : undefined;
-            inputs["orgId"] = state ? state.orgId : undefined;
-            inputs["role"] = state ? state.role : undefined;
+            resourceInputs["condition"] = state ? state.condition : undefined;
+            resourceInputs["envId"] = state ? state.envId : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["member"] = state ? state.member : undefined;
+            resourceInputs["orgId"] = state ? state.orgId : undefined;
+            resourceInputs["role"] = state ? state.role : undefined;
         } else {
             const args = argsOrState as EnvironmentIamMemberArgs | undefined;
             if ((!args || args.envId === undefined) && !opts.urn) {
@@ -166,17 +166,17 @@ export class EnvironmentIamMember extends pulumi.CustomResource {
             if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            inputs["condition"] = args ? args.condition : undefined;
-            inputs["envId"] = args ? args.envId : undefined;
-            inputs["member"] = args ? args.member : undefined;
-            inputs["orgId"] = args ? args.orgId : undefined;
-            inputs["role"] = args ? args.role : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["condition"] = args ? args.condition : undefined;
+            resourceInputs["envId"] = args ? args.envId : undefined;
+            resourceInputs["member"] = args ? args.member : undefined;
+            resourceInputs["orgId"] = args ? args.orgId : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(EnvironmentIamMember.__pulumiType, name, inputs, opts);
+        super(EnvironmentIamMember.__pulumiType, name, resourceInputs, opts);
     }
 }
 

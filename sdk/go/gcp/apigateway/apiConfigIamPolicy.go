@@ -264,7 +264,7 @@ type ApiConfigIamPolicyInput interface {
 }
 
 func (*ApiConfigIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApiConfigIamPolicy)(nil))
+	return reflect.TypeOf((**ApiConfigIamPolicy)(nil)).Elem()
 }
 
 func (i *ApiConfigIamPolicy) ToApiConfigIamPolicyOutput() ApiConfigIamPolicyOutput {
@@ -273,35 +273,6 @@ func (i *ApiConfigIamPolicy) ToApiConfigIamPolicyOutput() ApiConfigIamPolicyOutp
 
 func (i *ApiConfigIamPolicy) ToApiConfigIamPolicyOutputWithContext(ctx context.Context) ApiConfigIamPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigIamPolicyOutput)
-}
-
-func (i *ApiConfigIamPolicy) ToApiConfigIamPolicyPtrOutput() ApiConfigIamPolicyPtrOutput {
-	return i.ToApiConfigIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *ApiConfigIamPolicy) ToApiConfigIamPolicyPtrOutputWithContext(ctx context.Context) ApiConfigIamPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigIamPolicyPtrOutput)
-}
-
-type ApiConfigIamPolicyPtrInput interface {
-	pulumi.Input
-
-	ToApiConfigIamPolicyPtrOutput() ApiConfigIamPolicyPtrOutput
-	ToApiConfigIamPolicyPtrOutputWithContext(ctx context.Context) ApiConfigIamPolicyPtrOutput
-}
-
-type apiConfigIamPolicyPtrType ApiConfigIamPolicyArgs
-
-func (*apiConfigIamPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ApiConfigIamPolicy)(nil))
-}
-
-func (i *apiConfigIamPolicyPtrType) ToApiConfigIamPolicyPtrOutput() ApiConfigIamPolicyPtrOutput {
-	return i.ToApiConfigIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *apiConfigIamPolicyPtrType) ToApiConfigIamPolicyPtrOutputWithContext(ctx context.Context) ApiConfigIamPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigIamPolicyPtrOutput)
 }
 
 // ApiConfigIamPolicyArrayInput is an input type that accepts ApiConfigIamPolicyArray and ApiConfigIamPolicyArrayOutput values.
@@ -357,7 +328,7 @@ func (i ApiConfigIamPolicyMap) ToApiConfigIamPolicyMapOutputWithContext(ctx cont
 type ApiConfigIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (ApiConfigIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApiConfigIamPolicy)(nil))
+	return reflect.TypeOf((**ApiConfigIamPolicy)(nil)).Elem()
 }
 
 func (o ApiConfigIamPolicyOutput) ToApiConfigIamPolicyOutput() ApiConfigIamPolicyOutput {
@@ -368,44 +339,10 @@ func (o ApiConfigIamPolicyOutput) ToApiConfigIamPolicyOutputWithContext(ctx cont
 	return o
 }
 
-func (o ApiConfigIamPolicyOutput) ToApiConfigIamPolicyPtrOutput() ApiConfigIamPolicyPtrOutput {
-	return o.ToApiConfigIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o ApiConfigIamPolicyOutput) ToApiConfigIamPolicyPtrOutputWithContext(ctx context.Context) ApiConfigIamPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiConfigIamPolicy) *ApiConfigIamPolicy {
-		return &v
-	}).(ApiConfigIamPolicyPtrOutput)
-}
-
-type ApiConfigIamPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (ApiConfigIamPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ApiConfigIamPolicy)(nil))
-}
-
-func (o ApiConfigIamPolicyPtrOutput) ToApiConfigIamPolicyPtrOutput() ApiConfigIamPolicyPtrOutput {
-	return o
-}
-
-func (o ApiConfigIamPolicyPtrOutput) ToApiConfigIamPolicyPtrOutputWithContext(ctx context.Context) ApiConfigIamPolicyPtrOutput {
-	return o
-}
-
-func (o ApiConfigIamPolicyPtrOutput) Elem() ApiConfigIamPolicyOutput {
-	return o.ApplyT(func(v *ApiConfigIamPolicy) ApiConfigIamPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret ApiConfigIamPolicy
-		return ret
-	}).(ApiConfigIamPolicyOutput)
-}
-
 type ApiConfigIamPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (ApiConfigIamPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ApiConfigIamPolicy)(nil))
+	return reflect.TypeOf((*[]*ApiConfigIamPolicy)(nil)).Elem()
 }
 
 func (o ApiConfigIamPolicyArrayOutput) ToApiConfigIamPolicyArrayOutput() ApiConfigIamPolicyArrayOutput {
@@ -417,15 +354,15 @@ func (o ApiConfigIamPolicyArrayOutput) ToApiConfigIamPolicyArrayOutputWithContex
 }
 
 func (o ApiConfigIamPolicyArrayOutput) Index(i pulumi.IntInput) ApiConfigIamPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApiConfigIamPolicy {
-		return vs[0].([]ApiConfigIamPolicy)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ApiConfigIamPolicy {
+		return vs[0].([]*ApiConfigIamPolicy)[vs[1].(int)]
 	}).(ApiConfigIamPolicyOutput)
 }
 
 type ApiConfigIamPolicyMapOutput struct{ *pulumi.OutputState }
 
 func (ApiConfigIamPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ApiConfigIamPolicy)(nil))
+	return reflect.TypeOf((*map[string]*ApiConfigIamPolicy)(nil)).Elem()
 }
 
 func (o ApiConfigIamPolicyMapOutput) ToApiConfigIamPolicyMapOutput() ApiConfigIamPolicyMapOutput {
@@ -437,18 +374,16 @@ func (o ApiConfigIamPolicyMapOutput) ToApiConfigIamPolicyMapOutputWithContext(ct
 }
 
 func (o ApiConfigIamPolicyMapOutput) MapIndex(k pulumi.StringInput) ApiConfigIamPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ApiConfigIamPolicy {
-		return vs[0].(map[string]ApiConfigIamPolicy)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ApiConfigIamPolicy {
+		return vs[0].(map[string]*ApiConfigIamPolicy)[vs[1].(string)]
 	}).(ApiConfigIamPolicyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiConfigIamPolicyInput)(nil)).Elem(), &ApiConfigIamPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ApiConfigIamPolicyPtrInput)(nil)).Elem(), &ApiConfigIamPolicy{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiConfigIamPolicyArrayInput)(nil)).Elem(), ApiConfigIamPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiConfigIamPolicyMapInput)(nil)).Elem(), ApiConfigIamPolicyMap{})
 	pulumi.RegisterOutputType(ApiConfigIamPolicyOutput{})
-	pulumi.RegisterOutputType(ApiConfigIamPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ApiConfigIamPolicyArrayOutput{})
 	pulumi.RegisterOutputType(ApiConfigIamPolicyMapOutput{})
 }

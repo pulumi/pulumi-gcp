@@ -221,56 +221,56 @@ export class NodePool extends pulumi.CustomResource {
      */
     constructor(name: string, args: NodePoolArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NodePoolArgs | NodePoolState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NodePoolState | undefined;
-            inputs["autoscaling"] = state ? state.autoscaling : undefined;
-            inputs["cluster"] = state ? state.cluster : undefined;
-            inputs["initialNodeCount"] = state ? state.initialNodeCount : undefined;
-            inputs["instanceGroupUrls"] = state ? state.instanceGroupUrls : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["managedInstanceGroupUrls"] = state ? state.managedInstanceGroupUrls : undefined;
-            inputs["management"] = state ? state.management : undefined;
-            inputs["maxPodsPerNode"] = state ? state.maxPodsPerNode : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["namePrefix"] = state ? state.namePrefix : undefined;
-            inputs["networkConfig"] = state ? state.networkConfig : undefined;
-            inputs["nodeConfig"] = state ? state.nodeConfig : undefined;
-            inputs["nodeCount"] = state ? state.nodeCount : undefined;
-            inputs["nodeLocations"] = state ? state.nodeLocations : undefined;
-            inputs["operation"] = state ? state.operation : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["upgradeSettings"] = state ? state.upgradeSettings : undefined;
-            inputs["version"] = state ? state.version : undefined;
+            resourceInputs["autoscaling"] = state ? state.autoscaling : undefined;
+            resourceInputs["cluster"] = state ? state.cluster : undefined;
+            resourceInputs["initialNodeCount"] = state ? state.initialNodeCount : undefined;
+            resourceInputs["instanceGroupUrls"] = state ? state.instanceGroupUrls : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["managedInstanceGroupUrls"] = state ? state.managedInstanceGroupUrls : undefined;
+            resourceInputs["management"] = state ? state.management : undefined;
+            resourceInputs["maxPodsPerNode"] = state ? state.maxPodsPerNode : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["namePrefix"] = state ? state.namePrefix : undefined;
+            resourceInputs["networkConfig"] = state ? state.networkConfig : undefined;
+            resourceInputs["nodeConfig"] = state ? state.nodeConfig : undefined;
+            resourceInputs["nodeCount"] = state ? state.nodeCount : undefined;
+            resourceInputs["nodeLocations"] = state ? state.nodeLocations : undefined;
+            resourceInputs["operation"] = state ? state.operation : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["upgradeSettings"] = state ? state.upgradeSettings : undefined;
+            resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as NodePoolArgs | undefined;
             if ((!args || args.cluster === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cluster'");
             }
-            inputs["autoscaling"] = args ? args.autoscaling : undefined;
-            inputs["cluster"] = args ? args.cluster : undefined;
-            inputs["initialNodeCount"] = args ? args.initialNodeCount : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["management"] = args ? args.management : undefined;
-            inputs["maxPodsPerNode"] = args ? args.maxPodsPerNode : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["namePrefix"] = args ? args.namePrefix : undefined;
-            inputs["networkConfig"] = args ? args.networkConfig : undefined;
-            inputs["nodeConfig"] = args ? args.nodeConfig : undefined;
-            inputs["nodeCount"] = args ? args.nodeCount : undefined;
-            inputs["nodeLocations"] = args ? args.nodeLocations : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["upgradeSettings"] = args ? args.upgradeSettings : undefined;
-            inputs["version"] = args ? args.version : undefined;
-            inputs["instanceGroupUrls"] = undefined /*out*/;
-            inputs["managedInstanceGroupUrls"] = undefined /*out*/;
-            inputs["operation"] = undefined /*out*/;
+            resourceInputs["autoscaling"] = args ? args.autoscaling : undefined;
+            resourceInputs["cluster"] = args ? args.cluster : undefined;
+            resourceInputs["initialNodeCount"] = args ? args.initialNodeCount : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["management"] = args ? args.management : undefined;
+            resourceInputs["maxPodsPerNode"] = args ? args.maxPodsPerNode : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["namePrefix"] = args ? args.namePrefix : undefined;
+            resourceInputs["networkConfig"] = args ? args.networkConfig : undefined;
+            resourceInputs["nodeConfig"] = args ? args.nodeConfig : undefined;
+            resourceInputs["nodeCount"] = args ? args.nodeCount : undefined;
+            resourceInputs["nodeLocations"] = args ? args.nodeLocations : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["upgradeSettings"] = args ? args.upgradeSettings : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["instanceGroupUrls"] = undefined /*out*/;
+            resourceInputs["managedInstanceGroupUrls"] = undefined /*out*/;
+            resourceInputs["operation"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(NodePool.__pulumiType, name, inputs, opts);
+        super(NodePool.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -131,34 +131,34 @@ export class Database extends pulumi.CustomResource {
      */
     constructor(name: string, args: DatabaseArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DatabaseArgs | DatabaseState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseState | undefined;
-            inputs["ddls"] = state ? state.ddls : undefined;
-            inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            inputs["encryptionConfig"] = state ? state.encryptionConfig : undefined;
-            inputs["instance"] = state ? state.instance : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["state"] = state ? state.state : undefined;
+            resourceInputs["ddls"] = state ? state.ddls : undefined;
+            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
+            resourceInputs["encryptionConfig"] = state ? state.encryptionConfig : undefined;
+            resourceInputs["instance"] = state ? state.instance : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
         } else {
             const args = argsOrState as DatabaseArgs | undefined;
             if ((!args || args.instance === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
-            inputs["ddls"] = args ? args.ddls : undefined;
-            inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            inputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
-            inputs["instance"] = args ? args.instance : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["ddls"] = args ? args.ddls : undefined;
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
+            resourceInputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
+            resourceInputs["instance"] = args ? args.instance : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Database.__pulumiType, name, inputs, opts);
+        super(Database.__pulumiType, name, resourceInputs, opts);
     }
 }
 

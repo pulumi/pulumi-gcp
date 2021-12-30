@@ -128,16 +128,16 @@ export class AttachedDisk extends pulumi.CustomResource {
      */
     constructor(name: string, args: AttachedDiskArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AttachedDiskArgs | AttachedDiskState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AttachedDiskState | undefined;
-            inputs["deviceName"] = state ? state.deviceName : undefined;
-            inputs["disk"] = state ? state.disk : undefined;
-            inputs["instance"] = state ? state.instance : undefined;
-            inputs["mode"] = state ? state.mode : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["deviceName"] = state ? state.deviceName : undefined;
+            resourceInputs["disk"] = state ? state.disk : undefined;
+            resourceInputs["instance"] = state ? state.instance : undefined;
+            resourceInputs["mode"] = state ? state.mode : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as AttachedDiskArgs | undefined;
             if ((!args || args.disk === undefined) && !opts.urn) {
@@ -146,17 +146,17 @@ export class AttachedDisk extends pulumi.CustomResource {
             if ((!args || args.instance === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
-            inputs["deviceName"] = args ? args.deviceName : undefined;
-            inputs["disk"] = args ? args.disk : undefined;
-            inputs["instance"] = args ? args.instance : undefined;
-            inputs["mode"] = args ? args.mode : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["deviceName"] = args ? args.deviceName : undefined;
+            resourceInputs["disk"] = args ? args.disk : undefined;
+            resourceInputs["instance"] = args ? args.instance : undefined;
+            resourceInputs["mode"] = args ? args.mode : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["zone"] = args ? args.zone : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(AttachedDisk.__pulumiType, name, inputs, opts);
+        super(AttachedDisk.__pulumiType, name, resourceInputs, opts);
     }
 }
 

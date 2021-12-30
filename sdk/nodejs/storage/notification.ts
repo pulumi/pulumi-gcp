@@ -135,18 +135,18 @@ export class Notification extends pulumi.CustomResource {
      */
     constructor(name: string, args: NotificationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NotificationArgs | NotificationState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NotificationState | undefined;
-            inputs["bucket"] = state ? state.bucket : undefined;
-            inputs["customAttributes"] = state ? state.customAttributes : undefined;
-            inputs["eventTypes"] = state ? state.eventTypes : undefined;
-            inputs["notificationId"] = state ? state.notificationId : undefined;
-            inputs["objectNamePrefix"] = state ? state.objectNamePrefix : undefined;
-            inputs["payloadFormat"] = state ? state.payloadFormat : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
-            inputs["topic"] = state ? state.topic : undefined;
+            resourceInputs["bucket"] = state ? state.bucket : undefined;
+            resourceInputs["customAttributes"] = state ? state.customAttributes : undefined;
+            resourceInputs["eventTypes"] = state ? state.eventTypes : undefined;
+            resourceInputs["notificationId"] = state ? state.notificationId : undefined;
+            resourceInputs["objectNamePrefix"] = state ? state.objectNamePrefix : undefined;
+            resourceInputs["payloadFormat"] = state ? state.payloadFormat : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["topic"] = state ? state.topic : undefined;
         } else {
             const args = argsOrState as NotificationArgs | undefined;
             if ((!args || args.bucket === undefined) && !opts.urn) {
@@ -158,19 +158,19 @@ export class Notification extends pulumi.CustomResource {
             if ((!args || args.topic === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'topic'");
             }
-            inputs["bucket"] = args ? args.bucket : undefined;
-            inputs["customAttributes"] = args ? args.customAttributes : undefined;
-            inputs["eventTypes"] = args ? args.eventTypes : undefined;
-            inputs["objectNamePrefix"] = args ? args.objectNamePrefix : undefined;
-            inputs["payloadFormat"] = args ? args.payloadFormat : undefined;
-            inputs["topic"] = args ? args.topic : undefined;
-            inputs["notificationId"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["bucket"] = args ? args.bucket : undefined;
+            resourceInputs["customAttributes"] = args ? args.customAttributes : undefined;
+            resourceInputs["eventTypes"] = args ? args.eventTypes : undefined;
+            resourceInputs["objectNamePrefix"] = args ? args.objectNamePrefix : undefined;
+            resourceInputs["payloadFormat"] = args ? args.payloadFormat : undefined;
+            resourceInputs["topic"] = args ? args.topic : undefined;
+            resourceInputs["notificationId"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Notification.__pulumiType, name, inputs, opts);
+        super(Notification.__pulumiType, name, resourceInputs, opts);
     }
 }
 

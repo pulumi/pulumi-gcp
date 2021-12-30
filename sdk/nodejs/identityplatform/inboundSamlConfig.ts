@@ -121,16 +121,16 @@ export class InboundSamlConfig extends pulumi.CustomResource {
      */
     constructor(name: string, args: InboundSamlConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InboundSamlConfigArgs | InboundSamlConfigState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InboundSamlConfigState | undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["idpConfig"] = state ? state.idpConfig : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["spConfig"] = state ? state.spConfig : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["idpConfig"] = state ? state.idpConfig : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["spConfig"] = state ? state.spConfig : undefined;
         } else {
             const args = argsOrState as InboundSamlConfigArgs | undefined;
             if ((!args || args.displayName === undefined) && !opts.urn) {
@@ -142,17 +142,17 @@ export class InboundSamlConfig extends pulumi.CustomResource {
             if ((!args || args.spConfig === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'spConfig'");
             }
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["idpConfig"] = args ? args.idpConfig : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["spConfig"] = args ? args.spConfig : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["idpConfig"] = args ? args.idpConfig : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["spConfig"] = args ? args.spConfig : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(InboundSamlConfig.__pulumiType, name, inputs, opts);
+        super(InboundSamlConfig.__pulumiType, name, resourceInputs, opts);
     }
 }
 

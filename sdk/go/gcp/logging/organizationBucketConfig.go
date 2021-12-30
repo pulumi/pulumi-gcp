@@ -191,7 +191,7 @@ type OrganizationBucketConfigInput interface {
 }
 
 func (*OrganizationBucketConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationBucketConfig)(nil))
+	return reflect.TypeOf((**OrganizationBucketConfig)(nil)).Elem()
 }
 
 func (i *OrganizationBucketConfig) ToOrganizationBucketConfigOutput() OrganizationBucketConfigOutput {
@@ -200,35 +200,6 @@ func (i *OrganizationBucketConfig) ToOrganizationBucketConfigOutput() Organizati
 
 func (i *OrganizationBucketConfig) ToOrganizationBucketConfigOutputWithContext(ctx context.Context) OrganizationBucketConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationBucketConfigOutput)
-}
-
-func (i *OrganizationBucketConfig) ToOrganizationBucketConfigPtrOutput() OrganizationBucketConfigPtrOutput {
-	return i.ToOrganizationBucketConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *OrganizationBucketConfig) ToOrganizationBucketConfigPtrOutputWithContext(ctx context.Context) OrganizationBucketConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OrganizationBucketConfigPtrOutput)
-}
-
-type OrganizationBucketConfigPtrInput interface {
-	pulumi.Input
-
-	ToOrganizationBucketConfigPtrOutput() OrganizationBucketConfigPtrOutput
-	ToOrganizationBucketConfigPtrOutputWithContext(ctx context.Context) OrganizationBucketConfigPtrOutput
-}
-
-type organizationBucketConfigPtrType OrganizationBucketConfigArgs
-
-func (*organizationBucketConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OrganizationBucketConfig)(nil))
-}
-
-func (i *organizationBucketConfigPtrType) ToOrganizationBucketConfigPtrOutput() OrganizationBucketConfigPtrOutput {
-	return i.ToOrganizationBucketConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *organizationBucketConfigPtrType) ToOrganizationBucketConfigPtrOutputWithContext(ctx context.Context) OrganizationBucketConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OrganizationBucketConfigPtrOutput)
 }
 
 // OrganizationBucketConfigArrayInput is an input type that accepts OrganizationBucketConfigArray and OrganizationBucketConfigArrayOutput values.
@@ -284,7 +255,7 @@ func (i OrganizationBucketConfigMap) ToOrganizationBucketConfigMapOutputWithCont
 type OrganizationBucketConfigOutput struct{ *pulumi.OutputState }
 
 func (OrganizationBucketConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationBucketConfig)(nil))
+	return reflect.TypeOf((**OrganizationBucketConfig)(nil)).Elem()
 }
 
 func (o OrganizationBucketConfigOutput) ToOrganizationBucketConfigOutput() OrganizationBucketConfigOutput {
@@ -295,44 +266,10 @@ func (o OrganizationBucketConfigOutput) ToOrganizationBucketConfigOutputWithCont
 	return o
 }
 
-func (o OrganizationBucketConfigOutput) ToOrganizationBucketConfigPtrOutput() OrganizationBucketConfigPtrOutput {
-	return o.ToOrganizationBucketConfigPtrOutputWithContext(context.Background())
-}
-
-func (o OrganizationBucketConfigOutput) ToOrganizationBucketConfigPtrOutputWithContext(ctx context.Context) OrganizationBucketConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationBucketConfig) *OrganizationBucketConfig {
-		return &v
-	}).(OrganizationBucketConfigPtrOutput)
-}
-
-type OrganizationBucketConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (OrganizationBucketConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OrganizationBucketConfig)(nil))
-}
-
-func (o OrganizationBucketConfigPtrOutput) ToOrganizationBucketConfigPtrOutput() OrganizationBucketConfigPtrOutput {
-	return o
-}
-
-func (o OrganizationBucketConfigPtrOutput) ToOrganizationBucketConfigPtrOutputWithContext(ctx context.Context) OrganizationBucketConfigPtrOutput {
-	return o
-}
-
-func (o OrganizationBucketConfigPtrOutput) Elem() OrganizationBucketConfigOutput {
-	return o.ApplyT(func(v *OrganizationBucketConfig) OrganizationBucketConfig {
-		if v != nil {
-			return *v
-		}
-		var ret OrganizationBucketConfig
-		return ret
-	}).(OrganizationBucketConfigOutput)
-}
-
 type OrganizationBucketConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (OrganizationBucketConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OrganizationBucketConfig)(nil))
+	return reflect.TypeOf((*[]*OrganizationBucketConfig)(nil)).Elem()
 }
 
 func (o OrganizationBucketConfigArrayOutput) ToOrganizationBucketConfigArrayOutput() OrganizationBucketConfigArrayOutput {
@@ -344,15 +281,15 @@ func (o OrganizationBucketConfigArrayOutput) ToOrganizationBucketConfigArrayOutp
 }
 
 func (o OrganizationBucketConfigArrayOutput) Index(i pulumi.IntInput) OrganizationBucketConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OrganizationBucketConfig {
-		return vs[0].([]OrganizationBucketConfig)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OrganizationBucketConfig {
+		return vs[0].([]*OrganizationBucketConfig)[vs[1].(int)]
 	}).(OrganizationBucketConfigOutput)
 }
 
 type OrganizationBucketConfigMapOutput struct{ *pulumi.OutputState }
 
 func (OrganizationBucketConfigMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]OrganizationBucketConfig)(nil))
+	return reflect.TypeOf((*map[string]*OrganizationBucketConfig)(nil)).Elem()
 }
 
 func (o OrganizationBucketConfigMapOutput) ToOrganizationBucketConfigMapOutput() OrganizationBucketConfigMapOutput {
@@ -364,18 +301,16 @@ func (o OrganizationBucketConfigMapOutput) ToOrganizationBucketConfigMapOutputWi
 }
 
 func (o OrganizationBucketConfigMapOutput) MapIndex(k pulumi.StringInput) OrganizationBucketConfigOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) OrganizationBucketConfig {
-		return vs[0].(map[string]OrganizationBucketConfig)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *OrganizationBucketConfig {
+		return vs[0].(map[string]*OrganizationBucketConfig)[vs[1].(string)]
 	}).(OrganizationBucketConfigOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationBucketConfigInput)(nil)).Elem(), &OrganizationBucketConfig{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationBucketConfigPtrInput)(nil)).Elem(), &OrganizationBucketConfig{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationBucketConfigArrayInput)(nil)).Elem(), OrganizationBucketConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationBucketConfigMapInput)(nil)).Elem(), OrganizationBucketConfigMap{})
 	pulumi.RegisterOutputType(OrganizationBucketConfigOutput{})
-	pulumi.RegisterOutputType(OrganizationBucketConfigPtrOutput{})
 	pulumi.RegisterOutputType(OrganizationBucketConfigArrayOutput{})
 	pulumi.RegisterOutputType(OrganizationBucketConfigMapOutput{})
 }

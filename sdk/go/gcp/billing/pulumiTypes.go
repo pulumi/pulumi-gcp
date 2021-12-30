@@ -623,47 +623,6 @@ func (i BudgetAmountArgs) ToBudgetAmountOutputWithContext(ctx context.Context) B
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetAmountOutput)
 }
 
-func (i BudgetAmountArgs) ToBudgetAmountPtrOutput() BudgetAmountPtrOutput {
-	return i.ToBudgetAmountPtrOutputWithContext(context.Background())
-}
-
-func (i BudgetAmountArgs) ToBudgetAmountPtrOutputWithContext(ctx context.Context) BudgetAmountPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BudgetAmountOutput).ToBudgetAmountPtrOutputWithContext(ctx)
-}
-
-// BudgetAmountPtrInput is an input type that accepts BudgetAmountArgs, BudgetAmountPtr and BudgetAmountPtrOutput values.
-// You can construct a concrete instance of `BudgetAmountPtrInput` via:
-//
-//          BudgetAmountArgs{...}
-//
-//  or:
-//
-//          nil
-type BudgetAmountPtrInput interface {
-	pulumi.Input
-
-	ToBudgetAmountPtrOutput() BudgetAmountPtrOutput
-	ToBudgetAmountPtrOutputWithContext(context.Context) BudgetAmountPtrOutput
-}
-
-type budgetAmountPtrType BudgetAmountArgs
-
-func BudgetAmountPtr(v *BudgetAmountArgs) BudgetAmountPtrInput {
-	return (*budgetAmountPtrType)(v)
-}
-
-func (*budgetAmountPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BudgetAmount)(nil)).Elem()
-}
-
-func (i *budgetAmountPtrType) ToBudgetAmountPtrOutput() BudgetAmountPtrOutput {
-	return i.ToBudgetAmountPtrOutputWithContext(context.Background())
-}
-
-func (i *budgetAmountPtrType) ToBudgetAmountPtrOutputWithContext(ctx context.Context) BudgetAmountPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BudgetAmountPtrOutput)
-}
-
 type BudgetAmountOutput struct{ *pulumi.OutputState }
 
 func (BudgetAmountOutput) ElementType() reflect.Type {
@@ -676,16 +635,6 @@ func (o BudgetAmountOutput) ToBudgetAmountOutput() BudgetAmountOutput {
 
 func (o BudgetAmountOutput) ToBudgetAmountOutputWithContext(ctx context.Context) BudgetAmountOutput {
 	return o
-}
-
-func (o BudgetAmountOutput) ToBudgetAmountPtrOutput() BudgetAmountPtrOutput {
-	return o.ToBudgetAmountPtrOutputWithContext(context.Background())
-}
-
-func (o BudgetAmountOutput) ToBudgetAmountPtrOutputWithContext(ctx context.Context) BudgetAmountPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BudgetAmount) *BudgetAmount {
-		return &v
-	}).(BudgetAmountPtrOutput)
 }
 
 // Configures a budget amount that is automatically set to 100% of
@@ -702,56 +651,6 @@ func (o BudgetAmountOutput) LastPeriodAmount() pulumi.BoolPtrOutput {
 // Structure is documented below.
 func (o BudgetAmountOutput) SpecifiedAmount() BudgetAmountSpecifiedAmountPtrOutput {
 	return o.ApplyT(func(v BudgetAmount) *BudgetAmountSpecifiedAmount { return v.SpecifiedAmount }).(BudgetAmountSpecifiedAmountPtrOutput)
-}
-
-type BudgetAmountPtrOutput struct{ *pulumi.OutputState }
-
-func (BudgetAmountPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BudgetAmount)(nil)).Elem()
-}
-
-func (o BudgetAmountPtrOutput) ToBudgetAmountPtrOutput() BudgetAmountPtrOutput {
-	return o
-}
-
-func (o BudgetAmountPtrOutput) ToBudgetAmountPtrOutputWithContext(ctx context.Context) BudgetAmountPtrOutput {
-	return o
-}
-
-func (o BudgetAmountPtrOutput) Elem() BudgetAmountOutput {
-	return o.ApplyT(func(v *BudgetAmount) BudgetAmount {
-		if v != nil {
-			return *v
-		}
-		var ret BudgetAmount
-		return ret
-	}).(BudgetAmountOutput)
-}
-
-// Configures a budget amount that is automatically set to 100% of
-// last period's spend.
-// Boolean. Set value to true to use. Do not set to false, instead
-// use the `specifiedAmount` block.
-func (o BudgetAmountPtrOutput) LastPeriodAmount() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *BudgetAmount) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.LastPeriodAmount
-	}).(pulumi.BoolPtrOutput)
-}
-
-// A specified amount to use as the budget. currencyCode is
-// optional. If specified, it must match the currency of the
-// billing account. The currencyCode is provided on output.
-// Structure is documented below.
-func (o BudgetAmountPtrOutput) SpecifiedAmount() BudgetAmountSpecifiedAmountPtrOutput {
-	return o.ApplyT(func(v *BudgetAmount) *BudgetAmountSpecifiedAmount {
-		if v == nil {
-			return nil
-		}
-		return v.SpecifiedAmount
-	}).(BudgetAmountSpecifiedAmountPtrOutput)
 }
 
 type BudgetAmountSpecifiedAmount struct {
@@ -1407,7 +1306,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BudgetAllUpdatesRuleInput)(nil)).Elem(), BudgetAllUpdatesRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BudgetAllUpdatesRulePtrInput)(nil)).Elem(), BudgetAllUpdatesRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BudgetAmountInput)(nil)).Elem(), BudgetAmountArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BudgetAmountPtrInput)(nil)).Elem(), BudgetAmountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BudgetAmountSpecifiedAmountInput)(nil)).Elem(), BudgetAmountSpecifiedAmountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BudgetAmountSpecifiedAmountPtrInput)(nil)).Elem(), BudgetAmountSpecifiedAmountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BudgetBudgetFilterInput)(nil)).Elem(), BudgetBudgetFilterArgs{})
@@ -1421,7 +1319,6 @@ func init() {
 	pulumi.RegisterOutputType(BudgetAllUpdatesRuleOutput{})
 	pulumi.RegisterOutputType(BudgetAllUpdatesRulePtrOutput{})
 	pulumi.RegisterOutputType(BudgetAmountOutput{})
-	pulumi.RegisterOutputType(BudgetAmountPtrOutput{})
 	pulumi.RegisterOutputType(BudgetAmountSpecifiedAmountOutput{})
 	pulumi.RegisterOutputType(BudgetAmountSpecifiedAmountPtrOutput{})
 	pulumi.RegisterOutputType(BudgetBudgetFilterOutput{})

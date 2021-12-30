@@ -90,14 +90,14 @@ export class Client extends pulumi.CustomResource {
      */
     constructor(name: string, args: ClientArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ClientArgs | ClientState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClientState | undefined;
-            inputs["brand"] = state ? state.brand : undefined;
-            inputs["clientId"] = state ? state.clientId : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["secret"] = state ? state.secret : undefined;
+            resourceInputs["brand"] = state ? state.brand : undefined;
+            resourceInputs["clientId"] = state ? state.clientId : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["secret"] = state ? state.secret : undefined;
         } else {
             const args = argsOrState as ClientArgs | undefined;
             if ((!args || args.brand === undefined) && !opts.urn) {
@@ -106,15 +106,15 @@ export class Client extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            inputs["brand"] = args ? args.brand : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["clientId"] = undefined /*out*/;
-            inputs["secret"] = undefined /*out*/;
+            resourceInputs["brand"] = args ? args.brand : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["clientId"] = undefined /*out*/;
+            resourceInputs["secret"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Client.__pulumiType, name, inputs, opts);
+        super(Client.__pulumiType, name, resourceInputs, opts);
     }
 }
 

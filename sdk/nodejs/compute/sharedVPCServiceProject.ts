@@ -85,12 +85,12 @@ export class SharedVPCServiceProject extends pulumi.CustomResource {
      */
     constructor(name: string, args: SharedVPCServiceProjectArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SharedVPCServiceProjectArgs | SharedVPCServiceProjectState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SharedVPCServiceProjectState | undefined;
-            inputs["hostProject"] = state ? state.hostProject : undefined;
-            inputs["serviceProject"] = state ? state.serviceProject : undefined;
+            resourceInputs["hostProject"] = state ? state.hostProject : undefined;
+            resourceInputs["serviceProject"] = state ? state.serviceProject : undefined;
         } else {
             const args = argsOrState as SharedVPCServiceProjectArgs | undefined;
             if ((!args || args.hostProject === undefined) && !opts.urn) {
@@ -99,13 +99,13 @@ export class SharedVPCServiceProject extends pulumi.CustomResource {
             if ((!args || args.serviceProject === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceProject'");
             }
-            inputs["hostProject"] = args ? args.hostProject : undefined;
-            inputs["serviceProject"] = args ? args.serviceProject : undefined;
+            resourceInputs["hostProject"] = args ? args.hostProject : undefined;
+            resourceInputs["serviceProject"] = args ? args.serviceProject : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(SharedVPCServiceProject.__pulumiType, name, inputs, opts);
+        super(SharedVPCServiceProject.__pulumiType, name, resourceInputs, opts);
     }
 }
 

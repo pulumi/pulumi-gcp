@@ -262,7 +262,7 @@ type EnvironmentIamBindingInput interface {
 }
 
 func (*EnvironmentIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnvironmentIamBinding)(nil))
+	return reflect.TypeOf((**EnvironmentIamBinding)(nil)).Elem()
 }
 
 func (i *EnvironmentIamBinding) ToEnvironmentIamBindingOutput() EnvironmentIamBindingOutput {
@@ -271,35 +271,6 @@ func (i *EnvironmentIamBinding) ToEnvironmentIamBindingOutput() EnvironmentIamBi
 
 func (i *EnvironmentIamBinding) ToEnvironmentIamBindingOutputWithContext(ctx context.Context) EnvironmentIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentIamBindingOutput)
-}
-
-func (i *EnvironmentIamBinding) ToEnvironmentIamBindingPtrOutput() EnvironmentIamBindingPtrOutput {
-	return i.ToEnvironmentIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *EnvironmentIamBinding) ToEnvironmentIamBindingPtrOutputWithContext(ctx context.Context) EnvironmentIamBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentIamBindingPtrOutput)
-}
-
-type EnvironmentIamBindingPtrInput interface {
-	pulumi.Input
-
-	ToEnvironmentIamBindingPtrOutput() EnvironmentIamBindingPtrOutput
-	ToEnvironmentIamBindingPtrOutputWithContext(ctx context.Context) EnvironmentIamBindingPtrOutput
-}
-
-type environmentIamBindingPtrType EnvironmentIamBindingArgs
-
-func (*environmentIamBindingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EnvironmentIamBinding)(nil))
-}
-
-func (i *environmentIamBindingPtrType) ToEnvironmentIamBindingPtrOutput() EnvironmentIamBindingPtrOutput {
-	return i.ToEnvironmentIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *environmentIamBindingPtrType) ToEnvironmentIamBindingPtrOutputWithContext(ctx context.Context) EnvironmentIamBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentIamBindingPtrOutput)
 }
 
 // EnvironmentIamBindingArrayInput is an input type that accepts EnvironmentIamBindingArray and EnvironmentIamBindingArrayOutput values.
@@ -355,7 +326,7 @@ func (i EnvironmentIamBindingMap) ToEnvironmentIamBindingMapOutputWithContext(ct
 type EnvironmentIamBindingOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnvironmentIamBinding)(nil))
+	return reflect.TypeOf((**EnvironmentIamBinding)(nil)).Elem()
 }
 
 func (o EnvironmentIamBindingOutput) ToEnvironmentIamBindingOutput() EnvironmentIamBindingOutput {
@@ -366,44 +337,10 @@ func (o EnvironmentIamBindingOutput) ToEnvironmentIamBindingOutputWithContext(ct
 	return o
 }
 
-func (o EnvironmentIamBindingOutput) ToEnvironmentIamBindingPtrOutput() EnvironmentIamBindingPtrOutput {
-	return o.ToEnvironmentIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (o EnvironmentIamBindingOutput) ToEnvironmentIamBindingPtrOutputWithContext(ctx context.Context) EnvironmentIamBindingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentIamBinding) *EnvironmentIamBinding {
-		return &v
-	}).(EnvironmentIamBindingPtrOutput)
-}
-
-type EnvironmentIamBindingPtrOutput struct{ *pulumi.OutputState }
-
-func (EnvironmentIamBindingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EnvironmentIamBinding)(nil))
-}
-
-func (o EnvironmentIamBindingPtrOutput) ToEnvironmentIamBindingPtrOutput() EnvironmentIamBindingPtrOutput {
-	return o
-}
-
-func (o EnvironmentIamBindingPtrOutput) ToEnvironmentIamBindingPtrOutputWithContext(ctx context.Context) EnvironmentIamBindingPtrOutput {
-	return o
-}
-
-func (o EnvironmentIamBindingPtrOutput) Elem() EnvironmentIamBindingOutput {
-	return o.ApplyT(func(v *EnvironmentIamBinding) EnvironmentIamBinding {
-		if v != nil {
-			return *v
-		}
-		var ret EnvironmentIamBinding
-		return ret
-	}).(EnvironmentIamBindingOutput)
-}
-
 type EnvironmentIamBindingArrayOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentIamBindingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EnvironmentIamBinding)(nil))
+	return reflect.TypeOf((*[]*EnvironmentIamBinding)(nil)).Elem()
 }
 
 func (o EnvironmentIamBindingArrayOutput) ToEnvironmentIamBindingArrayOutput() EnvironmentIamBindingArrayOutput {
@@ -415,15 +352,15 @@ func (o EnvironmentIamBindingArrayOutput) ToEnvironmentIamBindingArrayOutputWith
 }
 
 func (o EnvironmentIamBindingArrayOutput) Index(i pulumi.IntInput) EnvironmentIamBindingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnvironmentIamBinding {
-		return vs[0].([]EnvironmentIamBinding)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EnvironmentIamBinding {
+		return vs[0].([]*EnvironmentIamBinding)[vs[1].(int)]
 	}).(EnvironmentIamBindingOutput)
 }
 
 type EnvironmentIamBindingMapOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentIamBindingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]EnvironmentIamBinding)(nil))
+	return reflect.TypeOf((*map[string]*EnvironmentIamBinding)(nil)).Elem()
 }
 
 func (o EnvironmentIamBindingMapOutput) ToEnvironmentIamBindingMapOutput() EnvironmentIamBindingMapOutput {
@@ -435,18 +372,16 @@ func (o EnvironmentIamBindingMapOutput) ToEnvironmentIamBindingMapOutputWithCont
 }
 
 func (o EnvironmentIamBindingMapOutput) MapIndex(k pulumi.StringInput) EnvironmentIamBindingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) EnvironmentIamBinding {
-		return vs[0].(map[string]EnvironmentIamBinding)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *EnvironmentIamBinding {
+		return vs[0].(map[string]*EnvironmentIamBinding)[vs[1].(string)]
 	}).(EnvironmentIamBindingOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentIamBindingInput)(nil)).Elem(), &EnvironmentIamBinding{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentIamBindingPtrInput)(nil)).Elem(), &EnvironmentIamBinding{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentIamBindingArrayInput)(nil)).Elem(), EnvironmentIamBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentIamBindingMapInput)(nil)).Elem(), EnvironmentIamBindingMap{})
 	pulumi.RegisterOutputType(EnvironmentIamBindingOutput{})
-	pulumi.RegisterOutputType(EnvironmentIamBindingPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentIamBindingArrayOutput{})
 	pulumi.RegisterOutputType(EnvironmentIamBindingMapOutput{})
 }

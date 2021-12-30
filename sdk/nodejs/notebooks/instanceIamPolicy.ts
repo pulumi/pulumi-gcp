@@ -149,15 +149,15 @@ export class InstanceIamPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstanceIamPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceIamPolicyArgs | InstanceIamPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceIamPolicyState | undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["instanceName"] = state ? state.instanceName : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["policyData"] = state ? state.policyData : undefined;
-            inputs["project"] = state ? state.project : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["policyData"] = state ? state.policyData : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as InstanceIamPolicyArgs | undefined;
             if ((!args || args.instanceName === undefined) && !opts.urn) {
@@ -166,16 +166,16 @@ export class InstanceIamPolicy extends pulumi.CustomResource {
             if ((!args || args.policyData === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
-            inputs["instanceName"] = args ? args.instanceName : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["policyData"] = args ? args.policyData : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["policyData"] = args ? args.policyData : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(InstanceIamPolicy.__pulumiType, name, inputs, opts);
+        super(InstanceIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

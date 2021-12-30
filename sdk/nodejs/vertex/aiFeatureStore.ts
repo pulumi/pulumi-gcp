@@ -104,35 +104,35 @@ export class AiFeatureStore extends pulumi.CustomResource {
      */
     constructor(name: string, args?: AiFeatureStoreArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AiFeatureStoreArgs | AiFeatureStoreState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AiFeatureStoreState | undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["forceDestroy"] = state ? state.forceDestroy : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["onlineServingConfig"] = state ? state.onlineServingConfig : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["onlineServingConfig"] = state ? state.onlineServingConfig : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as AiFeatureStoreArgs | undefined;
-            inputs["forceDestroy"] = args ? args.forceDestroy : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["onlineServingConfig"] = args ? args.onlineServingConfig : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["onlineServingConfig"] = args ? args.onlineServingConfig : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(AiFeatureStore.__pulumiType, name, inputs, opts);
+        super(AiFeatureStore.__pulumiType, name, resourceInputs, opts);
     }
 }
 

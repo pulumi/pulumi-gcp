@@ -408,7 +408,7 @@ type AwsNodePoolInput interface {
 }
 
 func (*AwsNodePool) ElementType() reflect.Type {
-	return reflect.TypeOf((*AwsNodePool)(nil))
+	return reflect.TypeOf((**AwsNodePool)(nil)).Elem()
 }
 
 func (i *AwsNodePool) ToAwsNodePoolOutput() AwsNodePoolOutput {
@@ -417,35 +417,6 @@ func (i *AwsNodePool) ToAwsNodePoolOutput() AwsNodePoolOutput {
 
 func (i *AwsNodePool) ToAwsNodePoolOutputWithContext(ctx context.Context) AwsNodePoolOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolOutput)
-}
-
-func (i *AwsNodePool) ToAwsNodePoolPtrOutput() AwsNodePoolPtrOutput {
-	return i.ToAwsNodePoolPtrOutputWithContext(context.Background())
-}
-
-func (i *AwsNodePool) ToAwsNodePoolPtrOutputWithContext(ctx context.Context) AwsNodePoolPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolPtrOutput)
-}
-
-type AwsNodePoolPtrInput interface {
-	pulumi.Input
-
-	ToAwsNodePoolPtrOutput() AwsNodePoolPtrOutput
-	ToAwsNodePoolPtrOutputWithContext(ctx context.Context) AwsNodePoolPtrOutput
-}
-
-type awsNodePoolPtrType AwsNodePoolArgs
-
-func (*awsNodePoolPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AwsNodePool)(nil))
-}
-
-func (i *awsNodePoolPtrType) ToAwsNodePoolPtrOutput() AwsNodePoolPtrOutput {
-	return i.ToAwsNodePoolPtrOutputWithContext(context.Background())
-}
-
-func (i *awsNodePoolPtrType) ToAwsNodePoolPtrOutputWithContext(ctx context.Context) AwsNodePoolPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolPtrOutput)
 }
 
 // AwsNodePoolArrayInput is an input type that accepts AwsNodePoolArray and AwsNodePoolArrayOutput values.
@@ -501,7 +472,7 @@ func (i AwsNodePoolMap) ToAwsNodePoolMapOutputWithContext(ctx context.Context) A
 type AwsNodePoolOutput struct{ *pulumi.OutputState }
 
 func (AwsNodePoolOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AwsNodePool)(nil))
+	return reflect.TypeOf((**AwsNodePool)(nil)).Elem()
 }
 
 func (o AwsNodePoolOutput) ToAwsNodePoolOutput() AwsNodePoolOutput {
@@ -512,44 +483,10 @@ func (o AwsNodePoolOutput) ToAwsNodePoolOutputWithContext(ctx context.Context) A
 	return o
 }
 
-func (o AwsNodePoolOutput) ToAwsNodePoolPtrOutput() AwsNodePoolPtrOutput {
-	return o.ToAwsNodePoolPtrOutputWithContext(context.Background())
-}
-
-func (o AwsNodePoolOutput) ToAwsNodePoolPtrOutputWithContext(ctx context.Context) AwsNodePoolPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsNodePool) *AwsNodePool {
-		return &v
-	}).(AwsNodePoolPtrOutput)
-}
-
-type AwsNodePoolPtrOutput struct{ *pulumi.OutputState }
-
-func (AwsNodePoolPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AwsNodePool)(nil))
-}
-
-func (o AwsNodePoolPtrOutput) ToAwsNodePoolPtrOutput() AwsNodePoolPtrOutput {
-	return o
-}
-
-func (o AwsNodePoolPtrOutput) ToAwsNodePoolPtrOutputWithContext(ctx context.Context) AwsNodePoolPtrOutput {
-	return o
-}
-
-func (o AwsNodePoolPtrOutput) Elem() AwsNodePoolOutput {
-	return o.ApplyT(func(v *AwsNodePool) AwsNodePool {
-		if v != nil {
-			return *v
-		}
-		var ret AwsNodePool
-		return ret
-	}).(AwsNodePoolOutput)
-}
-
 type AwsNodePoolArrayOutput struct{ *pulumi.OutputState }
 
 func (AwsNodePoolArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AwsNodePool)(nil))
+	return reflect.TypeOf((*[]*AwsNodePool)(nil)).Elem()
 }
 
 func (o AwsNodePoolArrayOutput) ToAwsNodePoolArrayOutput() AwsNodePoolArrayOutput {
@@ -561,15 +498,15 @@ func (o AwsNodePoolArrayOutput) ToAwsNodePoolArrayOutputWithContext(ctx context.
 }
 
 func (o AwsNodePoolArrayOutput) Index(i pulumi.IntInput) AwsNodePoolOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AwsNodePool {
-		return vs[0].([]AwsNodePool)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AwsNodePool {
+		return vs[0].([]*AwsNodePool)[vs[1].(int)]
 	}).(AwsNodePoolOutput)
 }
 
 type AwsNodePoolMapOutput struct{ *pulumi.OutputState }
 
 func (AwsNodePoolMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AwsNodePool)(nil))
+	return reflect.TypeOf((*map[string]*AwsNodePool)(nil)).Elem()
 }
 
 func (o AwsNodePoolMapOutput) ToAwsNodePoolMapOutput() AwsNodePoolMapOutput {
@@ -581,18 +518,16 @@ func (o AwsNodePoolMapOutput) ToAwsNodePoolMapOutputWithContext(ctx context.Cont
 }
 
 func (o AwsNodePoolMapOutput) MapIndex(k pulumi.StringInput) AwsNodePoolOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AwsNodePool {
-		return vs[0].(map[string]AwsNodePool)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AwsNodePool {
+		return vs[0].(map[string]*AwsNodePool)[vs[1].(string)]
 	}).(AwsNodePoolOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolInput)(nil)).Elem(), &AwsNodePool{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolPtrInput)(nil)).Elem(), &AwsNodePool{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolArrayInput)(nil)).Elem(), AwsNodePoolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolMapInput)(nil)).Elem(), AwsNodePoolMap{})
 	pulumi.RegisterOutputType(AwsNodePoolOutput{})
-	pulumi.RegisterOutputType(AwsNodePoolPtrOutput{})
 	pulumi.RegisterOutputType(AwsNodePoolArrayOutput{})
 	pulumi.RegisterOutputType(AwsNodePoolMapOutput{})
 }

@@ -253,7 +253,7 @@ type RegionDiskIamPolicyInput interface {
 }
 
 func (*RegionDiskIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionDiskIamPolicy)(nil))
+	return reflect.TypeOf((**RegionDiskIamPolicy)(nil)).Elem()
 }
 
 func (i *RegionDiskIamPolicy) ToRegionDiskIamPolicyOutput() RegionDiskIamPolicyOutput {
@@ -262,35 +262,6 @@ func (i *RegionDiskIamPolicy) ToRegionDiskIamPolicyOutput() RegionDiskIamPolicyO
 
 func (i *RegionDiskIamPolicy) ToRegionDiskIamPolicyOutputWithContext(ctx context.Context) RegionDiskIamPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskIamPolicyOutput)
-}
-
-func (i *RegionDiskIamPolicy) ToRegionDiskIamPolicyPtrOutput() RegionDiskIamPolicyPtrOutput {
-	return i.ToRegionDiskIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *RegionDiskIamPolicy) ToRegionDiskIamPolicyPtrOutputWithContext(ctx context.Context) RegionDiskIamPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskIamPolicyPtrOutput)
-}
-
-type RegionDiskIamPolicyPtrInput interface {
-	pulumi.Input
-
-	ToRegionDiskIamPolicyPtrOutput() RegionDiskIamPolicyPtrOutput
-	ToRegionDiskIamPolicyPtrOutputWithContext(ctx context.Context) RegionDiskIamPolicyPtrOutput
-}
-
-type regionDiskIamPolicyPtrType RegionDiskIamPolicyArgs
-
-func (*regionDiskIamPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegionDiskIamPolicy)(nil))
-}
-
-func (i *regionDiskIamPolicyPtrType) ToRegionDiskIamPolicyPtrOutput() RegionDiskIamPolicyPtrOutput {
-	return i.ToRegionDiskIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *regionDiskIamPolicyPtrType) ToRegionDiskIamPolicyPtrOutputWithContext(ctx context.Context) RegionDiskIamPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskIamPolicyPtrOutput)
 }
 
 // RegionDiskIamPolicyArrayInput is an input type that accepts RegionDiskIamPolicyArray and RegionDiskIamPolicyArrayOutput values.
@@ -346,7 +317,7 @@ func (i RegionDiskIamPolicyMap) ToRegionDiskIamPolicyMapOutputWithContext(ctx co
 type RegionDiskIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (RegionDiskIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionDiskIamPolicy)(nil))
+	return reflect.TypeOf((**RegionDiskIamPolicy)(nil)).Elem()
 }
 
 func (o RegionDiskIamPolicyOutput) ToRegionDiskIamPolicyOutput() RegionDiskIamPolicyOutput {
@@ -357,44 +328,10 @@ func (o RegionDiskIamPolicyOutput) ToRegionDiskIamPolicyOutputWithContext(ctx co
 	return o
 }
 
-func (o RegionDiskIamPolicyOutput) ToRegionDiskIamPolicyPtrOutput() RegionDiskIamPolicyPtrOutput {
-	return o.ToRegionDiskIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o RegionDiskIamPolicyOutput) ToRegionDiskIamPolicyPtrOutputWithContext(ctx context.Context) RegionDiskIamPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionDiskIamPolicy) *RegionDiskIamPolicy {
-		return &v
-	}).(RegionDiskIamPolicyPtrOutput)
-}
-
-type RegionDiskIamPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (RegionDiskIamPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegionDiskIamPolicy)(nil))
-}
-
-func (o RegionDiskIamPolicyPtrOutput) ToRegionDiskIamPolicyPtrOutput() RegionDiskIamPolicyPtrOutput {
-	return o
-}
-
-func (o RegionDiskIamPolicyPtrOutput) ToRegionDiskIamPolicyPtrOutputWithContext(ctx context.Context) RegionDiskIamPolicyPtrOutput {
-	return o
-}
-
-func (o RegionDiskIamPolicyPtrOutput) Elem() RegionDiskIamPolicyOutput {
-	return o.ApplyT(func(v *RegionDiskIamPolicy) RegionDiskIamPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret RegionDiskIamPolicy
-		return ret
-	}).(RegionDiskIamPolicyOutput)
-}
-
 type RegionDiskIamPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (RegionDiskIamPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RegionDiskIamPolicy)(nil))
+	return reflect.TypeOf((*[]*RegionDiskIamPolicy)(nil)).Elem()
 }
 
 func (o RegionDiskIamPolicyArrayOutput) ToRegionDiskIamPolicyArrayOutput() RegionDiskIamPolicyArrayOutput {
@@ -406,15 +343,15 @@ func (o RegionDiskIamPolicyArrayOutput) ToRegionDiskIamPolicyArrayOutputWithCont
 }
 
 func (o RegionDiskIamPolicyArrayOutput) Index(i pulumi.IntInput) RegionDiskIamPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionDiskIamPolicy {
-		return vs[0].([]RegionDiskIamPolicy)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RegionDiskIamPolicy {
+		return vs[0].([]*RegionDiskIamPolicy)[vs[1].(int)]
 	}).(RegionDiskIamPolicyOutput)
 }
 
 type RegionDiskIamPolicyMapOutput struct{ *pulumi.OutputState }
 
 func (RegionDiskIamPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]RegionDiskIamPolicy)(nil))
+	return reflect.TypeOf((*map[string]*RegionDiskIamPolicy)(nil)).Elem()
 }
 
 func (o RegionDiskIamPolicyMapOutput) ToRegionDiskIamPolicyMapOutput() RegionDiskIamPolicyMapOutput {
@@ -426,18 +363,16 @@ func (o RegionDiskIamPolicyMapOutput) ToRegionDiskIamPolicyMapOutputWithContext(
 }
 
 func (o RegionDiskIamPolicyMapOutput) MapIndex(k pulumi.StringInput) RegionDiskIamPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RegionDiskIamPolicy {
-		return vs[0].(map[string]RegionDiskIamPolicy)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *RegionDiskIamPolicy {
+		return vs[0].(map[string]*RegionDiskIamPolicy)[vs[1].(string)]
 	}).(RegionDiskIamPolicyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskIamPolicyInput)(nil)).Elem(), &RegionDiskIamPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskIamPolicyPtrInput)(nil)).Elem(), &RegionDiskIamPolicy{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskIamPolicyArrayInput)(nil)).Elem(), RegionDiskIamPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskIamPolicyMapInput)(nil)).Elem(), RegionDiskIamPolicyMap{})
 	pulumi.RegisterOutputType(RegionDiskIamPolicyOutput{})
-	pulumi.RegisterOutputType(RegionDiskIamPolicyPtrOutput{})
 	pulumi.RegisterOutputType(RegionDiskIamPolicyArrayOutput{})
 	pulumi.RegisterOutputType(RegionDiskIamPolicyMapOutput{})
 }

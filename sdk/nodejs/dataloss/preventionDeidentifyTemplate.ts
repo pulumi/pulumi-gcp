@@ -190,15 +190,15 @@ export class PreventionDeidentifyTemplate extends pulumi.CustomResource {
      */
     constructor(name: string, args: PreventionDeidentifyTemplateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PreventionDeidentifyTemplateArgs | PreventionDeidentifyTemplateState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PreventionDeidentifyTemplateState | undefined;
-            inputs["deidentifyConfig"] = state ? state.deidentifyConfig : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["parent"] = state ? state.parent : undefined;
+            resourceInputs["deidentifyConfig"] = state ? state.deidentifyConfig : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["parent"] = state ? state.parent : undefined;
         } else {
             const args = argsOrState as PreventionDeidentifyTemplateArgs | undefined;
             if ((!args || args.deidentifyConfig === undefined) && !opts.urn) {
@@ -207,16 +207,16 @@ export class PreventionDeidentifyTemplate extends pulumi.CustomResource {
             if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            inputs["deidentifyConfig"] = args ? args.deidentifyConfig : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["deidentifyConfig"] = args ? args.deidentifyConfig : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(PreventionDeidentifyTemplate.__pulumiType, name, inputs, opts);
+        super(PreventionDeidentifyTemplate.__pulumiType, name, resourceInputs, opts);
     }
 }
 

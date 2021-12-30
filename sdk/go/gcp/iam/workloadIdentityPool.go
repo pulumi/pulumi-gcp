@@ -251,7 +251,7 @@ type WorkloadIdentityPoolInput interface {
 }
 
 func (*WorkloadIdentityPool) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkloadIdentityPool)(nil))
+	return reflect.TypeOf((**WorkloadIdentityPool)(nil)).Elem()
 }
 
 func (i *WorkloadIdentityPool) ToWorkloadIdentityPoolOutput() WorkloadIdentityPoolOutput {
@@ -260,35 +260,6 @@ func (i *WorkloadIdentityPool) ToWorkloadIdentityPoolOutput() WorkloadIdentityPo
 
 func (i *WorkloadIdentityPool) ToWorkloadIdentityPoolOutputWithContext(ctx context.Context) WorkloadIdentityPoolOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadIdentityPoolOutput)
-}
-
-func (i *WorkloadIdentityPool) ToWorkloadIdentityPoolPtrOutput() WorkloadIdentityPoolPtrOutput {
-	return i.ToWorkloadIdentityPoolPtrOutputWithContext(context.Background())
-}
-
-func (i *WorkloadIdentityPool) ToWorkloadIdentityPoolPtrOutputWithContext(ctx context.Context) WorkloadIdentityPoolPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkloadIdentityPoolPtrOutput)
-}
-
-type WorkloadIdentityPoolPtrInput interface {
-	pulumi.Input
-
-	ToWorkloadIdentityPoolPtrOutput() WorkloadIdentityPoolPtrOutput
-	ToWorkloadIdentityPoolPtrOutputWithContext(ctx context.Context) WorkloadIdentityPoolPtrOutput
-}
-
-type workloadIdentityPoolPtrType WorkloadIdentityPoolArgs
-
-func (*workloadIdentityPoolPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkloadIdentityPool)(nil))
-}
-
-func (i *workloadIdentityPoolPtrType) ToWorkloadIdentityPoolPtrOutput() WorkloadIdentityPoolPtrOutput {
-	return i.ToWorkloadIdentityPoolPtrOutputWithContext(context.Background())
-}
-
-func (i *workloadIdentityPoolPtrType) ToWorkloadIdentityPoolPtrOutputWithContext(ctx context.Context) WorkloadIdentityPoolPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkloadIdentityPoolPtrOutput)
 }
 
 // WorkloadIdentityPoolArrayInput is an input type that accepts WorkloadIdentityPoolArray and WorkloadIdentityPoolArrayOutput values.
@@ -344,7 +315,7 @@ func (i WorkloadIdentityPoolMap) ToWorkloadIdentityPoolMapOutputWithContext(ctx 
 type WorkloadIdentityPoolOutput struct{ *pulumi.OutputState }
 
 func (WorkloadIdentityPoolOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkloadIdentityPool)(nil))
+	return reflect.TypeOf((**WorkloadIdentityPool)(nil)).Elem()
 }
 
 func (o WorkloadIdentityPoolOutput) ToWorkloadIdentityPoolOutput() WorkloadIdentityPoolOutput {
@@ -355,44 +326,10 @@ func (o WorkloadIdentityPoolOutput) ToWorkloadIdentityPoolOutputWithContext(ctx 
 	return o
 }
 
-func (o WorkloadIdentityPoolOutput) ToWorkloadIdentityPoolPtrOutput() WorkloadIdentityPoolPtrOutput {
-	return o.ToWorkloadIdentityPoolPtrOutputWithContext(context.Background())
-}
-
-func (o WorkloadIdentityPoolOutput) ToWorkloadIdentityPoolPtrOutputWithContext(ctx context.Context) WorkloadIdentityPoolPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkloadIdentityPool) *WorkloadIdentityPool {
-		return &v
-	}).(WorkloadIdentityPoolPtrOutput)
-}
-
-type WorkloadIdentityPoolPtrOutput struct{ *pulumi.OutputState }
-
-func (WorkloadIdentityPoolPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkloadIdentityPool)(nil))
-}
-
-func (o WorkloadIdentityPoolPtrOutput) ToWorkloadIdentityPoolPtrOutput() WorkloadIdentityPoolPtrOutput {
-	return o
-}
-
-func (o WorkloadIdentityPoolPtrOutput) ToWorkloadIdentityPoolPtrOutputWithContext(ctx context.Context) WorkloadIdentityPoolPtrOutput {
-	return o
-}
-
-func (o WorkloadIdentityPoolPtrOutput) Elem() WorkloadIdentityPoolOutput {
-	return o.ApplyT(func(v *WorkloadIdentityPool) WorkloadIdentityPool {
-		if v != nil {
-			return *v
-		}
-		var ret WorkloadIdentityPool
-		return ret
-	}).(WorkloadIdentityPoolOutput)
-}
-
 type WorkloadIdentityPoolArrayOutput struct{ *pulumi.OutputState }
 
 func (WorkloadIdentityPoolArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]WorkloadIdentityPool)(nil))
+	return reflect.TypeOf((*[]*WorkloadIdentityPool)(nil)).Elem()
 }
 
 func (o WorkloadIdentityPoolArrayOutput) ToWorkloadIdentityPoolArrayOutput() WorkloadIdentityPoolArrayOutput {
@@ -404,15 +341,15 @@ func (o WorkloadIdentityPoolArrayOutput) ToWorkloadIdentityPoolArrayOutputWithCo
 }
 
 func (o WorkloadIdentityPoolArrayOutput) Index(i pulumi.IntInput) WorkloadIdentityPoolOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkloadIdentityPool {
-		return vs[0].([]WorkloadIdentityPool)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WorkloadIdentityPool {
+		return vs[0].([]*WorkloadIdentityPool)[vs[1].(int)]
 	}).(WorkloadIdentityPoolOutput)
 }
 
 type WorkloadIdentityPoolMapOutput struct{ *pulumi.OutputState }
 
 func (WorkloadIdentityPoolMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]WorkloadIdentityPool)(nil))
+	return reflect.TypeOf((*map[string]*WorkloadIdentityPool)(nil)).Elem()
 }
 
 func (o WorkloadIdentityPoolMapOutput) ToWorkloadIdentityPoolMapOutput() WorkloadIdentityPoolMapOutput {
@@ -424,18 +361,16 @@ func (o WorkloadIdentityPoolMapOutput) ToWorkloadIdentityPoolMapOutputWithContex
 }
 
 func (o WorkloadIdentityPoolMapOutput) MapIndex(k pulumi.StringInput) WorkloadIdentityPoolOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) WorkloadIdentityPool {
-		return vs[0].(map[string]WorkloadIdentityPool)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *WorkloadIdentityPool {
+		return vs[0].(map[string]*WorkloadIdentityPool)[vs[1].(string)]
 	}).(WorkloadIdentityPoolOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolInput)(nil)).Elem(), &WorkloadIdentityPool{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolPtrInput)(nil)).Elem(), &WorkloadIdentityPool{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolArrayInput)(nil)).Elem(), WorkloadIdentityPoolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolMapInput)(nil)).Elem(), WorkloadIdentityPoolMap{})
 	pulumi.RegisterOutputType(WorkloadIdentityPoolOutput{})
-	pulumi.RegisterOutputType(WorkloadIdentityPoolPtrOutput{})
 	pulumi.RegisterOutputType(WorkloadIdentityPoolArrayOutput{})
 	pulumi.RegisterOutputType(WorkloadIdentityPoolMapOutput{})
 }

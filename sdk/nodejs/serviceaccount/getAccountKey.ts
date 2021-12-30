@@ -15,10 +15,10 @@ import * as utilities from "../utilities";
  *
  * const myaccount = new gcp.serviceaccount.Account("myaccount", {accountId: "dev-foo-account"});
  * const mykeyKey = new gcp.serviceaccount.Key("mykeyKey", {serviceAccountId: myaccount.name});
- * const mykeyAccountKey = mykeyKey.name.apply(name => gcp.serviceAccount.getAccountKey({
- *     name: name,
+ * const mykeyAccountKey = gcp.serviceAccount.getAccountKeyOutput({
+ *     name: mykeyKey.name,
  *     publicKeyType: "TYPE_X509_PEM_FILE",
- * }));
+ * });
  * ```
  */
 export function getAccountKey(args: GetAccountKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountKeyResult> {

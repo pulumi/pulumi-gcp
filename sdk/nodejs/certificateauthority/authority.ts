@@ -328,27 +328,27 @@ export class Authority extends pulumi.CustomResource {
      */
     constructor(name: string, args: AuthorityArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AuthorityArgs | AuthorityState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AuthorityState | undefined;
-            inputs["accessUrls"] = state ? state.accessUrls : undefined;
-            inputs["certificateAuthorityId"] = state ? state.certificateAuthorityId : undefined;
-            inputs["config"] = state ? state.config : undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["gcsBucket"] = state ? state.gcsBucket : undefined;
-            inputs["ignoreActiveCertificatesOnDeletion"] = state ? state.ignoreActiveCertificatesOnDeletion : undefined;
-            inputs["keySpec"] = state ? state.keySpec : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["lifetime"] = state ? state.lifetime : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["pemCaCertificates"] = state ? state.pemCaCertificates : undefined;
-            inputs["pool"] = state ? state.pool : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["state"] = state ? state.state : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["accessUrls"] = state ? state.accessUrls : undefined;
+            resourceInputs["certificateAuthorityId"] = state ? state.certificateAuthorityId : undefined;
+            resourceInputs["config"] = state ? state.config : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["gcsBucket"] = state ? state.gcsBucket : undefined;
+            resourceInputs["ignoreActiveCertificatesOnDeletion"] = state ? state.ignoreActiveCertificatesOnDeletion : undefined;
+            resourceInputs["keySpec"] = state ? state.keySpec : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["lifetime"] = state ? state.lifetime : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["pemCaCertificates"] = state ? state.pemCaCertificates : undefined;
+            resourceInputs["pool"] = state ? state.pool : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as AuthorityArgs | undefined;
             if ((!args || args.certificateAuthorityId === undefined) && !opts.urn) {
@@ -366,28 +366,28 @@ export class Authority extends pulumi.CustomResource {
             if ((!args || args.pool === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'pool'");
             }
-            inputs["certificateAuthorityId"] = args ? args.certificateAuthorityId : undefined;
-            inputs["config"] = args ? args.config : undefined;
-            inputs["gcsBucket"] = args ? args.gcsBucket : undefined;
-            inputs["ignoreActiveCertificatesOnDeletion"] = args ? args.ignoreActiveCertificatesOnDeletion : undefined;
-            inputs["keySpec"] = args ? args.keySpec : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["lifetime"] = args ? args.lifetime : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["pool"] = args ? args.pool : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["accessUrls"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["pemCaCertificates"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["certificateAuthorityId"] = args ? args.certificateAuthorityId : undefined;
+            resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["gcsBucket"] = args ? args.gcsBucket : undefined;
+            resourceInputs["ignoreActiveCertificatesOnDeletion"] = args ? args.ignoreActiveCertificatesOnDeletion : undefined;
+            resourceInputs["keySpec"] = args ? args.keySpec : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["lifetime"] = args ? args.lifetime : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["pool"] = args ? args.pool : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["accessUrls"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pemCaCertificates"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Authority.__pulumiType, name, inputs, opts);
+        super(Authority.__pulumiType, name, resourceInputs, opts);
     }
 }
 

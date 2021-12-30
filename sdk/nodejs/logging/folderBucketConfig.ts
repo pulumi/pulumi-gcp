@@ -103,17 +103,17 @@ export class FolderBucketConfig extends pulumi.CustomResource {
      */
     constructor(name: string, args: FolderBucketConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FolderBucketConfigArgs | FolderBucketConfigState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FolderBucketConfigState | undefined;
-            inputs["bucketId"] = state ? state.bucketId : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["folder"] = state ? state.folder : undefined;
-            inputs["lifecycleState"] = state ? state.lifecycleState : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["retentionDays"] = state ? state.retentionDays : undefined;
+            resourceInputs["bucketId"] = state ? state.bucketId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["folder"] = state ? state.folder : undefined;
+            resourceInputs["lifecycleState"] = state ? state.lifecycleState : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["retentionDays"] = state ? state.retentionDays : undefined;
         } else {
             const args = argsOrState as FolderBucketConfigArgs | undefined;
             if ((!args || args.bucketId === undefined) && !opts.urn) {
@@ -125,18 +125,18 @@ export class FolderBucketConfig extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            inputs["bucketId"] = args ? args.bucketId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["folder"] = args ? args.folder : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["retentionDays"] = args ? args.retentionDays : undefined;
-            inputs["lifecycleState"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["bucketId"] = args ? args.bucketId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["folder"] = args ? args.folder : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["retentionDays"] = args ? args.retentionDays : undefined;
+            resourceInputs["lifecycleState"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(FolderBucketConfig.__pulumiType, name, inputs, opts);
+        super(FolderBucketConfig.__pulumiType, name, resourceInputs, opts);
     }
 }
 

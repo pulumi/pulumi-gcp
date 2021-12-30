@@ -244,35 +244,35 @@ export class Table extends pulumi.CustomResource {
      */
     constructor(name: string, args: TableArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TableArgs | TableState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TableState | undefined;
-            inputs["clusterings"] = state ? state.clusterings : undefined;
-            inputs["creationTime"] = state ? state.creationTime : undefined;
-            inputs["datasetId"] = state ? state.datasetId : undefined;
-            inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["encryptionConfiguration"] = state ? state.encryptionConfiguration : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["expirationTime"] = state ? state.expirationTime : undefined;
-            inputs["externalDataConfiguration"] = state ? state.externalDataConfiguration : undefined;
-            inputs["friendlyName"] = state ? state.friendlyName : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["materializedView"] = state ? state.materializedView : undefined;
-            inputs["numBytes"] = state ? state.numBytes : undefined;
-            inputs["numLongTermBytes"] = state ? state.numLongTermBytes : undefined;
-            inputs["numRows"] = state ? state.numRows : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["rangePartitioning"] = state ? state.rangePartitioning : undefined;
-            inputs["schema"] = state ? state.schema : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
-            inputs["tableId"] = state ? state.tableId : undefined;
-            inputs["timePartitioning"] = state ? state.timePartitioning : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["view"] = state ? state.view : undefined;
+            resourceInputs["clusterings"] = state ? state.clusterings : undefined;
+            resourceInputs["creationTime"] = state ? state.creationTime : undefined;
+            resourceInputs["datasetId"] = state ? state.datasetId : undefined;
+            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["encryptionConfiguration"] = state ? state.encryptionConfiguration : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["expirationTime"] = state ? state.expirationTime : undefined;
+            resourceInputs["externalDataConfiguration"] = state ? state.externalDataConfiguration : undefined;
+            resourceInputs["friendlyName"] = state ? state.friendlyName : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["materializedView"] = state ? state.materializedView : undefined;
+            resourceInputs["numBytes"] = state ? state.numBytes : undefined;
+            resourceInputs["numLongTermBytes"] = state ? state.numLongTermBytes : undefined;
+            resourceInputs["numRows"] = state ? state.numRows : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["rangePartitioning"] = state ? state.rangePartitioning : undefined;
+            resourceInputs["schema"] = state ? state.schema : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["tableId"] = state ? state.tableId : undefined;
+            resourceInputs["timePartitioning"] = state ? state.timePartitioning : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["view"] = state ? state.view : undefined;
         } else {
             const args = argsOrState as TableArgs | undefined;
             if ((!args || args.datasetId === undefined) && !opts.urn) {
@@ -281,36 +281,36 @@ export class Table extends pulumi.CustomResource {
             if ((!args || args.tableId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tableId'");
             }
-            inputs["clusterings"] = args ? args.clusterings : undefined;
-            inputs["datasetId"] = args ? args.datasetId : undefined;
-            inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["encryptionConfiguration"] = args ? args.encryptionConfiguration : undefined;
-            inputs["expirationTime"] = args ? args.expirationTime : undefined;
-            inputs["externalDataConfiguration"] = args ? args.externalDataConfiguration : undefined;
-            inputs["friendlyName"] = args ? args.friendlyName : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["materializedView"] = args ? args.materializedView : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["rangePartitioning"] = args ? args.rangePartitioning : undefined;
-            inputs["schema"] = args ? args.schema : undefined;
-            inputs["tableId"] = args ? args.tableId : undefined;
-            inputs["timePartitioning"] = args ? args.timePartitioning : undefined;
-            inputs["view"] = args ? args.view : undefined;
-            inputs["creationTime"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["lastModifiedTime"] = undefined /*out*/;
-            inputs["location"] = undefined /*out*/;
-            inputs["numBytes"] = undefined /*out*/;
-            inputs["numLongTermBytes"] = undefined /*out*/;
-            inputs["numRows"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
+            resourceInputs["clusterings"] = args ? args.clusterings : undefined;
+            resourceInputs["datasetId"] = args ? args.datasetId : undefined;
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["encryptionConfiguration"] = args ? args.encryptionConfiguration : undefined;
+            resourceInputs["expirationTime"] = args ? args.expirationTime : undefined;
+            resourceInputs["externalDataConfiguration"] = args ? args.externalDataConfiguration : undefined;
+            resourceInputs["friendlyName"] = args ? args.friendlyName : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["materializedView"] = args ? args.materializedView : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["rangePartitioning"] = args ? args.rangePartitioning : undefined;
+            resourceInputs["schema"] = args ? args.schema : undefined;
+            resourceInputs["tableId"] = args ? args.tableId : undefined;
+            resourceInputs["timePartitioning"] = args ? args.timePartitioning : undefined;
+            resourceInputs["view"] = args ? args.view : undefined;
+            resourceInputs["creationTime"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["lastModifiedTime"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
+            resourceInputs["numBytes"] = undefined /*out*/;
+            resourceInputs["numLongTermBytes"] = undefined /*out*/;
+            resourceInputs["numRows"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Table.__pulumiType, name, inputs, opts);
+        super(Table.__pulumiType, name, resourceInputs, opts);
     }
 }
 

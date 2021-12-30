@@ -251,7 +251,7 @@ type TagKeyIamMemberInput interface {
 }
 
 func (*TagKeyIamMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*TagKeyIamMember)(nil))
+	return reflect.TypeOf((**TagKeyIamMember)(nil)).Elem()
 }
 
 func (i *TagKeyIamMember) ToTagKeyIamMemberOutput() TagKeyIamMemberOutput {
@@ -260,35 +260,6 @@ func (i *TagKeyIamMember) ToTagKeyIamMemberOutput() TagKeyIamMemberOutput {
 
 func (i *TagKeyIamMember) ToTagKeyIamMemberOutputWithContext(ctx context.Context) TagKeyIamMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TagKeyIamMemberOutput)
-}
-
-func (i *TagKeyIamMember) ToTagKeyIamMemberPtrOutput() TagKeyIamMemberPtrOutput {
-	return i.ToTagKeyIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *TagKeyIamMember) ToTagKeyIamMemberPtrOutputWithContext(ctx context.Context) TagKeyIamMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TagKeyIamMemberPtrOutput)
-}
-
-type TagKeyIamMemberPtrInput interface {
-	pulumi.Input
-
-	ToTagKeyIamMemberPtrOutput() TagKeyIamMemberPtrOutput
-	ToTagKeyIamMemberPtrOutputWithContext(ctx context.Context) TagKeyIamMemberPtrOutput
-}
-
-type tagKeyIamMemberPtrType TagKeyIamMemberArgs
-
-func (*tagKeyIamMemberPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TagKeyIamMember)(nil))
-}
-
-func (i *tagKeyIamMemberPtrType) ToTagKeyIamMemberPtrOutput() TagKeyIamMemberPtrOutput {
-	return i.ToTagKeyIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *tagKeyIamMemberPtrType) ToTagKeyIamMemberPtrOutputWithContext(ctx context.Context) TagKeyIamMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TagKeyIamMemberPtrOutput)
 }
 
 // TagKeyIamMemberArrayInput is an input type that accepts TagKeyIamMemberArray and TagKeyIamMemberArrayOutput values.
@@ -344,7 +315,7 @@ func (i TagKeyIamMemberMap) ToTagKeyIamMemberMapOutputWithContext(ctx context.Co
 type TagKeyIamMemberOutput struct{ *pulumi.OutputState }
 
 func (TagKeyIamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TagKeyIamMember)(nil))
+	return reflect.TypeOf((**TagKeyIamMember)(nil)).Elem()
 }
 
 func (o TagKeyIamMemberOutput) ToTagKeyIamMemberOutput() TagKeyIamMemberOutput {
@@ -355,44 +326,10 @@ func (o TagKeyIamMemberOutput) ToTagKeyIamMemberOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o TagKeyIamMemberOutput) ToTagKeyIamMemberPtrOutput() TagKeyIamMemberPtrOutput {
-	return o.ToTagKeyIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (o TagKeyIamMemberOutput) ToTagKeyIamMemberPtrOutputWithContext(ctx context.Context) TagKeyIamMemberPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TagKeyIamMember) *TagKeyIamMember {
-		return &v
-	}).(TagKeyIamMemberPtrOutput)
-}
-
-type TagKeyIamMemberPtrOutput struct{ *pulumi.OutputState }
-
-func (TagKeyIamMemberPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TagKeyIamMember)(nil))
-}
-
-func (o TagKeyIamMemberPtrOutput) ToTagKeyIamMemberPtrOutput() TagKeyIamMemberPtrOutput {
-	return o
-}
-
-func (o TagKeyIamMemberPtrOutput) ToTagKeyIamMemberPtrOutputWithContext(ctx context.Context) TagKeyIamMemberPtrOutput {
-	return o
-}
-
-func (o TagKeyIamMemberPtrOutput) Elem() TagKeyIamMemberOutput {
-	return o.ApplyT(func(v *TagKeyIamMember) TagKeyIamMember {
-		if v != nil {
-			return *v
-		}
-		var ret TagKeyIamMember
-		return ret
-	}).(TagKeyIamMemberOutput)
-}
-
 type TagKeyIamMemberArrayOutput struct{ *pulumi.OutputState }
 
 func (TagKeyIamMemberArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TagKeyIamMember)(nil))
+	return reflect.TypeOf((*[]*TagKeyIamMember)(nil)).Elem()
 }
 
 func (o TagKeyIamMemberArrayOutput) ToTagKeyIamMemberArrayOutput() TagKeyIamMemberArrayOutput {
@@ -404,15 +341,15 @@ func (o TagKeyIamMemberArrayOutput) ToTagKeyIamMemberArrayOutputWithContext(ctx 
 }
 
 func (o TagKeyIamMemberArrayOutput) Index(i pulumi.IntInput) TagKeyIamMemberOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TagKeyIamMember {
-		return vs[0].([]TagKeyIamMember)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TagKeyIamMember {
+		return vs[0].([]*TagKeyIamMember)[vs[1].(int)]
 	}).(TagKeyIamMemberOutput)
 }
 
 type TagKeyIamMemberMapOutput struct{ *pulumi.OutputState }
 
 func (TagKeyIamMemberMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]TagKeyIamMember)(nil))
+	return reflect.TypeOf((*map[string]*TagKeyIamMember)(nil)).Elem()
 }
 
 func (o TagKeyIamMemberMapOutput) ToTagKeyIamMemberMapOutput() TagKeyIamMemberMapOutput {
@@ -424,18 +361,16 @@ func (o TagKeyIamMemberMapOutput) ToTagKeyIamMemberMapOutputWithContext(ctx cont
 }
 
 func (o TagKeyIamMemberMapOutput) MapIndex(k pulumi.StringInput) TagKeyIamMemberOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TagKeyIamMember {
-		return vs[0].(map[string]TagKeyIamMember)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *TagKeyIamMember {
+		return vs[0].(map[string]*TagKeyIamMember)[vs[1].(string)]
 	}).(TagKeyIamMemberOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TagKeyIamMemberInput)(nil)).Elem(), &TagKeyIamMember{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TagKeyIamMemberPtrInput)(nil)).Elem(), &TagKeyIamMember{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TagKeyIamMemberArrayInput)(nil)).Elem(), TagKeyIamMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TagKeyIamMemberMapInput)(nil)).Elem(), TagKeyIamMemberMap{})
 	pulumi.RegisterOutputType(TagKeyIamMemberOutput{})
-	pulumi.RegisterOutputType(TagKeyIamMemberPtrOutput{})
 	pulumi.RegisterOutputType(TagKeyIamMemberArrayOutput{})
 	pulumi.RegisterOutputType(TagKeyIamMemberMapOutput{})
 }

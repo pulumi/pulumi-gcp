@@ -299,7 +299,7 @@ type WorkerPoolInput interface {
 }
 
 func (*WorkerPool) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkerPool)(nil))
+	return reflect.TypeOf((**WorkerPool)(nil)).Elem()
 }
 
 func (i *WorkerPool) ToWorkerPoolOutput() WorkerPoolOutput {
@@ -308,35 +308,6 @@ func (i *WorkerPool) ToWorkerPoolOutput() WorkerPoolOutput {
 
 func (i *WorkerPool) ToWorkerPoolOutputWithContext(ctx context.Context) WorkerPoolOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolOutput)
-}
-
-func (i *WorkerPool) ToWorkerPoolPtrOutput() WorkerPoolPtrOutput {
-	return i.ToWorkerPoolPtrOutputWithContext(context.Background())
-}
-
-func (i *WorkerPool) ToWorkerPoolPtrOutputWithContext(ctx context.Context) WorkerPoolPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolPtrOutput)
-}
-
-type WorkerPoolPtrInput interface {
-	pulumi.Input
-
-	ToWorkerPoolPtrOutput() WorkerPoolPtrOutput
-	ToWorkerPoolPtrOutputWithContext(ctx context.Context) WorkerPoolPtrOutput
-}
-
-type workerPoolPtrType WorkerPoolArgs
-
-func (*workerPoolPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkerPool)(nil))
-}
-
-func (i *workerPoolPtrType) ToWorkerPoolPtrOutput() WorkerPoolPtrOutput {
-	return i.ToWorkerPoolPtrOutputWithContext(context.Background())
-}
-
-func (i *workerPoolPtrType) ToWorkerPoolPtrOutputWithContext(ctx context.Context) WorkerPoolPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolPtrOutput)
 }
 
 // WorkerPoolArrayInput is an input type that accepts WorkerPoolArray and WorkerPoolArrayOutput values.
@@ -392,7 +363,7 @@ func (i WorkerPoolMap) ToWorkerPoolMapOutputWithContext(ctx context.Context) Wor
 type WorkerPoolOutput struct{ *pulumi.OutputState }
 
 func (WorkerPoolOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkerPool)(nil))
+	return reflect.TypeOf((**WorkerPool)(nil)).Elem()
 }
 
 func (o WorkerPoolOutput) ToWorkerPoolOutput() WorkerPoolOutput {
@@ -403,44 +374,10 @@ func (o WorkerPoolOutput) ToWorkerPoolOutputWithContext(ctx context.Context) Wor
 	return o
 }
 
-func (o WorkerPoolOutput) ToWorkerPoolPtrOutput() WorkerPoolPtrOutput {
-	return o.ToWorkerPoolPtrOutputWithContext(context.Background())
-}
-
-func (o WorkerPoolOutput) ToWorkerPoolPtrOutputWithContext(ctx context.Context) WorkerPoolPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerPool) *WorkerPool {
-		return &v
-	}).(WorkerPoolPtrOutput)
-}
-
-type WorkerPoolPtrOutput struct{ *pulumi.OutputState }
-
-func (WorkerPoolPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkerPool)(nil))
-}
-
-func (o WorkerPoolPtrOutput) ToWorkerPoolPtrOutput() WorkerPoolPtrOutput {
-	return o
-}
-
-func (o WorkerPoolPtrOutput) ToWorkerPoolPtrOutputWithContext(ctx context.Context) WorkerPoolPtrOutput {
-	return o
-}
-
-func (o WorkerPoolPtrOutput) Elem() WorkerPoolOutput {
-	return o.ApplyT(func(v *WorkerPool) WorkerPool {
-		if v != nil {
-			return *v
-		}
-		var ret WorkerPool
-		return ret
-	}).(WorkerPoolOutput)
-}
-
 type WorkerPoolArrayOutput struct{ *pulumi.OutputState }
 
 func (WorkerPoolArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]WorkerPool)(nil))
+	return reflect.TypeOf((*[]*WorkerPool)(nil)).Elem()
 }
 
 func (o WorkerPoolArrayOutput) ToWorkerPoolArrayOutput() WorkerPoolArrayOutput {
@@ -452,15 +389,15 @@ func (o WorkerPoolArrayOutput) ToWorkerPoolArrayOutputWithContext(ctx context.Co
 }
 
 func (o WorkerPoolArrayOutput) Index(i pulumi.IntInput) WorkerPoolOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkerPool {
-		return vs[0].([]WorkerPool)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WorkerPool {
+		return vs[0].([]*WorkerPool)[vs[1].(int)]
 	}).(WorkerPoolOutput)
 }
 
 type WorkerPoolMapOutput struct{ *pulumi.OutputState }
 
 func (WorkerPoolMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]WorkerPool)(nil))
+	return reflect.TypeOf((*map[string]*WorkerPool)(nil)).Elem()
 }
 
 func (o WorkerPoolMapOutput) ToWorkerPoolMapOutput() WorkerPoolMapOutput {
@@ -472,18 +409,16 @@ func (o WorkerPoolMapOutput) ToWorkerPoolMapOutputWithContext(ctx context.Contex
 }
 
 func (o WorkerPoolMapOutput) MapIndex(k pulumi.StringInput) WorkerPoolOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) WorkerPool {
-		return vs[0].(map[string]WorkerPool)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *WorkerPool {
+		return vs[0].(map[string]*WorkerPool)[vs[1].(string)]
 	}).(WorkerPoolOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolInput)(nil)).Elem(), &WorkerPool{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolPtrInput)(nil)).Elem(), &WorkerPool{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolArrayInput)(nil)).Elem(), WorkerPoolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolMapInput)(nil)).Elem(), WorkerPoolMap{})
 	pulumi.RegisterOutputType(WorkerPoolOutput{})
-	pulumi.RegisterOutputType(WorkerPoolPtrOutput{})
 	pulumi.RegisterOutputType(WorkerPoolArrayOutput{})
 	pulumi.RegisterOutputType(WorkerPoolMapOutput{})
 }

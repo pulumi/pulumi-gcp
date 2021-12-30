@@ -90,26 +90,26 @@ export class MonitoredProject extends pulumi.CustomResource {
      */
     constructor(name: string, args: MonitoredProjectArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MonitoredProjectArgs | MonitoredProjectState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MonitoredProjectState | undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["metricsScope"] = state ? state.metricsScope : undefined;
-            inputs["name"] = state ? state.name : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["metricsScope"] = state ? state.metricsScope : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as MonitoredProjectArgs | undefined;
             if ((!args || args.metricsScope === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'metricsScope'");
             }
-            inputs["metricsScope"] = args ? args.metricsScope : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["createTime"] = undefined /*out*/;
+            resourceInputs["metricsScope"] = args ? args.metricsScope : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(MonitoredProject.__pulumiType, name, inputs, opts);
+        super(MonitoredProject.__pulumiType, name, resourceInputs, opts);
     }
 }
 

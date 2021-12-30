@@ -172,18 +172,18 @@ export class GroupMembership extends pulumi.CustomResource {
      */
     constructor(name: string, args: GroupMembershipArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GroupMembershipArgs | GroupMembershipState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupMembershipState | undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["group"] = state ? state.group : undefined;
-            inputs["memberKey"] = state ? state.memberKey : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["preferredMemberKey"] = state ? state.preferredMemberKey : undefined;
-            inputs["roles"] = state ? state.roles : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["group"] = state ? state.group : undefined;
+            resourceInputs["memberKey"] = state ? state.memberKey : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["preferredMemberKey"] = state ? state.preferredMemberKey : undefined;
+            resourceInputs["roles"] = state ? state.roles : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as GroupMembershipArgs | undefined;
             if ((!args || args.group === undefined) && !opts.urn) {
@@ -192,19 +192,19 @@ export class GroupMembership extends pulumi.CustomResource {
             if ((!args || args.roles === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'roles'");
             }
-            inputs["group"] = args ? args.group : undefined;
-            inputs["memberKey"] = args ? args.memberKey : undefined;
-            inputs["preferredMemberKey"] = args ? args.preferredMemberKey : undefined;
-            inputs["roles"] = args ? args.roles : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["group"] = args ? args.group : undefined;
+            resourceInputs["memberKey"] = args ? args.memberKey : undefined;
+            resourceInputs["preferredMemberKey"] = args ? args.preferredMemberKey : undefined;
+            resourceInputs["roles"] = args ? args.roles : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(GroupMembership.__pulumiType, name, inputs, opts);
+        super(GroupMembership.__pulumiType, name, resourceInputs, opts);
     }
 }
 

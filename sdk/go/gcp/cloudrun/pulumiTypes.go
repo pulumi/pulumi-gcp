@@ -109,47 +109,6 @@ func (i DomainMappingMetadataArgs) ToDomainMappingMetadataOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingMetadataOutput)
 }
 
-func (i DomainMappingMetadataArgs) ToDomainMappingMetadataPtrOutput() DomainMappingMetadataPtrOutput {
-	return i.ToDomainMappingMetadataPtrOutputWithContext(context.Background())
-}
-
-func (i DomainMappingMetadataArgs) ToDomainMappingMetadataPtrOutputWithContext(ctx context.Context) DomainMappingMetadataPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingMetadataOutput).ToDomainMappingMetadataPtrOutputWithContext(ctx)
-}
-
-// DomainMappingMetadataPtrInput is an input type that accepts DomainMappingMetadataArgs, DomainMappingMetadataPtr and DomainMappingMetadataPtrOutput values.
-// You can construct a concrete instance of `DomainMappingMetadataPtrInput` via:
-//
-//          DomainMappingMetadataArgs{...}
-//
-//  or:
-//
-//          nil
-type DomainMappingMetadataPtrInput interface {
-	pulumi.Input
-
-	ToDomainMappingMetadataPtrOutput() DomainMappingMetadataPtrOutput
-	ToDomainMappingMetadataPtrOutputWithContext(context.Context) DomainMappingMetadataPtrOutput
-}
-
-type domainMappingMetadataPtrType DomainMappingMetadataArgs
-
-func DomainMappingMetadataPtr(v *DomainMappingMetadataArgs) DomainMappingMetadataPtrInput {
-	return (*domainMappingMetadataPtrType)(v)
-}
-
-func (*domainMappingMetadataPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DomainMappingMetadata)(nil)).Elem()
-}
-
-func (i *domainMappingMetadataPtrType) ToDomainMappingMetadataPtrOutput() DomainMappingMetadataPtrOutput {
-	return i.ToDomainMappingMetadataPtrOutputWithContext(context.Background())
-}
-
-func (i *domainMappingMetadataPtrType) ToDomainMappingMetadataPtrOutputWithContext(ctx context.Context) DomainMappingMetadataPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingMetadataPtrOutput)
-}
-
 type DomainMappingMetadataOutput struct{ *pulumi.OutputState }
 
 func (DomainMappingMetadataOutput) ElementType() reflect.Type {
@@ -162,16 +121,6 @@ func (o DomainMappingMetadataOutput) ToDomainMappingMetadataOutput() DomainMappi
 
 func (o DomainMappingMetadataOutput) ToDomainMappingMetadataOutputWithContext(ctx context.Context) DomainMappingMetadataOutput {
 	return o
-}
-
-func (o DomainMappingMetadataOutput) ToDomainMappingMetadataPtrOutput() DomainMappingMetadataPtrOutput {
-	return o.ToDomainMappingMetadataPtrOutputWithContext(context.Background())
-}
-
-func (o DomainMappingMetadataOutput) ToDomainMappingMetadataPtrOutputWithContext(ctx context.Context) DomainMappingMetadataPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainMappingMetadata) *DomainMappingMetadata {
-		return &v
-	}).(DomainMappingMetadataPtrOutput)
 }
 
 // Annotations is a key value map stored with a resource that
@@ -230,121 +179,6 @@ func (o DomainMappingMetadataOutput) Uid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainMappingMetadata) *string { return v.Uid }).(pulumi.StringPtrOutput)
 }
 
-type DomainMappingMetadataPtrOutput struct{ *pulumi.OutputState }
-
-func (DomainMappingMetadataPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DomainMappingMetadata)(nil)).Elem()
-}
-
-func (o DomainMappingMetadataPtrOutput) ToDomainMappingMetadataPtrOutput() DomainMappingMetadataPtrOutput {
-	return o
-}
-
-func (o DomainMappingMetadataPtrOutput) ToDomainMappingMetadataPtrOutputWithContext(ctx context.Context) DomainMappingMetadataPtrOutput {
-	return o
-}
-
-func (o DomainMappingMetadataPtrOutput) Elem() DomainMappingMetadataOutput {
-	return o.ApplyT(func(v *DomainMappingMetadata) DomainMappingMetadata {
-		if v != nil {
-			return *v
-		}
-		var ret DomainMappingMetadata
-		return ret
-	}).(DomainMappingMetadataOutput)
-}
-
-// Annotations is a key value map stored with a resource that
-// may be set by external tools to store and retrieve arbitrary metadata. More
-// info: http://kubernetes.io/docs/user-guide/annotations
-// **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
-// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
-// or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
-func (o DomainMappingMetadataPtrOutput) Annotations() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *DomainMappingMetadata) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Annotations
-	}).(pulumi.StringMapOutput)
-}
-
-// -
-// A sequence number representing a specific generation of the desired state.
-func (o DomainMappingMetadataPtrOutput) Generation() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DomainMappingMetadata) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Generation
-	}).(pulumi.IntPtrOutput)
-}
-
-// Map of string keys and values that can be used to organize and categorize
-// (scope and select) objects. May match selectors of replication controllers
-// and routes.
-// More info: http://kubernetes.io/docs/user-guide/labels
-func (o DomainMappingMetadataPtrOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *DomainMappingMetadata) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Labels
-	}).(pulumi.StringMapOutput)
-}
-
-// In Cloud Run the namespace must be equal to either the
-// project ID or project number.
-func (o DomainMappingMetadataPtrOutput) Namespace() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DomainMappingMetadata) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Namespace
-	}).(pulumi.StringPtrOutput)
-}
-
-// -
-// An opaque value that represents the internal version of this object that
-// can be used by clients to determine when objects have changed. May be used
-// for optimistic concurrency, change detection, and the watch operation on a
-// resource or set of resources. They may only be valid for a
-// particular resource or set of resources.
-// More info:
-// https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency
-func (o DomainMappingMetadataPtrOutput) ResourceVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DomainMappingMetadata) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ResourceVersion
-	}).(pulumi.StringPtrOutput)
-}
-
-// -
-// SelfLink is a URL representing this object.
-func (o DomainMappingMetadataPtrOutput) SelfLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DomainMappingMetadata) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SelfLink
-	}).(pulumi.StringPtrOutput)
-}
-
-// -
-// UID is a unique id generated by the server on successful creation of a resource and is not
-// allowed to change on PUT operations.
-// More info: http://kubernetes.io/docs/user-guide/identifiers#uids
-func (o DomainMappingMetadataPtrOutput) Uid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DomainMappingMetadata) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Uid
-	}).(pulumi.StringPtrOutput)
-}
-
 type DomainMappingSpec struct {
 	// The mode of the certificate.
 	// Default value is `AUTOMATIC`.
@@ -398,47 +232,6 @@ func (i DomainMappingSpecArgs) ToDomainMappingSpecOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingSpecOutput)
 }
 
-func (i DomainMappingSpecArgs) ToDomainMappingSpecPtrOutput() DomainMappingSpecPtrOutput {
-	return i.ToDomainMappingSpecPtrOutputWithContext(context.Background())
-}
-
-func (i DomainMappingSpecArgs) ToDomainMappingSpecPtrOutputWithContext(ctx context.Context) DomainMappingSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingSpecOutput).ToDomainMappingSpecPtrOutputWithContext(ctx)
-}
-
-// DomainMappingSpecPtrInput is an input type that accepts DomainMappingSpecArgs, DomainMappingSpecPtr and DomainMappingSpecPtrOutput values.
-// You can construct a concrete instance of `DomainMappingSpecPtrInput` via:
-//
-//          DomainMappingSpecArgs{...}
-//
-//  or:
-//
-//          nil
-type DomainMappingSpecPtrInput interface {
-	pulumi.Input
-
-	ToDomainMappingSpecPtrOutput() DomainMappingSpecPtrOutput
-	ToDomainMappingSpecPtrOutputWithContext(context.Context) DomainMappingSpecPtrOutput
-}
-
-type domainMappingSpecPtrType DomainMappingSpecArgs
-
-func DomainMappingSpecPtr(v *DomainMappingSpecArgs) DomainMappingSpecPtrInput {
-	return (*domainMappingSpecPtrType)(v)
-}
-
-func (*domainMappingSpecPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DomainMappingSpec)(nil)).Elem()
-}
-
-func (i *domainMappingSpecPtrType) ToDomainMappingSpecPtrOutput() DomainMappingSpecPtrOutput {
-	return i.ToDomainMappingSpecPtrOutputWithContext(context.Background())
-}
-
-func (i *domainMappingSpecPtrType) ToDomainMappingSpecPtrOutputWithContext(ctx context.Context) DomainMappingSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingSpecPtrOutput)
-}
-
 type DomainMappingSpecOutput struct{ *pulumi.OutputState }
 
 func (DomainMappingSpecOutput) ElementType() reflect.Type {
@@ -451,16 +244,6 @@ func (o DomainMappingSpecOutput) ToDomainMappingSpecOutput() DomainMappingSpecOu
 
 func (o DomainMappingSpecOutput) ToDomainMappingSpecOutputWithContext(ctx context.Context) DomainMappingSpecOutput {
 	return o
-}
-
-func (o DomainMappingSpecOutput) ToDomainMappingSpecPtrOutput() DomainMappingSpecPtrOutput {
-	return o.ToDomainMappingSpecPtrOutputWithContext(context.Background())
-}
-
-func (o DomainMappingSpecOutput) ToDomainMappingSpecPtrOutputWithContext(ctx context.Context) DomainMappingSpecPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainMappingSpec) *DomainMappingSpec {
-		return &v
-	}).(DomainMappingSpecPtrOutput)
 }
 
 // The mode of the certificate.
@@ -482,66 +265,6 @@ func (o DomainMappingSpecOutput) ForceOverride() pulumi.BoolPtrOutput {
 // The route must exist.
 func (o DomainMappingSpecOutput) RouteName() pulumi.StringOutput {
 	return o.ApplyT(func(v DomainMappingSpec) string { return v.RouteName }).(pulumi.StringOutput)
-}
-
-type DomainMappingSpecPtrOutput struct{ *pulumi.OutputState }
-
-func (DomainMappingSpecPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DomainMappingSpec)(nil)).Elem()
-}
-
-func (o DomainMappingSpecPtrOutput) ToDomainMappingSpecPtrOutput() DomainMappingSpecPtrOutput {
-	return o
-}
-
-func (o DomainMappingSpecPtrOutput) ToDomainMappingSpecPtrOutputWithContext(ctx context.Context) DomainMappingSpecPtrOutput {
-	return o
-}
-
-func (o DomainMappingSpecPtrOutput) Elem() DomainMappingSpecOutput {
-	return o.ApplyT(func(v *DomainMappingSpec) DomainMappingSpec {
-		if v != nil {
-			return *v
-		}
-		var ret DomainMappingSpec
-		return ret
-	}).(DomainMappingSpecOutput)
-}
-
-// The mode of the certificate.
-// Default value is `AUTOMATIC`.
-// Possible values are `NONE` and `AUTOMATIC`.
-func (o DomainMappingSpecPtrOutput) CertificateMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DomainMappingSpec) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CertificateMode
-	}).(pulumi.StringPtrOutput)
-}
-
-// If set, the mapping will override any mapping set before this spec was set.
-// It is recommended that the user leaves this empty to receive an error
-// warning about a potential conflict and only set it once the respective UI
-// has given such a warning.
-func (o DomainMappingSpecPtrOutput) ForceOverride() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *DomainMappingSpec) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.ForceOverride
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The name of the Cloud Run Service that this DomainMapping applies to.
-// The route must exist.
-func (o DomainMappingSpecPtrOutput) RouteName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DomainMappingSpec) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.RouteName
-	}).(pulumi.StringPtrOutput)
 }
 
 type DomainMappingStatus struct {
@@ -7339,9 +7062,7 @@ func (o GetServiceTrafficArrayOutput) Index(i pulumi.IntInput) GetServiceTraffic
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainMappingMetadataInput)(nil)).Elem(), DomainMappingMetadataArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DomainMappingMetadataPtrInput)(nil)).Elem(), DomainMappingMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainMappingSpecInput)(nil)).Elem(), DomainMappingSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DomainMappingSpecPtrInput)(nil)).Elem(), DomainMappingSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainMappingStatusInput)(nil)).Elem(), DomainMappingStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainMappingStatusArrayInput)(nil)).Elem(), DomainMappingStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainMappingStatusConditionInput)(nil)).Elem(), DomainMappingStatusConditionArgs{})
@@ -7440,9 +7161,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTrafficInput)(nil)).Elem(), GetServiceTrafficArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTrafficArrayInput)(nil)).Elem(), GetServiceTrafficArray{})
 	pulumi.RegisterOutputType(DomainMappingMetadataOutput{})
-	pulumi.RegisterOutputType(DomainMappingMetadataPtrOutput{})
 	pulumi.RegisterOutputType(DomainMappingSpecOutput{})
-	pulumi.RegisterOutputType(DomainMappingSpecPtrOutput{})
 	pulumi.RegisterOutputType(DomainMappingStatusOutput{})
 	pulumi.RegisterOutputType(DomainMappingStatusArrayOutput{})
 	pulumi.RegisterOutputType(DomainMappingStatusConditionOutput{})

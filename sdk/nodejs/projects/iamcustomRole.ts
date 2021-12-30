@@ -126,18 +126,18 @@ export class IAMCustomRole extends pulumi.CustomResource {
      */
     constructor(name: string, args: IAMCustomRoleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IAMCustomRoleArgs | IAMCustomRoleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IAMCustomRoleState | undefined;
-            inputs["deleted"] = state ? state.deleted : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["permissions"] = state ? state.permissions : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["roleId"] = state ? state.roleId : undefined;
-            inputs["stage"] = state ? state.stage : undefined;
-            inputs["title"] = state ? state.title : undefined;
+            resourceInputs["deleted"] = state ? state.deleted : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["permissions"] = state ? state.permissions : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["roleId"] = state ? state.roleId : undefined;
+            resourceInputs["stage"] = state ? state.stage : undefined;
+            resourceInputs["title"] = state ? state.title : undefined;
         } else {
             const args = argsOrState as IAMCustomRoleArgs | undefined;
             if ((!args || args.permissions === undefined) && !opts.urn) {
@@ -149,19 +149,19 @@ export class IAMCustomRole extends pulumi.CustomResource {
             if ((!args || args.title === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'title'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["permissions"] = args ? args.permissions : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["roleId"] = args ? args.roleId : undefined;
-            inputs["stage"] = args ? args.stage : undefined;
-            inputs["title"] = args ? args.title : undefined;
-            inputs["deleted"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["permissions"] = args ? args.permissions : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["roleId"] = args ? args.roleId : undefined;
+            resourceInputs["stage"] = args ? args.stage : undefined;
+            resourceInputs["title"] = args ? args.title : undefined;
+            resourceInputs["deleted"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(IAMCustomRole.__pulumiType, name, inputs, opts);
+        super(IAMCustomRole.__pulumiType, name, resourceInputs, opts);
     }
 }
 

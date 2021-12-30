@@ -303,44 +303,44 @@ export class Job extends pulumi.CustomResource {
      */
     constructor(name: string, args: JobArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: JobArgs | JobState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as JobState | undefined;
-            inputs["copy"] = state ? state.copy : undefined;
-            inputs["extract"] = state ? state.extract : undefined;
-            inputs["jobId"] = state ? state.jobId : undefined;
-            inputs["jobTimeoutMs"] = state ? state.jobTimeoutMs : undefined;
-            inputs["jobType"] = state ? state.jobType : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["load"] = state ? state.load : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["query"] = state ? state.query : undefined;
-            inputs["statuses"] = state ? state.statuses : undefined;
-            inputs["userEmail"] = state ? state.userEmail : undefined;
+            resourceInputs["copy"] = state ? state.copy : undefined;
+            resourceInputs["extract"] = state ? state.extract : undefined;
+            resourceInputs["jobId"] = state ? state.jobId : undefined;
+            resourceInputs["jobTimeoutMs"] = state ? state.jobTimeoutMs : undefined;
+            resourceInputs["jobType"] = state ? state.jobType : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["load"] = state ? state.load : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["query"] = state ? state.query : undefined;
+            resourceInputs["statuses"] = state ? state.statuses : undefined;
+            resourceInputs["userEmail"] = state ? state.userEmail : undefined;
         } else {
             const args = argsOrState as JobArgs | undefined;
             if ((!args || args.jobId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'jobId'");
             }
-            inputs["copy"] = args ? args.copy : undefined;
-            inputs["extract"] = args ? args.extract : undefined;
-            inputs["jobId"] = args ? args.jobId : undefined;
-            inputs["jobTimeoutMs"] = args ? args.jobTimeoutMs : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["load"] = args ? args.load : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["query"] = args ? args.query : undefined;
-            inputs["jobType"] = undefined /*out*/;
-            inputs["statuses"] = undefined /*out*/;
-            inputs["userEmail"] = undefined /*out*/;
+            resourceInputs["copy"] = args ? args.copy : undefined;
+            resourceInputs["extract"] = args ? args.extract : undefined;
+            resourceInputs["jobId"] = args ? args.jobId : undefined;
+            resourceInputs["jobTimeoutMs"] = args ? args.jobTimeoutMs : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["load"] = args ? args.load : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["query"] = args ? args.query : undefined;
+            resourceInputs["jobType"] = undefined /*out*/;
+            resourceInputs["statuses"] = undefined /*out*/;
+            resourceInputs["userEmail"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Job.__pulumiType, name, inputs, opts);
+        super(Job.__pulumiType, name, resourceInputs, opts);
     }
 }
 

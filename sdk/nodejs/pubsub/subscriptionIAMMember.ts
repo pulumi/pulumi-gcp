@@ -139,16 +139,16 @@ export class SubscriptionIAMMember extends pulumi.CustomResource {
      */
     constructor(name: string, args: SubscriptionIAMMemberArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SubscriptionIAMMemberArgs | SubscriptionIAMMemberState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SubscriptionIAMMemberState | undefined;
-            inputs["condition"] = state ? state.condition : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["member"] = state ? state.member : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["role"] = state ? state.role : undefined;
-            inputs["subscription"] = state ? state.subscription : undefined;
+            resourceInputs["condition"] = state ? state.condition : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["member"] = state ? state.member : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["subscription"] = state ? state.subscription : undefined;
         } else {
             const args = argsOrState as SubscriptionIAMMemberArgs | undefined;
             if ((!args || args.member === undefined) && !opts.urn) {
@@ -160,17 +160,17 @@ export class SubscriptionIAMMember extends pulumi.CustomResource {
             if ((!args || args.subscription === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'subscription'");
             }
-            inputs["condition"] = args ? args.condition : undefined;
-            inputs["member"] = args ? args.member : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["role"] = args ? args.role : undefined;
-            inputs["subscription"] = args ? args.subscription : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["condition"] = args ? args.condition : undefined;
+            resourceInputs["member"] = args ? args.member : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["subscription"] = args ? args.subscription : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(SubscriptionIAMMember.__pulumiType, name, inputs, opts);
+        super(SubscriptionIAMMember.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -270,58 +270,58 @@ export class Firewall extends pulumi.CustomResource {
      */
     constructor(name: string, args: FirewallArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FirewallArgs | FirewallState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FirewallState | undefined;
-            inputs["allows"] = state ? state.allows : undefined;
-            inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            inputs["denies"] = state ? state.denies : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["destinationRanges"] = state ? state.destinationRanges : undefined;
-            inputs["direction"] = state ? state.direction : undefined;
-            inputs["disabled"] = state ? state.disabled : undefined;
-            inputs["enableLogging"] = state ? state.enableLogging : undefined;
-            inputs["logConfig"] = state ? state.logConfig : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["network"] = state ? state.network : undefined;
-            inputs["priority"] = state ? state.priority : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
-            inputs["sourceRanges"] = state ? state.sourceRanges : undefined;
-            inputs["sourceServiceAccounts"] = state ? state.sourceServiceAccounts : undefined;
-            inputs["sourceTags"] = state ? state.sourceTags : undefined;
-            inputs["targetServiceAccounts"] = state ? state.targetServiceAccounts : undefined;
-            inputs["targetTags"] = state ? state.targetTags : undefined;
+            resourceInputs["allows"] = state ? state.allows : undefined;
+            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
+            resourceInputs["denies"] = state ? state.denies : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["destinationRanges"] = state ? state.destinationRanges : undefined;
+            resourceInputs["direction"] = state ? state.direction : undefined;
+            resourceInputs["disabled"] = state ? state.disabled : undefined;
+            resourceInputs["enableLogging"] = state ? state.enableLogging : undefined;
+            resourceInputs["logConfig"] = state ? state.logConfig : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["network"] = state ? state.network : undefined;
+            resourceInputs["priority"] = state ? state.priority : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["sourceRanges"] = state ? state.sourceRanges : undefined;
+            resourceInputs["sourceServiceAccounts"] = state ? state.sourceServiceAccounts : undefined;
+            resourceInputs["sourceTags"] = state ? state.sourceTags : undefined;
+            resourceInputs["targetServiceAccounts"] = state ? state.targetServiceAccounts : undefined;
+            resourceInputs["targetTags"] = state ? state.targetTags : undefined;
         } else {
             const args = argsOrState as FirewallArgs | undefined;
             if ((!args || args.network === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
-            inputs["allows"] = args ? args.allows : undefined;
-            inputs["denies"] = args ? args.denies : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["destinationRanges"] = args ? args.destinationRanges : undefined;
-            inputs["direction"] = args ? args.direction : undefined;
-            inputs["disabled"] = args ? args.disabled : undefined;
-            inputs["enableLogging"] = args ? args.enableLogging : undefined;
-            inputs["logConfig"] = args ? args.logConfig : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["network"] = args ? args.network : undefined;
-            inputs["priority"] = args ? args.priority : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["sourceRanges"] = args ? args.sourceRanges : undefined;
-            inputs["sourceServiceAccounts"] = args ? args.sourceServiceAccounts : undefined;
-            inputs["sourceTags"] = args ? args.sourceTags : undefined;
-            inputs["targetServiceAccounts"] = args ? args.targetServiceAccounts : undefined;
-            inputs["targetTags"] = args ? args.targetTags : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["allows"] = args ? args.allows : undefined;
+            resourceInputs["denies"] = args ? args.denies : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["destinationRanges"] = args ? args.destinationRanges : undefined;
+            resourceInputs["direction"] = args ? args.direction : undefined;
+            resourceInputs["disabled"] = args ? args.disabled : undefined;
+            resourceInputs["enableLogging"] = args ? args.enableLogging : undefined;
+            resourceInputs["logConfig"] = args ? args.logConfig : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["sourceRanges"] = args ? args.sourceRanges : undefined;
+            resourceInputs["sourceServiceAccounts"] = args ? args.sourceServiceAccounts : undefined;
+            resourceInputs["sourceTags"] = args ? args.sourceTags : undefined;
+            resourceInputs["targetServiceAccounts"] = args ? args.targetServiceAccounts : undefined;
+            resourceInputs["targetTags"] = args ? args.targetTags : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Firewall.__pulumiType, name, inputs, opts);
+        super(Firewall.__pulumiType, name, resourceInputs, opts);
     }
 }
 

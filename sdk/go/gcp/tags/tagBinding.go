@@ -181,7 +181,7 @@ type TagBindingInput interface {
 }
 
 func (*TagBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*TagBinding)(nil))
+	return reflect.TypeOf((**TagBinding)(nil)).Elem()
 }
 
 func (i *TagBinding) ToTagBindingOutput() TagBindingOutput {
@@ -190,35 +190,6 @@ func (i *TagBinding) ToTagBindingOutput() TagBindingOutput {
 
 func (i *TagBinding) ToTagBindingOutputWithContext(ctx context.Context) TagBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TagBindingOutput)
-}
-
-func (i *TagBinding) ToTagBindingPtrOutput() TagBindingPtrOutput {
-	return i.ToTagBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *TagBinding) ToTagBindingPtrOutputWithContext(ctx context.Context) TagBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TagBindingPtrOutput)
-}
-
-type TagBindingPtrInput interface {
-	pulumi.Input
-
-	ToTagBindingPtrOutput() TagBindingPtrOutput
-	ToTagBindingPtrOutputWithContext(ctx context.Context) TagBindingPtrOutput
-}
-
-type tagBindingPtrType TagBindingArgs
-
-func (*tagBindingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TagBinding)(nil))
-}
-
-func (i *tagBindingPtrType) ToTagBindingPtrOutput() TagBindingPtrOutput {
-	return i.ToTagBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *tagBindingPtrType) ToTagBindingPtrOutputWithContext(ctx context.Context) TagBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TagBindingPtrOutput)
 }
 
 // TagBindingArrayInput is an input type that accepts TagBindingArray and TagBindingArrayOutput values.
@@ -274,7 +245,7 @@ func (i TagBindingMap) ToTagBindingMapOutputWithContext(ctx context.Context) Tag
 type TagBindingOutput struct{ *pulumi.OutputState }
 
 func (TagBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TagBinding)(nil))
+	return reflect.TypeOf((**TagBinding)(nil)).Elem()
 }
 
 func (o TagBindingOutput) ToTagBindingOutput() TagBindingOutput {
@@ -285,44 +256,10 @@ func (o TagBindingOutput) ToTagBindingOutputWithContext(ctx context.Context) Tag
 	return o
 }
 
-func (o TagBindingOutput) ToTagBindingPtrOutput() TagBindingPtrOutput {
-	return o.ToTagBindingPtrOutputWithContext(context.Background())
-}
-
-func (o TagBindingOutput) ToTagBindingPtrOutputWithContext(ctx context.Context) TagBindingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TagBinding) *TagBinding {
-		return &v
-	}).(TagBindingPtrOutput)
-}
-
-type TagBindingPtrOutput struct{ *pulumi.OutputState }
-
-func (TagBindingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TagBinding)(nil))
-}
-
-func (o TagBindingPtrOutput) ToTagBindingPtrOutput() TagBindingPtrOutput {
-	return o
-}
-
-func (o TagBindingPtrOutput) ToTagBindingPtrOutputWithContext(ctx context.Context) TagBindingPtrOutput {
-	return o
-}
-
-func (o TagBindingPtrOutput) Elem() TagBindingOutput {
-	return o.ApplyT(func(v *TagBinding) TagBinding {
-		if v != nil {
-			return *v
-		}
-		var ret TagBinding
-		return ret
-	}).(TagBindingOutput)
-}
-
 type TagBindingArrayOutput struct{ *pulumi.OutputState }
 
 func (TagBindingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TagBinding)(nil))
+	return reflect.TypeOf((*[]*TagBinding)(nil)).Elem()
 }
 
 func (o TagBindingArrayOutput) ToTagBindingArrayOutput() TagBindingArrayOutput {
@@ -334,15 +271,15 @@ func (o TagBindingArrayOutput) ToTagBindingArrayOutputWithContext(ctx context.Co
 }
 
 func (o TagBindingArrayOutput) Index(i pulumi.IntInput) TagBindingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TagBinding {
-		return vs[0].([]TagBinding)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TagBinding {
+		return vs[0].([]*TagBinding)[vs[1].(int)]
 	}).(TagBindingOutput)
 }
 
 type TagBindingMapOutput struct{ *pulumi.OutputState }
 
 func (TagBindingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]TagBinding)(nil))
+	return reflect.TypeOf((*map[string]*TagBinding)(nil)).Elem()
 }
 
 func (o TagBindingMapOutput) ToTagBindingMapOutput() TagBindingMapOutput {
@@ -354,18 +291,16 @@ func (o TagBindingMapOutput) ToTagBindingMapOutputWithContext(ctx context.Contex
 }
 
 func (o TagBindingMapOutput) MapIndex(k pulumi.StringInput) TagBindingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TagBinding {
-		return vs[0].(map[string]TagBinding)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *TagBinding {
+		return vs[0].(map[string]*TagBinding)[vs[1].(string)]
 	}).(TagBindingOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TagBindingInput)(nil)).Elem(), &TagBinding{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TagBindingPtrInput)(nil)).Elem(), &TagBinding{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TagBindingArrayInput)(nil)).Elem(), TagBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TagBindingMapInput)(nil)).Elem(), TagBindingMap{})
 	pulumi.RegisterOutputType(TagBindingOutput{})
-	pulumi.RegisterOutputType(TagBindingPtrOutput{})
 	pulumi.RegisterOutputType(TagBindingArrayOutput{})
 	pulumi.RegisterOutputType(TagBindingMapOutput{})
 }

@@ -138,38 +138,38 @@ export class FlexTemplateJob extends pulumi.CustomResource {
      */
     constructor(name: string, args: FlexTemplateJobArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FlexTemplateJobArgs | FlexTemplateJobState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FlexTemplateJobState | undefined;
-            inputs["containerSpecGcsPath"] = state ? state.containerSpecGcsPath : undefined;
-            inputs["jobId"] = state ? state.jobId : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["onDelete"] = state ? state.onDelete : undefined;
-            inputs["parameters"] = state ? state.parameters : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["state"] = state ? state.state : undefined;
+            resourceInputs["containerSpecGcsPath"] = state ? state.containerSpecGcsPath : undefined;
+            resourceInputs["jobId"] = state ? state.jobId : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["onDelete"] = state ? state.onDelete : undefined;
+            resourceInputs["parameters"] = state ? state.parameters : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
         } else {
             const args = argsOrState as FlexTemplateJobArgs | undefined;
             if ((!args || args.containerSpecGcsPath === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'containerSpecGcsPath'");
             }
-            inputs["containerSpecGcsPath"] = args ? args.containerSpecGcsPath : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["onDelete"] = args ? args.onDelete : undefined;
-            inputs["parameters"] = args ? args.parameters : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["jobId"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["containerSpecGcsPath"] = args ? args.containerSpecGcsPath : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["onDelete"] = args ? args.onDelete : undefined;
+            resourceInputs["parameters"] = args ? args.parameters : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["jobId"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(FlexTemplateJob.__pulumiType, name, inputs, opts);
+        super(FlexTemplateJob.__pulumiType, name, resourceInputs, opts);
     }
 }
 

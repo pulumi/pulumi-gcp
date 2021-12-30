@@ -336,7 +336,7 @@ type BucketIAMPolicyInput interface {
 }
 
 func (*BucketIAMPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketIAMPolicy)(nil))
+	return reflect.TypeOf((**BucketIAMPolicy)(nil)).Elem()
 }
 
 func (i *BucketIAMPolicy) ToBucketIAMPolicyOutput() BucketIAMPolicyOutput {
@@ -345,35 +345,6 @@ func (i *BucketIAMPolicy) ToBucketIAMPolicyOutput() BucketIAMPolicyOutput {
 
 func (i *BucketIAMPolicy) ToBucketIAMPolicyOutputWithContext(ctx context.Context) BucketIAMPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BucketIAMPolicyOutput)
-}
-
-func (i *BucketIAMPolicy) ToBucketIAMPolicyPtrOutput() BucketIAMPolicyPtrOutput {
-	return i.ToBucketIAMPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *BucketIAMPolicy) ToBucketIAMPolicyPtrOutputWithContext(ctx context.Context) BucketIAMPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketIAMPolicyPtrOutput)
-}
-
-type BucketIAMPolicyPtrInput interface {
-	pulumi.Input
-
-	ToBucketIAMPolicyPtrOutput() BucketIAMPolicyPtrOutput
-	ToBucketIAMPolicyPtrOutputWithContext(ctx context.Context) BucketIAMPolicyPtrOutput
-}
-
-type bucketIAMPolicyPtrType BucketIAMPolicyArgs
-
-func (*bucketIAMPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketIAMPolicy)(nil))
-}
-
-func (i *bucketIAMPolicyPtrType) ToBucketIAMPolicyPtrOutput() BucketIAMPolicyPtrOutput {
-	return i.ToBucketIAMPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *bucketIAMPolicyPtrType) ToBucketIAMPolicyPtrOutputWithContext(ctx context.Context) BucketIAMPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketIAMPolicyPtrOutput)
 }
 
 // BucketIAMPolicyArrayInput is an input type that accepts BucketIAMPolicyArray and BucketIAMPolicyArrayOutput values.
@@ -429,7 +400,7 @@ func (i BucketIAMPolicyMap) ToBucketIAMPolicyMapOutputWithContext(ctx context.Co
 type BucketIAMPolicyOutput struct{ *pulumi.OutputState }
 
 func (BucketIAMPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketIAMPolicy)(nil))
+	return reflect.TypeOf((**BucketIAMPolicy)(nil)).Elem()
 }
 
 func (o BucketIAMPolicyOutput) ToBucketIAMPolicyOutput() BucketIAMPolicyOutput {
@@ -440,44 +411,10 @@ func (o BucketIAMPolicyOutput) ToBucketIAMPolicyOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o BucketIAMPolicyOutput) ToBucketIAMPolicyPtrOutput() BucketIAMPolicyPtrOutput {
-	return o.ToBucketIAMPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o BucketIAMPolicyOutput) ToBucketIAMPolicyPtrOutputWithContext(ctx context.Context) BucketIAMPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketIAMPolicy) *BucketIAMPolicy {
-		return &v
-	}).(BucketIAMPolicyPtrOutput)
-}
-
-type BucketIAMPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (BucketIAMPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketIAMPolicy)(nil))
-}
-
-func (o BucketIAMPolicyPtrOutput) ToBucketIAMPolicyPtrOutput() BucketIAMPolicyPtrOutput {
-	return o
-}
-
-func (o BucketIAMPolicyPtrOutput) ToBucketIAMPolicyPtrOutputWithContext(ctx context.Context) BucketIAMPolicyPtrOutput {
-	return o
-}
-
-func (o BucketIAMPolicyPtrOutput) Elem() BucketIAMPolicyOutput {
-	return o.ApplyT(func(v *BucketIAMPolicy) BucketIAMPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret BucketIAMPolicy
-		return ret
-	}).(BucketIAMPolicyOutput)
-}
-
 type BucketIAMPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (BucketIAMPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BucketIAMPolicy)(nil))
+	return reflect.TypeOf((*[]*BucketIAMPolicy)(nil)).Elem()
 }
 
 func (o BucketIAMPolicyArrayOutput) ToBucketIAMPolicyArrayOutput() BucketIAMPolicyArrayOutput {
@@ -489,15 +426,15 @@ func (o BucketIAMPolicyArrayOutput) ToBucketIAMPolicyArrayOutputWithContext(ctx 
 }
 
 func (o BucketIAMPolicyArrayOutput) Index(i pulumi.IntInput) BucketIAMPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BucketIAMPolicy {
-		return vs[0].([]BucketIAMPolicy)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BucketIAMPolicy {
+		return vs[0].([]*BucketIAMPolicy)[vs[1].(int)]
 	}).(BucketIAMPolicyOutput)
 }
 
 type BucketIAMPolicyMapOutput struct{ *pulumi.OutputState }
 
 func (BucketIAMPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]BucketIAMPolicy)(nil))
+	return reflect.TypeOf((*map[string]*BucketIAMPolicy)(nil)).Elem()
 }
 
 func (o BucketIAMPolicyMapOutput) ToBucketIAMPolicyMapOutput() BucketIAMPolicyMapOutput {
@@ -509,18 +446,16 @@ func (o BucketIAMPolicyMapOutput) ToBucketIAMPolicyMapOutputWithContext(ctx cont
 }
 
 func (o BucketIAMPolicyMapOutput) MapIndex(k pulumi.StringInput) BucketIAMPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BucketIAMPolicy {
-		return vs[0].(map[string]BucketIAMPolicy)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *BucketIAMPolicy {
+		return vs[0].(map[string]*BucketIAMPolicy)[vs[1].(string)]
 	}).(BucketIAMPolicyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketIAMPolicyInput)(nil)).Elem(), &BucketIAMPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketIAMPolicyPtrInput)(nil)).Elem(), &BucketIAMPolicy{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketIAMPolicyArrayInput)(nil)).Elem(), BucketIAMPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketIAMPolicyMapInput)(nil)).Elem(), BucketIAMPolicyMap{})
 	pulumi.RegisterOutputType(BucketIAMPolicyOutput{})
-	pulumi.RegisterOutputType(BucketIAMPolicyPtrOutput{})
 	pulumi.RegisterOutputType(BucketIAMPolicyArrayOutput{})
 	pulumi.RegisterOutputType(BucketIAMPolicyMapOutput{})
 }

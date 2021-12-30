@@ -117,15 +117,15 @@ export class FirewallRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: FirewallRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FirewallRuleArgs | FirewallRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FirewallRuleState | undefined;
-            inputs["action"] = state ? state.action : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["priority"] = state ? state.priority : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["sourceRange"] = state ? state.sourceRange : undefined;
+            resourceInputs["action"] = state ? state.action : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["priority"] = state ? state.priority : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["sourceRange"] = state ? state.sourceRange : undefined;
         } else {
             const args = argsOrState as FirewallRuleArgs | undefined;
             if ((!args || args.action === undefined) && !opts.urn) {
@@ -134,16 +134,16 @@ export class FirewallRule extends pulumi.CustomResource {
             if ((!args || args.sourceRange === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceRange'");
             }
-            inputs["action"] = args ? args.action : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["priority"] = args ? args.priority : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["sourceRange"] = args ? args.sourceRange : undefined;
+            resourceInputs["action"] = args ? args.action : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["sourceRange"] = args ? args.sourceRange : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(FirewallRule.__pulumiType, name, inputs, opts);
+        super(FirewallRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

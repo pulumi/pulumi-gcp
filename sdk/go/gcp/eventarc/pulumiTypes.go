@@ -47,47 +47,6 @@ func (i TriggerDestinationArgs) ToTriggerDestinationOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerDestinationOutput)
 }
 
-func (i TriggerDestinationArgs) ToTriggerDestinationPtrOutput() TriggerDestinationPtrOutput {
-	return i.ToTriggerDestinationPtrOutputWithContext(context.Background())
-}
-
-func (i TriggerDestinationArgs) ToTriggerDestinationPtrOutputWithContext(ctx context.Context) TriggerDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TriggerDestinationOutput).ToTriggerDestinationPtrOutputWithContext(ctx)
-}
-
-// TriggerDestinationPtrInput is an input type that accepts TriggerDestinationArgs, TriggerDestinationPtr and TriggerDestinationPtrOutput values.
-// You can construct a concrete instance of `TriggerDestinationPtrInput` via:
-//
-//          TriggerDestinationArgs{...}
-//
-//  or:
-//
-//          nil
-type TriggerDestinationPtrInput interface {
-	pulumi.Input
-
-	ToTriggerDestinationPtrOutput() TriggerDestinationPtrOutput
-	ToTriggerDestinationPtrOutputWithContext(context.Context) TriggerDestinationPtrOutput
-}
-
-type triggerDestinationPtrType TriggerDestinationArgs
-
-func TriggerDestinationPtr(v *TriggerDestinationArgs) TriggerDestinationPtrInput {
-	return (*triggerDestinationPtrType)(v)
-}
-
-func (*triggerDestinationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TriggerDestination)(nil)).Elem()
-}
-
-func (i *triggerDestinationPtrType) ToTriggerDestinationPtrOutput() TriggerDestinationPtrOutput {
-	return i.ToTriggerDestinationPtrOutputWithContext(context.Background())
-}
-
-func (i *triggerDestinationPtrType) ToTriggerDestinationPtrOutputWithContext(ctx context.Context) TriggerDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TriggerDestinationPtrOutput)
-}
-
 type TriggerDestinationOutput struct{ *pulumi.OutputState }
 
 func (TriggerDestinationOutput) ElementType() reflect.Type {
@@ -102,16 +61,6 @@ func (o TriggerDestinationOutput) ToTriggerDestinationOutputWithContext(ctx cont
 	return o
 }
 
-func (o TriggerDestinationOutput) ToTriggerDestinationPtrOutput() TriggerDestinationPtrOutput {
-	return o.ToTriggerDestinationPtrOutputWithContext(context.Background())
-}
-
-func (o TriggerDestinationOutput) ToTriggerDestinationPtrOutputWithContext(ctx context.Context) TriggerDestinationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerDestination) *TriggerDestination {
-		return &v
-	}).(TriggerDestinationPtrOutput)
-}
-
 // The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: projects/{project}/locations/{location}/functions/{function}
 func (o TriggerDestinationOutput) CloudFunction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerDestination) *string { return v.CloudFunction }).(pulumi.StringPtrOutput)
@@ -120,50 +69,6 @@ func (o TriggerDestinationOutput) CloudFunction() pulumi.StringPtrOutput {
 // Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
 func (o TriggerDestinationOutput) CloudRunService() TriggerDestinationCloudRunServicePtrOutput {
 	return o.ApplyT(func(v TriggerDestination) *TriggerDestinationCloudRunService { return v.CloudRunService }).(TriggerDestinationCloudRunServicePtrOutput)
-}
-
-type TriggerDestinationPtrOutput struct{ *pulumi.OutputState }
-
-func (TriggerDestinationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TriggerDestination)(nil)).Elem()
-}
-
-func (o TriggerDestinationPtrOutput) ToTriggerDestinationPtrOutput() TriggerDestinationPtrOutput {
-	return o
-}
-
-func (o TriggerDestinationPtrOutput) ToTriggerDestinationPtrOutputWithContext(ctx context.Context) TriggerDestinationPtrOutput {
-	return o
-}
-
-func (o TriggerDestinationPtrOutput) Elem() TriggerDestinationOutput {
-	return o.ApplyT(func(v *TriggerDestination) TriggerDestination {
-		if v != nil {
-			return *v
-		}
-		var ret TriggerDestination
-		return ret
-	}).(TriggerDestinationOutput)
-}
-
-// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: projects/{project}/locations/{location}/functions/{function}
-func (o TriggerDestinationPtrOutput) CloudFunction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TriggerDestination) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CloudFunction
-	}).(pulumi.StringPtrOutput)
-}
-
-// Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
-func (o TriggerDestinationPtrOutput) CloudRunService() TriggerDestinationCloudRunServicePtrOutput {
-	return o.ApplyT(func(v *TriggerDestination) *TriggerDestinationCloudRunService {
-		if v == nil {
-			return nil
-		}
-		return v.CloudRunService
-	}).(TriggerDestinationCloudRunServicePtrOutput)
 }
 
 type TriggerDestinationCloudRunService struct {
@@ -655,7 +560,6 @@ func (o TriggerTransportPubsubArrayOutput) Index(i pulumi.IntInput) TriggerTrans
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerDestinationInput)(nil)).Elem(), TriggerDestinationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TriggerDestinationPtrInput)(nil)).Elem(), TriggerDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerDestinationCloudRunServiceInput)(nil)).Elem(), TriggerDestinationCloudRunServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerDestinationCloudRunServicePtrInput)(nil)).Elem(), TriggerDestinationCloudRunServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerMatchingCriteriaInput)(nil)).Elem(), TriggerMatchingCriteriaArgs{})
@@ -665,7 +569,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerTransportPubsubInput)(nil)).Elem(), TriggerTransportPubsubArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerTransportPubsubArrayInput)(nil)).Elem(), TriggerTransportPubsubArray{})
 	pulumi.RegisterOutputType(TriggerDestinationOutput{})
-	pulumi.RegisterOutputType(TriggerDestinationPtrOutput{})
 	pulumi.RegisterOutputType(TriggerDestinationCloudRunServiceOutput{})
 	pulumi.RegisterOutputType(TriggerDestinationCloudRunServicePtrOutput{})
 	pulumi.RegisterOutputType(TriggerMatchingCriteriaOutput{})

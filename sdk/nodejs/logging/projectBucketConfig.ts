@@ -117,17 +117,17 @@ export class ProjectBucketConfig extends pulumi.CustomResource {
      */
     constructor(name: string, args: ProjectBucketConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectBucketConfigArgs | ProjectBucketConfigState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectBucketConfigState | undefined;
-            inputs["bucketId"] = state ? state.bucketId : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["lifecycleState"] = state ? state.lifecycleState : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["retentionDays"] = state ? state.retentionDays : undefined;
+            resourceInputs["bucketId"] = state ? state.bucketId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["lifecycleState"] = state ? state.lifecycleState : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["retentionDays"] = state ? state.retentionDays : undefined;
         } else {
             const args = argsOrState as ProjectBucketConfigArgs | undefined;
             if ((!args || args.bucketId === undefined) && !opts.urn) {
@@ -139,18 +139,18 @@ export class ProjectBucketConfig extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["bucketId"] = args ? args.bucketId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["retentionDays"] = args ? args.retentionDays : undefined;
-            inputs["lifecycleState"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["bucketId"] = args ? args.bucketId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["retentionDays"] = args ? args.retentionDays : undefined;
+            resourceInputs["lifecycleState"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ProjectBucketConfig.__pulumiType, name, inputs, opts);
+        super(ProjectBucketConfig.__pulumiType, name, resourceInputs, opts);
     }
 }
 

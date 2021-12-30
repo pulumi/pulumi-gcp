@@ -116,32 +116,32 @@ export class Fulfillment extends pulumi.CustomResource {
      */
     constructor(name: string, args: FulfillmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FulfillmentArgs | FulfillmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FulfillmentState | undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["features"] = state ? state.features : undefined;
-            inputs["genericWebService"] = state ? state.genericWebService : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["features"] = state ? state.features : undefined;
+            resourceInputs["genericWebService"] = state ? state.genericWebService : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as FulfillmentArgs | undefined;
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["features"] = args ? args.features : undefined;
-            inputs["genericWebService"] = args ? args.genericWebService : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["features"] = args ? args.features : undefined;
+            resourceInputs["genericWebService"] = args ? args.genericWebService : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Fulfillment.__pulumiType, name, inputs, opts);
+        super(Fulfillment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

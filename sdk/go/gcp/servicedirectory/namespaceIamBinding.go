@@ -245,7 +245,7 @@ type NamespaceIamBindingInput interface {
 }
 
 func (*NamespaceIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*NamespaceIamBinding)(nil))
+	return reflect.TypeOf((**NamespaceIamBinding)(nil)).Elem()
 }
 
 func (i *NamespaceIamBinding) ToNamespaceIamBindingOutput() NamespaceIamBindingOutput {
@@ -254,35 +254,6 @@ func (i *NamespaceIamBinding) ToNamespaceIamBindingOutput() NamespaceIamBindingO
 
 func (i *NamespaceIamBinding) ToNamespaceIamBindingOutputWithContext(ctx context.Context) NamespaceIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceIamBindingOutput)
-}
-
-func (i *NamespaceIamBinding) ToNamespaceIamBindingPtrOutput() NamespaceIamBindingPtrOutput {
-	return i.ToNamespaceIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *NamespaceIamBinding) ToNamespaceIamBindingPtrOutputWithContext(ctx context.Context) NamespaceIamBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NamespaceIamBindingPtrOutput)
-}
-
-type NamespaceIamBindingPtrInput interface {
-	pulumi.Input
-
-	ToNamespaceIamBindingPtrOutput() NamespaceIamBindingPtrOutput
-	ToNamespaceIamBindingPtrOutputWithContext(ctx context.Context) NamespaceIamBindingPtrOutput
-}
-
-type namespaceIamBindingPtrType NamespaceIamBindingArgs
-
-func (*namespaceIamBindingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NamespaceIamBinding)(nil))
-}
-
-func (i *namespaceIamBindingPtrType) ToNamespaceIamBindingPtrOutput() NamespaceIamBindingPtrOutput {
-	return i.ToNamespaceIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *namespaceIamBindingPtrType) ToNamespaceIamBindingPtrOutputWithContext(ctx context.Context) NamespaceIamBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NamespaceIamBindingPtrOutput)
 }
 
 // NamespaceIamBindingArrayInput is an input type that accepts NamespaceIamBindingArray and NamespaceIamBindingArrayOutput values.
@@ -338,7 +309,7 @@ func (i NamespaceIamBindingMap) ToNamespaceIamBindingMapOutputWithContext(ctx co
 type NamespaceIamBindingOutput struct{ *pulumi.OutputState }
 
 func (NamespaceIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NamespaceIamBinding)(nil))
+	return reflect.TypeOf((**NamespaceIamBinding)(nil)).Elem()
 }
 
 func (o NamespaceIamBindingOutput) ToNamespaceIamBindingOutput() NamespaceIamBindingOutput {
@@ -349,44 +320,10 @@ func (o NamespaceIamBindingOutput) ToNamespaceIamBindingOutputWithContext(ctx co
 	return o
 }
 
-func (o NamespaceIamBindingOutput) ToNamespaceIamBindingPtrOutput() NamespaceIamBindingPtrOutput {
-	return o.ToNamespaceIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (o NamespaceIamBindingOutput) ToNamespaceIamBindingPtrOutputWithContext(ctx context.Context) NamespaceIamBindingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NamespaceIamBinding) *NamespaceIamBinding {
-		return &v
-	}).(NamespaceIamBindingPtrOutput)
-}
-
-type NamespaceIamBindingPtrOutput struct{ *pulumi.OutputState }
-
-func (NamespaceIamBindingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NamespaceIamBinding)(nil))
-}
-
-func (o NamespaceIamBindingPtrOutput) ToNamespaceIamBindingPtrOutput() NamespaceIamBindingPtrOutput {
-	return o
-}
-
-func (o NamespaceIamBindingPtrOutput) ToNamespaceIamBindingPtrOutputWithContext(ctx context.Context) NamespaceIamBindingPtrOutput {
-	return o
-}
-
-func (o NamespaceIamBindingPtrOutput) Elem() NamespaceIamBindingOutput {
-	return o.ApplyT(func(v *NamespaceIamBinding) NamespaceIamBinding {
-		if v != nil {
-			return *v
-		}
-		var ret NamespaceIamBinding
-		return ret
-	}).(NamespaceIamBindingOutput)
-}
-
 type NamespaceIamBindingArrayOutput struct{ *pulumi.OutputState }
 
 func (NamespaceIamBindingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NamespaceIamBinding)(nil))
+	return reflect.TypeOf((*[]*NamespaceIamBinding)(nil)).Elem()
 }
 
 func (o NamespaceIamBindingArrayOutput) ToNamespaceIamBindingArrayOutput() NamespaceIamBindingArrayOutput {
@@ -398,15 +335,15 @@ func (o NamespaceIamBindingArrayOutput) ToNamespaceIamBindingArrayOutputWithCont
 }
 
 func (o NamespaceIamBindingArrayOutput) Index(i pulumi.IntInput) NamespaceIamBindingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceIamBinding {
-		return vs[0].([]NamespaceIamBinding)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NamespaceIamBinding {
+		return vs[0].([]*NamespaceIamBinding)[vs[1].(int)]
 	}).(NamespaceIamBindingOutput)
 }
 
 type NamespaceIamBindingMapOutput struct{ *pulumi.OutputState }
 
 func (NamespaceIamBindingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]NamespaceIamBinding)(nil))
+	return reflect.TypeOf((*map[string]*NamespaceIamBinding)(nil)).Elem()
 }
 
 func (o NamespaceIamBindingMapOutput) ToNamespaceIamBindingMapOutput() NamespaceIamBindingMapOutput {
@@ -418,18 +355,16 @@ func (o NamespaceIamBindingMapOutput) ToNamespaceIamBindingMapOutputWithContext(
 }
 
 func (o NamespaceIamBindingMapOutput) MapIndex(k pulumi.StringInput) NamespaceIamBindingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NamespaceIamBinding {
-		return vs[0].(map[string]NamespaceIamBinding)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *NamespaceIamBinding {
+		return vs[0].(map[string]*NamespaceIamBinding)[vs[1].(string)]
 	}).(NamespaceIamBindingOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceIamBindingInput)(nil)).Elem(), &NamespaceIamBinding{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceIamBindingPtrInput)(nil)).Elem(), &NamespaceIamBinding{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceIamBindingArrayInput)(nil)).Elem(), NamespaceIamBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceIamBindingMapInput)(nil)).Elem(), NamespaceIamBindingMap{})
 	pulumi.RegisterOutputType(NamespaceIamBindingOutput{})
-	pulumi.RegisterOutputType(NamespaceIamBindingPtrOutput{})
 	pulumi.RegisterOutputType(NamespaceIamBindingArrayOutput{})
 	pulumi.RegisterOutputType(NamespaceIamBindingMapOutput{})
 }

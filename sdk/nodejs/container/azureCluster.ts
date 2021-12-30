@@ -192,30 +192,30 @@ export class AzureCluster extends pulumi.CustomResource {
      */
     constructor(name: string, args: AzureClusterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AzureClusterArgs | AzureClusterState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AzureClusterState | undefined;
-            inputs["annotations"] = state ? state.annotations : undefined;
-            inputs["authorization"] = state ? state.authorization : undefined;
-            inputs["azureRegion"] = state ? state.azureRegion : undefined;
-            inputs["client"] = state ? state.client : undefined;
-            inputs["controlPlane"] = state ? state.controlPlane : undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["endpoint"] = state ? state.endpoint : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["fleet"] = state ? state.fleet : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["networking"] = state ? state.networking : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["reconciling"] = state ? state.reconciling : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["state"] = state ? state.state : undefined;
-            inputs["uid"] = state ? state.uid : undefined;
-            inputs["updateTime"] = state ? state.updateTime : undefined;
-            inputs["workloadIdentityConfigs"] = state ? state.workloadIdentityConfigs : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["authorization"] = state ? state.authorization : undefined;
+            resourceInputs["azureRegion"] = state ? state.azureRegion : undefined;
+            resourceInputs["client"] = state ? state.client : undefined;
+            resourceInputs["controlPlane"] = state ? state.controlPlane : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["endpoint"] = state ? state.endpoint : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["fleet"] = state ? state.fleet : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networking"] = state ? state.networking : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["reconciling"] = state ? state.reconciling : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["uid"] = state ? state.uid : undefined;
+            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["workloadIdentityConfigs"] = state ? state.workloadIdentityConfigs : undefined;
         } else {
             const args = argsOrState as AzureClusterArgs | undefined;
             if ((!args || args.authorization === undefined) && !opts.urn) {
@@ -242,31 +242,31 @@ export class AzureCluster extends pulumi.CustomResource {
             if ((!args || args.resourceGroupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupId'");
             }
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["authorization"] = args ? args.authorization : undefined;
-            inputs["azureRegion"] = args ? args.azureRegion : undefined;
-            inputs["client"] = args ? args.client : undefined;
-            inputs["controlPlane"] = args ? args.controlPlane : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["fleet"] = args ? args.fleet : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["networking"] = args ? args.networking : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["endpoint"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["reconciling"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["uid"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
-            inputs["workloadIdentityConfigs"] = undefined /*out*/;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["authorization"] = args ? args.authorization : undefined;
+            resourceInputs["azureRegion"] = args ? args.azureRegion : undefined;
+            resourceInputs["client"] = args ? args.client : undefined;
+            resourceInputs["controlPlane"] = args ? args.controlPlane : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["fleet"] = args ? args.fleet : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networking"] = args ? args.networking : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["endpoint"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["reconciling"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["uid"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["workloadIdentityConfigs"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(AzureCluster.__pulumiType, name, inputs, opts);
+        super(AzureCluster.__pulumiType, name, resourceInputs, opts);
     }
 }
 

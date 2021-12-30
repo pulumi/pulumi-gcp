@@ -251,7 +251,7 @@ type PolicyTagIamBindingInput interface {
 }
 
 func (*PolicyTagIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyTagIamBinding)(nil))
+	return reflect.TypeOf((**PolicyTagIamBinding)(nil)).Elem()
 }
 
 func (i *PolicyTagIamBinding) ToPolicyTagIamBindingOutput() PolicyTagIamBindingOutput {
@@ -260,35 +260,6 @@ func (i *PolicyTagIamBinding) ToPolicyTagIamBindingOutput() PolicyTagIamBindingO
 
 func (i *PolicyTagIamBinding) ToPolicyTagIamBindingOutputWithContext(ctx context.Context) PolicyTagIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyTagIamBindingOutput)
-}
-
-func (i *PolicyTagIamBinding) ToPolicyTagIamBindingPtrOutput() PolicyTagIamBindingPtrOutput {
-	return i.ToPolicyTagIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *PolicyTagIamBinding) ToPolicyTagIamBindingPtrOutputWithContext(ctx context.Context) PolicyTagIamBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyTagIamBindingPtrOutput)
-}
-
-type PolicyTagIamBindingPtrInput interface {
-	pulumi.Input
-
-	ToPolicyTagIamBindingPtrOutput() PolicyTagIamBindingPtrOutput
-	ToPolicyTagIamBindingPtrOutputWithContext(ctx context.Context) PolicyTagIamBindingPtrOutput
-}
-
-type policyTagIamBindingPtrType PolicyTagIamBindingArgs
-
-func (*policyTagIamBindingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PolicyTagIamBinding)(nil))
-}
-
-func (i *policyTagIamBindingPtrType) ToPolicyTagIamBindingPtrOutput() PolicyTagIamBindingPtrOutput {
-	return i.ToPolicyTagIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *policyTagIamBindingPtrType) ToPolicyTagIamBindingPtrOutputWithContext(ctx context.Context) PolicyTagIamBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyTagIamBindingPtrOutput)
 }
 
 // PolicyTagIamBindingArrayInput is an input type that accepts PolicyTagIamBindingArray and PolicyTagIamBindingArrayOutput values.
@@ -344,7 +315,7 @@ func (i PolicyTagIamBindingMap) ToPolicyTagIamBindingMapOutputWithContext(ctx co
 type PolicyTagIamBindingOutput struct{ *pulumi.OutputState }
 
 func (PolicyTagIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyTagIamBinding)(nil))
+	return reflect.TypeOf((**PolicyTagIamBinding)(nil)).Elem()
 }
 
 func (o PolicyTagIamBindingOutput) ToPolicyTagIamBindingOutput() PolicyTagIamBindingOutput {
@@ -355,44 +326,10 @@ func (o PolicyTagIamBindingOutput) ToPolicyTagIamBindingOutputWithContext(ctx co
 	return o
 }
 
-func (o PolicyTagIamBindingOutput) ToPolicyTagIamBindingPtrOutput() PolicyTagIamBindingPtrOutput {
-	return o.ToPolicyTagIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (o PolicyTagIamBindingOutput) ToPolicyTagIamBindingPtrOutputWithContext(ctx context.Context) PolicyTagIamBindingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyTagIamBinding) *PolicyTagIamBinding {
-		return &v
-	}).(PolicyTagIamBindingPtrOutput)
-}
-
-type PolicyTagIamBindingPtrOutput struct{ *pulumi.OutputState }
-
-func (PolicyTagIamBindingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PolicyTagIamBinding)(nil))
-}
-
-func (o PolicyTagIamBindingPtrOutput) ToPolicyTagIamBindingPtrOutput() PolicyTagIamBindingPtrOutput {
-	return o
-}
-
-func (o PolicyTagIamBindingPtrOutput) ToPolicyTagIamBindingPtrOutputWithContext(ctx context.Context) PolicyTagIamBindingPtrOutput {
-	return o
-}
-
-func (o PolicyTagIamBindingPtrOutput) Elem() PolicyTagIamBindingOutput {
-	return o.ApplyT(func(v *PolicyTagIamBinding) PolicyTagIamBinding {
-		if v != nil {
-			return *v
-		}
-		var ret PolicyTagIamBinding
-		return ret
-	}).(PolicyTagIamBindingOutput)
-}
-
 type PolicyTagIamBindingArrayOutput struct{ *pulumi.OutputState }
 
 func (PolicyTagIamBindingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyTagIamBinding)(nil))
+	return reflect.TypeOf((*[]*PolicyTagIamBinding)(nil)).Elem()
 }
 
 func (o PolicyTagIamBindingArrayOutput) ToPolicyTagIamBindingArrayOutput() PolicyTagIamBindingArrayOutput {
@@ -404,15 +341,15 @@ func (o PolicyTagIamBindingArrayOutput) ToPolicyTagIamBindingArrayOutputWithCont
 }
 
 func (o PolicyTagIamBindingArrayOutput) Index(i pulumi.IntInput) PolicyTagIamBindingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyTagIamBinding {
-		return vs[0].([]PolicyTagIamBinding)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PolicyTagIamBinding {
+		return vs[0].([]*PolicyTagIamBinding)[vs[1].(int)]
 	}).(PolicyTagIamBindingOutput)
 }
 
 type PolicyTagIamBindingMapOutput struct{ *pulumi.OutputState }
 
 func (PolicyTagIamBindingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]PolicyTagIamBinding)(nil))
+	return reflect.TypeOf((*map[string]*PolicyTagIamBinding)(nil)).Elem()
 }
 
 func (o PolicyTagIamBindingMapOutput) ToPolicyTagIamBindingMapOutput() PolicyTagIamBindingMapOutput {
@@ -424,18 +361,16 @@ func (o PolicyTagIamBindingMapOutput) ToPolicyTagIamBindingMapOutputWithContext(
 }
 
 func (o PolicyTagIamBindingMapOutput) MapIndex(k pulumi.StringInput) PolicyTagIamBindingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) PolicyTagIamBinding {
-		return vs[0].(map[string]PolicyTagIamBinding)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *PolicyTagIamBinding {
+		return vs[0].(map[string]*PolicyTagIamBinding)[vs[1].(string)]
 	}).(PolicyTagIamBindingOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyTagIamBindingInput)(nil)).Elem(), &PolicyTagIamBinding{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyTagIamBindingPtrInput)(nil)).Elem(), &PolicyTagIamBinding{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyTagIamBindingArrayInput)(nil)).Elem(), PolicyTagIamBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyTagIamBindingMapInput)(nil)).Elem(), PolicyTagIamBindingMap{})
 	pulumi.RegisterOutputType(PolicyTagIamBindingOutput{})
-	pulumi.RegisterOutputType(PolicyTagIamBindingPtrOutput{})
 	pulumi.RegisterOutputType(PolicyTagIamBindingArrayOutput{})
 	pulumi.RegisterOutputType(PolicyTagIamBindingMapOutput{})
 }

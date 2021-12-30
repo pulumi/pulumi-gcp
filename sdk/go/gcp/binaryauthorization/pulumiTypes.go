@@ -95,47 +95,6 @@ func (i AttestorAttestationAuthorityNoteArgs) ToAttestorAttestationAuthorityNote
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorAttestationAuthorityNoteOutput)
 }
 
-func (i AttestorAttestationAuthorityNoteArgs) ToAttestorAttestationAuthorityNotePtrOutput() AttestorAttestationAuthorityNotePtrOutput {
-	return i.ToAttestorAttestationAuthorityNotePtrOutputWithContext(context.Background())
-}
-
-func (i AttestorAttestationAuthorityNoteArgs) ToAttestorAttestationAuthorityNotePtrOutputWithContext(ctx context.Context) AttestorAttestationAuthorityNotePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AttestorAttestationAuthorityNoteOutput).ToAttestorAttestationAuthorityNotePtrOutputWithContext(ctx)
-}
-
-// AttestorAttestationAuthorityNotePtrInput is an input type that accepts AttestorAttestationAuthorityNoteArgs, AttestorAttestationAuthorityNotePtr and AttestorAttestationAuthorityNotePtrOutput values.
-// You can construct a concrete instance of `AttestorAttestationAuthorityNotePtrInput` via:
-//
-//          AttestorAttestationAuthorityNoteArgs{...}
-//
-//  or:
-//
-//          nil
-type AttestorAttestationAuthorityNotePtrInput interface {
-	pulumi.Input
-
-	ToAttestorAttestationAuthorityNotePtrOutput() AttestorAttestationAuthorityNotePtrOutput
-	ToAttestorAttestationAuthorityNotePtrOutputWithContext(context.Context) AttestorAttestationAuthorityNotePtrOutput
-}
-
-type attestorAttestationAuthorityNotePtrType AttestorAttestationAuthorityNoteArgs
-
-func AttestorAttestationAuthorityNotePtr(v *AttestorAttestationAuthorityNoteArgs) AttestorAttestationAuthorityNotePtrInput {
-	return (*attestorAttestationAuthorityNotePtrType)(v)
-}
-
-func (*attestorAttestationAuthorityNotePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AttestorAttestationAuthorityNote)(nil)).Elem()
-}
-
-func (i *attestorAttestationAuthorityNotePtrType) ToAttestorAttestationAuthorityNotePtrOutput() AttestorAttestationAuthorityNotePtrOutput {
-	return i.ToAttestorAttestationAuthorityNotePtrOutputWithContext(context.Background())
-}
-
-func (i *attestorAttestationAuthorityNotePtrType) ToAttestorAttestationAuthorityNotePtrOutputWithContext(ctx context.Context) AttestorAttestationAuthorityNotePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AttestorAttestationAuthorityNotePtrOutput)
-}
-
 type AttestorAttestationAuthorityNoteOutput struct{ *pulumi.OutputState }
 
 func (AttestorAttestationAuthorityNoteOutput) ElementType() reflect.Type {
@@ -148,16 +107,6 @@ func (o AttestorAttestationAuthorityNoteOutput) ToAttestorAttestationAuthorityNo
 
 func (o AttestorAttestationAuthorityNoteOutput) ToAttestorAttestationAuthorityNoteOutputWithContext(ctx context.Context) AttestorAttestationAuthorityNoteOutput {
 	return o
-}
-
-func (o AttestorAttestationAuthorityNoteOutput) ToAttestorAttestationAuthorityNotePtrOutput() AttestorAttestationAuthorityNotePtrOutput {
-	return o.ToAttestorAttestationAuthorityNotePtrOutputWithContext(context.Background())
-}
-
-func (o AttestorAttestationAuthorityNoteOutput) ToAttestorAttestationAuthorityNotePtrOutputWithContext(ctx context.Context) AttestorAttestationAuthorityNotePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttestorAttestationAuthorityNote) *AttestorAttestationAuthorityNote {
-		return &v
-	}).(AttestorAttestationAuthorityNotePtrOutput)
 }
 
 // -
@@ -195,82 +144,6 @@ func (o AttestorAttestationAuthorityNoteOutput) NoteReference() pulumi.StringOut
 // Structure is documented below.
 func (o AttestorAttestationAuthorityNoteOutput) PublicKeys() AttestorAttestationAuthorityNotePublicKeyArrayOutput {
 	return o.ApplyT(func(v AttestorAttestationAuthorityNote) []AttestorAttestationAuthorityNotePublicKey {
-		return v.PublicKeys
-	}).(AttestorAttestationAuthorityNotePublicKeyArrayOutput)
-}
-
-type AttestorAttestationAuthorityNotePtrOutput struct{ *pulumi.OutputState }
-
-func (AttestorAttestationAuthorityNotePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AttestorAttestationAuthorityNote)(nil)).Elem()
-}
-
-func (o AttestorAttestationAuthorityNotePtrOutput) ToAttestorAttestationAuthorityNotePtrOutput() AttestorAttestationAuthorityNotePtrOutput {
-	return o
-}
-
-func (o AttestorAttestationAuthorityNotePtrOutput) ToAttestorAttestationAuthorityNotePtrOutputWithContext(ctx context.Context) AttestorAttestationAuthorityNotePtrOutput {
-	return o
-}
-
-func (o AttestorAttestationAuthorityNotePtrOutput) Elem() AttestorAttestationAuthorityNoteOutput {
-	return o.ApplyT(func(v *AttestorAttestationAuthorityNote) AttestorAttestationAuthorityNote {
-		if v != nil {
-			return *v
-		}
-		var ret AttestorAttestationAuthorityNote
-		return ret
-	}).(AttestorAttestationAuthorityNoteOutput)
-}
-
-// -
-// This field will contain the service account email address that
-// this Attestor will use as the principal when querying Container
-// Analysis. Attestor administrators must grant this service account
-// the IAM role needed to read attestations from the noteReference in
-// Container Analysis (containeranalysis.notes.occurrences.viewer).
-// This email address is fixed for the lifetime of the Attestor, but
-// callers should not make any other assumptions about the service
-// account email; future versions may use an email based on a
-// different naming pattern.
-func (o AttestorAttestationAuthorityNotePtrOutput) DelegationServiceAccountEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AttestorAttestationAuthorityNote) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DelegationServiceAccountEmail
-	}).(pulumi.StringPtrOutput)
-}
-
-// The resource name of a ATTESTATION_AUTHORITY Note, created by the
-// user. If the Note is in a different project from the Attestor, it
-// should be specified in the format `projects/*/notes/*` (or the legacy
-// `providers/*/notes/*`). This field may not be updated.
-// An attestation by this attestor is stored as a Container Analysis
-// ATTESTATION_AUTHORITY Occurrence that names a container image
-// and that links to this Note.
-func (o AttestorAttestationAuthorityNotePtrOutput) NoteReference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AttestorAttestationAuthorityNote) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.NoteReference
-	}).(pulumi.StringPtrOutput)
-}
-
-// Public keys that verify attestations signed by this attestor. This
-// field may be updated.
-// If this field is non-empty, one of the specified public keys must
-// verify that an attestation was signed by this attestor for the
-// image specified in the admission request.
-// If this field is empty, this attestor always returns that no valid
-// attestations exist.
-// Structure is documented below.
-func (o AttestorAttestationAuthorityNotePtrOutput) PublicKeys() AttestorAttestationAuthorityNotePublicKeyArrayOutput {
-	return o.ApplyT(func(v *AttestorAttestationAuthorityNote) []AttestorAttestationAuthorityNotePublicKey {
-		if v == nil {
-			return nil
-		}
 		return v.PublicKeys
 	}).(AttestorAttestationAuthorityNotePublicKeyArrayOutput)
 }
@@ -1273,47 +1146,6 @@ func (i PolicyDefaultAdmissionRuleArgs) ToPolicyDefaultAdmissionRuleOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyDefaultAdmissionRuleOutput)
 }
 
-func (i PolicyDefaultAdmissionRuleArgs) ToPolicyDefaultAdmissionRulePtrOutput() PolicyDefaultAdmissionRulePtrOutput {
-	return i.ToPolicyDefaultAdmissionRulePtrOutputWithContext(context.Background())
-}
-
-func (i PolicyDefaultAdmissionRuleArgs) ToPolicyDefaultAdmissionRulePtrOutputWithContext(ctx context.Context) PolicyDefaultAdmissionRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyDefaultAdmissionRuleOutput).ToPolicyDefaultAdmissionRulePtrOutputWithContext(ctx)
-}
-
-// PolicyDefaultAdmissionRulePtrInput is an input type that accepts PolicyDefaultAdmissionRuleArgs, PolicyDefaultAdmissionRulePtr and PolicyDefaultAdmissionRulePtrOutput values.
-// You can construct a concrete instance of `PolicyDefaultAdmissionRulePtrInput` via:
-//
-//          PolicyDefaultAdmissionRuleArgs{...}
-//
-//  or:
-//
-//          nil
-type PolicyDefaultAdmissionRulePtrInput interface {
-	pulumi.Input
-
-	ToPolicyDefaultAdmissionRulePtrOutput() PolicyDefaultAdmissionRulePtrOutput
-	ToPolicyDefaultAdmissionRulePtrOutputWithContext(context.Context) PolicyDefaultAdmissionRulePtrOutput
-}
-
-type policyDefaultAdmissionRulePtrType PolicyDefaultAdmissionRuleArgs
-
-func PolicyDefaultAdmissionRulePtr(v *PolicyDefaultAdmissionRuleArgs) PolicyDefaultAdmissionRulePtrInput {
-	return (*policyDefaultAdmissionRulePtrType)(v)
-}
-
-func (*policyDefaultAdmissionRulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PolicyDefaultAdmissionRule)(nil)).Elem()
-}
-
-func (i *policyDefaultAdmissionRulePtrType) ToPolicyDefaultAdmissionRulePtrOutput() PolicyDefaultAdmissionRulePtrOutput {
-	return i.ToPolicyDefaultAdmissionRulePtrOutputWithContext(context.Background())
-}
-
-func (i *policyDefaultAdmissionRulePtrType) ToPolicyDefaultAdmissionRulePtrOutputWithContext(ctx context.Context) PolicyDefaultAdmissionRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyDefaultAdmissionRulePtrOutput)
-}
-
 type PolicyDefaultAdmissionRuleOutput struct{ *pulumi.OutputState }
 
 func (PolicyDefaultAdmissionRuleOutput) ElementType() reflect.Type {
@@ -1326,16 +1158,6 @@ func (o PolicyDefaultAdmissionRuleOutput) ToPolicyDefaultAdmissionRuleOutput() P
 
 func (o PolicyDefaultAdmissionRuleOutput) ToPolicyDefaultAdmissionRuleOutputWithContext(ctx context.Context) PolicyDefaultAdmissionRuleOutput {
 	return o
-}
-
-func (o PolicyDefaultAdmissionRuleOutput) ToPolicyDefaultAdmissionRulePtrOutput() PolicyDefaultAdmissionRulePtrOutput {
-	return o.ToPolicyDefaultAdmissionRulePtrOutputWithContext(context.Background())
-}
-
-func (o PolicyDefaultAdmissionRuleOutput) ToPolicyDefaultAdmissionRulePtrOutputWithContext(ctx context.Context) PolicyDefaultAdmissionRulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyDefaultAdmissionRule) *PolicyDefaultAdmissionRule {
-		return &v
-	}).(PolicyDefaultAdmissionRulePtrOutput)
 }
 
 // The action when a pod creation is denied by the admission rule.
@@ -1362,72 +1184,8 @@ func (o PolicyDefaultAdmissionRuleOutput) RequireAttestationsBies() pulumi.Strin
 	return o.ApplyT(func(v PolicyDefaultAdmissionRule) []string { return v.RequireAttestationsBies }).(pulumi.StringArrayOutput)
 }
 
-type PolicyDefaultAdmissionRulePtrOutput struct{ *pulumi.OutputState }
-
-func (PolicyDefaultAdmissionRulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PolicyDefaultAdmissionRule)(nil)).Elem()
-}
-
-func (o PolicyDefaultAdmissionRulePtrOutput) ToPolicyDefaultAdmissionRulePtrOutput() PolicyDefaultAdmissionRulePtrOutput {
-	return o
-}
-
-func (o PolicyDefaultAdmissionRulePtrOutput) ToPolicyDefaultAdmissionRulePtrOutputWithContext(ctx context.Context) PolicyDefaultAdmissionRulePtrOutput {
-	return o
-}
-
-func (o PolicyDefaultAdmissionRulePtrOutput) Elem() PolicyDefaultAdmissionRuleOutput {
-	return o.ApplyT(func(v *PolicyDefaultAdmissionRule) PolicyDefaultAdmissionRule {
-		if v != nil {
-			return *v
-		}
-		var ret PolicyDefaultAdmissionRule
-		return ret
-	}).(PolicyDefaultAdmissionRuleOutput)
-}
-
-// The action when a pod creation is denied by the admission rule.
-// Possible values are `ENFORCED_BLOCK_AND_AUDIT_LOG` and `DRYRUN_AUDIT_LOG_ONLY`.
-func (o PolicyDefaultAdmissionRulePtrOutput) EnforcementMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PolicyDefaultAdmissionRule) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EnforcementMode
-	}).(pulumi.StringPtrOutput)
-}
-
-// How this admission rule will be evaluated.
-// Possible values are `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, and `ALWAYS_DENY`.
-func (o PolicyDefaultAdmissionRulePtrOutput) EvaluationMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PolicyDefaultAdmissionRule) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EvaluationMode
-	}).(pulumi.StringPtrOutput)
-}
-
-// The resource names of the attestors that must attest to a
-// container image. If the attestor is in a different project from the
-// policy, it should be specified in the format `projects/*/attestors/*`.
-// Each attestor must exist before a policy can reference it. To add an
-// attestor to a policy the principal issuing the policy change
-// request must be able to read the attestor resource.
-// Note: this field must be non-empty when the evaluationMode field
-// specifies REQUIRE_ATTESTATION, otherwise it must be empty.
-func (o PolicyDefaultAdmissionRulePtrOutput) RequireAttestationsBies() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *PolicyDefaultAdmissionRule) []string {
-		if v == nil {
-			return nil
-		}
-		return v.RequireAttestationsBies
-	}).(pulumi.StringArrayOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AttestorAttestationAuthorityNoteInput)(nil)).Elem(), AttestorAttestationAuthorityNoteArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AttestorAttestationAuthorityNotePtrInput)(nil)).Elem(), AttestorAttestationAuthorityNoteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttestorAttestationAuthorityNotePublicKeyInput)(nil)).Elem(), AttestorAttestationAuthorityNotePublicKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttestorAttestationAuthorityNotePublicKeyArrayInput)(nil)).Elem(), AttestorAttestationAuthorityNotePublicKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyInput)(nil)).Elem(), AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs{})
@@ -1441,9 +1199,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyClusterAdmissionRuleInput)(nil)).Elem(), PolicyClusterAdmissionRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyClusterAdmissionRuleArrayInput)(nil)).Elem(), PolicyClusterAdmissionRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyDefaultAdmissionRuleInput)(nil)).Elem(), PolicyDefaultAdmissionRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyDefaultAdmissionRulePtrInput)(nil)).Elem(), PolicyDefaultAdmissionRuleArgs{})
 	pulumi.RegisterOutputType(AttestorAttestationAuthorityNoteOutput{})
-	pulumi.RegisterOutputType(AttestorAttestationAuthorityNotePtrOutput{})
 	pulumi.RegisterOutputType(AttestorAttestationAuthorityNotePublicKeyOutput{})
 	pulumi.RegisterOutputType(AttestorAttestationAuthorityNotePublicKeyArrayOutput{})
 	pulumi.RegisterOutputType(AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyOutput{})
@@ -1457,5 +1213,4 @@ func init() {
 	pulumi.RegisterOutputType(PolicyClusterAdmissionRuleOutput{})
 	pulumi.RegisterOutputType(PolicyClusterAdmissionRuleArrayOutput{})
 	pulumi.RegisterOutputType(PolicyDefaultAdmissionRuleOutput{})
-	pulumi.RegisterOutputType(PolicyDefaultAdmissionRulePtrOutput{})
 }

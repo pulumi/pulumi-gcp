@@ -55,47 +55,6 @@ func (i InstanceFileSharesArgs) ToInstanceFileSharesOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceFileSharesOutput)
 }
 
-func (i InstanceFileSharesArgs) ToInstanceFileSharesPtrOutput() InstanceFileSharesPtrOutput {
-	return i.ToInstanceFileSharesPtrOutputWithContext(context.Background())
-}
-
-func (i InstanceFileSharesArgs) ToInstanceFileSharesPtrOutputWithContext(ctx context.Context) InstanceFileSharesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceFileSharesOutput).ToInstanceFileSharesPtrOutputWithContext(ctx)
-}
-
-// InstanceFileSharesPtrInput is an input type that accepts InstanceFileSharesArgs, InstanceFileSharesPtr and InstanceFileSharesPtrOutput values.
-// You can construct a concrete instance of `InstanceFileSharesPtrInput` via:
-//
-//          InstanceFileSharesArgs{...}
-//
-//  or:
-//
-//          nil
-type InstanceFileSharesPtrInput interface {
-	pulumi.Input
-
-	ToInstanceFileSharesPtrOutput() InstanceFileSharesPtrOutput
-	ToInstanceFileSharesPtrOutputWithContext(context.Context) InstanceFileSharesPtrOutput
-}
-
-type instanceFileSharesPtrType InstanceFileSharesArgs
-
-func InstanceFileSharesPtr(v *InstanceFileSharesArgs) InstanceFileSharesPtrInput {
-	return (*instanceFileSharesPtrType)(v)
-}
-
-func (*instanceFileSharesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceFileShares)(nil)).Elem()
-}
-
-func (i *instanceFileSharesPtrType) ToInstanceFileSharesPtrOutput() InstanceFileSharesPtrOutput {
-	return i.ToInstanceFileSharesPtrOutputWithContext(context.Background())
-}
-
-func (i *instanceFileSharesPtrType) ToInstanceFileSharesPtrOutputWithContext(ctx context.Context) InstanceFileSharesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceFileSharesPtrOutput)
-}
-
 type InstanceFileSharesOutput struct{ *pulumi.OutputState }
 
 func (InstanceFileSharesOutput) ElementType() reflect.Type {
@@ -108,16 +67,6 @@ func (o InstanceFileSharesOutput) ToInstanceFileSharesOutput() InstanceFileShare
 
 func (o InstanceFileSharesOutput) ToInstanceFileSharesOutputWithContext(ctx context.Context) InstanceFileSharesOutput {
 	return o
-}
-
-func (o InstanceFileSharesOutput) ToInstanceFileSharesPtrOutput() InstanceFileSharesPtrOutput {
-	return o.ToInstanceFileSharesPtrOutputWithContext(context.Background())
-}
-
-func (o InstanceFileSharesOutput) ToInstanceFileSharesPtrOutputWithContext(ctx context.Context) InstanceFileSharesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceFileShares) *InstanceFileShares {
-		return &v
-	}).(InstanceFileSharesPtrOutput)
 }
 
 // File share capacity in GiB. This must be at least 1024 GiB
@@ -135,62 +84,6 @@ func (o InstanceFileSharesOutput) Name() pulumi.StringOutput {
 // Structure is documented below.
 func (o InstanceFileSharesOutput) NfsExportOptions() InstanceFileSharesNfsExportOptionArrayOutput {
 	return o.ApplyT(func(v InstanceFileShares) []InstanceFileSharesNfsExportOption { return v.NfsExportOptions }).(InstanceFileSharesNfsExportOptionArrayOutput)
-}
-
-type InstanceFileSharesPtrOutput struct{ *pulumi.OutputState }
-
-func (InstanceFileSharesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceFileShares)(nil)).Elem()
-}
-
-func (o InstanceFileSharesPtrOutput) ToInstanceFileSharesPtrOutput() InstanceFileSharesPtrOutput {
-	return o
-}
-
-func (o InstanceFileSharesPtrOutput) ToInstanceFileSharesPtrOutputWithContext(ctx context.Context) InstanceFileSharesPtrOutput {
-	return o
-}
-
-func (o InstanceFileSharesPtrOutput) Elem() InstanceFileSharesOutput {
-	return o.ApplyT(func(v *InstanceFileShares) InstanceFileShares {
-		if v != nil {
-			return *v
-		}
-		var ret InstanceFileShares
-		return ret
-	}).(InstanceFileSharesOutput)
-}
-
-// File share capacity in GiB. This must be at least 1024 GiB
-// for the standard tier, or 2560 GiB for the premium tier.
-func (o InstanceFileSharesPtrOutput) CapacityGb() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *InstanceFileShares) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.CapacityGb
-	}).(pulumi.IntPtrOutput)
-}
-
-// The name of the fileshare (16 characters or less)
-func (o InstanceFileSharesPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstanceFileShares) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// Nfs Export Options. There is a limit of 10 export options per file share.
-// Structure is documented below.
-func (o InstanceFileSharesPtrOutput) NfsExportOptions() InstanceFileSharesNfsExportOptionArrayOutput {
-	return o.ApplyT(func(v *InstanceFileShares) []InstanceFileSharesNfsExportOption {
-		if v == nil {
-			return nil
-		}
-		return v.NfsExportOptions
-	}).(InstanceFileSharesNfsExportOptionArrayOutput)
 }
 
 type InstanceFileSharesNfsExportOption struct {
@@ -524,13 +417,11 @@ func (o InstanceNetworkArrayOutput) Index(i pulumi.IntInput) InstanceNetworkOutp
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceFileSharesInput)(nil)).Elem(), InstanceFileSharesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceFileSharesPtrInput)(nil)).Elem(), InstanceFileSharesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceFileSharesNfsExportOptionInput)(nil)).Elem(), InstanceFileSharesNfsExportOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceFileSharesNfsExportOptionArrayInput)(nil)).Elem(), InstanceFileSharesNfsExportOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkInput)(nil)).Elem(), InstanceNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkArrayInput)(nil)).Elem(), InstanceNetworkArray{})
 	pulumi.RegisterOutputType(InstanceFileSharesOutput{})
-	pulumi.RegisterOutputType(InstanceFileSharesPtrOutput{})
 	pulumi.RegisterOutputType(InstanceFileSharesNfsExportOptionOutput{})
 	pulumi.RegisterOutputType(InstanceFileSharesNfsExportOptionArrayOutput{})
 	pulumi.RegisterOutputType(InstanceNetworkOutput{})

@@ -48,15 +48,15 @@ export class AccountIamMember extends pulumi.CustomResource {
      */
     constructor(name: string, args: AccountIamMemberArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccountIamMemberArgs | AccountIamMemberState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountIamMemberState | undefined;
-            inputs["billingAccountId"] = state ? state.billingAccountId : undefined;
-            inputs["condition"] = state ? state.condition : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["member"] = state ? state.member : undefined;
-            inputs["role"] = state ? state.role : undefined;
+            resourceInputs["billingAccountId"] = state ? state.billingAccountId : undefined;
+            resourceInputs["condition"] = state ? state.condition : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["member"] = state ? state.member : undefined;
+            resourceInputs["role"] = state ? state.role : undefined;
         } else {
             const args = argsOrState as AccountIamMemberArgs | undefined;
             if ((!args || args.billingAccountId === undefined) && !opts.urn) {
@@ -68,16 +68,16 @@ export class AccountIamMember extends pulumi.CustomResource {
             if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            inputs["billingAccountId"] = args ? args.billingAccountId : undefined;
-            inputs["condition"] = args ? args.condition : undefined;
-            inputs["member"] = args ? args.member : undefined;
-            inputs["role"] = args ? args.role : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["billingAccountId"] = args ? args.billingAccountId : undefined;
+            resourceInputs["condition"] = args ? args.condition : undefined;
+            resourceInputs["member"] = args ? args.member : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(AccountIamMember.__pulumiType, name, inputs, opts);
+        super(AccountIamMember.__pulumiType, name, resourceInputs, opts);
     }
 }
 

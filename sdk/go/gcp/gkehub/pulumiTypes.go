@@ -59,47 +59,6 @@ func (i FeatureMembershipConfigmanagementArgs) ToFeatureMembershipConfigmanageme
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementOutput)
 }
 
-func (i FeatureMembershipConfigmanagementArgs) ToFeatureMembershipConfigmanagementPtrOutput() FeatureMembershipConfigmanagementPtrOutput {
-	return i.ToFeatureMembershipConfigmanagementPtrOutputWithContext(context.Background())
-}
-
-func (i FeatureMembershipConfigmanagementArgs) ToFeatureMembershipConfigmanagementPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementOutput).ToFeatureMembershipConfigmanagementPtrOutputWithContext(ctx)
-}
-
-// FeatureMembershipConfigmanagementPtrInput is an input type that accepts FeatureMembershipConfigmanagementArgs, FeatureMembershipConfigmanagementPtr and FeatureMembershipConfigmanagementPtrOutput values.
-// You can construct a concrete instance of `FeatureMembershipConfigmanagementPtrInput` via:
-//
-//          FeatureMembershipConfigmanagementArgs{...}
-//
-//  or:
-//
-//          nil
-type FeatureMembershipConfigmanagementPtrInput interface {
-	pulumi.Input
-
-	ToFeatureMembershipConfigmanagementPtrOutput() FeatureMembershipConfigmanagementPtrOutput
-	ToFeatureMembershipConfigmanagementPtrOutputWithContext(context.Context) FeatureMembershipConfigmanagementPtrOutput
-}
-
-type featureMembershipConfigmanagementPtrType FeatureMembershipConfigmanagementArgs
-
-func FeatureMembershipConfigmanagementPtr(v *FeatureMembershipConfigmanagementArgs) FeatureMembershipConfigmanagementPtrInput {
-	return (*featureMembershipConfigmanagementPtrType)(v)
-}
-
-func (*featureMembershipConfigmanagementPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FeatureMembershipConfigmanagement)(nil)).Elem()
-}
-
-func (i *featureMembershipConfigmanagementPtrType) ToFeatureMembershipConfigmanagementPtrOutput() FeatureMembershipConfigmanagementPtrOutput {
-	return i.ToFeatureMembershipConfigmanagementPtrOutputWithContext(context.Background())
-}
-
-func (i *featureMembershipConfigmanagementPtrType) ToFeatureMembershipConfigmanagementPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementPtrOutput)
-}
-
 type FeatureMembershipConfigmanagementOutput struct{ *pulumi.OutputState }
 
 func (FeatureMembershipConfigmanagementOutput) ElementType() reflect.Type {
@@ -112,16 +71,6 @@ func (o FeatureMembershipConfigmanagementOutput) ToFeatureMembershipConfigmanage
 
 func (o FeatureMembershipConfigmanagementOutput) ToFeatureMembershipConfigmanagementOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementOutput {
 	return o
-}
-
-func (o FeatureMembershipConfigmanagementOutput) ToFeatureMembershipConfigmanagementPtrOutput() FeatureMembershipConfigmanagementPtrOutput {
-	return o.ToFeatureMembershipConfigmanagementPtrOutputWithContext(context.Background())
-}
-
-func (o FeatureMembershipConfigmanagementOutput) ToFeatureMembershipConfigmanagementPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureMembershipConfigmanagement) *FeatureMembershipConfigmanagement {
-		return &v
-	}).(FeatureMembershipConfigmanagementPtrOutput)
 }
 
 // Binauthz configuration for the cluster. Structure is documented below.
@@ -155,80 +104,6 @@ func (o FeatureMembershipConfigmanagementOutput) PolicyController() FeatureMembe
 // Version of ACM installed.
 func (o FeatureMembershipConfigmanagementOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagement) *string { return v.Version }).(pulumi.StringPtrOutput)
-}
-
-type FeatureMembershipConfigmanagementPtrOutput struct{ *pulumi.OutputState }
-
-func (FeatureMembershipConfigmanagementPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FeatureMembershipConfigmanagement)(nil)).Elem()
-}
-
-func (o FeatureMembershipConfigmanagementPtrOutput) ToFeatureMembershipConfigmanagementPtrOutput() FeatureMembershipConfigmanagementPtrOutput {
-	return o
-}
-
-func (o FeatureMembershipConfigmanagementPtrOutput) ToFeatureMembershipConfigmanagementPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementPtrOutput {
-	return o
-}
-
-func (o FeatureMembershipConfigmanagementPtrOutput) Elem() FeatureMembershipConfigmanagementOutput {
-	return o.ApplyT(func(v *FeatureMembershipConfigmanagement) FeatureMembershipConfigmanagement {
-		if v != nil {
-			return *v
-		}
-		var ret FeatureMembershipConfigmanagement
-		return ret
-	}).(FeatureMembershipConfigmanagementOutput)
-}
-
-// Binauthz configuration for the cluster. Structure is documented below.
-func (o FeatureMembershipConfigmanagementPtrOutput) Binauthz() FeatureMembershipConfigmanagementBinauthzPtrOutput {
-	return o.ApplyT(func(v *FeatureMembershipConfigmanagement) *FeatureMembershipConfigmanagementBinauthz {
-		if v == nil {
-			return nil
-		}
-		return v.Binauthz
-	}).(FeatureMembershipConfigmanagementBinauthzPtrOutput)
-}
-
-// Config Sync configuration for the cluster. Structure is documented below.
-func (o FeatureMembershipConfigmanagementPtrOutput) ConfigSync() FeatureMembershipConfigmanagementConfigSyncPtrOutput {
-	return o.ApplyT(func(v *FeatureMembershipConfigmanagement) *FeatureMembershipConfigmanagementConfigSync {
-		if v == nil {
-			return nil
-		}
-		return v.ConfigSync
-	}).(FeatureMembershipConfigmanagementConfigSyncPtrOutput)
-}
-
-// Hierarchy Controller configuration for the cluster. Structure is documented below.
-func (o FeatureMembershipConfigmanagementPtrOutput) HierarchyController() FeatureMembershipConfigmanagementHierarchyControllerPtrOutput {
-	return o.ApplyT(func(v *FeatureMembershipConfigmanagement) *FeatureMembershipConfigmanagementHierarchyController {
-		if v == nil {
-			return nil
-		}
-		return v.HierarchyController
-	}).(FeatureMembershipConfigmanagementHierarchyControllerPtrOutput)
-}
-
-// Policy Controller configuration for the cluster. Structure is documented below.
-func (o FeatureMembershipConfigmanagementPtrOutput) PolicyController() FeatureMembershipConfigmanagementPolicyControllerPtrOutput {
-	return o.ApplyT(func(v *FeatureMembershipConfigmanagement) *FeatureMembershipConfigmanagementPolicyController {
-		if v == nil {
-			return nil
-		}
-		return v.PolicyController
-	}).(FeatureMembershipConfigmanagementPolicyControllerPtrOutput)
-}
-
-// Version of ACM installed.
-func (o FeatureMembershipConfigmanagementPtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FeatureMembershipConfigmanagement) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Version
-	}).(pulumi.StringPtrOutput)
 }
 
 type FeatureMembershipConfigmanagementBinauthz struct {
@@ -2192,7 +2067,6 @@ func (o MembershipEndpointGkeClusterPtrOutput) ResourceLink() pulumi.StringPtrOu
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipConfigmanagementInput)(nil)).Elem(), FeatureMembershipConfigmanagementArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipConfigmanagementPtrInput)(nil)).Elem(), FeatureMembershipConfigmanagementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipConfigmanagementBinauthzInput)(nil)).Elem(), FeatureMembershipConfigmanagementBinauthzArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipConfigmanagementBinauthzPtrInput)(nil)).Elem(), FeatureMembershipConfigmanagementBinauthzArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipConfigmanagementConfigSyncInput)(nil)).Elem(), FeatureMembershipConfigmanagementConfigSyncArgs{})
@@ -2220,7 +2094,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipEndpointGkeClusterInput)(nil)).Elem(), MembershipEndpointGkeClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipEndpointGkeClusterPtrInput)(nil)).Elem(), MembershipEndpointGkeClusterArgs{})
 	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementOutput{})
-	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementPtrOutput{})
 	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementBinauthzOutput{})
 	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementBinauthzPtrOutput{})
 	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementConfigSyncOutput{})

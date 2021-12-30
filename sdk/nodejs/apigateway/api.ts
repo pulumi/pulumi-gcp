@@ -109,34 +109,34 @@ export class Api extends pulumi.CustomResource {
      */
     constructor(name: string, args: ApiArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ApiArgs | ApiState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApiState | undefined;
-            inputs["apiId"] = state ? state.apiId : undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["managedService"] = state ? state.managedService : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
+            resourceInputs["apiId"] = state ? state.apiId : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["managedService"] = state ? state.managedService : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as ApiArgs | undefined;
             if ((!args || args.apiId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'apiId'");
             }
-            inputs["apiId"] = args ? args.apiId : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["managedService"] = args ? args.managedService : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["apiId"] = args ? args.apiId : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["managedService"] = args ? args.managedService : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Api.__pulumiType, name, inputs, opts);
+        super(Api.__pulumiType, name, resourceInputs, opts);
     }
 }
 

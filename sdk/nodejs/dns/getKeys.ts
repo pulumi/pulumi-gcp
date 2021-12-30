@@ -23,9 +23,9 @@ import * as utilities from "../utilities";
  *         nonExistence: "nsec3",
  *     },
  * });
- * const fooDnsKeys = foo.id.apply(id => gcp.dns.getKeys({
- *     managedZone: id,
- * }));
+ * const fooDnsKeys = gcp.dns.getKeysOutput({
+ *     managedZone: foo.id,
+ * });
  * export const fooDnsDsRecord = fooDnsKeys.apply(fooDnsKeys => fooDnsKeys.keySigningKeys?[0]?.dsRecord);
  * ```
  */

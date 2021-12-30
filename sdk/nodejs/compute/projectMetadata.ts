@@ -102,24 +102,24 @@ export class ProjectMetadata extends pulumi.CustomResource {
      */
     constructor(name: string, args: ProjectMetadataArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectMetadataArgs | ProjectMetadataState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectMetadataState | undefined;
-            inputs["metadata"] = state ? state.metadata : undefined;
-            inputs["project"] = state ? state.project : undefined;
+            resourceInputs["metadata"] = state ? state.metadata : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as ProjectMetadataArgs | undefined;
             if ((!args || args.metadata === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'metadata'");
             }
-            inputs["metadata"] = args ? args.metadata : undefined;
-            inputs["project"] = args ? args.project : undefined;
+            resourceInputs["metadata"] = args ? args.metadata : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ProjectMetadata.__pulumiType, name, inputs, opts);
+        super(ProjectMetadata.__pulumiType, name, resourceInputs, opts);
     }
 }
 

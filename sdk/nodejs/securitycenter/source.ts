@@ -101,14 +101,14 @@ export class Source extends pulumi.CustomResource {
      */
     constructor(name: string, args: SourceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SourceArgs | SourceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SourceState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["organization"] = state ? state.organization : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["organization"] = state ? state.organization : undefined;
         } else {
             const args = argsOrState as SourceArgs | undefined;
             if ((!args || args.displayName === undefined) && !opts.urn) {
@@ -117,15 +117,15 @@ export class Source extends pulumi.CustomResource {
             if ((!args || args.organization === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organization'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["organization"] = args ? args.organization : undefined;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["organization"] = args ? args.organization : undefined;
+            resourceInputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Source.__pulumiType, name, inputs, opts);
+        super(Source.__pulumiType, name, resourceInputs, opts);
     }
 }
 

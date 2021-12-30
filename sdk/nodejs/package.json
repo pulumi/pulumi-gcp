@@ -4,7 +4,8 @@
     "description": "A Pulumi package for creating and managing Google Cloud Platform resources.",
     "keywords": [
         "pulumi",
-        "gcp"
+        "gcp",
+        "category/cloud"
     ],
     "homepage": "https://pulumi.io",
     "repository": "https://github.com/pulumi/pulumi-gcp",

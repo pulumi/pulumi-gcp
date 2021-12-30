@@ -103,15 +103,15 @@ export class AccessPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: AccessPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccessPolicyArgs | AccessPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessPolicyState | undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["parent"] = state ? state.parent : undefined;
-            inputs["title"] = state ? state.title : undefined;
-            inputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["parent"] = state ? state.parent : undefined;
+            resourceInputs["title"] = state ? state.title : undefined;
+            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as AccessPolicyArgs | undefined;
             if ((!args || args.parent === undefined) && !opts.urn) {
@@ -120,16 +120,16 @@ export class AccessPolicy extends pulumi.CustomResource {
             if ((!args || args.title === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'title'");
             }
-            inputs["parent"] = args ? args.parent : undefined;
-            inputs["title"] = args ? args.title : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["title"] = args ? args.title : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(AccessPolicy.__pulumiType, name, inputs, opts);
+        super(AccessPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -67,47 +67,6 @@ func (i GroupGroupKeyArgs) ToGroupGroupKeyOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(GroupGroupKeyOutput)
 }
 
-func (i GroupGroupKeyArgs) ToGroupGroupKeyPtrOutput() GroupGroupKeyPtrOutput {
-	return i.ToGroupGroupKeyPtrOutputWithContext(context.Background())
-}
-
-func (i GroupGroupKeyArgs) ToGroupGroupKeyPtrOutputWithContext(ctx context.Context) GroupGroupKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupGroupKeyOutput).ToGroupGroupKeyPtrOutputWithContext(ctx)
-}
-
-// GroupGroupKeyPtrInput is an input type that accepts GroupGroupKeyArgs, GroupGroupKeyPtr and GroupGroupKeyPtrOutput values.
-// You can construct a concrete instance of `GroupGroupKeyPtrInput` via:
-//
-//          GroupGroupKeyArgs{...}
-//
-//  or:
-//
-//          nil
-type GroupGroupKeyPtrInput interface {
-	pulumi.Input
-
-	ToGroupGroupKeyPtrOutput() GroupGroupKeyPtrOutput
-	ToGroupGroupKeyPtrOutputWithContext(context.Context) GroupGroupKeyPtrOutput
-}
-
-type groupGroupKeyPtrType GroupGroupKeyArgs
-
-func GroupGroupKeyPtr(v *GroupGroupKeyArgs) GroupGroupKeyPtrInput {
-	return (*groupGroupKeyPtrType)(v)
-}
-
-func (*groupGroupKeyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GroupGroupKey)(nil)).Elem()
-}
-
-func (i *groupGroupKeyPtrType) ToGroupGroupKeyPtrOutput() GroupGroupKeyPtrOutput {
-	return i.ToGroupGroupKeyPtrOutputWithContext(context.Background())
-}
-
-func (i *groupGroupKeyPtrType) ToGroupGroupKeyPtrOutputWithContext(ctx context.Context) GroupGroupKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupGroupKeyPtrOutput)
-}
-
 type GroupGroupKeyOutput struct{ *pulumi.OutputState }
 
 func (GroupGroupKeyOutput) ElementType() reflect.Type {
@@ -120,16 +79,6 @@ func (o GroupGroupKeyOutput) ToGroupGroupKeyOutput() GroupGroupKeyOutput {
 
 func (o GroupGroupKeyOutput) ToGroupGroupKeyOutputWithContext(ctx context.Context) GroupGroupKeyOutput {
 	return o
-}
-
-func (o GroupGroupKeyOutput) ToGroupGroupKeyPtrOutput() GroupGroupKeyPtrOutput {
-	return o.ToGroupGroupKeyPtrOutputWithContext(context.Background())
-}
-
-func (o GroupGroupKeyOutput) ToGroupGroupKeyPtrOutputWithContext(ctx context.Context) GroupGroupKeyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupGroupKey) *GroupGroupKey {
-		return &v
-	}).(GroupGroupKeyPtrOutput)
 }
 
 // The ID of the entity.
@@ -150,60 +99,6 @@ func (o GroupGroupKeyOutput) Id() pulumi.StringOutput {
 // and must be in the form of `identitysources/{identity_source_id}`.
 func (o GroupGroupKeyOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GroupGroupKey) *string { return v.Namespace }).(pulumi.StringPtrOutput)
-}
-
-type GroupGroupKeyPtrOutput struct{ *pulumi.OutputState }
-
-func (GroupGroupKeyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GroupGroupKey)(nil)).Elem()
-}
-
-func (o GroupGroupKeyPtrOutput) ToGroupGroupKeyPtrOutput() GroupGroupKeyPtrOutput {
-	return o
-}
-
-func (o GroupGroupKeyPtrOutput) ToGroupGroupKeyPtrOutputWithContext(ctx context.Context) GroupGroupKeyPtrOutput {
-	return o
-}
-
-func (o GroupGroupKeyPtrOutput) Elem() GroupGroupKeyOutput {
-	return o.ApplyT(func(v *GroupGroupKey) GroupGroupKey {
-		if v != nil {
-			return *v
-		}
-		var ret GroupGroupKey
-		return ret
-	}).(GroupGroupKeyOutput)
-}
-
-// The ID of the entity.
-// For Google-managed entities, the id must be the email address of an existing
-// group or user.
-// For external-identity-mapped entities, the id must be a string conforming
-// to the Identity Source's requirements.
-// Must be unique within a namespace.
-func (o GroupGroupKeyPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GroupGroupKey) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// The namespace in which the entity exists.
-// If not specified, the EntityKey represents a Google-managed entity
-// such as a Google user or a Google Group.
-// If specified, the EntityKey represents an external-identity-mapped group.
-// The namespace must correspond to an identity source created in Admin Console
-// and must be in the form of `identitysources/{identity_source_id}`.
-func (o GroupGroupKeyPtrOutput) Namespace() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GroupGroupKey) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Namespace
-	}).(pulumi.StringPtrOutput)
 }
 
 type GroupMembershipMemberKey struct {
@@ -1431,7 +1326,6 @@ func (o GetGroupsGroupGroupKeyArrayOutput) Index(i pulumi.IntInput) GetGroupsGro
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupGroupKeyInput)(nil)).Elem(), GroupGroupKeyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GroupGroupKeyPtrInput)(nil)).Elem(), GroupGroupKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupMembershipMemberKeyInput)(nil)).Elem(), GroupMembershipMemberKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupMembershipMemberKeyPtrInput)(nil)).Elem(), GroupMembershipMemberKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupMembershipPreferredMemberKeyInput)(nil)).Elem(), GroupMembershipPreferredMemberKeyArgs{})
@@ -1451,7 +1345,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupGroupKeyInput)(nil)).Elem(), GetGroupsGroupGroupKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupGroupKeyArrayInput)(nil)).Elem(), GetGroupsGroupGroupKeyArray{})
 	pulumi.RegisterOutputType(GroupGroupKeyOutput{})
-	pulumi.RegisterOutputType(GroupGroupKeyPtrOutput{})
 	pulumi.RegisterOutputType(GroupMembershipMemberKeyOutput{})
 	pulumi.RegisterOutputType(GroupMembershipMemberKeyPtrOutput{})
 	pulumi.RegisterOutputType(GroupMembershipPreferredMemberKeyOutput{})

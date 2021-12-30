@@ -320,7 +320,7 @@ type NoteInput interface {
 }
 
 func (*Note) ElementType() reflect.Type {
-	return reflect.TypeOf((*Note)(nil))
+	return reflect.TypeOf((**Note)(nil)).Elem()
 }
 
 func (i *Note) ToNoteOutput() NoteOutput {
@@ -329,35 +329,6 @@ func (i *Note) ToNoteOutput() NoteOutput {
 
 func (i *Note) ToNoteOutputWithContext(ctx context.Context) NoteOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NoteOutput)
-}
-
-func (i *Note) ToNotePtrOutput() NotePtrOutput {
-	return i.ToNotePtrOutputWithContext(context.Background())
-}
-
-func (i *Note) ToNotePtrOutputWithContext(ctx context.Context) NotePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NotePtrOutput)
-}
-
-type NotePtrInput interface {
-	pulumi.Input
-
-	ToNotePtrOutput() NotePtrOutput
-	ToNotePtrOutputWithContext(ctx context.Context) NotePtrOutput
-}
-
-type notePtrType NoteArgs
-
-func (*notePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Note)(nil))
-}
-
-func (i *notePtrType) ToNotePtrOutput() NotePtrOutput {
-	return i.ToNotePtrOutputWithContext(context.Background())
-}
-
-func (i *notePtrType) ToNotePtrOutputWithContext(ctx context.Context) NotePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NotePtrOutput)
 }
 
 // NoteArrayInput is an input type that accepts NoteArray and NoteArrayOutput values.
@@ -413,7 +384,7 @@ func (i NoteMap) ToNoteMapOutputWithContext(ctx context.Context) NoteMapOutput {
 type NoteOutput struct{ *pulumi.OutputState }
 
 func (NoteOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Note)(nil))
+	return reflect.TypeOf((**Note)(nil)).Elem()
 }
 
 func (o NoteOutput) ToNoteOutput() NoteOutput {
@@ -424,44 +395,10 @@ func (o NoteOutput) ToNoteOutputWithContext(ctx context.Context) NoteOutput {
 	return o
 }
 
-func (o NoteOutput) ToNotePtrOutput() NotePtrOutput {
-	return o.ToNotePtrOutputWithContext(context.Background())
-}
-
-func (o NoteOutput) ToNotePtrOutputWithContext(ctx context.Context) NotePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Note) *Note {
-		return &v
-	}).(NotePtrOutput)
-}
-
-type NotePtrOutput struct{ *pulumi.OutputState }
-
-func (NotePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Note)(nil))
-}
-
-func (o NotePtrOutput) ToNotePtrOutput() NotePtrOutput {
-	return o
-}
-
-func (o NotePtrOutput) ToNotePtrOutputWithContext(ctx context.Context) NotePtrOutput {
-	return o
-}
-
-func (o NotePtrOutput) Elem() NoteOutput {
-	return o.ApplyT(func(v *Note) Note {
-		if v != nil {
-			return *v
-		}
-		var ret Note
-		return ret
-	}).(NoteOutput)
-}
-
 type NoteArrayOutput struct{ *pulumi.OutputState }
 
 func (NoteArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Note)(nil))
+	return reflect.TypeOf((*[]*Note)(nil)).Elem()
 }
 
 func (o NoteArrayOutput) ToNoteArrayOutput() NoteArrayOutput {
@@ -473,15 +410,15 @@ func (o NoteArrayOutput) ToNoteArrayOutputWithContext(ctx context.Context) NoteA
 }
 
 func (o NoteArrayOutput) Index(i pulumi.IntInput) NoteOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Note {
-		return vs[0].([]Note)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Note {
+		return vs[0].([]*Note)[vs[1].(int)]
 	}).(NoteOutput)
 }
 
 type NoteMapOutput struct{ *pulumi.OutputState }
 
 func (NoteMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Note)(nil))
+	return reflect.TypeOf((*map[string]*Note)(nil)).Elem()
 }
 
 func (o NoteMapOutput) ToNoteMapOutput() NoteMapOutput {
@@ -493,18 +430,16 @@ func (o NoteMapOutput) ToNoteMapOutputWithContext(ctx context.Context) NoteMapOu
 }
 
 func (o NoteMapOutput) MapIndex(k pulumi.StringInput) NoteOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Note {
-		return vs[0].(map[string]Note)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Note {
+		return vs[0].(map[string]*Note)[vs[1].(string)]
 	}).(NoteOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NoteInput)(nil)).Elem(), &Note{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NotePtrInput)(nil)).Elem(), &Note{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NoteArrayInput)(nil)).Elem(), NoteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NoteMapInput)(nil)).Elem(), NoteMap{})
 	pulumi.RegisterOutputType(NoteOutput{})
-	pulumi.RegisterOutputType(NotePtrOutput{})
 	pulumi.RegisterOutputType(NoteArrayOutput{})
 	pulumi.RegisterOutputType(NoteMapOutput{})
 }
