@@ -27,10 +27,10 @@ builds:
   ldflags:
   - -X github.com/pulumi/pulumi-gcp/provider/v6/pkg/version.Version={{.Tag}}
   - -X github.com/hashicorp/terraform-provider-google-beta/version.ProviderVersion={{.Tag}}
+  main: ./cmd/pulumi-resource-gcp/
 changelog:
   use: git
   sort: asc
-  skip: true
 release:
   disable: false
 snapshot:
