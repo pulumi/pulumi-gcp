@@ -522,6 +522,13 @@ namespace Pulumi.Gcp
             set => _monitoringCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _networkConnectivityCustomEndpoint = new __Value<string?>(() => __config.Get("networkConnectivityCustomEndpoint"));
+        public static string? NetworkConnectivityCustomEndpoint
+        {
+            get => _networkConnectivityCustomEndpoint.Get();
+            set => _networkConnectivityCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _networkManagementCustomEndpoint = new __Value<string?>(() => __config.Get("networkManagementCustomEndpoint"));
         public static string? NetworkManagementCustomEndpoint
         {

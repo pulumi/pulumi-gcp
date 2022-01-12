@@ -40,7 +40,43 @@ namespace Pulumi.Gcp.OsConfig
     ///             {
     ///                 ExecuteTime = "2999-10-10T10:10:10.045123456Z",
     ///             },
-    ///             PatchDeploymentId = "patch-deploy-inst",
+    ///             PatchDeploymentId = "patch-deploy",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Os Config Patch Deployment Daily
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var patch = new Gcp.OsConfig.PatchDeployment("patch", new Gcp.OsConfig.PatchDeploymentArgs
+    ///         {
+    ///             InstanceFilter = new Gcp.OsConfig.Inputs.PatchDeploymentInstanceFilterArgs
+    ///             {
+    ///                 All = true,
+    ///             },
+    ///             PatchDeploymentId = "patch-deploy",
+    ///             RecurringSchedule = new Gcp.OsConfig.Inputs.PatchDeploymentRecurringScheduleArgs
+    ///             {
+    ///                 TimeOfDay = new Gcp.OsConfig.Inputs.PatchDeploymentRecurringScheduleTimeOfDayArgs
+    ///                 {
+    ///                     Hours = 0,
+    ///                     Minutes = 30,
+    ///                     Nanos = 20,
+    ///                     Seconds = 30,
+    ///                 },
+    ///                 TimeZone = new Gcp.OsConfig.Inputs.PatchDeploymentRecurringScheduleTimeZoneArgs
+    ///                 {
+    ///                     Id = "America/New_York",
+    ///                 },
+    ///             },
     ///         });
     ///     }
     /// 
@@ -92,7 +128,7 @@ namespace Pulumi.Gcp.OsConfig
     ///         });
     ///         var patch = new Gcp.OsConfig.PatchDeployment("patch", new Gcp.OsConfig.PatchDeploymentArgs
     ///         {
-    ///             PatchDeploymentId = "patch-deploy-inst",
+    ///             PatchDeploymentId = "patch-deploy",
     ///             InstanceFilter = new Gcp.OsConfig.Inputs.PatchDeploymentInstanceFilterArgs
     ///             {
     ///                 Instances = 
@@ -256,7 +292,7 @@ namespace Pulumi.Gcp.OsConfig
     ///                     },
     ///                 },
     ///             },
-    ///             PatchDeploymentId = "patch-deploy-inst",
+    ///             PatchDeploymentId = "patch-deploy",
     ///             RecurringSchedule = new Gcp.OsConfig.Inputs.PatchDeploymentRecurringScheduleArgs
     ///             {
     ///                 Monthly = new Gcp.OsConfig.Inputs.PatchDeploymentRecurringScheduleMonthlyArgs

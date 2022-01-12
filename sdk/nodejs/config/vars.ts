@@ -568,6 +568,14 @@ Object.defineProperty(exports, "monitoringCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const networkConnectivityCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "networkConnectivityCustomEndpoint", {
+    get() {
+        return __config.get("networkConnectivityCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const networkManagementCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "networkManagementCustomEndpoint", {
     get() {

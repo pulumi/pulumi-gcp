@@ -190,6 +190,8 @@ type Cluster struct {
 	EnableTpu pulumi.BoolPtrOutput `pulumi:"enableTpu"`
 	// The IP address of this cluster's Kubernetes master.
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
+	// . Structure is documented below.
+	IdentityServiceConfig ClusterIdentityServiceConfigOutput `pulumi:"identityServiceConfig"`
 	// The number of nodes to create in this
 	// cluster's default node pool. In regional or multi-zonal clusters, this is the
 	// number of nodes per zone. Must be set if `nodePool` is not set. If you're using
@@ -456,6 +458,8 @@ type clusterState struct {
 	EnableTpu *bool `pulumi:"enableTpu"`
 	// The IP address of this cluster's Kubernetes master.
 	Endpoint *string `pulumi:"endpoint"`
+	// . Structure is documented below.
+	IdentityServiceConfig *ClusterIdentityServiceConfig `pulumi:"identityServiceConfig"`
 	// The number of nodes to create in this
 	// cluster's default node pool. In regional or multi-zonal clusters, this is the
 	// number of nodes per zone. Must be set if `nodePool` is not set. If you're using
@@ -694,6 +698,8 @@ type ClusterState struct {
 	EnableTpu pulumi.BoolPtrInput
 	// The IP address of this cluster's Kubernetes master.
 	Endpoint pulumi.StringPtrInput
+	// . Structure is documented below.
+	IdentityServiceConfig ClusterIdentityServiceConfigPtrInput
 	// The number of nodes to create in this
 	// cluster's default node pool. In regional or multi-zonal clusters, this is the
 	// number of nodes per zone. Must be set if `nodePool` is not set. If you're using
@@ -934,6 +940,8 @@ type clusterArgs struct {
 	// Whether to enable Cloud TPU resources in this cluster.
 	// See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
 	EnableTpu *bool `pulumi:"enableTpu"`
+	// . Structure is documented below.
+	IdentityServiceConfig *ClusterIdentityServiceConfig `pulumi:"identityServiceConfig"`
 	// The number of nodes to create in this
 	// cluster's default node pool. In regional or multi-zonal clusters, this is the
 	// number of nodes per zone. Must be set if `nodePool` is not set. If you're using
@@ -1153,6 +1161,8 @@ type ClusterArgs struct {
 	// Whether to enable Cloud TPU resources in this cluster.
 	// See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
 	EnableTpu pulumi.BoolPtrInput
+	// . Structure is documented below.
+	IdentityServiceConfig ClusterIdentityServiceConfigPtrInput
 	// The number of nodes to create in this
 	// cluster's default node pool. In regional or multi-zonal clusters, this is the
 	// number of nodes per zone. Must be set if `nodePool` is not set. If you're using

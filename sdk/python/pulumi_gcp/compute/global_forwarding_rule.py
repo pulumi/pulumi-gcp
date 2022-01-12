@@ -735,7 +735,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
         https://cloud.google.com/compute/docs/load-balancing/http/
 
         ## Example Usage
-        ### External Tcp Proxy Lb Mig Backend Custom Header
+        ### External Tcp Proxy Lb Mig Backend
 
         ```python
         import pulumi
@@ -1228,7 +1228,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
         https://cloud.google.com/compute/docs/load-balancing/http/
 
         ## Example Usage
-        ### External Tcp Proxy Lb Mig Backend Custom Header
+        ### External Tcp Proxy Lb Mig Backend
 
         ```python
         import pulumi

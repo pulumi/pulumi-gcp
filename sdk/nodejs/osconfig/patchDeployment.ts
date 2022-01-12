@@ -29,7 +29,31 @@ import * as utilities from "../utilities";
  *     oneTimeSchedule: {
  *         executeTime: "2999-10-10T10:10:10.045123456Z",
  *     },
- *     patchDeploymentId: "patch-deploy-inst",
+ *     patchDeploymentId: "patch-deploy",
+ * });
+ * ```
+ * ### Os Config Patch Deployment Daily
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const patch = new gcp.osconfig.PatchDeployment("patch", {
+ *     instanceFilter: {
+ *         all: true,
+ *     },
+ *     patchDeploymentId: "patch-deploy",
+ *     recurringSchedule: {
+ *         timeOfDay: {
+ *             hours: 0,
+ *             minutes: 30,
+ *             nanos: 20,
+ *             seconds: 30,
+ *         },
+ *         timeZone: {
+ *             id: "America/New_York",
+ *         },
+ *     },
  * });
  * ```
  * ### Os Config Patch Deployment Instance
@@ -63,7 +87,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const patch = new gcp.osconfig.PatchDeployment("patch", {
- *     patchDeploymentId: "patch-deploy-inst",
+ *     patchDeploymentId: "patch-deploy",
  *     instanceFilter: {
  *         instances: [foobar.id],
  *     },
@@ -170,7 +194,7 @@ import * as utilities from "../utilities";
  *             categories: ["security"],
  *         },
  *     },
- *     patchDeploymentId: "patch-deploy-inst",
+ *     patchDeploymentId: "patch-deploy",
  *     recurringSchedule: {
  *         monthly: {
  *             weekDayOfMonth: {

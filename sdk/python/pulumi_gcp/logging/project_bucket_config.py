@@ -243,7 +243,7 @@ class ProjectBucketConfig(pulumi.CustomResource):
             project_id="your-project-id",
             org_id="123456789")
         basic = gcp.logging.ProjectBucketConfig("basic",
-            project=default.name,
+            project=default.id,
             location="global",
             retention_days=30,
             bucket_id="_Default")
@@ -301,7 +301,7 @@ class ProjectBucketConfig(pulumi.CustomResource):
             project_id="your-project-id",
             org_id="123456789")
         basic = gcp.logging.ProjectBucketConfig("basic",
-            project=default.name,
+            project=default.id,
             location="global",
             retention_days=30,
             bucket_id="_Default")

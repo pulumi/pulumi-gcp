@@ -112,6 +112,8 @@ if typing.TYPE_CHECKING:
     ml = __ml
     import pulumi_gcp.monitoring as __monitoring
     monitoring = __monitoring
+    import pulumi_gcp.networkconnectivity as __networkconnectivity
+    networkconnectivity = __networkconnectivity
     import pulumi_gcp.networkmanagement as __networkmanagement
     networkmanagement = __networkmanagement
     import pulumi_gcp.networkservices as __networkservices
@@ -218,6 +220,7 @@ else:
     memcache = _utilities.lazy_import('pulumi_gcp.memcache')
     ml = _utilities.lazy_import('pulumi_gcp.ml')
     monitoring = _utilities.lazy_import('pulumi_gcp.monitoring')
+    networkconnectivity = _utilities.lazy_import('pulumi_gcp.networkconnectivity')
     networkmanagement = _utilities.lazy_import('pulumi_gcp.networkmanagement')
     networkservices = _utilities.lazy_import('pulumi_gcp.networkservices')
     notebooks = _utilities.lazy_import('pulumi_gcp.notebooks')
@@ -3367,6 +3370,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.monitoring",
   "classes": {
    "gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig": "UptimeCheckConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networkconnectivity/hub",
+  "fqn": "pulumi_gcp.networkconnectivity",
+  "classes": {
+   "gcp:networkconnectivity/hub:Hub": "Hub"
   }
  },
  {

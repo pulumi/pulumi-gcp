@@ -7048,6 +7048,7 @@ export namespace composer {
         environmentSize: string;
         gkeCluster: string;
         maintenanceWindow: outputs.composer.EnvironmentConfigMaintenanceWindow;
+        masterAuthorizedNetworksConfig?: outputs.composer.EnvironmentConfigMasterAuthorizedNetworksConfig;
         nodeConfig: outputs.composer.EnvironmentConfigNodeConfig;
         nodeCount: number;
         privateEnvironmentConfig: outputs.composer.EnvironmentConfigPrivateEnvironmentConfig;
@@ -7069,6 +7070,16 @@ export namespace composer {
         endTime: string;
         recurrence: string;
         startTime: string;
+    }
+
+    export interface EnvironmentConfigMasterAuthorizedNetworksConfig {
+        cidrBlocks?: outputs.composer.EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock[];
+        enabled: boolean;
+    }
+
+    export interface EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock {
+        cidrBlock: string;
+        displayName?: string;
     }
 
     export interface EnvironmentConfigNodeConfig {
@@ -7160,6 +7171,7 @@ export namespace composer {
         environmentSize: string;
         gkeCluster: string;
         maintenanceWindows: outputs.composer.GetEnvironmentConfigMaintenanceWindow[];
+        masterAuthorizedNetworksConfigs: outputs.composer.GetEnvironmentConfigMasterAuthorizedNetworksConfig[];
         nodeConfigs: outputs.composer.GetEnvironmentConfigNodeConfig[];
         nodeCount: number;
         privateEnvironmentConfigs: outputs.composer.GetEnvironmentConfigPrivateEnvironmentConfig[];
@@ -7181,6 +7193,16 @@ export namespace composer {
         endTime: string;
         recurrence: string;
         startTime: string;
+    }
+
+    export interface GetEnvironmentConfigMasterAuthorizedNetworksConfig {
+        cidrBlocks: outputs.composer.GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock[];
+        enabled: boolean;
+    }
+
+    export interface GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock {
+        cidrBlock: string;
+        displayName: string;
     }
 
     export interface GetEnvironmentConfigNodeConfig {
@@ -17082,6 +17104,14 @@ export namespace container {
         clusterDnsScope?: string;
     }
 
+    export interface ClusterIdentityServiceConfig {
+        /**
+         * Enable the PodSecurityPolicy controller for this cluster.
+         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         */
+        enabled?: boolean;
+    }
+
     export interface ClusterIpAllocationPolicy {
         /**
          * The IP address range for the cluster pod IPs.
@@ -18001,6 +18031,10 @@ export namespace container {
         clusterDnsScope: string;
     }
 
+    export interface GetClusterIdentityServiceConfig {
+        enabled: boolean;
+    }
+
     export interface GetClusterIpAllocationPolicy {
         clusterIpv4CidrBlock: string;
         clusterSecondaryRangeName: string;
@@ -18407,6 +18441,7 @@ export namespace container {
          */
         maxUnavailable: number;
     }
+
 }
 
 export namespace containeranalysis {
@@ -25606,6 +25641,13 @@ export namespace monitoring {
          */
         port: number;
     }
+}
+
+export namespace networkconnectivity {
+    export interface HubRoutingVpc {
+        uri: string;
+    }
+
 }
 
 export namespace networkmanagement {

@@ -8997,6 +8997,147 @@ func (o ClusterDnsConfigPtrOutput) ClusterDnsScope() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ClusterIdentityServiceConfig struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// ClusterIdentityServiceConfigInput is an input type that accepts ClusterIdentityServiceConfigArgs and ClusterIdentityServiceConfigOutput values.
+// You can construct a concrete instance of `ClusterIdentityServiceConfigInput` via:
+//
+//          ClusterIdentityServiceConfigArgs{...}
+type ClusterIdentityServiceConfigInput interface {
+	pulumi.Input
+
+	ToClusterIdentityServiceConfigOutput() ClusterIdentityServiceConfigOutput
+	ToClusterIdentityServiceConfigOutputWithContext(context.Context) ClusterIdentityServiceConfigOutput
+}
+
+type ClusterIdentityServiceConfigArgs struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ClusterIdentityServiceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterIdentityServiceConfig)(nil)).Elem()
+}
+
+func (i ClusterIdentityServiceConfigArgs) ToClusterIdentityServiceConfigOutput() ClusterIdentityServiceConfigOutput {
+	return i.ToClusterIdentityServiceConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterIdentityServiceConfigArgs) ToClusterIdentityServiceConfigOutputWithContext(ctx context.Context) ClusterIdentityServiceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIdentityServiceConfigOutput)
+}
+
+func (i ClusterIdentityServiceConfigArgs) ToClusterIdentityServiceConfigPtrOutput() ClusterIdentityServiceConfigPtrOutput {
+	return i.ToClusterIdentityServiceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterIdentityServiceConfigArgs) ToClusterIdentityServiceConfigPtrOutputWithContext(ctx context.Context) ClusterIdentityServiceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIdentityServiceConfigOutput).ToClusterIdentityServiceConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterIdentityServiceConfigPtrInput is an input type that accepts ClusterIdentityServiceConfigArgs, ClusterIdentityServiceConfigPtr and ClusterIdentityServiceConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterIdentityServiceConfigPtrInput` via:
+//
+//          ClusterIdentityServiceConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterIdentityServiceConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterIdentityServiceConfigPtrOutput() ClusterIdentityServiceConfigPtrOutput
+	ToClusterIdentityServiceConfigPtrOutputWithContext(context.Context) ClusterIdentityServiceConfigPtrOutput
+}
+
+type clusterIdentityServiceConfigPtrType ClusterIdentityServiceConfigArgs
+
+func ClusterIdentityServiceConfigPtr(v *ClusterIdentityServiceConfigArgs) ClusterIdentityServiceConfigPtrInput {
+	return (*clusterIdentityServiceConfigPtrType)(v)
+}
+
+func (*clusterIdentityServiceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterIdentityServiceConfig)(nil)).Elem()
+}
+
+func (i *clusterIdentityServiceConfigPtrType) ToClusterIdentityServiceConfigPtrOutput() ClusterIdentityServiceConfigPtrOutput {
+	return i.ToClusterIdentityServiceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterIdentityServiceConfigPtrType) ToClusterIdentityServiceConfigPtrOutputWithContext(ctx context.Context) ClusterIdentityServiceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIdentityServiceConfigPtrOutput)
+}
+
+type ClusterIdentityServiceConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterIdentityServiceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterIdentityServiceConfig)(nil)).Elem()
+}
+
+func (o ClusterIdentityServiceConfigOutput) ToClusterIdentityServiceConfigOutput() ClusterIdentityServiceConfigOutput {
+	return o
+}
+
+func (o ClusterIdentityServiceConfigOutput) ToClusterIdentityServiceConfigOutputWithContext(ctx context.Context) ClusterIdentityServiceConfigOutput {
+	return o
+}
+
+func (o ClusterIdentityServiceConfigOutput) ToClusterIdentityServiceConfigPtrOutput() ClusterIdentityServiceConfigPtrOutput {
+	return o.ToClusterIdentityServiceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterIdentityServiceConfigOutput) ToClusterIdentityServiceConfigPtrOutputWithContext(ctx context.Context) ClusterIdentityServiceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterIdentityServiceConfig) *ClusterIdentityServiceConfig {
+		return &v
+	}).(ClusterIdentityServiceConfigPtrOutput)
+}
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+func (o ClusterIdentityServiceConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterIdentityServiceConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ClusterIdentityServiceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterIdentityServiceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterIdentityServiceConfig)(nil)).Elem()
+}
+
+func (o ClusterIdentityServiceConfigPtrOutput) ToClusterIdentityServiceConfigPtrOutput() ClusterIdentityServiceConfigPtrOutput {
+	return o
+}
+
+func (o ClusterIdentityServiceConfigPtrOutput) ToClusterIdentityServiceConfigPtrOutputWithContext(ctx context.Context) ClusterIdentityServiceConfigPtrOutput {
+	return o
+}
+
+func (o ClusterIdentityServiceConfigPtrOutput) Elem() ClusterIdentityServiceConfigOutput {
+	return o.ApplyT(func(v *ClusterIdentityServiceConfig) ClusterIdentityServiceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterIdentityServiceConfig
+		return ret
+	}).(ClusterIdentityServiceConfigOutput)
+}
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+func (o ClusterIdentityServiceConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterIdentityServiceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type ClusterIpAllocationPolicy struct {
 	// The IP address range for the cluster pod IPs.
 	// Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
@@ -21672,6 +21813,100 @@ func (o GetClusterDnsConfigArrayOutput) Index(i pulumi.IntInput) GetClusterDnsCo
 	}).(GetClusterDnsConfigOutput)
 }
 
+type GetClusterIdentityServiceConfig struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterIdentityServiceConfigInput is an input type that accepts GetClusterIdentityServiceConfigArgs and GetClusterIdentityServiceConfigOutput values.
+// You can construct a concrete instance of `GetClusterIdentityServiceConfigInput` via:
+//
+//          GetClusterIdentityServiceConfigArgs{...}
+type GetClusterIdentityServiceConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterIdentityServiceConfigOutput() GetClusterIdentityServiceConfigOutput
+	ToGetClusterIdentityServiceConfigOutputWithContext(context.Context) GetClusterIdentityServiceConfigOutput
+}
+
+type GetClusterIdentityServiceConfigArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterIdentityServiceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterIdentityServiceConfig)(nil)).Elem()
+}
+
+func (i GetClusterIdentityServiceConfigArgs) ToGetClusterIdentityServiceConfigOutput() GetClusterIdentityServiceConfigOutput {
+	return i.ToGetClusterIdentityServiceConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterIdentityServiceConfigArgs) ToGetClusterIdentityServiceConfigOutputWithContext(ctx context.Context) GetClusterIdentityServiceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterIdentityServiceConfigOutput)
+}
+
+// GetClusterIdentityServiceConfigArrayInput is an input type that accepts GetClusterIdentityServiceConfigArray and GetClusterIdentityServiceConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterIdentityServiceConfigArrayInput` via:
+//
+//          GetClusterIdentityServiceConfigArray{ GetClusterIdentityServiceConfigArgs{...} }
+type GetClusterIdentityServiceConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterIdentityServiceConfigArrayOutput() GetClusterIdentityServiceConfigArrayOutput
+	ToGetClusterIdentityServiceConfigArrayOutputWithContext(context.Context) GetClusterIdentityServiceConfigArrayOutput
+}
+
+type GetClusterIdentityServiceConfigArray []GetClusterIdentityServiceConfigInput
+
+func (GetClusterIdentityServiceConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterIdentityServiceConfig)(nil)).Elem()
+}
+
+func (i GetClusterIdentityServiceConfigArray) ToGetClusterIdentityServiceConfigArrayOutput() GetClusterIdentityServiceConfigArrayOutput {
+	return i.ToGetClusterIdentityServiceConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterIdentityServiceConfigArray) ToGetClusterIdentityServiceConfigArrayOutputWithContext(ctx context.Context) GetClusterIdentityServiceConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterIdentityServiceConfigArrayOutput)
+}
+
+type GetClusterIdentityServiceConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterIdentityServiceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterIdentityServiceConfig)(nil)).Elem()
+}
+
+func (o GetClusterIdentityServiceConfigOutput) ToGetClusterIdentityServiceConfigOutput() GetClusterIdentityServiceConfigOutput {
+	return o
+}
+
+func (o GetClusterIdentityServiceConfigOutput) ToGetClusterIdentityServiceConfigOutputWithContext(ctx context.Context) GetClusterIdentityServiceConfigOutput {
+	return o
+}
+
+func (o GetClusterIdentityServiceConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterIdentityServiceConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterIdentityServiceConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterIdentityServiceConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterIdentityServiceConfig)(nil)).Elem()
+}
+
+func (o GetClusterIdentityServiceConfigArrayOutput) ToGetClusterIdentityServiceConfigArrayOutput() GetClusterIdentityServiceConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterIdentityServiceConfigArrayOutput) ToGetClusterIdentityServiceConfigArrayOutputWithContext(ctx context.Context) GetClusterIdentityServiceConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterIdentityServiceConfigArrayOutput) Index(i pulumi.IntInput) GetClusterIdentityServiceConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterIdentityServiceConfig {
+		return vs[0].([]GetClusterIdentityServiceConfig)[vs[1].(int)]
+	}).(GetClusterIdentityServiceConfigOutput)
+}
+
 type GetClusterIpAllocationPolicy struct {
 	ClusterIpv4CidrBlock       string `pulumi:"clusterIpv4CidrBlock"`
 	ClusterSecondaryRangeName  string `pulumi:"clusterSecondaryRangeName"`
@@ -26852,6 +27087,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDefaultSnatStatusPtrInput)(nil)).Elem(), ClusterDefaultSnatStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDnsConfigInput)(nil)).Elem(), ClusterDnsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDnsConfigPtrInput)(nil)).Elem(), ClusterDnsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIdentityServiceConfigInput)(nil)).Elem(), ClusterIdentityServiceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIdentityServiceConfigPtrInput)(nil)).Elem(), ClusterIdentityServiceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIpAllocationPolicyInput)(nil)).Elem(), ClusterIpAllocationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIpAllocationPolicyPtrInput)(nil)).Elem(), ClusterIpAllocationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterLoggingConfigInput)(nil)).Elem(), ClusterLoggingConfigArgs{})
@@ -27012,6 +27249,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterDefaultSnatStatusArrayInput)(nil)).Elem(), GetClusterDefaultSnatStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterDnsConfigInput)(nil)).Elem(), GetClusterDnsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterDnsConfigArrayInput)(nil)).Elem(), GetClusterDnsConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterIdentityServiceConfigInput)(nil)).Elem(), GetClusterIdentityServiceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterIdentityServiceConfigArrayInput)(nil)).Elem(), GetClusterIdentityServiceConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterIpAllocationPolicyInput)(nil)).Elem(), GetClusterIpAllocationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterIpAllocationPolicyArrayInput)(nil)).Elem(), GetClusterIpAllocationPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterLoggingConfigInput)(nil)).Elem(), GetClusterLoggingConfigArgs{})
@@ -27218,6 +27457,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterDefaultSnatStatusPtrOutput{})
 	pulumi.RegisterOutputType(ClusterDnsConfigOutput{})
 	pulumi.RegisterOutputType(ClusterDnsConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterIdentityServiceConfigOutput{})
+	pulumi.RegisterOutputType(ClusterIdentityServiceConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterIpAllocationPolicyOutput{})
 	pulumi.RegisterOutputType(ClusterIpAllocationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ClusterLoggingConfigOutput{})
@@ -27378,6 +27619,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterDefaultSnatStatusArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterDnsConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterDnsConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterIdentityServiceConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterIdentityServiceConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterIpAllocationPolicyOutput{})
 	pulumi.RegisterOutputType(GetClusterIpAllocationPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterLoggingConfigOutput{})

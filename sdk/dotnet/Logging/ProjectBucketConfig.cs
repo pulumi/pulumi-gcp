@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.Logging
     ///         });
     ///         var basic = new Gcp.Logging.ProjectBucketConfig("basic", new Gcp.Logging.ProjectBucketConfigArgs
     ///         {
-    ///             Project = @default.Name,
+    ///             Project = @default.Id,
     ///             Location = "global",
     ///             RetentionDays = 30,
     ///             BucketId = "_Default",

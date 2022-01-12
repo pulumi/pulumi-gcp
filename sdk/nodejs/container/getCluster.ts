@@ -89,6 +89,7 @@ export interface GetClusterResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly identityServiceConfigs: outputs.container.GetClusterIdentityServiceConfig[];
     readonly initialNodeCount: number;
     readonly ipAllocationPolicies: outputs.container.GetClusterIpAllocationPolicy[];
     readonly labelFingerprint: string;

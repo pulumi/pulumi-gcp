@@ -475,7 +475,30 @@ class PatchDeployment(pulumi.CustomResource):
             one_time_schedule=gcp.osconfig.PatchDeploymentOneTimeScheduleArgs(
                 execute_time="2999-10-10T10:10:10.045123456Z",
             ),
-            patch_deployment_id="patch-deploy-inst")
+            patch_deployment_id="patch-deploy")
+        ```
+        ### Os Config Patch Deployment Daily
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        patch = gcp.osconfig.PatchDeployment("patch",
+            instance_filter=gcp.osconfig.PatchDeploymentInstanceFilterArgs(
+                all=True,
+            ),
+            patch_deployment_id="patch-deploy",
+            recurring_schedule=gcp.osconfig.PatchDeploymentRecurringScheduleArgs(
+                time_of_day=gcp.osconfig.PatchDeploymentRecurringScheduleTimeOfDayArgs(
+                    hours=0,
+                    minutes=30,
+                    nanos=20,
+                    seconds=30,
+                ),
+                time_zone=gcp.osconfig.PatchDeploymentRecurringScheduleTimeZoneArgs(
+                    id="America/New_York",
+                ),
+            ))
         ```
         ### Os Config Patch Deployment Instance
 
@@ -505,7 +528,7 @@ class PatchDeployment(pulumi.CustomResource):
                 "foo": "bar",
             })
         patch = gcp.osconfig.PatchDeployment("patch",
-            patch_deployment_id="patch-deploy-inst",
+            patch_deployment_id="patch-deploy",
             instance_filter=gcp.osconfig.PatchDeploymentInstanceFilterArgs(
                 instances=[foobar.id],
             ),
@@ -611,7 +634,7 @@ class PatchDeployment(pulumi.CustomResource):
                     categories=["security"],
                 ),
             ),
-            patch_deployment_id="patch-deploy-inst",
+            patch_deployment_id="patch-deploy",
             recurring_schedule=gcp.osconfig.PatchDeploymentRecurringScheduleArgs(
                 monthly=gcp.osconfig.PatchDeploymentRecurringScheduleMonthlyArgs(
                     week_day_of_month=gcp.osconfig.PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs(
@@ -707,7 +730,30 @@ class PatchDeployment(pulumi.CustomResource):
             one_time_schedule=gcp.osconfig.PatchDeploymentOneTimeScheduleArgs(
                 execute_time="2999-10-10T10:10:10.045123456Z",
             ),
-            patch_deployment_id="patch-deploy-inst")
+            patch_deployment_id="patch-deploy")
+        ```
+        ### Os Config Patch Deployment Daily
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        patch = gcp.osconfig.PatchDeployment("patch",
+            instance_filter=gcp.osconfig.PatchDeploymentInstanceFilterArgs(
+                all=True,
+            ),
+            patch_deployment_id="patch-deploy",
+            recurring_schedule=gcp.osconfig.PatchDeploymentRecurringScheduleArgs(
+                time_of_day=gcp.osconfig.PatchDeploymentRecurringScheduleTimeOfDayArgs(
+                    hours=0,
+                    minutes=30,
+                    nanos=20,
+                    seconds=30,
+                ),
+                time_zone=gcp.osconfig.PatchDeploymentRecurringScheduleTimeZoneArgs(
+                    id="America/New_York",
+                ),
+            ))
         ```
         ### Os Config Patch Deployment Instance
 
@@ -737,7 +783,7 @@ class PatchDeployment(pulumi.CustomResource):
                 "foo": "bar",
             })
         patch = gcp.osconfig.PatchDeployment("patch",
-            patch_deployment_id="patch-deploy-inst",
+            patch_deployment_id="patch-deploy",
             instance_filter=gcp.osconfig.PatchDeploymentInstanceFilterArgs(
                 instances=[foobar.id],
             ),
@@ -843,7 +889,7 @@ class PatchDeployment(pulumi.CustomResource):
                     categories=["security"],
                 ),
             ),
-            patch_deployment_id="patch-deploy-inst",
+            patch_deployment_id="patch-deploy",
             recurring_schedule=gcp.osconfig.PatchDeploymentRecurringScheduleArgs(
                 monthly=gcp.osconfig.PatchDeploymentRecurringScheduleMonthlyArgs(
                     week_day_of_month=gcp.osconfig.PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs(

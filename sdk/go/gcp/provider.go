@@ -84,6 +84,7 @@ type Provider struct {
 	MemcacheCustomEndpoint             pulumi.StringPtrOutput `pulumi:"memcacheCustomEndpoint"`
 	MlEngineCustomEndpoint             pulumi.StringPtrOutput `pulumi:"mlEngineCustomEndpoint"`
 	MonitoringCustomEndpoint           pulumi.StringPtrOutput `pulumi:"monitoringCustomEndpoint"`
+	NetworkConnectivityCustomEndpoint  pulumi.StringPtrOutput `pulumi:"networkConnectivityCustomEndpoint"`
 	NetworkManagementCustomEndpoint    pulumi.StringPtrOutput `pulumi:"networkManagementCustomEndpoint"`
 	NetworkServicesCustomEndpoint      pulumi.StringPtrOutput `pulumi:"networkServicesCustomEndpoint"`
 	NotebooksCustomEndpoint            pulumi.StringPtrOutput `pulumi:"notebooksCustomEndpoint"`
@@ -218,6 +219,7 @@ type providerArgs struct {
 	MemcacheCustomEndpoint             *string           `pulumi:"memcacheCustomEndpoint"`
 	MlEngineCustomEndpoint             *string           `pulumi:"mlEngineCustomEndpoint"`
 	MonitoringCustomEndpoint           *string           `pulumi:"monitoringCustomEndpoint"`
+	NetworkConnectivityCustomEndpoint  *string           `pulumi:"networkConnectivityCustomEndpoint"`
 	NetworkManagementCustomEndpoint    *string           `pulumi:"networkManagementCustomEndpoint"`
 	NetworkServicesCustomEndpoint      *string           `pulumi:"networkServicesCustomEndpoint"`
 	NotebooksCustomEndpoint            *string           `pulumi:"notebooksCustomEndpoint"`
@@ -331,6 +333,7 @@ type ProviderArgs struct {
 	MemcacheCustomEndpoint             pulumi.StringPtrInput
 	MlEngineCustomEndpoint             pulumi.StringPtrInput
 	MonitoringCustomEndpoint           pulumi.StringPtrInput
+	NetworkConnectivityCustomEndpoint  pulumi.StringPtrInput
 	NetworkManagementCustomEndpoint    pulumi.StringPtrInput
 	NetworkServicesCustomEndpoint      pulumi.StringPtrInput
 	NotebooksCustomEndpoint            pulumi.StringPtrInput

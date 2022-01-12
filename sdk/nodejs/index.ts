@@ -60,6 +60,7 @@ import * as logging from "./logging";
 import * as memcache from "./memcache";
 import * as ml from "./ml";
 import * as monitoring from "./monitoring";
+import * as networkconnectivity from "./networkconnectivity";
 import * as networkmanagement from "./networkmanagement";
 import * as networkservices from "./networkservices";
 import * as notebooks from "./notebooks";
@@ -141,6 +142,7 @@ export {
     memcache,
     ml,
     monitoring,
+    networkconnectivity,
     networkmanagement,
     networkservices,
     notebooks,

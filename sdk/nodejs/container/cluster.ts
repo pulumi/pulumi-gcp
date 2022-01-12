@@ -251,6 +251,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly endpoint!: pulumi.Output<string>;
     /**
+     * . Structure is documented below.
+     */
+    public readonly identityServiceConfig!: pulumi.Output<outputs.container.ClusterIdentityServiceConfig>;
+    /**
      * The number of nodes to create in this
      * cluster's default node pool. In regional or multi-zonal clusters, this is the
      * number of nodes per zone. Must be set if `nodePool` is not set. If you're using
@@ -525,6 +529,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["enableShieldedNodes"] = state ? state.enableShieldedNodes : undefined;
             inputs["enableTpu"] = state ? state.enableTpu : undefined;
             inputs["endpoint"] = state ? state.endpoint : undefined;
+            inputs["identityServiceConfig"] = state ? state.identityServiceConfig : undefined;
             inputs["initialNodeCount"] = state ? state.initialNodeCount : undefined;
             inputs["ipAllocationPolicy"] = state ? state.ipAllocationPolicy : undefined;
             inputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
@@ -584,6 +589,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["enableLegacyAbac"] = args ? args.enableLegacyAbac : undefined;
             inputs["enableShieldedNodes"] = args ? args.enableShieldedNodes : undefined;
             inputs["enableTpu"] = args ? args.enableTpu : undefined;
+            inputs["identityServiceConfig"] = args ? args.identityServiceConfig : undefined;
             inputs["initialNodeCount"] = args ? args.initialNodeCount : undefined;
             inputs["ipAllocationPolicy"] = args ? args.ipAllocationPolicy : undefined;
             inputs["location"] = args ? args.location : undefined;
@@ -743,6 +749,10 @@ export interface ClusterState {
      * The IP address of this cluster's Kubernetes master.
      */
     endpoint?: pulumi.Input<string>;
+    /**
+     * . Structure is documented below.
+     */
+    identityServiceConfig?: pulumi.Input<inputs.container.ClusterIdentityServiceConfig>;
     /**
      * The number of nodes to create in this
      * cluster's default node pool. In regional or multi-zonal clusters, this is the
@@ -1094,6 +1104,10 @@ export interface ClusterArgs {
      * See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
      */
     enableTpu?: pulumi.Input<boolean>;
+    /**
+     * . Structure is documented below.
+     */
+    identityServiceConfig?: pulumi.Input<inputs.container.ClusterIdentityServiceConfig>;
     /**
      * The number of nodes to create in this
      * cluster's default node pool. In regional or multi-zonal clusters, this is the

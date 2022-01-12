@@ -38,7 +38,7 @@ import (
 // 			return err
 // 		}
 // 		_, err = logging.NewProjectBucketConfig(ctx, "basic", &logging.ProjectBucketConfigArgs{
-// 			Project:       _default.Name,
+// 			Project:       _default.ID(),
 // 			Location:      pulumi.String("global"),
 // 			RetentionDays: pulumi.Int(30),
 // 			BucketId:      pulumi.String("_Default"),
