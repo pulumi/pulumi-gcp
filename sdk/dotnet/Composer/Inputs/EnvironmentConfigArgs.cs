@@ -33,6 +33,9 @@ namespace Pulumi.Gcp.Composer.Inputs
         [Input("maintenanceWindow")]
         public Input<Inputs.EnvironmentConfigMaintenanceWindowArgs>? MaintenanceWindow { get; set; }
 
+        [Input("masterAuthorizedNetworksConfig")]
+        public Input<Inputs.EnvironmentConfigMasterAuthorizedNetworksConfigArgs>? MasterAuthorizedNetworksConfig { get; set; }
+
         [Input("nodeConfig")]
         public Input<Inputs.EnvironmentConfigNodeConfigArgs>? NodeConfig { get; set; }
 

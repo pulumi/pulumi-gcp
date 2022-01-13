@@ -40,7 +40,43 @@ import (
 // 			OneTimeSchedule: &osconfig.PatchDeploymentOneTimeScheduleArgs{
 // 				ExecuteTime: pulumi.String("2999-10-10T10:10:10.045123456Z"),
 // 			},
-// 			PatchDeploymentId: pulumi.String("patch-deploy-inst"),
+// 			PatchDeploymentId: pulumi.String("patch-deploy"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Os Config Patch Deployment Daily
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/osconfig"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := osconfig.NewPatchDeployment(ctx, "patch", &osconfig.PatchDeploymentArgs{
+// 			InstanceFilter: &osconfig.PatchDeploymentInstanceFilterArgs{
+// 				All: pulumi.Bool(true),
+// 			},
+// 			PatchDeploymentId: pulumi.String("patch-deploy"),
+// 			RecurringSchedule: &osconfig.PatchDeploymentRecurringScheduleArgs{
+// 				TimeOfDay: &osconfig.PatchDeploymentRecurringScheduleTimeOfDayArgs{
+// 					Hours:   pulumi.Int(0),
+// 					Minutes: pulumi.Int(30),
+// 					Nanos:   pulumi.Int(20),
+// 					Seconds: pulumi.Int(30),
+// 				},
+// 				TimeZone: &osconfig.PatchDeploymentRecurringScheduleTimeZoneArgs{
+// 					Id: pulumi.String("America/New_York"),
+// 				},
+// 			},
 // 		})
 // 		if err != nil {
 // 			return err
@@ -97,7 +133,7 @@ import (
 // 			return err
 // 		}
 // 		_, err = osconfig.NewPatchDeployment(ctx, "patch", &osconfig.PatchDeploymentArgs{
-// 			PatchDeploymentId: pulumi.String("patch-deploy-inst"),
+// 			PatchDeploymentId: pulumi.String("patch-deploy"),
 // 			InstanceFilter: &osconfig.PatchDeploymentInstanceFilterArgs{
 // 				Instances: pulumi.StringArray{
 // 					foobar.ID(),
@@ -230,7 +266,7 @@ import (
 // 					},
 // 				},
 // 			},
-// 			PatchDeploymentId: pulumi.String("patch-deploy-inst"),
+// 			PatchDeploymentId: pulumi.String("patch-deploy"),
 // 			RecurringSchedule: &osconfig.PatchDeploymentRecurringScheduleArgs{
 // 				Monthly: &osconfig.PatchDeploymentRecurringScheduleMonthlyArgs{
 // 					WeekDayOfMonth: &osconfig.PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs{

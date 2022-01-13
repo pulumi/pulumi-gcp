@@ -11,20 +11,21 @@ import (
 )
 
 type EnvironmentConfig struct {
-	AirflowUri                    *string                                         `pulumi:"airflowUri"`
-	DagGcsPrefix                  *string                                         `pulumi:"dagGcsPrefix"`
-	DatabaseConfig                *EnvironmentConfigDatabaseConfig                `pulumi:"databaseConfig"`
-	EncryptionConfig              *EnvironmentConfigEncryptionConfig              `pulumi:"encryptionConfig"`
-	EnvironmentSize               *string                                         `pulumi:"environmentSize"`
-	GkeCluster                    *string                                         `pulumi:"gkeCluster"`
-	MaintenanceWindow             *EnvironmentConfigMaintenanceWindow             `pulumi:"maintenanceWindow"`
-	NodeConfig                    *EnvironmentConfigNodeConfig                    `pulumi:"nodeConfig"`
-	NodeCount                     *int                                            `pulumi:"nodeCount"`
-	PrivateEnvironmentConfig      *EnvironmentConfigPrivateEnvironmentConfig      `pulumi:"privateEnvironmentConfig"`
-	SoftwareConfig                *EnvironmentConfigSoftwareConfig                `pulumi:"softwareConfig"`
-	WebServerConfig               *EnvironmentConfigWebServerConfig               `pulumi:"webServerConfig"`
-	WebServerNetworkAccessControl *EnvironmentConfigWebServerNetworkAccessControl `pulumi:"webServerNetworkAccessControl"`
-	WorkloadsConfig               *EnvironmentConfigWorkloadsConfig               `pulumi:"workloadsConfig"`
+	AirflowUri                     *string                                          `pulumi:"airflowUri"`
+	DagGcsPrefix                   *string                                          `pulumi:"dagGcsPrefix"`
+	DatabaseConfig                 *EnvironmentConfigDatabaseConfig                 `pulumi:"databaseConfig"`
+	EncryptionConfig               *EnvironmentConfigEncryptionConfig               `pulumi:"encryptionConfig"`
+	EnvironmentSize                *string                                          `pulumi:"environmentSize"`
+	GkeCluster                     *string                                          `pulumi:"gkeCluster"`
+	MaintenanceWindow              *EnvironmentConfigMaintenanceWindow              `pulumi:"maintenanceWindow"`
+	MasterAuthorizedNetworksConfig *EnvironmentConfigMasterAuthorizedNetworksConfig `pulumi:"masterAuthorizedNetworksConfig"`
+	NodeConfig                     *EnvironmentConfigNodeConfig                     `pulumi:"nodeConfig"`
+	NodeCount                      *int                                             `pulumi:"nodeCount"`
+	PrivateEnvironmentConfig       *EnvironmentConfigPrivateEnvironmentConfig       `pulumi:"privateEnvironmentConfig"`
+	SoftwareConfig                 *EnvironmentConfigSoftwareConfig                 `pulumi:"softwareConfig"`
+	WebServerConfig                *EnvironmentConfigWebServerConfig                `pulumi:"webServerConfig"`
+	WebServerNetworkAccessControl  *EnvironmentConfigWebServerNetworkAccessControl  `pulumi:"webServerNetworkAccessControl"`
+	WorkloadsConfig                *EnvironmentConfigWorkloadsConfig                `pulumi:"workloadsConfig"`
 }
 
 // EnvironmentConfigInput is an input type that accepts EnvironmentConfigArgs and EnvironmentConfigOutput values.
@@ -39,20 +40,21 @@ type EnvironmentConfigInput interface {
 }
 
 type EnvironmentConfigArgs struct {
-	AirflowUri                    pulumi.StringPtrInput                                  `pulumi:"airflowUri"`
-	DagGcsPrefix                  pulumi.StringPtrInput                                  `pulumi:"dagGcsPrefix"`
-	DatabaseConfig                EnvironmentConfigDatabaseConfigPtrInput                `pulumi:"databaseConfig"`
-	EncryptionConfig              EnvironmentConfigEncryptionConfigPtrInput              `pulumi:"encryptionConfig"`
-	EnvironmentSize               pulumi.StringPtrInput                                  `pulumi:"environmentSize"`
-	GkeCluster                    pulumi.StringPtrInput                                  `pulumi:"gkeCluster"`
-	MaintenanceWindow             EnvironmentConfigMaintenanceWindowPtrInput             `pulumi:"maintenanceWindow"`
-	NodeConfig                    EnvironmentConfigNodeConfigPtrInput                    `pulumi:"nodeConfig"`
-	NodeCount                     pulumi.IntPtrInput                                     `pulumi:"nodeCount"`
-	PrivateEnvironmentConfig      EnvironmentConfigPrivateEnvironmentConfigPtrInput      `pulumi:"privateEnvironmentConfig"`
-	SoftwareConfig                EnvironmentConfigSoftwareConfigPtrInput                `pulumi:"softwareConfig"`
-	WebServerConfig               EnvironmentConfigWebServerConfigPtrInput               `pulumi:"webServerConfig"`
-	WebServerNetworkAccessControl EnvironmentConfigWebServerNetworkAccessControlPtrInput `pulumi:"webServerNetworkAccessControl"`
-	WorkloadsConfig               EnvironmentConfigWorkloadsConfigPtrInput               `pulumi:"workloadsConfig"`
+	AirflowUri                     pulumi.StringPtrInput                                   `pulumi:"airflowUri"`
+	DagGcsPrefix                   pulumi.StringPtrInput                                   `pulumi:"dagGcsPrefix"`
+	DatabaseConfig                 EnvironmentConfigDatabaseConfigPtrInput                 `pulumi:"databaseConfig"`
+	EncryptionConfig               EnvironmentConfigEncryptionConfigPtrInput               `pulumi:"encryptionConfig"`
+	EnvironmentSize                pulumi.StringPtrInput                                   `pulumi:"environmentSize"`
+	GkeCluster                     pulumi.StringPtrInput                                   `pulumi:"gkeCluster"`
+	MaintenanceWindow              EnvironmentConfigMaintenanceWindowPtrInput              `pulumi:"maintenanceWindow"`
+	MasterAuthorizedNetworksConfig EnvironmentConfigMasterAuthorizedNetworksConfigPtrInput `pulumi:"masterAuthorizedNetworksConfig"`
+	NodeConfig                     EnvironmentConfigNodeConfigPtrInput                     `pulumi:"nodeConfig"`
+	NodeCount                      pulumi.IntPtrInput                                      `pulumi:"nodeCount"`
+	PrivateEnvironmentConfig       EnvironmentConfigPrivateEnvironmentConfigPtrInput       `pulumi:"privateEnvironmentConfig"`
+	SoftwareConfig                 EnvironmentConfigSoftwareConfigPtrInput                 `pulumi:"softwareConfig"`
+	WebServerConfig                EnvironmentConfigWebServerConfigPtrInput                `pulumi:"webServerConfig"`
+	WebServerNetworkAccessControl  EnvironmentConfigWebServerNetworkAccessControlPtrInput  `pulumi:"webServerNetworkAccessControl"`
+	WorkloadsConfig                EnvironmentConfigWorkloadsConfigPtrInput                `pulumi:"workloadsConfig"`
 }
 
 func (EnvironmentConfigArgs) ElementType() reflect.Type {
@@ -158,6 +160,12 @@ func (o EnvironmentConfigOutput) GkeCluster() pulumi.StringPtrOutput {
 
 func (o EnvironmentConfigOutput) MaintenanceWindow() EnvironmentConfigMaintenanceWindowPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigMaintenanceWindow { return v.MaintenanceWindow }).(EnvironmentConfigMaintenanceWindowPtrOutput)
+}
+
+func (o EnvironmentConfigOutput) MasterAuthorizedNetworksConfig() EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigMasterAuthorizedNetworksConfig {
+		return v.MasterAuthorizedNetworksConfig
+	}).(EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput)
 }
 
 func (o EnvironmentConfigOutput) NodeConfig() EnvironmentConfigNodeConfigPtrOutput {
@@ -277,6 +285,15 @@ func (o EnvironmentConfigPtrOutput) MaintenanceWindow() EnvironmentConfigMainten
 		}
 		return v.MaintenanceWindow
 	}).(EnvironmentConfigMaintenanceWindowPtrOutput)
+}
+
+func (o EnvironmentConfigPtrOutput) MasterAuthorizedNetworksConfig() EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfig) *EnvironmentConfigMasterAuthorizedNetworksConfig {
+		if v == nil {
+			return nil
+		}
+		return v.MasterAuthorizedNetworksConfig
+	}).(EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput)
 }
 
 func (o EnvironmentConfigPtrOutput) NodeConfig() EnvironmentConfigNodeConfigPtrOutput {
@@ -769,6 +786,256 @@ func (o EnvironmentConfigMaintenanceWindowPtrOutput) StartTime() pulumi.StringPt
 		}
 		return &v.StartTime
 	}).(pulumi.StringPtrOutput)
+}
+
+type EnvironmentConfigMasterAuthorizedNetworksConfig struct {
+	CidrBlocks []EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock `pulumi:"cidrBlocks"`
+	Enabled    bool                                                       `pulumi:"enabled"`
+}
+
+// EnvironmentConfigMasterAuthorizedNetworksConfigInput is an input type that accepts EnvironmentConfigMasterAuthorizedNetworksConfigArgs and EnvironmentConfigMasterAuthorizedNetworksConfigOutput values.
+// You can construct a concrete instance of `EnvironmentConfigMasterAuthorizedNetworksConfigInput` via:
+//
+//          EnvironmentConfigMasterAuthorizedNetworksConfigArgs{...}
+type EnvironmentConfigMasterAuthorizedNetworksConfigInput interface {
+	pulumi.Input
+
+	ToEnvironmentConfigMasterAuthorizedNetworksConfigOutput() EnvironmentConfigMasterAuthorizedNetworksConfigOutput
+	ToEnvironmentConfigMasterAuthorizedNetworksConfigOutputWithContext(context.Context) EnvironmentConfigMasterAuthorizedNetworksConfigOutput
+}
+
+type EnvironmentConfigMasterAuthorizedNetworksConfigArgs struct {
+	CidrBlocks EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayInput `pulumi:"cidrBlocks"`
+	Enabled    pulumi.BoolInput                                                   `pulumi:"enabled"`
+}
+
+func (EnvironmentConfigMasterAuthorizedNetworksConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentConfigMasterAuthorizedNetworksConfig)(nil)).Elem()
+}
+
+func (i EnvironmentConfigMasterAuthorizedNetworksConfigArgs) ToEnvironmentConfigMasterAuthorizedNetworksConfigOutput() EnvironmentConfigMasterAuthorizedNetworksConfigOutput {
+	return i.ToEnvironmentConfigMasterAuthorizedNetworksConfigOutputWithContext(context.Background())
+}
+
+func (i EnvironmentConfigMasterAuthorizedNetworksConfigArgs) ToEnvironmentConfigMasterAuthorizedNetworksConfigOutputWithContext(ctx context.Context) EnvironmentConfigMasterAuthorizedNetworksConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigMasterAuthorizedNetworksConfigOutput)
+}
+
+func (i EnvironmentConfigMasterAuthorizedNetworksConfigArgs) ToEnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput() EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput {
+	return i.ToEnvironmentConfigMasterAuthorizedNetworksConfigPtrOutputWithContext(context.Background())
+}
+
+func (i EnvironmentConfigMasterAuthorizedNetworksConfigArgs) ToEnvironmentConfigMasterAuthorizedNetworksConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigMasterAuthorizedNetworksConfigOutput).ToEnvironmentConfigMasterAuthorizedNetworksConfigPtrOutputWithContext(ctx)
+}
+
+// EnvironmentConfigMasterAuthorizedNetworksConfigPtrInput is an input type that accepts EnvironmentConfigMasterAuthorizedNetworksConfigArgs, EnvironmentConfigMasterAuthorizedNetworksConfigPtr and EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput values.
+// You can construct a concrete instance of `EnvironmentConfigMasterAuthorizedNetworksConfigPtrInput` via:
+//
+//          EnvironmentConfigMasterAuthorizedNetworksConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type EnvironmentConfigMasterAuthorizedNetworksConfigPtrInput interface {
+	pulumi.Input
+
+	ToEnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput() EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput
+	ToEnvironmentConfigMasterAuthorizedNetworksConfigPtrOutputWithContext(context.Context) EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput
+}
+
+type environmentConfigMasterAuthorizedNetworksConfigPtrType EnvironmentConfigMasterAuthorizedNetworksConfigArgs
+
+func EnvironmentConfigMasterAuthorizedNetworksConfigPtr(v *EnvironmentConfigMasterAuthorizedNetworksConfigArgs) EnvironmentConfigMasterAuthorizedNetworksConfigPtrInput {
+	return (*environmentConfigMasterAuthorizedNetworksConfigPtrType)(v)
+}
+
+func (*environmentConfigMasterAuthorizedNetworksConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentConfigMasterAuthorizedNetworksConfig)(nil)).Elem()
+}
+
+func (i *environmentConfigMasterAuthorizedNetworksConfigPtrType) ToEnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput() EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput {
+	return i.ToEnvironmentConfigMasterAuthorizedNetworksConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *environmentConfigMasterAuthorizedNetworksConfigPtrType) ToEnvironmentConfigMasterAuthorizedNetworksConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput)
+}
+
+type EnvironmentConfigMasterAuthorizedNetworksConfigOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentConfigMasterAuthorizedNetworksConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentConfigMasterAuthorizedNetworksConfig)(nil)).Elem()
+}
+
+func (o EnvironmentConfigMasterAuthorizedNetworksConfigOutput) ToEnvironmentConfigMasterAuthorizedNetworksConfigOutput() EnvironmentConfigMasterAuthorizedNetworksConfigOutput {
+	return o
+}
+
+func (o EnvironmentConfigMasterAuthorizedNetworksConfigOutput) ToEnvironmentConfigMasterAuthorizedNetworksConfigOutputWithContext(ctx context.Context) EnvironmentConfigMasterAuthorizedNetworksConfigOutput {
+	return o
+}
+
+func (o EnvironmentConfigMasterAuthorizedNetworksConfigOutput) ToEnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput() EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput {
+	return o.ToEnvironmentConfigMasterAuthorizedNetworksConfigPtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentConfigMasterAuthorizedNetworksConfigOutput) ToEnvironmentConfigMasterAuthorizedNetworksConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentConfigMasterAuthorizedNetworksConfig) *EnvironmentConfigMasterAuthorizedNetworksConfig {
+		return &v
+	}).(EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput)
+}
+
+func (o EnvironmentConfigMasterAuthorizedNetworksConfigOutput) CidrBlocks() EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput {
+	return o.ApplyT(func(v EnvironmentConfigMasterAuthorizedNetworksConfig) []EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock {
+		return v.CidrBlocks
+	}).(EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput)
+}
+
+func (o EnvironmentConfigMasterAuthorizedNetworksConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v EnvironmentConfigMasterAuthorizedNetworksConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentConfigMasterAuthorizedNetworksConfig)(nil)).Elem()
+}
+
+func (o EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput) ToEnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput() EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput {
+	return o
+}
+
+func (o EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput) ToEnvironmentConfigMasterAuthorizedNetworksConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput {
+	return o
+}
+
+func (o EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput) Elem() EnvironmentConfigMasterAuthorizedNetworksConfigOutput {
+	return o.ApplyT(func(v *EnvironmentConfigMasterAuthorizedNetworksConfig) EnvironmentConfigMasterAuthorizedNetworksConfig {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentConfigMasterAuthorizedNetworksConfig
+		return ret
+	}).(EnvironmentConfigMasterAuthorizedNetworksConfigOutput)
+}
+
+func (o EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput) CidrBlocks() EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput {
+	return o.ApplyT(func(v *EnvironmentConfigMasterAuthorizedNetworksConfig) []EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock {
+		if v == nil {
+			return nil
+		}
+		return v.CidrBlocks
+	}).(EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput)
+}
+
+func (o EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfigMasterAuthorizedNetworksConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock struct {
+	CidrBlock   string  `pulumi:"cidrBlock"`
+	DisplayName *string `pulumi:"displayName"`
+}
+
+// EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockInput is an input type that accepts EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs and EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput values.
+// You can construct a concrete instance of `EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockInput` via:
+//
+//          EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs{...}
+type EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockInput interface {
+	pulumi.Input
+
+	ToEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput() EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput
+	ToEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutputWithContext(context.Context) EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput
+}
+
+type EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs struct {
+	CidrBlock   pulumi.StringInput    `pulumi:"cidrBlock"`
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+}
+
+func (EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock)(nil)).Elem()
+}
+
+func (i EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs) ToEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput() EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput {
+	return i.ToEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutputWithContext(context.Background())
+}
+
+func (i EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs) ToEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutputWithContext(ctx context.Context) EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput)
+}
+
+// EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayInput is an input type that accepts EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArray and EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput values.
+// You can construct a concrete instance of `EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayInput` via:
+//
+//          EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArray{ EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs{...} }
+type EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayInput interface {
+	pulumi.Input
+
+	ToEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput() EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput
+	ToEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutputWithContext(context.Context) EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput
+}
+
+type EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArray []EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockInput
+
+func (EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock)(nil)).Elem()
+}
+
+func (i EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArray) ToEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput() EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput {
+	return i.ToEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutputWithContext(context.Background())
+}
+
+func (i EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArray) ToEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutputWithContext(ctx context.Context) EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput)
+}
+
+type EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock)(nil)).Elem()
+}
+
+func (o EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput) ToEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput() EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput {
+	return o
+}
+
+func (o EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput) ToEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutputWithContext(ctx context.Context) EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput {
+	return o
+}
+
+func (o EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput) CidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock) string { return v.CidrBlock }).(pulumi.StringOutput)
+}
+
+func (o EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+type EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock)(nil)).Elem()
+}
+
+func (o EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput) ToEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput() EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput {
+	return o
+}
+
+func (o EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput) ToEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutputWithContext(ctx context.Context) EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput {
+	return o
+}
+
+func (o EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput) Index(i pulumi.IntInput) EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock {
+		return vs[0].([]EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock)[vs[1].(int)]
+	}).(EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput)
 }
 
 type EnvironmentConfigNodeConfig struct {
@@ -2750,20 +3017,21 @@ func (o EnvironmentConfigWorkloadsConfigWorkerPtrOutput) StorageGb() pulumi.Floa
 }
 
 type GetEnvironmentConfig struct {
-	AirflowUri                     string                                              `pulumi:"airflowUri"`
-	DagGcsPrefix                   string                                              `pulumi:"dagGcsPrefix"`
-	DatabaseConfigs                []GetEnvironmentConfigDatabaseConfig                `pulumi:"databaseConfigs"`
-	EncryptionConfigs              []GetEnvironmentConfigEncryptionConfig              `pulumi:"encryptionConfigs"`
-	EnvironmentSize                string                                              `pulumi:"environmentSize"`
-	GkeCluster                     string                                              `pulumi:"gkeCluster"`
-	MaintenanceWindows             []GetEnvironmentConfigMaintenanceWindow             `pulumi:"maintenanceWindows"`
-	NodeConfigs                    []GetEnvironmentConfigNodeConfig                    `pulumi:"nodeConfigs"`
-	NodeCount                      int                                                 `pulumi:"nodeCount"`
-	PrivateEnvironmentConfigs      []GetEnvironmentConfigPrivateEnvironmentConfig      `pulumi:"privateEnvironmentConfigs"`
-	SoftwareConfigs                []GetEnvironmentConfigSoftwareConfig                `pulumi:"softwareConfigs"`
-	WebServerConfigs               []GetEnvironmentConfigWebServerConfig               `pulumi:"webServerConfigs"`
-	WebServerNetworkAccessControls []GetEnvironmentConfigWebServerNetworkAccessControl `pulumi:"webServerNetworkAccessControls"`
-	WorkloadsConfigs               []GetEnvironmentConfigWorkloadsConfig               `pulumi:"workloadsConfigs"`
+	AirflowUri                      string                                               `pulumi:"airflowUri"`
+	DagGcsPrefix                    string                                               `pulumi:"dagGcsPrefix"`
+	DatabaseConfigs                 []GetEnvironmentConfigDatabaseConfig                 `pulumi:"databaseConfigs"`
+	EncryptionConfigs               []GetEnvironmentConfigEncryptionConfig               `pulumi:"encryptionConfigs"`
+	EnvironmentSize                 string                                               `pulumi:"environmentSize"`
+	GkeCluster                      string                                               `pulumi:"gkeCluster"`
+	MaintenanceWindows              []GetEnvironmentConfigMaintenanceWindow              `pulumi:"maintenanceWindows"`
+	MasterAuthorizedNetworksConfigs []GetEnvironmentConfigMasterAuthorizedNetworksConfig `pulumi:"masterAuthorizedNetworksConfigs"`
+	NodeConfigs                     []GetEnvironmentConfigNodeConfig                     `pulumi:"nodeConfigs"`
+	NodeCount                       int                                                  `pulumi:"nodeCount"`
+	PrivateEnvironmentConfigs       []GetEnvironmentConfigPrivateEnvironmentConfig       `pulumi:"privateEnvironmentConfigs"`
+	SoftwareConfigs                 []GetEnvironmentConfigSoftwareConfig                 `pulumi:"softwareConfigs"`
+	WebServerConfigs                []GetEnvironmentConfigWebServerConfig                `pulumi:"webServerConfigs"`
+	WebServerNetworkAccessControls  []GetEnvironmentConfigWebServerNetworkAccessControl  `pulumi:"webServerNetworkAccessControls"`
+	WorkloadsConfigs                []GetEnvironmentConfigWorkloadsConfig                `pulumi:"workloadsConfigs"`
 }
 
 // GetEnvironmentConfigInput is an input type that accepts GetEnvironmentConfigArgs and GetEnvironmentConfigOutput values.
@@ -2778,20 +3046,21 @@ type GetEnvironmentConfigInput interface {
 }
 
 type GetEnvironmentConfigArgs struct {
-	AirflowUri                     pulumi.StringInput                                          `pulumi:"airflowUri"`
-	DagGcsPrefix                   pulumi.StringInput                                          `pulumi:"dagGcsPrefix"`
-	DatabaseConfigs                GetEnvironmentConfigDatabaseConfigArrayInput                `pulumi:"databaseConfigs"`
-	EncryptionConfigs              GetEnvironmentConfigEncryptionConfigArrayInput              `pulumi:"encryptionConfigs"`
-	EnvironmentSize                pulumi.StringInput                                          `pulumi:"environmentSize"`
-	GkeCluster                     pulumi.StringInput                                          `pulumi:"gkeCluster"`
-	MaintenanceWindows             GetEnvironmentConfigMaintenanceWindowArrayInput             `pulumi:"maintenanceWindows"`
-	NodeConfigs                    GetEnvironmentConfigNodeConfigArrayInput                    `pulumi:"nodeConfigs"`
-	NodeCount                      pulumi.IntInput                                             `pulumi:"nodeCount"`
-	PrivateEnvironmentConfigs      GetEnvironmentConfigPrivateEnvironmentConfigArrayInput      `pulumi:"privateEnvironmentConfigs"`
-	SoftwareConfigs                GetEnvironmentConfigSoftwareConfigArrayInput                `pulumi:"softwareConfigs"`
-	WebServerConfigs               GetEnvironmentConfigWebServerConfigArrayInput               `pulumi:"webServerConfigs"`
-	WebServerNetworkAccessControls GetEnvironmentConfigWebServerNetworkAccessControlArrayInput `pulumi:"webServerNetworkAccessControls"`
-	WorkloadsConfigs               GetEnvironmentConfigWorkloadsConfigArrayInput               `pulumi:"workloadsConfigs"`
+	AirflowUri                      pulumi.StringInput                                           `pulumi:"airflowUri"`
+	DagGcsPrefix                    pulumi.StringInput                                           `pulumi:"dagGcsPrefix"`
+	DatabaseConfigs                 GetEnvironmentConfigDatabaseConfigArrayInput                 `pulumi:"databaseConfigs"`
+	EncryptionConfigs               GetEnvironmentConfigEncryptionConfigArrayInput               `pulumi:"encryptionConfigs"`
+	EnvironmentSize                 pulumi.StringInput                                           `pulumi:"environmentSize"`
+	GkeCluster                      pulumi.StringInput                                           `pulumi:"gkeCluster"`
+	MaintenanceWindows              GetEnvironmentConfigMaintenanceWindowArrayInput              `pulumi:"maintenanceWindows"`
+	MasterAuthorizedNetworksConfigs GetEnvironmentConfigMasterAuthorizedNetworksConfigArrayInput `pulumi:"masterAuthorizedNetworksConfigs"`
+	NodeConfigs                     GetEnvironmentConfigNodeConfigArrayInput                     `pulumi:"nodeConfigs"`
+	NodeCount                       pulumi.IntInput                                              `pulumi:"nodeCount"`
+	PrivateEnvironmentConfigs       GetEnvironmentConfigPrivateEnvironmentConfigArrayInput       `pulumi:"privateEnvironmentConfigs"`
+	SoftwareConfigs                 GetEnvironmentConfigSoftwareConfigArrayInput                 `pulumi:"softwareConfigs"`
+	WebServerConfigs                GetEnvironmentConfigWebServerConfigArrayInput                `pulumi:"webServerConfigs"`
+	WebServerNetworkAccessControls  GetEnvironmentConfigWebServerNetworkAccessControlArrayInput  `pulumi:"webServerNetworkAccessControls"`
+	WorkloadsConfigs                GetEnvironmentConfigWorkloadsConfigArrayInput                `pulumi:"workloadsConfigs"`
 }
 
 func (GetEnvironmentConfigArgs) ElementType() reflect.Type {
@@ -2871,6 +3140,12 @@ func (o GetEnvironmentConfigOutput) GkeCluster() pulumi.StringOutput {
 
 func (o GetEnvironmentConfigOutput) MaintenanceWindows() GetEnvironmentConfigMaintenanceWindowArrayOutput {
 	return o.ApplyT(func(v GetEnvironmentConfig) []GetEnvironmentConfigMaintenanceWindow { return v.MaintenanceWindows }).(GetEnvironmentConfigMaintenanceWindowArrayOutput)
+}
+
+func (o GetEnvironmentConfigOutput) MasterAuthorizedNetworksConfigs() GetEnvironmentConfigMasterAuthorizedNetworksConfigArrayOutput {
+	return o.ApplyT(func(v GetEnvironmentConfig) []GetEnvironmentConfigMasterAuthorizedNetworksConfig {
+		return v.MasterAuthorizedNetworksConfigs
+	}).(GetEnvironmentConfigMasterAuthorizedNetworksConfigArrayOutput)
 }
 
 func (o GetEnvironmentConfigOutput) NodeConfigs() GetEnvironmentConfigNodeConfigArrayOutput {
@@ -3217,6 +3492,208 @@ func (o GetEnvironmentConfigMaintenanceWindowArrayOutput) Index(i pulumi.IntInpu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnvironmentConfigMaintenanceWindow {
 		return vs[0].([]GetEnvironmentConfigMaintenanceWindow)[vs[1].(int)]
 	}).(GetEnvironmentConfigMaintenanceWindowOutput)
+}
+
+type GetEnvironmentConfigMasterAuthorizedNetworksConfig struct {
+	CidrBlocks []GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock `pulumi:"cidrBlocks"`
+	Enabled    bool                                                          `pulumi:"enabled"`
+}
+
+// GetEnvironmentConfigMasterAuthorizedNetworksConfigInput is an input type that accepts GetEnvironmentConfigMasterAuthorizedNetworksConfigArgs and GetEnvironmentConfigMasterAuthorizedNetworksConfigOutput values.
+// You can construct a concrete instance of `GetEnvironmentConfigMasterAuthorizedNetworksConfigInput` via:
+//
+//          GetEnvironmentConfigMasterAuthorizedNetworksConfigArgs{...}
+type GetEnvironmentConfigMasterAuthorizedNetworksConfigInput interface {
+	pulumi.Input
+
+	ToGetEnvironmentConfigMasterAuthorizedNetworksConfigOutput() GetEnvironmentConfigMasterAuthorizedNetworksConfigOutput
+	ToGetEnvironmentConfigMasterAuthorizedNetworksConfigOutputWithContext(context.Context) GetEnvironmentConfigMasterAuthorizedNetworksConfigOutput
+}
+
+type GetEnvironmentConfigMasterAuthorizedNetworksConfigArgs struct {
+	CidrBlocks GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayInput `pulumi:"cidrBlocks"`
+	Enabled    pulumi.BoolInput                                                      `pulumi:"enabled"`
+}
+
+func (GetEnvironmentConfigMasterAuthorizedNetworksConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfigMasterAuthorizedNetworksConfig)(nil)).Elem()
+}
+
+func (i GetEnvironmentConfigMasterAuthorizedNetworksConfigArgs) ToGetEnvironmentConfigMasterAuthorizedNetworksConfigOutput() GetEnvironmentConfigMasterAuthorizedNetworksConfigOutput {
+	return i.ToGetEnvironmentConfigMasterAuthorizedNetworksConfigOutputWithContext(context.Background())
+}
+
+func (i GetEnvironmentConfigMasterAuthorizedNetworksConfigArgs) ToGetEnvironmentConfigMasterAuthorizedNetworksConfigOutputWithContext(ctx context.Context) GetEnvironmentConfigMasterAuthorizedNetworksConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigMasterAuthorizedNetworksConfigOutput)
+}
+
+// GetEnvironmentConfigMasterAuthorizedNetworksConfigArrayInput is an input type that accepts GetEnvironmentConfigMasterAuthorizedNetworksConfigArray and GetEnvironmentConfigMasterAuthorizedNetworksConfigArrayOutput values.
+// You can construct a concrete instance of `GetEnvironmentConfigMasterAuthorizedNetworksConfigArrayInput` via:
+//
+//          GetEnvironmentConfigMasterAuthorizedNetworksConfigArray{ GetEnvironmentConfigMasterAuthorizedNetworksConfigArgs{...} }
+type GetEnvironmentConfigMasterAuthorizedNetworksConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetEnvironmentConfigMasterAuthorizedNetworksConfigArrayOutput() GetEnvironmentConfigMasterAuthorizedNetworksConfigArrayOutput
+	ToGetEnvironmentConfigMasterAuthorizedNetworksConfigArrayOutputWithContext(context.Context) GetEnvironmentConfigMasterAuthorizedNetworksConfigArrayOutput
+}
+
+type GetEnvironmentConfigMasterAuthorizedNetworksConfigArray []GetEnvironmentConfigMasterAuthorizedNetworksConfigInput
+
+func (GetEnvironmentConfigMasterAuthorizedNetworksConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnvironmentConfigMasterAuthorizedNetworksConfig)(nil)).Elem()
+}
+
+func (i GetEnvironmentConfigMasterAuthorizedNetworksConfigArray) ToGetEnvironmentConfigMasterAuthorizedNetworksConfigArrayOutput() GetEnvironmentConfigMasterAuthorizedNetworksConfigArrayOutput {
+	return i.ToGetEnvironmentConfigMasterAuthorizedNetworksConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetEnvironmentConfigMasterAuthorizedNetworksConfigArray) ToGetEnvironmentConfigMasterAuthorizedNetworksConfigArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigMasterAuthorizedNetworksConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigMasterAuthorizedNetworksConfigArrayOutput)
+}
+
+type GetEnvironmentConfigMasterAuthorizedNetworksConfigOutput struct{ *pulumi.OutputState }
+
+func (GetEnvironmentConfigMasterAuthorizedNetworksConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfigMasterAuthorizedNetworksConfig)(nil)).Elem()
+}
+
+func (o GetEnvironmentConfigMasterAuthorizedNetworksConfigOutput) ToGetEnvironmentConfigMasterAuthorizedNetworksConfigOutput() GetEnvironmentConfigMasterAuthorizedNetworksConfigOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigMasterAuthorizedNetworksConfigOutput) ToGetEnvironmentConfigMasterAuthorizedNetworksConfigOutputWithContext(ctx context.Context) GetEnvironmentConfigMasterAuthorizedNetworksConfigOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigMasterAuthorizedNetworksConfigOutput) CidrBlocks() GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigMasterAuthorizedNetworksConfig) []GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock {
+		return v.CidrBlocks
+	}).(GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput)
+}
+
+func (o GetEnvironmentConfigMasterAuthorizedNetworksConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigMasterAuthorizedNetworksConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetEnvironmentConfigMasterAuthorizedNetworksConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEnvironmentConfigMasterAuthorizedNetworksConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnvironmentConfigMasterAuthorizedNetworksConfig)(nil)).Elem()
+}
+
+func (o GetEnvironmentConfigMasterAuthorizedNetworksConfigArrayOutput) ToGetEnvironmentConfigMasterAuthorizedNetworksConfigArrayOutput() GetEnvironmentConfigMasterAuthorizedNetworksConfigArrayOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigMasterAuthorizedNetworksConfigArrayOutput) ToGetEnvironmentConfigMasterAuthorizedNetworksConfigArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigMasterAuthorizedNetworksConfigArrayOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigMasterAuthorizedNetworksConfigArrayOutput) Index(i pulumi.IntInput) GetEnvironmentConfigMasterAuthorizedNetworksConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnvironmentConfigMasterAuthorizedNetworksConfig {
+		return vs[0].([]GetEnvironmentConfigMasterAuthorizedNetworksConfig)[vs[1].(int)]
+	}).(GetEnvironmentConfigMasterAuthorizedNetworksConfigOutput)
+}
+
+type GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock struct {
+	CidrBlock   string `pulumi:"cidrBlock"`
+	DisplayName string `pulumi:"displayName"`
+}
+
+// GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockInput is an input type that accepts GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs and GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput values.
+// You can construct a concrete instance of `GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockInput` via:
+//
+//          GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs{...}
+type GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockInput interface {
+	pulumi.Input
+
+	ToGetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput() GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput
+	ToGetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutputWithContext(context.Context) GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput
+}
+
+type GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs struct {
+	CidrBlock   pulumi.StringInput `pulumi:"cidrBlock"`
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+}
+
+func (GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock)(nil)).Elem()
+}
+
+func (i GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs) ToGetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput() GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput {
+	return i.ToGetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutputWithContext(context.Background())
+}
+
+func (i GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs) ToGetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutputWithContext(ctx context.Context) GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput)
+}
+
+// GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayInput is an input type that accepts GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArray and GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput values.
+// You can construct a concrete instance of `GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayInput` via:
+//
+//          GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArray{ GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs{...} }
+type GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayInput interface {
+	pulumi.Input
+
+	ToGetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput() GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput
+	ToGetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutputWithContext(context.Context) GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput
+}
+
+type GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArray []GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockInput
+
+func (GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock)(nil)).Elem()
+}
+
+func (i GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArray) ToGetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput() GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput {
+	return i.ToGetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutputWithContext(context.Background())
+}
+
+func (i GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArray) ToGetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput)
+}
+
+type GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput struct{ *pulumi.OutputState }
+
+func (GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock)(nil)).Elem()
+}
+
+func (o GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput) ToGetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput() GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput) ToGetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutputWithContext(ctx context.Context) GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput) CidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock) string { return v.CidrBlock }).(pulumi.StringOutput)
+}
+
+func (o GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+type GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock)(nil)).Elem()
+}
+
+func (o GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput) ToGetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput() GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput) ToGetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput) Index(i pulumi.IntInput) GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock {
+		return vs[0].([]GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock)[vs[1].(int)]
+	}).(GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput)
 }
 
 type GetEnvironmentConfigNodeConfig struct {
@@ -4604,6 +5081,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigEncryptionConfigPtrInput)(nil)).Elem(), EnvironmentConfigEncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigMaintenanceWindowInput)(nil)).Elem(), EnvironmentConfigMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigMaintenanceWindowPtrInput)(nil)).Elem(), EnvironmentConfigMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigMasterAuthorizedNetworksConfigInput)(nil)).Elem(), EnvironmentConfigMasterAuthorizedNetworksConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigMasterAuthorizedNetworksConfigPtrInput)(nil)).Elem(), EnvironmentConfigMasterAuthorizedNetworksConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockInput)(nil)).Elem(), EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayInput)(nil)).Elem(), EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigNodeConfigInput)(nil)).Elem(), EnvironmentConfigNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigNodeConfigPtrInput)(nil)).Elem(), EnvironmentConfigNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigNodeConfigIpAllocationPolicyInput)(nil)).Elem(), EnvironmentConfigNodeConfigIpAllocationPolicyArgs{})
@@ -4634,6 +5115,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigEncryptionConfigArrayInput)(nil)).Elem(), GetEnvironmentConfigEncryptionConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigMaintenanceWindowInput)(nil)).Elem(), GetEnvironmentConfigMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigMaintenanceWindowArrayInput)(nil)).Elem(), GetEnvironmentConfigMaintenanceWindowArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigMasterAuthorizedNetworksConfigInput)(nil)).Elem(), GetEnvironmentConfigMasterAuthorizedNetworksConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigMasterAuthorizedNetworksConfigArrayInput)(nil)).Elem(), GetEnvironmentConfigMasterAuthorizedNetworksConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockInput)(nil)).Elem(), GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayInput)(nil)).Elem(), GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigNodeConfigInput)(nil)).Elem(), GetEnvironmentConfigNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigNodeConfigArrayInput)(nil)).Elem(), GetEnvironmentConfigNodeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigNodeConfigIpAllocationPolicyInput)(nil)).Elem(), GetEnvironmentConfigNodeConfigIpAllocationPolicyArgs{})
@@ -4666,6 +5151,10 @@ func init() {
 	pulumi.RegisterOutputType(EnvironmentConfigEncryptionConfigPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigMaintenanceWindowPtrOutput{})
+	pulumi.RegisterOutputType(EnvironmentConfigMasterAuthorizedNetworksConfigOutput{})
+	pulumi.RegisterOutputType(EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput{})
+	pulumi.RegisterOutputType(EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput{})
+	pulumi.RegisterOutputType(EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigNodeConfigOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigNodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigNodeConfigIpAllocationPolicyOutput{})
@@ -4696,6 +5185,10 @@ func init() {
 	pulumi.RegisterOutputType(GetEnvironmentConfigEncryptionConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigMaintenanceWindowArrayOutput{})
+	pulumi.RegisterOutputType(GetEnvironmentConfigMasterAuthorizedNetworksConfigOutput{})
+	pulumi.RegisterOutputType(GetEnvironmentConfigMasterAuthorizedNetworksConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput{})
+	pulumi.RegisterOutputType(GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigNodeConfigOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigNodeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput{})

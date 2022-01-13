@@ -66,6 +66,7 @@ __all__ = [
     'ClusterDatabaseEncryption',
     'ClusterDefaultSnatStatus',
     'ClusterDnsConfig',
+    'ClusterIdentityServiceConfig',
     'ClusterIpAllocationPolicy',
     'ClusterLoggingConfig',
     'ClusterMaintenancePolicy',
@@ -146,6 +147,7 @@ __all__ = [
     'GetClusterDatabaseEncryptionResult',
     'GetClusterDefaultSnatStatusResult',
     'GetClusterDnsConfigResult',
+    'GetClusterIdentityServiceConfigResult',
     'GetClusterIpAllocationPolicyResult',
     'GetClusterLoggingConfigResult',
     'GetClusterMaintenancePolicyResult',
@@ -3007,6 +3009,27 @@ class ClusterDnsConfig(dict):
         The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
         """
         return pulumi.get(self, "cluster_dns_scope")
+
+
+@pulumi.output_type
+class ClusterIdentityServiceConfig(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None):
+        """
+        :param bool enabled: Enable the PodSecurityPolicy controller for this cluster.
+               If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Enable the PodSecurityPolicy controller for this cluster.
+        If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -7053,6 +7076,18 @@ class GetClusterDnsConfigResult(dict):
     @pulumi.getter(name="clusterDnsScope")
     def cluster_dns_scope(self) -> str:
         return pulumi.get(self, "cluster_dns_scope")
+
+
+@pulumi.output_type
+class GetClusterIdentityServiceConfigResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

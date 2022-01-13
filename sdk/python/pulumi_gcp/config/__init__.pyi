@@ -149,6 +149,8 @@ mlEngineCustomEndpoint: Optional[str]
 
 monitoringCustomEndpoint: Optional[str]
 
+networkConnectivityCustomEndpoint: Optional[str]
+
 networkManagementCustomEndpoint: Optional[str]
 
 networkServicesCustomEndpoint: Optional[str]

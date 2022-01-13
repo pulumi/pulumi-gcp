@@ -256,7 +256,8 @@ namespace Pulumi.Gcp.Compute
         /// apply to traffic that has source IP address within sourceRanges OR the
         /// source IP that belongs to a tag listed in the sourceTags property. The
         /// connection does not need to match both properties for the firewall to
-        /// apply. Only IPv4 is supported.
+        /// apply. Only IPv4 is supported. For INGRESS traffic, one of `source_ranges`,
+        /// `source_tags` or `source_service_accounts` is required.
         /// </summary>
         [Output("sourceRanges")]
         public Output<ImmutableArray<string>> SourceRanges { get; private set; } = null!;
@@ -272,7 +273,8 @@ namespace Pulumi.Gcp.Compute
         /// source IP belongs to an instance with service account listed in
         /// sourceServiceAccount. The connection does not need to match both
         /// properties for the firewall to apply. sourceServiceAccounts cannot be
-        /// used at the same time as sourceTags or targetTags.
+        /// used at the same time as sourceTags or targetTags. For INGRESS traffic,
+        /// one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
         /// </summary>
         [Output("sourceServiceAccounts")]
         public Output<ImmutableArray<string>> SourceServiceAccounts { get; private set; } = null!;
@@ -286,7 +288,8 @@ namespace Pulumi.Gcp.Compute
         /// both properties are set, the firewall will apply to traffic that has
         /// source IP address within sourceRanges OR the source IP that belongs to
         /// a tag listed in the sourceTags property. The connection does not need
-        /// to match both properties for the firewall to apply.
+        /// to match both properties for the firewall to apply. For INGRESS traffic,
+        /// one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
         /// </summary>
         [Output("sourceTags")]
         public Output<ImmutableArray<string>> SourceTags { get; private set; } = null!;
@@ -489,7 +492,8 @@ namespace Pulumi.Gcp.Compute
         /// apply to traffic that has source IP address within sourceRanges OR the
         /// source IP that belongs to a tag listed in the sourceTags property. The
         /// connection does not need to match both properties for the firewall to
-        /// apply. Only IPv4 is supported.
+        /// apply. Only IPv4 is supported. For INGRESS traffic, one of `source_ranges`,
+        /// `source_tags` or `source_service_accounts` is required.
         /// </summary>
         public InputList<string> SourceRanges
         {
@@ -511,7 +515,8 @@ namespace Pulumi.Gcp.Compute
         /// source IP belongs to an instance with service account listed in
         /// sourceServiceAccount. The connection does not need to match both
         /// properties for the firewall to apply. sourceServiceAccounts cannot be
-        /// used at the same time as sourceTags or targetTags.
+        /// used at the same time as sourceTags or targetTags. For INGRESS traffic,
+        /// one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
         /// </summary>
         public InputList<string> SourceServiceAccounts
         {
@@ -531,7 +536,8 @@ namespace Pulumi.Gcp.Compute
         /// both properties are set, the firewall will apply to traffic that has
         /// source IP address within sourceRanges OR the source IP that belongs to
         /// a tag listed in the sourceTags property. The connection does not need
-        /// to match both properties for the firewall to apply.
+        /// to match both properties for the firewall to apply. For INGRESS traffic,
+        /// one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
         /// </summary>
         public InputList<string> SourceTags
         {
@@ -722,7 +728,8 @@ namespace Pulumi.Gcp.Compute
         /// apply to traffic that has source IP address within sourceRanges OR the
         /// source IP that belongs to a tag listed in the sourceTags property. The
         /// connection does not need to match both properties for the firewall to
-        /// apply. Only IPv4 is supported.
+        /// apply. Only IPv4 is supported. For INGRESS traffic, one of `source_ranges`,
+        /// `source_tags` or `source_service_accounts` is required.
         /// </summary>
         public InputList<string> SourceRanges
         {
@@ -744,7 +751,8 @@ namespace Pulumi.Gcp.Compute
         /// source IP belongs to an instance with service account listed in
         /// sourceServiceAccount. The connection does not need to match both
         /// properties for the firewall to apply. sourceServiceAccounts cannot be
-        /// used at the same time as sourceTags or targetTags.
+        /// used at the same time as sourceTags or targetTags. For INGRESS traffic,
+        /// one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
         /// </summary>
         public InputList<string> SourceServiceAccounts
         {
@@ -764,7 +772,8 @@ namespace Pulumi.Gcp.Compute
         /// both properties are set, the firewall will apply to traffic that has
         /// source IP address within sourceRanges OR the source IP that belongs to
         /// a tag listed in the sourceTags property. The connection does not need
-        /// to match both properties for the firewall to apply.
+        /// to match both properties for the firewall to apply. For INGRESS traffic,
+        /// one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
         /// </summary>
         public InputList<string> SourceTags
         {

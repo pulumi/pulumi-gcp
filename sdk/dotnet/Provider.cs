@@ -219,6 +219,9 @@ namespace Pulumi.Gcp
         [Output("monitoringCustomEndpoint")]
         public Output<string?> MonitoringCustomEndpoint { get; private set; } = null!;
 
+        [Output("networkConnectivityCustomEndpoint")]
+        public Output<string?> NetworkConnectivityCustomEndpoint { get; private set; } = null!;
+
         [Output("networkManagementCustomEndpoint")]
         public Output<string?> NetworkManagementCustomEndpoint { get; private set; } = null!;
 
@@ -572,6 +575,9 @@ namespace Pulumi.Gcp
 
         [Input("monitoringCustomEndpoint")]
         public Input<string>? MonitoringCustomEndpoint { get; set; }
+
+        [Input("networkConnectivityCustomEndpoint")]
+        public Input<string>? NetworkConnectivityCustomEndpoint { get; set; }
 
         [Input("networkManagementCustomEndpoint")]
         public Input<string>? NetworkManagementCustomEndpoint { get; set; }

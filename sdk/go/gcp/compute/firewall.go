@@ -200,7 +200,8 @@ type Firewall struct {
 	// apply to traffic that has source IP address within sourceRanges OR the
 	// source IP that belongs to a tag listed in the sourceTags property. The
 	// connection does not need to match both properties for the firewall to
-	// apply. Only IPv4 is supported.
+	// apply. Only IPv4 is supported. For INGRESS traffic, one of `sourceRanges`,
+	// `sourceTags` or `sourceServiceAccounts` is required.
 	SourceRanges pulumi.StringArrayOutput `pulumi:"sourceRanges"`
 	// If source service accounts are specified, the firewall will apply only
 	// to traffic originating from an instance with a service account in this
@@ -212,7 +213,8 @@ type Firewall struct {
 	// source IP belongs to an instance with service account listed in
 	// sourceServiceAccount. The connection does not need to match both
 	// properties for the firewall to apply. sourceServiceAccounts cannot be
-	// used at the same time as sourceTags or targetTags.
+	// used at the same time as sourceTags or targetTags. For INGRESS traffic,
+	// one of `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
 	SourceServiceAccounts pulumi.StringArrayOutput `pulumi:"sourceServiceAccounts"`
 	// If source tags are specified, the firewall will apply only to traffic
 	// with source IP that belongs to a tag listed in source tags. Source
@@ -222,7 +224,8 @@ type Firewall struct {
 	// both properties are set, the firewall will apply to traffic that has
 	// source IP address within sourceRanges OR the source IP that belongs to
 	// a tag listed in the sourceTags property. The connection does not need
-	// to match both properties for the firewall to apply.
+	// to match both properties for the firewall to apply. For INGRESS traffic,
+	// one of `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
 	SourceTags pulumi.StringArrayOutput `pulumi:"sourceTags"`
 	// A list of service accounts indicating sets of instances located in the
 	// network that may make network connections as specified in allowed[].
@@ -338,7 +341,8 @@ type firewallState struct {
 	// apply to traffic that has source IP address within sourceRanges OR the
 	// source IP that belongs to a tag listed in the sourceTags property. The
 	// connection does not need to match both properties for the firewall to
-	// apply. Only IPv4 is supported.
+	// apply. Only IPv4 is supported. For INGRESS traffic, one of `sourceRanges`,
+	// `sourceTags` or `sourceServiceAccounts` is required.
 	SourceRanges []string `pulumi:"sourceRanges"`
 	// If source service accounts are specified, the firewall will apply only
 	// to traffic originating from an instance with a service account in this
@@ -350,7 +354,8 @@ type firewallState struct {
 	// source IP belongs to an instance with service account listed in
 	// sourceServiceAccount. The connection does not need to match both
 	// properties for the firewall to apply. sourceServiceAccounts cannot be
-	// used at the same time as sourceTags or targetTags.
+	// used at the same time as sourceTags or targetTags. For INGRESS traffic,
+	// one of `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
 	SourceServiceAccounts []string `pulumi:"sourceServiceAccounts"`
 	// If source tags are specified, the firewall will apply only to traffic
 	// with source IP that belongs to a tag listed in source tags. Source
@@ -360,7 +365,8 @@ type firewallState struct {
 	// both properties are set, the firewall will apply to traffic that has
 	// source IP address within sourceRanges OR the source IP that belongs to
 	// a tag listed in the sourceTags property. The connection does not need
-	// to match both properties for the firewall to apply.
+	// to match both properties for the firewall to apply. For INGRESS traffic,
+	// one of `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
 	SourceTags []string `pulumi:"sourceTags"`
 	// A list of service accounts indicating sets of instances located in the
 	// network that may make network connections as specified in allowed[].
@@ -445,7 +451,8 @@ type FirewallState struct {
 	// apply to traffic that has source IP address within sourceRanges OR the
 	// source IP that belongs to a tag listed in the sourceTags property. The
 	// connection does not need to match both properties for the firewall to
-	// apply. Only IPv4 is supported.
+	// apply. Only IPv4 is supported. For INGRESS traffic, one of `sourceRanges`,
+	// `sourceTags` or `sourceServiceAccounts` is required.
 	SourceRanges pulumi.StringArrayInput
 	// If source service accounts are specified, the firewall will apply only
 	// to traffic originating from an instance with a service account in this
@@ -457,7 +464,8 @@ type FirewallState struct {
 	// source IP belongs to an instance with service account listed in
 	// sourceServiceAccount. The connection does not need to match both
 	// properties for the firewall to apply. sourceServiceAccounts cannot be
-	// used at the same time as sourceTags or targetTags.
+	// used at the same time as sourceTags or targetTags. For INGRESS traffic,
+	// one of `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
 	SourceServiceAccounts pulumi.StringArrayInput
 	// If source tags are specified, the firewall will apply only to traffic
 	// with source IP that belongs to a tag listed in source tags. Source
@@ -467,7 +475,8 @@ type FirewallState struct {
 	// both properties are set, the firewall will apply to traffic that has
 	// source IP address within sourceRanges OR the source IP that belongs to
 	// a tag listed in the sourceTags property. The connection does not need
-	// to match both properties for the firewall to apply.
+	// to match both properties for the firewall to apply. For INGRESS traffic,
+	// one of `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
 	SourceTags pulumi.StringArrayInput
 	// A list of service accounts indicating sets of instances located in the
 	// network that may make network connections as specified in allowed[].
@@ -552,7 +561,8 @@ type firewallArgs struct {
 	// apply to traffic that has source IP address within sourceRanges OR the
 	// source IP that belongs to a tag listed in the sourceTags property. The
 	// connection does not need to match both properties for the firewall to
-	// apply. Only IPv4 is supported.
+	// apply. Only IPv4 is supported. For INGRESS traffic, one of `sourceRanges`,
+	// `sourceTags` or `sourceServiceAccounts` is required.
 	SourceRanges []string `pulumi:"sourceRanges"`
 	// If source service accounts are specified, the firewall will apply only
 	// to traffic originating from an instance with a service account in this
@@ -564,7 +574,8 @@ type firewallArgs struct {
 	// source IP belongs to an instance with service account listed in
 	// sourceServiceAccount. The connection does not need to match both
 	// properties for the firewall to apply. sourceServiceAccounts cannot be
-	// used at the same time as sourceTags or targetTags.
+	// used at the same time as sourceTags or targetTags. For INGRESS traffic,
+	// one of `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
 	SourceServiceAccounts []string `pulumi:"sourceServiceAccounts"`
 	// If source tags are specified, the firewall will apply only to traffic
 	// with source IP that belongs to a tag listed in source tags. Source
@@ -574,7 +585,8 @@ type firewallArgs struct {
 	// both properties are set, the firewall will apply to traffic that has
 	// source IP address within sourceRanges OR the source IP that belongs to
 	// a tag listed in the sourceTags property. The connection does not need
-	// to match both properties for the firewall to apply.
+	// to match both properties for the firewall to apply. For INGRESS traffic,
+	// one of `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
 	SourceTags []string `pulumi:"sourceTags"`
 	// A list of service accounts indicating sets of instances located in the
 	// network that may make network connections as specified in allowed[].
@@ -656,7 +668,8 @@ type FirewallArgs struct {
 	// apply to traffic that has source IP address within sourceRanges OR the
 	// source IP that belongs to a tag listed in the sourceTags property. The
 	// connection does not need to match both properties for the firewall to
-	// apply. Only IPv4 is supported.
+	// apply. Only IPv4 is supported. For INGRESS traffic, one of `sourceRanges`,
+	// `sourceTags` or `sourceServiceAccounts` is required.
 	SourceRanges pulumi.StringArrayInput
 	// If source service accounts are specified, the firewall will apply only
 	// to traffic originating from an instance with a service account in this
@@ -668,7 +681,8 @@ type FirewallArgs struct {
 	// source IP belongs to an instance with service account listed in
 	// sourceServiceAccount. The connection does not need to match both
 	// properties for the firewall to apply. sourceServiceAccounts cannot be
-	// used at the same time as sourceTags or targetTags.
+	// used at the same time as sourceTags or targetTags. For INGRESS traffic,
+	// one of `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
 	SourceServiceAccounts pulumi.StringArrayInput
 	// If source tags are specified, the firewall will apply only to traffic
 	// with source IP that belongs to a tag listed in source tags. Source
@@ -678,7 +692,8 @@ type FirewallArgs struct {
 	// both properties are set, the firewall will apply to traffic that has
 	// source IP address within sourceRanges OR the source IP that belongs to
 	// a tag listed in the sourceTags property. The connection does not need
-	// to match both properties for the firewall to apply.
+	// to match both properties for the firewall to apply. For INGRESS traffic,
+	// one of `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
 	SourceTags pulumi.StringArrayInput
 	// A list of service accounts indicating sets of instances located in the
 	// network that may make network connections as specified in allowed[].

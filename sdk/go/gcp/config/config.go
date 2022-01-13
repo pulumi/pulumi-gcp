@@ -218,6 +218,9 @@ func GetMlEngineCustomEndpoint(ctx *pulumi.Context) string {
 func GetMonitoringCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:monitoringCustomEndpoint")
 }
+func GetNetworkConnectivityCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:networkConnectivityCustomEndpoint")
+}
 func GetNetworkManagementCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:networkManagementCustomEndpoint")
 }

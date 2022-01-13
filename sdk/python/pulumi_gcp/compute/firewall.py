@@ -84,7 +84,8 @@ class FirewallArgs:
                apply to traffic that has source IP address within sourceRanges OR the
                source IP that belongs to a tag listed in the sourceTags property. The
                connection does not need to match both properties for the firewall to
-               apply. Only IPv4 is supported.
+               apply. Only IPv4 is supported. For INGRESS traffic, one of `source_ranges`,
+               `source_tags` or `source_service_accounts` is required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_service_accounts: If source service accounts are specified, the firewall will apply only
                to traffic originating from an instance with a service account in this
                list. Source service accounts cannot be used to control traffic to an
@@ -95,7 +96,8 @@ class FirewallArgs:
                source IP belongs to an instance with service account listed in
                sourceServiceAccount. The connection does not need to match both
                properties for the firewall to apply. sourceServiceAccounts cannot be
-               used at the same time as sourceTags or targetTags.
+               used at the same time as sourceTags or targetTags. For INGRESS traffic,
+               one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_tags: If source tags are specified, the firewall will apply only to traffic
                with source IP that belongs to a tag listed in source tags. Source
                tags cannot be used to control traffic to an instance's external IP
@@ -104,7 +106,8 @@ class FirewallArgs:
                both properties are set, the firewall will apply to traffic that has
                source IP address within sourceRanges OR the source IP that belongs to
                a tag listed in the sourceTags property. The connection does not need
-               to match both properties for the firewall to apply.
+               to match both properties for the firewall to apply. For INGRESS traffic,
+               one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_service_accounts: A list of service accounts indicating sets of instances located in the
                network that may make network connections as specified in allowed[].
                targetServiceAccounts cannot be used at the same time as targetTags or
@@ -339,7 +342,8 @@ class FirewallArgs:
         apply to traffic that has source IP address within sourceRanges OR the
         source IP that belongs to a tag listed in the sourceTags property. The
         connection does not need to match both properties for the firewall to
-        apply. Only IPv4 is supported.
+        apply. Only IPv4 is supported. For INGRESS traffic, one of `source_ranges`,
+        `source_tags` or `source_service_accounts` is required.
         """
         return pulumi.get(self, "source_ranges")
 
@@ -361,7 +365,8 @@ class FirewallArgs:
         source IP belongs to an instance with service account listed in
         sourceServiceAccount. The connection does not need to match both
         properties for the firewall to apply. sourceServiceAccounts cannot be
-        used at the same time as sourceTags or targetTags.
+        used at the same time as sourceTags or targetTags. For INGRESS traffic,
+        one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
         """
         return pulumi.get(self, "source_service_accounts")
 
@@ -381,7 +386,8 @@ class FirewallArgs:
         both properties are set, the firewall will apply to traffic that has
         source IP address within sourceRanges OR the source IP that belongs to
         a tag listed in the sourceTags property. The connection does not need
-        to match both properties for the firewall to apply.
+        to match both properties for the firewall to apply. For INGRESS traffic,
+        one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
         """
         return pulumi.get(self, "source_tags")
 
@@ -498,7 +504,8 @@ class _FirewallState:
                apply to traffic that has source IP address within sourceRanges OR the
                source IP that belongs to a tag listed in the sourceTags property. The
                connection does not need to match both properties for the firewall to
-               apply. Only IPv4 is supported.
+               apply. Only IPv4 is supported. For INGRESS traffic, one of `source_ranges`,
+               `source_tags` or `source_service_accounts` is required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_service_accounts: If source service accounts are specified, the firewall will apply only
                to traffic originating from an instance with a service account in this
                list. Source service accounts cannot be used to control traffic to an
@@ -509,7 +516,8 @@ class _FirewallState:
                source IP belongs to an instance with service account listed in
                sourceServiceAccount. The connection does not need to match both
                properties for the firewall to apply. sourceServiceAccounts cannot be
-               used at the same time as sourceTags or targetTags.
+               used at the same time as sourceTags or targetTags. For INGRESS traffic,
+               one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_tags: If source tags are specified, the firewall will apply only to traffic
                with source IP that belongs to a tag listed in source tags. Source
                tags cannot be used to control traffic to an instance's external IP
@@ -518,7 +526,8 @@ class _FirewallState:
                both properties are set, the firewall will apply to traffic that has
                source IP address within sourceRanges OR the source IP that belongs to
                a tag listed in the sourceTags property. The connection does not need
-               to match both properties for the firewall to apply.
+               to match both properties for the firewall to apply. For INGRESS traffic,
+               one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_service_accounts: A list of service accounts indicating sets of instances located in the
                network that may make network connections as specified in allowed[].
                targetServiceAccounts cannot be used at the same time as targetTags or
@@ -782,7 +791,8 @@ class _FirewallState:
         apply to traffic that has source IP address within sourceRanges OR the
         source IP that belongs to a tag listed in the sourceTags property. The
         connection does not need to match both properties for the firewall to
-        apply. Only IPv4 is supported.
+        apply. Only IPv4 is supported. For INGRESS traffic, one of `source_ranges`,
+        `source_tags` or `source_service_accounts` is required.
         """
         return pulumi.get(self, "source_ranges")
 
@@ -804,7 +814,8 @@ class _FirewallState:
         source IP belongs to an instance with service account listed in
         sourceServiceAccount. The connection does not need to match both
         properties for the firewall to apply. sourceServiceAccounts cannot be
-        used at the same time as sourceTags or targetTags.
+        used at the same time as sourceTags or targetTags. For INGRESS traffic,
+        one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
         """
         return pulumi.get(self, "source_service_accounts")
 
@@ -824,7 +835,8 @@ class _FirewallState:
         both properties are set, the firewall will apply to traffic that has
         source IP address within sourceRanges OR the source IP that belongs to
         a tag listed in the sourceTags property. The connection does not need
-        to match both properties for the firewall to apply.
+        to match both properties for the firewall to apply. For INGRESS traffic,
+        one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
         """
         return pulumi.get(self, "source_tags")
 
@@ -1023,7 +1035,8 @@ class Firewall(pulumi.CustomResource):
                apply to traffic that has source IP address within sourceRanges OR the
                source IP that belongs to a tag listed in the sourceTags property. The
                connection does not need to match both properties for the firewall to
-               apply. Only IPv4 is supported.
+               apply. Only IPv4 is supported. For INGRESS traffic, one of `source_ranges`,
+               `source_tags` or `source_service_accounts` is required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_service_accounts: If source service accounts are specified, the firewall will apply only
                to traffic originating from an instance with a service account in this
                list. Source service accounts cannot be used to control traffic to an
@@ -1034,7 +1047,8 @@ class Firewall(pulumi.CustomResource):
                source IP belongs to an instance with service account listed in
                sourceServiceAccount. The connection does not need to match both
                properties for the firewall to apply. sourceServiceAccounts cannot be
-               used at the same time as sourceTags or targetTags.
+               used at the same time as sourceTags or targetTags. For INGRESS traffic,
+               one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_tags: If source tags are specified, the firewall will apply only to traffic
                with source IP that belongs to a tag listed in source tags. Source
                tags cannot be used to control traffic to an instance's external IP
@@ -1043,7 +1057,8 @@ class Firewall(pulumi.CustomResource):
                both properties are set, the firewall will apply to traffic that has
                source IP address within sourceRanges OR the source IP that belongs to
                a tag listed in the sourceTags property. The connection does not need
-               to match both properties for the firewall to apply.
+               to match both properties for the firewall to apply. For INGRESS traffic,
+               one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_service_accounts: A list of service accounts indicating sets of instances located in the
                network that may make network connections as specified in allowed[].
                targetServiceAccounts cannot be used at the same time as targetTags or
@@ -1300,7 +1315,8 @@ class Firewall(pulumi.CustomResource):
                apply to traffic that has source IP address within sourceRanges OR the
                source IP that belongs to a tag listed in the sourceTags property. The
                connection does not need to match both properties for the firewall to
-               apply. Only IPv4 is supported.
+               apply. Only IPv4 is supported. For INGRESS traffic, one of `source_ranges`,
+               `source_tags` or `source_service_accounts` is required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_service_accounts: If source service accounts are specified, the firewall will apply only
                to traffic originating from an instance with a service account in this
                list. Source service accounts cannot be used to control traffic to an
@@ -1311,7 +1327,8 @@ class Firewall(pulumi.CustomResource):
                source IP belongs to an instance with service account listed in
                sourceServiceAccount. The connection does not need to match both
                properties for the firewall to apply. sourceServiceAccounts cannot be
-               used at the same time as sourceTags or targetTags.
+               used at the same time as sourceTags or targetTags. For INGRESS traffic,
+               one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_tags: If source tags are specified, the firewall will apply only to traffic
                with source IP that belongs to a tag listed in source tags. Source
                tags cannot be used to control traffic to an instance's external IP
@@ -1320,7 +1337,8 @@ class Firewall(pulumi.CustomResource):
                both properties are set, the firewall will apply to traffic that has
                source IP address within sourceRanges OR the source IP that belongs to
                a tag listed in the sourceTags property. The connection does not need
-               to match both properties for the firewall to apply.
+               to match both properties for the firewall to apply. For INGRESS traffic,
+               one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_service_accounts: A list of service accounts indicating sets of instances located in the
                network that may make network connections as specified in allowed[].
                targetServiceAccounts cannot be used at the same time as targetTags or
@@ -1511,7 +1529,8 @@ class Firewall(pulumi.CustomResource):
         apply to traffic that has source IP address within sourceRanges OR the
         source IP that belongs to a tag listed in the sourceTags property. The
         connection does not need to match both properties for the firewall to
-        apply. Only IPv4 is supported.
+        apply. Only IPv4 is supported. For INGRESS traffic, one of `source_ranges`,
+        `source_tags` or `source_service_accounts` is required.
         """
         return pulumi.get(self, "source_ranges")
 
@@ -1529,7 +1548,8 @@ class Firewall(pulumi.CustomResource):
         source IP belongs to an instance with service account listed in
         sourceServiceAccount. The connection does not need to match both
         properties for the firewall to apply. sourceServiceAccounts cannot be
-        used at the same time as sourceTags or targetTags.
+        used at the same time as sourceTags or targetTags. For INGRESS traffic,
+        one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
         """
         return pulumi.get(self, "source_service_accounts")
 
@@ -1545,7 +1565,8 @@ class Firewall(pulumi.CustomResource):
         both properties are set, the firewall will apply to traffic that has
         source IP address within sourceRanges OR the source IP that belongs to
         a tag listed in the sourceTags property. The connection does not need
-        to match both properties for the firewall to apply.
+        to match both properties for the firewall to apply. For INGRESS traffic,
+        one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
         """
         return pulumi.get(self, "source_tags")
 

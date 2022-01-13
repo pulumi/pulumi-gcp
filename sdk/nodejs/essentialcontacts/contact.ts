@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * To get more information about Contact, see:
  *
- * * [API documentation](https://cloud.google.com/resource-manager/docs/reference/essentialcontacts/rest/v1beta1/projects.contacts)
+ * * [API documentation](https://cloud.google.com/resource-manager/docs/reference/essentialcontacts/rest/v1/projects.contacts)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/resource-manager/docs/managing-notification-contacts)
  *

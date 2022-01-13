@@ -65,6 +65,7 @@ __all__ = [
     'ClusterDatabaseEncryptionArgs',
     'ClusterDefaultSnatStatusArgs',
     'ClusterDnsConfigArgs',
+    'ClusterIdentityServiceConfigArgs',
     'ClusterIpAllocationPolicyArgs',
     'ClusterLoggingConfigArgs',
     'ClusterMaintenancePolicyArgs',
@@ -2684,6 +2685,31 @@ class ClusterDnsConfigArgs:
     @cluster_dns_scope.setter
     def cluster_dns_scope(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cluster_dns_scope", value)
+
+
+@pulumi.input_type
+class ClusterIdentityServiceConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Enable the PodSecurityPolicy controller for this cluster.
+               If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable the PodSecurityPolicy controller for this cluster.
+        If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
 
 
 @pulumi.input_type

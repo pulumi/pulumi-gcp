@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * https://cloud.google.com/compute/docs/load-balancing/http/
  *
  * ## Example Usage
- * ### External Tcp Proxy Lb Mig Backend Custom Header
+ * ### External Tcp Proxy Lb Mig Backend
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

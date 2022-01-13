@@ -215,7 +215,8 @@ export class Firewall extends pulumi.CustomResource {
      * apply to traffic that has source IP address within sourceRanges OR the
      * source IP that belongs to a tag listed in the sourceTags property. The
      * connection does not need to match both properties for the firewall to
-     * apply. Only IPv4 is supported.
+     * apply. Only IPv4 is supported. For INGRESS traffic, one of `sourceRanges`,
+     * `sourceTags` or `sourceServiceAccounts` is required.
      */
     public readonly sourceRanges!: pulumi.Output<string[] | undefined>;
     /**
@@ -229,7 +230,8 @@ export class Firewall extends pulumi.CustomResource {
      * source IP belongs to an instance with service account listed in
      * sourceServiceAccount. The connection does not need to match both
      * properties for the firewall to apply. sourceServiceAccounts cannot be
-     * used at the same time as sourceTags or targetTags.
+     * used at the same time as sourceTags or targetTags. For INGRESS traffic,
+     * one of `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
      */
     public readonly sourceServiceAccounts!: pulumi.Output<string[] | undefined>;
     /**
@@ -241,7 +243,8 @@ export class Firewall extends pulumi.CustomResource {
      * both properties are set, the firewall will apply to traffic that has
      * source IP address within sourceRanges OR the source IP that belongs to
      * a tag listed in the sourceTags property. The connection does not need
-     * to match both properties for the firewall to apply.
+     * to match both properties for the firewall to apply. For INGRESS traffic,
+     * one of `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
      */
     public readonly sourceTags!: pulumi.Output<string[] | undefined>;
     /**
@@ -426,7 +429,8 @@ export interface FirewallState {
      * apply to traffic that has source IP address within sourceRanges OR the
      * source IP that belongs to a tag listed in the sourceTags property. The
      * connection does not need to match both properties for the firewall to
-     * apply. Only IPv4 is supported.
+     * apply. Only IPv4 is supported. For INGRESS traffic, one of `sourceRanges`,
+     * `sourceTags` or `sourceServiceAccounts` is required.
      */
     sourceRanges?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -440,7 +444,8 @@ export interface FirewallState {
      * source IP belongs to an instance with service account listed in
      * sourceServiceAccount. The connection does not need to match both
      * properties for the firewall to apply. sourceServiceAccounts cannot be
-     * used at the same time as sourceTags or targetTags.
+     * used at the same time as sourceTags or targetTags. For INGRESS traffic,
+     * one of `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
      */
     sourceServiceAccounts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -452,7 +457,8 @@ export interface FirewallState {
      * both properties are set, the firewall will apply to traffic that has
      * source IP address within sourceRanges OR the source IP that belongs to
      * a tag listed in the sourceTags property. The connection does not need
-     * to match both properties for the firewall to apply.
+     * to match both properties for the firewall to apply. For INGRESS traffic,
+     * one of `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
      */
     sourceTags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -566,7 +572,8 @@ export interface FirewallArgs {
      * apply to traffic that has source IP address within sourceRanges OR the
      * source IP that belongs to a tag listed in the sourceTags property. The
      * connection does not need to match both properties for the firewall to
-     * apply. Only IPv4 is supported.
+     * apply. Only IPv4 is supported. For INGRESS traffic, one of `sourceRanges`,
+     * `sourceTags` or `sourceServiceAccounts` is required.
      */
     sourceRanges?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -580,7 +587,8 @@ export interface FirewallArgs {
      * source IP belongs to an instance with service account listed in
      * sourceServiceAccount. The connection does not need to match both
      * properties for the firewall to apply. sourceServiceAccounts cannot be
-     * used at the same time as sourceTags or targetTags.
+     * used at the same time as sourceTags or targetTags. For INGRESS traffic,
+     * one of `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
      */
     sourceServiceAccounts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -592,7 +600,8 @@ export interface FirewallArgs {
      * both properties are set, the firewall will apply to traffic that has
      * source IP address within sourceRanges OR the source IP that belongs to
      * a tag listed in the sourceTags property. The connection does not need
-     * to match both properties for the firewall to apply.
+     * to match both properties for the firewall to apply. For INGRESS traffic,
+     * one of `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
      */
     sourceTags?: pulumi.Input<pulumi.Input<string>[]>;
     /**

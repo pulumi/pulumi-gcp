@@ -20,6 +20,7 @@ namespace Pulumi.Gcp.Composer.Outputs
         public readonly string EnvironmentSize;
         public readonly string GkeCluster;
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigMaintenanceWindowResult> MaintenanceWindows;
+        public readonly ImmutableArray<Outputs.GetEnvironmentConfigMasterAuthorizedNetworksConfigResult> MasterAuthorizedNetworksConfigs;
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigNodeConfigResult> NodeConfigs;
         public readonly int NodeCount;
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigPrivateEnvironmentConfigResult> PrivateEnvironmentConfigs;
@@ -44,6 +45,8 @@ namespace Pulumi.Gcp.Composer.Outputs
 
             ImmutableArray<Outputs.GetEnvironmentConfigMaintenanceWindowResult> maintenanceWindows,
 
+            ImmutableArray<Outputs.GetEnvironmentConfigMasterAuthorizedNetworksConfigResult> masterAuthorizedNetworksConfigs,
+
             ImmutableArray<Outputs.GetEnvironmentConfigNodeConfigResult> nodeConfigs,
 
             int nodeCount,
@@ -65,6 +68,7 @@ namespace Pulumi.Gcp.Composer.Outputs
             EnvironmentSize = environmentSize;
             GkeCluster = gkeCluster;
             MaintenanceWindows = maintenanceWindows;
+            MasterAuthorizedNetworksConfigs = masterAuthorizedNetworksConfigs;
             NodeConfigs = nodeConfigs;
             NodeCount = nodeCount;
             PrivateEnvironmentConfigs = privateEnvironmentConfigs;

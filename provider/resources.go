@@ -73,6 +73,7 @@ const (
 	gcpMachingLearning      = "ML"                   // Machine Learning
 	gcpMemcache             = "Memcache"             // Memcache resources
 	gcpMonitoring           = "Monitoring"           // Monitoring resources
+	gcpNetworkConnectivity  = "NetworkConnectivity"  // Network Connectivity resources
 	gcpNetworkManagement    = "NetworkManagement"    // Network Management resources
 	gcpNetworkServices      = "NetworkServices"      // Network Services resources
 	gcpNotebooks            = "Notebooks"            // Notebooks resources
@@ -1825,6 +1826,9 @@ func Provider() tfbridge.ProviderInfo {
 			// Memcache
 			"google_memcache_instance": {Tok: gcpResource(gcpMemcache, "Instance")},
 
+			// Network Connectivity
+			"google_network_connectivity_hub": {Tok: gcpResource(gcpNetworkConnectivity, "Hub")},
+
 			// Network Management
 			"google_network_management_connectivity_test": {
 				Tok: gcpResource(gcpNetworkManagement, "ConnectivityTest"),
@@ -1939,6 +1943,7 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "apigee_environment_iam.html.markdown",
 				},
 			},
+			"google_apigee_nat_address": {Tok: gcpResource(gcpApigee, "NatAddress")},
 
 			// API Gateway
 			"google_api_gateway_api_config_iam_binding": {

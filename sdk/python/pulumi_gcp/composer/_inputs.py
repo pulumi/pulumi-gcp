@@ -13,6 +13,8 @@ __all__ = [
     'EnvironmentConfigDatabaseConfigArgs',
     'EnvironmentConfigEncryptionConfigArgs',
     'EnvironmentConfigMaintenanceWindowArgs',
+    'EnvironmentConfigMasterAuthorizedNetworksConfigArgs',
+    'EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs',
     'EnvironmentConfigNodeConfigArgs',
     'EnvironmentConfigNodeConfigIpAllocationPolicyArgs',
     'EnvironmentConfigPrivateEnvironmentConfigArgs',
@@ -36,6 +38,7 @@ class EnvironmentConfigArgs:
                  environment_size: Optional[pulumi.Input[str]] = None,
                  gke_cluster: Optional[pulumi.Input[str]] = None,
                  maintenance_window: Optional[pulumi.Input['EnvironmentConfigMaintenanceWindowArgs']] = None,
+                 master_authorized_networks_config: Optional[pulumi.Input['EnvironmentConfigMasterAuthorizedNetworksConfigArgs']] = None,
                  node_config: Optional[pulumi.Input['EnvironmentConfigNodeConfigArgs']] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
                  private_environment_config: Optional[pulumi.Input['EnvironmentConfigPrivateEnvironmentConfigArgs']] = None,
@@ -57,6 +60,8 @@ class EnvironmentConfigArgs:
             pulumi.set(__self__, "gke_cluster", gke_cluster)
         if maintenance_window is not None:
             pulumi.set(__self__, "maintenance_window", maintenance_window)
+        if master_authorized_networks_config is not None:
+            pulumi.set(__self__, "master_authorized_networks_config", master_authorized_networks_config)
         if node_config is not None:
             pulumi.set(__self__, "node_config", node_config)
         if node_count is not None:
@@ -134,6 +139,15 @@ class EnvironmentConfigArgs:
     @maintenance_window.setter
     def maintenance_window(self, value: Optional[pulumi.Input['EnvironmentConfigMaintenanceWindowArgs']]):
         pulumi.set(self, "maintenance_window", value)
+
+    @property
+    @pulumi.getter(name="masterAuthorizedNetworksConfig")
+    def master_authorized_networks_config(self) -> Optional[pulumi.Input['EnvironmentConfigMasterAuthorizedNetworksConfigArgs']]:
+        return pulumi.get(self, "master_authorized_networks_config")
+
+    @master_authorized_networks_config.setter
+    def master_authorized_networks_config(self, value: Optional[pulumi.Input['EnvironmentConfigMasterAuthorizedNetworksConfigArgs']]):
+        pulumi.set(self, "master_authorized_networks_config", value)
 
     @property
     @pulumi.getter(name="nodeConfig")
@@ -267,6 +281,62 @@ class EnvironmentConfigMaintenanceWindowArgs:
     @start_time.setter
     def start_time(self, value: pulumi.Input[str]):
         pulumi.set(self, "start_time", value)
+
+
+@pulumi.input_type
+class EnvironmentConfigMasterAuthorizedNetworksConfigArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs']]]] = None):
+        pulumi.set(__self__, "enabled", enabled)
+        if cidr_blocks is not None:
+            pulumi.set(__self__, "cidr_blocks", cidr_blocks)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="cidrBlocks")
+    def cidr_blocks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs']]]]:
+        return pulumi.get(self, "cidr_blocks")
+
+    @cidr_blocks.setter
+    def cidr_blocks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs']]]]):
+        pulumi.set(self, "cidr_blocks", value)
+
+
+@pulumi.input_type
+class EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs:
+    def __init__(__self__, *,
+                 cidr_block: pulumi.Input[str],
+                 display_name: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "cidr_block", cidr_block)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+
+    @property
+    @pulumi.getter(name="cidrBlock")
+    def cidr_block(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "cidr_block")
+
+    @cidr_block.setter
+    def cidr_block(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cidr_block", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
 
 
 @pulumi.input_type

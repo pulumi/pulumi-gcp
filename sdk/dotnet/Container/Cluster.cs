@@ -262,6 +262,12 @@ namespace Pulumi.Gcp.Container
         public Output<string> Endpoint { get; private set; } = null!;
 
         /// <summary>
+        /// . Structure is documented below.
+        /// </summary>
+        [Output("identityServiceConfig")]
+        public Output<Outputs.ClusterIdentityServiceConfig> IdentityServiceConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The number of nodes to create in this
         /// cluster's default node pool. In regional or multi-zonal clusters, this is the
         /// number of nodes per zone. Must be set if `node_pool` is not set. If you're using
@@ -767,6 +773,12 @@ namespace Pulumi.Gcp.Container
         public Input<bool>? EnableTpu { get; set; }
 
         /// <summary>
+        /// . Structure is documented below.
+        /// </summary>
+        [Input("identityServiceConfig")]
+        public Input<Inputs.ClusterIdentityServiceConfigArgs>? IdentityServiceConfig { get; set; }
+
+        /// <summary>
         /// The number of nodes to create in this
         /// cluster's default node pool. In regional or multi-zonal clusters, this is the
         /// number of nodes per zone. Must be set if `node_pool` is not set. If you're using
@@ -1215,6 +1227,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("endpoint")]
         public Input<string>? Endpoint { get; set; }
+
+        /// <summary>
+        /// . Structure is documented below.
+        /// </summary>
+        [Input("identityServiceConfig")]
+        public Input<Inputs.ClusterIdentityServiceConfigGetArgs>? IdentityServiceConfig { get; set; }
 
         /// <summary>
         /// The number of nodes to create in this

@@ -183,6 +183,7 @@ namespace Pulumi.Gcp.Container
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetClusterIdentityServiceConfigResult> IdentityServiceConfigs;
         public readonly int InitialNodeCount;
         public readonly ImmutableArray<Outputs.GetClusterIpAllocationPolicyResult> IpAllocationPolicies;
         public readonly string LabelFingerprint;
@@ -266,6 +267,8 @@ namespace Pulumi.Gcp.Container
             string endpoint,
 
             string id,
+
+            ImmutableArray<Outputs.GetClusterIdentityServiceConfigResult> identityServiceConfigs,
 
             int initialNodeCount,
 
@@ -363,6 +366,7 @@ namespace Pulumi.Gcp.Container
             EnableTpu = enableTpu;
             Endpoint = endpoint;
             Id = id;
+            IdentityServiceConfigs = identityServiceConfigs;
             InitialNodeCount = initialNodeCount;
             IpAllocationPolicies = ipAllocationPolicies;
             LabelFingerprint = labelFingerprint;

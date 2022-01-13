@@ -14,6 +14,8 @@ __all__ = [
     'EnvironmentConfigDatabaseConfig',
     'EnvironmentConfigEncryptionConfig',
     'EnvironmentConfigMaintenanceWindow',
+    'EnvironmentConfigMasterAuthorizedNetworksConfig',
+    'EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock',
     'EnvironmentConfigNodeConfig',
     'EnvironmentConfigNodeConfigIpAllocationPolicy',
     'EnvironmentConfigPrivateEnvironmentConfig',
@@ -29,6 +31,8 @@ __all__ = [
     'GetEnvironmentConfigDatabaseConfigResult',
     'GetEnvironmentConfigEncryptionConfigResult',
     'GetEnvironmentConfigMaintenanceWindowResult',
+    'GetEnvironmentConfigMasterAuthorizedNetworksConfigResult',
+    'GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockResult',
     'GetEnvironmentConfigNodeConfigResult',
     'GetEnvironmentConfigNodeConfigIpAllocationPolicyResult',
     'GetEnvironmentConfigPrivateEnvironmentConfigResult',
@@ -62,6 +66,8 @@ class EnvironmentConfig(dict):
             suggest = "gke_cluster"
         elif key == "maintenanceWindow":
             suggest = "maintenance_window"
+        elif key == "masterAuthorizedNetworksConfig":
+            suggest = "master_authorized_networks_config"
         elif key == "nodeConfig":
             suggest = "node_config"
         elif key == "nodeCount":
@@ -96,6 +102,7 @@ class EnvironmentConfig(dict):
                  environment_size: Optional[str] = None,
                  gke_cluster: Optional[str] = None,
                  maintenance_window: Optional['outputs.EnvironmentConfigMaintenanceWindow'] = None,
+                 master_authorized_networks_config: Optional['outputs.EnvironmentConfigMasterAuthorizedNetworksConfig'] = None,
                  node_config: Optional['outputs.EnvironmentConfigNodeConfig'] = None,
                  node_count: Optional[int] = None,
                  private_environment_config: Optional['outputs.EnvironmentConfigPrivateEnvironmentConfig'] = None,
@@ -117,6 +124,8 @@ class EnvironmentConfig(dict):
             pulumi.set(__self__, "gke_cluster", gke_cluster)
         if maintenance_window is not None:
             pulumi.set(__self__, "maintenance_window", maintenance_window)
+        if master_authorized_networks_config is not None:
+            pulumi.set(__self__, "master_authorized_networks_config", master_authorized_networks_config)
         if node_config is not None:
             pulumi.set(__self__, "node_config", node_config)
         if node_count is not None:
@@ -166,6 +175,11 @@ class EnvironmentConfig(dict):
     @pulumi.getter(name="maintenanceWindow")
     def maintenance_window(self) -> Optional['outputs.EnvironmentConfigMaintenanceWindow']:
         return pulumi.get(self, "maintenance_window")
+
+    @property
+    @pulumi.getter(name="masterAuthorizedNetworksConfig")
+    def master_authorized_networks_config(self) -> Optional['outputs.EnvironmentConfigMasterAuthorizedNetworksConfig']:
+        return pulumi.get(self, "master_authorized_networks_config")
 
     @property
     @pulumi.getter(name="nodeConfig")
@@ -304,6 +318,82 @@ class EnvironmentConfigMaintenanceWindow(dict):
     @pulumi.getter(name="startTime")
     def start_time(self) -> str:
         return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class EnvironmentConfigMasterAuthorizedNetworksConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cidrBlocks":
+            suggest = "cidr_blocks"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EnvironmentConfigMasterAuthorizedNetworksConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EnvironmentConfigMasterAuthorizedNetworksConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EnvironmentConfigMasterAuthorizedNetworksConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: bool,
+                 cidr_blocks: Optional[Sequence['outputs.EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock']] = None):
+        pulumi.set(__self__, "enabled", enabled)
+        if cidr_blocks is not None:
+            pulumi.set(__self__, "cidr_blocks", cidr_blocks)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="cidrBlocks")
+    def cidr_blocks(self) -> Optional[Sequence['outputs.EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock']]:
+        return pulumi.get(self, "cidr_blocks")
+
+
+@pulumi.output_type
+class EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cidrBlock":
+            suggest = "cidr_block"
+        elif key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cidr_block: str,
+                 display_name: Optional[str] = None):
+        pulumi.set(__self__, "cidr_block", cidr_block)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+
+    @property
+    @pulumi.getter(name="cidrBlock")
+    def cidr_block(self) -> str:
+        return pulumi.get(self, "cidr_block")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[str]:
+        return pulumi.get(self, "display_name")
 
 
 @pulumi.output_type
@@ -975,6 +1065,7 @@ class GetEnvironmentConfigResult(dict):
                  environment_size: str,
                  gke_cluster: str,
                  maintenance_windows: Sequence['outputs.GetEnvironmentConfigMaintenanceWindowResult'],
+                 master_authorized_networks_configs: Sequence['outputs.GetEnvironmentConfigMasterAuthorizedNetworksConfigResult'],
                  node_configs: Sequence['outputs.GetEnvironmentConfigNodeConfigResult'],
                  node_count: int,
                  private_environment_configs: Sequence['outputs.GetEnvironmentConfigPrivateEnvironmentConfigResult'],
@@ -989,6 +1080,7 @@ class GetEnvironmentConfigResult(dict):
         pulumi.set(__self__, "environment_size", environment_size)
         pulumi.set(__self__, "gke_cluster", gke_cluster)
         pulumi.set(__self__, "maintenance_windows", maintenance_windows)
+        pulumi.set(__self__, "master_authorized_networks_configs", master_authorized_networks_configs)
         pulumi.set(__self__, "node_configs", node_configs)
         pulumi.set(__self__, "node_count", node_count)
         pulumi.set(__self__, "private_environment_configs", private_environment_configs)
@@ -1031,6 +1123,11 @@ class GetEnvironmentConfigResult(dict):
     @pulumi.getter(name="maintenanceWindows")
     def maintenance_windows(self) -> Sequence['outputs.GetEnvironmentConfigMaintenanceWindowResult']:
         return pulumi.get(self, "maintenance_windows")
+
+    @property
+    @pulumi.getter(name="masterAuthorizedNetworksConfigs")
+    def master_authorized_networks_configs(self) -> Sequence['outputs.GetEnvironmentConfigMasterAuthorizedNetworksConfigResult']:
+        return pulumi.get(self, "master_authorized_networks_configs")
 
     @property
     @pulumi.getter(name="nodeConfigs")
@@ -1116,6 +1213,44 @@ class GetEnvironmentConfigMaintenanceWindowResult(dict):
     @pulumi.getter(name="startTime")
     def start_time(self) -> str:
         return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class GetEnvironmentConfigMasterAuthorizedNetworksConfigResult(dict):
+    def __init__(__self__, *,
+                 cidr_blocks: Sequence['outputs.GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockResult'],
+                 enabled: bool):
+        pulumi.set(__self__, "cidr_blocks", cidr_blocks)
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="cidrBlocks")
+    def cidr_blocks(self) -> Sequence['outputs.GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockResult']:
+        return pulumi.get(self, "cidr_blocks")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockResult(dict):
+    def __init__(__self__, *,
+                 cidr_block: str,
+                 display_name: str):
+        pulumi.set(__self__, "cidr_block", cidr_block)
+        pulumi.set(__self__, "display_name", display_name)
+
+    @property
+    @pulumi.getter(name="cidrBlock")
+    def cidr_block(self) -> str:
+        return pulumi.get(self, "cidr_block")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        return pulumi.get(self, "display_name")
 
 
 @pulumi.output_type

@@ -93,6 +93,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly memcacheCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly mlEngineCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly monitoringCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly networkConnectivityCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly networkManagementCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly networkServicesCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly notebooksCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -212,6 +213,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["memcacheCustomEndpoint"] = args ? args.memcacheCustomEndpoint : undefined;
             inputs["mlEngineCustomEndpoint"] = args ? args.mlEngineCustomEndpoint : undefined;
             inputs["monitoringCustomEndpoint"] = args ? args.monitoringCustomEndpoint : undefined;
+            inputs["networkConnectivityCustomEndpoint"] = args ? args.networkConnectivityCustomEndpoint : undefined;
             inputs["networkManagementCustomEndpoint"] = args ? args.networkManagementCustomEndpoint : undefined;
             inputs["networkServicesCustomEndpoint"] = args ? args.networkServicesCustomEndpoint : undefined;
             inputs["notebooksCustomEndpoint"] = args ? args.notebooksCustomEndpoint : undefined;
@@ -333,6 +335,7 @@ export interface ProviderArgs {
     memcacheCustomEndpoint?: pulumi.Input<string>;
     mlEngineCustomEndpoint?: pulumi.Input<string>;
     monitoringCustomEndpoint?: pulumi.Input<string>;
+    networkConnectivityCustomEndpoint?: pulumi.Input<string>;
     networkManagementCustomEndpoint?: pulumi.Input<string>;
     networkServicesCustomEndpoint?: pulumi.Input<string>;
     notebooksCustomEndpoint?: pulumi.Input<string>;

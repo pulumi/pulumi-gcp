@@ -526,6 +526,8 @@
         "monitoring/notificationChannel.ts",
         "monitoring/slo.ts",
         "monitoring/uptimeCheckConfig.ts",
+        "networkconnectivity/hub.ts",
+        "networkconnectivity/index.ts",
         "networkmanagement/connectivityTest.ts",
         "networkmanagement/index.ts",
         "networkservices/edgeCacheKeyset.ts",

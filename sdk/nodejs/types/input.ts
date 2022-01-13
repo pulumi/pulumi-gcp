@@ -6772,6 +6772,7 @@ export namespace composer {
         environmentSize?: pulumi.Input<string>;
         gkeCluster?: pulumi.Input<string>;
         maintenanceWindow?: pulumi.Input<inputs.composer.EnvironmentConfigMaintenanceWindow>;
+        masterAuthorizedNetworksConfig?: pulumi.Input<inputs.composer.EnvironmentConfigMasterAuthorizedNetworksConfig>;
         nodeConfig?: pulumi.Input<inputs.composer.EnvironmentConfigNodeConfig>;
         nodeCount?: pulumi.Input<number>;
         privateEnvironmentConfig?: pulumi.Input<inputs.composer.EnvironmentConfigPrivateEnvironmentConfig>;
@@ -6793,6 +6794,16 @@ export namespace composer {
         endTime: pulumi.Input<string>;
         recurrence: pulumi.Input<string>;
         startTime: pulumi.Input<string>;
+    }
+
+    export interface EnvironmentConfigMasterAuthorizedNetworksConfig {
+        cidrBlocks?: pulumi.Input<pulumi.Input<inputs.composer.EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock>[]>;
+        enabled: pulumi.Input<boolean>;
+    }
+
+    export interface EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock {
+        cidrBlock: pulumi.Input<string>;
+        displayName?: pulumi.Input<string>;
     }
 
     export interface EnvironmentConfigNodeConfig {
@@ -15769,6 +15780,14 @@ export namespace container {
         clusterDnsScope?: pulumi.Input<string>;
     }
 
+    export interface ClusterIdentityServiceConfig {
+        /**
+         * Enable the PodSecurityPolicy controller for this cluster.
+         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         */
+        enabled?: pulumi.Input<boolean>;
+    }
+
     export interface ClusterIpAllocationPolicy {
         /**
          * The IP address range for the cluster pod IPs.
@@ -16705,6 +16724,7 @@ export namespace container {
          */
         maxUnavailable: pulumi.Input<number>;
     }
+
 }
 
 export namespace containeranalysis {
@@ -23658,6 +23678,12 @@ export namespace monitoring {
          * The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
          */
         port: pulumi.Input<number>;
+    }
+}
+
+export namespace networkconnectivity {
+    export interface HubRoutingVpc {
+        uri?: pulumi.Input<string>;
     }
 }
 
