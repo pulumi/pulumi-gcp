@@ -9,10 +9,13 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'AlertPolicyAlertStrategyArgs',
+    'AlertPolicyAlertStrategyNotificationRateLimitArgs',
     'AlertPolicyConditionArgs',
     'AlertPolicyConditionConditionAbsentArgs',
     'AlertPolicyConditionConditionAbsentAggregationArgs',
     'AlertPolicyConditionConditionAbsentTriggerArgs',
+    'AlertPolicyConditionConditionMatchedLogArgs',
     'AlertPolicyConditionConditionMonitoringQueryLanguageArgs',
     'AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs',
     'AlertPolicyConditionConditionThresholdArgs',
@@ -54,10 +57,77 @@ __all__ = [
 ]
 
 @pulumi.input_type
+class AlertPolicyAlertStrategyArgs:
+    def __init__(__self__, *,
+                 auto_close: Optional[pulumi.Input[str]] = None,
+                 notification_rate_limit: Optional[pulumi.Input['AlertPolicyAlertStrategyNotificationRateLimitArgs']] = None):
+        """
+        :param pulumi.Input[str] auto_close: If an alert policy that was active has no data for this long, any open incidents will close.
+        :param pulumi.Input['AlertPolicyAlertStrategyNotificationRateLimitArgs'] notification_rate_limit: Required for alert policies with a LogMatch condition.
+               This limit is not implemented for alert policies that are not log-based.
+               Structure is documented below.
+        """
+        if auto_close is not None:
+            pulumi.set(__self__, "auto_close", auto_close)
+        if notification_rate_limit is not None:
+            pulumi.set(__self__, "notification_rate_limit", notification_rate_limit)
+
+    @property
+    @pulumi.getter(name="autoClose")
+    def auto_close(self) -> Optional[pulumi.Input[str]]:
+        """
+        If an alert policy that was active has no data for this long, any open incidents will close.
+        """
+        return pulumi.get(self, "auto_close")
+
+    @auto_close.setter
+    def auto_close(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auto_close", value)
+
+    @property
+    @pulumi.getter(name="notificationRateLimit")
+    def notification_rate_limit(self) -> Optional[pulumi.Input['AlertPolicyAlertStrategyNotificationRateLimitArgs']]:
+        """
+        Required for alert policies with a LogMatch condition.
+        This limit is not implemented for alert policies that are not log-based.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "notification_rate_limit")
+
+    @notification_rate_limit.setter
+    def notification_rate_limit(self, value: Optional[pulumi.Input['AlertPolicyAlertStrategyNotificationRateLimitArgs']]):
+        pulumi.set(self, "notification_rate_limit", value)
+
+
+@pulumi.input_type
+class AlertPolicyAlertStrategyNotificationRateLimitArgs:
+    def __init__(__self__, *,
+                 period: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] period: Not more than one notification per period.
+        """
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional[pulumi.Input[str]]:
+        """
+        Not more than one notification per period.
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "period", value)
+
+
+@pulumi.input_type
 class AlertPolicyConditionArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
                  condition_absent: Optional[pulumi.Input['AlertPolicyConditionConditionAbsentArgs']] = None,
+                 condition_matched_log: Optional[pulumi.Input['AlertPolicyConditionConditionMatchedLogArgs']] = None,
                  condition_monitoring_query_language: Optional[pulumi.Input['AlertPolicyConditionConditionMonitoringQueryLanguageArgs']] = None,
                  condition_threshold: Optional[pulumi.Input['AlertPolicyConditionConditionThresholdArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None):
@@ -69,6 +139,9 @@ class AlertPolicyConditionArgs:
                policy.
         :param pulumi.Input['AlertPolicyConditionConditionAbsentArgs'] condition_absent: A condition that checks that a time series
                continues to receive new data points.
+               Structure is documented below.
+        :param pulumi.Input['AlertPolicyConditionConditionMatchedLogArgs'] condition_matched_log: A condition that checks for log messages matching given constraints.
+               If set, no other conditions can be present.
                Structure is documented below.
         :param pulumi.Input['AlertPolicyConditionConditionMonitoringQueryLanguageArgs'] condition_monitoring_query_language: A Monitoring Query Language query that outputs a boolean stream
                Structure is documented below.
@@ -86,6 +159,8 @@ class AlertPolicyConditionArgs:
         pulumi.set(__self__, "display_name", display_name)
         if condition_absent is not None:
             pulumi.set(__self__, "condition_absent", condition_absent)
+        if condition_matched_log is not None:
+            pulumi.set(__self__, "condition_matched_log", condition_matched_log)
         if condition_monitoring_query_language is not None:
             pulumi.set(__self__, "condition_monitoring_query_language", condition_monitoring_query_language)
         if condition_threshold is not None:
@@ -122,6 +197,20 @@ class AlertPolicyConditionArgs:
     @condition_absent.setter
     def condition_absent(self, value: Optional[pulumi.Input['AlertPolicyConditionConditionAbsentArgs']]):
         pulumi.set(self, "condition_absent", value)
+
+    @property
+    @pulumi.getter(name="conditionMatchedLog")
+    def condition_matched_log(self) -> Optional[pulumi.Input['AlertPolicyConditionConditionMatchedLogArgs']]:
+        """
+        A condition that checks for log messages matching given constraints.
+        If set, no other conditions can be present.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "condition_matched_log")
+
+    @condition_matched_log.setter
+    def condition_matched_log(self, value: Optional[pulumi.Input['AlertPolicyConditionConditionMatchedLogArgs']]):
+        pulumi.set(self, "condition_matched_log", value)
 
     @property
     @pulumi.getter(name="conditionMonitoringQueryLanguage")
@@ -206,18 +295,7 @@ class AlertPolicyConditionConditionAbsentArgs:
                ListTimeSeries method when debugging this
                field.
                Structure is documented below.
-        :param pulumi.Input[str] filter: A filter that identifies which time series
-               should be compared with the threshold.The
-               filter is similar to the one that is
-               specified in the
-               MetricService.ListTimeSeries request (that
-               call is useful to verify the time series
-               that will be retrieved / processed) and must
-               specify the metric type and optionally may
-               contain restrictions on resource type,
-               resource labels, and metric labels. This
-               field may not exceed 2048 Unicode characters
-               in length.
+        :param pulumi.Input[str] filter: A logs-based filter.
         :param pulumi.Input['AlertPolicyConditionConditionAbsentTriggerArgs'] trigger: The number/percent of time series for which
                the comparison must hold in order for the
                condition to trigger. If unspecified, then
@@ -291,18 +369,7 @@ class AlertPolicyConditionConditionAbsentArgs:
     @pulumi.getter
     def filter(self) -> Optional[pulumi.Input[str]]:
         """
-        A filter that identifies which time series
-        should be compared with the threshold.The
-        filter is similar to the one that is
-        specified in the
-        MetricService.ListTimeSeries request (that
-        call is useful to verify the time series
-        that will be retrieved / processed) and must
-        specify the metric type and optionally may
-        contain restrictions on resource type,
-        resource labels, and metric labels. This
-        field may not exceed 2048 Unicode characters
-        in length.
+        A logs-based filter.
         """
         return pulumi.get(self, "filter")
 
@@ -592,6 +659,56 @@ class AlertPolicyConditionConditionAbsentTriggerArgs:
 
 
 @pulumi.input_type
+class AlertPolicyConditionConditionMatchedLogArgs:
+    def __init__(__self__, *,
+                 filter: pulumi.Input[str],
+                 label_extractors: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] filter: A logs-based filter.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] label_extractors: A map from a label key to an extractor expression, which is used to
+               extract the value for this label key. Each entry in this map is
+               a specification for how data should be extracted from log entries that
+               match filter. Each combination of extracted values is treated as
+               a separate rule for the purposes of triggering notifications.
+               Label keys and corresponding values can be used in notifications
+               generated by this condition.
+        """
+        pulumi.set(__self__, "filter", filter)
+        if label_extractors is not None:
+            pulumi.set(__self__, "label_extractors", label_extractors)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> pulumi.Input[str]:
+        """
+        A logs-based filter.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: pulumi.Input[str]):
+        pulumi.set(self, "filter", value)
+
+    @property
+    @pulumi.getter(name="labelExtractors")
+    def label_extractors(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map from a label key to an extractor expression, which is used to
+        extract the value for this label key. Each entry in this map is
+        a specification for how data should be extracted from log entries that
+        match filter. Each combination of extracted values is treated as
+        a separate rule for the purposes of triggering notifications.
+        Label keys and corresponding values can be used in notifications
+        generated by this condition.
+        """
+        return pulumi.get(self, "label_extractors")
+
+    @label_extractors.setter
+    def label_extractors(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "label_extractors", value)
+
+
+@pulumi.input_type
 class AlertPolicyConditionConditionMonitoringQueryLanguageArgs:
     def __init__(__self__, *,
                  duration: pulumi.Input[str],
@@ -817,18 +934,7 @@ class AlertPolicyConditionConditionThresholdArgs:
                resource labels, and metric labels. This
                field may not exceed 2048 Unicode characters
                in length.
-        :param pulumi.Input[str] filter: A filter that identifies which time series
-               should be compared with the threshold.The
-               filter is similar to the one that is
-               specified in the
-               MetricService.ListTimeSeries request (that
-               call is useful to verify the time series
-               that will be retrieved / processed) and must
-               specify the metric type and optionally may
-               contain restrictions on resource type,
-               resource labels, and metric labels. This
-               field may not exceed 2048 Unicode characters
-               in length.
+        :param pulumi.Input[str] filter: A logs-based filter.
         :param pulumi.Input[float] threshold_value: A value against which to compare the time
                series.
         :param pulumi.Input['AlertPolicyConditionConditionThresholdTriggerArgs'] trigger: The number/percent of time series for which
@@ -985,18 +1091,7 @@ class AlertPolicyConditionConditionThresholdArgs:
     @pulumi.getter
     def filter(self) -> Optional[pulumi.Input[str]]:
         """
-        A filter that identifies which time series
-        should be compared with the threshold.The
-        filter is similar to the one that is
-        specified in the
-        MetricService.ListTimeSeries request (that
-        call is useful to verify the time series
-        that will be retrieved / processed) and must
-        specify the metric type and optionally may
-        contain restrictions on resource type,
-        resource labels, and metric labels. This
-        field may not exceed 2048 Unicode characters
-        in length.
+        A logs-based filter.
         """
         return pulumi.get(self, "filter")
 

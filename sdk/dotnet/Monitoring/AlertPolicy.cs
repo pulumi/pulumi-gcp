@@ -78,6 +78,13 @@ namespace Pulumi.Gcp.Monitoring
     public partial class AlertPolicy : Pulumi.CustomResource
     {
         /// <summary>
+        /// Control over how this alert policy's notification channels are notified.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("alertStrategy")]
+        public Output<Outputs.AlertPolicyAlertStrategy?> AlertStrategy { get; private set; } = null!;
+
+        /// <summary>
         /// How to combine the results of multiple conditions to
         /// determine if an incident should be opened.
         /// Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
@@ -217,6 +224,13 @@ namespace Pulumi.Gcp.Monitoring
     public sealed class AlertPolicyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Control over how this alert policy's notification channels are notified.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("alertStrategy")]
+        public Input<Inputs.AlertPolicyAlertStrategyArgs>? AlertStrategy { get; set; }
+
+        /// <summary>
         /// How to combine the results of multiple conditions to
         /// determine if an incident should be opened.
         /// Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
@@ -315,6 +329,13 @@ namespace Pulumi.Gcp.Monitoring
 
     public sealed class AlertPolicyState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Control over how this alert policy's notification channels are notified.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("alertStrategy")]
+        public Input<Inputs.AlertPolicyAlertStrategyGetArgs>? AlertStrategy { get; set; }
+
         /// <summary>
         /// How to combine the results of multiple conditions to
         /// determine if an incident should be opened.

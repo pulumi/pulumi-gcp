@@ -20,6 +20,12 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// </summary>
         public readonly Outputs.AlertPolicyConditionConditionAbsent? ConditionAbsent;
         /// <summary>
+        /// A condition that checks for log messages matching given constraints.
+        /// If set, no other conditions can be present.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.AlertPolicyConditionConditionMatchedLog? ConditionMatchedLog;
+        /// <summary>
         /// A Monitoring Query Language query that outputs a boolean stream
         /// Structure is documented below.
         /// </summary>
@@ -53,6 +59,8 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         private AlertPolicyCondition(
             Outputs.AlertPolicyConditionConditionAbsent? conditionAbsent,
 
+            Outputs.AlertPolicyConditionConditionMatchedLog? conditionMatchedLog,
+
             Outputs.AlertPolicyConditionConditionMonitoringQueryLanguage? conditionMonitoringQueryLanguage,
 
             Outputs.AlertPolicyConditionConditionThreshold? conditionThreshold,
@@ -62,6 +70,7 @@ namespace Pulumi.Gcp.Monitoring.Outputs
             string? name)
         {
             ConditionAbsent = conditionAbsent;
+            ConditionMatchedLog = conditionMatchedLog;
             ConditionMonitoringQueryLanguage = conditionMonitoringQueryLanguage;
             ConditionThreshold = conditionThreshold;
             DisplayName = displayName;

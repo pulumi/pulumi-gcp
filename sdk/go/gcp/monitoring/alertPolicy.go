@@ -75,6 +75,9 @@ import (
 type AlertPolicy struct {
 	pulumi.CustomResourceState
 
+	// Control over how this alert policy's notification channels are notified.
+	// Structure is documented below.
+	AlertStrategy AlertPolicyAlertStrategyPtrOutput `pulumi:"alertStrategy"`
 	// How to combine the results of multiple conditions to
 	// determine if an incident should be opened.
 	// Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
@@ -168,6 +171,9 @@ func GetAlertPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AlertPolicy resources.
 type alertPolicyState struct {
+	// Control over how this alert policy's notification channels are notified.
+	// Structure is documented below.
+	AlertStrategy *AlertPolicyAlertStrategy `pulumi:"alertStrategy"`
 	// How to combine the results of multiple conditions to
 	// determine if an incident should be opened.
 	// Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
@@ -224,6 +230,9 @@ type alertPolicyState struct {
 }
 
 type AlertPolicyState struct {
+	// Control over how this alert policy's notification channels are notified.
+	// Structure is documented below.
+	AlertStrategy AlertPolicyAlertStrategyPtrInput
 	// How to combine the results of multiple conditions to
 	// determine if an incident should be opened.
 	// Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
@@ -284,6 +293,9 @@ func (AlertPolicyState) ElementType() reflect.Type {
 }
 
 type alertPolicyArgs struct {
+	// Control over how this alert policy's notification channels are notified.
+	// Structure is documented below.
+	AlertStrategy *AlertPolicyAlertStrategy `pulumi:"alertStrategy"`
 	// How to combine the results of multiple conditions to
 	// determine if an incident should be opened.
 	// Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
@@ -330,6 +342,9 @@ type alertPolicyArgs struct {
 
 // The set of arguments for constructing a AlertPolicy resource.
 type AlertPolicyArgs struct {
+	// Control over how this alert policy's notification channels are notified.
+	// Structure is documented below.
+	AlertStrategy AlertPolicyAlertStrategyPtrInput
 	// How to combine the results of multiple conditions to
 	// determine if an incident should be opened.
 	// Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.

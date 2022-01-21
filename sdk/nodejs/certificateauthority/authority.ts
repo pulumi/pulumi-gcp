@@ -91,9 +91,8 @@ import * as utilities from "../utilities";
  *         x509Config: {
  *             caOptions: {
  *                 isCa: true,
- *                 maxIssuerPathLength: 0,
  *                 // Force the sub CA to only issue leaf certs
- *                 zeroMaxIssuerPathLength: true,
+ *                 maxIssuerPathLength: 0,
  *             },
  *             keyUsage: {
  *                 baseKeyUsage: {

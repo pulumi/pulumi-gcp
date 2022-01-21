@@ -81,6 +81,11 @@ export class AlertPolicy extends pulumi.CustomResource {
     }
 
     /**
+     * Control over how this alert policy's notification channels are notified.
+     * Structure is documented below.
+     */
+    public readonly alertStrategy!: pulumi.Output<outputs.monitoring.AlertPolicyAlertStrategy | undefined>;
+    /**
      * How to combine the results of multiple conditions to
      * determine if an incident should be opened.
      * Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
@@ -167,6 +172,7 @@ export class AlertPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AlertPolicyState | undefined;
+            inputs["alertStrategy"] = state ? state.alertStrategy : undefined;
             inputs["combiner"] = state ? state.combiner : undefined;
             inputs["conditions"] = state ? state.conditions : undefined;
             inputs["creationRecords"] = state ? state.creationRecords : undefined;
@@ -188,6 +194,7 @@ export class AlertPolicy extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
+            inputs["alertStrategy"] = args ? args.alertStrategy : undefined;
             inputs["combiner"] = args ? args.combiner : undefined;
             inputs["conditions"] = args ? args.conditions : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
@@ -210,6 +217,11 @@ export class AlertPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AlertPolicy resources.
  */
 export interface AlertPolicyState {
+    /**
+     * Control over how this alert policy's notification channels are notified.
+     * Structure is documented below.
+     */
+    alertStrategy?: pulumi.Input<inputs.monitoring.AlertPolicyAlertStrategy>;
     /**
      * How to combine the results of multiple conditions to
      * determine if an incident should be opened.
@@ -289,6 +301,11 @@ export interface AlertPolicyState {
  * The set of arguments for constructing a AlertPolicy resource.
  */
 export interface AlertPolicyArgs {
+    /**
+     * Control over how this alert policy's notification channels are notified.
+     * Structure is documented below.
+     */
+    alertStrategy?: pulumi.Input<inputs.monitoring.AlertPolicyAlertStrategy>;
     /**
      * How to combine the results of multiple conditions to
      * determine if an incident should be opened.

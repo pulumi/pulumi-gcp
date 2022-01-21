@@ -49,18 +49,7 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// </summary>
         public readonly string Duration;
         /// <summary>
-        /// A filter that identifies which time series
-        /// should be compared with the threshold.The
-        /// filter is similar to the one that is
-        /// specified in the
-        /// MetricService.ListTimeSeries request (that
-        /// call is useful to verify the time series
-        /// that will be retrieved / processed) and must
-        /// specify the metric type and optionally may
-        /// contain restrictions on resource type,
-        /// resource labels, and metric labels. This
-        /// field may not exceed 2048 Unicode characters
-        /// in length.
+        /// A logs-based filter.
         /// </summary>
         public readonly string? Filter;
         /// <summary>

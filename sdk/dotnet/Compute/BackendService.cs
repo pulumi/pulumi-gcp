@@ -268,6 +268,41 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// }
     /// ```
+    /// ### Backend Service External Managed
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var defaultHealthCheck = new Gcp.Compute.HealthCheck("defaultHealthCheck", new Gcp.Compute.HealthCheckArgs
+    ///         {
+    ///             HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+    ///             {
+    ///                 Port = 80,
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var defaultBackendService = new Gcp.Compute.BackendService("defaultBackendService", new Gcp.Compute.BackendServiceArgs
+    ///         {
+    ///             HealthChecks = 
+    ///             {
+    ///                 defaultHealthCheck.Id,
+    ///             },
+    ///             LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -401,37 +436,35 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Indicates whether the backend service will be used with internal or
         /// external load balancing. A backend service created for one type of
-        /// load balancing cannot be used with the other.
+        /// load balancing cannot be used with the other. For more information, refer to
+        /// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
         /// Default value is `EXTERNAL`.
-        /// Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
+        /// Possible values are `EXTERNAL`, `INTERNAL_SELF_MANAGED`, and `EXTERNAL_MANAGED`.
         /// </summary>
         [Output("loadBalancingScheme")]
         public Output<string?> LoadBalancingScheme { get; private set; } = null!;
 
         /// <summary>
         /// The load balancing algorithm used within the scope of the locality.
-        /// The possible values are -
-        /// * ROUND_ROBIN - This is a simple policy in which each healthy backend
+        /// The possible values are:
+        /// * `ROUND_ROBIN`: This is a simple policy in which each healthy backend
         /// is selected in round robin order.
-        /// * LEAST_REQUEST - An O(1) algorithm which selects two random healthy
+        /// * `LEAST_REQUEST`: An O(1) algorithm which selects two random healthy
         /// hosts and picks the host which has fewer active requests.
-        /// * RING_HASH - The ring/modulo hash load balancer implements consistent
+        /// * `RING_HASH`: The ring/modulo hash load balancer implements consistent
         /// hashing to backends. The algorithm has the property that the
         /// addition/removal of a host from a set of N hosts only affects
         /// 1/N of the requests.
-        /// * RANDOM - The load balancer selects a random healthy host.
-        /// * ORIGINAL_DESTINATION - Backend host is selected based on the client
+        /// * `RANDOM`: The load balancer selects a random healthy host.
+        /// * `ORIGINAL_DESTINATION`: Backend host is selected based on the client
         /// connection metadata, i.e., connections are opened
         /// to the same address as the destination address of
         /// the incoming connection before the connection
         /// was redirected to the load balancer.
-        /// * MAGLEV - used as a drop in replacement for the ring hash load balancer.
+        /// * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
         /// Maglev is not as stable as ring hash but has faster table lookup
         /// build times and host selection times. For more information about
         /// Maglev, refer to https://ai.google/research/pubs/pub44824
-        /// This field is applicable only when the load_balancing_scheme is set to
-        /// INTERNAL_SELF_MANAGED.
-        /// Possible values are `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, and `MAGLEV`.
         /// </summary>
         [Output("localityLbPolicy")]
         public Output<string?> LocalityLbPolicy { get; private set; } = null!;
@@ -685,37 +718,35 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Indicates whether the backend service will be used with internal or
         /// external load balancing. A backend service created for one type of
-        /// load balancing cannot be used with the other.
+        /// load balancing cannot be used with the other. For more information, refer to
+        /// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
         /// Default value is `EXTERNAL`.
-        /// Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
+        /// Possible values are `EXTERNAL`, `INTERNAL_SELF_MANAGED`, and `EXTERNAL_MANAGED`.
         /// </summary>
         [Input("loadBalancingScheme")]
         public Input<string>? LoadBalancingScheme { get; set; }
 
         /// <summary>
         /// The load balancing algorithm used within the scope of the locality.
-        /// The possible values are -
-        /// * ROUND_ROBIN - This is a simple policy in which each healthy backend
+        /// The possible values are:
+        /// * `ROUND_ROBIN`: This is a simple policy in which each healthy backend
         /// is selected in round robin order.
-        /// * LEAST_REQUEST - An O(1) algorithm which selects two random healthy
+        /// * `LEAST_REQUEST`: An O(1) algorithm which selects two random healthy
         /// hosts and picks the host which has fewer active requests.
-        /// * RING_HASH - The ring/modulo hash load balancer implements consistent
+        /// * `RING_HASH`: The ring/modulo hash load balancer implements consistent
         /// hashing to backends. The algorithm has the property that the
         /// addition/removal of a host from a set of N hosts only affects
         /// 1/N of the requests.
-        /// * RANDOM - The load balancer selects a random healthy host.
-        /// * ORIGINAL_DESTINATION - Backend host is selected based on the client
+        /// * `RANDOM`: The load balancer selects a random healthy host.
+        /// * `ORIGINAL_DESTINATION`: Backend host is selected based on the client
         /// connection metadata, i.e., connections are opened
         /// to the same address as the destination address of
         /// the incoming connection before the connection
         /// was redirected to the load balancer.
-        /// * MAGLEV - used as a drop in replacement for the ring hash load balancer.
+        /// * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
         /// Maglev is not as stable as ring hash but has faster table lookup
         /// build times and host selection times. For more information about
         /// Maglev, refer to https://ai.google/research/pubs/pub44824
-        /// This field is applicable only when the load_balancing_scheme is set to
-        /// INTERNAL_SELF_MANAGED.
-        /// Possible values are `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, and `MAGLEV`.
         /// </summary>
         [Input("localityLbPolicy")]
         public Input<string>? LocalityLbPolicy { get; set; }
@@ -936,37 +967,35 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Indicates whether the backend service will be used with internal or
         /// external load balancing. A backend service created for one type of
-        /// load balancing cannot be used with the other.
+        /// load balancing cannot be used with the other. For more information, refer to
+        /// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
         /// Default value is `EXTERNAL`.
-        /// Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
+        /// Possible values are `EXTERNAL`, `INTERNAL_SELF_MANAGED`, and `EXTERNAL_MANAGED`.
         /// </summary>
         [Input("loadBalancingScheme")]
         public Input<string>? LoadBalancingScheme { get; set; }
 
         /// <summary>
         /// The load balancing algorithm used within the scope of the locality.
-        /// The possible values are -
-        /// * ROUND_ROBIN - This is a simple policy in which each healthy backend
+        /// The possible values are:
+        /// * `ROUND_ROBIN`: This is a simple policy in which each healthy backend
         /// is selected in round robin order.
-        /// * LEAST_REQUEST - An O(1) algorithm which selects two random healthy
+        /// * `LEAST_REQUEST`: An O(1) algorithm which selects two random healthy
         /// hosts and picks the host which has fewer active requests.
-        /// * RING_HASH - The ring/modulo hash load balancer implements consistent
+        /// * `RING_HASH`: The ring/modulo hash load balancer implements consistent
         /// hashing to backends. The algorithm has the property that the
         /// addition/removal of a host from a set of N hosts only affects
         /// 1/N of the requests.
-        /// * RANDOM - The load balancer selects a random healthy host.
-        /// * ORIGINAL_DESTINATION - Backend host is selected based on the client
+        /// * `RANDOM`: The load balancer selects a random healthy host.
+        /// * `ORIGINAL_DESTINATION`: Backend host is selected based on the client
         /// connection metadata, i.e., connections are opened
         /// to the same address as the destination address of
         /// the incoming connection before the connection
         /// was redirected to the load balancer.
-        /// * MAGLEV - used as a drop in replacement for the ring hash load balancer.
+        /// * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
         /// Maglev is not as stable as ring hash but has faster table lookup
         /// build times and host selection times. For more information about
         /// Maglev, refer to https://ai.google/research/pubs/pub44824
-        /// This field is applicable only when the load_balancing_scheme is set to
-        /// INTERNAL_SELF_MANAGED.
-        /// Possible values are `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, and `MAGLEV`.
         /// </summary>
         [Input("localityLbPolicy")]
         public Input<string>? LocalityLbPolicy { get; set; }
