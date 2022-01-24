@@ -21,6 +21,14 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public Input<Inputs.AlertPolicyConditionConditionAbsentArgs>? ConditionAbsent { get; set; }
 
         /// <summary>
+        /// A condition that checks for log messages matching given constraints.
+        /// If set, no other conditions can be present.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("conditionMatchedLog")]
+        public Input<Inputs.AlertPolicyConditionConditionMatchedLogArgs>? ConditionMatchedLog { get; set; }
+
+        /// <summary>
         /// A Monitoring Query Language query that outputs a boolean stream
         /// Structure is documented below.
         /// </summary>

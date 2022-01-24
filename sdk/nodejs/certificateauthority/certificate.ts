@@ -77,7 +77,6 @@ import * as utilities from "../utilities";
  *         },
  *         x509Config: {
  *             caOptions: {
- *                 nonCa: true,
  *                 isCa: false,
  *             },
  *             keyUsage: {
@@ -328,7 +327,6 @@ import * as utilities from "../utilities";
  *         },
  *         x509Config: {
  *             caOptions: {
- *                 nonCa: true,
  *                 isCa: false,
  *             },
  *             keyUsage: {

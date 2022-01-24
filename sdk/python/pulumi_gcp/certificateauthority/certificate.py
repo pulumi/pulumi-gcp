@@ -569,7 +569,6 @@ class Certificate(pulumi.CustomResource):
                 ),
                 x509_config=gcp.certificateauthority.CertificateConfigX509ConfigArgs(
                     ca_options=gcp.certificateauthority.CertificateConfigX509ConfigCaOptionsArgs(
-                        non_ca=True,
                         is_ca=False,
                     ),
                     key_usage=gcp.certificateauthority.CertificateConfigX509ConfigKeyUsageArgs(
@@ -811,7 +810,6 @@ class Certificate(pulumi.CustomResource):
                 ),
                 x509_config=gcp.certificateauthority.CertificateConfigX509ConfigArgs(
                     ca_options=gcp.certificateauthority.CertificateConfigX509ConfigCaOptionsArgs(
-                        non_ca=True,
                         is_ca=False,
                     ),
                     key_usage=gcp.certificateauthority.CertificateConfigX509ConfigKeyUsageArgs(
@@ -946,7 +944,6 @@ class Certificate(pulumi.CustomResource):
                 ),
                 x509_config=gcp.certificateauthority.CertificateConfigX509ConfigArgs(
                     ca_options=gcp.certificateauthority.CertificateConfigX509ConfigCaOptionsArgs(
-                        non_ca=True,
                         is_ca=False,
                     ),
                     key_usage=gcp.certificateauthority.CertificateConfigX509ConfigKeyUsageArgs(
@@ -1188,7 +1185,6 @@ class Certificate(pulumi.CustomResource):
                 ),
                 x509_config=gcp.certificateauthority.CertificateConfigX509ConfigArgs(
                     ca_options=gcp.certificateauthority.CertificateConfigX509ConfigCaOptionsArgs(
-                        non_ca=True,
                         is_ca=False,
                     ),
                     key_usage=gcp.certificateauthority.CertificateConfigX509ConfigKeyUsageArgs(

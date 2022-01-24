@@ -24,7 +24,6 @@ class ServiceIamBindingArgs:
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `endpoints.ServiceIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        :param pulumi.Input[str] service_name: The name of the service. Used to find the parent resource to bind the IAM policy to
         """
         pulumi.set(__self__, "members", members)
         pulumi.set(__self__, "role", role)
@@ -58,9 +57,6 @@ class ServiceIamBindingArgs:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
-        """
-        The name of the service. Used to find the parent resource to bind the IAM policy to
-        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -91,7 +87,6 @@ class _ServiceIamBindingState:
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `endpoints.ServiceIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        :param pulumi.Input[str] service_name: The name of the service. Used to find the parent resource to bind the IAM policy to
         """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
@@ -151,9 +146,6 @@ class _ServiceIamBindingState:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the service. Used to find the parent resource to bind the IAM policy to
-        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -223,22 +215,22 @@ class ServiceIamBinding(pulumi.CustomResource):
 
         ## Import
 
-        For all import syntaxes, the "resource in question" can take any of the following forms* services/{{serviceName}} * {{serviceName}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Endpoints service IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+        For all import syntaxes, the "resource in question" can take any of the following forms* services/{{service_name}} * {{service_name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Endpoints service IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
 
         ```sh
-         $ pulumi import gcp:endpoints/serviceIamBinding:ServiceIamBinding editor "services/{{serviceName}} roles/viewer user:jane@example.com"
+         $ pulumi import gcp:endpoints/serviceIamBinding:ServiceIamBinding editor "services/{{service_name}} roles/viewer user:jane@example.com"
         ```
 
          IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
 
         ```sh
-         $ pulumi import gcp:endpoints/serviceIamBinding:ServiceIamBinding editor "services/{{serviceName}} roles/viewer"
+         $ pulumi import gcp:endpoints/serviceIamBinding:ServiceIamBinding editor "services/{{service_name}} roles/viewer"
         ```
 
          IAM policy imports use the identifier of the resource in question, e.g.
 
         ```sh
-         $ pulumi import gcp:endpoints/serviceIamBinding:ServiceIamBinding editor services/{{serviceName}}
+         $ pulumi import gcp:endpoints/serviceIamBinding:ServiceIamBinding editor services/{{service_name}}
         ```
 
          -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
@@ -250,7 +242,6 @@ class ServiceIamBinding(pulumi.CustomResource):
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `endpoints.ServiceIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        :param pulumi.Input[str] service_name: The name of the service. Used to find the parent resource to bind the IAM policy to
         """
         ...
     @overload
@@ -310,22 +301,22 @@ class ServiceIamBinding(pulumi.CustomResource):
 
         ## Import
 
-        For all import syntaxes, the "resource in question" can take any of the following forms* services/{{serviceName}} * {{serviceName}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Endpoints service IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+        For all import syntaxes, the "resource in question" can take any of the following forms* services/{{service_name}} * {{service_name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Endpoints service IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
 
         ```sh
-         $ pulumi import gcp:endpoints/serviceIamBinding:ServiceIamBinding editor "services/{{serviceName}} roles/viewer user:jane@example.com"
+         $ pulumi import gcp:endpoints/serviceIamBinding:ServiceIamBinding editor "services/{{service_name}} roles/viewer user:jane@example.com"
         ```
 
          IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
 
         ```sh
-         $ pulumi import gcp:endpoints/serviceIamBinding:ServiceIamBinding editor "services/{{serviceName}} roles/viewer"
+         $ pulumi import gcp:endpoints/serviceIamBinding:ServiceIamBinding editor "services/{{service_name}} roles/viewer"
         ```
 
          IAM policy imports use the identifier of the resource in question, e.g.
 
         ```sh
-         $ pulumi import gcp:endpoints/serviceIamBinding:ServiceIamBinding editor services/{{serviceName}}
+         $ pulumi import gcp:endpoints/serviceIamBinding:ServiceIamBinding editor services/{{service_name}}
         ```
 
          -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
@@ -400,7 +391,6 @@ class ServiceIamBinding(pulumi.CustomResource):
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `endpoints.ServiceIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        :param pulumi.Input[str] service_name: The name of the service. Used to find the parent resource to bind the IAM policy to
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -444,8 +434,5 @@ class ServiceIamBinding(pulumi.CustomResource):
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
-        """
-        The name of the service. Used to find the parent resource to bind the IAM policy to
-        """
         return pulumi.get(self, "service_name")
 

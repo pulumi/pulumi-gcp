@@ -660,7 +660,6 @@ class Authority(pulumi.CustomResource):
                     ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
                         is_ca=True,
                         max_issuer_path_length=0,
-                        zero_max_issuer_path_length=True,
                     ),
                     key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
                         base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
@@ -882,7 +881,6 @@ class Authority(pulumi.CustomResource):
                     ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
                         is_ca=True,
                         max_issuer_path_length=0,
-                        zero_max_issuer_path_length=True,
                     ),
                     key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
                         base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(

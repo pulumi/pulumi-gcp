@@ -10,11 +10,318 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type AlertPolicyAlertStrategy struct {
+	// If an alert policy that was active has no data for this long, any open incidents will close.
+	AutoClose *string `pulumi:"autoClose"`
+	// Required for alert policies with a LogMatch condition.
+	// This limit is not implemented for alert policies that are not log-based.
+	// Structure is documented below.
+	NotificationRateLimit *AlertPolicyAlertStrategyNotificationRateLimit `pulumi:"notificationRateLimit"`
+}
+
+// AlertPolicyAlertStrategyInput is an input type that accepts AlertPolicyAlertStrategyArgs and AlertPolicyAlertStrategyOutput values.
+// You can construct a concrete instance of `AlertPolicyAlertStrategyInput` via:
+//
+//          AlertPolicyAlertStrategyArgs{...}
+type AlertPolicyAlertStrategyInput interface {
+	pulumi.Input
+
+	ToAlertPolicyAlertStrategyOutput() AlertPolicyAlertStrategyOutput
+	ToAlertPolicyAlertStrategyOutputWithContext(context.Context) AlertPolicyAlertStrategyOutput
+}
+
+type AlertPolicyAlertStrategyArgs struct {
+	// If an alert policy that was active has no data for this long, any open incidents will close.
+	AutoClose pulumi.StringPtrInput `pulumi:"autoClose"`
+	// Required for alert policies with a LogMatch condition.
+	// This limit is not implemented for alert policies that are not log-based.
+	// Structure is documented below.
+	NotificationRateLimit AlertPolicyAlertStrategyNotificationRateLimitPtrInput `pulumi:"notificationRateLimit"`
+}
+
+func (AlertPolicyAlertStrategyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertPolicyAlertStrategy)(nil)).Elem()
+}
+
+func (i AlertPolicyAlertStrategyArgs) ToAlertPolicyAlertStrategyOutput() AlertPolicyAlertStrategyOutput {
+	return i.ToAlertPolicyAlertStrategyOutputWithContext(context.Background())
+}
+
+func (i AlertPolicyAlertStrategyArgs) ToAlertPolicyAlertStrategyOutputWithContext(ctx context.Context) AlertPolicyAlertStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyAlertStrategyOutput)
+}
+
+func (i AlertPolicyAlertStrategyArgs) ToAlertPolicyAlertStrategyPtrOutput() AlertPolicyAlertStrategyPtrOutput {
+	return i.ToAlertPolicyAlertStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i AlertPolicyAlertStrategyArgs) ToAlertPolicyAlertStrategyPtrOutputWithContext(ctx context.Context) AlertPolicyAlertStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyAlertStrategyOutput).ToAlertPolicyAlertStrategyPtrOutputWithContext(ctx)
+}
+
+// AlertPolicyAlertStrategyPtrInput is an input type that accepts AlertPolicyAlertStrategyArgs, AlertPolicyAlertStrategyPtr and AlertPolicyAlertStrategyPtrOutput values.
+// You can construct a concrete instance of `AlertPolicyAlertStrategyPtrInput` via:
+//
+//          AlertPolicyAlertStrategyArgs{...}
+//
+//  or:
+//
+//          nil
+type AlertPolicyAlertStrategyPtrInput interface {
+	pulumi.Input
+
+	ToAlertPolicyAlertStrategyPtrOutput() AlertPolicyAlertStrategyPtrOutput
+	ToAlertPolicyAlertStrategyPtrOutputWithContext(context.Context) AlertPolicyAlertStrategyPtrOutput
+}
+
+type alertPolicyAlertStrategyPtrType AlertPolicyAlertStrategyArgs
+
+func AlertPolicyAlertStrategyPtr(v *AlertPolicyAlertStrategyArgs) AlertPolicyAlertStrategyPtrInput {
+	return (*alertPolicyAlertStrategyPtrType)(v)
+}
+
+func (*alertPolicyAlertStrategyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertPolicyAlertStrategy)(nil)).Elem()
+}
+
+func (i *alertPolicyAlertStrategyPtrType) ToAlertPolicyAlertStrategyPtrOutput() AlertPolicyAlertStrategyPtrOutput {
+	return i.ToAlertPolicyAlertStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i *alertPolicyAlertStrategyPtrType) ToAlertPolicyAlertStrategyPtrOutputWithContext(ctx context.Context) AlertPolicyAlertStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyAlertStrategyPtrOutput)
+}
+
+type AlertPolicyAlertStrategyOutput struct{ *pulumi.OutputState }
+
+func (AlertPolicyAlertStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertPolicyAlertStrategy)(nil)).Elem()
+}
+
+func (o AlertPolicyAlertStrategyOutput) ToAlertPolicyAlertStrategyOutput() AlertPolicyAlertStrategyOutput {
+	return o
+}
+
+func (o AlertPolicyAlertStrategyOutput) ToAlertPolicyAlertStrategyOutputWithContext(ctx context.Context) AlertPolicyAlertStrategyOutput {
+	return o
+}
+
+func (o AlertPolicyAlertStrategyOutput) ToAlertPolicyAlertStrategyPtrOutput() AlertPolicyAlertStrategyPtrOutput {
+	return o.ToAlertPolicyAlertStrategyPtrOutputWithContext(context.Background())
+}
+
+func (o AlertPolicyAlertStrategyOutput) ToAlertPolicyAlertStrategyPtrOutputWithContext(ctx context.Context) AlertPolicyAlertStrategyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertPolicyAlertStrategy) *AlertPolicyAlertStrategy {
+		return &v
+	}).(AlertPolicyAlertStrategyPtrOutput)
+}
+
+// If an alert policy that was active has no data for this long, any open incidents will close.
+func (o AlertPolicyAlertStrategyOutput) AutoClose() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertPolicyAlertStrategy) *string { return v.AutoClose }).(pulumi.StringPtrOutput)
+}
+
+// Required for alert policies with a LogMatch condition.
+// This limit is not implemented for alert policies that are not log-based.
+// Structure is documented below.
+func (o AlertPolicyAlertStrategyOutput) NotificationRateLimit() AlertPolicyAlertStrategyNotificationRateLimitPtrOutput {
+	return o.ApplyT(func(v AlertPolicyAlertStrategy) *AlertPolicyAlertStrategyNotificationRateLimit {
+		return v.NotificationRateLimit
+	}).(AlertPolicyAlertStrategyNotificationRateLimitPtrOutput)
+}
+
+type AlertPolicyAlertStrategyPtrOutput struct{ *pulumi.OutputState }
+
+func (AlertPolicyAlertStrategyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertPolicyAlertStrategy)(nil)).Elem()
+}
+
+func (o AlertPolicyAlertStrategyPtrOutput) ToAlertPolicyAlertStrategyPtrOutput() AlertPolicyAlertStrategyPtrOutput {
+	return o
+}
+
+func (o AlertPolicyAlertStrategyPtrOutput) ToAlertPolicyAlertStrategyPtrOutputWithContext(ctx context.Context) AlertPolicyAlertStrategyPtrOutput {
+	return o
+}
+
+func (o AlertPolicyAlertStrategyPtrOutput) Elem() AlertPolicyAlertStrategyOutput {
+	return o.ApplyT(func(v *AlertPolicyAlertStrategy) AlertPolicyAlertStrategy {
+		if v != nil {
+			return *v
+		}
+		var ret AlertPolicyAlertStrategy
+		return ret
+	}).(AlertPolicyAlertStrategyOutput)
+}
+
+// If an alert policy that was active has no data for this long, any open incidents will close.
+func (o AlertPolicyAlertStrategyPtrOutput) AutoClose() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertPolicyAlertStrategy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AutoClose
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required for alert policies with a LogMatch condition.
+// This limit is not implemented for alert policies that are not log-based.
+// Structure is documented below.
+func (o AlertPolicyAlertStrategyPtrOutput) NotificationRateLimit() AlertPolicyAlertStrategyNotificationRateLimitPtrOutput {
+	return o.ApplyT(func(v *AlertPolicyAlertStrategy) *AlertPolicyAlertStrategyNotificationRateLimit {
+		if v == nil {
+			return nil
+		}
+		return v.NotificationRateLimit
+	}).(AlertPolicyAlertStrategyNotificationRateLimitPtrOutput)
+}
+
+type AlertPolicyAlertStrategyNotificationRateLimit struct {
+	// Not more than one notification per period.
+	Period *string `pulumi:"period"`
+}
+
+// AlertPolicyAlertStrategyNotificationRateLimitInput is an input type that accepts AlertPolicyAlertStrategyNotificationRateLimitArgs and AlertPolicyAlertStrategyNotificationRateLimitOutput values.
+// You can construct a concrete instance of `AlertPolicyAlertStrategyNotificationRateLimitInput` via:
+//
+//          AlertPolicyAlertStrategyNotificationRateLimitArgs{...}
+type AlertPolicyAlertStrategyNotificationRateLimitInput interface {
+	pulumi.Input
+
+	ToAlertPolicyAlertStrategyNotificationRateLimitOutput() AlertPolicyAlertStrategyNotificationRateLimitOutput
+	ToAlertPolicyAlertStrategyNotificationRateLimitOutputWithContext(context.Context) AlertPolicyAlertStrategyNotificationRateLimitOutput
+}
+
+type AlertPolicyAlertStrategyNotificationRateLimitArgs struct {
+	// Not more than one notification per period.
+	Period pulumi.StringPtrInput `pulumi:"period"`
+}
+
+func (AlertPolicyAlertStrategyNotificationRateLimitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertPolicyAlertStrategyNotificationRateLimit)(nil)).Elem()
+}
+
+func (i AlertPolicyAlertStrategyNotificationRateLimitArgs) ToAlertPolicyAlertStrategyNotificationRateLimitOutput() AlertPolicyAlertStrategyNotificationRateLimitOutput {
+	return i.ToAlertPolicyAlertStrategyNotificationRateLimitOutputWithContext(context.Background())
+}
+
+func (i AlertPolicyAlertStrategyNotificationRateLimitArgs) ToAlertPolicyAlertStrategyNotificationRateLimitOutputWithContext(ctx context.Context) AlertPolicyAlertStrategyNotificationRateLimitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyAlertStrategyNotificationRateLimitOutput)
+}
+
+func (i AlertPolicyAlertStrategyNotificationRateLimitArgs) ToAlertPolicyAlertStrategyNotificationRateLimitPtrOutput() AlertPolicyAlertStrategyNotificationRateLimitPtrOutput {
+	return i.ToAlertPolicyAlertStrategyNotificationRateLimitPtrOutputWithContext(context.Background())
+}
+
+func (i AlertPolicyAlertStrategyNotificationRateLimitArgs) ToAlertPolicyAlertStrategyNotificationRateLimitPtrOutputWithContext(ctx context.Context) AlertPolicyAlertStrategyNotificationRateLimitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyAlertStrategyNotificationRateLimitOutput).ToAlertPolicyAlertStrategyNotificationRateLimitPtrOutputWithContext(ctx)
+}
+
+// AlertPolicyAlertStrategyNotificationRateLimitPtrInput is an input type that accepts AlertPolicyAlertStrategyNotificationRateLimitArgs, AlertPolicyAlertStrategyNotificationRateLimitPtr and AlertPolicyAlertStrategyNotificationRateLimitPtrOutput values.
+// You can construct a concrete instance of `AlertPolicyAlertStrategyNotificationRateLimitPtrInput` via:
+//
+//          AlertPolicyAlertStrategyNotificationRateLimitArgs{...}
+//
+//  or:
+//
+//          nil
+type AlertPolicyAlertStrategyNotificationRateLimitPtrInput interface {
+	pulumi.Input
+
+	ToAlertPolicyAlertStrategyNotificationRateLimitPtrOutput() AlertPolicyAlertStrategyNotificationRateLimitPtrOutput
+	ToAlertPolicyAlertStrategyNotificationRateLimitPtrOutputWithContext(context.Context) AlertPolicyAlertStrategyNotificationRateLimitPtrOutput
+}
+
+type alertPolicyAlertStrategyNotificationRateLimitPtrType AlertPolicyAlertStrategyNotificationRateLimitArgs
+
+func AlertPolicyAlertStrategyNotificationRateLimitPtr(v *AlertPolicyAlertStrategyNotificationRateLimitArgs) AlertPolicyAlertStrategyNotificationRateLimitPtrInput {
+	return (*alertPolicyAlertStrategyNotificationRateLimitPtrType)(v)
+}
+
+func (*alertPolicyAlertStrategyNotificationRateLimitPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertPolicyAlertStrategyNotificationRateLimit)(nil)).Elem()
+}
+
+func (i *alertPolicyAlertStrategyNotificationRateLimitPtrType) ToAlertPolicyAlertStrategyNotificationRateLimitPtrOutput() AlertPolicyAlertStrategyNotificationRateLimitPtrOutput {
+	return i.ToAlertPolicyAlertStrategyNotificationRateLimitPtrOutputWithContext(context.Background())
+}
+
+func (i *alertPolicyAlertStrategyNotificationRateLimitPtrType) ToAlertPolicyAlertStrategyNotificationRateLimitPtrOutputWithContext(ctx context.Context) AlertPolicyAlertStrategyNotificationRateLimitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyAlertStrategyNotificationRateLimitPtrOutput)
+}
+
+type AlertPolicyAlertStrategyNotificationRateLimitOutput struct{ *pulumi.OutputState }
+
+func (AlertPolicyAlertStrategyNotificationRateLimitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertPolicyAlertStrategyNotificationRateLimit)(nil)).Elem()
+}
+
+func (o AlertPolicyAlertStrategyNotificationRateLimitOutput) ToAlertPolicyAlertStrategyNotificationRateLimitOutput() AlertPolicyAlertStrategyNotificationRateLimitOutput {
+	return o
+}
+
+func (o AlertPolicyAlertStrategyNotificationRateLimitOutput) ToAlertPolicyAlertStrategyNotificationRateLimitOutputWithContext(ctx context.Context) AlertPolicyAlertStrategyNotificationRateLimitOutput {
+	return o
+}
+
+func (o AlertPolicyAlertStrategyNotificationRateLimitOutput) ToAlertPolicyAlertStrategyNotificationRateLimitPtrOutput() AlertPolicyAlertStrategyNotificationRateLimitPtrOutput {
+	return o.ToAlertPolicyAlertStrategyNotificationRateLimitPtrOutputWithContext(context.Background())
+}
+
+func (o AlertPolicyAlertStrategyNotificationRateLimitOutput) ToAlertPolicyAlertStrategyNotificationRateLimitPtrOutputWithContext(ctx context.Context) AlertPolicyAlertStrategyNotificationRateLimitPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertPolicyAlertStrategyNotificationRateLimit) *AlertPolicyAlertStrategyNotificationRateLimit {
+		return &v
+	}).(AlertPolicyAlertStrategyNotificationRateLimitPtrOutput)
+}
+
+// Not more than one notification per period.
+func (o AlertPolicyAlertStrategyNotificationRateLimitOutput) Period() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertPolicyAlertStrategyNotificationRateLimit) *string { return v.Period }).(pulumi.StringPtrOutput)
+}
+
+type AlertPolicyAlertStrategyNotificationRateLimitPtrOutput struct{ *pulumi.OutputState }
+
+func (AlertPolicyAlertStrategyNotificationRateLimitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertPolicyAlertStrategyNotificationRateLimit)(nil)).Elem()
+}
+
+func (o AlertPolicyAlertStrategyNotificationRateLimitPtrOutput) ToAlertPolicyAlertStrategyNotificationRateLimitPtrOutput() AlertPolicyAlertStrategyNotificationRateLimitPtrOutput {
+	return o
+}
+
+func (o AlertPolicyAlertStrategyNotificationRateLimitPtrOutput) ToAlertPolicyAlertStrategyNotificationRateLimitPtrOutputWithContext(ctx context.Context) AlertPolicyAlertStrategyNotificationRateLimitPtrOutput {
+	return o
+}
+
+func (o AlertPolicyAlertStrategyNotificationRateLimitPtrOutput) Elem() AlertPolicyAlertStrategyNotificationRateLimitOutput {
+	return o.ApplyT(func(v *AlertPolicyAlertStrategyNotificationRateLimit) AlertPolicyAlertStrategyNotificationRateLimit {
+		if v != nil {
+			return *v
+		}
+		var ret AlertPolicyAlertStrategyNotificationRateLimit
+		return ret
+	}).(AlertPolicyAlertStrategyNotificationRateLimitOutput)
+}
+
+// Not more than one notification per period.
+func (o AlertPolicyAlertStrategyNotificationRateLimitPtrOutput) Period() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertPolicyAlertStrategyNotificationRateLimit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Period
+	}).(pulumi.StringPtrOutput)
+}
+
 type AlertPolicyCondition struct {
 	// A condition that checks that a time series
 	// continues to receive new data points.
 	// Structure is documented below.
 	ConditionAbsent *AlertPolicyConditionConditionAbsent `pulumi:"conditionAbsent"`
+	// A condition that checks for log messages matching given constraints.
+	// If set, no other conditions can be present.
+	// Structure is documented below.
+	ConditionMatchedLog *AlertPolicyConditionConditionMatchedLog `pulumi:"conditionMatchedLog"`
 	// A Monitoring Query Language query that outputs a boolean stream
 	// Structure is documented below.
 	ConditionMonitoringQueryLanguage *AlertPolicyConditionConditionMonitoringQueryLanguage `pulumi:"conditionMonitoringQueryLanguage"`
@@ -54,6 +361,10 @@ type AlertPolicyConditionArgs struct {
 	// continues to receive new data points.
 	// Structure is documented below.
 	ConditionAbsent AlertPolicyConditionConditionAbsentPtrInput `pulumi:"conditionAbsent"`
+	// A condition that checks for log messages matching given constraints.
+	// If set, no other conditions can be present.
+	// Structure is documented below.
+	ConditionMatchedLog AlertPolicyConditionConditionMatchedLogPtrInput `pulumi:"conditionMatchedLog"`
 	// A Monitoring Query Language query that outputs a boolean stream
 	// Structure is documented below.
 	ConditionMonitoringQueryLanguage AlertPolicyConditionConditionMonitoringQueryLanguagePtrInput `pulumi:"conditionMonitoringQueryLanguage"`
@@ -133,6 +444,13 @@ func (o AlertPolicyConditionOutput) ToAlertPolicyConditionOutputWithContext(ctx 
 // Structure is documented below.
 func (o AlertPolicyConditionOutput) ConditionAbsent() AlertPolicyConditionConditionAbsentPtrOutput {
 	return o.ApplyT(func(v AlertPolicyCondition) *AlertPolicyConditionConditionAbsent { return v.ConditionAbsent }).(AlertPolicyConditionConditionAbsentPtrOutput)
+}
+
+// A condition that checks for log messages matching given constraints.
+// If set, no other conditions can be present.
+// Structure is documented below.
+func (o AlertPolicyConditionOutput) ConditionMatchedLog() AlertPolicyConditionConditionMatchedLogPtrOutput {
+	return o.ApplyT(func(v AlertPolicyCondition) *AlertPolicyConditionConditionMatchedLog { return v.ConditionMatchedLog }).(AlertPolicyConditionConditionMatchedLogPtrOutput)
 }
 
 // A Monitoring Query Language query that outputs a boolean stream
@@ -222,18 +540,7 @@ type AlertPolicyConditionConditionAbsent struct {
 	// that unhealthy states are detected and
 	// alerted on quickly.
 	Duration string `pulumi:"duration"`
-	// A filter that identifies which time series
-	// should be compared with the threshold.The
-	// filter is similar to the one that is
-	// specified in the
-	// MetricService.ListTimeSeries request (that
-	// call is useful to verify the time series
-	// that will be retrieved / processed) and must
-	// specify the metric type and optionally may
-	// contain restrictions on resource type,
-	// resource labels, and metric labels. This
-	// field may not exceed 2048 Unicode characters
-	// in length.
+	// A logs-based filter.
 	Filter *string `pulumi:"filter"`
 	// The number/percent of time series for which
 	// the comparison must hold in order for the
@@ -290,18 +597,7 @@ type AlertPolicyConditionConditionAbsentArgs struct {
 	// that unhealthy states are detected and
 	// alerted on quickly.
 	Duration pulumi.StringInput `pulumi:"duration"`
-	// A filter that identifies which time series
-	// should be compared with the threshold.The
-	// filter is similar to the one that is
-	// specified in the
-	// MetricService.ListTimeSeries request (that
-	// call is useful to verify the time series
-	// that will be retrieved / processed) and must
-	// specify the metric type and optionally may
-	// contain restrictions on resource type,
-	// resource labels, and metric labels. This
-	// field may not exceed 2048 Unicode characters
-	// in length.
+	// A logs-based filter.
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
 	// The number/percent of time series for which
 	// the comparison must hold in order for the
@@ -431,18 +727,7 @@ func (o AlertPolicyConditionConditionAbsentOutput) Duration() pulumi.StringOutpu
 	return o.ApplyT(func(v AlertPolicyConditionConditionAbsent) string { return v.Duration }).(pulumi.StringOutput)
 }
 
-// A filter that identifies which time series
-// should be compared with the threshold.The
-// filter is similar to the one that is
-// specified in the
-// MetricService.ListTimeSeries request (that
-// call is useful to verify the time series
-// that will be retrieved / processed) and must
-// specify the metric type and optionally may
-// contain restrictions on resource type,
-// resource labels, and metric labels. This
-// field may not exceed 2048 Unicode characters
-// in length.
+// A logs-based filter.
 func (o AlertPolicyConditionConditionAbsentOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionAbsent) *string { return v.Filter }).(pulumi.StringPtrOutput)
 }
@@ -533,18 +818,7 @@ func (o AlertPolicyConditionConditionAbsentPtrOutput) Duration() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// A filter that identifies which time series
-// should be compared with the threshold.The
-// filter is similar to the one that is
-// specified in the
-// MetricService.ListTimeSeries request (that
-// call is useful to verify the time series
-// that will be retrieved / processed) and must
-// specify the metric type and optionally may
-// contain restrictions on resource type,
-// resource labels, and metric labels. This
-// field may not exceed 2048 Unicode characters
-// in length.
+// A logs-based filter.
 func (o AlertPolicyConditionConditionAbsentPtrOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertPolicyConditionConditionAbsent) *string {
 		if v == nil {
@@ -1081,6 +1355,186 @@ func (o AlertPolicyConditionConditionAbsentTriggerPtrOutput) Percent() pulumi.Fl
 	}).(pulumi.Float64PtrOutput)
 }
 
+type AlertPolicyConditionConditionMatchedLog struct {
+	// A logs-based filter.
+	Filter string `pulumi:"filter"`
+	// A map from a label key to an extractor expression, which is used to
+	// extract the value for this label key. Each entry in this map is
+	// a specification for how data should be extracted from log entries that
+	// match filter. Each combination of extracted values is treated as
+	// a separate rule for the purposes of triggering notifications.
+	// Label keys and corresponding values can be used in notifications
+	// generated by this condition.
+	LabelExtractors map[string]string `pulumi:"labelExtractors"`
+}
+
+// AlertPolicyConditionConditionMatchedLogInput is an input type that accepts AlertPolicyConditionConditionMatchedLogArgs and AlertPolicyConditionConditionMatchedLogOutput values.
+// You can construct a concrete instance of `AlertPolicyConditionConditionMatchedLogInput` via:
+//
+//          AlertPolicyConditionConditionMatchedLogArgs{...}
+type AlertPolicyConditionConditionMatchedLogInput interface {
+	pulumi.Input
+
+	ToAlertPolicyConditionConditionMatchedLogOutput() AlertPolicyConditionConditionMatchedLogOutput
+	ToAlertPolicyConditionConditionMatchedLogOutputWithContext(context.Context) AlertPolicyConditionConditionMatchedLogOutput
+}
+
+type AlertPolicyConditionConditionMatchedLogArgs struct {
+	// A logs-based filter.
+	Filter pulumi.StringInput `pulumi:"filter"`
+	// A map from a label key to an extractor expression, which is used to
+	// extract the value for this label key. Each entry in this map is
+	// a specification for how data should be extracted from log entries that
+	// match filter. Each combination of extracted values is treated as
+	// a separate rule for the purposes of triggering notifications.
+	// Label keys and corresponding values can be used in notifications
+	// generated by this condition.
+	LabelExtractors pulumi.StringMapInput `pulumi:"labelExtractors"`
+}
+
+func (AlertPolicyConditionConditionMatchedLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertPolicyConditionConditionMatchedLog)(nil)).Elem()
+}
+
+func (i AlertPolicyConditionConditionMatchedLogArgs) ToAlertPolicyConditionConditionMatchedLogOutput() AlertPolicyConditionConditionMatchedLogOutput {
+	return i.ToAlertPolicyConditionConditionMatchedLogOutputWithContext(context.Background())
+}
+
+func (i AlertPolicyConditionConditionMatchedLogArgs) ToAlertPolicyConditionConditionMatchedLogOutputWithContext(ctx context.Context) AlertPolicyConditionConditionMatchedLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionMatchedLogOutput)
+}
+
+func (i AlertPolicyConditionConditionMatchedLogArgs) ToAlertPolicyConditionConditionMatchedLogPtrOutput() AlertPolicyConditionConditionMatchedLogPtrOutput {
+	return i.ToAlertPolicyConditionConditionMatchedLogPtrOutputWithContext(context.Background())
+}
+
+func (i AlertPolicyConditionConditionMatchedLogArgs) ToAlertPolicyConditionConditionMatchedLogPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionMatchedLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionMatchedLogOutput).ToAlertPolicyConditionConditionMatchedLogPtrOutputWithContext(ctx)
+}
+
+// AlertPolicyConditionConditionMatchedLogPtrInput is an input type that accepts AlertPolicyConditionConditionMatchedLogArgs, AlertPolicyConditionConditionMatchedLogPtr and AlertPolicyConditionConditionMatchedLogPtrOutput values.
+// You can construct a concrete instance of `AlertPolicyConditionConditionMatchedLogPtrInput` via:
+//
+//          AlertPolicyConditionConditionMatchedLogArgs{...}
+//
+//  or:
+//
+//          nil
+type AlertPolicyConditionConditionMatchedLogPtrInput interface {
+	pulumi.Input
+
+	ToAlertPolicyConditionConditionMatchedLogPtrOutput() AlertPolicyConditionConditionMatchedLogPtrOutput
+	ToAlertPolicyConditionConditionMatchedLogPtrOutputWithContext(context.Context) AlertPolicyConditionConditionMatchedLogPtrOutput
+}
+
+type alertPolicyConditionConditionMatchedLogPtrType AlertPolicyConditionConditionMatchedLogArgs
+
+func AlertPolicyConditionConditionMatchedLogPtr(v *AlertPolicyConditionConditionMatchedLogArgs) AlertPolicyConditionConditionMatchedLogPtrInput {
+	return (*alertPolicyConditionConditionMatchedLogPtrType)(v)
+}
+
+func (*alertPolicyConditionConditionMatchedLogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertPolicyConditionConditionMatchedLog)(nil)).Elem()
+}
+
+func (i *alertPolicyConditionConditionMatchedLogPtrType) ToAlertPolicyConditionConditionMatchedLogPtrOutput() AlertPolicyConditionConditionMatchedLogPtrOutput {
+	return i.ToAlertPolicyConditionConditionMatchedLogPtrOutputWithContext(context.Background())
+}
+
+func (i *alertPolicyConditionConditionMatchedLogPtrType) ToAlertPolicyConditionConditionMatchedLogPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionMatchedLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionMatchedLogPtrOutput)
+}
+
+type AlertPolicyConditionConditionMatchedLogOutput struct{ *pulumi.OutputState }
+
+func (AlertPolicyConditionConditionMatchedLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertPolicyConditionConditionMatchedLog)(nil)).Elem()
+}
+
+func (o AlertPolicyConditionConditionMatchedLogOutput) ToAlertPolicyConditionConditionMatchedLogOutput() AlertPolicyConditionConditionMatchedLogOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionMatchedLogOutput) ToAlertPolicyConditionConditionMatchedLogOutputWithContext(ctx context.Context) AlertPolicyConditionConditionMatchedLogOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionMatchedLogOutput) ToAlertPolicyConditionConditionMatchedLogPtrOutput() AlertPolicyConditionConditionMatchedLogPtrOutput {
+	return o.ToAlertPolicyConditionConditionMatchedLogPtrOutputWithContext(context.Background())
+}
+
+func (o AlertPolicyConditionConditionMatchedLogOutput) ToAlertPolicyConditionConditionMatchedLogPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionMatchedLogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertPolicyConditionConditionMatchedLog) *AlertPolicyConditionConditionMatchedLog {
+		return &v
+	}).(AlertPolicyConditionConditionMatchedLogPtrOutput)
+}
+
+// A logs-based filter.
+func (o AlertPolicyConditionConditionMatchedLogOutput) Filter() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertPolicyConditionConditionMatchedLog) string { return v.Filter }).(pulumi.StringOutput)
+}
+
+// A map from a label key to an extractor expression, which is used to
+// extract the value for this label key. Each entry in this map is
+// a specification for how data should be extracted from log entries that
+// match filter. Each combination of extracted values is treated as
+// a separate rule for the purposes of triggering notifications.
+// Label keys and corresponding values can be used in notifications
+// generated by this condition.
+func (o AlertPolicyConditionConditionMatchedLogOutput) LabelExtractors() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AlertPolicyConditionConditionMatchedLog) map[string]string { return v.LabelExtractors }).(pulumi.StringMapOutput)
+}
+
+type AlertPolicyConditionConditionMatchedLogPtrOutput struct{ *pulumi.OutputState }
+
+func (AlertPolicyConditionConditionMatchedLogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertPolicyConditionConditionMatchedLog)(nil)).Elem()
+}
+
+func (o AlertPolicyConditionConditionMatchedLogPtrOutput) ToAlertPolicyConditionConditionMatchedLogPtrOutput() AlertPolicyConditionConditionMatchedLogPtrOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionMatchedLogPtrOutput) ToAlertPolicyConditionConditionMatchedLogPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionMatchedLogPtrOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionMatchedLogPtrOutput) Elem() AlertPolicyConditionConditionMatchedLogOutput {
+	return o.ApplyT(func(v *AlertPolicyConditionConditionMatchedLog) AlertPolicyConditionConditionMatchedLog {
+		if v != nil {
+			return *v
+		}
+		var ret AlertPolicyConditionConditionMatchedLog
+		return ret
+	}).(AlertPolicyConditionConditionMatchedLogOutput)
+}
+
+// A logs-based filter.
+func (o AlertPolicyConditionConditionMatchedLogPtrOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertPolicyConditionConditionMatchedLog) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Filter
+	}).(pulumi.StringPtrOutput)
+}
+
+// A map from a label key to an extractor expression, which is used to
+// extract the value for this label key. Each entry in this map is
+// a specification for how data should be extracted from log entries that
+// match filter. Each combination of extracted values is treated as
+// a separate rule for the purposes of triggering notifications.
+// Label keys and corresponding values can be used in notifications
+// generated by this condition.
+func (o AlertPolicyConditionConditionMatchedLogPtrOutput) LabelExtractors() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AlertPolicyConditionConditionMatchedLog) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.LabelExtractors
+	}).(pulumi.StringMapOutput)
+}
+
 type AlertPolicyConditionConditionMonitoringQueryLanguage struct {
 	// The amount of time that a time series must
 	// violate the threshold to be considered
@@ -1594,18 +2048,7 @@ type AlertPolicyConditionConditionThreshold struct {
 	// that unhealthy states are detected and
 	// alerted on quickly.
 	Duration string `pulumi:"duration"`
-	// A filter that identifies which time series
-	// should be compared with the threshold.The
-	// filter is similar to the one that is
-	// specified in the
-	// MetricService.ListTimeSeries request (that
-	// call is useful to verify the time series
-	// that will be retrieved / processed) and must
-	// specify the metric type and optionally may
-	// contain restrictions on resource type,
-	// resource labels, and metric labels. This
-	// field may not exceed 2048 Unicode characters
-	// in length.
+	// A logs-based filter.
 	Filter *string `pulumi:"filter"`
 	// A value against which to compare the time
 	// series.
@@ -1709,18 +2152,7 @@ type AlertPolicyConditionConditionThresholdArgs struct {
 	// that unhealthy states are detected and
 	// alerted on quickly.
 	Duration pulumi.StringInput `pulumi:"duration"`
-	// A filter that identifies which time series
-	// should be compared with the threshold.The
-	// filter is similar to the one that is
-	// specified in the
-	// MetricService.ListTimeSeries request (that
-	// call is useful to verify the time series
-	// that will be retrieved / processed) and must
-	// specify the metric type and optionally may
-	// contain restrictions on resource type,
-	// resource labels, and metric labels. This
-	// field may not exceed 2048 Unicode characters
-	// in length.
+	// A logs-based filter.
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
 	// A value against which to compare the time
 	// series.
@@ -1908,18 +2340,7 @@ func (o AlertPolicyConditionConditionThresholdOutput) Duration() pulumi.StringOu
 	return o.ApplyT(func(v AlertPolicyConditionConditionThreshold) string { return v.Duration }).(pulumi.StringOutput)
 }
 
-// A filter that identifies which time series
-// should be compared with the threshold.The
-// filter is similar to the one that is
-// specified in the
-// MetricService.ListTimeSeries request (that
-// call is useful to verify the time series
-// that will be retrieved / processed) and must
-// specify the metric type and optionally may
-// contain restrictions on resource type,
-// resource labels, and metric labels. This
-// field may not exceed 2048 Unicode characters
-// in length.
+// A logs-based filter.
 func (o AlertPolicyConditionConditionThresholdOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionThreshold) *string { return v.Filter }).(pulumi.StringPtrOutput)
 }
@@ -2084,18 +2505,7 @@ func (o AlertPolicyConditionConditionThresholdPtrOutput) Duration() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// A filter that identifies which time series
-// should be compared with the threshold.The
-// filter is similar to the one that is
-// specified in the
-// MetricService.ListTimeSeries request (that
-// call is useful to verify the time series
-// that will be retrieved / processed) and must
-// specify the metric type and optionally may
-// contain restrictions on resource type,
-// resource labels, and metric labels. This
-// field may not exceed 2048 Unicode characters
-// in length.
+// A logs-based filter.
 func (o AlertPolicyConditionConditionThresholdPtrOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertPolicyConditionConditionThreshold) *string {
 		if v == nil {
@@ -9538,6 +9948,10 @@ func (o GetUptimeCheckIPsUptimeCheckIpArrayOutput) Index(i pulumi.IntInput) GetU
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyAlertStrategyInput)(nil)).Elem(), AlertPolicyAlertStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyAlertStrategyPtrInput)(nil)).Elem(), AlertPolicyAlertStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyAlertStrategyNotificationRateLimitInput)(nil)).Elem(), AlertPolicyAlertStrategyNotificationRateLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyAlertStrategyNotificationRateLimitPtrInput)(nil)).Elem(), AlertPolicyAlertStrategyNotificationRateLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConditionInput)(nil)).Elem(), AlertPolicyConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConditionArrayInput)(nil)).Elem(), AlertPolicyConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConditionConditionAbsentInput)(nil)).Elem(), AlertPolicyConditionConditionAbsentArgs{})
@@ -9546,6 +9960,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConditionConditionAbsentAggregationArrayInput)(nil)).Elem(), AlertPolicyConditionConditionAbsentAggregationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConditionConditionAbsentTriggerInput)(nil)).Elem(), AlertPolicyConditionConditionAbsentTriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConditionConditionAbsentTriggerPtrInput)(nil)).Elem(), AlertPolicyConditionConditionAbsentTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConditionConditionMatchedLogInput)(nil)).Elem(), AlertPolicyConditionConditionMatchedLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConditionConditionMatchedLogPtrInput)(nil)).Elem(), AlertPolicyConditionConditionMatchedLogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConditionConditionMonitoringQueryLanguageInput)(nil)).Elem(), AlertPolicyConditionConditionMonitoringQueryLanguageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConditionConditionMonitoringQueryLanguagePtrInput)(nil)).Elem(), AlertPolicyConditionConditionMonitoringQueryLanguageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConditionConditionMonitoringQueryLanguageTriggerInput)(nil)).Elem(), AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs{})
@@ -9634,6 +10050,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNotificationChannelSensitiveLabelArrayInput)(nil)).Elem(), GetNotificationChannelSensitiveLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUptimeCheckIPsUptimeCheckIpInput)(nil)).Elem(), GetUptimeCheckIPsUptimeCheckIpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUptimeCheckIPsUptimeCheckIpArrayInput)(nil)).Elem(), GetUptimeCheckIPsUptimeCheckIpArray{})
+	pulumi.RegisterOutputType(AlertPolicyAlertStrategyOutput{})
+	pulumi.RegisterOutputType(AlertPolicyAlertStrategyPtrOutput{})
+	pulumi.RegisterOutputType(AlertPolicyAlertStrategyNotificationRateLimitOutput{})
+	pulumi.RegisterOutputType(AlertPolicyAlertStrategyNotificationRateLimitPtrOutput{})
 	pulumi.RegisterOutputType(AlertPolicyConditionOutput{})
 	pulumi.RegisterOutputType(AlertPolicyConditionArrayOutput{})
 	pulumi.RegisterOutputType(AlertPolicyConditionConditionAbsentOutput{})
@@ -9642,6 +10062,8 @@ func init() {
 	pulumi.RegisterOutputType(AlertPolicyConditionConditionAbsentAggregationArrayOutput{})
 	pulumi.RegisterOutputType(AlertPolicyConditionConditionAbsentTriggerOutput{})
 	pulumi.RegisterOutputType(AlertPolicyConditionConditionAbsentTriggerPtrOutput{})
+	pulumi.RegisterOutputType(AlertPolicyConditionConditionMatchedLogOutput{})
+	pulumi.RegisterOutputType(AlertPolicyConditionConditionMatchedLogPtrOutput{})
 	pulumi.RegisterOutputType(AlertPolicyConditionConditionMonitoringQueryLanguageOutput{})
 	pulumi.RegisterOutputType(AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput{})
 	pulumi.RegisterOutputType(AlertPolicyConditionConditionMonitoringQueryLanguageTriggerOutput{})
