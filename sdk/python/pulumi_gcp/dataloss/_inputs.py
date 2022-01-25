@@ -385,29 +385,29 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs:
     def __init__(__self__, *,
-                 character_to_skip: Optional[pulumi.Input[str]] = None,
+                 characters_to_skip: Optional[pulumi.Input[str]] = None,
                  common_characters_to_ignore: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] character_to_skip: Characters to not transform when masking.
+        :param pulumi.Input[str] characters_to_skip: Characters to not transform when masking.
         :param pulumi.Input[str] common_characters_to_ignore: Common characters to not transform when masking. Useful to avoid removing punctuation.
                Possible values are `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, and `WHITESPACE`.
         """
-        if character_to_skip is not None:
-            pulumi.set(__self__, "character_to_skip", character_to_skip)
+        if characters_to_skip is not None:
+            pulumi.set(__self__, "characters_to_skip", characters_to_skip)
         if common_characters_to_ignore is not None:
             pulumi.set(__self__, "common_characters_to_ignore", common_characters_to_ignore)
 
     @property
-    @pulumi.getter(name="characterToSkip")
-    def character_to_skip(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="charactersToSkip")
+    def characters_to_skip(self) -> Optional[pulumi.Input[str]]:
         """
         Characters to not transform when masking.
         """
-        return pulumi.get(self, "character_to_skip")
+        return pulumi.get(self, "characters_to_skip")
 
-    @character_to_skip.setter
-    def character_to_skip(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "character_to_skip", value)
+    @characters_to_skip.setter
+    def characters_to_skip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "characters_to_skip", value)
 
     @property
     @pulumi.getter(name="commonCharactersToIgnore")

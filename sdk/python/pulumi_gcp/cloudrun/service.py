@@ -604,9 +604,11 @@ class Service(pulumi.CustomResource):
                         name="a-volume",
                         secret=gcp.cloudrun.ServiceTemplateSpecVolumeSecretArgs(
                             secret_name=secret.secret_id,
+                            default_mode=292,
                             items=[gcp.cloudrun.ServiceTemplateSpecVolumeSecretItemArgs(
                                 key="1",
                                 path="my-secret",
+                                mode=256,
                             )],
                         ),
                     )],
@@ -927,9 +929,11 @@ class Service(pulumi.CustomResource):
                         name="a-volume",
                         secret=gcp.cloudrun.ServiceTemplateSpecVolumeSecretArgs(
                             secret_name=secret.secret_id,
+                            default_mode=292,
                             items=[gcp.cloudrun.ServiceTemplateSpecVolumeSecretItemArgs(
                                 key="1",
                                 path="my-secret",
+                                mode=256,
                             )],
                         ),
                     )],

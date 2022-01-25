@@ -188,6 +188,7 @@ __all__ = [
     'RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs',
     'RegionBackendServiceCircuitBreakersArgs',
     'RegionBackendServiceCircuitBreakersConnectTimeoutArgs',
+    'RegionBackendServiceConnectionTrackingPolicyArgs',
     'RegionBackendServiceConsistentHashArgs',
     'RegionBackendServiceConsistentHashHttpCookieArgs',
     'RegionBackendServiceConsistentHashHttpCookieTtlArgs',
@@ -271,6 +272,8 @@ __all__ = [
     'RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs',
     'RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs',
     'RegionUrlMapTestArgs',
+    'ReservationShareSettingsArgs',
+    'ReservationShareSettingsProjectMapArgs',
     'ReservationSpecificReservationArgs',
     'ReservationSpecificReservationInstancePropertiesArgs',
     'ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs',
@@ -12600,6 +12603,107 @@ class RegionBackendServiceCircuitBreakersConnectTimeoutArgs:
 
 
 @pulumi.input_type
+class RegionBackendServiceConnectionTrackingPolicyArgs:
+    def __init__(__self__, *,
+                 connection_persistence_on_unhealthy_backends: Optional[pulumi.Input[str]] = None,
+                 idle_timeout_sec: Optional[pulumi.Input[int]] = None,
+                 tracking_mode: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] connection_persistence_on_unhealthy_backends: Specifies connection persistence when backends are unhealthy.
+               If set to `DEFAULT_FOR_PROTOCOL`, the existing connections persist on
+               unhealthy backends only for connection-oriented protocols (TCP and SCTP)
+               and only if the Tracking Mode is PER_CONNECTION (default tracking mode)
+               or the Session Affinity is configured for 5-tuple. They do not persist
+               for UDP.
+               If set to `NEVER_PERSIST`, after a backend becomes unhealthy, the existing
+               connections on the unhealthy backend are never persisted on the unhealthy
+               backend. They are always diverted to newly selected healthy backends
+               (unless all backends are unhealthy).
+               If set to `ALWAYS_PERSIST`, existing connections always persist on
+               unhealthy backends regardless of protocol and session affinity. It is
+               generally not recommended to use this mode overriding the default.
+               Default value is `DEFAULT_FOR_PROTOCOL`.
+               Possible values are `DEFAULT_FOR_PROTOCOL`, `NEVER_PERSIST`, and `ALWAYS_PERSIST`.
+        :param pulumi.Input[int] idle_timeout_sec: Specifies how long to keep a Connection Tracking entry while there is
+               no matching traffic (in seconds).
+               For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours.
+               For NLB the minimum(default) is 60 seconds and the maximum is 16 hours.
+        :param pulumi.Input[str] tracking_mode: Specifies the key used for connection tracking. There are two options:
+               `PER_CONNECTION`: The Connection Tracking is performed as per the
+               Connection Key (default Hash Method) for the specific protocol.
+               `PER_SESSION`: The Connection Tracking is performed as per the
+               configured Session Affinity. It matches the configured Session Affinity.
+               Default value is `PER_CONNECTION`.
+               Possible values are `PER_CONNECTION` and `PER_SESSION`.
+        """
+        if connection_persistence_on_unhealthy_backends is not None:
+            pulumi.set(__self__, "connection_persistence_on_unhealthy_backends", connection_persistence_on_unhealthy_backends)
+        if idle_timeout_sec is not None:
+            pulumi.set(__self__, "idle_timeout_sec", idle_timeout_sec)
+        if tracking_mode is not None:
+            pulumi.set(__self__, "tracking_mode", tracking_mode)
+
+    @property
+    @pulumi.getter(name="connectionPersistenceOnUnhealthyBackends")
+    def connection_persistence_on_unhealthy_backends(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies connection persistence when backends are unhealthy.
+        If set to `DEFAULT_FOR_PROTOCOL`, the existing connections persist on
+        unhealthy backends only for connection-oriented protocols (TCP and SCTP)
+        and only if the Tracking Mode is PER_CONNECTION (default tracking mode)
+        or the Session Affinity is configured for 5-tuple. They do not persist
+        for UDP.
+        If set to `NEVER_PERSIST`, after a backend becomes unhealthy, the existing
+        connections on the unhealthy backend are never persisted on the unhealthy
+        backend. They are always diverted to newly selected healthy backends
+        (unless all backends are unhealthy).
+        If set to `ALWAYS_PERSIST`, existing connections always persist on
+        unhealthy backends regardless of protocol and session affinity. It is
+        generally not recommended to use this mode overriding the default.
+        Default value is `DEFAULT_FOR_PROTOCOL`.
+        Possible values are `DEFAULT_FOR_PROTOCOL`, `NEVER_PERSIST`, and `ALWAYS_PERSIST`.
+        """
+        return pulumi.get(self, "connection_persistence_on_unhealthy_backends")
+
+    @connection_persistence_on_unhealthy_backends.setter
+    def connection_persistence_on_unhealthy_backends(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_persistence_on_unhealthy_backends", value)
+
+    @property
+    @pulumi.getter(name="idleTimeoutSec")
+    def idle_timeout_sec(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies how long to keep a Connection Tracking entry while there is
+        no matching traffic (in seconds).
+        For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours.
+        For NLB the minimum(default) is 60 seconds and the maximum is 16 hours.
+        """
+        return pulumi.get(self, "idle_timeout_sec")
+
+    @idle_timeout_sec.setter
+    def idle_timeout_sec(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "idle_timeout_sec", value)
+
+    @property
+    @pulumi.getter(name="trackingMode")
+    def tracking_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the key used for connection tracking. There are two options:
+        `PER_CONNECTION`: The Connection Tracking is performed as per the
+        Connection Key (default Hash Method) for the specific protocol.
+        `PER_SESSION`: The Connection Tracking is performed as per the
+        configured Session Affinity. It matches the configured Session Affinity.
+        Default value is `PER_CONNECTION`.
+        Possible values are `PER_CONNECTION` and `PER_SESSION`.
+        """
+        return pulumi.get(self, "tracking_mode")
+
+    @tracking_mode.setter
+    def tracking_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tracking_mode", value)
+
+
+@pulumi.input_type
 class RegionBackendServiceConsistentHashArgs:
     def __init__(__self__, *,
                  http_cookie: Optional[pulumi.Input['RegionBackendServiceConsistentHashHttpCookieArgs']] = None,
@@ -19128,6 +19232,87 @@ class RegionUrlMapTestArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class ReservationShareSettingsArgs:
+    def __init__(__self__, *,
+                 project_maps: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationShareSettingsProjectMapArgs']]]] = None,
+                 share_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ReservationShareSettingsProjectMapArgs']]] project_maps: A map of project number and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
+               Structure is documented below.
+        :param pulumi.Input[str] share_type: Type of sharing for this shared-reservation
+               Possible values are `LOCAL` and `SPECIFIC_PROJECTS`.
+        """
+        if project_maps is not None:
+            pulumi.set(__self__, "project_maps", project_maps)
+        if share_type is not None:
+            pulumi.set(__self__, "share_type", share_type)
+
+    @property
+    @pulumi.getter(name="projectMaps")
+    def project_maps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ReservationShareSettingsProjectMapArgs']]]]:
+        """
+        A map of project number and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "project_maps")
+
+    @project_maps.setter
+    def project_maps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationShareSettingsProjectMapArgs']]]]):
+        pulumi.set(self, "project_maps", value)
+
+    @property
+    @pulumi.getter(name="shareType")
+    def share_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of sharing for this shared-reservation
+        Possible values are `LOCAL` and `SPECIFIC_PROJECTS`.
+        """
+        return pulumi.get(self, "share_type")
+
+    @share_type.setter
+    def share_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "share_type", value)
+
+
+@pulumi.input_type
+class ReservationShareSettingsProjectMapArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 project_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] id: The identifier for this object. Format specified above.
+        :param pulumi.Input[str] project_id: The project id/number, should be same as the key of this project config in the project map.
+        """
+        pulumi.set(__self__, "id", id)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project id/number, should be same as the key of this project config in the project map.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
 
 
 @pulumi.input_type

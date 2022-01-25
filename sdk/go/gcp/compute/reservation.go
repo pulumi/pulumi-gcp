@@ -98,6 +98,9 @@ type Reservation struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// The share setting for reservations.
+	// Structure is documented below.
+	ShareSettings ReservationShareSettingsOutput `pulumi:"shareSettings"`
 	// Reservation for instances with specific machine shapes.
 	// Structure is documented below.
 	SpecificReservation ReservationSpecificReservationOutput `pulumi:"specificReservation"`
@@ -165,6 +168,9 @@ type reservationState struct {
 	Project *string `pulumi:"project"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
+	// The share setting for reservations.
+	// Structure is documented below.
+	ShareSettings *ReservationShareSettings `pulumi:"shareSettings"`
 	// Reservation for instances with specific machine shapes.
 	// Structure is documented below.
 	SpecificReservation *ReservationSpecificReservation `pulumi:"specificReservation"`
@@ -198,6 +204,9 @@ type ReservationState struct {
 	Project pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
+	// The share setting for reservations.
+	// Structure is documented below.
+	ShareSettings ReservationShareSettingsPtrInput
 	// Reservation for instances with specific machine shapes.
 	// Structure is documented below.
 	SpecificReservation ReservationSpecificReservationPtrInput
@@ -229,6 +238,9 @@ type reservationArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The share setting for reservations.
+	// Structure is documented below.
+	ShareSettings *ReservationShareSettings `pulumi:"shareSettings"`
 	// Reservation for instances with specific machine shapes.
 	// Structure is documented below.
 	SpecificReservation ReservationSpecificReservation `pulumi:"specificReservation"`
@@ -255,6 +267,9 @@ type ReservationArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The share setting for reservations.
+	// Structure is documented below.
+	ShareSettings ReservationShareSettingsPtrInput
 	// Reservation for instances with specific machine shapes.
 	// Structure is documented below.
 	SpecificReservation ReservationSpecificReservationInput

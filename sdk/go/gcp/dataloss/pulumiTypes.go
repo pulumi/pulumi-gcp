@@ -850,7 +850,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore struct {
 	// Characters to not transform when masking.
-	CharacterToSkip *string `pulumi:"characterToSkip"`
+	CharactersToSkip *string `pulumi:"charactersToSkip"`
 	// Common characters to not transform when masking. Useful to avoid removing punctuation.
 	// Possible values are `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, and `WHITESPACE`.
 	CommonCharactersToIgnore *string `pulumi:"commonCharactersToIgnore"`
@@ -869,7 +869,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs struct {
 	// Characters to not transform when masking.
-	CharacterToSkip pulumi.StringPtrInput `pulumi:"characterToSkip"`
+	CharactersToSkip pulumi.StringPtrInput `pulumi:"charactersToSkip"`
 	// Common characters to not transform when masking. Useful to avoid removing punctuation.
 	// Possible values are `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, and `WHITESPACE`.
 	CommonCharactersToIgnore pulumi.StringPtrInput `pulumi:"commonCharactersToIgnore"`
@@ -927,9 +927,9 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 }
 
 // Characters to not transform when masking.
-func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput) CharacterToSkip() pulumi.StringPtrOutput {
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput) CharactersToSkip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore) *string {
-		return v.CharacterToSkip
+		return v.CharactersToSkip
 	}).(pulumi.StringPtrOutput)
 }
 

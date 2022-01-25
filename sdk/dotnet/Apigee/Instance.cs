@@ -61,6 +61,18 @@ namespace Pulumi.Gcp.Apigee
         public Output<string> Host { get; private set; } = null!;
 
         /// <summary>
+        /// IP range represents the customer-provided CIDR block of length 22 that will be used for
+        /// the Apigee instance creation. This optional range, if provided, should be freely
+        /// available as part of larger named range the customer has allocated to the Service
+        /// Networking peering. If this is not provided, Apigee will automatically request for any
+        /// available /22 CIDR block from Service Networking. The customer should use this CIDR block
+        /// for configuring their firewall needs to allow traffic from Apigee.
+        /// Input format: "a.b.c.d/22"
+        /// </summary>
+        [Output("ipRange")]
+        public Output<string?> IpRange { get; private set; } = null!;
+
+        /// <summary>
         /// Compute Engine location where the instance resides. For trial organization
         /// subscriptions, the location must be a Compute Engine zone. For paid organization
         /// subscriptions, it should correspond to a Compute Engine region.
@@ -86,7 +98,7 @@ namespace Pulumi.Gcp.Apigee
         /// see [CidrRange](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances#CidrRange) on the documentation.
         /// </summary>
         [Output("peeringCidrRange")]
-        public Output<string?> PeeringCidrRange { get; private set; } = null!;
+        public Output<string> PeeringCidrRange { get; private set; } = null!;
 
         /// <summary>
         /// Output only. Port number of the exposed Apigee endpoint.
@@ -160,6 +172,18 @@ namespace Pulumi.Gcp.Apigee
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
+        /// IP range represents the customer-provided CIDR block of length 22 that will be used for
+        /// the Apigee instance creation. This optional range, if provided, should be freely
+        /// available as part of larger named range the customer has allocated to the Service
+        /// Networking peering. If this is not provided, Apigee will automatically request for any
+        /// available /22 CIDR block from Service Networking. The customer should use this CIDR block
+        /// for configuring their firewall needs to allow traffic from Apigee.
+        /// Input format: "a.b.c.d/22"
+        /// </summary>
+        [Input("ipRange")]
+        public Input<string>? IpRange { get; set; }
+
+        /// <summary>
         /// Compute Engine location where the instance resides. For trial organization
         /// subscriptions, the location must be a Compute Engine zone. For paid organization
         /// subscriptions, it should correspond to a Compute Engine region.
@@ -218,6 +242,18 @@ namespace Pulumi.Gcp.Apigee
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
+
+        /// <summary>
+        /// IP range represents the customer-provided CIDR block of length 22 that will be used for
+        /// the Apigee instance creation. This optional range, if provided, should be freely
+        /// available as part of larger named range the customer has allocated to the Service
+        /// Networking peering. If this is not provided, Apigee will automatically request for any
+        /// available /22 CIDR block from Service Networking. The customer should use this CIDR block
+        /// for configuring their firewall needs to allow traffic from Apigee.
+        /// Input format: "a.b.c.d/22"
+        /// </summary>
+        [Input("ipRange")]
+        public Input<string>? IpRange { get; set; }
 
         /// <summary>
         /// Compute Engine location where the instance resides. For trial organization

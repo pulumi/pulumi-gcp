@@ -5570,7 +5570,7 @@ class ClusterWorkloadIdentityConfigArgs:
     def __init__(__self__, *,
                  workload_pool: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] workload_pool: The workload pool to attach all Kubernetes service accounts to. Currently, the only supported identity namespace is the project of the cluster.
+        :param pulumi.Input[str] workload_pool: The workload pool to attach all Kubernetes service accounts to.
         """
         if workload_pool is not None:
             pulumi.set(__self__, "workload_pool", workload_pool)
@@ -5579,7 +5579,7 @@ class ClusterWorkloadIdentityConfigArgs:
     @pulumi.getter(name="workloadPool")
     def workload_pool(self) -> Optional[pulumi.Input[str]]:
         """
-        The workload pool to attach all Kubernetes service accounts to. Currently, the only supported identity namespace is the project of the cluster.
+        The workload pool to attach all Kubernetes service accounts to.
         """
         return pulumi.get(self, "workload_pool")
 

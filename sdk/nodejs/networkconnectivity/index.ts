@@ -6,9 +6,11 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./hub";
+export * from "./spoke";
 
 // Import resources to register:
 import { Hub } from "./hub";
+import { Spoke } from "./spoke";
 
 const _module = {
     version: utilities.getVersion(),
@@ -16,9 +18,12 @@ const _module = {
         switch (type) {
             case "gcp:networkconnectivity/hub:Hub":
                 return new Hub(name, <any>undefined, { urn })
+            case "gcp:networkconnectivity/spoke:Spoke":
+                return new Spoke(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/hub", _module)
+pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/spoke", _module)

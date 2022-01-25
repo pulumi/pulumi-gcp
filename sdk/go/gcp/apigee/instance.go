@@ -44,6 +44,14 @@ type Instance struct {
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// Output only. Hostname or IP address of the exposed Apigee endpoint used by clients to connect to the service.
 	Host pulumi.StringOutput `pulumi:"host"`
+	// IP range represents the customer-provided CIDR block of length 22 that will be used for
+	// the Apigee instance creation. This optional range, if provided, should be freely
+	// available as part of larger named range the customer has allocated to the Service
+	// Networking peering. If this is not provided, Apigee will automatically request for any
+	// available /22 CIDR block from Service Networking. The customer should use this CIDR block
+	// for configuring their firewall needs to allow traffic from Apigee.
+	// Input format: "a.b.c.d/22"
+	IpRange pulumi.StringPtrOutput `pulumi:"ipRange"`
 	// Compute Engine location where the instance resides. For trial organization
 	// subscriptions, the location must be a Compute Engine zone. For paid organization
 	// subscriptions, it should correspond to a Compute Engine region.
@@ -55,7 +63,7 @@ type Instance struct {
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// The size of the CIDR block range that will be reserved by the instance. For valid values,
 	// see [CidrRange](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances#CidrRange) on the documentation.
-	PeeringCidrRange pulumi.StringPtrOutput `pulumi:"peeringCidrRange"`
+	PeeringCidrRange pulumi.StringOutput `pulumi:"peeringCidrRange"`
 	// Output only. Port number of the exposed Apigee endpoint.
 	Port pulumi.StringOutput `pulumi:"port"`
 }
@@ -104,6 +112,14 @@ type instanceState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Output only. Hostname or IP address of the exposed Apigee endpoint used by clients to connect to the service.
 	Host *string `pulumi:"host"`
+	// IP range represents the customer-provided CIDR block of length 22 that will be used for
+	// the Apigee instance creation. This optional range, if provided, should be freely
+	// available as part of larger named range the customer has allocated to the Service
+	// Networking peering. If this is not provided, Apigee will automatically request for any
+	// available /22 CIDR block from Service Networking. The customer should use this CIDR block
+	// for configuring their firewall needs to allow traffic from Apigee.
+	// Input format: "a.b.c.d/22"
+	IpRange *string `pulumi:"ipRange"`
 	// Compute Engine location where the instance resides. For trial organization
 	// subscriptions, the location must be a Compute Engine zone. For paid organization
 	// subscriptions, it should correspond to a Compute Engine region.
@@ -130,6 +146,14 @@ type InstanceState struct {
 	DisplayName pulumi.StringPtrInput
 	// Output only. Hostname or IP address of the exposed Apigee endpoint used by clients to connect to the service.
 	Host pulumi.StringPtrInput
+	// IP range represents the customer-provided CIDR block of length 22 that will be used for
+	// the Apigee instance creation. This optional range, if provided, should be freely
+	// available as part of larger named range the customer has allocated to the Service
+	// Networking peering. If this is not provided, Apigee will automatically request for any
+	// available /22 CIDR block from Service Networking. The customer should use this CIDR block
+	// for configuring their firewall needs to allow traffic from Apigee.
+	// Input format: "a.b.c.d/22"
+	IpRange pulumi.StringPtrInput
 	// Compute Engine location where the instance resides. For trial organization
 	// subscriptions, the location must be a Compute Engine zone. For paid organization
 	// subscriptions, it should correspond to a Compute Engine region.
@@ -158,6 +182,14 @@ type instanceArgs struct {
 	DiskEncryptionKeyName *string `pulumi:"diskEncryptionKeyName"`
 	// Display name of the instance.
 	DisplayName *string `pulumi:"displayName"`
+	// IP range represents the customer-provided CIDR block of length 22 that will be used for
+	// the Apigee instance creation. This optional range, if provided, should be freely
+	// available as part of larger named range the customer has allocated to the Service
+	// Networking peering. If this is not provided, Apigee will automatically request for any
+	// available /22 CIDR block from Service Networking. The customer should use this CIDR block
+	// for configuring their firewall needs to allow traffic from Apigee.
+	// Input format: "a.b.c.d/22"
+	IpRange *string `pulumi:"ipRange"`
 	// Compute Engine location where the instance resides. For trial organization
 	// subscriptions, the location must be a Compute Engine zone. For paid organization
 	// subscriptions, it should correspond to a Compute Engine region.
@@ -181,6 +213,14 @@ type InstanceArgs struct {
 	DiskEncryptionKeyName pulumi.StringPtrInput
 	// Display name of the instance.
 	DisplayName pulumi.StringPtrInput
+	// IP range represents the customer-provided CIDR block of length 22 that will be used for
+	// the Apigee instance creation. This optional range, if provided, should be freely
+	// available as part of larger named range the customer has allocated to the Service
+	// Networking peering. If this is not provided, Apigee will automatically request for any
+	// available /22 CIDR block from Service Networking. The customer should use this CIDR block
+	// for configuring their firewall needs to allow traffic from Apigee.
+	// Input format: "a.b.c.d/22"
+	IpRange pulumi.StringPtrInput
 	// Compute Engine location where the instance resides. For trial organization
 	// subscriptions, the location must be a Compute Engine zone. For paid organization
 	// subscriptions, it should correspond to a Compute Engine region.

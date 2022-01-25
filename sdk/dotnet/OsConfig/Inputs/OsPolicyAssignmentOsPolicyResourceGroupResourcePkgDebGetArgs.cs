@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public Input<bool>? PullDeps { get; set; }
 
         /// <summary>
-        /// Required. A deb package.
+        /// Required. An rpm package.
         /// </summary>
         [Input("source", required: true)]
         public Input<Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGetArgs> Source { get; set; } = null!;

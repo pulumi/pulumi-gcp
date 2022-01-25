@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public Input<string>? Sha256Checksum { get; set; }
 
         /// <summary>
-        /// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+        /// Required. URI for this repository.
         /// </summary>
         [Input("uri", required: true)]
         public Input<string> Uri { get; set; } = null!;

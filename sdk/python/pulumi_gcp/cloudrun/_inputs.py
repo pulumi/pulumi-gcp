@@ -1886,6 +1886,7 @@ class ServiceTemplateSpecVolumeArgs:
 class ServiceTemplateSpecVolumeSecretArgs:
     def __init__(__self__, *,
                  secret_name: pulumi.Input[str],
+                 default_mode: Optional[pulumi.Input[int]] = None,
                  items: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecVolumeSecretItemArgs']]]] = None):
         """
         :param pulumi.Input[str] secret_name: The name of the secret in Cloud Secret Manager. By default, the secret
@@ -1897,6 +1898,10 @@ class ServiceTemplateSpecVolumeSecretArgs:
                commas.
                The alias definitions must be set on the run.googleapis.com/secrets
                annotation.
+        :param pulumi.Input[int] default_mode: Mode bits to use on created files by default. Must be a value between 0000
+               and 0777. Defaults to 0644. Directories within the path are not affected by
+               this setting. This might be in conflict with other options that affect the
+               file mode, like fsGroup, and the result can be other mode bits set.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecVolumeSecretItemArgs']]] items: If unspecified, the volume will expose a file whose name is the
                secret_name.
                If specified, the key will be used as the version to fetch from Cloud
@@ -1905,6 +1910,8 @@ class ServiceTemplateSpecVolumeSecretArgs:
                Structure is documented below.
         """
         pulumi.set(__self__, "secret_name", secret_name)
+        if default_mode is not None:
+            pulumi.set(__self__, "default_mode", default_mode)
         if items is not None:
             pulumi.set(__self__, "items", items)
 
@@ -1929,6 +1936,21 @@ class ServiceTemplateSpecVolumeSecretArgs:
         pulumi.set(self, "secret_name", value)
 
     @property
+    @pulumi.getter(name="defaultMode")
+    def default_mode(self) -> Optional[pulumi.Input[int]]:
+        """
+        Mode bits to use on created files by default. Must be a value between 0000
+        and 0777. Defaults to 0644. Directories within the path are not affected by
+        this setting. This might be in conflict with other options that affect the
+        file mode, like fsGroup, and the result can be other mode bits set.
+        """
+        return pulumi.get(self, "default_mode")
+
+    @default_mode.setter
+    def default_mode(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "default_mode", value)
+
+    @property
     @pulumi.getter
     def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecVolumeSecretItemArgs']]]]:
         """
@@ -1950,7 +1972,8 @@ class ServiceTemplateSpecVolumeSecretArgs:
 class ServiceTemplateSpecVolumeSecretItemArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
-                 path: pulumi.Input[str]):
+                 path: pulumi.Input[str],
+                 mode: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] key: The Cloud Secret Manager secret version.
                Can be 'latest' for the latest value or an integer for a specific version.
@@ -1958,9 +1981,15 @@ class ServiceTemplateSpecVolumeSecretItemArgs:
                May not be an absolute path.
                May not contain the path element '..'.
                May not start with the string '..'.
+        :param pulumi.Input[int] mode: Mode bits to use on this file, must be a value between 0000 and 0777. If
+               not specified, the volume defaultMode will be used. This might be in
+               conflict with other options that affect the file mode, like fsGroup, and
+               the result can be other mode bits set.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "path", path)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
 
     @property
     @pulumi.getter
@@ -1989,6 +2018,21 @@ class ServiceTemplateSpecVolumeSecretItemArgs:
     @path.setter
     def path(self, value: pulumi.Input[str]):
         pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[int]]:
+        """
+        Mode bits to use on this file, must be a value between 0000 and 0777. If
+        not specified, the volume defaultMode will be used. This might be in
+        conflict with other options that affect the file mode, like fsGroup, and
+        the result can be other mode bits set.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "mode", value)
 
 
 @pulumi.input_type

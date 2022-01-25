@@ -5900,7 +5900,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayOutput) Index
 type OsPolicyAssignmentOsPolicyResourceGroupResource struct {
 	// Exec resource
 	Exec *OsPolicyAssignmentOsPolicyResourceGroupResourceExec `pulumi:"exec"`
-	// Required. A deb package.
+	// A remote or local source.
 	File *OsPolicyAssignmentOsPolicyResourceGroupResourceFile `pulumi:"file"`
 	// Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
 	Id string `pulumi:"id"`
@@ -5924,7 +5924,7 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceInput interface {
 type OsPolicyAssignmentOsPolicyResourceGroupResourceArgs struct {
 	// Exec resource
 	Exec OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrInput `pulumi:"exec"`
-	// Required. A deb package.
+	// A remote or local source.
 	File OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrInput `pulumi:"file"`
 	// Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -5992,7 +5992,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceOutput) Exec() OsPolicyAs
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput)
 }
 
-// Required. A deb package.
+// A remote or local source.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceOutput) File() OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResource) *OsPolicyAssignmentOsPolicyResourceGroupResourceFile {
 		return v.File
@@ -6039,7 +6039,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceArrayOutput) Index(i pulu
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExec struct {
-	// Required. What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate.
+	// What to run to bring this resource into the desired state. An exit code of 100 indicates "success", any other exit code indicates a failure running enforce.
 	Enforce *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce `pulumi:"enforce"`
 	// Required. What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate.
 	Validate OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate `pulumi:"validate"`
@@ -6057,7 +6057,7 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceExecInput interface {
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs struct {
-	// Required. What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate.
+	// What to run to bring this resource into the desired state. An exit code of 100 indicates "success", any other exit code indicates a failure running enforce.
 	Enforce OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrInput `pulumi:"enforce"`
 	// Required. What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate.
 	Validate OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateInput `pulumi:"validate"`
@@ -6140,7 +6140,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecOutput) ToOsPolicyAss
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput)
 }
 
-// Required. What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate.
+// What to run to bring this resource into the desired state. An exit code of 100 indicates "success", any other exit code indicates a failure running enforce.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecOutput) Enforce() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExec) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce {
 		return v.Enforce
@@ -6178,7 +6178,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput) Elem() OsP
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecOutput)
 }
 
-// Required. What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate.
+// What to run to bring this resource into the desired state. An exit code of 100 indicates "success", any other exit code indicates a failure running enforce.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput) Enforce() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExec) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce {
 		if v == nil {
@@ -6201,7 +6201,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput) Validate()
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce struct {
 	// Optional arguments to pass to the source during execution.
 	Args []string `pulumi:"args"`
-	// Required. A deb package.
+	// A remote or local source.
 	File *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile `pulumi:"file"`
 	// Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
 	Interpreter string `pulumi:"interpreter"`
@@ -6225,7 +6225,7 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceInput interface {
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs struct {
 	// Optional arguments to pass to the source during execution.
 	Args pulumi.StringArrayInput `pulumi:"args"`
-	// Required. A deb package.
+	// A remote or local source.
 	File OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrInput `pulumi:"file"`
 	// Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
 	Interpreter pulumi.StringInput `pulumi:"interpreter"`
@@ -6317,7 +6317,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput) Args()
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
 
-// Required. A deb package.
+// A remote or local source.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput) File() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile {
 		return v.File
@@ -6373,7 +6373,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput) Arg
 	}).(pulumi.StringArrayOutput)
 }
 
-// Required. A deb package.
+// A remote or local source.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput) File() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile {
 		if v == nil {
@@ -6789,7 +6789,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutp
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote struct {
 	// SHA256 checksum of the remote file.
 	Sha256Checksum *string `pulumi:"sha256Checksum"`
-	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+	// Required. URI for this repository.
 	Uri string `pulumi:"uri"`
 }
 
@@ -6807,7 +6807,7 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteInput i
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs struct {
 	// SHA256 checksum of the remote file.
 	Sha256Checksum pulumi.StringPtrInput `pulumi:"sha256Checksum"`
-	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+	// Required. URI for this repository.
 	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
@@ -6895,7 +6895,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+// Required. URI for this repository.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -6934,7 +6934,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+// Required. URI for this repository.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote) *string {
 		if v == nil {
@@ -6947,7 +6947,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrO
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate struct {
 	// Optional arguments to pass to the source during execution.
 	Args []string `pulumi:"args"`
-	// Required. A deb package.
+	// A remote or local source.
 	File *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile `pulumi:"file"`
 	// Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
 	Interpreter string `pulumi:"interpreter"`
@@ -6971,7 +6971,7 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateInput interface 
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs struct {
 	// Optional arguments to pass to the source during execution.
 	Args pulumi.StringArrayInput `pulumi:"args"`
-	// Required. A deb package.
+	// A remote or local source.
 	File OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrInput `pulumi:"file"`
 	// Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
 	Interpreter pulumi.StringInput `pulumi:"interpreter"`
@@ -7063,7 +7063,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput) Args(
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
 
-// Required. A deb package.
+// A remote or local source.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput) File() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile {
 		return v.File
@@ -7119,7 +7119,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput) Ar
 	}).(pulumi.StringArrayOutput)
 }
 
-// Required. A deb package.
+// A remote or local source.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput) File() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile {
 		if v == nil {
@@ -7535,7 +7535,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOut
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote struct {
 	// SHA256 checksum of the remote file.
 	Sha256Checksum *string `pulumi:"sha256Checksum"`
-	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+	// Required. URI for this repository.
 	Uri string `pulumi:"uri"`
 }
 
@@ -7553,7 +7553,7 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteInput 
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs struct {
 	// SHA256 checksum of the remote file.
 	Sha256Checksum pulumi.StringPtrInput `pulumi:"sha256Checksum"`
-	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+	// Required. URI for this repository.
 	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
@@ -7641,7 +7641,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+// Required. URI for this repository.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -7680,7 +7680,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+// Required. URI for this repository.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote) *string {
 		if v == nil {
@@ -7693,7 +7693,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtr
 type OsPolicyAssignmentOsPolicyResourceGroupResourceFile struct {
 	// A a file with this content. The size of the content is limited to 1024 characters.
 	Content *string `pulumi:"content"`
-	// Required. A deb package.
+	// A remote or local source.
 	File *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile `pulumi:"file"`
 	// Required. The absolute path of the file within the VM.
 	Path string `pulumi:"path"`
@@ -7718,7 +7718,7 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceFileInput interface {
 type OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs struct {
 	// A a file with this content. The size of the content is limited to 1024 characters.
 	Content pulumi.StringPtrInput `pulumi:"content"`
-	// Required. A deb package.
+	// A remote or local source.
 	File OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrInput `pulumi:"file"`
 	// Required. The absolute path of the file within the VM.
 	Path pulumi.StringInput `pulumi:"path"`
@@ -7811,7 +7811,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput) Content() pul
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceFile) *string { return v.Content }).(pulumi.StringPtrOutput)
 }
 
-// Required. A deb package.
+// A remote or local source.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput) File() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceFile) *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile {
 		return v.File
@@ -7868,7 +7868,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput) Content() 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. A deb package.
+// A remote or local source.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput) File() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceFile) *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile {
 		if v == nil {
@@ -8285,7 +8285,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput) Obj
 type OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote struct {
 	// SHA256 checksum of the remote file.
 	Sha256Checksum *string `pulumi:"sha256Checksum"`
-	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+	// Required. URI for this repository.
 	Uri string `pulumi:"uri"`
 }
 
@@ -8303,7 +8303,7 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteInput interfac
 type OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs struct {
 	// SHA256 checksum of the remote file.
 	Sha256Checksum pulumi.StringPtrInput `pulumi:"sha256Checksum"`
-	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+	// Required. URI for this repository.
 	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
@@ -8389,7 +8389,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteOutput) Sha
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote) *string { return v.Sha256Checksum }).(pulumi.StringPtrOutput)
 }
 
-// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+// Required. URI for this repository.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -8428,7 +8428,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+// Required. URI for this repository.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote) *string {
 		if v == nil {
@@ -8862,7 +8862,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput) Name() p
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb struct {
 	// Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
 	PullDeps *bool `pulumi:"pullDeps"`
-	// Required. A deb package.
+	// Required. An rpm package.
 	Source OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource `pulumi:"source"`
 }
 
@@ -8880,7 +8880,7 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebInput interface {
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs struct {
 	// Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
 	PullDeps pulumi.BoolPtrInput `pulumi:"pullDeps"`
-	// Required. A deb package.
+	// Required. An rpm package.
 	Source OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceInput `pulumi:"source"`
 }
 
@@ -8966,7 +8966,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutput) PullDeps() 
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb) *bool { return v.PullDeps }).(pulumi.BoolPtrOutput)
 }
 
-// Required. A deb package.
+// Required. An rpm package.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutput) Source() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource {
 		return v.Source
@@ -9007,7 +9007,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput) PullDeps
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Required. A deb package.
+// Required. An rpm package.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput) Source() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource {
 		if v == nil {
@@ -9393,7 +9393,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput)
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote struct {
 	// SHA256 checksum of the remote file.
 	Sha256Checksum *string `pulumi:"sha256Checksum"`
-	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+	// Required. URI for this repository.
 	Uri string `pulumi:"uri"`
 }
 
@@ -9411,7 +9411,7 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteInput inte
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs struct {
 	// SHA256 checksum of the remote file.
 	Sha256Checksum pulumi.StringPtrInput `pulumi:"sha256Checksum"`
-	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+	// Required. URI for this repository.
 	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
@@ -9499,7 +9499,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput)
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+// Required. URI for this repository.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -9538,7 +9538,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+// Required. URI for this repository.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote) *string {
 		if v == nil {
@@ -9688,7 +9688,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput) Name(
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi struct {
 	// Additional properties to use during installation. This should be in the format of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`.
 	Properties []string `pulumi:"properties"`
-	// Required. A deb package.
+	// Required. An rpm package.
 	Source OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource `pulumi:"source"`
 }
 
@@ -9706,7 +9706,7 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiInput interface {
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs struct {
 	// Additional properties to use during installation. This should be in the format of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`.
 	Properties pulumi.StringArrayInput `pulumi:"properties"`
-	// Required. A deb package.
+	// Required. An rpm package.
 	Source OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceInput `pulumi:"source"`
 }
 
@@ -9792,7 +9792,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutput) Properties(
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi) []string { return v.Properties }).(pulumi.StringArrayOutput)
 }
 
-// Required. A deb package.
+// Required. An rpm package.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutput) Source() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource {
 		return v.Source
@@ -9833,7 +9833,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput) Properti
 	}).(pulumi.StringArrayOutput)
 }
 
-// Required. A deb package.
+// Required. An rpm package.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput) Source() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource {
 		if v == nil {
@@ -10219,7 +10219,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput)
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote struct {
 	// SHA256 checksum of the remote file.
 	Sha256Checksum *string `pulumi:"sha256Checksum"`
-	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+	// Required. URI for this repository.
 	Uri string `pulumi:"uri"`
 }
 
@@ -10237,7 +10237,7 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteInput inte
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs struct {
 	// SHA256 checksum of the remote file.
 	Sha256Checksum pulumi.StringPtrInput `pulumi:"sha256Checksum"`
-	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+	// Required. URI for this repository.
 	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
@@ -10325,7 +10325,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput)
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+// Required. URI for this repository.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -10364,7 +10364,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+// Required. URI for this repository.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote) *string {
 		if v == nil {
@@ -10377,7 +10377,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutp
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm struct {
 	// Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
 	PullDeps *bool `pulumi:"pullDeps"`
-	// Required. A deb package.
+	// Required. An rpm package.
 	Source OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource `pulumi:"source"`
 }
 
@@ -10395,7 +10395,7 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmInput interface {
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs struct {
 	// Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
 	PullDeps pulumi.BoolPtrInput `pulumi:"pullDeps"`
-	// Required. A deb package.
+	// Required. An rpm package.
 	Source OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceInput `pulumi:"source"`
 }
 
@@ -10481,7 +10481,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmOutput) PullDeps() 
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm) *bool { return v.PullDeps }).(pulumi.BoolPtrOutput)
 }
 
-// Required. A deb package.
+// Required. An rpm package.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmOutput) Source() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource {
 		return v.Source
@@ -10522,7 +10522,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput) PullDeps
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Required. A deb package.
+// Required. An rpm package.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput) Source() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource {
 		if v == nil {
@@ -10908,7 +10908,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput)
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote struct {
 	// SHA256 checksum of the remote file.
 	Sha256Checksum *string `pulumi:"sha256Checksum"`
-	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+	// Required. URI for this repository.
 	Uri string `pulumi:"uri"`
 }
 
@@ -10926,7 +10926,7 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteInput inte
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs struct {
 	// SHA256 checksum of the remote file.
 	Sha256Checksum pulumi.StringPtrInput `pulumi:"sha256Checksum"`
-	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+	// Required. URI for this repository.
 	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
@@ -11014,7 +11014,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput)
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+// Required. URI for this repository.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -11053,7 +11053,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+// Required. URI for this repository.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote) *string {
 		if v == nil {
@@ -11548,7 +11548,7 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt struct {
 	Distribution string `pulumi:"distribution"`
 	// URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
 	GpgKey *string `pulumi:"gpgKey"`
-	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+	// Required. URI for this repository.
 	Uri string `pulumi:"uri"`
 }
 
@@ -11572,7 +11572,7 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs struct {
 	Distribution pulumi.StringInput `pulumi:"distribution"`
 	// URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
 	GpgKey pulumi.StringPtrInput `pulumi:"gpgKey"`
-	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+	// Required. URI for this repository.
 	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
@@ -11673,7 +11673,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput) GpgK
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt) *string { return v.GpgKey }).(pulumi.StringPtrOutput)
 }
 
-// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+// Required. URI for this repository.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -11742,7 +11742,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput) G
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+// Required. URI for this repository.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt) *string {
 		if v == nil {

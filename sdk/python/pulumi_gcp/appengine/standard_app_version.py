@@ -65,7 +65,8 @@ class StandardAppVersionArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] runtime_api_version: The version of the API in the given runtime environment.
-               Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
+               Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/<language>/config/appref`\
+               Substitute `<language>` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
         :param pulumi.Input[bool] threadsafe: Whether multiple requests can be dispatched to this version at once.
         :param pulumi.Input[str] version_id: Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
         :param pulumi.Input['StandardAppVersionVpcAccessConnectorArgs'] vpc_access_connector: Enables VPC connectivity for standard apps.
@@ -304,7 +305,8 @@ class StandardAppVersionArgs:
     def runtime_api_version(self) -> Optional[pulumi.Input[str]]:
         """
         The version of the API in the given runtime environment.
-        Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
+        Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/<language>/config/appref`\
+        Substitute `<language>` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
         """
         return pulumi.get(self, "runtime_api_version")
 
@@ -404,7 +406,8 @@ class _StandardAppVersionState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] runtime: Desired runtime. Example python27.
         :param pulumi.Input[str] runtime_api_version: The version of the API in the given runtime environment.
-               Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
+               Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/<language>/config/appref`\
+               Substitute `<language>` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
         :param pulumi.Input[str] service: AppEngine service resource
         :param pulumi.Input[bool] threadsafe: Whether multiple requests can be dispatched to this version at once.
         :param pulumi.Input[str] version_id: Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
@@ -650,7 +653,8 @@ class _StandardAppVersionState:
     def runtime_api_version(self) -> Optional[pulumi.Input[str]]:
         """
         The version of the API in the given runtime environment.
-        Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
+        Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/<language>/config/appref`\
+        Substitute `<language>` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
         """
         return pulumi.get(self, "runtime_api_version")
 
@@ -852,7 +856,8 @@ class StandardAppVersion(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] runtime: Desired runtime. Example python27.
         :param pulumi.Input[str] runtime_api_version: The version of the API in the given runtime environment.
-               Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
+               Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/<language>/config/appref`\
+               Substitute `<language>` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
         :param pulumi.Input[str] service: AppEngine service resource
         :param pulumi.Input[bool] threadsafe: Whether multiple requests can be dispatched to this version at once.
         :param pulumi.Input[str] version_id: Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
@@ -1094,7 +1099,8 @@ class StandardAppVersion(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] runtime: Desired runtime. Example python27.
         :param pulumi.Input[str] runtime_api_version: The version of the API in the given runtime environment.
-               Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
+               Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/<language>/config/appref`\
+               Substitute `<language>` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
         :param pulumi.Input[str] service: AppEngine service resource
         :param pulumi.Input[bool] threadsafe: Whether multiple requests can be dispatched to this version at once.
         :param pulumi.Input[str] version_id: Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
@@ -1265,7 +1271,8 @@ class StandardAppVersion(pulumi.CustomResource):
     def runtime_api_version(self) -> pulumi.Output[Optional[str]]:
         """
         The version of the API in the given runtime environment.
-        Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
+        Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/<language>/config/appref`\
+        Substitute `<language>` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
         """
         return pulumi.get(self, "runtime_api_version")
 

@@ -4590,6 +4590,11 @@ func (o ServiceTemplateSpecVolumeArrayOutput) Index(i pulumi.IntInput) ServiceTe
 }
 
 type ServiceTemplateSpecVolumeSecret struct {
+	// Mode bits to use on created files by default. Must be a value between 0000
+	// and 0777. Defaults to 0644. Directories within the path are not affected by
+	// this setting. This might be in conflict with other options that affect the
+	// file mode, like fsGroup, and the result can be other mode bits set.
+	DefaultMode *int `pulumi:"defaultMode"`
 	// If unspecified, the volume will expose a file whose name is the
 	// secret_name.
 	// If specified, the key will be used as the version to fetch from Cloud
@@ -4621,6 +4626,11 @@ type ServiceTemplateSpecVolumeSecretInput interface {
 }
 
 type ServiceTemplateSpecVolumeSecretArgs struct {
+	// Mode bits to use on created files by default. Must be a value between 0000
+	// and 0777. Defaults to 0644. Directories within the path are not affected by
+	// this setting. This might be in conflict with other options that affect the
+	// file mode, like fsGroup, and the result can be other mode bits set.
+	DefaultMode pulumi.IntPtrInput `pulumi:"defaultMode"`
 	// If unspecified, the volume will expose a file whose name is the
 	// secret_name.
 	// If specified, the key will be used as the version to fetch from Cloud
@@ -4666,6 +4676,14 @@ func (o ServiceTemplateSpecVolumeSecretOutput) ToServiceTemplateSpecVolumeSecret
 	return o
 }
 
+// Mode bits to use on created files by default. Must be a value between 0000
+// and 0777. Defaults to 0644. Directories within the path are not affected by
+// this setting. This might be in conflict with other options that affect the
+// file mode, like fsGroup, and the result can be other mode bits set.
+func (o ServiceTemplateSpecVolumeSecretOutput) DefaultMode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecVolumeSecret) *int { return v.DefaultMode }).(pulumi.IntPtrOutput)
+}
+
 // If unspecified, the volume will expose a file whose name is the
 // secret_name.
 // If specified, the key will be used as the version to fetch from Cloud
@@ -4693,6 +4711,11 @@ type ServiceTemplateSpecVolumeSecretItem struct {
 	// The Cloud Secret Manager secret version.
 	// Can be 'latest' for the latest value or an integer for a specific version.
 	Key string `pulumi:"key"`
+	// Mode bits to use on this file, must be a value between 0000 and 0777. If
+	// not specified, the volume defaultMode will be used. This might be in
+	// conflict with other options that affect the file mode, like fsGroup, and
+	// the result can be other mode bits set.
+	Mode *int `pulumi:"mode"`
 	// The relative path of the file to map the key to.
 	// May not be an absolute path.
 	// May not contain the path element '..'.
@@ -4715,6 +4738,11 @@ type ServiceTemplateSpecVolumeSecretItemArgs struct {
 	// The Cloud Secret Manager secret version.
 	// Can be 'latest' for the latest value or an integer for a specific version.
 	Key pulumi.StringInput `pulumi:"key"`
+	// Mode bits to use on this file, must be a value between 0000 and 0777. If
+	// not specified, the volume defaultMode will be used. This might be in
+	// conflict with other options that affect the file mode, like fsGroup, and
+	// the result can be other mode bits set.
+	Mode pulumi.IntPtrInput `pulumi:"mode"`
 	// The relative path of the file to map the key to.
 	// May not be an absolute path.
 	// May not contain the path element '..'.
@@ -4777,6 +4805,14 @@ func (o ServiceTemplateSpecVolumeSecretItemOutput) ToServiceTemplateSpecVolumeSe
 // Can be 'latest' for the latest value or an integer for a specific version.
 func (o ServiceTemplateSpecVolumeSecretItemOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecVolumeSecretItem) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Mode bits to use on this file, must be a value between 0000 and 0777. If
+// not specified, the volume defaultMode will be used. This might be in
+// conflict with other options that affect the file mode, like fsGroup, and
+// the result can be other mode bits set.
+func (o ServiceTemplateSpecVolumeSecretItemOutput) Mode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecVolumeSecretItem) *int { return v.Mode }).(pulumi.IntPtrOutput)
 }
 
 // The relative path of the file to map the key to.
@@ -7032,8 +7068,9 @@ func (o GetServiceTemplateSpecVolumeArrayOutput) Index(i pulumi.IntInput) GetSer
 }
 
 type GetServiceTemplateSpecVolumeSecret struct {
-	Items      []GetServiceTemplateSpecVolumeSecretItem `pulumi:"items"`
-	SecretName string                                   `pulumi:"secretName"`
+	DefaultMode int                                      `pulumi:"defaultMode"`
+	Items       []GetServiceTemplateSpecVolumeSecretItem `pulumi:"items"`
+	SecretName  string                                   `pulumi:"secretName"`
 }
 
 // GetServiceTemplateSpecVolumeSecretInput is an input type that accepts GetServiceTemplateSpecVolumeSecretArgs and GetServiceTemplateSpecVolumeSecretOutput values.
@@ -7048,8 +7085,9 @@ type GetServiceTemplateSpecVolumeSecretInput interface {
 }
 
 type GetServiceTemplateSpecVolumeSecretArgs struct {
-	Items      GetServiceTemplateSpecVolumeSecretItemArrayInput `pulumi:"items"`
-	SecretName pulumi.StringInput                               `pulumi:"secretName"`
+	DefaultMode pulumi.IntInput                                  `pulumi:"defaultMode"`
+	Items       GetServiceTemplateSpecVolumeSecretItemArrayInput `pulumi:"items"`
+	SecretName  pulumi.StringInput                               `pulumi:"secretName"`
 }
 
 func (GetServiceTemplateSpecVolumeSecretArgs) ElementType() reflect.Type {
@@ -7103,6 +7141,10 @@ func (o GetServiceTemplateSpecVolumeSecretOutput) ToGetServiceTemplateSpecVolume
 	return o
 }
 
+func (o GetServiceTemplateSpecVolumeSecretOutput) DefaultMode() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecVolumeSecret) int { return v.DefaultMode }).(pulumi.IntOutput)
+}
+
 func (o GetServiceTemplateSpecVolumeSecretOutput) Items() GetServiceTemplateSpecVolumeSecretItemArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateSpecVolumeSecret) []GetServiceTemplateSpecVolumeSecretItem { return v.Items }).(GetServiceTemplateSpecVolumeSecretItemArrayOutput)
 }
@@ -7133,6 +7175,7 @@ func (o GetServiceTemplateSpecVolumeSecretArrayOutput) Index(i pulumi.IntInput) 
 
 type GetServiceTemplateSpecVolumeSecretItem struct {
 	Key  string `pulumi:"key"`
+	Mode int    `pulumi:"mode"`
 	Path string `pulumi:"path"`
 }
 
@@ -7149,6 +7192,7 @@ type GetServiceTemplateSpecVolumeSecretItemInput interface {
 
 type GetServiceTemplateSpecVolumeSecretItemArgs struct {
 	Key  pulumi.StringInput `pulumi:"key"`
+	Mode pulumi.IntInput    `pulumi:"mode"`
 	Path pulumi.StringInput `pulumi:"path"`
 }
 
@@ -7205,6 +7249,10 @@ func (o GetServiceTemplateSpecVolumeSecretItemOutput) ToGetServiceTemplateSpecVo
 
 func (o GetServiceTemplateSpecVolumeSecretItemOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateSpecVolumeSecretItem) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTemplateSpecVolumeSecretItemOutput) Mode() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecVolumeSecretItem) int { return v.Mode }).(pulumi.IntOutput)
 }
 
 func (o GetServiceTemplateSpecVolumeSecretItemOutput) Path() pulumi.StringOutput {

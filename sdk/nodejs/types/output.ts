@@ -5642,12 +5642,12 @@ export namespace cloudbuild {
          */
         owner?: string;
         /**
-         * filter to match changes in pull requests.  Specify only one of pullRequest or push.
+         * filter to match changes in pull requests. Specify only one of `pullRequest` or `push`.
          * Structure is documented below.
          */
         pullRequest?: outputs.cloudbuild.TriggerGithubPullRequest;
         /**
-         * filter to match changes in refs, like branches or tags.  Specify only one of pullRequest or push.
+         * filter to match changes in refs, like branches or tags. Specify only one of `pullRequest` or `push`.
          * Structure is documented below.
          */
         push?: outputs.cloudbuild.TriggerGithubPush;
@@ -6264,12 +6264,14 @@ export namespace cloudrun {
     }
 
     export interface GetServiceTemplateSpecVolumeSecret {
+        defaultMode: number;
         items: outputs.cloudrun.GetServiceTemplateSpecVolumeSecretItem[];
         secretName: string;
     }
 
     export interface GetServiceTemplateSpecVolumeSecretItem {
         key: string;
+        mode: number;
         path: string;
     }
 
@@ -6455,7 +6457,7 @@ export namespace cloudrun {
          * and determines what permissions the revision has. If not provided, the revision
          * will use the project's default service account.
          */
-        serviceAccountName?: string;
+        serviceAccountName: string;
         /**
          * -
          * ServingState holds a value describing the state the resources
@@ -6716,6 +6718,13 @@ export namespace cloudrun {
 
     export interface ServiceTemplateSpecVolumeSecret {
         /**
+         * Mode bits to use on created files by default. Must be a value between 0000
+         * and 0777. Defaults to 0644. Directories within the path are not affected by
+         * this setting. This might be in conflict with other options that affect the
+         * file mode, like fsGroup, and the result can be other mode bits set.
+         */
+        defaultMode?: number;
+        /**
          * If unspecified, the volume will expose a file whose name is the
          * secret_name.
          * If specified, the key will be used as the version to fetch from Cloud
@@ -6744,6 +6753,13 @@ export namespace cloudrun {
          * Can be 'latest' for the latest value or an integer for a specific version.
          */
         key: string;
+        /**
+         * Mode bits to use on this file, must be a value between 0000 and 0777. If
+         * not specified, the volume defaultMode will be used. This might be in
+         * conflict with other options that affect the file mode, like fsGroup, and
+         * the result can be other mode bits set.
+         */
+        mode?: number;
         /**
          * The relative path of the file to map the key to.
          * May not be an absolute path.
@@ -11642,6 +11658,44 @@ export namespace compute {
         seconds: number;
     }
 
+    export interface RegionBackendServiceConnectionTrackingPolicy {
+        /**
+         * Specifies connection persistence when backends are unhealthy.
+         * If set to `DEFAULT_FOR_PROTOCOL`, the existing connections persist on
+         * unhealthy backends only for connection-oriented protocols (TCP and SCTP)
+         * and only if the Tracking Mode is PER_CONNECTION (default tracking mode)
+         * or the Session Affinity is configured for 5-tuple. They do not persist
+         * for UDP.
+         * If set to `NEVER_PERSIST`, after a backend becomes unhealthy, the existing
+         * connections on the unhealthy backend are never persisted on the unhealthy
+         * backend. They are always diverted to newly selected healthy backends
+         * (unless all backends are unhealthy).
+         * If set to `ALWAYS_PERSIST`, existing connections always persist on
+         * unhealthy backends regardless of protocol and session affinity. It is
+         * generally not recommended to use this mode overriding the default.
+         * Default value is `DEFAULT_FOR_PROTOCOL`.
+         * Possible values are `DEFAULT_FOR_PROTOCOL`, `NEVER_PERSIST`, and `ALWAYS_PERSIST`.
+         */
+        connectionPersistenceOnUnhealthyBackends?: string;
+        /**
+         * Specifies how long to keep a Connection Tracking entry while there is
+         * no matching traffic (in seconds).
+         * For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours.
+         * For NLB the minimum(default) is 60 seconds and the maximum is 16 hours.
+         */
+        idleTimeoutSec: number;
+        /**
+         * Specifies the key used for connection tracking. There are two options:
+         * `PER_CONNECTION`: The Connection Tracking is performed as per the
+         * Connection Key (default Hash Method) for the specific protocol.
+         * `PER_SESSION`: The Connection Tracking is performed as per the
+         * configured Session Affinity. It matches the configured Session Affinity.
+         * Default value is `PER_CONNECTION`.
+         * Possible values are `PER_CONNECTION` and `PER_SESSION`.
+         */
+        trackingMode?: string;
+    }
+
     export interface RegionBackendServiceConsistentHash {
         /**
          * Hash is based on HTTP Cookie. This field describes a HTTP cookie
@@ -13713,6 +13767,30 @@ export namespace compute {
          * A reference to expected RegionBackendService resource the given URL should be mapped to.
          */
         service: string;
+    }
+
+    export interface ReservationShareSettings {
+        /**
+         * A map of project number and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
+         * Structure is documented below.
+         */
+        projectMaps?: outputs.compute.ReservationShareSettingsProjectMap[];
+        /**
+         * Type of sharing for this shared-reservation
+         * Possible values are `LOCAL` and `SPECIFIC_PROJECTS`.
+         */
+        shareType: string;
+    }
+
+    export interface ReservationShareSettingsProjectMap {
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        id: string;
+        /**
+         * The project id/number, should be same as the key of this project config in the project map.
+         */
+        projectId?: string;
     }
 
     export interface ReservationSpecificReservation {
@@ -17930,7 +18008,7 @@ export namespace container {
 
     export interface ClusterWorkloadIdentityConfig {
         /**
-         * The workload pool to attach all Kubernetes service accounts to. Currently, the only supported identity namespace is the project of the cluster.
+         * The workload pool to attach all Kubernetes service accounts to.
          */
         workloadPool?: string;
     }
@@ -18851,7 +18929,7 @@ export namespace dataloss {
         /**
          * Characters to not transform when masking.
          */
-        characterToSkip?: string;
+        charactersToSkip?: string;
         /**
          * Common characters to not transform when masking. Useful to avoid removing punctuation.
          * Possible values are `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, and `WHITESPACE`.
@@ -25670,6 +25748,50 @@ export namespace networkconnectivity {
         uri: string;
     }
 
+    export interface SpokeLinkedInterconnectAttachments {
+        /**
+         * A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
+         */
+        siteToSiteDataTransfer: boolean;
+        /**
+         * The URIs of linked VPN tunnel resources.
+         */
+        uris: string[];
+    }
+
+    export interface SpokeLinkedRouterApplianceInstances {
+        /**
+         * The list of router appliance instances
+         */
+        instances: outputs.networkconnectivity.SpokeLinkedRouterApplianceInstancesInstance[];
+        /**
+         * A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
+         */
+        siteToSiteDataTransfer: boolean;
+    }
+
+    export interface SpokeLinkedRouterApplianceInstancesInstance {
+        /**
+         * The IP address on the VM to use for peering.
+         */
+        ipAddress?: string;
+        /**
+         * The URI of the virtual machine resource
+         */
+        virtualMachine?: string;
+    }
+
+    export interface SpokeLinkedVpnTunnels {
+        /**
+         * A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
+         */
+        siteToSiteDataTransfer: boolean;
+        /**
+         * The URIs of linked VPN tunnel resources.
+         */
+        uris: string[];
+    }
+
 }
 
 export namespace networkmanagement {
@@ -27717,7 +27839,7 @@ export namespace osconfig {
          */
         exec?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExec;
         /**
-         * Required. A deb package.
+         * A remote or local source.
          */
         file?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceFile;
         /**
@@ -27736,7 +27858,7 @@ export namespace osconfig {
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourceExec {
         /**
-         * Required. What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate.
+         * What to run to bring this resource into the desired state. An exit code of 100 indicates "success", any other exit code indicates a failure running enforce.
          */
         enforce?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce;
         /**
@@ -27751,7 +27873,7 @@ export namespace osconfig {
          */
         args?: string[];
         /**
-         * Required. A deb package.
+         * A remote or local source.
          */
         file?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile;
         /**
@@ -27808,7 +27930,7 @@ export namespace osconfig {
          */
         sha256Checksum?: string;
         /**
-         * Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+         * Required. URI for this repository.
          */
         uri: string;
     }
@@ -27819,7 +27941,7 @@ export namespace osconfig {
          */
         args?: string[];
         /**
-         * Required. A deb package.
+         * A remote or local source.
          */
         file?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile;
         /**
@@ -27876,7 +27998,7 @@ export namespace osconfig {
          */
         sha256Checksum?: string;
         /**
-         * Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+         * Required. URI for this repository.
          */
         uri: string;
     }
@@ -27887,7 +28009,7 @@ export namespace osconfig {
          */
         content?: string;
         /**
-         * Required. A deb package.
+         * A remote or local source.
          */
         file?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile;
         /**
@@ -27945,7 +28067,7 @@ export namespace osconfig {
          */
         sha256Checksum?: string;
         /**
-         * Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+         * Required. URI for this repository.
          */
         uri: string;
     }
@@ -27998,7 +28120,7 @@ export namespace osconfig {
          */
         pullDeps?: boolean;
         /**
-         * Required. A deb package.
+         * Required. An rpm package.
          */
         source: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource;
     }
@@ -28043,7 +28165,7 @@ export namespace osconfig {
          */
         sha256Checksum?: string;
         /**
-         * Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+         * Required. URI for this repository.
          */
         uri: string;
     }
@@ -28061,7 +28183,7 @@ export namespace osconfig {
          */
         properties?: string[];
         /**
-         * Required. A deb package.
+         * Required. An rpm package.
          */
         source: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource;
     }
@@ -28106,7 +28228,7 @@ export namespace osconfig {
          */
         sha256Checksum?: string;
         /**
-         * Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+         * Required. URI for this repository.
          */
         uri: string;
     }
@@ -28117,7 +28239,7 @@ export namespace osconfig {
          */
         pullDeps?: boolean;
         /**
-         * Required. A deb package.
+         * Required. An rpm package.
          */
         source: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource;
     }
@@ -28162,7 +28284,7 @@ export namespace osconfig {
          */
         sha256Checksum?: string;
         /**
-         * Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+         * Required. URI for this repository.
          */
         uri: string;
     }
@@ -28218,7 +28340,7 @@ export namespace osconfig {
          */
         gpgKey?: string;
         /**
-         * Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+         * Required. URI for this repository.
          */
         uri: string;
     }

@@ -148,7 +148,7 @@ export class TransferJob extends pulumi.CustomResource {
     /**
      * Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
      */
-    public readonly schedule!: pulumi.Output<outputs.storage.TransferJobSchedule>;
+    public readonly schedule!: pulumi.Output<outputs.storage.TransferJobSchedule | undefined>;
     /**
      * Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
      */
@@ -184,9 +184,6 @@ export class TransferJob extends pulumi.CustomResource {
             const args = argsOrState as TransferJobArgs | undefined;
             if ((!args || args.description === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'description'");
-            }
-            if ((!args || args.schedule === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'schedule'");
             }
             if ((!args || args.transferSpec === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'transferSpec'");
@@ -267,7 +264,7 @@ export interface TransferJobArgs {
     /**
      * Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
      */
-    schedule: pulumi.Input<inputs.storage.TransferJobSchedule>;
+    schedule?: pulumi.Input<inputs.storage.TransferJobSchedule>;
     /**
      * Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
      */

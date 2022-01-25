@@ -20,6 +20,7 @@ class ReservationArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 share_settings: Optional[pulumi.Input['ReservationShareSettingsArgs']] = None,
                  specific_reservation_required: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Reservation resource.
@@ -36,6 +37,8 @@ class ReservationArgs:
                character, which cannot be a dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['ReservationShareSettingsArgs'] share_settings: The share setting for reservations.
+               Structure is documented below.
         :param pulumi.Input[bool] specific_reservation_required: When set to true, only VMs that target this reservation by name can
                consume this reservation. Otherwise, it can be consumed by VMs with
                affinity for any reservation. Defaults to false.
@@ -48,6 +51,8 @@ class ReservationArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if share_settings is not None:
+            pulumi.set(__self__, "share_settings", share_settings)
         if specific_reservation_required is not None:
             pulumi.set(__self__, "specific_reservation_required", specific_reservation_required)
 
@@ -120,6 +125,19 @@ class ReservationArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="shareSettings")
+    def share_settings(self) -> Optional[pulumi.Input['ReservationShareSettingsArgs']]:
+        """
+        The share setting for reservations.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "share_settings")
+
+    @share_settings.setter
+    def share_settings(self, value: Optional[pulumi.Input['ReservationShareSettingsArgs']]):
+        pulumi.set(self, "share_settings", value)
+
+    @property
     @pulumi.getter(name="specificReservationRequired")
     def specific_reservation_required(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -143,6 +161,7 @@ class _ReservationState:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
+                 share_settings: Optional[pulumi.Input['ReservationShareSettingsArgs']] = None,
                  specific_reservation: Optional[pulumi.Input['ReservationSpecificReservationArgs']] = None,
                  specific_reservation_required: Optional[pulumi.Input[bool]] = None,
                  status: Optional[pulumi.Input[str]] = None,
@@ -162,6 +181,8 @@ class _ReservationState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input['ReservationShareSettingsArgs'] share_settings: The share setting for reservations.
+               Structure is documented below.
         :param pulumi.Input['ReservationSpecificReservationArgs'] specific_reservation: Reservation for instances with specific machine shapes.
                Structure is documented below.
         :param pulumi.Input[bool] specific_reservation_required: When set to true, only VMs that target this reservation by name can
@@ -182,6 +203,8 @@ class _ReservationState:
             pulumi.set(__self__, "project", project)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
+        if share_settings is not None:
+            pulumi.set(__self__, "share_settings", share_settings)
         if specific_reservation is not None:
             pulumi.set(__self__, "specific_reservation", specific_reservation)
         if specific_reservation_required is not None:
@@ -271,6 +294,19 @@ class _ReservationState:
         pulumi.set(self, "self_link", value)
 
     @property
+    @pulumi.getter(name="shareSettings")
+    def share_settings(self) -> Optional[pulumi.Input['ReservationShareSettingsArgs']]:
+        """
+        The share setting for reservations.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "share_settings")
+
+    @share_settings.setter
+    def share_settings(self, value: Optional[pulumi.Input['ReservationShareSettingsArgs']]):
+        pulumi.set(self, "share_settings", value)
+
+    @property
     @pulumi.getter(name="specificReservation")
     def specific_reservation(self) -> Optional[pulumi.Input['ReservationSpecificReservationArgs']]:
         """
@@ -330,6 +366,7 @@ class Reservation(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 share_settings: Optional[pulumi.Input[pulumi.InputType['ReservationShareSettingsArgs']]] = None,
                  specific_reservation: Optional[pulumi.Input[pulumi.InputType['ReservationSpecificReservationArgs']]] = None,
                  specific_reservation_required: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -400,6 +437,8 @@ class Reservation(pulumi.CustomResource):
                character, which cannot be a dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[pulumi.InputType['ReservationShareSettingsArgs']] share_settings: The share setting for reservations.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ReservationSpecificReservationArgs']] specific_reservation: Reservation for instances with specific machine shapes.
                Structure is documented below.
         :param pulumi.Input[bool] specific_reservation_required: When set to true, only VMs that target this reservation by name can
@@ -485,6 +524,7 @@ class Reservation(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 share_settings: Optional[pulumi.Input[pulumi.InputType['ReservationShareSettingsArgs']]] = None,
                  specific_reservation: Optional[pulumi.Input[pulumi.InputType['ReservationSpecificReservationArgs']]] = None,
                  specific_reservation_required: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -503,6 +543,7 @@ class Reservation(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            __props__.__dict__["share_settings"] = share_settings
             if specific_reservation is None and not opts.urn:
                 raise TypeError("Missing required property 'specific_reservation'")
             __props__.__dict__["specific_reservation"] = specific_reservation
@@ -530,6 +571,7 @@ class Reservation(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
+            share_settings: Optional[pulumi.Input[pulumi.InputType['ReservationShareSettingsArgs']]] = None,
             specific_reservation: Optional[pulumi.Input[pulumi.InputType['ReservationSpecificReservationArgs']]] = None,
             specific_reservation_required: Optional[pulumi.Input[bool]] = None,
             status: Optional[pulumi.Input[str]] = None,
@@ -554,6 +596,8 @@ class Reservation(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[pulumi.InputType['ReservationShareSettingsArgs']] share_settings: The share setting for reservations.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ReservationSpecificReservationArgs']] specific_reservation: Reservation for instances with specific machine shapes.
                Structure is documented below.
         :param pulumi.Input[bool] specific_reservation_required: When set to true, only VMs that target this reservation by name can
@@ -572,6 +616,7 @@ class Reservation(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["share_settings"] = share_settings
         __props__.__dict__["specific_reservation"] = specific_reservation
         __props__.__dict__["specific_reservation_required"] = specific_reservation_required
         __props__.__dict__["status"] = status
@@ -632,6 +677,15 @@ class Reservation(pulumi.CustomResource):
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="shareSettings")
+    def share_settings(self) -> pulumi.Output['outputs.ReservationShareSettings']:
+        """
+        The share setting for reservations.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "share_settings")
 
     @property
     @pulumi.getter(name="specificReservation")

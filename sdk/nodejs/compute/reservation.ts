@@ -120,6 +120,11 @@ export class Reservation extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
+     * The share setting for reservations.
+     * Structure is documented below.
+     */
+    public readonly shareSettings!: pulumi.Output<outputs.compute.ReservationShareSettings>;
+    /**
      * Reservation for instances with specific machine shapes.
      * Structure is documented below.
      */
@@ -158,6 +163,7 @@ export class Reservation extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
+            inputs["shareSettings"] = state ? state.shareSettings : undefined;
             inputs["specificReservation"] = state ? state.specificReservation : undefined;
             inputs["specificReservationRequired"] = state ? state.specificReservationRequired : undefined;
             inputs["status"] = state ? state.status : undefined;
@@ -173,6 +179,7 @@ export class Reservation extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["shareSettings"] = args ? args.shareSettings : undefined;
             inputs["specificReservation"] = args ? args.specificReservation : undefined;
             inputs["specificReservationRequired"] = args ? args.specificReservationRequired : undefined;
             inputs["zone"] = args ? args.zone : undefined;
@@ -224,6 +231,11 @@ export interface ReservationState {
      */
     selfLink?: pulumi.Input<string>;
     /**
+     * The share setting for reservations.
+     * Structure is documented below.
+     */
+    shareSettings?: pulumi.Input<inputs.compute.ReservationShareSettings>;
+    /**
      * Reservation for instances with specific machine shapes.
      * Structure is documented below.
      */
@@ -267,6 +279,11 @@ export interface ReservationArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The share setting for reservations.
+     * Structure is documented below.
+     */
+    shareSettings?: pulumi.Input<inputs.compute.ReservationShareSettings>;
     /**
      * Reservation for instances with specific machine shapes.
      * Structure is documented below.

@@ -182,7 +182,8 @@ type StandardAppVersion struct {
 	// Desired runtime. Example python27.
 	Runtime pulumi.StringOutput `pulumi:"runtime"`
 	// The version of the API in the given runtime environment.
-	// Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
+	// Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/<language>/config/appref`\
+	// Substitute `<language>` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
 	RuntimeApiVersion pulumi.StringPtrOutput `pulumi:"runtimeApiVersion"`
 	// AppEngine service resource
 	Service pulumi.StringOutput `pulumi:"service"`
@@ -280,7 +281,8 @@ type standardAppVersionState struct {
 	// Desired runtime. Example python27.
 	Runtime *string `pulumi:"runtime"`
 	// The version of the API in the given runtime environment.
-	// Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
+	// Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/<language>/config/appref`\
+	// Substitute `<language>` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
 	RuntimeApiVersion *string `pulumi:"runtimeApiVersion"`
 	// AppEngine service resource
 	Service *string `pulumi:"service"`
@@ -338,7 +340,8 @@ type StandardAppVersionState struct {
 	// Desired runtime. Example python27.
 	Runtime pulumi.StringPtrInput
 	// The version of the API in the given runtime environment.
-	// Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
+	// Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/<language>/config/appref`\
+	// Substitute `<language>` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
 	RuntimeApiVersion pulumi.StringPtrInput
 	// AppEngine service resource
 	Service pulumi.StringPtrInput
@@ -398,7 +401,8 @@ type standardAppVersionArgs struct {
 	// Desired runtime. Example python27.
 	Runtime string `pulumi:"runtime"`
 	// The version of the API in the given runtime environment.
-	// Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
+	// Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/<language>/config/appref`\
+	// Substitute `<language>` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
 	RuntimeApiVersion *string `pulumi:"runtimeApiVersion"`
 	// AppEngine service resource
 	Service string `pulumi:"service"`
@@ -455,7 +459,8 @@ type StandardAppVersionArgs struct {
 	// Desired runtime. Example python27.
 	Runtime pulumi.StringInput
 	// The version of the API in the given runtime environment.
-	// Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
+	// Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/<language>/config/appref`\
+	// Substitute `<language>` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
 	RuntimeApiVersion pulumi.StringPtrInput
 	// AppEngine service resource
 	Service pulumi.StringInput

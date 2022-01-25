@@ -2948,10 +2948,10 @@ type TriggerGithub struct {
 	// Owner of the repository. For example: The owner for
 	// https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
 	Owner *string `pulumi:"owner"`
-	// filter to match changes in pull requests.  Specify only one of pullRequest or push.
+	// filter to match changes in pull requests. Specify only one of `pullRequest` or `push`.
 	// Structure is documented below.
 	PullRequest *TriggerGithubPullRequest `pulumi:"pullRequest"`
-	// filter to match changes in refs, like branches or tags.  Specify only one of pullRequest or push.
+	// filter to match changes in refs, like branches or tags. Specify only one of `pullRequest` or `push`.
 	// Structure is documented below.
 	Push *TriggerGithubPush `pulumi:"push"`
 }
@@ -2975,10 +2975,10 @@ type TriggerGithubArgs struct {
 	// Owner of the repository. For example: The owner for
 	// https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
 	Owner pulumi.StringPtrInput `pulumi:"owner"`
-	// filter to match changes in pull requests.  Specify only one of pullRequest or push.
+	// filter to match changes in pull requests. Specify only one of `pullRequest` or `push`.
 	// Structure is documented below.
 	PullRequest TriggerGithubPullRequestPtrInput `pulumi:"pullRequest"`
-	// filter to match changes in refs, like branches or tags.  Specify only one of pullRequest or push.
+	// filter to match changes in refs, like branches or tags. Specify only one of `pullRequest` or `push`.
 	// Structure is documented below.
 	Push TriggerGithubPushPtrInput `pulumi:"push"`
 }
@@ -3073,13 +3073,13 @@ func (o TriggerGithubOutput) Owner() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerGithub) *string { return v.Owner }).(pulumi.StringPtrOutput)
 }
 
-// filter to match changes in pull requests.  Specify only one of pullRequest or push.
+// filter to match changes in pull requests. Specify only one of `pullRequest` or `push`.
 // Structure is documented below.
 func (o TriggerGithubOutput) PullRequest() TriggerGithubPullRequestPtrOutput {
 	return o.ApplyT(func(v TriggerGithub) *TriggerGithubPullRequest { return v.PullRequest }).(TriggerGithubPullRequestPtrOutput)
 }
 
-// filter to match changes in refs, like branches or tags.  Specify only one of pullRequest or push.
+// filter to match changes in refs, like branches or tags. Specify only one of `pullRequest` or `push`.
 // Structure is documented below.
 func (o TriggerGithubOutput) Push() TriggerGithubPushPtrOutput {
 	return o.ApplyT(func(v TriggerGithub) *TriggerGithubPush { return v.Push }).(TriggerGithubPushPtrOutput)
@@ -3132,7 +3132,7 @@ func (o TriggerGithubPtrOutput) Owner() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// filter to match changes in pull requests.  Specify only one of pullRequest or push.
+// filter to match changes in pull requests. Specify only one of `pullRequest` or `push`.
 // Structure is documented below.
 func (o TriggerGithubPtrOutput) PullRequest() TriggerGithubPullRequestPtrOutput {
 	return o.ApplyT(func(v *TriggerGithub) *TriggerGithubPullRequest {
@@ -3143,7 +3143,7 @@ func (o TriggerGithubPtrOutput) PullRequest() TriggerGithubPullRequestPtrOutput 
 	}).(TriggerGithubPullRequestPtrOutput)
 }
 
-// filter to match changes in refs, like branches or tags.  Specify only one of pullRequest or push.
+// filter to match changes in refs, like branches or tags. Specify only one of `pullRequest` or `push`.
 // Structure is documented below.
 func (o TriggerGithubPtrOutput) Push() TriggerGithubPushPtrOutput {
 	return o.ApplyT(func(v *TriggerGithub) *TriggerGithubPush {

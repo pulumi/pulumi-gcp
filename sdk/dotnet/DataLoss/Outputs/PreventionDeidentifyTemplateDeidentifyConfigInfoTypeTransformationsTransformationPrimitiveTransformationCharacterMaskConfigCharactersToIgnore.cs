@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// <summary>
         /// Characters to not transform when masking.
         /// </summary>
-        public readonly string? CharacterToSkip;
+        public readonly string? CharactersToSkip;
         /// <summary>
         /// Common characters to not transform when masking. Useful to avoid removing punctuation.
         /// Possible values are `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, and `WHITESPACE`.
@@ -25,11 +25,11 @@ namespace Pulumi.Gcp.DataLoss.Outputs
 
         [OutputConstructor]
         private PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore(
-            string? characterToSkip,
+            string? charactersToSkip,
 
             string? commonCharactersToIgnore)
         {
-            CharacterToSkip = characterToSkip;
+            CharactersToSkip = charactersToSkip;
             CommonCharactersToIgnore = commonCharactersToIgnore;
         }
     }

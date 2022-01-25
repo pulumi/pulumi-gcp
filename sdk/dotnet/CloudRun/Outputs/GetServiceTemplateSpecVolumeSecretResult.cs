@@ -13,15 +13,19 @@ namespace Pulumi.Gcp.CloudRun.Outputs
     [OutputType]
     public sealed class GetServiceTemplateSpecVolumeSecretResult
     {
+        public readonly int DefaultMode;
         public readonly ImmutableArray<Outputs.GetServiceTemplateSpecVolumeSecretItemResult> Items;
         public readonly string SecretName;
 
         [OutputConstructor]
         private GetServiceTemplateSpecVolumeSecretResult(
+            int defaultMode,
+
             ImmutableArray<Outputs.GetServiceTemplateSpecVolumeSecretItemResult> items,
 
             string secretName)
         {
+            DefaultMode = defaultMode;
             Items = items;
             SecretName = secretName;
         }

@@ -325,6 +325,52 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// }
     /// ```
+    /// ### Region Backend Service Connection Tracking
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var healthCheck = new Gcp.Compute.RegionHealthCheck("healthCheck", new Gcp.Compute.RegionHealthCheckArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             TcpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckTcpHealthCheckArgs
+    ///             {
+    ///                 Port = 22,
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var @default = new Gcp.Compute.RegionBackendService("default", new Gcp.Compute.RegionBackendServiceArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             HealthChecks = 
+    ///             {
+    ///                 healthCheck.Id,
+    ///             },
+    ///             ConnectionDrainingTimeoutSec = 10,
+    ///             SessionAffinity = "CLIENT_IP",
+    ///             Protocol = "TCP",
+    ///             LoadBalancingScheme = "EXTERNAL",
+    ///             ConnectionTrackingPolicy = new Gcp.Compute.Inputs.RegionBackendServiceConnectionTrackingPolicyArgs
+    ///             {
+    ///                 TrackingMode = "PER_SESSION",
+    ///                 ConnectionPersistenceOnUnhealthyBackends = "NEVER_PERSIST",
+    ///                 IdleTimeoutSec = 60,
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -388,6 +434,15 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("connectionDrainingTimeoutSec")]
         public Output<int?> ConnectionDrainingTimeoutSec { get; private set; } = null!;
+
+        /// <summary>
+        /// Connection Tracking configuration for this BackendService.
+        /// This is available only for Layer 4 Internal Load Balancing and
+        /// Network Load Balancing.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("connectionTrackingPolicy")]
+        public Output<Outputs.RegionBackendServiceConnectionTrackingPolicy?> ConnectionTrackingPolicy { get; private set; } = null!;
 
         /// <summary>
         /// Consistent Hash-based load balancing can be used to provide soft session
@@ -665,6 +720,15 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? ConnectionDrainingTimeoutSec { get; set; }
 
         /// <summary>
+        /// Connection Tracking configuration for this BackendService.
+        /// This is available only for Layer 4 Internal Load Balancing and
+        /// Network Load Balancing.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("connectionTrackingPolicy")]
+        public Input<Inputs.RegionBackendServiceConnectionTrackingPolicyArgs>? ConnectionTrackingPolicy { get; set; }
+
+        /// <summary>
         /// Consistent Hash-based load balancing can be used to provide soft session
         /// affinity based on HTTP headers, cookies or other properties. This load balancing
         /// policy is applicable only for HTTP connections. The affinity to a particular
@@ -881,6 +945,15 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("connectionDrainingTimeoutSec")]
         public Input<int>? ConnectionDrainingTimeoutSec { get; set; }
+
+        /// <summary>
+        /// Connection Tracking configuration for this BackendService.
+        /// This is available only for Layer 4 Internal Load Balancing and
+        /// Network Load Balancing.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("connectionTrackingPolicy")]
+        public Input<Inputs.RegionBackendServiceConnectionTrackingPolicyGetArgs>? ConnectionTrackingPolicy { get; set; }
 
         /// <summary>
         /// Consistent Hash-based load balancing can be used to provide soft session

@@ -121,6 +121,13 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
+        /// The share setting for reservations.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("shareSettings")]
+        public Output<Outputs.ReservationShareSettings> ShareSettings { get; private set; } = null!;
+
+        /// <summary>
         /// Reservation for instances with specific machine shapes.
         /// Structure is documented below.
         /// </summary>
@@ -219,6 +226,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// The share setting for reservations.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("shareSettings")]
+        public Input<Inputs.ReservationShareSettingsArgs>? ShareSettings { get; set; }
+
+        /// <summary>
         /// Reservation for instances with specific machine shapes.
         /// Structure is documented below.
         /// </summary>
@@ -288,6 +302,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
+
+        /// <summary>
+        /// The share setting for reservations.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("shareSettings")]
+        public Input<Inputs.ReservationShareSettingsGetArgs>? ShareSettings { get; set; }
 
         /// <summary>
         /// Reservation for instances with specific machine shapes.

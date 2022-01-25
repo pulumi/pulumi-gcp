@@ -2370,7 +2370,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs:
         """
         :param pulumi.Input[str] id: Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
         :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs'] exec_: Exec resource
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs'] file: Required. A deb package.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs'] file: A remote or local source.
         :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs'] pkg: Package resource
         :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs'] repository: Package repository resource
         """
@@ -2412,7 +2412,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs:
     @pulumi.getter
     def file(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs']]:
         """
-        Required. A deb package.
+        A remote or local source.
         """
         return pulumi.get(self, "file")
 
@@ -2452,7 +2452,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs:
                  enforce: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs']] = None):
         """
         :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs'] validate: Required. What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate.
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs'] enforce: Required. What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs'] enforce: What to run to bring this resource into the desired state. An exit code of 100 indicates "success", any other exit code indicates a failure running enforce.
         """
         pulumi.set(__self__, "validate", validate)
         if enforce is not None:
@@ -2474,7 +2474,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs:
     @pulumi.getter
     def enforce(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs']]:
         """
-        Required. What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate.
+        What to run to bring this resource into the desired state. An exit code of 100 indicates "success", any other exit code indicates a failure running enforce.
         """
         return pulumi.get(self, "enforce")
 
@@ -2494,7 +2494,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs:
         """
         :param pulumi.Input[str] interpreter: Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Optional arguments to pass to the source during execution.
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs'] file: Required. A deb package.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs'] file: A remote or local source.
         :param pulumi.Input[str] output_file_path: Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
         :param pulumi.Input[str] script: An inline script. The size of the script is limited to 1024 characters.
         """
@@ -2536,7 +2536,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs:
     @pulumi.getter
     def file(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs']]:
         """
-        Required. A deb package.
+        A remote or local source.
         """
         return pulumi.get(self, "file")
 
@@ -2699,7 +2699,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs:
                  uri: pulumi.Input[str],
                  sha256_checksum: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] uri: Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+        :param pulumi.Input[str] uri: Required. URI for this repository.
         :param pulumi.Input[str] sha256_checksum: SHA256 checksum of the remote file.
         """
         pulumi.set(__self__, "uri", uri)
@@ -2710,7 +2710,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs:
     @pulumi.getter
     def uri(self) -> pulumi.Input[str]:
         """
-        Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+        Required. URI for this repository.
         """
         return pulumi.get(self, "uri")
 
@@ -2742,7 +2742,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs:
         """
         :param pulumi.Input[str] interpreter: Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Optional arguments to pass to the source during execution.
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs'] file: Required. A deb package.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs'] file: A remote or local source.
         :param pulumi.Input[str] output_file_path: Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
         :param pulumi.Input[str] script: An inline script. The size of the script is limited to 1024 characters.
         """
@@ -2784,7 +2784,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs:
     @pulumi.getter
     def file(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs']]:
         """
-        Required. A deb package.
+        A remote or local source.
         """
         return pulumi.get(self, "file")
 
@@ -2947,7 +2947,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs:
                  uri: pulumi.Input[str],
                  sha256_checksum: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] uri: Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+        :param pulumi.Input[str] uri: Required. URI for this repository.
         :param pulumi.Input[str] sha256_checksum: SHA256 checksum of the remote file.
         """
         pulumi.set(__self__, "uri", uri)
@@ -2958,7 +2958,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs:
     @pulumi.getter
     def uri(self) -> pulumi.Input[str]:
         """
-        Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+        Required. URI for this repository.
         """
         return pulumi.get(self, "uri")
 
@@ -2991,7 +2991,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs:
         :param pulumi.Input[str] path: Required. The absolute path of the file within the VM.
         :param pulumi.Input[str] state: Required. Desired state of the file. Possible values: OS_POLICY_COMPLIANCE_STATE_UNSPECIFIED, COMPLIANT, NON_COMPLIANT, UNKNOWN, NO_OS_POLICIES_APPLICABLE
         :param pulumi.Input[str] content: A a file with this content. The size of the content is limited to 1024 characters.
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs'] file: Required. A deb package.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs'] file: A remote or local source.
         :param pulumi.Input[str] permissions: -
                Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
         """
@@ -3044,7 +3044,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs:
     @pulumi.getter
     def file(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs']]:
         """
-        Required. A deb package.
+        A remote or local source.
         """
         return pulumi.get(self, "file")
 
@@ -3196,7 +3196,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs:
                  uri: pulumi.Input[str],
                  sha256_checksum: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] uri: Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+        :param pulumi.Input[str] uri: Required. URI for this repository.
         :param pulumi.Input[str] sha256_checksum: SHA256 checksum of the remote file.
         """
         pulumi.set(__self__, "uri", uri)
@@ -3207,7 +3207,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs:
     @pulumi.getter
     def uri(self) -> pulumi.Input[str]:
         """
-        Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+        Required. URI for this repository.
         """
         return pulumi.get(self, "uri")
 
@@ -3390,7 +3390,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs:
                  source: pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs'],
                  pull_deps: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs'] source: Required. A deb package.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs'] source: Required. An rpm package.
         :param pulumi.Input[bool] pull_deps: Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
         """
         pulumi.set(__self__, "source", source)
@@ -3401,7 +3401,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs:
     @pulumi.getter
     def source(self) -> pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs']:
         """
-        Required. A deb package.
+        Required. An rpm package.
         """
         return pulumi.get(self, "source")
 
@@ -3552,7 +3552,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs:
                  uri: pulumi.Input[str],
                  sha256_checksum: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] uri: Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+        :param pulumi.Input[str] uri: Required. URI for this repository.
         :param pulumi.Input[str] sha256_checksum: SHA256 checksum of the remote file.
         """
         pulumi.set(__self__, "uri", uri)
@@ -3563,7 +3563,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs:
     @pulumi.getter
     def uri(self) -> pulumi.Input[str]:
         """
-        Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+        Required. URI for this repository.
         """
         return pulumi.get(self, "uri")
 
@@ -3612,7 +3612,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs:
                  source: pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs'],
                  properties: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs'] source: Required. A deb package.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs'] source: Required. An rpm package.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] properties: Additional properties to use during installation. This should be in the format of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`.
         """
         pulumi.set(__self__, "source", source)
@@ -3623,7 +3623,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs:
     @pulumi.getter
     def source(self) -> pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs']:
         """
-        Required. A deb package.
+        Required. An rpm package.
         """
         return pulumi.get(self, "source")
 
@@ -3774,7 +3774,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs:
                  uri: pulumi.Input[str],
                  sha256_checksum: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] uri: Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+        :param pulumi.Input[str] uri: Required. URI for this repository.
         :param pulumi.Input[str] sha256_checksum: SHA256 checksum of the remote file.
         """
         pulumi.set(__self__, "uri", uri)
@@ -3785,7 +3785,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs:
     @pulumi.getter
     def uri(self) -> pulumi.Input[str]:
         """
-        Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+        Required. URI for this repository.
         """
         return pulumi.get(self, "uri")
 
@@ -3812,7 +3812,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs:
                  source: pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs'],
                  pull_deps: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs'] source: Required. A deb package.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs'] source: Required. An rpm package.
         :param pulumi.Input[bool] pull_deps: Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
         """
         pulumi.set(__self__, "source", source)
@@ -3823,7 +3823,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs:
     @pulumi.getter
     def source(self) -> pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs']:
         """
-        Required. A deb package.
+        Required. An rpm package.
         """
         return pulumi.get(self, "source")
 
@@ -3974,7 +3974,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs:
                  uri: pulumi.Input[str],
                  sha256_checksum: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] uri: Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+        :param pulumi.Input[str] uri: Required. URI for this repository.
         :param pulumi.Input[str] sha256_checksum: SHA256 checksum of the remote file.
         """
         pulumi.set(__self__, "uri", uri)
@@ -3985,7 +3985,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs:
     @pulumi.getter
     def uri(self) -> pulumi.Input[str]:
         """
-        Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+        Required. URI for this repository.
         """
         return pulumi.get(self, "uri")
 
@@ -4133,7 +4133,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs:
         :param pulumi.Input[str] archive_type: Required. Type of archive files in this repository. Possible values: ARCHIVE_TYPE_UNSPECIFIED, DEB, DEB_SRC
         :param pulumi.Input[Sequence[pulumi.Input[str]]] components: Required. List of components for this repository. Must contain at least one item.
         :param pulumi.Input[str] distribution: Required. Distribution of this repository.
-        :param pulumi.Input[str] uri: Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+        :param pulumi.Input[str] uri: Required. URI for this repository.
         :param pulumi.Input[str] gpg_key: URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
         """
         pulumi.set(__self__, "archive_type", archive_type)
@@ -4183,7 +4183,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs:
     @pulumi.getter
     def uri(self) -> pulumi.Input[str]:
         """
-        Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+        Required. URI for this repository.
         """
         return pulumi.get(self, "uri")
 

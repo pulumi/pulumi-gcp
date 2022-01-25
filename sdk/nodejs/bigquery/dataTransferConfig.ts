@@ -138,7 +138,9 @@ export class DataTransferConfig extends pulumi.CustomResource {
      */
     public readonly notificationPubsubTopic!: pulumi.Output<string | undefined>;
     /**
-     * These parameters are specific to each data source.
+     * Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
+     * section for each data source. For example the parameters for Cloud Storage transfers are listed here:
+     * https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
      */
     public readonly params!: pulumi.Output<{[key: string]: string}>;
     /**
@@ -292,7 +294,9 @@ export interface DataTransferConfigState {
      */
     notificationPubsubTopic?: pulumi.Input<string>;
     /**
-     * These parameters are specific to each data source.
+     * Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
+     * section for each data source. For example the parameters for Cloud Storage transfers are listed here:
+     * https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
      */
     params?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -379,7 +383,9 @@ export interface DataTransferConfigArgs {
      */
     notificationPubsubTopic?: pulumi.Input<string>;
     /**
-     * These parameters are specific to each data source.
+     * Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
+     * section for each data source. For example the parameters for Cloud Storage transfers are listed here:
+     * https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
      */
     params: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

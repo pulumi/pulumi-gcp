@@ -248,7 +248,8 @@ export class FlexibleAppVersion extends pulumi.CustomResource {
     public readonly runtime!: pulumi.Output<string>;
     /**
      * The version of the API in the given runtime environment.
-     * Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
+     * Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/<language>/config/appref`\
+     * Substitute `<language>` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
      */
     public readonly runtimeApiVersion!: pulumi.Output<string>;
     /**
@@ -485,7 +486,8 @@ export interface FlexibleAppVersionState {
     runtime?: pulumi.Input<string>;
     /**
      * The version of the API in the given runtime environment.
-     * Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
+     * Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/<language>/config/appref`\
+     * Substitute `<language>` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
      */
     runtimeApiVersion?: pulumi.Input<string>;
     /**
@@ -626,7 +628,8 @@ export interface FlexibleAppVersionArgs {
     runtime: pulumi.Input<string>;
     /**
      * The version of the API in the given runtime environment.
-     * Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
+     * Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/<language>/config/appref`\
+     * Substitute `<language>` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
      */
     runtimeApiVersion?: pulumi.Input<string>;
     /**

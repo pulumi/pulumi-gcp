@@ -225,7 +225,8 @@ type FlexibleAppVersion struct {
 	// Desired runtime. Example python27.
 	Runtime pulumi.StringOutput `pulumi:"runtime"`
 	// The version of the API in the given runtime environment.
-	// Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
+	// Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/<language>/config/appref`\
+	// Substitute `<language>` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
 	RuntimeApiVersion pulumi.StringOutput `pulumi:"runtimeApiVersion"`
 	// The channel of the runtime to use. Only available for some runtimes.
 	RuntimeChannel pulumi.StringPtrOutput `pulumi:"runtimeChannel"`
@@ -349,7 +350,8 @@ type flexibleAppVersionState struct {
 	// Desired runtime. Example python27.
 	Runtime *string `pulumi:"runtime"`
 	// The version of the API in the given runtime environment.
-	// Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
+	// Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/<language>/config/appref`\
+	// Substitute `<language>` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
 	RuntimeApiVersion *string `pulumi:"runtimeApiVersion"`
 	// The channel of the runtime to use. Only available for some runtimes.
 	RuntimeChannel *string `pulumi:"runtimeChannel"`
@@ -433,7 +435,8 @@ type FlexibleAppVersionState struct {
 	// Desired runtime. Example python27.
 	Runtime pulumi.StringPtrInput
 	// The version of the API in the given runtime environment.
-	// Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
+	// Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/<language>/config/appref`\
+	// Substitute `<language>` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
 	RuntimeApiVersion pulumi.StringPtrInput
 	// The channel of the runtime to use. Only available for some runtimes.
 	RuntimeChannel pulumi.StringPtrInput
@@ -519,7 +522,8 @@ type flexibleAppVersionArgs struct {
 	// Desired runtime. Example python27.
 	Runtime string `pulumi:"runtime"`
 	// The version of the API in the given runtime environment.
-	// Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
+	// Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/<language>/config/appref`\
+	// Substitute `<language>` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
 	RuntimeApiVersion *string `pulumi:"runtimeApiVersion"`
 	// The channel of the runtime to use. Only available for some runtimes.
 	RuntimeChannel *string `pulumi:"runtimeChannel"`
@@ -602,7 +606,8 @@ type FlexibleAppVersionArgs struct {
 	// Desired runtime. Example python27.
 	Runtime pulumi.StringInput
 	// The version of the API in the given runtime environment.
-	// Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
+	// Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/<language>/config/appref`\
+	// Substitute `<language>` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
 	RuntimeApiVersion pulumi.StringPtrInput
 	// The channel of the runtime to use. Only available for some runtimes.
 	RuntimeChannel pulumi.StringPtrInput

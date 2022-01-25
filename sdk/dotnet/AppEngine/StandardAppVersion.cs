@@ -243,7 +243,8 @@ namespace Pulumi.Gcp.AppEngine
 
         /// <summary>
         /// The version of the API in the given runtime environment.
-        /// Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
+        /// Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/&lt;language&gt;/config/appref`\
+        /// Substitute `&lt;language&gt;` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
         /// </summary>
         [Output("runtimeApiVersion")]
         public Output<string?> RuntimeApiVersion { get; private set; } = null!;
@@ -442,7 +443,8 @@ namespace Pulumi.Gcp.AppEngine
 
         /// <summary>
         /// The version of the API in the given runtime environment.
-        /// Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
+        /// Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/&lt;language&gt;/config/appref`\
+        /// Substitute `&lt;language&gt;` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
         /// </summary>
         [Input("runtimeApiVersion")]
         public Input<string>? RuntimeApiVersion { get; set; }
@@ -608,7 +610,8 @@ namespace Pulumi.Gcp.AppEngine
 
         /// <summary>
         /// The version of the API in the given runtime environment.
-        /// Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
+        /// Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/&lt;language&gt;/config/appref`\
+        /// Substitute `&lt;language&gt;` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
         /// </summary>
         [Input("runtimeApiVersion")]
         public Input<string>? RuntimeApiVersion { get; set; }

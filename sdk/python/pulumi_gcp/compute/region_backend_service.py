@@ -20,6 +20,7 @@ class RegionBackendServiceArgs:
                  cdn_policy: Optional[pulumi.Input['RegionBackendServiceCdnPolicyArgs']] = None,
                  circuit_breakers: Optional[pulumi.Input['RegionBackendServiceCircuitBreakersArgs']] = None,
                  connection_draining_timeout_sec: Optional[pulumi.Input[int]] = None,
+                 connection_tracking_policy: Optional[pulumi.Input['RegionBackendServiceConnectionTrackingPolicyArgs']] = None,
                  consistent_hash: Optional[pulumi.Input['RegionBackendServiceConsistentHashArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
@@ -55,6 +56,10 @@ class RegionBackendServiceArgs:
                Structure is documented below.
         :param pulumi.Input[int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
+        :param pulumi.Input['RegionBackendServiceConnectionTrackingPolicyArgs'] connection_tracking_policy: Connection Tracking configuration for this BackendService.
+               This is available only for Layer 4 Internal Load Balancing and
+               Network Load Balancing.
+               Structure is documented below.
         :param pulumi.Input['RegionBackendServiceConsistentHashArgs'] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session
                affinity based on HTTP headers, cookies or other properties. This load balancing
                policy is applicable only for HTTP connections. The affinity to a particular
@@ -141,6 +146,8 @@ class RegionBackendServiceArgs:
             pulumi.set(__self__, "circuit_breakers", circuit_breakers)
         if connection_draining_timeout_sec is not None:
             pulumi.set(__self__, "connection_draining_timeout_sec", connection_draining_timeout_sec)
+        if connection_tracking_policy is not None:
+            pulumi.set(__self__, "connection_tracking_policy", connection_tracking_policy)
         if consistent_hash is not None:
             pulumi.set(__self__, "consistent_hash", consistent_hash)
         if description is not None:
@@ -247,6 +254,21 @@ class RegionBackendServiceArgs:
     @connection_draining_timeout_sec.setter
     def connection_draining_timeout_sec(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "connection_draining_timeout_sec", value)
+
+    @property
+    @pulumi.getter(name="connectionTrackingPolicy")
+    def connection_tracking_policy(self) -> Optional[pulumi.Input['RegionBackendServiceConnectionTrackingPolicyArgs']]:
+        """
+        Connection Tracking configuration for this BackendService.
+        This is available only for Layer 4 Internal Load Balancing and
+        Network Load Balancing.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "connection_tracking_policy")
+
+    @connection_tracking_policy.setter
+    def connection_tracking_policy(self, value: Optional[pulumi.Input['RegionBackendServiceConnectionTrackingPolicyArgs']]):
+        pulumi.set(self, "connection_tracking_policy", value)
 
     @property
     @pulumi.getter(name="consistentHash")
@@ -530,6 +552,7 @@ class _RegionBackendServiceState:
                  cdn_policy: Optional[pulumi.Input['RegionBackendServiceCdnPolicyArgs']] = None,
                  circuit_breakers: Optional[pulumi.Input['RegionBackendServiceCircuitBreakersArgs']] = None,
                  connection_draining_timeout_sec: Optional[pulumi.Input[int]] = None,
+                 connection_tracking_policy: Optional[pulumi.Input['RegionBackendServiceConnectionTrackingPolicyArgs']] = None,
                  consistent_hash: Optional[pulumi.Input['RegionBackendServiceConsistentHashArgs']] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -568,6 +591,10 @@ class _RegionBackendServiceState:
                Structure is documented below.
         :param pulumi.Input[int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
+        :param pulumi.Input['RegionBackendServiceConnectionTrackingPolicyArgs'] connection_tracking_policy: Connection Tracking configuration for this BackendService.
+               This is available only for Layer 4 Internal Load Balancing and
+               Network Load Balancing.
+               Structure is documented below.
         :param pulumi.Input['RegionBackendServiceConsistentHashArgs'] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session
                affinity based on HTTP headers, cookies or other properties. This load balancing
                policy is applicable only for HTTP connections. The affinity to a particular
@@ -657,6 +684,8 @@ class _RegionBackendServiceState:
             pulumi.set(__self__, "circuit_breakers", circuit_breakers)
         if connection_draining_timeout_sec is not None:
             pulumi.set(__self__, "connection_draining_timeout_sec", connection_draining_timeout_sec)
+        if connection_tracking_policy is not None:
+            pulumi.set(__self__, "connection_tracking_policy", connection_tracking_policy)
         if consistent_hash is not None:
             pulumi.set(__self__, "consistent_hash", consistent_hash)
         if creation_timestamp is not None:
@@ -769,6 +798,21 @@ class _RegionBackendServiceState:
     @connection_draining_timeout_sec.setter
     def connection_draining_timeout_sec(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "connection_draining_timeout_sec", value)
+
+    @property
+    @pulumi.getter(name="connectionTrackingPolicy")
+    def connection_tracking_policy(self) -> Optional[pulumi.Input['RegionBackendServiceConnectionTrackingPolicyArgs']]:
+        """
+        Connection Tracking configuration for this BackendService.
+        This is available only for Layer 4 Internal Load Balancing and
+        Network Load Balancing.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "connection_tracking_policy")
+
+    @connection_tracking_policy.setter
+    def connection_tracking_policy(self, value: Optional[pulumi.Input['RegionBackendServiceConnectionTrackingPolicyArgs']]):
+        pulumi.set(self, "connection_tracking_policy", value)
 
     @property
     @pulumi.getter(name="consistentHash")
@@ -1090,6 +1134,7 @@ class RegionBackendService(pulumi.CustomResource):
                  cdn_policy: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceCdnPolicyArgs']]] = None,
                  circuit_breakers: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceCircuitBreakersArgs']]] = None,
                  connection_draining_timeout_sec: Optional[pulumi.Input[int]] = None,
+                 connection_tracking_policy: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceConnectionTrackingPolicyArgs']]] = None,
                  consistent_hash: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceConsistentHashArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
@@ -1291,6 +1336,32 @@ class RegionBackendService(pulumi.CustomResource):
             timeout_sec=10,
             health_checks=[default_region_health_check.id])
         ```
+        ### Region Backend Service Connection Tracking
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        health_check = gcp.compute.RegionHealthCheck("healthCheck",
+            region="us-central1",
+            tcp_health_check=gcp.compute.RegionHealthCheckTcpHealthCheckArgs(
+                port=22,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default = gcp.compute.RegionBackendService("default",
+            region="us-central1",
+            health_checks=[health_check.id],
+            connection_draining_timeout_sec=10,
+            session_affinity="CLIENT_IP",
+            protocol="TCP",
+            load_balancing_scheme="EXTERNAL",
+            connection_tracking_policy=gcp.compute.RegionBackendServiceConnectionTrackingPolicyArgs(
+                tracking_mode="PER_SESSION",
+                connection_persistence_on_unhealthy_backends="NEVER_PERSIST",
+                idle_timeout_sec=60,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -1329,6 +1400,10 @@ class RegionBackendService(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
+        :param pulumi.Input[pulumi.InputType['RegionBackendServiceConnectionTrackingPolicyArgs']] connection_tracking_policy: Connection Tracking configuration for this BackendService.
+               This is available only for Layer 4 Internal Load Balancing and
+               Network Load Balancing.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['RegionBackendServiceConsistentHashArgs']] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session
                affinity based on HTTP headers, cookies or other properties. This load balancing
                policy is applicable only for HTTP connections. The affinity to a particular
@@ -1593,6 +1668,32 @@ class RegionBackendService(pulumi.CustomResource):
             timeout_sec=10,
             health_checks=[default_region_health_check.id])
         ```
+        ### Region Backend Service Connection Tracking
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        health_check = gcp.compute.RegionHealthCheck("healthCheck",
+            region="us-central1",
+            tcp_health_check=gcp.compute.RegionHealthCheckTcpHealthCheckArgs(
+                port=22,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default = gcp.compute.RegionBackendService("default",
+            region="us-central1",
+            health_checks=[health_check.id],
+            connection_draining_timeout_sec=10,
+            session_affinity="CLIENT_IP",
+            protocol="TCP",
+            load_balancing_scheme="EXTERNAL",
+            connection_tracking_policy=gcp.compute.RegionBackendServiceConnectionTrackingPolicyArgs(
+                tracking_mode="PER_SESSION",
+                connection_persistence_on_unhealthy_backends="NEVER_PERSIST",
+                idle_timeout_sec=60,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -1634,6 +1735,7 @@ class RegionBackendService(pulumi.CustomResource):
                  cdn_policy: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceCdnPolicyArgs']]] = None,
                  circuit_breakers: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceCircuitBreakersArgs']]] = None,
                  connection_draining_timeout_sec: Optional[pulumi.Input[int]] = None,
+                 connection_tracking_policy: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceConnectionTrackingPolicyArgs']]] = None,
                  consistent_hash: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceConsistentHashArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
@@ -1669,6 +1771,7 @@ class RegionBackendService(pulumi.CustomResource):
             __props__.__dict__["cdn_policy"] = cdn_policy
             __props__.__dict__["circuit_breakers"] = circuit_breakers
             __props__.__dict__["connection_draining_timeout_sec"] = connection_draining_timeout_sec
+            __props__.__dict__["connection_tracking_policy"] = connection_tracking_policy
             __props__.__dict__["consistent_hash"] = consistent_hash
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_cdn"] = enable_cdn
@@ -1705,6 +1808,7 @@ class RegionBackendService(pulumi.CustomResource):
             cdn_policy: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceCdnPolicyArgs']]] = None,
             circuit_breakers: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceCircuitBreakersArgs']]] = None,
             connection_draining_timeout_sec: Optional[pulumi.Input[int]] = None,
+            connection_tracking_policy: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceConnectionTrackingPolicyArgs']]] = None,
             consistent_hash: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceConsistentHashArgs']]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -1748,6 +1852,10 @@ class RegionBackendService(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
+        :param pulumi.Input[pulumi.InputType['RegionBackendServiceConnectionTrackingPolicyArgs']] connection_tracking_policy: Connection Tracking configuration for this BackendService.
+               This is available only for Layer 4 Internal Load Balancing and
+               Network Load Balancing.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['RegionBackendServiceConsistentHashArgs']] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session
                affinity based on HTTP headers, cookies or other properties. This load balancing
                policy is applicable only for HTTP connections. The affinity to a particular
@@ -1836,6 +1944,7 @@ class RegionBackendService(pulumi.CustomResource):
         __props__.__dict__["cdn_policy"] = cdn_policy
         __props__.__dict__["circuit_breakers"] = circuit_breakers
         __props__.__dict__["connection_draining_timeout_sec"] = connection_draining_timeout_sec
+        __props__.__dict__["connection_tracking_policy"] = connection_tracking_policy
         __props__.__dict__["consistent_hash"] = consistent_hash
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
@@ -1908,6 +2017,17 @@ class RegionBackendService(pulumi.CustomResource):
         connections, but still work to finish started).
         """
         return pulumi.get(self, "connection_draining_timeout_sec")
+
+    @property
+    @pulumi.getter(name="connectionTrackingPolicy")
+    def connection_tracking_policy(self) -> pulumi.Output[Optional['outputs.RegionBackendServiceConnectionTrackingPolicy']]:
+        """
+        Connection Tracking configuration for this BackendService.
+        This is available only for Layer 4 Internal Load Balancing and
+        Network Load Balancing.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "connection_tracking_policy")
 
     @property
     @pulumi.getter(name="consistentHash")

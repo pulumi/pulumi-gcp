@@ -15,8 +15,8 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         /// <summary>
         /// Characters to not transform when masking.
         /// </summary>
-        [Input("characterToSkip")]
-        public Input<string>? CharacterToSkip { get; set; }
+        [Input("charactersToSkip")]
+        public Input<string>? CharactersToSkip { get; set; }
 
         /// <summary>
         /// Common characters to not transform when masking. Useful to avoid removing punctuation.
