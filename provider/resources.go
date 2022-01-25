@@ -1827,7 +1827,8 @@ func Provider() tfbridge.ProviderInfo {
 			"google_memcache_instance": {Tok: gcpResource(gcpMemcache, "Instance")},
 
 			// Network Connectivity
-			"google_network_connectivity_hub": {Tok: gcpResource(gcpNetworkConnectivity, "Hub")},
+			"google_network_connectivity_hub":   {Tok: gcpResource(gcpNetworkConnectivity, "Hub")},
+			"google_network_connectivity_spoke": {Tok: gcpResource(gcpNetworkConnectivity, "Spoke")},
 
 			// Network Management
 			"google_network_management_connectivity_test": {

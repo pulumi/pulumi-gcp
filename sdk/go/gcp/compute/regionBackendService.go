@@ -334,6 +334,49 @@ import (
 // 	})
 // }
 // ```
+// ### Region Backend Service Connection Tracking
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		healthCheck, err := compute.NewRegionHealthCheck(ctx, "healthCheck", &compute.RegionHealthCheckArgs{
+// 			Region: pulumi.String("us-central1"),
+// 			TcpHealthCheck: &compute.RegionHealthCheckTcpHealthCheckArgs{
+// 				Port: pulumi.Int(22),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewRegionBackendService(ctx, "_default", &compute.RegionBackendServiceArgs{
+// 			Region: pulumi.String("us-central1"),
+// 			HealthChecks: pulumi.String{
+// 				healthCheck.ID(),
+// 			},
+// 			ConnectionDrainingTimeoutSec: pulumi.Int(10),
+// 			SessionAffinity:              pulumi.String("CLIENT_IP"),
+// 			Protocol:                     pulumi.String("TCP"),
+// 			LoadBalancingScheme:          pulumi.String("EXTERNAL"),
+// 			ConnectionTrackingPolicy: &compute.RegionBackendServiceConnectionTrackingPolicyArgs{
+// 				TrackingMode:                             pulumi.String("PER_SESSION"),
+// 				ConnectionPersistenceOnUnhealthyBackends: pulumi.String("NEVER_PERSIST"),
+// 				IdleTimeoutSec:                           pulumi.Int(60),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //
@@ -377,6 +420,11 @@ type RegionBackendService struct {
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
 	ConnectionDrainingTimeoutSec pulumi.IntPtrOutput `pulumi:"connectionDrainingTimeoutSec"`
+	// Connection Tracking configuration for this BackendService.
+	// This is available only for Layer 4 Internal Load Balancing and
+	// Network Load Balancing.
+	// Structure is documented below.
+	ConnectionTrackingPolicy RegionBackendServiceConnectionTrackingPolicyPtrOutput `pulumi:"connectionTrackingPolicy"`
 	// Consistent Hash-based load balancing can be used to provide soft session
 	// affinity based on HTTP headers, cookies or other properties. This load balancing
 	// policy is applicable only for HTTP connections. The affinity to a particular
@@ -527,6 +575,11 @@ type regionBackendServiceState struct {
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
 	ConnectionDrainingTimeoutSec *int `pulumi:"connectionDrainingTimeoutSec"`
+	// Connection Tracking configuration for this BackendService.
+	// This is available only for Layer 4 Internal Load Balancing and
+	// Network Load Balancing.
+	// Structure is documented below.
+	ConnectionTrackingPolicy *RegionBackendServiceConnectionTrackingPolicy `pulumi:"connectionTrackingPolicy"`
 	// Consistent Hash-based load balancing can be used to provide soft session
 	// affinity based on HTTP headers, cookies or other properties. This load balancing
 	// policy is applicable only for HTTP connections. The affinity to a particular
@@ -649,6 +702,11 @@ type RegionBackendServiceState struct {
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
 	ConnectionDrainingTimeoutSec pulumi.IntPtrInput
+	// Connection Tracking configuration for this BackendService.
+	// This is available only for Layer 4 Internal Load Balancing and
+	// Network Load Balancing.
+	// Structure is documented below.
+	ConnectionTrackingPolicy RegionBackendServiceConnectionTrackingPolicyPtrInput
 	// Consistent Hash-based load balancing can be used to provide soft session
 	// affinity based on HTTP headers, cookies or other properties. This load balancing
 	// policy is applicable only for HTTP connections. The affinity to a particular
@@ -775,6 +833,11 @@ type regionBackendServiceArgs struct {
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
 	ConnectionDrainingTimeoutSec *int `pulumi:"connectionDrainingTimeoutSec"`
+	// Connection Tracking configuration for this BackendService.
+	// This is available only for Layer 4 Internal Load Balancing and
+	// Network Load Balancing.
+	// Structure is documented below.
+	ConnectionTrackingPolicy *RegionBackendServiceConnectionTrackingPolicy `pulumi:"connectionTrackingPolicy"`
 	// Consistent Hash-based load balancing can be used to provide soft session
 	// affinity based on HTTP headers, cookies or other properties. This load balancing
 	// policy is applicable only for HTTP connections. The affinity to a particular
@@ -892,6 +955,11 @@ type RegionBackendServiceArgs struct {
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
 	ConnectionDrainingTimeoutSec pulumi.IntPtrInput
+	// Connection Tracking configuration for this BackendService.
+	// This is available only for Layer 4 Internal Load Balancing and
+	// Network Load Balancing.
+	// Structure is documented below.
+	ConnectionTrackingPolicy RegionBackendServiceConnectionTrackingPolicyPtrInput
 	// Consistent Hash-based load balancing can be used to provide soft session
 	// affinity based on HTTP headers, cookies or other properties. This load balancing
 	// policy is applicable only for HTTP connections. The affinity to a particular

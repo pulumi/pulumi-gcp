@@ -528,6 +528,7 @@
         "monitoring/uptimeCheckConfig.ts",
         "networkconnectivity/hub.ts",
         "networkconnectivity/index.ts",
+        "networkconnectivity/spoke.ts",
         "networkmanagement/connectivityTest.ts",
         "networkmanagement/index.ts",
         "networkservices/edgeCacheKeyset.ts",

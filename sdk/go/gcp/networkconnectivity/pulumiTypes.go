@@ -104,9 +104,601 @@ func (o HubRoutingVpcArrayOutput) Index(i pulumi.IntInput) HubRoutingVpcOutput {
 	}).(HubRoutingVpcOutput)
 }
 
+type SpokeLinkedInterconnectAttachments struct {
+	// A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
+	SiteToSiteDataTransfer bool `pulumi:"siteToSiteDataTransfer"`
+	// The URIs of linked VPN tunnel resources.
+	Uris []string `pulumi:"uris"`
+}
+
+// SpokeLinkedInterconnectAttachmentsInput is an input type that accepts SpokeLinkedInterconnectAttachmentsArgs and SpokeLinkedInterconnectAttachmentsOutput values.
+// You can construct a concrete instance of `SpokeLinkedInterconnectAttachmentsInput` via:
+//
+//          SpokeLinkedInterconnectAttachmentsArgs{...}
+type SpokeLinkedInterconnectAttachmentsInput interface {
+	pulumi.Input
+
+	ToSpokeLinkedInterconnectAttachmentsOutput() SpokeLinkedInterconnectAttachmentsOutput
+	ToSpokeLinkedInterconnectAttachmentsOutputWithContext(context.Context) SpokeLinkedInterconnectAttachmentsOutput
+}
+
+type SpokeLinkedInterconnectAttachmentsArgs struct {
+	// A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
+	SiteToSiteDataTransfer pulumi.BoolInput `pulumi:"siteToSiteDataTransfer"`
+	// The URIs of linked VPN tunnel resources.
+	Uris pulumi.StringArrayInput `pulumi:"uris"`
+}
+
+func (SpokeLinkedInterconnectAttachmentsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpokeLinkedInterconnectAttachments)(nil)).Elem()
+}
+
+func (i SpokeLinkedInterconnectAttachmentsArgs) ToSpokeLinkedInterconnectAttachmentsOutput() SpokeLinkedInterconnectAttachmentsOutput {
+	return i.ToSpokeLinkedInterconnectAttachmentsOutputWithContext(context.Background())
+}
+
+func (i SpokeLinkedInterconnectAttachmentsArgs) ToSpokeLinkedInterconnectAttachmentsOutputWithContext(ctx context.Context) SpokeLinkedInterconnectAttachmentsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpokeLinkedInterconnectAttachmentsOutput)
+}
+
+func (i SpokeLinkedInterconnectAttachmentsArgs) ToSpokeLinkedInterconnectAttachmentsPtrOutput() SpokeLinkedInterconnectAttachmentsPtrOutput {
+	return i.ToSpokeLinkedInterconnectAttachmentsPtrOutputWithContext(context.Background())
+}
+
+func (i SpokeLinkedInterconnectAttachmentsArgs) ToSpokeLinkedInterconnectAttachmentsPtrOutputWithContext(ctx context.Context) SpokeLinkedInterconnectAttachmentsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpokeLinkedInterconnectAttachmentsOutput).ToSpokeLinkedInterconnectAttachmentsPtrOutputWithContext(ctx)
+}
+
+// SpokeLinkedInterconnectAttachmentsPtrInput is an input type that accepts SpokeLinkedInterconnectAttachmentsArgs, SpokeLinkedInterconnectAttachmentsPtr and SpokeLinkedInterconnectAttachmentsPtrOutput values.
+// You can construct a concrete instance of `SpokeLinkedInterconnectAttachmentsPtrInput` via:
+//
+//          SpokeLinkedInterconnectAttachmentsArgs{...}
+//
+//  or:
+//
+//          nil
+type SpokeLinkedInterconnectAttachmentsPtrInput interface {
+	pulumi.Input
+
+	ToSpokeLinkedInterconnectAttachmentsPtrOutput() SpokeLinkedInterconnectAttachmentsPtrOutput
+	ToSpokeLinkedInterconnectAttachmentsPtrOutputWithContext(context.Context) SpokeLinkedInterconnectAttachmentsPtrOutput
+}
+
+type spokeLinkedInterconnectAttachmentsPtrType SpokeLinkedInterconnectAttachmentsArgs
+
+func SpokeLinkedInterconnectAttachmentsPtr(v *SpokeLinkedInterconnectAttachmentsArgs) SpokeLinkedInterconnectAttachmentsPtrInput {
+	return (*spokeLinkedInterconnectAttachmentsPtrType)(v)
+}
+
+func (*spokeLinkedInterconnectAttachmentsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SpokeLinkedInterconnectAttachments)(nil)).Elem()
+}
+
+func (i *spokeLinkedInterconnectAttachmentsPtrType) ToSpokeLinkedInterconnectAttachmentsPtrOutput() SpokeLinkedInterconnectAttachmentsPtrOutput {
+	return i.ToSpokeLinkedInterconnectAttachmentsPtrOutputWithContext(context.Background())
+}
+
+func (i *spokeLinkedInterconnectAttachmentsPtrType) ToSpokeLinkedInterconnectAttachmentsPtrOutputWithContext(ctx context.Context) SpokeLinkedInterconnectAttachmentsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpokeLinkedInterconnectAttachmentsPtrOutput)
+}
+
+type SpokeLinkedInterconnectAttachmentsOutput struct{ *pulumi.OutputState }
+
+func (SpokeLinkedInterconnectAttachmentsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpokeLinkedInterconnectAttachments)(nil)).Elem()
+}
+
+func (o SpokeLinkedInterconnectAttachmentsOutput) ToSpokeLinkedInterconnectAttachmentsOutput() SpokeLinkedInterconnectAttachmentsOutput {
+	return o
+}
+
+func (o SpokeLinkedInterconnectAttachmentsOutput) ToSpokeLinkedInterconnectAttachmentsOutputWithContext(ctx context.Context) SpokeLinkedInterconnectAttachmentsOutput {
+	return o
+}
+
+func (o SpokeLinkedInterconnectAttachmentsOutput) ToSpokeLinkedInterconnectAttachmentsPtrOutput() SpokeLinkedInterconnectAttachmentsPtrOutput {
+	return o.ToSpokeLinkedInterconnectAttachmentsPtrOutputWithContext(context.Background())
+}
+
+func (o SpokeLinkedInterconnectAttachmentsOutput) ToSpokeLinkedInterconnectAttachmentsPtrOutputWithContext(ctx context.Context) SpokeLinkedInterconnectAttachmentsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SpokeLinkedInterconnectAttachments) *SpokeLinkedInterconnectAttachments {
+		return &v
+	}).(SpokeLinkedInterconnectAttachmentsPtrOutput)
+}
+
+// A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
+func (o SpokeLinkedInterconnectAttachmentsOutput) SiteToSiteDataTransfer() pulumi.BoolOutput {
+	return o.ApplyT(func(v SpokeLinkedInterconnectAttachments) bool { return v.SiteToSiteDataTransfer }).(pulumi.BoolOutput)
+}
+
+// The URIs of linked VPN tunnel resources.
+func (o SpokeLinkedInterconnectAttachmentsOutput) Uris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SpokeLinkedInterconnectAttachments) []string { return v.Uris }).(pulumi.StringArrayOutput)
+}
+
+type SpokeLinkedInterconnectAttachmentsPtrOutput struct{ *pulumi.OutputState }
+
+func (SpokeLinkedInterconnectAttachmentsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SpokeLinkedInterconnectAttachments)(nil)).Elem()
+}
+
+func (o SpokeLinkedInterconnectAttachmentsPtrOutput) ToSpokeLinkedInterconnectAttachmentsPtrOutput() SpokeLinkedInterconnectAttachmentsPtrOutput {
+	return o
+}
+
+func (o SpokeLinkedInterconnectAttachmentsPtrOutput) ToSpokeLinkedInterconnectAttachmentsPtrOutputWithContext(ctx context.Context) SpokeLinkedInterconnectAttachmentsPtrOutput {
+	return o
+}
+
+func (o SpokeLinkedInterconnectAttachmentsPtrOutput) Elem() SpokeLinkedInterconnectAttachmentsOutput {
+	return o.ApplyT(func(v *SpokeLinkedInterconnectAttachments) SpokeLinkedInterconnectAttachments {
+		if v != nil {
+			return *v
+		}
+		var ret SpokeLinkedInterconnectAttachments
+		return ret
+	}).(SpokeLinkedInterconnectAttachmentsOutput)
+}
+
+// A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
+func (o SpokeLinkedInterconnectAttachmentsPtrOutput) SiteToSiteDataTransfer() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SpokeLinkedInterconnectAttachments) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.SiteToSiteDataTransfer
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The URIs of linked VPN tunnel resources.
+func (o SpokeLinkedInterconnectAttachmentsPtrOutput) Uris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SpokeLinkedInterconnectAttachments) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Uris
+	}).(pulumi.StringArrayOutput)
+}
+
+type SpokeLinkedRouterApplianceInstances struct {
+	// The list of router appliance instances
+	Instances []SpokeLinkedRouterApplianceInstancesInstance `pulumi:"instances"`
+	// A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
+	SiteToSiteDataTransfer bool `pulumi:"siteToSiteDataTransfer"`
+}
+
+// SpokeLinkedRouterApplianceInstancesInput is an input type that accepts SpokeLinkedRouterApplianceInstancesArgs and SpokeLinkedRouterApplianceInstancesOutput values.
+// You can construct a concrete instance of `SpokeLinkedRouterApplianceInstancesInput` via:
+//
+//          SpokeLinkedRouterApplianceInstancesArgs{...}
+type SpokeLinkedRouterApplianceInstancesInput interface {
+	pulumi.Input
+
+	ToSpokeLinkedRouterApplianceInstancesOutput() SpokeLinkedRouterApplianceInstancesOutput
+	ToSpokeLinkedRouterApplianceInstancesOutputWithContext(context.Context) SpokeLinkedRouterApplianceInstancesOutput
+}
+
+type SpokeLinkedRouterApplianceInstancesArgs struct {
+	// The list of router appliance instances
+	Instances SpokeLinkedRouterApplianceInstancesInstanceArrayInput `pulumi:"instances"`
+	// A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
+	SiteToSiteDataTransfer pulumi.BoolInput `pulumi:"siteToSiteDataTransfer"`
+}
+
+func (SpokeLinkedRouterApplianceInstancesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpokeLinkedRouterApplianceInstances)(nil)).Elem()
+}
+
+func (i SpokeLinkedRouterApplianceInstancesArgs) ToSpokeLinkedRouterApplianceInstancesOutput() SpokeLinkedRouterApplianceInstancesOutput {
+	return i.ToSpokeLinkedRouterApplianceInstancesOutputWithContext(context.Background())
+}
+
+func (i SpokeLinkedRouterApplianceInstancesArgs) ToSpokeLinkedRouterApplianceInstancesOutputWithContext(ctx context.Context) SpokeLinkedRouterApplianceInstancesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpokeLinkedRouterApplianceInstancesOutput)
+}
+
+func (i SpokeLinkedRouterApplianceInstancesArgs) ToSpokeLinkedRouterApplianceInstancesPtrOutput() SpokeLinkedRouterApplianceInstancesPtrOutput {
+	return i.ToSpokeLinkedRouterApplianceInstancesPtrOutputWithContext(context.Background())
+}
+
+func (i SpokeLinkedRouterApplianceInstancesArgs) ToSpokeLinkedRouterApplianceInstancesPtrOutputWithContext(ctx context.Context) SpokeLinkedRouterApplianceInstancesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpokeLinkedRouterApplianceInstancesOutput).ToSpokeLinkedRouterApplianceInstancesPtrOutputWithContext(ctx)
+}
+
+// SpokeLinkedRouterApplianceInstancesPtrInput is an input type that accepts SpokeLinkedRouterApplianceInstancesArgs, SpokeLinkedRouterApplianceInstancesPtr and SpokeLinkedRouterApplianceInstancesPtrOutput values.
+// You can construct a concrete instance of `SpokeLinkedRouterApplianceInstancesPtrInput` via:
+//
+//          SpokeLinkedRouterApplianceInstancesArgs{...}
+//
+//  or:
+//
+//          nil
+type SpokeLinkedRouterApplianceInstancesPtrInput interface {
+	pulumi.Input
+
+	ToSpokeLinkedRouterApplianceInstancesPtrOutput() SpokeLinkedRouterApplianceInstancesPtrOutput
+	ToSpokeLinkedRouterApplianceInstancesPtrOutputWithContext(context.Context) SpokeLinkedRouterApplianceInstancesPtrOutput
+}
+
+type spokeLinkedRouterApplianceInstancesPtrType SpokeLinkedRouterApplianceInstancesArgs
+
+func SpokeLinkedRouterApplianceInstancesPtr(v *SpokeLinkedRouterApplianceInstancesArgs) SpokeLinkedRouterApplianceInstancesPtrInput {
+	return (*spokeLinkedRouterApplianceInstancesPtrType)(v)
+}
+
+func (*spokeLinkedRouterApplianceInstancesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SpokeLinkedRouterApplianceInstances)(nil)).Elem()
+}
+
+func (i *spokeLinkedRouterApplianceInstancesPtrType) ToSpokeLinkedRouterApplianceInstancesPtrOutput() SpokeLinkedRouterApplianceInstancesPtrOutput {
+	return i.ToSpokeLinkedRouterApplianceInstancesPtrOutputWithContext(context.Background())
+}
+
+func (i *spokeLinkedRouterApplianceInstancesPtrType) ToSpokeLinkedRouterApplianceInstancesPtrOutputWithContext(ctx context.Context) SpokeLinkedRouterApplianceInstancesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpokeLinkedRouterApplianceInstancesPtrOutput)
+}
+
+type SpokeLinkedRouterApplianceInstancesOutput struct{ *pulumi.OutputState }
+
+func (SpokeLinkedRouterApplianceInstancesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpokeLinkedRouterApplianceInstances)(nil)).Elem()
+}
+
+func (o SpokeLinkedRouterApplianceInstancesOutput) ToSpokeLinkedRouterApplianceInstancesOutput() SpokeLinkedRouterApplianceInstancesOutput {
+	return o
+}
+
+func (o SpokeLinkedRouterApplianceInstancesOutput) ToSpokeLinkedRouterApplianceInstancesOutputWithContext(ctx context.Context) SpokeLinkedRouterApplianceInstancesOutput {
+	return o
+}
+
+func (o SpokeLinkedRouterApplianceInstancesOutput) ToSpokeLinkedRouterApplianceInstancesPtrOutput() SpokeLinkedRouterApplianceInstancesPtrOutput {
+	return o.ToSpokeLinkedRouterApplianceInstancesPtrOutputWithContext(context.Background())
+}
+
+func (o SpokeLinkedRouterApplianceInstancesOutput) ToSpokeLinkedRouterApplianceInstancesPtrOutputWithContext(ctx context.Context) SpokeLinkedRouterApplianceInstancesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SpokeLinkedRouterApplianceInstances) *SpokeLinkedRouterApplianceInstances {
+		return &v
+	}).(SpokeLinkedRouterApplianceInstancesPtrOutput)
+}
+
+// The list of router appliance instances
+func (o SpokeLinkedRouterApplianceInstancesOutput) Instances() SpokeLinkedRouterApplianceInstancesInstanceArrayOutput {
+	return o.ApplyT(func(v SpokeLinkedRouterApplianceInstances) []SpokeLinkedRouterApplianceInstancesInstance {
+		return v.Instances
+	}).(SpokeLinkedRouterApplianceInstancesInstanceArrayOutput)
+}
+
+// A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
+func (o SpokeLinkedRouterApplianceInstancesOutput) SiteToSiteDataTransfer() pulumi.BoolOutput {
+	return o.ApplyT(func(v SpokeLinkedRouterApplianceInstances) bool { return v.SiteToSiteDataTransfer }).(pulumi.BoolOutput)
+}
+
+type SpokeLinkedRouterApplianceInstancesPtrOutput struct{ *pulumi.OutputState }
+
+func (SpokeLinkedRouterApplianceInstancesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SpokeLinkedRouterApplianceInstances)(nil)).Elem()
+}
+
+func (o SpokeLinkedRouterApplianceInstancesPtrOutput) ToSpokeLinkedRouterApplianceInstancesPtrOutput() SpokeLinkedRouterApplianceInstancesPtrOutput {
+	return o
+}
+
+func (o SpokeLinkedRouterApplianceInstancesPtrOutput) ToSpokeLinkedRouterApplianceInstancesPtrOutputWithContext(ctx context.Context) SpokeLinkedRouterApplianceInstancesPtrOutput {
+	return o
+}
+
+func (o SpokeLinkedRouterApplianceInstancesPtrOutput) Elem() SpokeLinkedRouterApplianceInstancesOutput {
+	return o.ApplyT(func(v *SpokeLinkedRouterApplianceInstances) SpokeLinkedRouterApplianceInstances {
+		if v != nil {
+			return *v
+		}
+		var ret SpokeLinkedRouterApplianceInstances
+		return ret
+	}).(SpokeLinkedRouterApplianceInstancesOutput)
+}
+
+// The list of router appliance instances
+func (o SpokeLinkedRouterApplianceInstancesPtrOutput) Instances() SpokeLinkedRouterApplianceInstancesInstanceArrayOutput {
+	return o.ApplyT(func(v *SpokeLinkedRouterApplianceInstances) []SpokeLinkedRouterApplianceInstancesInstance {
+		if v == nil {
+			return nil
+		}
+		return v.Instances
+	}).(SpokeLinkedRouterApplianceInstancesInstanceArrayOutput)
+}
+
+// A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
+func (o SpokeLinkedRouterApplianceInstancesPtrOutput) SiteToSiteDataTransfer() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SpokeLinkedRouterApplianceInstances) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.SiteToSiteDataTransfer
+	}).(pulumi.BoolPtrOutput)
+}
+
+type SpokeLinkedRouterApplianceInstancesInstance struct {
+	// The IP address on the VM to use for peering.
+	IpAddress *string `pulumi:"ipAddress"`
+	// The URI of the virtual machine resource
+	VirtualMachine *string `pulumi:"virtualMachine"`
+}
+
+// SpokeLinkedRouterApplianceInstancesInstanceInput is an input type that accepts SpokeLinkedRouterApplianceInstancesInstanceArgs and SpokeLinkedRouterApplianceInstancesInstanceOutput values.
+// You can construct a concrete instance of `SpokeLinkedRouterApplianceInstancesInstanceInput` via:
+//
+//          SpokeLinkedRouterApplianceInstancesInstanceArgs{...}
+type SpokeLinkedRouterApplianceInstancesInstanceInput interface {
+	pulumi.Input
+
+	ToSpokeLinkedRouterApplianceInstancesInstanceOutput() SpokeLinkedRouterApplianceInstancesInstanceOutput
+	ToSpokeLinkedRouterApplianceInstancesInstanceOutputWithContext(context.Context) SpokeLinkedRouterApplianceInstancesInstanceOutput
+}
+
+type SpokeLinkedRouterApplianceInstancesInstanceArgs struct {
+	// The IP address on the VM to use for peering.
+	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	// The URI of the virtual machine resource
+	VirtualMachine pulumi.StringPtrInput `pulumi:"virtualMachine"`
+}
+
+func (SpokeLinkedRouterApplianceInstancesInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpokeLinkedRouterApplianceInstancesInstance)(nil)).Elem()
+}
+
+func (i SpokeLinkedRouterApplianceInstancesInstanceArgs) ToSpokeLinkedRouterApplianceInstancesInstanceOutput() SpokeLinkedRouterApplianceInstancesInstanceOutput {
+	return i.ToSpokeLinkedRouterApplianceInstancesInstanceOutputWithContext(context.Background())
+}
+
+func (i SpokeLinkedRouterApplianceInstancesInstanceArgs) ToSpokeLinkedRouterApplianceInstancesInstanceOutputWithContext(ctx context.Context) SpokeLinkedRouterApplianceInstancesInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpokeLinkedRouterApplianceInstancesInstanceOutput)
+}
+
+// SpokeLinkedRouterApplianceInstancesInstanceArrayInput is an input type that accepts SpokeLinkedRouterApplianceInstancesInstanceArray and SpokeLinkedRouterApplianceInstancesInstanceArrayOutput values.
+// You can construct a concrete instance of `SpokeLinkedRouterApplianceInstancesInstanceArrayInput` via:
+//
+//          SpokeLinkedRouterApplianceInstancesInstanceArray{ SpokeLinkedRouterApplianceInstancesInstanceArgs{...} }
+type SpokeLinkedRouterApplianceInstancesInstanceArrayInput interface {
+	pulumi.Input
+
+	ToSpokeLinkedRouterApplianceInstancesInstanceArrayOutput() SpokeLinkedRouterApplianceInstancesInstanceArrayOutput
+	ToSpokeLinkedRouterApplianceInstancesInstanceArrayOutputWithContext(context.Context) SpokeLinkedRouterApplianceInstancesInstanceArrayOutput
+}
+
+type SpokeLinkedRouterApplianceInstancesInstanceArray []SpokeLinkedRouterApplianceInstancesInstanceInput
+
+func (SpokeLinkedRouterApplianceInstancesInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SpokeLinkedRouterApplianceInstancesInstance)(nil)).Elem()
+}
+
+func (i SpokeLinkedRouterApplianceInstancesInstanceArray) ToSpokeLinkedRouterApplianceInstancesInstanceArrayOutput() SpokeLinkedRouterApplianceInstancesInstanceArrayOutput {
+	return i.ToSpokeLinkedRouterApplianceInstancesInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i SpokeLinkedRouterApplianceInstancesInstanceArray) ToSpokeLinkedRouterApplianceInstancesInstanceArrayOutputWithContext(ctx context.Context) SpokeLinkedRouterApplianceInstancesInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpokeLinkedRouterApplianceInstancesInstanceArrayOutput)
+}
+
+type SpokeLinkedRouterApplianceInstancesInstanceOutput struct{ *pulumi.OutputState }
+
+func (SpokeLinkedRouterApplianceInstancesInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpokeLinkedRouterApplianceInstancesInstance)(nil)).Elem()
+}
+
+func (o SpokeLinkedRouterApplianceInstancesInstanceOutput) ToSpokeLinkedRouterApplianceInstancesInstanceOutput() SpokeLinkedRouterApplianceInstancesInstanceOutput {
+	return o
+}
+
+func (o SpokeLinkedRouterApplianceInstancesInstanceOutput) ToSpokeLinkedRouterApplianceInstancesInstanceOutputWithContext(ctx context.Context) SpokeLinkedRouterApplianceInstancesInstanceOutput {
+	return o
+}
+
+// The IP address on the VM to use for peering.
+func (o SpokeLinkedRouterApplianceInstancesInstanceOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SpokeLinkedRouterApplianceInstancesInstance) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+}
+
+// The URI of the virtual machine resource
+func (o SpokeLinkedRouterApplianceInstancesInstanceOutput) VirtualMachine() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SpokeLinkedRouterApplianceInstancesInstance) *string { return v.VirtualMachine }).(pulumi.StringPtrOutput)
+}
+
+type SpokeLinkedRouterApplianceInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (SpokeLinkedRouterApplianceInstancesInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SpokeLinkedRouterApplianceInstancesInstance)(nil)).Elem()
+}
+
+func (o SpokeLinkedRouterApplianceInstancesInstanceArrayOutput) ToSpokeLinkedRouterApplianceInstancesInstanceArrayOutput() SpokeLinkedRouterApplianceInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o SpokeLinkedRouterApplianceInstancesInstanceArrayOutput) ToSpokeLinkedRouterApplianceInstancesInstanceArrayOutputWithContext(ctx context.Context) SpokeLinkedRouterApplianceInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o SpokeLinkedRouterApplianceInstancesInstanceArrayOutput) Index(i pulumi.IntInput) SpokeLinkedRouterApplianceInstancesInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SpokeLinkedRouterApplianceInstancesInstance {
+		return vs[0].([]SpokeLinkedRouterApplianceInstancesInstance)[vs[1].(int)]
+	}).(SpokeLinkedRouterApplianceInstancesInstanceOutput)
+}
+
+type SpokeLinkedVpnTunnels struct {
+	// A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
+	SiteToSiteDataTransfer bool `pulumi:"siteToSiteDataTransfer"`
+	// The URIs of linked VPN tunnel resources.
+	Uris []string `pulumi:"uris"`
+}
+
+// SpokeLinkedVpnTunnelsInput is an input type that accepts SpokeLinkedVpnTunnelsArgs and SpokeLinkedVpnTunnelsOutput values.
+// You can construct a concrete instance of `SpokeLinkedVpnTunnelsInput` via:
+//
+//          SpokeLinkedVpnTunnelsArgs{...}
+type SpokeLinkedVpnTunnelsInput interface {
+	pulumi.Input
+
+	ToSpokeLinkedVpnTunnelsOutput() SpokeLinkedVpnTunnelsOutput
+	ToSpokeLinkedVpnTunnelsOutputWithContext(context.Context) SpokeLinkedVpnTunnelsOutput
+}
+
+type SpokeLinkedVpnTunnelsArgs struct {
+	// A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
+	SiteToSiteDataTransfer pulumi.BoolInput `pulumi:"siteToSiteDataTransfer"`
+	// The URIs of linked VPN tunnel resources.
+	Uris pulumi.StringArrayInput `pulumi:"uris"`
+}
+
+func (SpokeLinkedVpnTunnelsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpokeLinkedVpnTunnels)(nil)).Elem()
+}
+
+func (i SpokeLinkedVpnTunnelsArgs) ToSpokeLinkedVpnTunnelsOutput() SpokeLinkedVpnTunnelsOutput {
+	return i.ToSpokeLinkedVpnTunnelsOutputWithContext(context.Background())
+}
+
+func (i SpokeLinkedVpnTunnelsArgs) ToSpokeLinkedVpnTunnelsOutputWithContext(ctx context.Context) SpokeLinkedVpnTunnelsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpokeLinkedVpnTunnelsOutput)
+}
+
+func (i SpokeLinkedVpnTunnelsArgs) ToSpokeLinkedVpnTunnelsPtrOutput() SpokeLinkedVpnTunnelsPtrOutput {
+	return i.ToSpokeLinkedVpnTunnelsPtrOutputWithContext(context.Background())
+}
+
+func (i SpokeLinkedVpnTunnelsArgs) ToSpokeLinkedVpnTunnelsPtrOutputWithContext(ctx context.Context) SpokeLinkedVpnTunnelsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpokeLinkedVpnTunnelsOutput).ToSpokeLinkedVpnTunnelsPtrOutputWithContext(ctx)
+}
+
+// SpokeLinkedVpnTunnelsPtrInput is an input type that accepts SpokeLinkedVpnTunnelsArgs, SpokeLinkedVpnTunnelsPtr and SpokeLinkedVpnTunnelsPtrOutput values.
+// You can construct a concrete instance of `SpokeLinkedVpnTunnelsPtrInput` via:
+//
+//          SpokeLinkedVpnTunnelsArgs{...}
+//
+//  or:
+//
+//          nil
+type SpokeLinkedVpnTunnelsPtrInput interface {
+	pulumi.Input
+
+	ToSpokeLinkedVpnTunnelsPtrOutput() SpokeLinkedVpnTunnelsPtrOutput
+	ToSpokeLinkedVpnTunnelsPtrOutputWithContext(context.Context) SpokeLinkedVpnTunnelsPtrOutput
+}
+
+type spokeLinkedVpnTunnelsPtrType SpokeLinkedVpnTunnelsArgs
+
+func SpokeLinkedVpnTunnelsPtr(v *SpokeLinkedVpnTunnelsArgs) SpokeLinkedVpnTunnelsPtrInput {
+	return (*spokeLinkedVpnTunnelsPtrType)(v)
+}
+
+func (*spokeLinkedVpnTunnelsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SpokeLinkedVpnTunnels)(nil)).Elem()
+}
+
+func (i *spokeLinkedVpnTunnelsPtrType) ToSpokeLinkedVpnTunnelsPtrOutput() SpokeLinkedVpnTunnelsPtrOutput {
+	return i.ToSpokeLinkedVpnTunnelsPtrOutputWithContext(context.Background())
+}
+
+func (i *spokeLinkedVpnTunnelsPtrType) ToSpokeLinkedVpnTunnelsPtrOutputWithContext(ctx context.Context) SpokeLinkedVpnTunnelsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpokeLinkedVpnTunnelsPtrOutput)
+}
+
+type SpokeLinkedVpnTunnelsOutput struct{ *pulumi.OutputState }
+
+func (SpokeLinkedVpnTunnelsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpokeLinkedVpnTunnels)(nil)).Elem()
+}
+
+func (o SpokeLinkedVpnTunnelsOutput) ToSpokeLinkedVpnTunnelsOutput() SpokeLinkedVpnTunnelsOutput {
+	return o
+}
+
+func (o SpokeLinkedVpnTunnelsOutput) ToSpokeLinkedVpnTunnelsOutputWithContext(ctx context.Context) SpokeLinkedVpnTunnelsOutput {
+	return o
+}
+
+func (o SpokeLinkedVpnTunnelsOutput) ToSpokeLinkedVpnTunnelsPtrOutput() SpokeLinkedVpnTunnelsPtrOutput {
+	return o.ToSpokeLinkedVpnTunnelsPtrOutputWithContext(context.Background())
+}
+
+func (o SpokeLinkedVpnTunnelsOutput) ToSpokeLinkedVpnTunnelsPtrOutputWithContext(ctx context.Context) SpokeLinkedVpnTunnelsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SpokeLinkedVpnTunnels) *SpokeLinkedVpnTunnels {
+		return &v
+	}).(SpokeLinkedVpnTunnelsPtrOutput)
+}
+
+// A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
+func (o SpokeLinkedVpnTunnelsOutput) SiteToSiteDataTransfer() pulumi.BoolOutput {
+	return o.ApplyT(func(v SpokeLinkedVpnTunnels) bool { return v.SiteToSiteDataTransfer }).(pulumi.BoolOutput)
+}
+
+// The URIs of linked VPN tunnel resources.
+func (o SpokeLinkedVpnTunnelsOutput) Uris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SpokeLinkedVpnTunnels) []string { return v.Uris }).(pulumi.StringArrayOutput)
+}
+
+type SpokeLinkedVpnTunnelsPtrOutput struct{ *pulumi.OutputState }
+
+func (SpokeLinkedVpnTunnelsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SpokeLinkedVpnTunnels)(nil)).Elem()
+}
+
+func (o SpokeLinkedVpnTunnelsPtrOutput) ToSpokeLinkedVpnTunnelsPtrOutput() SpokeLinkedVpnTunnelsPtrOutput {
+	return o
+}
+
+func (o SpokeLinkedVpnTunnelsPtrOutput) ToSpokeLinkedVpnTunnelsPtrOutputWithContext(ctx context.Context) SpokeLinkedVpnTunnelsPtrOutput {
+	return o
+}
+
+func (o SpokeLinkedVpnTunnelsPtrOutput) Elem() SpokeLinkedVpnTunnelsOutput {
+	return o.ApplyT(func(v *SpokeLinkedVpnTunnels) SpokeLinkedVpnTunnels {
+		if v != nil {
+			return *v
+		}
+		var ret SpokeLinkedVpnTunnels
+		return ret
+	}).(SpokeLinkedVpnTunnelsOutput)
+}
+
+// A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
+func (o SpokeLinkedVpnTunnelsPtrOutput) SiteToSiteDataTransfer() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SpokeLinkedVpnTunnels) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.SiteToSiteDataTransfer
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The URIs of linked VPN tunnel resources.
+func (o SpokeLinkedVpnTunnelsPtrOutput) Uris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SpokeLinkedVpnTunnels) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Uris
+	}).(pulumi.StringArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HubRoutingVpcInput)(nil)).Elem(), HubRoutingVpcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HubRoutingVpcArrayInput)(nil)).Elem(), HubRoutingVpcArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedInterconnectAttachmentsInput)(nil)).Elem(), SpokeLinkedInterconnectAttachmentsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedInterconnectAttachmentsPtrInput)(nil)).Elem(), SpokeLinkedInterconnectAttachmentsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedRouterApplianceInstancesInput)(nil)).Elem(), SpokeLinkedRouterApplianceInstancesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedRouterApplianceInstancesPtrInput)(nil)).Elem(), SpokeLinkedRouterApplianceInstancesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedRouterApplianceInstancesInstanceInput)(nil)).Elem(), SpokeLinkedRouterApplianceInstancesInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedRouterApplianceInstancesInstanceArrayInput)(nil)).Elem(), SpokeLinkedRouterApplianceInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedVpnTunnelsInput)(nil)).Elem(), SpokeLinkedVpnTunnelsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedVpnTunnelsPtrInput)(nil)).Elem(), SpokeLinkedVpnTunnelsArgs{})
 	pulumi.RegisterOutputType(HubRoutingVpcOutput{})
 	pulumi.RegisterOutputType(HubRoutingVpcArrayOutput{})
+	pulumi.RegisterOutputType(SpokeLinkedInterconnectAttachmentsOutput{})
+	pulumi.RegisterOutputType(SpokeLinkedInterconnectAttachmentsPtrOutput{})
+	pulumi.RegisterOutputType(SpokeLinkedRouterApplianceInstancesOutput{})
+	pulumi.RegisterOutputType(SpokeLinkedRouterApplianceInstancesPtrOutput{})
+	pulumi.RegisterOutputType(SpokeLinkedRouterApplianceInstancesInstanceOutput{})
+	pulumi.RegisterOutputType(SpokeLinkedRouterApplianceInstancesInstanceArrayOutput{})
+	pulumi.RegisterOutputType(SpokeLinkedVpnTunnelsOutput{})
+	pulumi.RegisterOutputType(SpokeLinkedVpnTunnelsPtrOutput{})
 }

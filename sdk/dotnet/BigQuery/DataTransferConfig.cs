@@ -154,7 +154,9 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string?> NotificationPubsubTopic { get; private set; } = null!;
 
         /// <summary>
-        /// These parameters are specific to each data source.
+        /// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
+        /// section for each data source. For example the parameters for Cloud Storage transfers are listed here:
+        /// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
         /// </summary>
         [Output("params")]
         public Output<ImmutableDictionary<string, string>> Params { get; private set; } = null!;
@@ -312,7 +314,9 @@ namespace Pulumi.Gcp.BigQuery
         private InputMap<string>? _params;
 
         /// <summary>
-        /// These parameters are specific to each data source.
+        /// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
+        /// section for each data source. For example the parameters for Cloud Storage transfers are listed here:
+        /// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
         /// </summary>
         public InputMap<string> Params
         {
@@ -442,7 +446,9 @@ namespace Pulumi.Gcp.BigQuery
         private InputMap<string>? _params;
 
         /// <summary>
-        /// These parameters are specific to each data source.
+        /// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
+        /// section for each data source. For example the parameters for Cloud Storage transfers are listed here:
+        /// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
         /// </summary>
         public InputMap<string> Params
         {

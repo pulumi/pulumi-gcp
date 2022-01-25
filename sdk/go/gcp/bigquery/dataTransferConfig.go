@@ -123,7 +123,9 @@ type DataTransferConfig struct {
 	// Pub/Sub topic where notifications will be sent after transfer runs
 	// associated with this transfer config finish.
 	NotificationPubsubTopic pulumi.StringPtrOutput `pulumi:"notificationPubsubTopic"`
-	// These parameters are specific to each data source.
+	// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
+	// section for each data source. For example the parameters for Cloud Storage transfers are listed here:
+	// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
 	Params pulumi.StringMapOutput `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -220,7 +222,9 @@ type dataTransferConfigState struct {
 	// Pub/Sub topic where notifications will be sent after transfer runs
 	// associated with this transfer config finish.
 	NotificationPubsubTopic *string `pulumi:"notificationPubsubTopic"`
-	// These parameters are specific to each data source.
+	// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
+	// section for each data source. For example the parameters for Cloud Storage transfers are listed here:
+	// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
 	Params map[string]string `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -280,7 +284,9 @@ type DataTransferConfigState struct {
 	// Pub/Sub topic where notifications will be sent after transfer runs
 	// associated with this transfer config finish.
 	NotificationPubsubTopic pulumi.StringPtrInput
-	// These parameters are specific to each data source.
+	// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
+	// section for each data source. For example the parameters for Cloud Storage transfers are listed here:
+	// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
 	Params pulumi.StringMapInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -340,7 +346,9 @@ type dataTransferConfigArgs struct {
 	// Pub/Sub topic where notifications will be sent after transfer runs
 	// associated with this transfer config finish.
 	NotificationPubsubTopic *string `pulumi:"notificationPubsubTopic"`
-	// These parameters are specific to each data source.
+	// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
+	// section for each data source. For example the parameters for Cloud Storage transfers are listed here:
+	// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
 	Params map[string]string `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -397,7 +405,9 @@ type DataTransferConfigArgs struct {
 	// Pub/Sub topic where notifications will be sent after transfer runs
 	// associated with this transfer config finish.
 	NotificationPubsubTopic pulumi.StringPtrInput
-	// These parameters are specific to each data source.
+	// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
+	// section for each data source. For example the parameters for Cloud Storage transfers are listed here:
+	// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
 	Params pulumi.StringMapInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

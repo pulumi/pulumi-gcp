@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         }
 
         /// <summary>
-        /// Required. A deb package.
+        /// Required. An rpm package.
         /// </summary>
         [Input("source", required: true)]
         public Input<Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs> Source { get; set; } = null!;

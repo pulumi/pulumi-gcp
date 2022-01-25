@@ -14,15 +14,19 @@ namespace Pulumi.Gcp.CloudRun.Outputs
     public sealed class GetServiceTemplateSpecVolumeSecretItemResult
     {
         public readonly string Key;
+        public readonly int Mode;
         public readonly string Path;
 
         [OutputConstructor]
         private GetServiceTemplateSpecVolumeSecretItemResult(
             string key,
 
+            int mode,
+
             string path)
         {
             Key = key;
+            Mode = mode;
             Path = path;
         }
     }

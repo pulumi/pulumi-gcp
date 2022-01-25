@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.OsConfig.Outputs
         /// </summary>
         public readonly bool? PullDeps;
         /// <summary>
-        /// Required. A deb package.
+        /// Required. An rpm package.
         /// </summary>
         public readonly Outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource Source;
 

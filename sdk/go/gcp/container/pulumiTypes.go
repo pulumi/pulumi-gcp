@@ -17442,7 +17442,7 @@ func (o ClusterVerticalPodAutoscalingPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type ClusterWorkloadIdentityConfig struct {
-	// The workload pool to attach all Kubernetes service accounts to. Currently, the only supported identity namespace is the project of the cluster.
+	// The workload pool to attach all Kubernetes service accounts to.
 	WorkloadPool *string `pulumi:"workloadPool"`
 }
 
@@ -17458,7 +17458,7 @@ type ClusterWorkloadIdentityConfigInput interface {
 }
 
 type ClusterWorkloadIdentityConfigArgs struct {
-	// The workload pool to attach all Kubernetes service accounts to. Currently, the only supported identity namespace is the project of the cluster.
+	// The workload pool to attach all Kubernetes service accounts to.
 	WorkloadPool pulumi.StringPtrInput `pulumi:"workloadPool"`
 }
 
@@ -17539,7 +17539,7 @@ func (o ClusterWorkloadIdentityConfigOutput) ToClusterWorkloadIdentityConfigPtrO
 	}).(ClusterWorkloadIdentityConfigPtrOutput)
 }
 
-// The workload pool to attach all Kubernetes service accounts to. Currently, the only supported identity namespace is the project of the cluster.
+// The workload pool to attach all Kubernetes service accounts to.
 func (o ClusterWorkloadIdentityConfigOutput) WorkloadPool() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterWorkloadIdentityConfig) *string { return v.WorkloadPool }).(pulumi.StringPtrOutput)
 }
@@ -17568,7 +17568,7 @@ func (o ClusterWorkloadIdentityConfigPtrOutput) Elem() ClusterWorkloadIdentityCo
 	}).(ClusterWorkloadIdentityConfigOutput)
 }
 
-// The workload pool to attach all Kubernetes service accounts to. Currently, the only supported identity namespace is the project of the cluster.
+// The workload pool to attach all Kubernetes service accounts to.
 func (o ClusterWorkloadIdentityConfigPtrOutput) WorkloadPool() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterWorkloadIdentityConfig) *string {
 		if v == nil {

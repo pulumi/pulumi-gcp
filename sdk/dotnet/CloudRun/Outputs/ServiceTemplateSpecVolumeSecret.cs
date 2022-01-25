@@ -14,6 +14,13 @@ namespace Pulumi.Gcp.CloudRun.Outputs
     public sealed class ServiceTemplateSpecVolumeSecret
     {
         /// <summary>
+        /// Mode bits to use on created files by default. Must be a value between 0000
+        /// and 0777. Defaults to 0644. Directories within the path are not affected by
+        /// this setting. This might be in conflict with other options that affect the
+        /// file mode, like fsGroup, and the result can be other mode bits set.
+        /// </summary>
+        public readonly int? DefaultMode;
+        /// <summary>
         /// If unspecified, the volume will expose a file whose name is the
         /// secret_name.
         /// If specified, the key will be used as the version to fetch from Cloud
@@ -37,10 +44,13 @@ namespace Pulumi.Gcp.CloudRun.Outputs
 
         [OutputConstructor]
         private ServiceTemplateSpecVolumeSecret(
+            int? defaultMode,
+
             ImmutableArray<Outputs.ServiceTemplateSpecVolumeSecretItem> items,
 
             string secretName)
         {
+            DefaultMode = defaultMode;
             Items = items;
             SecretName = secretName;
         }

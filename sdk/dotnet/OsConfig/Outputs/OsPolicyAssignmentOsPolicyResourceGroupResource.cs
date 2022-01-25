@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.OsConfig.Outputs
         /// </summary>
         public readonly Outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExec? Exec;
         /// <summary>
-        /// Required. A deb package.
+        /// A remote or local source.
         /// </summary>
         public readonly Outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceFile? File;
         /// <summary>

@@ -445,12 +445,14 @@ namespace Pulumi.Gcp.CloudRun
     ///                             Secret = new Gcp.CloudRun.Inputs.ServiceTemplateSpecVolumeSecretArgs
     ///                             {
     ///                                 SecretName = secret.SecretId,
+    ///                                 DefaultMode = 292,
     ///                                 Items = 
     ///                                 {
     ///                                     new Gcp.CloudRun.Inputs.ServiceTemplateSpecVolumeSecretItemArgs
     ///                                     {
     ///                                         Key = "1",
     ///                                         Path = "my-secret",
+    ///                                         Mode = 256,
     ///                                     },
     ///                                 },
     ///                             },

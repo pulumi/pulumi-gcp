@@ -1409,9 +1409,9 @@ class TriggerGithubArgs:
                Each named volume must be used by at least two build steps.
         :param pulumi.Input[str] owner: Owner of the repository. For example: The owner for
                https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
-        :param pulumi.Input['TriggerGithubPullRequestArgs'] pull_request: filter to match changes in pull requests.  Specify only one of pullRequest or push.
+        :param pulumi.Input['TriggerGithubPullRequestArgs'] pull_request: filter to match changes in pull requests. Specify only one of `pull_request` or `push`.
                Structure is documented below.
-        :param pulumi.Input['TriggerGithubPushArgs'] push: filter to match changes in refs, like branches or tags.  Specify only one of pullRequest or push.
+        :param pulumi.Input['TriggerGithubPushArgs'] push: filter to match changes in refs, like branches or tags. Specify only one of `pull_request` or `push`.
                Structure is documented below.
         """
         if name is not None:
@@ -1454,7 +1454,7 @@ class TriggerGithubArgs:
     @pulumi.getter(name="pullRequest")
     def pull_request(self) -> Optional[pulumi.Input['TriggerGithubPullRequestArgs']]:
         """
-        filter to match changes in pull requests.  Specify only one of pullRequest or push.
+        filter to match changes in pull requests. Specify only one of `pull_request` or `push`.
         Structure is documented below.
         """
         return pulumi.get(self, "pull_request")
@@ -1467,7 +1467,7 @@ class TriggerGithubArgs:
     @pulumi.getter
     def push(self) -> Optional[pulumi.Input['TriggerGithubPushArgs']]:
         """
-        filter to match changes in refs, like branches or tags.  Specify only one of pullRequest or push.
+        filter to match changes in refs, like branches or tags. Specify only one of `pull_request` or `push`.
         Structure is documented below.
         """
         return pulumi.get(self, "push")

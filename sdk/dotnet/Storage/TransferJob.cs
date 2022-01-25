@@ -172,7 +172,7 @@ namespace Pulumi.Gcp.Storage
         /// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
         /// </summary>
         [Output("schedule")]
-        public Output<Outputs.TransferJobSchedule> Schedule { get; private set; } = null!;
+        public Output<Outputs.TransferJobSchedule?> Schedule { get; private set; } = null!;
 
         /// <summary>
         /// Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
@@ -248,8 +248,8 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
         /// </summary>
-        [Input("schedule", required: true)]
-        public Input<Inputs.TransferJobScheduleArgs> Schedule { get; set; } = null!;
+        [Input("schedule")]
+        public Input<Inputs.TransferJobScheduleArgs>? Schedule { get; set; }
 
         /// <summary>
         /// Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**

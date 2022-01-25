@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         }
 
         /// <summary>
-        /// Required. A deb package.
+        /// A remote or local source.
         /// </summary>
         [Input("file")]
         public Input<Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs>? File { get; set; }

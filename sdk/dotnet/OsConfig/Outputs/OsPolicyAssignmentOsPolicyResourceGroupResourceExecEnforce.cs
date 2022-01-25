@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.OsConfig.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Args;
         /// <summary>
-        /// Required. A deb package.
+        /// A remote or local source.
         /// </summary>
         public readonly Outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile? File;
         /// <summary>

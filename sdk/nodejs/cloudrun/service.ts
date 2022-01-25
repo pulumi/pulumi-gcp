@@ -277,9 +277,11 @@ import * as utilities from "../utilities";
  *                 name: "a-volume",
  *                 secret: {
  *                     secretName: secret.secretId,
+ *                     defaultMode: 292,
  *                     items: [{
  *                         key: "1",
  *                         path: "my-secret",
+ *                         mode: 256,
  *                     }],
  *                 },
  *             }],

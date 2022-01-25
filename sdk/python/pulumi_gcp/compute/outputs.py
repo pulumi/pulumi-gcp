@@ -189,6 +189,7 @@ __all__ = [
     'RegionBackendServiceCdnPolicyNegativeCachingPolicy',
     'RegionBackendServiceCircuitBreakers',
     'RegionBackendServiceCircuitBreakersConnectTimeout',
+    'RegionBackendServiceConnectionTrackingPolicy',
     'RegionBackendServiceConsistentHash',
     'RegionBackendServiceConsistentHashHttpCookie',
     'RegionBackendServiceConsistentHashHttpCookieTtl',
@@ -272,6 +273,8 @@ __all__ = [
     'RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd',
     'RegionUrlMapPathMatcherRouteRuleUrlRedirect',
     'RegionUrlMapTest',
+    'ReservationShareSettings',
+    'ReservationShareSettingsProjectMap',
     'ReservationSpecificReservation',
     'ReservationSpecificReservationInstanceProperties',
     'ReservationSpecificReservationInstancePropertiesGuestAccelerator',
@@ -12614,6 +12617,116 @@ class RegionBackendServiceCircuitBreakersConnectTimeout(dict):
 
 
 @pulumi.output_type
+class RegionBackendServiceConnectionTrackingPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionPersistenceOnUnhealthyBackends":
+            suggest = "connection_persistence_on_unhealthy_backends"
+        elif key == "idleTimeoutSec":
+            suggest = "idle_timeout_sec"
+        elif key == "trackingMode":
+            suggest = "tracking_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionBackendServiceConnectionTrackingPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionBackendServiceConnectionTrackingPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionBackendServiceConnectionTrackingPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_persistence_on_unhealthy_backends: Optional[str] = None,
+                 idle_timeout_sec: Optional[int] = None,
+                 tracking_mode: Optional[str] = None):
+        """
+        :param str connection_persistence_on_unhealthy_backends: Specifies connection persistence when backends are unhealthy.
+               If set to `DEFAULT_FOR_PROTOCOL`, the existing connections persist on
+               unhealthy backends only for connection-oriented protocols (TCP and SCTP)
+               and only if the Tracking Mode is PER_CONNECTION (default tracking mode)
+               or the Session Affinity is configured for 5-tuple. They do not persist
+               for UDP.
+               If set to `NEVER_PERSIST`, after a backend becomes unhealthy, the existing
+               connections on the unhealthy backend are never persisted on the unhealthy
+               backend. They are always diverted to newly selected healthy backends
+               (unless all backends are unhealthy).
+               If set to `ALWAYS_PERSIST`, existing connections always persist on
+               unhealthy backends regardless of protocol and session affinity. It is
+               generally not recommended to use this mode overriding the default.
+               Default value is `DEFAULT_FOR_PROTOCOL`.
+               Possible values are `DEFAULT_FOR_PROTOCOL`, `NEVER_PERSIST`, and `ALWAYS_PERSIST`.
+        :param int idle_timeout_sec: Specifies how long to keep a Connection Tracking entry while there is
+               no matching traffic (in seconds).
+               For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours.
+               For NLB the minimum(default) is 60 seconds and the maximum is 16 hours.
+        :param str tracking_mode: Specifies the key used for connection tracking. There are two options:
+               `PER_CONNECTION`: The Connection Tracking is performed as per the
+               Connection Key (default Hash Method) for the specific protocol.
+               `PER_SESSION`: The Connection Tracking is performed as per the
+               configured Session Affinity. It matches the configured Session Affinity.
+               Default value is `PER_CONNECTION`.
+               Possible values are `PER_CONNECTION` and `PER_SESSION`.
+        """
+        if connection_persistence_on_unhealthy_backends is not None:
+            pulumi.set(__self__, "connection_persistence_on_unhealthy_backends", connection_persistence_on_unhealthy_backends)
+        if idle_timeout_sec is not None:
+            pulumi.set(__self__, "idle_timeout_sec", idle_timeout_sec)
+        if tracking_mode is not None:
+            pulumi.set(__self__, "tracking_mode", tracking_mode)
+
+    @property
+    @pulumi.getter(name="connectionPersistenceOnUnhealthyBackends")
+    def connection_persistence_on_unhealthy_backends(self) -> Optional[str]:
+        """
+        Specifies connection persistence when backends are unhealthy.
+        If set to `DEFAULT_FOR_PROTOCOL`, the existing connections persist on
+        unhealthy backends only for connection-oriented protocols (TCP and SCTP)
+        and only if the Tracking Mode is PER_CONNECTION (default tracking mode)
+        or the Session Affinity is configured for 5-tuple. They do not persist
+        for UDP.
+        If set to `NEVER_PERSIST`, after a backend becomes unhealthy, the existing
+        connections on the unhealthy backend are never persisted on the unhealthy
+        backend. They are always diverted to newly selected healthy backends
+        (unless all backends are unhealthy).
+        If set to `ALWAYS_PERSIST`, existing connections always persist on
+        unhealthy backends regardless of protocol and session affinity. It is
+        generally not recommended to use this mode overriding the default.
+        Default value is `DEFAULT_FOR_PROTOCOL`.
+        Possible values are `DEFAULT_FOR_PROTOCOL`, `NEVER_PERSIST`, and `ALWAYS_PERSIST`.
+        """
+        return pulumi.get(self, "connection_persistence_on_unhealthy_backends")
+
+    @property
+    @pulumi.getter(name="idleTimeoutSec")
+    def idle_timeout_sec(self) -> Optional[int]:
+        """
+        Specifies how long to keep a Connection Tracking entry while there is
+        no matching traffic (in seconds).
+        For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours.
+        For NLB the minimum(default) is 60 seconds and the maximum is 16 hours.
+        """
+        return pulumi.get(self, "idle_timeout_sec")
+
+    @property
+    @pulumi.getter(name="trackingMode")
+    def tracking_mode(self) -> Optional[str]:
+        """
+        Specifies the key used for connection tracking. There are two options:
+        `PER_CONNECTION`: The Connection Tracking is performed as per the
+        Connection Key (default Hash Method) for the specific protocol.
+        `PER_SESSION`: The Connection Tracking is performed as per the
+        configured Session Affinity. It matches the configured Session Affinity.
+        Default value is `PER_CONNECTION`.
+        Possible values are `PER_CONNECTION` and `PER_SESSION`.
+        """
+        return pulumi.get(self, "tracking_mode")
+
+
+@pulumi.output_type
 class RegionBackendServiceConsistentHash(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -19297,6 +19410,107 @@ class RegionUrlMapTest(dict):
         Description of this test case.
         """
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class ReservationShareSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "projectMaps":
+            suggest = "project_maps"
+        elif key == "shareType":
+            suggest = "share_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReservationShareSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReservationShareSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReservationShareSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 project_maps: Optional[Sequence['outputs.ReservationShareSettingsProjectMap']] = None,
+                 share_type: Optional[str] = None):
+        """
+        :param Sequence['ReservationShareSettingsProjectMapArgs'] project_maps: A map of project number and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
+               Structure is documented below.
+        :param str share_type: Type of sharing for this shared-reservation
+               Possible values are `LOCAL` and `SPECIFIC_PROJECTS`.
+        """
+        if project_maps is not None:
+            pulumi.set(__self__, "project_maps", project_maps)
+        if share_type is not None:
+            pulumi.set(__self__, "share_type", share_type)
+
+    @property
+    @pulumi.getter(name="projectMaps")
+    def project_maps(self) -> Optional[Sequence['outputs.ReservationShareSettingsProjectMap']]:
+        """
+        A map of project number and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "project_maps")
+
+    @property
+    @pulumi.getter(name="shareType")
+    def share_type(self) -> Optional[str]:
+        """
+        Type of sharing for this shared-reservation
+        Possible values are `LOCAL` and `SPECIFIC_PROJECTS`.
+        """
+        return pulumi.get(self, "share_type")
+
+
+@pulumi.output_type
+class ReservationShareSettingsProjectMap(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "projectId":
+            suggest = "project_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReservationShareSettingsProjectMap. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReservationShareSettingsProjectMap.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReservationShareSettingsProjectMap.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 id: str,
+                 project_id: Optional[str] = None):
+        """
+        :param str id: The identifier for this object. Format specified above.
+        :param str project_id: The project id/number, should be same as the key of this project config in the project map.
+        """
+        pulumi.set(__self__, "id", id)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[str]:
+        """
+        The project id/number, should be same as the key of this project config in the project map.
+        """
+        return pulumi.get(self, "project_id")
 
 
 @pulumi.output_type

@@ -16,24 +16,25 @@ __all__ = ['TransferJobArgs', 'TransferJob']
 class TransferJobArgs:
     def __init__(__self__, *,
                  description: pulumi.Input[str],
-                 schedule: pulumi.Input['TransferJobScheduleArgs'],
                  transfer_spec: pulumi.Input['TransferJobTransferSpecArgs'],
                  project: Optional[pulumi.Input[str]] = None,
+                 schedule: Optional[pulumi.Input['TransferJobScheduleArgs']] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TransferJob resource.
         :param pulumi.Input[str] description: Unique description to identify the Transfer Job.
-        :param pulumi.Input['TransferJobScheduleArgs'] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
         :param pulumi.Input['TransferJobTransferSpecArgs'] transfer_spec: Transfer specification. Structure documented below.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input['TransferJobScheduleArgs'] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
         :param pulumi.Input[str] status: Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
         """
         pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "schedule", schedule)
         pulumi.set(__self__, "transfer_spec", transfer_spec)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if schedule is not None:
+            pulumi.set(__self__, "schedule", schedule)
         if status is not None:
             pulumi.set(__self__, "status", status)
 
@@ -48,18 +49,6 @@ class TransferJobArgs:
     @description.setter
     def description(self, value: pulumi.Input[str]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter
-    def schedule(self) -> pulumi.Input['TransferJobScheduleArgs']:
-        """
-        Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
-        """
-        return pulumi.get(self, "schedule")
-
-    @schedule.setter
-    def schedule(self, value: pulumi.Input['TransferJobScheduleArgs']):
-        pulumi.set(self, "schedule", value)
 
     @property
     @pulumi.getter(name="transferSpec")
@@ -85,6 +74,18 @@ class TransferJobArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def schedule(self) -> Optional[pulumi.Input['TransferJobScheduleArgs']]:
+        """
+        Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
+        """
+        return pulumi.get(self, "schedule")
+
+    @schedule.setter
+    def schedule(self, value: Optional[pulumi.Input['TransferJobScheduleArgs']]):
+        pulumi.set(self, "schedule", value)
 
     @property
     @pulumi.getter
@@ -475,8 +476,6 @@ class TransferJob(pulumi.CustomResource):
                 raise TypeError("Missing required property 'description'")
             __props__.__dict__["description"] = description
             __props__.__dict__["project"] = project
-            if schedule is None and not opts.urn:
-                raise TypeError("Missing required property 'schedule'")
             __props__.__dict__["schedule"] = schedule
             __props__.__dict__["status"] = status
             if transfer_spec is None and not opts.urn:
@@ -589,7 +588,7 @@ class TransferJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def schedule(self) -> pulumi.Output['outputs.TransferJobSchedule']:
+    def schedule(self) -> pulumi.Output[Optional['outputs.TransferJobSchedule']]:
         """
         Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
         """

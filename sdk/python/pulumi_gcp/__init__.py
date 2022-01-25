@@ -3382,6 +3382,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "networkconnectivity/spoke",
+  "fqn": "pulumi_gcp.networkconnectivity",
+  "classes": {
+   "gcp:networkconnectivity/spoke:Spoke": "Spoke"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "networkmanagement/connectivityTest",
   "fqn": "pulumi_gcp.networkmanagement",
   "classes": {

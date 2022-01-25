@@ -228,11 +228,11 @@ import * as utilities from "../utilities";
  *     sessionAffinity: "CLIENT_IP",
  *     protocol: "TCP",
  *     loadBalancingScheme: "EXTERNAL",
- *     connectionTrackingPolicy: [{
+ *     connectionTrackingPolicy: {
  *         trackingMode: "PER_SESSION",
  *         connectionPersistenceOnUnhealthyBackends: "NEVER_PERSIST",
  *         idleTimeoutSec: 60,
- *     }],
+ *     },
  * }, {
  *     provider: google_beta,
  * });
@@ -316,6 +316,13 @@ export class RegionBackendService extends pulumi.CustomResource {
      * connections, but still work to finish started).
      */
     public readonly connectionDrainingTimeoutSec!: pulumi.Output<number | undefined>;
+    /**
+     * Connection Tracking configuration for this BackendService.
+     * This is available only for Layer 4 Internal Load Balancing and
+     * Network Load Balancing.
+     * Structure is documented below.
+     */
+    public readonly connectionTrackingPolicy!: pulumi.Output<outputs.compute.RegionBackendServiceConnectionTrackingPolicy | undefined>;
     /**
      * Consistent Hash-based load balancing can be used to provide soft session
      * affinity based on HTTP headers, cookies or other properties. This load balancing
@@ -476,6 +483,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             inputs["cdnPolicy"] = state ? state.cdnPolicy : undefined;
             inputs["circuitBreakers"] = state ? state.circuitBreakers : undefined;
             inputs["connectionDrainingTimeoutSec"] = state ? state.connectionDrainingTimeoutSec : undefined;
+            inputs["connectionTrackingPolicy"] = state ? state.connectionTrackingPolicy : undefined;
             inputs["consistentHash"] = state ? state.consistentHash : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -504,6 +512,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             inputs["cdnPolicy"] = args ? args.cdnPolicy : undefined;
             inputs["circuitBreakers"] = args ? args.circuitBreakers : undefined;
             inputs["connectionDrainingTimeoutSec"] = args ? args.connectionDrainingTimeoutSec : undefined;
+            inputs["connectionTrackingPolicy"] = args ? args.connectionTrackingPolicy : undefined;
             inputs["consistentHash"] = args ? args.consistentHash : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["enableCdn"] = args ? args.enableCdn : undefined;
@@ -567,6 +576,13 @@ export interface RegionBackendServiceState {
      * connections, but still work to finish started).
      */
     connectionDrainingTimeoutSec?: pulumi.Input<number>;
+    /**
+     * Connection Tracking configuration for this BackendService.
+     * This is available only for Layer 4 Internal Load Balancing and
+     * Network Load Balancing.
+     * Structure is documented below.
+     */
+    connectionTrackingPolicy?: pulumi.Input<inputs.compute.RegionBackendServiceConnectionTrackingPolicy>;
     /**
      * Consistent Hash-based load balancing can be used to provide soft session
      * affinity based on HTTP headers, cookies or other properties. This load balancing
@@ -744,6 +760,13 @@ export interface RegionBackendServiceArgs {
      * connections, but still work to finish started).
      */
     connectionDrainingTimeoutSec?: pulumi.Input<number>;
+    /**
+     * Connection Tracking configuration for this BackendService.
+     * This is available only for Layer 4 Internal Load Balancing and
+     * Network Load Balancing.
+     * Structure is documented below.
+     */
+    connectionTrackingPolicy?: pulumi.Input<inputs.compute.RegionBackendServiceConnectionTrackingPolicy>;
     /**
      * Consistent Hash-based load balancing can be used to provide soft session
      * affinity based on HTTP headers, cookies or other properties. This load balancing

@@ -430,11 +430,13 @@ import (
 // 						&cloudrun.ServiceTemplateSpecVolumeArgs{
 // 							Name: pulumi.String("a-volume"),
 // 							Secret: &cloudrun.ServiceTemplateSpecVolumeSecretArgs{
-// 								SecretName: secret.SecretId,
+// 								SecretName:  secret.SecretId,
+// 								DefaultMode: pulumi.Int(292),
 // 								Items: cloudrun.ServiceTemplateSpecVolumeSecretItemArray{
 // 									&cloudrun.ServiceTemplateSpecVolumeSecretItemArgs{
 // 										Key:  pulumi.String("1"),
 // 										Path: pulumi.String("my-secret"),
+// 										Mode: pulumi.Int(256),
 // 									},
 // 								},
 // 							},
