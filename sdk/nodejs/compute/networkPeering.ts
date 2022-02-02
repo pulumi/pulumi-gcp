@@ -117,19 +117,19 @@ export class NetworkPeering extends pulumi.CustomResource {
      */
     constructor(name: string, args: NetworkPeeringArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NetworkPeeringArgs | NetworkPeeringState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkPeeringState | undefined;
-            inputs["exportCustomRoutes"] = state ? state.exportCustomRoutes : undefined;
-            inputs["exportSubnetRoutesWithPublicIp"] = state ? state.exportSubnetRoutesWithPublicIp : undefined;
-            inputs["importCustomRoutes"] = state ? state.importCustomRoutes : undefined;
-            inputs["importSubnetRoutesWithPublicIp"] = state ? state.importSubnetRoutesWithPublicIp : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["network"] = state ? state.network : undefined;
-            inputs["peerNetwork"] = state ? state.peerNetwork : undefined;
-            inputs["state"] = state ? state.state : undefined;
-            inputs["stateDetails"] = state ? state.stateDetails : undefined;
+            resourceInputs["exportCustomRoutes"] = state ? state.exportCustomRoutes : undefined;
+            resourceInputs["exportSubnetRoutesWithPublicIp"] = state ? state.exportSubnetRoutesWithPublicIp : undefined;
+            resourceInputs["importCustomRoutes"] = state ? state.importCustomRoutes : undefined;
+            resourceInputs["importSubnetRoutesWithPublicIp"] = state ? state.importSubnetRoutesWithPublicIp : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["network"] = state ? state.network : undefined;
+            resourceInputs["peerNetwork"] = state ? state.peerNetwork : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["stateDetails"] = state ? state.stateDetails : undefined;
         } else {
             const args = argsOrState as NetworkPeeringArgs | undefined;
             if ((!args || args.network === undefined) && !opts.urn) {
@@ -138,20 +138,18 @@ export class NetworkPeering extends pulumi.CustomResource {
             if ((!args || args.peerNetwork === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'peerNetwork'");
             }
-            inputs["exportCustomRoutes"] = args ? args.exportCustomRoutes : undefined;
-            inputs["exportSubnetRoutesWithPublicIp"] = args ? args.exportSubnetRoutesWithPublicIp : undefined;
-            inputs["importCustomRoutes"] = args ? args.importCustomRoutes : undefined;
-            inputs["importSubnetRoutesWithPublicIp"] = args ? args.importSubnetRoutesWithPublicIp : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["network"] = args ? args.network : undefined;
-            inputs["peerNetwork"] = args ? args.peerNetwork : undefined;
-            inputs["state"] = undefined /*out*/;
-            inputs["stateDetails"] = undefined /*out*/;
+            resourceInputs["exportCustomRoutes"] = args ? args.exportCustomRoutes : undefined;
+            resourceInputs["exportSubnetRoutesWithPublicIp"] = args ? args.exportSubnetRoutesWithPublicIp : undefined;
+            resourceInputs["importCustomRoutes"] = args ? args.importCustomRoutes : undefined;
+            resourceInputs["importSubnetRoutesWithPublicIp"] = args ? args.importSubnetRoutesWithPublicIp : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["peerNetwork"] = args ? args.peerNetwork : undefined;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["stateDetails"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(NetworkPeering.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(NetworkPeering.__pulumiType, name, resourceInputs, opts);
     }
 }
 

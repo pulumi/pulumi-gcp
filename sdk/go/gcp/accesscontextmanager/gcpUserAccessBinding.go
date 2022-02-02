@@ -139,7 +139,7 @@ type GcpUserAccessBindingInput interface {
 }
 
 func (*GcpUserAccessBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*GcpUserAccessBinding)(nil))
+	return reflect.TypeOf((**GcpUserAccessBinding)(nil)).Elem()
 }
 
 func (i *GcpUserAccessBinding) ToGcpUserAccessBindingOutput() GcpUserAccessBindingOutput {
@@ -148,35 +148,6 @@ func (i *GcpUserAccessBinding) ToGcpUserAccessBindingOutput() GcpUserAccessBindi
 
 func (i *GcpUserAccessBinding) ToGcpUserAccessBindingOutputWithContext(ctx context.Context) GcpUserAccessBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GcpUserAccessBindingOutput)
-}
-
-func (i *GcpUserAccessBinding) ToGcpUserAccessBindingPtrOutput() GcpUserAccessBindingPtrOutput {
-	return i.ToGcpUserAccessBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *GcpUserAccessBinding) ToGcpUserAccessBindingPtrOutputWithContext(ctx context.Context) GcpUserAccessBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GcpUserAccessBindingPtrOutput)
-}
-
-type GcpUserAccessBindingPtrInput interface {
-	pulumi.Input
-
-	ToGcpUserAccessBindingPtrOutput() GcpUserAccessBindingPtrOutput
-	ToGcpUserAccessBindingPtrOutputWithContext(ctx context.Context) GcpUserAccessBindingPtrOutput
-}
-
-type gcpUserAccessBindingPtrType GcpUserAccessBindingArgs
-
-func (*gcpUserAccessBindingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GcpUserAccessBinding)(nil))
-}
-
-func (i *gcpUserAccessBindingPtrType) ToGcpUserAccessBindingPtrOutput() GcpUserAccessBindingPtrOutput {
-	return i.ToGcpUserAccessBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *gcpUserAccessBindingPtrType) ToGcpUserAccessBindingPtrOutputWithContext(ctx context.Context) GcpUserAccessBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GcpUserAccessBindingPtrOutput)
 }
 
 // GcpUserAccessBindingArrayInput is an input type that accepts GcpUserAccessBindingArray and GcpUserAccessBindingArrayOutput values.
@@ -232,7 +203,7 @@ func (i GcpUserAccessBindingMap) ToGcpUserAccessBindingMapOutputWithContext(ctx 
 type GcpUserAccessBindingOutput struct{ *pulumi.OutputState }
 
 func (GcpUserAccessBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GcpUserAccessBinding)(nil))
+	return reflect.TypeOf((**GcpUserAccessBinding)(nil)).Elem()
 }
 
 func (o GcpUserAccessBindingOutput) ToGcpUserAccessBindingOutput() GcpUserAccessBindingOutput {
@@ -243,44 +214,10 @@ func (o GcpUserAccessBindingOutput) ToGcpUserAccessBindingOutputWithContext(ctx 
 	return o
 }
 
-func (o GcpUserAccessBindingOutput) ToGcpUserAccessBindingPtrOutput() GcpUserAccessBindingPtrOutput {
-	return o.ToGcpUserAccessBindingPtrOutputWithContext(context.Background())
-}
-
-func (o GcpUserAccessBindingOutput) ToGcpUserAccessBindingPtrOutputWithContext(ctx context.Context) GcpUserAccessBindingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcpUserAccessBinding) *GcpUserAccessBinding {
-		return &v
-	}).(GcpUserAccessBindingPtrOutput)
-}
-
-type GcpUserAccessBindingPtrOutput struct{ *pulumi.OutputState }
-
-func (GcpUserAccessBindingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GcpUserAccessBinding)(nil))
-}
-
-func (o GcpUserAccessBindingPtrOutput) ToGcpUserAccessBindingPtrOutput() GcpUserAccessBindingPtrOutput {
-	return o
-}
-
-func (o GcpUserAccessBindingPtrOutput) ToGcpUserAccessBindingPtrOutputWithContext(ctx context.Context) GcpUserAccessBindingPtrOutput {
-	return o
-}
-
-func (o GcpUserAccessBindingPtrOutput) Elem() GcpUserAccessBindingOutput {
-	return o.ApplyT(func(v *GcpUserAccessBinding) GcpUserAccessBinding {
-		if v != nil {
-			return *v
-		}
-		var ret GcpUserAccessBinding
-		return ret
-	}).(GcpUserAccessBindingOutput)
-}
-
 type GcpUserAccessBindingArrayOutput struct{ *pulumi.OutputState }
 
 func (GcpUserAccessBindingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GcpUserAccessBinding)(nil))
+	return reflect.TypeOf((*[]*GcpUserAccessBinding)(nil)).Elem()
 }
 
 func (o GcpUserAccessBindingArrayOutput) ToGcpUserAccessBindingArrayOutput() GcpUserAccessBindingArrayOutput {
@@ -292,15 +229,15 @@ func (o GcpUserAccessBindingArrayOutput) ToGcpUserAccessBindingArrayOutputWithCo
 }
 
 func (o GcpUserAccessBindingArrayOutput) Index(i pulumi.IntInput) GcpUserAccessBindingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GcpUserAccessBinding {
-		return vs[0].([]GcpUserAccessBinding)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GcpUserAccessBinding {
+		return vs[0].([]*GcpUserAccessBinding)[vs[1].(int)]
 	}).(GcpUserAccessBindingOutput)
 }
 
 type GcpUserAccessBindingMapOutput struct{ *pulumi.OutputState }
 
 func (GcpUserAccessBindingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GcpUserAccessBinding)(nil))
+	return reflect.TypeOf((*map[string]*GcpUserAccessBinding)(nil)).Elem()
 }
 
 func (o GcpUserAccessBindingMapOutput) ToGcpUserAccessBindingMapOutput() GcpUserAccessBindingMapOutput {
@@ -312,18 +249,16 @@ func (o GcpUserAccessBindingMapOutput) ToGcpUserAccessBindingMapOutputWithContex
 }
 
 func (o GcpUserAccessBindingMapOutput) MapIndex(k pulumi.StringInput) GcpUserAccessBindingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GcpUserAccessBinding {
-		return vs[0].(map[string]GcpUserAccessBinding)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *GcpUserAccessBinding {
+		return vs[0].(map[string]*GcpUserAccessBinding)[vs[1].(string)]
 	}).(GcpUserAccessBindingOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpUserAccessBindingInput)(nil)).Elem(), &GcpUserAccessBinding{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GcpUserAccessBindingPtrInput)(nil)).Elem(), &GcpUserAccessBinding{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpUserAccessBindingArrayInput)(nil)).Elem(), GcpUserAccessBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpUserAccessBindingMapInput)(nil)).Elem(), GcpUserAccessBindingMap{})
 	pulumi.RegisterOutputType(GcpUserAccessBindingOutput{})
-	pulumi.RegisterOutputType(GcpUserAccessBindingPtrOutput{})
 	pulumi.RegisterOutputType(GcpUserAccessBindingArrayOutput{})
 	pulumi.RegisterOutputType(GcpUserAccessBindingMapOutput{})
 }

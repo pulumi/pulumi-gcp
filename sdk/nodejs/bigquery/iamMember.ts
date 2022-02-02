@@ -214,17 +214,17 @@ export class IamMember extends pulumi.CustomResource {
      */
     constructor(name: string, args: IamMemberArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IamMemberArgs | IamMemberState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IamMemberState | undefined;
-            inputs["condition"] = state ? state.condition : undefined;
-            inputs["datasetId"] = state ? state.datasetId : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["member"] = state ? state.member : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["role"] = state ? state.role : undefined;
-            inputs["tableId"] = state ? state.tableId : undefined;
+            resourceInputs["condition"] = state ? state.condition : undefined;
+            resourceInputs["datasetId"] = state ? state.datasetId : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["member"] = state ? state.member : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["tableId"] = state ? state.tableId : undefined;
         } else {
             const args = argsOrState as IamMemberArgs | undefined;
             if ((!args || args.datasetId === undefined) && !opts.urn) {
@@ -239,18 +239,16 @@ export class IamMember extends pulumi.CustomResource {
             if ((!args || args.tableId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tableId'");
             }
-            inputs["condition"] = args ? args.condition : undefined;
-            inputs["datasetId"] = args ? args.datasetId : undefined;
-            inputs["member"] = args ? args.member : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["role"] = args ? args.role : undefined;
-            inputs["tableId"] = args ? args.tableId : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["condition"] = args ? args.condition : undefined;
+            resourceInputs["datasetId"] = args ? args.datasetId : undefined;
+            resourceInputs["member"] = args ? args.member : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["tableId"] = args ? args.tableId : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(IamMember.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(IamMember.__pulumiType, name, resourceInputs, opts);
     }
 }
 

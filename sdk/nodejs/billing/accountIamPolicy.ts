@@ -45,13 +45,13 @@ export class AccountIamPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: AccountIamPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccountIamPolicyArgs | AccountIamPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountIamPolicyState | undefined;
-            inputs["billingAccountId"] = state ? state.billingAccountId : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["policyData"] = state ? state.policyData : undefined;
+            resourceInputs["billingAccountId"] = state ? state.billingAccountId : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["policyData"] = state ? state.policyData : undefined;
         } else {
             const args = argsOrState as AccountIamPolicyArgs | undefined;
             if ((!args || args.billingAccountId === undefined) && !opts.urn) {
@@ -60,14 +60,12 @@ export class AccountIamPolicy extends pulumi.CustomResource {
             if ((!args || args.policyData === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
-            inputs["billingAccountId"] = args ? args.billingAccountId : undefined;
-            inputs["policyData"] = args ? args.policyData : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["billingAccountId"] = args ? args.billingAccountId : undefined;
+            resourceInputs["policyData"] = args ? args.policyData : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AccountIamPolicy.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AccountIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -36,13 +36,13 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := storage.NewBucket(ctx, "image_store", &storage.BucketArgs{
+// 		_, err := storage.NewBucket(ctx, "image-store", &storage.BucketArgs{
 // 			Location: pulumi.String("EU"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = storage.NewBucketACL(ctx, "image_store_acl", &storage.BucketACLArgs{
+// 		_, err = storage.NewBucketACL(ctx, "image-store-acl", &storage.BucketACLArgs{
 // 			Bucket: image_store.Name,
 // 			RoleEntities: pulumi.StringArray{
 // 				pulumi.String("OWNER:user-my.email@gmail.com"),
@@ -165,7 +165,7 @@ type BucketACLInput interface {
 }
 
 func (*BucketACL) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketACL)(nil))
+	return reflect.TypeOf((**BucketACL)(nil)).Elem()
 }
 
 func (i *BucketACL) ToBucketACLOutput() BucketACLOutput {
@@ -174,35 +174,6 @@ func (i *BucketACL) ToBucketACLOutput() BucketACLOutput {
 
 func (i *BucketACL) ToBucketACLOutputWithContext(ctx context.Context) BucketACLOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BucketACLOutput)
-}
-
-func (i *BucketACL) ToBucketACLPtrOutput() BucketACLPtrOutput {
-	return i.ToBucketACLPtrOutputWithContext(context.Background())
-}
-
-func (i *BucketACL) ToBucketACLPtrOutputWithContext(ctx context.Context) BucketACLPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketACLPtrOutput)
-}
-
-type BucketACLPtrInput interface {
-	pulumi.Input
-
-	ToBucketACLPtrOutput() BucketACLPtrOutput
-	ToBucketACLPtrOutputWithContext(ctx context.Context) BucketACLPtrOutput
-}
-
-type bucketACLPtrType BucketACLArgs
-
-func (*bucketACLPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketACL)(nil))
-}
-
-func (i *bucketACLPtrType) ToBucketACLPtrOutput() BucketACLPtrOutput {
-	return i.ToBucketACLPtrOutputWithContext(context.Background())
-}
-
-func (i *bucketACLPtrType) ToBucketACLPtrOutputWithContext(ctx context.Context) BucketACLPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketACLPtrOutput)
 }
 
 // BucketACLArrayInput is an input type that accepts BucketACLArray and BucketACLArrayOutput values.
@@ -258,7 +229,7 @@ func (i BucketACLMap) ToBucketACLMapOutputWithContext(ctx context.Context) Bucke
 type BucketACLOutput struct{ *pulumi.OutputState }
 
 func (BucketACLOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketACL)(nil))
+	return reflect.TypeOf((**BucketACL)(nil)).Elem()
 }
 
 func (o BucketACLOutput) ToBucketACLOutput() BucketACLOutput {
@@ -269,44 +240,10 @@ func (o BucketACLOutput) ToBucketACLOutputWithContext(ctx context.Context) Bucke
 	return o
 }
 
-func (o BucketACLOutput) ToBucketACLPtrOutput() BucketACLPtrOutput {
-	return o.ToBucketACLPtrOutputWithContext(context.Background())
-}
-
-func (o BucketACLOutput) ToBucketACLPtrOutputWithContext(ctx context.Context) BucketACLPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketACL) *BucketACL {
-		return &v
-	}).(BucketACLPtrOutput)
-}
-
-type BucketACLPtrOutput struct{ *pulumi.OutputState }
-
-func (BucketACLPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketACL)(nil))
-}
-
-func (o BucketACLPtrOutput) ToBucketACLPtrOutput() BucketACLPtrOutput {
-	return o
-}
-
-func (o BucketACLPtrOutput) ToBucketACLPtrOutputWithContext(ctx context.Context) BucketACLPtrOutput {
-	return o
-}
-
-func (o BucketACLPtrOutput) Elem() BucketACLOutput {
-	return o.ApplyT(func(v *BucketACL) BucketACL {
-		if v != nil {
-			return *v
-		}
-		var ret BucketACL
-		return ret
-	}).(BucketACLOutput)
-}
-
 type BucketACLArrayOutput struct{ *pulumi.OutputState }
 
 func (BucketACLArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BucketACL)(nil))
+	return reflect.TypeOf((*[]*BucketACL)(nil)).Elem()
 }
 
 func (o BucketACLArrayOutput) ToBucketACLArrayOutput() BucketACLArrayOutput {
@@ -318,15 +255,15 @@ func (o BucketACLArrayOutput) ToBucketACLArrayOutputWithContext(ctx context.Cont
 }
 
 func (o BucketACLArrayOutput) Index(i pulumi.IntInput) BucketACLOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BucketACL {
-		return vs[0].([]BucketACL)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BucketACL {
+		return vs[0].([]*BucketACL)[vs[1].(int)]
 	}).(BucketACLOutput)
 }
 
 type BucketACLMapOutput struct{ *pulumi.OutputState }
 
 func (BucketACLMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]BucketACL)(nil))
+	return reflect.TypeOf((*map[string]*BucketACL)(nil)).Elem()
 }
 
 func (o BucketACLMapOutput) ToBucketACLMapOutput() BucketACLMapOutput {
@@ -338,18 +275,16 @@ func (o BucketACLMapOutput) ToBucketACLMapOutputWithContext(ctx context.Context)
 }
 
 func (o BucketACLMapOutput) MapIndex(k pulumi.StringInput) BucketACLOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BucketACL {
-		return vs[0].(map[string]BucketACL)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *BucketACL {
+		return vs[0].(map[string]*BucketACL)[vs[1].(string)]
 	}).(BucketACLOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketACLInput)(nil)).Elem(), &BucketACL{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketACLPtrInput)(nil)).Elem(), &BucketACL{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketACLArrayInput)(nil)).Elem(), BucketACLArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketACLMapInput)(nil)).Elem(), BucketACLMap{})
 	pulumi.RegisterOutputType(BucketACLOutput{})
-	pulumi.RegisterOutputType(BucketACLPtrOutput{})
 	pulumi.RegisterOutputType(BucketACLArrayOutput{})
 	pulumi.RegisterOutputType(BucketACLMapOutput{})
 }

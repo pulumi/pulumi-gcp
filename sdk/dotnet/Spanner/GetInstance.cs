@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Spanner
 {
@@ -39,7 +38,7 @@ namespace Pulumi.Gcp.Spanner
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceResult> InvokeAsync(GetInstanceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceResult>("gcp:spanner/getInstance:getInstance", args ?? new GetInstanceArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceResult>("gcp:spanner/getInstance:getInstance", args ?? new GetInstanceArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get a spanner instance from Google Cloud by its name.
@@ -68,7 +67,7 @@ namespace Pulumi.Gcp.Spanner
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstanceResult> Invoke(GetInstanceInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstanceResult>("gcp:spanner/getInstance:getInstance", args ?? new GetInstanceInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetInstanceResult>("gcp:spanner/getInstance:getInstance", args ?? new GetInstanceInvokeArgs(), options.WithDefaults());
     }
 
 

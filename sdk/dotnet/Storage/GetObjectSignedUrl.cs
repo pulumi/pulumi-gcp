@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Storage
 {
@@ -73,7 +72,7 @@ namespace Pulumi.Gcp.Storage
         /// ```
         /// </summary>
         public static Task<GetObjectSignedUrlResult> InvokeAsync(GetObjectSignedUrlArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetObjectSignedUrlResult>("gcp:storage/getObjectSignedUrl:getObjectSignedUrl", args ?? new GetObjectSignedUrlArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetObjectSignedUrlResult>("gcp:storage/getObjectSignedUrl:getObjectSignedUrl", args ?? new GetObjectSignedUrlArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Google Cloud storage signed URL data source generates a signed URL for a given storage object. Signed URLs provide a way to give time-limited read or write access to anyone in possession of the URL, regardless of whether they have a Google account.
@@ -136,7 +135,7 @@ namespace Pulumi.Gcp.Storage
         /// ```
         /// </summary>
         public static Output<GetObjectSignedUrlResult> Invoke(GetObjectSignedUrlInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetObjectSignedUrlResult>("gcp:storage/getObjectSignedUrl:getObjectSignedUrl", args ?? new GetObjectSignedUrlInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetObjectSignedUrlResult>("gcp:storage/getObjectSignedUrl:getObjectSignedUrl", args ?? new GetObjectSignedUrlInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -185,7 +185,7 @@ type AiFeatureStoreInput interface {
 }
 
 func (*AiFeatureStore) ElementType() reflect.Type {
-	return reflect.TypeOf((*AiFeatureStore)(nil))
+	return reflect.TypeOf((**AiFeatureStore)(nil)).Elem()
 }
 
 func (i *AiFeatureStore) ToAiFeatureStoreOutput() AiFeatureStoreOutput {
@@ -194,35 +194,6 @@ func (i *AiFeatureStore) ToAiFeatureStoreOutput() AiFeatureStoreOutput {
 
 func (i *AiFeatureStore) ToAiFeatureStoreOutputWithContext(ctx context.Context) AiFeatureStoreOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreOutput)
-}
-
-func (i *AiFeatureStore) ToAiFeatureStorePtrOutput() AiFeatureStorePtrOutput {
-	return i.ToAiFeatureStorePtrOutputWithContext(context.Background())
-}
-
-func (i *AiFeatureStore) ToAiFeatureStorePtrOutputWithContext(ctx context.Context) AiFeatureStorePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStorePtrOutput)
-}
-
-type AiFeatureStorePtrInput interface {
-	pulumi.Input
-
-	ToAiFeatureStorePtrOutput() AiFeatureStorePtrOutput
-	ToAiFeatureStorePtrOutputWithContext(ctx context.Context) AiFeatureStorePtrOutput
-}
-
-type aiFeatureStorePtrType AiFeatureStoreArgs
-
-func (*aiFeatureStorePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AiFeatureStore)(nil))
-}
-
-func (i *aiFeatureStorePtrType) ToAiFeatureStorePtrOutput() AiFeatureStorePtrOutput {
-	return i.ToAiFeatureStorePtrOutputWithContext(context.Background())
-}
-
-func (i *aiFeatureStorePtrType) ToAiFeatureStorePtrOutputWithContext(ctx context.Context) AiFeatureStorePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStorePtrOutput)
 }
 
 // AiFeatureStoreArrayInput is an input type that accepts AiFeatureStoreArray and AiFeatureStoreArrayOutput values.
@@ -278,7 +249,7 @@ func (i AiFeatureStoreMap) ToAiFeatureStoreMapOutputWithContext(ctx context.Cont
 type AiFeatureStoreOutput struct{ *pulumi.OutputState }
 
 func (AiFeatureStoreOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AiFeatureStore)(nil))
+	return reflect.TypeOf((**AiFeatureStore)(nil)).Elem()
 }
 
 func (o AiFeatureStoreOutput) ToAiFeatureStoreOutput() AiFeatureStoreOutput {
@@ -289,44 +260,10 @@ func (o AiFeatureStoreOutput) ToAiFeatureStoreOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o AiFeatureStoreOutput) ToAiFeatureStorePtrOutput() AiFeatureStorePtrOutput {
-	return o.ToAiFeatureStorePtrOutputWithContext(context.Background())
-}
-
-func (o AiFeatureStoreOutput) ToAiFeatureStorePtrOutputWithContext(ctx context.Context) AiFeatureStorePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureStore) *AiFeatureStore {
-		return &v
-	}).(AiFeatureStorePtrOutput)
-}
-
-type AiFeatureStorePtrOutput struct{ *pulumi.OutputState }
-
-func (AiFeatureStorePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AiFeatureStore)(nil))
-}
-
-func (o AiFeatureStorePtrOutput) ToAiFeatureStorePtrOutput() AiFeatureStorePtrOutput {
-	return o
-}
-
-func (o AiFeatureStorePtrOutput) ToAiFeatureStorePtrOutputWithContext(ctx context.Context) AiFeatureStorePtrOutput {
-	return o
-}
-
-func (o AiFeatureStorePtrOutput) Elem() AiFeatureStoreOutput {
-	return o.ApplyT(func(v *AiFeatureStore) AiFeatureStore {
-		if v != nil {
-			return *v
-		}
-		var ret AiFeatureStore
-		return ret
-	}).(AiFeatureStoreOutput)
-}
-
 type AiFeatureStoreArrayOutput struct{ *pulumi.OutputState }
 
 func (AiFeatureStoreArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AiFeatureStore)(nil))
+	return reflect.TypeOf((*[]*AiFeatureStore)(nil)).Elem()
 }
 
 func (o AiFeatureStoreArrayOutput) ToAiFeatureStoreArrayOutput() AiFeatureStoreArrayOutput {
@@ -338,15 +275,15 @@ func (o AiFeatureStoreArrayOutput) ToAiFeatureStoreArrayOutputWithContext(ctx co
 }
 
 func (o AiFeatureStoreArrayOutput) Index(i pulumi.IntInput) AiFeatureStoreOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiFeatureStore {
-		return vs[0].([]AiFeatureStore)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AiFeatureStore {
+		return vs[0].([]*AiFeatureStore)[vs[1].(int)]
 	}).(AiFeatureStoreOutput)
 }
 
 type AiFeatureStoreMapOutput struct{ *pulumi.OutputState }
 
 func (AiFeatureStoreMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AiFeatureStore)(nil))
+	return reflect.TypeOf((*map[string]*AiFeatureStore)(nil)).Elem()
 }
 
 func (o AiFeatureStoreMapOutput) ToAiFeatureStoreMapOutput() AiFeatureStoreMapOutput {
@@ -358,18 +295,16 @@ func (o AiFeatureStoreMapOutput) ToAiFeatureStoreMapOutputWithContext(ctx contex
 }
 
 func (o AiFeatureStoreMapOutput) MapIndex(k pulumi.StringInput) AiFeatureStoreOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AiFeatureStore {
-		return vs[0].(map[string]AiFeatureStore)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AiFeatureStore {
+		return vs[0].(map[string]*AiFeatureStore)[vs[1].(string)]
 	}).(AiFeatureStoreOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreInput)(nil)).Elem(), &AiFeatureStore{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStorePtrInput)(nil)).Elem(), &AiFeatureStore{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreArrayInput)(nil)).Elem(), AiFeatureStoreArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreMapInput)(nil)).Elem(), AiFeatureStoreMap{})
 	pulumi.RegisterOutputType(AiFeatureStoreOutput{})
-	pulumi.RegisterOutputType(AiFeatureStorePtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreArrayOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreMapOutput{})
 }

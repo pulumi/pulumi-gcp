@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Container
 {
@@ -41,7 +40,7 @@ namespace Pulumi.Gcp.Container
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRegistryRepositoryResult> InvokeAsync(GetRegistryRepositoryArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegistryRepositoryResult>("gcp:container/getRegistryRepository:getRegistryRepository", args ?? new GetRegistryRepositoryArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRegistryRepositoryResult>("gcp:container/getRegistryRepository:getRegistryRepository", args ?? new GetRegistryRepositoryArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
@@ -72,7 +71,7 @@ namespace Pulumi.Gcp.Container
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetRegistryRepositoryResult> Invoke(GetRegistryRepositoryInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRegistryRepositoryResult>("gcp:container/getRegistryRepository:getRegistryRepository", args ?? new GetRegistryRepositoryInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetRegistryRepositoryResult>("gcp:container/getRegistryRepository:getRegistryRepository", args ?? new GetRegistryRepositoryInvokeArgs(), options.WithDefaults());
     }
 
 

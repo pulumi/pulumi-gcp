@@ -169,44 +169,42 @@ export class WorkerPool extends pulumi.CustomResource {
      */
     constructor(name: string, args: WorkerPoolArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: WorkerPoolArgs | WorkerPoolState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkerPoolState | undefined;
-            inputs["annotations"] = state ? state.annotations : undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["deleteTime"] = state ? state.deleteTime : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["networkConfig"] = state ? state.networkConfig : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["state"] = state ? state.state : undefined;
-            inputs["uid"] = state ? state.uid : undefined;
-            inputs["updateTime"] = state ? state.updateTime : undefined;
-            inputs["workerConfig"] = state ? state.workerConfig : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["deleteTime"] = state ? state.deleteTime : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networkConfig"] = state ? state.networkConfig : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["uid"] = state ? state.uid : undefined;
+            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["workerConfig"] = state ? state.workerConfig : undefined;
         } else {
             const args = argsOrState as WorkerPoolArgs | undefined;
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["networkConfig"] = args ? args.networkConfig : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["workerConfig"] = args ? args.workerConfig : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["deleteTime"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["uid"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networkConfig"] = args ? args.networkConfig : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["workerConfig"] = args ? args.workerConfig : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["deleteTime"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["uid"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(WorkerPool.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(WorkerPool.__pulumiType, name, resourceInputs, opts);
     }
 }
 

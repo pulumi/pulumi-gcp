@@ -181,21 +181,21 @@ export class Instance extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["fileShares"] = state ? state.fileShares : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["networks"] = state ? state.networks : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["tier"] = state ? state.tier : undefined;
-            inputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["fileShares"] = state ? state.fileShares : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networks"] = state ? state.networks : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["tier"] = state ? state.tier : undefined;
+            resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
             if ((!args || args.fileShares === undefined) && !opts.urn) {
@@ -207,22 +207,20 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.tier === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tier'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["fileShares"] = args ? args.fileShares : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["networks"] = args ? args.networks : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["tier"] = args ? args.tier : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["fileShares"] = args ? args.fileShares : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networks"] = args ? args.networks : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["tier"] = args ? args.tier : undefined;
+            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Instance.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -169,54 +169,52 @@ export class Device extends pulumi.CustomResource {
      */
     constructor(name: string, args: DeviceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DeviceArgs | DeviceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DeviceState | undefined;
-            inputs["blocked"] = state ? state.blocked : undefined;
-            inputs["configs"] = state ? state.configs : undefined;
-            inputs["credentials"] = state ? state.credentials : undefined;
-            inputs["gatewayConfig"] = state ? state.gatewayConfig : undefined;
-            inputs["lastConfigAckTime"] = state ? state.lastConfigAckTime : undefined;
-            inputs["lastConfigSendTime"] = state ? state.lastConfigSendTime : undefined;
-            inputs["lastErrorStatuses"] = state ? state.lastErrorStatuses : undefined;
-            inputs["lastErrorTime"] = state ? state.lastErrorTime : undefined;
-            inputs["lastEventTime"] = state ? state.lastEventTime : undefined;
-            inputs["lastHeartbeatTime"] = state ? state.lastHeartbeatTime : undefined;
-            inputs["lastStateTime"] = state ? state.lastStateTime : undefined;
-            inputs["logLevel"] = state ? state.logLevel : undefined;
-            inputs["metadata"] = state ? state.metadata : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["numId"] = state ? state.numId : undefined;
-            inputs["registry"] = state ? state.registry : undefined;
-            inputs["states"] = state ? state.states : undefined;
+            resourceInputs["blocked"] = state ? state.blocked : undefined;
+            resourceInputs["configs"] = state ? state.configs : undefined;
+            resourceInputs["credentials"] = state ? state.credentials : undefined;
+            resourceInputs["gatewayConfig"] = state ? state.gatewayConfig : undefined;
+            resourceInputs["lastConfigAckTime"] = state ? state.lastConfigAckTime : undefined;
+            resourceInputs["lastConfigSendTime"] = state ? state.lastConfigSendTime : undefined;
+            resourceInputs["lastErrorStatuses"] = state ? state.lastErrorStatuses : undefined;
+            resourceInputs["lastErrorTime"] = state ? state.lastErrorTime : undefined;
+            resourceInputs["lastEventTime"] = state ? state.lastEventTime : undefined;
+            resourceInputs["lastHeartbeatTime"] = state ? state.lastHeartbeatTime : undefined;
+            resourceInputs["lastStateTime"] = state ? state.lastStateTime : undefined;
+            resourceInputs["logLevel"] = state ? state.logLevel : undefined;
+            resourceInputs["metadata"] = state ? state.metadata : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["numId"] = state ? state.numId : undefined;
+            resourceInputs["registry"] = state ? state.registry : undefined;
+            resourceInputs["states"] = state ? state.states : undefined;
         } else {
             const args = argsOrState as DeviceArgs | undefined;
             if ((!args || args.registry === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'registry'");
             }
-            inputs["blocked"] = args ? args.blocked : undefined;
-            inputs["credentials"] = args ? args.credentials : undefined;
-            inputs["gatewayConfig"] = args ? args.gatewayConfig : undefined;
-            inputs["logLevel"] = args ? args.logLevel : undefined;
-            inputs["metadata"] = args ? args.metadata : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["registry"] = args ? args.registry : undefined;
-            inputs["configs"] = undefined /*out*/;
-            inputs["lastConfigAckTime"] = undefined /*out*/;
-            inputs["lastConfigSendTime"] = undefined /*out*/;
-            inputs["lastErrorStatuses"] = undefined /*out*/;
-            inputs["lastErrorTime"] = undefined /*out*/;
-            inputs["lastEventTime"] = undefined /*out*/;
-            inputs["lastHeartbeatTime"] = undefined /*out*/;
-            inputs["lastStateTime"] = undefined /*out*/;
-            inputs["numId"] = undefined /*out*/;
-            inputs["states"] = undefined /*out*/;
+            resourceInputs["blocked"] = args ? args.blocked : undefined;
+            resourceInputs["credentials"] = args ? args.credentials : undefined;
+            resourceInputs["gatewayConfig"] = args ? args.gatewayConfig : undefined;
+            resourceInputs["logLevel"] = args ? args.logLevel : undefined;
+            resourceInputs["metadata"] = args ? args.metadata : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["registry"] = args ? args.registry : undefined;
+            resourceInputs["configs"] = undefined /*out*/;
+            resourceInputs["lastConfigAckTime"] = undefined /*out*/;
+            resourceInputs["lastConfigSendTime"] = undefined /*out*/;
+            resourceInputs["lastErrorStatuses"] = undefined /*out*/;
+            resourceInputs["lastErrorTime"] = undefined /*out*/;
+            resourceInputs["lastEventTime"] = undefined /*out*/;
+            resourceInputs["lastHeartbeatTime"] = undefined /*out*/;
+            resourceInputs["lastStateTime"] = undefined /*out*/;
+            resourceInputs["numId"] = undefined /*out*/;
+            resourceInputs["states"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Device.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Device.__pulumiType, name, resourceInputs, opts);
     }
 }
 

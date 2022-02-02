@@ -531,7 +531,7 @@ type InstanceFromTemplateInput interface {
 }
 
 func (*InstanceFromTemplate) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceFromTemplate)(nil))
+	return reflect.TypeOf((**InstanceFromTemplate)(nil)).Elem()
 }
 
 func (i *InstanceFromTemplate) ToInstanceFromTemplateOutput() InstanceFromTemplateOutput {
@@ -540,35 +540,6 @@ func (i *InstanceFromTemplate) ToInstanceFromTemplateOutput() InstanceFromTempla
 
 func (i *InstanceFromTemplate) ToInstanceFromTemplateOutputWithContext(ctx context.Context) InstanceFromTemplateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromTemplateOutput)
-}
-
-func (i *InstanceFromTemplate) ToInstanceFromTemplatePtrOutput() InstanceFromTemplatePtrOutput {
-	return i.ToInstanceFromTemplatePtrOutputWithContext(context.Background())
-}
-
-func (i *InstanceFromTemplate) ToInstanceFromTemplatePtrOutputWithContext(ctx context.Context) InstanceFromTemplatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromTemplatePtrOutput)
-}
-
-type InstanceFromTemplatePtrInput interface {
-	pulumi.Input
-
-	ToInstanceFromTemplatePtrOutput() InstanceFromTemplatePtrOutput
-	ToInstanceFromTemplatePtrOutputWithContext(ctx context.Context) InstanceFromTemplatePtrOutput
-}
-
-type instanceFromTemplatePtrType InstanceFromTemplateArgs
-
-func (*instanceFromTemplatePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceFromTemplate)(nil))
-}
-
-func (i *instanceFromTemplatePtrType) ToInstanceFromTemplatePtrOutput() InstanceFromTemplatePtrOutput {
-	return i.ToInstanceFromTemplatePtrOutputWithContext(context.Background())
-}
-
-func (i *instanceFromTemplatePtrType) ToInstanceFromTemplatePtrOutputWithContext(ctx context.Context) InstanceFromTemplatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromTemplatePtrOutput)
 }
 
 // InstanceFromTemplateArrayInput is an input type that accepts InstanceFromTemplateArray and InstanceFromTemplateArrayOutput values.
@@ -624,7 +595,7 @@ func (i InstanceFromTemplateMap) ToInstanceFromTemplateMapOutputWithContext(ctx 
 type InstanceFromTemplateOutput struct{ *pulumi.OutputState }
 
 func (InstanceFromTemplateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceFromTemplate)(nil))
+	return reflect.TypeOf((**InstanceFromTemplate)(nil)).Elem()
 }
 
 func (o InstanceFromTemplateOutput) ToInstanceFromTemplateOutput() InstanceFromTemplateOutput {
@@ -635,44 +606,10 @@ func (o InstanceFromTemplateOutput) ToInstanceFromTemplateOutputWithContext(ctx 
 	return o
 }
 
-func (o InstanceFromTemplateOutput) ToInstanceFromTemplatePtrOutput() InstanceFromTemplatePtrOutput {
-	return o.ToInstanceFromTemplatePtrOutputWithContext(context.Background())
-}
-
-func (o InstanceFromTemplateOutput) ToInstanceFromTemplatePtrOutputWithContext(ctx context.Context) InstanceFromTemplatePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceFromTemplate) *InstanceFromTemplate {
-		return &v
-	}).(InstanceFromTemplatePtrOutput)
-}
-
-type InstanceFromTemplatePtrOutput struct{ *pulumi.OutputState }
-
-func (InstanceFromTemplatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceFromTemplate)(nil))
-}
-
-func (o InstanceFromTemplatePtrOutput) ToInstanceFromTemplatePtrOutput() InstanceFromTemplatePtrOutput {
-	return o
-}
-
-func (o InstanceFromTemplatePtrOutput) ToInstanceFromTemplatePtrOutputWithContext(ctx context.Context) InstanceFromTemplatePtrOutput {
-	return o
-}
-
-func (o InstanceFromTemplatePtrOutput) Elem() InstanceFromTemplateOutput {
-	return o.ApplyT(func(v *InstanceFromTemplate) InstanceFromTemplate {
-		if v != nil {
-			return *v
-		}
-		var ret InstanceFromTemplate
-		return ret
-	}).(InstanceFromTemplateOutput)
-}
-
 type InstanceFromTemplateArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceFromTemplateArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]InstanceFromTemplate)(nil))
+	return reflect.TypeOf((*[]*InstanceFromTemplate)(nil)).Elem()
 }
 
 func (o InstanceFromTemplateArrayOutput) ToInstanceFromTemplateArrayOutput() InstanceFromTemplateArrayOutput {
@@ -684,15 +621,15 @@ func (o InstanceFromTemplateArrayOutput) ToInstanceFromTemplateArrayOutputWithCo
 }
 
 func (o InstanceFromTemplateArrayOutput) Index(i pulumi.IntInput) InstanceFromTemplateOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceFromTemplate {
-		return vs[0].([]InstanceFromTemplate)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InstanceFromTemplate {
+		return vs[0].([]*InstanceFromTemplate)[vs[1].(int)]
 	}).(InstanceFromTemplateOutput)
 }
 
 type InstanceFromTemplateMapOutput struct{ *pulumi.OutputState }
 
 func (InstanceFromTemplateMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]InstanceFromTemplate)(nil))
+	return reflect.TypeOf((*map[string]*InstanceFromTemplate)(nil)).Elem()
 }
 
 func (o InstanceFromTemplateMapOutput) ToInstanceFromTemplateMapOutput() InstanceFromTemplateMapOutput {
@@ -704,18 +641,16 @@ func (o InstanceFromTemplateMapOutput) ToInstanceFromTemplateMapOutputWithContex
 }
 
 func (o InstanceFromTemplateMapOutput) MapIndex(k pulumi.StringInput) InstanceFromTemplateOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) InstanceFromTemplate {
-		return vs[0].(map[string]InstanceFromTemplate)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *InstanceFromTemplate {
+		return vs[0].(map[string]*InstanceFromTemplate)[vs[1].(string)]
 	}).(InstanceFromTemplateOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceFromTemplateInput)(nil)).Elem(), &InstanceFromTemplate{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceFromTemplatePtrInput)(nil)).Elem(), &InstanceFromTemplate{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceFromTemplateArrayInput)(nil)).Elem(), InstanceFromTemplateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceFromTemplateMapInput)(nil)).Elem(), InstanceFromTemplateMap{})
 	pulumi.RegisterOutputType(InstanceFromTemplateOutput{})
-	pulumi.RegisterOutputType(InstanceFromTemplatePtrOutput{})
 	pulumi.RegisterOutputType(InstanceFromTemplateArrayOutput{})
 	pulumi.RegisterOutputType(InstanceFromTemplateMapOutput{})
 }

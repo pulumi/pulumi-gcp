@@ -16,9 +16,7 @@ export function getCaCerts(args: GetCaCertsArgs, opts?: pulumi.InvokeOptions): P
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:sql/getCaCerts:getCaCerts", {
         "instance": args.instance,
         "project": args.project,

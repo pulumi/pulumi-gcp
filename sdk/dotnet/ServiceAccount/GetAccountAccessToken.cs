@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.ServiceAccount
 {
@@ -19,7 +18,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// [the official documentation](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials) as well as [iamcredentials.generateAccessToken()](https://cloud.google.com/iam/credentials/reference/rest/v1/projects.serviceAccounts/generateAccessToken)
         /// </summary>
         public static Task<GetAccountAccessTokenResult> InvokeAsync(GetAccountAccessTokenArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountAccessTokenResult>("gcp:serviceAccount/getAccountAccessToken:getAccountAccessToken", args ?? new GetAccountAccessTokenArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountAccessTokenResult>("gcp:serviceAccount/getAccountAccessToken:getAccountAccessToken", args ?? new GetAccountAccessTokenArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a google `oauth2` `access_token` for a different service account than the one initially running the script.
@@ -28,7 +27,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// [the official documentation](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials) as well as [iamcredentials.generateAccessToken()](https://cloud.google.com/iam/credentials/reference/rest/v1/projects.serviceAccounts/generateAccessToken)
         /// </summary>
         public static Output<GetAccountAccessTokenResult> Invoke(GetAccountAccessTokenInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAccountAccessTokenResult>("gcp:serviceAccount/getAccountAccessToken:getAccountAccessToken", args ?? new GetAccountAccessTokenInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAccountAccessTokenResult>("gcp:serviceAccount/getAccountAccessToken:getAccountAccessToken", args ?? new GetAccountAccessTokenInvokeArgs(), options.WithDefaults());
     }
 
 

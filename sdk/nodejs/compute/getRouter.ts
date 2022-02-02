@@ -25,9 +25,7 @@ export function getRouter(args: GetRouterArgs, opts?: pulumi.InvokeOptions): Pro
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:compute/getRouter:getRouter", {
         "name": args.name,
         "network": args.network,

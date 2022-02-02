@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Monitoring
 {
@@ -83,7 +82,7 @@ namespace Pulumi.Gcp.Monitoring
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNotificationChannelResult> InvokeAsync(GetNotificationChannelArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNotificationChannelResult>("gcp:monitoring/getNotificationChannel:getNotificationChannel", args ?? new GetNotificationChannelArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNotificationChannelResult>("gcp:monitoring/getNotificationChannel:getNotificationChannel", args ?? new GetNotificationChannelArgs(), options.WithDefaults());
 
         /// <summary>
         /// A NotificationChannel is a medium through which an alert is delivered
@@ -156,7 +155,7 @@ namespace Pulumi.Gcp.Monitoring
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetNotificationChannelResult> Invoke(GetNotificationChannelInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNotificationChannelResult>("gcp:monitoring/getNotificationChannel:getNotificationChannel", args ?? new GetNotificationChannelInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetNotificationChannelResult>("gcp:monitoring/getNotificationChannel:getNotificationChannel", args ?? new GetNotificationChannelInvokeArgs(), options.WithDefaults());
     }
 
 

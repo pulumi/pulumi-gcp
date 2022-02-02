@@ -120,7 +120,7 @@ type LocationInput interface {
 }
 
 func (*Location) ElementType() reflect.Type {
-	return reflect.TypeOf((*Location)(nil))
+	return reflect.TypeOf((**Location)(nil)).Elem()
 }
 
 func (i *Location) ToLocationOutput() LocationOutput {
@@ -129,35 +129,6 @@ func (i *Location) ToLocationOutput() LocationOutput {
 
 func (i *Location) ToLocationOutputWithContext(ctx context.Context) LocationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LocationOutput)
-}
-
-func (i *Location) ToLocationPtrOutput() LocationPtrOutput {
-	return i.ToLocationPtrOutputWithContext(context.Background())
-}
-
-func (i *Location) ToLocationPtrOutputWithContext(ctx context.Context) LocationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LocationPtrOutput)
-}
-
-type LocationPtrInput interface {
-	pulumi.Input
-
-	ToLocationPtrOutput() LocationPtrOutput
-	ToLocationPtrOutputWithContext(ctx context.Context) LocationPtrOutput
-}
-
-type locationPtrType LocationArgs
-
-func (*locationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Location)(nil))
-}
-
-func (i *locationPtrType) ToLocationPtrOutput() LocationPtrOutput {
-	return i.ToLocationPtrOutputWithContext(context.Background())
-}
-
-func (i *locationPtrType) ToLocationPtrOutputWithContext(ctx context.Context) LocationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LocationPtrOutput)
 }
 
 // LocationArrayInput is an input type that accepts LocationArray and LocationArrayOutput values.
@@ -213,7 +184,7 @@ func (i LocationMap) ToLocationMapOutputWithContext(ctx context.Context) Locatio
 type LocationOutput struct{ *pulumi.OutputState }
 
 func (LocationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Location)(nil))
+	return reflect.TypeOf((**Location)(nil)).Elem()
 }
 
 func (o LocationOutput) ToLocationOutput() LocationOutput {
@@ -224,44 +195,10 @@ func (o LocationOutput) ToLocationOutputWithContext(ctx context.Context) Locatio
 	return o
 }
 
-func (o LocationOutput) ToLocationPtrOutput() LocationPtrOutput {
-	return o.ToLocationPtrOutputWithContext(context.Background())
-}
-
-func (o LocationOutput) ToLocationPtrOutputWithContext(ctx context.Context) LocationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Location) *Location {
-		return &v
-	}).(LocationPtrOutput)
-}
-
-type LocationPtrOutput struct{ *pulumi.OutputState }
-
-func (LocationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Location)(nil))
-}
-
-func (o LocationPtrOutput) ToLocationPtrOutput() LocationPtrOutput {
-	return o
-}
-
-func (o LocationPtrOutput) ToLocationPtrOutputWithContext(ctx context.Context) LocationPtrOutput {
-	return o
-}
-
-func (o LocationPtrOutput) Elem() LocationOutput {
-	return o.ApplyT(func(v *Location) Location {
-		if v != nil {
-			return *v
-		}
-		var ret Location
-		return ret
-	}).(LocationOutput)
-}
-
 type LocationArrayOutput struct{ *pulumi.OutputState }
 
 func (LocationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Location)(nil))
+	return reflect.TypeOf((*[]*Location)(nil)).Elem()
 }
 
 func (o LocationArrayOutput) ToLocationArrayOutput() LocationArrayOutput {
@@ -273,15 +210,15 @@ func (o LocationArrayOutput) ToLocationArrayOutputWithContext(ctx context.Contex
 }
 
 func (o LocationArrayOutput) Index(i pulumi.IntInput) LocationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Location {
-		return vs[0].([]Location)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Location {
+		return vs[0].([]*Location)[vs[1].(int)]
 	}).(LocationOutput)
 }
 
 type LocationMapOutput struct{ *pulumi.OutputState }
 
 func (LocationMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Location)(nil))
+	return reflect.TypeOf((*map[string]*Location)(nil)).Elem()
 }
 
 func (o LocationMapOutput) ToLocationMapOutput() LocationMapOutput {
@@ -293,18 +230,16 @@ func (o LocationMapOutput) ToLocationMapOutputWithContext(ctx context.Context) L
 }
 
 func (o LocationMapOutput) MapIndex(k pulumi.StringInput) LocationOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Location {
-		return vs[0].(map[string]Location)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Location {
+		return vs[0].(map[string]*Location)[vs[1].(string)]
 	}).(LocationOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LocationInput)(nil)).Elem(), &Location{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LocationPtrInput)(nil)).Elem(), &Location{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LocationArrayInput)(nil)).Elem(), LocationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LocationMapInput)(nil)).Elem(), LocationMap{})
 	pulumi.RegisterOutputType(LocationOutput{})
-	pulumi.RegisterOutputType(LocationPtrOutput{})
 	pulumi.RegisterOutputType(LocationArrayOutput{})
 	pulumi.RegisterOutputType(LocationMapOutput{})
 }

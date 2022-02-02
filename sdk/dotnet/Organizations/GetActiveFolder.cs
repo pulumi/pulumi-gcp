@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Organizations
 {
@@ -40,7 +39,7 @@ namespace Pulumi.Gcp.Organizations
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetActiveFolderResult> InvokeAsync(GetActiveFolderArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetActiveFolderResult>("gcp:organizations/getActiveFolder:getActiveFolder", args ?? new GetActiveFolderArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetActiveFolderResult>("gcp:organizations/getActiveFolder:getActiveFolder", args ?? new GetActiveFolderArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get an active folder within GCP by `display_name` and `parent`.
@@ -70,7 +69,7 @@ namespace Pulumi.Gcp.Organizations
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetActiveFolderResult> Invoke(GetActiveFolderInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetActiveFolderResult>("gcp:organizations/getActiveFolder:getActiveFolder", args ?? new GetActiveFolderInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetActiveFolderResult>("gcp:organizations/getActiveFolder:getActiveFolder", args ?? new GetActiveFolderInvokeArgs(), options.WithDefaults());
     }
 
 

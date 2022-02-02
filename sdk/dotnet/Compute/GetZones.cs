@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Compute
 {
@@ -17,14 +16,14 @@ namespace Pulumi.Gcp.Compute
         /// See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("gcp:compute/getZones:getZones", args ?? new GetZonesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("gcp:compute/getZones:getZones", args ?? new GetZonesArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides access to available Google Compute zones in a region for a given project.
         /// See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
         /// </summary>
         public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetZonesResult>("gcp:compute/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetZonesResult>("gcp:compute/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());
     }
 
 

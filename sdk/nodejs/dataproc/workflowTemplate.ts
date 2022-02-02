@@ -170,21 +170,21 @@ export class WorkflowTemplate extends pulumi.CustomResource {
      */
     constructor(name: string, args: WorkflowTemplateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: WorkflowTemplateArgs | WorkflowTemplateState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkflowTemplateState | undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["dagTimeout"] = state ? state.dagTimeout : undefined;
-            inputs["jobs"] = state ? state.jobs : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["parameters"] = state ? state.parameters : undefined;
-            inputs["placement"] = state ? state.placement : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["updateTime"] = state ? state.updateTime : undefined;
-            inputs["version"] = state ? state.version : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["dagTimeout"] = state ? state.dagTimeout : undefined;
+            resourceInputs["jobs"] = state ? state.jobs : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["parameters"] = state ? state.parameters : undefined;
+            resourceInputs["placement"] = state ? state.placement : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as WorkflowTemplateArgs | undefined;
             if ((!args || args.jobs === undefined) && !opts.urn) {
@@ -196,22 +196,20 @@ export class WorkflowTemplate extends pulumi.CustomResource {
             if ((!args || args.placement === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'placement'");
             }
-            inputs["dagTimeout"] = args ? args.dagTimeout : undefined;
-            inputs["jobs"] = args ? args.jobs : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["parameters"] = args ? args.parameters : undefined;
-            inputs["placement"] = args ? args.placement : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["version"] = args ? args.version : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["dagTimeout"] = args ? args.dagTimeout : undefined;
+            resourceInputs["jobs"] = args ? args.jobs : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["parameters"] = args ? args.parameters : undefined;
+            resourceInputs["placement"] = args ? args.placement : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(WorkflowTemplate.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(WorkflowTemplate.__pulumiType, name, resourceInputs, opts);
     }
 }
 

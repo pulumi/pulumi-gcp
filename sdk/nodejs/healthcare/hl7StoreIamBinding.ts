@@ -143,15 +143,15 @@ export class Hl7StoreIamBinding extends pulumi.CustomResource {
      */
     constructor(name: string, args: Hl7StoreIamBindingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: Hl7StoreIamBindingArgs | Hl7StoreIamBindingState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as Hl7StoreIamBindingState | undefined;
-            inputs["condition"] = state ? state.condition : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["hl7V2StoreId"] = state ? state.hl7V2StoreId : undefined;
-            inputs["members"] = state ? state.members : undefined;
-            inputs["role"] = state ? state.role : undefined;
+            resourceInputs["condition"] = state ? state.condition : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["hl7V2StoreId"] = state ? state.hl7V2StoreId : undefined;
+            resourceInputs["members"] = state ? state.members : undefined;
+            resourceInputs["role"] = state ? state.role : undefined;
         } else {
             const args = argsOrState as Hl7StoreIamBindingArgs | undefined;
             if ((!args || args.hl7V2StoreId === undefined) && !opts.urn) {
@@ -163,16 +163,14 @@ export class Hl7StoreIamBinding extends pulumi.CustomResource {
             if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            inputs["condition"] = args ? args.condition : undefined;
-            inputs["hl7V2StoreId"] = args ? args.hl7V2StoreId : undefined;
-            inputs["members"] = args ? args.members : undefined;
-            inputs["role"] = args ? args.role : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["condition"] = args ? args.condition : undefined;
+            resourceInputs["hl7V2StoreId"] = args ? args.hl7V2StoreId : undefined;
+            resourceInputs["members"] = args ? args.members : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Hl7StoreIamBinding.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Hl7StoreIamBinding.__pulumiType, name, resourceInputs, opts);
     }
 }
 

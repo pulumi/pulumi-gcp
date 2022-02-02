@@ -366,7 +366,7 @@ type WebTypeComputeIamBindingInput interface {
 }
 
 func (*WebTypeComputeIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebTypeComputeIamBinding)(nil))
+	return reflect.TypeOf((**WebTypeComputeIamBinding)(nil)).Elem()
 }
 
 func (i *WebTypeComputeIamBinding) ToWebTypeComputeIamBindingOutput() WebTypeComputeIamBindingOutput {
@@ -375,35 +375,6 @@ func (i *WebTypeComputeIamBinding) ToWebTypeComputeIamBindingOutput() WebTypeCom
 
 func (i *WebTypeComputeIamBinding) ToWebTypeComputeIamBindingOutputWithContext(ctx context.Context) WebTypeComputeIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebTypeComputeIamBindingOutput)
-}
-
-func (i *WebTypeComputeIamBinding) ToWebTypeComputeIamBindingPtrOutput() WebTypeComputeIamBindingPtrOutput {
-	return i.ToWebTypeComputeIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *WebTypeComputeIamBinding) ToWebTypeComputeIamBindingPtrOutputWithContext(ctx context.Context) WebTypeComputeIamBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WebTypeComputeIamBindingPtrOutput)
-}
-
-type WebTypeComputeIamBindingPtrInput interface {
-	pulumi.Input
-
-	ToWebTypeComputeIamBindingPtrOutput() WebTypeComputeIamBindingPtrOutput
-	ToWebTypeComputeIamBindingPtrOutputWithContext(ctx context.Context) WebTypeComputeIamBindingPtrOutput
-}
-
-type webTypeComputeIamBindingPtrType WebTypeComputeIamBindingArgs
-
-func (*webTypeComputeIamBindingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WebTypeComputeIamBinding)(nil))
-}
-
-func (i *webTypeComputeIamBindingPtrType) ToWebTypeComputeIamBindingPtrOutput() WebTypeComputeIamBindingPtrOutput {
-	return i.ToWebTypeComputeIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *webTypeComputeIamBindingPtrType) ToWebTypeComputeIamBindingPtrOutputWithContext(ctx context.Context) WebTypeComputeIamBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WebTypeComputeIamBindingPtrOutput)
 }
 
 // WebTypeComputeIamBindingArrayInput is an input type that accepts WebTypeComputeIamBindingArray and WebTypeComputeIamBindingArrayOutput values.
@@ -459,7 +430,7 @@ func (i WebTypeComputeIamBindingMap) ToWebTypeComputeIamBindingMapOutputWithCont
 type WebTypeComputeIamBindingOutput struct{ *pulumi.OutputState }
 
 func (WebTypeComputeIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebTypeComputeIamBinding)(nil))
+	return reflect.TypeOf((**WebTypeComputeIamBinding)(nil)).Elem()
 }
 
 func (o WebTypeComputeIamBindingOutput) ToWebTypeComputeIamBindingOutput() WebTypeComputeIamBindingOutput {
@@ -470,44 +441,10 @@ func (o WebTypeComputeIamBindingOutput) ToWebTypeComputeIamBindingOutputWithCont
 	return o
 }
 
-func (o WebTypeComputeIamBindingOutput) ToWebTypeComputeIamBindingPtrOutput() WebTypeComputeIamBindingPtrOutput {
-	return o.ToWebTypeComputeIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (o WebTypeComputeIamBindingOutput) ToWebTypeComputeIamBindingPtrOutputWithContext(ctx context.Context) WebTypeComputeIamBindingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebTypeComputeIamBinding) *WebTypeComputeIamBinding {
-		return &v
-	}).(WebTypeComputeIamBindingPtrOutput)
-}
-
-type WebTypeComputeIamBindingPtrOutput struct{ *pulumi.OutputState }
-
-func (WebTypeComputeIamBindingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WebTypeComputeIamBinding)(nil))
-}
-
-func (o WebTypeComputeIamBindingPtrOutput) ToWebTypeComputeIamBindingPtrOutput() WebTypeComputeIamBindingPtrOutput {
-	return o
-}
-
-func (o WebTypeComputeIamBindingPtrOutput) ToWebTypeComputeIamBindingPtrOutputWithContext(ctx context.Context) WebTypeComputeIamBindingPtrOutput {
-	return o
-}
-
-func (o WebTypeComputeIamBindingPtrOutput) Elem() WebTypeComputeIamBindingOutput {
-	return o.ApplyT(func(v *WebTypeComputeIamBinding) WebTypeComputeIamBinding {
-		if v != nil {
-			return *v
-		}
-		var ret WebTypeComputeIamBinding
-		return ret
-	}).(WebTypeComputeIamBindingOutput)
-}
-
 type WebTypeComputeIamBindingArrayOutput struct{ *pulumi.OutputState }
 
 func (WebTypeComputeIamBindingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]WebTypeComputeIamBinding)(nil))
+	return reflect.TypeOf((*[]*WebTypeComputeIamBinding)(nil)).Elem()
 }
 
 func (o WebTypeComputeIamBindingArrayOutput) ToWebTypeComputeIamBindingArrayOutput() WebTypeComputeIamBindingArrayOutput {
@@ -519,15 +456,15 @@ func (o WebTypeComputeIamBindingArrayOutput) ToWebTypeComputeIamBindingArrayOutp
 }
 
 func (o WebTypeComputeIamBindingArrayOutput) Index(i pulumi.IntInput) WebTypeComputeIamBindingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WebTypeComputeIamBinding {
-		return vs[0].([]WebTypeComputeIamBinding)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WebTypeComputeIamBinding {
+		return vs[0].([]*WebTypeComputeIamBinding)[vs[1].(int)]
 	}).(WebTypeComputeIamBindingOutput)
 }
 
 type WebTypeComputeIamBindingMapOutput struct{ *pulumi.OutputState }
 
 func (WebTypeComputeIamBindingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]WebTypeComputeIamBinding)(nil))
+	return reflect.TypeOf((*map[string]*WebTypeComputeIamBinding)(nil)).Elem()
 }
 
 func (o WebTypeComputeIamBindingMapOutput) ToWebTypeComputeIamBindingMapOutput() WebTypeComputeIamBindingMapOutput {
@@ -539,18 +476,16 @@ func (o WebTypeComputeIamBindingMapOutput) ToWebTypeComputeIamBindingMapOutputWi
 }
 
 func (o WebTypeComputeIamBindingMapOutput) MapIndex(k pulumi.StringInput) WebTypeComputeIamBindingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) WebTypeComputeIamBinding {
-		return vs[0].(map[string]WebTypeComputeIamBinding)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *WebTypeComputeIamBinding {
+		return vs[0].(map[string]*WebTypeComputeIamBinding)[vs[1].(string)]
 	}).(WebTypeComputeIamBindingOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WebTypeComputeIamBindingInput)(nil)).Elem(), &WebTypeComputeIamBinding{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WebTypeComputeIamBindingPtrInput)(nil)).Elem(), &WebTypeComputeIamBinding{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebTypeComputeIamBindingArrayInput)(nil)).Elem(), WebTypeComputeIamBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebTypeComputeIamBindingMapInput)(nil)).Elem(), WebTypeComputeIamBindingMap{})
 	pulumi.RegisterOutputType(WebTypeComputeIamBindingOutput{})
-	pulumi.RegisterOutputType(WebTypeComputeIamBindingPtrOutput{})
 	pulumi.RegisterOutputType(WebTypeComputeIamBindingArrayOutput{})
 	pulumi.RegisterOutputType(WebTypeComputeIamBindingMapOutput{})
 }

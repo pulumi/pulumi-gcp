@@ -36,7 +36,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := kms.NewKeyRing(ctx, "example_keyring", &kms.KeyRingArgs{
+// 		_, err := kms.NewKeyRing(ctx, "example-keyring", &kms.KeyRingArgs{
 // 			Location: pulumi.String("global"),
 // 		})
 // 		if err != nil {
@@ -167,7 +167,7 @@ type KeyRingInput interface {
 }
 
 func (*KeyRing) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyRing)(nil))
+	return reflect.TypeOf((**KeyRing)(nil)).Elem()
 }
 
 func (i *KeyRing) ToKeyRingOutput() KeyRingOutput {
@@ -176,35 +176,6 @@ func (i *KeyRing) ToKeyRingOutput() KeyRingOutput {
 
 func (i *KeyRing) ToKeyRingOutputWithContext(ctx context.Context) KeyRingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KeyRingOutput)
-}
-
-func (i *KeyRing) ToKeyRingPtrOutput() KeyRingPtrOutput {
-	return i.ToKeyRingPtrOutputWithContext(context.Background())
-}
-
-func (i *KeyRing) ToKeyRingPtrOutputWithContext(ctx context.Context) KeyRingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyRingPtrOutput)
-}
-
-type KeyRingPtrInput interface {
-	pulumi.Input
-
-	ToKeyRingPtrOutput() KeyRingPtrOutput
-	ToKeyRingPtrOutputWithContext(ctx context.Context) KeyRingPtrOutput
-}
-
-type keyRingPtrType KeyRingArgs
-
-func (*keyRingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeyRing)(nil))
-}
-
-func (i *keyRingPtrType) ToKeyRingPtrOutput() KeyRingPtrOutput {
-	return i.ToKeyRingPtrOutputWithContext(context.Background())
-}
-
-func (i *keyRingPtrType) ToKeyRingPtrOutputWithContext(ctx context.Context) KeyRingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyRingPtrOutput)
 }
 
 // KeyRingArrayInput is an input type that accepts KeyRingArray and KeyRingArrayOutput values.
@@ -260,7 +231,7 @@ func (i KeyRingMap) ToKeyRingMapOutputWithContext(ctx context.Context) KeyRingMa
 type KeyRingOutput struct{ *pulumi.OutputState }
 
 func (KeyRingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyRing)(nil))
+	return reflect.TypeOf((**KeyRing)(nil)).Elem()
 }
 
 func (o KeyRingOutput) ToKeyRingOutput() KeyRingOutput {
@@ -271,44 +242,10 @@ func (o KeyRingOutput) ToKeyRingOutputWithContext(ctx context.Context) KeyRingOu
 	return o
 }
 
-func (o KeyRingOutput) ToKeyRingPtrOutput() KeyRingPtrOutput {
-	return o.ToKeyRingPtrOutputWithContext(context.Background())
-}
-
-func (o KeyRingOutput) ToKeyRingPtrOutputWithContext(ctx context.Context) KeyRingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyRing) *KeyRing {
-		return &v
-	}).(KeyRingPtrOutput)
-}
-
-type KeyRingPtrOutput struct{ *pulumi.OutputState }
-
-func (KeyRingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeyRing)(nil))
-}
-
-func (o KeyRingPtrOutput) ToKeyRingPtrOutput() KeyRingPtrOutput {
-	return o
-}
-
-func (o KeyRingPtrOutput) ToKeyRingPtrOutputWithContext(ctx context.Context) KeyRingPtrOutput {
-	return o
-}
-
-func (o KeyRingPtrOutput) Elem() KeyRingOutput {
-	return o.ApplyT(func(v *KeyRing) KeyRing {
-		if v != nil {
-			return *v
-		}
-		var ret KeyRing
-		return ret
-	}).(KeyRingOutput)
-}
-
 type KeyRingArrayOutput struct{ *pulumi.OutputState }
 
 func (KeyRingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]KeyRing)(nil))
+	return reflect.TypeOf((*[]*KeyRing)(nil)).Elem()
 }
 
 func (o KeyRingArrayOutput) ToKeyRingArrayOutput() KeyRingArrayOutput {
@@ -320,15 +257,15 @@ func (o KeyRingArrayOutput) ToKeyRingArrayOutputWithContext(ctx context.Context)
 }
 
 func (o KeyRingArrayOutput) Index(i pulumi.IntInput) KeyRingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KeyRing {
-		return vs[0].([]KeyRing)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KeyRing {
+		return vs[0].([]*KeyRing)[vs[1].(int)]
 	}).(KeyRingOutput)
 }
 
 type KeyRingMapOutput struct{ *pulumi.OutputState }
 
 func (KeyRingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]KeyRing)(nil))
+	return reflect.TypeOf((*map[string]*KeyRing)(nil)).Elem()
 }
 
 func (o KeyRingMapOutput) ToKeyRingMapOutput() KeyRingMapOutput {
@@ -340,18 +277,16 @@ func (o KeyRingMapOutput) ToKeyRingMapOutputWithContext(ctx context.Context) Key
 }
 
 func (o KeyRingMapOutput) MapIndex(k pulumi.StringInput) KeyRingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) KeyRing {
-		return vs[0].(map[string]KeyRing)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *KeyRing {
+		return vs[0].(map[string]*KeyRing)[vs[1].(string)]
 	}).(KeyRingOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingInput)(nil)).Elem(), &KeyRing{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingPtrInput)(nil)).Elem(), &KeyRing{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingArrayInput)(nil)).Elem(), KeyRingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingMapInput)(nil)).Elem(), KeyRingMap{})
 	pulumi.RegisterOutputType(KeyRingOutput{})
-	pulumi.RegisterOutputType(KeyRingPtrOutput{})
 	pulumi.RegisterOutputType(KeyRingArrayOutput{})
 	pulumi.RegisterOutputType(KeyRingMapOutput{})
 }

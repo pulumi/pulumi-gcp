@@ -24,9 +24,7 @@ export function getGlobalForwardingRule(args: GetGlobalForwardingRuleArgs, opts?
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:compute/getGlobalForwardingRule:getGlobalForwardingRule", {
         "name": args.name,
         "project": args.project,

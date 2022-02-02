@@ -140,48 +140,46 @@ export class Application extends pulumi.CustomResource {
      */
     constructor(name: string, args: ApplicationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ApplicationArgs | ApplicationState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationState | undefined;
-            inputs["appId"] = state ? state.appId : undefined;
-            inputs["authDomain"] = state ? state.authDomain : undefined;
-            inputs["codeBucket"] = state ? state.codeBucket : undefined;
-            inputs["databaseType"] = state ? state.databaseType : undefined;
-            inputs["defaultBucket"] = state ? state.defaultBucket : undefined;
-            inputs["defaultHostname"] = state ? state.defaultHostname : undefined;
-            inputs["featureSettings"] = state ? state.featureSettings : undefined;
-            inputs["gcrDomain"] = state ? state.gcrDomain : undefined;
-            inputs["iap"] = state ? state.iap : undefined;
-            inputs["locationId"] = state ? state.locationId : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["servingStatus"] = state ? state.servingStatus : undefined;
-            inputs["urlDispatchRules"] = state ? state.urlDispatchRules : undefined;
+            resourceInputs["appId"] = state ? state.appId : undefined;
+            resourceInputs["authDomain"] = state ? state.authDomain : undefined;
+            resourceInputs["codeBucket"] = state ? state.codeBucket : undefined;
+            resourceInputs["databaseType"] = state ? state.databaseType : undefined;
+            resourceInputs["defaultBucket"] = state ? state.defaultBucket : undefined;
+            resourceInputs["defaultHostname"] = state ? state.defaultHostname : undefined;
+            resourceInputs["featureSettings"] = state ? state.featureSettings : undefined;
+            resourceInputs["gcrDomain"] = state ? state.gcrDomain : undefined;
+            resourceInputs["iap"] = state ? state.iap : undefined;
+            resourceInputs["locationId"] = state ? state.locationId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["servingStatus"] = state ? state.servingStatus : undefined;
+            resourceInputs["urlDispatchRules"] = state ? state.urlDispatchRules : undefined;
         } else {
             const args = argsOrState as ApplicationArgs | undefined;
             if ((!args || args.locationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'locationId'");
             }
-            inputs["authDomain"] = args ? args.authDomain : undefined;
-            inputs["databaseType"] = args ? args.databaseType : undefined;
-            inputs["featureSettings"] = args ? args.featureSettings : undefined;
-            inputs["iap"] = args ? args.iap : undefined;
-            inputs["locationId"] = args ? args.locationId : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["servingStatus"] = args ? args.servingStatus : undefined;
-            inputs["appId"] = undefined /*out*/;
-            inputs["codeBucket"] = undefined /*out*/;
-            inputs["defaultBucket"] = undefined /*out*/;
-            inputs["defaultHostname"] = undefined /*out*/;
-            inputs["gcrDomain"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["urlDispatchRules"] = undefined /*out*/;
+            resourceInputs["authDomain"] = args ? args.authDomain : undefined;
+            resourceInputs["databaseType"] = args ? args.databaseType : undefined;
+            resourceInputs["featureSettings"] = args ? args.featureSettings : undefined;
+            resourceInputs["iap"] = args ? args.iap : undefined;
+            resourceInputs["locationId"] = args ? args.locationId : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["servingStatus"] = args ? args.servingStatus : undefined;
+            resourceInputs["appId"] = undefined /*out*/;
+            resourceInputs["codeBucket"] = undefined /*out*/;
+            resourceInputs["defaultBucket"] = undefined /*out*/;
+            resourceInputs["defaultHostname"] = undefined /*out*/;
+            resourceInputs["gcrDomain"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["urlDispatchRules"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Application.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Application.__pulumiType, name, resourceInputs, opts);
     }
 }
 

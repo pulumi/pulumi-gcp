@@ -153,21 +153,21 @@ export class Reservation extends pulumi.CustomResource {
      */
     constructor(name: string, args: ReservationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ReservationArgs | ReservationState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ReservationState | undefined;
-            inputs["commitment"] = state ? state.commitment : undefined;
-            inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
-            inputs["shareSettings"] = state ? state.shareSettings : undefined;
-            inputs["specificReservation"] = state ? state.specificReservation : undefined;
-            inputs["specificReservationRequired"] = state ? state.specificReservationRequired : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["commitment"] = state ? state.commitment : undefined;
+            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["shareSettings"] = state ? state.shareSettings : undefined;
+            resourceInputs["specificReservation"] = state ? state.specificReservation : undefined;
+            resourceInputs["specificReservationRequired"] = state ? state.specificReservationRequired : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as ReservationArgs | undefined;
             if ((!args || args.specificReservation === undefined) && !opts.urn) {
@@ -176,22 +176,20 @@ export class Reservation extends pulumi.CustomResource {
             if ((!args || args.zone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["shareSettings"] = args ? args.shareSettings : undefined;
-            inputs["specificReservation"] = args ? args.specificReservation : undefined;
-            inputs["specificReservationRequired"] = args ? args.specificReservationRequired : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
-            inputs["commitment"] = undefined /*out*/;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["shareSettings"] = args ? args.shareSettings : undefined;
+            resourceInputs["specificReservation"] = args ? args.specificReservation : undefined;
+            resourceInputs["specificReservationRequired"] = args ? args.specificReservationRequired : undefined;
+            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["commitment"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Reservation.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Reservation.__pulumiType, name, resourceInputs, opts);
     }
 }
 

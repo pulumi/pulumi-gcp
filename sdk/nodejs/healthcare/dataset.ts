@@ -103,30 +103,28 @@ export class Dataset extends pulumi.CustomResource {
      */
     constructor(name: string, args: DatasetArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DatasetArgs | DatasetState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatasetState | undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
-            inputs["timeZone"] = state ? state.timeZone : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["timeZone"] = state ? state.timeZone : undefined;
         } else {
             const args = argsOrState as DatasetArgs | undefined;
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["timeZone"] = args ? args.timeZone : undefined;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["timeZone"] = args ? args.timeZone : undefined;
+            resourceInputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Dataset.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Dataset.__pulumiType, name, resourceInputs, opts);
     }
 }
 

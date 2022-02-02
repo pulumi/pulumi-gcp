@@ -274,7 +274,7 @@ type JobIAMBindingInput interface {
 }
 
 func (*JobIAMBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobIAMBinding)(nil))
+	return reflect.TypeOf((**JobIAMBinding)(nil)).Elem()
 }
 
 func (i *JobIAMBinding) ToJobIAMBindingOutput() JobIAMBindingOutput {
@@ -283,35 +283,6 @@ func (i *JobIAMBinding) ToJobIAMBindingOutput() JobIAMBindingOutput {
 
 func (i *JobIAMBinding) ToJobIAMBindingOutputWithContext(ctx context.Context) JobIAMBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(JobIAMBindingOutput)
-}
-
-func (i *JobIAMBinding) ToJobIAMBindingPtrOutput() JobIAMBindingPtrOutput {
-	return i.ToJobIAMBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *JobIAMBinding) ToJobIAMBindingPtrOutputWithContext(ctx context.Context) JobIAMBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobIAMBindingPtrOutput)
-}
-
-type JobIAMBindingPtrInput interface {
-	pulumi.Input
-
-	ToJobIAMBindingPtrOutput() JobIAMBindingPtrOutput
-	ToJobIAMBindingPtrOutputWithContext(ctx context.Context) JobIAMBindingPtrOutput
-}
-
-type jobIAMBindingPtrType JobIAMBindingArgs
-
-func (*jobIAMBindingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobIAMBinding)(nil))
-}
-
-func (i *jobIAMBindingPtrType) ToJobIAMBindingPtrOutput() JobIAMBindingPtrOutput {
-	return i.ToJobIAMBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *jobIAMBindingPtrType) ToJobIAMBindingPtrOutputWithContext(ctx context.Context) JobIAMBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobIAMBindingPtrOutput)
 }
 
 // JobIAMBindingArrayInput is an input type that accepts JobIAMBindingArray and JobIAMBindingArrayOutput values.
@@ -367,7 +338,7 @@ func (i JobIAMBindingMap) ToJobIAMBindingMapOutputWithContext(ctx context.Contex
 type JobIAMBindingOutput struct{ *pulumi.OutputState }
 
 func (JobIAMBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobIAMBinding)(nil))
+	return reflect.TypeOf((**JobIAMBinding)(nil)).Elem()
 }
 
 func (o JobIAMBindingOutput) ToJobIAMBindingOutput() JobIAMBindingOutput {
@@ -378,44 +349,10 @@ func (o JobIAMBindingOutput) ToJobIAMBindingOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o JobIAMBindingOutput) ToJobIAMBindingPtrOutput() JobIAMBindingPtrOutput {
-	return o.ToJobIAMBindingPtrOutputWithContext(context.Background())
-}
-
-func (o JobIAMBindingOutput) ToJobIAMBindingPtrOutputWithContext(ctx context.Context) JobIAMBindingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobIAMBinding) *JobIAMBinding {
-		return &v
-	}).(JobIAMBindingPtrOutput)
-}
-
-type JobIAMBindingPtrOutput struct{ *pulumi.OutputState }
-
-func (JobIAMBindingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobIAMBinding)(nil))
-}
-
-func (o JobIAMBindingPtrOutput) ToJobIAMBindingPtrOutput() JobIAMBindingPtrOutput {
-	return o
-}
-
-func (o JobIAMBindingPtrOutput) ToJobIAMBindingPtrOutputWithContext(ctx context.Context) JobIAMBindingPtrOutput {
-	return o
-}
-
-func (o JobIAMBindingPtrOutput) Elem() JobIAMBindingOutput {
-	return o.ApplyT(func(v *JobIAMBinding) JobIAMBinding {
-		if v != nil {
-			return *v
-		}
-		var ret JobIAMBinding
-		return ret
-	}).(JobIAMBindingOutput)
-}
-
 type JobIAMBindingArrayOutput struct{ *pulumi.OutputState }
 
 func (JobIAMBindingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]JobIAMBinding)(nil))
+	return reflect.TypeOf((*[]*JobIAMBinding)(nil)).Elem()
 }
 
 func (o JobIAMBindingArrayOutput) ToJobIAMBindingArrayOutput() JobIAMBindingArrayOutput {
@@ -427,15 +364,15 @@ func (o JobIAMBindingArrayOutput) ToJobIAMBindingArrayOutputWithContext(ctx cont
 }
 
 func (o JobIAMBindingArrayOutput) Index(i pulumi.IntInput) JobIAMBindingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobIAMBinding {
-		return vs[0].([]JobIAMBinding)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *JobIAMBinding {
+		return vs[0].([]*JobIAMBinding)[vs[1].(int)]
 	}).(JobIAMBindingOutput)
 }
 
 type JobIAMBindingMapOutput struct{ *pulumi.OutputState }
 
 func (JobIAMBindingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]JobIAMBinding)(nil))
+	return reflect.TypeOf((*map[string]*JobIAMBinding)(nil)).Elem()
 }
 
 func (o JobIAMBindingMapOutput) ToJobIAMBindingMapOutput() JobIAMBindingMapOutput {
@@ -447,18 +384,16 @@ func (o JobIAMBindingMapOutput) ToJobIAMBindingMapOutputWithContext(ctx context.
 }
 
 func (o JobIAMBindingMapOutput) MapIndex(k pulumi.StringInput) JobIAMBindingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) JobIAMBinding {
-		return vs[0].(map[string]JobIAMBinding)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *JobIAMBinding {
+		return vs[0].(map[string]*JobIAMBinding)[vs[1].(string)]
 	}).(JobIAMBindingOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobIAMBindingInput)(nil)).Elem(), &JobIAMBinding{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobIAMBindingPtrInput)(nil)).Elem(), &JobIAMBinding{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobIAMBindingArrayInput)(nil)).Elem(), JobIAMBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobIAMBindingMapInput)(nil)).Elem(), JobIAMBindingMap{})
 	pulumi.RegisterOutputType(JobIAMBindingOutput{})
-	pulumi.RegisterOutputType(JobIAMBindingPtrOutput{})
 	pulumi.RegisterOutputType(JobIAMBindingArrayOutput{})
 	pulumi.RegisterOutputType(JobIAMBindingMapOutput{})
 }

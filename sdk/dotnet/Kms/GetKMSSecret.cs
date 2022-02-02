@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Kms
 {
@@ -25,7 +24,7 @@ namespace Pulumi.Gcp.Kms
         /// data outside of resource definitions.
         /// </summary>
         public static Task<GetKMSSecretResult> InvokeAsync(GetKMSSecretArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKMSSecretResult>("gcp:kms/getKMSSecret:getKMSSecret", args ?? new GetKMSSecretArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKMSSecretResult>("gcp:kms/getKMSSecret:getKMSSecret", args ?? new GetKMSSecretArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source allows you to use data encrypted with Google Cloud KMS
@@ -40,7 +39,7 @@ namespace Pulumi.Gcp.Kms
         /// data outside of resource definitions.
         /// </summary>
         public static Output<GetKMSSecretResult> Invoke(GetKMSSecretInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKMSSecretResult>("gcp:kms/getKMSSecret:getKMSSecret", args ?? new GetKMSSecretInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetKMSSecretResult>("gcp:kms/getKMSSecret:getKMSSecret", args ?? new GetKMSSecretInvokeArgs(), options.WithDefaults());
     }
 
 

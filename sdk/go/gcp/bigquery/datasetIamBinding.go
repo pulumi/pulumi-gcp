@@ -298,7 +298,7 @@ type DatasetIamBindingInput interface {
 }
 
 func (*DatasetIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetIamBinding)(nil))
+	return reflect.TypeOf((**DatasetIamBinding)(nil)).Elem()
 }
 
 func (i *DatasetIamBinding) ToDatasetIamBindingOutput() DatasetIamBindingOutput {
@@ -307,35 +307,6 @@ func (i *DatasetIamBinding) ToDatasetIamBindingOutput() DatasetIamBindingOutput 
 
 func (i *DatasetIamBinding) ToDatasetIamBindingOutputWithContext(ctx context.Context) DatasetIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamBindingOutput)
-}
-
-func (i *DatasetIamBinding) ToDatasetIamBindingPtrOutput() DatasetIamBindingPtrOutput {
-	return i.ToDatasetIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *DatasetIamBinding) ToDatasetIamBindingPtrOutputWithContext(ctx context.Context) DatasetIamBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamBindingPtrOutput)
-}
-
-type DatasetIamBindingPtrInput interface {
-	pulumi.Input
-
-	ToDatasetIamBindingPtrOutput() DatasetIamBindingPtrOutput
-	ToDatasetIamBindingPtrOutputWithContext(ctx context.Context) DatasetIamBindingPtrOutput
-}
-
-type datasetIamBindingPtrType DatasetIamBindingArgs
-
-func (*datasetIamBindingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatasetIamBinding)(nil))
-}
-
-func (i *datasetIamBindingPtrType) ToDatasetIamBindingPtrOutput() DatasetIamBindingPtrOutput {
-	return i.ToDatasetIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *datasetIamBindingPtrType) ToDatasetIamBindingPtrOutputWithContext(ctx context.Context) DatasetIamBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamBindingPtrOutput)
 }
 
 // DatasetIamBindingArrayInput is an input type that accepts DatasetIamBindingArray and DatasetIamBindingArrayOutput values.
@@ -391,7 +362,7 @@ func (i DatasetIamBindingMap) ToDatasetIamBindingMapOutputWithContext(ctx contex
 type DatasetIamBindingOutput struct{ *pulumi.OutputState }
 
 func (DatasetIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetIamBinding)(nil))
+	return reflect.TypeOf((**DatasetIamBinding)(nil)).Elem()
 }
 
 func (o DatasetIamBindingOutput) ToDatasetIamBindingOutput() DatasetIamBindingOutput {
@@ -402,44 +373,10 @@ func (o DatasetIamBindingOutput) ToDatasetIamBindingOutputWithContext(ctx contex
 	return o
 }
 
-func (o DatasetIamBindingOutput) ToDatasetIamBindingPtrOutput() DatasetIamBindingPtrOutput {
-	return o.ToDatasetIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (o DatasetIamBindingOutput) ToDatasetIamBindingPtrOutputWithContext(ctx context.Context) DatasetIamBindingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatasetIamBinding) *DatasetIamBinding {
-		return &v
-	}).(DatasetIamBindingPtrOutput)
-}
-
-type DatasetIamBindingPtrOutput struct{ *pulumi.OutputState }
-
-func (DatasetIamBindingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatasetIamBinding)(nil))
-}
-
-func (o DatasetIamBindingPtrOutput) ToDatasetIamBindingPtrOutput() DatasetIamBindingPtrOutput {
-	return o
-}
-
-func (o DatasetIamBindingPtrOutput) ToDatasetIamBindingPtrOutputWithContext(ctx context.Context) DatasetIamBindingPtrOutput {
-	return o
-}
-
-func (o DatasetIamBindingPtrOutput) Elem() DatasetIamBindingOutput {
-	return o.ApplyT(func(v *DatasetIamBinding) DatasetIamBinding {
-		if v != nil {
-			return *v
-		}
-		var ret DatasetIamBinding
-		return ret
-	}).(DatasetIamBindingOutput)
-}
-
 type DatasetIamBindingArrayOutput struct{ *pulumi.OutputState }
 
 func (DatasetIamBindingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DatasetIamBinding)(nil))
+	return reflect.TypeOf((*[]*DatasetIamBinding)(nil)).Elem()
 }
 
 func (o DatasetIamBindingArrayOutput) ToDatasetIamBindingArrayOutput() DatasetIamBindingArrayOutput {
@@ -451,15 +388,15 @@ func (o DatasetIamBindingArrayOutput) ToDatasetIamBindingArrayOutputWithContext(
 }
 
 func (o DatasetIamBindingArrayOutput) Index(i pulumi.IntInput) DatasetIamBindingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatasetIamBinding {
-		return vs[0].([]DatasetIamBinding)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DatasetIamBinding {
+		return vs[0].([]*DatasetIamBinding)[vs[1].(int)]
 	}).(DatasetIamBindingOutput)
 }
 
 type DatasetIamBindingMapOutput struct{ *pulumi.OutputState }
 
 func (DatasetIamBindingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DatasetIamBinding)(nil))
+	return reflect.TypeOf((*map[string]*DatasetIamBinding)(nil)).Elem()
 }
 
 func (o DatasetIamBindingMapOutput) ToDatasetIamBindingMapOutput() DatasetIamBindingMapOutput {
@@ -471,18 +408,16 @@ func (o DatasetIamBindingMapOutput) ToDatasetIamBindingMapOutputWithContext(ctx 
 }
 
 func (o DatasetIamBindingMapOutput) MapIndex(k pulumi.StringInput) DatasetIamBindingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DatasetIamBinding {
-		return vs[0].(map[string]DatasetIamBinding)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DatasetIamBinding {
+		return vs[0].(map[string]*DatasetIamBinding)[vs[1].(string)]
 	}).(DatasetIamBindingOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetIamBindingInput)(nil)).Elem(), &DatasetIamBinding{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DatasetIamBindingPtrInput)(nil)).Elem(), &DatasetIamBinding{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetIamBindingArrayInput)(nil)).Elem(), DatasetIamBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetIamBindingMapInput)(nil)).Elem(), DatasetIamBindingMap{})
 	pulumi.RegisterOutputType(DatasetIamBindingOutput{})
-	pulumi.RegisterOutputType(DatasetIamBindingPtrOutput{})
 	pulumi.RegisterOutputType(DatasetIamBindingArrayOutput{})
 	pulumi.RegisterOutputType(DatasetIamBindingMapOutput{})
 }

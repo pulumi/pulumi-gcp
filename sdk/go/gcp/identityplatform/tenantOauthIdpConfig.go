@@ -226,7 +226,7 @@ type TenantOauthIdpConfigInput interface {
 }
 
 func (*TenantOauthIdpConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((*TenantOauthIdpConfig)(nil))
+	return reflect.TypeOf((**TenantOauthIdpConfig)(nil)).Elem()
 }
 
 func (i *TenantOauthIdpConfig) ToTenantOauthIdpConfigOutput() TenantOauthIdpConfigOutput {
@@ -235,35 +235,6 @@ func (i *TenantOauthIdpConfig) ToTenantOauthIdpConfigOutput() TenantOauthIdpConf
 
 func (i *TenantOauthIdpConfig) ToTenantOauthIdpConfigOutputWithContext(ctx context.Context) TenantOauthIdpConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TenantOauthIdpConfigOutput)
-}
-
-func (i *TenantOauthIdpConfig) ToTenantOauthIdpConfigPtrOutput() TenantOauthIdpConfigPtrOutput {
-	return i.ToTenantOauthIdpConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *TenantOauthIdpConfig) ToTenantOauthIdpConfigPtrOutputWithContext(ctx context.Context) TenantOauthIdpConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TenantOauthIdpConfigPtrOutput)
-}
-
-type TenantOauthIdpConfigPtrInput interface {
-	pulumi.Input
-
-	ToTenantOauthIdpConfigPtrOutput() TenantOauthIdpConfigPtrOutput
-	ToTenantOauthIdpConfigPtrOutputWithContext(ctx context.Context) TenantOauthIdpConfigPtrOutput
-}
-
-type tenantOauthIdpConfigPtrType TenantOauthIdpConfigArgs
-
-func (*tenantOauthIdpConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TenantOauthIdpConfig)(nil))
-}
-
-func (i *tenantOauthIdpConfigPtrType) ToTenantOauthIdpConfigPtrOutput() TenantOauthIdpConfigPtrOutput {
-	return i.ToTenantOauthIdpConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *tenantOauthIdpConfigPtrType) ToTenantOauthIdpConfigPtrOutputWithContext(ctx context.Context) TenantOauthIdpConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TenantOauthIdpConfigPtrOutput)
 }
 
 // TenantOauthIdpConfigArrayInput is an input type that accepts TenantOauthIdpConfigArray and TenantOauthIdpConfigArrayOutput values.
@@ -319,7 +290,7 @@ func (i TenantOauthIdpConfigMap) ToTenantOauthIdpConfigMapOutputWithContext(ctx 
 type TenantOauthIdpConfigOutput struct{ *pulumi.OutputState }
 
 func (TenantOauthIdpConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TenantOauthIdpConfig)(nil))
+	return reflect.TypeOf((**TenantOauthIdpConfig)(nil)).Elem()
 }
 
 func (o TenantOauthIdpConfigOutput) ToTenantOauthIdpConfigOutput() TenantOauthIdpConfigOutput {
@@ -330,44 +301,10 @@ func (o TenantOauthIdpConfigOutput) ToTenantOauthIdpConfigOutputWithContext(ctx 
 	return o
 }
 
-func (o TenantOauthIdpConfigOutput) ToTenantOauthIdpConfigPtrOutput() TenantOauthIdpConfigPtrOutput {
-	return o.ToTenantOauthIdpConfigPtrOutputWithContext(context.Background())
-}
-
-func (o TenantOauthIdpConfigOutput) ToTenantOauthIdpConfigPtrOutputWithContext(ctx context.Context) TenantOauthIdpConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TenantOauthIdpConfig) *TenantOauthIdpConfig {
-		return &v
-	}).(TenantOauthIdpConfigPtrOutput)
-}
-
-type TenantOauthIdpConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (TenantOauthIdpConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TenantOauthIdpConfig)(nil))
-}
-
-func (o TenantOauthIdpConfigPtrOutput) ToTenantOauthIdpConfigPtrOutput() TenantOauthIdpConfigPtrOutput {
-	return o
-}
-
-func (o TenantOauthIdpConfigPtrOutput) ToTenantOauthIdpConfigPtrOutputWithContext(ctx context.Context) TenantOauthIdpConfigPtrOutput {
-	return o
-}
-
-func (o TenantOauthIdpConfigPtrOutput) Elem() TenantOauthIdpConfigOutput {
-	return o.ApplyT(func(v *TenantOauthIdpConfig) TenantOauthIdpConfig {
-		if v != nil {
-			return *v
-		}
-		var ret TenantOauthIdpConfig
-		return ret
-	}).(TenantOauthIdpConfigOutput)
-}
-
 type TenantOauthIdpConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (TenantOauthIdpConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TenantOauthIdpConfig)(nil))
+	return reflect.TypeOf((*[]*TenantOauthIdpConfig)(nil)).Elem()
 }
 
 func (o TenantOauthIdpConfigArrayOutput) ToTenantOauthIdpConfigArrayOutput() TenantOauthIdpConfigArrayOutput {
@@ -379,15 +316,15 @@ func (o TenantOauthIdpConfigArrayOutput) ToTenantOauthIdpConfigArrayOutputWithCo
 }
 
 func (o TenantOauthIdpConfigArrayOutput) Index(i pulumi.IntInput) TenantOauthIdpConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TenantOauthIdpConfig {
-		return vs[0].([]TenantOauthIdpConfig)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TenantOauthIdpConfig {
+		return vs[0].([]*TenantOauthIdpConfig)[vs[1].(int)]
 	}).(TenantOauthIdpConfigOutput)
 }
 
 type TenantOauthIdpConfigMapOutput struct{ *pulumi.OutputState }
 
 func (TenantOauthIdpConfigMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]TenantOauthIdpConfig)(nil))
+	return reflect.TypeOf((*map[string]*TenantOauthIdpConfig)(nil)).Elem()
 }
 
 func (o TenantOauthIdpConfigMapOutput) ToTenantOauthIdpConfigMapOutput() TenantOauthIdpConfigMapOutput {
@@ -399,18 +336,16 @@ func (o TenantOauthIdpConfigMapOutput) ToTenantOauthIdpConfigMapOutputWithContex
 }
 
 func (o TenantOauthIdpConfigMapOutput) MapIndex(k pulumi.StringInput) TenantOauthIdpConfigOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TenantOauthIdpConfig {
-		return vs[0].(map[string]TenantOauthIdpConfig)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *TenantOauthIdpConfig {
+		return vs[0].(map[string]*TenantOauthIdpConfig)[vs[1].(string)]
 	}).(TenantOauthIdpConfigOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantOauthIdpConfigInput)(nil)).Elem(), &TenantOauthIdpConfig{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TenantOauthIdpConfigPtrInput)(nil)).Elem(), &TenantOauthIdpConfig{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantOauthIdpConfigArrayInput)(nil)).Elem(), TenantOauthIdpConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantOauthIdpConfigMapInput)(nil)).Elem(), TenantOauthIdpConfigMap{})
 	pulumi.RegisterOutputType(TenantOauthIdpConfigOutput{})
-	pulumi.RegisterOutputType(TenantOauthIdpConfigPtrOutput{})
 	pulumi.RegisterOutputType(TenantOauthIdpConfigArrayOutput{})
 	pulumi.RegisterOutputType(TenantOauthIdpConfigMapOutput{})
 }

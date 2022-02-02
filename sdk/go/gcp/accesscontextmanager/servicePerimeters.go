@@ -36,14 +36,14 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := accesscontextmanager.NewAccessPolicy(ctx, "access_policy", &accesscontextmanager.AccessPolicyArgs{
+// 		_, err := accesscontextmanager.NewAccessPolicy(ctx, "access-policy", &accesscontextmanager.AccessPolicyArgs{
 // 			Parent: pulumi.String("organizations/123456789"),
 // 			Title:  pulumi.String("my policy"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = accesscontextmanager.NewServicePerimeters(ctx, "service_perimeter", &accesscontextmanager.ServicePerimetersArgs{
+// 		_, err = accesscontextmanager.NewServicePerimeters(ctx, "service-perimeter", &accesscontextmanager.ServicePerimetersArgs{
 // 			Parent: access_policy.Name.ApplyT(func(name string) (string, error) {
 // 				return fmt.Sprintf("%v%v", "accessPolicies/", name), nil
 // 			}).(pulumi.StringOutput),
@@ -75,7 +75,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = accesscontextmanager.NewAccessLevel(ctx, "access_level", &accesscontextmanager.AccessLevelArgs{
+// 		_, err = accesscontextmanager.NewAccessLevel(ctx, "access-level", &accesscontextmanager.AccessLevelArgs{
 // 			Basic: &accesscontextmanager.AccessLevelBasicArgs{
 // 				Conditions: accesscontextmanager.AccessLevelBasicConditionArray{
 // 					&accesscontextmanager.AccessLevelBasicConditionArgs{
@@ -214,7 +214,7 @@ type ServicePerimetersInput interface {
 }
 
 func (*ServicePerimeters) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServicePerimeters)(nil))
+	return reflect.TypeOf((**ServicePerimeters)(nil)).Elem()
 }
 
 func (i *ServicePerimeters) ToServicePerimetersOutput() ServicePerimetersOutput {
@@ -223,35 +223,6 @@ func (i *ServicePerimeters) ToServicePerimetersOutput() ServicePerimetersOutput 
 
 func (i *ServicePerimeters) ToServicePerimetersOutputWithContext(ctx context.Context) ServicePerimetersOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersOutput)
-}
-
-func (i *ServicePerimeters) ToServicePerimetersPtrOutput() ServicePerimetersPtrOutput {
-	return i.ToServicePerimetersPtrOutputWithContext(context.Background())
-}
-
-func (i *ServicePerimeters) ToServicePerimetersPtrOutputWithContext(ctx context.Context) ServicePerimetersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersPtrOutput)
-}
-
-type ServicePerimetersPtrInput interface {
-	pulumi.Input
-
-	ToServicePerimetersPtrOutput() ServicePerimetersPtrOutput
-	ToServicePerimetersPtrOutputWithContext(ctx context.Context) ServicePerimetersPtrOutput
-}
-
-type servicePerimetersPtrType ServicePerimetersArgs
-
-func (*servicePerimetersPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServicePerimeters)(nil))
-}
-
-func (i *servicePerimetersPtrType) ToServicePerimetersPtrOutput() ServicePerimetersPtrOutput {
-	return i.ToServicePerimetersPtrOutputWithContext(context.Background())
-}
-
-func (i *servicePerimetersPtrType) ToServicePerimetersPtrOutputWithContext(ctx context.Context) ServicePerimetersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersPtrOutput)
 }
 
 // ServicePerimetersArrayInput is an input type that accepts ServicePerimetersArray and ServicePerimetersArrayOutput values.
@@ -307,7 +278,7 @@ func (i ServicePerimetersMap) ToServicePerimetersMapOutputWithContext(ctx contex
 type ServicePerimetersOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimetersOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServicePerimeters)(nil))
+	return reflect.TypeOf((**ServicePerimeters)(nil)).Elem()
 }
 
 func (o ServicePerimetersOutput) ToServicePerimetersOutput() ServicePerimetersOutput {
@@ -318,44 +289,10 @@ func (o ServicePerimetersOutput) ToServicePerimetersOutputWithContext(ctx contex
 	return o
 }
 
-func (o ServicePerimetersOutput) ToServicePerimetersPtrOutput() ServicePerimetersPtrOutput {
-	return o.ToServicePerimetersPtrOutputWithContext(context.Background())
-}
-
-func (o ServicePerimetersOutput) ToServicePerimetersPtrOutputWithContext(ctx context.Context) ServicePerimetersPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeters) *ServicePerimeters {
-		return &v
-	}).(ServicePerimetersPtrOutput)
-}
-
-type ServicePerimetersPtrOutput struct{ *pulumi.OutputState }
-
-func (ServicePerimetersPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServicePerimeters)(nil))
-}
-
-func (o ServicePerimetersPtrOutput) ToServicePerimetersPtrOutput() ServicePerimetersPtrOutput {
-	return o
-}
-
-func (o ServicePerimetersPtrOutput) ToServicePerimetersPtrOutputWithContext(ctx context.Context) ServicePerimetersPtrOutput {
-	return o
-}
-
-func (o ServicePerimetersPtrOutput) Elem() ServicePerimetersOutput {
-	return o.ApplyT(func(v *ServicePerimeters) ServicePerimeters {
-		if v != nil {
-			return *v
-		}
-		var ret ServicePerimeters
-		return ret
-	}).(ServicePerimetersOutput)
-}
-
 type ServicePerimetersArrayOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimetersArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServicePerimeters)(nil))
+	return reflect.TypeOf((*[]*ServicePerimeters)(nil)).Elem()
 }
 
 func (o ServicePerimetersArrayOutput) ToServicePerimetersArrayOutput() ServicePerimetersArrayOutput {
@@ -367,15 +304,15 @@ func (o ServicePerimetersArrayOutput) ToServicePerimetersArrayOutputWithContext(
 }
 
 func (o ServicePerimetersArrayOutput) Index(i pulumi.IntInput) ServicePerimetersOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimeters {
-		return vs[0].([]ServicePerimeters)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServicePerimeters {
+		return vs[0].([]*ServicePerimeters)[vs[1].(int)]
 	}).(ServicePerimetersOutput)
 }
 
 type ServicePerimetersMapOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimetersMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ServicePerimeters)(nil))
+	return reflect.TypeOf((*map[string]*ServicePerimeters)(nil)).Elem()
 }
 
 func (o ServicePerimetersMapOutput) ToServicePerimetersMapOutput() ServicePerimetersMapOutput {
@@ -387,18 +324,16 @@ func (o ServicePerimetersMapOutput) ToServicePerimetersMapOutputWithContext(ctx 
 }
 
 func (o ServicePerimetersMapOutput) MapIndex(k pulumi.StringInput) ServicePerimetersOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ServicePerimeters {
-		return vs[0].(map[string]ServicePerimeters)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ServicePerimeters {
+		return vs[0].(map[string]*ServicePerimeters)[vs[1].(string)]
 	}).(ServicePerimetersOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersInput)(nil)).Elem(), &ServicePerimeters{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersPtrInput)(nil)).Elem(), &ServicePerimeters{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersArrayInput)(nil)).Elem(), ServicePerimetersArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersMapInput)(nil)).Elem(), ServicePerimetersMap{})
 	pulumi.RegisterOutputType(ServicePerimetersOutput{})
-	pulumi.RegisterOutputType(ServicePerimetersPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersArrayOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersMapOutput{})
 }

@@ -285,7 +285,7 @@ type DatabaseIAMBindingInput interface {
 }
 
 func (*DatabaseIAMBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseIAMBinding)(nil))
+	return reflect.TypeOf((**DatabaseIAMBinding)(nil)).Elem()
 }
 
 func (i *DatabaseIAMBinding) ToDatabaseIAMBindingOutput() DatabaseIAMBindingOutput {
@@ -294,35 +294,6 @@ func (i *DatabaseIAMBinding) ToDatabaseIAMBindingOutput() DatabaseIAMBindingOutp
 
 func (i *DatabaseIAMBinding) ToDatabaseIAMBindingOutputWithContext(ctx context.Context) DatabaseIAMBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMBindingOutput)
-}
-
-func (i *DatabaseIAMBinding) ToDatabaseIAMBindingPtrOutput() DatabaseIAMBindingPtrOutput {
-	return i.ToDatabaseIAMBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *DatabaseIAMBinding) ToDatabaseIAMBindingPtrOutputWithContext(ctx context.Context) DatabaseIAMBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMBindingPtrOutput)
-}
-
-type DatabaseIAMBindingPtrInput interface {
-	pulumi.Input
-
-	ToDatabaseIAMBindingPtrOutput() DatabaseIAMBindingPtrOutput
-	ToDatabaseIAMBindingPtrOutputWithContext(ctx context.Context) DatabaseIAMBindingPtrOutput
-}
-
-type databaseIAMBindingPtrType DatabaseIAMBindingArgs
-
-func (*databaseIAMBindingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatabaseIAMBinding)(nil))
-}
-
-func (i *databaseIAMBindingPtrType) ToDatabaseIAMBindingPtrOutput() DatabaseIAMBindingPtrOutput {
-	return i.ToDatabaseIAMBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *databaseIAMBindingPtrType) ToDatabaseIAMBindingPtrOutputWithContext(ctx context.Context) DatabaseIAMBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMBindingPtrOutput)
 }
 
 // DatabaseIAMBindingArrayInput is an input type that accepts DatabaseIAMBindingArray and DatabaseIAMBindingArrayOutput values.
@@ -378,7 +349,7 @@ func (i DatabaseIAMBindingMap) ToDatabaseIAMBindingMapOutputWithContext(ctx cont
 type DatabaseIAMBindingOutput struct{ *pulumi.OutputState }
 
 func (DatabaseIAMBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseIAMBinding)(nil))
+	return reflect.TypeOf((**DatabaseIAMBinding)(nil)).Elem()
 }
 
 func (o DatabaseIAMBindingOutput) ToDatabaseIAMBindingOutput() DatabaseIAMBindingOutput {
@@ -389,44 +360,10 @@ func (o DatabaseIAMBindingOutput) ToDatabaseIAMBindingOutputWithContext(ctx cont
 	return o
 }
 
-func (o DatabaseIAMBindingOutput) ToDatabaseIAMBindingPtrOutput() DatabaseIAMBindingPtrOutput {
-	return o.ToDatabaseIAMBindingPtrOutputWithContext(context.Background())
-}
-
-func (o DatabaseIAMBindingOutput) ToDatabaseIAMBindingPtrOutputWithContext(ctx context.Context) DatabaseIAMBindingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseIAMBinding) *DatabaseIAMBinding {
-		return &v
-	}).(DatabaseIAMBindingPtrOutput)
-}
-
-type DatabaseIAMBindingPtrOutput struct{ *pulumi.OutputState }
-
-func (DatabaseIAMBindingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatabaseIAMBinding)(nil))
-}
-
-func (o DatabaseIAMBindingPtrOutput) ToDatabaseIAMBindingPtrOutput() DatabaseIAMBindingPtrOutput {
-	return o
-}
-
-func (o DatabaseIAMBindingPtrOutput) ToDatabaseIAMBindingPtrOutputWithContext(ctx context.Context) DatabaseIAMBindingPtrOutput {
-	return o
-}
-
-func (o DatabaseIAMBindingPtrOutput) Elem() DatabaseIAMBindingOutput {
-	return o.ApplyT(func(v *DatabaseIAMBinding) DatabaseIAMBinding {
-		if v != nil {
-			return *v
-		}
-		var ret DatabaseIAMBinding
-		return ret
-	}).(DatabaseIAMBindingOutput)
-}
-
 type DatabaseIAMBindingArrayOutput struct{ *pulumi.OutputState }
 
 func (DatabaseIAMBindingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DatabaseIAMBinding)(nil))
+	return reflect.TypeOf((*[]*DatabaseIAMBinding)(nil)).Elem()
 }
 
 func (o DatabaseIAMBindingArrayOutput) ToDatabaseIAMBindingArrayOutput() DatabaseIAMBindingArrayOutput {
@@ -438,15 +375,15 @@ func (o DatabaseIAMBindingArrayOutput) ToDatabaseIAMBindingArrayOutputWithContex
 }
 
 func (o DatabaseIAMBindingArrayOutput) Index(i pulumi.IntInput) DatabaseIAMBindingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseIAMBinding {
-		return vs[0].([]DatabaseIAMBinding)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DatabaseIAMBinding {
+		return vs[0].([]*DatabaseIAMBinding)[vs[1].(int)]
 	}).(DatabaseIAMBindingOutput)
 }
 
 type DatabaseIAMBindingMapOutput struct{ *pulumi.OutputState }
 
 func (DatabaseIAMBindingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DatabaseIAMBinding)(nil))
+	return reflect.TypeOf((*map[string]*DatabaseIAMBinding)(nil)).Elem()
 }
 
 func (o DatabaseIAMBindingMapOutput) ToDatabaseIAMBindingMapOutput() DatabaseIAMBindingMapOutput {
@@ -458,18 +395,16 @@ func (o DatabaseIAMBindingMapOutput) ToDatabaseIAMBindingMapOutputWithContext(ct
 }
 
 func (o DatabaseIAMBindingMapOutput) MapIndex(k pulumi.StringInput) DatabaseIAMBindingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DatabaseIAMBinding {
-		return vs[0].(map[string]DatabaseIAMBinding)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DatabaseIAMBinding {
+		return vs[0].(map[string]*DatabaseIAMBinding)[vs[1].(string)]
 	}).(DatabaseIAMBindingOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseIAMBindingInput)(nil)).Elem(), &DatabaseIAMBinding{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseIAMBindingPtrInput)(nil)).Elem(), &DatabaseIAMBinding{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseIAMBindingArrayInput)(nil)).Elem(), DatabaseIAMBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseIAMBindingMapInput)(nil)).Elem(), DatabaseIAMBindingMap{})
 	pulumi.RegisterOutputType(DatabaseIAMBindingOutput{})
-	pulumi.RegisterOutputType(DatabaseIAMBindingPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseIAMBindingArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseIAMBindingMapOutput{})
 }

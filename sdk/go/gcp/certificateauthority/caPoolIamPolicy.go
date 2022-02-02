@@ -268,7 +268,7 @@ type CaPoolIamPolicyInput interface {
 }
 
 func (*CaPoolIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*CaPoolIamPolicy)(nil))
+	return reflect.TypeOf((**CaPoolIamPolicy)(nil)).Elem()
 }
 
 func (i *CaPoolIamPolicy) ToCaPoolIamPolicyOutput() CaPoolIamPolicyOutput {
@@ -277,35 +277,6 @@ func (i *CaPoolIamPolicy) ToCaPoolIamPolicyOutput() CaPoolIamPolicyOutput {
 
 func (i *CaPoolIamPolicy) ToCaPoolIamPolicyOutputWithContext(ctx context.Context) CaPoolIamPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CaPoolIamPolicyOutput)
-}
-
-func (i *CaPoolIamPolicy) ToCaPoolIamPolicyPtrOutput() CaPoolIamPolicyPtrOutput {
-	return i.ToCaPoolIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *CaPoolIamPolicy) ToCaPoolIamPolicyPtrOutputWithContext(ctx context.Context) CaPoolIamPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CaPoolIamPolicyPtrOutput)
-}
-
-type CaPoolIamPolicyPtrInput interface {
-	pulumi.Input
-
-	ToCaPoolIamPolicyPtrOutput() CaPoolIamPolicyPtrOutput
-	ToCaPoolIamPolicyPtrOutputWithContext(ctx context.Context) CaPoolIamPolicyPtrOutput
-}
-
-type caPoolIamPolicyPtrType CaPoolIamPolicyArgs
-
-func (*caPoolIamPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CaPoolIamPolicy)(nil))
-}
-
-func (i *caPoolIamPolicyPtrType) ToCaPoolIamPolicyPtrOutput() CaPoolIamPolicyPtrOutput {
-	return i.ToCaPoolIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *caPoolIamPolicyPtrType) ToCaPoolIamPolicyPtrOutputWithContext(ctx context.Context) CaPoolIamPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CaPoolIamPolicyPtrOutput)
 }
 
 // CaPoolIamPolicyArrayInput is an input type that accepts CaPoolIamPolicyArray and CaPoolIamPolicyArrayOutput values.
@@ -361,7 +332,7 @@ func (i CaPoolIamPolicyMap) ToCaPoolIamPolicyMapOutputWithContext(ctx context.Co
 type CaPoolIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (CaPoolIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CaPoolIamPolicy)(nil))
+	return reflect.TypeOf((**CaPoolIamPolicy)(nil)).Elem()
 }
 
 func (o CaPoolIamPolicyOutput) ToCaPoolIamPolicyOutput() CaPoolIamPolicyOutput {
@@ -372,44 +343,10 @@ func (o CaPoolIamPolicyOutput) ToCaPoolIamPolicyOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o CaPoolIamPolicyOutput) ToCaPoolIamPolicyPtrOutput() CaPoolIamPolicyPtrOutput {
-	return o.ToCaPoolIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o CaPoolIamPolicyOutput) ToCaPoolIamPolicyPtrOutputWithContext(ctx context.Context) CaPoolIamPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CaPoolIamPolicy) *CaPoolIamPolicy {
-		return &v
-	}).(CaPoolIamPolicyPtrOutput)
-}
-
-type CaPoolIamPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (CaPoolIamPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CaPoolIamPolicy)(nil))
-}
-
-func (o CaPoolIamPolicyPtrOutput) ToCaPoolIamPolicyPtrOutput() CaPoolIamPolicyPtrOutput {
-	return o
-}
-
-func (o CaPoolIamPolicyPtrOutput) ToCaPoolIamPolicyPtrOutputWithContext(ctx context.Context) CaPoolIamPolicyPtrOutput {
-	return o
-}
-
-func (o CaPoolIamPolicyPtrOutput) Elem() CaPoolIamPolicyOutput {
-	return o.ApplyT(func(v *CaPoolIamPolicy) CaPoolIamPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret CaPoolIamPolicy
-		return ret
-	}).(CaPoolIamPolicyOutput)
-}
-
 type CaPoolIamPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (CaPoolIamPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CaPoolIamPolicy)(nil))
+	return reflect.TypeOf((*[]*CaPoolIamPolicy)(nil)).Elem()
 }
 
 func (o CaPoolIamPolicyArrayOutput) ToCaPoolIamPolicyArrayOutput() CaPoolIamPolicyArrayOutput {
@@ -421,15 +358,15 @@ func (o CaPoolIamPolicyArrayOutput) ToCaPoolIamPolicyArrayOutputWithContext(ctx 
 }
 
 func (o CaPoolIamPolicyArrayOutput) Index(i pulumi.IntInput) CaPoolIamPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CaPoolIamPolicy {
-		return vs[0].([]CaPoolIamPolicy)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CaPoolIamPolicy {
+		return vs[0].([]*CaPoolIamPolicy)[vs[1].(int)]
 	}).(CaPoolIamPolicyOutput)
 }
 
 type CaPoolIamPolicyMapOutput struct{ *pulumi.OutputState }
 
 func (CaPoolIamPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]CaPoolIamPolicy)(nil))
+	return reflect.TypeOf((*map[string]*CaPoolIamPolicy)(nil)).Elem()
 }
 
 func (o CaPoolIamPolicyMapOutput) ToCaPoolIamPolicyMapOutput() CaPoolIamPolicyMapOutput {
@@ -441,18 +378,16 @@ func (o CaPoolIamPolicyMapOutput) ToCaPoolIamPolicyMapOutputWithContext(ctx cont
 }
 
 func (o CaPoolIamPolicyMapOutput) MapIndex(k pulumi.StringInput) CaPoolIamPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CaPoolIamPolicy {
-		return vs[0].(map[string]CaPoolIamPolicy)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *CaPoolIamPolicy {
+		return vs[0].(map[string]*CaPoolIamPolicy)[vs[1].(string)]
 	}).(CaPoolIamPolicyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolIamPolicyInput)(nil)).Elem(), &CaPoolIamPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolIamPolicyPtrInput)(nil)).Elem(), &CaPoolIamPolicy{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolIamPolicyArrayInput)(nil)).Elem(), CaPoolIamPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolIamPolicyMapInput)(nil)).Elem(), CaPoolIamPolicyMap{})
 	pulumi.RegisterOutputType(CaPoolIamPolicyOutput{})
-	pulumi.RegisterOutputType(CaPoolIamPolicyPtrOutput{})
 	pulumi.RegisterOutputType(CaPoolIamPolicyArrayOutput{})
 	pulumi.RegisterOutputType(CaPoolIamPolicyMapOutput{})
 }

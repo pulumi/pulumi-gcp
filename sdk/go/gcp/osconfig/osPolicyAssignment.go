@@ -749,7 +749,7 @@ type OsPolicyAssignmentInput interface {
 }
 
 func (*OsPolicyAssignment) ElementType() reflect.Type {
-	return reflect.TypeOf((*OsPolicyAssignment)(nil))
+	return reflect.TypeOf((**OsPolicyAssignment)(nil)).Elem()
 }
 
 func (i *OsPolicyAssignment) ToOsPolicyAssignmentOutput() OsPolicyAssignmentOutput {
@@ -758,35 +758,6 @@ func (i *OsPolicyAssignment) ToOsPolicyAssignmentOutput() OsPolicyAssignmentOutp
 
 func (i *OsPolicyAssignment) ToOsPolicyAssignmentOutputWithContext(ctx context.Context) OsPolicyAssignmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOutput)
-}
-
-func (i *OsPolicyAssignment) ToOsPolicyAssignmentPtrOutput() OsPolicyAssignmentPtrOutput {
-	return i.ToOsPolicyAssignmentPtrOutputWithContext(context.Background())
-}
-
-func (i *OsPolicyAssignment) ToOsPolicyAssignmentPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentPtrOutput)
-}
-
-type OsPolicyAssignmentPtrInput interface {
-	pulumi.Input
-
-	ToOsPolicyAssignmentPtrOutput() OsPolicyAssignmentPtrOutput
-	ToOsPolicyAssignmentPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentPtrOutput
-}
-
-type osPolicyAssignmentPtrType OsPolicyAssignmentArgs
-
-func (*osPolicyAssignmentPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OsPolicyAssignment)(nil))
-}
-
-func (i *osPolicyAssignmentPtrType) ToOsPolicyAssignmentPtrOutput() OsPolicyAssignmentPtrOutput {
-	return i.ToOsPolicyAssignmentPtrOutputWithContext(context.Background())
-}
-
-func (i *osPolicyAssignmentPtrType) ToOsPolicyAssignmentPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentPtrOutput)
 }
 
 // OsPolicyAssignmentArrayInput is an input type that accepts OsPolicyAssignmentArray and OsPolicyAssignmentArrayOutput values.
@@ -842,7 +813,7 @@ func (i OsPolicyAssignmentMap) ToOsPolicyAssignmentMapOutputWithContext(ctx cont
 type OsPolicyAssignmentOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OsPolicyAssignment)(nil))
+	return reflect.TypeOf((**OsPolicyAssignment)(nil)).Elem()
 }
 
 func (o OsPolicyAssignmentOutput) ToOsPolicyAssignmentOutput() OsPolicyAssignmentOutput {
@@ -853,44 +824,10 @@ func (o OsPolicyAssignmentOutput) ToOsPolicyAssignmentOutputWithContext(ctx cont
 	return o
 }
 
-func (o OsPolicyAssignmentOutput) ToOsPolicyAssignmentPtrOutput() OsPolicyAssignmentPtrOutput {
-	return o.ToOsPolicyAssignmentPtrOutputWithContext(context.Background())
-}
-
-func (o OsPolicyAssignmentOutput) ToOsPolicyAssignmentPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsPolicyAssignment) *OsPolicyAssignment {
-		return &v
-	}).(OsPolicyAssignmentPtrOutput)
-}
-
-type OsPolicyAssignmentPtrOutput struct{ *pulumi.OutputState }
-
-func (OsPolicyAssignmentPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OsPolicyAssignment)(nil))
-}
-
-func (o OsPolicyAssignmentPtrOutput) ToOsPolicyAssignmentPtrOutput() OsPolicyAssignmentPtrOutput {
-	return o
-}
-
-func (o OsPolicyAssignmentPtrOutput) ToOsPolicyAssignmentPtrOutputWithContext(ctx context.Context) OsPolicyAssignmentPtrOutput {
-	return o
-}
-
-func (o OsPolicyAssignmentPtrOutput) Elem() OsPolicyAssignmentOutput {
-	return o.ApplyT(func(v *OsPolicyAssignment) OsPolicyAssignment {
-		if v != nil {
-			return *v
-		}
-		var ret OsPolicyAssignment
-		return ret
-	}).(OsPolicyAssignmentOutput)
-}
-
 type OsPolicyAssignmentArrayOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OsPolicyAssignment)(nil))
+	return reflect.TypeOf((*[]*OsPolicyAssignment)(nil)).Elem()
 }
 
 func (o OsPolicyAssignmentArrayOutput) ToOsPolicyAssignmentArrayOutput() OsPolicyAssignmentArrayOutput {
@@ -902,15 +839,15 @@ func (o OsPolicyAssignmentArrayOutput) ToOsPolicyAssignmentArrayOutputWithContex
 }
 
 func (o OsPolicyAssignmentArrayOutput) Index(i pulumi.IntInput) OsPolicyAssignmentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OsPolicyAssignment {
-		return vs[0].([]OsPolicyAssignment)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OsPolicyAssignment {
+		return vs[0].([]*OsPolicyAssignment)[vs[1].(int)]
 	}).(OsPolicyAssignmentOutput)
 }
 
 type OsPolicyAssignmentMapOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]OsPolicyAssignment)(nil))
+	return reflect.TypeOf((*map[string]*OsPolicyAssignment)(nil)).Elem()
 }
 
 func (o OsPolicyAssignmentMapOutput) ToOsPolicyAssignmentMapOutput() OsPolicyAssignmentMapOutput {
@@ -922,18 +859,16 @@ func (o OsPolicyAssignmentMapOutput) ToOsPolicyAssignmentMapOutputWithContext(ct
 }
 
 func (o OsPolicyAssignmentMapOutput) MapIndex(k pulumi.StringInput) OsPolicyAssignmentOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) OsPolicyAssignment {
-		return vs[0].(map[string]OsPolicyAssignment)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *OsPolicyAssignment {
+		return vs[0].(map[string]*OsPolicyAssignment)[vs[1].(string)]
 	}).(OsPolicyAssignmentOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentInput)(nil)).Elem(), &OsPolicyAssignment{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentPtrInput)(nil)).Elem(), &OsPolicyAssignment{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentArrayInput)(nil)).Elem(), OsPolicyAssignmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentMapInput)(nil)).Elem(), OsPolicyAssignmentMap{})
 	pulumi.RegisterOutputType(OsPolicyAssignmentOutput{})
-	pulumi.RegisterOutputType(OsPolicyAssignmentPtrOutput{})
 	pulumi.RegisterOutputType(OsPolicyAssignmentArrayOutput{})
 	pulumi.RegisterOutputType(OsPolicyAssignmentMapOutput{})
 }

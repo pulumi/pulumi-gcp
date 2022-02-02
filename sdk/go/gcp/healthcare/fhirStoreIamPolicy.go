@@ -250,7 +250,7 @@ type FhirStoreIamPolicyInput interface {
 }
 
 func (*FhirStoreIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*FhirStoreIamPolicy)(nil))
+	return reflect.TypeOf((**FhirStoreIamPolicy)(nil)).Elem()
 }
 
 func (i *FhirStoreIamPolicy) ToFhirStoreIamPolicyOutput() FhirStoreIamPolicyOutput {
@@ -259,35 +259,6 @@ func (i *FhirStoreIamPolicy) ToFhirStoreIamPolicyOutput() FhirStoreIamPolicyOutp
 
 func (i *FhirStoreIamPolicy) ToFhirStoreIamPolicyOutputWithContext(ctx context.Context) FhirStoreIamPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamPolicyOutput)
-}
-
-func (i *FhirStoreIamPolicy) ToFhirStoreIamPolicyPtrOutput() FhirStoreIamPolicyPtrOutput {
-	return i.ToFhirStoreIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *FhirStoreIamPolicy) ToFhirStoreIamPolicyPtrOutputWithContext(ctx context.Context) FhirStoreIamPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamPolicyPtrOutput)
-}
-
-type FhirStoreIamPolicyPtrInput interface {
-	pulumi.Input
-
-	ToFhirStoreIamPolicyPtrOutput() FhirStoreIamPolicyPtrOutput
-	ToFhirStoreIamPolicyPtrOutputWithContext(ctx context.Context) FhirStoreIamPolicyPtrOutput
-}
-
-type fhirStoreIamPolicyPtrType FhirStoreIamPolicyArgs
-
-func (*fhirStoreIamPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FhirStoreIamPolicy)(nil))
-}
-
-func (i *fhirStoreIamPolicyPtrType) ToFhirStoreIamPolicyPtrOutput() FhirStoreIamPolicyPtrOutput {
-	return i.ToFhirStoreIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *fhirStoreIamPolicyPtrType) ToFhirStoreIamPolicyPtrOutputWithContext(ctx context.Context) FhirStoreIamPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamPolicyPtrOutput)
 }
 
 // FhirStoreIamPolicyArrayInput is an input type that accepts FhirStoreIamPolicyArray and FhirStoreIamPolicyArrayOutput values.
@@ -343,7 +314,7 @@ func (i FhirStoreIamPolicyMap) ToFhirStoreIamPolicyMapOutputWithContext(ctx cont
 type FhirStoreIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (FhirStoreIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FhirStoreIamPolicy)(nil))
+	return reflect.TypeOf((**FhirStoreIamPolicy)(nil)).Elem()
 }
 
 func (o FhirStoreIamPolicyOutput) ToFhirStoreIamPolicyOutput() FhirStoreIamPolicyOutput {
@@ -354,44 +325,10 @@ func (o FhirStoreIamPolicyOutput) ToFhirStoreIamPolicyOutputWithContext(ctx cont
 	return o
 }
 
-func (o FhirStoreIamPolicyOutput) ToFhirStoreIamPolicyPtrOutput() FhirStoreIamPolicyPtrOutput {
-	return o.ToFhirStoreIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o FhirStoreIamPolicyOutput) ToFhirStoreIamPolicyPtrOutputWithContext(ctx context.Context) FhirStoreIamPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FhirStoreIamPolicy) *FhirStoreIamPolicy {
-		return &v
-	}).(FhirStoreIamPolicyPtrOutput)
-}
-
-type FhirStoreIamPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (FhirStoreIamPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FhirStoreIamPolicy)(nil))
-}
-
-func (o FhirStoreIamPolicyPtrOutput) ToFhirStoreIamPolicyPtrOutput() FhirStoreIamPolicyPtrOutput {
-	return o
-}
-
-func (o FhirStoreIamPolicyPtrOutput) ToFhirStoreIamPolicyPtrOutputWithContext(ctx context.Context) FhirStoreIamPolicyPtrOutput {
-	return o
-}
-
-func (o FhirStoreIamPolicyPtrOutput) Elem() FhirStoreIamPolicyOutput {
-	return o.ApplyT(func(v *FhirStoreIamPolicy) FhirStoreIamPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret FhirStoreIamPolicy
-		return ret
-	}).(FhirStoreIamPolicyOutput)
-}
-
 type FhirStoreIamPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (FhirStoreIamPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FhirStoreIamPolicy)(nil))
+	return reflect.TypeOf((*[]*FhirStoreIamPolicy)(nil)).Elem()
 }
 
 func (o FhirStoreIamPolicyArrayOutput) ToFhirStoreIamPolicyArrayOutput() FhirStoreIamPolicyArrayOutput {
@@ -403,15 +340,15 @@ func (o FhirStoreIamPolicyArrayOutput) ToFhirStoreIamPolicyArrayOutputWithContex
 }
 
 func (o FhirStoreIamPolicyArrayOutput) Index(i pulumi.IntInput) FhirStoreIamPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FhirStoreIamPolicy {
-		return vs[0].([]FhirStoreIamPolicy)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FhirStoreIamPolicy {
+		return vs[0].([]*FhirStoreIamPolicy)[vs[1].(int)]
 	}).(FhirStoreIamPolicyOutput)
 }
 
 type FhirStoreIamPolicyMapOutput struct{ *pulumi.OutputState }
 
 func (FhirStoreIamPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]FhirStoreIamPolicy)(nil))
+	return reflect.TypeOf((*map[string]*FhirStoreIamPolicy)(nil)).Elem()
 }
 
 func (o FhirStoreIamPolicyMapOutput) ToFhirStoreIamPolicyMapOutput() FhirStoreIamPolicyMapOutput {
@@ -423,18 +360,16 @@ func (o FhirStoreIamPolicyMapOutput) ToFhirStoreIamPolicyMapOutputWithContext(ct
 }
 
 func (o FhirStoreIamPolicyMapOutput) MapIndex(k pulumi.StringInput) FhirStoreIamPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) FhirStoreIamPolicy {
-		return vs[0].(map[string]FhirStoreIamPolicy)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *FhirStoreIamPolicy {
+		return vs[0].(map[string]*FhirStoreIamPolicy)[vs[1].(string)]
 	}).(FhirStoreIamPolicyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreIamPolicyInput)(nil)).Elem(), &FhirStoreIamPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreIamPolicyPtrInput)(nil)).Elem(), &FhirStoreIamPolicy{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreIamPolicyArrayInput)(nil)).Elem(), FhirStoreIamPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreIamPolicyMapInput)(nil)).Elem(), FhirStoreIamPolicyMap{})
 	pulumi.RegisterOutputType(FhirStoreIamPolicyOutput{})
-	pulumi.RegisterOutputType(FhirStoreIamPolicyPtrOutput{})
 	pulumi.RegisterOutputType(FhirStoreIamPolicyArrayOutput{})
 	pulumi.RegisterOutputType(FhirStoreIamPolicyMapOutput{})
 }

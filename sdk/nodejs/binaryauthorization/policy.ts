@@ -156,32 +156,30 @@ export class Policy extends pulumi.CustomResource {
      */
     constructor(name: string, args: PolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PolicyArgs | PolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyState | undefined;
-            inputs["admissionWhitelistPatterns"] = state ? state.admissionWhitelistPatterns : undefined;
-            inputs["clusterAdmissionRules"] = state ? state.clusterAdmissionRules : undefined;
-            inputs["defaultAdmissionRule"] = state ? state.defaultAdmissionRule : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["globalPolicyEvaluationMode"] = state ? state.globalPolicyEvaluationMode : undefined;
-            inputs["project"] = state ? state.project : undefined;
+            resourceInputs["admissionWhitelistPatterns"] = state ? state.admissionWhitelistPatterns : undefined;
+            resourceInputs["clusterAdmissionRules"] = state ? state.clusterAdmissionRules : undefined;
+            resourceInputs["defaultAdmissionRule"] = state ? state.defaultAdmissionRule : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["globalPolicyEvaluationMode"] = state ? state.globalPolicyEvaluationMode : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as PolicyArgs | undefined;
             if ((!args || args.defaultAdmissionRule === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'defaultAdmissionRule'");
             }
-            inputs["admissionWhitelistPatterns"] = args ? args.admissionWhitelistPatterns : undefined;
-            inputs["clusterAdmissionRules"] = args ? args.clusterAdmissionRules : undefined;
-            inputs["defaultAdmissionRule"] = args ? args.defaultAdmissionRule : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["globalPolicyEvaluationMode"] = args ? args.globalPolicyEvaluationMode : undefined;
-            inputs["project"] = args ? args.project : undefined;
+            resourceInputs["admissionWhitelistPatterns"] = args ? args.admissionWhitelistPatterns : undefined;
+            resourceInputs["clusterAdmissionRules"] = args ? args.clusterAdmissionRules : undefined;
+            resourceInputs["defaultAdmissionRule"] = args ? args.defaultAdmissionRule : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["globalPolicyEvaluationMode"] = args ? args.globalPolicyEvaluationMode : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Policy.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Policy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

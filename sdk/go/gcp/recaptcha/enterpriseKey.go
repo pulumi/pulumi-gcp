@@ -342,7 +342,7 @@ type EnterpriseKeyInput interface {
 }
 
 func (*EnterpriseKey) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnterpriseKey)(nil))
+	return reflect.TypeOf((**EnterpriseKey)(nil)).Elem()
 }
 
 func (i *EnterpriseKey) ToEnterpriseKeyOutput() EnterpriseKeyOutput {
@@ -351,35 +351,6 @@ func (i *EnterpriseKey) ToEnterpriseKeyOutput() EnterpriseKeyOutput {
 
 func (i *EnterpriseKey) ToEnterpriseKeyOutputWithContext(ctx context.Context) EnterpriseKeyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseKeyOutput)
-}
-
-func (i *EnterpriseKey) ToEnterpriseKeyPtrOutput() EnterpriseKeyPtrOutput {
-	return i.ToEnterpriseKeyPtrOutputWithContext(context.Background())
-}
-
-func (i *EnterpriseKey) ToEnterpriseKeyPtrOutputWithContext(ctx context.Context) EnterpriseKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseKeyPtrOutput)
-}
-
-type EnterpriseKeyPtrInput interface {
-	pulumi.Input
-
-	ToEnterpriseKeyPtrOutput() EnterpriseKeyPtrOutput
-	ToEnterpriseKeyPtrOutputWithContext(ctx context.Context) EnterpriseKeyPtrOutput
-}
-
-type enterpriseKeyPtrType EnterpriseKeyArgs
-
-func (*enterpriseKeyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EnterpriseKey)(nil))
-}
-
-func (i *enterpriseKeyPtrType) ToEnterpriseKeyPtrOutput() EnterpriseKeyPtrOutput {
-	return i.ToEnterpriseKeyPtrOutputWithContext(context.Background())
-}
-
-func (i *enterpriseKeyPtrType) ToEnterpriseKeyPtrOutputWithContext(ctx context.Context) EnterpriseKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseKeyPtrOutput)
 }
 
 // EnterpriseKeyArrayInput is an input type that accepts EnterpriseKeyArray and EnterpriseKeyArrayOutput values.
@@ -435,7 +406,7 @@ func (i EnterpriseKeyMap) ToEnterpriseKeyMapOutputWithContext(ctx context.Contex
 type EnterpriseKeyOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnterpriseKey)(nil))
+	return reflect.TypeOf((**EnterpriseKey)(nil)).Elem()
 }
 
 func (o EnterpriseKeyOutput) ToEnterpriseKeyOutput() EnterpriseKeyOutput {
@@ -446,44 +417,10 @@ func (o EnterpriseKeyOutput) ToEnterpriseKeyOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o EnterpriseKeyOutput) ToEnterpriseKeyPtrOutput() EnterpriseKeyPtrOutput {
-	return o.ToEnterpriseKeyPtrOutputWithContext(context.Background())
-}
-
-func (o EnterpriseKeyOutput) ToEnterpriseKeyPtrOutputWithContext(ctx context.Context) EnterpriseKeyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnterpriseKey) *EnterpriseKey {
-		return &v
-	}).(EnterpriseKeyPtrOutput)
-}
-
-type EnterpriseKeyPtrOutput struct{ *pulumi.OutputState }
-
-func (EnterpriseKeyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EnterpriseKey)(nil))
-}
-
-func (o EnterpriseKeyPtrOutput) ToEnterpriseKeyPtrOutput() EnterpriseKeyPtrOutput {
-	return o
-}
-
-func (o EnterpriseKeyPtrOutput) ToEnterpriseKeyPtrOutputWithContext(ctx context.Context) EnterpriseKeyPtrOutput {
-	return o
-}
-
-func (o EnterpriseKeyPtrOutput) Elem() EnterpriseKeyOutput {
-	return o.ApplyT(func(v *EnterpriseKey) EnterpriseKey {
-		if v != nil {
-			return *v
-		}
-		var ret EnterpriseKey
-		return ret
-	}).(EnterpriseKeyOutput)
-}
-
 type EnterpriseKeyArrayOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseKeyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EnterpriseKey)(nil))
+	return reflect.TypeOf((*[]*EnterpriseKey)(nil)).Elem()
 }
 
 func (o EnterpriseKeyArrayOutput) ToEnterpriseKeyArrayOutput() EnterpriseKeyArrayOutput {
@@ -495,15 +432,15 @@ func (o EnterpriseKeyArrayOutput) ToEnterpriseKeyArrayOutputWithContext(ctx cont
 }
 
 func (o EnterpriseKeyArrayOutput) Index(i pulumi.IntInput) EnterpriseKeyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnterpriseKey {
-		return vs[0].([]EnterpriseKey)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EnterpriseKey {
+		return vs[0].([]*EnterpriseKey)[vs[1].(int)]
 	}).(EnterpriseKeyOutput)
 }
 
 type EnterpriseKeyMapOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseKeyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]EnterpriseKey)(nil))
+	return reflect.TypeOf((*map[string]*EnterpriseKey)(nil)).Elem()
 }
 
 func (o EnterpriseKeyMapOutput) ToEnterpriseKeyMapOutput() EnterpriseKeyMapOutput {
@@ -515,18 +452,16 @@ func (o EnterpriseKeyMapOutput) ToEnterpriseKeyMapOutputWithContext(ctx context.
 }
 
 func (o EnterpriseKeyMapOutput) MapIndex(k pulumi.StringInput) EnterpriseKeyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) EnterpriseKey {
-		return vs[0].(map[string]EnterpriseKey)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *EnterpriseKey {
+		return vs[0].(map[string]*EnterpriseKey)[vs[1].(string)]
 	}).(EnterpriseKeyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseKeyInput)(nil)).Elem(), &EnterpriseKey{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseKeyPtrInput)(nil)).Elem(), &EnterpriseKey{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseKeyArrayInput)(nil)).Elem(), EnterpriseKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseKeyMapInput)(nil)).Elem(), EnterpriseKeyMap{})
 	pulumi.RegisterOutputType(EnterpriseKeyOutput{})
-	pulumi.RegisterOutputType(EnterpriseKeyPtrOutput{})
 	pulumi.RegisterOutputType(EnterpriseKeyArrayOutput{})
 	pulumi.RegisterOutputType(EnterpriseKeyMapOutput{})
 }

@@ -150,7 +150,7 @@ type FeatureMembershipInput interface {
 }
 
 func (*FeatureMembership) ElementType() reflect.Type {
-	return reflect.TypeOf((*FeatureMembership)(nil))
+	return reflect.TypeOf((**FeatureMembership)(nil)).Elem()
 }
 
 func (i *FeatureMembership) ToFeatureMembershipOutput() FeatureMembershipOutput {
@@ -159,35 +159,6 @@ func (i *FeatureMembership) ToFeatureMembershipOutput() FeatureMembershipOutput 
 
 func (i *FeatureMembership) ToFeatureMembershipOutputWithContext(ctx context.Context) FeatureMembershipOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipOutput)
-}
-
-func (i *FeatureMembership) ToFeatureMembershipPtrOutput() FeatureMembershipPtrOutput {
-	return i.ToFeatureMembershipPtrOutputWithContext(context.Background())
-}
-
-func (i *FeatureMembership) ToFeatureMembershipPtrOutputWithContext(ctx context.Context) FeatureMembershipPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipPtrOutput)
-}
-
-type FeatureMembershipPtrInput interface {
-	pulumi.Input
-
-	ToFeatureMembershipPtrOutput() FeatureMembershipPtrOutput
-	ToFeatureMembershipPtrOutputWithContext(ctx context.Context) FeatureMembershipPtrOutput
-}
-
-type featureMembershipPtrType FeatureMembershipArgs
-
-func (*featureMembershipPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FeatureMembership)(nil))
-}
-
-func (i *featureMembershipPtrType) ToFeatureMembershipPtrOutput() FeatureMembershipPtrOutput {
-	return i.ToFeatureMembershipPtrOutputWithContext(context.Background())
-}
-
-func (i *featureMembershipPtrType) ToFeatureMembershipPtrOutputWithContext(ctx context.Context) FeatureMembershipPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipPtrOutput)
 }
 
 // FeatureMembershipArrayInput is an input type that accepts FeatureMembershipArray and FeatureMembershipArrayOutput values.
@@ -243,7 +214,7 @@ func (i FeatureMembershipMap) ToFeatureMembershipMapOutputWithContext(ctx contex
 type FeatureMembershipOutput struct{ *pulumi.OutputState }
 
 func (FeatureMembershipOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FeatureMembership)(nil))
+	return reflect.TypeOf((**FeatureMembership)(nil)).Elem()
 }
 
 func (o FeatureMembershipOutput) ToFeatureMembershipOutput() FeatureMembershipOutput {
@@ -254,44 +225,10 @@ func (o FeatureMembershipOutput) ToFeatureMembershipOutputWithContext(ctx contex
 	return o
 }
 
-func (o FeatureMembershipOutput) ToFeatureMembershipPtrOutput() FeatureMembershipPtrOutput {
-	return o.ToFeatureMembershipPtrOutputWithContext(context.Background())
-}
-
-func (o FeatureMembershipOutput) ToFeatureMembershipPtrOutputWithContext(ctx context.Context) FeatureMembershipPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureMembership) *FeatureMembership {
-		return &v
-	}).(FeatureMembershipPtrOutput)
-}
-
-type FeatureMembershipPtrOutput struct{ *pulumi.OutputState }
-
-func (FeatureMembershipPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FeatureMembership)(nil))
-}
-
-func (o FeatureMembershipPtrOutput) ToFeatureMembershipPtrOutput() FeatureMembershipPtrOutput {
-	return o
-}
-
-func (o FeatureMembershipPtrOutput) ToFeatureMembershipPtrOutputWithContext(ctx context.Context) FeatureMembershipPtrOutput {
-	return o
-}
-
-func (o FeatureMembershipPtrOutput) Elem() FeatureMembershipOutput {
-	return o.ApplyT(func(v *FeatureMembership) FeatureMembership {
-		if v != nil {
-			return *v
-		}
-		var ret FeatureMembership
-		return ret
-	}).(FeatureMembershipOutput)
-}
-
 type FeatureMembershipArrayOutput struct{ *pulumi.OutputState }
 
 func (FeatureMembershipArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FeatureMembership)(nil))
+	return reflect.TypeOf((*[]*FeatureMembership)(nil)).Elem()
 }
 
 func (o FeatureMembershipArrayOutput) ToFeatureMembershipArrayOutput() FeatureMembershipArrayOutput {
@@ -303,15 +240,15 @@ func (o FeatureMembershipArrayOutput) ToFeatureMembershipArrayOutputWithContext(
 }
 
 func (o FeatureMembershipArrayOutput) Index(i pulumi.IntInput) FeatureMembershipOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FeatureMembership {
-		return vs[0].([]FeatureMembership)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FeatureMembership {
+		return vs[0].([]*FeatureMembership)[vs[1].(int)]
 	}).(FeatureMembershipOutput)
 }
 
 type FeatureMembershipMapOutput struct{ *pulumi.OutputState }
 
 func (FeatureMembershipMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]FeatureMembership)(nil))
+	return reflect.TypeOf((*map[string]*FeatureMembership)(nil)).Elem()
 }
 
 func (o FeatureMembershipMapOutput) ToFeatureMembershipMapOutput() FeatureMembershipMapOutput {
@@ -323,18 +260,16 @@ func (o FeatureMembershipMapOutput) ToFeatureMembershipMapOutputWithContext(ctx 
 }
 
 func (o FeatureMembershipMapOutput) MapIndex(k pulumi.StringInput) FeatureMembershipOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) FeatureMembership {
-		return vs[0].(map[string]FeatureMembership)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *FeatureMembership {
+		return vs[0].(map[string]*FeatureMembership)[vs[1].(string)]
 	}).(FeatureMembershipOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipInput)(nil)).Elem(), &FeatureMembership{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipPtrInput)(nil)).Elem(), &FeatureMembership{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipArrayInput)(nil)).Elem(), FeatureMembershipArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipMapInput)(nil)).Elem(), FeatureMembershipMap{})
 	pulumi.RegisterOutputType(FeatureMembershipOutput{})
-	pulumi.RegisterOutputType(FeatureMembershipPtrOutput{})
 	pulumi.RegisterOutputType(FeatureMembershipArrayOutput{})
 	pulumi.RegisterOutputType(FeatureMembershipMapOutput{})
 }

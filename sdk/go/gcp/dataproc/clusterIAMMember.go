@@ -279,7 +279,7 @@ type ClusterIAMMemberInput interface {
 }
 
 func (*ClusterIAMMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterIAMMember)(nil))
+	return reflect.TypeOf((**ClusterIAMMember)(nil)).Elem()
 }
 
 func (i *ClusterIAMMember) ToClusterIAMMemberOutput() ClusterIAMMemberOutput {
@@ -288,35 +288,6 @@ func (i *ClusterIAMMember) ToClusterIAMMemberOutput() ClusterIAMMemberOutput {
 
 func (i *ClusterIAMMember) ToClusterIAMMemberOutputWithContext(ctx context.Context) ClusterIAMMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMMemberOutput)
-}
-
-func (i *ClusterIAMMember) ToClusterIAMMemberPtrOutput() ClusterIAMMemberPtrOutput {
-	return i.ToClusterIAMMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *ClusterIAMMember) ToClusterIAMMemberPtrOutputWithContext(ctx context.Context) ClusterIAMMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMMemberPtrOutput)
-}
-
-type ClusterIAMMemberPtrInput interface {
-	pulumi.Input
-
-	ToClusterIAMMemberPtrOutput() ClusterIAMMemberPtrOutput
-	ToClusterIAMMemberPtrOutputWithContext(ctx context.Context) ClusterIAMMemberPtrOutput
-}
-
-type clusterIAMMemberPtrType ClusterIAMMemberArgs
-
-func (*clusterIAMMemberPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterIAMMember)(nil))
-}
-
-func (i *clusterIAMMemberPtrType) ToClusterIAMMemberPtrOutput() ClusterIAMMemberPtrOutput {
-	return i.ToClusterIAMMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *clusterIAMMemberPtrType) ToClusterIAMMemberPtrOutputWithContext(ctx context.Context) ClusterIAMMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMMemberPtrOutput)
 }
 
 // ClusterIAMMemberArrayInput is an input type that accepts ClusterIAMMemberArray and ClusterIAMMemberArrayOutput values.
@@ -372,7 +343,7 @@ func (i ClusterIAMMemberMap) ToClusterIAMMemberMapOutputWithContext(ctx context.
 type ClusterIAMMemberOutput struct{ *pulumi.OutputState }
 
 func (ClusterIAMMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterIAMMember)(nil))
+	return reflect.TypeOf((**ClusterIAMMember)(nil)).Elem()
 }
 
 func (o ClusterIAMMemberOutput) ToClusterIAMMemberOutput() ClusterIAMMemberOutput {
@@ -383,44 +354,10 @@ func (o ClusterIAMMemberOutput) ToClusterIAMMemberOutputWithContext(ctx context.
 	return o
 }
 
-func (o ClusterIAMMemberOutput) ToClusterIAMMemberPtrOutput() ClusterIAMMemberPtrOutput {
-	return o.ToClusterIAMMemberPtrOutputWithContext(context.Background())
-}
-
-func (o ClusterIAMMemberOutput) ToClusterIAMMemberPtrOutputWithContext(ctx context.Context) ClusterIAMMemberPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterIAMMember) *ClusterIAMMember {
-		return &v
-	}).(ClusterIAMMemberPtrOutput)
-}
-
-type ClusterIAMMemberPtrOutput struct{ *pulumi.OutputState }
-
-func (ClusterIAMMemberPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterIAMMember)(nil))
-}
-
-func (o ClusterIAMMemberPtrOutput) ToClusterIAMMemberPtrOutput() ClusterIAMMemberPtrOutput {
-	return o
-}
-
-func (o ClusterIAMMemberPtrOutput) ToClusterIAMMemberPtrOutputWithContext(ctx context.Context) ClusterIAMMemberPtrOutput {
-	return o
-}
-
-func (o ClusterIAMMemberPtrOutput) Elem() ClusterIAMMemberOutput {
-	return o.ApplyT(func(v *ClusterIAMMember) ClusterIAMMember {
-		if v != nil {
-			return *v
-		}
-		var ret ClusterIAMMember
-		return ret
-	}).(ClusterIAMMemberOutput)
-}
-
 type ClusterIAMMemberArrayOutput struct{ *pulumi.OutputState }
 
 func (ClusterIAMMemberArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ClusterIAMMember)(nil))
+	return reflect.TypeOf((*[]*ClusterIAMMember)(nil)).Elem()
 }
 
 func (o ClusterIAMMemberArrayOutput) ToClusterIAMMemberArrayOutput() ClusterIAMMemberArrayOutput {
@@ -432,15 +369,15 @@ func (o ClusterIAMMemberArrayOutput) ToClusterIAMMemberArrayOutputWithContext(ct
 }
 
 func (o ClusterIAMMemberArrayOutput) Index(i pulumi.IntInput) ClusterIAMMemberOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterIAMMember {
-		return vs[0].([]ClusterIAMMember)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClusterIAMMember {
+		return vs[0].([]*ClusterIAMMember)[vs[1].(int)]
 	}).(ClusterIAMMemberOutput)
 }
 
 type ClusterIAMMemberMapOutput struct{ *pulumi.OutputState }
 
 func (ClusterIAMMemberMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ClusterIAMMember)(nil))
+	return reflect.TypeOf((*map[string]*ClusterIAMMember)(nil)).Elem()
 }
 
 func (o ClusterIAMMemberMapOutput) ToClusterIAMMemberMapOutput() ClusterIAMMemberMapOutput {
@@ -452,18 +389,16 @@ func (o ClusterIAMMemberMapOutput) ToClusterIAMMemberMapOutputWithContext(ctx co
 }
 
 func (o ClusterIAMMemberMapOutput) MapIndex(k pulumi.StringInput) ClusterIAMMemberOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ClusterIAMMember {
-		return vs[0].(map[string]ClusterIAMMember)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ClusterIAMMember {
+		return vs[0].(map[string]*ClusterIAMMember)[vs[1].(string)]
 	}).(ClusterIAMMemberOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIAMMemberInput)(nil)).Elem(), &ClusterIAMMember{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIAMMemberPtrInput)(nil)).Elem(), &ClusterIAMMember{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIAMMemberArrayInput)(nil)).Elem(), ClusterIAMMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIAMMemberMapInput)(nil)).Elem(), ClusterIAMMemberMap{})
 	pulumi.RegisterOutputType(ClusterIAMMemberOutput{})
-	pulumi.RegisterOutputType(ClusterIAMMemberPtrOutput{})
 	pulumi.RegisterOutputType(ClusterIAMMemberArrayOutput{})
 	pulumi.RegisterOutputType(ClusterIAMMemberMapOutput{})
 }

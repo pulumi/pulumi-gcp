@@ -237,7 +237,7 @@ type TagTemplateInput interface {
 }
 
 func (*TagTemplate) ElementType() reflect.Type {
-	return reflect.TypeOf((*TagTemplate)(nil))
+	return reflect.TypeOf((**TagTemplate)(nil)).Elem()
 }
 
 func (i *TagTemplate) ToTagTemplateOutput() TagTemplateOutput {
@@ -246,35 +246,6 @@ func (i *TagTemplate) ToTagTemplateOutput() TagTemplateOutput {
 
 func (i *TagTemplate) ToTagTemplateOutputWithContext(ctx context.Context) TagTemplateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateOutput)
-}
-
-func (i *TagTemplate) ToTagTemplatePtrOutput() TagTemplatePtrOutput {
-	return i.ToTagTemplatePtrOutputWithContext(context.Background())
-}
-
-func (i *TagTemplate) ToTagTemplatePtrOutputWithContext(ctx context.Context) TagTemplatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TagTemplatePtrOutput)
-}
-
-type TagTemplatePtrInput interface {
-	pulumi.Input
-
-	ToTagTemplatePtrOutput() TagTemplatePtrOutput
-	ToTagTemplatePtrOutputWithContext(ctx context.Context) TagTemplatePtrOutput
-}
-
-type tagTemplatePtrType TagTemplateArgs
-
-func (*tagTemplatePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TagTemplate)(nil))
-}
-
-func (i *tagTemplatePtrType) ToTagTemplatePtrOutput() TagTemplatePtrOutput {
-	return i.ToTagTemplatePtrOutputWithContext(context.Background())
-}
-
-func (i *tagTemplatePtrType) ToTagTemplatePtrOutputWithContext(ctx context.Context) TagTemplatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TagTemplatePtrOutput)
 }
 
 // TagTemplateArrayInput is an input type that accepts TagTemplateArray and TagTemplateArrayOutput values.
@@ -330,7 +301,7 @@ func (i TagTemplateMap) ToTagTemplateMapOutputWithContext(ctx context.Context) T
 type TagTemplateOutput struct{ *pulumi.OutputState }
 
 func (TagTemplateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TagTemplate)(nil))
+	return reflect.TypeOf((**TagTemplate)(nil)).Elem()
 }
 
 func (o TagTemplateOutput) ToTagTemplateOutput() TagTemplateOutput {
@@ -341,44 +312,10 @@ func (o TagTemplateOutput) ToTagTemplateOutputWithContext(ctx context.Context) T
 	return o
 }
 
-func (o TagTemplateOutput) ToTagTemplatePtrOutput() TagTemplatePtrOutput {
-	return o.ToTagTemplatePtrOutputWithContext(context.Background())
-}
-
-func (o TagTemplateOutput) ToTagTemplatePtrOutputWithContext(ctx context.Context) TagTemplatePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TagTemplate) *TagTemplate {
-		return &v
-	}).(TagTemplatePtrOutput)
-}
-
-type TagTemplatePtrOutput struct{ *pulumi.OutputState }
-
-func (TagTemplatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TagTemplate)(nil))
-}
-
-func (o TagTemplatePtrOutput) ToTagTemplatePtrOutput() TagTemplatePtrOutput {
-	return o
-}
-
-func (o TagTemplatePtrOutput) ToTagTemplatePtrOutputWithContext(ctx context.Context) TagTemplatePtrOutput {
-	return o
-}
-
-func (o TagTemplatePtrOutput) Elem() TagTemplateOutput {
-	return o.ApplyT(func(v *TagTemplate) TagTemplate {
-		if v != nil {
-			return *v
-		}
-		var ret TagTemplate
-		return ret
-	}).(TagTemplateOutput)
-}
-
 type TagTemplateArrayOutput struct{ *pulumi.OutputState }
 
 func (TagTemplateArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TagTemplate)(nil))
+	return reflect.TypeOf((*[]*TagTemplate)(nil)).Elem()
 }
 
 func (o TagTemplateArrayOutput) ToTagTemplateArrayOutput() TagTemplateArrayOutput {
@@ -390,15 +327,15 @@ func (o TagTemplateArrayOutput) ToTagTemplateArrayOutputWithContext(ctx context.
 }
 
 func (o TagTemplateArrayOutput) Index(i pulumi.IntInput) TagTemplateOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TagTemplate {
-		return vs[0].([]TagTemplate)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TagTemplate {
+		return vs[0].([]*TagTemplate)[vs[1].(int)]
 	}).(TagTemplateOutput)
 }
 
 type TagTemplateMapOutput struct{ *pulumi.OutputState }
 
 func (TagTemplateMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]TagTemplate)(nil))
+	return reflect.TypeOf((*map[string]*TagTemplate)(nil)).Elem()
 }
 
 func (o TagTemplateMapOutput) ToTagTemplateMapOutput() TagTemplateMapOutput {
@@ -410,18 +347,16 @@ func (o TagTemplateMapOutput) ToTagTemplateMapOutputWithContext(ctx context.Cont
 }
 
 func (o TagTemplateMapOutput) MapIndex(k pulumi.StringInput) TagTemplateOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TagTemplate {
-		return vs[0].(map[string]TagTemplate)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *TagTemplate {
+		return vs[0].(map[string]*TagTemplate)[vs[1].(string)]
 	}).(TagTemplateOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TagTemplateInput)(nil)).Elem(), &TagTemplate{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TagTemplatePtrInput)(nil)).Elem(), &TagTemplate{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TagTemplateArrayInput)(nil)).Elem(), TagTemplateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TagTemplateMapInput)(nil)).Elem(), TagTemplateMap{})
 	pulumi.RegisterOutputType(TagTemplateOutput{})
-	pulumi.RegisterOutputType(TagTemplatePtrOutput{})
 	pulumi.RegisterOutputType(TagTemplateArrayOutput{})
 	pulumi.RegisterOutputType(TagTemplateMapOutput{})
 }

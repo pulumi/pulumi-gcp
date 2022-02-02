@@ -158,7 +158,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = compute.NewFirewall(ctx, "fw_iap", &compute.FirewallArgs{
+// 		_, err = compute.NewFirewall(ctx, "fw-iap", &compute.FirewallArgs{
 // 			Direction: pulumi.String("INGRESS"),
 // 			Network:   ilbNetwork.ID(),
 // 			SourceRanges: pulumi.StringArray{
@@ -175,7 +175,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = compute.NewFirewall(ctx, "fw_ilb_to_backends", &compute.FirewallArgs{
+// 		_, err = compute.NewFirewall(ctx, "fw-ilb-to-backends", &compute.FirewallArgs{
 // 			Direction: pulumi.String("INGRESS"),
 // 			Network:   ilbNetwork.ID(),
 // 			SourceRanges: pulumi.StringArray{
@@ -198,7 +198,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = compute.NewInstance(ctx, "vm_test", &compute.InstanceArgs{
+// 		_, err = compute.NewInstance(ctx, "vm-test", &compute.InstanceArgs{
 // 			Zone:        pulumi.String("europe-west1-b"),
 // 			MachineType: pulumi.String("e2-small"),
 // 			NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
@@ -444,7 +444,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = compute.NewForwardingRule(ctx, "_default", &compute.ForwardingRuleArgs{
+// 		_, err = compute.NewForwardingRule(ctx, "default", &compute.ForwardingRuleArgs{
 // 			Region:         pulumi.String("us-central1"),
 // 			PortRange:      pulumi.String("80"),
 // 			BackendService: backend.ID(),
@@ -1896,7 +1896,7 @@ type ForwardingRuleInput interface {
 }
 
 func (*ForwardingRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*ForwardingRule)(nil))
+	return reflect.TypeOf((**ForwardingRule)(nil)).Elem()
 }
 
 func (i *ForwardingRule) ToForwardingRuleOutput() ForwardingRuleOutput {
@@ -1905,35 +1905,6 @@ func (i *ForwardingRule) ToForwardingRuleOutput() ForwardingRuleOutput {
 
 func (i *ForwardingRule) ToForwardingRuleOutputWithContext(ctx context.Context) ForwardingRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ForwardingRuleOutput)
-}
-
-func (i *ForwardingRule) ToForwardingRulePtrOutput() ForwardingRulePtrOutput {
-	return i.ToForwardingRulePtrOutputWithContext(context.Background())
-}
-
-func (i *ForwardingRule) ToForwardingRulePtrOutputWithContext(ctx context.Context) ForwardingRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ForwardingRulePtrOutput)
-}
-
-type ForwardingRulePtrInput interface {
-	pulumi.Input
-
-	ToForwardingRulePtrOutput() ForwardingRulePtrOutput
-	ToForwardingRulePtrOutputWithContext(ctx context.Context) ForwardingRulePtrOutput
-}
-
-type forwardingRulePtrType ForwardingRuleArgs
-
-func (*forwardingRulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ForwardingRule)(nil))
-}
-
-func (i *forwardingRulePtrType) ToForwardingRulePtrOutput() ForwardingRulePtrOutput {
-	return i.ToForwardingRulePtrOutputWithContext(context.Background())
-}
-
-func (i *forwardingRulePtrType) ToForwardingRulePtrOutputWithContext(ctx context.Context) ForwardingRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ForwardingRulePtrOutput)
 }
 
 // ForwardingRuleArrayInput is an input type that accepts ForwardingRuleArray and ForwardingRuleArrayOutput values.
@@ -1989,7 +1960,7 @@ func (i ForwardingRuleMap) ToForwardingRuleMapOutputWithContext(ctx context.Cont
 type ForwardingRuleOutput struct{ *pulumi.OutputState }
 
 func (ForwardingRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ForwardingRule)(nil))
+	return reflect.TypeOf((**ForwardingRule)(nil)).Elem()
 }
 
 func (o ForwardingRuleOutput) ToForwardingRuleOutput() ForwardingRuleOutput {
@@ -2000,44 +1971,10 @@ func (o ForwardingRuleOutput) ToForwardingRuleOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o ForwardingRuleOutput) ToForwardingRulePtrOutput() ForwardingRulePtrOutput {
-	return o.ToForwardingRulePtrOutputWithContext(context.Background())
-}
-
-func (o ForwardingRuleOutput) ToForwardingRulePtrOutputWithContext(ctx context.Context) ForwardingRulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ForwardingRule) *ForwardingRule {
-		return &v
-	}).(ForwardingRulePtrOutput)
-}
-
-type ForwardingRulePtrOutput struct{ *pulumi.OutputState }
-
-func (ForwardingRulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ForwardingRule)(nil))
-}
-
-func (o ForwardingRulePtrOutput) ToForwardingRulePtrOutput() ForwardingRulePtrOutput {
-	return o
-}
-
-func (o ForwardingRulePtrOutput) ToForwardingRulePtrOutputWithContext(ctx context.Context) ForwardingRulePtrOutput {
-	return o
-}
-
-func (o ForwardingRulePtrOutput) Elem() ForwardingRuleOutput {
-	return o.ApplyT(func(v *ForwardingRule) ForwardingRule {
-		if v != nil {
-			return *v
-		}
-		var ret ForwardingRule
-		return ret
-	}).(ForwardingRuleOutput)
-}
-
 type ForwardingRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (ForwardingRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ForwardingRule)(nil))
+	return reflect.TypeOf((*[]*ForwardingRule)(nil)).Elem()
 }
 
 func (o ForwardingRuleArrayOutput) ToForwardingRuleArrayOutput() ForwardingRuleArrayOutput {
@@ -2049,15 +1986,15 @@ func (o ForwardingRuleArrayOutput) ToForwardingRuleArrayOutputWithContext(ctx co
 }
 
 func (o ForwardingRuleArrayOutput) Index(i pulumi.IntInput) ForwardingRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ForwardingRule {
-		return vs[0].([]ForwardingRule)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ForwardingRule {
+		return vs[0].([]*ForwardingRule)[vs[1].(int)]
 	}).(ForwardingRuleOutput)
 }
 
 type ForwardingRuleMapOutput struct{ *pulumi.OutputState }
 
 func (ForwardingRuleMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ForwardingRule)(nil))
+	return reflect.TypeOf((*map[string]*ForwardingRule)(nil)).Elem()
 }
 
 func (o ForwardingRuleMapOutput) ToForwardingRuleMapOutput() ForwardingRuleMapOutput {
@@ -2069,18 +2006,16 @@ func (o ForwardingRuleMapOutput) ToForwardingRuleMapOutputWithContext(ctx contex
 }
 
 func (o ForwardingRuleMapOutput) MapIndex(k pulumi.StringInput) ForwardingRuleOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ForwardingRule {
-		return vs[0].(map[string]ForwardingRule)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ForwardingRule {
+		return vs[0].(map[string]*ForwardingRule)[vs[1].(string)]
 	}).(ForwardingRuleOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleInput)(nil)).Elem(), &ForwardingRule{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRulePtrInput)(nil)).Elem(), &ForwardingRule{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleArrayInput)(nil)).Elem(), ForwardingRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleMapInput)(nil)).Elem(), ForwardingRuleMap{})
 	pulumi.RegisterOutputType(ForwardingRuleOutput{})
-	pulumi.RegisterOutputType(ForwardingRulePtrOutput{})
 	pulumi.RegisterOutputType(ForwardingRuleArrayOutput{})
 	pulumi.RegisterOutputType(ForwardingRuleMapOutput{})
 }

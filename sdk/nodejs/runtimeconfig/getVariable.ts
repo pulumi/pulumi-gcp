@@ -9,9 +9,7 @@ export function getVariable(args: GetVariableArgs, opts?: pulumi.InvokeOptions):
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:runtimeconfig/getVariable:getVariable", {
         "name": args.name,
         "parent": args.parent,

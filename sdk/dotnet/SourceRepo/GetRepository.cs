@@ -6,17 +6,16 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.SourceRepo
 {
     public static class GetRepository
     {
         public static Task<GetRepositoryResult> InvokeAsync(GetRepositoryArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRepositoryResult>("gcp:sourcerepo/getRepository:getRepository", args ?? new GetRepositoryArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRepositoryResult>("gcp:sourcerepo/getRepository:getRepository", args ?? new GetRepositoryArgs(), options.WithDefaults());
 
         public static Output<GetRepositoryResult> Invoke(GetRepositoryInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRepositoryResult>("gcp:sourcerepo/getRepository:getRepository", args ?? new GetRepositoryInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetRepositoryResult>("gcp:sourcerepo/getRepository:getRepository", args ?? new GetRepositoryInvokeArgs(), options.WithDefaults());
     }
 
 

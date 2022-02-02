@@ -283,21 +283,21 @@ export class GuestPolicies extends pulumi.CustomResource {
      */
     constructor(name: string, args: GuestPoliciesArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GuestPoliciesArgs | GuestPoliciesState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GuestPoliciesState | undefined;
-            inputs["assignment"] = state ? state.assignment : undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["guestPolicyId"] = state ? state.guestPolicyId : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["packageRepositories"] = state ? state.packageRepositories : undefined;
-            inputs["packages"] = state ? state.packages : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["recipes"] = state ? state.recipes : undefined;
-            inputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["assignment"] = state ? state.assignment : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["guestPolicyId"] = state ? state.guestPolicyId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["packageRepositories"] = state ? state.packageRepositories : undefined;
+            resourceInputs["packages"] = state ? state.packages : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["recipes"] = state ? state.recipes : undefined;
+            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as GuestPoliciesArgs | undefined;
             if ((!args || args.assignment === undefined) && !opts.urn) {
@@ -306,22 +306,20 @@ export class GuestPolicies extends pulumi.CustomResource {
             if ((!args || args.guestPolicyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'guestPolicyId'");
             }
-            inputs["assignment"] = args ? args.assignment : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["etag"] = args ? args.etag : undefined;
-            inputs["guestPolicyId"] = args ? args.guestPolicyId : undefined;
-            inputs["packageRepositories"] = args ? args.packageRepositories : undefined;
-            inputs["packages"] = args ? args.packages : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["recipes"] = args ? args.recipes : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["assignment"] = args ? args.assignment : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["etag"] = args ? args.etag : undefined;
+            resourceInputs["guestPolicyId"] = args ? args.guestPolicyId : undefined;
+            resourceInputs["packageRepositories"] = args ? args.packageRepositories : undefined;
+            resourceInputs["packages"] = args ? args.packages : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["recipes"] = args ? args.recipes : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(GuestPolicies.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(GuestPolicies.__pulumiType, name, resourceInputs, opts);
     }
 }
 

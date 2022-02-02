@@ -27,9 +27,7 @@ export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): P
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:cloudrun/getService:getService", {
         "location": args.location,
         "name": args.name,

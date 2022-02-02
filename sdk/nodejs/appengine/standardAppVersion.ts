@@ -231,30 +231,30 @@ export class StandardAppVersion extends pulumi.CustomResource {
      */
     constructor(name: string, args: StandardAppVersionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: StandardAppVersionArgs | StandardAppVersionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StandardAppVersionState | undefined;
-            inputs["automaticScaling"] = state ? state.automaticScaling : undefined;
-            inputs["basicScaling"] = state ? state.basicScaling : undefined;
-            inputs["deleteServiceOnDestroy"] = state ? state.deleteServiceOnDestroy : undefined;
-            inputs["deployment"] = state ? state.deployment : undefined;
-            inputs["entrypoint"] = state ? state.entrypoint : undefined;
-            inputs["envVariables"] = state ? state.envVariables : undefined;
-            inputs["handlers"] = state ? state.handlers : undefined;
-            inputs["inboundServices"] = state ? state.inboundServices : undefined;
-            inputs["instanceClass"] = state ? state.instanceClass : undefined;
-            inputs["libraries"] = state ? state.libraries : undefined;
-            inputs["manualScaling"] = state ? state.manualScaling : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["noopOnDestroy"] = state ? state.noopOnDestroy : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["runtime"] = state ? state.runtime : undefined;
-            inputs["runtimeApiVersion"] = state ? state.runtimeApiVersion : undefined;
-            inputs["service"] = state ? state.service : undefined;
-            inputs["threadsafe"] = state ? state.threadsafe : undefined;
-            inputs["versionId"] = state ? state.versionId : undefined;
-            inputs["vpcAccessConnector"] = state ? state.vpcAccessConnector : undefined;
+            resourceInputs["automaticScaling"] = state ? state.automaticScaling : undefined;
+            resourceInputs["basicScaling"] = state ? state.basicScaling : undefined;
+            resourceInputs["deleteServiceOnDestroy"] = state ? state.deleteServiceOnDestroy : undefined;
+            resourceInputs["deployment"] = state ? state.deployment : undefined;
+            resourceInputs["entrypoint"] = state ? state.entrypoint : undefined;
+            resourceInputs["envVariables"] = state ? state.envVariables : undefined;
+            resourceInputs["handlers"] = state ? state.handlers : undefined;
+            resourceInputs["inboundServices"] = state ? state.inboundServices : undefined;
+            resourceInputs["instanceClass"] = state ? state.instanceClass : undefined;
+            resourceInputs["libraries"] = state ? state.libraries : undefined;
+            resourceInputs["manualScaling"] = state ? state.manualScaling : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["noopOnDestroy"] = state ? state.noopOnDestroy : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["runtime"] = state ? state.runtime : undefined;
+            resourceInputs["runtimeApiVersion"] = state ? state.runtimeApiVersion : undefined;
+            resourceInputs["service"] = state ? state.service : undefined;
+            resourceInputs["threadsafe"] = state ? state.threadsafe : undefined;
+            resourceInputs["versionId"] = state ? state.versionId : undefined;
+            resourceInputs["vpcAccessConnector"] = state ? state.vpcAccessConnector : undefined;
         } else {
             const args = argsOrState as StandardAppVersionArgs | undefined;
             if ((!args || args.deployment === undefined) && !opts.urn) {
@@ -269,31 +269,29 @@ export class StandardAppVersion extends pulumi.CustomResource {
             if ((!args || args.service === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
-            inputs["automaticScaling"] = args ? args.automaticScaling : undefined;
-            inputs["basicScaling"] = args ? args.basicScaling : undefined;
-            inputs["deleteServiceOnDestroy"] = args ? args.deleteServiceOnDestroy : undefined;
-            inputs["deployment"] = args ? args.deployment : undefined;
-            inputs["entrypoint"] = args ? args.entrypoint : undefined;
-            inputs["envVariables"] = args ? args.envVariables : undefined;
-            inputs["handlers"] = args ? args.handlers : undefined;
-            inputs["inboundServices"] = args ? args.inboundServices : undefined;
-            inputs["instanceClass"] = args ? args.instanceClass : undefined;
-            inputs["libraries"] = args ? args.libraries : undefined;
-            inputs["manualScaling"] = args ? args.manualScaling : undefined;
-            inputs["noopOnDestroy"] = args ? args.noopOnDestroy : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["runtime"] = args ? args.runtime : undefined;
-            inputs["runtimeApiVersion"] = args ? args.runtimeApiVersion : undefined;
-            inputs["service"] = args ? args.service : undefined;
-            inputs["threadsafe"] = args ? args.threadsafe : undefined;
-            inputs["versionId"] = args ? args.versionId : undefined;
-            inputs["vpcAccessConnector"] = args ? args.vpcAccessConnector : undefined;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["automaticScaling"] = args ? args.automaticScaling : undefined;
+            resourceInputs["basicScaling"] = args ? args.basicScaling : undefined;
+            resourceInputs["deleteServiceOnDestroy"] = args ? args.deleteServiceOnDestroy : undefined;
+            resourceInputs["deployment"] = args ? args.deployment : undefined;
+            resourceInputs["entrypoint"] = args ? args.entrypoint : undefined;
+            resourceInputs["envVariables"] = args ? args.envVariables : undefined;
+            resourceInputs["handlers"] = args ? args.handlers : undefined;
+            resourceInputs["inboundServices"] = args ? args.inboundServices : undefined;
+            resourceInputs["instanceClass"] = args ? args.instanceClass : undefined;
+            resourceInputs["libraries"] = args ? args.libraries : undefined;
+            resourceInputs["manualScaling"] = args ? args.manualScaling : undefined;
+            resourceInputs["noopOnDestroy"] = args ? args.noopOnDestroy : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["runtime"] = args ? args.runtime : undefined;
+            resourceInputs["runtimeApiVersion"] = args ? args.runtimeApiVersion : undefined;
+            resourceInputs["service"] = args ? args.service : undefined;
+            resourceInputs["threadsafe"] = args ? args.threadsafe : undefined;
+            resourceInputs["versionId"] = args ? args.versionId : undefined;
+            resourceInputs["vpcAccessConnector"] = args ? args.vpcAccessConnector : undefined;
+            resourceInputs["name"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(StandardAppVersion.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(StandardAppVersion.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -110,17 +110,17 @@ export class OauthIdpConfig extends pulumi.CustomResource {
      */
     constructor(name: string, args: OauthIdpConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OauthIdpConfigArgs | OauthIdpConfigState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OauthIdpConfigState | undefined;
-            inputs["clientId"] = state ? state.clientId : undefined;
-            inputs["clientSecret"] = state ? state.clientSecret : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["issuer"] = state ? state.issuer : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
+            resourceInputs["clientId"] = state ? state.clientId : undefined;
+            resourceInputs["clientSecret"] = state ? state.clientSecret : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["issuer"] = state ? state.issuer : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as OauthIdpConfigArgs | undefined;
             if ((!args || args.clientId === undefined) && !opts.urn) {
@@ -129,18 +129,16 @@ export class OauthIdpConfig extends pulumi.CustomResource {
             if ((!args || args.issuer === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'issuer'");
             }
-            inputs["clientId"] = args ? args.clientId : undefined;
-            inputs["clientSecret"] = args ? args.clientSecret : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["issuer"] = args ? args.issuer : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
+            resourceInputs["clientId"] = args ? args.clientId : undefined;
+            resourceInputs["clientSecret"] = args ? args.clientSecret : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["issuer"] = args ? args.issuer : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(OauthIdpConfig.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(OauthIdpConfig.__pulumiType, name, resourceInputs, opts);
     }
 }
 

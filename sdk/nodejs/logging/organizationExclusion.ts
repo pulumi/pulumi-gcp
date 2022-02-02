@@ -96,15 +96,15 @@ export class OrganizationExclusion extends pulumi.CustomResource {
      */
     constructor(name: string, args: OrganizationExclusionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OrganizationExclusionArgs | OrganizationExclusionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrganizationExclusionState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["disabled"] = state ? state.disabled : undefined;
-            inputs["filter"] = state ? state.filter : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["orgId"] = state ? state.orgId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["disabled"] = state ? state.disabled : undefined;
+            resourceInputs["filter"] = state ? state.filter : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["orgId"] = state ? state.orgId : undefined;
         } else {
             const args = argsOrState as OrganizationExclusionArgs | undefined;
             if ((!args || args.filter === undefined) && !opts.urn) {
@@ -113,16 +113,14 @@ export class OrganizationExclusion extends pulumi.CustomResource {
             if ((!args || args.orgId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["disabled"] = args ? args.disabled : undefined;
-            inputs["filter"] = args ? args.filter : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["orgId"] = args ? args.orgId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["disabled"] = args ? args.disabled : undefined;
+            resourceInputs["filter"] = args ? args.filter : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["orgId"] = args ? args.orgId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(OrganizationExclusion.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(OrganizationExclusion.__pulumiType, name, resourceInputs, opts);
     }
 }
 

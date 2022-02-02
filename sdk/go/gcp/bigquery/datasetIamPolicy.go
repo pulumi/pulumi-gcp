@@ -280,7 +280,7 @@ type DatasetIamPolicyInput interface {
 }
 
 func (*DatasetIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetIamPolicy)(nil))
+	return reflect.TypeOf((**DatasetIamPolicy)(nil)).Elem()
 }
 
 func (i *DatasetIamPolicy) ToDatasetIamPolicyOutput() DatasetIamPolicyOutput {
@@ -289,35 +289,6 @@ func (i *DatasetIamPolicy) ToDatasetIamPolicyOutput() DatasetIamPolicyOutput {
 
 func (i *DatasetIamPolicy) ToDatasetIamPolicyOutputWithContext(ctx context.Context) DatasetIamPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamPolicyOutput)
-}
-
-func (i *DatasetIamPolicy) ToDatasetIamPolicyPtrOutput() DatasetIamPolicyPtrOutput {
-	return i.ToDatasetIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *DatasetIamPolicy) ToDatasetIamPolicyPtrOutputWithContext(ctx context.Context) DatasetIamPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamPolicyPtrOutput)
-}
-
-type DatasetIamPolicyPtrInput interface {
-	pulumi.Input
-
-	ToDatasetIamPolicyPtrOutput() DatasetIamPolicyPtrOutput
-	ToDatasetIamPolicyPtrOutputWithContext(ctx context.Context) DatasetIamPolicyPtrOutput
-}
-
-type datasetIamPolicyPtrType DatasetIamPolicyArgs
-
-func (*datasetIamPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatasetIamPolicy)(nil))
-}
-
-func (i *datasetIamPolicyPtrType) ToDatasetIamPolicyPtrOutput() DatasetIamPolicyPtrOutput {
-	return i.ToDatasetIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *datasetIamPolicyPtrType) ToDatasetIamPolicyPtrOutputWithContext(ctx context.Context) DatasetIamPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamPolicyPtrOutput)
 }
 
 // DatasetIamPolicyArrayInput is an input type that accepts DatasetIamPolicyArray and DatasetIamPolicyArrayOutput values.
@@ -373,7 +344,7 @@ func (i DatasetIamPolicyMap) ToDatasetIamPolicyMapOutputWithContext(ctx context.
 type DatasetIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (DatasetIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetIamPolicy)(nil))
+	return reflect.TypeOf((**DatasetIamPolicy)(nil)).Elem()
 }
 
 func (o DatasetIamPolicyOutput) ToDatasetIamPolicyOutput() DatasetIamPolicyOutput {
@@ -384,44 +355,10 @@ func (o DatasetIamPolicyOutput) ToDatasetIamPolicyOutputWithContext(ctx context.
 	return o
 }
 
-func (o DatasetIamPolicyOutput) ToDatasetIamPolicyPtrOutput() DatasetIamPolicyPtrOutput {
-	return o.ToDatasetIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o DatasetIamPolicyOutput) ToDatasetIamPolicyPtrOutputWithContext(ctx context.Context) DatasetIamPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatasetIamPolicy) *DatasetIamPolicy {
-		return &v
-	}).(DatasetIamPolicyPtrOutput)
-}
-
-type DatasetIamPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (DatasetIamPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatasetIamPolicy)(nil))
-}
-
-func (o DatasetIamPolicyPtrOutput) ToDatasetIamPolicyPtrOutput() DatasetIamPolicyPtrOutput {
-	return o
-}
-
-func (o DatasetIamPolicyPtrOutput) ToDatasetIamPolicyPtrOutputWithContext(ctx context.Context) DatasetIamPolicyPtrOutput {
-	return o
-}
-
-func (o DatasetIamPolicyPtrOutput) Elem() DatasetIamPolicyOutput {
-	return o.ApplyT(func(v *DatasetIamPolicy) DatasetIamPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret DatasetIamPolicy
-		return ret
-	}).(DatasetIamPolicyOutput)
-}
-
 type DatasetIamPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (DatasetIamPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DatasetIamPolicy)(nil))
+	return reflect.TypeOf((*[]*DatasetIamPolicy)(nil)).Elem()
 }
 
 func (o DatasetIamPolicyArrayOutput) ToDatasetIamPolicyArrayOutput() DatasetIamPolicyArrayOutput {
@@ -433,15 +370,15 @@ func (o DatasetIamPolicyArrayOutput) ToDatasetIamPolicyArrayOutputWithContext(ct
 }
 
 func (o DatasetIamPolicyArrayOutput) Index(i pulumi.IntInput) DatasetIamPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatasetIamPolicy {
-		return vs[0].([]DatasetIamPolicy)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DatasetIamPolicy {
+		return vs[0].([]*DatasetIamPolicy)[vs[1].(int)]
 	}).(DatasetIamPolicyOutput)
 }
 
 type DatasetIamPolicyMapOutput struct{ *pulumi.OutputState }
 
 func (DatasetIamPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DatasetIamPolicy)(nil))
+	return reflect.TypeOf((*map[string]*DatasetIamPolicy)(nil)).Elem()
 }
 
 func (o DatasetIamPolicyMapOutput) ToDatasetIamPolicyMapOutput() DatasetIamPolicyMapOutput {
@@ -453,18 +390,16 @@ func (o DatasetIamPolicyMapOutput) ToDatasetIamPolicyMapOutputWithContext(ctx co
 }
 
 func (o DatasetIamPolicyMapOutput) MapIndex(k pulumi.StringInput) DatasetIamPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DatasetIamPolicy {
-		return vs[0].(map[string]DatasetIamPolicy)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DatasetIamPolicy {
+		return vs[0].(map[string]*DatasetIamPolicy)[vs[1].(string)]
 	}).(DatasetIamPolicyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetIamPolicyInput)(nil)).Elem(), &DatasetIamPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DatasetIamPolicyPtrInput)(nil)).Elem(), &DatasetIamPolicy{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetIamPolicyArrayInput)(nil)).Elem(), DatasetIamPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetIamPolicyMapInput)(nil)).Elem(), DatasetIamPolicyMap{})
 	pulumi.RegisterOutputType(DatasetIamPolicyOutput{})
-	pulumi.RegisterOutputType(DatasetIamPolicyPtrOutput{})
 	pulumi.RegisterOutputType(DatasetIamPolicyArrayOutput{})
 	pulumi.RegisterOutputType(DatasetIamPolicyMapOutput{})
 }

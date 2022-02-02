@@ -28,9 +28,7 @@ export function getBillingAccount(args?: GetBillingAccountArgs, opts?: pulumi.In
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:organizations/getBillingAccount:getBillingAccount", {
         "billingAccount": args.billingAccount,
         "displayName": args.displayName,

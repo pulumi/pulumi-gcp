@@ -315,7 +315,7 @@ type TargetHttpProxyInput interface {
 }
 
 func (*TargetHttpProxy) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetHttpProxy)(nil))
+	return reflect.TypeOf((**TargetHttpProxy)(nil)).Elem()
 }
 
 func (i *TargetHttpProxy) ToTargetHttpProxyOutput() TargetHttpProxyOutput {
@@ -324,35 +324,6 @@ func (i *TargetHttpProxy) ToTargetHttpProxyOutput() TargetHttpProxyOutput {
 
 func (i *TargetHttpProxy) ToTargetHttpProxyOutputWithContext(ctx context.Context) TargetHttpProxyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TargetHttpProxyOutput)
-}
-
-func (i *TargetHttpProxy) ToTargetHttpProxyPtrOutput() TargetHttpProxyPtrOutput {
-	return i.ToTargetHttpProxyPtrOutputWithContext(context.Background())
-}
-
-func (i *TargetHttpProxy) ToTargetHttpProxyPtrOutputWithContext(ctx context.Context) TargetHttpProxyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TargetHttpProxyPtrOutput)
-}
-
-type TargetHttpProxyPtrInput interface {
-	pulumi.Input
-
-	ToTargetHttpProxyPtrOutput() TargetHttpProxyPtrOutput
-	ToTargetHttpProxyPtrOutputWithContext(ctx context.Context) TargetHttpProxyPtrOutput
-}
-
-type targetHttpProxyPtrType TargetHttpProxyArgs
-
-func (*targetHttpProxyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TargetHttpProxy)(nil))
-}
-
-func (i *targetHttpProxyPtrType) ToTargetHttpProxyPtrOutput() TargetHttpProxyPtrOutput {
-	return i.ToTargetHttpProxyPtrOutputWithContext(context.Background())
-}
-
-func (i *targetHttpProxyPtrType) ToTargetHttpProxyPtrOutputWithContext(ctx context.Context) TargetHttpProxyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TargetHttpProxyPtrOutput)
 }
 
 // TargetHttpProxyArrayInput is an input type that accepts TargetHttpProxyArray and TargetHttpProxyArrayOutput values.
@@ -408,7 +379,7 @@ func (i TargetHttpProxyMap) ToTargetHttpProxyMapOutputWithContext(ctx context.Co
 type TargetHttpProxyOutput struct{ *pulumi.OutputState }
 
 func (TargetHttpProxyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetHttpProxy)(nil))
+	return reflect.TypeOf((**TargetHttpProxy)(nil)).Elem()
 }
 
 func (o TargetHttpProxyOutput) ToTargetHttpProxyOutput() TargetHttpProxyOutput {
@@ -419,44 +390,10 @@ func (o TargetHttpProxyOutput) ToTargetHttpProxyOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o TargetHttpProxyOutput) ToTargetHttpProxyPtrOutput() TargetHttpProxyPtrOutput {
-	return o.ToTargetHttpProxyPtrOutputWithContext(context.Background())
-}
-
-func (o TargetHttpProxyOutput) ToTargetHttpProxyPtrOutputWithContext(ctx context.Context) TargetHttpProxyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TargetHttpProxy) *TargetHttpProxy {
-		return &v
-	}).(TargetHttpProxyPtrOutput)
-}
-
-type TargetHttpProxyPtrOutput struct{ *pulumi.OutputState }
-
-func (TargetHttpProxyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TargetHttpProxy)(nil))
-}
-
-func (o TargetHttpProxyPtrOutput) ToTargetHttpProxyPtrOutput() TargetHttpProxyPtrOutput {
-	return o
-}
-
-func (o TargetHttpProxyPtrOutput) ToTargetHttpProxyPtrOutputWithContext(ctx context.Context) TargetHttpProxyPtrOutput {
-	return o
-}
-
-func (o TargetHttpProxyPtrOutput) Elem() TargetHttpProxyOutput {
-	return o.ApplyT(func(v *TargetHttpProxy) TargetHttpProxy {
-		if v != nil {
-			return *v
-		}
-		var ret TargetHttpProxy
-		return ret
-	}).(TargetHttpProxyOutput)
-}
-
 type TargetHttpProxyArrayOutput struct{ *pulumi.OutputState }
 
 func (TargetHttpProxyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TargetHttpProxy)(nil))
+	return reflect.TypeOf((*[]*TargetHttpProxy)(nil)).Elem()
 }
 
 func (o TargetHttpProxyArrayOutput) ToTargetHttpProxyArrayOutput() TargetHttpProxyArrayOutput {
@@ -468,15 +405,15 @@ func (o TargetHttpProxyArrayOutput) ToTargetHttpProxyArrayOutputWithContext(ctx 
 }
 
 func (o TargetHttpProxyArrayOutput) Index(i pulumi.IntInput) TargetHttpProxyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TargetHttpProxy {
-		return vs[0].([]TargetHttpProxy)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TargetHttpProxy {
+		return vs[0].([]*TargetHttpProxy)[vs[1].(int)]
 	}).(TargetHttpProxyOutput)
 }
 
 type TargetHttpProxyMapOutput struct{ *pulumi.OutputState }
 
 func (TargetHttpProxyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]TargetHttpProxy)(nil))
+	return reflect.TypeOf((*map[string]*TargetHttpProxy)(nil)).Elem()
 }
 
 func (o TargetHttpProxyMapOutput) ToTargetHttpProxyMapOutput() TargetHttpProxyMapOutput {
@@ -488,18 +425,16 @@ func (o TargetHttpProxyMapOutput) ToTargetHttpProxyMapOutputWithContext(ctx cont
 }
 
 func (o TargetHttpProxyMapOutput) MapIndex(k pulumi.StringInput) TargetHttpProxyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TargetHttpProxy {
-		return vs[0].(map[string]TargetHttpProxy)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *TargetHttpProxy {
+		return vs[0].(map[string]*TargetHttpProxy)[vs[1].(string)]
 	}).(TargetHttpProxyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetHttpProxyInput)(nil)).Elem(), &TargetHttpProxy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TargetHttpProxyPtrInput)(nil)).Elem(), &TargetHttpProxy{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetHttpProxyArrayInput)(nil)).Elem(), TargetHttpProxyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetHttpProxyMapInput)(nil)).Elem(), TargetHttpProxyMap{})
 	pulumi.RegisterOutputType(TargetHttpProxyOutput{})
-	pulumi.RegisterOutputType(TargetHttpProxyPtrOutput{})
 	pulumi.RegisterOutputType(TargetHttpProxyArrayOutput{})
 	pulumi.RegisterOutputType(TargetHttpProxyMapOutput{})
 }

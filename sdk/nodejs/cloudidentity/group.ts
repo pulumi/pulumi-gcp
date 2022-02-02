@@ -135,19 +135,19 @@ export class Group extends pulumi.CustomResource {
      */
     constructor(name: string, args: GroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GroupArgs | GroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupState | undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["groupKey"] = state ? state.groupKey : undefined;
-            inputs["initialGroupConfig"] = state ? state.initialGroupConfig : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["parent"] = state ? state.parent : undefined;
-            inputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["groupKey"] = state ? state.groupKey : undefined;
+            resourceInputs["initialGroupConfig"] = state ? state.initialGroupConfig : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["parent"] = state ? state.parent : undefined;
+            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as GroupArgs | undefined;
             if ((!args || args.groupKey === undefined) && !opts.urn) {
@@ -159,20 +159,18 @@ export class Group extends pulumi.CustomResource {
             if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["groupKey"] = args ? args.groupKey : undefined;
-            inputs["initialGroupConfig"] = args ? args.initialGroupConfig : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["groupKey"] = args ? args.groupKey : undefined;
+            resourceInputs["initialGroupConfig"] = args ? args.initialGroupConfig : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Group.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Group.__pulumiType, name, resourceInputs, opts);
     }
 }
 

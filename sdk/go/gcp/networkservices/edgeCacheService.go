@@ -586,7 +586,7 @@ type EdgeCacheServiceInput interface {
 }
 
 func (*EdgeCacheService) ElementType() reflect.Type {
-	return reflect.TypeOf((*EdgeCacheService)(nil))
+	return reflect.TypeOf((**EdgeCacheService)(nil)).Elem()
 }
 
 func (i *EdgeCacheService) ToEdgeCacheServiceOutput() EdgeCacheServiceOutput {
@@ -595,35 +595,6 @@ func (i *EdgeCacheService) ToEdgeCacheServiceOutput() EdgeCacheServiceOutput {
 
 func (i *EdgeCacheService) ToEdgeCacheServiceOutputWithContext(ctx context.Context) EdgeCacheServiceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceOutput)
-}
-
-func (i *EdgeCacheService) ToEdgeCacheServicePtrOutput() EdgeCacheServicePtrOutput {
-	return i.ToEdgeCacheServicePtrOutputWithContext(context.Background())
-}
-
-func (i *EdgeCacheService) ToEdgeCacheServicePtrOutputWithContext(ctx context.Context) EdgeCacheServicePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServicePtrOutput)
-}
-
-type EdgeCacheServicePtrInput interface {
-	pulumi.Input
-
-	ToEdgeCacheServicePtrOutput() EdgeCacheServicePtrOutput
-	ToEdgeCacheServicePtrOutputWithContext(ctx context.Context) EdgeCacheServicePtrOutput
-}
-
-type edgeCacheServicePtrType EdgeCacheServiceArgs
-
-func (*edgeCacheServicePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EdgeCacheService)(nil))
-}
-
-func (i *edgeCacheServicePtrType) ToEdgeCacheServicePtrOutput() EdgeCacheServicePtrOutput {
-	return i.ToEdgeCacheServicePtrOutputWithContext(context.Background())
-}
-
-func (i *edgeCacheServicePtrType) ToEdgeCacheServicePtrOutputWithContext(ctx context.Context) EdgeCacheServicePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServicePtrOutput)
 }
 
 // EdgeCacheServiceArrayInput is an input type that accepts EdgeCacheServiceArray and EdgeCacheServiceArrayOutput values.
@@ -679,7 +650,7 @@ func (i EdgeCacheServiceMap) ToEdgeCacheServiceMapOutputWithContext(ctx context.
 type EdgeCacheServiceOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheServiceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EdgeCacheService)(nil))
+	return reflect.TypeOf((**EdgeCacheService)(nil)).Elem()
 }
 
 func (o EdgeCacheServiceOutput) ToEdgeCacheServiceOutput() EdgeCacheServiceOutput {
@@ -690,44 +661,10 @@ func (o EdgeCacheServiceOutput) ToEdgeCacheServiceOutputWithContext(ctx context.
 	return o
 }
 
-func (o EdgeCacheServiceOutput) ToEdgeCacheServicePtrOutput() EdgeCacheServicePtrOutput {
-	return o.ToEdgeCacheServicePtrOutputWithContext(context.Background())
-}
-
-func (o EdgeCacheServiceOutput) ToEdgeCacheServicePtrOutputWithContext(ctx context.Context) EdgeCacheServicePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCacheService) *EdgeCacheService {
-		return &v
-	}).(EdgeCacheServicePtrOutput)
-}
-
-type EdgeCacheServicePtrOutput struct{ *pulumi.OutputState }
-
-func (EdgeCacheServicePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EdgeCacheService)(nil))
-}
-
-func (o EdgeCacheServicePtrOutput) ToEdgeCacheServicePtrOutput() EdgeCacheServicePtrOutput {
-	return o
-}
-
-func (o EdgeCacheServicePtrOutput) ToEdgeCacheServicePtrOutputWithContext(ctx context.Context) EdgeCacheServicePtrOutput {
-	return o
-}
-
-func (o EdgeCacheServicePtrOutput) Elem() EdgeCacheServiceOutput {
-	return o.ApplyT(func(v *EdgeCacheService) EdgeCacheService {
-		if v != nil {
-			return *v
-		}
-		var ret EdgeCacheService
-		return ret
-	}).(EdgeCacheServiceOutput)
-}
-
 type EdgeCacheServiceArrayOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheServiceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EdgeCacheService)(nil))
+	return reflect.TypeOf((*[]*EdgeCacheService)(nil)).Elem()
 }
 
 func (o EdgeCacheServiceArrayOutput) ToEdgeCacheServiceArrayOutput() EdgeCacheServiceArrayOutput {
@@ -739,15 +676,15 @@ func (o EdgeCacheServiceArrayOutput) ToEdgeCacheServiceArrayOutputWithContext(ct
 }
 
 func (o EdgeCacheServiceArrayOutput) Index(i pulumi.IntInput) EdgeCacheServiceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EdgeCacheService {
-		return vs[0].([]EdgeCacheService)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EdgeCacheService {
+		return vs[0].([]*EdgeCacheService)[vs[1].(int)]
 	}).(EdgeCacheServiceOutput)
 }
 
 type EdgeCacheServiceMapOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheServiceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]EdgeCacheService)(nil))
+	return reflect.TypeOf((*map[string]*EdgeCacheService)(nil)).Elem()
 }
 
 func (o EdgeCacheServiceMapOutput) ToEdgeCacheServiceMapOutput() EdgeCacheServiceMapOutput {
@@ -759,18 +696,16 @@ func (o EdgeCacheServiceMapOutput) ToEdgeCacheServiceMapOutputWithContext(ctx co
 }
 
 func (o EdgeCacheServiceMapOutput) MapIndex(k pulumi.StringInput) EdgeCacheServiceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) EdgeCacheService {
-		return vs[0].(map[string]EdgeCacheService)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *EdgeCacheService {
+		return vs[0].(map[string]*EdgeCacheService)[vs[1].(string)]
 	}).(EdgeCacheServiceOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceInput)(nil)).Elem(), &EdgeCacheService{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServicePtrInput)(nil)).Elem(), &EdgeCacheService{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceArrayInput)(nil)).Elem(), EdgeCacheServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceMapInput)(nil)).Elem(), EdgeCacheServiceMap{})
 	pulumi.RegisterOutputType(EdgeCacheServiceOutput{})
-	pulumi.RegisterOutputType(EdgeCacheServicePtrOutput{})
 	pulumi.RegisterOutputType(EdgeCacheServiceArrayOutput{})
 	pulumi.RegisterOutputType(EdgeCacheServiceMapOutput{})
 }

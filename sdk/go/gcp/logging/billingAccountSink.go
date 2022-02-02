@@ -36,13 +36,13 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := storage.NewBucket(ctx, "log_bucket", &storage.BucketArgs{
+// 		_, err := storage.NewBucket(ctx, "log-bucket", &storage.BucketArgs{
 // 			Location: pulumi.String("US"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = logging.NewBillingAccountSink(ctx, "my_sink", &logging.BillingAccountSinkArgs{
+// 		_, err = logging.NewBillingAccountSink(ctx, "my-sink", &logging.BillingAccountSinkArgs{
 // 			Description:    pulumi.String("some explanation on what this is"),
 // 			BillingAccount: pulumi.String("ABCDEF-012345-GHIJKL"),
 // 			Destination: log_bucket.Name.ApplyT(func(name string) (string, error) {
@@ -52,7 +52,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = projects.NewIAMBinding(ctx, "log_writer", &projects.IAMBindingArgs{
+// 		_, err = projects.NewIAMBinding(ctx, "log-writer", &projects.IAMBindingArgs{
 // 			Project: pulumi.String("your-project-id"),
 // 			Role:    pulumi.String("roles/storage.objectCreator"),
 // 			Members: pulumi.StringArray{
@@ -311,7 +311,7 @@ type BillingAccountSinkInput interface {
 }
 
 func (*BillingAccountSink) ElementType() reflect.Type {
-	return reflect.TypeOf((*BillingAccountSink)(nil))
+	return reflect.TypeOf((**BillingAccountSink)(nil)).Elem()
 }
 
 func (i *BillingAccountSink) ToBillingAccountSinkOutput() BillingAccountSinkOutput {
@@ -320,35 +320,6 @@ func (i *BillingAccountSink) ToBillingAccountSinkOutput() BillingAccountSinkOutp
 
 func (i *BillingAccountSink) ToBillingAccountSinkOutputWithContext(ctx context.Context) BillingAccountSinkOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountSinkOutput)
-}
-
-func (i *BillingAccountSink) ToBillingAccountSinkPtrOutput() BillingAccountSinkPtrOutput {
-	return i.ToBillingAccountSinkPtrOutputWithContext(context.Background())
-}
-
-func (i *BillingAccountSink) ToBillingAccountSinkPtrOutputWithContext(ctx context.Context) BillingAccountSinkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountSinkPtrOutput)
-}
-
-type BillingAccountSinkPtrInput interface {
-	pulumi.Input
-
-	ToBillingAccountSinkPtrOutput() BillingAccountSinkPtrOutput
-	ToBillingAccountSinkPtrOutputWithContext(ctx context.Context) BillingAccountSinkPtrOutput
-}
-
-type billingAccountSinkPtrType BillingAccountSinkArgs
-
-func (*billingAccountSinkPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BillingAccountSink)(nil))
-}
-
-func (i *billingAccountSinkPtrType) ToBillingAccountSinkPtrOutput() BillingAccountSinkPtrOutput {
-	return i.ToBillingAccountSinkPtrOutputWithContext(context.Background())
-}
-
-func (i *billingAccountSinkPtrType) ToBillingAccountSinkPtrOutputWithContext(ctx context.Context) BillingAccountSinkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountSinkPtrOutput)
 }
 
 // BillingAccountSinkArrayInput is an input type that accepts BillingAccountSinkArray and BillingAccountSinkArrayOutput values.
@@ -404,7 +375,7 @@ func (i BillingAccountSinkMap) ToBillingAccountSinkMapOutputWithContext(ctx cont
 type BillingAccountSinkOutput struct{ *pulumi.OutputState }
 
 func (BillingAccountSinkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BillingAccountSink)(nil))
+	return reflect.TypeOf((**BillingAccountSink)(nil)).Elem()
 }
 
 func (o BillingAccountSinkOutput) ToBillingAccountSinkOutput() BillingAccountSinkOutput {
@@ -415,44 +386,10 @@ func (o BillingAccountSinkOutput) ToBillingAccountSinkOutputWithContext(ctx cont
 	return o
 }
 
-func (o BillingAccountSinkOutput) ToBillingAccountSinkPtrOutput() BillingAccountSinkPtrOutput {
-	return o.ToBillingAccountSinkPtrOutputWithContext(context.Background())
-}
-
-func (o BillingAccountSinkOutput) ToBillingAccountSinkPtrOutputWithContext(ctx context.Context) BillingAccountSinkPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BillingAccountSink) *BillingAccountSink {
-		return &v
-	}).(BillingAccountSinkPtrOutput)
-}
-
-type BillingAccountSinkPtrOutput struct{ *pulumi.OutputState }
-
-func (BillingAccountSinkPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BillingAccountSink)(nil))
-}
-
-func (o BillingAccountSinkPtrOutput) ToBillingAccountSinkPtrOutput() BillingAccountSinkPtrOutput {
-	return o
-}
-
-func (o BillingAccountSinkPtrOutput) ToBillingAccountSinkPtrOutputWithContext(ctx context.Context) BillingAccountSinkPtrOutput {
-	return o
-}
-
-func (o BillingAccountSinkPtrOutput) Elem() BillingAccountSinkOutput {
-	return o.ApplyT(func(v *BillingAccountSink) BillingAccountSink {
-		if v != nil {
-			return *v
-		}
-		var ret BillingAccountSink
-		return ret
-	}).(BillingAccountSinkOutput)
-}
-
 type BillingAccountSinkArrayOutput struct{ *pulumi.OutputState }
 
 func (BillingAccountSinkArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BillingAccountSink)(nil))
+	return reflect.TypeOf((*[]*BillingAccountSink)(nil)).Elem()
 }
 
 func (o BillingAccountSinkArrayOutput) ToBillingAccountSinkArrayOutput() BillingAccountSinkArrayOutput {
@@ -464,15 +401,15 @@ func (o BillingAccountSinkArrayOutput) ToBillingAccountSinkArrayOutputWithContex
 }
 
 func (o BillingAccountSinkArrayOutput) Index(i pulumi.IntInput) BillingAccountSinkOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BillingAccountSink {
-		return vs[0].([]BillingAccountSink)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BillingAccountSink {
+		return vs[0].([]*BillingAccountSink)[vs[1].(int)]
 	}).(BillingAccountSinkOutput)
 }
 
 type BillingAccountSinkMapOutput struct{ *pulumi.OutputState }
 
 func (BillingAccountSinkMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]BillingAccountSink)(nil))
+	return reflect.TypeOf((*map[string]*BillingAccountSink)(nil)).Elem()
 }
 
 func (o BillingAccountSinkMapOutput) ToBillingAccountSinkMapOutput() BillingAccountSinkMapOutput {
@@ -484,18 +421,16 @@ func (o BillingAccountSinkMapOutput) ToBillingAccountSinkMapOutputWithContext(ct
 }
 
 func (o BillingAccountSinkMapOutput) MapIndex(k pulumi.StringInput) BillingAccountSinkOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BillingAccountSink {
-		return vs[0].(map[string]BillingAccountSink)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *BillingAccountSink {
+		return vs[0].(map[string]*BillingAccountSink)[vs[1].(string)]
 	}).(BillingAccountSinkOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BillingAccountSinkInput)(nil)).Elem(), &BillingAccountSink{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BillingAccountSinkPtrInput)(nil)).Elem(), &BillingAccountSink{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BillingAccountSinkArrayInput)(nil)).Elem(), BillingAccountSinkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BillingAccountSinkMapInput)(nil)).Elem(), BillingAccountSinkMap{})
 	pulumi.RegisterOutputType(BillingAccountSinkOutput{})
-	pulumi.RegisterOutputType(BillingAccountSinkPtrOutput{})
 	pulumi.RegisterOutputType(BillingAccountSinkArrayOutput{})
 	pulumi.RegisterOutputType(BillingAccountSinkMapOutput{})
 }

@@ -138,15 +138,15 @@ export class TagKeyIamMember extends pulumi.CustomResource {
      */
     constructor(name: string, args: TagKeyIamMemberArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TagKeyIamMemberArgs | TagKeyIamMemberState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TagKeyIamMemberState | undefined;
-            inputs["condition"] = state ? state.condition : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["member"] = state ? state.member : undefined;
-            inputs["role"] = state ? state.role : undefined;
-            inputs["tagKey"] = state ? state.tagKey : undefined;
+            resourceInputs["condition"] = state ? state.condition : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["member"] = state ? state.member : undefined;
+            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["tagKey"] = state ? state.tagKey : undefined;
         } else {
             const args = argsOrState as TagKeyIamMemberArgs | undefined;
             if ((!args || args.member === undefined) && !opts.urn) {
@@ -158,16 +158,14 @@ export class TagKeyIamMember extends pulumi.CustomResource {
             if ((!args || args.tagKey === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tagKey'");
             }
-            inputs["condition"] = args ? args.condition : undefined;
-            inputs["member"] = args ? args.member : undefined;
-            inputs["role"] = args ? args.role : undefined;
-            inputs["tagKey"] = args ? args.tagKey : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["condition"] = args ? args.condition : undefined;
+            resourceInputs["member"] = args ? args.member : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["tagKey"] = args ? args.tagKey : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(TagKeyIamMember.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(TagKeyIamMember.__pulumiType, name, resourceInputs, opts);
     }
 }
 

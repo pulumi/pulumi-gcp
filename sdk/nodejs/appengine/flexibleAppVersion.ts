@@ -290,39 +290,39 @@ export class FlexibleAppVersion extends pulumi.CustomResource {
      */
     constructor(name: string, args: FlexibleAppVersionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FlexibleAppVersionArgs | FlexibleAppVersionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FlexibleAppVersionState | undefined;
-            inputs["apiConfig"] = state ? state.apiConfig : undefined;
-            inputs["automaticScaling"] = state ? state.automaticScaling : undefined;
-            inputs["betaSettings"] = state ? state.betaSettings : undefined;
-            inputs["defaultExpiration"] = state ? state.defaultExpiration : undefined;
-            inputs["deleteServiceOnDestroy"] = state ? state.deleteServiceOnDestroy : undefined;
-            inputs["deployment"] = state ? state.deployment : undefined;
-            inputs["endpointsApiService"] = state ? state.endpointsApiService : undefined;
-            inputs["entrypoint"] = state ? state.entrypoint : undefined;
-            inputs["envVariables"] = state ? state.envVariables : undefined;
-            inputs["handlers"] = state ? state.handlers : undefined;
-            inputs["inboundServices"] = state ? state.inboundServices : undefined;
-            inputs["instanceClass"] = state ? state.instanceClass : undefined;
-            inputs["livenessCheck"] = state ? state.livenessCheck : undefined;
-            inputs["manualScaling"] = state ? state.manualScaling : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["network"] = state ? state.network : undefined;
-            inputs["nobuildFilesRegex"] = state ? state.nobuildFilesRegex : undefined;
-            inputs["noopOnDestroy"] = state ? state.noopOnDestroy : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["readinessCheck"] = state ? state.readinessCheck : undefined;
-            inputs["resources"] = state ? state.resources : undefined;
-            inputs["runtime"] = state ? state.runtime : undefined;
-            inputs["runtimeApiVersion"] = state ? state.runtimeApiVersion : undefined;
-            inputs["runtimeChannel"] = state ? state.runtimeChannel : undefined;
-            inputs["runtimeMainExecutablePath"] = state ? state.runtimeMainExecutablePath : undefined;
-            inputs["service"] = state ? state.service : undefined;
-            inputs["servingStatus"] = state ? state.servingStatus : undefined;
-            inputs["versionId"] = state ? state.versionId : undefined;
-            inputs["vpcAccessConnector"] = state ? state.vpcAccessConnector : undefined;
+            resourceInputs["apiConfig"] = state ? state.apiConfig : undefined;
+            resourceInputs["automaticScaling"] = state ? state.automaticScaling : undefined;
+            resourceInputs["betaSettings"] = state ? state.betaSettings : undefined;
+            resourceInputs["defaultExpiration"] = state ? state.defaultExpiration : undefined;
+            resourceInputs["deleteServiceOnDestroy"] = state ? state.deleteServiceOnDestroy : undefined;
+            resourceInputs["deployment"] = state ? state.deployment : undefined;
+            resourceInputs["endpointsApiService"] = state ? state.endpointsApiService : undefined;
+            resourceInputs["entrypoint"] = state ? state.entrypoint : undefined;
+            resourceInputs["envVariables"] = state ? state.envVariables : undefined;
+            resourceInputs["handlers"] = state ? state.handlers : undefined;
+            resourceInputs["inboundServices"] = state ? state.inboundServices : undefined;
+            resourceInputs["instanceClass"] = state ? state.instanceClass : undefined;
+            resourceInputs["livenessCheck"] = state ? state.livenessCheck : undefined;
+            resourceInputs["manualScaling"] = state ? state.manualScaling : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["network"] = state ? state.network : undefined;
+            resourceInputs["nobuildFilesRegex"] = state ? state.nobuildFilesRegex : undefined;
+            resourceInputs["noopOnDestroy"] = state ? state.noopOnDestroy : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["readinessCheck"] = state ? state.readinessCheck : undefined;
+            resourceInputs["resources"] = state ? state.resources : undefined;
+            resourceInputs["runtime"] = state ? state.runtime : undefined;
+            resourceInputs["runtimeApiVersion"] = state ? state.runtimeApiVersion : undefined;
+            resourceInputs["runtimeChannel"] = state ? state.runtimeChannel : undefined;
+            resourceInputs["runtimeMainExecutablePath"] = state ? state.runtimeMainExecutablePath : undefined;
+            resourceInputs["service"] = state ? state.service : undefined;
+            resourceInputs["servingStatus"] = state ? state.servingStatus : undefined;
+            resourceInputs["versionId"] = state ? state.versionId : undefined;
+            resourceInputs["vpcAccessConnector"] = state ? state.vpcAccessConnector : undefined;
         } else {
             const args = argsOrState as FlexibleAppVersionArgs | undefined;
             if ((!args || args.livenessCheck === undefined) && !opts.urn) {
@@ -337,40 +337,38 @@ export class FlexibleAppVersion extends pulumi.CustomResource {
             if ((!args || args.service === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
-            inputs["apiConfig"] = args ? args.apiConfig : undefined;
-            inputs["automaticScaling"] = args ? args.automaticScaling : undefined;
-            inputs["betaSettings"] = args ? args.betaSettings : undefined;
-            inputs["defaultExpiration"] = args ? args.defaultExpiration : undefined;
-            inputs["deleteServiceOnDestroy"] = args ? args.deleteServiceOnDestroy : undefined;
-            inputs["deployment"] = args ? args.deployment : undefined;
-            inputs["endpointsApiService"] = args ? args.endpointsApiService : undefined;
-            inputs["entrypoint"] = args ? args.entrypoint : undefined;
-            inputs["envVariables"] = args ? args.envVariables : undefined;
-            inputs["handlers"] = args ? args.handlers : undefined;
-            inputs["inboundServices"] = args ? args.inboundServices : undefined;
-            inputs["instanceClass"] = args ? args.instanceClass : undefined;
-            inputs["livenessCheck"] = args ? args.livenessCheck : undefined;
-            inputs["manualScaling"] = args ? args.manualScaling : undefined;
-            inputs["network"] = args ? args.network : undefined;
-            inputs["nobuildFilesRegex"] = args ? args.nobuildFilesRegex : undefined;
-            inputs["noopOnDestroy"] = args ? args.noopOnDestroy : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["readinessCheck"] = args ? args.readinessCheck : undefined;
-            inputs["resources"] = args ? args.resources : undefined;
-            inputs["runtime"] = args ? args.runtime : undefined;
-            inputs["runtimeApiVersion"] = args ? args.runtimeApiVersion : undefined;
-            inputs["runtimeChannel"] = args ? args.runtimeChannel : undefined;
-            inputs["runtimeMainExecutablePath"] = args ? args.runtimeMainExecutablePath : undefined;
-            inputs["service"] = args ? args.service : undefined;
-            inputs["servingStatus"] = args ? args.servingStatus : undefined;
-            inputs["versionId"] = args ? args.versionId : undefined;
-            inputs["vpcAccessConnector"] = args ? args.vpcAccessConnector : undefined;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["apiConfig"] = args ? args.apiConfig : undefined;
+            resourceInputs["automaticScaling"] = args ? args.automaticScaling : undefined;
+            resourceInputs["betaSettings"] = args ? args.betaSettings : undefined;
+            resourceInputs["defaultExpiration"] = args ? args.defaultExpiration : undefined;
+            resourceInputs["deleteServiceOnDestroy"] = args ? args.deleteServiceOnDestroy : undefined;
+            resourceInputs["deployment"] = args ? args.deployment : undefined;
+            resourceInputs["endpointsApiService"] = args ? args.endpointsApiService : undefined;
+            resourceInputs["entrypoint"] = args ? args.entrypoint : undefined;
+            resourceInputs["envVariables"] = args ? args.envVariables : undefined;
+            resourceInputs["handlers"] = args ? args.handlers : undefined;
+            resourceInputs["inboundServices"] = args ? args.inboundServices : undefined;
+            resourceInputs["instanceClass"] = args ? args.instanceClass : undefined;
+            resourceInputs["livenessCheck"] = args ? args.livenessCheck : undefined;
+            resourceInputs["manualScaling"] = args ? args.manualScaling : undefined;
+            resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["nobuildFilesRegex"] = args ? args.nobuildFilesRegex : undefined;
+            resourceInputs["noopOnDestroy"] = args ? args.noopOnDestroy : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["readinessCheck"] = args ? args.readinessCheck : undefined;
+            resourceInputs["resources"] = args ? args.resources : undefined;
+            resourceInputs["runtime"] = args ? args.runtime : undefined;
+            resourceInputs["runtimeApiVersion"] = args ? args.runtimeApiVersion : undefined;
+            resourceInputs["runtimeChannel"] = args ? args.runtimeChannel : undefined;
+            resourceInputs["runtimeMainExecutablePath"] = args ? args.runtimeMainExecutablePath : undefined;
+            resourceInputs["service"] = args ? args.service : undefined;
+            resourceInputs["servingStatus"] = args ? args.servingStatus : undefined;
+            resourceInputs["versionId"] = args ? args.versionId : undefined;
+            resourceInputs["vpcAccessConnector"] = args ? args.vpcAccessConnector : undefined;
+            resourceInputs["name"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(FlexibleAppVersion.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(FlexibleAppVersion.__pulumiType, name, resourceInputs, opts);
     }
 }
 

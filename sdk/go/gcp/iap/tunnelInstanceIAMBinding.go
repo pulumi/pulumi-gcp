@@ -396,7 +396,7 @@ type TunnelInstanceIAMBindingInput interface {
 }
 
 func (*TunnelInstanceIAMBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*TunnelInstanceIAMBinding)(nil))
+	return reflect.TypeOf((**TunnelInstanceIAMBinding)(nil)).Elem()
 }
 
 func (i *TunnelInstanceIAMBinding) ToTunnelInstanceIAMBindingOutput() TunnelInstanceIAMBindingOutput {
@@ -405,35 +405,6 @@ func (i *TunnelInstanceIAMBinding) ToTunnelInstanceIAMBindingOutput() TunnelInst
 
 func (i *TunnelInstanceIAMBinding) ToTunnelInstanceIAMBindingOutputWithContext(ctx context.Context) TunnelInstanceIAMBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TunnelInstanceIAMBindingOutput)
-}
-
-func (i *TunnelInstanceIAMBinding) ToTunnelInstanceIAMBindingPtrOutput() TunnelInstanceIAMBindingPtrOutput {
-	return i.ToTunnelInstanceIAMBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *TunnelInstanceIAMBinding) ToTunnelInstanceIAMBindingPtrOutputWithContext(ctx context.Context) TunnelInstanceIAMBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TunnelInstanceIAMBindingPtrOutput)
-}
-
-type TunnelInstanceIAMBindingPtrInput interface {
-	pulumi.Input
-
-	ToTunnelInstanceIAMBindingPtrOutput() TunnelInstanceIAMBindingPtrOutput
-	ToTunnelInstanceIAMBindingPtrOutputWithContext(ctx context.Context) TunnelInstanceIAMBindingPtrOutput
-}
-
-type tunnelInstanceIAMBindingPtrType TunnelInstanceIAMBindingArgs
-
-func (*tunnelInstanceIAMBindingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TunnelInstanceIAMBinding)(nil))
-}
-
-func (i *tunnelInstanceIAMBindingPtrType) ToTunnelInstanceIAMBindingPtrOutput() TunnelInstanceIAMBindingPtrOutput {
-	return i.ToTunnelInstanceIAMBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *tunnelInstanceIAMBindingPtrType) ToTunnelInstanceIAMBindingPtrOutputWithContext(ctx context.Context) TunnelInstanceIAMBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TunnelInstanceIAMBindingPtrOutput)
 }
 
 // TunnelInstanceIAMBindingArrayInput is an input type that accepts TunnelInstanceIAMBindingArray and TunnelInstanceIAMBindingArrayOutput values.
@@ -489,7 +460,7 @@ func (i TunnelInstanceIAMBindingMap) ToTunnelInstanceIAMBindingMapOutputWithCont
 type TunnelInstanceIAMBindingOutput struct{ *pulumi.OutputState }
 
 func (TunnelInstanceIAMBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TunnelInstanceIAMBinding)(nil))
+	return reflect.TypeOf((**TunnelInstanceIAMBinding)(nil)).Elem()
 }
 
 func (o TunnelInstanceIAMBindingOutput) ToTunnelInstanceIAMBindingOutput() TunnelInstanceIAMBindingOutput {
@@ -500,44 +471,10 @@ func (o TunnelInstanceIAMBindingOutput) ToTunnelInstanceIAMBindingOutputWithCont
 	return o
 }
 
-func (o TunnelInstanceIAMBindingOutput) ToTunnelInstanceIAMBindingPtrOutput() TunnelInstanceIAMBindingPtrOutput {
-	return o.ToTunnelInstanceIAMBindingPtrOutputWithContext(context.Background())
-}
-
-func (o TunnelInstanceIAMBindingOutput) ToTunnelInstanceIAMBindingPtrOutputWithContext(ctx context.Context) TunnelInstanceIAMBindingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TunnelInstanceIAMBinding) *TunnelInstanceIAMBinding {
-		return &v
-	}).(TunnelInstanceIAMBindingPtrOutput)
-}
-
-type TunnelInstanceIAMBindingPtrOutput struct{ *pulumi.OutputState }
-
-func (TunnelInstanceIAMBindingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TunnelInstanceIAMBinding)(nil))
-}
-
-func (o TunnelInstanceIAMBindingPtrOutput) ToTunnelInstanceIAMBindingPtrOutput() TunnelInstanceIAMBindingPtrOutput {
-	return o
-}
-
-func (o TunnelInstanceIAMBindingPtrOutput) ToTunnelInstanceIAMBindingPtrOutputWithContext(ctx context.Context) TunnelInstanceIAMBindingPtrOutput {
-	return o
-}
-
-func (o TunnelInstanceIAMBindingPtrOutput) Elem() TunnelInstanceIAMBindingOutput {
-	return o.ApplyT(func(v *TunnelInstanceIAMBinding) TunnelInstanceIAMBinding {
-		if v != nil {
-			return *v
-		}
-		var ret TunnelInstanceIAMBinding
-		return ret
-	}).(TunnelInstanceIAMBindingOutput)
-}
-
 type TunnelInstanceIAMBindingArrayOutput struct{ *pulumi.OutputState }
 
 func (TunnelInstanceIAMBindingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TunnelInstanceIAMBinding)(nil))
+	return reflect.TypeOf((*[]*TunnelInstanceIAMBinding)(nil)).Elem()
 }
 
 func (o TunnelInstanceIAMBindingArrayOutput) ToTunnelInstanceIAMBindingArrayOutput() TunnelInstanceIAMBindingArrayOutput {
@@ -549,15 +486,15 @@ func (o TunnelInstanceIAMBindingArrayOutput) ToTunnelInstanceIAMBindingArrayOutp
 }
 
 func (o TunnelInstanceIAMBindingArrayOutput) Index(i pulumi.IntInput) TunnelInstanceIAMBindingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TunnelInstanceIAMBinding {
-		return vs[0].([]TunnelInstanceIAMBinding)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TunnelInstanceIAMBinding {
+		return vs[0].([]*TunnelInstanceIAMBinding)[vs[1].(int)]
 	}).(TunnelInstanceIAMBindingOutput)
 }
 
 type TunnelInstanceIAMBindingMapOutput struct{ *pulumi.OutputState }
 
 func (TunnelInstanceIAMBindingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]TunnelInstanceIAMBinding)(nil))
+	return reflect.TypeOf((*map[string]*TunnelInstanceIAMBinding)(nil)).Elem()
 }
 
 func (o TunnelInstanceIAMBindingMapOutput) ToTunnelInstanceIAMBindingMapOutput() TunnelInstanceIAMBindingMapOutput {
@@ -569,18 +506,16 @@ func (o TunnelInstanceIAMBindingMapOutput) ToTunnelInstanceIAMBindingMapOutputWi
 }
 
 func (o TunnelInstanceIAMBindingMapOutput) MapIndex(k pulumi.StringInput) TunnelInstanceIAMBindingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TunnelInstanceIAMBinding {
-		return vs[0].(map[string]TunnelInstanceIAMBinding)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *TunnelInstanceIAMBinding {
+		return vs[0].(map[string]*TunnelInstanceIAMBinding)[vs[1].(string)]
 	}).(TunnelInstanceIAMBindingOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TunnelInstanceIAMBindingInput)(nil)).Elem(), &TunnelInstanceIAMBinding{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TunnelInstanceIAMBindingPtrInput)(nil)).Elem(), &TunnelInstanceIAMBinding{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TunnelInstanceIAMBindingArrayInput)(nil)).Elem(), TunnelInstanceIAMBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TunnelInstanceIAMBindingMapInput)(nil)).Elem(), TunnelInstanceIAMBindingMap{})
 	pulumi.RegisterOutputType(TunnelInstanceIAMBindingOutput{})
-	pulumi.RegisterOutputType(TunnelInstanceIAMBindingPtrOutput{})
 	pulumi.RegisterOutputType(TunnelInstanceIAMBindingArrayOutput{})
 	pulumi.RegisterOutputType(TunnelInstanceIAMBindingMapOutput{})
 }

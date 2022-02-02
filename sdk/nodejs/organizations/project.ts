@@ -150,38 +150,36 @@ export class Project extends pulumi.CustomResource {
      */
     constructor(name: string, args: ProjectArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectArgs | ProjectState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectState | undefined;
-            inputs["autoCreateNetwork"] = state ? state.autoCreateNetwork : undefined;
-            inputs["billingAccount"] = state ? state.billingAccount : undefined;
-            inputs["folderId"] = state ? state.folderId : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["number"] = state ? state.number : undefined;
-            inputs["orgId"] = state ? state.orgId : undefined;
-            inputs["projectId"] = state ? state.projectId : undefined;
-            inputs["skipDelete"] = state ? state.skipDelete : undefined;
+            resourceInputs["autoCreateNetwork"] = state ? state.autoCreateNetwork : undefined;
+            resourceInputs["billingAccount"] = state ? state.billingAccount : undefined;
+            resourceInputs["folderId"] = state ? state.folderId : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["number"] = state ? state.number : undefined;
+            resourceInputs["orgId"] = state ? state.orgId : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["skipDelete"] = state ? state.skipDelete : undefined;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
             if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            inputs["autoCreateNetwork"] = args ? args.autoCreateNetwork : undefined;
-            inputs["billingAccount"] = args ? args.billingAccount : undefined;
-            inputs["folderId"] = args ? args.folderId : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["orgId"] = args ? args.orgId : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
-            inputs["skipDelete"] = args ? args.skipDelete : undefined;
-            inputs["number"] = undefined /*out*/;
+            resourceInputs["autoCreateNetwork"] = args ? args.autoCreateNetwork : undefined;
+            resourceInputs["billingAccount"] = args ? args.billingAccount : undefined;
+            resourceInputs["folderId"] = args ? args.folderId : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["orgId"] = args ? args.orgId : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["skipDelete"] = args ? args.skipDelete : undefined;
+            resourceInputs["number"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Project.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Project.__pulumiType, name, resourceInputs, opts);
     }
 }
 

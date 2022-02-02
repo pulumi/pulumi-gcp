@@ -78,13 +78,13 @@ export class EnvGroupAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: EnvGroupAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EnvGroupAttachmentArgs | EnvGroupAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EnvGroupAttachmentState | undefined;
-            inputs["envgroupId"] = state ? state.envgroupId : undefined;
-            inputs["environment"] = state ? state.environment : undefined;
-            inputs["name"] = state ? state.name : undefined;
+            resourceInputs["envgroupId"] = state ? state.envgroupId : undefined;
+            resourceInputs["environment"] = state ? state.environment : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as EnvGroupAttachmentArgs | undefined;
             if ((!args || args.envgroupId === undefined) && !opts.urn) {
@@ -93,14 +93,12 @@ export class EnvGroupAttachment extends pulumi.CustomResource {
             if ((!args || args.environment === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'environment'");
             }
-            inputs["envgroupId"] = args ? args.envgroupId : undefined;
-            inputs["environment"] = args ? args.environment : undefined;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["envgroupId"] = args ? args.envgroupId : undefined;
+            resourceInputs["environment"] = args ? args.environment : undefined;
+            resourceInputs["name"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(EnvGroupAttachment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(EnvGroupAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

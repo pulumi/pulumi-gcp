@@ -186,29 +186,27 @@ export class ExternalVpnGateway extends pulumi.CustomResource {
      */
     constructor(name: string, args?: ExternalVpnGatewayArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ExternalVpnGatewayArgs | ExternalVpnGatewayState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ExternalVpnGatewayState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["interfaces"] = state ? state.interfaces : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["redundancyType"] = state ? state.redundancyType : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["interfaces"] = state ? state.interfaces : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["redundancyType"] = state ? state.redundancyType : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
         } else {
             const args = argsOrState as ExternalVpnGatewayArgs | undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["interfaces"] = args ? args.interfaces : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["redundancyType"] = args ? args.redundancyType : undefined;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["interfaces"] = args ? args.interfaces : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["redundancyType"] = args ? args.redundancyType : undefined;
+            resourceInputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ExternalVpnGateway.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ExternalVpnGateway.__pulumiType, name, resourceInputs, opts);
     }
 }
 

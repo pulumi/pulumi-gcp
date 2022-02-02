@@ -116,19 +116,19 @@ export class Domain extends pulumi.CustomResource {
      */
     constructor(name: string, args: DomainArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DomainArgs | DomainState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainState | undefined;
-            inputs["admin"] = state ? state.admin : undefined;
-            inputs["authorizedNetworks"] = state ? state.authorizedNetworks : undefined;
-            inputs["domainName"] = state ? state.domainName : undefined;
-            inputs["fqdn"] = state ? state.fqdn : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["locations"] = state ? state.locations : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["reservedIpRange"] = state ? state.reservedIpRange : undefined;
+            resourceInputs["admin"] = state ? state.admin : undefined;
+            resourceInputs["authorizedNetworks"] = state ? state.authorizedNetworks : undefined;
+            resourceInputs["domainName"] = state ? state.domainName : undefined;
+            resourceInputs["fqdn"] = state ? state.fqdn : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["locations"] = state ? state.locations : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["reservedIpRange"] = state ? state.reservedIpRange : undefined;
         } else {
             const args = argsOrState as DomainArgs | undefined;
             if ((!args || args.domainName === undefined) && !opts.urn) {
@@ -140,20 +140,18 @@ export class Domain extends pulumi.CustomResource {
             if ((!args || args.reservedIpRange === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'reservedIpRange'");
             }
-            inputs["admin"] = args ? args.admin : undefined;
-            inputs["authorizedNetworks"] = args ? args.authorizedNetworks : undefined;
-            inputs["domainName"] = args ? args.domainName : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["locations"] = args ? args.locations : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["reservedIpRange"] = args ? args.reservedIpRange : undefined;
-            inputs["fqdn"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["admin"] = args ? args.admin : undefined;
+            resourceInputs["authorizedNetworks"] = args ? args.authorizedNetworks : undefined;
+            resourceInputs["domainName"] = args ? args.domainName : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["locations"] = args ? args.locations : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["reservedIpRange"] = args ? args.reservedIpRange : undefined;
+            resourceInputs["fqdn"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Domain.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Domain.__pulumiType, name, resourceInputs, opts);
     }
 }
 

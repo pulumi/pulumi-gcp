@@ -121,42 +121,40 @@ export class Key extends pulumi.CustomResource {
      */
     constructor(name: string, args: KeyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: KeyArgs | KeyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KeyState | undefined;
-            inputs["keepers"] = state ? state.keepers : undefined;
-            inputs["keyAlgorithm"] = state ? state.keyAlgorithm : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["privateKey"] = state ? state.privateKey : undefined;
-            inputs["privateKeyType"] = state ? state.privateKeyType : undefined;
-            inputs["publicKey"] = state ? state.publicKey : undefined;
-            inputs["publicKeyData"] = state ? state.publicKeyData : undefined;
-            inputs["publicKeyType"] = state ? state.publicKeyType : undefined;
-            inputs["serviceAccountId"] = state ? state.serviceAccountId : undefined;
-            inputs["validAfter"] = state ? state.validAfter : undefined;
-            inputs["validBefore"] = state ? state.validBefore : undefined;
+            resourceInputs["keepers"] = state ? state.keepers : undefined;
+            resourceInputs["keyAlgorithm"] = state ? state.keyAlgorithm : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["privateKey"] = state ? state.privateKey : undefined;
+            resourceInputs["privateKeyType"] = state ? state.privateKeyType : undefined;
+            resourceInputs["publicKey"] = state ? state.publicKey : undefined;
+            resourceInputs["publicKeyData"] = state ? state.publicKeyData : undefined;
+            resourceInputs["publicKeyType"] = state ? state.publicKeyType : undefined;
+            resourceInputs["serviceAccountId"] = state ? state.serviceAccountId : undefined;
+            resourceInputs["validAfter"] = state ? state.validAfter : undefined;
+            resourceInputs["validBefore"] = state ? state.validBefore : undefined;
         } else {
             const args = argsOrState as KeyArgs | undefined;
             if ((!args || args.serviceAccountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceAccountId'");
             }
-            inputs["keepers"] = args ? args.keepers : undefined;
-            inputs["keyAlgorithm"] = args ? args.keyAlgorithm : undefined;
-            inputs["privateKeyType"] = args ? args.privateKeyType : undefined;
-            inputs["publicKeyData"] = args ? args.publicKeyData : undefined;
-            inputs["publicKeyType"] = args ? args.publicKeyType : undefined;
-            inputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
-            inputs["name"] = undefined /*out*/;
-            inputs["privateKey"] = undefined /*out*/;
-            inputs["publicKey"] = undefined /*out*/;
-            inputs["validAfter"] = undefined /*out*/;
-            inputs["validBefore"] = undefined /*out*/;
+            resourceInputs["keepers"] = args ? args.keepers : undefined;
+            resourceInputs["keyAlgorithm"] = args ? args.keyAlgorithm : undefined;
+            resourceInputs["privateKeyType"] = args ? args.privateKeyType : undefined;
+            resourceInputs["publicKeyData"] = args ? args.publicKeyData : undefined;
+            resourceInputs["publicKeyType"] = args ? args.publicKeyType : undefined;
+            resourceInputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["privateKey"] = undefined /*out*/;
+            resourceInputs["publicKey"] = undefined /*out*/;
+            resourceInputs["validAfter"] = undefined /*out*/;
+            resourceInputs["validBefore"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Key.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Key.__pulumiType, name, resourceInputs, opts);
     }
 }
 

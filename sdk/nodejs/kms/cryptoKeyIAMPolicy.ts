@@ -193,13 +193,13 @@ export class CryptoKeyIAMPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: CryptoKeyIAMPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CryptoKeyIAMPolicyArgs | CryptoKeyIAMPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CryptoKeyIAMPolicyState | undefined;
-            inputs["cryptoKeyId"] = state ? state.cryptoKeyId : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["policyData"] = state ? state.policyData : undefined;
+            resourceInputs["cryptoKeyId"] = state ? state.cryptoKeyId : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["policyData"] = state ? state.policyData : undefined;
         } else {
             const args = argsOrState as CryptoKeyIAMPolicyArgs | undefined;
             if ((!args || args.cryptoKeyId === undefined) && !opts.urn) {
@@ -208,14 +208,12 @@ export class CryptoKeyIAMPolicy extends pulumi.CustomResource {
             if ((!args || args.policyData === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
-            inputs["cryptoKeyId"] = args ? args.cryptoKeyId : undefined;
-            inputs["policyData"] = args ? args.policyData : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["cryptoKeyId"] = args ? args.cryptoKeyId : undefined;
+            resourceInputs["policyData"] = args ? args.policyData : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CryptoKeyIAMPolicy.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CryptoKeyIAMPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

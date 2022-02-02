@@ -357,7 +357,7 @@ type MachineImageIamPolicyInput interface {
 }
 
 func (*MachineImageIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*MachineImageIamPolicy)(nil))
+	return reflect.TypeOf((**MachineImageIamPolicy)(nil)).Elem()
 }
 
 func (i *MachineImageIamPolicy) ToMachineImageIamPolicyOutput() MachineImageIamPolicyOutput {
@@ -366,35 +366,6 @@ func (i *MachineImageIamPolicy) ToMachineImageIamPolicyOutput() MachineImageIamP
 
 func (i *MachineImageIamPolicy) ToMachineImageIamPolicyOutputWithContext(ctx context.Context) MachineImageIamPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MachineImageIamPolicyOutput)
-}
-
-func (i *MachineImageIamPolicy) ToMachineImageIamPolicyPtrOutput() MachineImageIamPolicyPtrOutput {
-	return i.ToMachineImageIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *MachineImageIamPolicy) ToMachineImageIamPolicyPtrOutputWithContext(ctx context.Context) MachineImageIamPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MachineImageIamPolicyPtrOutput)
-}
-
-type MachineImageIamPolicyPtrInput interface {
-	pulumi.Input
-
-	ToMachineImageIamPolicyPtrOutput() MachineImageIamPolicyPtrOutput
-	ToMachineImageIamPolicyPtrOutputWithContext(ctx context.Context) MachineImageIamPolicyPtrOutput
-}
-
-type machineImageIamPolicyPtrType MachineImageIamPolicyArgs
-
-func (*machineImageIamPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MachineImageIamPolicy)(nil))
-}
-
-func (i *machineImageIamPolicyPtrType) ToMachineImageIamPolicyPtrOutput() MachineImageIamPolicyPtrOutput {
-	return i.ToMachineImageIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *machineImageIamPolicyPtrType) ToMachineImageIamPolicyPtrOutputWithContext(ctx context.Context) MachineImageIamPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MachineImageIamPolicyPtrOutput)
 }
 
 // MachineImageIamPolicyArrayInput is an input type that accepts MachineImageIamPolicyArray and MachineImageIamPolicyArrayOutput values.
@@ -450,7 +421,7 @@ func (i MachineImageIamPolicyMap) ToMachineImageIamPolicyMapOutputWithContext(ct
 type MachineImageIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (MachineImageIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MachineImageIamPolicy)(nil))
+	return reflect.TypeOf((**MachineImageIamPolicy)(nil)).Elem()
 }
 
 func (o MachineImageIamPolicyOutput) ToMachineImageIamPolicyOutput() MachineImageIamPolicyOutput {
@@ -461,44 +432,10 @@ func (o MachineImageIamPolicyOutput) ToMachineImageIamPolicyOutputWithContext(ct
 	return o
 }
 
-func (o MachineImageIamPolicyOutput) ToMachineImageIamPolicyPtrOutput() MachineImageIamPolicyPtrOutput {
-	return o.ToMachineImageIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o MachineImageIamPolicyOutput) ToMachineImageIamPolicyPtrOutputWithContext(ctx context.Context) MachineImageIamPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MachineImageIamPolicy) *MachineImageIamPolicy {
-		return &v
-	}).(MachineImageIamPolicyPtrOutput)
-}
-
-type MachineImageIamPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (MachineImageIamPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MachineImageIamPolicy)(nil))
-}
-
-func (o MachineImageIamPolicyPtrOutput) ToMachineImageIamPolicyPtrOutput() MachineImageIamPolicyPtrOutput {
-	return o
-}
-
-func (o MachineImageIamPolicyPtrOutput) ToMachineImageIamPolicyPtrOutputWithContext(ctx context.Context) MachineImageIamPolicyPtrOutput {
-	return o
-}
-
-func (o MachineImageIamPolicyPtrOutput) Elem() MachineImageIamPolicyOutput {
-	return o.ApplyT(func(v *MachineImageIamPolicy) MachineImageIamPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret MachineImageIamPolicy
-		return ret
-	}).(MachineImageIamPolicyOutput)
-}
-
 type MachineImageIamPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (MachineImageIamPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MachineImageIamPolicy)(nil))
+	return reflect.TypeOf((*[]*MachineImageIamPolicy)(nil)).Elem()
 }
 
 func (o MachineImageIamPolicyArrayOutput) ToMachineImageIamPolicyArrayOutput() MachineImageIamPolicyArrayOutput {
@@ -510,15 +447,15 @@ func (o MachineImageIamPolicyArrayOutput) ToMachineImageIamPolicyArrayOutputWith
 }
 
 func (o MachineImageIamPolicyArrayOutput) Index(i pulumi.IntInput) MachineImageIamPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MachineImageIamPolicy {
-		return vs[0].([]MachineImageIamPolicy)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MachineImageIamPolicy {
+		return vs[0].([]*MachineImageIamPolicy)[vs[1].(int)]
 	}).(MachineImageIamPolicyOutput)
 }
 
 type MachineImageIamPolicyMapOutput struct{ *pulumi.OutputState }
 
 func (MachineImageIamPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]MachineImageIamPolicy)(nil))
+	return reflect.TypeOf((*map[string]*MachineImageIamPolicy)(nil)).Elem()
 }
 
 func (o MachineImageIamPolicyMapOutput) ToMachineImageIamPolicyMapOutput() MachineImageIamPolicyMapOutput {
@@ -530,18 +467,16 @@ func (o MachineImageIamPolicyMapOutput) ToMachineImageIamPolicyMapOutputWithCont
 }
 
 func (o MachineImageIamPolicyMapOutput) MapIndex(k pulumi.StringInput) MachineImageIamPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MachineImageIamPolicy {
-		return vs[0].(map[string]MachineImageIamPolicy)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *MachineImageIamPolicy {
+		return vs[0].(map[string]*MachineImageIamPolicy)[vs[1].(string)]
 	}).(MachineImageIamPolicyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MachineImageIamPolicyInput)(nil)).Elem(), &MachineImageIamPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MachineImageIamPolicyPtrInput)(nil)).Elem(), &MachineImageIamPolicy{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MachineImageIamPolicyArrayInput)(nil)).Elem(), MachineImageIamPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MachineImageIamPolicyMapInput)(nil)).Elem(), MachineImageIamPolicyMap{})
 	pulumi.RegisterOutputType(MachineImageIamPolicyOutput{})
-	pulumi.RegisterOutputType(MachineImageIamPolicyPtrOutput{})
 	pulumi.RegisterOutputType(MachineImageIamPolicyArrayOutput{})
 	pulumi.RegisterOutputType(MachineImageIamPolicyMapOutput{})
 }

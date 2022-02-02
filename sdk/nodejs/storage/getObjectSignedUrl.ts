@@ -46,9 +46,7 @@ export function getObjectSignedUrl(args: GetObjectSignedUrlArgs, opts?: pulumi.I
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:storage/getObjectSignedUrl:getObjectSignedUrl", {
         "bucket": args.bucket,
         "contentMd5": args.contentMd5,

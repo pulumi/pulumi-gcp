@@ -236,7 +236,7 @@ type LienInput interface {
 }
 
 func (*Lien) ElementType() reflect.Type {
-	return reflect.TypeOf((*Lien)(nil))
+	return reflect.TypeOf((**Lien)(nil)).Elem()
 }
 
 func (i *Lien) ToLienOutput() LienOutput {
@@ -245,35 +245,6 @@ func (i *Lien) ToLienOutput() LienOutput {
 
 func (i *Lien) ToLienOutputWithContext(ctx context.Context) LienOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LienOutput)
-}
-
-func (i *Lien) ToLienPtrOutput() LienPtrOutput {
-	return i.ToLienPtrOutputWithContext(context.Background())
-}
-
-func (i *Lien) ToLienPtrOutputWithContext(ctx context.Context) LienPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LienPtrOutput)
-}
-
-type LienPtrInput interface {
-	pulumi.Input
-
-	ToLienPtrOutput() LienPtrOutput
-	ToLienPtrOutputWithContext(ctx context.Context) LienPtrOutput
-}
-
-type lienPtrType LienArgs
-
-func (*lienPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Lien)(nil))
-}
-
-func (i *lienPtrType) ToLienPtrOutput() LienPtrOutput {
-	return i.ToLienPtrOutputWithContext(context.Background())
-}
-
-func (i *lienPtrType) ToLienPtrOutputWithContext(ctx context.Context) LienPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LienPtrOutput)
 }
 
 // LienArrayInput is an input type that accepts LienArray and LienArrayOutput values.
@@ -329,7 +300,7 @@ func (i LienMap) ToLienMapOutputWithContext(ctx context.Context) LienMapOutput {
 type LienOutput struct{ *pulumi.OutputState }
 
 func (LienOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Lien)(nil))
+	return reflect.TypeOf((**Lien)(nil)).Elem()
 }
 
 func (o LienOutput) ToLienOutput() LienOutput {
@@ -340,44 +311,10 @@ func (o LienOutput) ToLienOutputWithContext(ctx context.Context) LienOutput {
 	return o
 }
 
-func (o LienOutput) ToLienPtrOutput() LienPtrOutput {
-	return o.ToLienPtrOutputWithContext(context.Background())
-}
-
-func (o LienOutput) ToLienPtrOutputWithContext(ctx context.Context) LienPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Lien) *Lien {
-		return &v
-	}).(LienPtrOutput)
-}
-
-type LienPtrOutput struct{ *pulumi.OutputState }
-
-func (LienPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Lien)(nil))
-}
-
-func (o LienPtrOutput) ToLienPtrOutput() LienPtrOutput {
-	return o
-}
-
-func (o LienPtrOutput) ToLienPtrOutputWithContext(ctx context.Context) LienPtrOutput {
-	return o
-}
-
-func (o LienPtrOutput) Elem() LienOutput {
-	return o.ApplyT(func(v *Lien) Lien {
-		if v != nil {
-			return *v
-		}
-		var ret Lien
-		return ret
-	}).(LienOutput)
-}
-
 type LienArrayOutput struct{ *pulumi.OutputState }
 
 func (LienArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Lien)(nil))
+	return reflect.TypeOf((*[]*Lien)(nil)).Elem()
 }
 
 func (o LienArrayOutput) ToLienArrayOutput() LienArrayOutput {
@@ -389,15 +326,15 @@ func (o LienArrayOutput) ToLienArrayOutputWithContext(ctx context.Context) LienA
 }
 
 func (o LienArrayOutput) Index(i pulumi.IntInput) LienOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Lien {
-		return vs[0].([]Lien)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Lien {
+		return vs[0].([]*Lien)[vs[1].(int)]
 	}).(LienOutput)
 }
 
 type LienMapOutput struct{ *pulumi.OutputState }
 
 func (LienMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Lien)(nil))
+	return reflect.TypeOf((*map[string]*Lien)(nil)).Elem()
 }
 
 func (o LienMapOutput) ToLienMapOutput() LienMapOutput {
@@ -409,18 +346,16 @@ func (o LienMapOutput) ToLienMapOutputWithContext(ctx context.Context) LienMapOu
 }
 
 func (o LienMapOutput) MapIndex(k pulumi.StringInput) LienOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Lien {
-		return vs[0].(map[string]Lien)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Lien {
+		return vs[0].(map[string]*Lien)[vs[1].(string)]
 	}).(LienOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LienInput)(nil)).Elem(), &Lien{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LienPtrInput)(nil)).Elem(), &Lien{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LienArrayInput)(nil)).Elem(), LienArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LienMapInput)(nil)).Elem(), LienMap{})
 	pulumi.RegisterOutputType(LienOutput{})
-	pulumi.RegisterOutputType(LienPtrOutput{})
 	pulumi.RegisterOutputType(LienArrayOutput{})
 	pulumi.RegisterOutputType(LienMapOutput{})
 }

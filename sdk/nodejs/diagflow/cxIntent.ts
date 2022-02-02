@@ -170,40 +170,38 @@ export class CxIntent extends pulumi.CustomResource {
      */
     constructor(name: string, args: CxIntentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CxIntentArgs | CxIntentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CxIntentState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["isFallback"] = state ? state.isFallback : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["languageCode"] = state ? state.languageCode : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["parameters"] = state ? state.parameters : undefined;
-            inputs["parent"] = state ? state.parent : undefined;
-            inputs["priority"] = state ? state.priority : undefined;
-            inputs["trainingPhrases"] = state ? state.trainingPhrases : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["isFallback"] = state ? state.isFallback : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["languageCode"] = state ? state.languageCode : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["parameters"] = state ? state.parameters : undefined;
+            resourceInputs["parent"] = state ? state.parent : undefined;
+            resourceInputs["priority"] = state ? state.priority : undefined;
+            resourceInputs["trainingPhrases"] = state ? state.trainingPhrases : undefined;
         } else {
             const args = argsOrState as CxIntentArgs | undefined;
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["isFallback"] = args ? args.isFallback : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["languageCode"] = args ? args.languageCode : undefined;
-            inputs["parameters"] = args ? args.parameters : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
-            inputs["priority"] = args ? args.priority : undefined;
-            inputs["trainingPhrases"] = args ? args.trainingPhrases : undefined;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["isFallback"] = args ? args.isFallback : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["languageCode"] = args ? args.languageCode : undefined;
+            resourceInputs["parameters"] = args ? args.parameters : undefined;
+            resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["trainingPhrases"] = args ? args.trainingPhrases : undefined;
+            resourceInputs["name"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CxIntent.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CxIntent.__pulumiType, name, resourceInputs, opts);
     }
 }
 

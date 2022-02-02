@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Compute
 {
@@ -46,7 +45,7 @@ namespace Pulumi.Gcp.Compute
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNetworkEndpointGroupResult> InvokeAsync(GetNetworkEndpointGroupArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkEndpointGroupResult>("gcp:compute/getNetworkEndpointGroup:getNetworkEndpointGroup", args ?? new GetNetworkEndpointGroupArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkEndpointGroupResult>("gcp:compute/getNetworkEndpointGroup:getNetworkEndpointGroup", args ?? new GetNetworkEndpointGroupArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to access a Network Endpoint Group's attributes.
@@ -82,7 +81,7 @@ namespace Pulumi.Gcp.Compute
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetNetworkEndpointGroupResult> Invoke(GetNetworkEndpointGroupInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNetworkEndpointGroupResult>("gcp:compute/getNetworkEndpointGroup:getNetworkEndpointGroup", args ?? new GetNetworkEndpointGroupInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetNetworkEndpointGroupResult>("gcp:compute/getNetworkEndpointGroup:getNetworkEndpointGroup", args ?? new GetNetworkEndpointGroupInvokeArgs(), options.WithDefaults());
     }
 
 

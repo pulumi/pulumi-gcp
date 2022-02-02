@@ -168,21 +168,21 @@ export class AlertPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: AlertPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AlertPolicyArgs | AlertPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AlertPolicyState | undefined;
-            inputs["alertStrategy"] = state ? state.alertStrategy : undefined;
-            inputs["combiner"] = state ? state.combiner : undefined;
-            inputs["conditions"] = state ? state.conditions : undefined;
-            inputs["creationRecords"] = state ? state.creationRecords : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["documentation"] = state ? state.documentation : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["notificationChannels"] = state ? state.notificationChannels : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["userLabels"] = state ? state.userLabels : undefined;
+            resourceInputs["alertStrategy"] = state ? state.alertStrategy : undefined;
+            resourceInputs["combiner"] = state ? state.combiner : undefined;
+            resourceInputs["conditions"] = state ? state.conditions : undefined;
+            resourceInputs["creationRecords"] = state ? state.creationRecords : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["documentation"] = state ? state.documentation : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["notificationChannels"] = state ? state.notificationChannels : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["userLabels"] = state ? state.userLabels : undefined;
         } else {
             const args = argsOrState as AlertPolicyArgs | undefined;
             if ((!args || args.combiner === undefined) && !opts.urn) {
@@ -194,22 +194,20 @@ export class AlertPolicy extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            inputs["alertStrategy"] = args ? args.alertStrategy : undefined;
-            inputs["combiner"] = args ? args.combiner : undefined;
-            inputs["conditions"] = args ? args.conditions : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["documentation"] = args ? args.documentation : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["notificationChannels"] = args ? args.notificationChannels : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["userLabels"] = args ? args.userLabels : undefined;
-            inputs["creationRecords"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["alertStrategy"] = args ? args.alertStrategy : undefined;
+            resourceInputs["combiner"] = args ? args.combiner : undefined;
+            resourceInputs["conditions"] = args ? args.conditions : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["documentation"] = args ? args.documentation : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["notificationChannels"] = args ? args.notificationChannels : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["userLabels"] = args ? args.userLabels : undefined;
+            resourceInputs["creationRecords"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AlertPolicy.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AlertPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

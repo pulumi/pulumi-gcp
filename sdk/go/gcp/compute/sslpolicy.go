@@ -32,20 +32,20 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewSSLPolicy(ctx, "prod_ssl_policy", &compute.SSLPolicyArgs{
+// 		_, err := compute.NewSSLPolicy(ctx, "prod-ssl-policy", &compute.SSLPolicyArgs{
 // 			Profile: pulumi.String("MODERN"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = compute.NewSSLPolicy(ctx, "nonprod_ssl_policy", &compute.SSLPolicyArgs{
+// 		_, err = compute.NewSSLPolicy(ctx, "nonprod-ssl-policy", &compute.SSLPolicyArgs{
 // 			MinTlsVersion: pulumi.String("TLS_1_2"),
 // 			Profile:       pulumi.String("MODERN"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = compute.NewSSLPolicy(ctx, "custom_ssl_policy", &compute.SSLPolicyArgs{
+// 		_, err = compute.NewSSLPolicy(ctx, "custom-ssl-policy", &compute.SSLPolicyArgs{
 // 			CustomFeatures: pulumi.StringArray{
 // 				pulumi.String("TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384"),
 // 				pulumi.String("TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"),
@@ -352,7 +352,7 @@ type SSLPolicyInput interface {
 }
 
 func (*SSLPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*SSLPolicy)(nil))
+	return reflect.TypeOf((**SSLPolicy)(nil)).Elem()
 }
 
 func (i *SSLPolicy) ToSSLPolicyOutput() SSLPolicyOutput {
@@ -361,35 +361,6 @@ func (i *SSLPolicy) ToSSLPolicyOutput() SSLPolicyOutput {
 
 func (i *SSLPolicy) ToSSLPolicyOutputWithContext(ctx context.Context) SSLPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SSLPolicyOutput)
-}
-
-func (i *SSLPolicy) ToSSLPolicyPtrOutput() SSLPolicyPtrOutput {
-	return i.ToSSLPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *SSLPolicy) ToSSLPolicyPtrOutputWithContext(ctx context.Context) SSLPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SSLPolicyPtrOutput)
-}
-
-type SSLPolicyPtrInput interface {
-	pulumi.Input
-
-	ToSSLPolicyPtrOutput() SSLPolicyPtrOutput
-	ToSSLPolicyPtrOutputWithContext(ctx context.Context) SSLPolicyPtrOutput
-}
-
-type sslpolicyPtrType SSLPolicyArgs
-
-func (*sslpolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SSLPolicy)(nil))
-}
-
-func (i *sslpolicyPtrType) ToSSLPolicyPtrOutput() SSLPolicyPtrOutput {
-	return i.ToSSLPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *sslpolicyPtrType) ToSSLPolicyPtrOutputWithContext(ctx context.Context) SSLPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SSLPolicyPtrOutput)
 }
 
 // SSLPolicyArrayInput is an input type that accepts SSLPolicyArray and SSLPolicyArrayOutput values.
@@ -445,7 +416,7 @@ func (i SSLPolicyMap) ToSSLPolicyMapOutputWithContext(ctx context.Context) SSLPo
 type SSLPolicyOutput struct{ *pulumi.OutputState }
 
 func (SSLPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SSLPolicy)(nil))
+	return reflect.TypeOf((**SSLPolicy)(nil)).Elem()
 }
 
 func (o SSLPolicyOutput) ToSSLPolicyOutput() SSLPolicyOutput {
@@ -456,44 +427,10 @@ func (o SSLPolicyOutput) ToSSLPolicyOutputWithContext(ctx context.Context) SSLPo
 	return o
 }
 
-func (o SSLPolicyOutput) ToSSLPolicyPtrOutput() SSLPolicyPtrOutput {
-	return o.ToSSLPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o SSLPolicyOutput) ToSSLPolicyPtrOutputWithContext(ctx context.Context) SSLPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SSLPolicy) *SSLPolicy {
-		return &v
-	}).(SSLPolicyPtrOutput)
-}
-
-type SSLPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (SSLPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SSLPolicy)(nil))
-}
-
-func (o SSLPolicyPtrOutput) ToSSLPolicyPtrOutput() SSLPolicyPtrOutput {
-	return o
-}
-
-func (o SSLPolicyPtrOutput) ToSSLPolicyPtrOutputWithContext(ctx context.Context) SSLPolicyPtrOutput {
-	return o
-}
-
-func (o SSLPolicyPtrOutput) Elem() SSLPolicyOutput {
-	return o.ApplyT(func(v *SSLPolicy) SSLPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret SSLPolicy
-		return ret
-	}).(SSLPolicyOutput)
-}
-
 type SSLPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (SSLPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SSLPolicy)(nil))
+	return reflect.TypeOf((*[]*SSLPolicy)(nil)).Elem()
 }
 
 func (o SSLPolicyArrayOutput) ToSSLPolicyArrayOutput() SSLPolicyArrayOutput {
@@ -505,15 +442,15 @@ func (o SSLPolicyArrayOutput) ToSSLPolicyArrayOutputWithContext(ctx context.Cont
 }
 
 func (o SSLPolicyArrayOutput) Index(i pulumi.IntInput) SSLPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SSLPolicy {
-		return vs[0].([]SSLPolicy)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SSLPolicy {
+		return vs[0].([]*SSLPolicy)[vs[1].(int)]
 	}).(SSLPolicyOutput)
 }
 
 type SSLPolicyMapOutput struct{ *pulumi.OutputState }
 
 func (SSLPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]SSLPolicy)(nil))
+	return reflect.TypeOf((*map[string]*SSLPolicy)(nil)).Elem()
 }
 
 func (o SSLPolicyMapOutput) ToSSLPolicyMapOutput() SSLPolicyMapOutput {
@@ -525,18 +462,16 @@ func (o SSLPolicyMapOutput) ToSSLPolicyMapOutputWithContext(ctx context.Context)
 }
 
 func (o SSLPolicyMapOutput) MapIndex(k pulumi.StringInput) SSLPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SSLPolicy {
-		return vs[0].(map[string]SSLPolicy)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *SSLPolicy {
+		return vs[0].(map[string]*SSLPolicy)[vs[1].(string)]
 	}).(SSLPolicyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SSLPolicyInput)(nil)).Elem(), &SSLPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SSLPolicyPtrInput)(nil)).Elem(), &SSLPolicy{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SSLPolicyArrayInput)(nil)).Elem(), SSLPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SSLPolicyMapInput)(nil)).Elem(), SSLPolicyMap{})
 	pulumi.RegisterOutputType(SSLPolicyOutput{})
-	pulumi.RegisterOutputType(SSLPolicyPtrOutput{})
 	pulumi.RegisterOutputType(SSLPolicyArrayOutput{})
 	pulumi.RegisterOutputType(SSLPolicyMapOutput{})
 }

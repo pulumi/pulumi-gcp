@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Iam
 {
@@ -36,7 +35,7 @@ namespace Pulumi.Gcp.Iam
         /// ```
         /// </summary>
         public static Task<GetRuleResult> InvokeAsync(GetRuleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRuleResult>("gcp:iam/getRule:getRule", args ?? new GetRuleArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRuleResult>("gcp:iam/getRule:getRule", args ?? new GetRuleArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get information about a Google IAM Role.
@@ -62,7 +61,7 @@ namespace Pulumi.Gcp.Iam
         /// ```
         /// </summary>
         public static Output<GetRuleResult> Invoke(GetRuleInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRuleResult>("gcp:iam/getRule:getRule", args ?? new GetRuleInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetRuleResult>("gcp:iam/getRule:getRule", args ?? new GetRuleInvokeArgs(), options.WithDefaults());
     }
 
 

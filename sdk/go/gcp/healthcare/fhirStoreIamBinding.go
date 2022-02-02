@@ -268,7 +268,7 @@ type FhirStoreIamBindingInput interface {
 }
 
 func (*FhirStoreIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*FhirStoreIamBinding)(nil))
+	return reflect.TypeOf((**FhirStoreIamBinding)(nil)).Elem()
 }
 
 func (i *FhirStoreIamBinding) ToFhirStoreIamBindingOutput() FhirStoreIamBindingOutput {
@@ -277,35 +277,6 @@ func (i *FhirStoreIamBinding) ToFhirStoreIamBindingOutput() FhirStoreIamBindingO
 
 func (i *FhirStoreIamBinding) ToFhirStoreIamBindingOutputWithContext(ctx context.Context) FhirStoreIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamBindingOutput)
-}
-
-func (i *FhirStoreIamBinding) ToFhirStoreIamBindingPtrOutput() FhirStoreIamBindingPtrOutput {
-	return i.ToFhirStoreIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *FhirStoreIamBinding) ToFhirStoreIamBindingPtrOutputWithContext(ctx context.Context) FhirStoreIamBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamBindingPtrOutput)
-}
-
-type FhirStoreIamBindingPtrInput interface {
-	pulumi.Input
-
-	ToFhirStoreIamBindingPtrOutput() FhirStoreIamBindingPtrOutput
-	ToFhirStoreIamBindingPtrOutputWithContext(ctx context.Context) FhirStoreIamBindingPtrOutput
-}
-
-type fhirStoreIamBindingPtrType FhirStoreIamBindingArgs
-
-func (*fhirStoreIamBindingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FhirStoreIamBinding)(nil))
-}
-
-func (i *fhirStoreIamBindingPtrType) ToFhirStoreIamBindingPtrOutput() FhirStoreIamBindingPtrOutput {
-	return i.ToFhirStoreIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *fhirStoreIamBindingPtrType) ToFhirStoreIamBindingPtrOutputWithContext(ctx context.Context) FhirStoreIamBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamBindingPtrOutput)
 }
 
 // FhirStoreIamBindingArrayInput is an input type that accepts FhirStoreIamBindingArray and FhirStoreIamBindingArrayOutput values.
@@ -361,7 +332,7 @@ func (i FhirStoreIamBindingMap) ToFhirStoreIamBindingMapOutputWithContext(ctx co
 type FhirStoreIamBindingOutput struct{ *pulumi.OutputState }
 
 func (FhirStoreIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FhirStoreIamBinding)(nil))
+	return reflect.TypeOf((**FhirStoreIamBinding)(nil)).Elem()
 }
 
 func (o FhirStoreIamBindingOutput) ToFhirStoreIamBindingOutput() FhirStoreIamBindingOutput {
@@ -372,44 +343,10 @@ func (o FhirStoreIamBindingOutput) ToFhirStoreIamBindingOutputWithContext(ctx co
 	return o
 }
 
-func (o FhirStoreIamBindingOutput) ToFhirStoreIamBindingPtrOutput() FhirStoreIamBindingPtrOutput {
-	return o.ToFhirStoreIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (o FhirStoreIamBindingOutput) ToFhirStoreIamBindingPtrOutputWithContext(ctx context.Context) FhirStoreIamBindingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FhirStoreIamBinding) *FhirStoreIamBinding {
-		return &v
-	}).(FhirStoreIamBindingPtrOutput)
-}
-
-type FhirStoreIamBindingPtrOutput struct{ *pulumi.OutputState }
-
-func (FhirStoreIamBindingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FhirStoreIamBinding)(nil))
-}
-
-func (o FhirStoreIamBindingPtrOutput) ToFhirStoreIamBindingPtrOutput() FhirStoreIamBindingPtrOutput {
-	return o
-}
-
-func (o FhirStoreIamBindingPtrOutput) ToFhirStoreIamBindingPtrOutputWithContext(ctx context.Context) FhirStoreIamBindingPtrOutput {
-	return o
-}
-
-func (o FhirStoreIamBindingPtrOutput) Elem() FhirStoreIamBindingOutput {
-	return o.ApplyT(func(v *FhirStoreIamBinding) FhirStoreIamBinding {
-		if v != nil {
-			return *v
-		}
-		var ret FhirStoreIamBinding
-		return ret
-	}).(FhirStoreIamBindingOutput)
-}
-
 type FhirStoreIamBindingArrayOutput struct{ *pulumi.OutputState }
 
 func (FhirStoreIamBindingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FhirStoreIamBinding)(nil))
+	return reflect.TypeOf((*[]*FhirStoreIamBinding)(nil)).Elem()
 }
 
 func (o FhirStoreIamBindingArrayOutput) ToFhirStoreIamBindingArrayOutput() FhirStoreIamBindingArrayOutput {
@@ -421,15 +358,15 @@ func (o FhirStoreIamBindingArrayOutput) ToFhirStoreIamBindingArrayOutputWithCont
 }
 
 func (o FhirStoreIamBindingArrayOutput) Index(i pulumi.IntInput) FhirStoreIamBindingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FhirStoreIamBinding {
-		return vs[0].([]FhirStoreIamBinding)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FhirStoreIamBinding {
+		return vs[0].([]*FhirStoreIamBinding)[vs[1].(int)]
 	}).(FhirStoreIamBindingOutput)
 }
 
 type FhirStoreIamBindingMapOutput struct{ *pulumi.OutputState }
 
 func (FhirStoreIamBindingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]FhirStoreIamBinding)(nil))
+	return reflect.TypeOf((*map[string]*FhirStoreIamBinding)(nil)).Elem()
 }
 
 func (o FhirStoreIamBindingMapOutput) ToFhirStoreIamBindingMapOutput() FhirStoreIamBindingMapOutput {
@@ -441,18 +378,16 @@ func (o FhirStoreIamBindingMapOutput) ToFhirStoreIamBindingMapOutputWithContext(
 }
 
 func (o FhirStoreIamBindingMapOutput) MapIndex(k pulumi.StringInput) FhirStoreIamBindingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) FhirStoreIamBinding {
-		return vs[0].(map[string]FhirStoreIamBinding)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *FhirStoreIamBinding {
+		return vs[0].(map[string]*FhirStoreIamBinding)[vs[1].(string)]
 	}).(FhirStoreIamBindingOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreIamBindingInput)(nil)).Elem(), &FhirStoreIamBinding{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreIamBindingPtrInput)(nil)).Elem(), &FhirStoreIamBinding{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreIamBindingArrayInput)(nil)).Elem(), FhirStoreIamBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreIamBindingMapInput)(nil)).Elem(), FhirStoreIamBindingMap{})
 	pulumi.RegisterOutputType(FhirStoreIamBindingOutput{})
-	pulumi.RegisterOutputType(FhirStoreIamBindingPtrOutput{})
 	pulumi.RegisterOutputType(FhirStoreIamBindingArrayOutput{})
 	pulumi.RegisterOutputType(FhirStoreIamBindingMapOutput{})
 }

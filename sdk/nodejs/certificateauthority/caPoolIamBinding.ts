@@ -149,17 +149,17 @@ export class CaPoolIamBinding extends pulumi.CustomResource {
      */
     constructor(name: string, args: CaPoolIamBindingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CaPoolIamBindingArgs | CaPoolIamBindingState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CaPoolIamBindingState | undefined;
-            inputs["caPool"] = state ? state.caPool : undefined;
-            inputs["condition"] = state ? state.condition : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["members"] = state ? state.members : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["role"] = state ? state.role : undefined;
+            resourceInputs["caPool"] = state ? state.caPool : undefined;
+            resourceInputs["condition"] = state ? state.condition : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["members"] = state ? state.members : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["role"] = state ? state.role : undefined;
         } else {
             const args = argsOrState as CaPoolIamBindingArgs | undefined;
             if ((!args || args.caPool === undefined) && !opts.urn) {
@@ -171,18 +171,16 @@ export class CaPoolIamBinding extends pulumi.CustomResource {
             if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            inputs["caPool"] = args ? args.caPool : undefined;
-            inputs["condition"] = args ? args.condition : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["members"] = args ? args.members : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["role"] = args ? args.role : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["caPool"] = args ? args.caPool : undefined;
+            resourceInputs["condition"] = args ? args.condition : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["members"] = args ? args.members : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CaPoolIamBinding.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CaPoolIamBinding.__pulumiType, name, resourceInputs, opts);
     }
 }
 

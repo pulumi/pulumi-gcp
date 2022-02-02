@@ -175,7 +175,7 @@ type AiMetadataStoreInput interface {
 }
 
 func (*AiMetadataStore) ElementType() reflect.Type {
-	return reflect.TypeOf((*AiMetadataStore)(nil))
+	return reflect.TypeOf((**AiMetadataStore)(nil)).Elem()
 }
 
 func (i *AiMetadataStore) ToAiMetadataStoreOutput() AiMetadataStoreOutput {
@@ -184,35 +184,6 @@ func (i *AiMetadataStore) ToAiMetadataStoreOutput() AiMetadataStoreOutput {
 
 func (i *AiMetadataStore) ToAiMetadataStoreOutputWithContext(ctx context.Context) AiMetadataStoreOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AiMetadataStoreOutput)
-}
-
-func (i *AiMetadataStore) ToAiMetadataStorePtrOutput() AiMetadataStorePtrOutput {
-	return i.ToAiMetadataStorePtrOutputWithContext(context.Background())
-}
-
-func (i *AiMetadataStore) ToAiMetadataStorePtrOutputWithContext(ctx context.Context) AiMetadataStorePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AiMetadataStorePtrOutput)
-}
-
-type AiMetadataStorePtrInput interface {
-	pulumi.Input
-
-	ToAiMetadataStorePtrOutput() AiMetadataStorePtrOutput
-	ToAiMetadataStorePtrOutputWithContext(ctx context.Context) AiMetadataStorePtrOutput
-}
-
-type aiMetadataStorePtrType AiMetadataStoreArgs
-
-func (*aiMetadataStorePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AiMetadataStore)(nil))
-}
-
-func (i *aiMetadataStorePtrType) ToAiMetadataStorePtrOutput() AiMetadataStorePtrOutput {
-	return i.ToAiMetadataStorePtrOutputWithContext(context.Background())
-}
-
-func (i *aiMetadataStorePtrType) ToAiMetadataStorePtrOutputWithContext(ctx context.Context) AiMetadataStorePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AiMetadataStorePtrOutput)
 }
 
 // AiMetadataStoreArrayInput is an input type that accepts AiMetadataStoreArray and AiMetadataStoreArrayOutput values.
@@ -268,7 +239,7 @@ func (i AiMetadataStoreMap) ToAiMetadataStoreMapOutputWithContext(ctx context.Co
 type AiMetadataStoreOutput struct{ *pulumi.OutputState }
 
 func (AiMetadataStoreOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AiMetadataStore)(nil))
+	return reflect.TypeOf((**AiMetadataStore)(nil)).Elem()
 }
 
 func (o AiMetadataStoreOutput) ToAiMetadataStoreOutput() AiMetadataStoreOutput {
@@ -279,44 +250,10 @@ func (o AiMetadataStoreOutput) ToAiMetadataStoreOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o AiMetadataStoreOutput) ToAiMetadataStorePtrOutput() AiMetadataStorePtrOutput {
-	return o.ToAiMetadataStorePtrOutputWithContext(context.Background())
-}
-
-func (o AiMetadataStoreOutput) ToAiMetadataStorePtrOutputWithContext(ctx context.Context) AiMetadataStorePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiMetadataStore) *AiMetadataStore {
-		return &v
-	}).(AiMetadataStorePtrOutput)
-}
-
-type AiMetadataStorePtrOutput struct{ *pulumi.OutputState }
-
-func (AiMetadataStorePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AiMetadataStore)(nil))
-}
-
-func (o AiMetadataStorePtrOutput) ToAiMetadataStorePtrOutput() AiMetadataStorePtrOutput {
-	return o
-}
-
-func (o AiMetadataStorePtrOutput) ToAiMetadataStorePtrOutputWithContext(ctx context.Context) AiMetadataStorePtrOutput {
-	return o
-}
-
-func (o AiMetadataStorePtrOutput) Elem() AiMetadataStoreOutput {
-	return o.ApplyT(func(v *AiMetadataStore) AiMetadataStore {
-		if v != nil {
-			return *v
-		}
-		var ret AiMetadataStore
-		return ret
-	}).(AiMetadataStoreOutput)
-}
-
 type AiMetadataStoreArrayOutput struct{ *pulumi.OutputState }
 
 func (AiMetadataStoreArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AiMetadataStore)(nil))
+	return reflect.TypeOf((*[]*AiMetadataStore)(nil)).Elem()
 }
 
 func (o AiMetadataStoreArrayOutput) ToAiMetadataStoreArrayOutput() AiMetadataStoreArrayOutput {
@@ -328,15 +265,15 @@ func (o AiMetadataStoreArrayOutput) ToAiMetadataStoreArrayOutputWithContext(ctx 
 }
 
 func (o AiMetadataStoreArrayOutput) Index(i pulumi.IntInput) AiMetadataStoreOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiMetadataStore {
-		return vs[0].([]AiMetadataStore)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AiMetadataStore {
+		return vs[0].([]*AiMetadataStore)[vs[1].(int)]
 	}).(AiMetadataStoreOutput)
 }
 
 type AiMetadataStoreMapOutput struct{ *pulumi.OutputState }
 
 func (AiMetadataStoreMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AiMetadataStore)(nil))
+	return reflect.TypeOf((*map[string]*AiMetadataStore)(nil)).Elem()
 }
 
 func (o AiMetadataStoreMapOutput) ToAiMetadataStoreMapOutput() AiMetadataStoreMapOutput {
@@ -348,18 +285,16 @@ func (o AiMetadataStoreMapOutput) ToAiMetadataStoreMapOutputWithContext(ctx cont
 }
 
 func (o AiMetadataStoreMapOutput) MapIndex(k pulumi.StringInput) AiMetadataStoreOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AiMetadataStore {
-		return vs[0].(map[string]AiMetadataStore)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AiMetadataStore {
+		return vs[0].(map[string]*AiMetadataStore)[vs[1].(string)]
 	}).(AiMetadataStoreOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiMetadataStoreInput)(nil)).Elem(), &AiMetadataStore{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AiMetadataStorePtrInput)(nil)).Elem(), &AiMetadataStore{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiMetadataStoreArrayInput)(nil)).Elem(), AiMetadataStoreArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiMetadataStoreMapInput)(nil)).Elem(), AiMetadataStoreMap{})
 	pulumi.RegisterOutputType(AiMetadataStoreOutput{})
-	pulumi.RegisterOutputType(AiMetadataStorePtrOutput{})
 	pulumi.RegisterOutputType(AiMetadataStoreArrayOutput{})
 	pulumi.RegisterOutputType(AiMetadataStoreMapOutput{})
 }

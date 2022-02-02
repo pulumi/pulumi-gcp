@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.ApiGateway
     /// class MyStack : Stack
     /// {
     /// 	private static string ReadFileBase64(string path) {
-    /// 		return Convert.ToBase64String(System.Text.UTF8.GetBytes(File.ReadAllText(path)))
+    /// 		return Convert.ToBase64String(Encoding.UTF8.GetBytes(File.ReadAllText(path)))
     /// 	}
     /// 
     ///     public MyStack()

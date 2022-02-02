@@ -223,17 +223,17 @@ export class SubnetworkIAMBinding extends pulumi.CustomResource {
      */
     constructor(name: string, args: SubnetworkIAMBindingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SubnetworkIAMBindingArgs | SubnetworkIAMBindingState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SubnetworkIAMBindingState | undefined;
-            inputs["condition"] = state ? state.condition : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["members"] = state ? state.members : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["role"] = state ? state.role : undefined;
-            inputs["subnetwork"] = state ? state.subnetwork : undefined;
+            resourceInputs["condition"] = state ? state.condition : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["members"] = state ? state.members : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["subnetwork"] = state ? state.subnetwork : undefined;
         } else {
             const args = argsOrState as SubnetworkIAMBindingArgs | undefined;
             if ((!args || args.members === undefined) && !opts.urn) {
@@ -245,18 +245,16 @@ export class SubnetworkIAMBinding extends pulumi.CustomResource {
             if ((!args || args.subnetwork === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'subnetwork'");
             }
-            inputs["condition"] = args ? args.condition : undefined;
-            inputs["members"] = args ? args.members : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["role"] = args ? args.role : undefined;
-            inputs["subnetwork"] = args ? args.subnetwork : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["condition"] = args ? args.condition : undefined;
+            resourceInputs["members"] = args ? args.members : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SubnetworkIAMBinding.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SubnetworkIAMBinding.__pulumiType, name, resourceInputs, opts);
     }
 }
 

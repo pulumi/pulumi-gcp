@@ -205,38 +205,36 @@ export class EnterpriseKey extends pulumi.CustomResource {
      */
     constructor(name: string, args: EnterpriseKeyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EnterpriseKeyArgs | EnterpriseKeyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EnterpriseKeyState | undefined;
-            inputs["androidSettings"] = state ? state.androidSettings : undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["iosSettings"] = state ? state.iosSettings : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["testingOptions"] = state ? state.testingOptions : undefined;
-            inputs["webSettings"] = state ? state.webSettings : undefined;
+            resourceInputs["androidSettings"] = state ? state.androidSettings : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["iosSettings"] = state ? state.iosSettings : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["testingOptions"] = state ? state.testingOptions : undefined;
+            resourceInputs["webSettings"] = state ? state.webSettings : undefined;
         } else {
             const args = argsOrState as EnterpriseKeyArgs | undefined;
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            inputs["androidSettings"] = args ? args.androidSettings : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["iosSettings"] = args ? args.iosSettings : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["testingOptions"] = args ? args.testingOptions : undefined;
-            inputs["webSettings"] = args ? args.webSettings : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["androidSettings"] = args ? args.androidSettings : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["iosSettings"] = args ? args.iosSettings : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["testingOptions"] = args ? args.testingOptions : undefined;
+            resourceInputs["webSettings"] = args ? args.webSettings : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(EnterpriseKey.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(EnterpriseKey.__pulumiType, name, resourceInputs, opts);
     }
 }
 

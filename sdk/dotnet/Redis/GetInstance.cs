@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Redis
 {
@@ -48,7 +47,7 @@ namespace Pulumi.Gcp.Redis
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceResult> InvokeAsync(GetInstanceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceResult>("gcp:redis/getInstance:getInstance", args ?? new GetInstanceArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceResult>("gcp:redis/getInstance:getInstance", args ?? new GetInstanceArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get info about a Google Cloud Redis instance.
@@ -86,7 +85,7 @@ namespace Pulumi.Gcp.Redis
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstanceResult> Invoke(GetInstanceInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstanceResult>("gcp:redis/getInstance:getInstance", args ?? new GetInstanceInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetInstanceResult>("gcp:redis/getInstance:getInstance", args ?? new GetInstanceInvokeArgs(), options.WithDefaults());
     }
 
 

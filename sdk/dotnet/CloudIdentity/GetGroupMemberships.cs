@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.CloudIdentity
 {
@@ -41,7 +40,7 @@ namespace Pulumi.Gcp.CloudIdentity
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetGroupMembershipsResult> InvokeAsync(GetGroupMembershipsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupMembershipsResult>("gcp:cloudidentity/getGroupMemberships:getGroupMemberships", args ?? new GetGroupMembershipsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupMembershipsResult>("gcp:cloudidentity/getGroupMemberships:getGroupMemberships", args ?? new GetGroupMembershipsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get list of the Cloud Identity Group Memberships within a given Group.
@@ -72,7 +71,7 @@ namespace Pulumi.Gcp.CloudIdentity
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetGroupMembershipsResult> Invoke(GetGroupMembershipsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGroupMembershipsResult>("gcp:cloudidentity/getGroupMemberships:getGroupMemberships", args ?? new GetGroupMembershipsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetGroupMembershipsResult>("gcp:cloudidentity/getGroupMemberships:getGroupMemberships", args ?? new GetGroupMembershipsInvokeArgs(), options.WithDefaults());
     }
 
 

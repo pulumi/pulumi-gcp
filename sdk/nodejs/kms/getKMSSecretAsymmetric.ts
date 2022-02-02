@@ -9,9 +9,7 @@ export function getKMSSecretAsymmetric(args: GetKMSSecretAsymmetricArgs, opts?: 
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:kms/getKMSSecretAsymmetric:getKMSSecretAsymmetric", {
         "ciphertext": args.ciphertext,
         "crc32": args.crc32,

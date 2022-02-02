@@ -53,9 +53,7 @@ export function getNotificationChannel(args?: GetNotificationChannelArgs, opts?:
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:monitoring/getNotificationChannel:getNotificationChannel", {
         "displayName": args.displayName,
         "labels": args.labels,

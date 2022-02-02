@@ -26,9 +26,7 @@ export function getRegionSslCertificate(args: GetRegionSslCertificateArgs, opts?
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:compute/getRegionSslCertificate:getRegionSslCertificate", {
         "name": args.name,
         "project": args.project,

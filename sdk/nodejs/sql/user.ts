@@ -144,34 +144,32 @@ export class User extends pulumi.CustomResource {
      */
     constructor(name: string, args: UserArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: UserArgs | UserState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
-            inputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
-            inputs["host"] = state ? state.host : undefined;
-            inputs["instance"] = state ? state.instance : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["password"] = state ? state.password : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["type"] = state ? state.type : undefined;
+            resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
+            resourceInputs["host"] = state ? state.host : undefined;
+            resourceInputs["instance"] = state ? state.instance : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as UserArgs | undefined;
             if ((!args || args.instance === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
-            inputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
-            inputs["host"] = args ? args.host : undefined;
-            inputs["instance"] = args ? args.instance : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["password"] = args ? args.password : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["type"] = args ? args.type : undefined;
+            resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
+            resourceInputs["host"] = args ? args.host : undefined;
+            resourceInputs["instance"] = args ? args.instance : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(User.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(User.__pulumiType, name, resourceInputs, opts);
     }
 }
 

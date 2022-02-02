@@ -24,9 +24,7 @@ export function getSSLPolicy(args: GetSSLPolicyArgs, opts?: pulumi.InvokeOptions
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:compute/getSSLPolicy:getSSLPolicy", {
         "name": args.name,
         "project": args.project,

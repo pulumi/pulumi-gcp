@@ -33,7 +33,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := certificateauthority.NewAuthority(ctx, "_default", &certificateauthority.AuthorityArgs{
+// 		_, err := certificateauthority.NewAuthority(ctx, "default", &certificateauthority.AuthorityArgs{
 // 			CertificateAuthorityId: pulumi.String("my-certificate-authority"),
 // 			Config: &certificateauthority.AuthorityConfigArgs{
 // 				SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
@@ -99,7 +99,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := certificateauthority.NewAuthority(ctx, "_default", &certificateauthority.AuthorityArgs{
+// 		_, err := certificateauthority.NewAuthority(ctx, "default", &certificateauthority.AuthorityArgs{
 // 			CertificateAuthorityId: pulumi.String("my-certificate-authority"),
 // 			Config: &certificateauthority.AuthorityConfigArgs{
 // 				SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
@@ -200,7 +200,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = certificateauthority.NewAuthority(ctx, "_default", &certificateauthority.AuthorityArgs{
+// 		_, err = certificateauthority.NewAuthority(ctx, "default", &certificateauthority.AuthorityArgs{
 // 			Pool:                   pulumi.String("ca-pool"),
 // 			CertificateAuthorityId: pulumi.String("my-certificate-authority"),
 // 			Location:               pulumi.String("us-central1"),
@@ -592,7 +592,7 @@ type AuthorityInput interface {
 }
 
 func (*Authority) ElementType() reflect.Type {
-	return reflect.TypeOf((*Authority)(nil))
+	return reflect.TypeOf((**Authority)(nil)).Elem()
 }
 
 func (i *Authority) ToAuthorityOutput() AuthorityOutput {
@@ -601,35 +601,6 @@ func (i *Authority) ToAuthorityOutput() AuthorityOutput {
 
 func (i *Authority) ToAuthorityOutputWithContext(ctx context.Context) AuthorityOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorityOutput)
-}
-
-func (i *Authority) ToAuthorityPtrOutput() AuthorityPtrOutput {
-	return i.ToAuthorityPtrOutputWithContext(context.Background())
-}
-
-func (i *Authority) ToAuthorityPtrOutputWithContext(ctx context.Context) AuthorityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthorityPtrOutput)
-}
-
-type AuthorityPtrInput interface {
-	pulumi.Input
-
-	ToAuthorityPtrOutput() AuthorityPtrOutput
-	ToAuthorityPtrOutputWithContext(ctx context.Context) AuthorityPtrOutput
-}
-
-type authorityPtrType AuthorityArgs
-
-func (*authorityPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Authority)(nil))
-}
-
-func (i *authorityPtrType) ToAuthorityPtrOutput() AuthorityPtrOutput {
-	return i.ToAuthorityPtrOutputWithContext(context.Background())
-}
-
-func (i *authorityPtrType) ToAuthorityPtrOutputWithContext(ctx context.Context) AuthorityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthorityPtrOutput)
 }
 
 // AuthorityArrayInput is an input type that accepts AuthorityArray and AuthorityArrayOutput values.
@@ -685,7 +656,7 @@ func (i AuthorityMap) ToAuthorityMapOutputWithContext(ctx context.Context) Autho
 type AuthorityOutput struct{ *pulumi.OutputState }
 
 func (AuthorityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Authority)(nil))
+	return reflect.TypeOf((**Authority)(nil)).Elem()
 }
 
 func (o AuthorityOutput) ToAuthorityOutput() AuthorityOutput {
@@ -696,44 +667,10 @@ func (o AuthorityOutput) ToAuthorityOutputWithContext(ctx context.Context) Autho
 	return o
 }
 
-func (o AuthorityOutput) ToAuthorityPtrOutput() AuthorityPtrOutput {
-	return o.ToAuthorityPtrOutputWithContext(context.Background())
-}
-
-func (o AuthorityOutput) ToAuthorityPtrOutputWithContext(ctx context.Context) AuthorityPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Authority) *Authority {
-		return &v
-	}).(AuthorityPtrOutput)
-}
-
-type AuthorityPtrOutput struct{ *pulumi.OutputState }
-
-func (AuthorityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Authority)(nil))
-}
-
-func (o AuthorityPtrOutput) ToAuthorityPtrOutput() AuthorityPtrOutput {
-	return o
-}
-
-func (o AuthorityPtrOutput) ToAuthorityPtrOutputWithContext(ctx context.Context) AuthorityPtrOutput {
-	return o
-}
-
-func (o AuthorityPtrOutput) Elem() AuthorityOutput {
-	return o.ApplyT(func(v *Authority) Authority {
-		if v != nil {
-			return *v
-		}
-		var ret Authority
-		return ret
-	}).(AuthorityOutput)
-}
-
 type AuthorityArrayOutput struct{ *pulumi.OutputState }
 
 func (AuthorityArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Authority)(nil))
+	return reflect.TypeOf((*[]*Authority)(nil)).Elem()
 }
 
 func (o AuthorityArrayOutput) ToAuthorityArrayOutput() AuthorityArrayOutput {
@@ -745,15 +682,15 @@ func (o AuthorityArrayOutput) ToAuthorityArrayOutputWithContext(ctx context.Cont
 }
 
 func (o AuthorityArrayOutput) Index(i pulumi.IntInput) AuthorityOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Authority {
-		return vs[0].([]Authority)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Authority {
+		return vs[0].([]*Authority)[vs[1].(int)]
 	}).(AuthorityOutput)
 }
 
 type AuthorityMapOutput struct{ *pulumi.OutputState }
 
 func (AuthorityMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Authority)(nil))
+	return reflect.TypeOf((*map[string]*Authority)(nil)).Elem()
 }
 
 func (o AuthorityMapOutput) ToAuthorityMapOutput() AuthorityMapOutput {
@@ -765,18 +702,16 @@ func (o AuthorityMapOutput) ToAuthorityMapOutputWithContext(ctx context.Context)
 }
 
 func (o AuthorityMapOutput) MapIndex(k pulumi.StringInput) AuthorityOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Authority {
-		return vs[0].(map[string]Authority)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Authority {
+		return vs[0].(map[string]*Authority)[vs[1].(string)]
 	}).(AuthorityOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityInput)(nil)).Elem(), &Authority{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityPtrInput)(nil)).Elem(), &Authority{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityArrayInput)(nil)).Elem(), AuthorityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityMapInput)(nil)).Elem(), AuthorityMap{})
 	pulumi.RegisterOutputType(AuthorityOutput{})
-	pulumi.RegisterOutputType(AuthorityPtrOutput{})
 	pulumi.RegisterOutputType(AuthorityArrayOutput{})
 	pulumi.RegisterOutputType(AuthorityMapOutput{})
 }

@@ -103,16 +103,16 @@ export class SecretVersion extends pulumi.CustomResource {
      */
     constructor(name: string, args: SecretVersionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SecretVersionArgs | SecretVersionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecretVersionState | undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["destroyTime"] = state ? state.destroyTime : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["secret"] = state ? state.secret : undefined;
-            inputs["secretData"] = state ? state.secretData : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["destroyTime"] = state ? state.destroyTime : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["secret"] = state ? state.secret : undefined;
+            resourceInputs["secretData"] = state ? state.secretData : undefined;
         } else {
             const args = argsOrState as SecretVersionArgs | undefined;
             if ((!args || args.secret === undefined) && !opts.urn) {
@@ -121,17 +121,15 @@ export class SecretVersion extends pulumi.CustomResource {
             if ((!args || args.secretData === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'secretData'");
             }
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["secret"] = args ? args.secret : undefined;
-            inputs["secretData"] = args ? args.secretData : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["destroyTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["secret"] = args ? args.secret : undefined;
+            resourceInputs["secretData"] = args ? args.secretData : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["destroyTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SecretVersion.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SecretVersion.__pulumiType, name, resourceInputs, opts);
     }
 }
 

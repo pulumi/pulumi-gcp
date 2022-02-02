@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Monitoring
 {
@@ -56,7 +55,7 @@ namespace Pulumi.Gcp.Monitoring
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetMeshIstioServiceResult> InvokeAsync(GetMeshIstioServiceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMeshIstioServiceResult>("gcp:monitoring/getMeshIstioService:getMeshIstioService", args ?? new GetMeshIstioServiceArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetMeshIstioServiceResult>("gcp:monitoring/getMeshIstioService:getMeshIstioService", args ?? new GetMeshIstioServiceArgs(), options.WithDefaults());
 
         /// <summary>
         /// A Monitoring Service is the root resource under which operational aspects of a
@@ -102,7 +101,7 @@ namespace Pulumi.Gcp.Monitoring
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetMeshIstioServiceResult> Invoke(GetMeshIstioServiceInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMeshIstioServiceResult>("gcp:monitoring/getMeshIstioService:getMeshIstioService", args ?? new GetMeshIstioServiceInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetMeshIstioServiceResult>("gcp:monitoring/getMeshIstioService:getMeshIstioService", args ?? new GetMeshIstioServiceInvokeArgs(), options.WithDefaults());
     }
 
 

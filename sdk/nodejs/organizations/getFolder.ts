@@ -27,9 +27,7 @@ export function getFolder(args: GetFolderArgs, opts?: pulumi.InvokeOptions): Pro
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:organizations/getFolder:getFolder", {
         "folder": args.folder,
         "lookupOrganization": args.lookupOrganization,

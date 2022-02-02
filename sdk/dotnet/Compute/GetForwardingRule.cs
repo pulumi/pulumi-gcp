@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Compute
 {
@@ -39,7 +38,7 @@ namespace Pulumi.Gcp.Compute
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetForwardingRuleResult> InvokeAsync(GetForwardingRuleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetForwardingRuleResult>("gcp:compute/getForwardingRule:getForwardingRule", args ?? new GetForwardingRuleArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetForwardingRuleResult>("gcp:compute/getForwardingRule:getForwardingRule", args ?? new GetForwardingRuleArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get a forwarding rule within GCE from its name.
@@ -68,7 +67,7 @@ namespace Pulumi.Gcp.Compute
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetForwardingRuleResult> Invoke(GetForwardingRuleInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetForwardingRuleResult>("gcp:compute/getForwardingRule:getForwardingRule", args ?? new GetForwardingRuleInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetForwardingRuleResult>("gcp:compute/getForwardingRule:getForwardingRule", args ?? new GetForwardingRuleInvokeArgs(), options.WithDefaults());
     }
 
 

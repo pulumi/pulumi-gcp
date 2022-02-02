@@ -38,7 +38,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewHttpHealthCheck(ctx, "_default", &compute.HttpHealthCheckArgs{
+// 		_, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
 // 			CheckIntervalSec: pulumi.Int(1),
 // 			RequestPath:      pulumi.String("/health_check"),
 // 			TimeoutSec:       pulumi.Int(1),
@@ -325,7 +325,7 @@ type HttpHealthCheckInput interface {
 }
 
 func (*HttpHealthCheck) ElementType() reflect.Type {
-	return reflect.TypeOf((*HttpHealthCheck)(nil))
+	return reflect.TypeOf((**HttpHealthCheck)(nil)).Elem()
 }
 
 func (i *HttpHealthCheck) ToHttpHealthCheckOutput() HttpHealthCheckOutput {
@@ -334,35 +334,6 @@ func (i *HttpHealthCheck) ToHttpHealthCheckOutput() HttpHealthCheckOutput {
 
 func (i *HttpHealthCheck) ToHttpHealthCheckOutputWithContext(ctx context.Context) HttpHealthCheckOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HttpHealthCheckOutput)
-}
-
-func (i *HttpHealthCheck) ToHttpHealthCheckPtrOutput() HttpHealthCheckPtrOutput {
-	return i.ToHttpHealthCheckPtrOutputWithContext(context.Background())
-}
-
-func (i *HttpHealthCheck) ToHttpHealthCheckPtrOutputWithContext(ctx context.Context) HttpHealthCheckPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HttpHealthCheckPtrOutput)
-}
-
-type HttpHealthCheckPtrInput interface {
-	pulumi.Input
-
-	ToHttpHealthCheckPtrOutput() HttpHealthCheckPtrOutput
-	ToHttpHealthCheckPtrOutputWithContext(ctx context.Context) HttpHealthCheckPtrOutput
-}
-
-type httpHealthCheckPtrType HttpHealthCheckArgs
-
-func (*httpHealthCheckPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**HttpHealthCheck)(nil))
-}
-
-func (i *httpHealthCheckPtrType) ToHttpHealthCheckPtrOutput() HttpHealthCheckPtrOutput {
-	return i.ToHttpHealthCheckPtrOutputWithContext(context.Background())
-}
-
-func (i *httpHealthCheckPtrType) ToHttpHealthCheckPtrOutputWithContext(ctx context.Context) HttpHealthCheckPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HttpHealthCheckPtrOutput)
 }
 
 // HttpHealthCheckArrayInput is an input type that accepts HttpHealthCheckArray and HttpHealthCheckArrayOutput values.
@@ -418,7 +389,7 @@ func (i HttpHealthCheckMap) ToHttpHealthCheckMapOutputWithContext(ctx context.Co
 type HttpHealthCheckOutput struct{ *pulumi.OutputState }
 
 func (HttpHealthCheckOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HttpHealthCheck)(nil))
+	return reflect.TypeOf((**HttpHealthCheck)(nil)).Elem()
 }
 
 func (o HttpHealthCheckOutput) ToHttpHealthCheckOutput() HttpHealthCheckOutput {
@@ -429,44 +400,10 @@ func (o HttpHealthCheckOutput) ToHttpHealthCheckOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o HttpHealthCheckOutput) ToHttpHealthCheckPtrOutput() HttpHealthCheckPtrOutput {
-	return o.ToHttpHealthCheckPtrOutputWithContext(context.Background())
-}
-
-func (o HttpHealthCheckOutput) ToHttpHealthCheckPtrOutputWithContext(ctx context.Context) HttpHealthCheckPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpHealthCheck) *HttpHealthCheck {
-		return &v
-	}).(HttpHealthCheckPtrOutput)
-}
-
-type HttpHealthCheckPtrOutput struct{ *pulumi.OutputState }
-
-func (HttpHealthCheckPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**HttpHealthCheck)(nil))
-}
-
-func (o HttpHealthCheckPtrOutput) ToHttpHealthCheckPtrOutput() HttpHealthCheckPtrOutput {
-	return o
-}
-
-func (o HttpHealthCheckPtrOutput) ToHttpHealthCheckPtrOutputWithContext(ctx context.Context) HttpHealthCheckPtrOutput {
-	return o
-}
-
-func (o HttpHealthCheckPtrOutput) Elem() HttpHealthCheckOutput {
-	return o.ApplyT(func(v *HttpHealthCheck) HttpHealthCheck {
-		if v != nil {
-			return *v
-		}
-		var ret HttpHealthCheck
-		return ret
-	}).(HttpHealthCheckOutput)
-}
-
 type HttpHealthCheckArrayOutput struct{ *pulumi.OutputState }
 
 func (HttpHealthCheckArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]HttpHealthCheck)(nil))
+	return reflect.TypeOf((*[]*HttpHealthCheck)(nil)).Elem()
 }
 
 func (o HttpHealthCheckArrayOutput) ToHttpHealthCheckArrayOutput() HttpHealthCheckArrayOutput {
@@ -478,15 +415,15 @@ func (o HttpHealthCheckArrayOutput) ToHttpHealthCheckArrayOutputWithContext(ctx 
 }
 
 func (o HttpHealthCheckArrayOutput) Index(i pulumi.IntInput) HttpHealthCheckOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HttpHealthCheck {
-		return vs[0].([]HttpHealthCheck)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HttpHealthCheck {
+		return vs[0].([]*HttpHealthCheck)[vs[1].(int)]
 	}).(HttpHealthCheckOutput)
 }
 
 type HttpHealthCheckMapOutput struct{ *pulumi.OutputState }
 
 func (HttpHealthCheckMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]HttpHealthCheck)(nil))
+	return reflect.TypeOf((*map[string]*HttpHealthCheck)(nil)).Elem()
 }
 
 func (o HttpHealthCheckMapOutput) ToHttpHealthCheckMapOutput() HttpHealthCheckMapOutput {
@@ -498,18 +435,16 @@ func (o HttpHealthCheckMapOutput) ToHttpHealthCheckMapOutputWithContext(ctx cont
 }
 
 func (o HttpHealthCheckMapOutput) MapIndex(k pulumi.StringInput) HttpHealthCheckOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) HttpHealthCheck {
-		return vs[0].(map[string]HttpHealthCheck)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *HttpHealthCheck {
+		return vs[0].(map[string]*HttpHealthCheck)[vs[1].(string)]
 	}).(HttpHealthCheckOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpHealthCheckInput)(nil)).Elem(), &HttpHealthCheck{})
-	pulumi.RegisterInputType(reflect.TypeOf((*HttpHealthCheckPtrInput)(nil)).Elem(), &HttpHealthCheck{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpHealthCheckArrayInput)(nil)).Elem(), HttpHealthCheckArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpHealthCheckMapInput)(nil)).Elem(), HttpHealthCheckMap{})
 	pulumi.RegisterOutputType(HttpHealthCheckOutput{})
-	pulumi.RegisterOutputType(HttpHealthCheckPtrOutput{})
 	pulumi.RegisterOutputType(HttpHealthCheckArrayOutput{})
 	pulumi.RegisterOutputType(HttpHealthCheckMapOutput{})
 }

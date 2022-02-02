@@ -140,31 +140,29 @@ export class Policy extends pulumi.CustomResource {
      */
     constructor(name: string, args?: PolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PolicyArgs | PolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyState | undefined;
-            inputs["alternativeNameServerConfig"] = state ? state.alternativeNameServerConfig : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["enableInboundForwarding"] = state ? state.enableInboundForwarding : undefined;
-            inputs["enableLogging"] = state ? state.enableLogging : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["networks"] = state ? state.networks : undefined;
-            inputs["project"] = state ? state.project : undefined;
+            resourceInputs["alternativeNameServerConfig"] = state ? state.alternativeNameServerConfig : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enableInboundForwarding"] = state ? state.enableInboundForwarding : undefined;
+            resourceInputs["enableLogging"] = state ? state.enableLogging : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networks"] = state ? state.networks : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as PolicyArgs | undefined;
-            inputs["alternativeNameServerConfig"] = args ? args.alternativeNameServerConfig : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["enableInboundForwarding"] = args ? args.enableInboundForwarding : undefined;
-            inputs["enableLogging"] = args ? args.enableLogging : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["networks"] = args ? args.networks : undefined;
-            inputs["project"] = args ? args.project : undefined;
+            resourceInputs["alternativeNameServerConfig"] = args ? args.alternativeNameServerConfig : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enableInboundForwarding"] = args ? args.enableInboundForwarding : undefined;
+            resourceInputs["enableLogging"] = args ? args.enableLogging : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networks"] = args ? args.networks : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Policy.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Policy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

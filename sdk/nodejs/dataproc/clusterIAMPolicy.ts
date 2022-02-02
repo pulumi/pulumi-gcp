@@ -141,15 +141,15 @@ export class ClusterIAMPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: ClusterIAMPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ClusterIAMPolicyArgs | ClusterIAMPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterIAMPolicyState | undefined;
-            inputs["cluster"] = state ? state.cluster : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["policyData"] = state ? state.policyData : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["region"] = state ? state.region : undefined;
+            resourceInputs["cluster"] = state ? state.cluster : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["policyData"] = state ? state.policyData : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as ClusterIAMPolicyArgs | undefined;
             if ((!args || args.cluster === undefined) && !opts.urn) {
@@ -158,16 +158,14 @@ export class ClusterIAMPolicy extends pulumi.CustomResource {
             if ((!args || args.policyData === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
-            inputs["cluster"] = args ? args.cluster : undefined;
-            inputs["policyData"] = args ? args.policyData : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["cluster"] = args ? args.cluster : undefined;
+            resourceInputs["policyData"] = args ? args.policyData : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ClusterIAMPolicy.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ClusterIAMPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

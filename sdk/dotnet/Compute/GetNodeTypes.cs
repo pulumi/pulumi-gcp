@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Compute
 {
@@ -45,7 +44,7 @@ namespace Pulumi.Gcp.Compute
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNodeTypesResult> InvokeAsync(GetNodeTypesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNodeTypesResult>("gcp:compute/getNodeTypes:getNodeTypes", args ?? new GetNodeTypesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNodeTypesResult>("gcp:compute/getNodeTypes:getNodeTypes", args ?? new GetNodeTypesArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides available node types for Compute Engine sole-tenant nodes in a zone
@@ -80,7 +79,7 @@ namespace Pulumi.Gcp.Compute
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetNodeTypesResult> Invoke(GetNodeTypesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNodeTypesResult>("gcp:compute/getNodeTypes:getNodeTypes", args ?? new GetNodeTypesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetNodeTypesResult>("gcp:compute/getNodeTypes:getNodeTypes", args ?? new GetNodeTypesInvokeArgs(), options.WithDefaults());
     }
 
 

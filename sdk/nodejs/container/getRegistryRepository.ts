@@ -25,9 +25,7 @@ export function getRegistryRepository(args?: GetRegistryRepositoryArgs, opts?: p
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:container/getRegistryRepository:getRegistryRepository", {
         "project": args.project,
         "region": args.region,

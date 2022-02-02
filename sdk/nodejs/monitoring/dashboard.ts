@@ -165,24 +165,22 @@ export class Dashboard extends pulumi.CustomResource {
      */
     constructor(name: string, args: DashboardArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DashboardArgs | DashboardState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DashboardState | undefined;
-            inputs["dashboardJson"] = state ? state.dashboardJson : undefined;
-            inputs["project"] = state ? state.project : undefined;
+            resourceInputs["dashboardJson"] = state ? state.dashboardJson : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as DashboardArgs | undefined;
             if ((!args || args.dashboardJson === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dashboardJson'");
             }
-            inputs["dashboardJson"] = args ? args.dashboardJson : undefined;
-            inputs["project"] = args ? args.project : undefined;
+            resourceInputs["dashboardJson"] = args ? args.dashboardJson : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Dashboard.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Dashboard.__pulumiType, name, resourceInputs, opts);
     }
 }
 

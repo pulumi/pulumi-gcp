@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Iap
 {
@@ -44,7 +43,7 @@ namespace Pulumi.Gcp.Iap
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetClientResult> InvokeAsync(GetClientArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClientResult>("gcp:iap/getClient:getClient", args ?? new GetClientArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetClientResult>("gcp:iap/getClient:getClient", args ?? new GetClientArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get info about a Google Cloud IAP Client.
@@ -78,7 +77,7 @@ namespace Pulumi.Gcp.Iap
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetClientResult> Invoke(GetClientInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetClientResult>("gcp:iap/getClient:getClient", args ?? new GetClientInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetClientResult>("gcp:iap/getClient:getClient", args ?? new GetClientInvokeArgs(), options.WithDefaults());
     }
 
 

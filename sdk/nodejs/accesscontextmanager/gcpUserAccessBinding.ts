@@ -77,14 +77,14 @@ export class GcpUserAccessBinding extends pulumi.CustomResource {
      */
     constructor(name: string, args: GcpUserAccessBindingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GcpUserAccessBindingArgs | GcpUserAccessBindingState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GcpUserAccessBindingState | undefined;
-            inputs["accessLevels"] = state ? state.accessLevels : undefined;
-            inputs["groupKey"] = state ? state.groupKey : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["organizationId"] = state ? state.organizationId : undefined;
+            resourceInputs["accessLevels"] = state ? state.accessLevels : undefined;
+            resourceInputs["groupKey"] = state ? state.groupKey : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["organizationId"] = state ? state.organizationId : undefined;
         } else {
             const args = argsOrState as GcpUserAccessBindingArgs | undefined;
             if ((!args || args.accessLevels === undefined) && !opts.urn) {
@@ -96,15 +96,13 @@ export class GcpUserAccessBinding extends pulumi.CustomResource {
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            inputs["accessLevels"] = args ? args.accessLevels : undefined;
-            inputs["groupKey"] = args ? args.groupKey : undefined;
-            inputs["organizationId"] = args ? args.organizationId : undefined;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["accessLevels"] = args ? args.accessLevels : undefined;
+            resourceInputs["groupKey"] = args ? args.groupKey : undefined;
+            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["name"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(GcpUserAccessBinding.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(GcpUserAccessBinding.__pulumiType, name, resourceInputs, opts);
     }
 }
 

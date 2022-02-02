@@ -125,34 +125,32 @@ export class AccessLevelCondition extends pulumi.CustomResource {
      */
     constructor(name: string, args: AccessLevelConditionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccessLevelConditionArgs | AccessLevelConditionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessLevelConditionState | undefined;
-            inputs["accessLevel"] = state ? state.accessLevel : undefined;
-            inputs["devicePolicy"] = state ? state.devicePolicy : undefined;
-            inputs["ipSubnetworks"] = state ? state.ipSubnetworks : undefined;
-            inputs["members"] = state ? state.members : undefined;
-            inputs["negate"] = state ? state.negate : undefined;
-            inputs["regions"] = state ? state.regions : undefined;
-            inputs["requiredAccessLevels"] = state ? state.requiredAccessLevels : undefined;
+            resourceInputs["accessLevel"] = state ? state.accessLevel : undefined;
+            resourceInputs["devicePolicy"] = state ? state.devicePolicy : undefined;
+            resourceInputs["ipSubnetworks"] = state ? state.ipSubnetworks : undefined;
+            resourceInputs["members"] = state ? state.members : undefined;
+            resourceInputs["negate"] = state ? state.negate : undefined;
+            resourceInputs["regions"] = state ? state.regions : undefined;
+            resourceInputs["requiredAccessLevels"] = state ? state.requiredAccessLevels : undefined;
         } else {
             const args = argsOrState as AccessLevelConditionArgs | undefined;
             if ((!args || args.accessLevel === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accessLevel'");
             }
-            inputs["accessLevel"] = args ? args.accessLevel : undefined;
-            inputs["devicePolicy"] = args ? args.devicePolicy : undefined;
-            inputs["ipSubnetworks"] = args ? args.ipSubnetworks : undefined;
-            inputs["members"] = args ? args.members : undefined;
-            inputs["negate"] = args ? args.negate : undefined;
-            inputs["regions"] = args ? args.regions : undefined;
-            inputs["requiredAccessLevels"] = args ? args.requiredAccessLevels : undefined;
+            resourceInputs["accessLevel"] = args ? args.accessLevel : undefined;
+            resourceInputs["devicePolicy"] = args ? args.devicePolicy : undefined;
+            resourceInputs["ipSubnetworks"] = args ? args.ipSubnetworks : undefined;
+            resourceInputs["members"] = args ? args.members : undefined;
+            resourceInputs["negate"] = args ? args.negate : undefined;
+            resourceInputs["regions"] = args ? args.regions : undefined;
+            resourceInputs["requiredAccessLevels"] = args ? args.requiredAccessLevels : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AccessLevelCondition.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AccessLevelCondition.__pulumiType, name, resourceInputs, opts);
     }
 }
 

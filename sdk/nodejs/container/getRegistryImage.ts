@@ -26,9 +26,7 @@ export function getRegistryImage(args: GetRegistryImageArgs, opts?: pulumi.Invok
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:container/getRegistryImage:getRegistryImage", {
         "digest": args.digest,
         "name": args.name,

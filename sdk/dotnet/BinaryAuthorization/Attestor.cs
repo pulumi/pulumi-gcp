@@ -95,10 +95,10 @@ namespace Pulumi.Gcp.BinaryAuthorization
     ///                 Algorithm = "RSA_SIGN_PKCS1_4096_SHA512",
     ///             },
     ///         });
-    ///         var version = crypto_key.Id.Apply(id =&gt; Gcp.Kms.GetKMSCryptoKeyVersion.InvokeAsync(new Gcp.Kms.GetKMSCryptoKeyVersionArgs
+    ///         var version = Gcp.Kms.GetKMSCryptoKeyVersion.Invoke(new Gcp.Kms.GetKMSCryptoKeyVersionInvokeArgs
     ///         {
-    ///             CryptoKey = id,
-    ///         }));
+    ///             CryptoKey = crypto_key.Id,
+    ///         });
     ///         var note = new Gcp.ContainerAnalysis.Note("note", new Gcp.ContainerAnalysis.NoteArgs
     ///         {
     ///             AttestationAuthority = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityArgs

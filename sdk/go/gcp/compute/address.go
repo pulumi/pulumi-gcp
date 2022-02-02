@@ -181,7 +181,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = compute.NewAddress(ctx, "ipsec_interconnect_address", &compute.AddressArgs{
+// 		_, err = compute.NewAddress(ctx, "ipsec-interconnect-address", &compute.AddressArgs{
 // 			AddressType:  pulumi.String("INTERNAL"),
 // 			Purpose:      pulumi.String("IPSEC_INTERCONNECT"),
 // 			Address:      pulumi.String("192.168.1.0"),
@@ -576,7 +576,7 @@ type AddressInput interface {
 }
 
 func (*Address) ElementType() reflect.Type {
-	return reflect.TypeOf((*Address)(nil))
+	return reflect.TypeOf((**Address)(nil)).Elem()
 }
 
 func (i *Address) ToAddressOutput() AddressOutput {
@@ -585,35 +585,6 @@ func (i *Address) ToAddressOutput() AddressOutput {
 
 func (i *Address) ToAddressOutputWithContext(ctx context.Context) AddressOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AddressOutput)
-}
-
-func (i *Address) ToAddressPtrOutput() AddressPtrOutput {
-	return i.ToAddressPtrOutputWithContext(context.Background())
-}
-
-func (i *Address) ToAddressPtrOutputWithContext(ctx context.Context) AddressPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AddressPtrOutput)
-}
-
-type AddressPtrInput interface {
-	pulumi.Input
-
-	ToAddressPtrOutput() AddressPtrOutput
-	ToAddressPtrOutputWithContext(ctx context.Context) AddressPtrOutput
-}
-
-type addressPtrType AddressArgs
-
-func (*addressPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Address)(nil))
-}
-
-func (i *addressPtrType) ToAddressPtrOutput() AddressPtrOutput {
-	return i.ToAddressPtrOutputWithContext(context.Background())
-}
-
-func (i *addressPtrType) ToAddressPtrOutputWithContext(ctx context.Context) AddressPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AddressPtrOutput)
 }
 
 // AddressArrayInput is an input type that accepts AddressArray and AddressArrayOutput values.
@@ -669,7 +640,7 @@ func (i AddressMap) ToAddressMapOutputWithContext(ctx context.Context) AddressMa
 type AddressOutput struct{ *pulumi.OutputState }
 
 func (AddressOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Address)(nil))
+	return reflect.TypeOf((**Address)(nil)).Elem()
 }
 
 func (o AddressOutput) ToAddressOutput() AddressOutput {
@@ -680,44 +651,10 @@ func (o AddressOutput) ToAddressOutputWithContext(ctx context.Context) AddressOu
 	return o
 }
 
-func (o AddressOutput) ToAddressPtrOutput() AddressPtrOutput {
-	return o.ToAddressPtrOutputWithContext(context.Background())
-}
-
-func (o AddressOutput) ToAddressPtrOutputWithContext(ctx context.Context) AddressPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Address) *Address {
-		return &v
-	}).(AddressPtrOutput)
-}
-
-type AddressPtrOutput struct{ *pulumi.OutputState }
-
-func (AddressPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Address)(nil))
-}
-
-func (o AddressPtrOutput) ToAddressPtrOutput() AddressPtrOutput {
-	return o
-}
-
-func (o AddressPtrOutput) ToAddressPtrOutputWithContext(ctx context.Context) AddressPtrOutput {
-	return o
-}
-
-func (o AddressPtrOutput) Elem() AddressOutput {
-	return o.ApplyT(func(v *Address) Address {
-		if v != nil {
-			return *v
-		}
-		var ret Address
-		return ret
-	}).(AddressOutput)
-}
-
 type AddressArrayOutput struct{ *pulumi.OutputState }
 
 func (AddressArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Address)(nil))
+	return reflect.TypeOf((*[]*Address)(nil)).Elem()
 }
 
 func (o AddressArrayOutput) ToAddressArrayOutput() AddressArrayOutput {
@@ -729,15 +666,15 @@ func (o AddressArrayOutput) ToAddressArrayOutputWithContext(ctx context.Context)
 }
 
 func (o AddressArrayOutput) Index(i pulumi.IntInput) AddressOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Address {
-		return vs[0].([]Address)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Address {
+		return vs[0].([]*Address)[vs[1].(int)]
 	}).(AddressOutput)
 }
 
 type AddressMapOutput struct{ *pulumi.OutputState }
 
 func (AddressMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Address)(nil))
+	return reflect.TypeOf((*map[string]*Address)(nil)).Elem()
 }
 
 func (o AddressMapOutput) ToAddressMapOutput() AddressMapOutput {
@@ -749,18 +686,16 @@ func (o AddressMapOutput) ToAddressMapOutputWithContext(ctx context.Context) Add
 }
 
 func (o AddressMapOutput) MapIndex(k pulumi.StringInput) AddressOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Address {
-		return vs[0].(map[string]Address)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Address {
+		return vs[0].(map[string]*Address)[vs[1].(string)]
 	}).(AddressOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AddressInput)(nil)).Elem(), &Address{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AddressPtrInput)(nil)).Elem(), &Address{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AddressArrayInput)(nil)).Elem(), AddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AddressMapInput)(nil)).Elem(), AddressMap{})
 	pulumi.RegisterOutputType(AddressOutput{})
-	pulumi.RegisterOutputType(AddressPtrOutput{})
 	pulumi.RegisterOutputType(AddressArrayOutput{})
 	pulumi.RegisterOutputType(AddressMapOutput{})
 }

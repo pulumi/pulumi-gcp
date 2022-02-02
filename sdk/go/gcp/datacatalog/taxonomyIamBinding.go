@@ -271,7 +271,7 @@ type TaxonomyIamBindingInput interface {
 }
 
 func (*TaxonomyIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*TaxonomyIamBinding)(nil))
+	return reflect.TypeOf((**TaxonomyIamBinding)(nil)).Elem()
 }
 
 func (i *TaxonomyIamBinding) ToTaxonomyIamBindingOutput() TaxonomyIamBindingOutput {
@@ -280,35 +280,6 @@ func (i *TaxonomyIamBinding) ToTaxonomyIamBindingOutput() TaxonomyIamBindingOutp
 
 func (i *TaxonomyIamBinding) ToTaxonomyIamBindingOutputWithContext(ctx context.Context) TaxonomyIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyIamBindingOutput)
-}
-
-func (i *TaxonomyIamBinding) ToTaxonomyIamBindingPtrOutput() TaxonomyIamBindingPtrOutput {
-	return i.ToTaxonomyIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *TaxonomyIamBinding) ToTaxonomyIamBindingPtrOutputWithContext(ctx context.Context) TaxonomyIamBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyIamBindingPtrOutput)
-}
-
-type TaxonomyIamBindingPtrInput interface {
-	pulumi.Input
-
-	ToTaxonomyIamBindingPtrOutput() TaxonomyIamBindingPtrOutput
-	ToTaxonomyIamBindingPtrOutputWithContext(ctx context.Context) TaxonomyIamBindingPtrOutput
-}
-
-type taxonomyIamBindingPtrType TaxonomyIamBindingArgs
-
-func (*taxonomyIamBindingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TaxonomyIamBinding)(nil))
-}
-
-func (i *taxonomyIamBindingPtrType) ToTaxonomyIamBindingPtrOutput() TaxonomyIamBindingPtrOutput {
-	return i.ToTaxonomyIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *taxonomyIamBindingPtrType) ToTaxonomyIamBindingPtrOutputWithContext(ctx context.Context) TaxonomyIamBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyIamBindingPtrOutput)
 }
 
 // TaxonomyIamBindingArrayInput is an input type that accepts TaxonomyIamBindingArray and TaxonomyIamBindingArrayOutput values.
@@ -364,7 +335,7 @@ func (i TaxonomyIamBindingMap) ToTaxonomyIamBindingMapOutputWithContext(ctx cont
 type TaxonomyIamBindingOutput struct{ *pulumi.OutputState }
 
 func (TaxonomyIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TaxonomyIamBinding)(nil))
+	return reflect.TypeOf((**TaxonomyIamBinding)(nil)).Elem()
 }
 
 func (o TaxonomyIamBindingOutput) ToTaxonomyIamBindingOutput() TaxonomyIamBindingOutput {
@@ -375,44 +346,10 @@ func (o TaxonomyIamBindingOutput) ToTaxonomyIamBindingOutputWithContext(ctx cont
 	return o
 }
 
-func (o TaxonomyIamBindingOutput) ToTaxonomyIamBindingPtrOutput() TaxonomyIamBindingPtrOutput {
-	return o.ToTaxonomyIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (o TaxonomyIamBindingOutput) ToTaxonomyIamBindingPtrOutputWithContext(ctx context.Context) TaxonomyIamBindingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TaxonomyIamBinding) *TaxonomyIamBinding {
-		return &v
-	}).(TaxonomyIamBindingPtrOutput)
-}
-
-type TaxonomyIamBindingPtrOutput struct{ *pulumi.OutputState }
-
-func (TaxonomyIamBindingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TaxonomyIamBinding)(nil))
-}
-
-func (o TaxonomyIamBindingPtrOutput) ToTaxonomyIamBindingPtrOutput() TaxonomyIamBindingPtrOutput {
-	return o
-}
-
-func (o TaxonomyIamBindingPtrOutput) ToTaxonomyIamBindingPtrOutputWithContext(ctx context.Context) TaxonomyIamBindingPtrOutput {
-	return o
-}
-
-func (o TaxonomyIamBindingPtrOutput) Elem() TaxonomyIamBindingOutput {
-	return o.ApplyT(func(v *TaxonomyIamBinding) TaxonomyIamBinding {
-		if v != nil {
-			return *v
-		}
-		var ret TaxonomyIamBinding
-		return ret
-	}).(TaxonomyIamBindingOutput)
-}
-
 type TaxonomyIamBindingArrayOutput struct{ *pulumi.OutputState }
 
 func (TaxonomyIamBindingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TaxonomyIamBinding)(nil))
+	return reflect.TypeOf((*[]*TaxonomyIamBinding)(nil)).Elem()
 }
 
 func (o TaxonomyIamBindingArrayOutput) ToTaxonomyIamBindingArrayOutput() TaxonomyIamBindingArrayOutput {
@@ -424,15 +361,15 @@ func (o TaxonomyIamBindingArrayOutput) ToTaxonomyIamBindingArrayOutputWithContex
 }
 
 func (o TaxonomyIamBindingArrayOutput) Index(i pulumi.IntInput) TaxonomyIamBindingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TaxonomyIamBinding {
-		return vs[0].([]TaxonomyIamBinding)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TaxonomyIamBinding {
+		return vs[0].([]*TaxonomyIamBinding)[vs[1].(int)]
 	}).(TaxonomyIamBindingOutput)
 }
 
 type TaxonomyIamBindingMapOutput struct{ *pulumi.OutputState }
 
 func (TaxonomyIamBindingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]TaxonomyIamBinding)(nil))
+	return reflect.TypeOf((*map[string]*TaxonomyIamBinding)(nil)).Elem()
 }
 
 func (o TaxonomyIamBindingMapOutput) ToTaxonomyIamBindingMapOutput() TaxonomyIamBindingMapOutput {
@@ -444,18 +381,16 @@ func (o TaxonomyIamBindingMapOutput) ToTaxonomyIamBindingMapOutputWithContext(ct
 }
 
 func (o TaxonomyIamBindingMapOutput) MapIndex(k pulumi.StringInput) TaxonomyIamBindingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TaxonomyIamBinding {
-		return vs[0].(map[string]TaxonomyIamBinding)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *TaxonomyIamBinding {
+		return vs[0].(map[string]*TaxonomyIamBinding)[vs[1].(string)]
 	}).(TaxonomyIamBindingOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TaxonomyIamBindingInput)(nil)).Elem(), &TaxonomyIamBinding{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TaxonomyIamBindingPtrInput)(nil)).Elem(), &TaxonomyIamBinding{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TaxonomyIamBindingArrayInput)(nil)).Elem(), TaxonomyIamBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TaxonomyIamBindingMapInput)(nil)).Elem(), TaxonomyIamBindingMap{})
 	pulumi.RegisterOutputType(TaxonomyIamBindingOutput{})
-	pulumi.RegisterOutputType(TaxonomyIamBindingPtrOutput{})
 	pulumi.RegisterOutputType(TaxonomyIamBindingArrayOutput{})
 	pulumi.RegisterOutputType(TaxonomyIamBindingMapOutput{})
 }

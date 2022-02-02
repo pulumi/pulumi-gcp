@@ -143,30 +143,28 @@ export class RegionDiskIamPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: RegionDiskIamPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RegionDiskIamPolicyArgs | RegionDiskIamPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegionDiskIamPolicyState | undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["policyData"] = state ? state.policyData : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["region"] = state ? state.region : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["policyData"] = state ? state.policyData : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as RegionDiskIamPolicyArgs | undefined;
             if ((!args || args.policyData === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
-            inputs["name"] = args ? args.name : undefined;
-            inputs["policyData"] = args ? args.policyData : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["policyData"] = args ? args.policyData : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(RegionDiskIamPolicy.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(RegionDiskIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

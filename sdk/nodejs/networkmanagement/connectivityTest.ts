@@ -224,18 +224,18 @@ export class ConnectivityTest extends pulumi.CustomResource {
      */
     constructor(name: string, args: ConnectivityTestArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ConnectivityTestArgs | ConnectivityTestState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectivityTestState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["destination"] = state ? state.destination : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["protocol"] = state ? state.protocol : undefined;
-            inputs["relatedProjects"] = state ? state.relatedProjects : undefined;
-            inputs["source"] = state ? state.source : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["destination"] = state ? state.destination : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["protocol"] = state ? state.protocol : undefined;
+            resourceInputs["relatedProjects"] = state ? state.relatedProjects : undefined;
+            resourceInputs["source"] = state ? state.source : undefined;
         } else {
             const args = argsOrState as ConnectivityTestArgs | undefined;
             if ((!args || args.destination === undefined) && !opts.urn) {
@@ -244,19 +244,17 @@ export class ConnectivityTest extends pulumi.CustomResource {
             if ((!args || args.source === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'source'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["destination"] = args ? args.destination : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["protocol"] = args ? args.protocol : undefined;
-            inputs["relatedProjects"] = args ? args.relatedProjects : undefined;
-            inputs["source"] = args ? args.source : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["destination"] = args ? args.destination : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["protocol"] = args ? args.protocol : undefined;
+            resourceInputs["relatedProjects"] = args ? args.relatedProjects : undefined;
+            resourceInputs["source"] = args ? args.source : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ConnectivityTest.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ConnectivityTest.__pulumiType, name, resourceInputs, opts);
     }
 }
 

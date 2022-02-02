@@ -24,9 +24,7 @@ export function getBackupRun(args: GetBackupRunArgs, opts?: pulumi.InvokeOptions
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:sql/getBackupRun:getBackupRun", {
         "backupId": args.backupId,
         "instance": args.instance,

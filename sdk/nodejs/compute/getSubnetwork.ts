@@ -26,9 +26,7 @@ export function getSubnetwork(args?: GetSubnetworkArgs, opts?: pulumi.InvokeOpti
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:compute/getSubnetwork:getSubnetwork", {
         "name": args.name,
         "project": args.project,

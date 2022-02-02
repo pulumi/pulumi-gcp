@@ -30,9 +30,7 @@ export function getKMSKeyRing(args: GetKMSKeyRingArgs, opts?: pulumi.InvokeOptio
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:kms/getKMSKeyRing:getKMSKeyRing", {
         "location": args.location,
         "name": args.name,

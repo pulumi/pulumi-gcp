@@ -321,25 +321,25 @@ export class Route extends pulumi.CustomResource {
      */
     constructor(name: string, args: RouteArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RouteArgs | RouteState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouteState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["destRange"] = state ? state.destRange : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["network"] = state ? state.network : undefined;
-            inputs["nextHopGateway"] = state ? state.nextHopGateway : undefined;
-            inputs["nextHopIlb"] = state ? state.nextHopIlb : undefined;
-            inputs["nextHopInstance"] = state ? state.nextHopInstance : undefined;
-            inputs["nextHopInstanceZone"] = state ? state.nextHopInstanceZone : undefined;
-            inputs["nextHopIp"] = state ? state.nextHopIp : undefined;
-            inputs["nextHopNetwork"] = state ? state.nextHopNetwork : undefined;
-            inputs["nextHopVpnTunnel"] = state ? state.nextHopVpnTunnel : undefined;
-            inputs["priority"] = state ? state.priority : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["destRange"] = state ? state.destRange : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["network"] = state ? state.network : undefined;
+            resourceInputs["nextHopGateway"] = state ? state.nextHopGateway : undefined;
+            resourceInputs["nextHopIlb"] = state ? state.nextHopIlb : undefined;
+            resourceInputs["nextHopInstance"] = state ? state.nextHopInstance : undefined;
+            resourceInputs["nextHopInstanceZone"] = state ? state.nextHopInstanceZone : undefined;
+            resourceInputs["nextHopIp"] = state ? state.nextHopIp : undefined;
+            resourceInputs["nextHopNetwork"] = state ? state.nextHopNetwork : undefined;
+            resourceInputs["nextHopVpnTunnel"] = state ? state.nextHopVpnTunnel : undefined;
+            resourceInputs["priority"] = state ? state.priority : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as RouteArgs | undefined;
             if ((!args || args.destRange === undefined) && !opts.urn) {
@@ -348,26 +348,24 @@ export class Route extends pulumi.CustomResource {
             if ((!args || args.network === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["destRange"] = args ? args.destRange : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["network"] = args ? args.network : undefined;
-            inputs["nextHopGateway"] = args ? args.nextHopGateway : undefined;
-            inputs["nextHopIlb"] = args ? args.nextHopIlb : undefined;
-            inputs["nextHopInstance"] = args ? args.nextHopInstance : undefined;
-            inputs["nextHopInstanceZone"] = args ? args.nextHopInstanceZone : undefined;
-            inputs["nextHopIp"] = args ? args.nextHopIp : undefined;
-            inputs["nextHopVpnTunnel"] = args ? args.nextHopVpnTunnel : undefined;
-            inputs["priority"] = args ? args.priority : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["nextHopNetwork"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["destRange"] = args ? args.destRange : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["nextHopGateway"] = args ? args.nextHopGateway : undefined;
+            resourceInputs["nextHopIlb"] = args ? args.nextHopIlb : undefined;
+            resourceInputs["nextHopInstance"] = args ? args.nextHopInstance : undefined;
+            resourceInputs["nextHopInstanceZone"] = args ? args.nextHopInstanceZone : undefined;
+            resourceInputs["nextHopIp"] = args ? args.nextHopIp : undefined;
+            resourceInputs["nextHopVpnTunnel"] = args ? args.nextHopVpnTunnel : undefined;
+            resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["nextHopNetwork"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Route.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Route.__pulumiType, name, resourceInputs, opts);
     }
 }
 

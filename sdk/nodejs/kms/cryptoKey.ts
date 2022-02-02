@@ -148,38 +148,36 @@ export class CryptoKey extends pulumi.CustomResource {
      */
     constructor(name: string, args: CryptoKeyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CryptoKeyArgs | CryptoKeyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CryptoKeyState | undefined;
-            inputs["destroyScheduledDuration"] = state ? state.destroyScheduledDuration : undefined;
-            inputs["importOnly"] = state ? state.importOnly : undefined;
-            inputs["keyRing"] = state ? state.keyRing : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["purpose"] = state ? state.purpose : undefined;
-            inputs["rotationPeriod"] = state ? state.rotationPeriod : undefined;
-            inputs["skipInitialVersionCreation"] = state ? state.skipInitialVersionCreation : undefined;
-            inputs["versionTemplate"] = state ? state.versionTemplate : undefined;
+            resourceInputs["destroyScheduledDuration"] = state ? state.destroyScheduledDuration : undefined;
+            resourceInputs["importOnly"] = state ? state.importOnly : undefined;
+            resourceInputs["keyRing"] = state ? state.keyRing : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["purpose"] = state ? state.purpose : undefined;
+            resourceInputs["rotationPeriod"] = state ? state.rotationPeriod : undefined;
+            resourceInputs["skipInitialVersionCreation"] = state ? state.skipInitialVersionCreation : undefined;
+            resourceInputs["versionTemplate"] = state ? state.versionTemplate : undefined;
         } else {
             const args = argsOrState as CryptoKeyArgs | undefined;
             if ((!args || args.keyRing === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'keyRing'");
             }
-            inputs["destroyScheduledDuration"] = args ? args.destroyScheduledDuration : undefined;
-            inputs["importOnly"] = args ? args.importOnly : undefined;
-            inputs["keyRing"] = args ? args.keyRing : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["purpose"] = args ? args.purpose : undefined;
-            inputs["rotationPeriod"] = args ? args.rotationPeriod : undefined;
-            inputs["skipInitialVersionCreation"] = args ? args.skipInitialVersionCreation : undefined;
-            inputs["versionTemplate"] = args ? args.versionTemplate : undefined;
+            resourceInputs["destroyScheduledDuration"] = args ? args.destroyScheduledDuration : undefined;
+            resourceInputs["importOnly"] = args ? args.importOnly : undefined;
+            resourceInputs["keyRing"] = args ? args.keyRing : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["purpose"] = args ? args.purpose : undefined;
+            resourceInputs["rotationPeriod"] = args ? args.rotationPeriod : undefined;
+            resourceInputs["skipInitialVersionCreation"] = args ? args.skipInitialVersionCreation : undefined;
+            resourceInputs["versionTemplate"] = args ? args.versionTemplate : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CryptoKey.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CryptoKey.__pulumiType, name, resourceInputs, opts);
     }
 }
 

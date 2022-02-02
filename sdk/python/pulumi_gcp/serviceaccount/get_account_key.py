@@ -106,8 +106,8 @@ def get_account_key(name: Optional[str] = None,
 
     myaccount = gcp.service_account.Account("myaccount", account_id="dev-foo-account")
     mykey_key = gcp.service_account.Key("mykeyKey", service_account_id=myaccount.name)
-    mykey_account_key = mykey_key.name.apply(lambda name: gcp.serviceAccount.get_account_key(name=name,
-        public_key_type="TYPE_X509_PEM_FILE"))
+    mykey_account_key = gcp.serviceAccount.get_account_key_output(name=mykey_key.name,
+        public_key_type="TYPE_X509_PEM_FILE")
     ```
 
 
@@ -153,8 +153,8 @@ def get_account_key_output(name: Optional[pulumi.Input[str]] = None,
 
     myaccount = gcp.service_account.Account("myaccount", account_id="dev-foo-account")
     mykey_key = gcp.service_account.Key("mykeyKey", service_account_id=myaccount.name)
-    mykey_account_key = mykey_key.name.apply(lambda name: gcp.serviceAccount.get_account_key(name=name,
-        public_key_type="TYPE_X509_PEM_FILE"))
+    mykey_account_key = gcp.serviceAccount.get_account_key_output(name=mykey_key.name,
+        public_key_type="TYPE_X509_PEM_FILE")
     ```
 
 

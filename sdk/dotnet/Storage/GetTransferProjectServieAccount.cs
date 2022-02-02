@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Storage
 {
@@ -39,7 +38,7 @@ namespace Pulumi.Gcp.Storage
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTransferProjectServieAccountResult> InvokeAsync(GetTransferProjectServieAccountArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTransferProjectServieAccountResult>("gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount", args ?? new GetTransferProjectServieAccountArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTransferProjectServieAccountResult>("gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount", args ?? new GetTransferProjectServieAccountArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve Storage Transfer service account for this project
@@ -68,7 +67,7 @@ namespace Pulumi.Gcp.Storage
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetTransferProjectServieAccountResult> Invoke(GetTransferProjectServieAccountInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTransferProjectServieAccountResult>("gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount", args ?? new GetTransferProjectServieAccountInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetTransferProjectServieAccountResult>("gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount", args ?? new GetTransferProjectServieAccountInvokeArgs(), options.WithDefaults());
     }
 
 

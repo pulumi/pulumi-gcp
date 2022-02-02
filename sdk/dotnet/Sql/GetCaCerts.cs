@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Sql
 {
@@ -19,7 +18,7 @@ namespace Pulumi.Gcp.Sql
         /// [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
         /// </summary>
         public static Task<GetCaCertsResult> InvokeAsync(GetCaCertsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCaCertsResult>("gcp:sql/getCaCerts:getCaCerts", args ?? new GetCaCertsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCaCertsResult>("gcp:sql/getCaCerts:getCaCerts", args ?? new GetCaCertsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get all of the trusted Certificate Authorities (CAs) for the specified SQL database instance. For more information see the
@@ -28,7 +27,7 @@ namespace Pulumi.Gcp.Sql
         /// [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
         /// </summary>
         public static Output<GetCaCertsResult> Invoke(GetCaCertsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCaCertsResult>("gcp:sql/getCaCerts:getCaCerts", args ?? new GetCaCertsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetCaCertsResult>("gcp:sql/getCaCerts:getCaCerts", args ?? new GetCaCertsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -211,7 +211,7 @@ type CxVersionInput interface {
 }
 
 func (*CxVersion) ElementType() reflect.Type {
-	return reflect.TypeOf((*CxVersion)(nil))
+	return reflect.TypeOf((**CxVersion)(nil)).Elem()
 }
 
 func (i *CxVersion) ToCxVersionOutput() CxVersionOutput {
@@ -220,35 +220,6 @@ func (i *CxVersion) ToCxVersionOutput() CxVersionOutput {
 
 func (i *CxVersion) ToCxVersionOutputWithContext(ctx context.Context) CxVersionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CxVersionOutput)
-}
-
-func (i *CxVersion) ToCxVersionPtrOutput() CxVersionPtrOutput {
-	return i.ToCxVersionPtrOutputWithContext(context.Background())
-}
-
-func (i *CxVersion) ToCxVersionPtrOutputWithContext(ctx context.Context) CxVersionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CxVersionPtrOutput)
-}
-
-type CxVersionPtrInput interface {
-	pulumi.Input
-
-	ToCxVersionPtrOutput() CxVersionPtrOutput
-	ToCxVersionPtrOutputWithContext(ctx context.Context) CxVersionPtrOutput
-}
-
-type cxVersionPtrType CxVersionArgs
-
-func (*cxVersionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CxVersion)(nil))
-}
-
-func (i *cxVersionPtrType) ToCxVersionPtrOutput() CxVersionPtrOutput {
-	return i.ToCxVersionPtrOutputWithContext(context.Background())
-}
-
-func (i *cxVersionPtrType) ToCxVersionPtrOutputWithContext(ctx context.Context) CxVersionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CxVersionPtrOutput)
 }
 
 // CxVersionArrayInput is an input type that accepts CxVersionArray and CxVersionArrayOutput values.
@@ -304,7 +275,7 @@ func (i CxVersionMap) ToCxVersionMapOutputWithContext(ctx context.Context) CxVer
 type CxVersionOutput struct{ *pulumi.OutputState }
 
 func (CxVersionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CxVersion)(nil))
+	return reflect.TypeOf((**CxVersion)(nil)).Elem()
 }
 
 func (o CxVersionOutput) ToCxVersionOutput() CxVersionOutput {
@@ -315,44 +286,10 @@ func (o CxVersionOutput) ToCxVersionOutputWithContext(ctx context.Context) CxVer
 	return o
 }
 
-func (o CxVersionOutput) ToCxVersionPtrOutput() CxVersionPtrOutput {
-	return o.ToCxVersionPtrOutputWithContext(context.Background())
-}
-
-func (o CxVersionOutput) ToCxVersionPtrOutputWithContext(ctx context.Context) CxVersionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxVersion) *CxVersion {
-		return &v
-	}).(CxVersionPtrOutput)
-}
-
-type CxVersionPtrOutput struct{ *pulumi.OutputState }
-
-func (CxVersionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CxVersion)(nil))
-}
-
-func (o CxVersionPtrOutput) ToCxVersionPtrOutput() CxVersionPtrOutput {
-	return o
-}
-
-func (o CxVersionPtrOutput) ToCxVersionPtrOutputWithContext(ctx context.Context) CxVersionPtrOutput {
-	return o
-}
-
-func (o CxVersionPtrOutput) Elem() CxVersionOutput {
-	return o.ApplyT(func(v *CxVersion) CxVersion {
-		if v != nil {
-			return *v
-		}
-		var ret CxVersion
-		return ret
-	}).(CxVersionOutput)
-}
-
 type CxVersionArrayOutput struct{ *pulumi.OutputState }
 
 func (CxVersionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CxVersion)(nil))
+	return reflect.TypeOf((*[]*CxVersion)(nil)).Elem()
 }
 
 func (o CxVersionArrayOutput) ToCxVersionArrayOutput() CxVersionArrayOutput {
@@ -364,15 +301,15 @@ func (o CxVersionArrayOutput) ToCxVersionArrayOutputWithContext(ctx context.Cont
 }
 
 func (o CxVersionArrayOutput) Index(i pulumi.IntInput) CxVersionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxVersion {
-		return vs[0].([]CxVersion)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CxVersion {
+		return vs[0].([]*CxVersion)[vs[1].(int)]
 	}).(CxVersionOutput)
 }
 
 type CxVersionMapOutput struct{ *pulumi.OutputState }
 
 func (CxVersionMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]CxVersion)(nil))
+	return reflect.TypeOf((*map[string]*CxVersion)(nil)).Elem()
 }
 
 func (o CxVersionMapOutput) ToCxVersionMapOutput() CxVersionMapOutput {
@@ -384,18 +321,16 @@ func (o CxVersionMapOutput) ToCxVersionMapOutputWithContext(ctx context.Context)
 }
 
 func (o CxVersionMapOutput) MapIndex(k pulumi.StringInput) CxVersionOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CxVersion {
-		return vs[0].(map[string]CxVersion)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *CxVersion {
+		return vs[0].(map[string]*CxVersion)[vs[1].(string)]
 	}).(CxVersionOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CxVersionInput)(nil)).Elem(), &CxVersion{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CxVersionPtrInput)(nil)).Elem(), &CxVersion{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxVersionArrayInput)(nil)).Elem(), CxVersionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxVersionMapInput)(nil)).Elem(), CxVersionMap{})
 	pulumi.RegisterOutputType(CxVersionOutput{})
-	pulumi.RegisterOutputType(CxVersionPtrOutput{})
 	pulumi.RegisterOutputType(CxVersionArrayOutput{})
 	pulumi.RegisterOutputType(CxVersionMapOutput{})
 }

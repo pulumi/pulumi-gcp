@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Container
 {
@@ -44,7 +43,7 @@ namespace Pulumi.Gcp.Container
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRegistryImageResult> InvokeAsync(GetRegistryImageArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegistryImageResult>("gcp:container/getRegistryImage:getRegistryImage", args ?? new GetRegistryImageArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRegistryImageResult>("gcp:container/getRegistryImage:getRegistryImage", args ?? new GetRegistryImageArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
@@ -78,7 +77,7 @@ namespace Pulumi.Gcp.Container
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetRegistryImageResult> Invoke(GetRegistryImageInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRegistryImageResult>("gcp:container/getRegistryImage:getRegistryImage", args ?? new GetRegistryImageInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetRegistryImageResult>("gcp:container/getRegistryImage:getRegistryImage", args ?? new GetRegistryImageInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := dataproc.NewMetastoreService(ctx, "_default", &dataproc.MetastoreServiceArgs{
+// 		_, err := dataproc.NewMetastoreService(ctx, "default", &dataproc.MetastoreServiceArgs{
 // 			ServiceId: pulumi.String("metastore-srv"),
 // 			Location:  pulumi.String("us-central1"),
 // 			Port:      pulumi.Int(9080),
@@ -292,7 +292,7 @@ type MetastoreServiceInput interface {
 }
 
 func (*MetastoreService) ElementType() reflect.Type {
-	return reflect.TypeOf((*MetastoreService)(nil))
+	return reflect.TypeOf((**MetastoreService)(nil)).Elem()
 }
 
 func (i *MetastoreService) ToMetastoreServiceOutput() MetastoreServiceOutput {
@@ -301,35 +301,6 @@ func (i *MetastoreService) ToMetastoreServiceOutput() MetastoreServiceOutput {
 
 func (i *MetastoreService) ToMetastoreServiceOutputWithContext(ctx context.Context) MetastoreServiceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceOutput)
-}
-
-func (i *MetastoreService) ToMetastoreServicePtrOutput() MetastoreServicePtrOutput {
-	return i.ToMetastoreServicePtrOutputWithContext(context.Background())
-}
-
-func (i *MetastoreService) ToMetastoreServicePtrOutputWithContext(ctx context.Context) MetastoreServicePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServicePtrOutput)
-}
-
-type MetastoreServicePtrInput interface {
-	pulumi.Input
-
-	ToMetastoreServicePtrOutput() MetastoreServicePtrOutput
-	ToMetastoreServicePtrOutputWithContext(ctx context.Context) MetastoreServicePtrOutput
-}
-
-type metastoreServicePtrType MetastoreServiceArgs
-
-func (*metastoreServicePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MetastoreService)(nil))
-}
-
-func (i *metastoreServicePtrType) ToMetastoreServicePtrOutput() MetastoreServicePtrOutput {
-	return i.ToMetastoreServicePtrOutputWithContext(context.Background())
-}
-
-func (i *metastoreServicePtrType) ToMetastoreServicePtrOutputWithContext(ctx context.Context) MetastoreServicePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServicePtrOutput)
 }
 
 // MetastoreServiceArrayInput is an input type that accepts MetastoreServiceArray and MetastoreServiceArrayOutput values.
@@ -385,7 +356,7 @@ func (i MetastoreServiceMap) ToMetastoreServiceMapOutputWithContext(ctx context.
 type MetastoreServiceOutput struct{ *pulumi.OutputState }
 
 func (MetastoreServiceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MetastoreService)(nil))
+	return reflect.TypeOf((**MetastoreService)(nil)).Elem()
 }
 
 func (o MetastoreServiceOutput) ToMetastoreServiceOutput() MetastoreServiceOutput {
@@ -396,44 +367,10 @@ func (o MetastoreServiceOutput) ToMetastoreServiceOutputWithContext(ctx context.
 	return o
 }
 
-func (o MetastoreServiceOutput) ToMetastoreServicePtrOutput() MetastoreServicePtrOutput {
-	return o.ToMetastoreServicePtrOutputWithContext(context.Background())
-}
-
-func (o MetastoreServiceOutput) ToMetastoreServicePtrOutputWithContext(ctx context.Context) MetastoreServicePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetastoreService) *MetastoreService {
-		return &v
-	}).(MetastoreServicePtrOutput)
-}
-
-type MetastoreServicePtrOutput struct{ *pulumi.OutputState }
-
-func (MetastoreServicePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MetastoreService)(nil))
-}
-
-func (o MetastoreServicePtrOutput) ToMetastoreServicePtrOutput() MetastoreServicePtrOutput {
-	return o
-}
-
-func (o MetastoreServicePtrOutput) ToMetastoreServicePtrOutputWithContext(ctx context.Context) MetastoreServicePtrOutput {
-	return o
-}
-
-func (o MetastoreServicePtrOutput) Elem() MetastoreServiceOutput {
-	return o.ApplyT(func(v *MetastoreService) MetastoreService {
-		if v != nil {
-			return *v
-		}
-		var ret MetastoreService
-		return ret
-	}).(MetastoreServiceOutput)
-}
-
 type MetastoreServiceArrayOutput struct{ *pulumi.OutputState }
 
 func (MetastoreServiceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MetastoreService)(nil))
+	return reflect.TypeOf((*[]*MetastoreService)(nil)).Elem()
 }
 
 func (o MetastoreServiceArrayOutput) ToMetastoreServiceArrayOutput() MetastoreServiceArrayOutput {
@@ -445,15 +382,15 @@ func (o MetastoreServiceArrayOutput) ToMetastoreServiceArrayOutputWithContext(ct
 }
 
 func (o MetastoreServiceArrayOutput) Index(i pulumi.IntInput) MetastoreServiceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MetastoreService {
-		return vs[0].([]MetastoreService)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MetastoreService {
+		return vs[0].([]*MetastoreService)[vs[1].(int)]
 	}).(MetastoreServiceOutput)
 }
 
 type MetastoreServiceMapOutput struct{ *pulumi.OutputState }
 
 func (MetastoreServiceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]MetastoreService)(nil))
+	return reflect.TypeOf((*map[string]*MetastoreService)(nil)).Elem()
 }
 
 func (o MetastoreServiceMapOutput) ToMetastoreServiceMapOutput() MetastoreServiceMapOutput {
@@ -465,18 +402,16 @@ func (o MetastoreServiceMapOutput) ToMetastoreServiceMapOutputWithContext(ctx co
 }
 
 func (o MetastoreServiceMapOutput) MapIndex(k pulumi.StringInput) MetastoreServiceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MetastoreService {
-		return vs[0].(map[string]MetastoreService)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *MetastoreService {
+		return vs[0].(map[string]*MetastoreService)[vs[1].(string)]
 	}).(MetastoreServiceOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceInput)(nil)).Elem(), &MetastoreService{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServicePtrInput)(nil)).Elem(), &MetastoreService{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceArrayInput)(nil)).Elem(), MetastoreServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceMapInput)(nil)).Elem(), MetastoreServiceMap{})
 	pulumi.RegisterOutputType(MetastoreServiceOutput{})
-	pulumi.RegisterOutputType(MetastoreServicePtrOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceArrayOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceMapOutput{})
 }

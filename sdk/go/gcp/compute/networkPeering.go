@@ -33,7 +33,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewNetwork(ctx, "_default", &compute.NetworkArgs{
+// 		_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
 // 			AutoCreateSubnetworks: pulumi.Bool(false),
 // 		})
 // 		if err != nil {
@@ -229,7 +229,7 @@ type NetworkPeeringInput interface {
 }
 
 func (*NetworkPeering) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkPeering)(nil))
+	return reflect.TypeOf((**NetworkPeering)(nil)).Elem()
 }
 
 func (i *NetworkPeering) ToNetworkPeeringOutput() NetworkPeeringOutput {
@@ -238,35 +238,6 @@ func (i *NetworkPeering) ToNetworkPeeringOutput() NetworkPeeringOutput {
 
 func (i *NetworkPeering) ToNetworkPeeringOutputWithContext(ctx context.Context) NetworkPeeringOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkPeeringOutput)
-}
-
-func (i *NetworkPeering) ToNetworkPeeringPtrOutput() NetworkPeeringPtrOutput {
-	return i.ToNetworkPeeringPtrOutputWithContext(context.Background())
-}
-
-func (i *NetworkPeering) ToNetworkPeeringPtrOutputWithContext(ctx context.Context) NetworkPeeringPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkPeeringPtrOutput)
-}
-
-type NetworkPeeringPtrInput interface {
-	pulumi.Input
-
-	ToNetworkPeeringPtrOutput() NetworkPeeringPtrOutput
-	ToNetworkPeeringPtrOutputWithContext(ctx context.Context) NetworkPeeringPtrOutput
-}
-
-type networkPeeringPtrType NetworkPeeringArgs
-
-func (*networkPeeringPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NetworkPeering)(nil))
-}
-
-func (i *networkPeeringPtrType) ToNetworkPeeringPtrOutput() NetworkPeeringPtrOutput {
-	return i.ToNetworkPeeringPtrOutputWithContext(context.Background())
-}
-
-func (i *networkPeeringPtrType) ToNetworkPeeringPtrOutputWithContext(ctx context.Context) NetworkPeeringPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkPeeringPtrOutput)
 }
 
 // NetworkPeeringArrayInput is an input type that accepts NetworkPeeringArray and NetworkPeeringArrayOutput values.
@@ -322,7 +293,7 @@ func (i NetworkPeeringMap) ToNetworkPeeringMapOutputWithContext(ctx context.Cont
 type NetworkPeeringOutput struct{ *pulumi.OutputState }
 
 func (NetworkPeeringOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkPeering)(nil))
+	return reflect.TypeOf((**NetworkPeering)(nil)).Elem()
 }
 
 func (o NetworkPeeringOutput) ToNetworkPeeringOutput() NetworkPeeringOutput {
@@ -333,44 +304,10 @@ func (o NetworkPeeringOutput) ToNetworkPeeringOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o NetworkPeeringOutput) ToNetworkPeeringPtrOutput() NetworkPeeringPtrOutput {
-	return o.ToNetworkPeeringPtrOutputWithContext(context.Background())
-}
-
-func (o NetworkPeeringOutput) ToNetworkPeeringPtrOutputWithContext(ctx context.Context) NetworkPeeringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkPeering) *NetworkPeering {
-		return &v
-	}).(NetworkPeeringPtrOutput)
-}
-
-type NetworkPeeringPtrOutput struct{ *pulumi.OutputState }
-
-func (NetworkPeeringPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NetworkPeering)(nil))
-}
-
-func (o NetworkPeeringPtrOutput) ToNetworkPeeringPtrOutput() NetworkPeeringPtrOutput {
-	return o
-}
-
-func (o NetworkPeeringPtrOutput) ToNetworkPeeringPtrOutputWithContext(ctx context.Context) NetworkPeeringPtrOutput {
-	return o
-}
-
-func (o NetworkPeeringPtrOutput) Elem() NetworkPeeringOutput {
-	return o.ApplyT(func(v *NetworkPeering) NetworkPeering {
-		if v != nil {
-			return *v
-		}
-		var ret NetworkPeering
-		return ret
-	}).(NetworkPeeringOutput)
-}
-
 type NetworkPeeringArrayOutput struct{ *pulumi.OutputState }
 
 func (NetworkPeeringArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NetworkPeering)(nil))
+	return reflect.TypeOf((*[]*NetworkPeering)(nil)).Elem()
 }
 
 func (o NetworkPeeringArrayOutput) ToNetworkPeeringArrayOutput() NetworkPeeringArrayOutput {
@@ -382,15 +319,15 @@ func (o NetworkPeeringArrayOutput) ToNetworkPeeringArrayOutputWithContext(ctx co
 }
 
 func (o NetworkPeeringArrayOutput) Index(i pulumi.IntInput) NetworkPeeringOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkPeering {
-		return vs[0].([]NetworkPeering)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NetworkPeering {
+		return vs[0].([]*NetworkPeering)[vs[1].(int)]
 	}).(NetworkPeeringOutput)
 }
 
 type NetworkPeeringMapOutput struct{ *pulumi.OutputState }
 
 func (NetworkPeeringMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]NetworkPeering)(nil))
+	return reflect.TypeOf((*map[string]*NetworkPeering)(nil)).Elem()
 }
 
 func (o NetworkPeeringMapOutput) ToNetworkPeeringMapOutput() NetworkPeeringMapOutput {
@@ -402,18 +339,16 @@ func (o NetworkPeeringMapOutput) ToNetworkPeeringMapOutputWithContext(ctx contex
 }
 
 func (o NetworkPeeringMapOutput) MapIndex(k pulumi.StringInput) NetworkPeeringOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NetworkPeering {
-		return vs[0].(map[string]NetworkPeering)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *NetworkPeering {
+		return vs[0].(map[string]*NetworkPeering)[vs[1].(string)]
 	}).(NetworkPeeringOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPeeringInput)(nil)).Elem(), &NetworkPeering{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPeeringPtrInput)(nil)).Elem(), &NetworkPeering{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPeeringArrayInput)(nil)).Elem(), NetworkPeeringArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPeeringMapInput)(nil)).Elem(), NetworkPeeringMap{})
 	pulumi.RegisterOutputType(NetworkPeeringOutput{})
-	pulumi.RegisterOutputType(NetworkPeeringPtrOutput{})
 	pulumi.RegisterOutputType(NetworkPeeringArrayOutput{})
 	pulumi.RegisterOutputType(NetworkPeeringMapOutput{})
 }

@@ -94,15 +94,15 @@ export class Brand extends pulumi.CustomResource {
      */
     constructor(name: string, args: BrandArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BrandArgs | BrandState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BrandState | undefined;
-            inputs["applicationTitle"] = state ? state.applicationTitle : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["orgInternalOnly"] = state ? state.orgInternalOnly : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["supportEmail"] = state ? state.supportEmail : undefined;
+            resourceInputs["applicationTitle"] = state ? state.applicationTitle : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["orgInternalOnly"] = state ? state.orgInternalOnly : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["supportEmail"] = state ? state.supportEmail : undefined;
         } else {
             const args = argsOrState as BrandArgs | undefined;
             if ((!args || args.applicationTitle === undefined) && !opts.urn) {
@@ -111,16 +111,14 @@ export class Brand extends pulumi.CustomResource {
             if ((!args || args.supportEmail === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'supportEmail'");
             }
-            inputs["applicationTitle"] = args ? args.applicationTitle : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["supportEmail"] = args ? args.supportEmail : undefined;
-            inputs["name"] = undefined /*out*/;
-            inputs["orgInternalOnly"] = undefined /*out*/;
+            resourceInputs["applicationTitle"] = args ? args.applicationTitle : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["supportEmail"] = args ? args.supportEmail : undefined;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["orgInternalOnly"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Brand.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Brand.__pulumiType, name, resourceInputs, opts);
     }
 }
 

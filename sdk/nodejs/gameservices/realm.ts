@@ -118,18 +118,18 @@ export class Realm extends pulumi.CustomResource {
      */
     constructor(name: string, args: RealmArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RealmArgs | RealmState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RealmState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["realmId"] = state ? state.realmId : undefined;
-            inputs["timeZone"] = state ? state.timeZone : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["realmId"] = state ? state.realmId : undefined;
+            resourceInputs["timeZone"] = state ? state.timeZone : undefined;
         } else {
             const args = argsOrState as RealmArgs | undefined;
             if ((!args || args.realmId === undefined) && !opts.urn) {
@@ -138,19 +138,17 @@ export class Realm extends pulumi.CustomResource {
             if ((!args || args.timeZone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'timeZone'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["realmId"] = args ? args.realmId : undefined;
-            inputs["timeZone"] = args ? args.timeZone : undefined;
-            inputs["etag"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["realmId"] = args ? args.realmId : undefined;
+            resourceInputs["timeZone"] = args ? args.timeZone : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Realm.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Realm.__pulumiType, name, resourceInputs, opts);
     }
 }
 

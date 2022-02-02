@@ -6,17 +6,16 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.RuntimeConfig
 {
     public static class GetConfig
     {
         public static Task<GetConfigResult> InvokeAsync(GetConfigArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetConfigResult>("gcp:runtimeconfig/getConfig:getConfig", args ?? new GetConfigArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetConfigResult>("gcp:runtimeconfig/getConfig:getConfig", args ?? new GetConfigArgs(), options.WithDefaults());
 
         public static Output<GetConfigResult> Invoke(GetConfigInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetConfigResult>("gcp:runtimeconfig/getConfig:getConfig", args ?? new GetConfigInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetConfigResult>("gcp:runtimeconfig/getConfig:getConfig", args ?? new GetConfigInvokeArgs(), options.WithDefaults());
     }
 
 

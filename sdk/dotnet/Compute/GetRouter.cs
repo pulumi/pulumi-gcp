@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Compute
 {
@@ -40,7 +39,7 @@ namespace Pulumi.Gcp.Compute
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRouterResult> InvokeAsync(GetRouterArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRouterResult>("gcp:compute/getRouter:getRouter", args ?? new GetRouterArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRouterResult>("gcp:compute/getRouter:getRouter", args ?? new GetRouterArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get a router within GCE from its name and VPC.
@@ -70,7 +69,7 @@ namespace Pulumi.Gcp.Compute
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetRouterResult> Invoke(GetRouterInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRouterResult>("gcp:compute/getRouter:getRouter", args ?? new GetRouterInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetRouterResult>("gcp:compute/getRouter:getRouter", args ?? new GetRouterInvokeArgs(), options.WithDefaults());
     }
 
 

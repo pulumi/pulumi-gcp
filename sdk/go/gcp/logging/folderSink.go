@@ -33,20 +33,20 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := storage.NewBucket(ctx, "log_bucket", &storage.BucketArgs{
+// 		_, err := storage.NewBucket(ctx, "log-bucket", &storage.BucketArgs{
 // 			Location: pulumi.String("US"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = organizations.NewFolder(ctx, "my_folder", &organizations.FolderArgs{
+// 		_, err = organizations.NewFolder(ctx, "my-folder", &organizations.FolderArgs{
 // 			DisplayName: pulumi.String("My folder"),
 // 			Parent:      pulumi.String("organizations/123456"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = logging.NewFolderSink(ctx, "my_sink", &logging.FolderSinkArgs{
+// 		_, err = logging.NewFolderSink(ctx, "my-sink", &logging.FolderSinkArgs{
 // 			Description: pulumi.String("some explanation on what this is"),
 // 			Folder:      my_folder.Name,
 // 			Destination: log_bucket.Name.ApplyT(func(name string) (string, error) {
@@ -57,7 +57,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = projects.NewIAMBinding(ctx, "log_writer", &projects.IAMBindingArgs{
+// 		_, err = projects.NewIAMBinding(ctx, "log-writer", &projects.IAMBindingArgs{
 // 			Project: pulumi.String("your-project-id"),
 // 			Role:    pulumi.String("roles/storage.objectCreator"),
 // 			Members: pulumi.StringArray{
@@ -336,7 +336,7 @@ type FolderSinkInput interface {
 }
 
 func (*FolderSink) ElementType() reflect.Type {
-	return reflect.TypeOf((*FolderSink)(nil))
+	return reflect.TypeOf((**FolderSink)(nil)).Elem()
 }
 
 func (i *FolderSink) ToFolderSinkOutput() FolderSinkOutput {
@@ -345,35 +345,6 @@ func (i *FolderSink) ToFolderSinkOutput() FolderSinkOutput {
 
 func (i *FolderSink) ToFolderSinkOutputWithContext(ctx context.Context) FolderSinkOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FolderSinkOutput)
-}
-
-func (i *FolderSink) ToFolderSinkPtrOutput() FolderSinkPtrOutput {
-	return i.ToFolderSinkPtrOutputWithContext(context.Background())
-}
-
-func (i *FolderSink) ToFolderSinkPtrOutputWithContext(ctx context.Context) FolderSinkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FolderSinkPtrOutput)
-}
-
-type FolderSinkPtrInput interface {
-	pulumi.Input
-
-	ToFolderSinkPtrOutput() FolderSinkPtrOutput
-	ToFolderSinkPtrOutputWithContext(ctx context.Context) FolderSinkPtrOutput
-}
-
-type folderSinkPtrType FolderSinkArgs
-
-func (*folderSinkPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FolderSink)(nil))
-}
-
-func (i *folderSinkPtrType) ToFolderSinkPtrOutput() FolderSinkPtrOutput {
-	return i.ToFolderSinkPtrOutputWithContext(context.Background())
-}
-
-func (i *folderSinkPtrType) ToFolderSinkPtrOutputWithContext(ctx context.Context) FolderSinkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FolderSinkPtrOutput)
 }
 
 // FolderSinkArrayInput is an input type that accepts FolderSinkArray and FolderSinkArrayOutput values.
@@ -429,7 +400,7 @@ func (i FolderSinkMap) ToFolderSinkMapOutputWithContext(ctx context.Context) Fol
 type FolderSinkOutput struct{ *pulumi.OutputState }
 
 func (FolderSinkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FolderSink)(nil))
+	return reflect.TypeOf((**FolderSink)(nil)).Elem()
 }
 
 func (o FolderSinkOutput) ToFolderSinkOutput() FolderSinkOutput {
@@ -440,44 +411,10 @@ func (o FolderSinkOutput) ToFolderSinkOutputWithContext(ctx context.Context) Fol
 	return o
 }
 
-func (o FolderSinkOutput) ToFolderSinkPtrOutput() FolderSinkPtrOutput {
-	return o.ToFolderSinkPtrOutputWithContext(context.Background())
-}
-
-func (o FolderSinkOutput) ToFolderSinkPtrOutputWithContext(ctx context.Context) FolderSinkPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FolderSink) *FolderSink {
-		return &v
-	}).(FolderSinkPtrOutput)
-}
-
-type FolderSinkPtrOutput struct{ *pulumi.OutputState }
-
-func (FolderSinkPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FolderSink)(nil))
-}
-
-func (o FolderSinkPtrOutput) ToFolderSinkPtrOutput() FolderSinkPtrOutput {
-	return o
-}
-
-func (o FolderSinkPtrOutput) ToFolderSinkPtrOutputWithContext(ctx context.Context) FolderSinkPtrOutput {
-	return o
-}
-
-func (o FolderSinkPtrOutput) Elem() FolderSinkOutput {
-	return o.ApplyT(func(v *FolderSink) FolderSink {
-		if v != nil {
-			return *v
-		}
-		var ret FolderSink
-		return ret
-	}).(FolderSinkOutput)
-}
-
 type FolderSinkArrayOutput struct{ *pulumi.OutputState }
 
 func (FolderSinkArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FolderSink)(nil))
+	return reflect.TypeOf((*[]*FolderSink)(nil)).Elem()
 }
 
 func (o FolderSinkArrayOutput) ToFolderSinkArrayOutput() FolderSinkArrayOutput {
@@ -489,15 +426,15 @@ func (o FolderSinkArrayOutput) ToFolderSinkArrayOutputWithContext(ctx context.Co
 }
 
 func (o FolderSinkArrayOutput) Index(i pulumi.IntInput) FolderSinkOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FolderSink {
-		return vs[0].([]FolderSink)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FolderSink {
+		return vs[0].([]*FolderSink)[vs[1].(int)]
 	}).(FolderSinkOutput)
 }
 
 type FolderSinkMapOutput struct{ *pulumi.OutputState }
 
 func (FolderSinkMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]FolderSink)(nil))
+	return reflect.TypeOf((*map[string]*FolderSink)(nil)).Elem()
 }
 
 func (o FolderSinkMapOutput) ToFolderSinkMapOutput() FolderSinkMapOutput {
@@ -509,18 +446,16 @@ func (o FolderSinkMapOutput) ToFolderSinkMapOutputWithContext(ctx context.Contex
 }
 
 func (o FolderSinkMapOutput) MapIndex(k pulumi.StringInput) FolderSinkOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) FolderSink {
-		return vs[0].(map[string]FolderSink)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *FolderSink {
+		return vs[0].(map[string]*FolderSink)[vs[1].(string)]
 	}).(FolderSinkOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FolderSinkInput)(nil)).Elem(), &FolderSink{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FolderSinkPtrInput)(nil)).Elem(), &FolderSink{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FolderSinkArrayInput)(nil)).Elem(), FolderSinkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FolderSinkMapInput)(nil)).Elem(), FolderSinkMap{})
 	pulumi.RegisterOutputType(FolderSinkOutput{})
-	pulumi.RegisterOutputType(FolderSinkPtrOutput{})
 	pulumi.RegisterOutputType(FolderSinkArrayOutput{})
 	pulumi.RegisterOutputType(FolderSinkMapOutput{})
 }

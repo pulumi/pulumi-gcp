@@ -207,38 +207,36 @@ export class Runtime extends pulumi.CustomResource {
      */
     constructor(name: string, args: RuntimeArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RuntimeArgs | RuntimeState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RuntimeState | undefined;
-            inputs["accessConfig"] = state ? state.accessConfig : undefined;
-            inputs["healthState"] = state ? state.healthState : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["metrics"] = state ? state.metrics : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["softwareConfig"] = state ? state.softwareConfig : undefined;
-            inputs["state"] = state ? state.state : undefined;
-            inputs["virtualMachine"] = state ? state.virtualMachine : undefined;
+            resourceInputs["accessConfig"] = state ? state.accessConfig : undefined;
+            resourceInputs["healthState"] = state ? state.healthState : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["metrics"] = state ? state.metrics : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["softwareConfig"] = state ? state.softwareConfig : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["virtualMachine"] = state ? state.virtualMachine : undefined;
         } else {
             const args = argsOrState as RuntimeArgs | undefined;
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            inputs["accessConfig"] = args ? args.accessConfig : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["softwareConfig"] = args ? args.softwareConfig : undefined;
-            inputs["virtualMachine"] = args ? args.virtualMachine : undefined;
-            inputs["healthState"] = undefined /*out*/;
-            inputs["metrics"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["accessConfig"] = args ? args.accessConfig : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["softwareConfig"] = args ? args.softwareConfig : undefined;
+            resourceInputs["virtualMachine"] = args ? args.virtualMachine : undefined;
+            resourceInputs["healthState"] = undefined /*out*/;
+            resourceInputs["metrics"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Runtime.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Runtime.__pulumiType, name, resourceInputs, opts);
     }
 }
 

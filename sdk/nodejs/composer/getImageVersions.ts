@@ -31,9 +31,7 @@ export function getImageVersions(args?: GetImageVersionsArgs, opts?: pulumi.Invo
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:composer/getImageVersions:getImageVersions", {
         "project": args.project,
         "region": args.region,

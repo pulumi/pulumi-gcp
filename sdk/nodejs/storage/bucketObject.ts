@@ -159,62 +159,60 @@ export class BucketObject extends pulumi.CustomResource {
      */
     constructor(name: string, args: BucketObjectArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BucketObjectArgs | BucketObjectState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BucketObjectState | undefined;
-            inputs["bucket"] = state ? state.bucket : undefined;
-            inputs["cacheControl"] = state ? state.cacheControl : undefined;
-            inputs["content"] = state ? state.content : undefined;
-            inputs["contentDisposition"] = state ? state.contentDisposition : undefined;
-            inputs["contentEncoding"] = state ? state.contentEncoding : undefined;
-            inputs["contentLanguage"] = state ? state.contentLanguage : undefined;
-            inputs["contentType"] = state ? state.contentType : undefined;
-            inputs["crc32c"] = state ? state.crc32c : undefined;
-            inputs["customerEncryption"] = state ? state.customerEncryption : undefined;
-            inputs["detectMd5hash"] = state ? state.detectMd5hash : undefined;
-            inputs["eventBasedHold"] = state ? state.eventBasedHold : undefined;
-            inputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
-            inputs["md5hash"] = state ? state.md5hash : undefined;
-            inputs["mediaLink"] = state ? state.mediaLink : undefined;
-            inputs["metadata"] = state ? state.metadata : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["outputName"] = state ? state.outputName : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
-            inputs["source"] = state ? state.source : undefined;
-            inputs["storageClass"] = state ? state.storageClass : undefined;
-            inputs["temporaryHold"] = state ? state.temporaryHold : undefined;
+            resourceInputs["bucket"] = state ? state.bucket : undefined;
+            resourceInputs["cacheControl"] = state ? state.cacheControl : undefined;
+            resourceInputs["content"] = state ? state.content : undefined;
+            resourceInputs["contentDisposition"] = state ? state.contentDisposition : undefined;
+            resourceInputs["contentEncoding"] = state ? state.contentEncoding : undefined;
+            resourceInputs["contentLanguage"] = state ? state.contentLanguage : undefined;
+            resourceInputs["contentType"] = state ? state.contentType : undefined;
+            resourceInputs["crc32c"] = state ? state.crc32c : undefined;
+            resourceInputs["customerEncryption"] = state ? state.customerEncryption : undefined;
+            resourceInputs["detectMd5hash"] = state ? state.detectMd5hash : undefined;
+            resourceInputs["eventBasedHold"] = state ? state.eventBasedHold : undefined;
+            resourceInputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
+            resourceInputs["md5hash"] = state ? state.md5hash : undefined;
+            resourceInputs["mediaLink"] = state ? state.mediaLink : undefined;
+            resourceInputs["metadata"] = state ? state.metadata : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["outputName"] = state ? state.outputName : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["source"] = state ? state.source : undefined;
+            resourceInputs["storageClass"] = state ? state.storageClass : undefined;
+            resourceInputs["temporaryHold"] = state ? state.temporaryHold : undefined;
         } else {
             const args = argsOrState as BucketObjectArgs | undefined;
             if ((!args || args.bucket === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            inputs["bucket"] = args ? args.bucket : undefined;
-            inputs["cacheControl"] = args ? args.cacheControl : undefined;
-            inputs["content"] = args ? args.content : undefined;
-            inputs["contentDisposition"] = args ? args.contentDisposition : undefined;
-            inputs["contentEncoding"] = args ? args.contentEncoding : undefined;
-            inputs["contentLanguage"] = args ? args.contentLanguage : undefined;
-            inputs["contentType"] = args ? args.contentType : undefined;
-            inputs["customerEncryption"] = args ? args.customerEncryption : undefined;
-            inputs["detectMd5hash"] = args ? args.detectMd5hash : undefined;
-            inputs["eventBasedHold"] = args ? args.eventBasedHold : undefined;
-            inputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
-            inputs["metadata"] = args ? args.metadata : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["source"] = args ? args.source : undefined;
-            inputs["storageClass"] = args ? args.storageClass : undefined;
-            inputs["temporaryHold"] = args ? args.temporaryHold : undefined;
-            inputs["crc32c"] = undefined /*out*/;
-            inputs["md5hash"] = undefined /*out*/;
-            inputs["mediaLink"] = undefined /*out*/;
-            inputs["outputName"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["bucket"] = args ? args.bucket : undefined;
+            resourceInputs["cacheControl"] = args ? args.cacheControl : undefined;
+            resourceInputs["content"] = args ? args.content : undefined;
+            resourceInputs["contentDisposition"] = args ? args.contentDisposition : undefined;
+            resourceInputs["contentEncoding"] = args ? args.contentEncoding : undefined;
+            resourceInputs["contentLanguage"] = args ? args.contentLanguage : undefined;
+            resourceInputs["contentType"] = args ? args.contentType : undefined;
+            resourceInputs["customerEncryption"] = args ? args.customerEncryption : undefined;
+            resourceInputs["detectMd5hash"] = args ? args.detectMd5hash : undefined;
+            resourceInputs["eventBasedHold"] = args ? args.eventBasedHold : undefined;
+            resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
+            resourceInputs["metadata"] = args ? args.metadata : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["source"] = args ? args.source : undefined;
+            resourceInputs["storageClass"] = args ? args.storageClass : undefined;
+            resourceInputs["temporaryHold"] = args ? args.temporaryHold : undefined;
+            resourceInputs["crc32c"] = undefined /*out*/;
+            resourceInputs["md5hash"] = undefined /*out*/;
+            resourceInputs["mediaLink"] = undefined /*out*/;
+            resourceInputs["outputName"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(BucketObject.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(BucketObject.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -121,17 +121,17 @@ export class NotificationConfig extends pulumi.CustomResource {
      */
     constructor(name: string, args: NotificationConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NotificationConfigArgs | NotificationConfigState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NotificationConfigState | undefined;
-            inputs["configId"] = state ? state.configId : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["organization"] = state ? state.organization : undefined;
-            inputs["pubsubTopic"] = state ? state.pubsubTopic : undefined;
-            inputs["serviceAccount"] = state ? state.serviceAccount : undefined;
-            inputs["streamingConfig"] = state ? state.streamingConfig : undefined;
+            resourceInputs["configId"] = state ? state.configId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["organization"] = state ? state.organization : undefined;
+            resourceInputs["pubsubTopic"] = state ? state.pubsubTopic : undefined;
+            resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
+            resourceInputs["streamingConfig"] = state ? state.streamingConfig : undefined;
         } else {
             const args = argsOrState as NotificationConfigArgs | undefined;
             if ((!args || args.configId === undefined) && !opts.urn) {
@@ -146,18 +146,16 @@ export class NotificationConfig extends pulumi.CustomResource {
             if ((!args || args.streamingConfig === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'streamingConfig'");
             }
-            inputs["configId"] = args ? args.configId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["organization"] = args ? args.organization : undefined;
-            inputs["pubsubTopic"] = args ? args.pubsubTopic : undefined;
-            inputs["streamingConfig"] = args ? args.streamingConfig : undefined;
-            inputs["name"] = undefined /*out*/;
-            inputs["serviceAccount"] = undefined /*out*/;
+            resourceInputs["configId"] = args ? args.configId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["organization"] = args ? args.organization : undefined;
+            resourceInputs["pubsubTopic"] = args ? args.pubsubTopic : undefined;
+            resourceInputs["streamingConfig"] = args ? args.streamingConfig : undefined;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["serviceAccount"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(NotificationConfig.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(NotificationConfig.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -58,7 +58,7 @@ import * as utilities from "../utilities";
  *         ],
  *     },
  * });
- * const serial = pulumi.all([windows.name, windows.zone]).apply(([name, zone]) => gcp.compute.getInstanceSerialPort({
+ * const serial = pulumi.all([windows.name, windows.zone]).apply(([name, zone]) => gcp.compute.getInstanceSerialPortOutput({
  *     instance: name,
  *     zone: zone,
  *     port: 4,
@@ -71,9 +71,7 @@ export function getInstanceSerialPort(args: GetInstanceSerialPortArgs, opts?: pu
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:compute/getInstanceSerialPort:getInstanceSerialPort", {
         "instance": args.instance,
         "port": args.port,

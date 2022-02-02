@@ -215,17 +215,17 @@ export class CaPool extends pulumi.CustomResource {
      */
     constructor(name: string, args: CaPoolArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CaPoolArgs | CaPoolState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CaPoolState | undefined;
-            inputs["issuancePolicy"] = state ? state.issuancePolicy : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["publishingOptions"] = state ? state.publishingOptions : undefined;
-            inputs["tier"] = state ? state.tier : undefined;
+            resourceInputs["issuancePolicy"] = state ? state.issuancePolicy : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["publishingOptions"] = state ? state.publishingOptions : undefined;
+            resourceInputs["tier"] = state ? state.tier : undefined;
         } else {
             const args = argsOrState as CaPoolArgs | undefined;
             if ((!args || args.location === undefined) && !opts.urn) {
@@ -234,18 +234,16 @@ export class CaPool extends pulumi.CustomResource {
             if ((!args || args.tier === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tier'");
             }
-            inputs["issuancePolicy"] = args ? args.issuancePolicy : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["publishingOptions"] = args ? args.publishingOptions : undefined;
-            inputs["tier"] = args ? args.tier : undefined;
+            resourceInputs["issuancePolicy"] = args ? args.issuancePolicy : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["publishingOptions"] = args ? args.publishingOptions : undefined;
+            resourceInputs["tier"] = args ? args.tier : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CaPool.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CaPool.__pulumiType, name, resourceInputs, opts);
     }
 }
 

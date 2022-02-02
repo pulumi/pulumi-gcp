@@ -342,7 +342,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = compute.NewHaVpnGateway(ctx, "vpn_gateway", &compute.HaVpnGatewayArgs{
+// 		_, err = compute.NewHaVpnGateway(ctx, "vpn-gateway", &compute.HaVpnGatewayArgs{
 // 			Network: network.ID(),
 // 			VpnInterfaces: compute.HaVpnGatewayVpnInterfaceArray{
 // 				&compute.HaVpnGatewayVpnInterfaceArgs{
@@ -553,7 +553,7 @@ type HaVpnGatewayInput interface {
 }
 
 func (*HaVpnGateway) ElementType() reflect.Type {
-	return reflect.TypeOf((*HaVpnGateway)(nil))
+	return reflect.TypeOf((**HaVpnGateway)(nil)).Elem()
 }
 
 func (i *HaVpnGateway) ToHaVpnGatewayOutput() HaVpnGatewayOutput {
@@ -562,35 +562,6 @@ func (i *HaVpnGateway) ToHaVpnGatewayOutput() HaVpnGatewayOutput {
 
 func (i *HaVpnGateway) ToHaVpnGatewayOutputWithContext(ctx context.Context) HaVpnGatewayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HaVpnGatewayOutput)
-}
-
-func (i *HaVpnGateway) ToHaVpnGatewayPtrOutput() HaVpnGatewayPtrOutput {
-	return i.ToHaVpnGatewayPtrOutputWithContext(context.Background())
-}
-
-func (i *HaVpnGateway) ToHaVpnGatewayPtrOutputWithContext(ctx context.Context) HaVpnGatewayPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HaVpnGatewayPtrOutput)
-}
-
-type HaVpnGatewayPtrInput interface {
-	pulumi.Input
-
-	ToHaVpnGatewayPtrOutput() HaVpnGatewayPtrOutput
-	ToHaVpnGatewayPtrOutputWithContext(ctx context.Context) HaVpnGatewayPtrOutput
-}
-
-type haVpnGatewayPtrType HaVpnGatewayArgs
-
-func (*haVpnGatewayPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**HaVpnGateway)(nil))
-}
-
-func (i *haVpnGatewayPtrType) ToHaVpnGatewayPtrOutput() HaVpnGatewayPtrOutput {
-	return i.ToHaVpnGatewayPtrOutputWithContext(context.Background())
-}
-
-func (i *haVpnGatewayPtrType) ToHaVpnGatewayPtrOutputWithContext(ctx context.Context) HaVpnGatewayPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HaVpnGatewayPtrOutput)
 }
 
 // HaVpnGatewayArrayInput is an input type that accepts HaVpnGatewayArray and HaVpnGatewayArrayOutput values.
@@ -646,7 +617,7 @@ func (i HaVpnGatewayMap) ToHaVpnGatewayMapOutputWithContext(ctx context.Context)
 type HaVpnGatewayOutput struct{ *pulumi.OutputState }
 
 func (HaVpnGatewayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HaVpnGateway)(nil))
+	return reflect.TypeOf((**HaVpnGateway)(nil)).Elem()
 }
 
 func (o HaVpnGatewayOutput) ToHaVpnGatewayOutput() HaVpnGatewayOutput {
@@ -657,44 +628,10 @@ func (o HaVpnGatewayOutput) ToHaVpnGatewayOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o HaVpnGatewayOutput) ToHaVpnGatewayPtrOutput() HaVpnGatewayPtrOutput {
-	return o.ToHaVpnGatewayPtrOutputWithContext(context.Background())
-}
-
-func (o HaVpnGatewayOutput) ToHaVpnGatewayPtrOutputWithContext(ctx context.Context) HaVpnGatewayPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v HaVpnGateway) *HaVpnGateway {
-		return &v
-	}).(HaVpnGatewayPtrOutput)
-}
-
-type HaVpnGatewayPtrOutput struct{ *pulumi.OutputState }
-
-func (HaVpnGatewayPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**HaVpnGateway)(nil))
-}
-
-func (o HaVpnGatewayPtrOutput) ToHaVpnGatewayPtrOutput() HaVpnGatewayPtrOutput {
-	return o
-}
-
-func (o HaVpnGatewayPtrOutput) ToHaVpnGatewayPtrOutputWithContext(ctx context.Context) HaVpnGatewayPtrOutput {
-	return o
-}
-
-func (o HaVpnGatewayPtrOutput) Elem() HaVpnGatewayOutput {
-	return o.ApplyT(func(v *HaVpnGateway) HaVpnGateway {
-		if v != nil {
-			return *v
-		}
-		var ret HaVpnGateway
-		return ret
-	}).(HaVpnGatewayOutput)
-}
-
 type HaVpnGatewayArrayOutput struct{ *pulumi.OutputState }
 
 func (HaVpnGatewayArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]HaVpnGateway)(nil))
+	return reflect.TypeOf((*[]*HaVpnGateway)(nil)).Elem()
 }
 
 func (o HaVpnGatewayArrayOutput) ToHaVpnGatewayArrayOutput() HaVpnGatewayArrayOutput {
@@ -706,15 +643,15 @@ func (o HaVpnGatewayArrayOutput) ToHaVpnGatewayArrayOutputWithContext(ctx contex
 }
 
 func (o HaVpnGatewayArrayOutput) Index(i pulumi.IntInput) HaVpnGatewayOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HaVpnGateway {
-		return vs[0].([]HaVpnGateway)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HaVpnGateway {
+		return vs[0].([]*HaVpnGateway)[vs[1].(int)]
 	}).(HaVpnGatewayOutput)
 }
 
 type HaVpnGatewayMapOutput struct{ *pulumi.OutputState }
 
 func (HaVpnGatewayMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]HaVpnGateway)(nil))
+	return reflect.TypeOf((*map[string]*HaVpnGateway)(nil)).Elem()
 }
 
 func (o HaVpnGatewayMapOutput) ToHaVpnGatewayMapOutput() HaVpnGatewayMapOutput {
@@ -726,18 +663,16 @@ func (o HaVpnGatewayMapOutput) ToHaVpnGatewayMapOutputWithContext(ctx context.Co
 }
 
 func (o HaVpnGatewayMapOutput) MapIndex(k pulumi.StringInput) HaVpnGatewayOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) HaVpnGateway {
-		return vs[0].(map[string]HaVpnGateway)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *HaVpnGateway {
+		return vs[0].(map[string]*HaVpnGateway)[vs[1].(string)]
 	}).(HaVpnGatewayOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HaVpnGatewayInput)(nil)).Elem(), &HaVpnGateway{})
-	pulumi.RegisterInputType(reflect.TypeOf((*HaVpnGatewayPtrInput)(nil)).Elem(), &HaVpnGateway{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HaVpnGatewayArrayInput)(nil)).Elem(), HaVpnGatewayArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HaVpnGatewayMapInput)(nil)).Elem(), HaVpnGatewayMap{})
 	pulumi.RegisterOutputType(HaVpnGatewayOutput{})
-	pulumi.RegisterOutputType(HaVpnGatewayPtrOutput{})
 	pulumi.RegisterOutputType(HaVpnGatewayArrayOutput{})
 	pulumi.RegisterOutputType(HaVpnGatewayMapOutput{})
 }

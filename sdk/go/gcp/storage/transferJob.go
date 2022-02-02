@@ -43,7 +43,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = storage.NewBucket(ctx, "s3_backup_bucketBucket", &storage.BucketArgs{
+// 		_, err = storage.NewBucket(ctx, "s3-backup-bucketBucket", &storage.BucketArgs{
 // 			StorageClass: pulumi.String("NEARLINE"),
 // 			Project:      pulumi.Any(_var.Project),
 // 			Location:     pulumi.String("US"),
@@ -51,7 +51,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = storage.NewBucketIAMMember(ctx, "s3_backup_bucketBucketIAMMember", &storage.BucketIAMMemberArgs{
+// 		_, err = storage.NewBucketIAMMember(ctx, "s3-backup-bucketBucketIAMMember", &storage.BucketIAMMemberArgs{
 // 			Bucket: s3_backup_bucketBucket.Name,
 // 			Role:   pulumi.String("roles/storage.admin"),
 // 			Member: pulumi.String(fmt.Sprintf("%v%v", "serviceAccount:", _default.Email)),
@@ -61,7 +61,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = storage.NewTransferJob(ctx, "s3_bucket_nightly_backup", &storage.TransferJobArgs{
+// 		_, err = storage.NewTransferJob(ctx, "s3-bucket-nightly-backup", &storage.TransferJobArgs{
 // 			Description: pulumi.String("Nightly backup of S3 bucket"),
 // 			Project:     pulumi.Any(_var.Project),
 // 			TransferSpec: &storage.TransferJobTransferSpecArgs{
@@ -269,7 +269,7 @@ type TransferJobInput interface {
 }
 
 func (*TransferJob) ElementType() reflect.Type {
-	return reflect.TypeOf((*TransferJob)(nil))
+	return reflect.TypeOf((**TransferJob)(nil)).Elem()
 }
 
 func (i *TransferJob) ToTransferJobOutput() TransferJobOutput {
@@ -278,35 +278,6 @@ func (i *TransferJob) ToTransferJobOutput() TransferJobOutput {
 
 func (i *TransferJob) ToTransferJobOutputWithContext(ctx context.Context) TransferJobOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TransferJobOutput)
-}
-
-func (i *TransferJob) ToTransferJobPtrOutput() TransferJobPtrOutput {
-	return i.ToTransferJobPtrOutputWithContext(context.Background())
-}
-
-func (i *TransferJob) ToTransferJobPtrOutputWithContext(ctx context.Context) TransferJobPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TransferJobPtrOutput)
-}
-
-type TransferJobPtrInput interface {
-	pulumi.Input
-
-	ToTransferJobPtrOutput() TransferJobPtrOutput
-	ToTransferJobPtrOutputWithContext(ctx context.Context) TransferJobPtrOutput
-}
-
-type transferJobPtrType TransferJobArgs
-
-func (*transferJobPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TransferJob)(nil))
-}
-
-func (i *transferJobPtrType) ToTransferJobPtrOutput() TransferJobPtrOutput {
-	return i.ToTransferJobPtrOutputWithContext(context.Background())
-}
-
-func (i *transferJobPtrType) ToTransferJobPtrOutputWithContext(ctx context.Context) TransferJobPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TransferJobPtrOutput)
 }
 
 // TransferJobArrayInput is an input type that accepts TransferJobArray and TransferJobArrayOutput values.
@@ -362,7 +333,7 @@ func (i TransferJobMap) ToTransferJobMapOutputWithContext(ctx context.Context) T
 type TransferJobOutput struct{ *pulumi.OutputState }
 
 func (TransferJobOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TransferJob)(nil))
+	return reflect.TypeOf((**TransferJob)(nil)).Elem()
 }
 
 func (o TransferJobOutput) ToTransferJobOutput() TransferJobOutput {
@@ -373,44 +344,10 @@ func (o TransferJobOutput) ToTransferJobOutputWithContext(ctx context.Context) T
 	return o
 }
 
-func (o TransferJobOutput) ToTransferJobPtrOutput() TransferJobPtrOutput {
-	return o.ToTransferJobPtrOutputWithContext(context.Background())
-}
-
-func (o TransferJobOutput) ToTransferJobPtrOutputWithContext(ctx context.Context) TransferJobPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferJob) *TransferJob {
-		return &v
-	}).(TransferJobPtrOutput)
-}
-
-type TransferJobPtrOutput struct{ *pulumi.OutputState }
-
-func (TransferJobPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TransferJob)(nil))
-}
-
-func (o TransferJobPtrOutput) ToTransferJobPtrOutput() TransferJobPtrOutput {
-	return o
-}
-
-func (o TransferJobPtrOutput) ToTransferJobPtrOutputWithContext(ctx context.Context) TransferJobPtrOutput {
-	return o
-}
-
-func (o TransferJobPtrOutput) Elem() TransferJobOutput {
-	return o.ApplyT(func(v *TransferJob) TransferJob {
-		if v != nil {
-			return *v
-		}
-		var ret TransferJob
-		return ret
-	}).(TransferJobOutput)
-}
-
 type TransferJobArrayOutput struct{ *pulumi.OutputState }
 
 func (TransferJobArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TransferJob)(nil))
+	return reflect.TypeOf((*[]*TransferJob)(nil)).Elem()
 }
 
 func (o TransferJobArrayOutput) ToTransferJobArrayOutput() TransferJobArrayOutput {
@@ -422,15 +359,15 @@ func (o TransferJobArrayOutput) ToTransferJobArrayOutputWithContext(ctx context.
 }
 
 func (o TransferJobArrayOutput) Index(i pulumi.IntInput) TransferJobOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TransferJob {
-		return vs[0].([]TransferJob)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TransferJob {
+		return vs[0].([]*TransferJob)[vs[1].(int)]
 	}).(TransferJobOutput)
 }
 
 type TransferJobMapOutput struct{ *pulumi.OutputState }
 
 func (TransferJobMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]TransferJob)(nil))
+	return reflect.TypeOf((*map[string]*TransferJob)(nil)).Elem()
 }
 
 func (o TransferJobMapOutput) ToTransferJobMapOutput() TransferJobMapOutput {
@@ -442,18 +379,16 @@ func (o TransferJobMapOutput) ToTransferJobMapOutputWithContext(ctx context.Cont
 }
 
 func (o TransferJobMapOutput) MapIndex(k pulumi.StringInput) TransferJobOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TransferJob {
-		return vs[0].(map[string]TransferJob)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *TransferJob {
+		return vs[0].(map[string]*TransferJob)[vs[1].(string)]
 	}).(TransferJobOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobInput)(nil)).Elem(), &TransferJob{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobPtrInput)(nil)).Elem(), &TransferJob{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobArrayInput)(nil)).Elem(), TransferJobArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobMapInput)(nil)).Elem(), TransferJobMap{})
 	pulumi.RegisterOutputType(TransferJobOutput{})
-	pulumi.RegisterOutputType(TransferJobPtrOutput{})
 	pulumi.RegisterOutputType(TransferJobArrayOutput{})
 	pulumi.RegisterOutputType(TransferJobMapOutput{})
 }

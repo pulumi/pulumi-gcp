@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.ServiceAccount
 {
@@ -69,7 +68,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccountIdTokenResult> InvokeAsync(GetAccountIdTokenArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountIdTokenResult>("gcp:serviceAccount/getAccountIdToken:getAccountIdToken", args ?? new GetAccountIdTokenArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountIdTokenResult>("gcp:serviceAccount/getAccountIdToken:getAccountIdToken", args ?? new GetAccountIdTokenArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a Google OpenID Connect (`oidc`) `id_token`.  Tokens issued from this data source are typically used to call external services that accept OIDC tokens for authentication (e.g. [Google Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service)).
@@ -128,7 +127,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAccountIdTokenResult> Invoke(GetAccountIdTokenInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAccountIdTokenResult>("gcp:serviceAccount/getAccountIdToken:getAccountIdToken", args ?? new GetAccountIdTokenInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAccountIdTokenResult>("gcp:serviceAccount/getAccountIdToken:getAccountIdToken", args ?? new GetAccountIdTokenInvokeArgs(), options.WithDefaults());
     }
 
 

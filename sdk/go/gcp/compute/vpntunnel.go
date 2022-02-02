@@ -587,7 +587,7 @@ type VPNTunnelInput interface {
 }
 
 func (*VPNTunnel) ElementType() reflect.Type {
-	return reflect.TypeOf((*VPNTunnel)(nil))
+	return reflect.TypeOf((**VPNTunnel)(nil)).Elem()
 }
 
 func (i *VPNTunnel) ToVPNTunnelOutput() VPNTunnelOutput {
@@ -596,35 +596,6 @@ func (i *VPNTunnel) ToVPNTunnelOutput() VPNTunnelOutput {
 
 func (i *VPNTunnel) ToVPNTunnelOutputWithContext(ctx context.Context) VPNTunnelOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VPNTunnelOutput)
-}
-
-func (i *VPNTunnel) ToVPNTunnelPtrOutput() VPNTunnelPtrOutput {
-	return i.ToVPNTunnelPtrOutputWithContext(context.Background())
-}
-
-func (i *VPNTunnel) ToVPNTunnelPtrOutputWithContext(ctx context.Context) VPNTunnelPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VPNTunnelPtrOutput)
-}
-
-type VPNTunnelPtrInput interface {
-	pulumi.Input
-
-	ToVPNTunnelPtrOutput() VPNTunnelPtrOutput
-	ToVPNTunnelPtrOutputWithContext(ctx context.Context) VPNTunnelPtrOutput
-}
-
-type vpntunnelPtrType VPNTunnelArgs
-
-func (*vpntunnelPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**VPNTunnel)(nil))
-}
-
-func (i *vpntunnelPtrType) ToVPNTunnelPtrOutput() VPNTunnelPtrOutput {
-	return i.ToVPNTunnelPtrOutputWithContext(context.Background())
-}
-
-func (i *vpntunnelPtrType) ToVPNTunnelPtrOutputWithContext(ctx context.Context) VPNTunnelPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VPNTunnelPtrOutput)
 }
 
 // VPNTunnelArrayInput is an input type that accepts VPNTunnelArray and VPNTunnelArrayOutput values.
@@ -680,7 +651,7 @@ func (i VPNTunnelMap) ToVPNTunnelMapOutputWithContext(ctx context.Context) VPNTu
 type VPNTunnelOutput struct{ *pulumi.OutputState }
 
 func (VPNTunnelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VPNTunnel)(nil))
+	return reflect.TypeOf((**VPNTunnel)(nil)).Elem()
 }
 
 func (o VPNTunnelOutput) ToVPNTunnelOutput() VPNTunnelOutput {
@@ -691,44 +662,10 @@ func (o VPNTunnelOutput) ToVPNTunnelOutputWithContext(ctx context.Context) VPNTu
 	return o
 }
 
-func (o VPNTunnelOutput) ToVPNTunnelPtrOutput() VPNTunnelPtrOutput {
-	return o.ToVPNTunnelPtrOutputWithContext(context.Background())
-}
-
-func (o VPNTunnelOutput) ToVPNTunnelPtrOutputWithContext(ctx context.Context) VPNTunnelPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v VPNTunnel) *VPNTunnel {
-		return &v
-	}).(VPNTunnelPtrOutput)
-}
-
-type VPNTunnelPtrOutput struct{ *pulumi.OutputState }
-
-func (VPNTunnelPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VPNTunnel)(nil))
-}
-
-func (o VPNTunnelPtrOutput) ToVPNTunnelPtrOutput() VPNTunnelPtrOutput {
-	return o
-}
-
-func (o VPNTunnelPtrOutput) ToVPNTunnelPtrOutputWithContext(ctx context.Context) VPNTunnelPtrOutput {
-	return o
-}
-
-func (o VPNTunnelPtrOutput) Elem() VPNTunnelOutput {
-	return o.ApplyT(func(v *VPNTunnel) VPNTunnel {
-		if v != nil {
-			return *v
-		}
-		var ret VPNTunnel
-		return ret
-	}).(VPNTunnelOutput)
-}
-
 type VPNTunnelArrayOutput struct{ *pulumi.OutputState }
 
 func (VPNTunnelArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VPNTunnel)(nil))
+	return reflect.TypeOf((*[]*VPNTunnel)(nil)).Elem()
 }
 
 func (o VPNTunnelArrayOutput) ToVPNTunnelArrayOutput() VPNTunnelArrayOutput {
@@ -740,15 +677,15 @@ func (o VPNTunnelArrayOutput) ToVPNTunnelArrayOutputWithContext(ctx context.Cont
 }
 
 func (o VPNTunnelArrayOutput) Index(i pulumi.IntInput) VPNTunnelOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VPNTunnel {
-		return vs[0].([]VPNTunnel)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VPNTunnel {
+		return vs[0].([]*VPNTunnel)[vs[1].(int)]
 	}).(VPNTunnelOutput)
 }
 
 type VPNTunnelMapOutput struct{ *pulumi.OutputState }
 
 func (VPNTunnelMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]VPNTunnel)(nil))
+	return reflect.TypeOf((*map[string]*VPNTunnel)(nil)).Elem()
 }
 
 func (o VPNTunnelMapOutput) ToVPNTunnelMapOutput() VPNTunnelMapOutput {
@@ -760,18 +697,16 @@ func (o VPNTunnelMapOutput) ToVPNTunnelMapOutputWithContext(ctx context.Context)
 }
 
 func (o VPNTunnelMapOutput) MapIndex(k pulumi.StringInput) VPNTunnelOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) VPNTunnel {
-		return vs[0].(map[string]VPNTunnel)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *VPNTunnel {
+		return vs[0].(map[string]*VPNTunnel)[vs[1].(string)]
 	}).(VPNTunnelOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VPNTunnelInput)(nil)).Elem(), &VPNTunnel{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VPNTunnelPtrInput)(nil)).Elem(), &VPNTunnel{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VPNTunnelArrayInput)(nil)).Elem(), VPNTunnelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VPNTunnelMapInput)(nil)).Elem(), VPNTunnelMap{})
 	pulumi.RegisterOutputType(VPNTunnelOutput{})
-	pulumi.RegisterOutputType(VPNTunnelPtrOutput{})
 	pulumi.RegisterOutputType(VPNTunnelArrayOutput{})
 	pulumi.RegisterOutputType(VPNTunnelMapOutput{})
 }

@@ -92,16 +92,16 @@ export class SubAccount extends pulumi.CustomResource {
      */
     constructor(name: string, args: SubAccountArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SubAccountArgs | SubAccountState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SubAccountState | undefined;
-            inputs["billingAccountId"] = state ? state.billingAccountId : undefined;
-            inputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["masterBillingAccount"] = state ? state.masterBillingAccount : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["open"] = state ? state.open : undefined;
+            resourceInputs["billingAccountId"] = state ? state.billingAccountId : undefined;
+            resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["masterBillingAccount"] = state ? state.masterBillingAccount : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["open"] = state ? state.open : undefined;
         } else {
             const args = argsOrState as SubAccountArgs | undefined;
             if ((!args || args.displayName === undefined) && !opts.urn) {
@@ -110,17 +110,15 @@ export class SubAccount extends pulumi.CustomResource {
             if ((!args || args.masterBillingAccount === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'masterBillingAccount'");
             }
-            inputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["masterBillingAccount"] = args ? args.masterBillingAccount : undefined;
-            inputs["billingAccountId"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["open"] = undefined /*out*/;
+            resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["masterBillingAccount"] = args ? args.masterBillingAccount : undefined;
+            resourceInputs["billingAccountId"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["open"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SubAccount.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SubAccount.__pulumiType, name, resourceInputs, opts);
     }
 }
 

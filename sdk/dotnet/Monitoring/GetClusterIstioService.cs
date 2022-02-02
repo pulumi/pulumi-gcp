@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Monitoring
 {
@@ -57,7 +56,7 @@ namespace Pulumi.Gcp.Monitoring
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetClusterIstioServiceResult> InvokeAsync(GetClusterIstioServiceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterIstioServiceResult>("gcp:monitoring/getClusterIstioService:getClusterIstioService", args ?? new GetClusterIstioServiceArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterIstioServiceResult>("gcp:monitoring/getClusterIstioService:getClusterIstioService", args ?? new GetClusterIstioServiceArgs(), options.WithDefaults());
 
         /// <summary>
         /// A Monitoring Service is the root resource under which operational aspects of a
@@ -104,7 +103,7 @@ namespace Pulumi.Gcp.Monitoring
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetClusterIstioServiceResult> Invoke(GetClusterIstioServiceInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetClusterIstioServiceResult>("gcp:monitoring/getClusterIstioService:getClusterIstioService", args ?? new GetClusterIstioServiceInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetClusterIstioServiceResult>("gcp:monitoring/getClusterIstioService:getClusterIstioService", args ?? new GetClusterIstioServiceInvokeArgs(), options.WithDefaults());
     }
 
 

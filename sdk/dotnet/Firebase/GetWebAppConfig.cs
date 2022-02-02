@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Firebase
 {
@@ -22,7 +21,7 @@ namespace Pulumi.Gcp.Firebase
         ///     * [Official Documentation](https://firebase.google.com/)
         /// </summary>
         public static Task<GetWebAppConfigResult> InvokeAsync(GetWebAppConfigArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetWebAppConfigResult>("gcp:firebase/getWebAppConfig:getWebAppConfig", args ?? new GetWebAppConfigArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetWebAppConfigResult>("gcp:firebase/getWebAppConfig:getWebAppConfig", args ?? new GetWebAppConfigArgs(), options.WithDefaults());
 
         /// <summary>
         /// A Google Cloud Firebase web application configuration
@@ -34,7 +33,7 @@ namespace Pulumi.Gcp.Firebase
         ///     * [Official Documentation](https://firebase.google.com/)
         /// </summary>
         public static Output<GetWebAppConfigResult> Invoke(GetWebAppConfigInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetWebAppConfigResult>("gcp:firebase/getWebAppConfig:getWebAppConfig", args ?? new GetWebAppConfigInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetWebAppConfigResult>("gcp:firebase/getWebAppConfig:getWebAppConfig", args ?? new GetWebAppConfigInvokeArgs(), options.WithDefaults());
     }
 
 

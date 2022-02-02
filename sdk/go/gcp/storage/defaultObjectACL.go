@@ -39,13 +39,13 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := storage.NewBucket(ctx, "image_store", &storage.BucketArgs{
+// 		_, err := storage.NewBucket(ctx, "image-store", &storage.BucketArgs{
 // 			Location: pulumi.String("EU"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = storage.NewDefaultObjectACL(ctx, "image_store_default_acl", &storage.DefaultObjectACLArgs{
+// 		_, err = storage.NewDefaultObjectACL(ctx, "image-store-default-acl", &storage.DefaultObjectACLArgs{
 // 			Bucket: image_store.Name,
 // 			RoleEntities: pulumi.StringArray{
 // 				pulumi.String("OWNER:user-my.email@gmail.com"),
@@ -158,7 +158,7 @@ type DefaultObjectACLInput interface {
 }
 
 func (*DefaultObjectACL) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefaultObjectACL)(nil))
+	return reflect.TypeOf((**DefaultObjectACL)(nil)).Elem()
 }
 
 func (i *DefaultObjectACL) ToDefaultObjectACLOutput() DefaultObjectACLOutput {
@@ -167,35 +167,6 @@ func (i *DefaultObjectACL) ToDefaultObjectACLOutput() DefaultObjectACLOutput {
 
 func (i *DefaultObjectACL) ToDefaultObjectACLOutputWithContext(ctx context.Context) DefaultObjectACLOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultObjectACLOutput)
-}
-
-func (i *DefaultObjectACL) ToDefaultObjectACLPtrOutput() DefaultObjectACLPtrOutput {
-	return i.ToDefaultObjectACLPtrOutputWithContext(context.Background())
-}
-
-func (i *DefaultObjectACL) ToDefaultObjectACLPtrOutputWithContext(ctx context.Context) DefaultObjectACLPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefaultObjectACLPtrOutput)
-}
-
-type DefaultObjectACLPtrInput interface {
-	pulumi.Input
-
-	ToDefaultObjectACLPtrOutput() DefaultObjectACLPtrOutput
-	ToDefaultObjectACLPtrOutputWithContext(ctx context.Context) DefaultObjectACLPtrOutput
-}
-
-type defaultObjectACLPtrType DefaultObjectACLArgs
-
-func (*defaultObjectACLPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefaultObjectACL)(nil))
-}
-
-func (i *defaultObjectACLPtrType) ToDefaultObjectACLPtrOutput() DefaultObjectACLPtrOutput {
-	return i.ToDefaultObjectACLPtrOutputWithContext(context.Background())
-}
-
-func (i *defaultObjectACLPtrType) ToDefaultObjectACLPtrOutputWithContext(ctx context.Context) DefaultObjectACLPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefaultObjectACLPtrOutput)
 }
 
 // DefaultObjectACLArrayInput is an input type that accepts DefaultObjectACLArray and DefaultObjectACLArrayOutput values.
@@ -251,7 +222,7 @@ func (i DefaultObjectACLMap) ToDefaultObjectACLMapOutputWithContext(ctx context.
 type DefaultObjectACLOutput struct{ *pulumi.OutputState }
 
 func (DefaultObjectACLOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefaultObjectACL)(nil))
+	return reflect.TypeOf((**DefaultObjectACL)(nil)).Elem()
 }
 
 func (o DefaultObjectACLOutput) ToDefaultObjectACLOutput() DefaultObjectACLOutput {
@@ -262,44 +233,10 @@ func (o DefaultObjectACLOutput) ToDefaultObjectACLOutputWithContext(ctx context.
 	return o
 }
 
-func (o DefaultObjectACLOutput) ToDefaultObjectACLPtrOutput() DefaultObjectACLPtrOutput {
-	return o.ToDefaultObjectACLPtrOutputWithContext(context.Background())
-}
-
-func (o DefaultObjectACLOutput) ToDefaultObjectACLPtrOutputWithContext(ctx context.Context) DefaultObjectACLPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefaultObjectACL) *DefaultObjectACL {
-		return &v
-	}).(DefaultObjectACLPtrOutput)
-}
-
-type DefaultObjectACLPtrOutput struct{ *pulumi.OutputState }
-
-func (DefaultObjectACLPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefaultObjectACL)(nil))
-}
-
-func (o DefaultObjectACLPtrOutput) ToDefaultObjectACLPtrOutput() DefaultObjectACLPtrOutput {
-	return o
-}
-
-func (o DefaultObjectACLPtrOutput) ToDefaultObjectACLPtrOutputWithContext(ctx context.Context) DefaultObjectACLPtrOutput {
-	return o
-}
-
-func (o DefaultObjectACLPtrOutput) Elem() DefaultObjectACLOutput {
-	return o.ApplyT(func(v *DefaultObjectACL) DefaultObjectACL {
-		if v != nil {
-			return *v
-		}
-		var ret DefaultObjectACL
-		return ret
-	}).(DefaultObjectACLOutput)
-}
-
 type DefaultObjectACLArrayOutput struct{ *pulumi.OutputState }
 
 func (DefaultObjectACLArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DefaultObjectACL)(nil))
+	return reflect.TypeOf((*[]*DefaultObjectACL)(nil)).Elem()
 }
 
 func (o DefaultObjectACLArrayOutput) ToDefaultObjectACLArrayOutput() DefaultObjectACLArrayOutput {
@@ -311,15 +248,15 @@ func (o DefaultObjectACLArrayOutput) ToDefaultObjectACLArrayOutputWithContext(ct
 }
 
 func (o DefaultObjectACLArrayOutput) Index(i pulumi.IntInput) DefaultObjectACLOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DefaultObjectACL {
-		return vs[0].([]DefaultObjectACL)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DefaultObjectACL {
+		return vs[0].([]*DefaultObjectACL)[vs[1].(int)]
 	}).(DefaultObjectACLOutput)
 }
 
 type DefaultObjectACLMapOutput struct{ *pulumi.OutputState }
 
 func (DefaultObjectACLMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DefaultObjectACL)(nil))
+	return reflect.TypeOf((*map[string]*DefaultObjectACL)(nil)).Elem()
 }
 
 func (o DefaultObjectACLMapOutput) ToDefaultObjectACLMapOutput() DefaultObjectACLMapOutput {
@@ -331,18 +268,16 @@ func (o DefaultObjectACLMapOutput) ToDefaultObjectACLMapOutputWithContext(ctx co
 }
 
 func (o DefaultObjectACLMapOutput) MapIndex(k pulumi.StringInput) DefaultObjectACLOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DefaultObjectACL {
-		return vs[0].(map[string]DefaultObjectACL)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DefaultObjectACL {
+		return vs[0].(map[string]*DefaultObjectACL)[vs[1].(string)]
 	}).(DefaultObjectACLOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultObjectACLInput)(nil)).Elem(), &DefaultObjectACL{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DefaultObjectACLPtrInput)(nil)).Elem(), &DefaultObjectACL{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultObjectACLArrayInput)(nil)).Elem(), DefaultObjectACLArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultObjectACLMapInput)(nil)).Elem(), DefaultObjectACLMap{})
 	pulumi.RegisterOutputType(DefaultObjectACLOutput{})
-	pulumi.RegisterOutputType(DefaultObjectACLPtrOutput{})
 	pulumi.RegisterOutputType(DefaultObjectACLArrayOutput{})
 	pulumi.RegisterOutputType(DefaultObjectACLMapOutput{})
 }

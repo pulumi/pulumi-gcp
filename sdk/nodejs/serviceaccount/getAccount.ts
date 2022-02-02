@@ -24,9 +24,7 @@ export function getAccount(args: GetAccountArgs, opts?: pulumi.InvokeOptions): P
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:serviceAccount/getAccount:getAccount", {
         "accountId": args.accountId,
         "project": args.project,

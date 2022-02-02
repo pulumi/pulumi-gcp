@@ -114,30 +114,28 @@ export class EdgeCacheKeyset extends pulumi.CustomResource {
      */
     constructor(name: string, args: EdgeCacheKeysetArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EdgeCacheKeysetArgs | EdgeCacheKeysetState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EdgeCacheKeysetState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["publicKeys"] = state ? state.publicKeys : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["publicKeys"] = state ? state.publicKeys : undefined;
         } else {
             const args = argsOrState as EdgeCacheKeysetArgs | undefined;
             if ((!args || args.publicKeys === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'publicKeys'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["publicKeys"] = args ? args.publicKeys : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["publicKeys"] = args ? args.publicKeys : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(EdgeCacheKeyset.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(EdgeCacheKeyset.__pulumiType, name, resourceInputs, opts);
     }
 }
 

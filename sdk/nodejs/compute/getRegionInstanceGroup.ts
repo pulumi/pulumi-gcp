@@ -26,9 +26,7 @@ export function getRegionInstanceGroup(args?: GetRegionInstanceGroupArgs, opts?:
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup", {
         "name": args.name,
         "project": args.project,

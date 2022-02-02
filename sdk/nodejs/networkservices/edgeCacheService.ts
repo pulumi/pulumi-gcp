@@ -370,46 +370,44 @@ export class EdgeCacheService extends pulumi.CustomResource {
      */
     constructor(name: string, args: EdgeCacheServiceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EdgeCacheServiceArgs | EdgeCacheServiceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EdgeCacheServiceState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["disableQuic"] = state ? state.disableQuic : undefined;
-            inputs["edgeSecurityPolicy"] = state ? state.edgeSecurityPolicy : undefined;
-            inputs["edgeSslCertificates"] = state ? state.edgeSslCertificates : undefined;
-            inputs["ipv4Addresses"] = state ? state.ipv4Addresses : undefined;
-            inputs["ipv6Addresses"] = state ? state.ipv6Addresses : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["logConfig"] = state ? state.logConfig : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["requireTls"] = state ? state.requireTls : undefined;
-            inputs["routing"] = state ? state.routing : undefined;
-            inputs["sslPolicy"] = state ? state.sslPolicy : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["disableQuic"] = state ? state.disableQuic : undefined;
+            resourceInputs["edgeSecurityPolicy"] = state ? state.edgeSecurityPolicy : undefined;
+            resourceInputs["edgeSslCertificates"] = state ? state.edgeSslCertificates : undefined;
+            resourceInputs["ipv4Addresses"] = state ? state.ipv4Addresses : undefined;
+            resourceInputs["ipv6Addresses"] = state ? state.ipv6Addresses : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["logConfig"] = state ? state.logConfig : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["requireTls"] = state ? state.requireTls : undefined;
+            resourceInputs["routing"] = state ? state.routing : undefined;
+            resourceInputs["sslPolicy"] = state ? state.sslPolicy : undefined;
         } else {
             const args = argsOrState as EdgeCacheServiceArgs | undefined;
             if ((!args || args.routing === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'routing'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["disableQuic"] = args ? args.disableQuic : undefined;
-            inputs["edgeSecurityPolicy"] = args ? args.edgeSecurityPolicy : undefined;
-            inputs["edgeSslCertificates"] = args ? args.edgeSslCertificates : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["logConfig"] = args ? args.logConfig : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["requireTls"] = args ? args.requireTls : undefined;
-            inputs["routing"] = args ? args.routing : undefined;
-            inputs["sslPolicy"] = args ? args.sslPolicy : undefined;
-            inputs["ipv4Addresses"] = undefined /*out*/;
-            inputs["ipv6Addresses"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["disableQuic"] = args ? args.disableQuic : undefined;
+            resourceInputs["edgeSecurityPolicy"] = args ? args.edgeSecurityPolicy : undefined;
+            resourceInputs["edgeSslCertificates"] = args ? args.edgeSslCertificates : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["logConfig"] = args ? args.logConfig : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requireTls"] = args ? args.requireTls : undefined;
+            resourceInputs["routing"] = args ? args.routing : undefined;
+            resourceInputs["sslPolicy"] = args ? args.sslPolicy : undefined;
+            resourceInputs["ipv4Addresses"] = undefined /*out*/;
+            resourceInputs["ipv6Addresses"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(EdgeCacheService.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(EdgeCacheService.__pulumiType, name, resourceInputs, opts);
     }
 }
 

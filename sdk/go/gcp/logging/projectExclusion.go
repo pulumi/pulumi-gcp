@@ -31,7 +31,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := logging.NewProjectExclusion(ctx, "my_exclusion", &logging.ProjectExclusionArgs{
+// 		_, err := logging.NewProjectExclusion(ctx, "my-exclusion", &logging.ProjectExclusionArgs{
 // 			Description: pulumi.String("Exclude GCE instance debug logs"),
 // 			Filter:      pulumi.String("resource.type = gce_instance AND severity <= DEBUG"),
 // 		})
@@ -185,7 +185,7 @@ type ProjectExclusionInput interface {
 }
 
 func (*ProjectExclusion) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectExclusion)(nil))
+	return reflect.TypeOf((**ProjectExclusion)(nil)).Elem()
 }
 
 func (i *ProjectExclusion) ToProjectExclusionOutput() ProjectExclusionOutput {
@@ -194,35 +194,6 @@ func (i *ProjectExclusion) ToProjectExclusionOutput() ProjectExclusionOutput {
 
 func (i *ProjectExclusion) ToProjectExclusionOutputWithContext(ctx context.Context) ProjectExclusionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectExclusionOutput)
-}
-
-func (i *ProjectExclusion) ToProjectExclusionPtrOutput() ProjectExclusionPtrOutput {
-	return i.ToProjectExclusionPtrOutputWithContext(context.Background())
-}
-
-func (i *ProjectExclusion) ToProjectExclusionPtrOutputWithContext(ctx context.Context) ProjectExclusionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectExclusionPtrOutput)
-}
-
-type ProjectExclusionPtrInput interface {
-	pulumi.Input
-
-	ToProjectExclusionPtrOutput() ProjectExclusionPtrOutput
-	ToProjectExclusionPtrOutputWithContext(ctx context.Context) ProjectExclusionPtrOutput
-}
-
-type projectExclusionPtrType ProjectExclusionArgs
-
-func (*projectExclusionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProjectExclusion)(nil))
-}
-
-func (i *projectExclusionPtrType) ToProjectExclusionPtrOutput() ProjectExclusionPtrOutput {
-	return i.ToProjectExclusionPtrOutputWithContext(context.Background())
-}
-
-func (i *projectExclusionPtrType) ToProjectExclusionPtrOutputWithContext(ctx context.Context) ProjectExclusionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectExclusionPtrOutput)
 }
 
 // ProjectExclusionArrayInput is an input type that accepts ProjectExclusionArray and ProjectExclusionArrayOutput values.
@@ -278,7 +249,7 @@ func (i ProjectExclusionMap) ToProjectExclusionMapOutputWithContext(ctx context.
 type ProjectExclusionOutput struct{ *pulumi.OutputState }
 
 func (ProjectExclusionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectExclusion)(nil))
+	return reflect.TypeOf((**ProjectExclusion)(nil)).Elem()
 }
 
 func (o ProjectExclusionOutput) ToProjectExclusionOutput() ProjectExclusionOutput {
@@ -289,44 +260,10 @@ func (o ProjectExclusionOutput) ToProjectExclusionOutputWithContext(ctx context.
 	return o
 }
 
-func (o ProjectExclusionOutput) ToProjectExclusionPtrOutput() ProjectExclusionPtrOutput {
-	return o.ToProjectExclusionPtrOutputWithContext(context.Background())
-}
-
-func (o ProjectExclusionOutput) ToProjectExclusionPtrOutputWithContext(ctx context.Context) ProjectExclusionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectExclusion) *ProjectExclusion {
-		return &v
-	}).(ProjectExclusionPtrOutput)
-}
-
-type ProjectExclusionPtrOutput struct{ *pulumi.OutputState }
-
-func (ProjectExclusionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProjectExclusion)(nil))
-}
-
-func (o ProjectExclusionPtrOutput) ToProjectExclusionPtrOutput() ProjectExclusionPtrOutput {
-	return o
-}
-
-func (o ProjectExclusionPtrOutput) ToProjectExclusionPtrOutputWithContext(ctx context.Context) ProjectExclusionPtrOutput {
-	return o
-}
-
-func (o ProjectExclusionPtrOutput) Elem() ProjectExclusionOutput {
-	return o.ApplyT(func(v *ProjectExclusion) ProjectExclusion {
-		if v != nil {
-			return *v
-		}
-		var ret ProjectExclusion
-		return ret
-	}).(ProjectExclusionOutput)
-}
-
 type ProjectExclusionArrayOutput struct{ *pulumi.OutputState }
 
 func (ProjectExclusionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ProjectExclusion)(nil))
+	return reflect.TypeOf((*[]*ProjectExclusion)(nil)).Elem()
 }
 
 func (o ProjectExclusionArrayOutput) ToProjectExclusionArrayOutput() ProjectExclusionArrayOutput {
@@ -338,15 +275,15 @@ func (o ProjectExclusionArrayOutput) ToProjectExclusionArrayOutputWithContext(ct
 }
 
 func (o ProjectExclusionArrayOutput) Index(i pulumi.IntInput) ProjectExclusionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectExclusion {
-		return vs[0].([]ProjectExclusion)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectExclusion {
+		return vs[0].([]*ProjectExclusion)[vs[1].(int)]
 	}).(ProjectExclusionOutput)
 }
 
 type ProjectExclusionMapOutput struct{ *pulumi.OutputState }
 
 func (ProjectExclusionMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ProjectExclusion)(nil))
+	return reflect.TypeOf((*map[string]*ProjectExclusion)(nil)).Elem()
 }
 
 func (o ProjectExclusionMapOutput) ToProjectExclusionMapOutput() ProjectExclusionMapOutput {
@@ -358,18 +295,16 @@ func (o ProjectExclusionMapOutput) ToProjectExclusionMapOutputWithContext(ctx co
 }
 
 func (o ProjectExclusionMapOutput) MapIndex(k pulumi.StringInput) ProjectExclusionOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ProjectExclusion {
-		return vs[0].(map[string]ProjectExclusion)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ProjectExclusion {
+		return vs[0].(map[string]*ProjectExclusion)[vs[1].(string)]
 	}).(ProjectExclusionOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectExclusionInput)(nil)).Elem(), &ProjectExclusion{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ProjectExclusionPtrInput)(nil)).Elem(), &ProjectExclusion{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectExclusionArrayInput)(nil)).Elem(), ProjectExclusionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectExclusionMapInput)(nil)).Elem(), ProjectExclusionMap{})
 	pulumi.RegisterOutputType(ProjectExclusionOutput{})
-	pulumi.RegisterOutputType(ProjectExclusionPtrOutput{})
 	pulumi.RegisterOutputType(ProjectExclusionArrayOutput{})
 	pulumi.RegisterOutputType(ProjectExclusionMapOutput{})
 }

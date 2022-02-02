@@ -30,9 +30,7 @@ export function getTestablePermissions(args: GetTestablePermissionsArgs, opts?: 
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:iam/getTestablePermissions:getTestablePermissions", {
         "customSupportLevel": args.customSupportLevel,
         "fullResourceName": args.fullResourceName,

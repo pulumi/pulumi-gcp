@@ -103,27 +103,25 @@ export class CustomService extends pulumi.CustomResource {
      */
     constructor(name: string, args?: CustomServiceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CustomServiceArgs | CustomServiceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomServiceState | undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["serviceId"] = state ? state.serviceId : undefined;
-            inputs["telemetry"] = state ? state.telemetry : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["serviceId"] = state ? state.serviceId : undefined;
+            resourceInputs["telemetry"] = state ? state.telemetry : undefined;
         } else {
             const args = argsOrState as CustomServiceArgs | undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["serviceId"] = args ? args.serviceId : undefined;
-            inputs["telemetry"] = args ? args.telemetry : undefined;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["serviceId"] = args ? args.serviceId : undefined;
+            resourceInputs["telemetry"] = args ? args.telemetry : undefined;
+            resourceInputs["name"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CustomService.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CustomService.__pulumiType, name, resourceInputs, opts);
     }
 }
 

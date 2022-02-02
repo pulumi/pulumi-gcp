@@ -59,7 +59,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = compute.NewInstance(ctx, "endpoint_instance", &compute.InstanceArgs{
+// 		_, err = compute.NewInstance(ctx, "endpoint-instance", &compute.InstanceArgs{
 // 			MachineType: pulumi.String("e2-medium"),
 // 			BootDisk: &compute.InstanceBootDiskArgs{
 // 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
@@ -78,7 +78,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = compute.NewNetworkEndpoint(ctx, "default_endpoint", &compute.NetworkEndpointArgs{
+// 		_, err = compute.NewNetworkEndpoint(ctx, "default-endpoint", &compute.NetworkEndpointArgs{
 // 			NetworkEndpointGroup: pulumi.Any(google_compute_network_endpoint_group.Neg.Name),
 // 			Instance:             endpoint_instance.Name,
 // 			Port:                 pulumi.Any(google_compute_network_endpoint_group.Neg.Default_port),
@@ -281,7 +281,7 @@ type NetworkEndpointInput interface {
 }
 
 func (*NetworkEndpoint) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkEndpoint)(nil))
+	return reflect.TypeOf((**NetworkEndpoint)(nil)).Elem()
 }
 
 func (i *NetworkEndpoint) ToNetworkEndpointOutput() NetworkEndpointOutput {
@@ -290,35 +290,6 @@ func (i *NetworkEndpoint) ToNetworkEndpointOutput() NetworkEndpointOutput {
 
 func (i *NetworkEndpoint) ToNetworkEndpointOutputWithContext(ctx context.Context) NetworkEndpointOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointOutput)
-}
-
-func (i *NetworkEndpoint) ToNetworkEndpointPtrOutput() NetworkEndpointPtrOutput {
-	return i.ToNetworkEndpointPtrOutputWithContext(context.Background())
-}
-
-func (i *NetworkEndpoint) ToNetworkEndpointPtrOutputWithContext(ctx context.Context) NetworkEndpointPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointPtrOutput)
-}
-
-type NetworkEndpointPtrInput interface {
-	pulumi.Input
-
-	ToNetworkEndpointPtrOutput() NetworkEndpointPtrOutput
-	ToNetworkEndpointPtrOutputWithContext(ctx context.Context) NetworkEndpointPtrOutput
-}
-
-type networkEndpointPtrType NetworkEndpointArgs
-
-func (*networkEndpointPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NetworkEndpoint)(nil))
-}
-
-func (i *networkEndpointPtrType) ToNetworkEndpointPtrOutput() NetworkEndpointPtrOutput {
-	return i.ToNetworkEndpointPtrOutputWithContext(context.Background())
-}
-
-func (i *networkEndpointPtrType) ToNetworkEndpointPtrOutputWithContext(ctx context.Context) NetworkEndpointPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointPtrOutput)
 }
 
 // NetworkEndpointArrayInput is an input type that accepts NetworkEndpointArray and NetworkEndpointArrayOutput values.
@@ -374,7 +345,7 @@ func (i NetworkEndpointMap) ToNetworkEndpointMapOutputWithContext(ctx context.Co
 type NetworkEndpointOutput struct{ *pulumi.OutputState }
 
 func (NetworkEndpointOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkEndpoint)(nil))
+	return reflect.TypeOf((**NetworkEndpoint)(nil)).Elem()
 }
 
 func (o NetworkEndpointOutput) ToNetworkEndpointOutput() NetworkEndpointOutput {
@@ -385,44 +356,10 @@ func (o NetworkEndpointOutput) ToNetworkEndpointOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o NetworkEndpointOutput) ToNetworkEndpointPtrOutput() NetworkEndpointPtrOutput {
-	return o.ToNetworkEndpointPtrOutputWithContext(context.Background())
-}
-
-func (o NetworkEndpointOutput) ToNetworkEndpointPtrOutputWithContext(ctx context.Context) NetworkEndpointPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkEndpoint) *NetworkEndpoint {
-		return &v
-	}).(NetworkEndpointPtrOutput)
-}
-
-type NetworkEndpointPtrOutput struct{ *pulumi.OutputState }
-
-func (NetworkEndpointPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NetworkEndpoint)(nil))
-}
-
-func (o NetworkEndpointPtrOutput) ToNetworkEndpointPtrOutput() NetworkEndpointPtrOutput {
-	return o
-}
-
-func (o NetworkEndpointPtrOutput) ToNetworkEndpointPtrOutputWithContext(ctx context.Context) NetworkEndpointPtrOutput {
-	return o
-}
-
-func (o NetworkEndpointPtrOutput) Elem() NetworkEndpointOutput {
-	return o.ApplyT(func(v *NetworkEndpoint) NetworkEndpoint {
-		if v != nil {
-			return *v
-		}
-		var ret NetworkEndpoint
-		return ret
-	}).(NetworkEndpointOutput)
-}
-
 type NetworkEndpointArrayOutput struct{ *pulumi.OutputState }
 
 func (NetworkEndpointArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NetworkEndpoint)(nil))
+	return reflect.TypeOf((*[]*NetworkEndpoint)(nil)).Elem()
 }
 
 func (o NetworkEndpointArrayOutput) ToNetworkEndpointArrayOutput() NetworkEndpointArrayOutput {
@@ -434,15 +371,15 @@ func (o NetworkEndpointArrayOutput) ToNetworkEndpointArrayOutputWithContext(ctx 
 }
 
 func (o NetworkEndpointArrayOutput) Index(i pulumi.IntInput) NetworkEndpointOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkEndpoint {
-		return vs[0].([]NetworkEndpoint)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NetworkEndpoint {
+		return vs[0].([]*NetworkEndpoint)[vs[1].(int)]
 	}).(NetworkEndpointOutput)
 }
 
 type NetworkEndpointMapOutput struct{ *pulumi.OutputState }
 
 func (NetworkEndpointMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]NetworkEndpoint)(nil))
+	return reflect.TypeOf((*map[string]*NetworkEndpoint)(nil)).Elem()
 }
 
 func (o NetworkEndpointMapOutput) ToNetworkEndpointMapOutput() NetworkEndpointMapOutput {
@@ -454,18 +391,16 @@ func (o NetworkEndpointMapOutput) ToNetworkEndpointMapOutputWithContext(ctx cont
 }
 
 func (o NetworkEndpointMapOutput) MapIndex(k pulumi.StringInput) NetworkEndpointOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NetworkEndpoint {
-		return vs[0].(map[string]NetworkEndpoint)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *NetworkEndpoint {
+		return vs[0].(map[string]*NetworkEndpoint)[vs[1].(string)]
 	}).(NetworkEndpointOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointInput)(nil)).Elem(), &NetworkEndpoint{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointPtrInput)(nil)).Elem(), &NetworkEndpoint{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointArrayInput)(nil)).Elem(), NetworkEndpointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointMapInput)(nil)).Elem(), NetworkEndpointMap{})
 	pulumi.RegisterOutputType(NetworkEndpointOutput{})
-	pulumi.RegisterOutputType(NetworkEndpointPtrOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointArrayOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointMapOutput{})
 }

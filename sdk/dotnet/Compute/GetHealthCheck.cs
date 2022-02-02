@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Compute
 {
@@ -39,7 +38,7 @@ namespace Pulumi.Gcp.Compute
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetHealthCheckResult> InvokeAsync(GetHealthCheckArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetHealthCheckResult>("gcp:compute/getHealthCheck:getHealthCheck", args ?? new GetHealthCheckArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetHealthCheckResult>("gcp:compute/getHealthCheck:getHealthCheck", args ?? new GetHealthCheckArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a HealthCheck.
@@ -68,7 +67,7 @@ namespace Pulumi.Gcp.Compute
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetHealthCheckResult> Invoke(GetHealthCheckInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetHealthCheckResult>("gcp:compute/getHealthCheck:getHealthCheck", args ?? new GetHealthCheckInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetHealthCheckResult>("gcp:compute/getHealthCheck:getHealthCheck", args ?? new GetHealthCheckInvokeArgs(), options.WithDefaults());
     }
 
 

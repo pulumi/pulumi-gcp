@@ -251,7 +251,7 @@ type PolicyTagIamMemberInput interface {
 }
 
 func (*PolicyTagIamMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyTagIamMember)(nil))
+	return reflect.TypeOf((**PolicyTagIamMember)(nil)).Elem()
 }
 
 func (i *PolicyTagIamMember) ToPolicyTagIamMemberOutput() PolicyTagIamMemberOutput {
@@ -260,35 +260,6 @@ func (i *PolicyTagIamMember) ToPolicyTagIamMemberOutput() PolicyTagIamMemberOutp
 
 func (i *PolicyTagIamMember) ToPolicyTagIamMemberOutputWithContext(ctx context.Context) PolicyTagIamMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyTagIamMemberOutput)
-}
-
-func (i *PolicyTagIamMember) ToPolicyTagIamMemberPtrOutput() PolicyTagIamMemberPtrOutput {
-	return i.ToPolicyTagIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *PolicyTagIamMember) ToPolicyTagIamMemberPtrOutputWithContext(ctx context.Context) PolicyTagIamMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyTagIamMemberPtrOutput)
-}
-
-type PolicyTagIamMemberPtrInput interface {
-	pulumi.Input
-
-	ToPolicyTagIamMemberPtrOutput() PolicyTagIamMemberPtrOutput
-	ToPolicyTagIamMemberPtrOutputWithContext(ctx context.Context) PolicyTagIamMemberPtrOutput
-}
-
-type policyTagIamMemberPtrType PolicyTagIamMemberArgs
-
-func (*policyTagIamMemberPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PolicyTagIamMember)(nil))
-}
-
-func (i *policyTagIamMemberPtrType) ToPolicyTagIamMemberPtrOutput() PolicyTagIamMemberPtrOutput {
-	return i.ToPolicyTagIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *policyTagIamMemberPtrType) ToPolicyTagIamMemberPtrOutputWithContext(ctx context.Context) PolicyTagIamMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyTagIamMemberPtrOutput)
 }
 
 // PolicyTagIamMemberArrayInput is an input type that accepts PolicyTagIamMemberArray and PolicyTagIamMemberArrayOutput values.
@@ -344,7 +315,7 @@ func (i PolicyTagIamMemberMap) ToPolicyTagIamMemberMapOutputWithContext(ctx cont
 type PolicyTagIamMemberOutput struct{ *pulumi.OutputState }
 
 func (PolicyTagIamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyTagIamMember)(nil))
+	return reflect.TypeOf((**PolicyTagIamMember)(nil)).Elem()
 }
 
 func (o PolicyTagIamMemberOutput) ToPolicyTagIamMemberOutput() PolicyTagIamMemberOutput {
@@ -355,44 +326,10 @@ func (o PolicyTagIamMemberOutput) ToPolicyTagIamMemberOutputWithContext(ctx cont
 	return o
 }
 
-func (o PolicyTagIamMemberOutput) ToPolicyTagIamMemberPtrOutput() PolicyTagIamMemberPtrOutput {
-	return o.ToPolicyTagIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (o PolicyTagIamMemberOutput) ToPolicyTagIamMemberPtrOutputWithContext(ctx context.Context) PolicyTagIamMemberPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyTagIamMember) *PolicyTagIamMember {
-		return &v
-	}).(PolicyTagIamMemberPtrOutput)
-}
-
-type PolicyTagIamMemberPtrOutput struct{ *pulumi.OutputState }
-
-func (PolicyTagIamMemberPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PolicyTagIamMember)(nil))
-}
-
-func (o PolicyTagIamMemberPtrOutput) ToPolicyTagIamMemberPtrOutput() PolicyTagIamMemberPtrOutput {
-	return o
-}
-
-func (o PolicyTagIamMemberPtrOutput) ToPolicyTagIamMemberPtrOutputWithContext(ctx context.Context) PolicyTagIamMemberPtrOutput {
-	return o
-}
-
-func (o PolicyTagIamMemberPtrOutput) Elem() PolicyTagIamMemberOutput {
-	return o.ApplyT(func(v *PolicyTagIamMember) PolicyTagIamMember {
-		if v != nil {
-			return *v
-		}
-		var ret PolicyTagIamMember
-		return ret
-	}).(PolicyTagIamMemberOutput)
-}
-
 type PolicyTagIamMemberArrayOutput struct{ *pulumi.OutputState }
 
 func (PolicyTagIamMemberArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PolicyTagIamMember)(nil))
+	return reflect.TypeOf((*[]*PolicyTagIamMember)(nil)).Elem()
 }
 
 func (o PolicyTagIamMemberArrayOutput) ToPolicyTagIamMemberArrayOutput() PolicyTagIamMemberArrayOutput {
@@ -404,15 +341,15 @@ func (o PolicyTagIamMemberArrayOutput) ToPolicyTagIamMemberArrayOutputWithContex
 }
 
 func (o PolicyTagIamMemberArrayOutput) Index(i pulumi.IntInput) PolicyTagIamMemberOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyTagIamMember {
-		return vs[0].([]PolicyTagIamMember)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PolicyTagIamMember {
+		return vs[0].([]*PolicyTagIamMember)[vs[1].(int)]
 	}).(PolicyTagIamMemberOutput)
 }
 
 type PolicyTagIamMemberMapOutput struct{ *pulumi.OutputState }
 
 func (PolicyTagIamMemberMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]PolicyTagIamMember)(nil))
+	return reflect.TypeOf((*map[string]*PolicyTagIamMember)(nil)).Elem()
 }
 
 func (o PolicyTagIamMemberMapOutput) ToPolicyTagIamMemberMapOutput() PolicyTagIamMemberMapOutput {
@@ -424,18 +361,16 @@ func (o PolicyTagIamMemberMapOutput) ToPolicyTagIamMemberMapOutputWithContext(ct
 }
 
 func (o PolicyTagIamMemberMapOutput) MapIndex(k pulumi.StringInput) PolicyTagIamMemberOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) PolicyTagIamMember {
-		return vs[0].(map[string]PolicyTagIamMember)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *PolicyTagIamMember {
+		return vs[0].(map[string]*PolicyTagIamMember)[vs[1].(string)]
 	}).(PolicyTagIamMemberOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyTagIamMemberInput)(nil)).Elem(), &PolicyTagIamMember{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyTagIamMemberPtrInput)(nil)).Elem(), &PolicyTagIamMember{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyTagIamMemberArrayInput)(nil)).Elem(), PolicyTagIamMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyTagIamMemberMapInput)(nil)).Elem(), PolicyTagIamMemberMap{})
 	pulumi.RegisterOutputType(PolicyTagIamMemberOutput{})
-	pulumi.RegisterOutputType(PolicyTagIamMemberPtrOutput{})
 	pulumi.RegisterOutputType(PolicyTagIamMemberArrayOutput{})
 	pulumi.RegisterOutputType(PolicyTagIamMemberMapOutput{})
 }

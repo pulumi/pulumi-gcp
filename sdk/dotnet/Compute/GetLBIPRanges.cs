@@ -57,7 +57,7 @@ namespace Pulumi.Gcp.Compute
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetLBIPRangesResult> InvokeAsync(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetLBIPRangesResult>("gcp:compute/getLBIPRanges:getLBIPRanges", InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetLBIPRangesResult>("gcp:compute/getLBIPRanges:getLBIPRanges", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

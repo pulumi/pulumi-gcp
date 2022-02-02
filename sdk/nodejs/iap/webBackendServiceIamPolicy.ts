@@ -202,14 +202,14 @@ export class WebBackendServiceIamPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: WebBackendServiceIamPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: WebBackendServiceIamPolicyArgs | WebBackendServiceIamPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WebBackendServiceIamPolicyState | undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["policyData"] = state ? state.policyData : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["webBackendService"] = state ? state.webBackendService : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["policyData"] = state ? state.policyData : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["webBackendService"] = state ? state.webBackendService : undefined;
         } else {
             const args = argsOrState as WebBackendServiceIamPolicyArgs | undefined;
             if ((!args || args.policyData === undefined) && !opts.urn) {
@@ -218,15 +218,13 @@ export class WebBackendServiceIamPolicy extends pulumi.CustomResource {
             if ((!args || args.webBackendService === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'webBackendService'");
             }
-            inputs["policyData"] = args ? args.policyData : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["webBackendService"] = args ? args.webBackendService : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["policyData"] = args ? args.policyData : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["webBackendService"] = args ? args.webBackendService : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(WebBackendServiceIamPolicy.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(WebBackendServiceIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

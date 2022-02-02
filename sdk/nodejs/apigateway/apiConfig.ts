@@ -138,20 +138,20 @@ export class ApiConfig extends pulumi.CustomResource {
      */
     constructor(name: string, args: ApiConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ApiConfigArgs | ApiConfigState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApiConfigState | undefined;
-            inputs["api"] = state ? state.api : undefined;
-            inputs["apiConfigId"] = state ? state.apiConfigId : undefined;
-            inputs["apiConfigIdPrefix"] = state ? state.apiConfigIdPrefix : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["gatewayConfig"] = state ? state.gatewayConfig : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["openapiDocuments"] = state ? state.openapiDocuments : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["serviceConfigId"] = state ? state.serviceConfigId : undefined;
+            resourceInputs["api"] = state ? state.api : undefined;
+            resourceInputs["apiConfigId"] = state ? state.apiConfigId : undefined;
+            resourceInputs["apiConfigIdPrefix"] = state ? state.apiConfigIdPrefix : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["gatewayConfig"] = state ? state.gatewayConfig : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["openapiDocuments"] = state ? state.openapiDocuments : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["serviceConfigId"] = state ? state.serviceConfigId : undefined;
         } else {
             const args = argsOrState as ApiConfigArgs | undefined;
             if ((!args || args.api === undefined) && !opts.urn) {
@@ -160,21 +160,19 @@ export class ApiConfig extends pulumi.CustomResource {
             if ((!args || args.openapiDocuments === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'openapiDocuments'");
             }
-            inputs["api"] = args ? args.api : undefined;
-            inputs["apiConfigId"] = args ? args.apiConfigId : undefined;
-            inputs["apiConfigIdPrefix"] = args ? args.apiConfigIdPrefix : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["gatewayConfig"] = args ? args.gatewayConfig : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["openapiDocuments"] = args ? args.openapiDocuments : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["name"] = undefined /*out*/;
-            inputs["serviceConfigId"] = undefined /*out*/;
+            resourceInputs["api"] = args ? args.api : undefined;
+            resourceInputs["apiConfigId"] = args ? args.apiConfigId : undefined;
+            resourceInputs["apiConfigIdPrefix"] = args ? args.apiConfigIdPrefix : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["gatewayConfig"] = args ? args.gatewayConfig : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["openapiDocuments"] = args ? args.openapiDocuments : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["serviceConfigId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ApiConfig.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ApiConfig.__pulumiType, name, resourceInputs, opts);
     }
 }
 

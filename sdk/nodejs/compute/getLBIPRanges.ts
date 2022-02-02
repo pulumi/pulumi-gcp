@@ -32,9 +32,7 @@ export function getLBIPRanges(opts?: pulumi.InvokeOptions): Promise<GetLBIPRange
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:compute/getLBIPRanges:getLBIPRanges", {
     }, opts);
 }

@@ -366,7 +366,7 @@ type WebTypeComputeIamMemberInput interface {
 }
 
 func (*WebTypeComputeIamMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebTypeComputeIamMember)(nil))
+	return reflect.TypeOf((**WebTypeComputeIamMember)(nil)).Elem()
 }
 
 func (i *WebTypeComputeIamMember) ToWebTypeComputeIamMemberOutput() WebTypeComputeIamMemberOutput {
@@ -375,35 +375,6 @@ func (i *WebTypeComputeIamMember) ToWebTypeComputeIamMemberOutput() WebTypeCompu
 
 func (i *WebTypeComputeIamMember) ToWebTypeComputeIamMemberOutputWithContext(ctx context.Context) WebTypeComputeIamMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebTypeComputeIamMemberOutput)
-}
-
-func (i *WebTypeComputeIamMember) ToWebTypeComputeIamMemberPtrOutput() WebTypeComputeIamMemberPtrOutput {
-	return i.ToWebTypeComputeIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *WebTypeComputeIamMember) ToWebTypeComputeIamMemberPtrOutputWithContext(ctx context.Context) WebTypeComputeIamMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WebTypeComputeIamMemberPtrOutput)
-}
-
-type WebTypeComputeIamMemberPtrInput interface {
-	pulumi.Input
-
-	ToWebTypeComputeIamMemberPtrOutput() WebTypeComputeIamMemberPtrOutput
-	ToWebTypeComputeIamMemberPtrOutputWithContext(ctx context.Context) WebTypeComputeIamMemberPtrOutput
-}
-
-type webTypeComputeIamMemberPtrType WebTypeComputeIamMemberArgs
-
-func (*webTypeComputeIamMemberPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WebTypeComputeIamMember)(nil))
-}
-
-func (i *webTypeComputeIamMemberPtrType) ToWebTypeComputeIamMemberPtrOutput() WebTypeComputeIamMemberPtrOutput {
-	return i.ToWebTypeComputeIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *webTypeComputeIamMemberPtrType) ToWebTypeComputeIamMemberPtrOutputWithContext(ctx context.Context) WebTypeComputeIamMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WebTypeComputeIamMemberPtrOutput)
 }
 
 // WebTypeComputeIamMemberArrayInput is an input type that accepts WebTypeComputeIamMemberArray and WebTypeComputeIamMemberArrayOutput values.
@@ -459,7 +430,7 @@ func (i WebTypeComputeIamMemberMap) ToWebTypeComputeIamMemberMapOutputWithContex
 type WebTypeComputeIamMemberOutput struct{ *pulumi.OutputState }
 
 func (WebTypeComputeIamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebTypeComputeIamMember)(nil))
+	return reflect.TypeOf((**WebTypeComputeIamMember)(nil)).Elem()
 }
 
 func (o WebTypeComputeIamMemberOutput) ToWebTypeComputeIamMemberOutput() WebTypeComputeIamMemberOutput {
@@ -470,44 +441,10 @@ func (o WebTypeComputeIamMemberOutput) ToWebTypeComputeIamMemberOutputWithContex
 	return o
 }
 
-func (o WebTypeComputeIamMemberOutput) ToWebTypeComputeIamMemberPtrOutput() WebTypeComputeIamMemberPtrOutput {
-	return o.ToWebTypeComputeIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (o WebTypeComputeIamMemberOutput) ToWebTypeComputeIamMemberPtrOutputWithContext(ctx context.Context) WebTypeComputeIamMemberPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebTypeComputeIamMember) *WebTypeComputeIamMember {
-		return &v
-	}).(WebTypeComputeIamMemberPtrOutput)
-}
-
-type WebTypeComputeIamMemberPtrOutput struct{ *pulumi.OutputState }
-
-func (WebTypeComputeIamMemberPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WebTypeComputeIamMember)(nil))
-}
-
-func (o WebTypeComputeIamMemberPtrOutput) ToWebTypeComputeIamMemberPtrOutput() WebTypeComputeIamMemberPtrOutput {
-	return o
-}
-
-func (o WebTypeComputeIamMemberPtrOutput) ToWebTypeComputeIamMemberPtrOutputWithContext(ctx context.Context) WebTypeComputeIamMemberPtrOutput {
-	return o
-}
-
-func (o WebTypeComputeIamMemberPtrOutput) Elem() WebTypeComputeIamMemberOutput {
-	return o.ApplyT(func(v *WebTypeComputeIamMember) WebTypeComputeIamMember {
-		if v != nil {
-			return *v
-		}
-		var ret WebTypeComputeIamMember
-		return ret
-	}).(WebTypeComputeIamMemberOutput)
-}
-
 type WebTypeComputeIamMemberArrayOutput struct{ *pulumi.OutputState }
 
 func (WebTypeComputeIamMemberArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]WebTypeComputeIamMember)(nil))
+	return reflect.TypeOf((*[]*WebTypeComputeIamMember)(nil)).Elem()
 }
 
 func (o WebTypeComputeIamMemberArrayOutput) ToWebTypeComputeIamMemberArrayOutput() WebTypeComputeIamMemberArrayOutput {
@@ -519,15 +456,15 @@ func (o WebTypeComputeIamMemberArrayOutput) ToWebTypeComputeIamMemberArrayOutput
 }
 
 func (o WebTypeComputeIamMemberArrayOutput) Index(i pulumi.IntInput) WebTypeComputeIamMemberOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WebTypeComputeIamMember {
-		return vs[0].([]WebTypeComputeIamMember)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WebTypeComputeIamMember {
+		return vs[0].([]*WebTypeComputeIamMember)[vs[1].(int)]
 	}).(WebTypeComputeIamMemberOutput)
 }
 
 type WebTypeComputeIamMemberMapOutput struct{ *pulumi.OutputState }
 
 func (WebTypeComputeIamMemberMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]WebTypeComputeIamMember)(nil))
+	return reflect.TypeOf((*map[string]*WebTypeComputeIamMember)(nil)).Elem()
 }
 
 func (o WebTypeComputeIamMemberMapOutput) ToWebTypeComputeIamMemberMapOutput() WebTypeComputeIamMemberMapOutput {
@@ -539,18 +476,16 @@ func (o WebTypeComputeIamMemberMapOutput) ToWebTypeComputeIamMemberMapOutputWith
 }
 
 func (o WebTypeComputeIamMemberMapOutput) MapIndex(k pulumi.StringInput) WebTypeComputeIamMemberOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) WebTypeComputeIamMember {
-		return vs[0].(map[string]WebTypeComputeIamMember)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *WebTypeComputeIamMember {
+		return vs[0].(map[string]*WebTypeComputeIamMember)[vs[1].(string)]
 	}).(WebTypeComputeIamMemberOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WebTypeComputeIamMemberInput)(nil)).Elem(), &WebTypeComputeIamMember{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WebTypeComputeIamMemberPtrInput)(nil)).Elem(), &WebTypeComputeIamMember{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebTypeComputeIamMemberArrayInput)(nil)).Elem(), WebTypeComputeIamMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebTypeComputeIamMemberMapInput)(nil)).Elem(), WebTypeComputeIamMemberMap{})
 	pulumi.RegisterOutputType(WebTypeComputeIamMemberOutput{})
-	pulumi.RegisterOutputType(WebTypeComputeIamMemberPtrOutput{})
 	pulumi.RegisterOutputType(WebTypeComputeIamMemberArrayOutput{})
 	pulumi.RegisterOutputType(WebTypeComputeIamMemberMapOutput{})
 }

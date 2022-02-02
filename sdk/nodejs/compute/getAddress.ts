@@ -32,9 +32,7 @@ export function getAddress(args: GetAddressArgs, opts?: pulumi.InvokeOptions): P
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:compute/getAddress:getAddress", {
         "name": args.name,
         "project": args.project,

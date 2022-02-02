@@ -24,9 +24,7 @@ export function getHcVpnGateway(args: GetHcVpnGatewayArgs, opts?: pulumi.InvokeO
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:compute/getHcVpnGateway:getHcVpnGateway", {
         "name": args.name,
         "project": args.project,

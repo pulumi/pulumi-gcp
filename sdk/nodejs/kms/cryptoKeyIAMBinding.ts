@@ -200,15 +200,15 @@ export class CryptoKeyIAMBinding extends pulumi.CustomResource {
      */
     constructor(name: string, args: CryptoKeyIAMBindingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CryptoKeyIAMBindingArgs | CryptoKeyIAMBindingState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CryptoKeyIAMBindingState | undefined;
-            inputs["condition"] = state ? state.condition : undefined;
-            inputs["cryptoKeyId"] = state ? state.cryptoKeyId : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["members"] = state ? state.members : undefined;
-            inputs["role"] = state ? state.role : undefined;
+            resourceInputs["condition"] = state ? state.condition : undefined;
+            resourceInputs["cryptoKeyId"] = state ? state.cryptoKeyId : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["members"] = state ? state.members : undefined;
+            resourceInputs["role"] = state ? state.role : undefined;
         } else {
             const args = argsOrState as CryptoKeyIAMBindingArgs | undefined;
             if ((!args || args.cryptoKeyId === undefined) && !opts.urn) {
@@ -220,16 +220,14 @@ export class CryptoKeyIAMBinding extends pulumi.CustomResource {
             if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            inputs["condition"] = args ? args.condition : undefined;
-            inputs["cryptoKeyId"] = args ? args.cryptoKeyId : undefined;
-            inputs["members"] = args ? args.members : undefined;
-            inputs["role"] = args ? args.role : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["condition"] = args ? args.condition : undefined;
+            resourceInputs["cryptoKeyId"] = args ? args.cryptoKeyId : undefined;
+            resourceInputs["members"] = args ? args.members : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CryptoKeyIAMBinding.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CryptoKeyIAMBinding.__pulumiType, name, resourceInputs, opts);
     }
 }
 

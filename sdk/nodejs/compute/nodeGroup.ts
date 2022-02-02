@@ -174,44 +174,42 @@ export class NodeGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args: NodeGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NodeGroupArgs | NodeGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NodeGroupState | undefined;
-            inputs["autoscalingPolicy"] = state ? state.autoscalingPolicy : undefined;
-            inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["initialSize"] = state ? state.initialSize : undefined;
-            inputs["maintenancePolicy"] = state ? state.maintenancePolicy : undefined;
-            inputs["maintenanceWindow"] = state ? state.maintenanceWindow : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["nodeTemplate"] = state ? state.nodeTemplate : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
-            inputs["size"] = state ? state.size : undefined;
-            inputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["autoscalingPolicy"] = state ? state.autoscalingPolicy : undefined;
+            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["initialSize"] = state ? state.initialSize : undefined;
+            resourceInputs["maintenancePolicy"] = state ? state.maintenancePolicy : undefined;
+            resourceInputs["maintenanceWindow"] = state ? state.maintenanceWindow : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["nodeTemplate"] = state ? state.nodeTemplate : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["size"] = state ? state.size : undefined;
+            resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as NodeGroupArgs | undefined;
             if ((!args || args.nodeTemplate === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'nodeTemplate'");
             }
-            inputs["autoscalingPolicy"] = args ? args.autoscalingPolicy : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["initialSize"] = args ? args.initialSize : undefined;
-            inputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
-            inputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["nodeTemplate"] = args ? args.nodeTemplate : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["size"] = args ? args.size : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["autoscalingPolicy"] = args ? args.autoscalingPolicy : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["initialSize"] = args ? args.initialSize : undefined;
+            resourceInputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
+            resourceInputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["nodeTemplate"] = args ? args.nodeTemplate : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["size"] = args ? args.size : undefined;
+            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(NodeGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(NodeGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

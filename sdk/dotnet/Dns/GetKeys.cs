@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Dns
 {
@@ -39,10 +38,10 @@ namespace Pulumi.Gcp.Dns
         ///                 NonExistence = "nsec3",
         ///             },
         ///         });
-        ///         var fooDnsKeys = foo.Id.Apply(id =&gt; Gcp.Dns.GetKeys.InvokeAsync(new Gcp.Dns.GetKeysArgs
+        ///         var fooDnsKeys = Gcp.Dns.GetKeys.Invoke(new Gcp.Dns.GetKeysInvokeArgs
         ///         {
-        ///             ManagedZone = id,
-        ///         }));
+        ///             ManagedZone = foo.Id,
+        ///         });
         ///         this.FooDnsDsRecord = fooDnsKeys.Apply(fooDnsKeys =&gt; fooDnsKeys.KeySigningKeys?[0]?.DsRecord);
         ///     }
         /// 
@@ -54,7 +53,7 @@ namespace Pulumi.Gcp.Dns
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetKeysResult> InvokeAsync(GetKeysArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKeysResult>("gcp:dns/getKeys:getKeys", args ?? new GetKeysArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKeysResult>("gcp:dns/getKeys:getKeys", args ?? new GetKeysArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get the DNSKEY and DS records of DNSSEC-signed managed zones. For more information see the
@@ -83,10 +82,10 @@ namespace Pulumi.Gcp.Dns
         ///                 NonExistence = "nsec3",
         ///             },
         ///         });
-        ///         var fooDnsKeys = foo.Id.Apply(id =&gt; Gcp.Dns.GetKeys.InvokeAsync(new Gcp.Dns.GetKeysArgs
+        ///         var fooDnsKeys = Gcp.Dns.GetKeys.Invoke(new Gcp.Dns.GetKeysInvokeArgs
         ///         {
-        ///             ManagedZone = id,
-        ///         }));
+        ///             ManagedZone = foo.Id,
+        ///         });
         ///         this.FooDnsDsRecord = fooDnsKeys.Apply(fooDnsKeys =&gt; fooDnsKeys.KeySigningKeys?[0]?.DsRecord);
         ///     }
         /// 
@@ -98,7 +97,7 @@ namespace Pulumi.Gcp.Dns
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetKeysResult> Invoke(GetKeysInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKeysResult>("gcp:dns/getKeys:getKeys", args ?? new GetKeysInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetKeysResult>("gcp:dns/getKeys:getKeys", args ?? new GetKeysInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -225,29 +225,29 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstanceGroupManagerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceGroupManagerArgs | InstanceGroupManagerState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceGroupManagerState | undefined;
-            inputs["autoHealingPolicies"] = state ? state.autoHealingPolicies : undefined;
-            inputs["baseInstanceName"] = state ? state.baseInstanceName : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["fingerprint"] = state ? state.fingerprint : undefined;
-            inputs["instanceGroup"] = state ? state.instanceGroup : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["namedPorts"] = state ? state.namedPorts : undefined;
-            inputs["operation"] = state ? state.operation : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
-            inputs["statefulDisks"] = state ? state.statefulDisks : undefined;
-            inputs["statuses"] = state ? state.statuses : undefined;
-            inputs["targetPools"] = state ? state.targetPools : undefined;
-            inputs["targetSize"] = state ? state.targetSize : undefined;
-            inputs["updatePolicy"] = state ? state.updatePolicy : undefined;
-            inputs["versions"] = state ? state.versions : undefined;
-            inputs["waitForInstances"] = state ? state.waitForInstances : undefined;
-            inputs["waitForInstancesStatus"] = state ? state.waitForInstancesStatus : undefined;
-            inputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["autoHealingPolicies"] = state ? state.autoHealingPolicies : undefined;
+            resourceInputs["baseInstanceName"] = state ? state.baseInstanceName : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
+            resourceInputs["instanceGroup"] = state ? state.instanceGroup : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["namedPorts"] = state ? state.namedPorts : undefined;
+            resourceInputs["operation"] = state ? state.operation : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["statefulDisks"] = state ? state.statefulDisks : undefined;
+            resourceInputs["statuses"] = state ? state.statuses : undefined;
+            resourceInputs["targetPools"] = state ? state.targetPools : undefined;
+            resourceInputs["targetSize"] = state ? state.targetSize : undefined;
+            resourceInputs["updatePolicy"] = state ? state.updatePolicy : undefined;
+            resourceInputs["versions"] = state ? state.versions : undefined;
+            resourceInputs["waitForInstances"] = state ? state.waitForInstances : undefined;
+            resourceInputs["waitForInstancesStatus"] = state ? state.waitForInstancesStatus : undefined;
+            resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as InstanceGroupManagerArgs | undefined;
             if ((!args || args.baseInstanceName === undefined) && !opts.urn) {
@@ -256,30 +256,28 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             if ((!args || args.versions === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'versions'");
             }
-            inputs["autoHealingPolicies"] = args ? args.autoHealingPolicies : undefined;
-            inputs["baseInstanceName"] = args ? args.baseInstanceName : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["namedPorts"] = args ? args.namedPorts : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["statefulDisks"] = args ? args.statefulDisks : undefined;
-            inputs["targetPools"] = args ? args.targetPools : undefined;
-            inputs["targetSize"] = args ? args.targetSize : undefined;
-            inputs["updatePolicy"] = args ? args.updatePolicy : undefined;
-            inputs["versions"] = args ? args.versions : undefined;
-            inputs["waitForInstances"] = args ? args.waitForInstances : undefined;
-            inputs["waitForInstancesStatus"] = args ? args.waitForInstancesStatus : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
-            inputs["fingerprint"] = undefined /*out*/;
-            inputs["instanceGroup"] = undefined /*out*/;
-            inputs["operation"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["statuses"] = undefined /*out*/;
+            resourceInputs["autoHealingPolicies"] = args ? args.autoHealingPolicies : undefined;
+            resourceInputs["baseInstanceName"] = args ? args.baseInstanceName : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["namedPorts"] = args ? args.namedPorts : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["statefulDisks"] = args ? args.statefulDisks : undefined;
+            resourceInputs["targetPools"] = args ? args.targetPools : undefined;
+            resourceInputs["targetSize"] = args ? args.targetSize : undefined;
+            resourceInputs["updatePolicy"] = args ? args.updatePolicy : undefined;
+            resourceInputs["versions"] = args ? args.versions : undefined;
+            resourceInputs["waitForInstances"] = args ? args.waitForInstances : undefined;
+            resourceInputs["waitForInstancesStatus"] = args ? args.waitForInstancesStatus : undefined;
+            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["instanceGroup"] = undefined /*out*/;
+            resourceInputs["operation"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["statuses"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(InstanceGroupManager.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(InstanceGroupManager.__pulumiType, name, resourceInputs, opts);
     }
 }
 

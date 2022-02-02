@@ -141,37 +141,35 @@ export class TargetPool extends pulumi.CustomResource {
      */
     constructor(name: string, args?: TargetPoolArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TargetPoolArgs | TargetPoolState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TargetPoolState | undefined;
-            inputs["backupPool"] = state ? state.backupPool : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["failoverRatio"] = state ? state.failoverRatio : undefined;
-            inputs["healthChecks"] = state ? state.healthChecks : undefined;
-            inputs["instances"] = state ? state.instances : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
-            inputs["sessionAffinity"] = state ? state.sessionAffinity : undefined;
+            resourceInputs["backupPool"] = state ? state.backupPool : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["failoverRatio"] = state ? state.failoverRatio : undefined;
+            resourceInputs["healthChecks"] = state ? state.healthChecks : undefined;
+            resourceInputs["instances"] = state ? state.instances : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["sessionAffinity"] = state ? state.sessionAffinity : undefined;
         } else {
             const args = argsOrState as TargetPoolArgs | undefined;
-            inputs["backupPool"] = args ? args.backupPool : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["failoverRatio"] = args ? args.failoverRatio : undefined;
-            inputs["healthChecks"] = args ? args.healthChecks : undefined;
-            inputs["instances"] = args ? args.instances : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["sessionAffinity"] = args ? args.sessionAffinity : undefined;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["backupPool"] = args ? args.backupPool : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["failoverRatio"] = args ? args.failoverRatio : undefined;
+            resourceInputs["healthChecks"] = args ? args.healthChecks : undefined;
+            resourceInputs["instances"] = args ? args.instances : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["sessionAffinity"] = args ? args.sessionAffinity : undefined;
+            resourceInputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(TargetPool.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(TargetPool.__pulumiType, name, resourceInputs, opts);
     }
 }
 

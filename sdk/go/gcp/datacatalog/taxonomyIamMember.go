@@ -271,7 +271,7 @@ type TaxonomyIamMemberInput interface {
 }
 
 func (*TaxonomyIamMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*TaxonomyIamMember)(nil))
+	return reflect.TypeOf((**TaxonomyIamMember)(nil)).Elem()
 }
 
 func (i *TaxonomyIamMember) ToTaxonomyIamMemberOutput() TaxonomyIamMemberOutput {
@@ -280,35 +280,6 @@ func (i *TaxonomyIamMember) ToTaxonomyIamMemberOutput() TaxonomyIamMemberOutput 
 
 func (i *TaxonomyIamMember) ToTaxonomyIamMemberOutputWithContext(ctx context.Context) TaxonomyIamMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyIamMemberOutput)
-}
-
-func (i *TaxonomyIamMember) ToTaxonomyIamMemberPtrOutput() TaxonomyIamMemberPtrOutput {
-	return i.ToTaxonomyIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *TaxonomyIamMember) ToTaxonomyIamMemberPtrOutputWithContext(ctx context.Context) TaxonomyIamMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyIamMemberPtrOutput)
-}
-
-type TaxonomyIamMemberPtrInput interface {
-	pulumi.Input
-
-	ToTaxonomyIamMemberPtrOutput() TaxonomyIamMemberPtrOutput
-	ToTaxonomyIamMemberPtrOutputWithContext(ctx context.Context) TaxonomyIamMemberPtrOutput
-}
-
-type taxonomyIamMemberPtrType TaxonomyIamMemberArgs
-
-func (*taxonomyIamMemberPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TaxonomyIamMember)(nil))
-}
-
-func (i *taxonomyIamMemberPtrType) ToTaxonomyIamMemberPtrOutput() TaxonomyIamMemberPtrOutput {
-	return i.ToTaxonomyIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *taxonomyIamMemberPtrType) ToTaxonomyIamMemberPtrOutputWithContext(ctx context.Context) TaxonomyIamMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyIamMemberPtrOutput)
 }
 
 // TaxonomyIamMemberArrayInput is an input type that accepts TaxonomyIamMemberArray and TaxonomyIamMemberArrayOutput values.
@@ -364,7 +335,7 @@ func (i TaxonomyIamMemberMap) ToTaxonomyIamMemberMapOutputWithContext(ctx contex
 type TaxonomyIamMemberOutput struct{ *pulumi.OutputState }
 
 func (TaxonomyIamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TaxonomyIamMember)(nil))
+	return reflect.TypeOf((**TaxonomyIamMember)(nil)).Elem()
 }
 
 func (o TaxonomyIamMemberOutput) ToTaxonomyIamMemberOutput() TaxonomyIamMemberOutput {
@@ -375,44 +346,10 @@ func (o TaxonomyIamMemberOutput) ToTaxonomyIamMemberOutputWithContext(ctx contex
 	return o
 }
 
-func (o TaxonomyIamMemberOutput) ToTaxonomyIamMemberPtrOutput() TaxonomyIamMemberPtrOutput {
-	return o.ToTaxonomyIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (o TaxonomyIamMemberOutput) ToTaxonomyIamMemberPtrOutputWithContext(ctx context.Context) TaxonomyIamMemberPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TaxonomyIamMember) *TaxonomyIamMember {
-		return &v
-	}).(TaxonomyIamMemberPtrOutput)
-}
-
-type TaxonomyIamMemberPtrOutput struct{ *pulumi.OutputState }
-
-func (TaxonomyIamMemberPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TaxonomyIamMember)(nil))
-}
-
-func (o TaxonomyIamMemberPtrOutput) ToTaxonomyIamMemberPtrOutput() TaxonomyIamMemberPtrOutput {
-	return o
-}
-
-func (o TaxonomyIamMemberPtrOutput) ToTaxonomyIamMemberPtrOutputWithContext(ctx context.Context) TaxonomyIamMemberPtrOutput {
-	return o
-}
-
-func (o TaxonomyIamMemberPtrOutput) Elem() TaxonomyIamMemberOutput {
-	return o.ApplyT(func(v *TaxonomyIamMember) TaxonomyIamMember {
-		if v != nil {
-			return *v
-		}
-		var ret TaxonomyIamMember
-		return ret
-	}).(TaxonomyIamMemberOutput)
-}
-
 type TaxonomyIamMemberArrayOutput struct{ *pulumi.OutputState }
 
 func (TaxonomyIamMemberArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TaxonomyIamMember)(nil))
+	return reflect.TypeOf((*[]*TaxonomyIamMember)(nil)).Elem()
 }
 
 func (o TaxonomyIamMemberArrayOutput) ToTaxonomyIamMemberArrayOutput() TaxonomyIamMemberArrayOutput {
@@ -424,15 +361,15 @@ func (o TaxonomyIamMemberArrayOutput) ToTaxonomyIamMemberArrayOutputWithContext(
 }
 
 func (o TaxonomyIamMemberArrayOutput) Index(i pulumi.IntInput) TaxonomyIamMemberOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TaxonomyIamMember {
-		return vs[0].([]TaxonomyIamMember)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TaxonomyIamMember {
+		return vs[0].([]*TaxonomyIamMember)[vs[1].(int)]
 	}).(TaxonomyIamMemberOutput)
 }
 
 type TaxonomyIamMemberMapOutput struct{ *pulumi.OutputState }
 
 func (TaxonomyIamMemberMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]TaxonomyIamMember)(nil))
+	return reflect.TypeOf((*map[string]*TaxonomyIamMember)(nil)).Elem()
 }
 
 func (o TaxonomyIamMemberMapOutput) ToTaxonomyIamMemberMapOutput() TaxonomyIamMemberMapOutput {
@@ -444,18 +381,16 @@ func (o TaxonomyIamMemberMapOutput) ToTaxonomyIamMemberMapOutputWithContext(ctx 
 }
 
 func (o TaxonomyIamMemberMapOutput) MapIndex(k pulumi.StringInput) TaxonomyIamMemberOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TaxonomyIamMember {
-		return vs[0].(map[string]TaxonomyIamMember)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *TaxonomyIamMember {
+		return vs[0].(map[string]*TaxonomyIamMember)[vs[1].(string)]
 	}).(TaxonomyIamMemberOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TaxonomyIamMemberInput)(nil)).Elem(), &TaxonomyIamMember{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TaxonomyIamMemberPtrInput)(nil)).Elem(), &TaxonomyIamMember{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TaxonomyIamMemberArrayInput)(nil)).Elem(), TaxonomyIamMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TaxonomyIamMemberMapInput)(nil)).Elem(), TaxonomyIamMemberMap{})
 	pulumi.RegisterOutputType(TaxonomyIamMemberOutput{})
-	pulumi.RegisterOutputType(TaxonomyIamMemberPtrOutput{})
 	pulumi.RegisterOutputType(TaxonomyIamMemberArrayOutput{})
 	pulumi.RegisterOutputType(TaxonomyIamMemberMapOutput{})
 }

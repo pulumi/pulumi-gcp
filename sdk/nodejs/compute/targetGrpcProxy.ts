@@ -217,35 +217,33 @@ export class TargetGrpcProxy extends pulumi.CustomResource {
      */
     constructor(name: string, args?: TargetGrpcProxyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TargetGrpcProxyArgs | TargetGrpcProxyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TargetGrpcProxyState | undefined;
-            inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["fingerprint"] = state ? state.fingerprint : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
-            inputs["selfLinkWithId"] = state ? state.selfLinkWithId : undefined;
-            inputs["urlMap"] = state ? state.urlMap : undefined;
-            inputs["validateForProxyless"] = state ? state.validateForProxyless : undefined;
+            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["selfLinkWithId"] = state ? state.selfLinkWithId : undefined;
+            resourceInputs["urlMap"] = state ? state.urlMap : undefined;
+            resourceInputs["validateForProxyless"] = state ? state.validateForProxyless : undefined;
         } else {
             const args = argsOrState as TargetGrpcProxyArgs | undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["urlMap"] = args ? args.urlMap : undefined;
-            inputs["validateForProxyless"] = args ? args.validateForProxyless : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["fingerprint"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["selfLinkWithId"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["urlMap"] = args ? args.urlMap : undefined;
+            resourceInputs["validateForProxyless"] = args ? args.validateForProxyless : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["selfLinkWithId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(TargetGrpcProxy.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(TargetGrpcProxy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

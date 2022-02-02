@@ -222,26 +222,26 @@ export class RouterNat extends pulumi.CustomResource {
      */
     constructor(name: string, args: RouterNatArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RouterNatArgs | RouterNatState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouterNatState | undefined;
-            inputs["drainNatIps"] = state ? state.drainNatIps : undefined;
-            inputs["enableEndpointIndependentMapping"] = state ? state.enableEndpointIndependentMapping : undefined;
-            inputs["icmpIdleTimeoutSec"] = state ? state.icmpIdleTimeoutSec : undefined;
-            inputs["logConfig"] = state ? state.logConfig : undefined;
-            inputs["minPortsPerVm"] = state ? state.minPortsPerVm : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["natIpAllocateOption"] = state ? state.natIpAllocateOption : undefined;
-            inputs["natIps"] = state ? state.natIps : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["router"] = state ? state.router : undefined;
-            inputs["sourceSubnetworkIpRangesToNat"] = state ? state.sourceSubnetworkIpRangesToNat : undefined;
-            inputs["subnetworks"] = state ? state.subnetworks : undefined;
-            inputs["tcpEstablishedIdleTimeoutSec"] = state ? state.tcpEstablishedIdleTimeoutSec : undefined;
-            inputs["tcpTransitoryIdleTimeoutSec"] = state ? state.tcpTransitoryIdleTimeoutSec : undefined;
-            inputs["udpIdleTimeoutSec"] = state ? state.udpIdleTimeoutSec : undefined;
+            resourceInputs["drainNatIps"] = state ? state.drainNatIps : undefined;
+            resourceInputs["enableEndpointIndependentMapping"] = state ? state.enableEndpointIndependentMapping : undefined;
+            resourceInputs["icmpIdleTimeoutSec"] = state ? state.icmpIdleTimeoutSec : undefined;
+            resourceInputs["logConfig"] = state ? state.logConfig : undefined;
+            resourceInputs["minPortsPerVm"] = state ? state.minPortsPerVm : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["natIpAllocateOption"] = state ? state.natIpAllocateOption : undefined;
+            resourceInputs["natIps"] = state ? state.natIps : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["router"] = state ? state.router : undefined;
+            resourceInputs["sourceSubnetworkIpRangesToNat"] = state ? state.sourceSubnetworkIpRangesToNat : undefined;
+            resourceInputs["subnetworks"] = state ? state.subnetworks : undefined;
+            resourceInputs["tcpEstablishedIdleTimeoutSec"] = state ? state.tcpEstablishedIdleTimeoutSec : undefined;
+            resourceInputs["tcpTransitoryIdleTimeoutSec"] = state ? state.tcpTransitoryIdleTimeoutSec : undefined;
+            resourceInputs["udpIdleTimeoutSec"] = state ? state.udpIdleTimeoutSec : undefined;
         } else {
             const args = argsOrState as RouterNatArgs | undefined;
             if ((!args || args.natIpAllocateOption === undefined) && !opts.urn) {
@@ -253,27 +253,25 @@ export class RouterNat extends pulumi.CustomResource {
             if ((!args || args.sourceSubnetworkIpRangesToNat === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceSubnetworkIpRangesToNat'");
             }
-            inputs["drainNatIps"] = args ? args.drainNatIps : undefined;
-            inputs["enableEndpointIndependentMapping"] = args ? args.enableEndpointIndependentMapping : undefined;
-            inputs["icmpIdleTimeoutSec"] = args ? args.icmpIdleTimeoutSec : undefined;
-            inputs["logConfig"] = args ? args.logConfig : undefined;
-            inputs["minPortsPerVm"] = args ? args.minPortsPerVm : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["natIpAllocateOption"] = args ? args.natIpAllocateOption : undefined;
-            inputs["natIps"] = args ? args.natIps : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["router"] = args ? args.router : undefined;
-            inputs["sourceSubnetworkIpRangesToNat"] = args ? args.sourceSubnetworkIpRangesToNat : undefined;
-            inputs["subnetworks"] = args ? args.subnetworks : undefined;
-            inputs["tcpEstablishedIdleTimeoutSec"] = args ? args.tcpEstablishedIdleTimeoutSec : undefined;
-            inputs["tcpTransitoryIdleTimeoutSec"] = args ? args.tcpTransitoryIdleTimeoutSec : undefined;
-            inputs["udpIdleTimeoutSec"] = args ? args.udpIdleTimeoutSec : undefined;
+            resourceInputs["drainNatIps"] = args ? args.drainNatIps : undefined;
+            resourceInputs["enableEndpointIndependentMapping"] = args ? args.enableEndpointIndependentMapping : undefined;
+            resourceInputs["icmpIdleTimeoutSec"] = args ? args.icmpIdleTimeoutSec : undefined;
+            resourceInputs["logConfig"] = args ? args.logConfig : undefined;
+            resourceInputs["minPortsPerVm"] = args ? args.minPortsPerVm : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["natIpAllocateOption"] = args ? args.natIpAllocateOption : undefined;
+            resourceInputs["natIps"] = args ? args.natIps : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["router"] = args ? args.router : undefined;
+            resourceInputs["sourceSubnetworkIpRangesToNat"] = args ? args.sourceSubnetworkIpRangesToNat : undefined;
+            resourceInputs["subnetworks"] = args ? args.subnetworks : undefined;
+            resourceInputs["tcpEstablishedIdleTimeoutSec"] = args ? args.tcpEstablishedIdleTimeoutSec : undefined;
+            resourceInputs["tcpTransitoryIdleTimeoutSec"] = args ? args.tcpTransitoryIdleTimeoutSec : undefined;
+            resourceInputs["udpIdleTimeoutSec"] = args ? args.udpIdleTimeoutSec : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(RouterNat.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(RouterNat.__pulumiType, name, resourceInputs, opts);
     }
 }
 

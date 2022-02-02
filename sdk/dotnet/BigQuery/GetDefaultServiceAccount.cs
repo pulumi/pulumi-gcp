@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.BigQuery
 {
@@ -50,7 +49,7 @@ namespace Pulumi.Gcp.BigQuery
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDefaultServiceAccountResult> InvokeAsync(GetDefaultServiceAccountArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDefaultServiceAccountResult>("gcp:bigquery/getDefaultServiceAccount:getDefaultServiceAccount", args ?? new GetDefaultServiceAccountArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDefaultServiceAccountResult>("gcp:bigquery/getDefaultServiceAccount:getDefaultServiceAccount", args ?? new GetDefaultServiceAccountArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get the email address of a project's unique BigQuery service account.
@@ -90,7 +89,7 @@ namespace Pulumi.Gcp.BigQuery
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDefaultServiceAccountResult> Invoke(GetDefaultServiceAccountInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDefaultServiceAccountResult>("gcp:bigquery/getDefaultServiceAccount:getDefaultServiceAccount", args ?? new GetDefaultServiceAccountInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetDefaultServiceAccountResult>("gcp:bigquery/getDefaultServiceAccount:getDefaultServiceAccount", args ?? new GetDefaultServiceAccountInvokeArgs(), options.WithDefaults());
     }
 
 

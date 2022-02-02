@@ -29,7 +29,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := serviceAccount.NewAccount(ctx, "_default", &serviceAccount.AccountArgs{
+// 		_, err := serviceAccount.NewAccount(ctx, "default", &serviceAccount.AccountArgs{
 // 			AccountId:   pulumi.String("service-account-id"),
 // 			DisplayName: pulumi.String("Service Account"),
 // 		})
@@ -445,7 +445,7 @@ type NodePoolInput interface {
 }
 
 func (*NodePool) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodePool)(nil))
+	return reflect.TypeOf((**NodePool)(nil)).Elem()
 }
 
 func (i *NodePool) ToNodePoolOutput() NodePoolOutput {
@@ -454,35 +454,6 @@ func (i *NodePool) ToNodePoolOutput() NodePoolOutput {
 
 func (i *NodePool) ToNodePoolOutputWithContext(ctx context.Context) NodePoolOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NodePoolOutput)
-}
-
-func (i *NodePool) ToNodePoolPtrOutput() NodePoolPtrOutput {
-	return i.ToNodePoolPtrOutputWithContext(context.Background())
-}
-
-func (i *NodePool) ToNodePoolPtrOutputWithContext(ctx context.Context) NodePoolPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NodePoolPtrOutput)
-}
-
-type NodePoolPtrInput interface {
-	pulumi.Input
-
-	ToNodePoolPtrOutput() NodePoolPtrOutput
-	ToNodePoolPtrOutputWithContext(ctx context.Context) NodePoolPtrOutput
-}
-
-type nodePoolPtrType NodePoolArgs
-
-func (*nodePoolPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NodePool)(nil))
-}
-
-func (i *nodePoolPtrType) ToNodePoolPtrOutput() NodePoolPtrOutput {
-	return i.ToNodePoolPtrOutputWithContext(context.Background())
-}
-
-func (i *nodePoolPtrType) ToNodePoolPtrOutputWithContext(ctx context.Context) NodePoolPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NodePoolPtrOutput)
 }
 
 // NodePoolArrayInput is an input type that accepts NodePoolArray and NodePoolArrayOutput values.
@@ -538,7 +509,7 @@ func (i NodePoolMap) ToNodePoolMapOutputWithContext(ctx context.Context) NodePoo
 type NodePoolOutput struct{ *pulumi.OutputState }
 
 func (NodePoolOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodePool)(nil))
+	return reflect.TypeOf((**NodePool)(nil)).Elem()
 }
 
 func (o NodePoolOutput) ToNodePoolOutput() NodePoolOutput {
@@ -549,44 +520,10 @@ func (o NodePoolOutput) ToNodePoolOutputWithContext(ctx context.Context) NodePoo
 	return o
 }
 
-func (o NodePoolOutput) ToNodePoolPtrOutput() NodePoolPtrOutput {
-	return o.ToNodePoolPtrOutputWithContext(context.Background())
-}
-
-func (o NodePoolOutput) ToNodePoolPtrOutputWithContext(ctx context.Context) NodePoolPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePool) *NodePool {
-		return &v
-	}).(NodePoolPtrOutput)
-}
-
-type NodePoolPtrOutput struct{ *pulumi.OutputState }
-
-func (NodePoolPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NodePool)(nil))
-}
-
-func (o NodePoolPtrOutput) ToNodePoolPtrOutput() NodePoolPtrOutput {
-	return o
-}
-
-func (o NodePoolPtrOutput) ToNodePoolPtrOutputWithContext(ctx context.Context) NodePoolPtrOutput {
-	return o
-}
-
-func (o NodePoolPtrOutput) Elem() NodePoolOutput {
-	return o.ApplyT(func(v *NodePool) NodePool {
-		if v != nil {
-			return *v
-		}
-		var ret NodePool
-		return ret
-	}).(NodePoolOutput)
-}
-
 type NodePoolArrayOutput struct{ *pulumi.OutputState }
 
 func (NodePoolArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NodePool)(nil))
+	return reflect.TypeOf((*[]*NodePool)(nil)).Elem()
 }
 
 func (o NodePoolArrayOutput) ToNodePoolArrayOutput() NodePoolArrayOutput {
@@ -598,15 +535,15 @@ func (o NodePoolArrayOutput) ToNodePoolArrayOutputWithContext(ctx context.Contex
 }
 
 func (o NodePoolArrayOutput) Index(i pulumi.IntInput) NodePoolOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodePool {
-		return vs[0].([]NodePool)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NodePool {
+		return vs[0].([]*NodePool)[vs[1].(int)]
 	}).(NodePoolOutput)
 }
 
 type NodePoolMapOutput struct{ *pulumi.OutputState }
 
 func (NodePoolMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]NodePool)(nil))
+	return reflect.TypeOf((*map[string]*NodePool)(nil)).Elem()
 }
 
 func (o NodePoolMapOutput) ToNodePoolMapOutput() NodePoolMapOutput {
@@ -618,18 +555,16 @@ func (o NodePoolMapOutput) ToNodePoolMapOutputWithContext(ctx context.Context) N
 }
 
 func (o NodePoolMapOutput) MapIndex(k pulumi.StringInput) NodePoolOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NodePool {
-		return vs[0].(map[string]NodePool)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *NodePool {
+		return vs[0].(map[string]*NodePool)[vs[1].(string)]
 	}).(NodePoolOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolInput)(nil)).Elem(), &NodePool{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolPtrInput)(nil)).Elem(), &NodePool{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolArrayInput)(nil)).Elem(), NodePoolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolMapInput)(nil)).Elem(), NodePoolMap{})
 	pulumi.RegisterOutputType(NodePoolOutput{})
-	pulumi.RegisterOutputType(NodePoolPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolArrayOutput{})
 	pulumi.RegisterOutputType(NodePoolMapOutput{})
 }

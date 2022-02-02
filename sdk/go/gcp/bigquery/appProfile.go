@@ -281,7 +281,7 @@ type AppProfileInput interface {
 }
 
 func (*AppProfile) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppProfile)(nil))
+	return reflect.TypeOf((**AppProfile)(nil)).Elem()
 }
 
 func (i *AppProfile) ToAppProfileOutput() AppProfileOutput {
@@ -290,35 +290,6 @@ func (i *AppProfile) ToAppProfileOutput() AppProfileOutput {
 
 func (i *AppProfile) ToAppProfileOutputWithContext(ctx context.Context) AppProfileOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AppProfileOutput)
-}
-
-func (i *AppProfile) ToAppProfilePtrOutput() AppProfilePtrOutput {
-	return i.ToAppProfilePtrOutputWithContext(context.Background())
-}
-
-func (i *AppProfile) ToAppProfilePtrOutputWithContext(ctx context.Context) AppProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppProfilePtrOutput)
-}
-
-type AppProfilePtrInput interface {
-	pulumi.Input
-
-	ToAppProfilePtrOutput() AppProfilePtrOutput
-	ToAppProfilePtrOutputWithContext(ctx context.Context) AppProfilePtrOutput
-}
-
-type appProfilePtrType AppProfileArgs
-
-func (*appProfilePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppProfile)(nil))
-}
-
-func (i *appProfilePtrType) ToAppProfilePtrOutput() AppProfilePtrOutput {
-	return i.ToAppProfilePtrOutputWithContext(context.Background())
-}
-
-func (i *appProfilePtrType) ToAppProfilePtrOutputWithContext(ctx context.Context) AppProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppProfilePtrOutput)
 }
 
 // AppProfileArrayInput is an input type that accepts AppProfileArray and AppProfileArrayOutput values.
@@ -374,7 +345,7 @@ func (i AppProfileMap) ToAppProfileMapOutputWithContext(ctx context.Context) App
 type AppProfileOutput struct{ *pulumi.OutputState }
 
 func (AppProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppProfile)(nil))
+	return reflect.TypeOf((**AppProfile)(nil)).Elem()
 }
 
 func (o AppProfileOutput) ToAppProfileOutput() AppProfileOutput {
@@ -385,44 +356,10 @@ func (o AppProfileOutput) ToAppProfileOutputWithContext(ctx context.Context) App
 	return o
 }
 
-func (o AppProfileOutput) ToAppProfilePtrOutput() AppProfilePtrOutput {
-	return o.ToAppProfilePtrOutputWithContext(context.Background())
-}
-
-func (o AppProfileOutput) ToAppProfilePtrOutputWithContext(ctx context.Context) AppProfilePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppProfile) *AppProfile {
-		return &v
-	}).(AppProfilePtrOutput)
-}
-
-type AppProfilePtrOutput struct{ *pulumi.OutputState }
-
-func (AppProfilePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppProfile)(nil))
-}
-
-func (o AppProfilePtrOutput) ToAppProfilePtrOutput() AppProfilePtrOutput {
-	return o
-}
-
-func (o AppProfilePtrOutput) ToAppProfilePtrOutputWithContext(ctx context.Context) AppProfilePtrOutput {
-	return o
-}
-
-func (o AppProfilePtrOutput) Elem() AppProfileOutput {
-	return o.ApplyT(func(v *AppProfile) AppProfile {
-		if v != nil {
-			return *v
-		}
-		var ret AppProfile
-		return ret
-	}).(AppProfileOutput)
-}
-
 type AppProfileArrayOutput struct{ *pulumi.OutputState }
 
 func (AppProfileArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AppProfile)(nil))
+	return reflect.TypeOf((*[]*AppProfile)(nil)).Elem()
 }
 
 func (o AppProfileArrayOutput) ToAppProfileArrayOutput() AppProfileArrayOutput {
@@ -434,15 +371,15 @@ func (o AppProfileArrayOutput) ToAppProfileArrayOutputWithContext(ctx context.Co
 }
 
 func (o AppProfileArrayOutput) Index(i pulumi.IntInput) AppProfileOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppProfile {
-		return vs[0].([]AppProfile)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AppProfile {
+		return vs[0].([]*AppProfile)[vs[1].(int)]
 	}).(AppProfileOutput)
 }
 
 type AppProfileMapOutput struct{ *pulumi.OutputState }
 
 func (AppProfileMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AppProfile)(nil))
+	return reflect.TypeOf((*map[string]*AppProfile)(nil)).Elem()
 }
 
 func (o AppProfileMapOutput) ToAppProfileMapOutput() AppProfileMapOutput {
@@ -454,18 +391,16 @@ func (o AppProfileMapOutput) ToAppProfileMapOutputWithContext(ctx context.Contex
 }
 
 func (o AppProfileMapOutput) MapIndex(k pulumi.StringInput) AppProfileOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AppProfile {
-		return vs[0].(map[string]AppProfile)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AppProfile {
+		return vs[0].(map[string]*AppProfile)[vs[1].(string)]
 	}).(AppProfileOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppProfileInput)(nil)).Elem(), &AppProfile{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppProfilePtrInput)(nil)).Elem(), &AppProfile{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppProfileArrayInput)(nil)).Elem(), AppProfileArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppProfileMapInput)(nil)).Elem(), AppProfileMap{})
 	pulumi.RegisterOutputType(AppProfileOutput{})
-	pulumi.RegisterOutputType(AppProfilePtrOutput{})
 	pulumi.RegisterOutputType(AppProfileArrayOutput{})
 	pulumi.RegisterOutputType(AppProfileMapOutput{})
 }

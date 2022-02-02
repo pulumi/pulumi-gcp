@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Organizations
 {
@@ -84,7 +83,7 @@ namespace Pulumi.Gcp.Organizations
         /// from another resource is the only way to apply an IAM policy to a resource.
         /// </summary>
         public static Task<GetIAMPolicyResult> InvokeAsync(GetIAMPolicyArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetIAMPolicyResult>("gcp:organizations/getIAMPolicy:getIAMPolicy", args ?? new GetIAMPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetIAMPolicyResult>("gcp:organizations/getIAMPolicy:getIAMPolicy", args ?? new GetIAMPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Generates an IAM policy document that may be referenced by and applied to
@@ -158,7 +157,7 @@ namespace Pulumi.Gcp.Organizations
         /// from another resource is the only way to apply an IAM policy to a resource.
         /// </summary>
         public static Output<GetIAMPolicyResult> Invoke(GetIAMPolicyInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetIAMPolicyResult>("gcp:organizations/getIAMPolicy:getIAMPolicy", args ?? new GetIAMPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetIAMPolicyResult>("gcp:organizations/getIAMPolicy:getIAMPolicy", args ?? new GetIAMPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

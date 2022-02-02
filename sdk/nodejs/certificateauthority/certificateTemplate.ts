@@ -191,40 +191,38 @@ export class CertificateTemplate extends pulumi.CustomResource {
      */
     constructor(name: string, args: CertificateTemplateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CertificateTemplateArgs | CertificateTemplateState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CertificateTemplateState | undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["identityConstraints"] = state ? state.identityConstraints : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["passthroughExtensions"] = state ? state.passthroughExtensions : undefined;
-            inputs["predefinedValues"] = state ? state.predefinedValues : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["identityConstraints"] = state ? state.identityConstraints : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["passthroughExtensions"] = state ? state.passthroughExtensions : undefined;
+            resourceInputs["predefinedValues"] = state ? state.predefinedValues : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as CertificateTemplateArgs | undefined;
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["identityConstraints"] = args ? args.identityConstraints : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["passthroughExtensions"] = args ? args.passthroughExtensions : undefined;
-            inputs["predefinedValues"] = args ? args.predefinedValues : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["identityConstraints"] = args ? args.identityConstraints : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["passthroughExtensions"] = args ? args.passthroughExtensions : undefined;
+            resourceInputs["predefinedValues"] = args ? args.predefinedValues : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CertificateTemplate.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CertificateTemplate.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -411,7 +411,7 @@ type InstanceIAMBindingInput interface {
 }
 
 func (*InstanceIAMBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceIAMBinding)(nil))
+	return reflect.TypeOf((**InstanceIAMBinding)(nil)).Elem()
 }
 
 func (i *InstanceIAMBinding) ToInstanceIAMBindingOutput() InstanceIAMBindingOutput {
@@ -420,35 +420,6 @@ func (i *InstanceIAMBinding) ToInstanceIAMBindingOutput() InstanceIAMBindingOutp
 
 func (i *InstanceIAMBinding) ToInstanceIAMBindingOutputWithContext(ctx context.Context) InstanceIAMBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMBindingOutput)
-}
-
-func (i *InstanceIAMBinding) ToInstanceIAMBindingPtrOutput() InstanceIAMBindingPtrOutput {
-	return i.ToInstanceIAMBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *InstanceIAMBinding) ToInstanceIAMBindingPtrOutputWithContext(ctx context.Context) InstanceIAMBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMBindingPtrOutput)
-}
-
-type InstanceIAMBindingPtrInput interface {
-	pulumi.Input
-
-	ToInstanceIAMBindingPtrOutput() InstanceIAMBindingPtrOutput
-	ToInstanceIAMBindingPtrOutputWithContext(ctx context.Context) InstanceIAMBindingPtrOutput
-}
-
-type instanceIAMBindingPtrType InstanceIAMBindingArgs
-
-func (*instanceIAMBindingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceIAMBinding)(nil))
-}
-
-func (i *instanceIAMBindingPtrType) ToInstanceIAMBindingPtrOutput() InstanceIAMBindingPtrOutput {
-	return i.ToInstanceIAMBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *instanceIAMBindingPtrType) ToInstanceIAMBindingPtrOutputWithContext(ctx context.Context) InstanceIAMBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMBindingPtrOutput)
 }
 
 // InstanceIAMBindingArrayInput is an input type that accepts InstanceIAMBindingArray and InstanceIAMBindingArrayOutput values.
@@ -504,7 +475,7 @@ func (i InstanceIAMBindingMap) ToInstanceIAMBindingMapOutputWithContext(ctx cont
 type InstanceIAMBindingOutput struct{ *pulumi.OutputState }
 
 func (InstanceIAMBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceIAMBinding)(nil))
+	return reflect.TypeOf((**InstanceIAMBinding)(nil)).Elem()
 }
 
 func (o InstanceIAMBindingOutput) ToInstanceIAMBindingOutput() InstanceIAMBindingOutput {
@@ -515,44 +486,10 @@ func (o InstanceIAMBindingOutput) ToInstanceIAMBindingOutputWithContext(ctx cont
 	return o
 }
 
-func (o InstanceIAMBindingOutput) ToInstanceIAMBindingPtrOutput() InstanceIAMBindingPtrOutput {
-	return o.ToInstanceIAMBindingPtrOutputWithContext(context.Background())
-}
-
-func (o InstanceIAMBindingOutput) ToInstanceIAMBindingPtrOutputWithContext(ctx context.Context) InstanceIAMBindingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceIAMBinding) *InstanceIAMBinding {
-		return &v
-	}).(InstanceIAMBindingPtrOutput)
-}
-
-type InstanceIAMBindingPtrOutput struct{ *pulumi.OutputState }
-
-func (InstanceIAMBindingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceIAMBinding)(nil))
-}
-
-func (o InstanceIAMBindingPtrOutput) ToInstanceIAMBindingPtrOutput() InstanceIAMBindingPtrOutput {
-	return o
-}
-
-func (o InstanceIAMBindingPtrOutput) ToInstanceIAMBindingPtrOutputWithContext(ctx context.Context) InstanceIAMBindingPtrOutput {
-	return o
-}
-
-func (o InstanceIAMBindingPtrOutput) Elem() InstanceIAMBindingOutput {
-	return o.ApplyT(func(v *InstanceIAMBinding) InstanceIAMBinding {
-		if v != nil {
-			return *v
-		}
-		var ret InstanceIAMBinding
-		return ret
-	}).(InstanceIAMBindingOutput)
-}
-
 type InstanceIAMBindingArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceIAMBindingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]InstanceIAMBinding)(nil))
+	return reflect.TypeOf((*[]*InstanceIAMBinding)(nil)).Elem()
 }
 
 func (o InstanceIAMBindingArrayOutput) ToInstanceIAMBindingArrayOutput() InstanceIAMBindingArrayOutput {
@@ -564,15 +501,15 @@ func (o InstanceIAMBindingArrayOutput) ToInstanceIAMBindingArrayOutputWithContex
 }
 
 func (o InstanceIAMBindingArrayOutput) Index(i pulumi.IntInput) InstanceIAMBindingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceIAMBinding {
-		return vs[0].([]InstanceIAMBinding)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InstanceIAMBinding {
+		return vs[0].([]*InstanceIAMBinding)[vs[1].(int)]
 	}).(InstanceIAMBindingOutput)
 }
 
 type InstanceIAMBindingMapOutput struct{ *pulumi.OutputState }
 
 func (InstanceIAMBindingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]InstanceIAMBinding)(nil))
+	return reflect.TypeOf((*map[string]*InstanceIAMBinding)(nil)).Elem()
 }
 
 func (o InstanceIAMBindingMapOutput) ToInstanceIAMBindingMapOutput() InstanceIAMBindingMapOutput {
@@ -584,18 +521,16 @@ func (o InstanceIAMBindingMapOutput) ToInstanceIAMBindingMapOutputWithContext(ct
 }
 
 func (o InstanceIAMBindingMapOutput) MapIndex(k pulumi.StringInput) InstanceIAMBindingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) InstanceIAMBinding {
-		return vs[0].(map[string]InstanceIAMBinding)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *InstanceIAMBinding {
+		return vs[0].(map[string]*InstanceIAMBinding)[vs[1].(string)]
 	}).(InstanceIAMBindingOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIAMBindingInput)(nil)).Elem(), &InstanceIAMBinding{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIAMBindingPtrInput)(nil)).Elem(), &InstanceIAMBinding{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIAMBindingArrayInput)(nil)).Elem(), InstanceIAMBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIAMBindingMapInput)(nil)).Elem(), InstanceIAMBindingMap{})
 	pulumi.RegisterOutputType(InstanceIAMBindingOutput{})
-	pulumi.RegisterOutputType(InstanceIAMBindingPtrOutput{})
 	pulumi.RegisterOutputType(InstanceIAMBindingArrayOutput{})
 	pulumi.RegisterOutputType(InstanceIAMBindingMapOutput{})
 }

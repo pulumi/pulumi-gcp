@@ -209,15 +209,15 @@ export class IAMMember extends pulumi.CustomResource {
      */
     constructor(name: string, args: IAMMemberArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IAMMemberArgs | IAMMemberState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IAMMemberState | undefined;
-            inputs["condition"] = state ? state.condition : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["member"] = state ? state.member : undefined;
-            inputs["role"] = state ? state.role : undefined;
-            inputs["serviceAccountId"] = state ? state.serviceAccountId : undefined;
+            resourceInputs["condition"] = state ? state.condition : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["member"] = state ? state.member : undefined;
+            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["serviceAccountId"] = state ? state.serviceAccountId : undefined;
         } else {
             const args = argsOrState as IAMMemberArgs | undefined;
             if ((!args || args.member === undefined) && !opts.urn) {
@@ -229,16 +229,14 @@ export class IAMMember extends pulumi.CustomResource {
             if ((!args || args.serviceAccountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceAccountId'");
             }
-            inputs["condition"] = args ? args.condition : undefined;
-            inputs["member"] = args ? args.member : undefined;
-            inputs["role"] = args ? args.role : undefined;
-            inputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["condition"] = args ? args.condition : undefined;
+            resourceInputs["member"] = args ? args.member : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(IAMMember.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(IAMMember.__pulumiType, name, resourceInputs, opts);
     }
 }
 

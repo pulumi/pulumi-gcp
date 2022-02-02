@@ -24,9 +24,7 @@ export function getUptimeCheckIPs(opts?: pulumi.InvokeOptions): Promise<GetUptim
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:monitoring/getUptimeCheckIPs:getUptimeCheckIPs", {
     }, opts);
 }

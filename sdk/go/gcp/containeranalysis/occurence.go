@@ -342,7 +342,7 @@ type OccurenceInput interface {
 }
 
 func (*Occurence) ElementType() reflect.Type {
-	return reflect.TypeOf((*Occurence)(nil))
+	return reflect.TypeOf((**Occurence)(nil)).Elem()
 }
 
 func (i *Occurence) ToOccurenceOutput() OccurenceOutput {
@@ -351,35 +351,6 @@ func (i *Occurence) ToOccurenceOutput() OccurenceOutput {
 
 func (i *Occurence) ToOccurenceOutputWithContext(ctx context.Context) OccurenceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OccurenceOutput)
-}
-
-func (i *Occurence) ToOccurencePtrOutput() OccurencePtrOutput {
-	return i.ToOccurencePtrOutputWithContext(context.Background())
-}
-
-func (i *Occurence) ToOccurencePtrOutputWithContext(ctx context.Context) OccurencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OccurencePtrOutput)
-}
-
-type OccurencePtrInput interface {
-	pulumi.Input
-
-	ToOccurencePtrOutput() OccurencePtrOutput
-	ToOccurencePtrOutputWithContext(ctx context.Context) OccurencePtrOutput
-}
-
-type occurencePtrType OccurenceArgs
-
-func (*occurencePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Occurence)(nil))
-}
-
-func (i *occurencePtrType) ToOccurencePtrOutput() OccurencePtrOutput {
-	return i.ToOccurencePtrOutputWithContext(context.Background())
-}
-
-func (i *occurencePtrType) ToOccurencePtrOutputWithContext(ctx context.Context) OccurencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OccurencePtrOutput)
 }
 
 // OccurenceArrayInput is an input type that accepts OccurenceArray and OccurenceArrayOutput values.
@@ -435,7 +406,7 @@ func (i OccurenceMap) ToOccurenceMapOutputWithContext(ctx context.Context) Occur
 type OccurenceOutput struct{ *pulumi.OutputState }
 
 func (OccurenceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Occurence)(nil))
+	return reflect.TypeOf((**Occurence)(nil)).Elem()
 }
 
 func (o OccurenceOutput) ToOccurenceOutput() OccurenceOutput {
@@ -446,44 +417,10 @@ func (o OccurenceOutput) ToOccurenceOutputWithContext(ctx context.Context) Occur
 	return o
 }
 
-func (o OccurenceOutput) ToOccurencePtrOutput() OccurencePtrOutput {
-	return o.ToOccurencePtrOutputWithContext(context.Background())
-}
-
-func (o OccurenceOutput) ToOccurencePtrOutputWithContext(ctx context.Context) OccurencePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Occurence) *Occurence {
-		return &v
-	}).(OccurencePtrOutput)
-}
-
-type OccurencePtrOutput struct{ *pulumi.OutputState }
-
-func (OccurencePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Occurence)(nil))
-}
-
-func (o OccurencePtrOutput) ToOccurencePtrOutput() OccurencePtrOutput {
-	return o
-}
-
-func (o OccurencePtrOutput) ToOccurencePtrOutputWithContext(ctx context.Context) OccurencePtrOutput {
-	return o
-}
-
-func (o OccurencePtrOutput) Elem() OccurenceOutput {
-	return o.ApplyT(func(v *Occurence) Occurence {
-		if v != nil {
-			return *v
-		}
-		var ret Occurence
-		return ret
-	}).(OccurenceOutput)
-}
-
 type OccurenceArrayOutput struct{ *pulumi.OutputState }
 
 func (OccurenceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Occurence)(nil))
+	return reflect.TypeOf((*[]*Occurence)(nil)).Elem()
 }
 
 func (o OccurenceArrayOutput) ToOccurenceArrayOutput() OccurenceArrayOutput {
@@ -495,15 +432,15 @@ func (o OccurenceArrayOutput) ToOccurenceArrayOutputWithContext(ctx context.Cont
 }
 
 func (o OccurenceArrayOutput) Index(i pulumi.IntInput) OccurenceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Occurence {
-		return vs[0].([]Occurence)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Occurence {
+		return vs[0].([]*Occurence)[vs[1].(int)]
 	}).(OccurenceOutput)
 }
 
 type OccurenceMapOutput struct{ *pulumi.OutputState }
 
 func (OccurenceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Occurence)(nil))
+	return reflect.TypeOf((*map[string]*Occurence)(nil)).Elem()
 }
 
 func (o OccurenceMapOutput) ToOccurenceMapOutput() OccurenceMapOutput {
@@ -515,18 +452,16 @@ func (o OccurenceMapOutput) ToOccurenceMapOutputWithContext(ctx context.Context)
 }
 
 func (o OccurenceMapOutput) MapIndex(k pulumi.StringInput) OccurenceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Occurence {
-		return vs[0].(map[string]Occurence)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Occurence {
+		return vs[0].(map[string]*Occurence)[vs[1].(string)]
 	}).(OccurenceOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OccurenceInput)(nil)).Elem(), &Occurence{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OccurencePtrInput)(nil)).Elem(), &Occurence{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OccurenceArrayInput)(nil)).Elem(), OccurenceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OccurenceMapInput)(nil)).Elem(), OccurenceMap{})
 	pulumi.RegisterOutputType(OccurenceOutput{})
-	pulumi.RegisterOutputType(OccurencePtrOutput{})
 	pulumi.RegisterOutputType(OccurenceArrayOutput{})
 	pulumi.RegisterOutputType(OccurenceMapOutput{})
 }

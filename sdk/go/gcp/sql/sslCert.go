@@ -219,7 +219,7 @@ type SslCertInput interface {
 }
 
 func (*SslCert) ElementType() reflect.Type {
-	return reflect.TypeOf((*SslCert)(nil))
+	return reflect.TypeOf((**SslCert)(nil)).Elem()
 }
 
 func (i *SslCert) ToSslCertOutput() SslCertOutput {
@@ -228,35 +228,6 @@ func (i *SslCert) ToSslCertOutput() SslCertOutput {
 
 func (i *SslCert) ToSslCertOutputWithContext(ctx context.Context) SslCertOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SslCertOutput)
-}
-
-func (i *SslCert) ToSslCertPtrOutput() SslCertPtrOutput {
-	return i.ToSslCertPtrOutputWithContext(context.Background())
-}
-
-func (i *SslCert) ToSslCertPtrOutputWithContext(ctx context.Context) SslCertPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SslCertPtrOutput)
-}
-
-type SslCertPtrInput interface {
-	pulumi.Input
-
-	ToSslCertPtrOutput() SslCertPtrOutput
-	ToSslCertPtrOutputWithContext(ctx context.Context) SslCertPtrOutput
-}
-
-type sslCertPtrType SslCertArgs
-
-func (*sslCertPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SslCert)(nil))
-}
-
-func (i *sslCertPtrType) ToSslCertPtrOutput() SslCertPtrOutput {
-	return i.ToSslCertPtrOutputWithContext(context.Background())
-}
-
-func (i *sslCertPtrType) ToSslCertPtrOutputWithContext(ctx context.Context) SslCertPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SslCertPtrOutput)
 }
 
 // SslCertArrayInput is an input type that accepts SslCertArray and SslCertArrayOutput values.
@@ -312,7 +283,7 @@ func (i SslCertMap) ToSslCertMapOutputWithContext(ctx context.Context) SslCertMa
 type SslCertOutput struct{ *pulumi.OutputState }
 
 func (SslCertOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SslCert)(nil))
+	return reflect.TypeOf((**SslCert)(nil)).Elem()
 }
 
 func (o SslCertOutput) ToSslCertOutput() SslCertOutput {
@@ -323,44 +294,10 @@ func (o SslCertOutput) ToSslCertOutputWithContext(ctx context.Context) SslCertOu
 	return o
 }
 
-func (o SslCertOutput) ToSslCertPtrOutput() SslCertPtrOutput {
-	return o.ToSslCertPtrOutputWithContext(context.Background())
-}
-
-func (o SslCertOutput) ToSslCertPtrOutputWithContext(ctx context.Context) SslCertPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SslCert) *SslCert {
-		return &v
-	}).(SslCertPtrOutput)
-}
-
-type SslCertPtrOutput struct{ *pulumi.OutputState }
-
-func (SslCertPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SslCert)(nil))
-}
-
-func (o SslCertPtrOutput) ToSslCertPtrOutput() SslCertPtrOutput {
-	return o
-}
-
-func (o SslCertPtrOutput) ToSslCertPtrOutputWithContext(ctx context.Context) SslCertPtrOutput {
-	return o
-}
-
-func (o SslCertPtrOutput) Elem() SslCertOutput {
-	return o.ApplyT(func(v *SslCert) SslCert {
-		if v != nil {
-			return *v
-		}
-		var ret SslCert
-		return ret
-	}).(SslCertOutput)
-}
-
 type SslCertArrayOutput struct{ *pulumi.OutputState }
 
 func (SslCertArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SslCert)(nil))
+	return reflect.TypeOf((*[]*SslCert)(nil)).Elem()
 }
 
 func (o SslCertArrayOutput) ToSslCertArrayOutput() SslCertArrayOutput {
@@ -372,15 +309,15 @@ func (o SslCertArrayOutput) ToSslCertArrayOutputWithContext(ctx context.Context)
 }
 
 func (o SslCertArrayOutput) Index(i pulumi.IntInput) SslCertOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SslCert {
-		return vs[0].([]SslCert)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SslCert {
+		return vs[0].([]*SslCert)[vs[1].(int)]
 	}).(SslCertOutput)
 }
 
 type SslCertMapOutput struct{ *pulumi.OutputState }
 
 func (SslCertMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]SslCert)(nil))
+	return reflect.TypeOf((*map[string]*SslCert)(nil)).Elem()
 }
 
 func (o SslCertMapOutput) ToSslCertMapOutput() SslCertMapOutput {
@@ -392,18 +329,16 @@ func (o SslCertMapOutput) ToSslCertMapOutputWithContext(ctx context.Context) Ssl
 }
 
 func (o SslCertMapOutput) MapIndex(k pulumi.StringInput) SslCertOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SslCert {
-		return vs[0].(map[string]SslCert)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *SslCert {
+		return vs[0].(map[string]*SslCert)[vs[1].(string)]
 	}).(SslCertOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SslCertInput)(nil)).Elem(), &SslCert{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SslCertPtrInput)(nil)).Elem(), &SslCert{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SslCertArrayInput)(nil)).Elem(), SslCertArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SslCertMapInput)(nil)).Elem(), SslCertMap{})
 	pulumi.RegisterOutputType(SslCertOutput{})
-	pulumi.RegisterOutputType(SslCertPtrOutput{})
 	pulumi.RegisterOutputType(SslCertArrayOutput{})
 	pulumi.RegisterOutputType(SslCertMapOutput{})
 }

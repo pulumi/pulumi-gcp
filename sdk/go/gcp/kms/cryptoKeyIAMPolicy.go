@@ -354,7 +354,7 @@ type CryptoKeyIAMPolicyInput interface {
 }
 
 func (*CryptoKeyIAMPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*CryptoKeyIAMPolicy)(nil))
+	return reflect.TypeOf((**CryptoKeyIAMPolicy)(nil)).Elem()
 }
 
 func (i *CryptoKeyIAMPolicy) ToCryptoKeyIAMPolicyOutput() CryptoKeyIAMPolicyOutput {
@@ -363,35 +363,6 @@ func (i *CryptoKeyIAMPolicy) ToCryptoKeyIAMPolicyOutput() CryptoKeyIAMPolicyOutp
 
 func (i *CryptoKeyIAMPolicy) ToCryptoKeyIAMPolicyOutputWithContext(ctx context.Context) CryptoKeyIAMPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMPolicyOutput)
-}
-
-func (i *CryptoKeyIAMPolicy) ToCryptoKeyIAMPolicyPtrOutput() CryptoKeyIAMPolicyPtrOutput {
-	return i.ToCryptoKeyIAMPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *CryptoKeyIAMPolicy) ToCryptoKeyIAMPolicyPtrOutputWithContext(ctx context.Context) CryptoKeyIAMPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMPolicyPtrOutput)
-}
-
-type CryptoKeyIAMPolicyPtrInput interface {
-	pulumi.Input
-
-	ToCryptoKeyIAMPolicyPtrOutput() CryptoKeyIAMPolicyPtrOutput
-	ToCryptoKeyIAMPolicyPtrOutputWithContext(ctx context.Context) CryptoKeyIAMPolicyPtrOutput
-}
-
-type cryptoKeyIAMPolicyPtrType CryptoKeyIAMPolicyArgs
-
-func (*cryptoKeyIAMPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CryptoKeyIAMPolicy)(nil))
-}
-
-func (i *cryptoKeyIAMPolicyPtrType) ToCryptoKeyIAMPolicyPtrOutput() CryptoKeyIAMPolicyPtrOutput {
-	return i.ToCryptoKeyIAMPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *cryptoKeyIAMPolicyPtrType) ToCryptoKeyIAMPolicyPtrOutputWithContext(ctx context.Context) CryptoKeyIAMPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMPolicyPtrOutput)
 }
 
 // CryptoKeyIAMPolicyArrayInput is an input type that accepts CryptoKeyIAMPolicyArray and CryptoKeyIAMPolicyArrayOutput values.
@@ -447,7 +418,7 @@ func (i CryptoKeyIAMPolicyMap) ToCryptoKeyIAMPolicyMapOutputWithContext(ctx cont
 type CryptoKeyIAMPolicyOutput struct{ *pulumi.OutputState }
 
 func (CryptoKeyIAMPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CryptoKeyIAMPolicy)(nil))
+	return reflect.TypeOf((**CryptoKeyIAMPolicy)(nil)).Elem()
 }
 
 func (o CryptoKeyIAMPolicyOutput) ToCryptoKeyIAMPolicyOutput() CryptoKeyIAMPolicyOutput {
@@ -458,44 +429,10 @@ func (o CryptoKeyIAMPolicyOutput) ToCryptoKeyIAMPolicyOutputWithContext(ctx cont
 	return o
 }
 
-func (o CryptoKeyIAMPolicyOutput) ToCryptoKeyIAMPolicyPtrOutput() CryptoKeyIAMPolicyPtrOutput {
-	return o.ToCryptoKeyIAMPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o CryptoKeyIAMPolicyOutput) ToCryptoKeyIAMPolicyPtrOutputWithContext(ctx context.Context) CryptoKeyIAMPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CryptoKeyIAMPolicy) *CryptoKeyIAMPolicy {
-		return &v
-	}).(CryptoKeyIAMPolicyPtrOutput)
-}
-
-type CryptoKeyIAMPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (CryptoKeyIAMPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CryptoKeyIAMPolicy)(nil))
-}
-
-func (o CryptoKeyIAMPolicyPtrOutput) ToCryptoKeyIAMPolicyPtrOutput() CryptoKeyIAMPolicyPtrOutput {
-	return o
-}
-
-func (o CryptoKeyIAMPolicyPtrOutput) ToCryptoKeyIAMPolicyPtrOutputWithContext(ctx context.Context) CryptoKeyIAMPolicyPtrOutput {
-	return o
-}
-
-func (o CryptoKeyIAMPolicyPtrOutput) Elem() CryptoKeyIAMPolicyOutput {
-	return o.ApplyT(func(v *CryptoKeyIAMPolicy) CryptoKeyIAMPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret CryptoKeyIAMPolicy
-		return ret
-	}).(CryptoKeyIAMPolicyOutput)
-}
-
 type CryptoKeyIAMPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (CryptoKeyIAMPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CryptoKeyIAMPolicy)(nil))
+	return reflect.TypeOf((*[]*CryptoKeyIAMPolicy)(nil)).Elem()
 }
 
 func (o CryptoKeyIAMPolicyArrayOutput) ToCryptoKeyIAMPolicyArrayOutput() CryptoKeyIAMPolicyArrayOutput {
@@ -507,15 +444,15 @@ func (o CryptoKeyIAMPolicyArrayOutput) ToCryptoKeyIAMPolicyArrayOutputWithContex
 }
 
 func (o CryptoKeyIAMPolicyArrayOutput) Index(i pulumi.IntInput) CryptoKeyIAMPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CryptoKeyIAMPolicy {
-		return vs[0].([]CryptoKeyIAMPolicy)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CryptoKeyIAMPolicy {
+		return vs[0].([]*CryptoKeyIAMPolicy)[vs[1].(int)]
 	}).(CryptoKeyIAMPolicyOutput)
 }
 
 type CryptoKeyIAMPolicyMapOutput struct{ *pulumi.OutputState }
 
 func (CryptoKeyIAMPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]CryptoKeyIAMPolicy)(nil))
+	return reflect.TypeOf((*map[string]*CryptoKeyIAMPolicy)(nil)).Elem()
 }
 
 func (o CryptoKeyIAMPolicyMapOutput) ToCryptoKeyIAMPolicyMapOutput() CryptoKeyIAMPolicyMapOutput {
@@ -527,18 +464,16 @@ func (o CryptoKeyIAMPolicyMapOutput) ToCryptoKeyIAMPolicyMapOutputWithContext(ct
 }
 
 func (o CryptoKeyIAMPolicyMapOutput) MapIndex(k pulumi.StringInput) CryptoKeyIAMPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CryptoKeyIAMPolicy {
-		return vs[0].(map[string]CryptoKeyIAMPolicy)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *CryptoKeyIAMPolicy {
+		return vs[0].(map[string]*CryptoKeyIAMPolicy)[vs[1].(string)]
 	}).(CryptoKeyIAMPolicyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIAMPolicyInput)(nil)).Elem(), &CryptoKeyIAMPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIAMPolicyPtrInput)(nil)).Elem(), &CryptoKeyIAMPolicy{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIAMPolicyArrayInput)(nil)).Elem(), CryptoKeyIAMPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIAMPolicyMapInput)(nil)).Elem(), CryptoKeyIAMPolicyMap{})
 	pulumi.RegisterOutputType(CryptoKeyIAMPolicyOutput{})
-	pulumi.RegisterOutputType(CryptoKeyIAMPolicyPtrOutput{})
 	pulumi.RegisterOutputType(CryptoKeyIAMPolicyArrayOutput{})
 	pulumi.RegisterOutputType(CryptoKeyIAMPolicyMapOutput{})
 }

@@ -208,42 +208,40 @@ export class FhirStore extends pulumi.CustomResource {
      */
     constructor(name: string, args: FhirStoreArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FhirStoreArgs | FhirStoreState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FhirStoreState | undefined;
-            inputs["dataset"] = state ? state.dataset : undefined;
-            inputs["disableReferentialIntegrity"] = state ? state.disableReferentialIntegrity : undefined;
-            inputs["disableResourceVersioning"] = state ? state.disableResourceVersioning : undefined;
-            inputs["enableHistoryImport"] = state ? state.enableHistoryImport : undefined;
-            inputs["enableUpdateCreate"] = state ? state.enableUpdateCreate : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["notificationConfig"] = state ? state.notificationConfig : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
-            inputs["streamConfigs"] = state ? state.streamConfigs : undefined;
-            inputs["version"] = state ? state.version : undefined;
+            resourceInputs["dataset"] = state ? state.dataset : undefined;
+            resourceInputs["disableReferentialIntegrity"] = state ? state.disableReferentialIntegrity : undefined;
+            resourceInputs["disableResourceVersioning"] = state ? state.disableResourceVersioning : undefined;
+            resourceInputs["enableHistoryImport"] = state ? state.enableHistoryImport : undefined;
+            resourceInputs["enableUpdateCreate"] = state ? state.enableUpdateCreate : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["notificationConfig"] = state ? state.notificationConfig : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["streamConfigs"] = state ? state.streamConfigs : undefined;
+            resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as FhirStoreArgs | undefined;
             if ((!args || args.dataset === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dataset'");
             }
-            inputs["dataset"] = args ? args.dataset : undefined;
-            inputs["disableReferentialIntegrity"] = args ? args.disableReferentialIntegrity : undefined;
-            inputs["disableResourceVersioning"] = args ? args.disableResourceVersioning : undefined;
-            inputs["enableHistoryImport"] = args ? args.enableHistoryImport : undefined;
-            inputs["enableUpdateCreate"] = args ? args.enableUpdateCreate : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["notificationConfig"] = args ? args.notificationConfig : undefined;
-            inputs["streamConfigs"] = args ? args.streamConfigs : undefined;
-            inputs["version"] = args ? args.version : undefined;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["dataset"] = args ? args.dataset : undefined;
+            resourceInputs["disableReferentialIntegrity"] = args ? args.disableReferentialIntegrity : undefined;
+            resourceInputs["disableResourceVersioning"] = args ? args.disableResourceVersioning : undefined;
+            resourceInputs["enableHistoryImport"] = args ? args.enableHistoryImport : undefined;
+            resourceInputs["enableUpdateCreate"] = args ? args.enableUpdateCreate : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["notificationConfig"] = args ? args.notificationConfig : undefined;
+            resourceInputs["streamConfigs"] = args ? args.streamConfigs : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(FhirStore.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(FhirStore.__pulumiType, name, resourceInputs, opts);
     }
 }
 

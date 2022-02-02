@@ -38,7 +38,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := datastore.NewDataStoreIndex(ctx, "_default", &datastore.DataStoreIndexArgs{
+// 		_, err := datastore.NewDataStoreIndex(ctx, "default", &datastore.DataStoreIndexArgs{
 // 			Kind: pulumi.String("foo"),
 // 			Properties: datastore.DataStoreIndexPropertyArray{
 // 				&datastore.DataStoreIndexPropertyArgs{
@@ -205,7 +205,7 @@ type DataStoreIndexInput interface {
 }
 
 func (*DataStoreIndex) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataStoreIndex)(nil))
+	return reflect.TypeOf((**DataStoreIndex)(nil)).Elem()
 }
 
 func (i *DataStoreIndex) ToDataStoreIndexOutput() DataStoreIndexOutput {
@@ -214,35 +214,6 @@ func (i *DataStoreIndex) ToDataStoreIndexOutput() DataStoreIndexOutput {
 
 func (i *DataStoreIndex) ToDataStoreIndexOutputWithContext(ctx context.Context) DataStoreIndexOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DataStoreIndexOutput)
-}
-
-func (i *DataStoreIndex) ToDataStoreIndexPtrOutput() DataStoreIndexPtrOutput {
-	return i.ToDataStoreIndexPtrOutputWithContext(context.Background())
-}
-
-func (i *DataStoreIndex) ToDataStoreIndexPtrOutputWithContext(ctx context.Context) DataStoreIndexPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataStoreIndexPtrOutput)
-}
-
-type DataStoreIndexPtrInput interface {
-	pulumi.Input
-
-	ToDataStoreIndexPtrOutput() DataStoreIndexPtrOutput
-	ToDataStoreIndexPtrOutputWithContext(ctx context.Context) DataStoreIndexPtrOutput
-}
-
-type dataStoreIndexPtrType DataStoreIndexArgs
-
-func (*dataStoreIndexPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataStoreIndex)(nil))
-}
-
-func (i *dataStoreIndexPtrType) ToDataStoreIndexPtrOutput() DataStoreIndexPtrOutput {
-	return i.ToDataStoreIndexPtrOutputWithContext(context.Background())
-}
-
-func (i *dataStoreIndexPtrType) ToDataStoreIndexPtrOutputWithContext(ctx context.Context) DataStoreIndexPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataStoreIndexPtrOutput)
 }
 
 // DataStoreIndexArrayInput is an input type that accepts DataStoreIndexArray and DataStoreIndexArrayOutput values.
@@ -298,7 +269,7 @@ func (i DataStoreIndexMap) ToDataStoreIndexMapOutputWithContext(ctx context.Cont
 type DataStoreIndexOutput struct{ *pulumi.OutputState }
 
 func (DataStoreIndexOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataStoreIndex)(nil))
+	return reflect.TypeOf((**DataStoreIndex)(nil)).Elem()
 }
 
 func (o DataStoreIndexOutput) ToDataStoreIndexOutput() DataStoreIndexOutput {
@@ -309,44 +280,10 @@ func (o DataStoreIndexOutput) ToDataStoreIndexOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o DataStoreIndexOutput) ToDataStoreIndexPtrOutput() DataStoreIndexPtrOutput {
-	return o.ToDataStoreIndexPtrOutputWithContext(context.Background())
-}
-
-func (o DataStoreIndexOutput) ToDataStoreIndexPtrOutputWithContext(ctx context.Context) DataStoreIndexPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataStoreIndex) *DataStoreIndex {
-		return &v
-	}).(DataStoreIndexPtrOutput)
-}
-
-type DataStoreIndexPtrOutput struct{ *pulumi.OutputState }
-
-func (DataStoreIndexPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataStoreIndex)(nil))
-}
-
-func (o DataStoreIndexPtrOutput) ToDataStoreIndexPtrOutput() DataStoreIndexPtrOutput {
-	return o
-}
-
-func (o DataStoreIndexPtrOutput) ToDataStoreIndexPtrOutputWithContext(ctx context.Context) DataStoreIndexPtrOutput {
-	return o
-}
-
-func (o DataStoreIndexPtrOutput) Elem() DataStoreIndexOutput {
-	return o.ApplyT(func(v *DataStoreIndex) DataStoreIndex {
-		if v != nil {
-			return *v
-		}
-		var ret DataStoreIndex
-		return ret
-	}).(DataStoreIndexOutput)
-}
-
 type DataStoreIndexArrayOutput struct{ *pulumi.OutputState }
 
 func (DataStoreIndexArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DataStoreIndex)(nil))
+	return reflect.TypeOf((*[]*DataStoreIndex)(nil)).Elem()
 }
 
 func (o DataStoreIndexArrayOutput) ToDataStoreIndexArrayOutput() DataStoreIndexArrayOutput {
@@ -358,15 +295,15 @@ func (o DataStoreIndexArrayOutput) ToDataStoreIndexArrayOutputWithContext(ctx co
 }
 
 func (o DataStoreIndexArrayOutput) Index(i pulumi.IntInput) DataStoreIndexOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataStoreIndex {
-		return vs[0].([]DataStoreIndex)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DataStoreIndex {
+		return vs[0].([]*DataStoreIndex)[vs[1].(int)]
 	}).(DataStoreIndexOutput)
 }
 
 type DataStoreIndexMapOutput struct{ *pulumi.OutputState }
 
 func (DataStoreIndexMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DataStoreIndex)(nil))
+	return reflect.TypeOf((*map[string]*DataStoreIndex)(nil)).Elem()
 }
 
 func (o DataStoreIndexMapOutput) ToDataStoreIndexMapOutput() DataStoreIndexMapOutput {
@@ -378,18 +315,16 @@ func (o DataStoreIndexMapOutput) ToDataStoreIndexMapOutputWithContext(ctx contex
 }
 
 func (o DataStoreIndexMapOutput) MapIndex(k pulumi.StringInput) DataStoreIndexOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DataStoreIndex {
-		return vs[0].(map[string]DataStoreIndex)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DataStoreIndex {
+		return vs[0].(map[string]*DataStoreIndex)[vs[1].(string)]
 	}).(DataStoreIndexOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreIndexInput)(nil)).Elem(), &DataStoreIndex{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreIndexPtrInput)(nil)).Elem(), &DataStoreIndex{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreIndexArrayInput)(nil)).Elem(), DataStoreIndexArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreIndexMapInput)(nil)).Elem(), DataStoreIndexMap{})
 	pulumi.RegisterOutputType(DataStoreIndexOutput{})
-	pulumi.RegisterOutputType(DataStoreIndexPtrOutput{})
 	pulumi.RegisterOutputType(DataStoreIndexArrayOutput{})
 	pulumi.RegisterOutputType(DataStoreIndexMapOutput{})
 }

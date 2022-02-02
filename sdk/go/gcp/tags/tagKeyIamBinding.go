@@ -251,7 +251,7 @@ type TagKeyIamBindingInput interface {
 }
 
 func (*TagKeyIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*TagKeyIamBinding)(nil))
+	return reflect.TypeOf((**TagKeyIamBinding)(nil)).Elem()
 }
 
 func (i *TagKeyIamBinding) ToTagKeyIamBindingOutput() TagKeyIamBindingOutput {
@@ -260,35 +260,6 @@ func (i *TagKeyIamBinding) ToTagKeyIamBindingOutput() TagKeyIamBindingOutput {
 
 func (i *TagKeyIamBinding) ToTagKeyIamBindingOutputWithContext(ctx context.Context) TagKeyIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TagKeyIamBindingOutput)
-}
-
-func (i *TagKeyIamBinding) ToTagKeyIamBindingPtrOutput() TagKeyIamBindingPtrOutput {
-	return i.ToTagKeyIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *TagKeyIamBinding) ToTagKeyIamBindingPtrOutputWithContext(ctx context.Context) TagKeyIamBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TagKeyIamBindingPtrOutput)
-}
-
-type TagKeyIamBindingPtrInput interface {
-	pulumi.Input
-
-	ToTagKeyIamBindingPtrOutput() TagKeyIamBindingPtrOutput
-	ToTagKeyIamBindingPtrOutputWithContext(ctx context.Context) TagKeyIamBindingPtrOutput
-}
-
-type tagKeyIamBindingPtrType TagKeyIamBindingArgs
-
-func (*tagKeyIamBindingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TagKeyIamBinding)(nil))
-}
-
-func (i *tagKeyIamBindingPtrType) ToTagKeyIamBindingPtrOutput() TagKeyIamBindingPtrOutput {
-	return i.ToTagKeyIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *tagKeyIamBindingPtrType) ToTagKeyIamBindingPtrOutputWithContext(ctx context.Context) TagKeyIamBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TagKeyIamBindingPtrOutput)
 }
 
 // TagKeyIamBindingArrayInput is an input type that accepts TagKeyIamBindingArray and TagKeyIamBindingArrayOutput values.
@@ -344,7 +315,7 @@ func (i TagKeyIamBindingMap) ToTagKeyIamBindingMapOutputWithContext(ctx context.
 type TagKeyIamBindingOutput struct{ *pulumi.OutputState }
 
 func (TagKeyIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TagKeyIamBinding)(nil))
+	return reflect.TypeOf((**TagKeyIamBinding)(nil)).Elem()
 }
 
 func (o TagKeyIamBindingOutput) ToTagKeyIamBindingOutput() TagKeyIamBindingOutput {
@@ -355,44 +326,10 @@ func (o TagKeyIamBindingOutput) ToTagKeyIamBindingOutputWithContext(ctx context.
 	return o
 }
 
-func (o TagKeyIamBindingOutput) ToTagKeyIamBindingPtrOutput() TagKeyIamBindingPtrOutput {
-	return o.ToTagKeyIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (o TagKeyIamBindingOutput) ToTagKeyIamBindingPtrOutputWithContext(ctx context.Context) TagKeyIamBindingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TagKeyIamBinding) *TagKeyIamBinding {
-		return &v
-	}).(TagKeyIamBindingPtrOutput)
-}
-
-type TagKeyIamBindingPtrOutput struct{ *pulumi.OutputState }
-
-func (TagKeyIamBindingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TagKeyIamBinding)(nil))
-}
-
-func (o TagKeyIamBindingPtrOutput) ToTagKeyIamBindingPtrOutput() TagKeyIamBindingPtrOutput {
-	return o
-}
-
-func (o TagKeyIamBindingPtrOutput) ToTagKeyIamBindingPtrOutputWithContext(ctx context.Context) TagKeyIamBindingPtrOutput {
-	return o
-}
-
-func (o TagKeyIamBindingPtrOutput) Elem() TagKeyIamBindingOutput {
-	return o.ApplyT(func(v *TagKeyIamBinding) TagKeyIamBinding {
-		if v != nil {
-			return *v
-		}
-		var ret TagKeyIamBinding
-		return ret
-	}).(TagKeyIamBindingOutput)
-}
-
 type TagKeyIamBindingArrayOutput struct{ *pulumi.OutputState }
 
 func (TagKeyIamBindingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TagKeyIamBinding)(nil))
+	return reflect.TypeOf((*[]*TagKeyIamBinding)(nil)).Elem()
 }
 
 func (o TagKeyIamBindingArrayOutput) ToTagKeyIamBindingArrayOutput() TagKeyIamBindingArrayOutput {
@@ -404,15 +341,15 @@ func (o TagKeyIamBindingArrayOutput) ToTagKeyIamBindingArrayOutputWithContext(ct
 }
 
 func (o TagKeyIamBindingArrayOutput) Index(i pulumi.IntInput) TagKeyIamBindingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TagKeyIamBinding {
-		return vs[0].([]TagKeyIamBinding)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TagKeyIamBinding {
+		return vs[0].([]*TagKeyIamBinding)[vs[1].(int)]
 	}).(TagKeyIamBindingOutput)
 }
 
 type TagKeyIamBindingMapOutput struct{ *pulumi.OutputState }
 
 func (TagKeyIamBindingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]TagKeyIamBinding)(nil))
+	return reflect.TypeOf((*map[string]*TagKeyIamBinding)(nil)).Elem()
 }
 
 func (o TagKeyIamBindingMapOutput) ToTagKeyIamBindingMapOutput() TagKeyIamBindingMapOutput {
@@ -424,18 +361,16 @@ func (o TagKeyIamBindingMapOutput) ToTagKeyIamBindingMapOutputWithContext(ctx co
 }
 
 func (o TagKeyIamBindingMapOutput) MapIndex(k pulumi.StringInput) TagKeyIamBindingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TagKeyIamBinding {
-		return vs[0].(map[string]TagKeyIamBinding)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *TagKeyIamBinding {
+		return vs[0].(map[string]*TagKeyIamBinding)[vs[1].(string)]
 	}).(TagKeyIamBindingOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TagKeyIamBindingInput)(nil)).Elem(), &TagKeyIamBinding{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TagKeyIamBindingPtrInput)(nil)).Elem(), &TagKeyIamBinding{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TagKeyIamBindingArrayInput)(nil)).Elem(), TagKeyIamBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TagKeyIamBindingMapInput)(nil)).Elem(), TagKeyIamBindingMap{})
 	pulumi.RegisterOutputType(TagKeyIamBindingOutput{})
-	pulumi.RegisterOutputType(TagKeyIamBindingPtrOutput{})
 	pulumi.RegisterOutputType(TagKeyIamBindingArrayOutput{})
 	pulumi.RegisterOutputType(TagKeyIamBindingMapOutput{})
 }

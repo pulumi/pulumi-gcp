@@ -187,42 +187,40 @@ export class EdgeCacheOrigin extends pulumi.CustomResource {
      */
     constructor(name: string, args: EdgeCacheOriginArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EdgeCacheOriginArgs | EdgeCacheOriginState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EdgeCacheOriginState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["failoverOrigin"] = state ? state.failoverOrigin : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["maxAttempts"] = state ? state.maxAttempts : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["originAddress"] = state ? state.originAddress : undefined;
-            inputs["port"] = state ? state.port : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["protocol"] = state ? state.protocol : undefined;
-            inputs["retryConditions"] = state ? state.retryConditions : undefined;
-            inputs["timeout"] = state ? state.timeout : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["failoverOrigin"] = state ? state.failoverOrigin : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["maxAttempts"] = state ? state.maxAttempts : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["originAddress"] = state ? state.originAddress : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["protocol"] = state ? state.protocol : undefined;
+            resourceInputs["retryConditions"] = state ? state.retryConditions : undefined;
+            resourceInputs["timeout"] = state ? state.timeout : undefined;
         } else {
             const args = argsOrState as EdgeCacheOriginArgs | undefined;
             if ((!args || args.originAddress === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'originAddress'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["failoverOrigin"] = args ? args.failoverOrigin : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["maxAttempts"] = args ? args.maxAttempts : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["originAddress"] = args ? args.originAddress : undefined;
-            inputs["port"] = args ? args.port : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["protocol"] = args ? args.protocol : undefined;
-            inputs["retryConditions"] = args ? args.retryConditions : undefined;
-            inputs["timeout"] = args ? args.timeout : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["failoverOrigin"] = args ? args.failoverOrigin : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["maxAttempts"] = args ? args.maxAttempts : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["originAddress"] = args ? args.originAddress : undefined;
+            resourceInputs["port"] = args ? args.port : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["protocol"] = args ? args.protocol : undefined;
+            resourceInputs["retryConditions"] = args ? args.retryConditions : undefined;
+            resourceInputs["timeout"] = args ? args.timeout : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(EdgeCacheOrigin.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(EdgeCacheOrigin.__pulumiType, name, resourceInputs, opts);
     }
 }
 

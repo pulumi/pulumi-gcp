@@ -123,19 +123,19 @@ export class BillingAccountSink extends pulumi.CustomResource {
      */
     constructor(name: string, args: BillingAccountSinkArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BillingAccountSinkArgs | BillingAccountSinkState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BillingAccountSinkState | undefined;
-            inputs["bigqueryOptions"] = state ? state.bigqueryOptions : undefined;
-            inputs["billingAccount"] = state ? state.billingAccount : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["destination"] = state ? state.destination : undefined;
-            inputs["disabled"] = state ? state.disabled : undefined;
-            inputs["exclusions"] = state ? state.exclusions : undefined;
-            inputs["filter"] = state ? state.filter : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["writerIdentity"] = state ? state.writerIdentity : undefined;
+            resourceInputs["bigqueryOptions"] = state ? state.bigqueryOptions : undefined;
+            resourceInputs["billingAccount"] = state ? state.billingAccount : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["destination"] = state ? state.destination : undefined;
+            resourceInputs["disabled"] = state ? state.disabled : undefined;
+            resourceInputs["exclusions"] = state ? state.exclusions : undefined;
+            resourceInputs["filter"] = state ? state.filter : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["writerIdentity"] = state ? state.writerIdentity : undefined;
         } else {
             const args = argsOrState as BillingAccountSinkArgs | undefined;
             if ((!args || args.billingAccount === undefined) && !opts.urn) {
@@ -144,20 +144,18 @@ export class BillingAccountSink extends pulumi.CustomResource {
             if ((!args || args.destination === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'destination'");
             }
-            inputs["bigqueryOptions"] = args ? args.bigqueryOptions : undefined;
-            inputs["billingAccount"] = args ? args.billingAccount : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["destination"] = args ? args.destination : undefined;
-            inputs["disabled"] = args ? args.disabled : undefined;
-            inputs["exclusions"] = args ? args.exclusions : undefined;
-            inputs["filter"] = args ? args.filter : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["writerIdentity"] = undefined /*out*/;
+            resourceInputs["bigqueryOptions"] = args ? args.bigqueryOptions : undefined;
+            resourceInputs["billingAccount"] = args ? args.billingAccount : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["destination"] = args ? args.destination : undefined;
+            resourceInputs["disabled"] = args ? args.disabled : undefined;
+            resourceInputs["exclusions"] = args ? args.exclusions : undefined;
+            resourceInputs["filter"] = args ? args.filter : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["writerIdentity"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(BillingAccountSink.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(BillingAccountSink.__pulumiType, name, resourceInputs, opts);
     }
 }
 

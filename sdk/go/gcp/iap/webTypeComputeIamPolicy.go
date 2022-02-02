@@ -338,7 +338,7 @@ type WebTypeComputeIamPolicyInput interface {
 }
 
 func (*WebTypeComputeIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebTypeComputeIamPolicy)(nil))
+	return reflect.TypeOf((**WebTypeComputeIamPolicy)(nil)).Elem()
 }
 
 func (i *WebTypeComputeIamPolicy) ToWebTypeComputeIamPolicyOutput() WebTypeComputeIamPolicyOutput {
@@ -347,35 +347,6 @@ func (i *WebTypeComputeIamPolicy) ToWebTypeComputeIamPolicyOutput() WebTypeCompu
 
 func (i *WebTypeComputeIamPolicy) ToWebTypeComputeIamPolicyOutputWithContext(ctx context.Context) WebTypeComputeIamPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebTypeComputeIamPolicyOutput)
-}
-
-func (i *WebTypeComputeIamPolicy) ToWebTypeComputeIamPolicyPtrOutput() WebTypeComputeIamPolicyPtrOutput {
-	return i.ToWebTypeComputeIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *WebTypeComputeIamPolicy) ToWebTypeComputeIamPolicyPtrOutputWithContext(ctx context.Context) WebTypeComputeIamPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WebTypeComputeIamPolicyPtrOutput)
-}
-
-type WebTypeComputeIamPolicyPtrInput interface {
-	pulumi.Input
-
-	ToWebTypeComputeIamPolicyPtrOutput() WebTypeComputeIamPolicyPtrOutput
-	ToWebTypeComputeIamPolicyPtrOutputWithContext(ctx context.Context) WebTypeComputeIamPolicyPtrOutput
-}
-
-type webTypeComputeIamPolicyPtrType WebTypeComputeIamPolicyArgs
-
-func (*webTypeComputeIamPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WebTypeComputeIamPolicy)(nil))
-}
-
-func (i *webTypeComputeIamPolicyPtrType) ToWebTypeComputeIamPolicyPtrOutput() WebTypeComputeIamPolicyPtrOutput {
-	return i.ToWebTypeComputeIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *webTypeComputeIamPolicyPtrType) ToWebTypeComputeIamPolicyPtrOutputWithContext(ctx context.Context) WebTypeComputeIamPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WebTypeComputeIamPolicyPtrOutput)
 }
 
 // WebTypeComputeIamPolicyArrayInput is an input type that accepts WebTypeComputeIamPolicyArray and WebTypeComputeIamPolicyArrayOutput values.
@@ -431,7 +402,7 @@ func (i WebTypeComputeIamPolicyMap) ToWebTypeComputeIamPolicyMapOutputWithContex
 type WebTypeComputeIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (WebTypeComputeIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebTypeComputeIamPolicy)(nil))
+	return reflect.TypeOf((**WebTypeComputeIamPolicy)(nil)).Elem()
 }
 
 func (o WebTypeComputeIamPolicyOutput) ToWebTypeComputeIamPolicyOutput() WebTypeComputeIamPolicyOutput {
@@ -442,44 +413,10 @@ func (o WebTypeComputeIamPolicyOutput) ToWebTypeComputeIamPolicyOutputWithContex
 	return o
 }
 
-func (o WebTypeComputeIamPolicyOutput) ToWebTypeComputeIamPolicyPtrOutput() WebTypeComputeIamPolicyPtrOutput {
-	return o.ToWebTypeComputeIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o WebTypeComputeIamPolicyOutput) ToWebTypeComputeIamPolicyPtrOutputWithContext(ctx context.Context) WebTypeComputeIamPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebTypeComputeIamPolicy) *WebTypeComputeIamPolicy {
-		return &v
-	}).(WebTypeComputeIamPolicyPtrOutput)
-}
-
-type WebTypeComputeIamPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (WebTypeComputeIamPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WebTypeComputeIamPolicy)(nil))
-}
-
-func (o WebTypeComputeIamPolicyPtrOutput) ToWebTypeComputeIamPolicyPtrOutput() WebTypeComputeIamPolicyPtrOutput {
-	return o
-}
-
-func (o WebTypeComputeIamPolicyPtrOutput) ToWebTypeComputeIamPolicyPtrOutputWithContext(ctx context.Context) WebTypeComputeIamPolicyPtrOutput {
-	return o
-}
-
-func (o WebTypeComputeIamPolicyPtrOutput) Elem() WebTypeComputeIamPolicyOutput {
-	return o.ApplyT(func(v *WebTypeComputeIamPolicy) WebTypeComputeIamPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret WebTypeComputeIamPolicy
-		return ret
-	}).(WebTypeComputeIamPolicyOutput)
-}
-
 type WebTypeComputeIamPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (WebTypeComputeIamPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]WebTypeComputeIamPolicy)(nil))
+	return reflect.TypeOf((*[]*WebTypeComputeIamPolicy)(nil)).Elem()
 }
 
 func (o WebTypeComputeIamPolicyArrayOutput) ToWebTypeComputeIamPolicyArrayOutput() WebTypeComputeIamPolicyArrayOutput {
@@ -491,15 +428,15 @@ func (o WebTypeComputeIamPolicyArrayOutput) ToWebTypeComputeIamPolicyArrayOutput
 }
 
 func (o WebTypeComputeIamPolicyArrayOutput) Index(i pulumi.IntInput) WebTypeComputeIamPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WebTypeComputeIamPolicy {
-		return vs[0].([]WebTypeComputeIamPolicy)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WebTypeComputeIamPolicy {
+		return vs[0].([]*WebTypeComputeIamPolicy)[vs[1].(int)]
 	}).(WebTypeComputeIamPolicyOutput)
 }
 
 type WebTypeComputeIamPolicyMapOutput struct{ *pulumi.OutputState }
 
 func (WebTypeComputeIamPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]WebTypeComputeIamPolicy)(nil))
+	return reflect.TypeOf((*map[string]*WebTypeComputeIamPolicy)(nil)).Elem()
 }
 
 func (o WebTypeComputeIamPolicyMapOutput) ToWebTypeComputeIamPolicyMapOutput() WebTypeComputeIamPolicyMapOutput {
@@ -511,18 +448,16 @@ func (o WebTypeComputeIamPolicyMapOutput) ToWebTypeComputeIamPolicyMapOutputWith
 }
 
 func (o WebTypeComputeIamPolicyMapOutput) MapIndex(k pulumi.StringInput) WebTypeComputeIamPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) WebTypeComputeIamPolicy {
-		return vs[0].(map[string]WebTypeComputeIamPolicy)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *WebTypeComputeIamPolicy {
+		return vs[0].(map[string]*WebTypeComputeIamPolicy)[vs[1].(string)]
 	}).(WebTypeComputeIamPolicyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WebTypeComputeIamPolicyInput)(nil)).Elem(), &WebTypeComputeIamPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WebTypeComputeIamPolicyPtrInput)(nil)).Elem(), &WebTypeComputeIamPolicy{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebTypeComputeIamPolicyArrayInput)(nil)).Elem(), WebTypeComputeIamPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebTypeComputeIamPolicyMapInput)(nil)).Elem(), WebTypeComputeIamPolicyMap{})
 	pulumi.RegisterOutputType(WebTypeComputeIamPolicyOutput{})
-	pulumi.RegisterOutputType(WebTypeComputeIamPolicyPtrOutput{})
 	pulumi.RegisterOutputType(WebTypeComputeIamPolicyArrayOutput{})
 	pulumi.RegisterOutputType(WebTypeComputeIamPolicyMapOutput{})
 }

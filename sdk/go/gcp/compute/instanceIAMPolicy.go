@@ -383,7 +383,7 @@ type InstanceIAMPolicyInput interface {
 }
 
 func (*InstanceIAMPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceIAMPolicy)(nil))
+	return reflect.TypeOf((**InstanceIAMPolicy)(nil)).Elem()
 }
 
 func (i *InstanceIAMPolicy) ToInstanceIAMPolicyOutput() InstanceIAMPolicyOutput {
@@ -392,35 +392,6 @@ func (i *InstanceIAMPolicy) ToInstanceIAMPolicyOutput() InstanceIAMPolicyOutput 
 
 func (i *InstanceIAMPolicy) ToInstanceIAMPolicyOutputWithContext(ctx context.Context) InstanceIAMPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMPolicyOutput)
-}
-
-func (i *InstanceIAMPolicy) ToInstanceIAMPolicyPtrOutput() InstanceIAMPolicyPtrOutput {
-	return i.ToInstanceIAMPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *InstanceIAMPolicy) ToInstanceIAMPolicyPtrOutputWithContext(ctx context.Context) InstanceIAMPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMPolicyPtrOutput)
-}
-
-type InstanceIAMPolicyPtrInput interface {
-	pulumi.Input
-
-	ToInstanceIAMPolicyPtrOutput() InstanceIAMPolicyPtrOutput
-	ToInstanceIAMPolicyPtrOutputWithContext(ctx context.Context) InstanceIAMPolicyPtrOutput
-}
-
-type instanceIAMPolicyPtrType InstanceIAMPolicyArgs
-
-func (*instanceIAMPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceIAMPolicy)(nil))
-}
-
-func (i *instanceIAMPolicyPtrType) ToInstanceIAMPolicyPtrOutput() InstanceIAMPolicyPtrOutput {
-	return i.ToInstanceIAMPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *instanceIAMPolicyPtrType) ToInstanceIAMPolicyPtrOutputWithContext(ctx context.Context) InstanceIAMPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMPolicyPtrOutput)
 }
 
 // InstanceIAMPolicyArrayInput is an input type that accepts InstanceIAMPolicyArray and InstanceIAMPolicyArrayOutput values.
@@ -476,7 +447,7 @@ func (i InstanceIAMPolicyMap) ToInstanceIAMPolicyMapOutputWithContext(ctx contex
 type InstanceIAMPolicyOutput struct{ *pulumi.OutputState }
 
 func (InstanceIAMPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceIAMPolicy)(nil))
+	return reflect.TypeOf((**InstanceIAMPolicy)(nil)).Elem()
 }
 
 func (o InstanceIAMPolicyOutput) ToInstanceIAMPolicyOutput() InstanceIAMPolicyOutput {
@@ -487,44 +458,10 @@ func (o InstanceIAMPolicyOutput) ToInstanceIAMPolicyOutputWithContext(ctx contex
 	return o
 }
 
-func (o InstanceIAMPolicyOutput) ToInstanceIAMPolicyPtrOutput() InstanceIAMPolicyPtrOutput {
-	return o.ToInstanceIAMPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o InstanceIAMPolicyOutput) ToInstanceIAMPolicyPtrOutputWithContext(ctx context.Context) InstanceIAMPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceIAMPolicy) *InstanceIAMPolicy {
-		return &v
-	}).(InstanceIAMPolicyPtrOutput)
-}
-
-type InstanceIAMPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (InstanceIAMPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceIAMPolicy)(nil))
-}
-
-func (o InstanceIAMPolicyPtrOutput) ToInstanceIAMPolicyPtrOutput() InstanceIAMPolicyPtrOutput {
-	return o
-}
-
-func (o InstanceIAMPolicyPtrOutput) ToInstanceIAMPolicyPtrOutputWithContext(ctx context.Context) InstanceIAMPolicyPtrOutput {
-	return o
-}
-
-func (o InstanceIAMPolicyPtrOutput) Elem() InstanceIAMPolicyOutput {
-	return o.ApplyT(func(v *InstanceIAMPolicy) InstanceIAMPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret InstanceIAMPolicy
-		return ret
-	}).(InstanceIAMPolicyOutput)
-}
-
 type InstanceIAMPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceIAMPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]InstanceIAMPolicy)(nil))
+	return reflect.TypeOf((*[]*InstanceIAMPolicy)(nil)).Elem()
 }
 
 func (o InstanceIAMPolicyArrayOutput) ToInstanceIAMPolicyArrayOutput() InstanceIAMPolicyArrayOutput {
@@ -536,15 +473,15 @@ func (o InstanceIAMPolicyArrayOutput) ToInstanceIAMPolicyArrayOutputWithContext(
 }
 
 func (o InstanceIAMPolicyArrayOutput) Index(i pulumi.IntInput) InstanceIAMPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceIAMPolicy {
-		return vs[0].([]InstanceIAMPolicy)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InstanceIAMPolicy {
+		return vs[0].([]*InstanceIAMPolicy)[vs[1].(int)]
 	}).(InstanceIAMPolicyOutput)
 }
 
 type InstanceIAMPolicyMapOutput struct{ *pulumi.OutputState }
 
 func (InstanceIAMPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]InstanceIAMPolicy)(nil))
+	return reflect.TypeOf((*map[string]*InstanceIAMPolicy)(nil)).Elem()
 }
 
 func (o InstanceIAMPolicyMapOutput) ToInstanceIAMPolicyMapOutput() InstanceIAMPolicyMapOutput {
@@ -556,18 +493,16 @@ func (o InstanceIAMPolicyMapOutput) ToInstanceIAMPolicyMapOutputWithContext(ctx 
 }
 
 func (o InstanceIAMPolicyMapOutput) MapIndex(k pulumi.StringInput) InstanceIAMPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) InstanceIAMPolicy {
-		return vs[0].(map[string]InstanceIAMPolicy)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *InstanceIAMPolicy {
+		return vs[0].(map[string]*InstanceIAMPolicy)[vs[1].(string)]
 	}).(InstanceIAMPolicyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIAMPolicyInput)(nil)).Elem(), &InstanceIAMPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIAMPolicyPtrInput)(nil)).Elem(), &InstanceIAMPolicy{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIAMPolicyArrayInput)(nil)).Elem(), InstanceIAMPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIAMPolicyMapInput)(nil)).Elem(), InstanceIAMPolicyMap{})
 	pulumi.RegisterOutputType(InstanceIAMPolicyOutput{})
-	pulumi.RegisterOutputType(InstanceIAMPolicyPtrOutput{})
 	pulumi.RegisterOutputType(InstanceIAMPolicyArrayOutput{})
 	pulumi.RegisterOutputType(InstanceIAMPolicyMapOutput{})
 }

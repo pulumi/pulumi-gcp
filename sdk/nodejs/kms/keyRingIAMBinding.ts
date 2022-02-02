@@ -208,15 +208,15 @@ export class KeyRingIAMBinding extends pulumi.CustomResource {
      */
     constructor(name: string, args: KeyRingIAMBindingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: KeyRingIAMBindingArgs | KeyRingIAMBindingState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KeyRingIAMBindingState | undefined;
-            inputs["condition"] = state ? state.condition : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["keyRingId"] = state ? state.keyRingId : undefined;
-            inputs["members"] = state ? state.members : undefined;
-            inputs["role"] = state ? state.role : undefined;
+            resourceInputs["condition"] = state ? state.condition : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["keyRingId"] = state ? state.keyRingId : undefined;
+            resourceInputs["members"] = state ? state.members : undefined;
+            resourceInputs["role"] = state ? state.role : undefined;
         } else {
             const args = argsOrState as KeyRingIAMBindingArgs | undefined;
             if ((!args || args.keyRingId === undefined) && !opts.urn) {
@@ -228,16 +228,14 @@ export class KeyRingIAMBinding extends pulumi.CustomResource {
             if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            inputs["condition"] = args ? args.condition : undefined;
-            inputs["keyRingId"] = args ? args.keyRingId : undefined;
-            inputs["members"] = args ? args.members : undefined;
-            inputs["role"] = args ? args.role : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["condition"] = args ? args.condition : undefined;
+            resourceInputs["keyRingId"] = args ? args.keyRingId : undefined;
+            resourceInputs["members"] = args ? args.members : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(KeyRingIAMBinding.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(KeyRingIAMBinding.__pulumiType, name, resourceInputs, opts);
     }
 }
 

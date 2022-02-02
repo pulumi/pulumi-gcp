@@ -268,7 +268,7 @@ type DiskIamPolicyInput interface {
 }
 
 func (*DiskIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*DiskIamPolicy)(nil))
+	return reflect.TypeOf((**DiskIamPolicy)(nil)).Elem()
 }
 
 func (i *DiskIamPolicy) ToDiskIamPolicyOutput() DiskIamPolicyOutput {
@@ -277,35 +277,6 @@ func (i *DiskIamPolicy) ToDiskIamPolicyOutput() DiskIamPolicyOutput {
 
 func (i *DiskIamPolicy) ToDiskIamPolicyOutputWithContext(ctx context.Context) DiskIamPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DiskIamPolicyOutput)
-}
-
-func (i *DiskIamPolicy) ToDiskIamPolicyPtrOutput() DiskIamPolicyPtrOutput {
-	return i.ToDiskIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *DiskIamPolicy) ToDiskIamPolicyPtrOutputWithContext(ctx context.Context) DiskIamPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DiskIamPolicyPtrOutput)
-}
-
-type DiskIamPolicyPtrInput interface {
-	pulumi.Input
-
-	ToDiskIamPolicyPtrOutput() DiskIamPolicyPtrOutput
-	ToDiskIamPolicyPtrOutputWithContext(ctx context.Context) DiskIamPolicyPtrOutput
-}
-
-type diskIamPolicyPtrType DiskIamPolicyArgs
-
-func (*diskIamPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DiskIamPolicy)(nil))
-}
-
-func (i *diskIamPolicyPtrType) ToDiskIamPolicyPtrOutput() DiskIamPolicyPtrOutput {
-	return i.ToDiskIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *diskIamPolicyPtrType) ToDiskIamPolicyPtrOutputWithContext(ctx context.Context) DiskIamPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DiskIamPolicyPtrOutput)
 }
 
 // DiskIamPolicyArrayInput is an input type that accepts DiskIamPolicyArray and DiskIamPolicyArrayOutput values.
@@ -361,7 +332,7 @@ func (i DiskIamPolicyMap) ToDiskIamPolicyMapOutputWithContext(ctx context.Contex
 type DiskIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (DiskIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DiskIamPolicy)(nil))
+	return reflect.TypeOf((**DiskIamPolicy)(nil)).Elem()
 }
 
 func (o DiskIamPolicyOutput) ToDiskIamPolicyOutput() DiskIamPolicyOutput {
@@ -372,44 +343,10 @@ func (o DiskIamPolicyOutput) ToDiskIamPolicyOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o DiskIamPolicyOutput) ToDiskIamPolicyPtrOutput() DiskIamPolicyPtrOutput {
-	return o.ToDiskIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o DiskIamPolicyOutput) ToDiskIamPolicyPtrOutputWithContext(ctx context.Context) DiskIamPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiskIamPolicy) *DiskIamPolicy {
-		return &v
-	}).(DiskIamPolicyPtrOutput)
-}
-
-type DiskIamPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (DiskIamPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DiskIamPolicy)(nil))
-}
-
-func (o DiskIamPolicyPtrOutput) ToDiskIamPolicyPtrOutput() DiskIamPolicyPtrOutput {
-	return o
-}
-
-func (o DiskIamPolicyPtrOutput) ToDiskIamPolicyPtrOutputWithContext(ctx context.Context) DiskIamPolicyPtrOutput {
-	return o
-}
-
-func (o DiskIamPolicyPtrOutput) Elem() DiskIamPolicyOutput {
-	return o.ApplyT(func(v *DiskIamPolicy) DiskIamPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret DiskIamPolicy
-		return ret
-	}).(DiskIamPolicyOutput)
-}
-
 type DiskIamPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (DiskIamPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DiskIamPolicy)(nil))
+	return reflect.TypeOf((*[]*DiskIamPolicy)(nil)).Elem()
 }
 
 func (o DiskIamPolicyArrayOutput) ToDiskIamPolicyArrayOutput() DiskIamPolicyArrayOutput {
@@ -421,15 +358,15 @@ func (o DiskIamPolicyArrayOutput) ToDiskIamPolicyArrayOutputWithContext(ctx cont
 }
 
 func (o DiskIamPolicyArrayOutput) Index(i pulumi.IntInput) DiskIamPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiskIamPolicy {
-		return vs[0].([]DiskIamPolicy)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DiskIamPolicy {
+		return vs[0].([]*DiskIamPolicy)[vs[1].(int)]
 	}).(DiskIamPolicyOutput)
 }
 
 type DiskIamPolicyMapOutput struct{ *pulumi.OutputState }
 
 func (DiskIamPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DiskIamPolicy)(nil))
+	return reflect.TypeOf((*map[string]*DiskIamPolicy)(nil)).Elem()
 }
 
 func (o DiskIamPolicyMapOutput) ToDiskIamPolicyMapOutput() DiskIamPolicyMapOutput {
@@ -441,18 +378,16 @@ func (o DiskIamPolicyMapOutput) ToDiskIamPolicyMapOutputWithContext(ctx context.
 }
 
 func (o DiskIamPolicyMapOutput) MapIndex(k pulumi.StringInput) DiskIamPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DiskIamPolicy {
-		return vs[0].(map[string]DiskIamPolicy)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DiskIamPolicy {
+		return vs[0].(map[string]*DiskIamPolicy)[vs[1].(string)]
 	}).(DiskIamPolicyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DiskIamPolicyInput)(nil)).Elem(), &DiskIamPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DiskIamPolicyPtrInput)(nil)).Elem(), &DiskIamPolicy{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DiskIamPolicyArrayInput)(nil)).Elem(), DiskIamPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DiskIamPolicyMapInput)(nil)).Elem(), DiskIamPolicyMap{})
 	pulumi.RegisterOutputType(DiskIamPolicyOutput{})
-	pulumi.RegisterOutputType(DiskIamPolicyPtrOutput{})
 	pulumi.RegisterOutputType(DiskIamPolicyArrayOutput{})
 	pulumi.RegisterOutputType(DiskIamPolicyMapOutput{})
 }

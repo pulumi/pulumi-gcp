@@ -93,7 +93,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = compute.NewInterconnectAttachment(ctx, "ipsec_encrypted_interconnect_attachment", &compute.InterconnectAttachmentArgs{
+// 		_, err = compute.NewInterconnectAttachment(ctx, "ipsec-encrypted-interconnect-attachment", &compute.InterconnectAttachmentArgs{
 // 			EdgeAvailabilityDomain: pulumi.String("AVAILABILITY_DOMAIN_1"),
 // 			Type:                   pulumi.String("PARTNER"),
 // 			Router:                 router.ID(),
@@ -705,7 +705,7 @@ type InterconnectAttachmentInput interface {
 }
 
 func (*InterconnectAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*InterconnectAttachment)(nil))
+	return reflect.TypeOf((**InterconnectAttachment)(nil)).Elem()
 }
 
 func (i *InterconnectAttachment) ToInterconnectAttachmentOutput() InterconnectAttachmentOutput {
@@ -714,35 +714,6 @@ func (i *InterconnectAttachment) ToInterconnectAttachmentOutput() InterconnectAt
 
 func (i *InterconnectAttachment) ToInterconnectAttachmentOutputWithContext(ctx context.Context) InterconnectAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InterconnectAttachmentOutput)
-}
-
-func (i *InterconnectAttachment) ToInterconnectAttachmentPtrOutput() InterconnectAttachmentPtrOutput {
-	return i.ToInterconnectAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (i *InterconnectAttachment) ToInterconnectAttachmentPtrOutputWithContext(ctx context.Context) InterconnectAttachmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InterconnectAttachmentPtrOutput)
-}
-
-type InterconnectAttachmentPtrInput interface {
-	pulumi.Input
-
-	ToInterconnectAttachmentPtrOutput() InterconnectAttachmentPtrOutput
-	ToInterconnectAttachmentPtrOutputWithContext(ctx context.Context) InterconnectAttachmentPtrOutput
-}
-
-type interconnectAttachmentPtrType InterconnectAttachmentArgs
-
-func (*interconnectAttachmentPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**InterconnectAttachment)(nil))
-}
-
-func (i *interconnectAttachmentPtrType) ToInterconnectAttachmentPtrOutput() InterconnectAttachmentPtrOutput {
-	return i.ToInterconnectAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (i *interconnectAttachmentPtrType) ToInterconnectAttachmentPtrOutputWithContext(ctx context.Context) InterconnectAttachmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InterconnectAttachmentPtrOutput)
 }
 
 // InterconnectAttachmentArrayInput is an input type that accepts InterconnectAttachmentArray and InterconnectAttachmentArrayOutput values.
@@ -798,7 +769,7 @@ func (i InterconnectAttachmentMap) ToInterconnectAttachmentMapOutputWithContext(
 type InterconnectAttachmentOutput struct{ *pulumi.OutputState }
 
 func (InterconnectAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InterconnectAttachment)(nil))
+	return reflect.TypeOf((**InterconnectAttachment)(nil)).Elem()
 }
 
 func (o InterconnectAttachmentOutput) ToInterconnectAttachmentOutput() InterconnectAttachmentOutput {
@@ -809,44 +780,10 @@ func (o InterconnectAttachmentOutput) ToInterconnectAttachmentOutputWithContext(
 	return o
 }
 
-func (o InterconnectAttachmentOutput) ToInterconnectAttachmentPtrOutput() InterconnectAttachmentPtrOutput {
-	return o.ToInterconnectAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (o InterconnectAttachmentOutput) ToInterconnectAttachmentPtrOutputWithContext(ctx context.Context) InterconnectAttachmentPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v InterconnectAttachment) *InterconnectAttachment {
-		return &v
-	}).(InterconnectAttachmentPtrOutput)
-}
-
-type InterconnectAttachmentPtrOutput struct{ *pulumi.OutputState }
-
-func (InterconnectAttachmentPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InterconnectAttachment)(nil))
-}
-
-func (o InterconnectAttachmentPtrOutput) ToInterconnectAttachmentPtrOutput() InterconnectAttachmentPtrOutput {
-	return o
-}
-
-func (o InterconnectAttachmentPtrOutput) ToInterconnectAttachmentPtrOutputWithContext(ctx context.Context) InterconnectAttachmentPtrOutput {
-	return o
-}
-
-func (o InterconnectAttachmentPtrOutput) Elem() InterconnectAttachmentOutput {
-	return o.ApplyT(func(v *InterconnectAttachment) InterconnectAttachment {
-		if v != nil {
-			return *v
-		}
-		var ret InterconnectAttachment
-		return ret
-	}).(InterconnectAttachmentOutput)
-}
-
 type InterconnectAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (InterconnectAttachmentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]InterconnectAttachment)(nil))
+	return reflect.TypeOf((*[]*InterconnectAttachment)(nil)).Elem()
 }
 
 func (o InterconnectAttachmentArrayOutput) ToInterconnectAttachmentArrayOutput() InterconnectAttachmentArrayOutput {
@@ -858,15 +795,15 @@ func (o InterconnectAttachmentArrayOutput) ToInterconnectAttachmentArrayOutputWi
 }
 
 func (o InterconnectAttachmentArrayOutput) Index(i pulumi.IntInput) InterconnectAttachmentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InterconnectAttachment {
-		return vs[0].([]InterconnectAttachment)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InterconnectAttachment {
+		return vs[0].([]*InterconnectAttachment)[vs[1].(int)]
 	}).(InterconnectAttachmentOutput)
 }
 
 type InterconnectAttachmentMapOutput struct{ *pulumi.OutputState }
 
 func (InterconnectAttachmentMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]InterconnectAttachment)(nil))
+	return reflect.TypeOf((*map[string]*InterconnectAttachment)(nil)).Elem()
 }
 
 func (o InterconnectAttachmentMapOutput) ToInterconnectAttachmentMapOutput() InterconnectAttachmentMapOutput {
@@ -878,18 +815,16 @@ func (o InterconnectAttachmentMapOutput) ToInterconnectAttachmentMapOutputWithCo
 }
 
 func (o InterconnectAttachmentMapOutput) MapIndex(k pulumi.StringInput) InterconnectAttachmentOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) InterconnectAttachment {
-		return vs[0].(map[string]InterconnectAttachment)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *InterconnectAttachment {
+		return vs[0].(map[string]*InterconnectAttachment)[vs[1].(string)]
 	}).(InterconnectAttachmentOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectAttachmentInput)(nil)).Elem(), &InterconnectAttachment{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectAttachmentPtrInput)(nil)).Elem(), &InterconnectAttachment{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectAttachmentArrayInput)(nil)).Elem(), InterconnectAttachmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectAttachmentMapInput)(nil)).Elem(), InterconnectAttachmentMap{})
 	pulumi.RegisterOutputType(InterconnectAttachmentOutput{})
-	pulumi.RegisterOutputType(InterconnectAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(InterconnectAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(InterconnectAttachmentMapOutput{})
 }

@@ -23,9 +23,9 @@ import * as utilities from "../utilities";
  *         nonExistence: "nsec3",
  *     },
  * });
- * const fooDnsKeys = foo.id.apply(id => gcp.dns.getKeys({
- *     managedZone: id,
- * }));
+ * const fooDnsKeys = gcp.dns.getKeysOutput({
+ *     managedZone: foo.id,
+ * });
  * export const fooDnsDsRecord = fooDnsKeys.apply(fooDnsKeys => fooDnsKeys.keySigningKeys?[0]?.dsRecord);
  * ```
  */
@@ -34,9 +34,7 @@ export function getKeys(args: GetKeysArgs, opts?: pulumi.InvokeOptions): Promise
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:dns/getKeys:getKeys", {
         "managedZone": args.managedZone,
         "project": args.project,

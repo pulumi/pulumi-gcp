@@ -259,7 +259,7 @@ type ConsentStoreIamPolicyInput interface {
 }
 
 func (*ConsentStoreIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConsentStoreIamPolicy)(nil))
+	return reflect.TypeOf((**ConsentStoreIamPolicy)(nil)).Elem()
 }
 
 func (i *ConsentStoreIamPolicy) ToConsentStoreIamPolicyOutput() ConsentStoreIamPolicyOutput {
@@ -268,35 +268,6 @@ func (i *ConsentStoreIamPolicy) ToConsentStoreIamPolicyOutput() ConsentStoreIamP
 
 func (i *ConsentStoreIamPolicy) ToConsentStoreIamPolicyOutputWithContext(ctx context.Context) ConsentStoreIamPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConsentStoreIamPolicyOutput)
-}
-
-func (i *ConsentStoreIamPolicy) ToConsentStoreIamPolicyPtrOutput() ConsentStoreIamPolicyPtrOutput {
-	return i.ToConsentStoreIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *ConsentStoreIamPolicy) ToConsentStoreIamPolicyPtrOutputWithContext(ctx context.Context) ConsentStoreIamPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConsentStoreIamPolicyPtrOutput)
-}
-
-type ConsentStoreIamPolicyPtrInput interface {
-	pulumi.Input
-
-	ToConsentStoreIamPolicyPtrOutput() ConsentStoreIamPolicyPtrOutput
-	ToConsentStoreIamPolicyPtrOutputWithContext(ctx context.Context) ConsentStoreIamPolicyPtrOutput
-}
-
-type consentStoreIamPolicyPtrType ConsentStoreIamPolicyArgs
-
-func (*consentStoreIamPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConsentStoreIamPolicy)(nil))
-}
-
-func (i *consentStoreIamPolicyPtrType) ToConsentStoreIamPolicyPtrOutput() ConsentStoreIamPolicyPtrOutput {
-	return i.ToConsentStoreIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *consentStoreIamPolicyPtrType) ToConsentStoreIamPolicyPtrOutputWithContext(ctx context.Context) ConsentStoreIamPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConsentStoreIamPolicyPtrOutput)
 }
 
 // ConsentStoreIamPolicyArrayInput is an input type that accepts ConsentStoreIamPolicyArray and ConsentStoreIamPolicyArrayOutput values.
@@ -352,7 +323,7 @@ func (i ConsentStoreIamPolicyMap) ToConsentStoreIamPolicyMapOutputWithContext(ct
 type ConsentStoreIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (ConsentStoreIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConsentStoreIamPolicy)(nil))
+	return reflect.TypeOf((**ConsentStoreIamPolicy)(nil)).Elem()
 }
 
 func (o ConsentStoreIamPolicyOutput) ToConsentStoreIamPolicyOutput() ConsentStoreIamPolicyOutput {
@@ -363,44 +334,10 @@ func (o ConsentStoreIamPolicyOutput) ToConsentStoreIamPolicyOutputWithContext(ct
 	return o
 }
 
-func (o ConsentStoreIamPolicyOutput) ToConsentStoreIamPolicyPtrOutput() ConsentStoreIamPolicyPtrOutput {
-	return o.ToConsentStoreIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o ConsentStoreIamPolicyOutput) ToConsentStoreIamPolicyPtrOutputWithContext(ctx context.Context) ConsentStoreIamPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConsentStoreIamPolicy) *ConsentStoreIamPolicy {
-		return &v
-	}).(ConsentStoreIamPolicyPtrOutput)
-}
-
-type ConsentStoreIamPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (ConsentStoreIamPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConsentStoreIamPolicy)(nil))
-}
-
-func (o ConsentStoreIamPolicyPtrOutput) ToConsentStoreIamPolicyPtrOutput() ConsentStoreIamPolicyPtrOutput {
-	return o
-}
-
-func (o ConsentStoreIamPolicyPtrOutput) ToConsentStoreIamPolicyPtrOutputWithContext(ctx context.Context) ConsentStoreIamPolicyPtrOutput {
-	return o
-}
-
-func (o ConsentStoreIamPolicyPtrOutput) Elem() ConsentStoreIamPolicyOutput {
-	return o.ApplyT(func(v *ConsentStoreIamPolicy) ConsentStoreIamPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret ConsentStoreIamPolicy
-		return ret
-	}).(ConsentStoreIamPolicyOutput)
-}
-
 type ConsentStoreIamPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (ConsentStoreIamPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConsentStoreIamPolicy)(nil))
+	return reflect.TypeOf((*[]*ConsentStoreIamPolicy)(nil)).Elem()
 }
 
 func (o ConsentStoreIamPolicyArrayOutput) ToConsentStoreIamPolicyArrayOutput() ConsentStoreIamPolicyArrayOutput {
@@ -412,15 +349,15 @@ func (o ConsentStoreIamPolicyArrayOutput) ToConsentStoreIamPolicyArrayOutputWith
 }
 
 func (o ConsentStoreIamPolicyArrayOutput) Index(i pulumi.IntInput) ConsentStoreIamPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConsentStoreIamPolicy {
-		return vs[0].([]ConsentStoreIamPolicy)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConsentStoreIamPolicy {
+		return vs[0].([]*ConsentStoreIamPolicy)[vs[1].(int)]
 	}).(ConsentStoreIamPolicyOutput)
 }
 
 type ConsentStoreIamPolicyMapOutput struct{ *pulumi.OutputState }
 
 func (ConsentStoreIamPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ConsentStoreIamPolicy)(nil))
+	return reflect.TypeOf((*map[string]*ConsentStoreIamPolicy)(nil)).Elem()
 }
 
 func (o ConsentStoreIamPolicyMapOutput) ToConsentStoreIamPolicyMapOutput() ConsentStoreIamPolicyMapOutput {
@@ -432,18 +369,16 @@ func (o ConsentStoreIamPolicyMapOutput) ToConsentStoreIamPolicyMapOutputWithCont
 }
 
 func (o ConsentStoreIamPolicyMapOutput) MapIndex(k pulumi.StringInput) ConsentStoreIamPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ConsentStoreIamPolicy {
-		return vs[0].(map[string]ConsentStoreIamPolicy)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ConsentStoreIamPolicy {
+		return vs[0].(map[string]*ConsentStoreIamPolicy)[vs[1].(string)]
 	}).(ConsentStoreIamPolicyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConsentStoreIamPolicyInput)(nil)).Elem(), &ConsentStoreIamPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConsentStoreIamPolicyPtrInput)(nil)).Elem(), &ConsentStoreIamPolicy{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConsentStoreIamPolicyArrayInput)(nil)).Elem(), ConsentStoreIamPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConsentStoreIamPolicyMapInput)(nil)).Elem(), ConsentStoreIamPolicyMap{})
 	pulumi.RegisterOutputType(ConsentStoreIamPolicyOutput{})
-	pulumi.RegisterOutputType(ConsentStoreIamPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ConsentStoreIamPolicyArrayOutput{})
 	pulumi.RegisterOutputType(ConsentStoreIamPolicyMapOutput{})
 }

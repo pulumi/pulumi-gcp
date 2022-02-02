@@ -6,17 +6,16 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.RuntimeConfig
 {
     public static class GetVariable
     {
         public static Task<GetVariableResult> InvokeAsync(GetVariableArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVariableResult>("gcp:runtimeconfig/getVariable:getVariable", args ?? new GetVariableArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetVariableResult>("gcp:runtimeconfig/getVariable:getVariable", args ?? new GetVariableArgs(), options.WithDefaults());
 
         public static Output<GetVariableResult> Invoke(GetVariableInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVariableResult>("gcp:runtimeconfig/getVariable:getVariable", args ?? new GetVariableInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetVariableResult>("gcp:runtimeconfig/getVariable:getVariable", args ?? new GetVariableInvokeArgs(), options.WithDefaults());
     }
 
 

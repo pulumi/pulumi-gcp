@@ -117,16 +117,16 @@ export class AccessApprovalSettings extends pulumi.CustomResource {
      */
     constructor(name: string, args: AccessApprovalSettingsArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccessApprovalSettingsArgs | AccessApprovalSettingsState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessApprovalSettingsState | undefined;
-            inputs["enrolledAncestor"] = state ? state.enrolledAncestor : undefined;
-            inputs["enrolledServices"] = state ? state.enrolledServices : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["notificationEmails"] = state ? state.notificationEmails : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["enrolledAncestor"] = state ? state.enrolledAncestor : undefined;
+            resourceInputs["enrolledServices"] = state ? state.enrolledServices : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["notificationEmails"] = state ? state.notificationEmails : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
         } else {
             const args = argsOrState as AccessApprovalSettingsArgs | undefined;
             if ((!args || args.enrolledServices === undefined) && !opts.urn) {
@@ -135,17 +135,15 @@ export class AccessApprovalSettings extends pulumi.CustomResource {
             if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            inputs["enrolledServices"] = args ? args.enrolledServices : undefined;
-            inputs["notificationEmails"] = args ? args.notificationEmails : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
-            inputs["enrolledAncestor"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["enrolledServices"] = args ? args.enrolledServices : undefined;
+            resourceInputs["notificationEmails"] = args ? args.notificationEmails : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["enrolledAncestor"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AccessApprovalSettings.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AccessApprovalSettings.__pulumiType, name, resourceInputs, opts);
     }
 }
 

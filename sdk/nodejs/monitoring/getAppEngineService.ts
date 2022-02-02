@@ -49,9 +49,9 @@ import * as utilities from "../utilities";
  *     },
  *     deleteServiceOnDestroy: false,
  * });
- * const srv = myapp.service.apply(service => gcp.monitoring.getAppEngineService({
- *     moduleId: service,
- * }));
+ * const srv = gcp.monitoring.getAppEngineServiceOutput({
+ *     moduleId: myapp.service,
+ * });
  * ```
  */
 export function getAppEngineService(args: GetAppEngineServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetAppEngineServiceResult> {
@@ -59,9 +59,7 @@ export function getAppEngineService(args: GetAppEngineServiceArgs, opts?: pulumi
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:monitoring/getAppEngineService:getAppEngineService", {
         "moduleId": args.moduleId,
         "project": args.project,

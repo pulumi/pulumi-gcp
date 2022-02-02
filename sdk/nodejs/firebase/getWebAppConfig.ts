@@ -18,9 +18,7 @@ export function getWebAppConfig(args: GetWebAppConfigArgs, opts?: pulumi.InvokeO
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:firebase/getWebAppConfig:getWebAppConfig", {
         "project": args.project,
         "webAppId": args.webAppId,

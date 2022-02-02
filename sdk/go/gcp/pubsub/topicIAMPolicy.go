@@ -251,7 +251,7 @@ type TopicIAMPolicyInput interface {
 }
 
 func (*TopicIAMPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*TopicIAMPolicy)(nil))
+	return reflect.TypeOf((**TopicIAMPolicy)(nil)).Elem()
 }
 
 func (i *TopicIAMPolicy) ToTopicIAMPolicyOutput() TopicIAMPolicyOutput {
@@ -260,35 +260,6 @@ func (i *TopicIAMPolicy) ToTopicIAMPolicyOutput() TopicIAMPolicyOutput {
 
 func (i *TopicIAMPolicy) ToTopicIAMPolicyOutputWithContext(ctx context.Context) TopicIAMPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMPolicyOutput)
-}
-
-func (i *TopicIAMPolicy) ToTopicIAMPolicyPtrOutput() TopicIAMPolicyPtrOutput {
-	return i.ToTopicIAMPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *TopicIAMPolicy) ToTopicIAMPolicyPtrOutputWithContext(ctx context.Context) TopicIAMPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMPolicyPtrOutput)
-}
-
-type TopicIAMPolicyPtrInput interface {
-	pulumi.Input
-
-	ToTopicIAMPolicyPtrOutput() TopicIAMPolicyPtrOutput
-	ToTopicIAMPolicyPtrOutputWithContext(ctx context.Context) TopicIAMPolicyPtrOutput
-}
-
-type topicIAMPolicyPtrType TopicIAMPolicyArgs
-
-func (*topicIAMPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TopicIAMPolicy)(nil))
-}
-
-func (i *topicIAMPolicyPtrType) ToTopicIAMPolicyPtrOutput() TopicIAMPolicyPtrOutput {
-	return i.ToTopicIAMPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *topicIAMPolicyPtrType) ToTopicIAMPolicyPtrOutputWithContext(ctx context.Context) TopicIAMPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMPolicyPtrOutput)
 }
 
 // TopicIAMPolicyArrayInput is an input type that accepts TopicIAMPolicyArray and TopicIAMPolicyArrayOutput values.
@@ -344,7 +315,7 @@ func (i TopicIAMPolicyMap) ToTopicIAMPolicyMapOutputWithContext(ctx context.Cont
 type TopicIAMPolicyOutput struct{ *pulumi.OutputState }
 
 func (TopicIAMPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TopicIAMPolicy)(nil))
+	return reflect.TypeOf((**TopicIAMPolicy)(nil)).Elem()
 }
 
 func (o TopicIAMPolicyOutput) ToTopicIAMPolicyOutput() TopicIAMPolicyOutput {
@@ -355,44 +326,10 @@ func (o TopicIAMPolicyOutput) ToTopicIAMPolicyOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o TopicIAMPolicyOutput) ToTopicIAMPolicyPtrOutput() TopicIAMPolicyPtrOutput {
-	return o.ToTopicIAMPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o TopicIAMPolicyOutput) ToTopicIAMPolicyPtrOutputWithContext(ctx context.Context) TopicIAMPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TopicIAMPolicy) *TopicIAMPolicy {
-		return &v
-	}).(TopicIAMPolicyPtrOutput)
-}
-
-type TopicIAMPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (TopicIAMPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TopicIAMPolicy)(nil))
-}
-
-func (o TopicIAMPolicyPtrOutput) ToTopicIAMPolicyPtrOutput() TopicIAMPolicyPtrOutput {
-	return o
-}
-
-func (o TopicIAMPolicyPtrOutput) ToTopicIAMPolicyPtrOutputWithContext(ctx context.Context) TopicIAMPolicyPtrOutput {
-	return o
-}
-
-func (o TopicIAMPolicyPtrOutput) Elem() TopicIAMPolicyOutput {
-	return o.ApplyT(func(v *TopicIAMPolicy) TopicIAMPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret TopicIAMPolicy
-		return ret
-	}).(TopicIAMPolicyOutput)
-}
-
 type TopicIAMPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (TopicIAMPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TopicIAMPolicy)(nil))
+	return reflect.TypeOf((*[]*TopicIAMPolicy)(nil)).Elem()
 }
 
 func (o TopicIAMPolicyArrayOutput) ToTopicIAMPolicyArrayOutput() TopicIAMPolicyArrayOutput {
@@ -404,15 +341,15 @@ func (o TopicIAMPolicyArrayOutput) ToTopicIAMPolicyArrayOutputWithContext(ctx co
 }
 
 func (o TopicIAMPolicyArrayOutput) Index(i pulumi.IntInput) TopicIAMPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TopicIAMPolicy {
-		return vs[0].([]TopicIAMPolicy)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TopicIAMPolicy {
+		return vs[0].([]*TopicIAMPolicy)[vs[1].(int)]
 	}).(TopicIAMPolicyOutput)
 }
 
 type TopicIAMPolicyMapOutput struct{ *pulumi.OutputState }
 
 func (TopicIAMPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]TopicIAMPolicy)(nil))
+	return reflect.TypeOf((*map[string]*TopicIAMPolicy)(nil)).Elem()
 }
 
 func (o TopicIAMPolicyMapOutput) ToTopicIAMPolicyMapOutput() TopicIAMPolicyMapOutput {
@@ -424,18 +361,16 @@ func (o TopicIAMPolicyMapOutput) ToTopicIAMPolicyMapOutputWithContext(ctx contex
 }
 
 func (o TopicIAMPolicyMapOutput) MapIndex(k pulumi.StringInput) TopicIAMPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TopicIAMPolicy {
-		return vs[0].(map[string]TopicIAMPolicy)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *TopicIAMPolicy {
+		return vs[0].(map[string]*TopicIAMPolicy)[vs[1].(string)]
 	}).(TopicIAMPolicyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicIAMPolicyInput)(nil)).Elem(), &TopicIAMPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TopicIAMPolicyPtrInput)(nil)).Elem(), &TopicIAMPolicy{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicIAMPolicyArrayInput)(nil)).Elem(), TopicIAMPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicIAMPolicyMapInput)(nil)).Elem(), TopicIAMPolicyMap{})
 	pulumi.RegisterOutputType(TopicIAMPolicyOutput{})
-	pulumi.RegisterOutputType(TopicIAMPolicyPtrOutput{})
 	pulumi.RegisterOutputType(TopicIAMPolicyArrayOutput{})
 	pulumi.RegisterOutputType(TopicIAMPolicyMapOutput{})
 }

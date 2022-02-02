@@ -131,15 +131,15 @@ export class InstanceGroupNamedPort extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstanceGroupNamedPortArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceGroupNamedPortArgs | InstanceGroupNamedPortState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceGroupNamedPortState | undefined;
-            inputs["group"] = state ? state.group : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["port"] = state ? state.port : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["group"] = state ? state.group : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as InstanceGroupNamedPortArgs | undefined;
             if ((!args || args.group === undefined) && !opts.urn) {
@@ -148,16 +148,14 @@ export class InstanceGroupNamedPort extends pulumi.CustomResource {
             if ((!args || args.port === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'port'");
             }
-            inputs["group"] = args ? args.group : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["port"] = args ? args.port : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["group"] = args ? args.group : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["port"] = args ? args.port : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["zone"] = args ? args.zone : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(InstanceGroupNamedPort.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(InstanceGroupNamedPort.__pulumiType, name, resourceInputs, opts);
     }
 }
 

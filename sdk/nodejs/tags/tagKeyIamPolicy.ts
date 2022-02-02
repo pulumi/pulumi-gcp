@@ -134,13 +134,13 @@ export class TagKeyIamPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: TagKeyIamPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TagKeyIamPolicyArgs | TagKeyIamPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TagKeyIamPolicyState | undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["policyData"] = state ? state.policyData : undefined;
-            inputs["tagKey"] = state ? state.tagKey : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["policyData"] = state ? state.policyData : undefined;
+            resourceInputs["tagKey"] = state ? state.tagKey : undefined;
         } else {
             const args = argsOrState as TagKeyIamPolicyArgs | undefined;
             if ((!args || args.policyData === undefined) && !opts.urn) {
@@ -149,14 +149,12 @@ export class TagKeyIamPolicy extends pulumi.CustomResource {
             if ((!args || args.tagKey === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tagKey'");
             }
-            inputs["policyData"] = args ? args.policyData : undefined;
-            inputs["tagKey"] = args ? args.tagKey : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["policyData"] = args ? args.policyData : undefined;
+            resourceInputs["tagKey"] = args ? args.tagKey : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(TagKeyIamPolicy.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(TagKeyIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

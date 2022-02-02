@@ -188,52 +188,50 @@ export class Snapshot extends pulumi.CustomResource {
      */
     constructor(name: string, args: SnapshotArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SnapshotArgs | SnapshotState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SnapshotState | undefined;
-            inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["diskSizeGb"] = state ? state.diskSizeGb : undefined;
-            inputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["licenses"] = state ? state.licenses : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
-            inputs["snapshotEncryptionKey"] = state ? state.snapshotEncryptionKey : undefined;
-            inputs["snapshotId"] = state ? state.snapshotId : undefined;
-            inputs["sourceDisk"] = state ? state.sourceDisk : undefined;
-            inputs["sourceDiskEncryptionKey"] = state ? state.sourceDiskEncryptionKey : undefined;
-            inputs["storageBytes"] = state ? state.storageBytes : undefined;
-            inputs["storageLocations"] = state ? state.storageLocations : undefined;
-            inputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["diskSizeGb"] = state ? state.diskSizeGb : undefined;
+            resourceInputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["licenses"] = state ? state.licenses : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["snapshotEncryptionKey"] = state ? state.snapshotEncryptionKey : undefined;
+            resourceInputs["snapshotId"] = state ? state.snapshotId : undefined;
+            resourceInputs["sourceDisk"] = state ? state.sourceDisk : undefined;
+            resourceInputs["sourceDiskEncryptionKey"] = state ? state.sourceDiskEncryptionKey : undefined;
+            resourceInputs["storageBytes"] = state ? state.storageBytes : undefined;
+            resourceInputs["storageLocations"] = state ? state.storageLocations : undefined;
+            resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as SnapshotArgs | undefined;
             if ((!args || args.sourceDisk === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceDisk'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["snapshotEncryptionKey"] = args ? args.snapshotEncryptionKey : undefined;
-            inputs["sourceDisk"] = args ? args.sourceDisk : undefined;
-            inputs["sourceDiskEncryptionKey"] = args ? args.sourceDiskEncryptionKey : undefined;
-            inputs["storageLocations"] = args ? args.storageLocations : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["diskSizeGb"] = undefined /*out*/;
-            inputs["labelFingerprint"] = undefined /*out*/;
-            inputs["licenses"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["snapshotId"] = undefined /*out*/;
-            inputs["storageBytes"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["snapshotEncryptionKey"] = args ? args.snapshotEncryptionKey : undefined;
+            resourceInputs["sourceDisk"] = args ? args.sourceDisk : undefined;
+            resourceInputs["sourceDiskEncryptionKey"] = args ? args.sourceDiskEncryptionKey : undefined;
+            resourceInputs["storageLocations"] = args ? args.storageLocations : undefined;
+            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["diskSizeGb"] = undefined /*out*/;
+            resourceInputs["labelFingerprint"] = undefined /*out*/;
+            resourceInputs["licenses"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["snapshotId"] = undefined /*out*/;
+            resourceInputs["storageBytes"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Snapshot.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Snapshot.__pulumiType, name, resourceInputs, opts);
     }
 }
 

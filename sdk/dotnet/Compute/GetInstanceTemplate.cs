@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Compute
 {
@@ -47,7 +46,7 @@ namespace Pulumi.Gcp.Compute
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceTemplateResult> InvokeAsync(GetInstanceTemplateArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTemplateResult>("gcp:compute/getInstanceTemplate:getInstanceTemplate", args ?? new GetInstanceTemplateArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTemplateResult>("gcp:compute/getInstanceTemplate:getInstanceTemplate", args ?? new GetInstanceTemplateArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a VM instance template resource within GCE. For more information see
@@ -84,7 +83,7 @@ namespace Pulumi.Gcp.Compute
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstanceTemplateResult> Invoke(GetInstanceTemplateInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstanceTemplateResult>("gcp:compute/getInstanceTemplate:getInstanceTemplate", args ?? new GetInstanceTemplateInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetInstanceTemplateResult>("gcp:compute/getInstanceTemplate:getInstanceTemplate", args ?? new GetInstanceTemplateInvokeArgs(), options.WithDefaults());
     }
 
 

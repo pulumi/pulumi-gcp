@@ -143,15 +143,15 @@ export class FhirStoreIamBinding extends pulumi.CustomResource {
      */
     constructor(name: string, args: FhirStoreIamBindingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FhirStoreIamBindingArgs | FhirStoreIamBindingState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FhirStoreIamBindingState | undefined;
-            inputs["condition"] = state ? state.condition : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["fhirStoreId"] = state ? state.fhirStoreId : undefined;
-            inputs["members"] = state ? state.members : undefined;
-            inputs["role"] = state ? state.role : undefined;
+            resourceInputs["condition"] = state ? state.condition : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["fhirStoreId"] = state ? state.fhirStoreId : undefined;
+            resourceInputs["members"] = state ? state.members : undefined;
+            resourceInputs["role"] = state ? state.role : undefined;
         } else {
             const args = argsOrState as FhirStoreIamBindingArgs | undefined;
             if ((!args || args.fhirStoreId === undefined) && !opts.urn) {
@@ -163,16 +163,14 @@ export class FhirStoreIamBinding extends pulumi.CustomResource {
             if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            inputs["condition"] = args ? args.condition : undefined;
-            inputs["fhirStoreId"] = args ? args.fhirStoreId : undefined;
-            inputs["members"] = args ? args.members : undefined;
-            inputs["role"] = args ? args.role : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["condition"] = args ? args.condition : undefined;
+            resourceInputs["fhirStoreId"] = args ? args.fhirStoreId : undefined;
+            resourceInputs["members"] = args ? args.members : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(FhirStoreIamBinding.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(FhirStoreIamBinding.__pulumiType, name, resourceInputs, opts);
     }
 }
 

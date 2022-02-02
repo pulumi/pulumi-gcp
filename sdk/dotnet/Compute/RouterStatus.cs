@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Compute
 {
@@ -44,7 +43,7 @@ namespace Pulumi.Gcp.Compute
         /// {{% /examples %}}
         /// </summary>
         public static Task<RouterStatusResult> InvokeAsync(RouterStatusArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<RouterStatusResult>("gcp:compute/routerStatus:RouterStatus", args ?? new RouterStatusArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<RouterStatusResult>("gcp:compute/routerStatus:RouterStatus", args ?? new RouterStatusArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get a Cloud Router's status within GCE from its name and region. This data source exposes the
@@ -78,7 +77,7 @@ namespace Pulumi.Gcp.Compute
         /// {{% /examples %}}
         /// </summary>
         public static Output<RouterStatusResult> Invoke(RouterStatusInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<RouterStatusResult>("gcp:compute/routerStatus:RouterStatus", args ?? new RouterStatusInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<RouterStatusResult>("gcp:compute/routerStatus:RouterStatus", args ?? new RouterStatusInvokeArgs(), options.WithDefaults());
     }
 
 

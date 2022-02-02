@@ -23,9 +23,7 @@ export function getKMSSecretCiphertext(args: GetKMSSecretCiphertextArgs, opts?: 
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:kms/getKMSSecretCiphertext:getKMSSecretCiphertext", {
         "cryptoKey": args.cryptoKey,
         "plaintext": args.plaintext,

@@ -100,40 +100,38 @@ export class Feature extends pulumi.CustomResource {
      */
     constructor(name: string, args: FeatureArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FeatureArgs | FeatureState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FeatureState | undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["deleteTime"] = state ? state.deleteTime : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["resourceStates"] = state ? state.resourceStates : undefined;
-            inputs["spec"] = state ? state.spec : undefined;
-            inputs["states"] = state ? state.states : undefined;
-            inputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["deleteTime"] = state ? state.deleteTime : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["resourceStates"] = state ? state.resourceStates : undefined;
+            resourceInputs["spec"] = state ? state.spec : undefined;
+            resourceInputs["states"] = state ? state.states : undefined;
+            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as FeatureArgs | undefined;
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["spec"] = args ? args.spec : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["deleteTime"] = undefined /*out*/;
-            inputs["resourceStates"] = undefined /*out*/;
-            inputs["states"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["spec"] = args ? args.spec : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["deleteTime"] = undefined /*out*/;
+            resourceInputs["resourceStates"] = undefined /*out*/;
+            resourceInputs["states"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Feature.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Feature.__pulumiType, name, resourceInputs, opts);
     }
 }
 

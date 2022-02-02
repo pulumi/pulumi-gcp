@@ -24,9 +24,7 @@ export function getDatabaseInstance(args: GetDatabaseInstanceArgs, opts?: pulumi
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:sql/getDatabaseInstance:getDatabaseInstance", {
         "name": args.name,
         "project": args.project,

@@ -268,7 +268,7 @@ type FhirStoreIamMemberInput interface {
 }
 
 func (*FhirStoreIamMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*FhirStoreIamMember)(nil))
+	return reflect.TypeOf((**FhirStoreIamMember)(nil)).Elem()
 }
 
 func (i *FhirStoreIamMember) ToFhirStoreIamMemberOutput() FhirStoreIamMemberOutput {
@@ -277,35 +277,6 @@ func (i *FhirStoreIamMember) ToFhirStoreIamMemberOutput() FhirStoreIamMemberOutp
 
 func (i *FhirStoreIamMember) ToFhirStoreIamMemberOutputWithContext(ctx context.Context) FhirStoreIamMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamMemberOutput)
-}
-
-func (i *FhirStoreIamMember) ToFhirStoreIamMemberPtrOutput() FhirStoreIamMemberPtrOutput {
-	return i.ToFhirStoreIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *FhirStoreIamMember) ToFhirStoreIamMemberPtrOutputWithContext(ctx context.Context) FhirStoreIamMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamMemberPtrOutput)
-}
-
-type FhirStoreIamMemberPtrInput interface {
-	pulumi.Input
-
-	ToFhirStoreIamMemberPtrOutput() FhirStoreIamMemberPtrOutput
-	ToFhirStoreIamMemberPtrOutputWithContext(ctx context.Context) FhirStoreIamMemberPtrOutput
-}
-
-type fhirStoreIamMemberPtrType FhirStoreIamMemberArgs
-
-func (*fhirStoreIamMemberPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FhirStoreIamMember)(nil))
-}
-
-func (i *fhirStoreIamMemberPtrType) ToFhirStoreIamMemberPtrOutput() FhirStoreIamMemberPtrOutput {
-	return i.ToFhirStoreIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *fhirStoreIamMemberPtrType) ToFhirStoreIamMemberPtrOutputWithContext(ctx context.Context) FhirStoreIamMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamMemberPtrOutput)
 }
 
 // FhirStoreIamMemberArrayInput is an input type that accepts FhirStoreIamMemberArray and FhirStoreIamMemberArrayOutput values.
@@ -361,7 +332,7 @@ func (i FhirStoreIamMemberMap) ToFhirStoreIamMemberMapOutputWithContext(ctx cont
 type FhirStoreIamMemberOutput struct{ *pulumi.OutputState }
 
 func (FhirStoreIamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FhirStoreIamMember)(nil))
+	return reflect.TypeOf((**FhirStoreIamMember)(nil)).Elem()
 }
 
 func (o FhirStoreIamMemberOutput) ToFhirStoreIamMemberOutput() FhirStoreIamMemberOutput {
@@ -372,44 +343,10 @@ func (o FhirStoreIamMemberOutput) ToFhirStoreIamMemberOutputWithContext(ctx cont
 	return o
 }
 
-func (o FhirStoreIamMemberOutput) ToFhirStoreIamMemberPtrOutput() FhirStoreIamMemberPtrOutput {
-	return o.ToFhirStoreIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (o FhirStoreIamMemberOutput) ToFhirStoreIamMemberPtrOutputWithContext(ctx context.Context) FhirStoreIamMemberPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FhirStoreIamMember) *FhirStoreIamMember {
-		return &v
-	}).(FhirStoreIamMemberPtrOutput)
-}
-
-type FhirStoreIamMemberPtrOutput struct{ *pulumi.OutputState }
-
-func (FhirStoreIamMemberPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FhirStoreIamMember)(nil))
-}
-
-func (o FhirStoreIamMemberPtrOutput) ToFhirStoreIamMemberPtrOutput() FhirStoreIamMemberPtrOutput {
-	return o
-}
-
-func (o FhirStoreIamMemberPtrOutput) ToFhirStoreIamMemberPtrOutputWithContext(ctx context.Context) FhirStoreIamMemberPtrOutput {
-	return o
-}
-
-func (o FhirStoreIamMemberPtrOutput) Elem() FhirStoreIamMemberOutput {
-	return o.ApplyT(func(v *FhirStoreIamMember) FhirStoreIamMember {
-		if v != nil {
-			return *v
-		}
-		var ret FhirStoreIamMember
-		return ret
-	}).(FhirStoreIamMemberOutput)
-}
-
 type FhirStoreIamMemberArrayOutput struct{ *pulumi.OutputState }
 
 func (FhirStoreIamMemberArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FhirStoreIamMember)(nil))
+	return reflect.TypeOf((*[]*FhirStoreIamMember)(nil)).Elem()
 }
 
 func (o FhirStoreIamMemberArrayOutput) ToFhirStoreIamMemberArrayOutput() FhirStoreIamMemberArrayOutput {
@@ -421,15 +358,15 @@ func (o FhirStoreIamMemberArrayOutput) ToFhirStoreIamMemberArrayOutputWithContex
 }
 
 func (o FhirStoreIamMemberArrayOutput) Index(i pulumi.IntInput) FhirStoreIamMemberOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FhirStoreIamMember {
-		return vs[0].([]FhirStoreIamMember)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FhirStoreIamMember {
+		return vs[0].([]*FhirStoreIamMember)[vs[1].(int)]
 	}).(FhirStoreIamMemberOutput)
 }
 
 type FhirStoreIamMemberMapOutput struct{ *pulumi.OutputState }
 
 func (FhirStoreIamMemberMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]FhirStoreIamMember)(nil))
+	return reflect.TypeOf((*map[string]*FhirStoreIamMember)(nil)).Elem()
 }
 
 func (o FhirStoreIamMemberMapOutput) ToFhirStoreIamMemberMapOutput() FhirStoreIamMemberMapOutput {
@@ -441,18 +378,16 @@ func (o FhirStoreIamMemberMapOutput) ToFhirStoreIamMemberMapOutputWithContext(ct
 }
 
 func (o FhirStoreIamMemberMapOutput) MapIndex(k pulumi.StringInput) FhirStoreIamMemberOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) FhirStoreIamMember {
-		return vs[0].(map[string]FhirStoreIamMember)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *FhirStoreIamMember {
+		return vs[0].(map[string]*FhirStoreIamMember)[vs[1].(string)]
 	}).(FhirStoreIamMemberOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreIamMemberInput)(nil)).Elem(), &FhirStoreIamMember{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreIamMemberPtrInput)(nil)).Elem(), &FhirStoreIamMember{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreIamMemberArrayInput)(nil)).Elem(), FhirStoreIamMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreIamMemberMapInput)(nil)).Elem(), FhirStoreIamMemberMap{})
 	pulumi.RegisterOutputType(FhirStoreIamMemberOutput{})
-	pulumi.RegisterOutputType(FhirStoreIamMemberPtrOutput{})
 	pulumi.RegisterOutputType(FhirStoreIamMemberArrayOutput{})
 	pulumi.RegisterOutputType(FhirStoreIamMemberMapOutput{})
 }

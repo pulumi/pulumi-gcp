@@ -83,22 +83,20 @@ export class SharedVPCHostProject extends pulumi.CustomResource {
      */
     constructor(name: string, args: SharedVPCHostProjectArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SharedVPCHostProjectArgs | SharedVPCHostProjectState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SharedVPCHostProjectState | undefined;
-            inputs["project"] = state ? state.project : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as SharedVPCHostProjectArgs | undefined;
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["project"] = args ? args.project : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SharedVPCHostProject.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SharedVPCHostProject.__pulumiType, name, resourceInputs, opts);
     }
 }
 

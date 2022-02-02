@@ -102,17 +102,17 @@ export class BillingAccountBucketConfig extends pulumi.CustomResource {
      */
     constructor(name: string, args: BillingAccountBucketConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BillingAccountBucketConfigArgs | BillingAccountBucketConfigState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BillingAccountBucketConfigState | undefined;
-            inputs["billingAccount"] = state ? state.billingAccount : undefined;
-            inputs["bucketId"] = state ? state.bucketId : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["lifecycleState"] = state ? state.lifecycleState : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["retentionDays"] = state ? state.retentionDays : undefined;
+            resourceInputs["billingAccount"] = state ? state.billingAccount : undefined;
+            resourceInputs["bucketId"] = state ? state.bucketId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["lifecycleState"] = state ? state.lifecycleState : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["retentionDays"] = state ? state.retentionDays : undefined;
         } else {
             const args = argsOrState as BillingAccountBucketConfigArgs | undefined;
             if ((!args || args.billingAccount === undefined) && !opts.urn) {
@@ -124,18 +124,16 @@ export class BillingAccountBucketConfig extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            inputs["billingAccount"] = args ? args.billingAccount : undefined;
-            inputs["bucketId"] = args ? args.bucketId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["retentionDays"] = args ? args.retentionDays : undefined;
-            inputs["lifecycleState"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["billingAccount"] = args ? args.billingAccount : undefined;
+            resourceInputs["bucketId"] = args ? args.bucketId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["retentionDays"] = args ? args.retentionDays : undefined;
+            resourceInputs["lifecycleState"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(BillingAccountBucketConfig.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(BillingAccountBucketConfig.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -245,7 +245,7 @@ type NamespaceIamMemberInput interface {
 }
 
 func (*NamespaceIamMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*NamespaceIamMember)(nil))
+	return reflect.TypeOf((**NamespaceIamMember)(nil)).Elem()
 }
 
 func (i *NamespaceIamMember) ToNamespaceIamMemberOutput() NamespaceIamMemberOutput {
@@ -254,35 +254,6 @@ func (i *NamespaceIamMember) ToNamespaceIamMemberOutput() NamespaceIamMemberOutp
 
 func (i *NamespaceIamMember) ToNamespaceIamMemberOutputWithContext(ctx context.Context) NamespaceIamMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceIamMemberOutput)
-}
-
-func (i *NamespaceIamMember) ToNamespaceIamMemberPtrOutput() NamespaceIamMemberPtrOutput {
-	return i.ToNamespaceIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *NamespaceIamMember) ToNamespaceIamMemberPtrOutputWithContext(ctx context.Context) NamespaceIamMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NamespaceIamMemberPtrOutput)
-}
-
-type NamespaceIamMemberPtrInput interface {
-	pulumi.Input
-
-	ToNamespaceIamMemberPtrOutput() NamespaceIamMemberPtrOutput
-	ToNamespaceIamMemberPtrOutputWithContext(ctx context.Context) NamespaceIamMemberPtrOutput
-}
-
-type namespaceIamMemberPtrType NamespaceIamMemberArgs
-
-func (*namespaceIamMemberPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NamespaceIamMember)(nil))
-}
-
-func (i *namespaceIamMemberPtrType) ToNamespaceIamMemberPtrOutput() NamespaceIamMemberPtrOutput {
-	return i.ToNamespaceIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *namespaceIamMemberPtrType) ToNamespaceIamMemberPtrOutputWithContext(ctx context.Context) NamespaceIamMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NamespaceIamMemberPtrOutput)
 }
 
 // NamespaceIamMemberArrayInput is an input type that accepts NamespaceIamMemberArray and NamespaceIamMemberArrayOutput values.
@@ -338,7 +309,7 @@ func (i NamespaceIamMemberMap) ToNamespaceIamMemberMapOutputWithContext(ctx cont
 type NamespaceIamMemberOutput struct{ *pulumi.OutputState }
 
 func (NamespaceIamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NamespaceIamMember)(nil))
+	return reflect.TypeOf((**NamespaceIamMember)(nil)).Elem()
 }
 
 func (o NamespaceIamMemberOutput) ToNamespaceIamMemberOutput() NamespaceIamMemberOutput {
@@ -349,44 +320,10 @@ func (o NamespaceIamMemberOutput) ToNamespaceIamMemberOutputWithContext(ctx cont
 	return o
 }
 
-func (o NamespaceIamMemberOutput) ToNamespaceIamMemberPtrOutput() NamespaceIamMemberPtrOutput {
-	return o.ToNamespaceIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (o NamespaceIamMemberOutput) ToNamespaceIamMemberPtrOutputWithContext(ctx context.Context) NamespaceIamMemberPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NamespaceIamMember) *NamespaceIamMember {
-		return &v
-	}).(NamespaceIamMemberPtrOutput)
-}
-
-type NamespaceIamMemberPtrOutput struct{ *pulumi.OutputState }
-
-func (NamespaceIamMemberPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NamespaceIamMember)(nil))
-}
-
-func (o NamespaceIamMemberPtrOutput) ToNamespaceIamMemberPtrOutput() NamespaceIamMemberPtrOutput {
-	return o
-}
-
-func (o NamespaceIamMemberPtrOutput) ToNamespaceIamMemberPtrOutputWithContext(ctx context.Context) NamespaceIamMemberPtrOutput {
-	return o
-}
-
-func (o NamespaceIamMemberPtrOutput) Elem() NamespaceIamMemberOutput {
-	return o.ApplyT(func(v *NamespaceIamMember) NamespaceIamMember {
-		if v != nil {
-			return *v
-		}
-		var ret NamespaceIamMember
-		return ret
-	}).(NamespaceIamMemberOutput)
-}
-
 type NamespaceIamMemberArrayOutput struct{ *pulumi.OutputState }
 
 func (NamespaceIamMemberArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NamespaceIamMember)(nil))
+	return reflect.TypeOf((*[]*NamespaceIamMember)(nil)).Elem()
 }
 
 func (o NamespaceIamMemberArrayOutput) ToNamespaceIamMemberArrayOutput() NamespaceIamMemberArrayOutput {
@@ -398,15 +335,15 @@ func (o NamespaceIamMemberArrayOutput) ToNamespaceIamMemberArrayOutputWithContex
 }
 
 func (o NamespaceIamMemberArrayOutput) Index(i pulumi.IntInput) NamespaceIamMemberOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceIamMember {
-		return vs[0].([]NamespaceIamMember)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NamespaceIamMember {
+		return vs[0].([]*NamespaceIamMember)[vs[1].(int)]
 	}).(NamespaceIamMemberOutput)
 }
 
 type NamespaceIamMemberMapOutput struct{ *pulumi.OutputState }
 
 func (NamespaceIamMemberMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]NamespaceIamMember)(nil))
+	return reflect.TypeOf((*map[string]*NamespaceIamMember)(nil)).Elem()
 }
 
 func (o NamespaceIamMemberMapOutput) ToNamespaceIamMemberMapOutput() NamespaceIamMemberMapOutput {
@@ -418,18 +355,16 @@ func (o NamespaceIamMemberMapOutput) ToNamespaceIamMemberMapOutputWithContext(ct
 }
 
 func (o NamespaceIamMemberMapOutput) MapIndex(k pulumi.StringInput) NamespaceIamMemberOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NamespaceIamMember {
-		return vs[0].(map[string]NamespaceIamMember)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *NamespaceIamMember {
+		return vs[0].(map[string]*NamespaceIamMember)[vs[1].(string)]
 	}).(NamespaceIamMemberOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceIamMemberInput)(nil)).Elem(), &NamespaceIamMember{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceIamMemberPtrInput)(nil)).Elem(), &NamespaceIamMember{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceIamMemberArrayInput)(nil)).Elem(), NamespaceIamMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceIamMemberMapInput)(nil)).Elem(), NamespaceIamMemberMap{})
 	pulumi.RegisterOutputType(NamespaceIamMemberOutput{})
-	pulumi.RegisterOutputType(NamespaceIamMemberPtrOutput{})
 	pulumi.RegisterOutputType(NamespaceIamMemberArrayOutput{})
 	pulumi.RegisterOutputType(NamespaceIamMemberMapOutput{})
 }

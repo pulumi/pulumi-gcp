@@ -167,42 +167,40 @@ export class Note extends pulumi.CustomResource {
      */
     constructor(name: string, args: NoteArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NoteArgs | NoteState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NoteState | undefined;
-            inputs["attestationAuthority"] = state ? state.attestationAuthority : undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["expirationTime"] = state ? state.expirationTime : undefined;
-            inputs["kind"] = state ? state.kind : undefined;
-            inputs["longDescription"] = state ? state.longDescription : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["relatedNoteNames"] = state ? state.relatedNoteNames : undefined;
-            inputs["relatedUrls"] = state ? state.relatedUrls : undefined;
-            inputs["shortDescription"] = state ? state.shortDescription : undefined;
-            inputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["attestationAuthority"] = state ? state.attestationAuthority : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["expirationTime"] = state ? state.expirationTime : undefined;
+            resourceInputs["kind"] = state ? state.kind : undefined;
+            resourceInputs["longDescription"] = state ? state.longDescription : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["relatedNoteNames"] = state ? state.relatedNoteNames : undefined;
+            resourceInputs["relatedUrls"] = state ? state.relatedUrls : undefined;
+            resourceInputs["shortDescription"] = state ? state.shortDescription : undefined;
+            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as NoteArgs | undefined;
             if ((!args || args.attestationAuthority === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'attestationAuthority'");
             }
-            inputs["attestationAuthority"] = args ? args.attestationAuthority : undefined;
-            inputs["expirationTime"] = args ? args.expirationTime : undefined;
-            inputs["longDescription"] = args ? args.longDescription : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["relatedNoteNames"] = args ? args.relatedNoteNames : undefined;
-            inputs["relatedUrls"] = args ? args.relatedUrls : undefined;
-            inputs["shortDescription"] = args ? args.shortDescription : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["attestationAuthority"] = args ? args.attestationAuthority : undefined;
+            resourceInputs["expirationTime"] = args ? args.expirationTime : undefined;
+            resourceInputs["longDescription"] = args ? args.longDescription : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["relatedNoteNames"] = args ? args.relatedNoteNames : undefined;
+            resourceInputs["relatedUrls"] = args ? args.relatedUrls : undefined;
+            resourceInputs["shortDescription"] = args ? args.shortDescription : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Note.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Note.__pulumiType, name, resourceInputs, opts);
     }
 }
 

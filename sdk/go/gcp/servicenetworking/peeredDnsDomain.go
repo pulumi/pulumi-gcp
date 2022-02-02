@@ -174,7 +174,7 @@ type PeeredDnsDomainInput interface {
 }
 
 func (*PeeredDnsDomain) ElementType() reflect.Type {
-	return reflect.TypeOf((*PeeredDnsDomain)(nil))
+	return reflect.TypeOf((**PeeredDnsDomain)(nil)).Elem()
 }
 
 func (i *PeeredDnsDomain) ToPeeredDnsDomainOutput() PeeredDnsDomainOutput {
@@ -183,35 +183,6 @@ func (i *PeeredDnsDomain) ToPeeredDnsDomainOutput() PeeredDnsDomainOutput {
 
 func (i *PeeredDnsDomain) ToPeeredDnsDomainOutputWithContext(ctx context.Context) PeeredDnsDomainOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PeeredDnsDomainOutput)
-}
-
-func (i *PeeredDnsDomain) ToPeeredDnsDomainPtrOutput() PeeredDnsDomainPtrOutput {
-	return i.ToPeeredDnsDomainPtrOutputWithContext(context.Background())
-}
-
-func (i *PeeredDnsDomain) ToPeeredDnsDomainPtrOutputWithContext(ctx context.Context) PeeredDnsDomainPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PeeredDnsDomainPtrOutput)
-}
-
-type PeeredDnsDomainPtrInput interface {
-	pulumi.Input
-
-	ToPeeredDnsDomainPtrOutput() PeeredDnsDomainPtrOutput
-	ToPeeredDnsDomainPtrOutputWithContext(ctx context.Context) PeeredDnsDomainPtrOutput
-}
-
-type peeredDnsDomainPtrType PeeredDnsDomainArgs
-
-func (*peeredDnsDomainPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PeeredDnsDomain)(nil))
-}
-
-func (i *peeredDnsDomainPtrType) ToPeeredDnsDomainPtrOutput() PeeredDnsDomainPtrOutput {
-	return i.ToPeeredDnsDomainPtrOutputWithContext(context.Background())
-}
-
-func (i *peeredDnsDomainPtrType) ToPeeredDnsDomainPtrOutputWithContext(ctx context.Context) PeeredDnsDomainPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PeeredDnsDomainPtrOutput)
 }
 
 // PeeredDnsDomainArrayInput is an input type that accepts PeeredDnsDomainArray and PeeredDnsDomainArrayOutput values.
@@ -267,7 +238,7 @@ func (i PeeredDnsDomainMap) ToPeeredDnsDomainMapOutputWithContext(ctx context.Co
 type PeeredDnsDomainOutput struct{ *pulumi.OutputState }
 
 func (PeeredDnsDomainOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PeeredDnsDomain)(nil))
+	return reflect.TypeOf((**PeeredDnsDomain)(nil)).Elem()
 }
 
 func (o PeeredDnsDomainOutput) ToPeeredDnsDomainOutput() PeeredDnsDomainOutput {
@@ -278,44 +249,10 @@ func (o PeeredDnsDomainOutput) ToPeeredDnsDomainOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o PeeredDnsDomainOutput) ToPeeredDnsDomainPtrOutput() PeeredDnsDomainPtrOutput {
-	return o.ToPeeredDnsDomainPtrOutputWithContext(context.Background())
-}
-
-func (o PeeredDnsDomainOutput) ToPeeredDnsDomainPtrOutputWithContext(ctx context.Context) PeeredDnsDomainPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PeeredDnsDomain) *PeeredDnsDomain {
-		return &v
-	}).(PeeredDnsDomainPtrOutput)
-}
-
-type PeeredDnsDomainPtrOutput struct{ *pulumi.OutputState }
-
-func (PeeredDnsDomainPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PeeredDnsDomain)(nil))
-}
-
-func (o PeeredDnsDomainPtrOutput) ToPeeredDnsDomainPtrOutput() PeeredDnsDomainPtrOutput {
-	return o
-}
-
-func (o PeeredDnsDomainPtrOutput) ToPeeredDnsDomainPtrOutputWithContext(ctx context.Context) PeeredDnsDomainPtrOutput {
-	return o
-}
-
-func (o PeeredDnsDomainPtrOutput) Elem() PeeredDnsDomainOutput {
-	return o.ApplyT(func(v *PeeredDnsDomain) PeeredDnsDomain {
-		if v != nil {
-			return *v
-		}
-		var ret PeeredDnsDomain
-		return ret
-	}).(PeeredDnsDomainOutput)
-}
-
 type PeeredDnsDomainArrayOutput struct{ *pulumi.OutputState }
 
 func (PeeredDnsDomainArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PeeredDnsDomain)(nil))
+	return reflect.TypeOf((*[]*PeeredDnsDomain)(nil)).Elem()
 }
 
 func (o PeeredDnsDomainArrayOutput) ToPeeredDnsDomainArrayOutput() PeeredDnsDomainArrayOutput {
@@ -327,15 +264,15 @@ func (o PeeredDnsDomainArrayOutput) ToPeeredDnsDomainArrayOutputWithContext(ctx 
 }
 
 func (o PeeredDnsDomainArrayOutput) Index(i pulumi.IntInput) PeeredDnsDomainOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PeeredDnsDomain {
-		return vs[0].([]PeeredDnsDomain)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PeeredDnsDomain {
+		return vs[0].([]*PeeredDnsDomain)[vs[1].(int)]
 	}).(PeeredDnsDomainOutput)
 }
 
 type PeeredDnsDomainMapOutput struct{ *pulumi.OutputState }
 
 func (PeeredDnsDomainMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]PeeredDnsDomain)(nil))
+	return reflect.TypeOf((*map[string]*PeeredDnsDomain)(nil)).Elem()
 }
 
 func (o PeeredDnsDomainMapOutput) ToPeeredDnsDomainMapOutput() PeeredDnsDomainMapOutput {
@@ -347,18 +284,16 @@ func (o PeeredDnsDomainMapOutput) ToPeeredDnsDomainMapOutputWithContext(ctx cont
 }
 
 func (o PeeredDnsDomainMapOutput) MapIndex(k pulumi.StringInput) PeeredDnsDomainOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) PeeredDnsDomain {
-		return vs[0].(map[string]PeeredDnsDomain)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *PeeredDnsDomain {
+		return vs[0].(map[string]*PeeredDnsDomain)[vs[1].(string)]
 	}).(PeeredDnsDomainOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PeeredDnsDomainInput)(nil)).Elem(), &PeeredDnsDomain{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PeeredDnsDomainPtrInput)(nil)).Elem(), &PeeredDnsDomain{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PeeredDnsDomainArrayInput)(nil)).Elem(), PeeredDnsDomainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PeeredDnsDomainMapInput)(nil)).Elem(), PeeredDnsDomainMap{})
 	pulumi.RegisterOutputType(PeeredDnsDomainOutput{})
-	pulumi.RegisterOutputType(PeeredDnsDomainPtrOutput{})
 	pulumi.RegisterOutputType(PeeredDnsDomainArrayOutput{})
 	pulumi.RegisterOutputType(PeeredDnsDomainMapOutput{})
 }

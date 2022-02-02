@@ -110,19 +110,19 @@ export class AiDataset extends pulumi.CustomResource {
      */
     constructor(name: string, args: AiDatasetArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AiDatasetArgs | AiDatasetState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AiDatasetState | undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["encryptionSpec"] = state ? state.encryptionSpec : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["metadataSchemaUri"] = state ? state.metadataSchemaUri : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["encryptionSpec"] = state ? state.encryptionSpec : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["metadataSchemaUri"] = state ? state.metadataSchemaUri : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as AiDatasetArgs | undefined;
             if ((!args || args.displayName === undefined) && !opts.urn) {
@@ -131,20 +131,18 @@ export class AiDataset extends pulumi.CustomResource {
             if ((!args || args.metadataSchemaUri === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'metadataSchemaUri'");
             }
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["encryptionSpec"] = args ? args.encryptionSpec : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["metadataSchemaUri"] = args ? args.metadataSchemaUri : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["encryptionSpec"] = args ? args.encryptionSpec : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["metadataSchemaUri"] = args ? args.metadataSchemaUri : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AiDataset.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AiDataset.__pulumiType, name, resourceInputs, opts);
     }
 }
 

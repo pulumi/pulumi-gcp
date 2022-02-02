@@ -253,7 +253,7 @@ type EntryGroupIamPolicyInput interface {
 }
 
 func (*EntryGroupIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*EntryGroupIamPolicy)(nil))
+	return reflect.TypeOf((**EntryGroupIamPolicy)(nil)).Elem()
 }
 
 func (i *EntryGroupIamPolicy) ToEntryGroupIamPolicyOutput() EntryGroupIamPolicyOutput {
@@ -262,35 +262,6 @@ func (i *EntryGroupIamPolicy) ToEntryGroupIamPolicyOutput() EntryGroupIamPolicyO
 
 func (i *EntryGroupIamPolicy) ToEntryGroupIamPolicyOutputWithContext(ctx context.Context) EntryGroupIamPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupIamPolicyOutput)
-}
-
-func (i *EntryGroupIamPolicy) ToEntryGroupIamPolicyPtrOutput() EntryGroupIamPolicyPtrOutput {
-	return i.ToEntryGroupIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *EntryGroupIamPolicy) ToEntryGroupIamPolicyPtrOutputWithContext(ctx context.Context) EntryGroupIamPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupIamPolicyPtrOutput)
-}
-
-type EntryGroupIamPolicyPtrInput interface {
-	pulumi.Input
-
-	ToEntryGroupIamPolicyPtrOutput() EntryGroupIamPolicyPtrOutput
-	ToEntryGroupIamPolicyPtrOutputWithContext(ctx context.Context) EntryGroupIamPolicyPtrOutput
-}
-
-type entryGroupIamPolicyPtrType EntryGroupIamPolicyArgs
-
-func (*entryGroupIamPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EntryGroupIamPolicy)(nil))
-}
-
-func (i *entryGroupIamPolicyPtrType) ToEntryGroupIamPolicyPtrOutput() EntryGroupIamPolicyPtrOutput {
-	return i.ToEntryGroupIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *entryGroupIamPolicyPtrType) ToEntryGroupIamPolicyPtrOutputWithContext(ctx context.Context) EntryGroupIamPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupIamPolicyPtrOutput)
 }
 
 // EntryGroupIamPolicyArrayInput is an input type that accepts EntryGroupIamPolicyArray and EntryGroupIamPolicyArrayOutput values.
@@ -346,7 +317,7 @@ func (i EntryGroupIamPolicyMap) ToEntryGroupIamPolicyMapOutputWithContext(ctx co
 type EntryGroupIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (EntryGroupIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EntryGroupIamPolicy)(nil))
+	return reflect.TypeOf((**EntryGroupIamPolicy)(nil)).Elem()
 }
 
 func (o EntryGroupIamPolicyOutput) ToEntryGroupIamPolicyOutput() EntryGroupIamPolicyOutput {
@@ -357,44 +328,10 @@ func (o EntryGroupIamPolicyOutput) ToEntryGroupIamPolicyOutputWithContext(ctx co
 	return o
 }
 
-func (o EntryGroupIamPolicyOutput) ToEntryGroupIamPolicyPtrOutput() EntryGroupIamPolicyPtrOutput {
-	return o.ToEntryGroupIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o EntryGroupIamPolicyOutput) ToEntryGroupIamPolicyPtrOutputWithContext(ctx context.Context) EntryGroupIamPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EntryGroupIamPolicy) *EntryGroupIamPolicy {
-		return &v
-	}).(EntryGroupIamPolicyPtrOutput)
-}
-
-type EntryGroupIamPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (EntryGroupIamPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EntryGroupIamPolicy)(nil))
-}
-
-func (o EntryGroupIamPolicyPtrOutput) ToEntryGroupIamPolicyPtrOutput() EntryGroupIamPolicyPtrOutput {
-	return o
-}
-
-func (o EntryGroupIamPolicyPtrOutput) ToEntryGroupIamPolicyPtrOutputWithContext(ctx context.Context) EntryGroupIamPolicyPtrOutput {
-	return o
-}
-
-func (o EntryGroupIamPolicyPtrOutput) Elem() EntryGroupIamPolicyOutput {
-	return o.ApplyT(func(v *EntryGroupIamPolicy) EntryGroupIamPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret EntryGroupIamPolicy
-		return ret
-	}).(EntryGroupIamPolicyOutput)
-}
-
 type EntryGroupIamPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (EntryGroupIamPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EntryGroupIamPolicy)(nil))
+	return reflect.TypeOf((*[]*EntryGroupIamPolicy)(nil)).Elem()
 }
 
 func (o EntryGroupIamPolicyArrayOutput) ToEntryGroupIamPolicyArrayOutput() EntryGroupIamPolicyArrayOutput {
@@ -406,15 +343,15 @@ func (o EntryGroupIamPolicyArrayOutput) ToEntryGroupIamPolicyArrayOutputWithCont
 }
 
 func (o EntryGroupIamPolicyArrayOutput) Index(i pulumi.IntInput) EntryGroupIamPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EntryGroupIamPolicy {
-		return vs[0].([]EntryGroupIamPolicy)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EntryGroupIamPolicy {
+		return vs[0].([]*EntryGroupIamPolicy)[vs[1].(int)]
 	}).(EntryGroupIamPolicyOutput)
 }
 
 type EntryGroupIamPolicyMapOutput struct{ *pulumi.OutputState }
 
 func (EntryGroupIamPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]EntryGroupIamPolicy)(nil))
+	return reflect.TypeOf((*map[string]*EntryGroupIamPolicy)(nil)).Elem()
 }
 
 func (o EntryGroupIamPolicyMapOutput) ToEntryGroupIamPolicyMapOutput() EntryGroupIamPolicyMapOutput {
@@ -426,18 +363,16 @@ func (o EntryGroupIamPolicyMapOutput) ToEntryGroupIamPolicyMapOutputWithContext(
 }
 
 func (o EntryGroupIamPolicyMapOutput) MapIndex(k pulumi.StringInput) EntryGroupIamPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) EntryGroupIamPolicy {
-		return vs[0].(map[string]EntryGroupIamPolicy)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *EntryGroupIamPolicy {
+		return vs[0].(map[string]*EntryGroupIamPolicy)[vs[1].(string)]
 	}).(EntryGroupIamPolicyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EntryGroupIamPolicyInput)(nil)).Elem(), &EntryGroupIamPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EntryGroupIamPolicyPtrInput)(nil)).Elem(), &EntryGroupIamPolicy{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntryGroupIamPolicyArrayInput)(nil)).Elem(), EntryGroupIamPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntryGroupIamPolicyMapInput)(nil)).Elem(), EntryGroupIamPolicyMap{})
 	pulumi.RegisterOutputType(EntryGroupIamPolicyOutput{})
-	pulumi.RegisterOutputType(EntryGroupIamPolicyPtrOutput{})
 	pulumi.RegisterOutputType(EntryGroupIamPolicyArrayOutput{})
 	pulumi.RegisterOutputType(EntryGroupIamPolicyMapOutput{})
 }
