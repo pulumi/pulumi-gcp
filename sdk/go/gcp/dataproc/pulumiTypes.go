@@ -4424,7 +4424,6 @@ type ClusterClusterConfigSoftwareConfig struct {
 	// * HBASE
 	// * HIVE_WEBHCAT
 	// * JUPYTER
-	// * KERBEROS
 	// * PRESTO
 	// * RANGER
 	// * SOLR
@@ -4465,7 +4464,6 @@ type ClusterClusterConfigSoftwareConfigArgs struct {
 	// * HBASE
 	// * HIVE_WEBHCAT
 	// * JUPYTER
-	// * KERBEROS
 	// * PRESTO
 	// * RANGER
 	// * SOLR
@@ -4574,7 +4572,6 @@ func (o ClusterClusterConfigSoftwareConfigOutput) ImageVersion() pulumi.StringPt
 // * HBASE
 // * HIVE_WEBHCAT
 // * JUPYTER
-// * KERBEROS
 // * PRESTO
 // * RANGER
 // * SOLR
@@ -4642,7 +4639,6 @@ func (o ClusterClusterConfigSoftwareConfigPtrOutput) ImageVersion() pulumi.Strin
 // * HBASE
 // * HIVE_WEBHCAT
 // * JUPYTER
-// * KERBEROS
 // * PRESTO
 // * RANGER
 // * SOLR

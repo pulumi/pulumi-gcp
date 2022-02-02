@@ -21,7 +21,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, alternative_location_id=None, auth_enabled=None, auth_string=None, authorized_network=None, connect_mode=None, create_time=None, current_location_id=None, display_name=None, host=None, id=None, labels=None, location_id=None, memory_size_gb=None, name=None, nodes=None, persistence_iam_identity=None, port=None, project=None, read_endpoint=None, read_endpoint_port=None, read_replicas_mode=None, redis_configs=None, redis_version=None, region=None, replica_count=None, reserved_ip_range=None, server_ca_certs=None, tier=None, transit_encryption_mode=None):
+    def __init__(__self__, alternative_location_id=None, auth_enabled=None, auth_string=None, authorized_network=None, connect_mode=None, create_time=None, current_location_id=None, display_name=None, host=None, id=None, labels=None, location_id=None, maintenance_policies=None, maintenance_schedules=None, memory_size_gb=None, name=None, nodes=None, persistence_iam_identity=None, port=None, project=None, read_endpoint=None, read_endpoint_port=None, read_replicas_mode=None, redis_configs=None, redis_version=None, region=None, replica_count=None, reserved_ip_range=None, server_ca_certs=None, tier=None, transit_encryption_mode=None):
         if alternative_location_id and not isinstance(alternative_location_id, str):
             raise TypeError("Expected argument 'alternative_location_id' to be a str")
         pulumi.set(__self__, "alternative_location_id", alternative_location_id)
@@ -58,6 +58,12 @@ class GetInstanceResult:
         if location_id and not isinstance(location_id, str):
             raise TypeError("Expected argument 'location_id' to be a str")
         pulumi.set(__self__, "location_id", location_id)
+        if maintenance_policies and not isinstance(maintenance_policies, list):
+            raise TypeError("Expected argument 'maintenance_policies' to be a list")
+        pulumi.set(__self__, "maintenance_policies", maintenance_policies)
+        if maintenance_schedules and not isinstance(maintenance_schedules, list):
+            raise TypeError("Expected argument 'maintenance_schedules' to be a list")
+        pulumi.set(__self__, "maintenance_schedules", maintenance_schedules)
         if memory_size_gb and not isinstance(memory_size_gb, int):
             raise TypeError("Expected argument 'memory_size_gb' to be a int")
         pulumi.set(__self__, "memory_size_gb", memory_size_gb)
@@ -174,6 +180,16 @@ class GetInstanceResult:
         return pulumi.get(self, "location_id")
 
     @property
+    @pulumi.getter(name="maintenancePolicies")
+    def maintenance_policies(self) -> Sequence['outputs.GetInstanceMaintenancePolicyResult']:
+        return pulumi.get(self, "maintenance_policies")
+
+    @property
+    @pulumi.getter(name="maintenanceSchedules")
+    def maintenance_schedules(self) -> Sequence['outputs.GetInstanceMaintenanceScheduleResult']:
+        return pulumi.get(self, "maintenance_schedules")
+
+    @property
     @pulumi.getter(name="memorySizeGb")
     def memory_size_gb(self) -> int:
         return pulumi.get(self, "memory_size_gb")
@@ -277,6 +293,8 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             id=self.id,
             labels=self.labels,
             location_id=self.location_id,
+            maintenance_policies=self.maintenance_policies,
+            maintenance_schedules=self.maintenance_schedules,
             memory_size_gb=self.memory_size_gb,
             name=self.name,
             nodes=self.nodes,
@@ -345,6 +363,8 @@ def get_instance(name: Optional[str] = None,
         id=__ret__.id,
         labels=__ret__.labels,
         location_id=__ret__.location_id,
+        maintenance_policies=__ret__.maintenance_policies,
+        maintenance_schedules=__ret__.maintenance_schedules,
         memory_size_gb=__ret__.memory_size_gb,
         name=__ret__.name,
         nodes=__ret__.nodes,

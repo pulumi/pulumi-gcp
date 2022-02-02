@@ -1989,7 +1989,6 @@ class ClusterClusterConfigSoftwareConfig(dict):
                * HBASE
                * HIVE_WEBHCAT
                * JUPYTER
-               * KERBEROS
                * PRESTO
                * RANGER
                * SOLR
@@ -2033,7 +2032,6 @@ class ClusterClusterConfigSoftwareConfig(dict):
         * HBASE
         * HIVE_WEBHCAT
         * JUPYTER
-        * KERBEROS
         * PRESTO
         * RANGER
         * SOLR

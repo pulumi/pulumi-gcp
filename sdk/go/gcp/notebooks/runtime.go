@@ -188,7 +188,7 @@ type Runtime struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The config settings for software inside the runtime.
 	// Structure is documented below.
-	SoftwareConfig RuntimeSoftwareConfigPtrOutput `pulumi:"softwareConfig"`
+	SoftwareConfig RuntimeSoftwareConfigOutput `pulumi:"softwareConfig"`
 	// The state of this runtime.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Use a Compute Engine VM image to start the managed notebook instance.

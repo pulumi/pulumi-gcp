@@ -15,6 +15,12 @@ namespace Pulumi.Gcp.Redis.Inputs
         [Input("cert")]
         public Input<string>? Cert { get; set; }
 
+        /// <summary>
+        /// -
+        /// Output only. The time when the policy was created.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        /// resolution and up to nine fractional digits.
+        /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 

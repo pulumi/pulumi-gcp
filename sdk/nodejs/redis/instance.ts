@@ -47,6 +47,17 @@ import * as utilities from "../utilities";
  *         my_key: "my_val",
  *         other_key: "other_val",
  *     },
+ *     maintenancePolicy: {
+ *         weeklyMaintenanceWindows: [{
+ *             day: "TUESDAY",
+ *             startTime: {
+ *                 hours: 0,
+ *                 minutes: 30,
+ *                 seconds: 0,
+ *                 nanos: 0,
+ *             },
+ *         }],
+ *     },
  * });
  * ```
  * ### Redis Instance Private Service
@@ -189,7 +200,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly connectMode!: pulumi.Output<string | undefined>;
     /**
-     * The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+     * -
+     * Output only. The time when the policy was created.
+     * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+     * resolution and up to nine fractional digits.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
@@ -218,6 +232,16 @@ export class Instance extends pulumi.CustomResource {
      * be different from [locationId].
      */
     public readonly locationId!: pulumi.Output<string>;
+    /**
+     * Maintenance policy for an instance.
+     * Structure is documented below.
+     */
+    public readonly maintenancePolicy!: pulumi.Output<outputs.redis.InstanceMaintenancePolicy | undefined>;
+    /**
+     * Upcoming maintenance schedule.
+     * Structure is documented below.
+     */
+    public readonly maintenanceSchedule!: pulumi.Output<outputs.redis.InstanceMaintenanceSchedule | undefined>;
     /**
      * Redis memory size in GiB.
      */
@@ -338,6 +362,8 @@ export class Instance extends pulumi.CustomResource {
             inputs["host"] = state ? state.host : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["locationId"] = state ? state.locationId : undefined;
+            inputs["maintenancePolicy"] = state ? state.maintenancePolicy : undefined;
+            inputs["maintenanceSchedule"] = state ? state.maintenanceSchedule : undefined;
             inputs["memorySizeGb"] = state ? state.memorySizeGb : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["nodes"] = state ? state.nodes : undefined;
@@ -367,6 +393,8 @@ export class Instance extends pulumi.CustomResource {
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["locationId"] = args ? args.locationId : undefined;
+            inputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
+            inputs["maintenanceSchedule"] = args ? args.maintenanceSchedule : undefined;
             inputs["memorySizeGb"] = args ? args.memorySizeGb : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -430,7 +458,10 @@ export interface InstanceState {
      */
     connectMode?: pulumi.Input<string>;
     /**
-     * The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+     * -
+     * Output only. The time when the policy was created.
+     * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+     * resolution and up to nine fractional digits.
      */
     createTime?: pulumi.Input<string>;
     /**
@@ -459,6 +490,16 @@ export interface InstanceState {
      * be different from [locationId].
      */
     locationId?: pulumi.Input<string>;
+    /**
+     * Maintenance policy for an instance.
+     * Structure is documented below.
+     */
+    maintenancePolicy?: pulumi.Input<inputs.redis.InstanceMaintenancePolicy>;
+    /**
+     * Upcoming maintenance schedule.
+     * Structure is documented below.
+     */
+    maintenanceSchedule?: pulumi.Input<inputs.redis.InstanceMaintenanceSchedule>;
     /**
      * Redis memory size in GiB.
      */
@@ -601,6 +642,16 @@ export interface InstanceArgs {
      * be different from [locationId].
      */
     locationId?: pulumi.Input<string>;
+    /**
+     * Maintenance policy for an instance.
+     * Structure is documented below.
+     */
+    maintenancePolicy?: pulumi.Input<inputs.redis.InstanceMaintenancePolicy>;
+    /**
+     * Upcoming maintenance schedule.
+     * Structure is documented below.
+     */
+    maintenanceSchedule?: pulumi.Input<inputs.redis.InstanceMaintenanceSchedule>;
     /**
      * Redis memory size in GiB.
      */

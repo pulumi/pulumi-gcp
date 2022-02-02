@@ -30,7 +30,6 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// * HBASE
         /// * HIVE_WEBHCAT
         /// * JUPYTER
-        /// * KERBEROS
         /// * PRESTO
         /// * RANGER
         /// * SOLR

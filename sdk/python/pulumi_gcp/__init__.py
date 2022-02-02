@@ -22,6 +22,8 @@ if typing.TYPE_CHECKING:
     appengine = __appengine
     import pulumi_gcp.artifactregistry as __artifactregistry
     artifactregistry = __artifactregistry
+    import pulumi_gcp.assuredworkloads as __assuredworkloads
+    assuredworkloads = __assuredworkloads
     import pulumi_gcp.bigquery as __bigquery
     bigquery = __bigquery
     import pulumi_gcp.bigtable as __bigtable
@@ -132,6 +134,8 @@ if typing.TYPE_CHECKING:
     projects = __projects
     import pulumi_gcp.pubsub as __pubsub
     pubsub = __pubsub
+    import pulumi_gcp.recaptcha as __recaptcha
+    recaptcha = __recaptcha
     import pulumi_gcp.redis as __redis
     redis = __redis
     import pulumi_gcp.resourcemanager as __resourcemanager
@@ -175,6 +179,7 @@ else:
     apigee = _utilities.lazy_import('pulumi_gcp.apigee')
     appengine = _utilities.lazy_import('pulumi_gcp.appengine')
     artifactregistry = _utilities.lazy_import('pulumi_gcp.artifactregistry')
+    assuredworkloads = _utilities.lazy_import('pulumi_gcp.assuredworkloads')
     bigquery = _utilities.lazy_import('pulumi_gcp.bigquery')
     bigtable = _utilities.lazy_import('pulumi_gcp.bigtable')
     billing = _utilities.lazy_import('pulumi_gcp.billing')
@@ -230,6 +235,7 @@ else:
     oslogin = _utilities.lazy_import('pulumi_gcp.oslogin')
     projects = _utilities.lazy_import('pulumi_gcp.projects')
     pubsub = _utilities.lazy_import('pulumi_gcp.pubsub')
+    recaptcha = _utilities.lazy_import('pulumi_gcp.recaptcha')
     redis = _utilities.lazy_import('pulumi_gcp.redis')
     resourcemanager = _utilities.lazy_import('pulumi_gcp.resourcemanager')
     runtimeconfig = _utilities.lazy_import('pulumi_gcp.runtimeconfig')
@@ -594,6 +600,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.artifactregistry",
   "classes": {
    "gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy": "RepositoryIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "assuredworkloads/workload",
+  "fqn": "pulumi_gcp.assuredworkloads",
+  "classes": {
+   "gcp:assuredworkloads/workload:Workload": "Workload"
   }
  },
  {
@@ -3794,6 +3808,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.pubsub",
   "classes": {
    "gcp:pubsub/topicIAMPolicy:TopicIAMPolicy": "TopicIAMPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "recaptcha/enterpriseKey",
+  "fqn": "pulumi_gcp.recaptcha",
+  "classes": {
+   "gcp:recaptcha/enterpriseKey:EnterpriseKey": "EnterpriseKey"
   }
  },
  {

@@ -76,6 +76,8 @@ export interface GetInstanceResult {
     readonly id: string;
     readonly labels: {[key: string]: string};
     readonly locationId: string;
+    readonly maintenancePolicies: outputs.redis.GetInstanceMaintenancePolicy[];
+    readonly maintenanceSchedules: outputs.redis.GetInstanceMaintenanceSchedule[];
     readonly memorySizeGb: number;
     readonly name: string;
     readonly nodes: outputs.redis.GetInstanceNode[];

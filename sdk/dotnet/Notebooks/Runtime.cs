@@ -223,7 +223,7 @@ namespace Pulumi.Gcp.Notebooks
         /// Structure is documented below.
         /// </summary>
         [Output("softwareConfig")]
-        public Output<Outputs.RuntimeSoftwareConfig?> SoftwareConfig { get; private set; } = null!;
+        public Output<Outputs.RuntimeSoftwareConfig> SoftwareConfig { get; private set; } = null!;
 
         /// <summary>
         /// The state of this runtime.
